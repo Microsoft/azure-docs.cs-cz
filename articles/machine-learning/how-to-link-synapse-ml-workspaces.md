@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519992"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889106"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Propojení Azure synapse Analytics a Azure Machine Learning pracovních prostorů (Preview)
 
@@ -102,12 +102,14 @@ Propojte pracovní prostor Machine Learning a pracovní prostor synapse pomocí 
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně vyberte **propojené služby** v části **Správa** .
 1. Vyberte **Přidat integraci**.
-1. Na formuláři **pracovního prostoru propojení** vyplňte pole. 
-    Pole| Popis    
-    ---|---
-    Název| Zadejte název propojené služby. Tento název se použije pro odkaz na tuto konkrétní propojenou službu.
-    Název předplatného | Vyberte název vašeho předplatného, které je přidružené k pracovnímu prostoru Machine Learning. 
-    Pracovní prostor synapse | Vyberte pracovní prostor synapse, ke kterému se chcete připojit.
+1. Na formuláři **pracovního prostoru propojení** vyplňte pole.
+
+    |Pole| Popis    
+    |---|---
+    |Název| Zadejte název propojené služby. Tento název se použije pro odkaz na tuto konkrétní propojenou službu.
+    |Název předplatného | Vyberte název vašeho předplatného, které je přidružené k pracovnímu prostoru Machine Learning. 
+    |Pracovní prostor synapse | Vyberte pracovní prostor synapse, ke kterému se chcete připojit.
+    
 1. Výběrem **Další** otevřete formulář **Vybrat fondy Spark (volitelné)** . V tomto formuláři můžete vybrat, který fond synapse Spark se má připojit k vašemu pracovnímu prostoru.
 
 1. Výběrem možnosti **Další** otevřete formulář **Revize** a zkontrolujte výběr.

@@ -4,12 +4,12 @@ description: Naučte se používat protokoly Azure Monitor k monitorování stav
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 299a17e23ca3eb2d954bae7335571ae1f645152e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100571895"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867147"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
 
@@ -25,7 +25,7 @@ Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládán
 
 Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor**. Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
 
-![Sada HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/azure-portal-monitoring.png" alt-text="Sada HDInsight Operations Management Suite":::
 
 Ve výchozím nastavení se nainstaluje agent OMS na všechny uzly clusteru s výjimkou hraničních uzlů. Protože na hraničních uzlech clusteru není nainstalovaný žádný agent OMS, na hraničních uzlech, které jsou ve výchozím nastavení Log Analytics, se nevyskytují žádné telemetrie.
 
@@ -33,11 +33,11 @@ Ve výchozím nastavení se nainstaluje agent OMS na všechny uzly clusteru s v�
 
 Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do prostředku **pracovního prostoru Log Analytics** a vyberte **protokoly**.
 
-![Protokoly Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdinsight-portal-logs.png" alt-text="Protokoly Log Analytics pracovního prostoru":::
 
 Protokoluje seznam několika ukázkových dotazů, například:
 
-| Název dotazu                      | Description                                                               |
+| Název dotazu                      | Popis                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Dostupnost počítačů v dnešní době    | Graf počtu počítačů odesílajících protokoly, každou hodinu                     |
 | Zobrazit prezenční signály                 | Zobrazit seznam všech prezenčních signálů počítače za poslední hodinu                           |
@@ -47,7 +47,7 @@ Protokoluje seznam několika ukázkových dotazů, například:
 
 Jako příklad spusťte dotaz ukázka **míry dostupnosti** tak, že v tomto dotazu vyberete **Spustit** , jak je znázorněno na snímku obrazovky výše. Tím se v procentech zobrazí míra dostupnosti jednotlivých uzlů v clusteru. Pokud jste povolili více clusterů HDInsight, aby odesílaly metriky do stejného pracovního prostoru Log Analytics, zobrazí se v těchto clusterech frekvence dostupnosti všech uzlů (kromě hraničních uzlů).
 
-![Vzorový dotaz k protokolu dostupnosti v pracovním prostoru Log Analytics](media/cluster-availability-monitor-logs/portal-availability-rate.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-availability-rate.png" alt-text="Vzorový dotaz k protokolu dostupnosti v pracovním prostoru Log Analytics":::
 
 > [!NOTE]  
 > Míra dostupnosti se měří v průběhu 24 hodin, takže cluster bude muset běžet aspoň 24 hodin, než uvidíte správné sazby dostupnosti.
@@ -60,16 +60,16 @@ Můžete také nastavit výstrahy Azure Monitor, které se aktivují, když hodn
 
 V části **protokoly** Spusťte ukázkový dotaz **nedostupných počítačů** , a to tak, že v tomto dotazu vyberete **Spustit** , jak je znázorněno níže.
 
-![Ukázka Log Analytics v pracovním prostoru zaznamenává nedostupné počítače](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-unavailable-computers.png" alt-text="Ukázka Log Analytics v pracovním prostoru zaznamenává nedostupné počítače":::
 
 Pokud jsou k dispozici všechny uzly, tento dotaz by nyní měl vracet nulový výsledek. Kliknutím na **nové pravidlo výstrahy** zahajte konfiguraci upozornění pro tento dotaz.
 
-![Nové pravidlo výstrahy Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png" alt-text="Nové pravidlo výstrahy Log Analytics pracovního prostoru":::
 
 Existují tři komponenty výstrahy: *prostředek* , pro který chcete vytvořit pravidlo (Log Analytics pracovní prostor v tomto případě), *podmínku* pro aktivaci výstrahy a *skupiny akcí* , které určují, co se stane, když se výstraha aktivuje.
 Klikněte na **název podmínky**, jak je znázorněno níže, a dokončete konfiguraci logiky signálu.
 
-![Podmínka vytvoření pravidla pro upozornění na portál](media/cluster-availability-monitor-logs/portal-condition-title.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-condition-title.png" alt-text="Podmínka vytvoření pravidla pro upozornění na portál":::
 
 Tím se otevře **Konfigurace signálu**.
 
@@ -85,11 +85,11 @@ Pro účely této výstrahy se chcete ujistit, že **perioda = frekvence.** Dal�
 
 Vyberte **Hotovo** , až budete hotovi s konfigurací logiky signálu.
 
-![Pravidlo výstrahy konfiguruje logiku signálu](media/cluster-availability-monitor-logs/portal-configure-signal-logic.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-configure-signal-logic.png" alt-text="Pravidlo výstrahy konfiguruje logiku signálu":::
 
 Pokud ještě nemáte existující skupinu akcí, klikněte na **vytvořit nový** v části **skupiny akcí** .
 
-![Pravidlo výstrahy vytvoří novou skupinu akcí.](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-new-action-group.png" alt-text="Pravidlo výstrahy vytvoří novou skupinu akcí.":::
 
 Otevře se okno **Přidat skupinu akcí**. Vyberte **název skupiny akcí**, **krátké jméno**, **předplatné** a **skupinu prostředků.** V části **Akce** zvolte **název akce** a jako **typ akce** vyberte **e-mail/SMS/odeslat/hlas** .
 
@@ -98,26 +98,26 @@ Otevře se okno **Přidat skupinu akcí**. Vyberte **název skupiny akcí**, **k
 
 Tím se otevře **e-mail/SMS/nabízený/hlas**. Vyberte **jméno** příjemce, **zaškrtněte** políčko **e-mail** a zadejte e-mailovou adresu, na kterou chcete odeslat výstrahu. V **e-mailu/SMS/Push/Voice** vyberte **OK** a potom do **Přidat skupinu akcí** dokončete konfiguraci skupiny akcí.
 
-![Pravidlo výstrahy vytvoří přidat skupinu akcí.](media/cluster-availability-monitor-logs/portal-add-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-add-action-group.png" alt-text="Pravidlo výstrahy vytvoří přidat skupinu akcí.":::
 
 Po zavření těchto oken by se měla zobrazit vaše skupina akcí uvedená v části **skupiny akcí** . Nakonec dokončete část **Podrobnosti výstrahy** zadáním názvu a **popisu** **pravidla výstrahy** a zvolením **závažnosti**. Kliknutím na **vytvořit pravidlo výstrahy** dokončete.
 
-![Portál vytvoří dokončení pravidla výstrahy.](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png" alt-text="Portál vytvoří dokončení pravidla výstrahy.":::
 
 > [!TIP]
 > Možnost určit **závažnost** je výkonný nástroj, který se dá použít při vytváření více výstrah. Můžete například vytvořit jednu výstrahu, která vyvolá upozornění (závažnost 1) v případě, že dojde k výpadku jednoho hlavního uzlu, a další výstrahu, která vyvolává kritické (závažnost 0) v nepravděpodobném případě, že oba hlavní uzly vycházejí dolů.
 
 Pokud je splněna podmínka této výstrahy, výstraha se aktivuje a obdržíte e-mail s podrobnostmi výstrahy, jako je tato:
 
-![Příklad e-mailu s výstrahou Azure Monitor](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alert-email.png" alt-text="Příklad e-mailu s výstrahou Azure Monitor":::
 
 Kliknutím na **výstrahy** v **pracovním prostoru Log Analytics** můžete zobrazit také všechny výstrahy, které byly aktivovány, seskupené podle závažnosti.
 
-![Výstrahy Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png" alt-text="Výstrahy Log Analytics pracovního prostoru":::
 
 Výběr u seskupení závažnosti (tj. **závažnost 1, jak je** zvýrazněný výše) zobrazí záznamy pro všechny výstrahy této závažnosti, které byly aktivovány níže:
 
-![Log Analytics pracovní prostor závažnost jednu výstrahu](media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png" alt-text="Log Analytics pracovní prostor závažnost jednu výstrahu":::
 
 ## <a name="next-steps"></a>Další kroky
 

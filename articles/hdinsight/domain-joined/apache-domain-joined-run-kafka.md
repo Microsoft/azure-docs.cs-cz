@@ -4,12 +4,12 @@ description: Kurz – Naučte se konfigurovat zásady Apache Ranger pro Kafka v 
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933685"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866977"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 2. Přihlaste se pomocí svých přihlašovacích údajů správce k Azure Active Directory (AD). Přihlašovací údaje správce k Azure AD nejsou stejné jako přihlašovací údaje ke clusteru HDInsight nebo přihlašovací údaje SSH k uzlu HDInsight Linux.
 
-   ![Uživatelské rozhraní správce HDInsight Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png" alt-text="Uživatelské rozhraní správce HDInsight Apache Ranger" border="true":::
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
 
@@ -61,7 +61,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
    * * zastupuje nula nebo více výskytů libovolných znaků.
    * ? zastupuje jeden libovolný znak.
 
-   ![Uživatelské rozhraní správce Apache Ranger vytvořit Policy1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png" alt-text="Uživatelské rozhraní správce Apache Ranger vytvořit Policy1" border="true":::
 
    Pokud uživatel domény v části **Select User** (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
 
@@ -76,7 +76,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
    |Vybrat uživatele  |  marketing_user1 |
    |Oprávnění  | publish, consume, create (publikovat, využívat, vytvářet) |
 
-   ![Uživatelské rozhraní správce Apache Ranger vytvořit Policy2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png" alt-text="Uživatelské rozhraní správce Apache Ranger vytvořit Policy2" border="true":::  
 
 6. Vyberte **Přidat** a uložte zásadu.
 
@@ -177,7 +177,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
 8. Zobrazte události přístupu k auditu v uživatelském rozhraní Ranger.
 
-   ![Události auditu přístupu k Ranger zásad uživatelského rozhraní ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png" alt-text="Události auditu přístupu k Ranger zásad uživatelského rozhraní " border="true":::
    
 ## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Vytváření a využívání témat v Kafka ESP pomocí konzoly
 
@@ -221,7 +221,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster Kafka, kter�
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
 1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud Kafka-Producer-Consumer. jar v clusteru připojeném k doméně nefunguje, ujistěte se prosím, že používáte Kafka-Producer-Consumer. jar v rámci projektu DomainJoined-producent-příjemce (ne pod Producer-Consumer projektu, což je pro scénáře nepřipojeného k doméně).
 
 ## <a name="next-steps"></a>Další kroky

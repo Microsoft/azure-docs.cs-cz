@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: 17264fc2a7d0a51de545e329ccf12ad45ad49d46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 032c070a9485fc4720ae7966a0991bc0c5ae3921
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98927233"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867844"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
 
@@ -135,7 +135,7 @@ Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, které usnadňují p
 
 Výstup aplikace by měl vypadat přibližně takto:
 
-![Výstup úlohy podregistru HDInsight Hadoop](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png" alt-text="Výstup úlohy podregistru HDInsight Hadoop" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

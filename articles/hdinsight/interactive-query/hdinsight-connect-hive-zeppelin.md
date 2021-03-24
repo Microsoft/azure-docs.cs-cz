@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f758054f867c58dd4180fe5e728e66785e3b11
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941059"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869765"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Rychlý Start: spuštění dotazů Apache Hive ve službě Azure HDInsight s Apache Zeppelin
 
@@ -28,7 +28,7 @@ An HDInsight clusteru interaktivních dotazů. V tématu [Vytvoření clusteru](
 
 2. Zadejte své uživatelské jméno a heslo pro přihlášení ke clusteru. Na stránce Zeppelin můžete buď vytvořit novou poznámku, nebo otevřít existující poznámky. **HiveSample** obsahuje několik ukázkových dotazů na podregistr.  
 
-    ![Zeppelin interaktivní dotazy HDInsight](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png" alt-text="Zeppelin interaktivní dotazy HDInsight" border="true":::
 
 3. Vyberte **vytvořit novou poznámku**.
 
@@ -46,7 +46,7 @@ An HDInsight clusteru interaktivních dotazů. V tématu [Vytvoření clusteru](
     show tables
     ```
 
-    ![Dotaz Zeppelin běžící na HDInsight Interactive](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png" alt-text="Dotaz Zeppelin běžící na HDInsight Interactive" border="true":::
 
     Příkaz **% JDBC (podregistr)** v prvním řádku instruuje Poznámkový blok, aby použil překladač podregistru JDBC.
 

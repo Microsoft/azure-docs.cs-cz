@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5682ff58ad827f5a165342f11f03fb49bbe6d2d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946553"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867878"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
 
@@ -171,7 +171,7 @@ V dalším kroku nahrajte do úložiště v clusteru HDInsight aplikace v podreg
 
 1. Rozbalte cluster HDInsight, do kterého chcete nasadit tuto aplikaci. Zobrazí se položka s textem **(výchozí účet úložiště)** .
 
-    ![Výchozí účet úložiště, cluster HDInsight, Průzkumník serveru](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png" alt-text="Výchozí účet úložiště, cluster HDInsight, Průzkumník serveru" border="true":::
 
     * Pokud tuto položku lze rozšířit, jako výchozí úložiště pro cluster používáte **účet Azure Storage** . Chcete-li zobrazit soubory ve výchozím úložišti pro cluster, rozbalte položku a dvakrát klikněte na položku **(výchozí kontejner)**.
 
@@ -181,7 +181,7 @@ V dalším kroku nahrajte do úložiště v clusteru HDInsight aplikace v podreg
 
     * Pokud používáte **účet Azure Storage**, vyberte ikonu **nahrát objekt BLOB** .
 
-        ![Ikona nahrání HDInsight pro nový projekt](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png" alt-text="Ikona nahrání HDInsight pro nový projekt" border="true":::
 
         V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru** možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** otevřete složku *bin\Debug* projektu *HiveCSharp* a vyberte soubor *HiveCSharp.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
 

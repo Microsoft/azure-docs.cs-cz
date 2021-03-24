@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 440723167ded15933ba46a3a58f9a873496bd6a7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: fb6d9a1a1ad341763c205a11b7a6a9acafda1ac4
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609358"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889735"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -72,7 +72,7 @@ Informace v této části předpokládají, že používáte Azure Container Reg
 Azure Machine Learning podporuje pouze image Docker, které poskytují následující software:
 * Ubuntu 16,04 nebo vyšší.
 * Conda 4.5. # nebo vyšší.
-* Python 3.5 +.
+* Python 3.6 +.
 
 Pokud chcete použít datové sady, nainstalujte prosím balíček libfuse-dev. Nezapomeňte také nainstalovat jakékoli balíčky uživatelských prostorů, které budete možná potřebovat.
 
@@ -216,7 +216,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 
-| Image | Description |
+| Image | Popis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové Inferencing |

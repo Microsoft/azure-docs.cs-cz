@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fd65177fb6202b0396545043c2e63a87c7f01bbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929491"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864597"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Přehled strukturovaného streamování Apache Spark
 
@@ -20,7 +20,7 @@ Strukturované aplikace streamování běží na clusterech HDInsight Spark a p�
 
 Strukturované streamování vytvoří dlouhotrvající dotaz, během kterého se operace aplikují na vstupní data, jako je výběr, projekce, agregace, okna a připojení datového rámce streamování s referenčními datovými snímky. Dál vypíšete výsledky do úložiště souborů (Azure Storage objekty blob nebo Data Lake Storage) nebo do libovolného úložiště dat pomocí vlastního kódu (například SQL Database nebo Power BI). Strukturované streamování také poskytuje výstup do konzoly pro místní ladění a do tabulky v paměti, abyste viděli data generovaná pro ladění v HDInsight.
 
-![Zpracování datových proudů pomocí strukturovaného streamování HDInsight a Sparku](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png" alt-text="Zpracování datových proudů pomocí strukturovaného streamování HDInsight a Sparku" border="false":::
 
 > [!NOTE]  
 > Strukturované streamování Sparku nahrazuje Spark streamování (DStreams). Po přeposlání bude strukturované streamování získávat vylepšení a údržbu, zatímco DStreams bude pouze v režimu údržby. Strukturované streamování se v současnosti nepoužívá jako DStreams pro zdroje a jímky, které podporuje mimo pole. proto vyhodnoťte vaše požadavky a vyberte příslušnou možnost zpracování datového proudu Spark.
@@ -29,7 +29,7 @@ Strukturované streamování vytvoří dlouhotrvající dotaz, během kterého s
 
 Strukturované streamování Spark představuje datový proud dat jako tabulky, která je neohraničená hloubkou. to znamená, že tabulka se dále zvětšuje, protože dorazí na nová data. Tato *vstupní tabulka* se nepřetržitě zpracovává dlouhodobě běžícím dotazem a výsledky se odešlou do *výstupní tabulky*:
 
-![Koncept strukturovaného streamování](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png" alt-text="Koncept strukturovaného streamování" border="false":::
 
 Ve strukturovaném streamování dorazí data do systému a okamžitě se ingestuje do vstupní tabulky. Zapisujete dotazy (pomocí rozhraní API dataframe a DataSet), které provádějí operace proti této vstupní tabulce. Výstup dotazu vydává jinou tabulku a *tabulku výsledků*. Tabulka výsledků obsahuje výsledky dotazu, ze kterého vykreslíte data pro externí úložiště dat, jako je relační databáze. Časování, kdy se data zpracovávají ze vstupní tabulky, řídí *interval triggeru*. Ve výchozím nastavení je interval triggeru nula, takže strukturované streamování se pokusí data zpracovat ihned po doručení. V praxi to znamená, že jakmile strukturované streamování dokončí zpracování předchozího dotazu, spustí se jiné zpracování na základě nově přijímaných dat. Aktivační událost se dá nakonfigurovat tak, aby se spouštěla v intervalu, takže streamovaná data se zpracují v dávkách založených na čase.
 
@@ -41,7 +41,7 @@ V režimu připojení jsou v tabulce výsledků k dispozici pouze řádky přida
 
 Vezměte v úvahu scénář, ve kterém zpracováváte telemetrii ze senzorů teploty, jako je například termostat. Předpokládejte, že první aktivační událost zpracovala jednu událost v čase 00:01 pro zařízení 1 s rychlostí čtení 95 stupňů. V první aktivační události dotazu se v tabulce výsledků zobrazí pouze řádek s časem 00:01. V čase 00:02 když dorazí jiná událost, jediným novým řádkem je řádek s časem 00:02, takže tabulka výsledků by obsahovala pouze jeden řádek.
 
-![Režim připojení strukturovaného streamování](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png" alt-text="Režim připojení strukturovaného streamování" border="false":::
 
 Při použití režimu Append by dotaz použil projekce (výběr sloupců, o kterých se stojí), vyfiltroval (vybírají pouze řádky, které odpovídají určitým podmínkám), nebo se připojovat (rozšiřuje data s daty z tabulky statického vyhledávání). Režim připojení usnadňuje odesílání pouze relevantních nových datových bodů do externího úložiště.
 
@@ -51,7 +51,7 @@ Vezměte v úvahu stejný scénář, tentokrát pomocí režimu úplného použi
 
 Předpokládat, že data už jsou zpracovaná na pět sekund a je čas na zpracování dat za šest sekund. Vstupní tabulka obsahuje události pro čas 00:01 a čas 00:03. Cílem tohoto ukázkového dotazu je poskytnout průměrnou teplotu zařízení každých pět sekund. Implementace tohoto dotazu použije agregaci, která převezme všechny hodnoty, které spadají do každého 5 sekundového okna, vypočítá průměrnou teplotu a vytvoří řádek pro průměrnou teplotu v tomto intervalu. Na konci prvního 5-druhého okna jsou dvě řazené kolekce členů: (00:01, 1, 95) a (00:03, 1, 98). Proto pro okno 00:00-00:05 agregace vytvoří řazenou kolekci členů s průměrnou teplotou 96,5 stupňů. V dalších 5 sekundových oknech je k dispozici pouze jeden datový bod v čase 00:06, takže výsledná Průměrná teplota je 98 stupňů. V čase 00:10 používá tabulka výsledků v režimu úplného zobrazení řádky pro Windows 00:00-00:05 a 00:05-00:10, protože dotaz vypisuje všechny agregované řádky, nikoli pouze nové. Tabulka výsledků proto nadále roste při přidání nových oken.
 
-![Úplný režim strukturovaného streamování](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png" alt-text="Úplný režim strukturovaného streamování" border="false":::
 
 Ne všechny dotazy používající režim úplného režimu způsobí, že se tabulka rozrůstá bez hranic.  V předchozím příkladu zvažte, že místo průměrného počtu teplot podle časového intervalu se vybralo průměrně podle ID zařízení. Tabulka výsledků obsahuje pevný počet řádků (jeden na zařízení) s průměrnou teplotou zařízení ve všech datových bodech přijatých z tohoto zařízení. Při přijetí nových teplot se tabulka výsledků aktualizuje tak, aby byly vždy aktuální průměry v tabulce.
 
@@ -141,7 +141,7 @@ Pro zajištění odolnosti proti chybám se strukturované streamování spoléh
 
 Aplikaci pro streamování Sparku obvykle vytváříte místně do souboru JAR a potom ji nasadíte do Sparku ve službě HDInsight zkopírováním souboru JAR do výchozího úložiště připojeného ke clusteru HDInsight. Aplikaci můžete spustit s rozhraními REST API [Apache Livy](https://livy.incubator.apache.org/) dostupnými z clusteru pomocí operace post. Tělo příspěvku obsahuje dokument JSON, který poskytuje cestu k JAR, název třídy, jejíž hlavní Metoda definuje a spouští aplikaci pro streamování, a volitelně požadavky na prostředky úlohy (například počet prováděcích modulů, paměti a jader) a všechna nastavení konfigurace, která váš kód aplikace vyžaduje.
 
-![Nasazení aplikace pro streamování Sparku](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Nasazení aplikace pro streamování Sparku" border="false":::
 
 Stav všech aplikací lze také zkontrolovat pomocí požadavku GET na LIVY koncový bod. Nakonec můžete ukončit běžící aplikaci vyvoláním žádosti o odstranění na koncový bod LIVY. Podrobnosti o rozhraní LIVY API najdete v tématu [vzdálené úlohy s Apache LIVY](apache-spark-livy-rest-interface.md) .
 

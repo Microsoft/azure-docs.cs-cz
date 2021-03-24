@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946702"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866807"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k Apache Hadoop pomocí Power Query
 
@@ -42,13 +42,13 @@ Doplněk Power Query pro Excel usnadňuje import dat z clusteru HDInsight do Exc
 
      * Vyberte > **data**  >  **získat data**  >  **z Azure**  >  **z Azure HDInsight (HDFS)**.
 
-       ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png" alt-text="HDI. PowerQuery. SelectHdiSource. 2016" border="true":::
 
    * Excel 2013/2010
 
      * Z Microsoft Azure HDInsight vyberte **Power Query**  >  **z Azure**  >  .
 
-       ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png" alt-text="HDI. PowerQuery. SelectHdiSource" border="true":::
 
        **Poznámka:** Pokud nevidíte nabídku **Power Query** , přejděte na možnosti **souborů**  >    >  **Doplňky** a v rozevíracím seznamu **Spravovat** v dolní části stránky vyberte **Doplňky modelu COM** . Vyberte tlačítko **Přejít do...** a ověřte, že je zaškrtnuté políčko pro doplněk Power Query pro Excel.
 
@@ -62,11 +62,11 @@ Doplněk Power Query pro Excel usnadňuje import dat z clusteru HDInsight do Exc
 
 1. Vyhledejte **HiveSampleData.txt** ve sloupci **název** (cesta ke složce je **.. /Hive/Warehouse/hivesampletable/**) a potom vyberte **binární soubor** vlevo od HiveSampleData.txt. HiveSampleData.txt se dodává se všemi clustery. Volitelně můžete použít vlastní soubor.
 
-    ![Data importování Power Query v HDI Excelu](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png" alt-text="Data importování Power Query v HDI Excelu" border="true":::
 
 1. Pokud chcete, můžete názvy sloupců přejmenovat. Až budete připraveni, vyberte **zavřít & načíst**.  Data se načetla do vašeho sešitu:
 
-    ![Importovaná tabulka Power Query v HDI Excelu](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png" alt-text="Importovaná tabulka Power Query v HDI Excelu" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

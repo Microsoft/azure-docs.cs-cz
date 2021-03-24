@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561647"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952775"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -174,7 +174,7 @@ Chcete-li zobrazit nebo spravovat nastavení zařízení v Azure Portal, je nutn
 > - K vynucení služby Multi-Factor Authentication pro připojení nebo registraci zařízení doporučujeme použít [akci uživatele registrovat nebo připojit zařízení](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) v podmíněném přístupu. 
 > - Pokud používáte zásady podmíněného přístupu, které vyžadují Multi-Factor authencation, musíte toto nastavení nastavit na **ne** . 
 
-- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50**.
+- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50**. Hodnotu můžete zvýšit až na 100 a pokud zadáte hodnotu vyšší než 100, Azure AD je nastaví na 100. Neomezenou hodnotu můžete použít také k vymáhání bez omezení s výjimkou omezení platných kvót.
 
 > [!NOTE]
 > Nastavení **maximální počet zařízení** se vztahuje na zařízení, která jsou buď připojená ke službě Azure AD, nebo v zaregistrovaných Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.

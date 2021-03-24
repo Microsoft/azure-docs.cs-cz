@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak používat SendGrid s Apache Ambari pr
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946963"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867198"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Kurz: Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight
 
@@ -33,15 +33,15 @@ V tomto kurzu se naučíte:
 
 1. Na stránce Přehled vyberte **Spravovat** a pro svůj účet navštivte webovou stránku SendGrid.
 
-    ![Přehled SendGrid na webu Azure Portal](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="Přehled SendGrid na webu Azure Portal":::
 
 1. V nabídce vlevo přejděte na název účtu a pak na **Podrobnosti účtu**.
 
-    ![Navigace na řídicím panelu SendGrid](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="Navigace na řídicím panelu SendGrid":::
 
 1. Na stránce **Podrobnosti o účtu** si poznamenejte **uživatelské jméno**.
 
-    ![Podrobnosti o účtu SendGrid](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="Podrobnosti o účtu SendGrid":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>Konfigurace e-mailových oznámení Ambari
 
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte:
 
 1. V okně **Správa oznámení výstrah** vyberte **+** ikonu.
 
-    ![Snímek obrazovky se zobrazí v dialogovém okně Správa oznámení výstrah.](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="Snímek obrazovky se zobrazí v dialogovém okně Správa oznámení výstrah.":::
 
 1. V dialogovém okně **vytvořit oznámení výstrah** zadejte následující informace:
 
@@ -60,7 +60,7 @@ V tomto kurzu se naučíte:
     |Název|Zadejte název oznámení.|
     |Skupiny|Nakonfigurujte podle potřeby.|
     |Závažnost|Nakonfigurujte podle potřeby.|
-    |Description|Nepovinný parametr.|
+    |Popis|Nepovinný parametr.|
     |Metoda|Ponechte v **e-mailu**.|
     |E-mail na|Zadejte e-maily pro příjem oznámení, oddělené čárkou.|
     |Server SMTP|`smtp.sendgrid.net`|
@@ -72,7 +72,7 @@ V tomto kurzu se naučíte:
     |Potvrzení hesla|Zadejte znovu heslo.|
     |Spustit TLS|Zaškrtněte toto políčko.|
 
-    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit oznámení výstrah.](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="Snímek obrazovky se zobrazí v dialogovém okně vytvořit oznámení výstrah.":::
 
     Vyberte **Uložit**. Vrátíte se do okna **spravovat oznámení výstrah** .
 

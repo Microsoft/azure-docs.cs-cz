@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648046"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952639"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službami Samsung KNOX a Business
 
@@ -141,7 +141,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na [SamsungKnox.com](https://samsungknox.com/) přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Samsung KNOX and Business Services v části Moje aplikace se přesměruje na [SamsungKnox.com](https://samsungknox.com/). Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Samsung KNOX and Business Services v části Moje aplikace se přesměruje na [SamsungKnox.com](https://samsungknox.com/). Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

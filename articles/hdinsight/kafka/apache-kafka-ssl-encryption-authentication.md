@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d061832022b983e4d5fd55e72c1d4789b82f6633
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945183"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863220"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování TLS pro Apache Kafka ve službě Azure HDInsight
 
@@ -128,11 +128,11 @@ Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
 1. V části **zprostředkovatel Kafka** nastavte vlastnost **Listeners** na `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. V části **Advanced Kafka-Broker** nastavte vlastnost **Security. Inter. Broker. Protocol** na `SSL`
 
-    ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png" alt-text="Úprava vlastností konfigurace SSL Kafka v Ambari" border="true":::
 
 1. V části **Custom Kafka-Broker** nastavte vlastnost **SSL. Client. auth** na `required` . Tento krok se vyžaduje jenom v případě, že nastavujete ověřování a šifrování.
 
-    ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png" alt-text="Úprava vlastností konfigurace SSL Kafka v Ambari" border="true":::
 
 1. V případě HDI verze 3,6 navštivte uživatelské rozhraní Ambari a přidejte následující konfigurace do části **Upřesnit Kafka-ENV** a vlastnost **šablony Kafka-ENV** .
 
@@ -153,11 +153,11 @@ Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
 
     Pro HDI verze 3,6:
 
-    ![Úprava vlastnosti šablony Kafka-ENV v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png" alt-text="Úprava vlastnosti šablony Kafka-ENV v Ambari" border="true":::
 
     Pro HDI verze 4,0:
 
-     ![Úprava vlastnosti šablony Kafka-ENV v Ambari čtyřech](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+     :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png" alt-text="Úprava vlastnosti šablony Kafka-ENV v Ambari čtyřech" border="true":::
 
 1. Restartujte všechny zprostředkovatele Kafka.
 

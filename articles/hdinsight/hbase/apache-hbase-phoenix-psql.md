@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: d56c9b33d53be0e30769aef8934a2dbf43d06867
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d1ddf69acda442212500200eb6dc326dcbcb3c1b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944844"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867793"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
 
@@ -26,7 +26,7 @@ Hromadné načítání pomocí MapReduce se používá pro mnohem větší objem
 
 Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a že nastavení časového limitu dotazu jsou očekávaná.  Přejděte na řídicí panel [Apache Ambari](https://ambari.apache.org/) clusteru HDInsight, vyberte adaptéry HBA a pak kartu konfigurace.  Posuňte se dolů a ověřte, že Apache Phoenix je nastavená na `enabled` jak je znázorněno níže:
 
-![Apache Phoenix nastavení clusteru HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
+:::image type="content" source="./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png" alt-text="Apache Phoenix nastavení clusteru HDInsight" border="true":::
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Použít `psql` k hromadnému načítání tabulek
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 2813554700e015c0ac34e47d632d16d97c948c4e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ec5d63c18e8fb3a353de334ae571c730f9b0d3d3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941085"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869799"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co je interaktivní dotaz ve službě Azure HDInsight
 
@@ -47,7 +47,7 @@ Vyhledání připojovacího řetězce připojení k databázi Java (JDBC):
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 1. Pokud chcete zkopírovat adresu URL, vyberte ikonu schránky:
 
-   ![Interaktivní dotaz Hadoop pro HDInsight LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
+   :::image type="content" source="./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png" alt-text="Interaktivní dotaz Hadoop pro HDInsight LLAP JDBC" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

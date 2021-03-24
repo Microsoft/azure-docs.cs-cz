@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: cf1e71d67424258ccae6794f28d37399cd68996e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fde57eb3727eda6f810f861102e47a9f5746d1f8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101654319"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím VMware Horizon – Unified Access Gateway
 
@@ -145,4 +145,4 @@ K otestování aplikace v jakémkoli režimu můžete také použít panel Micro
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete bránu VMware pro sjednocení přístupu, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete bránu VMware pro sjednocení přístupu, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

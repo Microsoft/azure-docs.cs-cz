@@ -4,12 +4,12 @@ description: Použijte webové uživatelské rozhraní Apache Ambari ke konfigur
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43159360342063af1682a984db037ae286721411
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939007"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871159"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace pro Apache prasete s Apache Ambari ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Vlastnosti pro Apache prasete se dají upravit z webového uživatelského rozhr
 
 1. V pravém horním rohu okna vyberte **Uložit** a uložte novou hodnotu. Některé vlastnosti mohou vyžadovat restartování služby.
 
-    ![Rozšířené vlastnosti vepřového prasete pro Apache](./media/optimize-pig-ambari/advanced-pig-properties.png)
+    :::image type="content" source="./media/optimize-pig-ambari/advanced-pig-properties.png" alt-text="Rozšířené vlastnosti vepřového prasete pro Apache" border="true":::
 
 > [!NOTE]  
 > Všechna nastavení na úrovni relace přepíšou hodnoty vlastností v `pig.properties` souboru.

@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932056"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872094"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -36,7 +36,7 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 |[Azure Classic CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
-![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Možnost clusteru Azure Portal Scale":::
 
 Pomocí kterékoli z těchto metod můžete škálovat cluster HDInsight během několika minut nahoru nebo dolů.
 
@@ -82,7 +82,7 @@ Dopad změny počtu datových uzlů se liší pro každý typ clusteru podporova
 
     1. Vyberte topologii, kterou chcete znovu vyvážit, a pak vyberte tlačítko pro **vyvážení** . Zadejte zpoždění před provedením operace obnovení rovnováhy.
 
-        ![Rebilance škálování ve službě HDInsight](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="Rebilance škálování ve službě HDInsight":::
 
   * Nástroj rozhraní příkazového řádku (CLI)
 
@@ -130,13 +130,13 @@ Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použ
 3. V uživatelském rozhraní Ambari vyberte možnost **příze** v seznamu služeb v nabídce na levé straně.  
 4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **Správce prostředků uživatelské rozhraní**.
 
-    ![Rychlé odkazy na Apache Ambari Správce prostředků uživatelské rozhraní](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Rychlé odkazy na Apache Ambari Správce prostředků uživatelské rozhraní":::
 
 K uživatelskému rozhraní Správce prostředků můžete přistupovat přímo pomocí `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 Zobrazí se seznam úloh spolu s jejich aktuálním stavem. Na snímku obrazovky je aktuálně spuštěná jedna úloha:
 
-![Správce prostředků aplikace uživatelského rozhraní](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="Správce prostředků aplikace uživatelského rozhraní":::
 
 Pokud chcete tuto spuštěnou aplikaci odstranit ručně, spusťte v prostředí SSH následující příkaz:
 

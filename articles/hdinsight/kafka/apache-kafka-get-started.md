@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: acb497b2f0111d36650ec415c8f1f580d116b55e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505252"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863288"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal
 
@@ -36,7 +36,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
-    ![Azure Portal vytvoření prostředku HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-create-resource.png" alt-text="Azure Portal vytvoření prostředku HDInsight" border="true":::
 
 1. Vyberte **Analytics**  >  **Azure HDInsight** a přejdete na stránku **vytvořit cluster HDInsight** .
 
@@ -54,7 +54,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
     |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser**.  Pro uživatelské jméno SSH můžete zadat jiný název. |
     |Použít heslo přihlášení clusteru pro SSH| Toto políčko zaškrtněte, pokud chcete pro uživatele SSH použít stejné heslo jako ten, který jste zadali pro uživatele přihlášení clusteru.|
 
-   ![Základy vytváření clusterů Azure Portal](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-basics.png" alt-text="Základy vytváření clusterů Azure Portal" border="true":::
 
     Každá oblast Azure (umístění) poskytuje _domény selhání_. Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Virtuální počítače a spravované disky, které implementují uzly v clusteru služby HDInsight, jsou distribuované napříč těmito doménami selhání. Tato architektura omezuje potenciální dopad selhání fyzického hardwaru.
 
@@ -71,7 +71,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
     |Účet primárního úložiště|Pomocí rozevíracího seznamu vyberte existující účet úložiště, nebo vyberte **vytvořit novou**. Pokud vytvoříte nový účet, musí mít název délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.|
     |Kontejner|Použijte automaticky vyplněnou hodnotu.|
 
-    ![Začínáme s HDInsight Linux poskytují hodnoty úložiště clusteru](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Zadejte hodnoty úložiště pro vytvoření clusteru HDInsight.")
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-storage.png " alt-text="Začínáme s HDInsight Linux poskytují hodnoty úložiště clusteru" border="true":::
 
     Vyberte kartu **zabezpečení + sítě** .
 
@@ -79,7 +79,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
 
    Pokud chcete svůj cluster připojit k virtuální síti, vyberte virtuální síť v rozevíracím seznamu **Virtuální síť**.
 
-   ![Přidání clusteru do virtuální sítě](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png" alt-text="Přidání clusteru do virtuální sítě" border="true":::
 
     Vyberte kartu **Konfigurace + ceny** .
 
@@ -87,13 +87,13 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
 
     Položka **standardní disky na pracovní uzel** nakonfiguruje škálovatelnost Apache Kafka v HDInsight. Apache Kafka ve službě HDInsight používá k ukládání dat místní disky virtuálních počítačů v clusteru. Platforma Apache Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívají [Spravované disky Azure](../../virtual-machines/managed-disks-overview.md). Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Apache Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky.
 
-   ![Nastavení velikosti clusteru Apache Kafka](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png" alt-text="Nastavení velikosti clusteru Apache Kafka" border="true":::
 
     Vyberte kartu **Revize + vytvořit** .
 
 1. Zkontrolujte konfiguraci clusteru. Změňte všechna nastavení, která jsou nesprávná. Nakonec vyberte **vytvořit** a vytvořte cluster.
 
-    ![Souhrn konfigurace clusteru Kafka](./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png" alt-text="Souhrn konfigurace clusteru Kafka" border="true":::
 
     Vytvoření clusteru trvá přibližně 20 minut.
 

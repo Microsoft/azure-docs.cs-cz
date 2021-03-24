@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d54cf4e9025dfd75d9029dec534fc5dc5dd990a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e23c5977b2492d2ea8a7a8cc050c77c512c3e16
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944183"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868371"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Optimalizace využití paměti pro Apache Spark
 
@@ -31,7 +31,7 @@ Pro referenci se v dalším obrázku zobrazí struktura paměti Spark a někter�
 
 Pokud používáte Apache Hadoop PŘÍZe, pak PŘÍZe řídí paměť využívanou všemi kontejnery v každém uzlu Spark.  Následující diagram znázorňuje klíčové objekty a jejich vztahy.
 
-![Správa paměti PŘÍZe Spark](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-perf/apache-yarn-spark-memory.png" alt-text="Správa paměti PŘÍZe Spark" border="false":::
 
 Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 

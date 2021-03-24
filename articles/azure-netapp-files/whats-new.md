@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/11/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802926"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955222"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
@@ -27,7 +27,7 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 
 ## <a name="march-2021"></a>Březen 2021
 
-* Sdílené složky SMB – nepřetržitá dostupnost (ve verzi Preview)  
+* [Sdílené složky SMB – nepřetržitá dostupnost (](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) ve verzi Preview)  
 
     Transparentní převzetí služeb při selhání ve službě SMB umožňuje operace údržby služby Azure NetApp Files bez přerušení připojení k serverovým aplikacím, které ukládají a získávají přístup k datům na svazcích SMB. Pro podporu transparentního převzetí služeb při selhání pomocí protokolu SMB Azure NetApp Files nyní podporuje možnost sdílené složky nepřetržité dostupnosti SMB pro použití s SQL Server aplikacemi přes SMB běžící na virtuálních počítačích Azure. Tato funkce je v současnosti podporovaná ve Windows SQL Server. Linux SQL Server se momentálně nepodporuje. Povolení této funkce přináší významné SQL Server vylepšení výkonu a škálování a cenová výhoda pro [jednu instanci, Always-On instanci clusteru s podporou převzetí služeb při selhání a Always-On nasazení skupin dostupnosti](azure-netapp-files-solution-architectures.md#sql-server). Podívejte se [na výhody použití Azure NetApp Files k nasazení SQL Server](solutions-benefits-azure-netapp-files-sql-server.md).
 

@@ -101,6 +101,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: Změna hostování mainframů
       href: ./workloads/mainframe-rehosting/overview.md
+    - name: Důvěrné výpočetní prostředky Azure
+      href: ../confidential-computing/overview.md
     - name: SQL na Virtual Machines
       href: ../azure-sql/virtual-machines/index.yml
     - name: Vysokovýkonné výpočetní prostředí (HPC)

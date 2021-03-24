@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: e0d1789d61bbe57c735f4dd2a70a1c2a8f183d90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4b6a6090bf0e5e332a960cba8ec565df9dd55c2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881057"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872264"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privátní odkaz pro server Azure Database for PostgreSQL-Single
 
@@ -84,7 +84,8 @@ Po vytvoření privátního koncového bodu (PE) správcem sítě může správc
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>Případy použití privátního odkazu pro Azure Database for PostgreSQL
 
-Klienti se můžou připojit ke soukromým koncovým bodem ze stejné virtuální sítě, partnerské virtuální sítě ve stejné oblasti nebo prostřednictvím připojení VNet-to-VNet napříč oblastmi. Klienti se navíc mohou připojit z místního prostředí pomocí ExpressRoute, privátního partnerského vztahu nebo tunelového propojení VPN. Níže je zjednodušený diagram znázorňující běžné případy použití.
+
+Klienti se můžou připojit k privátnímu koncovému bodu ze stejné virtuální sítě, [partnerské virtuální](../virtual-network/virtual-network-peering-overview.md) sítě ve stejné oblasti nebo v různých oblastech nebo prostřednictvím [připojení VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) napříč oblastmi. Klienti se navíc mohou připojit z místního prostředí pomocí ExpressRoute, privátního partnerského vztahu nebo tunelového propojení VPN. Níže je zjednodušený diagram znázorňující běžné případy použití.
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Výběr privátního koncového bodu – přehled":::
 

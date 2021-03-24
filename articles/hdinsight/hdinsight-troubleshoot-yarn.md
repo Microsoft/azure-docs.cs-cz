@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné otázky týkající se práce s Apa
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0cd2571276992812327e286ba9b935fcbf6fbbaf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931404"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871805"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
 
@@ -31,27 +31,27 @@ V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) z
 
 1. Vyberte ikonu **zobrazení Ambari** a pak vyberte vzor mřížky. V dalším kroku vyberte možnost **správce front příz**.
 
-    ![Správce fronty PŘÍZe na řídicím panelu Apache Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png" alt-text="Správce fronty PŘÍZe na řídicím panelu Apache Ambari" border="false":::
 2. Vyberte **výchozí** frontu.
 
-    ![Apache Ambari nitě vybrat výchozí frontu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png" alt-text="Apache Ambari nitě vybrat výchozí frontu" border="false":::
 3. U **výchozí** fronty změňte **kapacitu** z 50% na 25%. V případě fronty **thriftsvr** změňte **kapacitu** na 25%.
 
-    ![Změňte kapacitu na 25% pro výchozí a thriftsvr fronty.](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png" alt-text="Změňte kapacitu na 25% pro výchozí a thriftsvr fronty." border="false":::
 4. Pokud chcete vytvořit novou frontu, vyberte **Přidat frontu**.
 
-    ![Přidat frontu pro Apache Ambari nitě řídicí panel](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png" alt-text="Přidat frontu pro Apache Ambari nitě řídicí panel" border="false":::
 
 5. Pojmenujte novou frontu.
 
-    ![Fronta názvů Ambari PŘÍZového řídicího panelu Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png" alt-text="Fronta názvů Ambari PŘÍZového řídicího panelu Apache" border="false":::  
 
 6. Hodnoty **kapacity** ponechte na 50% a pak vyberte tlačítko **Akce** .
 
-    ![Akce výběru nitě Apache Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png" alt-text="Akce výběru nitě Apache Ambari" border="false":::  
 7. Vyberte **Uložit a aktualizovat fronty**.
 
-    ![Výběr uložit a aktualizovat fronty](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png" alt-text="Výběr uložit a aktualizovat fronty" border="false":::  
 
 Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače PŘÍZe.
 

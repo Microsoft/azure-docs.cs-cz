@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d23b376384262c208fed70306e62634592d0b46b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6073000f2f14f835e2bfbd91b41619101c36b10f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946762"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866841"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hivu prostřednictvím ovladače JDBC v HDInsightu
 
@@ -38,7 +38,7 @@ Parametr `CLUSTERNAME` nahraďte názvem vašeho clusteru HDInsight.
 
 Nebo můžete získat připojení prostřednictvím **uživatelského rozhraní Ambari > > konfiguracích registru > Upřesnit**.
 
-![Získání připojovacího řetězce JDBC prostřednictvím Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png" alt-text="Získání připojovacího řetězce JDBC prostřednictvím Ambari" border="true":::
 
 ### <a name="host-name-in-connection-string"></a>Název hostitele v připojovacím řetězci
 
@@ -74,11 +74,11 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
 3. Spusťte aplikaci SQuirreL SQL. V levé části okna vyberte možnost **ovladače**.
 
-    ![Karta ovladače na levé straně okna](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png" alt-text="Karta ovladače na levé straně okna" border="true":::
 
 4. Z ikon v horní části dialogového okna **ovladače** vyberte **+** ikonu pro vytvoření ovladače.
 
-    ![SQuirreL – ikona ovladačů aplikace SQL](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png" alt-text="SQuirreL – ikona ovladačů aplikace SQL" border="true":::
 
 5. V dialogovém okně Přidat ovladač přidejte následující informace:
 
@@ -89,13 +89,13 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
     |Cesta k nadbytečné třídě|Pomocí tlačítka **Přidat** přidejte všechny soubory jar stažené dříve.|
     |Název třídy|org. Apache. podregistr. JDBC. HiveDriver|
 
-   ![Dialog Přidat ovladač s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png" alt-text="Dialog Přidat ovladač s parametry" border="true":::
 
    Kliknutím na **tlačítko OK** tato nastavení uložte.
 
 6. Na levé straně okna SQuirreL SQL vyberte **aliasy**. Pak vyberte **+** ikonu pro vytvoření aliasu připojení.
 
-    ![Dialog SQuirreL SQL přidat nový alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png" alt-text="Dialog SQuirreL SQL přidat nový alias" border="true":::
 
 7. V dialogovém okně **Přidat alias** použijte následující hodnoty:
 
@@ -107,7 +107,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
     |Uživatelské jméno|Název přihlašovacího účtu clusteru pro cluster HDInsight. Výchozí hodnota je **admin (správce**).|
     |Heslo|Heslo pro přihlašovací účet clusteru|
 
-    ![Dialog Přidat alias s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png" alt-text="Dialog Přidat alias s parametry" border="true":::
 
     > [!IMPORTANT]
     > K ověření, že připojení funguje, použijte tlačítko **test** . Když se připojíte k: zobrazí se dialogové okno pro zobrazení **podregistru v HDInsight** , vyberte **připojit** a proveďte test. Pokud je test úspěšný, zobrazí se dialogové okno **připojení bylo úspěšné** . Pokud dojde k chybě, přečtěte si téma [Poradce při potížích](#troubleshooting).
@@ -116,7 +116,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
 8. Z rozevíracího seznamu **připojit k** v horní části SQuirreL SQL vyberte **podregistr v HDInsight**. Po zobrazení výzvy vyberte **připojit**.
 
-    ![Dialogové okno připojení s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png" alt-text="Dialogové okno připojení s parametry" border="true":::
 
 9. Po připojení zadejte následující dotaz do dialogového okna dotazu SQL a pak vyberte ikonu **Spustit** (spuštěná osoba). V oblasti výsledků by se měly zobrazit výsledky dotazu.
 
@@ -124,13 +124,13 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
     select * from hivesampletable limit 10;
     ```
 
-    ![Dialogové okno dotazu SQL, včetně výsledků](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png" alt-text="Dialogové okno dotazu SQL, včetně výsledků" border="true":::
 
 ## <a name="connect-from-an-example-java-application"></a>Připojení z ukázkové aplikace Java
 
 Příklad použití klienta Java k dotazování na podregistr v HDInsight je k dispozici na adrese [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . Podle pokynů v úložišti Sestavte a spusťte ukázku.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Při pokusu o otevření připojení SQL došlo k neočekávané chybě.
 

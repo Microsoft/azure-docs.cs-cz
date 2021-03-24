@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95ee4e5f326dd9b76645d22ff735bc36437c72fb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714948"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870108"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -35,7 +35,19 @@ Doporučená topologie pro typ primárního uzlu vyžaduje prostředky uvedené 
 >[!NOTE]
 > Vlastnost skupiny s jedním umístěním sady škálování virtuálního počítače musí být nastavená na hodnotu true, protože Service Fabric nepodporuje jednu sadu škálování virtuálního počítače, která zahrnuje zóny.
 
- ![Diagram znázorňující architekturu zóny dostupnosti služby Azure Service Fabric.][sf-architecture]
+Diagram znázorňující diagram architektury dostupnosti služby Azure Service Fabric ![ , který zobrazuje architekturu zóny dostupnosti azure Service Fabric.][sf-architecture]
+
+Ukázkový seznam uzlů, který popisuje formáty FD/UD ve zónách pokrývání virtuálních počítačů s možností horizontálního navýšení kapacity
+
+ ![Ukázkový seznam uzlů, který popisuje formáty FD/UD ve zónách pro pokrývání kapacity virtuálních počítačů.][sf-multi-az-nodes]
+
+**Distribuce replik služby mezi zónami**: když je služba nasazená v uzlu NodeType, které jsou pokrývání zón, repliky se umístí, aby se zajistilo, že se budou v samostatných zónách nakládat. To je zajištěno, že doména selhání na uzlech v každém z těchto nodeType je nakonfigurována s informacemi o zóně (tj. FD = FD:/zóna 1/1 atd.). Například: u 5 replik nebo instancí služby bude distribuce 2-2-1 a modul runtime se pokusí zajistit stejnou distribuci v rámci AZs.
+
+**Konfigurace repliky uživatelské služby**: stavové služby uživatelů nasazené u NodeType zóny pro vzájemné dostupnosti by měly být konfigurované pomocí této konfigurace: počet replik s cílem = 9, minimum = 5. Tato konfigurace pomůže službě pracovat i v případě, že jedna zóna přestane fungovat, protože 6 replik bude v ostatních dvou zónách i nadále. Upgrade aplikace v takovém scénáři také projde.
+
+**ReliabilityLevel clusteru**: definuje počet počátečních uzlů v clusteru a také velikost repliky systémových služeb. Vzhledem k tomu, že nastavení zóny pro různé dostupnosti má větší počet uzlů, které jsou rozdělené mezi zóny, aby bylo možné zajistit odolnost zóny, vyšší hodnota spolehlivosti zajistí, že uzel bude mít víc uzlů a repliky systémových služeb a jsou rovnoměrně distribuované mezi zónami, takže v případě selhání zóny zůstane cluster a systémové služby neovlivněné. "ReliabilityLevel = Platinum" zajistí, aby se v každé zóně rozšířily 9 počátečních uzlů do zón se 3 semeny v každé zóně, takže to je doporučení pro nastavení zóny vzájemné dostupnosti.
+
+**Scénář snížení zóny**: když dojde k výpadku zóny, budou se všechny uzly v této zóně zobrazovat jako nefunkční. Repliky služby na těchto uzlech budou taky mimo provoz. Vzhledem k tomu, že existují repliky v ostatních zónách, bude služba nadále odpovídat primárním replikám, které přestanou fungovat v zónách, které fungují. Služby se zobrazí ve stavu upozornění, protože počet cílových replik ještě není dosažený a vzhledem k tomu, že počet virtuálních počítačů je stále více než minimální Cílová velikost repliky. Následně Service Fabric Nástroj pro vyrovnávání zatížení zavede repliky v pracovních zónách tak, aby odpovídaly nakonfigurovanému počtu cílových replik. V tomto okamžiku se služby zobrazí v pořádku. Když zóna, která byla mimo provoz, se zavede na zálohování, budou všechny repliky služby znovu rozloženy napříč všemi zónami.
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 ### <a name="public-ip-and-load-balancer-resource"></a>Prostředek veřejné IP adresy a Load Balancer
@@ -345,7 +357,7 @@ Pokud chcete povolit zóny v sadě škálování virtuálního počítače, mus�
 
 * První hodnotou je vlastnost **Zones** , která určuje zóny dostupnosti přítomná v sadě škálování virtuálního počítače.
 * Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true. **Sada škálování rozložené přes 3 AZ může škálovat virtuální počítače až 300 i s "singlePlacementGroup = true".**
-* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny. Tato hodnota by měla být true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Cluster s nevyváženou distribucí virtuálních počítačů mezi zónami je méně pravděpodobný, aby se zóna scenatio dolů. Přečtěte si o [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny. Tato hodnota by měla být "true". Tím se zajistí, že distribuce virtuálních počítačů napříč zónami nebudou vyvážené, takže pokud dojde k výpadku jedné ze zón, mají ostatní dvě zóny dostatek virtuálních počítačů, aby se zajistilo, že cluster bude nadále běžet bez přerušení. Cluster s nevyváženou distribucí virtuálních počítačů nemusí zůstat v situaci, kdy by tato zóna mohla mít většinu virtuálních počítačů. Nevyvážená distribuce virtuálních počítačů mezi zónami taky vede k problémům souvisejícím s umístěním služby & aktualizace infrastruktury se zablokují. Přečtěte si o [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Přepsání FaultDomain a UpgradeDomain není nutné konfigurovat.
 
 ```json
@@ -363,7 +375,7 @@ Pokud chcete povolit zóny v sadě škálování virtuálního počítače, mus�
 ```
 
 >[!NOTE]
-> * **Clustery SF by měly mít aspoň jeden primární typ nodeType. DurabilityLevel primárních nodeType by měly být stříbrné nebo vyšší.**
+> * **Clustery Service Fabric musí mít minimálně jeden primární typ nodeType. DurabilityLevel primárních nodeType by měly být stříbrné nebo vyšší.**
 > * Skupina AZ pokrývá virtuální počítač Scale by měla být nakonfigurovaná s minimálně 3 zónami dostupnosti bez ohledu na durabilityLevel.
 > * AZ pokrývání sady škálování virtuálních počítačů s trvanlivostí stříbra (nebo vyšší) by měl mít minimálně 15 virtuálních počítačů.
 > * AZ pokrývání škály virtuálních počítačů s bronzovou trvanlivostí by měl mít minimálně 6 virtuálních počítačů.
@@ -373,13 +385,13 @@ Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
 
 * První hodnota je **multipleAvailabilityZones** , která by měla být pro NodeType nastavena na hodnotu true.
 * Druhá hodnota je **sfZonalUpgradeMode** a je volitelná. Tuto vlastnost nelze upravit, pokud je v clusteru již přítomen typ NodeType s více AZ 's.
-      Vlastnost řídí logické seskupení virtuálních počítačů v upgradovacích doménách.
-          Pokud je hodnota nastavena na Parallel (paralelní): virtuální počítače pod uzlem NodeType budou seskupeny na UDs, ignorují informace o zóně v 5 UDs.
-          Pokud je hodnota vynechána nebo nastavena na "hierarchické": virtuální počítače budou seskupeny tak, aby odrážely rozdělení v rámci až 15 UDs. Každá ze 3 zón bude mít 5 UDs.
-          Tato vlastnost definuje pouze chování upgradu pro ServiceFabric aplikace a upgrady kódu. Základní upgrady sady škálování virtuálního počítače budou pořád paralelně ve všech AZ 's.
-      Tato vlastnost nebude mít žádný vliv na distribuci UD pro typy uzlů, u kterých není povoleno více zón.
+  Vlastnost řídí logické seskupení virtuálních počítačů v upgradovacích doménách.
+  **Pokud je hodnota nastavena na Parallel (paralelní):** Virtuální počítače pod uzlem NodeType budou seskupeny na UDs ignorování informací o zóně v 5 UDs. Výsledkem bude, že se UD0 napříč všemi zónami, aby se Upgradoval ve stejnou dobu. Tento režim nasazení je rychlejší pro upgrady, ale nedoporučuje se, protože se jedná o pravidla SDP, ve kterých je uvedeno, že by se aktualizace měly používat jenom v jedné zóně.
+  **Pokud je hodnota vynechána nebo nastavena na "hierarchické":** Virtuální počítače se seskupí tak, aby odrážely rozdělení do více než 15 UDs. Každá ze 3 zón bude mít 5 UDs. Tím se zajistí, že se zóna aktualizace směřuje do další zóny až po dokončení 5 UDs v první zóně, pomalu přes 15 UDs (3 zóny, 5 UDs), což je bezpečnější z perspektivy clusteru a aplikace uživatele.
+  Tato vlastnost definuje pouze chování upgradu pro ServiceFabric aplikace a upgrady kódu. Základní upgrady sady škálování virtuálního počítače budou pořád paralelně ve všech AZ 's.
+  Tato vlastnost nebude mít žádný vliv na distribuci UD pro typy uzlů, u kterých není povoleno více zón.
 * Třetí hodnota je **vmssZonalUpgradeMode = Parallel**. Jedná se o *povinnou* vlastnost, která se má nakonfigurovat v clusteru, pokud je přidaný typ NodeType s více AZs. Tato vlastnost definuje režim upgradu pro aktualizace sady škálování virtuálních počítačů, ke kterým dojde paralelně ve všech AZ 's in.
-      Tato vlastnost se teď dá nastavit jenom paralelně.
+  Tato vlastnost se teď dá nastavit jenom paralelně.
 * ApiVersion prostředku clusteru Service Fabric by měl být "2020-12-01-Preview" nebo vyšší.
 * Verze kódu clusteru by měla být "7.2.445" nebo vyšší.
 
@@ -408,7 +420,7 @@ Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
 >[!NOTE]
 > * Veřejné IP adresy a Load Balancer prostředky by měly používat standardní SKU, jak je popsáno výše v článku.
 > * vlastnost "multipleAvailabilityZones" v nodeType lze definovat pouze v době vytváření nodeType a nelze ji změnit později. Proto se pomocí této vlastnosti nedají konfigurovat existující nodeType.
-> * Pokud je hodnota "sfZonalUpgradeMode" vynechána nebo nastavena na "hierarchické", nasazení clusteru a aplikací bude pomalejší, protože v clusteru jsou k dispozici další domény upgradu. Je důležité správně upravit časový limit zásad upgradu, aby zahrnoval dobu trvání upgradu pro 15 domén upgradu.
+> * Pokud je hodnota "sfZonalUpgradeMode" vynechána nebo nastavena na "hierarchické", nasazení clusteru a aplikací bude pomalejší, protože v clusteru jsou k dispozici další domény upgradu. Je důležité správně upravit časový limit zásad upgradu, aby zahrnoval dobu trvání upgradu pro 15 domén upgradu. Zásady upgradu pro aplikaci i cluster by se měly aktualizovat, aby se zajistilo, že nasazení nepřekračuje časový limit nasazení 12hours prostředků Azure Serbice. To znamená, že nasazení by nemělo mít více než 12hours pro 15UDs, tj. nemělo by to trvat více než 40 min/UD.
 > * Nastavte cluster **reliabilityLevel = Platinum** , aby se zajistilo, že cluster bude zachován v rámci scénáře s jednou zónou.
 
 >[!NOTE]
@@ -426,3 +438,4 @@ V [tomto](./service-fabric-scale-up-primary-node-type.md) článku se dozvíte o
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
+[sf-multi-az-nodes]: ./media/service-fabric-cross-availability-zones/sf-multi-az-nodes.png

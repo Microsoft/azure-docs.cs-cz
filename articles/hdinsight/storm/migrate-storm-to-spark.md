@@ -4,12 +4,12 @@ description: Rozdíly a tok migrace pro migraci Apache Storm úloh do streamová
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944781"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868762"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrace Azure HDInsight 3,6 Apache Storm do HDInsight 4,0 Apache Spark
 
@@ -25,8 +25,7 @@ Pokud chcete migrovat z Apache Storm ve službě HDInsight 3,6 máte několik mo
 
 Tento dokument poskytuje návod pro migraci z Apache Storm na streamování Spark a strukturované streamování Sparku.
 
-> [!div class="mx-imgBorder"]
-> ![Cesta pro migraci ve službě HDInsight](./media/migrate-storm-to-spark/storm-migration-path.png)
+:::image type="content" source="./media/migrate-storm-to-spark/storm-migration-path.png" alt-text="Cesta pro migraci ve službě HDInsight" border="false":::
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Porovnání mezi Apache Storm a datovým proudem Spark, strukturované streamování Sparku
 
@@ -36,7 +35,7 @@ Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zpr�
 |---|---|---|---|
 |**Záruka zpracování událostí**|Aspoň jednou <br> Právě jednou (Trident) |[Právě jednou](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Právě jednou](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Model zpracování**|Reálný čas <br> Micro Batch (Trident) |Mikrodávka |Mikrodávka |
-|**Podpora času události**|[Ano](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Ano](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Podpora času události**|[Ano](https://storm.apache.org/releases/2.0.0/Windowing.html)|Ne|[Ano](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Jazyky**|Java atd.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Streamování Sparku vs strukturované streamování Sparku
@@ -47,8 +46,7 @@ Strukturované streamování Sparku nahrazuje Spark streamování (DStreams). St
 
 Operace vyplavování poskytuje model, který zpracovává každou jednotlivou událost. To znamená, že všechny příchozí záznamy budou zpracovány ihned po doručení. Před odesláním této dávky ke zpracování musí aplikace streamování Sparku počkat na zlomek sekund a shromáždit každou mikrodávku událostí. Naproti tomu aplikace řízená událostmi zpracovává každou událost okamžitě. Latence streamování Sparku obvykle trvá několik sekund. Výhody mikrodávkového přístupu jsou efektivnější zpracování dat a jednodušší agregační výpočty.
 
-> [!div class="mx-imgBorder"]
-> ![streamování a zpracování mikrodávkování](./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png)
+:::image type="content" source="./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png" alt-text="streamování a zpracování mikrodávkování" border="false":::
 
 ## <a name="storm-architecture-and-components"></a>Architektura a součásti pro zaplavení
 
@@ -59,19 +57,17 @@ Topologie Storm se skládají z několika součástí, které jsou uspořádány
 |Spout|Přinese data do topologie. Vysílají do topologie jeden nebo více datových proudů.|
 |Bolt|Spotřebovává datové proudy emitované z spoutů nebo jiného šrouby. Bolty mohou volitelně vysílat do topologie datové streamy. Bolty také odpovídají za zápis dat do externích služeb nebo úložiště, například HDFS, Kafka nebo HBase.|
 
-> [!div class="mx-imgBorder"]
-> ![interakce součástí s více prvky](./media/migrate-storm-to-spark/apache-storm-components.png)
+:::image type="content" source="./media/migrate-storm-to-spark/apache-storm-components.png" alt-text="interakce součástí s více prvky" border="false":::
 
 Přetvoření se skládá z následujících tří démonů, které udržují cluster pro zaplavení fungovat.
 
-|Proces |Description |
+|Proces |Popis |
 |---|---|
 |Nimbus|Podobně jako Hadoop JobTracker je zodpovědný za distribuci kódu v rámci clusteru a přiřazování úloh do počítačů a sledování selhání.|
 |Zookeeper|Používá se pro koordinaci clusteru.|
 |Supervisor|Čeká na práci přiřazenou k počítači a spustí a zastaví pracovní procesy na základě direktiv z Nimbus. Každý pracovní proces spustí podmnožinu topologie. Tady se spustí logika uživatele (Spoutů a šroub) uživatele.|
 
-> [!div class="mx-imgBorder"]
-> ![démoni Nimbus, Zookeeper a vedoucího procesu](./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png)
+:::image type="content" source="./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png" alt-text="démoni Nimbus, Zookeeper a vedoucího procesu" border="false":::
 
 ## <a name="spark-streaming-architecture-and-components"></a>Architektura a součásti streamování Sparku
 
@@ -83,15 +79,13 @@ Následující kroky shrnují, jak komponenty spolupracují v Spark streaming (D
 * Bloky dat jsou replikovány do jiných prováděcích modulů.
 * Zpracovaná data se pak uloží do cílového úložiště dat.
 
-> [!div class="mx-imgBorder"]
-> ![cesta streamování Sparku na výstup](./media/migrate-storm-to-spark/spark-streaming-to-output.png)
+:::image type="content" source="./media/migrate-storm-to-spark/spark-streaming-to-output.png" alt-text="cesta streamování Sparku na výstup" border="false":::
 
 ## <a name="spark-streaming-dstream-workflow"></a>Pracovní postup Spark streaming (DStream)
 
 Po uplynutí každého intervalu dávky bude vytvořen nový RDD, který obsahuje všechna data z tohoto intervalu. Souvislé sady RDD jsou shromažďovány do DStream. Pokud je například interval dávky jedna sekunda, DStream vygeneruje dávku každou sekundu obsahující jednu RDD, která obsahuje všechna data ingestovaná během této sekundy. Při zpracování DStream se událost teploty zobrazuje v jedné z těchto dávek. Aplikace pro streamování Spark zpracovává dávky, které obsahují události a nakonec fungují s daty uloženými v jednotlivých RDD.
 
-> [!div class="mx-imgBorder"]
-> ![dávkové zpracování Spark streamování](./media/migrate-storm-to-spark/spark-streaming-batches.png)
+:::image type="content" source="./media/migrate-storm-to-spark/spark-streaming-batches.png" alt-text="dávkové zpracování Spark streamování" border="false":::
 
 Podrobnosti o různých transformacích, které jsou k dispozici u Spark streamování, najdete v tématu [transformace v DStreams](https://spark.apache.org/docs/latest/streaming-programming-guide.html#transformations-on-dstreams).
 
@@ -105,11 +99,9 @@ Výstup dotazu vrací *tabulku výsledků*, která obsahuje výsledky dotazu. Da
 
 Časování, kdy se data zpracovávají ze vstupní tabulky, řídí interval triggeru. Ve výchozím nastavení je interval triggeru nula, takže strukturované streamování se pokusí data zpracovat ihned po doručení. V praxi to znamená, že jakmile strukturované streamování dokončí zpracování předchozího dotazu, spustí se jiné zpracování na základě nově přijímaných dat. Aktivační událost se dá nakonfigurovat tak, aby se spouštěla v intervalu, takže streamovaná data se zpracují v dávkách založených na čase.
 
-> [!div class="mx-imgBorder"]
-> ![zpracování dat ve strukturovaném streamování](./media/migrate-storm-to-spark/structured-streaming-data-processing.png)
+:::image type="content" source="./media/migrate-storm-to-spark/structured-streaming-data-processing.png" alt-text="zpracování dat ve strukturovaném streamování" border="false":::
 
-> [!div class="mx-imgBorder"]
-> ![programovací model pro strukturované streamování](./media/migrate-storm-to-spark/structured-streaming-model.png)
+:::image type="content" source="./media/migrate-storm-to-spark/structured-streaming-model.png" alt-text="programovací model pro strukturované streamování" border="false":::
 
 ## <a name="general-migration-flow"></a>Obecný tok migrace
 
@@ -119,30 +111,25 @@ Doporučený postup migrace z procesu naplnění na Spark předpokládá násled
 * Kafka a zaplavení se nasazují ve stejné virtuální síti.
 * Data zpracovaná po zaplavení se zapisují do datové jímky, jako je například Azure Storage nebo Azure Data Lake Storage Gen2.
 
-    > [!div class="mx-imgBorder"]
-    > ![Diagram předpokládaného aktuálního prostředí](./media/migrate-storm-to-spark/presumed-current-environment.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/presumed-current-environment.png" alt-text="Diagram předpokládaného aktuálního prostředí"  border="false":::
 
 Chcete-li migrovat aplikaci ze systému na jedno z rozhraní API pro streamování Spark, postupujte následovně:
 
 1. **Nasaďte nový cluster.** Nasaďte nový cluster HDInsight 4,0 Spark ve stejné virtuální síti a nasaďte na něj aplikaci pro streamování Sparku nebo strukturované streamování Sparku a důkladně ho otestujte.
 
-    > [!div class="mx-imgBorder"]
-    > ![nové nasazení Sparku ve službě HDInsight](./media/migrate-storm-to-spark/new-spark-deployment.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/new-spark-deployment.png" alt-text="nové nasazení Sparku ve službě HDInsight" border="false":::
 
 1. **V původním clusteru s více vlákny zastavte nenáročné.** V existujícím vlákně zastavte zpracování dat ze zdroje dat streamování a počkejte na dokončení zápisu dat do cílové jímky.
 
-    > [!div class="mx-imgBorder"]
-    > ![zastavit zpracování v aktuálním clusteru](./media/migrate-storm-to-spark/stop-consuming-current-cluster.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/stop-consuming-current-cluster.png" alt-text="zastavit zpracování v aktuálním clusteru" border="false":::
 
 1. **Začněte spotřebovávat na novém clusteru Spark.** Spustí streamovaná data z nově nasazeného clusteru HDInsight 4,0 Spark. V tuto chvíli je proces převzatý z nejnovějšího posunu Kafka.
 
-    > [!div class="mx-imgBorder"]
-    > ![začít spotřebovávat na novém clusteru](./media/migrate-storm-to-spark/start-consuming-new-cluster.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/start-consuming-new-cluster.png" alt-text="začít spotřebovávat na novém clusteru" border="false":::
 
 1. **Odeberte původní cluster podle potřeby.** Jakmile je přepínač dokončen a funguje správně, odeberte starý cluster HDInsight 3,6 s tím, jak je potřeba.
 
-    > [!div class="mx-imgBorder"]
-    > ![Odeberte staré clustery HDInsight podle potřeby.](./media/migrate-storm-to-spark/remove-old-clusters1.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/remove-old-clusters1.png" alt-text="Odeberte staré clustery HDInsight podle potřeby." border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

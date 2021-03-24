@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 7da10fbdff0b6771fcffb6cc303d5ab183df190a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1ecfd58e961e70182bfc2e0cc8eaf77f5053eb77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948619"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879708"
 ---
 [Referenční dokumentace](/dotnet/api/overview/azure/cognitiveservices/management)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -28,7 +28,7 @@ ms.locfileid: "98948619"
 
 ## <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-Vytvořte novou aplikaci .NET Core. V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `azure-management-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*. 
+Vytvořte novou aplikaci .NET Core. V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `azure-management-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program. cs*. 
 
 ```console
 dotnet new console -n azure-management-quickstart
@@ -64,13 +64,13 @@ Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio,
 
 ### <a name="import-libraries"></a>Import knihoven
 
-Otevřete *program.cs* a na `using` začátek souboru přidejte následující příkazy:
+Otevřete *program. cs* a na `using` začátek souboru přidejte následující příkazy:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_using)]
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Do kořenového adresáře *program.cs* přidejte následující pole a naplňte jejich hodnoty pomocí instančního objektu, který jste vytvořili, a informací o účtu Azure.
+Přidejte následující pole do kořenové složky *program. cs* a naplňte jejich hodnoty pomocí instančního objektu, který jste vytvořili, a informací o účtu Azure.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_constants)]
 
@@ -122,7 +122,9 @@ dotnet run
 
 ## <a name="see-also"></a>Viz také
 
-* [Referenční dokumentace k sadě Azure Management SDK](/dotnet/api/overview/azure/cognitiveservices/management)
-* [Co je Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Ověřování požadavků do Azure Cognitive Services](../../authentication.md)
-* [Vytvoření nového prostředku pomocí webu Azure Portal](../../cognitive-services-apis-create-account.md)
+* Informace o tom, jak bezpečně pracovat s Cognitive Services, najdete v tématu **[ověření požadavků do Azure Cognitive Services](../../authentication.md)** .
+* V tématu **[co je Azure Cognitive Services?](../../what-are-cognitive-services.md)** získáte seznam různých kategorií v rámci Cognitive Services.
+* Seznam přirozených jazyků, které Cognitive Services podporuje, najdete v článku **[Podpora přirozeného jazyka](../../language-support.md)** .
+* Pokud chcete pochopit, jak používat Cognitive Services on-Prem, přečtěte si téma **[použití Cognitive Services jako kontejnerů](../../cognitive-services-container-support.md)** .
+* Odhad nákladů na používání Cognitive Services najdete v tématu **[plánování a Správa nákladů na Cognitive Services](../../plan-manage-costs.md)** .
+* Další podrobnosti o sadě Management SDK najdete v tématu **[Referenční dokumentace k sadě Cognitive Services Management SDK](/dotnet/api/overview/azure/cognitiveservices/management)** .

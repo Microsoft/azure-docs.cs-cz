@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98625195"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889585"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a protokolů ve službě IoT Hub
 
@@ -219,7 +219,7 @@ Nastavení výstrah metrik:
 
 1. Nejdřív nakonfigurujte podmínku, na které se výstraha aktivuje.
 
-    1. V části **Podmínka** vyberte **vybrat podmínku**. V podokně **Konfigurace logiky signálu** do vyhledávacího pole zadejte "telemetrie" a vyberte **odeslané zprávy telemetrie**.
+    1. V části **Podmínka** vyberte **Přidat podmínku**. V podokně **Konfigurace logiky signálu** do vyhledávacího pole zadejte "telemetrie" a vyberte **odeslané zprávy telemetrie**.
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Snímek obrazovky znázorňující výběr metriky":::
 
@@ -245,7 +245,7 @@ Nastavení výstrah metrik:
 
 1. Nyní nakonfigurujte akci pro výstrahu.
 
-    1. Zpět v podokně **vytvořit pravidlo výstrahy** vyberte v části **Akce** možnost **Vybrat skupinu akcí**. V podokně **Vyberte skupinu akcí, která se má připojit k tomuto pravidlu výstrahy** vyberte možnost **vytvořit skupinu akcí**.
+    1. Zpět v podokně **vytvořit pravidlo upozornění** v části **Akce** vyberte **Přidat skupiny akcí**. V podokně **Vyberte skupinu akcí, která se má připojit k tomuto pravidlu výstrahy** vyberte možnost **vytvořit skupinu akcí**.
 
     1. Na kartě **základy** v podokně **vytvořit skupinu akcí** zadejte název a zobrazovaný název skupiny akcí.
 
@@ -313,7 +313,7 @@ Pomocí těchto nastavení se aktivuje výstraha a dostanete e-mailové oznámen
 
 ## <a name="run-the-simulated-device-app"></a>Spuštění aplikace simulovaného zařízení
 
-V části [nastavení prostředků](#set-up-resources) jste zaregistrovali identitu zařízení, která se má použít k simulaci použití zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-Cloud do IoT Hub, nakonfigurujte ho tak, aby odesílal tyto zprávy do služby IoT Hub, a pak ho spustí. 
+V části [nastavení prostředků](#set-up-resources) jste zaregistrovali identitu zařízení, která se má použít k simulaci použití zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-Cloud do IoT Hub, nakonfigurujte ho tak, aby odesílal tyto zprávy do služby IoT Hub, a pak ho spustí.
 
 > [!IMPORTANT]
 >

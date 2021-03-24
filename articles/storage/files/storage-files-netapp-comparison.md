@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 9c6e57d45cb5647053283da687659cc5ff0217e9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 8389ce008531e8bf295b2f863dad1ab2c3eb825c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802178"
+ms.locfileid: "104870649"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Porovnání souborů a Azure NetApp Files Azure
 
@@ -26,7 +26,7 @@ Většina úloh, které vyžadují cloudové úložiště souborů, se dobře ho
 | Kategorie | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
 | Popis | Služba [soubory Azure](https://azure.microsoft.com/services/storage/files/) je plně spravovaná, vysoce dostupná služba a je optimalizovaná pro úlohy s náhodným přístupem s aktualizacemi místních dat.<br><br> Služba soubory Azure je postavená na stejné platformě Azure Storage jako jiné služby, jako jsou objekty blob Azure. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) je plně spravovaná, vysoce dostupná služba na podnikové úrovni, která dokáže zvládnout nejnáročnější a vysoce výkonné úlohy s nízkou latencí, které vyžadují pokročilé možnosti správy dat. Umožňuje migraci úloh, které se považují za "un-migrovat" bez.<br><br>  ANF je postavená na holých počítačích NetApp s operačním systémem ONTAP, který běží v datovém centru Azure pro konzistentní prostředí Azure a místní jako výkon. |
-| Protokoly | Premium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (Preview)</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> Další informace najdete v tématu [dostupné protokoly sdílení souborů](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Všechny úrovně<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Přístup přes duální protokol (NFSv3/SMB)</li></ul><br> Další informace najdete v tématu Postup vytvoření svazků [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes), [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)nebo [duálního protokolu](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) . |
+| Protokoly | Premium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (Preview)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> Další informace najdete v tématu [dostupné protokoly sdílení souborů](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Všechny úrovně<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Přístup přes duální protokol (NFSv3/SMB)</li></ul><br> Další informace najdete v tématu Postup vytvoření svazků [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes), [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)nebo [duálního protokolu](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) . |
 | Dostupnost oblasti | Premium<br><ul><li>30 a oblastí</li></ul><br>Standard<br><ul><li>Všechny oblasti</li></ul><br> Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage). | Všechny úrovně<br><ul><li>25 a oblasti</li></ul><br> Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage). |
 | Redundance | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> Další informace najdete v tématu [redundance](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy). | Všechny úrovně<br><ul><li>Integrované místní HA</li><li>[Replikace mezi oblastmi](https://docs.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction)</li></ul> |
 | Service-Level smlouva (SLA)<br><br> Všimněte si, že SLA pro soubory a Azure NetApp Files Azure se počítá jinak. | [SLA pro soubory Azure](https://azure.microsoft.com/support/legal/sla/storage/) | [SLA pro Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp) |  

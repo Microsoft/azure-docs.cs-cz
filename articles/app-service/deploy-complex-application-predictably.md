@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101095842"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951466"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Prediktivní zřizování a nasazování mikroslužeb v Azure
 V tomto kurzu se dozvíte, jak zřídit a nasadit aplikaci skládající se z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [Azure App Service](https://azure.microsoft.com/services/app-service/) jako jediná jednotka a předvídatelným způsobem pomocí šablon skupin prostředků JSON a skriptů prostředí PowerShell. 
@@ -45,7 +45,7 @@ Další informace najdete v tématu [použití Azure PowerShell s Azure Resource
 Tento [Nástroj pro náhled](https://resources.azure.com) umožňuje prozkoumat definice JSON všech skupin prostředků v rámci vašeho předplatného a jednotlivých prostředků. V nástroji můžete upravit definice JSON prostředku, odstranit celou hierarchii prostředků a vytvořit nové prostředky.  Informace, které jsou v tomto nástroji snadno dostupné, jsou velmi užitečné pro vytváření šablon, protože vám ukáže, jaké vlastnosti je potřeba nastavit pro konkrétní typ prostředku, správné hodnoty atd. Můžete dokonce vytvořit skupinu prostředků na webu [Azure Portal](https://portal.azure.com/)a pak zkontrolovat definice JSON v nástroji Průzkumník, které vám pomůžou templatize skupiny prostředků.
 
 ### <a name="deploy-to-azure-button"></a>Tlačítko pro nasazení do Azure
-Pokud používáte GitHub pro správu zdrojového kódu, můžete do souboru READme přidat [tlačítko nasadit do Azure](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) . MD, který umožňuje uživatelské rozhraní nasazení na klíč do Azure. I když to můžete udělat u jakékoli jednoduché aplikace, můžete to roztáhnout tak, aby bylo možné nasadit celou skupinu prostředků vložením azuredeploy.jsdo souboru v kořenovém adresáři úložiště. Tento soubor JSON, který obsahuje šablonu skupiny prostředků, se použije k vytvoření skupiny prostředků pomocí tlačítka nasadit do Azure. Příklad najdete v ukázce [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) , který budete používat v tomto kurzu.
+Pokud používáte GitHub pro správu zdrojového kódu, můžete do souboru READme přidat [tlačítko nasadit do Azure](../azure-resource-manager/templates/deploy-to-azure-button.md) . MD, který umožňuje uživatelské rozhraní nasazení na klíč do Azure. I když to můžete udělat u jakékoli jednoduché aplikace, můžete to roztáhnout tak, aby bylo možné nasadit celou skupinu prostředků vložením azuredeploy.jsdo souboru v kořenovém adresáři úložiště. Tento soubor JSON, který obsahuje šablonu skupiny prostředků, se použije k vytvoření skupiny prostředků pomocí tlačítka nasadit do Azure. Příklad najdete v ukázce [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) , který budete používat v tomto kurzu.
 
 ## <a name="get-the-sample-resource-group-template"></a>Získat ukázkovou šablonu skupiny prostředků
 Teď to máme k tomu přímo.

@@ -3,12 +3,12 @@ title: Sady Azure Event Grid SDK
 description: Popisuje sady SDK pro Azure Event Grid. Tyto sady SDK poskytují správu, publikování a spotřebu.
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: c5b79f7cb7ae0112e2dacd077289786fc7b5c956
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aa53aaa89a703bb88df6611cdb0dd38341248a55
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516750"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955920"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid sady SDK pro správu a publikování
 
@@ -30,13 +30,13 @@ Sady Management SDK umožňují vytvářet, aktualizovat a odstraňovat témata 
 Sady SDK roviny dat umožňují publikovat události do témat tím, že se postará o ověřování, vytváření událostí a asynchronní odeslání do určeného koncového bodu. Umožňují také využívat události první strany. V současné době jsou k dispozici následující sady SDK:
 
 | Programovací jazyk | Sada SDK | 
-| -------------------- | ---------- | ---------- | 
+| -------------------- | ---------- | 
 | .NET | Stabilní sada SDK: [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>Preview SDK: [Azure. Messaging. EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
 | Java | Stabilní sada SDK: [Azure – eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>Preview SDK: [Azure-zasílání zpráv – eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
 | Python | [Azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) (podívejte se na nejnovější stabilní a předběžné verze předprodejních verzí na stránce **Historie verzí** ) |
 | JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (Chcete-li zobrazit nejnovější stabilní balíčky a balíčky beta verzí, přepněte na kartu **verze** ). | 
-| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
-| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
+| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) |
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) |
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 419b4939c19ee03651a406db44244897e17087f2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98938954"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865464"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Přehled Azure Storage v HDInsight
 
@@ -24,7 +24,7 @@ Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran fi
 
 Následující diagram nabízí abstraktní zobrazení architektury HDInsight Azure Storage:
 
-![HDInsight Storage architektura](./media/overview-azure-storage/storage-architecture.png "Architektura HDInsight Storage")
+:::image type="content" source="./media/overview-azure-storage/storage-architecture.png" alt-text="Architektura HDInsight Storage" border="false":::
 
 Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. Tento systém souborů je přístupný pomocí plně kvalifikovaného identifikátoru URI, například:
 
@@ -40,7 +40,7 @@ Při použití účtu Azure Storage s clustery HDInsight Vezměte v úvahu násl
 
 * **Veřejné kontejnery nebo veřejné objekty BLOB v účtech úložiště, které nejsou připojené ke clusteru:** K objektům blob v kontejnerech máte oprávnění jen pro čtení.
   
-  > [!NOTE]  
+  > [!NOTE]
   > Veřejné kontejnery umožňují získat seznam všech objektů blob, které jsou v daném kontejneru k dispozici, a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace najdete v tématu [Správa anonymního přístupu pro čtení do kontejnerů a objektů BLOB](../storage/blobs/anonymous-read-access-configure.md).
 
 * **Privátní kontejnery v účtech úložiště, které nejsou připojené ke clusteru:** Nemůžete získat přístup k objektům blob v kontejnerech, pokud nedefinujete účet úložiště při odeslání úloh WebHCat.

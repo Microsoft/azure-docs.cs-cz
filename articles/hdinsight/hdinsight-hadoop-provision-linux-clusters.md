@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741833"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863407"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
 
@@ -42,7 +42,7 @@ Tento článek vás provede instalací v [Azure Portal](https://portal.azure.com
 
 ## <a name="basics"></a>Základy
 
-![vlastní rychlé možnosti vytvoření HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png" alt-text="vlastní rychlé možnosti vytvoření HDInsight":::
 
 ### <a name="project-details"></a>Podrobnosti o projektu
 
@@ -107,7 +107,7 @@ Uživatelské jméno SSH má následující omezení:
 
 ## <a name="storage"></a>Storage
 
-![Nastavení úložiště clusteru: koncové body kompatibilní se HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png" alt-text="Nastavení úložiště clusteru: koncové body kompatibilní se HDFS":::
 
 I když místní instalace systému Hadoop používá pro úložiště v clusteru systém souborů DFS (Distributed File System) Hadoop (HDFS), v cloudu použijete koncové body úložiště připojené ke clusteru. Použití cloudového úložiště znamená, že můžete bezpečně odstranit clustery HDInsight používané pro výpočty a přitom zachovat data.
 
@@ -165,7 +165,7 @@ Ambari se používá k monitorování clusterů HDInsight, provádění změn ko
 
 ## <a name="security--networking"></a>Zabezpečení a sítě
 
-![možnosti vytvoření HDInsight výběr balíčku podnikového zabezpečení](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png" alt-text="možnosti vytvoření HDInsight výběr balíčku podnikového zabezpečení":::
 
 ### <a name="enterprise-security-package"></a>Balíček podnikového zabezpečení
 
@@ -201,7 +201,7 @@ Další informace najdete v tématu [spravované identity ve službě Azure HDIn
 
 ## <a name="configuration--pricing"></a>Konfigurace a ceny
 
-![HDInsight Volba velikosti uzlu](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png" alt-text="HDInsight Volba velikosti uzlu":::
 
 Účtuje se vám využití uzlu, dokud cluster existuje. Fakturace začne při vytvoření clusteru a zastaví se při jeho odstranění. Clustery nemůžou být nepřidělené nebo se zablokují.
 
@@ -211,10 +211,10 @@ Každý typ clusteru má svůj vlastní počet uzlů, terminologii pro uzly a v�
 
 | Typ | Uzly | Diagram |
 | --- | --- | --- |
-| Hadoop |Hlavní uzel (2), pracovní uzel (1 +) |![Uzly clusteru HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| HBase |Hlavní server (2), server oblasti (1 +), hlavní/ZooKeeper uzel (3) |![Instalace typu clusteru HDInsight HBA](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus uzel (2), server pro řízení (1 +), ZooKeeper uzel (3) |![Nastavení typu clusteru HDInsight v HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Hlavní uzel (2), pracovní uzel (1 +), uzel ZooKeeper (3) (volné pro velikost virtuálního počítače a1 ZooKeeper) |![Nastavení typu clusteru HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Hadoop |Hlavní uzel (2), pracovní uzel (1 +) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png" alt-text="Uzly clusteru HDInsight Hadoop" border="false"::: |
+| HBase |Hlavní server (2), server oblasti (1 +), hlavní/ZooKeeper uzel (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png" alt-text="Instalace typu clusteru HDInsight HBA" border="false"::: |
+| Storm |Nimbus uzel (2), server pro řízení (1 +), ZooKeeper uzel (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png" alt-text="Nastavení typu clusteru HDInsight v HDInsight" border="false"::: |
+| Spark |Hlavní uzel (2), pracovní uzel (1 +), uzel ZooKeeper (3) (volné pro velikost virtuálního počítače a1 ZooKeeper) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png" alt-text="Nastavení typu clusteru HDInsight Spark" border="false"::: |
 
 Další informace najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](hdinsight-supported-node-configuration.md) v tématu Co jsou komponenty Hadoop a verze v HDInsight?.
 
@@ -222,7 +222,7 @@ Náklady na clustery HDInsight se určují podle počtu uzlů a velikosti virtu�
 
 Různé typy clusterů mají různé typy uzlů, počty uzlů a velikosti uzlů:
 * Výchozí typ clusteru Hadoop:
-    * Dva *hlavní uzly*  
+    * Dva *hlavní uzly*
     * Čtyři *pracovní uzly*
 * Výchozí typ clusteru pro hodnoty:
     * Dva *uzly Nimbus*

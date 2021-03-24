@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: b7ae2e024fa68b01d5053d58ea2a066ae681e4e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2acb234d04a0158b22b9078db903e6be562b892b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435700"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954662"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendpro-enterprise"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SendPro Enterprise
 
@@ -128,11 +128,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlašování na SendPro Enterprise přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SendPro Enterprise v okně moje aplikace, přesměruje se na adresu URL pro přihlášení SendPro Enterprise. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SendPro Enterprise v okně moje aplikace, přesměruje se na adresu URL pro přihlášení SendPro Enterprise. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování SendPro Enterprise můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování SendPro Enterprise můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

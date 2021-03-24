@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fe5b2a1f083e246ea61854c9cbe03932e6655fdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945921"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866586"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux
 
@@ -82,15 +82,15 @@ Chcete-li upravit konfiguraci služby, použijte následující postup:
 
 2. Pomocí seznamu na levé straně vyberte oblast služby, kterou chcete upravit. Příklad: **HDFS**. V prostřední oblasti vyberte kartu **Konfigurace** .
 
-    ![Obrázek webu Ambari s vybranou kartou HDFS Configurations](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png" alt-text="Obrázek webu Ambari s vybranou kartou HDFS Configurations":::
 
 3. Pomocí položky **Filter...** entry zadejte **výslovný**. Zobrazí se pouze položky, které obsahují tento text.
 
-    ![Seznam filtrovaných konfigurací Apache Ambari](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png" alt-text="Seznam filtrovaných konfigurací Apache Ambari":::
 
 4. Vyhledejte položku **\* \_ výslovný** pro službu, pro kterou chcete povolit výpisy paměti haldy, a přidejte možnosti, které chcete povolit. Na následujícím obrázku jsem přidaný `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do položky **HADOOP \_ NAMENODE \_ výslovný** :
 
-    ![Apache Ambari Hadoop-namenode-výslovný](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png" alt-text="Apache Ambari Hadoop-namenode-výslovný":::
 
    > [!NOTE]  
    > Při povolování výpisů paměti haldy pro mapu nebo omezení podřízeného procesu vyhledejte pole s názvem **MapReduce. admin. map. Child. Java. výslovný** a **MapReduce. admin. redukovat. Child. Java. výslovný**.
@@ -99,15 +99,15 @@ Chcete-li upravit konfiguraci služby, použijte následující postup:
 
 5. Po použití změn se vedle jedné nebo více služeb zobrazí ikona **požadovaná k restartování** .
 
-    ![ikona požadovaného restartování a tlačítko pro restartování](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png" alt-text="ikona požadovaného restartování a tlačítko pro restartování":::
 
 6. Vyberte každou službu, která vyžaduje restart, a pomocí tlačítka **Akce služby** **zapněte režim údržby**. Režim údržby zabraňuje generování výstrah ze služby, když ji restartujete.
 
-    ![Zapnout nabídku režimu údržby HDI](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png" alt-text="Zapnout nabídku režimu údržby HDI":::
 
 7. Po povolení režimu údržby použijte k **restartování** služby tlačítko **restartovat** .
 
-    ![Apache Ambari restartovat všechny ovlivněné položky](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png" alt-text="Apache Ambari restartovat všechny ovlivněné položky":::
 
    > [!NOTE]  
    > Položky tlačítka pro **restartování** se mohou lišit pro jiné služby.

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 2f446df95c795eaac378340ed0d5de7b31dfcfee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219029"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955053"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
 
@@ -140,12 +140,12 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     ---
 
     > [!NOTE]
-    > V případě, že chcete použít **spravovanou identitu přiřazenou uživatelem**, nezapomeňte při vytváření [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential)zadat ClientID.
+    > V případě, že chcete použít **spravovanou identitu přiřazenou uživatelem**, nezapomeňte při vytváření [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential)zadat ClientID.
     >```
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Jak je vysvětleno v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), existuje výchozí způsob, jak vyřešit, která spravovaná identita se používá. V takovém případě vám knihovna identit Azure vynutila určení požadované identity, aby nedocházelo k problémům s překročila povolený runtime v budoucnosti (například pokud je přidána nová spravovaná identita přiřazená uživatelem nebo pokud je povolená spravovaná identita přiřazená systémem). Proto budete muset zadat clientId i v případě, že je definovaná jenom jedna spravovaná identita přiřazená uživatelem a neexistuje žádná spravovaná identita přiřazená systémem.
+    >Jak je vysvětleno v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), existuje výchozí způsob, jak vyřešit, která spravovaná identita se používá. V takovém případě vám knihovna identit Azure vynutila určení požadované identity, aby nedocházelo k problémům s překročila povolený runtime v budoucnosti (například pokud je přidána nová spravovaná identita přiřazená uživatelem nebo pokud je povolená spravovaná identita přiřazená systémem). Proto budete muset zadat clientId i v případě, že je definovaná jenom jedna spravovaná identita přiřazená uživatelem a neexistuje žádná spravovaná identita přiřazená systémem.
 
 
 1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program. cs* , jak vidíte níže. Tento kód volá `SetCredential` jako součást `ConfigureKeyVault` k tomu, aby poskytovatel konfigurace informoval, jaké přihlašovací údaje se mají použít při ověřování Key Vault.
@@ -203,7 +203,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     > [!NOTE]
     > `ManagedIdentityCredential`Funguje pouze v prostředích služby Azure, které podporují spravované ověřování identity. Nefunguje v místním prostředí. Použijte [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) kód pro práci v místních i v prostředích Azure, protože se vrátí k několika možnostem ověřování, včetně spravované identity.
     > 
-    > V případě, že chcete použít **spravovanou identitu asigned** s rozhraním `DefaultAzureCredential` nasazeným do Azure, [Zadejte ClientID](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential).
+    > V případě, že chcete použít **spravovanou identitu asigned** s rozhraním `DefaultAzureCredential` nasazeným do Azure, [Zadejte ClientID](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 8df2528edebbb654e501b8aaaac91c24d932604c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670558"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864954"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -48,6 +48,7 @@ Chcete-li odstranit trezor správně, je nutné postupovat podle kroků v tomto 
   - **MABS nebo servery pro správu DPM**: přejděte do nabídky řídicího panelu trezoru >   >  **servery pro správu zálohování** infrastruktury zálohování. Pokud máte aplikaci DPM nebo Azure Backup Server (MABS), musí se všechny uvedené položky odstranit nebo zrušit jejich registraci spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraníte servery pro správu.
 
 - **Krok 4**: je potřeba zajistit, aby byly odstraněny všechny registrované účty úložiště. Přejděte do nabídky řídicího panelu trezoru >   >  **účty úložiště** infrastruktury zálohování. Pokud zde jsou uvedené účty úložiště, musíte je zrušit. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
+- **Krok 5**: Zajistěte, aby se pro trezor nevytvořily žádné privátní koncové body. Přejděte do nabídky řídicího panelu trezoru > **připojení privátního koncového bodu** v části nastavení > pokud má Trezor nějaká vytvořená připojení privátních koncových bodů nebo se pokusila o vytvoření, ujistěte se, že se odebraly, než budete pokračovat v odstraňování trezor 
 
 Po dokončení těchto kroků můžete trezor i nadále [Odstranit](#delete-the-recovery-services-vault).
 

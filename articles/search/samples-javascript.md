@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955016"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955937"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Ukázky kódu JavaScriptu pro Azure Kognitivní hledání
 
@@ -32,25 +32,23 @@ Ukázky kódu z vývojového týmu Azure SDK ukazují použití rozhraní API. T
 
 ### <a name="javascript-sdk-samples"></a>Ukázky sady JavaScript SDK
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | [indexy](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [vyhledávací indexy](search-what-is-an-index.md). Tato ukázková kategorie také obsahuje ukázkový test služby. |
 | [dataSourceConnections (pro indexery)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit zdroje dat indexeru, které jsou vyžadovány pro indexování [podporovaných zdrojů dat Azure](search-indexer-overview.md#supported-data-sources)pomocí indexeru. |
 | [Indexery](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  Ukazuje, jak vytvořit, aktualizovat, získat, vypsat, resetovat a odstranit [indexery](search-indexer-overview.md).|
 | [Dovednosti](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [dovednosti](cognitive-search-working-with-skillsets.md) , které jsou připojené indexery a které provádějí rozšíření na bázi AI během indexování. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [mapy synonym](search-synonyms.md).  |
-| [Dotazy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | Ukazuje provádění dotazů proti veřejnému indexu, který je hostitelem společnosti Microsoft.  |
 
 ### <a name="typescript-samples"></a>Ukázky TypeScriptu
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | [indexy](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [vyhledávací indexy](search-what-is-an-index.md). Tato ukázková kategorie také obsahuje ukázkový test služby. |
 | [dataSourceConnections (pro indexery)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit zdroje dat indexeru, které jsou vyžadovány pro indexování [podporovaných zdrojů dat Azure](search-indexer-overview.md#supported-data-sources)pomocí indexeru. |
 | [Indexery](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  Ukazuje, jak vytvořit, aktualizovat, získat, vypsat, resetovat a odstranit [indexery](search-indexer-overview.md).|
 | [Dovednosti](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [dovednosti](cognitive-search-working-with-skillsets.md) , které jsou připojené indexery a které provádějí rozšíření na bázi AI během indexování. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [mapy synonym](search-synonyms.md).  |
-| [Dotazy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | Ukazuje provádění dotazů proti veřejnému indexu, který je hostitelem společnosti Microsoft.  |
 
 ## <a name="doc-samples"></a>Ukázky dokumentů
 
@@ -67,6 +65,6 @@ Ukázky kódu z týmu Kognitivní hledání ukazují funkce a pracovní postupy.
 
 Následující ukázky jsou publikovány také týmem Kognitivní hledání, ale nejsou odkazovány v dokumentaci. Přidružené soubory Readme poskytují pokyny k používání.
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | [Azure-Search-reagovat – šablona](https://github.com/dereklegenzoff/azure-search-react-template) | Reakce šablony pro Azure Kognitivní hledání (github.com) |

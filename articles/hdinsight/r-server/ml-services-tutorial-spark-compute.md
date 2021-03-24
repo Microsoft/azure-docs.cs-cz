@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07c004fa5f03c53ed0778613a0c16a0ba2aff11f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935663"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869493"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Kurz: použití R v výpočetním kontextu Sparku ve službě Azure HDInsight
 
@@ -56,7 +56,7 @@ Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověřen�
 
 1. V pravém podokně vyberte kartu **prostředí** . Proměnné se zobrazí v části **hodnoty**.
 
-    ![Webová konzola HDInsight R Studio](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
+    :::image type="content" source="./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png" alt-text="Webová konzola HDInsight R Studio" border="true":::
 
 1. Vytvořte místní adresář a Stáhněte si ukázková data. Do RStudio zadejte následující kód:
 
@@ -157,7 +157,7 @@ Krok by měl být dokončen přibližně po dobu 10 sekund.
 
 Ve výpočetním kontextu Spark můžete vytvořit zdroje dat pomocí následujících funkcí:
 
-|Funkce | Description |
+|Funkce | Popis |
 |---------|-------------|
 |`RxTextData` | Textový zdroj dat oddělený čárkami. |
 |`RxXdfData` | Data ve formátu datových souborů XDF Ve RevoScaleR je formát souboru XDF změněn pro Hadoop pro ukládání dat do složené sady souborů, nikoli do jediného souboru. |

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87291110"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889293"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Přesunutí virtuálního počítače do jiného předplatného nebo skupiny prostředků
 Tento článek vás provede postupem přesunutí virtuálního počítače mezi skupinami prostředků nebo odběry. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v osobním předplatném a teď ho chcete přesunout do předplatného vaší společnosti.
@@ -38,6 +38,7 @@ K úspěšnému přesunu virtuálního počítače je potřeba přesunout virtu�
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
+`table`Výstup není dostupný, pokud používáte `--interactive` . Změňte výstup na jinou možnost, například `json` .
 
 Pokud chcete přesunout virtuální počítač a jeho prostředky do jiné skupiny prostředků, použijte příkaz [AZ Resource Move](/cli/azure/resource). Následující příklad ukazuje, jak přesunout virtuální počítač a nejběžnější prostředky, které vyžaduje. Použijte parametr **-IDS** a předejte seznam oddělený čárkami (bez mezer) pro prostředky, které se mají přesunout.
 

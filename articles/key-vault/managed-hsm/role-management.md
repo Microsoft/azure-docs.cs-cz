@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209556"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951738"
 ---
 # <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
 
@@ -33,7 +33,7 @@ Seznam všech spravovaných rolí modulu HSM a operací, které umožňují, naj
 Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 
 * Předplatné Microsoft Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial).
-* Verze Azure CLI 2.12.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
+* Verze Azure CLI 2.21.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 * Spravovaný modul HSM v rámci vašeho předplatného. Informace najdete v tématu [rychlý Start: zřízení a aktivace spravovaného modulu HSM pomocí Azure CLI](quick-create-cli.md) , který umožňuje zřídit a aktivovat spravovaný modul HSM.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -113,6 +113,70 @@ Pomocí `az keyvault role definition list` příkazu můžete vypsat všechny de
 ```azurecli-interactive
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
+
+## <a name="create-a-new-role-definition"></a>Vytvořit novou definici role
+
+Spravovaný modul HSM má několik integrovaných (předem definovaných) rolí, které jsou užitečné pro většinu běžných scénářů použití. Můžete definovat vlastní roli se seznamem konkrétních akcí, které může role provádět. Pak můžete tuto roli přiřadit objektům zabezpečení a udělit jim oprávnění k určeným akcím. 
+
+Použijte `az keyvault role definition create` příkaz pro roli s názvem **Moje vlastní role** pomocí řetězce JSON.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+    "roleName": "My Custom Role",
+    "description": "The description of the custom rule.",
+    "actions": [],
+    "notActions": [],
+    "dataActions": [
+        "Microsoft.KeyVault/managedHsm/keys/read/action"
+    ],
+    "notDataActions": []
+}'
+```
+
+Použijte `az keyvault role definition create` příkaz pro roli ze souboru s názvem **my-custom-role-definition.jsna** obsahující řetězec JSON pro definici role. Viz výše uvedený příklad.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition @my-custom-role-definition.json
+```
+
+## <a name="show-details-of-a-role-definition"></a>Zobrazit podrobnosti definice role
+
+Pomocí `az keyvault role definition show` příkazu můžete zobrazit podrobnosti konkrétní definice role pomocí názvu (identifikátor GUID).
+
+```azurecli-interactive
+az keyvault role definition show --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+## <a name="update-a-custom-role-definition"></a>Aktualizace definice vlastní role
+
+Pomocí `az keyvault role definition update` příkazu můžete aktualizovat roli s názvem **Moje vlastní role** pomocí řetězce JSON.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+            "roleName": "My Custom Role",
+            "name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "id": "Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-
+        xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "The description of the custom rule.",
+            "actions": [],
+            "notActions": [],
+            "dataActions": [
+                "Microsoft.KeyVault/managedHsm/keys/read/action",
+                "Microsoft.KeyVault/managedHsm/keys/write/action",
+                "Microsoft.KeyVault/managedHsm/keys/backup/action",
+                "Microsoft.KeyVault/managedHsm/keys/create"
+            ],
+            "notDataActions": []
+        }'
+```
+
+## <a name="delete-custom-role-definition"></a>Odstranit definici vlastní role
+
+Pomocí `az keyvault role definition delete` příkazu můžete zobrazit podrobnosti konkrétní definice role pomocí názvu (identifikátor GUID). 
+```azurecli-interactive
+az keyvault role definition delete --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+> [!NOTE]
+> Předdefinované role nelze odstranit. Když se vlastní role odstraní, všechna přiřazení rolí pomocí této vlastní role se stanou nefunkčními.
+
 
 ## <a name="next-steps"></a>Další kroky
 

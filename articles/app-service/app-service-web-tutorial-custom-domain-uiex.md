@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216526"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954849"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -121,7 +121,7 @@ Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví
 
     <details>
         <summary>Můžu ze svého poskytovatele domény spravovat DNS pomocí Azure?</summary>
-        Pokud chcete, můžete pomocí Azure DNS spravovat záznamy DNS pro vaši doménu a nakonfigurovat vlastní název DNS pro Azure App Service. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">kurz: Hostování vaší domény v Azure DNS></a>.
+        Pokud chcete, můžete pomocí Azure DNS spravovat záznamy DNS pro vaši doménu a nakonfigurovat vlastní název DNS pro Azure App Service. Další informace najdete v tématu <a href="/azure/dns/dns-delegate-domain-azure-dns">kurz: Hostování vaší domény v Azure DNS></a>.
     </details>
 
 1. Vyhledejte stránku pro správu záznamů DNS. 
@@ -146,7 +146,7 @@ Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví
             <ul>
             <li>Chcete-li namapovat kořenovou doménu (například <code>contoso.com</code> ), použijte záznam A. Nepoužívejte záznam CNAME pro kořenový záznam (informace najdete v tématu <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedii entry</a>).</li>
             <li>Chcete-li namapovat subdoménu (například <code>www.contoso.com</code> ), použijte záznam CNAME.</li>
-            <li>Subdoménu můžete namapovat na IP adresu aplikace přímo pomocí záznamu A, ale je možné, <a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">že se IP adresa změní</a>. Záznam CNAME místo toho mapuje na název hostitele aplikace, což je méně náchylné ke změně.</li>
+            <li>Subdoménu můžete namapovat na IP adresu aplikace přímo pomocí záznamu A, ale je možné, <a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">že se IP adresa změní</a>. Záznam CNAME místo toho mapuje na název hostitele aplikace, což je méně náchylné ke změně.</li>
             <li>Chcete-li namapovat <a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">zástupnou doménu</a> (například <code>*.contoso.com</code> ), použijte záznam CNAME.</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ Pro zástupný název, jako `*` v `*.contoso.com` , vytvořte dva záznamy podle
 
     <details>
         <summary>Co je popisek <strong>nezabezpečeného</strong> upozornění?</summary>
-        Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
+        Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
     </details>
 
     Pokud jste nějaký krok neudělali nebo jste ho provedli dříve, zobrazí se v dolní části stránky chyba ověřování.
@@ -274,7 +274,7 @@ Pro zástupný název, jako `*` v `*.contoso.com` , vytvořte dva záznamy podle
 
     <details>
         <summary>Co je popisek <strong>nezabezpečeného</strong> upozornění?</summary>
-        Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
+        Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
     </details>
     
     Pokud jste nějaký krok neudělali nebo jste ho provedli dříve, zobrazí se v dolní části stránky chyba ověřování.
@@ -297,7 +297,7 @@ Pro zástupný název, jako `*` v `*.contoso.com` , vytvořte dva záznamy podle
 
     <details>
         <summary>Co je popisek <strong>nezabezpečeného</strong> upozornění?</summary>
-        Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
+        Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
     </details>
 
 -----

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0780f66c981f0cebebc1ab327d783954753db965
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946669"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866722"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
@@ -20,7 +20,7 @@ HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukt
 
 ## <a name="advanced-analytics-process"></a>Proces pokročilé analýzy
 
-![Tok procesu pokročilé analýzy](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png" alt-text="Tok procesu pokročilé analýzy" border="false":::
 
 Po zjištění obchodního problému a zahájení shromažďování a zpracování dat je potřeba vytvořit model, který představuje otázku, kterou chcete předpovědět. Model bude používat jeden nebo více algoritmů strojového učení, aby vytvářely typ předpovědi, který nejlépe vyhovuje vašim obchodním potřebám.  Většina vašich dat by měla být použita ke školení vašeho modelu se zbytkem, který se používá k otestování nebo vyhodnocení.
 
@@ -30,7 +30,7 @@ Až vytvoříte, nasadíte, otestujete a vyhodnocujete svůj model, dalším kro
 
 Pokročilá Analytická řešení poskytují sadu algoritmů strojového učení. Tady je souhrn kategorií algoritmů a přidružených běžných případů použití firmy.
 
-![Machine Learning souhrny kategorií](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png" alt-text="Machine Learning souhrny kategorií" border="false":::
 
 Společně s výběrem nejlépe přidaných algoritmů je potřeba zvážit, jestli potřebujete zadat data pro školení. Algoritmy strojového učení jsou rozdělené takto:
 
@@ -92,7 +92,7 @@ Tento scénář pokročilých analýz obsahuje tři klíčové úlohy:
 
 V tomto příkladu se používá sada imagí CIFAR-10 zkompilovaná a distribuovaná Alex Krizhevsky, Vinoed Nair a Geoffrey Hinton. Datová sada CIFAR-10 obsahuje 60 000 32 × 32 barev obrázků, které patří 10 vzájemně se vylučující třídy:
 
-![Příklady imagí Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png" alt-text="Příklady imagí Machine Learning" border="false":::
 
 Další informace o datové sadě najdete v tématu učení Alex Krizhevsky [s více vrstvami funkcí z drobných imagí](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -105,7 +105,7 @@ Datová sada byla rozdělená na školicí sadu 50 000 imagí a sadu testů 10 0
 
 Celý proces předzpracování nebo bodování imagí 10 000 trvá méně než jednu minutu v clusteru se 4 pracovními uzly. Model přesně předpovídá popisky ~ 9 100 (91%) fotografií. Nejasná matice ilustrují nejběžnější chyby klasifikace. Matice například ukazuje, že nepopisení psi jako kočky a naopak probíhá častěji než u jiných párů popisků.
 
-![Graf výsledků Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png" alt-text="Graf výsledků Machine Learning" border="false":::
 
 ### <a name="try-it-out"></a>Vyzkoušejte si to!
 

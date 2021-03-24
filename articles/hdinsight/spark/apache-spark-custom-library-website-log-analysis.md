@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d99bf914d3ef746fe328d2447426565fc15e52b4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940299"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866314"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovny Pythonu s Apache Spark clusteru v HDInsight
 
@@ -30,11 +30,11 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 
 1. Vytvořte nový poznámkový blok. Vyberte **Nový** a potom **PySpark**.
 
-    ![Vytvořit nový Jupyter Notebook Apache](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvořit nový Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png " alt-text="Vytvořit nový Jupyter notebook Apache" border="true"::: Poznámkový blok "Border =" true ":::
 
 1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Vyberte název poznámkového bloku v horní části a zadejte popisný název.
 
-    ![Zadání názvu poznámkového bloku](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Zadání názvu poznámkového bloku")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png " alt-text="Zadejte název pro Poznámkový blok" border="true":::tebook "Border =" true ":::
 
 1. Vzhledem k tomu, že jste Poznámkový blok vytvořili pomocí jádra PySpark, nemusíte vytvářet žádné kontexty explicitně. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importováním typů, které jsou požadovány pro tento scénář. Vložte následující fragment kódu do prázdné buňky a stiskněte **SHIFT + ENTER**.
 
@@ -173,7 +173,7 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 
    Měl by se zobrazit výstup podobný následujícímu obrázku:
 
-   ![Výstup dotazu SQL HDInsight Jupyter](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "Výstup dotazu SQL")
+   Výstup dotazu SQL Jupyter ve službě :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png " alt-text="HDInsight" border="true":::yter výstup dotazu SQL Border = "true":::
 
    Další informace o Magic naleznete `%%sql` v tématu [Parameters Supported a%% SQL Magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
@@ -191,7 +191,7 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 
    Měl by se zobrazit výstup podobný následujícímu obrázku:
 
-   ![Diagram analýzy webového protokolu Apache Spark](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Výstup matplotlib")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png " alt-text="webový protokol Apache Spark" border="true":::– vykreslení diagramu webové analýzy protokolů "Border =" true ":::
 
 1. Po dokončení spuštění aplikace byste měli Poznámkový blok vypnout a uvolnit tak prostředky. Provedete to tak, že v nabídce **Soubor** poznámkového bloku vyberete **Zavřít a zastavit**. Tato akce vypne a zavře Poznámkový blok.
 

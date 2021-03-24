@@ -4,15 +4,15 @@ description: Přečtěte si o funkcích sítě v Azure App Service a seznamte se
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99593125"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889140"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -129,11 +129,15 @@ Některé případy použití pro tuto funkci:
 ![Diagram, který znázorňuje použití koncových bodů služby s Application Gateway.](media/networking-features/service-endpoints-appgw.png)
 
 Další informace o konfiguraci koncových bodů služby s vaší aplikací najdete v tématu [omezení přístupu Azure App Service][serviceendpoints].
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Pravidla omezení přístupu na základě značek služby (Preview)
+
+#### <a name="access-restriction-rules-based-on-service-tags"></a>Pravidla omezení přístupu na základě značek služby
+
 [Značky služeb Azure][servicetags] jsou dobře definované sady IP adres pro služby Azure. Značky služeb seskupují rozsahy IP adres používané v různých službách Azure a často jsou také dále vymezeny na konkrétní oblasti. Díky tomu můžete filtrovat *příchozí* provoz z konkrétních služeb Azure. 
 
 Úplný seznam značek a další informace najdete v odkazu na značku služby výše. Informace o tom, jak tuto funkci povolit, najdete v tématu [Konfigurace omezení přístupu][iprestrictions].
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Filtrování hlaviček protokolu HTTP pro pravidla omezení přístupu (Preview)
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>Filtrování hlaviček protokolu HTTP pro pravidla omezení přístupu
+
 Pro každé pravidlo omezení přístupu můžete přidat další filtrování hlaviček protokolu HTTP. To vám umožní podrobněji zkontrolovat příchozí požadavek a filtr na základě konkrétních hodnot hlaviček protokolu HTTP. Každé záhlaví může mít až 8 hodnot na jedno pravidlo. V tuto chvíli se podporuje následující seznam hlaviček protokolu http: 
 * X-předané – pro
 * X-předávaný-Host
@@ -143,6 +147,7 @@ Pro každé pravidlo omezení přístupu můžete přidat další filtrování h
 K některým případům použití pro filtrování hlaviček protokolu HTTP patří:
 * Omezení přístupu k provozu z proxy serverů předávajících název hostitele
 * Omezení přístupu ke konkrétní instanci front-FDID pro Azure pomocí pravidla značek služby a omezením X-Azure-Header
+
 ### <a name="private-endpoint"></a>Privátní koncový bod
 
 Privátní koncový bod je síťové rozhraní, které vám prostřednictvím privátního propojení Azure připojuje soukromě a bezpečně ke své webové aplikaci. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně tak přináší webovou aplikaci do vaší virtuální sítě. Tato funkce je určena pouze pro *příchozí* toky do vaší webové aplikace.

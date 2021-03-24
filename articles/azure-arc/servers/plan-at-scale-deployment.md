@@ -3,12 +3,12 @@ title: Postup plánování a nasazení serverů s podporou ARC Azure
 description: Naučte se, jak povolit velké množství počítačů pro servery s podporou ARC Azure a zjednodušit tak konfiguraci základních funkcí zabezpečení, správy a monitorování v Azure.
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0e6f3962c46dc41c000ec6bb5c60f4bb8de4c9d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591176"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952996"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Plánování a nasazení serverů s povoleným ARC
 
@@ -57,7 +57,7 @@ V této fázi mohou systémové technici nebo správci povolit základní funkce
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|
 | [Vytvoření skupiny prostředků](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Vyhrazená skupina prostředků, která zahrnuje jenom servery s podporou ARC a centralizaci správy a monitorování těchto prostředků. | Jedna hodina |
-| Použijte [značky](../../azure-resource-manager/management/tag-resources.md) , které vám pomůžou organizovat počítače. | Vyhodnoťte a sestavte [strategii označování](/cloud-adoption-framework/decision-guides/resource-tagging/) zarovnaná na základě IT, která může přispět ke snížení složitosti správy serverů s povoleným obloukem a zjednodušení rozhodování o správě. | Jeden den |
+| Použijte [značky](../../azure-resource-manager/management/tag-resources.md) , které vám pomůžou organizovat počítače. | Vyhodnoťte a sestavte [strategii označování](/azure/cloud-adoption-framework/decision-guides/resource-tagging/) zarovnaná na základě IT, která může přispět ke snížení složitosti správy serverů s povoleným obloukem a zjednodušení rozhodování o správě. | Jeden den |
 | Návrh a nasazení [protokolů Azure monitor](../../azure-monitor/logs/data-platform-logs.md) | Vyhodnoťte [požadavky na návrh a nasazení](../../azure-monitor/logs/design-logs-deployment.md) , abyste zjistili, jestli by vaše organizace měla používat existující nebo implementovat jiný Log Analytics pracovní prostor k ukládání dat protokolů z hybridních serverů a počítačů. <sup>1</sup> | Jeden den |
 | Vývoj plánu zásad správného řízení [v Azure Policy](../../governance/policy/overview.md) | Určete, jak budete implementovat zásady správného řízení pro hybridní servery a počítače v oboru předplatného nebo skupiny prostředků s Azure Policy. | Jeden den |
 | Konfigurace [řízení přístupu na základě role](../../role-based-access-control/overview.md) (RBAC) | Vytvořte plán přístupu pro řízení, kdo má přístup ke správě serverů s podporou ARC a možnost zobrazit svá data z jiných služeb a řešení Azure. | Jeden den |
@@ -71,7 +71,7 @@ V dalším kroku přidáme do základu ve fázi 1, když připravujete a nasadí
 
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|
-| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka na škále připojování prostředků:<br><br> <ul><li> [Skript základního nasazení se škálováním](onboard-service-principal.md)</ul></li> <ul><li>[Škálování při připojování VMware vSphere virtuálních počítačů s Windows serverem](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Škálování při připojování VMware vSphere virtuálních počítačů se systémem Linux](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Škálování instancí AWS EC2 na škále s využitím Ansible](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Škálování nasazení pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
+| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka prostředků připojování v měřítku:<br><br> <ul><li> [Základní skript pro nasazení ve velkém měřítku](onboard-service-principal.md)</ul></li> <ul><li>[Připojování VMware vSphere virtuálních počítačů s Windows serverem v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Připojování virtuálních počítačů se systémem VMware vSphere Linux v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Připojování instancí AWS EC2 pomocí Ansible v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Nasazení během škálování pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
 | [Vytvoření instančního objektu](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Vytvořte instanční objekt pro připojení počítačů neinteraktivně pomocí Azure PowerShell nebo na portálu.| Jedna hodina |
 | Nasazení agenta připojeného počítače na cílové servery a počítače |Pomocí nástroje pro automatizaci nasaďte skripty na vaše servery a připojte je k Azure.| Jeden nebo více dní v závislosti na plánu vydání a při dvoufázové zavedení. |
 

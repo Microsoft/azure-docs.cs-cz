@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771307"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888902"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Sémantické vyhledávání v Azure Kognitivní hledání
 
 > [!IMPORTANT]
-> Sémantické vyhledávání je ve verzi Public Preview, dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Tyto funkce jsou Fakturovatelné. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
+> Sémantické vyhledávání je ve verzi Public Preview, které je dostupné prostřednictvím REST API a portálu ve verzi Preview. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Tyto funkce jsou Fakturovatelné. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
 Sémantické vyhledávání je kolekce funkcí souvisejících s dotazy, které přidávají výsledkům vyhledávání sémantickou relevanci a jazykové porozumění. *Sémantické hodnocení* vyhledává kontext a souvislost mezi podmínkami a zvyšuje shody, které dávají dotazu větší smysl. Při použití jazyka se vyhledává *popisy* a *odpovědi* v rámci vašeho obsahu, které shrnují odpovídající dokument nebo odpovídají na otázku, která se pak dá vykreslit na stránce s výsledky hledání, aby bylo lépe produktivní.
 

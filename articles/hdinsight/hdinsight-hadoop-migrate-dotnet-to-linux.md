@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e626d08e7fd315ca70765477c5dae56030521c6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945605"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866399"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrace řešení .NET pro HDInsight se systémem Windows na HDInsight se systémem Linux
 
@@ -33,7 +33,7 @@ Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompati
 
 2. V aplikaci Visual Studio 2015 vyberte možnost __Analýza__  >  __Nastavení analyzátoru přenositelnosti__ a ujistěte se, že je v části __mono__ zaškrtnuto políčko __4,5__ .
 
-    ![4,5 pro nastavení analyzátoru se vrátil oddíl mono.](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png" alt-text="4,5 pro nastavení analyzátoru se vrátil oddíl mono.":::
 
     Kliknutím na __OK__ uložte konfiguraci.
 
@@ -41,7 +41,7 @@ Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompati
 
 4. Po dokončení analýzy vyberte __analyzovat__  >  __zobrazení sestavy analýzy__. Ve __výsledcích analýzy přenositelnosti__ otevřete sestavu výběrem __otevřít sestavu__ .
 
-    ![Dialogové okno výsledků analyzátoru přenositelnosti](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png" alt-text="Dialogové okno výsledků analyzátoru přenositelnosti":::
 
 > [!IMPORTANT]  
 > Analyzátor nemůže zachytit všechny problémy s vaším řešením. Například cesta k souboru `c:\temp\file.txt` je považována za OK, je-li mono spuštěna v systému Windows. Stejná cesta není platná na platformě Linux.

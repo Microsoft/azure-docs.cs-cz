@@ -5,25 +5,22 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 9ff0cb8e2417ed08ed4c2061674cc6932b511aed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7c80159607947dbe7ed17181beac610fa0c202c5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595902"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956090"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Seznámení se službou Azure Percept audio
 
-Azure Percept audio je příslušenství zařízení, které přidává funkce řeči AI do Azure Percept DK. Obsahuje předem konfigurovaný zvukový procesor a lineární pole se čtyřmi mikrofony, které vám umožní použít hlasové příkazy, klíčové slovo hledání a mnohem velká pole pro místní zařízení, která se budou monitorovat pomocí Azure Cognitive Services. Azure Percept audio umožňuje výrobcům zařízení rozhodovat Azure Percept DK nad rámec špičkových možností na nové inteligentní zařízení aktivované hlasem. Je integrovaný předem s Azure Percept DK, Azure Percept Studio a dalšími službami Azure Edge Management. K nákupu můžete použít [online obchod Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+Azure Percept audio je příslušenství zařízení, které přidává funkce řeči AI do [Azure PERCEPT DK](./overview-azure-percept-dk.md). Obsahuje předem konfigurovaný zvukový procesor a lineární pole se čtyřmi mikrofony, které vám umožní používat hlasové příkazy, klíčové slovo hledání a mnohem bezkontaktní pole s podporou Azure Cognitive Services. Je integrovaný předem s Azure Percept DK, [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)a dalšími službami Azure Edge Management. Azure Percept audio je možné zakoupit v [online obchodě Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
 
 > [!div class="nextstepaction"]
-> [Koupit hned](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+> [Koupit](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-<!---
-:::image type="content" source="./media/overview-azure-percept-audio/percept-audio.png" alt-text="Azure Percept Audio device.":::
---->
 </br>
 
 > [!VIDEO https://www.youtube.com/embed/Qj8NGn-7s5A]
@@ -32,21 +29,21 @@ Azure Percept audio je příslušenství zařízení, které přidává funkce �
 
 Azure Percept audio obsahuje následující hlavní součásti:
 
-- Prostředí Azure Percept audio (SoM) připravené pro produkční prostředí a zpracování zvuku pomocí čtyř mikrofonů, které provádí kodek XMOS
-- Vývojář (na) vývěsce (zahrnuje 2x tlačítka, 3x diody LED, Micro USB a 3,5 mm audio konektor)
+- Prostředí Azure Percept Audio Device (SoM) připravené pro produkční a zvukové zpracování pomocí čtyř mikrofonů prostřednictvím kodeku XMOS
+- Vývojář () panel: 2x tlačítka, 3x diody, Micro USB a 3,5 mm zvukový konektor
 - Požadované kabely: FPC kabel, USB Micro Type-B to USB-A
 - Uvítací karta
 - Mechanická montážní deska s integrovaným připojením řady 80/20 1010
 
 ## <a name="compute-capabilities"></a>Výpočetní funkce 
 
-Zvuk Azure Percept předá zvukový vstup prostřednictvím zásobníku řeči, který běží na procesoru nosiče v rámci služby Azure Percept DK v hybridním cloudovém způsobu. Proto se pro službu Azure Percept audio vyžaduje nosná deska s operačním systémem, který podporuje zásobník řeči, aby bylo možné provést. 
+Zvuk Azure Percept předá zvukový vstup prostřednictvím zásobníku řeči, který běží na procesoru nosné desky Azure Percept DK v hybridním hraničním cloudu. Proto se pro službu Azure Percept audio vyžaduje nosná deska s operačním systémem, který podporuje zásobník řeči, aby bylo možné provést. 
 
-Zpracování je provedeno následujícím způsobem: 
+Zpracování zvuku se provádí takto: 
 
 - Azure Percept audio: zachycuje a převádí zvuk a odesílá ho do konektoru DK a zvukového konektoru.
 
-- Azure Percept DK: zásobník řeči provádí zrušení a ozvěnu a zpracovává příchozí zvuk k optimalizaci pro rozpoznávání řeči. Pak provede klíčové slovo hledání.
+- Azure Percept DK: zásobník řeči provádí zrušení a ozvěnu a zpracovává příchozí zvuk k optimalizaci pro rozpoznávání řeči. Po zpracování se provede klíčové slovo hledání.
 
 - Cloud: zpracovává příkazy a fráze přirozeného jazyka, ověřování klíčových slov a přeškolení. 
 
@@ -55,8 +52,8 @@ Zpracování je provedeno následujícím způsobem:
 ## <a name="getting-started"></a>Začínáme
 
 - [Sestavte si Azure Percept DK](./quickstart-percept-dk-unboxing.md)
-- [Dokončete prostředí pro instalaci Azure Percept DK](./quickstart-percept-dk-set-up.md)
 - [Připojení zvukového zařízení Azure Percept k DevKit](./quickstart-percept-audio-setup.md)
+- [Dokončete prostředí pro instalaci Azure Percept DK](./quickstart-percept-dk-set-up.md)
 
 ## <a name="build-a-no-code-prototype"></a>Sestavení prototypu bez kódu
 
@@ -64,8 +61,8 @@ Pomocí šablon hlasového asistenta Azure Percept pro pohostinství, zdravotní
 
 ### <a name="manage-your-no-code-speech-solution"></a>Správa řešení pro rozpoznávání řeči bez kódu
 
-- [Konfigurace hlasového asistenta ve službě IoT Hub](./how-to-manage-voice-assistant.md)
-- [Konfigurace hlasového asistenta v Azure Percept studiu](./how-to-configure-voice-assistant.md)
+- [Konfigurace hlasového asistenta v Azure Percept studiu](./how-to-manage-voice-assistant.md)
+- [Konfigurace hlasového asistenta ve službě IoT Hub](./how-to-configure-voice-assistant.md)
 - [Řešení potíží se zvukem v Azure Percept](./troubleshoot-audio-accessory-speech-module.md)
 
 ## <a name="additional-technical-information"></a>Další technické informace

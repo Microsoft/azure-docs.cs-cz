@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 602fa1cab71a797dd25aca263e0c6a9f2aa616bb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929704"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870224"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
 
@@ -18,7 +18,7 @@ ms.locfileid: "98929704"
 
 Streamování Spark vytvoří dlouhotrvající úlohy, během kterých můžete použít transformace na data a pak výsledky vložit do systému souborů, databází, řídicích panelů a konzoly. Streamování Sparku zpracovává mikrodávkování dat tím, že nejprve shromažďuje dávky událostí v rámci definovaného časového intervalu. V dalším kroku se tato dávka pošle na zpracování a výstup. Časové intervaly dávky jsou obvykle definovány ve zlomcích sekundy.
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-streaming.png" alt-text="Streamování Sparku" border="false":::
 
 ## <a name="dstreams"></a>DStreams
 
@@ -26,13 +26,13 @@ Streamování Spark představuje souvislý datový proud dat pomocí *datového 
 
 Spark Core používá *odolné distribuované datové sady* (RDD). RDD distribuuje data napříč několika uzly v clusteru, kde každý uzel obecně udržuje svá data v paměti, aby se dosáhlo co nejlepšího výkonu. Každý RDD představuje události shromážděné v intervalu dávky. Po uplynutí intervalu dávky vytvoří streamování Spark nové RDD obsahující všechna data v tomto intervalu. Tato nepřetržitá sada RDD je shromažďována do DStream. Aplikace pro streamování Spark zpracovává data uložená v RDD každé dávky.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-dstream.png" alt-text="Spark DStream" border="false":::
 
 ## <a name="spark-structured-streaming-jobs"></a>Strukturované úlohy streamování Sparku
 
 Strukturované streamování Sparku bylo zavedeno v Spark 2,0 jako analytický modul pro použití při streamování strukturovaných dat. Strukturované streamování Sparku používá rozhraní API modulu Batch SparkSQL. Podobně jako u streamování Sparku používá strukturované streamování Spark své výpočty přes nepřetržité doručení mikrodávkám dat. Strukturované streamování Spark představuje datový proud dat v podobě vstupní tabulky s neomezenými řádky. To znamená, že vstupní tabulka se dál zvětšuje, protože dorazíte na nová data. Tato vstupní tabulka se průběžně zpracovává dlouho běžícím dotazem a výsledky se zapisují do výstupní tabulky.
 
-![Strukturované streamování Sparku](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/structured-streaming.png" alt-text="Strukturované streamování Sparku" border="false":::
 
 Ve strukturovaném streamování přicházejí data do systému a okamžitě se ingestují do vstupní tabulky. Zapisujete dotazy, které provádějí operace s touto vstupní tabulkou. Výstup dotazu vydává jinou tabulku, která se nazývá tabulka výsledků. Tabulka výsledků obsahuje výsledky dotazu, ze kterého kreslíte data pro odeslání do externího úložiště dat, jako je relační databáze. *Interval triggeru* nastavuje časování pro zpracování dat ze vstupní tabulky. Ve výchozím nastavení strukturované streamování zpracovává data hned po doručení. Můžete ale také nakonfigurovat Trigger tak, aby běžel v delším intervalu, takže streamovaná data se zpracují v dávkách založených na čase. Data v tabulce výsledků se můžou aktualizovat pokaždé, když jsou nová data, takže budou zahrnovat všechna výstupní data od začátku dotazu na streamování (*režim* připojení), nebo může obsahovat jenom data, která jsou od posledního zpracování dotazu (*režim připojení*) nová.
 
@@ -54,7 +54,7 @@ Chcete-li vytvořit aplikaci, která každou událost zpracuje jednou (a pouze j
 
 V HDInsight je práce clusteru koordinována *ještě jiným vyjednáváním prostředků* (příze). Návrh vysoké dostupnosti pro streamování Spark zahrnuje techniky pro streamování Sparku a také pro PŘÍZové komponenty.  Příklad konfigurace pomocí PŘÍZe je uveden níže.
 
-![Architektura PŘÍZe](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png" alt-text="Architektura PŘÍZe" border="false":::
 
 Následující části popisují faktory návrhu této konfigurace.
 

@@ -8,19 +8,21 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721213"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889820"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
 Tento článek se pokusí vypsat nedávné běžné problémy a jejich řešení při použití prostředí HPC [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) a virtuálních počítačů GPU.
 
 ## <a name="mofed-installation-on-ubuntu"></a>Instalace MOFED na Ubuntu
-V Ubuntu-18,04 je jádro verze 5.4.0-1041-Azure nekompatibilní s verzemi MOFED 5.2-2 a 5.2-1.0.4.0. Doporučujeme vrátit se k jádru verze 5.4.0-1040-Azure nebo použít image z Marketplace se starším jádrem a neaktualizovat jádro. Očekává se, že tento problém bude vyřešen novějším MOFED (TBD).
+V Ubuntu-18,04 se Mellanox OFED ukázalo nekompatibilní s verzemi jader `5.4.0-1039-azure #42` a novějšími, což způsobí zvýšení doby spuštění virtuálního počítače přibližně na 30 minut. To bylo oznámeno pro Mellanox OFED verze 5.2-1.0.4.0 a 5.2-2.2.0.0.
+Dočasné řešení je použití image **kanonického: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Marketplace nebo starší, a ne pro aktualizaci jádra.
+Očekává se, že tento problém bude vyřešen novějším MOFED (TBD).
 
 ## <a name="known-issues-on-hbv3"></a>Známé problémy v HBv3
 - V současné době se InfiniBand podporuje jenom na virtuálním počítači 120 Core (Standard_HB120rs_v3).

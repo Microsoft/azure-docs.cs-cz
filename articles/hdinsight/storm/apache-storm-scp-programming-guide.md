@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932638"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864104"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
 
@@ -28,7 +28,7 @@ Data ve spojovacím bodu služby jsou modelována jako kontinuální streamován
 1. Jsou vyzvednuty a transformovány pomocí obchodní logiky, která je hostována v topologii.
 1. Buď mají výstup v podobě řazené kolekce členů do jiného systému SCP, nebo se ukládají do úložišť, jako jsou distribuované souborové systémy a databáze, jako je SQL Server.
 
-![Diagram dat s dořazením do fronty pro zpracování, který v systému zapíná úložiště dat](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png" alt-text="Diagram dat s dořazením do fronty pro zpracování, který v systému zapíná úložiště dat" border="false":::
 
 V zaplavení topologie aplikace definuje graf výpočtu. Každý uzel v topologii obsahuje logiku zpracování. Propojení mezi uzly označují tok dat.
 
@@ -431,7 +431,7 @@ Specifikace topologie můžete odesílat přímo do clusteru s více podsystému
 
 SCP.NET přidal následující funkce pro definování transakčních topologií:
 
-| Nová funkce | Parametry | Description |
+| Nová funkce | Parametry | Popis |
 | --- | --- | --- |
 | **TX – topolopy** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje transakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
 | **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
@@ -443,7 +443,7 @@ SCP.NET přidal následující funkce pro definování transakčních topologií
 
 SCP.NET definuje následující klíčová slova:
 
-| Klíčové slovo | Description |
+| Klíčové slovo | Popis |
 | --- | --- |
 | **: název** |Název topologie |
 | **: topologie** |Topologie pomocí funkcí v předchozí tabulce a integrovaných funkcích |
@@ -570,7 +570,7 @@ Tady `examples\HybridTopology\java\target\` je složka obsahující soubor JAR S
 
 Komponenta SCP obsahuje stranu Java a stranu C#. Pro interakci s nativním rozhraním Java spoutů/šrouby musí být serializace a deserializace provedena mezi stranou Java a straně C#, jak je znázorněno v následujícím grafu:
 
-![Diagram součásti jazyka Java odesílaných do komponenty spojovacího bodu služby, která pak odesílá do jiné komponenty Java](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png" alt-text="Diagram součásti jazyka Java odesílaných do komponenty spojovacího bodu služby, která pak odesílá do jiné komponenty Java" border="false":::
 
 #### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Serializace na straně Java a deserializace na straně C#
 

@@ -1,19 +1,19 @@
 ---
 title: Použití imagí klienta Windows v Azure
 description: Jak používat výhody předplatného sady Visual Studio k nasazení Windows 7, Windows 8 nebo Windows 10 v Azure pro scénáře vývoje a testování
-author: cynthn
+author: mimckitt
 ms.subservice: imaging
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: cynthn
-ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: mimckitt
+ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200010"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869051"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje a testování
 V Azure můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) pro scénáře vývoje a testování, pokud máte příslušné předplatné sady Visual Studio (dříve MSDN). 
@@ -28,6 +28,9 @@ Některé Image klientů Windows jsou dostupné z Azure Marketplace. Předplatit
 
 ## <a name="eligible-offers-and-client-images"></a>Opravňující nabídky a image klientů
 Následující tabulka popisuje ID nabídek, které mají nárok na nasazení imagí klientů Windows prostřednictvím Azure Marketplace. Image klientů Windows jsou viditelné jenom pro následující nabídky. 
+
+> [!NOTE]
+> Nabídky imagí jsou v části **Klient systému Windows** v Azure Marketplace. Při hledání imagí klientů dostupných pro předplatitele sady Visual Studio použijte **klienta Windows** . 
 
 | Název nabídky | Číslo nabídky | Dostupné image klientů | 
 |:--- |:---:|:---:|

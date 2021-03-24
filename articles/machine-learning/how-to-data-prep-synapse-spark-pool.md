@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d7cc948d3631e69882eb252672e5a3eb5d5f9751
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503823"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867436"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro tahání dat (Preview)
 
@@ -294,6 +294,10 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+
+## <a name="example-notebook"></a>Příklad poznámkového bloku
+
+Podrobný příklad kódu, jak provést školení pro přípravu a modelování dat z jednoho poznámkového bloku s Azure synapse Analytics a Azure Machine Learning, najdete v tomto [koncovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) .
 
 ## <a name="next-steps"></a>Další kroky
 

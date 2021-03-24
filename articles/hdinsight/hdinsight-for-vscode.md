@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946132"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865787"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -40,7 +40,7 @@ Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Stud
 
 4. Z výsledků hledání vyberte **Spark & nástroje pro podregistr** a pak vyberte **instalovat**:
 
-   ![Podregistr Spark & pro instalaci Visual Studio Code Pythonu](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-hdInsight-plugin.png" alt-text="Podregistr Spark & pro instalaci Visual Studio Code Pythonu":::
 
 5. V případě potřeby vyberte **znovu načíst** .
 
@@ -52,7 +52,7 @@ Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, p
 
 2. V zobrazení **Průzkumník** vyberte složku **HDexample** a pak vyberte ikonu **nového souboru** vedle pracovní složky:
 
-   ![Ikona nového souboru pro Visual Studio Code](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/visual-studio-code-new-file.png" alt-text="Ikona nového souboru pro Visual Studio Code":::
 
 3. Pojmenujte nový soubor tak, že použijete buď `.hql` příponu souboru (dotazy na podregistr) nebo `.py` (skript Spark). V tomto příkladu se používá **HelloWorld. HQL**.
 
@@ -64,7 +64,7 @@ V případě národního cloudového uživatele proveďte následující kroky a
 2. Vyhledejte následující řetězec: **Azure: Cloud**.
 3. Ze seznamu vyberte národní Cloud:
 
-   ![Nastavit výchozí konfiguraci zadání přihlašovacích údajů](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-login-entry-configuration.png" alt-text="Nastavit výchozí konfiguraci zadání přihlašovacích údajů":::
 
 ## <a name="connect-to-an-azure-account"></a>Připojení k účtu Azure
 
@@ -72,7 +72,7 @@ Než budete moct odesílat skripty do svých clusterů z Visual Studio Code, už
 
 1. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** a zadejte **Azure: přihlásit** se:
 
-   ![Nástroje pro podregistr Spark & pro přihlášení Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png" alt-text="Nástroje pro podregistr Spark & pro přihlášení Visual Studio Code":::
 
 2. Podle pokynů pro přihlášení Přihlaste se k Azure. Po připojení se název vašeho účtu Azure zobrazí na stavovém řádku v dolní části okna Visual Studio Code.  
 
@@ -84,7 +84,7 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 
 1. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** a zadejte **Spark/podregistr: propojení clusteru**.
 
-   ![Příkaz pro propojení palety příkazů cluster](./media/hdinsight-for-vscode/link-cluster-command.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/link-cluster-command.png" alt-text="Příkaz pro propojení palety příkazů cluster":::
 
 2. Vyberte typ propojeného clusteru **Azure HDInsight**.
 
@@ -127,7 +127,7 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 
 3. Zkontrolujte zobrazení **výstup** . Toto zobrazení ukazuje váš propojený cluster (nebo clustery) a všechny clustery v rámci vašeho předplatného Azure:
 
-   ![Nastavení výchozí konfigurace clusteru](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Nastavení výchozí konfigurace clusteru":::
 
 ## <a name="set-the-default-cluster"></a>Nastavení výchozího clusteru
 
@@ -141,7 +141,7 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 
 5. Vyberte cluster jako výchozí cluster pro aktuální soubor skriptu. Nástroje automaticky aktualizují **.VSCode\settings.js** konfiguračního souboru:
 
-   ![Nastavit výchozí konfiguraci clusteru](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-cluster-configuration.png" alt-text="Nastavit výchozí konfiguraci clusteru":::
 
 ## <a name="submit-interactive-hive-queries-and-hive-batch-scripts"></a>Odeslání interaktivních dotazů na podregistr a dávkových skriptů podregistru
 
@@ -163,7 +163,7 @@ Pomocí nástrojů pro podregistr Spark & pro Visual Studio Code můžete do sv�
 
 6. Pokud jste nezadali výchozí cluster, vyberte cluster. Nástroje také umožňují odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky. Po chvíli se výsledky dotazu zobrazí na nové kartě:
 
-   ![Výsledek interaktivního dotazu Apache Hive](./media/hdinsight-for-vscode/interactive-hive-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/interactive-hive-result.png" alt-text="Výsledek interaktivního dotazu Apache Hive":::
 
    - Panel **výsledků** : celý výsledek můžete uložit jako soubor CSV, JSON nebo Excel do místní cesty nebo stačí vybrat více řádků.
 
@@ -198,57 +198,57 @@ K odeslání dotazů pomocí interaktivního příkazu PySpark použijte násled
 
 4. V pravém dolním rohu okna se zobrazí výzva k instalaci jádra PySpark/synapse Pyspark. Kliknutím na tlačítko **nainstalovat** můžete pokračovat v instalaci PySpark/synapse PySpark. nebo kliknutím na tlačítko **Přeskočit** tento krok přeskočte.
 
-   ![Snímek obrazovky ukazuje možnost Přeskočit instalaci PySpark.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-the-pyspark-kernel.png" alt-text="Snímek obrazovky ukazuje možnost Přeskočit instalaci PySpark.":::
 
 5. Pokud ho potřebujete nainstalovat později, můžete přejít na   >    >  **Nastavení** předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
     
-    ![Snímek obrazovky s možností povolit instalaci funkce Skip Pyspark](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png" alt-text="Snímek obrazovky s možností povolit instalaci funkce Skip Pyspark":::
 
 6. Pokud instalace proběhla úspěšně v kroku 4, v pravém dolním rohu okna se zobrazí okno se zprávou "PySparked installeded" (úspěšně nainstalováno). Kliknutím na tlačítko **znovu** načíst okno znovu načtete.
 
-   ![pyspark se úspěšně nainstaloval.](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png" alt-text="pyspark se úspěšně nainstaloval.":::
 
 
 7. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Python: vyberte interpreter a spusťte Jupyter Server**.
 
-   ![Výběr interpretu pro spuštění serveru Jupyter](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png" alt-text="Výběr interpretu pro spuštění serveru Jupyter":::
 
 8. Vyberte níže uvedenou možnost Pythonu.
 
-   ![Vyberte níže uvedenou možnost.](./media/hdinsight-for-vscode/choose-the-below-option.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/choose-the-below-option.png" alt-text="Vyberte níže uvedenou možnost.":::
     
 9. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Developer: reload Window**.
 
-    ![znovu načíst okno](./media/hdinsight-for-vscode/reload-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/reload-window.png" alt-text="znovu načíst okno":::
 
 10. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
 
 11. Vyberte veškerý kód, klikněte pravým tlačítkem na editor skriptů a vyberte **Spark: PySpark Interactive/synapse: PySpark Interactive** k odeslání dotazu. 
 
-    ![interaktivní kontextová nabídka pyspark](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-right-click.png" alt-text="interaktivní kontextová nabídka pyspark":::
 
 12. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **PySpark/synapse PySpark** a kód se úspěšně spustí. Pokud chcete přepnout na jádro synapse Pyspark, doporučujeme zakázat automatické nastavení v Azure Portal. V opačném případě může trvat delší dobu, než se cluster probudí a nastaví se jádro synapse při prvním použití. Pokud nástroje umožňují také odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
 
-    ![interaktivní okno pyspark interaktivního Pythonu](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png" alt-text="interaktivní okno pyspark interaktivního Pythonu":::
 
 13. Zadejte **%% info** a potom stiskněte SHIFT + ENTER, abyste zobrazili informace o úloze (volitelné):
 
-    ![informace o úloze interaktivního zobrazení pyspark](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png" alt-text="informace o úloze interaktivního zobrazení pyspark":::
 
 Nástroj také podporuje dotaz **Spark SQL** :
 
-  ![výsledek interaktivního zobrazení pyspark](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png" alt-text="výsledek interaktivního zobrazení pyspark":::
 
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Provést interaktivní dotaz v souboru PY pomocí komentáře #%%
 
 1. Přidejte **#%%** před kód py k získání prostředí poznámkového bloku.
 
-   ![Přidat #%%](./media/hdinsight-for-vscode/run-cell.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell.png" alt-text="Přidat #%%":::
 
 2. Klikněte na **buňku Run (spustit**). Po chvíli se interaktivní výsledky Pythonu zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na PySpark/synapse PySpark, potom klikněte na znovu **Spustit buňku** a kód se úspěšně spustí.
 
-   ![spuštění výsledků buňky](./media/hdinsight-for-vscode/run-cell-get-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell-get-results.png" alt-text="spuštění výsledků buňky":::
 
 ## <a name="leverage-ipynb-support-from-python-extension"></a>Využití podpory IPYNB z rozšíření Pythonu
 
@@ -256,11 +256,11 @@ Nástroj také podporuje dotaz **Spark SQL** :
 
 2. Klikněte na tlačítko **Spustit buňku** , podle pokynů **nastavte výchozí fond Spark** (důrazně doporučujeme, abyste před otevřením poznámkového bloku pokaždé nastavili výchozí cluster nebo fond) a pak **znovu načtěte** okno.
 
-   ![nastavit výchozí fond Spark a znovu načíst](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png" alt-text="nastavit výchozí fond Spark a znovu načíst":::
 
 3. Kliknutím na PySpark přepnete jádro na **PySpark/synapse PySpark** a potom po chvíli klikněte na **buňka Run (spustit**). zobrazí se výsledek.
 
-   ![spuštění výsledků ipynb](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-ipynb-file-results.png" alt-text="spuštění výsledků ipynb":::
 
 
 > [!NOTE]
@@ -302,7 +302,7 @@ Nástroj také podporuje dotaz **Spark SQL** :
 
 6. Vyberte cluster nebo fond Spark pro odeslání úlohy PySpark do:
 
-   ![Odeslat výstup výsledku úlohy Pythonu](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/submit-pythonjob-result.png" alt-text="Odeslat výstup výsledku úlohy Pythonu":::
 
 Po odeslání úlohy Pythonu se protokoly odeslání zobrazí v okně **výstup** v Visual Studio Code. Zobrazí se také adresa URL uživatelského rozhraní Spark a adresa URL uživatelského rozhraní příze. Pokud odešlete úlohu Batch do fondu Apache Spark, zobrazí se také adresa URL uživatelského rozhraní historie Sparku a adresa URL uživatelského rozhraní aplikace Spark. Pro sledování stavu úlohy můžete otevřít adresu URL ve webovém prohlížeči.
 
@@ -338,7 +338,7 @@ Odešlete soubor a Všimněte si, že se `.vscode` Složka automaticky přidala 
 
 - Nastavení projektu:
 
-  ![Konfigurace HDInsight Apache Livy](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/hdi-apache-livy-config.png" alt-text="Konfigurace HDInsight Apache Livy":::
 
   >[!NOTE]
   >Pro nastavení **driverMemory** a **executorMemory** nastavte hodnotu a jednotku. Například: 1G nebo 1024m.
@@ -395,11 +395,11 @@ Náhled tabulky v clusterech můžete zobrazit přímo v Průzkumníkovi služby
 
 5. Klikněte pravým tlačítkem na tabulku podregistr. Například: **hivesampletable**. Vyberte **Náhled**.
 
-   ![Podregistr Spark & pro tabulku podregistru Visual Studio Code Preview](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png" alt-text="Podregistr Spark & pro tabulku podregistru Visual Studio Code Preview":::
 
 6. Otevře se okno **výsledky náhledu** :
 
-   ![Podregistr Spark & pro Visual Studio Code náhledu okna výsledků](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png" alt-text="Podregistr Spark & pro Visual Studio Code náhledu okna výsledků":::
 
 - Panel výsledků
 
@@ -415,7 +415,7 @@ Náhled tabulky v clusterech můžete zobrazit přímo v Průzkumníkovi služby
      >
      >V systému Linux nainstalujte xclip a povolte tak data kopírování z tabulky.
      >
-     >![Podregistr Spark & pro Visual Studio Code v systému Linux](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
+     >:::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png" alt-text="Podregistr Spark & pro Visual Studio Code v systému Linux":::
 
 ## <a name="additional-features"></a>Další funkce
 
@@ -423,12 +423,12 @@ Podregistr Spark & pro Visual Studio Code také podporuje následující funkce:
 
 - **Automatické dokončování IntelliSense**. Návrhy se zobrazují pro klíčová slova, metody, proměnné a další programovací prvky. Různé ikony reprezentují různé typy objektů:
 
-    ![Nástroje pro Visual Studio Code IntelliSense pro Spark & pro objekty](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png" alt-text="Nástroje pro Visual Studio Code IntelliSense pro Spark & pro objekty":::
 
 - **Značka chyby technologie IntelliSense**. Podtržení chyb v rámci skriptu služby jazyka.     
 - **Zvýrazňují syntaxe**. Služba jazyka používá různé barvy k odlišení proměnných, klíčových slov, datových typů, funkcí a dalších prvků programování:
 
-    ![& nástroje pro podregistr pro Spark pro Visual Studio Code zvýraznění syntaxe](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png" alt-text="& nástroje pro podregistr pro Spark pro Visual Studio Code zvýraznění syntaxe":::
 
 ## <a name="reader-only-role"></a>Role jen pro čtení
 
@@ -447,15 +447,15 @@ Při odesílání úlohy do clusteru HDInsight budete vyzváni k propojení clus
 1. Zadejte platné uživatelské jméno Ambari.
 2. Zadejte platné heslo.
 
-   ![Nástroje pro podregistr Spark & pro Visual Studio Code uživatelské jméno](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png" alt-text="Nástroje pro podregistr Spark & pro Visual Studio Code uživatelské jméno":::
 
-   ![Nástroje Spark & pro Visual Studio Code hesla](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png" alt-text="Nástroje Spark & pro Visual Studio Code hesla":::
 
    > [!NOTE]
    >
    >V případě, že se `Spark / Hive: List Cluster` chcete podívat na propojený cluster, můžete použít:
    >
-   >![Připojené nástroje pro Visual Studio Code Reader pro Spark &](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   >:::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Připojené nástroje pro Visual Studio Code Reader pro Spark &":::
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
@@ -467,7 +467,7 @@ Vyberte Průzkumníka Azure HDInsight a rozbalte účet Data Lake Storage Gen2. 
 
 Odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2. Pokud váš účet Azure nemá přístup pro zápis k Gen2 úložišti, budete vyzváni k zadání přístupového klíče úložiště. Po ověření přístupového klíče se úloha úspěšně odešle.
 
-![Nástroje pro podregistr Spark & pro Visual Studio Code AccessKey](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
+:::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png" alt-text="Nástroje pro podregistr Spark & pro Visual Studio Code AccessKey":::
 
 > [!NOTE]
 >

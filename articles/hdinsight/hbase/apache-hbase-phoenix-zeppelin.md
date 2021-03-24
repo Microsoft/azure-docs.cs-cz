@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ff963e661a2b258c1eb452ed63f41f4e7d84c6a0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944775"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867776"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Použití Apache Zeppelin ke spouštění dotazů Apache Phoenix dotazů přes Apache HBA ve službě Azure HDInsight
 
@@ -30,68 +30,68 @@ Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](
 
 1. Na stránce Zeppelin vyberte **vytvořit novou poznámku**.
 
-    ![Zeppelin interaktivní dotazy HDInsight](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png" alt-text="Zeppelin interaktivní dotazy HDInsight" border="true":::
 
 1. V dialogovém okně **vytvořit novou poznámku** zadejte nebo vyberte následující hodnoty:
 
-    - Poznámka název: zadejte název poznámky.
-    - Výchozí Interpret: v rozevíracím seznamu vyberte **JDBC** .
+   - Poznámka název: zadejte název poznámky.
+   - Výchozí Interpret: v rozevíracím seznamu vyberte **JDBC** .
 
-    Pak vyberte **vytvořit poznámku**.
+   Pak vyberte **vytvořit poznámku**.
 
 1. Ujistěte se, že se v hlavičce poznámkového bloku zobrazuje stav připojeno. Je označený zelenou tečkou v pravém horním rohu.
 
-    ![Stav poznámkového bloku Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Stav poznámkového bloku Zeppelin")
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png" alt-text="Stav poznámkového bloku Zeppelin" border="true":::
 
 1. Vytvořte tabulku HBA. Zadejte následující příkaz a stiskněte klávesu **SHIFT + ENTER**:
 
-    ```sql
-    %jdbc(phoenix)
-    CREATE TABLE Company (
-        company_id INTEGER PRIMARY KEY,
-        name VARCHAR(225)
-    );
-    ```
+   ```sql
+   %jdbc(phoenix)
+   CREATE TABLE Company (
+       company_id INTEGER PRIMARY KEY,
+       name VARCHAR(225)
+   );
+   ```
 
-    Příkaz **% JDBC (Phoenix)** v prvním řádku oznamuje poznámkovému bloku, aby používal Interpret JDBC v Phoenixu.
+   Příkaz **% JDBC (Phoenix)** v prvním řádku oznamuje poznámkovému bloku, aby používal Interpret JDBC v Phoenixu.
 
 1. Zobrazení vytvořených tabulek.
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT DISTINCT table_name
-    FROM SYSTEM.CATALOG
-    WHERE table_schem is null or table_schem <> 'SYSTEM';
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT DISTINCT table_name
+   FROM SYSTEM.CATALOG
+   WHERE table_schem is null or table_schem <> 'SYSTEM';
+   ```
 
 1. Vloží hodnoty do tabulky.
 
-    ```sql
-    %jdbc(phoenix)
-    UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
-    UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
-    ```
+   ```sql
+   %jdbc(phoenix)
+   UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
+   UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
+   ```
 
 1. Dotaz na tabulku
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT * FROM dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT * FROM dbo.Company;
+   ```
 
 1. Odstraní záznam.
 
-    ```sql
-    %jdbc(phoenix)
-    DELETE FROM dbo.Company WHERE COMPANY_ID=1;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DELETE FROM dbo.Company WHERE COMPANY_ID=1;
+   ```
 
 1. Přetáhněte tabulku.
 
-    ```sql
-    %jdbc(phoenix)
-    DROP TABLE dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DROP TABLE dbo.Company;
+   ```
 
 ## <a name="next-steps"></a>Další kroky
 

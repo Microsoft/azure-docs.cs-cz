@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d42cedbc5dc20c929703be106e732b4806f3902
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c9c3b2d915e54cf954703c56c2087637cc80aa0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940611"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864614"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do Azure SQL Database
 
@@ -35,7 +35,7 @@ Začněte vytvořením Jupyter Notebook přidruženého ke clusteru Spark. Pomoc
 1. Z [Azure Portal](https://portal.azure.com/)otevřete svůj cluster.
 1. Na pravé straně vyberte **Jupyter notebook** pod **řídicími panely clusteru** .  Pokud nevidíte **řídicí panely clusteru**, vyberte v nabídce vlevo možnost **Přehled** . Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
-    ![Jupyter Notebook v Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter Notebook ve Sparku")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png " alt-text="Jupyter Notebook v Apache Spark" border="true":::
 
    > [!NOTE]  
    > K Jupyter Notebook v clusteru Spark můžete přistupovat také otevřením následující adresy URL v prohlížeči. Nahraďte **název_clusteru** názvem vašeho clusteru:
@@ -44,7 +44,7 @@ Začněte vytvořením Jupyter Notebook přidruženého ke clusteru Spark. Pomoc
 
 1. V Jupyter Notebook v pravém horním rohu klikněte na **Nový** a pak kliknutím na **Spark** vytvořte Poznámkový blok Scala. Jupyter poznámkové bloky v clusteru HDInsight Spark také poskytují jádro **PySpark** pro aplikace Python2 a jádro **PySpark3** pro aplikace python3. V tomto článku vytvoříme Poznámkový blok Scala.
 
-    ![Jádra pro Jupyter Notebook ve Sparku](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Jádra pro Jupyter Notebook ve Sparku")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png " alt-text="Jádra pro Jupyter Notebook ve Sparku" border="true":::
 
     Další informace o jádrech najdete v tématu [použití Jupyter Notebookch jader s Apache Spark clustery v HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
@@ -53,7 +53,7 @@ Začněte vytvořením Jupyter Notebook přidruženého ke clusteru Spark. Pomoc
 
 1. Otevře se nový Poznámkový blok s výchozím názvem bez **názvu**. Klikněte na název poznámkového bloku a zadejte název podle svého výběru.
 
-    ![Zadání názvu poznámkového bloku](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Zadání názvu poznámkového bloku")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png " alt-text="Zadání názvu poznámkového bloku" border="true":::
 
 Nyní můžete začít vytvářet aplikace.
 
@@ -100,7 +100,7 @@ V této části si přečtete data z tabulky (například **tabulky SalesLT. Add
 
     Zobrazí se výstup podobný následujícímu obrázku:
 
-    ![výstup schématu](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "výstup schématu")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png " alt-text="výstup schématu" border="true":::
 
 1. Můžete také provést operace, jako je, načíst prvních 10 řádků.
 
@@ -167,11 +167,11 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
 
     a. Spusťte SSMS a připojte se k Azure SQL Database poskytnutím podrobností o připojení, jak je znázorněno na snímku obrazovky níže.
 
-    ![Připojení k SQL Database pomocí SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Připojení k SQL Database pomocí SSMS1")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png " alt-text="Připojení k SQL Database pomocí SSMS1" border="true":::
 
     b. Z **Průzkumník objektů** rozbalte databázi a uzel tabulky, aby se zobrazila vytvořená tabulka **dbo. TVK** .
 
-    ![Připojení k SQL Database pomocí SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Připojení k SQL Database pomocí SSMS2")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png " alt-text="Připojení k SQL Database pomocí SSMS2" border="true":::
 
 1. Spusťte dotaz v SSMS a zobrazte sloupce v tabulce.
 
@@ -209,7 +209,7 @@ V této části streamuje data do `hvactable` , které jste vytvořili v předch
 
 1. Výstup ukazuje schéma **HVAC.csv**. `hvactable`Má také stejné schéma. Výstup vypíše sloupce v tabulce.
 
-    ![Tabulka schématu Apache Spark HDInsight](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schéma tabulky")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png " alt-text="Tabulka schématu Apache Spark HDInsight" border="true":::
 
 1. Nakonec použijte následující fragment kódu ke čtení dat z HVAC.csv a jejich streamování do do `hvactable` ve vaší databázi. Vložte fragment kódu do buňky kódu, nahraďte zástupné hodnoty hodnotami pro vaši databázi a potom stiskněte **SHIFT + ENTER** pro spuštění.
 

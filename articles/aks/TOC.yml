@@ -270,7 +270,7 @@
           href: use-pod-security-policies.md
         - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API
           href: api-server-authorized-ip-ranges.md
-        - name: Řízení nasazování s využitím Azure Policy (Preview)
+        - name: Řízení nasazení pomocí Azure Policy
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Aktualizace přihlašovacích údajů clusteru
           href: update-credentials.md

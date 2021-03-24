@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931769"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872009"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Značky služby NSG pro Azure HDInsight
 
@@ -40,7 +40,7 @@ Nejjednodušší způsob, jak začít používat značky služeb v clusteru HDIn
 
 1. V rozevíracím seznamu **tag zdrojové služby** vyberte **HDInsight**.
 
-    ![Přidat značku služby z Azure Portal](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    :::image type="content" source="./media/hdinsight-service-tags/azure-portal-add-service-tag.png" alt-text="Přidat značku služby z Azure Portal":::
 
 Tato značka obsahuje IP adresy služeb stavu a správy pro všechny oblasti, kde je HDInsight k dispozici. Značka zajistí, že cluster bude moci komunikovat s nezbytnými službami pro stav a správu bez ohledu na to, kde je vytvořen.
 

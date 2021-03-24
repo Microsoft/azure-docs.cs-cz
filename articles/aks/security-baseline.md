@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: de32de5fc78919154bade3895cab6da82b175a93
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8fd058c88e11764a538f67fe49aba267e706bf11
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740587"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951832"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Základní hodnoty zabezpečení Azure pro Azure Kubernetes Service
 
@@ -114,7 +114,7 @@ Při vytváření nebo aktualizaci virtuální sítě v rámci předplatného je
 
 Pokud zjišťování nebo prevence vniknutí není v závislosti na kontrole datové části nebo na analýze chování nutný, je možné Azure Application Gateway s WAF použít a nakonfigurovat v "režimu detekce" k protokolování výstrah a hrozeb nebo "režim prevence" k aktivnímu blokování zjištěných vniknutí a útoků.
 
-- [Vysvětlení osvědčených postupů pro zabezpečení clusteru AKS pomocí WAF](https://docs.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf)
+- [Vysvětlení osvědčených postupů pro zabezpečení clusteru AKS pomocí WAF](./operator-best-practices-network.md#secure-traffic-with-a-web-application-firewall-waf)
 
 - [Jak nasadit Azure Application Gateway (Azure WAF)](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
@@ -158,7 +158,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 **Odpovědnost:** Zákazník
 
@@ -190,11 +190,11 @@ Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou pro
 
 Protokoly Azure Monitor můžete použít k povolení a dotazování protokolů z AKS hlavních komponent, Kube-apiserver a Kube-Controller-Manager. Vytvářejte a spravujte uzly, které spouštějí kubelet, s modulem runtime kontejneru a nasaďte své aplikace prostřednictvím spravovaného serveru rozhraní Kubernetes API. 
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](/azure/aks/view-master-logs)
+- [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](./view-control-plane-logs.md)
 
 **Odpovědnost:** Zákazník
 
@@ -232,13 +232,13 @@ Exportujte tyto protokoly do Log Analytics nebo jiné úložné platformy. V Azu
 
 Povolte a zapněte tato data do Azure Sentinel nebo SIEM třetí strany na základě podnikových požadavků vaší organizace.
 
-- [Tady si přečtěte schéma protokolu včetně rolí protokolů.](/azure/aks/view-master-logs)
+- [Tady si přečtěte schéma protokolu včetně rolí protokolů.](./view-control-plane-logs.md)
 
-- [Principy Azure Monitor pro kontejnery](/azure/azure-monitor/insights/container-insights-overview)
+- [Principy Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md)
 
-- [Postup povolení Azure Monitor pro kontejnery](/azure/azure-monitor/insights/container-insights-onboard)
+- [Postup povolení Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](/azure/aks/view-master-logs)
+- [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](./view-control-plane-logs.md)
 
 **Odpovědnost:** Zákazník
 
@@ -265,7 +265,7 @@ Povolte protokoly auditu pro hlavní komponenty AKS, například:
 
 Zapněte také další protokoly auditu, jako je Kube-audit. 
 
-- [Jak povolit a zkontrolovat protokoly hlavního uzlu Kubernetes v AKS](/azure/aks/view-master-logs)
+- [Jak povolit a zkontrolovat protokoly hlavního uzlu Kubernetes v AKS](./view-control-plane-logs.md)
 
 **Odpovědnost:** Zákazník
 
@@ -287,7 +287,7 @@ Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktua
 
 **Doprovodné** materiály: zprovoznění instancí služby Azure KUBERNETES (AKS) pro Azure monitor a nastavení odpovídající doby uchování pracovního prostoru Azure Log Analytics podle požadavků vaší organizace na dodržování předpisů. 
 
-- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -301,11 +301,11 @@ Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet pr
 
 Podívejte se na protokoly generované hlavními komponentami AKS (Kube-apiserver a Kube-controllermanager) pro řešení potíží s aplikací a službami. Povolte a připojte data do Azure Sentinel nebo SIEM třetí strany pro centralizovanou správu protokolů a monitorování.
 
-- [Jak povolit a zkontrolovat protokoly hlavního uzlu Kubernetes v AKS](/azure/aks/view-master-logs)
+- [Jak povolit a zkontrolovat protokoly hlavního uzlu Kubernetes v AKS](./view-control-plane-logs.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -333,7 +333,7 @@ Zkontrolujte Security Center upozornění na hrozby a škodlivou aktivitu zjišt
 
 - [Referenční příručka k výstrahám zabezpečení](../security-center/alerts-reference.md)
 
-- [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](../security-center/alerts-reference.md#alerts-akscluster)
 
 **Odpovědnost:** Zákazník
 
@@ -417,7 +417,7 @@ Vytvořte zásady a postupy týkající se používání vyhrazených účtů pr
 
 **Pokyny**: použití jednotného přihlašování pro službu Azure Kubernetes Service (AKS) Azure Active Directory s integrovaným ověřováním služby Azure AD pro cluster AKS.
 
-- [Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase](/azure/azure-monitor/insights/container-insights-livedata-overview)
+- [Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -514,7 +514,7 @@ Uvědomte si role používané pro účely podpory nebo řešení potíží. Nap
 **Pokyny**: Integrujte ověřování uživatelů pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Vytvořte nastavení diagnostiky pro Azure AD a odešlete protokoly auditu a přihlašování do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy (například při pokusu o přihlášení k deaktivovanému účtu) v pracovním prostoru Azure Log Analytics.
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -664,11 +664,11 @@ Nakonfigurujte výstrahy pro proaktivní oznamování nebo vytváření protokol
 
 Pomocí protokolu aktivit Azure můžete monitorovat clustery AKS a související prostředky na nejvyšší úrovni. Integrací s Prometheus můžete zobrazit metriky aplikací a úloh, které shromažďuje z uzlů a Kubernetes pomocí dotazů pro vytváření vlastních výstrah, řídicích panelů a podrobných podrobných analýz.
 
-- [Principy Azure Monitor pro kontejnery](/azure/azure-monitor/insights/container-insights-overview)
+- [Principy Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md)
 
-- [Postup povolení Azure Monitor pro kontejnery](/azure/azure-monitor/insights/container-insights-onboard)
+- [Postup povolení Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Odpovědnost:** Zákazník
 
@@ -704,7 +704,7 @@ Všimněte si, že proces udržování uzlů Windows serveru v aktuálním stavu
 
 - [Pochopení způsobu použití aktualizací na uzlech clusteru AKS se systémem Linux](node-updates-kured.md)
 
-- [Postup upgradu fondu uzlů AKS pro clustery AKS, které používají uzly Windows serveru](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool)
+- [Postup upgradu fondu uzlů AKS pro clustery AKS, které používají uzly Windows serveru](./use-multiple-node-pools.md#upgrade-a-node-pool)
 
 - [Upgrade imagí uzlu služby Azure Kubernetes Service (AKS)](node-image-upgrade.md)
 
@@ -792,7 +792,7 @@ Značky, štítky nebo značky lze použít k pravidelnému sjednocení inventá
 
 - [Spravované clustery – značky aktualizace](/rest/api/aks/managedclusters/updatetags)
 
-- [Určení značky, značky nebo značky pro fond uzlů](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#specify-a-taint-label-or-tag-for-a-node-pool)
+- [Určení značky, značky nebo značky pro fond uzlů](./use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)
 
 **Odpovědnost:** Zákazník
 
@@ -887,7 +887,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -1030,7 +1030,7 @@ Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), kt
 
 - [Posílení zabezpečení pro hostitelský operační systém uzlu agenta AKS](security-hardened-vm-host-image.md)
 
-- [Principy konfigurace stavu clusterů AKS](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#control-plane)
+- [Principy konfigurace stavu clusterů AKS](./concepts-clusters-workloads.md#control-plane)
 
 - [Principy posílení zabezpečení v hostitelích virtuálních počítačů s AKS](security-hardened-vm-host-image.md)
 
@@ -1070,7 +1070,7 @@ Vytvořte vlastní zásady pro audit a vynuťte konfiguraci systému. Vývoj pro
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -1086,7 +1086,7 @@ Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), kt
 
 - [Principy posílení zabezpečení v hostitelích virtuálních počítačů s AKS](security-hardened-vm-host-image.md)
 
-- [Principy konfigurace stavu clusterů AKS](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#control-plane)
+- [Principy konfigurace stavu clusterů AKS](./concepts-clusters-workloads.md#control-plane)
 
 **Odpovědnost:** Zákazník
 
@@ -1124,7 +1124,7 @@ Vyhněte se použití pevných nebo sdílených přihlašovacích údajů.
 
 - [Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)](concepts-security.md)
 
-- [Použití Key Vault s clusterem AKS](https://docs.microsoft.com/azure/aks/developer-best-practices-pod-security#limit-credential-exposure)
+- [Použití Key Vault s clusterem AKS](./developer-best-practices-pod-security.md#limit-credential-exposure)
 
 **Odpovědnost:** Zákazník
 
@@ -1138,7 +1138,7 @@ Upozorňujeme, že pod spravovanými identitami jsou určené jenom pro systémy
 
 Instanční objekty se dají používat taky v clusterech AKS. Clustery s použitím instančních objektů se ale můžou dorazit na stav, ve kterém se musí obnovit instanční objekt, aby se cluster mohl udržovat v provozu. Správa instančních objektů přináší složitost, což je důvod, proč je místo toho snazší použít spravované identity. Stejné požadavky oprávnění platí pro instanční objekty i spravované identity.
 
-- [Pochopení spravovaných identit a Key Vault pomocí služby Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/developer-best-practices-pod-security#limit-credential-exposure)
+- [Pochopení spravovaných identit a Key Vault pomocí služby Azure Kubernetes Service (AKS)](./developer-best-practices-pod-security.md#limit-credential-exposure)
 
 - [Identita pod Azure AD pod](https://github.com/Azure/aad-pod-identity)
 
@@ -1170,9 +1170,9 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 - [Referenční příručka k výstrahám zabezpečení](../security-center/alerts-reference.md)
 
-- [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](../security-center/alerts-reference.md#alerts-akscluster)
 
-- [AKS sdílené zodpovědnosti a sady démonů](https://docs.microsoft.com/azure/aks/support-policies#shared-responsibility)
+- [AKS sdílené zodpovědnosti a sady démonů](./support-policies.md#shared-responsibility)
 
 **Odpovědnost:** Sdílené
 
@@ -1194,9 +1194,9 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 - [Referenční příručka k výstrahám zabezpečení](../security-center/alerts-reference.md)
 
-- [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](../security-center/alerts-reference.md#alerts-akscluster)
 
-- [AKS sdílené zodpovědnosti a sady démonů](https://docs.microsoft.com/azure/aks/support-policies#shared-responsibility)
+- [AKS sdílené zodpovědnosti a sady démonů](./support-policies.md#shared-responsibility)
 
 **Odpovědnost:** Sdílené
 
@@ -1238,7 +1238,7 @@ Příkazy PowerShellu umožňují pravidelné automatizované zálohování Key 
 
 - [Postup zálohování Key Vault tajných kódů](/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret)
 
-- [Postup povolení Azure Backup](/azure/backup/)
+- [Postup povolení Azure Backup](../backup/index.yml)
 
 **Odpovědnost:** Zákazník
 
@@ -1250,15 +1250,15 @@ Příkazy PowerShellu umožňují pravidelné automatizované zálohování Key 
 
 Pomocí příkazů PowerShellu pravidelně provádějte obnovení dat Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů.
 
-- [Postup obnovení certifikátů Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení certifikátů Key Vault](/powershell/module/az.keyvault/restore-azkeyvaultcertificate?amp;preserve-view=true&view=azps-4.8.0)
 
-- [Postup obnovení klíčů Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení klíčů Key Vault](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Postup obnovení Key Vault spravovaných účtů úložiště](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [Postup obnovení tajných kódů Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení tajných kódů Key Vault](/powershell/module/az.keyvault/restore-azkeyvaultsecret?amp;preserve-view=true&view=azps-4.8.0)
 
-- [Postup obnovení souborů ze zálohy virtuálního počítače Azure](/azure/backup/backup-azure-restore-files-from-vm)
+- [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../backup/backup-azure-restore-files-from-vm.md)
 
 **Odpovědnost:** Zákazník
 
@@ -1272,7 +1272,7 @@ Povolí Soft-Delete v Key Vault k ochraně klíčů před náhodným nebo škodl
 
 - [Principy šifrování služby Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Postup povolení Soft-Delete v Key Vault](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Odpovědnost:** Zákazník
 
@@ -1371,5 +1371,5 @@ Vyberte datový konektor Security Center pro streamování výstrah do Azure Sen
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

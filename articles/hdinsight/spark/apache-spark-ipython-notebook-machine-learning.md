@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13e5609c965a28405804b8a993280b13755b2d3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930549"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866063"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace Apache Spark Machine Learning ve službě Azure HDInsight
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Aplikace používá ukázková **HVAC.csv** data, která jsou ve výchozím nastavení k dispozici na všech clusterech. Soubor je umístěn v umístění `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Můžete odhadnout, jestli bude budova Hotter nebo studená na základě cílové teploty, zadaného ID systému a stáří systému.
 
-![Snímek dat používaných jako příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Snímek dat používaných jako příklad strojového učení Spark")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png " alt-text="Snímek dat používaných jako příklad strojového učení Spark" border="true":::
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Vývoj aplikace strojového učení Sparku pomocí knihovny Spark MLlib
 
@@ -138,7 +138,7 @@ Tato aplikace používá k zařazení dokumentu [kanál Spark ml](https://spark.
 
     Porovnejte výstup s nezpracovaným souborem CSV. Například první řádek souboru CSV obsahuje tato data:
 
-    ![Snímek výstupních dat pro Spark Machine Learning – příklad](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Snímek výstupních dat pro Spark Machine Learning – příklad")
+    :::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png " alt-text="Snímek výstupních dat pro Spark Machine Learning – příklad" border="true":::
 
     Všimněte si, že skutečná teplota je nižší než cílová teplota. To značí, že je budova studená. Hodnota **popisku** v prvním řádku je **0,0**, což znamená, že budova není horká.
 
@@ -199,7 +199,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste
 
 1. Vyberte **Odstranit**. Vyberte **Ano**.
 
-![Azure Portal odstraní cluster HDInsight.](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure Portal odstraní cluster HDInsight." border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1c6b7ec6c4ef24ec00fbfc55a65a968e00561c2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 793b4da8fcf46ba4d5618f8ada86f9c3c8026ffd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632718"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865260"
 ---
 # <a name="restore-using-azure-application-consistent-snapshot-tool-preview"></a>Obnovení pomocí nástroje pro vytváření snímků konzistentního vzhledem k aplikacím Azure (Preview)
 
@@ -41,7 +41,7 @@ Obnovení svazku ze snímku se provádí pomocí `azacsnap -c restore` příkazu
 - `--restore revertvolume` Obnoví cílový svazek na předchozí stav na základě nejnovějšího snímku.  Použití tohoto příkazu jako součást převzetí služeb při selhání DR do spárované oblasti DR. Tento příkaz **zastaví** replikaci úložiště z primární lokality do sekundární lokality a obnoví cílové svazky Dr na všech dostupných snímcích na svazcích zotavení po havárii spolu s doporučeným systémem souborů mountpoints pro vrácené svazky zotavení po havárii. Tento příkaz by měl být spuštěný v systému Azure large instance **v oblasti zotavení po havárii** (to znamená cílový systém pro převzetí služeb při selhání).
     > [!NOTE]
     > Dílčí příkaz ( `--restore revertvolume` ) je k dispozici pouze pro velkou instanci Azure a není k dispozici pro Azure NetApp Files.
-- `--hanasid <SAP HANA SID>` je SAP HANA identifikátor SID vybraný z konfiguračního souboru pro použití příkazů pro obnovení svazku.
+- `--dbsid <SAP HANA SID>` je SAP HANA identifikátor SID vybraný z konfiguračního souboru pro použití příkazů pro obnovení svazku.
 
 - `[--configfile <config filename>]` je volitelný parametr, který umožňuje názvy vlastních konfiguračních souborů.
 
@@ -64,7 +64,7 @@ Konfigurační soubor (například `DR.json` ) by měl obsahovat pouze svazky Dr
 ### <a name="output-of-the-azacsnap--c-restore---restore-snaptovol-command-for-single-node-scenario"></a>Výstup `azacsnap -c restore --restore snaptovol` příkazu (pro Single-Node scénář)
 
 ```output
-> azacsnap --configfile DR.json -c restore --restore snaptovol --hanasid H80
+> azacsnap --configfile DR.json -c restore --restore snaptovol --dbsid H80
 * This program is designed for those customers who have previously installed the
   Production HANA instance in the Disaster Recovery Location either as a
   stand-alone instance or as part of a multi-purpose environment.

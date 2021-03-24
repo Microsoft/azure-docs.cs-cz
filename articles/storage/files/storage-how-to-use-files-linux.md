@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673683"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952333"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v `/etc/fstab` .
@@ -94,7 +94,7 @@ uname -r
     Pokud nemůžete otevřít port 445 ve vaší podnikové síti nebo pokud ho zabrání poskytovatel internetových služeb, můžete použít připojení k síti VPN nebo ExpressRoute k tomu, abyste mohli pracovat s portem 445. Další informace najdete v tématu [požadavky na síť pro přímý přístup ke sdílení souborů Azure](storage-files-networking-overview.md)..
 
 ## <a name="mounting-azure-file-share"></a>Připojení sdílené složky Azure
-Pokud chcete použít sdílenou složku Azure s distribucí systému Linux, musíte vytvořit adresář, který bude sloužit jako přípojný bod pro sdílenou složku Azure. Přípojný bod se dá vytvořit kdekoli na svém systému Linux, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Za přípojný bod použijete `mount` příkaz pro přístup ke sdílené složce Azure.
+Pokud chcete použít sdílenou složku Azure s distribucí systému Linux, musíte vytvořit adresář, který bude sloužit jako přípojný bod pro sdílenou složku Azure. Přípojný bod se dá vytvořit kdekoli na svém systému Linux, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/Mount.. Za přípojný bod použijete `mount` příkaz pro přístup ke sdílené složce Azure.
 
 V případě potřeby můžete stejnou sdílenou složku Azure připojit k několika přípojným bodům.
 
@@ -106,7 +106,7 @@ V případě potřeby můžete stejnou sdílenou složku Azure připojit k něko
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ V případě potřeby můžete stejnou sdílenou složku Azure připojit k něko
 Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `sudo umount $mntPath` k odpojení sdílené složky.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvoření trvalého přípojného bodu pro sdílenou složku Azure s `/etc/fstab`
-1. **Vytvoření složky pro přípojný bod**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Například následující příkaz vytvoří nový adresář, nahradí `<your-resource-group>` , `<your-storage-account>` a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
+1. **Vytvoření složky pro přípojný bod**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/Mount.. Například následující příkaz vytvoří nový adresář, nahradí `<your-resource-group>` , `<your-storage-account>` a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -250,22 +250,22 @@ Od verze Linux kernel 4,18 se modul jádra SMB, který se volá `cifs` z původn
 
 | Distribuce | Může zakázat protokol SMB 1. |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE, přestupné 15,0 | No |
-| openSUSE přestupné 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15,1 | No |
+| Ubuntu 14.04 – 16.04 | Ne |
+| Ubuntu 18.04 | Ano |
+| Ubuntu 19.04 + | Ano |
+| Debian 8-9 | Ne |
+| Debian 10 + | Ano |
+| Fedora 29 + | Ano |
+| CentOS 7 | Ne | 
+| CentOS 8 + | Ano |
+| Red Hat Enterprise Linux 6. x-7. x | Ne |
+| Red Hat Enterprise Linux 8 + | Ano |
+| openSUSE, přestupné 15,0 | Ne |
+| openSUSE přestupné 15.1 + | Ano |
+| openSUSE Tumbleweed | Ano |
+| SUSE Linux Enterprise 11. x-12. x | Ne |
+| SUSE Linux Enterprise 15 | Ne |
+| SUSE Linux Enterprise 15,1 | Ne |
 
 Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux podporuje `disable_legacy_dialects` parametr Module.
 

@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 04da5d668515fe96d50d4e6a7d0f5ff1c4c48c27
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4aa25368e156ce793e969f866490352e253559fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931383"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871720"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrace clusteru HDInsight na novější verzi
 
@@ -24,7 +24,7 @@ Pro využití nejnovějších funkcí HDInsight doporučujeme, aby clustery HDIn
 ## <a name="migration-tasks"></a>Úlohy migrace
 
 Postup upgradu clusteru HDInsight je následující.
-![Diagram pracovního postupu upgradu HDInsight](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png" alt-text="Diagram pracovního postupu upgradu HDInsight" border="false":::
 
 1. Přečtěte si jednotlivé části tohoto dokumentu, abyste pochopili změny, které mohou být požadovány při upgradu clusteru HDInsight.
 2. Vytvořte cluster jako prostředí pro testování/zajištění kvality. Další informace o vytvoření clusteru najdete v tématu [informace o vytváření clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md) .

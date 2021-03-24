@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Tento článek poskytuje přehled architektury agentů Kubernetes s povoleným ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121894"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953064"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektura agenta Kubernetes povoleného ARC Azure
 
@@ -85,7 +85,7 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
 
 ## <a name="understand-connectivity-modes"></a>Principy režimů připojení
 
-| Režim připojení | Description |
+| Režim připojení | Popis |
 | ----------------- | ----------- |
 | Plně připojeno | Agenti můžou konzistentně komunikovat s Azure s malým zpožděním při rozšiřování konfigurací GitOps, vynucování zásad Azure Policy a gatekeeper a shromažďování metrik úloh a protokolů v Azure Monitor. |
 | Částečně připojeno | Certifikát MSI vydaný v `clusteridentityoperator` je platný až 90 dní před vypršením platnosti certifikátu. Po vypršení platnosti přestane prostředek Kubernetes s povoleným ARC Azure fungovat. Pokud chcete znovu aktivovat všechny funkce ARC Azure v clusteru, odstraňte a znovu vytvořte prostředky a agenty s povoleným Kubernetes ARC Azure. Během 90 dnů připojte cluster alespoň jednou za 30 dní. |
@@ -93,5 +93,5 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Projděte si náš rychlý Start, který [připojí cluster Kubernetes ke službě Azure ARC](./connect-cluster.md).
+* Projděte si náš rychlý Start, který [připojí cluster Kubernetes ke službě Azure ARC](./quickstart-connect-cluster.md).
 * Přečtěte si další informace o vytváření připojení mezi clusterem a úložištěm Git jako [prostředku konfigurace s povoleným Kubernetesm Azure ARC](./conceptual-configurations.md).

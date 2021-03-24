@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 2a9f0a8c943f539166f18a1e41a36136fbb63a6f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584278"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868643"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Jak používat Apache Spark (s technologií Azure synapse Analytics) v kanálu Machine Learning (Preview)
 
@@ -92,6 +92,8 @@ Prvním krokem je konfigurace `SynapseCompute` . `linked_service`Argument je `Li
 Jakmile je konfigurace vytvořená, vytvoříte strojové učení `ComputeTarget` předáním do `Workspace` , `ComputeTargetAttachConfiguration` a názvem, který byste chtěli odkazovat na výpočetní prostředky v pracovním prostoru Machine Learning. Volání `ComputeTarget.attach()` je asynchronní, takže ukázka blokuje až do dokončení volání.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>Vytvoření `SynapseSparkStep` , které používá propojený fond Apache Spark
+
+Ukázková úloha Spark poznámkového bloku [v rámci fondu Apache Spark](https://github.com/azure/machinelearningnotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) definuje jednoduchý kanál strojového učení. Jako první Poznámkový blok definuje krok přípravy dat, který je `synapse_compute` určen definovaným v předchozím kroku. Poznámkový blok pak definuje krok školení, který využívá výpočetní cíl, který je vhodnější pro školení. Ukázkový Poznámkový blok používá záchrannou databázi Titanic k předvedení vstupu a výstupu dat; ve skutečnosti data nečistí ani nevytváří prediktivní model. Vzhledem k tomu, že v této ukázce není žádné reálné školení, krok školení využívá levné výpočetní prostředky založené na procesoru.
 
 Data se natoků do kanálu strojového učení pomocí `DatasetConsumptionConfig` objektů, které mohou obsahovat tabulková data nebo sady souborů. Data často pocházejí ze souborů v úložišti objektů BLOB v úložišti dat v pracovním prostoru. Následující kód ukazuje typický kód pro vytvoření vstupu do kanálu strojového učení:
 

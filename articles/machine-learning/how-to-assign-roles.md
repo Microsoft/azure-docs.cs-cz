@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bdd59c80408910bf8ca51bf787c8ff15dc2a4893
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98624536"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889752"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -453,7 +453,7 @@ Slouží k definování rozsahu role pouze k označení dat popisků:
 }
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Tady je několik věcí, na kterých je potřeba vědět, když používáte řízení přístupu na základě role Azure (Azure RBAC):
 
@@ -464,7 +464,7 @@ Tady je několik věcí, na kterých je potřeba vědět, když používáte ř�
 - Pokud existují dvě přiřazení rolí stejného Azure Active Directoryho uživatele s konfliktními oddíly akcí/NotActions, operace uvedené v NotActions z jedné role se nemusí projevit, pokud jsou také uvedeny jako akce v jiné roli. Další informace o tom, jak Azure analyzuje přiřazení rolí, najdete v článku [jak Azure RBAC určuje, jestli má uživatel přístup k prostředku](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) .
 
 - K nasazení výpočetních prostředků v rámci virtuální sítě musíte explicitně mít oprávnění k těmto akcím:
-    - `Microsoft.Network/virtualNetworks/join/action` na prostředku virtuální sítě.
+    - `Microsoft.Network/virtualNetworks/*/read` v prostředcích virtuální sítě.
     - `Microsoft.Network/virtualNetworks/subnet/join/action` v prostředku podsítě.
     
     Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](../role-based-access-control/built-in-roles.md#networking).

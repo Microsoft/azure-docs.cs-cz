@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: tilarso
+ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90705482"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952251"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Jaké je bezpečné skóre identity v Azure Active Directory?
 
@@ -24,7 +24,7 @@ Jak zabezpečený je váš tenant služby Azure AD? Pokud si nejste jisti, jak n
 
 ## <a name="what-is-an-identity-secure-score"></a>Co je bezpečnostní skóre identity?
 
-Skóre identity Secure je číslo mezi 1 a 223, které funguje jako indikátor, jak jste se s doporučenými doporučeními Microsoftu pro zabezpečení vyrovnali. Každá akce zlepšení v zabezpečeném skóre identity je přizpůsobená konkrétní konfiguraci.  
+Bezpečné skóre identity je procentuální hodnota, která funguje jako indikátor, jak vám vyhovuje doporučení osvědčených postupů Microsoftu pro zabezpečení. Každá akce zlepšení v zabezpečeném skóre identity je přizpůsobená konkrétní konfiguraci.  
 
 ![Bezpečnostní skóre](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -78,7 +78,7 @@ Bezpečnostní skóre identity můžou používat následující role:
 
 ### <a name="how-are-controls-scored"></a>Jak se řídí skóre?
 
-Ovládací prvky mohou být hodnoceny dvěma způsoby. Některé jsou v binárním formátu skóre – Pokud máte funkci nebo nastavení nakonfigurovanou na základě našeho doporučení, získáte 100% skóre. Další hodnocení jsou vypočítána jako procento z celkové konfigurace. Pokud třeba doporučení pro zlepšení dostanou, získáte 30 bodů, Pokud chráníte všechny uživatele pomocí vícefaktorového ověřování a budete mít jenom 5 z 100 uživatelů s ochranou (celkem 5), měli byste mít k dispozici částečné skóre kolem 2 bodů (5 Protected/100 Total * 30 Max PTS = 2 PTS částečný skore).
+Ovládací prvky mohou být hodnoceny dvěma způsoby. Některé jsou v binárním formátu skóre – Pokud máte funkci nebo nastavení nakonfigurovanou na základě našeho doporučení, získáte 100% skóre. Další hodnocení jsou vypočítána jako procento z celkové konfigurace. Pokud třeba doporučení pro zlepšení stanoví, že získáte maximálně 10,71%, Pokud chráníte všechny uživatele pomocí vícefaktorového ověřování a zadáte jenom 5 ze 100 z celkového počtu chráněných uživatelů, budete mít k dispozici částečné skóre kolem 0,53% (5 Protected/100 Total * 10,71% Max = 0,53% Partial skore).
 
 ### <a name="what-does-not-scored-mean"></a>Co znamená, když skóre není určené?
 
@@ -98,7 +98,7 @@ Nikoli. Bezpečnostní skóre nevyjadřuje absolutní míru toho, jak je pravdě
 
 ### <a name="how-should-i-interpret-my-score"></a>Jak mám skóre interpretovat?
 
-Dostáváte body za konfiguraci doporučených funkcí zabezpečení nebo za provádění úloh souvisejících se zabezpečením (například za prohlížení sestav). U některých akcí obdržíte skóre za částečné dokončení, například za povolení vícefaktorového ověřování pro uživatele. Vaše zabezpečené skóre je přímo reprezentativní pro služby zabezpečení společnosti Microsoft, které používáte. Mějte na paměti, že zabezpečení musí být vyvážené pomocí použitelnosti. Všechna bezpečnostní opatření mají dopad na uživatele. Opatření s nízkým dopadem na uživatele by na každodenní práci uživatelů měla mít minimální nebo nulový vliv.
+Vaše skóre vylepšuje konfiguraci doporučených funkcí zabezpečení nebo provádění úloh souvisejících se zabezpečením (například čtení sestav). U některých akcí obdržíte skóre za částečné dokončení, například za povolení vícefaktorového ověřování pro uživatele. Vaše zabezpečené skóre je přímo reprezentativní pro služby zabezpečení společnosti Microsoft, které používáte. Mějte na paměti, že zabezpečení musí být vyvážené pomocí použitelnosti. Všechna bezpečnostní opatření mají dopad na uživatele. Opatření s nízkým dopadem na uživatele by na každodenní práci uživatelů měla mít minimální nebo nulový vliv.
 
 Pokud chcete zobrazit historii skóre, přejděte do [služby Microsoft 365 Security Center](https://security.microsoft.com/) a Prohlédněte si celkové skóre Microsoftu. Kliknutím na Zobrazit historii můžete zkontrolovat změny v celkovém bezpečném skóre. Zvolením konkrétního data zobrazíte, která opatření byla v ten den zavedena a kolik bodů jste za ně získali.
 

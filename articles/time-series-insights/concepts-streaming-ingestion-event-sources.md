@@ -8,17 +8,17 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 7b7e29b6e2ebb3b229045df439848264540b59b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/18/2021
+ms.openlocfilehash: ec41f7503ec179cb1fa6172e94e613933f719c93
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461619"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953600"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
- Vaše Azure Time Series Insights Gen2 prostředí může mít až dva streamování zdrojů událostí. Jako vstupy se podporují dva typy prostředků Azure:
+Vaše Azure Time Series Insights Gen2 prostředí může mít až dva streamování zdrojů událostí. Jako vstupy se podporují dva typy prostředků Azure:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
@@ -27,19 +27,41 @@ Události se musí odesílat jako JSON kódovaný ve formátu UTF-8.
 
 ## <a name="create-or-edit-event-sources"></a>Vytvoření nebo úprava zdrojů událostí
 
-Prostředky zdroje událostí můžou být živé ve stejném předplatném Azure jako vaše prostředí Azure Time Series Insights Gen2 nebo jiné předplatné. K vytváření, úpravám a odstraňování zdrojů událostí vašeho prostředí můžete použít [Azure Portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [šablony ARM](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
+Zdroj události je propojení mezi vaším centrem a prostředím Azure Time Series Insights Gen2 a `Time Series Insights event source` ve vaší skupině prostředků se vytvoří samostatný prostředek typu. Prostředky IoT Hub nebo centra událostí můžou být ve stejném předplatném Azure jako vaše prostředí Azure Time Series Insights Gen2 nebo jiné předplatné. Osvědčeným postupem je ale Azure Time Series Insights prostředí a IoT Hub nebo centrum událostí v rámci stejné oblasti Azure.
 
-Po připojení zdroje událostí vaše prostředí Azure Time Series Insights Gen2 přečte všechny události, které jsou aktuálně uložené ve službě IoT nebo v centru událostí, počínaje nejstarší událostí.
+K vytváření, úpravám a odebírání zdrojů událostí vašeho prostředí můžete použít [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [šablony Azure Resource Manager](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
+
+## <a name="start-options"></a>Možnosti spuštění
+
+Při vytváření zdroje událostí máte možnost určit, jaká existující data se mají shromažďovat. Toto nastavení je volitelné. Dostupné jsou tyto možnosti:
+
+| Název   |  Popis  |  Příklad šablony Azure Resource Manager |
+|----------|-------------|------|
+| EarliestAvailable | Ingestovat všechna dříve existující data uložená v rámci IoT nebo centra událostí | `"ingressStartAt": {"type": "EarliestAvailable"}` |
+| EventSourceCreationTime |  Začněte ingestovat data, která dorazí po vytvoření zdroje událostí. Všechna dříve existující data, která byla streamovaná před vytvořením zdroje událostí, se budou ignorovat. Toto je výchozí nastavení v Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
+| CustomEnqueuedTime | Vaše prostředí bude ingestovat data z vlastního zařazení času do fronty (UTC). Všechny události, které byly zařazeny do služby IoT nebo centra událostí v nebo po vlastním zařazování času, budou ingestované a uložené. Všechny události, které byly přijaty před vlastním zařazováním času, budou ignorovány. Všimněte si, že "čas zařazení do fronty" odkazuje na čas (ve standardu UTC), který událost dorazila do vašeho IoT nebo centra událostí. To se liší od vlastní [vlastnosti časového razítka](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) , která je v těle události. |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
 
 > [!IMPORTANT]
 >
-> - Při připojování zdroje událostí k prostředí Azure Time Series Insights Gen2 může docházet k vysoké počáteční latenci.
-> - Latence zdroje událostí závisí na počtu událostí, které jsou aktuálně ve IoT Hub nebo v centru událostí.
-> - Po prvním ingestování zdrojových dat událostí se tato vysoká latence bude nacházet. Pokud se setkáte s probíhající vysokou latencí, odešlete lístek podpory prostřednictvím Azure Portal.
+> - Pokud vyberete EarliestAvailable a máte spoustu existujících dat, může dojít k vysoké počáteční latenci, protože vaše Azure Time Series Insights Gen2 prostředí zpracovává všechna vaše data.
+> - Tato vysoká latence by se měla nakonec při indexování dat vycházet. Pokud se setkáte s probíhající vysokou latencí, odešlete lístek podpory prostřednictvím Azure Portal.
+
+* EarliestAvailable
+
+![Diagram EarliestAvailable](media/concepts-streaming-event-sources/event-source-earliest-available.png)
+
+* EventSourceCreationTime
+
+![Diagram EventSourceCreationTime](media/concepts-streaming-event-sources/event-source-creation-time.png)
+
+* CustomEnqueuedTime
+
+![Diagram CustomEnqueuedTime](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
+
 
 ## <a name="streaming-ingestion-best-practices"></a>Osvědčené postupy příjmu streamování
 
-- Vždy vytvořte jedinečnou skupinu uživatelů pro prostředí Azure Time Series Insights Gen2, abyste mohli využívat data ze zdroje událostí. Opětovné použití skupin uživatelů může způsobit náhodné odpojení a může dojít ke ztrátě dat.
+- Vždy vytvořte jedinečnou skupinu uživatelů pro prostředí Azure Time Series Insights Gen2, abyste mohli využívat data ze zdroje událostí. Opětovné použití skupin uživatelů může způsobit náhodné odpojení a může způsobit ztrátu dat.
 
 - Nakonfigurujte prostředí Azure Time Series Insights Gen2 a IoT Hub a/nebo Event Hubs ve stejné oblasti Azure. I když je možné nakonfigurovat zdroj událostí v samostatné oblasti, tento scénář se nepodporuje a nemůžeme zaručit vysokou dostupnost.
 
@@ -53,11 +75,14 @@ Po připojení zdroje událostí vaše prostředí Azure Time Series Insights Ge
 
 - Při poskytování připojovacích řetězců zdrojové události postupujte podle principu minimálního oprávnění. V případě Event Hubs nakonfigurujte zásady sdíleného přístupu pouze s deklarací *Odeslat* a pro IoT Hub použijte pouze oprávnění *k připojení služby* .
 
+> [!CAUTION] 
+> Pokud odstraníte IoT Hub nebo centrum událostí a znovu vytvoříte nový prostředek se stejným názvem, budete muset vytvořit nový zdroj událostí a připojit nový IoT Hub nebo centrum událostí. Data nebudou ingestovaná, dokud tento krok nedokončíte.
+
 ## <a name="production-workloads"></a>Produkční úlohy
 
 Kromě výše uvedených osvědčených postupů doporučujeme, abyste pro důležité pracovní úlohy implementovali následující:
 
-- Zvyšte dobu uchování dat IoT Hub nebo centra událostí na maximálně 7 dní.
+- Zvyšte dobu uchování dat IoT Hub nebo centra událostí na maximálně sedm dní.
 
 - Vytvořte výstrahy prostředí v Azure Portal. Výstrahy založené na [metrikách](./how-to-monitor-tsi-reference.md#metrics) platforem umožňují ověřit kompletní chování kanálu. [Tady najdete](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)pokyny k vytváření a správě výstrah. Navrhované podmínky upozornění:
 
@@ -76,7 +101,7 @@ Použití kanálu streamování k importu historických dat se v současnosti v 
 
 ## <a name="event-source-timestamp"></a>Časové razítko zdroje události
 
-Při konfiguraci zdroje událostí budete požádáni o zadání vlastnosti ID časového razítka. Vlastnost timestamp se používá ke sledování událostí v průběhu času, což je čas, který se použije jako $event. $ts v [rozhraních API pro dotazy](/rest/api/time-series-insights/dataaccessgen2/query/execute) a pro vykreslování řad v Průzkumníkovi Azure Time Series Insights. Pokud není v době vytvoření k dispozici žádná vlastnost nebo pokud v události chybí vlastnost timestamp, bude jako výchozí použita událost IoT Hub nebo centra událostí. Hodnoty vlastnosti časového razítka jsou uloženy ve formátu UTC.
+Při konfiguraci zdroje událostí budete požádáni o zadání vlastnosti ID časového razítka. Vlastnost timestamp se používá ke sledování událostí v průběhu času, což je čas, který se použije jako časové razítko `$ts` v [rozhraních API pro dotazy](/rest/api/time-series-insights/dataaccessgen2/query/execute) a pro vykreslování řad v Průzkumníkovi Azure Time Series Insights. Pokud není v době vytvoření k dispozici žádná vlastnost nebo pokud v události chybí vlastnost timestamp, bude jako výchozí použita událost IoT Hub nebo centra událostí. Hodnoty vlastnosti časového razítka jsou uloženy ve formátu UTC.
 
 Obecně platí, že uživatelé budou chtít přizpůsobit vlastnost časového razítka a použít čas, kdy senzor nebo značka vygenerovala čtení místo použití výchozího centra ve frontě. To je vhodné zejména v případě, že zařízení mají přerušovanou ztrátu připojení a dávka zpožděných zpráv se předává Azure Time Series Insights Gen2.
 

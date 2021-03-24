@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944037"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864784"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Kurz: vytvoření clusterů Azure HDInsight pomocí Azure Automation
 
@@ -38,16 +38,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Do pole zadejte **AzureRM. profil** a stiskněte Enter pro hledání. Vyberte dostupný výsledek hledání.
 1. Na obrazovce **AzureRM. profil** vyberte **importovat**. Zaškrtněte políčko pro aktualizaci modulů Azure a pak vyberte **OK**.
 
-    ![importovat modul AzureRM. Profile](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermprofile-module.png" alt-text="importovat modul AzureRM. Profile" border="false":::
 
 1. Vraťte se do galerie modulů tak, že v části **sdílené prostředky** vyberete **Galerie moduly** .
 1. Zadejte **HDInsight**. Vyberte **AzureRM. HDInsight**.
 
-    ![Procházet moduly HDInsight](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/browse-modules-hdinsight.png" alt-text="Procházet moduly HDInsight" border="true":::
 
 1. Na panelu **AzureRM. HDInsight** vyberte **importovat** a **OK**.
 
-    ![importovat modul AzureRM. HDInsight](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermhdinsight-module.png" alt-text="importovat modul AzureRM. HDInsight" border="true":::
 
 ## <a name="create-credentials"></a>Vytvořit pověření
 
@@ -65,7 +65,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Vyberte **Vytvořit**.
 1. Stejný postup opakujte pro nové přihlašovací údaje `ssh-password` s uživatelským jménem `sshuser` a heslem podle vašeho výběru. Vyberte **Vytvořit**. Tento přihlašovací údaj slouží k uložení hesla SSH pro váš cluster.
 
-    ![vytvoření přihlašovacích údajů](./media/manage-clusters-runbooks/create-credentials.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="vytvoření přihlašovacích údajů" border="true":::
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Vytvoření Runbooku pro vytvoření clusteru
 
@@ -74,11 +74,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-create` . V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
 
-    ![vytvořit Runbook](./media/manage-clusters-runbooks/create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="vytvořit Runbook" border="true":::
 
 1. Na obrazovce **Upravit powershellový Runbook** zadejte následující kód a vyberte **publikovat**:
 
-    ![publikování Runbooku](./media/manage-clusters-runbooks/publish-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/publish-runbook.png" alt-text="publikování Runbooku" border="true":::
 
     ```powershell
     Param
@@ -154,7 +154,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Vyberte **Spustit** , aby se Runbook spustil hned. Můžete také naplánovat pravidelné spouštění Runbooků. Viz [plánování Runbooku v Azure Automation](../automation/shared-resources/schedules.md)
 1. Zadejte požadované parametry skriptu a vyberte **OK**. Tím se vytvoří nový cluster HDInsight s názvem, který jste zadali v parametru **název_clusteru** .
 
-    ![spustit příkaz Create cluster Runbook](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/execute-create-runbook.png" alt-text="spustit příkaz Create cluster Runbook" border="true":::
 
 ### <a name="delete-a-cluster"></a>Odstranění clusteru
 

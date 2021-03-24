@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493522"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864886"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -35,7 +35,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 3. V nabídce řídicího panelu zálohování vyberte **obnovení souboru**.
 
-    ![Vybrat obnovení souboru](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Vybrat obnovení souboru](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     Otevře se nabídka **obnovení souborů** .
 
@@ -81,6 +81,7 @@ Viz požadavky pro obnovení souborů z zálohovaných virtuálních počítač�
 [Operační systém Windows](#for-backed-up-vms-with-large-disks-windows)<br>
 [Operační systém Linux](#for-backed-up-vms-with-large-disks-linux)
 
+Po výběru správného počítače ke spuštění skriptu ILR se ujistěte, že splňuje [požadavky na operační systém](#step-3-os-requirements-to-successfully-run-the-script) a požadavky na [přístup](#step-4-access-requirements-to-successfully-run-the-script). 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>Krok 3: požadavky na operační systém pro úspěšné spuštění skriptu
 
@@ -126,6 +127,8 @@ Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečn
 | .NET | 4.6.2 a vyšší |
 | TLS | 1,2 by měla být podporovaná.  |
 
+Také se ujistěte, že máte [správný počítač pro spuštění skriptu ilr](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) a že splňuje [požadavky na přístup](#step-4-access-requirements-to-successfully-run-the-script).
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>Krok 4: požadavky na přístup pro úspěšné spuštění skriptu
 
 Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
@@ -148,12 +151,13 @@ Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSC
 
 Přístup ke službě `download.microsoft.com` je vyžadován ke stažení komponent používaných k vytvoření zabezpečeného kanálu mezi počítačem, na kterém je skript spuštěn, a daty v bodu obnovení.
 
+Také se ujistěte, že máte [správný počítač ke spuštění skriptu ilr](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) a splňuje [požadavky na operační systém](#step-3-os-requirements-to-successfully-run-the-script).
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>Krok 5: spuštění skriptu a identifikace svazků
 
 ### <a name="for-windows"></a>Pro Windows
 
-Po splnění všech požadavků uvedených v kroku 2 Krok 3 a 4 zkopírujte skript ze staženého umístění (obvykle složky Stažené soubory), klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu ENTER. Po zadání platného hesla se skript připojí k bodu obnovení.
+Po splnění všech požadavků uvedených v [kroku 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) [Krok 3](#step-3-os-requirements-to-successfully-run-the-script) a [4](#step-4-access-requirements-to-successfully-run-the-script)zkopírujte skript ze staženého umístění (obvykle do složky Stažené soubory), viz [Krok 1, kde se dozvíte, jak vygenerovat a stáhnout skript](#step-1-generate-and-download-script-to-browse-and-recover-files). Klikněte pravým tlačítkem na spustitelný soubor a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu ENTER. Po zadání platného hesla se skript připojí k bodu obnovení.
 
   ![Spustitelný výstup](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Pokud proces obnovení souboru přestane reagovat po spuštění skriptu pro obn
 
 ### <a name="for-linux"></a>Pro Linux
 
-Pro počítače se systémem Linux se vygeneruje skript Pythonu. Stáhněte si skript a zkopírujte ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>``` . Pak spusťte soubor Python s nástrojem ```./<python file name>``` .
+Po splnění všech požadavků uvedených v [kroku 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) [kroku 3](#step-3-os-requirements-to-successfully-run-the-script) a [4](#step-4-access-requirements-to-successfully-run-the-script)vygenerujte skript Pythonu pro počítače se systémem Linux. V části [Krok 1 se dozvíte, jak vygenerovat a stáhnout skript](#step-1-generate-and-download-script-to-browse-and-recover-files). Stáhněte si skript a zkopírujte ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>``` . Pak spusťte soubor Python s nástrojem ```./<python file name>``` .
 
 
 V systému Linux jsou svazky bodu obnovení připojeny ke složce, ve které je skript spuštěn. Zobrazí se odpovídající připojené disky, svazky a odpovídající cesty připojení. Tyto cesty připojení jsou viditelné uživatelům, kteří mají přístup na úrovni root. Procházejte svazky uvedené ve výstupu skriptu.

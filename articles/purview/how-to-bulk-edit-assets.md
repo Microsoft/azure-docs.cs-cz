@@ -1,5 +1,5 @@
 ---
-title: Jak označit více pojmů Glosář na seznam vybraných prostředků
+title: Hromadná úprava prostředků na klasifikace značek, glosářové terminologie a úprava kontaktů
 description: Naučte se hromadně upravovat prostředky v Azure dosah.
 author: nayenama
 ms.author: nayenama
@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049474"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952452"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Jak hromadně upravovat prostředky a označovat pojem glosáře
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: aa36d8522f548101ef3354237d93128b0f041eac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648926"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953523"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací služby Azure AD v kemp LoadMaster
 
@@ -371,8 +371,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k integraci Azure AD kemp LoadMaster, pro kterou jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici integrace služby Azure AD kemp LoadMaster v okně moje aplikace byste měli být automaticky přihlášeni k integraci Azure AD kemp LoadMaster, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici integrace služby Azure AD kemp LoadMaster v okně moje aplikace byste měli být automaticky přihlášeni k integraci Azure AD kemp LoadMaster, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete integraci služby Azure AD kemp LoadMaster, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete integraci služby Azure AD kemp LoadMaster, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

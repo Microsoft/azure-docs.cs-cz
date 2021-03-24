@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095659"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889344"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
 
@@ -25,12 +25,17 @@ Na kartě nastavení v Custom Vision projektu můžete vybrat doménu pro svůj 
 
 |Doména|Účel|
 |---|---|
-|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo pokud si nejste jisti, jakou doménu chcete vybrat, vyberte možnost Obecná doména. ÚČET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních konkrétních domén není vhodná nebo pokud si nejste jisti, kterou doménu si vybrat, vyberte jednu z obecných domén. ÚČET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
 |__Obecné [a1]__| Optimalizováno pro lepší přesnost s srovnatelným časem odvození jako obecnou doménou. Doporučuje se u větších datových sad nebo složitějších uživatelských scénářů. Tato doména vyžaduje více času školení. ÚČET `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
+|__Obecné [a2]__| Optimalizováno pro lepší přesnost při rychlejším odvození času než obecné (a1) a obecné domény. Doporučuje se pro většinu datových sad. Tato doména vyžaduje méně školicích časů než obecné a obecné domény [a1]. ÚČET `2e37d7fb-3a54-486a-b4d6-cfc369af0018` |
 |__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla. ÚČET `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Orientační body tváře__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním. ÚČET `ca455789-012d-4b50-9fec-5bb63841c793`|
 |__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud chcete s vysokou přesností klasifikovat mezi dresses, Pants a košile, použijte tuto doménu. ÚČET `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase u hraničních zařízení.|
+
+
+> [!NOTE]
+> Obecné domény [a1] a obecné [a2] lze použít pro širokou škálu scénářů a jsou optimalizovány pro přesnost. Použijte obecný model [a2] pro lepší rychlost odvození a kratší dobu školení. U větších datových sad můžete použít obecné [a1] pro vykreslení lepší přesnosti než obecné [a2], i když ale vyžaduje více školení a dobu odvození. Obecný model vyžaduje více času odvození než obecné [a1] a obecné [a2].
 
 ## <a name="object-detection"></a>Detekce objektů
 
