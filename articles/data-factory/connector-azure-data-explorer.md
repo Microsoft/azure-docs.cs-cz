@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2020
-ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2020
+ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100379977"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027393"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Průzkumník dat pomocí Azure Data Factory
 
@@ -52,7 +52,14 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Konektor služby Azure Průzkumník dat používá ověřování instančního objektu. Pomocí těchto kroků můžete získat instanční objekt a udělit oprávnění:
+Konektor Azure Průzkumník dat podporuje následující typy ověřování. Podrobnosti najdete v odpovídajících částech:
+
+- [Ověřování instančního objektu](#service-principal-authentication)
+- [Spravované identity pro ověřování prostředků Azure](#managed-identity)
+
+### <a name="service-principal-authentication"></a>Ověřování instančních objektů
+
+Chcete-li použít ověřování instančního objektu, použijte následující postup k získání instančního objektu a udělení oprávnění:
 
 1. Pomocí postupu v části [Registrace aplikace v Tenantovi Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)Zaregistrujte entitu aplikace v Azure Active Directory. Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 
@@ -66,7 +73,7 @@ Konektor služby Azure Průzkumník dat používá ověřování instančního o
     - **Jako jímky** udělte databázi aspoň roli ingestování **databáze** .
 
 >[!NOTE]
->Když použijete uživatelské rozhraní Data Factory k vytvoření, použije se účet přihlášení uživatele k vypsání clusterů, databází a tabulek Azure Průzkumník dat. Pokud nemáte oprávnění k těmto operacím, zadejte název ručně.
+>Když použijete uživatelské rozhraní Data Factory k vytvoření, použije se ve výchozím nastavení účet přihlášení uživatele k vypsání clusterů, databází a tabulek Azure Průzkumník dat. Chcete-li zobrazit seznam objektů pomocí instančního objektu, klikněte na rozevírací seznam vedle tlačítka aktualizovat nebo zadejte název ručně, pokud nemáte oprávnění pro tyto operace.
 
 Pro propojenou službu Azure Průzkumník dat se podporují následující vlastnosti:
 
@@ -78,8 +85,9 @@ Pro propojenou službu Azure Průzkumník dat se podporují následující vlast
 | tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. To se označuje jako ID autority v [připojovacím řetězci Kusto](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtěte ho tak, že najedete myší na ukazatel myši v pravém horním rohu Azure Portal. | Yes |
 | servicePrincipalId | Zadejte ID klienta aplikace. To se označuje jako "ID klienta aplikace AAD" v [připojovacím řetězci Kusto](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |
 | servicePrincipalKey | Zadejte klíč aplikace. To se označuje jako "klávesa aplikace AAD" v [připojovacím řetězci Kusto](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo aby [odkazovala na zabezpečená Data uložená v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |No |
 
-**Příklad vlastností propojené služby:**
+**Příklad: použití ověřování klíčů instančního objektu**
 
 ```json
 {
@@ -95,6 +103,44 @@ Pro propojenou službu Azure Průzkumník dat se podporují následující vlast
                 "type": "SecureString",
                 "value": "<service principal key>"
             }
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Spravované identity pro ověřování prostředků Azure
+
+Chcete-li použít spravované identity pro ověřování prostředků Azure, použijte následující postup pro udělení oprávnění:
+
+1. [Načtěte data Factory informace o spravované identitě](data-factory-service-identity.md#retrieve-managed-identity) zkopírováním hodnoty **ID spravovaného objektu identity** generovaného společně s vaší továrnou.
+
+2. Udělte spravované identitě správná oprávnění v Azure Průzkumník dat. Podrobné informace o rolích a oprávněních a o správě oprávnění najdete v článku [Správa oprávnění k databázi Azure Průzkumník dat](/azure/data-explorer/manage-database-permissions) . Obecně platí, že:
+
+    - **Jako zdroj** udělte databázi aspoň roli **prohlížeč databáze** .
+    - **Jako jímky** udělte databázi aspoň roli ingestování **databáze** .
+
+>[!NOTE]
+>Když použijete uživatelské rozhraní Data Factory k vytvoření, použije se účet přihlášení uživatele k vypsání clusterů, databází a tabulek Azure Průzkumník dat. Pokud nemáte oprávnění k těmto operacím, zadejte název ručně.
+
+Pro propojenou službu Azure Průzkumník dat se podporují následující vlastnosti:
+
+| Vlastnost | Popis | Povinné |
+|:--- |:--- |:--- |
+| typ | Vlastnost **Type** musí být nastavená na **AzureDataExplorer**. | Yes |
+| endpoint | Adresa URL koncového bodu clusteru Azure Průzkumník dat s formátem jako `https://<clusterName>.<regionName>.kusto.windows.net` . | Yes |
+| database | Název databáze | Yes |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |No |
+
+**Příklad: použití spravovaného ověřování identity**
+
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
         }
     }
 }

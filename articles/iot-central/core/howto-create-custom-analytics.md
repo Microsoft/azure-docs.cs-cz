@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953871"
+ms.locfileid: "105023030"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak:
 * Pomocí *průběžného exportu dat* Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení telemetrie zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
@@ -91,7 +91,7 @@ IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali t
 1. V Azure Portal přejděte na obor názvů Event Hubs a vyberte **+ centrum událostí**.
 1. Pojmenujte centrum událostí **centralexport**.
 1. V seznamu Center událostí v oboru názvů vyberte **centralexport**. Pak zvolte **zásady sdíleného přístupu**.
-1. Vyberte **+ Přidat**. Vytvořte zásadu **s názvem s** deklarací **naslouchání** .
+1. Vyberte **+ Přidat**. Vytvořte zásadu s názvem **SendListen** s deklaracemi pro **odesílání** a **naslouchání** .
 1. Když je zásada připravená, vyberte ji v seznamu a potom zkopírujte hodnotu **připojovací řetězec – primární klíč** .
 1. Poznamenejte si tento připojovací řetězec, budete ho později používat při konfiguraci poznámkového bloku datacihly pro čtení z centra událostí.
 
@@ -99,42 +99,46 @@ Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 :::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Obrázek Event Hubs oboru názvů":::
 
-## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>Konfigurace exportu v IoT Central a vytvoření nového cíle
+## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
 
-Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
+V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí.
 
-1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový export**.
-1. Před dokončením prvního okna vyberte **vytvořit cíl**.
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do aplikace IoT Central, kterou jste předtím vytvořili. Pokud chcete nakonfigurovat export, nejdřív vytvořte cíl:
 
-Okno bude vypadat jako v následujícím příkladu.  
+1. Přejděte na stránku pro **Export dat** a pak vyberte **cílová umístění**.
+1. Vyberte **+ Nový cíl**.
+1. K vytvoření cíle použijte hodnoty v následující tabulce:
 
-:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Obrázek konfigurace cíle exportu dat":::
+    | Nastavení | Hodnota |
+    | ----- | ----- |
+    | Název cíle | Centrum událostí telemetrie |
+    | Cílový typ | Azure Event Hubs |
+    | Připojovací řetězec | Připojovací řetězec centra událostí, který jste si poznamenali dříve |
 
-3. Zadejte tyto hodnoty:
+    **Centrum událostí** se zobrazí jako **centralexport**.
 
-| Nastavení | Hodnota |
-| ------- | ----- |
-| Název cíle | Název cíle |
-| Cílový typ | Azure Event Hubs |
-| Connection String (Připojovací řetězec)| Připojovací řetězec centra událostí, který jste si poznamenali dříve. | 
-| Centrum událostí| Název centra událostí|
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Snímek obrazovky znázorňující cíl exportu dat":::
 
-4. Kliknutím na **vytvořit** dokončete.
+1. Vyberte **Uložit**.
 
-5. Pro konfiguraci exportu použijte následující nastavení:
+Vytvoření definice exportu:
+
+1. Přejděte na stránku pro **Export dat** a vyberte **+ Nový export**.
+
+1. Pro konfiguraci exportu použijte hodnoty v následující tabulce:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Zadejte název exportu. | eventhubexport |
+    | Název exportu | Export centra událostí |
     | Povoleno | Zapnout |
-    | Data| Výběr telemetrie | 
-    | Cíle| Vytvořte cíl, jak je vidět níže, pro export a pak ho vyberte v rozevírací nabídce cíl. |
+    | Typ dat k exportu | Telemetrie |
+    | Cíle | Vyberte **+ cíl** a pak vyberte **centrum událostí telemetrie** . |
 
-:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Snímek obrazovky s konfigurací cíle exportu dat":::
+1. Vyberte **Uložit**.
 
-6. Po dokončení vyberte **Uložit**.
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Snímek obrazovky s definicí exportu dat":::
 
-Než budete pokračovat, počkejte, než se **spustí** stav exportu.
+Než budete pokračovat, počkejte, než bude stav exportu v **pořádku** na stránce pro **Export dat** .
 
 ## <a name="configure-databricks-workspace"></a>Konfigurace pracovního prostoru datacihly
 
@@ -152,7 +156,7 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | Režim clusteru | Standard |
 | Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Verze Pythonu | 3 |
-| Povolit automatické škálování | Ne |
+| Povolit automatické škálování | No |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
 | Pracovníků | 1 |

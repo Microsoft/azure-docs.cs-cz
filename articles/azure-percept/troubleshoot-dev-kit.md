@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 826759907bfe5ec3359bf5c9125909466372c68f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608142"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023074"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Řešení potíží s Azure Percept DK (dev Kit)
 
@@ -45,7 +45,7 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ```[local host file path]``` odkazuje na umístění na hostitelském počítači, do kterého chcete zkopírovat soubor. txt. ```[remote username]``` je uživatelské jméno SSH zvolené během [prostředí pro nastavení](./quickstart-percept-dk-set-up.md). Pokud jste během počátečního nastavení OOBE nevytvořili přihlašovací jméno SSH, je vzdálené uživatelské jméno ```root``` .
 
-Další informace o příkazech Azure IoT Edge naleznete v dokumentaci k [řešení potíží se zařízením Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+Další informace o příkazech Azure IoT Edge naleznete v dokumentaci k [řešení potíží se zařízením Azure IoT Edge](../iot-edge/troubleshoot.md).
 
 |Kategorie:         |Systému                    |Slouží                  |
 |------------------|----------------------------|---------------------------|
@@ -105,5 +105,3 @@ Existují tři malé indikátory LED na nosných deskách. Ikona cloudu se tiskn
 |Indikátor LED 2 (Wi-Fi)   |Rychlé blikání |Ověřování bylo úspěšné, probíhá přidružení zařízení. |
 |Indikátor LED 2 (Wi-Fi)   |Zapnuto (Solid) |Ověřování a přidružení byly úspěšné. zařízení je připojené k síti Wi-Fi. |
 |INDIKÁTOR LED 3           |NA         |Indikátor LED se nepoužívá. |
-
-

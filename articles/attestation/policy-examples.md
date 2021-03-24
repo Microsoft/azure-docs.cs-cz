@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720150"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950565"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Příklady zásad ověřování identity
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-Další informace o příchozích deklaracích generovaných ověřením Azure najdete v tématu [sady deklarací identity](/azure/attestation/claim-sets). Pomocí příchozích deklarací můžou tvůrci zásad definovat autorizační pravidla ve vlastních zásadách. 
+Další informace o příchozích deklaracích generovaných ověřením Azure najdete v tématu [sady deklarací identity](./claim-sets.md). Pomocí příchozích deklarací můžou tvůrci zásad definovat autorizační pravidla ve vlastních zásadách. 
 
-Oddíl pravidel vystavování není povinný. Tuto část můžou použít uživatelé, aby mohli mít další odchozí deklarace identity vygenerované v tokenu ověření identity s vlastními názvy. Další informace o odchozích deklaracích generovaných službou v tokenu ověření identity najdete v tématu [sady deklarací identity](/azure/attestation/claim-sets).
+Oddíl pravidel vystavování není povinný. Tuto část můžou použít uživatelé, aby mohli mít další odchozí deklarace identity vygenerované v tokenu ověření identity s vlastními názvy. Další informace o odchozích deklaracích generovaných službou v tokenu ověření identity najdete v tématu [sady deklarací identity](./claim-sets.md).
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>Výchozí zásady pro SGX enklávy
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-Deklarace identity použité ve výchozích zásadách se považují za zastaralé, ale jsou plně podporované a v budoucnu budou i nadále zahrnuty. Doporučuje se používat nepoužívané názvy deklarací identity. Další informace o doporučených názvech deklarací identity najdete v tématu [sady deklarací identity](/azure/attestation/claim-sets). 
+Deklarace identity použité ve výchozích zásadách se považují za zastaralé, ale jsou plně podporované a v budoucnu budou i nadále zahrnuty. Doporučuje se používat nepoužívané názvy deklarací identity. Další informace o doporučených názvech deklarací identity najdete v tématu [sady deklarací identity](./claim-sets.md). 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Ukázková vlastní zásada pro podporu více SGX enclaves
 
