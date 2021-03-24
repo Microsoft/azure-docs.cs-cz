@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 516a66ef64512cbe4fa4c3589e651c14ddf18550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38b6251c4b464214d66f7240dab9d5d23812f946
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101647621"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023210"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Základní hodnota zabezpečení Azure pro Azure cache pro Redis
 
@@ -34,7 +34,7 @@ Můžete také zadat pravidla brány firewall s rozsahem počáteční a koncov�
 
 - [Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis](cache-how-to-premium-vnet.md)
 
-- [Jak nakonfigurovat Azure cache pro pravidla brány firewall Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Jak nakonfigurovat Azure cache pro pravidla brány firewall Redis](./cache-configure.md#firewall)
 
 **Odpovědnost:** Zákazník
 
@@ -68,7 +68,7 @@ Povolte DDoS Protection Standard na virtuální sítě přidružené k vaší sl
 
 - [Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis](cache-how-to-premium-vnet.md)
 
-- [Správa Azure DDoS Protection Standard pomocí Azure Portal](/azure/virtual-network/manage-ddos-protection)
+- [Správa Azure DDoS Protection Standard pomocí Azure Portal](../ddos-protection/manage-ddos-protection.md)
 
 **Odpovědnost:** Zákazník
 
@@ -118,7 +118,7 @@ Můžete také použít skupiny zabezpečení aplikací (ASG), které vám pomoh
 
 - [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md)
 
-- [Skupiny zabezpečení aplikací](/azure/virtual-network/security-overview#application-security-groups)
+- [Skupiny zabezpečení aplikací](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Odpovědnost:** Zákazník
 
@@ -145,7 +145,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Doprovodné** materiály: používejte značky pro síťové prostředky přidružené k vaší službě Azure cache pro nasazení Redis, aby je bylo možné logicky uspořádat do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -155,9 +155,9 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vaší službou Azure cache pro instance Redis. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -171,7 +171,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezipaměti Azure pro instance Redis na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni řídicích roviny pro instance služby Azure cache pro Redis.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -183,7 +183,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 Když jsou metriky dostupné, když povolíte nastavení diagnostiky, protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -195,7 +195,7 @@ Když jsou metriky dostupné, když povolíte nastavení diagnostiky, protokolov
 
 Všimněte si, že protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -207,9 +207,9 @@ Všimněte si, že protokolování auditu na rovině dat ještě není k dispozi
 
 Všimněte si, že protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](/azure/azure-monitor/platform/activity-log-collect)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -221,7 +221,7 @@ Všimněte si, že protokolování auditu na rovině dat ještě není k dispozi
 
 Když jsou metriky dostupné, když povolíte nastavení diagnostiky, protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-- [Jak nakonfigurovat výstrahy pro Azure cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts)
+- [Jak nakonfigurovat výstrahy pro Azure cache pro Redis](./cache-how-to-monitor.md#alerts)
 
 **Odpovědnost:** Zákazník
 
@@ -235,9 +235,9 @@ Když jsou metriky dostupné, když povolíte nastavení diagnostiky, protokolov
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Odpovědnost:** Zákazník
 
@@ -251,7 +251,7 @@ Přístup k této rovině dat do mezipaměti Azure pro Redis se řídí prostře
 
 Nedoporučujeme vytvářet výchozí hesla do aplikace. Místo toho můžete ukládat hesla v Azure Key Vault a pak je pomocí Azure AD načíst.
 
-- [Jak znovu vygenerovat Azure cache pro přístupové klíče Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+- [Jak znovu vygenerovat Azure cache pro přístupové klíče Redis](./cache-configure.md#settings)
 
 **Odpovědnost:** Sdílené
 
@@ -323,7 +323,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 - [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Vysvětlení zjišťování rizik Azure AD](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Odpovědnost:** Zákazník
 
@@ -353,7 +353,7 @@ Ověřování Azure AD se nedá použít pro přímý přístup k mezipaměti Az
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -367,7 +367,7 @@ Ověřování Azure AD se nedá použít pro přímý přístup k mezipaměti Az
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: pro odchylku chování přihlášení k účtu na rovině ovládacího prvku použijte funkce Azure Active Directory (Azure AD) Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -397,7 +397,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -407,15 +407,15 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Mezipaměť Azure pro instance Redis by měla být oddělená virtuální sítí nebo podsítí a správně označená. Volitelně můžete k definování pravidel použít službu Azure cache pro bránu Redis, aby se k mezipaměti dalo připojit jenom připojení klientů ze zadaných rozsahů IP adres.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Jak nasadit Azure cache pro Redis do virtuální sítě](cache-how-to-premium-vnet.md)
 
-- [Jak nakonfigurovat Azure cache pro pravidla brány firewall Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Jak nakonfigurovat Azure cache pro pravidla brány firewall Redis](./cache-configure.md#firewall)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -439,7 +439,7 @@ Microsoft spravuje základní infrastrukturu pro Azure cache pro Redis a impleme
 
 - [Vysvětlení šifrování při přenosu pro Azure cache pro Redis](cache-best-practices.md)
 
-- [Vysvětlení požadovaných portů používaných ve scénářích mezipaměti virtuální sítě](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet#outbound-port-requirements)
+- [Vysvětlení požadovaných portů používaných ve scénářích mezipaměti virtuální sítě](./cache-how-to-premium-vnet.md#outbound-port-requirements)
 
 **Odpovědnost:** Sdílené
 
@@ -493,7 +493,7 @@ Data v Azure Storage jsou šifrována a dešifrována transparentně pomocí 256
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají do produkčních instancí Azure cache pro Redis a další důležité nebo související prostředky.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -527,7 +527,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -539,7 +539,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -557,11 +557,11 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 Další informace najdete v následujících referenčních materiálech:
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Vytvoření skupin pro správu](/azure/governance/management-groups/create)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytvoření a použití značek prostředků](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytvoření a použití značek prostředků](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -596,7 +596,7 @@ Další informace najdete v následujících referenčních materiálech:
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -624,7 +624,7 @@ Další informace najdete v následujících referenčních materiálech:
 
 Další informace najdete v následujících referenčních materiálech:
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -648,9 +648,9 @@ Další informace najdete v následujících referenčních materiálech:
 
 **Pokyny**: Pokud používáte vlastní definice Azure Policy nebo šablony Azure Resource Manager pro Azure cache pro instance Redis a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -684,7 +684,7 @@ Další informace najdete v následujících referenčních materiálech:
 
 - [Vytvoření Key Vault](../key-vault/general/quick-create-portal.md)
 
-- [Ověření Key Vault](/azure/key-vault/managed-identity)
+- [Ověření Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 **Odpovědnost:** Zákazník
 
@@ -772,7 +772,7 @@ Pravidelně testujte obnovení dat Azure Key Vault tajných kódů.
 
 - [Jak používat Azure cache pro import Redis](cache-how-to-import-export-data.md)
 
-- [Postup obnovení tajných kódů Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení tajných kódů Key Vault](/powershell/module/az.keyvault/restore-azkeyvaultsecret?preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -868,5 +868,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

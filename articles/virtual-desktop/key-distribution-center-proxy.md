@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bcf28fbc0d2f4ec9eeac5bcb8f0b2c9b65a62b6b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 876564934b1ccbffa19c318a2d2c8393e5dca54e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775019"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023975"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurace proxy služba KDC (Key Distribution Center) protokolu Kerberos (Preview)
 
@@ -70,6 +70,6 @@ Konfigurace proxy služby KDC:
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak spravovat vzdálenou plochu serveru proxy služby KDC a přiřadit Brána VP roli, najdete v tématu [nasazení Brána VP role](/windows-server/remote/rd-gateway-role).
+Informace o tom, jak spravovat vzdálenou plochu serveru proxy služby KDC a přiřadit Brána VP roli, najdete v tématu [nasazení Brána VP role](rd-gateway-role.md).
 
 Pokud vás zajímá, jak vaše proxy servery služby KDC škálovat, přečtěte si, jak nastavit vysokou dostupnost pro proxy služby KDC s [vysokou dostupností na webu a na webu brány pro vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha).

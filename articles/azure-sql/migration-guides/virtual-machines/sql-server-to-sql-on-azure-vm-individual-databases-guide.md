@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 0e1b44667a5ff42978b22ab9450d6a8e9870960b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ef942404158768f4249b5bcd0640632b6475f63
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563211"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023703"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Průvodce migrací: SQL Server SQL Server na virtuálních počítačích Azure 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -29,11 +29,11 @@ Můžete migrovat SQL Server spuštěná místně nebo na:
 - Služba Amazon relačních databází (AWS RDS) 
 - Výpočetní modul (Google Cloud Platform – GCP)
 
-Informace o dalších strategiích migrace najdete v tématu [Přehled migrace SQL Server virtuálních počítačů](sql-server-to-sql-on-azure-vm-migration-overview.md).
+Informace o dalších strategiích migrace najdete v tématu [Přehled migrace SQL Server virtuálních počítačů](sql-server-to-sql-on-azure-vm-migration-overview.md). Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Migrace na SQL Server na virtuálních počítačích Azure vyžaduje následující: 
 

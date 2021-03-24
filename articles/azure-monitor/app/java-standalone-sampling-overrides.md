@@ -6,23 +6,22 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 03d3093f14d97b2cc64d91e0d1b7adf34204a021
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 17979bd548ca0d7b704ebdeb4d060bf35973b319
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962481"
+ms.locfileid: "105024142"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Přepsání vzorkování (Preview) – Azure Monitor Application Insights pro Java
 
 > [!NOTE]
-> Funkce přepsání vzorkování je ve verzi Preview.
+> Funkce přepsání vzorkování je ve verzi Preview, počínaje od 3.0.3-BETA. 2.
 
-Tady je několik případů použití pro přepsání vzorkování:
- * Potlačí shromažďování telemetrie pro kontroly stavu.
- * Potlačí shromažďování telemetrie pro volání závislostí s vysokou úrovní šumu.
- * Snižte šum z kontrol stavu nebo volání závislosti s vysokou úrovní šumu, aniž byste je museli úplně potlačit.
- * Shromážděte 100% telemetrie pro důležitý typ žádosti (např. `/login` ), přestože máte výchozí vzorkování nakonfigurované na něco menšího.
+Přepsání vzorkování umožňují přepsat [výchozí procento vzorkování](./java-standalone-config.md#sampling), například:
+ * Nastavte procento vzorkování na 0 (nebo malou hodnotu) pro kontroly stavu s vysokou úrovní šumu.
+ * Nastavte procento vzorkování na 0 (nebo malou hodnotu) pro volání závislostí s vysokou úrovní šumu.
+ * Nastavte procento vzorkování na 100 pro důležitý typ žádosti (např.), přestože `/login` máte výchozí vzorkování nakonfigurované na něco menšího.
 
 ## <a name="terminology"></a>Terminologie
 
@@ -79,7 +78,7 @@ Je použito pouze první přepsání vzorkování, které odpovídá.
 
 Pokud se neshodují žádné přepisy vzorkování:
 
-* Pokud se jedná o první rozpětí v trasování, použije se [normální procento vzorkování](./java-standalone-config.md#sampling) .
+* Pokud se jedná o první rozpětí v trasování, použije se [výchozí procento vzorkování](./java-standalone-config.md#sampling) .
 * Pokud se nejedná o první rozpětí v trasování, použije se nadřazené rozhodnutí o vzorkování.
 
 > [!IMPORTANT]

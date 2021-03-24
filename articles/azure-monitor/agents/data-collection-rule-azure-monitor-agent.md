@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721524"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022972"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 
@@ -92,7 +92,7 @@ V následující tabulce jsou uvedeny příklady pro filtrování událostí pom
 | Description |  XPath |
 |:---|:---|
 | Shromažďovat pouze systémové události s ID události = 4648 |  `System!*[System[EventID=4648]]`
-| Shromažďovat pouze systémové události s ID události = 4648 a názvem procesu consent.exe |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Shromažďovat pouze systémové události s ID události = 4648 a názvem procesu consent.exe | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
 | Shromáždí všechny události kritické, chyby, upozornění a informací z protokolu událostí systému s výjimkou ID události = 6 (načtený ovladač). |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
 | Shromažďovat všechny události zabezpečení úspěšné a neúspěšné s výjimkou ID události 4624 (úspěšné přihlášení) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
 

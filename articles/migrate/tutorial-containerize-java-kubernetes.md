@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466588"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023108"
 ---
-# <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Kontejnerizace webových aplikací Java a migrace do služby Azure Kubernetes
+# <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Kontejner webové aplikace Java a migrace do služby Azure Kubernetes
 
 V tomto článku se naučíte, jak kontejnerizace webové aplikace v jazyce Java (běžící na Apache Tomcat) a migrovat je do [služby Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) pomocí nástroje Azure Migrate: vytvoření kontejneru aplikací. Proces kontejneru nevyžaduje přístup k vašemu základu kódu a poskytuje snadný způsob, jak kontejnerizace stávající aplikace. Nástroj pracuje s použitím stavu spuštění aplikací na serveru k určení komponent aplikace a pomáhá je zabalit v imagi kontejneru. Kontejnerová aplikace se pak dá nasadit ve službě Azure Kubernetes (AKS).
 
@@ -53,13 +53,13 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. V těchto kurzech se v rámci možností používají jen výchozí možnosti a neuvádějí se všechny varianty nastavení ani všechny cesty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Určení počítače pro instalaci nástroje** | Počítač s Windows, který se má nainstalovat a spustit Azure Migrate: Nástroj pro vytvoření kontejneru aplikace Počítač s Windows může být server (Windows Server 2016 nebo novější) nebo operační systém klienta (Windows 10), což znamená, že nástroj může běžet i na ploše. <br/><br/> Počítač s Windows, na kterém je spuštěný nástroj, by měl mít síťové připojení k serverům nebo virtuálním počítačům, které hostují aplikace ASP.NET, aby byly kontejnery.<br/><br/> Zajistěte, aby na počítači s Windows, na kterém běží Azure Migrate: Nástroj pro vyřazení aplikací pro ukládání artefaktů aplikací, bylo k dispozici 6 GB volného místa. <br/><br/> Počítač s Windows by měl mít přístup k Internetu, a to přímo nebo prostřednictvím proxy serveru. <br/> <br/>Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
+**Určení počítače pro instalaci nástroje** | Počítač s Windows, který se má nainstalovat a spustit Azure Migrate: Nástroj pro vytvoření kontejneru aplikace Počítač s Windows může být server (Windows Server 2016 nebo novější) nebo operační systém klienta (Windows 10), což znamená, že nástroj může běžet i na ploše. <br/><br/> Počítač s Windows, na kterém nástroj běží, by měl mít síťové připojení k serverům nebo virtuálním počítačům hostujícím kontejnerizované aplikace ASP.NET.<br/><br/> Zajistěte, aby na počítači s Windows, na kterém běží Azure Migrate: Nástroj pro vyřazení aplikací pro ukládání artefaktů aplikací, bylo k dispozici 6 GB volného místa. <br/><br/> Tento počítač s Windows by měl mít přístup k internetu, a to buď přímo, nebo prostřednictvím proxy serveru. <br/> <br/>Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
 **Aplikační servery** | -Povolit připojení Secure Shell (SSH) na portu 22 na serverech, na kterých běží aplikace Java, které mají být zakontejnerované. <br/>
 **Webová aplikace Java** | Nástroj aktuálně podporuje <br/><br/> – Aplikace běžící v Tomcat 8 nebo novějším.<br/> – Aplikační servery na Ubuntu Linux 16.04/18.04/20.04, Debian 7/8, CentOS 6/7 Red Hat Enterprise Linux 5/6/7. <br/> -Aplikace používající jazyk Java verze 7 nebo novější.  <br/><br/> Nástroj aktuálně nepodporuje <br/><br/> -Servery aplikací, na kterých běží více instancí Tomcat <br/>  
 
@@ -104,7 +104,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 3. Spusťte instalační skript pomocí příkazu.
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Spustit nástroj pro kontejnery aplikací

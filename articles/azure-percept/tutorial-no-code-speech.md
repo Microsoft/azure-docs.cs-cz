@@ -7,20 +7,20 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098022"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023159"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Vytvoření hlasového asistenta pomocí Azure Percept DK a Azure Percept audio
 
 V tomto kurzu vytvoříte hlasového asistenta ze šablony, která se bude používat pro Azure Percept DK a Azure Percept audio. Ukázka hlasového asistenta se spouští v rámci [Azure Percept studia](https://go.microsoft.com/fwlink/?linkid=2135819) a obsahuje výběr hlasových virtuálních objektů řízených hlasem. Chcete-li řídit objekt, řekněte klíčové slovo, což je slovo nebo krátká fráze, která probudit vaše zařízení a za ním následuje příkaz. Každá šablona reaguje na sadu konkrétních příkazů.
 
-Tato příručka vás provede procesem nastavení vašich zařízení, vytváření hlasového asistenta a nezbytných prostředků [služby Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) , testování hlasového asistenta, konfigurace klíčového slova a vytváření vlastních klíčových slov.
+Tato příručka vás provede procesem nastavení vašich zařízení, vytváření hlasového asistenta a nezbytných prostředků [služby Speech Services](../cognitive-services/speech-service/overview.md) , testování hlasového asistenta, konfigurace klíčového slova a vytváření vlastních klíčových slov.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK (DevKit)
 - Zvuk Azure Percept
@@ -172,9 +172,9 @@ Když vytvoříte vlastní příkaz, musíte přejít na [řeč Studio](https://
 
     :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Obrazovka domovské obrazovky sady Speech Studio":::
 
-Další informace o vývoji vlastních příkazů najdete v [dokumentaci ke službě Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands).
+Další informace o vývoji vlastních příkazů najdete v [dokumentaci ke službě Speech Service](../cognitive-services/speech-service/custom-commands.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>Hlasový asistent se vytvořil, ale nereaguje na příkazy.
 
