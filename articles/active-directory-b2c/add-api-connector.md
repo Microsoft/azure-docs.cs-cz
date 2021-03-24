@@ -5,17 +5,17 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d1b52ed0f862b544d4b90d466ddc1d2a231ca44
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008429"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023414"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Přidání konektoru rozhraní API k toku registrace uživatele (Preview)
 
@@ -51,14 +51,22 @@ Základní ověřování HTTP je definované v [dokumentu RFC 2617](https://tool
 > [!IMPORTANT]
 > Tato funkce je ve verzi Preview a je k dispozici bez smlouvy o úrovni služeb. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ověřování klientským certifikátem je vzájemné ověřování založené na certifikátech, kde klient poskytuje klientský certifikát pro ověření jeho identity na serveru. V takovém případě bude Azure AD B2C používat certifikát, který nahrajete jako součást konfigurace konektoru rozhraní API. K tomu dochází jako součást metody handshake protokolu SSL. K vaší službě REST API mají přístup pouze služby, které mají správné certifikáty. Certifikát klienta je digitální certifikát X. 509. V produkčním prostředí by měl být podepsaný certifikační autoritou. 
+Ověřování klientským certifikátem je oboustranná metoda ověřování založená na certifikátech, kde klient poskytuje klientský certifikát serveru k prokázání jeho identity. V takovém případě bude Azure AD B2C používat certifikát, který nahrajete jako součást konfigurace konektoru rozhraní API. K tomu dochází jako součást metody handshake protokolu SSL. Vaše služba API pak může omezit přístup jenom na služby, které mají správné certifikáty. Certifikát klienta je digitální certifikát PKCS12 (PFX) X. 509. V produkčním prostředí by měl být podepsaný certifikační autoritou. 
 
+Certifikát můžete vytvořit pomocí [Azure Key Vault](../key-vault/certificates/create-certificate.md), který obsahuje možnosti pro certifikáty podepsané svým držitelem a integrace s poskytovateli vystavitelů certifikátů pro podepsané certifikáty. Doporučená nastavení zahrnují:
+- **Předmět**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Typ obsahu**: `PKCS #12`
+- **Typ životnosti Acton**: `Email all contacts at a given percentage lifetime` nebo `Email all contacts a given number of days before expiry`
+- **Exportovatelný privátní klíč**: `Yes` (aby bylo možné exportovat soubor PFX)
 
-Certifikát můžete vytvořit pomocí [Azure Key Vault](../key-vault/certificates/create-certificate.md), který obsahuje možnosti pro certifikáty podepsané svým držitelem a integrace s poskytovateli vystavitelů certifikátů pro podepsané certifikáty. Pak můžete [certifikát exportovat](../key-vault/certificates/how-to-export-certificate.md) a nahrát ho pro použití v konfiguraci konektorů rozhraní API. Všimněte si, že heslo je vyžadováno jenom pro soubory certifikátů chráněné heslem. K vygenerování certifikátu podepsaného svým držitelem můžete použít také [rutinu New-SelfSignedCertificate](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) prostředí PowerShell.
+Pak můžete [certifikát exportovat](../key-vault/certificates/how-to-export-certificate.md). K vygenerování certifikátu podepsaného svým držitelem můžete případně použít [rutinu New-SelfSignedCertificate](../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) prostředí PowerShell.
 
-Azure App Service a Azure Functions najdete v tématu [Konfigurace vzájemného ověřování TLS](../app-service/app-service-web-configure-tls-mutual-auth.md) , kde se dozvíte, jak povolit a ověřit certifikát z koncového bodu rozhraní API.
+Po vytvoření certifikátu ho můžete nahrát jako součást konfigurace konektoru rozhraní API. Všimněte si, že heslo je vyžadováno jenom pro soubory certifikátů chráněné heslem.
 
-Doporučuje se nastavit upozornění na připomenutí, kdy vyprší platnost certifikátu. Pokud chcete nahrát nový certifikát do existujícího konektoru API, vyberte konektor API v části **konektory rozhraní API (Preview)** a klikněte na **nahrát nový certifikát**. Poslední nahraný certifikát, jehož platnost vypršela, a který je po datu zahájení, bude automaticky použit Azure AD B2C.
+Rozhraní API musí implementovat autorizaci na základě odeslaných klientských certifikátů za účelem ochrany koncových bodů rozhraní API. Azure App Service a Azure Functions najdete v tématu [Konfigurace vzájemného ověřování TLS](../app-service/app-service-web-configure-tls-mutual-auth.md) , kde se dozvíte, jak certifikát povolit a *ověřit z kódu rozhraní API*.  Azure API Management můžete použít také ke [kontrole vlastností klientského certifikátu](
+../api-management/api-management-howto-mutual-certificates-for-clients.md)  podle požadovaných hodnot pomocí výrazů zásad.
+
+Doporučuje se nastavit upozornění na připomenutí, kdy vyprší platnost certifikátu. Budete muset vygenerovat nový certifikát a postup opakovat výše. Vaše služba API může dočasně nadále přijímat staré a nové certifikáty při nasazení nového certifikátu. Pokud chcete nahrát nový certifikát do existujícího konektoru API, vyberte v části **konektory rozhraní** API konektor API a klikněte na **nahrát nový certifikát**. Poslední nahraný certifikát, jehož platnost vypršela, a kdy je datum zahájení, bude automaticky použit Azure Active Directory.
 
 ### <a name="api-key"></a>Klíč rozhraní API
 Některé služby používají mechanismus "klíč rozhraní API" k zakódování přístupu k koncovým bodům HTTP během vývoje. V případě [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)to můžete udělat tak, že `code` do **adresy URL koncového bodu** zadáte jako parametr dotazu. Například `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
@@ -302,7 +310,7 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec  | Yes      | Verze vašeho rozhraní API.                                                    |
 | akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| status      | Celé číslo/řetězec | Yes      | Musí se jednat `400` o hodnotu nebo `"400"` pro odpověď ValidationError.  |
 | userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
 
 > [!NOTE]

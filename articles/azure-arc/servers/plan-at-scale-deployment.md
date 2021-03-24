@@ -3,12 +3,12 @@ title: Postup plánování a nasazení serverů s podporou ARC Azure
 description: Naučte se, jak povolit velké množství počítačů pro servery s podporou ARC Azure a zjednodušit tak konfiguraci základních funkcí zabezpečení, správy a monitorování v Azure.
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e6f3962c46dc41c000ec6bb5c60f4bb8de4c9d5
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952996"
+ms.locfileid: "105023278"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Plánování a nasazení serverů s povoleným ARC
 
@@ -27,7 +27,7 @@ Aby nasazení mohlo pokračovat plynule, měl by váš plán vytvořit jasné po
 
 Účelem tohoto článku je zajistit úspěšné nasazení serverů s podporou ARC Azure v různých produkčních fyzických serverech nebo virtuálních počítačích ve vašem prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * V počítačích je spuštěný [podporovaný operační systém](agent-overview.md#supported-operating-systems) pro agenta připojeného počítače.
 * Vaše počítače mají připojení z vaší místní sítě nebo jiného cloudového prostředí k prostředkům v Azure, a to buď přímo, nebo prostřednictvím proxy server.
@@ -71,7 +71,7 @@ V dalším kroku přidáme do základu ve fázi 1, když připravujete a nasadí
 
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|
-| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka prostředků připojování v měřítku:<br><br> <ul><li> [Základní skript pro nasazení ve velkém měřítku](onboard-service-principal.md)</ul></li> <ul><li>[Připojování VMware vSphere virtuálních počítačů s Windows serverem v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Připojování virtuálních počítačů se systémem VMware vSphere Linux v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Připojování instancí AWS EC2 pomocí Ansible v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Nasazení během škálování pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
+| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka prostředků připojování v měřítku:<br><br> <ul><li> [Základní skript pro nasazení ve velkém měřítku](onboard-service-principal.md)</ul></li> <ul><li>[Připojování VMware vSphere virtuálních počítačů s Windows serverem v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Připojování virtuálních počítačů se systémem VMware vSphere Linux v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Připojování instancí AWS EC2 pomocí Ansible v měřítku](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Nasazení během škálování pomocí vzdálené komunikace PowerShellu](./onboard-powershell.md) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
 | [Vytvoření instančního objektu](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Vytvořte instanční objekt pro připojení počítačů neinteraktivně pomocí Azure PowerShell nebo na portálu.| Jedna hodina |
 | Nasazení agenta připojeného počítače na cílové servery a počítače |Pomocí nástroje pro automatizaci nasaďte skripty na vaše servery a připojte je k Azure.| Jeden nebo více dní v závislosti na plánu vydání a při dvoufázové zavedení. |
 

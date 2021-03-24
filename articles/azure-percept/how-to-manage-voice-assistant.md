@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099008"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022887"
 ---
 # <a name="managing-your-voice-assistant"></a>Správa hlasového asistenta
 
@@ -60,7 +60,7 @@ Klíčové slovo je slovo nebo krátká fráze sloužící k aktivaci hlasového
 
 Pomocí nástroje [Speech Studio](https://speech.microsoft.com/)můžete vytvořit vlastní klíčové slovo pro hlasového asistenta. Výuka základního modelu klíčového slova může trvat až 30 minut.
 
-Pokyny k vytvoření vlastního klíčového slova najdete v dokumentaci ke službě [Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) . Po nakonfigurování bude vaše nové klíčové slovo k dispozici na portálu projektu Santa Cruz pro použití s vaší aplikací hlasového asistenta.
+Pokyny k vytvoření vlastního klíčového slova najdete v dokumentaci ke službě [Speech Studio](../cognitive-services/speech-service/custom-keyword-basics.md) . Po nakonfigurování bude vaše nové klíčové slovo k dispozici na portálu projektu Santa Cruz pro použití s vaší aplikací hlasového asistenta.
 
 ## <a name="commands-configuration"></a>Konfigurace příkazů
 
@@ -88,7 +88,7 @@ Vlastní příkazy usnadňují vytváření bohatých aplikací hlasového prost
 
 Pomocí nástroje [Speech Studio](https://speech.microsoft.com/)můžete vytvořit vlastní příkazy pro spuštění hlasového asistenta.
 
-Pokyny k vytváření vlastních příkazů najdete v dokumentaci ke službě [Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application) . Po nakonfigurování budou vaše nové příkazy dostupné v Azure Percept studiu pro použití s vaší aplikací hlasového asistenta.
+Pokyny k vytváření vlastních příkazů najdete v dokumentaci ke službě [Speech Studio](../cognitive-services/speech-service/quickstart-custom-commands-application.md) . Po nakonfigurování budou vaše nové příkazy dostupné v Azure Percept studiu pro použití s vaší aplikací hlasového asistenta.
 
 ## <a name="next-steps"></a>Další kroky
 
