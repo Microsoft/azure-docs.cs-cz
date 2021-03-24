@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86529246"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950514"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Osvědčené postupy monitorování a diagnostiky pro Azure Service Fabric
 
@@ -34,7 +34,7 @@ Pro monitorování událostí na úrovni clusteru se doporučuje používat [pro
 
 ## <a name="watchdogs"></a>Sledovací zařízení
 
-Standardně se jedná o samostatnou službu, která sleduje stav a zatížení napříč službami, příkazy příkazového řádku otestuje a hlásí neočekávané události stavu v clusteru. To může přispět k tomu, aby nedocházelo k chybám, které se nemusí detekovat na základě výkonu jedné služby. Sledovací zařízení jsou také dobrým místem pro hostování kódu, který provádí nápravné akce, které nevyžadují zásah uživatele, jako je například čištění souborů protokolu v úložišti v určitých časových intervalech. Podívejte se na ukázkovou implementaci sledovací služby v  [událostech clusteru Service Fabric Linux v protokolu SYSLOG](https://github.com/Azure-Samples/service-fabric-watchdog-service).
+Standardně se jedná o samostatnou službu, která sleduje stav a zatížení napříč službami, příkazy příkazového řádku otestuje a hlásí neočekávané události stavu v clusteru. To může přispět k tomu, aby nedocházelo k chybám, které se nemusí detekovat na základě výkonu jedné služby. Sledovací zařízení jsou také dobrým místem pro hostování kódu, který provádí nápravné akce, které nevyžadují zásah uživatele, jako je například čištění souborů protokolu v úložišti v určitých časových intervalech. Pokud chcete plně implementovanou Open Source službu pro sledovací prostředí SF, která zahrnuje snadno použitelný model rozšiřitelnosti pro sledovací služby a který běží v clusterech s Windows i Linux, přečtěte si projekt [FabricObserver](https://aka.ms/sf/FabricObserver) . FabricObserver je software připravený pro produkční prostředí. Doporučujeme, abyste nasadili FabricObserver do svých testovacích a produkčních clusterů a rozšířili je tak, aby vyhovovaly vašim potřebám, a to buď prostřednictvím modelu modulů plug-in, nebo rozvětvení a psaním vlastních předdefinovaných pozorovatelů. Předchozí přístup je doporučený (moduly plug-in).
 
 ## <a name="next-steps"></a>Další kroky
 

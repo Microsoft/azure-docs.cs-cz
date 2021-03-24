@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181444"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949987"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -73,6 +73,7 @@ Při vytváření clusteru se specifickými atributy jsou pro identitu clusteru 
 | Microsoft. Network/virtualNetworks/podsítí/čtení <br/> Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Vyžaduje se, pokud používáte podsíť v jiné skupině prostředků, jako je třeba vlastní virtuální síť. |
 | Microsoft. Network/routeTables/Routes/Read <br/> Microsoft. Network/routeTables/Routes/Write | Vyžaduje se, pokud používáte podsíť přidruženou k tabulce směrování v jiné skupině prostředků, jako je například vlastní virtuální síť s vlastní směrovací tabulkou. Vyžaduje se, aby se ověřilo, jestli pro podsíť v jiné skupině prostředků už existuje podsíť. |
 | Microsoft. Network/virtualNetworks/podsítí/čtení | Vyžaduje se, pokud používáte interní nástroj pro vyrovnávání zatížení v jiné skupině prostředků. Vyžaduje se, aby se ověřilo, jestli už podsíť pro interní nástroj pro vyrovnávání zatížení ve skupině prostředků existuje. |
+| Microsoft. Network/privatednszones/* | Vyžaduje se, pokud používáte privátní zónu DNS v jiné skupině prostředků, jako je třeba vlastní privateDNSZone. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes řízení přístupu na základě role (Kubernetes RBAC)
 
@@ -199,7 +200,7 @@ Tato tabulka shrnuje způsoby, kterými se uživatelé můžou Kubernetes ověř
 
 Udělená role, na kterou odkazuje druhý sloupec, je udělení role Azure RBAC zobrazené na kartě **Access Control** v Azure Portal. Skupina Azure AD pro správu clusteru se zobrazuje na kartě **Konfigurace** na portálu (nebo s názvem parametru `--aad-admin-group-object-ids` v Azure CLI).
 
-| Description        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
+| Popis        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
 | -------------------|------------|----------------------------|-------------|
 | Starší přihlašovací údaje správce pomocí klientského certifikátu| **Role správce Azure Kubernetes**. Tato role umožňuje `az aks get-credentials` použití s `--admin` příznakem, který do uživatele stáhne [starší certifikát Správce clusteru (mimo Azure AD)](control-kubeconfig-access.md) `.kube/config` . Toto je jediný účel role správce Azure Kubernetes.|Není k dispozici|Pokud jste trvale zablokovali přístup k platné skupině Azure AD s přístupem k vašemu clusteru.| 
 | Azure AD s ručním (cluster) RoleBindings| **Role uživatele Azure Kubernetes**. Roli "uživatel" lze `az aks get-credentials` použít bez `--admin` příznaku. (Toto je jediný účel "role uživatele Azure Kubernetes".) Výsledkem je, že na clusteru s podporou Azure AD je stažení [prázdné položky](control-kubeconfig-access.md) do `.kube/config` , která aktivuje ověřování založené na prohlížeči při prvním použití nástrojem `kubectl` .| Uživatel není v žádné z těchto skupin. Vzhledem k tomu, že uživatel není ve všech skupinách správců clusteru, budou jeho práva řízena výhradně všemi RoleBindings nebo ClusterRoleBindings, které byly nastaveny pomocí Správce clusterů. (Cluster) RoleBindings je [navržený jako uživatelé Azure AD nebo skupiny Azure AD](azure-ad-rbac.md) `subjects` . Pokud žádné takové vazby nejsou nastavené, uživatel nebude moct excute žádné `kubectl` příkazy.|Pokud chcete jemně odstupňované řízení přístupu a nepoužíváte Azure RBAC pro autorizaci Kubernetes. Všimněte si, že uživatel, který nastavuje vazby, se musí přihlásit jednou z dalších metod uvedených v této tabulce.|
