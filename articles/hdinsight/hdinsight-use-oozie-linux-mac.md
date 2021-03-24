@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00573f01aab5e9aa86befaebb6b514c76a01b67d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702772"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871771"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
 
@@ -40,7 +40,7 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 
 Pracovní postup použitý v tomto dokumentu obsahuje dvě akce. Akce jsou definice pro úlohy, jako je například spuštění podregistru, Sqoop, MapReduce nebo jiné procesy:
 
-![Diagram pracovního postupu HDInsight Oozie](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png" alt-text="Diagram pracovního postupu HDInsight Oozie" border="false":::
 
 1. Akce podregistru spustí skript HiveQL, který extrahuje záznamy z rozhraní `hivesampletable` , které je součástí služby HDInsight. Každý řádek dat popisuje návštěvu z konkrétního mobilního zařízení. Formát záznamu se zobrazí jako následující text:
 
@@ -516,29 +516,29 @@ Chcete-li získat přístup k webovému uživatelskému rozhraní Oozie, proveď
 
 3. Na levé straně stránky vyberte **Oozie**  >  **Rychlé odkazy**  >  **Oozie web UI**.
 
-    ![Kroky pro webové uživatelské rozhraní Apache Ambari Oozie](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png" alt-text="Kroky pro webové uživatelské rozhraní Apache Ambari Oozie" border="true":::
 
 4. Webové uživatelské rozhraní Oozie ve výchozím nastavení zobrazuje spuštěné úlohy pracovního postupu. Chcete-li zobrazit všechny úlohy pracovního postupu, vyberte možnost **všechny úlohy**.
 
-    ![Úlohy pracovního postupu webové konzoly Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png" alt-text="Úlohy pracovního postupu webové konzoly Oozie" border="true":::
 
 5. Chcete-li zobrazit další informace o úloze, vyberte úlohu.
 
-    ![Informace o úloze HDInsight Apache Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png" alt-text="Informace o úloze HDInsight Apache Oozie" border="true":::
 
 6. Na kartě **informace o úloze** můžete zobrazit základní informace o úloze a jednotlivé akce v rámci úlohy. Karty v horní části můžete použít k zobrazení **definice úlohy**, **Konfigurace úlohy**, přístupu k **protokolu úlohy** nebo zobrazení orientovaného acyklického grafu (DAG) úlohy v rámci **úlohy DAG**.
 
    * **Protokol úlohy**: kliknutím na tlačítko **získat protokoly** zobrazíte všechny protokoly pro úlohu, nebo použijte pole **zadat vyhledávací filtr** k filtrování protokolů.
 
-       ![Protokol úloh HDInsight Apache Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png" alt-text="Protokol úloh HDInsight Apache Oozie" border="true":::
 
    * **DAG úlohy**: Dag je grafický přehled cest k datům pořízených prostřednictvím pracovního postupu.
 
-       ![DAG úlohy HDInsight Apache Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png" alt-text="DAG úlohy HDInsight Apache Oozie" border="true":::
 
 7. Pokud vyberete jednu z akcí na kartě **informace o úloze** , zobrazí se informace o akci. Vyberte například akci **RunSqoopExport** .
 
-    ![Informace o akci úlohy Oozie HDInsight](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png" alt-text="Informace o akci úlohy Oozie HDInsight" border="true":::
 
 8. Můžete zobrazit podrobnosti o akci, jako je například odkaz na **adresu URL konzoly**. Pomocí tohoto odkazu můžete zobrazit informace o sledování úloh pro úlohu.
 
@@ -638,18 +638,18 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
 
 7. Pokud přejdete na webové uživatelské rozhraní Oozie a vyberete kartu **úlohy koordinátora** , zobrazí se vám informace, jako na následujícím obrázku:
 
-    ![Karta úlohy koordinátora webové konzoly Oozie](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png" alt-text="Karta úlohy koordinátora webové konzoly Oozie" border="true":::
 
     **Další položka Vymaterializování** obsahuje při příštím spuštění úlohy.
 
 8. Podobně jako u předchozí úlohy pracovního postupu, pokud vyberete položku úlohy ve webovém uživatelském rozhraní, zobrazí se informace o úloze:
 
-    ![Informace o úloze koordinátoru Apache Oozie](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png" alt-text="Informace o úloze koordinátoru Apache Oozie" border="true":::
 
     > [!NOTE]  
     > Tento obrázek zobrazuje pouze úspěšné běhy úlohy, nikoli jednotlivé akce v rámci naplánovaného pracovního postupu. Chcete-li zobrazit jednotlivé akce, vyberte jednu z položek **Akce** .
 
-    ![Karta informace o úloze webové konzoly OOzie](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png" alt-text="Karta informace o úloze webové konzoly OOzie" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

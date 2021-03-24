@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 0b6d4dacf43d80f371a2a4d286af1972198c3be3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44f98692131070940514498b6bf648936bea0806
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942715"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872230"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
@@ -27,7 +27,7 @@ Pokud jste to ještě neudělali, postupujte podle [těchto pokynů](./domain-jo
 
 Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte na adresu `https://CLUSTERNAME.azurehdinsight.net` . Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
 
-![Správa řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png" alt-text="Správa řídicího panelu Apache Ambari":::
 
 ## <a name="add-users"></a>Přidání uživatelů
 
@@ -35,7 +35,7 @@ Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelské
 
 1. Na stránce Správa vyberte možnost **Uživatelé**.
 
-    ![Uživatelé stránky správy Apache Ambari](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png" alt-text="Uživatelé stránky správy Apache Ambari":::
 
 1. Vyberte **+ vytvořit místního uživatele**.
 
@@ -168,36 +168,36 @@ Ambari obsahuje instance zobrazení pro [Apache Hive](https://hive.apache.org/) 
 
 1. Na stránce Správa vyberte odkaz **zobrazení** v záhlaví nabídky **zobrazení** na levé straně.
 
-    ![Odkazy na zobrazení Apache Ambari](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png" alt-text="Odkazy na zobrazení Apache Ambari":::
 
 2. Na stránce zobrazení rozbalte řádek **podregistr** . K dispozici je jedno výchozí zobrazení podregistru, které se vytvoří, když se do clusteru přidá služba podregistr. Podle potřeby můžete také vytvořit další instance zobrazení podregistru. Vyberte zobrazení podregistru:
 
-    ![Zobrazení HDInsight – zobrazení Apache Hive](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png" alt-text="Zobrazení HDInsight – zobrazení Apache Hive":::
 
 3. Posuňte se k dolnímu okraji stránky zobrazení. V části *oprávnění* máte dvě možnosti, jak udělit uživatelům domény oprávnění k zobrazení:
 
-**Udělení oprávnění těmto uživatelům** ![ Udělení oprávnění těmto uživatelům](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Udělení oprávnění těmto** uživatelům :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png" alt-text="udělit oprávnění těmto uživatelům":::
 
-**Udělit oprávnění těmto skupinám** ![ Udělit oprávnění těmto skupinám](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Udělit oprávnění těmto skupinám** :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png" alt-text="udělit oprávnění těmto skupinám":::
 
 1. Chcete-li přidat uživatele, vyberte tlačítko **Přidat uživatele** .
 
    * Začněte psát uživatelské jméno a zobrazí se rozevírací seznam dříve definovaných názvů.
 
-     ![Automatické dokončení uživatele Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
+     :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png" alt-text="Automatické dokončení uživatele Apache Ambari":::
 
    * Vyberte nebo dokončete zadávání uživatelského jména. Chcete-li přidat toto uživatelské jméno jako nový uživatel, vyberte tlačítko **Nový** .
 
    * Změny uložíte tak, že vyberete **modré zaškrtávací políčko**.
 
-     ![Apache Ambari – udělení uživatelských oprávnění](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
+     :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png" alt-text="Apache Ambari – udělení uživatelských oprávnění":::
 
 1. Chcete-li přidat skupinu, vyberte tlačítko **Přidat skupinu** .
 
    * Začněte psát název skupiny. Proces výběru existujícího názvu skupiny nebo přidání nové skupiny je stejný jako při přidávání uživatelů.
    * Změny uložíte tak, že vyberete **modré zaškrtávací políčko**.
 
-     ![Udělení oprávnění Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
+     :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png" alt-text="Udělení oprávnění Apache Ambari":::
 
 Přidávání uživatelů přímo do zobrazení je užitečné, pokud chcete uživateli přiřadit oprávnění k použití tohoto zobrazení, ale nepřejte by být členem skupiny, která má další oprávnění. Pro snížení objemu administrativních režijních nákladů může být jednodušší přiřadit oprávnění skupinám.
 
@@ -207,7 +207,7 @@ Instance zobrazení [Apache tez](https://tez.apache.org/) umožňují uživatel�
 
 Chcete-li přiřadit uživatele a skupiny k tez zobrazení instance, rozbalte řádek **tez** na stránce zobrazení, jak je popsáno výše.
 
-![Zobrazení HDInsight – zobrazení Apache Tez](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png" alt-text="Zobrazení HDInsight – zobrazení Apache Tez":::
 
 Chcete-li přidat uživatele nebo skupiny, opakujte kroky 3-5 v předchozí části.
 
@@ -223,11 +223,11 @@ Pro uživatele a skupiny existuje pět rolí zabezpečení, které jsou uvedené
 
 Pokud chcete spravovat role, přejděte na **stránku Správa Ambari** a pak vyberte odkaz **role** v rámci skupiny nabídky *clustery* na levé straně.
 
-![Odkazy nabídky rolí Apache Ambari](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png" alt-text="Odkazy nabídky rolí Apache Ambari":::
 
 Pokud chcete zobrazit seznam oprávnění udělených jednotlivým rolím, klikněte na modré otazník vedle záhlaví tabulky **role** na stránce role.
 
-![Oprávnění pro odkazy na nabídku rolí Apache Ambari](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Oprávnění pro odkazy na nabídku rolí Apache Ambari")
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png" alt-text="Oprávnění pro odkazy na nabídku rolí Apache Ambari":::
 
 Na této stránce jsou k dispozici dvě různá zobrazení, která můžete použít ke správě rolí pro uživatele a skupiny: blokování a seznam.
 
@@ -235,7 +235,7 @@ Na této stránce jsou k dispozici dvě různá zobrazení, která můžete pou�
 
 Zobrazení blokování zobrazuje jednotlivé role ve vlastním řádku a poskytuje **těmto uživatelům role přiřazení** a **přiřazuje role k těmto skupinám** , jak je popsáno výše.
 
-![Zobrazení blokování rolí Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png" alt-text="Zobrazení blokování rolí Apache Ambari":::
 
 ### <a name="list-view"></a>zobrazení seznamu
 
@@ -243,11 +243,11 @@ Zobrazení seznamu poskytuje možnosti rychlého úprav ve dvou kategoriích: u�
 
 * Kategorie uživatelé v zobrazení seznamu zobrazuje seznam všech uživatelů, což vám umožní vybrat roli pro každého uživatele v rozevíracím seznamu.
 
-    ![Zobrazení seznamu rolí Apache Ambari – uživatelé](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png" alt-text="Zobrazení seznamu rolí Apache Ambari – uživatelé":::
 
 * V kategorii skupiny v zobrazení seznamu se zobrazí všechny skupiny a role přiřazená jednotlivým skupinám. V našem příkladu je seznam skupin synchronizovaný ze skupin Azure AD, které jsou zadané ve vlastnosti **skupiny uživatelů Access** v doméně nastavení domény. Přečtěte si téma [Vytvoření clusteru HDInsight s povoleným](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP.
 
-    ![Zobrazení seznamu rolí Apache Ambari – skupiny](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png" alt-text="Zobrazení seznamu rolí Apache Ambari – skupiny":::
 
     Na obrázku výše je skupině "hiveusers" přiřazena role *uživatele clusteru* . Tato role je jen pro čtení, která umožňuje uživatelům této skupiny zobrazovat ale měnit konfigurace služby a metriky clusterů.
 
@@ -255,13 +255,13 @@ Zobrazení seznamu poskytuje možnosti rychlého úprav ve dvou kategoriích: u�
 
 Přiřadili jsme našemu uživateli domény Azure AD oprávnění "hiveuser1" pro zobrazení podregistru a TEZ. Když spustíme webové uživatelské rozhraní Ambari a zadáte přihlašovací údaje domény tohoto uživatele (uživatelské jméno Azure AD ve formátu e-mailu a heslo), uživatel se přesměruje na stránku zobrazení Ambari. Odsud může uživatel vybrat libovolné dostupné zobrazení. Uživatel nemůže navštívit žádnou jinou část webu, včetně řídicího panelu, služeb, hostitelů, výstrah nebo stránek správce.
 
-![Uživatel Apache Ambari jenom s zobrazeními](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png" alt-text="Uživatel Apache Ambari jenom s zobrazeními":::
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Přihlášení k Ambari jako uživatel clusteru
 
 K roli *uživatele clusteru* jsme přiřadili uživatele domény služby Azure AD "hiveuser2". Tato role může mít přístup k řídicímu panelu a všem položkám nabídky. Uživatel clusteru má méně povolených možností než správce. Hiveuser2 může například zobrazit konfigurace pro každou ze služeb, ale nemůže je upravovat.
 
-![Zobrazení řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png" alt-text="Zobrazení řídicího panelu Apache Ambari":::
 
 ## <a name="next-steps"></a>Další kroky
 

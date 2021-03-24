@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98065316"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950463"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -306,7 +306,7 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |ruleSetVersion     | Použitá verze sady pravidel Dostupné hodnoty jsou 2.2.9 a 3,0.     |
 |ruleId     | ID pravidla události triggeru        |
 |zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
-|akce     |  Akce prováděná na žádosti Dostupné hodnoty se shodují a zablokují.      |
+|akce     |  Akce prováděná na žádosti Dostupné hodnoty jsou blokované a povolené (pro vlastní pravidla), spárování (když pravidlo odpovídá části požadavku) a zjištěné a blokované (jsou to pro povinná pravidla, v závislosti na tom, jestli je WAF v režimu detekce nebo prevence).      |
 |webovém     | Lokalita, pro kterou se protokol vygeneroval. V současné době se v seznamu zobrazí pouze globální, protože pravidla jsou globální.|
 |zobrazí     | Podrobnosti události aktivace.        |
 |Podrobnosti. zpráva     | Popis pravidla        |

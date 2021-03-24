@@ -3,12 +3,12 @@ title: Bicep jazyk pro šablony Azure Resource Manager
 description: Popisuje jazyk bicep pro nasazení infrastruktury do Azure prostřednictvím šablon Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 0edd0063ea08978b89c3ad3067f41ae743451df7
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889684"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955903"
 ---
 # <a name="what-is-bicep-preview"></a>Co je bicep (Preview)?
 
@@ -16,11 +16,15 @@ Bicep je jazyk pro deklarativní nasazení prostředků Azure. K vývoji šablon
 
 Syntaxe JSON pro vytvoření šablony může být podrobná a vyžaduje složitý výraz. Bicep vylepšuje toto prostředí bez ztráty funkcí šablony JSON. Jedná se o transparentní abstrakci přes JSON pro šablony ARM. Každý soubor bicep se zkompiluje na standardní šablonu ARM. Typy prostředků, verze rozhraní API a vlastnosti, které jsou platné v šabloně ARM, jsou platné v souboru bicep. Aktuální verze obsahuje několik [známých omezení](#known-limitations) .
 
+Bicep je aktuálně ve verzi Preview. Chcete-li sledovat stav práce, přečtěte si téma [úložiště projektu bicep](https://github.com/Azure/bicep).
+
 Další informace o bicep najdete v následujícím videu.
+
+> [!VIDEO https://www.youtube.com/embed/sc1kJfcRQgY]
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud chcete začít s bicep, [nainstalujte nástroje](https://github.com/Azure/bicep/blob/main/docs/installing.md).
+Pokud chcete začít s bicep, [nainstalujte nástroje](bicep-install.md).
 
 Po instalaci nástrojů Vyzkoušejte [kurz bicep](./bicep-tutorial-create-first-bicep.md). Série kurzů vás provede strukturou a funkcemi bicep. Nasadíte soubory bicep a převedete šablonu ARM na ekvivalentní soubor bicep.
 
