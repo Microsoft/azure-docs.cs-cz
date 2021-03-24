@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 383b49a7363fdca9327d419f5bed092d489a95d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181386"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951789"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Kurz: integrace správce Wandera RADARu pomocí Azure Active Directory
 
@@ -82,7 +82,8 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory Wandera pro správce s paprsky](https://www.wandera.com/about-wandera/contact/#supportsection) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory Wandera pro správce s paprsky](https://www.wandera.com/about-wandera/contact/#supportsection) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal. Pečlivě nahraďte <tenant id> část výše uvedené adresy URL ID tenanta zobrazeným na stránce **Nastavení**  >  **pro**  >  **jednotné přihlašování** v rámci účtu Wandera.
+
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 

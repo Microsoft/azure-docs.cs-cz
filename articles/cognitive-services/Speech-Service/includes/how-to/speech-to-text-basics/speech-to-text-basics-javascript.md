@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180040"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987686"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -20,7 +20,7 @@ Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rych
 
 Případně si přečtěte [ukázku reakce](https://github.com/Azure-Samples/AzureSpeechReactSample) a Naučte se používat sadu Speech SDK v prostředí založeném na prohlížeči.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -62,11 +62,7 @@ Rozpoznávání řeči pomocí mikrofonu není **v Node.jspodporováno** a je po
 
 ## <a name="recognize-from-file"></a>Rozpoznat ze souboru 
 
-Pro rozpoznávání řeči ze zvukového souboru v Node.js musí být použit alternativní návrhový vzor pomocí datového proudu push, protože objekt jazyka JavaScript `File` nelze použít v modulu Node.js runtime. Následující kód:
-
-* Vytvoří Stream push pomocí. `createPushStream()`
-* Otevře `.wav` soubor vytvořením streamu pro čtení a zapíše ho do datového proudu push.
-* Vytvoří konfiguraci zvuku pomocí datového proudu push.
+Pro rozpoznávání řeči ze zvukového souboru vytvořte pomocí, `AudioConfig` `fromWavFileInput()` který přijímá `Buffer` objekt. Pak inicializujte [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) a, předejte své `audioConfig` a `speechConfig` .
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>Rozpoznávání z datového proudu v paměti
+
+V mnoha případech použití je pravděpodobnější, že zvuková data přicházejí z úložiště objektů BLOB nebo jinak jsou v paměti jako [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) nebo podobná struktura nezpracovaných dat. Následující kód:
+
+* Vytvoří Stream push pomocí `createPushStream()` .
+* Přečte `.wav` soubor pomocí `fs.createReadStream` demonstračních účelů, ale pokud již máte zvuková data v `ArrayBuffer` , můžete přeskočit přímo k zápisu obsahu do vstupního streamu.
+* Vytvoří konfiguraci zvuku pomocí datového proudu push.
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 Použití datového proudu push jako vstupu předpokládá, že zvuková data jsou nezpracované PCM, například přeskočení hlaviček.

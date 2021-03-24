@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596021"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871193"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Monitorování instancí App Service pomocí kontroly stavu
 
@@ -48,7 +48,7 @@ V tomto článku se pomocí Azure Portal ke sledování instancí App Service po
 
 Kromě konfigurace možností kontroly stavu můžete také nakonfigurovat následující [nastavení aplikace](configure-common.md):
 
-| Název nastavení aplikace | Povolené hodnoty | Description |
+| Název nastavení aplikace | Povolené hodnoty | Popis |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximální počet selhání nástroje test. Například pokud je nastavena na `2` , vaše instance budou odebrány po `2` neúspěšných příkazech otestuje. Při vertikálním navýšení nebo zmenšování App Service nástroj příkazového řádku otestuje cestu kontroly stavu, aby bylo zajištěno, že budou nové instance připravené. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Aby nedocházelo k nenáročným instancím v pořádku, nebudou vyloučeny žádné více než polovinu instancí. Pokud je například plán App Service škálovat na čtyři instance a tři nejsou v pořádku, bude vyloučeno nejvíce dvou. Ostatní dvě instance (v pořádku a jedna není v pořádku) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Chcete-li toto chování přepsat, nastavte nastavení aplikace na hodnotu mezi `0` a `100` . Vyšší hodnota znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50). |
@@ -57,7 +57,7 @@ Kromě konfigurace možností kontroly stavu můžete také nakonfigurovat násl
 
 Kontroly stavu se integrují s funkcemi ověřování a autorizace App Service. Pokud jsou tyto funkce zabezpečení povoleny, nejsou vyžadovány žádné další nastavení. Pokud ale používáte vlastní ověřovací systém, musí cesta pro kontrolu stavu umožňovat anonymní přístup. Pokud je lokalita pouze HTTP **s** povolenou, žádost o kontrolu stavu bude odeslána prostřednictvím protokolu HTTP **S**.
 
-Velké podniky pro vývoj v podniku často potřebují splňovat požadavky na zabezpečení pro vystavená rozhraní API. K zabezpečení koncového bodu kontroly stavu byste nejdřív měli používat funkce, jako jsou [omezení IP adresy](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [klientské certifikáty](app-service-ip-restrictions.md#set-an-ip-address-based-rule)nebo Virtual Network, které omezují přístup k aplikacím. Koncový bod kontroly stavu můžete zabezpečit tím, že budete vyžadovat, aby `User-Agent` odpovídaly příchozímu požadavku `ReadyForRequest/1.0` . User-Agent nemůže být zfalšovaný, protože žádost již byla zabezpečena předchozími funkcemi zabezpečení.
+Velké podniky pro vývoj v podniku často potřebují splňovat požadavky na zabezpečení pro vystavená rozhraní API. K zabezpečení koncového bodu kontroly stavu byste nejdřív měli používat funkce, jako jsou [omezení IP adresy](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [klientské certifikáty](app-service-ip-restrictions.md#set-an-ip-address-based-rule)nebo Virtual Network, které omezují přístup k aplikacím. Koncový bod kontroly stavu můžete zabezpečit tím, že budete vyžadovat, aby `User-Agent` odpovídaly příchozímu požadavku `HealthCheck/1.0` . User-Agent nemůže být zfalšovaný, protože žádost již byla zabezpečena předchozími funkcemi zabezpečení.
 
 ## <a name="monitoring"></a>Monitorování
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: b5add466a60bc855e08917d02fecaf60a35deeb1
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798285"
+ms.locfileid: "104889565"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Monitorování nasazení SQL pomocí SQL Insights (Preview)
 SQL Insights monitoruje výkon a stav nasazení SQL.  Může přispět k předvídatelnému výkonu a dostupnosti důležitých úloh, které jste vytvořili kolem back-endu SQL, a to tak, že identifikují problémová místa a problémy s výkonem. SQL Insights ukládá data do [protokolů Azure monitor](../logs/data-platform-logs.md), což umožňuje poskytovat výkonnou agregaci a filtrování a analyzovat trendy dat v čase. Tato data můžete zobrazit z Azure Monitor v zobrazeních, která jako součást této nabídky dodáváme, a můžete se podívat přímo na data protokolu, abyste mohli spouštět dotazy a analyzovat trendy.
@@ -59,7 +59,12 @@ Podrobný postup, jak povolit SQL Insights, najdete v tématu [Povolení SQL Ins
 
 
 ## <a name="data-collected-by-sql-insights"></a>Data shromážděná službou SQL Insights
-Ve verzi Public Preview podporuje SQL Insights jenom vzdálenou metodu monitorování. [Agent telegraf](https://www.influxdata.com/time-series-platform/telegraf/) není nainstalován v SQL Server. Používá [modul plug-in SQL Server Input pro telegraf](https://www.influxdata.com/integration/microsoft-sql-server/) a používá tři skupiny dotazů pro různé typy monitorování SQL serveru: Azure SQL DB, Azure SQL Managed instance, SQL Server běžící na virtuálním počítači Azure. 
+
+SQL Insights podporuje pouze vzdálenou metodu monitorování SQL. Na virtuální počítače, na kterých běží SQL Server, nenainstalujeme žádné agenty. Vyžaduje se jeden nebo více vyhrazených virtuálních počítačů monitorování, které používáme ke vzdálenému shromažďování dat z vašich prostředků SQL. 
+
+U každého z těchto virtuálních počítačů monitorování bude nainstalován [agent Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) společně s rozšířením WLI (úlohy Insights). 
+
+Rozšíření WLI zahrnuje Open sourceho [agenta telegraf](https://www.influxdata.com/time-series-platform/telegraf/).  [Pravidla shromažďování dat](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) používáme ke konfiguraci [vstupního modulu plug-in SQLServer](https://www.influxdata.com/integration/microsoft-sql-server/) pro určení dat, která se mají shromažďovat ze služby Azure SQL DB, spravované Instance Azure SQL a SQL Server spuštěné na virtuálním počítači Azure. 
 
 Následující tabulky shrnují následující:
 

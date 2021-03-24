@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 5ab51fc4ea64dfd678f5c9acfc80b5e380782153
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609407"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889616"
 ---
 # <a name="enable-sql-insights-preview"></a>Povolit SQL Insights (Náhled)
 Tento článek popisuje, jak povolit [SQL Insights](sql-insights-overview.md) pro monitorování vašich nasazení SQL. Monitorování se provádí z virtuálního počítače Azure, který vytváří připojení k vašim nasazením SQL a pomocí zobrazení dynamické správy (zobrazení dynamické správy) shromažďuje data monitorování. Můžete řídit, které datové sady jsou shromažďovány a četnost shromažďování pomocí profilu monitorování.
@@ -92,13 +92,16 @@ Každý typ SQL nabízí metody pro váš virtuální počítač pro monitorová
 
 ### <a name="azure-sql-databases"></a>Azure SQL Databases  
 
-[Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure Portal](../../private-link/tutorial-private-endpoint-sql-portal.md) poskytuje příklad nastavení privátního koncového bodu, který můžete použít pro přístup k databázi.  Pokud použijete tuto metodu, budete muset zajistit, aby vaše virtuální počítače pro monitorování byly ve stejné virtuální síti a podsíti, kterou budete používat pro privátní koncový bod.  Pokud jste to ještě neudělali, můžete v databázi vytvořit soukromý koncový bod. 
+SQL Insights podporuje přístup k vašemu Azure SQL Database prostřednictvím veřejného koncového bodu a také z jeho virtuální sítě.
 
-Použijete-li [nastavení brány firewall](../../azure-sql/database/firewall-configure.md) k poskytnutí přístupu k vašemu SQL Database, je nutné přidat pravidlo brány firewall, které poskytne přístup z veřejné IP adresy virtuálního počítače monitorování. Přístup k nastavení brány firewall můžete získat ze stránky **přehled Azure SQL Database** na portálu. 
+Pro přístup prostřednictvím veřejného koncového bodu byste přidali pravidlo na stránce **nastavení brány firewall** a v části [nastavení brány firewall protokolu IP](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules) .  Pro zadání přístupu z virtuální sítě můžete nastavit [pravidla brány firewall virtuální sítě](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules) a nastavit [značky služby vyžadované agentem Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking).  [Tento článek](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules) popisuje rozdíly mezi těmito dvěma typy pravidel brány firewall.
 
 :::image type="content" source="media/sql-insights-enable/set-server-firewall.png" alt-text="Nastavení brány firewall serveru" lightbox="media/sql-insights-enable/set-server-firewall.png":::
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Nastavení brány firewall." lightbox="media/sql-insights-enable/firewall-settings.png":::
+
+> [!NOTE]
+> SQL Insights v současné době nepodporuje pro Azure SQL Database privátní koncový bod Azure.  Pro skupinu zabezpečení sítě nebo nastavení brány firewall virtuální sítě, které [podporuje agent Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking), doporučujeme používat [značky služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) .
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instances 
 

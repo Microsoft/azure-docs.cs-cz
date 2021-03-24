@@ -1,14 +1,14 @@
 ---
 title: Ukázky dotazů pro pokročilé
 description: Pomocí Azure Resource graphu můžete spouštět některé rozšířené dotazy, včetně práce se sloupci, použitými značkami a porovnáním prostředků s regulárními výrazy.
-ms.date: 01/27/2021
+ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5a87d63e597622ae5c0d8c8f48bc37281d4fd530
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99560351"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949851"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Ukázky dotazů v rozšířeném grafu prostředků
 
@@ -28,7 +28,6 @@ Projdeme následující rozšířené dotazy:
 - [Vypíše všechna rozšíření nainstalovaná na virtuálním počítači.](#join-vmextension)
 - [Vyhledání účtů úložiště s konkrétní značkou ve skupině prostředků](#join-findstoragetag)
 - [Kombinování výsledků ze dvou dotazů do jednoho výsledku](#unionresults)
-- [Zahrnutí názvů tenanta a předplatného do DisplayNames](#displaynames)
 - [Sumarizace virtuálního počítače pomocí rozšířené vlastnosti stav napájení](#vm-powerstate)
 - [Počet neodpovídajících přiřazení konfigurace hostů](#count-gcnoncompliant)
 - [Dotaz na podrobnosti sestav přiřazení konfigurace hostů](#query-gcreports)
@@ -559,26 +558,6 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 - Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com</a>
 - Portál Azure Government: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">Portal.Azure.us</a>
 - Portál Azure Čína 21Vianet: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">Portal.Azure.cn</a>
-
----
-
-## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>Zahrnutí názvů tenanta a předplatného do DisplayNames
-
-Tento dotaz používá parametr **include** s možností _DisplayNames_ k přidání **subscriptionDisplayName** a **tenantDisplayName** do výsledků. Tento parametr je k dispozici pouze pro Azure CLI a Azure PowerShell.
-
-```azurecli-interactive
-az graph query -q "limit 1" --include displayNames
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "limit 1" -Include DisplayNames
-```
-
-Alternativou k získání názvu předplatného je použití `join` operátoru a připojení k tabulce **ResourceContainers** a `Microsoft.Resources/subscriptions` typu. `join` funguje v Azure CLI, Azure PowerShell, portálu a v podporované sadě SDK. Příklad najdete v tématu [trezor ukázek klíčů s názvem předplatného](#join).
-
-> [!NOTE]
-> Pokud dotaz nepoužívá **aplikaci Project** k určení vrácených vlastností, jsou do výsledků automaticky zahrnuty **subscriptionDisplayName** a **tenantDisplayName** .
-> Pokud dotaz používá **aplikaci Project**, musí být každé pole _DisplayName_ explicitně zahrnuto v **projektu** nebo nebude vráceno ve výsledcích, i když je použit parametr **include** . Parametr **include** nefunguje s [tabulkami](../concepts/query-language.md#resource-graph-tables).
 
 ---
 

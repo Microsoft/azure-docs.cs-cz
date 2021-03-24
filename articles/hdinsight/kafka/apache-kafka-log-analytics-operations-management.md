@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 74db121c33864ee72ad984b49c8fa43afa0f598c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595288"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870513"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka ve službě HDInsight
 
@@ -22,7 +22,7 @@ Naučte se používat protokoly Azure Monitor k analýze protokolů vygenerovan�
 
 Protokoly Apache Kafka v clusteru se nacházejí v umístění `/var/log/kafka` . Protokoly Kafka se neukládají ani neukládají mezi životním cyklům clusteru bez ohledu na to, jestli se používají spravované disky. V následující tabulce jsou uvedeny dostupné protokoly.
 
-|Protokol |Description |
+|Protokol |Popis |
 |---|---|
 |Kafka. out|stdout a stderr procesu Kafka V tomto souboru najdete protokoly spouštění a vypínání Kafka.|
 |Server. log|Hlavní protokol serveru Kafka Všechny protokoly služby Kafka Broker tady zakončí.|
@@ -91,13 +91,13 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
     Můžete také zadat `*` pro prohledávání všech protokolovaných typů. V současné době jsou k dispozici následující protokoly pro dotazy:
 
-    | Typ protokolu | Description |
+    | Typ protokolu | Popis |
     | ---- | ---- |
     | protokol \_ kafkaserver \_ CL | Server služby Kafka Broker. log |
     | protokol \_ kafkacontroller \_ CL | Protokol Kafka Broker Controller. log |
     | metriky \_ Kafka \_ CL | Kafka JMX metriky |
 
-    ![Apache Kafka – využití procesoru Log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+    :::image type="content" source="./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png" alt-text="Apache Kafka – využití procesoru Log Analytics" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

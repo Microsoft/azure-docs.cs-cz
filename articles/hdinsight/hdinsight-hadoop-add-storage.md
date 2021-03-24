@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32757fef131c5e443350f032c0ac987d7f491396
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945937"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864308"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
@@ -98,7 +98,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. Sledujte klíče, které začínají na `fs.azure.account.key` . Název účtu bude součástí klíče, jak je vidět v této ukázkové imagi:
 
-   ![ověření prostřednictvím Apache Ambari](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
+   :::image type="content" source="./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png" alt-text="ověření prostřednictvím Apache Ambari":::
 
 ## <a name="remove-storage-account"></a>Odebrat účet úložiště
 

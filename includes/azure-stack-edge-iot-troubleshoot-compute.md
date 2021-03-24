@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622292"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987691"
 ---
 K řešení chyb souvisejících s výpočty použijte IoT Edge odezvy agenta modulu runtime. Tady je seznam možných odpovědí:
 
@@ -66,3 +66,43 @@ V místním webovém uživatelském rozhraní zařízení proveďte následujíc
 1. Vyberte **Použít**. Změněný rozsah IP adres by měl platit okamžitě.
 
 Další informace najdete v tématu [Změna IP adres externích služeb pro kontejnery](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>Konfigurace statických IP adres pro moduly IoT Edge
+
+#### <a name="problem-description"></a>Popis problému
+
+Kubernetes přiřadí ke každému IoT Edge modulu dynamické IP adresy na zařízení GPU Azure Stack Edge pro. Ke konfiguraci statických IP adres pro moduly je nutná metoda.
+
+#### <a name="suggested-solution"></a>Navrhované řešení
+
+Pevné IP adresy pro IoT Edge moduly můžete zadat pomocí části K8s-experimentální, jak je popsáno níže: 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>Vystavení služby Kubernetes jako služby IP adres clusteru pro interní komunikaci
+
+#### <a name="problem-description"></a>Popis problému
+
+Ve výchozím nastavení je typ služby IoT typu Nástroj pro vyrovnávání zatížení a přiřazený externě IP adresám. Nebudete chtít, aby se pro vaši aplikaci nastala externí IP adresa. Může být nutné vystavit lusky v rámci clusteru KUbernetes za účelem přístupu jako jiné lusky, nikoli jako externě vystavené služby Vyrovnávání zatížení. 
+
+#### <a name="suggested-solution"></a>Navrhované řešení
+
+Možnosti vytvoření můžete použít prostřednictvím části K8s-experimentální. Následující možnost služby by měla fungovat s vazbami portů.
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

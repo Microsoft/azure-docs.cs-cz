@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: d1c32bf749850ac40e23c1a9cb9c5cd7755d45c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cbaa84c73a5e332dca60286bc35200761e546dd3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939440"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864223"
 ---
 # <a name="what-is-azure-hdinsight"></a>Co je Azure HDInsight?
 
@@ -52,31 +52,31 @@ Extrakce, transformace a načítání (ETL) je proces, při kterém se nestruktu
 
 Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtovém měřítku nad strukturovanými i nestrukturovanými daty v jakémkoli měřítku. Můžete také sestavovat modely, které je propojí s nástroji BI.
 
-![Architektura HDInsight: Datové sklady](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "Architektura HDInsight pro datové sklady")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png" alt-text="Architektura HDInsight: Datové sklady":::
 
 ### <a name="internet-of-things-iot"></a>Internet věcí (IoT)
 
 Pomocí služby HDInsight můžete zpracovávat streamovaná data přijímaná v reálném čase z různých druhů zařízení. Pokud chcete získat další informace, [přečtěte si tento blogový příspěvek z Azure, který oznamuje verzi Public Preview pro Apache Kafka v HDInsightu se Spravovanými disky Azure](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
 
-![Architektura HDInsight: Internet věcí](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "Architektura IoT HDInsight")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png" alt-text="Architektura HDInsight: Internet věcí":::
 
 ### <a name="data-science"></a>Datové vědy
 
 Pomocí služby HDInsight můžete sestavovat aplikace, které z dat extrahují důležité informace. Navíc můžete pomocí služby Azure Machine Learning předvídat budoucí trendy pro vaši firmu. Další informace najdete v [tomto příběhu zákazníka](https://customers.microsoft.com/story/pros).
 
-![Architektura HDInsight: Datové vědy](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "Architektura pro datové vědy pro HDInsight")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png" alt-text="Architektura HDInsight: Datové vědy":::
 
 ### <a name="hybrid"></a>Hybridní
 
 Pomocí služby HDInsight můžete rozšířit svou stávající místní infrastrukturu velkých dat do Azure a využívat možnosti pokročilých analýz v cloudu.
 
-![Architektura HDInsight: Hybridní](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "Hybridní architektura HDInsight")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png" alt-text="Architektura HDInsight: Hybridní":::
 
 ## <a name="cluster-types-in-hdinsight"></a>Typy clusterů ve službě HDInsight
 
 HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení clusterů, jako je například možnost přidávání komponent, nástrojů a jazyků. HDInsight nabízí následující typy clusteru:
 
-|Typ clusteru | Description |
+|Typ clusteru | Popis |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Rozhraní, které používá HDFS, správu prostředků PŘÍZe a jednoduchý programovací model MapReduce pro souběžné zpracování a analýzu dat Batch.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Open source architektura paralelního zpracování, která podporuje zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat. Podívejte [se, co je Apache Spark v HDInsight?](./spark/apache-spark-overview.md).|

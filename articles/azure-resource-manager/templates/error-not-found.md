@@ -2,13 +2,13 @@
 title: Chyby nenalezených prostředků
 description: Popisuje, jak vyřešit chyby při nalezení prostředku. K této chybě může dojít při nasazování šablony Azure Resource Manager nebo při přijetí akcí správy.
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99526242"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950871"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Chyby při řešení nenalezených prostředků
 
@@ -133,3 +133,9 @@ Při nasazování šablony hledejte výrazy, které používají funkce [referen
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>Řešení 6 – po odstranění prostředku
+
+Když prostředek odstraníte, může dojít k krátké době, kdy se prostředek stále zobrazuje na portálu, ale není ve skutečnosti k dispozici. Pokud vyberete prostředek, zobrazí se chyba oznamující, že prostředek nebyl nalezen. Aktualizujte portál, abyste získali nejnovější zobrazení.
+
+Pokud potíže potrvají i po krátkém čekání, obraťte se na [podporu](https://azure.microsoft.com/support/options/).

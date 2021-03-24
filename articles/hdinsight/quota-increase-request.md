@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935830"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863169"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Vyžádání zvýšení kvóty pro Azure HDInsight
 
@@ -34,7 +34,7 @@ Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 
-    ![tlačítko pro pomoc a podporu](./media/quota-increase-request/help-support-button.png)
+    :::image type="content" source="./media/quota-increase-request/help-support-button.png" alt-text="tlačítko pro pomoc a podporu" border="true":::
 
 1. Vyberte **Nová žádost o podporu**.
 1. Na stránce **Nová žádost o podporu** na kartě **Základní informace** vyberte následující možnosti:
@@ -43,20 +43,20 @@ Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
    - **Předplatné**: předplatné, které chcete upravit.
    - **Typ kvóty**: **HDInsight**
 
-     ![Vytvoření žádosti o podporu pro zvýšení kvóty jádra HDInsight](./media/quota-increase-request/hdinsight-quota-support-request.png)
+     :::image type="content" source="./media/quota-increase-request/hdinsight-quota-support-request.png" alt-text="Vytvoření žádosti o podporu pro zvýšení kvóty jádra HDInsight" border="true":::
 
 1. Vyberte **Další: řešení >>**.
 1. Na stránce **Podrobnosti** zadejte popis problému, vyberte závažnost problému, upřednostňovanou metodu kontaktu a další povinná pole. Použijte níže uvedenou šablonu, abyste zajistili, že budete poskytovat potřebné informace. Žádosti o zvýšení kvóty jsou vyhodnocovány týmem Azure Capacity, nikoli produktovým týmem HDInsight. Podrobnější informace, které zadáte, bude pravděpodobně vaše žádost schválena.
 
-    ```
-    I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
-    
-    My current quota on this subscription is [CURRENT QUOTA AMOUNT].
-    
-    I would like to use the extra cores for [DETAIL REASON].
-    ```
+   ```text
+   I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
+   
+   My current quota on this subscription is [CURRENT QUOTA AMOUNT].
+   
+   I would like to use the extra cores for [DETAIL REASON].
+   ```
 
-    ![Podrobnosti o problému](./media/quota-increase-request/problem-details.png)
+   :::image type="content" source="./media/quota-increase-request/problem-details.png" alt-text="Podrobnosti o problému" border="true":::
 
 1. Vyberte **Další: zkontrolovat + vytvořit >>**.
 1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.

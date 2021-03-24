@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95016747"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950735"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy při výběru ID časové řady
 
@@ -24,6 +24,11 @@ Tento článek shrnuje důležitost ID časových řad pro prostředí Azure Tim
 ## <a name="choose-a-time-series-id"></a>Volba ID služby Time Series
 
 Výběr vhodného ID časové řady je kritický. Výběr ID časové řady je například volba klíče oddílu pro databázi. Vyžaduje se při vytváření prostředí Azure Time Series Insights Gen2.
+
+Podrobné vysvětlení ID časové řady najdete v kurzu zřizování prostředí. Zobrazí se dva různé příklady datové části telemetrie JSON a správný výběr ID časové řady pro každý z nich.</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
 
 > [!IMPORTANT]
 > ID časových řad:

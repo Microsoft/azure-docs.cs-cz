@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8093db9c53d9c34014d1b315d53539b3f2cffb30
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699381"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866705"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce streamingmi na Apache Hadoop ve službě HDInsight
 
@@ -150,7 +150,7 @@ Dál je potřeba nahrát *Mapovač* a aplikace *snižující* kapacitu do úlož
 
 1. Rozbalte cluster HDInsight, do kterého chcete nasadit tuto aplikaci. Zobrazí se položka s textem **(výchozí účet úložiště)** .
 
-   ![Účet úložiště, cluster HDInsight, Průzkumník serveru, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
+   :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png" alt-text="Účet úložiště, cluster HDInsight, Průzkumník serveru, Visual Studio" border="true":::
 
    * Pokud je možné rozšířit položku **(výchozí účet úložiště)** , používáte **účet Azure Storage** jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory ve výchozím úložišti pro cluster, rozbalte položku a dvakrát klikněte na položku **(výchozí kontejner)**.
 
@@ -160,7 +160,7 @@ Dál je potřeba nahrát *Mapovač* a aplikace *snižující* kapacitu do úlož
 
     * Pokud používáte **účet Azure Storage**, vyberte ikonu **nahrát objekt BLOB** .
 
-        ![Ikona nahrání HDInsight pro Mapper, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png" alt-text="Ikona nahrání HDInsight pro Mapper, Visual Studio" border="true":::
 
         V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru** možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** přejdete do složky *bin\Debug* pro projekt *mapper* a pak zvolte soubor *mapper.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
 

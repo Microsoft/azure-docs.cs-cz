@@ -11,7 +11,7 @@
 - name: Rychlé starty
   items:
     - name: Vytvoření virtuálního počítače na portálu
-      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+      href: ../virtual-machines/windows/quick-create-portal.md?context=/azure/azure-portal/context/context
     - name: Vytvoření řídicího panelu
       items:
         - name: Azure CLI
@@ -97,3 +97,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Videa k Azure
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'
+    - name: Azure a Power BI
+      href: /power-bi/connect-data/service-azure-and-power-bi?context=/azure/azure-portal/context/context
