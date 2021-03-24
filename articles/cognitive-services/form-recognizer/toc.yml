@@ -7,40 +7,20 @@
       href: overview.md
     - name: Co je nového
       href: whats-new.md
-- name: Začínáme s Rozpoznáváním formulářů
-  expanded: true
+- name: Rychlé starty
   items:
-    - name: S využitím klientské knihovny nebo REST API
+    - name: Začínáme s klientskou knihovnou nebo REST API
       href: quickstarts/client-library.md
-    - name: Použití ukázkového nástroje pro popisování
+    - name: Použití nástroje pro označování ukázek
       href: quickstarts/label-tool.md
-- name: Kurzy
+- name: ukázky
   items:
-    - name: Použití Rozpoznávání formulářů se službou Cognitive Search
-      href: ../../search/cognitive-search-custom-skill-form.md
-    - name: Použití Rozpoznávání formulářů se službou AI Builder
-      href: tutorial-ai-builder.md
-    - name: Použití nástroje pro rozpoznávání formulářů s Azure Functions
-      href: tutorial-azure-function.md
-    - name: Hromadná extrakce dat formuláře
-      href: tutorial-bulk-processing.md
-- name: Koncepty
-  items:
-    - name: Rozhraní API pro rozložení
-      expanded: true
-      items:
-        - name: Extrakce dat formuláře
-          href: concept-layout.md
-    - name: Vlastní modely
-      href: concept-custom.md
-    - name: Účtenky
-      href: concept-receipts.md
-    - name: Vizitky
-      href: concept-business-cards.md
-    - name: Faktury
-      href: concept-invoices.md
-    - name: Identifikační karty
-      href: concept-identification-cards.md
+    - name: 'C#/.NET: sada SDK klientské knihovny pro rozpoznávání formulářů'
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: 'Java: sada SDK klientské knihovny pro rozpoznávání formulářů'
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: 'Python: sada SDK klientské knihovny pro rozpoznávání formulářů'
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
@@ -64,7 +44,34 @@
           href: ../containers/index.yml
     - name: Modely zálohování a obnovení
       href: disaster-recovery.md
-- name: Referenční informace
+- name: Koncepty
+  items:
+    - name: Rozhraní API pro rozložení
+      expanded: true
+      items:
+        - name: Extrakce dat formuláře
+          href: concept-layout.md
+    - name: Vlastní modely
+      href: concept-custom.md
+    - name: Účtenky
+      href: concept-receipts.md
+    - name: Vizitky
+      href: concept-business-cards.md
+    - name: Faktury
+      href: concept-invoices.md
+    - name: Identifikační karty
+      href: concept-identification-cards.md
+- name: Kurzy
+  items:
+    - name: Hromadná extrakce dat formuláře
+      href: tutorial-bulk-processing.md
+    - name: Použití Rozpoznávání formulářů se službou Cognitive Search
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: Použití Rozpoznávání formulářů se službou AI Builder
+      href: tutorial-ai-builder.md
+    - name: Použití nástroje pro rozpoznávání formulářů s Azure Functions
+      href: tutorial-azure-function.md
+- name: Reference
   items:
     - name: Rozhraní API pro rozpoznávání formulářů v 2.1 Preview. 3
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm'

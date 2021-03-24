@@ -163,6 +163,9 @@
         - name: Konfigurace spravovaných identit
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: Povolit rotaci certifikátů
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: Připojení virtuálního systému souborů
           href: virtual-file-mount.md
         - name: Připojení sdílené složky Azure

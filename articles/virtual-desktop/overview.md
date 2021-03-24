@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26d6b258c1e22d5d28353486378acc9aa0bbd5d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98730781"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889633"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -124,7 +124,7 @@ Další informace o adresách URL, které musíte odblokovat, abyste mohli použ
 Virtuální počítač s Windows podporuje následující image operačních systémů x64:
 
 * Windows 10 Enterprise s více relacemi verze 1809 nebo novější
-* Windows 10 Enterprise, verze 1809 nebo novější
+* Windows 10 Enterprise verze 1809 nebo novější (pouze půlroční kanál)
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -136,14 +136,14 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (více relací), verze 2004|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise (více relací), verze 1909|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise (více relací), verze 1903|Yes|Yes|No|No|
-|Windows 10 Enterprise (více relací), verze 1809|Yes|Yes|No|No|
-|Windows 7 Enterprise|Yes|Yes|No|No|
-|Windows Server 2019|Yes|Yes|No|No|
-|Windows Server 2016|Ano|Yes|Yes|Yes|
-|Windows Server 2012 R2|Ano|Yes|No|No|
+|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
+|Windows Server 2019|Ano|Ano|Ne|Ne|
+|Windows Server 2016|Ano|Ano|Ano|Ano|
+|Windows Server 2012 R2|Ano|Ano|Ne|No|
 
 ## <a name="next-steps"></a>Další kroky
 

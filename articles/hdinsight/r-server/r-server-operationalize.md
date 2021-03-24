@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944012"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869460"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Cluster služeb zprovoznění ML ve službě Azure HDInsight
 
@@ -53,31 +53,31 @@ Po použití clusteru ML Services ve službě HDInsight k dokončení modelován
 
 1. Zobrazí se možnosti, ze kterých si můžete vybrat. Vyberte první možnost, jak je znázorněno na následujícím snímku obrazovky, abyste **nakonfigurovali ml Server pro provozuschopnost**.
 
-    ![Výběr nástroje pro správu R serveru](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="Výběr nástroje pro správu R serveru" border="true":::
 
 1. Nyní máte k dispozici možnost zvolit způsob, jakým se má zprovoznění ML Server. Z prezentovaných možností vyberte **první zadáním.**
 
-    ![Zprovoznění nástroje pro správu R serveru](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="Zprovoznění nástroje pro správu R serveru" border="true":::
 
 1. Po zobrazení výzvy zadejte a znovu zadejte heslo pro místního uživatele s oprávněními správce.
 
 1. Měli byste vidět výstupy naznačující, že operace byla úspěšná. Také se zobrazí výzva, abyste v nabídce vybrali jinou možnost. Vyberte E a vraťte se do hlavní nabídky.
 
-    ![Nástroj pro správu R serveru byl úspěšný](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="Nástroj pro správu R serveru byl úspěšný" border="true":::
 
 1. Volitelně můžete provádět diagnostické kontroly spuštěním diagnostického testu následujícím způsobem:
 
     a. V hlavní nabídce vyberte **6** a spusťte diagnostické testy.
 
-    ![Diagnostika nástroje pro správu R serveru](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="Diagnostika nástroje pro správu R serveru" border="true":::
 
     b. **V nabídce diagnostické testy vyberte.** Po zobrazení výzvy zadejte heslo, které jste zadali pro místního uživatele s oprávněními správce.
 
-    ![Test nástroje pro správu R serveru](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="Test nástroje pro správu R serveru" border="true":::
 
     c. Ověřte, že výstup ukazuje, že celkový stav je Pass.
 
-    ![Průchod nástrojem pro správu R serveru](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="Průchod nástrojem pro správu R serveru" border="true":::
 
     d. V zobrazených možnostech nabídky zadejte **E** pro návrat do hlavní nabídky a pak zadáním **8** ukončete nástroj pro správu.
 
@@ -154,7 +154,7 @@ Pomocí těchto kroků vyřaďte z provozu pracovní uzly:
 
 1. Klikněte na **Akce**  >  **vybrané hostitelé**  >  **hostitelé**  >  **zapnout režim údržby**. Například na následujícím obrázku jsme vybrali k vyřazení z provozu uzly wn3 a wn4.  
 
-   ![Režim údržby pro Apache Ambari](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Režim údržby pro Apache Ambari" border="true":::  
 
 * Vyberte **Akce**  >  **Vybraní hostitelé**– datové  >  **uzly** > klikněte na **vyřadit z provozu**.
 * Vyberte **Akce**  >  **vybrané hostitelé**  >  **NodeManagers** > klikněte na **vyřadit z provozu**.

@@ -4,15 +4,15 @@ description: Získejte přístup k souhrnným webovým analýzám Marketplace v 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553931"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953268"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Přehledy Marketplace v analýzách komerčního marketplace
 
@@ -115,7 +115,9 @@ Tato tabulka obsahuje seznam návštěv stránky a volání akcí pro vybrané s
 | Kontaktujte mě | Kontaktujte mě | Počet kliknutí na kontaktní mne výzva na stránce nabídky pro konkrétní datum. | ContactMe |
 | Testovací verze | Testovací verze | Počet kliknutí na "testovací jednotku" výzva na stránce nabídky pro konkrétní datum. | TestDrive |
 | Bezplatná zkušební verze | Bezplatná zkušební verze | Počet kliknutí na výzva bezplatné zkušební verze na stránce nabídky pro konkrétní datum. | FreeTrial |
-|||||
+| Kampaň | Název kampaně | Možnost pochopení webové telemetrie (Page Navštíveno a výzva kliknutí) proti názvu kampaně. | Kampaň |
+| Není k dispozici | Web | Název prezentace, ze kterého došlo k návštěvě stránky nebo výzva kliknutí Možné hodnoty jsou:<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | Web |
+|
 
 ## <a name="next-steps"></a>Další kroky
 

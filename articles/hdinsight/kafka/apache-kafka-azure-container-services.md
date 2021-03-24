@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2216eb5893b77761f4d31c5819d152ceeb985abc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933034"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869646"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s Apache Kafka v HDInsight
 
@@ -42,7 +42,7 @@ HDInsight i AKS používají jako kontejner pro výpočetní prostředky Azure V
 
 Následující diagram znázorňuje topologii sítě použitou v tomto dokumentu:
 
-![HDInsight v jedné virtuální síti, AKS v jiné, s použitím partnerského vztahu](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+:::image type="content" source="./media/apache-kafka-azure-container-services/kafka-aks-architecture.png" alt-text="HDInsight v jedné virtuální síti, AKS v jiné, s použitím partnerského vztahu" border="false":::
 
 > [!IMPORTANT]  
 > Překlad názvů není mezi partnerskými sítěmi povolený, takže se používá IP adresování. Ve výchozím nastavení je Kafka v HDInsight nakonfigurovaná tak, aby vracela názvy hostitelů, a ne IP adresy, když se klienti připojují. Kroky v tomto dokumentu upravují Kafka místo toho použití reklamy protokolu IP.
@@ -109,15 +109,15 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
 
 2. Pokud chcete zobrazit informace o Kafka, vyberte v seznamu vlevo možnost __Kafka__ .
 
-    ![Seznam služeb s zvýrazněným Kafka](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-service.png" alt-text="Seznam služeb s zvýrazněným Kafka" border="true":::
 
 3. Pokud chcete zobrazit konfiguraci Kafka, v horním __rohu vyberte konfigurace__ .
 
-    ![Konfigurace služeb Apache Ambari](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-config1.png" alt-text="Konfigurace služeb Apache Ambari" border="true":::
 
 4. Pokud chcete najít konfiguraci __Kafka-ENV__ , zadejte `kafka-env` do pole __filtru__ v pravém horním rohu.
 
-    ![Konfigurace Kafka pro Kafka-ENV](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/search-for-kafka-env.png" alt-text="Konfigurace Kafka pro Kafka-ENV" border="true":::
 
 5. Pokud chcete nakonfigurovat Kafka pro inzerování IP adres, přidejte následující text do dolní části pole __Kafka-ENV-Template__ :
 
@@ -135,15 +135,15 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
-    ![Konfigurace pro uložení konfigurace Apache Ambari](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/save-configuration-button.png" alt-text="Konfigurace pro uložení konfigurace Apache Ambari" border="true":::
 
 9. Chcete-li zabránit chybám při restartování Kafka, použijte tlačítko __Akce služby__ a vyberte __zapnout režim údržby__. Kliknutím na tlačítko OK dokončete tuto operaci.
 
-    ![Akce služby s zvýrazněnou možností zapnout údržbu](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png" alt-text="Akce služby s zvýrazněnou možností zapnout údržbu" border="true":::
 
 10. Pokud chcete restartovat Kafka, použijte tlačítko __restartovat__ a vyberte __restartovat všechny ovlivněné__. Potvrďte restartování a potom po dokončení operace použijte tlačítko __OK__ .
 
-    ![Tlačítko restartovat s zvýrazněnou možností restartovat všechny ovlivněné](./media/apache-kafka-azure-container-services/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/restart-required-button.png" alt-text="Tlačítko restartovat s zvýrazněnou možností restartovat všechny ovlivněné" border="true":::
 
 11. Chcete-li zakázat režim údržby, použijte tlačítko __Akce služby__ a vyberte možnost __vypnout režim údržby__. Kliknutím na **tlačítko OK** dokončete tuto operaci.
 
@@ -213,7 +213,7 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
 
 11. Otevřete webový prohlížeč a zadejte externí IP adresu pro službu. Přijdete na stránku, která bude vypadat jako na následujícím obrázku:
 
-    ![Obrázek webové stránky Apache Kafka test](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/test-web-page-image1.png" alt-text="Obrázek webové stránky Apache Kafka test" border="true":::
 
 12. Zadejte text do pole a potom vyberte tlačítko __Odeslat__ . Data se odesílají do Kafka. Pak příjemce Kafka v aplikaci přečte zprávu a přidá ji do části __zprávy z Kafka__ .
 

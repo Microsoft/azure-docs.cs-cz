@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2e66b27f7f0c731e17bb9811e2376bbe09c1bc12
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90936649"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950140"
 ---
-# <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>Šifrované připojení pomocí TLS 1,2 (Transport Layer Security) v Azure Database for MySQL-flexibilním serveru
+# <a name="connect-to-azure-database-for-mysql---flexible-server-over-tls12ssl"></a>Připojení k Azure Database for MySQL flexibilnímu serveru přes TLS 1.2/SSL
 
 > [!IMPORTANT]
 > Azure Database for MySQL flexibilní Server je momentálně ve verzi Public Preview.
@@ -22,8 +22,10 @@ Azure Database for MySQL flexibilní Server podporuje připojení klientských a
 
 Azure Database for MySQL flexibilní Server podporuje pouze šifrovaná připojení pomocí protokolu TLS 1,2) a všechna příchozí připojení s TLS 1,0 a TLS 1,1 budou odepřena. Pro všechny flexibilní servery, které jsou vynucená pro připojení TLS, je povolený a protokol TLS/SSL nemůžete pro připojení k flexibilnímu serveru zakázat.
 
-## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>Aplikace, které vyžadují ověření certifikátu pro připojení TLS/SSL
-V některých případech aplikace vyžadují k zabezpečenému připojení soubor místního certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (CA). Azure Database for MySQL flexibilní Server používá *globální kořenovou certifikační autoritu DigiCert*. Stáhněte si tento certifikát potřebný ke komunikaci přes SSL z [globální kořenové certifikační autority DigiCert](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) a uložte soubor certifikátu do svého upřednostňovaného umístění. Tento kurz například používá `c:\ssl` .
+## <a name="download-the-public-ssl-certificate"></a>Stáhnout veřejný certifikát SSL
+Pokud chcete používat s appliations, Stáhněte si prosím [veřejný certifikát SSL](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
+
+Soubor certifikátu uložte do svého upřednostňovaného umístění. Tento kurz například používá `c:\ssl` nebo `\var\www\html\bin` ve vašem místním prostředí nebo klientském prostředí, kde je vaše aplikace hostovaná. To umožní zabezpečeně připojit aplikace k databázi přes SSL. 
 
 ### <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>Připojení pomocí klienta příkazového řádku MySQL s protokolem TLS/SSL
 
@@ -58,6 +60,16 @@ Některé aplikační architektury, které používají MySQL pro své databázo
 Připojovací řetězce, které jsou předdefinovány na stránce připojovací řetězce, které jsou k dispozici pro váš server v Azure Portal obsahují požadované parametry pro společné jazyky pro připojení k databázovému serveru pomocí protokolu TLS/SSL. Parametr TLS/SSL se liší v závislosti na konektoru. Například "useSSL = true", "sslmode = Required" nebo "ssl_verify_cert = true" a další variace.
 
 K navázání šifrovaného připojení k flexibilnímu serveru přes protokol TLS/SSL z vaší aplikace použijte následující ukázky kódu:
+
+### <a name="wordpress"></a>WordPress
+Stáhněte si [veřejný certifikát SSL](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) a přidejte následující řádky do wp-config. php za řádkem ```// ** MySQL settings - You can get this info from your web host ** //``` .
+
+```php
+//** Connect with SSL** //
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+//** SSL CERT **//
+define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootCA.crt.pem');
+```
 
 ### <a name="php"></a>PHP
 

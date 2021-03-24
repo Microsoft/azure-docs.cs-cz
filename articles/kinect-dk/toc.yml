@@ -98,6 +98,6 @@
     - name: Rozhraní API pro senzory
       href: 'https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html'
     - name: Rozhraní API pro sledování pohybu těla
-      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html'
+      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.1.x/index.html'
     - name: Formát záznamů
       href: record-file-format.md

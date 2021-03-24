@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87a4d3960937450713747fa16bd473b4c34eff0e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944862"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867861"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
 
@@ -30,11 +30,11 @@ Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v s
 
 1. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
-    ![Ambari, výběr zobrazení Apache Hive pro Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png" alt-text="Ambari, výběr zobrazení Apache Hive pro Apache" border="true":::
 
     Stránka zobrazení podregistru je podobná následujícímu obrázku:
 
-    ![Obrázek listu dotazu pro zobrazení podregistru](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png" alt-text="Obrázek listu dotazu pro zobrazení podregistru" border="true":::
 
 1. Na kartě __dotaz__ vložte následující příkazy HiveQL do listu:
 
@@ -99,19 +99,19 @@ Pokud chcete zobrazit uživatelské rozhraní tez pro dotaz, vyberte kartu **už
 
 Karta __úlohy__ zobrazuje historii dotazů na podregistr.
 
-![Historie karty Apache Hive zobrazení úloh](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png" alt-text="Historie karty Apache Hive zobrazení úloh" border="true":::
 
 ## <a name="database-tables"></a>Tabulky databáze
 
 Kartu __tabulky__ můžete použít pro práci s tabulkami v rámci databáze podregistru.
 
-![Obrázek karty Apache Hive tabulky](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png" alt-text="Obrázek karty Apache Hive tabulky" border="true":::
 
 ## <a name="saved-queries"></a>Uložené dotazy
 
 Na kartě **dotaz** můžete volitelně ukládat dotazy. Po uložení se dotaz dá znovu použít na kartě __uložené dotazy__ .
 
-![Karta uložené dotazy v Apache Hive zobrazení](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png" alt-text="Karta uložené dotazy v Apache Hive zobrazení" border="true":::
 
 > [!TIP]  
 > Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts` . Tyto soubory jsou uloženy jako soubory ve formátu prostého textu `.hql` .
@@ -124,7 +124,7 @@ Podregistr můžete roztáhnout prostřednictvím uživatelsky definovaných fun
 
 Deklarujete a uložte sadu UDF pomocí karty **UDF** v horní části zobrazení podregistru. Tyto UDF se dají použít spolu s **editorem dotazů**.
 
-![Zobrazení karty UDF zobrazení Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png" alt-text="Zobrazení karty UDF zobrazení Apache Hive" border="true":::
 
 V dolní části **Editoru dotazů** se zobrazí tlačítko **Vložit UDF** . Tato položka zobrazí rozevírací seznam UDF definovaného v zobrazení podregistru. Když vyberete UDF, do dotazu se přidá příkazy HiveQL, které zapnete systém souborů UDF.
 

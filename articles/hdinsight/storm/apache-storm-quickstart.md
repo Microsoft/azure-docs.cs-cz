@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
-ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928848"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870207"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý Start: vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
 
@@ -48,7 +48,7 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
 2. V části **Souhrn topologie** vyberte položku **WORDCOUNT** ve sloupci **název** . Zobrazí se další informace o topologii.
 
-    ![Řídicí panel Storm s informacemi o topologii Storm Starter WordCount.](./media/apache-storm-quickstart/hdi-topology-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-topology-summary.png" alt-text="Řídicí panel Storm s informacemi o topologii Storm Starter WordCount." border="true":::
 
     Na nové stránce najdete následující informace:
 
@@ -65,7 +65,7 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
 3. Na této stránce vyberte položku z oddílu **Spouts** nebo **Bolts**. Zobrazí se informace o vybrané komponentě.
 
-    ![Řídicí panel Storm s informacemi o vybraných součástech.](./media/apache-storm-quickstart/hdi-component-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-component-summary.png" alt-text="Řídicí panel Storm s informacemi o vybraných součástech." border="true":::
 
     Na nové stránce se zobrazí následující informace:
 

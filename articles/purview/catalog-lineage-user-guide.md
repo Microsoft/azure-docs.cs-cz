@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202905"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952163"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Uživatelská příručka ke službě Azure dosah Data Catalog line
 
@@ -50,7 +50,7 @@ Datové systémy, jako je Azure ML a Power BI ve službě Azure dosah. Tyto syst
 
 ## <a name="get-started-with-lineage"></a>Začínáme s vydanými řádky
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWxTAK]
 
 V dosah se zahrnují datové sady a procesy. Datové sady jsou také označovány jako uzly, zatímco procesy mohou být označovány také jako okraje:
 

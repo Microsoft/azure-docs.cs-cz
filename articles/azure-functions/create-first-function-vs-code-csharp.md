@@ -8,12 +8,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-csharp-ieux
-ms.openlocfilehash: b0c659c1b3bf373b7754dd9b058c74da35cc2e0a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea0b66c49d6f37c6b8f7eaa7f667a63ab09155e0
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704782"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952681"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure pomocí Visual Studio Code
 
@@ -82,8 +82,10 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
 ## <a name="next-steps"></a>Další kroky
 
-Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=csharp). 
+Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Cosmos DB nebo Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=csharp). 
 
+> [!div class="nextstepaction"]
+> [Připojení k databázi](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-csharp)
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)
 

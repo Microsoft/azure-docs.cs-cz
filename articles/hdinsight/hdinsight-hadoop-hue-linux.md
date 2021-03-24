@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945684"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865124"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
 
@@ -80,17 +80,17 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
    > [!NOTE]  
    > Při prvním přihlášení se zobrazí výzva k vytvoření účtu pro přihlášení k portálu odstínování. Přihlašovací údaje, které tady zadáte, budou omezené na portál a nesouvisejí s přihlašovacími údaji uživatele správce nebo SSH, které jste zadali při zřizování clusteru.
 
-    ![Přihlašovací okno portálu pro barevný interval HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Zadat přihlašovací údaje pro portál odstínů")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="Přihlašovací okno portálu pro barevný interval HDInsight":::
 
 ### <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
 1. Z portálu odstínů vyberte **editory dotazů** a pak vyberte **podregistr** . otevře se Editor podregistru.
 
-    ![Portál pro odstíny HDInsight – použití editoru podregistru](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Použít podregistr")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="Portál pro odstíny HDInsight – použití editoru podregistru":::
 
 2. Na kartě **pomoc** v části **databáze** by se měla zobrazit **hivesampletable**. Toto je ukázková tabulka, která se dodává se všemi clustery Hadoop v HDInsight. Do pravého podokna zadejte ukázkový dotaz a na kartě **výsledky** v podokně níže se zobrazí výstup, jak je znázorněno na snímku obrazovky.
 
-    ![Dotaz na podregistr na portálu pro odstíny HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Spustit dotaz na podregistr")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="Dotaz na podregistr na portálu pro odstíny HDInsight":::
 
     Můžete také použít kartu **graf** k zobrazení vizuální reprezentace výsledku.
 
@@ -99,7 +99,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 1. Z portálu odstínů vyberte v pravém horním rohu řádku nabídky možnost **Prohlížeč souborů** .
 2. Ve výchozím nastavení se prohlížeč souborů otevře v adresáři **/User/MyUser** . Vyberte lomítko přímo před adresářem uživatelů v cestě, abyste přešli do kořenového adresáře kontejneru úložiště Azure přidruženého ke clusteru.
 
-    ![Prohlížeč souborů portálu pro odstíny HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Použití prohlížeče souborů")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="Prohlížeč souborů portálu pro odstíny HDInsight":::
 
 3. Kliknutím pravým tlačítkem na soubor nebo složku zobrazíte dostupné operace. Pomocí tlačítka **nahrát** v pravém horním rohu nahrajte soubory do aktuálního adresáře. Pomocí tlačítka **Nový** vytvořte nové soubory nebo adresáře.
 
@@ -118,7 +118,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
 1. U clusterů se systémem Linux můžete mít scénář, ve kterém jsou služby spuštěné na primárním hlavnímu uzlu, zatímco Správce prostředků může běžet na sekundárním počítači. V takovém případě může dojít k chybám (zobrazené níže) při použití funkce odstín k zobrazení podrobností o SPUŠTĚNých úlohách v clusteru. Po dokončení úlohy však můžete zobrazit podrobnosti o úloze.
 
-   ![Ukázka zprávy o chybě v portálu pro odstínování](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Chyba portálu pro odstínování")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Ukázka zprávy o chybě v portálu pro odstínování":::
 
    Důvodem je známý problém. Jako alternativní řešení upravte Ambari tak, aby se aktivní Správce prostředků taky spouštěla na primárním hlavnímu uzlu.
 

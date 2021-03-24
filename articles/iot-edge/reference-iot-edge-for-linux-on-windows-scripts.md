@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489481"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889242"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Skripty PowerShellu pro IoT Edge pro Linux ve Windows
 
@@ -140,7 +140,7 @@ Příkaz **Get-EflowVmSshKey** se používá k dotazování a zobrazení klíče
 
 ## <a name="ssh-eflowvm"></a>Ssh-EflowVm
 
-Příkaz **SSH-EflowVm** se používá k SSH do virtuálního počítače. Další informace získáte pomocí příkazu `Get-Help Ssh-EflowVm -full` .
+Příkaz **SSH-EflowVm** se používá k SSH do virtuálního počítače. Jediným účtem povoleným pro SSH k virtuálnímu počítači je uživatel, který ho vytvořil. Další informace získáte pomocí příkazu `Get-Help Ssh-EflowVm -full` .
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |

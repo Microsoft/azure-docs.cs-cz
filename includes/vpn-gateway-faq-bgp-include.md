@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 649c5805c600b6282be6d05fefb59cecaf249f4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3877134f8a00cd627909d7f889fd5b104ccbd8b1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92526085"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863614"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
 Protokol BGP je podporován u všech SKU Azure VPN Gateway s výjimkou úrovně Basic SKU.
@@ -105,6 +105,11 @@ Ano.
 Přidejte trasu hostitele IP adresy partnerského uzlu protokolu BGP Azure na zařízení VPN. Tato trasa odkazuje na tunelové připojení VPN S2S IPsec. Pokud je třeba IP adresa partnerského uzlu Azure VPN 10.12.255.30, přidáte trasu hostitele pro 10.12.255.30 s rozhraním Next Hop odpovídajícího rozhraní tunelového propojení IPsec na zařízení VPN.
 
 ### <a name="does-the-virtual-network-gateway-support-bfd-for-s2s-connections-with-bgp"></a>Podporuje Brána virtuální sítě BFD pro připojení S2S s protokolem BGP?
-No. Rozpoznávání obousměrného předávání (BFD) je protokol, který můžete použít s protokolem BGP ke zjištění rychlejšího výpadku sousedů, než můžete pomocí standardních nečinnosti protokolu BGP. BFD používá časovače s dalšími sekundami, které jsou navržené pro práci v prostředích LAN, ale ne přes veřejná připojení k Internetu nebo na celé síti.
+Ne. Rozpoznávání obousměrného předávání (BFD) je protokol, který můžete použít s protokolem BGP ke zjištění rychlejšího výpadku sousedů, než můžete pomocí standardních nečinnosti protokolu BGP. BFD používá časovače s dalšími sekundami, které jsou navržené pro práci v prostředích LAN, ale ne přes veřejná připojení k Internetu nebo na celé síti.
 
 U připojení přes veřejný Internet se určité pakety zpoždění nebo dokonce vyřazené nejsou neobvyklé, takže zavedení těchto agresivních časovačů může být nestabilní. Tato nestabilita může způsobit ztlumení tras pomocí protokolu BGP. Jako alternativu můžete nakonfigurovat místní zařízení s časovači nižšími, než je výchozí interval, 60 sekund "naživu" a 180 – sekundový časovač blokování. Výsledkem je rychlejší konvergence.
+
+### <a name="do-azure-vpn-gateways-initiate-bgp-peering-sessions-or-connections"></a>Spouští Azure VPN Gateway relace nebo připojení partnerských vztahů protokolu BGP?
+
+Brána inicializuje relace partnerských vztahů protokolu BGP s místními IP adresami partnerského uzlu BGP, které jsou zadané v prostředcích brány místní sítě, pomocí privátních IP adres na branách VPN. To je bez ohledu na to, jestli jsou místní IP adresy protokolu BGP v rozsahu APIPa nebo v běžných privátních IP adresách. Pokud vaše místní zařízení VPN používají adresy APIPa jako IP adresy protokolu BGP, je nutné nakonfigurovat mluvčí protokol BGP, aby zahájil připojení.
+

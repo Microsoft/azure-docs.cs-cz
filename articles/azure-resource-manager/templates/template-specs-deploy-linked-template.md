@@ -3,12 +3,12 @@ title: Nasazení specifikace šablony jako propojené šablony
 description: Přečtěte si, jak nasadit stávající specifikaci šablony v propojeném nasazení.
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8d4ccd77c8b37a696fab7494a8d3f8052fc89b35
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518868"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889259"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Kurz: nasazení specifikace šablony jako propojené šablony (Náhled)
 
@@ -91,7 +91,7 @@ K nasazení specifikace šablony v šabloně ARM přidejte do hlavní šablony [
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "name": "createStorage",
       "properties": {
         "mode": "Incremental",

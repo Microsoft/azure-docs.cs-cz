@@ -4,12 +4,12 @@ description: Přečtěte si, jak získat přístup k řídicímu panelu Grafana 
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 81fd3b368f9405192c164ed7a0638caad0cd75fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940876"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869748"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Přístup ke Grafaně ve službě Azure HDInsight
 
@@ -31,7 +31,7 @@ Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí
 
 1. Zobrazí se řídicí panel Grafana, který bude vypadat jako v tomto příkladu:
 
-    ![Webový řídicí panel HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "Řídicí panel HDInsight Grafana")
+    :::image type="content" source="./media/hdinsight-grafana/hdinsight-grafana-dashboard.png " alt-text="Webový řídicí panel HDInsight Grafana" border="true":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 955b541bdb4ae38066f1eb4d2f09363ec51be1d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92895762"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864070"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
@@ -78,6 +78,31 @@ Požádat o token z koncového bodu tokenu služby Azure AD. V žádosti o Azure
 | Cloud Azure Government | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
 Další informace o vyžádání přístupových tokenů z Azure AD pro uživatele a instanční objekty najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/develop/authentication-vs-authorization.md) a zobrazení konkrétních scénářů v tabulce [scénářů](./how-to-manage-authentication.md#determine-authentication-and-authorization).
+
+## <a name="manage-and-rotate-shared-keys"></a>Správa a střídání sdílených klíčů
+
+Klíče předplatného Azure Maps jsou podobné kořenovému heslu pro účet Azure Maps. Vždy buďte opatrní, abyste chránili klíče předplatného. Pomocí Azure Key Vault můžete bezpečně spravovat a střídat klíče. Vyhněte se distribuci přístupových klíčů jiným uživatelům, pevným kódováním nebo uložením kamkoli do prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že by mohly být ohrožené, můžete klíče otočit.
+
+> [!NOTE]
+> Microsoft doporučuje použít Azure Active Directory (Azure AD) k autorizaci žádostí, pokud je to možné, místo sdíleného klíče. Azure AD poskytuje vynikající zabezpečení a jednoduchost používání sdíleného klíče.
+
+### <a name="manually-rotate-subscription-keys"></a>Ruční otočení klíčů předplatného
+
+Společnost Microsoft doporučuje, abyste pravidelně přetočili klíče předplatného, aby se zajistilo zabezpečení účtu Azure Maps. Pokud je to možné, použijte Azure Key Vault ke správě přístupových klíčů. Pokud Key Vault nepoužíváte, budete muset klíče otočit ručně.
+
+Přiřadí se dva klíče předplatného, abyste mohli klíče otáčet. Máte-li dvě klíče, zajistíte tím, že vaše aplikace bude udržovat v průběhu procesu přístup k Azure Maps.
+
+Chcete-li otočit klíče předplatného Azure Maps v Azure Portal:
+
+1. Aktualizujte kód aplikace tak, aby odkazoval na sekundární klíč pro Azure Maps účet a nasaďte ho.
+2. V [Azure Portal](https://portal.azure.com/)přejděte na svůj účet Azure Maps.
+3. V části **Nastavení** vyberte **ověřování**.
+4. Pokud chcete znovu vygenerovat primární klíč pro účet Azure Maps, vyberte tlačítko **znovu vygenerovat** vedle primárního klíče.
+5. Aktualizujte kód aplikace, aby odkazoval na nový primární klíč a nasazení.
+6. Znovu vygenerujte sekundární klíč stejným způsobem.
+
+> [!WARNING]
+> Microsoft doporučuje používat ve všech aplikacích současně jenom jeden z klíčů. Pokud na některých místech a v dalších klíčích 2 použijete klíč 1, nebudete moct tyto klíče otočit, aniž by některé aplikace ztratily přístup.
 
 ## <a name="next-steps"></a>Další kroky
 

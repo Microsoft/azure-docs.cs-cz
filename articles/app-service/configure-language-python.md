@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577600"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953506"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -114,7 +114,7 @@ Existující webové aplikace je možné znovu nasadit do Azure následujícím 
 
 1. **Spuštění aplikace**: Další informace o tom, jak se App Service pokusy o spuštění vaší aplikace, najdete v části, [spouštěcím procesu kontejneru](#container-startup-process) dále v tomto článku. Ve výchozím nastavení používá App Service webový server Gunicorn, který musí být schopný najít objekt aplikace nebo složku *WSGI.py* . V případě potřeby můžete [Upravit spouštěcí příkaz](#customize-startup-command).
 
-1. **Průběžné** nasazování: nastavte průběžné nasazování, jak je popsáno v tématu [průběžné](deploy-continuous-deployment.md) nasazování Azure App Service při použití nasazení Azure Pipelines nebo Kudu, nebo [nasazení do App Service pomocí akcí GitHubu](deploy-github-actions.md) , pokud používáte akce GitHubu.
+1. **Průběžné** nasazování: nastavte průběžné nasazování, jak je popsáno v tématu [průběžné](deploy-continuous-deployment.md) nasazování Azure App Service při použití nasazení Azure Pipelines nebo Kudu, nebo [nasazení do App Service pomocí akcí GitHubu](./deploy-continuous-deployment.md) , pokud používáte akce GitHubu.
 
 1. **Vlastní akce**: Pokud chcete provádět akce v rámci kontejneru App Service, který hostuje vaši aplikaci, jako je třeba migrace databáze Django, můžete [se k kontejneru připojit přes SSH](configure-linux-open-ssh-session.md). Příklad spuštění migrace databáze Django najdete v tématu [kurz: nasazení webové aplikace v Django pomocí PostgreSQL – spusťte migrace databáze](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Při použití průběžného nasazování můžete provádět tyto akce pomocí příkazů po sestavení, jak je popsáno výše v části [přizpůsobení automatizace sestavení](#customize-build-automation).

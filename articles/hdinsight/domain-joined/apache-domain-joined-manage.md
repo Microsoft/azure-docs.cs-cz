@@ -4,12 +4,12 @@ description: Naučte se spravovat clustery Azure HDInsight pomocí Balíček zab
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/04/2019
-ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc31c3d71590a6b8c0b324ffcb8c10129a9f8699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742207"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863237"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
 
@@ -116,7 +116,7 @@ HDInsight Balíček zabezpečení podniku má následující role:
 2. V nabídce vlevo vyberte **role**.
 3. Vyberte modrou otazník, abyste viděli oprávnění:
 
-    ![Oprávnění role protokolu ESP pro HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png" alt-text="Oprávnění role protokolu ESP pro HDInsight" border="true":::
 
 ## <a name="open-the-ambari-management-ui"></a>Otevřete uživatelské rozhraní pro správu Ambari.
 
@@ -124,25 +124,25 @@ HDInsight Balíček zabezpečení podniku má následující role:
 1. Přihlaste se k Ambari pomocí uživatelského jména a hesla v doméně správce clusteru.
 1. V pravém horním rohu vyberte rozevírací nabídku **správce** a pak vyberte **Spravovat Ambari**.
 
-    ![ESP HDInsight spravovat Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png" alt-text="ESP HDInsight spravovat Apache Ambari" border="true":::
 
     Uživatelské rozhraní vypadá takto:
 
-    ![ROZHRANÍ ESP pro správu protokolu HDInsight Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png" alt-text="ROZHRANÍ ESP pro správu protokolu HDInsight Apache Ambari" border="true":::
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Seznam uživatelů domény synchronizovaných ze služby Active Directory
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
 2. V nabídce vlevo vyberte **Uživatelé**. Zobrazí se všichni uživatelé synchronizovaný ze služby Active Directory do clusteru HDInsight.
 
-    ![Uživatelé seznamu v uživatelském rozhraní pro správu Ambari HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png" alt-text="Uživatelé seznamu v uživatelském rozhraní pro správu Ambari HDInsight" border="true":::
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Seznam skupin domény synchronizovaných ze služby Active Directory
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
 2. V nabídce vlevo vyberte **skupiny**. Zobrazí se všechny skupiny synchronizované z Active Directory do clusteru HDInsight.
 
-    ![Skupiny seznamů rozhraní ESP pro správu Ambari HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png" alt-text="Skupiny seznamů rozhraní ESP pro správu Ambari HDInsight" border="true":::
 
 ## <a name="configure-hive-views-permissions"></a>Konfigurace oprávnění k zobrazení podregistru
 
@@ -150,12 +150,12 @@ HDInsight Balíček zabezpečení podniku má následující role:
 2. V nabídce vlevo vyberte **zobrazení**.
 3. Pokud chcete zobrazit podrobnosti, vyberte **podregistr** .
 
-    ![Zobrazení registru ESP pro správu Ambari v prostředí HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png" alt-text="Zobrazení registru ESP pro správu Ambari v prostředí HDInsight" border="true":::
 
 4. Vyberte odkaz **zobrazení podregistru** a nakonfigurujte zobrazení podregistru.
 5. Posuňte se dolů k části **oprávnění** .
 
-    ![Konfigurace zobrazení registru ESP Ambari pro správu v prostředí HDInsight konfigurace oprávnění](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png" alt-text="Konfigurace zobrazení registru ESP Ambari pro správu v prostředí HDInsight konfigurace oprávnění" border="true":::
 
 6. Vyberte **Přidat uživatele** nebo **Přidat skupinu** a pak zadejte uživatele nebo skupiny, které mohou používat zobrazení podregistru.
 

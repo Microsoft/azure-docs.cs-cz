@@ -1,19 +1,20 @@
 ---
 title: Dokumenty White paper o sálových oblastech pomocí Azure Virtual Machines a Azure Storage
 description: Získejte prostředky pro migraci sálového počítače, opětovné hostování a přesun systémů založených na IBM Z na Microsoft Azure.
-services: multiple
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 03a075cb2098557d72f0d864da4df910f5bc5f8c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "74224742"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954288"
 ---
 # <a name="azure-white-papers-about-mainframe-topics"></a>Dokumenty White paper o oblastech sálového počítače v Azure
 

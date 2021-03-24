@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: b168167ce4f44d87c396746cca3f271f95f83163
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632682"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869952"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Co je nástroj pro snímek konzistentní vzhledem k aplikacím Azure (Preview)
 
-Nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (AzAcSnap) je nástroj příkazového řádku, který umožňuje zjednodušit ochranu dat pro databáze třetích stran (SAP HANA) v prostředích Linux (například SUSE a RHEL).  
+Nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (AzAcSnap) je nástroj příkazového řádku, který umožňuje ochranu dat pro databáze třetích stran tím, že zpracovává veškerou orchestraci potřebnou k jejich vložení do konzistentního stavu aplikace, než se snímek úložiště vrátí do provozního stavu.
+
+## <a name="supported-platforms-and-os"></a>Podporované platformy a operační systémy
+
+- **Databáze**
+  - SAP HANA (podrobnosti najdete v [matici podpory](azacsnap-get-started.md#snapshot-support-matrix-from-sap) )
+
+- **Operační systémy**
+  - SUSE Linux Enterprise Server 12 +
+  - Red Hat Enterprise Linux 7 +
 
 ## <a name="benefits-of-using-azacsnap"></a>Výhody použití AzAcSnap
 

@@ -3,18 +3,18 @@ title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Micro
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 02/18/2020
+ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551313"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953871"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
@@ -82,14 +82,14 @@ Pomocí [Azure Portal vytvořte službu Azure Databricks](https://portal.azure.c
 
 Po vytvoření požadovaných prostředků vypadá vaše skupina prostředků **IoTCentralAnalysis** jako na následujícím snímku obrazovky:
 
-![Skupina prostředků IoT Central Analysis](media/howto-create-custom-analytics/resource-group.png)
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="Obrázek skupiny prostředků analýzy IoT Central":::
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
 IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali telemetrii do centra událostí. V této části vytvoříte centrum událostí pro příjem telemetrie z vaší aplikace IoT Central. Centrum událostí doručí telemetrii do vaší Stream Analytics úlohy ke zpracování.
 
 1. V Azure Portal přejděte na obor názvů Event Hubs a vyberte **+ centrum událostí**.
-1. Pojmenujte centrum událostí **centralexport** a vyberte **vytvořit**.
+1. Pojmenujte centrum událostí **centralexport**.
 1. V seznamu Center událostí v oboru názvů vyberte **centralexport**. Pak zvolte **zásady sdíleného přístupu**.
 1. Vyberte **+ Přidat**. Vytvořte zásadu **s názvem s** deklarací **naslouchání** .
 1. Když je zásada připravená, vyberte ji v seznamu a potom zkopírujte hodnotu **připojovací řetězec – primární klíč** .
@@ -97,26 +97,42 @@ IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali t
 
 Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
-![Obor názvů služby Event Hubs](media/howto-create-custom-analytics/event-hubs-namespace.png)
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Obrázek Event Hubs oboru názvů":::
 
-## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
+## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>Konfigurace exportu v IoT Central a vytvoření nového cíle
 
 Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový** a pak **Azure Event Hubs**.
-1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
+1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový export**.
+1. Před dokončením prvního okna vyberte **vytvořit cíl**.
+
+Okno bude vypadat jako v následujícím příkladu.  
+
+:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Obrázek konfigurace cíle exportu dat":::
+
+3. Zadejte tyto hodnoty:
+
+| Nastavení | Hodnota |
+| ------- | ----- |
+| Název cíle | Název cíle |
+| Cílový typ | Azure Event Hubs |
+| Connection String (Připojovací řetězec)| Připojovací řetězec centra událostí, který jste si poznamenali dříve. | 
+| Centrum událostí| Název centra událostí|
+
+4. Kliknutím na **vytvořit** dokončete.
+
+5. Pro konfiguraci exportu použijte následující nastavení:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Zobrazovaný název | Exportovat do Event Hubs |
+    | Zadejte název exportu. | eventhubexport |
     | Povoleno | Zapnout |
-    | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
-    | Centrum událostí | centralexport |
-    | Měření | Zapnout |
-    | Zařízení | Vypnout |
-    | Šablony zařízení | Vypnout |
+    | Data| Výběr telemetrie | 
+    | Cíle| Vytvořte cíl, jak je vidět níže, pro export a pak ho vyberte v rozevírací nabídce cíl. |
 
-![Konfigurace exportu dat](media/howto-create-custom-analytics/cde-configuration.png)
+:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Snímek obrazovky s konfigurací cíle exportu dat":::
+
+6. Po dokončení vyberte **Uložit**.
 
 Než budete pokračovat, počkejte, než se **spustí** stav exportu.
 
@@ -136,7 +152,7 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | Režim clusteru | Standard |
 | Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Verze Pythonu | 3 |
-| Povolit automatické škálování | No |
+| Povolit automatické škálování | Ne |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
 | Pracovníků | 1 |
@@ -164,7 +180,7 @@ Následující kroky ukazují, jak importovat knihovnu, kterou vaše ukázka pot
 
 1. Stav knihovny je nyní **nainstalován**:
 
-    ![Knihovna je nainstalovaná.](media/howto-create-custom-analytics/cluster-libraries.png)
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="Snímek obrazovky instalované knihovny":::
 
 ### <a name="import-a-databricks-notebook"></a>Import poznámkového bloku datacihly
 
@@ -178,9 +194,9 @@ Pomocí následujících kroků importujte Poznámkový blok datacihly, který o
 
 1. Vyberte **pracovní prostor** , ve kterém chcete zobrazit importovaný Poznámkový blok:
 
-    ![Importovaný Poznámkový blok](media/howto-create-custom-analytics/import-notebook.png)
+:::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="Snímek importovaného poznámkového bloku":::
 
-1. Upravte kód v první buňce Pythonu přidáním připojovacího řetězce Event Hubs, který jste předtím uložili:
+5. Upravte kód v první buňce Pythonu přidáním připojovacího řetězce Event Hubs, který jste předtím uložili:
 
     ```python
     from pyspark.sql.functions import *
@@ -206,7 +222,7 @@ V poslední buňce se může zobrazit chyba. Pokud ano, zkontrolujte, jestli jso
 
 V poznámkovém bloku přejděte dolů na buňku 14, aby se zobrazilo vykreslení průměrného vlhkosti podle typu zařízení. Tento graf se průběžně aktualizuje, protože telemetrie streamování dorazí:
 
-![Vyhladit vykreslení telemetrie](media/howto-create-custom-analytics/telemetry-plot.png)
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="Snímek obrazovky s vyhlazeným vykreslením telemetrie":::
 
 Můžete změnit velikost grafu v poznámkovém bloku.
 
@@ -214,7 +230,7 @@ Můžete změnit velikost grafu v poznámkovém bloku.
 
 V poznámkovém bloku přejděte dolů na buňku 20 a podívejte se, že je [pole](https://en.wikipedia.org/wiki/Box_plot)zobrazeno. Pole se zobrazuje na základě statických dat, aby je bylo možné aktualizovat, je nutné znovu spustit buňku:
 
-![Krabicový graf](media/howto-create-custom-analytics/box-plots.png)
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="Snímek obrazovky box":::
 
 Můžete změnit velikost pozemků v poznámkovém bloku.
 

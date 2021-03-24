@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b74319581b4e74c63045afe73ee66b6efcf53c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585311"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955230"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
@@ -71,7 +71,7 @@ Jako osvědčený postup doporučujeme přiřadit tuto roli méně než pěti li
 > | [Správce skupin](#groups-administrator) | Členové této role mohou vytvářet a spravovat skupiny, vytvářet a spravovat nastavení skupin, jako jsou zásady vytváření názvů a vypršení platnosti, a zobrazit aktivity skupin a sestavy auditování. | fdd7a751-b60b-444a-984c-02652fe8fa1c |
 > | [Pozvánka hosta](#guest-inviter) | Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou pozvat hosty. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Správce helpdesku](#helpdesk-administrator) | Může resetovat hesla pro správce bez oprávnění správce a helpdesku. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
-> | [Správce hybridní identity](#hybrid-identity-administrator) | Může spravovat AD do zřizování cloudu Azure AD a nastavení federace. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Správce hybridní identity](#hybrid-identity-administrator) | Může spravovat AD s zřizováním cloudu Azure AD, Azure AD Connect a federačními nastaveními. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Správce Insights](#insights-administrator) | Má v aplikaci Microsoft 365 Insights přístup pro správu. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Vedoucí firmy pro Insights](#insights-business-leader) | Může zobrazit a sdílet řídicí panely a přehledy prostřednictvím aplikace M365 Insights. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Správce Intune](#intune-administrator) | Může spravovat všechny aspekty produktu Intune. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
@@ -227,9 +227,9 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No |
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No |
-| Správce zásad ověřování | No |No | Yes | Yes | Yes |
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne |
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne |
+| Správce zásad ověřování | Ne |Ne | Ano | Ano | Ano |
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
@@ -262,9 +262,9 @@ Role správce [ověřování](#authentication-administrator) a [správce privile
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No |
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No |
-| Správce zásad ověřování | No | No | Yes | Yes | Yes |
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne |
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne |
+| Správce zásad ověřování | Ne | Ne | Ano | Ano | Ano |
 
 > [!IMPORTANT]
 > Tato role v tuto chvíli není schopná spravovat nastavení vícefaktorového ověřování na portálu pro správu starších verzí.
@@ -997,7 +997,7 @@ Tato role se dřív nazývala "správce hesel" ve [Azure Portal](https://portal.
 
 ## <a name="hybrid-identity-administrator"></a>Správce hybridní identity
 
-Uživatelé v této roli můžou vytvářet, spravovat a nasazovat nastavení konfigurace zřizování z AD do Azure AD pomocí zřizování cloudu a také spravovat nastavení federace. Uživatelé mohou také řešit a monitorovat protokoly pomocí této role.
+Uživatelé v této roli můžou vytvářet, spravovat a nasazovat nastavení konfigurace zřizování z AD do Azure AD pomocí zřizování cloudu a také spravovat Azure AD Connect a nastavení federace. Uživatelé mohou také řešit a monitorovat protokoly pomocí této role.
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -1400,9 +1400,9 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No |
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No |
-| Správce zásad ověřování | No | No | Yes | Yes | Yes |
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne |
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne |
+| Správce zásad ověřování | Ne | Ne | Ano | Ano | Ano |
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:

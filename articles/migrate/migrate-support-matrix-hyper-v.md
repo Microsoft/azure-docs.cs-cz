@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bdd8fd336da12b5549875cf53f9e221cc431c2b9
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 8531d0b2252e6ddff75509046b5a4576b99d339f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773211"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870785"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
-Tento článek shrnuje požadavky a požadavky na podporu při zjišťování a hodnocení místních serverů, které běží v prostředí Hyper-V pro migraci do Azure, pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool. Pokud chcete migrovat servery, které používají technologii Hyper-V do Azure, zkontrolujte [matrici podpory pro migraci](migrate-support-matrix-hyper-v-migration.md).
+Tento článek shrnuje požadavky a požadavky na podporu při zjišťování a hodnocení místních serverů, které běží v prostředí Hyper-V pro migraci do Azure, pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool. Pokud chcete migrovat servery, které používají technologii Hyper-V do Azure, zkontrolujte [matrici podpory pro migraci](migrate-support-matrix-hyper-v-migration.md).
 
 Chcete-li nastavit zjišťování a posouzení serverů běžících na technologii Hyper-V, vytvořte projekt a přidejte do projektu nástroj Azure Migrate: Discovery and Assessment. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení nepřetržitě zjišťuje místní servery a do Azure odesílá metadata serveru a data o výkonu. Po dokončení zjišťování budete shromažďovat zjištěné servery do skupin a spustit posouzení pro skupinu.
 
@@ -23,7 +23,7 @@ Chcete-li nastavit zjišťování a posouzení serverů běžících na technolo
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Omezení hodnocení** | V jednom [projektu](migrate-support-matrix.md#azure-migrate-projects)můžete vyhledat a posoudit až 35 000 serverů.
+**Omezení hodnocení** | V jednom [projektu](migrate-support-matrix.md#project)můžete vyhledat a posoudit až 35 000 serverů.
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Kromě serverů v technologii Hyper-V může projekt zahrnovat servery na VMware a fyzické servery, a to až do omezení hodnocení pro každý z nich.
 **Zjišťování** | Zařízení Azure Migrate může zjistit až 5000 serverů běžících na technologii Hyper-V.<br/><br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 serverů.<br/><br/> V jednom posouzení pro skupinu můžete posoudit až 35 000 serverů.

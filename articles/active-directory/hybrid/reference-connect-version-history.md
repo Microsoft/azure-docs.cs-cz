@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772106"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955444"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -82,6 +82,7 @@ Další informace o [automatickém upgradu](how-to-connect-install-automatic-upg
      - Pokud naklonované vlastní pravidlo synchronizace neflowe některé atributy pošty a Exchange, nové pravidlo synchronizace Exchange tyto atributy přidá.
  - Přidání podpory pro [synchronizaci hodnot hash selektivního hesla](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)
  - Přidala se nová [rutina synchronizace s jedním objektem](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync). Pomocí této rutiny můžete řešit potíže s konfigurací Azure AD Connect synchronizace. 
+ -  Azure AD Connect teď podporuje roli správce hybridní identity pro konfiguraci služby.
  - Agent AADConnectHealth se aktualizoval na 3.1.83.0.
  - Nová verze [modulu ADSyncTools PowerShellu](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools), který obsahuje několik nových nebo vylepšených rutin. 
  

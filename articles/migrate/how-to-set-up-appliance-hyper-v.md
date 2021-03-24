@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 85ab07e0b81bf258a56956f5f0f7e80bad6a32fe
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775217"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863679"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Nastavení zařízení pro servery na Hyper-V
 
-Podle tohoto článku nastavte zařízení Azure Migrate pro zjišťování a hodnocení serverů v Hyper-V pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool.
+Podle tohoto článku nastavte zařízení Azure Migrate pro zjišťování a hodnocení serverů v Hyper-V pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool.
 
 [Zařízení Azure Migrate](migrate-appliance.md) je odlehčené zařízení, které používá Azure Migrate: zjišťování a hodnocení/migrace za účelem zjišťování místních serverů na technologii Hyper-V a posílání metadat serveru a dat o výkonu do Azure.
 
@@ -24,31 +24,31 @@ Zařízení můžete nasadit pomocí několika metod:
 - Nastavení na serveru technologie Hyper-V pomocí staženého virtuálního pevného disku. Tato metoda je popsaná v tomto článku.
 - Nastavení na serveru na technologii Hyper-V nebo na fyzickém serveru pomocí skriptu PowerShellového instalačního programu. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit server pomocí VHD, nebo pokud jste v Azure Government.
 
-Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrate: zjišťování a posouzení, nakonfigurovat ho poprvé a zaregistrujte ho v projektu Azure Migrate.
+Po vytvoření zařízení se můžete podívat, že se může připojit k Azure Migrate: zjišťování a posouzení, nakonfigurovat ho poprvé a zaregistrovat ho do projektu.
 
 ## <a name="appliance-deployment-vhd"></a>Nasazení zařízení (VHD)
 
 Nastavení zařízení pomocí šablony VHD:
 
-- Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+- Zadejte název zařízení a vygenerujte klíč projektu na portálu.
 - Z Azure Portal Stáhněte komprimovaný VHD Hyper-V.
 - Vytvořte zařízení a ověřte, jestli se může připojit k Azure Migrate: zjišťování a posouzení.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+- Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu pomocí klíče projektu.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
+### <a name="generate-the-project-key"></a>Vygenerovat klíč projektu
 
 1. V **cíli migrace** se  >  **systémy Windows, Linux a SQL Server**  >  **Azure Migrate: zjišťování a posouzení** vyberte **Vyhledat**.
 2. V rozevíracích **seznamech servery**  >  **jsou vaše servery virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování serverů v technologii Hyper-V. název by měl být alfanumerický s 14 znaky nebo méně.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťovací servery během vytváření prostředků.
-1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
+1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
 ### <a name="download-the-vhd"></a>Stažení virtuálního pevného disku
 
 V **2: Stáhněte zařízení Azure Migrate** vyberte. Soubor VHD a klikněte na **Stáhnout**.
 
-   ![Výběry pro zjišťování počítačů](./media/tutorial-assess-hyper-v/servers-discover.png)
+   ![Výběry pro zjišťovací servery](./media/tutorial-assess-hyper-v/servers-discover.png)
 
 
    ![Výběry pro vygenerování klíče](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)

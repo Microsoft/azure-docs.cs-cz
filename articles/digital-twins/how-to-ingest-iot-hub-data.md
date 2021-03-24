@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3223a1c8e20d8b0caced5d940132c32fa0aba97c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2fd0d9d2b6e80d54bdd45b7a13fab7bfa33841c9
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149079"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889463"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -50,7 +50,7 @@ Pro vytvoření vlákna typu termostatu budete muset nejprve nahrát termostatov
 Model vypadá takto:
 :::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
-Pokud chcete **Tento model nahrát do instance s dvojitou** silou, spusťte následující příkaz Azure CLI, který nahraje výše uvedený model jako vložený formát JSON. Můžete spustit příkaz v [Azure Cloud Shell](/cloud-shell/overview.md) v prohlížeči nebo na svém počítači, pokud máte rozhraní příkazového řádku [nainstalované místně](/cli/azure/install-azure-cli.md).
+Pokud chcete **Tento model nahrát do instance s dvojitou** silou, spusťte následující příkaz Azure CLI, který nahraje výše uvedený model jako vložený formát JSON. Můžete spustit příkaz v [Azure Cloud Shell](/cloud-shell/overview.md) v prohlížeči nebo na svém počítači, pokud máte rozhraní příkazového řádku [nainstalované místně](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}

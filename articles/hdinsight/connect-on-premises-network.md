@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943406"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863373"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -37,7 +37,7 @@ Tyto konfigurace umožňují následující chování:
 
 V následujícím diagramu jsou zelenými řádky požadavky na prostředky, které končí příponou DNS virtuální sítě. Modré řádky jsou požadavky na prostředky v místní síti nebo na veřejném Internetu.
 
-![Diagram postupu při řešení požadavků DNS v konfiguraci](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="Diagram postupu při řešení požadavků DNS v konfiguraci" border="false":::
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -64,7 +64,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
   
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
-    ![Vytvoření virtuálního počítače s Ubuntu](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="Vytvoření virtuálního počítače s Ubuntu":::
 
 1. Vyberte **COMPUTE**  >  **virtuální počítač** a přejdete na stránku **vytvořit virtuální počítač** .
 
@@ -83,7 +83,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
     |Heslo nebo veřejný klíč SSH | Dostupné pole je určeno podle vaší volby pro **typ ověřování**.  Zadejte odpovídající hodnotu.|
     |Veřejné příchozí porty|Vyberte možnost **Povolení vybraných portů**. Pak v rozevíracím seznamu **vybrat příchozí porty** vyberte **SSH (22)** .|
 
-    ![Základní konfigurace virtuálního počítače](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="Základní konfigurace virtuálního počítače":::
 
     Ponechte výchozí hodnoty na další položky a pak vyberte kartu **síť** .
 
@@ -95,7 +95,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
     |Podsíť | Vyberte výchozí podsíť pro virtuální síť, kterou jste vytvořili dříve. Nevybírejte __podsíť__ , kterou používá brána sítě VPN.|
     |Veřejná IP adresa | Použijte automaticky vyplněnou hodnotu.  |
 
-    ![Nastavení virtuální sítě HDInsight](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="Nastavení virtuální sítě HDInsight":::
 
     Ponechte výchozí hodnoty na další položky a potom vyberte **zkontrolovat + vytvořit**.
 
@@ -109,7 +109,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
 
 2. Poznamenejte si hodnoty pro **veřejnou IP adresu/název DNS popisek** a **privátní IP adresu** pro pozdější použití.
 
-   ![Veřejné a privátní IP adresy](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="Veřejné a privátní IP adresy":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>Instalace a konfigurace služby BIND (software DNS)
 
@@ -245,7 +245,7 @@ Pokud chcete virtuální síť nakonfigurovat tak, aby místo rekurzivního pře
 
 5. Vyberte __Uložit__.  <br />  
 
-    ![Nastavení vlastního serveru DNS pro síť](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="Nastavení vlastního serveru DNS pro síť":::
 
 ## <a name="configure-on-premises-dns-server"></a>Konfigurace místního serveru DNS
 

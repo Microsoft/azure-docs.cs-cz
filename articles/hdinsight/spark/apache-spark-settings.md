@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929745"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870292"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
@@ -18,7 +18,7 @@ Cluster An HDInsight Spark zahrnuje instalaci knihovny Apache Spark.  Každý cl
 
 Výchozí cluster HDInsight Apache Spark zahrnuje následující uzly: tři uzly Apache ZooKeeper, dva hlavní uzly a jeden nebo více pracovních uzlů:
 
-![Architektura Spark HDInsight](./media/apache-spark-settings/spark-hdinsight-arch.png)
+:::image type="content" source="./media/apache-spark-settings/spark-hdinsight-arch.png" alt-text="Architektura Spark HDInsight" border="false":::
 
 Počet virtuálních počítačů a velikostí virtuálních počítačů pro uzly v clusteru HDInsight může ovlivnit konfiguraci Sparku. Nevýchozí hodnoty konfigurace HDInsight často vyžadují hodnoty konfigurace Sparku jiné než výchozí. Při vytváření clusteru HDInsight Spark se zobrazí doporučené velikosti virtuálních počítačů pro každou součást. V současné době jsou [velikosti virtuálních počítačů se systémem Linux optimalizované pro paměť](../../virtual-machines/sizes-memory.md) pro Azure D12 v2 nebo vyšší.
 
@@ -59,7 +59,7 @@ Zobrazí se webové uživatelské rozhraní Apache Ambari s řídicím panelem k
 
 Pokud chcete zobrazit konfigurační hodnoty pro Apache Spark, vyberte **Historie konfigurace** a pak vyberte **Spark2**.  Vyberte kartu **Konfigurace** a potom `Spark` `Spark2` v seznamu služba vyberte odkaz (nebo v závislosti na vaší verzi).  Zobrazí se seznam hodnot konfigurace pro váš cluster:
 
-![Konfigurace Sparku](./media/apache-spark-settings/spark-configurations.png)
+:::image type="content" source="./media/apache-spark-settings/spark-configurations.png" alt-text="Konfigurace Sparku" border="true":::
 
 Pokud chcete zobrazit a změnit jednotlivé hodnoty konfigurace Sparku, vyberte v nadpisu všechny odkazy s názvem Spark.  Konfigurace pro Spark zahrnují vlastní i pokročilé konfigurační hodnoty v těchto kategoriích:
 
@@ -78,7 +78,7 @@ Pokud vytvoříte jinou než výchozí sadu hodnot konfigurace, zobrazí se vaš
 
 Následující diagram znázorňuje klíčové objekty Spark: program ovladače a jeho přidružený kontext Spark a Správce clusteru a jeho uzly pracovního procesu *n* .  Každý pracovní uzel obsahuje instance úlohy prováděcího modulu, mezipaměti a *n* .
 
-![Objekty clusteru](./media/apache-spark-settings/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-spark-architecture.png" alt-text="Objekty clusteru" border="false":::
 
 Úlohy Sparku používají pracovní prostředky, zejména paměť, takže je běžné upravovat hodnoty konfigurace Sparku pro vykonavatele pracovních uzlů.
 
@@ -89,7 +89,7 @@ Tři klíčové parametry, které se často upravují pro optimalizaci konfigura
 
 Dalším zdrojem informací o prostředcích, které používají vykonavatelé Spark, je uživatelské rozhraní aplikace Spark.  V uživatelském rozhraní zobrazí  **vykonavatelé** zobrazení souhrnných a podrobných informací o konfiguraci a spotřebovaných prostředcích.  Určete, jestli se mají změnit hodnoty prováděcích modulů pro celý cluster, nebo konkrétní sada spuštění úloh.
 
-![Prováděče Spark](./media/apache-spark-settings/apache-spark-executors.png)
+:::image type="content" source="./media/apache-spark-settings/apache-spark-executors.png" alt-text="Prováděče Spark" border="true":::
 
 Případně můžete pomocí REST API Ambari programově ověřit nastavení konfigurace clusteru HDInsight a Spark.  Další informace najdete v referenčních informacích k [rozhraní Apache Ambari API na GitHubu](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -103,7 +103,7 @@ V závislosti na konkrétní úloze Spark můžete zjistit, že jiná než vých
 
 Tady je příklad dvou pracovních uzlů s různými hodnotami konfigurace:
 
-![Konfigurace dvou uzlů](./media/apache-spark-settings/executor-configuration.png)
+:::image type="content" source="./media/apache-spark-settings/executor-configuration.png" alt-text="Konfigurace dvou uzlů" border="false":::
 
 V následujícím seznamu jsou uvedeny klíčové parametry paměti pro vykonavatele Spark.
 
@@ -116,7 +116,7 @@ V následujícím seznamu jsou uvedeny klíčové parametry paměti pro vykonava
 
 PŘÍZe řídí maximální součet paměti využívané kontejnery na jednotlivých uzlech Spark. Následující diagram znázorňuje vztahy jednotlivých uzlů mezi objekty konfigurace PŘÍZe a objekty Spark.
 
-![Správa paměti PŘÍZe Spark](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-yarn-spark-memory.png" alt-text="Správa paměti PŘÍZe Spark" border="false":::
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Změnit parametry aplikace spuštěné v Jupyter Notebook
 

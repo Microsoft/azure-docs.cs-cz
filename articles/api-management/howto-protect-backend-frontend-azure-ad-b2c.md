@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/18/2021
 ms.author: wieastbu
 ms.custom: fasttrack-new, fasttrack-update, devx-track-js
-ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: baa6a0a6995e206924d14de25b98700e450f3a0c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449284"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954917"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
 
@@ -193,7 +193,7 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 1. Do pole Adresa URL vystavitele vložte bod konfigurace známého Open-ID v zásadách registrace a přihlášení (Tato konfigurace jsme dříve zaznamenali).
 1. Klikněte na Zobrazit tajný klíč a vložte tajný klíč klienta back-end aplikace do příslušného pole.
 1. Vyberte OK, čímž se vrátíte zpátky na okno pro výběr zprostředkovatele identity nebo obrazovku.
-1. V části Upřesnit nastavení nechejte [úložiště tokenů](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#token-store) povolené (výchozí).
+1. V části Upřesnit nastavení nechejte [úložiště tokenů](../app-service/overview-authentication-authorization.md#token-store) povolené (výchozí).
 1. Klikněte na Uložit (v levém horním rohu okna).
 
    > [!IMPORTANT]

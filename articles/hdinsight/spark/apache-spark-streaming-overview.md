@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e8a9f771827b870f493d6b0d7590feee7fc52b20
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929507"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870241"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Spark
 
 [Apache Spark](https://spark.apache.org/) Streamování zajišťuje zpracování datových proudů v clusterech HDInsight Spark. S jistotou, že jakákoli vstupní událost je zpracována přesně jednou, i když dojde k selhání uzlu. Datový proud Spark je dlouhodobá úloha, která přijímá vstupní data z nejrůznějších zdrojů, včetně Azure Event Hubs. Také: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ` raw TCP Sockets nebo monitorování Apache HADOOP přízové systémy souborů. Na rozdíl od výhradně procesu založeného na událostech vytvoří datový proud Spark vstupní data do časových oken. Například řez o dvou sekundách a následně transformuje každou dávku dat pomocí map, snižování, spojování a extrahování operací. Datový proud Spark pak zapisuje transformovaná data mimo systém souborů, databází, řídicích panelů a konzoly.
 
-![Zpracování datových proudů pomocí HDInsight a streamování Sparku](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png" alt-text="Zpracování datových proudů pomocí HDInsight a streamování Sparku" border="false":::
 
 Aplikace Spark streamování musí `micro-batch` před odesláním této dávky na zpracování počkat na zlomek sekundy. Naproti tomu aplikace řízená událostmi zpracovává každou událost okamžitě. Latence streamování Sparku obvykle trvá několik sekund. Výhody mikrodávkového přístupu jsou efektivnější zpracování dat a jednodušší agregační výpočty.
 
@@ -30,7 +30,7 @@ Začněte s jedinou událostí, řekněme od připojeného termostata teploty. K
 
 Každý RDD představuje události shromážděné v rámci uživatelsky definovaného časového rámce označovaného jako *interval dávky*. Po uplynutí každého intervalu dávky bude vytvořen nový RDD, který obsahuje všechna data z tohoto intervalu. Souvislá sada RDD je shromažďována do DStream. Pokud je například interval dávky jedna sekunda, DStream vygeneruje dávku každou sekundu obsahující jednu RDD, která obsahuje všechna data ingestovaná během této sekundy. Při zpracování DStream se událost teploty zobrazuje v jedné z těchto dávek. Aplikace pro streamování Spark zpracovává dávky, které obsahují události a nakonec fungují s daty uloženými v jednotlivých RDD.
 
-![Příklad DStream s událostmi teploty](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png" alt-text="Příklad DStream s událostmi teploty" border="false":::
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Struktura aplikace streamování Sparku
 
@@ -168,9 +168,9 @@ K provádění agregačních výpočtů v DStream za určité časové období, 
 
 Posuvná okna se můžou překrývat, například můžete definovat okno o délce dvou sekund. Tyto snímky se pokaždé podruhé. Tato akce znamená pokaždé, když provedete výpočet agregace, okno bude obsahovat data z poslední jedné sekundy předchozího okna. A všechna nová data v následující jedné druhé.
 
-![Příklad počátečního okna s událostmi teploty](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png" alt-text="Příklad počátečního okna s událostmi teploty" border="false":::
 
-![Příklad okna s událostmi teploty po posouvání](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png" alt-text="Příklad okna s událostmi teploty po posouvání" border="false":::
 
 Následující příklad aktualizuje kód, který používá DummySource, pro shromáždění dávek do okna s dobou trvání 1 minuty a snímkovým snímkem.
 
@@ -244,7 +244,7 @@ Pro zajištění odolnosti proti chybám streamování Sparku spoléhá na kontr
 
 Obvykle se aplikace pro streamování Spark vytváří místně do souboru JAR. Pak ji nasaďte do Sparku ve službě HDInsight zkopírováním souboru JAR do výchozího připojeného úložiště. Aplikaci můžete spustit pomocí rozhraní LIVY REST API, která jsou dostupná z clusteru, pomocí operace POST. Tělo příspěvku obsahuje dokument JSON, který poskytuje cestu k vašemu JAR. A název třídy, jejíž hlavní Metoda definuje a spouští aplikaci pro streamování, a volitelně požadavky na prostředky úlohy (například počet prováděcích modulů, paměti a jader). Také všechna nastavení konfigurace, která váš kód aplikace vyžaduje.
 
-![Nasazení aplikace pro streamování Sparku](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Nasazení aplikace pro streamování Sparku" border="false":::
 
 Stav všech aplikací lze také zkontrolovat pomocí požadavku GET na LIVY koncový bod. Nakonec můžete ukončit běžící aplikaci vyvoláním žádosti o odstranění na koncový bod LIVY. Podrobnosti o rozhraní LIVY API najdete v tématu [vzdálené úlohy s Apache LIVY](apache-spark-livy-rest-interface.md) .
 

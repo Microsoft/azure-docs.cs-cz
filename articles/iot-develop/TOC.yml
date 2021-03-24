@@ -18,7 +18,11 @@
         - name: Odeslání telemetrie do IoT Hub (Node)
           href: quickstart-send-telemetry-cli-node.md
     - name: Začínáme s integrovaným vývojem
-      href: quickstart-device-development.md
+      items:
+        - name: Rychlé starty integrovaných vývojových zařízení
+          href: quickstart-device-development.md
+        - name: Připojte k IoT Central AZ3166u MXCHIP.
+          href: quickstart-devkit-mxchip-az3166.md
 - name: Kurzy
   items:
     - name: Zabezpečené připojení zařízení IoT ke cloudu

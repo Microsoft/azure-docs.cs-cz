@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de6a94b36dab9dd5662062be99f4515d78558b5e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212444"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889650"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -102,7 +102,7 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
 
 - Vyhledejte `Front Door ID` hodnotu v části Přehled na stránce portálu front dveří. Pak můžete filtrovat příchozí záhlaví **X-Azure-FDID** odesílané předními dveřmi do back-endu s touto hodnotou, abyste zajistili, že bude povolená jenom vaše vlastní specifická instance front-dveří (protože rozsahy IP adres výše jsou sdílené s jinými instancemi front-endu jiných zákazníků).
 
-- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID. Všimněte si, že některé služby, jako Azure App Service, poskytují tuto funkci [filtrování na základě hlaviček](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) bez nutnosti změnit aplikaci nebo hostitele.
+- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID. Všimněte si, že některé služby, jako Azure App Service, poskytují tuto funkci [filtrování na základě hlaviček](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance) bez nutnosti změnit aplikaci nebo hostitele.
 
   Tady je příklad pro [Microsoft Internetová informační služba (IIS)](https://www.iis.net/):
 
@@ -257,7 +257,7 @@ Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro 
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Můžu použít klienta a vzájemné ověřování s využitím front-dveří Azure?
 
-No. I když přední dvířka Azure podporují protokol TLS 1,2, který zavedl klient a vzájemné ověřování v [RFC 5246](https://tools.ietf.org/html/rfc5246), v současné době se u front-in Azure nepodporuje klient a vzájemné ověřování.
+Ne. I když přední dvířka Azure podporují protokol TLS 1,2, který zavedl klient a vzájemné ověřování v [RFC 5246](https://tools.ietf.org/html/rfc5246), v současné době se u front-in Azure nepodporuje klient a vzájemné ověřování.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 

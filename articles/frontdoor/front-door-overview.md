@@ -8,17 +8,17 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 2a5c298c201aa2a1f968c2a96dcfd6963a410cf7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ef3d415f4f0ca82e79df84ef48acc0323a69099a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149218"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952146"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 
 > [!IMPORTANT]
-> Tato dokumentace je určena pro přední dveře Azure. Hledáte informace o službě Azure přední dveře Standard/Premium (Preview)? Podívejte se [sem](/standard-premium/overview.md).
+> Tato dokumentace je určena pro přední dveře Azure. Hledáte informace o službě Azure přední dveře Standard/Premium (Preview)? Podívejte se [sem](standard-premium/overview.md).
 
 Přední dvířka Azure jsou globální, škálovatelný vstupní bod, který využívá síť Microsoft Global Edge k vytváření rychlých, zabezpečených a široce škálovatelných webových aplikací. S předními dvířky můžete své globální aplikace a podnikové aplikace transformovat na robustní a vysoce výkonné přizpůsobené moderní aplikace s obsahem, který je přístupný pro globální cílovou skupinu prostřednictvím Azure.
 

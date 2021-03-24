@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 keywords: služby pro rozpoznávání, rozpoznávání, rozpoznávání, rozpoznávání, služby AI
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472105"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868167"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure Command-Line (CLI)
 
@@ -196,7 +196,8 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>Viz také
 
-* [Ověřování požadavků do Azure Cognitive Services](authentication.md)
-* [Co je Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Podpora přirozeného jazyka](language-support.md)
-* [Podpora kontejneru Docker](cognitive-services-container-support.md)
+* Informace o tom, jak bezpečně pracovat s Cognitive Services, najdete v tématu **[ověření požadavků do Azure Cognitive Services](authentication.md)** .
+* V tématu **[co je Azure Cognitive Services?](./what-are-cognitive-services.md)** získáte seznam různých kategorií v rámci Cognitive Services.
+* Seznam přirozených jazyků, které Cognitive Services podporuje, najdete v článku **[Podpora přirozeného jazyka](language-support.md)** .
+* Pokud chcete pochopit, jak používat Cognitive Services on-Prem, přečtěte si téma **[použití Cognitive Services jako kontejnerů](cognitive-services-container-support.md)** .
+* Odhad nákladů na používání Cognitive Services najdete v tématu **[plánování a Správa nákladů na Cognitive Services](plan-manage-costs.md)** .
