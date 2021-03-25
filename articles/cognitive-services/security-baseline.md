@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b243fa18b17fdd15f3c39545b7d81f5796bd8429
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 218810183f547d4e90043364a318615a204df9d8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699857"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044851"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Základní hodnoty zabezpečení Azure pro Cognitive Services
 
@@ -32,7 +32,7 @@ Pokud chcete zjistit, jak Cognitive Services kompletně mapuje srovnávací test
 
 Podpora služby Virtual Network a koncového bodu služby pro Cognitive Services je omezená na konkrétní sadu oblastí.
 
-- [Jak nakonfigurovat virtuální sítě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)
+- [Jak nakonfigurovat virtuální sítě Azure Cognitive Services](./cognitive-services-virtual-networks.md?tabs=portal)
 
 - [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md)
 
@@ -63,7 +63,7 @@ Pamatujte, že Cognitive Services kontejnery jsou požadovány k odeslání info
 
 Všimněte si také, že je nutné zakázat hloubkovou kontrolu paketů pro vaše řešení brány firewall na zabezpečených kanálech, které kontejnery Cognitive Services vytvoří na serverech společnosti Microsoft. V takovém případě se zabrání správnému fungování kontejneru.
 
-- [Principy zabezpečení služby Azure Cognitive Services Container](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Principy zabezpečení služby Azure Cognitive Services Container](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Odpovědnost:** Zákazník
 
@@ -83,7 +83,7 @@ Pokud používáte Cognitive Services v rámci kontejneru, můžete rozšířit 
 
 - [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
-- [Principy zabezpečení služby Azure Cognitive Services Container](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Principy zabezpečení služby Azure Cognitive Services Container](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Odpovědnost:** Zákazník
 
@@ -112,7 +112,7 @@ Pamatujte, že Cognitive Services kontejnery jsou požadovány k odeslání info
 
 Všimněte si také, že je nutné zakázat hloubkovou kontrolu paketů pro vaše řešení brány firewall na zabezpečených kanálech, které kontejnery Cognitive Services vytvoří na serverech společnosti Microsoft. V takovém případě se zabrání správnému fungování kontejneru.
 
-- [Principy zabezpečení služby Azure Cognitive Services Container](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Principy zabezpečení služby Azure Cognitive Services Container](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -131,7 +131,7 @@ Pamatujte, že Cognitive Services kontejnery jsou požadovány k odeslání info
 
 Všimněte si také, že je nutné zakázat hloubkovou kontrolu paketů pro vaše řešení brány firewall na zabezpečených kanálech, které kontejnery Cognitive Services vytvoří na serverech společnosti Microsoft. V takovém případě se zabrání správnému fungování kontejneru.
 
-- [Principy zabezpečení služby Azure Cognitive Services Container](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+- [Principy zabezpečení služby Azure Cognitive Services Container](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Odpovědnost:** Zákazník
 
@@ -145,7 +145,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 - [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md)
 
-- [Skupiny zabezpečení aplikací](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#application-security-groups)
+- [Skupiny zabezpečení aplikací](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Odpovědnost:** Zákazník
 
@@ -179,9 +179,9 @@ Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure 
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vaším Cognitive Servicesm kontejnerem. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -195,7 +195,7 @@ Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure 
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na kontejneru Cognitive Services na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni řídicích roviny pro instance služby Azure cache pro Redis.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -207,7 +207,7 @@ Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure 
 
 Kromě toho Cognitive Services odesílá diagnostické události, které je možné shromažďovat a používat pro účely analýzy, upozorňování a vytváření sestav. Nastavení diagnostiky pro kontejner Cognitive Services můžete nakonfigurovat pomocí Azure Portal. K účtu úložiště, centru událostí nebo pracovnímu prostoru Log Analytics můžete odeslat jednu nebo více diagnostických událostí.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Použití nastavení diagnostiky pro pro Azure Cognitive Services](diagnostic-logging.md)
 
@@ -219,7 +219,7 @@ Kromě toho Cognitive Services odesílá diagnostické události, které je mož
 
 **Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -229,9 +229,9 @@ Kromě toho Cognitive Services odesílá diagnostické události, které je mož
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do pracovního prostoru Log Analytics. Tyto protokoly poskytují bohatá a často používaná data o provozu prostředku, který se používá k identifikaci a ladění problémů. Provádějte dotazy v Log Analytics k hledání podmínek, identifikujte trendy, analyzujte vzorce a poskytněte spoustu dalších přehledů na základě dat protokolů aktivit, které se mohly shromažďovat pro Azure Cognitive Services.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -245,7 +245,7 @@ Nakonfigurujte nastavení diagnostiky pro kontejner Cognitive Services a odešle
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -259,9 +259,9 @@ Nakonfigurujte nastavení diagnostiky pro kontejner Cognitive Services a odešle
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Odpovědnost:** Zákazník
 
@@ -275,7 +275,7 @@ Přístup k rovině dat k Cognitive Services je řízen prostřednictvím přís
 
 Nedoporučujeme vytvářet výchozí hesla do aplikace. Místo toho můžete ukládat hesla v Azure Key Vault a pak je pomocí Azure AD načíst.
 
-- [Jak znovu vygenerovat Azure cache pro přístupové klíče Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+- [Jak znovu vygenerovat Azure cache pro přístupové klíče Redis](../azure-cache-for-redis/cache-configure.md#settings)
 
 **Odpovědnost:** Zákazník
 
@@ -365,7 +365,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 V současné době platí jenom rozhraní API pro počítačové zpracování obrazu, rozhraní API pro rozpoznávání tváře, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bingu s výjimkou Vlastní vyhledávání Bingu ověřování pomocí Azure AD.
 
-- [Ověření požadavků na Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-azure-active-directory)
+- [Ověření požadavků na Cognitive Services](./authentication.md#authenticate-with-azure-active-directory)
 
 **Odpovědnost:** Zákazník
 
@@ -379,7 +379,7 @@ Zákazníkům udržovat inventář API Managementch uživatelských účtů, pod
 
 - [Správa uživatelských účtů ve službě Azure API Management](../api-management/api-management-howto-create-or-invite-developers.md)
 
-- [Jak získat seznam API Management uživatelů](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak získat seznam API Management uživatelů](/powershell/module/az.apimanagement/get-azapimanagementuser?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -419,7 +419,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: není k dispozici pro Cognitive Services. Customer Lockbox ještě není pro Cognitive Services podporovaná.
 
-- [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Odpovědnost:** Zákazník
 
@@ -514,7 +514,7 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 
 K ukládání klíčů spravovaných zákazníkem můžete použít taky Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů.
 
-- [Seznam služeb, které zašifrují informace v klidovém znění](/azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal)
+- [Seznam služeb, které zašifrují informace v klidovém znění](./encryption/cognitive-services-encryption-keys-portal.md)
 
 **Odpovědnost:** Zákazník
 
@@ -524,7 +524,7 @@ K ukládání klíčů spravovaných zákazníkem můžete použít taky Azure K
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Cognitive Services a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -542,7 +542,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -604,7 +604,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -628,7 +628,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro kontejner Cognitive Services s Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. Cognitiveservices Account můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace mezipaměti Azure pro instance Redis.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -652,9 +652,9 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Pokyny**: Pokud používáte vlastní definice Azure Policy nebo šablony Azure Resource Manager pro Cognitive Services kontejnery a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -686,7 +686,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 - [Integrace se spravovanými identitami Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Vytvoření Key Vault](/azure/key-vault/quick-create-portal)
+- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 - [Ověření Key Vault](../key-vault/general/authentication.md)
 
@@ -760,7 +760,7 @@ Funkci správy životního cyklu můžete také použít k zálohování dat do 
 
 - [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md)
 
-- [Postup vytvoření prostředku Cognitive Services pomocí šablony Azure Resource Manager](https://docs.microsoft.com/azure/cognitive-services/resource-manager-template?tabs=portal)
+- [Postup vytvoření prostředku Cognitive Services pomocí šablony Azure Resource Manager](./create-account-resource-manager-template.md?tabs=portal)
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -768,7 +768,7 @@ Funkci správy životního cyklu můžete také použít k zálohování dat do 
 
 - [Úvod do Azure Automation](../automation/automation-intro.md)
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -780,7 +780,7 @@ Funkci správy životního cyklu můžete také použít k zálohování dat do 
 
 - [Nasazení prostředků pomocí šablon ARM a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -792,7 +792,7 @@ Funkci správy životního cyklu můžete také použít k zálohování dat do 
 
 K ochraně klíčů spravovaných zákazníkem použijte řízení přístupu na základě role Azure. Povolit Soft-Delete a vyprázdnit ochranu v Key Vault a chránit tak klíče proti náhodnému nebo škodlivému odstranění. 
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -890,5 +890,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

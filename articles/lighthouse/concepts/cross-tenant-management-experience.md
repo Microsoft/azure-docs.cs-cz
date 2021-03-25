@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177915"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952112"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -33,7 +33,7 @@ Azure Lighthouse umožňuje větší flexibilitu při správě prostředků pro 
 
 Úlohy správy můžete u delegovaných prostředků provádět buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky, pokud je tato funkce podporovaná pro správu mezi klienty a uživatel má příslušná oprávnění.
 
-[Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zobrazuje `HomeTenantId` atributy a `ManagedByTenantIds` pro každé předplatné, což vám umožní určit, jestli vracený odběr patří do spravovaného tenanta nebo do vašeho tenanta pro správu.
+[Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zobrazí ve `TenantId` výchozím nastavení pro správu tenanta. `HomeTenantId` `ManagedByTenantIds` U každého předplatného můžete použít atributy a, které vám umožní určit, jestli vracený odběr patří do spravovaného tenanta nebo do vašeho tenanta pro správu.
 
 Podobně příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account#az-account-list) , zobrazí `homeTenantId` `managedByTenants` atributy a. Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
 

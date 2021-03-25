@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735773"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044749"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -278,7 +278,7 @@ Síť Azure podporuje možnost přizpůsobení chování směrování pro síťo
 
 Azure podporuje vyhrazené připojení WAN Link k vaší místní síti a Virtual Network Azure s [ExpressRoute](../../expressroute/expressroute-introduction.md). Propojení mezi Azure a vaší lokalitou používá vyhrazené připojení, které nepřekračuje veřejný Internet. Pokud je vaše aplikace Azure spuštěná v několika datových centrech, můžete použít [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) k směrování požadavků od uživatelů, které jsou v jednotlivých instancích aplikace inteligentně. Provoz můžete směrovat i do služeb, které neběží v Azure, pokud jsou dostupné z Internetu.
 
-Azure také podporuje privátní a zabezpečené připojení k prostředkům PaaS (například Azure Storage a SQL Database) z Azure Virtual Network pomocí [privátního propojení Azure](https://docs.microsoft.com/azure/private-link/private-link-overview). Prostředek PaaS je namapovaný na [privátní koncový bod](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ve vaší virtuální síti. Propojení mezi soukromým koncovým bodem ve vaší virtuální síti a prostředkem PaaS používá páteřní síť Microsoft a nepřekračuje veřejný Internet. Vystavení vaší služby pro veřejný Internet již není nutné. Pro přístup k hostovaným zákaznickým a partnerským službám Azure ve vaší virtuální síti můžete použít také soukromé odkazy Azure.  Kromě toho privátní propojení Azure umožňuje vytvořit ve virtuální síti vlastní [službu privátního propojení](https://docs.microsoft.com/azure/private-link/private-link-service-overview) a dodat ji svým zákazníkům ve svých virtuálních sítích soukromě. Nastavení a spotřeba pomocí privátního propojení Azure jsou konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
+Azure také podporuje privátní a zabezpečené připojení k prostředkům PaaS (například Azure Storage a SQL Database) z Azure Virtual Network pomocí [privátního propojení Azure](../../private-link/private-link-overview.md). Prostředek PaaS je namapovaný na [privátní koncový bod](../../private-link/private-endpoint-overview.md) ve vaší virtuální síti. Propojení mezi soukromým koncovým bodem ve vaší virtuální síti a prostředkem PaaS používá páteřní síť Microsoft a nepřekračuje veřejný Internet. Vystavení vaší služby pro veřejný Internet již není nutné. Pro přístup k hostovaným zákaznickým a partnerským službám Azure ve vaší virtuální síti můžete použít také soukromé odkazy Azure.  Kromě toho privátní propojení Azure umožňuje vytvořit ve virtuální síti vlastní [službu privátního propojení](../../private-link/private-link-service-overview.md) a dodat ji svým zákazníkům ve svých virtuálních sítích soukromě. Nastavení a spotřeba pomocí privátního propojení Azure jsou konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
 
 ## <a name="virtual-machine-security"></a>Zabezpečení virtuálních počítačů
 

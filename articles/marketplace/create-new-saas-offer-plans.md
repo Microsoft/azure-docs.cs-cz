@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746433"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044715"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>Jak vytvořit plány pro nabídku SaaS
 
@@ -149,6 +149,10 @@ Akce, které jsou k dispozici ve sloupci **Akce** na kartě **Přehled plánu** 
 
 - Pokud je stav plánu **koncept**, odkaz ve sloupci **Akce** bude vyslovit **Odstranit koncept**.
 - Pokud je stav plánu **Live**, odkaz ve sloupci **Akce** buď **zastaví prodej plánu** , nebo **synchronizuje soukromou cílovou skupinu**. Odkaz **synchronizovat soukromou cílovou skupinu** bude publikovat jenom změny vašich privátních cílových skupin, aniž byste museli publikovat další aktualizace, které jste mohli v této nabídce udělat.
+
+## <a name="before-you-publish-your-offer"></a>Před publikováním nabídky
+
+Pokud jste to ještě neudělali, vytvořte nabídku pro vývoj a testování (DEV), abyste před publikováním produkční nabídky mohli svoji nabídku otestovat. Další informace najdete v tématu [Vytvoření nabídky pro vývoj a testování](create-saas-dev-test-offer.md).
 
 ## <a name="next-steps"></a>Další kroky
 
