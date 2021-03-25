@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212752"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105038154"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Postup při kódování a streamování videosouborů pomocí Node.JS
 
@@ -37,7 +37,7 @@ Ukázka v tomto článku zakóduje obsah, který zpřístupníte přes adresu UR
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Nainstalovat [Node.js](https://nodejs.org/en/download/)
 - [Vytvořte účet Media Services](./create-account-howto.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
@@ -71,7 +71,7 @@ Tato ukázka provede následující akce:
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-1. Aplikace stáhne kódované soubory. Vytvořte složku, do které chcete výstupní soubory přejít, a aktualizujte hodnotu proměnné **outputFolder** v souboru [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) . Ve výchozím nastavení je nastavená na tempo.
+1. Aplikace stáhne kódované soubory. Vytvořte složku, do které chcete výstupní soubory přejít, a aktualizujte hodnotu proměnné **outputFolder** v souboru [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) . Ve výchozím nastavení je nastavená na tempo.
 1. Otevřete **příkazový řádek** a přejděte do adresáře ukázky.
 1. Změňte adresář na složku AMSv3Samples.
 

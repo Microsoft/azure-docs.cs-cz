@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889616"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025029"
 ---
 # <a name="enable-sql-insights-preview"></a>Povolit SQL Insights (Náhled)
 Tento článek popisuje, jak povolit [SQL Insights](sql-insights-overview.md) pro monitorování vašich nasazení SQL. Monitorování se provádí z virtuálního počítače Azure, který vytváří připojení k vašim nasazením SQL a pomocí zobrazení dynamické správy (zobrazení dynamické správy) shromažďuje data monitorování. Můžete řídit, které datové sady jsou shromažďovány a četnost shromažďování pomocí profilu monitorování.
@@ -40,7 +40,7 @@ Ověřte, zda byl uživatel vytvořen.
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Ověřte uživatelský skript telegraf." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
 ### <a name="azure-sql-managed-instance"></a>Spravovaná instance Azure SQL
-Přihlaste se ke spravované instanci SQL Azure a pomocí [SSMS](../../azure-sql/database/connect-query-ssms.md) nebo podobného nástroje spusťte následující skript, který vytvoří uživatele monitorování s potřebnými oprávněními. Nahraďte *uživatele uživatelským* jménem a *mystrongpassword* heslem.
+Přihlaste se ke spravované instanci SQL Azure a pomocí [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) nebo podobného nástroje spusťte následující skript, který vytvoří uživatele monitorování s potřebnými oprávněními. Nahraďte *uživatele uživatelským* jménem a *mystrongpassword* heslem.
 
  
 ```
@@ -85,7 +85,7 @@ Virtuální počítače Azure mají následující požadavky.
 > [!NOTE]
 > Velikost virtuálního počítače Standard_B2s (2 CPU, 4 GiB paměť) bude podporovat až 100 připojovacích řetězců. Neměli byste přidělit více než 100 připojení k jednomu virtuálnímu počítači.
 
-Virtuální počítače musí být umístěny ve stejné virtuální síti jako vaše systémy SQL, aby mohli vytvářet síťová připojení ke shromažďování dat monitorování. Pokud chcete monitorovat SQL běžící na virtuálním počítači Azure nebo jako spravovanou instanci Azure, zvažte možnost umístit virtuální počítač pro monitorování do skupiny zabezpečení aplikace nebo stejnou virtuální síť jako tyto prostředky, abyste nemuseli poskytovat koncový bod veřejné sítě pro monitorování SQL serveru. 
+V závislosti na nastavení sítě vašich prostředků SQL může být nutné umístit virtuální počítače do stejné virtuální sítě jako prostředky SQL, aby mohli síťová připojení shromažďovat data monitorování.  
 
 ## <a name="configure-network-settings"></a>Konfigurace nastavení sítě
 Každý typ SQL nabízí metody pro váš virtuální počítač pro monitorování, aby mohl bezpečně přistupovat k SQL.  Níže uvedené části obsahují možnosti založené na typu SQL.
@@ -100,8 +100,6 @@ Pro přístup prostřednictvím veřejného koncového bodu byste přidali pravi
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Nastavení brány firewall." lightbox="media/sql-insights-enable/firewall-settings.png":::
 
-> [!NOTE]
-> SQL Insights v současné době nepodporuje pro Azure SQL Database privátní koncový bod Azure.  Pro skupinu zabezpečení sítě nebo nastavení brány firewall virtuální sítě, které [podporuje agent Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking), doporučujeme používat [značky služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) .
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instances 
 
@@ -213,12 +211,16 @@ Chcete-li monitorovat čitelnou sekundární, zahrňte do `ApplicationIntent=Rea
 
 
 
-## <a name="profile-created"></a>Profil vytvořen 
-Vyberte **Přidat virtuální počítač monitorování** a nakonfigurujte virtuální počítač tak, aby shromáždil data z nasazení SQL. Nevratte se zpět na kartu **Přehled** .  Během několika minut by se měl sloupec stav změnit, aby se zobrazila zpráva "shromažďování", měla by se zobrazit data pro systémy, které jste se rozhodli monitorovat.
+## <a name="monitoring-profile-created"></a>Profil monitorování se vytvořil. 
+
+Vyberte **Přidat virtuální počítač monitorování** a nakonfigurujte virtuální počítač tak, aby shromáždil data z vašich prostředků SQL. Nevratte se zpět na kartu **Přehled** .  Během několika minut by se měl sloupec stav změnit, aby se načetlo "shromažďování", měli byste vidět data pro prostředky SQL, které jste se rozhodli monitorovat.
 
 Pokud nevidíte data, přečtěte si téma [řešení potíží s SQL Insights](sql-insights-troubleshoot.md) k identifikaci problému. 
 
 :::image type="content" source="media/sql-insights-enable/profile-created.png" alt-text="Profil vytvořen" lightbox="media/sql-insights-enable/profile-created.png":::
+
+> [!NOTE]
+> Pokud potřebujete aktualizovat svůj profil monitorování nebo připojovací řetězce na vašich virtuálních počítačích monitorování, můžete to udělat přes kartu SQL Insights **Spravovat profil** .  Po uložení aktualizací se změny použijí přibližně po dobu 5 minut.
 
 ## <a name="next-steps"></a>Další kroky
 

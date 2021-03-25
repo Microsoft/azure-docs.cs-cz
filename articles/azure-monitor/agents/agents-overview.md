@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551466"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026168"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -97,7 +97,7 @@ Diagnostické rozšíření Azure použijte v případě, že potřebujete:
 - Odeslat data do Azure Storage pro archivaci nebo ji analyzovat pomocí nástrojů, jako je [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 - Odešlete data do [Azure monitor metriky](../essentials/data-platform-metrics.md) , abyste je mohli analyzovat pomocí [Průzkumníka metrik](../essentials/metrics-getting-started.md) a mohli využívat funkce, jako jsou [výstrahy metriky](../alerts/alerts-metric-overview.md) téměř v reálném čase a [Automatické škálování](../autoscale/autoscale-overview.md) (jenom Windows).
 - Posílání dat do nástrojů třetích stran pomocí [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
-- Shromažďovat [diagnostiku spouštění](../../virtual-machines/troubleshooting/boot-diagnostics.md) a prozkoumat problémy se spouštěním virtuálního počítače
+- Shromažďovat [diagnostiku spouštění](/troubleshoot/azure/virtual-machines/boot-diagnostics) a prozkoumat problémy se spouštěním virtuálního počítače
 
 Mezi omezení Azure Diagnostics Extension patří:
 

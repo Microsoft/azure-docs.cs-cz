@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453763"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043015"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -74,7 +74,7 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní lic
 1. Ověřte, že váš počítač splňuje požadavky nezbytné pro Defender pro koncový bod:
 
     - Pro **všechny verze systému Windows**:
-        - Konfigurace nastavení sítě popsaná v tématu [Konfigurace nastavení proxy zařízení a připojení k Internetu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
+        - Konfigurace nastavení sítě popsaná v tématu [Konfigurace nastavení proxy zařízení a připojení k Internetu](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
         - Pokud nasazujete Defender na koncový bod do místních počítačů, připojte ho ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
     - Pro **počítače s Windows serverem 2019** se navíc ujistěte, že běží na platném agentovi a že mají rozšíření MicrosoftMonitoringAgent.
 

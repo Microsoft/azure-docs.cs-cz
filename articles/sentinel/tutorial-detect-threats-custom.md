@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f0a94daef8c5db820a17fe8cb50eda616bcf260
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453928"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042794"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Kurz: vytvoření vlastních pravidel analýzy pro detekci hrozeb
 
@@ -64,7 +64,7 @@ Na kartě **nastavit logiku pravidla** můžete buď napsat dotaz přímo do pol
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1-new.png" alt-text="Konfigurace logiky a nastavení pravidla dotazu" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1-new.png":::
 
-- Tady je další ukázkový dotaz, který vás upozorní, když se v [aktivitě Azure](../azure-monitor/platform/activity-log.md)vytvoří neobvykléý počet prostředků.
+- Tady je další ukázkový dotaz, který vás upozorní, když se v [aktivitě Azure](../azure-monitor/essentials/activity-log.md)vytvoří neobvykléý počet prostředků.
 
     ```kusto
     AzureActivity
@@ -211,7 +211,7 @@ Pokud chcete, aby se jeden incident vygeneroval ze skupiny až 150 podobných ne
 > [!NOTE]
 > Výstrahy vygenerované v Azure Sentinel jsou k dispozici prostřednictvím [Microsoft Graph zabezpečení](/graph/security-concept-overview). Další informace najdete v dokumentaci k [výstrahám zabezpečení Microsoft Graph](/graph/api/resources/security-api-overview).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="issue-no-events-appear-in-query-results"></a>Problém: ve výsledcích dotazu se neobjeví žádné události.
 

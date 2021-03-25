@@ -3,18 +3,18 @@ title: Kurz – Vytvoření a správa exportovaných dat ze služby Azure Cost M
 description: Tento článek popisuje, jak vytvořit a spravovat exportovaná data služby Azure Cost Management tak, aby se dala používat v externích systémech.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: HT
+ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400348"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043457"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -80,6 +80,8 @@ Nový export se zobrazí v seznamu exportů. Ve výchozím nastavení jsou nové
 Na začátku může trvat 12 až 24 hodin, než se export spustí. Může však trvat i déle, než se v exportovaných souborech zobrazí data.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Když vytváříte export programově, musíte poskytovatele prostředků zaregistrovat ručně v `Microsoft.CostManagementExports` rámci předplatného, ve kterém se nachází účet úložiště. K registraci dochází automaticky při vytvoření exportu pomocí Azure Portal. Další informace o tom, jak registrovat poskytovatele prostředků, najdete v tématu [registrace poskytovatele prostředků](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
@@ -148,6 +150,8 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Když vytváříte export programově, musíte poskytovatele prostředků zaregistrovat ručně v `Microsoft.CostManagementExports` rámci předplatného, ve kterém se nachází účet úložiště. K registraci dochází automaticky při vytvoření exportu pomocí Azure Portal. Další informace o tom, jak registrovat poskytovatele prostředků, najdete v tématu [registrace poskytovatele prostředků](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Začněte přípravou vašeho prostředí pro Azure PowerShell:
 

@@ -246,6 +246,8 @@
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
             - name: Připojit ke konzole virtuálních počítačů
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+            - name: Správa síťových rozhraní
+              href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
         - name: Správa certifikátů
           items:
             - name: Požadavky

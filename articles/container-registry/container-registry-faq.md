@@ -3,14 +3,14 @@ title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Registry
 author: sajayantony
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d5e161a0a663542142081c61bf1ad08be1be484
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97606279"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026236"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -260,11 +260,23 @@ Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní r
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Návody povolit anonymní přístup pro vyžádání obsahu?
 
-Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístupnění přístupu je aktuálně funkcí verze Preview. Pokud máte v registru nějaké [obory mapování (uživatelů) nebo prostředků tokenů](./container-registry-repository-scoped-permissions.md) , odstraňte je prosím před vyvoláním lístku podpory (mapování oboru systému se dají ignorovat). Pokud chcete povolit veřejný přístup, otevřete prosím na adrese lístek podpory https://aka.ms/acr/support/create-ticket . Podrobnosti najdete na [fóru názory Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Nastavení služby Azure Container registry pro anonymní (neověřené) oprávnění k získání přístupu je aktuálně funkce ve verzi Preview, která je dostupná ve [vrstvách](container-registry-skus.md)Standard a Premium. 
+
+Pokud chcete povolit anonymní přístup pro vyžádání obsahu, aktualizujte registr pomocí Azure CLI (verze 2.21.0 nebo novější) a předejte `--anonymous-pull-enabled` parametr do příkazu [AZ ACR Update](/cli/azure/acr#az_acr_update) :
+
+```azurecli
+az acr update --name myregistry --anonymous-pull-enabled
+``` 
+
+Celou dobu anonymního přístupu k vyžádanému přístupu můžete kdykoli zakázat nastavením `--anonymous-pull-enabled` na `false` .
 
 > [!NOTE]
-> * Anonymně lze získat přístup pouze k rozhraním API vyžadovaným k vyžádání známého obrázku. Žádná další rozhraní API pro operace, jako je seznam značek nebo seznam úložišť, nejsou anonymní přístupná.
 > * Před pokusem o anonymní operaci vyžádání obsahu se `docker logout` ujistěte, že jste vymazali všechna existující pověření Docker.
+> * Pro neověřené klienty jsou k dispozici pouze operace roviny dat.
+> * Registr může omezit vysokou míru neověřených požadavků.
+
+> [!WARNING]
+> Anonymní přístup k vyžádanému přístupu se teď vztahuje na všechna úložiště v registru. Pokud spravujete přístup k úložišti pomocí [tokenů s rozsahem úložiště](container-registry-repository-scoped-permissions.md), uvědomte si, že všichni uživatelé můžou získat z těchto úložišť v registru, který je povolený pro anonymní vyžádání. Pokud je povolen anonymní přístup k přístupu, doporučujeme odstranit tokeny.
 
 ### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Návody do registru vložit nedistribuovatelné vrstvy?
 
@@ -485,7 +497,7 @@ Pokud se zobrazí chyba, například "nepodporovaný formát úložiště", "nep
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Povolit dešifrování HTTPS v Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>

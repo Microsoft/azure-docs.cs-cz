@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: Tento článek obsahuje koncepční přehled pracovního postupu CI/CD pomocí GitOps
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, ARC, AKS, Azure Kubernetes Service, Containers, CI, CD, Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121775"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025862"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>Pracovní postup CI/CD pomocí GitOps – Kubernetes s podporou ARC Azure
 
@@ -30,7 +30,7 @@ Vezměte v úvahu aplikaci nasazenou do jednoho nebo více prostředí Kubernete
 ### <a name="application-repo"></a>Úložiště aplikace
 Úložiště aplikace obsahuje kód aplikace, na kterém vývojáři pracují během své vnitřní smyčky. Šablony nasazení aplikace v tomto úložišti v obecném tvaru, jako je například Helm nebo Kustomize, jsou v tomto úložišti aktivní. Hodnoty specifické pro prostředí nejsou uloženy. Změny tohoto úložiště vyvolávají kanál PR nebo CI, který spouští proces nasazení.
 ### <a name="container-registry"></a>Container Registry
-Registr kontejnerů obsahuje všechny první a jiné image, které se používají v prostředích Kubernetes. Označte image aplikací First stran pomocí značek pro čtení a potvrzení Git, které se používá k sestavení image. Ukládání imagí třetích stran do mezipaměti pro zabezpečení, rychlost a odolnost. Nastavte plán pro včasné testování a integraci aktualizací zabezpečení. Další informace najdete v tématu [ACR pro využívání a udržování veřejného obsahu](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content) pro příklad.
+Registr kontejnerů obsahuje všechny první a jiné image, které se používají v prostředích Kubernetes. Označte image aplikací First stran pomocí značek pro čtení a potvrzení Git, které se používá k sestavení image. Ukládání imagí třetích stran do mezipaměti pro zabezpečení, rychlost a odolnost. Nastavte plán pro včasné testování a integraci aktualizací zabezpečení. Další informace najdete v tématu [ACR pro využívání a udržování veřejného obsahu](../../container-registry/tasks-consume-public-content.md) pro příklad.
 ### <a name="pr-pipeline"></a>Kanál PR
 PR na úložiště aplikace se po úspěšném spuštění kanálu PR gated. Tento kanál spouští základní brány kvality, například linting a testování částí kódu aplikace. Kanál testuje aplikace a šablony Lints fázemi a Helm používané pro nasazení do prostředí Kubernetes. Image Docker by se měly sestavit a testovat, ale nevloženy. Doba trvání kanálu je poměrně krátká, aby umožňovala rychlou iteraci.
 ### <a name="ci-pipeline"></a>Kanál CI

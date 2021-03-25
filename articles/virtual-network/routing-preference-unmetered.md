@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 1fcc918e5b4b54a415fed0f38d210aeeaa62c008
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00e0d1afa2aa035fe27e73dae60e291ea53bd6b8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679373"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042845"
 ---
 # <a name="what-is-routing-preference-unmetered"></a>Co je neměřená priorita směrování?
 
@@ -45,4 +45,4 @@ Můžete také povolit předvolby směrování pro svůj účet úložiště a p
 
 * [Konfigurace předvolby směrování pro virtuální počítač pomocí Azure PowerShell](configure-routing-preference-virtual-machine-powershell.md)
 * [Konfigurace předvolby směrování pro virtuální počítač pomocí Azure CLI](configure-routing-preference-virtual-machine-cli.md)
-* [Konfigurace předvolby směrování pro váš účet úložiště](/azure/storage/common/network-routing-preference)
+* [Konfigurace předvolby směrování pro váš účet úložiště](../storage/common/network-routing-preference.md)

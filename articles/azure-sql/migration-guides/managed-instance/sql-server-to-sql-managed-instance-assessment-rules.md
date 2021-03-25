@@ -1,5 +1,5 @@
 ---
-title: Pravidla vyhodnocení pro SQL Server migraci spravované instance SQL
+title: Pravidla vyhodnocení pro SQL Server migraci spravované instance Azure SQL
 description: Pravidla pro vyhodnocení k identifikaci problémů se zdrojovou instancí SQL Server, která se musí řešit před migrací do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: 760a6496ff297ae6328810589f780b430d55b18a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054571"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026032"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-managed-instance-migration"></a>Pravidla vyhodnocení pro SQL Server migraci spravované instance SQL
+# <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Pravidla vyhodnocení pro SQL Server migraci spravované instance Azure SQL
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Nástroje pro migraci ověřují vaši zdrojovou instanci SQL Server spuštěním několika pravidel pro vyhodnocení a identifikují problémy, které je potřeba vyřešit před migrací databáze SQL Server do spravované instance Azure SQL. 

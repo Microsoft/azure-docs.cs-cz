@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: db63d763da8cfe13a07cab15f7f18ad6e2e73eb7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100627090"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026287"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -28,7 +28,7 @@ Azure Application Insights shromažďuje informace o využití a pomáhá pochop
 > * Prozkoumání způsobu, jakým uživatelé procházejí vaši aplikaci
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -38,7 +38,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../app/asp-net.md). 
 - [Odesílat z aplikace telemetrii](../app/usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
-- Odesílat [kontext uživatele](../app/usage-send-user-context.md) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
+- Odesílat [kontext uživatele](./usage-overview.md) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
@@ -165,4 +165,3 @@ Teď, když jste zjistili, jak analyzovat uživatele, přejděte k dalšímu kur
 
 > [!div class="nextstepaction"]
 > [Vytváření vlastních řídicích panelů](./tutorial-app-dashboards.md)
-

@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121605"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025811"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Kurz: implementace CI/CD pomocí GitOps s využitím clusterů Kubernetes s podporou ARC Azure
 
@@ -37,12 +37,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 V tomto kurzu se seznámíte s Azure DevOps, Azure Reposmi a kanály a Azure CLI.
 
 * Přihlaste se [Azure DevOps Services](https://dev.azure.com/).
-* Dokončete [předchozí kurz](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) , kde se dozvíte, jak nasadit GitOps pro prostředí CI/CD.
-* Pochopte [výhody a architektury](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-configurations) této funkce.
+* Dokončete [předchozí kurz](./tutorial-use-gitops-connected-cluster.md) , kde se dozvíte, jak nasadit GitOps pro prostředí CI/CD.
+* Pochopte [výhody a architektury](./conceptual-configurations.md) této funkce.
 * Ověřte, že máte následující:
-  * [Připojený cluster Kubernetes s povoleným ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#connect-an-existing-kubernetes-cluster) pojmenovaný **oblouk-cicd-cluster**.
-  * Připojená Azure Container Registry (ACR) s [AKS Integration](https://docs.microsoft.com/azure/aks/cluster-container-registry-integration) nebo [bez AKSho ověřování clusteru](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes).
-  * Oprávnění "správce sestavení" a "projektový správce" pro [Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/what-is-repos) a [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-get-started).
+  * [Připojený cluster Kubernetes s povoleným ARC Azure](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster) pojmenovaný **oblouk-cicd-cluster**.
+  * Připojená Azure Container Registry (ACR) s [AKS Integration](../../aks/cluster-container-registry-integration.md) nebo [bez AKSho ověřování clusteru](../../container-registry/container-registry-auth-kubernetes.md).
+  * Oprávnění "správce sestavení" a "projektový správce" pro [Azure Repos](/azure/devops/repos/get-started/what-is-repos) a [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started).
 * Nainstalujte následující Kubernetes rozšíření CLI s povoleným rozšířením Azure ARC verze >= 1.0.0:
 
   ```azurecli
@@ -67,7 +67,7 @@ Importujte [úložiště aplikace](https://docs.microsoft.com/azure/azure-arc/ku
    * Adresa URL https://github.com/Azure/arc-cicd-demo-gitops
    * Funguje jako základ pro prostředky clusteru, které jsou součástí aplikace hlasování Azure.
 
-Přečtěte si další informace o [importu úložišť Git](https://docs.microsoft.com/azure/devops/repos/git/import-git-repository).
+Přečtěte si další informace o [importu úložišť Git](/azure/devops/repos/git/import-git-repository).
 
 >[!NOTE]
 > Import a použití dvou samostatných úložišť pro úložiště aplikací a GitOps může zlepšit zabezpečení a jednoduchost. Oprávnění a viditelnost aplikace a GitOps úložiště je možné vyladit individuálně.
@@ -86,7 +86,7 @@ Připojení GitOps, které vytvoříte, bude automaticky:
 Pracovní postup CI/CD naplní adresář manifestu dalšími manifesty k nasazení aplikace.
 
 
-1. [Vytvořte nové připojení GitOps](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) k nově importovanému úložišti **cicd-demo-GitOps** ve službě Azure Repos.
+1. [Vytvořte nové připojení GitOps](./tutorial-use-gitops-connected-cluster.md) k nově importovanému úložišti **cicd-demo-GitOps** ve službě Azure Repos.
 
    ```azurecli
    az k8sconfiguration create \
@@ -172,7 +172,7 @@ kubectl create secret docker-registry <secret-name> \
 ## <a name="create-environment-variable-groups"></a>Vytvoření skupin proměnných prostředí
 
 ### <a name="app-repo-variable-group"></a>Skupina proměnných úložiště aplikace
-[Vytvořte skupinu proměnných](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups) s názvem **AZ-Hlasujte-App-dev**. Nastavte následující hodnoty:
+[Vytvořte skupinu proměnných](/azure/devops/pipelines/library/variable-groups) s názvem **AZ-Hlasujte-App-dev**. Nastavte následující hodnoty:
 
 | Proměnná | Hodnota |
 | -------- | ----- |
@@ -182,13 +182,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Vývoj |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | Připojovací řetězec Git pro úložiště GitOps |
-| PAT | [Vytvořený token Pat](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?#create-a-pat) s oprávněním ke čtení/zápisu ve zdroji. Uložte ho pro pozdější použití při vytváření `stage` skupiny proměnných. |
+| PAT | [Vytvořený token Pat](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat) s oprávněním ke čtení/zápisu ve zdroji. Uložte ho pro pozdější použití při vytváření `stage` skupiny proměnných. |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> Označte svou PAT jako tajný typ. V aplikacích zvažte propojení tajných kódů z [trezoru klíčů Azure](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault).
+> Označte svou PAT jako tajný typ. V aplikacích zvažte propojení tajných kódů z [trezoru klíčů Azure](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault).
 >
 ### <a name="stage-environment-variable-group"></a>Skupina proměnných prostředí fáze
 
@@ -255,7 +255,7 @@ Pokud vývojové prostředí odhalí přerušení po nasazení, ponechte ho v pr
 1. Zadejte schvalovatele a volitelnou zprávu.
 1. Vyberte **vytvořit** znovu a dokončete přidání kontroly ručního schválení.
 
-Další podrobnosti najdete v kurzu [Definování schválení a kontroly](https://docs.microsoft.com/azure/devops/pipelines/process/approvals) .
+Další podrobnosti najdete v kurzu [Definování schválení a kontroly](/azure/devops/pipelines/process/approvals) .
 
 Při příštím spuštění kanálu CD se kanál pozastaví po vytvoření žádosti o přijetí změn (GitOps). Ověřte, že se změna správně synchronizovaná a předává základní funkce. Schvalte kontrolu z kanálu, aby se změna pokračovala v dalším prostředí.
 
@@ -291,7 +291,7 @@ Chyby nalezené během spuštění kanálu se zobrazí v části výsledky testu
 Po dokončení běhu kanálu jste si jisti kvalitou kódu aplikace a šablony, která ji nasadí. Nyní můžete schválit a dokončit žádost o přijetí změn. CI se znovu spustí a znovu vygeneruje šablony a manifesty, než se aktivuje kanál CD.
 
 > [!TIP]
-> V reálném prostředí nezapomeňte nastavit zásady pro větev, aby bylo zajištěno, že žádost o přijetí změn projde vaše kontroly kvality. Další informace najdete v článku [nastavení zásad větví](https://docs.microsoft.com/azure/devops/repos/git/branch-policies) .
+> V reálném prostředí nezapomeňte nastavit zásady pro větev, aby bylo zajištěno, že žádost o přijetí změn projde vaše kontroly kvality. Další informace najdete v článku [nastavení zásad větví](/azure/devops/repos/git/branch-policies) .
 
 ## <a name="cd-process-approvals"></a>Schválení procesu CD
 
