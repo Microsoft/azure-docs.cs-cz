@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780731"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025573"
 ---
-# <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>Kontejnerizace ASP.NET aplikace a migrace do služby Azure Kubernetes Service
+# <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET kontejnerů aplikací a migrace do služby Azure Kubernetes
 
 V tomto článku se naučíte, jak kontejnerizace aplikace ASP.NET a migrovat je do [služby Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) pomocí nástroje Azure Migrate: vytvoření kontejneru aplikace. Proces kontejneru nevyžaduje přístup k vašemu základu kódu a poskytuje snadný způsob, jak kontejnerizace stávající aplikace. Nástroj pracuje s použitím stavu spuštění aplikací na serveru k určení komponent aplikace a pomáhá je zabalit v imagi kontejneru. Kontejnerová aplikace se pak dá nasadit ve službě Azure Kubernetes (AKS).
 
@@ -53,7 +53,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. V těchto kurzech se v rámci možností používají jen výchozí možnosti a neuvádějí se všechny varianty nastavení ani všechny cesty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/23/2021
-ms.openlocfilehash: 22653b54e53e181d27c8abe966acb91cb8c84214
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023843"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107852"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup>|2800|3200|3600|4000|6400|9600|
-|Maximální počet protokolů na fond (MB/s)|42|48|48|48|48|48|
+|Maximální počet protokolů na fond (MB/s)|42|48|54|60|62,5|62,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Maximální počet souběžných přihlášení ve fondu (požadavky) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -120,7 +120,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|Maximální počet protokolů na fond (MB/s)|12|24|36|48|48|48|48|
+|Maximální počet protokolů na fond (MB/s)|12|24|36|48|60|62,5|62,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -152,7 +152,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup> |6 400|7 200|8 000|9 600|12 800|16 000|16 000|
-|Maximální počet protokolů na fond (MB/s)|48|48|48|48|48|48|48|
+|Maximální počet protokolů na fond (MB/s)|62,5|62,5|62,5|62,5|62,5|62,5|62,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -186,7 +186,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup>|2560|3200|3840|4480|5120|
-|Maximální počet protokolů na fond (MB/s)|48|48|48|48|48|
+|Maximální počet protokolů na fond (MB/s)|48|60|62,5|62,5|62,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|400|500|600|700|800|
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|800|1000|1200|1400|1600|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
@@ -195,7 +195,6 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Více AZ|N/A|N/A|N/A|N/A|N/A|
 |Škálování čtení|N/A|N/A|N/A|N/A|N/A|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
-
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
 
@@ -219,7 +218,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup>|5760|6400|7680|10240|11520|12800|
-|Maximální počet protokolů na fond (MB/s)|48|48|48|48|48|48|
+|Maximální počet protokolů na fond (MB/s)|62,5|62,5|62,5|62,5|62,5|62,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -234,7 +233,6 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 <sup>2</sup> maximální hodnota pro velikosti v/v v rozsahu od 8 kb do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
 
 <sup>3</sup> v případě maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
-
 
 ## <a name="general-purpose---provisioned-compute---dc-series"></a>Pro obecné účely zřízené COMPUTE-DC-Series
 
@@ -252,7 +250,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup>|800|1600|2400|3200|
-|Maximální počet protokolů na fond (MB/s)|9,4|18,8|28.1|32.8|
+|Maximální počet protokolů na fond (MB/s)|12|24|36|48|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|168|336|504|672|
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|168|336|504|672|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|
@@ -446,12 +444,12 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 |Generování výpočtů|Řada M|Řada M|Řada M|Řada M|Řada M|
 |Virtuální jádra|20|24|32|64|128|
 |Paměť (GB)|588,6|706,3|941,8|1883,5|3767,0|
-|Maximální počet databáze na fond <sup>1</sup>|100|100|100|100|100|100|
+|Maximální počet databáze na fond <sup>1</sup>|100|100|100|100|100|
 |Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|172|216|304|704|1768|
 |Maximální velikost dat (GB)|1280|1536|2 048|4 096|4 096|
 |Maximální velikost protokolu (GB)|427|512|683|1024|1024|
-|Maximální velikost dat databáze TempDB (GB)|4 096|2 048|1024|768|640|
+|Maximální velikost dat databáze TempDB (GB)|640|768|1024|2 048|4 096|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Maximální počet datových IOPS na fond <sup>2</sup>|31 248|37 497|49 996|99 993|160 000|

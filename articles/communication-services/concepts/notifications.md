@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9bf3067737ee1f4e15deaf31677513e5ac99cbd1
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657038"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108124"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Chat komunikačních služeb Azure a volání klientských knihoven vytvoří kanál pro zasílání zpráv v reálném čase, který umožňuje efektivní a spolehlivé doručování zpráv do připojených klientů. Díky tomu můžete do svých aplikací vytvořit bohatou funkci komunikace v reálném čase, aniž byste museli implementovat složitou logiku dotazování HTTP. V mobilních aplikacích ale tento kanál signalizace zůstane připojený jenom v případě, že je vaše aplikace aktivní v popředí. Pokud chcete, aby uživatelé přijímali příchozí hovory nebo zprávy chatu, když je vaše aplikace na pozadí, měli byste použít nabízená oznámení.
+Chat a volání sad SDK služby Azure Communications vytvoří kanál pro zasílání zpráv v reálném čase, který umožňuje efektivní a spolehlivé doručování zpráv do připojených klientů. Díky tomu můžete do svých aplikací vytvořit bohatou funkci komunikace v reálném čase, aniž byste museli implementovat složitou logiku dotazování HTTP. V mobilních aplikacích ale tento kanál signalizace zůstane připojený jenom v případě, že je vaše aplikace aktivní v popředí. Pokud chcete, aby uživatelé přijímali příchozí hovory nebo zprávy chatu, když je vaše aplikace na pozadí, měli byste použít nabízená oznámení.
 
 Nabízená oznámení umožňují odesílat informace z vaší aplikace do mobilních zařízení uživatelů. Nabízená oznámení můžete použít k zobrazení dialogového okna, přehrání zvuku nebo zobrazení uživatelského rozhraní příchozího volání. Komunikační služby Azure poskytují integrace s [Azure Event Grid](../../event-grid/overview.md) a [Notification Hubs Azure](../../notification-hubs/notification-hubs-push-notification-overview.md) , které umožňují přidat do svých aplikací nabízená oznámení.
 

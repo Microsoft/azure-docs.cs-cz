@@ -1,17 +1,17 @@
 ---
 title: Přehled sítí – Azure Database for MySQL flexibilního serveru
 description: Seznamte se s možnostmi připojení a sítě v možnosti nasazení flexibilního serveru pro Azure Database for MySQL
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec835073a1fe447490f6965fe41478319a47f503
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96906144"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106832"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Koncepce připojení a sítě pro Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -29,9 +29,9 @@ Máte dvě možnosti sítě pro Azure Database for MySQL flexibilní Server. Mo�
 * **Privátní přístup (Integration VNET)** – flexibilní Server můžete nasadit do [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Virtuální sítě Azure poskytují soukromou a zabezpečenou síťovou komunikaci. Prostředky ve virtuální síti můžou komunikovat prostřednictvím privátních IP adres.
 
    Vyberte možnost integrace virtuální sítě, pokud chcete následující funkce:
-   * Připojení z prostředků Azure ve stejné virtuální síti k flexibilnímu serveru pomocí privátních IP adres
+   * Připojte se z prostředků Azure ve stejné virtuální síti nebo ve [virtuální síti s partnerským vztahem](../../virtual-network/virtual-network-peering-overview.md) k vašemu flexibilnímu serveru.
    * Pomocí VPN nebo ExpressRoute se připojte z jiných prostředků než Azure k flexibilnímu serveru.
-   * Flexibilní Server nemá žádný veřejný koncový bod.
+   * Žádný veřejný koncový bod
 
 * **Veřejný přístup (povolených IP adres)** – flexibilní Server je přístupný prostřednictvím veřejného koncového bodu. Veřejný koncový bod je veřejně přeložitelný adresa DNS. Fráze "povolené IP adresy" odkazuje na rozsah IP adres, které se rozhodnete udělit oprávnění k přístupu k serveru. Tato oprávnění se nazývají **pravidla brány firewall**. 
 
@@ -57,13 +57,32 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 
     Vaše virtuální síť musí být ve stejné oblasti Azure jako flexibilní Server.
 
-
 * **Delegovaná podsíť** – virtuální síť obsahuje podsítě (dílčí sítě). Podsítě umožňují rozdělit virtuální síť do menších adresních prostorů. Prostředky Azure se nasazují do konkrétních podsítí v rámci virtuální sítě. 
 
    Flexibilní Server MySQL musí být v podsíti, která je **delegovaná** jenom pro použití jenom MySQL flexibilního serveru. Toto delegování znamená, že danou podsíť můžou využívat pouze flexibilní servery Azure Database for MySQL. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure. Podsíť můžete delegovat přiřazením její vlastnosti delegování jako Microsoft. DBforMySQL/flexibleServers.
 
 * **Skupiny zabezpečení sítě (NSG)** Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě. Další informace najdete v článku [Přehled skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) .
 
+* **Partnerský vztah virtuální sítě** Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení dvou nebo více virtuálních sítí v Azure. Partnerské virtuální sítě se pro účely připojení jeví jako jedna. Přenos dat mezi virtuálními počítači ve virtuálních sítích s navázaným partnerským vztahem používá páteřní infrastrukturu Microsoftu. Provoz mezi klientskou aplikací a flexibilním serverem v virtuální sítě s partnerským vztahem je směrován jenom přes soukromou síť Microsoftu a je izolovaný jenom na tuto síť.
+
+Flexibilní Server podporuje partnerský vztah virtuálních sítí ve stejné oblasti Azure. Partnerský vztah virtuální sítě napříč oblastmi není **podporován**. Další informace najdete v [konceptech partnerských vztahů virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) .
+
+### <a name="connecting-from-peered-vnets-in-same-azure-region"></a>Připojení ze virtuální sítě s partnerským vztahem ve stejné oblasti Azure
+Pokud se klientská aplikace, která se pokouší připojit k flexibilnímu serveru, nachází ve virtuální síti s partnerským vztahem, nemusí být schopná se připojit pomocí flexibilního serveru ServerName, protože nemůže přeložit název DNS flexibilního serveru z virtuální sítě s partnerským vztahem. Tuto chybu můžete vyřešit dvěma způsoby:
+* Použít privátní IP adresu (doporučeno pro scénář pro vývoj a testování) – tuto možnost lze použít pro účely vývoje nebo testování. Pomocí nástroje Nslookup můžete zpětně vyhledat privátní IP adresu pro flexibilní servername (plně kvalifikovaný název domény) a použít privátní IP adresu pro připojení z klientské aplikace. Použití privátní IP adresy pro připojení k flexibilnímu serveru se nedoporučuje pro produkční použití, protože se může změnit během plánované nebo neplánované události.
+* Použít zónu Privátní DNS (doporučeno pro produkční prostředí) – Tato možnost je vhodná pro produkční účely. Zřizujete [privátní ZÓNU DNS](../../dns/private-dns-getstarted-portal.md) a propojíte ji s klientskou virtuální sítí. V privátní zóně DNS přidáte [záznam a](../../dns/dns-zones-records.md#record-types) pro váš flexibilní Server pomocí jeho privátní IP adresy. Pak můžete použít záznam A a připojit se z klientské aplikace ve virtuální síti s partnerským vztahem k flexibilnímu serveru.
+
+### <a name="connecting-from-on-premises-to-flexible-server-in-virtual-network-using-expressroute-or-vpn"></a>Připojení z místního prostředí k flexibilnímu serveru v Virtual Network pomocí ExpressRoute nebo VPN
+Pro úlohy, které vyžadují přístup k flexibilnímu serveru ve virtuální síti z místní sítě, budete potřebovat [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute/) nebo [VPN](/azure/architecture/reference-architectures/hybrid-networking/vpn/) a virtuální síť [připojená k místnímu](/azure/architecture/reference-architectures/hybrid-networking/)prostředí. V případě tohoto nastavení budete vyžadovat službu DNS pro překládání, pokud se chcete připojit z klientské aplikace (jako je MySQL Workbench) běžící na místní virtuální síti. Tento server DNS zodpovídá za překlad všech dotazů DNS prostřednictvím služby pro přeposílání na úrovni serveru na službu DNS zadanou v Azure [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+
+Ke správné konfiguraci potřebujete tyto prostředky:
+
+- Místní síť
+- Flexibilní Server MySQL zřízený s privátním přístupem (Integration VNet)
+- Virtuální síť [připojená k místnímu](/azure/architecture/reference-architectures/hybrid-networking/) prostředí
+- Použití [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) serveru DNS nasazeného v Azure
+
+Pak můžete pomocí flexibilního servername (FQDN) se připojit z klientské aplikace v partnerské virtuální síti nebo v místní síti k flexibilnímu serveru.
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nepodporované scénáře virtuální sítě
 * Veřejný koncový bod (nebo veřejná IP adresa nebo DNS) – flexibilní Server nasazený do virtuální sítě nemůže mít veřejný koncový bod.
@@ -119,11 +138,10 @@ Příklad
 * Pokud je to možné, vyhněte se použití `hostname = 10.0.0.4` (privátní adresa) nebo `hostname = 40.2.45.67` (veřejná IP adresa).
 
 
-
 ## <a name="tls-and-ssl"></a>TLS a SSL
 Azure Database for MySQL flexibilní Server podporuje připojení klientských aplikací ke službě MySQL pomocí protokolu TLS (Transport Layer Security). TLS je průmyslový standardní protokol, který zajišťuje šifrovaná síťová připojení mezi databázovým serverem a klientskými aplikacemi. TLS je aktualizovaný protokol SSL (Secure Sockets Layer) (SSL).
 
-Azure Database for MySQL flexibilní Server podporuje pouze šifrovaná připojení pomocí protokolu TLS 1,2 (Transport Layer Security). Budou odepřena všechna příchozí připojení s TLS 1,0 a TLS 1,1. Verzi TLS pro připojení k Azure Database for MySQL flexibilnímu serveru nemůžete zakázat ani změnit.
+Azure Database for MySQL flexibilní Server podporuje pouze šifrovaná připojení pomocí protokolu TLS 1,2 (Transport Layer Security). Všechna příchozí připojení přes protokol TLS 1.0 a TLS 1.1 se zamítnou. Verzi TLS pro připojení k Azure Database for MySQL flexibilnímu serveru nemůžete zakázat ani změnit. Další informace najdete v tématu Jak se [připojit pomocí protokolu SSL/TLS](how-to-connect-tls-ssl.md) . 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: ec491509c80f69e000a67e40288b6e298ba9fb85
-  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+  ms.openlocfilehash: b2aec44f3e80267d18844d887f5e2607192ea208
+  ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104655780"
+  ms.lasthandoff: 03/25/2021
+  ms.locfileid: "105108073"
 landingContent:
 - title: Informace o službě Azure Communication Services
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: Možnosti klientských knihoven
+    - text: Možnosti sady SDK
       url: concepts/sdk-options.md
     - text: Týmy Interop
       url: concepts/teams-interop.md
@@ -52,13 +52,13 @@ landingContent:
     links:
     - text: Přidání hlasových hovorů a videohovorů do aplikace
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: Použití klientské knihovny pro hovory
+    - text: Použití volání sady SDK
       url: quickstarts/voice-video-calling/calling-client-samples.md
   - linkListType: concept
     links:
     - text: Koncepce hlasových hovorů a videohovorů
       url: concepts/voice-video-calling/about-call-types.md
-    - text: Přehled klientských knihoven pro hovory
+    - text: Přehled volání sady SDK
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: Toky volání
       url: concepts/call-flows.md
@@ -76,7 +76,7 @@ landingContent:
     links:
     - text: Koncepce SMS
       url: concepts/telephony-sms/concepts.md
-    - text: Přehled klientských knihoven pro SMS
+    - text: Přehled sady SMS SDK
       url: concepts/telephony-sms/sdk-features.md
     - text: Přehled volání
       url: concepts/voice-video-calling/calling-sdk-features.md
@@ -92,7 +92,7 @@ landingContent:
     links:
     - text: Koncepce chatu
       url: concepts/chat/concepts.md
-    - text: Přehled klientských knihoven pro chat
+    - text: Přehled sady Chat SDK
       url: concepts/chat/sdk-features.md
 - title: Ukázky
   linkLists:

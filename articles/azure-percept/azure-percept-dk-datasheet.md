@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 5b8a84b77fbde41748a2d9ef99a92cb6af1bbea6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0c9f848827db452710b4bca355aae0db99a2c95c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097580"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027359"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Datový list Azure Percept DK
 
@@ -24,7 +24,7 @@ ms.locfileid: "102097580"
 |Zahrnuto do boxu                 |navýšení nosné desky Azure Percept DK  <br> na1x [Azure Percept Vision](./azure-percept-vision-datasheet.md) <br> Snímač RGB pro 1x (kamera) <br> Typ 1x USB 3,0 – kabel C <br> Napájecí kabel 1x DC <br> Převodník 1x AC/DC <br> 2x Wi-Fi antény  |
 |Operační systém                              |[CBL-Mariner](https://github.com/microsoft/CBL-Mariner)           |
 |Rovina ovládacího prvku správy        |Aktualizace zařízení Azure (ADU) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)          |
-|Podporovaný software a služby |Aktualizace zařízení Azure <br> [Azure IoT](https://azure.microsoft.com/overview/iot/) <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) a [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1) <br> [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) <br> [Operační systém Azure Mariner s připojením](https://github.com/microsoft/CBL-Mariner) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [Modul runtime ONNX](https://www.onnxruntime.ai/) <br> [TensorFlow](https://www.tensorflow.org/) <br> [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) <br> IoT Plug and Play <br> [Služba Azure Device Provisioning (DPS)](https://docs.microsoft.com/azure/iot-dps/) <br> [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) <br> [Power BI](https://powerbi.microsoft.com/)      |
+|Podporovaný software a služby |Aktualizace zařízení Azure <br> [Azure IoT](https://azure.microsoft.com/overview/iot/) <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) a [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1) <br> [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) <br> [Operační systém Azure Mariner s připojením](https://github.com/microsoft/CBL-Mariner) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [Modul runtime ONNX](https://www.onnxruntime.ai/) <br> [TensorFlow](https://www.tensorflow.org/) <br> [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) <br> IoT Plug and Play <br> [Služba Azure Device Provisioning (DPS)](../iot-dps/index.yml) <br> [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) <br> [Power BI](https://powerbi.microsoft.com/)      |
 |Obecný procesor               |NXP iMX8m (deska dopravců Azure Percept DK)        |
 |Akcelerace AI                 |Intel Movidius nesčetných X integrovaný poskytovatel internetových služeb (Azure Percept Vision) |
 |Senzory a vizuální indikátory   |Senzor kamery Sony IMX219 s 00 Lensem<br>Řešení: 8MP na 30FPS, distance: 50cm-Infinity<br>FoV: 120 stupňů dolů, barva: celosvětový dynamický rozsah, pevně zaostření – válcování|
