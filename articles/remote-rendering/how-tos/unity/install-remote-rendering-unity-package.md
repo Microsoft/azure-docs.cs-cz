@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfb383a7079e98db1db1f9b5077558c187bcea96
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720816"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047724"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Instalace balíčku Remote Renderingu pro Unity
 
@@ -22,11 +22,11 @@ Pro instalaci balíčku Unity můžete vybrat jednu z následujících možnost�
 
 ## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Nainstalovat balíček vzdáleného vykreslování pomocí nástroje funkce Mixed reality
 
-[Nástroj funkce Mixed reality](https://aka.ms/MRFeatureToolDocs) ([stažení](https://aka.ms/mrfeaturetool)) je nástroj, který slouží k integraci balíčků funkcí hybridní reality do projektů Unity. Balíček není součástí [úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering)a není dostupný z vnitřního registru balíčku Unity.
+[Nástroj funkce Mixed reality](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) ([stažení](https://aka.ms/mrfeaturetool)) je nástroj, který slouží k integraci balíčků funkcí hybridní reality do projektů Unity. Balíček není součástí [úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering)a není dostupný z vnitřního registru balíčku Unity.
 
 Chcete-li přidat balíček do projektu, který potřebujete:
 1. [Stažení nástroje funkce Mixed reality](https://aka.ms/mrfeaturetool)
-1. Postupujte podle [podrobných pokynů](https://aka.ms/MRFeatureToolDocs) k používání tohoto nástroje.
+1. Postupujte podle [podrobných pokynů](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) k používání tohoto nástroje.
 1. Na stránce **zjišťování funkcí** zaškrtněte políčko pro balíček **Microsoft Azure vzdáleného vykreslování** a vyberte verzi balíčku, který chcete přidat do projektu.
 
 ![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)

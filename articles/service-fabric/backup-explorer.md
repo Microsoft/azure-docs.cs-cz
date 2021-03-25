@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: atsenthi
-ms.openlocfilehash: 1da70c37c8a6ed93e7abe1b5d329e808c592e43a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a0131960d356e4862d1379c308e240e19e76205c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86034884"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048064"
 ---
 # <a name="read-and-update-a-reliable-collections-backup-by-using-backup-explorer"></a>Čtení a aktualizace zálohy spolehlivé kolekce pomocí Průzkumníka zálohování
 
@@ -45,4 +45,4 @@ NuGet pro Průzkumníka zálohování (Microsoft. ServiceFabric. ReliableCollect
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [spolehlivých kolekcích ve stavových službách Azure Service Fabric](service-fabric-reliable-services-reliable-collections.md).
-* Projděte si [Service Fabric osvědčené postupy](service-fabric-best-practices-overview.md).
+* Projděte si [Service Fabric osvědčené postupy](./service-fabric-best-practices-security.md).

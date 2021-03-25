@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774928"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023193"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Průvodce pro spouštění funkcí v .NET 5,0 v Azure
 
@@ -147,15 +147,17 @@ Chcete-li zapisovat do výstupní vazby, je nutné použít výstupní vazbu atr
 
 ### <a name="multiple-output-bindings"></a>Více výstupních vazeb
 
-Data zapsaná do výstupní vazby jsou vždy návratovou hodnotou funkce. Pokud potřebujete zapisovat do více než jedné výstupní vazby, je nutné vytvořit vlastní návratový typ. Tento návratový typ musí mít atribut výstupní vazby použit pro jednu nebo více vlastností třídy. Následující příklad zapisuje do odpovědi HTTP a výstupní vazby fronty:
+Data zapsaná do výstupní vazby jsou vždy návratovou hodnotou funkce. Pokud potřebujete zapisovat do více než jedné výstupní vazby, je nutné vytvořit vlastní návratový typ. Tento návratový typ musí mít atribut výstupní vazby použit pro jednu nebo více vlastností třídy. Následující příklad ze zápisu triggeru HTTP do výstupní vazby HTTP a fronty:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
+
+Odpověď z triggeru HTTP se vždycky považuje za výstup, takže atribut návratové hodnoty není povinný.
 
 ### <a name="http-trigger"></a>HTTP trigger
 
 Aktivační události protokolu HTTP přeloží příchozí zprávu požadavku HTTP do objektu [HttpRequestData] , který je předán funkci. Tento objekt poskytuje data z požadavku, včetně `Headers` ,, `Cookies` , `Identities` `URL` a volitelné zprávy `Body` . Tento objekt je reprezentace objektu požadavku HTTP a nikoli samotného požadavku. 
 
-Podobně funkce vrátí objekt [HttpReponseData], který poskytuje data použitá k vytvoření odpovědi HTTP, včetně zprávy `StatusCode` , `Headers` a volitelně také zprávy `Body` .  
+Podobně funkce vrátí objekt [HttpResponseData] , který poskytuje data použitá k vytvoření odpovědi HTTP, včetně zprávy `StatusCode` , `Headers` a volitelně také zprávy `Body` .  
 
 Následující kód je Trigger HTTP. 
 

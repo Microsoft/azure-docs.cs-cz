@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102498893"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048863"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Jak nakonfigurovat indexování SharePointu Online v Kognitivní hledání (Preview)
 
@@ -147,7 +147,7 @@ api-key: [admin key]
 
 ```
 
-Další informace najdete v tématu [vytvoření indexu (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Další informace najdete v tématu [vytvoření indexu (REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-5-create-an-indexer"></a>Krok 5: vytvoření indexeru
 Indexer připojuje zdroj dat k cílovému vyhledávacímu indexu a poskytuje plán pro automatizaci aktualizace dat. Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer.
@@ -226,7 +226,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-Další informace o stavu indexeru najdete tady: [získání stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Další informace o stavu indexeru najdete tady: [získání stavu indexeru](/rest/api/searchservice/get-indexer-status).
 
 ## <a name="updating-the-data-source"></a>Aktualizace zdroje dat
 Pokud nejsou k dispozici žádné aktualizace objektu zdroje dat, indexer může běžet podle plánu bez zásahu uživatele. Pokaždé, když se aktualizuje objekt zdroje dat Kognitivní hledání Azure, budete se muset znovu přihlásit, aby se indexer spustil. Pokud například změníte dotaz na zdroj dat, budete se muset znovu přihlásit pomocí `https://microsoft.com/devicelogin` a nového kódu.
@@ -241,7 +241,7 @@ Po aktualizaci zdroje dat postupujte podle následujících kroků:
     api-key: [admin key]
     ```
 
-    Další informace o žádosti o spuštění indexeru najdete tady: [Spustit indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer).
+    Další informace o žádosti o spuštění indexeru najdete tady: [Spustit indexer](/rest/api/searchservice/run-indexer).
 
 1.  Podívejte se na stav indexeru. Pokud poslední spuštění indexeru obsahuje chybu, která vás upozorní na to `https://microsoft.com/devicelogin` , přejít na tuto stránku a zadat nový kód. 
 
@@ -251,7 +251,7 @@ Po aktualizaci zdroje dat postupujte podle následujících kroků:
     api-key: [admin key]
     ```
 
-    Další informace o stavu indexeru najdete tady: [získání stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+    Další informace o stavu indexeru najdete tady: [získání stavu indexeru](/rest/api/searchservice/get-indexer-status).
 
 1.  Přihlásit
 
@@ -359,7 +359,7 @@ V případě některých dokumentů Azure Kognitivní hledání nedokáže urči
 "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Kognitivní hledání omezuje velikost indexovaných dokumentů. Tato omezení jsou popsaná v [omezení služby v Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). Ve výchozím nastavení se u dokumentů s větším množstvím standardně považují chyby. I když nastavíte `indexStorageMetadataOnlyForOversizedDocuments` parametr konfigurace na hodnotu true, pořád ale můžete indexovat metadata úložiště u dokumentů s více velikostmi:
+Azure Kognitivní hledání omezuje velikost indexovaných dokumentů. Tato omezení jsou popsaná v [omezení služby v Azure kognitivní hledání](./search-limits-quotas-capacity.md). Ve výchozím nastavení se u dokumentů s větším množstvím standardně považují chyby. I když nastavíte `indexStorageMetadataOnlyForOversizedDocuments` parametr konfigurace na hodnotu true, pořád ale můžete indexovat metadata úložiště u dokumentů s více velikostmi:
 
 ```http
 "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
