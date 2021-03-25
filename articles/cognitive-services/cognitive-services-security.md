@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425290"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043866"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
 
@@ -29,13 +29,13 @@ Všechny koncové body Cognitive Services vystavené přes protokol HTTP vynutil
 * Jazyk (a platforma), který se používá k provedení volání HTTP, musí jako součást žádosti zadat TLS 1,2.
   * V závislosti na jazyku a platformě se protokol TLS provádí implicitně nebo explicitně.
 
-Pro uživatele rozhraní .NET zvažte <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">osvědčené postupy zabezpečení transportní vrstvy </a>.
+Pro uživatele rozhraní .NET zvažte <a href="/dotnet/framework/network-programming/tls" target="_blank">osvědčené postupy zabezpečení transportní vrstvy </a>.
 
 ## <a name="authentication"></a>Authentication
 
 Při projednávání ověřování je k dispozici několik běžných konceptů. Ověřování a autorizace jsou často mezi sebou zaměňovány. Identita je také hlavní součástí zabezpečení. Identita je kolekce informací o <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">objektu zabezpečení </a>. Zprostředkovatelé identity (IdP) poskytují identity službám ověřování. Ověřování je aktem, který ověřuje identitu uživatele. Autorizace je specifikace přístupových práv a oprávnění k prostředkům pro danou identitu. Mezi některé z Cognitive Services nabídek patří řízení přístupu na základě role Azure (Azure RBAC). Azure RBAC se dá využít ke zjednodušení některých proceduryů, které se podílejí na ruční správě objektů zabezpečení. Další podrobnosti najdete v tématu [řízení přístupu na základě role v Azure pro prostředky Azure](../role-based-access-control/overview.md).
 
-Další informace o ověřování pomocí klíčů předplatného, přístupových tokenů a Azure Active Directory (AAD) najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">ověření požadavků do Azure Cognitive Services</a>.
+Další informace o ověřování pomocí klíčů předplatného, přístupových tokenů a Azure Active Directory (AAD) najdete v tématu <a href="/azure/cognitive-services/authentication" target="_blank">ověření požadavků do Azure Cognitive Services</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Proměnné prostředí a konfigurace aplikace
 
@@ -113,7 +113,7 @@ Chcete-li získat proměnnou prostředí, musí být načtena do paměti. V záv
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Další informace najdete v tématu <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
+Další informace najdete v tématu <a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
+Další informace najdete v tématu <a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
 
 ```cpp
 #include <stdlib.h>

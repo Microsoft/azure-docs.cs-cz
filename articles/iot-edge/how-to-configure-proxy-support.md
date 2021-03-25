@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200057"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043151"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
 
@@ -69,7 +69,11 @@ Bez ohledu na to, jestli je zařízení IoT Edge spuštěné v systému Windows 
 
 Pokud instalujete modul runtime IoT Edge na zařízení se systémem Linux, nakonfigurujte Správce balíčků tak, aby procházel proxy server pro přístup k instalačnímu balíčku. [Nastavte například apt-get pro použití HTTP-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po nakonfigurování správce balíčků postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md) jako obvykle.
 
-### <a name="windows-devices"></a>Zařízení s Windows
+### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>Zařízení s Windows používající IoT Edge pro Linux ve Windows
+
+Pokud instalujete modul runtime IoT Edge pomocí IoT Edge pro Linux v systému Windows, IoT Edge je ve výchozím nastavení nainstalován na virtuálním počítači se systémem Linux. Nejsou vyžadovány žádné další kroky instalace nebo aktualizace.
+
+### <a name="windows-devices-using-windows-containers"></a>Zařízení s Windows využívající kontejnery Windows
 
 Pokud instalujete modul runtime IoT Edge na zařízení s Windows, budete muset projít proxy server dvakrát. První připojení stáhne soubor skriptu instalačního programu a druhé připojení probíhá během instalace ke stažení potřebných součástí. V nastavení systému Windows můžete nakonfigurovat informace o proxy serveru nebo informace o proxy serveru zahrnout přímo do příkazů PowerShellu.
 
@@ -206,7 +210,17 @@ systemctl show --property=Environment aziot-identityd
 :::moniker-end
 <!--end 1.2-->
 
-#### <a name="windows"></a>Windows
+#### <a name="windows-using-iot-edge-for-linux-on-windows"></a>Windows používající IoT Edge pro Linux ve Windows
+
+Přihlaste se ke svému IoT Edge pro Linux ve virtuálním počítači s Windows:
+
+```azurepowershell-interactive
+Ssh-EflowVm
+```
+
+Ke konfiguraci procesu démona IoT Edge použijte stejný postup jako v části Linux výše.
+
+#### <a name="windows-using-windows-containers"></a>Windows s kontejnery Windows
 
 Otevřete okno PowerShellu jako správce a spusťte následující příkaz pro úpravu registru s novou proměnnou prostředí. Nahraďte **\<proxy url>** adresou proxy server a portem.
 
@@ -249,13 +263,13 @@ Tento krok probíhá na zařízení IoT Edge při počátečním nastavení zař
 
 5. Uložte změny do souboru config. yaml a zavřete Editor. Restartujte IoT Edge, aby se změny projevily.
 
-   * Linux:
+   * Linux a IoT Edge pro Linux ve Windows:
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows:
+   * Windows s kontejnery Windows:
 
       ```powershell
       Restart-Service iotedge

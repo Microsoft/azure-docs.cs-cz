@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/24/2021
 ms.author: b-juche
-ms.openlocfilehash: add907923cc2284939acd972237fd4ec74ee2d12
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864002"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048370"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Vytváření a Správa připojení ke službě Active Directory pro Azure NetApp Files
 
@@ -86,6 +86,8 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 * Azure NetApp Files podporuje [podepisování LDAP](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), které umožňuje zabezpečený přenos dat protokolu LDAP mezi službou Azure NetApp Files a cílovými [řadiči domény služby Active Directory](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud budete postupovat podle pokynů v poradenské službě Microsoft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) pro podepisování LDAP, měli byste povolit funkci podepisování ldap v Azure NetApp Files kontrolou pole **podepisování LDAP** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . 
 
     Samotná konfigurace [vazby kanálu LDAP](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) nemá žádný vliv na službu Azure NetApp Files. Pokud ale použijete vazbu kanálu LDAP i zabezpečený protokol LDAP (například LDAPs nebo `start_tls` ), vytvoření svazku SMB se nezdaří.
+
+* Pro službu DNS, která není integrovaná se službou Active Directory, byste měli přidat záznam DNS A/PTR, aby Azure NetApp Files mohl fungovat pomocí popisného názvu. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Rozhodněte, které doménové služby se mají použít. 
 

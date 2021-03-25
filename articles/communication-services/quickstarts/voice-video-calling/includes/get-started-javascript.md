@@ -1,24 +1,25 @@
 ---
 title: Rychlý Start – přidání volání VOIP do webové aplikace pomocí komunikačních služeb Azure
-description: V tomto kurzu se dozvíte, jak používat komunikační služby Azure, které volají klientskou knihovnu pro JavaScript.
+description: V tomto kurzu se naučíte používat službu Azure Communication Services, která volá sadu SDK pro JavaScript.
 author: ddematheu
 ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8dc59250e3c00d161446e7361db0c085e12ab4cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0c70e01aa4f27e40a2de5cddf329cae9ffe261bc
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598813"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108257"
 ---
-V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro JavaScript.
+V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají sadu SDK pro JavaScript.
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 6 volání klientské knihovny.
+> Tento dokument používá verzi 1.0.0-beta. 10 pro volání sady SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
@@ -74,11 +75,11 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
 | Název                             | Description                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient je hlavní vstupní bod pro volání klientské knihovny.                                                                       |
+| CallClient                       | CallClient je hlavní vstupní bod pro volání sady SDK.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |
 | AzureCommunicationTokenCredential | Třída AzureCommunicationTokenCredential implementuje rozhraní CommunicationTokenCredential, které se používá k vytvoření instance CallAgent. |
 

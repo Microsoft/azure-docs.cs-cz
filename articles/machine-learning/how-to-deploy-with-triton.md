@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519193"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107835"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -32,7 +32,10 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 > [!TIP]
 > Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://aka.ms/triton-aml-sample).
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> [Triton odvozeného serveru NVIDIA](https://aka.ms/nvidia-triton-docs) je open source software třetí strany, který je integrovaný v Azure Machine Learning.
+
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.
@@ -97,7 +100,7 @@ models
         - model_1
             - model_version
                 - model_file
-                - config_file
+            - config_file
         - model_2
             ...
 ```
@@ -114,6 +117,11 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
 Další informace o nástroji `az ml model register` najdete v [referenční dokumentaci](/cli/azure/ext/azure-cli-ml/ml/model).
+
+Při registraci modelu v Azure Machine Learning hodnota `--model-path  -p` parametru musí být název nadřazené složky Triton.  
+V předchozím příkladu je to  `--model-path` ' modely '.
+
+Hodnota `--name  -n` parametru, ' my_triton_model ' v příkladu, bude název modelu, který je známý jako pracovní prostor Azure Machine Learning. 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -364,13 +372,17 @@ local_service.delete()
 
 
 ---
+## <a name="troubleshoot"></a>Řešení potíží
+
+* [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md), zjistěte, jak řešit a řešit běžné chyby, ke kterým může dojít při nasazování modelu.
+
+* Pokud se v protokolech nasazení ukáže, že **se TritonServer nepovedlo spustit**, přečtěte si [dokumentaci k open source na NVIDIA.](https://github.com/triton-inference-server/server)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Viz kompletní ukázky Triton v tématu Azure Machine Learning](https://aka.ms/aml-triton-sample)
 * Podívejte se na [Příklady klienta Triton](https://aka.ms/nvidia-client-examples)
 * Přečtěte si [dokumentaci k Triton serveru pro odvození](https://aka.ms/nvidia-triton-docs) .
-* [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

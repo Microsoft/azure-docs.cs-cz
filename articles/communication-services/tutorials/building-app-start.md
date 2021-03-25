@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eb44987dca033ecdac9ef2ca63fb1da97dc9678
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490615"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109178"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Kurz: Příprava webové aplikace pro komunikační služby Azure (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "103490615"
 
 Pomocí komunikačních služeb Azure můžete do svých aplikací přidat komunikaci v reálném čase. V tomto kurzu se naučíte, jak nastavit webovou aplikaci, která podporuje komunikační služby Azure. Toto je úvodní kurz pro nové vývojáře, kteří chtějí začít používat komunikaci v reálném čase.
 
-Na konci tohoto kurzu budete mít webovou aplikaci, která je nakonfigurovaná s klientskými knihovnami služby Azure Communications Services. Pak můžete pomocí této aplikace začít vytvářet řešení pro komunikaci v reálném čase.
+Na konci tohoto kurzu budete mít webovou aplikaci, která je nakonfigurovaná se sadami SDK služby Azure Communications Services. Pak můžete pomocí této aplikace začít vytvářet řešení pro komunikaci v reálném čase.
 
 Nebojte se navštívit [stránku GitHubu služby Azure Communications](https://github.com/Azure/communication) , která poskytuje zpětnou vazbu.
 
@@ -32,12 +32,12 @@ V tomto kurzu se naučíte:
 > * Přidejte na svůj web balíčky služby Azure Communication Services.
 > * Publikujte svůj web na statické weby Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Bezplatný účet vám poskytne $200 kreditů Azure k vyzkoušení libovolné kombinace služeb.
 - [Visual Studio Code](https://code.visualstudio.com/) pro úpravu kódu v místním vývojovém prostředí.
 - [Webpack](https://webpack.js.org/) pro vytvoření balíčku a místně hostování vašeho kódu.
-- [Node.js](https://nodejs.org/en/) pro instalaci a správu závislostí, jako jsou klientské knihovny Azure Communications Services a Webpack.
+- [Node.js](https://nodejs.org/en/) pro instalaci a správu závislostí, jako jsou sady SDK komunikačních služeb Azure a Webpack.
 - [NVM a npm](/windows/nodejs/setup-on-windows) ke zpracování správy verzí.
 - [Azure Storage rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) pro Visual Studio Code. Toto rozšíření potřebujete k publikování aplikace v Azure Storage. [Přečtěte si další informace o hostování statických webů v Azure Storage](../../storage/blobs/storage-blob-static-website.md).
 - [Rozšíření Azure App Service](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Rozšíření umožňuje nasadit weby s možností konfigurace plně spravované průběžné integrace a průběžného doručování (CI/CD).
@@ -293,7 +293,7 @@ Pokud chcete server zastavit, můžete ho spustit `Ctrl+C` v terminálu. Pokud c
 
 ## <a name="add-the-azure-communication-services-packages"></a>Přidat balíčky služby Azure Communication Services
 
-Pomocí `npm install` příkazu nainstalujte pro JavaScript službu Azure Communication Services volání klientské knihovny.
+Pomocí `npm install` příkazu nainstalujete službu Azure Communication Services, která volá sadu SDK pro JavaScript.
 
 ```Console
 npm install @azure/communication-common --save

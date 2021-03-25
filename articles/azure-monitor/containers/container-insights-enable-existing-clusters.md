@@ -4,12 +4,12 @@ description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Se
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fba12fb8dd5c6c91883a88d4acfdca6c6d332c24
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101717668"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109620"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -21,6 +21,8 @@ Můžete povolit monitorování clusteru AKS, který je už nasazený, pomocí j
 * Terraform
 * [Z Azure monitor](#enable-from-azure-monitor-in-the-portal) nebo [přímo z clusteru AKS](#enable-directly-from-aks-cluster-in-the-portal) v Azure Portal
 * S [poskytnutou šablonou Azure Resource Manager](#enable-using-an-azure-resource-manager-template) pomocí rutiny Azure PowerShell `New-AzResourceGroupDeployment` nebo pomocí Azure CLI.
+
+Pokud připojujete stávající cluster AKS k pracovnímu prostoru Azure Log Analytics v jiném předplatném, musí být v předplatném, ve kterém se vytvořil pracovní prostor Log Analytics, zaregistrován poskytovatel prostředků Microsoft. ContainerService. Další informace najdete v tématu [registrace poskytovatele prostředků](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2cc0707c344c3ca537795666a3f60f648026596
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96466863"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043763"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>Použití místního webového uživatelského rozhraní ke správě bezdrátového připojení na Azure Stack hraničních počítačích na hranici Mini R
 
@@ -55,6 +55,8 @@ Pokud chcete přidat profil Wi-Fi a připojit se k němu, proveďte následujíc
     ![Místní webové uživatelské rozhraní "port nastavení sítě Wi-Fi" 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
     
     Profil bezdrátové sítě obsahuje identifikátor SSID (název sítě), heslo a informace o zabezpečení, aby se mohl připojit k bezdrátové síti. Můžete získat profil Wi-Fi pro vaše prostředí od správce sítě.
+
+    Informace o přípravě profilů Wi-Fi najdete v tématu [použití profilů Wi-Fi s Azure Stack hraničních zařízení](azure-stack-edge-mini-r-use-wifi-profiles.md)v jazyce R.
 
     ![Místní webové uživatelské rozhraní "port nastavení sítě Wi-Fi" 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 

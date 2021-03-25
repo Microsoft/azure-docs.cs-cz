@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: efd145732ecc119e2fdf9b73ca59729232a37d4c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864869"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109518"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -22,27 +22,32 @@ Akce skriptu je také možné publikovat do Azure Marketplace jako aplikace HDIn
 
 Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight. Následující vlastnosti a funkce skriptových akcí jsou tyto:
 
-- Musí být uložené na identifikátoru URI, který je přístupný z clusteru HDInsight. Níže jsou možná umístění úložiště:
+- Identifikátor URI bash skriptu (umístění pro přístup k souboru) musí být přístupný z poskytovatele prostředků služby HDInsight a clusteru.
+- Níže jsou možná umístění úložiště:
 
-  - Pro běžné clustery (bez protokolu ESP):
-    - Data Lake Storage Gen1/Gen2: instanční objekt služby HDInsight používá pro přístup k Data Lake Storage musí mít ke skriptu oprávnění ke čtení. Formát identifikátoru URI pro skripty uložené v Data Lake Storage Gen1 je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` .
-    - Objekt BLOB v účtu Azure Storage, který je buď primárním nebo dalším účtem úložiště pro cluster HDInsight. HDInsight získá přístup k oběma těmto typům účtů úložiště během vytváření clusteru.
+   - Pro běžné clustery (bez protokolu ESP):
+     - Objekt BLOB v účtu Azure Storage, který je buď primárním nebo dalším účtem úložiště pro cluster HDInsight. HDInsight získá přístup k oběma těmto typům účtů úložiště během vytváření clusteru.
+    
+       > [!IMPORTANT]  
+       > Neotáčejte klíč úložiště na tomto účtu Azure Storage, protože to způsobí selhání dalších akcí skriptu se skripty, které jsou tam uložené.
 
-    > [!IMPORTANT]  
-    > Neotáčejte klíč úložiště na tomto účtu Azure Storage, protože to způsobí selhání dalších akcí skriptu se skripty, které jsou tam uložené.
+     - Data Lake Storage Gen1: instanční objekt služby HDInsight používá pro přístup k Data Lake Storage musí mít ke skriptu oprávnění ke čtení. Formát identifikátoru URI pro skript bash je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` . 
 
-    - Veřejná služba pro sdílení souborů, která je přístupná prostřednictvím `http://` cest. Příklady jsou Azure Blob, GitHub nebo OneDrive. Příklady identifikátorů URI najdete v tématu [Příklady skriptů akcí](#example-script-action-scripts)skriptů.
+     - Data Lake Storage Gen2 se nedoporučuje používat pro akce skriptů. `abfs://` není podporován pro identifikátor URI bash skriptu. `https://` Je možné použít identifikátory URI, ale funguje u kontejnerů, které mají veřejný přístup, a brány firewall otevřené pro poskytovatele prostředků služby HDInsight, a proto se nedoporučuje.
+
+     - Veřejná služba pro sdílení souborů, která je přístupná prostřednictvím `https://` cest. Příklady jsou Azure Blob, GitHub nebo OneDrive. Příklady identifikátorů URI najdete v tématu [Příklady skriptů akcí](#example-script-action-scripts)skriptů.
+
   - U clusterů s protokolem `wasb://` ESP `wasbs://` `http[s]://` jsou podporovány identifikátory URI nebo nebo.
 
-- Dá se omezit na spouštění jenom na určitých typech uzlů. Příklady jsou hlavní uzly nebo pracovní uzly.
-- Může být trvalá nebo *ad hoc*.
+- Akce skriptu lze omezit na spouštění pouze v některých typech uzlů. Příklady jsou hlavní uzly nebo pracovní uzly.
+- Akce skriptu může být trvalá nebo *ad hoc*.
 
   - Trvalé akce skriptu musí mít jedinečný název. Trvalé skripty se používají k přizpůsobení nových pracovních uzlů přidaných do clusteru prostřednictvím operací škálování. Trvalý skript může také při operacích škálování použít změny v jiném typu uzlu. Příkladem je hlavní uzel.
   - *Ad hoc* skripty nejsou trvalé. Akce skriptu použité při vytváření clusteru se automaticky uchovávají. Nejsou aplikovány na pracovní uzly přidané do clusteru po spuštění skriptu. Potom můžete přenést skript *ad hoc* na trvalý skript nebo snížit úroveň trvalého skriptu na skript *ad hoc* . Skripty, které selžou, nejsou trvalé, i když výslovně označíte, že by měly být.
 
-- Může přijmout parametry, které skript používá během provádění.
-- Spusťte s oprávněními na úrovni root na uzlech clusteru.
-- Dá se použít prostřednictvím Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo sady HDInsight .NET SDK.
+- Akce skriptu mohou přijímat parametry, které skript používá během provádění.
+- Akce skriptu se spouští s oprávněními na úrovni kořenového adresáře na uzlech clusteru.
+- Akce skriptu lze použít prostřednictvím Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo sady HDInsight .NET SDK.
 - Akce skriptů, které odstraňují nebo upravují soubory služby na virtuálním počítači, můžou ovlivnit stav a dostupnost služby.
 
 Cluster uchovává historii všech skriptů, které byly spuštěny. Historie pomáhá v případě, že potřebujete najít ID skriptu pro operace zvýšení nebo snížení úrovně.

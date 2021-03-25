@@ -9,12 +9,12 @@ ms.author: nmurav
 ms.date: 3/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 753bb7a88f8032d6ed9aeac1b1adf4f34d7cec43
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 22bf8af89771e57621a0d8851ca31bb750b7cda2
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105051340"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108345"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Zajištění vysoce kvalitních médií v komunikačních službách Azure
 
@@ -36,7 +36,7 @@ Kvalita média v reálném čase prostřednictvím protokolu IP je významně ov
 
 Ujistěte se, že je vaše síť nakonfigurovaná tak, aby podporovala šířku pásma vyžadovanou souběžnými pracovními relacemi Azure Communication Services a dalšími podnikovými aplikacemi. Testování kompletní síťové cesty pro kritické body šířky pásma je zásadní pro úspěšné nasazení vašich řešení multimediálních komunikačních služeb.
 
-Níže jsou uvedené požadavky na šířku pásma pro klientské knihovny JavaScriptu:
+Níže jsou uvedeny požadavky na šířku pásma pro sady SDK pro JavaScript:
 
 |Šířka pásma|Scénáře|
 |:--|:--|
@@ -47,7 +47,7 @@ Níže jsou uvedené požadavky na šířku pásma pro klientské knihovny JavaS
 |500 kB/s|Seskupit video s voláním 360p na 30fps|
 |1,2 MB/s|Video skupiny HD volání s rozlišením HD 720p na 30fps| 
 
-Níže jsou uvedené požadavky na šířku pásma pro nativní klientské knihovny pro Android a iOS:
+Níže jsou uvedené požadavky na šířku pásma pro nativní sady SDK pro Android a iOS:
 
 |Šířka pásma|Scénáře|
 |:--|:--|
@@ -79,7 +79,7 @@ Možná budete chtít optimalizovat, pokud:
 | Úloha optimalizace sítě | Podrobnosti |
 | :-- | :-- |
 | Naplánování sítě | V této dokumentaci můžete najít minimální požadavky pro volání do vaší sítě. [Pro plánování vaší sítě](https://docs.microsoft.com/microsoftteams/tutorial-network-planner-example) se podívejte na příklad týmů. |
-| Překlad externích názvů | Ujistěte se, že všechny počítače s klientskými knihovnami služby Azure Communication Services můžou přeložit externí dotazy DNS na zjišťování služeb poskytovaných službou Azure Communication Servicers a že brány firewall nebrání přístupu. Ujistěte se prosím, že klientské knihovny můžou přeložit adresy *. skype.com, *. microsoft.com, *. azure.net, *. azureedge.net, *. office.com, *. trouter.IO, *..  |
+| Překlad externích názvů | Ujistěte se, že všechny počítače, na kterých běží sady SDK komunikačních služeb Azure, můžou přeložit externí dotazy DNS na zjišťování služeb poskytovaných službou Azure Communication Servicers a že brány firewall nebrání přístupu. Ujistěte se prosím, že sady SDK můžou přeložit adresy *. skype.com, *. microsoft.com, *. azure.net, *. azureedge.net, *. office.com, *. trouter.IO, *..  |
 | Zachovat trvalost relace | Ujistěte se, že brána firewall nemění mapované adresy nebo porty protokolu NAT (Network Address Translation) pro protokol UDP.
 Ověřit velikost fondu překladu adres | Ověřte, jestli je velikost fondu NAT (Network Address Translation) požadovaná pro připojení uživatele. Když má více uživatelů a zařízení přístup ke komunikačním službám Azure pomocí [překladu adres (NAT) nebo překladu adres portů (Pat)](https://docs.microsoft.com/office365/enterprise/nat-support-with-office-365), zajistěte, aby zařízení skrytá za každou veřejnou IP adresou nepřesáhla podporované číslo. Zajistěte, aby fondy NAT přiřadily odpovídající veřejné IP adresy, aby se zabránilo vyčerpání portů. Vyčerpání portů přispěje interním uživatelům a zařízením, kteří se nebudou moct připojit ke komunikačním službám Azure. |
 | Pokyny k detekci vniknutí a prevence | Pokud má vaše prostředí [zjišťování neoprávněných vniknutí](https://docs.microsoft.com/azure/network-watcher/network-watcher-intrusion-detection-open-source-tools) nebo systém prevence (ID/IP) nasazený pro dodatečnou vrstvu zabezpečení pro odchozí připojení, povolte všechny adresy URL služby Azure Communication Services. |
@@ -89,10 +89,10 @@ Ověřit velikost fondu překladu adres | Ověřte, jestli je velikost fondu NAT
 
 
 
-### <a name="operating-system-and-browsers-for-javascript-client-libraries"></a>Operační systém a prohlížeče (pro klientské knihovny JavaScript)
+### <a name="operating-system-and-browsers-for-javascript-sdks"></a>Operační systém a prohlížeče (pro sady JavaScript SDK)
 
-Klientské knihovny pro hlasové nebo video služby Azure Communications podporují určité operační systémy a prohlížeče.
-Přečtěte si o operačních systémech a prohlížečích, které volající klientské knihovny podporují při [volání koncepční dokumentace](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features).
+Sady SDK pro hlasové a video služby Azure Communications podporují určité operační systémy a prohlížeče.
+Přečtěte si o operačních systémech a prohlížečích, které volající sady SDK podporují v rámci [volání koncepční dokumentace](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features).
 
 ## <a name="next-steps"></a>Další kroky
 

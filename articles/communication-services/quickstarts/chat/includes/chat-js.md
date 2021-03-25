@@ -10,14 +10,14 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612761"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107005"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -43,7 +43,7 @@ npm init -y
 
 ### <a name="install-the-packages"></a>Nainstalovat balíčky
 
-Pomocí `npm install` příkazu nainstalujte níže uvedené klientské knihovny komunikačních služeb pro JavaScript.
+Pomocí `npm install` příkazu nainstalujte níže uvedené sady SDK služby Communication Services pro JavaScript.
 
 ```console
 npm install @azure/communication-common --save
@@ -87,7 +87,7 @@ Přidejte `start` skript na, který `package.json` použijeme pro spuštění ap
 }
 ```
 
-Vytvořte soubor **index.html** v kořenovém adresáři projektu. Tento soubor použijeme jako šablonu k přidání možnosti chatu pomocí klientské knihovny služby Azure Communications chat pro JavaScript.
+Vytvořte soubor **index.html** v kořenovém adresáři projektu. Tento soubor použijeme jako šablonu k přidání možnosti chatu pomocí sady Azure Communications Chat SDK pro JavaScript.
 
 ```html
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte **kon
 
 Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. V tomto rychlém startu se nezabývá vytvořením úrovně služby pro správu tokenů pro vaši aplikaci chatu. Další informace o architektuře s přístupovými tokeny najdete v tématu věnovaném [konceptům](../../../concepts/chat/concepts.md) chatu a na [tokenech přístupu uživatele](../../access-tokens.md) .
 
-V následujícím kódu **client.js** pomocí koncového bodu a přístupového tokenu přidat funkci chatu pomocí klientské knihovny služby Azure Communications chat pro JavaScript.
+V následujícím kódu **client.js** pomocí koncového bodu a přístupového tokenu přidat funkci chatu pomocí sady Azure Communications Chat SDK pro JavaScript.
 
 ```JavaScript
 
@@ -144,7 +144,7 @@ Azure Communication Chat client created!
 ```
 
 ## <a name="object-model"></a>Objektový model
-Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Chat SDK pro JavaScript.
 
 | Název                                   | Description                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

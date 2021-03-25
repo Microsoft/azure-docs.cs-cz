@@ -1,24 +1,24 @@
 ---
 title: Rychlý Start – přidání volání VOIP do aplikace pro Android pomocí komunikačních služeb Azure
-description: V tomto kurzu se naučíte používat komunikační služby Azure s voláním klientské knihovny pro Android.
+description: V tomto kurzu se naučíte používat komunikační služby Azure, které volají sadu SDK pro Android.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 094dbd090b5f2d68a9961f2fb9b8b611e486e7bc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68d3a92015a8add2dd97313f9971cf896f8e77e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719950"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108255"
 ---
-V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro Android.
+V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají sadu SDK pro Android.
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
+> Tento dokument používá verzi 1.0.0-beta. 8 volání sady SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio)pro vytváření aplikací pro Android.
@@ -37,7 +37,7 @@ V části telefon a tablet vyberte šablonu projektu "prázdná aktivita".
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu":::
 
-Vyberte minimální klientskou knihovnu "rozhraní API 26: Android 8,0 (Oreo)" nebo vyšší.
+Vyberte minimální sadu SDK rozhraní API 26: Android 8,0 (Oreo) nebo vyšší.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu 2":::
 
@@ -110,8 +110,8 @@ Aby bylo možné požádat o oprávnění požadovaná pro volání, musí být 
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--Our calling client library depends on the Apache HTTP client library.
-When targeting Android client library 28+, this library needs to be explicitly referenced.
+        <!--Our Calling SDK depends on the Apache HTTP SDK.
+When targeting Android SDK 28+, this library needs to be explicitly referenced.
 See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apache-p-->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".MainActivity">
@@ -260,11 +260,11 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient je hlavní vstupní bod pro volání klientské knihovny.|
+| CallClient| CallClient je hlavní vstupní bod pro volání sady SDK.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
 | CommunicationUserCredential | CommunicationUserCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.|
 | CommunicationIdentifier | CommunicationIdentifier se používá jako jiný typ účastníka, který by mohl být součástí volání.|

@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 40d9f03526e5232c0a7b33f64ff35a8501702609
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622017"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107714"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -23,9 +23,8 @@ ms.locfileid: "103622017"
 ### <a name="install-the-package"></a>Instalace balíčku
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
+> Tento dokument používá verzi 1.0.0-beta. 8 volání sady SDK.
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 Vyhledejte na úrovni projektu Build. Gradle a ujistěte se, že jste přidali `mavenCentral()` do seznamu úložišť v části `buildscript` a. `allprojects`
 ```groovy
 buildscript {
@@ -59,11 +58,11 @@ dependencies {
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient je hlavní vstupní bod pro volání klientské knihovny.|
+| CallClient| CallClient je hlavní vstupní bod pro volání sady SDK.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
 | CommunicationTokenCredential | CommunicationTokenCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.|
 | CommunicationIdentifier | CommunicationIdentifier se používá jako jiný typ účastníka, který by mohl být součástí volání.|
@@ -207,7 +206,7 @@ public Call retrieveIncomingCall() {
 ### <a name="overview"></a>Přehled
 Mobilní nabízená oznámení jsou místní oznámení, která vidíte na mobilních zařízeních. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Zaregistruje se na nabízená oznámení, zpracuje nabízená oznámení a pak zruší registraci nabízených oznámení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Účet Firebase nastavený s povoleným cloudovým zasíláním zpráv (FCM) a službou Firebase Cloud Messaging Service připojenou k instanci centra oznámení Azure. Další informace najdete v tématu [oznámení o komunikačních službách](../../../concepts/notifications.md) .
 Kromě toho kurz předpokládá, že k sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.
@@ -224,10 +223,10 @@ Pro aplikaci pro Android se vyžaduje sada oprávnění, aby bylo možné přij�
 
 Aby bylo možné registrovat nabízená oznámení, musí aplikace zavolat `registerPushNotification()` na instanci *CallAgent* s registračním tokenem zařízení.
 
-Pokud chcete získat token registrace zařízení, přidejte do souboru *Build. Gradle* v modulu aplikace klientskou knihovnu Firebase tak, že v části přidáte následující řádky, `dependencies` Pokud tam ještě není:
+Pokud chcete získat token registrace zařízení, přidejte sadu SDK Firebase do souboru *Build. Gradle* v modulu aplikace přidáním následujících řádků do `dependencies` oddílu, pokud tam ještě není:
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +243,7 @@ Přidejte následující modul plug-in na začátek souboru, pokud tam ještě n
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Vyberte *synchronizovat hned* na panelu nástrojů. Přidejte následující fragment kódu pro získání tokenu registrace zařízení vygenerovaného klientskou knihovnou zasílání zpráv Firebase pro instanci klientské aplikace nezapomeňte přidat níže uvedené importy do hlavičky hlavní aktivity instance. Jsou vyžadovány, aby fragment mohl načíst token:
+Vyberte *synchronizovat hned* na panelu nástrojů. Přidejte následující fragment kódu pro získání tokenu registrace zařízení vygenerovaného sadou Firebase Cloud Messaging SDK pro instanci klientské aplikace nezapomeňte přidat níže uvedené importy do hlavičky hlavní aktivity instance. Jsou vyžadovány, aby fragment mohl načíst token:
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +271,7 @@ Přidejte tento fragment kódu pro načtení tokenu:
                     }
                 });
 ```
-Zaregistrujte token registrace zařízení pomocí klientské knihovny volajících služeb pro příchozí nabízená oznámení volání:
+Registrace tokenu registrace zařízení v sadě SDK volání služby pro příchozí nabízená oznámení volání:
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +287,7 @@ catch(Exception e) {
 
 Chcete-li přijímat příchozí nabízená oznámení volání, zavolejte *handlePushNotification ()* na instanci *CallAgent* s datovou částí.
 
-Pokud chcete datovou část získat z Firebase cloudového zasílání zpráv, Začněte vytvořením nové služby (soubor > novou službu > Service >), která rozšiřuje třídu klientské knihovny *FirebaseMessagingService* Firebase a přepíše `onMessageReceived` metodu. Tato metoda je obslužná rutina události volána, když Firebase Cloud Messaging doručuje nabízené oznámení do aplikace.
+Pokud chcete datovou část získat z Firebase cloudového zasílání zpráv, Začněte vytvořením nové služby (soubor > novou službu > Service >), která rozšiřuje třídu sady SDK *FirebaseMessagingService* Firebase a přepíše `onMessageReceived` metodu. Tato metoda je obslužná rutina události volána, když Firebase Cloud Messaging doručuje nabízené oznámení do aplikace.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +317,7 @@ Do tohoto souboru přidejte následující definici služby `AndroidManifest.xml
         </service>
 ```
 
-- Jakmile je datová část načtena, může být předána klientské knihovně *komunikačních služeb* , aby je bylo možné analyzovat do interního objektu *IncomingCallInformation* , který bude zpracován voláním metody *handlePushNotification* na instanci *CallAgent* . `CallAgent`Instance je vytvořena voláním `createCallAgent(...)` metody `CallClient` třídy.
+- Po načtení datové části je lze předat sadě SDK *služby Communications Services* , aby byly analyzovány do interního objektu *IncomingCallInformation* , který bude zpracován voláním metody *handlePushNotification* na instanci *CallAgent* . `CallAgent`Instance je vytvořena voláním `createCallAgent(...)` metody `CallClient` třídy.
 
 ```java
 try {

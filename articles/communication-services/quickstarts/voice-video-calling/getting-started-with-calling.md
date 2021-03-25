@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 0886e3955ba58a5a8edbf3cd72b1065b1000b5b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eca80f6353240755a0670fcfa4ca9875107b0d47
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104598788"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108258"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>Rychlý Start: Přidání hlasového volání do aplikace
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Začněte s komunikačními službami Azure pomocí komunikačních služeb volání klientské knihovny pro přidání hlasu a videa do vaší aplikace.
+Začněte s komunikačními službami Azure pomocí komunikačních služeb, které volají sadu SDK, k přidání hlasu a videa do aplikace.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -45,5 +45,5 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 Další informace najdete v následujících článcích:
 
 - Podívejte se na naši [ukázku volání Hero](../../samples/calling-hero-sample.md)
-- Další informace o [volání funkcí klientské knihovny](./calling-client-samples.md)
+- Další informace o [volání funkcí sady SDK](./calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)

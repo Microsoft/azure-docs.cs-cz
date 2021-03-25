@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183195"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047347"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurovat časový interval pro správu a údržbu (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Výchozí časové období údržby *systému* je 17:00 8:00 denně (místní č
 Možnost změny v jiném časovém intervalu pro správu a údržbu není k dispozici pro každou úroveň služby nebo v každé oblasti. Podrobnosti o dostupnosti najdete v tématu [dostupnost okna údržby](maintenance-window.md#availability).
 
 > [!Important]
-> Konfigurace časového období údržby je dlouhodobě spuštěná asynchronní operace, podobně jako změna úrovně služby prostředku SQL Azure. Prostředek je k dispozici během operace s výjimkou krátkého převzetí služeb při selhání, které se na konci operace stane, a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Abyste minimalizovali dopad převzetí služeb při selhání, měli byste tuto operaci provést mimo špičku hodin.
+> Konfigurace časového období údržby je dlouhodobě spuštěná asynchronní operace, podobně jako změna úrovně služby prostředku SQL Azure. Prostředek je k dispozici během operace s výjimkou krátké rekonfigurace, která se na konci operace stane, a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Chcete-li minimalizovat dopad rekonfigurace, měli byste provést operaci mimo špičku.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurovat časové období údržby během vytváření databáze 
 
@@ -257,7 +257,7 @@ Následující příklad vytvoří novou spravovanou instanci a nastaví časov�
 ## <a name="configure-maintenance-window-for-existing-databases"></a>Konfigurovat časový interval pro správu a údržbu pro existující databáze
 
 
-Při použití výběru časového období údržby pro databázi může v některých případech dojít k krátkému převzetí služeb při selhání (několik sekund), protože Azure aplikuje požadované změny.
+Když použijete výběr časového období údržby pro databázi, může být v některých případech k době krátká Změna konfigurace (několik sekund), protože Azure aplikuje požadované změny.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
