@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025233"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107512"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Nejčastější dotazy ke službám Azure Cloud Services (s rozšířenou podporou)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Cloud Services (Rozšířená podpora).
@@ -93,7 +93,7 @@ Ne, nasazení cloudové služby (Rozšířená podpora) jsou vázaná na cluster
 ### <a name="when-do-i-need-to-migrate"></a>Kdy je potřeba migrovat? 
 Odhad potřebný čas a migrace složitosti závisí na rozsahu proměnných. Plánování je nejúčinnější krok pro pochopení rozsahu práce, blokování a složitosti migrace.
 
-## <a name="networking"></a>Sítě
+## <a name="networking"></a>Sítě 
 
 ### <a name="why-cant-i-create-a-deployment-without-virtual-network"></a>Proč nemůžu vytvořit nasazení bez virtuální sítě?
 Virtuální sítě jsou požadovaným prostředkem pro jakékoli nasazení na Azure Resource Manager. Nasazení Cloud Services (Rozšířená podpora) musí být v rámci virtuální sítě aktivní. 
@@ -112,6 +112,9 @@ Zákazníkům se fakturuje použití IP adres na Cloud Services (Rozšířená p
 
 ### <a name="can-i-use-a-dns-name-with-cloud-services-extended-support"></a>Můžu použít název DNS s Cloud Services (Rozšířená podpora)? 
 Ano. Cloud Services (rozšířené podpoře) se taky dá předávat název DNS. U Azure Resource Manager je popisek DNS volitelnou vlastností veřejné IP adresy, která je přiřazena ke cloudové službě. Formát názvu DNS pro nasazení na základě Azure Resource Manager je `<userlabel>.<region>.cloudapp.azure.com`
+
+### <a name="can-i-update-or-change-the-virtual-network-reference-for-an-existing-cloud-service-extended-support"></a>Můžu aktualizovat nebo změnit odkaz na virtuální síť pro existující cloudovou službu (rozšířenou podporu)? 
+No. Odkaz na virtuální síť je při vytváření cloudové služby povinný. Pro existující cloudovou službu nelze změnit odkaz na virtuální síť. Vlastní adresní prostor virtuální sítě se dá upravit pomocí rozhraní API virtuální sítě. 
 
 ## <a name="certificates--key-vault"></a>Certifikáty & Key Vault
 

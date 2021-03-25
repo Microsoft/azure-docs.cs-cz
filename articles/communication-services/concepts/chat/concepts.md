@@ -9,20 +9,20 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e71917d917491037100b4ee666cbeb030b0a4786
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656137"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110827"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Konverzace klientských knihoven služby Azure Communication Services slouží k přidávání textových konverzací do vašich aplikací v reálném čase. Tato stránka shrnuje klíčové pojmy a možnosti chatu.    
+Sady SDK pro chat pro komunikaci v reálném čase můžete použít k přidání textového chatu do vašich aplikací. Tato stránka shrnuje klíčové pojmy a možnosti chatu.    
 
-Další informace o konkrétních jazycích a funkcích klientské knihovny najdete v tématu [Přehled klientské knihovny služby Communications](./sdk-features.md) .    
+Další informace o konkrétních jazycích a funkcích sady SDK najdete v tématu [Přehled sady Communications Chat SDK](./sdk-features.md) .  
 
 ## <a name="chat-overview"></a>Přehled chatu    
 
@@ -117,7 +117,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ## <a name="real-time-signaling"></a>Signalizace v reálném čase  
 
-Klientská knihovna JavaScriptu pro chat zahrnuje signalizaci v reálném čase. To umožňuje klientům naslouchat v reálném čase aktualizace a příchozí zprávy do konverzačního vlákna, aniž by museli dotazovat rozhraní API. K dispozici jsou tyto události:
+Sada chat JavaScript SDK obsahuje signalizaci v reálném čase. To umožňuje klientům naslouchat v reálném čase aktualizace a příchozí zprávy do konverzačního vlákna, aniž by museli dotazovat rozhraní API. K dispozici jsou tyto události:
 
  - `ChatMessageReceived` – Při odeslání nové zprávy do konverzačního vlákna. Tato událost není odeslána pro automaticky generované systémové zprávy, které byly popsány v předchozím tématu.   
  - `ChatMessageEdited` – Při úpravě zprávy ve vlákně chatu. 
@@ -136,9 +136,9 @@ Klientská knihovna JavaScriptu pro chat zahrnuje signalizaci v reálném čase.
 Signalizace v reálném čase umožňuje uživatelům chatovat v reálném čase. Vaše služby můžou použít Azure Event Grid k přihlášení k odběru událostí souvisejících s chatem. Další podrobnosti najdete v tématu [zpracování událostí – koncepční](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
 
 
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Povolení inteligentních funkcí pomocí Cognitive Services s využitím klientské knihovny chatu 
+## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>Povolení inteligentních funkcí pomocí Cognitive Services se sadou Chat SDK    
 
-[Rozhraní API pro rozpoznávání Azure](../../../cognitive-services/index.yml) můžete použít spolu s knihovnou klienta chat k přidání inteligentních funkcí do aplikací. Můžete například:  
+[Rozhraní API pro rozpoznávání Azure](../../../cognitive-services/index.yml) se sadou Chat SDK můžete použít k přidání inteligentních funkcí do aplikací. Můžete například: 
 
 - Umožněte uživatelům, aby v různých jazycích navzájemly konverzaci.  
 - Pomoc agentovi podpory určení priorit lístků pomocí zjištění negativního míněníu příchozího problému od zákazníka.   
@@ -156,4 +156,4 @@ Historie zpráv tak bude obsahovat původní i přeložené zprávy. V klientsk�
 > [Začínáme s chatem](../../quickstarts/chat/get-started.md)    
 
 Následující dokumenty můžou být zajímavé:  
-- Seznámení s [knihovnou klienta chat](sdk-features.md)
+- Seznámení se sadou [Chat SDK](sdk-features.md)

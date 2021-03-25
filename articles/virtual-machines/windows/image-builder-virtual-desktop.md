@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103602014"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045582"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Vytvoření image virtuálního počítače s Windows pomocí nástroje Azure VM Image Builder a PowerShellu
 
@@ -22,11 +22,11 @@ V tomto článku se dozvíte, jak vytvořit image virtuálního počítače s Wi
 
 * Instaluje se [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1).
 * Spouští se [skript optimalizace virtuálních počítačů s Windows](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) z úložiště komunity.
-* Nainstalujte [Microsoft Teams](https://docs.microsoft.com/azure/virtual-desktop/teams-on-wvd).
-* [Restartovat](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-restart-customizer)
-* Spustit [web Windows Update](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-update-customizer)
+* Nainstalujte [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md).
+* [Restartovat](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
+* Spustit [web Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
 
-Ukážeme vám, jak to automatizovat pomocí Tvůrce imagí virtuálních počítačů Azure, a distribuovat image do [Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), kde můžete replikovat do jiných oblastí, řídit škálování a sdílet image v rámci organizací i mimo ně.
+Ukážeme vám, jak to automatizovat pomocí Tvůrce imagí virtuálních počítačů Azure, a distribuovat image do [Galerie sdílených imagí](../shared-image-galleries.md), kde můžete replikovat do jiných oblastí, řídit škálování a sdílet image v rámci organizací i mimo ně.
 
 
 V tomto příkladu se pro zjednodušení nasazení konfigurace tvůrce imagí používá šablona Azure Resource Manager s vnořenou šablonou tvůrce imagí. To vám dává nějaké další výhody, jako jsou proměnné a vstupy parametrů. Můžete také předat parametry z příkazového řádku.
@@ -71,9 +71,9 @@ Tento článek je určený jako kopírování a vkládání cvičení.
 
 - Sítě – `Set-NetAdapterAdvancedProperty` . Tato funkce se nastavuje ve skriptu optimalizace, ale AIB sestavení se nezdařila, protože odpojuje síť, jedná se o komentář. Probíhá šetření.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Musíte mít nainstalované nejnovější rutiny Azure PowerShell. Podrobnosti o instalaci najdete [tady](https://docs.microsoft.com/powershell/azure/overview) :.
+Musíte mít nainstalované nejnovější rutiny Azure PowerShell. Podrobnosti o instalaci najdete [tady](/powershell/azure/overview) :.
 
 ```PowerShell
 # Register for Azure Image Builder Feature
@@ -279,7 +279,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
-Nyní je sestavení Hotovo. z Image si můžete vytvořit virtuální počítač, použijte příklady [z tohoto obrázku](https://docs.microsoft.com/powershell/module/az.compute/new-azvm#examples).
+Nyní je sestavení Hotovo. z Image si můžete vytvořit virtuální počítač, použijte příklady [z tohoto obrázku](/powershell/module/az.compute/new-azvm#examples).
 
 ## <a name="clean-up"></a>Vyčištění
 

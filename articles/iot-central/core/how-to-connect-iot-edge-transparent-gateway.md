@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bdfb5f65106f3f8843b4aa52b752f5e563ab03f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102620005"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045327"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>Postup připojení zařízení přes IoT Edge transparentní bránu
 
@@ -23,7 +23,7 @@ IoT Edge podporuje vzory [ *transparentního* a *Překladatelského* brány](../
 
 Tento článek používá virtuální počítače pro hostování zařízení a brány pro příjem dat. V reálném scénáři by se pro zařízení a bránu spouštěla na fyzických zařízeních v místní síti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto kurzu potřebujete aktivní předplatné Azure.
 
@@ -186,7 +186,7 @@ Vaše transparentní brána je teď nakonfigurovaná a připravená na zahájen�
 
 ## <a name="provision-a-downstream-device"></a>Zřízení zařízení pro příjem dat
 
-V současné době IoT Edge nemůže do vaší aplikace IoT Central automaticky zřídit zařízení pro příjem dat. Následující kroky ukazují, jak zřídit `thermostat1` zařízení. K provedení těchto kroků budete potřebovat prostředí s nainstalovaným Pythonem 3,5 (nebo novějším) a připojením k Internetu. [Azure Cloud Shell](https://shell.azure.com/) má předem nainstalovaný Python 3,5:
+V současné době IoT Edge nemůže do vaší aplikace IoT Central automaticky zřídit zařízení pro příjem dat. Následující kroky ukazují, jak zřídit `thermostat1` zařízení. K provedení těchto kroků budete potřebovat prostředí s nainstalovaným Pythonem 3,6 (nebo novějším) a připojením k Internetu. [Azure Cloud Shell](https://shell.azure.com/) má předem nainstalovaný Python 3,7:
 
 1. Spusťte následující příkaz, který nainstaluje `azure.iot.device` modul:
 

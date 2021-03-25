@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: a9ef74c04c1f709348ae1d6dd97558ee6bedccf3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 39c35bc90986126d099e68023e15b97c58d0ac26
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654964"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108167"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Rychlý Start: připojení volající aplikace ke schůzce týmu
 
 > [!IMPORTANT]
 > Pokud chcete povolit nebo zakázat [interoperabilitu tenanta týmů](../../concepts/teams-interop.md), vyplňte [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u).
 
-Začněte s komunikačními službami Azure tím, že své volání připojíte k Microsoft Teams pomocí klientské knihovny JavaScriptu.
+Začněte s komunikačními službami Azure tím, že své volání připojíte k Microsoft Teams pomocí sady JavaScript SDK.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/teams-interop-javascript.md)]
@@ -43,5 +43,5 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 Další informace najdete v následujících článcích:
 
 - Podívejte se na naši [ukázku volání Hero](../../samples/calling-hero-sample.md)
-- Další informace o [volání funkcí klientské knihovny](./calling-client-samples.md)
+- Další informace o [volání funkcí sady SDK](./calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)

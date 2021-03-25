@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07aa1cb361f5f1853dbf93e5f4e064b1ed14f1de
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487911"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152777"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Skupina komunikačních služeb Azure, která **volá Hero Sample** , ukazuje, jak lze pomocí komunikačních služeb volání webové klientské knihovny vytvořit skupinu volání.
+Skupina komunikačních služeb Azure, která **volá Hero Sample** , ukazuje, jak lze použít komunikační služby volání webové sady SDK k vytvoření skupinového volání.
 
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
@@ -51,7 +51,7 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v tématu [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - [Node.js (12.18.4 a vyšší)](https://nodejs.org/en/download/)
@@ -96,7 +96,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 Další informace najdete v následujících článcích:
 
-- Seznamte se s [použitím volání klientské knihovny](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- Seznámení s [používáním volání sady SDK](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>Další materiály ke čtení

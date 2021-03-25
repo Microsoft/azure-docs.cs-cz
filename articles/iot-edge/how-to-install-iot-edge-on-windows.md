@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889531"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045667"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -32,7 +32,7 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
 >
 >I když IoT Edge pro Linux ve Windows je Doporučené prostředí pro použití Azure IoT Edge v prostředí Windows, kontejnery Windows jsou stále k dispozici. Pokud dáváte přednost použití kontejnerů Windows, přečtěte si návod k [instalaci a správě Azure IoT Edge pro Windows](how-to-install-iot-edge-windows-on-windows.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s platným předplatným. Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -370,4 +370,6 @@ Ověřte, že IoT Edge pro Linux v systému Windows byl úspěšně nainstalová
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v [nasazení IoT Edge moduly](how-to-deploy-modules-portal.md) a Naučte se, jak nasadit moduly do svého zařízení.
+* Pokračujte v [nasazení IoT Edge moduly](how-to-deploy-modules-portal.md) a Naučte se, jak nasadit moduly do svého zařízení.
+* Naučte se [spravovat certifikáty ve vašem IoT Edge pro Linux ve virtuálním počítači s Windows](how-to-manage-device-certificates.md) a přenášet soubory z HOSTITELSKÉHO operačního systému na virtuální počítač se systémem Linux.
+* Naučte se [Konfigurovat zařízení IoT Edge ke komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).

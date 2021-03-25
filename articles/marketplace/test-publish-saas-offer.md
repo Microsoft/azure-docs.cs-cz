@@ -7,17 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: ea647591194dfd6ba0bf818f4ce4d3a2005f0bc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/25/2021
+ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630774"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045242"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Postup testování a publikování nabídky SaaS na komerčním webu Marketplace
 
 Tento článek vysvětluje, jak pomocí partnerského centra odeslat nabídku SaaS k publikování, zobrazit náhled vaší nabídky, otestovat ji a potom ji publikovat na komerčním webu Marketplace. Musíte již mít vytvořenou nabídku, kterou chcete publikovat.
+
+> [!NOTE]
+> Doporučujeme, abyste vytvořili samostatnou nabídku test a vývoj (DEV) pro testování před tím, než publikujete nabídku produkce (PROD). Pomocí těchto kroků vytvoříte a otestujete nabídku pro vývoj před publikováním nabídky (PROD).
 
 ## <a name="submit-your-offer-for-publishing"></a>Odeslání nabídky k publikování
 
@@ -48,7 +51,7 @@ K zobrazení náhledu vaší nabídky použijte následující postup.
 
 1. Na stránce **Přehled nabídky** vyberte odkaz ve verzi Preview pod tlačítkem **Přejít na Live** .
 
-1. Pokud chcete ověřit kompletní tok nákupu a nastavení, kupte si nabídku, zatímco je ve verzi Preview. Nejdřív upozorněte Microsoft [lístek podpory](https://aka.ms/marketplacesupport) , aby se zajistilo, že nebudeme zpracovávat poplatky.
+1. Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si plány v nabídce, když je ve verzi Preview. Nejdřív upozorněte Microsoft [lístek podpory](https://aka.ms/marketplacesupport) , aby se zajistilo, že nebudeme zpracovávat poplatky.
 
 1. Pokud vaše nabídka SaaS podporuje [účtované měření pomocí komerční služby měření na webu Marketplace](./partner-center-portal/saas-metered-billing.md), Projděte si osvědčené postupy testování, které jsou popsané v části [rozhraní API pro fakturaci s měřením na webu Marketplace](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices).
 
@@ -60,10 +63,10 @@ K zobrazení náhledu vaší nabídky použijte následující postup.
 
 ## <a name="publish-your-offer-live"></a>Publikování vaší nabídky živě
 
-Po dokončení všech testů ve verzi Preview vyberte možnost **Přejít do živého** publikování vaší nabídky na komerčním webu Marketplace.
+Po dokončení všech testů ve verzi Preview vyberte možnost **Přejít do živého** publikování vaší nabídky na komerčním webu Marketplace. Pokud je vaše nabídka na komerčním webu Marketplace už živá, žádné aktualizace, které provedete, nebudou aktivní, dokud nevyberete možnost **Spustit** jako.
 
-   > [!TIP]
-   > Pokud je vaše nabídka na komerčním webu Marketplace už živá, žádné aktualizace, které provedete, nebudou aktivní, dokud nevyberete možnost **Spustit** jako.
+> [!IMPORTANT]
+> V případě [nabídky pro vývoj/testování](create-saas-dev-test-offer.md)nikdy nevybereme možnost **začít živě** .
 
 Teď, když jste si zvolili, aby vaše nabídka byla dostupná na komerčním webu Marketplace, provedeme celou řadu konečných kontrol ověření, abyste zajistili, že je živá nabídka nakonfigurovaná stejně jako verze Preview nabídky. Podrobnosti o těchto kontrolách ověřování najdete v tématu [fáze publikování](review-publish-offer.md#publish-phase).
 

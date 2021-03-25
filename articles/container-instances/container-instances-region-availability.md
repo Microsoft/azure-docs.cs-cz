@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b1783204ae416412579e63654ff236fbc6cf1a18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573604"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046007"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -88,21 +88,21 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Brazílie – jih | 4 | 16 | 4 | 16 | 20 |
 | Střední Kanada | 2 | 8 | 2 | 3,5 | 20 |
 | Indie – střed | 2 | 3,5 | 2 | 3,5 | 20 |
-| USA – střed | 2 | 3,5 | 2 | 3,5 | 20 |
+| USA – střed | 2 | 8 | 2 | 3,5 | 20 |
 | Východní Asie | 2 | 3,5 | 2 | 3,5 | 20 |
-| East US | 4 | 16 | 2 | 8 | 20 |
-| USA – východ 2 | 2 | 3,5 | 4 | 16 | 20 |
+| East US | 2 | 8 | 2 | 8 | 20 |
+| USA – východ 2 | 2 | 8 | 4 | 16 | 20 |
 | Japonsko – východ | 4 | 16 | 4 | 16 | 20 |
 | Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
-| USA – středosever | 4 | 16 | 4 | 16 | 20 |
+| USA – středosever | 2 | 8 | 4 | 16 | 20 |
 | Severní Evropa | 2 | 8 | 2 | 8 | 20 |
-| Středojižní USA | 2 | 3,5 | 2 | 8 | 20 |
+| Středojižní USA | 2 | 8 | 2 | 8 | 20 |
 | Southeast Asia | N/A | N/A | 2 | 3,5 | 20 |
 | Indie – jih | 2 | 3,5 | 2 | 3,5 | 20 |
 | Spojené království – jih | 2 | 8 | 2 | 3,5 | 20 |
-| USA – středozápad | 4 | 16 | 2 | 8 | 20 |
+| USA – středozápad | 2 | 8 | 2 | 8 | 20 |
 | West Europe | 4 | 16 | 4 | 16 | 20 |
-| USA – západ | 4 | 16 | 2 | 8 | 20 |
+| USA – západ | 2 | 8 | 2 | 8 | 20 |
 | Západní USA 2 | 2 | 8 | 2 | 3,5 | 20 |
 
 

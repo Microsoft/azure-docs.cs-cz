@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 98b40218d168133193410174bcc158ab8698c381
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f3ac1c8076650a4075c33aeaa9128133b5b90296
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225383"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046075"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Rychlý Start: Vytvoření první statické lokality pomocí Azure CLI
 
@@ -20,7 +20,7 @@ Služba Azure static Web Apps publikuje web do produkčního prostředí tím, �
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - [Osobní přístupový token GitHubu](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
@@ -110,7 +110,7 @@ Teď, když je úložiště vytvořené, můžete vytvořit statickou webovou ap
 
     - `<RESOURCE_GROUP_NAME>`: Tuto hodnotu nahraďte existujícím [názvem skupiny prostředků Azure](../azure-resource-manager/management/manage-resources-cli.md).
 
-      - Podrobnosti o výpisu skupin prostředků najdete v dokumentaci [AZ Group](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_list) .
+      - Podrobnosti o výpisu skupin prostředků najdete v dokumentaci [AZ Group](/cli/azure/group?view=azure-cli-latest#az_group_list) .
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Nahraďte tuto hodnotu vaším uživatelským jménem GitHubu.
 

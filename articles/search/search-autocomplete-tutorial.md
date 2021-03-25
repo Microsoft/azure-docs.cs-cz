@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 668b987dd8b367c143a91dc5adb11848321a9d5a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96339604"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044409"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Přidání automatického dokončování a návrhů do klientských aplikací s využitím Azure Kognitivní hledání
 
-Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Druhý uživatel je *návrhem* nebo krátký seznam odpovídajících dokumentů (s ID, který vrací názvy knih s ID, takže můžete propojit stránku s podrobnostmi o dané knize). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
+Hledání jako typ je běžná technika pro zlepšení produktivity dotazů. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Druhý uživatel je *návrhem* nebo krátký seznam odpovídajících dokumentů (s ID, který vrací názvy knih s ID, takže můžete propojit stránku s podrobnostmi o dané knize). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
 
 K implementaci těchto prostředí v Azure Kognitivní hledání budete potřebovat:
 
@@ -63,13 +63,16 @@ Pro referenční stránky REST a .NET SDK použijte tyto odkazy:
 
 Odpovědi na automatické dokončování a návrhy jsou to, co byste pro vzor mohli očekávat: [funkce automatického dokončování](/rest/api/searchservice/autocomplete#response) vrátí seznam podmínek, [návrhy](/rest/api/searchservice/suggestions#response) vrátí výrazy a ID dokumentu, abyste mohli načíst dokument (pomocí rozhraní API pro [vyhledání dokumentu](/rest/api/searchservice/lookup-document) načíst konkrétní dokument pro stránku s podrobnostmi).
 
-Odpovědi jsou ve tvaru podle parametrů v žádosti. Pro automatické dokončování nastavte [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) , abyste zjistili, jestli se při dokončování textu vyskytuje jedna nebo dvě slova. U návrhů se pole, které zvolíte, určí obsah odpovědi.
+Odpovědi jsou ve tvaru podle parametrů na žádosti:
 
-V případě návrhů byste měli dál vylepšit odpověď, aby nedocházelo k duplicitám nebo co se jeví jako nesouvisející výsledky. Pro řízení výsledků přidejte do žádosti více parametrů. Následující parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
++ Pro automatické dokončování nastavte [**autocompleteMode**](/rest/api/searchservice/autocomplete#query-parameters) , abyste zjistili, jestli se při dokončování textu vyskytuje jedna nebo dvě slova. 
+
++ V případě návrhů nastavte [**$Select**](/rest/api/searchservice/suggestionse#query-parameters) , aby vracela pole obsahující jedinečné nebo rozdílné hodnoty, jako jsou názvy a popis. Vyhněte se polím, která obsahují duplicitní hodnoty (například kategorie nebo City).
+
+Následující další parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
 
 | Parametr | Využití |
 |-----------|-------|
-| **$select** | Máte-li v nástroji pro návrh více **sourceFields** , pomocí **$Select** vyberte, které pole přispívá k hodnotám ( `$select=GameTitle` ). |
 | **searchFields** | Omezí dotaz na konkrétní pole. |
 | **$filter** | Použijte kritéria shody pro sadu výsledků dotazu ( `$filter=Category eq 'ActionAdventure'` ). |
 | **$top** | Omezí výsledky na konkrétní číslo ( `$top=5` ).|

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172075"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043729"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -49,7 +49,7 @@ Pro ty, které chcete podrobně po tomto kurzu, je zde několik užitečných od
 
 Pojďme si projít klíče softwaru a předplatného, které pro tento kurz budete potřebovat.
 
-* [Python 3.5.2 nebo novější](https://www.python.org/downloads/)
+* [Python 3,6 nebo novější](https://www.python.org/downloads/)
 * [Nástroje Git](https://git-scm.com/downloads)
 * Rozhraní IDE nebo textový editor, například [Visual Studio Code](https://code.visualstudio.com/) nebo [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) nebo [Firefox](https://www.mozilla.org/firefox)
@@ -62,7 +62,7 @@ Pojďme si projít klíče softwaru a předplatného, které pro tento kurz bude
 Jak už jsme uvedli, budete pro tento kurz potřebovat tři klíče předplatného. To znamená, že je potřeba vytvořit prostředek v rámci účtu Azure pro:
 * Translator
 * Analýza textu
-* Hlasové služby
+* Služby Speech
 
 Pro podrobné pokyny k vytváření prostředků použijte [v Azure Portal vytvořit účet Cognitive Services](../cognitive-services-apis-create-account.md) .
 

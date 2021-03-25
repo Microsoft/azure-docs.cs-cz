@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4fc14083b0912cf18f98c229adcb297b89bc8971
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4732abacc80a24d268f0e5cb7d100079e5a8d90b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95559273"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105939"
 ---
 Vytvořte Připojení ke vzdálené ploše pro připojení k virtuálnímu počítači, který je nasazený do vaší virtuální sítě. Nejlepším způsobem, jak ověřit, že se můžete připojit k VIRTUÁLNÍmu počítači, je připojit se ke svému privátní IP adrese, a ne jeho název počítače. Tímto způsobem otestujete, jestli se můžete připojit a jestli je správně nakonfigurovaný překlad názvů. 
 
@@ -32,4 +32,4 @@ Pokud máte potíže s připojením k virtuálnímu počítači přes připojen�
 - Pokud se k VIRTUÁLNÍmu počítači můžete připojit pomocí privátní IP adresy, ale ne názvu počítače, ověřte, jestli jste správně nakonfigurovali DNS. Další informace o tom, jak funguje překlad IP adres pro virtuální počítače, najdete v tématu [Překlad IP adres pro virtuální počítače](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 - Ověřte, že se konfigurační balíček klienta VPN vygeneroval po zadání IP adres serveru DNS pro virtuální síť. Pokud aktualizujete IP adresy serveru DNS, vygenerujte a nainstalujte nový balíček pro konfiguraci klienta VPN.
 
-Další informace o řešení potíží najdete v tématu [Řešení potíží s připojením ke vzdálené ploše virtuálního počítače](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+Další informace o řešení potíží najdete v tématu [Řešení potíží s připojením ke vzdálené ploše virtuálního počítače](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection).

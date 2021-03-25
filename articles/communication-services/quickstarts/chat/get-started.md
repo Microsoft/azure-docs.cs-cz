@@ -10,42 +10,42 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: a62c25aa5fd9d25b7330dde89c8544e79785b9d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 362c8c875ab878b23cffae45f4c653255f489c81
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495385"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107003"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>Rychlý Start: Přidání chatu do aplikace
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications chat k přidání chatu do aplikace v reálném čase. V tomto rychlém startu budeme pomocí klientské knihovny chatu vytvářet vlákna chatu, která uživatelům umožňují vzájemnou konverzaci. Další informace o konceptech chatu najdete v [Koncepční dokumentaci k chatu](../../concepts/chat/concepts.md).
+Začněte s komunikačními službami Azure pomocí služby Communications Chat SDK a přidejte do své aplikace chat v reálném čase. V tomto rychlém startu budeme k vytváření chatovacích vláken, která umožňují uživatelům navzájem komunikovat, použít sadu Chat SDK. Další informace o konceptech chatu najdete v [Koncepční dokumentaci k chatu](../../concepts/chat/concepts.md).
 
 ::: zone pivot="programming-language-javascript"
-[!INCLUDE [Chat with JavaScript client library](./includes/chat-js.md)]
+[!INCLUDE [Chat with JavaScript SDK](./includes/chat-js.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [Chat with Python client library](./includes/chat-python.md)]
+[!INCLUDE [Chat with Python SDK](./includes/chat-python.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-[!INCLUDE [Chat with Java client library](./includes/chat-java.md)]
+[!INCLUDE [Chat with Java SDK](./includes/chat-java.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-android"
-[!INCLUDE [Chat with Android client library](./includes/chat-android.md)]
+[!INCLUDE [Chat with Android SDK](./includes/chat-android.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [Chat with C# client library](./includes/chat-csharp.md)]
+[!INCLUDE [Chat with C# SDK](./includes/chat-csharp.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-swift"
-[!INCLUDE [Chat with iOS client library](./includes/chat-swift.md)]
+[!INCLUDE [Chat with iOS SDK](./includes/chat-swift.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -69,4 +69,4 @@ V tomto rychlém startu jste se dozvěděli, jak:
 Můžete také chtít:
 
  - Další informace o [konceptech chatu](../../concepts/chat/concepts.md)
- - Seznámení s [knihovnou klienta chat](../../concepts/chat/sdk-features.md)
+ - Seznámení se sadou [Chat SDK](../../concepts/chat/sdk-features.md)

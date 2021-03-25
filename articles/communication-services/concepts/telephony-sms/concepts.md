@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c866629677790447d0ed730ae9cc62cb37e338e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ddc9bfeb0df32614d835e0eaef9da52e917ee91
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495500"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108430"
 ---
 # <a name="sms-concepts"></a>Koncepce SMS
 
@@ -23,9 +23,9 @@ ms.locfileid: "103495500"
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Služba Communications Services Azure umožňuje odesílat a přijímat textové zprávy SMS pomocí klientských knihoven služby Communication Services SMS. Tyto klientské knihovny lze použít k podpoře scénářů služeb zákazníkům, připomenutí schůzky, dvojúrovňového ověřování a dalších požadavků na komunikaci v reálném čase. Služba Communications Services SMS vám umožní spolehlivě odesílat zprávy a vystavovat přehledy o dodávkách a odpovědích na vaše kampaně.
+Služba Communications Services Azure vám umožňuje odesílat a přijímat textové zprávy SMS pomocí sady SDK služby Communications Communications. Tyto sady SDK je možné použít k podpoře scénářů služeb zákazníkům, připomenutí schůzek, dvojúrovňového ověřování a dalších požadavků na komunikaci v reálném čase. Služba Communications Services SMS vám umožní spolehlivě odesílat zprávy a vystavovat přehledy o dodávkách a odpovědích na vaše kampaně.
 
-Mezi klíčové funkce klientských knihoven SMS služby Azure Communications patří:
+Mezi klíčové funkce sady SDK služby Azure Communications Services patří:
 
 -  **Jednoduché** prostředí pro instalaci pro přidání funkce SMS do aplikací.
 - Podpora zpráv s **vysokou rychlostí** prostřednictvím bezplatných telefonních čísel pro A2P (aplikace pro osobu) případy použití v USA.
@@ -46,6 +46,6 @@ Mezi klíčové funkce klientských knihoven SMS služby Azure Communications pa
 
 Následující dokumenty můžou být zajímavé:
 
-- Seznamte se s [klientskou knihovnou SMS](../telephony-sms/sdk-features.md)
+- Seznámení se sadou [SMS SDK](../telephony-sms/sdk-features.md)
 - Získání [telefonního čísla](../../quickstarts/telephony-sms/get-phone-number.md) s možností SMS
 - [Typy telefonních čísel v komunikačních službách Azure](../telephony-sms/plan-solution.md)

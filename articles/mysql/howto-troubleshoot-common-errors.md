@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105037542"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109790"
 ---
-# <a name="common-errors"></a>Běžné chyby
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>Obvykle došlo k chybám během nebo po migraci do služby Azure Database for MySQL.
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Azure Database for MySQL je plně spravovaná služba, která využívá komunitu verze MySQL. Prostředí MySQL v prostředí spravované služby se může lišit od spuštění MySQL ve vašem vlastním prostředí. V tomto článku se zobrazí některé běžné chyby, se kterými se uživatelé můžou setkat při prvním pokusu o migraci nebo vývoji služby Azure Database for MySQL.
 
@@ -84,6 +86,14 @@ K výše uvedené chybě může dojít při provádění příkazu CREATE VIEW s
 
 > [!Tip] 
 > Pomocí příkazu SED nebo Perl upravte soubor s výpisem paměti nebo skript SQL, který nahradí příkaz DEFINe =.
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>Chyba 1227 (42000) na řádku 18: přístup byl odepřen; potřebujete (aspoň jedno z) oprávnění pro tuto operaci.
+
+K této chybě může dojít, pokud používáte pokus o import souboru s výpisem paměti ze serveru MySQL s povoleným GTID do cílového serveru Azure Database for MySQL. Mysqldump přidá příkaz SET @ @SESSION.sql_log_bin = 0 do souboru s výpisem paměti ze serveru, na kterém se používá GTIDs, což zakazuje binární protokolování při opětovném načítání souboru s výpisem paměti.
+
+**Řešení**: Chcete-li vyřešit tuto chybu při importu, odeberte nebo odkomentujte následující řádky v souboru mysqldump a spusťte import znovu, abyste zajistili jeho úspěšnost. 
+
+SET @MYSQLDUMP_TEMP_LOG_BIN = @ @SESSION.SQL_LOG_BIN ; Nastavte @ @SESSION.SQL_LOG_BIN = 0; Nastavte @ @GLOBAL.GTID_PURGED = ' '; Nastavte @ @SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN ;
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>Běžné chyby připojení pro přihlášení správce serveru
 

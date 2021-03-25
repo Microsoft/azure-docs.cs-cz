@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467540"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043355"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
 
@@ -60,7 +60,7 @@ Kognitivní hledání instance se dá po vytvoření QnA Maker prostředků izol
 
 Pokud je App Service QnA Maker omezený pomocí App Service Environment, použijte stejnou virtuální síť k vytvoření připojení privátního koncového bodu k instanci Kognitivní hledání. Vytvořte novou položku DNS ve virtuální síti pro mapování Kognitivní hledáního koncového bodu na IP adresu privátního koncového bodu Kognitivní hledání. 
 
-Pokud se App Service Environment pro App Service Qnamakerem nepoužívá, nejprve vytvořte nový prostředek virtuální sítě a pak vytvořte připojení privátního koncového bodu k instanci Kognitivní hledání. V takovém případě musí být App Service QnA Maker [integrována s virtuální](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) sítí, aby se mohla připojit k instanci kognitivní hledání. 
+Pokud se App Service Environment pro App Service Qnamakerem nepoužívá, nejprve vytvořte nový prostředek virtuální sítě a pak vytvořte připojení privátního koncového bodu k instanci Kognitivní hledání. V takovém případě musí být App Service QnA Maker [integrována s virtuální](../../../app-service/web-sites-integrate-with-vnet.md) sítí, aby se mohla připojit k instanci kognitivní hledání. 
 
 #  <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 

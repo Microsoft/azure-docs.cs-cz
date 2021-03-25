@@ -47,7 +47,39 @@
         - name: Export tajných klíčů a certifikátů po uplynutí požadovaného data
           href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: Ukázky PowerShellu proxy aplikací
-      href: application-proxy-powershell-samples.md
+      items:
+        - name: Přehled ukázek proxy aplikací
+          href: application-proxy-powershell-samples.md
+        - name: Seznam základních informací o aplikacích
+          href: ./scripts/powershell-get-all-app-proxy-apps-basic.md
+        - name: Seznam rozšířených informací o aplikacích
+          href: ./scripts/powershell-get-all-app-proxy-apps-extended.md
+        - name: Seznam aplikací podle skupiny konektorů
+          href: ./scripts/powershell-get-all-app-proxy-apps-by-connector-group.md
+        - name: Seznam aplikací se zásadami životnosti tokenů
+          href: ./scripts/powershell-get-all-app-proxy-apps-with-policy.md
+        - name: Seznam skupin konektorů a konektorů
+          href: ./scripts/powershell-get-all-connectors.md
+        - name: Přesunutí aplikací mezi skupinami konektorů
+          href: ./scripts/powershell-move-all-apps-to-connector-group.md
+        - name: Seznam uživatelů a skupin přiřazených k aplikaci
+          href: ./scripts/powershell-display-users-group-of-app.md
+        - name: Přiřazení uživatele k aplikaci
+          href: ./scripts/powershell-assign-user-to-app.md
+        - name: Přiřazení skupiny k aplikaci
+          href: ./scripts/powershell-assign-group-to-app.md
+        - name: Seznam aplikací s použitím výchozích domén
+          href: ./scripts/powershell-get-all-default-domain-apps.md
+        - name: Vypsat aplikace pomocí publikování na základě zástupných znaků
+          href: ./scripts/powershell-get-all-wildcard-apps.md
+        - name: Vypsat všechny vlastní domény a certifikáty
+          href: ./scripts/powershell-get-all-custom-domains-and-certs.md
+        - name: Vypsat aplikace bez certifikátů
+          href: ./scripts/powershell-get-all-custom-domain-no-cert.md
+        - name: Seznam aplikací se stejnými certifikáty
+          href: ./scripts/powershell-get-custom-domain-identical-cert.md
+        - name: Nahradit identické certifikáty
+          href: ./scripts/powershell-get-custom-domain-replace-cert.md
 - name: Koncepty
   expanded: true
   items:

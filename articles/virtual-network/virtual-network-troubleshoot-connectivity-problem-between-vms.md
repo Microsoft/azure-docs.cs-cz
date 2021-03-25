@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219194"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042862"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Řešení potíží s připojením mezi virtuálními počítači Azure
 
@@ -49,7 +49,7 @@ Při řešení tohoto problému postupujte podle těchto kroků. Po dokončení 
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>Krok 1: ověření, jestli je síťové rozhraní špatně nakonfigurované
 
-Postupujte podle kroků v části [Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows](../virtual-machines/troubleshooting/reset-network-interface.md). 
+Postupujte podle kroků v části [Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows](/troubleshoot/azure/virtual-machines/reset-network-interface). 
 
 Pokud k problému dochází poté, co upravíte síťové rozhraní (NIC), postupujte následovně:
 
@@ -62,8 +62,8 @@ Další informace najdete v tématu [přidání síťových rozhraní nebo jejic
 
 **Virtuální počítač s jednou síťovou kartou** 
 
-- [Znovu nasadit virtuální počítač s Windows](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [Znovu nasadit virtuální počítač se systémem Linux](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [Znovu nasadit virtuální počítač s Windows](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [Znovu nasadit virtuální počítač se systémem Linux](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: ověření, jestli je síťový provoz blokovaný pomocí NSG nebo UDR
 
@@ -107,7 +107,7 @@ Všechny virtuální počítače, které vytvoříte v Azure pomocí modelu nasa
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Krok 8: Pokuste se připojit ke sdílené síťové složce virtuálních počítačů
 
-Pokud se nemůžete připojit ke sdílené síťové složce virtuálních počítačů, problém může být způsoben nedostupnými síťovými kartami ve virtuálním počítači. Postup odstranění nedostupných síťových adaptérů najdete v tématu [odstranění nedostupných síťových karet](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics) .
+Pokud se nemůžete připojit ke sdílené síťové složce virtuálních počítačů, problém může být způsoben nedostupnými síťovými kartami ve virtuálním počítači. Postup odstranění nedostupných síťových adaptérů najdete v tématu [odstranění nedostupných síťových karet](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics) .
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: ověření Inter-Vnetho připojení
 

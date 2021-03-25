@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: d0acf83ddfb0d2a3aff0db0f3d151869bce1c710
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771732"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109844"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Kurz: zjišťování serverů běžících v prostředí VMware pomocí Azure Migrate: zjišťování a posouzení
 
@@ -46,12 +46,10 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 **Náplně** | vCenter Server potřebuje prostředky k přidělení serveru pro Azure Migrate zařízení:<br/><br/> -32 GB paměti RAM, 8 vCPU a asi 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač a přístup k Internetu na serveru zařízení, přímo nebo prostřednictvím proxy serveru.
 **Servery** | Všechny verze operačních systémů Windows a Linux jsou podporované pro zjišťování konfigurace a metadat výkonu. <br/><br/> Aby bylo možné provádět zjišťování aplikací na serverech, jsou podporovány všechny verze operačních systémů Windows a Linux. [Zde](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) najdete verzi operačního systému podporovanou pro analýzu závislostí bez agentů.<br/><br/> Aby bylo možné provést zjišťování nainstalovaných aplikací a analýzu závislostí bez agentů, musí být na serverech nainstalovány a spuštěny nástroje VMware (novější než 10.2.0). Windows servery musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.<br/><br/> Pokud chcete zjistit SQL Server instance a databáze, podívejte se [sem](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) na podporované verze a edice SQL Server, podporované verze operačního systému Windows a mechanismy ověřování.
 
-> [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
-
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
 Pokud chcete vytvořit projekt a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s:
+
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure
 - Oprávnění k registraci aplikací Azure Active Directory (AAD)
 - Vlastník nebo přispěvatel plus oprávnění správce přístupu k předplatnému Azure k vytvoření Key Vault používaného během migrace serveru bez agenta
@@ -96,14 +94,13 @@ V vSphere webovém klientovi nastavte účet následujícím způsobem:
 3. V **Uživatelé** přidejte nového uživatele.
 4. Do pole **Nový uživatel** zadejte podrobnosti o účtu. Pak klikněte na **OK**.
 5. V části **globální oprávnění** vyberte uživatelský účet a přiřaďte k účtu roli jen **pro čtení** . Pak klikněte na **OK**.
-6.  Pokud chcete také provést zjišťování nainstalovaných aplikací a analýzu závislostí bez agenta, přejít na **role** > vyberte roli jen **pro čtení** a v části **oprávnění** vyberte **operace hostů**. Oprávnění můžete rozšířit na všechny objekty pod vCenter Server tím, že vyberete zaškrtávací políčko šířit do podřízených.
+6. Pokud chcete také provést zjišťování nainstalovaných aplikací a analýzu závislostí bez agenta, přejít na **role** > vyberte roli jen **pro čtení** a v části **oprávnění** vyberte **operace hostů**. Oprávnění můžete rozšířit na všechny objekty pod vCenter Server tím, že vyberete zaškrtávací políčko šířit do podřízených.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Zaškrtnutím políčka povolíte operace hostů u role jen pro čtení.":::
 
 
 > [!NOTE]
 > Zjišťování můžete omezit na konkrétní vCenter Server datacentra, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé servery, a to pomocí oboru vCenter Server. [**Přečtěte si další informace**](set-discovery-scope.md) o určení rozsahu vCenter Server uživatelského účtu.
-
 
 ### <a name="create-an-account-to-access-servers"></a>Vytvoření účtu pro přístup k serverům
 
@@ -154,7 +151,7 @@ K nastavení zařízení pomocí šablony vajíček:
 1. V **cíli migrace** se  >  **systémy Windows, Linux a SQL Server**  >  **Azure Migrate: zjišťování a posouzení** vyberte **Vyhledat**.
 2. V možnosti **zjišťovat servery**  >  **jsou vaše servery virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
 3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování serverů v prostředí VMware. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťování.
+1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťování během vytváření prostředků.
 1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
@@ -234,7 +231,6 @@ Nastavte zařízení poprvé.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="Panel 1 v nástroji Configuration Manager pro zařízení":::
 
-
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
 1. Vložte **klíč projektu** zkopírovaný z portálu. Pokud nemáte klíč, podívejte se na **Azure Migrate: zjišťování a hodnocení> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
@@ -274,9 +270,6 @@ V **kroku 3: poskytnutí přihlašovacích údajů serveru pro inventarizaci sof
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 – Správce konfigurace zařízení pro podrobnosti o serveru":::
 
-> [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
-
 Pokud chcete tyto funkce použít, můžete zadat přihlašovací údaje serveru podle následujících kroků. Zařízení se pokusí automaticky mapovat přihlašovací údaje na servery, aby se prováděly funkce zjišťování.
 
 - Přihlašovací údaje serveru můžete přidat kliknutím na tlačítko **Přidat pověření** . Otevře se modální místo, kde můžete zvolit **typ pověření** z rozevírací nabídky.
@@ -289,6 +282,7 @@ Pokud chcete tyto funkce použít, můžete zadat přihlašovací údaje serveru
 - V tabulce přihlašovacích údajů můžete zobrazit **stav ověření** pro všechna pověření domény. Budou ověřeny pouze přihlašovací údaje domény.
 - Pokud se ověření nepovede, můžete kliknout na stav **selhání** a zobrazit tak chybu. po vyřešení problému klikněte na znovu **ověřit přihlašovací údaje** , aby se znovu ověřily neúspěšná pověření domény.
 
+     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Panel 3 – Správce konfigurace zařízení pro poskytování více přihlašovacích údajů":::
 
 ### <a name="start-discovery"></a>Zahájení zjišťování
 

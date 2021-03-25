@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622089"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110331"
 ---
-Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications C# pro SMS k posílání zpráv SMS.
+Začínáme s komunikačními službami Azure pomocí služby Communications Services C# SMS SDK k posílání zpráv SMS.
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
@@ -25,16 +25,16 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-net-pr/tree/feature/communication/sdk/communication/Azure.Communication.Sms#todo-update-to-public) | [Package (NuGet)](#todo-nuget) | [Samples](#todo-samples)-->
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
+- Nejnovější verze [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
 - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - Telefonní číslo s povoleným SMS. [Získejte telefonní číslo](../get-phone-number.md).
 
 ### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
 
-- V terminálu nebo příkazovém okně spusťte `dotnet` příkaz a ověřte, zda je nainstalována knihovna klienta .NET.
+- V terminálu nebo příkazovém okně spusťte `dotnet` příkaz a ověřte, zda je nainstalována sada .NET SDK.
 - Chcete-li zobrazit telefonní čísla přidružená ke zdroji komunikačních služeb, přihlaste se k [Azure Portal](https://portal.azure.com/), vyhledejte prostředek komunikačních služeb a otevřete kartu **telefonní čísla** v levém navigačním podokně.
 
 ## <a name="setting-up"></a>Nastavení
@@ -56,7 +56,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Stále v adresáři aplikace nainstalujte knihovnu klienta služby Azure Communications Services pro sadu .NET pomocí `dotnet add package` příkazu.
+Stále v adresáři aplikace nainstalujte pomocí příkazu balíček služby SMS SDK pro službu Azure Communications Services pro .NET `dotnet add package` .
 
 ```console
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
@@ -77,7 +77,7 @@ using Azure.Communication.Sms;
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro jazyk C#.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Services SMS SDK pro jazyk C#.
 
 | Název                                       | Description                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |

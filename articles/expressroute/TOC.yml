@@ -144,6 +144,8 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: Monitorování
       items:
+        - name: Přehledy sítě
+          href: expressroute-network-insights.md
         - name: 'Monitorování, metriky a výstrahy služby ExpressRoute'
           href: expressroute-monitoring-metrics-alerts.md
         - name: Konfigurace Network Performance Monitoru pro ExpressRoute

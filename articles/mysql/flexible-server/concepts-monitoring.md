@@ -1,17 +1,17 @@
 ---
 title: Monitorování – Azure Database for MySQL – flexibilní Server
 description: Tento článek popisuje metriky pro monitorování a upozorňování Azure Database for MySQL flexibilního serveru, včetně informací o PROCESORech, úložištích a připojeních.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100595162"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110470"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Monitorování Azure Database for MySQL flexibilních serverů s integrovanými metrikami
 

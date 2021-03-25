@@ -3,12 +3,12 @@ title: Konfigurace integrace Prometheus Insights do kontejneru | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta služby Container Insights, aby vyšrotal metriky z Prometheus s vaším clusterem Kubernetes.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731727"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109637"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Konfigurace likvidace metrik Prometheus s využitím kontejnerů Insights
 
@@ -48,7 +48,7 @@ Při zadání adresy URL vyřadí Služba Container Insights jenom koncový bod.
 |------|-----|-----------|-------|-------------|
 | Napříč clustery | | | | Zadejte jednu z následujících tří metod pro vyřazení koncových bodů pro metriky. |
 | | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Příklad: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní parametr Container Insights a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
-| | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Příklad: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Tady se musí použít plně kvalifikované názvy domén. Příklad: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace.svc.cluster.local:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | V případě nastavení na `true` úrovni celého clusteru bude agent služby Container Insights vyřadit Kubernetes do celého clusteru pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods` musí být nastaven na hodnotu `true` . |
 | | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https` . | 
@@ -162,7 +162,7 @@ Tato část obsahuje požadavky a kroky pro úspěšnou konfiguraci konfiguračn
 >[!NOTE]
 >V případě Azure Red Hat OpenShift v3. x se vytvoří soubor šablony ConfigMap v oboru názvů *OpenShift-Azure-Logging* . Není nastavené na aktivní vyřazení metrik nebo shromažďování dat z agenta.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, potvrďte, že jste členem role Správce clusteru pro zákazníky v clusteru Azure Red Hat OpenShift ke konfiguraci kontejnerového nastavení s kontejnery a Prometheus. Pokud chcete ověřit, že jste členem skupiny *osa-Customer-Admins* , spusťte následující příkaz:
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2822f719928515efc70eeed3d7c182e347627418
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743283"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045514"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webové role a role pracovních procesů Pythonu při použití nástrojů Python Tools for Visual Studio
 
@@ -22,13 +22,13 @@ ms.locfileid: "98743283"
 
 Tento článek obsahuje přehled používání webových rolí a rolí pracovních procesů pomocí nástrojů [Python Tools for Visual Studio][Python Tools for Visual Studio]. Dozvíte se, jak použít službu Visual Studio k vytvoření a nasazení základní cloudové služby, která používá Python.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Visual Studio 2013, 2015 nebo 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] nebo  
 [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] nebo  
 [Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
-* [Python 2.7 (32bitová verze)][Python 2.7 32-bit] nebo [Python 3.5 (32bitová verze)][Python 3.5 32-bit]
+* [Python 2,7 32-bit][Python 2.7 32-bit] nebo [python 3,8, 32-bit][Python 3.8 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -71,7 +71,7 @@ Cloudové služby můžou obsahovat role implementované v různých jazycích. 
 
 Hlavní problém se skripty pro nastavení spočívá v tom, že neinstalují Python. Nejprve definujte dvě [počáteční úlohy](cloud-services-startup-tasks.md) v souboru [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef). První úloha (**PrepPython.ps1**) stáhne a nainstaluje modul runtime Pythonu. Druhá úloha (**PipInstaller.ps1**) spustí program pip, který nainstaluje všechny případné závislosti.
 
-Následující skripty byly napsány pro Python 3.5. Pokud chcete použít verzi 2.x Pythonu, nastavte soubor proměnné **PYTHON2** na hodnotu **on** pro obě počáteční úlohy spuštění a úlohu runtime: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Následující skripty byly napsány s cílem Python 3,8. Pokud chcete použít verzi 2.x Pythonu, nastavte soubor proměnné **PYTHON2** na hodnotu **on** pro obě počáteční úlohy spuštění a úlohu runtime: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -167,7 +167,7 @@ Proměnné **PYTHON2** a **PYPATH** je třeba přidat do počáteční úlohy pr
 Dále vytvořte soubory **PrepPython.ps1** a **PipInstaller.ps1** ve složce **./bin** vaší role.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Tento skript nainstaluje Python. Pokud je proměnná prostředí **PYTHON2** nastavená na hodnotu **on**, nainstaluje se Python 2.7; v opačném případě se nainstaluje Python 3.5.
+Tento skript nainstaluje Python. Pokud je proměnná prostředí **PYTHON2** nastavená **na on**, nainstaluje se Python 2,7, jinak se nainstaluje Python 3,8.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -186,12 +186,12 @@ if (-not $is_emulated){
 
     if (-not $?) {
 
-        $url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
-        $outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
+        $url = "https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe"
+        $outFile = "${env:TEMP}\python-3.8.8-amd64.exe"
 
         if ($is_python2) {
-            $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
-            $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
+            $url = "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+            $outFile = "${env:TEMP}\python-2.7.18.amd64.msi"
         }
 
         Write-Output "Not found, downloading $url to $outFile$nl"
@@ -214,7 +214,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Tento skript volá program pip a instaluje všechny závislosti v souboru **requirements.txt**. Pokud je proměnná prostředí **PYTHON2** nastavená na hodnotu **on**, použije se Python 2.7; v opačném případě se použije Python 3.5.
+Tento skript volá program pip a instaluje všechny závislosti v souboru **requirements.txt**. Pokud je proměnná prostředí **PYTHON2** nastavená **na zapnuto**, použije se Python 2,7, jinak se použije Python 3,8.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -249,7 +249,7 @@ if (-not $is_emulated){
 
 Soubor **bin\LaunchWorker.ps1** byl původně vytvořen pro větší množství přípravných prací, ve skutečnosti však tento cíl neplní. Nahraďte obsah daného souboru následujícím skriptem.
 
-Tento skript volá soubor **worker.py** z projektu v Pythonu. Pokud je proměnná prostředí **PYTHON2** nastavená na hodnotu **on**, použije se Python 2.7; v opačném případě se použije Python 3.5.
+Tento skript volá soubor **worker.py** z projektu v Pythonu. Pokud je proměnná prostředí **PYTHON2** nastavená **na zapnuto**, použije se Python 2,7, jinak se použije Python 3,8.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -364,4 +364,4 @@ Další podrobnosti o používání služeb Azure z vaší webové role a role p
 [Azure SDK Tools for VS 2015]: https://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
-[Python 3.5 32-bit]: https://www.python.org/downloads/
+[Python 3.8 32-bit]: https://www.python.org/downloads/

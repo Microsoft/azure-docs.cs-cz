@@ -4,23 +4,23 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: bf00b0829868b7099579c1a35113dbca1741cfe3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495868"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110881"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
-- Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
-- Získejte nejnovější verzi [klientské knihovny .NET identity](/dotnet/api/azure.identity).
-- Získejte nejnovější verzi [klientské knihovny pro správu .NET](../../concepts/sdk-options.md).
+- Nejnovější verze [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
+- Získejte nejnovější verzi sady [.NET identity SDK](/dotnet/api/azure.identity).
+- Získejte nejnovější verzi sady [.NET Management SDK](../../concepts/sdk-options.md).
 
-## <a name="installing-the-client-library"></a>Instalace klientské knihovny
+## <a name="installing-the-sdk"></a>Instalace sady SDK
 
-Nejdřív do projektu C# zahrňte klientskou knihovnu pro správu komunikačních služeb:
+Nejprve do projektu C# zahrňte sadu SDK pro správu komunikačních služeb:
 
 ```csharp
 using Azure.ResourceManager.Communication;
@@ -121,11 +121,11 @@ Teď, když jste ověřeni, můžete použít klienta pro správu k volání roz
 
 Pro každý z následujících příkladů budeme přiřazovat prostředky služby Communications do existující skupiny prostředků.
 
-Pokud potřebujete vytvořit skupinu prostředků, můžete to udělat pomocí [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) nebo [Azure Resource Manager klientské knihovny](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md).
+Pokud potřebujete vytvořit skupinu prostředků, můžete k tomu použít [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) nebo [sadu Azure Resource Manager SDK](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md).
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Vytvoření a Správa prostředku komunikačních služeb
 
-Naši instanci klienta klientské knihovny pro správu komunikačních služeb ( ``Azure.ResourceManager.Communication.CommunicationManagementClient`` ) je možné použít k provádění operací s prostředky komunikačních služeb.
+Naši instanci klienta sady SDK služby Communications Services ( ``Azure.ResourceManager.Communication.CommunicationManagementClient`` ) lze použít k provádění operací s prostředky komunikačních služeb.
 
 #### <a name="create-a-communication-services-resource"></a>Vytvoření prostředku Communication Services
 
@@ -173,7 +173,7 @@ await acsClient.CommunicationService.StartDeleteAsync(resourceGroupName, resourc
 
 ## <a name="managing-keys-and-connection-strings"></a>Správa klíčů a připojovacích řetězců
 
-Každý prostředek komunikačních služeb má dvojici přístupových klíčů a odpovídajících připojovacích řetězců. K těmto klíčům se dá dostat pomocí klientské knihovny pro správu a pak je používá v jiných knihovnách klienta komunikačních služeb k ověřování vůči komunikačním službám Azure.
+Každý prostředek komunikačních služeb má dvojici přístupových klíčů a odpovídajících připojovacích řetězců. K těmto klíčům máte přístup pomocí sady Management SDK a pak je používají jiné sady SDK služby Communications Services k ověřování vůči komunikačním službám Azure.
 
 #### <a name="get-access-keys-for-a-communication-services-resource"></a>Získání přístupových klíčů pro prostředek komunikačních služeb
 
