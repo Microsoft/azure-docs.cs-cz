@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103422149"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043066"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Efektivní horizontální navýšení kapacity vlastní dovednosti
 
@@ -22,7 +22,7 @@ Vlastní dovednosti jsou webová rozhraní API, která implementují konkrétní
 * Azure webapps pro jednoduché s kontejnerem AI – dovednosti
 * Služba Azure Kubernetes pro složitější nebo větší dovednosti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Projděte si [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) , kde se seznámíte se vstupním a výstupním rozhraním, které by měla vlastní dovednost implementovat.
 
@@ -42,7 +42,7 @@ V části [vlastní dovednost](cognitive-search-custom-skill-web-api.md) nastavt
 
 3. Nastavte `timeout` na dostatečnou hodnotu, aby mohla dovednost reagovat s platnou odpovědí.
 
-4. V `indexer` definici nastavte [`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) na počet dokumentů, které by měly být načteny ze zdroje dat a obohaceny současně.
+4. V `indexer` definici nastavte [`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) na počet dokumentů, které by měly být načteny ze zdroje dat a obohaceny současně.
 
 ### <a name="considerations"></a>Požadavky
 
@@ -106,5 +106,5 @@ Gratulujeme! Vaše vlastní dovednost se teď škáluje doprava, aby se maximali
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
-+ [Přidat Azure Machine Learning dovednost](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [Použití ladicích relací k testování změn](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [Přidat Azure Machine Learning dovednost](./cognitive-search-aml-skill.md)
++ [Použití ladicích relací k testování změn](./cognitive-search-debug-session.md)

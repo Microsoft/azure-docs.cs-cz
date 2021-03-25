@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4062375bbde1dce1e20ac04ff16562d892de808e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9bc4bd7c557f21c29949938411c76a88d979b3c2
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600172"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105037018"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
@@ -24,5 +24,5 @@ ms.locfileid: "104600172"
 |[Měla by být povolená virtuální síť spravovaného pracovního prostoru v pracovních prostorech Azure synapse.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |Povolením virtuální sítě spravovaného pracovního prostoru zajistíte, aby byl váš pracovní prostor v síti izolovaný od ostatních pracovních prostorů. Prostředky pro integraci dat a Spark nasazené v této virtuální síti také poskytují izolaci na úrovni uživatele pro aktivity Sparku. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |
 |[Spravované privátní koncové body synapse by se měly připojovat jenom k prostředkům ve schválených Azure Active Directory tenantech.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a003702-13d2-4679-941b-937e58c443f0) |Chraňte svůj pracovní prostor synapse tím, že povolíte připojení k prostředkům ve schválených klientech Azure Active Directory (Azure AD). Schválené klienty služby Azure AD lze definovat během přiřazování zásad. |Audit, zakázáno, odepřít |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_DataExfiltrationPrevention_Deny.json) |
 |[Nastavení auditování v pracovním prostoru synapse by měla mít skupiny akcí nakonfigurované pro zachycení kritických aktivit.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2b18f286-371e-4b80-9887-04759970c0d3) |Aby byly protokoly auditu co nejdůkladnější, měla by vlastnost AuditActionsAndGroups zahrnovat všechny příslušné skupiny. Doporučujeme přidat aspoň SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP a BATCH_COMPLETED_GROUP. V některých případech se vyžaduje dodržování regulativních standardů. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_ActionsAndGroups_Audit.json) |
-|[Pracovní prostory synapse by měly být nakonfigurované s uchováním dat v závislosti na 90 dnech nebo vyšším.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F529ea018-6afc-4ed4-95bd-7c9ee47b00bc) |Pro účely vyšetřování incidentů doporučujeme nastavit uchovávání dat pro audit pracovního prostoru synapse na alespoň 90 dní. Potvrďte, že splňujete nezbytná pravidla uchovávání pro oblasti, ve kterých pracujete. V některých případech se vyžaduje dodržování regulativních standardů. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditingRetentionDays_Audit.json) |
+|[Pracovní prostory synapse s auditováním SQL pro cíl účtu úložiště by měly být nakonfigurované s 90 dní uchovávání nebo vyšší úrovně.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F529ea018-6afc-4ed4-95bd-7c9ee47b00bc) |Pro účely vyšetřování incidentů doporučujeme nastavit uchovávání dat pro auditování SQL pracovního prostoru synapse na místo cíle účtu úložiště aspoň na 90 dní. Potvrďte, že splňujete nezbytná pravidla uchovávání pro oblasti, ve kterých pracujete. V některých případech se vyžaduje dodržování regulativních standardů. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditingRetentionDays_Audit.json) |
 |[V pracovních prostorech synapse by mělo být povolené posouzení ohrožení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0049a6b3-a662-4f3e-8635-39cf44ace45a) |Prohlédněte si, sledujte a opravte potenciální slabá místa, a nakonfigurujete opakované prověřování testů zranitelnosti SQL v pracovních prostorech synapse. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/ASC_SQLVulnerabilityAssessmentOnSynapse_Audit.json) |

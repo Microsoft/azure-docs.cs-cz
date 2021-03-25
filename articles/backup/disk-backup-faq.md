@@ -3,19 +3,14 @@ title: Nejčastější dotazy týkající se služby Azure disk Backup
 description: Získejte odpovědi na nejčastější dotazy týkající se zálohování disků Azure.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98734558"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107308"
 ---
-# <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Nejčastější dotazy týkající se služby Azure disk Backup (ve verzi Preview)
-
->[!IMPORTANT]
->Služba Azure disk Backup je ve verzi Preview bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informace o dostupnosti oblastí najdete v tématu [matice podpory](disk-backup-support-matrix.md).
->
->[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
+# <a name="frequently-asked-questions-about-azure-disk-backup"></a>Nejčastější dotazy týkající se služby Azure disk Backup
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure disk Backup. Další informace o dostupnosti oblasti [Azure disk Backup](disk-backup-overview.md) , podporovaných scénářích a omezeních najdete v tématu věnovaném [maticům podpory](disk-backup-support-matrix.md).
 

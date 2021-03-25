@@ -3,19 +3,14 @@ title: Řešení potíží se zálohováním ve službě Azure disk Backup
 description: Postup řešení potíží se zálohováním ve službě Azure disk Backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737723"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107240"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Řešení potíží se zálohováním ve službě Azure disk Backup (ve verzi Preview)
-
->[!IMPORTANT]
->Služba Azure disk Backup je ve verzi Preview bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informace o dostupnosti oblastí najdete v tématu [matice podpory](disk-backup-support-matrix.md).
->
->[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Řešení potíží se zálohováním ve službě Azure disk Backup
 
 Tento článek poskytuje informace o řešení potíží s problémy zálohování a obnovení s využitím disku Azure. Další informace o dostupnosti oblasti [Azure disk Backup](disk-backup-overview.md) , podporovaných scénářích a omezeních najdete v tématu věnovaném [maticům podpory](disk-backup-support-matrix.md).
 
@@ -157,7 +152,7 @@ Doporučená akce: Zvažte použití jiného bodu obnovení, který chcete obnov
 
 Chybová zpráva: zálohování disku ještě není dostupné v oblasti trezoru záloh, v rámci které se pokoušíte konfigurovat ochranu.
 
-Doporučená akce: úložiště záloh musí být v oblasti podporované ve verzi Preview. Dostupnost oblastí najdete v části [Podpora](disk-backup-support-matrix.md).
+Doporučená akce: úložiště záloh musí být v podporované oblasti. Dostupnost oblastí najdete v části [Podpora](disk-backup-support-matrix.md).
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Kód chyby: UserErrorDppDatasourceAlreadyHasBackupInstance
 

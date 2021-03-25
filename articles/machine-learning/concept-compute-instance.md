@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ac90827fec65187088787971623483a96da77d7c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3f41a68feafe2f0a3eae1e0026a4c350b0959aec
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016232"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036981"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -178,6 +178,9 @@ Výpočetní instance:
 * Podpora distribuovaných školicích úloh s jedním uzlem
 
 Výpočetní instanci můžete použít jako cíl nasazení místní Inferencing pro scénáře testování a ladění.
+
+> [!TIP]
+> Instance COMPUTE má disk s operačním systémem s 120 GB. Pokud vyčerpáte místo na disku, vymažte před tím, než se pokusíte o zastavení nebo restartování výpočetní instance, dostatek místa.
 
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Co se stalo s virtuálním počítačem poznámkového bloku?

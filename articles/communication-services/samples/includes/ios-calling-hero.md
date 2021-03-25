@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1d49aa0583f34327afff229b46d7a366202aded
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104783542"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152737"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Skupina komunikačních služeb Azure, která **volá Hero Sample pro iOS** , ukazuje, jak se komunikační služby volající klientské knihovny pro iOS dají použít k sestavení skupinového volání, které zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
+Skupina komunikačních služeb Azure, která **volá Hero Sample pro iOS** , ukazuje, jak se komunikační služby, které volají sadu iOS SDK, dají použít k vytvoření skupinového volajícího prostředí, které zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
 
 ## <a name="download-code"></a>Stažení kódu
 
@@ -27,7 +27,7 @@ Vyhledá finální kód pro tento rychlý Start na [GitHubu](https://github.com/
 
 ## <a name="overview"></a>Přehled
 
-Ukázka je nativní aplikace pro iOS, která pomocí klientských knihoven Azure Communications Services pro iOS sestavuje volání, které nabízí volání hlasu i audiovizuálního rozhraní. Aplikace používá serverovou komponentu ke zřízení přístupových tokenů, které se pak používají k inicializaci klientské knihovny Azure Communication Services. Pokud chcete tuto komponentu na straně serveru nakonfigurovat, využijte Azure Functions kurzu pro [důvěryhodnou službu](../../tutorials/trusted-service-tutorial.md) .
+Ukázka je nativní aplikace pro iOS, která používá sady SDK služby Azure Communications pro iOS k sestavení volání, které umožňuje volání hlasu i audiovizuálního rozhraní. Aplikace používá serverovou komponentu ke zřízení přístupových tokenů, které se pak používají k inicializaci sady Azure Communication Services SDK. Pokud chcete tuto komponentu na straně serveru nakonfigurovat, využijte Azure Functions kurzu pro [důvěryhodnou službu](../../tutorials/trusted-service-tutorial.md) .
 
 Ukázka vypadá takto:
 
@@ -50,7 +50,7 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Počítač Mac se systémem [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532)spolu s platným certifikátem pro vývojáře nainstalovaným do řetězce klíčů.
@@ -103,7 +103,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 Další informace najdete v následujících článcích:
 
-- Seznamte se s [použitím volání klientské knihovny](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- Seznámení s [používáním volání sady SDK](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>Další materiály ke čtení
