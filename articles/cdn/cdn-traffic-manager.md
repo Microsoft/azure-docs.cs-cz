@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92777737"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034754"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Převzetí služeb při selhání napříč několika koncovými body pomocí Azure Traffic Manager
 
@@ -94,7 +94,10 @@ Po nakonfigurování profilů CDN a Traffic Manager postupujte podle těchto kro
     > [!NOTE]
     > Pokud je vaše doména momentálně v provozu a nedá se přerušit, udělejte tento krok jako poslední. Před aktualizací vlastní domény DNS na Traffic Manager ověřte, jestli jsou koncové body CDN a domény Traffic Manageru aktivní.
     >
-
+   
+    > [!NOTE]
+    > V případě, že se tento implemeting při selhání scenerio, musí být oba koncové body v různých profilech a různé profily by měly být různým poskytovatelem CDN, aby nedocházelo ke konfliktům názvů domén.
+    > 
 
 2.  V profilu Azure CDN vyberte první koncový bod CDN (Akamai). Vyberte **Přidat vlastní doménu** a vstupní **cdndemo101.dustydogpetcare.online**. Ověřte, že se značka zaškrtnutí pro ověření vlastní domény zeleně. 
 

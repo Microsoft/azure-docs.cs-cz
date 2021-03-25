@@ -320,7 +320,7 @@
         - name: Rychlý přehled jazyka dotazů Kusto
           href: /azure/data-explorer/kql-quick-reference
         - name: Azure Monitor optimalizace dotazů protokolu
-          href: /azure/azure-monitor/logs/query-optimization
+          href: ../azure-monitor/logs/query-optimization.md
     - name: Rozšiřování UEBA
       href: ueba-enrichments.md
     - name: Mapování polí protokolu CEF

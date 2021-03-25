@@ -3,12 +3,12 @@ title: Jak používat funkci veřejné IP adresy v řešení Azure VMware
 description: Tento článek vysvětluje, jak používat funkci veřejné IP adresy ve službě Azure Virtual WAN.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 794e24e531d464adf58d5a06b5a411ada18c4a60
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99581376"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023652"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Jak používat funkci veřejné IP adresy v řešení Azure VMware
 
@@ -29,7 +29,7 @@ V rámci nasazení privátního cloudu řešení Azure VMware se po povolení fu
 
 Tento článek podrobně popisuje, jak můžete používat funkci veřejné IP adresy ve virtuální síti WAN.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Prostředí řešení Azure VMware
 - WebServer běžící v prostředí řešení Azure VMware.
@@ -47,6 +47,9 @@ Webový server obdrží požadavek a odpoví na požadované informace nebo str�
 
 ## <a name="test-case"></a>Testovací případ
 V tomto scénáři publikujete webserver IIS na Internet. K publikování webu na veřejné IP adrese použijte funkci veřejné IP adresy v řešení Azure VMware.  Také nakonfigurujete pravidla překladu adres (NAT) pro bránu firewall a přístup k prostředku řešení Azure VMware (virtuální počítače s webovým serverem) s veřejnou IP adresou.
+
+>[!TIP]
+>Pokud chcete povolit odchozí přenosy, musíte nastavit konfiguraci zabezpečení > internetový provoz na **Azure firewall**.
 
 ## <a name="deploy-virtual-wan"></a>Nasadit Virtual WAN.
 
@@ -152,7 +155,7 @@ Po nasazení všech součástí je můžete zobrazit v přidané skupině prost�
 
 ## <a name="limitations"></a>Omezení
 
-Na SDDCs můžete mít veřejné IP adresy 100.
+Pro každý privátní Cloud můžete mít 100 veřejných IP adres.
 
 ## <a name="next-steps"></a>Další kroky
 

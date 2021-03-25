@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93397945"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025471"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné dotazy: Zotavení po havárii Azure do Azure
 
@@ -73,7 +73,7 @@ Ano, virtuální počítače Azure můžete replikovat do libovolného předplat
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>Můžu replikovat virtuální počítače v zóně dostupnosti do jiné oblasti?
 
-Ano, virtuální počítače můžete replikovat v zónách dostupnosti do jiné oblasti Azure. Cílový virtuální počítač se dá nasadit jako jediná instance, v sadě dostupnosti nebo v zóně dostupnosti, pokud je tato možnost podporovaná v cílové oblasti. 
+Ano, virtuální počítače můžete replikovat v zónách dostupnosti do jiné oblasti Azure. 
 
 ### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>Můžu replikovat virtuální počítače, které nejsou zónou, do zóny ve stejné oblasti? 
 

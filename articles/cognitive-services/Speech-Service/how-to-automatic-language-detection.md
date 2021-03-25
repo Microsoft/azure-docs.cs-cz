@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185865"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025216"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatické zjišování jazyka pro rozpoznávání řeči na text
 
@@ -30,7 +30,7 @@ V tomto článku se naučíte, jak použít `AutoDetectSourceLanguageConfig` k v
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatické rozpoznávání jazyka pomocí sady Speech SDK
 
-Automatické zjišťování jazyka aktuálně má na zjišťování limit na straně služby čtyři jazyky. Při vytváření objektu si pamatujte na toto omezení `AudoDetectSourceLanguageConfig` . V následujících ukázkách vytvoříte `AutoDetectSourceLanguageConfig` a pak použijete k vytvoření `SpeechRecognizer` .
+Automatické zjišťování jazyka aktuálně má na zjišťování limit na straně služby čtyři jazyky. Při vytváření objektu si pamatujte na toto omezení `AutoDetectSourceLanguageConfig` . V následujících ukázkách vytvoříte `AutoDetectSourceLanguageConfig` a pak použijete k vytvoření `SpeechRecognizer` .
 
 > [!TIP]
 > Můžete také zadat vlastní model, který se použije při provádění řeči na text. Další informace najdete v tématu [použití vlastního modelu pro automatické rozpoznávání jazyka](#use-a-custom-model-for-automatic-language-detection).
