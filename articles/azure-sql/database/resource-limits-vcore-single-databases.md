@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/22/2021
-ms.openlocfilehash: 1fec13eefad7f27bcaac8f2c690b99909cd24e59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: d38dc7b2bf56ba91fcf77ebdb81836c8c398a52d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100518041"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023842"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity prostředků pro jednoúčelové databáze využívající nákupní model založený na virtuálních jádrech
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -383,7 +383,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1536|
 |Maximální velikost protokolu (GB)|336|336|336|336|512|
-|Maximální velikost dat databáze TempDB (GB)|333|333|333|333|333|
+|Maximální velikost dat databáze TempDB (GB)|37|46|56|65|74|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|2560|3200|3840|4480|5120|
@@ -409,7 +409,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1536|1536|1536|3072|3072|4 096|
 |Maximální velikost protokolu (GB)|512|512|512|1024|1024|1024|
-|Maximální velikost dat databáze TempDB (GB)|83,25|92,5|111|148|166,5|333|
+|Maximální velikost dat databáze TempDB (GB)|83|93|111|148|167|333|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5760|6400|7680|10240|11520|12800|

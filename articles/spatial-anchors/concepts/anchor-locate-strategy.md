@@ -8,18 +8,18 @@ ms.author: pamistel
 ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 13aa12be5a336363bbe3bcbf3e3fb354a8fa3074
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102617399"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048472"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>Princip třídy AnchorLocateCriteria
 V tomto článku se seznámíte s různými možnostmi, které můžete použít při dotazování kotvy. Přejdeme se na AnchorLocateCriteria třídu, její možnosti a platné kombinace možností.
 
 ## <a name="anchor-locate-criteria"></a>Umístit kritéria pro kotvu
-[Třída AnchorLocateCriteria](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) vám pomůže zadat dotaz na službu pro dříve vytvořené kotvy. Jeden objekt AnchorLocateCriteria může být v každém sledovacím procesu použit kdykoli. Každý objekt AnchorLocateCriteria musí obsahovat **přesně jednu** z následujících vlastností: [identifiers](#identifiers), [NearAnchor](#nearanchor)nebo [NearDevice](#neardevice). V případě potřeby je možné nastavit další vlastnosti, jako je například [strategie](#strategy), [BypassCache](#bypasscache)a [RequestedCategories](#requestedcategories) . 
+[Třída AnchorLocateCriteria](/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) vám pomůže zadat dotaz na službu pro dříve vytvořené kotvy. Jeden objekt AnchorLocateCriteria může být v každém sledovacím procesu použit kdykoli. Každý objekt AnchorLocateCriteria musí obsahovat **přesně jednu** z následujících vlastností: [identifiers](#identifiers), [NearAnchor](#nearanchor)nebo [NearDevice](#neardevice). V případě potřeby je možné nastavit další vlastnosti, jako je například [strategie](#strategy), [BypassCache](#bypasscache)a [RequestedCategories](#requestedcategories) . 
 
 ### <a name="properties"></a>Vlastnosti
 Ve sledovacím procesu definujte **přesně jednu** z těchto vlastností:
@@ -37,7 +37,7 @@ Tato vlastnost je určena pomocí objektu NearAnchorCriteria.
 #### <a name="neardevice"></a>NearDevice
 *Výchozí hodnota: Nenastaveno*
 
-Pomocí NearDevice můžete určit, že AnchorLocateCriteria omezuje sadu požadovaných kotev na ty, které se blíží fyzickému umístění zařízení. Jakékoli povolené snímače budou sloužit k odhalení kotev v zařízení. Aby bylo možné najít kotvy, měli byste nakonfigurovat SensorCapabilities a poskytnout tak relaci přístup ke všem vhodným senzorům. Další informace o nastavení a použití této vlastnosti najdete v tématu [hrubá reprostředí – prostorové kotvy Azure | Microsoft docs](https://docs.microsoft.com/azure/spatial-anchors/concepts/coarse-reloc) a *jak vytvářet a vyhledávat kotvy s využitím hrubých národních prostředí* v [jazyce C#](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), [objektivní – C](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), [SWIFT](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-swift), [Java](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-java), [c++/NDK](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-ndk), [c++/WinRT](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-winrt).
+Pomocí NearDevice můžete určit, že AnchorLocateCriteria omezuje sadu požadovaných kotev na ty, které se blíží fyzickému umístění zařízení. Jakékoli povolené snímače budou sloužit k odhalení kotev v zařízení. Aby bylo možné najít kotvy, měli byste nakonfigurovat SensorCapabilities a poskytnout tak relaci přístup ke všem vhodným senzorům. Další informace o nastavení a použití této vlastnosti najdete v tématu [hrubá reprostředí – prostorové kotvy Azure | Microsoft docs](./coarse-reloc.md) a *jak vytvářet a vyhledávat kotvy s využitím hrubých národních prostředí* v [jazyce C#](../how-tos/set-up-coarse-reloc-unity.md), [objektivní – C](../how-tos/set-up-coarse-reloc-unity.md), [SWIFT](../how-tos/set-up-coarse-reloc-swift.md), [Java](../how-tos/set-up-coarse-reloc-java.md), [c++/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md), [c++/WinRT](../how-tos/set-up-coarse-reloc-cpp-winrt.md).
 Tato vlastnost je určena pomocí objektu NearDeviceCriteria.
 
 ### <a name="additional-properties"></a>Další vlastnosti
@@ -66,7 +66,7 @@ Hodnota výčtu LocateStrategy | Description
 ---------------|------------
 AnyStrategy | Tato strategie umožňuje systému využívat kombinace VisualInformation a strategií vztahů k hledání kotev. 
 VisualInformation|Tato strategie se pokusí najít kotvy porovnáním vizuálních informací z aktuálního okolí s prvky vizuálního otisku kotvy. Vizuální otisky kotvy odkazují na vizuální informace, které jsou aktuálně přidruženy k ukotvení. Tyto informace o vizuálu jsou obvykle, ale nejsou shromažďovány výhradně během vytváření kotv. V současné době je tato strategie povolena pouze ve spojení s NearDevice nebo vlastnostmi identifikátorů.
-Relace|Tato strategie se pokouší najít kotvy tím, že používá existující [připojené kotvy](https://docs.microsoft.com/azure/spatial-anchors/concepts/anchor-relationships-way-finding#connect-anchors). V současné době je tato strategie povolena pouze ve spojení s NearAnchor nebo vlastnostmi identifikátorů. Pokud se používá s vlastností identifiers, je nutné, aby ve stejné relaci dříve byly umístěny kotvy s již vytvořenými připojenými vztahy k kotvám, jejichž ID jsou uvedena v poli identifikátory. 
+Relace|Tato strategie se pokouší najít kotvy tím, že používá existující [připojené kotvy](./anchor-relationships-way-finding.md#connect-anchors). V současné době je tato strategie povolena pouze ve spojení s NearAnchor nebo vlastnostmi identifikátorů. Pokud se používá s vlastností identifiers, je nutné, aby ve stejné relaci dříve byly umístěny kotvy s již vytvořenými připojenými vztahy k kotvám, jejichž ID jsou uvedena v poli identifikátory. 
 
 
 ### <a name="valid-combinations-of-locatestrategy-and-anchorlocatecriteria-properties"></a>Platné kombinace vlastností LocateStrategy a AnchorLocateCriteria 
@@ -86,4 +86,4 @@ NearDevice  | &check;    |   | &check;
 
 ## <a name="next-steps"></a>Další kroky
 
-Další příklady použití třídy AnchorLocateCriteria najdete v tématu [jak vytvořit a najít kotvy pomocí prostorových kotev Azure](https://docs.microsoft.com/azure/spatial-anchors/create-locate-anchors-overview) .
+Další příklady použití třídy AnchorLocateCriteria najdete v tématu [jak vytvořit a najít kotvy pomocí prostorových kotev Azure](../create-locate-anchors-overview.md) .

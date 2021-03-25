@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487866"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048081"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Rychlý Start: Přidání videa 1:1 pro volání do vaší aplikace (JavaScript)
 
@@ -20,11 +20,11 @@ ms.locfileid: "103487866"
 
 Najděte finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Získejte účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/) Aktivní LTS a verze LTS údržby (8.11.1 a 10.14.1)
-- Vytvořte aktivní prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
-- Vytvoření uživatelského přístupového tokenu pro vytvoření instance klienta volání. [Naučte se vytvářet a spravovat tokeny přístupu uživatelů](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
+- Vytvořte aktivní prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
+- Vytvoření uživatelského přístupového tokenu pro vytvoření instance klienta volání. [Naučte se vytvářet a spravovat tokeny přístupu uživatelů](../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Nastavení
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
@@ -330,10 +330,10 @@ Můžete vytvořit volání 1:1 odchozího videa zadáním ID uživatele v texto
 Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete vyčistit a odebrat předplatné služby Communications Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené. Přečtěte si další informace o [vyčištění prostředků](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources).
+Pokud chcete vyčistit a odebrat předplatné služby Communications Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené. Přečtěte si další informace o [vyčištění prostředků](../create-communication-resource.md?pivots=platform-azp&tabs=windows#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace najdete v následujících článcích:
-- Podívejte se na [ukázku našeho webového volání](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
-- Další informace o [volání funkcí klientské knihovny](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
-- Další informace o [volání funkce](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)
+- Podívejte se na [ukázku našeho webového volání](../../samples/web-calling-sample.md)
+- Další informace o [volání funkcí klientské knihovny](./calling-client-samples.md?pivots=platform-web)
+- Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)

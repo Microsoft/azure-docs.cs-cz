@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c57db8f55eb831f2da1b839c4dc5d4a7287ac6b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b2b9bad685bc26b0da4ba6eabe0785b112ff0a20
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605276"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033099"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
+|[\[Verze Preview \] : clustery Kubernetes s povoleným ARC Azure by měly mít nainstalované rozšíření v programu Azure Defender.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Rozšíření Azure Defenderu pro Azure ARC zajišťuje ochranu před hrozbami pro clustery Kubernetes s povoleným obloukem. Rozšíření shromažďuje data ze všech uzlů řídicí plochy v clusteru a odesílá je do Azure Defenderu pro Kubernetes back-end v cloudu pro další analýzu. Další informace najdete v [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |AuditIfNotExists, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Musí být povolené privátní clustery služby Azure Kubernetes.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F040732e8-d947-40b8-95d6-854c95024bf8) |Povolením funkce privátního clusteru pro cluster služby Azure Kubernetes zajistíte, že síťový provoz mezi serverem API a fondy uzlů zůstane jenom v privátní síti. To je běžný požadavek v mnoha zákonných a oborových normách dodržování předpisů. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_PrivateCluster_Deny.json) |
 |[V clusterech by měl být nainstalovaný a povolený doplněk Azure Policy pro službu Kubernetes (AKS).](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy doplněk pro službu Kubernetes (AKS) rozšiřuje Server Gatekeeper v3, Webhook kontroleru pro přístup pro Open Policy Agent (NEPRŮ), který se použije při vynuceném škálování a ochraně vašich clusterů v centralizovaném, konzistentním způsobem. |Audit, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Oba operační systémy i datové disky v clusterech služby Azure Kubernetes by měly být zašifrované pomocí klíčů spravovaných zákazníkem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Šifrování OS a datových disků pomocí klíčů spravovaných zákazníkem poskytuje větší kontrolu a větší flexibilitu při správě klíčů. To je běžný požadavek v mnoha zákonných a oborových normách dodržování předpisů. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |

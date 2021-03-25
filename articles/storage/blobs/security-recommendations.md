@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 40067815ad582191606ad5a53cf06c9584d83350
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 389d3507c3406743e14324c7b4667e045cfdb3b5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618011"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048030"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Doporučení zabezpečení pro úložiště objektů BLOB
 
-Tento článek obsahuje doporučení zabezpečení pro úložiště objektů BLOB. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti. Další informace o tom, jak společnost Microsoft splní zodpovědnost poskytovatele služeb, najdete v tématu [sdílená odpovědnost v cloudu](/azure/security/fundamentals/shared-responsibility).
+Tento článek obsahuje doporučení zabezpečení pro úložiště objektů BLOB. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti. Další informace o tom, jak společnost Microsoft splní zodpovědnost poskytovatele služeb, najdete v tématu [sdílená odpovědnost v cloudu](../../security/fundamentals/shared-responsibility.md).
 
 Některá doporučení obsažená v tomto článku můžete automaticky monitorovat pomocí Azure Security Center. Azure Security Center je první linií obrany při ochraně vašich prostředků v Azure. Informace o Azure Security Center najdete v tématu [co je Azure Security Center?](../../security-center/security-center-introduction.md)
 
