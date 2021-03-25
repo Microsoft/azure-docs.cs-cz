@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492332"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108382"
 ---
 # <a name="voice-and-video-concepts"></a>Koncepce hlasových hovorů a videohovorů
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Pomocí komunikačních služeb Azure můžete vytvořit a přijmout jedno pro jedno nebo více skupin volání hlasu a videa. Vaše volání se dají provádět na jiných zařízeních připojených k Internetu a na obyčejných telefonních hovorech. Klientské knihovny pro komunikační služby JavaScript, Android nebo iOS můžete použít k sestavování aplikací, které umožňují uživatelům vzájemně mluvit v privátních konverzacích nebo v diskusích skupin. Komunikační služby Azure podporují volání a ze služeb nebo roboty.
+Pomocí komunikačních služeb Azure můžete vytvořit a přijmout jedno pro jedno nebo více skupin volání hlasu a videa. Vaše volání se dají provádět na jiných zařízeních připojených k Internetu a na obyčejných telefonních hovorech. Sady SDK komunikačních služeb JavaScript, Android nebo iOS můžete použít k sestavování aplikací, které umožňují uživatelům vzájemně mluvit v privátních konverzacích nebo v diskusích skupin. Komunikační služby Azure podporují volání a ze služeb nebo roboty.
 
 ## <a name="call-types-in-azure-communication-services"></a>Typy volání ve komunikačních službách Azure
 
@@ -37,7 +37,7 @@ Pokaždé, když vaši uživatelé komunikují s tradičním telefonním čísle
 
 ### <a name="one-to-one-call"></a>Volání 1:1
 
-Pokud se jeden z vašich uživatelů připojuje k jinému uživateli pomocí jedné z našich klientských knihoven, volá se volání služby Azure Communication Services jedním z nich. Volání může být VoIP nebo PSTN.
+Pokud se jeden z vašich uživatelů připojí k jinému uživateli pomocí jedné z našich sad SDK, stane se volání služby Azure Communication Services jedním z nich. Volání může být VoIP nebo PSTN.
 
 ### <a name="group-call"></a>Seskupit volání
 
@@ -61,4 +61,4 @@ V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můž
 Další informace najdete v následujících článcích:
 - Seznamte se s obecnými [toky volání](../call-flows.md)
 - [Typy telefonních čísel](../telephony-sms/plan-solution.md)
-- Informace o [možnostech volání klientské knihovny](../voice-video-calling/calling-sdk-features.md)
+- Další informace o [možnostech volání sady SDK](../voice-video-calling/calling-sdk-features.md)

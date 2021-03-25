@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Firewall ke kontrole provozu určeného pro soukromý koncový bod
+title: Kontrola provozu směrovaného do privátního koncového bodu pomocí služby Azure Firewall
 titleSuffix: Azure Private Link
 description: Zjistěte, jak můžete kontrolovat provoz směřující do privátního koncového bodu pomocí Azure Firewall.
 services: private-link
@@ -8,14 +8,14 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575128"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108141"
 ---
-# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Použití Azure Firewall ke kontrole provozu určeného pro soukromý koncový bod
+# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Kontrola provozu směrovaného do privátního koncového bodu pomocí služby Azure Firewall
 
 Soukromý koncový bod Azure je základní stavební blok pro privátní propojení Azure. Privátní koncové body umožňují prostředkům Azure nasazeným ve virtuální síti komunikovat soukromě s prostředky privátního propojení.
 
@@ -25,8 +25,8 @@ Možná budete muset zkontrolovat nebo blokovat provoz od klientů až po služb
 
 Platí následující omezení:
 
-* Skupiny zabezpečení sítě (skupin zabezpečení sítě) se nevztahují na soukromé koncové body.
-* Trasy definované uživatelem (UDR) se nevztahují na soukromé koncové body.
+* Přenosy ze skupin zabezpečení sítě (NSG) přicházejí z privátních koncových bodů.
+* Trasy definované uživatelem (UDR) se přecházejí z provozu přicházejícího z privátních koncových bodů.
 * Jedna směrovací tabulka může být připojená k podsíti.
 * Směrovací tabulka podporuje až 400 tras.
 
@@ -35,7 +35,8 @@ Azure Firewall filtruje provoz pomocí těchto:
 * [Plně kvalifikovaný název domény v síťových pravidlech](../firewall/fqdn-filtering-network-rules.md) pro protokoly TCP a UDP
 * [Plně kvalifikovaný název domény v pravidlech použití](../firewall/features.md#application-fqdn-filtering-rules) pro http, https a MSSQL. 
 
-Většina služeb vystavených v rámci soukromých koncových bodů používá protokol HTTPS. Při používání Azure SQL se doporučuje použít pravidla použití aplikací přes pravidla sítě.
+> [!IMPORTANT] 
+> Při kontrole provozu určeného do privátních koncových bodů za účelem zachování procesu symetrie toků se doporučuje použít pravidla použití aplikací přes pravidla sítě. Pokud se používají Síťová pravidla nebo se místo Azure Firewall používá síťové virtuální zařízení, musí být pro provoz směřující do privátních koncových bodů nakonfigurovaný SNAT.
 
 > [!NOTE]
 > Filtrování plně kvalifikovaného názvu domény SQL je podporováno pouze v [režimu proxy serveru](../azure-sql/database/connectivity-architecture.md#connection-policy) (port 1433). Režim **proxy** může mít za následek větší latenci v porovnání s *přesměrování*. Pokud chcete pokračovat v používání režimu přesměrování, který je ve výchozím nastavení pro klienty připojující se v rámci Azure, můžete filtrovat přístup pomocí plně kvalifikovaného názvu domény v pravidlech sítě brány firewall.
@@ -46,12 +47,9 @@ Většina služeb vystavených v rámci soukromých koncových bodů používá 
 
 Tento scénář je nejrozšířenější architektura pro soukromou připojení k více službám Azure pomocí privátních koncových bodů. Trasa, která odkazuje na adresní prostor sítě, ve kterém jsou nasazené privátní koncové body. Tato konfigurace snižuje administrativní režii a brání v běhu do limitu 400 tras.
 
-Připojením z klientské virtuální sítě k Azure Firewall ve virtuální síti rozbočovače se budou účtovat poplatky, pokud jsou virtuální sítě v partnerském vztahu.
+Připojením z klientské virtuální sítě k Azure Firewall ve virtuální síti rozbočovače se budou účtovat poplatky, pokud jsou virtuální sítě v partnerském vztahu. Připojení z Azure Firewall ve virtuální síti rozbočovače do privátních koncových bodů v partnerské virtuální síti se neúčtují.
 
 Další informace o nákladech týkajících se připojení k virtuálním sítím s partnerským vztahem najdete v části Nejčastější dotazy stránky s [cenami](https://azure.microsoft.com/pricing/details/private-link/) .
-
->[!NOTE]
-> Tento scénář je možné implementovat pomocí pravidel síťové virtuální zařízení nebo Azure Firewallch síťových pravidel jiných výrobců, nikoli pravidel aplikací.
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Scénář 2: sdílená virtuální síť architektury centra a paprsků pro privátní koncové body a virtuální počítače
 
@@ -69,21 +67,15 @@ Administrativní režijní náklady na údržbu směrovací tabulky se zvyšují
 
 V závislosti na celkové architektuře je možné spustit limit 400 tras. Pokud je to možné, doporučuje se použít scénář 1.
 
-Připojením z klientské virtuální sítě k Azure Firewall ve virtuální síti rozbočovače se budou účtovat poplatky, pokud jsou virtuální sítě v partnerském vztahu.
+Připojením z klientské virtuální sítě k Azure Firewall ve virtuální síti rozbočovače se budou účtovat poplatky, pokud jsou virtuální sítě v partnerském vztahu. Připojení z Azure Firewall ve virtuální síti rozbočovače do privátních koncových bodů v partnerské virtuální síti se neúčtují.
 
 Další informace o nákladech týkajících se připojení k virtuálním sítím s partnerským vztahem najdete v části Nejčastější dotazy stránky s [cenami](https://azure.microsoft.com/pricing/details/private-link/) .
-
->[!NOTE]
-> Tento scénář je možné implementovat pomocí pravidel síťové virtuální zařízení nebo Azure Firewallch síťových pravidel jiných výrobců, nikoli pravidel aplikací.
 
 ## <a name="scenario-3-single-virtual-network"></a>Scénář 3: jedna virtuální síť
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Jedna virtuální síť" border="true":::
 
-K implementaci dochází k nějakým omezením: migrace do architektury hub a paprsků není možná. Platí stejné požadavky jako ve scénáři 2. V tomto scénáři se poplatky za partnerské vztahy virtuálních sítí nevztahují.
-
->[!NOTE]
-> Pokud chcete tento scénář implementovat pomocí síťové virtuální zařízení nebo Azure Firewall třetí strany, musí se pravidla sítě místo pravidel aplikací vyžadovat pro přenos dat z provozu do privátních koncových bodů. Jinak komunikace mezi virtuálními počítači a soukromými koncovými body selže.
+Tento model použijte v případě, že není možné migrovat do architektury hub a paprsek. Platí stejné požadavky jako ve scénáři 2. V tomto scénáři se poplatky za partnerské vztahy virtuálních sítí nevztahují.
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Scénář 4: místní provoz do privátních koncových bodů
 
@@ -98,10 +90,7 @@ Pokud požadavky na zabezpečení vyžadují, aby byly přenosy dat klientů do 
 
 Platí stejné požadavky jako ve scénáři 2 výše. V tomto scénáři se neúčtují poplatky za partnerské vztahy virtuálních sítí. Další informace o tom, jak nakonfigurovat servery DNS tak, aby umožňovaly místním úlohám přístup k privátním koncovým bodům, najdete v tématu [místní úlohy pomocí služby DNS pro přeposílání](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
 
->[!NOTE]
-> Pokud chcete tento scénář implementovat pomocí síťové virtuální zařízení nebo Azure Firewall třetí strany, musí se pravidla sítě místo pravidel aplikací vyžadovat pro přenos dat z provozu do privátních koncových bodů. Jinak komunikace mezi virtuálními počítači a soukromými koncovými body selže.
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure.
 * Pracovní prostor služby Log Analytics.  

@@ -1,7 +1,7 @@
 ---
-title: Přehled volání klientské knihovny Azure Communication Services
+title: Přehled služby Azure Communication Services pro volání sady SDK
 titleSuffix: An Azure Communication Services concept document
-description: Poskytuje přehled o volání klientské knihovny.
+description: Poskytuje přehled o volání sady SDK.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,25 +9,25 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598877"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108383"
 ---
-# <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
+# <a name="calling-sdk-overview"></a>Přehled volání sady SDK
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Existují dvě samostatné rodiny volání klientských knihoven pro *klienty* a *služby.* Aktuálně dostupné klientské knihovny jsou určené pro prostředí koncových uživatelů: websites a Native Apps.
+Existují dvě samostatné rodiny volání sad SDK pro *klienty* a *služby.* Aktuálně dostupné sady SDK jsou určené pro prostředí koncových uživatelů: websites a nativní aplikace.
 
-Knihovny klienta služby ještě nejsou k dispozici a poskytují přístup k nezpracovaným datovým a obrazovým rovinám, které jsou vhodné pro integraci s roboty a dalšími službami.
+Sady SDK služby ještě nejsou k dispozici a poskytují přístup k nezpracovaným datovým a obrazovým rovinám, které jsou vhodné pro integraci s roboty a dalšími službami.
 
-## <a name="calling-client-library-capabilities"></a>Volání funkcí klientské knihovny
+## <a name="calling-sdk-capabilities"></a>Volání funkcí sady SDK
 
-Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici ve komunikačních službách Azure, které volají klientské knihovny.
+Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici ve komunikačních službách Azure, které volají sady SDK.
 
 | Skupina funkcí | Schopnost                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
@@ -74,7 +74,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 
 
 
-## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>JavaScript – volání klientské podpory pomocí operačního systému a prohlížeče
+## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>JavaScript – volání sady SDK pomocí operačního systému a prohlížeče
 
 Následující tabulka představuje sadu podporovaných prohlížečů, které jsou aktuálně k dispozici. Pokud není uvedeno jinak, podporujeme nejnovější tři verze prohlížeče.
 
@@ -115,8 +115,8 @@ Tento prvek IFRAME například umožňuje přístup ke kameře a mikrofonu:
 <iframe allow="camera *; microphone *">
 ```
 
-## <a name="calling-client-library-streaming-support"></a>Volání podpory streamování klientské knihovny
-Komunikační služby volající klientské knihovny podporují následující konfigurace streamování:
+## <a name="calling-sdk-streaming-support"></a>Volání podpory streamování SDK
+Komunikační služby, které volají sadu SDK, podporují následující konfigurace streamování:
 
 |           |Web | Android/iOS|
 |-----------|----|------------|

@@ -4,12 +4,12 @@ description: Seznamte se s projektem aplikace, který jste právě vytvořili v 
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97760431"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044375"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Vaše aplikace Service Fabric a další kroky
 Vaše aplikace Azure Service Fabric se vytvořila. Tento článek obsahuje řadu prostředků, další informace, které vás mohou zajímat, a [Další možné kroky](#next-steps).
@@ -59,7 +59,7 @@ Vaše aplikace může obsahovat citlivé informace, jako jsou například připo
 Stejně jako u jiných platforem aplikace Service Fabric obvykle prochází následujícími fázemi: návrh, vývoj, testování, nasazení, upgrade, údržba a odebrání. [Tento článek](service-fabric-application-lifecycle.md) poskytuje přehled rozhraní API a způsob jejich používání různými rolemi v průběhu fáze životního cyklu Service Fabric aplikací.
 
 ## <a name="learn-about-best-practices"></a>Další informace o osvědčených postupech
-Service Fabric obsahuje řadu článků popisujících [osvědčené postupy](./service-fabric-best-practices-overview.md). Využijte tyto informace k tomu, abyste zajistili, že váš cluster a aplikace běží a co je možné.
+Service Fabric obsahuje řadu článků popisujících [osvědčené postupy](./service-fabric-best-practices-security.md). Využijte tyto informace k tomu, abyste zajistili, že váš cluster a aplikace běží a co je možné.
 Mezi zahrnutá témata patří:
 * [Zabezpečení](./service-fabric-best-practices-security.md)
 * [Sítě](./service-fabric-best-practices-networking.md)

@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a861ed27414ed407d00e8e886f20fb952a8ac95e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729511"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109029"
 ---
 # <a name="quickstart-call-to-phone"></a>Rychlý Start: volání na telefon
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Začněte s komunikačními službami Azure pomocí komunikačních služeb volání klientské knihovny pro přidání volání do veřejné telefonní sítě do vaší aplikace.
+Začněte s komunikačními službami Azure pomocí komunikačních služeb, které volají sadu SDK, a přidejte do své aplikace volání do veřejné telefonní sítě.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +42,5 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 Další informace najdete v následujících článcích:
 
-- Další informace o [volání funkcí klientské knihovny](./calling-client-samples.md)
+- Další informace o [volání funkcí sady SDK](./calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)

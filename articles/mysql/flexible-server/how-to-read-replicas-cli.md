@@ -1,18 +1,18 @@
 ---
 title: Spravujte repliky čtení v Azure Database for MySQL flexibilním serveru pomocí Azure CLI.
 description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Database for MySQL flexibilním serveru pomocí Azure CLI.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a7d63fd76a88430495c9f55200308f63b11c89d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc95cd3ab471826538a551687c38d1422e4b7163
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96494303"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108651"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MySQL flexibilním serveru pomocí Azure CLI
 
@@ -27,7 +27,7 @@ V tomto článku se naučíte, jak vytvářet a spravovat repliky pro čtení v 
 ## <a name="azure-cli"></a>Azure CLI
 Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli)
 - [Azure Database for MySQL flexibilní Server](quickstart-create-server-cli.md) , který se bude používat jako zdrojový server.

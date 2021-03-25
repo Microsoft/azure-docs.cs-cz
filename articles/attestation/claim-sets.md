@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d6d5a08ea85ebb666acc0336f1e1d7ec5e097da
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704799"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044664"
 ---
 # <a name="claim-sets"></a>Sady deklarací identity
 
@@ -20,102 +20,35 @@ Deklarace identity vygenerované v procesu ověřování enclaves pomocí Micros
 
 - **Příchozí deklarace identity**: deklarace identity vygenerované Microsoft azurem ověření identity po analýze legitimace ověřování a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách.
 
-- **Odchozí deklarace identity**: deklarace identity vygenerované službou Azure Attestation a obsahují všechny deklarace identity, které končí v tokenu ověření identity.
+- **Odchozí deklarace identity**: deklarace identity vygenerované službou Azure Attestation a zahrnuté do tokenu ověření identity
 
 - **Deklarace vlastností**: deklarace identity vytvořené jako výstup pomocí ověření identity Azure. Obsahuje všechny deklarace identity, které reprezentují vlastnosti tokenu ověření identity, jako je například kódování sestavy, doba platnosti sestavy atd.
 
-### <a name="common-incoming-claims-across-all-attestation-types"></a>Běžné příchozí deklarace identity napříč všemi typy ověření identity
+## <a name="incoming-claims"></a>Příchozí deklarace identity 
 
-Níže jsou deklarace identity generované službou Azure Attestation a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách pro všechny typy ověření identity.
+### <a name="sgx-attestation"></a>Ověření identity SGX
 
-- **x-MS-ver**: verze schématu JWT (očekávaná jako "1,0")
-- **x-MS-ověření identity-typ**: řetězcová hodnota představující typ ověření identity 
-- **x-MS-Policy-hash**: hash zásad hodnocení Azure Attestation vypočítaných jako BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (text zásady))))
-- **x-MS-Policy-Signer**: objekt JSON s členem "JWK", který představuje klíč, který zákazník použil k podepsání svých zásad, když zákazník nahraje podepsané zásady
-
-Níže jsou deklarace, které se považují za zastaralé, ale jsou plně podporované. Doporučuje se používat nepoužívané názvy deklarací identity.
-
-Zastaralá deklarace identity | Doporučená deklarace identity 
---- | --- 
-ver | x-MS-ver
-Tee | x-MS-ověření identity – typ
-maa-policyHash | x-MS-Policy-hash
-policy_hash | x-MS-Policy-hash
-policy_signer | x-MS-Policy-Signer
-
-### <a name="common-outgoing-claims-across-all-attestation-types"></a>Běžné odchozí deklarace identity napříč všemi typy ověření identity
-
-Níže jsou deklarace identity zahrnuté v tokenu ověření identity pro všechny typy ověření identity službou.
-
-Zdroj: definovaný serverem [IETF JWT](https://tools.ietf.org/html/rfc7519)
-
-- **Deklarace identity "JTI" (JWT ID)**
-- **Deklarace identity "ISS" (Issuer)**
-- **Deklarace identity "IAT" (vydáno na)**
-- **Deklarace identity "EXP" (čas vypršení platnosti)**
-- **Deklarace "NBF" (ne před)**
-
-Zdroj: podle definice [IETF Eat](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9)
-
-- **Hodnota Nonce deklarace (nonce)**
-
-Ve výchozím nastavení jsou v tokenu ověření zahrnuty deklarace identity na základě příchozích deklarací identity:
-
-- **x-MS-ver**: verze schématu JWT (očekávaná jako "1,0")
-- **x-MS-ověření identity-typ**: řetězcová hodnota představující typ ověření identity 
-- **x-MS-Policy-hash**: hodnota řetězce obsahující SHA256 hash textu zásad vypočítaného BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (text zásady))))
-- **x-MS-Policy-Signer**: obsahuje JWK s veřejným klíčem nebo řetěz certifikátů, který se nachází v podepsané hlavičce zásad. x-MS-Policy-Signer se přidá jenom v případě, že je zásada podepsaná.
-
-## <a name="claims-specific-to-sgx-enclaves"></a>Deklarace identity specifické pro SGX enclaves
-
-### <a name="incoming-claims-specific-to-sgx-attestation"></a>Příchozí deklarace identity specifické pro ověření identity SGX
-
-Níže jsou deklarace identity vygenerované službou Azure Attestation a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách pro SGX ověření identity.
+Deklarace identity, které budou používat autoři zásad k definování autorizačních pravidel v zásadách ověřování SGX:
 
 - **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
-- **x-MS-SGX-Product-ID**
+- **x-MS-SGX-Product-ID**: hodnota ID produktu SGX enklávy 
 - **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách
 - **x-MS-SGX-mrenclave**: hodnota zakódovaná v poli "mrenclave" v uvozovkách
 - **x-MS-SGX-SVN**: číslo verze zabezpečení kódované v uvozovkách 
-
-### <a name="outgoing-claims-specific-to-sgx-attestation"></a>Odchozí deklarace identity specifické pro ověření identity SGX
-
-Služba pro ověření identity SGX vygenerovala tyto deklarace a zahrne je do tokenu ověření identity.
-
-- **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
-- **x-MS-SGX-Product-ID**
-- **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách
-- **x-MS-SGX-mrenclave**: hodnota zakódovaná v poli "mrenclave" v uvozovkách
-- **x-MS-SGX-SVN**: číslo verze zabezpečení kódované v uvozovkách 
-- **x-MS-SGX-EHD**: enklávy uchovává data FORMÁTOVANÁ jako BASE64URL (enklávy uchovávaná data).
-- **x-MS-SGX-** prokládání: objekt JSON popisující materiály použité k provedení ověření identity. Hodnota pro deklaraci identity x-MS-SGX-promítá je vnořený objekt JSON s následujícími páry klíč/hodnota:
-    - **qeidcertshash**: SHA256 hodnota QEch certifikátů pro vydávání identity
-    - **qeidcrlhash**: SHA256 hodnota QE seznamu certifikátů pro certifikáty vystavování identit identity
-    - **qeidhash**: SHA256 hodnota pro QE identity
-    - **quotehash**: SHA256 hodnota vyhodnocené uvozovky
-    - **tcbinfocertshash**: SHA256 hodnota informací o vystavování certifikátů TCB
-    - **tcbinfocrlhash**: SHA256 hodnota informací o seznamu CRL vydaných certifikátů TCB
-    - **tcbinfohash**: objekt JSON popisující materiál, který se používá k provedení ověření identity
 
 Níže jsou deklarace, které se považují za zastaralé, ale jsou plně podporované a budou i nadále zahrnuty do budoucna. Doporučuje se používat nepoužívané názvy deklarací identity.
 
 Zastaralá deklarace identity | Doporučená deklarace identity
 --- | --- 
 $is-laditelné | x-MS-SGX-je laditelné
+$product – ID | x-MS-SGX-Product-ID
 $sgx – mrsigner | x-MS-SGX-mrsigner
 $sgx – mrenclave | x-MS-SGX-mrenclave
-$product – ID | x-MS-SGX-Product-ID
 $svn | x-MS-SGX-SVN
-$tee | x-MS-ověření identity – typ
-maa-ehd | x-MS-SGX-EHD
-AAS – EHD | x-MS-SGX-EHD
-maa-attestationcollateral | x-MS-SGX-prosourozenci
 
-## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>Deklarace identity specifické pro ověření identity TPM (Trusted Platform Module)/VBS
+### <a name="tpm-attestation"></a>Osvědčení TPM
 
-### <a name="incoming-claims-for-tpm-attestation"></a>Příchozí deklarace identity pro ověření TPM
-
-Deklarace identity vydané Azure Attestation pro ověření identity TPM Dostupnost deklarací identity závisí na důkazech poskytnutých pro ověření identity.
+Deklarace identity, které budou používat autoři zásad k definování autorizačních pravidel v zásadách ověření identity TPM:
 
 - **aikValidated**: logická hodnota obsahující informace, pokud byl ověřený certifikát sady AIK (Attestation Identity Key).
 - **aikPubHash**: řetězec obsahující base64 (SHA256 (veřejný klíč sady AIK ve formátu der))
@@ -128,9 +61,9 @@ Deklarace identity vydané Azure Attestation pro ověření identity TPM Dostupn
 - **vbsEnabled**: logická hodnota označující, jestli je POVOLENý vbs
 - **vbsReportPresent**: logická hodnota označující, zda je k dispozici sestava vbs enklávy
 
-### <a name="incoming-claims-for-vbs-attestation"></a>Příchozí deklarace identity pro VBS
+### <a name="vbs-attestation"></a>VBS Attestation
 
-Deklarace identity vydané službou Azure Attestation pro VBS pro ověřování VBS jsou kromě deklarací dostupných k dispozici pro ověření identity čipem TPM. Dostupnost deklarací identity závisí na důkazech poskytnutých pro ověření identity.
+Kromě deklarací identity zásad ověření identity TPM můžou autoři zásad používat níže uvedené deklarace identity, které definují autorizační pravidla v zásadách ověřování VBS.
 
 - **enclaveAuthorId**: hodnota řetězce obsahující Base64Url kódovanou hodnotu ID autora enklávy – identifikátor autora primárního modulu pro enklávy
 - **enclaveImageId**: hodnota řetězce obsahující Base64Urlou hodnotu ID image enklávy – identifikátor image primárního modulu pro enklávy
@@ -140,12 +73,79 @@ Deklarace identity vydané službou Azure Attestation pro VBS pro ověřování 
 - **enclavePlatformSvn**: celočíselná hodnota obsahující číslo verze zabezpečení platformy, která hostuje enklávy
 - **enclaveFlags**: deklarace EnclaveFlags je celočíselná hodnota obsahující příznaky, které popisují zásady modulu runtime pro enklávy
 
-### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>Odchozí deklarace identity specifické pro ověření identity TPM a VBS
+## <a name="outgoing-claims"></a>Odchozí deklarace identity 
+
+### <a name="common-for-all-attestation-types"></a>Společné pro všechny typy ověření identity
+
+Azure Attestation obsahuje níže uvedené deklarace identity v tokenu ověření pro všechny typy ověření identity. 
+
+- **x-MS-ver**: verze schématu JWT (očekávaná jako "1,0")
+- **x-MS-ověření identity-typ**: řetězcová hodnota představující typ ověření identity 
+- **x-MS-Policy-hash**: hash zásad hodnocení Azure Attestation vypočítaných jako BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (text zásady))))
+- **x-MS-Policy-Signer**: objekt JSON s členem "JWK", který představuje klíč, který zákazník použil k podepsání svých zásad. To platí, když zákazník nahraje podepsané zásady.
+
+Ve [specifikaci IETF JWT](https://tools.ietf.org/html/rfc7519) se používají níže uvedené názvy deklarací identity.
+
+- **deklarace identity JTI (ID JWT)** – jedinečný identifikátor pro token JWT
+- **deklarace identity "ISS" (Issuer)** – objekt zabezpečení, který VYSTAVIL token JWT. 
+- **deklarace identity "IAT" (vydáno na)** – čas vydání tokenu JWT 
+- **"EXP" (čas vypršení platnosti) deklarace identity** – čas vypršení platnosti, po kterém nesmí být požadavek JWT přijat ke zpracování
+- **deklarace "NBF" (ne před) deklarací** – ne před časem, po který nesmí být požadavek JWT přijat ke zpracování 
+
+Níže uvedené názvy deklarací identity se používají ze [specifikace IETF Eat konceptu](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) .
+
+- Hodnota **nonce Claim (nonce)** – netransformovaná Přímá kopie volitelné hodnoty nonce, kterou poskytuje klient 
+
+Níže jsou deklarace, které se považují za zastaralé, ale jsou plně podporované a budou i nadále zahrnuty do budoucna. Doporučuje se používat nepoužívané názvy deklarací identity.
+
+Zastaralá deklarace identity | Doporučená deklarace identity
+--- | --- 
+ver | x-MS-ver
+Tee | x-MS-ověření identity – typ
+policy_hash | x-MS-Policy-hash
+maa-policyHash | x-MS-Policy-hash
+policy_signer  | x-MS-Policy-Signer
+
+### <a name="sgx-attestation"></a>Ověření identity SGX 
+
+Služba pro ověření identity SGX vygenerovala tyto deklarace a zahrne je do tokenu ověření identity.
+
+- **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
+- **x-MS-SGX-Product-ID**: hodnota ID produktu SGX enklávy 
+- **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách
+- **x-MS-SGX-mrenclave**: hodnota zakódovaná v poli "mrenclave" v uvozovkách
+- **x-MS-SGX-SVN**: číslo verze zabezpečení kódované v uvozovkách 
+- **x-MS-SGX-EHD**: enklávy uchovává data FORMÁTOVANÁ jako BASE64URL (enklávy uchovávaná data).
+- **x-MS-SGX-** prokládání: objekt JSON popisující materiály použité k provedení ověření identity. Hodnota pro deklaraci identity x-MS-SGX-promítá je vnořený objekt JSON s následujícími páry klíč/hodnota:
+    - **qeidcertshash**: SHA256 hodnota Quoting ENKLÁVY (QE) vystavujících certifikátů identity
+    - **qeidcrlhash**: SHA256 hodnota QE seznamu certifikátů pro certifikáty vystavování identit identity
+    - **qeidhash**: SHA256 hodnota pro QE identity
+    - **quotehash**: SHA256 hodnota vyhodnocené uvozovky
+    - **tcbinfocertshash**: SHA256 hodnota informací o vystavování certifikátů TCB
+    - **tcbinfocrlhash**: SHA256 hodnota informací o seznamu CRL vydaných certifikátů TCB
+    - **tcbinfohash**: SHA256 hodnota informačního podkladu TCB
+
+Níže jsou deklarace, které se považují za zastaralé, ale jsou plně podporované a budou i nadále zahrnuty do budoucna. Doporučuje se používat nepoužívané názvy deklarací identity.
+
+Zastaralá deklarace identity | Doporučená deklarace identity
+--- | --- 
+$is-laditelné | x-MS-SGX-je laditelné
+$product – ID | x-MS-SGX-Product-ID
+$sgx – mrsigner | x-MS-SGX-mrsigner
+$sgx – mrenclave | x-MS-SGX-mrenclave
+$svn | x-MS-SGX-SVN
+$maa – EHD | x-MS-SGX-EHD
+$aas – EHD | x-MS-SGX-EHD
+$maa – attestationcollateral | x-MS-SGX-prosourozenci
+
+### <a name="tpm-and-vbs-attestation"></a>Ověření identity TPM a VBS
 
 - **CNF (potvrzení)**: deklarace identity "CNF" se používá k identifikaci klíče pro ověření příznaku. Potvrzovací deklarace definovaná v dokumentu RFC 7800 obsahuje veřejnou část enklávy klíče, který je reprezentován jako objekt webového klíče JSON (JWK) (RFC 7517).
 - **rp_data (data předávající strany)**: data předávající strany, pokud jsou zadána v žádosti, používaná předávající stranou jako hodnota nonce k zajištění aktuálnosti sestavy. rp_data se přidá jenom v případě, že existuje rp_data
 
-### <a name="property-claims"></a>Deklarace vlastností
+## <a name="property-claims"></a>Deklarace vlastností
+
+### <a name="tpm-and-vbs-attestation"></a>Ověření identity TPM a VBS
 
 - **report_validity_in_minutes**: celočíselná deklarace, která označuje, jak dlouho je token platný.
   - **Výchozí hodnota (Time)**: jeden den v minutách.

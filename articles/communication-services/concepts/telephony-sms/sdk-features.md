@@ -1,7 +1,7 @@
 ---
-title: Přehled klientské knihovny SMS pro komunikační služby Azure
+title: Přehled sady SMS SDK pro komunikační služby Azure
 titleSuffix: An Azure Communication Services concept document
-description: Poskytuje přehled klientské knihovny SMS a jejích nabídek.
+description: Poskytuje přehled sady SMS SDK a jejích nabídek.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,25 +9,25 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11ab634ed4b25c5fd8c0079263094c393e9dcbe6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 25a5befab6ef141b059caaac7b1784d47f2f93cf
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496588"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108107"
 ---
-# <a name="sms-client-library-overview"></a>Přehled klientských knihoven pro SMS
+# <a name="sms-sdk-overview"></a>Přehled sady SMS SDK
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Klientské knihovny služby Azure Communication Services můžete použít k přidání zasílání zpráv SMS do aplikací.
+Sady SDK pro službu Azure Communication Services je možné použít k přidávání zpráv SMS do aplikací.
 
-## <a name="sms-client-library-capabilities"></a>Možnosti klientské knihovny SMS
+## <a name="sms-sdk-capabilities"></a>Možnosti sady SMS SDK
 
-Následující seznam uvádí sadu funkcí, které jsou aktuálně k dispozici v našich klientských knihovnách.
+Následující seznam uvádí sadu funkcí, které jsou aktuálně dostupné v našich sadách SDK.
 
 | Skupina funkcí | Schopnost                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |

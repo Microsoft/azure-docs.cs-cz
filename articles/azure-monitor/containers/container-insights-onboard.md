@@ -3,12 +3,12 @@ title: Povolit službu Container Insights | Microsoft Docs
 description: Tento článek popisuje, jak povolit a nakonfigurovat službu Container Insights, abyste mohli porozumět tomu, jak váš kontejner vykonává a jaké problémy byly zjištěny v souvislosti s výkonem.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708352"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109331"
 ---
 # <a name="enable-container-insights"></a>Povolit službu Container Insights
 
@@ -32,7 +32,7 @@ Můžete povolit službu Container Insights pro nové nasazení nebo pro jedno n
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
@@ -64,6 +64,7 @@ Než začnete, ujistěte se, že jste splnili následující požadavky:
 - Chcete-li zobrazit data monitorování, musíte mít roli [*čtenář Log Analytics*](../logs/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics, která je nakonfigurována pomocí kontejneru Insights.
 
 - Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Předtím, než [nakonfigurujete agenta](container-insights-prometheus-integration.md) tak, aby shromáždil metriky, je důležité si projít [dokumentaci k Prometheus](https://prometheus.io/) , která vám pomůže pochopit, jaká data se dají vyřadit a jaké metody se podporují.
+- Cluster AKS se dá připojit k pracovnímu prostoru Log Analytics v jiném předplatném Azure ve stejném Tenantovi Azure AD. Tuto možnost teď nejde udělat pomocí webu Azure Portal, ale můžete ji udělat pomocí Azure CLI nebo šablony Správce prostředků.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 

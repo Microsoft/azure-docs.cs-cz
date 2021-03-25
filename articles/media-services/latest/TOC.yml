@@ -341,13 +341,15 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Kopírování videí bez kódování s využitím REST
           href: how-to-create-copy-video-audio-transform.md
-        - name: Vytváření úloh
+        - name: Vytváření úloh pomocí .NET
           href: cli-create-jobs.md
         - name: Vytvoření vstupu úlohy s využitím místního souboru a .NET
           displayName: upload
           href: job-input-from-local-file-how-to.md
         - name: Úlohy s několika transformačními výstupy
           href: job-multiple-transform-outputs.md
+        - name: Spojování dvou nebo více videosouborů pomocí .NET
+          href: stitch-howto.md
     - name: Kódování obsahu
       items:
         - name: HTTPS jako vstup úlohy

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5960238893ae1e4dc307db98f9dc73889a2fa5b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487819"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108889"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -30,7 +30,7 @@ ms.locfileid: "103487819"
 > [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-**Ukázka konverzace Hero skupiny** služby Azure Communication Services ukazuje, jak lze použít knihovnu webového klienta chat komunikační služby k vytvoření skupinového volání.
+**Ukázka konverzace Hero ve skupině** komunikačních služeb Azure představuje způsob, jakým se dá web SDK komunikačních služeb použít k sestavení prostředí pro volání skupiny.
 
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
@@ -59,7 +59,7 @@ Součásti hlavní obrazovky chatu:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 a vyšší)](https://nodejs.org/en/download/)
@@ -87,7 +87,7 @@ Ukázku můžete otestovat místně tak, že otevřete několik relací prohlí�
 1. Přejít do složky chat a otevřít `Chat.csproj` řešení v aplikaci Visual Studio
 2. Spusťte projekt. Prohlížeč se otevře v localhost: 5000.
 
-#### <a name="troubleshooting"></a>Poradce při potížích
+#### <a name="troubleshooting"></a>Řešení potíží
 
 - Řešení se nevytvoří, vyvolá chyby během instalace/buildu NPM.
 
@@ -111,7 +111,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 Další informace najdete v následujících článcích:
 
 - Další informace o [konceptech chatu](../concepts/chat/concepts.md)
-- Seznamte se s naší [klientskou knihovnou chatu](../concepts/chat/sdk-features.md)
+- Seznamte se s naší sadou [Chat SDK](../concepts/chat/sdk-features.md)
 - Kontrola ukázky [aplikace Contoso med](https://github.com/Azure-Samples/communication-services-contoso-med-app)
 
 ## <a name="additional-reading"></a>Další materiály ke čtení

@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ee8a192bcfe20c77e47ee9c89dfc3286a979e358
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722289"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108056"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak vytvořit pracovní prostor synapse, vyhrazený fond SQL a fond Apache Spark bez serveru. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
 
@@ -33,24 +33,22 @@ K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prost�
 1. Vyberte **Přidat** a vytvořte pracovní prostor.
 
 ## <a name="basics-tab--project-details"></a>Karta základy > podrobnosti o projektu
-1. Karta **základy** v části **Project Details (podrobnosti projektu**) vyplňte následující pole:
-      1. **Předplatné** – vyberte nějaké předplatné.
-      2. **Skupina prostředků** – použijte jakoukoli skupinu prostředků.
-      3. **Skupina prostředků** – ponechte toto pole prázdné.
+Vyplňte následující pole:
+    1. **Předplatné** – vyberte nějaké předplatné.
+    1. **Skupina prostředků** – použijte jakoukoli skupinu prostředků.
+    1. **Skupina prostředků** – ponechte toto pole prázdné.
 
 
 ## <a name="basics-tab--workspace-details"></a>Karta základy > podrobnosti o pracovním prostoru
-1. Na kartě **základy** v části **Podrobnosti o pracovním prostoru** vyplňte následující pole:
-      1. **Název pracovního prostoru** – vyberte libovolný globálně jedinečný název. V tomto kurzu použijeme **MyWorkspace**.
-      1. **Oblast** – vyberte libovolnou oblast.
-      1. **Vybrat Data Lake Storage Gen 2**
-        1. Klikněte na tlačítko **z předplatného**.
-        1. Podle **názvu účtu** klikněte na **vytvořit nový** a pojmenujte nový účet úložiště **contosolake** nebo podobný, protože tento název musí být jedinečný.
-        1. Podle **názvu systému souborů** klikněte na **vytvořit nový** a pojmenujte **uživatele** IT. Tím se vytvoří kontejner úložiště s názvem **Uživatelé**. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
-        1. Zaškrtněte políčko přiřadit roli Přispěvatel dat objektů BLOB úložiště v poli Data Lake Storage Gen2 účet. 
+Vyplňte následující pole: 1. **Název pracovního prostoru** – vyberte libovolný globálně jedinečný název. V tomto kurzu použijeme **MyWorkspace**.
+1. **Oblast** – vyberte libovolnou oblast.
+1. **Vybrat data Lake Storage Gen 2** první. Klikněte na tlačítko **z předplatného**.
+1. Podle **názvu účtu** klikněte na **vytvořit nový** a pojmenujte nový účet úložiště **contosolake** nebo podobný, protože tento název musí být jedinečný.
+1. Podle **názvu systému souborů** klikněte na **vytvořit nový** a pojmenujte **uživatele** IT. Tím se vytvoří kontejner úložiště s názvem **Uživatelé**. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
+1. Zaškrtněte políčko přiřadit roli Přispěvatel dat objektů BLOB úložiště v poli Data Lake Storage Gen2 účet. 
 
-### <a name="completing-the-process"></a>Dokončuje se proces.
-5. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
+## <a name="completing-the-process"></a>Dokončuje se proces.
+Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
 > [!NOTE]
 > Pokud chcete povolit funkce pracovního prostoru z existujícího vyhrazeného fondu SQL (dřív SQL DW), přečtěte si, [Jak povolit pracovní prostor pro vyhrazený fond SQL (dřív SQL DW)](./sql-data-warehouse/workspace-connected-create.md).

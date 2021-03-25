@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/23/2021
-ms.openlocfilehash: d38dc7b2bf56ba91fcf77ebdb81836c8c398a52d
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: a3cd68b610b0e0db05f60450009bc83a80c3037b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023842"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107597"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity prostředků pro jednoúčelové databáze využívající nákupní model založený na virtuálních jádrech
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|3200|3840|4480|5120|
-|Maximální rychlost protokolu (MB/s)|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|45|50|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|750|900|1050|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|
@@ -103,7 +103,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5760|6400|7680|10240|12800|
-|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|50|50|50|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|1350|1 500|1800|2400|3000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|
@@ -246,7 +246,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|
 |Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |
-|Maximální místní SSD IOPS *|8000 |16000 |24000 |32000 |
+|Maximální místní SSD IOPS *|14000|28000|42000|44800|
 |Maximální rychlost protokolu (MB/s)|100 |100 |100 |100 |
 |Latence v/v (přibližná)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
 |Maximální počet souběžných pracovních procesů (požadavků)|160|320|480|640|
@@ -308,7 +308,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)
 |Maximální počet datových IOPS *|2240|2560|2880|3200|5120|7680|
-|Maximální rychlost protokolu (MB/s)|31.5|36|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|31.5|36|40,5|45|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|
@@ -335,7 +335,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|640|1280|1920|2560|3200|3840|4480|
-|Maximální rychlost protokolu (MB/s)|9|18|27|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|9|18|27|36|45|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
@@ -360,7 +360,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5120|5760|6400|7680|10240|12800|12800|
-|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|50|50|50|50|50|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
@@ -387,7 +387,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|2560|3200|3840|4480|5120|
-|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|36|45|50|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|400|500|600|700|800|
 |Maximální počet souběžných přihlášení|800|1000|1200|1400|1600|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
@@ -413,7 +413,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5760|6400|7680|10240|11520|12800|
-|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|36|
+|Maximální rychlost protokolu (MB/s)|50|50|50|50|50|50|
 |Maximální počet souběžných pracovních procesů (požadavků)|900|1000|1200|1600|1800|3600|
 |Maximální počet souběžných přihlášení|1800|2000|2400|3200|3600|7200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -635,7 +635,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|14000|28000|42000|56000|
+|Maximální počet datových IOPS *|14000|28000|42000|44800|
 |Maximální rychlost protokolu (MB/s)|24|48|72|96|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|
 |Maximální počet souběžných přihlášení|200|400|600|800|

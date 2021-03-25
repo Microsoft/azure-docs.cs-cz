@@ -1,21 +1,21 @@
 ---
 title: Rychlý Start – připojení týmů na schůzku z webové aplikace
-description: V tomto kurzu se naučíte připojit týmy na schůzku pomocí komunikačních služeb Azure, které volají klientské knihovny pro JavaScript.
+description: V tomto kurzu se naučíte připojit týmy na schůzku pomocí komunikačních služeb Azure, které volají sadu SDK pro JavaScript.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 43f6241f0da0ecc9c68cf60e9f1a0482509374f3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b6cf48c577bb6f22f497007c4b1c1b57ab6f187
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487978"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108170"
 ---
-V tomto rychlém startu se dozvíte, jak se připojit k týmům pomocí komunikačních služeb Azure s voláním klientské knihovny pro JavaScript.
+V tomto rychlém startu se dozvíte, jak připojit týmy s využitím komunikačních služeb Azure, které volají sadu SDK pro JavaScript.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkční [komunikační služby, které volají webovou aplikaci](../getting-started-with-calling.md).
 - [Nasazení týmů](/deployoffice/teams-install).

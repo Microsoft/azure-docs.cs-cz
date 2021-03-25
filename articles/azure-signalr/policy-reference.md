@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro službu Azure Signal
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro službu Azure Signal. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b75628375cc06533e22831c8ece44cdec9c735ff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d7be8125bbd38c7ec8871c583d125ecabc66a081
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599578"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036951"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Azure Policy předdefinované definice pro službu Azure Signal
 
