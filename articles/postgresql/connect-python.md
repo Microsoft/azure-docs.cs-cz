@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c589f3f0913609640ac14534c170c741c16a084
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998936"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048166"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak se připojit k databázi na Azure Datab
 > Pokud chcete vytvořit aplikaci Django s PostgreSQL, pak ji vyřadíte [pomocí kurzu nasazení webové aplikace Django s](../app-service/tutorial-python-postgresql-app.md) využitím PostgreSQL.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro tento rychlý Start budete potřebovat:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free).
@@ -36,7 +36,7 @@ Pro tento rychlý Start budete potřebovat:
   | **Konfigurace koncového bodu služby** | Veřejná | [Azure Portal](./howto-manage-vnet-using-portal.md) <br/> [Rozhraní příkazového řádku](./howto-manage-vnet-using-cli.md)|
   | **Konfigurace privátního odkazu** | Privátní | [Azure Portal](./howto-configure-privatelink-portal.md) <br/> [Rozhraní příkazového řádku](./howto-configure-privatelink-cli.md) |
 
-- [Python](https://www.python.org/downloads/) 2.7.9 + nebo 3.4 +.
+- [Python](https://www.python.org/downloads/) 2,7 nebo 3.6 +.
 
 - Poslední instalační program balíčku [PIP](https://pip.pypa.io/en/stable/installing/)
 - Nainstalujte [psycopg2](https://pypi.python.org/pypi/psycopg2/) pomocí `pip install psycopg2` okna terminálu nebo příkazového řádku. Další informace najdete v tématu [instalace `psycopg2` ](http://initd.org/psycopg/docs/install.html)nástroje.

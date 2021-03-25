@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: pafarley
-ms.openlocfilehash: 9293d47d8aade11f4cc3ee55bb32574f125dfafc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f280e1a70ab595a87789c7514d8cce4fccbe8e84
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428282"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046891"
 ---
 # <a name="whats-new-in-face-service"></a>Co je nového ve službě Rozpoznávání tváře?
 
@@ -23,9 +23,9 @@ Služba Azure Faceer se průběžně aktualizuje. Tento článek vám umožní u
 
 ## <a name="february-2021"></a>Únor 2021
 
-* Nový model detekce rozhraní API pro rozpoznávání tváře: nový model detekce s detekcí je nejpřesnější model detekce, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme použít tento model. Detekce 03 vylepšuje navracení i přesnost na menších plochách nalezených v obrázcích (64 × 64 pixelů). Mezi další vylepšení patří celkové snížení počtu falešně pozitivních hodnot a vylepšené rozpoznávání otočených orientací obličeje. Kombinování detekce 03 s novým rozlišením 04 bude poskytovat také lepší přesnost rozpoznávání. Další podrobnosti najdete v tématu [Určení modelu detekce obličeje](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) .
-* Atribut masky obličeje: atribut masky obličeje je k dispozici s modelem nejnovější detekce 03 spolu s dodatečným atributem, `"noseAndMouthCovered"` který zjišťuje, zda je maska obličeje určena tak, jak má, a pokrývající nos a pusu. Aby bylo možné používat nejnovější funkci detekce masky, uživatelé musí zadat model detekce v žádosti rozhraní API: přiřaďte verzi modelu s parametrem _detectionModel_ `detection_03` . Další podrobnosti najdete v tématu [Určení modelu detekce obličeje](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) .
-* Nový model rozpoznávání rozhraní API pro rozpoznávání tváře: nový model rozpoznávání 04 je nejpřesnější model rozpoznávání, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme tento model použít k ověření a identifikaci. Zlepšuje přesnost rozpoznávání 03, včetně vylepšeného rozpoznávání pro zaregistrované uživatele s příhodnou obličeje (chirurgické masky, masky N95, masky tkanin). Zákazníci teď můžou vytvářet bezpečná a bezproblémová uživatelská prostředí, která zjišťují, jestli se zaregistrovaný uživatel nezabývá příchodem na přední stranu s modelem nejnovější detekce 03, a rozpoznává, kdo mají s nejnovějším modelem pro rozpoznávání 04. Další podrobnosti najdete v tématu [Určení modelu rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model) .
+* Nový model detekce rozhraní API pro rozpoznávání tváře: nový model detekce s detekcí je nejpřesnější model detekce, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme použít tento model. Detekce 03 vylepšuje navracení i přesnost na menších plochách nalezených v obrázcích (64 × 64 pixelů). Mezi další vylepšení patří celkové snížení počtu falešně pozitivních hodnot a vylepšené rozpoznávání otočených orientací obličeje. Kombinování detekce 03 s novým rozlišením 04 bude poskytovat také lepší přesnost rozpoznávání. Další podrobnosti najdete v tématu [Určení modelu detekce obličeje](./face-api-how-to-topics/specify-detection-model.md) .
+* Atribut masky obličeje: atribut masky obličeje je k dispozici s modelem nejnovější detekce 03 spolu s dodatečným atributem, `"noseAndMouthCovered"` který zjišťuje, zda je maska obličeje určena tak, jak má, a pokrývající nos a pusu. Aby bylo možné používat nejnovější funkci detekce masky, uživatelé musí zadat model detekce v žádosti rozhraní API: přiřaďte verzi modelu s parametrem _detectionModel_ `detection_03` . Další podrobnosti najdete v tématu [Určení modelu detekce obličeje](./face-api-how-to-topics/specify-detection-model.md) .
+* Nový model rozpoznávání rozhraní API pro rozpoznávání tváře: nový model rozpoznávání 04 je nejpřesnější model rozpoznávání, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme tento model použít k ověření a identifikaci. Zlepšuje přesnost rozpoznávání 03, včetně vylepšeného rozpoznávání pro zaregistrované uživatele s příhodnou obličeje (chirurgické masky, masky N95, masky tkanin). Zákazníci teď můžou vytvářet bezpečná a bezproblémová uživatelská prostředí, která zjišťují, jestli se zaregistrovaný uživatel nezabývá příchodem na přední stranu s modelem nejnovější detekce 03, a rozpoznává, kdo mají s nejnovějším modelem pro rozpoznávání 04. Další podrobnosti najdete v tématu [Určení modelu rozpoznávání tváře](./face-api-how-to-topics/specify-recognition-model.md) .
 
 
 ## <a name="january-2021"></a>Leden 2021

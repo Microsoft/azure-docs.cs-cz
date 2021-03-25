@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1ee13a464002a2e1503541964cd96957da3c651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879158"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047078"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Kurz: mapování stávající vlastní domény na jarní cloud Azure
 
@@ -22,7 +22,7 @@ Služba DNS (Domain Name Service) je technika pro ukládání názvů síťovýc
 
 Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart.md), nebo použití existující aplikace).
 * Název domény s přístupem k registru DNS pro poskytovatele domény, jako je GoDaddy.
 * Privátní certifikát (tedy certifikát podepsaný svým držitelem) od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
@@ -156,7 +156,7 @@ Přejít na poskytovatele DNS a přidat záznam CNAME pro mapování domény na 
 ![Stránka záznamů DNS](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Mapování vlastní domény na jarní cloudovou aplikaci Azure
-Pokud nemáte aplikaci v Azure jaře cloudu, postupujte podle pokynů v části [rychlý Start: spuštění stávající aplikace Azure jaře cloudu pomocí Azure Portal](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal).
+Pokud nemáte aplikaci v Azure jaře cloudu, postupujte podle pokynů v části [rychlý Start: spuštění stávající aplikace Azure jaře cloudu pomocí Azure Portal](./spring-cloud-quickstart.md).
 
 #### <a name="portal"></a>[Azure Portal](#tab/Azure-portal)
 Přejít na stránku aplikace

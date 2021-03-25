@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40f8f5b234a6aecb1b44e4c565873b3badbd139a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4f8a66034990cd3e105759b9a5dad721ad3cb0a9
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96183878"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104988215"
 ---
-| Prostředek | Omezení |
+| Typ úlohy * | Limit * * |
 | --- | --- |
-| Souběžná připojení RDP |0,25 |
-| Souběžná připojení SSH |50 * * |
+| Světlý |100 |
+| Střední |50 |
+| Těžký |5 |
 
-* Se může lišit v závislosti na dalších relacích protokolu RDP nebo jiných provedených relacích SSH.<br>
-* * Se může lišit, pokud existují existující připojení RDP nebo využití z jiných relací SSH.
+* Tyto typy úloh jsou tady definované: [úlohy vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/remote-desktop-workloads)<br>
+* * Tato omezení jsou založená na testech výkonu protokolu RDP pro Azure bastionu. Čísla se můžou lišit v závislosti na dalších relacích protokolu RDP nebo jiných provedených relacích SSH. 

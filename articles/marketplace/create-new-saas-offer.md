@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/19/2021
+ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130064"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047296"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Jak vytvořit nabídku SaaS na komerčním webu Marketplace
 
@@ -22,6 +22,9 @@ Jako vydavatel komerčního tržiště můžete vytvořit nabídku software jako
 ## <a name="before-you-begin"></a>Než začnete
 
 Pokud jste to ještě neudělali, přečtěte si téma [plánování nabídky SaaS pro komerční web Marketplace](plan-saas-offer.md). Vysvětlete technické požadavky na vaši aplikaci SaaS a informace a materiály, které budete potřebovat při vytváření vaší nabídky. Pokud neplánujete publikovat jednoduchý seznam (možnost **kontakt mi** ) na komerčním webu Marketplace, musí vaše aplikace SaaS splňovat technické požadavky na ověřování.
+
+> [!IMPORTANT]
+> Doporučujeme vytvořit samostatnou nabídku pro vývoj/testování (DEV) a samostatnou produkci (PROD). Tento článek popisuje, jak vytvořit nabídku výr. Podrobnosti o vytvoření nabídky pro vývoj najdete v tématu [Vytvoření nabídky pro vývoj a testování](create-saas-dev-test-offer.md).
 
 ## <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 

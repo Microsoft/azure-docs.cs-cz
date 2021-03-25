@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101748559"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047571"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Nejčastější dotazy týkající se kotev objektů Azure
 
@@ -78,7 +78,7 @@ Jednotka představuje jednotku měření modelu. Podporované jednotky se dají 
  1. Proveďte kalibraci očí, abyste získali přesné vykreslování.
  2. Ujistěte se, že místnost má bohatou vizuální texturu a dobré osvětlení.
  3. Bez jakýchkoli zbytečných objektů Uchovávejte objekt z nepotřeb.
- 4. Volitelně můžete vymazat mezipaměť [mapování prostorových dat](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping) ve vašem zařízení HoloLens.
+ 4. Volitelně můžete vymazat mezipaměť [mapování prostorových dat](/windows/mixed-reality/spatial-mapping) ve vašem zařízení HoloLens.
  5. Naskenujte objekt procházením. Ujistěte se, že je zjištěna většina objektu.
  6. Nastavte oblast hledání dostatečně velká pro pokrytí objektu.
  7. Objekt by měl při zjišťování zůstat v klidu.

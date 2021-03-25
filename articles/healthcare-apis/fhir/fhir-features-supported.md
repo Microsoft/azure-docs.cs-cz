@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: a31fb48443cf760186faad705b8be21a62846a44
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018483"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048415"
 ---
 # <a name="features"></a>Funkce
 
@@ -35,14 +35,14 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 | aktualizace s optimistické uzamykání | Yes       | Yes       | Yes       |                                                     |
 | aktualizovat (podmíněné)           | Yes       | Yes       | Yes       |                                                     |
 | použita                          | No        | No        | No        |                                                     |
-| delete                         | Yes       | Yes       | Yes       |  Viz poznámka níže.                                                   |
+| delete                         | Yes       | Yes       | Yes       |  Viz poznámka níže.                                   |
 | Odstranit (podmíněné)           | No        | No        | No        |                                                     |
 | historie                        | Yes       | Yes       | Yes       |                                                     |
 | vytvoření                         | Yes       | Yes       | Yes       | Podpora pro POST/PUT                               |
 | vytvořit (podmíněné)           | Yes       | Yes       | Yes       | Problém [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | Částečné   | Částečné   | Částečné   | Viz níže                                           |
-| zřetězené hledání                 | No        | Yes       | No        |                                                     |
-| zpětné zřetězené hledání         | No        | Yes       | No        |                                                     |
+| search                         | Částečné   | Částečné   | Částečné   | Viz část Hledat níže.                           |
+| zřetězené hledání                 | Yes       | Yes       | Částečné   | Viz Poznámka 2 níže.                                   |
+| zpětné zřetězené hledání         | Yes       | Yes       | Částečné   | Viz Poznámka 2 níže.                                   |
 | možnosti                   | Yes       | Yes       | Yes       |                                                     |
 | dávka                          | Yes       | Yes       | Yes       |                                                     |
 | transakce                    | No        | Yes       | No        |                                                     |
@@ -51,6 +51,12 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
 > [!Note]
 > Odstranění definované specifikací FHIR vyžaduje, aby po odstranění následující nepoužívané čtení prostředků vrátilo stavový kód HTTP 410 a prostředek se už nenalezne prostřednictvím vyhledávání. Rozhraní Azure API pro FHIR vám také umožňuje úplně odstranit (včetně veškeré historie) prostředku. K úplnému odstranění prostředku můžete předat nastavení parametru `hardDelete` na hodnotu true ( `DELETE {server}/{resource}/{id}?hardDelete=true` ). Pokud tento parametr nepředáte nebo nastavíte `hardDelete` na hodnotu false, budou historické verze prostředku stále k dispozici.
+
+
+ **Poznámka 2**
+* Přidává podporu MVP pro zřetězené a reverzní FHIR vyhledávání v CosmosDB. 
+
+  V rozhraní Azure API pro FHIR a Open Source Server FHIR, který je založený na Cosmos, je hledání pomocí zřetězeného a zpětného zřetězeného vyhledávání v rámci implementace MVP. Chcete-li provést zřetězené hledání na Cosmos DB, implementace provede dotaz na hledání a vystaví poddotazy k vyřešení odpovídajících prostředků. To se provádí pro každou úroveň výrazu. Pokud libovolný dotaz vrátí více než 100 výsledků, bude vyvolána chyba. Ve výchozím nastavení je zřetězené hledání za příznakem funkce. Chcete-li použít zřetězené hledání na Cosmos DB, použijte záhlaví `x-ms-enable-chained-search: true` . Další podrobnosti najdete v tématu [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="search"></a>Hledat
 

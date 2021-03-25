@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705156"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032784"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
 
@@ -111,12 +111,10 @@ Musí být nainstalovaný následující software:
 
 ## <a name="unity"></a>Unity
 
-Pro vývoj s Unity nainstalujte
-
-* Unity 2019.3.1 [(Stáhnout)](https://unity3d.com/get-unity/download)
-* Nainstalujte tyto moduly v Unity:
-  * Podpora **UWP** – Univerzální platforma Windows sestavení
-  * **IL2CPP** – podpora sestavení pro Windows (IL2CPP)
+Pro vývoj s Unity nainstalujte aktuální verzi Unity 2019,3 nebo 2019,4 LTS [(Stáhnout)](https://unity3d.com/get-unity/download). Pro správu instalací doporučujeme použít centrum Unity.
+Nezapomeňte do instalace Unity zahrnout následující moduly:
+* Podpora **UWP** – Univerzální platforma Windows sestavení
+* **IL2CPP** – podpora sestavení pro Windows (IL2CPP)
 
 ## <a name="next-steps"></a>Další kroky
 
