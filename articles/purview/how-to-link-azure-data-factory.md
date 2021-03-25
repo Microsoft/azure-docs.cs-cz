@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449607"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026619"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -147,6 +147,11 @@ V současné době platí, že pokud použijete následující funkce kopírová
 - Možnost zjišťování zdrojového oddílu pro úložiště na základě souborů.
 - Kopírování dat do jímky založené na souborech s nastavením maximálního počtu řádků na soubor.
 - Přidat další sloupce během kopírování.
+
+Po navýšení na řádek se pro následující konektory nahlásí schéma datového assetu (zobrazené na kartě schéma Assetu >):
+
+- Soubory CSV a Parquet v Azure Blob, Azure File Storage, ADLS Gen1, ADLS Gen2 a Amazon S3
+- Azure Průzkumník dat, Azure SQL Database, Azure SQL Managed instance, Azure synapse Analytics, SQL Server, Teradata
 
 ### <a name="data-factory-data-flow-support"></a>Data Factory podpora toku dat
 

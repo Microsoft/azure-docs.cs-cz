@@ -3,16 +3,16 @@ title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471673"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036777"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
-Pravidla akcí vám pomůžou definovat nebo potlačit akce v jakémkoli oboru Azure Resource Manager (předplatné Azure, skupina prostředků nebo cílový prostředek). Mají různé filtry, které vám pomohou zúžit určitou podmnožinu instancí výstrah, na kterých chcete pracovat.
+Pravidla akcí umožňují přidat nebo potlačit skupiny akcí při aktivovaném upozornění. Jediné pravidlo může zahrnovat různé obory cílových prostředků, například všechna upozornění na konkrétní prostředek (například konkrétní virtuální počítač) nebo jakékoli výstrahy vyvolané jakýmkoli prostředkem v rámci předplatného. Volitelně můžete přidat různé filtry pro kontrolu nad tím, na které výstrahy se vztahuje pravidlo, a definovat pro ni plán, který je třeba použít pouze mimo pracovní dobu nebo při plánovaném časovém období údržby.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ I když pravidla výstrah umožňují definovat skupinu akcí, která se aktivuj
 Pravidla akcí vám pomůžou tento proces zjednodušit. Když definujete akce se škálováním, může se aktivovat skupina akcí pro všechny výstrahy, které se generují v konfigurovaném oboru. V předchozím příkladu může tým definovat jedno pravidlo akce na **ContosoRG** , které aktivuje stejnou skupinu akcí pro všechny výstrahy, které jsou v ní vygenerované.
 
 > [!NOTE]
-> Pravidla akcí se v současnosti nevztahují na Azure Service Health výstrahy.
+> Pravidla akcí se nevztahují na Azure Service Health výstrahy.
 
 ## <a name="configuring-an-action-rule"></a>Konfigurace pravidla akce
 
@@ -308,7 +308,7 @@ Na [stránce seznam výstrah](./alerts-managing-alert-instances.md)můžete zvol
 
 Potlačení vždy má přednost na stejném oboru.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Co se stane, když mám prostředek monitorovaný ve dvou samostatných pravidlech akcí? Získám jedno nebo dvě oznámení? Například **VM2** v následujícím scénáři:
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Co se stane, když mám prostředek, na který se vztahují dvě pravidla akcí? Získám jedno nebo dvě oznámení? Například **VM2** v následujícím scénáři:
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

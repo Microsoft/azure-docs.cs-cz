@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 03/03/2021
-ms.openlocfilehash: a04e53c8444a01bc42f3ce71393fc842f3419e74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a3f44f3d0cdf024bca12b0023891f21175f52b47
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102193428"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026934"
 ---
 # <a name="known-issues"></a>Známé problémy
 
@@ -30,7 +30,7 @@ Pokud narazíte na některý z těchto problémů, není nutné otevřít chybu.
 | Aktualizace zařízení | Uživatelům se může zobrazit zpráva, že se aktualizace nezdařila, i když byla úspěšná. | Ověřte, že se zařízení aktualizovalo, a to tak, že přejdete do vlákna zařízení v IoT Hub. Tato oprava je opravena po první aktualizaci. |
 | Aktualizace zařízení | Uživatelé můžou po první aktualizaci přijít o nastavení Wi-Fi připojení. | Po aktualizaci nastavte Wi-Fi připojení, spusťte prostřednictvím zprovoznění prostředí. Tato oprava je opravena po první aktualizaci. |
 | Aktualizace zařízení | Po provedení aktualizace OTA se uživatelé již nebudou moci přihlásit přes SSH pomocí dříve vytvořených uživatelských účtů a nové uživatele SSH nelze vytvořit prostřednictvím prostředí pro zprovoznění. Tento problém má vliv na systémy, které provádějí aktualizace OTA z následujících verzí předinstalovaných imagí: 2020.110.114.105 a 2020.109.101.105. | Chcete-li obnovit profily uživatelů, proveďte tyto kroky po aktualizaci OTA: <br> Připojte se přes [SSH k vašemu DevKit](./how-to-ssh-into-percept-dk.md) jako uživatelské jméno "root". Pokud jste zakázali přihlašovací jméno uživatele root "SSH" prostřednictvím prostředí pro zprovoznění, musíte ho znovu povolit. Po úspěšném připojení spustit tento příkaz: <br> ```mkdir -p /var/custom-configs/home; chmod 755 /var/custom-configs/home``` <br> Chcete-li obnovit předchozí Domovská data uživatele, spusťte následující příkaz: <br> ```mkdir -p /tmp/prev-rootfs && mount /dev/mmcblk0p3 /tmp/prev-rootfs && [ ! -L /tmp/prev-rootfs/home ] && cp -a /tmp/prev-rootfs/home/* /var/custom-configs/home/. && echo "User home migrated!"; umount /tmp/prev-rootfs``` |
-| Aktualizace zařízení | Po provedení aktualizace OTA dojde ke ztrátě skupin aktualizací. | Aktualizujte značku zařízení podle následujících [pokynů](https://docs.microsoft.com/azure/azure-percept/how-to-update-over-the-air#create-a-device-update-group). |
+| Aktualizace zařízení | Po provedení aktualizace OTA dojde ke ztrátě skupin aktualizací. | Aktualizujte značku zařízení podle následujících [pokynů](./how-to-update-over-the-air.md#create-a-device-update-group). |
 | Instalační program sady nástrojů pro vývojáře | Nepovinná instalace Caffe může selhat, pokud Docker v systému správně neběží. | Ujistěte se, že je Docker nainstalovaný a spuštěný, a pak zkuste instalaci Caffe zopakovat. |
 | Instalační program sady nástrojů pro vývojáře | Volitelná instalace CUDA se v nekompatibilních systémech nezdařila. | Před spuštěním instalačního programu ověřte kompatibilitu systému s CUDA. |
 | Docker, síť, IoT Edge | Pokud vaše interní síť používá 172. x. x. x, kontejnery Docker se nepodaří připojit k Edge. | Přidejte speciální oddíl BIP do/etc/Docker/daemon.jsv souboru jako tento: `{    "bip": "192.168.168.1/24"}` |
