@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a8a4f84db140ca442371cb71886bebf9214d3e43
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031437"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026534"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Rozšířené funkce Průzkumníka metrik Azure
 
@@ -261,11 +261,11 @@ Kliknutím na možnost selhání přejdete k vlastnímu oknu selhání, které v
 
 ### <a name="common-problems-with-drill-into-logs"></a>Běžné problémy s podrobnostmi v protokolech
 
-* Protokolování a dotazy jsou zakázané – Chcete-li zobrazit doporučené protokoly a dotazy, je nutné směrovat diagnostické protokoly na Log Analytics. Přečtěte si [Tento dokument](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) , kde se dozvíte, jak to udělat. 
+* Protokolování a dotazy jsou zakázané – Chcete-li zobrazit doporučené protokoly a dotazy, je nutné směrovat diagnostické protokoly na Log Analytics. Přečtěte si [Tento dokument](./diagnostic-settings.md) , kde se dozvíte, jak to udělat. 
 * Jsou k dispozici pouze protokoly aktivit – funkce přejít k protokolům je k dispozici pouze pro vybrané poskytovatele prostředků. Ve výchozím nastavení jsou k dispozici protokoly aktivit. 
 
  
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud v grafu nevidíte žádná data, přečtěte si následující informace pro řešení potíží:
 
@@ -278,4 +278,3 @@ Pokud v grafu nevidíte žádná data, přečtěte si následující informace p
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o vytváření řídicích panelů s akcemi pomocí metrik najdete v tématu [vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](../app/tutorial-app-dashboards.md).
-

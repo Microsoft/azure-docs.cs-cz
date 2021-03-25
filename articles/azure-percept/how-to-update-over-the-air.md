@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b8f9e6f4bc091abbd1bb08ecbd649c1411e5ab20
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2e627e582b47c5174e70f5d21d758148cde8dbdd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095387"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022845"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air"></a>Aktualizace Azure Percept DK přes Air
 
@@ -66,7 +66,7 @@ Požadavky na značky skupiny:
 
 1. Přidejte do svých zařízení značku.
     1. V **IoT Edge** v levém navigačním podokně Najděte službu Azure Percept DK a přejděte do jejího **vlákna**.
-    1. Přidejte novou **aktualizaci zařízení pro IoT Hub** hodnotu značky, jak je znázorněno níže (změňte ```<CustomTagValue>``` hodnotu, tj. AzurePerceptGroup1). Přečtěte si další informace o [značkách dokumentu JSON](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins#device-twins)pro vyzdvojené zařízení.
+    1. Přidejte novou **aktualizaci zařízení pro IoT Hub** hodnotu značky, jak je znázorněno níže (změňte ```<CustomTagValue>``` hodnotu, tj. AzurePerceptGroup1). Přečtěte si další informace o [značkách dokumentu JSON](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)pro vyzdvojené zařízení.
 
     ```
     "tags": {

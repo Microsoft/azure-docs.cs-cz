@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2fd0d9d2b6e80d54bdd45b7a13fab7bfa33841c9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889463"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950585"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -39,7 +39,7 @@ Tento postup popisuje, jak odesílat zprávy z IoT Hub do digitálních vláken 
 
 Pokaždé, když je událost telemetrie teploty odeslána zařízením termostatu, funkce zpracuje telemetrii a vlastnost *teploty* digitálního vlákna by měla aktualizovat. Tento scénář je popsaný v diagramu níže:
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce v Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje." border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Diagram IoT Hub zařízení odesílá telemetrie teplot prostřednictvím IoT Hub do funkce v Azure, která aktualizuje vlastnost teploty v případě, že je v rámci služby Azure Digital v Azure." border="false":::
 
 ## <a name="add-a-model-and-twin"></a>Přidání modelu a digitálního dvojčete
 
@@ -47,14 +47,7 @@ V této části nastavíte [digitální dvojitou](concepts-twins-graph.md) hodno
 
 Pro vytvoření vlákna typu termostatu budete muset nejprve nahrát termostatový [model](concepts-models.md) do instance, která popisuje vlastnosti termostatu a později se použije k vytvoření vlákna. 
 
-Model vypadá takto:
-:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
-
-Pokud chcete **Tento model nahrát do instance s dvojitou** silou, spusťte následující příkaz Azure CLI, který nahraje výše uvedený model jako vložený formát JSON. Můžete spustit příkaz v [Azure Cloud Shell](/cloud-shell/overview.md) v prohlížeči nebo na svém počítači, pokud máte rozhraní příkazového řádku [nainstalované místně](/cli/azure/install-azure-cli).
-
-```azurecli-interactive
-az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
-```
+[!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
 Pak budete muset **vytvořit jeden z těchto vláken pomocí tohoto modelu**. Pomocí následujícího příkazu vytvořte termostat s názvem **thermostat67** a nastavte 0,0 jako počáteční hodnotu teploty.
 
@@ -62,13 +55,8 @@ Pak budete muset **vytvořit jeden z těchto vláken pomocí tohoto modelu**. Po
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
->[!NOTE]
-> Pokud používáte Cloud Shell v prostředí PowerShellu, může být nutné, aby se znaky uvozovek v vložených polích JSON vyhnuly jejich správné analýze. Tady jsou příkazy pro nahrání modelu a vytvoření vlákna s touto úpravou:
->
-> Nahrát model:
-> ```azurecli-interactive
-> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
-> ```
+> [!Note]
+> Pokud používáte Cloud Shell v prostředí PowerShellu, může být nutné, aby se znaky uvozovek v vložených polích JSON vyhnuly jejich správné analýze. Tady je příkaz pro vytvoření vlákna s touto úpravou:
 >
 > Vytvořit dvojitou dvojici:
 > ```azurecli-interactive
@@ -117,7 +105,7 @@ Uložte kód funkce.
 
 #### <a name="step-3-publish-the-function-app-to-azure"></a>Krok 3: publikování aplikace Function App do Azure
 
-Publikujte projekt do aplikace Function App v Azure.
+Publikujte projekt pomocí funkce *IoTHubtoTwins. cs* do aplikace Function App v Azure.
 
 Pokyny k tomu, jak to provést, najdete v části [**publikování aplikace Function App do Azure**](how-to-create-azure-function.md#publish-the-function-app-to-azure) tématu *Postupy: nastavení funkce pro zpracování dat* v článku.
 

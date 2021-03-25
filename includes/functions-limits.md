@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f72117fdbcdbeda1d906a9760243e66404920c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934457"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105337"
 ---
 | Prostředek |[Plán Consumption](../articles/azure-functions/consumption-plan.md)|[Plán Premium](../articles/azure-functions/functions-premium-plan.md)|[Plán Dedicated](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ ms.locfileid: "97934457"
 | Maximální délka adresy URL požadavku<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | Závisí na clusteru |
 |[ACU](../articles/virtual-machines/acu.md) na instanci | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [Ceny AKS](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maximální velikost paměti (GB na instanci) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Podporuje se libovolný uzel. |
+| Maximální počet instancí | 200 | 100<sup>9</sup> | liší se podle skladové položky<sup>10</sup> | 100<sup>10</sup> | Závisí na clusteru |   
 | Aplikace Function App na plán |100 |100 |neohraničené<sup>4</sup> | Unbounded | Unbounded |
 | [Plány služby App Service](../articles/app-service/overview-hosting-plans.md) | 100 na [oblast](https://azure.microsoft.com/global-infrastructure/regions/) |100 na skupinu prostředků |100 na skupinu prostředků | - | - |
 | Úložiště<sup>5</sup> |5 TB |250 GB |50-1000 GB | 1 TB | Není k dispozici |
@@ -34,4 +35,6 @@ ms.locfileid: "97934457"
 <sup>5</sup> limit úložiště je celková velikost obsahu v dočasném úložišti napříč všemi aplikacemi ve stejném plánu App Service. Plán spotřeby používá soubory Azure pro dočasné úložiště.  
 <sup>6</sup> Pokud je vaše aplikace Function hostovaná v [plánu spotřeby](../articles/azure-functions/consumption-plan.md), podporuje se jenom možnost CNAME. Pro aplikace Function App v [plánu Premium](../articles/azure-functions/functions-premium-plan.md) nebo v [plánu App Service](../articles/azure-functions/dedicated-plan.md)můžete namapovat vlastní doménu pomocí záznamu CNAME nebo a.  
 <sup>7</sup> garantuje až 60 minut.  
-<sup>8</sup> pracovních procesů jsou role, které hostují zákaznické aplikace. Pracovní procesy jsou dostupné ve třech pevných velikostech: One vCPU/3,5 GB RAM; Dva vCPU/7 GB paměti RAM; Čtyři vCPU/14 GB paměti RAM.
+<sup>8</sup> pracovních procesů jsou role, které hostují zákaznické aplikace. Pracovní procesy jsou dostupné ve třech pevných velikostech: One vCPU/3,5 GB RAM; Dva vCPU/7 GB paměti RAM; Čtyři vCPU/14 GB paměti RAM.   
+<sup>9</sup> při provozu v systému Linux v plánu Premium je aktuálně omezeno na 20 instancí.  
+<sup>10</sup> viz [omezení App Service](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits) pro podrobnosti.

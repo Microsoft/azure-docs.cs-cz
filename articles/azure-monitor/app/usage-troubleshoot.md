@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87323498"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024740"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástroji pro analýzu chování uživatelů v Application Insights
 Máte dotazy týkající se [nástrojů pro analýzy chování uživatelů v Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchovávání](usage-retention.md)nebo kohorty? Tady jsou některé odpovědi.
@@ -23,7 +23,7 @@ Všechny události telemetrie v Application Insights mají [ID anonymního uživ
 
 Pokud sledujete webovou aplikaci, nejjednodušší řešení je přidat do aplikace [sadu Application Insights JavaScript SDK](./javascript.md) a zajistit, aby byl fragment skriptu načtený na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje identifikátory anonymního uživatele a relace a potom naplní události telemetrie pomocí těchto ID, jak jsou odesílány z vaší aplikace.
 
-Pokud sledujete webovou službu (bez uživatelského rozhraní), [vytvořte inicializátor telemetrie, který naplní vlastnosti anonymního uživatele a ID relace](usage-send-user-context.md) podle pojmů jedinečných uživatelů a relací vaší služby.
+Pokud sledujete webovou službu (bez uživatelského rozhraní), [vytvořte inicializátor telemetrie, který naplní vlastnosti anonymního uživatele a ID relace](./usage-overview.md) podle pojmů jedinečných uživatelů a relací vaší služby.
 
 Pokud vaše aplikace posílá [ověřená ID uživatelů](./api-custom-events-metrics.md#authenticated-users), můžete se na základě uživatelských identifikátorů uživatelů v nástroji uživatelů na základě ID ověřených uživatelů spolehnout. V rozevíracím seznamu Zobrazit Vyberte možnost ověření uživatelé.
 
@@ -50,4 +50,3 @@ Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, zm
 
 ## <a name="get-help"></a>Získání pomoci
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-

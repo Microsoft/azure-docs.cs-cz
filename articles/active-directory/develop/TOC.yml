@@ -551,6 +551,8 @@
           href: vs-active-directory-error.md
     - name: Odebrání registrace aplikace
       href: quickstart-remove-app.md
+    - name: Obnovení nebo odebrání odstraněné registrace aplikace
+      href: quickstart-restore-app.md
 - name: Referenční informace
   items:
     - name: Glosář

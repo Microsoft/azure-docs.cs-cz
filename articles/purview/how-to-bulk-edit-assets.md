@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952452"
+ms.locfileid: "105024230"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Jak hromadně upravovat prostředky a označovat pojem glosáře
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>Jak hromadně upravovat prostředky pro přidávání poznámek k klasifikacím, glosářovým podmínkám a úpravám kontaktů
 
-Tento článek popisuje, jak označit více pojmů glosáře na seznam vybraných prostředků v rámci jedné akce.
+Tento článek popisuje, jak označit více pojmů Glosář, klasifikace, vlastníci a odborníky na seznam vybraných assetů v rámci jedné akce.
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>Přidat prostředky pro zobrazení vybraného seznamu pomocí hledání
 

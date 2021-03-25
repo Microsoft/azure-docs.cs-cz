@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: řešení potíží, aktualizace, chyba, Kinect, zpětná vazba, obnovení, protokolování, tipy
-ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b83e2952a9039a52aa3b905e376e5d3beccaf8c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654760"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026585"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Známé problémy s Azure Kinect a řešení potíží
 
@@ -189,11 +189,17 @@ Dokumentace pro sledování těla sady SDK jazyka C# se nachází [zde](https://
 
 Sada SDK pro sledování textu podporuje PROCESORy, CUDA, DirectML (pouze Windows) a prostředí pro provádění TensorRT pro odvození modelu odhadu pozice. Ve `K4ABT_TRACKER_PROCESSING_MODE_GPU` výchozím nastavení CUDA spouštění na platformě Linux a DirectML spouštění ve Windows. Přidali jsme tři další režimy pro výběr specifických prostředí pro spuštění: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , a `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
 
+> [!NOTE]  
+> ONNX runtime zobrazuje upozornění pro operační kódy, které nejsou urychlené. Můžou se ignorovat.
+
 ONNX runtime zahrnuje proměnné prostředí pro řízení ukládání do mezipaměti modelu TensorRT. Doporučené hodnoty jsou:
-- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
-- ORT_TENSORRT_ENGINE_CACHE_PATH = "cesta"
+- ORT_TENSORRT_CACHE_ENABLE = 1 
+- ORT_TENSORRT_CACHE_PATH = "cesta"
 
 Složku je třeba vytvořit před zahájením sledování textu.
+
+> [!IMPORTANT]  
+> TensorRT předběžně zpracovává model před odvozením, což ve srovnání s jinými prostředími pro spuštění vyplývají z rozšířených časů spuštění. Ukládání do mezipaměti modulu je omezuje na první spuštění, ale je experimentální a je specifické pro model, verzi modulu runtime ONNX, verzi TensorRT a model GPU.
 
 Prostředí pro spouštění TensorRT podporuje FP32 (výchozí) i FP16. FP16 obchody o dvojnásobku zvýšení výkonu při minimálním snížení přesnosti. Zadání FP16:
 - ORT_TENSORRT_FP16_ENABLE = 1

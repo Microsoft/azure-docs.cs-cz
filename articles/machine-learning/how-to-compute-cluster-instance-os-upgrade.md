@@ -11,18 +11,18 @@ ms.subservice: core
 ms.date: 03/03/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5f853c19015a70d596c32532a9c280c785b4597b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 710a860b1ed87f176b6f42b4963dad17acb323b1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609077"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954050"
 ---
 # <a name="upgrade-compute-instance-and-compute-cluster-host-os"></a>Upgradovat výpočetní instanci a operační systém hostitele výpočetního clusteru
 
 Výpočetní __cluster__ a __instance COMPUTE__ jsou spravované výpočetní infrastrukturou. Azure Machine Learning Jako spravovaná služba společnost Microsoft spravuje hostitelský operační systém a nainstalované balíčky a verze softwaru.
 
-Hostitelský operační systém pro výpočetní cluster a instanci služby COMPUTE byl Ubuntu 16,04 LTS. **30. dubna 2021** Ubuntu končí podpora pro 16,04. Od __15. března 2021__ bude Microsoft hostitelský operační systém automaticky aktualizovat na Ubuntu 18,04 LTS. Aktualizace na 18,04 zajistí průběžné aktualizace zabezpečení a podporu od komunity Ubuntu. Další informace o Ubuntu ukončení podpory pro 16,04 najdete na blogu věnovaném [vydání Ubuntu](https://wiki.ubuntu.com/Releases).
+Hostitelský operační systém pro výpočetní cluster a instanci služby COMPUTE byl Ubuntu 16,04 LTS. **30. dubna 2021** Ubuntu končí podpora pro 16,04. Od __15. března 2021__ bude Microsoft hostitelský operační systém automaticky aktualizovat na Ubuntu 18,04 LTS. Aktualizace na 18,04 zajistí průběžné aktualizace zabezpečení a podporu od komunity Ubuntu. Tato aktualizace bude zahrnuta v rámci oblastí Azure a bude dostupná ve všech oblastech do __9. dubna 2021__. Další informace o Ubuntu ukončení podpory pro 16,04 najdete na blogu věnovaném [vydání Ubuntu](https://wiki.ubuntu.com/Releases).
 
 > [!TIP]
 > * Hostitelský operační systém není verze operačního systému, kterou můžete zadat pro [prostředí](how-to-use-environments.md) při výuce nebo nasazování modelu. Prostředí se spouštějí v Docker. Docker běží na hostitelském operačním systému.
@@ -30,11 +30,11 @@ Hostitelský operační systém pro výpočetní cluster a instanci služby COMP
 > * Při použití výpočetní instance Azure Machine Learning založené na Ubuntu 18,04 je výchozí verze Pythonu _python 3,8_.
 ## <a name="creating-new-resources"></a>Vytváření nových prostředků
 
-Výpočetní cluster nebo výpočetní instance vytvořené po 15. __březnu 2021__ ve výchozím nastavení používají jako hostitelský operační systém Ubuntu 18,04 LTS. Nemůžete vybrat jiný hostitelský operační systém.
+Výpočetní cluster nebo výpočetní instance vytvořené po __09 dubna 2021__ ve výchozím nastavení používají jako hostitelský operační systém Ubuntu 18,04 LTS. Nemůžete vybrat jiný hostitelský operační systém.
 
 ## <a name="upgrade-existing-resources"></a>Upgradovat existující prostředky
 
-Pokud máte existující výpočetní clustery nebo výpočetní instance vytvořené před 15. __března 2021__, je nutné provést akci k upgradu HOSTITELSKÉHO operačního systému na Ubuntu 18,04:
+Pokud jste již vytvořili výpočetní clustery nebo výpočetní instance vytvořené před __15. března 2021__, je nutné provést akci pro upgrade operačního systému hostitele na Ubuntu 18,04. V závislosti na oblasti, ke které přistupujete Azure Machine Learning, doporučujeme, abyste provedli tyto akce po __09 2021. dubna,__ abyste zajistili, že se změny provedou ve všech oblastech:
 
 * __Azure Machine Learning výpočetní cluster__:
 

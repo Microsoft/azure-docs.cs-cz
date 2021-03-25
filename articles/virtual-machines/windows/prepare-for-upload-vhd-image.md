@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a177fc7e17dc91a0d57fa6dee87b80921d7fd8f5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556260"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043576"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -522,4 +522,4 @@ Následující nastavení neovlivní nahrávání VHD. Důrazně ale doporučuje
 ## <a name="next-steps"></a>Další kroky
 
 - [Nahrání image virtuálního počítače s Windows do Azure pro nasazení Správce prostředků](upload-generalized-managed.md)
-- [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](../troubleshooting/troubleshoot-activation-problems.md)
+- [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
