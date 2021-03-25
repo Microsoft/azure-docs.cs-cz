@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 7357703af41afc913ef63dff6ecae3d230c9eca0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583288"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865691"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Použití certifikátů s Azure Cloud Services (Rozšířená podpora)
 
@@ -27,9 +27,8 @@ Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud
 
     :::image type="content" source="media/certs-and-key-vault-1.png" alt-text="Image zobrazuje výběr zásad přístupu v okně trezoru klíčů.":::
 
-3. Zajistěte, aby zásady přístupu zahrnovaly následující vlastnosti:
+3. Zajistěte, aby zásady přístupu zahrnovaly následující vlastnost:
     - **Povolit přístup k Azure Virtual Machines pro nasazení**
-    - **Povolit přístup k Azure Resource Manager pro nasazení šablony** 
 
     :::image type="content" source="media/certs-and-key-vault-2.png" alt-text="Image zobrazuje okno zásady přístupu v Azure Portal.":::
  
@@ -50,6 +49,9 @@ Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud
     ```json
     <Certificate name="<your cert name>" thumbprint="<thumbprint in key vault" thumbprintAlgorithm="sha1" /> 
     ```
+6.  Pro nasazení prostřednictvím šablony ARM se dá certificateUrl najít tak, že přejdete na certifikát v trezoru klíčů označený jako tajný identifikátor.
+
+    :::image type="content" source="media/certs-and-key-vault-6.png" alt-text="Obrázek ukazuje pole identifikátor tajného klíče v trezoru klíčů.":::
 
 ## <a name="next-steps"></a>Další kroky 
 - Přečtěte si [požadavky na nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora).

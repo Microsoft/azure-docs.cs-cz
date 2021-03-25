@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9a8ecf65426dfe92b84582ff98b567ea400c9209
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577355"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027172"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Co je Azure Cosmos DB analytické úložiště?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -110,9 +110,10 @@ Následující omezení se vztahují na provozní data v Azure Cosmos DB, když 
 
 * V současné době nepodporujeme Azure synapse Spark pro čtení názvů sloupců, které obsahují prázdné znaky (prázdné znaky).
 
-* V souvislosti s hodnotami očekáváte jiné chování `NULL` :
-  * Fondy Spark ve službě Azure synapse budou tyto hodnoty číst jako 0 (nula).
-  * Fondy bez SQL serveru ve službě Azure synapse budou tyto hodnoty číst jako `NULL` .
+* V souvislosti s explicitními hodnotami očekává jiné chování `null` :
+  * Fondy Spark ve službě Azure synapse budou tyto hodnoty číst jako `0` (nula).
+  * Fondy bez SQL serveru ve službě Azure synapse tyto hodnoty načtou, jako `NULL` by měl první dokument kolekce pro stejnou vlastnost hodnotu s datovým typem odlišnou `integer` .
+  * Fondy bez SQL serveru ve službě Azure synapse budou tyto hodnoty číst jako `0` (nula), pokud má první dokument kolekce pro stejnou vlastnost hodnotu, která je `integer` .
 
 * V případě chybějících sloupců očekávat jiné chování:
   * Fondy Spark ve službě Azure synapse budou tyto sloupce zastupovat jako `undefined` .
@@ -144,6 +145,11 @@ Dobře definovaná reprezentace schématu vytvoří jednoduché tabulkové vyjá
 
 > [!NOTE]
 > Pokud Azure Cosmos DB analytické úložiště následuje dobře definovaná reprezentace schématu a výše uvedená specifikace je v rozporu s některými položkami, nebudou tyto položky součástí analytického úložiště.
+
+* V dobře definovaném schématu očekává jiné chování v souvislosti s různými typy:
+  * Fondy Spark ve službě Azure synapse budou tyto hodnoty zastupovat jako `undefined` .
+  * Fondy bez SQL serveru ve službě Azure synapse budou tyto hodnoty zastupovat jako `NULL` .
+
 
 **Reprezentace schématu s úplnou věrností**
 

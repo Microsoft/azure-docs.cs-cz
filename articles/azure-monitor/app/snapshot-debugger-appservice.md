@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26538f48213d025c6fe71fb55abb17a025a23b45
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211613"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025675"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 
@@ -56,13 +56,13 @@ Po nasazení aplikace postupujte podle následujících kroků a povolte ladicí
 
 ## <a name="enable-snapshot-debugger-for-other-clouds"></a>Povolit Snapshot Debugger pro ostatní cloudy
 
-V současné době jsou v současnosti k [disAzure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide) jedinou oblastí, které vyžadují úpravy koncového bodu, pomocí Application Insights připojovacího řetězce.
+V současné době jsou v současnosti k [disAzure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) a [Azure Čína](/azure/china/resources-developer-guide) jedinou oblastí, které vyžadují úpravy koncového bodu, pomocí Application Insights připojovacího řetězce.
 
 |Vlastnost připojovacího řetězce    | Cloud pro státní správu USA | Čína – Cloud |   
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-Další informace o dalších přepsáních připojení najdete v tématu [Application Insights dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+Další informace o dalších přepsáních připojení najdete v tématu [Application Insights dokumentaci](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 ## <a name="disable-snapshot-debugger"></a>Zakázat Snapshot Debugger
 
@@ -120,4 +120,3 @@ V případě Azure App Service můžete nastavit nastavení aplikace v rámci š
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
-

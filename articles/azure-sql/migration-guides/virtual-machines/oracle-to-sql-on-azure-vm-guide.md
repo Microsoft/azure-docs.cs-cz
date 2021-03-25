@@ -10,21 +10,21 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 1767f1f990326e513393b8ce47e1ed8485f73849
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d24e056d397617c95a7ba301b58efc3631f40dd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656387"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026517"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Průvodce migrací: Oracle pro SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 V této příručce se naučíte migrovat schémata Oracle pro SQL Server na VIRTUÁLNÍm počítači Azure pomocí Pomocník s migrací SQL Serveru pro Oracle. 
 
-Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K migraci schématu Oracle pro SQL Server na VIRTUÁLNÍm počítači Azure potřebujete:
 
@@ -32,6 +32,8 @@ K migraci schématu Oracle pro SQL Server na VIRTUÁLNÍm počítači Azure pot�
 - Stažení [Pomocník s migrací SQL serveru (SSMA) pro Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
 - Cílový [virtuální počítač SQL Server](../../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 - [Potřebná oprávnění pro SSMA pro Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) a [poskytovatele](/sql/ssma/oracle/connect-to-oracle-oracletosql).
+- Připojení a dostatečná oprávnění pro přístup ke zdroji i cíli. 
+
 
 ## <a name="pre-migration"></a>Před migrací
 
@@ -46,19 +48,19 @@ Pomocí [mapové](https://go.microsoft.com/fwlink/?LinkID=316883) sady můžete 
 Pokud chcete pro kontrolu inventáře použít sadu MAP, postupujte takto: 
 
 1. Otevřete [sadu nástrojů mapa](https://go.microsoft.com/fwlink/?LinkID=316883).
-1. Vyberte **vytvořit/vybrat databázi**.
+1. Vyberte **vytvořit/vybrat databázi**:
 
    ![Výběr databáze](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
 
-1. Vyberte **vytvořit databázi inventáře**, zadejte název nové databáze inventáře, kterou vytváříte, zadejte krátký popis a pak vyberte **OK**. 
+1. Vyberte **vytvořit databázi inventáře**, zadejte název nové databáze inventáře, kterou vytváříte, zadejte krátký popis a pak vyberte **OK**:
 
    :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Vytvoření databáze inventáře":::
 
-1. Vyberte **shromažďovat data inventáře** a otevřete tak **Průvodce pro inventarizaci a vyhodnocení**. 
+1. Vyberte **shromažďovat data inventáře** a otevřete tak **Průvodce pro inventarizaci a vyhodnocení**:
 
    :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Shromažďování inventárních dat":::
 
-1. V **Průvodci inventarizace a hodnocení** zvolte **Oracle** a pak vyberte **Další**. 
+1. V **Průvodci inventarizace a hodnocení** zvolte **Oracle** a potom vyberte **Další**:
 
    ![Zvolit Oracle](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
 
@@ -66,25 +68,25 @@ Pokud chcete pro kontrolu inventáře použít sadu MAP, postupujte takto:
 
    ![Vyberte si možnost hledání počítače, která nejlépe vyhovuje vašim obchodním potřebám.](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
 
-1. Buď zadejte přihlašovací údaje, nebo vytvořte nové přihlašovací údaje pro systémy, které chcete prozkoumat, a pak vyberte **Další**.
+1. Buď zadejte přihlašovací údaje, nebo vytvořte nové přihlašovací údaje pro systémy, které chcete prozkoumat, a pak vyberte **Další**:
 
     ![Zadat přihlašovací údaje](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
 
-1. Nastavte pořadí přihlašovacích údajů a pak vyberte **Další**. 
+1. Nastavte pořadí přihlašovacích údajů a potom vyberte **Další**:
 
    ![Nastavit pořadí přihlašovacích údajů](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
 
-1. Zadejte pověření pro každý počítač, který chcete zjistit. Pro každý počítač/počítač můžete použít jedinečné přihlašovací údaje, nebo můžete použít seznam **přihlašovacích údajů všech počítačů** .  
+1. Zadejte pověření pro každý počítač, který chcete zjistit. Pro každý počítač/počítač můžete použít jedinečné přihlašovací údaje, nebo můžete použít seznam **přihlašovacích údajů všech počítačů** :
 
 
    ![Zadejte přihlašovací údaje pro každý počítač, který chcete zjistit.](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
 
 
-1. Ověřte souhrn výběru a pak vyberte **Dokončit**.
+1. Ověřte souhrn výběru a pak vyberte **Dokončit**:
 
    ![Souhrn kontroly](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
 
-1. Po dokončení kontroly si prohlédněte sestavu souhrn **shromažďování dat** . Kontrola může trvat několik minut a závisí na počtu databází. Po dokončení vyberte **Zavřít** . 
+1. Po dokončení kontroly si prohlédněte sestavu souhrn **shromažďování dat** . Kontrola může trvat několik minut a závisí na počtu databází. Po dokončení vyberte **Zavřít** :
 
    ![Souhrnná sestava kolekce](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
 
@@ -100,11 +102,11 @@ K vytvoření posouzení použijte následující postup:
 
 1. Otevřete  [Pomocník s migrací SQL serveru (SSMA) pro Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
 1. Vyberte **soubor** a pak zvolte **Nový projekt**. 
-1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom z rozevíracího seznamu vyberte cíl migrace SQL Server. Vyberte **OK**. 
+1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom z rozevíracího seznamu vyberte cíl migrace SQL Server. Vyberte **OK**:
 
    ![Nový projekt](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
 
-1. Vyberte **připojit se k Oracle**. V dialogovém okně **připojit k systému Oracle** zadejte v části hodnoty pro informace o připojení Oracle.
+1. Vyberte **připojit se k Oracle**. V dialogovém okně **připojit k systému Oracle** zadejte v části hodnoty pro informace o připojení Oracle:
 
    ![Připojení k Oracle](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
 
@@ -112,22 +114,16 @@ K vytvoření posouzení použijte následující postup:
 
    ![Výběr schématu Oracle](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
 
-1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit možnost **vytvořit sestavu** z navigačního panelu po výběru databáze.
+1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit **vytvořit sestavu** z navigačního panelu po výběru databáze:
 
    ![Vytvořit sestavu](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
 
-1. V **Průzkumníku metadat Oracle** vyberte schéma Oracle a pak vyberte **vytvořit sestavu** pro vygenerování sestavy HTML s statistikou převodu a chybou nebo upozorněním, pokud existují.
-1. Podívejte se na sestavu ve formátu HTML pro statistiku převodu a také chyby a upozornění. Analyzujte je, abyste pochopili problémy s konverzí a jejich řešení.
+1. V **Průzkumníku metadat Oracle** vyberte schéma Oracle a pak výběrem **vytvořit sestavu** vygenerujte sestavu HTML s statistikou převodu a chybou nebo upozorněními, pokud existují.
+1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Sestavu můžete také otevřít v aplikaci Excel a získat tak inventarizaci objektů Oracle a úsilí potřebného k provádění převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects. 
 
-   K této sestavě se dá také dostat ze složky projekty SSMA, která je vybraná na první obrazovce. Z výše uvedeného příkladu vyhledejte soubor report.xml z: 
-
-   `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
-
-    a pak ho otevřete v Excelu, abyste získali inventář objektů Oracle a úsilí potřebného k provádění převodů schématu.
-
+   Příklad: `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
+    
    ![Sestava převodu](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
-
-
 
 ### <a name="validate-data-types"></a>Ověřit datové typy
 
@@ -135,28 +131,30 @@ Ověřte výchozí mapování datových typů a podle potřeby je změňte podle
 
 1. V nabídce vyberte **nástroje** . 
 1. Vyberte **nastavení projektu**. 
-1. Vyberte kartu **mapování typů** . 
+1. Vyberte kartu **mapování typů** :
 
    ![Mapování typů](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
 
 1. Mapování typů pro každou tabulku můžete změnit tak, že vyberete tabulku v **Průzkumníku metadat Oracle**. 
-
-
 
 ### <a name="convert-schema"></a>Převést schéma
 
 K převedení schématu použijte následující postup: 
 
 1. Volitelné Chcete-li převést dynamické nebo ad hoc dotazy, klikněte pravým tlačítkem myši na uzel a vyberte **příkaz Přidat příkaz**.
-1. V horním navigačním panelu vyberte **připojit k SQL Server** a zadejte podrobnosti o připojení k vašemu SQL Server na virtuálním počítači Azure. Můžete se rozhodnout připojit se k existující databázi nebo zadat nový název. v takovém případě se databáze vytvoří na cílovém serveru.
+1. V horním navigačním panelu vyberte **připojit k SQL Server** . 
+     1. Zadejte podrobnosti o připojení pro váš SQL Server na VIRTUÁLNÍm počítači Azure. 
+     1. V rozevíracím seznamu vyberte cílovou databázi, nebo zadejte nový název. v takovém případě se na cílovém serveru vytvoří databáze. 
+     1. Zadejte podrobnosti ověřování. 
+     1. Vyberte **Connect** (Připojit). 
 
    ![Připojit k SQL](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle a vyberte **převést schéma**.
+1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle a vyberte **převést schéma**. Alternativně můžete vybrat **převést schéma** z horního navigačního panelu:
 
    ![Převést schéma](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
 
-1. Po dokončení převodu schématu Porovnejte a zkontrolujte strukturu schématu a Identifikujte potenciální problémy.
+1. Po dokončení převodu Porovnejte a zkontrolujte převedené objekty s původními objekty k identifikaci potenciálních problémů a jejich řešení na základě doporučení:
 
    ![Zkontrolovat doporučení](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
 
@@ -166,6 +164,9 @@ K převedení schématu použijte následující postup:
 
    Projekt můžete uložit místně pro práci s offline schématem. To lze provést výběrem možnosti **Uložit projekt** v nabídce **soubor** . Díky tomu máte možnost vyhodnotit zdrojový a cílový schémat v režimu offline a před publikováním schématu pro SQL Server provést nápravu.
 
+1. V podokně výstup vyberte možnost **Kontrola výsledků** a zkontrolujte chyby v podokně **Seznam chyb** . 
+1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . Díky tomu máte možnost vyhodnotit zdrojové a cílové schémat v režimu offline a před publikováním schématu SQL Server na virtuálním počítači Azure provést nápravu.
+
 
 ## <a name="migrate"></a>Migrate
 
@@ -174,29 +175,27 @@ Po splnění potřebných požadavků a dokončení úkolů přidružených ke f
 
 K publikování schématu a migraci dat použijte následující postup: 
 
-1. Klikněte pravým tlačítkem na databázi z **SQL Server Průzkumníku metadat**  a vyberte **synchronizovat s databází**. Tato akce publikuje schéma Oracle pro SQL Server na virtuálním počítači Azure. 
+1. Publikování schématu: klikněte pravým tlačítkem na databázi z **SQL Server Průzkumníku metadat**  a vyberte **synchronizovat s databází**. Tato akce publikuje schéma Oracle pro SQL Server na virtuálním počítači Azure:
 
    ![Synchronizovat s databází](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
 
-   Zkontrolujte stav synchronizace: 
+   Zkontrolujte mapování mezi zdrojovým projektem a vaším cílem:
 
    ![Kontrola stavu synchronizace](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
 
 
-1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle a vyberte **migrovat data**. Alternativně můžete vybrat možnost migrovat data z navigace na horním řádku.
+1. Migrace dat: klikněte pravým tlačítkem na databázi nebo objekt, který chcete migrovat v **Průzkumníkovi metadat Oracle**, a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z horního navigačního panelu. Chcete-li migrovat data pro celou databázi, zaškrtněte políčko vedle názvu databáze. Chcete-li migrovat data z jednotlivých tabulek, rozbalte databázi, rozbalte položku tabulky a potom zaškrtněte políčko vedle této tabulky. Chcete-li vynechat data z jednotlivých tabulek, zrušte zaškrtnutí políčka:
 
    ![Migrace dat](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
 
 1. Zadání podrobností o připojení pro Oracle a SQL Server na virtuálním počítači Azure v dialogovém okně.
-1. Po dokončení migrace si prohlédněte sestavu migrace dat:
+1. Po dokončení migrace si prohlédněte **sestavu migrace dat**:  
 
     ![Sestava migrace dat](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
 
-1. Připojte se k vašemu SQL Server na VIRTUÁLNÍm počítači Azure pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) pro kontrolu dat a schématu vaší instance SQL Server. 
+1. Připojte se k SQL Server na instanci virtuálního počítače Azure pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu:
 
    ![Ověřit v SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
-
-
 
 
 Kromě použití SSMA můžete k migraci dat použít taky služba SSIS (SQL Server Integration Services) (SSIS). Další informace najdete v následujících tématech: 

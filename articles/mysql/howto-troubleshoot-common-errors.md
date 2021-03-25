@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98631363"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105037542"
 ---
 # <a name="common-errors"></a>Běžné chyby
 
@@ -48,7 +48,7 @@ BEGIN
 END;
 ```
 
-**Řešení**: Pokud chcete chybu vyřešit, nastavte log_bin_trust_function_creators na 1 z okna [parametry serveru](howto-server-parameters.md) na portálu, spusťte příkazy DDL nebo importujte schéma pro vytvoření požadovaných objektů a vraťte zpět log_bin_trust_function_creators parametr na předchozí hodnotu po vytvoření.
+**Řešení**: Pokud chcete chybu vyřešit, nastavte log_bin_trust_function_creators na 1 z okna [parametry serveru](howto-server-parameters.md) na portálu, spusťte příkazy DDL nebo importujte schéma pro vytvoření požadovaných objektů. Abyste se vyhnuli chybám v budoucnu, můžete nadále udržovat log_bin_trust_function_creators pro server 1. Naším doporučením je nastavit log_bin_trust_function_creators, protože bezpečnostní riziko zvýrazněné v [dokumentaci komunity MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) je minimální ve službě Azure DB for MySQL, protože protokol přihrádky není vystavený žádným hrozbám.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>Chyba 1227 (42000) na řádku 101: přístup byl odepřen; pro tuto operaci potřebujete (aspoň jedno z) oprávnění SUPER. Operace selhala s ExitCode 1.
 

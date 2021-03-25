@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 86f40944af9fb49b0402a33e5009b99d60be61f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489181"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031303"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vlastní ověření e-mailu pomocí SendGrid
 
@@ -43,7 +43,7 @@ V dalším kroku uložte klíč rozhraní API SendGrid do klíče zásad Azure A
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. V případě **možností** vyberte možnost **ručně**.
 1. Zadejte **název** klíče zásad. Například, `SendGridSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
-1. Do **tajného klíče** zadejte tajný klíč klienta, který jste předtím nahráli.
+1. Do pole **tajný kód** zadejte klíč rozhraní API SendGrid, který jste předtím nahráli.
 1. V případě **použití klíče** vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
 

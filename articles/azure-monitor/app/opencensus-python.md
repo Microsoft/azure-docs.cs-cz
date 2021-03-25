@@ -5,21 +5,21 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704408"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047418"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
-- Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.
+- Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python verze 2,7 a 3.6 +.
 - Vytvořte [prostředek](./create-new-resource.md)Application Insights. K vašemu prostředku budete mít přiřazený vlastní klíč instrumentace (ikey).
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentace se sadou OpenCensus Python SDK pro Azure Monitor

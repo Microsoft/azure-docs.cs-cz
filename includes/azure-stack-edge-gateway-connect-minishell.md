@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5e2ab0b9d7f61539a16fc685134bef6c9047229d
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987852"
+ms.locfileid: "105105434"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -21,7 +21,7 @@ V závislosti na operačním systému klienta se postupy pro vzdálené připoje
 Než začnete, ujistěte se, že:
 
 - Na vašem klientovi Windows běží Windows PowerShell 5,0 nebo novější.
-- Váš klient Windows má podpisový řetěz (kořenový certifikát) odpovídající certifikátu uzlu nainstalovanému v zařízení. Podrobné pokyny najdete v tématu [instalace certifikátu na klienta Windows](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- Váš klient Windows má podpisový řetěz (kořenový certifikát) odpovídající certifikátu uzlu nainstalovanému v zařízení. Podrobné pokyny najdete v tématu [instalace certifikátu na klienta Windows](../articles/databox-online/azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 - `hosts`Soubor umístěný v `C:\Windows\System32\drivers\etc` pro klienta systému Windows obsahuje položku odpovídající certifikátu uzlu v následujícím formátu:
 
     `<Device IP>    <Node serial number>.<DNS domain of the device>`

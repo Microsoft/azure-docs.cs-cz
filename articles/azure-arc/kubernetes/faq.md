@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Tento článek obsahuje seznam nejčastějších dotazů souvisejících s povoleným Kubernetesem Azure ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery, konfigurace, GitOps, nejčastější dotazy
-ms.openlocfilehash: d7facb842509bdf852957d46d91dfcb3912e99ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84368cc63bd9aaf1df4fb281395b47a6e886cb7f
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121707"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025845"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Nejčastější dotazy – Kubernetes s povoleným obloukem Azure
 
@@ -72,6 +72,6 @@ Tato funkce používá základní konfigurace (jako jsou zásady sítě, vazby r
 
 ## <a name="next-steps"></a>Další kroky
 
-* Projděte si náš rychlý Start, který [připojí cluster Kubernetes ke službě Azure ARC](./connect-cluster.md).
-* Už máte připojený cluster Kubernetes ke clusteru Azure ARC? [Vytvořte konfigurace na clusteru Kubernetes s povoleným obloukem](./use-gitops-connected-cluster.md).
+* Projděte si náš rychlý Start, který [připojí cluster Kubernetes ke službě Azure ARC](./quickstart-connect-cluster.md).
+* Už máte připojený cluster Kubernetes ke clusteru Azure ARC? [Vytvořte konfigurace na clusteru Kubernetes s povoleným obloukem](./tutorial-use-gitops-connected-cluster.md).
 * Naučte se [používat Azure Policy k aplikování konfigurací se škálováním](./use-azure-policy.md).

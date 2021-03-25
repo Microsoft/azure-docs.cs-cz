@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/30/2020
-ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581299"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046500"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -37,7 +37,7 @@ Následující tabulka ukazuje možnosti výpisu SaaS nabídek na komerčním we
 
 Další informace o těchto možnostech tohoto výpisu najdete v tématu možnosti Transact-The pro [prodej na webu Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Po publikování vaší nabídky se možnost výpisu, kterou jste zvolili pro vaši nabídku, zobrazí jako tlačítko v levém horním rohu stránky se seznamem vaší nabídky. Například následující snímek obrazovky ukazuje stránku se seznamem nabídek v Azure Marketplace s tlačítky **kontaktní mi** a **testovacích jednotek** .
+Po publikování vaší nabídky se možnost výpisu, kterou jste zvolili pro vaši nabídku, zobrazí jako tlačítko v levém horním rohu stránky se seznamem vaší nabídky. Například následující snímek obrazovky ukazuje stránku se seznamem nabídek v Azure Marketplace s tlačítky **získat nyní** a **testovat disk** .
 
 ![Znázorňuje seznam nabídek v online obchodu.](./media/listing-options.png)
 
@@ -68,9 +68,9 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
 
 - **Adresa URL cílové stránky**: adresa URL webu SaaS (například: `https://contoso.com/signup` ), na kterou budou uživatelé přesměrováni po získání nabídky z komerčního tržiště, který aktivuje proces konfigurace z nově vytvořeného předplatného SaaS. Tato adresa URL obdrží token, který se dá použít k volání rozhraní API pro splnění, aby se získaly podrobné informace o zřízení vaší interaktivní registrační stránky.
 
-  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jedinečně identifikuje SaaS nákup konkrétního zákazníka. Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí [rozhraní Resolve API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Tyto podrobnosti a všechny ostatní, které chcete shromažďovat, by se měly používat jako součást interaktivní webové stránky zákazníka, která je založená na vašich zkušenostech k dokončení registrace zákazníků a aktivaci jejich nákupu. Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD).
+  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jedinečně identifikuje SaaS nákup konkrétního zákazníka. Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí [rozhraní Resolve API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Tyto podrobnosti a všechny ostatní, které chcete shromažďovat jako součást interaktivní webové stránky zákazníka, se dají použít k zavedení prostředí pro registraci zákazníka, které musí nakonec končit voláním funkce Activate na rozhraní API za účelem zahájení období předplatného. Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD).
 
-  Tato adresa URL s parametrem identifikačního tokenu nákupu na webu Marketplace se taky zavolá, když zákazník spustí spravované prostředí SaaS z centra pro správu v Azure Portal nebo M365. Oba toky byste měli zpracovat: když se token poprvé zadá po nákupu nového zákazníka, a když se znovu zadá pro existujícího zákazníka, který spravuje své řešení SaaS.
+  Tato adresa URL s parametrem identifikačního tokenu nákupu na webu Marketplace bude také volána, když zákazník spustí spravované prostředí SaaS z centra pro správu Azure Portal nebo Microsoft 365. Oba toky byste měli zpracovat: když se token poprvé zadá po nákupu nového zákazníka, a když se znovu zadá pro existujícího zákazníka, který spravuje své řešení SaaS.
 
     Cílová stránka, kterou nakonfigurujete, by měla být spuštěná a bude běžet 24/7. Toto je jediný způsob, jakým se dozvíte o nových nákupech nabídek SaaS provedených na komerčním tržišti nebo o požadavcích na konfiguraci aktivního předplatného nabídky.
 
@@ -79,7 +79,7 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
   Webhook, který zadáte, by měl být v provozu a musí běžet 24/7. Toto je jediný způsob, jakým budete dostávat oznámení o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím komerčního tržiště.
 
   > [!NOTE]
-  > V rámci Azure Portal vyžadujeme, abyste vytvořili aplikaci Azure Active Directory s jedním klientem [(Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) , která umožňuje použít jedno ID aplikace Azure k ověření připojení mezi našimi dvěma službami. [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti** a vyhledáte uvedené číslo ID adresáře. Například, `50c464d3-4930-494c-963c-1e951d15360e`.
+  > V rámci Azure Portal musíme vytvořit [registraci aplikace Azure Active Directory jednoho tenanta (Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md). Použijte podrobnosti registrace aplikace k ověření vašeho řešení při volání rozhraní API Marketplace. [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti** a vyhledáte uvedené číslo ID adresáře. Například, `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **ID tenanta Azure Active Directory**: (označuje se taky jako ID adresáře). V Azure Portal vyžadujeme [registraci aplikace Azure Active Directory (AD)](../active-directory/develop/howto-create-service-principal-portal.md) , abychom ji mohli přidat do seznamu řízení přístupu (ACL) rozhraní API, abyste měli jistotu, že máte oprávnění k volání. Pokud chcete najít ID tenanta pro vaši aplikaci Azure Active Directory (AD), v Azure Active Directory klikněte na okno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . Ve sloupci **Zobrazovaný název** vyberte aplikaci. Pak vyhledejte číslo **ID adresáře (tenant)** v seznamu (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
@@ -88,7 +88,7 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
   ID aplikace Azure AD je přidruženo k vašemu ID vydavatele v účtu partnerského centra. Pro všechny nabídky tohoto účtu musíte použít stejné ID aplikace.
 
   > [!NOTE]
-  > Pokud má Vydavatel v partnerském centru dva nebo více různých účtů, měla by se použít nejméně jedno jiné ID aplikace Azure AD, každé pro jeden z účtů. Každý partnerský účet v partnerském centru by měl používat jedinečné ID aplikace Azure AD pro všechny nabídky SaaS, které jsou publikovány prostřednictvím tohoto účtu.
+  > Pokud má Vydavatel v partnerském centru dva nebo více různých účtů, můžou se podrobnosti registrace aplikace Azure AD použít jenom v jednom účtu. Použití stejného ID tenanta, dvojice ID aplikace pro nabídku pod jiným účtem vydavatele se nepodporuje.
 
 ## <a name="test-drives"></a>Testovací verze
 Pro aplikaci SaaS se můžete rozhodnout pro povolení testovacích jednotek. Testovací jednotky poskytují zákazníkům přístup k předkonfigurovanému prostředí po dobu určitého počtu hodin. Můžete povolit testovací jednotky pro libovolnou možnost publikování, ale tato funkce má další požadavky. Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](what-is-test-drive.md). Informace o konfiguraci různých druhů testovacích jednotek najdete v tématu [Technická konfigurace testovacích](test-drive-technical-configuration.md)jednotek.
@@ -209,9 +209,6 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
 > [!Note]
 > Vaše nabídka musí splňovat obecné [zásady certifikace komerčního tržiště](/legal/marketplace/certification-policies#100-general) a [software jako zásady služby](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) , které se mají publikovat na komerčním webu Marketplace.
 
-## <a name="preview-audience"></a>Cílová skupina Preview
-Cílová skupina Preview má přístup k vaší nabídce před publikováním živě v online obchodech, aby bylo možné otestovat kompletní funkce před publikováním v reálném čase. Na stránce **Preview cílovou skupinu** můžete definovat skupinu omezené verze Preview. Toto nastavení není k dispozici, pokud se rozhodnete zpracovávat transakce nezávisle na prodeji vaší nabídky prostřednictvím společnosti Microsoft. Pokud ano, můžete tuto část přeskočit a přejít na [Další prodejní příležitosti](#additional-sales-opportunities).
-
 > [!NOTE]
 > Cílová skupina verze Preview se liší od privátního plánu. Soukromý plán je ten, který zpřístupníte jenom pro konkrétní cílovou skupinu, kterou zvolíte. To vám umožní vyjednat vlastní plán s konkrétními zákazníky. Další informace najdete v další části: plány.
 
@@ -251,6 +248,50 @@ Následující příklad ukazuje vzorový rozpis nákladů a výběrů k předve
 |||
 
 **`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného poplatku za služby Marketplace vyžaduje splnění alespoň pěti (5) pracovních dnů před koncem každého kalendářního měsíce. Po splnění nároku bude snížený poplatek za službu udělen všem transakcím platným první den v následujícím měsíci a bude nadále platit až do chvíle, kdy se motivovaní stav společného prodeje Azure IP. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
+
+## <a name="preview-audience"></a>Cílová skupina Preview
+
+Cílová skupina Preview má přístup k vaší nabídce před publikováním živě v online obchodech. Můžou vidět, jak bude vaše nabídka vypadat na komerčním webu Marketplace, a otestovat kompletní funkce před tím, než ji publikujete živě. 
+
+Na stránce **Preview cílovou skupinu** můžete definovat skupinu omezené verze Preview. Toto nastavení není k dispozici, pokud se rozhodnete zpracovávat transakce nezávisle na prodeji vaší nabídky prostřednictvím společnosti Microsoft. Pokud ano, můžete tuto část přeskočit a přejít na [Další prodejní příležitosti](#additional-sales-opportunities).
+
+## <a name="test-offer"></a>Nabídka testu
+
+Před publikováním vaší nabídky v reálném čase byste měli použít funkci Preview k vývoji technické implementace, testování a experimentování s různými cenovými modely.
+
+Pro vývoj a testování nabídky SaaS s nejnižším rizikem doporučujeme vytvořit nabídku testování a vývoje (DEV) pro experimentování a testování. Nabídka pro vývoj bude oddělená od nabídky produkce (PROD).
+
+Aby nedocházelo k nechtěným nákupům nabídky pro vývoj, nebudete si nikdy nabízet tlačítko **Přejít do živého** publikování a publikujete nabídku pro vývoj v reálném čase.
+
+![Popisuje stránku s přehledem nabídky pro nabídku v partnerském centru. Zobrazí se odkazy na tlačítko Přejít živě a náhled. Odkaz na sestavu zobrazení ověření se také zobrazuje v části automatizované ověřování.](./media/review-publish-offer/publish-status-saas.png)
+
+Zde jsou některé důvody, proč vytvořit samostatnou nabídku pro vývoj pro vývojový tým, který se má použít pro vývoj a testování nabídky výr:
+
+- Vyhněte se neúmyslným poplatkům za Zákazníky
+- Vyhodnotit cenové modely
+- Nepřidávat plány, které necílí na skutečné zákazníky
+
+### <a name="avoid-accidental-customer-charges"></a>Vyhněte se neúmyslným poplatkům za Zákazníky
+
+Pomocí nabídky pro vývoj namísto nabídky produktů a jejich zpracování jako vývojových a produkčních prostředí se můžete vyhnout náhodným poplatkům zákazníkům.
+
+Doporučujeme, abyste zaregistrovali dvě různé aplikace Azure AD pro volání rozhraní API Marketplace. Vývojáři budou používat jednu aplikaci služby Azure AD s nastavením nabídky pro vývoj a provozní tým bude používat registraci aplikace v PRODUKČNÍm podniku. Díky tomu můžete vývojový tým izolovat od neúmyslných chyb, jako je volání rozhraní API, pro zrušení předplatného zákazníka, které platí za $100 tisíc za měsíc. Můžete se taky vyhnout zpoplatnění zákazníka za měření využití, které nevyužili.
+
+### <a name="evaluate-pricing-models"></a>Vyhodnotit cenové modely
+
+Testování cenových modelů v nabídce pro vývoj snižuje riziko, když vývojáři experimentují s různými cenovými modely.
+
+Vydavatelé můžou vytvořit plány, které potřebují v nabídce pro vývoj, a určit tak, který cenový model nejlépe vyhovuje jejich nabídce. Vývojáři mohou chtít vytvořit více plánů v nabídce pro vývoj a testovat různé cenové kombinace. Můžete například vytvořit plány s různými sadami vlastních měřených dimenzí. Můžete vytvořit jiný plán se kombinací paušálních sazeb a vlastních měřených dimenzí.
+
+Pokud chcete vyzkoušet víc cenových možností, musíte vytvořit plán pro každý jedinečný cenový model. Další informace najdete v tématu [plány](#plans).
+
+### <a name="not-adding-plans-that-do-not-target-actual-customers"></a>Nepřidávat plány, které necílí na skutečné zákazníky
+
+Díky VÝVOJÁŘSKÉ nabídce pro vývoj a testování můžete v rámci výrobní nabídky snížit zbytečný přehled. Například nemůžete odstranit plány, které vytvoříte pro testování různých cenových modelů nebo technických konfigurací (bez podání lístku podpory). Díky tomu, že vytvoříte plány pro testování v nabídce pro vývoj, snížíte tím zbytečné množství v nabídce výr.
+
+Nepotřebné produkty frustrates a marketingové týmy v PRODUKČNÍm prostředí, protože očekávají všechny plány pro cílení na skutečné zákazníky. Zejména u velkých týmů, které jsou odděleny tím, že všechny chtějí pracovat s různými izolovanými prostory, vytvoří dvě nabídky dvě různá prostředí pro vývoj a výr. V některých případech můžete chtít vytvořit několik nabídek vývoje pro podporu většího týmu, který má různé lidi, kteří spouštějí různé testovací scénáře. Aby mohli různí členové týmu pracovat v nabídce pro vývoj, která je oddělená od nabídky se ZAKÁZKou, pomáhá udržet provozní plány co nejblíže k produkčním účelům.
+
+Testování nabídky pro vývoj pomáhá zabránit tomu, aby se na jednu nabídku vyhnula 30 vlastních měřených dimenzí. Vývojáři mohou vyzkoušet různé kombinace měření v nabídce pro vývoj, aniž by to ovlivnilo vlastní měření měřené dimenze v nabídce PROD.
 
 ## <a name="additional-sales-opportunities"></a>Další prodejní příležitosti
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e3073c491b251a1dbb505d4656de9c6a1e0ac7f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724145"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048489"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Firewall webových aplikací Azure na frontách Azure
 
@@ -24,7 +24,7 @@ WAF zabraňuje škodlivým útokům blízko zdrojů útoku předtím, než vstou
 
 ![Firewall webových aplikací Azure](../media/overview/wafoverview.png)
 
-Přední dvířka Azure jsou [ve verzi Preview dvě nové SKU](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview): přední dveře Standard a SKU front-dveří Premium. WAF je nativně integrovaná s SKU front-dveří Premium s úplnými možnostmi. Pro skladovou jednotku Standard Standard je podporována pouze [vlastní pravidla](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules) .
+Přední dvířka Azure jsou [ve verzi Preview dvě nové SKU](../../frontdoor/standard-premium/overview.md): přední dveře Standard a SKU front-dveří Premium. WAF je nativně integrovaná s SKU front-dveří Premium s úplnými možnostmi. Pro skladovou jednotku Standard Standard je podporována pouze [vlastní pravidla](#custom-authored-rules) .
 
 ## <a name="waf-policy-and-rules"></a>Zásady a pravidla WAF
 

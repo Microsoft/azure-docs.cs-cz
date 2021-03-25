@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2bcf467eea9186cc57fb4c6c3d8964632b8fec03
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90947290"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047707"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-flexibilním serveru
 
@@ -24,11 +24,11 @@ V tomto rychlém startu se připojíte k Azure Database for PostgreSQL flexibiln
 
 V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí Pythonu, ale začínáte pracovat se Azure Database for PostgreSQLm flexibilním serverem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Azure Database for PostgreSQL flexibilní Server. Pokud chcete vytvořit flexibilní Server, přečtěte si téma [vytvoření Azure Database for PostgreSQL-flexibilního serveru pomocí Azure Portal](./quickstart-create-server-portal.md).
-* [Python](https://www.python.org/downloads/) 2.7.9 + nebo 3.4 +.
+* [Python](https://www.python.org/downloads/) 2,7 nebo 3.6 +.
 * Poslední instalační program balíčku [PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="preparing-your-client-workstation"></a>Příprava pracovní stanice klienta

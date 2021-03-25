@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/11/2021
-ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149745"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047248"
 ---
 # <a name="maintenance-window-preview"></a>Časové období údržby (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,14 +27,14 @@ Funkce časový interval pro správu a údržbu umožňuje nakonfigurovat plán 
 
 ## <a name="overview"></a>Přehled
 
-Azure pravidelně provádí [plánovanou údržbu](planned-maintenance.md) prostředků spravované instance SQL SQL Database a SQL. Během události údržby Azure SQL jsou databáze plně dostupné, ale můžou být v rámci příslušného SLA dostupnosti pro [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) a [SQL spravované instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)podléhat krátkým převzetím služeb při selhání, protože v některých případech je potřeba rekonfigurace prostředků.
+Azure pravidelně provádí [plánovanou údržbu](planned-maintenance.md) prostředků spravované instance SQL SQL Database a SQL. Během události údržby Azure SQL jsou databáze plně dostupné, ale můžou se řídit krátkými možnostmi konfigurace v rámci příslušného SLA dostupnosti pro [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) a [SQL Managed instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance).
 
-Časový interval pro správu a údržbu je určený pro produkční úlohy, které nejsou odolné vůči převzetí služeb při selhání databáze nebo instance a nemůžou absorbovat krátké přerušení připojení způsobené plánovanými událostmi údržby. Volbou okna pro správu, které dáváte přednost, můžete minimalizovat dopad plánované údržby, protože k němu dojde mimo špičku pracovní doby. Odolné úlohy a neprodukční úlohy se můžou spoléhat na výchozí zásady údržby Azure SQL.
+Časový interval pro správu a údržbu je určený pro produkční úlohy, které nejsou odolné vůči rekonfiguraci databáze nebo instance a nemůžou absorbovat krátké přerušení připojení způsobené plánovanou údržbou událostí. Volbou okna pro správu, které dáváte přednost, můžete minimalizovat dopad plánované údržby, protože k němu dojde mimo špičku pracovní doby. Odolné úlohy a neprodukční úlohy se můžou spoléhat na výchozí zásady údržby Azure SQL.
 
 Časové období údržby se dá nakonfigurovat při vytváření nebo pro stávající prostředky SQL Azure. Dá se nakonfigurovat pomocí rozhraní API Azure Portal, PowerShellu, CLI nebo Azure.
 
 > [!Important]
-> Konfigurace časového období údržby je dlouhodobě spuštěná asynchronní operace, podobně jako změna úrovně služby prostředku SQL Azure. Prostředek je k dispozici během operace s výjimkou krátkého převzetí služeb při selhání, které se na konci operace stane, a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Abyste minimalizovali dopad převzetí služeb při selhání, měli byste tuto operaci provést mimo špičku hodin.
+> Konfigurace časového období údržby je dlouhodobě spuštěná asynchronní operace, podobně jako změna úrovně služby prostředku SQL Azure. Prostředek je k dispozici během operace s výjimkou krátké rekonfigurace, která se na konci operace stane, a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Chcete-li minimalizovat dopad rekonfigurace, měli byste provést operaci mimo špičku.
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Získání větší předvídatelnosti s časovým obdobím údržby
 
@@ -98,7 +98,7 @@ Výběr jiných časových období údržby, než je výchozí, je aktuálně k 
 
 Pokud chcete získat maximální výhody z časových období údržby, ujistěte se, že klientské aplikace používají zásady připojení přesměrování. Přesměrování je doporučená zásada připojení, kde klienti navázali připojení přímo k uzlu, který je hostitelem databáze, což vede ke snížení latence a lepší propustnosti.  
 
-* V Azure SQL Database můžou být všechna připojení pomocí zásad připojení k proxy serveru ovlivněná zvoleným časovým obdobím údržby i oknem údržby uzlu brány. Připojení klientů pomocí doporučených zásad připojení přesměrování se ale neprojeví při převzetí služeb při selhání v rámci údržby uzlu brány. 
+* V Azure SQL Database můžou být všechna připojení pomocí zásad připojení k proxy serveru ovlivněná zvoleným časovým obdobím údržby i oknem údržby uzlu brány. Připojení klientů pomocí doporučených zásad připojení přesměrování však nebudou ovlivněna změnou konfigurace údržby uzlu brány. 
 
 * Ve spravované instanci Azure SQL se uzly brány hostují [ve virtuálním clusteru](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) a mají stejné časové období údržby jako spravovaná instance, ale při použití zásady přesměrování připojení se pořád doporučuje minimalizovat počet přerušení během události údržby.
 
@@ -115,7 +115,7 @@ Všechny instance hostované ve virtuálním clusteru sdílejí časový interva
 Očekávaná doba trvání konfigurace časového období údržby na spravované instanci se dá vypočítat pomocí [Odhadované doby trvání operací správy instancí](/azure/azure-sql/managed-instance/management-operations-overview#duration).
 
 > [!Important]
-> Krátká operace převzetí služeb při selhání probíhá na konci operace údržby a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Abyste minimalizovali dopad převzetí služeb při selhání, měli byste naplánovat operaci mimo špičku v době špičky.
+> Krátká rekonfigurace probíhá na konci operace údržby a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Chcete-li minimalizovat dopad rekonfigurace, měli byste naplánovat operaci mimo špičku.
 
 ### <a name="ip-address-space-requirements"></a>Požadavky na adresní prostor IP adres
 Každý nový virtuální cluster v podsíti vyžaduje další IP adresy v závislosti na [přidělování IP adres virtuálních clusterů](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size). Změna časového období údržby pro existující spravovanou instanci také vyžaduje [dočasnou další kapacitu IP adres](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) jako v rámci škálování scénáře virtuální jádra pro odpovídající úroveň služby.
@@ -129,7 +129,7 @@ Konfigurace a změna okna údržby způsobuje změnu IP adresy instance v rámci
 ## <a name="next-steps"></a>Další kroky
 
 * [Oznámení předem](advance-notifications.md)
-* [Konfigurovat časový interval pro správu a údržbu](maintenance-window-configure.md)
+* [Konfigurace časového období údržby](maintenance-window-configure.md)
 
 ## <a name="learn-more"></a>Další informace
 

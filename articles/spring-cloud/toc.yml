@@ -77,20 +77,30 @@
           href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Nasazení Azure Spring Cloudu s využitím Azure PowerShellu
           href: how-to-deploy-powershell.md
-    - name: Konfigurace
+    - name: Spravovat
       items:
         - name: 'Spuštění, zastavení a odstranění aplikace'
           href: how-to-start-stop-delete.md
         - name: Použití trvalého úložiště
           href: how-to-persistent-storage.md
+        - name: Identifikace odchozích veřejných IP adres
+          href: how-to-outbound-public-ip.md
     - name: Měřítko
       items:
         - name: Ruční škálování aplikace
           href: how-to-scale-manual.md
         - name: Automatické škálování aplikace
           href: how-to-setup-autoscale.md
-        - name: Identifikace odchozích veřejných IP adres
-          href: how-to-outbound-public-ip.md
+    - name: Integrace
+      items:
+        - name: Navázání aplikace na Azure CosmosDB
+          href: how-to-bind-cosmos.md
+        - name: Navázání aplikace na Azure Cache for Redis
+          href: how-to-bind-redis.md
+        - name: Navázání aplikace na Azure MySQL
+          href: how-to-bind-mysql.md
+        - name: Integrace s řešeními pro vyrovnávání zatížení v Azure
+          href: how-to-integrate-azure-load-balancers.md
     - name: Monitorování
       items:
         - name: Distribuované trasování a App Insights
@@ -123,16 +133,6 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Vytváření rolí a oprávnění
           href: how-to-permissions.md
-    - name: Integrace
-      items:
-        - name: Navázání aplikace na Azure CosmosDB
-          href: how-to-bind-cosmos.md
-        - name: Navázání aplikace na Azure Cache for Redis
-          href: how-to-bind-redis.md
-        - name: Navázání aplikace na Azure MySQL
-          href: how-to-bind-mysql.md
-        - name: Integrace s řešeními pro vyrovnávání zatížení v Azure
-          href: how-to-integrate-azure-load-balancers.md
     - name: Automatizace
       items:
         - name: CI/CD s využitím Azure DevOps
