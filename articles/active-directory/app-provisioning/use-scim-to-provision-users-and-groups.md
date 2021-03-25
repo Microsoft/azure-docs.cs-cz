@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652092"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022938"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
@@ -198,6 +198,7 @@ V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specifica
 |Filter [excludedAttributes = Members](#get-group) při dotazování na prostředek skupiny|oddíl 3.4.2.5|
 |Přijměte jeden nosný token pro ověřování a autorizaci AAD pro vaši aplikaci.||
 |Obnovitelné odstranění uživatele `active=false` a obnovení uživatele `active=true`|Objekt uživatele by měl být vrácen v požadavku bez ohledu na to, zda je uživatel aktivní. Jediným okamžikem, kdy by uživatel neměl být vrácen, je v případě, že je pevným smazán z aplikace.|
+|Podpora koncového bodu/schemas|[oddíl 7](https://tools.ietf.org/html/rfc7643#page-30) Koncový bod zjišťování schématu se použije ke zjištění dalších atributů.|
 
 Při implementaci koncového bodu SCIM použijte obecné pokyny pro zajištění kompatibility s AAD:
 
@@ -210,7 +211,12 @@ Při implementaci koncového bodu SCIM použijte obecné pokyny pro zajištění
 * Služba Microsoft AAD dává žádost o načtení náhodného uživatele a skupiny, aby bylo zajištěno, že koncový bod a přihlašovací údaje jsou platné. Je také proveden jako součást toku **testu připojení** v [Azure Portal](https://portal.azure.com). 
 * Atribut, na kterém mohou být prostředky odesílány, by měl být nastaven jako odpovídající atribut v aplikaci v [Azure Portal](https://portal.azure.com), viz [Přizpůsobení mapování atributů zřizování uživatelů](customize-application-attributes.md).
 * Podpora HTTPS na koncovém bodu SCIM
-
+* [Zjišťování schématu](#schema-discovery)
+  * Zjišťování schématu se v současnosti nepodporuje u vlastní aplikace, ale používá se v některých aplikacích galerie. Po přesměrování se zjišťování schématu použije jako primární metoda pro přidání dalších atributů do konektoru. 
+  * Pokud hodnota není k dispozici, neodesílají hodnoty null.
+  * Hodnoty vlastností by měly být ve stylu CamelCase použita (např. v/v).
+  * Musí vracet odpověď seznamu.
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>Zřizování a rušení uživatelů
 
 Následující ilustrace znázorňuje zprávy, které služba AAD posílá službě SCIM ke správě životního cyklu uživatele v úložišti identit vaší aplikace.  
@@ -252,6 +258,9 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem AAD
   - [Aktualizace skupiny [přidat členy]](#update-group-add-members) ([](#request-11)  /  [odpověď](#response-11)na žádost)
   - [Aktualizace skupiny [odebrat členy]](#update-group-remove-members) ([](#request-12)  /  [odpověď](#response-12)na žádost)
   - [Odstranit skupinu](#delete-group) ([](#request-13)  /  [odpověď](#response-13)na žádost)
+
+[Zjišťování schématu](#schema-discovery)
+  - [Zjistit schéma](#discover-schema) ([](#request-15)  /  [odpověď](#response-15)na žádost)
 
 ### <a name="user-operations"></a>Uživatelské operace
 
@@ -749,6 +758,105 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem AAD
 ##### <a name="response"></a><a name="response-13"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
+
+### <a name="schema-discovery"></a>Zjišťování schématu
+#### <a name="discover-schema"></a>Zjistit schéma
+
+##### <a name="request"></a><a name="request-15"></a>Žádost
+*ZÍSKAT/schemas* 
+##### <a name="response"></a><a name="response-15"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
 
 ### <a name="security-requirements"></a>Požadavky na zabezpečení
 **Verze protokolu TLS**

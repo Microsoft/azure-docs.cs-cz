@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2a753a33e9ddf16cc277ab10c1f91049a6382066
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931630"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871941"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory do clusteru HDInsight
 
@@ -29,11 +29,11 @@ Chcete-li zobrazit hostitele, otevřete webové uživatelské rozhraní Ambari. 
 
 2. V nabídce na levé straně vyberte **Všichni uživatelé** a pak vyberte **Nový uživatel**.
 
-    ![Azure Portal uživatelů a skupin](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png" alt-text="Azure Portal uživatelů a skupin":::
 
 3. Dokončete formulář nového uživatele. Vyberte skupiny, které jste vytvořili pro přiřazení oprávnění na základě clusteru. V tomto příkladu vytvořte skupinu s názvem "HiveUsers", do které můžete přiřadit nové uživatele. [Příklady pokynů](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) pro vytvoření clusteru ESP zahrnují přidání dvou skupin `HiveUsers` a `AAD DC Administrators` .
 
-    ![Azure Portal výběru skupin v podokně uživatele](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png" alt-text="Azure Portal výběru skupin v podokně uživatele":::
 
 4. Vyberte **Vytvořit**.
 
@@ -129,15 +129,15 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 
 1. Z řídicího panelu Ambari v nabídce **správce** vyberte **Spravovat Ambari** .
 
-    ![Řídicí panel Apache Ambari – Správa Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png" alt-text="Řídicí panel Apache Ambari – Správa Ambari":::
 
 2. Na levé straně stránky vyberte **Uživatelé** ve skupině nabídky **uživatel + Správa skupiny** .
 
-    ![Nabídka uživatelů a skupin HDInsight](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png" alt-text="Nabídka uživatelů a skupin HDInsight":::
 
 3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` místo  `Local` .
 
-    ![Přehled stránky uživatelé AAD AAD](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png" alt-text="Přehled stránky uživatelé AAD AAD":::
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Přihlaste se k Ambari jako nový uživatel.
 

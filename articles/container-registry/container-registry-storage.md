@@ -1,15 +1,15 @@
 ---
 title: Úložiště image kontejneru
 description: Podrobnosti o tom, jak se image kontejnerů a jiné artefakty ukládají v Azure Container Registry, včetně zabezpečení, redundance a kapacity.
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183263"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047741"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Úložiště imagí kontejneru v Azure Container Registry
 
@@ -21,11 +21,9 @@ Všechny Image kontejnerů a jiné artefakty v registru jsou v klidovém stavu �
 
 ## <a name="regional-storage"></a>Místní úložiště
 
-Azure Container Registry ukládá data v oblasti, ve které je registr vytvořený, aby zákazníci mohli splnit požadavky na zaregistrování dat a dodržování předpisů.
+Azure Container Registry ukládá data v oblasti, ve které je registr vytvořený, aby zákazníci mohli splnit požadavky na zaregistrování dat a dodržování předpisů. Ve všech oblastech s výjimkou Brazílie – jih a jihovýchodní Asie může Azure také ukládat data registru do spárované oblasti ve stejné geografické oblasti. V oblasti Brazílie – jih a jihovýchodní Asie jsou data registru vždycky omezená na oblast, aby se pro tyto oblasti vešly požadavky na data o sídle.
 
-V rámci ochrany před výpadky datového centra si některé oblasti nabízejí [redundanci zóny](zone-redundancy.md), kde se data replikují napříč více datacentry v konkrétní oblasti.
-
-Zákazníci, kteří chtějí mít svá data uložená ve více oblastech pro lepší výkon v různých geografických oblastech nebo kteří chtějí mít odolnost v případě regionu výpadku, by měly umožnit [geografickou replikaci](container-registry-geo-replication.md).
+Pokud dojde k oblastnímu výpadku, data registru můžou být nedostupná a automaticky se neobnoví. Zákazníci, kteří chtějí mít svá data registru uložená v několika oblastech pro zajištění lepšího výkonu napříč různými geografickými oblastmi nebo kteří chtějí mít odolnost v případě regionálního výpadku, by měla umožňovat [geografickou replikaci](container-registry-geo-replication.md).
 
 ## <a name="geo-replication"></a>Geografická replikace
 
@@ -33,7 +31,7 @@ V případě scénářů vyžadujících zajištění vysoké dostupnosti zvažt
 
 ## <a name="zone-redundancy"></a>Zónová redundance
 
-Pokud chcete vytvořit odolný a vysoce dostupný registr Azure Container Registry, volitelně povolte [redundanci zóny](zone-redundancy.md) v oblasti výběr oblastí Azure. Funkce služby Premium Service úrovně Premium, redundance zóny, používá [zóny dostupnosti](../availability-zones/az-overview.md) Azure k replikaci vašeho registru do minimálně tří samostatných zón v každé povolené oblasti. Kombinování geografické replikace a redundance zóny pro zvýšení spolehlivosti a výkonu registru. 
+Pokud chcete vytvořit odolný a vysoce dostupný registr Azure Container Registry, volitelně povolte [redundanci zóny](zone-redundancy.md) v rámci výběru oblastí Azure. Funkce služby Premium Service úrovně Premium, redundance zóny, používá [zóny dostupnosti](../availability-zones/az-overview.md) Azure k replikaci vašeho registru do minimálně tří samostatných zón v každé povolené oblasti. Kombinování geografické replikace a redundance zóny pro zvýšení spolehlivosti a výkonu registru. 
 
 ## <a name="scalable-storage"></a>Škálovatelné úložiště
 

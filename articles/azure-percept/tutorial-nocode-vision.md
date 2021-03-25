@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e661dbbe31e7624cba0a3d5421b81de16d0a5363
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608193"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023125"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Vytvoření řešení pro vize bez kódu v Azure Percept studiu
 
@@ -27,7 +27,7 @@ Azure Percept Studio umožňuje vytvářet a nasazovat vlastní řešení pro po
 
 Tento kurz je vhodný pro vývojáře s malým množstvím bez použití AI a stejně jako Začínáme se službou Azure Percept.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK (DevKit)
 - [Předplatné Azure](https://azure.microsoft.com/free/)
@@ -106,7 +106,7 @@ Před školením modelu přidejte k obrázkům popisky.
 
 1. Na levé straně stránky **Custom Vision** klikněte na **neoznačeno** pod **značkou** . zobrazí se obrázky, které jste právě shromáždili v předchozím kroku. Vyberte jednu nebo více netagovaných imagí.
 
-1. V okně **Podrobnosti o imagi** klikněte na obrázek a začněte označovat značky. Pokud jste vybrali možnost detekce objektu jako typ projektu, musíte také nakreslit [ohraničující rámeček](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images) kolem konkrétních objektů, které chcete označit. Podle potřeby upravte ohraničovací rámeček. Zadejte značku objektu a kliknutím **+** použijte značku. Například pokud jste vytvořili řešení Vision, které vás upozorní, když je potřeba skladovat úložiště, přidejte značku "prázdná police" do imagí prázdné police a přidejte značku "plná poli" do imagí pro plně skladovaná police. Opakujte u všech netagovaných imagí.
+1. V okně **Podrobnosti o imagi** klikněte na obrázek a začněte označovat značky. Pokud jste vybrali možnost detekce objektu jako typ projektu, musíte také nakreslit [ohraničující rámeček](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images) kolem konkrétních objektů, které chcete označit. Podle potřeby upravte ohraničovací rámeček. Zadejte značku objektu a kliknutím **+** použijte značku. Například pokud jste vytvořili řešení Vision, které vás upozorní, když je potřeba skladovat úložiště, přidejte značku "prázdná police" do imagí prázdné police a přidejte značku "plná poli" do imagí pro plně skladovaná police. Opakujte u všech netagovaných imagí.
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="Obrazovka označování obrázku v Custom Vision.":::
 
@@ -116,7 +116,7 @@ Před školením modelu přidejte k obrázkům popisky.
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="Školicí výběr obrazu s zvýrazněným výukovým tlačítkem":::
 
-1. Po dokončení školení se na obrazovce zobrazí výkon vašeho modelu. Další informace o vyhodnocení těchto výsledků najdete v [dokumentaci k vyhodnocení modelu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector). Po školení si můžete také [vyzkoušet svůj model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model) na dalších obrázcích a v případě potřeby ho přeškolit. Pokaždé, když vytvoříte model, uloží se jako nová iterace. Další informace o tom, jak zvýšit výkon modelu, najdete v [dokumentaci k Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) .
+1. Po dokončení školení se na obrazovce zobrazí výkon vašeho modelu. Další informace o vyhodnocení těchto výsledků najdete v [dokumentaci k vyhodnocení modelu](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector). Po školení si můžete také [vyzkoušet svůj model](../cognitive-services/custom-vision-service/test-your-model.md) na dalších obrázcích a v případě potřeby ho přeškolit. Pokaždé, když vytvoříte model, uloží se jako nová iterace. Další informace o tom, jak zvýšit výkon modelu, najdete v [dokumentaci k Custom Vision](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) .
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="Výsledky školení modelu.":::
 
@@ -143,7 +143,7 @@ Po zavření tohoto okna se můžete kdykoli vrátit a upravit projekt vize klik
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>Vylepšení modelu nastavením přeškolení
 
-Jakmile provedete svůj model a nasadíte ho do zařízení, můžete zvýšit výkon modelu nastavením parametrů přeškolení pro zachycení více školicích dat. Tato funkce se používá ke zlepšení výkonu vycvičeného modelu tím, že poskytuje možnost zachycení imagí na základě rozsahu pravděpodobnosti. Můžete například nastavit, aby zařízení zachytávání pouze školicích snímků, když je pravděpodobnost nízká. Tady je několik [dalších pokynů](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) pro přidání dalších imagí a vyvážení školicích dat.
+Jakmile provedete svůj model a nasadíte ho do zařízení, můžete zvýšit výkon modelu nastavením parametrů přeškolení pro zachycení více školicích dat. Tato funkce se používá ke zlepšení výkonu vycvičeného modelu tím, že poskytuje možnost zachycení imagí na základě rozsahu pravděpodobnosti. Můžete například nastavit, aby zařízení zachytávání pouze školicích snímků, když je pravděpodobnost nízká. Tady je několik [dalších pokynů](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) pro přidání dalších imagí a vyvážení školicích dat.
 
 1. Pokud chcete nastavit opětovné školení, vraťte se do **projektu** a pak na **Souhrn projektu** .
 1. Na kartě **zachycení obrázku** vyberte **Automatické zachycení obrázků** a **nastavte rekurzi**.

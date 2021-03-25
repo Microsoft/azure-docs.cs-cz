@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: dcb82e6cc50a2ff3291d5a900ec9367d69dcdde6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224907"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022802"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování s PKCE 
 
@@ -25,9 +25,9 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 
 Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobného rychlému startu, který používá MSAL.js 1,0 s implicitním tokem, najdete v tématu [rychlý Start: přihlášení uživatelů v aplikacích JavaScript Single-Page](./quickstart-v2-javascript.md).
+Tento rychlý Start používá MSAL.js v2 s tokem autorizačního kódu. Podobného rychlému startu, který používá MSAL.js V1 s implicitním tokem, najdete v tématu [rychlý Start: přihlášení uživatelů v JavaScriptu jednostránkovéch aplikacích](./quickstart-v2-javascript.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [vytvoření předplatného Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)

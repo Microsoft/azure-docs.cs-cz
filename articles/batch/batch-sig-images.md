@@ -4,12 +4,12 @@ description: Vlastní fondy imagí představují účinný způsob konfigurace v
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9ff30f52ae19e3d6a7bc58ca81eabeb91d21146
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124240"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024060"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -33,7 +33,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Lepší výkon než použití jenom spravované Image jako vlastní image.** U vlastního fondu imagí sdílené Image je čas na dosažení stabilního stavu rychlejší až 25% a latence nečinnosti virtuálního počítače je kratší než 30%.
 - **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]
 > Musíte se ověřit pomocí Azure AD. Pokud používáte ověřování Shared-Key-Authentication, zobrazí se chyba ověřování.  
@@ -67,7 +67,7 @@ Následující kroky ukazují, jak připravit virtuální počítač, pořídit 
 Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jako základní image pro spravovanou bitovou kopii Azure Marketplace image, kterou služba Batch podporuje. Jako základní image se dají použít jenom image ze strany First stran. Úplný seznam Azure Marketplacech odkazů na Image podporovaných v Azure Batch najdete v tématu operace [výpisu SKU agenta uzlu](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) .
 
 > [!NOTE]
-> Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny pro virtuální počítače se systémem [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) .
+> Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny pro virtuální počítače se systémem [Linux](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#view-purchase-plan-properties).
 
 Při vytváření virtuálních počítačů postupujte podle těchto pokynů:
 

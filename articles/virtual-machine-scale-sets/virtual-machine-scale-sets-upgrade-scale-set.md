@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684589"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023924"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -350,7 +350,7 @@ Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuál
 
 - **singlePlacementGroup** – Pokud má singlePlacementGroup hodnotu true, může být změněno na false. Pokud je však singlePlacementGroup false, **nemusí** být upraveno na hodnotu true.
 - **podsíť** – podsíť sady škálování může být upravena tak dlouho, dokud je původní podsíť a Nová podsíť ve stejné virtuální síti.
-- **imageReferenceSku** -SKU odkazu image se dá aktualizovat pro schválené verze [Linux distribuce](../virtual-machines/linux/endorsed-distros.md), image Windows serveru/klienta a image bez [informací o plánu](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties). 
+- **imageReferenceSku** -SKU odkazu image se dá aktualizovat pro schválené verze [Linux distribuce](../virtual-machines/linux/endorsed-distros.md), image Windows serveru/klienta a image bez [informací o plánu](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information). 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují změnu navracení
 Některé vlastnosti lze změnit pouze na určité hodnoty, pokud jsou virtuální počítače v sadě škálování navráceny. Mezi tyto vlastnosti patří:
