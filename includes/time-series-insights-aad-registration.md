@@ -9,14 +9,14 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724165"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104899"
 ---
-* Po výběru příslušné platformy v kroku 4 Konfigurace nastavení [platformy](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) nakonfigurujte **identifikátory URI přesměrování** a **přístupové tokeny** na bočním panelu napravo od uživatelského rozhraní.
+* Po výběru příslušné platformy v kroku 4 Konfigurace nastavení [platformy](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) nakonfigurujte **identifikátory URI přesměrování** a **přístupové tokeny** na bočním panelu napravo od uživatelského rozhraní.
 
     * **Identifikátory URI pro přesměrování** se musí shodovat s adresou zadanou požadavkem ověřování:
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724165"
 
     [![Zadejte druh oprávnění API, které vaše aplikace vyžaduje.](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* [Přidejte přihlašovací údaje](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials) , pokud aplikace bude volat rozhraní API vašeho prostředí jako samotné. Přihlašovací údaje umožňují, aby se vaše aplikace ověřovala jako samotná a nevyžadovala žádné interakce od uživatele za běhu.
+* [Přidejte přihlašovací údaje](../articles/active-directory/develop/quickstart-register-app.md#add-credentials) , pokud aplikace bude volat rozhraní API vašeho prostředí jako samotné. Přihlašovací údaje umožňují, aby se vaše aplikace ověřovala jako samotná a nevyžadovala žádné interakce od uživatele za běhu.

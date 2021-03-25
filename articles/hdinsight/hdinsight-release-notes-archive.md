@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705649"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872145"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
@@ -385,7 +385,7 @@ Značky služeb zjednodušují zabezpečení virtuálních počítačů Azure a 
 #### <a name="custom-ambari-db"></a>Vlastní Ambari DB
 HDInsight teď umožňuje používat pro Apache Ambari vlastní SQL DB. Tuto vlastní Ambari DB můžete nakonfigurovat z šablony Azure Portal nebo prostřednictvím Správce prostředků.  Tato funkce umožňuje zvolit správnou databázi SQL pro potřeby zpracování a kapacity. Můžete také snadno upgradovat, aby odpovídaly požadavkům na obchodní růst. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](hdinsight-custom-ambari-db.md).
 
-![Vlastní Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+:::image type="content" source="./media/hdinsight-release-notes/custom-ambari-db.png" alt-text="Vlastní Ambari DB":::
 
 ### <a name="deprecation"></a>Vyřazení
 Pro tuto verzi nejsou žádné zastaralosti. Chcete-li se připravit na nadcházející zastaralost, Projděte si [nadcházející změny](#upcoming-changes).

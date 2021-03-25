@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91ad5a6d95c634300db83d66df8f0407b4544cde
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224652"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024162"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -122,6 +122,17 @@ Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné p
 > [!NOTE]
 > Pro procento vzorkování vyberte procento, které je blízko 100/N, kde N je celé číslo. V současné době vzorkování nepodporují jiné hodnoty.
 
+## <a name="sampling-overrides-preview"></a>Přepsání vzorkování (Preview)
+
+Tato funkce je ve verzi Preview, počínaje 3.0.3-BETA. 2.
+
+Přepsání vzorkování umožňují přepsat [výchozí procento vzorkování](#sampling), například:
+* Nastavte procento vzorkování na 0 (nebo malou hodnotu) pro kontroly stavu s vysokou úrovní šumu.
+* Nastavte procento vzorkování na 0 (nebo malou hodnotu) pro volání závislostí s vysokou úrovní šumu.
+* Nastavte procento vzorkování na 100 pro důležitý typ žádosti (např.), přestože `/login` máte výchozí vzorkování nakonfigurované na něco menšího.
+
+Další informace najdete v dokumentaci k [přepsání vzorkování](./java-standalone-sampling-overrides.md) .
+
 ## <a name="jmx-metrics"></a>JMX metriky
 
 Pokud chcete shromáždit některé další JMX metriky:
@@ -176,9 +187,13 @@ Tato funkce je ve verzi Preview.
 Umožňuje konfigurovat pravidla, která budou použita pro telemetrii požadavků, závislostí a trasování, například:
  * Maskovat citlivá data
  * Podmíněné přidání vlastních dimenzí
- * Aktualizace názvu telemetrie používaného pro agregaci a zobrazení
+ * Aktualizujte název rozsahu, který se používá k agregaci podobné telemetrie v Azure Portal.
+ * Přetažením konkrétních atributů span můžete řídit náklady na ingestování.
 
 Další informace najdete v dokumentaci k [procesoru telemetrie](./java-standalone-telemetry-processors.md) .
+
+> [!NOTE]
+> Pokud chcete vynechat konkrétní (celé) rozsahy pro řízení nákladů na ingestování, přečtěte si téma [přepsání vzorkování](./java-standalone-sampling-overrides.md).
 
 ## <a name="auto-collected-logging"></a>Automaticky shromážděné protokolování
 

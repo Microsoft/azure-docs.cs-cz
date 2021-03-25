@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c4b15fa2a8be32aa7397ae425f28f1deaac6b71
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052258"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024604"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>Upozornění na stav hosta pro virtuální počítače v Insights (Preview)
 Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Výstraha se dá vytvořit, když se virtuální počítač nebo monitor změní na stav není v pořádku. Tato upozornění můžete zobrazovat a spravovat pomocí těch, která [jsou vytvořená pomocí pravidel upozornění v Azure monitor](../alerts/alerts-overview.md) , a při vytváření nové výstrahy se rozhodnout, že se budou aktivně informovat.
@@ -35,7 +35,7 @@ Pro každý virtuální počítač se vytvoří [Výstraha Azure](../alerts/aler
 Pokud je už výstraha ve stavu **aktivováno** , když se změní stav virtuálního počítače, druhá výstraha se nevytvoří, ale závažnost stejné výstrahy se změní tak, aby odpovídala stavu virtuálního počítače. Například pokud se virtuální počítač změní do **kritického** stavu, když **Upozornění** již bylo ve stavu **aktivováno** , bude Závažnost výstrahy změněna na **Sev1**. Pokud se virtuální počítač změní na stav **výstrahy** , když se už výstraha **Sev1** ve **stavu** vystavení, změní se závažnost výstrahy na **Sev2**. Pokud se virtuální počítač přesune zpátky do stavu **v pořádku** , výstraha se vyřeší se závažností, která se změnila na **Sev4**.
 
 ## <a name="viewing-alerts"></a>Zobrazení výstrah
-Zobrazit výstrahy vytvořené stavem hosta virtuálních počítačů Insights s dalšími [výstrahami v Azure Portal](../platform/alerts-overview.md#alerts-experience). Můžete vybrat **výstrahy** z nabídky **Azure monitor** , abyste zobrazili výstrahy pro všechny monitorované prostředky, nebo vybrat **výstrahy** z nabídky virtuálního počítače, abyste zobrazili výstrahy jenom pro tento virtuální počítač.
+Zobrazit výstrahy vytvořené stavem hosta virtuálních počítačů Insights s dalšími [výstrahami v Azure Portal](../alerts/alerts-overview.md#alerts-experience). Můžete vybrat **výstrahy** z nabídky **Azure monitor** , abyste zobrazili výstrahy pro všechny monitorované prostředky, nebo vybrat **výstrahy** z nabídky virtuálního počítače, abyste zobrazili výstrahy jenom pro tento virtuální počítač.
 
 ## <a name="alert-properties"></a>Vlastnosti výstrahy
 
