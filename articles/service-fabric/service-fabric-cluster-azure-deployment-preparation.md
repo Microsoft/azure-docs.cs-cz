@@ -3,19 +3,19 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109619"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046313"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
 Plánování a příprava nasazení v produkčním clusteru je velmi důležitá.  Je potřeba vzít v úvahu mnoho faktorů.  Tento článek vás provede jednotlivými kroky při přípravě nasazení clusteru.
 
 ## <a name="read-the-best-practices-information"></a>Přečtěte si informace o osvědčených postupech.
-Aby bylo možné úspěšně spravovat aplikace a clustery Azure Service Fabric, jsou k dispozici operace, které vám umožní optimalizovat spolehlivost provozního prostředí.  Další informace najdete v tématu [Service Fabric osvědčené postupy pro aplikace a cluster](service-fabric-best-practices-overview.md).
+Aby bylo možné úspěšně spravovat aplikace a clustery Azure Service Fabric, jsou k dispozici operace, které vám umožní optimalizovat spolehlivost provozního prostředí.  Další informace najdete v tématu [Service Fabric osvědčené postupy pro aplikace a cluster](./service-fabric-best-practices-security.md).
 
 ## <a name="select-the-os-for-the-cluster"></a>Vyberte operační systém pro cluster.
 Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru je nutné zvolit operační systém: Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru spouští stejný operační systém. virtuální počítače se systémem Windows a Linux nelze kombinovat ve stejném clusteru.
@@ -117,7 +117,7 @@ Kritická součást poskytování vysoké dostupnosti zajišťuje, aby služby m
 Je vaše aplikace a cluster připravený přijmout provozní provoz? Před nasazením clusteru do produkčního prostředí spouštějte prostřednictvím [kontrolního seznamu připravenosti na produkci](service-fabric-production-readiness-checklist.md). Sledujte položky v tomto kontrolním seznamu a sledujte tak bezproblémové fungování aplikace a clusteru. Než se pustíte do produkčního prostředí, důrazně doporučujeme, abyste všechny tyto položky kontrolovali.
 
 ## <a name="next-steps"></a>Další kroky
-* [Vytvoření clusteru Service Fabric se systémem Windows](service-fabric-best-practices-overview.md)
+* [Vytvoření clusteru Service Fabric se systémem Windows](./service-fabric-best-practices-security.md)
 * [Vytvoření clusteru Service Fabric se systémem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

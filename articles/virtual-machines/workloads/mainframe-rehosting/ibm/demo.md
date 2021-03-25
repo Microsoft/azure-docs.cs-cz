@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: fda59cc041cc540b95ababa6d56df6e69b0a8970
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: b1391f81c571879534258c289436d2d086b84bef
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956158"
+ms.locfileid: "105045939"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak nastavit instanci ADCD v prostředí zD&T v Az
 
 Podobně jako zD&T je ADCDs k dispozici pouze pro zákazníky a partnery IBM a slouží výhradně pro účely vývoje a testování. Nepoužívají se pro produkční prostředí. K dispozici je řada instalačních balíčků IBM ke stažení prostřednictvím [služby Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) nebo [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -191,7 +191,7 @@ Gratulujeme! Nyní používáte sálové prostředí IBM v Azure.
 
 - [Migrace sálového počítače: mýty a fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale v Azure](ibm-db2-purescale-azure.md)
-- [Řešení potíží](../../../troubleshooting/index.yml)
+- [Řešení potíží](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: aeb8028468a1e1944a4fd39275f134bfae00dfa3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a8b58c72ee4e6d9d38dccb369a3d38c46f0c4afe
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102555342"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046840"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
@@ -63,7 +63,7 @@ Toto jsou požadavky Azure pro tento scénář migrace:
 * Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
 * Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pochopení relevantních součástí scénáře migrace v předchozí části.
 * Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).
@@ -199,11 +199,11 @@ Site Recovery vytvoří instanci virtuálního počítače, jejíž typ je stejn
    * Pro virtuální počítač vytvořený prostřednictvím modelu nasazení Classic: přidejte virtuální počítač do skupiny dostupnosti v Azure Portal. Podrobný postup najdete v popisu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic).
    * Pro virtuální počítač vytvořený pomocí modelu nasazení Správce prostředků: uložte konfiguraci virtuálního počítače a pak odstraňte a znovu vytvořte virtuální počítače ve skupině dostupnosti. Provedete to tak, že použijete skript v [nastavení Azure Resource Manager skupinu dostupnosti virtuálního počítače](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Před spuštěním tohoto skriptu si Projděte jeho omezení a naplánujte výpadky.
 
-2. **Odstraňte staré virtuální počítače a disky**. Zajistěte, aby byly prémiové disky konzistentní se zdrojovými disky a aby nové virtuální počítače prováděly stejnou funkci jako u zdrojových virtuálních počítačů. Odstraňte virtuální počítač a odstraňte disky ze zdrojového účtu úložiště v Azure Portal. Pokud dojde k potížím, kdy se disk neodstranil, i když jste virtuální počítač odstranili, přečtěte si téma [řešení chyb při odstraňování prostředků úložiště](../troubleshooting/storage-resource-deletion-errors.md).
+2. **Odstraňte staré virtuální počítače a disky**. Zajistěte, aby byly prémiové disky konzistentní se zdrojovými disky a aby nové virtuální počítače prováděly stejnou funkci jako u zdrojových virtuálních počítačů. Odstraňte virtuální počítač a odstraňte disky ze zdrojového účtu úložiště v Azure Portal. Pokud dojde k potížím, kdy se disk neodstranil, i když jste virtuální počítač odstranili, přečtěte si téma [řešení chyb při odstraňování prostředků úložiště](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors).
 
 3. **Vyčistěte infrastrukturu Azure Site Recovery**. Pokud už Site Recovery nepotřebujete, můžete svou infrastrukturu vyčistit. Odstraňte replikované položky, konfigurační server a zásady obnovení a pak odstraňte trezor Azure Site Recovery.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * [Monitorování a odstraňování potíží s ochranou pro virtuální počítače a fyzické servery](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [Microsoft Q&stránku s otázkou pro Microsoft Azure Site Recovery](/answers/topics/azure-site-recovery.html)

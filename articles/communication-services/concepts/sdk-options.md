@@ -1,7 +1,7 @@
 ---
 title: Klientské knihovny a rozhraní REST API pro komunikační služby Azure
 titleSuffix: An Azure Communication Services concept document
-description: Přečtěte si další informace o knihovnách klienta služby Azure Communication Services a rozhraní REST API.
+description: Přečtěte si další informace o sadách Azure Communication Services SDK a rozhraní REST API.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,37 +9,37 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 01a5f4a947f0b89b5881eddb3c743b9a9b184b19
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: effd7658bbfe7359e1f99f9452857824c2c45c2f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495636"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107886"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientské knihovny a rozhraní REST API
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Funkce služby Azure Communication Services jsou koncepčně rozdělené do šesti oblastí. Některé oblasti mají plně Open Source klientské knihovny. Volající Klientská knihovna používá proprietární síťová rozhraní a je aktuálně uzavřená a knihovna konverzace obsahuje uzavřenou závislost na zdroji. Ukázky a další technické podrobnosti pro klientské knihovny jsou publikované v [úložišti GitHub služby Azure Communication Services](https://github.com/Azure/communication).
+Funkce služby Azure Communication Services jsou koncepčně rozdělené do šesti oblastí. Některé oblasti mají plně open source sady SDK. Volající sada SDK používá proprietární síťová rozhraní a je aktuálně uzavřená a knihovna chatu obsahuje uzavřenou závislost na zdroji. Ukázky a další technické podrobnosti pro sady SDK jsou publikované v [úložišti GitHub komunikačních služeb Azure](https://github.com/Azure/communication).
 
 ## <a name="client-libraries"></a>Klientské knihovny
 
 | Sestavení               | Protokoly             |Otevřít vs. uzavřený zdroj| Obory názvů                          | Možnosti                                                      |
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Otevřít            | Azure. ResourceManager. Communication | Zřizování a Správa prostředků komunikačních služeb             |
-| Společné                 | REST | Otevřít               | Azure. Communication. Common          | Poskytuje základní typy pro jiné klientské knihovny. |
+| Společné                 | REST | Otevřít               | Azure. Communication. Common          | Poskytuje základní typy pro jiné sady SDK. |
 | Identita         | REST | Otevřít               | Azure. Communication. identity  | Správa uživatelů, přístupové tokeny |
 | Telefonní čísla         | REST | Otevřít               | Azure. Communication. PhoneNumbers  | Správa telefonních čísel |
 | Chat                   | REST s proprietárními signály | Otevřít pomocí zavřeného balíčku zdrojového signálu    | Azure. Communication. chat            | Přidání textu založeného na textu v reálném čase do vašich aplikací  |
 | SMS                    | REST | Otevřít              | Azure. Communication. SMS             | Odesílání a příjem zpráv SMS |
 | Videohovory                | Proprietární přenos | Uzavřeno |Azure. Communication. Calling         | Využití hlasu, videa, sdílení obrazovky a dalších možností komunikace dat v reálném čase          |
 
-Všimněte si, že klientské knihovny Azure Resource Manager, identity a serveru SMS jsou zaměřené na integraci služeb a v mnoha případech dochází k problémům se zabezpečením při integraci těchto funkcí do aplikací koncových uživatelů. Společné a chatovací klientské knihovny jsou vhodné pro služby a klientské aplikace. Volající Klientská knihovna je navržena pro klientské aplikace. Klientská knihovna zaměřená na scénáře služby je ve vývoji.
+Všimněte si, že sady SDK Azure Resource Manager, identity a SMS jsou zaměřené na integraci služeb a v mnoha případech dochází k problémům se zabezpečením při integraci těchto funkcí do aplikací koncových uživatelů. Společné a chatovací sady SDK jsou vhodné pro služby a klientské aplikace. Volající sada SDK je navržena pro klientské aplikace. Sada SDK zaměřená na scénáře služby je ve vývoji.
 
 ### <a name="languages-and-publishing-locations"></a>Jazyky a umístění pro publikování
 
-Umístění pro publikování pro jednotlivé balíčky klientských knihoven jsou podrobně popsány níže.
+Umístění pro publikování jednotlivých balíčků sady SDK jsou podrobněji popsána níže.
 
 | Plošný           | JavaScript | .NET | Python | Java SE | iOS | Android | Jiné                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
@@ -60,8 +60,8 @@ Rozhraní API komunikačních služeb jsou zdokumentována spolu s dalšími roz
 
 ### <a name="ios-and-android-support-details"></a>Podrobnosti o podpoře pro iOS a Android
 
-- Služba Communications Client Librarys pro iOS má cílovou verzi verze 13 + a Xcode 11.
-- Klientské knihovny pro Android Java – úroveň rozhraní Android API 21 + a Android Studio 4.0 +
+- Služba Communications Services pro iOS sady SDK Target verze 13 + a Xcode 11 +.
+- Android Java SDK cílové rozhraní Android API úrovně 21 + a Android Studio 4.0 +
 
 ### <a name="net-support-details"></a>Podrobnosti o podpoře .NET
 
@@ -82,9 +82,9 @@ Podpora prostřednictvím .NET Core 2,0:
 - Xamarin iOS 10,14
 - Xamarin Mac 3,8
 
-## <a name="calling-client-library-timeouts"></a>Volání klientských časových limitů klientské knihovny
+## <a name="calling-sdk-timeouts"></a>Volání sady SDK časový limit
 
-Pro komunikační služby, které volají klientské knihovny, platí následující časový limit:
+Následující časové limity se vztahují na sady SDK pro volání komunikačních služeb:
 
 | Akce           | Časový limit v sekundách |
 | -------------- | ---------- |
@@ -100,30 +100,30 @@ Pro komunikační služby, které volají klientské knihovny, platí následuj�
 ## <a name="api-stability-expectations"></a>Očekávání stability rozhraní API
 
 > [!IMPORTANT]
-> V této části najdete pokyny pro rozhraní REST API a klientské knihovny označené jako **stabilní**. Rozhraní API označená předběžná verze, verze Preview nebo beta můžou být **beze** změny nebo zastaralá.
+> V této části najdete pokyny pro rozhraní REST API a sady SDK s označením **stabilní**. Rozhraní API označená předběžná verze, verze Preview nebo beta můžou být **beze** změny nebo zastaralá.
 
-V budoucnu můžeme vyřadit verze klientských knihoven komunikačních služeb a můžeme začlenit zásadní změny v našich rozhraních REST API a vydané klientské knihovny. Komunikační služby Azure budou *obecně* splňovat dvě zásady podpory pro vyřazení verzí služby:
+V budoucnu můžeme vyřadit verze sad SDK pro komunikaci a můžeme začlenit zásadní změny našich rozhraní REST API a vydaných sad SDK. Komunikační služby Azure budou *obecně* splňovat dvě zásady podpory pro vyřazení verzí služby:
 
-- Před změnou kódu z důvodu změny rozhraní komunikačních služeb budete upozorněni alespoň na tři roky. Všechna dokumentované rozhraní REST API a rozhraní API klientské knihovny mají při vyřazení rozhraní do provozu aspoň tři roky upozornění.
-- Před aktualizací sestavení klientské knihovny na nejnovější podverzi budete upozorněni alespoň na jeden rok. Tyto požadované aktualizace by neměly vyžadovat změny kódu, protože jsou ve stejné hlavní verzi. To platí zejména pro volající a konverzační knihovny, které mají komponenty v reálném čase, které často vyžadují aktualizace zabezpečení a výkonu. Důrazně doporučujeme, abyste si aktualizovali klientské knihovny komunikačních služeb.
+- Před změnou kódu z důvodu změny rozhraní komunikačních služeb budete upozorněni alespoň na tři roky. Všechna dokumentované rozhraní REST API a rozhraní API sady SDK obecně využívají před vyřazením rozhraní alespoň tři roky upozornění.
+- Před aktualizací sestavení sady SDK na nejnovější podverzi budete upozorněni alespoň na jeden rok. Tyto požadované aktualizace by neměly vyžadovat změny kódu, protože jsou ve stejné hlavní verzi. To platí zejména pro volající a konverzační knihovny, které mají komponenty v reálném čase, které často vyžadují aktualizace zabezpečení a výkonu. Důrazně doporučujeme, abyste si aktualizovali sady SDK komunikačních služeb.
 
-### <a name="api-and-client-library-decommissioning-examples"></a>Příklady vyřazení rozhraní API a klientské knihovny z provozu
+### <a name="api-and-sdk-decommissioning-examples"></a>Příklady vyřazení rozhraní API a sady SDK z provozu
 
 **V24i jste do své aplikace integraci verze REST API serveru SMS. Komunikační verze Azure v25.**
 
 Před tím, než tato rozhraní API přestanou fungovat a budou nuceně aktualizovat na V25, zobrazí se upozornění 3 roky. Tato aktualizace může vyžadovat změnu kódu.
 
-**Do své aplikace jste zapnuli verzi v 2.02 volání klientské knihovny. Azure Communications releases v 2.05.**
+**Do své aplikace jste zapnuli verzi v 2.02 volání sady SDK. Azure Communications releases v 2.05.**
 
-Možná budete muset aktualizovat na verzi v 2.05 volání klientské knihovny do 12 měsíců od vydání verze v 2.05. Mělo by to být jednoduché nahrazení artefaktu bez nutnosti změny kódu, protože verze v 2.05 je v hlavní verzi v2 a nemá žádné závažné změny.
+Možná budete muset aktualizovat na verzi v 2.05 volání sady SDK do 12 měsíců od vydání verze v 2.05. Mělo by to být jednoduché nahrazení artefaktu bez nutnosti změny kódu, protože verze v 2.05 je v hlavní verzi v2 a nemá žádné závažné změny.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících přehledech klientské knihovny:
+Další informace najdete v následujících přehledech SDK:
 
-- [Přehled volání klientské knihovny](../concepts/voice-video-calling/calling-sdk-features.md)
-- [Přehled klientské knihovny pro chat](../concepts/chat/sdk-features.md)
-- [Přehled klientské knihovny SMS](../concepts/telephony-sms/sdk-features.md)
+- [Přehled volání sady SDK](../concepts/voice-video-calling/calling-sdk-features.md)
+- [Přehled sady Chat SDK](../concepts/chat/sdk-features.md)
+- [Přehled sady SMS SDK](../concepts/telephony-sms/sdk-features.md)
 
 Začínáme s komunikačními službami Azure:
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: fe777c3aa7b314dc56a42cc64712d18281a6ea7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fe3131263d3cf1984eae1692854d8d6bcd2746a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121163"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109484"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Konfigurace aktivní geografické replikace pro Redis instance pro podnikovou mezipaměť (Preview)
 
@@ -26,9 +26,11 @@ Aktivní geografická replikace seskupuje dvě nebo víc podnikových mezipamět
 >
 >
 
-1. V novém uživatelském rozhraní pro vytváření **Redis Cache** klikněte na **Konfigurovat** a nastavte **aktivní geografickou replikaci** na kartě **Upřesnit** .
+1. Na kartě **Upřesnit** v části **nové** uživatelské rozhraní pro vytváření Redis Cache vyberte **Enterprise** for **clustering Policy**.
 
     ![Konfigurace aktivní geografické replikace](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-not-configured.png)
+
+1. Kliknutím na **Konfigurovat** nastavte **aktivní geografickou replikaci**.
 
 1. Vytvořte novou replikační skupinu pro první instanci mezipaměti nebo vyberte existující ze seznamu.
 
@@ -38,7 +40,7 @@ Aktivní geografická replikace seskupuje dvě nebo víc podnikových mezipamět
 
     ![Aktivní geografická replikace je nakonfigurovaná.](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
-1. Opakujte výše uvedené kroky pro každou další instanci mezipaměti v geograficky replikační skupině.
+1. Počkejte, až se první mezipaměť úspěšně vytvoří. Opakujte výše uvedené kroky pro každou další instanci mezipaměti v geograficky replikační skupině.
 
 ## <a name="remove-from-an-active-geo-replication-group"></a>Odebrat z aktivní geografické replikační skupiny
 

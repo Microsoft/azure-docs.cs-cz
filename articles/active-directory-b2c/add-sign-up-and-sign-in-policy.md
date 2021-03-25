@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97618751"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043746"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Nastavení toku registrace a přihlašování v Azure Active Directory B2C
 
@@ -34,7 +35,7 @@ Zásady registrace a přihlašování umožňují uživatelům:
 
 ![Tok úprav profilu](./media/add-sign-up-and-sign-in-policy/add-sign-up-and-sign-in-flow.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud jste to ještě neudělali, [Zaregistrujte webovou aplikaci v Azure Active Directory B2C](tutorial-register-applications.md).
 
@@ -66,6 +67,7 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
     ![Stránka pro výběr atributů a deklarací se třemi vybranými deklaracemi](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. Kliknutím na **vytvořit** přidejte tok uživatele. Předpona *B2C_1* je automaticky Předpona názvu.
+2. Postupujte podle kroků pro [zpracování toku pro "Zapomenuté heslo?"](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) v rámci zásady registrace nebo přihlašování.
 
 ### <a name="test-the-user-flow"></a>Testování toku uživatele
 
@@ -73,7 +75,7 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Klikněte na **Spustit tok uživatele** a pak vyberte **zaregistrovat se hned**.
 
-    ![Stránka spustit tok uživatele na portálu s zvýrazněným tlačítkem Spustit uživatele toku](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![Stránka spustit tok uživatele na portálu s zvýrazněným tlačítkem Spustit uživatele toku](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. Zadejte platnou e-mailovou adresu, klikněte na **Odeslat ověřovací kód**, zadejte ověřovací kód, který jste obdrželi, a pak vyberte **ověřit kód**.
 1. Zadejte nové heslo a potvrďte ho.

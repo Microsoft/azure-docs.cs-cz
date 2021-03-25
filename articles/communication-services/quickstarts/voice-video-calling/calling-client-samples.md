@@ -1,7 +1,7 @@
 ---
-title: Rychlý Start – použití klientské knihovny volání služby Azure Communications
+title: Rychlý Start – použití služby Azure Communication Services Call SDK
 titleSuffix: An Azure Communication Services quickstart
-description: Přečtěte si o komunikačních službách, které volají možnosti klientské knihovny.
+description: Přečtěte si o komunikačních službách, které volají možnosti sady SDK.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -10,19 +10,19 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5ade06e8338dd810651ccd606c7dc9a313b6fa9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488082"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107713"
 ---
-# <a name="quickstart-use-the-communication-services-calling-client-library"></a>Rychlý Start: použití klientské knihovny volání komunikačních služeb
+# <a name="quickstart-use-the-communication-services-calling-sdk"></a>Rychlý Start: použití služby Communications Call SDK
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Začněte s komunikačními službami Azure pomocí komunikačních služeb volání klientské knihovny pro přidání hlasu a videa do vaší aplikace.
+Začněte s komunikačními službami Azure pomocí komunikačních služeb, které volají sadu SDK, k přidání hlasu a videa do aplikace.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/calling-sdk-js.md)]

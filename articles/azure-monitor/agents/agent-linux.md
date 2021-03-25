@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199164"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044953"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics na počítačích s Linuxem
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -91,7 +91,7 @@ V následující tabulce jsou vysvětlené balíčky požadované pro [Podporova
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |
 |Curl | Webový klient s kudrlinkou | 7.15.5 |
-|Python | | 2.6 + nebo 3.3 +
+|Python | | 2,7 nebo 3.6 +
 |Python – ctypes | | 
 |PAM | Pluggable Authentication Modules | | 
 

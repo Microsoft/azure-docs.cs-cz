@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: b49ee61f3ee4ea8e8a177bca6aa566a07b7ef113
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044732"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110674"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Autorizaci přístupu ke spravované identitě ke zdroji komunikace ve vývojovém prostředí
 
-Klientská knihovna Azure identity poskytuje podporu ověřování tokenů služby Azure Active Directory (Azure AD) pro sadu Azure SDK. Nejnovější verze klientských knihoven Azure Communications Services pro .NET, Java, Python a JavaScript se integrují s knihovnou identit Azure, aby poskytovaly jednoduché a zabezpečené prostředky pro získání tokenu OAuth 2,0 pro autorizaci žádostí o službu Azure Communication Services.
+Sada Azure identity SDK poskytuje podporu ověřování tokenů služby Azure Active Directory (Azure AD) pro sadu Azure SDK. Nejnovější verze sad Azure Communication Services SDK pro .NET, Java, Python a JavaScript se integrují s knihovnou identit Azure, aby poskytovaly jednoduché a zabezpečené prostředky pro získání tokenu OAuth 2,0 pro autorizaci žádostí o službu Azure Communication Services.
 
-Výhodou klientské knihovny Azure identity je to, že umožňuje použít stejný kód k ověřování napříč více službami, ať už vaše aplikace běží ve vývojovém prostředí nebo v Azure. Klientská knihovna identit Azure ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure. Ve vývojovém prostředí neexistuje spravovaná identita, takže Klientská knihovna ověřuje buď uživatele, nebo registrovanou aplikaci pro účely testování.
+Výhodou sady Azure identity SDK je, že umožňuje používat stejný kód k ověřování napříč více službami, ať už vaše aplikace běží ve vývojovém prostředí nebo v Azure. Sada Azure identity SDK ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure. Ve vývojovém prostředí neexistuje spravovaná identita, takže sada SDK ověřuje buď uživatele, nebo registrovanou aplikaci pro účely testování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ U prostředků Azure, které autorizujete, by měly být povolené spravované i
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Klientské knihovny Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Sady Azure Resource Manager SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [App Services](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>Ověřování registrované aplikace ve vývojovém prostředí
@@ -68,7 +68,7 @@ az ad sp create-for-rbac --name <application-name>
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Klientská knihovna Azure identity načítá hodnoty ze tří proměnných prostředí za běhu za účelem ověření aplikace. Následující tabulka popisuje hodnotu, která se má nastavit pro každou proměnnou prostředí.
+Sada Azure identity SDK načítá hodnoty ze tří proměnných prostředí za běhu za účelem ověření aplikace. Následující tabulka popisuje hodnotu, která se má nastavit pro každou proměnnou prostředí.
 
 |Proměnná prostředí|Hodnota
 |-|-

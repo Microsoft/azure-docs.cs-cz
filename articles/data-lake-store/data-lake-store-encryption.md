@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92109149"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108940"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
 
@@ -107,7 +107,7 @@ Následující diagram znázorňuje tyto koncepty:
 
 Pokud používáte klíče spravované zákazníkem, můžete obměňovat klíč MEK. Informace o tom, jak nastavit účet Data Lake Storage Gen1 pomocí klíčů spravovaných zákazníkem, najdete v tématu [Začínáme](./data-lake-store-get-started-portal.md).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Při nastavování účtu Data Lake Storage Gen1 jste se rozhodli používat vlastní klíče. Tuto možnost po vytvoření účtu nejde změnit. Následující postup předpokládá, že používáte klíče spravované zákazníkem (tedy že jste zvolili vlastní klíče ze služby Key Vault).
 
@@ -135,4 +135,4 @@ Všimněte si, že pokud použijete výchozí možnosti šifrování, vaše data
 Tato operace by neměla trvat déle než dvě minuty a nemělo by dojít k žádnému výpadku v důsledku obměny klíče. Po dokončení operace se začne používat nová verze klíče.
 
 > [!IMPORTANT]
-> Po dokončení operace obměny klíče se už k šifrování vašich dat nebude aktivně používat stará verze klíče.  Ve výjimečných případech neočekávaného selhání, které ovlivní dokonce i redundantní kopie vašich dat, se však můžou data obnovit ze zálohy, která stále používá starý klíč. Pokud chcete zajistit dostupnost dat i v těchto výjimečných případech, uchovávejte kopii předchozí verze šifrovacího klíče. Osvědčené postupy pro plánování zotavení po havárii najdete v tématu [pokyny pro zotavení po havárii pro data v Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md) .
+> Po dokončení operace střídání klíčů už se stará verze klíče aktivně nepoužívá k šifrování nových dat. Můžou nastat případy, kdy přístup k starším datům může vyžadovat starý klíč. Pokud chcete povolit čtení takových starších dat, neodstraňujte starý klíč.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130013"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048336"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 
@@ -48,7 +48,7 @@ Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nej
 **ID aplikace Azure AD** je přidruženo k vašemu ID vydavatele, takže se ujistěte, že se stejné *ID aplikace* používá ve všech nabídkách.
 
 >[!Note]
->Pokud má Vydavatel v partnerském centru dva různé účty, měli byste použít dvě odlišná ID aplikací Azure AD.  Každý partnerský účet v partnerském centru by měl používat jedinečné ID aplikace Azure AD pro všechny nabídky SaaS, které jsou publikovány prostřednictvím tohoto účtu.
+>Pokud má Vydavatel v partnerském centru dva nebo více různých účtů, můžou se podrobnosti registrace aplikace Azure AD použít jenom v jednom účtu. Použití stejného ID tenanta, dvojice ID aplikace pro nabídku pod jiným účtem vydavatele se nepodporuje.
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>Jak získat autorizační token vydavatele
 

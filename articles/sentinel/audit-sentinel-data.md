@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a8ea32d84da521c8a1af926c6cb5e26bc2738de2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054583"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044834"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Auditovat dotazy a aktivity Sentinel Azure
 
@@ -132,7 +132,7 @@ V následující tabulce je například uveden seznam vybraných operací, kter�
 |Aktualizace nastavení    |Microsoft. SecurityInsights/Settings|
 | | |
 
-Další informace najdete v tématu [schéma událostí protokolu aktivit Azure](/azure/azure-monitor/essentials/activity-log-schema).
+Další informace najdete v tématu [schéma událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log-schema.md).
 
 
 ## <a name="auditing-with-laquerylogs"></a>Auditování pomocí LAQueryLogs
@@ -157,7 +157,7 @@ LAQueryLogs data obsahují informace, jako například:
 
 1. Tabulka **LAQueryLogs** není ve výchozím nastavení v pracovním prostoru Log Analytics povolena. Pokud chcete používat **LAQueryLogs** data při auditování v rámci Azure Sentinel, nejdřív povolte **LAQueryLogs** v oblasti **nastavení diagnostiky** v pracovním prostoru Log Analytics.
 
-    Další informace najdete v tématu [auditování dotazů v protokolech Azure monitor](/azure/azure-monitor/logs/query-audit).
+    Další informace najdete v tématu [auditování dotazů v protokolech Azure monitor](../azure-monitor/logs/query-audit.md).
 
 
 1. Pak Dotazujte data pomocí KQL, stejně jako u jakékoli jiné tabulky.
