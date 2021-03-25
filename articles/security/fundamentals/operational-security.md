@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7d71820db3d58931f2fcd8d18441534ad36183c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711990"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046636"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -165,7 +165,7 @@ Azure Security Center shromažďuje dočasné kopie souborů se stavem systému 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Řešení [zabezpečení a audit protokolu Azure monitor](../../security-center/security-center-monitoring.md) umožňuje aktivně monitorovat všechny prostředky, což může přispět k minimalizaci dopadu incidentů zabezpečení. Protokoly Azure Monitor Security and Audit mají domény zabezpečení, které lze použít pro monitorování prostředků. Doména zabezpečení poskytuje rychlý přístup k možnostem. pro monitorování zabezpečení jsou další podrobnosti pokryty následujícími doménami:
+Řešení [zabezpečení a audit protokolu Azure monitor](../../security-center/security-center-remediate-recommendations.md) umožňuje aktivně monitorovat všechny prostředky, což může přispět k minimalizaci dopadu incidentů zabezpečení. Protokoly Azure Monitor Security and Audit mají domény zabezpečení, které lze použít pro monitorování prostředků. Doména zabezpečení poskytuje rychlý přístup k možnostem. pro monitorování zabezpečení jsou další podrobnosti pokryty následujícími doménami:
 
 -   Posouzení malwaru
 -   Posouzení aktualizací

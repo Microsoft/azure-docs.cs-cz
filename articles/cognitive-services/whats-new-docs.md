@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 03/08/2021
-ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4334166f435612370e7e0b7b380814fe85075f78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631366"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046619"
 ---
 # <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services Docs: co je nového pro 1. února 2021 – 28. února 2021
 
@@ -28,25 +28,25 @@ Vítejte v Cognitive Services dokumentaci od 1. února 2021 do 28. února 2021. 
 
 ### <a name="new-articles"></a>Nové články
 
-- [Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)](/azure/cognitive-services/containers/container-faq)
+- [Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)](./containers/container-faq.yml)
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Značky imagí a poznámky k verzi služby Azure Cognitive Services Container](/azure/cognitive-services/containers/container-image-tags)
+- [Značky imagí a poznámky k verzi služby Azure Cognitive Services Container](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Nasazení ukázkového nástroje pro popisování](/azure/cognitive-services/form-recognizer/deploy-label-tool)
-- [Co je služba Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/overview)
-- [Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [Nasazení ukázkového nástroje pro popisování](./form-recognizer/deploy-label-tool.md)
+- [Co je služba Rozpoznávání formulářů?](./form-recognizer/overview.md)
+- [Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků](./form-recognizer/quickstarts/label-tool.md)
 
 ## <a name="text-analytics"></a>Analýza textu
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Podpora jazyka rozhraní API pro analýzu textu V3](/azure/cognitive-services/text-analytics/language-support)
-- [Způsob volání Analýza textu REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Podpora jazyka rozhraní API pro analýzu textu V3](./text-analytics/language-support.md)
+- [Způsob volání Analýza textu REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

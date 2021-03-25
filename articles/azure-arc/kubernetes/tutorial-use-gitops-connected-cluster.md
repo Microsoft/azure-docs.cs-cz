@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1459d4a0f15595c6f658d73fcb9cb533023f0eb8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121469"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025713"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Kurz: nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC Azure 
 
@@ -24,7 +24,7 @@ V tomto kurzu použijete konfigurace pomocí GitOps v clusteru Kubernetes s povo
 > * Použijte formulář pro konfiguraci privátního úložiště Git.
 > * Ověřte konfiguraci Kubernetes.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Existující Kubernetes připojený cluster s podporou Azure ARC.
@@ -141,7 +141,7 @@ Stejně jako soukromé klíče můžete přímo nebo v souboru poskytnout svůj 
 >[!NOTE]
 >* Graf operátoru Helm verze 1.2.0 + podporuje privátní ověřování pomocí protokolu HTTPS Helm.
 >* Verze Helm protokolu HTTPS není pro clustery spravované AKS podporována.
->* Pokud potřebujete tok pro přístup k úložišti Git prostřednictvím proxy serveru, budete muset agenty Azure ARC aktualizovat pomocí nastavení proxy serveru. Další informace najdete v tématu [připojení pomocí odchozího proxy server](./connect-cluster.md#connect-using-an-outbound-proxy-server).
+>* Pokud potřebujete tok pro přístup k úložišti Git prostřednictvím proxy serveru, budete muset agenty Azure ARC aktualizovat pomocí nastavení proxy serveru. Další informace najdete v tématu [připojení pomocí odchozího proxy server](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 
 ## <a name="additional-parameters"></a>Další parametry

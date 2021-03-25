@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744354"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025233"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Nejčastější dotazy ke službám Azure Cloud Services (s rozšířenou podporou)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Cloud Services (Rozšířená podpora).
@@ -82,6 +82,8 @@ Veřejné IP adresy, nástroje pro vyrovnávání zatížení, skupiny zabezpeč
 ### <a name="how-does-my-application-code-change-on-cloud-services-extended-support"></a>Jak se změní můj kód aplikace na Cloud Services (Rozšířená podpora)
 Pro kód aplikace zabalený v cspkg nejsou nutné žádné změny. Stávající aplikace budou i nadále fungovat jako dříve. 
 
+### <a name="does-cloud-services-extended-support-allow-ctp-package-format"></a>Povoluje Cloud Services (Rozšířená podpora) formát balíčku CTP?
+Formát balíčku CTP není v Cloud Services podporován (Rozšířená podpora). Umožňuje ale omezení velikosti rozšířeného balíčku 800 MB.
 
 ## <a name="migration"></a>Migrace
 

@@ -3,17 +3,17 @@ title: Přidělování nákladů na Azure
 description: Tento článek vysvětluje vytváření pravidla alokace nákladů pro distribuci nákladů na předplatná, skupiny prostředků nebo značky.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/11/2020
+ms.date: 03/23/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131084"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025522"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Vytváření a správa pravidel alokace nákladů na Azure (Preview)
 
@@ -58,7 +58,7 @@ Při distribuci nákladů podle nákladů na výpočetní funkce, nákladů na �
 
 Při distribuci nákladů úměrně celkovým nákladům se proporcionální počet procent určuje na základě součtu nebo celkových nákladů na vybrané cíle pro aktuální fakturační měsíc.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Příklad ukazující vytvoření názvu pravidla" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Příklad ukazující procento přidělení" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Po nastavení se předem určená procenta definují jako fixní. Používají se pro všechny průběžné alokace. Procenta se mění jenom při ruční aktualizaci pravidla.
 
@@ -84,7 +84,7 @@ Když je pravidlo alokace nákladů aktivní, náklady z vybraných zdrojů se d
 
 Dopad pravidla alokace si můžete prohlédnout v analýze nákladů. Na webu Azure Portal přejděte na [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). V seznamu vyberte předplatné, na které cílí aktivní pravidlo alokace nákladů. Potom v nabídce vyberte **Analýza nákladů**. V analýze nákladů vyberte **Seskupit podle** a potom vyberte **Alokace nákladů**. Výsledné zobrazení ukazuje rychlé rozdělení nákladů vygenerovaných tímto předplatným. Zobrazí se také náklady přidělené tomuto předplatnému, podobně jako na následujícím obrázku.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Příklad ukazující vytvoření názvu pravidla" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Příklad ukazující rozpis nákladů" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Zobrazení alokace nákladů pro skupinu prostředků
 
@@ -94,7 +94,12 @@ Ke zjištění dopadu pravidla alokace nákladů pro skupinu prostředků použi
 
 Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Správa náklad** > **Analýza nákladů**. V analýze nákladů vyberte **Přidat filtr**. Vyberte **Značka**, zvolte klíč značky a označte hodnoty, které mají přidělené náklady.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Příklad ukazující vytvoření názvu pravidla" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Příklad ukazující náklady pro označené položky" lightbox="./media/allocate-costs/tagged-costs.png" :::
+
+Tady je video, které ukazuje, jak vytvořit pravidlo přidělení nákladů.
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Úprava stávajícího pravidla alokace nákladů
 
