@@ -2,14 +2,14 @@
 title: Přesunutí prostředků do nového předplatného nebo skupiny prostředků
 description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 31710354d39c5c74fcbd3ce1bfb2917d79dfd670
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670201"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108634"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -18,6 +18,12 @@ V tomto článku se dozvíte, jak přesunout prostředky Azure do jiného předp
 Během operace přesunutí dojde ke zamčení zdrojové skupiny i cílové skupiny. Operace zápisu a odstranění jsou ve skupinách prostředků blokované, dokud se přesun nedokončí. Tento zámek znamená, že nemůžete přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků. Neznamená to, že se prostředky zmrazují. Pokud například přesunete logický Server Azure SQL a jeho databáze do nové skupiny prostředků nebo předplatného, aplikace, které využívají databáze, nebudou mít žádné výpadky. Můžou pořád číst a zapisovat do databází. Zámek může být poslední po dobu maximálně čtyř hodin, ale většina přesunů se dokončí za mnohem kratší dobu.
 
 Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředků nebo do nového předplatného. Umístění prostředku se nezmění.
+
+## <a name="changed-resource-id"></a>ID změněného prostředku
+
+Když přesunete prostředek, změníte jeho ID prostředku. Standardní formát pro ID prostředku je `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` . Když přesunete prostředek do nové skupiny prostředků nebo předplatného, změníte jednu nebo více hodnot v této cestě.
+
+Pokud použijete ID prostředku kdekoli, budete muset tuto hodnotu změnit. Pokud máte například [vlastní řídicí panel](../../azure-portal/quickstart-portal-dashboard-azure-cli.md) na portálu, který odkazuje na ID prostředku, budete muset tuto hodnotu aktualizovat. Vyhledejte všechny skripty nebo šablony, které je třeba aktualizovat pro nové ID prostředku.
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 
@@ -36,7 +42,7 @@ Před přesunem prostředků je potřeba provést několik důležitých kroků.
    * [Pokyny pro přesunutí Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
    * Pokud chcete přesunout předplatné Azure do nové skupiny pro správu, přečtěte si téma [Přesun předplatných](../../governance/management-groups/manage.md#move-subscriptions).
 
-1. Pokud přesunete prostředek, který má přiřazenou roli Azure, přímo k prostředku (nebo podřízenému prostředku), přiřazení role se nepřesune a bude osamocené. Po přesunutí musíte znovu vytvořit přiřazení role. Nakonec se automaticky odebere přiřazení osamocené role, ale je osvědčeným postupem odebrání přiřazení role před přesunutím prostředku.
+1. Pokud přesunete prostředek, který má přiřazenou roli Azure, přímo k prostředku (nebo podřízenému prostředku), přiřazení role se nepřesouvá a bude osamocené. Po přesunutí musíte znovu vytvořit přiřazení role. Přiřazení osamocené role se nakonec automaticky odebere, ale před přesunutím doporučujeme toto přiřazení role odebrat.
 
     Informace o tom, jak spravovat přiřazení rolí, najdete v tématech [seznam přiřazení rolí Azure](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) a [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md).
 
@@ -260,7 +266,7 @@ Přesunutí prostředku je složitá operace, která má různé fáze. Může z
 
 **Otázka: Proč se skupina prostředků uzamkl po dobu 4 hodin během přesunu prostředků?**
 
-Žádost o přesunutí je povolená maximálně na čtyři hodiny. Aby se zabránilo změnám přesouvaných prostředků, jsou zdrojové i cílové skupiny prostředků zamčené po dobu trvání přesunutí prostředku.
+Žádost o přesunutí je povolená maximálně na čtyři hodiny. Aby se zabránilo změnám přesouvaných prostředků, jsou zdrojové i cílové skupiny prostředků zamčené během přesunu prostředků.
 
 V žádosti o přesunutí jsou dvě fáze. V první fázi se prostředek přesune. Ve druhé fázi se oznámení odesílají jiným poskytovatelům prostředků závislým na přemístění prostředku. Skupina prostředků může být uzamčena po dobu celé čtyři hodiny, když poskytovatel prostředků dojde k chybě v obou fázích. Během povoleného času se Správce prostředků opakuje neúspěšný krok.
 

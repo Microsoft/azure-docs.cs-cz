@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server SQL Database: Přehled migrace'
+title: 'SQL Server Azure SQL Database: Přehled migrace'
 description: Přečtěte si o různých nástrojích a možnostech, které jsou k dispozici pro migraci SQL Serverch databází do Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ecb9d1e25647e197614817116921140f0d7fbdf4
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102488269"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024961"
 ---
-# <a name="migration-overview-sql-server-to-sql-database"></a>Přehled migrace: SQL Server pro SQL Database
+# <a name="migration-overview-sql-server-to-azure-sql-database"></a>Přehled migrace: SQL Server pro Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Přečtěte si o různých možnostech migrace a důležitých informacích o migraci SQL Server do Azure SQL Database. 
@@ -30,7 +30,7 @@ Můžete migrovat SQL Server spuštěná místně nebo na:
 - Výpočetní modul (Google Cloud Platform – GCP)  
 - Cloud SQL pro SQL Server (Google Cloud Platform – GCP) 
 
-Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/). 
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Přehled
 
@@ -58,7 +58,7 @@ K dispozici jsou různé nástroje pro různé úlohy a předvolby uživatele. N
 
 ## <a name="choose-appropriate-target"></a>Zvolit vhodný cíl
 
-Vezměte v úvahu obecné pokyny, které vám pomohou vybrat správný model nasazení a vrstvu služby Azure SQL Database. Během nasazování můžete zvolit výpočetní prostředky a prostředky úložiště a pak je později změnit pomocí  [Azure Portal](../../database/scale-resources.md)  bez výpadků aplikace.
+Vezměte v úvahu obecné pokyny, které vám pomohou vybrat správný model nasazení a vrstvu služby Azure SQL Database. Během nasazování můžete zvolit výpočetní prostředky a prostředky úložiště a pak [je později změnit pomocí Azure Portal](../../database/scale-resources.md) bez výpadků aplikace.
 
 
 **Modely nasazení**: Seznámení s úlohou vaší aplikace a vzorem využití pro rozhodování mezi izolovanou databází nebo elastickým fondem. 
@@ -212,7 +212,7 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zahájit migraci SQL Server do Azure SQL Database, přečtěte si [Průvodce migrací SQL Server na SQL Database](sql-server-to-sql-database-guide.md).
+Pokud chcete zahájit migraci SQL Server do SQL Database, přečtěte si [Průvodce migrací SQL Server na Azure SQL Database](sql-server-to-sql-database-guide.md).
 
 - Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat i v speciálních úlohách, najdete v tématu [služba a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 

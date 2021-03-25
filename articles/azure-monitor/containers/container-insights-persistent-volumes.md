@@ -3,12 +3,12 @@ title: Konfigurace monitorování PV pomocí kontejneru Insights | Microsoft Doc
 description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s trvalými svazky s využitím Container Insights.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 578cfe128b7445f8b09771999d1e653e92c4befa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200695"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026100"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>Konfigurace monitorování PV pomocí kontejneru Insights
 
@@ -19,7 +19,7 @@ Služba Container Insights automaticky začne monitorovat využití SOUČHODNOTA
 
 | Název metriky | Dimenze metriky (značky) | Popis metriky | | `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, název_clusteru | Využité místo v bajtech pro konkrétní trvalý svazek s deklarací identity použitou v určitém typu pod. `capacityBytes` je přeložen v jako dimenze v poli značky, aby se snížily náklady na příjem dat a zjednodušily se dotazy. |
 
-Další informace o konfiguraci shromážděných metrik PV [najdete tady](https://aka.ms/ci/pvconfig).
+Další informace o konfiguraci shromážděných metrik PV [najdete tady](./container-insights-agent-config.md).
 
 ## <a name="pv-inventory"></a>Inventář PV
 
@@ -48,7 +48,7 @@ Přehled trvalého inventáře svazku můžete najít v sešitu s **podrobnostmi
 :::image type="content" source="./media/container-insights-persistent-volumes/pv-details-workbook-example.PNG" alt-text="Příklad sešitu s podrobnostmi Azure Monitor PV":::
 
 ### <a name="persistent-volume-usage-recommended-alert"></a>Doporučené upozornění na trvalé použití svazku
-Můžete povolit doporučenou výstrahu, která vás upozorní, když průměrné využití PV pro objekt pod je nad 80%. Přečtěte si další informace o upozorňování [tady](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts) a o tom, [jak můžete přepsat výchozí prahovou](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts#configure-alertable-metrics-in-configmaps)hodnotu.
+Můžete povolit doporučenou výstrahu, která vás upozorní, když průměrné využití PV pro objekt pod je nad 80%. Přečtěte si další informace o upozorňování [tady](./container-insights-metric-alerts.md) a o tom, [jak můžete přepsat výchozí prahovou](./container-insights-metric-alerts.md#configure-alertable-metrics-in-configmaps)hodnotu.
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o shromažďovaných metrikách PV [najdete tady](./container-insights-agent-config.md).

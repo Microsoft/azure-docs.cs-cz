@@ -9,26 +9,27 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: ff7b2115b396bf42cdeffa9c58bffb1802e980d1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 14b2c1f98ae977548edb635b8a8a7a956b3f2dd7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721881"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023771"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Průvodce migrací: MySQL pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 V této příručce se naučíte migrovat databázi MySQL do Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro MySQL (SSMA for MySQL). 
 
-Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K migraci databáze MySQL na Azure SQL Database potřebujete:
 
 - Ověřte, že je podporované vaše zdrojové prostředí. V současné době se podporuje MySQL 5,6 a 5,7. 
-- [Pomocník s migrací SQL Serveru pro MySQL](https://www.microsoft.com/download/confirmation.aspx?id=54257)
+- [Pomocník s migrací SQL Serveru pro MySQL](https://www.microsoft.com/download/details.aspx?id=54257)
+- Připojení a dostatečná oprávnění pro přístup ke zdroji i cíli. 
 
 
 ## <a name="pre-migration"></a>Před migrací 
@@ -37,32 +38,29 @@ Po splnění požadavků budete připraveni zjistit topologii prostředí a poso
 
 ### <a name="assess"></a>Posouzení 
 
-Pomocí [Pomocník s migrací SQL serveru pro MySQL](https://www.microsoft.com/download/confirmation.aspx?id=54257)můžete zkontrolovat objekty databáze a data a posoudit databáze pro migraci.
+Pomocí Pomocník s migrací SQL Serveru (SSMA) pro MySQL si můžete prohlédnout databázové objekty a data a posoudit databáze pro migraci. 
 
-Chcete-li vytvořit posouzení, proveďte následující kroky.
+Chcete-li vytvořit posouzení, proveďte následující kroky: 
 
-1. Otevřete Pomocník s migrací SQL Serveru pro MySQL. 
-1. V nabídce vyberte **soubor** a pak zvolte **Nový projekt**. Zadejte název projektu, umístění, kam chcete projekt uložit. Jako cíl migrace vyberte **Azure SQL Database** . 
+1. Otevřete [Pomocník s migrací SQL serveru pro MySQL](https://www.microsoft.com/download/details.aspx?id=54257). 
+1. V nabídce vyberte **soubor** a pak zvolte **Nový projekt**. 
+1. Zadejte název projektu, umístění, kam chcete projekt uložit. Jako cíl migrace vyberte **Azure SQL Database** . Vyberte **OK**:
 
    ![Nový projekt](./media/mysql-to-sql-database-guide/new-project.png)
 
-1. Vyberte **připojit k MySQL** a zadejte podrobnosti o připojení pro připojení serveru MySQL. 
+1. Vyberte **připojit k MySQL** a zadejte podrobnosti o připojení pro připojení serveru MySQL:
 
    ![Připojení k MySQL](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
 
-1. Klikněte pravým tlačítkem na schéma MySQL v **Průzkumníkovi metadat MySQL** a vyberte **vytvořit sestavu**. Alternativně můžete v horním navigačním panelu vybrat možnost **vytvořit sestavu** . 
+1. Klikněte pravým tlačítkem na schéma MySQL v **Průzkumníkovi metadat MySQL** a vyberte **vytvořit sestavu**. Alternativně můžete na horním navigačním panelu vybrat možnost **vytvořit sestavu** :
 
    ![Vytvořit sestavu](./media/mysql-to-sql-database-guide/create-report.png)
 
-1. Podívejte se na sestavu ve formátu HTML pro statistiku převodu a také chyby a upozornění. Analyzujte je, abyste pochopili problémy s konverzí a jejich řešení. 
-
-   K této sestavě se dá také dostat ze složky projekty SSMA, která je vybraná na první obrazovce. Z výše uvedeného příkladu vyhledejte soubor report.xml z:
+1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Můžete také otevřít sestavu v aplikaci Excel a získat soupis objektů MySQL a úsilí potřebné k provedení převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects.
  
-   `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
+   Příklad: `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
  
-   a otevřete ho v Excelu, abyste získali inventář objektů MySQL a úsilí potřebného k provádění převodů schématu.
-
-    ![Sestava převodu](./media/mysql-to-sql-database-guide/conversion-report.png)
+   ![Sestava převodu](./media/mysql-to-sql-database-guide/conversion-report.png)
 
 ### <a name="validate-data-types"></a>Ověřit datové typy
 
@@ -70,7 +68,7 @@ Ověřte výchozí mapování datových typů a podle potřeby je změňte podle
 
 1. V nabídce vyberte **nástroje** . 
 1. Vyberte **nastavení projektu**. 
-1. Vyberte kartu **mapování typů** . 
+1. Vyberte kartu **mapování typů** :
 
    ![Mapování typů](./media/mysql-to-sql-database-guide/type-mappings.png)
 
@@ -81,23 +79,29 @@ Ověřte výchozí mapování datových typů a podle potřeby je změňte podle
 K převedení schématu použijte následující postup: 
 
 1. Volitelné Chcete-li převést dynamické nebo ad hoc dotazy, klikněte pravým tlačítkem myši na uzel a vyberte **příkaz Přidat příkaz**. 
-1. V horním navigačním panelu vyberte **připojit k Azure SQL Database** a zadejte podrobnosti o připojení. Můžete se rozhodnout připojit se k existující databázi nebo zadat nový název. v takovém případě se databáze vytvoří na cílovém serveru.
+1. Vyberte **připojit k Azure SQL Database**. 
+    1. Zadejte podrobnosti připojení pro připojení databáze v Azure SQL Database.
+    1. V rozevíracím seznamu vyberte cílovou SQL Database, nebo zadejte nový název. v takovém případě se na cílovém serveru vytvoří databáze. 
+    1. Zadejte podrobnosti ověřování. 
+    1. Vyberte **připojit**:
 
    ![Připojit k SQL](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
  
-1. Klikněte pravým tlačítkem na schéma a vyberte **převést schéma**. 
+1. Klikněte pravým tlačítkem na schéma a vyberte **převést schéma**. Alternativně můžete zvolit **převést schéma** z navigačního panelu horní linky po výběru databáze:
 
    ![Převést schéma](./media/mysql-to-sql-database-guide/convert-schema.png)
 
-1. Po dokončení převodu schématu Porovnejte převedený kód s původním kódem a Identifikujte možné problémy. 
+1. Po dokončení převodu Porovnejte a zkontrolujte převedené objekty s původními objekty k identifikaci potenciálních problémů a jejich řešení na základě doporučení:
 
-   Porovnat převedené objekty s původními objekty: 
+   ![Převedené objekty se dají porovnat se zdrojem.](./media/mysql-to-sql-database-guide/table-comparison.png)
 
-   ![ Porovnat a zkontrolovat objekt ](./media/mysql-to-sql-database-guide/table-comparison.png)
+   Porovnejte převedený text Transact-SQL s původním kódem a přečtěte si doporučení:
 
-   Porovnat převedené procedury s původními postupy: 
+   ![Převedené dotazy se dají porovnat se zdrojovým kódem.](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
-   ![Porovnat a zkontrolovat kód objektu](./media/mysql-to-sql-database-guide/procedure-comparison.png)
+1. V podokně výstup vyberte možnost **Kontrola výsledků** a zkontrolujte chyby v podokně **Seznam chyb** . 
+1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . Díky tomu máte možnost vyhodnotit zdrojový a cílový schémat v režimu offline a před publikováním schématu pro SQL Database provést nápravu.
+
 
 
 ## <a name="migrate"></a>Migrate 
@@ -106,7 +110,7 @@ Po dokončení vyhodnocení databází a vyřešení případných rozporů je d
 
 K publikování schématu a migraci dat použijte následující postup: 
 
-1. Klikněte pravým tlačítkem na databázi z **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**. Tato akce publikuje schéma MySQL pro Azure SQL Database.
+1. Publikování schématu: klikněte pravým tlačítkem na databázi z **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**. Tato akce publikuje schéma MySQL pro Azure SQL Database:
 
    ![Synchronizovat s databází](./media/mysql-to-sql-database-guide/synchronize-database.png)
 
@@ -114,7 +118,7 @@ K publikování schématu a migraci dat použijte následující postup:
 
    ![Synchronizace s kontrolou databáze](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. Klikněte pravým tlačítkem na schéma MySQL z **Průzkumníka metadat MySQL** a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z navigace na horním řádku. 
+1. Migrace dat: klikněte pravým tlačítkem na databázi nebo objekt, který chcete migrovat v **Průzkumníkovi metadat MySQL**, a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z horního navigačního panelu. Chcete-li migrovat data pro celou databázi, zaškrtněte políčko vedle názvu databáze. Chcete-li migrovat data z jednotlivých tabulek, rozbalte databázi, rozbalte položku tabulky a potom zaškrtněte políčko vedle této tabulky. Chcete-li vynechat data z jednotlivých tabulek, zrušte zaškrtnutí políčka:
 
    ![Migrace dat](./media/mysql-to-sql-database-guide/migrate-data.png)
 
@@ -122,7 +126,7 @@ K publikování schématu a migraci dat použijte následující postup:
 
    ![Sestava migrace dat](./media/mysql-to-sql-database-guide/data-migration-report.png)
 
-1.  Ověřte migraci tak, že zkontrolujete data a schéma v Azure SQL Database pomocí SQL Server Management Studio (SSMS).
+1. Připojte se k Azure SQL Database pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu:
 
     ![Ověřit v SSMA](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 834df2387d037c19672e3287970300f4e84ca34b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176531"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047979"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -31,7 +31,7 @@ Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md).<br>FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data platí na základě objemu dat, která nahráváte. Další informace najdete v tématu [Log Analytics ceny](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Požadované role a oprávnění:|**Vlastník pracovního prostoru** může povolit nebo zakázat FIM (Další informace najdete v tématu [role Azure pro Log Analytics](/services-hub/health/azure-roles#azure-roles)).<br>**Čtenář** může zobrazit výsledky.|
-|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) National/svrchovan (US gov, Čína gov, jiný gov)<br>Podporováno pouze v oblastech, kde je k dispozici řešení sledování změn Azure Automation.<br>![Ano ](./media/icons/yes-icon.png) , zařízení s podporou [ARC Azure](https://docs.microsoft.com/azure/azure-arc/servers/overview)<br>Viz [podporované oblasti pro propojený pracovní prostor Log Analytics](../automation/how-to/region-mappings.md).<br>[Přečtěte si další informace o sledování změn](../automation/change-tracking/overview.md).|
+|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) National/svrchovan (US gov, Čína gov, jiný gov)<br>Podporováno pouze v oblastech, kde je k dispozici řešení sledování změn Azure Automation.<br>![Ano ](./media/icons/yes-icon.png) , zařízení s podporou [ARC Azure](../azure-arc/servers/overview.md)<br>Viz [podporované oblasti pro propojený pracovní prostor Log Analytics](../automation/how-to/region-mappings.md).<br>[Přečtěte si další informace o sledování změn](../automation/change-tracking/overview.md).|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>Co je FIM v Security Center?

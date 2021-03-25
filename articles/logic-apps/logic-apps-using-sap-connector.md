@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489833"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048761"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
 Tento článek vysvětluje, jak můžete získat přístup k prostředkům SAP z Logic Apps pomocí [konektoru SAP](/connectors/sap/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -125,9 +125,6 @@ Spravovaný konektor SAP se integruje se systémy SAP prostřednictvím místní
 ### <a name="ise-prerequisites"></a>Požadavky na ISE
 
 Tyto požadavky platí, pokud spouštíte aplikaci logiky v ISE úrovně Premium. Neplatí to ale pro aplikace logiky spuštěné v ISE na úrovni vývojářů. ISE poskytuje přístup k prostředkům, které jsou chráněné službou Azure Virtual Network, a nabízí další ISEové konektory, které umožňují Logic Apps přímý přístup k místním prostředkům bez použití místní brány dat.
-
-> [!NOTE]
-> I když je konektor SAP ISE viditelný v ISE na úrovni vývojáře, pokusy o instalaci konektoru nebudou úspěšné.
 
 1. Pokud ještě nemáte účet Azure Storage s kontejnerem objektů blob, vytvořte kontejner pomocí [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) nebo [Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
 

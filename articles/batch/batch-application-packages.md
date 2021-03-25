@@ -2,17 +2,17 @@
 title: Nasazení balíčků aplikací do výpočetních uzlů
 description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spravovat víc aplikací a verzí pro instalaci na výpočetních uzlech služby Batch.
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033727"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045786"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -59,6 +59,9 @@ U balíčků aplikací nemusí spouštěcí úkol fondu určovat dlouhý seznam 
 ## <a name="upload-and-manage-applications"></a>Nahrávání a Správa aplikací
 
 Pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní API pro správu služby Batch můžete spravovat balíčky aplikací v účtu Batch. V následujících částech se dozvíte, jak propojit účet úložiště a jak přidávat a spravovat aplikace a balíčky aplikací v Azure Portal.
+
+> [!NOTE]
+> I když můžete definovat hodnoty aplikace v prostředku [Microsoft.Batch/batchAccounts](/templates/microsoft.batch/batchaccounts) [šablony ARM](quick-create-template.md), není teď možné použít šablonu ARM k nahrání balíčků aplikací, které se mají použít v účtu Batch. Je nutné je odeslat do propojeného účtu úložiště, jak je popsáno [níže](#add-a-new-application).
 
 ### <a name="link-a-storage-account"></a>Propojení účtu úložiště
 

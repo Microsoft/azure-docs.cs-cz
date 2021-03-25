@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1ac3f2fa1ef3f1a24077064ad3ad3f3c30c5f3f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694865"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048353"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Vytvoření veřejné IP adresy pomocí Azure Portal
 
@@ -52,7 +52,7 @@ Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redund
 
 > [!NOTE]
 > Tyto výběry jsou platné v oblastech s [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones). </br>
-V těchto oblastech můžete vybrat konkrétní zónu, i když nebudete odolná vůči selhání oblasti. </br> Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview).
+V těchto oblastech můžete vybrat konkrétní zónu, i když nebudete odolná vůči selhání oblasti. </br> Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md).
 
 \* = Úroveň se vztahuje k funkcím [Nástroje pro vyrovnávání zatížení mezi oblastmi](../load-balancer/cross-region-overview.md) , která je aktuálně ve verzi Preview.
 

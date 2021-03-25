@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d6cece6ee3079ba9f400f40026ca26ea36668710
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035530"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024638"
 ---
 # <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Zachycení imagí pro projekt Vision v Azure Percept studiu
 
 Použijte tento průvodce k zachycení imagí pomocí Vision SoM Azure Percept DK pro existující projekt Vision v Azure Percept studiu. Pokud jste ještě nevytvořili projekt vize, přečtěte si [kurz vize necode](./tutorial-nocode-vision.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK (DevKit)
 - [Předplatné Azure](https://azure.microsoft.com/free/)
@@ -62,4 +62,4 @@ Všechny obrázky budou přístupné v [Custom Vision](https://www.customvision.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Otestujte a přeškolujte si model vize bez kódu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model).
+[Otestujte a přeškolujte si model vize bez kódu](../cognitive-services/custom-vision-service/test-your-model.md).

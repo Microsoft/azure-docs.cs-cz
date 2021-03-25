@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
-ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b88ed44632aa255837d8fb499782e11c716d443
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89568774"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048183"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí 
 
@@ -62,7 +62,7 @@ Po převzetí služeb při selhání proveďte následující na virtuálních p
 
 1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md)
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
-3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
+3. Zkontrolujte [diagnostiku spouštění](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 
 
 > [!NOTE]

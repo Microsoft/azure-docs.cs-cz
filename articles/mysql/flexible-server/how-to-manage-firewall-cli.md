@@ -1,19 +1,19 @@
 ---
 title: Správa pravidel brány firewall – Azure CLI – Azure Database for MySQL – flexibilní Server
 description: Vytvoření a Správa pravidel brány firewall pro Azure Database for MySQL-flexibilní Server pomocí příkazového řádku Azure CLI.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c699b00ebbecdbee985babe47c036cce6e0cb4b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545068"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109960"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MySQL – flexibilní pravidla brány firewall serveru pomocí rozhraní příkazového řádku Azure
 
@@ -35,7 +35,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 

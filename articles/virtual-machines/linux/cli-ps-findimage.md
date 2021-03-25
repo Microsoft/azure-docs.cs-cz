@@ -1,69 +1,41 @@
 ---
-title: Výběr imagí virtuálních počítačů se systémem Linux pomocí Azure CLI
-description: Naučte se používat Azure CLI k určení vydavatele, nabídky, SKU a verze imagí virtuálních počítačů Marketplace.
+title: Vyhledání a použití informací o plánu nákupu na webu Marketplace pomocí rozhraní příkazového řádku
+description: Naučte se používat rozhraní příkazového řádku Azure CLI k vyhledání parametrů plánu image urny a nákupu, jako je Vydavatel, nabídka, SKU a verze, pro image virtuálních počítačů Marketplace.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 01/25/2019
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
-ms.openlocfilehash: efa0b91c9c0e43104f36017c3b1a1f3167190d63
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 70cb4cc54c6f9a376d3bd38dc8bb6cd3a059a20c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562805"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022837"
 ---
-# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na Azure Marketplace pomocí Azure CLI
+# <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Vyhledání informací o Azure Marketplace imagí pomocí Azure CLI
 
 Toto téma popisuje, jak pomocí rozhraní příkazového řádku Azure vyhledat image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image Marketplace při programovém vytvoření virtuálního počítače pomocí rozhraní příkazového řádku, Správce prostředků šablon nebo jiných nástrojů.
 
-K dispozici je také procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo  [Azure PowerShell](../windows/cli-ps-findimage.md). 
+K dispozici je také možnost procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo  [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Ujistěte se, že jste přihlášeni k účtu Azure ( `az login` ).
+## <a name="terminology"></a>Terminologie
 
-[!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+Image na Marketplace v Azure má následující atributy:
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+* **Vydavatel**: organizace, která bitovou kopii vytvořila. Příklady: Canonical, MicrosoftWindowsServer
+* **Nabídka**: název skupiny souvisejících imagí vytvořených vydavatelem. Příklady: UbuntuServer, WindowsServer
+* **SKU**: instance nabídky, jako je například hlavní verze distribuce. Příklady: 18,04-LTS, 2019-Datacenter
+* **Version (verze**): číslo verze SKU image. 
 
-## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Nasazení z VHD pomocí parametrů plánu nákupu
+Tyto hodnoty je možné předat individuálně nebo jako *název URN* obrázku a kombinovat hodnoty oddělené dvojtečkou (:). Příklad: *Vydavatel*:*Nabídka*:*SKU*:*verze*. Číslo verze v názvu URN můžete nahradit, pokud `latest` chcete použít nejnovější verzi image. 
 
-Pokud máte existující virtuální pevný disk, který byl vytvořen pomocí placené Azure Marketplace image, může být nutné při vytváření nového virtuálního počítače z daného virtuálního pevného disku poskytnout informace o plánu nákupu. 
+Pokud Vydavatel obrázku poskytuje další licenční a nákupní podmínky, musíte je přijmout, než budete moct image použít.  Další informace najdete v tématu [o kontrole informací o plánu nákupu](#check-the-purchase-plan-information).
 
-Pokud máte i nadále původní virtuální počítač nebo jiný virtuální počítač vytvořený pomocí stejné image na webu Marketplace, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí [příkaz AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view). Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
 
-```azurepowershell-interactive
-az vm get-instance-view -g myResourceGroup -n myVM --query plan
-```
-
-Pokud jste neobdrželi informace o plánu před odstraněním původního virtuálního počítače, můžete [požádat o podporu](https://ms.portal.azure.com/#create/Microsoft.Support). Budou potřebovat název virtuálního počítače, ID předplatného a časové razítko operace odstranění.
-
-Jakmile budete mít informace o plánu, můžete vytvořit nový virtuální počítač pomocí `--attach-os-disk` parametru a zadat virtuální pevný disk.
-
-```azurecli-interactive
-az vm create \
-   --resource-group myResourceGroup \
-  --name myNewVM \
-  --nics myNic \
-  --size Standard_DS1_v2 --os-type Linux \
-  --attach-os-disk myVHD \
-  --plan-name planName \
-  --plan-publisher planPublisher \
-  --plan-product planProduct 
-```
-
-## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>Nasazení nového virtuálního počítače s využitím parametrů plánu nákupu
-
-Pokud již máte informace o imagi, můžete ji nasadit pomocí `az vm create` příkazu. V tomto příkladu nasadíme virtuální počítač s imagí RabbitMQ Certified by Bitnami:
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
-```
-
-Pokud se vám zobrazí zpráva, jak přijmout podmínky obrázku, přečtěte si část [přijměte podmínky](#accept-the-terms) dále v tomto článku.
 
 ## <a name="list-popular-images"></a>Výpis oblíbených imagí
 
@@ -73,20 +45,23 @@ Spuštěním příkazu [AZ VM Image list](/cli/azure/vm/image) bez `--all` možn
 az vm image list --output table
 ```
 
-Výstup obsahuje identifikátor URN obrázku (hodnota ve sloupci *urn* ). Když vytváříte virtuální počítač s jednou z těchto oblíbených imagí na webu Marketplace, můžete případně zadat *UrnAlias*, zkrácenou formu, jako je *UbuntuLTS*.
+Výstup obsahuje identifikátor URN bitové kopie. Můžete také použít *UrnAlias* , což je zkrácená verze vytvořená pro oblíbené obrázky, jako je *UbuntuLTS*.
 
 ```output
-You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.5                 OpenLogic:CentOS:7.5:latest                                     CentOS               latest
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
-Debian         credativ                8                   credativ:Debian:8:latest                                        Debian               latest
+debian-10      Debian                  10                  Debian:debian-10:10:latest                                      Debian               latest
 openSUSE-Leap  SUSE                    42.3                SUSE:openSUSE-Leap:42.3:latest                                  openSUSE-Leap        latest
-RHEL           RedHat                  7-RAW               RedHat:RHEL:7-RAW:latest                                        RHEL                 latest
-SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
-UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
-...
+RHEL           RedHat                  7-LVM               RedHat:RHEL:7-LVM:latest                                        RHEL                 latest
+SLES           SUSE                    15                  SUSE:SLES:15:latest                                             SLES                 latest
+UbuntuServer   Canonical               18.04-LTS           Canonical:UbuntuServer:18.04-LTS:latest                         UbuntuLTS            latest
+WindowsServer  MicrosoftWindowsServer  2019-Datacenter     MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest     Win2019Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2012-R2-Datacenter  MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest  Win2012R2Datacenter  latest
+WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServer:WindowsServer:2012-Datacenter:latest     Win2012Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
 ```
 
 ## <a name="find-specific-images"></a>Vyhledání konkrétních imagí
@@ -97,228 +72,77 @@ Například následující příkaz zobrazí všechny nabídky Debian (Nezapome�
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
-
 ```
 
 Částečný výstup: 
 
 ```output
-Offer              Publisher    Sku                  Urn                                                    Version
------------------  -----------  -------------------  -----------------------------------------------------  --------------
-Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
-Debian             credativ     7                    credativ:Debian:7:7.0.201603020                        7.0.201603020
-Debian             credativ     7                    credativ:Debian:7:7.0.201604050                        7.0.201604050
-Debian             credativ     7                    credativ:Debian:7:7.0.201604200                        7.0.201604200
-Debian             credativ     7                    credativ:Debian:7:7.0.201606280                        7.0.201606280
-Debian             credativ     7                    credativ:Debian:7:7.0.201609120                        7.0.201609120
-Debian             credativ     7                    credativ:Debian:7:7.0.201611020                        7.0.201611020
-Debian             credativ     7                    credativ:Debian:7:7.0.201701180                        7.0.201701180
-Debian             credativ     8                    credativ:Debian:8:8.0.201602010                        8.0.201602010
-Debian             credativ     8                    credativ:Debian:8:8.0.201603020                        8.0.201603020
-Debian             credativ     8                    credativ:Debian:8:8.0.201604050                        8.0.201604050
-Debian             credativ     8                    credativ:Debian:8:8.0.201604200                        8.0.201604200
-Debian             credativ     8                    credativ:Debian:8:8.0.201606280                        8.0.201606280
-Debian             credativ     8                    credativ:Debian:8:8.0.201609120                        8.0.201609120
-Debian             credativ     8                    credativ:Debian:8:8.0.201611020                        8.0.201611020
-Debian             credativ     8                    credativ:Debian:8:8.0.201701180                        8.0.201701180
-Debian             credativ     8                    credativ:Debian:8:8.0.201703150                        8.0.201703150
-Debian             credativ     8                    credativ:Debian:8:8.0.201704110                        8.0.201704110
-Debian             credativ     8                    credativ:Debian:8:8.0.201704180                        8.0.201704180
-Debian             credativ     8                    credativ:Debian:8:8.0.201706190                        8.0.201706190
-Debian             credativ     8                    credativ:Debian:8:8.0.201706210                        8.0.201706210
-Debian             credativ     8                    credativ:Debian:8:8.0.201708040                        8.0.201708040
-Debian             credativ     8                    credativ:Debian:8:8.0.201710090                        8.0.201710090
-Debian             credativ     8                    credativ:Debian:8:8.0.201712040                        8.0.201712040
-Debian             credativ     8                    credativ:Debian:8:8.0.201801170                        8.0.201801170
-Debian             credativ     8                    credativ:Debian:8:8.0.201803130                        8.0.201803130
-Debian             credativ     8                    credativ:Debian:8:8.0.201803260                        8.0.201803260
-Debian             credativ     8                    credativ:Debian:8:8.0.201804020                        8.0.201804020
-Debian             credativ     8                    credativ:Debian:8:8.0.201804150                        8.0.201804150
-Debian             credativ     8                    credativ:Debian:8:8.0.201805160                        8.0.201805160
-Debian             credativ     8                    credativ:Debian:8:8.0.201807160                        8.0.201807160
-Debian             credativ     8                    credativ:Debian:8:8.0.201901221                        8.0.201901221
+Offer                                    Publisher                         Sku                                      Urn                                                                                                   Version
+---------------------------------------  --------------------------------  ---------------------------------------  ----------------------------------------------------------------------------------------------------  --------------
+apache-solr-on-debian                    apps-4-rent                       apache-solr-on-debian                    apps-4-rent:apache-solr-on-debian:apache-solr-on-debian:1.0.0                                         1.0.0
+atomized-h-debian10-v1                   atomizedinc1587939464368          hdebian10plan                            atomizedinc1587939464368:atomized-h-debian10-v1:hdebian10plan:1.0.0                                   1.0.0
+atomized-h-debian9-v1                    atomizedinc1587939464368          hdebian9plan                             atomizedinc1587939464368:atomized-h-debian9-v1:hdebian9plan:1.0.0                                     1.0.0
+atomized-r-debian10-v1                   atomizedinc1587939464368          rdebian10plan                            atomizedinc1587939464368:atomized-r-debian10-v1:rdebian10plan:1.0.0                                   1.0.0
+atomized-r-debian9-v1                    atomizedinc1587939464368          rdebian9plan                             atomizedinc1587939464368:atomized-r-debian9-v1:rdebian9plan:1.0.0                                     1.0.0
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.7                         1.0.7
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.8                         1.0.8
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.9                         1.0.9
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.18                          1.0.18
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.19                          1.0.19
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.20                          1.0.20
+apache-web-server-with-debian-10         cognosys                          apache-web-server-with-debian-10         cognosys:apache-web-server-with-debian-10:apache-web-server-with-debian-10:1.2019.1008                1.2019.1008
+docker-ce-with-debian-10                 cognosys                          docker-ce-with-debian-10                 cognosys:docker-ce-with-debian-10:docker-ce-with-debian-10:1.2019.0710                                1.2019.0710
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201602010                                                                       8.0.201602010
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201603020                                                                       8.0.201603020
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201604050                                                                       8.0.201604050
 ...
 ```
 
-Použijte podobné filtry s `--location` `--publisher` možnostmi, a `--sku` . Můžete provádět částečné shody s filtrem, jako je například vyhledávání pro `--offer Deb` vyhledání všech imagí Debian.
 
-Pokud nezadáte konkrétní umístění s `--location` možností, vrátí se hodnoty pro výchozí umístění. (Nastavte jiné výchozí umístění spuštěním `az configure --defaults location=<location>` .)
-
-Například následující příkaz vypíše všechny SKU Debian 8 v umístění Západní Evropa:
-
-```azurecli
-az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
-```
-
-Částečný výstup:
-
-```output
-Offer    Publisher    Sku                Urn                                              Version
--------  -----------  -----------------  -----------------------------------------------  -------------
-Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
-Debian   credativ     8                  credativ:Debian:8:8.0.201603020                  8.0.201603020
-Debian   credativ     8                  credativ:Debian:8:8.0.201604050                  8.0.201604050
-Debian   credativ     8                  credativ:Debian:8:8.0.201604200                  8.0.201604200
-Debian   credativ     8                  credativ:Debian:8:8.0.201606280                  8.0.201606280
-Debian   credativ     8                  credativ:Debian:8:8.0.201609120                  8.0.201609120
-Debian   credativ     8                  credativ:Debian:8:8.0.201611020                  8.0.201611020
-Debian   credativ     8                  credativ:Debian:8:8.0.201701180                  8.0.201701180
-Debian   credativ     8                  credativ:Debian:8:8.0.201703150                  8.0.201703150
-Debian   credativ     8                  credativ:Debian:8:8.0.201704110                  8.0.201704110
-Debian   credativ     8                  credativ:Debian:8:8.0.201704180                  8.0.201704180
-Debian   credativ     8                  credativ:Debian:8:8.0.201706190                  8.0.201706190
-Debian   credativ     8                  credativ:Debian:8:8.0.201706210                  8.0.201706210
-Debian   credativ     8                  credativ:Debian:8:8.0.201708040                  8.0.201708040
-Debian   credativ     8                  credativ:Debian:8:8.0.201710090                  8.0.201710090
-Debian   credativ     8                  credativ:Debian:8:8.0.201712040                  8.0.201712040
-Debian   credativ     8                  credativ:Debian:8:8.0.201801170                  8.0.201801170
-Debian   credativ     8                  credativ:Debian:8:8.0.201803130                  8.0.201803130
-Debian   credativ     8                  credativ:Debian:8:8.0.201803260                  8.0.201803260
-Debian   credativ     8                  credativ:Debian:8:8.0.201804020                  8.0.201804020
-Debian   credativ     8                  credativ:Debian:8:8.0.201804150                  8.0.201804150
-Debian   credativ     8                  credativ:Debian:8:8.0.201805160                  8.0.201805160
-Debian   credativ     8                  credativ:Debian:8:8.0.201807160                  8.0.201807160
-Debian   credativ     8                  credativ:Debian:8:8.0.201901221                  8.0.201901221
-...
-```
-
-## <a name="navigate-the-images"></a>Navigace v obrázcích
+## <a name="look-at-all-available-images"></a>Podívejte se na všechny dostupné obrázky
  
 Dalším způsobem, jak najít obrázek v umístění, je spuštění příkazu [AZ VM Image list-Publishers](/cli/azure/vm/image), [AZ VM Image list-nabídky](/cli/azure/vm/image)a [AZ VM Image list-SKU](/cli/azure/vm/image) Commands v sekvenci. Pomocí těchto příkazů určíte tyto hodnoty:
 
-1. Vypsat vydavatele imagí.
-2. Pro daného vydavatele vypsat jeho nabídky.
-3. Pro danou nabídku vypsat její skladovou jednotku (SKU).
+1. Vypíše vydavatele imagí pro umístění. V tomto příkladu se díváte na oblast *západní USA* .
+    
+    ```azurecli
+    az vm image list-publishers --location westus --output table
+    ```
 
-Pak můžete pro vybranou SKLADOVOU položku zvolit verzi, kterou chcete nasadit.
+1. Pro daného vydavatele vypsat jeho nabídky. V tomto příkladu přidáme *kanonický* jako vydavatel.
+    
+    ```azurecli
+    az vm image list-offers --location westus --publisher Canonical --output table
+    ```
 
-Například následující příkaz zobrazí seznam vydavatelů obrázků v umístění Západní USA:
+1. Pro danou nabídku vypsat její skladovou jednotku (SKU). V tomto příkladu přidáme *UbuntuServer* jako nabídku.
+    ```azurecli
+    az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
+    ```
 
-```azurecli
-az vm image list-publishers --location westus --output table
-```
+1. Pro daného vydavatele, nabídku a SKU, zobrazte všechny verze image. V tomto příkladu přidáme jako SKU *18,04-LTS* .
 
-Částečný výstup:
+    ```azurecli
+    az vm image list \
+        --location westus \
+        --publisher Canonical \  
+        --offer UbuntuServer \    
+        --sku 18.04-LTS \
+        --all --output table
+    ```
 
-```output
-Location    Name
-----------  ----------------------------------------------------
-westus      128technology
-westus      1e
-westus      4psa
-westus      5nine-software-inc
-westus      7isolutions
-westus      a10networks
-westus      abiquo
-westus      accellion
-westus      accessdata-group
-westus      accops
-westus      Acronis
-westus      Acronis.Backup
-westus      actian-corp
-westus      actian_matrix
-westus      actifio
-westus      activeeon
-westus      advantech-webaccess
-westus      aerospike
-westus      affinio
-westus      aiscaler-cache-control-ddos-and-url-rewriting-
-westus      akamai-technologies
-westus      akumina
-...
-```
-
-Tyto informace slouží k vyhledání nabídek od konkrétního vydavatele. Například pro *kanonický* Vydavatel v umístění západní USA Najděte nabídky spuštěním `azure vm image list-offers` . Předejte umístění a vydavatele jako v následujícím příkladu:
-
-```azurecli
-az vm image list-offers --location westus --publisher Canonical --output table
-```
-
-Výstup:
-
-```output
-Location    Name
-----------  -------------------------
-westus      Ubuntu15.04Snappy
-westus      Ubuntu15.04SnappyDocker
-westus      UbunturollingSnappy
-westus      UbuntuServer
-westus      Ubuntu_Core
-```
-Vidíte, že v oblasti Západní USA je kanonické publikovat nabídku *UbuntuServer* v Azure. Ale co skladové jednotky (SKU)? Chcete-li získat tyto hodnoty, spusťte `azure vm image list-skus` a nastavte umístění, vydavatele a nabídku, kterou jste zjistili:
-
-```azurecli
-az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
-```
-
-Výstup:
-
-```output
-Location    Name
-----------  -----------------
-westus      12.04.3-LTS
-westus      12.04.4-LTS
-westus      12.04.5-LTS
-westus      14.04.0-LTS
-westus      14.04.1-LTS
-westus      14.04.2-LTS
-westus      14.04.3-LTS
-westus      14.04.4-LTS
-westus      14.04.5-DAILY-LTS
-westus      14.04.5-LTS
-westus      16.04-DAILY-LTS
-westus      16.04-LTS
-westus      16.04.0-LTS
-westus      18.04-DAILY-LTS
-westus      18.04-LTS
-westus      18.10
-westus      18.10-DAILY
-westus      19.04-DAILY
-```
-
-Nakonec pomocí `az vm image list` příkazu Najděte konkrétní verzi požadované skladové položky, například *18,04-LTS*:
-
-```azurecli
-az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
-```
-
-Částečný výstup:
-
-```output
-Offer         Publisher    Sku        Urn                                               Version
-------------  -----------  ---------  ------------------------------------------------  ---------------
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805170  18.04.201805170
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805220  18.04.201805220
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806130  18.04.201806130
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806170  18.04.201806170
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201807240  18.04.201807240
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808060  18.04.201808060
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808080  18.04.201808080
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808140  18.04.201808140
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808310  18.04.201808310
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201809110  18.04.201809110
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810030  18.04.201810030
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810240  18.04.201810240
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810290  18.04.201810290
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201811010  18.04.201811010
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812031  18.04.201812031
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812040  18.04.201812040
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812060  18.04.201812060
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901140  18.04.201901140
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901220  18.04.201901220
-...
-```
-
-Nyní můžete zvolit přesně obrázek, který chcete použít, a to poznámkou s hodnotou URN. `--image`Pokud vytvoříte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) , předejte tuto hodnotu parametr. Mějte na paměti, že můžete volitelně nahradit číslo verze v názvu URN řetězcem "poslední". Tato verze je vždycky nejnovější verze image. 
+`--image`Pokud vytvoříte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) , předejte tuto hodnotu sloupce urn s parametrem. Můžete také nahradit číslo verze v názvu URN řetězcem "poslední", abyste mohli jednoduše použít nejnovější verzi image. 
 
 Pokud nasadíte virtuální počítač s Správce prostředků šablonou, nastavte parametry obrázku jednotlivě ve `imageReference` vlastnostech. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
 
-[!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
-### <a name="view-plan-properties"></a>Zobrazit vlastnosti plánu
+## <a name="check-the-purchase-plan-information"></a>Podívejte se na informace o plánu nákupu.
 
-Chcete-li zobrazit informace o plánu nákupu obrázku, spusťte příkaz [AZ VM Image show](/cli/azure/image) . Pokud `plan` vlastnost ve výstupu není `null` , obrázek obsahuje podmínky, které je třeba přijmout před programovým nasazením.
+Některé image virtuálních počítačů v Azure Marketplace mají další licenční a nákupní podmínky, které musíte přijmout, než je můžete nasadit programově.  
+
+Pokud chcete nasadit virtuální počítač z takové image, musíte přijmout podmínky obrázku při jeho prvním použití, a to jednou za předplatné. Budete taky muset zadat parametry *plánu nákupu* , aby se virtuální počítač nasadil z této image.
+
+Chcete-li zobrazit informace o plánu nákupu obrázku, spusťte příkaz [AZ VM Image show](/cli/azure/image) s názvem URN obrázku. Pokud `plan` vlastnost ve výstupu není `null` , obrázek obsahuje podmínky, které je třeba přijmout před programovým nasazením.
 
 Například obrázek kanonického Ubuntu serveru 18,04 LTS nemá další výrazy, protože tyto `plan` informace jsou `null` :
 
@@ -342,7 +166,7 @@ Výstup:
 }
 ```
 
-Spuštění podobného příkazu pro Image RabbitMQ Certified by Bitnami ukazuje následující `plan` vlastnosti: `name` , `product` , a `publisher` . (Některé obrázky také obsahují `promotion code` vlastnost.) Chcete-li nasadit tuto bitovou kopii, v následujících částech přijměte podmínky a povolte programové nasazení.
+Spuštění podobného příkazu pro Image RabbitMQ Certified by Bitnami ukazuje následující `plan` vlastnosti: `name` , `product` , a `publisher` . (Některé obrázky také obsahují `promotion code` vlastnost.) 
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -367,12 +191,14 @@ Výstup:
 }
 ```
 
+Chcete-li nasadit tuto bitovou kopii, je nutné podmínky přijmout a zadat parametry plánu nákupu při nasazení virtuálního počítače pomocí této image.
+
 ## <a name="accept-the-terms"></a>Přijetí podmínek použití
 
-Pokud si chcete zobrazit a přijmout licenční podmínky, použijte příkaz [AZ VM Image Accept-terms](/cli/azure/vm/image?) . Když souhlasíte s podmínkami, povolíte v předplatném programové nasazení. Pro bitovou kopii musíte pro Image přijmout jenom jednou za odběr. Například:
+Pokud si chcete zobrazit a přijmout licenční podmínky, použijte příkaz [AZ VM Image Accept-terms](/cli/azure/vm/image/terms) . Když souhlasíte s podmínkami, povolíte v předplatném programové nasazení. Pro bitovou kopii musíte pro Image přijmout jenom jednou za odběr. Například:
 
 ```azurecli
-az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
+az vm image terms show --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
 Výstup obsahuje `licenseTextLink` licenční smlouvy a označuje, že hodnota `accepted` je `true` :
@@ -393,6 +219,75 @@ Výstup obsahuje `licenseTextLink` licenční smlouvy a označuje, že hodnota `
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
 ```
+
+Pokud chcete podmínky přijmout, zadejte:
+
+```azurecli
+az vm image terms accept --urn bitnami:rabbitmq:rabbitmq:latest
+``` 
+
+## <a name="deploy-a-new-vm-using-the-image-parameters"></a>Nasazení nového virtuálního počítače pomocí parametrů image
+
+S informacemi o imagi ji můžete nasadit pomocí `az vm create` příkazu. 
+
+Pokud chcete nasadit image, která nemá informace o plánu, třeba nejnovější image Ubuntu serveru 18,04 z kanonického tvaru, předejte název URN pro `--image` :
+
+```azurecli-interactive
+az group create --name myURNVM --location westus
+az vm create \
+   --resource-group myURNVM \
+   --name myVM \
+   --admin-username azureuser \
+   --generate-ssh-keys \
+   --image Canonical:UbuntuServer:18.04-LTS:latest 
+```
+
+
+Pro obrázek s parametry plánu nákupu, jako je RabbitMQ certifikovaný pomocí Bitnami image, předáte název URN pro `--image` a také zadáte parametry plánu nákupu:
+
+```azurecli
+az group create --name myPurchasePlanRG --location westus
+
+az vm create \
+   --resource-group myPurchasePlanRG \
+   --name myVM \
+   --admin-username azureuser \
+   --generate-ssh-keys \
+   --image bitnami:rabbitmq:rabbitmq:latest \
+   --plan-name rabbitmq \
+   --plan-product rabbitmq \
+   --plan-publisher bitnami
+```
+
+Pokud se zobrazí zpráva o přijetí podmínek v imagi, přečtěte si část věnované [přijetí podmínek](#accept-the-terms). Ujistěte se, že výstup `az vm image accept-terms` vrátí hodnotu `"accepted": true,` , která ukazuje, že jste přijali podmínek obrázku.
+
+
+## <a name="using-an-existing-vhd-with-purchase-plan-information"></a>Použití existujícího virtuálního pevného disku s informacemi o plánu nákupu
+
+Pokud máte existující virtuální pevný disk z virtuálního počítače, který byl vytvořen pomocí placené Azure Marketplace image, může být nutné při vytváření nového virtuálního počítače z tohoto virtuálního pevného disku poskytnout informace o plánu nákupu. 
+
+Pokud máte i nadále původní virtuální počítač nebo jiný virtuální počítač vytvořený pomocí stejné image na webu Marketplace, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí [příkaz AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view). Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+Pokud jste neobdrželi informace o plánu před odstraněním původního virtuálního počítače, můžete [požádat o podporu](https://ms.portal.azure.com/#create/Microsoft.Support). Budou potřebovat název virtuálního počítače, ID předplatného a časové razítko operace odstranění.
+
+Jakmile budete mít informace o plánu, můžete vytvořit nový virtuální počítač pomocí `--attach-os-disk` parametru a zadat virtuální pevný disk.
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete rychle vytvořit virtuální počítač pomocí informací o imagi, přečtěte si téma [Vytvoření a správa virtuálních počítačů se systémem Linux pomocí Azure CLI](tutorial-manage-vm.md).

@@ -4,12 +4,12 @@ description: Popisuje, jak používat omezování s požadavky na Azure Resource
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563122"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024621"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
@@ -58,7 +58,7 @@ Poskytovatel prostředků Microsoft. Network používá následující omezení 
 
 ### <a name="compute-throttling"></a>Omezení výpočetní kapacity
 
-Informace o omezeních omezování pro výpočetní operace najdete v tématu [řešení chyb při omezování rozhraní API – COMPUTE](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
+Informace o omezeních omezování pro výpočetní operace najdete v tématu [řešení chyb při omezování rozhraní API – COMPUTE](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors).
 
 Pro kontrolu instancí virtuálních počítačů v rámci sady škálování virtuálních počítačů použijte [Virtual Machine Scale Sets operace](/rest/api/compute/virtualmachinescalesetvms). Můžete například použít virtuální počítače [sady škálování virtuálního počítače – seznam](/rest/api/compute/virtualmachinescalesetvms/list) s parametry pro kontrolu stavu napájení instancí virtuálních počítačů. Toto rozhraní API snižuje počet požadavků.
 
@@ -98,7 +98,7 @@ Počet zbývajících požadavků můžete určit vyzkoumáním hlaviček odpov�
 | x-MS-ratelimit-zbývající – tenant-Resource-požadavky |Zbývá požadavků na typ prostředku v oboru klienta.<br /><br />Tato hlavička se přidávají jenom pro požadavky na úrovni tenanta a jenom v případě, že služba přepsala výchozí limit. Správce prostředků přidá tuto hodnotu namísto čtení nebo zápisu klienta. |
 | x-MS-ratelimit-zbývá-tenant-Resource-Entities – čtení |Zbývá zbývajících požadavků shromažďování typů prostředků v oboru klienta.<br /><br />Tato hlavička se přidávají jenom pro požadavky na úrovni tenanta a jenom v případě, že služba přepsala výchozí limit. |
 
-Poskytovatel prostředků může také vracet hlavičky odpovědí s informacemi o zbývajících požadavcích. Informace o hlavičkách odpovědí vrácených zprostředkovatelem výpočetních prostředků najdete v tématu přehledové [odezvy – hlavičky informativních odpovědí](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
+Poskytovatel prostředků může také vracet hlavičky odpovědí s informacemi o zbývajících požadavcích. Informace o hlavičkách odpovědí vrácených zprostředkovatelem výpočetních prostředků najdete v tématu přehledové [odezvy – hlavičky informativních odpovědí](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors#call-rate-informational-response-headers).
 
 ## <a name="retrieving-the-header-values"></a>Načítání hodnot hlaviček
 
