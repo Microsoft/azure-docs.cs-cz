@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a5732c2dc0a92bd5727eeff39a529630e45683d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bb448a4befb15618485b2b5951222761180a1f22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946687"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866739"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive s využitím Microsoft Power BI a ODBC ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ Naučte se, jak připojit Microsoft Power BI Desktop k Azure HDInsight pomocí r
 
 V tomto článku načtete data z `hivesampletable` tabulky podregistru do Power BI. Tabulka podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
 
-![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png" alt-text="HDInsight Power BI sestavy mapy" border="true":::
 
 Tyto informace platí také pro nový typ clusteru [interaktivních dotazů](../interactive-query/apache-interactive-query-get-started.md) . Informace o tom, jak se připojit k interaktivnímu dotazu HDInsight pomocí přímých dotazů, najdete v tématu [vizualizace interaktivního dotazování dat v rámci služby Microsoft Power BI pomocí přímého dotazování ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
@@ -45,7 +45,7 @@ Tabulka podregistru **hivesampletable** se dodává se všemi clustery HDInsight
 
 1. V horní nabídce přejděte na **Domů**  >  **získat data**  >  **Další..**..
 
-    ![Aplikace Power BI v HDInsight – otevřít data](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png" alt-text="Aplikace Power BI v HDInsight – otevřít data" border="true":::
 
 1. V dialogu **získat data** vyberte z levé strany možnost **jiné** , v pravém horním rohu vyberte **ODBC** a pak dole vyberte **připojit** .
 
@@ -61,7 +61,7 @@ Pokračujte od posledního postupu.
 
 1. V podokně vizualizace vyberte **Mapa**, jedná se o ikonu zeměkoule.
 
-    ![Sestava přizpůsobení Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png" alt-text="Sestava přizpůsobení Power BI HDInsight" border="true":::
 
 1. V podokně **pole** vyberte Country ( **země** ) a **devicemake**(země). Data vykreslená na mapě vidíte.
 

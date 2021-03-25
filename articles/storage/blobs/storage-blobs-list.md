@@ -1,26 +1,24 @@
 ---
-title: Výpis objektů BLOB pomocí .NET-Azure Storage
-description: Přečtěte si, jak vypsat objekty BLOB v kontejneru ve vašem Azure Storage účtu pomocí klientské knihovny .NET. Příklady kódu ukazují, jak zobrazit seznam objektů BLOB v nestrukturovaném seznamu nebo jak zobrazit seznam objektů BLOB hierarchicky, jako kdyby byly uspořádány do adresářů nebo složek.
+title: Výpis objektů BLOB pomocí rozhraní Azure Storage API
+description: Naučte se vypsat objekty blob ve svém účtu úložiště pomocí klientských knihoven Azure Storage. Příklady kódu ukazují, jak zobrazit seznam objektů BLOB v nestrukturovaném seznamu nebo jak zobrazit seznam objektů BLOB hierarchicky, jako kdyby byly uspořádány do adresářů nebo složek.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff20b8bd0aab94cadadddbb7a4b7b32b1db1ee85
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95543064"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046938"
 ---
-# <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
+# <a name="list-blobs-with-azure-storage-client-libraries"></a>Výpis objektů BLOB pomocí Azure Storage klientských knihoven
 
 Při výpisu objektů BLOB z kódu můžete zadat několik možností pro správu způsobu, jakým jsou vráceny výsledky z Azure Storage. Můžete zadat počet výsledků, které se mají vrátit v každé sadě výsledků, a pak načíst následné sady. Můžete zadat předponu pro návrat objektů blob, jejichž názvy začínají daným znakem nebo řetězcem. A můžete vytvořit seznam objektů BLOB ve strukturách s plochým výpisem nebo hierarchicky. Hierarchický výpis vrátí objekty blob, jako kdyby byly uspořádány do složek.
-
-Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage).  
 
 ## <a name="understand-blob-listing-options"></a>Vysvětlení možností výpisu objektů BLOB
 
@@ -45,7 +43,9 @@ Chcete-li zobrazit seznam objektů BLOB v kontejneru, zavolejte jednu z těchto 
 - [CloudBlobContainer. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 - [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Přetížení těchto metod poskytují další možnosti pro správu způsobu, jakým operace výpisu vrací objekty blob. Tyto možnosti jsou popsány v následujících částech.
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+- [ContainerClient.list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)
 
 ---
 
@@ -61,13 +61,25 @@ Chcete-li filtrovat seznam objektů blob, zadejte řetězec pro `prefix` paramet
 
 Můžete vracet metadata objektu BLOB s výsledky.
 
-- Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) .
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-- Pokud používáte sadu .NET V11 SDK, zadejte hodnotu **metadat** pro výčet [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) . Azure Storage zahrnuje metadata s vrácenými objekty blob, takže nemusíte v tomto kontextu volat jednu z metod **FetchAttributes** k načtení metadat objektu BLOB.
+Zadejte hodnotu **metadat** pro výčet [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) .
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Zadejte hodnotu **metadat** pro výčet [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) . Azure Storage zahrnuje metadata s vrácenými objekty blob, takže nemusíte v tomto kontextu volat jednu z metod **FetchAttributes** k načtení metadat objektu BLOB.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Zadejte `metadata` pro `include=` parametr při volání [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-).
+
+---
 
 ### <a name="list-blob-versions-or-snapshots"></a>Vypsat verze nebo snímky objektů BLOB
 
-Chcete-li vypsat verze nebo snímky objektů BLOB pomocí klientské knihovny .NET V12, zadejte parametr [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) s polem **verze** nebo **snímku** . Verze a snímky jsou uvedeny z nejstarší na nejnovější. Další informace o výpisu verzí najdete v tématu [seznam verzí objektů BLOB](versioning-enable.md#list-blob-versions).
+- Chcete-li vypsat verze nebo snímky objektů BLOB pomocí klientské knihovny .NET V12, zadejte parametr [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) s polem **verze** nebo **snímku** . Verze a snímky jsou uvedeny z nejstarší na nejnovější. Další informace o výpisu verzí najdete v tématu [seznam verzí objektů BLOB](versioning-enable.md#list-blob-versions).
+
+- Chcete-li vypsat počet snímků pomocí klientské knihovny Python V12, zadejte `num_snapshots` v `include=` parametru při volání [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-).
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Plochý výpis versus hierarchický výpis
 
@@ -135,11 +147,15 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_ListBlobs":::
+
 ---
 
 Vzorový výstup je podobný následujícímu:
 
-```
+```console
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
 Blob name: FolderA/blob3.txt
@@ -153,7 +169,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>Použití hierarchického výpisu
 
-Když zavoláte operaci výpisu hierarchicky, Azure Storage vrátí virtuální adresáře a objekty blob na první úrovni hierarchie. Vlastnost [prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) každého virtuálního adresáře je nastavena tak, aby bylo možné předat předponu v rekurzivním volání a načíst další adresář.
+Když zavoláte operaci výpisu hierarchicky, Azure Storage vrátí virtuální adresáře a objekty blob na první úrovni hierarchie.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
@@ -164,6 +180,8 @@ Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pom
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Vlastnost [prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) každého virtuálního adresáře je nastavena tak, aby bylo možné předat předponu v rekurzivním volání a načíst další adresář.
 
 Chcete-li zobrazit seznam objektů BLOB hierarchicky, nastavte `useFlatBlobListing` parametr metody výpisu na **false**.
 
@@ -222,11 +240,19 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Chcete-li zobrazit seznam objektů BLOB hierarchicky, zavolejte metodu [walk_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#walk-blobs-name-starts-with-none--include-none--delimiter--------kwargs-) .
+
+Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pomocí hierarchického výpisu, který má zadanou volitelnou velikost segmentu, a zapíše název objektu blob do okna konzoly.
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_WalkHierarchy":::
+
 ---
 
 Vzorový výstup je podobný následujícímu:
 
-```
+```console
 Virtual directory prefix: FolderA/
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100654846"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047163"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby Azure IoT Central (Python)
 
@@ -20,7 +20,7 @@ ms.locfileid: "100654846"
 
 V tomto rychlém startu se naučíte základní pracovní postup vývoje aplikací pro zařízení IoT. Nejprve použijte Azure IoT Central k vytvoření cloudové aplikace. Pak použijete sadu SDK Azure IoT Python k sestavení simulovaného zařízení, připojení k IoT Central a odeslání telemetrie typu zařízení-Cloud. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - [Python 3.7 +](https://www.python.org/downloads/). Další podporované verze Pythonu najdete v tématu [funkce zařízení Azure IoT](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
     
     Pokud chcete zajistit aktuálnost verze Pythonu, spusťte příkaz `python --version` . Pokud máte nainstalované Python 2 i Python 3 a používáte prostředí Python 3, nainstalujte všechny knihovny pomocí nástroje `pip3` . Spuštění `pip3` zajistí, že se knihovny nainstalují do modulu runtime Python 3.
@@ -266,5 +266,5 @@ V tomto rychlém startu jste se naučili základní pracovní postup aplikace Az
 V dalším kroku Prozkoumejte sadu Azure IoT Python SDK prostřednictvím ukázek aplikací.
 
 - [Asynchronní ukázky](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Tento adresář obsahuje asynchronní ukázky Pythonu pro další IoT Hub scénáře.
-- [Synchronní ukázky](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Tento adresář obsahuje ukázky Pythonu pro použití s pythonem 2,7 nebo synchronní scénáře kompatibility pro Python 3.5 +.
+- [Synchronní ukázky](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Tento adresář obsahuje ukázky Pythonu pro použití s pythonem 2,7 nebo se synchronními scénáři kompatibility pro Python 3.6 +.
 - [Ukázky IoT Edge](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): Tento adresář obsahuje ukázky Pythonu pro práci s hraničními moduly a zařízeními pro příjem dat.

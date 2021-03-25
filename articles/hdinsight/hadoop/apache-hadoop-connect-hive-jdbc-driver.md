@@ -20,7 +20,7 @@ Naučte se používat ovladač JDBC z aplikace Java. Odeslání dotazů Apache H
 
 Další informace o rozhraní JDBC podregistru najdete v tématu [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * An HDInsight clusteru Hadoop. Pokud ho chcete vytvořit, přečtěte si téma Začínáme [se službou Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Ujistěte se, že je služba HiveServer2 spuštěná.
 * [Sada Java Developer Kit (JDK) verze 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) nebo vyšší.

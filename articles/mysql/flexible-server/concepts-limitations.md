@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543081"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034516"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Omezení Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -89,8 +89,12 @@ Následující nejsou podporovány:
 - Při obnovení k bodu v čase se vytvoří nové servery se stejnou konfigurací výpočtů a úložiště jako na zdrojovém serveru, na kterém je založena. Po vytvoření serveru se dá nově obnovený výpočetní Server škálovat.
 - Obnovení odstraněného serveru se nepodporuje.
 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>Funkce, které jsou dostupné na jednom serveru, ale ještě nejsou podporované v flexibilním serveru 
+Ne všechny funkce dostupné na Azure Database for MySQL – jeden server je ještě dostupný v flexibilním serveru. Úplný seznam porovnání funkcí mezi jedním serverem a flexibilním serverem najdete [v dokumentaci k Azure v tématu Výběr správné možnosti serveru MySQL.](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure)
+
 ## <a name="next-steps"></a>Další kroky
 
-- Seznamte [se s tím, co je k dispozici pro výpočetní a úložné možnosti](concepts-compute-storage.md)
+- Přečtěte si [, jak v dokumentaci k Azure zvolit správnou možnost serveru MySQL](../select-right-deployment-type.md)
+- Seznamte [se s tím, co je k dispozici pro možnosti výpočtů a úložiště v flexibilním serveru](concepts-compute-storage.md) .
 - Další informace o [podporovaných verzích MySQL](concepts-supported-versions.md)
-- Přečtěte si, [Jak zálohovat a obnovit server pomocí Azure Portal](how-to-restore-server-portal.md)
+- Rychlý Start: [použití Azure Portal k vytvoření Azure Database for MySQL flexibilního serveru](quickstart-create-server-portal.md)

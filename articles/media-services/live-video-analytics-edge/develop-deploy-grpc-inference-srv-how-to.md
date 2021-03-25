@@ -3,12 +3,12 @@ title: Vývoj a nasazení gRPC odvozeného serveru – Azure
 description: Tento článek poskytuje pokyny pro vývoj a nasazení gRPC odvozeného serveru.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881648"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034856"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Návod – vývoj a nasazení gRPC odvozeného serveru
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak můžete zabalit model AI podle vašeho výbě
 * [Úvod do gRPC](https://www.grpc.io/docs/what-is-grpc/introduction/)
 * [Průvodce jazyky proto3](https://developers.google.com/protocol-buffers/docs/proto3)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) nebo počítače s Windows.
 * [Nainstalujte do počítače Docker](https://docs.docker.com/desktop/#download-and-install) .
@@ -242,7 +242,7 @@ Teď, když jste vytvořili modul rozšíření gRPC, teď vytvoříme a nasadí
         * V části GraphInstanceSet upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:<br/>`"topologyName": "InferencingWithGrpcExtension"`
         * V části GraphTopologyDelete upravte název:<br/>`"name": "InferencingWithGrpcExtension"`
 
-            Topologie (například `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json` ) musí definovat adresu rozšíření:
+            Topologie (například `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json` ) musí definovat adresu rozšíření:
     * Parametr adresy rozšíření
 
         ```
@@ -308,4 +308,4 @@ V této fázi se spustilo nasazení hraničních modulů do zařízení IoT Edge
 
 ## <a name="next-steps"></a>Další kroky
 
-Postupujte podle kroků **Příprava na monitorování událostí** zmíněných v části [Analýza živého videa pomocí](use-your-model-quickstart.md) rychlého startu modelu a spusťte ukázku a interpretujte výsledky. Podívejte se také na naše ukázkové topologie gRPC: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension a [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
+Postupujte podle kroků **Příprava na monitorování událostí** zmíněných v části [Analýza živého videa pomocí](use-your-model-quickstart.md) rychlého startu modelu a spusťte ukázku a interpretujte výsledky. Podívejte se také na naše ukázkové topologie gRPC: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension a [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).

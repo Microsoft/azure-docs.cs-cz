@@ -3,19 +3,14 @@ title: Přehled zálohování disku Azure
 description: Přečtěte si o řešení zálohování disku Azure.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915504"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107291"
 ---
-# <a name="overview-of-azure-disk-backup-in-preview"></a>Přehled služby Azure disk Backup (ve verzi Preview)
-
->[!IMPORTANT]
->Služba Azure disk Backup je ve verzi Preview bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informace o dostupnosti oblastí najdete v tématu [matice podpory](disk-backup-support-matrix.md).
->
->[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
+# <a name="overview-of-azure-disk-backup"></a>Přehled zálohování disku Azure
 
 Zálohování na disk Azure je nativní cloudové řešení zálohování, které chrání vaše data ve službě Managed disks. Je to jednoduché, bezpečné a nákladově efektivní řešení, které umožňuje nakonfigurovat ochranu pro spravované disky v několika krocích. Zaručuje, že můžete obnovit data v případě havárie.
 

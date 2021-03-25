@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1fc3397409634f29690af05ca2a85e67c30b6d89
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521692"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954951"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
@@ -85,7 +85,7 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 ## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
 
 > [!NOTE]
-> V současné době Azure CLI nepodporuje nasazování vzdálených souborů bicep. K nasazení vzdáleného souboru bicep použijte příkaz CLI bicep pro zkompilování souboru bicep do šablony JSON jako první.
+> V současné době Azure CLI nepodporuje nasazování vzdálených souborů bicep. Pomocí [BICEP CLI](./bicep-install.md#development-environment) zkompilujte soubor bicep do šablony JSON a potom soubor JSON načtěte do vzdáleného umístění.
 
 Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
 

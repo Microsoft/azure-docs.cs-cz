@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175030"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048098"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Registrovat a kontrolovat Zdroj Teradata (Preview)
 
@@ -22,10 +22,10 @@ Tento článek popisuje, jak zaregistrovat zdroj Teradata v dosah a nastavit kon
 
 Zdroj Teradata podporuje **úplnou kontrolu** pro extrakci metadat z databáze Teradata a **načítání mezi** datovými assety.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1.  Nastavte si nejnovější [prostředí Integration runtime](https://www.microsoft.com/download/details.aspx?id=39717)na místním hostiteli.
-    Další informace najdete v tématu [Vytvoření a konfigurace prostředí Integration runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)v místním prostředí.
+    Další informace najdete v tématu [Vytvoření a konfigurace prostředí Integration runtime](../data-factory/create-self-hosted-integration-runtime.md)v místním prostředí.
 
 2.  Ujistěte se, že je na virtuálním počítači, kde je nainstalovaný modul runtime integrace v místním prostředí, nainstalovaný [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) .
 
@@ -70,7 +70,7 @@ Na obrazovce **Registrovat zdroje (Teradata)** udělejte toto:
 
 Pokud chcete vytvořit a spustit novou kontrolu, udělejte toto:
 
-1.  V centru pro správu klikněte na **modul runtime integrace**. Ujistěte se, že je nastavený modul Integration runtime v místním prostředí. Pokud není nastavený, použijte postup uvedený [tady](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) a nastavte prostředí Integration runtime v místním prostředí.
+1.  V centru pro správu klikněte na **modul runtime integrace**. Ujistěte se, že je nastavený modul Integration runtime v místním prostředí. Pokud není nastavený, použijte postup uvedený [tady](./manage-integration-runtimes.md) a nastavte prostředí Integration runtime v místním prostředí.
 
 2.  Přejděte ke **zdrojům** .
 
@@ -90,7 +90,7 @@ Pokud chcete vytvořit a spustit novou kontrolu, udělejte toto:
     -   Zadejte uživatelské jméno pro připojení k databázovému serveru ve vstupním poli uživatelské jméno.
     -   Heslo databázového serveru uložte do tajného klíče.
 
-        Pokud chcete získat další informace o přihlašovacích údajích, přečtěte si [tady](https://docs.microsoft.com/azure/purview/manage-credentials) odkaz.
+        Pokud chcete získat další informace o přihlašovacích údajích, přečtěte si [tady](./manage-credentials.md) odkaz.
 
 6.  **Schema (schéma**): podmnožina schémat pro import vyjádřená jako seznam oddělený středníkem. například Schema1; schema2. Všechna schémata uživatelů jsou importována, pokud je tento seznam prázdný. Ve výchozím nastavení jsou všechna systémová schémata (například SysAdmin) a objekty ignorovány. Když je seznam prázdný, naimportují se všechna dostupná schémata.
 

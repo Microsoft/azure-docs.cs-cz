@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c151f78c6164cc62aac618a141a26eb1da574e3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5db02f8ca1f0c311617a787525ee2fa5856eb5dc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99218353"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045259"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Python pro IoT Hub Device Provisioning Service
 
@@ -22,12 +22,12 @@ ms.locfileid: "99218353"
 
 V tomto rychlém startu zřídíte vývojový počítač jako zařízení Python X. 509. Pomocí ukázkového kódu zařízení ze [sady Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) můžete zařízení připojit ke službě IoT Hub. V tomto příkladu se používá v rámci služby Device Provisioning (DPS) individuální registrace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Seznamte se s koncepty [zřizování](about-iot-dps.md#provisioning-process) .
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Python 3.5.3 nebo novější](https://www.python.org/downloads/)
+- [Python 3,6 nebo novější](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/download/).
 
 

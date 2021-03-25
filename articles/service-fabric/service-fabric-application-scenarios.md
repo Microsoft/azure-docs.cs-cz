@@ -3,12 +3,12 @@ title: Scénáře a návrh aplikací
 description: Přehled kategorií cloudových aplikací v Service Fabric. Popisuje návrh aplikace, který používá stavové a bezstavové služby.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575665"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045752"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
 
@@ -68,7 +68,7 @@ Tady je ukázková aplikace, která používá stavové služby: ![ aplikace, kt
 
 * Začněte vytvářet bezstavové a stavové služby pomocí Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programovacích modelů.
 * Pokyny k [vytváření mikroslužeb v Azure](/azure/architecture/microservices/)najdete na cetrum architektury Azure.
-* Přejít na [Azure Service Fabric a osvědčené postupy](service-fabric-best-practices-overview.md) pro vytváření aplikací pro návrh aplikace.
+* Přejít na [Azure Service Fabric a osvědčené postupy](./service-fabric-best-practices-security.md) pro vytváření aplikací pro návrh aplikace.
 
 * Viz také:
   * [Principy mikroslužeb](service-fabric-overview-microservices.md)

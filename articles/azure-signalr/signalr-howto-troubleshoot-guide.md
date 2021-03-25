@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589157"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048200"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Průvodce odstraňováním potíží pro běžné problémy služby signalizace Azure
 
@@ -348,7 +348,7 @@ Pro signál ASP.NET byl známý problém opraven v sadě SDK 1.6.0. Upgradujte s
 
 ## <a name="thread-pool-starvation"></a>Vyčerpání fondu vláken
 
-Pokud je váš server omezují, znamená to, že při zpracování zpráv nepracuje žádná vlákna. Všechna vlákna jsou před určitou metodou zavěšena.
+Pokud je váš server omezují, znamená to, že při zpracování zpráv nepracuje žádná vlákna. Všechna vlákna nereagují v určité metodě.
 
 Obvykle je tento scénář způsoben asynchronní metodou Sync nebo `Task.Result` / `Task.Wait()` v asynchronních metodách.
 

@@ -3,14 +3,14 @@ title: Spouštění runbooků ve službě Azure Automation
 description: Tento článek poskytuje přehled o zpracování runbooků v Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586038"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954339"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -34,7 +34,8 @@ Následující diagram znázorňuje životní cyklus úlohy Runbooku pro [Runboo
 
 Runbooky v Azure Automation můžou běžet buď v izolovaném prostoru Azure, nebo v [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md). 
 
-Když jsou Runbooky navržené pro ověřování a spouštění u prostředků v Azure, spouštějí se v izolovaném prostoru Azure, což je sdílené prostředí, které může používat víc úloh. Úlohy používající stejný izolovaný prostor (sandbox) jsou vázány omezeními prostředků izolovaného prostoru (sandbox). Prostředí Azure izolovaného prostoru (sandbox) nepodporuje interaktivní operace. Zabraňuje přístupu ke všem nezpracovaným serverům COM. Vyžaduje také použití místních souborů MOF pro Runbooky, které provádí volání Win32.
+Když jsou Runbooky navržené pro ověřování a spouštění u prostředků v Azure, spouštějí se v izolovaném prostoru Azure, což je sdílené prostředí, které může používat víc úloh. Úlohy používající stejný izolovaný prostor (sandbox) jsou vázány omezeními prostředků izolovaného prostoru (sandbox). Prostředí Azure izolovaného prostoru (sandbox) nepodporuje interaktivní operace. Zabraňuje přístupu ke všem nezpracovaným serverům COM a nepodporuje [volání rozhraní WMI](/windows/win32/wmisdk/wmi-architecture) do poskytovatele Win32 v sadě Runbook.  Tyto scénáře jsou podporovány pouze spuštěním sady Runbook na Hybrid Runbook Worker systému Windows.
+
 
 Můžete také použít [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ke spouštění Runbooků přímo na počítači, který je hostitelem role a na místních prostředcích v prostředí. Azure Automation ukládá a spravuje Runbooky a pak je doručí do jednoho nebo více přiřazených počítačů.
 
