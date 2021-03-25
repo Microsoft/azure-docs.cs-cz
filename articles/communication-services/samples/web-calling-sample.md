@@ -9,16 +9,16 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0f456581e14f17b0ea3ebbd54d0768d419e800b3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496231"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110640"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
-Ukázka webového volání je webová aplikace, která slouží jako podrobný návod k různým funkcím poskytovaným klientským knihovnou webového volání komunikačních služeb.
+Ukázka webového volání je webová aplikace, která slouží jako podrobný návod k různým funkcím poskytovaným webovým voláním sady SDK komunikačních služeb.
 
 Tato ukázka byla sestavena pro vývojáře a usnadňuje vám práci s komunikačními službami. Jeho uživatelské rozhraní je rozdělené do několika oddílů, z nichž každý obsahuje tlačítko "Zobrazit kód", které umožňuje zkopírovat kód přímo z prohlížeče do vlastní aplikace komunikační služby.
 
@@ -86,7 +86,7 @@ Tato ukázka také poskytuje fragmenty kódu pro následující funkce:
 
 Další informace najdete v následujících článcích:
 
-- Seznamte se s [použitím volání klientské knihovny](../quickstarts/voice-video-calling/calling-client-samples.md)
+- Seznámení s [používáním volání sady SDK](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Další informace o [volání funkce](../concepts/voice-video-calling/about-call-types.md)
 - Kontrola [referenčních dokumentů rozhraní API](/javascript/api/azure-communication-services/@azure/communication-calling/)
 - Kontrola ukázky [aplikace Contoso med](https://github.com/Azure-Samples/communication-services-contoso-med-app)

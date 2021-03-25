@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b0969ffae7963d6a5f9ac249e43750444ab11baa
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: e41e33b5f30cd861ae8715e0ad7f6694f8854198
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105036046"
+ms.locfileid: "105046925"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework
 
@@ -34,7 +34,7 @@ SS pro OSMF obsahuje dvě verze modulu plug-in:
 * Modul plug-in statického Smooth Streaming pro OSMF (. SWC)
 * Modul plug-in Dynamic Smooth Streaming pro OSMF (. swf)
 
-V tomto dokumentu se předpokládá, že čtenář má obecnou znalost OSMF a modulů plug-in OSMF. Další informace o OSMF najdete v dokumentaci k [oficiálnímu webu OSMF](http://osmf.org/).
+V tomto dokumentu se předpokládá, že čtenář má obecnou znalost OSMF a modulů plug-in OSMF. Další informace o OSMF najdete v dokumentaci k oficiálnímu webu OSMF.
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>Modul plug-in Smooth Streaming pro OSMF 2,0
 Modul plug-in podporuje načítání a přehrávání obsahu Smooth Streaming na vyžádání s následujícími funkcemi:
@@ -62,7 +62,7 @@ Moduly plug-in OSMF lze načíst staticky (v době kompilace) nebo dynamicky (za
 Další informace o statickém a dynamickém načítání najdete na stránce oficiálního [modulu plug-in OSMF](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm).
 
 ### <a name="ss-for-osmf-static-loading"></a>SS pro statické načtení OSMF
-Následující fragment kódu ukazuje, jak načíst modul plug-in SS pro OSMF staticky a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím SS pro kód OSMF Prosím zajistěte, aby odkaz na projekt zahrnoval statický modul plug-in MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC.
+Následující fragment kódu ukazuje, jak načíst modul plug-in SS pro OSMF staticky a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím SS pro kód OSMF Prosím zajistěte, aby odkaz na projekt zahrnoval statický modul plug-in MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC. 
 
 ```csharp
 package 
@@ -337,7 +337,7 @@ package
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Přehrávání nevracení médií pomocí dynamického modulu plug-in ODMF SS
 Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráváním médií (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/). K přidání Smooth Streaming přehrávání obsahu do SMP můžete použít modul plug-in SS pro OSMF. Uděláte to tak, že zkopírujete soubor "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" pod webový server pro načtení HTTP pomocí následujících kroků:
 
-1. Projděte si [stránku nastavení přehrávání média impulzu](http://osmf.org/dev/2.0gm/setup.html). 
+1. Projděte si [stránku nastavení přehrávání média impulzu](http://www.koopman.me/bob3/setup.html). 
 2. Nastavte src na zdroj Smooth Streaming (např. http: \/ /devplatem.vo.msecnd.NET/Sintel/Sintel_H264.ISM/manifest). 
 3. Proveďte požadované změny konfigurace a klikněte na náhled a aktualizovat.
    
@@ -394,7 +394,7 @@ Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráv
 2. Uložte stránku HTML a publikujte ji na webový server. Přejděte na publikovanou webovou stránku pomocí &reg; internetového prohlížeče povoleného v přehrávači Flash (Internet Explorer, Chrome, Firefox atd.).
 3. Užívejte Smooth Streaming obsahu uvnitř Adobe &reg; Flash &reg; Playeru.
 
-Další informace o obecném vývoji OSMF najdete na oficiální [stránce OSMF Development](http://osmf.org/resources.html).
+Další informace o obecném vývoji OSMF najdete na oficiální [stránce OSMF Development](https://www.adobe.com/devnet/video/articles1/osmf_overview.html).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

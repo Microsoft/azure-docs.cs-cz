@@ -8,12 +8,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f3b6bd19d47658e5ad079f0b731cbafc866bb333
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200274"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045769"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
 
@@ -33,7 +33,7 @@ Další informace o různých typech certifikátů a jejich rolích najdete v t�
 >[!NOTE]
 >Pojem "Kořenová CA", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority pro vaše řešení IoT. Nemusíte používat kořen certifikátu pro neoprávněnou certifikační autoritu nebo kořen certifikační autority vaší organizace. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Zařízení IoT Edge.
 
@@ -67,9 +67,18 @@ Pokud chcete zobrazit příklad těchto certifikátů, přečtěte si téma Vytv
 
 Nainstalujte svůj řetěz certifikátů na zařízení IoT Edge a nakonfigurujte modul runtime IoT Edge tak, aby odkazoval na nové certifikáty.
 
-Zkopírujte tři certifikáty a soubory klíčů do zařízení IoT Edge. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .  Pokud jste certifikáty vygenerovali na samotném IoT Edge zařízení, můžete tento krok přeskočit a použít cestu k pracovnímu adresáři.
+Zkopírujte tři certifikáty a soubory klíčů do zařízení IoT Edge. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) . Pokud jste certifikáty vygenerovali na samotném IoT Edge zařízení, můžete tento krok přeskočit a použít cestu k pracovnímu adresáři.
 
-Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových certifikátů](how-to-create-test-certificates.md), zkopírujte do zařízení IoT-Edge následující soubory:
+Pokud používáte IoT Edge pro Linux v systému Windows, je nutné použít klíč SSH umístěný v `id_rsa` souboru Azure IoT Edge k ověření přenosů souborů mezi hostitelským operačním systémem a virtuálním počítačem se systémem Linux. Ověřený spojovací bod služby můžete provést pomocí následujícího příkazu:
+
+   ```powershell-interactive
+   C:\WINDOWS\System32\OpenSSH\scp.exe -i 'C:\Program Files\Azure IoT Edge\id_rsa' <PATH_TO_SOURCE_FILE> iotedge-user@<VM_IP>:<PATH_TO_FILE_DESTINATION>
+   ```
+
+   >[!NOTE]
+   >IP adresu virtuálního počítače se systémem Linux lze dotazovat prostřednictvím `Get-EflowVmAddr` příkazu.
+
+Pokud jste použili ukázkové skripty k [Vytvoření ukázkových certifikátů](how-to-create-test-certificates.md), zkopírujte do zařízení IoT-Edge následující soubory:
 
 * Certifikát certifikační autority zařízení: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Privátní klíč certifikační autority zařízení: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -80,21 +89,13 @@ Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových c
 
 1. Otevřete konfigurační soubor démona zabezpečení IoT Edge.
 
-   * Windows: `C:\ProgramData\iotedge\config.yaml`
-   * Linux: `/etc/iotedge/config.yaml`
+   * Linux a IoT Edge pro Linux ve Windows: `/etc/iotedge/config.yaml`
+
+   * Windows s kontejnery Windows: `C:\ProgramData\iotedge\config.yaml`
 
 1. V souboru config. yaml nastavte vlastnosti **certifikátu** na cestu k identifikátoru URI souboru certifikátu a souborů klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Například:
 
-   * Windows:
-
-      ```yaml
-      certificates:
-        device_ca_cert: "file:///C:/<path>/<device CA cert>"
-        device_ca_pk: "file:///C:/<path>/<device CA key>"
-        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
-      ```
-
-   * Linux:
+   * Linux a IoT Edge pro Linux ve Windows:
 
       ```yaml
       certificates:
@@ -103,13 +104,23 @@ Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových c
         trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
+   * Windows s kontejnery Windows:
+
+      ```yaml
+      certificates:
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
+      ```
+
 1. V zařízeních se systémem Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čtení pro adresář, který obsahuje certifikáty.
 
 1. Pokud jste na zařízení používali jiné certifikáty pro IoT Edge, před spuštěním nebo restartováním IoT Edge odstraňte soubory z následujících dvou adresářů:
 
-   * Windows: `C:\ProgramData\iotedge\hsm\certs` a `C:\ProgramData\iotedge\hsm\cert_keys`
+   * Linux a IoT Edge pro Linux ve Windows: `/var/lib/iotedge/hsm/certs` a `/var/lib/iotedge/hsm/cert_keys`
 
-   * Linux: `/var/lib/iotedge/hsm/certs` a `/var/lib/iotedge/hsm/cert_keys`
+   * Windows pomocí kontejnerů Windows: `C:\ProgramData\iotedge\hsm\certs` a `C:\ProgramData\iotedge\hsm\cert_keys`
+
 :::moniker-end
 <!-- end 1.1 -->
 
@@ -177,34 +188,36 @@ Po vypršení platnosti po zadaném počtu dnů se IoT Edge musí restartovat, a
 
 1. Odstraňte obsah `hsm` složky, abyste odebrali všechny dříve vygenerované certifikáty.
 
-   Windows: `C:\ProgramData\iotedge\hsm\certs` a `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` a `/var/lib/iotedge/hsm/cert_keys`
+   * Linux a IoT Edge pro Linux ve Windows: `/var/lib/iotedge/hsm/certs` a `/var/lib/iotedge/hsm/cert_keys`
+
+   * Windows pomocí kontejnerů Windows: `C:\ProgramData\iotedge\hsm\certs` a `C:\ProgramData\iotedge\hsm\cert_keys`
 
 1. Restartujte službu IoT Edge.
 
-   Windows:
-
-   ```powershell
-   Restart-Service iotedge
-   ```
-
-   Linux:
+   * Linux a IoT Edge pro Linux ve Windows:
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-1. Potvrďte nastavení životnosti.
-
-   Windows:
+   * Windows s kontejnery Windows:
 
    ```powershell
-   iotedge check --verbose
+   Restart-Service iotedge
    ```
 
-   Linux:
+1. Potvrďte nastavení životnosti.
+
+   * Linux a IoT Edge pro Linux ve Windows:
 
    ```bash
    sudo iotedge check --verbose
+   ```
+
+   * Windows s kontejnery Windows:
+
+   ```powershell
+   iotedge check --verbose
    ```
 
    Podívejte se na výstup kontroly **připravenosti na provoz:** vypíše počet dní, než vyprší platnost automaticky generovaných certifikátů certifikační autority zařízení.

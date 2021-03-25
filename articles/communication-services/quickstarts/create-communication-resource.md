@@ -10,21 +10,21 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495869"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110882"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), služby nasazení a správy Azure. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal. 
+Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí sady .NET Management SDK. Sada Management SDK a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), nasazení a služby pro správu Azure. Všechny funkce, které jsou k dispozici v sadách SDK, jsou k dispozici v Azure Portal. 
 
 
-Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), služby nasazení a správy Azure. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal.
+Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí sady .NET Management SDK. Sada Management SDK a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), nasazení a služby pro správu Azure. Všechny funkce, které jsou k dispozici v sadách SDK, jsou k dispozici v Azure Portal.
 
 > [!WARNING]
 > Mějte na paměti, že když jsou komunikační služby k dispozici v několika geografických oblastech, aby bylo možné získat telefonní číslo, musí mít zdroj umístění dat nastavené na US. Všimněte si také, že během veřejné verze Preview nejde přenést prostředky komunikace do jiného předplatného.
@@ -43,9 +43,9 @@ Začněte s komunikačními službami Azure tím, že zřizujete první prostře
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Přístup k vašim připojovacím řetězcům a koncovým bodům služby
 
-Připojovací řetězce umožňují klientským knihovnám komunikačních služeb připojit se k Azure a ověřit je. K připojovacím řetězcům služby Communication Services a koncovým bodům služby můžete přistupovat z Azure Portal nebo programově pomocí rozhraní API Azure Resource Manager.
+Připojovací řetězce umožňují sady SDK komunikačních služeb připojit a ověřit v Azure. K připojovacím řetězcům služby Communication Services a koncovým bodům služby můžete přistupovat z Azure Portal nebo programově pomocí rozhraní API Azure Resource Manager.
 
-Po přechodu na prostředek služby Communication Services vyberte z navigační nabídky **klíče** a zkopírujte **připojovací řetězec** nebo hodnoty **koncového bodu** pro použití klientskými knihovnami komunikačních služeb. Všimněte si, že máte přístup k primárním a sekundárním klíčům. To může být užitečné ve scénářích, kdy byste chtěli poskytnout dočasný přístup k prostředkům komunikačních služeb třetí straně nebo přípravnému prostředí.
+Po přechodu na prostředek služby Communication Services vyberte z navigační nabídky **klíče** a zkopírujte **připojovací řetězec** nebo hodnoty **koncového bodu** pro použití sady SDK služby komunikace. Všimněte si, že máte přístup k primárním a sekundárním klíčům. To může být užitečné ve scénářích, kdy byste chtěli poskytnout dočasný přístup k prostředkům komunikačních služeb třetí straně nebo přípravnému prostředí.
 
 :::image type="content" source="./media/key.png" alt-text="Snímek stránky s klíčem komunikačních služeb":::
 
@@ -59,7 +59,7 @@ az communication list-key --name "<communicationName>" --resource-group "<resour
 
 ## <a name="store-your-connection-string"></a>Uložení připojovacího řetězce
 
-Klientské knihovny komunikačních služeb používají připojovací řetězce k autorizaci požadavků na komunikační služby. Máte několik možností pro uložení připojovacího řetězce:
+Sady SDK komunikačních služeb používají připojovací řetězce k autorizaci požadavků na komunikační služby. Máte několik možností pro uložení připojovacího řetězce:
 
 * Aplikace spuštěná na ploše nebo v zařízení může uložit připojovací řetězec do souboru **app.config** nebo **web.config** . Přidejte připojovací řetězec do oddílu **appSettings** v těchto souborech.
 * Aplikace spuštěná v Azure App Service může připojovací řetězec Uložit do [nastavení aplikace App Service](../../app-service/configure-common.md). Přidejte připojovací řetězec do části **připojovací řetězce** na kartě nastavení aplikace v rámci portálu.

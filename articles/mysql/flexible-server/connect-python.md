@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: připojení pomocí Pythonu-Azure Database for MySQL-flexibilního serveru'
 description: V tomto rychlém startu najdete několik ukázek kódu Pythonu, které můžete použít k připojení a dotazování dat z Azure Database for MySQL-flexibilního serveru.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: ff14bb1daeef6fc54ee5d11632ad98a29db2a172
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e99beb024690bf888d0acbb747e98252eced7e06
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90946838"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110130"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for MySQL-flexibilním serveru
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se připojíte k Azure Database for MySQL flexibilnímu 
 
 V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí Pythonu, ale začínáte pracovat s Azure Database for MySQL flexibilním serverem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Azure Database for MySQL flexibilní Server. Pokud chcete vytvořit flexibilní Server, přečtěte si téma [vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure Portal](./quickstart-create-server-portal.md) nebo [Vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure CLI](./quickstart-create-server-cli.md).

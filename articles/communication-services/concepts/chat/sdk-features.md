@@ -1,7 +1,7 @@
 ---
-title: Přehled klientské knihovny chatu pro komunikační služby Azure
+title: Přehled sady Chat SDK pro komunikační služby Azure
 titleSuffix: An Azure Communication Services concept document
-description: Přečtěte si o klientské knihovně konverzace ke službě Azure Communications Services.
+description: Přečtěte si o sadě Azure Communication Services Chat SDK.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,22 +9,22 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656103"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110810"
 ---
-# <a name="chat-client-library-overview"></a>Přehled klientských knihoven pro chat  
+# <a name="chat-sdk-overview"></a>Přehled sady Chat SDK 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Knihovny klienta služby Azure Communication Services slouží k přidávání bohatých konverzací v reálném čase do vašich aplikací.
+Sady SDK pro konverzační služby Azure Communication Services slouží k přidávání bohatých konverzací v reálném čase do vašich aplikací.
     
-## <a name="chat-client-library-capabilities"></a>Chat – možnosti klientské knihovny 
+## <a name="chat-sdk-capabilities"></a>Chat – možnosti sady SDK    
 
-Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici v klientských knihovnách služby Communications.  
+Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici v sadách SDK služby Communications chat.  
 
 | Skupina funkcí | Schopnost | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
@@ -51,13 +51,13 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 
 * * Proprietární balíček signalizace se implementuje pomocí webových soketů. V případě, že nejsou podporovány webové sokety, dojde k přechodu na dlouhé cyklické dotazování.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Podpora klientské knihovny JavaScript chatu podle operačního systému a prohlížeče 
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>Podpora sady JavaScript Chat SDK podle operačního systému a prohlížeče    
 
 Následující tabulka představuje sadu podporovaných prohlížečů a verzí, které jsou aktuálně k dispozici.
     
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | operační systém iPad|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Chat Client Library** | Firefox *, Chrome*, nový okraj | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Prohlížeče | Prohlížeče |
+| **Chat SDK** | Firefox *, Chrome*, nový okraj | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Prohlížeče | Prohlížeče |
 
 * Všimněte si, že nejnovější verze je podporovaná Kromě předchozích dvou verzí.<br/>   
 

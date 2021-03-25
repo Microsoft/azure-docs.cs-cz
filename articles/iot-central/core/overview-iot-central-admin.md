@@ -3,64 +3,86 @@ title: Příručka pro správce Azure IoT Central
 description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT. Tento článek poskytuje přehled role správce v IoT Central.
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 03/22/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.custom:
-- mvc
-- device-developer
-ms.openlocfilehash: 95bf9693916c20533455c76f1e137779bb81754c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.custom: mvc
+ms.openlocfilehash: 16a8aecae70d73399acb3878d7088e5086c053a1
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105039011"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110487"
 ---
 # <a name="iot-central-administrator-guide"></a>Příručka pro správce IoT Central
 
-Tento článek poskytuje přehled role správce v IoT Central. 
+*Tento článek se týká správců.*
 
-Pokud chcete získat přístup k části Správa a používat ji, musíte být v roli správce aplikace Azure IoT Central. Pokud vytvoříte aplikaci IoT Central pro Azure, automaticky se přiřadíte k roli správce této aplikace.
+IoT Central aplikace umožňuje monitorovat a spravovat miliony zařízení během jejich životního cyklu. Tato příručka je určena správcům, kteří spravují aplikace IoT Central.
 
-Jako _správce_ zodpovídáte za úlohy správy, jako například:
+V IoT Central správce:
 
-* Správa rolí
-* Oprávnění ke způsobu přístupu
-* Správa aplikace změnou názvu a adresy URL aplikace
-* Nahrávání obrázku
-* Odstranění aplikace v aplikaci Azure IoT Central.
+- Spravuje uživatele a role v aplikaci.
+- Spravuje zabezpečení, jako je ověřování zařízení.
+- Nakonfiguruje nastavení aplikace.
+- Upgraduje aplikace.
+- Exportuje a sdílí aplikace.
+- Monitoruje stav aplikace.
 
-## <a name="manage-application-settings"></a>Spravovat nastavení aplikace
-Máte možnost [Spravovat nastavení aplikace](howto-administer.md).
+## <a name="users-and-roles"></a>Uživatelé a role
 
-## <a name="manage-billing"></a>Správa vyúčtování
-Můžete [spravovat fakturaci služby Azure IoT Central](howto-view-bill.md). Svou aplikaci můžete přesunout od bezplatného cenového plánu ke standardnímu cenovému plánu a také upgradovat nebo downgradovat podle cenového plánu.
+IoT Central používá systém řízení přístupu založený na rolích ke správě uživatelských oprávnění v rámci aplikace. IoT Central má tři předdefinované role pro správce, sestavovatele řešení a operátory. Správce může vytvořit vlastní role s konkrétními sadami oprávnění. Správce zodpovídá za přidání uživatelů do aplikace a jejich přiřazení k rolím.
 
-## <a name="export-applications"></a>Exportovat aplikace
-[Aplikaci Azure IoT můžete exportovat](howto-use-app-templates.md) tak, abyste ji mohli znovu použít.
+Další informace najdete v tématu [Správa uživatelů a rolí v aplikaci IoT Central](howto-manage-users-roles.md).
 
-## <a name="manage-migration-between-versions"></a>Správa migrace mezi verzemi
-Při vytváření nové aplikace IoT Central se jedná o aplikaci v3. Pokud jste dříve vytvořili aplikaci, může být v závislosti na době jejího vytvoření v2. Můžete [migrovat v2 do aplikace V3](howto-migrate.md).
+## <a name="application-security"></a>Zabezpečení aplikací
+
+Zařízení, která se připojují k vaší IoT Central aplikaci, typicky jako přihlašovací údaje používají certifikáty X. 509 nebo sdílené přístupové podpisy (SAS). Správce spravuje certifikáty nebo klíče skupiny, z nichž jsou odvozena pověření zařízení.
+
+Další informace najdete v tématu [registrace skupiny X. 509](concepts-get-connected.md#x509-group-enrollment), [registrace skupiny SAS](concepts-get-connected.md#sas-group-enrollment)a [Postup při navádění certifikátů zařízení x. 509](how-to-roll-x509-certificates.md).
+
+Správce může také vytvořit a spravovat tokeny rozhraní API, které klientská aplikace používá k ověření pomocí aplikace IoT Central. Klientské aplikace používají REST API k interakci s IoT Central.
+
+## <a name="configure-an-application"></a>Konfigurace aplikace
+
+Správce může nakonfigurovat chování a vzhled aplikace IoT Central. Další informace najdete v následujících tématech:
+
+- [Změnit název a adresu URL aplikace](howto-administer.md#change-application-name-and-url)
+- [Přizpůsobení uživatelského rozhraní](howto-customize-ui.md)
+- [Přesunutí aplikace na jiné cenové tarify](howto-view-bill.md)
+- [Konfigurace nahrávání souborů](howto-configure-file-uploads.md)
+
+## <a name="export-an-application"></a>Export aplikace
+
+Správce může:
+
+- Pokud potřebujete pouze duplicitní kopii aplikace, vytvořte kopii aplikace. Například je možné, že budete potřebovat duplicitní kopii pro testování.
+- Pokud plánujete vytvořit více kopií, vytvořte šablonu aplikace z existující aplikace.
+
+Další informace najdete v tématu [Export aplikace Azure IoT](howto-use-app-templates.md).
+
+## <a name="migrate-to-a-new-version"></a>Migrovat na novou verzi
+
+Správce může migrovat aplikaci na novější verzi. Nově vytvořená aplikace je aktuálně aplikace v3. Správce může potřebovat migrovat aplikaci v2 do aplikace v3.
+
+Další informace najdete v tématu [migrace aplikace IoT Central v2 na V3](howto-migrate.md).
 
 ## <a name="monitor-application-health"></a>Monitorování stavu aplikace
-Můžete nastavit metriky poskytované IoT Central k [vyhodnocení stavu zařízení](howto-monitor-application-health.md) , která jsou připojena k vaší IoT Central aplikace a stavu spuštěných exportů dat.
 
-## <a name="manage-security-x509-sas-keys-api-tokens"></a>Správa zabezpečení (X. 509, klíče SAS, tokeny API)
-Jako _správce_ můžete provést následující akce:
-* Správa [certifikátů X. 509](how-to-roll-x509-certificates.md)
-* Obléčební [klíčů SAS](concepts-get-connected.md)
-* Zkontrolovat [tokeny rozhraní API](https://docs.microsoft.com/rest/api/iotcentral/)
+Správce může použít IoT Central metriky k vyhodnocení stavu připojených zařízení a stavu spouštění exportu dat.
 
-## <a name="configure-file-uploads"></a>Konfigurace nahrávání souborů
-Můžete nakonfigurovat způsob [nahrávání souborů](howto-configure-file-uploads.md) .
+Pokud chcete zobrazit metriky, může správce použít grafy v dotazech Azure Portal, REST API, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-## <a name="tools---azure-cli-azure-powershell-azure-portal"></a>Nástroje – Azure CLI, Azure PowerShell, Azure Portal
+Další informace najdete v tématu [monitorování celkového stavu aplikace IoT Central](howto-monitor-application-health.md).
 
-Tady jsou některé nástroje, ke kterým máte přístup jako _správce_.
-* [Azure CLI](howto-manage-iot-central-from-cli.md)
-* [Azure PowerShell](howto-manage-iot-central-from-powershell.md)
-* [Azure Portal](howto-manage-iot-central-from-portal.md)
+## <a name="tools"></a>nástroje
+
+Mnohé z nástrojů, které používáte jako správce, jsou k dispozici v části **Správa** každé aplikace IoT Central. K dokončení některých úloh správy můžete také použít následující nástroje:
+
+- [Azure CLI](howto-manage-iot-central-from-cli.md)
+- [Azure PowerShell](howto-manage-iot-central-from-powershell.md)
+- [Azure Portal](howto-manage-iot-central-from-portal.md)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ff322cb3633616e9004bc8fa25b048b6f1263008
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802144"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046330"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -18,7 +18,7 @@ Rozhraní příkazového řádku (CLI) Azure Service Fabric je nástroj příkaz
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před instalací se ujistěte, že je ve vašem prostředí nainstalovaný Python a pip. Další informace najdete v [úvodní dokumentaci nástroje pip](https://pip.pypa.io/en/latest/quickstart/) a oficiální [dokumentaci k instalaci Pythonu](https://wiki.python.org/moin/BeginnersGuide/Download).
 
@@ -58,11 +58,11 @@ Na své platformě můžete pip a Python nainstalovat mnoha způsoby. Tady je n�
 
 Ve Windows 10, Windows Server 2016 a Windows Server 2012 R2 použijte standardní oficiální pokyny k instalaci. Instalační program Pythonu ve výchozím nastavení nainstaluje také pip.
 
-1. Přejít na oficiální [stránku ke stažení v Pythonu](https://www.python.org/downloads/)a Stáhněte si nejnovější verzi pythonu 3,7.
+1. Přejít na oficiální [stránku ke stažení Pythonu](https://www.python.org/downloads/)a Stáhněte si nejnovější verzi Pythonu 3. x.
 
 2. Spusťte instalační program.
 
-3. V dolní části výzvy vyberte **Přidat Python 3,7 k cestě**.
+3. V dolní části výzvy vyberte **Přidat Python 3. x do cesty**.
 
 4. Vyberte **Install Now** (Nainstalovat) a dokončete instalaci.
 
@@ -118,8 +118,8 @@ sudo pip3 install sfctl
 Pokud chcete nainstalovat Service Fabric CLI v Red Hat, spusťte následující příkazy:
 
 ```bash
-sudo yum install -y python34
-sudo yum install python34-setuptools
+sudo yum install -y python38
+sudo yum install python38-setuptools
 sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
@@ -135,7 +135,7 @@ V systému MacOS doporučujeme použít [správce balíčků HomeBrew](https://b
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Pak z terminálu nainstalujte Python 3,7, PIP a Service Fabric CLI spuštěním následujících příkazů:
+Pak z terminálu nainstalujte nejnovější Python 3. x, PIP a Service Fabric CLI spuštěním následujících příkazů:
 
 ```bash
 brew install python3

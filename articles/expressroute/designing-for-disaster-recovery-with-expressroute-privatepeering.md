@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 05/25/2019
+ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202409"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044596"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
 ExpressRoute je navržená tak, aby poskytovala vysokou dostupnost k zajištění privátní síťové připojení k prostředkům Microsoftu. Jinými slovy, v ExpressRoute cestě v síti Microsoftu neexistuje jediný bod selhání. Pokyny k návrhu pro maximalizaci dostupnosti okruhu ExpressRoute najdete v tématu [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA].
 
-Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, může se* v tomto článku soustředit na řešení, která přesahují selhání, která se dají řešit pomocí jednoho okruhu ExpressRoute. Jinými slovy, v tomto článku se podíváme na požadavky architektury sítě, které vám pomůžou vytvářet robustní back-end síť pro zotavení po havárii pomocí geograficky redundantních okruhů ExpressRoute.
+Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, může se* v tomto článku soustředit na řešení, která přesahují selhání, která se dají řešit pomocí jednoho okruhu ExpressRoute. Při vytváření robustního připojení k síti back-endu pro zotavení po havárii pomocí geograficky redundantních okruhů ExpressRoute budeme brát v úvahu síťové architektury.
 
 >[!NOTE]
 >Koncepty popsané v tomto článku platí stejně, když je v rámci virtuální sítě WAN nebo mimo ni vytvořen okruh ExpressRoute.
@@ -26,9 +26,9 @@ Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, můž
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Nutné řešení redundantního připojení
 
-Existují možnosti a instance, ve kterých se snižuje výkon celé místní služby (to je to, že poskytovatelé Microsoftu, poskytovatelé síťových služeb, zákazníci nebo jiní poskytovatelé cloudových služeb). Hlavní příčina tohoto dopadu na regionální služby zahrnuje přirozené Calamity. Proto je pro zajištění kontinuity podnikových a důležitých aplikací důležité naplánovat zotavení po havárii.   
+Existují možnosti a instance, ve kterých se snižuje výkon celé místní služby (to je to, že poskytovatelé Microsoftu, poskytovatelé síťových služeb, zákazníci nebo jiní poskytovatelé cloudových služeb). Hlavní příčina tohoto dopadu na regionální služby zahrnuje přirozené Calamity. To je důvod, proč pro zajištění kontinuity podnikových a důležitých aplikací je důležité naplánovat zotavení po havárii.   
 
-Bez ohledu na to, jestli vaše nejdůležitější aplikace spouštíte v oblasti Azure nebo v místním prostředí nebo kdekoli jinde, můžete jako web pro převzetí služeb při selhání použít jinou oblast Azure. Následující články řeší zotavení po havárii z aplikací a perspektiv přístupu na front-end:
+Bez ohledu na to, jestli vaše nejdůležitější aplikace spouštíte v oblasti Azure nebo v místním prostředí nebo kdekoli jinde, můžete jako lokalitu pro převzetí služeb při selhání použít jinou oblast Azure. Následující články řeší zotavení po havárii z aplikací a perspektiv přístupu na front-end:
 
 - [Zotavení po havárii na podnikové úrovni][Enterprise DR]
 - [Zotavení po havárii SMB pomocí Azure Site Recovery][SMB DR]
@@ -37,9 +37,19 @@ Pokud jste se spoléhali na ExpressRoute konektivitu mezi vaší místní sítí
 
 ## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Výzvy k používání více okruhů ExpressRoute
 
-Při propojení stejné sady sítí pomocí více než jednoho připojení zavedete mezi sítě paralelní cesty. Paralelní směrování, pokud není správně navrženo, by mohlo vést k asymetrickému směrování. Pokud máte v cestě stavové entity (například NAT, firewall), může asymetrické směrování blokovat přenosový tok.  Obvykle se přes cestu soukromého partnerského vztahu ExpressRoute nepřijdete mezi stavové entity, jako jsou třeba NAT nebo brány firewall. Asymetrické směrování přes ExpressRoute privátní partnerské vztahy proto nutně neblokuje tok přenosů.
+Při propojení stejné sady sítí pomocí více než jednoho připojení zavedete mezi sítě paralelní cesty. Paralelní směrování, pokud není správně navrženo, by mohlo vést k asymetrickému směrování. Pokud máte v cestě stavové entity (například NAT, firewall), může asymetrické směrování blokovat přenosový tok.  Obvykle se přes cestu soukromého partnerského vztahu ExpressRoute nepřijdete mezi stavové entity, jako jsou třeba NAT nebo brány firewall. To je důvod, proč asymetrické směrování přes privátní partnerský vztah ExpressRoute nutně zablokuje přenosový tok.
  
-Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paralelních cest bez ohledu na to, jestli máte stavové entity, nebo ne, dojde k nekonzistentnímu výkonu sítě. V tomto článku se podíváme na to, jak tyto výzvy řešit.
+Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paralelních cest bez ohledu na to, jestli máte stavové entity, nebo ne, dojde k nekonzistentnímu výkonu sítě. Tyto geograficky redundantní cesty můžou být na stránce [poskytovatelé podle umístění](expressroute-locations-providers.md#partners) stejné nebo jiné Metro. 
+
+### <a name="same-metro"></a>Stejné Metro
+
+Při použití stejného Metro byste měli použít sekundární umístění pro druhou cestu, aby tato konfigurace fungovala. Příklad stejného typu Metro by byl *Amsterdam* a *Amsterdam2*. Výhodou výběru stejné Metro je, když dojde k převzetí služeb při selhání, koncová latence mezi vašimi místními aplikacemi a Microsoftem zůstane stejná. Pokud však dojde k přirozené havárii, připojení pro obě cesty již nemusí být k dispozici. 
+
+### <a name="different-metros"></a>Různé METROS
+
+Při použití různých METROS pro okruhy Standard SKU by mělo být sekundární umístění ve stejné [geografické oblasti](expressroute-locations-providers.md#locations). Pokud chcete vybrat umístění mimo geografickou politickou oblast, budete muset pro oba okruhy v paralelních cestách použít SKU úrovně Premium. Výhodou této konfigurace je pravděpodobnost, že výpadek na obě odkazy je mnohem nižší, ale za cenu zvýšení latence na konci.
+
+V tomto článku se podíváme na to, jak řešit problémy, které se můžou při konfiguraci geograficky redundantních cest stát.
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>Doporučení pro malé až střední požadavky na místní síť
 
@@ -100,13 +110,13 @@ Pokud budete chtít, aby Azure při použití některé z těchto postupů dáva
 
 ## <a name="large-distributed-enterprise-network"></a>Velká distribuovaná podniková síť
 
-Pokud máte rozsáhlou distribuovanou podnikovou síť, pravděpodobně budete mít více okruhů ExpressRoute. V této části se podíváme na návrh zotavení po havárii pomocí okruhů aktivní-aktivní ExpressRoute, aniž byste museli potřebovat další obvody. 
+Pokud máte rozsáhlou distribuovanou podnikovou síť, pravděpodobně budete mít více okruhů ExpressRoute. V této části se podívejme, jak navrhovat zotavení po havárii pomocí okruhů aktivní-aktivní ExpressRoute, aniž by bylo potřeba použít další okruhy. 
 
 Pojďme považovat příklad znázorněný v následujícím diagramu. V tomto příkladu má společnost Contoso dvě místní umístění připojená ke dvěma různým nasazením contoso IaaS ve dvou různých oblastech Azure prostřednictvím ExpressRoute okruhů ve dvou různých umístěních partnerských vztahů. 
 
 [![6]][6]
 
-Způsob, jakým architekt zotavení po havárii má vliv na směrování provozu mezi různými oblastmi (Region1/region2 a Location2/location1). Pojďme se považovat za dvě různé architektury havárií, které směrují provoz mezi oblastmi a různými oblastmi.
+Způsob, jakým architekt zotavení po havárii má vliv na směrování provozu mezi různými oblastmi (Region1/region2 až Location2/location1). Pojďme se považovat za dvě různé architektury havárií, které směrují provoz mezi oblastmi a různými oblastmi.
 
 ### <a name="scenario-1"></a>Scénář 1
 

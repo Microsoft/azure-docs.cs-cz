@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: e7f74298b8bf8209a6b1473880b33d64bd17cfd9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048081"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108090"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Rychlý Start: Přidání videa 1:1 pro volání do vaší aplikace (JavaScript)
 
@@ -33,9 +33,11 @@ Otevřete okno terminálu nebo příkazového řádku pro svoji aplikaci vytvoř
 mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>Instalace balíčku
-Pomocí `npm install` příkazu nainstalujte pro JavaScript službu Azure Communication Services volání klientské knihovny.
+Pomocí `npm install` příkazu nainstalujete službu Azure Communication Services, která volá sadu SDK pro JavaScript.
 
-Tento rychlý Start použil klientskou knihovnu volání komunikace Azure `1.0.0.beta-6` . 
+> [!IMPORTANT]
+> Tento rychlý Start používá službu Azure Communication Services pro volání verze sady SDK `1.0.0.beta-10` . 
+
 
 ```console
 npm install @azure/communication-common --save
@@ -105,7 +107,7 @@ Zde je kód:
 Vytvořte soubor v kořenovém adresáři vašeho projektu `client.js` s názvem, který bude obsahovat aplikační logiku pro tento rychlý Start. Přidejte následující kód pro import volajícího klienta a získejte odkazy na elementy modelu DOM.
 
 ```JavaScript
-import { CallClient, CallAgent, Renderer, LocalVideoStream } from "@azure/communication-calling";
+import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -124,18 +126,18 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
 | Název      | Description | 
 | :---        |    :----   |
-| CallClient  | CallClient je hlavní vstupní bod pro volání klientské knihovny.      |
+| CallClient  | CallClient je hlavní vstupní bod pro volání sady SDK.      |
 | CallAgent  | CallAgent se používá ke spouštění a správě volání.        |
 | DeviceManager | DeviceManager se používá ke správě mediálních zařízení.    |
 | AzureCommunicationTokenCredential | Třída AzureCommunicationTokenCredential implementuje rozhraní CommunicationTokenCredential, které se používá k vytvoření instance CallAgent.        |
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>Ověření klienta a přístup k DeviceManager
 
-Je třeba nahradit <USER_ACCESS_TOKEN> platným uživatelským tokenem přístupu pro váš prostředek. Pokud ještě nemáte k dispozici token, přečtěte si dokumentaci k tokenu uživatele. Pomocí CallClient inicializujte instanci CallAgent s CommunicationUserCredential, která nám umožní přijímat volání. Aby bylo možné získat přístup k DeviceManager, musí být nejprve vytvořena instance callAgent. Pak můžete použít `getDeviceManager` metodu na `CallClient` instanci a získat tak `DeviceManager` .
+Je třeba nahradit <USER_ACCESS_TOKEN> platným uživatelským tokenem přístupu pro váš prostředek. Pokud ještě nemáte k dispozici token, přečtěte si dokumentaci k tokenu uživatele. Pomocí rozhraní `CallClient` inicializujte `CallAgent` instanci s a, `CommunicationUserCredential` která nám umožní přijímat volání. Aby bylo možné získat přístup k `DeviceManager` instanci callAgent, je třeba nejprve vytvořit. Pak můžete použít `getDeviceManager` metodu na `CallClient` instanci a získat tak `DeviceManager` .
 
 Do souboru `client.js` přidejte následující kód:
 
@@ -154,7 +156,7 @@ init();
 
 Přidejte naslouchací proces události pro zahájení volání při kliknutí na `callButton` tlačítko:
 
-Nejdřív je potřeba vytvořit výčet místních fotoaparátů pomocí rozhraní deviceManager getCameraList API. V tomto rychlém startu používáme první kameru v kolekci. Po výběru požadované kamery bude instance LocalVideoStream vytvořena a předána v rámci videoOptions jako položka v rámci pole localVideoStream do metody volání. Po připojení se vaše volání automaticky spustí odeslání streamu videa druhému účastníkovi. 
+Nejdřív je potřeba vytvořit výčet místních fotoaparátů pomocí `getCameraList` rozhraní deviceManager API. V tomto rychlém startu používáme první kameru v kolekci. Po výběru požadované kamery bude instance LocalVideoStream vytvořená a předána do `videoOptions` jako položka v rámci pole LocalVideoStream do metody volání. Po připojení se vaše volání automaticky spustí odeslání streamu videa druhému účastníkovi. 
 
 ```JavaScript
 callButton.addEventListener("click", async () => {
@@ -179,40 +181,40 @@ callButton.addEventListener("click", async () => {
     callButton.disabled = true;
 });
 ```  
-Chcete-li vykreslit `LocalVideoStream` , je nutné vytvořit novou instanci `Renderer` a pak vytvořit novou instanci RendererView pomocí asynchronní `createView` metody. Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní. 
+Chcete-li vykreslit `LocalVideoStream` , je nutné vytvořit novou instanci `VideoStreamRenderer` a pak vytvořit novou `VideoStreamRendererView` instanci pomocí asynchronní `createView` metody. Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní. 
 
 ```JavaScript
 async function localVideoView() {
-    rendererLocal = new Renderer(localVideoStream);
+    rendererLocal = new VideoStreamRenderer(localVideoStream);
     const view = await rendererLocal.createView();
     document.getElementById("myVideo").appendChild(view.target);
 }
 ```
-Všichni vzdálení účastníci jsou k dispozici prostřednictvím `remoteParticipants` kolekce v instanci volání. Musíte se přihlásit k odběru vzdálených účastníků aktuálního volání a naslouchat události, `remoteParticipantsUpdated` aby se přihlásili k odběru přidaných vzdálených účastníků.
+Všichni vzdálení účastníci jsou k dispozici prostřednictvím `remoteParticipants` kolekce v instanci volání. Je nutné naslouchat události, `remoteParticipantsUpdated` která bude upozorněna na přidání nového účastníka do volání. Pro přihlášení k `remoteParticipants` odběru datových proudů videí je také nutné iterace kolekce opakovat. 
 
 ```JavaScript
 function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToRemoteParticipant(p);
-    })
     callInstance.on('remoteParticipantsUpdated', e => {
         e.added.forEach( p => {
-            subscribeToRemoteParticipant(p);
+            subscribeToParticipantVideoStreams(p);
         })
-    });   
+    }); 
+    callInstance.remoteParticipants.forEach( p => {
+        subscribeToParticipantVideoStreams(p);
+    })
 }
 ```
-Můžete se přihlásit k odběru `remoteParticipants` kolekce aktuálního volání a zkontrolovat `videoStreams` kolekce pro výpis datových proudů jednotlivých účastníků. Musíte se také přihlásit k odběru události remoteParticipantsUpdated, která bude zpracovávat přidané vzdálené účastníky. 
+Musíte se přihlásit k odběru `videoStreamsUpdated` události a zpracovávat přidané video streamy vzdálených účastníků. Můžete zkontrolovat `videoStreams` kolekce pro výpis datových proudů každého účastníka při přechodu do `remoteParticipants` kolekce aktuálního volání.
 
 ```JavaScript
-function subscribeToRemoteParticipant(remoteParticipant) {
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
+function subscribeToParticipantVideoStreams(remoteParticipant) {
     remoteParticipant.on('videoStreamsUpdated', e => {
         e.added.forEach(v => {
             handleVideoStream(v);
         })
+    });
+    remoteParticipant.videoStreams.forEach(v => {
+        handleVideoStream(v);
     });
 }
 ```
@@ -231,11 +233,11 @@ function handleVideoStream(remoteVideoStream) {
     }
 }
 ```
-Chcete-li vykreslit `RemoteVideoStream` , je nutné vytvořit novou instanci `Renderer` a pak vytvořit novou `RendererView` instanci pomocí asynchronní `createView` metody. Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní. 
+Chcete-li vykreslit `RemoteVideoStream` , je nutné vytvořit novou instanci `VideoStreamRenderer` a pak vytvořit novou `VideoStreamRendererView` instanci pomocí asynchronní `createView` metody. Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní. 
 
 ```JavaScript
 async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new Renderer(remoteVideoStream);
+    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
     const view = await rendererRemote.createView();
     document.getElementById("remoteVideo").appendChild(view.target);
 }
@@ -259,7 +261,7 @@ callAgent.on('incomingCall', async e => {
     const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
     call = addedCall;
 
-    subscribeToRemoteParticipantInCall(addedCall);   
+    subscribeToRemoteParticipantInCall(addedCall);  
 });
 ```
 ## <a name="end-the-current-call"></a>Ukončit aktuální volání
@@ -334,6 +336,8 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 ## <a name="next-steps"></a>Další kroky
 Další informace najdete v následujících článcích:
-- Podívejte se na [ukázku našeho webového volání](../../samples/web-calling-sample.md)
-- Další informace o [volání funkcí klientské knihovny](./calling-client-samples.md?pivots=platform-web)
-- Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)
+
+- Podívejte se na [ukázku našeho webového volání](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
+- Další informace o [volání funkcí sady SDK](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
+- Další informace o [volání funkce](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)
+

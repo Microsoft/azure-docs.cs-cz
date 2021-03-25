@@ -3,12 +3,12 @@ title: Práce s upozorněními na místní konzole pro správu
 description: Místní Konzola pro správu vám umožní získat přehled o nedávných hrozbách v síti a lépe pochopit, jak je uživatelé ze senzorů zpracovávají.
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a99c489c54b2671a463c0c3dad1909c74b4fa203
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 604650f0cb08eac4a3ab1cfd3fdcbf2e7ff0d19e
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781462"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032136"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Práce s upozorněními na místní konzole pro správu 
 
@@ -242,6 +242,7 @@ Pravidla, která vytvoříte pomocí rozhraní API, se zobrazí v okně **pravid
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Snímek obrazovky s zobrazením pro úpravy pravidla vyloučení":::
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-[Práce s výstrahami na senzoru](how-to-work-with-alerts-on-your-sensor.md)
+[Pracujte s výstrahami na senzoru](how-to-work-with-alerts-on-your-sensor.md).
+Přečtěte si téma [Defender for IoT Engine – výstrahy](alert-engine-messages.md).
