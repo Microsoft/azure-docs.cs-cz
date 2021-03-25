@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 7649f9c13db1a10bdb48d19f1019ec3b31244f45
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987686"
+ms.locfileid: "105105235"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -20,13 +20,13 @@ Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rych
 
 Případně si přečtěte [ukázku reakce](https://github.com/Azure-Samples/AzureSpeechReactSample) a Naučte se používat sadu Speech SDK v prostředí založeném na prohlížeči.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK pro Node.js. Pokud chcete jenom nainstalovat název balíčku, spusťte příkaz `npm install microsoft-cognitiveservices-speech-sdk` . Pokyny k instalaci najdete v článku [Začínáme](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript) .
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK pro Node.js. Pokud chcete jenom nainstalovat název balíčku, spusťte příkaz `npm install microsoft-cognitiveservices-speech-sdk` . Pokyny k instalaci najdete v článku [Začínáme](../../../quickstarts/setup-platform.md?pivots=programming-language-javascript&tabs=dotnet%2clinux%2cjre%2cnodejs) .
 
 `require`K importu sady SDK použijte následující příkaz.
 

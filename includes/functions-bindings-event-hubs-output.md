@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cdd8b42f3ef7530809c50925c631b7aa90ee213c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102623250"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105372"
 ---
 Použijte výstupní vazbu Event Hubs k zápisu událostí do datového proudu událostí. Musíte mít oprávnění k odesílání do centra událostí, abyste do něj události mohli zapisovat.
 
@@ -265,14 +265,14 @@ Pro výstupní vazbu centra událostí můžete použít následující typy par
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
 
 Odesílat zprávy pomocí parametru metody, jako je například `out string paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. Chcete-li zapsat více zpráv, můžete použít `ICollector<string>` nebo `IAsyncCollector<string>` místo `out string` .
 
 ### <a name="additional-types"></a>Další typy 
-Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -283,14 +283,14 @@ Pro výstupní vazbu centra událostí můžete použít následující typy par
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
 
 Odesílat zprávy pomocí parametru metody, jako je například `out string paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. Chcete-li zapsat více zpráv, můžete použít `ICollector<string>` nebo `IAsyncCollector<string>` místo `out string` .
 
 ### <a name="additional-types"></a>Další typy 
-Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

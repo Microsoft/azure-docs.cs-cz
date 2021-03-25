@@ -137,6 +137,8 @@
       href: fhir-faq.md
     - name: Podporované funkce
       href: fhir-features-supported.md
+    - name: Projekty GitHub
+      href: fhir-github-projects.md
     - name: Partnerský ekosystém
       href: partner-ecosystem.md
 - name: Referenční informace

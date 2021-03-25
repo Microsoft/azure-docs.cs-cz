@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 3132ec8fb3cb123653887d92a2f33788f40564c0
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023030"
+ms.locfileid: "105033819"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
@@ -136,7 +136,7 @@ Vytvoření definice exportu:
 
 1. Vyberte **Uložit**.
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Snímek obrazovky s definicí exportu dat":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Snímek obrazovky znázorňující definici exportu dat":::
 
 Než budete pokračovat, počkejte, než bude stav exportu v **pořádku** na stránce pro **Export dat** .
 
