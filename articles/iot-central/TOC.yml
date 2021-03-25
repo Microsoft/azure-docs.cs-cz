@@ -131,8 +131,8 @@
       href: core/concepts-architecture.md
     - name: Příručka pro vývojáře zařízení
       href: core/overview-iot-central-developer.md
-    - name: Průvodce tvůrcem řešení
-      href: core/overview-iot-central-solution-builder.md
+    - name: Příručka pro správce
+      href: core/overview-iot-central-admin.md
     - name: Průvodce operátorem
       href: core/overview-iot-central-operator.md
     - name: Co jsou šablony aplikací?

@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200937"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105501"
 ---
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online. Přejít do **brány cloudového úložiště > účty úložiště**.
 
@@ -35,4 +35,4 @@ ms.locfileid: "103200937"
 
     ![Přidat účet úložiště 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
-    Přístupové klíče získáte tak, že se [připojíte k místním rozhraním API zařízení pomocí Azure Resource Manager](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md). 
+    Přístupové klíče získáte tak, že se [připojíte k místním rozhraním API zařízení pomocí Azure Resource Manager](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).

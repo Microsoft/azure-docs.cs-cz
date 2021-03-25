@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7d756b53247206ab4dd4f955c954e6bd105afa1d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 16c3b59bcfa14cc02f13dadd726e0380d934598b
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778487"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023805"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Přehled posouzení (migrace na virtuální počítače Azure)
 
-Tento článek poskytuje přehled posouzení v [Azure Migrate: Server Discovery and Assessment](migrate-services-overview.md) Tool. Nástroj může posoudit místní servery v prostředí VMware Virtual a Hyper-V a fyzické servery pro migraci do Azure.
+Tento článek poskytuje přehled posouzení v nástroji [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool. Nástroj může posoudit místní servery v prostředí VMware Virtual a Hyper-V a fyzické servery pro migraci do Azure.
 
 ## <a name="whats-an-assessment"></a>Co je posouzení?
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e0125f14570e917b228c5f713e636335755581d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361756"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024264"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -26,12 +26,6 @@ Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pom�
 >[Web Azure Active Directory B2C Community na GitHubu](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) nabízí také ukázkové vlastní zásady z komunity.
 
 ## <a name="identity-verification-and-proofing"></a>Ověřování identity a kontrola pravopisu
-
-Díky Azure AD B2C partnerům můžou zákazníci povolit ověřování identity a kontrolu nad svými koncovými uživateli ještě předtím, než povolí registraci nebo přístup k účtu. Ověřování identity a kontrola pravopisu může kontrolovat dokument, informace o znalostní bázi a živý přehled.
-
-Diagram architektury vysoké úrovně vysvětluje tok.
-
-![Diagram znázorňující tok kontroly identity](./media/partner-gallery/third-party-identity-proofing.png)
 
 Partneři Microsoftu s následujícím nezávislým výrobcům softwaru pro ověřování identity a kontrolu.
 
