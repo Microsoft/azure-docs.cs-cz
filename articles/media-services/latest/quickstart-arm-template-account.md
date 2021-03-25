@@ -2,7 +2,7 @@
 title: Media Services šablona ARM účtu: Azure Media Services popis: v tomto článku se dozvíte, jak pomocí šablony ARM vytvořit účet Media Services.
 služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. Service: Media-Services MS. rebavování: MS. Subject: rychlý Start MS. Date: 11/24/2020 MS. Author: inhenkel MS. Custom: Subject-armqs
+MS. Service: Media-Services MS. rebavování: MS. Subject: rychlý Start MS. Date: 03/23/2021 MS. Author: inhenkel MS. Custom: Subject-armqs
 
 ---
 
@@ -18,10 +18,9 @@ V tomto článku se dozvíte, jak pomocí šablony Azure Resource Manager (šabl
 
 Čtenáři, kteří se setkali s šablonami ARM, můžou pokračovat v [oddílu nasazení](#deploy-the-template).
 
-<!-- this section will be added when the template is merged. If your environment meets the prerequisites and you're familiar with using ARM templates, select the **Deploy to Azure** button. The template will open in the Azure portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/<template's URI>)
--->
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-media-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,81 +30,16 @@ Pokud jste ještě nikdy nenainstalovali šablonu ARM, je vhodné si přečíst 
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-<!-- this will be added when the template is merged. The template used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/101-media-services-account-create/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-media-services-create/).
 
-The syntax for the JSON code fence is:
+Syntaxe pro ochranné kódy JSON je:
 
-:::code language="json" source="~/quickstart-templates/101-media-services-account-create/azuredeploy.json"::: -->
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mediaServiceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Media Services account. A Media Services account name is unique in a given region, all lowercase letters or numbers with no spaces."
-      }
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "name": "[parameters('mediaServiceName')]",
-      "type": "Microsoft.Media/mediaServices",
-      "apiVersion": "2018-07-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
-      ],
-      "properties": {
-        "storageAccounts": [
-          {
-            "id": "[resourceId('microsoft.storage/storageaccounts/', variables('storageName'))]",
-            "type": "Primary"
-          }
-        ]
-      }
-    },
-    {
-      "name": "[variables('storageName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "kind": "StorageV2",
-      "apiVersion": "2017-10-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-          "encryption": {
-              "services": {
-                  "file": {
-                      "enabled": true
-                  },
-                  "blob": {
-                      "enabled": true
-                  }
-              },
-              "keySource": "Microsoft.Storage"
-          },
-          "accessTier": "Hot"
-      }
-    }
-  ]
-}
-
-```
+:::code language="json" source="~/quickstart-templates/101-media-services-create/azuredeploy.json":::
 
 V šabloně jsou definovány tři typy prostředků Azure:
 
-- [Microsoft. Media/MediaServices](/azure/templates/microsoft.media/mediaservices): vytvoření účtu Media Services
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): vytvoření účtu úložiště
+- [Microsoft. Media/MediaServices](/azure/templates/microsoft.media/mediaservices): vytvoření účtu Media Services
 
 ## <a name="set-the-account"></a>Nastavení účtu
 

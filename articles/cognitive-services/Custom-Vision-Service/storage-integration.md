@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 2afac0e25c394c9bf265daf1fe3ded3d763a7c61
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: fd4ad1443f466a78abfc569d5f52f6bdeff2d5be
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508499"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048880"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrace úložiště Azure pro oznamování a zálohování
 
@@ -25,11 +25,11 @@ V této příručce se dozvíte, jak používat rozhraní REST API s kudrlinkou.
 > [!NOTE]
 > Nabízená oznámení závisí na volitelném parametru _notificationQueueUri_ v rozhraní **CreateProject** API a zálohy modelů vyžadují, abyste také použili volitelný parametr _exportModelContainerUri_ . Tato příručka bude používat pro celou sadu funkcí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Prostředek Custom Vision v Azure. Pokud ho nemáte, pokračujte na Azure Portal a [vytvořte nový prostředek Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Tato funkce v současné době nepodporuje prostředek služby pro rozpoznávání (vše v jednom klíči).
 - Účet Azure Storage s kontejnerem objektů BLOB. Pokud potřebujete s tímto krokem, postupujte podle [cvičení 1 Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) .
-* [PowerShell verze 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)nebo podobná aplikace příkazového řádku.
+* [PowerShell verze 6.0 +](/powershell/scripting/install/installing-powershell-core-on-windows)nebo podobná aplikace příkazového řádku.
 
 ## <a name="set-up-azure-storage-integration"></a>Nastavení integrace služby Azure Storage
 

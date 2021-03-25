@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108394"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047928"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Použití Azure API Management s mikroslužbami nasazenými ve službě Azure Kubernetes
 
@@ -95,7 +95,7 @@ Pokud chcete získat klíč předplatného pro přístup k rozhraním API, vyža
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>Možnost 3: nasazení APIM do virtuální sítě clusteru
 
-V některých případech mohou zákazníci, kteří mají regulativní omezení nebo přísné požadavky na zabezpečení, najít možnost 1 a 2 neživotaschopná řešení kvůli veřejně přístupným koncovým bodům. V ostatních případech se cluster AKS a aplikace, které využívají mikroslužby, můžou nacházet v rámci stejné virtuální sítě, proto není důvod zveřejnit cluster veřejně, protože veškerý provoz rozhraní API zůstane v rámci virtuální sítě. V těchto scénářích můžete nasadit API Management do virtuální sítě clusteru. [Úroveň Premium API Management](https://aka.ms/apimpricing) podporuje nasazení virtuální sítě. 
+V některých případech mohou zákazníci, kteří mají regulativní omezení nebo přísné požadavky na zabezpečení, najít možnost 1 a 2 neživotaschopná řešení kvůli veřejně přístupným koncovým bodům. V ostatních případech se cluster AKS a aplikace, které využívají mikroslužby, můžou nacházet v rámci stejné virtuální sítě, proto není důvod zveřejnit cluster veřejně, protože veškerý provoz rozhraní API zůstane v rámci virtuální sítě. V těchto scénářích můžete nasadit API Management do virtuální sítě clusteru. Nasazení virtuální sítě podporuje [API Management pro vývojáře a úrovně Premium](https://aka.ms/apimpricing) . 
 
 Existují dva způsoby [nasazení API Management do virtuální](./api-management-using-with-vnet.md) sítě – externí a interní. 
 

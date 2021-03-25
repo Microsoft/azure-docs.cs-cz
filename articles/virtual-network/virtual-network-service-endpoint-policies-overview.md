@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216644"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022258"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Zásady koncového bodu služby pro virtuální síť pro službu Azure Storage
 
@@ -109,6 +109,8 @@ Zásady koncových bodů služeb nepodporují centrální přihlašování. Prot
   - Ujistěte se, že účty nejsou **klasické účty úložiště** se zásadami koncového bodu služby v podsíti.
 - Spravovaná služba Azure po použití zásad koncového bodu služby v podsíti přestala pracovat.
   - V tuto chvíli se v zásadách koncového bodu služby nepodporují spravované služby. *Podívejte se na toto místo pro aktualizace*.
+- Přístup ke spravovaným účtům úložiště přestal po použití zásad koncového bodu služby v podsíti fungovat.
+  - Spravované účty úložiště nejsou u zásad koncového bodu služby podporované. V případě nakonfigurované zásady budou ve výchozím nastavení Odepřít přístup ke všem spravovaným účtům úložiště. Pokud vaše aplikace potřebuje přístup ke spravovaným účtům úložiště, neměly by se pro tento provoz používat zásady koncového bodu.
 
 ## <a name="provisioning"></a>Zřizování
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 56ef6563982c315d34cfeb87070b9ebfa3d27a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500423"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035689"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolování času pro příjem dat ve službě Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
@@ -81,8 +81,8 @@ Doba příjmu se může u různých prostředků v různých případech lišit.
 | Krok | Vlastnost nebo funkce | Komentáře |
 |:---|:---|:---|
 | Záznam vytvořený ve zdroji dat | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejný čas jako _TimeReceived. |
-| Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
-| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
+| Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](./log-standard-columns.md#_timereceived) | Toto pole není optimalizované pro hromadné zpracování a nemělo by se používat k filtrování velkých datových sad. |
+| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | Pokud je potřeba filtrovat jenom záznamy, které se v určitém časovém intervalu ingestují, doporučuje se použít ingestion_time (). V takovém případě doporučujeme přidat také filtr TimeGenerated s větším rozsahem. |
 
 ### <a name="ingestion-latency-delays"></a>Zpoždění latence přijímání
 Můžete změřit latenci konkrétního záznamu porovnáním výsledku funkce [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) s vlastností _TimeGenerated_ . Tato data je možné použít s různými agregacemi k nalezení, jak se latence příjmu chová. Prověřte si určitý percentil doby příjmu, abyste získali přehled o velkém množství dat. 

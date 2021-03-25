@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499216"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035638"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamické škálování prostředků databáze s minimálními výpadky
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,6 +60,9 @@ Azure SQL Managed instance umožňuje také škálovat:
 - [Spravovaná instance SQL](../managed-instance/sql-managed-instance-paas-overview.md) používá režim [virtuální jádra](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) a umožňuje definovat maximální počet jader procesoru a maximum úložiště přidělené vaší instanci. Všechny databáze v rámci spravované instance budou sdílet prostředky přidělené instanci.
 
 Při inicializaci akce horizontálního navýšení nebo snížení kapacity v některém z těchto možností se restartuje proces databázového stroje a v případě potřeby ho přesune na jiný virtuální počítač. Přesunutí procesu databázového stroje do nového virtuálního počítače je **online proces** , kde můžete dál používat existující službu Azure SQL Database, zatímco probíhá proces. Jakmile je cílový databázový stroj plně inicializovaný a připravený ke zpracování dotazů, budou připojení [přepnuta ze zdrojového do cílového databázového stroje](single-database-scale.md#impact).
+
+> [!NOTE]
+> Nedoporučuje se škálovat spravovanou instanci, pokud je spuštěná dlouhotrvající transakce, například import dat, úlohy zpracování dat, opětovné sestavení indexu atd., nebo pokud máte nějaké aktivní připojení k instanci. Chcete-li zabránit tomu, aby bylo škálování trvat déle než obvykle, měli byste škálovat instanci po dokončení všech dlouhotrvajících operací.
 
 > [!NOTE]
 > Po dokončení procesu horizontálního navýšení nebo snížení kapacity je možné očekávat krátké přerušení připojení. Pokud jste implementovali [logiku opakování pro standardní přechodné chyby](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors), nebudete si poznamenat převzetí služeb při selhání.

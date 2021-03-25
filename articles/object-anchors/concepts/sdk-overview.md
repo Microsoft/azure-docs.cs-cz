@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034604"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047537"
 ---
 # <a name="runtime-sdk-overview"></a>Přehled sady SDK modulu runtime
 
@@ -25,59 +25,59 @@ Všechny níže popsané typy lze nalézt v oboru názvů **Microsoft. MixedReal
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) představuje geometrii fyzických objektů a kóduje potřebné parametry pro detekci a odhad pozice. Musí být vytvořen pomocí [služby ukotvení objektů](../quickstarts/get-started-model-conversion.md). Aplikace pak může načíst vygenerovaný soubor modelu pomocí rozhraní API kotev objektu a zadat dotaz na síť vloženou v tomto modelu pro vizualizaci.
+[ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel) představuje geometrii fyzických objektů a kóduje potřebné parametry pro detekci a odhad pozice. Musí být vytvořen pomocí [služby ukotvení objektů](../quickstarts/get-started-model-conversion.md). Aplikace pak může načíst vygenerovaný soubor modelu pomocí rozhraní API kotev objektu a zadat dotaz na síť vloženou v tomto modelu pro vizualizaci.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
-[ObjectSearchArea](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) určuje místo pro hledání jednoho nebo více objektů. Je definovaný ID uzlu prostorového grafu a prostorové meze v systému souřadnic reprezentované ID uzlu prostorového grafu. Sada SDK ukotvení objektů podporuje čtyři typy hranic, konkrétně **pole pole zobrazení**, **ohraničujícího pole**, **koule** a **umístění**.
+[ObjectSearchArea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) určuje místo pro hledání jednoho nebo více objektů. Je definovaný ID uzlu prostorového grafu a prostorové meze v systému souřadnic reprezentované ID uzlu prostorového grafu. Sada SDK ukotvení objektů podporuje čtyři typy hranic, konkrétně **pole pole zobrazení**, **ohraničujícího pole**, **koule** a **umístění**.
 
 ### <a name="objectquery"></a>ObjectQuery
 
-[ObjectQuery](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery) oznamuje **pozorovateli objektu** , jak najít objekty daného modelu. Poskytuje následující parametry přizpůsobitelné, jejichž výchozí hodnoty lze načíst z objektového modelu.
+[ObjectQuery](/dotnet/api/microsoft.azure.objectanchors.objectquery) oznamuje **pozorovateli objektu** , jak najít objekty daného modelu. Poskytuje následující parametry přizpůsobitelné, jejichž výchozí hodnoty lze načíst z objektového modelu.
 
 #### <a name="minsurfacecoverage"></a>MinSurfaceCoverage
 
-Vlastnost [MinSurfaceCoverage](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) Určuje hodnotu, která je považována za zjištěnou instanci.
+Vlastnost [MinSurfaceCoverage](/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) Určuje hodnotu, která je považována za zjištěnou instanci.
 
 U každého kandidáta objektu **sleduje pozorovatel** poměr překrývajících se povrchů mezi transformovaným objektovým modelem a scénou a potom hlásí, že je kandidátem na aplikaci pouze v případě, že je poměr pokrytí nad danou prahovou hodnotou.
 
 #### <a name="isexpectedtobestandingongroundplane"></a>IsExpectedToBeStandingOnGroundPlane
 
-Vlastnost [IsExpectedToBeStandingOnGroundPlane](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) určuje, zda se očekává, že cílový objekt na rovině umělé země stojí.
+Vlastnost [IsExpectedToBeStandingOnGroundPlane](/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) určuje, zda se očekává, že cílový objekt na rovině umělé země stojí.
 
 Základní rovina je nejnižší vodorovná podlaha v oblasti hledání. Poskytuje dobré omezení u možného objektu. Zapnutí tohoto příznaku povede **pozorovatele** k odhadu pozice v omezeném prostoru a může zlepšit přesnost. Tento parametr bude ignorován, pokud model nemá být na rovině základní desky.
 
 #### <a name="expectedmaxverticalorientationindegrees"></a>ExpectedMaxVerticalOrientationInDegrees
 
-Vlastnost [ExpectedMaxVerticalOrientationInDegrees](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) označuje očekávaný maximální úhel ve stupních mezi směrem instance objektu a závažností.
+Vlastnost [ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) označuje očekávaný maximální úhel ve stupních mezi směrem instance objektu a závažností.
 
 Tento parametr poskytuje jiné omezení pro směr v případě odhadované pozice. Například pokud je objekt napravo vpravo, tento parametr může být 0. Kotvy objektů neslouží k detekci objektů, které se liší od modelu. Pokud je model napravo vpravo, nezjistí nezjištěnou instanci. Pro souběžné rozložení se použije nový model. Stejné pravidlo platí pro kloub.
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
-Vlastnost [MaxScaleChange](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) označuje maximální změnu měřítka objektu (v rozsahu 0 ~ 1) s ohledem na prostorové mapování. Odhadované měřítko se používá pro transformované vrcholy objektů zarovnané na střed na počátku a na osách zarovnané na ose. Odhadovaná měřítka nemusí být skutečnou škálou mezi modelem CAD a jeho fyzickou reprezentací, ale některé hodnoty, které aplikaci umožňují vykreslovat objekt modelu blízko prostorového mapování na fyzickém objektu.
+Vlastnost [MaxScaleChange](/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) označuje maximální změnu měřítka objektu (v rozsahu 0 ~ 1) s ohledem na prostorové mapování. Odhadované měřítko se používá pro transformované vrcholy objektů zarovnané na střed na počátku a na osách zarovnané na ose. Odhadovaná měřítka nemusí být skutečnou škálou mezi modelem CAD a jeho fyzickou reprezentací, ale některé hodnoty, které aplikaci umožňují vykreslovat objekt modelu blízko prostorového mapování na fyzickém objektu.
 
 #### <a name="searchareas"></a>SearchAreas
 
-Vlastnost [SearchAreas](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) označuje pole prostorových rozsahů, kde najít objekty.
+Vlastnost [SearchAreas](/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) označuje pole prostorových rozsahů, kde najít objekty.
 
 **Pozorovatel** bude hledat objekty v prostoru sjednocení všech oblastí hledání zadaných v dotazu. V této verzi vrátíme maximálně jeden objekt s nejvyšší jistotou, aby se snížila latence.
 
 ### <a name="objectinstance"></a>ObjectInstance
 
-[ObjectInstance](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectinstance) představuje hypotetickou polohu, kde může být instance daného modelu v systému souřadnic HoloLens. Každá instance obsahuje `SurfaceCoverage` vlastnost, která indikuje, jak dobrá je předpokládaná pozice.
+[ObjectInstance](/dotnet/api/microsoft.azure.objectanchors.objectinstance) představuje hypotetickou polohu, kde může být instance daného modelu v systému souřadnic HoloLens. Každá instance obsahuje `SurfaceCoverage` vlastnost, která indikuje, jak dobrá je předpokládaná pozice.
 
 Instance je vytvořena voláním `ObjectObserver.DetectAsync` metody a pak se automaticky aktualizuje na pozadí při připojení. Aplikace může naslouchat události změněné stavu na konkrétní instanci nebo změnit režim sledování pro pozastavení nebo obnovení aktualizace. Instance bude automaticky odebrána z **pozorovatele** , když dojde ke ztrátě sledování.
 
 ### <a name="objectobserver"></a>ObjectObserver
 
-[ObjectObserver](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectobserver) načítá objektové modely, detekuje jejich instance a sestavy 6 – DOF představuje každou instanci v systému souřadnic HoloLens.
+[ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver) načítá objektové modely, detekuje jejich instance a sestavy 6 – DOF představuje každou instanci v systému souřadnic HoloLens.
 
 I když se z **pozorovatele** vytvoří libovolný objektový model nebo instance, jejich životnost je nezávislá. Aplikace může odstranit pozorovatele a pokračovat v používání objektového modelu nebo instance.
 
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
-[ObjectDiagnosticSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) zaznamenává diagnostiku a zapisuje data do archivu.
+[ObjectDiagnosticSession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) zaznamenává diagnostiku a zapisuje data do archivu.
 
 Diagnostický archiv zahrnuje Cloud bodu scény, stav pozorovatele a informace o modelech. Tyto informace jsou užitečné k identifikaci možných potíží s modulem runtime. Další informace najdete v [nejčastějších dotazech](../faq.md).
 

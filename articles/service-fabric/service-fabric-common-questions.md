@@ -4,12 +4,12 @@ description: Nejčastější dotazy týkající se Service Fabric, včetně mož
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 4e03ccf432852a5fc9ee700ba0e39dfe2e64fcc9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 95463865c52ee501ceca22cae60d19a089236fd1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102456092"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048676"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
 
@@ -189,4 +189,4 @@ Další podrobnosti najdete na [blogu Service Fabric](https://techcommunity.micr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [základních Service Fabric konceptech](service-fabric-technical-overview.md) a [osvědčených postupech](service-fabric-best-practices-overview.md)
+Další informace o [základních Service Fabric konceptech](service-fabric-technical-overview.md) a [osvědčených postupech](./service-fabric-best-practices-security.md)
