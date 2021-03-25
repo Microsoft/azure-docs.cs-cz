@@ -10,16 +10,16 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 8262b0c9abc4911c1e5c039eb02920c18e7de90b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f71f394f190c5de1c3d64d02fd6113817ecda1ea
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104783541"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152776"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Skupina komunikačních služeb Azure, která **volá Hero Sample pro Android** , ukazuje, jak se komunikační služby volající klientské knihovny pro Android dají použít k sestavení skupinového volání, které zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
+Skupina komunikačních služeb Azure, která **volá Hero Sample pro Android** , ukazuje, jak lze pomocí komunikačních služeb volat Android SDK vytvořit skupinu volání, která zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
 
 ## <a name="download-code"></a>Stažení kódu
 
@@ -27,7 +27,7 @@ Vyhledá finální kód pro tento rychlý Start na [GitHubu](https://github.com/
 
 ## <a name="overview"></a>Přehled
 
-Ukázka je nativní aplikace pro Android, která používá klientské knihovny Azure Communications Services pro Android k sestavení volání, které umožňuje volání hlasu i videa. Aplikace používá serverovou komponentu ke zřízení přístupových tokenů, které se pak používají k inicializaci klientské knihovny Azure Communication Services. Pokud chcete tuto komponentu na straně serveru nakonfigurovat, využijte Azure Functions kurzu pro [důvěryhodnou službu](../../tutorials/trusted-service-tutorial.md) .
+Ukázka je nativní aplikace pro Android, která používá sady SDK služby Azure Communications Services k sestavování volání, které nabízí volání hlasu i audiovizuálního rozhraní. Aplikace používá serverovou komponentu ke zřízení přístupových tokenů, které se pak používají k inicializaci sady Azure Communication Services SDK. Pokud chcete tuto komponentu na straně serveru nakonfigurovat, využijte Azure Functions kurzu pro [důvěryhodnou službu](../../tutorials/trusted-service-tutorial.md) .
 
 Ukázka vypadá takto:
 
@@ -50,7 +50,7 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio) spuštěný ve vašem počítači
@@ -133,7 +133,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 Další informace najdete v následujících článcích:
 
-- Seznamte se s [použitím volání klientské knihovny](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- Seznámení s [používáním volání sady SDK](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>Další materiály ke čtení

@@ -4,25 +4,20 @@ description: Poskytuje souhrn nastavení podpory a omezení zálohování disku 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707213"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107274"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Matice podpory Azure disk Backup (ve verzi Preview)
-
->[!IMPORTANT]
->Služba Azure disk Backup je ve verzi Preview bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
+# <a name="azure-disk-backup-support-matrix"></a>Matice podpory pro zálohování disků Azure
 
 K ochraně disků Azure můžete použít [Azure Backup](./backup-overview.md) . Tento článek shrnuje dostupnost oblasti, podporované scénáře a omezení.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Azure disk Backup je k dispozici ve verzi Preview v následujících oblastech: Západní USA, Středozápadní USA, východní USA 2, Kanada Central, Velká Británie – západ, Švýcarsko – sever, Švýcarsko – západ, Austrálie – střed, Austrálie – střed 2, Korea – jih, USA – západ, Japonsko, Východní Asie, Spojené arabské emiráty sever, Brazílie – jih, Střed Indie. 
+Zálohování disku Azure je dostupné v těchto oblastech: Západní USA, Západní USA 2, Středozápadní USA, Východní USA, východní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Kanada – střed, Brazílie – jih, USA – sever, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Severní Evropa, Švýcarsko – sever, Švýcarsko – západ, Německo – středozápad, Francie – střed, Norsko – východ, Spojené arabské emiráty sever, Austrálie – střed, Austrálie – střed 2 , Austrálie – východ, Jižní Korea, Korea – jih, Japonsko – východ, Japonsko – západ, Východní Asie, jihovýchodní Asie, Střed Indie. 
 
 Další oblasti budou oznámeny, jakmile budou k dispozici.
 

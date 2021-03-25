@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048229"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044139"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -39,7 +39,7 @@ Pro sestavování dotazů Azure Monitor používá Azure Sentinel Log Analytics 
 
 Díky rostoucí galerii integrovaných playbooky se vytvoří automatizace v Azure Sentinel pomocí Azure Logic Apps. 
 
-Další informace najdete v tématu [Azure Logic Apps konektory](https://docs.microsoft.com/connectors/).
+Další informace najdete v tématu [Azure Logic Apps konektory](/connectors/).
 
 ## <a name="comment-on-our-blogs-and-forums"></a>Komentovat naše blogy a fóra
 
@@ -67,4 +67,3 @@ Stáhněte si ukázkový obsah z úložiště GitHub privátní komunity a vytv�
 
 > [!div class="nextstepaction"]
 > [Přečíst příběhy o případech použití zákazníků](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
-

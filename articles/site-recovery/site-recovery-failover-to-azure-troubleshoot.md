@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8fe21ce5b92d672a2e025e0b45b8cbaea5951a8b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92371983"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043899"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při přebírání služeb při selhání fyzického počítače nebo virtuálního počítače VMware do Azure
 
@@ -78,9 +78,9 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nepovedlo se připojit/RDP/SSH k virtuálnímu počítači převzetí služeb při selhání kvůli šedě připojenému tlačítku připojení na virtuálním počítači.
 
-Podrobné pokyny pro řešení potíží s protokolem RDP najdete v naší [dokumentaci.](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
+Podrobné pokyny pro řešení potíží s protokolem RDP najdete v naší [dokumentaci.](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)
 
-Podrobné pokyny k odstraňování potíží s SSH najdete v [naší dokumentaci.](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)
+Podrobné pokyny k odstraňování potíží s SSH najdete v [naší dokumentaci.](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 
 Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
@@ -94,7 +94,7 @@ Pokud se tlačítko **připojit** na virtuálním počítači služby převzít 
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Připojení/RDP/SSH – tlačítko připojit k virtuálnímu počítači není k dispozici
 
-Pokud je tlačítko **připojit** na virtuálním počítači služby při selhání v Azure k dispozici (není zobrazeno šedě), zkontrolujte **diagnostiku spouštění** na virtuálním počítači a zkontrolujte chyby, jak je uvedeno v [tomto článku](../virtual-machines/troubleshooting/boot-diagnostics.md).
+Pokud je tlačítko **připojit** na virtuálním počítači služby při selhání v Azure k dispozici (není zobrazeno šedě), zkontrolujte **diagnostiku spouštění** na virtuálním počítači a zkontrolujte chyby, jak je uvedeno v [tomto článku](/troubleshoot/azure/virtual-machines/boot-diagnostics).
 
 1. Pokud se virtuální počítač nespustil, zkuste provést převzetí služeb při selhání do staršího bodu obnovení.
 2. Pokud aplikace není ve virtuálním počítači funkční, zkuste provést převzetí služeb při selhání do bodu obnovení konzistentního vzhledem k aplikacím.
@@ -182,7 +182,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 
 ## <a name="next-steps"></a>Další kroky
-- Řešení potíží s [připojením RDP k virtuálnímu počítači s Windows](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
-- Řešení potíží s [připojením SSH k virtuálnímu počítači se systémem Linux](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)
+- Řešení potíží s [připojením RDP k virtuálnímu počítači s Windows](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)
+- Řešení potíží s [připojením SSH k virtuálnímu počítači se systémem Linux](/troubleshoot/azure/virtual-machines/detailed-troubleshoot-ssh-connection)
 
 Pokud potřebujete další nápovědu, odešlete dotaz do souboru [Microsoft Q&stránku s otázkou pro Site Recovery](/answers/topics/azure-site-recovery.html) nebo ponechte komentář na konci tohoto dokumentu. Máme aktivní komunitu, která vám může pomoct.

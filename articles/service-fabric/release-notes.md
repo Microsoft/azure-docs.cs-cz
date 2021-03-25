@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 38ec7949b5fc04852568e9e69f35f212b1edee5d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7f99c37cd9f029c7478d4102bd17c952ffd52f8c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201034"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044273"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -72,7 +72,7 @@ Také jsme publikovali aktualizace na konci data podpory pro hlavní verze od 6,
       -  Snižte celkové náklady (disky jsou bezplatné a neúčtují se žádné další náklady na úložiště).
 - Podpora pro deklaraci [**certifikátů koncového bodu služby Service Fabric aplikací podle běžného názvu subjektu**](./service-fabric-service-manifest-resources.md)
 - [**Podpora sond stavu pro kontejnerové služby**](./probes-codepackage.md): podpora mechanismu testování živých aplikací pro aplikace s podporou kontejnerů. Funkce sonda živého testu oznamuje živý kontejnerové aplikace a pokud neodpoví včas, bude mít za následek restartování. 
-- [**Podpora pro balíčky inicializačních kódů**](./initializer-codepackages.md) pro [kontejnery](/azure/service-fabric/service-fabric-containers-overview) a [spustitelné aplikace hosta](/azure/service-fabric/service-fabric-guest-executables-introduction) . To umožňuje spouštět balíčky kódu (např. kontejnery) v zadaném pořadí k provedení inicializace balíčku služby.
+- [**Podpora pro balíčky inicializačních kódů**](./initializer-codepackages.md) pro [kontejnery](./service-fabric-containers-overview.md) a [spustitelné aplikace hosta](./service-fabric-guest-executables-introduction.md) . To umožňuje spouštět balíčky kódu (např. kontejnery) v zadaném pořadí k provedení inicializace balíčku služby.
 - **FabricObserver a ClusterObserver** jsou bezstavové aplikace, které zachycují Service Fabric telemetrie související s různými aspekty v clusteru SF. Obě tyto aplikace jsou připravené pro nasazení do produkčních clusterů systému Windows za účelem zachycení bohatých telemetrie s implementovanou podporou pro ApplicationInsights, EventSource a LogAnalytics.
     - [**FabricObserver (FO) 2,0**](https://github.com/microsoft/service-fabric-observer)– běží na všech uzlech, vygeneruje události stavu, vygeneruje telemetrii, když se dosáhne uživatelem konfigurovaných prahových hodnot využití prostředků. Tato verze obsahuje několik vylepšení v rámci monitorování, správy dat, podrobností události stavu a strukturované telemetrie.
      - [**ClusterObserver (co) 1,1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) – spouští se na jednom uzlu, zachycuje telemetrii stavu na úrovni clusteru. V této verzi ClusterObserver také monitoruje stav uzlu a generuje telemetrii, pokud je uzel vypnutý/zakázán/zakázán po dobu delší než uživatelem zadané časové období.

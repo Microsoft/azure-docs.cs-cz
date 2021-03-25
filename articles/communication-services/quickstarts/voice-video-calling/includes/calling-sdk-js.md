@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9aaaece7d60ceead80e51bdc2a1bb342d9a4d237
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105263"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107715"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -18,12 +18,12 @@ ms.locfileid: "105105263"
 - Přístupový token uživatele pro povolení volajícího klienta. Další informace najdete v tématu [vytváření a Správa přístupových tokenů](../../access-tokens.md).
 - Volitelné: dokončete rychlé zprovoznění a [přidejte do své aplikace hlasové volání](../getting-started-with-calling.md).
 
-## <a name="install-the-client-library"></a>Instalace klientské knihovny
+## <a name="install-the-sdk"></a>Instalace sady SDK
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 6 volání klientské knihovny.
+> Tento dokument používá verzi 1.0.0-beta. 6 volání sady SDK.
 
-Pomocí `npm install` příkazu můžete nainstalovat volání služby Azure Communication Services a běžné klientské knihovny pro JavaScript.
+Pomocí `npm install` příkazu můžete nainstalovat volání a běžné sady SDK komunikačních služeb Azure pro JavaScript.
 Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 5 volání knihovny.
 
 ```console
@@ -34,11 +34,11 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
 | Název                             | Description                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CallClient`                      | Hlavní vstupní bod do volající klientské knihovny.                                                                       |
+| `CallClient`                      | Hlavní vstupní bod pro volání sady SDK.                                                                       |
 | `CallAgent`                        | Slouží ke spuštění a správě volání.                                                                                            |
 | `DeviceManager`                    | Používá se ke správě mediálních zařízení.                                                                                           |
 | `AzureCommunicationTokenCredential` | Implementuje `CommunicationTokenCredential` rozhraní, které se používá k vytvoření instance `callAgent` . |
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-a-call"></a>Umístit volání
 
-Chcete-li vytvořit a spustit volání, použijte jedno z rozhraní API v `callAgent` a zadejte uživatele, kterého jste vytvořili prostřednictvím klientské knihovny služby Communications identity.
+Chcete-li vytvořit a spustit volání, použijte jedno z rozhraní API v `callAgent` a zadejte uživatele, kterého jste vytvořili prostřednictvím sady SDK služby Communications identity.
 
 Vytvoření a spuštění volání jsou synchronní. Instance volání umožňuje přihlásit se k odběru událostí volání.
 

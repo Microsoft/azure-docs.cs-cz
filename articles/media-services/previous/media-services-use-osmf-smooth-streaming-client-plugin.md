@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70042a5c4c27ec5d163e5f05089ae50b92140c28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0969ffae7963d6a5f9ac249e43750444ab11baa
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011251"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036046"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework
 
@@ -59,7 +59,7 @@ Moduly plug-in OSMF lze načíst staticky (v době kompilace) nebo dynamicky (za
 * Statické načítání: pro statické načtení je vyžadován soubor statické knihovny (SWC). Statické moduly plug-in jsou přidány jako odkazy na projekty a sloučení v konečném výstupním souboru v době kompilace.
 * Dynamické načítání: pro dynamicky načtený soubor předkompilovaného (SWF) je povinný. Dynamické moduly plug-in jsou načteny do modulu runtime a nejsou zahrnuty do výstupu projektu. (Kompilovaný výstup) Dynamické moduly plug-in lze načíst pomocí protokolů HTTP a souborů.
 
-Další informace o statickém a dynamickém načítání najdete na stránce oficiálního [modulu plug-in OSMF](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+Další informace o statickém a dynamickém načítání najdete na stránce oficiálního [modulu plug-in OSMF](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm).
 
 ### <a name="ss-for-osmf-static-loading"></a>SS pro statické načtení OSMF
 Následující fragment kódu ukazuje, jak načíst modul plug-in SS pro OSMF staticky a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím SS pro kód OSMF Prosím zajistěte, aby odkaz na projekt zahrnoval statický modul plug-in MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC.
