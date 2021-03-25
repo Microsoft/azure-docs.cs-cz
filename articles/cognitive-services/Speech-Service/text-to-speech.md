@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: převod textu na řeč
-ms.openlocfilehash: 7722c9387e8d6475c6da4c771e9a0e355a4ac0af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42f81ce0f06b3782972dbf4322f0590763d8704
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654845"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026321"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -41,7 +41,10 @@ V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na 
 
 * Upravit styly speaking pomocí jazyka SSML-Speech syntézy (SSML) je značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Další informace najdete v tématu [postup](speech-synthesis-markup.md) pro úpravu stylu speaking.
 
-* Visemes- [visemes](how-to-speech-synthesis-viseme.md) jsou klíčovým výsledkem pozorovaného hlasu, včetně pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném. Visemes mají silnou korelaci s hlasy a fonémy. Pomocí událostí viseme v sadě Speech SDK můžete vygenerovat data animace obličeje, která se dají použít k animování plošek v oblasti komunikace, vzdělávání, zábavy a zákaznických služeb v sadě LIP. 
+* Visemes- [visemes](how-to-speech-synthesis-viseme.md) jsou klíčovým výsledkem pozorovaného hlasu, včetně pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném. Visemes mají silnou korelaci s hlasy a fonémy. Pomocí událostí viseme v sadě Speech SDK můžete vygenerovat data animace obličeje, která se dají použít k animování plošek v oblasti komunikace, vzdělávání, zábavy a zákaznických služeb v sadě LIP.
+
+> [!NOTE]
+> Viseme funguje pouze pro `en-US-AriaNeural` hlas v oblasti západní USA 2 ( `westus2` ) pro nyní.
 
 ## <a name="get-started"></a>Začínáme
 

@@ -3,12 +3,12 @@ title: Co je nového Poznámky k verzi – Azure Event Grid
 description: Přečtěte si, co je nového v Azure Event Grid, jako jsou například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96350003"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107529"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Co je nového v Azure Event Grid?
 
@@ -73,14 +73,14 @@ Azure Event Grid průběžně přijímá vylepšení. V tomto článku najdete i
 - Tato verze odpovídá `2019-06-01` verzi rozhraní API.
 - Přidává podporu k těmto novým funkcím:
     * [Domény](event-domains.md)
-    * Stránkování a vyhledávací filtr pro operace se seznamem prostředků Příklad najdete v tématu [témata – seznam podle předplatného](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription).
+    * Stránkování a vyhledávací filtr pro operace se seznamem prostředků Příklad najdete v tématu [témata – seznam podle předplatného](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
     * [Service Bus fronta jako cíl](handler-service-bus.md)
     * [Rozšířené filtrování](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0-Preview (2019-03)
 - Tato verze odpovídá verzi rozhraní API 2019-02-01-Preview.
 - Přidává podporu k těmto novým funkcím:
-    * Stránkování a vyhledávací filtr pro operace se seznamem prostředků Příklad najdete v tématu [témata – seznam podle předplatného](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription).
+    * Stránkování a vyhledávací filtr pro operace se seznamem prostředků Příklad najdete v tématu [témata – seznam podle předplatného](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
     * [Témata týkající se ručního vytvoření/odstranění domény](how-to-event-domains.md)
     * [Service Bus fronta jako cíl](handler-service-bus.md)
 

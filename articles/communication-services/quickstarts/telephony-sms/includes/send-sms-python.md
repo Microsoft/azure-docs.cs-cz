@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: b975b129f4384c09006a22b1ab124b1906a869d3
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104803233"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110329"
 ---
-Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications Pythonu SMS k posílání zpráv SMS.
+Začněte s komunikačními službami Azure pomocí komunikačních služeb Python SDK pro posílání zpráv SMS.
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)--> 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - [Python](https://www.python.org/downloads/) 2,7 nebo 3.6 +.
@@ -62,7 +62,7 @@ except Exception as ex:
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Stále v adresáři aplikace nainstalujte knihovnu klienta služby Azure Communications Services pro balíček python pomocí `pip install` příkazu.
+Ještě pořád v adresáři aplikace nainstalujte balíček Azure Communications Services SMS SDK pro Python pomocí `pip install` příkazu.
 
 ```console
 pip install azure-communication-sms --pre
@@ -70,25 +70,23 @@ pip install azure-communication-sms --pre
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro Python.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce sady SDK služby Azure Communications Services pro Python.
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS.                                                                                                                 |
 | SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte instanci **SmsClient** s připojovacím řetězcem. Následující kód načte připojovací řetězec pro prostředek z proměnné prostředí s názvem `COMMUNICATION_SERVICES_CONNECTION_STRING` . Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
+Vytvořte instanci **SmsClient** s připojovacím řetězcem. Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
 
 ```python
-# This code demonstrates how to fetch your connection string
-# from an environment variable.
-connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
-
 # Create the SmsClient object which will be used to send SMS messages
-sms_client = SmsClient.from_connection_string(connection_string)
+sms_client = SmsClient.from_connection_string(<connection_string>)
 ```
+Pro zjednodušení používáme připojovací řetězce v tomto rychlém startu, ale v produkčních prostředích doporučujeme používat [spravované identity](../../../quickstarts/managed-identity.md) , protože jsou bezpečnější a spravovatelné ve velkém měřítku.
+
 
 ## <a name="send-a-11-sms-message"></a>Poslat zprávu SMS 1:1
 
@@ -99,7 +97,7 @@ Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte ```send``` metodu z 
 # calling send() with sms values
 sms_responses = sms_client.send(
     from_="<from-phone-number>",
-    to="<to-phone-number>,
+    to="<to-phone-number>",
     message="Hello World via SMS",
     enable_delivery_report=True, # optional property
     tag="custom-tag") # optional property
@@ -107,6 +105,9 @@ sms_responses = sms_client.send(
 ```
 
 Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu. 
+
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 12223334444).
 
 ## <a name="send-a-1n-sms-message"></a>Odeslat zprávu o 1: N SMS
 
@@ -133,9 +134,31 @@ Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným ser
 `tag`Parametr je volitelný parametr, který lze použít ke konfiguraci vlastního označování.
 
 ## <a name="run-the-code"></a>Spuštění kódu
-
 Spusťte aplikaci z adresáře aplikace pomocí `python` příkazu.
 
 ```console
 python send-sms.py
+```
+
+Kompletní skript Pythonu by měl vypadat nějak takto:
+
+```python
+
+import os
+from azure.communication.sms import SmsClient
+
+try:
+    # Create the SmsClient object which will be used to send SMS messages
+    sms_client = SmsClient.from_connection_string("<connection string>")
+    # calling send() with sms values
+    sms_responses = sms_client.send(
+       from_="<from-phone-number>",
+       to="<to-phone-number>",
+       message="Hello World via SMS",
+       enable_delivery_report=True, # optional property
+       tag="custom-tag") # optional property
+
+except Exception as ex:
+    print('Exception:')
+    print(ex)
 ```

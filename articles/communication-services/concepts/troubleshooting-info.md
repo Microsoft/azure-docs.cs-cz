@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492689"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107223"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Řešení potíží v komunikačních službách Azure
 
@@ -33,11 +33,11 @@ Pro usnadnění odstraňování určitých typů problémů se může zobrazit v
 
 ## <a name="access-your-ms-cv-id"></a>Přístup k vašemu ID MS-CV
 
-K ID MS-CV je možné přistupovat při inicializaci diagnostiky v `clientOptions` instanci objektu při inicializaci klientských knihoven. Diagnostiku můžete nakonfigurovat pro kteroukoli z klientských knihoven Azure, včetně volání chat, identity a VoIP.
+K ID MS-CV se dá dostat při inicializaci diagnostiky v `clientOptions` instanci objektu při inicializaci sad SDK. Diagnostiku můžete nakonfigurovat pro kteroukoli sadu Azure SDK včetně konverzace, identity a volání VoIP.
 
 ### <a name="client-options-example"></a>Příklad možností klienta
 
-Následující fragmenty kódu ukazují konfiguraci diagnostiky. Pokud jsou klientské knihovny použity s povolenou diagnostikou, budou diagnostické informace generovány do nakonfigurovaného naslouchacího procesu událostí:
+Následující fragmenty kódu ukazují konfiguraci diagnostiky. Pokud jsou sady SDK použity s povolenou diagnostikou, budou diagnostické informace generovány do nakonfigurovaného naslouchacího procesu událostí:
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,7 +79,7 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Přístup k ID volání
 
-Při podání žádosti o podporu prostřednictvím Azure Portal souvisejícím s voláním problémů můžete být požádáni o zadání ID volání, na které odkazujete. K tomuto je možné přistupovat prostřednictvím volající klientské knihovny:
+Při podání žádosti o podporu prostřednictvím Azure Portal souvisejícím s voláním problémů můžete být požádáni o zadání ID volání, na které odkazujete. K tomuto je možné přistupovat prostřednictvím sady SDK volání:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
@@ -127,7 +127,7 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující kód lze použít ke konfiguraci `AzureLogger` pro výstup protokolů do konzoly pomocí klientské knihovny JavaScriptu:
+Následující kód lze použít ke konfiguraci `AzureLogger` pro výstup protokolů do konzoly pomocí sady JavaScript SDK:
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
@@ -157,16 +157,16 @@ V Android Studio přejděte do Průzkumníka souborů zařízení tak, že vyber
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>Volání klientských chybových kódů klientské knihovny
+## <a name="calling-sdk-error-codes"></a>Volání kódů chyb sady SDK
 
-Služba Azure Communication Services, která volá klientskou knihovnu, používá následující chybové kódy, které vám pomůžou vyřešit problémy s voláním. Tyto kódy chyb jsou zpřístupněny prostřednictvím `call.callEndReason` vlastnosti po ukončení volání.
+Služba Azure Communication Services pro volání sady SDK používá následující chybové kódy, které vám pomůžou při řešení problémů s voláním. Tyto kódy chyb jsou zpřístupněny prostřednictvím `call.callEndReason` vlastnosti po ukončení volání.
 
 | Kód chyby | Description | Akce, která se má provést |
 | -------- | ---------------| ---------------|
 | 403 | Zakázáno/ověřování se nezdařilo. | Ujistěte se, že token komunikačních služeb je platný a nevypršela jeho platnost. |
 | 404 | Volání nebylo nalezeno. | Ujistěte se, že počet volání (nebo volání, které se připojujete) existuje. |
 | 408 | Vypršel časový limit kontroleru volání. | Řadiči volání vypršel časový limit při čekání na zprávy protokolu z koncových bodů uživatele. Ujistěte se, že jsou klienti připojení a jsou k dispozici. |
-| 410 | Došlo k chybě místního zásobníku médií nebo mediální infrastruktury. | Ujistěte se, že používáte nejnovější klientskou knihovnu v podporovaném prostředí. |
+| 410 | Došlo k chybě místního zásobníku médií nebo mediální infrastruktury. | Ujistěte se, že používáte nejnovější sadu SDK v podporovaném prostředí. |
 | 430 | Nelze doručit zprávu do klientské aplikace. | Ujistěte se, že je klientská aplikace spuštěná a dostupná. |
 | 480 | Koncový bod vzdáleného klienta není zaregistrován. | Ujistěte se, že je vzdálený koncový bod k dispozici. |
 | 481 | Nepovedlo se zpracovat příchozí volání. | Zasouborujte žádost o podporu prostřednictvím Azure Portal. |

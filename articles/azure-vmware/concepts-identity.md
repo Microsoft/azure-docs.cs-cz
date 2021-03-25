@@ -3,12 +3,12 @@ title: Koncepty – identita a přístup
 description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: f3a79c79acef07721bd0883fa70c835bee14ef0d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799271"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026900"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
@@ -41,7 +41,7 @@ Můžete zobrazit oprávnění udělená roli CloudAdmin Azure VMware pro řeše
 
 Role CloudAdmin v řešení Azure VMware má následující oprávnění pro vCenter. Další podrobnosti najdete v [dokumentaci k produktu VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
 
-| Privilege | Popis |
+| Privilege | Description |
 | --------- | ----------- |
 | **Upozornění** | Potvrzení upozornění<br />Vytvořit alarm<br />Zakázat akci alarmu<br />Upravit alarm<br />Odebrat alarm<br />Nastavit stav alarmu |
 | **Knihovna obsahu** | Přidat položku knihovny<br />Vytvoření odběru publikované knihovny<br />Vytvořit místní knihovnu<br />Vytvořit předplacenou knihovnu<br />Odstranit položku knihovny<br />Odstranit místní knihovnu<br />Odstranit předplacenou knihovnu<br />Odstranění předplatného publikované knihovny<br />Stažení souborů<br />Vyřazení položek knihovny<br />Vyřazení odebírané knihovny<br />Import úložiště<br />Informace o předplatném testu<br />Publikování položky knihovny pro její předplatitele<br />Publikování knihovny pro své předplatitele<br />Čtení úložiště<br />Synchronizovat položku knihovny<br />Synchronizovat předplacenou knihovnu<br />Typ introspekce<br />Aktualizovat nastavení konfigurace<br />Soubory aktualizací<br />Aktualizovat knihovnu<br />Aktualizovat položku knihovny<br />Aktualizovat místní knihovnu<br />Aktualizace odebírané knihovny<br />Aktualizace předplatného publikované knihovny<br />Zobrazit nastavení konfigurace |
@@ -52,7 +52,7 @@ Role CloudAdmin v řešení Azure VMware má následující oprávnění pro vCe
 | **Hostitel** | vSphere replikace<br />&#160;&#160;&#160;&#160;spravovat replikaci |
 | **Síť** | Přiřadit síť |
 | **Oprávnění** | Upravit oprávnění<br />Upravit roli |
-| **Profilu** | Zobrazení úložiště řízené profilem |
+| **Profil** | Zobrazení úložiště řízené profilem |
 | **Prostředek** | Použít doporučení<br />Přiřazení vApp ke fondu zdrojů<br />Přiřadit virtuální počítač k fondu zdrojů<br />Vytvořit fond zdrojů<br />Migrace vypnutého virtuálního počítače<br />Migrace zapnutá na virtuálním počítači<br />Upravit fond zdrojů<br />Přesunout fond zdrojů<br />VMotion dotazu<br />Odebrat fond zdrojů<br />Přejmenovat fond zdrojů |
 | **Naplánovaná úloha** | Vytvořit úlohu<br />Upravit úlohu<br />Odebrat úlohu<br />Spustit úlohu |
 | **Relace** | Zpráva<br />Ověřit relaci |
@@ -101,11 +101,11 @@ Pro přístup ke Správci NSX-T použijte účet *správce* . Má úplná opráv
 
 Teď, když jste se seznámili s koncepty přístupu k řešení a identitou Azure VMware, se můžete seznámit s těmito informacemi:
 
-- [Koncepce upgradu privátního cloudu](concepts-upgrades.md).
-- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
-- [Podrobnosti o jednotlivých oprávněních](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
-- [Jak řešení Azure VMware monitoruje a opravuje privátní cloudy](concepts-monitor-repair-private-cloud.md).
-- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
+- [Koncepce upgradu privátního cloudu](concepts-upgrades.md)
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md)
+- [Podrobnosti o každém oprávnění](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+- [Jak řešení Azure VMware monitoruje a opravuje privátní cloudy](concepts-monitor-repair-private-cloud.md)
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md)
 
 
 <!-- LINKS - external-->

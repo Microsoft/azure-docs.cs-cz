@@ -1,17 +1,17 @@
 ---
 title: Konfigurace upozornění na metriku – Azure Portal-Azure Database for MySQL-flexibilní Server
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k výstrahám metrik pro Azure Database for MySQL flexibilní Server z Azure Portal.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 632aae766e6fd1328dc6e0135a88a942d7ad0910
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595792"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110147"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for MySQL-flexibilní Server 
 

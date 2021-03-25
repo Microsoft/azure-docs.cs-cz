@@ -10,14 +10,14 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 146053ffd72b24216bfa86577787727257da2516
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495382"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107004"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší.
@@ -48,7 +48,7 @@ Aktualizujte soubor POM vaší aplikace tak, aby používal jazyk Java 8 nebo no
 </properties>
 ```
 
-### <a name="add-the-package-references-for-the-chat-client-library"></a>Přidat odkazy na balíček pro klientskou knihovnu chatu
+### <a name="add-the-package-references-for-the-chat-sdk"></a>Přidat odkazy na balíček pro sadu Chat SDK
 
 V souboru POM se na balíček odkazuje `azure-communication-chat` pomocí rozhraní API pro chat:
 
@@ -72,7 +72,7 @@ Pro ověřování musí klient odkazovat na `azure-communication-common` balíč
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Scripting Client Library pro jazyk Java.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Chat SDK pro jazyk Java.
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -82,7 +82,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce služ
 | ChatThreadAsyncClient | Tato třída je potřebná pro funkci asynchronního zřetězení chatu. Získáte instanci prostřednictvím ChatAsyncClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, posílání oznámení a čtení. |
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
-Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. K předání tokenu klientovi konverzace je nutné použít třídu CommunicationTokenCredential ze společné klientské knihovny. 
+Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. Je nutné použít třídu CommunicationTokenCredential ze společné sady SDK k předání tokenu klientovi chatu. 
 
 Další informace o [architektuře chatu](../../../concepts/chat/concepts.md)
 

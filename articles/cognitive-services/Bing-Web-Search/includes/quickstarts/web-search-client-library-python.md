@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947531"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105689"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do vaší aplikace Python. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
@@ -21,9 +21,9 @@ Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledáván
 
 
 ## <a name="prerequisites"></a>Požadavky
-Sada SDK Bingu pro vyhledávání na webu je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6. Pro tento článek Rychlý start doporučujeme použít virtuální prostředí.
+Sada Vyhledávání na webu Bingu SDK je kompatibilní s Pythonem 2,7 nebo 3.6 +. Pro tento článek Rychlý start doporučujeme použít virtuální prostředí.
 
-* Python 2.7, 3.3, 3.4, 3.5 nebo 3.6
+* Python 2,7 nebo 3.6 +
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) pro Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) pro Python 3.x
 

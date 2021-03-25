@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: dd3596dd7b2cd01e80d9cf4db9bbc179048e7fcf
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573111"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035961"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -33,10 +33,7 @@ Pro tento kurz potřebujete:
 * Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT [(Stáhnout)](https://git-scm.com/downloads)
-* Unity, nejnovější verze 2019,3, doporučujeme k tomu použít centrum Unity [(Stáhnout)](https://unity3d.com/get-unity/download)
-  * Nainstalujte tyto moduly v Unity:
-    * Podpora **UWP** – Univerzální platforma Windows sestavení
-    * **IL2CPP** – podpora sestavení pro Windows (IL2CPP)
+* Unity (viz [požadavky na systém](../../../overview/system-requirements.md#unity) pro podporované verze)
 * Mezilehlé znalosti Unity a jazyka C# (například vytváření skriptů a objektů, použití prefabs, konfigurace událostí Unity atd.)
 
 ## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Zřízení instance služby Azure Remote rendering (ARR)

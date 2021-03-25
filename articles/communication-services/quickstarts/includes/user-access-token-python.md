@@ -10,14 +10,14 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 913f2bc5569dc9bdd058c38902ad0c99acee5d48
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 3ff31c5dd99e347805ad69018909137294d27c34
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104803443"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107115"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python](https://www.python.org/downloads/) 2,7 nebo 3.6 +.
@@ -49,7 +49,7 @@ ms.locfileid: "104803443"
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Stále v adresáři aplikace nainstalujte knihovnu klienta identity služby Azure Communications Services pro balíček python pomocí `pip install` příkazu.
+Ještě pořád v adresáři aplikace nainstalujte sadu Azure Communication Services identity SDK pro Python pomocí `pip install` příkazu.
 
 ```console
 pip install azure-communication-identity

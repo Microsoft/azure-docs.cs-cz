@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4bea0f6091c02f80e381217ab7894ec4ad90d0ed
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608902"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105138"
 ---
 Pomocí triggeru funkce můžete reagovat na událost odeslanou do datového proudu událostí centra událostí. K nastavení triggeru musíte mít přístup pro čtení k základnímu centru událostí. Když je funkce aktivována, zpráva předaná funkci je zapsána jako řetězec.
 
@@ -281,14 +281,14 @@ import azure.functions as func
 
 
 def main(event: func.EventHubEvent):
-    logging.info('Function triggered to process a message: ', event.get_body())
-    logging.info('  EnqueuedTimeUtc =', event.enqueued_time)
-    logging.info('  SequenceNumber =', event.sequence_number)
-    logging.info('  Offset =', event.offset)
+    logging.info(f'Function triggered to process a message: {event.get_body().decode()}')
+    logging.info(f'  EnqueuedTimeUtc = {event.enqueued_time}')
+    logging.info(f'  SequenceNumber = {event.sequence_number}')
+    logging.info(f'  Offset = {event.offset}')
 
     # Metadata
     for key in event.metadata:
-        logging.info(f'Metadata: {key} = ', event.metadata[key])
+        logging.info(f'Metadata: {key} = {event.metadata[key]}')
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -375,12 +375,12 @@ Pro spuštění centra událostí můžete použít následující typy parametr
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
 
 ### <a name="additional-types"></a>Další typy 
-Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -391,12 +391,12 @@ Pro spuštění centra událostí můžete použít následující typy parametr
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
 
 ### <a name="additional-types"></a>Další typy 
-Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="java"></a>[Java](#tab/java)
 

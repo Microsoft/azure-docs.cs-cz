@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: 1159736d59e15fa36c0feb7e5d5b5553953fb6b9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564507"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047775"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 
@@ -204,11 +204,11 @@ Síť Azure podporuje různé scénáře zabezpečeného vzdáleného přístupu
 
 ### <a name="azure-private-link"></a>Azure Private Link
 
-[Privátní odkaz Azure](https://azure.microsoft.com/services/private-link/) vám umožňuje přistupovat ke službám Azure PaaS (například Azure Storage a SQL Database) a soukromým zákaznickým/partnerským službám Azure ve vaší virtuální síti v rámci [privátního koncového bodu](https://docs.microsoft.com/azure/private-link/private-endpoint-overview). Nastavení a spotřeba pomocí privátního propojení Azure jsou konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered. Provoz z vaší virtuální sítě do služby Azure vždycky zůstane v síti Microsoft Azure páteřní sítě.
+[Privátní odkaz Azure](https://azure.microsoft.com/services/private-link/) vám umožňuje přistupovat ke službám Azure PaaS (například Azure Storage a SQL Database) a soukromým zákaznickým/partnerským službám Azure ve vaší virtuální síti v rámci [privátního koncového bodu](../../private-link/private-endpoint-overview.md). Nastavení a spotřeba pomocí privátního propojení Azure jsou konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered. Provoz z vaší virtuální sítě do služby Azure vždycky zůstane v síti Microsoft Azure páteřní sítě.
 
-[Soukromé koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) umožňují zabezpečit vaše důležité prostředky služeb Azure jenom na vaše virtuální sítě. Privátní koncový bod Azure používá privátní IP adresu z vaší virtuální sítě pro připojení soukromě a bezpečně ke službě využívající privátní propojení Azure, která službu efektivně přinášejí do vaší virtuální sítě. Vystavení virtuální sítě pro veřejný Internet již není nutné pro využívání služeb v Azure. 
+[Soukromé koncové body](../../private-link/private-endpoint-overview.md) umožňují zabezpečit vaše důležité prostředky služeb Azure jenom na vaše virtuální sítě. Privátní koncový bod Azure používá privátní IP adresu z vaší virtuální sítě pro připojení soukromě a bezpečně ke službě využívající privátní propojení Azure, která službu efektivně přinášejí do vaší virtuální sítě. Vystavení virtuální sítě pro veřejný Internet již není nutné pro využívání služeb v Azure. 
 
-Ve virtuální síti můžete také vytvořit vlastní službu privátního propojení. [Služba privátního propojení Azure](https://docs.microsoft.com/azure/private-link/private-link-service-overview) je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za Azure Standard Load Balancer, se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuálních sítí. Vaši zákazníci můžou vytvořit privátní koncový bod uvnitř své virtuální sítě a namapovat ho k této službě. Vystavení vaší služby pro veřejný Internet již není nutné pro vykreslování služeb v Azure. 
+Ve virtuální síti můžete také vytvořit vlastní službu privátního propojení. [Služba privátního propojení Azure](../../private-link/private-link-service-overview.md) je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za Azure Standard Load Balancer, se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuálních sítí. Vaši zákazníci můžou vytvořit privátní koncový bod uvnitř své virtuální sítě a namapovat ho k této službě. Vystavení vaší služby pro veřejný Internet již není nutné pro vykreslování služeb v Azure. 
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

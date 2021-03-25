@@ -1,17 +1,17 @@
 ---
 title: Správa virtuálních sítí – Azure Portal-Azure Database for MySQL-flexibilní Server
 description: Vytvoření a správa virtuálních sítí pro Azure Database for MySQL flexibilní Server pomocí Azure Portal
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4906ce9f562910f0a087cd25167457ec1fb301ec
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90935062"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109987"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Vytvoření a správa virtuálních sítí pro Azure Database for MySQL flexibilní Server pomocí Azure Portal
 
@@ -27,7 +27,7 @@ V tomto článku se zaměříme na vytvoření serveru MySQL s **privátním př
 
 Flexibilní server můžete nasadit do virtuální sítě a podsítě při vytváření serveru. Po nasazení flexibilního serveru ho nemůžete přesunout do jiné virtuální sítě ani podsítě ani pro něj nastavit *veřejný přístup (povolené IP adresy)* .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K vytvoření flexibilního serveru ve virtuální síti potřebujete:
 - [Virtuální síť](../../virtual-network/quick-create-portal.md#create-a-virtual-network)
     > [!Note]

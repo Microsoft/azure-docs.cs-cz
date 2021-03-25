@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095353"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106713"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý Start: V12 klientské knihovny Azure Blob Storage pro .NET
 
@@ -36,7 +36,7 @@ Další prostředky:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
@@ -164,7 +164,7 @@ Přidejte tento kód na konec `Main` metody:
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte dřív vytvořený objekt BLOB voláním metody [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) . Vzorový kód přidá příponu "stažený" do názvu souboru, aby bylo možné zobrazit oba soubory v místním systému souborů.
+Stáhněte dřív vytvořený objekt BLOB voláním metody [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) . Vzorový kód přidá příponu "stažený" do názvu souboru, aby bylo možné zobrazit oba soubory v místním systému souborů.
 
 Přidejte tento kód na konec `Main` metody:
 
