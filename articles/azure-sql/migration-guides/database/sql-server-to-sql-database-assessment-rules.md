@@ -1,5 +1,5 @@
 ---
-title: Pravidla vyhodnocení SQL Server pro SQL Database migraci
+title: Pravidla vyhodnocení SQL Server pro Azure SQL Database migraci
 description: Pravidla pro vyhodnocení k identifikaci problémů se zdrojovou instancí SQL Server, kterou je nutné vyřešit před migrací na Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: bf825572226bf5d7432fd3ad825f2f3a13355c53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054572"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027206"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-database-migration"></a>Pravidla vyhodnocení SQL Server pro SQL Database migraci
+# <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Pravidla vyhodnocení SQL Server pro Azure SQL Database migraci
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Nástroje pro migraci ověřují svou zdrojovou SQL Server instanci tak, že spustí několik pravidel vyhodnocení k identifikaci problémů, které je potřeba vyřešit před migrací databáze SQL Server do Azure SQL Database. 

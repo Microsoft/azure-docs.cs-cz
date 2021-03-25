@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 07828e7faff61086ea982b8017bc3c590e386be1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7aeaeeb07a0b08ae4a142ef147f25ae03c0daac2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445212"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027985"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Python. Pomocí těchto kroků nainstalujete balíček PiPy a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -74,7 +74,7 @@ Dále vytvořte proměnné pro umístění a klíč koncového bodu prostředku.
 
 Následující třídy zpracovávají některé hlavní funkce klientské knihovny Content Moderator Pythonu.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
@@ -347,12 +347,13 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+## <a name="source-code"></a>Zdrojový kód
+
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak pomocí Content Moderator knihovny Pythonu provádět úlohy moderování. V dalším kroku se dozvíte další informace o moderování imagí nebo jiných médií. Přečtěte si koncepční průvodce.
 
 > [!div class="nextstepaction"]
 >[Koncepty moderování obrázků](../../image-moderation-api.md)
-
-* [Co je Azure Content Moderator?](../../overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).
