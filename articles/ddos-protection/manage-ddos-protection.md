@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d0b2ccc0bf5d38e9a72bf780875d3b6f29733189
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100535228"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026747"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard
 
@@ -112,7 +112,7 @@ Své prostředky můžete uchovávat pro další kurz. Pokud už je nepotřebuje
 Zakázání ochrany DDoS pro virtuální síť: 
 
 1. Do **pole Hledat prostředky, služby a dokumenty** v horní části portálu zadejte název virtuální sítě, pro kterou chcete zakázat DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
-2. Vyberte **v části DDoS Protection Standard** možnost **Zakázat**.
+2. V části **DDoS Protection Standard** vyberte **Zakázat**.
 
 Pokud chcete odstranit plán DDoS Protection, musíte nejdřív z něj oddělit všechny virtuální sítě. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 996fa53aa105c0bcc27db7134c25d6d00e542a78
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90976498"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110283"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Odolnost a zotavení po havárii ve službě Azure Signal
 
@@ -44,13 +44,16 @@ Níže je diagram, který znázorňuje takovou topologii:
 
 ![Diagram zobrazuje dvě oblasti každý pomocí aplikačního serveru a služby signalizace, kde je každý server přidružený ke službě signalizace ve své oblasti jako primární a ke službě v jiné oblasti jako sekundární.](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurace aplikačních serverů s více instancemi služby signalizace
+## <a name="configure-multiple-signalr-service-instances"></a>Konfigurace více instancí služby signalizace
 
-Jakmile budete mít službu signalizace a aplikační servery vytvořené v každé oblasti, můžete nakonfigurovat aplikační servery tak, aby se připojovaly ke všem instancím služby signalizace.
+Na aplikačních serverech i Azure Functions jsou podporovány více instancí služby signalizace.
 
+Jakmile budete mít v jednotlivých oblastech službu signalizace a aplikační servery/Azure Functions vytvořené v každé oblasti, můžete nakonfigurovat aplikační servery/Azure Functions tak, aby se připojovaly ke všem instancím služby Signaler.
+
+### <a name="configure-on-app-servers"></a>Konfigurace na aplikačních serverech
 Můžete to provést dvěma způsoby:
 
-### <a name="through-config"></a>Prostřednictvím konfigurace
+#### <a name="through-config"></a>Prostřednictvím konfigurace
 
 Už byste měli znát, jak nastavit připojovací řetězec služby signalizace prostřednictvím proměnných prostředí/nastavení aplikace/Web. cofig v konfigurační položce s názvem `Azure:SignalR:ConnectionString` .
 Pokud máte více koncových bodů, můžete je nastavit v několika položkách konfigurace, každý v následujícím formátu:
@@ -62,7 +65,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 Tady `<name>` je název koncového bodu a `<role>` jeho role (primární nebo sekundární).
 Název je nepovinný, ale bude užitečný, pokud chcete dále přizpůsobit chování směrování mezi několika koncovými body.
 
-### <a name="through-code"></a>Prostřednictvím kódu
+#### <a name="through-code"></a>Prostřednictvím kódu
 
 Pokud upřednostňujete ukládání připojovacích řetězců jinam, můžete je také přečíst ve svém kódu a použít je jako parametry při volání `AddAzureSignalR()` (v ASP.NET Core) nebo `MapAzureSignalR()` (v ASP.NET).
 
@@ -93,6 +96,9 @@ Můžete nakonfigurovat několik primárních nebo sekundárních instancí. Pok
 
 1. Pokud existuje aspoň jedna primární instance online, vraťte náhodnou primární online instanci.
 2. Pokud jsou všechny primární instance mimo provoz, vrátí instanci náhodného sekundárního online instance.
+
+### <a name="configure-on-azure-functions"></a>Konfigurovat na Azure Functions
+Viz [Tento článek](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md#configuration-method).
 
 ## <a name="failover-sequence-and-best-practice"></a>Sekvence převzetí služeb při selhání a osvědčené postupy
 
@@ -137,3 +143,5 @@ Tyto případy budete muset zpracovávat na straně klienta, aby byly koncovým 
 V tomto článku jste se seznámili s postupem konfigurace aplikace pro zajištění odolnosti pro službu Signal. Chcete-li získat další podrobnosti o připojení serveru/klienta a směrování připojení ve službě Signaler, můžete si přečíst [Tento článek](signalr-concept-internals.md) pro interní služby signalizace.
 
 Pro scénáře škálování, jako je například horizontálního dělení, které používají více instancí společně pro zpracování velkého počtu připojení, si přečtěte, [Jak škálovat více instancí](signalr-howto-scale-multi-instances.md).
+
+Podrobnosti o tom, jak nakonfigurovat Azure Functions s více instancemi služby Signaler, najdete [v článku Podpora více instancí služby signalizace Azure v Azure Functions](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md).

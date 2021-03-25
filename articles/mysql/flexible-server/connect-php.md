@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: připojení pomocí PHP-Azure Database for MySQL-flexibilního serveru'
 description: V tomto rychlém startu najdete několik ukázek kódu PHP, které můžete použít k připojení a dotazování dat z Azure Database for MySQL-flexibilního serveru.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: baba4d373d4a79ab0c339aac00bb9ab48de9262b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545102"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109603"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for MySQL-flexibilním serveru
 
@@ -21,7 +21,7 @@ ms.locfileid: "92545102"
 
 Tento rychlý Start ukazuje, jak se připojit k Azure Database for MySQL flexibilnímu serveru pomocí aplikace [php](https://secure.php.net/manual/intro-whatis.php) . Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí PHP a začínáte pracovat s Azure Database for MySQL flexibilním serverem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 
 - [Vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure Portal](./quickstart-create-server-portal.md)

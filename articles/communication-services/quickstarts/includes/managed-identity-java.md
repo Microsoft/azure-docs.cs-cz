@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: f2e4bf603fa4cfb93c7ca51f64029ccaedcff727
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce575a67552c89b17ff4ed9b44ab43a4bd12d67f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103021863"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110721"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Přidání spravované identity do řešení komunikačních služeb (Java)
 
-### <a name="install-the-client-library-packages"></a>Instalace balíčků klientské knihovny
+### <a name="install-the-sdk-packages"></a>Instalace balíčků sady SDK
 V souboru pom.xml přidejte následující prvky závislosti do skupiny závislostí.
 
 ```xml
@@ -29,9 +29,9 @@ V souboru pom.xml přidejte následující prvky závislosti do skupiny závislo
 </dependency>
 ```
 
-### <a name="use-the-client-library-packages"></a>Použití balíčků klientské knihovny
+### <a name="use-the-sdk-packages"></a>Použití balíčků sady SDK
 
-Přidejte následující `import` direktivy do kódu, aby bylo možné použít klientské knihovny Azure identity a Azure Communications.
+Přidejte následující `import` direktivy do kódu, aby bylo možné používat sady Azure identity a sady Communications SDK.
 
 ```java
 import com.azure.communication.common.*;

@@ -6,16 +6,16 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e9069b5d43044ef0d0341717a12fcce7c4a72dc7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5ac4c53550468d33e9ed533303749d29e772d766
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104803956"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108467"
 ---
 V tomto rychlém startu se dozvíte, jak připojit týmy na schůzku pomocí knihovny Azure Communications Services pro Android.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio)pro vytváření aplikací pro Android.
@@ -34,7 +34,7 @@ V části telefon a tablet vyberte šablonu projektu "prázdná aktivita".
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu":::
 
-Pojmenujte projekt `TeamsEmbedAndroidGettingStarted` , nastavte jazyk na Java a vyberte minimální klientské knihovny "rozhraní API 21: Android 5,0 (Lupa)" nebo vyšší.
+Pojmenujte projekt `TeamsEmbedAndroidGettingStarted` , nastavte jazyk na Java a vyberte minimální sadu SDK "rozhraní API 21: Android 5,0 (Lupa)" nebo vyšší.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu 2":::
 
@@ -259,7 +259,7 @@ private void getAllPermissions() {
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce knihovny Azure Communications Services pro vložení:
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | MeetingUIClient| MeetingUIClient je hlavní vstupní bod do knihovny pro vkládání týmů. |
 | MeetingJoinOptions | MeetingJoinOptions se používají pro konfigurovatelné možnosti, jako je zobrazované jméno. |
@@ -299,7 +299,7 @@ public String fetchToken() {
 ## <a name="get-the-teams-meeting-link"></a>Získat odkaz na schůzku týmů
 
 Odkaz na schůzku týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true).
-Komunikační služby, které volají klientskou knihovnu, přijmou odkaz na schůzku s úplnými týmy. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) . můžete také získat požadované informace o schůzce z adresy URL **připojení ke schůzce** v rámci pozvánky na schůzku.
+Komunikační služby, které volá sadu SDK, přijímají úplný tým odkaz na schůzku. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) . můžete také získat požadované informace o schůzce z adresy URL **připojení ke schůzce** v rámci pozvánky na schůzku.
 
 ## <a name="start-a-meeting-using-the-meeting-client"></a>Spustit schůzku pomocí klienta schůzky
 

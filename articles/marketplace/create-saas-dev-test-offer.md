@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 58649e9a864e64ab5781cff3b663e190dac50cb6
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105050542"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110538"
 ---
 # <a name="create-a-test-offer"></a>Vytvoření nabídky testu
 
@@ -80,7 +80,7 @@ Pomocí nabídky pro vývoj můžete experimentovat s cenovými modely. Po ově�
 Nabídka pro vývoj by měla mít plány s nulovými nebo velmi nízkými cenami v plánech. V nabídce na VÝROBNÍm poli budou ceny, které chcete účtovat zákazníkům.
 
 > [!NOTE]
-> Informace, které by měl uživatel vyvšimnout i v případě, že skimmingPurchases ve verzi Preview bude zpracován pro nabídky vývoje i výroby. Pokud má nabídka cenu za cenu + 100/s, vaše společnost se vám bude účtovat $100. Pokud k tomu dojde, můžete otevřít [lístek podpory](support.md) a my vydáte vydaný výběr pro celou částku (a neuplatní se žádné poplatky za agenturu).
+> Nákupy provedené ve verzi Preview se zpracují pro nabídky pro vývoj i pro produkční účely. Pokud má nabídka cenu za cenu + 100/s, vaše společnost se vám bude účtovat $100. Pokud k tomu dojde, můžete otevřít [lístek podpory](support.md) a my vydáte vydaný výběr pro celou částku (a neuplatní se žádné poplatky za agenturu).
 
 #### <a name="pricing-model"></a>Cenový model
 

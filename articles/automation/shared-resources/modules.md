@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 57dfc388dcba926706a695c93d2afa1956432be8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503415"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953931"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
 
@@ -89,7 +89,7 @@ Azure Automation podporuje interní `Orchestrator.AssetManagement.Cmdlets` modul
 >[!NOTE]
 >Interní rutiny jsou dostupné, jenom když spouštíte Runbooky v prostředí Azure izolovaného prostoru (sandbox) nebo ve Windows Hybrid Runbook Worker. 
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -142,10 +142,10 @@ Import modulu AZ Module do účtu Automation neprovede automatický import modul
 
 * Když sada Runbook vyvolá rutinu z modulu.
 * Když sada Runbook importuje modul explicitně pomocí rutiny [Import-Module](/powershell/module/microsoft.powershell.core/import-module) .
-* Když sada Runbook importuje modul explicitně pomocí příkazu [using Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) . Příkaz using je podporován počínaje prostředím Windows PowerShell 5,0 a podporuje třídy a import typu výčtu.
+* Když sada Runbook importuje modul explicitně pomocí příkazu [using Module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) . Příkaz using je podporován počínaje prostředím Windows PowerShell 5,0 a podporuje třídy a import typu výčtu.
 * Když sada Runbook importuje jiný závislý modul.
 
-Do Azure Portal můžete importovat moduly AZ Modules. Nezapomeňte importovat jenom moduly AZ, které potřebujete, a ne celý modul AZ. Automation. Vzhledem k tomu, že [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) je závislost pro ostatní moduly AZ, nezapomeňte tento modul naimportovat před všemi ostatními.
+Z Azure Portal můžete importovat moduly AZ modules do účtu Automation. Nezapomeňte importovat pouze moduly AZ, které potřebujete, a ne všechny dostupné moduly AZ Module. Vzhledem k tomu, že [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) je závislost pro ostatní moduly AZ, nezapomeňte tento modul naimportovat před všemi ostatními.
 
 1. V účtu Automation v části **sdílené prostředky** vyberte **moduly**.
 2. Vyberte **Procházet galerii**.  

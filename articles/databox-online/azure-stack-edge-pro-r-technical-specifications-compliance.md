@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96466599"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109161"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge pro R – technické specifikace
 
@@ -26,7 +26,7 @@ Zařízení Azure Stack Edge pro R má následující specifikace pro výpočetn
 
 | Specifikace       | Hodnota                  |
 |---------------------|------------------------|
-| Procesor    | PROCESOR 2 X 10 Core, Intel Xeon stříbrné 4114 |
+| Procesor    | 2 X procesor Intel Xeon stříbrné 4114<br>20 phsyical jader (10 na procesor)<br>40 logických jader (vCPU) (20 na procesor)  |
 | Memory (Paměť)              | 256 GB RAM (2666 MT/s)     |
 
 

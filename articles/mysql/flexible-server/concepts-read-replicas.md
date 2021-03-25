@@ -1,17 +1,17 @@
 ---
 title: Čtení replik – Azure Database for MySQL-flexibilní Server
 description: 'Přečtěte si o replikách pro čtení v Azure Database for MySQL flexibilním serveru: vytváření replik, připojování k replikám, monitorování replikace a zastavení replikace.'
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e51b9667e3bb20a6bd463d3286888085a927f2c0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98251297"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109654"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Čtení replik v Azure Database for MySQL-flexibilním serveru
 

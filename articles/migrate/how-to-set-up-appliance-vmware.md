@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865226"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110504"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Nastavení zařízení pro servery v prostředí VMware
 
@@ -29,6 +29,7 @@ Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrat
 ## <a name="deploy-with-ova"></a>Nasazení pomocí vajíček
 
 K nastavení zařízení pomocí šablony vajíček:
+
 1. Zadejte název zařízení a vygenerujte klíč projektu na portálu.
 1. Stáhněte soubor šablony vajíček a naimportujte ho do vCenter Server. Ověřte, jestli je VAJÍČKa zabezpečená.
 1. Vytvořte virtuální počítač zařízení ze souboru s VAJÍČKy a ověřte, že se může připojit k Azure Migrate.
@@ -39,8 +40,8 @@ K nastavení zařízení pomocí šablony vajíček:
 1. V Azure Migrate **cíle migrace**  >    >  Vyberte **zjišťování a hodnocení**. 
 2. V možnosti **zjišťovat servery**  >  **jsou vaše servery virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
 3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování serverů v prostředí VMware. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťování.
-1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
+1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťování během vytváření prostředků.
+1. Po úspěšném vytvoření prostředků Azure se vygeneruje klíč projektu * *.
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
 ### <a name="2-download-the-ova-template"></a>2. Stáhněte si šablonu pro VAJÍČKu
@@ -101,7 +102,7 @@ Nastavte zařízení poprvé.
 1. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
 1. V části Configuration Manager > **nastavit požadavky** proveďte následující kroky:
    - **Připojení**: zařízení kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
-     - Klikněte na **nastavit proxy server** a zadejte adresu proxy serveru ve formuláři `http://ProxyIPAddress` nebo `http://ProxyFQDN` portu pro naslouchání.
+     - Klikněte na **instalační program proxy** a zadejte adresu proxy serveru ve formuláři `http://ProxyIPAddress` nebo `http://ProxyFQDN` portu pro naslouchání.
      - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
      - Podporuje se jen proxy protokolu HTTP.
      - Pokud jste přidali podrobnosti proxy serveru nebo zakážete proxy server nebo ověřování, kliknutím na **Uložit** spusťte kontrolu připojení znovu.
@@ -144,13 +145,13 @@ Zařízení se musí připojit k vCenter Server, aby bylo možné zjistit údaje
     - Chcete-li omezit obor zjišťování na konkrétní objekty VMware (vCenter Server datových center, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé servery), přečtěte si pokyny v [tomto článku](set-discovery-scope.md) a omezte účet používaný v Azure Migrate.
 1. V **kroku 2: zadejte vCenter Server podrobnosti**, klikněte na **Přidat zdroj zjišťování** , abyste v rozevíracím seznamu vybrali popisný název pro přihlašovací údaje, zadejte **IP adresu nebo plně kvalifikovaný název domény** vCenter Server. **Port** můžete ponechat výchozí (443) nebo zadejte vlastní port, na kterém vCenter Server naslouchá, a klikněte na **Uložit**.
 1. Po kliknutí na **Uložit** se zařízení pokusí ověřit připojení k vCenter Server s poskytnutými přihlašovacími údaji a zobrazit **stav ověření** v tabulce proti vCenter Server IP adrese nebo plně kvalifikovanému názvu domény.
-1. Můžete znovu **ověřit** připojení k vCenter Server kdykoli před zahájením zjišťování.
+1. Před zahájením zjišťování můžete vCenter Server kdykoli znovu **ověřit** připojení.
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="Panel 3 – Správce konfigurace zařízení pro podrobnosti o vCenter Server":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="Panel na zařízení – Správce konfigurace pro podrobnosti o vCenter Server":::
 
 ### <a name="provide-server-credentials"></a>Zadání přihlašovacích údajů serveru
 
-V **kroku 3: poskytnutí přihlašovacích údajů serveru pro inventarizaci softwaru, analýzu závislostí bez agentů a zjišťování SQL Server instancí a databází**, můžete buď zadat více přihlašovacích údajů serveru, nebo pokud tyto funkce nechcete využívat, můžete tento krok přeskočit a pokračovat v vCenter Server zjišťování. Svůj účel můžete kdykoli změnit později.
+V **kroku 3: poskytnutí přihlašovacích údajů serveru pro inventarizaci softwaru, analýzu závislostí bez agentů a zjišťování SQL Server instancí a databází**, můžete buď zadat více přihlašovacích údajů serveru, nebo pokud tyto funkce nechcete využívat, můžete tento krok přeskočit a pokračovat v vCenter Server zjišťování. Svůj záměr můžete změnit kdykoli později.
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 – Správce konfigurace zařízení pro podrobnosti o serveru":::
 
@@ -166,7 +167,7 @@ Pokud chcete tyto funkce využít, můžete zadat přihlašovací údaje serveru
 - Když kliknete na **Uložit** nebo **Přidat další**, zařízení ověří přihlašovací údaje domény s adresářovou službou Active Directory této domény pro svůj pravost. K tomu je potřeba zabránit jakémukoli uzamčení účtu, když zařízení provede více iterací k mapování přihlašovacích údajů na příslušné servery.
 - V tabulce přihlašovacích údajů můžete zobrazit **stav ověření** pro všechna pověření domény. Budou ověřeny pouze přihlašovací údaje domény.
 - Pokud se ověření nepovede, můžete kliknout na stav **selhání** a zobrazit tak chybu. po vyřešení problému klikněte na znovu **ověřit přihlašovací údaje** , aby se znovu ověřily neúspěšná pověření domény.
-
+    :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Panel 3 – Správce konfigurace zařízení pro poskytování více přihlašovacích údajů":::
 
 ### <a name="start-discovery"></a>Zahájení zjišťování
 
@@ -176,6 +177,7 @@ Pokud chcete tyto funkce využít, můžete zadat přihlašovací údaje serveru
 1. Během inventarizace softwaru budou přidané přihlašovací údaje k serverům iterovat na servery a ověřeny pro analýzu závislostí bez agentů. Pro servery z portálu můžete povolit analýzu závislostí bez agentů. Pro povolení analýzy závislostí bez agentů je možné vybrat pouze servery, na kterých je ověřování úspěšné.
 
 Zjišťování funguje následujícím způsobem:
+
 - Zobrazení inventáře zjištěných serverů na portálu trvá přibližně 15 minut.
 - Zjišťování nainstalovaných aplikací může nějakou dobu trvat. Doba trvání závisí na počtu zjištěných serverů. Pro servery 500 trvá trvat přibližně jednu hodinu, než se zjištěný inventář zobrazí na portálu Azure Migrate.
 - Po dokončení zjišťování serverů můžete na serverech na portálu povolit analýzu závislostí bez agentů.

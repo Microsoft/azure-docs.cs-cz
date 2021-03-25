@@ -1,7 +1,7 @@
 ---
 title: Spuštění, monitorování a zrušení školicích běhů v Pythonu
 titleSuffix: Azure Machine Learning
-description: Naučte se spouštět, nastavovat a spravovat experimenty ve službě Machine Learning pomocí Azure Machine Learning Python SDK.
+description: Naučte se spouštět, monitorovat a sledovat experimenty ve službě Machine Learning pomocí Azure Machine Learning Python SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,24 +12,24 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634759"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110266"
 ---
-# <a name="start-monitor-and-track-runs"></a>Spustit, monitorovat a sledovat spuštění 
+# <a name="start-monitor-and-track-run-history"></a>Spustit, sledovat a sledovat historii spuštění 
 
-[Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)a [Azure Machine Learning Studio](https://ml.azure.com) nabízí různé metody pro monitorování, organizování a správu vašich běhů pro školení a experimentování.
+[Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)a [Azure Machine Learning Studio](https://ml.azure.com) nabízí různé metody monitorování, uspořádání a sledování vašich běhů pro školení a experimentování. Historie spuštění ML je důležitou součástí vysvětlujícího a opakujícího se vývojového procesu ML.
 
-Tento článek ukazuje příklady následujících úloh:
+V tomto článku se dozvíte, jak provádět následující úlohy:
 
 * Monitorujte výkon spouštění.
 * Sledujte stav spuštění e-mailovým oznámením.
 * Označení a hledání spuštění.
 * Přidejte popis spuštění. 
-* Spusťte hledání. 
+* Spusťte hledání v historii spuštění. 
 * Zrušení nebo selhání spuštění.
 * Vytvoření podřízených spuštění.
  
@@ -38,7 +38,7 @@ Tento článek ukazuje příklady následujících úloh:
 > Pokud hledáte informace o monitorování služby Azure Machine Learning a přidružených služeb Azure, přečtěte si téma [jak monitorovat Azure Machine Learning](monitor-azure-machine-learning.md).
 > Pokud hledáte informace o modelech monitorování nasazených jako webové služby nebo IoT Edgech modulech, přečtěte si téma [shromáždění dat modelu](how-to-enable-data-collection.md) a [monitorování pomocí Application Insights](how-to-enable-app-insights.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat následující položky:
 
@@ -103,7 +103,7 @@ Budete potřebovat následující položky:
     
         Další informace najdete v tématu [AZ ml složka připojit](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
     
-    2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \* . RunConfig, pokud hledáte v systému souborů) s parametrem-c.
+    2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \* . RunConfig, pokud se díváte na systém souborů) s parametrem-c.
     
         ```azurecli-interactive
         az ml run submit-script -c sklearn -e testexperiment train.py
@@ -225,7 +225,7 @@ Budete potřebovat následující položky:
 
 Popis spuštění lze přidat ke spuštění a poskytnout tak více kontextu a informace ke spuštění. Můžete také vyhledat tyto popisy ze seznamu spuštění a přidat popis spuštění jako sloupec v seznamu spuštění. 
 
-Přejděte na stránku s **podrobnostmi o spuštění** pro svůj běh a výběrem ikony upravit nebo tužka přidejte, upravte nebo odstraňte popisy pro vaši práci. Chcete-li zachovat změny v seznamu spuštění, uložte změny do stávajícího vlastního zobrazení nebo do nového vlastního zobrazení. Pro popisy spuštění se podporuje formát Markdownu, který umožňuje vkládání a hloubkové propojování obrázků, jak vidíte níže.
+Přejděte na stránku s **podrobnostmi o spuštění** pro svůj běh a výběrem ikony upravit nebo tužka přidejte, upravte nebo odstraňte popisy pro vaši práci. Chcete-li zachovat změny v seznamu spuštění, uložte změny do stávajícího vlastního zobrazení nebo do nového vlastního zobrazení. Pro popisy spuštění se podporuje formát Markdownu, který umožňuje vkládání a hloubkové propojování obrázků, jak je vidět níže.
 
 :::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Snímek obrazovky: vytvoření popisu spuštění"::: 
 
@@ -405,9 +405,9 @@ Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte [`cre
 
 Podřízené běhy lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění. Nemůžete vytvořit podřízené spuštění bez nadřazeného prvku: i když nadřazený běh neprovede žádné akce, ale spustí podřízené spuštění, je stále nutné vytvořit hierarchii. Stavy všech spuštění jsou nezávislé: nadřazený stav může být v `"Completed"` úspěšném stavu i v případě, že jeden nebo více podřízených spuštění bylo zrušeno nebo selhalo.  
 
-Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Pro přizpůsobení podřízeného spuštění vytvořte `ScriptRunConfig` objekt pro podřízený běh. Níže uvedený kód provede následující:
+Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Pro přizpůsobení podřízeného spuštění vytvořte `ScriptRunConfig` objekt pro podřízený běh. Níže uvedený kód:
 
-- Načtěte výpočetní prostředek s názvem `"gpu-cluster"` z pracovního prostoru. `ws`
+- Načte výpočetní prostředek s názvem `"gpu-cluster"` z pracovního prostoru. `ws`
 - Iteruje přes různé hodnoty argumentů, které se mají předat podřízeným `ScriptRunConfig` objektům.
 - Vytvoří a odešle nové podřízené spuštění pomocí vlastního výpočetního prostředku a argumentu.
 - Blokuje až do dokončení všech podřízených spuštění.
@@ -455,7 +455,7 @@ print(parent_run.get_children())
 
 ### <a name="log-to-parent-or-root-run"></a>Přihlášení k nadřazenému nebo kořenovému spuštění
 
-Pole můžete použít `Run.parent` pro přístup ke spuštění, které spustilo aktuální podřízené spuštění. Běžný případ použití je v případě, že chcete konsolidovat výsledky protokolu na jednom místě. Všimněte si, že podřízené běhy se spouštějí asynchronně a není nijak zaručeno řazení a synchronizace nad rámec možnosti nadřazeného objektu, aby čekal na dokončení jeho podřízených běhů.
+Pole můžete použít `Run.parent` pro přístup ke spuštění, které spustilo aktuální podřízené spuštění. Běžným případem použití `Run.parent` je kombinace výsledků protokolu na jednom místě. Všimněte si, že podřízené běhy se spouštějí asynchronně a není nijak zaručeno řazení a synchronizace nad rámec možnosti nadřazeného objektu, aby čekal na dokončení jeho podřízených běhů.
 
 ```python
 # in child (or even grandchild) run

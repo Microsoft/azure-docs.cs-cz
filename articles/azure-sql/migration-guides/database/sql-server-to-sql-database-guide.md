@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server SQL Database: Průvodce migrací'
+title: 'SQL Server Azure SQL Database: Průvodce migrací'
 description: Podle tohoto průvodce migrujte databáze SQL Server do Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce155015373a096595dc61d75c876633e2e4f00a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563840"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027184"
 ---
-# <a name="migration-guide-sql-server-to-sql-database"></a>Průvodce migrací: SQL Server SQL Database
+# <a name="migration-guide-sql-server-to-azure-sql-database"></a>Průvodce migrací: SQL Server Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Tato příručka vám pomůže s migrací instance SQL Server do Azure SQL Database. 
@@ -30,17 +30,19 @@ Můžete migrovat SQL Server spuštěná místně nebo na:
 - Výpočetní modul (Google Cloud Platform – GCP)  
 - Cloud SQL pro SQL Server (Google Cloud Platform – GCP) 
 
-Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-sql-database-overview.md). Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
+Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-sql-database-overview.md). Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Chcete-li migrovat SQL Server do Azure SQL Database, ujistěte se, že máte následující požadavky: 
 
-- Zvolená [Metoda migrace](sql-server-to-sql-database-overview.md#compare-migration-options) a odpovídající nástroje 
-- [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) nainstalovaný na počítači, který se může připojit ke svému zdrojovému SQL Server
-- Cílový [Azure SQL Database](../../database/single-database-create-quickstart.md)
+- Zvolená [Metoda migrace](sql-server-to-sql-database-overview.md#compare-migration-options) a odpovídající nástroje.
+- [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) nainstalovaný na počítači, který se může připojit ke zdrojovému SQL Server.
+- Cílový [Azure SQL Database](../../database/single-database-create-quickstart.md). 
+- Připojení a správná oprávnění pro přístup ke zdroji i cíli. 
+
 
 
 ## <a name="pre-migration"></a>Před migrací

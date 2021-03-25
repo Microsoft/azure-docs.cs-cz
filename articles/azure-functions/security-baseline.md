@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4fd53067309f83b284da25040f9f6534936cead9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f19e25e01e0c5fcdb5b2aa4db29ebe29fd7b5e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704633"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025386"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -72,7 +72,7 @@ Kromě toho zajistěte, aby bylo vzdálené ladění pro produkční Azure Funct
 
 Zvažte nasazení brány firewall webových aplikací (WAF) Azure jako součást konfigurace sítě pro další kontrolu příchozího provozu. Povolte nastavení diagnostiky pro protokoly WAF a ingestování do účtu úložiště, centra událostí nebo Log Analytics pracovního prostoru. 
 
-- [Postup zabezpečení Azure Functionsch koncových bodů v produkčním prostředí](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Postup zabezpečení Azure Functionsch koncových bodů v produkčním prostředí](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Jak nasadit Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -132,7 +132,7 @@ Alternativně je k dispozici několik možností Marketplace, jako je napříkla
 
 - [Použití privátních koncových bodů pro Azure Functions](../app-service/networking/private-endpoint.md)
 
-- [Principy cloudové služby Barracuda WAF](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Principy cloudové služby Barracuda WAF](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Odpovědnost:** Zákazník
 
@@ -208,9 +208,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny nastavení sítě a prostředků souvisejících s nasazeními Azure Functions. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když dojde ke změně kritických nastavení sítě nebo prostředků. 
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -230,7 +230,7 @@ Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámc
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo do řešení pro správu událostí a informací o systému třetích stran. 
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Jak nastavit Azure Functions s využitím Azure Application Insights](functions-monitoring.md)
 
@@ -248,7 +248,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo do řešení
 
 Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámci aplikace Function App, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. 
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Jak povolit nastavení diagnostiky (uživatelem vygenerované protokoly) pro Azure Functions](functions-monitor-log-analytics.md)
 
@@ -272,7 +272,7 @@ Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámc
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim aplikacím funkcí podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -288,7 +288,7 @@ Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámc
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo do řešení pro správu událostí a informací o systému třetích stran.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Postup povolení nastavení diagnostiky pro Azure Functions](functions-monitor-log-analytics.md)
 
@@ -308,11 +308,11 @@ Povolte Application Insights pro aplikace Function App, abyste mohli shromažďo
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo do řešení pro správu událostí a informací o systému třetích stran.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Postup povolení nastavení diagnostiky pro Azure Functions](functions-monitor-log-analytics.md)
 
-- [Postup povolení Application Insights pro Azure Functions](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#enable-application-insights-integration)
+- [Postup povolení Application Insights pro Azure Functions](./configure-monitoring.md#enable-application-insights-integration)
 
 **Odpovědnost:** Zákazník
 
@@ -326,9 +326,9 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo do řešení
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Odpovědnost:** Zákazník
 
@@ -342,9 +342,9 @@ Přístup k rovině dat je možné ovládat několika způsoby, včetně autoriz
 
 Pro aplikace Function App je k dispozici více metod nasazení. některé z nich mohou využívat sadu generovaných přihlašovacích údajů. Zkontrolujte metody nasazení, které budou použity pro vaši aplikaci.
 
-- [Zabezpečení koncového bodu HTTP](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Zabezpečení koncového bodu HTTP](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [Jak získat a znovu vygenerovat autorizační klíče](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#obtaining-keys)
+- [Jak získat a znovu vygenerovat autorizační klíče](./functions-bindings-http-webhook-trigger.md?tabs=csharp#obtaining-keys)
 
 - [Technologie nasazení v Azure Functions](functions-deployment-technologies.md)
 
@@ -378,7 +378,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 **Doprovodné** materiály: kdykoli je to možné, použijte službu Azure Active Directory (Azure AD) SSO, ale nekonfigurujte jednotlivé samostatné přihlašovací údaje pro přístup k datům do aplikace Function App. Použijte Azure Security Center doporučení pro správu identit a přístupu. K implementaci jednotného přihlašování pro aplikace Functions použijte funkci App Service ověřování/autorizace.
 
-- [Pochopení ověřování a autorizace v Azure Functions](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Pochopení ověřování a autorizace v Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
 - [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -450,7 +450,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -468,7 +468,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 - [Jak nakonfigurovat aplikaci Function App, aby používala přihlášení k Azure AD](../app-service/configure-authentication-provider-aad.md)
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -532,7 +532,7 @@ K izolaci sítě můžete použít také soukromé koncové body. Privátní kon
 
 **Pokyny**: v Azure Portal pro aplikace Function App klikněte v části funkce platformy: sítě: SSL na Povolit nastavení pouze https a nastavte minimální verzi TLS na 1,2.
 
-- [Vyžadovat protokol HTTPS u aplikací Function App](https://docs.microsoft.com/azure/azure-functions/security-concepts#require-https)
+- [Vyžadovat protokol HTTPS u aplikací Function App](./security-concepts.md#require-https)
 
 **Odpovědnost:** Zákazník
 
@@ -592,7 +592,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Functions a i
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají v produkčních funkcích a také v jiných důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -608,7 +608,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Functions a i
 
 Kromě toho dodržujte doporučení od Azure Security Center, abyste pomohli zabezpečit aplikace Function App.
 
-- [Postup přidání průběžného ověřování zabezpečení do kanálu CI/CD](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [Postup přidání průběžného ověřování zabezpečení do kanálu CI/CD](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -638,7 +638,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -712,7 +712,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -744,7 +744,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 Další informace jsou k dispozici na odkazovaných odkazech.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -772,9 +772,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Zásady návrhu jako pracovní postupy kódu](../governance/policy/concepts/policy-as-code.md)
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -854,11 +854,11 @@ Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps,
 
 - [Zálohování aplikace v Azure](../app-service/manage-backup.md)
 
-- [Pochopení dostupnosti dat v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Pochopení dostupnosti dat v Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -874,11 +874,11 @@ Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps,
 
 - [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Pochopení dostupnosti dat v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Pochopení dostupnosti dat v Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -892,7 +892,7 @@ Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps,
 
 - [Obnovení aplikace v Azure ze snímku](../app-service/app-service-web-restore-snapshots.md)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -1002,5 +1002,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

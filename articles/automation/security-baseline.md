@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 55440c3bec940e0cd5fd4c4d644801e7012b5e95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6ab310681ae7b63cb4e9f4e07984983727ae5ff2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101701467"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953914"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -40,7 +40,7 @@ Pokud chcete získat další izolaci pro své Runbooky, můžete použít hybrid
 
 - [Jak nasadit a nakonfigurovat Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Prostředí pro spuštění sady Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-execution-environment)
+- [Prostředí pro spuštění sady Runbook](./automation-runbook-execution.md#runbook-execution-environment)
 
 **Odpovědnost:** Zákazník
 
@@ -132,7 +132,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 - [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -162,9 +162,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny v síťových prostředcích. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Odpovědnost:** Zákazník
 
@@ -182,7 +182,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -202,9 +202,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Pokyny**: povolení Azure monitor pro přístup k protokolům auditu a aktivitám, které zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Zobrazení a načtení událostí protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Odpovědnost:** Zákazník
 
@@ -214,9 +214,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-- [Změnit dobu uchovávání dat v Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Podrobnosti o uchovávání dat pro účty Automation](https://docs.microsoft.com/azure/automation/automation-managing-data#data-retention)
+- [Podrobnosti o uchovávání dat pro účty Automation](./automation-managing-data.md#data-retention)
 
 **Odpovědnost:** Zákazník
 
@@ -230,9 +230,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Pochopení dotazů protokolu v Azure Monitor](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Pochopení dotazů protokolu v Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -248,7 +248,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Azure Monitor](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Azure Monitor](../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -296,7 +296,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privilegovaných rolí pro služby Microsoftu a Azure Resource Manager můžete taky povolit přístup za běhu nebo jen tolik.
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [Odstranění účet Spustit jako nebo Spustit jako pro Classic](delete-run-as-account.md)
 
@@ -352,7 +352,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](/azure/azure-monitor/platform/action-groups)
+- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/alerts/action-groups.md)
 
 **Odpovědnost:** Zákazník
 
@@ -374,7 +374,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [Použití ověřování Runbooku u spravovaných identit](https://docs.microsoft.com/azure/automation/automation-hrw-run-runbooks#runbook-auth-managed-identities)
+- [Použití ověřování Runbooku u spravovaných identit](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
 **Odpovědnost:** Zákazník
 
@@ -384,7 +384,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Při každém použití účtů účtu Spustit jako pro vaše Runbooky zajistěte, aby tyto instanční objekty byly také sledovány ve vašem inventáři, protože mají často vyšší oprávnění. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -412,7 +412,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: pomocí funkcí Azure Active Directory (Azure AD) a ochrany Identity Protection můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů v síťovém prostředku. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -488,7 +488,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracová
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 - [Azure Automation vynucení TLS 1,2](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
@@ -510,7 +510,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [Oprávnění sady Runbook pro Hybrid Runbook Worker](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#runbook-permissions-for-a-hybrid-runbook-worker)
+- [Oprávnění sady Runbook pro Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
 - [Správa oprávnění rolí a zabezpečení](automation-role-based-access-control.md)
 
@@ -538,7 +538,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, virtuální disky na vi
 
 - [Azure Disk Encryption pro virtuální počítače s Windows](../virtual-machines/windows/disk-encryption-overview.md)
 
-- [Použití klíčů spravovaných zákazníkem pro účet Automation](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Spravované proměnné v Azure Automation](shared-resources/variables.md)
 
@@ -554,9 +554,9 @@ Pokud používáte hybridní pracovní procesy Runbooku, virtuální disky na vi
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na důležité prostředky Azure, jako jsou síťové součásti, účty Azure Automation a runbooky. 
 
-- [Protokolování diagnostiky pro skupinu zabezpečení sítě](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
+- [Protokolování diagnostiky pro skupinu zabezpečení sítě](../private-link/private-link-overview.md#logging-and-monitoring)
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -689,7 +689,7 @@ K dotazování a zjišťování prostředků v rámci předplatných navíc pou�
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -771,7 +771,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 - [Azure Policy ukázkové předdefinované pro Azure Automation](policy-reference.md)
 
@@ -831,7 +831,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 - [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Použití klíčů spravovaných zákazníkem pro účet Automation](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Použití integrace správy zdrojového kódu](source-control-integration.md)
 
@@ -857,9 +857,9 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 - [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Použití klíčů spravovaných zákazníkem pro účet Automation](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-- [Zálohování dat Azure pro účty Automation](https://docs.microsoft.com/azure/automation/automation-managing-data#data-backup)
+- [Zálohování dat Azure pro účty Automation](./automation-managing-data.md#data-backup)
 
 **Odpovědnost:** Zákazník
 
@@ -873,7 +873,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 - [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
-- [Použití klíčů spravovaných zákazníkem pro účet Automation](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 **Odpovědnost:** Zákazník
 
@@ -987,5 +987,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

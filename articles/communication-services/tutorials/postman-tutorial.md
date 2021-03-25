@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492604"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044290"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Kurz: podepsání a vytvoření požadavků pomocí metody post
 V tomto kurzu nastavíme a použijeme post k vytvoření požadavku na služby Azure Communication Services (ACS) pomocí protokolu HTTP. Po skončení tohoto kurzu jste úspěšně odeslali zprávu SMS pomocí služby ACS a post a mohli byste využít post k prozkoumání dalších rozhraní API v rámci služby ACS.
@@ -24,7 +24,7 @@ V tomto kurzu budeme:
 > * Nastavení metody post pro podepisování požadavků HTTP
 > * Vytvoření požadavku na službu ACS rozhraní API služby ACS pro odeslání zprávy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Bezplatný účet vám poskytne $200 kreditů Azure k vyzkoušení libovolné kombinace služeb.
 - Aktivní prostředek komunikační služby a připojovací řetězec. [Naučte se vytvořit prostředek komunikačních služeb](../quickstarts/create-communication-resource.md).
@@ -68,7 +68,7 @@ Další informace o proměnných si můžete přečíst [v dokumentaci k nim](ht
 
 ### <a name="creating-a-pre-request-script"></a>Vytvoření skriptu před vyžádáním
 
-Dalším krokem je vytvoření skriptu před vyžádáním v rámci služby post. Skript před vyžádáním je skript, který se spouští před každým požadavkem v post a může změnit nebo změnit parametry požadavku vaším jménem. Použijeme to k podepsání našich požadavků HTTP, aby mohly být autorizované službami ACS. Další informace o požadavcích na podepisování si můžete [přečíst v našem průvodci při ověřování](https://docs.microsoft.com/rest/api/communication/authentication).
+Dalším krokem je vytvoření skriptu před vyžádáním v rámci služby post. Skript před vyžádáním je skript, který se spouští před každým požadavkem v post a může změnit nebo změnit parametry požadavku vaším jménem. Použijeme to k podepsání našich požadavků HTTP, aby mohly být autorizované službami ACS. Další informace o požadavcích na podepisování si můžete [přečíst v našem průvodci při ověřování](/rest/api/communication/authentication).
 
 Tento skript vytvoříme v rámci kolekce tak, aby běžel na všech žádostech v rámci kolekce. Provedete to tak, že v rámci karty kolekce kliknete na dílčí kartu "skript před vyžádáním".
 
@@ -186,7 +186,7 @@ Teď, když je všechno nastavené, jsme připraveni vytvořit žádost ACS v r�
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Tlačítko pro odeslání.":::
 
-Tím se vytvoří nová karta pro náš požadavek v rámci služby post. V případě, že to vytvořil, musíme ho nakonfigurovat. Vyžádáme si požadavek na rozhraní API pro odeslání SMS, takže si nezapomeňte vyžádat [pomoc v dokumentaci k tomuto rozhraní API](https://docs.microsoft.com/rest/api/communication/sms/send). Pojďme nakonfigurovat žádost post.
+Tím se vytvoří nová karta pro náš požadavek v rámci služby post. V případě, že to vytvořil, musíme ho nakonfigurovat. Vyžádáme si požadavek na rozhraní API pro odeslání SMS, takže si nezapomeňte vyžádat [pomoc v dokumentaci k tomuto rozhraní API](/rest/api/communication/sms/send). Pojďme nakonfigurovat žádost post.
 
 Začněte nastavením `POST` a zadáním `{{endpoint}}/sms?api-version=2021-03-07` do pole Adresa URL žádosti. Tato adresa URL používá naši dříve vytvořenou `endpoint` proměnnou k automatickému odeslání do vašeho prostředku ACS.
 
@@ -238,8 +238,8 @@ Mobilní telefon, který vlastní číslo, které jste zadali v hodnotě "do", b
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte rozhraní API](https://docs.microsoft.com/rest/api/communication/) 
->  služby ACS [Přečtěte si další informace o ověřování](https://docs.microsoft.com/rest/api/communication/authentication) 
+> [Prozkoumejte rozhraní API](/rest/api/communication/) 
+>  služby ACS [Přečtěte si další informace o ověřování](/rest/api/communication/authentication) 
 >  [Další informace o nástroji pro publikování](https://learning.postman.com/)
 
 Můžete také chtít:
