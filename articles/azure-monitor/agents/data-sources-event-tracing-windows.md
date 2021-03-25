@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: jamesfit
 author: jimmyfit
 ms.date: 01/29/2021
-ms.openlocfilehash: 096d16bb2c7249ec99f37fbee9d8ffc8f0e45db2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73135d95a56dc03790b3b7368a276ebfc99275fd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050762"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025063"
 ---
 # <a name="collecting-event-tracing-for-windows-etw-events-for-analysis-azure-monitor-logs"></a>Shromažďování událostí trasování událostí pro Windows (ETW) pro analýzu Azure Monitor protokolů
 
@@ -71,7 +71,7 @@ Po vygenerování vyhovujících událostí byste měli začít zobrazovat udál
 
 ### <a name="step-4-configure-log-analytics-storage-account-collection"></a>Krok 4: konfigurace Log Analytics kolekce účtů úložiště
 
-Při shromažďování protokolů z Azure Storage postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/azure-monitor/essentials/diagnostics-extension-logs#collect-logs-from-azure-storage) . Po nakonfigurování se data události trasování událostí pro Windows musí zobrazit v Log Analytics pod tabulkou **ETWEvent** .
+Při shromažďování protokolů z Azure Storage postupujte podle [těchto pokynů](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) . Po nakonfigurování se data události trasování událostí pro Windows musí zobrazit v Log Analytics pod tabulkou **ETWEvent** .
 
 ## <a name="next-steps"></a>Další kroky
 - Použití [vlastních polí](../logs/custom-fields.md) k vytvoření struktury v UDÁLOSTech ETW

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 9567ec2458a01825568cb853728f71db10228ee3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608254"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023295"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Nastavte si Azure Percept DK a nasaďte svůj první model AI.
 
@@ -25,12 +25,12 @@ Dokončete prostředí instalace Azure Percept DK a nakonfigurujte sadu dev SDK 
 
 Pokud během tohoto procesu dojde k problémům, vyhledejte možná řešení v [Průvodci odstraňováním potíží s instalací](./how-to-troubleshoot-setup.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK (dev Kit).
 - Hostitelský počítač se systémem Windows, Linux nebo OS X s možností Wi-Fi a webovým prohlížečem.
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Účet Azure musí mít v rámci předplatného roli **vlastníka** nebo **přispěvatele** . Pomocí následujících kroků ověřte roli účtu Azure. Další informace o definicích rolí Azure najdete v dokumentaci k [řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles).
+- Účet Azure musí mít v rámci předplatného roli **vlastníka** nebo **přispěvatele** . Pomocí následujících kroků ověřte roli účtu Azure. Další informace o definicích rolí Azure najdete v dokumentaci k [řízení přístupu na základě role v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
     > [!CAUTION]
     > Pokud máte více účtů Azure, může váš prohlížeč ukládat přihlašovací údaje z jiného účtu. Aby nedocházelo k nejasnostem, doporučujeme, abyste před spuštěním instalačního programu zavřeli všechna nepoužívaná okna prohlížeče a přihlásili se k [Azure Portal](https://portal.azure.com/) . Další informace o tom, jak zajistit, že jste se přihlásili ke správnému účtu, najdete v [Průvodci řešením potíží s instalací](./how-to-troubleshoot-setup.md) .
@@ -43,7 +43,7 @@ Pokud chcete ověřit, jestli je váš účet Azure v rámci předplatného "vla
 
 1. Klikněte na ikonu **odběry** (vypadá to jako žlutý klíč).
 
-1. V seznamu vyberte své předplatné. Pokud vaše předplatné nevidíte, ujistěte se, že jste přihlášeni pomocí správného účtu Azure. Pokud chcete vytvořit nové předplatné, postupujte podle [těchto kroků](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription).
+1. V seznamu vyberte své předplatné. Pokud vaše předplatné nevidíte, ujistěte se, že jste přihlášeni pomocí správného účtu Azure. Pokud chcete vytvořit nové předplatné, postupujte podle [těchto kroků](../cost-management-billing/manage/create-subscription.md).
 
 1. V nabídce předplatné vyberte **řízení přístupu (IAM)**.
 1. Klikněte na **Zobrazit můj přístup**.

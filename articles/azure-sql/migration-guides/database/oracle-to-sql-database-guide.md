@@ -1,5 +1,5 @@
 ---
-title: 'Oracle to SQL Database: Průvodce migrací'
+title: 'Oracle to Azure SQL Database: Průvodce migrací'
 description: V této příručce se naučíte migrovat schéma Oracle pro Azure SQL Database používání Pomocník s migrací SQL Serveru pro Oracle (SSMA for Oracle).
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -9,21 +9,21 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: f00740de5a327858fd250a0cb561b07c32f3b726
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655443"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022275"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Průvodce migrací: Oracle pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 V této příručce se naučíte migrovat schémata Oracle pro Azure SQL Database používání Pomocník s migrací SQL Serveru pro Oracle.
 
-Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup migrace schématu Oracle na SQL Database potřeby: 
 
@@ -44,18 +44,15 @@ Po splnění požadavků budete připraveni zjistit topologii prostředí a poso
 
 Pomocí Pomocník s migrací SQL Serveru (SSMA) pro Oracle zkontrolujte objekty databáze a data, vyhodnoťte databáze pro migraci, migrujte objekty databáze do Azure SQL Database a nakonec migrujte data do databáze. 
 
-
 K vytvoření posouzení použijte následující postup: 
-
 
 1. Otevřete [Pomocník s migrací SQL serveru pro Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
 1. Vyberte **soubor** a pak zvolte **Nový projekt**. 
-1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom v rozevíracím seznamu vyberte Azure SQL Database jako cíl migrace. Vyberte **OK**.
+1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom v rozevíracím seznamu vyberte Azure SQL Database jako cíl migrace. Vyberte **OK**:
 
    ![Nový projekt](./media/oracle-to-sql-database-guide/new-project.png)
 
-
-1. Vyberte **připojit se k Oracle**. V dialogovém okně **připojit k systému Oracle** zadejte v části hodnoty pro informace o připojení Oracle.
+1. Vyberte **připojit se k Oracle**. V dialogovém okně **připojit k systému Oracle** zadejte v části hodnoty pro informace o připojení Oracle:
 
    ![Připojení k Oracle](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
 
@@ -63,7 +60,7 @@ K vytvoření posouzení použijte následující postup:
 
    ![Výběr schématu Oracle](./media/oracle-to-sql-database-guide/select-schema.png)
 
-1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit možnost **vytvořit sestavu** z navigačního panelu po výběru databáze.
+1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit **vytvořit sestavu** z navigačního panelu po výběru databáze:
 
    ![Vytvořit sestavu](./media/oracle-to-sql-database-guide/create-report.png)
 
@@ -81,7 +78,7 @@ Ověřte výchozí mapování datových typů a podle potřeby je změňte podle
 
 1. V nabídce vyberte **nástroje** . 
 1. Vyberte **nastavení projektu**. 
-1. Vyberte kartu **mapování typů** . 
+1. Vyberte kartu **mapování typů** : 
 
    ![Mapování typů](./media/oracle-to-sql-database-guide/type-mappings.png)
 
@@ -94,25 +91,27 @@ K převedení schématu použijte následující postup:
 1. Volitelné Přidejte dynamické dotazy a dotazy ad-hoc k příkazům. Pravým tlačítkem myši klikněte na uzel a zvolte příkaz **přidat příkazy**.
 1. Vyberte **připojit k Azure SQL Database**. 
     1. Zadejte podrobnosti připojení pro připojení databáze v Azure SQL Database.
-    1. Z rozevíracího seznamu vyberte cílovou SQL Database.
-    1. Vyberte **Connect** (Připojit).
+    1. V rozevíracím seznamu vyberte cílovou SQL Database, nebo zadejte nový název. v takovém případě se na cílovém serveru vytvoří databáze. 
+    1. Zadejte podrobnosti ověřování. 
+    1. Vyberte **připojit**:
 
     ![Připojení ke službě SQL Database](./media/oracle-to-sql-database-guide/connect-to-sql-database.png)
 
 
-1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle a pak zvolte **převést schéma**. Alternativně můžete po výběru schématu vybrat možnost **převést schéma** z horního navigačního panelu.
+1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle a pak zvolte **převést schéma**. Alternativně můžete zvolit **převést schéma** z horního navigačního panelu po výběru schématu:
 
    ![Převést schéma](./media/oracle-to-sql-database-guide/convert-schema.png)
 
-1. Po dokončení převodu Porovnejte a zkontrolujte převedené objekty s původními objekty k identifikaci potenciálních problémů a jejich řešení na základě doporučení.
+1. Po dokončení převodu Porovnejte a zkontrolujte převedené objekty s původními objekty k identifikaci potenciálních problémů a jejich řešení na základě doporučení:
 
    ![Kontrola schématu doporučení](./media/oracle-to-sql-database-guide/table-mapping.png)
 
-   Porovnejte převedený text Transact-SQL s původními uloženými procedurami a Projděte si doporučení. 
+   Porovnejte převedený text Transact-SQL s původními uloženými procedurami a Projděte si doporučení:
 
    ![Zkontrolovat doporučení](./media/oracle-to-sql-database-guide/procedure-comparison.png)
 
-1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** .
+1. V podokně výstup vyberte možnost **Kontrola výsledků** a zkontrolujte chyby v podokně **Seznam chyb** . 
+1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . Díky tomu máte možnost vyhodnotit zdrojový a cílový schémat v režimu offline a před publikováním schématu pro SQL Database provést nápravu.
 
 ## <a name="migrate"></a>Migrate
 
@@ -120,7 +119,7 @@ Po dokončení vyhodnocení databází a vyřešení případných rozporů je d
 
 K publikování schématu a migraci dat použijte následující postup:
 
-1. Publikování schématu: klikněte pravým tlačítkem na databázi v uzlu **databáze** v **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**.
+1. Publikování schématu: klikněte pravým tlačítkem na databázi z uzlu **databáze** v **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**:
 
    ![Synchronizovat s databází](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
 
@@ -129,22 +128,21 @@ K publikování schématu a migraci dat použijte následující postup:
    ![Synchronizace s kontrolou databáze](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
 
-1. Migrace dat: klikněte pravým tlačítkem na schéma v **Průzkumníku metadat Oracle** a vyberte **migrovat data**. Alternativně můžete po výběru schématu vybrat možnost **migrovat data** z navigačního panelu na horním řádku. 
+1. Migrace dat: klikněte pravým tlačítkem na databázi nebo objekt, který chcete migrovat v **Průzkumníkovi metadat Oracle**, a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z horního navigačního panelu. Chcete-li migrovat data pro celou databázi, zaškrtněte políčko vedle názvu databáze. Chcete-li migrovat data z jednotlivých tabulek, rozbalte databázi, rozbalte položku tabulky a potom zaškrtněte políčko vedle této tabulky. Chcete-li vynechat data z jednotlivých tabulek, zrušte zaškrtnutí políčka:
 
    ![Migrace dat](./media/oracle-to-sql-database-guide/migrate-data.png)
 
 1. Zadejte podrobnosti o připojení pro Oracle i Azure SQL Database.
-1. Zobrazit **sestavu migrace dat**
+1. Po dokončení migrace si prohlédněte **sestavu migrace dat**:  
 
    ![Sestava migrace dat](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
-1. Připojte se k Azure SQL Database pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu.
+1. Připojte se k Azure SQL Database pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu:
 
    ![Ověřit v SSMA](./media/oracle-to-sql-database-guide/validate-data.png)
 
 Případně můžete k provedení migrace použít taky služba SSIS (SQL Server Integration Services) (SSIS). Další informace najdete v následujících tématech: 
 
-- [Pomocník s migrací SQL Serveru: jak vyhodnotit a migrovat data z datových platforem od jiných společností než Microsoft do SQL Server](https://blogs.msdn.microsoft.com/datamigration/2016/11/16/sql-server-migration-assistant-how-to-assess-and-migrate-databases-from-non-microsoft-data-platforms-to-sql-server/)
 - [Začínáme s služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 - [Služba SSIS (SQL Server Integration Services): SSIS pro Azure a přesun hybridních dat](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 

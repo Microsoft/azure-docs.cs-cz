@@ -5,16 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: e4e726f742d46a4b63563f55c191cf21e49d06fc
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 2bb68c8c183e3de132bc7cf4504714a260ea2683
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778317"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025114"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Přehled posouzení (migrace do Azure SQL)
 
-Tento článek poskytuje přehled posouzení pro migraci místních SQL Server instancí z prostředí VMware do databází Azure SQL nebo spravovaných instancí pomocí [nástroje Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool).
+Tento článek poskytuje přehled posouzení pro migraci místních SQL Server instancí z prostředí VMware do databází Azure SQL nebo spravovaných instancí pomocí [nástroje Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool).
 
 ## <a name="whats-an-assessment"></a>Co je posouzení?
 Posouzení pomocí nástroje pro zjišťování a hodnocení je časovým snímkem dat a měří připravenost a odhadne dopad migrace místních serverů do Azure.
@@ -110,11 +110,11 @@ Pokud ve vlastnostech posouzení SQL Azure vyberete cílový typ nasazení podle
 
  **Připravenost Azure SQL DB** | **Připravenost Azure SQL MI** | **Doporučený typ nasazení** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
  --- | --- | --- | --- |
- Připraveno | Připraveno | Azure SQL DB nebo <br/>Azure SQL MI | Ano
- Připraveno | Nepřipraveno nebo<br/> Neznámý | Azure SQL DB | Ano
- Nepřipraveno nebo<br/>Neznámý | Připraveno | Azure SQL MI | Ano
- Nepřipraveno | Nepřipraveno | Potenciálně připravený pro virtuální počítač Azure | Ne
- Nepřipraveno nebo<br/>Neznámý | Nepřipraveno nebo<br/>Neznámý | Neznámý | Ne
+ Připraveno | Připraveno | Azure SQL DB nebo <br/>Azure SQL MI | Yes
+ Připraveno | Nepřipraveno nebo<br/> Neznámý | Azure SQL DB | Yes
+ Nepřipraveno nebo<br/>Neznámý | Připraveno | Azure SQL MI | Yes
+ Nepřipraveno | Nepřipraveno | Potenciálně připravený pro virtuální počítač Azure | No
+ Nepřipraveno nebo<br/>Neznámý | Nepřipraveno nebo<br/>Neznámý | Neznámý | No
 
 > [!NOTE]
 > Pokud je doporučený typ nasazení vybraný jako **doporučený** ve vlastnostech posouzení, a pokud je zdroj SQL Server dobrý pro Azure SQL DB Single Database i pro SPRAVOVANOU instanci SQL Azure, vyhodnocování doporučuje konkrétní možnost, která optimalizuje vaše náklady a vejde se do hranic velikosti a výkonu.

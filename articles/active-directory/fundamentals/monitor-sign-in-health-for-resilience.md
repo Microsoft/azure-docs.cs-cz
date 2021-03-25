@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2092c3f6402d5c6e7a0bc8c93015d3a900b9e38
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 47691ae404f65f04ace36485cb01fc5617d00a9a
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587984"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031762"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Monitorování stavu přihlašování aplikací pro odolnost
 
@@ -43,7 +43,7 @@ Během události se může vyskytnout dvě věci:
 
 Tento článek vás provede nastavením sešitu stavu přihlášení, který monitoruje přerušení přihlášení vašich uživatelů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tenanta Azure AD.
 
@@ -100,7 +100,7 @@ Další informace o tom, jak vytvářet, zobrazovat a spravovat výstrahy protok
 
    Otevře se protokol dotazu.
 
-   [![Snímek obrazovky se zobrazeným protokolem dotazů](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
+   [![Snímek obrazovky se zobrazeným protokolem dotazů](./media/monitor-sign-in-health-for-resilience/query-log.png)](./media/monitor-sign-in-health-for-resilience/query-log.png)
 ‎
 
 2. Zkopírujte jeden z ukázkových skriptů pro nový dotaz Kusto.  

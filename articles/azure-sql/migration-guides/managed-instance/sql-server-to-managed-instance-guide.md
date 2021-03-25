@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server do spravované instance SQL: Průvodce migrací'
+title: 'SQL Server ke spravované instanci Azure SQL: Průvodce migrací'
 description: V této příručce se naučíte migrovat databáze SQL Server do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1dcb72c30268dd82052e29232e79a485d86f72d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564486"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025301"
 ---
-# <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Průvodce migrací: SQL Server do spravované instance SQL
+# <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>Průvodce migrací: SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Tato příručka vám pomůže s migrací instance SQL Server do spravované instance Azure SQL. 
@@ -30,16 +30,18 @@ Můžete migrovat SQL Server spuštěná místně nebo na:
 - Výpočetní modul (Google Cloud Platform – GCP)  
 - Cloud SQL pro SQL Server (Google Cloud Platform – GCP) 
 
-Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-managed-instance-overview.md). Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
+Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-managed-instance-overview.md). Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chcete migrovat SQL Server do spravované instance Azure SQL, nezapomeňte projít následující požadavky: 
 
 - Vyberte [metodu migrace](sql-server-to-managed-instance-overview.md#compare-migration-options) a odpovídající nástroje, které jsou potřeba pro zvolenou metodu.
 - Instalace [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) na počítači, který se může připojit ke zdrojovému SQL Server
+- Připojení a správná oprávnění pro přístup ke zdroji i cíli. 
+
 
 
 ## <a name="pre-migration"></a>Před migrací

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 18b43a99eb561cbfa340e0b3f318782bef2ca17c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952775"
+ms.locfileid: "105023431"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -33,6 +33,7 @@ Stránka **všechna zařízení** vám umožní:
 - Nakonfigurujte nastavení identity zařízení.
 - Povolí nebo zakáže Enterprise State Roaming.
 - Kontrola protokolů auditu souvisejících se zařízením
+- Stáhnout zařízení (Preview)
 
 [![Zobrazení všech zařízení v Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -144,6 +145,14 @@ Povolení funkce filtrování ve verzi Preview v zobrazení **všechna zařízen
 1. Vyberte banner, který uvádí, a **Vyzkoušejte si nová vylepšení filtrování zařízení. Kliknutím povolíte náhled.**
 
 Teď budete mít možnost **Přidat filtry** do zobrazení **všechna zařízení** .
+
+### <a name="download-devices-preview"></a>Stáhnout zařízení (Preview)
+
+Správci cloudových zařízení, správci Intune a globální správci můžou pomocí možnosti **Stáhnout zařízení (Preview)** exportovat soubor CSV zařízení na základě všech použitých filtrů. Pokud se v seznamu nepoužijí žádné filtry, všechna zařízení se exportují. Export může běžet po dobu až 1 hodiny v závislosti na 
+
+Exportovaný seznam obsahuje následující atributy identity zařízení:
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
 
 ## <a name="configure-device-settings"></a>Konfigurace nastavení zařízení
 
