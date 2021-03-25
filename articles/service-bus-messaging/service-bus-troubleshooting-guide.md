@@ -3,12 +3,12 @@ title: Průvodce odstraňováním potíží pro Azure Service Bus | Microsoft Do
 description: Přečtěte si tipy a doporučení pro řešení potíží pro několik problémů, které se mohou zobrazit při použití Azure Service Bus.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179693"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031286"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 V tomto článku najdete tipy a doporučení pro odstraňování problémů s několika problémy, které se můžou zobrazit při použití Azure Service Bus. 
@@ -52,7 +52,7 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
     ```
     Ekvivalentní příkazy můžete použít, pokud používáte jiné nástroje `tnc` , například, `ping` a tak dále. 
 - Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
-- Pokud chcete najít správné IP adresy, které se mají přidat do seznamu povolených připojení, přečtěte si téma [co je potřeba přidat do seznamu povolených IP adres](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+- Pokud chcete najít správné IP adresy, které se mají přidat do povolených pro vaše připojení, přečtěte si téma [Jaké IP adresy je potřeba přidat do povolených](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problémy, které se mohou vyskytnout při upgradech nebo restartu služby
@@ -98,6 +98,25 @@ Existuje omezení počtu tokenů, které se používají k posílání a přijí
 
 ### <a name="resolution"></a>Řešení
 Pro odeslání dalších zpráv otevřete nové připojení k Service Busmu oboru názvů.
+
+## <a name="adding-virtual-network-rule-using-powershell-fails"></a>Neúspěšné přidání pravidla virtuální sítě pomocí PowerShellu
+
+### <a name="symptoms"></a>Příznaky
+Nakonfigurovali jste dvě podsítě z jedné virtuální sítě v pravidle virtuální sítě. Když se pokusíte odebrat jednu podsíť pomocí rutiny [Remove-AzServiceBusVirtualNetworkRule](/powershell/module/az.servicebus/remove-azservicebusvirtualnetworkrule) , neodebere podsíť z pravidla virtuální sítě. 
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName $resourceGroupName -Namespace $serviceBusName -SubnetId $subnetId
+```
+
+### <a name="cause"></a>Příčina
+ID Azure Resource Manager, které jste zadali pro podsíť, může být neplatné. K tomu může dojít, když je virtuální síť v jiné skupině prostředků než ta, která má obor názvů Service Bus. Pokud neurčíte explicitně skupinu prostředků virtuální sítě, příkaz CLI sestaví Azure Resource Manager ID pomocí skupiny prostředků Service Bus oboru názvů. V takovém případě se nepovede odebrat podsíť ze síťového pravidla. 
+
+### <a name="resolution"></a>Řešení
+Zadejte úplné Azure Resource Manager ID podsítě, která obsahuje název skupiny prostředků, která má virtuální síť. Například:
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName myRG -Namespace myNamespace -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/myOtherRG/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet"
+```
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články: 

@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge Nejčastější dotazy – Azure
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se analýzy živých videí na IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702245"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032788"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Nejčastější dotazy k analýze videí na IoT Edge
 
@@ -129,7 +129,7 @@ Obsah můžete doručovat pomocí Apple HLS nebo MPEG-POMLČKy.
    
 *Použijte protokol gRPC*: 
 
-* Pokud používáte protokol gRPC (General-Way Remote Procedure Call) pro Live video 1,0 Analytics, je jediným způsobem, jak to udělat, je, že server gRPC zveřejňuje různé modely AI prostřednictvím různých portů. V [tomto příkladu kódu](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)jeden port, 44000, zpřístupňuje všechny modely Yolo. Teoreticky by bylo možné přepsat server Yolo gRPC a vystavit některé modely na portu 44000 a dalších na portu 45000. 
+* Pokud používáte protokol gRPC (General-Way Remote Procedure Call) pro Live video 1,0 Analytics, je jediným způsobem, jak to udělat, je, že server gRPC zveřejňuje různé modely AI prostřednictvím různých portů. V [tomto příkladu kódu](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)jeden port, 44000, zpřístupňuje všechny modely Yolo. Teoreticky by bylo možné přepsat server Yolo gRPC a vystavit některé modely na portu 44000 a dalších na portu 45000. 
 
 * V případě nástroje Live video Analytics – modul 2,0 je do uzlu rozšíření gRPC přidána nová vlastnost. Tato vlastnost **extensionConfiguration** je nepovinný řetězec, který lze použít jako součást gRPC smlouvy. Pokud máte více modelů AI zabalených na jednom odvozeném serveru, nemusíte vystavit uzel pro každý model AI. Místo toho můžete pro instanci grafu definovat, jak se má jako poskytovatel rozšíření vybrat různé modely AI pomocí vlastnosti **extensionConfiguration** . Během provádění Live video Analytics předá tento řetězec serveru Inferencing, který ho může použít k vyvolání požadovaného modelu AI. 
 
