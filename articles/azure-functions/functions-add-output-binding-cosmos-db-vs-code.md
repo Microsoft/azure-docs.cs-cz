@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 91d27ce0d6f999ac5d13b079c877e49cdf3fcd61
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962811"
+ms.locfileid: "105023244"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>Připojení Azure Functions k Azure Cosmos DB pomocí Visual Studio Code
 
@@ -20,11 +20,11 @@ ms.locfileid: "104962811"
 V tomto článku se dozvíte, jak pomocí Visual Studio Code připojit [Azure Cosmos DB](../cosmos-db/introduction.md) k funkci, kterou jste vytvořili v předchozím článku rychlý Start. Výstupní vazba, kterou do této funkce přidáte, zapisuje data z požadavku HTTP do dokumentu JSON, který je uložený v kontejneru Azure Cosmos DB. 
 
 ::: zone pivot="programming-language-csharp"
-Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-csharp.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.
+Než začnete, musíte dokončit rychlé zprovoznění [: vytvoření funkce jazyka C# v Azure pomocí Visual Studio Code](create-first-function-vs-code-csharp.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.
 ::: zone-end
 ::: zone pivot="programming-language-javascript"  
-Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-node.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
-::: zone-end   
+Než začnete, musíte dokončit rychlé zprovoznění [: vytvoření funkce JavaScriptu v Azure pomocí Visual Studio Code](create-first-function-vs-code-node.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>Konfigurace prostředí
 

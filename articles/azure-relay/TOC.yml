@@ -37,7 +37,7 @@
         - name: Ověřování a autorizace
           href: relay-authentication-and-authorization.md
         - name: Integrované ovládací prvky zabezpečení
-          href: service-bus-relay-security-controls.md
+          href: ../service-bus-messaging/security-baseline.md
         - name: Zabezpečení sítě
           href: network-security.md
     - name: Protokol pro hybridní připojení

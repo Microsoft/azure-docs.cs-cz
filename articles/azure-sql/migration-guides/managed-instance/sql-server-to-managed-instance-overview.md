@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server ke spravované instanci SQL: Přehled migrace'
+title: 'SQL Server ke spravované instanci Azure SQL: Přehled migrace'
 description: Přečtěte si o různých nástrojích a možnostech, které jsou k dispozici pro migraci SQL Serverch databází do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561989"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024893"
 ---
-# <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
+# <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Přečtěte si o různých možnostech migrace a důležitých informacích o migraci SQL Server do spravované instance Azure SQL. 
@@ -30,7 +30,7 @@ Můžete migrovat SQL Server spuštěná místně nebo na:
 - Výpočetní modul (Google Cloud Platform – GCP)  
 - Cloud SQL pro SQL Server (Google Cloud Platform – GCP) 
 
-Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/). 
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Přehled
 
@@ -60,7 +60,7 @@ Některé obecné pokyny, které vám pomůžou zvolit správnou úroveň služb
 - Použijte latenci v/v podsystému souborů k výběru mezi Pro obecné účely (latence větší než 5 ms) a Pro důležité obchodní informace (latence méně než 3 MS) úrovně služeb. 
 - Pomocí propustnosti základní hodnoty můžete předem přidělit velikost dat a souborů protokolu, abyste dosáhli očekávaného vstupně-výstupních operací. 
 
-Můžete zvolit výpočetní prostředky a prostředky úložiště během nasazování a pak je po použití [Azure Portal](../../database/scale-resources.md) změnit, aniž by došlo k výpadku vaší aplikace. 
+Můžete zvolit výpočetní prostředky a prostředky úložiště během nasazování a pak [je po použití Azure Portal změnit](../../database/scale-resources.md) , aniž by došlo k výpadku vaší aplikace. 
 
 > [!IMPORTANT]
 > Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md)   sítí. 
@@ -100,9 +100,9 @@ V následující tabulce jsou uvedené doporučené nástroje pro migraci:
 
 V následující tabulce jsou uvedeny alternativní nástroje pro migraci: 
 
-|Technologie |Popis  |
+|**Technologie** |**Popis**  |
 |---------|---------|
-|[Transakční replikace](../../managed-instance/replication-transactional-overview.md) | Umožňuje replikovat data ze zdrojových databázových tabulek SQL Server do spravované instance SQL poskytnutím možnosti migrace typu předplatitele vydavatele při zachování konzistentní transakční konzistence. |  |
+|[Transakční replikace](../../managed-instance/replication-transactional-overview.md) | Umožňuje replikovat data ze zdrojových databázových tabulek SQL Server do spravované instance SQL poskytnutím možnosti migrace typu předplatitele vydavatele při zachování konzistentní transakční konzistence. | 
 |[Hromadná kopie](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [Nástroj program pro hromadné kopírování (BCP)](/sql/tools/bcp-utility) kopíruje data z instance SQL Server do datového souboru. Pomocí nástroje BCP exportujte data ze zdroje a importujte datový soubor do cílové spravované instance SQL.</br></br> Pro rychlé operace hromadného kopírování pro přesun dat na Azure SQL Database se dá použít [Nástroj pro inteligentní kopírování](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) , který umožňuje maximalizovat rychlost přenosu tím, že využívá úlohy paralelního kopírování. | 
 |[Průvodce exportem a BACPAC importu](../../database/database-import.md?tabs=azure-powershell)| [BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) je soubor Windows s `.bacpac` příponou, která zapouzdřuje schéma a data databáze. BACPAC se dá použít k exportu dat ze zdrojového SQL Server a k importu tohoto souboru zpátky do spravované instance Azure SQL.  |  
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| [Aktivita kopírování](../../../data-factory/copy-activity-overview.md) v Azure Data Factory migruje data ze zdrojového SQL Server databáze do spravované instance SQL pomocí integrovaných konektorů a [Integration runtime](../../../data-factory/concepts-integration-runtime.md).</br> </br> ADF podporuje široké spektrum [konektorů](../../../data-factory/connector-overview.md) pro přesun dat z SQL Server zdrojů do spravované instance SQL. |
@@ -241,7 +241,7 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít migrovat SQL Server do spravované instance Azure SQL, přečtěte si [Průvodce migrací SQL Server na SQL Managed instance](sql-server-to-managed-instance-guide.md).
+Pokud chcete začít migrovat SQL Server do spravované instance Azure SQL, přečtěte si [příručku SQL Server na Azure SQL Managed instance Průvodce migrací](sql-server-to-managed-instance-guide.md).
 
 - Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat i v speciálních úlohách, najdete v tématu [služba a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 

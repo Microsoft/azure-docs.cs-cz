@@ -1,15 +1,15 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure Event Grid
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure Event Grid. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f34c2cdaa62aa2a418273baef40f5f404c940989
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7a8138b3af2a9ce97c73ebcce5973c9a395d0085
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600972"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034605"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-grid"></a>Azure Policy kontroly dodržování předpisů pro Azure Event Grid
 

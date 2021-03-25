@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 996159f7014e735c8a4b3e5975c2716ce1ab6910
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cca60ba9948299f4e9557f26097d4a23e4ebea12
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728491"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025335"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Základní hodnoty zabezpečení Azure pro Azure Resource Manager
 
@@ -32,9 +32,9 @@ Pokud chcete zjistit, jak Azure Resource Manager kompletně mapuje srovnávací 
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm) 
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -50,9 +50,9 @@ Pokud chcete zjistit, jak Azure Resource Manager kompletně mapuje srovnávací 
 
 **Doprovodné** materiály: Azure Resource Manager používá protokol aktivit, které jsou automaticky povoleny, aby zahrnoval zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -66,9 +66,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
-- [Začínáme s Log Analytics dotazy](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Začínáme s Log Analytics dotazy](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Sdílené
 
@@ -82,7 +82,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Správa výstrah v Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -119,7 +119,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 Můžete také povolit přístup za běhu pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management a Azure Resource Manager.
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../../active-directory/privileged-identity-management/index.yml)
 
 - [Jak používat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -205,7 +205,7 @@ Můžete také povolit přístup za běhu pomocí služby Azure Active Directory
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí můžete navíc použít kontroly identity a přístupu v Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../../active-directory/reports-monitoring/index.yml)
 
 - [Používání kontrol přístupu a identit Azure AD](../../active-directory/governance/access-reviews-overview.md)
 
@@ -223,7 +223,7 @@ Můžete také povolit přístup za běhu pomocí služby Azure Active Directory
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -275,7 +275,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: u šifrování na straně serveru v klidovém případě Azure Resource Manager podporuje klíče spravované společností Microsoft.
 
-- [Pochopení ochrany dat v Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-resource-manager-security-controls#data-protection)
+- [Pochopení ochrany dat v Azure Resource Manager](#data-protection)
 
 **Odpovědnost:** Zákazník
 
@@ -285,7 +285,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy, když se změny projeví u kritických prostředků Azure.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -319,7 +319,7 @@ I když se v Azure Resource Graph Exploreru můžou zjistit klasické prostředk
 
 **Pokyny**: k logickému uspořádání prostředků podle taxonomie použijte název zásady, popis a kategorii.
 
-- [Další informace o označování prostředků najdete v článku Průvodce vytvářením názvů prostředků a označování označením.](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [Další informace o označování prostředků najdete v článku Průvodce vytvářením názvů prostředků a označování označením.](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Odpovědnost:** Zákazník
 
@@ -379,7 +379,7 @@ Další související podrobnosti jsou uvedené níže.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -463,7 +463,7 @@ Kromě toho může být potřeba uzamknout předplatné, skupinu prostředků ne
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../../governance/policy/concepts/definition-structure.md#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -587,5 +587,5 @@ Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovac�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../../security/benchmarks/security-baselines-overview.md)
