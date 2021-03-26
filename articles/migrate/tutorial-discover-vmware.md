@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109844"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562728"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Kurz: zjišťování serverů běžících v prostředí VMware pomocí Azure Migrate: zjišťování a posouzení
 
@@ -106,7 +106,7 @@ V vSphere webovém klientovi nastavte účet následujícím způsobem:
 
 Potřebujete uživatelský účet s potřebnými oprávněními na serverech, abyste mohli provádět zjišťování nainstalovaných aplikací, analýzu závislostí bez agenta a zjišťování instancí SQL Server a databází. Uživatelský účet můžete zadat v nástroji Configuration Manager pro zařízení. Zařízení neinstaluje žádné agenty na servery.
 
-1. Pro Windows servery vytvořte účet (místní nebo doména) s oprávněními správce na serverech. Chcete-li zjistit SQL Server instance a databáze, budete potřebovat účet Windows nebo SQL Server, aby byl členem role serveru sysadmin. [Přečtěte si další informace](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) o přiřazení požadované role k uživatelskému účtu.
+1. Pro Windows servery vytvořte účet (místní nebo doména) s oprávněními správce na serverech. Chcete-li zjistit SQL Server instance a databáze, budete potřebovat účet Windows nebo SQL Server, aby byl členem role serveru sysadmin. [Přečtěte si další informace](/sql/relational-databases/security/authentication-access/server-level-roles) o přiřazení požadované role k uživatelskému účtu.
 2. U serverů se systémem Linux vytvořte účet s oprávněními root. Alternativně můžete vytvořit účet s těmito oprávněními pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
 
 > [!NOTE]
@@ -292,8 +292,8 @@ Pokud chcete tyto funkce použít, můžete zadat přihlašovací údaje serveru
 1. Během inventarizace softwaru budou přidané přihlašovací údaje k serverům iterovat na servery a ověřeny pro analýzu závislostí bez agentů. Pro servery z portálu můžete povolit analýzu závislostí bez agentů. Pro povolení analýzy závislostí bez agentů je možné vybrat pouze servery, na kterých je ověřování úspěšné.
 
 > [!Note]
->Azure Migrate zašifruje komunikaci mezi Azure Migrate zařízením a instancemi SQL Server zdrojového kódu (s vlastností šifrovat připojení nastavenou na hodnotu TRUE). Tato připojení jsou šifrovaná pomocí [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (nastavená na hodnotu true); Transportní vrstva bude používat protokol SSL k šifrování kanálu a obejít řetěz certifikátů k ověření vztahu důvěryhodnosti. Server zařízení musí být nastavený tak, aby [**důvěřoval kořenové autoritě certifikátu**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
-Pokud se při spuštění na serveru nezřídí žádný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem, který se používá k šifrování přihlašovacích paketů. [**Další informace**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
+>Azure Migrate zašifruje komunikaci mezi Azure Migrate zařízením a instancemi SQL Server zdrojového kódu (s vlastností šifrovat připojení nastavenou na hodnotu TRUE). Tato připojení jsou šifrovaná pomocí [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (nastavená na hodnotu true); Transportní vrstva bude používat protokol SSL k šifrování kanálu a obejít řetěz certifikátů k ověření vztahu důvěryhodnosti. Server zařízení musí být nastavený tak, aby [**důvěřoval kořenové autoritě certifikátu**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
+Pokud se při spuštění na serveru nezřídí žádný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem, který se používá k šifrování přihlašovacích paketů. [**Další informace**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
 
 Zjišťování funguje následujícím způsobem:
 

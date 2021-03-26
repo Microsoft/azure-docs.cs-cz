@@ -48,13 +48,13 @@
     - name: Analýza videa v reálném čase
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
     - name: Konfigurace virtuálních sítí
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Upgrade z Read 2.x na Read 3.x
       href: upgrade-api-versions.md
     - name: Jak nakonfigurovat ověřování AAD
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Jak používat spravované klíče zákazníka
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Nasazení Počítačové zpracování obrazu
       items:
         - name: Kontejnery
@@ -155,7 +155,7 @@
     - name: Podpora oblastí
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: NAUČIT se moduly
-      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Podpora & pomoci
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: Dodržování předpisů
