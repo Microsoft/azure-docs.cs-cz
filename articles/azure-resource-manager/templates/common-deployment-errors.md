@@ -4,12 +4,12 @@ description: Popisuje řešení běžných chyb při nasazení prostředků do A
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 6cb2b611e694c6b72e063f3d8ab05b7667a34e29
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888851"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564343"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -23,7 +23,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Řiďte se omezeními názvů účtů úložiště. | [Přeložit název účtu úložiště](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | Ověřte dostupné vlastnosti účtu úložiště. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | V clusteru nebo oblasti nejsou dostupné prostředky nebo nemůžou podporovat požadovanou velikost virtuálního počítače. Opakujte požadavek později nebo si vyžádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)přidělením pro [problémy se systémem Linux, zřizováním a přidělením pro Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) a [odstraňování potíží s přidělováním](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | V clusteru nebo oblasti nejsou dostupné prostředky nebo nemůžou podporovat požadovanou velikost virtuálního počítače. Opakujte požadavek později nebo si vyžádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)přidělením pro [problémy se systémem Linux, zřizováním a přidělením pro Windows](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) a [odstraňování potíží s přidělováním](/troubleshoot/azure/virtual-machines/allocation-failure)|
 | AnotherOperationInProgress | Počkejte na dokončení souběžné operace. | |
 | AuthorizationFailed | Váš účet nebo objekt služby nemá dostatečný přístup k dokončení nasazení. Ověřte, do jaké role účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, když požadovaný poskytovatel prostředků není zaregistrován. | [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](error-register-resource-provider.md) |
 | Důvodu chybného požadavku | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |

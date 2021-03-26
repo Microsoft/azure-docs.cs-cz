@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 257fc6544061c2ef9c3fdbfb8c33bc06ed2db6e3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518717"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566331"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 
@@ -24,7 +24,7 @@ Přečtěte si, jak spustit poznámkové bloky Jupyter přímo ve vašem pracovn
 
 Informace o tom, jak vytvářet a spravovat soubory, včetně poznámkových bloků, najdete v tématu [Vytvoření a Správa souborů ve vašem pracovním prostoru](how-to-manage-files.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
@@ -269,11 +269,11 @@ Pomocí následujících klávesových zkratek můžete snáze procházet a spou
 | Control/Command + Delete      | Odstranit slovo za |                              
 | Ovládací prvek/příkaz +/           | Přepnout komentář na buňku
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
 
-* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se [k ní dostat jenom z virtuální sítě](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro < název instance >. < oblasti >. instances.azureml.ms s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
+* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se [k ní dostat jenom z virtuální sítě](./how-to-secure-training-vnet.md#compute-instance). Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro < název instance >. < oblasti >. instances.azureml.ms s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
     
 ## <a name="next-steps"></a>Další kroky
 

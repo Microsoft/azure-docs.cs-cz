@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702449"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567946"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Mezery mezi funkcemi Azure Media Services V2 a V3
 
@@ -48,6 +48,6 @@ Rozhraní V3 API má na rozdíl od rozhraní v2 API následující funkce. Někt
 
 - Šifrování úložiště na straně klienta pro ochranu prostředků v klidovém úložišti se odebralo v rozhraní V3 API a nahrazuje šifrování služby úložiště pro neaktivní uložená data. Rozhraní API V3 dál fungují s existujícími šifrovanými prostředky úložiště, ale neumožňují vytváření nových.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="terminology-and-entity-changes"></a>Změny v terminologii a entitě
 
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
+Další změny v rozhraní API najdete v tématu věnovaném změnám v [terminologii a entitě](migrate-v-2-v-3-differences-terminology.md) .

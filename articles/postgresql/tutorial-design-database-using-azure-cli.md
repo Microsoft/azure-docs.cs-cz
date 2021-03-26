@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: návrh Azure Database for PostgreSQL-Single server – Azure CLI'
 description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit, nakonfigurovat a dotazovat svůj první Azure Database for PostgreSQL – samostatný server.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 478fc175304a24536d28807915f4a4ec05a7158e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93331875"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605854"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
@@ -28,7 +28,7 @@ V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další 
 
 Ke spuštění příkazů v tomto kurzu můžete použít Azure Cloud Shell v prohlížeči nebo si [nainstalujte Azure CLI]( /cli/azure/install-azure-cli) ve vašem počítači.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]

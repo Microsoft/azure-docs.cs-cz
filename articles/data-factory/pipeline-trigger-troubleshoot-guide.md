@@ -7,12 +7,12 @@ ms.date: 03/13/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461993"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563408"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Řešení potíží s orchestrací kanálu a triggery v Azure Data Factory
 
@@ -95,7 +95,7 @@ Azure Data Factory vyhodnocuje výsledek všech aktivit na úrovni listu. Výsle
 
 * Implementujte kontroly na úrovni aktivity podle následujících pokynů, [jak zpracovat selhání a chyby kanálu](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 * Pomocí Azure Logic Apps můžete sledovat kanály v pravidelných intervalech po [dotazech podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory).
-* [Vizuálně monitorovat kanál](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Vizuálně monitorovat kanál](./monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Jak monitorovat selhání kanálu v pravidelných intervalech
 
@@ -105,7 +105,7 @@ Možná budete muset monitorovat neúspěšné Data Factory kanály v intervalec
 
 **Řešení**
 * Můžete nastavit aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut, jak je popsáno v tématu [dotazování podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory). Potom můžete hlásit incidenty vašemu systému lístků.
-* [Vizuálně monitorovat kanál](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Vizuálně monitorovat kanál](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Zvýšení úrovně paralelismu nevede k vyšší propustnosti.
 
@@ -146,8 +146,8 @@ K tomu může dojít, pokud jste neimplementovali čas do živé funkce pro tok 
 
 **Řešení**
 
-* Pokud spuštění jednotlivých aktivit kopírování trvá až 2 minuty a k problému dochází hlavně u připojení k virtuální síti (a ne u prostředí Azure IR), může se jednat o problém s výkonem kopírování. Pokud chcete zkontrolovat postup řešení potíží, podívejte se na téma [vylepšení pro kopírování výkonu.](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)
-* K snížení doby spuštění clusteru pro aktivity toku dat můžete použít funkci Time to Live. Zkontrolujte prosím [Integration runtime toku dat.](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime)
+* Pokud spuštění jednotlivých aktivit kopírování trvá až 2 minuty a k problému dochází hlavně u připojení k virtuální síti (a ne u prostředí Azure IR), může se jednat o problém s výkonem kopírování. Pokud chcete zkontrolovat postup řešení potíží, podívejte se na téma [vylepšení pro kopírování výkonu.](./copy-activity-performance-troubleshooting.md)
+* K snížení doby spuštění clusteru pro aktivity toku dat můžete použít funkci Time to Live. Zkontrolujte prosím [Integration runtime toku dat.](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>Problémy s kapacitou v SHIR (Integration Runtime pro osobní hostování)
  
@@ -157,7 +157,7 @@ K tomu může dojít, pokud jste neSHIRi škálování podle vašich úloh.
 
 **Řešení**
 
-* Pokud narazíte na problém s kapacitou z SHIR, upgradujte virtuální počítač, aby se uzel zvýšil pro vyrovnání aktivit. Pokud se vám zobrazí chybová zpráva o obecném selhání nebo chybě v místním prostředí IR, místním prostředí s podporou INFRAČERVENého připojení nebo potížích s INFRAČERVENým připojením, které může generovat dlouhou frontu, přečtěte si [řešení potíží s místním hostováním prostředí Integration runtime.](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide)
+* Pokud narazíte na problém s kapacitou z SHIR, upgradujte virtuální počítač, aby se uzel zvýšil pro vyrovnání aktivit. Pokud se vám zobrazí chybová zpráva o obecném selhání nebo chybě v místním prostředí IR, místním prostředí s podporou INFRAČERVENého připojení nebo potížích s INFRAČERVENým připojením, které může generovat dlouhou frontu, přečtěte si [řešení potíží s místním hostováním prostředí Integration runtime.](./self-hosted-integration-runtime-troubleshoot-guide.md)
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>Chybové zprávy z důvodu dlouhých front pro kopírování a tok dat ADF
 
@@ -166,10 +166,10 @@ K tomu může dojít, pokud jste neSHIRi škálování podle vašich úloh.
 Z různých důvodů se můžou zobrazit chybové zprávy týkající se dlouhých front. 
 
 **Řešení**
-* Pokud obdržíte chybovou zprávu z libovolného zdroje nebo cíle přes konektory, které můžou generovat dlouhou frontu, přečtěte si [Průvodce řešením potíží s konektorem.](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide)
-* Pokud se zobrazí chybová zpráva týkající se toku mapování dat, který může generovat dlouhou frontu, přečtěte si [Průvodce řešením potíží s datovými toky.](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide)
-* Pokud se vám zobrazí chybová zpráva o dalších aktivitách, jako jsou například datacihly, vlastní aktivity nebo HDI, které mohou generovat dlouhou frontu, přečtěte si [Průvodce řešením potíží s aktivitami.](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide)
-* Pokud se vám zobrazí chybová zpráva týkající se spouštění balíčků SSIS, která může generovat dlouhou frontu, přečtěte si [příručku k odstraňování potíží se službou Azure-SSIS](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq) a Průvodce odstraňováním [potíží se správou Integration runtime.](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)
+* Pokud obdržíte chybovou zprávu z libovolného zdroje nebo cíle přes konektory, které můžou generovat dlouhou frontu, přečtěte si [Průvodce řešením potíží s konektorem.](./connector-troubleshoot-guide.md)
+* Pokud se zobrazí chybová zpráva týkající se toku mapování dat, který může generovat dlouhou frontu, přečtěte si [Průvodce řešením potíží s datovými toky.](./data-flow-troubleshoot-guide.md)
+* Pokud se vám zobrazí chybová zpráva o dalších aktivitách, jako jsou například datacihly, vlastní aktivity nebo HDI, které mohou generovat dlouhou frontu, přečtěte si [Průvodce řešením potíží s aktivitami.](./data-factory-troubleshoot-guide.md)
+* Pokud se vám zobrazí chybová zpráva týkající se spouštění balíčků SSIS, která může generovat dlouhou frontu, přečtěte si [příručku k odstraňování potíží se službou Azure-SSIS](./ssis-integration-runtime-ssis-activity-faq.md) a Průvodce odstraňováním [potíží se správou Integration runtime.](./ssis-integration-runtime-management-troubleshoot.md)
 
 
 ## <a name="next-steps"></a>Další kroky

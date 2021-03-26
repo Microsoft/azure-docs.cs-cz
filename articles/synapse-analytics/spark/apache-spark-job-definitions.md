@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176616"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608741"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
@@ -25,10 +25,13 @@ Tento kurz se zabývá následujícími úkony:
 > - Vytvoření definice úlohy Apache Spark pro PySpark (Python)
 > - Vytvoření definice úlohy Apache Spark pro Spark (Scala)
 > - Vytvoření definice úlohy Apache Spark pro .NET Spark (C#/F #)
+> - Vytvoření definice úlohy importem souboru JSON
+> - Export souboru definice Apache Spark úlohy do místní skupiny
 > - Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 > - Přidání definice úlohy Apache Spark do kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
@@ -36,6 +39,7 @@ Než začnete s tímto kurzem, ujistěte se, že splňujete následující poža
 * Apache Spark fond bez serveru.
 * ADLS Gen2 účet úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** , se kterým chcete pracovat adls Gen2 systému souborů. Pokud ne, budete muset oprávnění přidat ručně.
 * Pokud nechcete používat výchozí úložiště pracovního prostoru, propojte požadovaný účet úložiště ADLS Gen2 v synapse studiu. 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Vytvoření definice úlohy Apache Spark pro PySpark (Python)
 
@@ -160,6 +164,57 @@ V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#/F #)
 
       ![publikovat definici dotnet](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>Vytvoření definice úlohy Apache Spark importem souboru JSON
+
+ Existující místní soubor JSON můžete importovat do služby Azure synapse Workspace z Apache Spark nabídky **Akce** (...) v Průzkumníkovi definice úlohy a vytvořit novou Apache Spark definici úlohy.
+
+ ![Vytvořit definici importu](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ Definice úlohy Spark je plně kompatibilní s rozhraním API Livy. Do místního souboru JSON můžete přidat další parametry pro jiné vlastnosti Livy [(Livy docs-REST API (Apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) . Můžete také zadat parametry související s konfigurací Sparku v konfigurační vlastnosti, jak je znázorněno níže. Pak můžete soubor JSON importovat zpátky a vytvořit novou Apache Spark definici úlohy pro dávkovou úlohu. Příklad JSON pro import definice Spark:
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![Další vlastnosti Livy](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>Exportovat existující soubor definice úlohy Apache Spark
+
+ Stávající soubory definice úlohy Apache Spark můžete exportovat do místní nabídky **Akce** (...) v Průzkumníkovi souborů. Můžete dále aktualizovat soubor JSON pro další vlastnosti Livy a v případě potřeby ho importovat zpátky a vytvořit novou definici úlohy.
+
+ ![Vytvořit definici exportu](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![Vytvořit definici exportu 2](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 
 Po vytvoření Apache Spark definice úlohy ji můžete odeslat do fondu Apache Spark. Ujistěte se, že jste **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
@@ -202,6 +257,7 @@ V této části přidáte do kanálu definici úlohy Apache Spark.
      ![Přidat do pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![Přidat do pipeline2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>Další kroky
 

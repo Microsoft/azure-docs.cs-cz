@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 2744d51b6d68ed494050be10a9f0e4d1f59cdc49
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204061"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566349"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>Konfigurace prostředí Azure-SSIS Integration runtime pro provozní kontinuitu a zotavení po havárii (BCDR) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102204061"
 
 Azure SQL Database/spravované instance a služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory (ADF) se dají pro SQL Server migraci kombinovat jako doporučené řešení PaaS (All-Platform as a Service). Projekty SSIS můžete nasadit do služby SSIS Catalog Database (SSISDB) hostované pomocí Azure SQL Database/spravované instance a své balíčky SSIS Spustit v Azure SSIS Integration runtime (IR) v ADF.
 
-Pro zajištění provozní kontinuity a zotavení po havárii (BCDR) se dá Azure SQL Database/spravovaná instance nakonfigurovat se [skupinou geografické replikace/převzetí služeb při selhání](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview), kde SSISDB v primární oblasti Azure s přístupem pro čtení i zápis (primární role) se průběžně replikuje do sekundární oblasti s přístupem jen pro čtení (sekundární role). Pokud dojde k havárii v primární oblasti, aktivuje se převzetí služeb při selhání, ve kterém se primární a sekundární SSISDBs přemění role.
+Pro zajištění provozní kontinuity a zotavení po havárii (BCDR) se dá Azure SQL Database/spravovaná instance nakonfigurovat se [skupinou geografické replikace/převzetí služeb při selhání](../azure-sql/database/auto-failover-group-overview.md), kde SSISDB v primární oblasti Azure s přístupem pro čtení i zápis (primární role) se průběžně replikuje do sekundární oblasti s přístupem jen pro čtení (sekundární role). Pokud dojde k havárii v primární oblasti, aktivuje se převzetí služeb při selhání, ve kterém se primární a sekundární SSISDBs přemění role.
 
 V případě BCDR můžete také nakonfigurovat dvojice SSIS IR s duálním pohotovostním režimem, která funguje v synchronizaci se skupinou převzetí služeb při selhání Azure SQL Database/Managed instance. To vám umožňuje mít dvojici běžícího finančního úřadu Azure-SSIS, který v kterémkoli okamžiku získá přístup k primárnímu SSISDBu, aby bylo možné načíst a spustit balíčky, a také zapisovat protokoly spouštění balíčků (primární role), zatímco druhá může stejnou akci udělat jenom pro balíčky nasazené někde jinde, například v souborech Azure (sekundární role). Když dojde k převzetí služeb při selhání SSISDB, primární a sekundární finanční úřad Azure-SSIS také přemění role a pokud budou obě spuštěné, dojde k téměř nulovému výpadku.
 
@@ -39,7 +39,7 @@ Pokud chcete nakonfigurovat dvojici s duálním pohotovostním Azure-SSIS IR, kt
 
    Pokud se [rozhodnete použít SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) na stránce **nastavení nasazení** v podokně **instalace prostředí Integration runtime** , zaškrtněte políčko **použít dvojici duálního úsporného režimu Azure-SSIS Integration runtime dvojici s převzetím služeb při selhání SSISDB** . Jako **název dvojice duálního úsporného režimu** zadejte název pro identifikaci páru primárních a sekundárních úřadů Azure-SSIS. Po dokončení vytváření primárního Azure-SSIS IR se spustí a připojí k primárnímu SSISDB, který bude vytvořen vaším jménem s přístupem pro čtení i zápis. Pokud jste ho právě překonfigurovali, musíte ho restartovat.
 
-1. Pomocí Azure Portal můžete ověřit, zda byl primární SSISDB vytvořen na stránce **Přehled** na primárním serveru Azure SQL Database. Po vytvoření můžete [pro primární a sekundární Azure SQL Database servery vytvořit skupinu převzetí služeb při selhání a přidat do ní SSISDB](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) na stránce **skupiny převzetí služeb při selhání** . Po vytvoření skupiny převzetí služeb při selhání můžete ověřit, zda byl primární SSISDB replikován do sekundárního serveru s přístupem jen pro čtení na stránce **Přehled** sekundárního serveru Azure SQL Database.
+1. Pomocí Azure Portal můžete ověřit, zda byl primární SSISDB vytvořen na stránce **Přehled** na primárním serveru Azure SQL Database. Po vytvoření můžete [pro primární a sekundární Azure SQL Database servery vytvořit skupinu převzetí služeb při selhání a přidat do ní SSISDB](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#2---create-the-failover-group) na stránce **skupiny převzetí služeb při selhání** . Po vytvoření skupiny převzetí služeb při selhání můžete ověřit, zda byl primární SSISDB replikován do sekundárního serveru s přístupem jen pro čtení na stránce **Přehled** sekundárního serveru Azure SQL Database.
 
 1. Pomocí Azure Portal/uživatelského rozhraní ADF můžete vytvořit další Azure-SSIS IR se sekundárním serverem Azure SQL Database k hostování SSISDB v sekundární oblasti. Toto budou sekundární Azure-SSIS IR. V případě úplných BCDR se ujistěte, že jsou v sekundární oblasti také vytvořeny všechny prostředky, na kterých závisí, například Azure Storage pro uložení vlastního instalačního skriptu nebo souborů, ADF pro orchestraci/plánování spouštění balíčků atd.
 
@@ -51,13 +51,13 @@ Pokud chcete nakonfigurovat dvojici s duálním pohotovostním Azure-SSIS IR, kt
 
 1. Pokud [použijete ADF pro orchestraci nebo plánování provádění balíčků](./how-to-invoke-ssis-package-ssis-activity.md), ujistěte se, že všechny relevantní kanály ADF s SSIS aktivitami balíčků a přidruženými aktivačními událostmi se zkopírují do sekundárního ADF s zpočátku zakázanými triggery. Když dojde k převzetí služeb při selhání SSISDB, je potřeba je povolit.
 
-1. Můžete [otestovat svou Azure SQL Database skupinu převzetí služeb při selhání](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#3---test-failover) a zkontrolovat na [stránce monitorování Azure-SSIS IR na portálu ADF](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , jestli vaše primární a sekundární finanční úřad Azure-SSIS přeměnila role. 
+1. Můžete [otestovat svou Azure SQL Database skupinu převzetí služeb při selhání](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#3---test-failover) a zkontrolovat na [stránce monitorování Azure-SSIS IR na portálu ADF](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , jestli vaše primární a sekundární finanční úřad Azure-SSIS přeměnila role. 
 
 ## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-managed-instance-failover-group"></a>Nakonfigurujte dvojici s duálním pohotovostním Azure-SSIS IR se skupinou převzetí služeb při selhání spravované instance SQL Azure.
 
 Pokud chcete nakonfigurovat dvojici s duálním pohotovostním Azure-SSIS IR, která funguje v synchronizaci se skupinou převzetí služeb při selhání spravované instance Azure SQL, proveďte následující kroky.
 
-1. Pomocí Azure Portal můžete [vytvořit skupinu převzetí služeb při selhání pro primární a sekundární spravované instance SQL Azure](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal) na stránce **skupiny převzetí služeb při selhání** vaší primární spravované instance Azure SQL.
+1. Pomocí Azure Portal můžete [vytvořit skupinu převzetí služeb při selhání pro primární a sekundární spravované instance SQL Azure](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal) na stránce **skupiny převzetí služeb při selhání** vaší primární spravované instance Azure SQL.
 
 1. Pomocí Azure Portal/uživatelského rozhraní ADF můžete vytvořit novou Azure-SSIS IR pomocí primární spravované instance Azure SQL k hostování SSISDB v primární oblasti. Pokud máte existující Azure-SSIS IR, která je už připojená k SSIDB, jejímž hostitelem je vaše primární spravovaná instance Azure SQL, a pořád je spuštěná, musíte ji nejdřív zastavit a znovu ji nakonfigurovat. Toto bude primární Azure-SSIS IR.
 
@@ -112,7 +112,7 @@ Pokud chcete nakonfigurovat dvojici s duálním pohotovostním Azure-SSIS IR, kt
 
 1. Pokud [použijete ADF pro orchestraci nebo plánování provádění balíčků](./how-to-invoke-ssis-package-ssis-activity.md), ujistěte se, že všechny relevantní kanály ADF s SSIS aktivitami balíčků a přidruženými aktivačními událostmi se zkopírují do sekundárního ADF s zpočátku zakázanými triggery. Když dojde k převzetí služeb při selhání SSISDB, je potřeba je povolit.
 
-1. Můžete [otestovat skupinu převzetí služeb při selhání spravované instance SQL Azure](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal#test-failover) a zkontrolovat [Azure-SSIS IR stránku monitorování na portálu ADF](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , ať už vaše primární a sekundární finanční úřad Azure-SSIS prohozené role. 
+1. Můžete [otestovat skupinu převzetí služeb při selhání spravované instance SQL Azure](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal#test-failover) a zkontrolovat [Azure-SSIS IR stránku monitorování na portálu ADF](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) , ať už vaše primární a sekundární finanční úřad Azure-SSIS prohozené role. 
 
 ## <a name="attach-a-new-azure-ssis-ir-to-existing-ssisdb-hosted-by-azure-sql-databasemanaged-instance"></a>Připojení nového Azure-SSIS IR k existujícímu SSISDB hostovanému pomocí Azure SQL Database/spravované instance
 

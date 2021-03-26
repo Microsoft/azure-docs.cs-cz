@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881025"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606959"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Vyhrazené fyzické zabezpečení HSM Azure
 
@@ -25,7 +25,7 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure vám pomůže splnit pokroči
 
 ## <a name="security-through-procurement"></a>Zabezpečení prostřednictvím nákupů
 
-Microsoft se řídí zabezpečeným procesem zadávání. Spravujeme řetěz úschovy a zajišťují, že konkrétní zařízení, které obchází a dodává, je zařízení přicházející v našich datových centrech. Zařízení jsou v případě neoprávněných plastů. Jsou uloženy v zabezpečené oblasti úložiště, dokud neproběhne v galerii dat v datovém centru.  Stojany, které obsahují zařízení HSM, se považují za vysoký dopad na firmu (HBI). Zařízení jsou zamčená a v rámci kontroly videa jsou neustále vpřed a zpět.
+Microsoft se řídí zabezpečeným procesem zadávání. Spravujeme řetěz úschovy a zajišťují, že konkrétní zařízení, které obchází a dodává, je zařízení přicházející v našich datových centrech. Tato zařízení jsou v serializovaných obalech a kontejnerech plastických neoprávněných událostí. Jsou uloženy v zabezpečené oblasti úložiště, dokud neproběhne v galerii dat v datovém centru.  Stojany, které obsahují zařízení HSM, se považují za vysoký dopad na firmu (HBI). Zařízení jsou zamčená a v rámci kontroly videa jsou neustále vpřed a zpět.
 
 ## <a name="security-through-deployment"></a>Zabezpečení prostřednictvím nasazení
 
@@ -49,7 +49,7 @@ Pokud má inženýr Microsoftu přístup k stojanu, který používají zaříze
 
 ## <a name="logical-level-security-considerations"></a>Požadavky na zabezpečení logické úrovně
 
-HSM se zřídí pro virtuální síť vytvořenou zákazníkem. Toto je soukromý adresní prostor IUP zákazníka.  Tato konfigurace poskytuje cennou izolaci na úrovni logické sítě a zajišťuje přístup pouze pro zákazníka. To znamená, že všechny ovládací prvky zabezpečení logické úrovně jsou zodpovědností zákazníka.
+HSM se zřídí pro virtuální síť vytvořenou zákazníkem v rámci privátního adresního prostoru IP adres zákazníka.  Tato konfigurace poskytuje cennou izolaci na úrovni logické sítě a zajišťuje přístup pouze pro zákazníka. To znamená, že všechny ovládací prvky zabezpečení logické úrovně jsou zodpovědností zákazníka.
 
 ## <a name="next-steps"></a>Další kroky
 

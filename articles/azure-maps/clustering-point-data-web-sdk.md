@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044183"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608353"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
@@ -26,7 +26,7 @@ Při vizualizaci řady datových bodů na mapě se mohou datové body překrýva
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Povolení clusteringu u zdroje dat
 
-Povolte clusteringu ve `DataSource` třídě nastavením `cluster` Možnosti na hodnotu true. Nastavte `clusterRadius` Výběr okolních bodů a zkombinujete je do clusteru. Hodnota `clusterRadius` je v pixelech. Použijte `clusterMaxZoom` k určení úrovně přiblížení, na které se má zakázat logika clusteringu. Tady je příklad, jak povolit clusteringu ve zdroji dat.
+Povolte clusteringu ve `DataSource` třídě nastavením `cluster` Možnosti na `true` . Nastavte `clusterRadius` Výběr okolních bodů a zkombinujete je do clusteru. Hodnota `clusterRadius` je v pixelech. Použijte `clusterMaxZoom` k určení úrovně přiblížení, na které se má zakázat logika clusteringu. Tady je příklad, jak povolit clusteringu ve zdroji dat.
 
 ```javascript
 //Create a data source and enable clustering.

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 50aaae9e71ac9de366ee4db1981e633491094946
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2ea671a6d44d12b3b37d5d06fa9405b7c589cdf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199963"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559413"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura připojení v Azure Database for MariaDB
 Tento článek popisuje architekturu připojení Azure Database for MariaDB a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MariaDB od klientů v rámci i mimo Azure.
@@ -111,7 +111,7 @@ Vyřazeny se budou jenom uzly bran. Když se uživatelé připojí ke svým serv
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Jak se dá ověřit, jestli se vaše připojení budou stará o uzly brány nebo nové uzly brány?
 Použijte například příkaz pro zadání názvu FQDN vašeho serveru  ``ping xxx.mariadb.database.azure.com`` . Pokud je vrácená IP adresa jednou z IP adres uvedených v části IP adresy brány (vyřazení z provozu) v dokumentu výše, znamená to, že vaše připojení prochází starou bránou. Naopak, pokud je vrácená IP adresa jednou z IP adres uvedených v části IP adresy brány, znamená to, že vaše připojení prochází novou bránou.
 
-Můžete také otestovat [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) nebo TCPPing databázového serveru z klientské aplikace pomocí portu 3306 a zajistit, aby návratová IP adresa nebyla jednou z vyřazení IP adres.
+Můžete také otestovat [PSPing](/sysinternals/downloads/psping) nebo TCPPing databázového serveru z klientské aplikace pomocí portu 3306 a zajistit, aby návratová IP adresa nebyla jednou z vyřazení IP adres.
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Návody vědět, kdy probíhá údržba, a zobrazí se další oznámení, když se staré IP adresy vyřadí z provozu?
 Po zahájení práce údržby obdržíte e-mail s informací o tom, jak se vám bude informovat. Údržba může trvat až jeden měsíc v závislosti na počtu serverů, které potřebujeme migrovat v Al oblastech. Připravte prosím klienta, aby se připojil k databázovému serveru pomocí plně kvalifikovaného názvu domény, nebo použijte novou IP adresu z tabulky výše. 

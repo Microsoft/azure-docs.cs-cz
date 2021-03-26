@@ -3,12 +3,12 @@ title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
 ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 4a6ca7fb5086401cab58d4bfb6a412089c11ef05
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868150"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564301"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -61,7 +61,7 @@ Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obe
 
 Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 
-- [Zásady zabezpečení AKS pod](../../../aks/use-pod-security-policies.md) a doplněk Azure Policy pro AKS nelze povolit současně. Další informace najdete v tématu [omezení zabezpečení AKS pod](../../../aks/use-pod-security-on-azure-policy.md#limitations).
+- [Zásady zabezpečení AKS pod](../../../aks/use-pod-security-policies.md) a doplněk Azure Policy pro AKS nelze povolit současně. Další informace najdete v tématu [omezení zabezpečení AKS pod](../../../aks/use-azure-policy.md).
 - Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_, _gatekeeper-System_ a _AKS-Periscope_.
 
 ## <a name="recommendations"></a>Doporučení
@@ -201,7 +201,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
 1. Nainstalujte [Helm 3](https://v3.helm.sh/docs/intro/install/).
 
-1. Váš cluster Kubernetes je povolený pro Azure ARC. Další informace najdete v tématu připojení [clusteru Kubernetes ke službě Azure ARC](../../../azure-arc/kubernetes/connect-cluster.md).
+1. Váš cluster Kubernetes je povolený pro Azure ARC. Další informace najdete v tématu připojení [clusteru Kubernetes ke službě Azure ARC](../../../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
 1. Máte plně kvalifikované ID prostředku Azure pro cluster Kubernetes s povoleným ARC Azure.
 

@@ -1,14 +1,14 @@
 ---
 title: Přehled agenta připojeného počítače
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470485"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609223"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -18,6 +18,8 @@ Agent počítače připojené k serverům s podporou Azure ARC vám umožní spr
 >Počínaje obecným vydáním serverů s podporou Azure ARC v září 2020 budou všechny předběžné verze agenta připojeného počítače Azure (agenti s verzemi nižšími než 1,0) od **2. února 2021** **zastaralé** .  Tento časový rámec vám umožní upgradovat na verzi 1,0 nebo vyšší, než předem vypraví agenti nebudou moct komunikovat se službou servery s podporou Azure ARC.
 
 ## <a name="agent-component-details"></a>Podrobnosti komponenty agenta
+
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Přehled agentů serverů s podporou ARC" border="false":::
 
 Balíček agenta připojeného počítače Azure obsahuje několik logických součástí, které jsou společné pro dohromady.
 
@@ -67,7 +69,7 @@ Balíček agenta připojeného počítače Azure pro Windows a Linux si můžete
 
 Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace najdete [tady](manage-agent.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="supported-environments"></a>Podporovaná prostředí
 

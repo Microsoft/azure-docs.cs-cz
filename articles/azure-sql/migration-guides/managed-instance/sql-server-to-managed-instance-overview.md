@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 529bc5468c74ac9d50f64decad29fd070a7bda83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024893"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566927"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,7 +90,7 @@ V následující tabulce jsou uvedené doporučené nástroje pro migraci:
 
 |Technologie | Popis|
 |---------|---------|
-| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Azure Migrate pro Azure SQL vám umožní zjišťovat a hodnotit vaše datové úložiště SQL ve velkém měřítku, pokud je na VMware, a poskytuje doporučení pro nasazení SQL Azure, cílovou velikost a měsíční odhady. | 
+| [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | Azure Migrate pro Azure SQL vám umožní zjišťovat a hodnotit vaše datové úložiště SQL ve velkém měřítku, pokud je na VMware, a poskytuje doporučení pro nasazení SQL Azure, cílovou velikost a měsíční odhady. | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Služba Azure první strany, která podporuje migraci v režimu offline pro aplikace, které můžou během procesu migrace dovolit výpadky. Na rozdíl od nepřetržité migrace v online režimu spustí migrace offline režimu jednorázové obnovení úplné zálohy databáze ze zdroje do cíle. | 
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | Spravovaná instance SQL podporuje obnovení nativních záloh databáze SQL Server (soubory. bak), což usnadňuje možnost migrace pro zákazníky, kteří můžou poskytovat úplné zálohy databází do Azure Storage. Úplné a rozdílové zálohy se také podporují a zdokumentují v [části assety migrace](#migration-assets) dále v tomto článku.| 
 |[Služba pro opětovné přehrání protokolů (LRS)](../../managed-instance/log-replay-service-migrate.md) | Toto je cloudová služba povolená pro spravovanou instanci založenou na technologii SQL Server přenosů protokolů. díky tomu je možnost migrace pro zákazníky, kteří můžou poskytovat úplné, rozdílové a zaprotokolované zálohy databáze do služby Azure Storage. LRS se používá k obnovení záložních souborů z Azure Blob Storage do spravované instance SQL.| 
@@ -212,7 +212,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
+Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](../../in-memory-oltp-overview.md) .
 
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 
 

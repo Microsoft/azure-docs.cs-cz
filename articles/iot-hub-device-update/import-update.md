@@ -6,22 +6,22 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565635"
+ms.locfileid: "105608523"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). Doporučujeme pro IoT Hub použít úroveň S1 (Standard) nebo vyšší. 
+* [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). 
 * Zařízení IoT (nebo simulátor) zřízené pro aktualizaci zařízení v IoT Hub.
    * Pokud používáte reálné zařízení, budete potřebovat soubor s obrázkem aktualizace pro aktualizaci Image nebo [soubor manifestu apt](device-update-apt-manifest.md) pro aktualizaci balíčku.
-* [PowerShell 5](/powershell/scripting/install/installing-powershell) nebo novější.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) nebo novější (zahrnuje instalace pro Linux, MacOS a Windows)
 * Podporované prohlížeče:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome

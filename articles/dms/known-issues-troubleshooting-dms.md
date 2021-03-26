@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 785567685b77183df0f212897b923d911ac045f6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962276"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567303"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
 
@@ -102,7 +102,7 @@ Pokud se pokoušíte připojit ke zdroji v průvodci projektem služby Azure Dat
 
 | Příčina         | Řešení    |
 | ------------- | ------------- |
-| Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [vyžaduje](./tutorial-sql-server-azure-sql-online.md) Azure Database Migration Service zřízení tří koncových bodů služby v podsíti Virtual Network přidružené ke službě:<br> --Service Bus koncový bod<br> – Koncový bod úložiště<br> --Koncový bod cílové databáze (například koncový bod SQL, koncový bod Cosmos DB)<br><br><br><br><br> | [Povolte](./tutorial-sql-server-azure-sql-online.md) pro připojení ExpressRoute mezi zdrojem a Azure Database Migration Service požadované koncové body služby. <br><br><br><br><br><br><br><br> |
+| Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [vyžaduje](./tutorial-sql-server-to-azure-sql.md) Azure Database Migration Service zřízení tří koncových bodů služby v podsíti Virtual Network přidružené ke službě:<br> --Service Bus koncový bod<br> – Koncový bod úložiště<br> --Koncový bod cílové databáze (například koncový bod SQL, koncový bod Cosmos DB)<br><br><br><br><br> | [Povolte](./tutorial-sql-server-to-azure-sql.md) pro připojení ExpressRoute mezi zdrojem a Azure Database Migration Service požadované koncové body služby. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Při migraci databáze MySQL do Azure DB pro MySQL se zobrazí chyba časového limitu čekání na uzamčení.
 
@@ -126,7 +126,7 @@ Když se pokusíte připojit Azure Database Migration Service k SQL Servermu zdr
 
 ## <a name="additional-known-issues"></a>Další známé problémy
 
-* [Známé problémy/omezení migrace pro online migrace Azure SQL Database](./known-issues-azure-sql-online.md)
+* [Známé problémy/omezení migrace pro online migrace Azure SQL Database](./index.yml)
 * [Známé problémy/omezení migrace pro online migrace Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Známé problémy/omezení migrace pro online migrace Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 

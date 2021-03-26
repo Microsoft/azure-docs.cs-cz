@@ -7,12 +7,12 @@ ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597381"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565975"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service/Microsoft datavert) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -57,7 +57,7 @@ Tento konektor nepodporuje jiné typy aplikací, jako je finance, operace a tale
 
 Tento konektor Dynamics je postaven nad [nástroji Dynamics XRM](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete tento konektor používat s ověřováním instančního objektu služby Azure AD, musíte v Common Data Service nebo Dynamics nastavit ověřování S2S (Server-to-Server). Podrobné pokyny najdete v [tomto článku](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
 
@@ -370,7 +370,7 @@ Optimální kombinace **writeBatchSize** a **parallelCopies** závisí na schém
 
 Chcete-li načíst data z zobrazení Dynamics, je třeba získat uložený dotaz na zobrazení a použít dotaz k získání dat.
 
-Existují dvě entity, které ukládají různé typy zobrazení: "uložený dotaz" ukládá zobrazení systému a "uživatelský dotaz" ukládá uživatelské zobrazení. Chcete-li získat informace o zobrazeních, přečtěte si následující dotaz FetchXML a nahraďte "TARGETENTITY" pomocí `savedquery` nebo `userquery` . Každý typ entity má více dostupných atributů, které můžete přidat do dotazu podle potřeby. Přečtěte si další informace o [entitách savedquery](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) a entitách [UserQuery](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery).
+Existují dvě entity, které ukládají různé typy zobrazení: "uložený dotaz" ukládá zobrazení systému a "uživatelský dotaz" ukládá uživatelské zobrazení. Chcete-li získat informace o zobrazeních, přečtěte si následující dotaz FetchXML a nahraďte "TARGETENTITY" pomocí `savedquery` nebo `userquery` . Každý typ entity má více dostupných atributů, které můžete přidat do dotazu podle potřeby. Přečtěte si další informace o [entitách savedquery](/dynamics365/customer-engagement/web-api/savedquery) a entitách [UserQuery](/dynamics365/customer-engagement/web-api/userquery).
 
 ```xml
 <fetch top="5000" >

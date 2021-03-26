@@ -7,12 +7,12 @@ ms.reviewer: ''
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: 825204fe40125a65e8e6f27c6973417813700a9e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4a0258d5e448c59baa1cd63e98058fe7116a8485
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744724"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566111"
 ---
 # <a name="migrate-default-hive-metastore-db-to-external-metastore-db"></a>Migrovat výchozí metastore Hive DB do externí databáze metastore
 
@@ -30,7 +30,7 @@ Vzhledem k tomu, že výchozí metastore DB má omezené výpočetní kapacitu, 
 
 Zdrojové a cílové databáze musí používat stejnou verzi HDInsight a stejné účty úložiště. Pokud upgradujete verze HDInsight z 3,6 na 4,0, proveďte nejprve kroky v tomto článku. Pak [postupujte podle oficiálních kroků upgradu](./apache-hive-migrate-workloads.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud používáte [Azure Data Lake Storage Gen1](../overview-data-lake-storage-gen1.md), umístění tabulek podregistru jsou nejspíš závislá na konfiguracích HDFS clusteru pro Azure Data Lake Storage Gen1. Spuštěním následující akce skriptu zajistěte, aby tato umístění byla v ostatních clusterech přenosná. Viz [akce skriptu na běžícím clusteru](../hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster).
 
@@ -46,7 +46,7 @@ Akce je podobná nahrazení symbolických odkazů pomocí jejich úplných cest.
 
 An HDInsight cluster byl vytvořen až poté, co 2020-10-15 podporuje export/import SQL pro podregistr default metastore DB pomocí `sqlpackage` .
 
-1. Nainstalujte [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download#get-sqlpackage-net-core-for-linux) do clusteru.
+1. Nainstalujte [SqlPackage](/sql/tools/sqlpackage-download#get-sqlpackage-net-core-for-linux) do clusteru.
 
 2. Exportujte výchozí metastore DB do souboru BACPAC spuštěním následujícího příkazu.
 

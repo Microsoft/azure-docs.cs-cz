@@ -1,17 +1,17 @@
 ---
 title: Omezení – Azure Database for PostgreSQL – flexibilní Server
 description: Tento článek popisuje omezení Azure Database for PostgreSQL flexibilního serveru, jako je třeba počet připojení a možnosti modulu úložiště.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 9039bbf006d5e5a677247771346a3a6b43781da2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594933"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605395"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Omezení Azure Database for PostgreSQL – flexibilní Server
 

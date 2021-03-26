@@ -1,24 +1,23 @@
 ---
-title: Začínáme se službou Azure Percept audio
+title: Nastavení zvuku Azure Percept
 description: Naučte se připojit své zvukové zařízení Azure Percept ke službě Azure Percept DK.
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
-ms.date: 02/18/2021
-ms.custom: template-quickstart
-ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: fa3dad8cdd38e6db621d8194cc9472430c7c5008
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179268"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605786"
 ---
 # <a name="azure-percept-audio-setup"></a>Nastavení služby Azure Percept audio
 
 Azure Percept audio funguje se službou Azure Percept DK mimo box. Nevyžaduje se žádné jedinečné nastavení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK (DevKit)
 - Zvuk Azure Percept
@@ -28,17 +27,18 @@ Azure Percept audio funguje se službou Azure Percept DK mimo box. Nevyžaduje s
 
 ## <a name="connecting-your-devices"></a>Připojení zařízení
 
-1. Připojte zvukové zařízení Azure Percept k desce služby Azure Percept DK s integrovaným typem Micro USB to USB – kabel. Připojte mikroUSB konec kabelu k panelu pro propojování (vývojářům) a zadejte konec na desku dopravců Percept DK.
-1. (Volitelné) Připojte svůj mluvčí nebo sluchátka k Percept zvuku Azure pomocí zvukové zásuvky, která je označena jako "řádek ven". To vám umožní slyšet zvukové odezvy hlasového asistenta. Pokud nepřipojíte mluvčí nebo sluchátka, budete moci v ukázkovém okně zobrazit odpovědi jako text. 
+1. Připojte zvukové zařízení Azure Percept k desce služby Azure Percept DK s integrovaným typem Micro USB to USB – kabel. Připojte Micro USB konec kabelu k desce zvukového přijímače (pro vývojáře) a zadejte konec na desku dopravce Percept DK.
 
-1. Zapněte DevKit. Indikátor LED, který se L02 na panelu, se změní na blikání, aby označoval, že zařízení bylo zapnuté a že se ověřuje zvuk SoM.
+1. (Volitelné) Připojte svůj mluvčí nebo sluchátka k vašemu zvukovému zařízení Azure Percept přes zvukový konektor, který je označený jako "řádek ven". To vám umožní slyšet zvukové odezvy.
+
+1. Zapněte DevKit. Indikátor LED L02 na panelu zvukového zařízení se změní na blikání, aby označoval, že zařízení bylo zapnuté a že se ověřuje zvuk SoM.
 
 1. Počkejte na dokončení procesu ověřování – může to trvat až 3 minuty.
 
 1. Když vidíte jednu z následujících možností, můžete začít s vytvářením prototypů:
 
-    - Indikátor LED L02 se změní na plnou bílou. To znamená, že ověřování bylo dokončeno a DevKit ještě nebyl nakonfigurován s klíčovým slovem.
-    - Všechny tři diody LED se vypnou modře. To znamená, že ověřování je dokončeno a DevKit je nakonfigurován s klíčovým slovem.
+    - Indikátor LED L02 se změní na Solid bílá: to znamená, že ověřování je hotové a DevKit ještě není nakonfigurovaný s klíčovým slovem.
+    - Všechny tři diody LED jsou modré: to znamená, že ověřování je hotové a DevKit je nakonfigurovaný pomocí klíčového slova.
 
 ## <a name="next-steps"></a>Další kroky
 

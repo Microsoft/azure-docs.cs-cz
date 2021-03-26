@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 14b2c1f98ae977548edb635b8a8a7a956b3f2dd7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 6b8d3afc214f6b78fcc11b3592cd51dadf37bf96
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023771"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564142"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Průvodce migrací: MySQL pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -172,7 +172,7 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 - Nezapomeňte se podívat na [kalkulačku celkových nákladů na vlastnictví Azure](https://aka.ms/azure-tco) , která vám pomůže odhadnout úspory nákladů, které můžete realizovat migrací do Azure.
 
-- Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat a speciálních úlohách, najdete v článku [služba a nástroje pro migraci dat](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+- Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat a speciálních úlohách, najdete v článku [služba a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 
 - Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 

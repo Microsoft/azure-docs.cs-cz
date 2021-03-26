@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 9ee0e8d8fa660313cb007d53c2bbbfc9b19feec9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 43a8004b6cdfe2e074304569b83360101784a87e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889769"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567997"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -129,14 +129,14 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Nainstalováno v Pythonu 3,5 v systémech [Linux](dsvm-tools-languages.md#python-linux-edition) a Python 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a pak spusťte Python. <br/> * Jupyter: Připojte se k [Jupyter](provision-vm.md) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a potom otevřete adresář TensorFlow pro ukázky.   |
 
-## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/tfx/guide/serving)
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.12 |
 | Podporované edice DSVM      | Ubuntu 16.04 |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | tensorflow_model_server je k dispozici v terminálu. |
-| Jak ji spustit      |  Ukázky jsou k dispozici [online](https://www.tensorflow.org/serving/).   |
+| Jak ji spustit      |  Ukázky jsou k dispozici [online](https://www.tensorflow.org/tfx/guide/serving).   |
 
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ef2823b870f76922dd0dc157341aea9b502fb4bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565535"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565879"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>Synchronizace dat mezi několika databázemi pomocí REST API 
 
@@ -31,7 +31,7 @@ Přehled Synchronizace dat SQL najdete v tématu [synchronizace dat napříč n�
 
 ## <a name="create-sync-group"></a>Vytvořit skupinu synchronizace
 
-Pomocí šablony [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) vytvořte skupinu synchronizace.
+Pomocí šablony [vytvořit nebo aktualizovat](/rest/api/sql/syncgroups/createorupdate) vytvořte skupinu synchronizace.
  
 Při vytváření skupiny synchronizace nemusíte předávat schéma synchronizace (table\column) a Nepředávat masterSyncMemberName, protože v této době skupina synchronizace ještě nemá informace table\column.
 
@@ -91,7 +91,7 @@ Stavový kód: 201
 
 ## <a name="create-sync-member"></a>Vytvořit člena synchronizace
 
-K vytvoření člena synchronizace použijte šablonu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) .
+K vytvoření člena synchronizace použijte šablonu [vytvořit nebo aktualizovat](/rest/api/sql/syncmembers/createorupdate) .
 
 Ukázková žádost o vytvoření člena synchronizace:
 
@@ -151,7 +151,7 @@ Stavový kód: 201
 
 Po úspěšném vytvoření skupiny synchronizace aktualizujte schéma pomocí následujících šablon.
 
-K aktualizaci schématu pro databázi centra použijte šablonu [schématu centra aktualizace](https://docs.microsoft.com/rest/api/sql/syncgroups/refreshhubschema)  . 
+K aktualizaci schématu pro databázi centra použijte šablonu [schématu centra aktualizace](/rest/api/sql/syncgroups/refreshhubschema)  . 
 
 Ukázková žádost o aktualizaci schématu databáze centra: 
 
@@ -165,17 +165,17 @@ Stavový kód: 200
 
 Stavový kód: 202
 
-K vypsání schématu databáze centra použijte šablonu [schémat centra seznamu](https://docs.microsoft.com/rest/api/sql/syncgroups/listhubschemas) . 
+K vypsání schématu databáze centra použijte šablonu [schémat centra seznamu](/rest/api/sql/syncgroups/listhubschemas) . 
 
-K aktualizaci schématu členské databáze použijte šablonu [schématu členu aktualizace](https://docs.microsoft.com/rest/api/sql/syncmembers/refreshmemberschema) . 
+K aktualizaci schématu členské databáze použijte šablonu [schématu členu aktualizace](/rest/api/sql/syncmembers/refreshmemberschema) . 
 
-K vypsání schématu databáze člena použijte [seznam šablon schématu členů](https://docs.microsoft.com/rest/api/sql/syncmembers/listmemberschemas) . 
+K vypsání schématu databáze člena použijte [seznam šablon schématu členů](/rest/api/sql/syncmembers/listmemberschemas) . 
 
 Až se schéma úspěšně aktualizuje, přejděte jenom k dalšímu kroku. 
 
 ## <a name="update-sync-group"></a>Aktualizovat skupinu synchronizace 
 
-K aktualizaci skupiny synchronizace použijte šablonu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) .
+K aktualizaci skupiny synchronizace použijte šablonu [vytvořit nebo aktualizovat](/rest/api/sql/syncgroups/createorupdate) .
 
 Aktualizujte skupinu synchronizace zadáním schématu synchronizace. Zahrňte schéma a masterSyncMemberName, což je název, který obsahuje schéma, které chcete použít. 
 
@@ -232,7 +232,7 @@ Ukázková odpověď pro aktualizaci skupiny synchronizace:
 ```
 ## <a name="update-sync-member"></a>Aktualizovat člena synchronizace
 
-K aktualizaci člena synchronizace použijte šablonu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) .
+K aktualizaci člena synchronizace použijte šablonu [vytvořit nebo aktualizovat](/rest/api/sql/syncmembers/createorupdate) .
 
 Ukázková žádost o aktualizaci člena synchronizace: 
 
@@ -291,7 +291,7 @@ Stavový kód: 201
 
 ## <a name="trigger-sync"></a>Spustit synchronizaci
 
-Pomocí šablony [synchronizace triggeru](https://docs.microsoft.com/rest/api/sql/syncgroups/triggersync) spusťte operaci synchronizace.
+Pomocí šablony [synchronizace triggeru](/rest/api/sql/syncgroups/triggersync) spusťte operaci synchronizace.
 
 Ukázková žádost o aktivaci operace synchronizace: 
 

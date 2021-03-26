@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546547"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604137"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Přehled připojení a dotazování Azure Database for PostgreSQL – jeden server
 
@@ -44,7 +44,6 @@ PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíře
 - [Rozšíření Postgres 11](./concepts-extensions.md#postgres-11-extensions)
 - [Rozšíření Postgres 10](./concepts-extensions.md#postgres-10-extensions)
 - [Rozšíření Postgres 9,6](./concepts-extensions.md#postgres-96-extensions)
-- [Rozšíření Postgres 9,5](./concepts-extensions.md#postgres-95-extensions)
 
 Další podrobnosti najdete v článku [Jak používat rozšíření PostgreSQL na jednom serveru](concepts-extensions.md).
 

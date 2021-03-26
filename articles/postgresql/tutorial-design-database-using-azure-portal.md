@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: návrh Azure Database for PostgreSQL-Single server – Azure Portal'
 description: V tomto kurzu se dozvíte, jak navrhnout první Azure Database for PostgreSQL samostatný server pomocí Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 179d4124e28abfffa83b16cfdb418d8e860192d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd7ae71d8c3bc5415654527d5a650e0f09a99168
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93337128"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605811"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Kurz: návrh serveru Azure Database for PostgreSQL-Single pomocí Azure Portal
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následujíc�
 > * Aktualizace dat
 > * Obnovení dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Vytvoření Azure Database for PostgreSQL

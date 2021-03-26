@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098532"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604511"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Zobrazit data o přenosech na mapě (Android SDK)
 
 Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit oba typy dat přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) . Bloky kódu v tomto článku lze vložit do `onReady` obslužné rutiny události Maps.
 
@@ -63,7 +63,7 @@ map.setTraffic(
 
 ::: zone-end
 
-Na následujícím snímku obrazovky vidíte výše uvedený kód rending informace o přenosech dat v reálném čase na mapě.
+Následující snímek obrazovky ukazuje výše uvedený kód pro vykreslování informací o přenosech dat v reálném čase na mapě.
 
 ![Mapa znázorňující informace o provozu v reálném čase](media/how-to-show-traffic-android/android-show-traffic.png)
 
@@ -179,7 +179,7 @@ map.events.add(OnFeatureClick { features: List<Feature>? ->
 
 ::: zone-end
 
-Na následujícím snímku obrazovky vidíte výše uvedený kód rending informace o přenosech dat v reálném čase na mapě s informační zprávou, která zobrazuje podrobnosti o incidentu.
+Na následujícím snímku obrazovky vidíte výše informace o přenosech dat v reálném čase na mapě s informační zprávou, která zobrazuje podrobnosti o incidentu.
 
 ![Mapa znázorňující informace o přenosech v reálném čase pomocí informační zprávy s informacemi o incidentech](media/how-to-show-traffic-android/android-traffic-details.png)
 

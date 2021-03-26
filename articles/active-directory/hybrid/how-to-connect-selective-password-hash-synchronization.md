@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103602993"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604664"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Konfigurace synchronizace hodnot hash selektivního hesla pro Azure AD Connect
 
@@ -36,6 +36,9 @@ Aby se snížila intenzita správy konfigurace, měli byste nejdřív zvážit p
 
 > [!Important]
 > V případě zvolené možnosti konfigurace se při použití změn požadovaná počáteční synchronizace (Úplná synchronizace) provede automaticky v dalším cyklu synchronizace.
+
+> [!Important]
+> Konfigurace selektivní synchronizace hodnot hash hesla přímo ovlivňuje zpětný zápis hesla. Změny hesel nebo resetování hesla, které se iniciují v Azure Active Directory zapisují zpátky do místní služby Active Directory jenom v případě, že je uživatel v oboru pro synchronizaci hodnot hash hesel. 
 
 ### <a name="the-admindescription-attribute"></a>Atribut adminDescription
 Oba scénáře spoléhají na nastavení atributu adminDescription uživatelů na určitou hodnotu.  To umožňuje použít pravidla a je to, co dělá selektivní KOSMETICE práce.
@@ -134,6 +137,9 @@ Po dokončení všech konfigurací potřebujete upravit atribut **adminDescripti
    
   ![Úprava atributu](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+Pomocí následujícího příkazu PowerShellu můžete také upravit atribut **adminDescription** uživatele:
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>Vyloučení uživatelé je větší než zahrnutí uživatelé.
 Následující část popisuje, jak povolit synchronizaci hodnot hash selektivního hesla v případě, že počet uživatelů, kteří mají být **vyloučeni** , je **větší** než počet uživatelů, které chcete **Zahrnout**.
@@ -202,7 +208,9 @@ Po dokončení všech konfigurací potřebujete upravit atribut **adminDescripti
 
   ![Upravit atributy](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ Pomocí následujícího příkazu PowerShellu můžete také upravit atribut **adminDescription** uživatele:
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>Další kroky
 - [Co je synchronizace hodnot hash hesel?](whatis-phs.md)

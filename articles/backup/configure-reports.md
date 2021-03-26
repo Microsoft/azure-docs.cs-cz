@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509355"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562320"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -148,7 +148,7 @@ K dispozici jsou dva typy zobrazení pro dodržování zásad:
 
 * **Dodržování zásad podle časového období**: pomocí tohoto zobrazení můžete určit, kolik položek má mít alespoň jednu úspěšnou zálohu v daném dni a kolika se v daném dnu ještě neúspěšně zálohovaná. Kliknutím na řádek můžete zobrazit podrobnosti o všech úlohách zálohování, které byly aktivovány ve vybraném dni. Všimněte si, že pokud nastavíte časový rozsah na větší hodnotu, například v posledních 60 dnech, mřížka se vykreslí v týdenním zobrazení a zobrazí se počet všech položek, u kterých došlo k nejméně jednomu úspěšnému zálohování každý den v daném týdnu. Podobně existuje měsíční zobrazení pro větší časové rozsahy.
 
-V případě položek, které jsou zálohovány týdně, Tato mřížka vám pomůže identifikovat všechny položky, které v daném týdnu obsahovaly alespoň jednu úspěšnou zálohu. V případě většího časového rozsahu, jako je například posledních 120 dní, se mřížka vykreslí v měsíčním zobrazení a v daném měsíci se zobrazí počet všech položek, které mají alespoň jednu úspěšnou zálohu. [Zásady používané v sestavách zálohování](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) vám pomají více podrobností o každodenních, týdenních a měsíčních zobrazeních.
+V případě položek, které jsou zálohovány týdně, Tato mřížka vám pomůže identifikovat všechny položky, které v daném týdnu obsahovaly alespoň jednu úspěšnou zálohu. V případě většího časového rozsahu, jako je například posledních 120 dní, se mřížka vykreslí v měsíčním zobrazení a v daném měsíci se zobrazí počet všech položek, které mají alespoň jednu úspěšnou zálohu. [Zásady používané v sestavách zálohování](#conventions-used-in-backup-reports) vám pomají více podrobností o každodenních, týdenních a měsíčních zobrazeních.
 
 ![Dodržování zásad podle časového období](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ Jakmile se vytvoří aplikace logiky, budete muset autorizovat připojení k pro
 
 Sestavy zálohování využívají [systémové funkce v protokolech Azure monitor](backup-reports-system-functions.md). Tyto funkce pracují s daty v nezpracovaných Azure Backup tabulkách v LA a vracejí formátovaná data, která vám pomůžou snadno načíst informace o všech entitách souvisejících s zálohováním pomocí jednoduchých dotazů. 
 
-Chcete-li vytvořit vlastní sešity vytváření sestav pomocí sestav zálohování jako základu, můžete přejít k sestavám zálohování, kliknout na **Upravit** v horní části sestavy a zobrazit nebo upravit dotazy používané v sestavách. Další informace o tom, jak vytvářet vlastní sestavy, najdete v [dokumentaci k sešitům Azure](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) . 
+Chcete-li vytvořit vlastní sešity vytváření sestav pomocí sestav zálohování jako základu, můžete přejít k sestavám zálohování, kliknout na **Upravit** v horní části sestavy a zobrazit nebo upravit dotazy používané v sestavách. Další informace o tom, jak vytvářet vlastní sestavy, najdete v [dokumentaci k sešitům Azure](../azure-monitor/visualize/workbooks-overview.md) . 
 
 ## <a name="export-to-excel"></a>Exportovat do aplikace Excel
 

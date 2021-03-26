@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706126"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568031"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Řešení potíží s Azure Data Factory zabezpečení a řízení přístupu
 
@@ -182,7 +182,7 @@ Například: jímka služby Azure Blob Storage používala Azure IR (veřejnou, 
 
 #### <a name="cause"></a>Příčina
 
-ADF může i nadále používat spravovanou virtuální síť IR, ale může dojít k této chybě, protože veřejný koncový bod pro Azure Blob Storage ve spravované virtuální síti není spolehlivý na základě výsledku testování a Azure Blob Storage a Azure Data Lake Gen2 se nepodporují připojení prostřednictvím veřejného koncového bodu Virtual Network ze spravovaných [koncových bodů spravované virtuální sítí &](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network).
+ADF může i nadále používat spravovanou virtuální síť IR, ale může dojít k této chybě, protože veřejný koncový bod pro Azure Blob Storage ve spravované virtuální síti není spolehlivý na základě výsledku testování a Azure Blob Storage a Azure Data Lake Gen2 se nepodporují připojení prostřednictvím veřejného koncového bodu Virtual Network ze spravovaných [koncových bodů spravované virtuální sítí &](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network).
 
 #### <a name="solution"></a>Řešení
 

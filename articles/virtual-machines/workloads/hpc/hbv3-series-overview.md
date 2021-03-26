@@ -1,5 +1,5 @@
 ---
-title: Virtuální počítač HBv3-Series – přehled – Azure Virtual Machines | Microsoft Docs
+title: HBv3-Series VM – přehled, architektura, topologie – Azure Virtual Machines | Microsoft Docs
 description: Přečtěte si o velikosti virtuálního počítače řady HBv3-Series v Azure.
 services: virtual-machines
 author: vermagit
@@ -8,33 +8,90 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d1abd03f517f9e0b13a2994418cbae5cfbe22454
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f78420a65cd9c2402266eb9ba973eabe758d7ee5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801858"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608238"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Přehled virtuálních počítačů s HBv3-Series 
 
 Server [HBv3-Series](../../hbv3-series.md) Features 2 * 64-Core EPYC procesory 7V13 po dobu celkem 128 fyzických jader "Zen3". Souběžné multithreading (SMT) je v HBv3 zakázané. Tyto 128 jádra jsou rozdělené do 16 částí (8 na jeden soket), každý oddíl obsahující 8 procesorových jader s jednotným přístupem k mezipaměti L3 s 32 MB. Servery Azure HBv3 také spouští následující nastavení systému AMD BIOS:
 
 ```bash
-Nodes per Socket =2
+Nodes per Socket (NPS) = 2
 L3 as NUMA = Disabled
+NUMA domains within VM OS = 4
+C-states = Enabled
 ```
 
 V důsledku toho se Server spouští se 4 doménami NUMA (2 na jeden soket), které mají velikost 32 – jader. Každé rozhraní NUMA má přímý přístup ke 4 kanálům fyzického DRAM, který pracuje na 3200. MT/s.
 
-Pro zajištění toho, aby měl hypervisor Azure fungovat, aniž by došlo ke konfliktu s virtuálním počítačem, vyhrazujeme si 8 fyzických jader na server. 
+Pro zajištění toho, aby měl hypervisor Azure fungovat, aniž by došlo ke konfliktu s virtuálním počítačem, vyhrazujeme si 8 fyzických jader na server.
 
-Počítejte s tím, že velikosti virtuálních počítačů s omezeními omezují jenom počet fyzických jader vystavených pro virtuální počítač. Všechny globální sdílené prostředky (RAM, propustnost paměti, mezipaměť L3, GMI a připojení xGMI, InfiniBand, síť Ethernet Azure, místní SSD) zůstávají konstantní. To umožňuje zákazníkovi vybrat velikost virtuálního počítače, která je nejlépe přizpůsobená dané sadě úloh nebo požadavků na licencování softwaru.
+## <a name="vm-topology"></a>Topologie virtuálních počítačů
 
-Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hypervisor (žlutá) a virtuální počítač HBv3-Series (zelený).
-![Oddělení jader rezervovaných pro virtuální počítač s hypervisorem Azure a HBv3-Series](./media/architecture/hbv3-segregation-cores.png)
+Následující diagram znázorňuje topologii serveru. Vyhrazujeme si tyto 8 jader hostitele hypervisoru (žlutě) napříč sokety procesoru, přičemž první 2 jádra z konkrétní základní složitosti (CCDs) v každé doméně NUMA se budou pořizovat pomocí zbývajících jader pro virtuální počítač HBv3-Series (zelený).
+
+![Topologie serveru HBv3-Series](./media/architecture/hbv3/hbv3-topology-server.png)
+
+Všimněte si, že hranice CCD není ekvivalentní hranici NUMA. V HBv3 je skupina čtyř po sobě jdoucích (4) CCDs nakonfigurovaná jako doména NUMA na úrovni serveru hostitele i v rámci virtuálního počítače hosta. Všechny velikosti virtuálních počítačů s HBv3 tak zveřejňují 4 domény NUMA, které se zobrazí v operačním systému a v aplikaci, jak je znázorněno níže, 4 Uniform domén NUMA, z nichž každý má různý počet jader v závislosti na konkrétní [velikosti virtuálního počítače HBv3](../../hbv3-series.md).
+
+![Topologie virtuálního počítače HBv3-Series](./media/architecture/hbv3/hbv3-topology-vm.png)
+
+Velikost každého virtuálního počítače s HBv3 je podobná ve fyzickém rozložení, funkcích a výkonu různých PROCESORů od AMD EPYC 7003-Series, a to takto:
+
+| Velikost virtuálního počítače HBv3-Series             | Domény NUMA | Jader na doménu NUMA  | Podobnost s AMD EPYC         |
+|---------------------------------|--------------|------------------------|----------------------------------|
+Standard_HB120rs_v3               | 4            | 30                     | EPYC 7713 s duálním soketem            |
+Standard_HB120r – 96s_v3            | 4            | 24                     | EPYC 7643 s duálním soketem            |
+Standard_HB120r – 64s_v3            | 4            | 16                     | EPYC 7543 s duálním soketem            |
+Standard_HB120r – 32s_v3            | 4            | 8                      | EPYC 7313 s duálním soketem            |
+Standard_HB120r – 16s_v3            | 4            | 4                      | EPYC 72F3 s duálním soketem            |
+
+> [!NOTE]
+> Velikosti virtuálních počítačů s omezenými jádry omezují jenom počet fyzických jader vystavených pro virtuální počítač. Všechny globální sdílené prostředky (RAM, propustnost paměti, mezipaměť L3, GMI a připojení xGMI, InfiniBand, síť Ethernet Azure, místní SSD) zůstávají konstantní. To umožňuje zákazníkovi vybrat velikost virtuálního počítače, která je nejlépe přizpůsobená dané sadě úloh nebo požadavků na licencování softwaru.
+
+Mapování virtuálních uzlů NUMA jednotlivých velikostí virtuálních počítačů HBv3 je namapováno na podkladovou fyzickou topologii NUMA. Neexistují žádné potenciálně zavádějící abstrakce hardwarové topologie. 
+
+Přesná topologie pro různé [velikosti virtuálních počítačů s HBv3](../../hbv3-series.md) se zobrazí takto: použijte výstup [lstopo](https://linux.die.net/man/1/lstopo):
+```bash
+lstopo-no-graphics --no-io --no-legend --of txt
+```
+<br>
+<details>
+<summary>Kliknutím zobrazíte výstup lstopo pro Standard_HB120rs_v3</summary>
+
+![lstopo výstup pro virtuální počítač HBv3-120](./media/architecture/hbv3/hbv3-120-lstopo.png)
+</details>
+
+<details>
+<summary>Kliknutím zobrazíte výstup lstopo Standard_HB120rs-96_v3</summary>
+
+![lstopo výstup pro virtuální počítač HBv3-96](./media/architecture/hbv3/hbv3-96-lstopo.png)
+</details>
+
+<details>
+<summary>Kliknutím zobrazíte výstup lstopo Standard_HB120rs-64_v3</summary>
+
+![výstup lstopo pro virtuální počítač HBv3-64](./media/architecture/hbv3/hbv3-64-lstopo.png)
+</details>
+
+<details>
+<summary>Kliknutím zobrazíte výstup lstopo Standard_HB120rs-32_v3</summary>
+
+![výstup lstopo pro virtuální počítač s HBv3-32](./media/architecture/hbv3/hbv3-32-lstopo.png)
+</details>
+
+<details>
+<summary>Kliknutím zobrazíte výstup lstopo Standard_HB120rs-16_v3</summary>
+
+![lstopo výstup pro virtuální počítač s HBv3-16](./media/architecture/hbv3/hbv3-16-lstopo.png)
+</details>
 
 ## <a name="infiniband-networking"></a>InfiniBand sítě
 Virtuální počítače s HBv3 také vypracují síťové adaptéry NVIDIA Mellanox HDR InfiniBand (ConnectX-6), které fungují až 200 gigabitů za sekundu. Síťové rozhraní se předá přes SRIOV k virtuálnímu počítači a povoluje tak použití síťového provozu k obejít hypervisor. V důsledku toho zákazníci načtou standardní ovladače Mellanox OFED na virtuální počítače HBv3, protože by to byly holé prostředí.

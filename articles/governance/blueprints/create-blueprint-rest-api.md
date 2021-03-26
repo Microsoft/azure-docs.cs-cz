@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření podrobného plánu pomocí REST API'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí REST API.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915620"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558971"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rychlý Start: definování a přiřazení Azure Blueprint s REST API
 
@@ -329,7 +329,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
 - `{YourMG}` – Nahraďte ID vaší skupiny pro správu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
-1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je static ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), ale ID instančního objektu se liší podle tenanta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), která má jinou autorizaci.
+1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je static ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), ale ID instančního objektu se liší podle tenanta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist), která má jinou autorizaci.
 
    - Identifikátor URI v REST API
 
@@ -337,7 +337,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Parametry **contributors** a **owners** vyžadují pole identifikátorů objectId objektů, kterým bude udělena přiřazená role. Ke shromáždění identifikátorů objectId, které se použijí v **textu žádosti** pro vlastní uživatele, skupiny nebo instanční objekty, použijte [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md).
+1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Parametry **contributors** a **owners** vyžadují pole identifikátorů objectId objektů, kterým bude udělena přiřazená role. Ke shromáždění identifikátorů objectId, které se použijí v **textu žádosti** pro vlastní uživatele, skupiny nebo instanční objekty, použijte [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist).
 
    - Identifikátor URI v REST API
 

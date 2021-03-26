@@ -8,16 +8,16 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e8019a30d4f5bf24814d88fc749cefd6b529b73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609120"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563391"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurace společného prodeje pro komerční nabídku na webu Marketplace
 
-Tento článek popisuje, jak nakonfigurovat **společný prodej pomocí karty Microsoftu** pro komerční nabídku na webu Marketplace. Poskytování informací na této kartě je zcela volitelné, ale je nutné, aby se dosáhlo společného prodejního [stavu motivovaní a IP adresy v rámci](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)prodeje. Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Tyto informace nejsou k dispozici přímo pro zákazníky. Další informace o společném prodeji najdete v tématu [společný prodej s přehledem prodejců a partnerů Microsoftu](marketplace-co-sell.md) a [spolupráci s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Tento článek popisuje, jak nakonfigurovat **společný prodej pomocí karty Microsoftu** pro komerční nabídku na webu Marketplace. Poskytování informací na této kartě je zcela volitelné, ale je nutné, aby se dosáhlo společného prodejního [stavu motivovaní a IP adresy v rámci](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)prodeje. Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Tyto informace nejsou k dispozici přímo pro zákazníky. Další informace o společném prodeji najdete v tématu [společný prodej s přehledem prodejců a partnerů Microsoftu](marketplace-co-sell.md) a [spolupráci s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Možnost společného prodeje je k dispozici pro následující typy nabídek.
 

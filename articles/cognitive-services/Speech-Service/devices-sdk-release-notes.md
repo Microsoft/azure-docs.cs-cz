@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 37bbc8c7c2b81c22ffd8704e655805cc63cd9d45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044987"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607129"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
@@ -107,7 +107,7 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 **Změny způsobující chyby**
 
 - V této verzi se zavádí určitý počet nejnovějších změn. Podrobnosti o rozhraních API najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
-- Soubory modelu KWS nejsou kompatibilní se sadou Speech SDK pro 1.0.1. Existující soubory klíčových slov budou odstraněny po zápisu nových souborů klíčových slov do zařízení.
+- Soubory modelu rozpoznávání klíčových slov nejsou kompatibilní se sadou Speech SDK pro zařízení 1.0.1. Existující soubory klíčových slov budou odstraněny po zápisu nových souborů klíčových slov do zařízení.
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>Speech Devices SDK 0.5.0:2018 – srpen Release
 

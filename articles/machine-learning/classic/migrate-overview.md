@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fda34a7ee06d35846bcec571e904297d0421c38f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cdf016d7de66c33973ec7818fa92df28c4639dd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564938"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566947"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrace do Azure Machine Learningu
 
@@ -46,7 +46,7 @@ K migraci na Azure Machine Learning doporučujeme následující postup:
 
 3. Ověřte, že jsou v Návrháři Azure Machine Learning podporovány důležité moduly studia (Classic). Další informace naleznete v tabulce aplikace [Studio (Classic) a Návrhář – mapování](#studio-classic-and-designer-module-mapping) níže.
 
-4. [Vytvořte pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace?tabs=azure-portal).
+4. [Vytvořte pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md?tabs=azure-portal).
 
 ## <a name="step-2-create-a-migration-plan"></a>Krok 2: vytvoření plánu migrace
 
@@ -162,9 +162,3 @@ V tomto článku jste se dozvěděli o požadavcích na vysokou úroveň migrace
 1. [Opětovné sestavení webové služby studia (Classic)](migrate-rebuild-web-service.md).
 1. [Integrujte webovou službu Azure Machine Learning s klientskými aplikacemi](migrate-rebuild-integrate-with-client-app.md).
 1. [Migrace spouštěného skriptu R](migrate-execute-r-script.md)
-
-
-
-
-
-

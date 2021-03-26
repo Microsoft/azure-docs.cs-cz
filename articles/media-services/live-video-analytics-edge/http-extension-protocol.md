@@ -3,16 +3,16 @@ title: Protokol rozšíření HTTP – Azure
 description: V tomto článku se dozvíte o použití protokolu rozšíření HTTP k posílání zpráv mezi modulem Live video Analytics a modulem AI nebo CV.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: c3a9b5b70467479fdb9b1473a1f6738eaa8a7e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455886"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565737"
 ---
 # <a name="http-extension-protocol"></a>Protokol rozšíření HTTP
 
-Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím [uzlu rozšíření grafu](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept). Pokud jako uzel rozšíření používáte procesor rozšíření HTTP, pak je komunikace mezi modulem Live video Analytics a vaším modulem AI nebo CV přes HTTP.
+Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím [uzlu rozšíření grafu](./media-graph-extension-concept.md). Pokud jako uzel rozšíření používáte procesor rozšíření HTTP, pak je komunikace mezi modulem Live video Analytics a vaším modulem AI nebo CV přes HTTP.
 
 V tomto článku se dozvíte o použití protokolu rozšíření HTTP k posílání zpráv mezi modulem Live video Analytics a modulem AI nebo CV. 
 
@@ -87,11 +87,11 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-Důrazně doporučujeme, aby se odpovědi vracely pomocí platných dokumentů JSON po předem zavedeném schématu definovaném podle [modelu objektu schématu pro odvození metadat](/azure/media-services/live-video-analytics-edge/inference-metadata-schema). To zajistí lepší spolupráci s ostatními komponentami a možné budoucí možnosti přidané do modulu Live video Analytics.
+Důrazně doporučujeme, aby se odpovědi vracely pomocí platných dokumentů JSON po předem zavedeném schématu definovaném podle [modelu objektu schématu pro odvození metadat](./inference-metadata-schema.md). To zajistí lepší spolupráci s ostatními komponentami a možné budoucí možnosti přidané do modulu Live video Analytics.
 
 Pokud váš modul vrátí odpověď, kde typ obsahu není "Application/JSON", Analýza živého videa zakóduje zprávu jako základní obsah 64 a serializovat jako neprůhlednou datovou část JSON.
 
-Pokud váš modul vrátí odpověď s typem obsahu jako "Application/JSON", ale schéma JSON nenásleduje za odvozeným schématem metadat, bude datová část zprávy předána prostřednictvím kanálu, ale bude snížena interoperabilita. Podrobné a aktuální informace o schématu odvozených metadat najdete [tady](/azure/media-services/live-video-analytics-edge/inference-metadata-schema) .
+Pokud váš modul vrátí odpověď s typem obsahu jako "Application/JSON", ale schéma JSON nenásleduje za odvozeným schématem metadat, bude datová část zprávy předána prostřednictvím kanálu, ale bude snížena interoperabilita. Podrobné a aktuální informace o schématu odvozených metadat najdete [tady](./inference-metadata-schema.md) .
 
 > [!NOTE]
 > Pokud váš modul neprodukuje žádný výsledek, měl by vrátit stavový kód HTTP 204 (žádný obsah) s prázdným textem odpovědi. Live video Analytics to bude rozumět jako prázdný výsledek a nepředá událost v rámci kanálu.

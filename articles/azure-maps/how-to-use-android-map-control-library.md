@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 5888a5f34ef65fc1015b6e73af1d03368a8329b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a60ee8faf8d19afba59e46c52aaba9395c3a5292
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098515"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604443"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
 Azure Maps Android SDK je knihovna vektorových map pro Android. Tento článek vás provede procesy instalace Azure Maps Android SDK a načtení mapy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) .
 
@@ -34,11 +34,11 @@ První možností je předat jazyk a zobrazit regionální informace do `AzureMa
 
 ```java
 static {
-    //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
-
     //Alternatively use Azure Active Directory authenticate.
-    //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+    AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+
+    //Set your Azure Maps Key.
+    //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");   
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -55,11 +55,11 @@ static {
 ```kotlin
 companion object {
     init {
-        //Set your Azure Maps Key.
-        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
-
         //Alternatively use Azure Active Directory authenticate.
-        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+        AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+
+        //Set your Azure Maps Key.
+        //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
     
         //Set the language to be used by Azure Maps.
         AzureMaps.setLanguage("fr-FR");

@@ -9,19 +9,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199845"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564513"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby log Replay (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek vysvětluje, jak ručně nakonfigurovat migraci databáze z SQL Server 2008-2019 do spravované instance Azure SQL pomocí služby log Replay Service (LRS), která je aktuálně ve verzi Public Preview. LRS je cloudová služba, která je povolená pro spravovanou instanci SQL a vychází z SQL Server technologie pro přenos protokolů. 
 
-[Azure Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance) a LRS používají stejnou základní technologii migrace a stejná rozhraní API. Vyvoláním LRS ještě více umožníme komplexní vlastní migrace a hybridní architekturu mezi místními SQL Server a SQL Managed instance.
+[Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) a LRS používají stejnou základní technologii migrace a stejná rozhraní API. Vyvoláním LRS ještě více umožníme komplexní vlastní migrace a hybridní architekturu mezi místními SQL Server a SQL Managed instance.
 
 ## <a name="when-to-use-log-replay-service"></a>Kdy použít službu opětovného přehrání protokolu
 
@@ -66,7 +66,7 @@ Až se LRS zastaví, ať už automaticky prostřednictvím automatického dokon�
     
 | Operace | Podrobnosti |
 | :----------------------------- | :------------------------- |
-| **1. Zkopírujte zálohy databáze z SQL Server do BLOB Storage**. | Kopírování úplných, rozdílových a protokolových záloh z SQL Server do kontejneru Blob Storage pomocí [AzCopy](/azure/storage/common/storage-use-azcopy-v10) nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). <br /><br />Použijte libovolné názvy souborů. LRS nevyžaduje konkrétní konvenci pro pojmenovávání souborů.<br /><br />Při migraci několika databází potřebujete samostatnou složku pro každou databázi. |
+| **1. Zkopírujte zálohy databáze z SQL Server do BLOB Storage**. | Kopírování úplných, rozdílových a protokolových záloh z SQL Server do kontejneru Blob Storage pomocí [AzCopy](../../storage/common/storage-use-azcopy-v10.md) nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). <br /><br />Použijte libovolné názvy souborů. LRS nevyžaduje konkrétní konvenci pro pojmenovávání souborů.<br /><br />Při migraci několika databází potřebujete samostatnou složku pro každou databázi. |
 | **2. Spusťte LRS v cloudu**. | Službu můžete restartovat s volbou rutin: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) nebo Azure CLI ([az_sql_midb_log_replay_start rutiny](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Spusťte LRS samostatně pro každou databázi, která odkazuje na složku zálohy na Blob Storage. <br /><br /> Po spuštění služby bude trvat zálohování z kontejneru Blob Storage a začít je obnovovat na spravované instanci SQL.<br /><br /> Pokud jste LRS spustili v nepřetržitém režimu, po obnovení všech původně nahraných záloh bude služba sledovat všechny nové soubory nahrané do této složky. Služba bude průběžně používat protokoly založené na řetězci pořadového čísla (LSN) protokolu, dokud se nezastaví. |
 | **2,1. Sledujte průběh operace**. | Průběh operace obnovení můžete sledovat volbou rutin: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) nebo Azure CLI ([az_sql_midb_log_replay_show rutiny](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. Pokud je to potřeba, zastavte operaci**. | Pokud potřebujete zastavit proces migrace, máte možnost vybrat si rutiny: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) nebo Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Zastavením operace dojde k odstranění databáze, kterou obnovujete na spravované instanci SQL. Po zastavení operace nebude možné obnovit LRS pro databázi. Musíte restartovat proces migrace od začátku. |
@@ -164,7 +164,7 @@ Služba Azure Blob Storage slouží jako zprostředkující úložiště pro zá
 
 Při migraci databází do spravované instance pomocí LRS můžete pomocí následujících přístupů nahrát zálohy do Blob Storage:
 - Použití funkce SQL Server nativního [zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)
-- Nahrávání záloh do kontejneru objektů BLOB pomocí [AzCopy](/azure/storage/common/storage-use-azcopy-v10) nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer)
+- Nahrávání záloh do kontejneru objektů BLOB pomocí [AzCopy](../../storage/common/storage-use-azcopy-v10.md) nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer)
 - Použití Průzkumník služby Storage v Azure Portal
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Vytvoření zálohy z SQL Server přímo do Blob Storage
@@ -394,7 +394,7 @@ Funkční omezení LRS jsou:
 - LRS se musí spustit samostatně pro každou databázi, která odkazuje na samostatné složky se soubory zálohy na Blob Storage.
 - LRS může podporovat až 100 simultánních procesů obnovení na jednu spravovanou instanci.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Po spuštění LRS se podívejte na stav operace pomocí rutiny Monitoring ( `get-azsqlinstancedatabaselogreplay` nebo `az_sql_midb_log_replay_show` ). Pokud se LRS po nějaké době nepovede spustit a zobrazí se chyba, podívejte se na nejčastější problémy:
 

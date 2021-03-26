@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 11118c9bd745480dc88380e718a9ab348ab1a3e3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97508267"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606942"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Řešení potíží s vyhrazenou službou HSM Azure
 
-Vyhrazená služba HSM v Azure má dvě odlišné charakteristiky. Za prvé, registraci a nasazení v Azure zařízení HSM se svými základními síťovými součástmi. Za druhé se konfigurace zařízení HSM připravuje pro použití nebo integraci s danými úlohami nebo aplikacemi. I když se zařízení HSM Thales Luna Network v Azure shodují, protože byste si koupili přímo od Thales, je fakt, že se jedná o prostředek v Azure, vytváří několik jedinečných důležitých informací. Tyto informace a případné Doporučené postupy pro řešení potíží a osvědčené postupy jsou popsané tady, abyste zajistili vysokou viditelnost a přístup k důležitým informacím. Po použití služby jsou konečné informace k dispozici prostřednictvím žádostí o podporu přímo od společnosti Microsoft nebo Thales. 
+Vyhrazená služba HSM v Azure má dvě odlišné charakteristiky. Za prvé, registraci a nasazení v Azure zařízení HSM se svými základními síťovými součástmi. Za druhé se konfigurace zařízení HSM připravuje pro použití nebo integraci s danými úlohami nebo aplikacemi. I když se zařízení [HSM Thales Luna 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) v Azure shodují, protože byste si koupili přímo od Thales, je fakt, že se jedná o prostředek v Azure, vytváří několik jedinečných důležitých informací. Tyto informace a případné Doporučené postupy pro řešení potíží a osvědčené postupy jsou popsané tady, abyste zajistili vysokou viditelnost a přístup k důležitým informacím. Po použití služby jsou konečné informace k dispozici prostřednictvím žádostí o podporu přímo od společnosti Microsoft nebo Thales. 
 
 > [!NOTE]
 > Je potřeba si uvědomit, že před provedením jakékoli konfigurace na nově nasazeném zařízení HSM by se měla aktualizovat všechny relevantní opravy. Konkrétní požadovaná oprava je [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) na portálu podpory Thales, který řeší problém, při kterém systém přestane reagovat během restartování.
 
 ## <a name="hsm-registration"></a>Registrace HSM
 
-Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro použití, protože dodává hardwarové prostředky v cloudu, a proto je cenným prostředkem, který je potřeba chránit. Proto používáme allowlisting proces prostřednictvím e-mailu HSMrequest@microsoft.com . 
+Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro použití, protože dodává hardwarové prostředky v cloudu, a proto je cenným prostředkem, který je potřeba chránit. Proto používáme allowlisiting proces prostřednictvím e-mailu HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Získání přístupu k vyhrazenému modulu HSM
 
-Pokud jste přesvědčeni, že modul HARDWAROVÉho zabezpečení bude vyhovovat vašim požadavkům na úložiště klíčů, pak e-mail HSMrequest@microsoft.com s žádostí o přístup. Osnova aplikace, oblastí, které byste chtěli HSM, a objemu HSM, které hledáte. Pokud pracujete se zástupcem Microsoftu, jako je například vedoucí pro vedení účtu nebo architekt cloudového řešení, pak je zahrňte do libovolné žádosti.
+Nejdřív se položte na to, jaké případy použití máte, a nemůžete je řešit [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) ani [spravované modul HSM Azure](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/overview). Pokud se domníváte, že se vaše požadavky na úložiště klíčů vejdou jenom na vyhrazený modul HSM, pak e-mail HSMrequest@microsoft.com s žádostí o přístup. Vyosnovujte svou aplikaci a případy použití, oblasti, které byste chtěli HSM, a objem HSM, které hledáte. Pokud pracujete se zástupcem Microsoftu, jako je například vedoucí pro vedení účtu nebo architekt cloudového řešení, pak je zahrňte do libovolné žádosti.
 
 ## <a name="hsm-provisioning"></a>Zřizování modulu HSM
 
@@ -56,7 +56,7 @@ Jedním z důvodů selhání nasazení je forgetting nastavit příslušné dele
 
 ### <a name="hsm-deployment-using-terraform"></a>Nasazení HSM pomocí Terraformu
 
-Několik zákazníků používalo jako prostředí automatizace Terraformu místo šablon ARM, které jsou k dispozici při registraci této služby. HSM nejde nasadit tímto způsobem, ale závislé síťové prostředky můžou. Terraformu má modul, který by měl volat na šablonu Minimal ARM, která jut má nasazení HSM.  V této situaci by se mělo dbát na to, aby před nasazením HSM byly plně nasazené síťové prostředky, jako třeba požadovaná brána ExpressRoute. Následující příkaz rozhraní příkazového řádku je možné použít k otestování dokončeného nasazení a integrovaný podle požadavků. Nahraďte lomené závorky umístěním držitelů pro konkrétní pojmenování. Měli byste Hledat výsledek "provisioningState je úspěšný".
+Několik zákazníků používalo jako prostředí automatizace Terraformu místo šablon ARM, které jsou k dispozici při registraci této služby. HSM nejde nasadit tímto způsobem, ale závislé síťové prostředky můžou. Terraformu má modul pro volání na šablonu Minimal ARM, která má jenom nasazení HSM.  V této situaci by se mělo dbát na to, aby před nasazením HSM byly plně nasazené síťové prostředky, jako třeba požadovaná brána ExpressRoute. Následující příkaz rozhraní příkazového řádku je možné použít k otestování dokončeného nasazení a integrovaný podle požadavků. Nahraďte lomené závorky umístěním držitelů pro konkrétní pojmenování. Měli byste Hledat výsledek "provisioningState je úspěšný".
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
@@ -66,7 +66,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 Nasazení můžou selhat, pokud překročíte 2 HSM na razítko a 4 HSM na oblast. Abyste se vyhnuli této situaci, před opětovným nasazením se ujistěte, že jste odstranili prostředky z dříve neúspěšných nasazení. Chcete-li kontrolovat prostředky, přečtěte si níže uvedenou položku Návody viz HSM. Pokud se domníváte, že tuto kvótu potřebujete překročit, což je primárně v rámci ochrany, pak prosím pošlete e-mail HSMrequest@microsoft.com s podrobnostmi.
 
 ### <a name="deployment-failure-based-on-capacity"></a>Selhání nasazení na základě kapacity
-Když se konkrétní razítko nebo oblast zaplní, to znamená, že jsou skoro všechny bezplatné HSM zřízené, může to vést k selháním nasazení. Každé razítko má k dispozici 11 HSM pro zákazníky, což znamená 22 na oblast. V každém razítku jsou také 3 náhr a 1 testovací zařízení. Pokud se domníváte, že jste si myslíte, že jste dosáhli limitu, pak můžete poslat HSMrequest@microsoft.com informace na úrovni výplně konkrétních razítek.
+Když se konkrétní razítko nebo oblast zaplní, to znamená, že jsou skoro všechny bezplatné HSM zřízené, může to vést k selháním nasazení. Každé razítko má k dispozici 12 HSM pro zákazníky, což znamená 24 podle oblasti. V každém razítku je také 2 náhradní a 1 testovací zařízení. Pokud se domníváte, že jste si myslíte, že jste dosáhli limitu, pak můžete poslat HSMrequest@microsoft.com informace na úrovni výplně konkrétních razítek.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Návody se při zřizování zobrazuje HSM?
 Vzhledem k tomu, že je vyhrazený modul HSM ve službě allowlisted, považuje se za "skrytý typ" v Azure Portal. Chcete-li zobrazit prostředky HSM, je nutné zaškrtnout políčko Zobrazit skryté typy, jak je znázorněno níže. Prostředek síťových adaptérů vždy sleduje modul hardwarového zabezpečení (HSM) a je dobrým místem, kde můžete zjistit IP adresu modulu HARDWAROVÉho zabezpečení před použitím SSH pro připojení.
@@ -112,7 +112,7 @@ Poskytování nesprávných přihlašovacích údajů HSM může mít destruktiv
 Následující položky jsou situace, kdy jsou chyby konfigurace buď společné, nebo mají dopad na důvěryhodného volání:
 
 ### <a name="hsm-documentation-and-software"></a>Dokumentace modulu HSM a software
-Software a dokumentace pro zařízení HSM Thales SafeNet Luna 7 není od Microsoftu k dispozici a je nutné ji stáhnout přímo z Thales. Registrace se vyžaduje pomocí ID zákazníka Thales přijatého během procesu registrace. Zařízení, která poskytuje Microsoft, mají software verze 7,2 a firmware verze 7.0.3. Brzy v 2020 Thales se dokumentace zveřejňuje a najdete ji [tady](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).  
+Software a dokumentace pro zařízení [HSM Thales Luna 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) nejsou od Microsoftu k dispozici a je třeba je stáhnout přímo z Thales. Registrace se vyžaduje pomocí ID zákazníka Thales přijatého během procesu registrace. Zařízení, která poskytuje Microsoft, mají software verze 7,2 a firmware verze 7.0.3. Brzy v 2020 Thales se dokumentace zveřejňuje a najdete ji [tady](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).  
 
 ### <a name="hsm-networking-configuration"></a>Konfigurace sítě HSM
 
@@ -120,7 +120,7 @@ Při konfiguraci sítě v rámci modulu HARDWAROVÉho zabezpečení buďte opatr
 
 ### <a name="hsm-device-reboot"></a>Restartování zařízení HSM
 
-Některé změny konfigurace vyžadují, aby byl modul hardwarového zabezpečení (HSM) nebo restartován z elektrického počítače. Testování modulu HARDWAROVÉho zabezpečení v Azure bylo zjištěno, že v některých případech může restartování přestat reagovat. Denásobení je, že žádost o podporu musí být vytvořena v Azure Portal požadujícím pevný restart, což může trvat až 48 hodin, než se dokončí ruční zpracování v datovém centru Azure.  Abyste se vyhnuli této situaci, ujistěte se, že jste nasadili opravu restartování dostupnou přímo z Thales. Přečtěte si [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) v tématu Thales Luna Network HSM 7,2 downloads pro doporučenou opravu pro problém, při kterém systém přestane reagovat během restartování (Poznámka: budete muset být registrováni na portálu podpory Thales ke stažení).
+Některé změny konfigurace vyžadují, aby byl modul hardwarového zabezpečení (HSM) nebo restartován z elektrického počítače. Testování modulu HARDWAROVÉho zabezpečení v Azure bylo zjištěno, že v některých případech může restartování přestat reagovat. Denásobení je, že žádost o podporu musí být vytvořena v Azure Portal požadujícím pevný restart, což může trvat až 48 hodin, než se dokončí ruční zpracování v datovém centru Azure.  Abyste se vyhnuli této situaci, ujistěte se, že jste nasadili opravu restartování dostupnou přímo z Thales. Další informace najdete v tématu [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) v Thales Luna 7 HSM 7,2 stažení pro doporučenou opravu pro problém, kdy systém přestane reagovat během restartování (Poznámka: abyste si ho stáhli, musíte se zaregistrovat na [portálu Thales Customer Support](https://supportportal.thalesgroup.com/csm) .
 
 ### <a name="ntls-certificates-out-of-sync"></a>Nesynchronizované certifikáty NTLS
 Klient může přijít o připojení ke HARDWAROVÉmu zabezpečení, pokud vyprší platnost certifikátu nebo byl přepsán prostřednictvím aktualizací konfigurace. Konfigurace klienta Certificate Exchange by se měla znovu použít s každým modulem HSM.

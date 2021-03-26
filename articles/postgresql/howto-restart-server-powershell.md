@@ -1,18 +1,18 @@
 ---
 title: Restart serveru – Azure PowerShell-Azure Database for PostgreSQL
 description: Tento článek popisuje, jak můžete restartovat server Azure Database for PostgreSQL pomocí prostředí PowerShell.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d37de4a1861cb78b4a76c8ca7bc8c3643245b32
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2eadde4e3158c60685ba30542845f28954651bde
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97706962"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609322"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>Restartování serveru Azure Database for PostgreSQL pomocí prostředí PowerShell
 
@@ -23,7 +23,7 @@ Pokud je služba zaneprázdněná, je restartování serveru blokované. Napří
 > [!NOTE] 
 > Čas potřebný k dokončení restartování závisí na procesu obnovení PostgreSQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním. Můžete taky chtít zvýšit frekvenci kontrolního bodu. Můžete také ladit hodnoty parametrů souvisejících s kontrolními body `max_wal_size` , včetně. Doporučuje se také spustit `CHECKPOINT` příkaz před restartováním serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 

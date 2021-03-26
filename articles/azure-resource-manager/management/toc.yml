@@ -28,7 +28,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Běžné atributy zabezpečení Azure
-          href: azure-resource-manager-security-controls.md
+          href: ./security-baseline.md
 - name: Postup
   items:
     - name: Přesun – skupiny prostředků / předplatná
