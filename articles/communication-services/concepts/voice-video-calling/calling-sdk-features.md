@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 31b8e2e9a8e69fd730edb2c826005104f5f82bdc
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562405"
+ms.locfileid: "105609186"
 ---
 # <a name="calling-sdk-overview"></a>Přehled volání sady SDK
 
@@ -72,17 +72,17 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Nastavit nebo aktualizovat režim škálování                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Vykreslit vzdálený video stream                                                                                          | ✔️   | ✔️            | ✔️
 
-## <a name="calling-client-library-streaming-support"></a>Volání podpory streamování klientské knihovny
-Komunikační služby volající klientské knihovny podporují následující konfigurace streamování:
+## <a name="calling-sdk-streaming-support"></a>Volání podpory streamování SDK
+Komunikační služby, které volají sadu SDK, podporují následující konfigurace streamování:
 
 | Omezení          |Web | Android/iOS|
 |-----------|----|------------|
 |**počet odchozích streamů, které se dají poslat současně** |1 sdílení obrazovky a 1 video + 1 | 1 sdílení obrazovky a 1 video + 1|
 |**počet příchozích streamů, které se dají vykreslovat současně** |1 sdílení obrazovky a 1 video + 1| 6 sdílení obrazovky a videa 1 |
 
-## <a name="calling-client-library-timeouts"></a>Volání klientských časových limitů klientské knihovny
+## <a name="calling-sdk-timeouts"></a>Volání sady SDK časový limit
 
-Pro komunikační služby, které volají klientské knihovny, platí následující časový limit:
+Následující časové limity se vztahují na sady SDK pro volání komunikačních služeb:
 
 | Akce           | Časový limit v sekundách |
 | -------------- | ---------- |
