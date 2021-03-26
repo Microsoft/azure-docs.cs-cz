@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878193"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108805"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Odpovědnosti zákazníků při provozování jarního cloudu Azure ve virtuální síti
 Tento dokument obsahuje specifikace pro používání jarního cloudu Azure ve virtuální síti.
@@ -54,7 +54,8 @@ Azure Firewall poskytuje plně kvalifikovaný název domény (FQDN) **AzureKuber
   | *. cdn.mscr.io | HTTPS: 443 | MCR úložiště zajištěné Azure CDN. |
   | *. data.mcr.microsoft.com | HTTPS: 443 | MCR úložiště zajištěné Azure CDN. |
   | <i>management.azure.com</i> | HTTPS: 443 | Základní Správa clusteru Kubernetes. |
-  | <i>login.microsoftonline.com</i> | HTTPS: 443 | Ověřování Azure Active Directory. |
+  | <i>* login.microsoftonline.com</i> | HTTPS: 443 | Ověřování Azure Active Directory. |
+  | <i>* login.microsoft.com</i> | HTTPS: 443 | Ověřování Azure Active Directory. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Úložiště balíčků Microsoftu. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Úložiště potřebné k instalaci požadovaných binárních souborů, jako je kubenet a Azure CNI. |
   | *mscrl.microsoft.com* | HTTPS: 80 | Požadované cesty řetězení certifikátů společnosti Microsoft. |
@@ -62,5 +63,5 @@ Azure Firewall poskytuje plně kvalifikovaný název domény (FQDN) **AzureKuber
   | *crl3.digicert.com* | HTTPS: 80 | Cesty řetěz certifikátů SSL třetích stran. |
 
 ## <a name="see-also"></a>Viz také
-* [Přístup k aplikaci v privátní síti](spring-cloud-access-app-virtual-network.md)
-* [Vystavení aplikací pomocí Application Gateway a Azure Firewall](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [Přístup k aplikaci v privátní síti](access-app-virtual-network.md)
+* [Vystavení aplikací pomocí Application Gateway a Azure Firewall](expose-apps-gateway-azure-firewall.md)

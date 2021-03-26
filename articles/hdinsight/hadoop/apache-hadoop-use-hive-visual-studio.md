@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4512c9d9fdb66713ba24fbf30278e5d5dbb2ae23
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943159"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863747"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hivu pomocí Nástrojů Data Lake pro Visual Studio
 
@@ -49,11 +49,11 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
 5. Vyberte **Execute** (Provést). Režim spuštění je ve výchozím nastavení **interaktivní**.
 
-    ![Spustit interaktivní dotaz na podregistr, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png" alt-text="Spustit interaktivní dotaz na podregistr, Visual Studio" border="true":::
 
 6. Pokud chcete spustit stejný dotaz v režimu **dávky** , přepněte rozevírací seznam z **Interactive** do **Batch**. Tlačítko spuštění se změní z příkazu **Spustit** na **odeslání**.
 
-    ![Odeslat dotaz na podregistr Batch, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png" alt-text="Odeslat dotaz na podregistr Batch, Visual Studio" border="true":::
 
     Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM` , IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
 
@@ -61,7 +61,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
 8. Pokud jste vybrali možnost Upřesnit odeslání, nakonfigurujte **název úlohy**, **argumenty**, **Další konfigurace** a **stavový adresář** v dialogovém okně **Odeslat skript** . Pak vyberte **Odeslat**.
 
-    ![Dialogové okno Odeslat skript, dotaz na podregistr pro HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png" alt-text="Dialogové okno Odeslat skript, dotaz na podregistr pro HDInsight Hadoop" border="true":::
 
 ### <a name="create-a-hive-application"></a>Vytvoření aplikace Hive
 
@@ -109,7 +109,7 @@ Chcete-li spustit dotaz na podregistr vytvořením aplikace podregistru, postupu
 
    Zobrazí se **Souhrn úlohy podregistr** a zobrazí se informace o běžící úloze. Pomocí odkazu **aktualizovat** aktualizujte informace úlohy, dokud se **stav úlohy** nezmění na **dokončeno**.
 
-   ![Dokončená souhrn úlohy podregistru, aplikace pro podregistr, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
+   :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png" alt-text="Dokončená souhrn úlohy podregistru, aplikace pro podregistr, Visual Studio" border="true":::
 
 7. Vyberte **výstup úlohy** a zobrazte výstup této úlohy. Zobrazuje `[ERROR] 3` se hodnota vrácená tímto dotazem.
 

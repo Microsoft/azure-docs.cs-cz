@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744701"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046347"
 ---
 # <a name="manage-the-datadog-resource"></a>Správa prostředku služby Datadog
 
@@ -61,7 +61,7 @@ Seznam prostředků můžete filtrovat podle typu prostředku, názvu skupiny pr
 Protokoly sloupců **do služby Datadog** určují, jestli prostředek odesílá protokoly do služby Datadog. Pokud prostředek neodesílá protokoly, toto pole indikuje, proč se protokoly neodesílají do služby Datadog. Důvody:
 
 - Prostředek nepodporuje odesílání protokolů. Pro posílání protokolů do služby Datadog lze nakonfigurovat pouze typy prostředků s kategoriemi protokolu monitorování.
-- Bylo dosaženo limitu pěti nastavení diagnostiky. Každý prostředek Azure může mít maximálně pět nastavení diagnostiky. Další informace najdete v tématu [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-settings.md).
+- Bylo dosaženo limitu pěti nastavení diagnostiky. Každý prostředek Azure může mít maximálně pět nastavení diagnostiky. Další informace najdete v tématu [nastavení diagnostiky](../../azure-monitor/essentials/diagnostic-settings.md).
 - Chyba Prostředek je nakonfigurovaný tak, aby odesílal protokoly do služby Datadog, ale je blokovaný chybou.
 - Protokoly nejsou nakonfigurované. Pro posílání protokolů do služby Datadog jsou nakonfigurované jenom prostředky Azure, které mají příslušné značky prostředků.
 - Oblast není podporována. Prostředek Azure je v oblasti, která v současné době nepodporuje odesílání protokolů do služby Datadog.

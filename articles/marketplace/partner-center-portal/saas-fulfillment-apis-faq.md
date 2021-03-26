@@ -4,15 +4,15 @@ description: Seznamte se s několika požadavky na integraci pro komerční trž
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88606813"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044120"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Běžné otázky k rozhraní API pro plnění SaaS
 
@@ -40,7 +40,10 @@ Při přihlášení k odběru nabídky SaaS se uživatel dohodl za spotřebu slu
 
 Po přihlášení k odběru nabídky může uživatel Azure vyhledat a spravovat všechny své nabídky v Azure. Ve výchozím nastavení se stav nově přihlášené nabídky SaaS zobrazuje jako **zřizování a čeká na vyřízení**. V tomto stavu se uživateli Azure zobrazí výzva s akcí **Konfigurace účtu**, aby bylo možné přejít ke svému prostředí pro správu předplatného SaaS ve Azure Portal.
 
-Když uživatel vybere **konfigurovat účet**, přesměruje se na web služby SaaS. Vydavatel nakonfiguroval adresu URL v době publikování nabídky. Tato stránka je označována jako úvodní stránka vydavatele. Uživatelé Azure se přihlásí k cílové stránce SaaS na základě svých stávajících přihlašovacích údajů služby AAD v Azure.
+Když uživatel vybere **konfigurovat účet**, přesměruje se na web služby SaaS. Vydavatel nakonfiguroval adresu URL v době publikování nabídky. Tato stránka je označována jako úvodní stránka vydavatele. Uživatelé Azure se přihlásí k cílové stránce SaaS na základě svých stávajících přihlašovacích údajů pro Azure Active Directory (Azure AD) v Azure.
+
+> [!IMPORTANT]
+> Je nutné, abyste se přihlásili k nákupnímu uživateli pomocí Azure Active Directory, jednotné přihlašování (Azure AD SSO) podle [zásad](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context). `mail`Vlastnost na prostředku uživatele načtená z rozhraní Microsoft Graph API poskytuje kontaktní informace pro případ Azure AD a `userPrincipalName` pro MSA. Je možné, že pole "mail" je pro službu Azure AD prázdné a uživatel pravděpodobně nemá zaznamenanou e-mailovou zprávu. Pokud se jedná o tento případ, doporučujeme, abyste ho zjistili a požádali o kontaktní e-mail. To je jediná možnost, jak dostat kontaktní e-mail, aby se zákazník dostal během procesu nástupu zákazníka nebo po něm.
 
 Když se uživatel Azure přesměruje na cílovou stránku, přidá se do adresy URL dotazu token. Tento token je krátkodobě a platný po dobu 24 hodin. Pak můžete zjistit přítomnost tohoto tokenu a zavolat rozhraní API Microsoftu a získat tak další kontext přidružený k tokenu.
 

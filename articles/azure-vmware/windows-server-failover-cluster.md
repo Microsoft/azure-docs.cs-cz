@@ -3,12 +3,12 @@ title: Cluster s podporou převzetí služeb při selhání Windows serveru v Az
 description: Nastavte cluster systému Windows Server s podporou převzetí služeb při selhání (WSFC) na řešení Azure VMware a využijte výhod řešení, která vyžadují službu WSFC.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518989"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025964"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
 
@@ -32,7 +32,7 @@ Tento článek se zaměřuje na služby WSFC v systému Windows Server 2016 a Wi
 
 Musíte nejdřív [vytvořit WSFC](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster). Další informace o WSFC najdete v tématu věnovaném [clusteringu s podporou převzetí služeb při selhání ve Windows serveru](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Informace, které poskytujeme v tomto článku, najdete v tématu nasazení služby WSFC v řešení Azure VMware.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Prostředí řešení Azure VMware
 - Instalační médium operačního systému Microsoft Windows Server
@@ -49,10 +49,10 @@ Následující diagram znázorňuje architekturu virtuálních uzlů služby WSF
 
 V současné době jsou podporovány následující konfigurace:
 
-- Microsoft Windows Server 2012 nebo novější.
-- Až pět uzlů clusteringu s podporou převzetí služeb při selhání na cluster.
-- Až čtyři PVSCSI adaptéry na virtuální počítač.
-- Až 64 disků na jeden adaptér PVSCSI.
+- Microsoft Windows Server 2012 nebo novější
+- Až pět uzlů clusteringu s podporou převzetí služeb při selhání na cluster
+- Až čtyři PVSCSI adaptéry na virtuální počítač
+- Až 64 disků na PVSCSI adaptér
 
 ## <a name="virtual-machine-configuration-requirements"></a>Požadavky na konfiguraci virtuálního počítače
 

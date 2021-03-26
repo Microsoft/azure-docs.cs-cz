@@ -1,14 +1,14 @@
 ---
 title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
-ms.date: 12/01/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577091"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868150"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -68,9 +68,9 @@ Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 
 Níže jsou uvedená obecná doporučení pro používání doplňku Azure Policy:
 
-- Doplněk Azure Policy vyžaduje 3 součásti gatekeeper, které se mají spustit: 1 audit pod a 2 Webhook pod replikami. Tyto komponenty spotřebují více prostředků, protože počet prostředků Kubernetes a přiřazení zásad roste v clusteru, který vyžaduje operace auditu a vynucení.
+- Doplněk Azure Policy vyžaduje, aby byly spuštěny tři součásti serveru gatekeeper: 1 audit pod a 2 Webhook pod replikami. Tyto komponenty spotřebovávají více prostředků, protože počet prostředků Kubernetes a přiřazení zásad roste v clusteru, což vyžaduje operace auditu a vynucení.
 
-  - Pro méně než 500 lusků v jednom clusteru s maximálním počtem 20 omezení: 2 vCPU a 350 MB paměti na součást.
+  - Méně než 500 lusků v jednom clusteru s maximálním počtem 20 omezení: 2 vCPU a 350 MB paměti na součást.
   - Pro více než 500 lusků v jednom clusteru s maximálním počtem 40 omezení: 3 vCPU a 600 MB paměti na součást.
 
 - Windows lusky [nepodporují kontexty zabezpečení](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods).
@@ -85,7 +85,7 @@ Následující doporučení platí pouze pro AKS a doplněk Azure Policy:
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Instalace doplňku Azure Policy pro AKS
 
-Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** .
+Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. PolicyInsights** .
 
 1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.12.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -93,15 +93,12 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 
    - Azure Portal:
 
-     Zaregistrujte poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     Zaregistrujte poskytovatele prostředků **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Rozhraní příkazového řádku Azure:
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-
-     # Provider register: Register the Azure Kubernetes Service provider
-     az provider register --namespace Microsoft.ContainerService
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
@@ -440,14 +437,13 @@ Další požadavky:
 
 - Pokud je předplatné clusteru zaregistrované ve službě Azure Security Center, Azure Security Center zásady Kubernetes se v clusteru aplikují automaticky.
 
-- Když se v clusteru s existujícími Kubernetes prostředky použije zásada Odepřít, všechny dříve existující prostředky, které nedodržují předpisy nové zásady, budou i nadále běžet. Pokud se prostředek, který nedodržuje předpisy, naplánuje na jiný uzel, zablokuje Server Gatekeeper vytváření prostředků.
+- Když se v clusteru s existujícími Kubernetes prostředky použije zásada Odepřít, všechny stávající prostředky, které nejsou kompatibilní s novými zásadami, se budou dál spouštět. Pokud se prostředek, který nedodržuje předpisy, naplánuje na jiný uzel, zablokuje Server Gatekeeper vytváření prostředků.
 
 - Pokud má cluster zásadu odepřít, která ověřuje prostředky, uživateli se při vytváření nasazení nezobrazí zpráva o zamítnutí. Zvažte například nasazení Kubernetes, které obsahuje replicasets a lusky. Když se uživatel spustí `kubectl describe deployment $MY_DEPLOYMENT` , nevrátí jako součást událostí zprávu o zamítnutí. Ale `kubectl describe replicasets.apps $MY_DEPLOYMENT` vrátí události přidružené k zamítnutí.
 
 ## <a name="logging"></a>protokolování
 
-Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
-Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/containers/container-insights-analyze.md).
+Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes. Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/containers/container-insights-analyze.md).
 
 Chcete-li zobrazit protokoly doplňku, použijte `kubectl` :
 

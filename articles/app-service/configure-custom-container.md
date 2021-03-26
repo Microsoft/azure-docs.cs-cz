@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat vlastní kontejner v Azure App S
 ms.topic: article
 ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d1a1292bc7583e4934ac176c34d2768700d11c5
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704867"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036760"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru pro službu Azure App Service
 
@@ -112,6 +112,8 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 ```
 
 Když je vaše aplikace spuštěná, nastavení App Service aplikace se vloží do procesu automaticky jako proměnné prostředí. Můžete ověřit proměnné prostředí kontejneru s adresou URL `https://<app-name>.scm.azurewebsites.net/Env)` .
+
+Pokud vaše aplikace používá image z privátního registru nebo z dokovacího centra, přihlašovací údaje pro přístup k úložišti se ukládají do proměnných prostředí `DOCKER_REGISTRY_SERVER_URL` : `DOCKER_REGISTRY_SERVER_USERNAME` a `DOCKER_REGISTRY_SERVER_PASSWORD` . Vzhledem k bezpečnostním rizikům nejsou žádné z těchto vyhrazených názvů proměnných pro aplikaci zpřístupněny.
 
 ::: zone pivot="container-windows"
 V případě kontejnerů založených na službě IIS nebo .NET Framework (4,0 nebo vyšší) jsou vloženy do `System.ConfigurationManager` nastavení aplikace .NET a připojovací řetězce automaticky pomocí App Service. Pro všechny ostatní jazyky nebo rozhraní jsou k dispozici jako proměnné prostředí pro proces s jedním z následujících odpovídajících předpon:

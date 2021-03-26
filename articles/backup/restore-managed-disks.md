@@ -3,19 +3,14 @@ title: Obnovit Managed Disks Azure
 description: Přečtěte si, jak obnovit Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94adc8512987b50a8df07d295215ffcff873162f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101703745"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108583"
 ---
-# <a name="restore-azure-managed-disks-in-preview"></a>Obnovit Azure Managed Disks (ve verzi Preview)
-
->[!IMPORTANT]
->Služba Azure disk Backup je ve verzi Preview bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informace o dostupnosti oblastí najdete v tématu [matice podpory](disk-backup-support-matrix.md).
->
->[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
+# <a name="restore-azure-managed-disks"></a>Obnovit Managed Disks Azure
 
 Tento článek vysvětluje, jak obnovit [Azure Managed disks](../virtual-machines/managed-disks-overview.md) z bodu obnovení vytvořeného pomocí Azure Backup.
 

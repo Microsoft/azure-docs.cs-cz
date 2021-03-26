@@ -1,9 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Povinná pole. Další informace najdete na aka.ms/skyeye/meta.
-title: transformes a Jobs v Media Services: Azure Media Services Description: Naučte se vytvořit transformace, které popisují pravidla pro zpracování videí v Azure Media Services.
-služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 03/17/2021 MS. Author: inhenkel
+title: transformes a Jobs v Media Services: Azure Media Services Description: transformes popisují pravidla pro zpracování videí v Azure Media Services.
+služby: Media-Services Author: IngridAtMicrosoft Manager: femila MS. Service: Media-Services MS. téma: konceptuální MS. Date: 03/22/2021 MS. Author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
@@ -90,12 +88,6 @@ Následující diagram znázorňuje objekt **úlohy** a objekty, na které odkaz
 Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
 [![Diagram znázorňující objekt úlohy a objekty, na které odkazuje, včetně vztahů odvození třídy mezi objekty.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
-
-## <a name="configure-media-reserved-units"></a>Konfigurace rezervovaných jednotek médií
-
-V případě analýz zvuku a analýz videa, které jsou spouštěny Media Services V3 nebo Video Indexer, důrazně doporučujeme zřídit účet s 10 rezervovanými jednotkami médií (MRUs). Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
-
-Podrobnosti najdete v tématu [škálování zpracování médií pomocí](media-reserved-units-cli-how-to.md)rozhraní příkazového řádku.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

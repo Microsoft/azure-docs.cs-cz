@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616112"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954669"
 ---
 # <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
@@ -56,7 +56,7 @@ Následující tabulka shrnuje zásady uchovávání informací pro různé pros
 | Sestavy uzlů |Po vygenerování nové sestavy pro tento uzel je sestava uzlu trvale odebrána 90 dní. |
 | Runbooky |Sada Runbook je trvale odebrána 30 dní poté, co uživatel odstraní prostředek, nebo 30 dní poté, co uživatel odstraní účet, který obsahuje prostředek<sup>1</sup>. |
 
-<sup>1</sup> Sada Runbook se dá obnovit v rámci 30denní okna tím, že pomůžete incident podpory Azure s podporou Microsoft Azure. Přejít na [web podpory Azure](/support/options) a vyberte **Odeslat žádost o podporu**.
+<sup>1</sup> Sada Runbook se dá obnovit v rámci 30denní okna tím, že pomůžete incident podpory Azure s podporou Microsoft Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **Odeslat žádost o podporu**.
 
 ## <a name="data-backup"></a>Zálohování dat
 
