@@ -1,23 +1,23 @@
 ---
 title: Správa protokolů-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru (soubory. log) v Azure Database for PostgreSQL-Single server z Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e44377ecb734f0036d05a347596f1ff003ae28a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999242"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604324"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům Azure Database for PostgreSQL-Single server z Azure Portal
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly Azure Database for PostgreSQL](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Postup v tomto článku vyžaduje, abyste měli [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování

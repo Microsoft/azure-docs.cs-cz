@@ -1,24 +1,24 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure Portal-Azure Database for PostgreSQL-Single server'
 description: V této příručce pro rychlý Start vytvoříte a spravujete Azure Database for PostgreSQL Server pomocí Azure Portal.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b5b145e84a3844b646ec9adfb46f8a221c6d0a6
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96492382"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606500"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal
 
 Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak vytvořit jeden Azure Database for PostgreSQL Server a jak se k němu připojit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL

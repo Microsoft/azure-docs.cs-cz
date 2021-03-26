@@ -1,5 +1,5 @@
 ---
-title: Nastavení rozhraní pro předávání zpráv pro HPC – Azure Virtual Machines | Microsoft Docs
+title: Nastavení rozhraní MPI (Message Passing Interface) pro HPC-Azure Virtual Machines | Microsoft Docs
 description: Přečtěte si, jak nastavit MPI pro HPC v Azure.
 author: vermagit
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 8f071dfe817d15b745575fbfb70ff662a643db70
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 66de34c43ab1b3a6b4245f77196793bf9ad8530c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721355"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606636"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Nastavení rozhraní pro předávání zpráv pro HPC
 
@@ -64,6 +64,11 @@ Spuštění HPC-X
 ```bash
 ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tests/osu-micro-benchmarks-5.3.2/osu_latency
 ```
+
+### <a name="optimizing-mpi-collectives"></a>Optimalizace kolektivních MPI
+
+MPI kolektivní komunikace nabízí flexibilní a přenosný způsob implementace skupinových operací komunikace. Jsou široce používány v různých vědeckých paralelních aplikacích a mají výrazný dopad na celkový výkon aplikace. Podrobnosti o parametrech konfigurace pro optimalizaci výkonu kolektivní komunikace pomocí knihovny HPC-X a HCOLL pro kolektivní komunikaci najdete v [článku TechCommunity](https://techcommunity.microsoft.com/t5/azure-compute/optimizing-mpi-collective-communication-using-hpc-x-on-azurehpc/ba-p/1356740) .
+
 > [!NOTE] 
 > Pomocí HPC-X 2.7.4 + může být nutné explicitně předat LD_LIBRARY_PATH, pokud UCX verze v MOFED vs. v HPC-X se liší.
 

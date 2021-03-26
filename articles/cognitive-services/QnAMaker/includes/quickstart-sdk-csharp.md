@@ -3,12 +3,12 @@ title: 'Rychlý Start: Klientská knihovna QnA Maker pro .NET'
 description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 292d0ee4f7462f9c49a08e35bb44822b7a317cfa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: aac57f4ca173a7ac94c64884fa1d2db4a478c3f3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582391"
+ms.locfileid: "105609502"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -138,13 +138,13 @@ V `Main` metodě aplikace přidejte proměnné a kód zobrazené v následujíc�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
-Používáme klíč předplatného a vytváření klíčů Key interchangably. Další informace o vytváření klíčů najdete [pod klíči v QnA maker](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
+- Používáme klíč předplatného a vytváření klíčů Key interchangably. Další informace o vytváření klíčů najdete [pod klíči v QnA maker](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
-- Hodnota QNA_MAKER_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Přejít na Azure Portal a vyhledat klíč a koncový bod pro prostředek QnA Maker, který jste vytvořili v části požadavky. V části **Správa prostředků** klikněte na **klíče a koncový bod** , vyhledejte klíč pro vytváření (odběr) a QnA maker koncový bod.
+- Hodnota QNA_MAKER_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Přejít na Azure Portal a vyhledat prostředek QnA Maker, který jste vytvořili v části požadavky. V části **Správa prostředků** klikněte na **klíče a koncový bod** , vyhledejte klíč pro vytváření (odběr) a QnA maker koncový bod.
 
  ![Koncový bod pro vytváření QnA Maker](../media/keys-endpoint.png)
 
-- Hodnota QNA_MAKER_RUNTIME_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Přejít na Azure Portal a vyhledat prostředek QnA Maker, který jste vytvořili v části požadavky. V části **Automatizace** klikněte na **Exportovat šablonu** a vyhledejte klíč za běhu.
+- Hodnota QNA_MAKER_RUNTIME_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Přejít na Azure Portal a vyhledat prostředek QnA Maker, který jste vytvořili v části požadavky. Kliknutím na stránku **Exportovat šablonu** v části **Automatizace** vyhledejte koncový bod modulu runtime.
 
  ![Koncový bod QnA Maker runtime](../media/runtime-endpoint.png)
       
@@ -154,12 +154,9 @@ Používáme klíč předplatného a vytváření klíčů Key interchangably. D
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/version-2)
 
-> [!IMPORTANT]
-> Přejít na Azure Portal a vyhledat klíč a koncový bod pro prostředek QnA Maker, který jste vytvořili v části požadavky. Budou umístěny na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+- Používáme klíč předplatného a vytváření klíčů Key interchangably. Další informace o vytváření klíčů najdete [pod klíči v QnA maker](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
-Používáme klíč předplatného a vytváření klíčů Key interchangably. Další informace o vytváření klíčů najdete [pod klíči v QnA maker](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
-
-- Hodnota QNA_MAKER_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Přejděte na prostředek QnA Maker v Azure Portal a klikněte na **klíče a koncový bod** , abyste našli klíč pro vytváření (předplatných) a QnA maker koncový bod.
+- Hodnota QNA_MAKER_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Přejít na Azure Portal a vyhledat prostředek QnA Maker, který jste vytvořili v části požadavky. V části **Správa prostředků** klikněte na **klíče a koncový bod** , vyhledejte klíč pro vytváření (odběr) a QnA maker koncový bod.
 
  ![Koncový bod pro vytváření QnA Maker](../media/keys-endpoint.png)
 

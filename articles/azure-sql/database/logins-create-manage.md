@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452423"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605752"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi pro služby SQL Database, SQL Managed Instance a Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -142,7 +142,7 @@ Po vytvoření uživatelského účtu v databázi, a to buď na základě přihl
   - Postup přidání uživatele do pevné databázové role:
 
     - V Azure SQL Database použijte příkaz [ALTER role](/sql/t-sql/statements/alter-role-transact-sql) . Příklady najdete v tématu [ALTER role – příklady](/sql/t-sql/statements/alter-role-transact-sql#examples) .
-    - Azure synapse, použijte příkaz [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) . Příklady najdete v tématu [sp_addrolemember příklady](/sql/t-sql/statements/alter-role-transact-sql).
+    - Azure synapse, použijte příkaz [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) . Příklady najdete v tématu [sp_addrolemember příklady](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql#examples).
 
 - **Vlastní databázová role**
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/04/2021
 ms.author: trbye
-ms.openlocfilehash: 4ec9c847158c9b8a1160cb6f4510912ed83a9fae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 407906727332f3db8d3d0a6840d0c865c6b33ff7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98947773"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609425"
 ---
 Nejprve načtěte soubor modelu klíčových slov pomocí `FromFile()` statické funkce, která vrátí `KeywordRecognitionModel` . Použijte cestu k `.table` souboru, který jste stáhli ze sady Speech Studio. Kromě toho se vytvoří `AudioConfig` pomocí výchozího mikrofonu a pak se vytvoří instance nového `KeywordRecognizer` pomocí konfigurace zvuku.
 
@@ -35,6 +35,6 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 
 Jiné třídy v sadě Speech SDK podporují nepřetržité rozpoznávání (pro rozpoznávání řeči i záměr) pomocí rozpoznávání klíčových slov. To vám umožní použít stejný kód, který byste normálně používali pro průběžné rozpoznávání, s možností odkazovat na `.table` soubor pro váš klíč klíčových slov.
 
-Pro převod řeči na text použijte stejný vzor návrhu zobrazený v [rychlém](../../../get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=script%2cbrowser%2cwindowsinstall#continuous-recognition) startu a nastavte průběžné rozpoznávání. Potom nahraďte volání `recognizer.StartContinuousRecognitionAsync()` pomocí `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` a předejte svůj `KeywordRecognitionModel` objekt. Chcete-li ukončit průběžné rozpoznávání pomocí klíčového slova hledání, použijte `recognizer.StopKeywordRecognitionAsync()` místo `recognizer.StopContinuousRecognitionAsync()` .
+Pro převod řeči na text použijte stejný vzor návrhu zobrazený v [rychlém](../../../get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=script%2cbrowser%2cwindowsinstall#continuous-recognition) startu a nastavte průběžné rozpoznávání. Potom nahraďte volání `recognizer.StartContinuousRecognitionAsync()` pomocí `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` a předejte svůj `KeywordRecognitionModel` objekt. Chcete-li ukončit průběžné rozpoznávání pomocí klíčového slova, použijte `recognizer.StopKeywordRecognitionAsync()` místo `recognizer.StopContinuousRecognitionAsync()` .
 
 Rozpoznávání záměru používá identický vzor s [`StartKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) funkcemi a [`StopKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) .

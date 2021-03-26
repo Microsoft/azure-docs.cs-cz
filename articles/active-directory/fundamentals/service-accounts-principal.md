@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587844"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604698"
 ---
 # <a name="securing-service-principals"></a>Zabezpečení instančních objektů
 
@@ -96,6 +96,7 @@ Další informace najdete v tématu [Get-AzureADServicePrincipal](/powershell/mo
 Pokud chcete posoudit zabezpečení instančních objektů, ujistěte se, že jste vyhodnotili oprávnění a úložiště přihlašovacích údajů.
 
 Zmírnění potenciálních problémů pomocí následujících informací.
+
 |Výzvy | Omezení rizik|
 | - | - |
 | Zjištění uživatele, který souhlasí s aplikací pro více tenantů, a zjišťování neoprávněných souhlasu pro víceklientské aplikace | Pokud chcete najít víceklientské aplikace, spusťte následující PowerShell.<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>Zakáže souhlas uživatele. <br>Povolení souhlasu uživatele od ověřených vydavatelů pro vybraná oprávnění (doporučeno) <br> Pomocí podmíněného přístupu můžete zablokovat instanční objekty z nedůvěryhodných umístění. Nakonfigurujte je v kontextu uživatele a jejich tokeny by se měly používat k aktivaci instančního objektu.|

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2f12f33bf6108784b2eec252fb12d03eebd2a45c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046500"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604925"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -37,9 +37,9 @@ Následující tabulka ukazuje možnosti výpisu SaaS nabídek na komerčním we
 
 Další informace o těchto možnostech tohoto výpisu najdete v tématu možnosti Transact-The pro [prodej na webu Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Po publikování vaší nabídky se možnost výpisu, kterou jste zvolili pro vaši nabídku, zobrazí jako tlačítko v levém horním rohu stránky se seznamem vaší nabídky. Například následující snímek obrazovky ukazuje stránku se seznamem nabídek v Azure Marketplace s tlačítky **získat nyní** a **testovat disk** .
+Po publikování vaší nabídky se možnost výpisu, kterou jste zvolili pro vaši nabídku, zobrazí jako tlačítko v levém horním rohu stránky se seznamem vaší nabídky. Například následující snímek obrazovky ukazuje stránku se seznamem nabídek v Azure Marketplace pomocí tlačítka **získat nyní** .
 
-![Znázorňuje seznam nabídek v online obchodu.](./media/listing-options.png)
+![Znázorňuje seznam nabídek v online obchodu.](./media/saas/listing-options-saas-full.png)
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
@@ -138,7 +138,7 @@ Pokud se rozhodnete použít standardní smlouvu, máte možnost přidat do stan
 
 Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském centru, na stránce se **seznamem nabídek** zadáte text, obrázky, volitelná videa a další podrobnosti. Toto jsou informace, které se zákazníkům zobrazí při zjištění seznamu nabídek na komerčním webu Marketplace, jak je znázorněno v následujícím příkladu.
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
+:::image type="content" source="./media/saas/example-saas-1.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
 
 **Popisy volání**
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 8bb858bc29ac18d110f2679c3681fd4d27b72baa
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956175"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607636"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Aktualizace GPU Azure Stack Edge pro 
 
@@ -33,6 +33,7 @@ Postup popsaný v tomto článku byl proveden s použitím jiné verze softwaru,
 >    
 >    Informace o tom, co je nového v této aktualizaci, najdete v [poznámkách k verzi](azure-stack-edge-gpu-2103-release-notes.md).
 > - Aby bylo možné použít aktualizaci 2103, musí vaše zařízení používat 2010. Pokud nepoužíváte minimální podporovanou verzi, zobrazí se tato chyba: *balíček aktualizace nejde nainstalovat, protože jeho závislosti nejsou splněné*.
+> - Tato aktualizace vyžaduje postupnou instalaci dvou aktualizací. Nejdřív použijte aktualizace softwaru zařízení a pak aktualizace Kubernetes.
 > - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace obsahuje aktualizace softwaru zařízení a aktualizace Kubernetes. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a vaše zařízení bude mít výpadek až 1,5 hodin pro aktualizaci.
 
 Chcete-li nainstalovat aktualizace do zařízení, je třeba nejprve nakonfigurovat umístění serveru aktualizací. Po nakonfigurování serveru aktualizací můžete aktualizace použít prostřednictvím uživatelského rozhraní Azure Portal nebo místního webového uživatelského rozhraní.
@@ -60,7 +61,7 @@ Každý z těchto kroků je popsaný v následujících částech.
 Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízení automaticky vyhledává aktualizace jednou denně. Až budou aktualizace k dispozici, zobrazí se na portálu oznámení. Pak můžete aktualizace stáhnout a nainstalovat.
 
 > [!NOTE]
-> Než budete pokračovat v instalaci aktualizací, ujistěte se, že je zařízení v pořádku a zobrazuje se stav **online** .
+> Ujistěte se, že zařízení je v pořádku a zobrazuje stav, protože **vaše zařízení funguje správně.** než budete pokračovat v instalaci aktualizací.
 
 1. Až budou aktualizace k dispozici pro vaše zařízení, zobrazí se oznámení. Vyberte oznámení nebo na horním panelu příkazů **aktualizujte zařízení**. To vám umožní použít aktualizace softwaru zařízení.
 
@@ -91,17 +92,9 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
 4. Po dokončení stahování se banner oznámení aktualizuje, aby označoval dokončení. Pokud jste se rozhodli stáhnout a nainstalovat aktualizace, bude instalace automaticky zahájena.
 
-    ![Verze softwaru po aktualizaci 7](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
-
     Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
   
-    ![Verze softwaru po aktualizaci 8](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
-
-5. Zobrazí se oznámení o tom, že probíhá instalace.
-
-    ![Verze softwaru po aktualizaci 9](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
- 
-    Portál také zobrazí informační výstrahu, která indikuje, že instalace probíhá. Zařízení přejde do režimu offline a je v režimu údržby.
+5. Zobrazí se oznámení o tom, že probíhá instalace. Portál také zobrazí informační výstrahu, která indikuje, že instalace probíhá. Zařízení přejde do režimu offline a je v režimu údržby.
    
     ![Verze softwaru po aktualizaci 10](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
@@ -113,15 +106,29 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
     
     ![Verze softwaru po aktualizaci 12](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-7. Pokud po restartování vyberete na horním panelu příkazů možnost **aktualizovat zařízení** , uvidíte průběh aktualizací.   
+7. Po restartování se dokončí aktualizace softwaru zařízení. Po dokončení aktualizace můžete ověřit z místního webového uživatelského rozhraní, které software zařízení aktualizuje. Verze softwaru Kubernetes nebyla aktualizována.
 
-8. Po instalaci aktualizací se stav zařízení aktualizuje na **online** . 
+    ![Verze softwaru po aktualizaci 13](./media/azure-stack-edge-gpu-install-update/portal-update-12.png)
 
-    ![Verze softwaru po aktualizaci 13](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
+8. Zobrazí se informační zpráva s oznámením, že aktualizace zařízení jsou k dispozici. Výběrem tohoto nápisu zahájíte aktualizaci softwaru Kubernetes na svém zařízení. 
 
-    V horním panelu příkazů vyberte **aktualizace zařízení**. Ověřte, že se aktualizace úspěšně nainstalovala a že verze softwaru zařízení bude odpovídat.
+    ![Verze softwaru po aktualizaci 13](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
 
-    ![Verze softwaru po aktualizaci 14](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    ![Verze softwaru po aktualizaci 14](./media/azure-stack-edge-gpu-install-update/portal-update-14-a.png) 
+
+    Pokud na horním panelu příkazů vyberete **aktualizovat zařízení** , můžete se podívat na průběh aktualizací.  
+
+    ![Verze softwaru po aktualizaci 15](./media/azure-stack-edge-gpu-install-update/portal-update-14-b.png) 
+
+
+8. Po instalaci aktualizací je stav zařízení v **zařízení správně spuštěn** . 
+
+    ![Verze softwaru po aktualizaci 16](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    Přejdete do místního webového uživatelského rozhraní a pak přejdete na stránku **aktualizace softwaru** . Ověřte, zda byla aktualizace Kubernetes úspěšně nainstalována a zda verze softwaru odpovídá.
+
+    ![Verze softwaru po aktualizaci 17](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 
 Po úspěšné instalaci softwaru zařízení a aktualizací Kubernetes se oznámení banneru zmizí. Vaše zařízení teď má nejnovější verzi softwaru a Kubernetes zařízení.

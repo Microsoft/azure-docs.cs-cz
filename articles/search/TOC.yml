@@ -343,7 +343,7 @@
             - name: Vytvoření navrhovatele
               href: index-add-suggesters.md
             - name: Přidání návrhů a automatického dokončování
-              href: search-autocomplete-tutorial.md
+              href: search-add-autocomplete-suggestions.md
         - name: Stránkování a počty
           href: search-pagination-page-layout.md
         - name: Reference k syntaxi

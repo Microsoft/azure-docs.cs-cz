@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f6705b5f72aaa8f990aaf3b1daa33697b690d1f1
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97369034"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608880"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -32,11 +32,11 @@ Modul hardwarového zabezpečení (HSM) je fyzické výpočetní zařízení, kt
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>Otázka: co je to vyhrazená nabídka HSM služby Azure?
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure je cloudová služba, která poskytuje HSM, která je hostovaná v datacentrech Azure, která jsou přímo připojená k virtuální síti zákazníka. Tato HSM jsou vyhrazená síťová zařízení (Thales Network Luna HSM 7). Nasazují se přímo do privátního adresního prostoru IP adres zákazníků a Microsoft nemá žádný přístup k kryptografické funkci HSM. Jenom zákazník má tato zařízení plnou správu a řízení kryptografie. Zákazníci zodpovídají za správu zařízení a můžou z jejich zařízení získat protokoly o všech činnostech. Vyhrazená HSM zákazníkům pomůžou splnit požadavky na dodržování předpisů, jako jsou FIPS 140-2 úrovně 3, HIPAA, PCI-DSS a eIDAS a spousta dalších.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure je cloudová služba, která poskytuje HSM, která je hostovaná v datacentrech Azure, která jsou přímo připojená k virtuální síti zákazníka. Tyto HSM jsou vyhrazená síťová zařízení [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) . Nasazují se přímo do privátního adresního prostoru IP adres zákazníků a Microsoft nemá žádný přístup k kryptografické funkci HSM. Jenom zákazník má tato zařízení plnou správu a řízení kryptografie. Zákazníci zodpovídají za správu zařízení a můžou z jejich zařízení získat protokoly o všech činnostech. Vyhrazená HSM zákazníkům pomůžou splnit požadavky na dodržování předpisů, jako jsou FIPS 140-2 úrovně 3, HIPAA, PCI-DSS a eIDAS a spousta dalších.
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>Otázka: Jaký hardware se používá pro vyhrazený modul HSM?
 
-Microsoft spolupracuje se službou Thales, aby mohla doručovat službu HSM vyhrazenou pro Azure. Konkrétní zařízení, které používáte, je [Thales Network Luna HSM 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Toto zařízení neposkytuje pouze ověřený firmware FIPS 140-2 úrovně 3, ale také nabízí nízkou latenci, vysoký výkon a vysokou kapacitu prostřednictvím 10 oddílů. 
+Microsoft spolupracuje se službou Thales, aby mohla doručovat službu HSM vyhrazenou pro Azure. Konkrétní zařízení, které používáte, je [Thales modelu HSM Luna 7 pro A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Toto zařízení neposkytuje pouze ověřený firmware [FIPS 140-2 úrovně 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) , ale nabízí nízkou latenci, vysoký výkon a vysokou kapacitu prostřednictvím 10 oddílů. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>Otázka: co je modul HARDWAROVÉho zabezpečení, který se používá pro?
 
@@ -48,7 +48,7 @@ Zákazníci mohou zřídit HSM v konkrétních oblastech pomocí prostředí Pow
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>Otázka: Jaký software je součástí vyhrazené služby HSM?
 
-Thales poskytuje veškerý software pro zařízení HSM po zřízení Microsoftu. Software je k dispozici na [portálu zákaznické podpory Thales](https://supportportal.gemalto.com/csm/). Zákazníci, kteří používají vyhrazenou službu HSM, se musí zaregistrovat pro podporu Thales a mít ID zákazníka, které umožňuje přístup a stažení relevantního softwaru. Podporovaný klientský software je verze 7,2, která je kompatibilní se ověřeným firmwarem verze 7.0.3 standardu FIPS 140-2 úrovně 3. 
+Thales poskytuje veškerý software pro zařízení HSM po zřízení Microsoftu. Software je k dispozici na [portálu zákaznické podpory Thales](https://supportportal.thalesgroup.com/csm). Zákazníci, kteří používají vyhrazenou službu HSM, se musí zaregistrovat pro podporu Thales a mít ID zákazníka, které umožňuje přístup a stažení relevantního softwaru. Podporovaný klientský software je verze 7,2, která je kompatibilní se ověřeným firmwarem verze 7.0.3 standardu FIPS 140-2 úrovně 3. 
 
 ### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>Otázka: Jaké dodatečné náklady mohou být účtovány pomocí vyhrazené služby HSM?
 
@@ -63,11 +63,11 @@ V současnosti poskytuje Azure vyhrazené HSM jenom HSM s ověřováním pomocí
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>Otázka: bude pro mě HSM vyhrazený hostitel modulu HSM pro Azure?
 
-Microsoft nabízí jenom Thales Network Luna HSM 7 prostřednictvím vyhrazené služby HSM a nemůže hostovat žádná zařízení poskytovaná zákazníky.
+Microsoft nabízí jenom Thales model HSM Luna 7 s použitím vyhrazené služby HSM a nemůže hostovat zařízení poskytovaná zákazníky.
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>Otázka: podporuje funkce služby pro platby ve službě HSM vyhrazené modulem pro zabezpečení (PIN/EFT) Azure.
 
-Vyhrazená služba HSM Azure používá zařízení Thales Network Luna HSM 7. Tato zařízení nepodporují funkce pro platební modul HSM specifické pro modul HSM (například PIN nebo EFT) nebo certifikace. Pokud chcete, aby služba HSM vyhrazená službou Azure podporovala platební HSM v budoucnu, předejte zpětnou vazbu vašemu zástupci účtu Microsoft.
+Vyhrazená služba HSM Azure používá Thales Luna 7 HSM. Tato zařízení nepodporují funkce pro platební modul HSM specifické pro modul HSM (například PIN nebo EFT) nebo certifikace. Pokud chcete, aby služba HSM vyhrazená službou Azure podporovala platební HSM v budoucnu, předejte zpětnou vazbu vašemu zástupci účtu Microsoft.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Otázka: u kterých oblastí Azure je dostupný vyhrazený modul HARDWAROVÉho zabezpečení?
 
@@ -101,7 +101,7 @@ Od 13. března 2019 je vyhrazený modul HSM dostupný ve 14 oblastech uvedených
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Otázka: jak se moje aplikace připojí k vyhrazené HSM?
 
-K provádění kryptografických operací z vašich aplikací se používají Thales klientské nástroje/sada SDK/software modulu HSM. Software je k dispozici na [portálu zákaznické podpory Thales](https://supportportal.gemalto.com/csm/). Zákazníci, kteří používají vyhrazenou službu HSM, se musí zaregistrovat pro podporu Thales a mít ID zákazníka, které umožňuje přístup a stažení relevantního softwaru.
+K provádění kryptografických operací z vašich aplikací se používají Thales klientské nástroje/sada SDK/software modulu HSM. Software je k dispozici na [portálu zákaznické podpory Thales](https://supportportal.thalesgroup.com/csm). Zákazníci, kteří používají vyhrazenou službu HSM, se musí zaregistrovat pro podporu Thales a mít ID zákazníka, které umožňuje přístup a stažení relevantního softwaru.
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Otázka: může se aplikace připojit k vyhrazenému HSM z jiné virtuální sítě v rámci nebo napříč oblastmi?
 
@@ -117,7 +117,7 @@ No. Vyhrazené HSM Azure jsou dostupné jenom v rámci vaší virtuální sítě
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Otázka: mohu importovat klíče z existujícího místního modulu HARDWAROVÉho zabezpečení do vyhrazeného modulu HSM?
 
-Ano, pokud máte místní Thales Network Luna HSM 7 HSM. Existuje více metod. Informace najdete v [dokumentaci modulu HSM pro Thales](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).
+Ano, pokud máte místní Thales Luna 7 HSM. Existuje více metod. Informace najdete v [dokumentaci modulu HSM pro Thales](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Otázka: Jaké operační systémy podporuje vyhrazený klientský software HSM?
 
@@ -130,7 +130,7 @@ Pokud chcete mít vysokou dostupnost, musíte nastavit konfiguraci klientské ap
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>Otázka: Jaké mechanismy ověřování podporuje vyhrazený modul HSM?
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure používá zařízení SafeNet Network HSM 7 (model A790) a podporuje ověřování na základě hesla.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure používá zařízení [A790 modelu Thales Luna 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) a podporuje ověřování pomocí hesla.
 
 ### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>Otázka: Jaké sady SDK, rozhraní API a klientský software jsou k dispozici pro použití s vyhrazeným modulem HSM?
 
@@ -207,7 +207,7 @@ Ano. Konfigurace a nastavení vysoké dostupnosti se provádí v klientském sof
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat HSM z místní sítě do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
-Ano. Musí splňovat požadavky vysoké dostupnosti pro SafeNet Luna Network HSM 7.
+Ano. Musí splňovat požadavky vysoké dostupnosti pro [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat Luna 5/6 HSM z místních sítí do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
@@ -229,7 +229,7 @@ Datacentra Azure mají rozsáhlou fyzickou a procedurální kontrolu zabezpečen
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Otázka: co se stane, pokud dojde k narušení zabezpečení nebo události manipulace s hardwarem?
 
-Vyhrazená služba HSM používá zařízení Thales Network Luna HSM 7. Tato zařízení podporují detekci fyzických a logických zásahů. Pokud dojde k nějaké neoprávněné události, HSM se automaticky vyhodnotí jako nuly.
+Vyhrazená služba HSM používá zařízení [HSM Thales Luna 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) . Tato zařízení podporují detekci fyzických a logických zásahů. Pokud dojde k nějaké neoprávněné události, HSM se automaticky vyhodnotí jako nuly.
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>Otázka: Návody zajistěte, aby se klíče v mých vyhrazených HSM ztratily kvůli chybě nebo škodlivému útoku Insider?
 
@@ -239,7 +239,7 @@ Pro účely pravidelného periodického zálohování HSM pro zotavení po havá
 
 Podpora je poskytována společností Microsoft i Thales.  Pokud máte problém s hardwarem nebo přístupem k síti, vyvolejte žádost o podporu od Microsoftu a pokud máte problém s konfigurací HSM, softwarem a vývojem aplikací, vyvolejte žádost o podporu s Thales. Pokud máte neurčený problém, vyvolejte žádost o podporu od Microsoftu a pak Thales můžete podle potřeby. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>Otázka: Návody získat klientský software, dokumentaci a přístup k pokynům k integraci pro Thales Network Luna HSM 7?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-luna-7-hsm"></a>Otázka: Návody získat klientský software, dokumentaci a přístup k pokynům k integraci pro modul HSM pro Thales Luna 7?
 
 Po registraci služby se poskytne ID zákazníka Thales, které umožňuje registraci na portálu zákaznické podpory Thales. Tím povolíte přístup ke všem softwareům a dokumentaci a zároveň povolíte žádosti o podporu přímo v Thales.
 
@@ -255,11 +255,11 @@ Modul hardwarového zabezpečení (HSM) obsahuje možnost restartování z pří
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>Otázka: je bezpečné ukládat šifrovací klíče pro moje nejdůležitější data do vyhrazeného modulu HSM?
 
-Ano, vyhrazený modul HSM zřídí Thales síť Luna HSM 7, která používají ověřený HSM úrovně 3 Standard FIPS 140-2. 
+Ano, vyhrazená ustanovení HSM Thales Luna 7 HSM, která jsou ověřená [na úrovni FIPS 140-2 úrovně 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) . 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>Otázka: Jaké kryptografické klíče a algoritmy podporuje vyhrazený modul HSM?
 
-Vyhrazená služba HSM zřídí zařízení Thales Network Luna HSM 7. Podporují celou škálu typů kryptografických klíčů a algoritmy, mezi které patří: plná podpora Suite B.
+Vyhrazená služba HSM zřídí zařízení Thales Luna 7 HSM. Podporují celou škálu typů kryptografických klíčů a algoritmy, mezi které patří: plná podpora Suite B.
 
 * Symetrick
   * RSA
@@ -283,11 +283,11 @@ Vyhrazená služba HSM zřídí zařízení Thales Network Luna HSM 7. Podporuj�
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Otázka: je ověřena rezervovaná úroveň Standard HSM FIPS 140-2 úrovně 3?
 
-Ano. Vyhrazená služba HSM zřídí zařízení Thales Network Luna HSM 7, která používají ověřený HSM úrovně 3 Standard FIPS 140-2.
+Ano. Vyhrazená služba HSM zřídí [Thales Luna 7 modelu HSM A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) , která jsou ověřená [na úrovni FIPS 140-2 úrovně 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) .
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Otázka: co potřebuji k tomu, abyste se ujistili, že provozovat vyhrazený HSM v režimu ověřování FIPS 140-2 Level 3?
 
-Vyhrazená služba HSM zřídí zařízení Thales Network Luna HSM 7. Tato zařízení používají ověřený HSM úrovně 3 Standard FIPS 140-2. Výchozí nasazená konfigurace, operační systém a firmware jsou taky ověřené standardem FIPS. Pro dodržování předpisů FIPS 140-2 úrovně 3 není nutné provádět žádnou akci.
+Vyhrazená služba HSM zřídí zařízení Thales Luna 7 HSM. Tato zařízení mají HSM ověřený Standard FIPS 140-2 úrovně 3. Výchozí nasazená konfigurace, operační systém a firmware jsou taky ověřené standardem FIPS. Pro dodržování předpisů FIPS 140-2 úrovně 3 není nutné provádět žádnou akci.
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Otázka: jak zákazník zaručí, že když dojde ke zrušení zřízení modulu HARDWAROVÉho zabezpečení, dojde k vymazání všech klíčových materiálů?
 
@@ -297,7 +297,7 @@ Než si vyžádáte zrušení zřízení, zákazník musí vyhodnotit modul HARD
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>Otázka: kolik kryptografických operací se podporuje za sekundu pomocí vyhrazeného modulu HSM?
 
-Vyhrazený modul HSM zřídí Thales Network Luna HSM 7 HSM. Zde je souhrn maximálního výkonu pro některé operace: 
+Vyhrazená ustanovení HSM Thales Luna 7 HSM. Zde je souhrn maximálního výkonu pro některé operace: 
 
 * RSA-2048:10 000 transakcí za sekundu
 * ECC P256:20 000 transakcí za sekundu
@@ -305,7 +305,7 @@ Vyhrazený modul HSM zřídí Thales Network Luna HSM 7 HSM. Zde je souhrn maxim
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>Otázka: kolik oddílů lze vytvořit v vyhrazeném modulu HSM?
 
-SafeNet Luna HSM 7 model A790 zahrnuje licenci na 10 oddílů za cenu služby. Zařízení má omezení 100 oddílů a přidávání oddílů do tohoto limitu by znamenalo dodatečné licenční náklady a vyžadovalo instalaci nového licenčního souboru na zařízení.
+[Thales Luna 7 modelu HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) zahrnuje licenci na 10 oddílů za cenu služby. Zařízení má omezení 100 oddílů a přidávání oddílů do tohoto limitu by znamenalo dodatečné licenční náklady a vyžadovalo instalaci nového licenčního souboru na zařízení.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Otázka: kolik klíčů je možné podporovat v vyhrazeném modulu HSM?
 

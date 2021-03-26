@@ -6,21 +6,31 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 8b85307f01a11366a2147c947f26658f548932e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 314462517ba4e63694266b5e49231cb8536f3635
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467710"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604718"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované verze serveru Azure Database for MySQL
 
 Azure Database for MySQL bylo vyvinuto z [verze MySQL Community Edition](https://www.mysql.com/products/community/)pomocí modulu úložiště InnoDB. Služba podporuje všechny aktuální hlavní verze, které podporuje komunita konkrétně MySQL 5,6, 5,7 a 8,0. MySQL používá schéma pojmenování X. Y. Z, kde X je hlavní verze, Y je podverze a verze Z je oprava chyby. Další informace o schématu najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-> [!NOTE]
-> V případě možnosti nasazení s jedním serverem slouží brána k přesměrování připojení k instancím serveru. Po navázání připojení se v klientovi MySQL zobrazí verze MySQL nastavená v bráně, a ne verze skutečně spuštěná na instanci serveru MySQL. Pokud chcete zjistit verzi instance serveru MySQL, na příkazovém řádku MySQL spusťte příkaz `SELECT VERSION();`.
 
-Azure Database for MySQL aktuálně podporuje následující hlavní a dílčí verze MySQL:
+
+## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>Připojení k uzlu brány, na kterém je spuštěná konkrétní verze MySQL
+
+V případě možnosti nasazení s jedním serverem slouží brána k přesměrování připojení k instancím serveru. Po navázání připojení se v klientovi MySQL zobrazí verze MySQL nastavená v bráně, a ne verze skutečně spuštěná na instanci serveru MySQL. Pokud chcete zjistit verzi instance serveru MySQL, na příkazovém řádku MySQL spusťte příkaz `SELECT VERSION();`. Přečtěte si [architekturu připojení](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture#connectivity-architecture) , kde najdete další informace o branách v architektuře Azure Database for MySQL Service.
+
+Jelikož Azure Database for MySQL podporuje hlavní verzi v 5.6, v 5.7 a v 8.0, výchozí port 3306 pro připojení k Azure Database for MySQL spustí klienta MySQL verze 5,6 (nejméně společný jmenovatel), aby podporoval připojení k serverům všech 3 podporovaných hlavních verzí. Pokud však má vaše aplikace požadavek na připojení ke konkrétní hlavní verzi říká v 5.7 nebo v 8.0, můžete to provést změnou portu v připojovacím řetězci serveru.
+
+V Azure Database for MySQL služba naslouchá uzly brány na portu 3308 pro klienty verze 5.7 a port 3309 pro klienty verze 8.0. Jinými slovy, pokud se chcete připojit k klientovi brány v 5.7, měli byste použít plně kvalifikovaný název serveru a port 3308 pro připojení k serveru z klientské aplikace. Podobně pokud se chcete připojit k klientovi brány v 8.0, můžete k připojení k serveru použít plně kvalifikovaný název serveru a port 3309. Další přehlednost najdete v následujícím příkladu.
+
+:::image type="content" source="./media/concepts-supported-versions/concepts-supported-versions-gateway.png" alt-text="Příklad připojení pomocí různých verzí MySQL brány":::
+
+
+## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL aktuálně podporuje následující hlavní a dílčí verze MySQL:
 
 
 | Verze | Jeden server <br/> Aktuální dílčí verze |Flexibilní server (Preview) <br/> Aktuální dílčí verze  |

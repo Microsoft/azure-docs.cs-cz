@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8c8024a2083d09fcbd53a37f0d391c4589748eea
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579140"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605072"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -31,7 +31,7 @@ Cloudové aplikace nebo akce jsou klíčovým signálem v zásadách podmíněn�
 
 Mnohé z existujících cloudových aplikací Microsoftu jsou uvedené v seznamu aplikací, ze kterých můžete vybírat. 
 
-Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zásady podmíněného přístupu. Některé aplikace, jako je například sada Office 365 a Správa Microsoft Azure, zahrnují několik souvisejících podřízených aplikací nebo služeb. Následující seznam není vyčerpávající a může se změnit.
+Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zásady podmíněného přístupu. Některé aplikace, jako je například sada Office 365 a Správa Microsoft Azure, zahrnují několik souvisejících podřízených aplikací nebo služeb. Průběžně přidáváme další aplikace, takže následující seznam není vyčerpávající a může se změnit.
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -66,6 +66,8 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 - Online Skype pro firmy
 - Virtuální privátní síť (VPN)
 - Ochrana ATP v programu Windows Defender
+
+Aplikace, které jsou k dispozici pro podmíněný přístup, prošly procesem připojování a ověřování. To nezahrnuje všechny aplikace Microsoftu, protože mnoho je back-endové služby a netýká se zásad, které se na ně vztahují přímo. Pokud hledáte chybějící aplikaci, můžete kontaktovat konkrétní tým aplikace nebo vytvořit žádost na [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259).
 
 ### <a name="office-365"></a>Office 365
 

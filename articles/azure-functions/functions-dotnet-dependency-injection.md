@@ -4,15 +4,15 @@ description: Naučte se používat vkládání závislostí k registraci a použ
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955084"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608115"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -22,7 +22,12 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Předpoklady
+- Vzory vkládání závislostí se liší v závislosti na tom, zda jsou funkce jazyka C# spouštěny [v procesu](functions-dotnet-class-library.md) nebo [mimo proces](dotnet-isolated-process-guide.md).  
+
+> [!IMPORTANT]
+> Pokyny v tomto článku se vztahují pouze na [funkce knihovny tříd C#](functions-dotnet-class-library.md), které se spouštějí v procesu s modulem runtime. Tento model injektáže vlastní závislosti neplatí pro [izolované funkce .NET](dotnet-isolated-process-guide.md), které vám umožní spustit funkce .NET 5,0 mimo proces. Model izolovaného procesu .NET spoléhá na regulární vzory vkládání závislostí ASP.NET Core. Další informace najdete v tématu [vkládání závislostí](dotnet-isolated-process-guide.md#dependency-injection) v průvodci izolovaným procesem .NET.
+
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 

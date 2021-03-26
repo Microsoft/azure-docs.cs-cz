@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721295"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606772"
 ---
 # <a name="scaling-hpc-applications"></a>Škálování aplikací HPC
 
@@ -43,6 +43,9 @@ Následující návrhy se vztahují na optimální efektivitu škálování apli
    ```bash
    Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
    ```
+
+## <a name="adaptive-routing"></a>Adaptivní směrování
+Adaptivní směrování (AR) umožňuje službě Azure Virtual Machines (virtuálním počítačům) se systémem EDR a HDR InfiniBand automaticky zjišťovat a zamezit zahlcení sítě tím, že dynamicky vybírá více optimálních síťových cest. V důsledku toho AR nabízí lepší latenci a šířku pásma v síti InfiniBand, která zase zvyšuje efektivitu výkonu a škálování. Další podrobnosti najdete v [článku TechCommunity](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217).
 
 ## <a name="process-pinning"></a>Připnutí procesů
 

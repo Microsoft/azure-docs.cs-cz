@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76cb2f94c949217c36fdccb8c64a53555bab227c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89002704"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606330"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
 
@@ -40,7 +40,7 @@ Verze 9 Azure Search .NET SDK cílí na verzi 2019-05-06 Azure Search REST API s
 
 * [Obohacení AI](cognitive-search-concept-intro.md) je schopnost extrahovat text z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat – vylepšuje obsah, aby bylo lépe prohledávatelné Azure Search indexu.
 * Podpora [komplexních typů](search-howto-complex-data-types.md) umožňuje modelovat skoro všechny vnořené struktury JSON v indexu Azure Search.
-* [Automatické dokončování](search-autocomplete-tutorial.md) nabízí alternativu k rozhraní API pro **navrhování** pro implementaci chování hledání podle zadání. Automatické dokončování "dokončí" slovo nebo frázi, kterou uživatel právě zapisuje.
+* [Automatické dokončování](search-add-autocomplete-suggestions.md) nabízí alternativu k rozhraní API pro **navrhování** pro implementaci chování hledání podle zadání. Automatické dokončování "dokončí" slovo nebo frázi, kterou uživatel právě zapisuje.
 * [Režim analýzy JsonLines](search-howto-index-json-blobs.md), část indexování objektů BLOB v Azure, vytvoří jeden vyhledávací dokument pro každou entitu JSON, která je oddělená novým řádkem.
 
 ### <a name="new-preview-features-in-version-80-preview"></a>Nové funkce ve verzi Preview verze 8,0-Preview

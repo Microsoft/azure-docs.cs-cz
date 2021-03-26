@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d80caf767d923ce2539ca254a8312371155a3104
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553727"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607588"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -52,7 +52,7 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: Pokusili jste se odstranit galerii, která obsahuje alespoň jednu existující definici obrázku. Galerie musí být prázdná, aby ji bylo možné odstranit.  
 **Alternativní řešení**: Odstraňte všechny definice obrázků v galerii a pak pokračujte v odstraňování galerie. Pokud definice image obsahuje verze imagí, je nutné před odstraněním definic imagí odstranit verze imagí.
 
-**Zpráva**: *název galerie ' <název galerie \> ' není jedinečný v rámci předplatného ' <subscriptionId> '. Vyberte prosím jiný název galerie.*  
+**Zpráva**: *název galerie ' <název galerie \> ' není jedinečný v rámci předplatného ' <subscriptionID> '. Vyberte prosím jiný název galerie.*  
 **Příčina**: máte stávající galerii se stejným názvem a pokusili jste se vytvořit další galerii se stejným názvem.  
 **Alternativní řešení**: pro galerii vyberte jiný název.
 
@@ -127,7 +127,7 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: Pokusili jste se odstranit definici image, která obsahuje verze imagí. Definice obrázku musí být prázdná, aby ji bylo možné odstranit.  
 **Alternativní řešení**: Odstraňte všechny verze imagí v definici image a pak pokračujte v odstranění definice image.
 
-**Zpráva**: *vlastnost <parametru nelze vytvořit \> . Hodnotu <hodnoty nelze převést \> na typ <PropertyType \> . Název identifikátoru <hodnoty nelze porovnat \> s platným názvem enumerátoru. Zadejte jeden z následujících názvů enumerátorů a akci opakujte: <choice1 \> , <choice2 \> ,...*  
+**Zpráva**: *vlastnost <parametru nelze vytvořit \> . Hodnotu <hodnoty nelze převést \> na typ <PropertyType \> . Název identifikátoru <hodnoty nelze porovnat \> s platným názvem enumerátoru. Zadejte jeden z následujících názvů enumerátorů a zkuste to znovu: <volba \_ 1 \> , <volba \_ 2 \> ,...*  
 **Příčina**: vlastnost má omezený seznam možných hodnot a <hodnota není \> jednou z nich.  
 **Alternativní řešení**: zvolte jednu z možných <\> hodnoty volby.
 
@@ -185,7 +185,7 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: Když vytváříte verzi Image pomocí seznamu disků nebo snímků disku, dva nebo víc disků nebo snímků disku mají stejné ID prostředku.  
 **Alternativní řešení**: odeberte nebo změňte všechna duplicitní ID zdroje disku.
 
-**Zpráva**: *ID vlastnosti <ResourceID \> v cestě ' properties. storageProfile. <diskImages \> . Source.ID ' je neplatné. Očekávalo se plně kvalifikované ID prostředku, které začíná na '/subscriptions/{subscriptionId} ' nebo '/providers/{resourceProviderNamespace}/'.*  
+**Zpráva**: *ID vlastnosti <ResourceID \> v cestě ' properties. storageProfile. <diskImages \> . Source.ID ' je neplatné. Očekává se plně kvalifikované ID prostředku, které začíná na '/Subscriptions/ <subscriptionID> ' nebo '/Providers/ <resourceProviderNamespace> /'.*  
 **Příčina**: hodnota <ResourceID \> je nesprávně naformátovaná.  
 **Alternativní řešení**: Ověřte, jestli je ID prostředku správné.
 
@@ -303,7 +303,7 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: definice bitové kopie, kterou jste použili k nasazení virtuálního počítače, neobsahuje žádné verze bitové kopie, které jsou zahrnuty v nejnovější verzi.  
 **Alternativní řešení**: Zajistěte, aby existovala alespoň jedna verze image, která má možnost vyloučit z nejnovější hodnoty nastavenou na hodnotu false. 
 
-**Zpráva**: *klient má oprávnění k provedení akce "Microsoft. COMPUTE/Galerie/images/verze/čtení" v oboru <ResourceID \> , ale aktuální tenant <tenantId1 \> nemá autorizaci pro přístup k propojenému předplatnému <subscriptionId2 \> .*  
+**Zpráva**: *klient má oprávnění k provedení akce "Microsoft. COMPUTE/Galerie/images/verze/čtení" v oboru <ResourceID \> , ale aktuální tenant <tenantID \> nemá autorizaci pro přístup k propojenému předplatnému <subscriptionID \> .*  
 **Příčina**: virtuální počítač nebo sada škálování se vytvořily prostřednictvím image SIG v jiném tenantovi. Pokusili jste se provést změnu virtuálního počítače nebo sady škálování, ale nemáte přístup k předplatnému, které vlastní image.  
 **Alternativní řešení**: Pokud chcete verzi image udělit přístup pro čtení, obraťte se na vlastníka předplatného verze image.
 
@@ -327,12 +327,17 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: aktuální zdrojová image pro sadu škálování je zobecněná zdrojová image, ale aktualizuje se zdrojovou imagí, která je specializovaná. Aktuální zdrojová image a nová zdrojová image pro sadu škálování musí být ve stejném stavu.  
 **Alternativní řešení**: Pokud chcete aktualizovat sadu škálování, použijte zobecněnou verzi image.
 
-**Zpráva**: *sada šifrování disku <diskEncryptionSetId \> v galerii sdílených imagí <versionId \> patří do předplatného <subscriptionId1 \> a nedá se použít s prostředkem v předplatném <subscriptionId2 \>*  
+**Zpráva**: *sada šifrování disků <diskEncryptionSetID \> v galerii sdílených imagí <versionID \> patří k předplatnému <SubscriptionId \_ 1 \> a nelze ji použít s prostředkem v předplatném <SubscriptionId \_ 2 \>* .  
 **Příčina**: sada šifrování disků, která se používá k šifrování verze image, se nachází v jiném předplatném, než je předplatné pro hostování verze image.  
 **Alternativní řešení**: použijte stejné předplatné pro verzi image a sadu šifrování disku.
 
 **Zpráva**: *Vytvoření virtuálního počítače nebo sady škálování virtuálního počítače trvá dlouhou dobu.*  
 **Alternativní řešení**: Ověřte, že **OSType** verze image, ze které se pokoušíte vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, z nástroje má stejný **OSType** zdroje, který jste použili k vytvoření verze image. 
+
+**Zpráva**: *prostředek s ID <vmID \> má jiný plán [' { \" name \" : \" <name> \" , \" Publisher \" : \" <publisher> \" , \" Product \" : \" <product> \" , \" promotionCode \" : \" <promotionCode> \" } '] než plán obrázku nadřazené Galerie [' null '].*  
+**Příčina**: definice nadřazené image pro nasazenou verzi image neobsahuje informace o plánu nákupu.  
+**Alternativní řešení**: vytvořte definici image se stejnými podrobnostmi plánu nákupu z chybové zprávy a vytvořte verzi image v rámci definice image.
+
 
 ## <a name="creating-a-disk-from-an-image-version"></a>Vytvoření disku z verze image ##
 

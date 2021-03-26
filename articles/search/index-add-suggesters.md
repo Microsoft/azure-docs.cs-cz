@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604402"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606211"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím nástroje pro *návrhy*. Modul pro návrhy je interní datová struktura, která se skládá z kolekce polí. Pole se dotýkají dodatečného tokenizace, generování posloupnosti předpon pro podporu shody na částečných výrazech.
+V Azure Kognitivní hledání, typeahead nebo "prohledávání jako typ", je povoleno prostřednictvím nástroje pro *návrhy*. Modul pro návrhy je interní datová struktura, která se skládá z kolekce polí. Pole se dotýkají dodatečného tokenizace, generování posloupnosti předpon pro podporu shody na částečných výrazech. Například modul pro návrhy, který obsahuje pole City, bude mít pro pojem "Seattle" kombinaci předpon "moře", "sedadlo", "pracovní stanici" a "seattl".
 
-Pokud například modul pro návrhy obsahuje pole City, budou pro termín "Seattle" vytvořena Výsledná kombinace předpony "moře", "sedadlo", "pracovní stanice" a "seattl". Předpony jsou uloženy v obrácených indexech, jedno pro každé pole zadané v kolekci polí modulu pro návrhy.
+V případě částečných podmínek může být dotaz AutoComplete nebo navrhovaná shoda. Stejný nástroj pro návrhy podporuje jak prostředí.
 
 ## <a name="typeahead-experiences-in-cognitive-search"></a>Typeahead prostředí v Kognitivní hledání
 
-Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování*, které dokončuje částečný vstup pro celý dotaz na určitý termín, a *návrhy* , které pozvaní na kliknutí do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
+Typeahead může být *Automatické dokončování*, které dokončuje částečný vstup pro celý dotaz na určitý termín, nebo *návrhy* , které pozvánku přidávají do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
 
 Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce C#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obě. Automatické dokončování předpokládá potenciální termín a dokončuje "TW" s "in". Návrhy jsou zkrácené výsledky hledání, kde pole jako název hotelu představuje odpovídající dokument hledání hotelu z indexu. V případě návrhů můžete Surface libovolného pole, které poskytuje popisné informace.
 
@@ -40,11 +40,11 @@ Podpora vyhledávání podle typu je povolena pro každé pole pro pole řetězc
 
 ## <a name="how-to-create-a-suggester"></a>Jak vytvořit modul pro návrhy
 
-Pokud chcete vytvořit návrh, přidejte ho do [definice indexu](/rest/api/searchservice/create-index). Modul pro návrhy Získá název a kolekci polí, přes které je povoleno prostředí typeahead. a [nastavte každou vlastnost](#property-reference). Nejlepším časem, jak vytvořit modul pro navrhování, je, že definujete pole, které ho bude používat.
+Pokud chcete vytvořit návrh, přidejte ho do [definice indexu](/rest/api/searchservice/create-index). Modul pro návrhy přebírá název a kolekci polí, ve kterých je povolené prostředí typeahead. Nejlepším časem, jak vytvořit modul pro navrhování, je, že definujete pole, které ho bude používat.
 
 + Použijte pouze pole řetězců.
 
-+ Pokud je pole řetězce součástí komplexního typu (například pole město v rámci adresy), zahrňte nadřazený prvek do pole: `"Address/City"` (Rest a C# a Python) nebo `["Address"]["City"]` (JavaScript).
++ Pokud je pole řetězce součástí komplexního typu (například pole město v rámci adresy), zahrňte nadřazené pole v cestě k poli: `"Address/City"` (Rest a C# a Python) nebo `["Address"]["City"]` (JavaScript).
 
 + Použijte výchozí standardní analyzátor Lucene ( `"analyzer": null` ) nebo [analyzátor jazyka](index-add-language-analyzers.md) (například `"analyzer": "en.Microsoft"` ) v poli.
 
@@ -58,7 +58,7 @@ Automatické dokončování přináší výhody většího fondu polí, ze kter�
 
 Na druhé straně návrhy poskytují lepší výsledky, pokud je volba pole vybraná. Mějte na paměti, že návrh je proxy pro dokument hledání, takže budete chtít, aby pole, která nejlépe reprezentují jeden výsledek. Názvy, názvy nebo jiná jedinečná pole, která rozlišují mezi více shod, fungují nejlépe. Pokud se pole skládají z opakujících se hodnot, návrhy se skládají z identických výsledků a uživatel nebude znát, který z nich se má kliknout.
 
-Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechna pole, která potřebujete pro automatické dokončování, ale pak použijte **$Select**, **$Top**, **$Filter** a **searchFields** k řízení výsledků návrhů.
+Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechna pole, která potřebujete pro automatické dokončování, ale pak použijte $select, $top, $filter a "searchFields" k řízení výsledků návrhů.
 
 ### <a name="choose-analyzers"></a>Zvolit analyzátory
 
@@ -142,9 +142,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Vlastnost      |Popis      |
 |--------------|-----------------|
-|`name`        | Zadáno v definici modulu pro návrhy, ale také voláno na žádost o automatické dokončování nebo návrhy. |
-|`sourceFields`| Zadáno v definici modulu pro návrhy. Je to seznam jednoho nebo více polí v indexu, který je zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný lexikální analyzátor z [tohoto seznamu](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (nikoli vlastního analyzátoru).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
-|`searchMode`  | Parametr pouze pro REST, ale také viditelný na portálu. Tento parametr není v sadě .NET SDK k dispozici. Označuje strategii, pomocí které se hledají fráze kandidáta. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching` , který aktuálně odpovídá začátku období.|
+| name        | Zadáno v definici modulu pro návrhy, ale také voláno na žádost o automatické dokončování nebo návrhy. |
+| sourceFields | Zadáno v definici modulu pro návrhy. Je to seznam jednoho nebo více polí v indexu, který je zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný lexikální analyzátor z [tohoto seznamu](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (nikoli vlastního analyzátoru). </br></br>Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu. </br></br>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
+| searchMode  | Parametr pouze pro REST, ale také viditelný na portálu. Tento parametr není v sadě .NET SDK k dispozici. Označuje strategii, pomocí které se hledají fráze kandidáta. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching` , který aktuálně odpovídá začátku období.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -157,9 +157,9 @@ V dotazu se používá modul pro návrhy. Po vytvoření modulu pro vytváření
 + [Metoda SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync)
 + [Metoda AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
-V aplikaci vyhledávání by měl klientský kód využít knihovnu, jako je například [Automatické dokončování uživatelského rozhraní jQuery](https://jqueryui.com/autocomplete/) , ke shromáždění částečného dotazu a zadání shody. Další informace o této úloze najdete v tématu [Přidání automatického dokončování nebo navrhovaných výsledků do klientského kódu](search-autocomplete-tutorial.md).
+V aplikaci vyhledávání by měl klientský kód využít knihovnu, jako je například [Automatické dokončování uživatelského rozhraní jQuery](https://jqueryui.com/autocomplete/) , ke shromáždění částečného dotazu a zadání shody. Další informace o této úloze najdete v tématu [Přidání automatického dokončování nebo navrhovaných výsledků do klientského kódu](search-add-autocomplete-suggestions.md).
 
-Použití rozhraní API je znázorněno v následujícím volání REST API automatického dokončování. Existují dva poznatky z tohoto příkladu. Jako první, stejně jako u všech dotazů, se operace týká kolekce dokumentů indexu a dotaz obsahuje parametr **hledání** , který v tomto případě poskytuje částečný dotaz. Za druhé musíte do žádosti přidat **suggesterName** . Pokud není v indexu definován modul pro návrh, volání automatického dokončování nebo návrhů se nezdaří.
+Použití rozhraní API je znázorněno v následujícím volání REST API automatického dokončování. Existují dva poznatky z tohoto příkladu. Jako první, stejně jako u všech dotazů, se operace týká kolekce dokumentů indexu a dotaz obsahuje parametr "Search", který v tomto případě poskytuje částečný dotaz. Za druhé musíte do žádosti přidat "suggesterName". Pokud není v indexu definován modul pro návrh, volání automatického dokončování nebo návrhů se nezdaří.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
@@ -178,4 +178,4 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 Pro další informace o způsobu formulování požadavků doporučujeme následující článek.
 
 > [!div class="nextstepaction"]
-> [Přidání automatického dokončování a návrhů do klientského kódu](search-autocomplete-tutorial.md)
+> [Přidání automatického dokončování a návrhů do klientského kódu](search-add-autocomplete-suggestions.md)

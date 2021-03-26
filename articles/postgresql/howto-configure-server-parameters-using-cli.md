@@ -1,24 +1,24 @@
 ---
 title: Konfigurace parametrů-Azure Database for PostgreSQL-Single server
 description: Tento článek popisuje, jak nakonfigurovat parametry Postgres v Azure Database for PostgreSQL-Single server pomocí Azure CLI.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 06/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4231f348f99073406fcb6a5bef9bf0f84cacf2eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cadf21423ac7eb997db5bb42005ee307d9813331
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96005567"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604188"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pro Azure Database for PostgreSQL pro jeden server pomocí Azure CLI
 Můžete vypsat, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Vytvoření serveru a databáze Azure Database for PostgreSQL pomocí následujících kroků vytvořte [Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
 - Nainstalujte na svém počítači rozhraní příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo použijte [Azure Cloud Shell](../cloud-shell/overview.md) v Azure Portal pomocí prohlížeče.

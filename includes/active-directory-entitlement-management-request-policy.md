@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98697925"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582478"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -27,7 +27,7 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresá
 
 1. Vyberte jednu z následujících možností:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Konkrétní uživatelé a skupiny** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat jenom pro uživatele a skupiny v adresáři, který jste zadali. |
     | **Všichni členové (kromě hostů)** | Tuto možnost vyberte, pokud chcete, aby všichni členové členských uživatelů v adresáři mohli požádat o tento balíček přístupu. Tato možnost neobsahuje žádné uživatele typu Host, které jste mohli pozvat do svého adresáře. |
@@ -62,7 +62,7 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
 
 1. Vyberte jednu z následujících možností:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Přístup k tomuto balíčku můžou vyžádat všichni uživatelé z vybraných organizací. |
     | **Všechny připojené organizace** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou tento balíček přístupu požádat. |

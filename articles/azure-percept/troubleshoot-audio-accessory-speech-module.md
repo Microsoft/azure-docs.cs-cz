@@ -5,14 +5,14 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4fc7d7564ecd30326fbec832639b2a81d55e6d5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102635565"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605650"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Řešení potíží se zvukem a modulem Speech pro Azure Percept
 
@@ -20,16 +20,24 @@ Pomocí níže uvedených pokynů můžete řešit problémy s aplikacemi hlasov
 
 ## <a name="collecting-speech-module-logs"></a>Shromažďování protokolů modulu řeči
 
-Pokud chcete spustit tyto příkazy, [Připojte se ke službě Azure PERCEPT DK Wi-Fi přístupový bod a připojte se k vývojové sadě přes SSH](./how-to-ssh-into-percept-dk.md) a zadejte příkazy v terminálu SSH.
+Chcete-li spustit tyto příkazy, spusťte [SSH do sady dev Kit](./how-to-ssh-into-percept-dk.md) a zadejte příkazy do výzvy klienta ssh.
+
+Shromažďovat protokoly modulů řeči:
 
 ```console
 sudo iotedge logs azureearspeechclientmodule
 ```
 
-K přesměrování libovolného výstupu do souboru. txt k další analýze použijte následující syntaxi:
+Chcete-li přesměrovat výstup do souboru. txt pro další analýzu, použijte následující syntaxi:
 
 ```console
 sudo [command] > [file name].txt
+```
+
+Změňte oprávnění souboru. txt tak, aby bylo možné ho zkopírovat:
+
+```console
+sudo chmod 666 [file name].txt
 ```
 
 Po přesměrování výstupu do souboru. txt zkopírujte soubor do hostitelského počítače přes bod připojení služby (SCP):
@@ -38,11 +46,11 @@ Po přesměrování výstupu do souboru. txt zkopírujte soubor do hostitelskéh
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-[cesta k souboru místního hostitele] odkazuje na umístění na hostitelském počítači, do kterého chcete zkopírovat soubor. txt. [vzdálené uživatelské jméno] je uživatelské jméno SSH zvolené během [připojování](./quickstart-percept-dk-set-up.md). Pokud jste nevytvořili přihlašovací jméno SSH během prostředí inPerceptování ve službě Azure pro Dánsko, je vaše vzdálené uživatelské jméno root.
+[cesta k souboru místního hostitele] odkazuje na umístění na hostitelském počítači, do kterého chcete zkopírovat soubor. txt. [vzdálené uživatelské jméno] je uživatelské jméno SSH zvolené během [instalačního prostředí](./quickstart-percept-dk-set-up.md).
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>Kontroluje se běhový stav modulu řeči.
 
-Ověřte, zda stav modulu runtime **azureearspeechclientmodule** ukazuje, že je **spuštěn**. Chcete-li najít běhový stav modulů zařízení, otevřete [Azure Portal](https://portal.azure.com/) a přejděte do části **všechny prostředky**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Kliknutím na kartu **moduly** zobrazíte stav modulu runtime všech instalovaných modulů.
+Ověřte, zda stav modulu runtime **azureearspeechclientmodule** ukazuje, že je **spuštěn**. Pokud chcete najít běhový stav modulů zařízení, otevřete [Azure Portal](https://portal.azure.com/) a přejděte do části **všechny prostředky**  ->  **[vaše centrum IoT]**  ->  **IoT Edge**  ->  **[ID zařízení]**. Kliknutím na kartu **moduly** zobrazíte stav modulu runtime všech instalovaných modulů.
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="Stránka hraničního zařízení v Azure Portal.":::
 
@@ -50,10 +58,10 @@ Pokud běhový stav **azureearspeechclientmodule** není uveden jako **spuštěn
 
 ## <a name="understanding-ear-som-led-indicators"></a>Princip indikátorů LED pro ušní objekty SoM
 
-Pomocí indikátorů LED můžete pochopit, ve kterém stavu je zařízení. Aby se modul plně inicializoval po *Zapnutí*, obvykle trvá přibližně 2 minuty. Jak prochází kroky inicializace, které se zobrazí:
+Pomocí indikátorů LED můžete pochopit, ve kterém stavu je zařízení. Obvykle trvá dokončení inicializace modulu v případě, že dojde k úplné inicializaci modulu po 2 minutách. Jak prochází kroky inicializace, zobrazí se:
 
-1. INDIKÁTORy bílé na střed – zařízení je zapnuté.
-2. 1 blikání INDIKÁTORu na pozadí – probíhá ověřování.
+1. Indikátor bílé na střed (statický): zařízení je zapnuté.
+2. Indikátor bílé na střed (blikající): probíhá ověřování.
 3. Až se zařízení ověří a bude připravené k použití, všechny tři diody LED se změní na modrou.
 
 |POD|Stav LED|Stav ušního SoM|

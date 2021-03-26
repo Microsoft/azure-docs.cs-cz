@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2021
-ms.openlocfilehash: 52509dbf529076eaa0af73ea48db9a7f3fd10241
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584512"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563289"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat s využitím mapování toků dat
 
@@ -24,7 +24,7 @@ Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznáme
 V tomto kurzu použijete uživatelské rozhraní Azure Data Factory (UX) k vytvoření kanálu, který kopíruje a transformuje data Azure Data Lake Storage ze zdroje Gen2 (ADLS) do ADLS Gen2 jímky pomocí mapování toku dat. Konfigurační vzor v tomto kurzu se dá rozbalit při transformaci dat pomocí toku dat mapování.
 
  >[!NOTE]
-   >Tento kurz je určen pro běžné mapování datových toků. Datové toky jsou k dispozici v Azure Data Factory i kanálech synapse. Pokud v kanálech Azure synapse začínáte toky dat, sledujte prosím [tok dat pomocí kanálů Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) . 
+   >Tento kurz je určen pro běžné mapování datových toků. Datové toky jsou k dispozici v Azure Data Factory i kanálech synapse. Pokud v kanálech Azure synapse začínáte toky dat, sledujte prosím [tok dat pomocí kanálů Azure synapse](../synapse-analytics/concepts-data-flow-overview.md) . 
    
 V tomto kurzu provedete následující kroky:
 
@@ -35,7 +35,7 @@ V tomto kurzu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 

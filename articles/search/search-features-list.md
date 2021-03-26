@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99538903"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609203"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Funkce Azure Kognitivní hledání
 
@@ -43,7 +43,7 @@ Azure Kognitivní hledání poskytuje fulltextový vyhledávací modul, trvalé 
 | Relevance | [**Jednoduché bodování**](index-add-scoring-profiles.md) je klíčovou výhodou pro Azure kognitivní hledání. Profily vyhodnocování (bodovací profily) se používají k modelování relevance jako funkce hodnot v samotných dokumentech. Můžete například chtít, aby se novější produkty nebo produkty se slevou zobrazovaly ve výsledcích hledání na vyšších pozicích. Můžete také vytvořit profily vyhodnocování pomocí značek pro individuální vyhodnocování podle preferencí vyhledávání zákazníků, které sledujete a ukládáte odděleně. |
 | Geografické vyhledávání | Azure Kognitivní hledání zpracovává, filtruje a zobrazuje geografické polohy. Umožňuje uživatelům zkoumat data podle blízkosti výsledku hledání k fyzické poloze. Pokud o tom chcete vědět víc, [pusťte si toto video](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) nebo [se podívejte na tuto ukázku](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Filtry a omezující vlastnosti | [**Fasetová navigace**](search-faceted-navigation.md) se aktivuje jedním parametrem dotazu. Azure Kognitivní hledání vrátí vlastnost s omezující navigační strukturou, kterou můžete použít jako kód za seznamem kategorií, pro filtrování samy sebe (například pro filtrování položek katalogu podle cenového rozsahu nebo značky). <br/><br/> [**Filtry**](query-odata-filter-orderby-syntax.md) se dají použít k začlenění fasetové navigace do uživatelského rozhraní aplikace, rozšíření možností formulování dotazu a filtrování na základě kritérií zadaných uživatelem nebo vývojářem. Filtry se vytvářejí pomocí syntaxe OData. |
-| Uživatelské prostředí | Na panelu hledání lze povolit [**Automatické dokončování**](search-autocomplete-tutorial.md) dotazů typu dotazování. <br/><br/>[**Návrhy hledání**](/rest/api/searchservice/suggesters) fungují také s částečnými textovými vstupy na panelu hledání, ale výsledky jsou skutečné dokumenty ve vašem indexu, a ne termíny dotazu. <br/><br/>[**Synonyma**](search-synonyms.md) přidružují ekvivalentní termíny, které implicitně rozšiřují rozsah dotazu, aniž by uživatel musel zadávat alternativní termíny. <br/><br/>[**Zvýrazňování nalezených položek**](/rest/api/searchservice/Search-Documents) použije formátování textu na odpovídající klíčové slovo ve výsledcích hledání. Můžete si zvolit pole, která budou vracet zvýrazněné fragmenty.<br/><br/>[**Řazení**](/rest/api/searchservice/Search-Documents) se poskytuje pro několik polí prostřednictvím schématu indexu. Zapíná se pak v době dotazu jedním parametrem vyhledávání.<br/><br/> [**Stránkování**](search-pagination-page-layout.md) a omezení výsledků hledání je jednoduché s jemně vyladěným ovládacím prvkem, který Azure kognitivní hledání nabízí nad výsledky hledání.  <br/><br/>|
+| Uživatelské prostředí | Na panelu hledání lze povolit [**Automatické dokončování**](search-add-autocomplete-suggestions.md) dotazů typu dotazování. <br/><br/>[**Návrhy hledání**](/rest/api/searchservice/suggesters) fungují také s částečnými textovými vstupy na panelu hledání, ale výsledky jsou skutečné dokumenty ve vašem indexu, a ne termíny dotazu. <br/><br/>[**Synonyma**](search-synonyms.md) přidružují ekvivalentní termíny, které implicitně rozšiřují rozsah dotazu, aniž by uživatel musel zadávat alternativní termíny. <br/><br/>[**Zvýrazňování nalezených položek**](/rest/api/searchservice/Search-Documents) použije formátování textu na odpovídající klíčové slovo ve výsledcích hledání. Můžete si zvolit pole, která budou vracet zvýrazněné fragmenty.<br/><br/>[**Řazení**](/rest/api/searchservice/Search-Documents) se poskytuje pro několik polí prostřednictvím schématu indexu. Zapíná se pak v době dotazu jedním parametrem vyhledávání.<br/><br/> [**Stránkování**](search-pagination-page-layout.md) a omezení výsledků hledání je jednoduché s jemně vyladěným ovládacím prvkem, který Azure kognitivní hledání nabízí nad výsledky hledání.  <br/><br/>|
 
 ## <a name="security-features"></a>Funkce zabezpečení
 

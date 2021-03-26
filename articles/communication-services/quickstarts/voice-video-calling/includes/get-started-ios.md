@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 536b9a9a0d1a7b48841938eef44d181d22b87bf4
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108259"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609434"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají sadu SDK pro iOS.
 
@@ -38,7 +38,7 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Instalace balíčku a závislostí pomocí CocoaPods
 
 1. Chcete-li vytvořit souboru podfile pro vaši aplikaci, otevřete terminál a přejděte do složky projektu a spusťte příkaz ```pod init```
-3. Do souboru podfile přidejte následující kód a uložte:
+3. Přidejte následující kód do souboru podfile a uložte (Ujistěte se, že "Target" odpovídá názvu vašeho projektu):
 
    ```
    platform :ios, '13.0'

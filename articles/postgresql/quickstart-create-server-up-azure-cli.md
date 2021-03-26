@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření serveru – AZ Postgres up-Azure Database for PostgreSQL-Single server'
 description: Průvodce rychlým startem pro vytvoření Azure Database for PostgreSQLho samostatného serveru pomocí příkazu Azure CLI (rozhraní příkazového řádku)
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c11a98c04f81e7c111faf4aa449ab2bf9a4890bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28007b4e17bd698e4aaa2bddbf0c8f9ffaaa8351
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92485218"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606449"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití příkazu rozhraní příkazového řádku Azure, AZ Postgres up (Preview), vytvoření serveru Azure Database for PostgreSQL-Single
 
@@ -22,7 +22,7 @@ ms.locfileid: "92485218"
 
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ Postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) vytvořit server Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az postgres up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. Tato výchozí nastavení usnadňují urychlení procesu vývoje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

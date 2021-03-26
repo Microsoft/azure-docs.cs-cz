@@ -8,43 +8,46 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: aa5530dd279e8b45382fe6841b6f193a652c0ba3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 7be40ac5f6cda7a81d68ca0b17f377891dd58480
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566791"
+ms.locfileid: "105606041"
 ---
-# <a name="known-issues-azure-communication-services-client-libraries"></a>Známé problémy: klientské knihovny služby Azure Communication Services
-Tento článek poskytuje informace o omezeních a známých problémech souvisejících s klientskými knihovnami služby Azure Communications Services.
+# <a name="known-issues-azure-communication-services-sdks"></a>Známé problémy: sady SDK služby Azure Communication Services
+Tento článek poskytuje informace o omezeních a známých problémech týkajících se sad Azure Communication Services SDK.
 
 > [!IMPORTANT]
 > Existuje několik faktorů, které mohou ovlivnit kvalitu volání. Další informace o konfiguraci sítě komunikačních služeb a testování osvědčených postupů najdete v dokumentaci k **[požadavkům sítě](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)** .
 
 
-## <a name="javascript-client-library"></a>Klientská knihovna v JavaScriptu
+## <a name="javascript-sdk"></a>JavaScript SDK
 
-Tato část poskytuje informace o známých problémech souvisejících s hlasem a voláním klienta JavaScriptu ve službě Azure Communication Services.
+Tato část poskytuje informace o známých problémech spojených s komunikačními službami JavaScript a voláním sady SDK pro komunikaci s Azure Communications.
 
-### <a name="after-refreshing-the-page-user-is-not-removed-from-the-call-immediately"></a>Po obnovení stránky nebude uživatel z volání okamžitě odebrán. 
-Pokud se uživatel ve volání a rozhodne aktualizovat stránku, Klientská knihovna komunikačních služeb nemusí být schopna informovat službu Media Services pro komunikaci, že se chystá odpojit. Služba Media Services pro komunikaci neodebere tohoto uživatele okamžitě z volání, ale počká, až se uživatel znovu připojí za problém s připojením k síti. Uživatel se odebere z volání po vypršení časového limitu služby Media Service.
+### <a name="refreshing-a-page-doesnt-immediately-remove-the-user-from-their-call"></a>Aktualizace stránky uživateli okamžitě neodebere uživatele z jeho volání.
 
-Doporučujeme vývojářům vytvářet prostředí, která nevyžadují, aby koncoví uživatelé aktualizovali stránku vaší aplikace a účastnili se volání. Pokud uživatel stránku aktualizuje, nejlepším způsobem, jak ho zpracovat pro aplikaci, je použít stejné ID uživatele komunikačních služeb pro uživatele poté, co se po aktualizaci vrátí zpět do aplikace.
+Pokud se uživatel ve volání a rozhodne aktualizovat stránku, služba Media Services Media Service neodebere tohoto uživatele okamžitě z tohoto volání. Bude počkat na opětovné připojení uživatele. Uživatel se odebere ze volání po vypršení časového limitu služby Media Service.
 
-V perspektivě dalších účastníků ve volání zůstane tento uživatel ve volání po předem definované množství času (1-2 min). Pokud se uživatel znovu připojí ke stejnému ID uživatele komunikační služby, bude reprezentován jako stejný stávající objekt v `remoteParticipants` kolekci.
-Pokud dříve uživatel poslal video, `videoStreams` shromažďování bude uchovávat předchozí informace o datovém proudu, dokud služba neuplyne časovým limitem a nebude ji možné odebrat, v této situaci se může v této aplikaci rozhodnout sledovat všechny nové datové proudy přidané do kolekce a jednu s nejvyšší hodnotou `id` . 
+Nejlepší je vytvořit uživatelské prostředí, které nevyžadují, aby koncoví uživatelé aktualizovali stránku aplikace při volání. Pokud uživatel aktualizuje stránku, po návratu zpět do aplikace znovu použije stejné ID uživatele komunikační služby.
+
+Z perspektivy dalších účastníků ve volání zůstane uživatel ve volání po dobu trvání (1-2 minut). Pokud se uživatel znovu připojí ke stejnému ID uživatele komunikačních služeb, bude reprezentován jako stejný existující objekt v `remoteParticipants` kolekci.
+
+Pokud uživatel odeslal video před aktualizací, `videoStreams` kolekce uchová předchozí informace o datovém proudu, dokud nevyprší časový limit služby a neodebere je. V tomto scénáři se aplikace může rozhodnout sledovat všechny nové datové proudy přidané do kolekce a jednu z nich vykreslit nejvyšší `id` . 
 
 
 ### <a name="its-not-possible-to-render-multiple-previews-from-multiple-devices-on-web"></a>Z více zařízení na webu není možné vykreslovat více náhledů.
-Jedná se o známé omezení. Další informace najdete v tématu věnovaném [volání klientské knihovny s přehledem](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) .
+Jedná se o známé omezení. Další informace najdete v tématu [Přehled volání sady SDK](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features).
 
-### <a name="enumeration-of-the-microphone-and-speaker-devices-is-not-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>V prohlížeči Safari není možné vyčíslit zařízení mikrofonu a mluvčího, když je aplikace spuštěná v iOS nebo iPadOS. 
+### <a name="enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>Vytváření výčtu zařízení není možné v Safari, pokud je aplikace spuštěná v iOS nebo iPadOS.
+
 Aplikace nemůžou vytvořit výčet/mluvčí zařízení (jako Bluetooth) v Safari iOS/iPadu. Toto je známé omezení operačního systému.
 
 Pokud používáte Safari v macOS, vaše aplikace nebude moct vytvářet výčet a vybírat reproduktory prostřednictvím Správce zařízení komunikačních služeb. V tomto scénáři je potřeba zařízení vybrat přes operační systém. Pokud používáte Chrome v macOS, může aplikace zobrazit nebo vybrat zařízení prostřednictvím komunikačních služeb Správce zařízení.
 
 ### <a name="audio-connectivity-is-lost-when-receiving-sms-messages-or-calls-during-an-ongoing-voip-call"></a>Při přijímání zpráv SMS nebo volání během probíhajícího volání VoIP dojde ke ztrátě zvukového připojení.
-Mobilní prohlížeče neudržují připojení ve stavu na pozadí. To může vést k degradované možnosti volání, pokud bylo volání VoIP přerušeno pomocí textové zprávy nebo příchozího volání veřejné telefonní sítě, které aplikaci vloží do pozadí.
+Mobilní prohlížeče neudržují připojení ve stavu na pozadí. To může vést k degradované možnosti volání, pokud bylo volání VoIP přerušeno událostí, která aplikaci vloží do pozadí.
 
 <br/>Klientská knihovna: volání (JavaScript)
 <br/>Prohlížeče: Safari, Chrome
@@ -55,7 +58,7 @@ Mobilní prohlížeče neudržují připojení ve stavu na pozadí. To může v�
 Přepínání mezi grafickými zařízeními může způsobit, že se datový proud videa během získání datového proudu z vybraného zařízení zastaví.
 
 #### <a name="possible-causes"></a>Možné příčiny
-Streamování mezi mediálními zařízeními a přepínání mezi nimi je výpočetní výkon. Přepínání často může způsobit snížení výkonu. Vývojářům Doporučujeme zastavit jeden datový proud zařízení před tím, než začnete s jiným.
+Přepínání mezi zařízeními často může způsobit snížení výkonu. Vývojářům Doporučujeme zastavit jeden datový proud zařízení před tím, než začnete s jiným.
 
 ### <a name="bluetooth-headset-microphone-is-not-detected-therefore-is-not-audible-during-the-call-on-safari-on-ios"></a>Nepovedlo se zjistit mikrofon sluchátek s mikrofonem Bluetooth. při volání Safari v iOS se nejedná o zvuk.
 Prohlížeč Safari v iOS nepodporuje sluchátka s mikrofonem Bluetooth. Vaše zařízení Bluetooth se nebude zobrazovat v dostupných možnostech mikrofonu a ostatní účastníci vás nebudou moci slyšet, pokud se pokusíte použít Bluetooth přes Safari.
@@ -75,7 +78,7 @@ Když se zařízení otáčí, můžou uživatelé zaznamenat zhoršení kvality
 
 
 ### <a name="camera-switching-makes-the-screen-freeze"></a>Přepínání fotoaparátů umožňuje zablokovat obrazovku 
-Když uživatel komunikačních služeb připojí volání pomocí JavaScriptu pro volání klientské knihovny a pak narazí na přepínač kamery, uživatelské rozhraní může zcela nereagovat, dokud se aplikace neaktualizuje nebo dokud se prohlížeč neodešle na pozadí uživatelem.
+Když uživatel komunikačních služeb připojí volání pomocí JavaScriptu pro volání sady JavaScript a potom narazí na tlačítko vypínače fotoaparátu, může uživatelské rozhraní přestat reagovat, dokud nebude aplikace obnovena nebo dokud nebude prohlížeč na pozadí vložen uživatelem.
 
 <br/>Ovlivněná zařízení: Google pixel 4a
 <br/>Klientská knihovna: volání (JavaScript)
@@ -97,4 +100,4 @@ Pokud se uživatelé rozhodnou rychle zapnout nebo vypnout video, zatímco volá
 V rámci šetření.
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>Vykreslování videí vzdáleného účastníka může někdy trvat dlouhou dobu.
-Během probíhajícího volání skupiny _uživatel a_ pošle video a pak se _uživateli B_ připojí volání. V některých případech se uživateli B nezobrazuje video od uživatele A, nebo uživatel A video začíná vykreslování po dlouhém zpoždění. Příčinou může být síťové prostředí, které vyžaduje další konfiguraci. Pokyny k konfiguraci sítě najdete v dokumentaci k [požadavkům na síť](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements) .
+Během probíhajícího volání skupiny _uživatel a_ pošle video a pak se _uživateli B_ připojí volání. V některých případech se uživateli B nezobrazuje video od uživatele A, nebo uživatel A video začíná vykreslování po dlouhém zpoždění. K tomuto problému může dojít v důsledku síťového prostředí, které vyžaduje další konfiguraci. Pokyny k konfiguraci sítě najdete v dokumentaci k [požadavkům na síť](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements) .

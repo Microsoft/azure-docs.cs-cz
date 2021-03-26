@@ -2,35 +2,35 @@
 title: Souběžné spouštění úloh pro maximalizaci využití výpočetních uzlů Batch
 description: Zvýšení efektivity a snížení nákladů pomocí menšího počtu výpočetních uzlů a souběžného spouštění úkolů na každém uzlu ve fondu Azure Batch
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 03/25/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a8f2d6a040bee0e32359f4860d7b346ac08c48e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92102961"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607979"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Souběžné spouštění úloh pro maximalizaci využití výpočetních uzlů Batch
 
 Využití prostředků na menším počtu výpočetních uzlů ve fondu můžete maximalizovat tak, že na každém uzlu spustíte více než jeden úkol současně.
 
-I když některé scénáře fungují nejlépe se všemi prostředky uzlu vyhrazenými pro jeden úkol, můžou některé úlohy zobrazovat kratší dobu úloh a snížit náklady, pokud tyto prostředky sdílí několik úkolů:
+I když některé scénáře fungují nejlépe se všemi prostředky uzlu vyhrazenými pro jeden úkol, můžou některé úlohy zobrazovat kratší dobu úloh a snížit náklady, když se tyto prostředky sdílejí s více úlohami. Zvažte následující scénáře:
 
 - **Minimalizujte přenos dat** pro úlohy, které můžou sdílet data. Poplatky za přenos dat můžete výrazně snížit zkopírováním sdílených dat do menšího počtu uzlů a následným spouštěním úloh paralelně na jednotlivých uzlech. To platí hlavně v případě, že se data, která mají být kopírována do každého uzlu, musí přenášet mezi geografickými oblastmi.
-- **Maximalizujte využití paměti** pro úlohy, které vyžadují velké množství paměti, ale jenom během krátkých časových období a v určitém časovém intervalu při provádění. Můžete využít méně, ale větší výpočetní uzel s větší pamětí, abyste mohli efektivně zvládnout takové špičky. Tyto uzly budou mít paralelně spuštěné více úloh na každém uzlu, ale každá úloha by mohla využít plentiful paměti uzlů v různou dobu.
+- **Maximalizujte využití paměti** pro úlohy, které vyžadují velké množství paměti, ale jenom během krátkých časových období a v určitém časovém intervalu při provádění. Můžete využít méně, ale větší výpočetní uzel s větší pamětí, abyste mohli efektivně zvládnout takové špičky. Tyto uzly budou mít paralelně spuštěné více úloh na každém uzlu, ale každý úkol může využít výhod plentiful paměti uzlů v různých časech.
 - Omezte **omezení počtu uzlů** , pokud se v rámci fondu vyžaduje komunikace mezi uzly. V současné době jsou fondy nakonfigurované pro komunikaci mezi uzly omezeny na 50 výpočetních uzlů. Pokud každý uzel v takovém fondu může spouštět úlohy paralelně, může se spustit větší počet úkolů současně.
 - **Replikujte místní výpočetní cluster**, například když nejprve přesunete výpočetní prostředí do Azure. Pokud vaše aktuální místní řešení spouští více úloh na výpočetní uzel, můžete zvýšit maximální počet úloh uzlu, aby se tato konfigurace podrobněji rozrážejí.
 
 ## <a name="example-scenario"></a>Ukázkový scénář
 
-Představte si například aplikaci úkolu s požadavky na procesor a paměť, které jsou dostatečné pro [standardní uzly \_ D1](../cloud-services/cloud-services-sizes-specs.md) . Aby se ale dokončila úloha v požadované době, 1 000 těchto uzlů je potřeba.
+Představte si například aplikaci úkolu s požadavky na procesor a paměť, které jsou dostatečné pro [standardní uzly \_ D1](../cloud-services/cloud-services-sizes-specs.md#d-series) . Aby se ale dokončila úloha v požadované době, 1 000 těchto uzlů je potřeba.
 
-Místo používání standardních \_ uzlů D1 s 1 jádrem procesoru můžete použít [standardní uzly \_ D14](../cloud-services/cloud-services-sizes-specs.md) s 16 jádry každého a povolit paralelní provádění úkolů. To znamená, že se dá použít *méně uzlů* , než je počet uzlů 1 000, ale bude potřeba jenom 63. Pokud jsou pro každý uzel požadovány soubory velkých aplikací nebo referenční data, je opět vylepšena doba trvání a účinnost úlohy, protože data jsou zkopírována pouze do 63 uzlů.
+Místo používání standardních \_ uzlů D1 s 1 jádrem procesoru můžete použít [standardní uzly \_ D14](../cloud-services/cloud-services-sizes-specs.md#d-series) s 16 jádry každého a povolit paralelní provádění úkolů. To znamená, že se dá použít méně uzlů, než je počet uzlů 1 000, ale bude potřeba jenom 63. Pokud jsou pro každý uzel požadovány rozsáhlé soubory aplikace nebo referenční data, jsou vylepšena doba trvání úlohy a efektivita, protože data jsou zkopírována pouze do 63 uzlů.
 
 ## <a name="enable-parallel-task-execution"></a>Povolit spuštění paralelní úlohy
 
-Výpočetní uzly můžete nakonfigurovat pro provádění paralelních úkolů na úrovni fondu. Pomocí knihovny Batch .NET nastavte při vytváření fondu vlastnost [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) . Pokud používáte REST API dávky, nastavte v textu žádosti během vytváření fondu prvek [taskSlotsPerNode](/rest/api/batchservice/pool/add) .
+Výpočetní uzly můžete nakonfigurovat pro provádění paralelních úkolů na úrovni fondu. Pomocí knihovny Batch .NET nastavte při vytváření fondu vlastnost [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) . Pokud používáte REST API dávky, nastavte v textu žádosti během vytváření fondu prvek [taskSlotsPerNode](/rest/api/batchservice/pool/add) .
 
 > [!NOTE]
 > `taskSlotsPerNode`Vlastnost element a [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) lze nastavit pouze v okamžiku vytvoření fondu. Po vytvoření fondu již nelze tyto změny změnit.
@@ -44,9 +44,9 @@ Azure Batch umožňuje nastavit sloty úloh na jeden uzel až (4x) na počet jad
 
 Při povolování souběžných úloh je důležité určit, jak se mají úlohy distribuovat mezi uzly ve fondu.
 
-Pomocí vlastnosti [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) můžete určit, že se mají úlohy přiřadit rovnoměrně mezi všechny uzly ve fondu ("rozprostření"). Nebo můžete určit, že k jednotlivým uzlům by se měly přiřadit tolik úkolů, než se úkoly přiřadí do jiného uzlu ve fondu ("balení").
+Pomocí vlastnosti [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) můžete určit, že se mají úlohy přiřadit rovnoměrně mezi všechny uzly ve fondu ("rozprostření"). Nebo můžete určit, že k jednotlivým uzlům by se měly přiřadit tolik úkolů, než se úkoly přiřadí do jiného uzlu ve fondu ("balení").
 
-Můžete například zvážit fond [standardních \_ D14](../cloud-services/cloud-services-sizes-specs.md) uzlů (v předchozím příkladu), který je nakonfigurovaný s hodnotou [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 16. Pokud je [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) nakonfigurovaný s [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) *packem*, může maximalizovat využití všech 16 jader každého uzlu a umožňuje [fondu automatického škálování](batch-automatic-scaling.md) odebrat nepoužívané uzly (uzly bez přiřazených úkolů) z fondu. Tím se minimalizuje využití prostředků a šetří peníze.
+Můžete například zvážit fond [standardních \_ D14](../cloud-services/cloud-services-sizes-specs.md#d-series) uzlů (v předchozím příkladu), který je nakonfigurovaný s hodnotou [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 16. Pokud je [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) nakonfigurovaný s [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) *packem*, může maximalizovat využití všech 16 jader každého uzlu a umožňuje [fondu automatického škálování](batch-automatic-scaling.md) odebrat nepoužívané uzly (uzly bez přiřazených úkolů) z fondu. Tím se minimalizuje využití prostředků a šetří peníze.
 
 ## <a name="define-variable-slots-per-task"></a>Definovat proměnné sloty na úlohu
 
@@ -54,13 +54,12 @@ Můžete například zvážit fond [standardních \_ D14](../cloud-services/clou
 
 Například u fondu s vlastností `taskSlotsPerNode = 8` můžete odesílat úlohy s více jádry náročné na procesor s `requiredSlots = 8` , zatímco jiné úlohy lze nastavit na `requiredSlots = 1` . Po naplánování této smíšené úlohy se úlohy náročné na procesor spustí výhradně na jejich výpočetních uzlech, zatímco jiné úlohy můžou běžet souběžně (až osm úloh najednou) na jiných uzlech. Díky tomu můžete vyrovnávat zatížení napříč výpočetními uzly a zlepšit efektivitu využití prostředků.
 
+Ujistěte se, že neurčíte, `requiredSlots` aby úkol byl větší než ve fondu `taskSlotsPerNode` . Výsledkem bude, že se úloha nebude nikdy moct spustit. Služba Batch aktuálně neověřuje tento konflikt, když odesíláte úkoly, protože v době odeslání se nemusí fond svázat nebo ho můžete změnit na jiný fond tím, že zakážete nebo znovu povolíte.
+
 > [!TIP]
 > Při použití proměnných úloh proměnné je možné, že velké úlohy s dalšími požadovanými Sloty mohou být dočasně neúspěšné, protože na žádném výpočetním uzlu nejsou k dispozici dostatek slotů, a to ani v případě, že jsou na některých uzlech stále nečinné sloty. Můžete zvýšit prioritu úlohy pro tyto úlohy a zvýšit tak jejich šanci na soutěž na dostupné sloty na uzlech.
 >
 > Služba Batch generuje [TaskScheduleFailEvent](batch-task-schedule-fail-event.md) , když se nepovede naplánovat spuštění úlohy a pokračuje v plánování až do chvíle, kdy budou k dispozici požadované sloty. Můžete naslouchat této události a zjistit potenciální problémy s plánováním úloh a zmírnit je.
-
-> [!NOTE]
-> Nezadávejte úkol `requiredSlots` , který by měl být větší než fond `taskSlotsPerNode` . Výsledkem bude, že se úloha nebude nikdy moct spustit. Služba Batch aktuálně neověřuje tento konflikt, když odesíláte úkoly, protože v době odeslání se nemusí fond svázat nebo ho můžete změnit na jiný fond tím, že zakážete nebo znovu povolíte.
 
 ## <a name="batch-net-example"></a>Příklad dávky .NET
 
@@ -70,7 +69,7 @@ Následující fragmenty kódu v rozhraní [Batch .NET](/dotnet/api/microsoft.az
 
 Tento fragment kódu ukazuje požadavek na vytvoření fondu, který obsahuje čtyři uzly se čtyřmi sloty úloh povolenými pro každý uzel. Určuje zásadu plánování úkolů, která před přiřazením úkolů jinému uzlu ve fondu vyplní každý uzel úkoly.
 
-Další informace o přidávání fondů pomocí rozhraní API služby Batch najdete v tématu [BatchClient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations).
+Další informace o přidávání fondů pomocí rozhraní API služby Batch najdete v tématu [BatchClient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
 
 ```csharp
 CloudPool pool =
@@ -169,7 +168,7 @@ Tento fragment kódu ukazuje požadavek na přidání úlohy s jiným než vých
 
 ## <a name="code-sample-on-github"></a>Ukázka kódu na GitHubu
 
-Projekt [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) na GitHubu ilustruje použití vlastnosti [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) .
+Projekt [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) na GitHubu ilustruje použití vlastnosti [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) .
 
 Tato Konzolová aplikace v jazyce C# používá knihovnu [Batch .NET](/dotnet/api/microsoft.azure.batch) k vytvoření fondu s jedním nebo více výpočetními uzly. Spustí na těchto uzlech konfigurovatelný počet úloh pro simulaci zatížení proměnné. Výstup z aplikace zobrazuje, které uzly provedly jednotlivé úlohy. Aplikace také poskytuje souhrn parametrů a doby trvání úloh.
 

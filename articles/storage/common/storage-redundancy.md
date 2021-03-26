@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: d01e125ef3e905191d76c9f4888e790958211dff
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802195"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607316"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -73,9 +73,9 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 
 | Typ účtu úložiště | Podporované oblasti | Podporované služby |
 |--|--|--|
-| Obecné účely v2<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japonsko – východ<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2 | Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
-| BlockBlobStorage<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> Francie – střed <br /> Japan East<br /> Spojené království – jih <br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2| Jenom objekty blob bloku úrovně Premium |
-| Úložiště | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> Francie – střed <br /> Japan East<br /> Spojené království – jih <br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2 | Jenom soubory úrovně Premium – jenom sdílené složky |
+| Obecné účely v2<sup>1</sup> | Poskytl Jižní Afrika – sever<br /> (Asie a Tichomoří) Východní Asie<br /> (Asie a Tichomoří) Jihovýchodní Asie<br /> (Asie a Tichomoří) Austrálie – východ<br /> (Asie a Tichomoří) Střed Indie<br /> (Asie a Tichomoří) Japonsko – východ<br /> (Asie a Tichomoří) Korea – střed<br /> Kanada Kanada – střed<br /> Evropským Severní Evropa<br /> Evropským Západní Evropa<br /> Evropským Francie – střed<br /> Evropským Německo – středozápad<br /> Evropským Norsko – východ<br /> Evropským Švýcarsko – sever<br /> Evropským Velká Británie – jih<br /> (Střední východ) Spojené arabské emiráty sever<br /> (Jižní Amerika) Brazílie – jih<br /> VYLEPŠENÍ Střed USA<br /> (USA) USA – východ<br /> VYLEPŠENÍ Východní USA 2<br /> VYLEPŠENÍ Střed USA – sever<br />VYLEPŠENÍ Střed USA – jih<br /> VYLEPŠENÍ Západní USA<br /> VYLEPŠENÍ Západní USA 2 | Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
+| BlockBlobStorage<sup>1</sup> | Poskytl Jižní Afrika – sever<br /> (Asie a Tichomoří) Východní Asie<br /> (Asie a Tichomoří) Jihovýchodní Asie<br /> (Asie a Tichomoří) Austrálie – východ<br /> (Asie a Tichomoří) Střed Indie<br /> (Asie a Tichomoří) Japonsko – východ<br /> (Asie a Tichomoří) Korea – střed<br /> Kanada Kanada – střed<br /> Evropským Severní Evropa<br /> Evropským Západní Evropa<br /> Evropským Francie – střed<br /> Evropským Německo – středozápad<br /> Evropským Norsko – východ<br /> Evropským Švýcarsko – sever<br /> Evropským Velká Británie – jih<br /> (Střední východ) Spojené arabské emiráty sever<br /> (Jižní Amerika) Brazílie – jih<br /> VYLEPŠENÍ Střed USA<br /> (USA) USA – východ<br /> VYLEPŠENÍ Východní USA 2<br /> VYLEPŠENÍ Střed USA – sever<br />VYLEPŠENÍ Střed USA – jih<br /> VYLEPŠENÍ Západní USA<br /> VYLEPŠENÍ Západní USA 2 | Jenom objekty blob bloku úrovně Premium |
+| Úložiště | Poskytl Jižní Afrika – sever<br /> (Asie a Tichomoří) Východní Asie<br /> (Asie a Tichomoří) Jihovýchodní Asie<br /> (Asie a Tichomoří) Austrálie – východ<br /> (Asie a Tichomoří) Střed Indie<br /> (Asie a Tichomoří) Japonsko – východ<br /> (Asie a Tichomoří) Korea – střed<br /> Kanada Kanada – střed<br /> Evropským Severní Evropa<br /> Evropským Západní Evropa<br /> Evropským Francie – střed<br /> Evropským Německo – středozápad<br /> Evropským Norsko – východ<br /> Evropským Švýcarsko – sever<br /> Evropským Velká Británie – jih<br /> (Střední východ) Spojené arabské emiráty sever<br /> (Jižní Amerika) Brazílie – jih<br /> VYLEPŠENÍ Střed USA<br /> (USA) USA – východ<br /> VYLEPŠENÍ Východní USA 2<br /> VYLEPŠENÍ Střed USA – sever<br />VYLEPŠENÍ Střed USA – jih<br /> VYLEPŠENÍ Západní USA<br /> VYLEPŠENÍ Západní USA 2 | Jenom soubory úrovně Premium – jenom sdílené složky |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
 <sup>2</sup> účty úložiště, které obsahují Azure Managed disks pro virtuální počítače, vždycky používají LRS. Nespravované disky Azure by měly také používat LRS. Je možné vytvořit účet úložiště pro nespravované disky Azure, které používají GRS, ale nedoporučuje se v důsledku potenciálních problémů s konzistencí přes asynchronní geografickou replikaci. Ani spravované ani nespravované disky nepodporují ZRS nebo GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -127,15 +127,30 @@ GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2.
 
 GZRS a RA-GZRS jsou podporovány v následujících oblastech:
 
-- Jihovýchodní Asie
-- Evropa – sever
-- Evropa – západ
-- Japan East
-- Spojené království – jih
-- USA – střed
-- USA – východ
-- USA – východ 2
-- USA – západ 2
+- Poskytl Jižní Afrika – sever
+- (Asie a Tichomoří) Východní Asie
+- (Asie a Tichomoří) Jihovýchodní Asie
+- (Asie a Tichomoří) Austrálie – východ
+- (Asie a Tichomoří) Střed Indie
+- (Asie a Tichomoří) Japonsko – východ
+- (Asie a Tichomoří) Korea – střed
+- Kanada Kanada – střed
+- Evropským Severní Evropa
+- Evropským Západní Evropa
+- Evropským Francie – střed
+- Evropským Německo – středozápad
+- Evropským Norsko – východ
+- Evropským Švýcarsko – sever
+- Evropským Velká Británie – jih
+- (Střední východ) Spojené arabské emiráty sever
+- (Jižní Amerika) Brazílie – jih
+- VYLEPŠENÍ Střed USA
+- (USA) USA – východ
+- VYLEPŠENÍ Východní USA 2
+- VYLEPŠENÍ Střed USA – sever
+- VYLEPŠENÍ Střed USA – jih
+- VYLEPŠENÍ Západní USA
+- VYLEPŠENÍ Západní USA 2
 
 Informace o cenách najdete v podrobnostech o cenách [objektů BLOB](https://azure.microsoft.com/pricing/details/storage/blobs), [souborů](https://azure.microsoft.com/pricing/details/storage/files/), [front](https://azure.microsoft.com/pricing/details/storage/queues/)a [tabulek](https://azure.microsoft.com/pricing/details/storage/tables/).
 
@@ -183,10 +198,10 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 
 | Scénář výpadku | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|:-|
-| Uzel v datovém centru nebude dostupný. | Ano | Ano | Ano | Ano |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | Ne | Ano | Ano<sup>1</sup> | Ano |
-| V primární oblasti dojde k výpadku v rámci oblasti. | Ne | Ne | Ano<sup>1</sup> | Ano<sup>1</sup> |
-| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne | Ne | Ano (s RA-GRS) | Ano (s RA-GZRS) |
+| Uzel v datovém centru nebude dostupný. | Yes | Yes | Yes | Yes |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | No | Yes | Ano<sup>1</sup> | Yes |
+| V primární oblasti dojde k výpadku v rámci oblasti. | No | No | Ano<sup>1</sup> | Ano<sup>1</sup> |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 

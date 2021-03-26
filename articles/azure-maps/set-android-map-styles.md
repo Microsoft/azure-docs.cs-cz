@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100980"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604783"
 ---
 # <a name="set-map-style-android-sdk"></a>Nastavit styl mapy (Android SDK)
 
 Tento článek ukazuje dva způsoby, jak nastavit styly mapy pomocí Azure Maps Android SDK. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](supported-map-styles.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) .
 
@@ -83,7 +83,7 @@ Na následujícím snímku obrazovky vidíte výše uvedený kód, který zobraz
 
 ## <a name="setting-the-map-camera"></a>Nastavení videokamery mapy
 
-Mapová kamera řídí, jaká část mapy se zobrazuje na mapě. Fotoaparát může být v rozložení programově v kódu. Při nastavování v kódu existují dvě hlavní metody nastavení pozice mapy; použití Center a přiblížení nebo předání v ohraničujícím poli. Následující kód ukazuje, jak nastavit všechny volitelné možnosti kamery při použití `center` a `zoom` .
+Mapová kamera řídí, která část světa se zobrazí v zobrazení mapy. Fotoaparát může být v rozložení programově v kódu. Při nastavování v kódu existují dvě hlavní metody nastavení pozice mapy; použití Center a přiblížení nebo předání v ohraničujícím poli. Následující kód ukazuje, jak nastavit všechny volitelné možnosti kamery při použití `center` a `zoom` .
 
 ::: zone pivot="programming-language-java-android"
 
@@ -104,7 +104,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -130,7 +130,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
@@ -162,7 +162,7 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -192,14 +192,14 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
 
 ::: zone-end
 
-Všimněte si, že poměr stran ohraničujícího pole nesmí být stejný jako poměr stran mapy, protože tato mapa často zobrazuje celou oblast ohraničujícího pole, ale často je příliš svislá nebo horizontálně.
+Poměr stran ohraničujícího pole nesmí být stejný jako poměr stran mapy, protože tato mapa často zobrazuje plně ohraničenou oblast rámečku, ale často je příliš svislá nebo horizontálně.
 
 ## <a name="next-steps"></a>Další kroky
 

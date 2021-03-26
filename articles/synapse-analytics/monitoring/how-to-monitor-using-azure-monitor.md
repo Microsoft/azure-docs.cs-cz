@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549851"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609254"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Použití Azure Monitor s pracovním prostorem Azure synapse Analytics
 
@@ -171,7 +171,7 @@ Vytvořte nebo přidejte nastavení diagnostiky pro váš pracovní prostor, vyh
 1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics** a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
 
     > [!NOTE]
-    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [referenční informace o protokolech AzureDiagnostics](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
+    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [referenční informace o protokolech AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 1. Vyberte **Uložit**.
 

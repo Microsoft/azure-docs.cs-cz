@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: d3d10eb496899287e93a96f0cbb06dedf83c601d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 86a656630f6c41e2cf6682d0160cce345d1f564d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048625"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606619"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -711,13 +711,13 @@ Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. 
 **Opravy chyb**
 
 - Opravte FromSubscription při použití s přepisem konverzace.
-- Opravte chybu v klíčovém slovu hledání pro hlasové asistenty.
+- Opravte chybu v rozpoznávání klíčových slov pro hlasové asistenty.
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Sada Speech SDK 1.5.0:2019 – může vydávat
 
 **Nové funkce**
 
-- Klíčové slovo hledání (KWS) je teď k dispozici pro Windows a Linux. Funkce KWS můžou pracovat s jakýmkoli typem mikrofonu. oficiální podpora KWS se ale v současné době omezila na pole mikrofonu, která najdete v sadě Azure Kinect DK hardware nebo v sadě Speech SDK (Speech Devices SDK).
+- Rozpoznávání klíčových slov je nyní k dispozici pro systémy Windows a Linux. Tato funkce může fungovat s libovolným typem mikrofonu, ale oficiální podpora je aktuálně omezená na pole mikrofonu, která najdete v sadě Azure Kinect DK hardware nebo v sadě Speech (Speech Devices SDK).
 - Funkce pomocných parametrů fráze je dostupná prostřednictvím sady SDK. Další informace najdete [tady](./get-started-speech-to-text.md).
 - Funkce přepisu konverzace je k dispozici prostřednictvím sady SDK. Podívejte se [sem](./conversation-transcription.md).
 - Přidejte podporu pro hlasové asistenty pomocí kanálu Direct line Speech.

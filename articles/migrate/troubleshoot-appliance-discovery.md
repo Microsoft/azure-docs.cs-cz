@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: c952fe33b434aac972be6a1eb03b63698eb64fc6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 995914fab0e7112327ebf6ab8e32fb67181f481e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782312"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608914"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -260,6 +260,34 @@ Typické chyby zjišťování aplikací jsou shrnuté v tabulce.
 | 10007: Nepodařilo se zpracovat metadata zjištěná. | Při pokusu o deserializaci formátu JSON došlo k chybě. | Pro řešení kontaktujte podpora Microsoftu. |
 | 10008: na serveru nelze vytvořit soubor. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu. |
 | 10009: Nepodařilo se zapsat zjištěná metadata do souboru na serveru. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu. |
+
+## <a name="common-sql-server-instances-and-database-discovery-errors"></a>Běžné instance SQL Server a chyby zjišťování databáze
+
+Azure Migrate podporuje zjišťování instancí SQL Server a databází, které běží na místních počítačích, pomocí Azure Migrate: zjišťování a posouzení. Zjišťování SQL se v současné době podporuje jenom pro VMware. Začněte tím, že zajděte do kurzu [zjišťování](tutorial-discover-vmware.md) .
+
+Typické chyby zjišťování SQL jsou shrnuté v tabulce.
+
+| **Chyba** | **Příčina** | **Akce** |
+|--|--|--|
+|30000: přihlašovací údaje přidružené k tomuto SQL Server nefungovaly.|Buď ručně přidružené přihlašovací údaje jsou neplatné, nebo automaticky přidružená pověření nebudou mít přístup k SQL Server.|Přidejte přihlašovací údaje pro SQL Server zařízení a počkejte na další cyklus zjišťování SQL nebo vynuťte aktualizaci.|
+|30001: z zařízení se nelze připojit k SQL Server.|1. zařízení nemá k dispozici SQL Server síťové linky.<br/>2. Brána firewall blokuje připojení mezi SQL Server a zařízením.|1. Udělejte SQL Server dosažitelné ze zařízení.<br/>2. Povolte příchozí připojení ze zařízení do SQL Server.|
+|30003: certifikát není důvěryhodný.|V počítači se systémem SQL Server není nainstalován důvěryhodný certifikát.|Nastavte prosím na serveru důvěryhodný certifikát. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153616)|
+|30004: nedostatečná oprávnění.|K této chybě mohlo dojít z důvodu nedostatku oprávnění potřebných ke kontrole SQL Server instancí. |Udělte roli sysadmin přihlašovací údaje nebo účtu, který je k dispozici na zařízení pro zjišťování SQL Server instancí a databází. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153511)|
+|30005: přihlášení SQL Server se nezdařilo, protože došlo k problému s výchozí hlavní databází.|Buď samotná databáze není platná, nebo přihlášení nemá oprávnění k připojení k databázi.|Pomocí příkazu ALTER LOGIN nastavte výchozí databázi na hlavní databázi.<br/>Udělte roli sysadmin přihlašovací údaje nebo účtu, který je k dispozici na zařízení pro zjišťování SQL Server instancí a databází. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153615)|
+|30006: přihlášení SQL Server nelze použít s ověřováním systému Windows.|1. přihlášení může být SQL Server přihlašovací jméno, ale server akceptuje jenom ověřování systému Windows.<br/>2. Snažíte se připojit pomocí SQL Server ověřování, ale použité přihlášení na SQL Server neexistuje.<br/>3. přihlášení může používat ověřování systému Windows, ale přihlášení je nerozpoznaný objekt zabezpečení systému Windows. Nerozpoznaný objekt zabezpečení systému Windows znamená, že přihlášení nelze ověřit ve Windows. Důvodem může být to, že přihlášení systému Windows pochází z nedůvěryhodné domény.|Pokud se pokoušíte připojit pomocí SQL Server ověřování, ověřte, že SQL Server je nakonfigurován v režimu kombinovaného ověřování a že SQL Server přihlášení existuje.<br/>Pokud se pokoušíte připojit pomocí ověřování systému Windows, ověřte, zda jste správně přihlášeni ke správné doméně. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153421)|
+|30007: platnost hesla vypršela.|Platnost hesla účtu vypršela.|Přihlašovací heslo SQL Server pravděpodobně vypršelo, znovu nastavte heslo nebo prodlužte datum vypršení platnosti hesla. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153419)|
+|30008: heslo musí být změněno.|Heslo účtu musí být změněno.|Změňte heslo poskytnutého pověření pro zjišťování SQL Server. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153318)|
+|30009: došlo k vnitřní chybě.|Při zjišťování instancí SQL Server a databází došlo k vnitřní chybě. |Pokud potíže potrvají, obraťte se prosím na podporu Microsoftu.|
+|30010: nebyly nalezeny žádné databáze.|Z vybrané instance serveru se nepodařilo najít žádné databáze.|Udělte roli sysadmin přihlašovací údaje nebo účtu, který je k dispozici na zařízení pro zjišťování databází SQL.|
+|30011: došlo k vnitřní chybě při vyhodnocování instance nebo databáze SQL.|Při provádění posouzení došlo k vnitřní chybě.|Pokud potíže potrvají, obraťte se prosím na podporu Microsoftu.|
+|30012: připojení SQL se nezdařilo.|1. Brána firewall na serveru odmítla připojení.<br/>2. služba SQL Server Browser (SQLBrowser) není spuštěná.<br/>3. SQL Server neodpověděl na požadavek klienta, protože server pravděpodobně není spuštěn.<br/>4. klient SQL Server se nemůže připojit k serveru. K této chybě mohlo dojít, protože server není nakonfigurován pro přijímání vzdálených připojení.<br/>5. klient SQL Server se nemůže připojit k serveru. K této chybě mohlo dojít, protože klient nemůže přeložit název serveru nebo je název serveru nesprávný.<br/>6. protokoly TCP nebo Named pipe nejsou povolené.<br/>7. zadaný název instance SQL Server není platný.|K vyřešení problému s připojením použijte prosím [tuto](https://go.microsoft.com/fwlink/?linkid=2153317) interaktivní příručku uživatelů. Počkejte prosím po dobu 24 hodin, než se doplní Tato příručka, aby se data aktualizovala ve službě. Pokud potíže přetrvávají, obraťte se prosím na podporu Microsoftu.|
+|30013: při navazování připojení k instanci systému SQL Server došlo k chybě.|1. název SQL Server nejde přeložit ze zařízení.<br/>2. SQL Server nepovoluje vzdálená připojení.|Pokud můžete testovat SQL Server z zařízení, počkejte 24 hodin, abyste zkontrolovali, jestli se tento problém automaticky vyřeší. Pokud ne, obraťte se prosím na podporu Microsoftu. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153316)|
+|30014: uživatelské jméno nebo heslo je neplatné.| K této chybě mohlo dojít z důvodu chyby ověřování, která zahrnuje chybné heslo nebo uživatelské jméno.|Zadejte přihlašovací údaje s platným uživatelským jménem a heslem. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153315)|
+|30015: při zjišťování instance SQL došlo k vnitřní chybě.|Při zjišťování instance SQL došlo k vnitřní chybě.|Pokud potíže potrvají, obraťte se prosím na podporu Microsoftu.|
+|30016: připojení k instanci% instance; se nepovedlo kvůli vypršení časového limitu.| Tato situace může nastat, pokud brána firewall na serveru odmítne připojení.|Ověřte, jestli je brána firewall na SQL Server nakonfigurovaná tak, aby přijímala připojení. Pokud chyba přetrvává, obraťte se prosím na podporu Microsoftu. [Další informace](https://go.microsoft.com/fwlink/?linkid=2153611)|
+|30017: došlo k vnitřní chybě.|Neošetřená výjimka.|Pokud potíže potrvají, obraťte se prosím na podporu Microsoftu.|
+|30018: došlo k vnitřní chybě.|Při shromažďování dat, jako je velikost dočasné databáze, velikost souboru atd. instance SQL, došlo k vnitřní chybě.|Počkejte prosím na 24 hodin a obraťte se na podporu Microsoftu, pokud potíže potrvají.|
+|30019: došlo k vnitřní chybě.|Došlo k vnitřní chybě při shromažďování metrik výkonu, jako je využití paměti, atd. z databáze nebo instance.|Počkejte prosím na 24 hodin a obraťte se na podporu Microsoftu, pokud potíže potrvají.|
 
 ## <a name="next-steps"></a>Další kroky
 

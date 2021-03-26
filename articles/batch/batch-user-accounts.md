@@ -2,21 +2,22 @@
 title: Spouštění úloh v rámci uživatelských účtů
 description: Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719355"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606602"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
 > [!NOTE]
 > Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z důvodů zabezpečení.
 >
-> Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače se systémem Linux přes SSH, přečtěte si téma [použití vzdálené plochy k virtuálnímu počítači se systémem Linux v Azure](../virtual-machines/linux/use-remote-desktop.md). Informace o připojení k uzlům se systémem Windows prostřednictvím protokolu RDP najdete v tématu [připojení k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače se systémem Linux přes SSH, přečtěte si téma [instalace a konfigurace xrdp pro použití vzdálené plochy s Ubuntu](../virtual-machines/linux/use-remote-desktop.md). Pokud se chcete připojit k uzlům se systémem Windows přes RDP, přečtěte si téma [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](../virtual-machines/windows/connect-logon.md).
+>
 > Pokud se chcete připojit k uzlu, na kterém je spuštěná konfigurace cloudové služby prostřednictvím protokolu RDP, přečtěte si téma [povolení připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 Úkol v Azure Batch vždy běží v rámci uživatelského účtu. Ve výchozím nastavení se úlohy spouštějí pod standardními uživatelskými účty bez oprávnění správce. V některých scénářích můžete chtít nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Tento článek pojednává o typech uživatelských účtů a o tom, jak je nakonfigurovat pro váš scénář.
@@ -30,7 +31,7 @@ Azure Batch poskytuje dva typy uživatelských účtů pro spuštěné úlohy:
 - **Pojmenovaný uživatelský účet.** Při vytváření fondu můžete zadat jeden nebo více pojmenovaných uživatelských účtů pro fond. Každý uživatelský účet se vytvoří v každém uzlu fondu. Kromě názvu účtu zadejte heslo uživatelského účtu, úroveň zvýšení oprávnění a pro fondy Linux privátního klíče SSH. Když přidáte úlohu, můžete zadat pojmenovaný uživatelský účet, pod kterým se má úloha spustit.
 
 > [!IMPORTANT]
-> Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu, která vyžaduje, abyste aktualizovali kód pro volání této verze. Pokud migrujete kód ze starší verze služby Batch, Všimněte si, že vlastnost **runElevated** již není podporována v klientských knihovnách REST API nebo Batch. Pomocí nové vlastnosti **userIdentity** úlohy můžete určit úroveň zvýšení úrovně oprávnění. Pokud používáte jednu z klientských knihoven, přečtěte si téma [aktualizace kódu na nejnovější klientskou knihovnu Batch](#update-your-code-to-the-latest-batch-client-library) pro rychlé pokyny pro aktualizaci kódu Batch.
+> Služba Batch verze 2017 -01-01.4.0 představila zásadní změnu, která vyžaduje, abyste aktualizovali kód pro volání této verze nebo novější. Rychlé pokyny k aktualizaci kódu služby Batch ze starší verze najdete v tématu [aktualizace kódu na nejnovější klientskou knihovnu služby Batch](#update-your-code-to-the-latest-batch-client-library) .
 
 ## <a name="user-account-access-to-files-and-directories"></a>Přístup k souborům a adresářům uživatelského účtu
 
@@ -77,6 +78,7 @@ Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automati
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>Batch Java
 
 ```java
@@ -278,7 +280,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>Aktualizace kódu na nejnovější klientskou knihovnu služby Batch
 
-Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastnost **runElevated** , která je k dispozici v dřívějších verzích s vlastností **userIdentity** . Následující tabulky obsahují jednoduché mapování, které můžete použít k aktualizaci kódu z dřívějších verzí klientských knihoven.
+Služba Batch verze 2017 -01-01.4.0 zavedla zásadní změnu a nahradila vlastnost **runElevated** , která je k dispozici v dřívějších verzích, s vlastností **userIdentity** . Následující tabulky obsahují jednoduché mapování, které můžete použít k aktualizaci kódu z dřívějších verzí klientských knihoven.
 
 ### <a name="batch-net"></a>Batch .NET
 

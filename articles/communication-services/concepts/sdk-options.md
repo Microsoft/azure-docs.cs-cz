@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b5115355133bdcf33825a05d4baa16408cb3fccd
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 92324d68eabfb1885a482a7f539140f93be77596
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562439"
+ms.locfileid: "105605191"
 ---
 # <a name="sdks-and-rest-apis"></a>Sady SDK a rozhraní REST API
 
-Funkce služby Azure Communication Services jsou koncepčně rozdělené do šesti oblastí. Většina oblastí má plně otevřené klientské knihovny, které jsou naprogramovány na publikovaná rozhraní REST API, která můžete použít přímo přes Internet. Volající Klientská knihovna používá proprietární síťová rozhraní a je aktuálně zavřena. Ukázky a další technické podrobnosti pro sady SDK jsou publikované v [úložišti GitHub služby Azure Communication Services](https://github.com/Azure/communication).
+Funkce služby Azure Communication Services jsou koncepčně rozdělené do šesti oblastí. Většina oblastí má plně otevřené sady SDK, které jsou naprogramovány na publikovaná rozhraní REST API, která můžete použít přímo přes Internet. Volající sada SDK používá proprietární síťová rozhraní a je aktuálně zavřena. Ukázky a další technické podrobnosti pro sady SDK jsou publikované v [úložišti GitHub služby Azure Communication Services](https://github.com/Azure/communication).
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 Rozhraní API komunikačních služeb jsou zdokumentována spolu s dalšími rozhraními REST API Azure v [docs.Microsoft.com](/rest/api/azure/). V této dokumentaci se dozvíte, jak strukturovat zprávy HTTP a pokyny k používání služby post. Tato dokumentace je také k dispozici ve formátu Swagger na [GitHubu](https://github.com/Azure/azure-rest-api-specs).
@@ -29,14 +29,14 @@ Rozhraní API komunikačních služeb jsou zdokumentována spolu s dalšími roz
 | Sestavení | Obory názvů| Protokoly | Možnosti |
 |------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
 | Azure Resource Manager | Azure. ResourceManager. Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Zřizování a Správa prostředků komunikačních služeb|
-| Společné | Azure. Communication. Common| REST | Poskytuje základní typy pro jiné klientské knihovny. |
+| Společné | Azure. Communication. Common| REST | Poskytuje základní typy pro jiné sady SDK. |
 | Identita | Azure. Communication. identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Správa uživatelů, přístupové tokeny|
 | Telefonní čísla _(beta verze)_| Azure. Communication. PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| Získat a spravovat telefonní čísla |
 | Chat | Azure. Communication. chat| [REST](https://docs.microsoft.com/rest/api/communication/) s proprietárními signály | Přidání textu založeného na textu v reálném čase do vašich aplikací |
 | SMS| Azure. Communication. SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| Odesílání a příjem zpráv SMS|
 | Videohovory| Azure. Communication. Calling | Proprietární přenos | Použití hlasu, videa, sdílení obrazovky a dalších možností komunikace dat v reálném čase |
 
-Klientské knihovny Azure Resource Manager, identity a serveru SMS jsou zaměřené na integraci služeb a v mnoha případech dochází k problémům se zabezpečením při integraci těchto funkcí do aplikací koncových uživatelů. Společné a chatovací klientské knihovny jsou vhodné pro služby a klientské aplikace. Volající Klientská knihovna je navržena pro klientské aplikace. Klientská knihovna zaměřená na scénáře služby je ve vývoji.
+Sady SDK Azure Resource Manager, identity a SMS jsou zaměřené na integraci služeb a v mnoha případech dochází k problémům se zabezpečením při integraci těchto funkcí do aplikací koncových uživatelů. Společné a chatovací sady SDK jsou vhodné pro služby a klientské aplikace. Volající sada SDK je navržena pro klientské aplikace. Sada SDK zaměřená na scénáře služby je ve vývoji.
 
 
 ### <a name="languages-and-publishing-locations"></a>Jazyky a umístění pro publikování
@@ -61,7 +61,7 @@ Určitá rozhraní REST API a odpovídající metody sady SDK mají omezení, kt
 | Rozhraní API                                                                                                                          | Omezení            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | [Všechna vyhledávání rozhraní API pro plán telefonního čísla](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 požadavky za den      |
-| [Koupit plán telefonního čísla](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 žádost za den       |
+| [Koupit plán telefonního čísla](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 nákup měsíčně  |
 | [Odeslat SMS](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 požadavků za minutu |
 
 

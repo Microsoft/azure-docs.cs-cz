@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719730"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607081"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -121,7 +121,7 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 |eventGridPublishRetryInterval|5 minut|Event Grid publikuje interval opakování ve formátu *HH: mm: SS* .|
 |eventGridPublishEventTypes||Seznam typů událostí pro publikování Event Grid. Není-li tento parametr zadán, budou publikovány všechny typy událostí. Povolené hodnoty zahrnují `Started` , `Completed` , `Failed` , `Terminated` .|
 |useAppLease|true|Když se nastaví na `true` , aplikace budou vyžadovat zapůjčení objektu BLOB na úrovni aplikace před zpracováním zpráv centra úloh. Další informace najdete v dokumentaci [pro zotavení po havárii a geografickou distribuci](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md) . K dispozici od verze v 2.3.0.
-|useLegacyPartitionManagement|true|Pokud je nastaveno na `false` , používá algoritmus správy oddílů, který při horizontálním navýšení kapacity omezuje možnost duplikace spouštění funkce.  K dispozici od verze v 2.3.0. Výchozí hodnota se změní na `false` v budoucí verzi.|
+|useLegacyPartitionManagement|false (nepravda)|Pokud je nastaveno na `false` , používá algoritmus správy oddílů, který při horizontálním navýšení kapacity omezuje možnost duplikace spouštění funkce.  K dispozici od verze v 2.3.0.|
 |useGracefulShutdown|false (nepravda)|Tisk Povolit bezproblémové vypnutí, aby se snížila pravděpodobnost vypnutí hostitelských pokusů o zpracování funkcí v procesu.|
 
 Mnohé z těchto nastavení jsou pro optimalizaci výkonu. Další informace najdete v tématu [výkon a škálování](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).
