@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5076888e692ad16e89f30d455e7f8c4e22a41b9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 483bf27b68e50c751c8dea1bf9375a95ed2a051f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96468344"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558801"
 ---
 # <a name="tutorial-activate-azure-stack-edge-mini-r"></a>Kurz: Aktivace Azure Stack hraničního konektoru R
 
@@ -25,10 +25,10 @@ Dokončení procesu aktivace může trvat přibližně 15 minut.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než nakonfigurujete a nastavíte Azure Stack hraničních zařízení v jazyce R, ujistěte se, že:
 
@@ -104,10 +104,10 @@ Pokud narazíte na nějaké problémy při aktivaci, přečtěte si [řešení p
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Aktivace fyzického zařízení
 
 Pokud se chcete dozvědět, jak přenést data pomocí Azure Stackového Miniho zařízení R, přečtěte si:
 
 > [!div class="nextstepaction"]
-> [Přenos dat pomocí Azure Stackového Miniku R](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [Přenos dat pomocí Azure Stackového Miniku R](./azure-stack-edge-gpu-deploy-add-shares.md)

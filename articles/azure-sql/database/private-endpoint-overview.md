@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097274"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567708"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -62,7 +62,7 @@ Klienti se můžou připojit k privátnímu koncovému bodu ze stejné virtuáln
 
  ![Diagram možností připojení][1]
 
-Kromě toho můžou služby, které neběží přímo ve virtuální síti, ale s ní integrovat (například App Service webové aplikace nebo funkce), taky může dosáhnout privátního připojení k databázi. Další informace o tomto konkrétním případu použití najdete v tématu [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) .
+Kromě toho můžou služby, které neběží přímo ve virtuální síti, ale s ní integrovat (například App Service webové aplikace nebo funkce), taky může dosáhnout privátního připojení k databázi. Další informace o tomto konkrétním případu použití najdete v tématu [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](/azure/architecture/example-scenario/private-web-app/private-web-app) .
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Otestujte připojení k SQL Database z virtuálního počítače Azure ve stejné virtuální síti.
 
@@ -185,7 +185,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
 
 - Přehled zabezpečení Azure SQL Database najdete v tématu [zabezpečení databáze](security-overview.md) .
 - Přehled připojení Azure SQL Database najdete v tématu [Architektura připojení k Azure SQL](connectivity-architecture.md) .
-- Může vás také zajímat [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , která spojuje webovou aplikaci mimo virtuální síť s privátním koncovým bodem databáze.
+- Může vás také zajímat [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](/azure/architecture/example-scenario/private-web-app/private-web-app) , která spojuje webovou aplikaci mimo virtuální síť s privátním koncovým bodem databáze.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

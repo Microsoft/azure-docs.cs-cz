@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: 2d3d1669dda4cbed1da7954558e99166faec5613
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041973"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563731"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
@@ -23,13 +23,13 @@ Funkce ve verzi Preview, které se převádějí do všeobecné dostupnosti, se 
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
-| [**Sémantické vyhledávání**](semantic-search-overview.md) | Relevance (bodování) | Algoritmus sémantického hodnocení, typ dotazu a odpověď na dotaz. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) |
-| [**kontrolu pravopisu**](cognitive-search-aml-skill.md) | Dotaz | Volitelná Oprava pravopisu pro termíny dotazu pro jednoduché, úplné a sémantické dotazy. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) |
-| [**Indexer SharePointu Online**](search-howto-index-sharepoint-online.md) | Zdroj dat indexeru | Nový zdroj dat pro indexování obsahu SharePointu založeného na indexeru | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) |
+| [**Sémantické vyhledávání**](semantic-search-overview.md) | Relevance (bodování) | Sémantické hodnocení výsledků, titulků a odpovědí. | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/search-documents) a Průzkumník vyhledávání (portál). |
+| [**kontrolu pravopisu**](cognitive-search-aml-skill.md) | Dotaz | Volitelná Oprava pravopisu pro termíny dotazu pro jednoduché, úplné a sémantické dotazy. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/preview-api/search-documents) |
+| [**Indexer SharePointu Online**](search-howto-index-sharepoint-online.md) | Zdroj dat indexeru | Nový zdroj dat pro indexování obsahu SharePointu založeného na indexeru | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/preview-api/create-indexer) |
 | [**Azure Machine Learning (AML) – dovednost**](cognitive-search-aml-skill.md) | Obohacení AI| Nový typ dovednosti pro integraci koncového bodu Inferencing z Azure Machine Learning. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md). | Použijte [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) nebo 2019-05-06-Preview. K dispozici také na portálu v návrhu dovednosti, za předpokladu, že Kognitivní hledání a služby Azure ML se nasazují ve stejném předplatném. |
 | [**parametr featuresMode**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | Relevance (bodování) | Rozšíření skóre relevance tak, aby zahrnovalo detaily: skóre podle pole, frekvence termínu pro pole a počet jedinečných tokenů, které se shodují. Tyto datové body můžete využívat ve [vlastních řešeních pro bodování](https://github.com/Azure-Samples/search-ranking-tutorial). | Přidejte tento parametr dotazu pomocí [vyhledávacích dokumentů (REST)](/rest/api/searchservice/preview-api/search-documents) s rozhraním API-Version = 2020-06 -30-preview nebo 2019-05-06-Preview. |
 | [**Relace ladění**](cognitive-search-debug-session.md) | Portál, obohacení AI (dovednosti) | Editor dovednosti v relaci, který se používá k prozkoumání a řešení problémů s dovednosti. Opravy, které se použijí během relace ladění, se dají uložit do dovednosti ve službě. | Pouze portál, pomocí odkazů na střední stránku na stránce Přehled otevřete relaci ladění. |
-| [**Obnovitelné odstranění nativního objektu BLOB**](search-howto-index-changed-deleted-blobs.md) | Indexery, objekty blob Azure| Indexovací člen služby Azure Blob Storage v Azure Kognitivní hledání rozpozná objekty blob, které jsou ve stavu undeleteded, a během indexování odebere odpovídající hledaný dokument. | Přidejte toto nastavení konfigurace pomocí [Create indexer (REST)](/rest/api/searchservice/create-indexer) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |
+| [**Obnovitelné odstranění nativního objektu BLOB**](search-howto-index-changed-deleted-blobs.md) | Indexery, objekty blob Azure| Indexovací člen služby Azure Blob Storage v Azure Kognitivní hledání rozpozná objekty blob, které jsou ve stavu undeleteded, a během indexování odebere odpovídající hledaný dokument. | Přidejte toto nastavení konfigurace pomocí [Create indexer (REST)](/rest/api/searchservice/preview-api/create-indexer) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |
 | [**Vlastní dovednosti při vyhledávání entit**](cognitive-search-skill-custom-entity-lookup.md ) | Rozšíření AI (dovednosti) | Vnímání dovedností, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. | Na tuto dovednost ve verzi Preview se odkazuje pomocí editoru dovednosti na portálu nebo [Vytvoření dovednosti (REST)](/rest/api/searchservice/create-skillset) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |
 | [**Dovednost pro detekci PII**](cognitive-search-skill-pii-detection.md) | Rozšíření AI (dovednosti) | Vnímání odbornosti, která se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. | Na tuto dovednost ve verzi Preview se odkazuje pomocí editoru dovednosti na portálu nebo [Vytvoření dovednosti (REST)](/rest/api/searchservice/create-skillset) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |
 | [**Přírůstkové obohacení**](cognitive-search-incremental-indexing-conceptual.md) | Konfigurace indexeru| Přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nezmění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.| Přidejte toto nastavení konfigurace pomocí [Create indexer (REST)](/rest/api/searchservice/create-indexer) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |

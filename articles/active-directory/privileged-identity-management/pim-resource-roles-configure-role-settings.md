@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ded81389fae5954c0e488f634945b4f1c1fe4c8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40779e4517b610e52e41caacc46fc613b72023e5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96009037"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567131"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role prostředků Azure v Privileged Identity Management
 
@@ -78,14 +78,14 @@ Při konfiguraci nastavení role můžete vybrat ze dvou možností trvání př
 
 Můžete vybrat jednu z následujících možností trvání přiřazení s **nárokem** :
 
-| | |
+| | Description |
 | --- | --- |
 | **Povolení trvalého oprávněného přiřazení** | Správci prostředků mohou přiřadit trvalé oprávněné přiřazení. |
 | **Vypršení platnosti oprávněného přiřazení** | Správci prostředků mohou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum. |
 
 A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazení:
 
-| | |
+| | Description |
 | --- | --- |
 | **Povoluje trvalé aktivní přiřazení** | Správci prostředků mohou přiřadit trvalé aktivní přiřazení. |
 | **Po vypršení platnosti aktivního přiřazení** | Správci prostředků mohou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum. |

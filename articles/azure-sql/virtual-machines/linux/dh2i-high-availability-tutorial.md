@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102227394"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568528"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>Kurz – nastavení skupiny dostupnosti AlwaysOn pro tři uzly s DH2i DxEnterprise běžící na platformě Linux Azure Virtual Machines
 
@@ -37,24 +37,24 @@ Tento kurz se skládá z následujících kroků:
 
 V tomto kurzu nastavíme cluster DxEnterprise pomocí [uživatelského rozhraní klienta DxAdmin](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-dxadmin-client-ui-quick-start-guide/). Volitelně můžete také nastavit cluster pomocí rozhraní příkazového řádku [DxCLI](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-software-dxcli-guide/) . V tomto příkladu jsme použili čtyři virtuální počítače. Tři z těchto virtuálních počítačů používají Ubuntu 18,04 a jsou součástí clusteru se třemi uzly. Na čtvrtém virtuálním počítači běží Windows 10 s nástrojem DxAdmin ke správě a konfiguraci clusteru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Vytvořte v Azure čtyři virtuální počítače. Postupujte podle pokynů v tématu [rychlý Start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) článku pro vytvoření virtuálních počítačů založených na systému Linux. Podobně pro vytváření virtuálních počítačů založených na Windows použijte [rychlý Start: Vytvoření virtuálního počítače s Windows v článku Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) .
-- Nainstalujte .NET 3,1 na všechny virtuální počítače se systémem Linux, které budou součástí clusteru. Postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/dotnet/core/install/linux) na základě operačního systému Linux, který zvolíte.
+- Vytvořte v Azure čtyři virtuální počítače. Postupujte podle pokynů v tématu [rychlý Start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../../../virtual-machines/linux/quick-create-portal.md) článku pro vytvoření virtuálních počítačů založených na systému Linux. Podobně pro vytváření virtuálních počítačů založených na Windows použijte [rychlý Start: Vytvoření virtuálního počítače s Windows v článku Azure Portal](../../../virtual-machines/windows/quick-create-portal.md) .
+- Nainstalujte .NET 3,1 na všechny virtuální počítače se systémem Linux, které budou součástí clusteru. Postupujte podle pokynů uvedených [tady](/dotnet/core/install/linux) na základě operačního systému Linux, který zvolíte.
 - Vyžaduje se platná licence DxEnterprise se zapnutými funkcemi správy skupin dostupnosti. Další informace najdete v tématu [DxEnterprise bezplatnou zkušební verzi](https://dh2i.com/trial/) o tom, jak můžete získat bezplatnou zkušební verzi.
 
 ## <a name="install-sql-server-on-all-the-azure-vms-that-will-be-part-of-the-availability-group"></a>Nainstalujte SQL Server na všechny virtuální počítače Azure, které budou součástí skupiny dostupnosti.
 
-V tomto kurzu nastavujeme tři clustery se systémem Linux, na kterých je spuštěná Skupina dostupnosti. Dodržujte dokumentaci k [instalaci SQL Server na Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview#install) na základě volby platformy Linux. Doporučujeme vám také nainstalovat nástroje pro [SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) pro tento kurz.
+V tomto kurzu nastavujeme tři clustery se systémem Linux, na kterých je spuštěná Skupina dostupnosti. Dodržujte dokumentaci k [instalaci SQL Server na Linux](/sql/linux/sql-server-linux-overview#install) na základě volby platformy Linux. Doporučujeme vám také nainstalovat nástroje pro [SQL Server](/sql/linux/sql-server-linux-setup-tools) pro tento kurz.
  
 > [!NOTE]
-> Ujistěte se, že operační systém Linux, který si zvolíte, je společná distribuce, která je podporována [DH2i DxEnterprise (viz část minimální požadavky na systém)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) a [Microsoft SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
+> Ujistěte se, že operační systém Linux, který si zvolíte, je společná distribuce, která je podporována [DH2i DxEnterprise (viz část minimální požadavky na systém)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) a [Microsoft SQL Server](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
 >
 > V tomto příkladu používáme Ubuntu 18,04, který podporuje DH2i DxEnterprise i Microsoft SQL Server.
 
 Pro účely tohoto kurzu nebudeme instalovat SQL Server na virtuálním počítači s Windows, protože tento uzel nepatří do clusteru a používá se jenom ke správě clusteru pomocí DxAdmin.
 
-Po dokončení tohoto kroku byste měli mít nástroje SQL Server a [SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) (volitelně) nainstalovány na všechny tři virtuální počítače se systémem Linux, které se budou podílet na skupině dostupnosti.
+Po dokončení tohoto kroku byste měli mít nástroje SQL Server a [SQL Server](/sql/linux/sql-server-linux-setup-tools) (volitelně) nainstalovány na všechny tři virtuální počítače se systémem Linux, které se budou podílet na skupině dostupnosti.
  
 ## <a name="install-dxenterprise-on-all-the-vms-and-configure-the-cluster"></a>Nainstalovat DxEnterprise na všechny virtuální počítače a nakonfigurovat cluster
 
@@ -84,7 +84,7 @@ Pokud chcete nainstalovat jenom nástroj klienta DxAdmin na virtuální počíta
 Po provedení tohoto kroku byste měli mít cluster DxEnterprise vytvořený na virtuálních počítačích se systémem Linux a na klientském počítači se systémem Windows nainstalovaný klient DxAdmin. 
 
 > [!NOTE]
-> Můžete také vytvořit cluster se třemi uzly, v němž je jeden z uzlů přidán jako *režim pouze pro konfiguraci*, jak je popsáno [zde](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) , chcete-li povolit automatické převzetí služeb při selhání. 
+> Můžete také vytvořit cluster se třemi uzly, v němž je jeden z uzlů přidán jako *režim pouze pro konfiguraci*, jak je popsáno [zde](/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) , chcete-li povolit automatické převzetí služeb při selhání. 
 
 ## <a name="create-the-virtual-hosts-to-provide-failover-support-and-high-availability"></a>Vytvoření virtuálních hostitelů pro zajištění podpory převzetí služeb při selhání a vysoké dostupnosti
 
@@ -100,7 +100,7 @@ Připojte se k počítači klienta Windows, na kterém běží DxAdmin, a připo
 
 ## <a name="create-the-internal-azure-load-balancer-for-listener-optional"></a>Vytvoření interního nástroje pro vyrovnávání zatížení Azure pro naslouchací proces (volitelné)
 
-V tomto volitelném kroku můžete vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení Azure, který obsahuje IP adresy pro naslouchací procesy skupiny dostupnosti. Další informace o Azure Load Balancer najdete v [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Pokud chcete nakonfigurovat naslouchací proces pro vyrovnávání zatížení Azure a naslouchací proces skupiny dostupnosti pomocí DxAdmin, postupujte podle [Úvodní příručka Azure Load Balancer](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)DxEnterprise.
+V tomto volitelném kroku můžete vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení Azure, který obsahuje IP adresy pro naslouchací procesy skupiny dostupnosti. Další informace o Azure Load Balancer najdete v [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md). Pokud chcete nakonfigurovat naslouchací proces pro vyrovnávání zatížení Azure a naslouchací proces skupiny dostupnosti pomocí DxAdmin, postupujte podle [Úvodní příručka Azure Load Balancer](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)DxEnterprise.
 
 Po provedení tohoto kroku byste měli mít vytvořeného naslouchacího procesu skupiny dostupnosti a namapovaný na interní nástroj pro vyrovnávání zatížení Azure.
 
@@ -121,7 +121,7 @@ Další informace o dalších operacích v rámci DxEnterprise najdete v příru
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [skupinách dostupnosti v systému Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-availability-group-overview)
-- [Rychlý Start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
-- [Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-- [Podporované platformy pro SQL Server 2019 na platformě Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
+- Další informace o [skupinách dostupnosti v systému Linux](/sql/linux/sql-server-linux-availability-group-overview)
+- [Rychlý Start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../../../virtual-machines/linux/quick-create-portal.md)
+- [Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal](../../../virtual-machines/windows/quick-create-portal.md)
+- [Podporované platformy pro SQL Server 2019 na platformě Linux](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)

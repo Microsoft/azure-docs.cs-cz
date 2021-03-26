@@ -3,25 +3,25 @@ title: Nasazení na IoT Edge pro Linux ve Windows – Azure
 description: Tento článek poskytuje pokyny, jak nasadit na zařízení s Windows na IoT Edge pro Linux.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618130"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561079"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Nasazení na IoT Edge pro Linux v zařízení s Windows (EFLOW)
 
-V tomto článku se dozvíte, jak nasadit Live video Analytics na hraničním zařízení, které má [IoT Edge pro Linux ve Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows). Po dokončení kroků v tomto dokumentu budete moct spustit [mediální graf](media-graph-concept.md) , který detekuje pohyb ve videu a vysílá takové události do centra IoT v cloudu. Pak můžete přepnout do Media graphu pro pokročilé scénáře a využít možnosti Live video Analytics pro vaše zařízení IoT Edge se systémem Windows.
+V tomto článku se dozvíte, jak nasadit Live video Analytics na hraničním zařízení, které má [IoT Edge pro Linux ve Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md). Po dokončení kroků v tomto dokumentu budete moct spustit [mediální graf](media-graph-concept.md) , který detekuje pohyb ve videu a vysílá takové události do centra IoT v cloudu. Pak můžete přepnout do Media graphu pro pokročilé scénáře a využít možnosti Live video Analytics pro vaše zařízení IoT Edge se systémem Windows.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
     > [!NOTE]
     > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění.
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Přečtěte si, [co je EFLOW](https://aka.ms/AzEFLOW-docs).
+* Přečtěte si, [co je EFLOW](../../iot-edge/iot-edge-for-linux-on-windows.md).
 
 ## <a name="deployment-steps"></a>Kroky nasazení
 
@@ -29,9 +29,9 @@ Následující část znázorňuje Celkový tok dokumentu a v 5 jednoduchých kr
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="Diagram IoT Edge pro Linux v systému Windows (EFLOW)":::
 
-1. [Nainstalujte](https://aka.ms/AzEFLOW-install) do zařízení s Windows EFLOW. 
+1. [Nainstalujte](../../iot-edge/how-to-install-iot-edge-on-windows.md) do zařízení s Windows EFLOW. 
 
-    1. Pokud používáte počítač s Windows, pak na úvodní stránce [centra pro správu systému Windows](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) pod seznamem připojení uvidíte připojení k místnímu hostiteli, které představuje počítač, na kterém je spuštěný centrum pro správu systému Windows. 
+    1. Pokud používáte počítač s Windows, pak na úvodní stránce [centra pro správu systému Windows](/windows-server/manage/windows-admin-center/overview) pod seznamem připojení uvidíte připojení k místnímu hostiteli, které představuje počítač, na kterém je spuštěný centrum pro správu systému Windows. 
     1. Tady se zobrazí i všechny další servery, počítače nebo clustery, které spravujete.
     1. Pomocí centra pro správu Windows můžete nainstalovat a spravovat Azure EFLOW na místních zařízeních nebo na vzdálených spravovaných zařízeních. V této příručce se připojení místního hostitele obsluhuje jako cílové zařízení pro nasazení Azure IoT Edge pro Linux ve Windows. Proto vidíte, že je localhost také uvedeno jako zařízení IoT Edge.
 
@@ -110,4 +110,3 @@ Následující část znázorňuje Celkový tok dokumentu a v 5 jednoduchých kr
 * Spustit [AI na živém videu](use-your-model-quickstart.md#overview) (můžete přeskočit nezbytnou instalaci, protože už byla dokončena výše)
 * Použijte naše [rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) k zobrazení dalších mediálních grafů.
 * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera)  , který podporuje RTSP. Kamery protokolu IP, které podporují protokol RTSP, najdete na stránce vyhovující [ONVIF produktů](https://www.onvif.org/conformant-products/) . Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
-

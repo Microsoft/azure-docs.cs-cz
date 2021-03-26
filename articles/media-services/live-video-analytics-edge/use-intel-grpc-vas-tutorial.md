@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465755"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562847"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Kurz: Analýza živého videa pomocí rozšíření Intel OpenVINO™ DL načtení proudu ImageList – Edge AI 
 
@@ -22,7 +22,7 @@ Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a p
 > [!NOTE]
 > Tento kurz vyžaduje použití počítače s platformou X86-64 jako hraničního zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
   > [!NOTE]
@@ -66,7 +66,7 @@ V tomto kurzu:
 
 Modul rozšíření AI OpenVINO™ DL načtení proudu ImageList-Edge je mikroslužba založená na videu od společnosti Intel pro zpracování videí, která poskytuje kanály video Analytics vytvořené pomocí OpenVINO™ DL načtení proudu ImageList. Vývojáři mohou odesílat Dekódovatelné snímky videa do modulu rozšíření AI, který provádí zjišťování, klasifikaci nebo sledování a vrací výsledky. Modul rozšíření AI zveřejňuje rozhraní API gRPC, která jsou kompatibilní s platformami video Analytics, jako je Live video Analytics na IoT Edge od Microsoftu. 
 
-Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření Intel OpenVINO™ DL načtení proudu ImageList – Edge AI –](https://aka.ms/lva-intel-openvino-dl-streamer)modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. 
+Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření Intel OpenVINO™ DL načtení proudu ImageList – Edge AI –]()modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. 
 
 V počáteční verzi tohoto odvozeného serveru máte přístup k následujícím [modelům](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options):
 

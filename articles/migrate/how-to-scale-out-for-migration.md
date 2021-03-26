@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 634eb2d22e3fa570ac9412d4fb8afd917b5c2eaa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607649"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564003"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Škálování migrace virtuálních počítačů VMware bez agenta do Azure
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak:
 - Přidání zařízení se škálováním na více instancí pro migraci virtuálních počítačů VMware bez agenta
 - Migrujte až 500 virtuálních počítačů současně pomocí zařízení se škálováním na více instancí.
 
-##  <a name="prerequisites"></a>Předpoklady
+##  <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte provést následující kroky:
 
@@ -176,4 +176,4 @@ V tomto článku jste se naučili:
 - Jak replikovat virtuální počítače pomocí zařízení se škálováním na více instancí
 
 
-[Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) o migraci serverů do Azure pomocí Azure Migrate: Nástroj pro migraci serveru.
+[Přečtěte si další informace](./tutorial-migrate-vmware.md) o migraci serverů do Azure pomocí Azure Migrate: Nástroj pro migraci serveru.

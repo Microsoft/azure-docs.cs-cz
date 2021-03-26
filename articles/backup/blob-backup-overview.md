@@ -3,12 +3,12 @@ title: Přehled operačního zálohování pro objekty blob Azure
 description: Přečtěte si o provozním zálohování pro objekty blob Azure (ve verzi Preview).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744581"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558750"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Přehled operačního zálohování pro objekty blob Azure (ve verzi Preview)
 
@@ -22,7 +22,7 @@ Provozní záloha objektů BLOB je **místní řešení zálohování** . Takže
 
 Provozní záloha používá funkce platformy objektů BLOB k ochraně vašich dat a v případě potřeby umožňuje obnovení:
 
-- **Obnovení k časovému** okamžiku: [obnovení objektu BLOB v čase](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview) umožňuje obnovení dat objektů blob do předchozího stavu. To zase používá **obnovitelné odstranění**, **změnu kanálu** a **verze objektů BLOB** k uchování dat po určenou dobu trvání. Provozní zálohování se stará o povolení obnovení k určitému časovému okamžiku i k základním funkcím, aby se zajistila doba uchovávání dat po určenou dobu.
+- **Obnovení k časovému** okamžiku: [obnovení objektu BLOB v čase](../storage/blobs/point-in-time-restore-overview.md) umožňuje obnovení dat objektů blob do předchozího stavu. To zase používá **obnovitelné odstranění**, **změnu kanálu** a **verze objektů BLOB** k uchování dat po určenou dobu trvání. Provozní zálohování se stará o povolení obnovení k určitému časovému okamžiku i k základním funkcím, aby se zajistila doba uchovávání dat po určenou dobu.
 
 - **Odstranit zámek**: odstranit zámek zabraňuje náhodnému odstranění účtu úložiště nebo neautorizovaným uživatelům. Provozní zálohování, když se nakonfiguruje, taky automaticky aplikuje zámek proti odstranění, aby se snížily možnosti ztráty dat kvůli odstranění účtu úložiště.
 
@@ -63,9 +63,9 @@ Provozní zálohování nabízí možnost obnovit všechny objekty blob bloku v 
 
 Při použití provozní zálohy pro objekty BLOB se vám neúčtují žádné poplatky za správu ani poplatky za instance. Budou se vám ale účtovat tyto poplatky:
 
-- Obnovení se provádí pomocí obnovení k bodu v čase blobu a přilákat poplatky na základě množství zpracovaných dat. Další informace najdete v tématu [ceny obnovení k bodu v čase](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing).
+- Obnovení se provádí pomocí obnovení k bodu v čase blobu a přilákat poplatky na základě množství zpracovaných dat. Další informace najdete v tématu [ceny obnovení k bodu v čase](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing).
 
-- Uchovávání dat kvůli [obnovitelnému odstranění objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview), [podpoře změn kanálu v Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed)a [správy verzí objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/versioning-overview).
+- Uchovávání dat kvůli [obnovitelnému odstranění objektů BLOB](../storage/blobs/soft-delete-blob-overview.md), [podpoře změn kanálu v Azure Blob Storage](../storage/blobs/storage-blob-change-feed.md)a [správy verzí objektů BLOB](../storage/blobs/versioning-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

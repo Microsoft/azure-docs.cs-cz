@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b94b30851a5206c2183d999a3c024351cf415c90
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122710"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568235"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -104,11 +104,11 @@ Když do skupiny přidáte instance virtuálních počítačů, automaticky zís
 
 Když k účtu Azure Cosmos DB přistupujete z počítače na internetu, musí se do seznamu povolených IP adres pro váš účet přidat IP adresa klienta nebo rozsah IP adres.
 
-### <a name="add-outbound-rules-to-the-firewall"></a>Přidání odchozích pravidel do brány firewall
+### <a name="add-outbound-rules-to-the-firewall"></a>Přidání pravidel odchozích přenosů do brány firewall
 
 Pokud chcete získat přístup k aktuálnímu seznamu rozsahů odchozích IP adres, které chcete přidat do nastavení brány firewall, přečtěte si téma [stažení rozsahů IP adres a značek služeb Azure](https://www.microsoft.com/download/details.aspx?id=56519)
 
-Pokud chcete seznam automatizovat, přečtěte si téma [použití rozhraní API zjišťování značek služby (Public Preview)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview).
+Pokud chcete seznam automatizovat, přečtěte si téma [použití rozhraní API zjišťování značek služby (Public Preview)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview).
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurace brány firewall protokolu IP pomocí šablony Správce prostředků
 

@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 62bd5d2e70d3a66998907305fecee4dcc87cdb23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 190def0e6e2f77d330d2307753dc9e9d53c55dd7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102451723"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564135"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -27,7 +27,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Zřízení Azure-SSIS IR s SSISDB hostovaným pomocí spravované instance Azure SQL
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. Při volbě Azure Active Directory ověřování [povolit Azure Active Directory (Azure AD) na spravované instanci SQL Azure](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)
 
@@ -39,7 +39,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
             - Uvnitř stejné virtuální sítě jako spravovaná instance s **jinou podsítí**.
             - Uvnitř jiné virtuální sítě, než je spravovaná instance, prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálních partnerských vztahů) nebo připojení virtuální sítě k virtuální síti.
 
-            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](/azure/sql-database/sql-database-managed-instance-connect-app).
+            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](../azure-sql/managed-instance/connect-application-instance.md).
 
         1. [Nakonfigurujte virtuální síť](#configure-virtual-network).
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 1a0fc569b7d552101c1e0bd1a065b2a91ebfa3c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 139eeaa83629f3ef51f8eda414622f7da54dfab4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439608"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560246"
 ---
 # <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes sítě v zařízení GPU pro Azure Stack Edge pro
 
@@ -86,4 +86,4 @@ Konfigurace sítě Kubernetes na Azure Stack Edge pro najdete v tématu:
 
 - [Zpřístupněte bezstavovou aplikaci externě na Azure Stack Edge pro prostřednictvím IoT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- [Vystavte bezstavovou aplikaci externě na Azure Stack Edge pro prostřednictvím kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Vystavte bezstavovou aplikaci externě na Azure Stack Edge pro prostřednictvím kuebctl](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).

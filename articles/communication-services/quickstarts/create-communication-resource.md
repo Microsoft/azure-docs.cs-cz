@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: a1bdb1b8ac1f545933a92e78fd13b745606f1da3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110882"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563769"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
 
@@ -49,12 +49,25 @@ Po přechodu na prostředek služby Communication Services vyberte z navigační
 
 :::image type="content" source="./media/key.png" alt-text="Snímek stránky s klíčem komunikačních služeb":::
 
-K informacím o klíčích se můžete dostat taky pomocí Azure CLI:
+K informacím o klíčích můžete také přistupovat pomocí Azure CLI, jako je vaše skupina prostředků nebo klíče pro konkrétní prostředek. 
 
+Nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) a pomocí následujícího příkazu se přihlaste. Abyste se mohli připojit k účtu Azure, budete muset zadat svoje přihlašovací údaje.
+```azurecli
+az login
+```
+
+Teď máte přístup k důležitým informacím o vašich prostředcích.
 ```azurecli
 az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
+
+Pokud chcete vybrat konkrétní předplatné, můžete také zadat ```--subscription``` příznak a zadat ID předplatného.
+```
+az communication list --resource-group  "resourceGroup>"  --subscription "<subscriptionID>"
+
+az communication list-key --name "<communicationName>" --resource-group "resourceGroup>" --subscription "<subscriptionID>"
 ```
 
 ## <a name="store-your-connection-string"></a>Uložení připojovacího řetězce

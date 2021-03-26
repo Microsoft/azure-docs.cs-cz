@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199896"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564938"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure pomocí [
 
 Řešení popsané v tomto článku vám umožní shromáždit a analyzovat historické údaje o řešení IoT. Azure Digital Twins se výborně hodí k zasílání dat do Time Series Insights, protože umožňuje korelovat více streamů dat a standardizovat informace, než je pošle do Time Series Insights. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct nastavit relaci s Time Series Insights, musíte mít **instanci digitálního vlákna Azure**. Tato instance by měla být nastavená na možnost aktualizovat digitální informace na základě dat, protože je potřeba aktualizovat zdvojené informace několikrát, aby se zobrazila data sledovaná v Time Series Insights. 
 
@@ -157,7 +157,7 @@ V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnn�
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Vytvořit a připojit instanci Time Series Insights
 
-V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z vašeho druhého centra událostí (TSI). Postupujte podle následujících kroků a podrobnější informace o tomto procesu najdete v tématu [*kurz: nastavení Azure Time Series Insights Gen2 PAYG Environment*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z vašeho druhého centra událostí (TSI). Postupujte podle následujících kroků a podrobnější informace o tomto procesu najdete v tématu [*kurz: nastavení Azure Time Series Insights Gen2 PAYG Environment*](../time-series-insights/tutorial-set-up-environment.md).
 
 1. V Azure Portal Začněte vytvářet Time Series Insights prostředí. 
     1. Vyberte cenovou úroveň **Gen2 (L1)** .
@@ -201,7 +201,7 @@ Nyní by data měla být předávána do instance Time Series Insights, která j
 
 Digitální vlákna jsou ve výchozím nastavení ukládána jako Plochá hierarchie v Time Series Insights, ale lze je rozšířit pomocí informací o modelu a víceúrovňové hierarchie pro organizaci. Další informace o tomto procesu najdete v článku: 
 
-* [*Kurz: definování a použití modelu*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*Kurz: definování a použití modelu*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Můžete napsat vlastní logiku, která automaticky poskytne tyto informace pomocí modelu a dat grafu, která jsou již uložena v rámci digitálních vláken Azure. Další informace o správě, upgradu a načítání informací z grafu vláken naleznete v následujících odkazech:
 

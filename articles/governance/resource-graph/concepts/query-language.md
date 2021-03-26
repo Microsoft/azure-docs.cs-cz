@@ -3,12 +3,12 @@ title: Principy dotazovacího jazyka
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e600439d54a89dd9bd2510b2e47b71b60ee93a7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633797"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557679"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -135,7 +135,7 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 |[zúčastnit](/azure/kusto/query/joinoperator) |[Trezor klíčů s názvem předplatného](../samples/advanced.md#join) |Podporované charaktery spojení: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [LeftOuter](/azure/kusto/query/joinoperator#left-outer-join). Limit 3 `join` v jednom dotazu, z něhož může být Křížová tabulka `join` . Pokud je veškeré použití mezi tabulkami `join` mezi _prostředky_ a _ResourceContainers_, je povolená 3 mezitabulka `join` . Vlastní strategie spojení, jako je připojení všesměrového vysílání, nejsou povolené. Které tabulky mohou používat `join` , naleznete v tématu [tabulky grafů prostředků](#resource-graph-tables). |
 |[limit](/azure/kusto/query/limitoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `take` . Nefunguje s [přeskočením](./work-with-data.md#skipping-records). |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Místo toho použijte operátor starší verze `mv-expand` . _RowLimit_ max. 400. Výchozí hodnota je 128. |
-|[MV – rozbalit](/azure/kusto/query/mvexpandoperator) |[Seznam Cosmos DB s konkrétními umístěními pro zápis](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max. 400. Výchozí hodnota je 128. Limit 3 `mv-expand` v jednom dotazu.|
+|[MV – rozbalit](/azure/kusto/query/mvexpandoperator) |[Seznam Cosmos DB s konkrétními umístěními pro zápis](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max. 400. Výchozí hodnota je 128. Omezení 2 `mv-expand` v jednom dotazu.|
 |[order](/azure/kusto/query/orderoperator) |[Vypsat prostředky seřazené podle názvu](../samples/starter.md#list-resources) |Synonymum `sort` |
 |[projektem](/azure/kusto/query/projectoperator) |[Vypsat prostředky seřazené podle názvu](../samples/starter.md#list-resources) | |
 |[projekt – pryč](/azure/kusto/query/projectawayoperator) |[Odebrat sloupce z výsledků](../samples/advanced.md#remove-column) | |

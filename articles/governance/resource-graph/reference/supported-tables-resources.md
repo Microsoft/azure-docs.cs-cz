@@ -1,15 +1,15 @@
 ---
 title: Podporované typy prostředků Azure Resource Manager
 description: Poskytněte seznam Azure Resource Manager typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 03/10/2021
+ms.date: 03/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 482c261586d5d077a61781eff28698fa9994f332
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633763"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544141"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -84,6 +84,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Citrix. Services/XenDesktopEssentials (základy virtuálních počítačů Citrix)
 - Conexlink. MyCloudIt/účty (MyCloudIT – hostování desktopů Azure)
 - Crypteron. datazabezpečení/aplikace (Crypteron)
+- GitHub. Enterprise/Accounts
 - GridPro. evops/účty
 - GridPro. evops/Accounts/eventrules
 - GridPro. evops/Accounts/requesttemplates
@@ -142,7 +143,8 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. AzureStackHCI/clustery (Azure Stack HCI)
 - Microsoft. azurestackhci/galleryimages
 - Microsoft. azurestackhci/networkinterfaces
-- Microsoft. AzureStackHCI/VirtualMachines (Azure Stack virtuální počítač HCI – Azure ARC)
+- Microsoft. azurestackhci/virtualharddisks
+- Microsoft. AzureStackHci/virtualMachines (Azure Stack virtuální počítač HCI – Azure ARC)
 - Microsoft. azurestackhci/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (servery Cray)
@@ -219,7 +221,8 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. connectedvehicle/platformaccounts
 - Microsoft. connectedvmwarevsphere/resourcepools
 - Microsoft. connectedvmwarevsphere/servery vCenter
-- Microsoft. connectedvmwarevsphere/VirtualMachines
+- Microsoft. ConnectedVMwarevSphere/VirtualMachines (virtuální počítače VMware + AVS)
+- Microsoft. connectedvmwarevsphere/VirtualMachines/Extensions
 - Microsoft. connectedvmwarevsphere/virtualmachinetemplates
 - Microsoft. connectedvmwarevsphere/virtualnetworks
 - Microsoft. ContainerInstance/containerGroups (instance kontejnerů)
@@ -254,6 +257,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Migrace a služby Microsoft. DataServices (Azure Database Migration Services)
 - Microsoft. datamigration/služby/projekty (projekty Azure Database Migration)
 - Microsoft. datamigration/sloty
+- migrace Microsoft. datasqlmigrationservices/
 - Microsoft. DataProtection/BackupVaults (trezory služby Backup)
 - Microsoft. DataProtection/resourceoperationgatekeepers
 - Microsoft. datashare/Accounts (sdílené data)
@@ -262,7 +266,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. DBforMySQL/servery (servery Azure Database for MySQL)
 - Microsoft. DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL flexibilní servery)
 - Microsoft. DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL skupiny serverů)
-- Microsoft. dbforpostgresql/servergroupsv2
+- Microsoft. DBforPostgreSQL/serverGroupsv2 (Azure Database for PostgreSQL skupiny serverů)
 - Microsoft. DBforPostgreSQL/servery (servery Azure Database for PostgreSQL)
 - Microsoft. DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL servery v2)
 - Microsoft. dbforpostgresql/singleservers
@@ -361,7 +365,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. IntelligentITDigitalTwin/digitalTwins/testPlans (sady)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins/Tests (skripty)
 - Microsoft. IoTCentral/IoTApps (IoT Central aplikace)
-- Microsoft. IoTSpaces/Graph (digitální vlákna (zastaralé))
+- Microsoft. iotspaces/Graph
 - Microsoft. hsmpools – trezor/
 - Microsoft. managedhsms – trezor/
 - Trezory a trezory Microsoft. webkey (trezory klíčů)
@@ -369,6 +373,8 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Kusto/clustery (clustery Azure Průzkumník dat)
 - Microsoft. Kusto/clustery/databáze (databáze Azure Průzkumník dat)
 - Microsoft. LabServices/labAccounts (testovací služby)
+- Microsoft. labservices/labplans
+- Microsoft. labservices/Labs
 - Microsoft. LoadTestService/LoadTests (testování nativních zátěží cloudu)
 - Microsoft. Logic/integrationAccounts (účty pro integraci)
 - Microsoft. Logic/integrationServiceEnvironments (prostředí integračních služeb)
@@ -380,6 +386,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. MachineLearning/WebServices (Machine Learning Studio (Classic) webové služby)
 - Microsoft. MachineLearning/pracovní prostory (Machine Learning Studio (klasické) pracovní prostory)
 - Microsoft. machinelearningcompute/operationalizationclusters
+- Microsoft. machinelearningexperimentation/účty/pracovní prostory
 - Microsoft. machinelearningservices/modelinventories
 - Microsoft. machinelearningservices/modelinventory
 - Microsoft. machinelearningservices/virtualclusters
@@ -517,6 +524,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. PowerBI/workspacecollections
 - Microsoft. powerbidedicated/autoscalevcores
 - Microsoft. PowerBIDedicated/kapacity (Power BI Embedded)
+- Microsoft. powerplatform/enterprisepolicies
 - Microsoft. ProjectBabylon/Accounts (účty Babylon)
 - Microsoft. dosah/Accounts (účty dosah)
 - Microsoft. v/v pracovních prostorech (pracovní prostory pro podoby)
@@ -525,7 +533,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Relay/obory názvů (Relay)
 - Microsoft. RemoteApp/kolekce
 - Microsoft. odolnost/chaosexperiments
-- Microsoft. ResourceConnector/zařízení (zařízení)
+- Microsoft. ResourceConnector/zařízení (přemostění prostředků)
 - Microsoft. resourcegraph/dotazy (dotazy na grafy prostředků)
 - Microsoft. Resources/deploymentScripts (skripty pro nasazení)
 - Microsoft. Resources/templateSpecs (specifikace šablon)
@@ -553,6 +561,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. servicefabricmesh/– svazky
 - Microsoft. ServicesHub/konektory (konektory centra služeb)
 - Microsoft. SignalRService/Signaler (Signaler)
+- Microsoft. SignalRService/WebPubSub (Web PubSub Service)
 - Microsoft. jednotné a finanční účty
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/zařízení
@@ -575,7 +584,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Storage/StorageAccounts (účty úložiště)
 - Microsoft. storagecache/amlfilesystems
 - Microsoft. StorageCache/caches (mezipaměť HPC)
-- Microsoft. storagePool/diskpools
+- Microsoft. StoragePool/diskPools (fondy disků)
 - Microsoft. StorageSync/storageSyncServices (služby synchronizace úložiště)
 - Microsoft. StorageSyncDev/storageSyncServices (služby synchronizace úložiště)
 - Microsoft. StorageSyncInt/storageSyncServices (služby synchronizace úložiště)
@@ -603,7 +612,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. VMware/arczones
 - Microsoft. VMware/resourcepools
 - Microsoft. VMware/servery vCenter
-- Microsoft. VMware/VirtualMachines (AVS – virtuální počítače)
+- Microsoft. VMware/VirtualMachines
 - Microsoft. VMware/virtualmachinetemplates
 - Microsoft. VMware/virtualnetworks
 - Microsoft. VMwareCloudSimple/dedicatedCloudNodes (uzly CloudSimple)
@@ -633,10 +642,6 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - MyGet. PackageManagement/Services (MyGet – hostované balíčky NuGet, NPM, Bower a VSIX)
 - Paraleap. CloudMonix/Services (CloudMonix)
 - Pokitdok. Platform/Services (platforma PokitDok)
-- Zprostředkovatelé. test/statefulIbizaEngines (vyhodnocení aplikací)
-- zprostředkovatelé. test/statefulresources
-- zprostředkovatelé. test/statefulresources/nestedresources
-- zprostředkovatelé. test/statelessresources
 - RavenHq. DB/databáze (RavenHQ)
 - Raygun. CrashReporting/Apps (Raygun)
 - Sendgrid.Email/accounts (účty SendGrid)
@@ -661,6 +666,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 
 - Microsoft. Security/Assessments
 - Microsoft. Security/Assessments/posouzení podhodnocení
+- Microsoft. Security/Insights/Classification
 - Microsoft. Security/iotalerts
 - Microsoft. Security/Locations/Alerts (výstrahy zabezpečení)
 - Microsoft. Security/Prices

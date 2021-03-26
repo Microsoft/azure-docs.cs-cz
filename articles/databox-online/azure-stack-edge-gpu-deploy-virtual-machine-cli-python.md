@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 43853f2eba05794540a72fe64e748fcafd9073d2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 16dc95d4e32c683634aa2d96fc2af281612346e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102637896"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568303"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
@@ -45,7 +45,7 @@ Souhrnný přehled pracovního postupu nasazení je následující:
 
 Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-gpu-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
@@ -355,7 +355,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
    Vaše ID klienta Azure Resource Manager je pevně zakódováno. Ve výstupu `az login` příkazu, který jste provedli dříve, se nachází vaše Azure Resource Manager ID tenanta a ID Předplatného Azure Resource Manager. Azure Resource Manager tajný klíč klienta je Azure Resource Manager heslo, které jste nastavili.
 
-   Další informace najdete v tématu [Azure Resource Manager heslo](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
+   Další informace najdete v tématu [Azure Resource Manager heslo](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password).
 
 5. Změňte profil na verzi 2019-03-01 – Hybrid. Chcete-li změnit verzi profilu, spusťte následující příkaz:
 

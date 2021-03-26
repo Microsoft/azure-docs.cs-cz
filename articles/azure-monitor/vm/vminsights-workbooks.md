@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798846"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568796"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Vytváření interaktivních sestav – přehledy virtuálních počítačů pomocí sešitů
 
@@ -25,7 +25,7 @@ Sešity jsou užitečné pro scénáře, jako například:
 
 Následující tabulka shrnuje sešity, které virtuální počítač Insights zahrnuje, abyste mohli začít.
 
-| sešit | Popis | Obor |
+| sešit | Description | Obor |
 |----------|-------------|-------|
 | Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Několik virtuálních počítačů |
 | Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Několik virtuálních počítačů |
@@ -103,13 +103,13 @@ Každá část má vlastní Rozšířená nastavení, která jsou přístupná p
 
 ![Snímek obrazovky dialogového okna Upřesnit nastavení v části sešit Virtual Machines Azure Monitor. Ikona, která otevře dialogové okno, je zvýrazněna.](media/vminsights-workbooks/007-settings-expanded.png)
 
-|         |          |
+| Nastavení | Popis |
 | ---------------- |:-----|
-| **Vlastní šířka**    | Provede položku v libovolné velikosti, takže můžete umístit mnoho položek na jeden řádek, což vám umožní lépe uspořádat grafy a tabulky do propracovaných interaktivních sestav.  |
-| **Podmíněně viditelné** | Určuje, že se mají skrýt kroky na základě parametru v režimu čtení. |
-| **Exportovat parametr**| Umožňuje vybranému řádku v mřížce nebo grafu způsobit pozdější postup změny hodnot nebo zobrazení viditelných položek.  |
-| **Zobrazit dotaz, pokud se neupravuje** | Zobrazí dotaz nad grafem nebo tabulkou, a to i v režimu čtení.
-| **Při úpravách zobrazit tlačítko otevřít v analýze** | Přidá ikonu Blue Analytics do pravého horního rohu grafu, aby bylo možné přístup jedním kliknutím.|
+| Vlastní šířka    | Provede položku v libovolné velikosti, takže můžete umístit mnoho položek na jeden řádek, což vám umožní lépe uspořádat grafy a tabulky do propracovaných interaktivních sestav.  |
+| Podmíněně viditelné | Určuje, že se mají skrýt kroky na základě parametru v režimu čtení. |
+| Exportovat parametr| Umožňuje vybranému řádku v mřížce nebo grafu způsobit pozdější postup změny hodnot nebo zobrazení viditelných položek.  |
+| Zobrazit dotaz, pokud se neupravuje | Zobrazí dotaz nad grafem nebo tabulkou, a to i v režimu čtení.
+| Při úpravách zobrazit tlačítko otevřít v analýze | Přidá ikonu Blue Analytics do pravého horního rohu grafu, aby bylo možné přístup jedním kliknutím.|
 
 Většina těchto nastavení je poměrně intuitivní, ale pro pochopení **exportu parametru** je lepší prozkoumávat sešit, který tuto funkci využívá.
 
@@ -152,12 +152,12 @@ Parametry jsou lineární, počínaje horním okrajem sešitu a natékání dol�
  
 Existují čtyři různé typy parametrů, které jsou aktuálně podporovány:
 
-|                  |      |
+| Parametr | Popis |
 | ---------------- |:-----|
-| **Text**    | Umožňuje uživateli upravit textové pole a volitelně můžete zadat dotaz k vyplnění výchozí hodnoty. |
-| **Rozevírací seznam** | Umožňuje uživateli vybrat ze sady hodnot. |
-| **Výběr časového rozsahu**| Umožňuje uživateli vybrat z předdefinované sady hodnot časového rozsahu nebo vybrat z vlastního časového rozsahu.|
-| **Výběr prostředku** | Umožňuje uživateli vybrat z prostředků vybraných pro sešit.|
+| Text    | Umožňuje uživateli upravit textové pole a volitelně můžete zadat dotaz k vyplnění výchozí hodnoty. |
+| Rozevírací seznam | Umožňuje uživateli vybrat ze sady hodnot. |
+| Výběr časového rozsahu| Umožňuje uživateli vybrat z předdefinované sady hodnot časového rozsahu nebo vybrat z vlastního časového rozsahu.|
+| Výběr prostředku | Umožňuje uživateli vybrat z prostředků vybraných pro sešit.|
 
 ### <a name="using-a-text-parameter"></a>Použití textového parametru
 

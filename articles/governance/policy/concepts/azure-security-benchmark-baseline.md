@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e8bb4cf715c6cb8d0729399c1985376de18687b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740341"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561283"
 ---
 # <a name="azure-security-baseline-for-azure-policy"></a>Základní hodnoty zabezpečení Azure pro Azure Policy
 
@@ -30,9 +30,9 @@ Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnost
 
 **Doprovodné** materiály: Azure Policy používá protokol aktivit, které jsou automaticky povoleny, aby zahrnoval zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Principy protokolování a různých typů protokolů v Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -48,7 +48,7 @@ Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnost
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. GuestConfiguration**:
 
@@ -74,7 +74,7 @@ Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnost
 
 **Pokyny**: k řízení přístupu k Azure Policy použijte řízení přístupu na základě role Azure (Azure RBAC).
 
-- [Oprávnění Azure RBAC v Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
+- [Oprávnění Azure RBAC v Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 - [Jak nakonfigurovat službu Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
@@ -86,7 +86,7 @@ Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnost
 
 **Doprovodné** materiály: pomocí Azure monitor s protokoly aktivit můžete vytvořit upozornění, když se změny probíhají v Azure Policy.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -128,5 +128,5 @@ Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnost
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../../../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../../../security/benchmarks/security-baselines-overview.md)

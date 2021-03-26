@@ -3,12 +3,12 @@ title: Fáze nasazení podrobného plánu
 description: Seznamte se s kroky souvisejícími s zabezpečením a artefakty, které služby Azure modrotisky procházejí během vytváření přiřazení podrobného plánu.
 ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: e686dec1c9d79e42dafee17d8a937284aac4fdd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 473f8c7957994401ea6000ecc0d8023a89f8c349
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918547"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560144"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Fáze nasazení podrobného plánu
 
@@ -27,7 +27,7 @@ Nasazení podrobného plánu se aktivuje přiřazením podrobného plánu k pře
 
 Instančnímu objektu služby Azure modrotisky se uděluje oprávnění vlastníka přiřazeného předplatného nebo předplatného, když se používá spravovaná identita [přiřazená systémem](../../../active-directory/managed-identities-azure-resources/overview.md) . Udělená role umožňuje službě Azure modrotisky vytvořit a později odvolat spravovanou identitu **přiřazenou systémem** . Pokud používáte spravovanou identitu **přiřazenou uživatelem** , instanční objekt služby Azure modrotiskys nezíská a nepotřebuje oprávnění vlastníka k tomuto předplatnému.
 
-Práva se udělují automaticky v případě, že se přiřazení provádí prostřednictvím portálu. Pokud je však přiřazení provedeno prostřednictvím REST API, udělení práv musí být provedeno pomocí samostatného volání rozhraní API. Služba Azure modrotisky AppId je `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` , ale instanční objekt se liší podle tenanta. K získání instančního objektu použijte [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) a [servicePrincipals](/graph/api/resources/serviceprincipal) koncového bodu REST. Pak udělte Azure modrotisky roli _vlastníka_ prostřednictvím [portálu](../../../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)nebo [šablony Azure Resource Manager](../../../role-based-access-control/role-assignments-template.md).
+Práva se udělují automaticky v případě, že se přiřazení provádí prostřednictvím portálu. Pokud je však přiřazení provedeno prostřednictvím REST API, udělení práv musí být provedeno pomocí samostatného volání rozhraní API. Služba Azure modrotisky AppId je `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` , ale instanční objekt se liší podle tenanta. K získání instančního objektu použijte [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) a [servicePrincipals](/graph/api/resources/serviceprincipal) koncového bodu REST. Pak udělte Azure modrotisky roli _vlastníka_ prostřednictvím [portálu](../../../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)nebo [šablony Azure Resource Manager](../../../role-based-access-control/role-assignments-template.md).
 
 Služba Azure Modrotiskys neimplementuje přímo prostředky.
 

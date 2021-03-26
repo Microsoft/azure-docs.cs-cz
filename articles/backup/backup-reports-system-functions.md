@@ -3,34 +3,34 @@ title: Systémové funkce v protokolech Azure Monitor
 description: Zápis vlastních dotazů do protokolů Azure Monitor pomocí systémových funkcí
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510493"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564904"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Systémové funkce v protokolech Azure Monitor
 
 Azure Backup poskytuje sadu funkcí nazývaných systémové funkce nebo funkce řešení, které jsou ve výchozím nastavení dostupné v pracovních prostorech Log Analytics (LA).
  
-Tyto funkce pracují s daty v [nezpracovaných Azure Backup tabulkách](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model) v La a vracejí formátovaná data, která vám pomůžou snadno načíst informace o všech entitách souvisejících s zálohováním pomocí jednoduchých dotazů. Uživatelé mohou předat parametry těmto funkcím k filtrování dat vrácených těmito funkcemi. 
+Tyto funkce pracují s daty v [nezpracovaných Azure Backup tabulkách](./backup-azure-reports-data-model.md) v La a vracejí formátovaná data, která vám pomůžou snadno načíst informace o všech entitách souvisejících s zálohováním pomocí jednoduchých dotazů. Uživatelé mohou předat parametry těmto funkcím k filtrování dat vrácených těmito funkcemi. 
 
 Doporučuje se používat systémové funkce pro dotazování zálohovaných dat v pracovních prostorech LA pro vytváření vlastních sestav, protože poskytují řadu výhod, jak je popsáno v následující části.
 
 ## <a name="benefits-of-using-system-functions"></a>Výhody používání systémových funkcí
 
-* **Jednodušší dotazy**: použití funkcí vám pomůže snížit počet spojení potřebných v dotazech. Ve výchozím nastavení funkce vrací "Sloučená" schémata, která obsahují všechny informace týkající se dané entity (instance zálohování, úlohy, trezoru atd.). Pokud například potřebujete získat seznam úspěšných úloh zálohování podle názvu zálohované položky a přidruženého kontejneru, jednoduché volání funkce **_AzureBackup_getJobs ()** vám poskytne všechny tyto informace pro každou úlohu. Na druhé straně dotazování nezpracovaných tabulek přímo vyžaduje, abyste provedli více spojení mezi tabulkami [AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) a [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) .
+* **Jednodušší dotazy**: použití funkcí vám pomůže snížit počet spojení potřebných v dotazech. Ve výchozím nastavení funkce vrací "Sloučená" schémata, která obsahují všechny informace týkající se dané entity (instance zálohování, úlohy, trezoru atd.). Pokud například potřebujete získat seznam úspěšných úloh zálohování podle názvu zálohované položky a přidruženého kontejneru, jednoduché volání funkce **_AzureBackup_getJobs ()** vám poskytne všechny tyto informace pro každou úlohu. Na druhé straně dotazování nezpracovaných tabulek přímo vyžaduje, abyste provedli více spojení mezi tabulkami [AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) a [CoreAzureBackup](./backup-azure-reports-data-model.md#coreazurebackup) .
 
-* **Plynulý přechod ze starší verze diagnostické události**: pomocí systémových funkcí můžete hladce plynule přejít ze [starší diagnostické události](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) (AzureBackupReport v režimu AzureDiagnostics) na [události specifické pro prostředky](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users). Všechny systémové funkce, které poskytuje Azure Backup, vám umožní určit parametr, který vám umožní vybrat, jestli se má tato funkce dotazovat na data jenom z tabulek specifických pro prostředky, nebo dotazovat data ze starší tabulky i tabulek specifických pro prostředky (s odstraněním duplicit záznamů).
+* **Plynulý přechod ze starší verze diagnostické události**: pomocí systémových funkcí můžete hladce plynule přejít ze [starší diagnostické události](./backup-azure-diagnostic-events.md#legacy-event) (AzureBackupReport v režimu AzureDiagnostics) na [události specifické pro prostředky](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users). Všechny systémové funkce, které poskytuje Azure Backup, vám umožní určit parametr, který vám umožní vybrat, jestli se má tato funkce dotazovat na data jenom z tabulek specifických pro prostředky, nebo dotazovat data ze starší tabulky i tabulek specifických pro prostředky (s odstraněním duplicit záznamů).
     * Pokud jste úspěšně migrovali do tabulek specifických pro prostředky, můžete se rozhodnout pro vyloučení starší tabulky z dotazu pomocí funkce.
     * Pokud v tuto chvíli provádíte migraci a máte nějaká data v starších tabulkách, které potřebujete pro účely analýzy, můžete si vybrat, jestli se má zahrnout starší tabulka. Když je přechod dokončený a už nepotřebujete data z tabulky starší verze, můžete jednoduše aktualizovat hodnotu parametru předaného funkci ve vašich dotazech, aby se vyloučila starší tabulka.
-    * Pokud stále používáte jenom starší tabulku, funkce budou fungovat i v případě, že se rozhodnete zahrnout starší verzi tabulky přes stejný parametr. Doporučuje se ale v nejbližší době [Přepnout na tabulky specifické pro prostředky](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) .
+    * Pokud stále používáte jenom starší tabulku, funkce budou fungovat i v případě, že se rozhodnete zahrnout starší verzi tabulky přes stejný parametr. Doporučuje se ale v nejbližší době [Přepnout na tabulky specifické pro prostředky](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) .
 
 * **Omezuje možnost přerušení vlastních dotazů**: Pokud Azure Backup zavádí vylepšení schématu podkladových tabulek La, aby vyhovovala budoucím scénářům vytváření sestav, definice funkcí se také aktualizuje, aby se zohlednily změny schématu. Proto pokud používáte systémové funkce pro vytváření vlastních dotazů, dotazy nebudou přerušit, i když jsou v podkladovém schématu tabulky změny.
 
 > [!NOTE]
-> Systémové funkce jsou spravovány společností Microsoft a jejich definice není možné upravovat uživateli. Pokud budete potřebovat upravitelné funkce, můžete v nástroji LA vytvořit [uložené funkce](https://docs.microsoft.com/azure/azure-monitor/logs/functions) .
+> Systémové funkce jsou spravovány společností Microsoft a jejich definice není možné upravovat uživateli. Pokud budete potřebovat upravitelné funkce, můžete v nástroji LA vytvořit [uložené funkce](../azure-monitor/logs/functions.md) .
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>Typy systémových funkcí, které nabízí Azure Backup
 
@@ -390,4 +390,4 @@ Níže najdete několik ukázkových dotazů, které vám pomůžou začít pou�
     ````
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o sestavách zálohování](https://docs.microsoft.com/azure/backup/configure-reports)
+[Další informace o sestavách zálohování](./configure-reports.md)

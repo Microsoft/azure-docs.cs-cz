@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598401"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563267"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře kódování
 
@@ -26,7 +26,7 @@ ms.locfileid: "104598401"
 
 Tento článek vám poskytne kódování na základě scénářů, které vám pomůže při migraci z Azure Media Services V2 na v3.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než se pustíte do změny svého pracovního postupu kódování, doporučujeme pochopit rozdíly v způsobu správy úložiště.  V AMS V3 se Azure Storage rozhraní API používá ke správě účtů úložiště přidružených k vašemu účtu Media Services.
 
@@ -143,7 +143,3 @@ Pro zákazníky, kteří používají procesor indexeru v1 v rozhraní v2 API, j
 ## <a name="samples"></a>ukázky
 
 [V ukázkách kódu můžete také porovnat kód v2 a V3](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Další kroky
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

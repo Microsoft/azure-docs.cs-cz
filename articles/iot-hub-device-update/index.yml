@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 76678a5695fdffd5325543a28398e867ab3ab6f5
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665748"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105560382"
 landingContent:
 - title: O aktualizaci zařízení
   linkLists:
@@ -24,6 +24,18 @@ landingContent:
     links:
     - text: Co je aktualizace zařízení pro IoT Hub?
       url: understand-device-update.md
+- title: Další informace
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření účtu aktualizace zařízení
+      url: create-device-update-account.md
+    - text: Importovat aktualizaci
+      url: import-update.md
+    - text: Vytvořit skupinu aktualizací
+      url: create-update-group.md
+    - text: Nasazení aktualizace
+      url: deploy-update.md
   - linkListType: concept
     links:
     - text: Jak aktualizace zařízení používá technologie Plug and Play
@@ -36,41 +48,19 @@ landingContent:
       url: import-concepts.md
     - text: Principy skupin aktualizací zařízení
       url: device-update-groups.md
-- title: Prozkoumejte s kurzy
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Aktualizace zařízení v malinu PI
-      url: device-update-raspberry-pi.md
-  - linkListType: tutorial
-    links:
-    - text: Aktualizace zařízení na simulátoru
-      url: device-update-simulator.md
-  - linkListType: tutorial
-    links:
-    - text: Aktualizace zařízení v agentovi balíčku Ubuntu Server 18,04 x64
-      url: device-update-ubuntu-agent.md
-- title: Informace o tom, jak aktualizovat zařízení
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Vytvoření účtu aktualizace zařízení
-      url: create-device-update-account.md
-  - linkListType: how-to-guide
-    links:
-    - text: Importovat aktualizaci
-      url: import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Vytvořit skupinu aktualizací
-      url: create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: Nasazení aktualizace
-      url: deploy-update.md
 - title: Příručka pro vývojáře
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Sestavování, spouštění a změny agenta aktualizace zařízení
       url: device-update-agent-provisioning.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Aktualizace zařízení na simulátoru
+      url: device-update-simulator.md
+    - text: Aktualizace zařízení v malinu PI
+      url: device-update-raspberry-pi.md
+    - text: Aktualizace zařízení v agentovi balíčku Ubuntu Server 18,04 x64
+      url: device-update-ubuntu-agent.md

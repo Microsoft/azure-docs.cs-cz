@@ -6,22 +6,22 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008558"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565635"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). Doporučujeme pro IoT Hub použít úroveň S1 (Standard) nebo vyšší. 
 * Zařízení IoT (nebo simulátor) zřízené pro aktualizaci zařízení v IoT Hub.
    * Pokud používáte reálné zařízení, budete potřebovat soubor s obrázkem aktualizace pro aktualizaci Image nebo [soubor manifestu apt](device-update-apt-manifest.md) pro aktualizaci balíčku.
-* [PowerShell 5](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) nebo novější.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) nebo novější.
 * Podporované prohlížeče:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -57,8 +57,8 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 
     | Parametr | Popis |
     | --------- | ----------- |
-    | deviceManufacturer | Výrobce zařízení: aktualizace je kompatibilní, například contoso. Musí se shodovat s [vlastností zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) _výrobce_ .
-    | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zprávy. Musí odpovídat  [vlastnosti zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)modelu.
+    | deviceManufacturer | Výrobce zařízení: aktualizace je kompatibilní, například contoso. Musí se shodovat s [vlastností zařízení](./device-update-plug-and-play.md#device-properties) _výrobce_ .
+    | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zprávy. Musí odpovídat  [vlastnosti zařízení](./device-update-plug-and-play.md#device-properties)modelu.
     | updateProvider | Entita, která vytváří nebo přímo zodpovídá za aktualizaci. Často se jedná o název společnosti.
     | aktualizovat | Identifikátor pro třídu aktualizací. Třída může být cokoliv, co zvolíte. Často se jedná o název zařízení nebo modelu.
     | updateVersion | Číslo verze, které rozlišuje tuto aktualizaci od ostatních, kteří mají stejného poskytovatele a název. Neodpovídá verzi jednotlivého softwarové komponenty v zařízení (ale může se rozhodnout, jestli si zvolíte).

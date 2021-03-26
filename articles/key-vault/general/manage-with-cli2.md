@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289900"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557203"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa Key Vault pomocí Azure CLI 
 
@@ -39,7 +39,7 @@ Azure Key Vault je dostupný ve většině oblastí. Další informace najdete n
 
 Přehled Azure Key Vault najdete v tématu [co je Azure Key Vault?](overview.md)). Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 
@@ -147,7 +147,7 @@ Pokud máte existující klíč v souboru. pem, můžete ho nahrát na Azure Key
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Nyní můžete odkazovat na klíč, který jste vytvořili nebo nahráli do Azure Key Vault, pomocí jeho identifikátoru URI. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** K získání aktuální verze vždycky použijte. K získání této konkrétní verze použijte protokol https://[název trezoru klíčů]. trezor. Azure. NET/Keys/[KeyName]/[klíč-Unique-ID]. Příklad: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Nyní můžete odkazovat na klíč, který jste vytvořili nebo nahráli do Azure Key Vault, pomocí jeho identifikátoru URI. `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey`K získání aktuální verze vždycky použijte. K získání této konkrétní verze použijte protokol https://[název trezoru klíčů]. trezor. Azure. NET/Keys/[KeyName]/[klíč-Unique-ID]. Například, `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
 
 Přidejte do trezoru tajný klíč, což je heslo s názvem SQLPassword, které má hodnotu "hVFkk965BuUv" pro trezory klíčů Azure. 
 

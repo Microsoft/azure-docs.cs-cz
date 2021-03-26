@@ -2,13 +2,13 @@
 title: Tlačítko pro nasazení do Azure
 description: Pomocí tlačítka nasaďte Azure Resource Manager šablony z úložiště GitHub.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: e25d49571347bb5ed27dbd52bb60c68cbeb4360d
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028739"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543770"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Použití tlačítka nasazení k nasazení šablon z úložiště GitHub
 
@@ -76,7 +76,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Máte úplnou adresu URL odkazu.
 
-Obvykle je tato šablona hostována ve veřejném úložišti. Používáte-li privátní úložiště, je nutné zahrnout token pro přístup k nezpracovanému obsahu šablony. Token vygenerovaný GitHubem je platný jenom pro krátkou dobu. Tento odkaz byste často museli aktualizovat.
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 Pokud používáte [Git se Azure Repos](/azure/devops/repos/git/) místo úložiště GitHub, můžete pořád použít tlačítko **nasadit do Azure** . Ujistěte se, že je vaše úložiště veřejné. K získání šablony použijte [operaci Items (položky](/rest/api/azure/devops/git/items/get) ). Vaše žádost by měla být v následujícím formátu:
 

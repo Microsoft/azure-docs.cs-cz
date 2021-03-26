@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c2fa1441f5b7d8af4d610c5341f60009e57173af
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739054"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560943"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="configuration-reference-list"></a>Seznam odkazů konfigurace
 
@@ -54,7 +54,7 @@ Postup pro tuto úlohu používá virtuální síť na základě hodnot v násle
 | Název veřejné IP adresy brány  | *gwpip* |
 
 > [!IMPORTANT]
-> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální Stack, a postupujte podle pokynů popsaných [tady](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální Stack, a postupujte podle pokynů popsaných [tady](../virtual-network/ipv6-overview.md).
 > 
 > 
 

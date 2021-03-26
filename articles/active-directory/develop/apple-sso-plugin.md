@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 24a538686e101d40daba008f30a72ffc5078047a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104674512"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559124"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)
 
@@ -52,14 +52,14 @@ Chcete-li použít modul plug-in Microsoft Enterprise SSO pro zařízení Apple:
 - Zařízení musí být *zaregistrované v MDM*, například prostřednictvím Microsoft Intune.
 - Aby bylo možné povolit modul plug-in jednotného přihlašování (SSO), musí být *do zařízení vložena* konfigurace. Apple vyžaduje toto omezení zabezpečení.
 
-požadavky na iOS:
-- v zařízení musí být nainstalován systém iOS 13,0 nebo novější.
-- V zařízení musí být nainstalovaná aplikace Microsoftu, která poskytuje modul plug-in Microsoft Enterprise SSO pro zařízení Apple. V rámci verze Public Preview je tato aplikace [Microsoft Authenticator aplikace](/intune/user-help/user-help-auth-app-overview.md).
+### <a name="ios-requirements"></a>požadavky na iOS:
+- v zařízení musí být nainstalovaná iOS 13,0 nebo vyšší.
+- V zařízení musí být nainstalovaná aplikace Microsoftu, která poskytuje modul plug-in Microsoft Enterprise SSO pro zařízení Apple. Pro Public Preview jsou tyto aplikace [Microsoft Authenticator aplikaci](/azure/active-directory/user-help/user-help-auth-app-overview).
 
 
-požadavky na macOS:
-- v zařízení musí být nainstalovaný macOS 10,15 nebo novější. 
-- V zařízení musí být nainstalovaná aplikace Microsoftu, která poskytuje modul plug-in Microsoft Enterprise SSO pro zařízení Apple. V rámci verze Public Preview je tato aplikace [portál společnosti Intune aplikace](/intune/user-help/enroll-your-device-in-intune-macos-cp.md).
+### <a name="macos-requirements"></a>požadavky na macOS:
+- v zařízení musí být nainstalovaný macOS 10,15 nebo vyšší. 
+- V zařízení musí být nainstalovaná aplikace Microsoftu, která poskytuje modul plug-in Microsoft Enterprise SSO pro zařízení Apple. Pro Public Preview tyto aplikace zahrnují [aplikaci Portál společnosti Intune](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp).
 
 ## <a name="enable-the-sso-plug-in"></a>Povolení modulu plug-in jednotného přihlašování
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437600"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567521"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge pro
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kub
 Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](../azure-arc/kubernetes/overview.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste na svém zařízení Azure Stack Edge pro a klientovi, kterého budete používat pro přístup k zařízení, dokončili následující požadavky:
 
@@ -74,7 +74,7 @@ Než povolíte Azure ARC v clusteru Kubernetes, budete muset povolit a zaregistr
     
     ![Registrace poskytovatelů prostředků Kubernetes 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli` . Další informace najdete v tématu [registrace dvou poskytovatelů pro Kubernetes s povoleným ARC Azure](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes) .
+Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli` . Další informace najdete v tématu [registrace dvou poskytovatelů pro Kubernetes s povoleným ARC Azure](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes) .
 
 ## <a name="create-service-principal-assign-role"></a>Vytvoření instančního objektu, přiřazení role
 
@@ -226,7 +226,7 @@ Pro odebrání správy ARC Azure použijte následující postup:
 
 
 > [!NOTE]
-> Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes. Musíte nastavit `--sync-garbage-collection`  v Arc OperatorParams, aby bylo možné odstranit prostředky při odstranění z úložiště Git. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters) .
+> Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes. Musíte nastavit `--sync-garbage-collection`  v Arc OperatorParams, aby bylo možné odstranit prostředky při odstranění z úložiště Git. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters) .
 
 ## <a name="next-steps"></a>Další kroky
 

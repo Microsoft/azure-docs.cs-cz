@@ -5,16 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: 2bb68c8c183e3de132bc7cf4504714a260ea2683
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c2e739a45c7915c957ca89e5b01b98afa945d03e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025114"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557186"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Přehled posouzení (migrace do Azure SQL)
 
-Tento článek poskytuje přehled posouzení pro migraci místních SQL Server instancí z prostředí VMware do databází Azure SQL nebo spravovaných instancí pomocí [nástroje Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool).
+Tento článek poskytuje přehled posouzení pro migraci místních SQL Server instancí z prostředí VMware do databází Azure SQL nebo spravovaných instancí pomocí [nástroje Azure Migrate: Discovery and Assessment Tool](./migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool).
 
 ## <a name="whats-an-assessment"></a>Co je posouzení?
 Posouzení pomocí nástroje pro zjišťování a hodnocení je časovým snímkem dat a měří připravenost a odhadne dopad migrace místních serverů do Azure.
@@ -80,7 +80,7 @@ Co je je součástí vlastností posouzení Azure SQL:
 **Percentilové využití** | Procento využití Určuje hodnotu percentilu pro vzorek výkonu, který se používá pro snižování.
 **Faktor komfortu** | Vyrovnávací paměť použitá během posouzení. IT účty pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například instance 10 jader s 20% využitím obvykle vede k vytvoření instance se dvěma jádry. Výsledkem je faktor komfortu 2,0, ale výsledkem je instance se čtyřmi jádry.
 **Nabídka/licenční program** | [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/) , do které jste zaregistrovaní. V současné době můžete vybírat jenom z průběžných plateb a průběžných plateb podle aktuálního využití pro vývoj/testování. Všimněte si, že můžete využít další zlevněnou kapacitu pomocí rezervované kapacity a Zvýhodněné hybridní využití Azure nad nabídkou průběžných plateb.
-**Úroveň služby** | Nejvhodnější možnost úrovně služby, která bude vyhovovat potřebám vaší firmy pro migraci do Azure SQL Database nebo spravované instance Azure SQL:<br/><br/>**Doporučuje** se, pokud chcete, Azure Migrate doporučit pro vaše servery nejlepší sadu služeb. To může být pro obecné účely nebo pro podnikání důležité. <br/><br/> **Pro obecné účely** Pokud chcete konfiguraci Azure SQL navrženou pro úlohy orientované na rozpočet. [Další informace](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **Pro důležité obchodní informace** Pokud chcete, aby konfigurace Azure SQL určená pro úlohy s nízkou latencí a vysokou odolností vůči chybám a rychlému převzetí služeb při selhání. [Další informace](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Úroveň služby** | Nejvhodnější možnost úrovně služby, která bude vyhovovat potřebám vaší firmy pro migraci do Azure SQL Database nebo spravované instance Azure SQL:<br/><br/>**Doporučuje** se, pokud chcete, Azure Migrate doporučit pro vaše servery nejlepší sadu služeb. To může být pro obecné účely nebo pro podnikání důležité. <br/><br/> **Pro obecné účely** Pokud chcete konfiguraci Azure SQL navrženou pro úlohy orientované na rozpočet. [Další informace](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> **Pro důležité obchodní informace** Pokud chcete, aby konfigurace Azure SQL určená pro úlohy s nízkou latencí a vysokou odolností vůči chybám a rychlému převzetí služeb při selhání. [Další informace](../azure-sql/database/service-tier-business-critical.md)
 **Měna** | Fakturační měna vašeho účtu.
 **Sleva (%)** | Všechny slevy specifické pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %.
 **Zvýhodněné hybridní využití Azure** | Určuje, zda již máte licenci SQL Server. <br/><br/> Pokud to uděláte a jsou pokryté s aktivními softwarovými zárukami SQL Server předplatných, můžete požádat o Zvýhodněné hybridní využití Azure při přenesení licencí do Azure.
@@ -124,7 +124,7 @@ Pokud ve vlastnostech posouzení SQL Azure vyberete cílový typ nasazení podle
 Pokud instance SQL není připravená na Azure SQL Database a Azure SQL Managed instance, doporučuje se typ nasazení označený jako *potenciálně připravený pro virtuální počítač Azure*.
 - Uživatel se doporučuje vytvořit posouzení v Azure Migrate s typem posouzení jako "virtuální počítač Azure" a zjistit, jestli Server, na kterém je instance spuštěná, je připravený k migraci na virtuální počítač Azure. Poznámky:
     - Posouzení virtuálních počítačů Azure ve Azure Migrate aktuálně nasazuje a posouvá a nebere v úvahu konkrétní metriky výkonu pro provoz SQL instancí a databází na virtuálním počítači Azure. 
-    - Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) pro SQL Server na virtuálních počítačích Azure.
+    - Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) pro SQL Server na virtuálních počítačích Azure.
 
 
 ## <a name="calculate-sizing"></a>Vypočítat velikost

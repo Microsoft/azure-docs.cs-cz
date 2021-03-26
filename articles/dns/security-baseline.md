@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b870a0325646b01ae3a72bdd28d3ae33cba45b09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 64a93cfea9d470ba45e59a56d4855e374f7fb704
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101733121"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559923"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Základní hodnoty zabezpečení Azure pro Azure DNS
 
@@ -34,7 +34,7 @@ Ingestování protokolů prostřednictvím Azure Monitor k agregaci dat zabezpe�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Odpovědnost:** Zákazník
 
@@ -52,9 +52,9 @@ Ingestování protokolů prostřednictvím Azure Monitor k agregaci dat zabezpe�
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-- [Změnit dobu uchovávání dat v Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Odpovědnost:** Zákazník
 
@@ -68,9 +68,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Začínáme s Log Analytics dotazy](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Začínáme s Log Analytics dotazy](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -86,7 +86,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel.
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -102,11 +102,11 @@ Případně můžete povolit a začlenit data do Azure Sentinel.
 
 V Azure DNS existuje role Přispěvatel zóny DNS a také úroveň zóny a úroveň sady záznamů Azure RBAC. Je také možné vytvořit vlastní role Azure pro zajištění jemnějšího řízení. Poznámka: prostředky privátní zóny DNS používají jiný název role Privátní DNS Přispěvatel zóny.
 
-- [Postup získání role adresáře v Azure Active Directory (Azure AD) pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Postup získání role adresáře v Azure Active Directory (Azure AD) pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Pochopení Azure RBAC v Azure DNS](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Pochopení Azure RBAC v Azure DNS](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Odpovědnost:** Zákazník
 
@@ -131,7 +131,7 @@ Kromě toho, pokud chcete sledovat vyhrazené účty pro správu, můžete použ
 
 Můžete také povolit přístup za běhu k účtům pro správu pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management a Azure Resource Manager.
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [Jak používat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -213,7 +213,7 @@ Můžete také povolit přístup za běhu k účtům pro správu pomocí služby
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí použijte taky kontroly identity a přístupu Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,7 +227,7 @@ Můžete také povolit přístup za běhu k účtům pro správu pomocí služby
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -271,7 +271,7 @@ Je také možné vytvořit vlastní role Azure pro zajištění jemnějšího ř
 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
-- [Pochopení Azure RBAC v Azure DNS](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Pochopení Azure RBAC v Azure DNS](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Pochopení Azure RBAC v Azure Privátní DNS](dns-protect-private-zones-recordsets.md)
 
@@ -283,7 +283,7 @@ Je také možné vytvořit vlastní role Azure pro zajištění jemnějšího ř
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy se změny projeví Azure DNS, i na jiné důležité nebo související prostředky.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -301,7 +301,7 @@ I když se v Azure Resource Graph Exploreru můžou zjistit klasické prostředk
 
 - [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -368,7 +368,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -392,7 +392,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure DNS s Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace trezorů Recovery Services.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -422,9 +422,9 @@ Kromě toho Azure Resource Manager podporuje jiný typ řízení zabezpečení, 
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -566,5 +566,5 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

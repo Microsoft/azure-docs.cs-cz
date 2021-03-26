@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645463"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543954"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Plánování konfigurace Azure Active Directory mých aplikací
 
@@ -74,31 +74,19 @@ Správci můžou nakonfigurovat:
 
 ## <a name="plan-consent-configuration"></a>Konfigurace souhlasu s plánem
 
-Existují dva typy souhlasu: souhlas uživatele a souhlas pro aplikace, které přistupují k datům.
-
-![Snímek obrazovky s konfigurací souhlasu](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>Souhlas uživatele pro aplikace 
 
-Uživatelé nebo správci musí souhlasit s podmínkami použití a zásadami ochrany osobních údajů aplikace. Je nutné rozhodnout, zda mohou uživatelé udělit souhlas s aplikacemi pouze správci. Doporučujeme, abyste **v případě, že vaše obchodní pravidla povolili, používali souhlas správce, abyste zachovali kontrolu nad aplikacemi ve vašem tenantovi**.
+Předtím, než se uživatel může přihlásit k aplikaci a aplikace bude mít přístup k datům vaší organizace, musí oprávnění aplikace udělit uživatel nebo správce. Můžete nakonfigurovat, jestli je povolený souhlas uživatele, a za jakých podmínek. **Microsoft doporučuje, abyste uživatelům povolili jenom souhlas s aplikacemi od ověřených vydavatelů.**
 
-Pokud chcete použít souhlas správce, musíte být globální správce organizace a aplikace musí být buď:
-
-* Registrováno ve vaší organizaci.
-
-* Registrováno v jiné organizaci služby Azure AD a dříve byla odeslána alespoň jedním uživatelem.
-
-Pokud chcete uživatelům udělit souhlas, musíte se rozhodnout, jestli mají udělit souhlas s jakoukoli aplikací, nebo jenom za určitých okolností.
-
-Další informace najdete v tématu [Konfigurace způsobu, jakým koncoví uživatelé souhlasí s aplikací v Azure Active Directory.](../manage-apps/configure-user-consent.md)
+Další informace najdete v tématu [Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi](../manage-apps/configure-user-consent.md) .
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Souhlas vlastníka skupiny pro aplikace, které přistupují k datům
 
-Zjistěte, jestli vlastníci skupin zabezpečení služby Azure AD nebo skupin M365 můžou udělit souhlas s aplikacemi pro přístup k datům pro skupiny, které vlastní. Můžete zakázat, povolit všechny vlastníky skupiny nebo povolit pouze podmnožinu vlastníků skupin.
+Vlastníci skupiny a týmu můžou autorizovat aplikace, jako jsou například aplikace publikované dodavateli třetích stran, pro přístup k datům vaší organizace, které jsou přidružené ke skupině. Další informace najdete v článku o [souhlasu týkajícím se konkrétního prostředku v Microsoft Teams](https://docs.microsoft.com/microsoftteams/resource-specific-consent) . 
+
+Můžete nakonfigurovat, jestli chcete tuto funkci povolit nebo zakázat.
 
 Další informace najdete v tématu [Konfigurace oprávnění k souhlasu skupin](../manage-apps/configure-user-consent-groups.md).
-
-Pak nakonfigurujte [nastavení souhlasu uživatele a vlastníka skupiny](https://portal.azure.com/) v Azure Portal.
 
 ### <a name="plan-communications"></a>Plán komunikace
 

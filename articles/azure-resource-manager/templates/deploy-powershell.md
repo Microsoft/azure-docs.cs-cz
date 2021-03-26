@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí PowerShellu a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: e1d2197064b94d428855bbb36aadbb5eb88d4032
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.date: 03/25/2021
+ms.openlocfilehash: 11a293ca58fc6acf3bd99bb0169d817dae11fb94
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950854"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543801"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
 
@@ -16,7 +16,7 @@ Tento článek vysvětluje, jak použít Azure PowerShell se šablonami Azure Re
 
 K nasazení souborů bicep potřebujete [Azure PowerShell verze 5.6.0 nebo novější](/powershell/azure/install-az-ps).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte [ukázkovou šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru použitý v tomto článku je _C:\MyTemplates\azuredeploy.js_.
 
@@ -118,6 +118,8 @@ Dokončení nasazení může trvat několik minut.
 > V současné době Azure PowerShell nepodporuje nasazování vzdálených souborů bicep. Pomocí [BICEP CLI](./bicep-install.md#development-environment) zkompilujte soubor bicep do šablony JSON a potom soubor JSON načtěte do vzdáleného umístění.
 
 Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 Pokud provádíte nasazení do skupiny prostředků, která neexistuje, vytvořte skupinu prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Název nemůže končit tečkou.
 

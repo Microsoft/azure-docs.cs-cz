@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e893216eb8e2d7e44e3f272f6b965b84c6253f7f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7a9ac98a9566986767016720fda245712197b27f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870326"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566536"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Přidání podpory protokolu IPv6 pro privátní partnerské vztahy pomocí Azure PowerShell (Preview)
 
 Tento článek popisuje, jak přidat podporu protokolu IPv6 pro připojení prostřednictvím ExpressRoute k prostředkům v Azure pomocí Azure PowerShell.
 
 > [!Note]
-> Tato funkce je v tuto chvíli dostupná pro verzi Preview v [oblastech Azure s zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones). Okruh ExpressRoute je proto možné vytvořit pomocí libovolného umístění partnerského vztahu, ale nasazení založená na protokolu IPv6, ke kterému se připojuje, musí být v oblasti s Zóny dostupnosti.
+> Tato funkce je v tuto chvíli dostupná pro verzi Preview v [oblastech Azure s zóny dostupnosti](../availability-zones/az-region.md#azure-regions-with-availability-zones). Okruh ExpressRoute je proto možné vytvořit pomocí libovolného umístění partnerského vztahu, ale nasazení založená na protokolu IPv6, ke kterému se připojuje, musí být v oblasti s Zóny dostupnosti.
 
 ## <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 
@@ -46,7 +46,7 @@ Váš požadavek bude potom tým ExpressRoute schválit do 2-3 pracovních dnů.
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>Přidání privátního partnerského vztahu IPv6 do okruhu ExpressRoute
 
-1. [Vytvořte okruh ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-arm) nebo použijte existující okruh. Načtěte okruh spuštěním příkazu **Get-AzExpressRouteCircuit** :
+1. [Vytvořte okruh ExpressRoute](./expressroute-howto-circuit-arm.md) nebo použijte existující okruh. Načtěte okruh spuštěním příkazu **Get-AzExpressRouteCircuit** :
 
     ```azurepowershell-interactive
     $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -150,7 +150,7 @@ Použijte následující postup, pokud máte existující prostředí prostředk
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 
-4. Pokud máte existující zónu s redundantní bránou, spusťte následující příkaz, kterým povolíte připojení IPv6. V opačném případě [vytvořte bránu virtuální sítě](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager) pomocí redundantní SKU zóny (ErGw1AZ, ErGw2AZ, ErGw3AZ).
+4. Pokud máte existující zónu s redundantní bránou, spusťte následující příkaz, kterým povolíte připojení IPv6. V opačném případě [vytvořte bránu virtuální sítě](./expressroute-howto-add-gateway-resource-manager.md) pomocí redundantní SKU zóny (ErGw1AZ, ErGw2AZ, ErGw3AZ).
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -161,13 +161,13 @@ Použijte následující postup, pokud máte existující prostředí prostředk
 
 Postupujte podle následujících kroků, pokud se chcete připojit k nové sadě prostředků Azure v oblasti s Zóny dostupnosti pomocí privátního partnerského vztahu IPv6.
 
-1. Vytvořte virtuální síť se dvěma zásobníky s adresním prostorem IPv4 i IPv6. Další informace najdete v tématu [vytvoření virtuální sítě](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
+1. Vytvořte virtuální síť se dvěma zásobníky s adresním prostorem IPv4 i IPv6. Další informace najdete v tématu [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md#create-a-virtual-network).
 
-2. [Vytvořte podsíť brány Dual-Stack](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
+2. [Vytvořte podsíť brány Dual-Stack](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway).
 
-3. [Vytvořte bránu virtuální sítě](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) pomocí zóny – redundantní SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud máte v úmyslu používat FastPath, použijte ErGw3AZ (Všimněte si, že je k dispozici pouze pro okruhy s přímým přístupem ExpressRoute).
+3. [Vytvořte bránu virtuální sítě](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway) pomocí zóny – redundantní SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud máte v úmyslu používat FastPath, použijte ErGw3AZ (Všimněte si, že je k dispozici pouze pro okruhy s přímým přístupem ExpressRoute).
 
-4. [Připojte svoji virtuální síť k okruhu ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm).
+4. [Připojte svoji virtuální síť k okruhu ExpressRoute](./expressroute-howto-linkvnet-arm.md).
 
 ## <a name="limitations"></a>Omezení
 I když je podpora protokolu IPv6 dostupná pro připojení k nasazením v oblastech s Zóny dostupnosti, nepodporuje následující případy použití:

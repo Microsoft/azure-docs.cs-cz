@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654060"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543580"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -61,9 +61,9 @@ Pokud chcete nakonfigurovat ověřování Azure AD, musíte na vysoké úrovni p
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény služby Active Directory (AD)
 
 Ověřování domény AD umožňuje uživatelům připojit se k Azure pomocí svých přihlašovacích údajů domény organizace. Vyžaduje server RADIUS, který se integruje se serverem AD. Organizace můžou využít i stávající nasazení RADIUS.
-  
-Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. Při ověřování funguje VPN Gateway Azure jako předávací a přesměruje ověřovací zprávy mezi serverem RADIUS a připojeným zařízením. Proto je důležité dostupnost brány pro server RADIUS. Pokud se server RADIUS nachází v místním prostředí, vyžaduje se pro dostupnost připojení S2S VPN z Azure do místní lokality.  
-  
+
+Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. Při ověřování funguje VPN Gateway Azure jako předávací a přesměruje ověřovací zprávy mezi serverem RADIUS a připojeným zařízením. Proto je důležité dostupnost brány pro server RADIUS. Pokud se server RADIUS nachází v místním prostředí, vyžaduje se pro dostupnost připojení S2S VPN z Azure do místní lokality.
+
 Server RADIUS se taky může integrovat se službou AD Certificate Services. To vám umožní používat server RADIUS a nasazení podnikového certifikátu pro ověřování certifikátů P2S jako alternativu k ověřování certifikátů Azure. Výhodou je, že nemusíte do Azure nahrávat kořenové certifikáty a odvolané certifikáty.
 
 Server RADIUS se taky může integrovat s jinými externími systémy identit. Tím se otevře dostatek možností ověřování pro P2S VPN, včetně Multi-Factor Options.

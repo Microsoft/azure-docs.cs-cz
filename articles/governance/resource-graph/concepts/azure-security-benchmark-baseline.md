@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738969"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557713"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Základní plán zabezpečení Azure pro Azure Resource Graph
 
@@ -30,7 +30,7 @@ Pokud chcete zjistit, jak se graf prostředků Azure kompletně mapuje na srovn�
 
 **Doprovodné** materiály: Azure Resource Graph poskytuje přístup k typům a vlastnostem prostředků na základě řízení přístupu na základě role Azure (RBAC). Pravidelně provádějte audit a zkontrolujte přístup k objektům zabezpečení (uživatelům, skupinám a účtům služeb), abyste se ujistili, že dotazy vrátí výsledky pro příslušné prostředky.
 
-- [Oprávnění v Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Oprávnění v Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
 - [Jak používat recenze Azure identity Access](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Pokud chcete zjistit, jak se graf prostředků Azure kompletně mapuje na srovn�
 
 **Pokyny**: použití služby Azure RBAC k řízení přístupu k datům a prostředkům. Pokud chcete použít Azure Resource Graph, musíte mít také odpovídající přístup k prostředkům, které chcete dotazovat. Tento přístup by měl být určený jen pro čtení a měl by být povolený jenom pro požadované pracovníky.
 
-- [Oprávnění v Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Oprávnění v Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
 - [Jak nakonfigurovat službu Azure RBAC](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Pokud chcete zjistit, jak se graf prostředků Azure kompletně mapuje na srovn�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../../../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../../../security/benchmarks/security-baselines-overview.md)

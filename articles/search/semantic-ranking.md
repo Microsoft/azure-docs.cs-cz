@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: c3a0a8bd5805757b92e3f5b046335c8883b4ba72
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: bf311eb2b2d0ff7a9c17380d2e384bc05c6f05f3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888919"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562031"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Sémantické hodnocení v Azure Kognitivní hledání
 
@@ -24,32 +24,34 @@ Sémantické hodnocení je rozšíření kanálu provádění dotazů, které vy
 
 Sémantické hodnocení je náročné na prostředky i čas. Aby bylo možné dokončit zpracování v rámci očekávané latence operace dotazu, jsou vstupy sémantického klasifikátoru konsolidovány a snižovány tak, aby bylo možné dokončit základní souhrn a kroky přeřazení co nejrychleji.
 
-## <a name="preparation-for-semantic-ranking"></a>Příprava pro sémantické hodnocení
+## <a name="pre-processing"></a>Předběžné zpracování
 
-Před vyhodnocením relevance musí být obsah zmenšen na řadu vstupů, které je možné efektivně zvládnout sémantickým hodnocením. Snížení obsahu zahrnuje následující posloupnost kroků.
+Před vyhodnocením relevance musí být obsah zmenšen na spravovatelný počet vstupů, které je možné efektivně zvládnout sémantickým hodnocením.
 
-1. Snížení obsahu začíná pomocí sady počátečních výsledků, kterou vrátí výchozí [algoritmus řazení podobnosti](index-ranking-similarity.md) používaný pro hledání klíčových slov. Výsledky hledání můžou zahrnovat až 1 000 shod, ale sémantické hodnocení zpracuje jenom prvních 50. 
+1. Za prvé začíná snížení obsahu počáteční sadou výsledků vrácenou výchozím [algoritmem hodnocení podobnosti](index-ranking-similarity.md) použitým pro hledání klíčových slov. U každého konkrétního dotazu může být výsledkem několik dokumentů, a to až do maximálního limitu 1 000. Vzhledem k tomu, že zpracování velkého počtu shod by mohlo trvat příliš dlouho, bude pouze prvních 50 pokrok až po sémantické hodnocení.
 
-   V závislosti na tom, kolik shod bylo nalezeno, mohou být počáteční výsledky mnohem menší než 50. Bez ohledu na počet dokumentů je počáteční sada výsledků dokument corpus pro sémantické hodnocení.
+   Bez ohledu na počet dokumentů, ať už jedna nebo 50, vytvoří počáteční sada výsledků první iteraci dokumentu corpus pro sémantické hodnocení.
 
-1. V rámci dokumentu corpus je obsah každého pole v "searchFields" extrahován a sloučen do dlouhého řetězce.
+1. V dalším corpus se obsah každého pole v "searchFields" extrahuje a spojí do dlouhého řetězce.
 
-1. Všechny řetězce, které jsou příliš dlouhé, jsou oříznuty, aby celková délka splňovala vstupní požadavky kroku Shrnutí. Toto oříznutí cvičení je důvod, proč je důležité umístit Stručná pole jako první do "searchFields", aby se zajistilo jejich zahrnutí do řetězce. Pokud máte velmi velké dokumenty s textovými poli, vše po překročení maximálního limitu se ignoruje.
+1. Po konsolidaci řetězců se všechny řetězce, které jsou příliš dlouhé, oříznou, aby celková délka splňovala vstupní požadavky kroku Shrnutí.
+
+   Toto oříznutí cvičení je důvod, proč je důležité umístit Stručná pole jako první do "searchFields", aby se zajistilo jejich zahrnutí do řetězce. Pokud máte velmi velké dokumenty s textovými poli, vše po překročení maximálního limitu se ignoruje.
 
 Každý dokument je nyní reprezentován jedním dlouhým řetězcem.
 
 > [!NOTE]
-> Vstupy parametrů pro modely jsou tokeny, nikoli znaky nebo slova. Tokenizace je určena v rámci přiřazení analyzátoru v polích, která lze prohledávat. Pro přehledy o tom, jak jsou řetězce v tokenech, můžete zkontrolovat výstup tokenu analyzátoru pomocí [REST API analyzátoru testů](/rest/api/searchservice/test-analyzer).
+> Řetězec se skládá z tokenů, nikoli znaků nebo slov. Tokenizace je určena v rámci přiřazení analyzátoru v polích, která lze prohledávat. Pokud používáte specializovaný analyzátor, jako je například nGram nebo EdgeNGram, můžete chtít toto pole vyloučit z searchFields. Pro přehledy o tom, jak jsou řetězce v tokenech, můžete zkontrolovat výstup tokenu analyzátoru pomocí [REST API analyzátoru testů](/rest/api/searchservice/test-analyzer).
 
-## <a name="summarization"></a>Souhrn
+## <a name="extraction"></a>Extrakce
 
-Po zmenšení řetězce je teď možné předat omezené vstupy prostřednictvím strojového porozumění a modelů reprezentace jazyka, abyste zjistili, které věty a fráze nejlépe shrnují dokument v souvislosti s dotazem.
+Po zmenšení řetězce je teď možné předat omezené vstupy prostřednictvím strojového porozumění a modelů reprezentace jazyka, abyste zjistili, které věty a fráze nejlépe shrnují dokument v souvislosti s dotazem. Tato fáze extrahuje obsah z řetězce, který se přesune vpřed na sémantický rozsah.
 
-Vstupy do sumarizace jsou dlouhé řetězce, které se získávají pro každý dokument ve fázi přípravy. Z daného vstupu model Shrnutí nalezne pasáž, která nejlépe představuje odpovídající dokument. Tato pasáž také představuje [sémantický titulek](semantic-how-to-query-request.md) pro dokument. Každý titulek je k dispozici ve formě prostého textu s nejzajímavější a je méně než 200 slov na jeden dokument.
+Vstupy do sumarizace jsou dlouhé řetězce získané pro každý dokument ve fázi přípravy. Z každého řetězce model Shrnutí nalezne pasáž, která je nejvíce reprezentativní. Tato pasáž také představuje [sémantický titulek](semantic-how-to-query-request.md) pro dokument. Každý titulek je k dispozici ve verzi s prostým textem a zvýrazněnou verzí a je často méně než 200 slov na jeden dokument.
 
 Pokud jste zadali parametr odpovědi, bude vrácena i [sémantická odpověď](semantic-answers.md) , pokud byl dotaz považován za otázku a v případě, že se pasáž nachází v dlouhém řetězci, který pravděpodobně poskytne odpověď na otázku.
 
-## <a name="scoring-and-ranking"></a>Bodování a hodnocení
+## <a name="semantic-ranking"></a>Sémantické hodnocení
 
 1. Popisky jsou vyhodnocovány pro koncepční a sémantickou relevanci relativně k poskytnutému dotazu.
 

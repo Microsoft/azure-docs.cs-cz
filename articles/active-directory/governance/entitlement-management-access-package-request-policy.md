@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426956"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560484"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu pro balíček přístupu v Azure AD – Správa nároků
 
@@ -85,7 +85,7 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresá
 
 1. Vyberte jednu z následujících možností:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Konkrétní uživatelé a skupiny** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat jenom pro uživatele a skupiny v adresáři, který jste zadali. |
     | **Všichni členové (kromě hostů)** | Tuto možnost vyberte, pokud chcete, aby všichni členové členských uživatelů v adresáři mohli požádat o tento balíček přístupu. Tato možnost neobsahuje žádné uživatele typu Host, které jste mohli pozvat do svého adresáře. |
@@ -122,7 +122,7 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
 
 1. Vyberte jednu z následujících možností:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Přístup k tomuto balíčku můžou vyžádat všichni uživatelé z vybraných organizací. |
     | **Všechny nakonfigurované připojené organizace** | Tuto možnost vyberte, pokud všichni uživatelé ze všech nakonfigurovaných připojených organizací můžou tento balíček přístupu požádat. Pouze uživatelé z konfigurovaných organizací můžou žádat o přístup k balíčkům, které se zobrazují uživatelům ze všech nakonfigurovaných organizací. |

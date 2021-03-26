@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018274"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557696"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v Azure API pro FHIR
 
@@ -42,7 +42,7 @@ Metriky můžete zobrazit v části monitorování | Metriky z portálu. Metriky
     2. **Streamování do centra událostí** pro ingestování prostřednictvím služby třetí strany nebo vlastního analytického řešení. Než budete moct nakonfigurovat tento krok, budete muset vytvořit obor názvů centra událostí a zásady centra událostí.
     3. **Streamování do** pracovního prostoru Log Analytics v Azure monitor. Než budete moct vybrat tuto možnost, budete muset vytvořit pracovní prostor analýzy protokolů.
 
-6. Vyberte **AuditLogs** a/nebo **AllMetrics**. Metriky zahrnují název služby, dostupnost, velikost dat, celkovou latenci, celkový počet požadavků, chyby a časové razítko. Další podrobnosti najdete v článku [podporované metriky](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices). 
+6. Vyberte **AuditLogs** a/nebo **AllMetrics**. Metriky zahrnují název služby, dostupnost, velikost dat, celkovou latenci, celkový počet požadavků, chyby a časové razítko. Další podrobnosti najdete v článku [podporované metriky](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices). 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Nastavení diagnostiky Azure FHIR. Vyberte AuditLogs a/nebo AllMetrics." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

@@ -3,12 +3,12 @@ title: Sestavy Azure Backup e-mailu
 description: Vytváření automatizovaných úloh pro příjem pravidelných sestav prostřednictvím e-mailu
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510472"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561334"
 ---
 # <a name="email-azure-backup-reports"></a>Sestavy Azure Backup e-mailu
 
@@ -30,7 +30,7 @@ Chcete-li konfigurovat e-mailové úkoly prostřednictvím sestav zálohování,
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>Autorizovat připojení k protokolům Azure Monitor a Office 365
 
-Aplikace logiky používá konektor [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/) pro dotazování na pracovní prostory La a používá konektor [Office 365 Outlook](https://docs.microsoft.com/connectors/office365connector/) pro posílání e-mailů. Pro tyto dva konektory bude nutné provést jednorázovou autorizaci. 
+Aplikace logiky používá konektor [azuremonitorlogs](/connectors/azuremonitorlogs/) pro dotazování na pracovní prostory La a používá konektor [Office 365 Outlook](/connectors/office365connector/) pro posílání e-mailů. Pro tyto dva konektory bude nutné provést jednorázovou autorizaci. 
  
 Chcete-li provést autorizaci, postupujte podle následujících kroků:
 
@@ -79,4 +79,4 @@ Pokud nepřijímáte e-maily podle očekávání i po úspěšném nasazení apl
 Pokud potíže přetrvávají, obraťte se na podporu Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o sestavách zálohování](https://docs.microsoft.com/azure/backup/configure-reports)
+[Další informace o sestavách zálohování](./configure-reports.md)

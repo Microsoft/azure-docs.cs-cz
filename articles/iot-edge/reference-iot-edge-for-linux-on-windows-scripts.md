@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 5286362369e0c4881cdf0c56bc13d1d340056be1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889242"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562507"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Skripty PowerShellu pro IoT Edge pro Linux ve Windows
 
@@ -150,6 +150,6 @@ Příkaz **SSH-EflowVm** se používá k SSH do virtuálního počítače. Jedin
 
 Naučte se používat tyto příkazy v následujícím článku:
 
-* [Nainstalovat Azure IoT Edge pro Linux ve Windows](how-to-install-iot-edge-windows.md)
+* [Nainstalovat Azure IoT Edge pro Linux ve Windows](./how-to-install-iot-edge-windows-on-windows.md)
 
 * Všechny příkazy dostupné prostřednictvím PowerShellu najdete v [referenčních informacích ke skriptům IoT Edge pro Linux v prostředí Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) .

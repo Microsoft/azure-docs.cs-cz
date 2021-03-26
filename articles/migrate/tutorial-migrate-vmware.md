@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604538"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567114"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -91,7 +91,7 @@ Replikaci povolte následujícím způsobem:
     - Dvojité šifrování pomocí klíčů spravovaných platformou a zákaznických klíčů
 
    > [!NOTE]
-   > Pokud chcete replikovat virtuální počítače s CMK, musíte v cílové skupině prostředků [vytvořit sadu Disk Encryption](https://go.microsoft.com/fwlink/?linkid=2151800) . Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE.
+   > Pokud chcete replikovat virtuální počítače s CMK, musíte v cílové skupině prostředků [vytvořit sadu Disk Encryption](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) . Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE.
   
 10. V části **Zvýhodněné hybridní využití Azure**:
 
@@ -189,7 +189,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="complete-the-migration"></a>Dokončete migraci
 
 1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit replikaci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
-2. Během migrace automaticky nainstalujeme agenta virtuálního počítače pro virtuální počítače s Windows a Linux. Zkontrolujte [požadavky](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) agenta pro Linux virtuálních počítačů Azure na migrovaných počítačích, pokud má počítač Linux OS, aby se zajistilo správné dokončení instalace agenta virtuálního počítače se systémem Linux. 
+2. Během migrace automaticky nainstalujeme agenta virtuálního počítače pro virtuální počítače s Windows a Linux. Zkontrolujte [požadavky](../virtual-machines/extensions/agent-linux.md#requirements) agenta pro Linux virtuálních počítačů Azure na migrovaných počítačích, pokud má počítač Linux OS, aby se zajistilo správné dokončení instalace agenta virtuálního počítače se systémem Linux. 
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 5. Vyjmutí provozu do migrované instance virtuálního počítače Azure

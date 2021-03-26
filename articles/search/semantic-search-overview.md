@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: b5b33007f71cfc2a29005ce84f1fedba90dd1bf1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888902"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561963"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Sémantické vyhledávání v Azure Kognitivní hledání
 
@@ -44,7 +44,7 @@ Sémantické vyhledávání zlepšuje přesnost a odvolání přidáním násled
 
 ### <a name="order-of-operations"></a>Pořadí operací
 
-Komponenty sémantického hledání rozšíří existující kanál spuštění dotazu v obou směrech. Pokud povolíte opravu pravopisu, [Kontrola pravopisu](speller-how-to-add.md) na začátku opraví překlepy, před tím, než se vyhledají výrazy pro vyhledávání na vyhledávacím stroji.
+Komponenty sémantického hledání rozšíří existující kanál spuštění dotazu v obou směrech. Pokud povolíte opravu pravopisu, [Kontrola pravopisu](speller-how-to-add.md) před dosažením vyhledávacího modulu opraví překlepy při vynechání dotazu.
 
 :::image type="content" source="media/semantic-search-overview/semantic-workflow.png" alt-text="Sémantické komponenty v provádění dotazů" border="true":::
 

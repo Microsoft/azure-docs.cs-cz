@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576777"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557560"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -68,7 +68,7 @@ Tabulka shrnuje požadavky na migraci bez agenta pro virtuální počítače VMw
 **IPv6** | Nepodporováno
 **Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
 **Současná replikace** | Až 300 souběžné replikace virtuálních počítačů na vCenter Server s 1 zařízením Až 500 souběžné replikace virtuálních počítačů na vCenter Server při nasazení dalšího [zařízení se škálováním](./how-to-scale-out-for-migration.md) na více instancí. 
-**Automatická instalace agenta virtuálního počítače Azure (Agent systému Windows a Linux)** | Podporováno pro systémy Windows Server 2008 R2 a vyšší. <br/> Podporováno pro počítače RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04. Projděte si seznam [požadovaných balíčků](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)pro tyto operační systémy Linux.
+**Automatická instalace agenta virtuálního počítače Azure (Agent systému Windows a Linux)** | Podporováno pro systémy Windows Server 2008 R2 a vyšší. <br/> Podporováno pro počítače RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04. Projděte si seznam [požadovaných balíčků](../virtual-machines/extensions/agent-linux.md#requirements)pro tyto operační systémy Linux.
 
 > [!TIP]
 >  Pomocí Azure Portal budete moct pro konfiguraci replikace vybrat až 10 virtuálních počítačů najednou. Pokud chcete replikovat víc virtuálních počítačů, můžete portál použít a přidat virtuální počítače, které se mají replikovat v několika dávkách 10 virtuálních počítačů, nebo pro konfiguraci replikace použít rozhraní Azure Migrate PowerShell. Ujistěte se, že nekonfigurujete souběžnou replikaci na více než maximálním podporovaném počtu virtuálních počítačů pro souběžné replikace.

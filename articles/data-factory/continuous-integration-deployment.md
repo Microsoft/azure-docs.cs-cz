@@ -7,12 +7,12 @@ ms.author: weetok
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: aa2c5801e61fb73219934c5d38e894520c41ab26
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 24aa3bc455bf716c074526d707594bd3b4170619
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784029"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564173"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 
@@ -335,7 +335,7 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 * I když je pro datové sady k dispozici přizpůsobení specifické pro typ, můžete zadat konfiguraci bez explicitní \* Konfigurace na úrovni. V předchozím příkladu jsou parametrizované všechny vlastnosti datové sady v části `typeProperties` .
 
 > [!NOTE]
-> **Výstrahy a matice Azure,**  Pokud jsou nakonfigurované pro kanál, se v současné době nepodporují jako parametry pro nasazení ARM. Pokud chcete znovu použít výstrahy a matrice v novém prostředí, Sledujte [Data Factory monitorování, výstrahy a matrice.](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)
+> **Výstrahy a matice Azure,**  Pokud jsou nakonfigurované pro kanál, se v současné době nepodporují jako parametry pro nasazení ARM. Pokud chcete znovu použít výstrahy a matrice v novém prostředí, Sledujte [Data Factory monitorování, výstrahy a matrice.](./monitor-using-azure-monitor.md#data-factory-metrics)
 > 
 
 ### <a name="default-parameterization-template"></a>Výchozí šablona Parametrizace

@@ -5,21 +5,21 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 68244e1669bbdce8215df467564ea3aca56b530c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f09bc5b753da1d79b7701e95e4c2d8bc62647c9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098124"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567623"
 ---
-# <a name="the-azure-percept-dk-update-experience"></a>Prostředí aktualizace Azure Percept DK
+# <a name="azure-percept-dk-update-experience-overview"></a>Přehled prostředí Azure Percept DK Update
 
-Pomocí Azure Percept DK máte dvě možnosti, jak aktualizovat svůj operační systém a firmware sady dev SDK: přes Air (OTA) nebo přes USB. Aktualizace OTA je snadný způsob, jak udržovat zařízení v aktuálním stavu, zatímco aktualizace USB je dobrá volbou pro případ, že OTA není možná nebo když chcete zařízení obnovit z továrního nastavení. Abychom vám zajistili, že budete mít k dispozici jakoukoli metodu aktualizace, je pro vás nejvhodnější, máme tu dohromady několik průvodců, které vám pomůžou. 
+S Azure Percept DK můžete aktualizovat svůj operační systém a firmware pro vývojovou sadu, a to přes Air (OTA) nebo přes USB. Aktualizace OTA je snadný způsob, jak zařízení udržovat v aktuálním stavu prostřednictvím [aktualizace zařízení služby IoT Hub](https://docs.microsoft.com/azure/iot-hub-device-update/) . K dispozici jsou aktualizace USB pro uživatele, kteří nemůžou používat aktualizace OTA nebo když je potřeba obnovení továrního nastavení zařízení. Podívejte se na následující příručky, které vám pomohou začít s aktualizacemi zařízení v Azure Percept DK:
 
-- [Jak nastavit Azure IoT Hub pro nasazení přes aktualizace Air do Azure Percept DK](./how-to-set-up-over-the-air-updates.md)
-- [Jak aktualizovat Azure Percept DK přes Air](./how-to-update-over-the-air.md)
+- [Nastavení služby Azure IoT Hub pro nasazení OTA (Over-The-Air) aktualizací do Azure Percept DK](./how-to-set-up-over-the-air-updates.md)
+- [Aktualizace Azure Percept DK přes Air (OTA)](./how-to-update-over-the-air.md)
 - [Aktualizace Azure Percept DK přes USB](./how-to-update-via-usb.md)
 
 ## <a name="next-steps"></a>Další kroky

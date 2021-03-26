@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0b68b78499aa3bf0d84d8bd0fa5ab55d1f969113
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679281"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561164"
 ---
 # <a name="device-update-apt-manifest"></a>APT manifest aktualizace zařízení
 
@@ -103,7 +103,7 @@ Pokud je verze vynechána, nainstaluje se nejnovější dostupná verze zadanéh
 > Správce balíčků APT ignoruje požadavky na správu verzí dané balíčkem při automatickém překladu závislých balíčků k instalaci. Pokud nejsou k dispozici explicitní verze závislých balíčků, budou používat nejnovější, i když samotný balíček může určit striktní požadavek (=) v dané verzi. Toto automatické řešení může vést k chybám souvisejícím s nesplnění závislostí. [Další informace](https://unix.stackexchange.com/questions/350192/apt-get-not-properly-resolving-a-dependency-on-a-fixed-version-in-a-debian-ubunt)
 
 Pokud aktualizujete určitou verzi procesu démona zabezpečení Azure IoT Edge, měli byste `iotedge` do MANIFESTU apt zahrnout požadovanou verzi balíčku a jeho závislý `libiothsm-std` balíček.
-[Další informace](https://docs.microsoft.com/azure/iot-edge/how-to-update-iot-edge#update-the-security-daemon)
+[Další informace](../iot-edge/how-to-update-iot-edge.md#update-the-security-daemon)
 
 > [!NOTE]
 > Manifest apt se dá použít k aktualizaci agenta aktualizace zařízení a jeho závislostí. Seznamte se s názvem agenta aktualizace zařízení a požadovanou verzí v manifestu apt, stejně jako u jakéhokoli jiného balíčku. Tento manifest apt se pak dá naimportovat a nasadit prostřednictvím aktualizace zařízení pro IoT Hub kanál. 
@@ -202,4 +202,3 @@ Tato aktualizace zahrnuje balíček foo a také obsahuje pruhový balíček.
 
 > [!div class="nextstepaction"]
 > [Importovat novou aktualizaci](import-update.md)
-

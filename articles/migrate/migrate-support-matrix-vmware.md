@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 520aedd9dbb618788107bc83c5d72ad237acea22
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 4d51fc13e3587c21a7340b35db10d3cf36ab74b5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870734"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557543"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -94,8 +94,8 @@ Kromě zjišťování serverů Azure Migrate: zjišťování a hodnocení může
 **Podporované služby SQL** | Podporuje se jenom SQL Server databázový stroj. <br/> Zjišťování služby SQL Server Reporting Services (SSRS), služba SSIS (SQL Server Integration Services) (SSIS) a Služba Analysis Services serveru SQL (SSAS) není podporováno.
 
 > [!Note]
-> Azure Migrate zašifruje komunikaci mezi Azure Migrate zařízením a instancemi SQL Server zdrojového kódu (s vlastností šifrovat připojení nastavenou na hodnotu TRUE). Tato připojení jsou šifrovaná pomocí [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (nastavená na hodnotu true); Transportní vrstva bude používat protokol SSL k šifrování kanálu a obejít řetěz certifikátů k ověření vztahu důvěryhodnosti. Server zařízení musí být nastavený tak, aby [**důvěřoval kořenové autoritě certifikátu**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
-Pokud se při spuštění na serveru nezřídí žádný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem, který se používá k šifrování přihlašovacích paketů. [**Další informace**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
+> Azure Migrate zašifruje komunikaci mezi Azure Migrate zařízením a instancemi SQL Server zdrojového kódu (s vlastností šifrovat připojení nastavenou na hodnotu TRUE). Tato připojení jsou šifrovaná pomocí [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (nastavená na hodnotu true); Transportní vrstva bude používat protokol SSL k šifrování kanálu a obejít řetěz certifikátů k ověření vztahu důvěryhodnosti. Server zařízení musí být nastavený tak, aby [**důvěřoval kořenové autoritě certifikátu**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
+Pokud se při spuštění na serveru nezřídí žádný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem, který se používá k šifrování přihlašovacích paketů. [**Další informace**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Požadavky na analýzu závislostí (bez agentů)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 930594d2c1af198aba3dae936cd0ce8fcf91c336
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01c9a8b62190f3b545169bb5ba6732e6799ff9f2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214095"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559787"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +52,7 @@ Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Web Azure se zapnutou platformou Java Runtime Environment (např. Tomcat nebo Jetty)](../app-service/quickstart-java.md)
 
-Při prvním instalaci těchto nástrojů coreservlets.com poskytuje návod k procesu instalace v části rychlý Start v [kurzu: instalace TomCat7 a jeho použití v článku s](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) poznámkou.
+Při prvním instalaci těchto nástrojů coreservlets.com poskytuje návod k procesu instalace v části rychlý Start v [kurzu: instalace TomCat7 a jeho použití v článku s](https://www.youtube.com/watch?v=jOdCfW7-ybI&t=2s) poznámkou.
 
 ## <a name="create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>Vytvoření účtu služby Azure Cosmos DB
 

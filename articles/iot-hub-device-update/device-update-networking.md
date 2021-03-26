@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 1/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e72ff144a56f44ccaa695b7dab328e42052fce39
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0512308fbaa0a725c6ecca573c70c90d8c04e247
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101679280"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558376"
 ---
 # <a name="ports-used-with-device-update-for-iot-hub"></a>Porty používané při aktualizaci zařízení pro IoT Hub
 ADU používá různé síťové porty pro různé účely.
@@ -27,4 +27,4 @@ Připojení agenta ADU k Azure IoT Hub  | 8883 (protokol MQTT)
 ## <a name="use-azure-iot-hub-supported-protocols"></a>Použít podporované protokoly Azure IoT Hub
 Agent ADU se dá upravit tak, aby používal některý z podporovaných protokolů Azure IoT Hub.
 
-[Přečtěte si další informace](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-protocols#:~:text=Table%202%20%20%20,%201%20more%20rows) o aktuálním seznamu podporovaných protokolů.
+[Přečtěte si další informace](../iot-hub/iot-hub-devguide-protocols.md) o aktuálním seznamu podporovaných protokolů.

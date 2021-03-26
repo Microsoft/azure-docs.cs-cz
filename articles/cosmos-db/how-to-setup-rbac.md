@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: thweiss
-ms.openlocfilehash: ec12deb5a7c77674026b849585552fd873aee5c1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f8028d69e376e2b71549be52267e2f6cbdb1f8ce
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045990"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568643"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurace řízení přístupu na základě role pomocí Azure Active Directory pro účet Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -323,9 +323,9 @@ Chcete-li ve své aplikaci použít Azure Cosmos DB RBAC, je nutné aktualizovat
 
 Způsob vytvoření `TokenCredential` instance je mimo rámec tohoto článku. Existuje mnoho způsobů, jak vytvořit takovou instanci v závislosti na typu identity AAD, kterou chcete použít (hlavní uživatelské rozhraní, instanční objekt, skupina atd.). Nejdůležitější je, že se vaše `TokenCredential` instance musí přeložit na identitu (ID objektu zabezpečení), ke které jste přiřadili role. Můžete najít příklady vytvoření `TokenCredential` třídy:
 
-- [v .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [v jazyce Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
-- [v JavaScriptu](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
+- [v .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [v jazyce Java](/java/api/overview/azure/identity-readme#credential-classes)
+- [v JavaScriptu](/javascript/api/overview/azure/identity-readme#credential-classes)
 
 Níže uvedené příklady používají instanční objekt s `ClientSecretCredential` instancí.
 

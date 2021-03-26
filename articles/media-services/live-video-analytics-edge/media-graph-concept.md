@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97401096"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557662"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -74,7 +74,7 @@ Zdrojový uzel RTSP vám umožní ingestovat média ze serveru [RTSP](https://to
 
 #### <a name="iot-hub-message-source"></a>IoT Hub zdroj zprávy 
 
-Stejně jako u jiných [IoT Edgech modulů](../../iot-edge/iot-edge-glossary.md#iot-edge-module)může analýza živých videí v IoT Edge modulu přijímat zprávy prostřednictvím [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). Tyto zprávy lze odesílat z jiných modulů nebo aplikací spuštěných na hraničním zařízení nebo z cloudu. Tyto zprávy jsou doručeny (směrovány) do [pojmenovaného vstupu](../../iot-edge/module-composition.md#sink) v modulu. Uzel zdroje zprávy IoT Hub umožňuje takovým zprávám dosáhnout multimediálního grafu. Tyto zprávy nebo signály se pak dají v mediálním grafu použít interně, obvykle aktivovat brány signálu (viz oznámení [signálů](#signal-gate-processor) níže). 
+Stejně jako u jiných [IoT Edgech modulů](../../iot-fundamentals/iot-glossary.md#iot-edge)může analýza živých videí v IoT Edge modulu přijímat zprávy prostřednictvím [centra IoT Edge](../../iot-fundamentals/iot-glossary.md#iot-edge-hub). Tyto zprávy lze odesílat z jiných modulů nebo aplikací spuštěných na hraničním zařízení nebo z cloudu. Tyto zprávy jsou doručeny (směrovány) do [pojmenovaného vstupu](../../iot-edge/module-composition.md#sink) v modulu. Uzel zdroje zprávy IoT Hub umožňuje takovým zprávám dosáhnout multimediálního grafu. Tyto zprávy nebo signály se pak dají v mediálním grafu použít interně, obvykle aktivovat brány signálu (viz oznámení [signálů](#signal-gate-processor) níže). 
 
 Můžete mít například modul IoT Edge, který generuje zprávu při otevření dvířek. Zpráva z tohoto modulu se dá směrovat do centra IoT Edge, ze kterého se pak dá směrovat do zdroje zpráv služby IoT Hub v mediálním grafu. V mediálním grafu může zdroj zprávy služby IoT Hub předat událost procesoru brány signálu, který potom může zapnout záznam videa ze zdroje RTSP do souboru. 
 

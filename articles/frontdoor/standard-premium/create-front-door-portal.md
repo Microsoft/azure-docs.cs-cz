@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 175fb82a5fdf300915f89c3d8cdc238638a742e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100798"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565125"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Rychlý Start: vytvoření profilu služby Azure front-end Standard/Premium – Azure Portal
 
@@ -31,7 +31,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit profil f
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -58,7 +58,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit profil f
     | **Název koncového bodu** | Zadejte globálně jedinečný název koncového bodu. |
     | **Typ zdroje** | Vyberte typ prostředku pro zdroj. V tomto příkladu vybereme službu App Service jako zdroj, který má povolený privátní odkaz. |
     | **Název počátečního hostitele** | Zadejte název hostitele pro váš původ. |
-    | **Povolit privátní propojení** | Pokud chcete mít privátní připojení mezi předními dvířky Azure a vaším zdrojem. Další podrobnosti najdete v tématu doprovodné materiály k [privátním odkazům](concept-private-link.md) a [Povolení privátního odkazu](how-to-enable-private-link.md).
+    | **Povolit privátní propojení** | Pokud chcete mít privátní připojení mezi předními dvířky Azure a vaším zdrojem. Další podrobnosti najdete v tématu doprovodné materiály k [privátním odkazům](concept-private-link.md) a [Povolení privátního odkazu](./how-to-enable-private-link-web-app.md).
     | **Ukládání do mezipaměti** | Zaškrtněte políčko, pokud chcete obsah do mezipaměti přiblížit uživatelům globálně pomocí hraničních zařízení služby Azure front-end a sítě Microsoftu. |
     | **Zásady WAF** | Pokud chcete povolit tuto funkci, vyberte **vytvořit novou** nebo vybrat existující zásadu WAF z rozevíracího seznamu. |
 

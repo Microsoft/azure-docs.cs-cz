@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 68e947a6e13ba5195815fe966ec69ec6a2f4b8e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700970"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562966"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Přehled metrik Azure Monitor
 Metriky Azure Monitor jsou funkcí Azure Monitor, která shromažďuje číselná data z [monitorovaných prostředků](../monitor-reference.md) do databáze časových řad. Metriky jsou číselné hodnoty, které jsou shromažďovány v pravidelných intervalech a popisují určitý aspekt systému v určitou dobu. Metriky v Azure Monitor jsou odlehčené a umožňují podpoře scénářů téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Můžete je interaktivně analyzovat pomocí Průzkumníka metrik, pokud je hodnota překročena prahovou hodnotou nebo je vizualizovat v sešitu nebo řídicím panelu, bude aktivní upozornění.
@@ -27,7 +27,7 @@ Metriky Azure Monitor jsou funkcí Azure Monitor, která shromažďuje číseln�
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Co se dá dělat s Azure Monitor metrikami?
 V následující tabulce jsou uvedeny různé způsoby, jak můžete použít metriky v Azure Monitor.
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Analyzovat** | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění metriky](../alerts/alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](../alerts/action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |

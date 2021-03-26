@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f7766b57b5a3b9ffc73691303b5d8bcaa63fce4c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab3f651c610127399da83addd6463ae8cb3748a9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721663"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565244"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Základní hodnoty zabezpečení Azure pro Azure Firewall
 
@@ -36,7 +36,7 @@ Kromě toho použijte Azure Security Center a sledujte doporučení pro ochranu 
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy integrovaných definic – Microsoft. Network**:
 
@@ -52,7 +52,7 @@ Kromě toho použijte Azure Security Center a sledujte doporučení pro ochranu 
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy integrovaných definic – Microsoft. Network**:
 
@@ -72,7 +72,7 @@ Všimněte si, že nemůžete vytvořit vlastní značku služby, ani určit, kt
 
 - [Značky služby Azure Firewall](service-tags.md)
 
-- [Dostupné značky služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)
+- [Dostupné značky služeb](../virtual-network/service-tags-overview.md#available-service-tags)
 
 - [Skupiny IP adres v Azure Firewall](ip-groups.md)
 
@@ -90,7 +90,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 - [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -104,9 +104,9 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 - [Monitorování protokolů a metrik Azure Firewallu](firewall-diagnostics.md)
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -120,7 +120,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Pokyny**: Microsoft udržuje časové zdroje pro prostředky Azure pro Azure firewall. Zákazníci musí vytvořit síťové pravidlo, které povolí tento přístup, nebo pro čas serveru, který ve svém prostředí používáte.
 
-- [Přístup k serveru NTP](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [Přístup k serveru NTP](./protect-windows-virtual-desktop.md#additional-considerations)
 
 **Odpovědnost:** Sdílené
 
@@ -144,7 +144,7 @@ Poznámka: oba protokoly se dají uložit do účtu úložiště, streamované d
 
 Seznam akcí prostředků v protokolech aktivit: Azure Resource Manager operace poskytovatele prostředků
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor ](/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor ](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -188,9 +188,9 @@ Další informace najdete v referenčních odkazech níže.
 
 - [Metriky a protokoly Azure Firewallu](logs-and-metrics.md)
 
-- [Změnit dobu uchovávání dat v Log Analytics](/azure/azure-monitor/platform/manage-cost-storage)
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Odpovědnost:** Zákazník
 
@@ -214,7 +214,7 @@ Protokoly Azure Monitor lze použít pro obecné monitorování vaší aplikace 
 
 - [Metriky a protokoly Azure Firewallu](logs-and-metrics.md)
 
-- [Diagnostické protokoly](https://docs.microsoft.com/azure/firewall/logs-and-metrics#diagnostic-logs)
+- [Diagnostické protokoly](./logs-and-metrics.md#diagnostic-logs)
 
 **Odpovědnost:** Zákazník
 
@@ -230,7 +230,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -258,7 +258,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privilegovaných rolí pro služby Microsoftu a Azure Resource Manager můžete taky povolit přístup za běhu nebo jen tolik.
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Odpovědnost:** Zákazník
 
@@ -334,7 +334,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -348,7 +348,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -386,11 +386,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure Firewall, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role v Azure.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -414,7 +414,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracová
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování. 
 
-- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Odpovědnost:** Sdílené
 
@@ -456,7 +456,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění, když se změny probíhají v Azure firewall.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -470,7 +470,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Doprovodné** materiály: použití značek pro Azure firewall a souvisejících prostředků, které dávají metadata k logickému uspořádání do taxonomie. 
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -482,7 +482,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create-management-group-portal)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -526,7 +526,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/concepts/effects.md#deny)
 
 **Odpovědnost:** Zákazník
 
@@ -594,7 +594,7 @@ Pro Azure Firewall v tuto chvíli není plně podporovaná zásada Azure.
 
 **Doprovodné** materiály: pomocí Azure DevOps bezpečně ukládejte a spravujte kód, jako je vlastní zásady Azure a šablony Azure Resource Manager. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -608,7 +608,7 @@ Pro Azure Firewall v tuto chvíli není plně podporovaná zásada Azure.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -682,7 +682,7 @@ Pro Azure Firewall v tuto chvíli není plně podporovaná zásada Azure.
 
 **Doprovodné** materiály: pomocí Azure DevOps můžete bezpečně ukládat a spravovat kód, jako jsou vlastní zásady Azure, Azure Resource Manager šablony. K ochraně prostředků, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -784,5 +784,5 @@ Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně,
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

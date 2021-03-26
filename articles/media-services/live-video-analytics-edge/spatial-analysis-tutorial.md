@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí Počítačové zpracování obrazu pro pr
 description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí společně s funkcí Počítačové zpracování obrazu prostorová analýza AI z Azure Cognitive Services analyzovat živý kanál videa z (simulované) kamery IP.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698752"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561011"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
 
@@ -36,7 +36,7 @@ Než začnete, přečtěte si tyto články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu do nástroje Live video Analytics.
 
@@ -56,7 +56,7 @@ Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [
 
 Uzel MediaGraphCognitiveServicesVisionExtension hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes **sdílenou paměť** do jiného modulu Edge, který spouští operace AI za koncovým bodem gRPC. V tomto příkladu je tento modul Edge modul pro prostorovou analýzu. Uzel procesoru MediaGraphCognitiveServicesVisionExtension má dvě věci:
 
-* Shromáždí výsledky a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
+* Shromáždí výsledky a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-fundamentals/iot-glossary.md#iot-edge-hub). 
 * Zachytí také 30 sekundový klip ze zdroje RTSP pomocí [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) a uloží jej jako Media Services prostředek.
 
 ## <a name="create-the-computer-vision-resource"></a>Vytvoření prostředku Počítačové zpracování obrazu

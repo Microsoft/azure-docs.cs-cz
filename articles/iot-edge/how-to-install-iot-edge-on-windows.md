@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045667"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558699"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -42,8 +42,8 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
 
   * Windows 10 verze 1809 nebo novější; Build 17763 nebo novější
   * Edice Professional, Enterprise nebo Server
-  * Minimální velikost paměti RAM: 4 GB (doporučeno 8 GB)
-  * Minimální úložiště: 10 GB
+  * Minimální volná paměť: 2 GB
+  * Minimální volné místo na disku: 10 GB
   * Pokud vytváříte nové nasazení pomocí Windows 10, ujistěte se, že jste povolili technologii Hyper-V. Další informace najdete v tématu [instalace technologie Hyper-V ve Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md).
   * Pokud vytváříte nové nasazení pomocí Windows serveru, nezapomeňte nainstalovat roli Hyper-V. Další informace najdete v tématu Postup [instalace role technologie Hyper-V v systému Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
   * Pokud vytváříte nové nasazení pomocí virtuálního počítače, ujistěte se, že jste správně nakonfigurovali vnořenou virtualizaci. Další informace najdete v průvodci [vnořenou virtualizací](nested-virtualization.md) .

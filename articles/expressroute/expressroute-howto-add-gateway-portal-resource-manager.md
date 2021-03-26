@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e70b41dfba03b7439313350746724c6f8e90bc34
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038913"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564768"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup pro tuto úlohu používá virtuální síť na základě hodnot v následujícím seznamu odkazů konfigurace. Tento seznam používáme v našem ukázkovém postupu. Seznam můžete zkopírovat pro použití jako odkaz a nahradit hodnoty vlastními.
 
@@ -51,7 +51,7 @@ Postup pro tuto úlohu používá virtuální síť na základě hodnot v násle
 Před zahájením konfigurace si můžete zobrazit [video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) o těchto krocích.
 
 > [!IMPORTANT]
-> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální, a postupuje podle pokynů pro [protokol IPv6 pro virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální, a postupuje podle pokynů pro [protokol IPv6 pro virtuální síť Azure](../virtual-network/ipv6-overview.md).
 > 
 > 
 

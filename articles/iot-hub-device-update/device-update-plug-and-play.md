@@ -6,22 +6,22 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101662557"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561810"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Aktualizace zařízení pro IoT Hub a IoT technologie Plug and Play
 
-Aktualizace zařízení pro IoT Hub používá [IoT technologie Plug and Play](https://docs.microsoft.com/azure/iot-pnp/) ke zjišťování a správě zařízení, která podporují dodávání aktualizací přes Air. Služba aktualizace zařízení bude odesílat a přijímat vlastnosti a zprávy ze zařízení pomocí rozhraní PnP. Aktualizace zařízení pro IoT Hub vyžaduje, aby zařízení IoT implementovala následující rozhraní a ID modelu, jak je popsáno níže.
+Aktualizace zařízení pro IoT Hub používá [IoT technologie Plug and Play](../iot-pnp/index.yml) ke zjišťování a správě zařízení, která podporují dodávání aktualizací přes Air. Služba aktualizace zařízení bude odesílat a přijímat vlastnosti a zprávy ze zařízení pomocí rozhraní PnP. Aktualizace zařízení pro IoT Hub vyžaduje, aby zařízení IoT implementovala následující rozhraní a ID modelu, jak je popsáno níže.
 
 ## <a name="adu-core-interface"></a>Rozhraní ADU Core
 
 Rozhraní ADUCoreInterface se používá k posílání aktualizačních akcí a metadat do zařízení a přijímání stavu aktualizací ze zařízení. Rozhraní ADU Core je rozdělené do dvou vlastností objektu.
 
-Při implementaci tohoto rozhraní je očekávaný název součásti v modelu **"azureDeviceUpdateAgent"** . [Další informace o komponentách Azure IoT PnP](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+Při implementaci tohoto rozhraní je očekávaný název součásti v modelu **"azureDeviceUpdateAgent"** . [Další informace o komponentách Azure IoT PnP](../iot-pnp/concepts-components.md)
 
 ### <a name="agent-metadata"></a>Metadata agenta
 
@@ -81,9 +81,9 @@ Metadata služby obsahují pole, která služba aktualizace zařízení použív
 
 ## <a name="device-information-interface"></a>Rozhraní informací o zařízení
 
-Rozhraní informací o zařízení je koncept, který se používá v rámci [architektury IoT technologie Plug and Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play). Obsahuje zařízení k vlastnostem cloudu, které poskytují informace o hardwaru a operačním systému zařízení. Aktualizace zařízení pro IoT Hub používá vlastnosti DeviceInformation. Manufacturer a DeviceInformation. model pro telemetrii a diagnostiku. Další informace o rozhraní informace o zařízení najdete v tomto [příkladu](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
+Rozhraní informací o zařízení je koncept, který se používá v rámci [architektury IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). Obsahuje zařízení k vlastnostem cloudu, které poskytují informace o hardwaru a operačním systému zařízení. Aktualizace zařízení pro IoT Hub používá vlastnosti DeviceInformation. Manufacturer a DeviceInformation. model pro telemetrii a diagnostiku. Další informace o rozhraní informace o zařízení najdete v tomto [příkladu](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
 
-Při implementaci tohoto rozhraní je očekávaný název součásti v modelu **deviceInformation** . [Další informace o komponentách Azure IoT PnP](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+Při implementaci tohoto rozhraní je očekávaný název součásti v modelu **deviceInformation** . [Další informace o komponentách Azure IoT PnP](../iot-pnp/concepts-components.md)
 
 |Název|Typ|Schéma|Směr|Popis|Příklad|
 |----|----|------|---------|-----------|-----------|
@@ -98,6 +98,6 @@ Při implementaci tohoto rozhraní je očekávaný název součásti v modelu **
 
 ## <a name="model-id"></a>ID modelu 
 
-ID modelu je způsob, jakým inteligentní zařízení inzerují své možnosti aplikacím Azure IoT pomocí technologie IoT Plug and Play.To. Další informace o tom, jak vytvářet inteligentní zařízení k inzerování svých schopností aplikacím Azure IoT, najdete v tématu [Příručka pro vývojáře pro zařízení iot technologie Plug and Play](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c).
+ID modelu je způsob, jakým inteligentní zařízení inzerují své možnosti aplikacím Azure IoT pomocí technologie IoT Plug and Play.To. Další informace o tom, jak vytvářet inteligentní zařízení k inzerování svých schopností aplikacím Azure IoT, najdete v tématu [Příručka pro vývojáře pro zařízení iot technologie Plug and Play](../iot-pnp/concepts-developer-guide-device.md).
 
-Aktualizace zařízení pro IoT Hub vyžaduje, aby inteligentní zařízení technologie Plug and Play IoT nainformovalo ID modelu s hodnotou **"dtmi: AzureDeviceUpdate; 1"** jako součást připojení zařízení. [Naučte se oznámit ID modelu](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c#model-id-announcement).
+Aktualizace zařízení pro IoT Hub vyžaduje, aby inteligentní zařízení technologie Plug and Play IoT nainformovalo ID modelu s hodnotou **"dtmi: AzureDeviceUpdate; 1"** jako součást připojení zařízení. [Naučte se oznámit ID modelu](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).

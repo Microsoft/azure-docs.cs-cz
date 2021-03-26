@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705394"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559872"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Změny v terminologii a entitě mezi Media Services V2 a V3
 
@@ -90,7 +90,3 @@ Projděte si zásady vytváření názvů, které se vztahují k prostředkům M
 | Živý pohotovostní režim událostí <!--new row --> | Pro v2 nebyl žádný pohotovostní režim. | Úsporný režim je nová funkce v3, která pomáhá spravovat aktivní fondy živých událostí. Zákazníci teď můžou zahájit živou událost v úsporném režimu s nižšími náklady před přechodem do stavu spuštěno. To zlepšuje čas spuštění kanálů a snižuje náklady na provozní aktivní fondy pro rychlejší spouštění. |
 | Účtování živé události <!--new row --> | <!-- empty-->| Účtování živých událostí je založeno na měřičích živých kanálů. |
 | Živé výstupy <!--new row --> | Programy musely být spuštěny po vytvoření. | Živé výstupy začínají při vytváření a při odstranění se zastaví. |
-
-## <a name="next-steps"></a>Další kroky
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

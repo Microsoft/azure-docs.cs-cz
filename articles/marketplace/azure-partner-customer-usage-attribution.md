@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 03/22/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ed7f27b0b8fde902f4ae9b65b9f6b4ada78f79c6
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799186"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558410"
 ---
 # <a name="azure-customer-usage-attribution"></a>Přidělení zákaznického využití Azure
 
@@ -34,7 +34,7 @@ Existují sekundární případy použití pro označení zákaznického využit
 
 ## <a name="commercial-marketplace-azure-apps"></a>Aplikace Azure pro komerční tržiště
 
-Sledování využití Azure z aplikací Azure publikovaných na komerčním webu je převážně automatické. Když nahrajete šablonu Správce prostředků jako součást [technické konfigurace plánu vaší aplikace Azure Marketplace](https://docs.microsoft.com/azure/marketplace/create-new-azure-apps-offer-solution#define-the-technical-configuration), partnerským centrem se přidá ID sledování čitelné pomocí Azure Resource Manager.
+Sledování využití Azure z aplikací Azure publikovaných na komerčním webu je převážně automatické. Když nahrajete šablonu Správce prostředků jako součást [technické konfigurace plánu vaší aplikace Azure Marketplace](./create-new-azure-apps-offer-solution.md#define-the-technical-configuration), partnerským centrem se přidá ID sledování čitelné pomocí Azure Resource Manager.
 
 Pokud používáte rozhraní Azure Resource Manager API, budete muset přidat ID sledování podle [pokynů níže](#use-resource-manager-apis) , abyste ho předávali Azure Resource Manager, jak kód nasazuje prostředky. Toto ID se zobrazuje v partnerském centru na stránce technické konfigurace vašeho plánu. 
 
@@ -276,7 +276,7 @@ Pokud vaše šablona není uvedená na komerčním webu Marketplace a obsahuje r
 
 #### <a name="does-the-customer-receive-reporting-as-well"></a>Obdrží zákazník hlášení také?
 
-Ne. Zákazníci mohou sledovat využití všech prostředků nebo skupin prostředků v rámci Azure Portal. Zákazníkům se nezobrazuje využití rozdělené podle ID sledování CUA.
+No. Zákazníci mohou sledovat využití všech prostředků nebo skupin prostředků v rámci Azure Portal. Zákazníkům se nezobrazuje využití rozdělené podle ID sledování CUA.
 
 #### <a name="is-customer-usage-attribution-similar-to-the-digital-partner-of-record-dpor-or-partner-admin-link-pal"></a>Podobá se využívání zákazníků záznamu partnera DPOR (Digital Partner of Record) nebo partnerského odkazu pro správce (PAL)?
 

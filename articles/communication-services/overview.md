@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a993a4ad4c709a3736f5d5f577741c82c95af83f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: fe580848e3bbea701718463123a6bbcd4848a9f3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107257"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564598"
 ---
 # <a name="what-is-azure-communication-services"></a>Co je služba Azure Communication Services?
 
@@ -42,19 +42,23 @@ Podporují se smíšené scénáře. Například aplikace komunikačních služe
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
-Následující zdroje jsou skvělým místem, kde se můžete začít, pokud začínáte s komunikačními službami Azure:
+Následující zdroje jsou skvělým místem, kde můžete začít s komunikačními službami Azure. 
 <br>
 
 | Prostředek                               |Popis                           |
 |---                                    |---                                   |
-|**[Připojení volající aplikace ke schůzce v Teams](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Komunikační služby Azure je možné využít k vytváření vlastních prostředí pro schůzky, která spolupracují s Microsoft Teams. Uživatelé vašich řešení komunikačních služeb můžou s týmy komunikovat prostřednictvím hlasu, videa, chatu a sdílení obrazovky.|
-|**[Vytvoření prostředku Communication Services](./quickstarts/create-communication-resource.md)**|Můžete začít používat komunikační služby Azure pomocí Azure Portal nebo sady Communications Services SDK ke zřízení prvního prostředku komunikačních služeb. Jakmile budete mít připojovací řetězec prostředků služby Communication Services, můžete zřídit své první tokeny přístupu uživatele.|
-|**[Vytvoření prvního přístupového tokenu uživatele](./quickstarts/access-tokens.md)**|Tokeny přístupu uživatele slouží k ověřování vašich služeb proti vašemu prostředku služby Azure Communication Services. Tyto tokeny se zřídí a znovu vydávají pomocí služby Communications SDK.|
+|**[Vytvoření prostředku Communication Services](./quickstarts/create-communication-resource.md)**|Ke zřízení prvního prostředku komunikačních služeb můžete začít používat komunikační služby Azure pomocí klientské knihovny Azure Portal nebo komunikační služby. Jakmile budete mít připojovací řetězec prostředků služby Communication Services, můžete zřídit své první tokeny přístupu uživatele.|
 |**[Získat telefonní číslo](./quickstarts/telephony-sms/get-phone-number.md)**|K zřizování a vydávání telefonních čísel můžete použít komunikační služby Azure. Tato telefonní čísla lze použít k zahájení odchozích volání a k sestavování řešení komunikace SMS.|
-|**[Poslat SMS z vaší aplikace](./quickstarts/telephony-sms/send.md)**|Služba Azure Communications Services SMS SDK umožňuje odesílat a přijímat zprávy SMS z aplikací .NET a JavaScript.|
-|**[Začínáme s voláním hlasu a videu](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Komunikační služby Azure umožňují přidat Hlasová a vizuální volání do vašich aplikací pomocí volání sady SDK. Tato knihovna je založená na WebRTC a umožňuje vytvořit v aplikacích komunikaci peer-to-peer a komunikovat v reálném čase.|
-|**[Začínáme s chatem](./quickstarts/chat/get-started.md)**|Pomocí chatovací SDK služby Azure Communications Services je možné do svých aplikací integrovat chat v reálném čase.|
+|**[Poslat SMS z vaší aplikace](./quickstarts/telephony-sms/send.md)**|Klientská knihovna služby Azure Communications Services umožňuje odesílat a přijímat zprávy SMS z aplikací .NET a JavaScript.|
 
+Po vytvoření prostředku komunikačních služeb můžete začít vytvářet scénáře klienta, například volání hlasu a videa nebo textové konverzace.
+
+| Prostředek                               |Popis                           |
+|---                                    |---                                   |
+|**[Vytvoření prvního přístupového tokenu uživatele](./quickstarts/access-tokens.md)**|Tokeny přístupu uživatele slouží k ověřování vašich služeb proti vašemu prostředku služby Azure Communication Services. Tyto tokeny se zřídí a znovu vydávají pomocí klientské knihovny komunikačních služeb.|
+|**[Začínáme s voláním hlasu a videu](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Komunikační služby Azure umožňují přidat Hlasová a vizuální volání do vašich aplikací pomocí volání klientské knihovny. Tato knihovna je založená na WebRTC a umožňuje vytvořit v aplikacích komunikaci peer-to-peer a komunikovat v reálném čase.|
+|**[Připojení volající aplikace ke schůzce v Teams](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Komunikační služby Azure je možné využít k vytváření vlastních prostředí pro schůzky, která spolupracují s Microsoft Teams. Uživatelé vašich řešení komunikačních služeb můžou s týmy komunikovat prostřednictvím hlasu, videa, chatu a sdílení obrazovky.|
+|**[Začínáme s chatem](./quickstarts/chat/get-started.md)**|Klientská knihovna pro konverzaci Azure Communications Services se dá použít k integraci konverzací v reálném čase do vašich aplikací.|
 
 ## <a name="samples"></a>ukázky
 
@@ -82,7 +86,7 @@ Následující materiály vám pomůžou získat informace o sadách Azure Commu
 
 Existují dva další komunikační produkty Microsoftu, které byste měli zvážit, že nebudete moci přímo spolupracovat s komunikačními službami v tuto chvíli:
 
- - [Rozhraní API pro komunikaci Microsoft Graph cloudu](/graph/cloud-communications-concept-overview) umožňují organizacím vytvářet komunikační prostředí vázané na Azure Active Directory uživatele s M365 licencemi. To je ideální pro aplikace, které jsou vázané na Azure Active Directory nebo které chcete v Microsoft Teams využít k širšímu využití produktivity. Existují také rozhraní API pro sestavování aplikací a přizpůsobení v rámci [prostředí týmů.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
+ - [Rozhraní API pro komunikaci Microsoft Graph cloudu](/graph/cloud-communications-concept-overview) umožňují organizacím vytvářet komunikační prostředí vázané na Azure Active Directory uživatele s Microsoft 365mi licencemi. To je ideální pro aplikace, které jsou vázané na Azure Active Directory nebo které chcete v Microsoft Teams využít k širšímu využití produktivity. Existují také rozhraní API pro sestavování aplikací a přizpůsobení v rámci [prostředí týmů.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
 
  - [PlayFab strana](/gaming/playfab/features/multiplayer/networking/) zjednodušuje přidávání chatu s nízkou latencí a datové komunikace do her. I když můžete pomocí komunikačních služeb vysílat herní systémy pro konverzace a sítě, PlayFab je upravená možnost a v konzole Xbox zdarma.
 

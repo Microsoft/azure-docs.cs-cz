@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 8980558d7b0d57ff997f55c98703a22a53308f7b
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: 404970873a468707e2e9de47de80b438f358474a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544396"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565040"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění peeringu
 
 > [!div class="op_single_selector"]
-> * Umístění podle poskytovatele
+> * [Umístění podle poskytovatele](expressroute-locations.md)
 > * [Poskytovatelé podle umístění](expressroute-locations-providers.md)
 
 
@@ -255,7 +255,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 
 | **Poskytovatel připojení** | **Exchange** | **Umístění** |
 | --- | --- | --- |
-| **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Singapur |
+| **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** | Equinix |Singapur |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/)** | Equinix, Cologix | Toronto, Montreal |
 | **[Alaska Communications](https://www.alaskacommunications.com/Business)** |Equinix |Seattle |
 | **[Altice Business](https://golightpath.com/transport)** |Equinix |New York, Washington DC |
@@ -263,10 +263,10 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |Dallas|
 | **[Beanfield Metroconnect](https://www.beanfield.com/business/cloud-exchange)** |Megaport |Toronto|
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | Londýn |
-| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, Londýn, Singapur, Washington DC |https://www.chief.com.tw/
+| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, Londýn, Singapur, Washington DC |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokio |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix, Megaport | Dallas |
-| **[Chief]()** | Equinix | Hongkong – zvláštní administrativní oblast |
+| **[Chief](https://www.chief.com.tw/)** | Equinix | Hongkong – zvláštní administrativní oblast |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburk |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 

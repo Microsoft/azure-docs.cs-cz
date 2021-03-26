@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0701ff53202d53131ceac8ceabb148fb5ff4f2b2
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 629459d22b18b326307b45bb512d16622808b533
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025148"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562626"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -143,7 +143,7 @@ Pokud je vaše instance připravená pro službu Azure SQL Database i Azure SQL 
 K tomu může dojít v případě, že je ve vlastnostech hodnocení vybraný **doporučený** typ cílového nasazení a instance SQL není připravená pro službu Azure SQL Database ani Azure SQL Managed Instance. Uživateli doporučujeme vytvořit ve službě Azure Migrate hodnocení typu **Virtuální počítač Azure** a zjistit, jestli je server, na kterém je instance spuštěná, připravený na migraci na virtuální počítač Azure.
 Uživatel se doporučuje vytvořit posouzení v Azure Migrate s typem posouzení jako **virtuálním počítačem Azure** , abyste zjistili, jestli je server, na kterém je instance spuštěná, připravený k migraci na virtuální počítač Azure.
 - Posouzení virtuálních počítačů Azure v Azure Migrate v současné době přenese fokus a nebere v úvahu konkrétní metriky výkonu pro spouštění instancí a databází SQL na virtuálním počítači Azure. 
-- Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) pro SQL Server na virtuálních počítačích Azure.
+- Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) pro SQL Server na virtuálních počítačích Azure.
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>V hodnocení se nezobrazují některé databáze, přestože je instance součástí hodnocení
 
@@ -151,7 +151,7 @@ Hodnocení Azure SQL zahrnuje pouze databáze, které jsou ve stavu online. V p�
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Chci porovnat náklady na spuštění instancí SQL na virtuálním počítači Azure a Azure SQL Database/spravované instanci SQL Azure
 
-Pro stejnou skupinu, kterou jste použili v hodnocení **Azure SQL**, můžete vytvořit hodnocení typu **Virtuální počítač Azure**. Pak můžete tyto dvě sestavy vzájemně porovnat. Hodnocení virtuálních počítačů Azure ve službě Azure Migrate se však v současné době zaměřují na migraci metodou „lift and shift“ a neberou v úvahu konkrétní metriky výkonu při provozu instancí a databází SQL na virtuálním počítači Azure. Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) pro SQL Server na virtuálních počítačích Azure.
+Pro stejnou skupinu, kterou jste použili v hodnocení **Azure SQL**, můžete vytvořit hodnocení typu **Virtuální počítač Azure**. Pak můžete tyto dvě sestavy vzájemně porovnat. Hodnocení virtuálních počítačů Azure ve službě Azure Migrate se však v současné době zaměřují na migraci metodou „lift and shift“ a neberou v úvahu konkrétní metriky výkonu při provozu instancí a databází SQL na virtuálním počítači Azure. Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) pro SQL Server na virtuálních počítačích Azure.
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Náklady na úložiště v naší službě Azure SQL Assessment jsou nula.
 Pro spravovanou instanci Azure SQL se nepřidaly žádné náklady na úložiště pro první 32 GB/instanci/měsíc a další náklady na úložiště se přidají do úložiště v přírůstcích 32 GB. [Další informace](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

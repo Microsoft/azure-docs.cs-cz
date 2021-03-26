@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na Azure Stack Edge
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit živé video analýzy na Azure Stack hraničních zařízeních.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730265"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561147"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Nasazení Live video Analytics na Azure Stack Edge
 
@@ -19,7 +19,7 @@ Pro Live video Analytics nasadíme prostřednictvím IoT Hub, ale prostředky Az
 > [!TIP]
 > Použití rozhraní API Kubernetes (K8s) pro vlastní nasazení je pokročilý případ. Doporučuje se, aby zákazník vytvořil hraniční moduly a nasadil prostřednictvím IoT Hub do každého prostředku Azure Stack Edge místo používání rozhraní Kubernetes API. V tomto článku vám ukážeme, jak nasadit modul Live video Analytics pomocí IoT Hub.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner).
 * Prostředek [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)
@@ -232,11 +232,11 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
     
    Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měl by se zobrazit Azure Stack Edge. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části zařízení Azure Stack rozbalte uzel moduly.
     
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * **Přístup k rozhraní Kubernetes API (kubectl)**
 
-    * Podle dokumentace nakonfigurujte počítač pro [přístup ke clusteru Kubernetes](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster).
+    * Podle dokumentace nakonfigurujte počítač pro [přístup ke clusteru Kubernetes](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md).
     * Všechny nasazené IoT Edge moduly používají `iotedge` obor názvů. Nezapomeňte při použití kubectl použít.  
 
 * **Protokoly modulů**

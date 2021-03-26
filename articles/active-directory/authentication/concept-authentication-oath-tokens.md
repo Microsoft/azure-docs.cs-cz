@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568048597f83616ed07954af744c94761250b5c0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b535d59376de455962d367a8ad6f02a037649d9d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471606"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557883"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Metody ověřování ve Azure Active Directory – tokeny OATH 
 
@@ -51,7 +51,7 @@ Helga@contoso.com,1234567,2234567abcdef1234567abcdef,60,Contoso,HardwareKey
 > [!NOTE]
 > Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví. Pokud hlavní název uživatele (UPN) obsahuje jedinou uvozovku, vydejte ho s jinou jednoduchou uvozovkou. Pokud například hlavní název uživatele (UPN) má hodnotu My user@domain.com , změňte ho na My user@domain.com při nahrávání souboru.
 
-Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít k **Azure Active Directory > tokeny Oath zabezpečení > MFA >** a nahrát výsledný soubor CSV.
+Po správném formátování jako souboru CSV se může globální správce přihlásit k Azure Portal, přejít na **Azure Active Directory > zabezpečení > MFA > tokeny Oath** a nahrajte výsledný soubor CSV.
 
 V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k chybám, můžete si stáhnout soubor CSV se seznamem případných chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.  
 

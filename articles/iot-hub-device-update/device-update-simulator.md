@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b2a8ae76c79e4d3ff151334defe7f966c60f032
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443807"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559243"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta pro reference na simulátor Ubuntu (18,04 x64)
 
@@ -30,10 +30,8 @@ V tomto kurzu se naučíte, jak:
 > * Nasazení aktualizace image
 > * Monitorování nasazení aktualizace
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-## <a name="prerequisites"></a>Předpoklady
-* Přístup k IoT Hub. Doporučuje se použít úroveň S1 (Standard) nebo vyšší.
+## <a name="prerequisites"></a>Požadavky
+* Pokud jste to ještě neudělali, vytvořte [účet a instanci aktualizace zařízení](create-device-update-account.md), včetně konfigurace IoT Hub.
 
 ### <a name="download-and-install"></a>Stažení a instalace
 

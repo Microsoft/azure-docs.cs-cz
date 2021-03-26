@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: af44912edf3ce98ceb71bd34388543f7652c2181
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438195"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568456"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Nasazení modulu IoT s povoleným GPU na zařízení s grafickým procesorem Azure Stack Edge pro
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Vzorový modul GPU v tomto článku zahrnuje vzorový kód PyTorch a TensorFlow srovnávacího testu pro procesor s grafickým procesorem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -166,4 +166,4 @@ Než začnete, ujistěte se, že máte následující:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o tom, jak [nakonfigurovat GPU pro použití modulu](azure-stack-edge-j-series-configure-gpu-modules.md).
+- Přečtěte si další informace o tom, jak [nakonfigurovat GPU pro použití modulu](./azure-stack-edge-gpu-configure-gpu-modules.md).

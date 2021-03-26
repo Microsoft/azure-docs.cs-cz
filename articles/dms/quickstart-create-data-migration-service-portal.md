@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.openlocfilehash: 6232c842514c10a5440e574621ca74e2f4867d86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8a500104a0273b9e131815c4dc832bd33729cd51
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99981620"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566587"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rychlý start: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 
@@ -90,6 +90,6 @@ Prostředky vytvořené v rámci tohoto rychlého startu můžete vyčistit odst
 ## <a name="next-steps"></a>Další kroky
 
 * [Offline migrace SQL Serveru do služby Azure SQL Database](tutorial-sql-server-to-azure-sql.md)
-* [Online migrace SQL Serveru do služby Azure SQL Database](tutorial-sql-server-azure-sql-online.md)
+* [Online migrace SQL Serveru do služby Azure SQL Database](./tutorial-sql-server-to-azure-sql.md)
 * [Migrace SQL Server do offline spravované instance služby Azure SQL](tutorial-sql-server-to-managed-instance.md)
 * [Migrace SQL Server do online spravované instance služby Azure SQL](tutorial-sql-server-managed-instance-online.md)

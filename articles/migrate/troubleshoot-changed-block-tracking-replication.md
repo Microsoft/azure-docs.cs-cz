@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071370"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568654"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -292,7 +292,7 @@ K tomuto problému dochází, když vCenter Server agenti pro správu přestanou
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Chybová zpráva: došlo k vnitřní chybě. [Neplatná velikost disku snímku]
 
-Jedná se o známý problém VMware, ve kterém se velikost disku indikuje snímkem, se změní na nula. Postupujte podle řešení uvedeného v [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972).
+Jedná se o známý problém VMware, ve kterém se velikost disku indikuje snímkem, se změní na nula. Postupujte podle řešení uvedeného v [VMware KB](https://kb.vmware.com/s/).
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Chybová zpráva: došlo k vnitřní chybě. [Přidělení paměti se nezdařilo. Nedostatek paměti.]
 

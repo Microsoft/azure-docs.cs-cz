@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ab310681ae7b63cb4e9f4e07984983727ae5ff2
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ea75b9c1e8c7a1a242406b5a7f73db1b05c70276
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953914"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562201"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -544,7 +544,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, virtuální disky na vi
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. Automation**:
 
@@ -743,7 +743,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 - [Porozumění efektům Azure Policy](../governance/policy/concepts/effects.md)
 
-- [Nasazení účtu Automation pomocí šablony Azure Resource Manager](/azure/automation/quickstart-create-account-template#deploy-the-template)
+- [Nasazení účtu Automation pomocí šablony Azure Resource Manager](/azure/automation/quickstart-create-automation-account-template)
 
 - [Azure Policy ukázkové předdefinované pro Azure Automation](policy-reference.md)
 

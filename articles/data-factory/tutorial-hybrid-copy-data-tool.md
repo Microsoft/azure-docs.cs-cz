@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 70905d23b61ee9fee319bae41aeb421d808fa4d0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606714"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566757"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure pomocí nástroje Kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,7 +33,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření kanálu pomocí nástroje pro kopírování dat
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -87,21 +87,6 @@ V tomto kurzu použijete název a klíč svého účtu úložiště. Název a kl
 
 
 1. Zkopírujte hodnoty polí **Název účtu úložiště** a **klíč1** a vložte je do Poznámkového bloku nebo jiného editoru pro pozdější použití v rámci kurzu.
-
-#### <a name="create-the-adftutorial-container"></a>Vytvoření kontejneru adftutorial
-V této části vytvoříte ve svém úložišti objektů blob kontejner objektů blob **adftutorial**.
-
-1. V okně **Účet úložiště** přepněte na **Přehled** a pak vyberte **Objekty blob**.
-
-1. V okně **objekty blob** vyberte **+ kontejner**.
-
-1. V okně **Nový kontejner** v části **název** zadejte **adftutorial** a pak vyberte **OK**.
-
-1. V seznamu kontejnerů vyberte **adftutorial**.
-
-
-1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
-
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 

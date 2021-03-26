@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: bb10fb337972db2696960b530f2d7538bd36a2fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101098848"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557322"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Sledování v reálném čase ve frontě Azure na úrovni Standard/Premium
 
@@ -22,11 +22,11 @@ ms.locfileid: "101098848"
 
 Přední dveře Azure (Standard/Premium) jsou integrované s Azure Monitor a mají 11 metrik, které vám pomůžou monitorovat, řešit a řešit problémy v reálném čase přes službu Azure front-Time Standard/Premium.  
 
-Přední jednotky Azure front-Premium Standard/Premium a odesílají své metriky v intervalech 60 – sekund. Zobrazení metrik na portálu může trvat až 3 minuty. Metriky se dají zobrazit v grafech nebo v mřížce podle vašeho výběru a jsou dostupné přes portál, PowerShell, CLI a rozhraní API. Další informace najdete v tématu [Azure monitor metriky](../../azure-monitor/platform/data-platform-metrics.md).  
+Přední jednotky Azure front-Premium Standard/Premium a odesílají své metriky v intervalech 60 – sekund. Zobrazení metrik na portálu může trvat až 3 minuty. Metriky se dají zobrazit v grafech nebo v mřížce podle vašeho výběru a jsou dostupné přes portál, PowerShell, CLI a rozhraní API. Další informace najdete v tématu [Azure monitor metriky](../../azure-monitor/essentials/data-platform-metrics.md).  
 
 Výchozí metriky jsou zdarma. Další metriky můžete povolit pro další náklady. 
 
-U každé metriky můžete nakonfigurovat výstrahy, jako je například prahová hodnota pro 4XXErrorRate nebo 5XXErrorRate. Pokud míra chyb překračuje prahovou hodnotu, aktivuje se výstraha jako nakonfigurovaná. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md). 
+U každé metriky můžete nakonfigurovat výstrahy, jako je například prahová hodnota pro 4XXErrorRate nebo 5XXErrorRate. Pokud míra chyb překračuje prahovou hodnotu, aktivuje se výstraha jako nakonfigurovaná. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/alerts/alerts-metric.md). 
 
 > [!IMPORTANT]
 > Služba Azure front-in standard/Premium (Preview) je aktuálně ve verzi Public Preview.
@@ -75,7 +75,7 @@ U každé metriky můžete nakonfigurovat výstrahy, jako je například prahov�
 
 1. Vyberte **nové pravidlo výstrahy** pro metriky uvedené v části metriky.
 
-Výstraha se bude účtovat na základě Azure Monitor. Další informace o výstrahách naleznete v tématu [Azure monitor Alerts](../../azure-monitor/platform/alerts-overview.md).
+Výstraha se bude účtovat na základě Azure Monitor. Další informace o výstrahách naleznete v tématu [Azure monitor Alerts](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

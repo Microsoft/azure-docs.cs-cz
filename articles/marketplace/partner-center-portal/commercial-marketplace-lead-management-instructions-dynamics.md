@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 067a30d8f16b06b1b29ad494363d180886d1ab8b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98199766"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560076"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 Customer Engagement
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak nastavit zákaznickou zapojení Dynamics 365 (dří
 >[!NOTE]
 >Tyto pokyny jsou specifické pro cloudové prostředí hostované Microsoftem pro zákaznickou zapojení Dynamics 365. Připojení přímo k místnímu prostředí Dynamics není v současné době podporováno. Existují i další možnosti, jak můžete přijímat zájemce, jako je například konfigurace [koncového bodu https](./commercial-marketplace-lead-management-instructions-https.md) nebo [tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou nutná následující uživatelská oprávnění:
 
@@ -32,7 +32,7 @@ K dokončení kroků v tomto článku jsou nutná následující uživatelská o
 
 ## <a name="install-the-solution"></a>Instalace řešení
 
-1. Stáhněte si [řešení Microsoft Marketplaceho zapisovače zájemců](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)a uložte ho místně do svého počítače.
+1. Stáhněte si [řešení Microsoft Marketplaceho zapisovače zájemců](https://referralsflowpackages.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)a uložte ho místně do svého počítače.
 
 1. Kliknutím na adresu URL vaší instance Dynamics otevřete Dynamics 365 Customer Engagement `https://tenant.crm.dynamics.com` .
 

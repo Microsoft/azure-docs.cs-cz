@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2021
+ms.date: 03/25/2021
 ms.author: b-juche
-ms.openlocfilehash: abbae7f8cb047f2f2ad3d998966bc00b02a002d4
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 03a29e121d3838404519045601d484a1875db9ce
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864019"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557237"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -100,6 +100,7 @@ Tato část poskytuje odkazy na řešení SAP v Azure.
 * [Cloudové svazky ONTAP a Azure NetApp Files: Snadná migrace systému SAP HANA](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
 * [Rozhodnutí o architektuře pro maximalizaci investic do ANF v HANA N + M Scale-Out architektury – část 1](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
 * [Rozhodnutí o architektuře pro maximalizaci investic do ANF v HANA N + M Scale-Out architektury – 2. část](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [Rozhodnutí o architektuře pro maximalizaci investic do ANF v HANA N + M Scale-Out architektury – část 3](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2215948)
 
 ## <a name="azure-vmware-solutions"></a>Řešení Azure VMware
 

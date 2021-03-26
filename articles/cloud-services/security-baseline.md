@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c389cfd2af6fe83ec232e5f205041676ba46bd2a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731098"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558189"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Základní hodnoty zabezpečení Azure pro Azure Cloud Services
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (Classic) nelze umístit do Azure Resource Manage
 
 - [Přehled skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md)
 
-- [Partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Partnerský vztah virtuálních sítí](./cloud-services-connectivity-and-networking-faq.md#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Odpovědnost:** Zákazník
 
@@ -89,11 +89,11 @@ Zabraňte příchozímu provozu na výchozí adresu URL nebo název vaší Cloud
 
 Nakonfigurujte pravidlo Odepřít použití na klasické přiřazení správců předplatného. Ve výchozím nastavení platí, že po definování interního koncového bodu může komunikace směrovat z jakékoli role do interního koncového bodu role bez jakýchkoli omezení. Chcete-li omezit komunikaci, je nutné přidat element NetworkTrafficRules do elementu ServiceDefinition v souboru definice služby.
 
-- [Jak můžu blokovat nebo zakázat příchozí provoz na výchozí adresu URL mé cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Jak můžu blokovat nebo zakázat příchozí provoz na výchozí adresu URL mé cloudové služby](./cloud-services-connectivity-and-networking-faq.md#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Ochrana Azure DDOS](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Ochrana Azure DDOS](./cloud-services-connectivity-and-networking-faq.md#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [Blokování konkrétní IP adresy](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
+- [Blokování konkrétní IP adresy](./cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
 **Odpovědnost:** Zákazník
 
@@ -175,9 +175,9 @@ Získejte přehled z protokolu aktivit, protokolu platformy v Azure, do událost
 
 Vytvořte nastavení diagnostiky pro odeslání protokolu aktivit Azure Monitor, Azure Event Hubs k přeposílání mimo Azure nebo pro účely archivace Azure Storage. Nakonfigurujte Azure Monitor upozornění na oznámení v případě, že se změní kritické prostředky v Azure Cloud Services. 
 
-- [Protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Monitorování Traffic Manager](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -193,7 +193,7 @@ Vytvořte nastavení diagnostiky pro odeslání protokolu aktivit Azure Monitor,
 
 **Pokyny**: Microsoft udržuje časové zdroje pro prostředky Azure pro Azure Cloud Services. Zákazníci možná budou muset vytvořit síťové pravidlo, které umožní přístup k časovému serveru používanému ve svém prostředí, a to přes port 123 s protokolem UDP.
 
-- [Přístup k serveru NTP](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [Přístup k serveru NTP](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
 **Odpovědnost:** Sdílené
 
@@ -233,7 +233,7 @@ Službu Azure Cloud Services je možné monitorovat pomocí Application Insights
 
 - [Zapnout diagnostiku v aplikaci Visual Studio před nasazením](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Zobrazit historii změn](/azure/azure-monitor/platform/activity-log#view-change-history)
+- [Zobrazit historii změn](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Application Insights pro cloudovou službu Azure (Classic)](../azure-monitor/app/cloudservices.md)
 
@@ -269,7 +269,7 @@ Diagnostické rozšíření Azure shromažďuje a ukládá data v Azure Storagem
 
 - [Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu](cloud-services-diagnostics-powershell.md)
 
-- [Ukládání a zobrazení diagnostických dat v Azure Storage](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
+- [Ukládání a zobrazení diagnostických dat v Azure Storage](./diagnostics-extension-to-storage.md?preserve-view=)
 
 **Odpovědnost:** Zákazník
 
@@ -289,7 +289,7 @@ Diagnostické rozšíření Azure shromažďuje a ukládá data v Azure Storagem
 
 **Doprovodné** materiály: Microsoft Antimalware pro Azure, který chrání Azure Cloud Services a virtuální počítače. Máte možnost kromě toho nasadit řešení zabezpečení od jiných výrobců, například brány fire wall webové aplikace, brány firewall sítě, antimalwarové, odhalování vniknutí a systémy prevence (ID nebo IP adresy) a další.
 
-- [Jaké jsou funkce a možnosti, které poskytuje Azure Basic IP/IDS a DDOS](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Jaké jsou funkce a možnosti, které poskytuje Azure Basic IP/IDS a DDOS](./cloud-services-configuration-and-management-faq.md#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Odpovědnost:** Zákazník
 
@@ -315,7 +315,7 @@ Get-AzRoleAssignment – IncludeClassicAdministrators
 
 Projděte si rozdíly mezi rolemi pro správu předplatného Classic. 
 
-- [Rozdíly mezi třemi rolemi pro správu předplatného pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Rozdíly mezi třemi rolemi pro správu předplatného pro klasický odběr](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Odpovědnost:** Zákazník
 
@@ -325,7 +325,7 @@ Projděte si rozdíly mezi rolemi pro správu předplatného Classic.
 
 **Doprovodné** materiály: doporučujeme vytvořit standardní operační postupy kolem používání vyhrazených účtů pro správu na základě dostupných rolí a oprávnění, která jsou nutná k provozování a správě prostředků Azure Cloud Services.
 
-- [Rozdíly mezi rolemi správy pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Rozdíly mezi rolemi správy pro klasický odběr](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Odpovědnost:** Zákazník
 
@@ -389,7 +389,7 @@ Můžete také upravit "permissionLevel" v prvku certifikátu cloudové služby 
 
 - [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Schéma WebRole](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
+- [Schéma WebRole](./schema-csdef-webrole.md#Certificate)
 
 **Odpovědnost:** Zákazník
 
@@ -465,9 +465,9 @@ Data aplikace uložená na dočasných discích nejsou šifrována. Zákazník j
 
 Kromě toho Application Insights můžou monitorovat aplikace Azure Cloud Services z důvodu dostupnosti, výkonu, selhání a využití. Používá kombinovaná data z Application Insights sad SDK a Azure Diagnostics data z Azure Cloud Services.
 
-- [Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-classic-portal)
+- [Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Přehled výstrah metrik](/azure/azure-monitor/platform/alerts-metric-overview) 
+- [Přehled výstrah metrik](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Application Insights pro cloudovou službu Azure (Classic)](../azure-monitor/app/cloudservices.md)
 
@@ -493,7 +493,7 @@ Když zákazník zvolí konkrétní verzi operačního systému pro své nasazen
 
 - [Jak nakonfigurovat cloudovou službu (Classic)](cloud-services-how-to-configure-portal.md)
 
-- [Spravovat verzi hostovaného operačního systému](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
+- [Spravovat verzi hostovaného operačního systému](./cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
 **Odpovědnost:** Sdílené
 
@@ -523,7 +523,7 @@ V těchto scénářích doporučujeme promyslet si:
 
 Podpůrná dokumentace:
 
-- [Hodnocení rizik vašich prostředků Azure](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
+- [Hodnocení rizik vašich prostředků Azure](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
 **Odpovědnost:** Zákazník
 
@@ -805,7 +805,7 @@ Můžete zabezpečit tajné kódy, jako jsou přihlašovací údaje, které se p
 
 Kromě toho se doporučuje ukládat privátní klíče pro certifikáty používané v Azure Cloud Services do zabezpečeného úložiště.
 
-- [Konfigurace vzdálené plochy z PowerShellu](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Konfigurace vzdálené plochy z PowerShellu](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Odpovědnost:** Zákazník
 
@@ -820,7 +820,7 @@ Začněte tím, že zadáte heslo pro prostý text, změníte ho na zabezpečen�
 
 Soukromé klíče uložte pro certifikáty používané v Azure Cloud Services do zabezpečeného umístění úložiště.
 
-- [Konfigurace vzdálené plochy z PowerShellu](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Konfigurace vzdálené plochy z PowerShellu](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Odpovědnost:** Zákazník
 
@@ -840,9 +840,9 @@ Povolte antimalwarové rozšíření pomocí skriptu PowerShellu v úloze po spu
 
 Vyberte funkci adaptivního řízení aplikací v Azure Security Center inteligentní, automatizované a komplexní řešení. Pomáhá posílit zabezpečení vašich počítačů proti malwaru a umožňuje blokovat nebo upozorňovat na pokusy o spuštění škodlivých aplikací, včetně těch, které by jinak mohly chybět antimalwarová řešení.
 
-- [Jak můžu pomocí automatizovaného způsobu přidat antimalwarové rozšíření pro můj Cloud Services Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Jak můžu pomocí automatizovaného způsobu přidat antimalwarové rozšíření pro můj Cloud Services Azure](./cloud-services-configuration-and-management-faq.md#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [Scénáře nasazení antimalwaru](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
+- [Scénáře nasazení antimalwaru](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -940,5 +940,5 @@ Jasně označte předplatná (například produkci, neprodukční) a vytvořte n
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

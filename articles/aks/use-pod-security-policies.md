@@ -4,12 +4,12 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180305"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544243"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
@@ -21,7 +21,7 @@ ms.locfileid: "102180305"
 > Důrazně doporučujeme začít s testováním scénářů pomocí Azure Policy pro AKS, což nabízí integrované zásady pro zabezpečení lusků a integrovaných iniciativ, které se mapují na zásady zabezpečení pod. Chcete-li provést migraci ze zásad zabezpečení pod, je třeba provést následující akce v clusteru.
 > 
 > 1. [Zakázat zásadu zabezpečení pod](#clean-up-resources) v clusteru
-> 1. Povolení [doplňku Azure Policy][kubernetes-policy-reference]
+> 1. Povolení [doplňku Azure Policy][azure-policy-add-on]
 > 1. Povolit požadované zásady Azure z [dostupných integrovaných zásad][policy-samples]
 > 1. Kontrola [změn chování mezi zásadami zabezpečení a Azure Policy](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
@@ -462,7 +462,6 @@ Další informace o omezování síťového provozu najdete v tématu [zabezpeč
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -479,3 +478,4 @@ Další informace o omezování síťového provozu najdete v tématu [zabezpeč
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
+[azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md

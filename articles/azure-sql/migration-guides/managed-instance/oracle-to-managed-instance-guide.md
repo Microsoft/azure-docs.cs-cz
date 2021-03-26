@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 1c2fbc90d3956ab831e6d9fac4e1e2d3540e1c6d
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 6cf6e8e3f19b11a49e91b781b1ef6d83bf647903
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025420"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562983"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>Průvodce migrací: spravovaná instance Oracle do Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -142,11 +142,8 @@ K publikování schématu a migraci dat použijte následující postup:
 
 Případně můžete k provedení migrace použít taky služba SSIS (SQL Server Integration Services) (SSIS). Další informace najdete v následujících tématech: 
 
-- [Začínáme s služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
+- [Začínáme s služba SSIS (SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services)
 - [Služba SSIS (SQL Server Integration Services): SSIS pro Azure a přesun hybridních dat](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
-
-    
-
 
 ## <a name="post-migration"></a>Po migraci 
 
@@ -194,7 +191,7 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 ## <a name="next-steps"></a>Další kroky
 
-- Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat a speciálních úlohách, najdete v článku [služba a nástroje pro migraci dat](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+- Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat a speciálních úlohách, najdete v článku [služba a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 
 - Další informace o spravované instanci Azure SQL najdete tady: 
   - [Přehled spravované instance Azure SQL](../../managed-instance/sql-managed-instance-paas-overview.md)

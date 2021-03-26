@@ -7,23 +7,23 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: justinha
-author: inbarckms
+author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579378"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558257"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurace dočasného přístupového průchodu ve službě Azure AD pro registraci metod ověřování bez hesla (Preview)
 
 Metody ověřování bez hesla, jako je FIDO2 nebo telefon bez hesla, se přihlásí prostřednictvím aplikace Microsoft Authenticator a umožní uživatelům, aby se bezpečně přihlásili bez hesla. Uživatelé mohou spustit metody neumožňující heslo jedním ze dvou způsobů:
 
-- Používání stávajících metod Multi-Factor Authentication služby Azure AD 
-- Použití dočasného přístupového průchodu 
+- Používání stávajících Multi-Factor Authenticationch metod Azure AD 
+- Použití dočasného přístupového průchodu (klepnutím) 
 
 Dočasný přístupový průchod je časově omezený přístupový kód vydaný správcem, který splňuje požadavky na silné ověřování a dá se použít k zaregistrování dalších metod ověřování, včetně bez hesla. Dočasná metoda přístupu také usnadňuje obnovení, když uživatel ztratí nebo zapomněl svůj faktor ověřování, jako je FIDO2 bezpečnostní klíč nebo aplikace Microsoft Authenticator, ale musí se přihlásit k registraci nových metod silného ověřování.
 
@@ -49,13 +49,13 @@ Postup konfigurace zásady dočasného přístupu k metodě ověřování:
    Výchozí hodnota a rozsah povolených hodnot jsou popsány v následující tabulce.
 
 
-   | Nastavení          | Výchozí hodnoty | Povolené hodnoty               | Komentáře                                                                                                                                                                                                                                                                 |   |
-   |------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    Minimální doba života | 1 hodina         | 10 – 43200 minut (30 dní) | Minimální počet minut, po který je dočasný přístupový průchod platný.                                                                                                                                                                                                                         |   |
-   | Maximální doba života | 24 hodin       | 10 – 43200 minut (30 dní) | Maximální počet minut, po který je dočasný přístupový průchod platný.                                                                                                                                                                                                                         |   |
-   | Výchozí doba života | 1 hodina         | 10 – 43200 minut (30 dní) | Výchozí hodnoty lze přepsat jednotlivými průchody v rámci minimální a maximální doby života nakonfigurované zásadou.                                                                                                                                                |   |
-   | Jednorázové použití     | Ne          | True nebo false                 | Pokud je zásada nastavená na hodnotu false, průchody v tenantovi se dají v rámci platnosti (maximální doba života) použít buď jednou, nebo více než jednou. Když vynutíte jednorázové použití v zásadách dočasného přístupového průchodu, všechny průchody vytvořené v tenantovi se vytvoří jako jednorázové použití. |   |
-   | Délka           | 8              | 8-48 znaků              | Definuje délku hesla.                                                                                                                                                                                                                                      |   |
+   | Nastavení | Výchozí hodnoty | Povolené hodnoty | Komentáře |
+   |---|---|---|---|
+   | Minimální doba života | 1 hodina | 10 – 43200 minut (30 dní) | Minimální počet minut, po který je dočasný přístupový průchod platný. |
+   | Maximální doba života | 24 hodin | 10 – 43200 minut (30 dní) | Maximální počet minut, po který je dočasný přístupový průchod platný. |
+   | Výchozí doba života | 1 hodina | 10 – 43200 minut (30 dní) | Výchozí hodnoty lze přepsat jednotlivými průchody v rámci minimální a maximální doby života nakonfigurované zásadou. |
+   | Jednorázové použití | Ne | True nebo false | Pokud je zásada nastavená na hodnotu false, průchody v tenantovi se dají v rámci platnosti (maximální doba života) použít buď jednou, nebo více než jednou. Když vynutíte jednorázové použití v zásadách dočasného přístupového průchodu, všechny průchody vytvořené v tenantovi se vytvoří jako jednorázové použití. |
+   | Délka | 8 | 8-48 znaků | Definuje délku hesla. |
 
 ## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Vytvoření dočasného přístupového průchodu na portálu Azure AD
 
