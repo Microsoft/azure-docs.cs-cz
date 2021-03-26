@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 4d546401baa7edc7725e3fdb23065009895f9c1e
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 5048364aed1eea8d0c32d9134a4ba5a22d28b989
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027427"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560450"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -421,10 +421,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na předplatné Azure__, získat tuto `_SubscriptionId` vlastnost jako:
 
 ```kusto
-find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, _SubscriptionId
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
 Pokud chcete získat objem dat podle skupiny prostředků, můžete analyzovat `_ResourceId` :

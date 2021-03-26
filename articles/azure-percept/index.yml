@@ -3,19 +3,19 @@ title: Dokumentace ke službě Azure Percept
 summary: Azure Percept je ucelené řešení pro sestavování a nasazování AI na bázi vnímání na hranici.
 metadata:
   title: Dokumentace ke službě Azure Percept
-  description: Azure Percept je koncová platforma AI pro všechny koncové strany.
+  description: Azure Percept je ucelená špičková platforma pro AI a vývojová sada.
   services: azure-percept
   ms.service: azure-percept
   ms.topic: landing-page
-  author: elqu20
-  ms.author: v-elqu
-  ms.date: 02/11/2021
-  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
-  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  author: mimcco
+  ms.author: mimcco
+  ms.date: 03/25/2021
+  ms.openlocfilehash: 61e9d784d899cb8f0741f27aee0bdb7031bb37d1
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102097491"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105562541"
 landingContent:
 - title: Co je Azure Percept?
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
       url: overview-azure-percept-studio.md
     - text: Přehled zabezpečení Azure Percept
       url: overview-percept-security.md
+    - text: integrace 80/20
+      url: overview-8020-integration.md
 - title: Začínáme s Azure Percept DK
   linkLists:
   - linkListType: quickstart

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: af6234a81e8f79424cc3b1ec4178a175d9ff0146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98706311"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564564"
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
 Ve službě Microsoft Azure Import/Export může dojít k selhání při kopírování některých souborů nebo částí souborů do služby Windows Azure Blob service. Mezi některé z příčin selhání patří:  
@@ -30,7 +30,7 @@ Nástroj pro Microsoft Azure Import/Export můžete spustit pomocí souborů pro
 
 Pomocí **RepairImport** lze zadat následující parametry: 
   
-|||  
+| Parametr | Popis |  
 |-|-|  
 |**/r:**<RepairFile\>|**Požadovanou.** Cesta k souboru opravy, který sleduje průběh opravy a umožňuje obnovit přerušenou opravu. Každá jednotka musí mít jeden a jenom jeden opravný soubor. Když zahájíte opravu dané jednotky, předejte cestu k souboru opravy, který ještě neexistuje. Chcete-li obnovit přerušenou opravu, měli byste předat název existujícího opravného souboru. Vždy zadejte soubor opravy odpovídající cílové jednotce.|  
 |**/logdir:**<LogDirectory\>|**Volitelné.** Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud není zadaný žádný adresář protokolu, použije se jako adresář protokolu aktuální adresář.|  

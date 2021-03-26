@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 3/08/2021
-ms.openlocfilehash: 1a1d415b374818d9a51c87e78e7ac422fa374bc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 47ef56a770ca9965cef3e50630be4b69342a038d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509590"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559855"
 ---
 # <a name="media-players-for-media-services"></a>Přehrávače médií pro Media Services
 
@@ -21,7 +21,7 @@ Pomocí Media Services můžete použít několik přehrávačů médií.
 
 Azure Media Player je přehrávač videa pro širokou škálu prohlížečů a zařízení. Azure Media Player využívá oborové standardy, jako je HTML5, Media source Extensions (MSE) a rozšíření EME (Encrypted Media Extensions), a poskytuje tak obohacené možnosti adaptivního streamování. Pokud tyto standardy nejsou k dispozici na zařízení nebo v prohlížeči, Azure Media Player používá jako záložní technologii Flash a Silverlight. Bez ohledu na použitou technologii přehrávání mají vývojáři sjednocené rozhraní JavaScript pro přístup k rozhraním API. Obsah poskytovaný Azure Media Services může být přehráván v široké škále zařízení a prohlížečů bez jakéhokoli dalšího úsilí.
 
-Přečtěte si [dokumentaci Azure Media Player](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview).
+Přečtěte si [dokumentaci Azure Media Player](../azure-media-player/azure-media-player-overview.md).
 
 ## <a name="shaka"></a>Shaka
 

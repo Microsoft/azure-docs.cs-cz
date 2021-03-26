@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5444f6adb9d441cb6253c180cf2d079c1c36316c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103463540"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562677"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rychlý Start: nasazení prvního modulu IoT Edge do zařízení s Windows (Preview)
 
@@ -39,7 +39,7 @@ Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](http
 >[!NOTE]
 >IoT Edge pro Linux ve Windows je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 

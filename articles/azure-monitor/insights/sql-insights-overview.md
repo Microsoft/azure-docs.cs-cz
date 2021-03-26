@@ -5,126 +5,122 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: b5add466a60bc855e08917d02fecaf60a35deeb1
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d0bb5c55d3f7ba0573dfe9b511f4d31dcc64ed85
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889565"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567827"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Monitorování nasazení SQL pomocí SQL Insights (Preview)
-SQL Insights monitoruje výkon a stav nasazení SQL.  Může přispět k předvídatelnému výkonu a dostupnosti důležitých úloh, které jste vytvořili kolem back-endu SQL, a to tak, že identifikují problémová místa a problémy s výkonem. SQL Insights ukládá data do [protokolů Azure monitor](../logs/data-platform-logs.md), což umožňuje poskytovat výkonnou agregaci a filtrování a analyzovat trendy dat v čase. Tato data můžete zobrazit z Azure Monitor v zobrazeních, která jako součást této nabídky dodáváme, a můžete se podívat přímo na data protokolu, abyste mohli spouštět dotazy a analyzovat trendy.
+SQL Insights je komplexní řešení pro monitorování libovolného produktu v [řadě Azure SQL](../../azure-sql/index.yml). SQL Insights používá [zobrazení dynamické správy](../../azure-sql/database/monitoring-with-dmvs.md) k vystavování dat, která potřebujete k monitorování stavu, diagnostikování problémů a optimalizaci výkonu.  
 
-SQL Insights neinstaluje cokoli do nasazení SQL IaaS. Místo toho využívá vyhrazené monitorování virtuálních počítačů ke vzdálenému shromažďování dat pro nasazení SQL PaaS i SQL IaaS.  Profil monitorování SQL Insights umožňuje spravovat sady dat, které se mají shromažďovat, podle typu SQL, včetně Azure SQL DB, spravované instance Azure SQL a SQL serveru běžícího na virtuálním počítači Azure.
+SQL Insights provádí vzdálenou kontrolu vzdáleně. Agenti monitorování na vyhrazených virtuálních počítačích se připojují k prostředkům SQL a vzdáleně shromažďují data. Shromážděná data jsou uložená v [protokolech Azure monitor](../logs/data-platform-logs.md), což umožňuje snadnou agregaci, filtrování a analýzu trendů. Shromážděná data můžete zobrazit ze [šablony SEŠITU](../visualize/workbooks-overview.md)SQL Insights, nebo se můžete podívat přímo na data pomocí [dotazů protokolu](../logs/get-started-queries.md).
 
 ## <a name="pricing"></a>Ceny
+Pro SQL Insights se neúčtují žádné přímé náklady. Všechny náklady vycházejí z virtuálních počítačů, které shromažďují data, Log Analytics pracovní prostory, které ukládají data, a všech pravidel upozornění nakonfigurovaných na data. 
 
-Pro SQL Insights se neúčtují žádné přímé náklady, ale v pracovním prostoru Log Analytics se vám účtuje jeho aktivita. Na základě cen, které jsou publikovány na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/), se SQL Insights účtuje takto:
+**Virtual Machines**
 
-- Data ingestovaná z agentů a uložená v pracovním prostoru.
-- Pravidla výstrah na základě dat protokolu
-- Oznámení se odesílají z pravidel výstrah.
+U virtuálních počítačů se účtují na základě cen publikovaných na stránce s [cenami virtuálních počítačů](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/). Požadovaný počet virtuálních počítačů se bude lišit podle počtu připojovacích řetězců, které chcete monitorovat. Pro každé 100 připojovacích řetězců doporučujeme přidělit 1 virtuální počítač velikosti Standard_B2s. Další podrobnosti najdete v tématu [požadavky na virtuální počítače Azure](sql-insights-enable.md#azure-virtual-machine-requirements) .
 
-Velikost protokolu se liší podle délky řetězců shromažďovaných dat a může se zvýšit s množstvím aktivity databáze. 
+**Pracovní prostory služby Log Analytics**
+
+U Log Analyticsch pracovních prostorů se účtují na základě cen publikovaných na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Pracovní prostory Log Analytics používané službou SQL Insights budou účtovat náklady na příjem dat, uchovávání dat a (volitelně) Export dat. Přesné poplatky se budou lišit v závislosti na množství dat, která jsou ingestovaná, zachovaná a exportovaná. Množství těchto dat se následně bude lišit v závislosti na vaší databázové aktivitě a nastaveních kolekce definovaných v [profilech monitorování](sql-insights-enable.md#create-sql-monitoring-profile).
+
+**Pravidla upozornění**
+
+Pravidla výstrah v Azure Monitor se účtují na základě cen publikovaných na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Pokud se rozhodnete [vytvořit výstrahy s SQL Insights](sql-insights-alerts.md), budou se vám účtovat všechna vytvořená pravidla upozornění a všechna oznámení.
 
 ## <a name="supported-versions"></a>Podporované verze 
 SQL Insights podporuje následující verze SQL Server:
-
 - SQL Server 2012 a novější
 
 SQL Insights podporuje SQL Server spuštěné v následujících prostředích:
-
 - Azure SQL Database
 - Spravovaná instance Azure SQL
-- Virtuální počítače Azure SQL
-- Virtuální počítače Azure
+- SQL Server ve službě Azure Virtual Machines (SQL Server běží na virtuálních počítačích zaregistrovaných u poskytovatele [virtuálních počítačů SQL](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) )
+- Virtuální počítače Azure (SQL Server spuštěné na virtuálních počítačích, které nejsou registrované u poskytovatele [virtuálních počítačů SQL](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) )
 
 SQL Insights nepodporuje ani neomezenou podporu pro následující:
-
-- SQL Server běžící na virtuálních počítačích mimo Azure se v tuto chvíli nepodporuje.
-- Azure SQL Database elastické fondy: omezená podpora během Public Preview. Bude plně podporován při obecné dostupnosti.  
-- Nasazení bez serveru SQL bez serveru: jako aktivní geografické prostředí DR, současná agenti monitorování zabrání nasazení bez serveru v přechodu do režimu spánku. To může způsobit vyšší než očekávané náklady z nasazení bez serveru.  
-- Čitelné sekundární: v současné době se podporují jenom typy nasazení s jedním čitelným sekundárním koncovým bodem (Pro důležité obchodní informace nebo s měřítkem). Pokud nasazení v rámci škálování podporuje pojmenované repliky, budeme schopni podpořit pro jednu logickou databázi více čitelných sekundárních koncových bodů.  
-- Azure Active Directory: v současné době podporujeme jenom přihlášení SQL pro agenta monitorování. Plánujeme podporovat Azure Active Directory v nadcházející verzi a bez aktuální podpory pro ověřování virtuálních počítačů SQL pomocí aktivních adresářů na Bespoke řadiči domény.  
-
+- **Instance mimo Azure**: SQL Server běžící na virtuálních počítačích mimo Azure se nepodporují.
+- **Azure SQL Database elastické fondy**: pro elastické fondy nejde shromáždit metriky. Pro databáze v rámci elastických fondů nelze shromáždit metriky.
+- **Azure SQL Database nízké úrovně služeb**: pro databáze na [úrovni služeb](../../azure-sql/database/resource-limits-dtu-single-databases.md) Basic, S0, S1 a S2 nelze shromáždit metriky.
+- **Azure SQL Database úroveň bez serveru**: metriky je možné shromažďovat pro databáze pomocí výpočetní vrstvy bez serveru. Proces shromažďování metrik ale resetuje časovač zpoždění automatického pozastavení, takže databáze brání v vstupu do stavu automatického pozastavení.
+- **Sekundární repliky**: metriky se dají shromažďovat jenom pro jednu sekundární repliku na databázi. Pokud má databáze více než jednu sekundární repliku, je možné monitorovat pouze 1.
+- **Ověřování pomocí Azure Active Directory**: jedinou podporovanou metodou [ověřování](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization) pro monitorování je ověřování SQL. Pro SQL Server na virtuálním počítači Azure se nepodporuje ověřování pomocí služby Active Directory na vlastním řadiči domény.  
 
 ## <a name="open-sql-insights"></a>Otevřete SQL Insights.
 Otevřete SQL Insights výběrem **SQL (Preview)** v části **přehled** v nabídce **Azure monitor** v Azure Portal. Kliknutím na dlaždici načtěte prostředí pro typ SQL, který sledujete.
 
 :::image type="content" source="media/sql-insights/portal.png" alt-text="SQL Insights v Azure Portal.":::
 
-
 ## <a name="enable-sql-insights"></a>Povolit SQL Insights 
-Podrobný postup, jak povolit SQL Insights, najdete v tématu [Povolení SQL Insights](sql-insights-enable.md) .
+Pokyny k povolení SQL Insights najdete v tématu [Povolení SQL Insights](sql-insights-enable.md) .
 
+## <a name="troubleshoot-sql-insights"></a>Řešení potíží s SQL Insights 
+Pokyny k řešení potíží s SQL Insights najdete v tématu [řešení potíží s SQL Insights](sql-insights-troubleshoot.md) .
 
 ## <a name="data-collected-by-sql-insights"></a>Data shromážděná službou SQL Insights
+SQL Insights provádí vzdálenou kontrolu vzdáleně. Do virtuálních počítačů, na kterých běží SQL Server, nenainstalujeme žádné agenty. 
 
-SQL Insights podporuje pouze vzdálenou metodu monitorování SQL. Na virtuální počítače, na kterých běží SQL Server, nenainstalujeme žádné agenty. Vyžaduje se jeden nebo více vyhrazených virtuálních počítačů monitorování, které používáme ke vzdálenému shromažďování dat z vašich prostředků SQL. 
+SQL Insights používá k vzdálenému shromažďování dat z vašich prostředků SQL vyhrazené monitorování virtuálních počítačů. Každý virtuální počítač pro monitorování bude mít nainstalovaného [agenta Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) a rozšíření WLI (úlohy Insights). Rozšíření WLI zahrnuje Open sourceho [agenta telegraf](https://www.influxdata.com/time-series-platform/telegraf/). SQL Insights používá [pravidla shromažďování dat](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) k určení nastavení shromažďování dat pro [modul plug-in telegraf SQL Server](https://www.influxdata.com/integration/microsoft-sql-server/).
 
-U každého z těchto virtuálních počítačů monitorování bude nainstalován [agent Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) společně s rozšířením WLI (úlohy Insights). 
+K dispozici jsou různé sady dat Azure SQL Database, spravované instance Azure SQL a SQL Server. Dostupná data jsou popsána v následujících tabulkách. Můžete upravit, které datové sady se mají shromažďovat, a frekvenci shromažďování při [vytváření profilu monitorování](sql-insights-enable.md#create-sql-monitoring-profile).
 
-Rozšíření WLI zahrnuje Open sourceho [agenta telegraf](https://www.influxdata.com/time-series-platform/telegraf/).  [Pravidla shromažďování dat](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) používáme ke konfiguraci [vstupního modulu plug-in SQLServer](https://www.influxdata.com/integration/microsoft-sql-server/) pro určení dat, která se mají shromažďovat ze služby Azure SQL DB, spravované Instance Azure SQL a SQL Server spuštěné na virtuálním počítači Azure. 
+Následující tabulky obsahují následující sloupce:
+- **Popisný název**: název dotazu, který je zobrazený na Azure Portal při vytváření profilu monitorování
+- **Název konfigurace**: název dotazu, který je zobrazený na Azure Portal při úpravách profilu monitorování.
+- **Obor názvů**: název dotazu, který se nachází v pracovním prostoru Log Analytics. Tento identifikátor se zobrazí v tabulce **InsighstMetrics** pro `Namespace` vlastnost ve sloupci. `Tags`
+- **Zobrazení dynamické správy**: Dynamická spravovaná zobrazení používaná k vytvoření datové sady
+- **Povoleno ve výchozím nastavení**: Určuje, zda jsou data shromažďována ve výchozím nastavení.
+- **Výchozí četnost shromažďování** dat: jak často se data shromažďují ve výchozím nastavení.
 
-Následující tabulky shrnují následující:
+### <a name="data-for-azure-sql-database"></a>Data pro Azure SQL Database 
+| Popisný název | Název konfigurace | Obor názvů | Zobrazení dynamické správy | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
+|:---|:---|:---|:---|:---|:---|
+| Statistika čekání databáze | AzureSQLDBWaitStats | sqlserver_azuredb_waitstats | sys.dm_db_wait_stats | No | NA |
+| Statistika čekání DBO | AzureSQLDBOsWaitstats | sqlserver_waitstats |sys.dm_os_wait_stats | Yes | 60 sekund |
+| Správci paměti | AzureSQLDBMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 sekund |
+| V/V databází | AzureSQLDBDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | Yes | 60 sekund |
+| Vlastnosti serveru | AzureSQLDBServerProperties | sqlserver_server_properties | sys.dm_os_job_object<br>sys.database_files<br>tabulce. databáze<br>tabulce. [database_service_objectives] | Yes | 60 sekund |
+| Čítače výkonu | AzureSQLDBPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases | Yes | 60 sekund |
+| Statistiky prostředků | AzureSQLDBResourceStats | sqlserver_azure_db_resource_stats | sys.dm_db_resource_stats | Yes | 60 sekund |
+| Zásady správného řízení prostředků | AzureSQLDBResourceGovernance | sqlserver_db_resource_governance | sys.dm_user_db_resource_governance | Yes | 60 sekund |
+| Žádosti | AzureSQLDBRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
+| Plánovače| AzureSQLDBSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA  |
 
-- Název dotazu v modulu plug-in SQLServer telegraf
-- Dynamická spravovaná zobrazení – volání dotazu
-- Obor názvů – data se zobrazí pod tabulkou *InsighstMetrics* .
-- Zda jsou data shromažďována ve výchozím nastavení
-- Jak často se data shromažďují ve výchozím nastavení
- 
-Můžete upravit, které dotazy jsou spouštěny, a četnost shromažďování dat při vytváření profilu monitorování. 
+### <a name="data-for-azure-sql-managed-instance"></a>Data pro spravovanou instanci Azure SQL 
 
-### <a name="azure-sql-db-data"></a>Data služby Azure SQL DB 
+| Popisný název | Název konfigurace | Obor názvů | Zobrazení dynamické správy | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
+|:---|:---|:---|:---|:---|:---|
+| Statistiky čekání | AzureSQLMIOsWaitstats | sqlserver_waitstats | sys.dm_os_wait_stats | Yes | 60 sekund |
+| Správci paměti | AzureSQLMIMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 sekund |
+| V/V databází | AzureSQLMIDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Yes | 60 sekund |
+| Vlastnosti serveru | AzureSQLMIServerProperties | sqlserver_server_properties | sys.server_resource_stats | Yes | 60 sekund |
+| Čítače výkonu | AzureSQLMIPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases| Yes | 60 sekund |
+| Statistiky prostředků | AzureSQLMIResourceStats | sqlserver_azure_db_resource_stats | sys.server_resource_stats | Yes | 60 sekund |
+| Zásady správného řízení prostředků | AzureSQLMIResourceGovernance | sqlserver_instance_resource_governance | sys.dm_instance_resource_governance | Yes | 60 sekund |
+| Žádosti | AzureSQLMIRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
+| Plánovače | AzureSQLMISchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA |
 
-| Název dotazu | Zobrazení dynamické správy | Obor názvů | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
-|:---|:---|:---|:---|:---|
-| AzureSQLDBWaitStats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | Ne | NA |
-| AzureSQLDBResourceStats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Ano | 60 sekund |
-| AzureSQLDBResourceGovernance | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Ano | 60 sekund |
-| AzureSQLDBDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Ano | 60 sekund |
-| AzureSQLDBServerProperties | sys.dm_os_job_object<br>sys.database_files<br>tabulce. databáze<br>tabulce. [database_service_objectives] | sqlserver_server_properties | Ano | 60 sekund |
-| AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Ano | 60 sekund |
-| AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ano | 60 sekund |
-| AzureSQLDBPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Ano | 60 sekund |
-| AzureSQLDBRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Ne | NA |
-| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Ne | NA  |
+### <a name="data-for-sql-server"></a>Data pro SQL Server
 
-### <a name="azure-sql-managed-instance-data"></a>Data spravované instance Azure SQL 
-
-| Název dotazu | Zobrazení dynamické správy | Obor názvů | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
-|:---|:---|:---|:---|:---|
-| AzureSQLMIResourceStats | sys.server_resource_stats | sqlserver_azure_db_resource_stats | Ano | 60 sekund |
-| AzureSQLMIResourceGovernance | sys.dm_instance_resource_governance | sqlserver_instance_resource_governance | Ano | 60 sekund |
-| AzureSQLMIDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Ano | 60 sekund |
-| AzureSQLMIServerProperties | sys.server_resource_stats | sqlserver_server_properties | Ano | 60 sekund |
-| AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Ano | 60 sekund |
-| AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ano | 60 sekund |
-| AzureSQLMIPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Ano | 60 sekund |
-| AzureSQLMIRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Ne | NA |
-| AzureSQLMISchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Ne | NA |
-
-### <a name="sql-server-data"></a>Data SQL Server
-
-| Název dotazu | Zobrazení dynamické správy | Obor názvů | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
-|:---|:---|:---|:---|:---|
-| SQLServerPerformanceCounters | sys.dm_os_performance_counters | sqlserver_performance | Ano | 60 sekund |
-| SQLServerWaitStatsCategorized | sys.dm_os_wait_stats | sqlserver_waitstats | Ano | 60 sekund | 
-| SQLServerDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Ano | 60 sekund |
-| SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Ano | 60 sekund |
-| SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ano | 60 sekund |
-| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Ne | NA |
-| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Ne | NA |
-| SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Ano | 60 sekund |
-| SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Ano | 60 sekund |
-| SQLServerAvailabilityReplicaStates | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | sqlserver_hadr_replica_states | | 60 sekund |
-| SQLServerDatabaseReplicaStates | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | sqlserver_hadr_dbreplica_states | | 60 sekund |
-
-
-
+| Popisný název | Název konfigurace | Obor názvů | Zobrazení dynamické správy | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
+|:---|:---|:---|:---|:---|:---|
+| Statistiky čekání | SQLServerWaitStatsCategorized | sqlserver_waitstats | sys.dm_os_wait_stats | Yes | 60 sekund | 
+| Správci paměti | SQLServerMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 sekund |
+| V/V databází | SQLServerDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Yes | 60 sekund |
+| Vlastnosti serveru | SQLServerProperties | sqlserver_server_properties | sys.dm_os_sys_info | Yes | 60 sekund |
+| Čítače výkonu | SQLServerPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters | Yes | 60 sekund |
+| Místo na svazku | SQLServerVolumeSpace | sqlserver_volume_space | sys.master_files | Yes | 60 sekund |
+| SQL Server procesor | SQLServerCpu | sqlserver_cpu | sys.dm_os_ring_buffers | Yes | 60 sekund |
+| Plánovače | SQLServerSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA |
+| Žádosti | SQLServerRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
+| Stavy repliky dostupnosti | SQLServerAvailabilityReplicaStates | sqlserver_hadr_replica_states | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | No | 60 sekund |
+| Repliky databáze dostupnosti | SQLServerDatabaseReplicaStates | sqlserver_hadr_dbreplica_states | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | No | 60 sekund |
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný postup povolení SQL Insights najdete v tématu [Povolení SQL Insights](sql-insights-enable.md) .
-Přečtěte si [Nejčastější dotazy](../faq.md#sql-insights-preview) k nejčastějším dotazům o SQL Insights.
+- Pokyny k povolení SQL Insights najdete v tématu [Povolení SQL Insights](sql-insights-enable.md) .
+- Přečtěte si nejčastější [dotazy](../faq.md#sql-insights-preview) k nejčastějším dotazům o SQL Insights.

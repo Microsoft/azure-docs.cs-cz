@@ -8,28 +8,28 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94445213"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557220"
 ---
-# <a name="managed-hsm-local-rbac-built-in-roles"></a>Spravované místní role RBAC místního zabezpečení HSM
+# <a name="managed-hsm-local-rbac-built-in-roles"></a>Předdefinované role RBAC místního spravovaného HSM
 
-Spravovaná místní RBAC nástroje HSM má několik předdefinovaných rolí, které můžete přiřadit uživatelům, instančním objektům, skupinám a spravovaným identitám. Pokud chcete, aby objekt zabezpečení mohl provést operaci, musíte jim přiřadit roli, která jim uděluje oprávnění k provádění těchto operací. Všechny tyto role a operace umožňují spravovat pouze oprávnění k operacím roviny dat. Pokud chcete spravovat oprávnění řídicí plochy pro spravovaný prostředek HSM (například vytvořit nový spravovaný HSM nebo aktualizovat, přesunout, odstranit existující), musíte použít [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Spravovaná místní RBAC v modulu HSM má několik předdefinovaných rolí. Tyto role můžete přiřadit uživatelům, objektům služby, skupinám a spravovaným identitám. Pokud chcete, aby objekt zabezpečení mohl provést operaci, musíte jim přiřadit roli, která jim uděluje oprávnění k provádění těchto operací. Všechny tyto role a operace umožňují spravovat pouze oprávnění k operacím roviny dat. Pokud chcete spravovat oprávnění řídicí plochy pro spravovaný prostředek HSM, musíte použít [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Některé příklady operací řízení roviny představují vytvoření nového spravovaného HSM nebo aktualizace, přesunutí a odstranění.
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
 |Název role|Popis|ID|
 |---|---|---|
-|Spravovaný správce HSM| Udělí úplný přístup ke všem datovým akcím.|a290e904-7015-4bba-90c8-60543313cdb4|
-|Spravovaný pracovník kryptografických modulů HSM| Udělí úplný přístup ke všem klíčovým operacím správy klíčů a klíčovým kryptografiím.|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
-|Spravovaný kryptografický uživatel HSM|Udělí přístup k vytváření a používání klíčů pro kryptografické operace. Klíče nelze trvale odstranit.|21dbd100-6940-42c2-9190-5d6cb909625b|
+|Spravovaný správce HSM| Uděluje oprávnění k provádění všech operací souvisejících s doménou zabezpečení, úplným zálohováním a obnovením a správou rolí. Nepovoluje se provádět žádné operace správy klíčů.|a290e904-7015-4bba-90c8-60543313cdb4|
+|Spravovaný pracovník kryptografických modulů HSM|Uděluje oprávnění provádět všechny úlohy správy rolí, vyprázdnit nebo obnovit odstraněné klíče a exportovat klíče. Nepovoluje se provádět žádné jiné operace správy klíčů.|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
+|Spravovaný kryptografický uživatel HSM|Uděluje oprávnění k provádění všech operací správy klíčů s výjimkou vymazání nebo obnovení odstraněných klíčů a exportu klíčů.|21dbd100-6940-42c2-9190-5d6cb909625b|
 |Správce zásad spravovaného HSM| Uděluje oprávnění k vytváření a odstraňování přiřazení rolí.|4bd23610-cdcf-4971-bdee-bdc562cc28e4|
-|Spravovaný auditor kryptografie HSM|Uděluje oprávnění ke čtení (ale nepoužívá) klíčům.|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
+|Spravovaný auditor kryptografie HSM|Uděluje oprávnění ke čtení (ale nepoužívá) atributům klíče.|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
 |Spravované šifrování šifrovací služby HSM| Uděluje oprávnění používat klíč pro šifrování služby. |33413926-3206-4cdd-b39a-83574fe37a17|
-|Spravované zálohování HSM| Uděluje oprávnění k provádění jediného klíče nebo úplného zálohování HSM. |7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
+|Spravované zálohování HSM| Uděluje oprávnění k provádění jediného klíče nebo úplného zálohování HSM.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>Povolené operace
 > [!NOTE]  
@@ -45,29 +45,32 @@ Spravovaná místní RBAC nástroje HSM má několik předdefinovaných rolí, k
 /securitydomain/upload/read|<center>Znak</center>||||||
 /securitydomain/transferkey/read|<center>Znak</center>||||||
 |**Správa klíčů**|
-|/keys/read/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>||<center>Znak</center>|
-|/keys/write/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||||
-|/keys/create|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||||
-|/keys/delete|<center>Znak</center>|<center>Znak</center>|||||
-|/keys/deletedKeys/read/action|<center>Znak</center>|<center>Znak</center>|||||
-|/keys/deletedKeys/recover/action|<center>Znak</center>|<center>Znak</center>|||||
-|/keys/deletedKeys/delete|<center>Znak</center>|<center>Znak</center>|||||<center>Znak</center>|
-|/keys/backup/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>|||<center>Znak</center>|
-|/keys/restore/action|<center>Znak</center>|<center>Znak</center>|||||
-|/keys/export/action|<center>Znak</center>|<center>Znak</center>|||||
-|/keys/import/action|<center>Znak</center>|<center>Znak</center>|||||
+|/keys/read/action|||<center>Znak</center>||<center>Znak</center>||<center>Znak</center>|
+|/keys/write/action|||<center>Znak</center>||||
+|/keys/create|||<center>Znak</center>||||
+|/keys/delete|||<center>Znak</center>||||
+|/keys/deletedKeys/read/action||<center>Znak</center>|||||
+|/keys/deletedKeys/recover/action||<center>Znak</center>|||||
+|/keys/deletedKeys/delete||<center>Znak</center>|||||<center>Znak</center>|
+|/keys/backup/action|||<center>Znak</center>|||<center>Znak</center>|
+|/keys/restore/action|||<center>Znak</center>||||
+|/keys/export/action||<center>Znak</center>|||||
+|/keys/release/action|||<center>Znak</center>||||
+|/keys/import/action|||<center>Znak</center>||||
 |**Klíčové operace šifrování**|
-|/keys/encrypt/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||||
-|/keys/decrypt/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||||
-|/keys/wrap/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>||
-|/keys/unwrap/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>||
-|/keys/sign/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||||
-|/keys/verify/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>||||
+|/keys/encrypt/action|||<center>Znak</center>||||
+|/keys/decrypt/action|||<center>Znak</center>||||
+|/keys/wrap/action|||<center>Znak</center>||<center>Znak</center>||
+|/keys/unwrap/action|||<center>Znak</center>||<center>Znak</center>||
+|/keys/sign/action|||<center>Znak</center>||||
+|/keys/verify/action|||<center>Znak</center>||||
 |**Správa rolí**|
-|/roleAssignments/delete/action|<center>Znak</center>|||<center>Znak</center>|||
-|/roleAssignments/read/action|<center>Znak</center>|||<center>Znak</center>|||
-|/roleAssignments/write/action|<center>Znak</center>|||<center>Znak</center>|||
-|/roleDefinitions/read/action|<center>Znak</center>|||<center>Znak</center>|||
+|/roleAssignments/read/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>|||<center>Znak</center>
+|/roleAssignments/write/action|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>|||
+|/roleAssignments/delete/action|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>|||
+|/roleDefinitions/read/action|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>|<center>Znak</center>|||<center>Znak</center>
+|/roleDefinitions/write/action|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>|||
+|/roleDefinitions/delete/action|<center>Znak</center>|<center>Znak</center>||<center>Znak</center>|||
 |**Správa zálohování a obnovení**|
 |/backup/start/action|<center>Znak</center>|||||<center>Znak</center>|
 |/backup/status/action|<center>Znak</center>|||||<center>Znak</center>|

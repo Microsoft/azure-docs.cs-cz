@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 2bdb6a085bd9fa0e9967d723db63f2310a8e02db
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: d4078d1403df01475c6055dded2bd012e97af98e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023091"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557985"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Kurz: vyhodnocení instancí SQL pro migraci do Azure SQL
 
@@ -193,4 +193,4 @@ Hodnocení spolehlivosti vám pomůže odhadnout spolehlivost doporučení velik
 ## <a name="next-steps"></a>Další kroky
 
 - [Přečtěte si další informace](concepts-azure-sql-assessment-calculation.md) o výpočtu odhadů Azure SQL.
-- Začněte migrovat instance a databáze SQL pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
+- Začněte migrovat instance a databáze SQL pomocí [Azure Database Migration Service](../dms/dms-overview.md).

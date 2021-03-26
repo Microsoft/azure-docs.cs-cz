@@ -3,7 +3,7 @@ title: Azure DDoS Protection standardní sestavy a protokoly toků
 description: Naučte se konfigurovat sestavy a protokoly toků.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100591883"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567674"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Zobrazení a konfigurace protokolování diagnostiky DDoS
 
@@ -130,7 +130,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 Tato [Šablona](https://aka.ms/ddosdiaglogs) vytvoří definici Azure Policy pro automatické povolení protokolování diagnostiky pro všechny protokoly veřejné IP adresy v definovaném oboru.
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>Zobrazení dat protokolu v sešitech
 
@@ -144,7 +144,7 @@ Protokoly můžete připojit k Azure Sentinel, zobrazit a analyzovat data v seš
 
 [Tuto šablonu Azure Resource Manager (ARM)](https://aka.ms/ddosworkbook) můžete použít k nasazení sešitu analýzy útoků. Tento sešit vám umožní vizualizovat data útoku napříč několika panely, které umožňují snadno pochopit, co je k dispozici. 
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FWorkbook%20-%20Azure%20DDOS%20monitor%20workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![Sešit DDoS Protection](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 

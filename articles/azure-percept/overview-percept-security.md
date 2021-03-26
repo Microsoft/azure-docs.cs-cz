@@ -1,22 +1,22 @@
 ---
 title: Přehled zabezpečení Azure Percept
 description: Další informace o zabezpečení Azure Percept
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 9575c0aec4a1b45f9099bff1dc4209c63529ddf6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 93884fb87f87651054ffff0a04c4910de634a5eb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025539"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567640"
 ---
 # <a name="azure-percept-security-overview"></a>Přehled zabezpečení Azure Percept
 
-Zařízení Azure Percept DK jsou navržená s hardwarovým kořenem důvěryhodnosti: Další integrované zabezpečení na každém zařízení. Pomáhá chránit senzory citlivé na soukromí, jako jsou kamery a mikrofony, odvozování dat, a umožňuje ověřování a autorizaci zařízení pro služby Azure Percept Studio.
+Zařízení Azure Percept jsou navržená s hardwarovým kořenem důvěryhodnosti. Toto integrované zabezpečení pomáhá chránit odvozená data a senzory citlivé na soukromí, jako jsou kamery a mikrofony, a umožňuje ověřování a autorizaci zařízení pro služby Azure Percept Studio.
 
 > [!NOTE]
 > Azure Percept DK má licenci pro použití jenom ve vývojových a testovacích prostředích.
@@ -25,52 +25,28 @@ Zařízení Azure Percept DK jsou navržená s hardwarovým kořenem důvěryhod
 
 ### <a name="azure-percept-dk"></a>Azure Percept DK
 
-Azure Percept DK obsahuje čip TPM (Trusted Platform Module) verze 2,0, který se dá využít k připojení zařízení ke službám Azure Device Provisioning s vyšším zabezpečením. TPM je podniková, standardně založená na standardech ISO od skupiny důvěryhodných Computingů a další informace o TPM najdete na [kompletní specifikaci tpm 2,0](https://trustedcomputinggroup.org/resource/tpm-library-specification/) nebo specifikaci ISO/IEC 11889. Další informace o tom, jak DPS může zřídit zařízení zabezpečeným způsobem, najdete v tématu [Azure IoT Hub Device Provisioning Service – ověření identity pomocí čipu TPM](../iot-dps/concepts-tpm-attestation.md).
+Azure Percept DK obsahuje čip TPM (Trusted Platform Module) verze 2,0, který se dá využít k připojení zařízení ke službám Azure Device Provisioning (DPS) s vyšším zabezpečením. TPM je podniková Standard ISO od skupiny Trusted Computing. Další informace o kompletní specifikaci TPM 2,0 nebo specifikaci ISO/IEC 11889 najdete na [webu důvěryhodných výpočetních skupin](https://trustedcomputinggroup.org/resource/tpm-library-specification/) . Další informace o tom, jak DPS může zřídit zařízení zabezpečeně, najdete v tématu [ověření identity pomocí Azure IoT Hub Device Provisioning Service-TPM](../iot-dps/concepts-tpm-attestation.md).
 
-### <a name="azure-percept-system-on-module-som"></a>Systém Azure Percept v modulu (SOM)
+### <a name="azure-percept-system-on-modules-soms"></a>Azure Percept – moduly (SoMs)
 
-Systém Azure Percept DK v modulu (SOM) a příslušenství Azure Percept audio SOM zahrnuje i jednotku mikrokontroléru (MCU) pro zajištění ochrany přístupu k integrovaným senzorům AI. Při každém spuštění firmware MCU ověřuje a autorizuje akcelerátor AI pomocí služby Azure Percept Studio Services pomocí architektury modulu složení identifikátoru zařízení (kost). KOST funguje tak, že rozbalí spouštění do vrstev a vytvoří jedinečné tajné klíče pro každou vrstvu a konfiguraci na základě jedinečného tajného klíče zařízení (UDS). Pokud je v jakémkoli okamžiku v řetězci spuštěný jiný kód nebo konfigurace, tajné klíče se budou lišit. Další informace o KOSTce si můžete přečíst na adrese [kostky v pracovní skupině](https://trustedcomputinggroup.org/work-groups/dice-architectures/). Pro konfiguraci přístupu ke službě Azure Percept Studio a požadovaných služeb najdete další informace v tématu **Konfigurace bran firewall pro Azure PERCEPT DK** .
+Azure Percept Vision System – on-Module (SoM) a Azure Percept audio SoM zahrnuje i jednotku mikrokontrolerů (MCU) pro ochranu přístupu k vestavěným senzorům AI. Při každém spuštění firmware MCU ověřuje a autorizuje akcelerátor AI pomocí služby Azure Percept Studio Services pomocí architektury modulu složení identifikátoru zařízení (kost). KOST funguje rozbalením spouštěcích vrstev a vytvořením jedinečných tajných kódů zařízení (UDS) pro každou vrstvu a konfiguraci. Pokud je v jakémkoli bodě řetězce spuštěný jiný kód nebo konfigurace, tajné klíče se budou lišit. Další informace o KOSTce si můžete přečíst na adrese [kostky v pracovní skupině](https://trustedcomputinggroup.org/work-groups/dice-architectures/). Informace o konfiguraci přístupu k Azure Percept studia a požadovaných služeb najdete v článku věnovaném [konfiguraci bran firewall pro Azure PERCEPT DK](concept-security-configuration.md).
 
-Zařízení Azure Percept používají k zabezpečení firmwaru kořenový certifikát hardwaru. Spouštěcí paměť ROM zajišťuje integritu firmwaru mezi zavaděčem paměti ROM a operačním systémem (OS), který zase zajišťuje integritu ostatních softwarových součástí vytvářejících řetěz důvěryhodnosti.
+Zařízení Azure Percept používají k zabezpečení firmwaru kořenový adresář hardwaru důvěryhodnosti. Spouštěcí paměť ROM zajišťuje integritu firmwaru mezi zavaděčem paměti ROM a operačním systémem (OS), což zase zajišťuje integritu ostatních softwarových součástí a vytváří tak řetěz důvěryhodnosti.
 
 ## <a name="services"></a>Služby
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK se připojuje ke službě Azure Percept Studio s dalším zabezpečením a dalšími službami Azure, které využívají protokol TLS (Transport Layer Security). Azure Percept DK je zařízení s povoleným Azure IoT Edge. IoT Edge runtime je kolekce programů, které zařízení přepíná do IoT Edge zařízení. Souhrnně IoT Edge komponenty modulu runtime umožňují zařízením IoT Edge přijímat kód, který se má spustit na hranici a sdělit výsledky. Azure Percept DK využívá kontejnery Docker k izolaci IoT Edge úloh z hostitelského operačního systému a aplikací s povoleným okrajem. Další informace o rozhraní Azure IoT Edge Security Framework najdete v článku o [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Azure Percept DK se připojuje ke službě Azure Percept Studio s dalším zabezpečením a dalšími službami Azure, které využívají protokol TLS (Transport Layer Security). Azure Percept DK je zařízení s podporou Azure IoT Edge. IoT Edge runtime je kolekce programů, které zařízení přepíná do IoT Edge zařízení. Souhrnně IoT Edge komponenty modulu runtime umožňují zařízením IoT Edge přijímat kód, který se má spustit na hranici a sdělit výsledky. Azure Percept DK využívá kontejnery Docker k izolaci IoT Edge úloh z hostitelského operačního systému a aplikací s podporou Edge. Další informace o rozhraní Azure IoT Edge Security Framework najdete v článku o [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 ### <a name="device-update-for-iot-hub"></a>Aktualizace zařízení pro IoT Hub
 
 Aktualizace zařízení pro IoT Hub umožňuje bezpečnější, škálovatelnou a spolehlivou aktualizaci prostřednictvím Air, která přináší obnovitelné zabezpečení na zařízení Azure Percept. Poskytuje rozsáhlé ovládací prvky pro správu a aktualizuje dodržování předpisů prostřednictvím přehledů. Azure Percept DK obsahuje předem integrované řešení aktualizace zařízení, které poskytuje odolnou aktualizaci (A/B) z firmwaru na vrstvy operačního systému.
 
-<!---I think the below topics need to be somewhere else, (i.e. not on the main page)
---->
-
-## <a name="configuring-firewalls-for-azure-percept-dk"></a>Konfigurace bran firewall pro Azure Percept DK
-
-Pokud instalace sítě vyžaduje, abyste výslovně povolili připojení vytvořená ze zařízení Azure Percept DK, Projděte si následující seznam součástí.
-
-Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
-
-|Adresa URL (* = zástupný znak) |Odchozí porty TCP|    Využití|
-|-------------------|------------------|---------|
-|*. auth.azureperceptdk.azure.net|   443|    Ověřování a autorizace ve službě Azure DK SOM|
-|*. auth.projectsantacruz.azure.net| 443|    Ověřování a autorizace ve službě Azure DK SOM|
-
-Dále si Projděte seznam [připojení používaných Azure IoT Edge](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices).
-
-<!---
-## Additional Recommendations for Deployment to Production
-
-Azure Percept DK offers a great variety of security capabilities out of the box. In addition to those powerful security features included in the current release, Microsoft also suggests the following guidelines when considering production deployments:
-
-- Strong physical protection of the device itself
-- Ensuring data at rest encryption is enabled
-- Continuously monitoring the device posture and quickly responding to alerts
-- Limiting the number of administrators who have access to the device
---->
-
-
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s dostupnými [modely AI pro Azure Percept](./overview-ai-models.md).
+> [!div class="nextstepaction"]
+> [Další informace o konfiguracích brány firewall a doporučeních pro zabezpečení](concept-security-configuration.md)
+
+> [!div class="nextstepaction"]
+> [Kupte si Azure Percept ze Storu z online obchodu Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

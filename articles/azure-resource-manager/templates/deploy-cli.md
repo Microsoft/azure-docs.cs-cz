@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: 1fc3397409634f29690af05ca2a85e67c30b6d89
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.date: 03/25/2021
+ms.openlocfilehash: b19dc6cc292306cc796f8c1d8f93b358a079d83b
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104954951"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544430"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
@@ -88,6 +88,8 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 > V současné době Azure CLI nepodporuje nasazování vzdálených souborů bicep. Pomocí [BICEP CLI](./bicep-install.md#development-environment) zkompilujte soubor bicep do šablony JSON a potom soubor JSON načtěte do vzdáleného umístění.
 
 Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 Pokud provádíte nasazení do skupiny prostředků, která neexistuje, vytvořte skupinu prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Název nemůže končit tečkou.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a829cd946f36fb5996405ba00945e9f9cb65d162
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669555"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544226"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Spravovat plány v Azure Automation
 
@@ -123,7 +123,7 @@ New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th
 
 ## <a name="create-a-schedule-with-a-resource-manager-template"></a>Vytvoření plánu pomocí šablony Správce prostředků
 
-V tomto příkladu používáme šablonu automatizace Správce prostředků (ARM), která vytvoří nový plán úlohy. Obecné informace o této šabloně pro správu plánů úloh služby Automation najdete v tématu Referenční dokumentace k [šablonám Microsoft. Automation automationAccounts/jobSchedules](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+V tomto příkladu používáme šablonu automatizace Správce prostředků (ARM), která vytvoří nový plán úlohy. Obecné informace o této šabloně pro správu plánů úloh služby Automation najdete v tématu Referenční dokumentace k [šablonám Microsoft. Automation automationAccounts/jobSchedules](/azure/templates/microsoft.automation/2015-10-31/automationaccounts/jobschedules#quickstart-templates).
 
 Zkopírujte tento soubor šablony do textového editoru:
 

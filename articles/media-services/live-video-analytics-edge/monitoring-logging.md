@@ -3,12 +3,12 @@ title: Monitorování a protokolování – Azure
 description: Tento článek poskytuje přehled monitorování a protokolování v živé analýze videí v IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730234"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564478"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -312,7 +312,7 @@ Pomocí těchto kroků povolíte shromažďování metrik z živé analýzy vide
    V takovém případě v Azure Portal v levém podokně vyberte **metriky a vyberte metriky** . Měla by se zobrazit Metrika.
 
 ### <a name="log-analytics-metrics-collection"></a>Kolekce metrik Log Analytics
-Pomocí [koncového bodu Prometheus](https://prometheus.io/docs/practices/naming/) spolu s [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)můžete generovat a [monitorovat metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , jako jsou například používané CPUPercent, MemoryUsedPercent atd.   
+Pomocí [koncového bodu Prometheus](https://prometheus.io/docs/practices/naming/) spolu s [Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md)můžete generovat a [monitorovat metriky](../../azure-monitor/essentials/metrics-supported.md) , jako jsou například používané CPUPercent, MemoryUsedPercent atd.   
 
 > [!NOTE]
 > Konfigurace níže neshromažďuje protokoly, **jenom metriky**. Je možné rozložit modul sběrače na shromažďování a odesílání protokolů.

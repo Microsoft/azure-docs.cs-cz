@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca55b1df347b47a6eb82557658d59a3de666b703
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101662278"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558393"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Řízení přístupu na základě role (RBAC) v Azure a aktualizace zařízení
 
@@ -39,7 +39,7 @@ K publikování a správě obsahu prostřednictvím rozhraní API služby použ�
 
 ### <a name="create-client-azure-ad-app"></a>Vytvořit Aplikace Azure AD klienta
 
-K integraci aplikace nebo služby se službou Azure AD [nejdřív zaregistrujete](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) aplikaci s využitím Azure AD. Instalace klientské aplikace se liší v závislosti na použitém toku autorizace.  Následující konfigurace uvádí pokyny k použití rozhraní REST API pro aktualizace zařízení.
+K integraci aplikace nebo služby se službou Azure AD [nejdřív zaregistrujete](../active-directory/develop/quickstart-register-app.md) aplikaci s využitím Azure AD. Instalace klientské aplikace se liší v závislosti na použitém toku autorizace.  Následující konfigurace uvádí pokyny k použití rozhraní REST API pro aktualizace zařízení.
 
 * Nastavte ověřování klientů: identifikátory URI pro přesměrování pro nativní nebo webový klient.
 * Nastavení oprávnění rozhraní API – aktualizace zařízení pro IoT Hub zpřístupňuje:

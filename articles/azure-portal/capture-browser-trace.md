@@ -1,14 +1,14 @@
 ---
 title: Zachycení trasování prohlížeče pro řešení potíží
 description: Zachyťte informace o síti z trasování v prohlížeči, abyste pomohli řešit problémy s Azure Portal.
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745991"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563479"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Zachycení trasování prohlížeče pro řešení potíží
 
@@ -190,13 +190,13 @@ Následující kroky ukazují, jak používat vývojářské nástroje v prohlí
 
     ![Snímek obrazovky s výsledky trasování prohlížeče](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. Po reprodukování neočekávaného chování portálu vyberte **Har export/import** a pak **vše uložte jako Har**.
+1. Po reprodukování neočekávaného chování portálu vyberte **Uložit vše jako Har**.
 
     ![Snímek obrazovky "Export HAR"](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Zastavte záznam kroků ve Windows nebo na obrazovce na Macu a záznam uložte.
 
-1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem na jednu ze zpráv, vyberte **exportovat viditelnou zprávu do** a uložte výstup konzoly do textového souboru.
+1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem na jednu ze zpráv, vyberte **exportovat viditelné zprávy do** a uložte výstup konzoly do textového souboru.
 
     ![Snímek obrazovky s výstupem konzoly](media/capture-browser-trace/firefox-console-select.png)
 

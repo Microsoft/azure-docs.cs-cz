@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 62b1924a1aeb1c1e5bc06ec0783d83d6918d162c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022275"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557917"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Průvodce migrací: Oracle pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -143,7 +143,7 @@ K publikování schématu a migraci dat použijte následující postup:
 
 Případně můžete k provedení migrace použít taky služba SSIS (SQL Server Integration Services) (SSIS). Další informace najdete v následujících tématech: 
 
-- [Začínáme s služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
+- [Začínáme s služba SSIS (SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services)
 - [Služba SSIS (SQL Server Integration Services): SSIS pro Azure a přesun hybridních dat](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 
 
@@ -196,7 +196,7 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 ## <a name="next-steps"></a>Další kroky
 
-- Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat a speciálních úlohách, najdete v článku [služba a nástroje pro migraci dat](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+- Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat a speciálních úlohách, najdete v článku [služba a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 
 - Další informace o Azure SQL Database najdete v těchto tématech: 
   - [Přehled Azure SQL Database](../../database/sql-database-paas-overview.md)
@@ -209,5 +209,3 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 - Obsah videa najdete v těchto tématech: 
     - [Přehled cesty migrace a nástroje/služby doporučené pro provádění posouzení a migrace](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
-
-

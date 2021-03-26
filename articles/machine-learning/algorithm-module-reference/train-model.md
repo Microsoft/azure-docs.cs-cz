@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2021
-ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224318"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562762"
 ---
 # <a name="train-model-module"></a>Modul vlakového modelu
 
@@ -71,7 +71,7 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
 
 Interpretace modelu nabízí možnost pochopit model ML a prezentovat základní základnu pro rozhodování způsobem srozumitelným pro lidi.
 
-Modul **vlakového modelu** v současné době podporuje [použití balíčku pro vyhodnocení pro vysvětlení modelů ml](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). Podporují se tyto integrované algoritmy:
+Modul **vlakového modelu** v současné době podporuje [použití balíčku pro vyhodnocení pro vysvětlení modelů ml](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs). Podporují se tyto integrované algoritmy:
 
 - Lineární regrese
 - Regrese neurální sítě
@@ -87,7 +87,7 @@ Po dokončení kanálu můžete navštívit kartu **vysvětlení** v pravém pod
 
 ![Snímek obrazovky znázorňující grafy vysvětlující model](./media/module/train-model-explanations-tab.gif)
 
-Další informace o použití vysvětlení modelů v Azure Machine Learning najdete v článku o [interpretaci modelů ml](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
+Další informace o použití vysvětlení modelů v Azure Machine Learning najdete v článku o [interpretaci modelů ml](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Výsledky
 
@@ -101,4 +101,4 @@ Po vyškolení modelu:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

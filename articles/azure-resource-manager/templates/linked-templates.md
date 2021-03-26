@@ -2,13 +2,13 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager (šablona ARM) k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6076cbae43e420ac354b5c9d7d101a9c541c078d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: 981e9f10e118012911108d634fbb8bdb9524cb88
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889174"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543971"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -444,6 +444,8 @@ Můžete odkazovat na šablony pomocí parametrů, které zahrnují protokol HTT
 Pokud vytváříte odkaz na šablonu v GitHubu, použijte neupravenou adresu URL. Odkaz má formát: `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` . Pokud chcete získat nezpracovaný odkaz, vyberte **nezpracované**.
 
 :::image type="content" source="./media/linked-templates/select-raw.png" alt-text="Vybrat hrubou adresu URL":::
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 ### <a name="parameters-for-linked-template"></a>Parametry pro propojenou šablonu
 
@@ -882,7 +884,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Propojená šablona |Popis  |
+|Hlavní šablona  |Propojená šablona |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095795"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557271"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ Možnosti vlastních zásad jsou v rámci Stálého vývoje. V následující ta
 | [Autorizační kód OAuth2](authorization-code-flow.md) |  |  | × |  |
 | OAuth2 autorizační kód s PKCE |  |  | × | [Veřejné klienty a jednostránkové aplikace](authorization-code-flow.md)  |
 | [OAuth2 implicitní tok](implicit-flow-single-page-application.md) |  |  | × |  |
-| [Přihlašovací údaje pro heslo vlastníka prostředku OAuth2](ropc-custom.md) |  | × |  |  |
+| [Přihlašovací údaje pro heslo vlastníka prostředku OAuth2](add-ropc-policy.md) |  | × |  |  |
 | [OIDC připojit](openid-connect.md) |  |  | × |  |
 | [TYPU Saml2](saml-service-provider.md)  |  |  |×  | Vystavení a přesměrování vazeb. |
 | OAuth1 |  |  |  | Nepodporováno |

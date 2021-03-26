@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677472"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568711"
 ---
 # <a name="managed-disk-bursting"></a>Shlukování spravovaných disků
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Kromě toho je [možné změnit úroveň výkonu spravovaných disků](disks-cha
 
 |  |Shlukování na základě kreditu  |Shlukování na vyžádání  |Změna úrovně výkonu  |
 |---------|---------|---------|---------|
-| Scénáře|Ideální pro krátkodobé škálování (30 minut nebo i méně).|Ideální pro krátkodobé škálování (neomezený čas).|Ideální, pokud by se vaše úlohy jinak nepřetržitě spouštěly v shluku.|
-|Náklady     |Free         |Náklady jsou proměnné, podrobnosti najdete v části [fakturace](#billing) .        |Náklady na jednotlivé úrovně výkonu jsou opravené. Další informace najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/) .         |
-|Dostupnost     |K dispozici pouze pro Premium SSD 512 GiB a menší.         |K dispozici pouze pro prémiové SSD větší než 512 GiB.         |Dostupné pro všechny velikosti SSD úrovně Premium.         |
-|Enablement     |Ve výchozím nastavení povoleno na vhodných discích.         |Musí být povolené uživatelem.         |Uživatel musí ručně změnit jejich úroveň.         |
+| **Scénáře**|Ideální pro krátkodobé škálování (30 minut nebo i méně).|Ideální pro krátkodobé škálování (neomezený čas).|Ideální, pokud by se vaše úlohy jinak nepřetržitě spouštěly v shluku.|
+|**Náklady**     |Free         |Náklady jsou proměnné, podrobnosti najdete v části [fakturace](#billing) .        |Náklady na jednotlivé úrovně výkonu jsou opravené. Další informace najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/) .         |
+|**Dostupnost**     |K dispozici pouze pro Premium SSD 512 GiB a menší.         |K dispozici pouze pro prémiové SSD větší než 512 GiB.         |Dostupné pro všechny velikosti SSD úrovně Premium.         |
+|**Povolení**     |Ve výchozím nastavení povoleno na vhodných discích.         |Musí být povolené uživatelem.         |Uživatel musí ručně změnit jejich úroveň.         |
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:

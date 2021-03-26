@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73d3b6dc85f94aba63e614c03294c054047ccb89
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102440135"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568575"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>Kurz: spuštění výpočetních úloh s modulem IoT Edge v GPU pro procesor Azure Stack Edge pro
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nastavíte výpočetní roli na zařízení GPU Azure Stack Edge pro, ujistěte se, že:
 
@@ -84,9 +84,9 @@ Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě sdílené složk
 
 ## <a name="add-a-module"></a>Přidat modul
 
-Můžete přidat vlastní nebo předem sestavený modul. Zařízení nepochází s předem vytvořenými nebo vlastními moduly. Další informace o tom, jak vytvořit vlastní modul, najdete v tématu [vývoj modulu C# pro zařízení Azure Stack Edge pro](azure-stack-edge-j-series-create-iot-edge-module.md).
+Můžete přidat vlastní nebo předem sestavený modul. Zařízení nepochází s předem vytvořenými nebo vlastními moduly. Další informace o tom, jak vytvořit vlastní modul, najdete v tématu [vývoj modulu C# pro zařízení Azure Stack Edge pro](./azure-stack-edge-gpu-create-iot-edge-module.md).
 
-V této části přidáte vlastní modul do zařízení IoT Edge, které jste vytvořili v tématu [vývoj modulu C# pro vaši Azure Stack Edge pro](azure-stack-edge-j-series-create-iot-edge-module.md). Tento vlastní modul přebírá soubory z hraniční místní sdílené složky na hraničním zařízení a přesouvá je do hraniční sdílené složky (Cloud) na zařízení. Sdílená složka cloudu pak tyto soubory vloží do účtu služby Azure Storage, který je přidružený ke sdílené složce cloudu.
+V této části přidáte vlastní modul do zařízení IoT Edge, které jste vytvořili v tématu [vývoj modulu C# pro vaši Azure Stack Edge pro](./azure-stack-edge-gpu-create-iot-edge-module.md). Tento vlastní modul přebírá soubory z hraniční místní sdílené složky na hraničním zařízení a přesouvá je do hraniční sdílené složky (Cloud) na zařízení. Sdílená složka cloudu pak tyto soubory vloží do účtu služby Azure Storage, který je přidružený ke sdílené složce cloudu.
 
 Chcete-li přidat modul, proveďte následující kroky:
 

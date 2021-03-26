@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6addd7cffdd7001b5767a471fc9e0514749b18d1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699347"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564887"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -28,10 +28,10 @@ Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpří
 
 ## <a name="new-features"></a>Nové funkce
 ### <a name="dav4-series-support"></a>Podpora řady Dav4-Series
-HDInsight přidal v této verzi podporu řady Dav4-Series. Další informace o [Dav4-Series najdete tady](/azure/virtual-machines/dav4-dasv4-series).
+HDInsight přidal v této verzi podporu řady Dav4-Series. Další informace o [Dav4-Series najdete tady](../virtual-machines/dav4-dasv4-series.md).
 
 ### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
-Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Kafka REST proxy je od této verze všeobecně k dispozici. Další informace o [proxy Kafka REST najdete tady](/azure/hdinsight/kafka/rest-proxy).
+Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Kafka REST proxy je od této verze všeobecně k dispozici. Další informace o [proxy Kafka REST najdete tady](./kafka/rest-proxy.md).
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
 HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Služba se postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
@@ -49,7 +49,7 @@ HDInsight se postupně migruje na Azure Virtual Machine Scale Sets. Pro clustery
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Průlomová změna pro .NET pro Apache Spark 1.0.0
-S nejnovější verzí zavádí HDInsight první oficiální verzi v 1.0.0 knihovny [.NET for Apache Spark](https://github.com/dotnet/spark) . Poskytuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x společně s hostitelem [dalších funkcí](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). U této hlavní verze dojde k zásadním změnám. Další informace o krocích potřebných k aktualizaci kódu a kanálů najdete [v příručce k migraci rozhraní .NET pro Apache Spark](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [v příručce k rozhraní .NET pro Apache Spark v 1.0 v Azure HDInsight](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+S nejnovější verzí zavádí HDInsight první oficiální verzi v 1.0.0 knihovny [.NET for Apache Spark](https://github.com/dotnet/spark) . Poskytuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x společně s hostitelem [dalších funkcí](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). U této hlavní verze dojde k zásadním změnám. Další informace o krocích potřebných k aktualizaci kódu a kanálů najdete [v příručce k migraci rozhraní .NET pro Apache Spark](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [v příručce k rozhraní .NET pro Apache Spark v 1.0 v Azure HDInsight](./spark/spark-dotnet-version-update.md#using-net-for-apache-spark-v10-in-hdinsight).
 
 
 ## <a name="upcoming-changes"></a>Nadcházející změny

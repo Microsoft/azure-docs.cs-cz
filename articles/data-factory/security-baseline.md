@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1cbd314861a4d5079a5c8e5213f45c7164344f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a21ae2ce79c500455c5735f4d82e7852e8474ad1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204163"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559141"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -157,9 +157,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Data Factory instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -175,7 +175,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo incidentu zabezpečení a řízení událostí zabezpečení (SIEM) třetí strany. Můžete také integrovat Azure Data Factory s Git a využít několik výhod správy zdrojového kódu, jako je například schopnost sledovat nebo auditovat změny a schopnost vracet změny, které zavádějí chyby.
 
-- [Postup konfigurace nastavení diagnostiky](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [Postup konfigurace nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -193,7 +193,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo incidentu
 
 Pomocí nastavení diagnostiky můžete nakonfigurovat diagnostické protokoly pro nevýpočetní prostředky v Azure Data Factory, jako jsou metriky a data spuštění kanálů. Azure Data Factory ukládá data o běhu kanálu po dobu 45 dnů. Pokud chcete tato data po delší dobu uchovávat, uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu a zadejte dobu uchování ve dnech.  Protokoly můžete také streamovat do Azure Event Hubs nebo je odeslat do Log Analytics pracovního prostoru pro účely analýzy.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Vysvětlení diagnostických protokolů Azure Data Factory](monitor-using-azure-monitor.md)
 
@@ -207,9 +207,9 @@ Pomocí nastavení diagnostiky můžete nakonfigurovat diagnostické protokoly p
 
 Pokud by vaše organizace měla uchovávat data protokolu událostí zabezpečení, může být uložená v rámci úrovně shromažďování dat, v takovém případě se může dotazovat na Log Analytics.
 
-- [Jak shromažďovat data z Azure Virtual Machines v Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Jak shromažďovat data z Azure Virtual Machines v Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
-- [Povolení shromažďování dat v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Povolení shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Odpovědnost:** Zákazník
 
@@ -221,7 +221,7 @@ Pokud by vaše organizace měla uchovávat data protokolu událostí zabezpečen
 
 - [Postup povolení diagnostických protokolů v Azure Data Factory](monitor-using-azure-monitor.md)
 
-- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -235,9 +235,9 @@ Pokud používáte Integration Runtime na virtuálním počítači Azure (VM), p
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-- [Log Analytics schéma](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)
+- [Log Analytics schéma](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-- [Jak shromažďovat data z virtuálního počítače Azure pomocí Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Jak shromažďovat data z virtuálního počítače Azure pomocí Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -253,11 +253,11 @@ Nakonfigurujte nastavení diagnostiky pro Azure Data Factory a odešlete protoko
 
 Navíc se ujistěte, že jste povolili nastavení diagnostiky pro služby související s vašimi úložišti dat. Pokyny najdete v jednotlivých standardních hodnotách zabezpečení služby.
 
-- [Výstrahy v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)
+- [Výstrahy v Azure Data Factory](./monitor-visually.md#alerts)
 
-- [Stránka všechny podporované metriky](/azure/azure-monitor/platform/metrics-supported)
+- [Stránka všechny podporované metriky](../azure-monitor/essentials/metrics-supported.md)
 
-- [Postup konfigurace výstrah v pracovním prostoru Log Analytics](/azure/azure-monitor/platform/alerts-log)
+- [Postup konfigurace výstrah v pracovním prostoru Log Analytics](../azure-monitor/alerts/alerts-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -279,7 +279,7 @@ Navíc se ujistěte, že jste povolili nastavení diagnostiky pro služby souvis
 
 **Pokyny**: pokud používáte Integration runtime na virtuálním počítači Azure, můžete povolit protokolování auditu z příkazového řádku. Azure Security Center poskytuje monitorování protokolu událostí zabezpečení pro virtuální počítače Azure.  Security Center zřídí Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud je povolené Automatické zřizování, nebo můžete agenta nainstalovat ručně.  Agent umožňuje událost vytvoření procesu 4688 a pole CommandLine v události 4688. Nové procesy vytvořené na virtuálním počítači se zaznamenávají protokolem událostí a monitorují služby zjišťování Security Center.
 
-- [Shromažďování dat v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Odpovědnost:** Zákazník
 
@@ -305,7 +305,7 @@ I když je služba Azure AD doporučovanou metodou správy uživatelského pří
 
 - [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-- [Informace pro místní účty](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
+- [Informace pro místní účty](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
 **Odpovědnost:** Zákazník
 
@@ -434,7 +434,7 @@ Pokud spouštíte integraci modulu runtime na virtuálním počítači Azure, bu
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -448,7 +448,7 @@ Pokud spouštíte integraci modulu runtime na virtuálním počítači Azure, bu
 
 Pokud spouštíte Integration Runtime na virtuálním počítači Azure, připojte se k virtuálnímu počítači na kartě Azure Sentinel. Microsoft Azure Sentinel je škálovatelná, cloudová, nativní, SIEM (Security Information Management) a automatizované řešení pro orchestraci zabezpečení (společnosti). Služba Azure Sentinel nabízí inteligentní analýzu zabezpečení a analýzu hrozeb napříč podnikem a poskytuje jediné řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Autorizace přístupu k prostředkům Event Hubs pomocí Azure AD](../event-hubs/authorize-access-azure-active-directory.md)
 
@@ -468,7 +468,7 @@ Pokud spouštíte Integration Runtime na virtuálním počítači Azure, připoj
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Konfigurace a Správa ověřování Azure AD pomocí SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell)
+- [Konfigurace a Správa ověřování Azure AD pomocí SQL](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)
 
 - [Povolit ověřování Azure AD pro Azure-SSIS Integration Runtime](enable-aad-authentication-azure-ssis-ir.md)
 
@@ -620,9 +620,9 @@ Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault 
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy se změny provedly pro Azure Data Factory a související prostředky.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Protokolování analýz služby Azure Storage](../storage/common/storage-analytics-logging.md)
 
@@ -1019,7 +1019,7 @@ Přihlašovací údaje nebo tajné hodnoty můžete také ukládat do Azure Key 
 
 - [Integrace se spravovanými identitami Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Vytvoření Key Vault](/azure/key-vault/quick-create-portal)
+- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 - [Ověření Key Vault](../key-vault/general/authentication.md)
 
@@ -1243,5 +1243,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- viz [Přehled služby Azure Security test benchmark v2](/azure/security/benchmarks/overview) .
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- viz [Přehled služby Azure Security test benchmark v2](../security/benchmarks/overview.md) .
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

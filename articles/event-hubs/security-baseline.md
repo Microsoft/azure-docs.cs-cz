@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1e1a8cb24b47277b38bd2d64b733a6f28ee8acff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 57862a450d313f5d8850b14047ecc3d25d6ba5c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742487"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563680"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Základní hodnoty zabezpečení Azure pro Event Hubs
 
@@ -44,7 +44,7 @@ Obor názvů Azure Event Hubs můžete zabezpečit také pomocí bran firewall. 
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. EventHub**:
 
@@ -68,7 +68,7 @@ Obor názvů Azure Event Hubs můžete zabezpečit také pomocí bran firewall. 
 
 - [Jak nakonfigurovat DDoS Protection](../ddos-protection/manage-ddos-protection.md)
 
-- [Další informace o Azure Security Center integrované analýze hrozeb](/azure/security-center/security-center-alerts-service-layer)
+- [Další informace o Azure Security Center integrované analýze hrozeb](../security-center/azure-defender.md)
 
 **Odpovědnost:** Zákazník
 
@@ -112,9 +112,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Integrovaná zásada Azure pro obor názvů Event Hubs](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Integrovaná zásada Azure pro obor názvů Event Hubs](../governance/policy/samples/built-in-policies.md#event-hub)
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 - [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -126,7 +126,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 **Doprovodné** materiály: používejte značky pro virtuální sítě a další prostředky, které se týkají zabezpečení sítě a toku provozu, které jsou přidruženy k centrům událostí.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -136,9 +136,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s Azure Event Hubs. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -154,7 +154,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat nastavení diagnostiky pro Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Principy protokolu aktivit Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Principy protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -168,11 +168,11 @@ Kromě toho můžete povolit nastavení diagnostiky protokolu aktivit Azure a od
 
 - [Postup povolení nastavení diagnostiky pro Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. EventHub**:
 
@@ -182,7 +182,7 @@ Kromě toho můžete povolit nastavení diagnostiky protokolu aktivit Azure a od
 
 **Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace za účelem zachycení a kontroly incidentů souvisejících s centrem událostí.
 
-- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -192,9 +192,9 @@ Kromě toho můžete povolit nastavení diagnostiky protokolu aktivit Azure a od
 
 **Doprovodné** materiály: analýza a sledování protokolů pro neobvyklé chování a pravidelné kontroly výsledků souvisejících s centry událostí. Pomocí Log Analytics Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo do řešení systému pro správu událostí a informací o systému třetích stran.
 
-- [Další informace o pracovním prostoru Log Analytics](/azure/azure-monitor/log-query/get-started-portal)
+- [Další informace o pracovním prostoru Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -208,11 +208,11 @@ Kromě toho můžete povolit nastavení diagnostiky protokolu aktivit Azure a od
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel. 
 
-- [Pochopení protokolu aktivit Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Pochopení protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Jak nakonfigurovat nastavení diagnostiky pro Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Upozornění na data protokolu Log Analytics pracovního prostoru](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics pracovního prostoru](../azure-monitor/alerts/tutorial-response.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -310,9 +310,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 **Doprovodné** materiály: použití služby Azure Active Directory (Azure AD) Privileged Identity Management pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů. Pro další protokolování odešlete výstrahy Azure Security Center detekce rizik do Azure Monitor a nakonfigurujte vlastní výstrahy a oznámení pomocí skupin akcí.
 
-- [Vysvětlení zjišťování rizik Azure AD](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](/azure/azure-monitor/platform/action-groups)
+- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/alerts/action-groups.md)
 
 **Odpovědnost:** Zákazník
 
@@ -346,7 +346,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 Kromě toho pravidelně otáčejte Event Hubsch sdílených přístupových podpisů.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -362,7 +362,7 @@ Kromě toho pravidelně otáčejte Event Hubsch sdílených přístupových podp
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Autorizace přístupu k prostředkům Event Hubs pomocí Azure AD](authorize-access-azure-active-directory.md)
 
@@ -374,7 +374,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: použití funkcí ochrany identit a detekce rizik v rámci služby Azure Active Directory (Azure AD) ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se vašich prostředků s podporou Event Hubs. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace.
 
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -388,7 +388,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Event Hubs podporovaná.
 
-- [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Odpovědnost:** Zákazník
 
@@ -402,7 +402,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: pomocí značek u prostředků souvisejících s vaším Event Hubs pomáhat při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -414,13 +414,13 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 Obor názvů Azure Event Hubs můžete také zabezpečit pomocí bran firewall. Azure Event Hubs podporuje řízení přístupu na základě IP adres pro podporu příchozích bran firewall. Pravidla brány firewall můžete nastavit pomocí Azure Portal, Azure Resource Manager šablon nebo prostřednictvím rozhraní příkazového řádku Azure CLI nebo Azure PowerShell.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Konfigurace pravidel brány firewall protokolu IP pro obory názvů Azure Event Hubs](event-hubs-ip-filtering.md)
 
-- [Jak vytvářet a používat značky](/azure/azure-resource-manager/resource-group-using-tags)
+- [Jak vytvářet a používat značky](../azure-resource-manager/management/tag-resources.md)
 
 - [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
@@ -440,7 +440,7 @@ Microsoft spravuje základní infrastrukturu pro Azure Event Hubs a implementuje
 
 - [Integrace Azure Event Hubs s privátním propojením Azure](private-link-service.md)
 
-- [Pochopení skupin zabezpečení sítě a značek služeb](/azure/virtual-network/security-overview)
+- [Pochopení skupin zabezpečení sítě a značek služeb](../virtual-network/network-security-groups-overview.md)
 
 - [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -484,7 +484,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure Event Hubs a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -512,7 +512,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -522,11 +522,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování oborů názvů Azure Event Hubs a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -562,7 +562,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -592,7 +592,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 Další informace jsou k dispozici na odkazovaných odkazech.
 
-- [Integrovaná zásada Azure pro obor názvů Event Hubs](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Integrovaná zásada Azure pro obor názvů Event Hubs](../governance/policy/samples/built-in-policies.md#event-hub)
 
 - [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
@@ -639,15 +639,15 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 **Doprovodné** materiály: u virtuálních počítačů Azure nebo webových aplikací běžících na Azure App Service se používá pro přístup k centrům událostí, použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy sdíleného přístupového podpisu pro nasazení Event Hubs Azure. Ujistěte se, že je u Key Vault nakonfigurovaná možnost obnovitelné odstranění.
 
-- [Ověření spravované identity pomocí služby Azure Active Directory (Azure AD) pro přístup k prostředkům Event Hubs](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Ověření spravované identity pomocí služby Azure Active Directory (Azure AD) pro přístup k prostředkům Event Hubs](./authenticate-managed-identity.md?tabs=latest)
 
 - [Konfigurace klíčů spravovaných zákazníkem pro Event Hubs](configure-customer-managed-key.md)
 
 - [Integrace se spravovanými identitami Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Vytvoření Key Vault](/azure/key-vault/quick-create-portal)
+- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/managed-identity)
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/general/assign-access-policy-portal.md)
 
 **Odpovědnost:** Zákazník
 
@@ -659,7 +659,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Azure Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-- [Ověřování spravované identity ve službě Azure AD pro přístup k prostředkům Event Hubs](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Ověřování spravované identity ve službě Azure AD pro přístup k prostředkům Event Hubs](./authenticate-managed-identity.md?tabs=latest)
 
 - [Konfigurace klíčů spravovaných zákazníkem pro Event Hubs](configure-customer-managed-key.md)
 
@@ -703,7 +703,7 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 **Pokyny**: Konfigurace geografického zotavení po havárii pro Azure Event Hubs. Při výpadku provozu celé oblasti Azure nebo Datacenter (Pokud se nepoužívají žádné zóny dostupnosti) je důležité, aby zpracování dat pokračovalo v práci v jiné oblasti nebo datacentru. V takovém případě geografické zotavení po havárii a geografická replikace jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
 
-- [Vysvětlení geografického zotavení po havárii pro Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)
+- [Vysvětlení geografického zotavení po havárii pro Azure Event Hubs](./event-hubs-geo-dr.md#availability-zones)
 
 **Odpovědnost:** Zákazník
 
@@ -739,11 +739,11 @@ Pomocí následujícího příkazu PowerShellu Zajistěte pravidelné automatizo
 
 Nakonfigurujte obnovitelné odstranění pro účet služby Azure Storage, který se používá k zachytávání Event Hubs dat. Všimněte si, že tato funkce ještě není podporovaná Azure Data Lake Storage Gen 2.
 
-- [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Nastavení trezoru klíčů s klíči](configure-customer-managed-key.md)
 
-- [Obnovitelné odstranění objektů blob služby Azure Storage](https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Obnovitelné odstranění objektů blob služby Azure Storage](//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Odpovědnost:** Zákazník
 
@@ -831,5 +831,5 @@ Nakonfigurujte obnovitelné odstranění pro účet služby Azure Storage, kter�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

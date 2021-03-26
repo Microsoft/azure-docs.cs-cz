@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d7b512601d066000f1f64bf99d1fd4be3532b7a
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98802349"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544124"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: V12 klientské knihovny Azure Blob Storage pomocí Xamarin
 
@@ -36,7 +36,7 @@ Odkazy odkazů:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
@@ -196,7 +196,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte dřív vytvořený objekt BLOB voláním metody [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) . Vzorový kód zkopíruje `Stream` reprezentace objektu BLOB nejprve do `MemoryStream` a potom do, `StreamReader` aby se text mohl zobrazit.
+Stáhněte dřív vytvořený objekt BLOB voláním metody [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) . Vzorový kód zkopíruje `Stream` reprezentace objektu BLOB nejprve do `MemoryStream` a potom do, `StreamReader` aby se text mohl zobrazit.
 
 Přidejte tento kód do souboru *MainPage. XAML. cs* :
 

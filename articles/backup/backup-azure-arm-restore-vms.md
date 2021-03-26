@@ -4,12 +4,12 @@ description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016521"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568745"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -249,10 +249,10 @@ Po obnovení virtuálního počítače je potřeba si uvědomit několik věcí:
 - Rozšíření, která jsou přítomna během konfigurace zálohování, jsou nainstalována, ale nejsou povolena. Pokud se zobrazí problém, přeinstalujte rozšíření.
 - Pokud má zálohovaný virtuální počítač statickou IP adresu, obnovený virtuální počítač bude mít dynamickou IP adresu, aby se předešlo konfliktu. [Do obnoveného virtuálního počítače můžete přidat STATICKOU IP adresu](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description).
 - Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
-- Pokud používáte distribuci Linux založenou na cloudu, jako je například Ubuntu, z důvodu zabezpečení je heslo po obnovení zablokované. K [resetování hesla](../virtual-machines/troubleshooting/reset-password.md)použijte rozšíření VMAccess na OBNOVENém virtuálním počítači. V těchto distribucích doporučujeme používat klíče SSH, takže po obnovení nemusíte heslo resetovat.
+- Pokud používáte distribuci Linux založenou na cloudu, jako je například Ubuntu, z důvodu zabezpečení je heslo po obnovení zablokované. K [resetování hesla](/troubleshoot/azure/virtual-machines/reset-password)použijte rozšíření VMAccess na OBNOVENém virtuálním počítači. V těchto distribucích doporučujeme používat klíče SSH, takže po obnovení nemusíte heslo resetovat.
 - Pokud po obnovení nemůžete získat přístup k virtuálnímu počítači, protože virtuální počítač má přerušenou relaci s řadičem domény, postupujte podle následujících kroků a zajistěte si virtuální počítač:
   - Připojte disk s operačním systémem jako datový disk k obnovenému virtuálnímu počítači.
-  - Ručně nainstalujte agenta virtuálního počítače, pokud se zjistí, že agent Azure přestane reagovat pomocí tohoto [odkazu](../virtual-machines/troubleshooting/install-vm-agent-offline.md).
+  - Ručně nainstalujte agenta virtuálního počítače, pokud se zjistí, že agent Azure přestane reagovat pomocí tohoto [odkazu](/troubleshoot/azure/virtual-machines/install-vm-agent-offline).
   - Povolení přístupu k virtuálnímu počítači z příkazového řádku na virtuálním počítači přes sériovou konzolu
 
   ```cmd

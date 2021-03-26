@@ -329,6 +329,8 @@
           href: how-to-create-asset.md
         - name: Nahrávání médií
           href: how-to-upload-media.md
+        - name: Správa více účtů úložiště
+          href: media-services-managing-multiple-storage-accounts.md
     - name: Vytváření transformací a úloh
       items:
         - name: Vytváření transformací
@@ -367,6 +369,8 @@
                   href: how-to-create-overlay.md
                 - name: Generování miniatur s využitím .NET
                   href: media-services-generate-thumbnails-dotnet.md
+                - name: Oříznutí videí pomocí .NET
+                  href: crop-howto.md
             - name: S využitím rozhraní příkazového řádku
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -417,6 +421,12 @@
           href: offline-widevine-for-android.md
         - name: PlayReady pro Windows 10 v offline režimu
           href: offline-plaready-streaming-for-windows-10.md
+    - name: Použití Azure Functions
+      items:
+        - name: S využitím .NET
+          items:
+            - name: Použití Azure Functions .NET
+              href: media-services-dotnet-how-to-use-azure-functions.md
     - name: Vytváření filtrů
       items:
         - name: S využitím .NET
@@ -440,6 +450,10 @@
           href: download-results-howto.md
         - name: Označení popisného zvuku
           href: signal-descriptive-audio-howto.md
+    - name: Zabezpečení
+      items:
+        - name: Zavedení přístupových klíčů úložiště
+          href: media-services-roll-storage-access-keys.md
     - name: Použití přehrávačů médií
       items:
         - name: Kompletní nastavení Azure Media Playeru
@@ -448,6 +462,8 @@
           href: how-to-video-js-player.md
         - name: Použití přehrávače videa Shaka
           href: how-to-shaka-player.md
+        - name: Předání ověřovacích tokenů
+          href: media-services-pass-authentication-tokens.md
 - name: Referenční informace
   items:
     - name: Specifikace OpenAPI (Swagger)

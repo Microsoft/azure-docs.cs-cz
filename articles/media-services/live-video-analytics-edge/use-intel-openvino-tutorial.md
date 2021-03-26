@@ -4,12 +4,12 @@ description: V tomto kurzu použijete server modelů AI, který poskytuje Intel,
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702211"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557254"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
@@ -20,7 +20,7 @@ Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a p
 > [!NOTE]
 > Tento kurz vyžaduje použití počítače s platformou X86-64 jako hraničního zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
   > [!NOTE]
@@ -51,7 +51,7 @@ V tomto rychlém startu budete používat Live video Analytics na IoT Edge spolu
 
 Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) . 
 
-Uzel rozšíření HTTP hraje roli proxy serveru. Slouží k tomu, že vypíše příchozí snímky videa nastavené vámi `samplingOptions` a také převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští modely AI za koncovým bodem HTTP. V tomto příkladu je to modul Edge OpenVINO™ model Server – AI rozšíření od společnosti Intel. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Uzel rozšíření HTTP hraje roli proxy serveru. Slouží k tomu, že vypíše příchozí snímky videa nastavené vámi `samplingOptions` a také převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští modely AI za koncovým bodem HTTP. V tomto příkladu je to modul Edge OpenVINO™ model Server – AI rozšíření od společnosti Intel. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
 V tomto kurzu:
 

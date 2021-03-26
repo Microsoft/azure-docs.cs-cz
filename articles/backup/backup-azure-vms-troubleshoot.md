@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831546"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559362"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -139,7 +139,7 @@ Chcete-li ověřit, přejděte do části ***systémové a prohlížeč událost
 
 Řešení:
 
-* Vyhledejte možnosti pro distribuci zatížení mezi disky virtuálních počítačů. Tím se sníží zatížení na jednom disku. [Omezení IOPS můžete kontrolovat tím, že povolíte diagnostické metriky na úrovni úložiště](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm).
+* Vyhledejte možnosti pro distribuci zatížení mezi disky virtuálních počítačů. Tím se sníží zatížení na jednom disku. [Omezení IOPS můžete kontrolovat tím, že povolíte diagnostické metriky na úrovni úložiště](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
 * Změňte zásadu zálohování tak, aby prováděla zálohování v době mimo špičku, kdy je zatížení virtuálního počítače na nejnižší úrovni.
 * Upgradujte disky Azure tak, aby podporovaly vyšší IOPs. [Další informace](../virtual-machines/disks-types.md)
 
@@ -371,12 +371,12 @@ Agent virtuálního počítače je obvykle přítomen na virtuálních počíta�
 #### <a name="windows-vms---set-up-the-agent"></a>Virtuální počítače s Windows – nastavení agenta
 
 * Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace potřebujete oprávnění správce.
-* Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) tak, aby označovala, že agent je nainstalovaný. Tento krok není nutný pro Azure Resource Manager virtuálních počítačů.
+* Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) tak, aby označovala, že agent je nainstalovaný. Tento krok není nutný pro Azure Resource Manager virtuálních počítačů.
 
 #### <a name="linux-vms---set-up-the-agent"></a>Virtuální počítače se systémem Linux – nastavení agenta
 
 * Nainstalujte nejnovější verzi agenta z distribučního úložiště. Podrobnosti o názvu balíčku najdete v části [úložiště agenta pro Linux](https://github.com/Azure/WALinuxAgent).
-* Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) a ověřte, jestli je agent nainstalovaný. Tento krok není nutný pro Správce prostředků virtuálních počítačů.
+* Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) a ověřte, jestli je agent nainstalovaný. Tento krok není nutný pro Správce prostředků virtuálních počítačů.
 
 ### <a name="update-the-vm-agent"></a>Aktualizace agenta virtuálního počítače
 

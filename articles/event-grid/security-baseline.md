@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bc1df4582c83b093b6ed25d03cc73aef9a81483
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739139"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563935"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Základní hodnoty zabezpečení Azure pro Event Grid
 
@@ -32,15 +32,15 @@ Pokud chcete zjistit, jak Azure Event Grid kompletně mapuje srovnávací test z
 
 Azure Event Grid také podporuje řízení přístupu na základě veřejných IP adres pro publikování do témat a domén. Pomocí ovládacích prvků založených na protokolu IP můžete omezit vydavatele na téma nebo doménu jenom na sadu schválených sad počítačů a cloudových služeb. Tato funkce doplňuje mechanismy ověřování podporované nástrojem Event Grid. 
 
-- [Další podrobnosti o Event Grid soukromých koncových bodech](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
+- [Další podrobnosti o Event Grid soukromých koncových bodech](./network-security.md#private-endpoints)
 
-- [Další podrobnosti o Event Grid firewallu protokolu IP](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
+- [Další podrobnosti o Event Grid firewallu protokolu IP](./network-security.md#ip-firewall)
 
 - [Azure Event Grid zabezpečení sítě](network-security.md) 
 
 - [Přehled služby Azure Private Link](../private-link/private-link-overview.md)
 
-- [Skupina zabezpečení sítě Azure](/azure/virtual-network/security-overview)
+- [Skupina zabezpečení sítě Azure](../virtual-network/network-security-groups-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -80,7 +80,7 @@ Povolit DDoS Protection standard pro tyto virtuální sítě pro ochranu před d
 
 - [Jak nakonfigurovat DDoS Protection](../ddos-protection/manage-ddos-protection.md)
 
-- [Další informace o Azure Security Center integrované analýze hrozeb](/azure/security-center/security-center-alerts-service-layer)
+- [Další informace o Azure Security Center integrované analýze hrozeb](../security-center/azure-defender.md)
 
 **Odpovědnost:** Zákazník
 
@@ -132,7 +132,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Doprovodné** materiály: u prostředků ve virtuálních sítích, které potřebují přístup k vašim prostředkům Azure Event Grid, použijte značky služby Virtual Network a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (například AzureEventGrid) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-- [Jak používat tag služby pro Azure Event Grid](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
+- [Jak používat tag služby pro Azure Event Grid](./network-security.md#service-tags)
 
 - [Další informace o použití značek služeb](../virtual-network/service-tags-overview.md)
 
@@ -149,7 +149,7 @@ Můžete také využít integrované definice zásad související s Azure Event
 - Azure Event Grid domény by měly používat privátní odkazy
 
 - Azure Event Grid témata by měly používat privátní odkazy na Azure
-- [předdefinované zásady pro Event Grid prostředky](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
+- [předdefinované zásady pro Event Grid prostředky](../governance/policy/samples/built-in-policies.md#event-grid)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -161,7 +161,7 @@ Můžete také využít integrované definice zásad související s Azure Event
 
 **Doprovodné** materiály: používejte značky pro síťové prostředky přidružené k vašim Azure Event Grid prostředkům, aby je bylo možné logicky uspořádat do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -171,9 +171,9 @@ Můžete také využít integrované definice zásad související s Azure Event
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s Azure Event Grid. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -217,7 +217,7 @@ Můžete také využít integrované definice zásad související s Azure Event
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure Event Grid prostředkům podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -235,9 +235,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Začínáme s Log Analytics dotazy](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Začínáme s Log Analytics dotazy](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -257,7 +257,7 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 - [Podrobnosti o schématu diagnostického protokolu Event Grid](diagnostic-logs.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -329,7 +329,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 - [Ověřování klientů publikování (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Odpovědnost:** Zákazník
 
@@ -363,7 +363,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 **Doprovodné** materiály: použití sestav a monitorování zabezpečení služby Azure Active Directory (Azure AD) k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Monitorování identit a aktivit přístupu uživatelů ve službě Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -401,11 +401,11 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 Pokud v prostředí dojde k podezřelé nebo nebezpečné aktivitě, použijte Azure AD Privileged Identity Management (PIM) pro generování protokolů a výstrah.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-- [Nasazení Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Nasazení Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Odpovědnost:** Zákazník
 
@@ -417,7 +417,7 @@ Pokud v prostředí dojde k podezřelé nebo nebezpečné aktivitě, použijte A
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -427,7 +427,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: použití funkcí ochrany identity Azure Active Directory (Azure AD) ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -455,7 +455,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
  
  
  
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -465,11 +465,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím Azure RBAC.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Vytvoření skupin pro správu](/azure/governance/management-groups/create)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -519,7 +519,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy se změny provedly v produkčních prostředcích prostředků Azure Event Grid a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -569,7 +569,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -581,11 +581,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
  
  
  
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Vytvoření skupin pro správu](/azure/governance/management-groups/create)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -764,7 +764,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -930,7 +930,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -1000,5 +1000,5 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

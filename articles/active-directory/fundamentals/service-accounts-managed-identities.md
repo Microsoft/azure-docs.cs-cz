@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16cd14aa447fb56af4cd9dd809696aecdc0c47a5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587827"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557832"
 ---
 # <a name="securing-managed-identities"></a>Zabezpečení spravovaných identit
 
@@ -38,7 +38,7 @@ Spravované identity se nejlépe používají pro komunikaci mezi službami, kte
 
 Zdrojový systém požaduje přístup k cílové službě. Libovolný prostředek Azure může být zdrojový systém. Například virtuální počítač Azure, instance funkce Azure a instance služby Azure App Services podporují spravované identity.
 
-[!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+   > [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
 
 ### <a name="how-authentication-and-authorization-work"></a>Jak funguje ověřování a autorizace
 
@@ -86,7 +86,7 @@ Existuje několik způsobů, jak můžete najít spravované identity:
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure AD vyberte podniková aplikace.
+1. V Azure Active Directory vyberte podnikové aplikace.
 
 2. Vyberte filtr pro "spravované identity". 
 
@@ -120,7 +120,7 @@ To můžete provést vytvořením výčtu členů vysoce privilegovaných skupin
 
 ## <a name="move-to-managed-identities"></a>Přesunout na spravované identity
 
-Pokud používáte instanční objekt nebo uživatelský účet služby Azure AD, vyhodnoťte, jestli můžete místo toho použít spravovanou k vyloučení nutnosti chránit, otáčet a spravovat přihlašovací údaje. 
+Pokud používáte instanční objekt nebo uživatelský účet služby Azure AD, vyhodnoťte, jestli můžete místo toho použít spravovanou identitu, abyste vyloučili nutnost chránit, otáčet a spravovat přihlašovací údaje. 
 
 ## <a name="next-steps"></a>Další kroky
 

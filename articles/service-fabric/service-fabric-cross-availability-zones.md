@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 95ee4e5f326dd9b76645d22ff735bc36437c72fb
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a49fd6f97a9130fa0369d2a36cdc38e59613afc1
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870108"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544379"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -347,6 +347,8 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 ## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>Tisk Povolit více zón dostupnosti v jedné sadě škálování virtuálních počítačů
 
 Dřív zmíněné řešení používá jedno nodeType na AZ. Následující řešení umožní uživatelům nasazovat 3 AZ do stejného uzlu nodeType.
+
+**Vzhledem k tomu, že tato funkce je aktuálně ve verzi Preview, není v současné době podporovaná pro produkční scénáře.**
 
 [Zde](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure)je uvedena úplná vzorová šablona.
 

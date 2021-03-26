@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630363"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562779"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Zpráva k vydání verze Azure Stack Edge 2101
 
@@ -49,7 +49,7 @@ Následující tabulka poskytuje souhrn známých problémů verze 2101.
 |**3.**|Kubernetes |Pokud je povolen webový proxy server, nefunguje registr kontejneru Edge.|Tato funkce bude k dispozici v budoucí verzi. |
 |**4.**|Kubernetes |Registr kontejneru Edge nefunguje s moduly IoT Edge.| |
 |**čl.**|Kubernetes |Kubernetes nepodporuje ":" v názvech proměnných prostředí, které jsou používány aplikacemi .NET. To je také vyžadováno pro fungování modulu Event Grid IoT Edge, aby fungovalo na Azure Stack hraničních zařízeních a dalších aplikacích. Další informace najdete v [dokumentaci ke službě ASP.NET Core](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Nahraďte ":" dvojitým podtržítkem. Další informace najdete v tématu [problém Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201) .|
-|**6.** |Cluster Azure ARC + Kubernetes |Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes.  |Pokud chcete odstranění prostředků odstranit z úložiště Git, nastavte `--sync-garbage-collection` v OperatorParams ARC. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**6.** |Cluster Azure ARC + Kubernetes |Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes.  |Pokud chcete odstranění prostředků odstranit z úložiště Git, nastavte `--sync-garbage-collection` v OperatorParams ARC. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters). |
 |**čl.**|NFS |Aplikace, které používají připojení ke sdílené složce NFS na vašem zařízení k zápisu dat, by měly používat exkluzivní zápis. To zajišťuje, že se zápisy zapisují na disk.| |
 |**8.**|Konfigurace výpočtů |Konfigurace výpočtů se nezdařila v konfiguracích sítě, kde brány nebo přepínače nebo směrovače reagují na žádosti protokolu ARP (Address Resolution Protocol) pro systémy, které v síti neexistují.| |
 |**9.**|COMPUTE a Kubernetes |Pokud je na zařízení Kubernetes nastavený první, vyplní všechny dostupné GPU. Proto není možné vytvářet Azure Resource Manager virtuální počítače pomocí GPU po nastavení Kubernetes. |Pokud má vaše zařízení 2 GPU, můžete vytvořit jeden virtuální počítač, který používá GPU, a pak nakonfigurovat Kubernetes. V takovém případě Kubernetes použije zbývající dostupný grafický procesor (1 GPU). |

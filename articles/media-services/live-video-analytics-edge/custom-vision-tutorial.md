@@ -4,12 +4,12 @@ description: Naučte se používat Azure Custom Vision k vytvoření kontejnerov
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e6b911ad555c4ce10a9576861e1c2e650e63cd94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698803"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561198"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -49,7 +49,7 @@ Než začnete, přečtěte si následující články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
@@ -77,7 +77,7 @@ V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takov
 
 Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) .
 
-Uzel rozšíření HTTP hraje roli proxy serveru.  Vypíše sadu příchozích snímků videa pomocí `samplingOptions` pole a také převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští model AI za koncovým bodem HTTP. V tomto příkladu je tento hraniční modul modelem automobilového rozpoznávání, sestavený pomocí Custom Vision. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [jímky Azure IoT Hub](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Uzel rozšíření HTTP hraje roli proxy serveru.  Vypíše sadu příchozích snímků videa pomocí `samplingOptions` pole a také převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští model AI za koncovým bodem HTTP. V tomto příkladu je tento hraniční modul modelem automobilového rozpoznávání, sestavený pomocí Custom Vision. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [jímky Azure IoT Hub](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Sestavení a nasazení modelu detekce Custom Vision hraček 
 

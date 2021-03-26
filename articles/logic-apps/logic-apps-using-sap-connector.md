@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048761"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564109"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -568,7 +568,7 @@ Do souboru. zip v nastavení aplikace brány můžete [exportovat všechny proto
 
 #### <a name="capture-etw-events"></a>Zaznamenat události ETW
 
-Volitelně můžou pokročilí uživatelé zachytit události ETW přímo. Data pak můžete [využívat v Azure Diagnostics Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) nebo [shromažďovat data do protokolů Azure monitor](/azure/azure-monitor/agents/diagnostics-extension-logs). Další informace najdete v tématu [osvědčené postupy pro shromažďování a ukládání dat](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) můžete použít k práci s výslednými soubory ETL nebo můžete napsat vlastní program. Tento návod používá PerfView:
+Volitelně můžou pokročilí uživatelé zachytit události ETW přímo. Data pak můžete [využívat v Azure Diagnostics Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) nebo [shromažďovat data do protokolů Azure monitor](../azure-monitor/agents/diagnostics-extension-logs.md). Další informace najdete v tématu [osvědčené postupy pro shromažďování a ukládání dat](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) můžete použít k práci s výslednými soubory ETL nebo můžete napsat vlastní program. Tento návod používá PerfView:
 
 1. V nabídce PerfView vyberte **shromáždit** &gt; **shromáždění** a zachyťte události.
 
@@ -763,7 +763,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pom
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. [Přidejte akci odpovědi do aplikace logiky](/azure/connectors/connectors-native-reqres#add-a-response-action) , abyste mohli okamžitě odpovědět na stav požadavku SAP. Je osvědčeným postupem přidat tuto akci hned po triggeru, abyste mohli komunikační kanál uvolnit se serverem SAP. Vyberte jeden z následujících stavových kódů ( `statusCode` ), který chcete použít v akci odpovědi:
+1. [Přidejte akci odpovědi do aplikace logiky](../connectors/connectors-native-reqres.md#add-a-response-action) , abyste mohli okamžitě odpovědět na stav požadavku SAP. Je osvědčeným postupem přidat tuto akci hned po triggeru, abyste mohli komunikační kanál uvolnit se serverem SAP. Vyberte jeden z následujících stavových kódů ( `statusCode` ), který chcete použít v akci odpovědi:
 
     * **202 přijato**, což znamená, že žádost byla přijata ke zpracování, ale zpracování ještě není dokončeno.
 

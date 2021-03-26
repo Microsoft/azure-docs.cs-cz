@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dec29dc92f70a3f02f3fb598659aa86477fb59bf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094552"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558240"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Role čtenáři adresáře v Azure Active Directory pro Azure SQL
 
@@ -25,7 +25,7 @@ ms.locfileid: "99094552"
 
 Služba Azure Active Directory (Azure AD) zavedla [použití cloudových skupin pro správu přiřazení rolí v Azure Active Directory (Preview)](../../active-directory/roles/groups-concept.md). Díky tomu můžou být role Azure AD přiřazené skupinám.
 
-Při povolování [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) pro Azure SQL Database, spravované instance Azure SQL nebo Azure synapse Analytics musí být role [**čtenáři adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) Azure AD přiřazená k identitě, aby bylo možné povolit přístup pro čtení [Graph API Azure AD](../../active-directory/develop/active-directory-graph-api.md). Spravovaná identita SQL Database a Azure synapse se označuje jako identita serveru. Spravovaná identita spravované instance SQL je označována jako identita spravované instance a je automaticky přiřazena při vytvoření instance. Další informace o přiřazování identity serveru SQL Database nebo synapse Azure najdete v tématu [Povolení instančních objektů pro vytváření uživatelů Azure AD](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
+Při povolování [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) pro Azure SQL Database, spravované instance Azure SQL nebo Azure synapse Analytics musí být role [**čtenáři adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) Azure AD přiřazená k identitě, aby bylo možné povolit přístup pro čtení [Graph API Azure AD](/graph/migrate-azure-ad-graph-planning-checklist). Spravovaná identita SQL Database a Azure synapse se označuje jako identita serveru. Spravovaná identita spravované instance SQL je označována jako identita spravované instance a je automaticky přiřazena při vytvoření instance. Další informace o přiřazování identity serveru SQL Database nebo synapse Azure najdete v tématu [Povolení instančních objektů pro vytváření uživatelů Azure AD](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
 Role **čtenáři adresáře** je nutná pro:
 

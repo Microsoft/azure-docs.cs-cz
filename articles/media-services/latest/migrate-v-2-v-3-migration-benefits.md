@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 114635722a0a131fc146eb2ab69984effb211a88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598384"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559753"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Krok 1 – pochopení výhod migrace na rozhraní Media Services API V3
 
@@ -23,6 +23,8 @@ ms.locfileid: "104598384"
 <hr color="#5ea0ef" size="10">
 
 ![kroky migrace 2](./media/migration-guide/steps-1.svg)
+
+## <a name="use-the-latest-api"></a>Použití nejnovějšího rozhraní API
 
 Doporučujeme začít používat rozhraní API verze 2020-05-01 Azure Media Services V3 nyní, abyste získali výhody, protože nové funkce, funkce a optimalizace výkonu jsou dostupné pouze v aktuálním rozhraní API v3.
 
@@ -60,7 +62,3 @@ Byla zjištěna významná vylepšení Media Services se systémem v3.
 | **Monitorování** | |
 | Podpora oznámení [Azure EventGrid](monitoring/reacting-to-media-services-events.md) | Oznámení EventGrid jsou ve větším množství funkcí. Existuje více typů oznámení, širší podpora SDK pro příjem oznámení ve vaší vlastní aplikaci a další stávající služby Azure, které mohou fungovat jako obslužné rutiny událostí. |
 | [Podpora a Integrace Azure Monitor v Azure Portal](monitoring/monitor-events-portal-how-to.md) | To zákazníkům umožňuje vizualizovat Media Services využití kvót účtu, statistiky streamování v reálném čase a statistiky ingestování a archivace pro živé události. Zákazníci teď můžou nastavovat upozornění a provádět nezbytné akce na základě dat metrik v reálném čase. |
-
-## <a name="next-steps"></a>Další kroky
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 3b109048be4a94990c26e31aa5bc2ad36fdd0211
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102583734"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563816"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Požadavky pro programové získání přístupu k analytickým datům
 
@@ -24,7 +24,7 @@ Chcete-li získat přístup k datům z komerčního obchodu na webu Marketplace,
 
 ## <a name="create-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-Přihlašovací údaje pro běžné uživatele nelze použít pro programový přístup k datům analýzy komerčního webu Marketplace. Pro přístup k rozhraním API pro analýzu je potřeba vytvořit aplikaci Azure Active Directory (Azure AD) společně s tajným klíčem. Informace o tom, jak vytvořit aplikaci a tajný kód pro Azure AD, najdete v tématu [rychlý Start: registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+Přihlašovací údaje pro běžné uživatele nelze použít pro programový přístup k datům analýzy komerčního webu Marketplace. Pro přístup k rozhraním API pro analýzu je potřeba vytvořit aplikaci Azure Active Directory (Azure AD) společně s tajným klíčem. Informace o tom, jak vytvořit aplikaci a tajný kód pro Azure AD, najdete v tématu [rychlý Start: registrace aplikace s platformou Microsoft Identity](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="associate-the-azure-ad-application-to-the-partner-center-tenant"></a>Přidružte aplikaci Azure AD k tenantovi partnerského centra.
 
@@ -41,7 +41,7 @@ Aplikace Azure AD, kterou jste vytvořili v Azure Portal musí být propojená s
 
 ## <a name="generate-an-azure-ad-token"></a>Generování tokenu Azure AD
 
-Je potřeba vygenerovat token Azure AD pomocí ID aplikace (klienta). Toto ID pomáhá jednoznačně identifikovat vaši klientskou aplikaci na platformě identity Microsoft a tajného klíče klienta z předchozího kroku. Postup pro generování tokenu Azure AD najdete v tématu [volání služby do služby pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow).
+Je potřeba vygenerovat token Azure AD pomocí ID aplikace (klienta). Toto ID pomáhá jednoznačně identifikovat vaši klientskou aplikaci na platformě identity Microsoft a tajného klíče klienta z předchozího kroku. Postup pro generování tokenu Azure AD najdete v tématu [volání služby do služby pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md).
 
 > [!NOTE]
 > Token je platný po dobu jedné hodiny.

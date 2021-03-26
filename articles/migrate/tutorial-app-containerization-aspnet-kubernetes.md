@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025573"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561793"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET kontejnerů aplikací a migrace do služby Azure Kubernetes
 
@@ -60,7 +60,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 **Požadavek** | **Podrobnosti**
 --- | ---
 **Určení počítače pro instalaci nástroje** | Počítač s Windows, který se má nainstalovat a spustit Azure Migrate: Nástroj pro vytvoření kontejneru aplikace Počítač s Windows může být server (Windows Server 2016 nebo novější) nebo operační systém klienta (Windows 10), což znamená, že nástroj může běžet i na ploše. <br/><br/> Počítač s Windows, na kterém nástroj běží, by měl mít síťové připojení k serverům nebo virtuálním počítačům hostujícím kontejnerizované aplikace ASP.NET.<br/><br/> Zajistěte, aby na počítači s Windows, na kterém běží Azure Migrate: Nástroj pro vyřazení aplikací pro ukládání artefaktů aplikací, bylo k dispozici 6 GB volného místa. <br/><br/> Tento počítač s Windows by měl mít přístup k internetu, a to buď přímo, nebo prostřednictvím proxy serveru. <br/> <br/>Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
-**Aplikační servery** | Povolit vzdálenou komunikaci PowerShellu na aplikačních serverech: Přihlaste se k aplikačnímu serveru a postupujte podle [těchto](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) pokynů, abyste mohli zapnout vzdálenou komunikaci PowerShellu. <br/><br/> Pokud aplikační server používá systém Windows Server 2008 R2, ujistěte se, že je na aplikačním serveru nainstalováno prostředí PowerShell 5,1. Pokud si chcete stáhnout a nainstalovat PowerShell 5,1 na aplikační server, postupujte [podle pokynů.](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) <br/><br/> Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
+**Aplikační servery** | Povolit vzdálenou komunikaci PowerShellu na aplikačních serverech: Přihlaste se k aplikačnímu serveru a postupujte podle [těchto](/powershell/module/microsoft.powershell.core/enable-psremoting) pokynů, abyste mohli zapnout vzdálenou komunikaci PowerShellu. <br/><br/> Pokud aplikační server používá systém Windows Server 2008 R2, ujistěte se, že je na aplikačním serveru nainstalováno prostředí PowerShell 5,1. Pokud si chcete stáhnout a nainstalovat PowerShell 5,1 na aplikační server, postupujte [podle pokynů.](/powershell/scripting/windows-powershell/wmf/setup/install-configure) <br/><br/> Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
 **Aplikace ASP.NET** | Nástroj aktuálně podporuje <br/><br/> -ASP.NET aplikace pomocí rozhraní Microsoft .NET Framework 3,5 nebo novějšího.<br/> – Aplikační servery se systémem Windows Server 2008 R2 nebo novějším (aplikační servery by měly používat PowerShell verze 5,1). <br/> -Aplikace spuštěné v Internetová informační služba (IIS) 7,5 nebo novější. <br/><br/> Nástroj aktuálně nepodporuje <br/><br/> – Aplikace vyžadující ověřování systému Windows (AKS nepodporuje aktuálně gMSA). <br/> – Aplikace, které závisí na dalších službách systému Windows hostovaných mimo službu IIS.
 
 
@@ -180,7 +180,7 @@ Parametrizace konfigurace je dostupná jako parametr doby nasazení. To vám umo
 
 ### <a name="externalize-file-system-dependencies"></a>Závislosti systému souborů Externalize
 
- Můžete přidat další složky, které vaše aplikace používá. Určete, jestli mají být součástí image kontejneru, nebo jestli se mají externě sdílet přes trvalé svazky v Azure File Share. Použití trvalých svazků funguje skvěle pro stavové aplikace, které ukládají stav mimo kontejner, nebo mají jiný statický obsah uložený v systému souborů. [Další informace](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Můžete přidat další složky, které vaše aplikace používá. Určete, jestli mají být součástí image kontejneru, nebo jestli se mají externě sdílet přes trvalé svazky v Azure File Share. Použití trvalých svazků funguje skvěle pro stavové aplikace, které ukládají stav mimo kontejner, nebo mají jiný statický obsah uložený v systému souborů. [Další informace](../aks/concepts-storage.md)
 
 1. Ve složkách aplikace klikněte na **Upravit** a zkontrolujte zjištěné složky aplikace. Zjištěné složky aplikace byly identifikovány jako povinné artefakty, které vyžaduje aplikace a budou zkopírovány do bitové kopie kontejneru.
 
@@ -195,7 +195,7 @@ Parametrizace konfigurace je dostupná jako parametr doby nasazení. To vám umo
 ## <a name="build-container-image"></a>Sestavení image kontejneru
 
 
-1. **Vyberte Azure Container Registry**: pomocí rozevíracího seznamu vyberte [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) , který se použije k sestavení a uložení imagí kontejneru pro aplikace. Můžete použít existující Azure Container Registry nebo zvolit vytvoření nového pomocí možnosti registru vytvořit novou.
+1. **Vyberte Azure Container Registry**: pomocí rozevíracího seznamu vyberte [Azure Container Registry](../container-registry/index.yml) , který se použije k sestavení a uložení imagí kontejneru pro aplikace. Můžete použít existující Azure Container Registry nebo zvolit vytvoření nového pomocí možnosti registru vytvořit novou.
 
     ![Snímek obrazovky pro výběr aplikace ACR](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

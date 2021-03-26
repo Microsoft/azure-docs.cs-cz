@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573268"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566400"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrace úloh z Azure Stack Edge pro FPGA do GPU pro Azure Stack Edge pro
 
@@ -173,7 +173,7 @@ Pomocí těchto kroků obnovte data z místních sdílených složek:
 
 1. [Proveďte konfiguraci výpočtů na zařízení](azure-stack-edge-gpu-deploy-configure-compute.md).
 1. Přidejte do cílového zařízení všechny místní sdílené složky. Přečtěte si podrobný postup v tématu [Přidání místní sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
-1. Přístup ke sdíleným složkám SMB na zdrojovém zařízení bude používat IP adresy, zatímco na cílovém zařízení použijete název zařízení. Viz [připojení ke sdílené složce SMB na grafickém procesoru Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Pokud se chcete připojit ke sdíleným složkám systému souborů NFS na cílovém zařízení, budete muset použít nové IP adresy přidružené k zařízení. Viz [připojení ke sdílené složce NFS na grafickém procesoru Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
+1. Přístup ke sdíleným složkám SMB na zdrojovém zařízení bude používat IP adresy, zatímco na cílovém zařízení použijete název zařízení. Viz [připojení ke sdílené složce SMB na grafickém procesoru Azure Stack Edge pro](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-smb-share). Pokud se chcete připojit ke sdíleným složkám systému souborů NFS na cílovém zařízení, budete muset použít nové IP adresy přidružené k zařízení. Viz [připojení ke sdílené složce NFS na grafickém procesoru Azure Stack Edge pro](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-nfs-share). 
 
     Pokud jste zkopírovali sdílená data do zprostředkujícího serveru přes protokol SMB nebo NFS, můžete zkopírovat data ze zprostředkujícího serveru do sdílených složek na cílovém zařízení. Pokud je zdrojové i cílové zařízení *online*, můžete data zkopírovat také přímo ze zdrojového zařízení.
 

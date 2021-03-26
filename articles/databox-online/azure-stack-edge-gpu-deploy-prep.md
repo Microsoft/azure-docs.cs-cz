@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: b108e757ed9fe9ab7038cae4240f0f749ac19675
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a58146c2c8121f3f0e3b564caafbb09396d39672
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036040"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568526"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Kurz: Příprava na nasazení Azure Stack Edge pro s grafickým procesorem 
 
@@ -47,8 +47,8 @@ Pro nasazení Azure Stack Edge pro je nutné nejprve připravit prostředí. Jak
 |**[6. Konfigurace nastavení zabezpečení pro Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Nakonfigurujte certifikáty pro vaše zařízení. Použijte certifikáty generované zařízením nebo přeneste vlastní certifikáty.   |
 |**[7. aktivovat Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md)** |K aktivaci zařízení použijte aktivační klíč ze služby. Zařízení je připravené nastavovat sdílené složky SMB nebo NFS nebo je připojit prostřednictvím REST. |
 |**[8. konfigurace COMPUTE](azure-stack-edge-gpu-deploy-configure-compute.md)** |Nakonfigurujte na svém zařízení výpočetní roli. Vytvoří se také cluster Kubernetes. |
-|**[9a. Přenos dat pomocí hraničních sdílení](azure-stack-edge-j-series-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
-|**[9b. Přenos dat pomocí hraničních účtů úložiště](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Přidejte účty úložiště a připojte se k úložišti objektů BLOB prostřednictvím rozhraní REST API. |
+|**[9a. Přenos dat pomocí hraničních sdílení](./azure-stack-edge-gpu-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
+|**[9b. Přenos dat pomocí hraničních účtů úložiště](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)** |Přidejte účty úložiště a připojte se k úložišti objektů BLOB prostřednictvím rozhraní REST API. |
 
 
 Teď můžete začít shromažďovat informace týkající se konfigurace softwaru pro zařízení Azure Stack Edge pro.
@@ -58,7 +58,7 @@ Teď můžete začít shromažďovat informace týkající se konfigurace softwa
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na zařízení Azure Stack Edge pro. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční prostředek, vaše zařízení Azure Stack Edge pro a síť datacenter.
 

@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření podrobného plánu pomocí Azure CLI'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí Azure CLI.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98920236"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563663"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Rychlý Start: definování a přiřazení Azure Blueprint pomocí Azure CLI
 
@@ -311,7 +311,7 @@ Hodnota `{BlueprintVersion}` představuje řetězec složený z písmen, čísli
 
 Po publikování podrobného plánu pomocí Azure CLI ho můžete přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud je podrobný plán uložen v předplatném, může být přiřazen pouze k tomuto předplatnému. Parametr **Details-Name** určuje plán, který se má přiřadit. Pokud chcete zadat parametry názvu, umístění, identity, zámku a podrobného plánu, použijte v příkazu párové parametry rozhraní příkazového řádku Azure CLI `az blueprint assignment create` nebo je poskytněte v souboru JSON **parametrů** .
 
-1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Jelikož parametry **přispěvatelé** a **vlastníci** vyžadují, aby bylo přiřazení role uděleno pole objectID objektů zabezpečení, použijte [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) pro shromáždění identifikátorů objectID pro použití v **parametrech** pro vlastní uživatele, skupiny nebo instanční objekty.
+1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Jelikož parametry **přispěvatelé** a **vlastníci** vyžadují, aby bylo přiřazení role uděleno pole objectID objektů zabezpečení, použijte [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) pro shromáždění identifikátorů objectID pro použití v **parametrech** pro vlastní uživatele, skupiny nebo instanční objekty.
 
    - Soubor JSON – blueprintAssignment.jsna
 

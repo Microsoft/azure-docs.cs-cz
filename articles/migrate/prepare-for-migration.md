@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614883"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558223"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -86,7 +86,7 @@ Požadované změny jsou shrnuty v tabulce.
 --- | --- | --- | ---
 **Konfigurace zásad sítě SAN jako všech online**<br/><br/> Tím se zajistí, že svazky Windows na virtuálním počítači Azure budou používat stejná přiřazení písmen jednotek jako místní virtuální počítač. | Nastaví se automaticky pro počítače se systémem Windows Server 2008 R2 nebo novějším.<br/><br/> Nakonfigurujte ručně pro starší operační systémy. | Nastaví se automaticky ve většině případů. | Nakonfigurujte ručně.
 **Nainstalovat integraci hosta technologie Hyper-V** | [Ruční instalace](prepare-windows-server-2003-migration.md#install-on-vmware-vms) na počítačích se systémem Windows Server 2003. | [Ruční instalace](prepare-windows-server-2003-migration.md#install-on-vmware-vms) na počítačích se systémem Windows Server 2003. | [Ruční instalace](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) na počítačích se systémem Windows Server 2003.
-**Povolte službu Azure Serial Console**.<br/><br/>Pro pomoc s řešením potíží [Povolte konzolu](../virtual-machines/troubleshooting/serial-console-windows.md) na virtuálních počítačích Azure. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí pomocí image disku. Spuštění bitové kopie disku je ekvivalentní restartování nového virtuálního počítače. | Povolit ručně | Povolit ručně | Povolit ručně
+**Povolte službu Azure Serial Console**.<br/><br/>Pro pomoc s řešením potíží [Povolte konzolu](/troubleshoot/azure/virtual-machines/serial-console-windows) na virtuálních počítačích Azure. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí pomocí image disku. Spuštění bitové kopie disku je ekvivalentní restartování nového virtuálního počítače. | Povolit ručně | Povolit ručně | Povolit ručně
 **Připojit po migraci**<br/><br/> Pokud se chcete po migraci připojit, je potřeba provést několik kroků, než migrujete. | [Nastavte](#prepare-to-connect-to-azure-windows-vms) ručně. | [Nastavte](#prepare-to-connect-to-azure-windows-vms) ručně. | [Nastavte](#prepare-to-connect-to-azure-windows-vms) ručně.
 
 
@@ -126,7 +126,7 @@ Pro jiné verze připravte počítače podle souhrnu v tabulce.
 **Akce** | **Podrobnosti** | **Verze systému Linux**
 --- | --- | ---
 **Nainstalovat integrační služby Hyper-V Linux** | Znovu sestavte inicializační image Linux, aby obsahovala potřebné ovladače technologie Hyper-V. Když znovu sestavíte inicializační image, zajistíte, že se virtuální počítač spustí v Azure. | Ve výchozím nastavení je k dispozici většina nových verzí distribucí systému Linux.<br/><br/> Pokud není zahrnutý, nainstalujte je ručně pro všechny verze kromě těch, které jsou uvedeny výše.
-**Povolit protokolování na sériové konzole Azure** | Povolení protokolování konzoly vám pomůže při odstraňování potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí pomocí image disku. Spuštění bitové kopie disku je ekvivalentní restartování nového virtuálního počítače.<br/><br/> Pokud chcete povolit, postupujte podle [těchto pokynů](../virtual-machines/troubleshooting/serial-console-linux.md) .
+**Povolit protokolování na sériové konzole Azure** | Povolení protokolování konzoly vám pomůže při odstraňování potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí pomocí image disku. Spuštění bitové kopie disku je ekvivalentní restartování nového virtuálního počítače.<br/><br/> Pokud chcete povolit, postupujte podle [těchto pokynů](/troubleshoot/azure/virtual-machines/serial-console-linux) .
 **Aktualizovat soubor mapování zařízení** | Aktualizujte soubor mapování zařízení pomocí přidružení typu název zařízení-svazek, aby se používaly trvalé identifikátory zařízení. | Nainstalujte ručně pro všechny verze kromě těch, které jsou uvedené výše. (Dá se použít jenom ve scénáři VMware založeného na agentech)
 **Aktualizovat položky fstab** |  Aktualizujte položky tak, aby používaly trvalé identifikátory svazků.    | Aktualizovat ručně pro všechny verze kromě těch, které jsou vyvolány výše.
 **Odebrat pravidlo udev** | Odeberte všechna udev pravidla, která vyhradí názvy rozhraní na základě adresy Mac atd. | Odeberte ručně pro všechny verze kromě těch, které jsou vyvolány výše.
@@ -148,7 +148,7 @@ Následující tabulka shrnuje kroky prováděné automaticky pro operační sys
 
 Přečtěte si další informace o postupu při [spuštění virtuálního počítače se systémem Linux v Azure](../virtual-machines/linux/create-upload-generic.md)a pokyny pro některé z oblíbených distribucí pro Linux.
 
-Projděte si seznam [požadovaných balíčků](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) pro instalaci agenta virtuálního počítače se systémem Linux. Azure Migrate automaticky nainstaluje agenta virtuálního počítače se systémem Linux pro počítače RHEL6, RHEL7, CentOS7 (6 by se měla podporovat podobně jako RHEL), Ubuntu 14,04, Ubuntu 16,04 a Ubuntu 18.04 při použití metody migrace VMware bez agenta.
+Projděte si seznam [požadovaných balíčků](../virtual-machines/extensions/agent-linux.md#requirements) pro instalaci agenta virtuálního počítače se systémem Linux. Azure Migrate automaticky nainstaluje agenta virtuálního počítače se systémem Linux pro počítače RHEL6, RHEL7, CentOS7 (6 by se měla podporovat podobně jako RHEL), Ubuntu 14,04, Ubuntu 16,04 a Ubuntu 18.04 při použití metody migrace VMware bez agenta.
 
 ## <a name="check-azure-vm-requirements"></a>Ověřit požadavky na virtuální počítače Azure
 
@@ -187,7 +187,7 @@ Po dokončení migrace proveďte tyto kroky na virtuálních počítačích Azur
 
 1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Pro virtuální počítač Azure je nutné použít jinou veřejnou IP adresu, než jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md).
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
-3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
+3. Zkontrolujte [diagnostiku spouštění](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -200,4 +200,4 @@ U virtuálních počítačů VMware podporuje migrace serverů bez [agentů nebo
 
 - **Virtuální počítače VMware**: Ověřte [požadavky na migraci a podporu](migrate-support-matrix-vmware-migration.md) pro virtuální počítače VMware.
 - **Virtuální počítače Hyper-v**: Ověřte [požadavky na migraci a podporu](migrate-support-matrix-hyper-v-migration.md) pro virtuální počítače Hyper-v.
-- **Fyzické počítače**: Ověřte [požadavky na migraci a podporu](migrate-support-matrix-physical-migration.md) místních fyzických počítačů a dalších virtualizovaných serverů. 
+- **Fyzické počítače**: Ověřte [požadavky na migraci a podporu](migrate-support-matrix-physical-migration.md) místních fyzických počítačů a dalších virtualizovaných serverů.

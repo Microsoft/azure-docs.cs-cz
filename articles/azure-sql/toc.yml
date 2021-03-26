@@ -1062,18 +1062,26 @@
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: Skupina dostupnosti (AG)
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: Instance clusteru s podporou převzetí služeb při selhání
+                - name: Instance clusteru s podporou převzetí služeb při selhání (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
             - name: Osvědčené postupy
               items:
-                - name: Výkon
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
                 - name: Zabezpečení
                   href: virtual-machines/windows/security-considerations-best-practices.md
                 - name: Konfigurace clusteru
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                 - name: Vzory aplikací
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: Výkon
+                  items:
+                    - name: Rychlý kontrolní seznam
+                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                    - name: Velikost virtuálního počítače
+                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                    - name: Storage
+                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
+                    - name: Shromáždit směrný plán
+                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Správa
               items:
                 - name: Rozšíření agenta SQL IaaS

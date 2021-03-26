@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: integrace 80/20
       href: overview-8020-integration.md
-    - name: Aktualizace zařízení Percept
+    - name: Aktualizace zařízení
       href: overview-update-experience.md
 - name: Rychlé starty
   items:
@@ -44,6 +44,10 @@
       items:
         - name: Chování INDIKÁTORu a tlačítka
           href: audio-button-led-behavior.md
+    - name: Zabezpečení
+      items:
+        - name: Doporučení pro zabezpečení a konfiguraci brány firewall
+          href: concept-security-configuration.md
 - name: Návody
   items:
     - name: Vývoj řešení Vision pomocí Azure Percept DK

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439812"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568320"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure PowerShell
 
@@ -27,7 +27,7 @@ Pracovní postup nasazení se zobrazí v následujícím diagramu:
 
 ![Diagram pracovního postupu nasazení virtuálních počítačů](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
@@ -127,7 +127,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Pomocí Azure Resource Manager můžete vytvářet jenom místní účty úložiště, jako je třeba místně redundantní úložiště (Standard nebo Premium). Informace o vytváření vrstvených účtů úložiště najdete v tématu [kurz: přenos dat prostřednictvím účtů úložiště s Azure Stack Edge pro s grafickým procesorem](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Pomocí Azure Resource Manager můžete vytvářet jenom místní účty úložiště, jako je třeba místně redundantní úložiště (Standard nebo Premium). Informace o vytváření vrstvených účtů úložiště najdete v tématu [kurz: přenos dat prostřednictvím účtů úložiště s Azure Stack Edge pro s grafickým procesorem](./azure-stack-edge-gpu-deploy-add-storage-accounts.md).
 
 Tady je příklad výstupu:
 
@@ -179,7 +179,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>Přidání identifikátoru URI objektu blob do souboru hostitele
 
-Identifikátor URI objektu BLOB jste už přidali do souboru hostitelů pro klienta, který používáte pro připojení k Azure Blob Storage v části "krok 5: Úprava souboru hostitele pro překlad názvů koncových bodů" [nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Tato položka se použila k přidání identifikátoru URI objektu BLOB:
+Identifikátor URI objektu BLOB jste už přidali do souboru hostitelů pro klienta, který používáte pro připojení k Azure Blob Storage v části "krok 5: Úprava souboru hostitele pro překlad názvů koncových bodů" [nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure PowerShell](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Tato položka se použila k přidání identifikátoru URI objektu BLOB:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> ..\<dnsdomain\>
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452369"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565193"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Základní hodnoty zabezpečení Azure pro Azure Stack Edge
 
@@ -38,7 +38,7 @@ Interní provoz se dále zabezpečuje pomocí:
 
 Další informace jsou k dispozici na odkazovaných odkazech.
  
-- [Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení GPU Azure Stack Edge pro](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení GPU Azure Stack Edge pro](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Rychlý Start – začněte s Azure Stack Edge pro s grafickým procesorem](azure-stack-edge-gpu-quickstart.md)
 
@@ -54,7 +54,7 @@ Zákazníci můžou nakonfigurovat virtuální privátní síť na svém zaříz
 
 - [Konfigurace Azure VPN prostřednictvím Azure PowerShell skriptu pro Azure Stack Edge pro R a Azure Stack Edge Mini R](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení GPU Azure Stack Edge pro](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení GPU Azure Stack Edge pro](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Kurz: Konfigurace certifikátů pro Azure Stack Edge pro R](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -68,7 +68,7 @@ Zákazníci můžou nakonfigurovat virtuální privátní síť na svém zaříz
 
 - [Konfigurace Azure VPN prostřednictvím Azure PowerShell skriptu pro Azure Stack Edge pro R a Azure Stack Edge Mini R](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení GPU Azure Stack Edge pro](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení GPU Azure Stack Edge pro](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Kurz: Konfigurace certifikátů pro Azure Stack Edge pro R](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -298,7 +298,7 @@ Mějte na paměti, že k získání přehledu o úlohách a službách může b�
 
 **Doprovodné** materiály: k rozhraním API Azure Stack hraničních zařízení přes místní Azure Resource Manager můžou přistupovat jenom autorizovaní uživatelé, například "EdgeArmUser". Hesla uživatelského účtu lze spravovat pouze na Azure Portal. 
 
-- [Nastavení hesla Azure Resource Manageru](azure-stack-edge-j-series-set-azure-resource-manager-password.md)
+- [Nastavení hesla Azure Resource Manageru](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

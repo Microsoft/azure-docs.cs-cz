@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 929463e346311d58da5ac75b28c774bcfe258f08
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102119769"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557526"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -72,12 +72,12 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {OIDC: LoginHint} |  `login_hint`Parametr řetězce dotazu. | someone@contoso.com |
 | {OIDC: MaxAge} | Hodnota `max_age` | – |
 | {OIDC: nonce} |`Nonce`Parametr řetězce dotazu. | defaultNonce |
-| {OIDC: heslo}| Heslo uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](ropc-custom.md) .| Heslo1| 
+| {OIDC: heslo}| Heslo uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](add-ropc-policy.md) .| Heslo1| 
 | {OIDC: prompt} | `prompt`Parametr řetězce dotazu. | přihlášení |
 | {OIDC: RedirectUri} |`redirect_uri`Parametr řetězce dotazu. | https://jwt.ms |
 | {OIDC: Resource} |`resource`Parametr řetězce dotazu. | – |
 | {OIDC: Scope} |`scope`Parametr řetězce dotazu. | OpenID |
-| {OIDC: username}| Uživatelské jméno uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](ropc-custom.md) .| emily@contoso.com| 
+| {OIDC: username}| Uživatelské jméno uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](add-ropc-policy.md) .| emily@contoso.com| 
 
 ### <a name="context"></a>Kontext
 

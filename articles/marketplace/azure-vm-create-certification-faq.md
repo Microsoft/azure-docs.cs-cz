@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721153"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558704"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -620,11 +620,10 @@ Chcete-li dokončit proces publikování, přečtěte si téma [Revize a publiko
 * Verze Pythonu nad 2,8 
 
 
-Další informace najdete v [rozšíření virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+Další informace najdete v [rozšíření virtuálního počítače](../virtual-machines/extensions/diagnostics-linux.md).
      
 ## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace vlastností nabídek virtuálních počítačů](azure-vm-create-properties.md)
 - [Ceny aktivního tržiště](partner-center-portal/marketplace-rewards.md)
 - Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).
- 

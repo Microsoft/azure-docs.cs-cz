@@ -1,17 +1,17 @@
 ---
 title: Vytvoření funkce Java v Azure Functions pomocí IntelliJ
 description: Naučte se používat IntelliJ k vytvoření jednoduché funkce Java aktivované protokolem HTTP, kterou pak publikujete pro běh v prostředí bez serveru v Azure.
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708811"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543634"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>Vytvoření první funkce Java v Azure pomocí IntelliJ
 
@@ -104,17 +104,9 @@ V této části použijete Azure Toolkit for IntelliJ k vytvoření místního p
 
     ![Nasazení projektu do Azure](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Pokud ještě nemáte Function App, klikněte na *žádná funkce k dispozici a kliknutím vytvořte novou*.
+1. Pokud ještě nemáte Function App, klikněte na *+* řádek *funkce* . Zadejte název aplikace Function App a vyberte správnou platformu. v tomto případě můžeme jednoduše přijmout výchozí. Klikněte na *OK* a automaticky se vybere nová aplikace Function App, kterou jste právě vytvořili. Kliknutím na *Spustit* nasadíte své funkce.
 
     ![Vytvoření aplikace Function App v Azure](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. Zadejte název aplikace Function App a vyberte vhodné předplatné/platformu/skupinu prostředků/App Service plán. můžete také vytvořit skupinu prostředků/App Service plán. Pak nastavení aplikace zůstane beze změny, klikněte na *OK* a počkejte pár minut, než se nová aplikace Function App vytvoří. Po *Vytvoření nového Function App...* indikátor průběhu zmizí.
-
-    ![Průvodce nasazením aplikace Function App do Azure vytvořit aplikaci](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. Vyberte aplikaci funkcí, do které chcete nasadit, a automaticky se vybere nová aplikace Function App, kterou jste právě vytvořili. Kliknutím na *Spustit* nasadíte své funkce.
-
-    ![Snímek obrazovky se zobrazí v dialogovém okně nasadit Azure Functions.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Nasazení aplikace Function App do protokolu Azure](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

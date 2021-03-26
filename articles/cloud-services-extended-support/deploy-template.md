@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865583"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564751"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
@@ -29,15 +29,15 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
 
 1. Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora) a vytvořte přidružené prostředky.
 
-2. Vytvořte novou skupinu prostředků pomocí [Azure Portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) nebo [PowerShellu](/azure/azure-resource-manager/management/manage-resource-groups-powershell). Tento krok je nepovinný, pokud používáte existující skupinu prostředků.
+2. Vytvořte novou skupinu prostředků pomocí [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) nebo [PowerShellu](../azure-resource-manager/management/manage-resource-groups-powershell.md). Tento krok je nepovinný, pokud používáte existující skupinu prostředků.
  
-3. Vytvořte nový účet úložiště pomocí [Azure Portal](/azure/storage/common/storage-account-create?tabs=azure-portal) nebo [PowerShellu](/azure/storage/common/storage-account-create?tabs=azure-powershell). Tento krok je nepovinný, pokud používáte existující účet úložiště.
+3. Vytvořte nový účet úložiště pomocí [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) nebo [PowerShellu](../storage/common/storage-account-create.md?tabs=azure-powershell). Tento krok je nepovinný, pokud používáte existující účet úložiště.
 
-4. Nahrajte soubory definice služby (. csdef) a konfigurace služby (. cscfg) do účtu úložiště pomocí [Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), [AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) nebo [PowerShellu](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container). Získejte identifikátory URI SAS obou souborů, které mají být přidány do šablony ARM dále v tomto kurzu.
+4. Nahrajte soubory definice služby (. csdef) a konfigurace služby (. cscfg) do účtu úložiště pomocí [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [PowerShellu](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Získejte identifikátory URI SAS obou souborů, které mají být přidány do šablony ARM dále v tomto kurzu.
 
 5. Volitelné Vytvořte Trezor klíčů a nahrajte certifikáty.
 
-    -  Certifikáty mohou být připojeny ke cloudovým službám, aby bylo možné zabezpečenou komunikaci do a ze služby. Aby bylo možné používat certifikáty, musí být jejich kryptografické otisky zadány v souboru konfigurace služby (. cscfg) a odeslány do trezoru klíčů. Trezor klíčů je možné vytvořit pomocí [Azure Portal](/azure/key-vault/general/quick-create-portal) nebo [PowerShellu](/azure/key-vault/general/quick-create-powershell).
+    -  Certifikáty mohou být připojeny ke cloudovým službám, aby bylo možné zabezpečenou komunikaci do a ze služby. Aby bylo možné používat certifikáty, musí být jejich kryptografické otisky zadány v souboru konfigurace služby (. cscfg) a odeslány do trezoru klíčů. Trezor klíčů je možné vytvořit pomocí [Azure Portal](../key-vault/general/quick-create-portal.md) nebo [PowerShellu](../key-vault/general/quick-create-powershell.md).
     - Přidružený Trezor klíčů musí být umístěný ve stejné oblasti a předplatném jako cloudová služba.
     - K přidruženému trezoru klíčů pro musí být povolená příslušná oprávnění, aby mohl prostředek Cloud Services (Rozšířená podpora) získat certifikáty z Key Vault. Další informace najdete v tématu [certifikáty a Key Vault](certificates-and-key-vault.md)
     - Na Trezor klíčů se musí odkazovat v části OsProfile šablony ARM uvedené v následujících krocích.

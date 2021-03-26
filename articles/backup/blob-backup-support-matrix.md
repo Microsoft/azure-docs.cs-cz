@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování o
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: ade43350bbe3fa1bcf58f47e93b948db3a5b21bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744796"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561895"
 ---
 # <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Matice podpory pro zálohování objektů blob Azure (ve verzi Preview)
 
@@ -27,9 +27,9 @@ Provozní zálohování objektů BLOB používá obnovení k určitému bodu v �
 
 **Další omezení:**
 
-- Pokud jste během doby uchování odstranili kontejner, tento kontejner se neobnoví s operací obnovení k určitému bodu v čase. Pokud se pokusíte obnovit rozsah objektů blob, které obsahují objekty BLOB v odstraněném kontejneru, operace obnovení k určitému bodu v čase selže. Další informace o ochraně kontejnerů před odstraněním najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](https://docs.microsoft.com/azure/storage/blobs/soft-delete-container-overview).
-- Pokud se objekt BLOB přesunul mezi horkou a studenou vrstvou v období od současného a bodu obnovení, obnoví se objekt blob do předchozí úrovně. Obnovování objektů blob bloku v archivní úrovni se nepodporuje. Pokud se například objekt BLOB v horké vrstvě přesunul do archivní úrovně před dvěma dny a operace obnovení se obnoví do před 3 dny, objekt BLOB se neobnoví do vrstvy Hot. Pokud chcete obnovit archivovaný objekt blob, nejdřív ho přesuňte mimo archivní vrstvu. Další informace najdete v tématu [dehydratované data objektů BLOB z archivní úrovně](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration).
-- Blok, který byl nahrán prostřednictvím [bloku Put](https://docs.microsoft.com/rest/api/storageservices/put-block) nebo [bloku Put z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url), ale není potvrzen prostřednictvím [seznamu blokovaných](https://docs.microsoft.com/rest/api/storageservices/put-block-list)objektů, není součástí objektu blob, a proto není obnoven v rámci operace obnovení.
+- Pokud jste během doby uchování odstranili kontejner, tento kontejner se neobnoví s operací obnovení k určitému bodu v čase. Pokud se pokusíte obnovit rozsah objektů blob, které obsahují objekty BLOB v odstraněném kontejneru, operace obnovení k určitému bodu v čase selže. Další informace o ochraně kontejnerů před odstraněním najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](../storage/blobs/soft-delete-container-overview.md).
+- Pokud se objekt BLOB přesunul mezi horkou a studenou vrstvou v období od současného a bodu obnovení, obnoví se objekt blob do předchozí úrovně. Obnovování objektů blob bloku v archivní úrovni se nepodporuje. Pokud se například objekt BLOB v horké vrstvě přesunul do archivní úrovně před dvěma dny a operace obnovení se obnoví do před 3 dny, objekt BLOB se neobnoví do vrstvy Hot. Pokud chcete obnovit archivovaný objekt blob, nejdřív ho přesuňte mimo archivní vrstvu. Další informace najdete v tématu [dehydratované data objektů BLOB z archivní úrovně](../storage/blobs/storage-blob-rehydration.md).
+- Blok, který byl nahrán prostřednictvím [bloku Put](/rest/api/storageservices/put-block) nebo [bloku Put z adresy URL](/rest/api/storageservices/put-block-from-url), ale není potvrzen prostřednictvím [seznamu blokovaných](/rest/api/storageservices/put-block-list)objektů, není součástí objektu blob, a proto není obnoven v rámci operace obnovení.
 - Objekt BLOB s aktivním zapůjčením nejde obnovit. Pokud je objekt BLOB s aktivním zapůjčením zahrnutý do rozsahu objektů blob, které se mají obnovit, operace obnovení se automaticky nezdařila. Před zahájením operace obnovení podělte všechna aktivní zapůjčení.
 - Snímky se v rámci operace obnovení nevytváří ani neodstraňují. Do předchozího stavu se obnoví jenom základní objekt BLOB.
 

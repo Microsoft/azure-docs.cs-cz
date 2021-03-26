@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: da85308e7d214f198b29b40bc380a4d33947c865
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: efd7c554e6da8b60d4834d1a1290407a6b9e94d4
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364558"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544107"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -245,9 +245,9 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. DevTestLab/Labs/plány | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft. DevTestLab/Labs/Users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft. DevTestLab/Labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [Klíče listkey](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
-| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2020-06-01/notebookworkspaces/listconnectioninfo) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [Klíče listkey](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/notebookworkspaces/listconnectioninfo) |
 | Microsoft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft. EventGrid/domény | [Klíče listkey](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -287,7 +287,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft. OperationalInsights/pracovní prostory | [list](/rest/api/loganalytics/workspaces/list) |
 | Microsoft. OperationalInsights/pracovní prostory | Klíče listkey |
-| Microsoft. PolicyInsights/nápravy | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft. PolicyInsights/nápravy | [listDeployments](/rest/api/policy/remediations/listdeploymentsatresourcegroup) |
 | Microsoft. RedHatOpenShift/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft. Relay/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | klíče listkey |

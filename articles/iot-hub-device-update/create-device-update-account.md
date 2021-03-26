@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101692608"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558478"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>Aktualizace zařízení pro správu prostředků IoT Hubu
 
 Pokud chcete začít s aktualizací zařízení, budete muset vytvořit účet aktualizace zařízení, instanci a nastavit role řízení přístupu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Přístup k IoT Hub. Doporučuje se použít úroveň S1 (Standard) nebo vyšší. 
 * Podporované prohlížeče:
@@ -127,7 +127,11 @@ Aby jiní uživatelé měli přístup k aktualizaci zařízení, musí mít k to
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naimportujte aktualizaci pomocí aktualizace zařízení pro IoT Hub.](import-update.md)
+Zkuste aktualizovat zařízení pomocí některého z následujících rychlých kurzů:
+
+ - [Aktualizace zařízení na simulátoru](device-update-simulator.md)
+ - [Aktualizace zařízení v malinu PI](device-update-raspberry-pi.md)
+ - [Aktualizace zařízení v agentovi balíčku Ubuntu Server 18,04 x64](device-update-ubuntu-agent.md)
 
 [Seznamte se s informacemi o účtu a instanci aktualizace zařízení.](device-update-resources.md) 
 

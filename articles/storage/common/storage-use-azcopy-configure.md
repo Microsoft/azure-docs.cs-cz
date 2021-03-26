@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c699cd865746bf430193eba38ec6fa79575692e
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596949"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543444"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -103,14 +103,16 @@ Před nastavením této proměnné doporučujeme spustit test testu výkonnosti.
 
 ### <a name="optimize-memory-use"></a>Optimalizace využití paměti
 
-Nastavte `AZCOPY_BUFFER_GB` proměnnou prostředí tak, aby určovala maximální velikost systémové paměti, kterou má AzCopy použít při stahování a nahrávání souborů.
-Vyjádřete tuto hodnotu v gigabajtech (GB).
+Nastavte `AZCOPY_BUFFER_GB` proměnnou prostředí tak, aby určovala maximální velikost systémové paměti, kterou má AzCopy použít k ukládání do vyrovnávací paměti při stahování a nahrávání souborů. Vyjádřete tuto hodnotu v gigabajtech (GB).
 
 | Operační systém | Příkaz  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+> [!NOTE]
+> Sledování úloh vždy způsobí další režii při využití paměti. Velikost se liší v závislosti na počtu přenosů v rámci úlohy. Vyrovnávací paměti představují největší součást využití paměti. Pomocí nástroje můžete zvýšit režijní náklady, a to díky tomu `AZCOPY_BUFFER_GB` , že budete mít k dispozici pouze příznak celkové využití paměti.
 
 ### <a name="optimize-file-synchronization"></a>Optimalizovat synchronizaci souborů
 

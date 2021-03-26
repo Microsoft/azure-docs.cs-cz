@@ -4,14 +4,14 @@ description: Přečtěte si o spravované identitě pro Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 89da1a22bb3fd0eff22a7bed7ed70b72f220fbf9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 65512f8e46b5545929a798392ac5f19ddeab39ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888987"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562456"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -28,8 +28,7 @@ Při vytváření datové továrny je možné vytvořit spravovanou identitu spo
 Spravovaná identita pro Data Factory přináší následující funkce:
 
 - [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). v takovém případě se pro ověřování Azure Key Vault používá spravovaná identita Data Factory.
-- Konektory, včetně služby [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)a [Azure synapse Analytics](connector-azure-sql-data-warehouse.md).
-- [Webové aktivity](control-flow-web-activity.md).
+- Přístup k úložištím dat nebo k výpočtům pomocí spravovaného ověřování identity, včetně služby Azure Blob Storage, Azure Průzkumník dat, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database, spravované instance Azure SQL, Azure synapse Analytics, REST, aktivity datacihly, aktivity webu a dalších. Podrobnosti najdete v článcích konektoru a aktivity.
 
 ## <a name="generate-managed-identity"></a>Generovat spravovanou identitu
 
@@ -157,11 +156,10 @@ Informace o spravované identitě najdete v Azure Portal > vašich vlastností D
 
 - ID spravovaného objektu identity
 - Tenant spravované identity
-- ID aplikace spravované identity
 
 Informace o spravované identitě se také zobrazí při vytváření propojené služby, která podporuje spravované ověřování identity, jako je Azure Blob, Azure Data Lake Storage, Azure Key Vault atd.
 
-Při udělování oprávnění použijte ID objektu nebo název datové továrny (jako název spravované identity) k vyhledání této identity.
+Při udělování oprávnění na kartě Access Control (IAM) prostředku Azure > přidat přiřazení role – > přiřadit přístup k > vybrat Data Factory v části spravovaná identita přiřazená systémem – > vyberte podle názvu továrny; nebo obecně můžete k vyhledání této identity použít ID objektu nebo název objektu pro vytváření dat (jako název spravované identity). Pokud potřebujete získat ID aplikace spravované identity, můžete použít PowerShell.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Načtení spravované identity pomocí PowerShellu
 

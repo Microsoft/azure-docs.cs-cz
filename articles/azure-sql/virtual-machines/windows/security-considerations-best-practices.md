@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 54010359f226fe02336f039e3dcbb98075e9b06a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ff77a407dfa87e408170573249876bbefee0abe
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97360080"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558567"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Důležité informace o zabezpečení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ Nechcete, aby útočníci mohli snadno uhodnout názvy účtů nebo hesla. Násl
 
 - Vytvořte jedinečný účet místního správce, který se nejmenuje jako **správce**.
 
-- Používejte složitá silná hesla pro všechny vaše účty. Další informace o tom, jak vytvořit silné heslo, najdete v článku o [vytvoření silného](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) hesla.
+- Používejte složitá silná hesla pro všechny vaše účty. Další informace o tom, jak vytvořit silné heslo, najdete v článku o [vytvoření silného](https://support.microsoft.com/account-billing/how-to-create-a-strong-password-for-your-microsoft-account-f67e4ddd-0dbe-cd75-cebe-0cfda3cf7386) hesla.
 
 - Ve výchozím nastavení Azure během SQL Server nastavení virtuálního počítače vybere ověřování systému Windows. Proto je přihlašovací jméno **SA** zakázané a instalační program přiřadí heslo. Doporučujeme, abyste přihlášení **SA** nepoužívali ani nepovolili. Pokud potřebujete přihlášení SQL, použijte jednu z následujících strategií:
 

@@ -4,7 +4,7 @@ description: Přečtěte si, jak vám Zvýhodněné hybridní využití Azure m�
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
-manager: westonh
+manager: rochakm
 ms.service: virtual-machines
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73747222b9131fa85ae6ac01c9dedd5b0bbe1d63
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695477"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543397"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Jak Zvýhodněné hybridní využití Azure platí pro virtuální počítače se systémem Linux
 
@@ -39,7 +39,7 @@ Můžete také převést virtuální počítač s povoleným přínosem zpátky 
 
 Zvýhodněné hybridní využití Azure je k dispozici pro všechny obrázky PAYG a SLES z Azure Marketplace. Tato výhoda ještě není dostupná pro image RHEL nebo SLES BYOS nebo vlastní image z Azure Marketplace.
 
-Rezervované instance, instance vyhrazených hostitelů Azure a zvýhodněné hybridní využití SQL nejsou způsobilé pro Zvýhodněné hybridní využití Azure, pokud už tuto výhodu používáte s virtuálními počítači Linux.
+Instance vyhrazených hostitelů Azure a zvýhodněné hybridní využití SQL nejsou vhodné pro Zvýhodněné hybridní využití Azure, pokud už tuto výhodu používáte s virtuálními počítači Linux.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -90,11 +90,8 @@ Výhodou pro existující virtuální počítače můžete povolit tak, že nav�
 1. Na levé straně otevřete možnost **Konfigurace** . Zobrazí se část licencování. Pokud chcete povolit převod AHB, zaškrtněte přepínač Ano a zaškrtněte políčko Potvrdit.
 ![Okno Konfigurace AHB po vytvoření](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
-
 >[!NOTE]
 > Pokud jste vytvořili **vlastní snímek** nebo **sdílenou bitovou kopii (SIG)** image RHEL nebo SLES PAYG Marketplace, můžete k povolení zvýhodněné hybridní využití Azure použít jenom Azure CLI. Toto je známé omezení a momentálně není k dispozici žádná časová osa pro poskytování této funkce na webu Azure Portal.
-
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Povolení nebo zakázání výhod v Azure CLI
 
@@ -179,6 +176,15 @@ Další informace o dodržování předpisů pro předplatné Red Hat, aktualiza
 
 Pokud chcete použít Zvýhodněné hybridní využití Azure pro virtuální počítače s SLES a informace o přechodu z SLES PAYG na BYOS nebo při přesunu z SLES BYOS na PAYG, přečtěte si téma [SUSE Linux Enterprise a zvýhodněné hybridní využití Azure](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
+## <a name="azure-hybrid-benefit-on-reserved-instances-is-in-preview"></a>Zvýhodněné hybridní využití Azure na rezervovaných instancích je ve verzi Preview.
+
+Azure Reservations (Azure Reserved Virtual Machine Instances) vám pomůžou ušetřit peníze tím, že se potvrzováním na jeden nebo tři roky plánuje na více produktů. Tady si můžete přečíst další informace o [rezervovaných instancích](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations). Zvýhodněné hybridní využití Azure je k dispozici ve verzi Preview pro [rezervovanou instanci virtuálního počítače (RIs)](https://review.docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation). To znamená, že pokud jste si zakoupili výpočetní náklady za zvýhodněnou sazbu pomocí rezervovaného systému, můžete využít zvýhodnění AHB na náklady na licencování RHEL a SUSE nad ním. Postup pro použití zvýhodnění AHB pro instanci VP zůstane přesně stejný jako pro běžný virtuální počítač.
+![AHB pro služby RIs](./media/azure-hybrid-benefit/reserved-instances.png)
+
+>[!NOTE]
+>Pokud jste už zakoupili rezervace pro software RHEL nebo SUSE PAYG na Azure Marketplace, počkejte prosím, než se dokončí použití Zvýhodněné hybridní využití Azure.
+
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 *Otázka: mohu použít typ licence `RHEL_BYOS` s SLES obrázkem nebo naopak?*
 
@@ -206,11 +212,11 @@ Odpověď: Ano, můžete. Můžete použít typ licence `RHEL_BYOS` pro virtuál
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure na Virtual Machine Scale Sets pro RHEL a SLES?*
 
-Odpověď: Ne, nemůžete. Služba Virtual Machine Scale Sets není aktuálně v oboru Zvýhodněné hybridní využití Azure pro RHEL a SLES.
+Odpověď: Ano, Zvýhodněné hybridní využití Azure ve virtuálních počítačích Virtual Machine Scale Sets pro RHEL a SLES je ve verzi Preview. [Další informace o této výhodě a jejím použití najdete tady](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux-vmss). 
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure u rezervovaných instancí pro RHEL a SLES?*
 
-Odpověď: Ne, nemůžete. Rezervované instance nejsou aktuálně v rozsahu Zvýhodněné hybridní využití Azure pro RHEL a SLES.
+Odpověď: Ano, Zvýhodněné hybridní využití Azure na rezervované instanci pro RHEL a SLES je ve verzi Preview. [Další informace o této výhodě a jejím použití najdete tady](#azure-hybrid-benefit-on-reserved-instances-is-in-preview).
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálním počítači nasazeném pro SQL Server na obrázcích RHEL?*
 

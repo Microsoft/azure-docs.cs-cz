@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448779"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558614"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replikace dat přes ExpressRoute pomocí Azure Migrate: Migrace serveru
 
-V tomto článku se dozvíte, jak nakonfigurovat [Azure Migrate: Migrace serveru](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) pro replikaci dat přes okruh ExpressRoute při migraci serverů do Azure.
+V tomto článku se dozvíte, jak nakonfigurovat [Azure Migrate: Migrace serveru](./migrate-services-overview.md#azure-migrate-server-migration-tool) pro replikaci dat přes okruh ExpressRoute při migraci serverů do Azure.
 
 ## <a name="understand-azure-expressroute-circuits"></a>Vysvětlení okruhů Azure ExpressRoute
-Okruh ExpressRoute (ER) spojuje vaši místní infrastrukturu s Microsoftem prostřednictvím poskytovatele připojení. Okruhy ExpressRoute se dají nakonfigurovat tak, aby používaly privátní partnerské vztahy, partnerské vztahy Microsoftu nebo obojí. Další informace o různých možnostech partnerských vztahů dostupných v ExpressRoute najdete v článku o [okruhech ExpressRoute a partnerských vztahů](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare) .
+Okruh ExpressRoute (ER) spojuje vaši místní infrastrukturu s Microsoftem prostřednictvím poskytovatele připojení. Okruhy ExpressRoute se dají nakonfigurovat tak, aby používaly privátní partnerské vztahy, partnerské vztahy Microsoftu nebo obojí. Další informace o různých možnostech partnerských vztahů dostupných v ExpressRoute najdete v článku o [okruhech ExpressRoute a partnerských vztahů](../expressroute/expressroute-circuit-peerings.md#peeringcompare) .
 
 Nástroj pro migraci serveru Azure Migrate pomáhá migrovat místní servery a servery z jiných cloudů do virtuálních počítačů Azure. Tento nástroj funguje tak, že nastaví průběžný datový proud replikace pro replikaci dat ze serverů, které se mají migrovat na spravované disky ve vašem předplatném Azure. Až budete připraveni na migraci serverů, replikovaná data v Azure slouží k migraci serverů.
 
@@ -104,7 +104,7 @@ Soukromé koncové body můžete vytvořit pouze v účtu úložiště Pro obecn
     > [!Note]
     > Virtuální síť musí obsahovat koncový bod brány ExpressRoute nebo musí být připojená k virtuální síti pomocí brány ExpressRoute. 
 
-    V části **privátní DNS integrace** vyberte **Ano** a integrujte ji s privátní zónou DNS. Vyberete-li možnost **Ano** , automaticky propojí zónu DNS s vybranou virtuální sítí a přidá záznamy DNS, které jsou požadovány pro překlad DNS nových IP adres a plně kvalifikované názvy domén vytvořené pro soukromý koncový bod. Přečtěte si další informace o [privátních zónách DNS.](https://docs.microsoft.com/azure/dns/private-dns-overview)
+    V části **privátní DNS integrace** vyberte **Ano** a integrujte ji s privátní zónou DNS. Vyberete-li možnost **Ano** , automaticky propojí zónu DNS s vybranou virtuální sítí a přidá záznamy DNS, které jsou požadovány pro překlad DNS nových IP adres a plně kvalifikované názvy domén vytvořené pro soukromý koncový bod. Přečtěte si další informace o [privátních zónách DNS.](../dns/private-dns-overview.md)
 
     ![privatednszone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Pokud jste nevybrali možnost integrace s privátní zónou DNS v době vytvář
     b. Na stránce **Přidat sadu záznamů** přidejte položku pro plně kvalifikovaný název domény a soukromou IP adresu jako záznam typu.
 
 > [!Important]
-> K překladu privátních IP adres privátního koncového bodu účtu úložiště ze zdrojového prostředí můžete vyžadovat další nastavení DNS. V [tomto článku](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder) se seznámíte s potřebnou konfigurací DNS.
+> K překladu privátních IP adres privátního koncového bodu účtu úložiště ze zdrojového prostředí můžete vyžadovat další nastavení DNS. V [tomto článku](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) se seznámíte s potřebnou konfigurací DNS.
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>Replikace dat pomocí okruhu ExpressRoute s partnerským vztahem Microsoftu
 
 Pro směrování provozu replikace přes okruh ExpressRoute, jak je znázorněno na následujícím diagramu, můžete použít partnerský vztah Microsoftu nebo stávající doménu veřejného partnerského vztahu (zastaralé pro nové připojení ExpressRoute).
 ![replicationwithmicrosoftpeering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-I když replikační data přechází přes partnerský okruh Microsoftu, budete i nadále potřebovat připojení k Internetu z místní lokality pro další komunikaci (řídicí rovinu) s Azure Migrateovou službou. Existují nějaké další adresy URL, které nejsou dostupné přes ExpressRoute, že zařízení replikace nebo Hostitel Hyper-V potřebují přístup k orchestraci procesu replikace. Požadavky na adresu URL můžete zkontrolovat na základě scénáře migrace, [migrace bez agentů VMware](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls) nebo [migrace na základě agentů](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance).  
+I když replikační data přechází přes partnerský okruh Microsoftu, budete i nadále potřebovat připojení k Internetu z místní lokality pro další komunikaci (řídicí rovinu) s Azure Migrateovou službou. Existují nějaké další adresy URL, které nejsou dostupné přes ExpressRoute, že zařízení replikace nebo Hostitel Hyper-V potřebují přístup k orchestraci procesu replikace. Požadavky na adresu URL můžete zkontrolovat na základě scénáře migrace, [migrace bez agentů VMware](./migrate-appliance.md#public-cloud-urls) nebo [migrace na základě agentů](./migrate-replication-appliance.md).  
 
 V případě, že použijete proxy server v místní lokalitě a chcete pro provoz replikace použít ExpressRoute, musíte nakonfigurovat vynechání proxy serveru pro příslušné adresy URL na místním zařízení. 
 
@@ -172,7 +172,7 @@ V případě, že použijete proxy server v místní lokalitě a chcete pro prov
 
 Pomocí následujících kroků nakonfigurujte seznam pro obcházení proxy serveru na konfiguračním serveru a procesových serverech:
 
-1. [Stáhněte si nástroj PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) pro přístup k systémovému kontextu uživatele.
+1. [Stáhněte si nástroj PsExec](/sysinternals/downloads/psexec) pro přístup k systémovému kontextu uživatele.
 2. Spusťte aplikaci Internet Explorer v kontextu uživatele systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
 3. Přidejte nastavení proxy serveru v IE.
 4. V seznamu vynechat přidejte adresu URL úložiště Azure. *. blob. Core. Windows. NET.  
@@ -185,10 +185,10 @@ Kromě toho musíte inzerovat trasy ve filtru tras pro následující komunity p
 - Oblastní komunita protokolu BGP pro cílovou oblast Azure (oblast pro migraci)
 - Komunita protokolu BGP pro Azure Active Directory (12076:5060)
 
-Přečtěte si další informace o [filtrech tras](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal) a seznamu [komunit protokolu BGP pro ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp). 
+Přečtěte si další informace o [filtrech tras](../expressroute/how-to-routefilter-portal.md) a seznamu [komunit protokolu BGP pro ExpressRoute](../expressroute/expressroute-routing.md#bgp). 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [okruhech ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings).
-- Přečtěte si další informace o [doménách směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare).
-- Přečtěte si další informace o [privátních koncových bodech](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+- Přečtěte si další informace o [okruhech ExpressRoute](../expressroute/expressroute-circuit-peerings.md).
+- Přečtěte si další informace o [doménách směrování ExpressRoute](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+- Přečtěte si další informace o [privátních koncových bodech](../private-link/private-endpoint-overview.md).

@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 9b85caa3611c484fc17423637dc36ce20b48b823
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7f5afc05a8d03d33366a2f76318bcf5e039d4d30
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868473"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561657"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Přidání podpory protokolu IPv6 pro privátní partnerské vztahy pomocí Azure Portal (Preview)
 
 Tento článek popisuje, jak přidat podporu protokolu IPv6 pro připojení prostřednictvím ExpressRoute k prostředkům v Azure pomocí Azure Portal. 
 
 > [!Note]
-> Tato funkce je v tuto chvíli dostupná pro verzi Preview v [oblastech Azure s zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones). Okruh ExpressRoute je proto možné vytvořit pomocí libovolného umístění partnerského vztahu, ale nasazení založená na protokolu IPv6, ke kterému se připojuje, musí být v oblasti s Zóny dostupnosti.
+> Tato funkce je v tuto chvíli dostupná pro verzi Preview v [oblastech Azure s zóny dostupnosti](../availability-zones/az-region.md#azure-regions-with-availability-zones). Okruh ExpressRoute je proto možné vytvořit pomocí libovolného umístění partnerského vztahu, ale nasazení založená na protokolu IPv6, ke kterému se připojuje, musí být v oblasti s Zóny dostupnosti.
 
 ## <a name="register-for-public-preview"></a>Zaregistrujte se Public Preview
 Před přidáním podpory protokolu IPv6 musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, spusťte následující příkazy prostřednictvím Azure PowerShell:

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108383"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562405"
 ---
 # <a name="calling-sdk-overview"></a>Přehled volání sady SDK
 
@@ -72,13 +72,33 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Nastavit nebo aktualizovat režim škálování                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Vykreslit vzdálený video stream                                                                                          | ✔️   | ✔️            | ✔️
 
+## <a name="calling-client-library-streaming-support"></a>Volání podpory streamování klientské knihovny
+Komunikační služby volající klientské knihovny podporují následující konfigurace streamování:
 
+| Omezení          |Web | Android/iOS|
+|-----------|----|------------|
+|**počet odchozích streamů, které se dají poslat současně** |1 sdílení obrazovky a 1 video + 1 | 1 sdílení obrazovky a 1 video + 1|
+|**počet příchozích streamů, které se dají vykreslovat současně** |1 sdílení obrazovky a 1 video + 1| 6 sdílení obrazovky a videa 1 |
+
+## <a name="calling-client-library-timeouts"></a>Volání klientských časových limitů klientské knihovny
+
+Pro komunikační služby, které volají klientské knihovny, platí následující časový limit:
+
+| Akce           | Časový limit v sekundách |
+| -------------- | ---------- |
+| Znovu připojit/odebrat účastníka | 120 |
+| Přidání nebo odebrání nové modální metody ze volání (spuštění/zastavení videa nebo sdílení obrazovky) | 40 |
+| Časový limit operace přenosu volání | 60 |
+| časový limit pro zahájení volání 1:1 | 85 |
+| Časový limit pro vytvoření volání skupiny | 85 |
+| Časový limit pro vytvoření volání veřejné telefonní sítě | 115 |
+| Zvýšit úroveň volání 1:1 na časový limit volání skupiny | 115 |
 
 ## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>JavaScript – volání sady SDK pomocí operačního systému a prohlížeče
 
 Následující tabulka představuje sadu podporovaných prohlížečů, které jsou aktuálně k dispozici. Pokud není uvedeno jinak, podporujeme nejnovější tři verze prohlížeče.
 
-|                                  | Chrome | Prohlížeče  | Hrana (chrom) | 
+| Platforma                         | Chrome | Prohlížeče  | Hrana (chrom) | 
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -114,15 +134,6 @@ Tento prvek IFRAME například umožňuje přístup ke kameře a mikrofonu:
 ```html
 <iframe allow="camera *; microphone *">
 ```
-
-## <a name="calling-sdk-streaming-support"></a>Volání podpory streamování SDK
-Komunikační služby, které volají sadu SDK, podporují následující konfigurace streamování:
-
-|           |Web | Android/iOS|
-|-----------|----|------------|
-|**počet odchozích streamů, které se dají poslat současně** |1 sdílení obrazovky nebo 1 | 1 sdílení obrazovky a 1 video + 1|
-|**počet příchozích streamů, které se dají vykreslovat současně** |1 sdílení obrazovky nebo 1| 6 sdílení obrazovky a videa 1 |
-
 
 ## <a name="next-steps"></a>Další kroky
 

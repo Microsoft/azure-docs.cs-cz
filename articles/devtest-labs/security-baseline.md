@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13585173b54c79158161da54f968ba66eb018f6a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27a0d5b809480b2ce4aff36c5acd43c149ed5bb3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705734"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562830"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -78,11 +78,11 @@ Nasaďte Azure Firewall na všech hranicích sítě organizace s povolenou funkc
 
 - [Jak nakonfigurovat virtuální síť pro Azure DevTest Labs](devtest-lab-configure-vnet.md)
 
-- [Jak nakonfigurovat DDoS Protection](/azure/virtual-network/manage-ddos-protection)
+- [Jak nakonfigurovat DDoS Protection](../ddos-protection/manage-ddos-protection.md)
 
 - [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Pochopení Azure Security Center integrované analýzy hrozeb](/azure/security-center/threat-protection)
+- [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 - [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -144,7 +144,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 - [Pochopení a použití značek služeb](../virtual-network/service-tags-overview.md)
 
-- [Pochopení a použití skupin zabezpečení aplikací](/azure/virtual-network/security-overview#application-security-groups)
+- [Pochopení a použití skupin zabezpečení aplikací](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Odpovědnost:** Zákazník
 
@@ -158,7 +158,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 - [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -188,9 +188,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny vašich prostředků Azure. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -214,7 +214,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na vašich Azure DevTest Labs instancích na úrovni roviny správy. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené na úrovni roviny správy pro instance DevTest Labs.
 
-- [Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů](/azure/azure-monitor/platform/diagnostic-settings)
+- [Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Odpovědnost:** Zákazník
 
@@ -224,7 +224,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na vašich Azure DevTest Labs instancích na úrovni roviny správy. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené na úrovni roviny správy pro instance DevTest Labs.
 
-- [Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů](/azure/azure-monitor/platform/diagnostic-settings)
+- [Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Odpovědnost:** Zákazník
 
@@ -236,7 +236,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Další informace najdete v následujících článcích:
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Pochopení Azure Security Center shromažďování dat](../security-center/security-center-enable-data-collection.md)
 
@@ -248,7 +248,7 @@ Další informace najdete v následujících článcích:
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k vašim Azure DevTest Labs instancí podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Další informace najdete v následujícím článku.](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Další informace najdete v následujícím článku.](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -260,9 +260,9 @@ Další informace najdete v následujících článcích:
 
 Další informace najdete v následujících článcích:
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -272,7 +272,7 @@ Další informace najdete v následujících článcích:
 
 **Pokyny**: pracovní prostor Azure Log Analytics slouží k monitorování a upozorňování na aktivity neobvyklé v protokolech zabezpečení a událostech souvisejících s vaší Azure DevTest Labs.
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -333,7 +333,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 - Správa prostředků: poskytuje přístup k Azure Portal ke správě prostředků (vytváření virtuálních počítačů, vytváření prostředí, spouštění, zastavování, restartování, odstraňování a použití artefaktů atd.). Správa prostředků se provádí v Azure pomocí řízení přístupu na základě role Azure (RBAC). Role přiřadíte uživatelům a nastavíte oprávnění na úrovni prostředků a přístupu.
 - Virtuální počítače (na úrovni sítě): ve výchozí konfiguraci virtuální počítače používají účet místního správce. Pokud je k dispozici doména (Azure Active Directory Domain Services (Azure služba AD DS), místní doména nebo cloudová doména), je možné počítače připojit k doméně. Uživatelé pak můžou pomocí artefaktu připojení k doméně připojit k počítačům své identity založené na doméně.
 
-- [Referenční architektura pro DevTest Labs](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-reference-architecture#architecture)
+- [Referenční architektura pro DevTest Labs](./devtest-lab-reference-architecture.md#architecture)
 
 - [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -463,7 +463,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na případy, kdy změny probíhají na instancích DevTest Labs a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Vytvoření upozornění pro události protokolu aktivit DevTest Labs](create-alerts.md)
 
@@ -481,7 +481,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 - [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -595,7 +595,7 @@ Referenční materiál:
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -625,7 +625,7 @@ Referenční materiál:
 
 **Doprovodné** materiály: v závislosti na typu skriptů můžete pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezit schopnost uživatelů spouštět skripty v rámci virtuálních počítačů hostovaných v DevTest Labs. Můžete také použít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neoprávněný software se zablokuje spouštění na podkladových virtuálních počítačích Azure.
 
-- [Řízení spouštění skriptu PowerShellu v prostředích Windows](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 - [Jak používat Azure Security Center Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -665,7 +665,7 @@ Azure Resource Manager taky umožňuje exportovat šablonu do JavaScript Object 
 
 Pro vaše prostředky Azure můžete také použít doporučení z Azure Security Center jako standardní hodnoty konfigurace zabezpečení.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
@@ -721,7 +721,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
 
-- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 - [Postup vytvoření objektu pro vytváření imagí v DevTest Labs](image-factory-create.md)
 
@@ -735,7 +735,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Kurz k Azure Repos Git](/azure/devops/repos/git/gitworkflow)
 
-- [O oprávněních a skupinách](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page&amp;preserve-view=true)
+- [O oprávněních a skupinách](/azure/devops/organizations/security/about-permissions?preserve-view=true&tabs=preview-page&view=azure-devops)
 
 - [Integrace mezi Azure DevTest Labs a pracovním postupem Azure DevOps](devtest-lab-dev-ops.md)
 
@@ -765,7 +765,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -853,7 +853,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Jak nakonfigurovat Microsoft Antimalware pro Azure](../security/fundamentals/antimalware.md) 
 
-- [Ochrana před hrozbami v Azure Security Center](/azure/security-center/threat-protection)
+- [Ochrana před hrozbami v Azure Security Center](../security-center/azure-defender.md)
 
 **Odpovědnost:** Zákazník
 
@@ -869,7 +869,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 - [Pochopení Microsoft antimalwaru pro Azure](../security/fundamentals/antimalware.md) 
 
-- [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](/azure/security-center/security-center-alerts-data-services)
+- [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](../security-center/azure-defender.md)
 
 **Odpovědnost:** Zákazník
 
@@ -913,7 +913,7 @@ Povolte Azure Backup na cílových virtuálních počítačích Azure a požadov
 
 - [Přehled zálohování virtuálních počítačů Azure](../backup/backup-azure-vms-introduction.md)
 
-- [Postup zálohování klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup zálohování klíčů Key Vault v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -929,7 +929,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 
 - [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 - [Jak zálohovat a obnovit zašifrovaný virtuální počítač](../backup/backup-azure-vms-encryption.md)
 
@@ -975,7 +975,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -1041,5 +1041,5 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

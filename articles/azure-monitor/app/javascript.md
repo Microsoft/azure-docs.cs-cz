@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485482"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565261"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -107,7 +107,7 @@ Všechny možnosti konfigurace se teď přesunuly na konec skriptu, aby se zabr�
 Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcete přepsat výchozí hodnotu položky uvedené jako [volitelné], můžete odebrat tuto čáru, abyste minimalizovali výslednou velikost vrácené stránky.
 
 Dostupné možnosti konfigurace jsou
-
+ 
 | Název | Typ | Description
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Description |
-|------|---------|-------------|
-| instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
-| accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
-| sessionRenewalMs | 1800000 | Pokud je uživatel neaktivní po dobu v milisekundách, dojde k zaznamenání relace. Výchozí hodnota je 30 minut. |
-| sessionExpirationMs | 86400000 | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. Výchozí hodnota je 24 hodin. |
-| maxBatchSizeInBytes | 10000 | Maximální velikost dávky telemetrie Pokud dávka tento limit překročí, pošle se hned a spustí se nová dávka. |
-| maxBatchInterval | 15 000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
-| disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky se nebudou shromažďovat. Výchozí hodnota je false. |
-| disableTelemetry | false (nepravda) | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
-| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>**_Poznámka:_** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
-| loggingLevelConsole | 0 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
-| loggingLevelTelemetry | 1 | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
-| diagnosticLogInterval | 10000 | vnitřních Interval dotazování (v MS) pro interní frontu protokolování |
-| samplingPercentage | 100 | Procento událostí, které budou odeslány. Výchozí hodnota je 100, což znamená, že jsou odesílány všechny události. Tuto hodnotu nastavte, pokud chcete zachovat svůj limit dat pro aplikace ve velkém měřítku. |
-| autoTrackPageVisitTime | false (nepravda) | Pokud je hodnota true, v PageView je čas zobrazení předchozí instrumentované stránky sledován a odeslán jako telemetrie a pro aktuální PageView se spustí nový časovač. Výchozí hodnota je false. |
-| disableAjaxTracking | false (nepravda) | V případě hodnoty true nejsou volání AJAX shromažďována znovu. Výchozí hodnota je false. |
-| disableFetchTracking | true | Je-li nastavena hodnota true, žádosti o načtení nejsou shromažďovány. Výchozí hodnota je true. |
-| overridePageViewDuration | false (nepravda) | Při hodnotě true se výchozí chování trackPageView změní na konec intervalu trvání zobrazení stránky při volání trackPageView. Pokud je hodnota false a pro trackPageView není k dispozici žádná vlastní doba trvání, vypočítává se výkon zobrazení stránky pomocí rozhraní API pro navigaci. Výchozí hodnota je false. |
-| maxAjaxCallsPerView | 500 | Výchozí 500 – určuje, kolik volání AJAX bude monitorováno na zobrazení stránky. Nastavte na hodnotu-1, pokud chcete monitorovat všechna (neomezená) volání AJAX na stránce. |
-| disableDataLossAnalysis | true | Pokud je hodnota false, budou se při spuštění kontrolovat vyrovnávací paměti pro interní telemetrie pro položky, které ještě nebyly odeslány. |
-| disableCorrelationHeaders | false (nepravda) | V případě hodnoty false přidá sada SDK dvě hlavičky ("Request-ID" a "Request-Context") pro všechny požadavky závislosti, které je korelují s odpovídajícími požadavky na straně serveru. Výchozí hodnota je false. |
-| correlationHeaderExcludedDomains |  | Zakázat korelační hlavičky pro konkrétní domény |
-| correlationHeaderDomains |  | Povolit korelační hlavičky pro konkrétní domény |
-| disableFlushOnBeforeUnload | false (nepravda) | Výchozí hodnota je false. Je-li nastavena hodnota true, metoda flush nebude volána při triggerech události onBeforeUnload |
-| enableSessionStorageBuffer | true | Výchozí hodnota je true. Pokud je nastaveno na true, uloží se do úložiště relace vyrovnávací paměť s veškerou neodeslanou telemetrie. Vyrovnávací paměť se při načtení stránky obnoví. |
-| isCookieUseDisabled | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z souborů cookie. Všimněte si, že tato možnost zakáže soubory cookie uživatelů a relací a vykreslí okna využití a vykreslí je nepoužitelné. |
-| cookieDomain | null | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. |
-| isRetryDisabled | false (nepravda) | Výchozí hodnota je false. Pokud je hodnota false, zkuste to znovu v 206 (částečný úspěch), 408 (timeout), 429 (příliš mnoho požadavků), 500 (interní chyba serveru), 503 (služba není dostupná) a 0 (offline, jenom pokud se zjistilo). |
-| isStorageUseDisabled | false (nepravda) | Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z místního úložiště a úložiště relací. Výchozí hodnota je false. |
-| isBeaconApiDisabled | true | Pokud má hodnotu false, SDK pošle veškerou telemetrii pomocí [rozhraní Beacon API](https://www.w3.org/TR/beacon) . |
-| onunloadDisableBeacon | false (nepravda) | Výchozí hodnota je false. Když se karta zavře, SDK pošle veškerou zbývající telemetrii pomocí [rozhraní API pro maják](https://www.w3.org/TR/beacon) . |
-| sdkExtension | null | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ' ext_javascript: 2.0.0 '). Výchozí hodnota je null. |
-| isBrowserLinkTrackingEnabled | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, SDK bude sledovat všechny požadavky na [propojení prohlížeče](/aspnet/core/client-side/using-browserlink) . |
-| appId | null | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
-| enableCorsCorrelation | false (nepravda) | V případě hodnoty true SDK přidá dvě hlavičky (' Request-ID ' a ' Request-Context ') do všech požadavků CORS ke sladění odchozích závislostí AJAX s odpovídajícími požadavky na straně serveru. Výchozí hodnota je false. |
-| namePrefix | nedefinované | Volitelná hodnota, která bude použita jako přípona názvu pro localStorage a název souboru cookie.
-| enableAutoRouteTracking | false (nepravda) | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy algoritmu hash ( `example.com/foo#bar` ) jsou také zaznamenávány jako nová zobrazení stránky.
-| enableRequestHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky požadavku Fetch & AJAX, výchozí hodnota je false.
-| enableResponseHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky odpovědi požadavku načítající & AJAX, výchozí hodnota je false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
-| enableAjaxErrorStatusText | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, zahrňte text chyby odezvy v události závislosti u neúspěšných požadavků AJAX.
-| enableAjaxPerfTracking | false (nepravda) | Výchozí hodnota je false. Příznak pro povolení vyhledávání a zahrnutí dalšího okna prohlížeče. časování výkonu v hlášené `ajax` (XHR a Fetch) ohlásilo metriky.
-| maxAjaxPerfLookupAttempts | 3 | Výchozí hodnota je 3. Maximální počet pokusů, kolikrát se má okno Hledat. časování výkonu (Pokud je k dispozici) je vyžadováno, protože ne všechny prohlížeče naplní okno. výkon před ohlášením konce žádosti XHR a pro žádosti o načtení, které jsou přidány po dokončení.
-| ajaxPerfLookupDelay | 25 | Výchozí hodnota je 25 ms. Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro `ajax` požadavek, čas je v milisekundách a předává se přímo do setTimeout ().
-| enableUnhandledPromiseRejectionTracking | false (nepravda) | V případě hodnoty true budou se Neošetřená zamítnutí slíbit shromažďovat a nahlásí se jako chyba JavaScriptu. Pokud má disableExceptionTracking hodnotu true (nesleduje výjimky), konfigurační hodnota se bude ignorovat a Neošetřená zamítnutí se nebudou hlásit.
+| Název | Description | Výchozí |
+|------|-------------|---------|
+| instrumentationKey | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. | řetězec<br/>null |
+| accountId | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry | řetězec<br/>null |
+| sessionRenewalMs | Pokud je uživatel neaktivní po dobu v milisekundách, dojde k zaznamenání relace. | numerické<br/>1800000<br/>(30 minut) |
+| sessionExpirationMs | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. | numerické<br/>86400000<br/>(24 hodin) |
+| maxBatchSizeInBytes | Maximální velikost dávky telemetrie Pokud dávka tento limit překročí, pošle se hned a spustí se nová dávka. | numerické<br/>10000 |
+| maxBatchInterval | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) | numerické<br/>15 000 |
+| zakázat&#8203;ExceptionTracking | Je-li nastavena hodnota true, výjimky se nebudou shromažďovat. | boolean<br/> false (nepravda) |
+| disableTelemetry | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. | boolean<br/>false (nepravda) |
+| enableDebug | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>**_Poznámka:_** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . | boolean<br/>false (nepravda) |
+| loggingLevelConsole | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) | numerické<br/> 0 |
+| loggingLevelTelemetry | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) | numerické<br/> 1 |
+| diagnosticLogInterval | vnitřních Interval dotazování (v MS) pro interní frontu protokolování | numerické<br/> 10000 |
+| samplingPercentage | Procento událostí, které budou odeslány. Výchozí hodnota je 100, což znamená, že jsou odesílány všechny události. Tuto hodnotu nastavte, pokud chcete zachovat svůj limit dat pro aplikace ve velkém měřítku. | numerické<br/>100 |
+| autoTrackPageVisitTime | Pokud je hodnota true, v PageView je čas zobrazení předchozí instrumentované stránky sledován a odeslán jako telemetrie a pro aktuální PageView se spustí nový časovač. | boolean<br/>false (nepravda) |
+| disableAjaxTracking | V případě hodnoty true nejsou volání AJAX shromažďována znovu. | boolean<br/> false (nepravda) |
+| disableFetchTracking | Je-li nastavena hodnota true, žádosti o načtení nejsou shromažďovány.|boolean<br/>true |
+| overridePageViewDuration | Při hodnotě true se výchozí chování trackPageView změní na konec intervalu trvání zobrazení stránky při volání trackPageView. Pokud je hodnota false a pro trackPageView není k dispozici žádná vlastní doba trvání, vypočítává se výkon zobrazení stránky pomocí rozhraní API pro navigaci. |boolean<br/>
+| maxAjaxCallsPerView | Výchozí 500 – určuje, kolik volání AJAX bude monitorováno na zobrazení stránky. Nastavte na hodnotu-1, pokud chcete monitorovat všechna (neomezená) volání AJAX na stránce. | numerické<br/> 500 |
+| disableDataLossAnalysis | Pokud je hodnota false, budou se při spuštění kontrolovat vyrovnávací paměti pro interní telemetrie pro položky, které ještě nebyly odeslány. | boolean<br/> true |
+| zakázat&#8203;CorrelationHeaders | V případě hodnoty false přidá sada SDK dvě hlavičky ("Request-ID" a "Request-Context") pro všechny požadavky závislosti, které je korelují s odpovídajícími požadavky na straně serveru. | boolean<br/> false (nepravda) |
+| correlationHeader&#8203;ExcludedDomains | Zakázat korelační hlavičky pro konkrétní domény | řetězec []<br/>nedefinované |
+| correlationHeader&#8203;ExcludePatterns | Zakázat korelační hlavičky pomocí regulárních výrazů | Regex []<br/>nedefinované |
+| correlationHeader&#8203;domény | Povolit korelační hlavičky pro konkrétní domény | řetězec []<br/>nedefinované |
+| disableFlush&#8203;OnBeforeUnload | Je-li nastavena hodnota true, metoda flush nebude volána při triggerech události onBeforeUnload | boolean<br/> false (nepravda) |
+| enableSessionStorageBuffer | Pokud je nastaveno na true, uloží se do úložiště relace vyrovnávací paměť s veškerou neodeslanou telemetrie. Vyrovnávací paměť se při načtení stránky obnoví. | boolean<br />true |
+| cookieCfg | Ve výchozím nastavení je povolené použití souborů cookie, viz nastavení [ICookieCfgConfig](#icookiemgrconfig) pro úplné výchozí hodnoty. | [ICookieCfgConfig](#icookiemgrconfig)<br>(Od 2.6.0)<br/>nedefinované |
+| ~~isCookieUseDisabled~~<br>disableCookiesUsage | Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z souborů cookie. Všimněte si, že tato možnost zakáže soubory cookie uživatelů a relací a vykreslí okna využití a vykreslí je nepoužitelné. isCookieUseDisable je zastaralá ve prospěch disableCookiesUsage, pokud je zadaná jak disableCookiesUsage má přednost.<br>(Od verze 2.6.0) A pokud `cookieCfg.enabled` je také definováno, bude mít přednost před těmito hodnotami. použití souborů cookie lze znovu povolit po inicializaci prostřednictvím Core. getCookieMgr (). SetEnabled (true). | alias pro [`cookieCfg.enabled`](#icookiemgrconfig)<br>false (nepravda) |
+| cookieDomain | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami.<br>(Od verze 2.6.0) Pokud `cookieCfg.domain` je definováno, bude mít přednost před touto hodnotou. | alias pro [`cookieCfg.domain`](#icookiemgrconfig)<br>null |
+| cookiePath | Vlastní cesta k souboru cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie za aplikační bránou.<br>Pokud `cookieCfg.path` je definováno, bude mít přednost před touto hodnotou. | alias pro [`cookieCfg.path`](#icookiemgrconfig)<br>(Od 2.6.0)<br/>null |
+| isRetryDisabled | Pokud je hodnota false, zkuste to znovu v 206 (částečný úspěch), 408 (timeout), 429 (příliš mnoho požadavků), 500 (interní chyba serveru), 503 (služba není dostupná) a 0 (offline, jenom pokud se zjistilo). | boolean<br/>false (nepravda) |
+| isStorageUseDisabled | Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z místního úložiště a úložiště relací. | boolean<br/> false (nepravda) |
+| isBeaconApiDisabled | Pokud má hodnotu false, SDK pošle veškerou telemetrii pomocí [rozhraní Beacon API](https://www.w3.org/TR/beacon) . | boolean<br/>true |
+| onunloadDisableBeacon | Když se karta zavře, SDK pošle veškerou zbývající telemetrii pomocí [rozhraní API pro maják](https://www.w3.org/TR/beacon) . | boolean<br/> false (nepravda) |
+| sdkExtension | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ' ext_javascript: 2.0.0 '). | řetězec<br/> null |
+| isBrowserLink&#8203;TrackingEnabled | Pokud má hodnotu true, SDK bude sledovat všechny požadavky na [propojení prohlížeče](/aspnet/core/client-side/using-browserlink) . | boolean<br/>false (nepravda) |
+| appId | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. |řetězec<br/> null |
+| Povolit&#8203;CorsCorrelation | V případě hodnoty true SDK přidá dvě hlavičky (' Request-ID ' a ' Request-Context ') do všech požadavků CORS ke sladění odchozích závislostí AJAX s odpovídajícími požadavky na straně serveru. | boolean<br/>false (nepravda) |
+| namePrefix | Volitelná hodnota, která bude použita jako přípona názvu pro localStorage a název souboru cookie. | řetězec<br/>nedefinované |
+| Povolit sledování&#8203;&#8203;Autoroute | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy algoritmu hash ( `example.com/foo#bar` ) jsou také zaznamenávány jako nová zobrazení stránky.| boolean<br/>false (nepravda) |
+| enableRequest&#8203;HeaderTracking | Pokud je nastaveno na true, jsou sledovány hlavičky požadavku Fetch & AJAX. | boolean<br/> false (nepravda) |
+| enableResponse&#8203;HeaderTracking | Pokud je nastaveno na true, jsou sledovány hlavičky odpovědi požadavku načítající & AJAX. | boolean<br/> false (nepravda) |
+| distributedTracingMode | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).| `DistributedTracingModes`nebo<br/>numerické<br/>(Od verze 2.6.0) `DistributedTracingModes.AI_AND_W3C`<br />(v 2.5.11 nebo starší) `DistributedTracingModes.AI` |
+| Povolit&#8203;AjaxErrorStatusText | Pokud má hodnotu true, zahrňte text chyby odezvy v události závislosti u neúspěšných požadavků AJAX. | boolean<br/> false (nepravda) |
+| Povolit&#8203;AjaxPerfTracking |Příznak pro povolení vyhledávání a zahrnutí dalšího okna prohlížeče. časování výkonu v hlášené `ajax` (XHR a Fetch) ohlásilo metriky. | boolean<br/> false (nepravda) |
+| maxAjaxPerf&#8203;LookupAttempts | Maximální počet pokusů, kolikrát se má okno Hledat. časování výkonu (Pokud je k dispozici) je vyžadováno, protože ne všechny prohlížeče naplní okno. výkon před ohlášením konce žádosti XHR a pro žádosti o načtení, které jsou přidány po dokončení.| numerické<br/> 3 |
+| ajaxPerfLookupDelay | Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro `ajax` požadavek, čas je v milisekundách a předává se přímo do setTimeout (). | numerické<br/> 25 MS |
+| Sledování&#8203;enableUnhandled&#8203;PromiseRejection | V případě hodnoty true budou se Neošetřená zamítnutí slíbit shromažďovat a nahlásí se jako chyba JavaScriptu. Pokud má disableExceptionTracking hodnotu true (nesleduje výjimky), konfigurační hodnota se bude ignorovat a Neošetřená zamítnutí se nebudou hlásit. | boolean<br/> false (nepravda) |
+| zakázat ověření&#8203;InstrumentationKey&#8203; | Je-li nastavena hodnota true, je kontrola ověření klíče instrumentace vynechána. | boolean<br/>false (nepravda) |
+| enablePerfMgr | Pokud je povoleno (true), vytvoří místní perfEvents pro kód, který byl instrumentované k vygenerování perfEvents (prostřednictvím pomocníka doPerf ()). Dá se použít k identifikaci problémů s výkonem v rámci sady SDK na základě vašeho využití nebo volitelně v rámci vlastního instrumentního kódu. [Další podrobnosti jsou k dispozici v základní dokumentaci](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md). Od verze 2.5.7 | boolean<br/>false (nepravda) |
+| perfEvtsSendAll | Když je povolený _enablePerfMgr_ a [IPerfManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) aktivuje [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts). perfEvent () Tento příznak určuje, jestli se událost aktivuje (a pošle se všem posluchačům) pro všechny události (true), nebo jenom pro události nadřazených objektů (false &lt; výchozí &gt; ).<br />Nadřazený [IPerfEvent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) je událost, kde v okamžiku vytvoření této události ještě neběží žádné jiné IPerfEvent a její _Nadřazená_ vlastnost není null ani nedefinovaná. Od verze 2.5.7 |  boolean<br />false (nepravda) |
+| idLength | Určuje výchozí délku, která se používá ke generování nové hodnoty náhodné relace a ID uživatele. Výchozí hodnota je 22, předchozí výchozí hodnota je 5 (v 2.5.8 nebo méně), pokud potřebujete zachovat předchozí maximální délku, měli byste nastavit tuto hodnotu na 5. |  numerické<br />22 |
+
+## <a name="cookie-handling"></a>Zpracování souborů cookie
+
+Z verze 2.6.0 je teď k dispozici Správa souborů cookie přímo z instance a po inicializaci ji můžete zakázat a znovu povolit.
+
+Pokud je při inicializaci prostřednictvím `disableCookiesUsage` Konfigurace nebo zakázané `cookieCfg.enabled` , můžete ho teď znovu povolit prostřednictvím funkce [ICookieMgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) `setEnabled` .
+
+Správa souborů cookie založené na instancích nahrazuje také předchozí globální funkce CoreUtils `disableCookies()` , `setCookie(...)` `getCookie(...)` a `deleteCookie(...)` . A pokud chcete využít vylepšení pro potřesení stromu jako součást verze 2.6.0, neměli byste už používat globální funkce.
+
+### <a name="icookiemgrconfig"></a>ICookieMgrConfig
+
+Konfigurace souborů cookie pro správu souborů cookie založenou na instancích přidaná ve verzi 2.6.0
+
+| Název | Description | Typ a výchozí |
+|------|-------------|------------------|
+| enabled | Logická hodnota, která označuje, zda je použití souborů cookie pomocí sady SDK povoleno aktuální instancí. Pokud je hodnota false, instance sady SDK inicializované touto konfigurací nebude ukládat ani číst žádná data z souborů cookie. | boolean<br/> true |
+| doména | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. Pokud není zadaný, použije se hodnota z kořenové `cookieDomain` hodnoty. | řetězec<br/>null |
+| program | Určuje cestu, která se má použít pro soubor cookie, pokud není k dispozici, bude použita libovolná hodnota z kořenové `cookiePath` hodnoty. | řetězec <br/> / |
+| GetCookie | Funkce pro načtení pojmenované hodnoty souboru cookie, pokud není k dispozici, bude používat interní analýzu nebo ukládání souborů cookie. | `(name: string) => string` <br/> null |
+| setCookie | Funkce pro nastavení pojmenovaného souboru cookie se zadanou hodnotou, která se volá jenom při přidávání nebo aktualizaci souboru cookie. | `(name: string, value: string) => void` <br/> null |
+| delCookie | Funkce pro odstranění pojmenovaného souboru cookie se zadanou hodnotou, která je oddělená od setCookie, aby se předešlo nutnosti analyzovat hodnotu, abyste zjistili, jestli je soubor cookie přidaný nebo odebraný. Pokud není k dispozici, bude použita interní analýza nebo ukládání souborů cookie. | `(name: string, value: string) => void` <br/> null |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>Zjednodušené použití nového instance Správce souborů cookie
+
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). SetEnabled (true/false);
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). set ("myCookie"; "% 20encoded% 20value");
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). get ("myCookie");
+- appInsights. [getCookieMgr ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). del ("myCookie");
 
 ## <a name="enable-time-on-page-tracking"></a>Povolit sledování času na stránce
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 795b938913dad149739c4591bc2a9c221d784c84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b3303ae04f9300025c3c42fc63abe8b2aa46a83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716363"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563714"
 ---
 # <a name="azure-security-baseline-for-container-registry"></a>Základní hodnoty zabezpečení Azure pro Container Registry
 
@@ -37,7 +37,7 @@ Z za bránou firewall nakonfigurujte pravidla přístupu brány firewall a znač
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. ContainerRegistry**:
 
@@ -62,9 +62,9 @@ Z za bránou firewall nakonfigurujte pravidla přístupu brány firewall a znač
 K nakonfigurování skupin zabezpečení sítě můžete použít Azure Security Center jenom v čase, abyste mohli omezit expozici koncových bodů ke schváleným IP adresám po omezenou dobu.
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě můžete také doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
-- [Jak nakonfigurovat DDoS Protection](/azure/virtual-network/manage-ddos-protection)
+- [Jak nakonfigurovat DDoS Protection](../ddos-protection/manage-ddos-protection.md)
 - [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
-- [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/security-center-alerts-service-layer.md)
+- [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 - [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 - [Azure Security Center pouze v čase Access Control sítě](../security-center/security-center-just-in-time.md)
 
@@ -104,7 +104,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Doprovodné** materiály: u prostředků, které potřebují přístup ke svému registru kontejneru, použijte značky služby virtuální sítě pro službu Azure Container Registry k definování řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby AzureContainerRegistry v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro odpovídající službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-- [Povolení přístupu podle značky služby](https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag)
+- [Povolení přístupu podle značky služby](./container-registry-firewall-access-rules.md#allow-access-by-service-tag)
 
 **Odpovědnost:** Zákazník
 
@@ -138,9 +138,9 @@ Plány Azure můžete použít ke zjednodušení rozsáhlých nasazení Azure t�
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které se vztahují k registrům kontejnerů. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -182,7 +182,7 @@ Plány Azure můžete použít ke zjednodušení rozsáhlých nasazení Azure t�
 
 **Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -194,9 +194,9 @@ Plány Azure můžete použít ke zjednodušení rozsáhlých nasazení Azure t�
 
 - [Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky](container-registry-diagnostics-audit-logs.md)
 
-- [Principy Log Analyticsho pracovního prostoru](/azure/azure-monitor/log-query/get-started-portal)
+- [Principy Log Analyticsho pracovního prostoru](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -208,7 +208,7 @@ Plány Azure můžete použít ke zjednodušení rozsáhlých nasazení Azure t�
 
 - [Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky](container-registry-diagnostics-audit-logs.md)
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -248,11 +248,11 @@ Plány Azure můžete použít ke zjednodušení rozsáhlých nasazení Azure t�
 
 Pro každý registr kontejnerů Azure můžete sledovat, jestli je integrovaný účet správce povolený nebo zakázaný. Zakáže účet, pokud se nepoužívá.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Účet správce Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Účet správce Azure Container Registry](./container-registry-authentication.md#admin-account)
 
 **Odpovědnost:** Zákazník
 
@@ -264,7 +264,7 @@ Pro každý registr kontejnerů Azure můžete sledovat, jestli je integrovaný 
 
 Pokud je výchozí účet správce služby Azure Container Registry povolený, vytvoří se automaticky složitá hesla, která by se měla střídat. Zakáže účet, pokud se nepoužívá.
 
-- [Účet správce Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Účet správce Azure Container Registry](./container-registry-authentication.md#admin-account)
 
 **Odpovědnost:** Zákazník
 
@@ -278,7 +278,7 @@ Vytvořte také procedury pro povolení předdefinovaného účtu správce regis
 
 - [Pochopení Azure Security Center identity a přístupu](../security-center/security-center-identity-access.md)
 
-- [Účet správce Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Účet správce Azure Container Registry](./container-registry-authentication.md#admin-account)
 
 **Odpovědnost:** Zákazník
 
@@ -292,7 +292,7 @@ Pro individuální přístup k registru kontejneru použijte individuální při
 
 - [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-- [Individuální přihlášení ke registru kontejneru](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+- [Individuální přihlášení ke registru kontejneru](./container-registry-authentication.md#admin-account)
 
 **Odpovědnost:** Zákazník
 
@@ -325,7 +325,7 @@ Pro individuální přístup k registru kontejneru použijte individuální při
 
 **Doprovodné** materiály: použití sestav zabezpečení Azure Active Directory (Azure AD) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Monitorování identit a aktivit přístupu uživatelů ve službě Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -357,7 +357,7 @@ Pro individuální přístup k registru kontejneru použijte individuální při
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -371,7 +371,7 @@ Pro individuální přístup k registru kontejneru použijte individuální při
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -381,7 +381,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: použití funkcí Azure Active Directory (Azure AD) pro rizika a ochranu identity ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. 
 
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -393,7 +393,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: není k dispozici; Customer Lockbox aktuálně není pro Azure Container Registry podporovaná.
 
-- [Seznam podporovaných služeb Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Seznam podporovaných služeb Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Odpovědnost:** Zákazník
 
@@ -409,7 +409,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 Značky a image kontejneru verze nebo jiné artefakty v registru a zámky imagí nebo úložišť, které vám pomůžou při sledování imagí, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 - [Doporučení pro označování a naznačení verzí imagí kontejneru](container-registry-image-tag-version.md)
 
@@ -425,11 +425,11 @@ Značky a image kontejneru verze nebo jiné artefakty v registru a zámky imagí
 
 Prostředky by měly být oddělené virtuální sítí nebo podsítí, vhodně označené a zabezpečené skupinou zabezpečení sítě (NSG) nebo Azure Firewall.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Vytvoření skupin pro správu](/azure/governance/management-groups/create)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 - [Omezení přístupu ke službě Azure Container Registry pomocí virtuální sítě Azure nebo pravidel brány firewall](container-registry-vnet.md)
 
@@ -461,7 +461,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Odpovědnost:** Sdílené
 
@@ -509,7 +509,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 - [Principy šifrování neaktivních uložených dat v Azure](../security/fundamentals/encryption-atrest.md)
 
-- [Klíče spravované zákazníkem v Azure Container Registry](https://aka.ms/acr/cmk)
+- [Klíče spravované zákazníkem v Azure Container Registry](./container-registry-customer-managed-keys.md)
 
 **Odpovědnost:** Zákazník
 
@@ -533,9 +533,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení u imagí kontejneru. Volitelně můžete nasadit řešení jiných výrobců z Azure Marketplace k provádění posouzení ohrožení zabezpečení imagí.
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
-- [Integrace služby Azure Container Registry se službou Security Center (Preview)](/azure/security-center/azure-container-registry-integration)
+- [Integrace služby Azure Container Registry se službou Security Center (Preview)](../security-center/defender-for-container-registries-introduction.md)
 
 **Odpovědnost:** Zákazník
 
@@ -567,7 +567,7 @@ Automatizuje aktualizace imagí kontejneru, když se zjistí aktualizace základ
 
 **Doprovodné** materiály: integrujte Azure Container Registry (ACR) s Azure Security Center a umožněte tak pravidelné prohledávání imagí kontejneru pro ohrožení zabezpečení. Volitelně můžete nasadit řešení jiných výrobců z Azure Marketplace a provádět pravidelné kontroly ohrožení zabezpečení imagí.
 
-- [Integrace služby Azure Container Registry se službou Security Center (Preview)](/azure/security-center/azure-container-registry-integration)
+- [Integrace služby Azure Container Registry se službou Security Center (Preview)](../security-center/defender-for-container-registries-introduction.md)
 
 **Odpovědnost:** Zákazník
 
@@ -577,7 +577,7 @@ Automatizuje aktualizace imagí kontejneru, když se zjistí aktualizace základ
 
 **Doprovodné** materiály: integrujte Azure Container Registry (ACR) s Azure Security Center, abyste umožnili pravidelné prohledávání imagí kontejneru pro ohrožení zabezpečení a klasifikaci rizik. Volitelně můžete nasadit řešení třetích stran z Azure Marketplace a provádět pravidelné kontroly ohrožení zabezpečení imagí a hodnocení rizik.
 
-- [Integrace služby Azure Container Registry se službou Security Center (Preview)](/azure/security-center/azure-container-registry-integration)
+- [Integrace služby Azure Container Registry se službou Security Center (Preview)](../security-center/defender-for-container-registries-introduction.md)
 
 **Odpovědnost:** Zákazník
 
@@ -595,7 +595,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -657,9 +657,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 - [Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky](container-registry-diagnostics-audit-logs.md)
 
-- [Principy Log Analyticsho pracovního prostoru](/azure/azure-monitor/log-query/get-started-portal)
+- [Principy Log Analyticsho pracovního prostoru](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -691,7 +691,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -719,7 +719,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Pokyny**: pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezte schopnost uživatelů spouštět skripty v rámci výpočetních prostředků Azure.
 
-- [Například způsob řízení spouštění skriptu prostředí PowerShell v prostředích systému Windows](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Například způsob řízení spouštění skriptu prostředí PowerShell v prostředích systému Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 **Odpovědnost:** Zákazník
 
@@ -791,9 +791,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu Azure Repos.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -945,7 +945,7 @@ Zálohujte klíče spravované zákazníkem v Azure Key Vault pomocí nástrojů
 
 - [Import imagí kontejneru do registru kontejneru](container-registry-import-images.md)
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -955,7 +955,7 @@ Zálohujte klíče spravované zákazníkem v Azure Key Vault pomocí nástrojů
 
 **Pokyny**: testování obnovení zálohovaných klíčů spravovaných zákazníkem v Azure Key Vault pomocí nástrojů příkazového řádku Azure nebo sad SDK.
 
-- [Postup obnovení klíčů Azure Key Vault v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení klíčů Azure Key Vault v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
@@ -965,7 +965,7 @@ Zálohujte klíče spravované zákazníkem v Azure Key Vault pomocí nástrojů
 
 **Pokyny**: můžete povolit Soft-Delete v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-- [Postup povolení Soft-Delete v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Odpovědnost:** Zákazník
 
@@ -1059,5 +1059,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

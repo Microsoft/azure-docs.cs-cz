@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33196af2f3544733715ece501cceec0366d2a47c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7569f98b1a721ecc9bd8e41a7d55cfbb80a2bc88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716244"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564615"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Základní hodnoty zabezpečení Azure pro Data Lake Analytics
 
@@ -64,9 +64,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm) 
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools)
 
@@ -78,13 +78,13 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 **Doprovodné** materiály: povolení nastavení diagnostiky pro data Lake Analytics pro přístup k protokolům auditu a požadavků. Mezi ně patří data, jako je zdroj události, datum, uživatel, časové razítko a další užitečné prvky. 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. DataLakeAnalytics**:
 
@@ -94,9 +94,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-- [Změnit dobu uchovávání dat v Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) 
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Odpovědnost:** Zákazník
 
@@ -108,9 +108,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Další informace o pracovním prostoru Log Analytics](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Další informace o pracovním prostoru Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -122,7 +122,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)  
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)  
 
 - [Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md)
 
@@ -162,7 +162,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo do řešen�
 
 Můžete také povolit přístup za běhu pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management a Azure Resource Manager.
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Odpovědnost:** Zákazník
 
@@ -240,7 +240,7 @@ Můžete také povolit přístup za běhu pomocí služby Azure Active Directory
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí můžete navíc použít kontroly identity a přístupu v Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -252,7 +252,7 @@ Můžete také povolit přístup za běhu pomocí služby Azure Active Directory
 
 **Doprovodné** materiály: povolení nastavení diagnostiky pro Data Lake Analytics a Azure Active Directory (Azure AD), odesílání všech protokolů do log Analyticsho pracovního prostoru. Nakonfigurujte požadovaná upozornění (například pokusy o přístup k zakázaným tajným klíčům) v rámci Log Analytics.
 
-- [Integrace protokolů služby Azure AD s protokoly Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů služby Azure AD s protokoly Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -296,7 +296,7 @@ Můžete také povolit přístup za běhu pomocí služby Azure Active Directory
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Správa Access Control na základě rolí Azure](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+- [Správa Access Control na základě rolí Azure](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 - [Pravidla brány firewall](/rest/api/datalakeanalytics/firewallrules)
 
@@ -344,7 +344,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení interakce uživatelů se službou.
 
-- [Správa služby Azure RBAC](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+- [Správa služby Azure RBAC](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 **Odpovědnost:** Zákazník
 
@@ -364,7 +364,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy se změny provedly do produkčních instancí prostředků Azure Data Lake Analytics.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -477,7 +477,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -713,5 +713,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

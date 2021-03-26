@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783383"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566655"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Jak používat parametry, výrazy a funkce v Azure Data Factory
 
@@ -25,7 +25,7 @@ V tomto dokumentu se primárně zaměřujeme na základní koncepty učení s r�
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Uživatelské rozhraní a parametry Azure Data Factory
 
-Pokud v uživatelském rozhraní ADF začínáte s využitím parametrů Azure Data Factory, přečtěte si prosím [uživatelské rozhraní Data Factory pro propojené služby s parametry](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui)  a [uživatelským rozhraním Data Factory pro kanál řízený metadaty s parametry](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) pro vizuální vysvětlení.
+Pokud v uživatelském rozhraní ADF začínáte s využitím parametrů Azure Data Factory, přečtěte si prosím [uživatelské rozhraní Data Factory pro propojené služby s parametry](./parameterize-linked-services.md#data-factory-ui)  a [uživatelským rozhraním Data Factory pro kanál řízený metadaty s parametry](./how-to-use-trigger-parameterization.md#data-factory-ui) pro vizuální vysvětlení.
 
 ## <a name="parameter-and-expression-concepts"></a>Koncepce parametrů a výrazů 
 
@@ -226,7 +226,7 @@ Tyto funkce jsou užitečné v rámci podmínek, které je možné použít k vy
 | [tolik](control-flow-expression-language-functions.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](control-flow-expression-language-functions.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
 | [mění](control-flow-expression-language-functions.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
-| [ani](control-flow-expression-language-functions.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
+| [nebo](control-flow-expression-language-functions.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
   
 ### <a name="conversion-functions"></a>Převodní funkce  
 
@@ -313,11 +313,11 @@ Tento [parametr kanálu kopírování kanálu služby Azure Data Factory](https:
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Podrobný kanál mapování toku dat s parametry 
 
-Sledujte prosím [tok dat mapování s parametry](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) pro komplexní příklad používání parametrů v toku dat.
+Sledujte prosím [tok dat mapování s parametry](./parameters-data-flow.md) pro komplexní příklad používání parametrů v toku dat.
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Podrobné kanály založené na metadatech s parametry
 
-Pokud chcete získat další informace o použití parametrů pro návrh kanálů řízených metadaty, postupujte prosím podle [kanálu založeného na metadatech s parametry](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) . Toto je oblíbený případ použití pro parametry.
+Pokud chcete získat další informace o použití parametrů pro návrh kanálů řízených metadaty, postupujte prosím podle [kanálu založeného na metadatech s parametry](./how-to-use-trigger-parameterization.md) . Toto je oblíbený případ použití pro parametry.
 
 
 ## <a name="next-steps"></a>Další kroky

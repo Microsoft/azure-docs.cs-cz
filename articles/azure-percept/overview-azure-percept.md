@@ -1,18 +1,18 @@
 ---
 title: Přehled služby Azure Percept
 description: Další informace o platformě Azure Percept
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953584"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567657"
 ---
 # <a name="introduction-to-azure-percept"></a>Seznámení s Azure Percept
 
@@ -28,21 +28,21 @@ Integrace při pokusu o nasazení řešení Edge AI ve velkém měřítku může
 
 Hlavní součásti Azure Percept jsou:
 
-1. [Azure Percept DK.](./overview-azure-percept-dk.md)
+- [Azure Percept DK.](./overview-azure-percept-dk.md)
 
     - Vývojová sada, která je dostatečně flexibilní pro podporu široké škály scénářů vytváření prototypů pro sestavovatele zařízení, sestavení řešení a zákazníky.
 
         > [!div class="nextstepaction"]
         > [Koupit](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-1. Služby a pracovní postupy, které urychlují vývoj modelů AI a vývoje řešení.
+- Služby a pracovní postupy, které urychlují vývoj modelů AI a vývoje řešení.
 
     - Vývojové pracovní postupy a předem připravené modely přístupné z [Azure Percept studia](https://go.microsoft.com/fwlink/?linkid=2135819).
     - Vývojové služby modelu.
     - Služby správy zařízení pro škálování.
     - Komplexní zabezpečení.
 
-1. Návrh a certifikační programy Reference k hardwaru AI.
+- Návrh a certifikační programy Reference k hardwaru AI.
 
     - Poskytuje ekosystém hardwarových vývojářů pomocí vzorů a osvědčených postupů pro vývoj hardwaru Edge AI, který je možné snadno integrovat se službami Azure AI a IoT.
 

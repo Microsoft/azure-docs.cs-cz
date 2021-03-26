@@ -8,16 +8,16 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: 9ec217cefb05929ed6f5c7395df5e68891e823ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95d0e1ceb9e05ce58f388c3f88dc98b2cf6a0cc5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739776"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559583"
 ---
 # <a name="retrieve-load-balancer-metadata-using-the-azure-instance-metadata-service-imds"></a>Načtení metadat služby Vyrovnávání zatížení pomocí Instance Metadata Service Azure (IMDS)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pro svůj požadavek použijte [nejnovější verzi rozhraní API](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#supported-api-versions) .
 
@@ -30,7 +30,7 @@ ms.locfileid: "101739776"
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254:80/metadata/loadbalancer?api-version=2020-10-01" | ConvertTo-Json
 ```
 > [!NOTE]
-> Parametr-bez proxy byl představen v PowerShellu 6,0. Pokud používáte starší verzi PowerShellu, v textu žádosti odeberte-bez proxy serveru a ujistěte se, že při načítání IMDS informací nepoužíváte proxy server. Další informace najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#proxies).
+> Parametr-bez proxy byl představen v PowerShellu 6,0. Pokud používáte starší verzi PowerShellu, v textu žádosti odeberte-bez proxy serveru a ujistěte se, že při načítání IMDS informací nepoužíváte proxy server. Další informace najdete [tady](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#proxies).
 > 
 ### <a name="linux"></a>[Linux](#tab/linux/)
 
@@ -89,4 +89,3 @@ Další informace o [Azure instance metadata Service](../virtual-machines/window
 [Načíst všechna metadata pro instanci](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#access-azure-instance-metadata-service)
 
 [Nasazení standardního nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-portal.md)
-

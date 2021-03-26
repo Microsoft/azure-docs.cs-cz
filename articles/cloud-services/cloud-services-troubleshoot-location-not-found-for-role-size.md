@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744892"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558954"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Řešení potíží s LocationNotFoundForRoleSize při nasazení cloudové služby (Classic) do Azure
 
@@ -47,7 +47,7 @@ V tomto scénáři byste měli vybrat jinou oblast nebo SKU, do které chcete na
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Výpis SKU v oblasti pomocí Azure CLI
 
-Můžete použít příkaz [AZ VM list-SKU](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) .
+Můžete použít příkaz [AZ VM list-SKU](/cli/azure/vm.html#az_vm_list_skus) .
 
 - Pomocí `--location` parametru můžete filtrovat výstup do umístění, které používáte.
 - Použijte `--size` parametr pro hledání podle názvu částečné velikosti.
@@ -63,7 +63,7 @@ Můžete použít příkaz [AZ VM list-SKU](https://docs.microsoft.com/cli/azure
 
 #### <a name="list-skus-in-region-using-powershell"></a>Výpis SKU v oblasti pomocí PowerShellu
 
-Můžete použít příkaz [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) .
+Můžete použít příkaz [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) .
 
 - Filtrovat výsledky podle umístění.
 - Pro tento příkaz musíte mít nejnovější verzi PowerShellu.
@@ -91,7 +91,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 #### <a name="list-skus-in-region-using-rest-api"></a>Výpis SKU v oblasti pomocí REST API
 
-Můžete použít operaci [seznam SKU prostředku](https://docs.microsoft.com/rest/api/compute/resourceskus/list) . Vrátí dostupné SKU a oblasti v následujícím formátu:
+Můžete použít operaci [seznam SKU prostředku](/rest/api/compute/resourceskus/list) . Vrátí dostupné SKU a oblasti v následujícím formátu:
 
 ```json
 {

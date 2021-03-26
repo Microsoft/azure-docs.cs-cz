@@ -4,23 +4,29 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 6ed6544b8014e973eaf92c763ca18687ad89e5a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 22a9cf3338f422341928a77f2bf14c497aa2ba31
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495866"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563768"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
+- Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
 
 ## <a name="create-azure-communication-resource"></a>Vytvořit prostředek komunikace Azure
 
-Pokud chcete vytvořit prostředek služby Azure Communication Services, [Přihlaste se k](/cli/azure/authenticate-azure-cli)rozhraní příkazového řádku Azure a pak spusťte následující příkaz:
+Pokud chcete vytvořit prostředek služby Azure Communication Services, [Přihlaste se k Azure CLI](/cli/azure/authenticate-azure-cli). To můžete provést pomocí terminálu pomocí ```az login``` příkazu a zadáním přihlašovacích údajů. Spusťte následující příkaz pro vytvoření prostředku:
 
 ```azurecli
 az communication create --name "<communicationName>" --location "Global" --data-location "United States" --resource-group "<resourceGroup>"
+```
+
+Pokud chcete vybrat konkrétní předplatné, můžete také zadat ```--subscription``` příznak a zadat ID předplatného.
+```
+az communication create --name "<communicationName>" --location "Global" --data-location "United States" --resource-group "<resourceGroup> --subscription "<subscriptionID>"
 ```
 
 Prostředek komunikačních služeb můžete nakonfigurovat následujícími možnostmi:
@@ -33,12 +39,16 @@ V dalším kroku můžete přiřadit značky k prostředku. Značky lze použít
 
 ## <a name="manage-your-communication-services-resource"></a>Správa prostředku komunikačních služeb
 
-Chcete-li přidat značky do prostředku komunikačních služeb, spusťte následující příkazy:
+Chcete-li přidat značky do prostředku služby Communication Services, spusťte následující příkazy. Můžete také cílit na konkrétní předplatné.
 
 ```azurecli
-az communication update --name "<communicationName>" --tags newTag="newVal" --resource-group "<resourceGroup>"
+az communication update --name "<communicationName>" --tags newTag="newVal1" --resource-group "<resourceGroup>"
+
+az communication update --name "<communicationName>" --tags newTag="newVal2" --resource-group "<resourceGroup>" --subscription "<subscriptionID>"
 
 az communication show --name "<communicationName>" --resource-group "<resourceGroup>"
+
+az communication show --name "<communicationName>" --resource-group "<resourceGroup>" --subscription "<subscriptionID>"
 ```
 
 Informace o dalších příkazech naleznete v tématu [AZ Communication](/cli/azure/ext/communication/communication).

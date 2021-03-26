@@ -4,27 +4,30 @@ titleSuffix: Azure Machine Learning
 description: Naučte se používat Azure Policy k používání předdefinovaných zásad pro Azure Machine Learning, abyste se ujistili, že vaše pracovní prostory vyhovují vašim požadavkům.
 author: aashishb
 ms.author: aashishb
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584308"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544362"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Audit a Správa Azure Machine Learning pomocí Azure Policy
 
 [Azure Policy](../governance/policy/index.yml) je nástroj zásad správného řízení, který vám umožní zajistit, aby prostředky Azure vyhovovaly vašim zásadám. Pomocí Azure Machine Learning můžete přiřadit následující zásady:
 
-* **Klíč spravovaný zákazníkem**: audit nebo vymáhání, jestli musí pracovní prostory používat klíč spravovaný zákazníkem.
-* **Privátní odkaz**: audit nebo vymáhání, zda pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí.
-* **Privátní koncový bod**: Nakonfigurujte podsíť Azure Virtual Network, kde by se měl vytvořit privátní koncový bod.
-* **Zóna privátní DNS**: Nakonfigurujte privátní zónu DNS, která se má použít pro privátní odkaz.
+| Zásady | Description |
+| ----- | ----- |
+| **Klíč spravovaný zákazníkem** | Audit nebo vymáhání, zda pracovní prostory musí používat klíč spravovaný zákazníkem |
+| **Privátní odkaz** | Audit nebo vymáhání, zda pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí. |
+| **Soukromý koncový bod** | Nakonfigurujte podsíť Azure Virtual Network, kde by se měl vytvořit privátní koncový bod. |
+| **Zóna Privátní DNS** | Nakonfigurujte privátní zónu DNS, která se má použít pro privátní propojení. |
+| **Spravovaná identita přiřazená uživatelem** | Auditujte nebo uplatněte, jestli pracovní prostory používají spravovanou identitu přiřazenou uživatelem. |
 
 Zásady je možné nastavit v různých oborech, například na úrovni předplatného nebo skupiny prostředků. Další informace najdete v dokumentaci k [Azure Policy](../governance/policy/overview.md).
 
@@ -68,6 +71,14 @@ Pokud chcete nakonfigurovat tuto zásadu, nastavte parametr efektu na __DeployIf
 Nakonfiguruje pracovní prostor na používání privátní zóny DNS a přepíše výchozí rozlišení DNS pro soukromý koncový bod.
 
 Pokud chcete nakonfigurovat tuto zásadu, nastavte parametr efektu na __DeployIfNotExists__. Nastavte __privateDnsZoneId__ na ID Azure Resource Manager privátní zóny DNS, která se má použít. 
+
+## <a name="workspace-should-use-user-assigned-managed-identity"></a>Pracovní prostor by měl používat spravovanou identitu přiřazenou uživatelem
+
+Určuje, jestli je pracovní prostor vytvořený pomocí spravované identity přiřazené systémem (výchozí) nebo spravované identity přiřazené uživatelem. Spravovaná identita pro pracovní prostor se používá pro přístup k přidruženým prostředkům, jako jsou Azure Storage, Azure Container Registry, Azure Key Vault a Azure Application Insights. Další informace najdete v tématu [použití spravovaných identit pomocí Azure Machine Learning](how-to-use-managed-identities.md).
+
+Pokud chcete nakonfigurovat tuto zásadu, nastavte parametr efektu na __audit__, __Deny__ nebo __disabled__. Pokud nastavíte __audit__, můžete vytvořit pracovní prostor bez zadání uživatelem přiřazené spravované identity. Použije se identita přiřazená systémem a v protokolu aktivit se vytvoří událost upozornění.
+
+Pokud je zásada nastavená na __Odepřít__, nemůžete vytvořit pracovní prostor, pokud během procesu vytváření neposkytnete uživatelem přiřazenou identitu. Při pokusu o vytvoření pracovního prostoru bez zadání identity přiřazené uživatelem dojde k chybě. Tato chyba se taky zaznamená do protokolu aktivit. Identifikátor zásady se vrátí jako součást této chyby.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 74d8018ea4cb2cad5b6726b8abb6bf2f17b8e57c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 059a1888b529487f2b0d17509370897222a20d83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778521"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563017"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -104,7 +104,7 @@ Tento postup popisuje, jak se zařízení připojuje k VMware vCenter Server:
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Může se zařízení Azure Migrate připojit k více serverům vCenter?
 
-Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjišťovat servery ve více instancích vCenter Server, je nutné nasadit více zařízení.
+No. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjišťovat servery ve více instancích vCenter Server, je nutné nasadit více zařízení.
 
 ## <a name="can-a-project-have-multiple-appliances"></a>Může mít projekt více zařízení?
 
@@ -134,11 +134,11 @@ Také nelze znovu použít existující klíč projektu na překonfigurované za
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Můžu zařízení nastavit na virtuálním počítači Azure?
 
-Ne. V tuto chvíli není tato možnost podporovaná.
+No. V tuto chvíli není tato možnost podporovaná.
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Můžu na hostiteli ESXi zjistit?
 
-Ne. Chcete-li zjistit servery v prostředí VMware, je nutné mít vCenter Server.
+No. Chcete-li zjistit servery v prostředí VMware, je nutné mít vCenter Server.
 
 ## <a name="how-do-i-update-the-appliance"></a>Návody aktualizovat zařízení?
 
@@ -158,9 +158,9 @@ Ano, teď podporujeme více přihlašovacích údajů serveru, aby bylo možné 
 V nástroji Configuration Manager pro zařízení můžete zadat přihlašovací údaje doména/Windows (ne-doména)/Linux (nedoménová)/SQL Server. [Přečtěte si další informace](add-server-credentials.md) o tom, jak zadat přihlašovací údaje a jak je zpracovat.
 
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Jaký typ vlastností připojení SQL Server podporuje Azure Migrate pro zjišťování SQL?
-Azure Migrate zašifruje komunikaci mezi Azure Migrate zařízením a instancemi SQL Server zdrojového kódu (s vlastností šifrovat připojení nastavenou na hodnotu TRUE). Tato připojení jsou šifrovaná pomocí [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (nastavená na hodnotu true); Transportní vrstva bude používat protokol SSL k šifrování kanálu a obejít řetěz certifikátů k ověření vztahu důvěryhodnosti. Server zařízení musí být nastavený tak, aby [důvěřoval kořenové autoritě certifikátu](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+Azure Migrate zašifruje komunikaci mezi Azure Migrate zařízením a instancemi SQL Server zdrojového kódu (s vlastností šifrovat připojení nastavenou na hodnotu TRUE). Tato připojení jsou šifrovaná pomocí [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (nastavená na hodnotu true); Transportní vrstva bude používat protokol SSL k šifrování kanálu a obejít řetěz certifikátů k ověření vztahu důvěryhodnosti. Server zařízení musí být nastavený tak, aby [důvěřoval kořenové autoritě certifikátu](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
-Pokud se při spuštění na serveru nezřídí žádný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem, který se používá k šifrování přihlašovacích paketů. [Další informace](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+Pokud se při spuštění na serveru nezřídí žádný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem, který se používá k šifrování přihlašovacích paketů. [Další informace](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c11a89d91693075ca54c0689223dcf2af06df521
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436528"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568507"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure Portal
 
@@ -48,11 +48,11 @@ Souhrnný přehled pracovního postupu nasazení je následující:
     Pomocí výše uvedených prostředků vytvořte virtuální počítač.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete vytvářet a spravovat virtuální počítače na svém zařízení prostřednictvím Azure Portal, ujistěte se, že:
 
-1. Na zařízení Azure Stack Edge pro bylo dokončeno nastavení sítě, jak je popsáno v části [Krok 1: konfigurace zařízení Azure Stack Edge pro](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
+1. Na zařízení Azure Stack Edge pro bylo dokončeno nastavení sítě, jak je popsáno v části [Krok 1: konfigurace zařízení Azure Stack Edge pro](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
     1. Povolili jste síťové rozhraní pro výpočetní výkon. Tato IP adresa síťového rozhraní se používá k vytvoření virtuálního přepínače pro nasazení virtuálního počítače. V místním uživatelském rozhraní zařízení, pokračujte na **COMPUTE**. Vyberte síťové rozhraní, které budete používat k vytvoření virtuálního přepínače.
 

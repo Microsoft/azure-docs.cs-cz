@@ -411,16 +411,11 @@
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Zdroje a prostředky
+- name: Instance
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Ceny
+    - name: Možnosti nákupu
+      items: null
+    - name: Zvýhodněné hybridní využití Azure
       items:
         - name: Linux
-          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
-        - name: Windows
-          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'
+          href: azure-hybrid-benefit-linux.md

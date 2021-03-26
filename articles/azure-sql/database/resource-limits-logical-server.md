@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691225"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543512"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Tento článek poskytuje přehled omezení prostředků pro logický Server, který používá Azure SQL Database a Azure synapse Analytics. Poskytuje informace o tom, co se stane, když dojde k dosažení těchto omezení prostředků, a popisuje mechanismy řízení prostředků, které se používají k vykonání těchto limitů.
+Tento článek poskytuje přehled omezení prostředků pro [logický Server](logical-servers.md) , který používá Azure SQL Database a Azure synapse Analytics. Poskytuje informace o tom, co se stane, když dojde k dosažení těchto omezení prostředků, a popisuje mechanismy řízení prostředků, které se používají k vykonání těchto limitů.
 
 > [!NOTE]
-> Omezení pro Azure SQL Managed instance najdete v tématu [SQL Database omezení prostředků pro spravované instance](../managed-instance/resource-limits.md).
+> Omezení pro Azure SQL Managed instance najdete v tématu [omezení prostředků pro spravované instance](../managed-instance/resource-limits.md).
 
 ## <a name="maximum-resource-limits"></a>Maximum omezení prostředků
 
 | Prostředek | Omezení |
 | :--- | :--- |
-| Databáze na server | 5000 |
-| Výchozí počet serverů na předplatné v libovolné oblasti | 20 |
-| Maximální počet serverů na předplatné v jakékoli oblasti | 200 |  
-| Kvóta DTU/eDTU na server | 54 000 |  
-| vCore kvóta na server/instanci | 540 |
-| Maximální počet fondů na server | Omezeno počtem DTU nebo virtuální jádra. Pokud je například každý fond 1000 DTU, může server podporovat fondy 54.|
+| Databáze na logický Server | 5000 |
+| Výchozí počet logických serverů na předplatné v oblasti | 20 |
+| Maximální počet logických serverů na předplatné v oblasti | 200 |  
+| Kvóta DTU/eDTU na logický Server | 54 000 |  
+| kvóta vCore na logický Server | 540 |
+| Maximální počet fondů na logický Server | Omezeno počtem DTU nebo virtuální jádra. Pokud je například každý fond 1000 DTU, může server podporovat fondy 54.|
 |||
 
 > [!IMPORTANT]
-> Vzhledem k tomu, že počet databází se blíží limitu na server, může dojít k následujícím akcím:
+> Vzhledem k tomu, že počet databází se blíží limitu na logický Server, může dojít k následujícím akcím:
 >
-> - Zvýšení latence při spouštění dotazů na hlavní databázi.  Patří sem zobrazení statistik využití prostředků, například sys.resource_stats.
+> - Zvýšení latence při spouštění dotazů na hlavní databázi.  To zahrnuje zobrazení statistiky využití prostředků, jako je `sys.resource_stats` .
 > - Zvýšení latence při operacích správy a v pohledech na portál pro vykreslování, které zahrnují vytváření výčtu databází na serveru.
 
 > [!NOTE]
-> Pokud chcete získat větší kvótu DTU/eDTU, vCore kvótu nebo více serverů než výchozí množství, odešlete novou žádost o podporu v Azure Portal. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md).
+> Pokud chcete získat větší kvótu DTU/eDTU, vCore kvótu nebo více logických serverů než výchozí množství, odešlete novou žádost o podporu v Azure Portal. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Velikost úložiště
 

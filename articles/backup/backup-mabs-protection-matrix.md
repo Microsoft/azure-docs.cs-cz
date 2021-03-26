@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 Protection Matrix
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609766"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561266"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 Protection Matrix
 
@@ -127,7 +127,7 @@ Azure Backup Server může chránit úlohy clusteru, které jsou umístěné ve 
   * Souborový server
   * Hyper-V
 
-  Tyto úlohy můžou běžet na jednom serveru nebo v konfiguraci clusteru. Pokud chcete chránit úlohu, která není v důvěryhodné doméně, přečtěte si téma [Příprava počítačů v pracovních skupinách a nedůvěryhodných doménách](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm) , ve kterém najdete přesné informace o tom, co je podporováno a jaké je ověřování vyžadováno.
+  Tyto úlohy můžou běžet na jednom serveru nebo v konfiguraci clusteru. Pokud chcete chránit úlohu, která není v důvěryhodné doméně, přečtěte si téma [Příprava počítačů v pracovních skupinách a nedůvěryhodných doménách](/system-center/dpm/prepare-environment-for-dpm) , ve kterém najdete přesné informace o tom, co je podporováno a jaké je ověřování vyžadováno.
 
 ## <a name="unsupported-data-types"></a>Nepodporované datové typy
 

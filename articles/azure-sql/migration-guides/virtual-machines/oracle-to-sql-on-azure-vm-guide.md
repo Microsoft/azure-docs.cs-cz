@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d24e056d397617c95a7ba301b58efc3631f40dd
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 4173fe34c6966514ef4f150527cd712c9d95ab7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026517"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561708"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Průvodce migrací: Oracle pro SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -199,7 +199,7 @@ K publikování schématu a migraci dat použijte následující postup:
 
 
 Kromě použití SSMA můžete k migraci dat použít taky služba SSIS (SQL Server Integration Services) (SSIS). Další informace najdete v následujících tématech: 
-- Článek [Začínáme služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- Článek [Začínáme služba SSIS (SQL Server Integration Services)](//sql/integration-services/sql-server-integration-services).
 - Dokument White Paper [služba SSIS (SQL Server Integration Services): SSIS pro Azure a přesun hybridních dat](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
@@ -271,4 +271,3 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 - Postup vyhodnocení vrstvy přístupu k aplikaci najdete v tématu [sada Data Access Migration Toolkit (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) .
 - Podrobnosti o tom, jak provádět testování vrstvy přístupu k datům A/B, najdete [Pomocník pro experimentování s databázemi](/sql/dea/database-experimentation-assistant-overview).
-

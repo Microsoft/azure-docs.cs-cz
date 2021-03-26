@@ -8,16 +8,16 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 01/13/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d2aa4d43fbc8cf9040702afb1877e0271b2eab2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561936"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568286"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
 
@@ -195,11 +195,50 @@ Minimální odvozená konfigurace může být zapsaná jako:
 ```json
 {
     "entryScript": "score.py",
-    "sourceDirectory": "./working_dir"
+    "sourceDirectory": "./working_dir",
+    "environment": {
+    "docker": {
+        "arguments": [],
+        "baseDockerfile": null,
+        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "enabled": false,
+        "sharedVolumes": true,
+        "shmSize": null
+    },
+    "environmentVariables": {
+        "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+    },
+    "name": "my-deploy-env",
+    "python": {
+        "baseCondaEnvironment": null,
+        "condaDependencies": {
+            "channels": [
+                "conda-forge",
+                "pytorch"
+            ],
+            "dependencies": [
+                "python=3.6.2",
+                "torchvision"
+                {
+                    "pip": [
+                        "azureml-defaults",
+                        "azureml-telemetry",
+                        "scikit-learn==0.22.1",
+                        "inference-schema[numpy-support]"
+                    ]
+                }
+            ],
+            "name": "project_environment"
+        },
+        "condaDependenciesFile": null,
+        "interpreterPath": "python",
+        "userManagedDependencies": false
+    },
+    "version": "1"
 }
 ```
 
-Tím se určí, že nasazení machine learningu bude používat soubor `score.py` v `./working_dir` adresáři ke zpracování příchozích požadavků.
+Tím se určuje, že nasazení machine learningu bude používat soubor `score.py` v `./working_dir` adresáři ke zpracování příchozích požadavků a k tomu, aby image Docker používala s balíčky Pythonu zadanými v `project_environment` prostředí.
 
 Podrobné informace o odvozených konfiguracích [najdete v tomto článku](./reference-azure-machine-learning-cli.md#inference-configuration-schema) . 
 
@@ -290,7 +329,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 Pokud byste nechtěli zaregistrovat model, můžete předat parametr "sourceDirectory" v inferenceconfig.jsna, abyste určili místní adresář, ze kterého bude váš model sloužit.
 
 ```azurecli-interactive
-az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json
+az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json --name my_deploy
 ```
 
 # <a name="python"></a>[Python](#tab/python)

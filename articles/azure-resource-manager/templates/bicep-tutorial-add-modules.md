@@ -2,15 +2,15 @@
 title: Kurz – přidání modulů do souboru Azure Resource Manager bicep
 description: Použijte moduly k zapouzdření komplexních podrobností o nezpracované deklaraci prostředků.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6efd9c230df49c83adc17361082af85b0ef9edc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633134"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568762"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>Kurz: přidání modulů do souboru Azure Resource Manager bicep
 
@@ -18,7 +18,7 @@ V [předchozím kurzu](bicep-tutorial-use-parameter-file.md)jste zjistili, jak p
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [kurz týkající se souboru parametrů](bicep-tutorial-use-parameter-file.md), ale není to nutné.
 
@@ -128,4 +128,4 @@ Gratulujeme, dokončili jste tento Úvod k nasazení souborů bicep do Azure. De
 Další série kurzů se podrobněji seznámí s nasazením šablon.
 
 > [!div class="nextstepaction"]
-> [Přidat moduly](./bicep-tutorial-add-modules.md)
+> [Nasazení místní šablony](./deployment-tutorial-local-template.md)

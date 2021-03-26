@@ -1,18 +1,18 @@
 ---
 title: Přehled služby Azure Percept Studio
 description: Další informace o Azure Percept studiu
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8aae976e94ebbef22a86e19f00bfe6248338c4d0
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: e6f9641179a9c2490dcb65316a80b4ba7fd4b639
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953668"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567691"
 ---
 # <a name="azure-percept-studio-overview"></a>Přehled služby Azure Percept Studio
 
@@ -23,6 +23,8 @@ V nástroji Studio uvidíte, jak vaše zařízení s koncovým systémem AI slou
 Pracovní postupy v Azure Percept studiu integrují spoustu služeb Azure AI a IoT, jako je Azure IoT Hub, Custom Vision, Speech Studio a Azure ML, takže tyto služby můžete využít k vytvoření uceleného řešení bez významného předem existujícího vědomí. Pokud už tyto služby Azure znáte, můžete se také připojit k existujícím prostředkům služby Azure a upravovat je mimo Azure Percept Studio.
 
 Bez ohledu na to, jestli jste začátečník nebo pokročilý model AI a vývojář řešení, pracujete na Prototype nebo přesouváte do produkčního řešení, nabízí Azure Percept Studio přístup k pracovním postupům, které můžete použít ke snížení tření kolem vytváření řešení AI pro Edge.
+
+## <a name="video-walkthrough"></a>Video s návodem
 
 </br>
 

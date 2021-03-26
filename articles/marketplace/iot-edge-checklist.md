@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608253"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562694"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>Kontrolní seznam předběžného certifikace pro moduly IoT Edge
 
@@ -55,7 +55,7 @@ Certifikační tým používá k ověření imagí v různých architekturách n
 #### <a name="steps"></a>Postup
 
 1. Ujistěte se, že k vytvořeným zařízením nebo VIRTUÁLNÍm počítačům máte k dispozici prostřednictvím výstupu.
-1. Stáhněte do zařízení [modul Runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge) .
+1. Stáhněte do zařízení [modul Runtime IoT Edge](../iot-edge/how-to-install-iot-edge.md) .
 1. Aktualizujte připojovací řetězec zkopírovaný v kroku 5 do souboru config. yaml.
 1. Restartujte modul Edge pomocí `sudo systemctl restart iotedge` .
 1. Ověřte, jestli je modul nasazený na zařízení se systémem `sudo iotedge list` ; měl by být ve spuštěném stavu.
@@ -78,6 +78,6 @@ Zkontrolujte:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení modulů z komerčního tržiště](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [Publikování modulu Edge v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [Nasadit modul IoT Edge](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [Nasazení modulů z komerčního tržiště](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [Publikování modulu Edge v partnerském centru](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [Nasadit modul IoT Edge](../iot-edge/quickstart-linux.md)

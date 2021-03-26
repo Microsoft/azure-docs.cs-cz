@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101099239"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564581"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Ukládání do mezipaměti s využitím služby Azure front-end Standard/Premium (Preview)
 
@@ -26,6 +26,10 @@ V tomto článku se dozvíte, jak se trasy a sady pravidel front-Premium (Previe
 > Služba Azure front-in standard/Premium (Preview) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="request-methods"></a>Metody žádosti
+
+Jenom metoda GET Request může vygenerovat obsah uložený v mezipaměti v frontách Azure. Všechny ostatní metody žádosti se vždycky proxy přes síť.
 
 ## <a name="delivery-of-large-files"></a>Doručení velkých souborů
 

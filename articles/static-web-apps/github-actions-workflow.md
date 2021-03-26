@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 57c83a94925e94088085efacf1192416f63e6383
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d561c72bb1c6e6e67de7698d7b21901fcf8d1f7c
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232031"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544413"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -136,11 +136,7 @@ with:
     ###### End of Repository/Build Configurations ######
 ```
 
-| Vlastnost | Popis | Povinné |
-|---|---|---|
-| `app_location` | Umístění kódu aplikace<br><br>Například zadejte, `/` Pokud je zdrojový kód vaší aplikace v kořenu úložiště, nebo `/app` Pokud je kód aplikace v adresáři s názvem `app` . | Yes |
-| `api_location` | Umístění kódu Azure Functions.<br><br>Zadejte například, `/api` Pokud je kód vaší aplikace ve složce s názvem `api` . Pokud ve složce není zjištěna žádná Azure Functions aplikace, sestavení neselže, pracovní postup předpokládá, že nechcete rozhraní API. | No |
-| `output_location` | Umístění výstupního adresáře sestavení vzhledem k `app_location` .<br><br>Například pokud je zdrojový kód aplikace umístěn na `/app` , a skript sestavení výstupuje soubory do `/app/build` složky a pak nastaví `build` jako `output_location` hodnotu. | No |
+[!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
 `repo_token`Hodnoty, `action` a `azure_static_web_apps_api_token` jsou nastaveny za vás službou Azure static Web Apps by se neměly ručně změnit.
 

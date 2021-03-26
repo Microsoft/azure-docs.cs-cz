@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679285"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561232"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>Přehled agenta služby Device Update pro službu IoT Hub
 
 Agent aktualizace zařízení se skládá ze dvou koncepčních vrstev:
 
-* Vrstva rozhraní je postavená na [službě Azure IoT technologie Plug and Play (PnP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) , která umožňuje tok zpráv mezi agenty aktualizací zařízení a službami aktualizace zařízení.
+* Vrstva rozhraní je postavená na [službě Azure IoT technologie Plug and Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) , která umožňuje tok zpráv mezi agenty aktualizací zařízení a službami aktualizace zařízení.
 * Vrstva platformy zodpovídá za akce aktualizace v rámci vysoké úrovně stahování, instalace a použití, které mohou být specifické pro platformu nebo zařízení.
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Implementace agenta." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -72,8 +72,7 @@ Obslužná rutina aktualizace APT zpracuje manifest aktualizace specifický pro 
 
 ## <a name="self-update-device-update-agent"></a>Samoobslužná aktualizace agenta aktualizace zařízení
 
-Agent aktualizace zařízení a jeho závislosti se dají aktualizovat prostřednictvím aktualizace zařízení pro IoT Hub kanál. Pokud používáte aktualizaci založenou na bitové kopii, zahrňte do nové image nejnovějšího agenta aktualizace zařízení. Pokud používáte aktualizaci založenou na balíčku, zahrňte do manifestu apt jako jakýkoli jiný balíček agenta aktualizací zařízení a jeho požadovanou verzi. [Přečtěte si další informace](device-update-apt-manifest.md) o manifestu apt. V části vlastnosti zařízení v [zařízení IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)můžete ověřit nainstalovanou verzi agenta aktualizace zařízení a agenta pro optimalizaci doručení. [Další informace o vlastnostech zařízení najdete v části rozhraní adu Core](device-update-plug-and-play.md#device-properties).
+Agent aktualizace zařízení a jeho závislosti se dají aktualizovat prostřednictvím aktualizace zařízení pro IoT Hub kanál. Pokud používáte aktualizaci založenou na bitové kopii, zahrňte do nové image nejnovějšího agenta aktualizace zařízení. Pokud používáte aktualizaci založenou na balíčku, zahrňte do manifestu apt jako jakýkoli jiný balíček agenta aktualizací zařízení a jeho požadovanou verzi. [Přečtěte si další informace](device-update-apt-manifest.md) o manifestu apt. V části vlastnosti zařízení v [zařízení IoT](../iot-hub/iot-hub-devguide-device-twins.md)můžete ověřit nainstalovanou verzi agenta aktualizace zařízení a agenta pro optimalizaci doručení. [Další informace o vlastnostech zařízení najdete v části rozhraní adu Core](device-update-plug-and-play.md#device-properties).
 
 ## <a name="next-steps"></a>Další kroky
 [Vysvětlení konfiguračního souboru agenta aktualizace zařízení](device-update-configuration-file.md)
-
