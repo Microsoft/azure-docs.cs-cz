@@ -10,18 +10,18 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 2739079b67d80f3e4a9f367aaa58f6dcbbb650ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4a9deded16de6b0de2ef5f88ffebd813b8e5b8c0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622052"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110330"
 ---
-Začínáme s komunikačními službami Azure pomocí klientské knihovny služby Communications Services Java SMS k posílání zpráv SMS.
+Začínáme s komunikačními službami Azure pomocí komunikačních služeb Java SMS SDK pro posílání zpráv SMS.
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší.
@@ -100,7 +100,7 @@ public class App
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro jazyk Java.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Services SMS SDK pro jazyk Java.
 
 | Název                                                             | Description                                                                                     |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |

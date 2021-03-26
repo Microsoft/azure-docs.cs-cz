@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 405bcd4f3839b99879f76c23060ba24062b279de
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 91b3097e465458181074d1e450e69f267d0fe556
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018110"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026781"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal
 
@@ -169,14 +169,20 @@ Nasaďte [šablonu aplikace pro monitorování nepřetržitého pacienta](../../
 > Až budou vaše skutečná zařízení připravená, můžete pomocí stejné aplikace IoT Central připojit [zařízení](../../iot-central/core/howto-set-up-template.md) a vyměnit simulátory zařízení. Data zařízení se automaticky začnou přesměrovat do FHIR. 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Připojení dat IoT k Azure IoT Connectoru pro FHIR (Preview)
-> [!WARNING]
-> Šablona mapování zařízení uvedená v této příručce je navržená pro práci s exportem dat (starší verze) v rámci IoT Central.
 
-Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulovaná zařízení generovat telemetrii. V tomto kurzu budeme ingestovat telemetrii z *inteligentního* simulátoru opravy do FHIR prostřednictvím služby Azure IoT Connector pro FHIR. Chcete-li exportovat data IoT do služby Azure IoT Connector pro FHIR, chceme [v rámci IoT Central nastavit průběžný export dat](../../iot-central/core/howto-export-data-legacy.md). Na stránce průběžné exportu dat:
-- Jako cíl exportu vyberte *Azure Event Hubs* .
-- Vyberte *použít hodnotu připojovacího řetězce* pro **Event Hubs pole obor názvů** .
+Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulovaná zařízení generovat telemetrii. V tomto kurzu budeme ingestovat telemetrii z *inteligentního* simulátoru opravy do FHIR prostřednictvím služby Azure IoT Connector pro FHIR. Chcete-li exportovat data IoT do služby Azure IoT Connector pro FHIR, chceme [v rámci IoT Central nastavit průběžný export dat](../../iot-central/core/howto-export-data.md). Nejdřív budeme muset vytvořit připojení k cíli a pak vytvoříme úlohu exportu dat, která bude nepřetržitě běžet: 
+
+Vytvořit nový cíl:
+- Přejít na kartu **cíle** a vytvořit nový cíl.
+- Začněte tím, že mu udělíte jedinečný název.
+- Jako cílový typ vyberte *Azure Event Hubs* .
 - Poskytněte konektor Azure IoT Connector pro připojovací řetězec FHIR, který jste získali v předchozím kroku pro pole **připojovací řetězec** .
-- *Možnost zachování* **telemetrie** pro **data pro export** pole
+
+Vytvořit nový export dat:
+- Jakmile vytvoříte cíl, pokračujte na kartu **exporty** a vytvořte nový export dat. 
+- Začněte tím, že data exportujte jedinečný název.
+- V části **data** vyberte *telemetrii* jako *typ dat k exportu*.
+- V části **cíl** vyberte název cíle, který jste vytvořili v předchozím názvu.
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Zobrazení dat zařízení v rozhraní Azure API pro FHIR
 

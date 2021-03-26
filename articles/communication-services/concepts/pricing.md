@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ad88a7a6c91128bb863eeb51cc7f26c8d71b9eed
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495789"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107903"
 ---
 # <a name="pricing-scenarios"></a>Cenové scénáře
 
@@ -25,7 +25,7 @@ Ceny za komunikační služby Azure jsou obecně založené na modelu průběžn
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Volání hlasu a videa a sdílení obrazovky
 
-Komunikační služby Azure umožňují přidat do vašich aplikací volání hlasu a videa a sdílení obrazovky. Můžete vložit prostředí do svých aplikací pomocí jazyka JavaScript, objektivu: C (Apple), Java (Android) nebo klientských knihoven .NET. Podívejte se na náš [úplný seznam dostupných klientských knihoven](./sdk-options.md).
+Komunikační služby Azure umožňují přidat do vašich aplikací volání hlasu a videa a sdílení obrazovky. Do svých aplikací můžete vkládat prostředí pomocí JavaScriptu, objektivu – C (Apple), Java (Android) nebo sady .NET SDK. Podívejte se na náš [úplný seznam dostupných sad SDK](./sdk-options.md).
 
 ### <a name="pricing"></a>Ceny
 
@@ -33,9 +33,9 @@ Služby pro volání a sdílení obrazovky se účtují za minutu za účastník
 
 Každý účastník volání se bude počítat za každou minutu, ke které jsou připojeny ke volání. To má hodnotu true bez ohledu na to, zda uživatel používá audiovizuální volání, volání hlasu nebo sdílení obrazovky.
 
-### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-client-libraries"></a>Příklad ceny: rozdělit zvuk/video volání pomocí klientských knihoven JS a iOS
+### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-sdks"></a>Příklad ceny: rozdělit zvuk/video volání pomocí sad JS a iOS
 
-Alice provedla volání skupiny s kolegy, Bobem a Charlie. Alice a Bob použily klientské knihovny JS, Charlie klientské knihovny iOS.
+Alice provedla volání skupiny s kolegy, Bobem a Charlie. Alice a Bob používaly sady SDK JS, Charlie sady iOS.
 
 - Volání trvá celkem 60 minut.
 - Alice a Bob se účastnily celého volání. Alice zapnula své video po dobu pěti minut a Nasdílela obrazovku po dobu 23 minut. U Boba bylo video zapnuté pro celé volání (60 minut) a sdílená obrazovka po dobu 12 minut.
@@ -48,9 +48,9 @@ Alice provedla volání skupiny s kolegy, Bobem a Charlie. Alice a Bob použily 
 
 **Celkové náklady na volání skupiny**: $0,48 + $0,172 = $0,652
 
-### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Příklad ceny: uživatel klientské knihovny služby Communications Services JS se připojí k plánované schůzce Microsoft Teams.
+### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Příklad ceny: uživatel služby Communications JavaScript SDK se připojí k plánované schůzce Microsoft Teams.
 
-Alice je lékařem, který se účastní svého pacienta, Bob. Alice bude připojovat se k návštěvě z desktopové aplikace Teams. Bob obdrží odkaz pro připojení pomocí webu poskytovatele zdravotní péče, který se připojí ke schůzce pomocí klientské knihovny služby Communication Services JS. Bob použije svůj mobilní telefon k zadání schůzky pomocí webového prohlížeče (iPhone s Safari). Chat bude k dispozici během virtuální návštěvy.
+Alice je lékařem, který se účastní svého pacienta, Bob. Alice bude připojovat se k návštěvě z desktopové aplikace Teams. Bob obdrží odkaz pro připojení pomocí webu poskytovatele zdravotní péče, který se připojí ke schůzce pomocí sady SDK služby Communications Services JavaScript. Bob použije svůj mobilní telefon k zadání schůzky pomocí webového prohlížeče (iPhone s Safari). Chat bude k dispozici během virtuální návštěvy.
 
 - Volání trvá celkem 30 minut.
 - Alice a Bob se účastní celého volání. Alice zapíná své video pět minut po zahájení hovoru a sdílí obrazovku po dobu 13 minut. Bob má své video pro celé volání.
@@ -67,13 +67,13 @@ Alice je lékařem, který se účastní svého pacienta, Bob. Alice bude připo
 * Účast Alice se zabývá licencí týmu. Vaše faktura Azure bude zobrazovat zprávy o minutách a chatech, které týmům mají uživatelé služby Communication Services pro vaše pohodlí, ale tyto minuty a zprávy pocházející z klienta týmů nebudou mít náklady.
 
 **Celkové náklady na návštěvu**:
-- Připojování uživatelů pomocí klientské knihovny služby Communication Services JS: $0,12 + $0,0024 = $0,1224
+- Spojení s uživatelem pomocí komunikačních služeb JavaScript SDK: $0,12 + $0,0024 = $0,1224
 - Připojování uživatelů na desktopové aplikaci Teams: $0 (zahrnuté v licencích týmu)
 
 
 ## <a name="chat"></a>Chat
 
-Pomocí komunikačních služeb můžete rozšířit aplikaci o možnost odesílat a přijímat zprávy chatu mezi dvěma nebo více uživateli. Chat pro klientské knihovny jsou k dispozici pro jazyky JavaScript, .NET, Python a Java. [Další informace o knihovnách klienta najdete na této stránce](./sdk-options.md) .
+Pomocí komunikačních služeb můžete rozšířit aplikaci o možnost odesílat a přijímat zprávy chatu mezi dvěma nebo více uživateli. Sady SDK pro chat jsou k dispozici pro jazyky JavaScript, .NET, Python a Java. [Další informace o sadách SDK najdete na této stránce](./sdk-options.md) .
 
 ### <a name="price"></a>Cena
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524664"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109008"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -52,6 +52,9 @@ Vyhodnocování průběžného přístupu se implementuje povolením služeb, ja
 
 Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k souborům SharePointu Online, e-mailu, kalendáři nebo úlohám a týmům z Microsoft 365 klientských aplikací v minutách po jedné z těchto kritických událostí. 
 
+> [!NOTE] 
+> Týmy ještě nepodporují rizikové události uživatele.
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>Vyhodnocení zásad podmíněného přístupu (Preview)
 
 Exchange a SharePoint jsou schopné synchronizovat klíčová pravidla podmíněného přístupu, aby je bylo možné vyhodnotit v rámci samotné služby.
@@ -63,7 +66,7 @@ Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k firemním s
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Podporováno | Podporováno | Nepodporuje se | Nepodporuje se | Podporováno |
+| **SharePoint Online** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
 | **Exchange Online** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
 
 | | Webové aplikace Office | Aplikace Office Win32 | Office pro iOS | Office pro Android | Office pro Mac |
@@ -71,23 +74,20 @@ Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k firemním s
 | **SharePoint Online** | Nepodporuje se | Podporováno | Podporováno | Podporováno | Podporováno |
 | **Exchange Online** | Nepodporuje se | Podporováno | Podporováno | Podporováno | Podporováno |
 
+| | Web OneDrive | OneDrive Win32 | OneDrive iOS | OneDrive – Android | OneDrive – Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **SharePoint Online** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
+
 ### <a name="client-side-claim-challenge"></a>Výzva k deklaracím na straně klienta
 
 Před vyhodnocením průběžného přístupu by se klienti vždy pokusili přehrát přístupový token z mezipaměti, dokud nevypršela jeho platnost. V CAE zavádíme nový případ, který poskytovatel prostředků může odmítnout token i v případě, že nevypršela jeho platnost. Abychom informovali, že klienti mají obejít mezipaměť i v případě, že nevypršela platnost tokenů uložených v mezipaměti, zavádíme mechanismus s názvem **Challenge Challenge** , který indikuje, že token byl zamítnutý a že Azure AD musí vystavit nový přístupový token. CAE vyžaduje aktualizaci klienta pro pochopení výzvy deklarací identity. Výzva pro deklaraci identity podporuje nejnovější verzi následujících aplikací:
 
-- Okna Outlooku
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web App
-- Týmy pro Windows (jenom pro prostředky týmů)
-- Týmy pro iOS (jenom pro prostředky týmů)
-- Týmy pro Android (jenom pro prostředky týmů)
-- Týmy pro počítače (pouze pro prostředky týmů)
-- Word/Excel/PowerPoint pro Windows
-- Word/Excel/PowerPoint pro iOS
-- Word/Excel/PowerPoint pro Android
-- Word/Excel/PowerPoint pro Mac
+| | Web | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
+| **Teams** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
+| **Office** | Nepodporuje se | Podporováno | Podporováno | Podporováno | Podporováno |
+| **OneDrive** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
 
 ### <a name="token-lifetime"></a>Životnost tokenu
 
@@ -135,7 +135,7 @@ Na této stránce můžete volitelně omezit uživatele a skupiny, které budou 
 
 ![Povolení CAE ve verzi Preview v Azure Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="supported-location-policies"></a>Podporované zásady umístění
 
@@ -165,9 +165,9 @@ Vysvětlení kanálů aktualizace Office najdete v tématu [Přehled kanálů ak
 
 ### <a name="policy-change-timing"></a>Časování změny zásad
 
-Kvůli potenciálním zpožděním replikace mezi službami Azure AD a poskytovateli prostředků můžou změny zásad provedené správci trvat až 2 hodiny, než budou platit pro Exchange Online.
+Změny zásad provedené správci můžou trvat až jeden den. Některá optimalizace byla provedena za účelem snížení zpoždění na dvě hodiny. Ale nepokrývá všechny scénáře ještě předtím. 
 
-Příklad: Správce přidá zásadu, která zablokuje rozsah IP adres pro přístup k e-mailu v 11:00 ráno, uživatel, který z tohoto rozsahu IP adres nacházel, než by mohl pokračovat v přístupu k e-mailu až do 1:00 odp.
+Pokud dojde k naléhavosti a potřebujete, aby byly aktualizované zásady aplikovány na konkrétní uživatele okamžitě, měli byste použít tento [příkaz PowerShellu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) nebo "odvolat relaci" na stránce profilu uživatele k odvolání relace uživatelů. tím se zajistí, že se aktualizované zásady použijí okamžitě.
 
 ### <a name="coauthoring-in-office-apps"></a>Spoluvytváření v aplikacích Office
 

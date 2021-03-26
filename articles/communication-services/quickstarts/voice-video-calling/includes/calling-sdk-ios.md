@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d36bf92a1b1bdef4e45b22b934728b3e8c46c3da
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488084"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107712"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -23,7 +23,7 @@ ms.locfileid: "103488084"
 ### <a name="creating-the-xcode-project"></a>Vytvoření projektu Xcode
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
+> Tento dokument používá verzi 1.0.0-beta. 8 volání sady SDK.
 
 V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobrazením** . V tomto rychlém startu se používá [SwiftUI Framework](https://developer.apple.com/xcode/swiftui/), takže byste měli nastavit **jazyk** na **SWIFT** a **uživatelské rozhraní** na **SwiftUI**. V rámci tohoto rychlého startu nebudete vytvářet testy jednotek nebo testy uživatelského rozhraní. Nezapomeňte zrušit kontrolu **včetně testů jednotek** a také zrušit kontrolu **včetně testů uživatelského rozhraní**.
 
@@ -68,12 +68,12 @@ import AVFoundation
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientské knihovny pro iOS.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají sadu SDK pro iOS.
 
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient je hlavní vstupní bod pro volání klientské knihovny.|
+| CallClient | CallClient je hlavní vstupní bod pro volání sady SDK.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
 | CommunicationTokenCredential | CommunicationTokenCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.| 
 | CommunicationIdentifier | CommunicationIdentifier se používá k reprezentaci identity uživatele, která může být jedna z následujících: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
@@ -131,7 +131,7 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Umístit odchozí volání
 
-Chcete-li vytvořit a spustit volání, je třeba zavolat jedno z rozhraní API v `CallAgent` a zadat identitu komunikačních služeb uživatele, který jste zřídili pomocí klientské knihovny pro správu komunikačních služeb.
+Chcete-li vytvořit a spustit volání, je třeba zavolat jedno z rozhraní API v `CallAgent` a zadat identitu komunikačních služeb uživatele, kterého jste zřídili pomocí sady SDK pro správu komunikačních služeb.
 
 Vytvoření a spuštění volání je synchronní. Zobrazí se instance volání, která vám umožní přihlásit se k odběru všech událostí volání.
 
