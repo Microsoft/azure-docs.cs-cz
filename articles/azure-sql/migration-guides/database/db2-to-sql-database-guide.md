@@ -1,6 +1,6 @@
 ---
-title: 'DB2 do SQL Database: Průvodce migrací'
-description: Tato příručka vás seznámí s migrací databází DB2 do Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro DB2 (SSMA for DB2).
+title: 'Db2 do Azure SQL Database: Průvodce migrací'
+description: Tato příručka vás seznámí s migrací databází Db2 do Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro Db2 (SSMA for Db2).
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,27 +10,29 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 917390b43a772cbb9374c560fc3a65cfa7278839
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1818675e4e5298291ffb5a77c11eebd5d920ebc8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563935"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027087"
 ---
-# <a name="migration-guide-db2-to-sql-database"></a>Průvodce migrací: DB2 do SQL Database
+# <a name="migration-guide-db2-to-azure-sql-database"></a>Průvodce migrací: Db2 do Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Tato příručka vás seznámí s migrací databází DB2 do Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro DB2. 
+Tato příručka vás seznámí s migrací databází Db2 do Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro Db2. 
 
-Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
-K migraci databáze DB2 na SQL Database potřebujete:
+K migraci databáze Db2 na SQL Database potřebujete:
 
-- Ověřte, že je podporované vaše zdrojové prostředí.
-- pro stažení [Pomocník s migrací SQL serveru (SSMA) pro DB2](https://www.microsoft.com/download/details.aspx?id=54254).
-- cílový [Azure SQL Database](../../database/single-database-create-quickstart.md).
+- Ověřte, že [je podporované vaše zdrojové prostředí](/sql/ssma/db2/installing-ssma-for-db2-client-db2tosql#prerequisites).
+- Pro stažení [Pomocník s migrací SQL serveru (SSMA) pro Db2](https://www.microsoft.com/download/details.aspx?id=54254).
+- Cílový [Azure SQL Database](../../database/single-database-create-quickstart.md).
+- Připojení a dostatečná oprávnění pro přístup ke zdroji i cíli. 
+
 
 
 ## <a name="pre-migration"></a>Před migrací
@@ -39,29 +41,29 @@ Po splnění požadavků budete připraveni zjistit topologii prostředí a poso
 
 ### <a name="assess-and-convert"></a>Vyhodnotit a převést
 
-Vytvořte posouzení pomocí Pomocník s migrací SQL Serveru (SSMA). 
+Pomocí Pomocník s migrací SQL Serveru (SSMA) pro DB2 zkontrolujte objekty databáze a data a vyhodnoťte databáze pro migraci. 
 
 K vytvoření posouzení použijte následující postup:
 
-1. Otevřete Pomocník s migrací SQL Serveru (SSMA) pro DB2. 
+1. Otevřete [Pomocník s migrací SQL serveru (SSMA) pro Db2](https://www.microsoft.com/download/details.aspx?id=54254). 
 1. Vyberte **soubor** a pak zvolte **Nový projekt**. 
-1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom v rozevíracím seznamu vyberte Azure SQL Database jako cíl migrace. Vyberte **OK**.  
+1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom v rozevíracím seznamu vyberte Azure SQL Database jako cíl migrace. Vyberte **OK**:
 
    :::image type="content" source="media/db2-to-sql-database-guide/new-project.png" alt-text="Zadejte podrobnosti projektu a vyberte OK, které chcete uložit.":::
 
 
-1. V dialogovém okně **připojit k DB2** zadejte hodnoty pro podrobnosti připojení DB2. 
+1. V dialogovém okně **připojit k DB2** zadejte hodnoty pro podrobnosti připojení Db2. 
 
-   :::image type="content" source="media/db2-to-sql-database-guide/connect-to-db2.png" alt-text="Připojení k instanci DB2":::
+   :::image type="content" source="media/db2-to-sql-database-guide/connect-to-db2.png" alt-text="Připojení k instanci Db2":::
 
 
-1. Klikněte pravým tlačítkem na schéma DB2, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit **vytvořit sestavu** z navigačního panelu po výběru schématu. 
+1. Klikněte pravým tlačítkem na schéma Db2, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit **vytvořit sestavu** z navigačního panelu po výběru schématu:
 
    :::image type="content" source="media/db2-to-sql-database-guide/create-report.png" alt-text="Klikněte pravým tlačítkem na schéma a vyberte vytvořit sestavu.":::
 
-1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Můžete také otevřít sestavu v aplikaci Excel a získat tak inventarizaci objektů DB2 a úsilí potřebné k provedení převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects.
+1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Můžete také otevřít sestavu v aplikaci Excel a získat tak inventarizaci objektů Db2 a úsilí potřebné k provedení převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects.
 
-   Příklad: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Příklad: `drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>`. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/report.png" alt-text="Zkontrolujte sestavu a Identifikujte případné chyby nebo upozornění.":::
 
@@ -72,34 +74,36 @@ Ověřte výchozí mapování datových typů a podle potřeby je změňte podle
 
 1. V nabídce vyberte **nástroje** . 
 1. Vyberte **nastavení projektu**. 
-1. Vyberte kartu **mapování typů** . 
+1. Vyberte kartu **mapování typů** :
 
    :::image type="content" source="media/db2-to-sql-database-guide/type-mapping.png" alt-text="Vyberte schéma a pak typ mapování":::
 
-1. Mapování typů pro každou tabulku můžete změnit tak, že vyberete tabulku v **Průzkumníkovi metadat DB2**. 
+1. Mapování typů pro každou tabulku můžete změnit tak, že vyberete tabulku v **Průzkumníkovi metadat Db2**. 
 
-### <a name="schema-conversion"></a>Převod schématu 
+### <a name="convert-schema"></a>Převést schéma
 
 K převedení schématu použijte následující postup:
 
 1. Volitelné Přidejte dynamické dotazy a dotazy ad-hoc k příkazům. Pravým tlačítkem myši klikněte na uzel a zvolte příkaz **přidat příkazy**. 
 1. Vyberte **připojit k Azure SQL Database**. 
-    1. Zadejte podrobnosti připojení pro připojení databáze v Azure SQL Database. 
-    1. Z rozevíracího seznamu vyberte cílovou SQL Database. 
-    1. Vyberte **Connect** (Připojit). 
+    1. Zadejte podrobnosti připojení pro připojení databáze v Azure SQL Database.
+    1. V rozevíracím seznamu vyberte cílovou SQL Database, nebo zadejte nový název. v takovém případě se na cílovém serveru vytvoří databáze. 
+    1. Zadejte podrobnosti ověřování. 
+    1. Vyberte **připojit**:
 
    :::image type="content" source="media/db2-to-sql-database-guide/connect-to-sql-database.png" alt-text="Pokud se chcete připojit k logickému serveru v Azure, vyplňte podrobnosti.":::
 
 
-1. Klikněte pravým tlačítkem na schéma a pak zvolte **převést schéma**. Alternativně můžete po výběru schématu vybrat možnost **převést schéma** z horního navigačního panelu. 
+1. Klikněte pravým tlačítkem na schéma a pak zvolte **převést schéma**. Alternativně můžete zvolit **převést schéma** z horního navigačního panelu po výběru schématu:
 
    :::image type="content" source="media/db2-to-sql-database-guide/convert-schema.png" alt-text="Klikněte pravým tlačítkem na schéma a vyberte převést schéma.":::
 
-1. Po dokončení převodu Porovnejte a zkontrolujte strukturu schématu a Identifikujte potenciální problémy a vyřešte je na základě doporučení. 
+1. Po dokončení převodu Porovnejte a zkontrolujte strukturu schématu a Identifikujte potenciální problémy a vyřešte je na základě doporučení:
 
    :::image type="content" source="media/db2-to-sql-database-guide/compare-review-schema-structure.png" alt-text="Porovnejte a zkontrolujte strukturu schématu a Identifikujte potenciální problémy a vyřešte je na základě doporučení.":::
 
-1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . 
+1. V podokně výstup vyberte možnost **Kontrola výsledků** a zkontrolujte chyby v podokně **Seznam chyb** . 
+1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . Díky tomu máte možnost vyhodnotit zdrojový a cílový schémat v režimu offline a před publikováním schématu pro SQL Database provést nápravu.
 
 
 ## <a name="migrate"></a>Migrate
@@ -112,16 +116,16 @@ K publikování schématu a migraci dat použijte následující postup:
 
    :::image type="content" source="media/db2-to-sql-database-guide/synchronize-with-database.png" alt-text="Klikněte pravým tlačítkem na databázi a vyberte synchronizovat s databází.":::
 
-1. Migrace dat: klikněte pravým tlačítkem na schéma v **Průzkumníku metadat DB2** a vyberte **migrovat data**. 
+1. Migrace dat: klikněte pravým tlačítkem na databázi nebo objekt, který chcete migrovat v **Průzkumníkovi metadat Db2**, a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z horního navigačního panelu. Chcete-li migrovat data pro celou databázi, zaškrtněte políčko vedle názvu databáze. Chcete-li migrovat data z jednotlivých tabulek, rozbalte databázi, rozbalte položku tabulky a potom zaškrtněte políčko vedle této tabulky. Chcete-li vynechat data z jednotlivých tabulek, zrušte zaškrtnutí políčka:
 
    :::image type="content" source="media/db2-to-sql-database-guide/migrate-data.png" alt-text="Klikněte pravým tlačítkem na schéma a vyberte migrovat data.":::
 
-1. Zadejte podrobnosti připojení pro DB2 i Azure SQL Database. 
-1. Zobrazit **sestavu migrace dat** 
+1. Zadejte podrobnosti připojení pro Db2 i Azure SQL Database. 
+1. Po dokončení migrace si prohlédněte **sestavu migrace dat**:  
 
    :::image type="content" source="media/db2-to-sql-database-guide/data-migration-report.png" alt-text="Kontrola sestavy migrace dat":::
 
-1. Připojte se k Azure SQL Database pomocí SQL Server Management Studio a ověřte migraci kontrolou dat a schématu. 
+1. Připojte se k databázi v Azure SQL Database pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu:
 
    :::image type="content" source="media/db2-to-sql-database-guide/compare-schema-in-ssms.png" alt-text="Porovnání schématu v SSMS":::
 
@@ -158,9 +162,9 @@ Další pomoc najdete v následujících materiálech, které byly vyvinuty v r�
 |Prostředek  |Description  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých nemovitostí tím, že zajišťují a automatizují a automatizují rozhodovací procesy na základě cílové platformy.|
-|[Balíček pro zjišťování a vyhodnocení datových assetů DB2 zOS](https://github.com/Microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Po spuštění skriptu SQL v databázi můžete výsledky exportovat do souboru v systému souborů. Podporuje se několik formátů souborů, včetně *. csv, takže můžete zachytit výsledky v externích nástrojích, jako jsou tabulky. Tato metoda může být užitečná, pokud chcete výsledky snadno sdílet s týmy, které nemají nainstalovanou aplikaci Workbench.|
-|[Skripty a artefakty inventáře IBM DB2 LUW](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|Tento prostředek obsahuje dotaz SQL, který má k dispozici systémové tabulky IBM DB2 LUW verze 11,1 a poskytuje počet objektů podle schématu a typu objektu, hrubý odhad nezpracovaných dat v každém schématu a velikost tabulek v jednotlivých schématech s výsledky uloženými ve formátu CSV.|
-|[LUW čistota DB2 v Azure – Průvodce nastavením](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|Tato příručka slouží jako výchozí bod pro plán implementace DB2. I když se obchodní požadavky budou lišit, použije se stejný základní vzor. Tento model architektury se dá použít i pro aplikace OLAP v Azure.|
+|[Balíček pro zjišťování a vyhodnocení datových assetů Db2 zOS](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Po spuštění skriptu SQL v databázi můžete výsledky exportovat do souboru v systému souborů. Podporuje se několik formátů souborů, včetně *. csv, takže můžete zachytit výsledky v externích nástrojích, jako jsou tabulky. Tato metoda může být užitečná, pokud chcete výsledky snadno sdílet s týmy, které nemají nainstalovanou aplikaci Workbench.|
+|[Skripty a artefakty inventáře IBM Db2 LUW](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20Db2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|Tento prostředek obsahuje dotaz SQL, který má k dispozici systémové tabulky IBM Db2 LUW verze 11,1 a poskytuje počet objektů podle schématu a typu objektu, hrubý odhad nezpracovaných dat v každém schématu a velikost tabulek v jednotlivých schématech s výsledky uloženými ve formátu CSV.|
+|[LUW čistota Db2 v Azure – Průvodce nastavením](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Db2%20PureScale%20on%20Azure.pdf)|Tato příručka slouží jako výchozí bod pro plán implementace Db2. I když se obchodní požadavky budou lišit, použije se stejný základní vzor. Tento model architektury se dá použít i pro aplikace OLAP v Azure.|
 
 Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který je financován technickým týmem Azure Data Group. Základní Chartou programu data SQL expertem je odblokování a urychlení komplexní modernizace a konkurenční možnosti migrace datových platforem na datovou platformu Azure od Microsoftu. Pokud si myslíte, že by vaše organizace mohla zajímat účast v programu data SQL expertem, obraťte se prosím na svůj tým a požádejte ho, aby podal jmenování.
 

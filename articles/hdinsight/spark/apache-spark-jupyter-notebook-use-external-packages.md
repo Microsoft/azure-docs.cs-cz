@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: a3d787059345b5971d99ebd7a1e26a9135b61bed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ddfdfdfe10d5b6ea7c2d5cd99d325564163c0dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930350"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866008"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití externích balíčků s Jupyter poznámkovým blokům v clusterech s Apache Spark v HDInsight
 
@@ -34,11 +34,11 @@ V tomto článku se dozvíte, jak pomocí Jupyter Notebook balíčku [Spark-CSV]
 
 1. Vytvořte nový poznámkový blok. Vyberte **Nový** a pak vyberte **Spark**.
 
-    ![Vytvořit nový Jupyter Notebook Spark](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Vytvořit nový Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png " alt-text="Vytvořit nový Jupyter Notebook Spark" border="true":::
 
 1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Vyberte název poznámkového bloku v horní části a zadejte popisný název.
 
-    ![Zadání názvu poznámkového bloku](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Zadání názvu poznámkového bloku")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png " alt-text="Zadání názvu poznámkového bloku" border="true":::
 
 1. `%%configure`K nakonfigurování poznámkového bloku pro použití externího balíčku použijete Magic. V poznámkových blocích, které používají externí balíčky, se ujistěte, že jste volali `%%configure` Magic do první buňky kódu. Tím se zajistí, že jádro je nakonfigurované na použití balíčku před spuštěním relace.
 
@@ -56,7 +56,7 @@ V tomto článku se dozvíte, jak pomocí Jupyter Notebook balíčku [Spark-CSV]
 
     b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId** a **verzi**. Ujistěte se, že hodnoty, které shromáždíte, odpovídají vašemu clusteru. V tomto případě používáme balíček Scala 2,11 a Spark 1.5.0, ale v clusteru možná budete muset vybrat jiné verze pro příslušnou verzi Scala nebo Sparku. Verzi Scala můžete v clusteru zjistit spuštěním `scala.util.Properties.versionString` v jádru Spark Jupyter nebo v Sparku odeslat. Verzi Sparku v clusteru můžete zjistit spuštěním `sc.version` na poznámkových blocích Jupyter.
 
-    ![Použití externích balíčků s Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Použití externích balíčků s Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png " alt-text="Použití externích balíčků s Jupyter Notebook" border="true":::
 
     c. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 

@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655338"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108328"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -37,9 +37,10 @@ Fond Spark bez serveru je způsob, jak určit, jak chce uživatel pracovat se Sp
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analýza dat NYC taxislužby v BLOB Storage pomocí Sparku
 
 1. V synapse studiu přejít do centra pro **vývoj**
-2. Vytvořte newnNotebook s výchozí jazykovou sadou nastavenou na **PySpark (Python)**.
+2. Vytvoří nový Poznámkový blok s výchozí jazykovou sadou nastavenou na **PySpark (Python)**.
 3. Vytvořte novou buňku kódu a vložte do ní následující kód.
-    ```
+    ```py
+    %%pyspark
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
@@ -62,6 +63,7 @@ Data jsou k dispozici prostřednictvím datového rámce s názvem **data**. Na�
 1. Přidejte do poznámkového bloku nový a potom zadejte následující kód:
 
     ```py
+    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
@@ -76,16 +78,16 @@ Data jsou k dispozici prostřednictvím datového rámce s názvem **data**. Na�
    ```
 
 1. Spuštěním buňky zobrazíte data NYC taxislužby, která jste načetli do databáze **nyctaxi** Spark.
-1. Vytvořte novou buňku kódu a zadejte následující kód. Pak spusťte tuto buňku a proveďte stejnou analýzu, kterou jsme dříve zahrnuli do vyhrazeného fondu SQL **SQLPOOL1**. Tento kód uloží a zobrazí výsledky analýzy do tabulky s názvem **nyctaxi. passengercountstats**.
+1. Vytvořte novou buňku kódu a zadejte následující kód. Analyzujeme tato data a výsledky se uloží do tabulky s názvem **nyctaxi. passengercountstats**.
 
    ```py
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistanceMiles) as SumTripDistance,
-          AVG(TripDistanceMiles) as AvgTripDistance
+          SUM(TripDistance) as SumTripDistance,
+          AVG(TripDistance) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
+      WHERE TripDistance > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

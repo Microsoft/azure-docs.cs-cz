@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496167"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106785"
 ---
 ## <a name="joining-the-meeting-chat"></a>Spojení s chatem na schůzce 
 
-Po povolení interoperability týmů může uživatel komunikačních služeb připojit se k volání Teams jako externí uživatel pomocí volání klientské knihovny. Spojení s voláním je přidá také jako účastník konverzace o schůzce, kde mohou odesílat a přijímat zprávy s ostatními uživateli v volání. Uživatel nebude mít přístup ke zprávám chatu, které byly odeslány před připojením k volání. Chcete-li se připojit ke schůzce a spustit konverzaci, můžete postupovat podle následujících kroků.
+Po povolení interoperability týmů může uživatel komunikačních služeb připojit se k volání Teams jako externí uživatel pomocí volání sady SDK. Spojení s voláním je přidá také jako účastník konverzace o schůzce, kde mohou odesílat a přijímat zprávy s ostatními uživateli v volání. Uživatel nebude mít přístup ke zprávám chatu, které byly odeslány před připojením k volání. Chcete-li se připojit ke schůzce a spustit konverzaci, můžete postupovat podle následujících kroků.
 
 ## <a name="install-the-chat-packages"></a>Instalace balíčků chatu
 
-Použijte `npm install` příkaz k instalaci potřebných klientských knihoven služby Communications Services pro JavaScript.
+Pomocí `npm install` příkazu nainstalujte potřebné sady SDK služby Communications Services pro JavaScript.
 
 ```console
 npm install @azure/communication-common --save

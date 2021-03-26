@@ -10,14 +10,14 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 2d1c3d3be412f6f11f9d2e300b3a97cf5634f5e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6cdcd0add81f305a0260870da0ecd507db292499
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495386"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107009"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -39,7 +39,7 @@ Pomocí textového editoru vytvořte soubor s názvem **Start-chat.py** v kořen
 
 ```python
 import os
-# Add required client library components from quickstart here
+# Add required SDK components from quickstart here
 
 try:
     print('Azure Communication Services - Chat Quickstart')
@@ -49,7 +49,7 @@ except Exception as ex:
     print(ex)
 ```
 
-### <a name="install-client-library"></a>Nainstalovat klientskou knihovnu
+### <a name="install-sdk"></a>Instalace sady SDK
 
 ```console
 
@@ -59,7 +59,7 @@ pip install azure-communication-chat
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce v knihovně klienta služby Azure Communications chat pro Python.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Chat SDK pro Python.
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

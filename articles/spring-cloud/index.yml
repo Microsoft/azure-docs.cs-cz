@@ -11,71 +11,71 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: 7598345ca1d687b8148b41454077ab5fca91e8f1
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-  ms.translationtype: HT
+  ms.openlocfilehash: ce74f1020a064b558c647bad488ba0efa8be7620
+  ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96903943"
+  ms.lasthandoff: 03/23/2021
+  ms.locfileid: "104869068"
 landingContent:
 - title: Informace o Azure Spring Cloudu
   linkLists:
   - linkListType: overview
     links:
     - text: Co je Azure Spring Cloud?
-      url: spring-cloud-overview.md
+      url: overview.md
     - text: Principy kvót a omezení pro Azure Spring Cloud
-      url: spring-cloud-quotas.md
+      url: quotas.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
     links:
     - text: Rychlý start – nasazení první aplikace Azure Spring Cloudu
-      url: spring-cloud-quickstart.md
+      url: quickstart.md
     - text: Seznámení s ukázkovou aplikací PiggyMetrics
-      url: spring-cloud-quickstart-sample-app-introduction.md
+      url: quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
     - text: Příprava aplikace ve Springu nebo Steeltoe pro nasazení
-      url: spring-cloud-tutorial-prepare-app-deployment.md
+      url: how-to-prepare-app-deployment.md
 - title: Konfigurace vaší služby
   linkLists:
   - linkListType: tutorial
     links:
     - text: Použití konfiguračního serveru k údržbě konfigurace aplikací
-      url: spring-cloud-tutorial-config-server.md
+      url: how-to-config-server.md
     - text: Ruční škálování aplikace
-      url: spring-cloud-tutorial-scale-manual.md
+      url: how-to-scale-manual.md
   - linkListType: how-to-guide
     links:
     - text: Automatizace kanálu CI/CD v Azure Spring Cloudu
-      url: spring-cloud-howto-cicd.md
+      url: how-to-cicd.md
     - text: Povolení nasazení Blue-Green s využitím Azure Spring Cloudu
-      url: spring-cloud-howto-staging-environment.md
+      url: how-to-staging-environment.md
     - text: Použití trvalého úložiště v Azure Spring Cloudu
-      url: spring-cloud-howto-persistent-storage.md
+      url: how-to-persistent-storage.md
 - title: Monitorování vaší aplikace
   linkLists:
   - linkListType: tutorial
     links:
     - text: Monitorování aplikace pomocí distribuovaného trasování a App Insights
-      url: spring-cloud-tutorial-distributed-tracing.md
+      url: how-to-distributed-tracing.md
     - text: Povolení diagnostických služeb v aplikaci Java Spring
       url: diagnostic-services.md
   - linkListType: concept
     links:
     - text: Principy metrik Azure Monitoru pro Spring Cloud
-      url: spring-cloud-concept-metrics.md
+      url: concept-metrics.md
 - title: Vazby s ostatními službami
   linkLists:
   - linkListType: tutorial
     links:
     - text: Navázání aplikace s využitím Azure Cache for Redis
-      url: spring-cloud-tutorial-bind-redis.md
+      url: how-to-bind-redis.md
     - text: Navázání aplikace na Azure MySQL DB
-      url: spring-cloud-tutorial-bind-mysql.md
+      url: how-to-bind-mysql.md
     - text: Navázání aplikace na Azure CosmosDB
-      url: spring-cloud-tutorial-bind-cosmos.md
+      url: how-to-bind-cosmos.md
 - title: API – referenční informace
   linkLists:
   - linkListType: reference

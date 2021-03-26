@@ -2,13 +2,13 @@
 title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579294"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048812"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
@@ -19,6 +19,11 @@ ms.locfileid: "100579294"
 Diagram znázorňuje vztah mezi privátními cloudy a virtuální sítě v Azure, službami Azure a místním prostředí. Přístup k síti z privátních cloudů do služeb Azure nebo virtuální sítě zajišťuje integraci koncových bodů služeb Azure řízených smlouvou SLA. ExpressRoute Global Reach připojuje vaše místní prostředí k vašemu privátnímu cloudu řešení Azure VMware. 
 
 ![Obrázek sousedního cloudu řešení Azure VMware s Azure a místním prostředím](./media/adjacency-overview-drawing-final.png)
+
+## <a name="customer-communication"></a>Komunikace se zákazníky
+Problémy se službami, plánovaná údržba a Poradce pro stav, oznámení o výstrahách zabezpečení se zveřejňují prostřednictvím **Service Health** v Azure Portal. Když nastavíte výstrahy protokolu aktivit pro tato oznámení, můžete provést včasné akce. Další informace najdete v tématu [vytvoření výstrah služby Service Health pomocí Azure Portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+
+:::image type="content" source="media/service-health.png" alt-text="Snímek obrazovky s oznámením o Service Health":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hostitelé, clustery a privátní cloudy
 

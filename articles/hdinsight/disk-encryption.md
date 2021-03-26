@@ -5,12 +5,12 @@ description: Tento článek popisuje dvě vrstvy šifrování, které jsou k dis
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988615"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867113"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -76,25 +76,25 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat**.
 
-    ![Vygenerovat nový klíč v Azure Key Vault](./media/disk-encryption/create-new-key.png "Vygenerovat nový klíč v Azure Key Vault")
+    :::image type="content" source="./media/disk-encryption/create-new-key.png" alt-text="Vygenerovat nový klíč v Azure Key Vault":::
 
 1. Zadejte název a pak vyberte **vytvořit**. Udržujte výchozí **typ klíče** **RSA**.
 
-    ![vygeneruje název klíče.](./media/disk-encryption/create-key.png "Vygenerovat název klíče")
+    :::image type="content" source="./media/disk-encryption/create-key.png" alt-text="vygeneruje název klíče.":::
 
 1. Až se vrátíte na stránku **klíče** , vyberte klíč, který jste vytvořili.
 
-    ![seznam klíčů trezoru klíčů](./media/disk-encryption/key-vault-key-list.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-key-list.png" alt-text="seznam klíčů trezoru klíčů":::
 
 1. Výběrem verze otevřete stránku **verze klíče** . Když použijete vlastní klíč pro šifrování clusteru HDInsight, musíte zadat identifikátor URI klíče. Zkopírujte **identifikátor klíče** a uložte ho někam do chvíle, kdy jste připraveni vytvořit cluster.
 
-    ![získat identifikátor klíče](./media/disk-encryption/get-key-identifier.png)
+    :::image type="content" source="./media/disk-encryption/get-key-identifier.png" alt-text="získat identifikátor klíče":::
 
 ### <a name="create-access-policy"></a>Vytvořit zásady přístupu
 
 1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu**.
 
-    ![Vytvořit nové zásady přístupu Azure Key Vault](./media/disk-encryption/key-vault-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-access-policy.png" alt-text="Vytvořit nové zásady přístupu Azure Key Vault":::
 
 1. Na stránce **Přidat zásady přístupu** zadejte následující informace:
 
@@ -104,13 +104,13 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
     |Oprávnění pro tajné kódy|Vyberte **získat**, **nastavit** a **Odstranit**.|
     |Vybrat objekt zabezpečení|Vyberte uživatelem přiřazenou spravovanou identitu, kterou jste vytvořili dříve.|
 
-    ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/azure-portal-add-access-policy.png" alt-text="Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu":::
 
 1. Vyberte **Přidat**.
 
 1. Vyberte **Uložit**.
 
-    ![Uložit zásady přístupu Azure Key Vault](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    :::image type="content" source="./media/disk-encryption/add-key-vault-access-policy-save.png" alt-text="Uložit zásady přístupu Azure Key Vault":::
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Vytvoření clusteru s použitím šifrování klíčového disku spravovaného zákazníkem
 
@@ -129,7 +129,7 @@ Během vytváření clusteru můžete buď použít klíč s verzí, nebo klíč
 
 Musíte také přiřadit spravovanou identitu ke clusteru.
 
-![Vytvořit nový cluster](./media/disk-encryption/create-cluster-portal.png)
+:::image type="content" source="./media/disk-encryption/create-cluster-portal.png" alt-text="Vytvořit nový cluster":::
 
 #### <a name="using-azure-cli"></a>Použití Azure CLI
 
@@ -367,7 +367,7 @@ Obsah šablony správy prostředků `azuredeploy.json` :
 
 K otočení klíče potřebujete identifikátor URI trezoru základního klíče. Až to uděláte, přejděte do části vlastnosti clusteru HDInsight na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku**. Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
 
-![otočit šifrovací klíč disku](./media/disk-encryption/change-key.png)
+:::image type="content" source="./media/disk-encryption/change-key.png" alt-text="otočit šifrovací klíč disku":::
 
 #### <a name="using-azure-cli"></a>Použití Azure CLI
 
@@ -400,7 +400,7 @@ Ne, všechny spravované disky a disky prostředků jsou šifrovány stejným kl
 
 Pokud cluster ztratí přístup k tomuto klíči, zobrazí se na portálu Apache Ambari upozornění. V tomto stavu se operace **změny klíče** nezdaří. Po obnovení přístupu ke klíčům zmizí Ambari upozornění a operace, jako je například střídání klíčů, je možné úspěšně provést.
 
-![Výstraha Ambari přístupu k klíčům](./media/disk-encryption/ambari-alert.png)
+:::image type="content" source="./media/disk-encryption/ambari-alert.png" alt-text="Výstraha Ambari přístupu k klíčům":::
 
 **Jak mohu obnovit cluster, pokud jsou klíče odstraněny?**
 

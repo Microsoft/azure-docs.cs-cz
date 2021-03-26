@@ -4,12 +4,12 @@ description: Naučte se migrovat Apache Kafka úlohy ve službě HDInsight 3,6 d
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 3967a5d96c35e4bac88dcd9a6c1fa95b78a6b2b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e15ebb13aee0e5dd814688ae77edaded667d54ac
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939109"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864121"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Migrace úloh Apache Kafka do Azure HDInsight 4,0
 
@@ -24,7 +24,7 @@ HDInsight 3,6 podporuje dvě verze Kafka: 1.0.0 a 1.1.0. HDInsight 4,0 podporuje
 * **Spusťte HDInsight na nejnovější verzi, zachovejte verzi Kafka**: migrujte aplikaci HDInsight 3,6 a Kafka 1.1.0 do HDInsight 4,0 s Kafka 1.1.0 (cesta C níže).
 * **Spusťte Kafka na novější verzi, zachovejte verzi HDInsight**: migrujte aplikaci Kafka 1.0.0 na 1.1.0 a zůstaňte v HDInsight 3,6 (Path a níže). Všimněte si, že tato možnost bude stále vyžadovat nasazení nového clusteru. Upgrade verze Kafka v existujícím clusteru není podporován. Po vytvoření clusteru s požadovanou verzí migrujte klienty Kafka na použití nového clusteru.
 
-![Cesty upgradu pro Apache Kafka v 3,6](./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png)
+:::image type="content" source="./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png" alt-text="Cesty upgradu pro Apache Kafka v 3,6" border="false":::
 
 ## <a name="apache-kafka-versions"></a>Verze Apache Kafka
 
@@ -53,7 +53,7 @@ Pokud migrujete na Kafka 2,1, můžete využít výhod následujících funkcí:
 
 Noví zprostředkovatelé Kafka podporují starší klienty. [Eskočit-35 – načtená verze protokolu](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) představila mechanizmus pro dynamické určování funkcí služby Kafka Broker a [eskočit-97: vylepšené zásady kompatibility klienta služby RPC pro Kafka](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) zavedly novou zásadu kompatibility a záruky pro klienta Java. Dřív musel klient Kafka komunikovat se zprostředkovatelem stejné verze nebo novější verze. Nyní novější verze klientů Java a dalších klientů, které podporují ESKOČIT-35, například `librdkafka` mohou přejít na starší typy požadavků nebo vyvolat vhodné chyby, pokud nejsou k dispozici funkce.
 
-![Upgrade kompatibility klienta Kafka](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
+:::image type="content" source="./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png" alt-text="Upgrade kompatibility klienta Kafka" border="false":::
 
 Všimněte si, že to neznamená, že klient podporuje starší zprostředkovatele.  Další informace najdete v tématu [věnovaném kompatibilitě](https://cwiki.apache.org/confluence/display/KAFKA/Compatibility+Matrix).
 
@@ -61,21 +61,21 @@ Všimněte si, že to neznamená, že klient podporuje starší zprostředkovate
 
 Následující pokyny k migraci předpokládají, Apache Kafka cluster 1.0.0 nebo 1.1.0 nasazený v HDInsight 3,6 v jedné virtuální síti. Stávající zprostředkovatel má některá témata a aktivně ho používají producenti a spotřebitelé.
 
-![Aktuální předpokládané prostředí Kafka](./media/upgrade-threesix-to-four/apache-kafka-presumed-environment.png)
+:::image type="content" source="./media/upgrade-threesix-to-four/apache-kafka-presumed-environment.png" alt-text="Aktuální předpokládané prostředí Kafka" border="false":::
 
 K dokončení migrace proveďte následující kroky:
 
 1. **Nasaďte nový cluster HDInsight 4,0 a klienty pro testování.** Nasaďte nový cluster HDInsight 4,0 Kafka. Pokud je možné vybrat více verzí clusteru Kafka, doporučuje se vybrat nejnovější verzi. Po nasazení nastavte některé parametry podle potřeby a vytvořte téma se stejným názvem, jako má vaše existující prostředí. V případě potřeby můžete také nastavit šifrování TLS a vlastní klíč (BYOK). Pak zkontrolujte, jestli funguje s novým clusterem správně.
 
-    ![Nasazení nových clusterů HDInsight 4,0](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
+    :::image type="content" source="./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png" alt-text="Nasazení nových clusterů HDInsight 4,0" border="false":::
 
 1. **Přepněte cluster pro aplikaci producenta a počkejte, až budou všechna data fronty spotřebovaná aktuálními příjemci.** Po přípravě nového clusteru HDInsight 4,0 Kafka přepněte existující cíl pro producenta na nový cluster. Ponechte to tak, jak je, dokud stávající aplikace příjemce nevyužila všechna data z existujícího clusteru.
 
-    ![Přepnout cluster pro aplikaci producenta](./media/upgrade-threesix-to-four/switch-cluster-producer-app.png)
+    :::image type="content" source="./media/upgrade-threesix-to-four/switch-cluster-producer-app.png" alt-text="Přepnout cluster pro aplikaci producenta" border="false":::
 
 1. **Přepněte cluster na aplikaci příjemce.** Po potvrzení, že stávající aplikace příjemce dokončí využívání všech dat z existujícího clusteru, přepněte připojení k novému clusteru.
 
-    ![Přepnout cluster na aplikaci příjemce](./media/upgrade-threesix-to-four/switch-cluster-consumer-app.png)
+    :::image type="content" source="./media/upgrade-threesix-to-four/switch-cluster-consumer-app.png" alt-text="Přepnout cluster na aplikaci příjemce" border="false":::
 
 1. **Odeberte původní cluster a otestujte aplikace podle potřeby.** Jakmile je přepínač dokončen a funguje správně, odeberte starý cluster HDInsight 3,6 Kafka a producenti a příjemce, kteří se v testu použili, podle potřeby.
 

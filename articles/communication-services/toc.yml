@@ -42,7 +42,7 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Přidání videa do vaší aplikace (JavaScript)
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: Použití klientské knihovny pro hovory
+        - name: Použití volání sady SDK
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Připojení volající aplikace ke schůzce v Teams
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
@@ -70,13 +70,13 @@
   items:
     - name: Chat
       items:
-        - name: Přehled klientských knihoven pro chat
+        - name: Přehled sady Chat SDK
           href: concepts/chat/sdk-features.md
         - name: Koncepce chatu
           href: concepts/chat/concepts.md
     - name: Telefonie a SMS
       items:
-        - name: Přehled klientských knihoven pro SMS
+        - name: Přehled sady SMS SDK
           href: concepts/telephony-sms/sdk-features.md
         - name: Koncepce SMS
           href: concepts/telephony-sms/concepts.md
@@ -88,7 +88,7 @@
           href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: Hlasové hovory a videohovory
       items:
-        - name: Přehled klientských knihoven pro hovory
+        - name: Přehled volání sady SDK
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Koncepce hlasových hovorů a videohovorů
           href: concepts/voice-video-calling/about-call-types.md

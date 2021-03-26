@@ -238,6 +238,8 @@
               href: spatial-io-supported-data-format-details.md
         - name: Podporované prohlížeče pro sadu Web SDK
           href: supported-browsers.md
+        - name: Osvědčené postupy
+          href: web-sdk-best-practices.md
     - name: Vývoj s využitím sady Android SDK
       items:
         - name: Začínáme s mapovým ovládacím prvkem Androidu

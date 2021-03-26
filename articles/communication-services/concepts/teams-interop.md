@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d992961fc165ce643bd0d6aba4d8a9bda1d38e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b641ec37d134303ae6b31c092cd3c50811477a7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495585"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108413"
 ---
 # <a name="teams-interoperability"></a>Interoperabilita Teams
 
@@ -29,7 +29,7 @@ Vzájemná funkční spolupráce týmů umožňuje vytvářet vlastní aplikace,
 1. Podrobnosti o schůzce se sdílí s externími uživateli prostřednictvím vlastní aplikace.
    * **Použití Graph API** Vaše vlastní aplikace komunikační služby používá rozhraní API Microsoft Graph k přístupu k podrobnostem o schůzce, které se mají sdílet. 
    * **Používání dalších možností** Například odkaz na schůzku můžete zkopírovat z kalendáře v Microsoft Teams.
-1. Externí uživatelé používají vlastní aplikaci k připojení k pracovním postupům (prostřednictvím volání komunikačních služeb a klientských knihoven chatu).
+1. Externí uživatelé používají vaši vlastní aplikaci k připojení k pracovním postupům (prostřednictvím sad pro volání komunikačních služeb a sady chat).
 
 Architektura vysoké úrovně pro tento případ použití vypadá takto: 
 
@@ -37,7 +37,7 @@ Architektura vysoké úrovně pro tento případ použití vypadá takto:
 
 I když některé týmy vyhovují funkcím, jako je například vystouplý režim, a užitečných místnosti budou k dispozici pouze pro uživatele týmů, vaše vlastní aplikace bude mít přístup k základním funkcím zvukového zvuku, videa, chatu a sdílení obrazovky. Chat na schůzku bude mít přístup k vlastnímu uživateli aplikace, když se nachází ve volání. Nebudou moci odesílat ani přijímat zprávy před připojením nebo po ukončení volání. 
 
-Když se uživatel komunikačních služeb připojí k pracovním postupům, zobrazí se v týmu týmy zobrazované jméno poskytnuté prostřednictvím volající klientské knihovny. Uživatel komunikačních služeb bude jinak považován za anonymního uživatele v týmech.  Vaše vlastní aplikace by měla vzít v úvahu ověřování uživatelů a další bezpečnostní opatření k ochraně schůzek týmů. Nezapomeňte na důsledky zabezpečení při povolování anonymních uživatelů při připojování ke schůzkám a pomocí [Průvodce zabezpečením týmů](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) nakonfigurovat možnosti, které jsou k dispozici pro anonymní uživatele.
+Když se uživatel komunikačních služeb připojí k pracovním postupům, zobrazí se v týmu týmy zobrazované jméno poskytnuté prostřednictvím volající sady SDK. Uživatel komunikačních služeb bude jinak považován za anonymního uživatele v týmech.  Vaše vlastní aplikace by měla vzít v úvahu ověřování uživatelů a další bezpečnostní opatření k ochraně schůzek týmů. Nezapomeňte na důsledky zabezpečení při povolování anonymních uživatelů při připojování ke schůzkám a pomocí [Průvodce zabezpečením týmů](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) nakonfigurovat možnosti, které jsou k dispozici pro anonymní uživatele.
 
 Komunikace týmů služby Communications je v současnosti ve verzi Private Preview. V případě všeobecně dostupného přístupu se uživatelům komunikačních služeb bude zacházeno jako "uživatelé s externím přístupem". Přečtěte si další informace o externím přístupu při [volání, chatu a spolupráci s lidmi mimo vaši organizaci v Microsoft Teams](/microsoftteams/communicate-with-users-from-other-organizations).
 
