@@ -131,7 +131,9 @@
       href: core/concepts-architecture.md
     - name: Příručka pro vývojáře zařízení
       href: core/overview-iot-central-developer.md
-    - name: Příručka pro správce
+    - name: Průvodce tvůrcem řešení
+      href: core/overview-iot-central-solution-builder.md
+    - name: Příručka správce
       href: core/overview-iot-central-admin.md
     - name: Průvodce operátorem
       href: core/overview-iot-central-operator.md

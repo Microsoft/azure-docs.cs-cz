@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 127031479d7ef414298d3096ebef814df1fe9a18
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 7e4ffb800a65a9a1e436e50921e9c7f76f02b571
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027917"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107007"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -43,7 +43,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Instalace klientské knihovny služby Azure Communications chat pro .NET
+Instalace sady Azure Communications Chat SDK pro .NET
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
@@ -51,7 +51,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy zpracovávají některé z hlavních funkcí služby Azure Communications chat Client Library pro C#.
+Následující třídy zpracovávají některé hlavní funkce služby Azure Communications Chat SDK pro jazyk C#.
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -60,7 +60,7 @@ Následující třídy zpracovávají některé z hlavních funkcí služby Azur
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
-Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny identity.
+Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu ze sady identity SDK.
 
 Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
 

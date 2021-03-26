@@ -4,16 +4,16 @@ description: Vysvětlení plánování nasazení služby soubory Azure Můžete 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 267b68fbdae6d894acc3222a8d74a8e15e865dbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879843"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023516"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí synchronizace souborů Azure. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -65,7 +65,7 @@ I když z technického hlediska je podstatně jednodušší připojit sdílené 
 
 - **Síťové tunelové propojení pomocí ExpressRoute, Site-to-site nebo VPN typu Point-to-site**: tunelování do virtuální sítě umožňuje přístup ke sdíleným složkám Azure z místního prostředí, i když je port 445 zablokovaný.
 - **Privátní koncové body**: privátní koncové body přidávají účtu úložiště vyhrazenou IP adresu z adresního prostoru virtuální sítě. To umožňuje síťové tunelové propojení bez nutnosti otevírat místní sítě až do všech rozsahů IP adres, které vlastní clustery Azure Storage. 
-- **Předávání DNS**: Nakonfigurujte místní službu DNS tak, aby vyřešila název vašeho účtu úložiště (tj. `storageaccount.file.core.windows.net` pro oblasti veřejného cloudu), aby se přeložila na IP adresu vašich privátních koncových bodů.
+- **Předávání DNS**: Nakonfigurujte místní službu DNS tak, aby přeložila název vašeho účtu úložiště ( `storageaccount.file.core.windows.net` pro oblasti veřejného cloudu), aby se přeložila na IP adresu vašich privátních koncových bodů.
 
 Informace o plánování sítě přidružených k nasazení sdílené složky Azure najdete v tématu věnovaném [důležitým informacím o sítích Azure Files](storage-files-networking-overview.md).
 
@@ -94,7 +94,7 @@ Soubory Azure mají Vícevrstvý přístup k zajištění zálohovaných dat, je
 ### <a name="soft-delete"></a>Obnovitelné odstranění
 Obnovitelné odstranění pro sdílené složky (Preview) je nastavení na úrovni účtu úložiště, které umožňuje obnovit sdílenou složku, když ji omylem odstraníte. Když se sdílená složka odstraní, přejde se do stavu bez trvalého odstranění, takže se neodstraní. Můžete nakonfigurovat dobu, po kterou se Odstraněná data odstraněná mají obnovit, než se trvale odstraní, a během této doby uchování zrušit její sdílení kdykoli. 
 
-Pro většinu sdílených složek doporučujeme zapnout obnovitelné odstranění. Pokud máte pracovní postup, ve kterém je odstraňování sdílené složky běžné a očekávané, můžete se rozhodnout, že budete mít velmi krátkou dobu uchovávání nebo nemáte povolené obnovitelné odstranění.
+Pro většinu sdílených složek doporučujeme zapnout obnovitelné odstranění. Pokud máte pracovní postup, ve kterém je odstraňování sdílené složky běžné a očekávané, můžete se rozhodnout, že budete mít krátké období uchovávání nebo nemáte povolené obnovitelné odstranění.
 
 Další informace o obnovitelném odstranění najdete v tématu [prevence náhodného odstranění dat](./storage-files-prevent-file-share-deletion.md).
 
@@ -107,10 +107,10 @@ V Azure Portal můžete pomocí Azure Backup provádět obnovení na úrovni pol
 
 Další informace o zálohování najdete v tématu [informace o zálohování sdílených složek Azure](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="advanced-threat-protection-for-azure-files-preview"></a>Rozšířená ochrana před internetovými útoky pro soubory Azure (Preview)
-Rozšířená ochrana před internetovými útoky (ATP) pro Azure Storage poskytuje další úroveň inteligentního zabezpečení, která poskytuje výstrahy, když detekuje aktivitu neobvyklé na účtu úložiště, například neobvyklé pokusy o přístup k účtu úložiště. ATP také spustí analýzu reputace hodnoty hash malwaru a upozorní na známý malware. ATP můžete nakonfigurovat na úrovni předplatného nebo účtu úložiště prostřednictvím Azure Security Center. 
+### <a name="azure-defender-for-azure-files"></a>Azure Defender pro soubory Azure 
+Azure Defender pro Azure Storage (dříve Rozšířená ochrana před internetovými útoky pro Azure Storage) poskytuje další úroveň inteligentního zabezpečení, která poskytuje výstrahy, když detekuje neobvyklé aktivitu na vašem účtu úložiště, například nezvyklé pokusy o přístup. Také spustí analýzu reputace hodnoty hash malwaru a upozorní na známý malware. Azure Defender můžete nakonfigurovat na úrovni předplatného nebo účtu úložiště prostřednictvím Azure Security Center. 
 
-Další informace najdete v tématu [Rozšířená ochrana před internetovými útoky pro Azure Storage](../common/azure-defender-storage-configure.md).
+Další informace najdete v tématu [Úvod do služby Azure Defender pro úložiště](../../security-center/defender-for-storage-introduction.md).
 
 ## <a name="storage-tiers"></a>Úrovně úložiště
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

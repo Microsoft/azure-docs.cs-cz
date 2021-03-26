@@ -12,8 +12,15 @@
   href: data-residency.md
 - name: Úložiště ukázek služby Remote Rendering (GitHub)
   href: 'https://github.com/Azure/azure-remote-rendering'
-- name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
-  href: /rest/api/mixedreality/
+- name: REST API
+  expanded: true
+  items:
+    - name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
+      href: /rest/api/mixedreality/
+    - name: Odkaz na vzdálené vykreslování REST API
+      href: /rest/api/mixedreality/2021-01-01/remoterendering
+    - name: Definice Swagger vzdáleného vykreslování
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality'
 - name: Dokumentace k rozhraní API pro jazyk C#
   href: /dotnet/api/Microsoft.Azure.RemoteRendering
 - name: Dokumentace k rozhraní API pro jazyk C++

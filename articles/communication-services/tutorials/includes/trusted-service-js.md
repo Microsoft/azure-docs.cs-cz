@@ -8,18 +8,18 @@ ms.author: ddematheu2
 ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: bb70f799a308282a20a5b76ea841c3a1ae5e8b49
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b71a0581bf4f9d8239171e6abc56f87e7ae8183
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612201"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152718"
 ---
 ## <a name="download-code"></a>Stáhnout kód
 
 Najděte finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/trusted-authentication-service) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
@@ -76,7 +76,7 @@ Nyní budeme pokračovat k instalaci knihoven služby Azure Communication Servic
 
 `Identity`K vygenerování budeme použít knihovnu `User Access Tokens` .
 
-Pomocí `npm install` příkazu nainstalujte klientskou knihovnu pro službu Azure Communications identity pro JavaScript.
+Pomocí `npm install` příkazu nainstalujte sadu SDK služby Azure Communication Services identity pro JavaScript.
 
 ```console
 
