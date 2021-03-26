@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure PowerShell-Azure Database for PostgreSQL-Single server'
 description: Průvodce rychlým startem k vytvoření serveru Azure Database for PostgreSQL-Single pomocí Azure PowerShell.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91351c0b2982c6ee0e96cc1433c0fadf67e3bcc0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 79a070dbd49ed6ee00dd790c8157057aebde30df
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96010652"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606712"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL-Single pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for PostgreSQL Server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -175,7 +175,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     ---|---|---
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\* . Postgres.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL.
-    Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
+    Databáze údržby | *Postgres* | Výchozí systémem vygenerovaný název databáze.
     Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName \@ servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.

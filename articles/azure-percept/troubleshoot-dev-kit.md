@@ -5,25 +5,22 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023074"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605633"
 ---
-# <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Řešení potíží s Azure Percept DK (dev Kit)
+# <a name="azure-percept-dk-troubleshooting"></a>Řešení potíží s Azure Percept DK
 
 Obecné tipy pro odstraňování potíží s Azure Percept DK najdete v následujících pokynech.
 
 ## <a name="general-troubleshooting-commands"></a>Obecné příkazy pro řešení potíží
 
-Chcete-li spustit tyto příkazy, 
-1. Připojení k [Wi-Fimu bodu sady pro vývojáře](./quickstart-percept-dk-set-up.md)
-1. [SSH do sady dev Kit](./how-to-ssh-into-percept-dk.md)
-1. Zadejte příkazy v terminálu SSH.
+Chcete-li spustit tyto příkazy, spusťte [SSH do sady dev Kit](./how-to-ssh-into-percept-dk.md) a zadejte příkazy do výzvy klienta ssh.
 
 K přesměrování libovolného výstupu do souboru. txt k další analýze použijte následující syntaxi:
 
@@ -43,7 +40,7 @@ Po přesměrování výstupu do souboru. txt zkopírujte soubor do hostitelskéh
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-```[local host file path]``` odkazuje na umístění na hostitelském počítači, do kterého chcete zkopírovat soubor. txt. ```[remote username]``` je uživatelské jméno SSH zvolené během [prostředí pro nastavení](./quickstart-percept-dk-set-up.md). Pokud jste během počátečního nastavení OOBE nevytvořili přihlašovací jméno SSH, je vzdálené uživatelské jméno ```root``` .
+```[local host file path]``` odkazuje na umístění na hostitelském počítači, do kterého chcete zkopírovat soubor. txt. ```[remote username]``` je uživatelské jméno SSH zvolené během [prostředí pro nastavení](./quickstart-percept-dk-set-up.md).
 
 Další informace o příkazech Azure IoT Edge naleznete v dokumentaci k [řešení potíží se zařízením Azure IoT Edge](../iot-edge/troubleshoot.md).
 
@@ -88,11 +85,11 @@ sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u 
 |```sudo docker image prune``` |[Odebere všechny image dangling.](https://docs.docker.com/engine/reference/commandline/image_prune/) |
 |```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Podívejte se na stav stahování kontejneru Docker. |
 
-## <a name="usb-updating"></a>Aktualizace USB
+## <a name="usb-updates"></a>Aktualizace USB
 
 |Chyba:                                    |Řešení:                                               |
 |------------------------------------------|--------------------------------------------------------|
-|LIBUSB_ERROR_XXX během USB Flash přes UUU |Tato chyba je výsledkem chyby připojení USB během UUU aktualizace. Pokud kabel USB není správně připojený k portům USB na počítači nebo v PE-10X, dojde k chybě tohoto formuláře. Zkuste odpojte a znovu dopojte oba konce kabelu USB a jiggling kabel, aby se zajistilo zabezpečené připojení. Téměř vždy problém vyřeší. |
+|LIBUSB_ERROR_XXX během USB Flash přes UUU |Tato chyba je výsledkem chyby připojení USB během UUU aktualizace. Pokud kabel USB není správně připojený k portům USB na počítači nebo na panelu dopravců Percept DK, dojde k chybě tohoto formuláře. Zkuste k zajištění zabezpečeného připojení zkusit odpojit a znovu připojit oba konce kabelu USB a jiggling kabel. Téměř vždy problém vyřeší. |
 
 ## <a name="azure-percept-dk-carrier-board-led-states"></a>Stavy LED nosné desky pro Azure Percept DK
 

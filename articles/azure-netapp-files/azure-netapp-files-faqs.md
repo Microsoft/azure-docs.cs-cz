@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: b-juche
-ms.openlocfilehash: f7d1e3bebf2fbdea3075d97e3829e38a3930909b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566128"
+ms.locfileid: "105607996"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -208,9 +208,9 @@ No. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Návody zjistit, jestli se adresář blíží velikosti limitu?
 
-Pomocí `stat` příkazu z klienta můžete zjistit, jestli se adresář blíží omezení maximální velikosti pro metadata adresáře (320 MB).
+Pomocí `stat` příkazu z klienta můžete zjistit, jestli se adresář blíží omezení maximální velikosti pro metadata adresáře (320 MB).   
 
-V případě adresáře 320 MB je počet bloků 655360, přičemž každá velikost bloku je 512 bajtů.  (To znamená 320x1024x1024/512.)  
+V případě adresáře 320 MB je počet bloků 655360, přičemž každá velikost bloku je 512 bajtů.  (To znamená 320x1024x1024/512.)  Tento počet překládá přibližně 4 000 000 souborů na maximum v adresáři 320-MB. Skutečný počet maximálních souborů ale může být nižší v závislosti na faktorech, jako je počet souborů obsahujících jiné znaky než ASCII v adresáři. V takovém případě byste měli použít `stat` příkaz následujícím způsobem a zjistit, zda se adresář blíží jeho limitu.  
 
 Příklady:
 

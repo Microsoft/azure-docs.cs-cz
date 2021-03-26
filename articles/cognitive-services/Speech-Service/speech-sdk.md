@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: afba973570d75eace8cae8d1ed6ed470db21ef0e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043201"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608081"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -67,17 +67,17 @@ Podpora **hlasového asistenta** je k dispozici na následujících platformách
   - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
   - Go
 
-#### <a name="keyword-spotting"></a>Klíčové slovo hledání
+#### <a name="keyword-recognition"></a>Rozpoznávání klíčových slov
 
-Koncept [klíčového slova hledání](./custom-keyword-basics.md) je podporován v sadě Speech SDK. Klíčové slovo hledání je aktem, který identifikuje klíčové slovo v řeči a po vyslechnutí klíčového slova sleduje akci. Například "Hey Cortana" by aktivoval pomocníka Cortana.
+Koncept [rozpoznávání klíčových slov](./custom-keyword-basics.md) je podporován v sadě Speech SDK. Rozpoznávání klíčového slova je úkonem identifikace klíčového slova v řeči a následné akce při poslechu klíčového slova. Například "Hey Cortana" by aktivoval pomocníka Cortana.
 
-**Klíčové slovo hledání (KWS)** je k dispozici na následujících platformách:
+**Rozpoznávání klíčových slov** je k dispozici na následujících platformách:
 
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (Speech Devices SDK)
-  - Funkce klíčového slova hledání (KWS) můžou fungovat s jakýmkoli typem mikrofonu. oficiální podpora KWS se ale v tuto chvíli omezila na pole mikrofonu, která najdete v hardwaru Azure Kinect DK nebo v sadě Speech SDK pro zařízení.
+  - Funkce rozpoznávání klíčových slov můžou fungovat s jakýmkoli typem mikrofonu. oficiální podpora rozpoznávání klíčových slov se ale v současné době omezí na pole mikrofonu, která najdete v hardwaru Azure Kinect DK nebo v sadě Speech SDK pro zařízení.
 
 ### <a name="meeting-scenarios"></a>Scénáře schůzky
 

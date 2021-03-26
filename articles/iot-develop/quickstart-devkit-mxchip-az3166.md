@@ -7,17 +7,19 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 4926aa40831056556060cbf564022fa7f5e3aa7a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 367f527180a310f2cbc74b1ccdc1102e1e53d1cf
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962818"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605976"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Rychlý Start: připojení MXCHIP AZ3166 DevKit k IoT Central
 
 **Platí pro**: [vývoj integrovaných zařízení](about-iot-develop.md#embedded-device-development)<br>
 **Celkový čas dokončení**: 30 minut
+
+[![Procházet kód](media/common/browse-github-code.png)](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)
 
 V tomto kurzu použijete Azure RTO k připojení MXCHIP AZ3166 IoT DevKit (dále MXCHIP DevKit) do Azure IoT. Tento článek je součástí série [Začínáme s vývojem zařízení Azure IoT Embedded](quickstart-device-development.md). Série přináší vývojářům zařízení do Azure RTO a ukazuje, jak propojit několik sad pro vyhodnocení zařízení s Azure IoT.
 
@@ -27,10 +29,7 @@ Provedete následující úkoly:
 * Sestavte image a zablikají ji do MXCHIP DevKit
 * Použití Azure IoT Central k vytvoření cloudových komponent, zobrazení vlastností, zobrazení telemetrie zařízení a volání přímých příkazů
 
-> [!NOTE]
-> Pokud chcete jenom zobrazit kód a nedokončit Tento článek, přečtěte si ukázku v tématu [připojení MXCHIP AZ3166 k Azure IoT](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166). Pokud plánujete dokončit tento článek, naklonujte úložiště GitHub v pozdějším kroku.
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * POČÍTAČ se systémem Microsoft Windows 10
 * [Git](https://git-scm.com/downloads) pro klonování úložiště

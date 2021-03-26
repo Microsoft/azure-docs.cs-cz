@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704323"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567398"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
@@ -43,7 +43,7 @@ Ve výchozím nastavení se prostředky seskupují podle aplikační vrstvy a ty
 
 Stránka přehledy skupiny prostředků nabízí několik dalších nástrojů s rozsahem, které vám pomůžou s diagnostikou problémů.
 
-   |         |          |
+   | Nástroj | Popis |
    | ---------------- |:-----|
    | [**Výstrahy**](../alerts/alerts-overview.md)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
    | [**Metriky**](../data-platform.md) | Vizualizujte a zkoumejte data založená na metrikách.    |
@@ -104,7 +104,7 @@ V takovém případě, pokud vyberete možnost upravit, uvidíte, že se tato sa
 
  ![Snímek obrazovky s zobrazeními výkonu a metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="enabling-access-to-alerts"></a>Povolení přístupu k výstrahám
 

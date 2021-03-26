@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102507870"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604528"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Možnosti dostupnosti pro Azure Virtual Machines
 Tento článek poskytuje přehled možností dostupnosti pro virtuální počítače Azure (VM).
@@ -57,6 +57,6 @@ Site Recovery může spravovat replikaci pro:
 - Místní virtuální počítače, Azure Stack virtuální počítače a fyzické servery.
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření virtuálního počítače v zóně dostupnosti](/linux/create-cli-availability-zone.md)
-- [Vytvoření virtuálního počítače ve skupině dostupnosti](/linux/tutorial-availability.md)
+- [Vytvoření virtuálního počítače v zóně dostupnosti](/azure/virtual-machines/linux/create-cli-availability-zone)
+- [Vytvoření virtuálního počítače ve skupině dostupnosti](/azure/virtual-machines/linux/tutorial-availability-sets)
 - [Vytvoření škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/quick-create-portal.md)

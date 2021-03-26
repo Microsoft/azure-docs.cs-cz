@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567259"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608863"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Vysoká dostupnost služby HSM ve vyhrazeném Azure
 
@@ -25,7 +25,7 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure je nepřipojený k datovým c
 
 ## <a name="high-availability-example"></a>Příklad vysoké dostupnosti
 
-Informace o tom, jak nakonfigurovat zařízení HSM pro vysokou dostupnost na úrovni softwaru, najdete v příručce pro správu HSM Thales Luna 7. Tento dokument je k dispozici na  [stránce HSM Thales](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm).
+Informace o tom, jak nakonfigurovat zařízení HSM pro vysokou dostupnost na úrovni softwaru, najdete v příručce pro správu HSM Thales Luna 7. Tento dokument je k dispozici na  [stránce HSM Thales](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms).
 
 Následující diagram znázorňuje architekturu s vysokou dostupností. Používá v oblasti více zařízení a několik zařízení se spáruje v samostatné oblasti. Tato architektura používá minimálně čtyři zařízení HSM a součásti virtuální sítě.
 
@@ -42,4 +42,4 @@ Další témata o úrovni konceptu:
 * [Možnosti podpory](supportability.md)
 * [Monitorování](monitoring.md)
 
-Konkrétní podrobnosti o konfiguraci zařízení HSM pro vysokou dostupnost najdete na portálu zákaznických služeb Thales pro správce a v části 6.
+Konkrétní podrobnosti o konfiguraci zařízení HSM pro vysokou dostupnost najdete na [portálu zákaznických služeb Thales](https://supportportal.thalesgroup.com/csm) pro správce a v části 6.

@@ -6,13 +6,14 @@ ms.author: inhenkel
 manager: femilia
 ms.topic: how-to
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 783d9e1b4ab86f6580cf3418a0676921aef2db6a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 90ca92dc19c588d0b19adf009301cf844e0cdbde
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598197"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609037"
 ---
 # <a name="monitor-media-services"></a>Media Services monitorování
 
@@ -37,9 +38,9 @@ robb@microsoft.com -->
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 
-Media Services vytváří data monitorování pomocí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview), což je plná služba monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích.
+Media Services vytváří data monitorování pomocí [Azure monitor](../../../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích.
 
-Začněte s načtením článku [monitorování prostředků Azure pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource), které popisuje následující koncepty:
+Začněte s načtením článku [monitorování prostředků Azure pomocí Azure monitor](../../../azure-monitor/essentials/monitor-azure-resource.md), které popisuje následující koncepty:
 
 - Co je Azure Monitor?
 - Náklady spojené s monitorováním
@@ -49,7 +50,7 @@ Začněte s načtením článku [monitorování prostředků Azure pomocí Azure
 
 ## <a name="monitoring-data"></a>Data monitorování
 
-Media Services shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources).
+Media Services shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data).
 
 Všechna data shromážděná službou Azure Monitor patří do jednoho ze dvou základních typů: metriky a protokoly. Pomocí těchto dvou typů můžete:
 
@@ -69,13 +70,13 @@ Podrobné informace o metrikách a protokolech, které vytváří Media Services
 
 *Protokoly prostředků* se **neshromažďují a** ukládají, dokud nevytvoříte nastavení diagnostiky a nebudete je směrovat do jednoho nebo více umístění.
 
-Podrobný postup vytváření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v článku [Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik platforem v Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) .
+Podrobný postup vytváření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v článku [Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik platforem v Azure](../../../azure-monitor/essentials/diagnostic-settings.md) .
 
 Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit. Kategorie pro Media Services jsou uvedeny v referenčních informacích o [monitorování Media Services](monitor-media-services-data-reference.md).
 
 ## <a name="analyzing-metrics"></a>Analýza metrik
 
-Metriky pro Media Services můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) .
+Metriky pro Media Services můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../../../azure-monitor/essentials/metrics-getting-started.md) .
 
 Seznam metrik shromažďovaných pro Media Services naleznete v tématu [Monitoring Media Services data reference](monitor-media-services-data-reference.md).
 
@@ -83,11 +84,11 @@ Seznam metrik shromažďovaných pro Media Services naleznete v tématu [Monitor
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, kde každá tabulka má svou vlastní sadu jedinečných vlastností.  
 
-Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema).
+Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../../../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema).
 
 Schéma pro protokoly prostředků Media Services najdete v referenčních informacích k [monitorování Media Services dat](monitor-media-services-data-reference.md).
 
-[Protokol aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log) je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.
+[Protokol aktivit](../../../azure-monitor/essentials/activity-log.md) je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.
 
 Seznam typů protokolů prostředků shromážděných pro Media Services naleznete v tématu [Monitoring Media Services data reference](monitor-media-services-data-reference.md).
 
@@ -102,7 +103,7 @@ V diagnostických protokolech můžete prozkoumávat tyto věci:
 
 ## <a name="alerts"></a>Výstrahy
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [protokolech](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)a [protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts).
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../../../azure-monitor/alerts/alerts-metric-overview.md), [protokolech](../../../azure-monitor/alerts/alerts-unified-log.md)a [protokolu aktivit](../../../azure-monitor/alerts/activity-log-alerts.md).
 
 Metriky Media Services se shromažďují v pravidelných intervalech bez ohledu na to, jestli se hodnota změní. Jsou užitečné pro upozorňování, protože je možné je často vzorkovat. Výstraha se dá rychle aktivovat pomocí relativně jednoduché logiky.
 

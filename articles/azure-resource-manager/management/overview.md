@@ -2,14 +2,14 @@
 title: Přehled Azure Resource Manageru
 description: Popisuje, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure.
 ms.topic: overview
-ms.date: 09/01/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.custom: contperf-fy21q1,contperf-fy21q3-portal
+ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97858514"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608540"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
@@ -91,7 +91,7 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 
 * Při odstranění skupiny prostředků se odstraní také všechny prostředky ve skupině prostředků. Informace o tom, jak Azure Resource Manager orchestruje tato odstranění, najdete v tématu [Azure Resource Manager skupiny prostředků a odstraňování prostředků](delete-resource-group.md).
 
-* V každé skupině prostředků můžete nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou [vyloučené z limitu instancí 800](resources-without-resource-group-limit.md).
+* V každé skupině prostředků můžete nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou [vyloučené z limitu instancí 800](resources-without-resource-group-limit.md). Další informace najdete v tématu [omezení skupiny prostředků](azure-subscription-service-limits.md#resource-group-limits).
 
 * Některé prostředky můžou existovat mimo skupinu prostředků. Tyto prostředky se nasazují do [předplatného](../templates/deploy-to-subscription.md), [skupiny pro správu](../templates/deploy-to-management-group.md)nebo [tenanta](../templates/deploy-to-tenant.md). V těchto oborech jsou podporovány pouze konkrétní typy prostředků.
 
@@ -112,6 +112,8 @@ Služba Azure Resource Manager je navržena pro zajištění odolnosti a nepřet
 Tato odolnost se vztahuje na služby, které přijímají požadavky prostřednictvím Správce prostředků. Například Key Vault výhody z této odolnosti.
 
 ## <a name="next-steps"></a>Další kroky
+
+* Další informace o omezeních, která se používají napříč službami Azure, najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](azure-subscription-service-limits.md).
 
 * Další informace o přesouvání prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](move-resource-group-and-subscription.md).
 

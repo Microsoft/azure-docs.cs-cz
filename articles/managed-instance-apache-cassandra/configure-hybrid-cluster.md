@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 6c6bbdefe666cf0dd2f1c96d783917e1874ae93d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b022bff9db87c248881cd18cc21569aaef8f404a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588694"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562116"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Rychlý Start: Konfigurace hybridního clusteru se spravovanou instancí Azure pro Apache Cassandra (Preview)
 
@@ -28,7 +28,7 @@ Tento rychlý Start ukazuje použití příkazů Azure CLI ke konfiguraci hybrid
 
 * Tento článek vyžaduje Azure CLI verze 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-* [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) s připojením k místnímu nebo místnímu prostředí. Další informace o připojení k místnímu prostředí do Azure najdete v článku věnovaném [připojení místní sítě k Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) .
+* [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) s připojením k místnímu nebo místnímu prostředí. Další informace o připojení k místnímu prostředí do Azure najdete v článku věnovaném [připojení místní sítě k Azure](/azure/architecture/reference-architectures/hybrid-networking/) .
 
 ## <a name="configure-a-hybrid-cluster"></a><a id="create-account"></a>Konfigurace hybridního clusteru
 

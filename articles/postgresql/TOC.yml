@@ -126,14 +126,14 @@
           href: concepts-supported-versions.md
         - name: Rozšíření PostgreSQL
           href: concepts-extensions.md
+        - name: Omezení
+          href: concepts-limits.md
         - name: Vysvětlení cenových úrovní
           items:
             - name: Cenové úrovně
               href: concepts-pricing-tiers.md
             - name: Předplacení záložní kapacity
               href: concept-reserved-pricing.md
-            - name: Omezení
-              href: concepts-limits.md
         - name: Zabezpečení
           items:
             - name: Přehled zabezpečení

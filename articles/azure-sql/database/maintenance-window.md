@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/23/2021
-ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047248"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565875"
 ---
 # <a name="maintenance-window-preview"></a>Časové období údržby (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ Po provedení výběru časového období údržby a dokončení konfigurace slu
 Konfigurace a používání okna údržby je zdarma pro všechny opravňující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/): průběžné platby, zprostředkovatel Cloud Solution Provider (CSP), Microsoft smlouva Enterprise nebo smlouva Microsoft Customer Agreement.
 
 > [!Note]
-> Nabídka Azure je typ předplatného Azure, které máte. Například předplatné s [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/)průběžných plateb, [systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/offers/ms-azr-0111p/)a [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) jsou všechny nabídky Azure. Každá nabídka nebo plán má různé výrazy a výhody. Vaše nabídka nebo plán se zobrazí v přehledu předplatného. Další informace o přepnutí předplatného na jinou nabídku najdete v tématu [Změna předplatného Azure na jinou nabídku](/azure/cost-management-billing/manage/switch-azure-offer).
+> Nabídka Azure je typ předplatného Azure, které máte. Například předplatné s [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/)průběžných plateb, [systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/offers/ms-azr-0111p/)a [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) jsou všechny nabídky Azure. Každá nabídka nebo plán má různé výrazy a výhody. Vaše nabídka nebo plán se zobrazí v přehledu předplatného. Další informace o přepnutí předplatného na jinou nabídku najdete v tématu [Změna předplatného Azure na jinou nabídku](../../cost-management-billing/manage/switch-azure-offer.md).
 
 ## <a name="advance-notifications"></a>Oznámení předem
 
@@ -108,17 +108,17 @@ Další informace o zásadách připojení klientů ve spravované instanci Azur
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Předpoklady pro spravovanou instanci Azure SQL
 
-Spravovaná instance Azure SQL se skládá z komponent služby hostovaných na vyhrazené sadě izolovaných virtuálních počítačů, které běží v podsíti virtuální sítě zákazníka. Tyto virtuální počítače tvoří [virtuální clustery](/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture) , které mohou hostovat více spravovaných instancí. Časové období údržby nakonfigurované na instancích jedné podsítě může mít vliv na počet virtuálních clusterů v rámci podsítě a na distribuci instancí mezi virtuálními clustery. To může vyžadovat zvážení několika efektů.
+Spravovaná instance Azure SQL se skládá z komponent služby hostovaných na vyhrazené sadě izolovaných virtuálních počítačů, které běží v podsíti virtuální sítě zákazníka. Tyto virtuální počítače tvoří [virtuální clustery](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture) , které mohou hostovat více spravovaných instancí. Časové období údržby nakonfigurované na instancích jedné podsítě může mít vliv na počet virtuálních clusterů v rámci podsítě a na distribuci instancí mezi virtuálními clustery. To může vyžadovat zvážení několika efektů.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>Konfigurace časového období údržby je dlouhodobá operace. 
 Všechny instance hostované ve virtuálním clusteru sdílejí časový interval pro správu a údržbu. Ve výchozím nastavení se všechny spravované instance hostují ve virtuálním clusteru s výchozím časovým obdobím údržby. Zadání dalšího časového období údržby pro spravovanou instanci během jeho vytvoření nebo později znamená, že musí být umístěn ve virtuálním clusteru s odpovídajícím časovým obdobím údržby. Pokud v podsíti žádný takový virtuální cluster neexistuje, je třeba nejprve vytvořit nové, aby se pokryla instance. Další instance ve stávajícím virtuálním clusteru může vyžadovat změnu velikosti clusteru. Obě operace přispívají k době trvání konfigurace časového období údržby pro spravovanou instanci.
-Očekávaná doba trvání konfigurace časového období údržby na spravované instanci se dá vypočítat pomocí [Odhadované doby trvání operací správy instancí](/azure/azure-sql/managed-instance/management-operations-overview#duration).
+Očekávaná doba trvání konfigurace časového období údržby na spravované instanci se dá vypočítat pomocí [Odhadované doby trvání operací správy instancí](../managed-instance/management-operations-overview.md#duration).
 
 > [!Important]
 > Krátká rekonfigurace probíhá na konci operace údržby a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Chcete-li minimalizovat dopad rekonfigurace, měli byste naplánovat operaci mimo špičku.
 
 ### <a name="ip-address-space-requirements"></a>Požadavky na adresní prostor IP adres
-Každý nový virtuální cluster v podsíti vyžaduje další IP adresy v závislosti na [přidělování IP adres virtuálních clusterů](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size). Změna časového období údržby pro existující spravovanou instanci také vyžaduje [dočasnou další kapacitu IP adres](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) jako v rámci škálování scénáře virtuální jádra pro odpovídající úroveň služby.
+Každý nový virtuální cluster v podsíti vyžaduje další IP adresy v závislosti na [přidělování IP adres virtuálních clusterů](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size). Změna časového období údržby pro existující spravovanou instanci také vyžaduje [dočasnou další kapacitu IP adres](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) jako v rámci škálování scénáře virtuální jádra pro odpovídající úroveň služby.
 
 ### <a name="ip-address-change"></a>Změna IP adresy
 Konfigurace a změna okna údržby způsobuje změnu IP adresy instance v rámci rozsahu IP adres podsítě.
@@ -137,8 +137,3 @@ Konfigurace a změna okna údržby způsobuje změnu IP adresy instance v rámci
 * [Azure SQL Database](sql-database-paas-overview.md) 
 * [Spravovaná instance SQL](../managed-instance/sql-managed-instance-paas-overview.md)
 * [Plánování událostí údržby Azure v Azure SQL Database a spravované instanci Azure SQL](planned-maintenance.md)
-
-
-
-
-

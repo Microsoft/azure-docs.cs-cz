@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221010"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605208"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -96,6 +96,36 @@ Při vytváření trasy definované uživatelem můžete zadat následující ty
 
 V trasách definovaných uživatelem nemůžete jako typ dalšího segmentu směrování zadat **Partnerský vztah virtuálních sítí** ani **VirtualNetworkServiceEndpoint**. Trasy s typy dalších segmentů směrování **Partnerský vztah virtuálních sítí** nebo **VirtualNetworkServiceEndpoint** vytvoří Azure pouze v případě, že nakonfigurujete partnerský vztah virtuálních sítí nebo koncový bod služby.
 
+### <a name="service-tags-for-user-defined-routes-public-preview"></a>Značky služeb pro trasy definované uživatelem (Public Preview)
+
+Jako předponu adresy pro uživatelem definovanou trasu teď můžete místo explicitního rozsahu IP adres zadat [označení služby](service-tags-overview.md) . Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje značku služby na změny adres. tím se minimalizuje složitost častých aktualizací pro uživatelsky definované trasy a snižuje počet tras, které je třeba vytvořit. V současné době můžete v každé směrovací tabulce vytvořit trasy 25 nebo méně směrování s visačkami služeb. </br>
+
+
+#### <a name="exact-match"></a>Přesná shoda
+V případě, že mezi trasou s explicitní předponou protokolu IP a trasou s označením služby dojde k přesné shodě předpony, bude trasa s explicitní předponou dána prioritou. Pokud se shodují předpony IP adres, budou trasy vyhodnoceny v následujícím pořadí: 
+
+   1. Regionální značky (např. Storage. EastUS, AppService. AustraliaCentral)
+   2. Značky nejvyšší úrovně (např. Úložiště, AppService)
+   3. AzureCloud regionální značky (např. AzureCloud. canadacentral, AzureCloud. eastasia)
+   4. Značka AzureCloud </br></br>
+
+Pokud chcete tuto funkci použít, zadejte název značky služby pro parametr předpony adresy v příkazech směrovací tabulky. Například v PowerShellu můžete vytvořit novou trasu pro přímý provoz odeslaný na virtuální zařízení Azure Storage předponou IP adresy pomocí: </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix “Storage” -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+Stejný příkaz pro rozhraní příkazového řádku bude: </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> V Public Preview existuje několik omezení. Tato funkce se v současnosti na webu Azure Portal nepodporuje a je dostupná jenom prostřednictvím PowerShellu a rozhraní příkazového řádku. Neexistuje žádná podpora pro použití s kontejnery. 
+
 ## <a name="next-hop-types-across-azure-tools"></a>Typy dalších segmentů směrování napříč nástroji Azure
 
 Zobrazené a odkazované názvy typů dalších segmentů směrování se liší na webu Azure Portal a v nástrojích příkazového řádku a v modelech nasazení Azure Resource Manager a Classic. Následující tabulka uvádí názvy používané k odkazování na jednotlivé typy dalších segmentů směrování v různých nástrojích a [modelech nasazení](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
@@ -109,6 +139,8 @@ Zobrazené a odkazované názvy typů dalších segmentů směrování se liší
 |Žádné                            |Žádné                                            |Null (není dostupné v Classic CLI v režimu asm)|
 |Peering virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Neuvedeno|
 |Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Neuvedeno|
+
+
 
 ### <a name="border-gateway-protocol"></a>Protokol BGP (Border Gateway Protocol)
 

@@ -7,23 +7,23 @@ ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: ''
 ms.date: 03/08/2021
-author: ruxu
+author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928e2ef8b373626a91a291b1798f3ebb7ef290e8
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589595"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608829"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Kurz: sestavování aplikací strojového učení pomocí Microsoft Machine Learning pro Apache Spark (Preview)
 
 V tomto článku se naučíte, jak používat Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) k vytváření aplikací strojového učení. MMLSpark rozbalí řešení distribuovaného strojového učení Apache Spark přidáním mnoha nástrojů pro hloubkové učení a datové vědy, jako je [Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md), [OpenCV](https://opencv.org/), [LightGBM](https://github.com/Microsoft/LightGBM) a další.  MMLSpark umožňuje vytvářet výkonné a vysoce škálovatelné prediktivní a analytické modely z různých zdrojů dat Spark.
 Synapse Spark poskytuje integrované MMLSpark knihovny, včetně:
 
-- [Pro dostupné](https://github.com/VowpalWabbit/vowpal_wabbit) – služby knihoven pro strojové učení, které umožňují v tweety povolit analýzu textu jako mínění Analysis.
-- [Cognitive Services ve Sparku](../../cognitive-services/big-data/cognitive-services-for-big-data.md) – Chcete-li kombinovat funkci Azure Cognitive Services v kanálech SparkML, aby bylo možné odvodit návrh řešení pro rozpoznávání služby Data Modeling, jako je detekce anomálií.
-- [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – model strojového učení, který umožňuje školení modelu pro prediktivní analýzu, jako je detekce ID obličeje.
+- [Pro dostupné](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – služby knihoven pro strojové učení, které umožňují v tweety povolit analýzu textu jako mínění Analysis.
+- [Cognitive Services ve Sparku](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) – Chcete-li kombinovat funkci Azure Cognitive Services v kanálech SparkML, aby bylo možné odvodit návrh řešení pro rozpoznávání služby Data Modeling, jako je detekce anomálií.
+- [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – LightGBM je rozhraní pro zvýšení barevného přechodu, které využívá algoritmy učení založené na stromové struktuře. Je navržená tak, aby byla distribuovaná a vyšší efektivita.
 - Podmíněné KNN – škálovatelné modely KNN s podmíněnými dotazy.
 - [Http ve Sparku](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – povoluje orchestraci distribuovaných mikroslužeb v integraci Sparku a protokolu HTTP založeného na protokolu HTTP.
 
@@ -36,7 +36,7 @@ Tento kurz se zabývá ukázkami, které používají Azure Cognitive Services v
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Data Lake Storage Gen2 systému souborů, se kterým pracujete.
 - V pracovním prostoru Azure synapse Analytics je fond Spark. Podrobnosti najdete v tématu [Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-sql-pool-studio.md).
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 
 ## <a name="get-started"></a>Začínáme
-Začněte tím, že naimportujete klíče služby mmlspark a configurate.
+Začněte tím, že naimportujete klíče služby mmlspark a configurate. 
 
 ```python
 import mmlspark
@@ -59,13 +59,16 @@ service_key =  "ADD_YOUR_SUBSCRIPION_KEY"
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY" 
 # An Anomaly Dectector subscription key
 anomaly_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
+# Your linked key vault for Synapse workspace
+key_vault = "YOUR_KEY_VAULT_NAME"
 
 
-cognitive_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", service_key)
-bingsearch_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", bing_search_key)
-anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", anomaly_key)
+cognitive_service_key = mssparkutils.credentials.getSecret(key_vault, service_key)
+bingsearch_service_key = mssparkutils.credentials.getSecret(key_vault, bing_search_key)
+anomalydetector_key = mssparkutils.credentials.getSecret(key_vault, anomaly_key)
 
 ```
+
 
 ## <a name="text-analytics-sample"></a>Ukázka analýzy textu
 

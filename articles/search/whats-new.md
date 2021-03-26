@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600424"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559515"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -23,7 +23,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
 |------------------------------|---------------|---------------|
-| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které výrazně zlepšují relevanci výsledků hledání s velmi malým úsilím. </br></br>[Sémantické hodnocení](semantic-ranking.md) vypočítá relevanci skóre pomocí sémantického významu slov a obsahu. </br></br>[Sémantické titulky](semantic-how-to-query-request.md) jsou relevantní pasáže z dokumentu, který nejlépe shrnuje nejdůležitější výrazy nebo fráze. </br></br>[Sémantické odpovědi](semantic-answers.md) jsou klíčové pasáže, které se extrahují z hledaného dokumentu, které se formulují jako přímá odpověď na dotaz, který vypadá jako otázka. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>V Azure Portal použijte soubory API pro [hledání (REST)](/rest/api/searchservice/preview-api/search-documents) – verze = 2020-06 -30-Preview a [Search Explorer](search-explorer.md) . </br></br>Platí omezení oblasti a úrovně. |
+| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které výrazně zlepšují relevanci výsledků hledání s minimálními úpravami žádosti o dotaz. </br></br>[Sémantické hodnocení](semantic-ranking.md) vypočítá relevanci skóre pomocí sémantického významu slov a obsahu. </br></br>[Sémantické titulky](semantic-how-to-query-request.md) vracejí relevantní pasáže z dokumentu, který nejlépe sumarizuje dokument, a zvýrazní nejdůležitější výrazy nebo fráze. </br></br>[Sémantické odpovědi](semantic-answers.md) vracejí klíčové pasáže, které se extrahují z hledaného dokumentu, které se formulují jako přímá odpověď na dotaz, který vypadá jako otázka. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>Použijte [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview nebo [explorer Search](search-explorer.md) in Azure Portal. </br></br>Platí omezení oblasti a úrovně. |
 | [Výrazy pro dotaz na kontrolu pravopisu](speller-how-to-add.md) | Předtím, než se na vyhledávacím panelu dostanou výrazy pro dotaz, můžete nechat zkontrolovat chyby pravopisu. `speller`Možnost funguje s libovolným typem dotazu (jednoduchý, úplný nebo sémantický). |  Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview|
 | [Indexer SharePointu Online](search-howto-index-sharepoint-online.md) | Tento indexer vás připojí k webu SharePointu Online, abyste mohli indexovat obsah z knihovny dokumentů. | Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
 | [Normalizy](search-normalizers.md) | Normalizace poskytují jednoduchý text předběžného zpracování jako velikost písmen, odebrání zvýraznění, asciifolding a tak dále, aniž by bylo nutné procházet celým řetězcem analýzy.| Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |

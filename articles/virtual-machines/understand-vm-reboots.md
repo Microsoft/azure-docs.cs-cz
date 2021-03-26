@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: af371a8f7da5ef32e95d4096b69c5d52ce3e3700
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9342e0c39b558cf8b6ff5773d623ce55062f9ab5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510485"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607469"
 ---
 # <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadky
 Existují tři scénáře, které mohou vést k ovlivnění virtuálních počítačů v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -34,7 +34,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 
 * Použití [zóny dostupnosti](../availability-zones/az-overview.md) k ochraně před selháními datového centra
 * Konfigurace více virtuálních počítačů ve [skupině dostupnosti](availability-set-overview.md) pro zajištění redundance
-* Použijte [naplánované události pro Linux](/linux/scheduled-events.md) nebo [naplánované události pro systém Windows](/windows/scheduled-events.md) k proaktivní reakci na události dopadu na virtuální počítač.
+* Použijte [naplánované události pro Linux](/azure/virtual-machines/linux/scheduled-events) nebo [naplánované události pro systém Windows](/azure/virtual-machines/windows/scheduled-events) k proaktivní reakci na události dopadu na virtuální počítač.
 * Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti
 * Kombinování [Nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) se zónami nebo sadami dostupnosti
 

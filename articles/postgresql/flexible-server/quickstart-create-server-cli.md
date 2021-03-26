@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření serveru – Azure CLI-Azure Database for PostgreSQL-flexibilní Server'
 description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit Azure Database for PostgreSQL flexibilní Server ve skupině prostředků Azure.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d43fab43b05ccfd88308390f58ba48ff9111b295
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 49c98905d99e5895dd0d2aa7e6a06e7a3605897e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94842817"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606126"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL flexibilního serveru pomocí Azure CLI
 
@@ -30,7 +30,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 

@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/16/2020
+ms.date: 03/25/2021
 ms.author: victorh
-ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 35bede052f06c0fcffe46460a376d10690fd4417
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94561025"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559603"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Kurz: vytvoření aplikační brány pomocí brány firewall webových aplikací pomocí Azure Portal
 
@@ -42,11 +42,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
-Aby mohl Azure komunikovat mezi prostředky, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
+1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
-V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
-
-Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
+2. Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
 
 ### <a name="basics-tab"></a>Karta základy
 
@@ -60,7 +58,7 @@ Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** 
 
 2.  Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť ve stejnou chvíli, kdy vytvoříte Aplikační bránu. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
-    V části **Konfigurovat virtuální síť** vytvořte novou virtuální síť výběrem možnosti **vytvořit nový**. V okně **vytvořit virtuální síť** , které se otevře, zadejte následující hodnoty pro vytvoření virtuální sítě a dvě podsítě:
+    V části **Konfigurovat virtuální síť** vyberte **vytvořit novou** a vytvořte novou virtuální síť. V okně **vytvořit virtuální síť** , které se otevře, zadejte následující hodnoty pro vytvoření virtuální sítě a dvě podsítě:
 
     - **Název**: jako název virtuální sítě zadejte *myVNet* .
 
@@ -82,7 +80,7 @@ Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** 
    > [!NOTE]
    > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. V tuto chvíli není u této SKU verze V2 povolená soukromá konfigurace IP adresy front-endu.
 
-2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
+2. Zvolte možnost **Přidat nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
      ![Vytvořit novou aplikační bránu: front-endové](../media/application-gateway-web-application-firewall-portal/application-gateway-create-frontends.png)
 
@@ -90,9 +88,9 @@ Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** 
 
 ### <a name="backends-tab"></a>Karta back-endy
 
-Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy se dají skládat ze síťových adaptérů, virtuálních počítačů a virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte prázdný back-end fond s aplikační bránou a potom přidáte cíle back-end do fondu back-end.
+Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy se dají skládat ze síťových adaptérů, virtuálních počítačů a virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte prázdný back-end fond s aplikační bránou a později přidáte cíle back-end do fondu back-end.
 
-1. Na kartě back- **endy** vyberte **+ Přidat back-end fond**.
+1. Na kartě back- **endy** vyberte **Přidat back-end fond**.
 
 2. V okně **Přidat fond back-end** , které se otevře, zadejte následující hodnoty a vytvořte prázdný back-end fond:
 
@@ -109,7 +107,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
-1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo** .
+1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo směrování** .
 
 2. V okně **Přidat pravidlo směrování** , které se otevře, jako **název pravidla** zadejte *myRoutingRule* .
 
@@ -124,7 +122,7 @@ Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fond
 
 4. Na kartě **cílení na server back-end** vyberte **MyBackendPool** pro **cíl back-endu**.
 
-5. Pro **Nastavení http** vyberte **vytvořit novou** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
+5. Pro **Nastavení http** vyberte **Přidat nový** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
 
      ![Vytvořit novou aplikační bránu: nastavení HTTP](../media/application-gateway-web-application-firewall-portal/application-gateway-create-httpsetting.png)
 
@@ -158,12 +156,12 @@ Uděláte to takto:
 
     - **Skupina prostředků**: pro název skupiny prostředků vyberte **myResourceGroupAG** .
     - **Název virtuálního počítače**: jako název virtuálního počítače zadejte *myVM* .
-    - **Uživatelské jméno**: jako uživatelské jméno správce zadejte *azureuser* .
-    - **Heslo**: zadejte *Azure123456.* pro heslo správce.
+    - **Uživatelské jméno**: zadejte název uživatelského jména správce.
+    - **Heslo**: zadejte heslo pro heslo správce.
 4. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: disky**.  
 5. Přijměte výchozí hodnoty na kartě **disky** a potom vyberte **Další: sítě**.
 6. Na kartě **sítě** ověřte, že je pro **virtuální síť** vybraný **myVNet** a že **podsíť** je nastavená na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: Správa**.<br>Application Gateway může komunikovat s instancemi mimo virtuální síť, ve které je, ale je potřeba zajistit připojení k IP adrese.
-7. Na kartě **Správa** nastavte **diagnostiku spouštění** na **vypnuto**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+7. Na kartě **Správa** nastavte **diagnostiku spouštění** na **zakázáno**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 8. Na kartě **Revize + vytvořit** zkontrolujte nastavení, opravte chyby ověřování a potom vyberte **vytvořit**.
 9. Než budete pokračovat, počkejte na dokončení vytváření virtuálního počítače.
 
@@ -175,7 +173,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     ![Instalace vlastního rozšíření](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
-2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
+2. Nastavte parametr Location pro prostředí a pak spusťte následující příkaz pro instalaci služby IIS na virtuálním počítači: 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -199,48 +197,49 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 3. Vyberte **myBackendPool**.
 
-4. V části **cíle** vyberte v rozevíracím seznamu možnost **virtuální počítač** .
+4. V části **cílový typ** vyberte z rozevíracího seznamu možnost **virtuální počítač** .
 
-5. V části **virtuální počítač** a **Síťová rozhraní** vyberte virtuální počítače **myVM** a **myVM2** a jejich přidružená síťová rozhraní z rozevíracích seznamů.
+5. V části **cíl** vyberte v rozevíracím seznamu přidružené síťové rozhraní pro **myVM** .
+1. Opakujte pro **myVM2**.
 
-    ![Přidání back-endových serverů](../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
+   :::image type="content" source="../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png" alt-text="Přidání back-endových serverů":::
+
 
 6. Vyberte **Uložit**.
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
-
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
-
-Pro účely tohoto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí.
-
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
-1. Vyberte **úložiště** a pak vyberte **účet úložiště**.
-1. Pro *skupinu prostředků* vyberte **myResourceGroupAG** pro skupinu prostředků.
-1. Jako název účtu úložiště zadejte *myagstore1* .
-1. Přijměte výchozí hodnoty pro ostatní nastavení a potom vyberte **zkontrolovat + vytvořit**.
-1. Zkontrolujte nastavení a pak vyberte **vytvořit**.
-
-### <a name="configure-diagnostics"></a>Konfigurace diagnostiky
-
-Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog a ApplicationGatewayFirewallLog.
-
-1. V nabídce na levé straně vyberte **všechny prostředky** a pak vyberte *myAppGateway*.
-2. V části monitorování vyberte **nastavení diagnostiky**.
-3. Vyberte **Přidat nastavení diagnostiky**.
-4. Jako název pro nastavení diagnostiky zadejte *myDiagnosticsSettings* .
-5. Vyberte možnost **archivovat do účtu úložiště** a pak vyberte **Konfigurovat** a vyberte účet úložiště *myagstore1* , který jste vytvořili dříve, a pak vyberte **OK**.
-6. Vyberte protokoly aplikační brány, které chcete shromažďovat a uchovávat.
-7. Vyberte **Uložit**.
-
-    ![Konfigurace diagnostiky](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
-
+   
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>Vytvoření a propojení zásad firewallu webových aplikací
 
-Všechna přizpůsobení a nastavení WAF se nacházejí v samostatném objektu, který se nazývá zásady WAF. Zásada musí být přidružená k vašemu Application Gateway. Pokud chcete vytvořit zásadu WAF, přečtěte si téma [Vytvoření zásady WAF](create-waf-policy-ag.md). Po vytvoření můžete zásadu přidružit k vašemu WAF (nebo k individuálnímu naslouchacího procesu) ze zásady WAF na **přidružené kartě Application gateways** . 
+Všechna přizpůsobení a nastavení WAF se nacházejí v samostatném objektu, který se nazývá zásady WAF. Zásada musí být přidružená k vašemu Application Gateway. 
 
-![Přidružené aplikační brány](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
+Vytvoří základní zásady WAF se sadou spravovaných výchozích pravidel (DRS).
+
+1. V levé horní části portálu vyberte **vytvořit prostředek**. Vyhledejte **WAF**, vyberte **Firewall webových aplikací** a pak vyberte **vytvořit**.
+2. Na stránce **vytvořit zásadu WAF** na kartě **základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
+
+   |Nastavení  |Hodnota  |
+   |---------|---------|
+   |Zásady pro     |Oblastní WAF (Application Gateway)|
+   |Předplatné     |Vyberte název vašeho předplatného.|
+   |Skupina prostředků     |Vybrat **myResourceGroupAG**|
+   |Název zásad     |Zadejte jedinečný název pro zásady WAF.|
+1. Vyberte **Další: nastavení zásad**.
+1. Přijměte výchozí hodnoty a pak vyberte **Další: spravovaná pravidla**.
+1. Přijměte výchozí nastavení a potom vyberte **Další: vlastní pravidla**.
+1. Vyberte **Další: přidružení**.
+1. Vyberte **Přidat přidružení** a pak vyberte **Application Gateway**.
+1. Zaškrtněte políčko **použít konfiguraci zásad firewallu webových aplikací, a to i v případě, že se liší od aktuální konfigurace**.
+1. Vyberte **Přidat**.
+1. Na kartě **přidružení** vyberte **Přidat přidružení** a vyberte **Application Gateway**.
+
+   > [!NOTE]
+   > Pokud přiřadíte zásadu k vašemu Application Gateway (nebo naslouchacího procesu), který už má zásady nastavené, přepíše se původní zásada a nahradí se novými zásadami.
+4. Vyberte **Zkontrolovat a vytvořit** a pak **Vytvořit**.
+1. Vyberte **Další: Značky**.
+1. Vyberte **Zkontrolovat a vytvořit**.
+1. Vyberte **Vytvořit**.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 

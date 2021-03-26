@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889820"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604834"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
@@ -24,9 +24,18 @@ V Ubuntu-18,04 se Mellanox OFED ukázalo nekompatibilní s verzemi jader `5.4.0-
 Dočasné řešení je použití image **kanonického: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Marketplace nebo starší, a ne pro aktualizaci jádra.
 Očekává se, že tento problém bude vyřešen novějším MOFED (TBD).
 
-## <a name="known-issues-on-hbv3"></a>Známé problémy v HBv3
-- V současné době se InfiniBand podporuje jenom na virtuálním počítači 120 Core (Standard_HB120rs_v3).
-- V současné době není služba akcelerovaná síť Azure podporovaná ve všech oblastech HBv3-Series.
+## <a name="mpi-qp-creation-errors"></a>Chyby při vytváření QP MPI
+Pokud se v průběhu spouštění všech úloh MPI, vystaví se chyby vytváření QP InfiniBand, jako je například znázorněné níže, doporučujeme restartovat virtuální počítač a znovu se pokusit o zatížení. Tento problém bude v budoucnu vyřešen.
+
+```bash
+ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
+```
+
+V případě, že dojde k problému, můžete ověřit hodnoty maximálního počtu párů fronty, pokud je problém pozorován.
+```bash
+[user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
+max_qp: 4096
+```
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Urychlené síťové služby na neHBv2ch, HC, a NDv2
 

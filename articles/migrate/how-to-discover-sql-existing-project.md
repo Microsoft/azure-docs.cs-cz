@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2021
-ms.openlocfilehash: 8caac0a111c3a1bdd88e0d5f43a4629ad4221496
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 2de60880b511e43ffb2949a15fec2cf2a94f62fa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888936"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567148"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>Zjištění instancí SQL Server v existujícím projektu 
 
@@ -41,7 +41,7 @@ Zjišťování SQL Server instancí a databází, které běží na místních p
     - Ověřte, že se služby běžící na zařízení aktualizují na nejnovější verze. Provedete to tak, že z vašeho serveru zařízení spustíte Správce konfigurace zařízení a v panelu nastavit požadované součásti vyberete Zobrazit služby zařízení.
         - Zařízení a jeho součásti se automaticky aktualizují. :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="Podívejte se na verzi zařízení"::: .
     - Na panelu Správa přihlašovacích údajů a zdrojů zjišťování ve Správci konfigurace zařízení přidejte přihlašovací údaje k doméně nebo SQL Server, které mají přístup sysadmin ke zjištění instance SQL Server a databází.
-    Můžete využít funkci automatického mapování přihlašovacích údajů zařízení nebo ručně namapovat přihlašovací údaje na příslušný server, jak je zvýrazněné [tady](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery).
+    Můžete využít funkci automatického mapování přihlašovacích údajů zařízení nebo ručně namapovat přihlašovací údaje na příslušný server, jak je zvýrazněné [tady](./tutorial-discover-vmware.md#start-continuous-discovery).
 
     Poznámka:
     - Zajistěte, aby inventář softwaru byl už povolený, nebo pokud chcete povolit stejné oprávnění, zadejte doménu nebo přihlašovací údaje k doméně nebo jiné doméně. Aby bylo možné zjišťovat SQL Server instance, je nutné provést inventář softwaru.

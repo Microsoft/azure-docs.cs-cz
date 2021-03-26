@@ -63,6 +63,54 @@ Doporučené použití |Doporučuje se pro velká většina scénářů streamov
 
 <sup>1</sup> používá se jenom přímo na koncovém bodu streamování, když CDN není na koncovém bodu povolený.<br/>
 
+### <a name="versions"></a>Verze
+
+|Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|
+|--------------|----------|-----------------|-----------------|-----------------|
+|Klasický|1.0|0|NA|Free|
+|Koncový bod streamování Standard (Preview)|2.0|0|Yes|Placené|
+|Jednotky streamování na úrovni Premium|1.0|> 0|Yes|Placené|
+|Jednotky streamování na úrovni Premium|2.0|> 0|Yes|Placené|
+
+### <a name="features"></a>Funkce
+
+Funkce|Standard|Premium
+---|---|---
+Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
+CDN|Azure CDN, CDN třetí strany nebo síť CDN.|Azure CDN, CDN třetí strany nebo síť CDN.
+Fakturuje se poměrná hodnota| Každý den|Každý den
+Dynamické šifrování|Yes|Yes
+Dynamické balení|Yes|Yes
+Měřítko|Automatické škálování až na cílovou propustnost.|Další jednotky streamování.
+Filtrování IP/G20/vlastní hostitel <sup>1</sup>|Yes|Yes
+Progresivní stahování|Yes|Yes
+Doporučené použití |Doporučuje se pro velká většina scénářů streamování.|Profesionální použití. 
+
+<sup>1</sup> používá se jenom přímo na koncovém bodu streamování, když CDN není na koncovém bodu povolený.<br/>
+
+Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="migration-between-types"></a>Migrace mezi typy
+
+Z | Záměr | Akce
+---|---|---
+Classic|Standard|Musíte se přihlásit
+Klasický|Premium| Škálování (další jednotky streamování)
+Standard/Premium|Klasický|Není k dispozici (Pokud je verze koncového bodu streamování 1,0. Může se změnit na klasický s nastavením scaleunits na hodnotu 0).
+Standard (s/bez CDN)|Premium se stejnými konfiguracemi|Povoleno v **počátečním** stavu. (prostřednictvím Azure Portal)
+Premium (s/bez CDN)|Standard se stejnými konfiguracemi|Povoleno v **počátečním** stavu (prostřednictvím Azure Portal)
+Standard (s/bez CDN)|Premium s jinou konfigurací|Povoleno ve stavu **Zastaveno** (prostřednictvím Azure Portal). Není povoleno ve stavu spuštěno.
+Premium (s/bez CDN)|Standard s jinou konfigurací|Povoleno ve stavu **Zastaveno** (prostřednictvím Azure Portal). Není povoleno ve stavu spuštěno.
+Verze 1,0 s SU >= 1 s CDN|Standard/Premium bez CDN|Povoleno v **zastaveném** stavu. Není povoleno v **počátečním** stavu.
+Verze 1,0 s SU >= 1 s CDN|Standard s/bez CDN|Povoleno v **zastaveném** stavu. Není povoleno v **počátečním** stavu. Verze 1,0 CDN se odstraní a vytvoří nový a spustí se.
+Verze 1,0 s SU >= 1 s CDN|Premium s/bez CDN|Povoleno v **zastaveném** stavu. Není povoleno v **počátečním** stavu. Klasická síť CDN se odstraní a vytvoří nový a spustí se.
+
+
+
+
+
+
+
 ## <a name="streaming-endpoint-properties"></a>Vlastnosti koncového bodu streamování
 
 V této části jsou uvedeny podrobnosti o některých vlastnostech koncového bodu streamování. Příklady, jak vytvořit nový koncový bod streamování a popisy všech vlastností, najdete v tématu [koncový bod streamování](/rest/api/media/streamingendpoints/create).
@@ -83,7 +131,7 @@ V této části jsou uvedeny podrobnosti o některých vlastnostech koncového b
 - `crossSiteAccessPolicies`: Používá se k určení zásad přístupu mezi weby pro různé klienty. Další informace najdete v tématu [specifikace souborů zásad pro různé domény](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) a [zpřístupnění služby napříč hranicemi domén](/previous-versions/azure/azure-services/gg185950(v=azure.100)). Nastavení platí pouze pro Smooth Streaming.
 - `customHostNames`: Používá se ke konfiguraci koncového bodu streamování pro příjem provozu směrovaného na vlastní název hostitele. Tato vlastnost je platná pro koncové body streamování Standard a Premium a dá se nastavit, když `cdnEnabled` : false.
 
-    Vlastnictví názvu domény musí potvrdit Media Services. Media Services ověří vlastnictví názvu domény tím, že vyžaduje `CName` záznam obsahující Media Services ID účtu jako součást, která se má přidat do domény, která se používá. Například pro "sports.contoso.com", který se má použít jako název vlastního hostitele pro koncový bod streamování, musí být záznam pro, který `<accountId>.contoso.com` odkazuje na jeden z Media Services názvů hostitelů pro ověření. Název ověřovacího hostitele se skládá z verifydns. \<mediaservices-dns-zone> .
+    Vlastnictví názvu domény musí potvrdit Media Services. Media Services ověří vlastnictví názvu domény tím, že vyžaduje `CName` záznam obsahující Media Services ID účtu jako součást, která se má přidat do domény, která se používá. Například pro "sports.contoso.com", který se má použít jako název vlastního hostitele pro koncový bod streamování, musí být záznam pro, který `<accountId>.contoso.com` odkazuje na jeden z Media Services názvů hostitelů pro ověření. Název ověřovacího hostitele se skládá z verifydns. `\<mediaservices-dns-zone>` .
 
     Níže jsou uvedené očekávané zóny DNS, které se použijí v záznamu ověření pro různé oblasti Azure.
   

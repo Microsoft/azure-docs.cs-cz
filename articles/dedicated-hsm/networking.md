@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5365ba8c4fbc07c487dd40cfcdc9d566990c493c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91359150"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607033"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
 
@@ -84,6 +84,60 @@ U globálně distribuovaných aplikací nebo pro regionální scénáře převze
 > Globální partnerské vztahy virtuálních sítí nejsou v současné době k dispozici ve scénářích připojení pro různé oblasti s vyhrazeným HSM a měli byste místo toho použít službu VPN Gateway. 
 
 ![Diagram znázorňuje dvě oblasti, které jsou propojeny dvěma branami V P N. Každá oblast obsahuje partnerské virtuální sítě.](media/networking/global-vnet.png)
+
+## <a name="networking-restrictions"></a>Omezení sítě
+> [!NOTE]
+> Omezení vyhrazené služby HSM pomocí delegování podsítě je zavedená omezení, která by se měla vzít v úvahu při návrhu cílové síťové architektury pro nasazení HSM. Použití delegování podsítě znamená skupin zabezpečení sítě, udr a globální partnerský vztah virtuálních sítí není pro vyhrazený modul HSM podporován. Následující části poskytují nápovědu k alternativním technikům pro dosažení stejného nebo podobného výsledku pro tyto funkce. 
+
+Síťová karta HSM, která se nachází ve vyhrazené virtuální síti HSM, nemůže používat skupiny zabezpečení sítě ani trasy definované uživatelem. To znamená, že není možné nastavit zásady výchozího a odepření z hlediska vyhrazené virtuální sítě HSM a že jiné segmenty sítě musí být allowlisted, aby získaly přístup k vyhrazené službě HSM. 
+
+Přidání řešení proxy síťové virtuální zařízení (Network Virtual Spotřebičs) taky umožňuje logicky umístit síťové virtuální zařízení bránu firewall v centru přenosu/DMZ, aby bylo možné logicky umístit před síťovou kartu HSM a tím zajistit potřebnou alternativu pro skupin zabezpečení sítě a udr.
+
+### <a name="solution-architecture"></a>Architektura řešení
+Tento návrh sítě vyžaduje následující prvky:
+1.  Síť VNet průjezdu nebo DMZ centra s vrstvou proxy serveru síťové virtuální zařízení. V ideálním případě jsou k dispozici dvě nebo více síťová virtuální zařízení. 
+2.  Okruh ExpressRoute s povoleným privátním partnerským vztahem a připojení k virtuální síti centra přenosů.
+3.  Síť VNet peering mezi virtuální sítí centra přenosů a vyhrazenou virtuální sítí HSM.
+4.  Bránu firewall nebo Azure Firewall síťové virtuální zařízení můžete nasadit jako možnost DMZ služby v centru. 
+5.  Další úlohy virtuální sítě je možné navázat na síť virtuální sítě rozbočovače. Klient identita Gemalto může získat přístup k vyhrazené službě HSM prostřednictvím virtuální sítě centra.
+
+![Diagram znázorňuje virtuální síť centra DMZ s úrovní proxy serveru síťové virtuální zařízení pro NSG a UDR alternativní řešení.](media/networking/network-architecture.png)
+
+Vzhledem k tomu, že přidání řešení proxy serveru síťové virtuální zařízení umožňuje logicky umístit síťové virtuální ZAŘÍZENÍou bránu firewall do centra přenosu/DMZ, takže bude poskytovat potřebné zásady výchozího nastavení. V našem příkladu budeme pro tento účel používat Azure Firewall a bude potřeba, aby byly zavedeny následující prvky:
+1. Azure Firewall nasazené do podsítě "AzureFirewallSubnet" ve virtuální síti centra DMZ
+2. Směrovací tabulka s UDR, která směruje provoz směřující do privátního koncového bodu Azure interního nástroje do Azure Firewall. Tato směrovací tabulka se použije pro GatewaySubnet, kde se nachází virtuální brána Customer ExpressRoute.
+3. Pravidla zabezpečení sítě v rámci AzureFirewall, která umožňují předávání mezi důvěryhodným zdrojovým rozsahem a soukromým koncovým bodem Azure IBL naslouchá na portu TCP 1792. Tato logika zabezpečení přidá do vyhrazené služby HSM zásadu "výchozí zamítnutí". To znamená, že do vyhrazené služby HSM budou povoleny pouze důvěryhodné rozsahy IP adres. Všechny ostatní rozsahy budou zahozeny.  
+4. Směrovací tabulka s UDR, která směruje provoz do Prem do Azure Firewall. Tato směrovací tabulka se použije pro podsíť proxy serveru síťové virtuální zařízení. 
+5. NSG, který se použije pro podsíť proxy síťové virtuální zařízení pro důvěřování pouze rozsahu podsítě Azure Firewall jako zdroj, a povoluje předávání jenom pro přesměrování na IP adresu síťové karty HSM přes port TCP 1792. 
+
+> [!NOTE]
+> Vzhledem k tomu, že vrstva proxy serveru síťové virtuální zařízení bude SNAT IP adresou klienta v případě, že se předává síťovému adaptéru HSM, není mezi virtuální sítí HSM a virtuální sítí centra DMZ vyžadována žádná udr.  
+
+### <a name="alternative-to-udrs"></a>Alternativa k udr
+Výše zmíněné řešení úrovně síťové virtuální zařízení funguje jako alternativa k udr. Je potřeba si uvědomit několik důležitých bodů.
+1.  U síťové virtuální zařízení by měl být nakonfigurován překlad síťových adres, aby bylo možné správně směrovat přenosy vrácených dat.
+2. Zákazníci by měli zakázat nastavení IP adresy klienta v konfiguraci Luna HSM, aby používali VNA pro překlad adres (NAT). Následující příkazy Servce jako příklad.
+```
+Disable:
+[hsm01] lunash:>ntls ipcheck disable
+NTLS client source IP validation disabled
+Command Result : 0 (Success)
+
+Show:
+[hsm01] lunash:>ntls ipcheck show
+NTLS client source IP validation : Disable
+Command Result : 0 (Success)
+```
+3.  Nasaďte udr pro přenosy příchozích dat do vrstvy síťové virtuální zařízení. 
+4. V případě jednotlivých návrhů nebudou podsítě HSM iniciovat požadavek na odchozí připojení do vrstvy platformy.
+
+### <a name="alternative-to-using-global-vnet-peering"></a>Alternativa k použití globálních VNET Peering
+K dispozici je několik architektur, které můžete použít jako alternativu k globálním partnerským vztahům virtuální sítě.
+1.  Použití [připojení VPN Gateway VNet-to-vnet](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
+2.  Připojte virtuální síť HSM k jiné virtuální síti pomocí okruhu ER. To funguje nejlépe, když je vyžadována přímá místní cesta nebo virtuální síť VPN. 
+
+#### <a name="hsm-with-direct-express-route-connectivity"></a>HSM s přímým připojením Route Express
+![Diagram znázorňuje modul HARDWAROVÉho zabezpečení s přímým připojením tras.](media/networking/expressroute-connectivity.png)
 
 ## <a name="next-steps"></a>Další kroky
 

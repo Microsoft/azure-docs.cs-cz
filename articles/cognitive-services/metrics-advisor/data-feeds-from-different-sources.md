@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348615"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606143"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
 
-V tomto článku najdete nastavení a požadavky pro propojení různých typů zdrojů dat s poradcem pro metriky. Nezapomeňte si přečíst [svoje data](how-tos/onboard-your-data.md) a Naučte se, jak se naučit klíčové pojmy pro používání vašich dat pomocí Poradce metrik. 
+V tomto článku najdete nastavení a požadavky pro propojení různých typů zdrojů dat s poradcem pro metriky. Nezapomeňte si přečíst [svoje data](how-tos/onboard-your-data.md) a Naučte se, jak se naučit klíčové pojmy pro používání vašich dat pomocí Poradce metrik. \
 
 ## <a name="supported-authentication-types"></a>Podporované typy ověřování
 
@@ -51,7 +51,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 |[**MySQL**](#mysql) | Basic |
 |[**PostgreSQL**](#pgsql)| Basic|
 
-Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování vašich zdrojů dat. Následující oddíly určují parametry požadované pro *základní* ověřování. 
+Vytvořte entitu přihlašovacích údajů * * a použijte ji k ověřování vašich zdrojů dat. Následující oddíly určují parametry požadované pro *základní* ověřování. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Application Insights Azure</span>
 
@@ -159,7 +159,7 @@ Pro každý soubor JSON je povoleno pouze jedno časové razítko.
   * `%h` je hodina formátovaná jako `HH`
   * `%M` je minuta formátovaná jako `mm`
 
-V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Například:
+Služba Advisor v současnosti podporuje schéma dat v souborech JSON následujícím způsobem. Například:
 
 ``` JSON
 [
@@ -212,15 +212,14 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Table Storage Azure</span>
 
-* **Připojovací řetězec**: Přečtěte si téma [zobrazení a zkopírování připojovacího řetězce](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) , kde najdete informace o tom, jak načíst připojovací řetězec z Azure Table Storage.
+* **Připojovací řetězec**: vytvořte adresu URL (Shared Access Signature) a vyplňte ji tady. Nejjednodušší způsob, jak vygenerovat adresu URL SAS, je použití webu Azure Portal. Pomocí Azure Portal můžete grafiku orientovat. Pokud chcete vytvořit adresu URL SAS prostřednictvím Azure Portal, nejdřív přejděte do účtu úložiště, ke kterému chcete získat přístup v části nastavení, a pak klikněte na sdílený přístupový podpis. Zaškrtněte políčko alespoň tabulka a objekt a potom klikněte na tlačítko generovat SAS a připojovací řetězec. Adresa URL Table service SAS je to, co potřebujete ke zkopírování a vyplnění v textovém poli v pracovním prostoru Poradce pro metriky.
 
 * **Název tabulky**: Určete tabulku, u které se má dotazovat. Tato možnost je k dispozici ve vaší instanci účtu Azure Storage. V části **služba Table Service** klikněte na **tabulka** .
 
-* **Dotaz na** V dotazu můžete použít `@StartTime` . `@StartTime` je nahrazen řetězcem formátu RRRR-MM-ddTHH: mm: ss ve skriptu.
+* **Dotaz na** V dotazu můžete použít `@StartTime` . `@StartTime` je nahrazen řetězcem formátu RRRR-MM-ddTHH: mm: ss ve skriptu. Tip: pomocí Průzkumníka služby Azure Storage vytvořte dotaz s určitým časovým rozsahem a ujistěte se, že je spuštěný v pořádku, a pak proveďte nahrazení.
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>

@@ -1,25 +1,25 @@
 ---
 title: Konfigurace parametrů – Azure Database for PostgreSQL-flexibilní Server
 description: Tento článek popisuje, jak nakonfigurovat parametry Postgres v Azure Database for PostgreSQL-flexibilním serveru pomocí Azure CLI.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 315e4439ca66a3fbadac228c013797f516bc2940
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90936774"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605760"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>Přizpůsobení parametrů serveru pro Azure Database for PostgreSQL-flexibilní Server pomocí Azure CLI
 
 Můžete vypsat, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina parametrů modulu je vystavena na úrovni serveru a lze ji upravit. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Vytvoření serveru a databáze Azure Database for PostgreSQL pomocí následujících kroků vytvořte [Azure Database for PostgreSQL](quickstart-create-server-cli.md)

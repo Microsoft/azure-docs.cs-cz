@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 7796b94609a9be05fdb72900d0725747440f8042
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582233"
+ms.locfileid: "105609432"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -74,7 +74,7 @@ Tato funkce je plně podporovaná pro aplikace pro Windows i Linux, včetně [vl
 
 ### <a name="service-endpoints"></a>Koncové body služby
 
-Místní integrace virtuální sítě umožňuje používat koncové body služby. Základní kroky pro přístup ke službě z vaší aplikace prostřednictvím koncových bodů služby jsou následující:
+Místní integrace virtuální sítě umožňuje přístup ke službám Azure, které jsou zabezpečené pomocí koncových bodů služby. Chcete-li získat přístup ke službě zabezpečeného koncovému bodu služby, je nutné provést následující akce:
 
 1. Nakonfigurujte místní integraci virtuální sítě s vaší webovou aplikací tak, aby se připojovala k určité podsíti pro integraci.
 1. Přejít na cílovou službu a nakonfigurovat koncové body služby proti podsíti Integration.
@@ -101,9 +101,6 @@ Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stej
 1. `WEBSITE_VNET_ROUTE_ALL` s hodnotou `1`
 
 Tato nastavení odesílají všechna odchozí volání z vaší aplikace do vaší virtuální sítě a umožňují vaší aplikaci přístup k Azure DNS privátní zóně. Pomocí těchto nastavení může vaše aplikace používat Azure DNS dotazem na soukromou zónu DNS na úrovni pracovního procesu.  
-
-> [!NOTE]
-> Při pokusu o přidání vlastní domény do webové aplikace pomocí privátní zóny DNS není možné použít Integrace virtuální sítě. Vlastní ověření domény se provádí na úrovni kontroleru, nikoli na úrovni pracovního procesu, což brání tomu, aby se záznamy DNS zobrazily. Pokud chcete použít vlastní doménu z privátní zóny DNS, musíte obejít ověřování pomocí [Application Gateway](../articles/app-service/networking/app-gateway-with-service-endpoints.md) nebo [interního nástroje App Service Environment](../articles/app-service/environment/create-ilb-ase.md).
 
 ### <a name="private-endpoints"></a>Privátní koncové body
 

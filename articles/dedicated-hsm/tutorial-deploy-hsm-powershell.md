@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108581"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606874"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – nasazení HSM do existující virtuální sítě pomocí prostředí PowerShell
 
@@ -38,7 +38,7 @@ Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz pod
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v Azure Portal aktuálně k dispozici, takže veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete PowerShell v Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](/powershell/azure/get-started-azureps).
 
@@ -68,7 +68,7 @@ Příkaz by měl vrátit stav "registrováno" (jak je vidět níže), než budet
 
 ### <a name="creating-hsm-resources"></a>Vytváření prostředků HSM
 
-Zařízení HSM se zřídí do virtuální sítě zákazníků. To předpokládá požadavek na podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru identita Gemalto potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici kontaktováním společnosti Microsoft přímo na adrese HSMrequest@Microsoft.com .
+Zařízení HSM se zřídí do virtuální sítě zákazníků. To předpokládá požadavek na podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru Thales potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici kontaktováním společnosti Microsoft přímo na adrese HSMrequest@Microsoft.com .
 
 Jakmile budete mít soubory, musíte upravit soubor parametrů a vložit tak preferované názvy prostředků. To znamená, že se upravují řádky s hodnotou:.
 
@@ -235,14 +235,14 @@ Výstup by měl vypadat jako obrázek uvedený níže:
 
 ![Snímek obrazovky, který zobrazuje výstup z příkazu HSM show.](media/tutorial-deploy-hsm-powershell/output.png)
 
-V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v tématu Identita Gemalto Luna Network HSM 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z identita Gemalto ke stažení, jakmile se zaregistrujete na portálu zákaznické podpory identita Gemalto a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
+V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v příručce pro správu HSM Thales Luna 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z Thales ke stažení, jakmile se zaregistrujete na [portálu zákaznické podpory Thales](https://supportportal.thalesgroup.com/csm) a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
 
 ## <a name="delete-or-clean-up-resources"></a>Odstranění nebo vyčištění prostředků
 
 Pokud jste hotovi s pouze zařízením HSM, pak ho můžete odstranit jako prostředek a vrátit se do bezplatného fondu. Zjevné obavy při tom, že se jedná o veškerá citlivá zákaznická data, která jsou na zařízení. Nejlepším způsobem, jak "zeroize", zařízení je získat heslo správce HSM nesprávně třikrát (Poznámka: Toto není správce zařízení, je to skutečný správce HSM). Jako bezpečnostní opatření k ochraně klíčových materiálů se zařízení nedá odstranit jako prostředek Azure, dokud nebude v nenulovém stavu.
 
 > [!NOTE]
-> Pokud máte problém s libovolnou konfigurací zařízení identita Gemalto, měli byste kontaktovat [zákaznickou podporu identita Gemalto](https://safenet.gemalto.com/technical-support/).
+> Pokud máte problém s libovolnou konfigurací zařízení Thales, měli byste kontaktovat [zákaznickou podporu Thales](https://supportportal.thalesgroup.com/csm).
 
 Pokud chcete odebrat prostředek HSM v Azure, můžete použít následující příkaz, který nahradí proměnné "$" pomocí jedinečných parametrů:
 

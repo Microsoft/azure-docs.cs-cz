@@ -1,17 +1,17 @@
 ---
 title: Knihovny připojení – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje několik knihoven a ovladačů, které můžete použít při kódování aplikací pro připojení a dotazování Azure Database for PostgreSQL-Single server.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e182ef6c5fb7bf1b76424fffdbc862775e93e29c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91704306"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606296"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Knihovny připojení pro Azure Database for PostgreSQL – jeden server
 Tento článek obsahuje seznam knihoven a ovladačů, které můžou vývojáři použít k vývoji aplikací pro připojení k Azure Database for PostgreSQL a dotazování na ně.

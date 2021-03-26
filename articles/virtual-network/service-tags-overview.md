@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 472b0d2886d9177c6507c84d5a8b6da6e99e65e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597959"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607112"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
 
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě.
 
-Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](./network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby, jako je například **ApiManagement**, v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](./network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby, jako je například **ApiManagement**, v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. 
+
+> [!NOTE] 
+> Od března 2021 můžete také používat značky služby místo explicitních rozsahů IP adres v [trasách definovaných uživatelem](./virtual-networks-udr-overview.md). Tato funkce je v současné době ve verzi Public Preview. 
 
 Pomocí značek služeb můžete zajistit izolaci sítě a chránit prostředky Azure před obecným internetem při přístupu ke službám Azure, které mají veřejné koncové body. Vytvořte pravidla skupiny zabezpečení příchozích a odchozích sítí pro zamítnutí provozu do a z **Internetu** a umožněte přenos do/z **AzureCloud** nebo jiných [dostupných značek služeb](#available-service-tags) pro konkrétní služby Azure.
 

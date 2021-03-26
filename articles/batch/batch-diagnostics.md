@@ -2,22 +2,24 @@
 title: Metriky, výstrahy a diagnostické protokoly
 description: Zaznamenává a analyzuje události diagnostického protokolu pro prostředky Azure Batch účtů, jako jsou fondy a úkoly.
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22fdf00b6e144e022f955aed6fd24b7a6bcb7300
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592672"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606024"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
 
-Tento článek vysvětluje, jak monitorovat účet Batch pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [metriky](../azure-monitor/essentials/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md) pro prostředky v účtu Batch. Shromažďovat a spotřebovávat tato data různými způsoby, jak monitorovat účet Batch a diagnostikovat problémy. Můžete také nakonfigurovat [Upozornění na metriky](../azure-monitor/alerts/alerts-overview.md) , abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
+Azure Monitor shromažďuje [metriky](../azure-monitor/essentials/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md) pro prostředky v účtu Azure Batch.
+
+Tato data můžete shromažďovat a spotřebovávat různými způsoby, jak monitorovat účet Batch a diagnostikovat problémy. Můžete také nakonfigurovat [Upozornění na metriky](../azure-monitor/alerts/alerts-overview.md) , abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
 
 ## <a name="batch-metrics"></a>Metriky dávky
 
-Metriky jsou data telemetrie Azure (označují se taky jako čítače výkonu), která vycházejí z vašich prostředků Azure a jsou využívaná službou Azure Monitor. Příklady metrik v účtu Batch jsou události vytvoření fondu, Low-Priority počet uzlů a události dokončení úlohy.
+[Metriky](../azure-monitor/essentials/data-platform-metrics.md)  jsou data telemetrie Azure (označují se taky jako čítače výkonu), která vycházejí z vašich prostředků Azure a jsou využívaná službou Azure monitor. Příklady metrik v účtu Batch jsou události vytvoření fondu, Low-Priority počet uzlů a události dokončení úlohy. Tyto metriky vám pomůžou identifikovat trendy a dají se použít k analýze dat.
 
 Podívejte se na [seznam podporovaných metrik dávky](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -29,59 +31,54 @@ Metriky jsou:
 
 ## <a name="view-batch-metrics"></a>Zobrazit metriky dávky
 
-V Azure Portal zobrazí stránka **Přehled** pro účet ve výchozím nastavení metriky klíčového uzlu, jádra a úlohy.
+V Azure Portal zobrazí stránka **Přehled** pro účet Batch ve výchozím nastavení metriky pro klíčový uzel, jádro a úlohu.
 
-Zobrazení všech metrik účtu Batch v Azure Portal:
+Zobrazení dalších metrik pro účet Batch:
 
 1. V Azure Portal vyberte **všechny služby**  >  **účty Batch** a potom vyberte název účtu Batch.
-2. V oblasti **Monitorování** vyberte **Metriky**.
-3. Vyberte **Přidat metriku** a potom vyberte metriku v rozevíracím seznamu.
-4. Vyberte možnost **agregace** pro metriku. Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte **průměrnou** agregaci. Pro metriky založené na událostech (jako je "Změna velikosti fondu na události") použijte agregaci **Count (počet** dokončených událostí).
+1. V oblasti **Monitorování** vyberte **Metriky**.
+1. Vyberte **Přidat metriku** a potom vyberte metriku v rozevíracím seznamu.
+1. Vyberte možnost **agregace** pro metriku. Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte **průměrnou** agregaci. Pro metriky založené na událostech (jako je "Změna velikosti fondu na události") použijte agregaci **Count (počet** dokončených událostí). Vyhněte se použití agregace **Sum** , která přidá hodnoty všech datových bodů přijatých za období grafu.
+1. Pokud chcete přidat další metriky, opakujte kroky 3 a 4.
 
-   > [!WARNING]
-   > Nepoužívejte agregaci Sum, která přidá hodnoty všech datových bodů přijatých za období grafu.
+Metriky můžete také programově načíst pomocí rozhraní API Azure Monitor. Příklad najdete v tématu [načtení metrik Azure monitor pomocí .NET](/samples/azure-samples/monitor-dotnet-metrics-api/monitor-dotnet-metrics-api/).
 
-5. Pokud chcete přidat další metriky, opakujte kroky 3 a 4.
-
-Metriky můžete také programově načíst pomocí rozhraní API Azure Monitor. Příklad najdete v tématu [načtení metrik Azure monitor pomocí .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
-
-### <a name="batch-metric-reliability"></a>Spolehlivost metriky dávky
-
-Metriky můžou identifikovat trendy a můžou se použít k analýze dat. Je důležité si uvědomit, že doručení metriky není zaručené a může být vystavené doručování, ztrátám dat a/nebo duplicitám. Z tohoto důvodu se nedoporučuje použití jednoduchých událostí na výstrahy nebo aktivační funkce. Další informace o tom, jak nastavit prahové hodnoty pro upozorňování, najdete v další části.
-
-Metriky vygenerované za poslední 3 minuty mohou být stále agregovány, takže hodnoty metriky mohou být během tohoto časového období v sestavách.
+> [!NOTE]
+> Metriky emitované za poslední 3 minuty můžou být i nadále agregovány, takže hodnoty mohou být hlášeny během tohoto časového období. Doručení metriky není zaručené a může být ovlivněno doručením mimo pořadí, ztrátou dat nebo duplicitami.
 
 ## <a name="batch-metric-alerts"></a>Výstrahy metriky dávky
 
-Můžete nakonfigurovat *výstrahy metriky* téměř v reálném čase, které se aktivují, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte. Výstraha vygeneruje oznámení v případě, že je výstraha "aktivována" (při překročení prahové hodnoty a při splnění podmínky upozornění) a také v případě, že se jedná o "Vyřešený" (Pokud se prahová hodnota opakuje a podmínka již není splněna).
+Můžete nakonfigurovat výstrahy metriky téměř v reálném čase, které se aktivují, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte. Výstraha vygeneruje oznámení v případě, že je výstraha "aktivována" (při překročení prahové hodnoty a při splnění podmínky upozornění) a také v případě, že se jedná o "Vyřešený" (Pokud se prahová hodnota opakuje a podmínka již není splněna).
 
-Výstrahy, které se aktivují v jednom datovém bodě, se nedoporučují, protože metriky podléhají doručování, ztrátě dat a duplicitám při neurčitém pořadí. Při vytváření výstrah můžete pro tyto nekonzistence použít prahové hodnoty.
+Vzhledem k tomu, že doručení metriky může podléhat nekonzistencím, jako je například doručení mimo pořadí, ztráty dat nebo duplikování, doporučujeme vyhnout se výstrahám, které se aktivují v jednom datovém bodě. Místo toho použijte prahové hodnoty k vytvoření jakýchkoli nekonzistencí, jako je například doručení mimo pořadí, ztráty dat a duplikace v časovém intervalu.
 
-Můžete například chtít nakonfigurovat výstrahu metriky, když počet jader s nízkou prioritou spadá na určitou úroveň, abyste mohli upravit složení fondů. Pro dosažení nejlepších výsledků nastavte období 10 nebo více minut, kde se aktivují výstrahy, pokud průměrný počet jader s nízkou prioritou klesne pod prahovou hodnotu pro celé období. Díky tomu je možné metrikám agregovat více času, abyste získali přesnější výsledky.
+Můžete například chtít nakonfigurovat výstrahu metriky, když počet jader s nízkou prioritou spadá na určitou úroveň, abyste mohli upravit složení fondů. Nejlepších výsledků dosáhnete, když nastavíte období 10 nebo více minut, kde se aktivuje výstraha, pokud průměrný počet jader s nízkou prioritou klesne pod prahovou hodnotu pro celé období. To umožňuje agregované metriky, abyste získali přesnější výsledky.
 
 Postup konfigurace výstrahy metriky v Azure Portal:
 
 1. Vyberte **všechny služby**  >  **Batch účty** a potom vyberte název účtu Batch.
-2. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
-3. Klikněte na **vybrat podmínku** a pak vyberte metriku. Potvrďte hodnoty pro **periodu grafu**, **Typ prahové** hodnoty, **operátora** a **typ agregace** a zadejte **prahovou hodnotu**. Potom vyberte **Done** (Hotovo).
-4. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-5. V části **Podrobnosti pravidla výstrahy** zadejte název a popis **pravidla upozornění** a vyberte  **závažnost** .
-6. Vyberte **Vytvořit pravidlo upozornění**.
+1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
+1. Vyberte **Přidat podmínku** a pak vyberte metriku.
+1. Vyberte požadované hodnoty pro **období grafu**, **prahovou hodnotu**, **operátora** a **typ agregace**.
+1. Zadejte **prahovou hodnotu** a vyberte **jednotku** pro prahovou hodnotu.  Potom vyberte **Done** (Hotovo).
+1. Přidejte [skupinu akcí](../azure-monitor/alerts/action-groups.md) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+1. V části **Podrobnosti pravidla výstrahy** zadejte název a **Popis** **pravidla výstrahy** . Pokud chcete výstrahu povolit okamžitě, ujistěte se, že je zaškrtnuté políčko **Povolit pravidlo výstrahy po vytvoření** .
+1. Vyberte **Vytvořit pravidlo upozornění**.
 
 Další informace o vytváření výstrah metrik najdete v tématu [vysvětlení, jak výstrahy metrik fungují v Azure monitor](../azure-monitor/alerts/alerts-metric-overview.md) a [vytváření, zobrazování a správa výstrah metrik pomocí Azure monitor](../azure-monitor/alerts/alerts-metric.md).
 
-Můžete také nakonfigurovat upozornění téměř v reálném čase pomocí [REST API](/rest/api/monitor/)Azure monitor. Další informace najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/alerts/alerts-overview.md). Pokud chcete do upozornění zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si informace o vyhledávacích dotazech v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
+Můžete také nakonfigurovat upozornění téměř v reálném čase pomocí [REST API Azure monitor](/rest/api/monitor/). Další informace najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/alerts/alerts-overview.md). Pokud chcete do upozornění zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si téma [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="batch-diagnostics"></a>Diagnostika služby Batch
 
-Diagnostické protokoly obsahují informace vydávané prostředky Azure, které popisují operace každého prostředku. V případě služby Batch můžete shromažďovat následující protokoly:
+[Diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md) obsahují informace vydávané prostředky Azure, které popisují operace každého prostředku. V případě služby Batch můžete shromažďovat následující protokoly:
 
-- **Služba protokoluje** události generované službou Azure Batch během doby životnosti jednotlivých prostředků služby Batch, jako je fond nebo úloha.
-- **Metriky** se protokolují na úrovni účtu.
+- **ServiceLog**: [události vydávané službou Batch](#service-log-events) během životnosti jednotlivého prostředku, jako je například fond nebo úloha.
+- **AllMetrics**: metriky na úrovni účtu Batch.
 
-Nastavení pro povolení shromažďování diagnostických protokolů není ve výchozím nastavení povolené. Explicitně povolte nastavení diagnostiky pro každý účet Batch, který chcete monitorovat.
+Musíte explicitně povolit nastavení diagnostiky pro každý účet Batch, který chcete monitorovat.
 
-### <a name="log-destinations"></a>Cíle protokolu
+### <a name="log-destination-options"></a>Možnosti cílového umístění protokolu
 
 Běžným scénářem je výběr účtu Azure Storage jako cíle protokolu. Chcete-li ukládat protokoly v Azure Storage, vytvořte účet před povolením shromažďování protokolů. Pokud jste k účtu Batch přihlásili účet úložiště, můžete tento účet zvolit jako cíl protokolu.
 
@@ -101,15 +98,15 @@ Chcete-li vytvořit nové nastavení diagnostiky v Azure Portal, postupujte podl
 2. V části **Monitorování** vyberte **Nastavení diagnostiky**.
 3. V **nastavení diagnostiky** vyberte **Přidat nastavení diagnostiky**.
 4. Zadejte název nastavení.
-5. Vyberte cíl: **odeslat Log Analytics**, **archivovat do účtu úložiště** nebo **Stream do centra událostí**. Pokud vyberete účet úložiště, můžete volitelně nastavit zásady uchovávání informací. Pokud nezadáte počet dní pro uchování, data se zachovají během životnosti účtu úložiště.
+5. Vyberte cíl: **odeslat Log Analytics**, **archivovat do účtu úložiště** nebo **Stream do centra událostí**. Pokud vyberete účet úložiště, můžete volitelně vybrat počet dní, po které se mají data pro každý protokol uchovávat. Pokud nezadáte počet dní pro uchování, data se zachovají během životnosti účtu úložiště.
 6. Vyberte **ServiceLog**, **AllMetrics** nebo obojí.
 7. Vyberte **Save (Uložit** ) a vytvořte nastavení diagnostiky.
 
-Můžete také [Povolit shromažďování prostřednictvím Azure monitor v Azure Portal](../azure-monitor/essentials/diagnostic-settings.md) ke konfiguraci nastavení diagnostiky, pomocí [šablony Správce prostředků](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/essentials/platform-logs-overview.md).
+Shromažďování protokolů můžete povolit také [vytvořením nastavení diagnostiky v Azure Portal](../azure-monitor/essentials/diagnostic-settings.md), pomocí [Správce prostředků šablony](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Přístup k diagnostickým protokolům v úložišti
 
-Pokud archivujete diagnostické protokoly služby Batch v účtu úložiště, vytvoří se v účtu úložiště kontejner úložiště hned po výskytu související události. Objekty BLOB se vytvářejí podle následujícího vzoru názvů:
+Pokud [archivujete diagnostické protokoly služby Batch v účtu úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage), vytvoří se v účtu úložiště kontejner úložiště hned po výskytu související události. Objekty BLOB se vytvářejí podle následujícího vzoru názvů:
 
 ```json
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
@@ -135,11 +132,11 @@ Níže je uveden příklad `PoolResizeCompleteEvent` položky v `PT1H.json` soub
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Další informace o schématu diagnostických protokolů v účtu úložiště najdete v tématu [archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Pokud chcete získat přístup k protokolům v účtu úložiště programově, použijte rozhraní API pro úložiště.
+Pokud chcete získat přístup k protokolům v účtu úložiště programově, použijte rozhraní API pro úložiště.
 
 ### <a name="service-log-events"></a>Události protokolu služby
 
-Protokoly služby Azure Batch, pokud jsou shromažďovány, obsahují události vydávané službou Azure Batch během životnosti jednotlivého prostředku služby Batch, jako je například fond nebo úloha. Každá událost generovaná dávkou je protokolována ve formátu JSON. Jedná se například o tělo **události vytvoření** ukázkového fondu:
+Protokoly Azure Batch služby obsahují události vydávané službou Batch během životnosti jednotlivého prostředku služby Batch, jako je například fond nebo úloha. Každá událost generovaná dávkou je protokolována ve formátu JSON. Jedná se například o tělo **události vytvoření** ukázkového fondu:
 
 ```json
 {

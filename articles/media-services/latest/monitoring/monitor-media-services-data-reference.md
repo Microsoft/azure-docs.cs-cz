@@ -6,17 +6,18 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598180"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609084"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referenční informace o Media Services dat monitorování
 
-Tento článek se zabývá daty, která jsou užitečná pro monitorování Media Services. Další informace o všech metrikách platforem podporovaných v Azure Monitor najdete v [Azure monitor podporované metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+Tento článek se zabývá daty, která jsou užitečná pro monitorování Media Services. Další informace o všech metrikách platforem podporovaných v Azure Monitor najdete v [Azure monitor podporované metriky](../../../azure-monitor/essentials/metrics-supported.md).
 
 ## <a name="media-services-metrics"></a>Media Services metriky
 
@@ -59,7 +60,7 @@ Jsou podporovány následující Media Services metriky [koncových bodů stream
 
 ## <a name="metric-dimensions"></a>Dimenze metriky
 
-Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 <!--**PLACEHOLDER** for dimensions table.-->
 
@@ -67,7 +68,7 @@ Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidime
 
 ## <a name="media-services-diagnostic-logs"></a>Protokoly diagnostiky Media Services
 
-Diagnostické protokoly poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md).
+Diagnostické protokoly poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 Media Services podporuje následující diagnostické protokoly:
 
@@ -81,7 +82,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ## <a name="schemas"></a>Schémata
 
-Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs-schema.md).
+Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema-properties"></a>Vlastnosti schématu protokolu doručení klíčů
 

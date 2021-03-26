@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6ec616047a99465bace0b401f659765e4399634b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108382"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604562"
 ---
 # <a name="voice-and-video-concepts"></a>Koncepce hlasových hovorů a videohovorů
 
@@ -48,10 +48,6 @@ Podporujeme H. 264 (MPEG-4).
 
 ### <a name="video-quality"></a>Kvalita videa
 V nativních sadách (iOS, Android) SDK podporujeme až v plném rozsahu HD 1080p. Pro web (JS) SDK podporujeme Standard HD 720p. Kvalita závisí na dostupné šířce pásma.
-
-### <a name="rooms-concept"></a>Koncept místností
-Místnosti jsou sadou rozhraní API a sad SDK, které vám umožňují snadno přidat zvuk, video, sdílení obrazovky, veřejné servery a interakce služby SMS na váš web nebo nativní aplikaci.
-V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můžete vytvořit tolik ID skupin, kolik potřebujete, a oddělit uživatele podle "místností". Přesunutím do popředí zavedete více ovládacích prvků kolem "místností".
 
 ## <a name="next-steps"></a>Další kroky
 
