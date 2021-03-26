@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62767898b52ef9d8c0a61fb5025dc59d06a00bd5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438979"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568184"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Řešení potíží na zařízení GPU Azure Stack Edge pro 
 
@@ -144,9 +144,9 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 |------------|-----------------|
 |Běžné problémy|<li>[Ověřte, že hraniční zařízení je správně nakonfigurované](#verify-the-device-is-configured-properly).<li> [Ověřte, že je klient správně nakonfigurovaný.](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: při odesílání žádosti došlo k chybě.<br>Na řádku: 1 znak: 1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe ...|Tato chyba znamená, že vaše zařízení Azure Stack Edge pro je nedosažitelné nebo správně nakonfigurované. Ověřte, zda hraniční zařízení a klient jsou správně nakonfigurovány. Pokyny najdete v řádku **Obecné problémy** v této tabulce.|
-|Služba vrátila chybu. Další podrobnosti naleznete u vlastnosti InnerException: základní připojení bylo ukončeno: nelze vytvořit vztah důvěryhodnosti pro zabezpečený kanál SSL/TLS. |   Tato chyba je pravděpodobně způsobena tím, že jedna nebo více kroků vlastního certifikátu byly nesprávně provedeny. [Tady](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)najdete pokyny. |
+|Služba vrátila chybu. Další podrobnosti naleznete u vlastnosti InnerException: základní připojení bylo ukončeno: nelze vytvořit vztah důvěryhodnosti pro zabezpečený kanál SSL/TLS. |   Tato chyba je pravděpodobně způsobena tím, že jedna nebo více kroků vlastního certifikátu byly nesprávně provedeny. [Tady](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)najdete pokyny. |
 |Operace vrátila neplatný stavový kód ServiceUnavailable. <br> Stavový kód odpovědi neindikuje úspěch: 503 (služba není k dispozici). | Tato chyba by mohla být výsledkem kterékoli z těchto podmínek.<li>ArmStsPool je v zastaveném stavu.</li><li>Některý z webů Azure Resource Manager/Security token Services je mimo provoz.</li><li>Prostředek clusteru Azure Resource Manager nefunguje.</li><br><strong>Poznámka:</strong> Restartování zařízení může problém vyřešit, ale měli byste shromáždit balíček podpory, abyste ho mohli dále ladit.|
-|AADSTS50126: neplatné uživatelské jméno nebo heslo.<br>ID trasování: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>ID korelace: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Časové razítko: 2019-11-15 09:21:57Z: vzdálený server vrátil chybu: (400) chybný požadavek.<br>Na řádku: 1 znak: 1 |Tato chyba by mohla být výsledkem kterékoli z těchto podmínek.<li>V případě neplatného uživatelského jména a hesla ověřte, že zákazník změnil heslo z Azure Portal pomocí následujících [kroků a potom](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) pomocí správného hesla.<li>Pro neplatné ID tenanta je ID tenanta pevný identifikátor GUID a měl by být nastavený na. `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: neplatné uživatelské jméno nebo heslo.<br>ID trasování: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>ID korelace: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Časové razítko: 2019-11-15 09:21:57Z: vzdálený server vrátil chybu: (400) chybný požadavek.<br>Na řádku: 1 znak: 1 |Tato chyba by mohla být výsledkem kterékoli z těchto podmínek.<li>V případě neplatného uživatelského jména a hesla ověřte, že zákazník změnil heslo z Azure Portal pomocí následujících [kroků a potom](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) pomocí správného hesla.<li>Pro neplatné ID tenanta je ID tenanta pevný identifikátor GUID a měl by být nastavený na. `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |Connect-AzureRmAccount: AADSTS90056: prostředek je zakázaný nebo neexistuje. Zkontrolujte kód vaší aplikace a ujistěte se, že jste zadali přesnou adresu URL prostředku pro prostředek, ke kterému se pokoušíte získat přístup.<br>ID trasování: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>ID korelace: 75c8ef5a-830e-48b5-b039-595a96488ff9 časové razítko: 2019-11-18 07:00:51Z: vzdálený server vrátil chybu: (400) Bad |Koncové body prostředků použité v `Add-AzureRmEnvironment` příkazu nejsou správné.|
 |Nepovedlo se získat koncové body z cloudu.<br>Ujistěte se prosím, že máte síťové připojení. Podrobnosti o chybě: HTTPSConnectionPool (host = ' Management. dbg-of4k6suvm.microsoftdatabox.com ', port = 30005): maximální počet opakovaných pokusů je překročen s adresou URL:/metadata/Endpoints? API-Version = 2015-01-01 (způsobená SSLError (SSLError ("chybná Metoda handshake: Error ([" rutiny SSL "," tls_process_server_certificate "," ověření certifikátu se nezdařilo ")],) |Tato chyba se objevuje hlavně v prostředí Mac/Linux a je způsobená následujícími problémy:<li>Do úložiště certifikátů Pythonu se nepřidal certifikát formátu PEM.</li> |
 
@@ -154,7 +154,7 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 
 1. Z místního uživatelského rozhraní ověřte, zda je správně nakonfigurována síť zařízení.
 
-2. Ověřte, jestli jsou certifikáty aktualizované pro všechny koncové body, jak je uvedeno [tady](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
+2. Ověřte, jestli jsou certifikáty aktualizované pro všechny koncové body, jak je uvedeno [tady](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates).
 
 3. Získejte Azure Resource Manager koncový bod pro správu a přihlášení ze stránky **zařízení** v místním uživatelském rozhraní.
 
@@ -163,18 +163,18 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 
 ### <a name="verify-the-client-is-configured-properly"></a>Ověřte, že je klient správně nakonfigurovaný.
 
-1. Ověřte, jestli je nainstalovaná správná verze prostředí PowerShell, jak je uvedeno [zde](azure-stack-edge-j-series-connect-resource-manager.md#step-3-install-powershell-on-the-client).
+1. Ověřte, jestli je nainstalovaná správná verze prostředí PowerShell, jak je uvedeno [zde](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client).
 
-2. Ověřte, že jsou nainstalované správné moduly PowerShellu, jak je uvedeno [tady](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
+2. Ověřte, že jsou nainstalované správné moduly PowerShellu, jak je uvedeno [tady](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
 3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Například:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
    
-   Pokud nejsou dostupné, přidejte sem položky DNS/host souboru, jak je uvedeno [zde](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution).
+   Pokud nejsou dostupné, přidejte sem položky DNS/host souboru, jak je uvedeno [zde](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution).
    
-4. Ověřte, že jsou nainstalované klientské certifikáty, jak je uvedeno [zde](azure-stack-edge-j-series-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell).
+4. Ověřte, že jsou nainstalované klientské certifikáty, jak je uvedeno [zde](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell).
 
 5. Pokud zákazník používá PowerShell, měli byste povolit předvolby ladění, aby se zobrazily podrobné zprávy spuštěním tohoto příkazu PowerShellu. 
 

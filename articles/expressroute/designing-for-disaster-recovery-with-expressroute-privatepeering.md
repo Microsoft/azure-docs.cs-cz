@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044596"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562303"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
@@ -43,11 +43,11 @@ Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paraleln
 
 ### <a name="same-metro"></a>Stejné Metro
 
-Při použití stejného Metro byste měli použít sekundární umístění pro druhou cestu, aby tato konfigurace fungovala. Příklad stejného typu Metro by byl *Amsterdam* a *Amsterdam2*. Výhodou výběru stejné Metro je, když dojde k převzetí služeb při selhání, koncová latence mezi vašimi místními aplikacemi a Microsoftem zůstane stejná. Pokud však dojde k přirozené havárii, připojení pro obě cesty již nemusí být k dispozici. 
+[Řada METROS](expressroute-locations-providers.md#global-commercial-azure) má dvě umístění ExpressRoute. Příkladem může být *Amsterdam* a *Amsterdam2*. Při navrhování redundance můžete do Azure vytvořit dvě paralelní cesty s oběma umístěními ve stejné metrice. Výhodou tohoto návrhu je, že když dojde k převzetí služeb při selhání, koncová latence mezi vašimi místními aplikacemi a Microsoftem je přibližně stejná. Pokud však dojde k přirozené havárii, jako je například zemětřesení, připojení pro obě cesty již nemusí být k dispozici.
 
 ### <a name="different-metros"></a>Různé METROS
 
-Při použití různých METROS pro okruhy Standard SKU by mělo být sekundární umístění ve stejné [geografické oblasti](expressroute-locations-providers.md#locations). Pokud chcete vybrat umístění mimo geografickou politickou oblast, budete muset pro oba okruhy v paralelních cestách použít SKU úrovně Premium. Výhodou této konfigurace je pravděpodobnost, že výpadek na obě odkazy je mnohem nižší, ale za cenu zvýšení latence na konci.
+Při použití různých METROS pro redundanci by mělo být sekundární umístění ve stejné [geografické oblasti](expressroute-locations-providers.md#locations). Pokud chcete vybrat umístění mimo geografickou politickou oblast, budete muset pro oba okruhy v paralelních cestách použít SKU úrovně Premium. Výhodou této konfigurace je pravděpodobnost, že výpadek na obě odkazy je mnohem nižší, ale za cenu zvýšení latence na konci.
 
 V tomto článku se podíváme na to, jak řešit problémy, které se můžou při konfiguraci geograficky redundantních cest stát.
 

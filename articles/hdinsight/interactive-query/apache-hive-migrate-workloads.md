@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742190"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566066"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -71,7 +71,7 @@ Tento krok používá [`Hive Schema Tool`](https://cwiki.apache.org/confluence/d
     > [!NOTE]
     > Tento nástroj používá klienta `beeline` ke spouštění skriptů SQL v `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` .
     >
-    > Syntaxe SQL není v těchto skriptech nutně kompatibilní s jinými nástroji klienta. Například [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [Editor dotazů na webu Azure Portal](../../azure-sql/database/connect-query-portal.md) vyžadují klíčové slovo `GO` za každým příkazem.
+    > Syntaxe SQL není v těchto skriptech nutně kompatibilní s jinými nástroji klienta. Například [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) a [Editor dotazů na webu Azure Portal](../../azure-sql/database/connect-query-portal.md) vyžadují klíčové slovo `GO` za každým příkazem.
     >
     > Pokud se nějaký skript nepovede kvůli kapacitě prostředků nebo časovým limitům transakce, nahorizontální navýšení kapacity SQL Database.
 

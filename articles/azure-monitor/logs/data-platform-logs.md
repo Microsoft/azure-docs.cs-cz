@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707995"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567286"
 ---
 # <a name="azure-monitor-logs-overview"></a>Přehled protokolů Azure Monitoru
 Protokoly Azure Monitor jsou funkcí Azure Monitor, která shromažďuje a uspořádává data protokolů a výkonu z [monitorovaných prostředků](../monitor-reference.md). Data z různých zdrojů, jako jsou [protokoly platforem](../essentials/platform-logs-overview.md) ze služeb Azure, data protokolů a výkonu z [agentů virtuálních počítačů](../agents/agents-overview.md)a data o využití a výkonu z [aplikací](../app/app-insights-overview.md) , se dají konsolidovat do jednoho pracovního prostoru, aby je bylo možné analyzovat společně pomocí sofistikovaného dotazovacího jazyka, který je schopný rychle analyzovat miliony záznamů. Můžete provést jednoduchý dotaz, který jednoduše načte konkrétní sadu záznamů, nebo provede propracované analýzy dat, které identifikují kritické vzory v datech monitorování. Pracujte s dotazy protokolů a jejich výsledky interaktivně pomocí Log Analytics, používejte je v pravidlech výstrah k proaktivnímu upozorňování na problémy nebo Vizualizujte jejich výsledky v sešitu nebo řídicím panelu.
@@ -23,7 +23,7 @@ Protokoly Azure Monitor jsou funkcí Azure Monitor, která shromažďuje a uspo�
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Co se dá dělat s protokoly Azure Monitor?
 Následující tabulka popisuje některé z různých způsobů, jak můžete použít protokoly v Azure Monitor:
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Analyzovat** | Použití [Log Analytics](./log-analytics-tutorial.md) v Azure Portal k zápisu [dotazů protokolu](./log-query-overview.md) a interaktivní analýze dat protokolu pomocí výkonného analytického modulu |
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění protokolu](../alerts/alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](../alerts/action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku. |

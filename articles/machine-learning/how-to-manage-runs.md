@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110266"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566281"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Spustit, sledovat a sledovat historii spuštění 
 
@@ -211,7 +211,7 @@ Budete potřebovat následující položky:
     1. V části **Podrobnosti o cíli** vyberte **pracovní prostor odeslat do Log Analytics**  a zadejte **předplatné** a **Log Analytics pracovní prostor**. 
 
     > [!NOTE]
-    > **Pracovní prostor azure Log Analytics** je jiný typ prostředku Azure, než je **pracovní prostor služby Azure Machine Learning**. Pokud v tomto seznamu nejsou žádné možnosti, můžete [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    > **Pracovní prostor azure Log Analytics** je jiný typ prostředku Azure, než je **pracovní prostor služby Azure Machine Learning**. Pokud v tomto seznamu nejsou žádné možnosti, můžete [vytvořit pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md). 
     
     ![Místo uložení e-mailových oznámení](./media/how-to-manage-runs/log-location.png)
 
@@ -219,7 +219,7 @@ Budete potřebovat následující položky:
 
     ![Nové pravidlo výstrahy](./media/how-to-manage-runs/new-alert-rule.png)
 
-1. Přečtěte si téma [jak vytvořit a spravovat výstrahy protokolu pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
+1. Přečtěte si téma [jak vytvořit a spravovat výstrahy protokolu pomocí Azure monitor](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="run-description"></a>Popis běhu 
 

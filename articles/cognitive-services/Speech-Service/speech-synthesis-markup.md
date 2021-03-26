@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e78d98454ab374866f6fa18ec26a66837f749bfa
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: b0a96443e1f8596c48882bbdd92b9bb4b910beff
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046296"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567980"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -254,6 +254,7 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
 |                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
+|                         | `style="narration-professional"` | Vyjádření profesionálního a objektivního tónu pro čtení obsahu        |
 |                         | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
 |                         | `style="chat"`            | Vyjádření nepříležitostného a odlehčeného tónu                         |
 |                         | `style="cheerful"`        | Vyjadřuje kladný a šťastný tón.                         |

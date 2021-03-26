@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 61e2813fdbb20610bc720e2deaff7d0a2a81a8b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 350ffc633268c7711b2a8f2246811b389f511cf4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740303"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558206"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Základní hodnoty zabezpečení Azure pro ExpressRoute
 
@@ -30,7 +30,7 @@ Pokud chcete zjistit, jak ExpressRoute kompletně mapuje srovnávací test zabez
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích provedených na vašich prostředcích Azure ExpressRoute na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni ovládacího prvku pro prostředky ExpressRoute.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -40,7 +40,7 @@ Pokud chcete zjistit, jak ExpressRoute kompletně mapuje srovnávací test zabez
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích provedených na vašich prostředcích Azure ExpressRoute na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni ovládacího prvku pro prostředky ExpressRoute.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -50,7 +50,7 @@ Pokud chcete zjistit, jak ExpressRoute kompletně mapuje srovnávací test zabez
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k vašim prostředkům Azure ExpressRoute, podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -60,9 +60,9 @@ Pokud chcete zjistit, jak ExpressRoute kompletně mapuje srovnávací test zabez
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do pracovního prostoru Log Analytics. Provádějte dotazy v Log Analytics k hledání podmínek, identifikujte trendy, analyzujte vzorce a poskytněte spoustu dalších přehledů na základě dat protokolu aktivit, která se mohla shromažďovat pro Azure ExpressRoute.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](/azure/azure-monitor/platform/activity-log-collect)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -196,7 +196,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -212,7 +212,7 @@ Máte přístup ke zdrojům přihlašovacích aktivit, auditování a rizikovýc
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -262,7 +262,7 @@ Partneři, kteří používají Správce prostředků Partnerská rozhraní Expr
 
 - [Využití Azure RBAC v ExpressRoute partnerovi Správce prostředků API](cross-connections-api-development.md)
 
-- [Principy rolí správy v ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
+- [Principy rolí správy v ExpressRoute](./expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 
 **Odpovědnost:** Zákazník
 
@@ -272,7 +272,7 @@ Partneři, kteří používají Správce prostředků Partnerská rozhraní Expr
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají do produkčních instancí Azure ExpressRoute a dalších důležitých nebo souvisejících prostředků.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -290,7 +290,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -343,7 +343,7 @@ Další informace najdete v následujících referenčních materiálech:
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -477,5 +477,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

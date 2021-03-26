@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654979"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566022"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Zajištění ochrany nasazení služby Windows Virtual Desktop s využitím služby Azure Firewall
 
@@ -22,7 +22,7 @@ Virtuální plocha Windows je služba virtualizace plochy a aplikací, která b�
 
 Postupujte podle pokynů v tomto článku a poskytněte další ochranu fondu hostitelů virtuálních počítačů s Windows pomocí Azure Firewall.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 
  - Nasazené prostředí virtuálních počítačů s Windows a fond hostitelů.
@@ -54,7 +54,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 - Vytvořte kolekci pravidel sítě a přidejte následující pravidla:
 
    - Povolí DNS – povolí provoz z vaší adresy pro přidání privátní IP adresy * pro porty TCP a UDP 53.
-   - Povolení služby správy klíčů – povolí přenos z virtuálních počítačů s virtuálními počítači s Windows do aktivační služby Windows port TCP 1688. Další informace o cílových IP adresách najdete v tématu [Aktivace systému Windows se nezdařila ve scénáři vynucené tunelování](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution).
+   - Povolení služby správy klíčů – povolí přenos z virtuálních počítačů s virtuálními počítači s Windows do aktivační služby Windows port TCP 1688. Další informace o cílových IP adresách najdete v tématu [Aktivace systému Windows se nezdařila ve scénáři vynucené tunelování](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution).
 
 > [!NOTE]
 > Některá nasazení nemusí potřebovat pravidla DNS, například Azure Active Directory řadiče domény předávají dotazy DNS do Azure DNS na 168.63.129.16.

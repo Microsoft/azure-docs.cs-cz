@@ -3,12 +3,12 @@ title: Kurz – partnerské místní prostředí do privátního cloudu
 description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786902"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564496"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 
 Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute Global Reach, přečtěte si dokumentaci, jak [Povolit připojení v různých předplatných Azure](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Navázalo se připojení k privátnímu cloudu řešení Azure VMware pomocí okruhu ExpressRoute s použitím brány ExpressRoute ve službě Azure Virtual Network (VNet) – což je okruh 2 od procedur partnerských vztahů.
 - Samostatný fungující okruh ExpressRoute, který slouží k připojení místních prostředí k Azure – což je okruh 1 z perspektivy postupy partnerských vztahů.
@@ -71,7 +71,7 @@ Teď, když jste vytvořili autorizační klíč pro okruh privátního cloudu E
 Vylepšili jsme příkazy rozhraní [příkazového řádku](../expressroute/expressroute-howto-set-global-reach-cli.md) s konkrétními podrobnostmi a příklady, které vám pomůžou nakonfigurovat Global REACH partnerský vztah mezi místními prostředími do privátního cloudu řešení Azure VMware.
 
 >[!TIP]
->V případě zkrácení ve výstupu příkazu Azure CLI můžou tyto pokyny použít [ `–query` argument](https://docs.microsoft.com/cli/azure/query-azure-cli) ke spuštění dotazu JMESPath, aby se zobrazily jenom požadované výsledky.
+>V případě zkrácení ve výstupu příkazu Azure CLI můžou tyto pokyny použít [ `–query` argument](/cli/azure/query-azure-cli) ke spuštění dotazu JMESPath, aby se zobrazily jenom požadované výsledky.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí stejného předplatného jako místní okruh ExpressRoute. 
 

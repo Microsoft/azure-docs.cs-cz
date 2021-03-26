@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: df0a28c4d2ba78e9b7a6b52e26537540164d28e0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565815"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564275"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
+Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](../in-memory-oltp-overview.md) .
 
 ### <a name="create-a-performance-baseline"></a>Vytvoření standardních hodnot výkonu
 

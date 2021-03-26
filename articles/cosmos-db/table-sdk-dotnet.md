@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 4bea9f202d40090217219752a13ffde64b466140
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5af77f34f8e82edf187c1a68b61995ec5c82a8d9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597569"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566825"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB rozhraní .NET API: stažení a poznámky k verzi
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "104597569"
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
 
-|   | Odkazy  |
+|   | Odkazy|
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
 |**Rychlý start**|[Azure Cosmos DB: sestavení aplikace s využitím .NET a rozhraní API pro tabulky](create-table-dotnet.md)|

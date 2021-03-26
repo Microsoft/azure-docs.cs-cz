@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0c4f1fbc0ed27dbf3b7347e0e4c12f1926ac1377
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518700"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566247"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -30,7 +30,7 @@ Tento článek vám ukáže, jak:
 - Použití `OutputFileDatasetConfig` objektů jako vstupu do postupu kanálu
 - Vytváření nových `Dataset` objektů z `OutputFileDatasetConfig` vámi wisƒh k zachování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Azure neodstraní automaticky dočasná data zapsaná pomocí `OutputFileDatasetConfig` . Abyste se vyhnuli poplatkům za úložiště pro velké objemy nepotřebných dat, měli byste buď:
 
 * Programové odstranění zprostředkujících dat na konci spuštění kanálu, pokud už není potřeba
-* Použití BLOB Storage s krátkodobou zásadou úložiště pro mezilehlá data (viz [optimalizace nákladů díky automatizaci úrovní přístupu Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)) 
+* Použití BLOB Storage s krátkodobou zásadou úložiště pro mezilehlá data (viz [optimalizace nákladů díky automatizaci úrovní přístupu Azure Blob Storage](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)) 
 * Pravidelná kontrola a odstraňování již nepotřebných dat
 
 Další informace najdete v tématu [plánování a Správa nákladů pro Azure Machine Learning](concept-plan-manage-cost.md).

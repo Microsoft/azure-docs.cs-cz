@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33408c65fdc09972807aaa8afdf123f1c39cfff5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0530baf5c198b5d82527cfb02c66765ec885bd94
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700252"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566706"
 ---
 # <a name="azure-security-baseline-for-azure-backup"></a>Základní hodnoty zabezpečení Azure pro Azure Backup
 
@@ -30,7 +30,7 @@ Pokud chcete zjistit, jak Azure Backup kompletně mapuje srovnávací test zabez
 
 **Doprovodné** materiály: koncové body, které používá Azure Backup (včetně agenta Microsoft Azure Recovery Services), jsou spravovány společností Microsoft. Zodpovídáte za všechny další ovládací prvky, které chcete nasadit do místních systémů.
 
-- [Vysvětlení sítě a podpory přístupu pro agenta MARS](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [Vysvětlení sítě a podpory přístupu pro agenta MARS](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Odpovědnost:** Zákazník
 
@@ -58,9 +58,9 @@ Pokud chcete zjistit, jak Azure Backup kompletně mapuje srovnávací test zabez
 
 **Pokyny**: Pokud používáte agenta Mars na virtuálním počítači Azure, který je chráněn skupinou zabezpečení sítě nebo Azure firewall, použijte k monitorování konfigurace NSG nebo brány firewall protokol aktivit Azure. Můžete vytvářet výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny těchto prostředků.
 
-- [Zobrazení a načtení událostí protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -76,7 +76,7 @@ Pokud chcete zjistit, jak Azure Backup kompletně mapuje srovnávací test zabez
 
 Také ingestování protokolů prostřednictvím Azure Monitor k agregaci dat zabezpečení vygenerovaných Azure Backup. V Azure Monitor použijte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty úložiště pro dlouhodobé a archivační úložiště. Alternativně můžete integrovat data do Azure Sentinel nebo incidentu zabezpečení a správu událostí třetích stran (SIEM).
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Použití nastavení diagnostiky pro pro úložiště Recovery Services](backup-azure-diagnostic-events.md)
 
@@ -92,7 +92,7 @@ Také ingestování protokolů prostřednictvím Azure Monitor k agregaci dat za
 
 Kromě toho Azure Backup odesílá diagnostické události, které je možné shromažďovat a používat pro účely analýzy, upozorňování a vytváření sestav. Nastavení diagnostiky pro Recovery Services trezor můžete nakonfigurovat pomocí Azure Portal. K účtu úložiště, centru událostí nebo pracovnímu prostoru Log Analytics můžete odeslat jednu nebo více diagnostických událostí.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Použití nastavení diagnostiky pro pro úložiště Recovery Services](backup-azure-diagnostic-events.md)
 
@@ -104,7 +104,7 @@ Kromě toho Azure Backup odesílá diagnostické události, které je možné sh
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim trezorům Azure Recovery Services podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -118,9 +118,9 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 - [Monitorování úloh Azure Backup](backup-azure-monitoring-built-in-monitor.md)
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -138,7 +138,7 @@ Můžete taky připojit Log Analytics pracovní prostor ke službě Azure Sentin
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](/azure/azure-monitor/platform/alerts-log)
+- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -268,7 +268,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure AD efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů by měl být pravidelně přezkoumán, aby se zajistilo, že pouze přípravní uživatelé budou mít přístup i nadále.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat kontroly přístupu ke službě Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -284,7 +284,7 @@ Máte přístup ke zdrojům přihlašovacích aktivit, auditování a rizikovýc
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -310,7 +310,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Azure Backup podporovaná.
 
-- [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Odpovědnost:** Zákazník
 
@@ -402,7 +402,7 @@ Při zálohování s agentem MARS nebo pomocí Recovery Services trezoru zašifr
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají v produkčních trezorech Azure Recovery Services i v jiných důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -418,7 +418,7 @@ Při zálohování s agentem MARS nebo pomocí Recovery Services trezoru zašifr
 
 Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Přečtěte si bezpečnostní mechanismy, které jsou k dispozici pro Azure Backup snížení zabezpečení souvisejícího s konfigurací služby.
 
-- [Porozumění ovládacím prvkům zabezpečení dostupným pro Azure Backup](/azure/backup/backup-security-controls)
+- [Porozumění ovládacím prvkům zabezpečení dostupným pro Azure Backup]()
 
 **Odpovědnost:** Zákazník
 
@@ -446,7 +446,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -520,7 +520,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -544,7 +544,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Recovery Services trezor pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. RecoveryServices můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace trezorů Recovery Services.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -656,7 +656,7 @@ Zálohování klíčů spravovaných zákazníkem v rámci Azure Key Vault.
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. RecoveryServices**:
 
@@ -676,7 +676,7 @@ Zálohování klíčů spravovaných zákazníkem v rámci Azure Key Vault.
 
 **Doprovodné** materiály: pro místní zálohování je k dispozici šifrování v klidovém formátu pomocí hesla, které zadáte při zálohování do Azure. Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE). Můžete povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-- [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Odpovědnost:** Zákazník
 
@@ -772,5 +772,5 @@ K jasné identifikaci a kategorizaci prostředků Azure můžete navíc jasně o
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

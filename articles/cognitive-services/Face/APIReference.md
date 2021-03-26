@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 02/17/2021
 ms.author: sbowles
 ms.openlocfilehash: 712b18b471b7595f5278c77ead9f845048d4783e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100642381"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566094"
 ---
 # <a name="face-api-reference-list"></a>Seznam odkazů na rozhraní API pro rozpoznávání tváře
 

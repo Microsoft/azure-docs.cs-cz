@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7c5c2f1d055ec6270892873548872b20b17b4158
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587517"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566893"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Reference k rozhraní API agenta Azure Monitor Application Insights
 
@@ -100,6 +100,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ```
 
+> [!NOTE]
+> Pojmenování AppFilter v tomto kontextu může být matoucí, `AppFilter` v případě .NET ve službě IIS nastaví filtr regulárního výrazu názvu aplikace (třída HostingEnvironment. název_webu). `VirtualPathFilter` Nastaví filtr regulárních výrazu virtuální cesty (třída HostingEnvironment. ApplicationVirtualPath v případě .NET v IIS). K instrumentaci jedné aplikace byste měli použít VirtualPathFilter následujícím způsobem: `Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap @(@{VirtualPathFilter="^/MyAppName$"; InstrumentationSettings=@{InstrumentationKey='<your ikey>'}})`
 
 ### <a name="parameters"></a>Parametry
 

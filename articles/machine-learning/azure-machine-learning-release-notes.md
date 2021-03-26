@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471753"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562218"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -56,9 +56,9 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (Únorová aktualizace)
 + **Nové funkce**
-  + [Nativní terminál (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím integrovaného terminálu.
+  + [Nativní terminál (GA)](./how-to-access-terminal.md). Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím integrovaného terminálu.
   + [Fragmenty poznámkových bloků (Preview)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Běžné výpisy kódu v Azure ML jsou teď dostupné na dosah ruky. Přejděte na panel fragmenty kódu, který je přístupný prostřednictvím panelu nástrojů, nebo aktivujte nabídku fragmenty kódu pomocí kombinace kláves CTRL + MEZERNÍK.  
-  + [Klávesové zkratky](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Plná parita s klávesovými zkratkami, které jsou k dispozici v Jupyter. 
+  + [Klávesové zkratky](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Plná parita s klávesovými zkratkami, které jsou k dispozici v Jupyter. 
   + Označuje parametry buňky. Zobrazuje uživatele, které buňky v poznámkovém bloku představují buňky parametrů a můžou spouštět parametrizované poznámkové bloky přes [Papermill](https://github.com/nteract/papermill) ve výpočetní instanci.
   + Terminál a správce relace jádra: uživatelé budou moct spravovat všechny jádra a relace Terminálové služby běžící na jejich výpočetním prostředí.
   + Tlačítko sdílení. Uživatelé teď můžou sdílet kterýkoli soubor v Průzkumníkovi souborů poznámkového bloku tak, že na něj klikne pravým tlačítkem a použijete tlačítko sdílet.
@@ -68,7 +68,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
   + Vylepšené doby načítání stránek
   + Vyšší výkon 
   + Vylepšená rychlost a spolehlivost jádra
-  + Přidání rotujícího kolečka pro zobrazení průběhu všech probíhajících [operací výpočetních instancí](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators).
+  + Přidání rotujícího kolečka pro zobrazení průběhu všech probíhajících [operací výpočetních instancí](./how-to-run-jupyter-notebooks.md#status-indicators).
   + Klikněte pravým tlačítkem myši v Průzkumníkovi souborů. Kliknutím pravým tlačítkem na libovolný soubor se teď otevřou souborové operace. 
 
 
@@ -79,7 +79,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
   + **azureml-core**
     + [Experimentální funkce] Přidání podpory pro propojení pracovního prostoru synapse do AML jako propojené služby
     + [Experimentální funkce] Přidání podpory pro připojení fondu synapse Spark do AML jako výpočetní prostředí
-    + [Experimentální funkce] Přidejte podporu pro přístup k datům založeným na identitě. Uživatelé můžou Registrovat úložiště dat nebo datové sady bez zadání přihlašovacích údajů. V takovém případě se pro ověřování použijí tokeny AAD uživatelů nebo spravovaná identita služby COMPUTE Target. Další informace najdete [tady](https://aka.ms/data-access).
+    + [Experimentální funkce] Přidejte podporu pro přístup k datům založeným na identitě. Uživatelé můžou Registrovat úložiště dat nebo datové sady bez zadání přihlašovacích údajů. V takovém případě se pro ověřování použijí tokeny AAD uživatelů nebo spravovaná identita služby COMPUTE Target. Další informace najdete [tady](./how-to-identity-based-data-access.md).
   + **azureml-pipeline-steps**
     + [Experimentální funkce] Přidání podpory pro [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep)
   + **azureml-synapse**

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 801d810a82e4e484ca1ab30c5c6d510860dbab6b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103017354"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566009"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -64,7 +64,7 @@ Verze 3 poskytuje:
 
 #### <a name="action-required"></a>Požaduje se akce:
 
-Chcete-li minimalizovat přerušení vašich úloh, přečtěte si [Průvodce migrací](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a převeďte svůj kód z rozhraní API verze 2 a sady SDK na verzi 3 API a SDK před 29. února 2024.
+Chcete-li minimalizovat přerušení vašich úloh, přečtěte si [Průvodce migrací](../latest/migrate-v-2-v-3-migration-introduction.md) a převeďte svůj kód z rozhraní API verze 2 a sady SDK na verzi 3 API a SDK před 29. února 2024.
 **Po 29. února 2024** přestane Azure Media Services nadále přijímat provoz ve verzi 2 REST API, rozhraní API pro správu účtů ARM verze 2015-10-01 nebo z SDK klienta .NET verze 2. To zahrnuje všechny klientské sady SDK Open Source třetích stran, které mohou volat rozhraní API verze 2.  
 
 Podívejte se na oficiální [oznámení o aktualizacích Azure](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).

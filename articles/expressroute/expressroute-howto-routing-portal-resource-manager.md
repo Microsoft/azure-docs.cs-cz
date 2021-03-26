@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 11a4798c0cb3bc010bbdbae1fcb709951c67781a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c4f76a02a88b91c082106566ca236abe25d4ed88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721862"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567344"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Kurz: vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí Azure Portal
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > - Konfigurace, aktualizace a odstranění partnerského vztahu Microsoftu pro okruh
 > - Konfigurace, aktualizace a odstranění privátního partnerského vztahu Azure pro okruh
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete s konfigurací, ujistěte se, že jste prošli následující stránky:
     * [Požadavky](expressroute-prerequisites.md) 
@@ -124,7 +124,7 @@ Můžete vybrat řádek pro partnerský vztah, který chcete upravit, a pak upra
 Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci privátního partnerského vztahu Azure pro okruh ExpressRoute.
 
 > [!IMPORTANT]
-> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální Stack, a postupujte podle pokynů popsaných [tady](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální Stack, a postupujte podle pokynů popsaných [tady](../virtual-network/ipv6-overview.md).
 > 
 > 
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 93ac6ae3c8aed61557a239bb9c84d3587dce1daa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cffa8d9a0647ff5fe970801d5da98e23be0b2aaf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962327"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567321"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Řešení chyb DMS při připojování ke zdrojovým databázím
 
@@ -74,8 +74,8 @@ Potenciální problémy spojené s připojením ke zdrojové AWS databázi VP SQ
 | **Chyba 53** -připojení SQL se nezdařilo. Při navazování připojení k SQL Serveru došlo k chybě související se sítí nebo konkrétní instancí. Server se nenašel nebo není dostupný. Ověřte, zda je název instance správný a zda je SQL Server nakonfigurovaná tak, aby povolovala vzdálená připojení. (Zprostředkovatel: Zprostředkovatel pojmenovaných kanálů, chyba: 40 – nelze otevřít připojení k SQL Server | K této chybě dojde, pokud se služba nemůže připojit ke zdrojovému serveru. Chcete-li vyřešit tento problém, přečtěte si dokumenty k řešení problémů, které jsou uvedeny v poznámce pod touto tabulkou, a akci opakujte. |
 | **Chyba 18456** : přihlášení se nezdařilo. Přihlášení uživatele {User} se nezdařilo. | K této chybě dojde, pokud se služba nemůže připojit ke zdrojové databázi pomocí zadaných přihlašovacích údajů T-SQL. Pokud chcete problém vyřešit, ověřte zadané přihlašovací údaje. Můžete se také podívat na [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) nebo na dokumenty pro řešení potíží uvedené v poznámce pod touto tabulkou a zkusit to znovu. |
 | **Chyba 87** : připojovací řetězec není platný. Při navazování připojení k SQL Serveru došlo k chybě související se sítí nebo konkrétní instancí. Server se nenašel nebo nebyl dostupný. Ověřte, zda je název instance správný a zda je SQL Server nakonfigurovaná tak, aby povolovala vzdálená připojení. (poskytovatel: síťová rozhraní SQL, chyba: 25 připojovací řetězec není platný.) | K této chybě dojde, pokud se služba nemůže připojit ke zdrojovému serveru z důvodu neplatného připojovacího řetězce. Pokud chcete problém vyřešit, ověřte poskytnutý připojovací řetězec. Pokud se problém nevyřeší, přečtěte si dokumenty popsané v poznámce níže v této tabulce a akci opakujte. |
-| **Chyba: certifikát serveru není důvěryhodný.** Připojení k serveru bylo úspěšně navázáno, ale během procesu přihlašování došlo k chybě. (poskytovatel: poskytovatel SSL, chyba: 0 – řetěz certifikátů byl vydán nedůvěryhodnou autoritou.) | K této chybě dochází, pokud se použitý certifikát nepovažuje za důvěryhodný. Pro vyřešení tohoto problému potřebujete najít certifikát, který může být důvěryhodný, a pak ho na serveru povolit. Případně můžete vybrat možnost certifikát důvěryhodnosti při připojování. Tuto akci proveďte pouze v případě, že jste obeznámeni s použitým certifikátem a důvěřujete mu. <br> Připojení TLS zašifrovaná pomocí certifikátu podepsaného svým držitelem neposkytují silné zabezpečení – jsou náchylná k útokům prostředníkem. Nespoléhá se na protokol TLS pomocí certifikátů podepsaných držitelem v produkčním prostředí nebo na serverech, které jsou připojené k Internetu. <br> Další informace najdete v tématu [použití protokolu SSL s instancí Microsoft SQL Server DB](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) nebo [kurzem: migrace programu RDS SQL Server do Azure pomocí DMS](./tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md#prerequisites). |
-| **Chyba 300** – uživatel nemá požadovaná oprávnění. Oprávnění zobrazit stav serveru bylo odepřeno pro objekt {Server}, databázi {Database}. | K této chybě dochází, pokud uživatel nemá oprávnění k provedení migrace. Pokud chcete tento problém vyřešit, přečtěte si téma [udělení oprávnění serveru – Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) nebo [kurz: migrace SQL Server RDS do Azure pomocí DMS](./tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md#prerequisites) pro další podrobnosti. |
+| **Chyba: certifikát serveru není důvěryhodný.** Připojení k serveru bylo úspěšně navázáno, ale během procesu přihlašování došlo k chybě. (poskytovatel: poskytovatel SSL, chyba: 0 – řetěz certifikátů byl vydán nedůvěryhodnou autoritou.) | K této chybě dochází, pokud se použitý certifikát nepovažuje za důvěryhodný. Pro vyřešení tohoto problému potřebujete najít certifikát, který může být důvěryhodný, a pak ho na serveru povolit. Případně můžete vybrat možnost certifikát důvěryhodnosti při připojování. Tuto akci proveďte pouze v případě, že jste obeznámeni s použitým certifikátem a důvěřujete mu. <br> Připojení TLS zašifrovaná pomocí certifikátu podepsaného svým držitelem neposkytují silné zabezpečení – jsou náchylná k útokům prostředníkem. Nespoléhá se na protokol TLS pomocí certifikátů podepsaných držitelem v produkčním prostředí nebo na serverech, které jsou připojené k Internetu. <br> Další informace najdete v tématu [použití protokolu SSL s instancí Microsoft SQL Server DB](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) nebo [kurzem: migrace programu RDS SQL Server do Azure pomocí DMS](./index.yml). |
+| **Chyba 300** – uživatel nemá požadovaná oprávnění. Oprávnění zobrazit stav serveru bylo odepřeno pro objekt {Server}, databázi {Database}. | K této chybě dochází, pokud uživatel nemá oprávnění k provedení migrace. Pokud chcete tento problém vyřešit, přečtěte si téma [udělení oprávnění serveru – Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) nebo [kurz: migrace SQL Server RDS do Azure pomocí DMS](./index.yml) pro další podrobnosti. |
 
 > [!NOTE]
 > Další informace o řešení potíží souvisejících s připojením ke zdroji AWS VP SQL Server najdete v následujících zdrojích informací:
@@ -85,7 +85,7 @@ Potenciální problémy spojené s připojením ke zdrojové AWS databázi VP SQ
 
 ## <a name="known-issues"></a>Známé problémy
 
-* [Známé problémy/omezení migrace pro online migrace Azure SQL Database](./known-issues-azure-sql-online.md)
+* [Známé problémy/omezení migrace pro online migrace Azure SQL Database](./index.yml)
 * [Známé problémy/omezení migrace pro online migrace Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Známé problémy/omezení migrace pro online migrace Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 

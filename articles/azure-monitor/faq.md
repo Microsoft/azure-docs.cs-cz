@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606952"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563374"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -80,7 +80,7 @@ Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumán�
 
 ### <a name="how-do-i-retrieve-log-data"></a>Návody načíst data protokolu?
 Všechna data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protokolu napsaného pomocí dotazovacího jazyka KQL (Kusto Query Language). Můžete napsat vlastní dotazy nebo využít řešení a přehledy, které obsahují dotazy protokolu pro konkrétní aplikaci nebo službu. Další informace najdete [v tématu Přehled dotazů protokolu v Azure monitor](logs/log-query-overview.md).
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Můžu odstranit data z Log Analyticsho pracovního prostoru?
 Data se z pracovního prostoru odeberou podle [doby jejich uchování](logs/manage-cost-storage.md#change-the-data-retention-period). Můžete odstranit konkrétní data z důvodů ochrany osobních údajů nebo dodržování předpisů. Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
@@ -828,26 +828,27 @@ V rámci této podmínky budete po otevření virtuálního počítače vyzváni
 ## <a name="sql-insights-preview"></a>SQL Insights (Náhled)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>Jaké verze SQL Server podporovány?
-Podporované verze SQL najdete v tématu [podporované verze](insights/sql-insights-overview.md#supported-versions) .
+Podporujeme SQL Server 2012 a všechny novější verze. Další podrobnosti najdete v tématu [podporované verze](insights/sql-insights-overview.md#supported-versions) .
 
 ### <a name="what-sql-resource-types-are-supported"></a>Jaké typy prostředků SQL se podporují?
+- Azure SQL Database
+- Spravovaná instance Azure SQL
+- SQL Server ve službě Azure Virtual Machines (SQL Server běží na virtuálních počítačích zaregistrovaných u poskytovatele [virtuálních počítačů SQL](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) )
+- Virtuální počítače Azure (SQL Server spuštěné na virtuálních počítačích, které nejsou registrované u poskytovatele [virtuálních počítačů SQL](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) )
 
-- Azure SQL Database Pouze samostatná databáze, nikoli databáze v Elastický fond.
-- Spravovaná instance Azure SQL 
-- Virtuální počítače Azure SQL ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) a virtuální počítače azure, na kterých SQL Server nainstalovaná.
+Další podrobnosti najdete v tématu [podporované verze](insights/sql-insights-overview.md#supported-versions) a podrobnosti o scénářích bez podpory nebo omezené podpory.
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Jaké operační systémy pro počítač se systémem SQL Server jsou podporované?
-Libovolný operační systém, který podporuje spuštěnou podporovanou verzi SQL.
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>Jaké operační systémy pro virtuální počítač se systémem SQL Server jsou podporované?
+Podporujeme všechny operační systémy určené v dokumentaci k [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) a [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create) pro SQL Server v Azure Virtual Machines.
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Jaký operační systém pro vzdálený monitorovací server je podporován?
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>Jaký operační systém pro virtuální počítač monitorování se podporuje?
+Ubuntu 18,04 je aktuálně jediným operačním systémem podporovaným pro virtuální počítač monitorování.
 
-Ubuntu 18,04 je v současnosti jediným podporovaným operačním systémem.
-
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Kde budou data monitorování uložená v Log Analytics 
-Všechna data monitorování se ukládají do tabulky **InsightsMetrics** . Sloupec **Origin** má hodnotu *Solutions.AZM.MS/telegraf/SqlInsights*. Sloupec **oboru názvů** obsahuje hodnoty, které začínají na *sqlserver_*.
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Kde budou data monitorování uložená v Log Analytics?
+Všechna data monitorování se ukládají do tabulky **InsightsMetrics** . **Zdrojový** sloupec má hodnotu `solutions.azm.ms/telegraf/SqlInsights` . Sloupec **oboru názvů** obsahuje hodnoty, které začínají na `sqlserver_` .
 
 ### <a name="how-often-is-data-collected"></a>Jak často se shromažďují data? 
-Podrobnosti o četnosti shromažďování různých dat najdete v tématu [data shromážděná službou SQL Insights](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) .
+Frekvence shromažďování dat je přizpůsobitelná. Podrobnosti o výchozích frekvencích najdete v tématu [data shromážděná pomocí SQL Insights](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) . pokyny k přizpůsobení frekvencí najdete v tématu [Vytvoření profilu monitorování SQL](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile) . 
 
 ## <a name="next-steps"></a>Další kroky
 Pokud tady na váš dotaz neodpovíte, můžete na následující fóra najít další otázky a odpovědi.

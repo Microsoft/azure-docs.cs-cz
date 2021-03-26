@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: b9a4c15c0942a0a5dffe2cfdb30dbea4184057ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104871397"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565584"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -31,7 +31,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 - Zákazníci připojovat ke svému Azure Media Services účtu své vlastní účty úložiště.  Všechna data prostředků se ukládají do těchto přidružených účtů úložiště a zákazník kontroluje umístění a typ replikace tohoto úložiště.
 - Další data, která jsou přidružená k účtu Media Services (včetně šifrovacích klíčů obsahu, klíčů pro ověření tokenu, JobInputHttp adres URL a dalších metadat entit), se ukládají do úložiště vlastněných společností Microsoft v oblasti vybrané pro Media Services účet.
     - Z důvodu [požadavků](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) na umístění dat v oblasti Brazílie – jih a jihovýchodní Asie se data dalších účtů ukládají v rámci redundantní zóny a jsou obsažena v jedné oblasti. V jihovýchodní Asie se všechna data dalších účtů ukládají v Singapuru a v oblasti Brazílie – jih jsou data uložená v Brazílii.
-    - V oblastech jiných než Brazílie – jih a jihovýchodní Asie můžou být data dalších účtů uložená také v úložišti vlastněných společností Microsoft v [spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+    - V oblastech jiných než Brazílie – jih a jihovýchodní Asie můžou být data dalších účtů uložená také v úložišti vlastněných společností Microsoft v [spárované oblasti](../../best-practices-availability-paired-regions.md).
 - Azure Media Services je místní služba a neposkytuje [vysokou dostupnost](media-services-high-availability-encoding.md) nebo replikaci dat. Zákazníci, kteří potřebují tyto funkce, jsou vysoce doporučováni při vytváření řešení pomocí Media Services účtů v několika oblastech.  Ukázka ukazující, jak vytvořit řešení pro vysokou dostupnost s Media Services video na vyžádání je dostupné jako průvodce.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Jaká jsou omezení Azure Portal Media Services V3?

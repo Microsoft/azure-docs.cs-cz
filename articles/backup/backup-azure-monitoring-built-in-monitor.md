@@ -4,12 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559209"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -130,7 +130,7 @@ V současné době je tato funkce dostupná pro databáze Azure pro server Postg
 - Selhání zálohování (Pokud chcete dostávat upozornění na selhání zálohování, musíte zaregistrovat příznak AFEC s názvem **EnableAzureBackupJobFailureAlertsToAzureMonitor** prostřednictvím portálu Preview).
 - Selhání obnovení (Pokud chcete dostávat upozornění na selhání obnovení, je nutné zaregistrovat příznak AFEC s názvem **EnableAzureBackupJobFailureAlertsToAzureMonitor** prostřednictvím portálu Preview).
 
-Další informace o výstrahách Azure Monitor najdete [v tématu Přehled výstrah v Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
+Další informace o výstrahách Azure Monitor najdete [v tématu Přehled výstrah v Azure](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

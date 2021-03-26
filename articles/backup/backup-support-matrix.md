@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225543"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564462"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -40,7 +40,7 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 **Přesun dat mezi trezory** | Přesouvání zálohovaných dat mezi trezory se nepodporuje.
 **Upravit typ úložiště trezoru** | Před uložením záloh můžete upravit typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor. Po zahájení zálohování v trezoru se typ replikace nedá upravit.
 **Zónově redundantní úložiště (ZRS)** | K dispozici v oblastech Velká Británie – jih (UKS) a Jižní Východní Asie (v moři).
-**Soukromé koncové body** | V [této části](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start) najdete požadavky na vytváření privátních koncových bodů pro trezor služby Recovery Services.  
+**Soukromé koncové body** | V [této části](./private-endpoints.md#before-you-start) najdete požadavky na vytváření privátních koncových bodů pro trezor služby Recovery Services.  
 
 ## <a name="on-premises-backup-support"></a>Podpora místních záloh
 

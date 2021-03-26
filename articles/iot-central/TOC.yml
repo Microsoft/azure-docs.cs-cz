@@ -124,7 +124,7 @@
             - name: Vytvoření aplikace pro průběžné monitorování pacientů
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: Vytvoření řídicího panelu pro posouzení informací o zdravotním stavu
-              href: healthcare/howto-health-data-triage.md
+              href: ./healthcare/tutorial-health-data-triage.md
 - name: Koncepty
   items:
     - name: Architektura

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a05a4692bb4a09213532ed29b2501f6b8056857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63b99cdeb7606798caa1b1d997dbb9f609c033b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721986"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562184"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Základní hodnoty zabezpečení Azure pro Azure Data Box
 
@@ -88,7 +88,7 @@ Můžete určit, kdo má mít přístup k vaší objednávce při prvním vytvo�
 
 - [Jak nakonfigurovat službu Azure RBAC pro sešity](../sentinel/quickstart-get-visibility.md)
 
-- [Informace o tom, jak nastavit řízení přístupu v objednávce](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Informace o tom, jak nastavit řízení přístupu v objednávce](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Odpovědnost:** Zákazník
 
@@ -172,7 +172,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 U zařízení Data Box to není podporováno v reálném čase. Protokoly si můžete prohlédnout na konci úlohy.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -190,7 +190,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Ana
 
 **Pokyny**: brzy k dispozici; Customer Lockbox ještě není pro Azure Data Box podporovaná. 
 
-- [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Odpovědnost:** Zákazník
 
@@ -254,7 +254,7 @@ Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Ana
 
 - [Informace o tom, jak začít s Azure Data Box](data-box-quickstart-portal.md)
 
-- [Informace o tom, jak nastavit řízení přístupu](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Informace o tom, jak nastavit řízení přístupu](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Odpovědnost:** Zákazník
 
@@ -281,7 +281,7 @@ Navíc Azure Data Box chrání klíč pro odemknutí zařízení (také označov
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy se změny projeví Azure Data box, i na jiné důležité nebo související prostředky.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -459,5 +459,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

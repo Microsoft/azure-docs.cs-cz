@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d423a8aaf3ace78ccb4b2eb1d8424c6a1dfb61bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a804b6d6840b25993ad6e249305f531a818be32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705972"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559447"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Směrný plán zabezpečení Azure pro sdílení dat Azure
 
@@ -34,7 +34,7 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -48,11 +48,11 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 Povolte diagnostické protokoly pro Azure Data Share, konkrétně protokoly diagnostiky pro MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Tyto protokoly vám umožní zachytit klíčové informace, jako je čas zahájení synchronizace, čas ukončení, stav a další podrobnosti. Tyto protokoly můžou být klíčové pro pozdější zkoumání incidentů zabezpečení a provádění forenzních cvičení.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -62,9 +62,9 @@ Povolte diagnostické protokoly pro Azure Data Share, konkrétně protokoly diag
 
 **Doprovodné** materiály: Zajistěte, aby všechny účty úložiště nebo pracovní prostory Log Analytics používané pro ukládání protokolů sdílené složky Azure měly dobu uchování protokolu nastavenou v souladu s předpisy pro dodržování předpisů vaší organizace.
 
-- [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](/azure/azure-monitor/platform/manage-cost-storage)
+- [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Ukládání protokolů prostředků v Azure Storagem účtu](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [Ukládání protokolů prostředků v Azure Storagem účtu](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Odpovědnost:** Zákazník
 
@@ -78,9 +78,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Začínáme s Log Analytics dotazy](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Začínáme s Log Analytics dotazy](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Odpovědnost:** Zákazník
 
@@ -94,7 +94,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Odpovědnost:** Zákazník
 
@@ -144,7 +144,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Azure Data Share pracuje s obecnými integrovanými rolemi Azure ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share pracuje s obecnými integrovanými rolemi Azure ](../role-based-access-control/built-in-roles.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -154,11 +154,11 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Doprovodné** materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí můžete navíc použít kontroly identity a přístupu v Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/) 
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml) 
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md) 
 
-- [Azure Data Share pracuje s obecnými integrovanými rolemi Azure ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share pracuje s obecnými integrovanými rolemi Azure ](../role-based-access-control/built-in-roles.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -170,7 +170,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Odpovědnost:** Zákazník
 
@@ -208,7 +208,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet Azure monitor výstrahy, pro které se změny projeví u kritických prostředků Azure.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -291,7 +291,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 **Pokyny**: odebrání prostředků Azure, když už nepotřebujete, můžete to udělat prostřednictvím Azure Portal, PowerShellu nebo rozhraní příkazového řádku.
 
-- [Odstranění prostředku a skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Odstranění prostředku a skupiny prostředků Azure](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Azure Data Share nezveřejňuje operační systém ani neumožňuje instalovat softwarové aplikace třetích stran na svých prostředcích.
 
@@ -305,7 +305,7 @@ Azure Data Share nezveřejňuje operační systém ani neumožňuje instalovat s
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -343,7 +343,7 @@ Azure Data Share nezveřejňuje operační systém ani neumožňuje instalovat s
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -361,5 +361,5 @@ Azure Data Share nezveřejňuje operační systém ani neumožňuje instalovat s
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

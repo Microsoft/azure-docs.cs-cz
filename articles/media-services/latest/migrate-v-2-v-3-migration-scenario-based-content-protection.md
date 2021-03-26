@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9c0040c0ad34b019eaa90bbd1571377ad3539578
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8853f5234cdbd5244d4624c91b7e3914948cf704
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940107"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561300"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře ochrany obsahu
 
@@ -58,7 +58,3 @@ Konkrétní postup najdete v tématu věnovaném konceptům, kurzům a návodům
 ## <a name="samples"></a>ukázky
 
 [V ukázkách kódu můžete také porovnat kód v2 a V3](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Další kroky
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

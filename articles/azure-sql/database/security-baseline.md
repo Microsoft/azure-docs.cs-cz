@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87072ecc4bff054d64c3d8576f821e725959ea7e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca28c2a1943912ce6a244929e7438edd7680d131
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101657787"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565958"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Základní hodnoty zabezpečení Azure pro Azure SQL Database
 
@@ -32,13 +32,13 @@ Aby bylo možné provozovat Azure SQL Database, pomocí značek služby SQL povo
 
 Pravidla virtuální sítě umožňují Azure SQL Database přijímat jenom komunikace, které se odesílají z vybraných podsítí v rámci virtuální sítě.
 
-- [Jak nastavit privátní odkaz pro Azure SQL Database](/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
+- [Jak nastavit privátní odkaz pro Azure SQL Database](./private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
 
-- [Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
+- [Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery](./vnet-service-endpoint-rule-overview.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -68,9 +68,9 @@ Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytic
 
 **Pokyny**: povolením DDoS Protection Standard ve virtuálních sítích přidružených k vašim SQL Server instancím můžete chránit před distribuovanými útoky DoS (Denial of Service). K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-- [Jak nakonfigurovat DDoS Protection](/azure/virtual-network/manage-ddos-protection)
+- [Jak nakonfigurovat DDoS Protection](../../ddos-protection/manage-ddos-protection.md)
 
-- [Pochopení Azure Security Center integrované analýzy hrozeb](/azure/security-center/security-center-alerts-data-services)
+- [Pochopení Azure Security Center integrované analýzy hrozeb](../../security-center/azure-defender.md)
 
 **Odpovědnost:** Zákazník
 
@@ -92,7 +92,7 @@ Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytic
 
 **Pokyny**: povolení rozšířené ochrany před internetovými útoky (ATP) pro Azure SQL Database.  Uživatelům se zobrazí výstraha o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o vzorcích dotazů neobvyklé Database. Rozšířená ochrana před internetovými útoky také integruje výstrahy s Azure Security Center. 
 
-- [Pochopení a použití rozšířené ochrany před internetovými útoky pro Azure SQL Database](/azure/sql-database/sql-database-threat-detection-overview)
+- [Pochopení a použití rozšířené ochrany před internetovými útoky pro Azure SQL Database](./threat-detection-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -104,7 +104,7 @@ Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytic
 
 Při použití koncových bodů služby pro Azure SQL Database se vyžaduje odchozí připojení k Azure SQL Database veřejné IP adresy: aby se Azure SQL Database IP adresy povolovaly, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí značek služby NSG pro Azure SQL Database.
 
-- [Pochopení značek služeb pomocí koncových bodů služby pro Azure SQL Database](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
+- [Pochopení značek služeb pomocí koncových bodů služby pro Azure SQL Database](./vnet-service-endpoint-rule-overview.md#limitations)
 
 - [Pochopení a používání značek služeb](../../virtual-network/service-tags-overview.md)
 
@@ -136,7 +136,7 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -146,9 +146,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi instancemi Azure SQL Database serveru. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -164,11 +164,11 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics, což je cloudové řešení, které monitoruje výkon databází SQL Azure a spravovaných instancí Azure SQL ve velkém měřítku a v různých předplatných. Může vám to usnadnit shromažďování a vizualizace Azure SQL Database metriky výkonu a obsahuje integrované inteligentní funkce pro řešení potíží s výkonem.
 
-- [Postup nastavení auditování pro Azure SQL Database](/azure/sql-database/sql-database-auditing)
+- [Postup nastavení auditování pro Azure SQL Database](./auditing-overview.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/sql-database/sql-database-metrics-diag-logging)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md)
 
-- [Postup při streamování diagnostiky do Azure SQL Analytics](/azure/sql-database/sql-database-metrics-diag-logging#stream-into-azure-sql-analytics)
+- [Postup při streamování diagnostiky do Azure SQL Analytics](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-sql-analytics)
 
 **Odpovědnost:** Zákazník
 
@@ -178,11 +178,11 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Doprovodné** materiály: Povolte auditování na instanci Azure SQL Database serveru a vyberte umístění úložiště pro protokoly auditu (Azure Storage, Log Analytics nebo centrum událostí).
 
-- [Postup povolení auditování pro Azure SQL Server](/azure/sql-database/sql-database-auditing)
+- [Postup povolení auditování pro Azure SQL Server](./auditing-overview.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -192,11 +192,11 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Doprovodné** materiály: při ukládání protokolů Azure SQL Database v pracovním prostoru Log Analytics nastavte dobu uchování protokolu v souladu s předpisy pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -206,7 +206,7 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Pokyny**: analýza a sledování protokolů pro chování neobvyklé a pravidelné kontroly výsledků. Pomocí rozšířené ochrany před internetovými útoky v Azure Security Center můžete upozorňovat na neobvyklou aktivitu související s vaší instancí Azure SQL Database. Případně můžete nakonfigurovat výstrahy na základě hodnot metrik nebo položek protokolu aktivit Azure souvisejících s vašimi instancemi Azure SQL Database.
 
-- [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Server](/azure/sql-database/sql-database-threat-detection-overview)
+- [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Server](./threat-detection-overview.md)
 
 - [Jak nakonfigurovat vlastní výstrahy pro Azure SQL Database](alerts-insights-configure-portal.md)
 
@@ -218,7 +218,7 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Pokyny**: použití Azure Security Center rozšířené ochrany před internetovými útoky pro databáze SQL Azure za účelem monitorování a upozorňování na aktivitu neobvyklé. Pro databáze SQL povolte Azure Defender pro SQL. Azure Defender pro SQL zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, zpřístupněníí a zmírnění potenciálních ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi.
 
-- [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database](/azure/sql-database/sql-database-threat-detection-overview)
+- [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database](./threat-detection-overview.md)
 
 - [Jak povolit Azure Defender pro SQL pro Azure SQL Database](azure-defender-for-sql.md)
 
@@ -226,7 +226,7 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -240,9 +240,9 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Odpovědnost:** Zákazník
 
@@ -252,7 +252,7 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) nemá koncept výchozích hesel. Při zřizování instance Azure SQL Database doporučujeme, abyste se rozhodli pro integraci ověřování s Azure AD.
 
-- [Jak nakonfigurovat a spravovat ověřování Azure AD pomocí Azure SQL](/azure/sql-database/azure-sql/database/authentication-aad-configure)
+- [Jak nakonfigurovat a spravovat ověřování Azure AD pomocí Azure SQL](/azure/azure-sql/database/authentication-aad-configure)
 
 **Odpovědnost:** Zákazník
 
@@ -298,11 +298,11 @@ Navíc můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics
 
 Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database můžete detekovat aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Kontrola rozšířené ochrany před internetovými útoky a potenciálních výstrah](https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview#alerts)
+- [Kontrola rozšířené ochrany před internetovými útoky a potenciálních výstrah](./threat-detection-overview.md#alerts)
 
 **Odpovědnost:** Zákazník
 
@@ -328,7 +328,7 @@ Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -360,7 +360,7 @@ Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database
 
 **Pokyny**: pomocí Azure Active Directory (Azure AD) Identity Protection a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Kromě toho můžete ingestovat data do služby Azure Sentinel pro další šetření.
 
-- [Jak zobrazit přihlášení rizik Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit přihlášení rizik Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -386,11 +386,11 @@ Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database
 
 **Doprovodné** materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -400,13 +400,13 @@ Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Prostředky by měly být oddělené podle virtuální sítě a podsítě, musí být správně označené a zabezpečené v rámci NSG nebo Azure Firewall. Prostředky, které ukládají nebo zpracovávají citlivá data, by měly být izolované. Použít privátní odkaz; Nasaďte Azure SQL Server v rámci virtuální sítě a soukromě se připojte pomocí soukromých koncových bodů.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
-- [Jak nastavit privátní odkaz pro Azure SQL Database](/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
+- [Jak nastavit privátní odkaz pro Azure SQL Database](./private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
 
 **Odpovědnost:** Zákazník
 
@@ -418,7 +418,7 @@ Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Jak nakonfigurovat privátní linku a skupin zabezpečení sítě, aby se zabránilo exfiltraceí dat na instancích Azure SQL Database](/azure/sql-database/sql-database-private-endpoint-overview)
+- [Jak nakonfigurovat privátní linku a skupin zabezpečení sítě, aby se zabránilo exfiltraceí dat na instancích Azure SQL Database](./private-endpoint-overview.md)
 
 - [Principy ochrany zákaznických dat v Azure](../../security/fundamentals/protection-customer-data.md)
 
@@ -430,11 +430,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: použijte funkci zjišťování a klasifikace dat Azure SQL Database. Zjišťování a klasifikace dat poskytuje pokročilé funkce, které jsou integrované v Azure SQL Database pro zjišťování, klasifikaci a označování &amp; ochrany citlivých dat ve vašich databázích.
 
-- [Použití zjišťování a klasifikace dat pro Azure SQL Server](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Použití zjišťování a klasifikace dat pro Azure SQL Server](./data-discovery-and-classification-overview.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -444,9 +444,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: použijte Azure Active Directory (Azure AD) pro ověřování a řízení přístupu k instancím Azure SQL Database.
 
-- [Jak integrovat Azure SQL Server se službou Azure AD pro ověřování](/azure/sql-database/sql-database-aad-authentication)
+- [Jak integrovat Azure SQL Server se službou Azure AD pro ověřování](./authentication-aad-overview.md)
 
-- [Jak řídit přístup v Azure SQL Server](/azure/sql-database/sql-database-control-access)
+- [Jak řídit přístup v Azure SQL Server](./logins-create-manage.md)
 
 **Odpovědnost:** Zákazník
 
@@ -456,11 +456,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure Data Warehouse před hrozbou nebezpečných offline aktivit šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze v SQL Database a na spravované instanci SQL. Šifrovací klíč TDE může spravovat buď společnost Microsoft, nebo zákazník.
 
-- [Jak spravovat transparentní šifrování dat a používat vlastní šifrovací klíče](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal#manage-transparent-data-encryption)
+- [Jak spravovat transparentní šifrování dat a používat vlastní šifrovací klíče](./transparent-data-encryption-tde-overview.md?tabs=azure-portal#manage-transparent-data-encryption)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -470,7 +470,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure SQL Database a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -484,15 +484,15 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: Povolte Azure Defender pro SQL pro Azure SQL Database a použijte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení na vašich serverech SQL Azure.
 
-- [Spuštění posouzení ohrožení zabezpečení na Azure SQL Database](/azure/sql-database/sql-vulnerability-assessment)
+- [Spuštění posouzení ohrožení zabezpečení na Azure SQL Database](./sql-vulnerability-assessment.md)
 
 - [Jak povolit Azure Defender pro SQL](azure-defender-for-sql.md)
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -502,7 +502,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: povolení pravidelného opakovaného prohledávání pro instance Azure SQL Database; Tím se nakonfiguruje posouzení ohrožení zabezpečení pro automatické spuštění prohledávání databáze jednou za týden. Na e-mailové adresy, které poskytnete, se pošle souhrn výsledků kontroly. Porovnáním výsledků ověřte, že chyby zabezpečení byly opraveny.
 
-- [Export sestavy posouzení ohrožení zabezpečení v Azure Security Center](/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment)
+- [Export sestavy posouzení ohrožení zabezpečení v Azure Security Center](./sql-vulnerability-assessment.md#export-an-assessment-report)
 
 **Odpovědnost:** Zákazník
 
@@ -512,11 +512,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: použijte výchozí hodnocení rizik (zabezpečené skóre) poskytované Azure Security Center.
 
-- [Pochopení Azure Security Center zabezpečeného skóre](/azure/security-center/security-center-secure-score)
+- [Pochopení Azure Security Center zabezpečeného skóre](../../security-center/secure-score-security-controls.md)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -534,7 +534,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -546,7 +546,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -556,11 +556,11 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
 **Odpovědnost:** Zákazník
 
@@ -594,7 +594,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -640,9 +640,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Odpovědnost:** Zákazník
 
@@ -662,7 +662,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: využijte Azure Security Center k provádění kontrol standardních hodnot pro vaše databáze a servery SQL Azure.
 
-- [Jak opravit doporučení v Azure Security Center](/azure/security-center/security-center-sql-service-recommendations)
+- [Jak opravit doporučení v Azure Security Center](../../security-center/security-center-remediate-recommendations.md)
 
 **Odpovědnost:** Zákazník
 
@@ -672,7 +672,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: použijte Azure Key Vault k uložení šifrovacích klíčů pro Azure SQL Database transparentní šifrování dat (TDE).
 
-- [Jak chránit citlivá data uložená v Azure SQL Server a ukládat šifrovací klíče do Azure Key Vault](/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
+- [Jak chránit citlivá data uložená v Azure SQL Server a ukládat šifrovací klíče do Azure Key Vault](./always-encrypted-azure-key-vault-configure.md)
 
 **Odpovědnost:** Zákazník
 
@@ -726,11 +726,11 @@ Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních pro
 
 Pro splnění různých požadavků na dodržování předpisů můžete pro týdenní, měsíční nebo roční zálohy vybrat jinou dobu uchování. Spotřeba úložiště závisí na zvolené četnosti zálohování a na dobu uchování (e).
 
-- [Principy zálohování a provozní kontinuity pomocí Azure SQL Server](/azure/sql-database/sql-database-business-continuity)
+- [Principy zálohování a provozní kontinuity pomocí Azure SQL Server](./business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 **Odpovědnost:** Sdílené
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -742,13 +742,13 @@ Pro splnění různých požadavků na dodržování předpisů můžete pro tý
 
 Pokud používáte klíče spravované zákazníkem pro transparentní šifrování dat, ujistěte se, že se klíče zálohují.
 
-- [Principy zálohování v Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups?tabs=single-database)
+- [Principy zálohování v Azure SQL Server](./automated-backups-overview.md?tabs=single-database)
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy předdefinované definice – Microsoft. SQL**:
 
@@ -758,9 +758,9 @@ Pokud používáte klíče spravované zákazníkem pro transparentní šifrová
 
 **Doprovodné** materiály: Zajistěte, aby bylo možné pravidelně provádět obnovování dat v rámci Azure Backup. V případě potřeby proveďte test obnovení obsahu na izolovanou síť VLAN. Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
-- [Postup obnovení záloh Azure SQL Database s použitím obnovení k bodu v čase](/azure/sql-database/sql-database-recovery-using-backups#point-in-time-restore)
+- [Postup obnovení záloh Azure SQL Database s použitím obnovení k bodu v čase](./recovery-using-backups.md#point-in-time-restore)
 
 **Odpovědnost:** Zákazník
 
@@ -770,7 +770,7 @@ Pokud používáte klíče spravované zákazníkem pro transparentní šifrová
 
 **Pokyny**: povolení obnovitelného odstranění v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-- [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Jak povolit obnovitelné odstranění v Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Odpovědnost:** Zákazník
 
@@ -860,5 +860,5 @@ Pokud používáte klíče spravované zákazníkem pro transparentní šifrová
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../../security/benchmarks/security-baselines-overview.md)

@@ -3,12 +3,12 @@ title: Cluster s podporou převzetí služeb při selhání Windows serveru v Az
 description: Nastavte cluster systému Windows Server s podporou převzetí služeb při selhání (WSFC) na řešení Azure VMware a využijte výhod řešení, která vyžadují službu WSFC.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025964"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562235"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
 
@@ -30,7 +30,7 @@ Je důležité nasadit podporovanou konfiguraci služby WSFC. Budete chtít, aby
 
 Tento článek se zaměřuje na služby WSFC v systému Windows Server 2016 a Windows Server 2019. Starší verze Windows serveru nejsou v [běžné podpoře](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) , takže je tady nepovažujeme.
 
-Musíte nejdřív [vytvořit WSFC](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster). Další informace o WSFC najdete v tématu věnovaném [clusteringu s podporou převzetí služeb při selhání ve Windows serveru](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Informace, které poskytujeme v tomto článku, najdete v tématu nasazení služby WSFC v řešení Azure VMware.
+Musíte nejdřív [vytvořit WSFC](/windows-server/failover-clustering/create-failover-cluster). Další informace o WSFC najdete v tématu věnovaném [clusteringu s podporou převzetí služeb při selhání ve Windows serveru](/windows-server/failover-clustering/failover-clustering-overview). Informace, které poskytujeme v tomto článku, najdete v tématu nasazení služby WSFC v řešení Azure VMware.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -150,7 +150,7 @@ Následující aktivity nejsou podporované a můžou způsobit převzetí služ
 
 ## <a name="related-information"></a>Související informace
 
-- [Clustering s podporou převzetí služeb při selhání ve Windows Serveru](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Clustering s podporou převzetí služeb při selhání ve Windows Serveru](/windows-server/failover-clustering/failover-clustering-overview)
 - [Pokyny pro clusteringu Microsoft v vSphere (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959)
 - [Nastavení pro clustering s podporou převzetí služeb při selhání a Clusterové služby Microsoft (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html)
 - [Síti vSAN 6,7 U3-WSFC se sdílenými disky &amp; SCSI-3 trvalé rezervace (VMware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/)
@@ -162,5 +162,5 @@ Teď, když jste si pokryli nastavení služby WSFC v řešení Azure VMware, bu
 
 - Nastavení nové služby WSFC přidáním dalších aplikací, které vyžadují funkci WSFC. Například SQL Server a SAP ASCS.
 - Nastavení řešení zálohování
-  - [Nastavení Azure Backup Server pro řešení Azure VMware](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [Řešení zálohování virtuálních počítačů řešení Azure VMware](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [Nastavení Azure Backup Server pro řešení Azure VMware](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [Řešení zálohování virtuálních počítačů řešení Azure VMware](./ecosystem-back-up-vms.md)

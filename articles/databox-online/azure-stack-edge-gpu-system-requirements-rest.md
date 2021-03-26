@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99575851"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567249"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Požadavky na úložiště objektů BLOB v Azure Stack Edge
 
@@ -70,7 +70,7 @@ Instalace klienta PHP prostřednictvím skladatele:
 
 ## <a name="endpoint-declaration"></a>Deklarace koncového bodu
 
-V sadě SDK pro úložiště objektů BLOB v Azure Stack Edge určuje přípona koncového bodu `<device serial number>.microsoftdatabox.com` Azure Stack hraniční doménu. Další informace o koncovém bodu služby BLOB Service najdete v části [přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+V sadě SDK pro úložiště objektů BLOB v Azure Stack Edge určuje přípona koncového bodu `<device serial number>.microsoftdatabox.com` Azure Stack hraniční doménu. Další informace o koncovém bodu služby BLOB Service najdete v části [přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro](./azure-stack-edge-gpu-deploy-add-storage-accounts.md).
 
 
 ## <a name="examples"></a>Příklady

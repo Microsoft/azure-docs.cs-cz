@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: b8f5fbc076859be9f5ff5a215f92811d543ed7e4
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800104"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558002"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Jak vygenerovat identifikátor URI SAS pro image virtuálního počítače
 
 > [!NOTE]
-> K publikování virtuálního počítače nepotřebujete identifikátor URI SAS. Obrázek můžete jednoduše sdílet v části centrum. Informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) nebo [Vytvoření virtuálního počítače s využitím vlastních pokynů k imagi](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) .
+> K publikování virtuálního počítače nepotřebujete identifikátor URI SAS. Obrázek můžete jednoduše sdílet v části centrum. Informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](./azure-vm-create-using-approved-base.md) nebo [Vytvoření virtuálního počítače s využitím vlastních pokynů k imagi](./azure-vm-create-using-own-image.md) .
 
 Generování identifikátorů URI SAS pro vaše virtuální pevné disky má tyto požadavky:
 

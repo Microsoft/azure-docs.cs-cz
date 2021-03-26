@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215948"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565567"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače pomocí Azure CLI
 
@@ -61,7 +61,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 Azure Key Vault můžou ukládat klíče, tajné klíče nebo hesla, které vám umožní je bezpečně implementovat ve svých aplikacích a službách. Kryptografické klíče jsou uložené v Azure Key Vault pomocí ochrany softwaru nebo můžete klíče importovat nebo generovat v modulech hardwarového zabezpečení (HSM) certifikovaným pro standardy standardu FIPS 140-2 úrovně 2. Tyto kryptografické klíče slouží k šifrování a dešifrování virtuálních disků připojených k vašemu VIRTUÁLNÍmu počítači. Podržíte kontrolu nad těmito kryptografickými klíči a můžete auditovat jejich použití.
 
-Definujte vlastní jedinečné *keyvault_name*. Pak vytvořte Trezor klíčů pomocí AZ klíčů [Create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) ve stejném předplatném a oblasti jako sadu škálování a nastavte zásady pro přístup k *šifrování na disk* .
+Definujte vlastní jedinečné *keyvault_name*. Pak vytvořte Trezor klíčů pomocí AZ klíčů [Create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) ve stejném předplatném a oblasti jako sadu škálování a nastavte zásady pro přístup k *šifrování na disk* .
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 Tento krok se vyžaduje jenom v případě, že máte existující Key Vault, kterou chcete používat s šifrováním disku. Tento krok přeskočte, pokud jste vytvořili Key Vault v předchozí části.
 
-Definujte vlastní jedinečné *keyvault_name*. Potom aktualizujte svůj Trezor klíčů pomocí příkazového [trezoru AZ](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) klíčů a nastavte zásady přístupu s *povoleným šifrováním na disk* .
+Definujte vlastní jedinečné *keyvault_name*. Potom aktualizujte svůj Trezor klíčů pomocí příkazového [trezoru AZ](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) klíčů a nastavte zásady přístupu s *povoleným šifrováním na disk* .
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Povolit šifrování
 
-K šifrování instancí virtuálních počítačů v sadě škálování je třeba nejprve získat informace o Key Vault ID prostředku pomocí [AZ klíčů show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show). Tyto proměnné se používají ke spuštění procesu šifrování pomocí [AZ VMSS Encryption Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
+K šifrování instancí virtuálních počítačů v sadě škálování je třeba nejprve získat informace o Key Vault ID prostředku pomocí [AZ klíčů show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show). Tyto proměnné se používají ke spuštění procesu šifrování pomocí [AZ VMSS Encryption Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
