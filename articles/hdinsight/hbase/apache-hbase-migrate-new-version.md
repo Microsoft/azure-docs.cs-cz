@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43b46d19503856f5eae38272299f73d9c80055b8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942977"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868881"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
 
@@ -49,7 +49,7 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
 
 1. [Nastavte nový cílový cluster HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) pomocí stejného účtu úložiště, ale s jiným názvem kontejneru:
 
-   ![Použijte stejný účet úložiště, ale vytvořte jiný kontejner.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/same-storage-different-container.png" alt-text="Použijte stejný účet úložiště, ale vytvořte jiný kontejner." border="true":::
 
 1. Vyprázdněte svůj zdrojový cluster HBA, což je cluster, který upgradujete. HBA zapisuje příchozí data do úložiště v paměti, které se označuje jako _setSize paměťového úložiště_. Jakmile setSize paměťového úložiště dosáhne určité velikosti, HBA ji vyprázdní na disk pro dlouhodobé uložení v účtu úložiště clusteru. Při odstraňování starého clusteru se memstores recykluje, potenciálně ztratí data. Chcete-li ručně vyprázdnit setSize paměťového úložiště pro každou tabulku na disk, spusťte následující skript. Nejnovější verzi tohoto skriptu je na [GitHubu](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)Azure.
 
@@ -175,9 +175,9 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
 
 1. Přihlaste se k [Apache Ambari](https://ambari.apache.org/) v původním clusteru ( `https://OLDCLUSTERNAME.azurehdidnsight.net` ) a zastavte služby HBA. Po zobrazení výzvy k potvrzení, že chcete zastavit služby, zaškrtněte políčko pro zapnutí režimu údržby pro adaptéry HBA. Další informace o připojení a používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 
-    ![V Ambari klikněte na služby > HBA > zastavit v části akce služby](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
+    :::image type="content" source="./media/apache-hbase-migrate-new-version/stop-hbase-services1.png" alt-text="V Ambari klikněte na služby > HBA > zastavit v části akce služby" border="true":::
 
-    ![Zaškrtněte políčko Zapnout režim údržby pro adaptéry HBA a pak potvrďte](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png" alt-text="Zaškrtněte políčko Zapnout režim údržby pro adaptéry HBA a pak potvrďte" border="true":::
 
 1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.
 
@@ -190,15 +190,15 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
     
 1. Přihlaste se k Ambari na novém clusteru HDInsight. Změňte `fs.defaultFS` Nastavení HDFS tak, aby odkazovalo na název kontejneru používaného původním clusterem. Toto nastavení je uvedené v části **HDFS > config > advanced > Advanced Core-site**.
 
-   ![V Ambari klikněte na služby > HDFS > konfigurace > Upřesnit.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png" alt-text="V Ambari klikněte na služby > HDFS > konfigurace > Upřesnit." border="true":::
 
-   ![V Ambari změňte název kontejneru.](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name.png" alt-text="V Ambari změňte název kontejneru." border="true":::
 
 1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.
 
    Změňte `hbase.rootdir` cestu tak, aby odkazovala na kontejner původního clusteru.
 
-   ![V Ambari změňte název kontejneru pro adaptéry HBA RootDir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png" alt-text="V Ambari změňte název kontejneru pro adaptéry HBA RootDir" border="true":::
     
 1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro HBA clustery s funkcí rozšířené zápisy a jenom v případech, kdy byl původní cluster clusterem HBA s funkcí rozšířené zápisu.
 

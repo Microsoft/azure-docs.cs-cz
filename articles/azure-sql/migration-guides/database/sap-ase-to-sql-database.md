@@ -9,26 +9,28 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 81956a16142f314f54afd9d5a1b9055a559e906c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fd03ebc87a1c0ef0a55b0e6ac0be6d841fee4b0a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564922"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027291"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Příručka k migraci: pomocnému programu SAP pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 V této příručce se dozvíte, jak migrovat databáze SAP pomocného programu pro Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro SAP Adapter Server Enterprise.
 
-Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
+Další příručky k migraci najdete v tématu [migrace databáze](https://docs.microsoft.com/data-migration). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K migraci databáze SAP SE do Azure SQL Database potřebujete:
 
 - Ověřte, že je podporované vaše zdrojové prostředí. 
 - [Pomocník s migrací SQL serveru pro SAP Adaptive Server Enterprise (dříve SAP Sybase POmocného mechanismu řízení)](https://www.microsoft.com/en-us/download/details.aspx?id=54256). 
+- Připojení a dostatečná oprávnění pro přístup ke zdroji i cíli. 
+
 
 ## <a name="pre-migration"></a>Před migrací
 
@@ -44,10 +46,10 @@ K vytvoření posouzení použijte následující postup:
 1. Vyberte **soubor** a pak zvolte **Nový projekt**. 
 1. Zadejte název projektu, umístění, kam chcete projekt uložit, a potom v rozevíracím seznamu vyberte Azure SQL Database jako cíl migrace. Vyberte **OK**.
 1. V dialogovém okně **připojit k Sybase** zadejte v části hodnoty pro podrobnosti o připojení SAP. 
-1. Klikněte pravým tlačítkem na databázi SAP, kterou chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML.
-1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Můžete také otevřít sestavu v aplikaci Excel a získat tak inventarizaci objektů DB2 a úsilí potřebné k provedení převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects.
+1. Klikněte pravým tlačítkem na databázi SAP, kterou chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit **vytvořit sestavu** z navigačního panelu po výběru databáze:
+1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Můžete také otevřít sestavu v aplikaci Excel a získat soupis objektů SAP pomocného programu a úsilí potřebné k provedení převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects.
 
-   Příklad: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Příklad: `drive:\<username>\Documents\SSMAProjects\MySAPMigration\report\report_<date>`. 
 
 
 ### <a name="validate-type-mappings"></a>Ověřit mapování typů
@@ -66,8 +68,8 @@ K převedení schématu použijte následující postup:
 
    Po převodu schématu můžete tento projekt uložit místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . Díky tomu máte možnost vyhodnotit zdrojový a cílový schémat v režimu offline a před publikováním schématu pro Azure SQL Database provést nápravu.
 
-Další informace najdete v tématu [Převod schématu](/sql/ssma/sybase/converting-sybase-ase-database-objects-sybasetosql) .
-
+1. V podokně výstup vyberte možnost **Kontrola výsledků** a zkontrolujte chyby v podokně **Seznam chyb** . 
+1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . Díky tomu máte možnost vyhodnotit zdrojový a cílový schémat v režimu offline a před publikováním schématu pro SQL Database provést nápravu.
 
 ## <a name="migrate"></a>Migrate 
 
@@ -75,10 +77,10 @@ Po splnění potřebných požadavků a dokončení úkolů přidružených ke f
 
 K publikování schématu a migraci dat použijte následující postup: 
 
-1. Klikněte pravým tlačítkem na databázi v **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**.  Tato akce publikuje schéma SAP pomocného mechanismu pro instanci Azure SQL Database.
-1. Klikněte pravým tlačítkem na schéma SAP pomocného panelu v **Průzkumníkovi metadat POmocného** seznamu a vyberte **migrovat data**.  Alternativně můžete vybrat možnost **migrovat data** z horního navigačního panelu.  
+1. Publikování schématu: klikněte pravým tlačítkem na databázi v **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**.  Tato akce publikuje schéma SAP pomocného mechanismu pro instanci Azure SQL Database.
+1. Migrace dat: klikněte pravým tlačítkem myši na databázi nebo objekt, který chcete migrovat v **Průzkumníkovi metadat nástroje SAP POmocného**, a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z horního navigačního panelu. Chcete-li migrovat data pro celou databázi, zaškrtněte políčko vedle názvu databáze. Chcete-li migrovat data z jednotlivých tabulek, rozbalte databázi, rozbalte položku tabulky a potom zaškrtněte políčko vedle této tabulky. Chcete-li vynechat data z jednotlivých tabulek, zrušte zaškrtnutí políčka: 
 1. Po dokončení migrace si prohlédněte **sestavu migrace dat**: 
-1. Ověřte migraci tak, že zkontrolujete data a schéma Azure SQL Database instance pomocí Azure SQL Database Management Studio (SSMS).
+1. Připojte se k Azure SQL Database pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu. 
 
 
 ## <a name="post-migration"></a>Po migraci 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6d2696a68643f87de0fcaf2e723da9365d9953e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99053580"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953846"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Řešení potíží s Start/Stop VMs during off-hours
 
@@ -149,7 +149,7 @@ V následujícím seznamu najdete možná řešení:
   ```
 
 * Aby bylo možné spouštět a zastavovat virtuální počítače, musí mít účet Spustit jako pro účet Automation příslušná oprávnění k tomuto virtuálnímu počítači. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu** vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
-* Pokud má virtuální počítač potíže se spouštěním nebo navrácením, může dojít k potížím na samotném virtuálním počítači. Příkladem je aktualizace, která se používá, když se virtuální počítač snaží vypnout, služba, která zamrzne a další. Přejděte na prostředek virtuálního počítače a zkontrolujte **protokoly aktivit** , abyste viděli, jestli jsou v protokolech nějaké chyby. Můžete se taky pokusit přihlásit k virtuálnímu počítači a zjistit, jestli v protokolech událostí nejsou nějaké chyby. Další informace o řešení potíží s vaším VIRTUÁLNÍm počítačem najdete v tématu [řešení potíží s virtuálními počítači Azure](../../virtual-machines/troubleshooting/index.yml).
+* Pokud má virtuální počítač potíže se spouštěním nebo navrácením, může dojít k potížím na samotném virtuálním počítači. Příkladem je aktualizace, která se používá, když se virtuální počítač snaží vypnout, služba, která zamrzne a další. Přejděte na prostředek virtuálního počítače a zkontrolujte **protokoly aktivit** , abyste viděli, jestli jsou v protokolech nějaké chyby. Můžete se taky pokusit přihlásit k virtuálnímu počítači a zjistit, jestli v protokolech událostí nejsou nějaké chyby. Další informace o řešení potíží s vaším VIRTUÁLNÍm počítačem najdete v tématu [řešení potíží s virtuálními počítači Azure](/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 * Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu** vyberete **úlohy** .
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Scénář: můj vlastní Runbook nedokáže spustit nebo zastavit moje virtuální počítače

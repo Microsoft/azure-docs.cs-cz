@@ -26,7 +26,7 @@
 - name: Kurzy
   items:
     - name: Zabezpečené připojení zařízení IoT ke cloudu
-      href: /learn/paths/securely-connect-iot-devices/
+      href: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
 - name: Koncepty
   items:
     - name: Možnosti připojení pro vývojáře zařízení

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929815"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868711"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
@@ -104,7 +104,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     1. Otevřete uživatelské rozhraní Ambari, klikněte na stránku Spark2, na kartu konfigurace.
 
-        ![Změna konfigurace Sparku a Livy prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="Změna konfigurace Sparku a Livy prostřednictvím Ambari" border="true":::
 
     2. Rozbalte rozšířené livy2-ENV, v dolní části přidejte níže uvedené příkazy. Pokud jste nainstalovali virtuální prostředí s jinou předponou, změňte cestu odpovídajícím způsobem.
 
@@ -113,7 +113,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Změna konfigurace Livy prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="Změna konfigurace Livy prostřednictvím Ambari" border="true":::
 
     3. Rozbalte položku Advanced spark2-ENV, v dolní části nahraďte existující příkaz Export PYSPARK_PYTHON. Pokud jste nainstalovali virtuální prostředí s jinou předponou, změňte cestu odpovídajícím způsobem.
 
@@ -121,11 +121,11 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Změna konfigurace Sparku prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="Změna konfigurace Sparku prostřednictvím Ambari" border="true":::
 
     4. Uložte změny a restartujte ovlivněné služby. Tyto změny vyžadují restartování služby Spark2. Uživatelské rozhraní Ambari vás vyzve k vyžadovanámu restartování, kliknutím na restartovat restartujte všechny ovlivněné služby.
 
-        ![Restartovat služby](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="Restartovat služby" border="true":::
 
     5. Nastavte dvě vlastnosti relace Sparku, aby se zajistilo, že úloha odkazuje na aktualizovanou konfiguraci Sparku: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` a `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
 
@@ -153,7 +153,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     Prostředí Pythonu v Jupyter Notebook můžete Double potvrdit spuštěním následujícího kódu:
 
-    ![Podívejte se na verzi Pythonu v Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Podívejte se na verzi Pythonu v Jupyter Notebook" border="true":::
 
 ## <a name="known-issue"></a>Známý problém
 

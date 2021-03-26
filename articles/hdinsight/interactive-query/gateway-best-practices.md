@@ -4,12 +4,12 @@ description: Naučte se, jak přejít k osvědčeným postupům pro spouštění
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933116"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869782"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ Brána HDInsight je jediná část clusteru HDInsight, která je veřejně pří
 
 Následující diagram poskytuje hrubou ilustraci, jak brána poskytuje abstrakci před všemi různými možnostmi rozlišení hostitele v rámci služby HDInsight.
 
-![Diagram rozlišení hostitele](./media/gateway-best-practices/host-resolution-diagram.png "Diagram rozlišení hostitele")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="Diagram rozlišení hostitele" border="true":::
 
 ## <a name="motivation"></a>Motivace
 
@@ -39,7 +39,7 @@ Snížení výkonu brány proti dotazům velké velikosti je způsobeno tím, ž
 
 Následující diagram znázorňuje kroky zahrnuté v dotazu SELECT.
 
-![Diagram výsledků](./media/gateway-best-practices/result-retrieval-diagram.png "Diagram výsledků")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="Diagram výsledků" border="true":::
 
 Apache Hive je relační abstrakce nad systémem souborů, který je kompatibilní s HDFS. Tato abstrakce znamená, že příkazy **Select** v podregistru odpovídají operacím **čtení** v systému souborů. Operace **čtení** jsou přeloženy do příslušného schématu před Nahlášením uživateli. Latence tohoto procesu se zvyšuje o velikost dat a celkový počet směrování potřebných k dosažení koncového uživatele.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a5e623b0429194db6d03beb674679bd10e337844
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930557"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869465"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak spravovat existující cluster služeb ML v Az
 
 Můžete povolit více souběžných uživatelů pro cluster služeb ML v HDInsight přidáním dalších uživatelů pro hraniční uzel, na kterém je spuštěná verze komunity RStudio. Při vytváření clusteru HDInsight musíte zadat dva uživatele – uživatele HTTP a uživatele SSH:
 
-![Parametry HDI Azure Portal přihlašovacích údajů](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
+:::image type="content" source="./media/r-server-hdinsight-manage/hdi-concurrent-users1.png" alt-text="Parametry HDI Azure Portal přihlašovacích údajů" border="true":::
 
 - **Uživatelské jméno přihlášení clusteru:** Uživatel HTTP pro ověřování prostřednictvím brány HDInsight, která slouží k ochraně vytvořených clusterů HDInsight. Tento uživatel HTTP slouží k přístupu k uživatelskému rozhraní Apache Ambari, uživatelskému rozhraní Apache Hadoop nitě a dalším součástem uživatelského rozhraní.
 - **Uživatelské jméno Secure Shell (SSH):** Uživatel SSH sloužící k přístupu ke clusteru přes Secure Shell. Tento uživatel je uživatel v systému Linux pro všechny hlavní uzly, pracovní uzly a hraniční uzly. Proto můžete použít Secure Shell pro přístup k jakémukoli uzlu ve vzdáleném clusteru.
@@ -63,7 +63,7 @@ sudo passwd <yournewusername>
 
 Na následujícím snímku obrazovky vidíte výstupy.
 
-![počet souběžných uživatelů s výstupem obrazovky](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
+:::image type="content" source="./media/r-server-hdinsight-manage/hdi-concurrent-users2.png" alt-text="počet souběžných uživatelů s výstupem obrazovky" border="true":::
 
 Po zobrazení výzvy k zadání hesla "aktuální heslo protokolu Kerberos", stačí stisknout klávesu **ENTER** , aby se ignorovala. Možnost `-m` v příkazu `useradd` označuje, že systém pro uživatele vytvoří domovskou složku, kterou vyžaduje komunitní verze RStudia.
 
@@ -211,7 +211,7 @@ Pokud chcete nainstalovat balíčky R na pracovní uzly clusteru, musíte použ�
    > 2. Některé balíčky R vyžadují další linuxové systémové knihovny. Pro usnadnění práce jsou služby HDInsight ML předem nainstalovány se závislostmi, které jsou potřebné pro nejčastější 100 nejoblíbenějších balíčků R. Pokud ale balíčky R, které instalujete, vyžadují ještě další knihovny, budete si muset stáhnout základní skript, které zde používáme, a přidat další kroky k instalaci příslušných systémových knihoven. Upravený skript je pak nutné odeslat do veřejného kontejneru objektů blob v úložišti Azure, a k instalaci balíčků použít upravený skript.
    >    Další informace o vývoji akcí skriptů najdete v tématu [Vývoj akcí skriptů](../hdinsight-hadoop-script-actions-linux.md).
 
-   ![Azure Portal odeslat akci skriptu](./media/r-server-hdinsight-manage/submit-script-action.png)
+   :::image type="content" source="./media/r-server-hdinsight-manage/submit-script-action.png" alt-text="Azure Portal odeslat akci skriptu" border="true":::
 
 4. Vyberte **Vytvořit** a spusťte skript. Po dokončení skriptu jsou balíčky R k dispozici na všech pracovních uzlech.
 

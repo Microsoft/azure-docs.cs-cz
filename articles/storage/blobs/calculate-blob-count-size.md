@@ -8,12 +8,12 @@ ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 92e5b00cd655677cdc3096bc2142dfe1b704adf2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1aa91ea0f698e609e786d87a0072e6a07c143a3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102637901"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047313"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Vypočítá počet objektů BLOB a celkovou velikost na kontejner pomocí Azure Storageho inventáře.
 
@@ -43,7 +43,7 @@ Když máte sestavu inventáře k analýze, udělte sobě přístup pro čtení 
 
 ## <a name="create-an-azure-synapse-workspace"></a>Vytvoření pracovního prostoru Azure Synapse
 
-V dalším kroku [Vytvořte pracovní prostor Azure synapse](/azure/synapse-analytics/get-started-create-workspace) , kde spustíte dotaz SQL, který bude hlásit výsledky inventáře.
+V dalším kroku [Vytvořte pracovní prostor Azure synapse](../../synapse-analytics/get-started-create-workspace.md) , kde spustíte dotaz SQL, který bude hlásit výsledky inventáře.
 
 ## <a name="create-the-sql-query"></a>Vytvoření dotazu SQL
 
@@ -58,7 +58,7 @@ Po vytvoření pracovního prostoru Azure synapse proveďte následující kroky
 
 ## <a name="run-the-sql-query"></a>Spustit dotaz SQL
 
-1. Přidejte následující dotaz SQL do svého pracovního prostoru Azure synapse a [Přečtěte si soubor CSV s inventářem](/azure/synapse-analytics/sql/query-single-csv-file#read-a-csv-file).
+1. Přidejte následující dotaz SQL do svého pracovního prostoru Azure synapse a [Přečtěte si soubor CSV s inventářem](../../synapse-analytics/sql/query-single-csv-file.md#read-a-csv-file).
 
     Pro `bulk` parametr použijte adresu URL souboru CSV sestavy inventáře, který chcete analyzovat.
 

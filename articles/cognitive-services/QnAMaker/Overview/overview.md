@@ -7,18 +7,20 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA maker, konverzace s nízkým kódem roboty, konverzace s vícenásobným zahnutím
-ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 8df9daa213156fc38ed08bced44ea919da95e6a4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919557"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869204"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 
 QnA Maker je cloudová služba pro zpracování přirozeného jazyka (NLP), která umožňuje vytvořit přirozenou konverzační vrstvu přes vaše data. Používá se k nalezení nejvhodnější odpovědi pro libovolný vstup z vaší vlastní znalostní báze (KB) informací.
 
 QnA Maker se běžně používá k sestavování klientských aplikací v konverzaci, mezi které patří aplikace sociálních médií, chat roboty a desktopové aplikace s podporou řeči.
+
+QnA Maker neukládají zákaznická data. Všechna zákaznická data (dotazy na otázky a odpovědi na chatlogs) se ukládají v oblasti, ve které zákazník nasadí závislé instance služby. Další podrobnosti o závislých službách najdete [tady](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/plan?tabs=v1).
 
 ## <a name="when-to-use-qna-maker"></a>Kdy použít QnA Maker
 

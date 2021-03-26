@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0de25b29dc1e930956c01f342ca2614d1a9082ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2dc94ea904da128be01decf36e2d36dc9510c2a5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557501"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043871"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Nejčastější dotazy týkající se Windows Virtual Machines
 Tento článek popisuje některé běžné dotazy k virtuálním počítačům s Windows vytvořeným v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Linux najdete v tématu [Nejčastější dotazy o Linux Virtual Machines](../linux/faq.md).
@@ -33,7 +33,7 @@ Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použ
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžu získat přístup k virtuálnímu počítači?
 Navažte vzdálené připojení pomocí Připojení ke vzdálené ploše (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md). Podporuje se maximálně dvě souběžná připojení, pokud server není nakonfigurovaný jako hostitel relace vzdálené plochy.  
 
-Pokud máte problémy se vzdálenou plochou, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
+Pokud máte problémy se vzdálenou plochou, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Pokud jste obeznámeni s technologií Hyper-V, možná hledáte nástroj podobný nástroji VMConnect. Azure nenabízí podobný nástroj, protože přístup konzoly k virtuálnímu počítači není podporovaný.
 

@@ -1,24 +1,24 @@
 ---
 title: Rychlý Start – přidání volání do aplikace pro iOS pomocí komunikačních služeb Azure
-description: V tomto rychlém startu se dozvíte, jak používat komunikační služby Azure, které volají klientské knihovny pro iOS.
+description: V tomto rychlém startu se dozvíte, jak používat komunikační služby Azure, které volají sadu SDK pro iOS.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719852"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108259"
 ---
-V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS.
+V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají sadu SDK pro iOS.
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
+> Tento dokument používá verzi 1.0.0-beta. 8 volání sady SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -119,11 +119,11 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient je hlavní vstupní bod pro volání klientské knihovny.|
+| CallClient | CallClient je hlavní vstupní bod pro volání sady SDK.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
 | CommunicationTokenCredential | CommunicationTokenCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.| 
 | CommunicationUserIdentifier | CommunicationUserIdentifier se používá k reprezentaci identity uživatele, která může být jedna z následujících: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |

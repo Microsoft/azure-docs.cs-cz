@@ -21,7 +21,7 @@
 - name: ukázky
   items:
     - name: Prohlížeč ukázek
-      href: 'https://docs.microsoft.com/samples/browse/?terms=content%20moderator'
+      href: /samples/browse/?terms=content+moderator
     - name: Ukázky .NET SDK
       href: samples-dotnet.md
     - name: Ukázky Python SDK
@@ -119,11 +119,11 @@
     - name: Podpora oblastí
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Moduly Microsoft Learn
-      href: 'https://docs.microsoft.com/learn/browse/?terms=content%20moderator'
+      href: /learn/browse/?terms=content+moderator
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
     - name: Azure Government a globální Azure
-      href: 'https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure'
+      href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů

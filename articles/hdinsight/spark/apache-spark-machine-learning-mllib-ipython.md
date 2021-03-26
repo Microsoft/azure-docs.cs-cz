@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 224ebae58a5688f81d1b64b4a9c81d5abd8a9690
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930056"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868847"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace Machine Learning a analýze datové sady
 
@@ -175,7 +175,7 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
 
     Výstup bude následující:
 
-    ![Výstup dotazu SQL](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "Výstup dotazu SQL")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png " alt-text="Výstup dotazu SQL" border="true":::
 
 3. Můžete také použít matplotlib, knihovnu, která slouží k vytváření vizualizace dat, k vytvoření grafu. Vzhledem k tomu, že je nutné vytvořit vykreslení z místně trvalého datového rámce **countResultsdf** , musí fragment kódu začínat `%%local` Magic. Tato akce zajistí, že se kód spustí místně na serveru Jupyter.
 
@@ -348,7 +348,7 @@ Nyní můžete vytvořit konečnou vizualizaci, která vám pomůžete v důsled
 
     Měl by se zobrazit následující výstup:
 
-    ![Výstup aplikace Spark Machine Learning – Procento neúspěšných inspekcí v potravinách v grafu](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Výstup výsledků strojového učení Sparku")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png " alt-text="Výstup aplikace Spark Machine Learning – Procento neúspěšných inspekcí v potravinách v grafu" border="true":::
 
     Výsledkem "pozitivního" v tomto grafu je neúspěšná kontrola jídla, zatímco záporný výsledek odkazuje na úspěšnou kontrolu.
 

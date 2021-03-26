@@ -3,12 +3,12 @@ title: Šablony – funkce – datum
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) pro práci s daty.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: abff5b86ad1e10042596b11f613cdb594e307209
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96920499"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889922"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
 
@@ -27,11 +27,11 @@ Přidá do základní hodnoty časový interval. Očekává se formát ISO 8601.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base | Yes | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| doba trvání | Yes | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formát | No | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Ano | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| doba trvání | Ano | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formát | Ne | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -186,9 +186,9 @@ Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadá
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formát |No |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formát |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -287,7 +287,7 @@ Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2020-10-01",
       "name": "[parameters('rgName')]",
       "location": "westeurope",
       "tags": {
@@ -311,7 +311,7 @@ Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty
 param utcShort string = utcNow('d')
 param rgName string
 
-resource myRg 'Microsoft.Resources/resourceGroups@2018-05-01' = {
+resource myRg 'Microsoft.Resources/resourceGroups@2020-10-01' = {
   name: rgName
   location: 'westeurope'
   tags: {
