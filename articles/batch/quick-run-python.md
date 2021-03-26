@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511010"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046806"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rychlý Start: použití rozhraní Python API ke spuštění úlohy Azure Batch
 
@@ -22,13 +22,13 @@ Po dokončení tohoto rychlého startu budete porozumět klíčovým konceptům 
 
 ![Přehled pracovního postupu Azure Batch](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
-- [Python](https://python.org/downloads) verze 2,7 nebo 3,3 nebo novější, včetně Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
+- [Python](https://python.org/downloads) verze 2,7 nebo 3,6, včetně Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

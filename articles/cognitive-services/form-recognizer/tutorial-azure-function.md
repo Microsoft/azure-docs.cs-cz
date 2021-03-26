@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8c72a018f03b5284d3fc53be02d9eb526cdfcf28
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf455d9401593b5c09fa295e492368a2a5bee240
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722238"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048688"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>Kurz: použití funkce Azure ke zpracování uložených dokumentů
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Extrakce dat rozložení z nahraných formulářů
 > * Nahrát data rozložení do Azure Storage
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Vytvoření prostředku pro rozpoznávání formulářů "  target="_blank"> vytvoření prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k získání klíče a koncového bodu pro rozpoznávání formuláře. Po nasazení klikněte na **Přejít k prostředku**.
@@ -40,9 +40,9 @@ V tomto kurzu se naučíte:
 * Místní dokument PDF, který se má analyzovat Můžete si stáhnout tento [ukázkový dokument](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout.pdf) , který chcete použít.
 * Je nainstalovaný [Python 3.8. x](https://www.python.org/downloads/) .
 * [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nainstalován.
-* [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools) nainstalován.
+* [Azure Functions Core Tools](../../azure-functions/functions-run-local.md?tabs=windows%2ccsharp%2cbash#install-the-azure-functions-core-tools) nainstalován.
 * Visual Studio Code s následujícími nainstalovanými rozšířeními:
-  * [Rozšíření Azure Functions](https://docs.microsoft.com/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
+  * [Rozšíření Azure Functions](/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
   * [Rozšíření Pythonu](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension)
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu Azure Storage

@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622065"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110332"
 ---
-Začínáme s komunikačními službami Azure pomocí klientské knihovny služby Communications JavaScript pro službu SMS pro posílání zpráv SMS.
+Začínáme s komunikačními službami Azure pomocí komunikačních služeb JavaScript SDK pro komunikaci, které vám umožní posílat zprávy SMS.
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-js-pr/tree/feature/communication/sdk/communication/communication-sms) | [Package (NPM)](https://www.npmjs.com/package/@azure/communication-sms) | [Samples](#todo-samples)-->
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
@@ -57,7 +57,7 @@ Pomocí textového editoru vytvořte soubor s názvem **send-sms.js** v kořenov
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Pomocí `npm install` příkazu nainstalujte klientskou knihovnu služby Azure Communications Services pro JavaScript.
+Pomocí `npm install` příkazu nainstalujte sadu Azure Communications Services SMS SDK pro JavaScript.
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,7 +67,7 @@ npm install @azure/communication-sms --save
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro Node.js.
+Následující třídy a rozhraní zpracovávají některé hlavní funkce sady SMS SDK služby Azure Communications Services pro Node.js.
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce klien
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Naimportujte **SmsClient** z klientské knihovny a vytvořte její instanci pomocí připojovacího řetězce. Následující kód načte připojovací řetězec pro prostředek z proměnné prostředí s názvem `COMMUNICATION_SERVICES_CONNECTION_STRING` . Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
+Importujte **SmsClient** ze sady SDK a vytvořte její instanci pomocí připojovacího řetězce. Následující kód načte připojovací řetězec pro prostředek z proměnné prostředí s názvem `COMMUNICATION_SERVICES_CONNECTION_STRING` . Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
 
 Přidejte následující kód pro **send-sms.js**:
 

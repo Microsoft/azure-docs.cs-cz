@@ -190,6 +190,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Optimalizace Apache Pigu
                   href: ./optimize-pig-ambari.md
+            - name: Vyhledání názvů hostitelů uzlů clusteru
+              href: ./find-host-name.md
             - name: Restartování uzlů clusteru
               href: ./cluster-reboot-vm.md
             - name: Použití rozhraní Apache Ambari REST API

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 37f6a779e7dd83a6aa61de9850ad3b49b57393f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76aadd667691e12c61e0e5e13c13ca0241a9f0ce
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010430"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045497"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Registrace a kontrola zdrojového kódu Oracle (Preview)
 
@@ -22,10 +22,10 @@ Tento článek popisuje, jak zaregistrovat databázi Oracle v dosah a nastavit k
 
 Zdroj Oracle podporuje **úplnou kontrolu** pro extrakci metadat z databáze Oracle a načítá mezi datovými assety **čáru** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1.  Nastavte si nejnovější [prostředí Integration runtime](https://www.microsoft.com/download/details.aspx?id=39717)na místním hostiteli.
-    Další informace najdete v tématu [Vytvoření a konfigurace prostředí Integration runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)v místním prostředí.
+    Další informace najdete v tématu [Vytvoření a konfigurace prostředí Integration runtime](../data-factory/create-self-hosted-integration-runtime.md)v místním prostředí.
 
 2.  Ujistěte se, že je na virtuálním počítači, na kterém je nainstalovaný modul runtime integrace v místním prostředí, nainstalovaný [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) .
 
@@ -105,7 +105,7 @@ Na obrazovce **Registrovat zdroje (Oracle)** udělejte toto:
 
 Pokud chcete vytvořit a spustit novou kontrolu, udělejte toto:
 
-1.  V centru pro správu klikněte na modul runtime integrace. Ujistěte se, že je nastavený modul Integration runtime v místním prostředí. Pokud není nastavený, použijte postup uvedený [tady](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) k vytvoření prostředí Integration runtime v místním prostředí.
+1.  V centru pro správu klikněte na modul runtime integrace. Ujistěte se, že je nastavený modul Integration runtime v místním prostředí. Pokud není nastavený, použijte postup uvedený [tady](./manage-integration-runtimes.md) k vytvoření prostředí Integration runtime v místním prostředí.
 
 2.  Přejděte do **zdrojů**.
 

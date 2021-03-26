@@ -3,19 +3,14 @@ title: Zálohování Azure Managed Disks
 description: Naučte se, jak zálohovat Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98738148"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110623"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>Zálohování Azure Managed Disks (ve verzi Preview)
-
->[!IMPORTANT]
->Služba Azure disk Backup je ve verzi Preview bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informace o dostupnosti oblastí najdete v tématu [matice podpory](disk-backup-support-matrix.md).
->
->[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
+# <a name="back-up-azure-managed-disks"></a>Zálohování Azure Managed Disks
 
 Tento článek vysvětluje, jak zálohovat službu [Azure Managed disk](../virtual-machines/managed-disks-overview.md) z Azure Portal.
 
