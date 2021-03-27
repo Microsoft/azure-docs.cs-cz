@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: V tomto kurzu se naučíte dynamicky aktualizovat konfigurační data pro aplikace .NET Core.
 services: azure-app-configuration
 documentationcenter: ''
-author: abarora
+author: GrantMeStrength
 manager: zhenlan
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: abarora
-ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jken
+ms.openlocfilehash: bb0c83536f8973a07d656844439a8816dea83346
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99979857"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625700"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Core
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Nastavte si aplikaci .NET Core, abyste aktualizovali její konfiguraci v reakci na změny v úložišti konfigurace aplikace.
 > * Využijte ve své aplikaci nejnovější konfiguraci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 

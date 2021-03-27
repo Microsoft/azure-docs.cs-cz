@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27184e267bb0472dad6fc9176dfdeee68d5eae58
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518443"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611816"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Dostupnost a redundance služby Azure Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault funkce více vrstev redundance, aby se zajistilo, že vaše klí
 > [!NOTE]
 > Tato příručka se vztahuje na trezory. Spravované fondy HSM používají jiný model vysoké dostupnosti a zotavení po havárii. Další informace najdete v tématu [spravovaná příručka pro zotavení po havárii HSM](../managed-hsm/disaster-recovery-guide.md) .
 
-Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 km, ale v rámci stejné geografické úrovně zachovává vysokou odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v tématu [spárované oblasti Azure](../../best-practices-availability-paired-regions.md). Výjimka pro model spárovaných oblastí je Brazílie – jih, která umožňuje, aby se data v oblasti Brazílie – jih zajistila pouze možností. Brazílie – jih používá redundantní úložiště zóny (ZRS) k replikaci dat třikrát v jednom umístění nebo oblasti.   
+Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 km, ale v rámci stejné geografické úrovně zachovává vysokou odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v tématu [spárované oblasti Azure](../../best-practices-availability-paired-regions.md). Výjimka pro model spárovaných oblastí je Brazílie – jih, která umožňuje, aby se data v oblasti Brazílie – jih zajistila pouze možností. Brazílie – jih používá redundantní úložiště zóny (ZRS) k replikaci dat třikrát v jednom umístění nebo oblasti. Pro integrace Premium se k replikaci dat z modulu HSM používá jenom 2 ze 3 oblastí.  
 
 Pokud jednotlivé komponenty v rámci služby trezoru klíčů selžou, alternativní komponenty v rámci této oblasti v rámci vaší žádosti budou sloužit k tomu, aby se zajistilo, že nedojde k žádnému zhoršení funkčnosti. Pro spuštění tohoto procesu nemusíte provádět žádnou akci, k tomu dochází automaticky a pro vás bude transparentní.
 

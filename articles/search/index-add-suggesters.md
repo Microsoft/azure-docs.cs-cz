@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a03ca4bcad9bb577db68e2728ff9dbebb5779a7a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606211"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626822"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Kognitivní hledání, typeahead nebo "prohledávání jako typ", je povoleno prostřednictvím nástroje pro *návrhy*. Modul pro návrhy je interní datová struktura, která se skládá z kolekce polí. Pole se dotýkají dodatečného tokenizace, generování posloupnosti předpon pro podporu shody na částečných výrazech. Například modul pro návrhy, který obsahuje pole City, bude mít pro pojem "Seattle" kombinaci předpon "moře", "sedadlo", "pracovní stanici" a "seattl".
+V Azure Kognitivní hledání, typeahead nebo "prohledávání jako typ", je povoleno prostřednictvím nástroje pro *návrhy*. Modul pro návrhy poskytuje seznam polí, která podstoupily další tokenizace a generují sekvence předpony pro podporu shody se částečnými výrazy. Například modul pro návrhy, který obsahuje pole City s hodnotou pro "Seattle", bude mít kombinace předpony "moře", "sedadla", "pracovní stanice" a "seattl" pro podporu typeahead.
 
 V případě částečných podmínek může být dotaz AutoComplete nebo navrhovaná shoda. Stejný nástroj pro návrhy podporuje jak prostředí.
 
@@ -171,11 +171,13 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-+ [Vytvoření první aplikace v jazyce C# (lekce 3 – přidání výsledků hledání podle vašeho typu)](tutorial-csharp-type-ahead-and-suggestions.md) ukázka navrhovaných dotazů, automatického dokončování a vymezené navigace. Tato ukázka kódu běží na službě izolovaného prostoru (sandbox) Azure Kognitivní hledání a používá předem načtený index hotelů s již vytvořeným nástrojem pro navrhování, takže stačí stisknout klávesu F5 ke spuštění aplikace. Není nutné žádné předplatné ani přihlášení.
++ [Přidání vyhledávání na web (JavaScript):](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) používá otevřený zdrojový balíček návrhů pro částečné dokončování v klientské aplikaci.
+
++ [Vytvoření první aplikace v jazyce C# (lekce 3 – přidání výsledků hledání podle vašeho typu)](tutorial-csharp-type-ahead-and-suggestions.md) ukázka navrhovaných dotazů, automatického dokončování a vymezené navigace. Tento kód poskytuje nativní podporu pro typeahead namísto použití widgetu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro další informace o způsobu formulování požadavků doporučujeme následující článek.
+Další informace o požadavcích \ formulace.
 
 > [!div class="nextstepaction"]
 > [Přidání automatického dokončování a návrhů do klientského kódu](search-add-autocomplete-suggestions.md)

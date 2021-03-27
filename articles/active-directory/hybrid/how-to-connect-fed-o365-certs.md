@@ -16,22 +16,29 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686865"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611884"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Prodloužit platnost federačních certifikátů pro Microsoft 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
 Pro úspěšnou federaci mezi Azure Active Directory (Azure AD) a Active Directory Federation Services (AD FS) (AD FS) by se certifikáty, které používá AD FS k podepisování tokenů zabezpečení služby Azure AD, měly shodovat s tím, co je nakonfigurované ve službě Azure AD. Jakákoli neshoda může vést k porušení vztahu důvěryhodnosti. Služba Azure AD zajišťuje, že tyto informace budou při nasazení AD FS a proxy webových aplikací (pro přístup k síti extranet) udržovány synchronizované.
+
+> [!NOTE]
+> Tento článek poskytuje informace o manging vašich federačních cerficates.  Další informace o mimořádných rotacích najdete v tématu [mimořádná rotace AD FS certifikátů](how-to-connect-emergency-ad-fs-certificate-rotation.md) .
 
 V tomto článku najdete další informace o správě certifikátů podepisování tokenů a jejich synchronizaci s Azure AD, a to v následujících případech:
 
 * Neprovádíte nasazení služby Proxy webových aplikací, takže federační metadata nejsou v extranetu k dispozici.
 * Nepoužíváte výchozí konfiguraci AD FS pro podpisové certifikáty tokenů.
 * Používáte poskytovatele identity od jiného výrobce.
+
+> [!IMPORTANT]
+> Microsoft důrazně doporučuje používat k ochraně a zabezpečení certifikátů modul hardwarového zabezpečení (HSM).
+> Další informace najdete v [modulu hardwarového zabezpečení](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) v části osvědčené postupy pro zabezpečení AD FS.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Výchozí konfigurace AD FS pro podpisové certifikáty tokenů
 Certifikáty podepisování tokenů a dešifrování tokenů jsou obvykle certifikáty podepsané svým držitelem a jsou vhodné po dobu jednoho roku. Ve výchozím nastavení AD FS zahrnuje proces automatického obnovování s názvem **AutoCertificateRollover**. Pokud používáte AD FS 2,0 nebo novější, Microsoft 365 a Azure AD automaticky aktualizují svůj certifikát před jeho vypršením jeho platnosti.

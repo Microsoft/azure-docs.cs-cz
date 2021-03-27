@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa5ecd19863e8a37efdf533e68aeaed053c552f8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578800"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625675"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -25,7 +25,7 @@ V tomto rychlém startu zaregistrujete aplikaci do Azure Portal, aby platforma M
 
 Microsoft Identity Platform provádí správu identit a přístupu (IAM) pouze u registrovaných aplikací. Bez ohledu na to, jestli se jedná o klientskou aplikaci, jako je webová nebo mobilní aplikace, nebo se jedná o webové rozhraní API, které zálohuje klientskou aplikaci, registrace vytvoří vztah důvěryhodnosti mezi vaší aplikací a poskytovatelem identity a platformou Microsoft identity.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který má aktivní předplatné. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Dokončení nastavení rychlého startu [tenanta](quickstart-create-new-tenant.md)
@@ -56,7 +56,10 @@ Při vytváření registrace aplikace postupujte podle těchto kroků:
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, v němž se zobrazuje podokno Registrovat aplikaci":::
 
-Po dokončení registrace se v Azure Portal zobrazí podokno s **přehledem** registrace aplikace. Zobrazí se **ID aplikace (klienta)**. Označuje se taky jako *ID klienta*. Tato hodnota jednoznačně identifikuje vaši aplikaci na platformě Microsoft identity.
+Po dokončení registrace se v Azure Portal zobrazí podokno s **přehledem** registrace aplikace. Zobrazí se **ID aplikace (klienta)**. Označuje se taky jako *ID klienta*. Tato hodnota jednoznačně identifikuje vaši aplikaci na platformě Microsoft identity. 
+
+> [!IMPORTANT]
+> Nové registrace aplikací jsou ve výchozím nastavení skryty uživatelům. Až budete připraveni na to, aby uživatelé aplikaci viděli na své [stránce Moje aplikace](../user-help/my-apps-portal-end-user-access.md) , můžete ji povolit. Pokud chcete aplikaci povolit, přejděte v Azure Portal do části **Azure Active Director**  >  **Enterprise Applications** a vyberte aplikaci. Pak na stránce **vlastnosti** přepínací tlačítko **Zobrazit uživatelům?** na Ano.
 
 Kód vaší aplikace, nebo častěji knihovna ověřování použitá ve vaší aplikaci, používá také ID klienta. ID se používá jako součást ověřování tokenů zabezpečení, které přijímá z platformy identity.
 

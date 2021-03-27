@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 5365ba8c4fbc07c487dd40cfcdc9d566990c493c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607033"
+ms.locfileid: "105611833"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
 
@@ -133,7 +133,7 @@ Command Result : 0 (Success)
 
 ### <a name="alternative-to-using-global-vnet-peering"></a>Alternativa k použití globálních VNET Peering
 K dispozici je několik architektur, které můžete použít jako alternativu k globálním partnerským vztahům virtuální sítě.
-1.  Použití [připojení VPN Gateway VNet-to-vnet](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
+1.  Použití [připojení VPN Gateway VNet-to-vnet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
 2.  Připojte virtuální síť HSM k jiné virtuální síti pomocí okruhu ER. To funguje nejlépe, když je vyžadována přímá místní cesta nebo virtuální síť VPN. 
 
 #### <a name="hsm-with-direct-express-route-connectivity"></a>HSM s přímým připojením Route Express

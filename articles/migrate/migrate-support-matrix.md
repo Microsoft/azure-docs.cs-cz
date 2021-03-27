@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b9ea447b0204ad91065f27d265584c8787167fc2
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: af0b8a4d3dfbce32e412f5294fb19ade61fd7661
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870717"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628165"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -44,7 +44,7 @@ Azure Migrate: Migrace serveru | – | Migrujte [virtuální počítače VMware]
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a další cloudové úlohy. | –
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzický server písku dalších cloudových úloh. |  Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu.
 [Zařízení 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a další cloudové úlohy.| –
-[DMA](/sql/dma/dma-overview?view=sql-server-2017) | Vyhodnotit SQL Serveré databáze. | –
+[DMA](/sql/dma/dma-overview) | Vyhodnotit SQL Serveré databáze. | –
 [DMS](../dms/dms-overview.md) | – | Migrujte SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Posouzení infrastruktury virtuálních klientských počítačů (VDI) | –
 [Movere](https://www.movere.io/) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, virtuální počítače Xen, fyzické servery, pracovní stanice (včetně infrastruktury VDI) a další cloudové úlohy. | –

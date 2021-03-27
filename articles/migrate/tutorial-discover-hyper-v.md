@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: d108774aea2d7ac7773dab06efc977dd9e501eb5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108770"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612513"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Kurz: zjišťování serverů běžících na technologii Hyper-V s Azure Migrate: zjišťování a posouzení
 
-Jako součást cesty migrace do Azure zjistíte místní inventář a zatížení. 
+Jako součást cesty migrace do Azure zjistíte místní inventář a zatížení.
 
 V tomto kurzu se dozvíte, jak zjišťovat místní servery na hostitelích Hyper-V pomocí nástroje Azure Migrate: Discovery and Assessment pomocí jednoduchého zařízení Azure Migrate. Zařízení nasadíte jako server na hostiteli Hyper-V, abyste mohli průběžně zjišťovat metadata počítačů a výkonu.
 
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 --- | ---
 **Hostitel Hyper-V** | Hostitelé Hyper-V, na kterých se nacházejí servery, můžou být samostatné nebo v clusteru.<br/><br/> V hostiteli musí být spuštěný systém Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/><br/> Ověřte, zda jsou povolena příchozí připojení na portu WinRM 5985 (HTTP), aby se zařízení mohlo připojit k vyžádanému metadatům serveru a datům výkonu pomocí model CIM (Common Information Model) (CIM).
 **Nasazení zařízení** | Hostitel Hyper-V potřebuje prostředky k přidělení serveru pro zařízení:<br/><br/> – 16 GB paměti RAM, 8 vCPU a přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač a přístup k Internetu na zařízení, přímo nebo prostřednictvím proxy serveru.
-**Servery** | Na serverech může běžet libovolný operační systém Windows nebo Linux. 
+**Servery** | Na serverech může běžet libovolný operační systém Windows nebo Linux.
 
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
@@ -56,7 +56,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
     ![Vyhledávací pole pro hledání předplatného Azure](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. Na stránce **předplatná** vyberte předplatné, ve kterém chcete vytvořit projekt. 
+2. Na stránce **předplatná** vyberte předplatné, ve kterém chcete vytvořit projekt.
 3. V předplatném vyberte **řízení přístupu (IAM)**  >  **Kontrola přístupu**.
 4. V části **kontrolovat přístup** vyhledejte příslušný uživatelský účet.
 5. V nabídce **Přidat přiřazení role** klikněte na **Přidat**.
@@ -176,7 +176,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
         **Scénář** | **Stáhnout** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,91 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8,91 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - Pro Azure Government:
 
@@ -293,5 +293,3 @@ Po dokončení zjišťování můžete ověřit, že se servery zobrazují na po
 
 - [Posuzuje servery v prostředí Hyper-V](tutorial-assess-hyper-v.md) pro migraci na virtuální počítače Azure.
 - [Zkontrolujte data](migrate-appliance.md#collected-data---hyper-v) , která zařízení shromažďuje během zjišťování.
-
-

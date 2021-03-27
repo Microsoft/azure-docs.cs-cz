@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d41b06bb0c2b26776f9d9c195c3a713e4dae9f82
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572795"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626583"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -40,7 +40,7 @@ K dispozici je jedna fronta pracovních položek na každé centrum úloh v Dura
 
 ### <a name="control-queues"></a>Počet front ovládacích prvků:
 
-K dispozici je více *řídicích front* pro každé centrum úloh v Durable Functions. *Fronta ovládacího prvku* je výkonnější než jednodušší fronta pracovních položek. Řídicí fronty se používají ke spuštění stavových funkcí Orchestrator a entity. Vzhledem k tomu, že instance nástroje Orchestrator a entity Function jsou stavové nejednoznačné, není možné použít konkurenční model uživatele k distribuci zatížení napříč virtuálními počítači. Místo toho se zprávy Orchestrator a entity vyrovnávají zatížením napříč řídicími frontami. Další podrobnosti o tomto chování najdete v následujících oddílech.
+K dispozici je více *řídicích front* pro každé centrum úloh v Durable Functions. *Fronta ovládacího prvku* je výkonnější než jednodušší fronta pracovních položek. Řídicí fronty se používají ke spuštění stavových funkcí Orchestrator a entity. Vzhledem k tomu, že instance nástroje Orchestrator a entity Function jsou stavové nejednoznačné, je důležité, aby každá orchestrace nebo entita byla zpracována pouze jedním pracovním procesem. Chcete-li toho dosáhnout, každá instance orchestrace nebo entita je přiřazena k jedné frontě ovládacích prvků. Tyto řídicí fronty jsou vyrovnávání zatížení napříč pracovními procesy, aby bylo zajištěno, že každá fronta je současně zpracována pouze jedním pracovním postupem. Další podrobnosti o tomto chování najdete v následujících oddílech.
 
 Řídicí fronty obsahují nejrůznější typy zpráv o životním cyklu orchestrace. Příklady zahrnují [zprávy řízení nástroje Orchestrator](durable-functions-instance-management.md), zprávy s *odezvou* funkcí aktivity a zprávy časovače. Ve frontě ovládacích prvků v jednom cyklickém dotazování bude z fronty ovládacího prvku odřazena spousta zpráv 32. Tyto zprávy obsahují data datové části i metadata, včetně toho, pro kterou instanci orchestrace je určena. Je-li pro stejnou instanci orchestrace určena více zpráv ve frontě, budou zpracovány jako dávka.
 
@@ -56,7 +56,7 @@ Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictv
 ### <a name="orchestration-start-delays"></a>Zpoždění zahájení orchestrace
 Instance orchestrace se spouští vložením `ExecutionStarted` zprávy do jedné z front ovládacích prvků centra úloh. Za určitých podmínek můžete sledovat prodlevy s více sekundami mezi tím, kdy je naplánováno spuštění Orchestrace a kdy je ve skutečnosti spuštěna. Během tohoto časového intervalu zůstane instance orchestrace ve `Pending` stavu. Existují dva možné příčiny tohoto zpoždění:
 
-1. **Fronty nevyřízených ovládacích prvků**: Pokud řídicí fronta pro tuto instanci obsahuje velký počet zpráv, může trvat nějakou dobu, než se `ExecutionStarted` zpráva přijme a zpracuje modulem runtime. Zprávy nevyřízených položek se mohou vyskytnout, pokud orchestrace zpracovává velké množství událostí současně. Mezi události, které patří do fronty řízení, patří události zahájení orchestrace, dokončování aktivit, trvalá časovače, ukončení a externí události. Pokud tato prodleva nastane za normálních okolností, zvažte vytvoření nového centra úloh s větším počtem oddílů. Konfigurace více oddílů způsobí, že modul runtime vytvoří více řídicích front pro distribuci zatížení.
+1. **Fronty nevyřízených ovládacích prvků**: Pokud řídicí fronta pro tuto instanci obsahuje velký počet zpráv, může trvat nějakou dobu, než se `ExecutionStarted` zpráva přijme a zpracuje modulem runtime. Zprávy nevyřízených položek se mohou vyskytnout, pokud orchestrace zpracovává velké množství událostí současně. Mezi události, které patří do fronty řízení, patří události zahájení orchestrace, dokončování aktivit, trvalá časovače, ukončení a externí události. Pokud tato prodleva nastane za normálních okolností, zvažte vytvoření nového centra úloh s větším počtem oddílů. Konfigurace více oddílů způsobí, že modul runtime vytvoří více řídicích front pro distribuci zatížení. Každý oddíl odpovídá 1:1 s frontou ovládacích prvků s maximálně 16 oddíly.
 
 2. **Zpoždění při cyklickém dotazování**: Další běžnou příčinu zpoždění orchestrace je [dřív popsané chování při cyklickém dotazování pro kontrolní fronty](#queue-polling). Tato prodleva se však očekává pouze při horizontálním navýšení kapacity aplikace na dvě nebo více instancí. Pokud existuje jenom jedna instance aplikace nebo pokud instance aplikace, která spouští orchestraci, je taky stejná jako instance, která se dotazuje na cílovou frontu ovládacích prvků, neproběhne zpoždění cyklického dotazování fronty. Zpoždění cyklického dotazování se dá snížit aktualizací **host.jsna** nastavení, jak je popsáno výše.
 
@@ -94,7 +94,12 @@ Pokud není zadaný, použije se výchozí `AzureWebJobsStorage` účet úloži�
 
 ## <a name="orchestrator-scale-out"></a>Škálování na více instancí Orchestrator
 
-Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtuálních počítačů. Funkce a entity nástroje Orchestrator jsou naopak *rozdělené do oddílů* v jedné nebo několika řídicích frontách. Počet front řízení je definován v **host.jsv** souboru. Následující příklad host.jsve fragmentu kódu nastaví `durableTask/storageProvider/partitionCount` vlastnost (nebo `durableTask/partitionCount` v Durable Functions 1. x) na `3` .
+I když lze funkce aktivity škálovat nekonečně přidáním více virtuálních počítačů, jsou jednotlivé instance a entity nástroje Orchestrator omezené tak, aby inhabit jeden oddíl a maximální počet oddílů je ohraničený `partitionCount` nastavením v `host.json` . 
+
+> [!NOTE]
+> Obecně řečeno, funkce nástroje Orchestrator mají být odlehčené a neměly by vyžadovat velké množství výpočetní síly. Proto není nutné vytvářet velký počet oddílů front řízení, aby bylo možné dosáhnout Skvělé propustnosti pro orchestraci. Většina těžkých prací by se měla provádět v bezstavových funkcích aktivity, které se dají škálovat nekonečně.
+
+Počet front řízení je definován v **host.jsv** souboru. Následující příklad host.jsve fragmentu kódu nastaví `durableTask/storageProvider/partitionCount` vlastnost (nebo `durableTask/partitionCount` v Durable Functions 1. x) na `3` . Všimněte si, že existuje tolik front ovládacích prvků, jako jsou oddíly.
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -124,11 +129,25 @@ Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtu
 
 Centrum úloh se dá nakonfigurovat s mezi 1 a 16 oddíly. Pokud není zadaný, výchozí počet oddílů je **4**.
 
-Při horizontálním navýšení kapacity na více instancí hostitelů funkcí (obvykle na různých virtuálních počítačích) získá každá instance zámek jedné z řídicích front. Tyto zámky se interně implementují jako zapůjčení úložiště objektů BLOB a zajišťují, že instance orchestrace nebo entita běží jenom na jedné instanci hostitele najednou. Pokud je Centrum úkolů nakonfigurované se třemi řídicími frontami, instance Orchestrace a entity je možné vyrovnávat zatížení až po třech virtuálních počítačích. Další virtuální počítače je možné přidat za účelem zvýšení kapacity pro provádění funkcí aktivity.
+Ve scénářích s nízkým provozem se vaše aplikace bude škálovat, takže oddíly budou spravovány malým počtem pracovních procesů. Vezměte v úvahu příklad diagramu níže.
+
+![Diagram orchestrace v měřítku](./media/durable-functions-perf-and-scale/scale-progression-1.png)
+
+V předchozím diagramu vidíte, že orchestrace 1 až 6 jsou vyrovnávány zatížení napříč oddíly. Podobně se oddíly, jako jsou aktivity, vyrovnávají zatížení napříč pracovními procesy. Oddíly jsou vyrovnávány zatížením napříč pracovními procesy bez ohledu na počet orchestrací, které začínají.
+
+Pokud pracujete na Azure Functions spotřebě nebo v plánech elastické úrovně Premium nebo máte nakonfigurované automatické škálování na základě zatížení, přidělí se víc pracovníků jako nárůst provozu a oddíly nakonec vyrovnávají zatížení napříč všemi pracovními procesy. Pokud budeme i nadále škálovat, nakonec bude možné každý oddíl spravovat jediným pracovním procesem. Aktivity na druhé straně budou nadále vyrovnávat zatížení napříč všemi pracovními procesy. Zobrazuje se na obrázku níže.
+
+![Diagram orchestrace v prvním měřítku](./media/durable-functions-perf-and-scale/scale-progression-2.png)
+
+Horní hranice maximálního počtu souběžných _aktivních_ orchestrací v *daném čase* se rovná počtu pracovních procesů, které vaše aplikace přidělila, a to za _dobu, kdy_ je vaše hodnota `maxConcurrentOrchestratorFunctions` . Tato horní mez se dá považovat za přesnější, když jsou vaše oddíly plně škálované napříč pracovními procesy. Pokud se plně škáluje a vzhledem k tomu, že každý pracovní proces bude mít pouze jednu instanci hostitele s jednou funkcí, maximální počet _aktivních_ instancí nástroje Orchestrator bude stejný jako počet oddílů _vynásobený_ vaší hodnotou `maxConcurrentOrchestratorFunctions` . Následující obrázek znázorňuje kompletní scénář s horizontálním škálováním, kdy se přidávají další orchestrace, ale některé jsou neaktivní, zobrazené šedě.
+
+![Diagram orchestrace s druhým škálováním](./media/durable-functions-perf-and-scale/scale-progression-3.png)
+
+Během horizontálního navýšení kapacity můžou být zámky front řízení znovu distribuované napříč instancemi hostitelů funkcí, aby bylo zajištěno, že oddíly budou rovnoměrně distribuovány. Tyto zámky se interně implementují jako zapůjčení úložiště BLOB a zajišťují, že každá instance orchestrace nebo entita se v jednom okamžiku spouští jenom na jedné instanci hostitele. Pokud je centrum úloh nakonfigurované se třemi oddíly (a proto tři řídicí fronty), instance Orchestrace a entity lze vyrovnávat zatížením ze všech tří instancí hostitelů, které jsou držitelem zapůjčení. Další virtuální počítače je možné přidat za účelem zvýšení kapacity pro provádění funkcí aktivity.
 
 Následující diagram znázorňuje, jak se hostitel Azure Functions komunikuje s entitami úložiště v prostředí s možností horizontálního rozšíření kapacity.
 
-![Měřítko diagramu](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Měřítko diagramu](./media/durable-functions-perf-and-scale/scale-interactions-diagram.png)
 
 Jak je znázorněno na předchozím diagramu, všechny virtuální počítače soutěží o zprávy ve frontě pracovní položky. Z řídicích front ale můžou získat zprávy jenom tři virtuální počítače a každý virtuální počítač zamkne jednu frontu ovládacích prvků.
 

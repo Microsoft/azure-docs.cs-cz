@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: a14f8e0ba3ae5cca75cf6518320023703a6d1700
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889055"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626380"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,22 +48,22 @@ Pokaždé, když je databázový stroj nebo operační systém upgradovaný, neb
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Pro obecné účely redundantní dostupnosti zóny služby na úrovni služby (Preview)
 
-Redundantní konfigurace zóny služby pro obecné účely využívá [zóny dostupnosti Azure](../../availability-zones/az-overview.md)   k replikaci databází v různých fyzických umístěních v oblasti Azure.Výběrem redundance zóny můžete vytvořit nové a stávající samostatné databáze a elastické fondy pro obecné účely, odolné vůči mnohem většímu počtu selhání, včetně závažných výpadků datového centra, aniž by došlo k žádným změnám aplikační logiky.
+Redundantní konfigurace zóny služby pro obecné účely se nabízí pro výpočetní prostředky bez serveru i pro zřizování. Tato konfigurace využívá [zóny dostupnosti Azure](../../availability-zones/az-overview.md)   k replikaci databází v různých fyzických umístěních v oblasti Azure.Když vyberete redundanci zóny, můžete vytvořit nové a stávající serverlesss a zřídit samostatné databáze pro obecné účely a elastické fondy odolné vůči mnohem větším chybám, včetně závažných výpadků Datacenter, a to bez jakýchkoli změn v aplikační logice.
 
 Redundantní konfigurace zóny pro vrstvu pro obecné účely má dvě vrstvy:  
 
-- Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené ve [sdílené složce](../../storage/files/storage-how-to-create-file-share.md)ZRS PFS (zóna – redundantní úložiště úrovně Premium). Pomocí [redundantního úložiště zóny](../../storage/common/storage-redundancy.md) se data a soubory protokolů synchronně kopírují mezi tři zóny dostupnosti v rámci fyzicky izolovaného Azure.
-- Bezstavová výpočetní vrstva, která spouští proces sqlservr.exe a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel je provozován službou Azure Service Fabric, která inicializuje sqlservr.exe, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem. V případě redundantních databází pro obecné účely se uzly, které mají volnou kapacitu, snadno dostupné v jiných Zóny dostupnosti pro převzetí služeb při selhání.
+- Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené v ZRS (úložiště redundantní v zóně). Pomocí [ZRS](../../storage/common/storage-redundancy.md) se soubory dat a protokolů synchronně kopírují do tří zón dostupnosti Azure, které jsou fyzicky izolované.
+- Bezstavová výpočetní vrstva, která spouští proces sqlservr.exe a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel je provozován službou Azure Service Fabric, která inicializuje sqlservr.exe, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem. V případě redundantních databází bez serveru a zřízené databáze pro obecné účely jsou uzly s volnou kapacitou snadno dostupné v jiných Zóny dostupnosti pro převzetí služeb při selhání.
 
 Redundantní verze architektury vysoké dostupnosti pro úroveň služby pro obecné účely je znázorněná v následujícím diagramu:
 
 ![Redundantní konfigurace zóny pro obecné účely](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> Redundantní konfigurace zóny je dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Tato funkce není k dispozici ve spravované instanci SQL. Redundantní konfigurace zóny pro účely obecné úrovně je dostupná jenom v těchto oblastech: Východní USA, Východní USA 2, Západní USA 2, Severní Evropa, Západní Evropa, jihovýchodní Asie, Austrálie – východ, Japonsko – východ, Velká Británie – jih a Francie – střed.
+> Redundantní konfigurace zóny je dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Tato funkce není k dispozici ve spravované instanci SQL. Redundantní konfigurace zóny pro obecné účely bez serveru je dostupná jenom v těchto oblastech: Východní USA, Východní USA 2, Západní USA 2, Severní Evropa, Západní Evropa, jihovýchodní Asie, Austrálie – východ, Japonsko – východ, Velká Británie – jih a Francie – střed.
 
 > [!NOTE]
-> Pro obecné účely databází s velikostí 80 Vcore může dojít ke snížení výkonu s redundantní konfigurací zóny. Kromě toho můžou mít operace, jako je zálohování, obnovení, kopírování databáze a nastavení vztahů geografického DR, pomalejší výkon pro všechny izolované databáze větší než 1 TB. 
+> Pro obecné účely databází s velikostí 80 Vcore může dojít ke snížení výkonu s redundantní konfigurací zóny. Kromě toho se může stát, že operace, jako je zálohování, obnovení, kopírování databáze, nastavení vztahů geografického a DR, a downgrade redundantní databáze zóny z Pro důležité obchodní informace na Pro obecné účely můžou mít pomalejší výkon pro všechny izolované databáze větší než 1 TB. Další informace najdete v [dokumentaci k naší latenci týkající se škálování databáze](single-database-scale.md) .
 > 
 > [!NOTE]
 > Verze Preview se v rámci rezervované instance nezabývá.

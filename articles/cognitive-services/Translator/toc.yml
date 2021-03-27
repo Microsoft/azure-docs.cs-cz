@@ -148,6 +148,22 @@
       items:
         - name: REST API překladu dokumentů
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: Získat formáty dokumentů
+          href: document-translation/reference/get-document-formats.md
+        - name: Získat formáty glosáře
+          href: document-translation/reference/get-glossary-formats.md
+        - name: Získat zdroj úložiště dokumentů
+          href: document-translation/reference/get-document-storage-source.md
+        - name: Odeslat žádost o dávku
+          href: document-translation/reference/submit-batch-request.md
+        - name: Získat stav dokumentů operací
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: Získat stav dokumentů
+          href: document-translation/reference/get-document-status.md
+        - name: Získat operace
+          href: document-translation/reference/get-operations.md
+        - name: Zrušit operaci
+          href: document-translation/reference/cancel-operation.md
 - name: Prostředky překladatele
   items:
     - name: Možnosti pomoci a podpory
