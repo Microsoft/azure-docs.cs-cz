@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101725352"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612632"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -21,7 +21,7 @@ Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná ř
 
 - **Místní** zálohování souborů, složek, stavu systému pomocí [agenta Microsoft Azure Recovery Services (MARS)](backup-support-matrix-mars-agent.md). Nebo použijte agenta DPM nebo Azure Backup Server (MABS) k ochraně místních virtuálních počítačů ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) a [VMware](backup-azure-backup-server-vmware.md)) a dalších [místních úloh](backup-mabs-protection-matrix.md) .
 - **Virtuální počítače Azure**  -  [Zazálohujte všechny virtuální počítače s Windows/Linux](backup-azure-vms-introduction.md) (pomocí rozšíření zálohování) nebo zálohujte soubory, složky a stav systému pomocí [agenta Mars](backup-azure-manage-mars.md).
-- **Managed disks Azure**  -  [Zálohování Azure Managed Disks (ve verzi Preview)](backup-managed-disks.md)
+- **Managed disks Azure**  -  [Zálohování Azure Managed disks](backup-managed-disks.md)
 - **Sdílené složky**  -  Azure Files [Zálohování sdílených složek Azure do účtu úložiště](backup-afs.md)
 - **SQL Server ve virtuálních počítačích Azure**  -   [Zálohování SQL Server databází běžících na virtuálních počítačích Azure](backup-azure-sql-database.md)
 - **SAP HANA databáze na virtuálních počítačích Azure**  -  [Zálohování SAP HANA databází běžících na virtuálních počítačích Azure](backup-azure-sap-hana-database.md)

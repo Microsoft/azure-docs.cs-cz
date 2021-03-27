@@ -100,7 +100,7 @@ Operace má následující text (kde se vytvoří předávací živá událost s
         "language": "en-US"
       }
     ],
-    "vanityUrl": false,
+    "useStaticHostname": false,
     "streamOptions": [
       "Default"
     ]
@@ -161,7 +161,7 @@ POUŽITA ```https://management.azure.com/subscriptions/:subscriptionId/resourceG
         "language": "en-US"
       }
     ],
-    "vanityUrl": false,
+    "useStaticHostname": false,
     "streamOptions": [
       "Default"
     ]

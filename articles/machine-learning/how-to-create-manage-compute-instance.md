@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009959"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628947"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním síťovém prostředí](how-to-secure-training-vnet.md), aniž by museli podniky otevírat porty SSH. Úloha se spustí v kontejnerovém prostředí a zabalí závislosti vašich modelů v kontejneru Docker. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -126,6 +126,9 @@ Vědecký pracovník dat může spustit, zastavit a restartovat výpočetní ins
 ## <a name="manage"></a>Spravovat
 
 Spuštění, zastavení, restartování a odstranění výpočetní instance. Instance výpočetního prostředí se automaticky nezvětšuje, takže nezapomeňte prostředek zastavit, aby nedocházelo k průběžným poplatkům.
+
+> [!TIP]
+> Instance COMPUTE má disk s operačním systémem s 120 GB. Pokud vyčerpáte místo na disku, před zastavením nebo restartováním výpočetní instance [pomocí terminálu](how-to-access-terminal.md) vymažte aspoň 1-2 GB.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -225,6 +228,7 @@ Pro každou výpočetní instanci v pracovním prostoru, který jste vytvořili 
 * Získejte podrobnosti o konkrétní výpočetní instanci, jako je třeba IP adresa a oblast.
 
 ---
+
 
 [Azure RBAC](../role-based-access-control/overview.md) umožňuje řídit, kteří uživatelé v pracovním prostoru můžou vytvořit, odstranit, spustit, zastavit a restartovat výpočetní instanci. Všichni uživatelé v roli přispěvatel a vlastník pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v rámci pracovního prostoru. Avšak pouze tvůrce konkrétní výpočetní instance nebo přiřazeného uživatele, pokud byl vytvořen jménem, má povolen přístup k Jupyter, JupyterLab a RStudio této výpočetní instance. Výpočetní instance je vyhrazená jednomu uživateli, který má rootový přístup, a může být terminálem přes Jupyter/JupyterLab/RStudio. Instance COMPUTE bude mít přihlášený jeden uživatel a všechny akce budou používat identitu tohoto uživatele pro Azure RBAC a připisující experimenty. Přístup přes SSH je řízený pomocí mechanismu veřejného a privátního klíče.
 

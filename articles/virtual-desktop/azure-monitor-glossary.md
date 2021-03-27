@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 3/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576626"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627128"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Glosář Azure Monitor pro virtuální počítače s Windows (Preview)
 
@@ -24,7 +24,7 @@ Tento článek uvádí a stručně popisuje klíčové pojmy a koncepty týkají
 
 ## <a name="alerts"></a>Výstrahy
 
-Na stránce Přehled se zobrazí všechny výstrahy Active Azure Monitor, které jste nakonfigurovali v rámci předplatného a jsou klasifikovány jako [závažnost 1](#severity-1-alerts) . Informace o tom, jak nastavit výstrahy, najdete v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
+Na stránce Přehled se zobrazí všechny výstrahy Active Azure Monitor, které jste nakonfigurovali v rámci předplatného a jsou klasifikovány jako [závažnost 0](#severity-0-alerts) . Informace o tom, jak nastavit výstrahy, najdete v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Dostupné relace
 
@@ -40,7 +40,7 @@ Celkový počet uživatelů, kteří spustili relaci za posledních 24 hodin.
 
 ## <a name="daily-alerts"></a>Denní upozornění
 
-Celkový počet výstrah o [závažnosti 1](#severity-1-alerts) aktivovaných za posledních 24 hodin.
+Celkový počet výstrah aktivovaných každý den
 
 ## <a name="daily-connections-and-reconnections"></a>Denní připojení a opětovná připojení
 
@@ -78,7 +78,7 @@ Každý problém s diagnostikou nebo chyba obsahuje zprávu, která vysvětluje,
 
 ## <a name="input-delay"></a>Zpoždění vstupu
 
-"Zpoždění vstupu" v Azure Monitor pro virtuální počítače s Windows znamená zpoždění vstupu jednotlivých procesů pro každou relaci. Na stránce výkon hostitele na <aka.ms/azmonwvdi> je tento čítač výkonu nakonfigurován tak, aby odesílal zprávu do služby každých 30 sekund. Tyto 30 sekundové intervaly se nazývají "ukázky" a sestavy nejhoršího případu v tomto okně. Hodnoty mediánu a p95 odrážejí medián a 95. percentil napříč všemi ukázkami.
+"Zpoždění vstupu" v Azure Monitor pro virtuální počítače s Windows znamená zpoždění vstupu jednotlivých procesů pro každou relaci. Na stránce výkon hostitele na adrese [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)je tento čítač výkonu nakonfigurován tak, aby odesílal zprávu službě každých 30 sekund. Tyto 30 sekundové intervaly se nazývají "ukázky" a sestavy nejhoršího případu v tomto okně. Hodnoty mediánu a p95 odrážejí medián a 95. percentil napříč všemi ukázkami.
 
 V části **zpoždění vstupu podle hostitele** můžete vybrat řádek hostitele relace pro filtrování všech ostatních vizuálů na stránce daného hostitele. Můžete také vybrat název procesu pro filtrování mediánu vstupu v čase grafu.
 
@@ -114,16 +114,11 @@ Následující tabulka uvádí doporučené čítače výkonu a časové interva
 |Fyzický \* disk () \\ Střední doba disku/čtení|30 sekund|
 |Fyzický disk ( \* ) \\ Střední doba disku/přenos|30 sekund|
 |Fyzický \* disk () \\ Střední doba disku/zápis|30 sekund|
-|Process ( \* ) \\ % času procesoru|20 sekund|
-|Proces ( \* ) \\ % uživatelského času|30 sekund|
-|Proces ( \* ) \\ počet vláken|30 sekund|
-|Proces ( \* ) \\ vstupně-výstupních operací zápisu za sekundu|30 sekund|
-|Proces ( \* ) \\ vstupně-výstupních operací čtení/s|30 sekund|
 |Informace o procesoru (_Total) \\ % času procesoru|30 sekund|
 |Aktivní relace Terminálové služby ( \* ) \\|60 sekund|
 |Neaktivní relace Terminálové služby ( \* ) \\|60 sekund|
 |\*Celkový počet relací Terminálové služby () \\|60 sekund|
-|\*Zpoždění vstupu uživatele na proces ( \* ) \\ Max. dela vstupu|30 sekund|
+|\*Zpoždění vstupu uživatele na proces ( \* ) \\ maximálního zpoždění vstupu|30 sekund|
 |\*Zpoždění vstupu uživatele na relaci ( \* ) \\ Max. zpoždění vstupu|30 sekund|
 |Síť RemoteFX ( \* ) \\ aktuální doba RTT TCP|30 sekund|
 |\* \\ Aktuální šířka pásma UDP sítě RemoteFX|30 sekund|
@@ -149,13 +144,13 @@ Můžete také vybrat položky a zobrazit další informace. Můžete zobrazit, 
 
 ## <a name="round-trip-time-rtt"></a>Doba odezvy (RTT)
 
-Doba odezvy (RTT) představuje odhad doby odezvy připojení mezi umístěním koncového uživatele a oblastí Azure virtuálního počítače. Pokud chcete zjistit, která umístění mají nejlepší latenci, vyhledejte požadované umístění v [nástroji Estimator pro virtuální počítače s Windows](https://azure.microsoft.com/services/virtual-desktop/assessment/).
+Doba odezvy (RTT) představuje odhad doby odezvy připojení mezi umístěním koncového uživatele a oblastí Azure hostitele relace. Pokud chcete zjistit, která umístění mají nejlepší latenci, vyhledejte požadované umístění v [nástroji Estimator pro virtuální počítače s Windows](https://azure.microsoft.com/services/virtual-desktop/assessment/).
 
 ## <a name="session-history"></a>Historie relací
 
 Položka **relace** zobrazuje stav všech relací, připojených a odpojených. **Nečinné relace** zobrazují pouze odpojené relace.
 
-## <a name="severity-1-alerts"></a>Upozornění na závažnost 1
+## <a name="severity-0-alerts"></a>Upozornění na závažnost 0
 
 Nejnaléhavější položky, které je třeba hned zajímat. Pokud tyto problémy neřešíte, může to způsobit, že nasazení virtuálních počítačů s Windows přestane fungovat.
 
@@ -171,11 +166,11 @@ Stránka sestava uživatele umožňuje zobrazit historii připojení konkrétní
 
 Toto je počet uživatelů v jádrech virtuálních počítačů. Sledování maximálního počtu uživatelů na jádro v průběhu času vám umožní zjistit, jestli se prostředí konzistentně spouští s vysokým, nízkým nebo výkyvem počtu uživatelů na jádro. Znalost toho, kolik uživatelů je aktivních, vám pomůže efektivně zajistit prostředky a škálovat prostředí.
 
-## <a name="windows-events"></a>Události systému Windows
+## <a name="windows-event-logs"></a>Protokoly událostí Windows
 
 Protokoly událostí systému Windows jsou zdroje dat shromažďované agenty Log Analytics na virtuálních počítačích s Windows. Můžete shromažďovat události ze standardních protokolů, jako jsou systém a aplikace, i vlastní protokoly vytvořené aplikacemi, které potřebujete monitorovat.
 
-Následující tabulka uvádí požadované události Windows pro Azure Monitor pro virtuální počítače s Windows:
+V následující tabulce jsou uvedené požadované protokoly událostí Windows pro Azure Monitor pro virtuální počítače s Windows:
 
 |Název události|Typ události|
 |---|---|
@@ -186,7 +181,7 @@ Následující tabulka uvádí požadované události Windows pro Azure Monitor 
 | Microsoft-FSLogix – aplikace/provozní|Chyba, upozornění a informace|
 |Microsoft-FSLogix – aplikace/Správce|Chyba, upozornění a informace|
 
-Další informace o událostech systému Windows naleznete v tématu [vlastnosti záznamů událostí systému Windows](../azure-monitor/agents/data-sources-windows-events.md).
+Další informace o protokolech událostí systému Windows naleznete v tématu [vlastnosti záznamů událostí systému Windows](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -203,4 +198,4 @@ Pokud potřebujete pomáhat nebo máte nějaké dotazy, Projděte si naše komun
    
 - Informace o tom, jak ponechávat zpětnou vazbu, najdete v tématech [Přehled řešení potíží, zpětná vazba a podpora pro virtuální počítače s Windows](troubleshoot-set-up-overview.md#report-issues).
 
-- Zpětnou vazbu k virtuálnímu počítači s Windows můžete také odeslat na webu [Centrum zpětné vazby na virtuálním počítači s Windows](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) nebo na [našem fóru UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+- Zpětnou vazbu k virtuálnímu počítači s Windows můžete také opustit v [centru pro zpětnou vazbu na virtuálním počítači s Windows](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)

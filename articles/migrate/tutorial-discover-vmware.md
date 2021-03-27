@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612054"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627791"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Kurz: zjišťování serverů běžících v prostředí VMware pomocí Azure Migrate: zjišťování a posouzení
 
@@ -115,7 +115,7 @@ Nastavte nový projekt.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
-3. V **přehledu** vyberte **vytvořit projekt**.
+3. V **přehledu** > vybrat na základě vašich cílů migrace: **Windows, Linux a SQL Server** nebo **SQL Server (pouze)** nebo **prozkoumat více scénářů** > vyberte **vytvořit projekt**.
 5. V nástroji **vytvořit projekt** vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
 

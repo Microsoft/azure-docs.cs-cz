@@ -2,24 +2,19 @@
 title: Seznam definic rolí Azure – Azure RBAC
 description: Přečtěte si, jak vypsat předdefinované a vlastní role Azure pomocí Azure Portal, Azure PowerShell, Azure CLI nebo REST API.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555949"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629143"
 ---
 # <a name="list-azure-role-definitions"></a>Vypsat definice rolí Azure
 
@@ -33,6 +28,10 @@ Seznam rolí správce pro Azure Active Directory najdete v tématu [oprávnění
 
 Pomocí těchto kroků můžete zobrazit seznam všech rolí v Azure Portal.
 
+Pokud máte zájem o zobrazení aktualizovaného prostředí rolí, podívejte se na kartu **role (Preview)** , která je aktuálně ve verzi Public Preview. Karta **role (Preview)** zobrazuje stejný seznam rolí jako karta **role** s některými dalšími funkcemi. Na kartě role můžete pracovat s vašimi rolemi, ale pokud vytváříte nebo odstraňujete vlastní role, možná budete muset stránku aktualizovat ručně, aby se zobrazily nejnovější změny.
+
+#### <a name="roles"></a>[Role](#tab/roles/)
+
 1. V Azure Portal klikněte na **všechny služby** a pak vyberte libovolný obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků** nebo prostředek.
 
 1. Klikněte na konkrétní prostředek.
@@ -43,7 +42,29 @@ Pomocí těchto kroků můžete zobrazit seznam všech rolí v Azure Portal.
 
    Můžete zobrazit počet uživatelů a skupin, které jsou přiřazeny k jednotlivým rolím v aktuálním oboru.
 
-   ![Seznam Role](./media/role-definitions-list/roles-list.png)
+   ![Seznam Role](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[Role (Preview)](#tab/roles-preview/)
+
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte libovolný obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků** nebo prostředek.
+
+1. Klikněte na konkrétní prostředek.
+
+1. Klikněte na **Řízení přístupu (IAM)**.
+
+1. Kliknutím na kartu **role (Preview)** zobrazíte seznam všech předdefinovaných a vlastních rolí.
+
+   ![Seznam rolí v prostředí Preview](./media/role-definitions-list/roles-list.png)
+
+1. Chcete-li zobrazit oprávnění pro určitou roli, klikněte ve sloupci **Podrobnosti** na odkaz **Zobrazit** .
+
+    Zobrazí se podokno oprávnění.
+
+1. Kliknutím na kartu **oprávnění** zobrazíte a prohledáte oprávnění pro vybranou roli.
+
+   ![Oprávnění role v prostředí verze Preview](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863679"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612020"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Nastavení zařízení pro servery na Hyper-V
 
@@ -39,7 +39,7 @@ Nastavení zařízení pomocí šablony VHD:
 
 1. V **cíli migrace** se  >  **systémy Windows, Linux a SQL Server**  >  **Azure Migrate: zjišťování a posouzení** vyberte **Vyhledat**.
 2. V rozevíracích **seznamech servery**  >  **jsou vaše servery virtualizované?** vyberte **Ano, s technologií Hyper-V**.
-3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování serverů v technologii Hyper-V. název by měl být alfanumerický s 14 znaky nebo méně.
+3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování serverů v Hyper-V. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťovací servery během vytváření prostředků.
 1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
@@ -53,7 +53,6 @@ V **2: Stáhněte zařízení Azure Migrate** vyberte. Soubor VHD a klikněte na
 
    ![Výběry pro vygenerování klíče](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
-
 ### <a name="verify-security"></a>Ověřit zabezpečení
 
 Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
@@ -63,9 +62,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-
-
-
+Ověřte nejnovější hodnotu hash porovnáním výsledku výše uvedeného příkazu s [popsanou hodnotou](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security) .
 
 ## <a name="create-the-appliance"></a>Vytvoření zařízení
 
@@ -85,7 +82,6 @@ Naimportujte stažený soubor a vytvořte zařízení.
 5. V části **zvolit síť** zadejte virtuální přepínač, který bude server používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure.
 6. V části **Souhrn** zkontrolujte nastavení. Klikněte na **Dokončit**.
 7. Ve Správci technologie Hyper-V > **Virtual Machines** spusťte virtuální počítač.
-
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
@@ -128,8 +124,6 @@ Nastavte zařízení poprvé.
 1. Po úspěšném přihlášení se vraťte na předchozí kartu pomocí Správce konfigurace zařízení.
 4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 1. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Pověření delegáta pro virtuální pevné disky SMB
 

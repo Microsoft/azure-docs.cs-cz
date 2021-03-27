@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9d2ffac813456398c02066c978c37bdb09501aeb
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92151681"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628981"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Vysoká dostupnost služby IoT Hub a zotavení po havárii
 
@@ -64,7 +64,7 @@ Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, oče
 >
 > - Pokud k připojení vestavěného koncového bodu událostí používáte Azure Functions nebo Azure Stream Analytics, může být nutné provést **restart**. Důvodem je to, že během předchozích posunů převzetí služeb při selhání už nejsou platné.
 >
-> - Při směrování do úložiště doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti vytvářet žádné předpoklady oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](/rest/api/storageservices/datalakestoragegen2/path/list) pro seznam souborů můžete použít [rozhraní list API blobů](/rest/api/storageservices/list-blobs) . Další informace najdete v tématu [Azure Storage jako koncový bod směrování](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - Při směrování do úložiště doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti vytvářet žádné předpoklady oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](/rest/api/storageservices/datalakestoragegen2/filesystem/listpaths) pro seznam souborů můžete použít [rozhraní list API blobů](/rest/api/storageservices/list-blobs) . Další informace najdete v tématu [Azure Storage jako koncový bod směrování](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Převzetí služeb při selhání iniciované Microsoftem
 

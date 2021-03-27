@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279410"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612836"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health novými funkcemi a funkcemi. V tomto článku jsou uvedené verze a funkce, které byly vydány.  
@@ -32,12 +32,25 @@ Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health nov�
 
 Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD Connect. Přečtěte si další informace o [Azure AD Connect historii verzí](./reference-connect-version-history.md) pro zpětnou vazbu k funkcím, Hlasujte na [telefonním kanálu uživatele Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="march-2021"></a>Březen 2021
+**Aktualizace agenta**
+
+- Agent Azure AD Connect Health pro AD FS (verze 3.1.95.0)
+
+  - Oprava pro překlad uživatelského jména ve formátu NT4 na UPN během přihlašovacích událostí
+  - Opravte pro identifikaci nesprávných scénářů identifikátorů aplikace pomocí vyhrazeného kódu chyby.
+  - Změny a přidejte novou vlastnost pro identifikátor klienta OAuth.
+  - Oprava pro zobrazení správných hodnot v polích **protokol** a **typ ověřování** ve službě Azure AD Sign-In sestava pro určité scénáře přihlašování.
+  - Oprava pro zobrazení IP adres ve službě Azure AD Sign-In pole řetězu IP protokolu v pořadí žádosti.
+  - Změny k zavedení nového pole pro rozlišení, pokud bylo během přihlašování požadováno sekundární ověřování.
+  - Oprava AD FS vlastnost identifikátoru aplikace pro zobrazení v sestavě Sign-In služby Azure AD.
+
 ## <a name="april-2020"></a>Duben 2020
 **Aktualizace agenta**
 
 - Agent Azure AD Connect Health pro AD FS (verze 3.1.77.0)
 
-   1.   Oprava chyby pro výstrahu "neplatný hlavní název služby (SPN) pro službu AD FS Service"), pro kterou byla výstraha nesprávně hlášena.
+   - Oprava chyby pro výstrahu "neplatný hlavní název služby (SPN) pro službu AD FS Service"), pro kterou byla výstraha nesprávně hlášena.
 
 
 ## <a name="july-2019"></a>Červenec 2019

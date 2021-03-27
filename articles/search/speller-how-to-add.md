@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232354"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625904"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Přidat kontrolu pravopisu do dotazů v Kognitivní hledání
 
@@ -23,9 +23,9 @@ ms.locfileid: "103232354"
 
 Odvolání můžete vylepšit tak, že před dosažením vyhledávacího modulu opravíte pravopis jednotlivých výrazů vyhledávacího dotazu. Parametr pro **kontrolu pravopisu** se podporuje pro všechny typy dotazů: [Jednoduchá](query-simple-syntax.md), [plná](query-lucene-syntax.md)a nová [sémantická](semantic-how-to-query-request.md) možnost, která je aktuálně ve verzi Public Preview.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-+ Existující index vyhledávání, který obsahuje anglický obsah
++ Existující index vyhledávání, který obsahuje anglický obsah. V současné době Oprava pravopisu nefunguje s [synonymy](search-synonyms.md). Nepoužívejte ji v indexech, které určují mapu synonym v jakékoli definici pole.
 
 + Vyhledávací klient pro odesílání dotazů
 

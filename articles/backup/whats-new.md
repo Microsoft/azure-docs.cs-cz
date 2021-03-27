@@ -3,12 +3,12 @@ title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5e6734c6a962fa43d79fc90fdfaa85923b6339f
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095710"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612479"
 ---
 # <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
@@ -19,6 +19,7 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
 ## <a name="updates-summary"></a>Souhrn aktualizací
 
 - Březen 2021
+  - [Zálohování disku Azure je teď všeobecně dostupné.](#azure-disk-backup-is-now-generally-available)
   - [Centrum zálohování je teď všeobecně dostupné](#backup-center-is-now-generally-available)
   - [Podpora archivní vrstvy pro Azure Backup (ve verzi Preview)](#archive-tier-support-for-azure-backup-in-preview)
 - Únor 2021
@@ -39,6 +40,12 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
   - [Zálohování SAP HANA v RHEL Azure Virtual Machines (ve verzi Preview)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Redundantní úložiště zóny (ZRS) pro zálohovaná data (ve verzi Preview)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Obnovitelné odstranění pro úlohy SQL Server a SAP HANA na virtuálních počítačích Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-is-now-generally-available"></a>Zálohování disku Azure je teď všeobecně dostupné.
+
+Azure Backup nabízí správu životního cyklu snímků do Azure Managed Disks automatizací pravidelného vytváření snímků a jejich zachování pro nakonfigurované doby trvání pomocí zásad zálohování.
+
+Další informace najdete v tématu [Přehled zálohování disku Azure](disk-backup-overview.md).
 
 ## <a name="backup-center-is-now-generally-available"></a>Centrum zálohování je teď všeobecně dostupné
 

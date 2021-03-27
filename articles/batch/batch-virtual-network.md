@@ -2,14 +2,14 @@
 title: Zřízení fondu ve virtuální síti
 description: Vytvoření fondu služby Batch ve službě Azure Virtual Network, aby výpočetní uzly mohly bezpečně komunikovat s jinými virtuálními počítači v síti, jako je třeba souborový server.
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561905"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629304"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -21,7 +21,7 @@ Výpočetní uzly ve fondu můžou vzájemně komunikovat, například spouště
 
 Pokud chcete, aby výpočetní uzly komunikovaly zabezpečeně s ostatními virtuálními počítači nebo v místní síti, můžete fond zřídit v podsíti virtuální sítě Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Ověřování**. Pokud chcete použít virtuální síť Azure klientské rozhraní API služby Batch musí používat ověřování pomocí Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 
@@ -56,6 +56,8 @@ Aby se zajistilo, že uzly ve vašem fondu fungují ve virtuální síti s povol
 - Služba Batch potřebuje komunikovat s uzly pro plánování úloh. Pokud chcete povolit tuto komunikaci, přidejte UDR pro každou IP adresu, kterou služba Batch používá, v oblasti, ve které existuje účet Batch. Seznam IP adres služby Batch najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md).
 
 - Zajistěte, aby odchozí přenosy do Azure Storage (konkrétně adresy URL formuláře `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net` ) nejsou blokované vaší místní sítí.
+
+- Pokud používáte virtuální připojení k souborům, zkontrolujte požadavky na [síť](virtual-file-mount.md#networking-requirements) a zajistěte, aby nedošlo k zablokování žádných potřebných přenosů.
 
 Když přidáte UDR, definujte trasu pro každou související předponu IP adresy dávky a nastavte **typ dalšího segmentu směrování** na **Internet**.
 

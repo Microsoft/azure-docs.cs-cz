@@ -3,12 +3,12 @@ title: Konfigurace monitorování PV pomocí kontejneru Insights | Microsoft Doc
 description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s trvalými svazky s využitím Container Insights.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 7c6ddd62bf06d313987289e444962378cea43fc8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026100"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627893"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>Konfigurace monitorování PV pomocí kontejneru Insights
 
@@ -17,7 +17,9 @@ Počínaje agentem verze *ciprod10052020* se teď Azure monitor for Containers I
 
 Služba Container Insights automaticky začne monitorovat využití SOUČHODNOTA shromažďováním následujících metrik v intervalech 60 – sec a jejich uložením do tabulky **InsightMetrics** .
 
-| Název metriky | Dimenze metriky (značky) | Popis metriky | | `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, název_clusteru | Využité místo v bajtech pro konkrétní trvalý svazek s deklarací identity použitou v určitém typu pod. `capacityBytes` je přeložen v jako dimenze v poli značky, aby se snížily náklady na příjem dat a zjednodušily se dotazy. |
+| Název metriky | Dimenze metriky (značky) | Popis metriky |
+|-----|-----------|----------|
+| `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, název_clusteru| Využité místo v bajtech pro konkrétní trvalý svazek s deklarací identity použitou v určitém typu pod. `capacityBytes` je přeložen v jako dimenze v poli značky, aby se snížily náklady na příjem dat a zjednodušily se dotazy.|
 
 Další informace o konfiguraci shromážděných metrik PV [najdete tady](./container-insights-agent-config.md).
 
@@ -27,7 +29,7 @@ Azure Monitor pro kontejnery automaticky spustí monitorování PVs shromažďov
 
 |Data |Zdroj dat| Typ dat| Pole|
 |-----|-----------|----------|-------|
-|Inventarizace trvalých svazků v clusteru Kubernetes |Rozhraní API pro Kube |`KubePVInventory` | PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, ClusterId, název_clusteru, _ResourceId |
+|Inventarizace trvalých svazků v clusteru Kubernetes |Rozhraní API pro Kube |`KubePVInventory` |    PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, ClusterId, název_clusteru, _ResourceId |
 
 ## <a name="monitor-persistent-volumes"></a>Monitorovat trvalé svazky
 

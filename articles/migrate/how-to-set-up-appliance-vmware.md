@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 685d7f0a0aaab2f38967e0eb6c32c3fb4067dbe3
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110504"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612819"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Nastavení zařízení pro servery v prostředí VMware
 
@@ -67,7 +67,6 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený:
         --- | --- | ---
         VMware (11,9 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
-
 ### <a name="3-create-the-appliance-server"></a>3. vytvoření serveru zařízení
 
 Import staženého souboru a vytvoření serveru v prostředí VMware
@@ -81,11 +80,9 @@ Import staženého souboru a vytvoření serveru v prostředí VMware
 8. V části **mapování sítě** určete síť, ke které se bude server připojovat. K posílání metadat do Azure Migrate potřebuje síť připojení k Internetu.
 9. Zkontrolujte a ověřte všechna nastavení a pak klikněte na **Finish** (Dokončit).
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
 Ujistěte se, že se server zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
-
 
 ### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 
@@ -114,7 +111,6 @@ Nastavte zařízení poprvé.
 1. Pokud chcete, můžete kdykoli **znovu spustit požadované součásti** , abyste zkontrolovali, jestli zařízení splňuje všechny požadavky.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="Panel 1 v nástroji Configuration Manager pro zařízení":::
-
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 

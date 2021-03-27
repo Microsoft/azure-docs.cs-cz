@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: error-reference
-ms.date: 02/12/2020
+ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7c30649fe3486f812569cb51f609356a6cbfd58f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581078"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627536"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services kódy chyb živé události
 
@@ -83,7 +83,8 @@ V události [LiveEventEncoderDisconnected](monitoring/media-services-event-schem
 >| Description|Kodér odesílá data příliš rychle. |
 >| Navrhované řešení|K tomu dojde v případě, že kodér v krátké době rozpíná velkou sadu fragmentů.  K tomu může dojít v případě, že kodér nemůže doručovat data z důvodu potíží se sítí a shluky vyčerpá data v případě, že je síť k dispozici. Najděte důvod z protokolu kodéru nebo systémového protokolu. |
 >|**Neznámé kódy chyb** |
->| Description| Tyto kódy chyb můžou být v rozsahu od chyby paměti až po duplicitní položky v mapě algoritmu hash. |
+>| Description| Tyto kódy chyb můžou být v rozsahu od chyby paměti až po duplicitní položky v mapě algoritmu hash. K tomu může dojít, když kodér v krátké době pošle velkou sadu fragmentů.  K tomu může dojít také v případě, že kodér nedokázal odeslat data z důvodu problému se sítí a pak pošle všechny zpožděné fragmenty najednou, jakmile bude síť k dispozici. |
+>|Navrhované řešení| Podívejte se na protokoly kodéru.|
 
 ## <a name="other-error-codes"></a>Jiné kódy chyb
 
@@ -95,13 +96,13 @@ V události [LiveEventEncoderDisconnected](monitoring/media-services-event-schem
 >|Navrhované řešení| Žádné||
 >|**MPI_SYSTEM_MAINTENANCE** ||Yes|
 >| Description|Kodér byl odpojen z důvodu aktualizace služby nebo údržby systému. ||
->|Navrhované řešení|Ujistěte se, že kodér povoluje automatické připojení. Toto je funkce kodéru pro obnovení neočekávaného odpojení relace. ||
+>|Navrhované řešení|Ujistěte se, že kodér povoluje automatické připojení. Umožňuje kodéru znovu se připojit k redundantnímu koncovému bodu živé události, který není v údržbě. ||
 >|**MPE_BAD_URL_SYNTAX** ||Yes|
 >| Description|Adresa URL ingestování je nesprávně naformátovaná. ||
 >|Navrhované řešení|Ujistěte se, že adresa URL ingestování je správně naformátovaná. Pro RTMP by měl být `rtmp[s]://hostname:port/live/GUID_APPID/streamname` ||
 >|**MPE_CLIENT_TERMINATED_SESSION** ||Yes|
 >| Description|Kodér odpojil relaci.  ||
->|Navrhované řešení|Nejedná se o chybu. Jedná se o případ, kdy kodér zahájil odpojení, včetně bezproblémového odpojení. Pokud se jedná o neočekávané odpojení, podívejte se do protokolu kodéru nebo systémového protokolu. |
+>|Navrhované řešení|Nejedná se o chybu. Kodér zahájil odpojení, včetně bezproblémového odpojení. Pokud se jedná o neočekávané odpojení, podívejte se do protokolů kodéru. |
 >|**MPE_INGEST_BITRATE_NOT_MATCH** ||Ne|
 >| Popis|Míra příchozích dat se neshoduje s očekávanou přenosovou rychlostí. ||
 >|Navrhované řešení|Toto je upozornění, které se stane, když je rychlost příchozího přenosu dat příliš nízká nebo rychlá. Ověřte protokol kodéru nebo systémový protokol.||

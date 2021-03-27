@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671592"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612303"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -41,9 +41,6 @@ Synapse tým přenesl novou součást poznámkových bloků do synapse studia, a
 |%% HTML| Nepodporováno |&#9745;|
 |Přesunutí buňky přetažením myší| Nepodporováno |&#9745;|
 |Trvalý displej () výstup|&#9745;| Není k dispozici |
-|Zrušit vše| &#9745;| Není k dispozici|
-|Spustit všechny buňky výše|&#9745;| Není k dispozici |
-|Spustit všechny buňky níže|&#9745;| Není k dispozici |
 |Formátování textové buňky pomocí tlačítek panelu nástrojů|&#9745;| Není k dispozici |
 |Operace vrácení buňky zpět| &#9745;| Není k dispozici |
 
@@ -273,28 +270,38 @@ Kliknutím na tlačítko **Spustit vše** spustíte všechny buňky v aktuální
    ![Spustit – všechny buňky](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>Spustit všechny buňky výše nebo níže
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky (**...**). Pak vyberte **Spustit buňky výše** a spusťte tak všechny buňky nad aktuální sekvencí. Vyberte **Spustit buňky níže** , aby se spouštěly všechny buňky pod aktuálním pořadím.
 
    ![Run-Cells-nad nebo – níže](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Rozbalte tlačítko rozevírací seznam u položky **Spustit vše** a potom vyberte **Spustit buňky výše** a spusťte tak všechny buňky nad aktuální sekvencí. Vyberte **Spustit buňky níže** , aby se spouštěly všechny buňky pod aktuálním pořadím.
+
+   ![Azure – Poznámkový blok-Run-Cells-nad nebo – níže](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>Zrušit všechny běžící buňky
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 Kliknutím na tlačítko **Zrušit vše** zrušíte běžící buňky nebo buňky čekající ve frontě. 
    ![Zrušit vše – buňky](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
 
-Zrušit všechny běžící buňky zatím není k dispozici pro prostředí poznámkového bloku Preview. 
+Kliknutím na tlačítko **Zrušit vše** zrušíte běžící buňky nebo buňky čekající ve frontě. 
+   ![Azure – Poznámkový blok – zrušit všechny buňky](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>Odkaz na Poznámkový blok
+### <a name="notebook-reference"></a>Odkaz na Poznámkový blok
 
 # <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
@@ -305,6 +312,11 @@ Nepodporováno
 Pomocí ```%run <notebook path>``` příkazu Magic můžete odkazovat na jiný Poznámkový blok v kontextu aktuálního poznámkového bloku. Všechny proměnné definované v referenčním poznámkovém bloku jsou k dispozici v aktuálním poznámkovém bloku. ```%run``` příkaz Magic podporuje vnořené volání, ale nepodporuje rekurzivní volání. Pokud je hloubka příkazu větší než pět, zobrazí se výjimka. ```%run``` příkaz aktuálně podporuje pouze cestu k poznámkovému bloku jako parametr. 
 
 Příklad: ``` %run /path/notebookA ```.
+
+> [!NOTE]
+> Odkaz na Poznámkový blok není v kanálu synapse podporován.
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ Nastavení relace Spark můžete zadat také prostřednictvím příkazu Magic *
     }
 }
 ```
-
+> [!NOTE]
+> V kanálu synapse se nepodporuje příkaz konfigurace relace Sparku pro Magic.
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>Přenesení dat do poznámkového bloku
 
@@ -420,6 +435,11 @@ Ve vlastnostech poznámkového bloku můžete nakonfigurovat, jestli se má při
 ## <a name="magic-commands"></a>Magic – příkazy
 V poznámkových blocích Azure synapse Studio můžete používat známé příkazy Jupyter Magic. Zkontrolujte následující seznam jako aktuální dostupné příkazy Magic. Řekněte nám [své případy použití na GitHubu](https://github.com/MicrosoftDocs/azure-docs/issues/new) , abychom mohli pokračovat v sestavování dalších příkazů Magic pro splnění vašich požadavků.
 
+> [!NOTE]
+> V kanálu synapse jsou podporovány pouze následující příkazy Magic:%% pyspark,%% Spark,%% CSharp,%% SQL. 
+>
+>
+
 # <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 Dostupné magicy řádků: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/inter
 
 # <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
 
-Dostupné magicy řádků: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history),% [Run](#reference-notebook), [% Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+Dostupné magicy řádků: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history),% [Run](#notebook-reference), [% Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages),% [% CSharp](#use-multiple-languages),%% [HTML](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html), [%% Konfigurovat](#spark-session-config-magic-command)
 

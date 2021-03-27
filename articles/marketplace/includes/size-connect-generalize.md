@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630098"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629813"
 ---
 ## <a name="generalize-the-image"></a>Generalizace bitové kopie
 
@@ -52,7 +52,9 @@ Jakmile je váš virtuální počítač připravený, můžete ho zachytit v gal
 8. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby.
 9. Po úspěšném ověření vyberte **vytvořit**.
 
-Aby bylo možné publikovat, musí mít účet vydavatele přístup vlastníka ke SIG. Udělení přístupu:
+Předplatné Azure obsahující SIG musí být ve stejném tenantovi jako účet vydavatele, aby bylo možné ho publikovat. Kromě toho musí mít účet vydavatele přístup vlastníka ke SIG. 
+
+Udělení přístupu:
 
 1. Přejít do galerie sdílených imagí.
 2. Na levém panelu vyberte **řízení přístupu** (IAM).

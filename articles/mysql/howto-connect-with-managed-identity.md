@@ -1,18 +1,18 @@
 ---
 title: Připojení pomocí spravované identity – Azure Database for MySQL
 description: Přečtěte si, jak se připojit a ověřit pomocí spravované identity pro ověřování pomocí Azure Database for MySQL
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f790e20c257c81418c6fcd5b14be957a6ef43b4a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101091788"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612598"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Připojení ke službě Azure Database for MySQL s využitím spravované identity
 
@@ -28,7 +28,7 @@ Získáte informace o těchto tématech:
 > [!IMPORTANT]
 > Připojení ke spravované identitě je dostupné jenom pro MySQL 5,7 a novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../../articles/active-directory/managed-identities-azure-resources/overview.md). Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).

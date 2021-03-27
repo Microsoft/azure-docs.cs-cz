@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98121521"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627944"
 ---
 # <a name="visualize-data"></a>Vizualizace dat
 Azure synapse je integrovaná analytická služba, která zrychluje čas na přehledy napříč datovými sklady a systémy pro analýzy velkých objemů dat. Vizualizace dat je klíčovou komponentou, která dokáže získat přehled o vašich datech. Pomáhá lépe pochopit velká a malá data pro lidi. Usnadňuje to rozpoznávání vzorů, trendů a odlehlých hodnot ve skupinách dat. 
@@ -34,6 +34,7 @@ Přístup k možnostem grafu:
    ![předdefinované grafy](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Vizualizaci teď můžete přizpůsobit zadáním následujících hodnot:
+
    | Konfigurace | Popis |
    |--|--| 
    | Typ grafu | ```display```Funkce podporuje široké spektrum typů grafů, včetně pruhových grafů, bodových pruhů, spojnicových grafů a dalších. |
@@ -148,6 +149,37 @@ svg
 ## <a name="popular-libraries"></a>Oblíbené knihovny
 V případě, že je součástí vizualizace dat, Python nabízí více knihoven grafů, které jsou zabaleny s mnoha různými funkcemi. Ve výchozím nastavení obsahuje každý Apache Spark fond ve službě Azure synapse Analytics sadu známých a oblíbených open source knihoven. Můžete také přidat nebo spravovat další knihovny & verze pomocí možností správy knihovny Azure synapse Analytics. 
 
+### <a name="matplotlib"></a>Matplotlib
+Pomocí vestavěných funkcí vykreslování pro každou knihovnu můžete vykreslit standardní knihovny pro vykreslení, jako je matplotlib.
+
+Následující obrázek je příkladem vytvoření pruhového grafu pomocí **matplotlib**.
+   ![Příklad spojnicového grafu](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+
+Spusťte následující vzorový kód pro vykreslení obrázku výše.
+
+```python
+# Bar chart
+
+import matplotlib.pyplot as plt
+
+x1 = [1, 3, 4, 5, 6, 7, 9]
+y1 = [4, 7, 2, 4, 7, 8, 3]
+
+x2 = [2, 4, 6, 8, 10]
+y2 = [5, 6, 2, 6, 2]
+
+plt.bar(x1, y1, label="Blue Bar", color='b')
+plt.bar(x2, y2, label="Green Bar", color='g')
+plt.plot()
+
+plt.xlabel("bar number")
+plt.ylabel("bar height")
+plt.title("Bar Chart Example")
+plt.legend()
+plt.show()
+```
+
+
 ### <a name="bokeh"></a>Bokeh
 Můžete vykreslit HTML nebo interaktivní knihovny, jako je **rozostření**, pomocí ```displayHTML(df)``` . 
 
@@ -186,41 +218,49 @@ html = file_html(p, CDN, "my plot1")
 displayHTML(html)
 ```
 
-### <a name="matplotlib"></a>Matplotlib
-Pomocí vestavěných funkcí vykreslování pro každou knihovnu můžete vykreslit standardní knihovny pro vykreslení, jako je matplotlib.
 
-Následující obrázek je příkladem vytvoření pruhového grafu pomocí **matplotlib**.
-   ![Příklad spojnicového grafu](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+### <a name="plotly"></a>Plotly
+Můžete vykreslit HTML nebo interaktivní knihovny jako v **grafu** pomocí **displayHTML ()**.
 
-Spusťte následující vzorový kód pro vykreslení obrázku výše.
+Následující vzorový kód použijte k vykreslení obrázku níže.
+
+   ![Zobrazit jako příklad](./media/apache-spark-development-using-notebooks/synapse-plotly-image.png#lightbox)
+
 
 ```python
-# Bar chart
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
 
-import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                   dtype={"fips": str})
 
-x1 = [1, 3, 4, 5, 6, 7, 9]
-y1 = [4, 7, 2, 4, 7, 8, 3]
+import plotly.express as px
 
-x2 = [2, 4, 6, 8, 10]
-y2 = [5, 6, 2, 6, 2]
+fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
+                           color_continuous_scale="Viridis",
+                           range_color=(0, 12),
+                           scope="usa",
+                           labels={'unemp':'unemployment rate'}
+                          )
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
-plt.bar(x1, y1, label="Blue Bar", color='b')
-plt.bar(x2, y2, label="Green Bar", color='g')
-plt.plot()
+# create an html document that embeds the Plotly plot
+h = plotly.offline.plot(fig, output_type='div')
 
-plt.xlabel("bar number")
-plt.ylabel("bar height")
-plt.title("Bar Chart Example")
-plt.legend()
-plt.show()
+# display this html
+displayHTML(h)
 ```
+
 
 ### <a name="additional-libraries"></a>Další knihovny 
 Kromě těchto knihoven obsahuje modul runtime analýzy Azure synapse také následující sadu knihoven, které se často používají pro vizualizaci dat:
 - [Matplotlib](https://matplotlib.org/)
 - [Bokeh](https://bokeh.org/)
 - [Seaborn](https://seaborn.pydata.org/) 
+- [Plotly](https://plotly.com/)
 
 Nejaktuálnější informace o dostupných knihovnách a verzích najdete v [dokumentaci](./spark/../apache-spark-version-support.md) běhového prostředí Azure synapse Analytics.
 

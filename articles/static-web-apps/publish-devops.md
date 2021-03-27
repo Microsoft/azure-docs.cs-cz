@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: af359734ff5bfe90dedbb7f8389aecdc6e056654
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: 701f999427d743c18f5dbcadb00cf303f97a8f53
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105543550"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627285"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Kurz: publikování statického Web Apps Azure pomocí Azure DevOps
 
@@ -36,35 +36,13 @@ V tomto kurzu se naučíte:
 
 1. Přejděte do úložiště Azure DevOps.
 
-1. Použijte existující úložiště nebo _importujte úložiště_ , jak je znázorněno níže.
+1. Vyberte **importovat** a začněte importovat ukázkovou aplikaci.
   
     :::image type="content" source="media/publish-devops/devops-repo.png" alt-text="Úložiště DevOps":::
 
-1. Vytvořte nový soubor pro webovou aplikaci front-end.
+1. Do **adresy URL klonu** zadejte `https://github.com/staticwebdev/vanilla-api.git` .
 
-1. Zkopírujte a vložte následující kód HTML do nového souboru:
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-  
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles.css">
-      <title>Hello World!</title>
-    </head>
-  
-    <body>
-      <main>
-        <h1>Hello World!</h1>
-      </main>
-    </body>
-  
-    </html>
-    ```
-
-1. Soubor uložte.
+1. Vyberte **Importovat**.
 
 ## <a name="create-a-static-web-app"></a>Vytvoření statické webové aplikace
 
@@ -85,7 +63,9 @@ V tomto kurzu se naučíte:
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Podrobnosti o nasazení – ostatní":::
 
-1. Po úspěšném nasazení vyberte **Spravovat token nasazení**.
+1. Po úspěšném nasazení přejděte k novému prostředku statického Web Apps.
+
+1. Vyberte **Spravovat token nasazení**.
 
 1. Zkopírujte **token nasazení** a vložte ho do textového editoru pro použití na jiné obrazovce.
 
@@ -96,16 +76,17 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-the-pipeline-task-in-azure-devops"></a>Vytvoření úlohy kanálu v Azure DevOps
 
-1. Přejděte do projektu Azure DevOps, který jste vytvořili dříve.
+1. Přejděte do úložiště Azure DevOps, které jste vytvořili dříve.
 
-2. Vytvořte nový **kanál sestavení** a vyberte **nastavit sestavení**.
+1. Vyberte **nastavit sestavení**.
 
     :::image type="content" source="media/publish-devops/azdo-build.png" alt-text="Kanál buildu":::
 
-3. Zkopírujte a vložte následující YAML do svého kanálu.
+1. Na obrazovce *konfigurace vašeho kanálu* vyberte **Počáteční kanál**.
 
-    > [!NOTE]
-    > Hodnoty zadané pro _app_location_,_api_location_ a _output_location_ se pro vaši aplikaci musí upravit.  
+    :::image type="content" source="media/publish-devops/configure-pipeline.png" alt-text="Konfigurace kanálu":::
+
+1. Zkopírujte a vložte následující YAML do svého kanálu.
 
     ```yaml
     trigger:
@@ -117,40 +98,47 @@ V tomto kurzu se naučíte:
     steps:
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: frontend 
-          api_location: api
-          output_location: build
+          app_location: "/" 
+          api_location: "api"
+          output_location: ""
         env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 
-    Nakonfigurujte vstupy statických webových aplikací Azure podle struktury složek vaší aplikace.
+    > [!NOTE]
+    > Pokud ukázkovou aplikaci nepoužíváte, hodnoty pro `app_location` , a se `api_location` `output_location` musí změnit tak, aby odpovídaly hodnotám ve vaší aplikaci.
 
     [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
     `azure_static_web_apps_api_token`Hodnota je samostatně spravovaná a je nakonfigurována ručně.
 
-4. Vyberte **proměnné**.
+1. Vyberte **proměnné**.
 
-5. Vytvoří novou proměnnou.
+1. Vytvoří novou proměnnou.
 
-6. Název proměnné **deployment_token** (bude odpovídat názvu v pracovním postupu).
+1. Název proměnné **deployment_token** (bude odpovídat názvu v pracovním postupu).
 
-7. Zkopírujte token nasazení, který jste předtím vložili do textového editoru.
+1. Zkopírujte token nasazení, který jste předtím vložili do textového editoru.
 
-8. Vložte do pole _hodnota_ token nasazení.
+1. Vložte do pole _hodnota_ token nasazení.
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="Variabilní token":::
 
-9. Vyberte **OK**.
+1. Vyberte možnost **zachovat tuto hodnotu tajnou**.
 
-10. Vyberte **Uložit a spusťte** kanál.
+1. Vyberte **OK**.
+
+1. Vyberte **Uložit** a vraťte se k YAML kanálu.
+
+1. Vyberte **Uložit a spustit** , aby se otevřel dialog _Uložit a spustit_ .
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="Kanál":::
 
-11. Po úspěšném nasazení přejděte do **přehledu** služby Azure static Web Apps, který obsahuje odkazy na konfiguraci nasazení.
+1. Vyberte **Uložit a spustit** pro spuštění kanálu.
 
-12. Vyberte **adresu URL** pro zobrazení nově nasazeného webu. Všimněte si, jak _zdrojový_ odkaz teď odkazuje na větev a umístění úložiště Azure DevOps.
+1. Po úspěšném nasazení přejděte do **přehledu** služby Azure static Web Apps, který obsahuje odkazy na konfiguraci nasazení. Všimněte si, jak _zdrojový_ odkaz teď odkazuje na větev a umístění úložiště Azure DevOps.
+
+1. Vyberte **adresu URL** pro zobrazení nově nasazeného webu.
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="Umístění nasazení":::
 

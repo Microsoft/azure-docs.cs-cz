@@ -5,14 +5,14 @@ services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732305"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628522"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure PowerShell
 
@@ -21,9 +21,9 @@ Začínáme s privátním koncovým bodem Azure pomocí privátního koncového 
 V tomto rychlém startu vytvoříte privátní koncový bod pro Azure Attestation a nasadíte virtuální počítač pro otestování privátního připojení.  
 
 > [!NOTE]
-> Aktuální implementace obsahuje jenom možnost automatického schvalování. Aby bylo možné pokračovat v vytváření privátního koncového bodu, musí být odběr uveden bíle. Před pokračováním v níže uvedených krocích prosím obraťte se na tým služby nebo odešlete žádost o podporu Azure na [stránku podpory Azure](https://azure.microsoft.com/support/options/) .
+> Aktuální implementace obsahuje jenom možnost automatického schvalování. Aby bylo možné pokračovat v vytváření privátního koncového bodu, musí být předplatné přidáno do seznamu povolených. Před pokračováním v níže uvedených krocích prosím obraťte se na tým služby nebo odešlete žádost o podporu Azure na [stránku podpory Azure](https://azure.microsoft.com/support/options/) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Informace o [privátním propojení Azure](../private-link/private-link-overview.md)
 * [Nastavení ověření Azure pomocí Azure PowerShell](./quickstart-powershell.md)

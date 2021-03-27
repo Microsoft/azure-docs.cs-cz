@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24fe28eafc1d1da90b6a7b7f9d41b7e645e62855
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043610"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625768"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Kurz: Konfigurace ochrany proti podvodům v Microsoft Dynamics 365 pomocí Azure Active Directory B2C
 
-V tomto ukázkovém kurzu poskytujeme pokyny k integraci [ochrany před únikem informací v Microsoft Dynamics 365](/dynamics365/fraud-protection/overview) (DFP) pomocí služby Azure Active Directory (AD) B2C.
+V tomto ukázkovém kurzu poskytujeme pokyny k integraci [ochrany před únikem informací v Microsoft Dynamics 365](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) pomocí služby Azure Active Directory (AD) B2C.
 
 Microsoft DFP poskytuje klientům možnost posoudit, jestli riziko pokusů o vytvoření nových účtů a pokusů o přihlášení k ekosystému klienta je podvodné. Společnost Microsoft DFP Assessment může být používána zákazníkem k blokování nebo výzvě podezřelých pokusů o vytvoření nových falešných účtů nebo k ohrožení stávajících účtů. Ochrana účtů zahrnuje pomocí otisků prstů zařízení, rozhraní API pro posuzování rizik v reálném čase, pravidla a seznam, optimalizaci rizikových strategií podle obchodních potřeb klienta a scorecard pro monitorování efektivity ochrany před únikem informací a trendy v ekosystému klienta.
 
@@ -103,7 +103,7 @@ Nakonfigurujte nastavení aplikace ve [službě App Service v Azure](../app-serv
 |FraudProtectionSettings: InstanceId | Konfigurace Microsoft DFP |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | ID zákazníka otisku prstu zařízení Microsoftu |     |
 | FraudProtectionSettings:ApiBaseUrl |  Vaše základní adresa URL z portálu Microsoft DFP   | Pokud chcete místo toho volat rozhraní API pro produkční prostředí, odeberte klíčové slovo-int.|
-|  TokenProviderConfig: prostředek  |     | Pokud chcete místo toho volat rozhraní API pro produkční prostředí, odeberte klíčové slovo-int.|
+|  TokenProviderConfig: prostředek  | Vaše základní adresa URL – https://api.dfp.dynamics-int.com     | Pokud chcete místo toho volat rozhraní API pro produkční prostředí, odeberte klíčové slovo-int.|
 |   TokenProviderConfig: ClientId       |ID klientské aplikace Azure AD ochrany před podvody      |       |
 | TokenProviderConfig: autorita | https://login.microsoftonline.com/<directory_ID> | Autorita tenanta ochrany před podvody vaší obchodní autority Azure AD |
 | TokenProviderConfig: CertificateThumbprint * | Kryptografický otisk certifikátu, který se má použít k ověření vůči klientské aplikaci Azure AD |

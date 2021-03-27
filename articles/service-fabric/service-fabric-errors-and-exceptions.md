@@ -1,16 +1,14 @@
 ---
 title: Byly vyvolány běžné výjimky FabricClient
 description: Popisuje běžné výjimky a chyby, které mohou být vyvolány rozhraními API FabricClient při provádění operací správy aplikací a clusterů.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: gwallace
-ms.openlocfilehash: 7f3c3e072a3a2e4f7723f84b2c70ba0d0ddb9d03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2b5418729855ce366512d9718e22124e5cd837a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86258835"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627706"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Běžné výjimky a chyby při práci s rozhraním API FabricClient
 Rozhraní [FabricClient](/dotnet/api/system.fabric.fabricclient) API umožňují správcům clusterů a aplikací provádět úlohy správy Service Fabric aplikace, služby nebo clusteru. Například nasazení aplikace, upgrade a odebrání, kontrola stavu clusteru nebo testování služby. Vývojáři aplikací a Správci clusterů můžou používat rozhraní FabricClient API k vývoji nástrojů pro správu Service Fabric clusteru a aplikací.

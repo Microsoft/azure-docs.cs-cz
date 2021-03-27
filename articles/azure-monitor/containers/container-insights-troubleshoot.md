@@ -2,13 +2,13 @@
 title: Řešení potíží se službou Container Insights | Microsoft Docs
 description: Tento článek popisuje, jak můžete řešit problémy a řešit problémy se službou Container Insights.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708301"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627111"
 ---
 # <a name="troubleshooting-container-insights"></a>Řešení potíží s kontejnerem Insights
 
@@ -113,6 +113,54 @@ Lusky agentů Container Insights používají koncový bod cAdvisor na agentovi 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>V kontejneru Insights se nezobrazuje cluster s Kubernetes, který není Azure.
 
 Pokud chcete zobrazit cluster Kubernetes mimo Azure ve službě Container Insights, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v tématu ContainerInsights prostředků řešení Container Insights **(*pracovní prostor*)**.
+
+## <a name="metrics-arent-being-collected"></a>Metriky se neshromažďují.
+
+1. Ověřte, že cluster je v [podporované oblasti pro vlastní metriky](../essentials/metrics-custom-overview.md#supported-regions).
+
+2. Pomocí následujícího příkazu CLI ověřte, zda existuje přiřazení role **vydavatele metrik monitorování** :
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    U clusterů s MSI se ID klienta přiřazené uživateli pro omsagent mění pokaždé, když je monitorování povolené a zakázané, takže přiřazení role by mělo existovat na aktuálním ID klienta MSI. 
+
+3. Pro clustery s povolenou identitou Azure Active Directory pod a pomocí MSI:
+
+   - Ověřte, zda je požadovaná jmenovka **Kubernetes.Azure.com/ManagedBy: AKS**  k dispozici v omsagent luskech pomocí následujícího příkazu:
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - Ověřte, zda jsou výjimky povoleny, pokud je povolena identita pod pomocí jedné z podporovaných metod na adrese https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity .
+
+        Spusťte následující příkaz, který ověří:
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        Měl by se zobrazit výstup podobný následujícímu:
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

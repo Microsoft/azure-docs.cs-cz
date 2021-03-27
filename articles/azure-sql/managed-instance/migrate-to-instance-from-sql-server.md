@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: df0a28c4d2ba78e9b7a6b52e26537540164d28e0
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ccc6acfd27a1430a4f6a31886c06322c5c09e224
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564275"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628369"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,7 +89,7 @@ Základní hodnota výkonu je sada parametrů, jako je průměrné nebo maximál
 Některé parametry, které byste potřebovali pro měření SQL Server instance, jsou:
 
 - [Monitorujte využití CPU na instanci SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) a zaznamenejte průměrné a špičkové využití procesoru.
-- [Monitorujte využití paměti ve vaší instanci SQL Server](/sql/relational-databases/performance-monitor/monitor-memory-usage) a určete množství paměti využívané různými součástmi, jako je fond vyrovnávací paměti, mezipaměť plánu, fond úložiště sloupce, [OLTP v paměti](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), atd. Kromě toho byste měli najít průměrnou a maximální hodnotu čítače výkonu životnosti stránky očekávané paměti.
+- [Monitorujte využití paměti ve vaší instanci SQL Server](/sql/relational-databases/performance-monitor/monitor-memory-usage) a určete množství paměti využívané různými součástmi, jako je fond vyrovnávací paměti, mezipaměť plánu, fond úložiště sloupce, [OLTP v paměti](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage), atd. Kromě toho byste měli najít průměrnou a maximální hodnotu čítače výkonu životnosti stránky očekávané paměti.
 - Monitorujte využití v/v disku u zdrojové SQL Server instance pomocí zobrazení [Sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) nebo [čítačů výkonu](/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Monitorujte výkon úloh a dotazů nebo svou instanci SQL Server tím, že prozkoumáte zobrazení dynamické správy nebo úložiště dotazů, pokud migrujete z SQL Server 2016 + verze. Identifikujte Průměrné trvání a využití procesoru nejdůležitějších dotazů v úloze a porovnejte je s dotazy, které jsou spuštěny ve spravované instanci.
 

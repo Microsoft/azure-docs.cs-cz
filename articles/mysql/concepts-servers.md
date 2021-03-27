@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a05037505c122bb974e6da3d11a6f25a715a6843
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: cb8394de49c2c5daeae156a9316466928eded148
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869425"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628471"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Koncepty serveru v Azure Database for MySQL
 
@@ -38,7 +38,7 @@ V rámci serveru Azure Database for MySQL můžete vytvořit jednu nebo několik
 
 Následující prvky vám pomůžou zajistit bezpečný přístup k vaší databázi.
 
-|     |     |
+| Koncept zabezpečení | Description     |
 | :-- | :-- |
 | **Ověřování a autorizace** | Azure Database for MySQL server podporuje nativní ověřování MySQL. K serveru se můžete připojit a ověřit pomocí přihlašovacích údajů správce serveru. |
 | **Protokol** | Služba podporuje protokol založený na zprávách, který používá MySQL. |

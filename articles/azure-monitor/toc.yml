@@ -640,7 +640,7 @@
             - name: Aplikace jiného typu než HTTP nebo aplikace na pozadí
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: Konzola ASP.NET
+            - name: Konzola .NET
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java

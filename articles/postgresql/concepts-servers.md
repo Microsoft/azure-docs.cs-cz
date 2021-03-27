@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 215b7e908b21b1843b36a1e55972038c49ee101a
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 1d1751ed56f63105ce7775ceaed9ea2dcca1f8bf
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605310"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628131"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Jeden server
 Tento článek popisuje informace a pokyny pro práci s Azure Database for PostgreSQLm na jednom serveru.
@@ -36,7 +36,7 @@ V rámci Azure Database for PostgreSQL serveru můžete vytvořit jednu nebo ví
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Návody se připojit a ověřit pro Azure Database for PostgreSQL Server?
 Následující prvky vám pomůžou zajistit bezpečný přístup k vaší databázi:
 
-|||
+|Koncept zabezpečení|Description|
 |:--|:--|
 | **Ověřování a autorizace** | Server Azure Database for PostgreSQL podporuje nativní ověřování PostgreSQL. Můžete se připojit a ověřit na serveru přihlašovacími údaji správce serveru. |
 | **Protokol** | Služba podporuje protokol založený na zprávách, který používá PostgreSQL. |

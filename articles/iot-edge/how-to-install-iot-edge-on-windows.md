@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105558699"
+ms.locfileid: "105612109"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -117,7 +117,16 @@ Pokud chcete místo místního zařízení nasadit na vzdálené cílové zaří
 
    ![Vyberte zařízení, abyste ověřili, že je podporovaný.](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. Přijměte výchozí nastavení na kartě **nastavení 2,2** .
+1. Na kartě **nastavení 2,2** zkontrolujte nastavení konfigurace nasazení. Až budete s nastavením spokojeni, vyberte **Další**.
+
+   ![Kontrola nastavení konfigurace nasazení](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >Pokud používáte virtuální počítač s Windows, doporučuje se místo externího přepínače použít výchozí přepínač, abyste zajistili, že virtuální počítač Linux vytvořený v nasazení může získat IP adresu.
+   >
+   >Použití výchozího přepínače přiřadí virtuálnímu počítači se systémem Linux interní IP adresu. K této interní IP adrese nejde získat přístup mimo virtuální počítač s Windows, ale když se přihlásíte k virtuálnímu počítači s Windows, může se připojit k lokálně.
+   >
+   >Pokud používáte Windows Server, pamatujte na to, že Azure IoT Edge pro Linux ve Windows automaticky nepodporuje výchozí přepínač. Pro místní virtuální počítač s Windows serverem ověřte, že virtuální počítač se systémem Linux může získat IP adresu prostřednictvím externího přepínače. Pro virtuální počítač s Windows serverem v Azure nastavte před nasazením IoT Edge pro Linux ve Windows interní přepínač.
 
 1. Na kartě **nasazení 2,3** můžete sledovat průběh nasazení. Úplný proces zahrnuje stažení Azure IoT Edge pro Linux do balíčku Windows, instalaci balíčku, konfiguraci hostitelského zařízení a nastavení virtuálního počítače se systémem Linux. Dokončení tohoto procesu může trvat několik minut. Úspěšné nasazení je znázorněno níže.
 
@@ -168,7 +177,7 @@ Pokud jste to ještě neučinili, nainstalujte do svého cílového zařízení 
    ```
 
    > [!NOTE]
-   > Tento příkaz můžete spustit bez parametrů nebo volitelně přizpůsobit nasazení pomocí parametrů. Jejich význam najdete v [referenčních informacích ke skriptům IoT Edge pro Linux v prostředí Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) .
+   > Tento příkaz můžete spustit bez parametrů nebo volitelně přizpůsobit nasazení pomocí parametrů. Chcete-li zobrazit význam parametrů a výchozí hodnoty, přečtěte si téma referenční informace ke [skriptu IoT Edge pro Linux v prostředí Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) .
 
 1. Pokud souhlasíte s licenčními podmínkami, zadejte ' Y '.
 

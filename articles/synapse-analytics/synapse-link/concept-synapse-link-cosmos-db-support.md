@@ -2,20 +2,20 @@
 title: Podporované funkce Azure Synapse Linku pro Azure Cosmos DB
 description: Seznamte se s aktuálním seznamem akcí, které podporuje Azure synapse Link pro Azure Cosmos DB
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
 ms.date: 03/02/2021
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: a03a96f34861b84754de9d9ee4180100b58fcd37
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: cdc9f344e108fc58399f9bcb2a9f02a4659ecfe1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869221"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627672"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Podporované funkce Azure Synapse Linku pro Azure Cosmos DB
 
@@ -38,14 +38,14 @@ K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse.
 | **Podpora rozhraní Azure Cosmos DB API** | Podporovaný druh Azure Cosmos DB rozhraní API | SQL/MongoDB | SQL/MongoDB |
 | **Objekt**  |Objekty, jako je tabulka, která se dá vytvořit, ukazující přímo na Azure Cosmos DB kontejner| Datový rámec, zobrazení, tabulka | Zobrazení |
 | **Oprávnění**    | Typ kontejneru Azure Cosmos DB, který se dá přečíst | OLTP/HTAP | HTAP  |
-| **Psal**   | Dá se použít modul runtime Azure Synapse k zápisu dat do kontejneru Azure Cosmos DB. | Ano | Ne |
+| **Psal**   | Dá se použít modul runtime Azure Synapse k zápisu dat do kontejneru Azure Cosmos DB. | Yes | No |
 
 * Pokud zapisujete data do kontejneru Azure Cosmos DB ze Sparku, k tomuto procesu dochází v transakčním úložišti Azure Cosmos DB. Bude to mít vliv na transakční výkon Azure Cosmos DB díky využívání jednotek žádosti.
 * Vyhrazená integrace fondu SQL prostřednictvím externích tabulek není v současné době podporovaná.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Podporované akce generované kódem pro Spark
 
-| Gesto              | Popis |OLTP |HTAP  |
+| Gesto              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Načíst do datového rámce** |Načtení a načtení dat do datového rámce Spark |✓| ✓ |
 | **Vytvořit tabulku Spark** |Vytvoření tabulky ukazující na kontejner Azure Cosmos DB|✓| ✓ |
@@ -55,7 +55,7 @@ K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse.
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Podporované akce generované kódem pro fond SQL bez serveru
 
-| Gesto              | Popis |OLTP |HTAP |
+| Gesto              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Zkoumání dat** |Prozkoumat data z kontejneru se známou syntaxí T-SQL a automatickým odvozením schématu|×| ✓ |
 | **Vytváření zobrazení a vytváření sestav BI** |Vytvoření zobrazení SQL pro přímý přístup k kontejneru pro BI prostřednictvím neserverového fondu SQL |×| ✓ |

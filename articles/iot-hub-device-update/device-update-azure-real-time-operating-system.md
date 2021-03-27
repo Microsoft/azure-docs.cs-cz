@@ -1,17 +1,17 @@
 ---
-title: Kurz aktualizace zařízení pro Azure IoT Hub pro Azure – reálný čas – operační systém | Microsoft Docs
-description: Začínáme s aktualizací zařízení pro Azure IoT Hub pomocí Azure – v reálném čase – operační systém
+title: Aktualizace zařízení pro Azure v reálném čase – operační systém | Microsoft Docs
+description: Začínáme s aktualizací zařízení pro Azure v reálném čase – operační systém
 author: valls
 ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: aaf954642fb276e16dfe4581c2675f817a708f3b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 66da860a5cdae1f5c7c18e4136b1f2d960492ca8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105572601"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629049"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>Kurz aktualizace zařízení pro Azure IoT Hub s využitím operačního systému Azure v reálném čase (RTO)
 

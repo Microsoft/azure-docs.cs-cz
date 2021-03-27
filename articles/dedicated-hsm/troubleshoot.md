@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 11118c9bd745480dc88380e718a9ab348ab1a3e3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606942"
+ms.locfileid: "105611646"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Řešení potíží s vyhrazenou službou HSM Azure
 
@@ -33,7 +33,7 @@ Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro po
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Získání přístupu k vyhrazenému modulu HSM
 
-Nejdřív se položte na to, jaké případy použití máte, a nemůžete je řešit [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) ani [spravované modul HSM Azure](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/overview). Pokud se domníváte, že se vaše požadavky na úložiště klíčů vejdou jenom na vyhrazený modul HSM, pak e-mail HSMrequest@microsoft.com s žádostí o přístup. Vyosnovujte svou aplikaci a případy použití, oblasti, které byste chtěli HSM, a objem HSM, které hledáte. Pokud pracujete se zástupcem Microsoftu, jako je například vedoucí pro vedení účtu nebo architekt cloudového řešení, pak je zahrňte do libovolné žádosti.
+Nejdřív se položte na to, jaké případy použití máte, a nemůžete je řešit [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) ani [spravované modul HSM Azure](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview). Pokud se domníváte, že se vaše požadavky na úložiště klíčů vejdou jenom na vyhrazený modul HSM, pak e-mail HSMrequest@microsoft.com s žádostí o přístup. Vyosnovujte svou aplikaci a případy použití, oblasti, které byste chtěli HSM, a objem HSM, které hledáte. Pokud pracujete se zástupcem Microsoftu, jako je například vedoucí pro vedení účtu nebo architekt cloudového řešení, pak je zahrňte do libovolné žádosti.
 
 ## <a name="hsm-provisioning"></a>Zřizování modulu HSM
 

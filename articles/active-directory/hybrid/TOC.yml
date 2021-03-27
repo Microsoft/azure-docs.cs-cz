@@ -242,6 +242,8 @@
           href: how-to-connect-fed-saml-idp.md
         - name: Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+        - name: Nouzové střídání certifikátů AD FS
+          href: how-to-connect-emergency-ad-fs-certificate-rotation.md
     - name: Správa jednotného přihlašování
       items:
         - name: Začínáme s jednotným přihlašováním

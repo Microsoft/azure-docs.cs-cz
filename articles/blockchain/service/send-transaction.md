@@ -4,12 +4,12 @@ description: Kurz týkající se použití rozšíření Azure blockchain Develo
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96763685"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628641"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
 
@@ -24,7 +24,7 @@ Pomocí Azure blockchain Development Kit pro Ethereem:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -82,27 +82,104 @@ Azure blockchain Development Kit používá Truffle ke spouštění migračního
 ![Kontrakt se úspěšně nasadil.](./media/send-transaction/deploy-contract.png)
 
 ## <a name="call-a-contract-function"></a>Volání funkce kontraktu
+Funkce **SendRequest** kontraktu **HelloBlockchain** změní proměnnou stavu **RequestMessage** . Změna stavu blockchain sítě se provádí prostřednictvím transakce. Můžete vytvořit skript pro spuštění funkce **SendRequest** prostřednictvím transakce.
 
-Funkce **SendRequest** kontraktu **HelloBlockchain** změní proměnnou stavu **RequestMessage** . Změna stavu blockchain sítě se provádí prostřednictvím transakce. Stránku interakce inteligentního kontraktu služby Azure blockchain Development Kit můžete použít k volání funkce **SendRequest** prostřednictvím transakce.
+1. V kořenovém adresáři projektu Truffle vytvořte nový soubor a pojmenujte ho `sendrequest.js` . Do souboru přidejte následující kód JavaScriptu Web3.
 
-1. Pokud chcete s vaší inteligentní smlouvou pracovat, klikněte pravým tlačítkem myši na **HelloBlockchain. Sol** a v nabídce vyberte možnost **Zobrazit stránku interakce inteligentních kontraktů** .
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+        
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
+      }).then(function(result) {
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-    ![Zvolit zobrazení stránky interakce inteligentních kontraktů z nabídky](./media/send-transaction/contract-interaction.png)
+1. Když Azure blockchain Development Kit vytvoří projekt, konfigurační soubor Truffle se vygeneruje s podrobnostmi o koncovém bodu vaší konsorcia blockchain Network. Otevřete **truffle-config.js** v projektu. Konfigurační soubor obsahuje seznam dvou sítí: jeden s názvem vývoj a druhý se stejným názvem jako konsorcium.
+1. V podokně terminálu VS Code použijte Truffle ke spuštění skriptu v síti konsorcia blockchain. V panelu nabídek podokna terminálu vyberte kartu **terminál** a **PowerShell** v rozevíracím seznamu.
 
-1. Stránka interakce umožňuje zvolit nasazenou verzi kontraktu, funkce volání, zobrazit aktuální stav a zobrazit metadata.
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
+    ```
 
-    ![Příklad stránky interakce inteligentního kontraktu](./media/send-transaction/interaction-page.png)
+    Nahraďte \<blockchain network\> názvem blockchain sítě definované v **truffle-config.js**.
 
-1. Pokud chcete zavolat funkci inteligentního kontraktu, vyberte akci kontraktu a předejte své argumenty. Vyberte akci **SendRequest** kontrakt a zadejte **Hello, blockchain!** pro parametr **RequestMessage** . Vyberte možnost **Spustit** pro volání funkce **SendRequest** prostřednictvím transakce.
+Truffle spustí skript ve vaší síti blockchain.
 
-    ![Spustit SendRequest akci](./media/send-transaction/sendrequest-action.png)
+![Výstup ukazující transakci byl odeslán.](./media/send-transaction/execute-transaction.png)
 
-Po zpracování transakce oddíl interakce odráží změny stavu.
+Při spuštění funkce kontraktu prostřednictvím transakce není transakce zpracována, dokud nebude vytvořen blok. Funkce, které mají být spuštěny prostřednictvím transakce, vracejí ID transakce namísto návratové hodnoty.
 
-![Změny stavu smlouvy](./media/send-transaction/contract-state.png)
+## <a name="query-contract-state"></a>Dotaz na stav kontraktu
 
-Funkce SendRequest nastaví pole **RequestMessage** a **State** . Aktuální stav pro **RequestMessage** je argumentem, který jste předali **Hello, blockchain**. Hodnota pole **stav** zůstane **požadavek**.
+Funkce inteligentních kontraktů mohou vracet aktuální hodnotu proměnných stavu. Pojďme přidat funkci, která vrátí hodnotu stavové proměnné.
 
+1. Do **HelloBlockchain. Sol** Přidejte funkci **GetMessage** do **HelloBlockchain** Smart Contract.
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
+    ```
+
+    Funkce vrátí zprávu uloženou v proměnné stavu na základě aktuálního stavu kontraktu.
+
+1. Kliknutím pravým tlačítkem na **HelloBlockchain. Sol** a kliknutím na možnost **sestavit smlouvy** z nabídky zkompilujete změny v rámci inteligentního kontraktu.
+1. Nasazení provedete tak, že kliknete pravým tlačítkem na **HelloBlockchain. Sol** a v nabídce kliknete na **nasadit smlouvy** . Po zobrazení výzvy vyberte v paletě příkazů síť konsorcia Azure blockchain Consortium.
+1. Dále vytvořte skript pomocí volání funkce **GetMessage** . V kořenovém adresáři projektu Truffle vytvořte nový soubor a pojmenujte ho `getmessage.js` . Do souboru přidejte následující kód JavaScriptu Web3.
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
+
+1. V podokně terminálu VS Code spusťte skript na blockchain síti pomocí Truffle. V panelu nabídek podokna terminálu vyberte kartu **terminál** a **PowerShell** v rozevíracím seznamu.
+
+    ```bash
+    truffle exec getmessage.js --network <blockchain network>
+    ```
+
+    Nahraďte \<blockchain network\> názvem blockchain sítě definované v **truffle-config.js**.
+
+Skript se dotazuje na inteligentní kontrakt zavoláním funkce GetMessage. Vrátí se aktuální hodnota **RequestMessage** stavu proměnné.
+
+![Výstup z dotazu GetMessage zobrazující aktuální hodnotu RequestMessage stavu proměnné](./media/send-transaction/execute-get.png)
+
+Všimněte si, že hodnota není **Hello, blockchain!**. Místo toho je vrácená hodnota zástupný symbol. Když změníte a nasadíte smlouvu, je změna smlouvy nasazena na novou adresu a proměnné stavu jsou přiřazeny hodnoty v konstruktoru inteligentních kontraktů. Vzorový **2_deploy_contracts.js** skript pro migraci nasadí inteligentní kontrakt a předá jako argument hodnotu zástupného symbolu. Konstruktor nastaví proměnnou stavu **RequestMessage** na hodnotu zástupného symbolu a vrátí to, co je vráceno.
+
+1. Chcete-li nastavit proměnnou stavu **RequestMessage** a zadat dotaz na hodnotu, spusťte znovu skripty **sendrequest.js** a **getmessage.js** .
+
+    ![Výstup ze skriptů SendRequest a GetMessage ukazující RequestMessage byl nastaven.](./media/send-transaction/execute-set-get.png)
+
+    **sendrequest.js** nastaví proměnnou stavu **RequestMessage** na **Hello, blockchain!** a **getmessage.js** vyhledá kontrakt pro hodnotu **RequestMessage** stavu a vrátí **Hello, blockchain!**.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
