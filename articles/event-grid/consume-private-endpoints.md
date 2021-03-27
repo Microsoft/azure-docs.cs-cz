@@ -3,12 +3,12 @@ title: Doručení událostí pomocí služby privátního propojení
 description: Tento článek popisuje, jak obejít omezení neschopnýho doručovat události pomocí služby privátního propojení.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722323"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629287"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Doručení událostí pomocí služby privátního propojení
 V současné době není možné doručovat události pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md). To znamená, že pokud máte přísné požadavky na izolaci sítě, u kterých vaše doručováné události nesmí opustit privátní IP adresu, neexistuje žádná podpora. 
@@ -27,7 +27,7 @@ V rámci této konfigurace přechází přenos přes veřejnou IP adresu nebo In
 ## <a name="deliver-events-to-event-hubs-using-managed-identity"></a>Doručovat události do Event Hubs pomocí spravované identity
 Pokud chcete doručovat události do Center událostí v oboru názvů Event Hubs pomocí spravované identity, postupujte takto:
 
-1. [Povolte identitu přiřazenou systémem pro téma nebo doménu](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
+1. Povolit identitu přiřazenou systémem: [Systémová témata](enable-identity-system-topics.md), [vlastní témata a domény](enable-identity-custom-topics-domains.md).  
 1. [Přidejte identitu do role **odesilatele dat Azure Event Hubs** v oboru názvů Event Hubs](../event-hubs/authenticate-managed-identity.md#to-assign-azure-roles-using-the-azure-portal).
 1. [Povolit **důvěryhodným službám Microsoftu obejít toto nastavení brány firewall** ve vašem oboru názvů Event Hubs](../event-hubs/event-hubs-service-endpoints.md#trusted-microsoft-services). 
 1. [Nakonfigurujte odběr událostí](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) , který používá centrum událostí jako koncový bod pro použití identity přiřazené systémem.
@@ -35,16 +35,16 @@ Pokud chcete doručovat události do Center událostí v oboru názvů Event Hub
 ## <a name="deliver-events-to-service-bus-using-managed-identity"></a>Doručovat události do Service Bus pomocí spravované identity
 Pokud chcete doručovat události do Service Bus front nebo témat v oboru názvů Service Bus pomocí spravované identity, postupujte takto:
 
-1. [Povolte identitu přiřazenou systémem pro téma nebo doménu](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Přidejte identitu do role [Azure Service Bus data Sender](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) v oboru názvů Service Bus
+1. Povolit identitu přiřazenou systémem: [Systémová témata](enable-identity-system-topics.md), [vlastní témata a domény](enable-identity-custom-topics-domains.md). 
+1. [Přidejte identitu do role **Azure Service Bus data Sender**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) v oboru názvů Service Bus
 1. [Povolit **důvěryhodným službám Microsoftu obejít toto nastavení brány firewall** ve vašem oboru názvů Service Bus](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
-1. [Nakonfigurujte odběr událostí](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) , který používá Service Busou frontu nebo téma jako koncový bod pro použití identity přiřazené systémem.
+1. [Nakonfigurujte odběr událostí](managed-service-identity.md) , který používá Service Busou frontu nebo téma jako koncový bod pro použití identity přiřazené systémem.
 
 ## <a name="deliver-events-to-storage"></a>Doručovat události do úložiště 
 Pokud chcete doručovat události do front úložiště pomocí spravované identity, postupujte podle těchto kroků:
 
-1. [Povolte identitu přiřazenou systémem pro téma nebo doménu](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity).
-1. Přidejte identitu do role [odesílatel zprávy data fronty úložiště](../storage/common/storage-auth-aad-rbac-portal.md) ve frontě Azure Storage.
+1. Povolit identitu přiřazenou systémem: [Systémová témata](enable-identity-system-topics.md), [vlastní témata a domény](enable-identity-custom-topics-domains.md). 
+1. [Přidejte identitu do role **odesílatel zprávy data fronty úložiště**](../storage/common/storage-auth-aad-rbac-portal.md) ve frontě Azure Storage.
 1. [Nakonfigurujte odběr událostí](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) , který používá Service Busou frontu nebo téma jako koncový bod pro použití identity přiřazené systémem.
 
 

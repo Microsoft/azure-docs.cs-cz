@@ -4,16 +4,16 @@ description: Přehled dostupných zobrazení databáze SQL DB ve službě Azure 
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c7fba590c9c8951e1862c28cb24dbde52c8da8d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87003317"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625530"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Zobrazení databáze Azure blockchain Workbench
 
-Azure blockchain Workbench Preview doručuje data z distribuovaných knih do databáze SQL DB *mimo řetěz* . Databáze s neplatnými možnostmi umožňuje používat SQL a stávající nástroje, jako je [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), k interakci s daty blockchain.
+Azure blockchain Workbench Preview doručuje data z distribuovaných knih do databáze SQL DB *mimo řetěz* . Databáze s neplatnými možnostmi umožňuje používat SQL a stávající nástroje, jako je [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms), k interakci s daty blockchain.
 
 Azure blockchain Workbench poskytuje sadu databázových zobrazení, která poskytují přístup k datům, která budou užitečná při provádění dotazů. Tato zobrazení jsou silně Denormalizovaná, aby bylo snadné rychle začít sestavovat sestavy, analyzovat a jinak využívat blockchain data pomocí stávajících nástrojů a bez nutnosti předávat zdroje databáze.
 

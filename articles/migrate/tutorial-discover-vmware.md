@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562728"
+ms.locfileid: "105612054"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Kurz: zjišťování serverů běžících v prostředí VMware pomocí Azure Migrate: zjišťování a posouzení
 
@@ -34,11 +34,9 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, Projděte si tyto požadavky.
-
 
 **Požadavek** | **Podrobnosti**
 --- | ---
@@ -97,7 +95,6 @@ V vSphere webovém klientovi nastavte účet následujícím způsobem:
 6. Pokud chcete také provést zjišťování nainstalovaných aplikací a analýzu závislostí bez agenta, přejít na **role** > vyberte roli jen **pro čtení** a v části **oprávnění** vyberte **operace hostů**. Oprávnění můžete rozšířit na všechny objekty pod vCenter Server tím, že vyberete zaškrtávací políčko šířit do podřízených.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Zaškrtnutím políčka povolíte operace hostů u role jen pro čtení.":::
-
 
 > [!NOTE]
 > Zjišťování můžete omezit na konkrétní vCenter Server datacentra, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé servery, a to pomocí oboru vCenter Server. [**Přečtěte si další informace**](set-discovery-scope.md) o určení rozsahu vCenter Server uživatelského účtu.
@@ -197,11 +194,9 @@ Import staženého souboru a vytvoření serveru v prostředí VMware
 8. V části **mapování sítě** určete síť, ke které se bude server připojovat. K posílání metadat do Azure Migrate potřebuje síť připojení k Internetu.
 9. Zkontrolujte a ověřte všechna nastavení a pak klikněte na **Finish** (Dokončit).
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
 Ujistěte se, že se server zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
-
 
 ### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 

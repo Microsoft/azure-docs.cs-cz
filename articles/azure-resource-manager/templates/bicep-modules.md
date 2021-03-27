@@ -2,15 +2,15 @@
 title: Moduly bicep
 description: Popisuje, jak definovat a využívat modul a jak používat obory modulů.
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 2edeb5c96f771867f964963b2d27768291ae2d4a
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: 7a680e8aa0fa4d5ef9cac7f9e7ba07a3aa4ee1e2
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889701"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611731"
 ---
-# <a name="use-bicep-modules"></a>Použití modulů bicep
+# <a name="use-bicep-modules-preview"></a>Použití modulů bicep (Preview)
 
 Bicep umožňuje rozdělit komplexní řešení do modulů. Modul bicep je sada jednoho nebo více prostředků, které se mají nasadit společně. Moduly s abstraktními komplexními podrobnostmi o deklaraci nezpracovaného prostředku, které mohou zvýšit čitelnost. Tyto moduly můžete znovu použít a sdílet je s dalšími lidmi. V kombinaci s [specifikacemi šablon](./template-specs.md)vytvoří způsob pro modularitu a opakované použití kódu. Kurz najdete v tématu [kurz: Přidání bicep modulů](./bicep-tutorial-add-modules.md).
 

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 42e263a47c6c771d2b1fef6586468cfc5a698e28
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047911"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628573"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ Managed instance nabízí stejné úrovně výkonu na výpočetní úrovni a vel
 
 Jednou z možností je [exportovat databázi do BacPac](../database/database-export.md) a potom [importovat soubor BacPac](../database/database-import.md). Toto je doporučený postup, pokud je databáze menší než 100 GB.
 
-[Transakční replikaci](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) je možné použít, pokud všechny tabulky v databázi mají *primární* klíče a v databázi nejsou žádné objekty OLTP v paměti.
+[Transakční replikaci](replication-two-instances-and-sql-server-configure-tutorial.md) je možné použít, pokud všechny tabulky v databázi mají *primární* klíče a v databázi nejsou žádné objekty OLTP v paměti.
 
 Nativní COPY_ONLY zálohy pořízené ze spravované instance nelze obnovit do SQL Server, protože spravovaná instance má vyšší verzi databáze v porovnání s SQL Server. Další podrobnosti najdete v tématu [zálohování pouze pro kopírování](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
@@ -171,7 +171,7 @@ Podívejte [se na klíčové příčiny rozdílů výkonu mezi spravovanou insta
 
 Výkon spravované instance můžete optimalizovat pomocí:
 - [Automatické ladění](../database/automatic-tuning-overview.md) , které poskytuje špičkový výkon a stabilní úlohy prostřednictvím průběžného ladění výkonu na základě AI a strojového učení.
--   [OLTP v paměti](../in-memory-oltp-overview.md) , který vylepšuje propustnost a latenci při zpracování transakcí a poskytuje rychlejší obchodní přehledy. 
+-    [OLTP v paměti](../in-memory-oltp-overview.md) , který vylepšuje propustnost a latenci při zpracování transakcí a poskytuje rychlejší obchodní přehledy. 
 
 K optimalizaci výkonu ještě více zvažte použití některých z *osvědčených postupů* pro [optimalizaci aplikace a databáze](../database/performance-guidance.md#tune-your-database).
 Pokud se vaše zatížení skládá z velkého množství malých transakcí, zvažte možnost [přepnout typ připojení ze serveru proxy na režim přesměrování](connection-types-overview.md#changing-connection-type) pro nižší latenci a vyšší propustnost.
@@ -263,9 +263,9 @@ Ano. Po zřízení spravované instance můžete nastavit NSG, který řídí p�
 **Můžu nastavit síťové virtuální zařízení nebo místní bránu firewall pro filtrování odchozího provozu správy na základě plně kvalifikovaných názvů domén?**
 
 No. Tato akce není podporována z několika důvodů:
--   Směrování provozu, který reprezentuje odpověď na příchozí požadavek na správu, by bylo asymetrické a nebylo možné ho použít.
--   Směrování provozu na úložiště by ovlivnilo omezení propustnosti a latenci, takže nebudeme moct poskytovat očekávanou kvalitu a dostupnost služby.
--   Na základě zkušeností jsou tyto konfigurace náchylné k chybám a nepodporují se.
+-    Směrování provozu, který reprezentuje odpověď na příchozí požadavek na správu, by bylo asymetrické a nebylo možné ho použít.
+-    Směrování provozu na úložiště by ovlivnilo omezení propustnosti a latenci, takže nebudeme moct poskytovat očekávanou kvalitu a dostupnost služby.
+-    Na základě zkušeností jsou tyto konfigurace náchylné k chybám a nepodporují se.
 
 **Můžu pro odchozí provoz bez správy nastavit síťové virtuální zařízení nebo bránu firewall?**
 
@@ -416,9 +416,9 @@ Spravovaná instance SQL nabízí [nákupní model založený na Vcore](sql-mana
 **Jaké cenové výhody jsou k dispozici pro spravovanou instanci SQL?**
 
 Náklady můžete s výhodami Azure SQL ušetřit následujícími způsoby:
--   Maximalizujte stávající investice do místních licencí a pomocí [zvýhodněné hybridní využití Azure](../azure-hybrid-benefit.md?tabs=azure-powershell)ušetřete až 55 procent. 
--   Potvrďte rezervaci za výpočetní prostředky a Ušetřete až 33 procent s [výhodou rezervované instance](../database/reserved-capacity-overview.md). V kombinaci s zvýhodněným hybridním využitím Azure získáte úsporu až 82 procent. 
--   Díky [zvýhodnění](https://azure.microsoft.com/pricing/dev-test/) ceny za vývoj a testování pro Azure můžete ušetřit až 55 procent oproti ceníkům, které nabízí zvýhodněné sazby za vaše průběžné vývojové a testovací úlohy.
+-    Maximalizujte stávající investice do místních licencí a pomocí [zvýhodněné hybridní využití Azure](../azure-hybrid-benefit.md?tabs=azure-powershell)ušetřete až 55 procent. 
+-    Potvrďte rezervaci za výpočetní prostředky a Ušetřete až 33 procent s [výhodou rezervované instance](../database/reserved-capacity-overview.md). V kombinaci s zvýhodněným hybridním využitím Azure získáte úsporu až 82 procent. 
+-    Díky [zvýhodnění](https://azure.microsoft.com/pricing/dev-test/) ceny za vývoj a testování pro Azure můžete ušetřit až 55 procent oproti ceníkům, které nabízí zvýhodněné sazby za vaše průběžné vývojové a testovací úlohy.
 
 **Kdo má nárok na zvýhodnění rezervované instance?**
 

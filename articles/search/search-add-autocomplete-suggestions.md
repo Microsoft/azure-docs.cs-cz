@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a46c7f35e30b2dda7b4800ed553447cef5bb5d33
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609349"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626703"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Přidání automatického dokončování a návrhů do klientských aplikací s využitím Azure Kognitivní hledání
 
@@ -81,13 +81,15 @@ Následující další parametry se vztahují na automatické dokončování i n
 
 Automatické vyplňování dotazovacího termínu nebo vyřazení seznamu vyhovujících odkazů vyžaduje kód interakce s uživatelem, obvykle JavaScript, který může spotřebovávat žádosti z externích zdrojů, jako jsou například automatické dokončování nebo návrhy dotazů na Azure Searchho indexu rozpoznávání.
 
-I když byste tento kód mohli nativně psát, je mnohem jednodušší použít funkce z existující knihovny JavaScriptu. Tento článek uvádí dva, jeden pro návrhy a další pro automatické dokončování. 
+I když byste tento kód mohli nativně psát, je mnohem jednodušší použít funkce z existující knihovny JavaScriptu, například z následujících. 
 
 + Ve fragmentu kódu návrhu se zobrazí [widget automatického dokončování (rozhraní jQuery)](https://jqueryui.com/autocomplete/) . Můžete vytvořit vyhledávací pole a pak na něj odkazovat ve funkci JavaScriptu, která používá widget automatického dokončování. Vlastnosti pomůcky nastaví zdroj (funkci automatického dokončování nebo návrhů), minimální délku vstupních znaků před provedením akce a umístění.
 
 + Ve fragmentu kódu automatického dokončování se zobrazí [modul plug-in XDSoft AutoComplete](https://xdsoft.net/jqplugins/autocomplete/) .
 
-Tyto knihovny používáme k sestavení vyhledávacího pole podporujícího návrhy i automatické dokončování. Vstupy shromážděné do vyhledávacího pole se spárují s návrhy a akcemi automatického dokončování.
++ [návrhy](https://www.npmjs.com/package/suggestions) se zobrazí v [kurzu JavaScript](tutorial-javascript-overview.md) a v ukázce kódu.
+
+Pomocí těchto knihoven v klientovi můžete vytvořit vyhledávací pole, které podporuje návrhy i automatické dokončování. Vstupy shromážděné do vyhledávacího pole se pak dají spárovat s návrhy a akcemi automatického dokončování v rámci vyhledávací služby.
 
 ## <a name="suggestions"></a>Návrhy
 
@@ -247,7 +249,7 @@ Funkce automatického dokončování přijímá vstup hledaného termínu. Metod
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí těchto odkazů můžete najít ucelené pokyny nebo kód, který demonstruje prostředí hledání s možností vyhledávání. Ukázka předvádí hybridní implementace návrhů a automatického dokončování.
+Pomocí těchto odkazů můžete najít ucelené pokyny nebo kód, který demonstruje prostředí hledání s možností vyhledávání. Ukázka demonstruje hybridní implementaci návrhů a automatického dokončování.
 
-+ [Kurz: Vytvoření první aplikace v jazyce C# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [Ukázka kódu C#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
++ [Přidání vyhledávání na web (JavaScript):](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) používá otevřený zdrojový balíček návrhů pro částečné dokončování v klientské aplikaci.
++ [Kurz: Vytvoření první aplikace v jazyce c# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md) s přiřazenou  [ukázkou kódu c#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead) předvedení nativní podpory pro typeahead.

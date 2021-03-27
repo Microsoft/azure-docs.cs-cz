@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 634eb2d22e3fa570ac9412d4fb8afd917b5c2eaa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564003"
+ms.locfileid: "105611969"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Škálování migrace virtuálních počítačů VMware bez agenta do Azure
 
@@ -43,8 +43,8 @@ Informace o tom, jak postupovat výše, najdete v kurzu migrace [virtuálních p
 
 Pokud chcete přidat zařízení se škálováním na více instancí, postupujte podle níže uvedených kroků:
 
-1. Klikněte na **zjišťování**.  >  **jedná se o virtualizované počítače?** 
-1. Vyberte **Ano s hypervisorem VMware vSphere.**
+1. Klikněte na **zjišťování**  >  **jsou virtualizované vaše počítače?** 
+1. Vyberte možnost **Ano, s VMware vSphere hypervisorem.**
 1. V dalším kroku vyberte možnost replikace bez agenta.
 1. V nabídce vybrat typ zařízení vyberte **škálovat na stávající primární zařízení** .
 1. Vyberte primární zařízení (zařízení, pomocí kterého bylo provedeno zjišťování), u kterého chcete škálovat kapacitu.
@@ -54,7 +54,7 @@ Pokud chcete přidat zařízení se škálováním na více instancí, postupujt
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
 
 1. V části **generovat Azure Migrate klíč projektu** zadejte název přípony pro zařízení se škálováním na více instancí. Přípona může obsahovat pouze alfanumerické znaky a má omezení délky 14 znaků.
-2. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťování.
+2. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťování během vytváření prostředků.
 3. Zkopírujte vygenerovaný klíč. K dokončení registrace zařízení se škálováním na více instancí budete potřebovat klíč později.
 
 ### <a name="2-download-the-installer-for-the-scale-out-appliance"></a>2. Stáhněte si instalační program pro zařízení se škálováním na více instancí.
@@ -68,8 +68,8 @@ V nabídce **stáhnout Azure Migrate zařízení** klikněte na  **Stáhnout**. 
 > 1. Otevřete příkazový řádek jako správce.
 > 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklad použití pro veřejný cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Stáhněte si nejnovější verzi instalačního programu zařízení se škálováním na více instancí z portálu, pokud vypočítaná hodnota hash neodpovídá tomuto řetězci: e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+    - Příklad použití pro veřejný cloud: ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
+> 3. Stáhněte si nejnovější verzi instalačního programu zařízení se škálováním na více instancí z portálu, pokud vypočítaná hodnota hash neodpovídá tomuto řetězci: 1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Spusťte skript instalačního programu Azure Migrate
 Skript instalačního programu provede následující akce:
@@ -108,7 +108,7 @@ Než začnete, zajistěte, aby [tyto koncové body Azure](migrate-appliance.md#p
 - Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
 - V části Configuration Manager > **nastavit požadavky** proveďte následující kroky:
    - **Připojení**: zařízení kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
-     1. Klikněte na **nastavit proxy server** a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN) portu pro naslouchání.
+     1. Klikněte na **instalační program proxy** a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN) portu pro naslouchání.
      2. Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
      3. Podporuje se jen proxy protokolu HTTP.
      4. Pokud jste přidali podrobnosti proxy serveru nebo zakážete proxy server nebo ověřování, kliknutím na **Uložit** spusťte kontrolu připojení znovu.
@@ -150,7 +150,7 @@ Pokud chcete dokončit registraci zařízení se škálováním na více instanc
 Po úspěšném naimportování souborů se registrace zařízení se škálováním na více instancí dokončí a zobrazí se časové razítko posledního úspěšného importu. Kliknutím na **Zobrazit podrobnosti** můžete zobrazit také podrobnosti o registraci.
 :::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Snímek obrazovky ukazuje registraci zařízení se škálováním na více instancí s Azure Migrate projektu.":::
 
-V tomto okamžiku byste měli znovu ověřit, jestli se zařízení se škálováním na více instancí může připojit k serveru vCenter. Kliknutím na znovu **ověřit** ověřte vCenter Server připojení ze zařízení se škálováním na více instancí.
+V tuto chvíli byste měli znovu ověřit, jestli se zařízení se škálováním na více instancí může připojit k serveru vCenter. Kliknutím na znovu **ověřit** ověřte vCenter Server připojení ze zařízení se škálováním na více instancí.
 :::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Snímek obrazovky ukazuje zobrazení přihlašovacích údajů a zdrojů zjišťování, které se mají ověřit.":::
 
 > [!IMPORTANT]

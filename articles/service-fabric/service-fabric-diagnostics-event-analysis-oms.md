@@ -1,16 +1,14 @@
 ---
 title: Analýza událostí v Azure Service Fabric pomocí protokolů Azure Monitor
 description: Seznamte se s vizualizací a analýzou událostí pomocí protokolů Azure Monitor pro monitorování a diagnostiku clusterů Azure Service Fabric.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581537"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628964"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analýza a vizualizace událostí pomocí protokolů Azure Monitor
  Protokoly Azure Monitor shromažďuje a analyzuje telemetrii z aplikací a služeb hostovaných v cloudu a poskytuje analytické nástroje, které vám pomůžou maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v protokolech Azure Monitor a získat přehledy a řešit potíže s tím, co se děje ve vašem clusteru. Řeší se tyto běžné otázky:

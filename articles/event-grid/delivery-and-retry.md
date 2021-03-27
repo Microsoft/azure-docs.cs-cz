@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98247365"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629270"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -25,8 +25,8 @@ Event Grid ve výchozím nastavení odesílá každou událost jednotlivě před
 
 Dávkové doručování má dvě nastavení:
 
-* Maximální počet **událostí na dávku** – maximální počet událostí, které Event Grid bude poskytovat za dávku. Toto číslo nebude nikdy překročeno, ale pokud v době publikování nejsou k dispozici žádné další události, mohou být doručeny méně událostí. Event Grid nezpozdí události, aby se vytvořila dávka, pokud je k dispozici méně událostí. Musí být v rozmezí od 1 do 5 000.
-* **Upřednostňovaná velikost dávky v kilobajtech** – cílový strop pro velikost dávky v kilobajtech Podobně jako u maximálního počtu událostí může být velikost dávky menší, pokud v době publikování nejsou k dispozici další události. Je možné, že je dávka větší než upřednostňovaná velikost dávky, *Pokud* je jedna událost větší než upřednostňovaná velikost. Pokud je například upřednostňovaná velikost 4 KB a událost o velikosti 10 KB je vložená do Event Grid, bude se událost o velikosti 10 KB stále doručovat do vlastní dávky místo toho, aby se vynechala.
+* Maximální počet **událostí na dávku** – maximální počet událostí, které Event Grid bude poskytovat za dávku. Toto číslo nebude nikdy překročeno, ale pokud v době publikování nejsou k dispozici žádné další události, mohou být doručeny méně událostí. Event Grid nezpozdit události pro vytvoření dávky, pokud je k dispozici méně událostí. Musí být v rozmezí od 1 do 5 000.
+* **Upřednostňovaná velikost dávky v kilobajtech** – cílový strop pro velikost dávky v kilobajtech Podobně jako maximální počet událostí může být velikost dávky menší, pokud v době publikování nejsou k dispozici další události. Je možné, že je dávka větší než upřednostňovaná velikost dávky, *Pokud* je jedna událost větší než upřednostňovaná velikost. Pokud je například upřednostňovaná velikost 4 KB a událost o velikosti 10 KB je vložená do Event Grid, bude se událost o velikosti 10 KB stále doručovat do vlastní dávky místo toho, aby se vynechala.
 
 Dávkové doručování je nakonfigurované na základě předplatného pro jednotlivé události prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu nebo sad SDK.
 
@@ -57,7 +57,7 @@ Další informace o použití rozhraní příkazového řádku Azure s Event Gri
 
 Pokud EventGrid obdrží při pokusu o doručení události chybu, EventGrid rozhodne, zda má opakovat doručení nebo nedoručené písmeno, nebo událost vyřaďte na základě typu chyby. 
 
-Pokud chyba vrácená koncovým bodem nastavila chybu související s konfigurací, kterou nelze opravit pomocí opakovaných pokusů (například při odstranění koncového bodu), EventGrid vykoná nedoručení události nebo vynechá událost, pokud není Nenakonfigurováno nedoručené písmeno.
+Pokud chyba vrácená koncovým bodem je chyba související s konfigurací, kterou nelze opravit pomocí opakování (například při odstranění koncového bodu), EventGrid buď odkládání zpráv událostí, nebo událost odstraňte, pokud není Nenakonfigurováno nedoručené písmeno.
 
 Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
 
@@ -69,7 +69,7 @@ Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
 > [!NOTE]
 > Pokud pro koncový bod není nakonfigurované Dead-Letter, události se při výskytu chyb ztratí. Pokud nechcete, aby se tyto druhy událostí vynechaly, zvažte konfiguraci nedoručených zpráv.
 
-Pokud chyba vrácená koncovým bodem není mezi seznamem výše, EventGrid provede opakování pomocí zásad popsaných níže:
+Pokud chyba vrácená předplacenou koncovým bodem není mezi výše uvedeným seznamem, EventGrid provede opakování pomocí zásad popsaných níže:
 
 Po doručení zprávy vyčká Event Grid 30 sekund na odpověď. Pokud koncový bod nereagoval po 30 sekundách, zpráva se zařadí do fronty pro opakování. Event Grid používá pro doručování událostí exponenciální zásady opakování omezení rychlosti. Event Grid se pokusy o doručení podle následujícího plánu doručovat na nejlepší úsilí:
 
@@ -97,7 +97,7 @@ Ve výchozím nastavení Event Grid vyprší platnost všech událostí, které 
 
 V případě selhání doručení koncovým bodem se Event Grid začne zpozdit doručení a opakovat události do tohoto koncového bodu. Pokud například selže prvních 10 událostí publikovaných do koncového bodu, Event Grid bude předpokládat, že u koncového bodu dochází k problémům, budou všechny následné pokusy *a nové* doručení v některých případech trvat až několik hodin.
 
-Funkčním účelem opožděného doručení je chránit nestavové koncové body i Event Grid systém. Bez zálohování a zpoždění doručování do špatných koncových bodů se můžou zásady opakování Event Grid a možnosti svazku snadno přesazovat systémem.
+Funkčním účelem opožděného doručení je chránit nestavové koncové body a Event Grid systém. Bez zálohování a zpoždění doručování do špatných koncových bodů se můžou zásady opakování Event Grid a možnosti svazku snadno přesazovat systémem.
 
 ## <a name="dead-letter-events"></a>Nedoručené události
 Když Event Grid nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**. Event Grid nedoručená událost, pokud je splněna **jedna z následujících** podmínek. 
@@ -109,7 +109,7 @@ Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručen
 
 Event Grid pošle událost do umístění nedoručených zpráv, když se pokusí všechny jeho pokusy opakovat. Pokud Event Grid obdrží kód odpovědi 400 (špatný požadavek) nebo 413 (příliš velký požadavek na entitu požadavku), okamžitě naplánuje událost pro nedoručené zprávy. Tyto kódy odpovědí ukazují, že doručení události nebude nikdy úspěšné.
 
-Doba do živého vypršení platnosti se kontroluje jenom při příštím naplánovaném pokusu o doručení. Proto platí, že i když doba do provozu vyprší před dalším plánovaným pokusem o doručení, je tato událost kontrolována pouze v okamžiku příštího doručení a následně nedoručená. 
+Doba do živého vypršení platnosti se kontroluje jenom při příštím naplánovaném pokusu o doručení. Takže i v případě, že doba do provozu vyprší před dalším plánovaným pokusem o doručení, je tato událost kontrolována pouze v okamžiku příštího doručení a následně v nedoručených písmenech. 
 
 Poslední pokus o doručení události a při jejím doručování do umístění nedoručených zpráv je prodleva pět minut. Toto zpoždění má za cíl snížit počet operací BLOB Storage. Pokud umístění nedoručených zpráv není k dispozici po dobu čtyř hodin, událost se zahozena.
 
@@ -288,6 +288,15 @@ Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), se po
 | 503 – Nedostupná služba | Opakovat po 30 sekundách nebo více |
 | Všichni ostatní | Opakovat po 10 sekundách nebo více |
 
+## <a name="delivery-with-custom-headers"></a>Doručování s vlastními hlavičkami
+Odběry událostí umožňují nastavit hlavičky protokolu HTTP, které jsou zahrnuté v doručených událostech. Tato funkce umožňuje nastavit vlastní hlavičky, které jsou vyžadovány cílem. Při vytváření odběru událostí můžete nastavit až 10 hlaviček. Každá hodnota hlavičky by neměla být větší než 4 096 (4K) bajtů. Můžete nastavit vlastní hlavičky pro události, které jsou dodány do následujících umístění:
+
+- Webhooky
+- Azure Service Bus témata a fronty
+- Azure Event Hubs
+- Hybrid Connections přenosu
+
+Další informace najdete v tématu [doručování s vlastními záhlavími](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

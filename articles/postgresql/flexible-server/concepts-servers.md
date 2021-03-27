@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e3b04563b0da3255c63208b73c9ecdbd62ff0cf7
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 60edbcf97b43747246e84517cc65bb0dca4ff546
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609289"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626839"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>Servery – Azure Database for PostgreSQL – flexibilní Server
 
@@ -42,8 +42,8 @@ V rámci Azure Database for PostgreSQL serveru můžete vytvořit jednu nebo ví
 
 Následující prvky vám pomůžou zajistit bezpečný přístup k vaší databázi:
 
-|||
-|:--|:--|
+| Koncept zabezpečení | Description |
+| :-- | :-- |
 | **Ověřování a autorizace** | Server Azure Database for PostgreSQL podporuje nativní ověřování PostgreSQL. Můžete se připojit a ověřit na serveru přihlašovacími údaji správce serveru. |
 | **Protokol** | Služba podporuje protokol založený na zprávách, který používá PostgreSQL. |
 | **TCP/IP** | Protokol je podporován přes protokol TCP/IP a prostřednictvím soketů systému UNIX-doména. |

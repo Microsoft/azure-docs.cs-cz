@@ -2,19 +2,21 @@
 title: Vytvoření souborů bicep – Visual Studio Code
 description: Použití Visual Studio Code a rozšíření bicep k bicep souborů pro nasazení prostředků Azure
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504146"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612877"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Rychlý Start: vytvoření souborů bicep pomocí Visual Studio Code
 
 Rozšíření bicep pro Visual Studio Code poskytuje jazykovou podporu a automatického dokončování prostředků. Tyto nástroje vám pomůžou vytvořit a ověřit soubory [bicep](./bicep-overview.md) . V tomto rychlém startu použijete rozšíření k vytvoření souboru bicep od začátku. V takovém případě se můžete setkat s funkcemi rozšíření, jako je ověřování a dokončování.
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [příponou bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) . Budete také potřebovat nejnovější rozhraní příkazového [řádku Azure CLI](/cli/azure/) nebo nejnovější nainstalovaný a ověřený [modul Azure PowerShell](/powershell/azure/new-azureps-module-az) .
 

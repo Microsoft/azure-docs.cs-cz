@@ -1,16 +1,14 @@
 ---
 title: Seznam událostí pro Azure Service Fabric
 description: Úplný seznam událostí poskytovaných službou Azure Service Fabric, které vám pomůžou monitorovat clustery.
-author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
-ms.author: srrengar
-ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3f65d7c3ddec8263ff6f115df9616b48814afc93
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85846647"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628879"
 ---
 # <a name="list-of-service-fabric-events"></a>Seznam událostí Service Fabric 
 
@@ -33,11 +31,11 @@ Další podrobnosti o upgradech clusteru najdete [tady](service-fabric-cluster-u
 
 | ID události | Name | Kategorie | Popis |Zdroj (úloha) | Level | 
 | --- | --- | --- | --- | --- | --- | 
-| 29627 | ClusterUpgradeStarted | Upgrade | Upgrade clusteru se spustil. | CM | Informační |
-| 29628 | ClusterUpgradeCompleted | Upgrade | Upgrade clusteru byl dokončen. | CM | Informační | 
-| 29629 | ClusterUpgradeRollbackStarted | Upgrade | Upgrade clusteru se začal vrátit zpátky.  | CM | Upozornění | 
-| 29630 | ClusterUpgradeRollbackCompleted | Upgrade | Upgrade clusteru se dokončil zpátky. | CM | Upozornění | 
-| 29631 | ClusterUpgradeDomainCompleted | Upgrade | Upgrade domény byl dokončen během upgradu clusteru. | CM | Informační | 
+| 29627 | ClusterUpgradeStarted | Upgradovat | Upgrade clusteru se spustil. | CM | Informační |
+| 29628 | ClusterUpgradeCompleted | Upgradovat | Upgrade clusteru byl dokončen. | CM | Informační | 
+| 29629 | ClusterUpgradeRollbackStarted | Upgradovat | Upgrade clusteru se začal vrátit zpátky.  | CM | Upozornění | 
+| 29630 | ClusterUpgradeRollbackCompleted | Upgradovat | Upgrade clusteru se dokončil zpátky. | CM | Upozornění | 
+| 29631 | ClusterUpgradeDomainCompleted | Upgradovat | Upgrade domény byl dokončen během upgradu clusteru. | CM | Informační | 
 
 ## <a name="node-events"></a>Události uzlu
 
@@ -56,6 +54,13 @@ Další podrobnosti o upgradech clusteru najdete [tady](service-fabric-cluster-u
 | 25624 | NodeClosed | StateTransition |  Uzel se úspěšně vypnul. | FabricNode | Informační | 
 | 25626 | NodeAborted | StateTransition |  Uzel se nekorektně vypnul. | FabricNode | Chyba | 
 
+**Události uzlu protokolovacího nástroje KTL** 
+
+| ID události | Name | Kategorie | Popis |Zdroj (úloha) | Level |
+| --- | --- | --- | --- | --- | --- | 
+| 50187 | SharedLogWriteThrottled | Zdravotnictví | Zápisy do sdíleného protokolu jsou omezené. | KtlLoggerNode | Informační | 
+| 50188 | SharedLogWriteUnthrottled | Zdravotnictví | Zápisy do sdíleného protokolu nejsou omezené. | KtlLoggerNode | Informační | 
+
 ## <a name="application-events"></a>Události aplikace
 
 **Události životního cyklu aplikace**
@@ -72,11 +77,11 @@ Další podrobnosti o upgradech aplikací najdete [tady](service-fabric-applicat
 
 | ID události | Name | Kategorie | Popis |Zdroj (úloha) | Level | 
 | --- | --- | ---| --- | --- | --- | 
-| 29621 | ApplicationUpgradeStarted | Upgrade | Byl spuštěn upgrade aplikace. | CM | Informační | 
-| 29622 | ApplicationUpgradeCompleted | Upgrade | Upgrade aplikace byl dokončen. | CM | Informační | 
-| 29623 | ApplicationUpgradeRollbackStarted | Upgrade | Upgrade aplikace se začal odvolat. |CM | Upozornění | 
-| 29624 | ApplicationUpgradeRollbackCompleted | Upgrade | Byl dokončen návrat do upgradu aplikace | CM | Upozornění | 
-| 29626 | ApplicationUpgradeDomainCompleted | Upgrade | Upgrade domény byl dokončen během upgradu aplikace. | CM | Informační | 
+| 29621 | ApplicationUpgradeStarted | Upgradovat | Byl spuštěn upgrade aplikace. | CM | Informační | 
+| 29622 | ApplicationUpgradeCompleted | Upgradovat | Upgrade aplikace byl dokončen. | CM | Informační | 
+| 29623 | ApplicationUpgradeRollbackStarted | Upgradovat | Upgrade aplikace se začal odvolat. |CM | Upozornění | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Upgradovat | Byl dokončen návrat do upgradu aplikace | CM | Upozornění | 
+| 29626 | ApplicationUpgradeDomainCompleted | Upgradovat | Upgrade domény byl dokončen během upgradu aplikace. | CM | Informační | 
 
 ## <a name="service-events"></a>Události služby
 

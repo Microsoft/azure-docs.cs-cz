@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9a5cd55576d505114c15028cf637114f3baf7668
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664125"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627978"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru v Azure Database for MariaDB
 Tento článek popisuje informace a pokyny pro práci s Azure Database for MariaDB servery.
@@ -37,8 +37,8 @@ V rámci serveru Azure Database for MariaDB můžete vytvořit jednu nebo někol
 
 Následující prvky vám pomůžou zajistit bezpečný přístup k vaší databázi.
 
-|||
-| :--| :--|
+| Koncept zabezpečení | Description |
+| :-- | :-- |
 | **Ověřování a autorizace** | Azure Database for MariaDB Server podporuje nativní ověřování MySQL. K serveru se můžete připojit a ověřit pomocí přihlašovacích údajů správce serveru. |
 | **Protokol** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
 | **TCP/IP** | Protokol je podporován přes protokoly TCP/IP a přes rozhraní UNIX-Domain Sockets. |

@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f0959ff51714e8a7e69f58a3e3abeab71e8359
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9b0cce11abe1076d26ac8d4c4dc57c9b57c4737
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99259368"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625577"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k Power BI Mobile s využitím proxy aplikací služby Azure AD
 
 Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD povolit, aby se mobilní aplikace Power BI připojovala Server sestav Power BI (PBIRS) a SQL Server Reporting Services (SSRS) 2016 a novější. Prostřednictvím této integrace můžou uživatelé mimo podnikovou síť přistupovat ke svým Power BIm sestavám z Power BI mobilní aplikace a chránit pomocí ověřování Azure AD. Tato ochrana zahrnuje [výhody zabezpečení](application-proxy-security.md#security-benefits) , jako je podmíněný přístup a Multi-Factor Authentication.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že jste již nasadili služby sestav a [povolili proxy aplikace](application-proxy-add-on-premises-application.md).
 
@@ -84,7 +84,7 @@ Teď jste připraveni nakonfigurovat proxy aplikací služby Azure Active Direct
 1. Publikujte služby sestav prostřednictvím proxy aplikací s následujícím nastavením. Podrobné pokyny k postupu publikování aplikace prostřednictvím proxy aplikací najdete v tématu [Publikování aplikací pomocí proxy aplikací služby Azure Active Directory](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    - **Interní adresa URL**: zadejte adresu URL serveru sestav, ke kterému konektor může získat přístup v podnikové síti. Ujistěte se, že je tato adresa URL dosažitelná ze serveru, na kterém je konektor nainstalovaný. Osvědčeným postupem je použití domény nejvyšší úrovně, jako je například `https://servername/`, aby se předešlo problémům s dílčími cestami publikovanými prostřednictvím proxy aplikací. Použijte například `https://servername/` a ne `https://servername/reports/` nebo `https://servername/reportserver/`.
      > [!NOTE]
-     > Doporučujeme použít zabezpečené připojení HTTPS k serveru sestav. Informace o postupu najdete v tématu [Konfigurace připojení protokolem SSL na server sestav v nativním režimu](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017).
+     > Doporučujeme použít zabezpečené připojení HTTPS k serveru sestav. Informace o postupu najdete v tématu [Konfigurace připojení protokolem SSL na server sestav v nativním režimu](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server).
    - **Externí adresa URL**: zadejte veřejnou adresu URL, ke které se Power BI mobilní aplikace připojí. Pokud se například používá vlastní doména, může vypadat jako `https://reports.contoso.com`. Pokud chcete použít vlastní doménu, nahrajte certifikát pro doménu a nasměrujte záznam DNS na výchozí doménu msappproxy.net pro vaši aplikaci. Podrobný postup najdete v tématu [Práce s vlastními doménami v proxy aplikací služby Azure Active Directory](application-proxy-configure-custom-domain.md).
 
    - **Metoda** předběžného ověřování: Azure Active Directory
@@ -150,7 +150,7 @@ Microsoft Intune můžete použít ke správě klientských aplikací, které po
 7. Kliknutím na **udělit souhlas správce** udělte přístup k aplikaci.
 8. Nakonfigurujte požadované zásady Intune tak, že se rozhodnete, [jak vytvořit a přiřadit zásady ochrany aplikací](/intune/app-protection-policies).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud aplikace vrátí chybovou stránku po pokusu o načtení sestavy déle než několik minut, může být nutné změnit nastavení časového limitu. Ve výchozím nastavení podporuje proxy aplikací aplikace, které na žádost zabírají až 85 sekund. **Pokud** chcete toto nastavení prodloužit na 180 sekund, vyberte časový limit back-endu na stránce nastavení proxy aplikace pro danou aplikaci. Tipy k vytváření rychlých a spolehlivých sestav najdete v tématu [Power BI osvědčené postupy](/power-bi/power-bi-reports-performance).
 

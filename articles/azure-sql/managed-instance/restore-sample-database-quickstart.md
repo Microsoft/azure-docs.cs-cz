@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15aead5c9f93205baac28e8b93a88015c9689e3a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928796"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625309"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Rychlý Start: obnovení databáze do spravované instance Azure SQL pomocí SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnoven
 > Další informace o migraci pomocí Azure Database Migration Service najdete v tématu [migrace spravované instance SQL pomocí Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 > Další informace o různých metodách migrace najdete v tématu [SQL Server migrace do spravované instance Azure SQL](migrate-to-instance-from-sql-server.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start:
 
@@ -42,7 +42,7 @@ Tento rychlý start:
   - [Nakonfigurujte připojení typu Point-to-site k spravované instanci SQL z místního](point-to-site-p2s-configure.md)prostředí.
 
 > [!NOTE]
-> Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](../../storage/common/storage-sas-overview.md)najdete v tématu [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
+> Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](../../storage/common/storage-sas-overview.md)najdete v tématu [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 ## <a name="restore-from-a-backup-file"></a>Obnovení ze záložního souboru
 

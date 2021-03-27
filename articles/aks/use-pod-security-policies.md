@@ -3,27 +3,20 @@ title: Použití pod zásadami zabezpečení ve službě Azure Kubernetes Servic
 description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.date: 03/25/2021
+ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544243"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611765"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
 > [!WARNING]
-> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 30. června, 2021** ve prospěch [Azure Policy pro AKS](use-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
+> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), zahájí zastaralost s Kubernetes verze 1,21 s jejím odebráním ve verzi 1,25.** Vzhledem k Kubernetesm přístupů k tomuto milníku bude komunita Kubernetes fungovat tak, aby dokumentoval životaschopné alternativy. Předchozí oznámení o vyřazení bylo provedeno v době, protože pro zákazníky neexistovala možnost životaschopnosti. Teď, když komunita Kubernetes pracuje na alternativním řešení, už nebudete muset vyřadit před Kubernetes.
 >
 > Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
->
-> Důrazně doporučujeme začít s testováním scénářů pomocí Azure Policy pro AKS, což nabízí integrované zásady pro zabezpečení lusků a integrovaných iniciativ, které se mapují na zásady zabezpečení pod. Chcete-li provést migraci ze zásad zabezpečení pod, je třeba provést následující akce v clusteru.
-> 
-> 1. [Zakázat zásadu zabezpečení pod](#clean-up-resources) v clusteru
-> 1. Povolení [doplňku Azure Policy][azure-policy-add-on]
-> 1. Povolit požadované zásady Azure z [dostupných integrovaných zásad][policy-samples]
-> 1. Kontrola [změn chování mezi zásadami zabezpečení a Azure Policy](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
 Chcete-li zlepšit zabezpečení clusteru AKS, můžete omezit, které části je možné naplánovat. Lusky, které vyžadují prostředky, které nepovolíte, nejde spustit v clusteru AKS. Tento přístup definujete pomocí zásad zabezpečení pod. V tomto článku se dozvíte, jak používat zásady zabezpečení pod k omezení nasazení lusků v AKS.
 

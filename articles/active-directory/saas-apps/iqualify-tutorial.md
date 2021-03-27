@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999157"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Kurz: Azure Active Directory integrace s iQualify LMS
 
@@ -30,7 +30,7 @@ Integrování iQualify LMS s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s iQualify LMS budete potřebovat následující položky:
 
@@ -88,44 +88,41 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí iQualify
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **IQualify LMS** vyberte **jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+   ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
 2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+   ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
+   ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
+   
+   1. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
-    | |
-    |--|--|
-    | Provozní prostředí: `https://<yourorg>.iqualify.com/`|
-    | Testovací prostředí: `https://<yourorg>.iqualify.io`|
+      * Provozní prostředí: `https://<yourorg>.iqualify.com/`
+      * Testovací prostředí: `https://<yourorg>.iqualify.io`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
-    | |
-    |--|--|
-    | Provozní prostředí: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Testovací prostředí: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
+   2. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+
+      * Provozní prostředí: `https://<yourorg>.iqualify.com/auth/saml2/callback` 
+      * Testovací prostředí: `https://<yourorg>.iqualify.io/auth/saml2/callback`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
+   ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
-    | |
-    |--|--|
-    | Provozní prostředí: `https://<yourorg>.iqualify.com/login` |
-    | Testovací prostředí: `https://<yourorg>.iqualify.io/login` |
+   Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta IQUALIFY LMS](https://www.iqualify.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+      * Provozní prostředí: `https://<yourorg>.iqualify.com/login`
+      * Testovací prostředí: `https://<yourorg>.iqualify.io/login`
+
+   > [!NOTE]
+   > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta IQUALIFY LMS](https://www.iqualify.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 6. Vaše aplikace iQualify LMS očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
 

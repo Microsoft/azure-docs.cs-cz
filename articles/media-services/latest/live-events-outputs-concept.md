@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454783"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625292"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -117,47 +117,68 @@ Viz také [zásady vytváření názvů koncových bodů streamování](streamin
 Jakmile se vytvoří živá událost, můžete získat adresy URL pro ingestování, které poskytnete pro živý místní kodér. Kodér pro kódování v reálném čase tyto adresy URL používá ke vkládání živého proudu. Další informace najdete v tématu [Doporučené místní kodéry v reálném čase](recommended-on-premises-live-encoders.md).
 
 >[!NOTE]
-> Od verze rozhraní 2020-05-01 API jsou adresy URL individuální známé jako názvy statických hostitelů.
+> Od verze rozhraní 2020-05-01 API jsou adresy URL "individuální" známé jako názvy statických hostitelů (useStaticHostname: true).
 
-Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 
 > [!NOTE]
-> Aby se adresa URL pro ingestování mohla odhadnout, nastavte režim "individuální".
+> Aby byla adresa URL ingesta statická a předvídatelná pro použití v nastavení hardwarového kodéru, nastavte vlastnost **useStaticHostname** na hodnotu true a při každém vytvoření nastavte vlastnost **accessToken** na stejný identifikátor GUID. 
 
-* Jiná než individuální adresa URL
+### <a name="example-liveevent-and-liveeventinput-configuration-settings-for-a-static-non-random-ingest-rtmp-url"></a>Příklad nastavení konfigurace Livestream a LiveEventInput pro statickou (nenáhodnou) adresu URL pro přijímání
 
-    Jiná než individuální adresa URL je výchozím režimem v Media Services V3. Živá událost může být rychle rychlá, ale příjem adresy URL je známý jenom v případě, že je spuštěná živá událost. Adresa URL se změní, pokud zastavíte nebo spustíte živou událost. Non-individuální je užitečná ve scénářích, kdy chce koncový uživatel streamovat pomocí aplikace, ve které aplikace chce získat živou událost a že Dynamická adresa URL příjmu není problém.
+```csharp
+             LiveEvent liveEvent = new LiveEvent(
+                    location: mediaService.Location,
+                    description: "Sample LiveEvent from .NET SDK sample",
+                    // Set useStaticHostname to true to make the ingest and preview URL host name the same. 
+                    // This can slow things down a bit. 
+                    useStaticHostname: true,
+
+                    // 1) Set up the input settings for the Live event...
+                    input: new LiveEventInput(
+                        streamingProtocol: LiveEventInputProtocol.RTMP,  // options are RTMP or Smooth Streaming ingest format.
+                                                                         // This sets a static access token for use on the ingest path. 
+                                                                         // Combining this with useStaticHostname:true will give you the same ingest URL on every creation.
+                                                                         // This is helpful when you only want to enter the URL into a single encoder one time for this Live Event name
+                        accessToken: "acf7b6ef-8a37-425f-b8fc-51c2d6a5a86a",  // Use this value when you want to make sure the ingest URL is static and always the same. If omitted, the service will generate a random GUID value.
+                        accessControl: liveEventInputAccess, // controls the IP restriction for the source encoder.
+                        keyFrameIntervalDuration: "PT2S" // Set this to match the ingest encoder's settings
+                    ),
+```
+
+* Nestatický název hostitele
+
+    Nestatický název hostitele je výchozím režimem v Media Services V3 při vytváření **Livestream**. Živá událost může být přidělena trochu rychleji, ale adresa URL příjmu, kterou byste potřebovali pro živý kódovací hardware nebo software, bude náhodným způsobem. Adresa URL se změní, pokud zastavíte nebo spustíte živou událost. Nestatické názvy hostitelů jsou užitečné jenom ve scénářích, kdy chce koncový uživatel streamovat pomocí aplikace, která potřebuje k rychlému získání živé události, a že adresa URL dynamického příjmu není problém.
 
     Pokud klientská aplikace nemusí před vytvořením živé události předem generovat adresu URL pro příjem dat, nechte Media Services automaticky vygenerovat přístupový token pro živou událost.
 
-* Adresa URL individuální
+* Statické názvy hostitelů 
 
-    Individuální režim upřednostňuje velké všesměrové vysílání médií, kteří používají kodéry všesměrového vysílání hardwaru a nechtějí překonfigurovat kodéry, když spustí živou událost. Tyto všesměrové vysílání chtějí prediktivní příjem adres URL, který se v průběhu času nemění.
+    Režim statických názvů hostitelů je upřednostňovaný většinou operátorů, které chtějí předem konfigurovat svůj živý hardware nebo software pomocí adresy URL ingestování RTMP, která se nikdy nemění při vytváření nebo zastavení a spuštění konkrétní živé události. Tyto operátory chtějí prediktivní zpracování adresy URL pro ingestování RTMP, které se v průběhu času nemění. To je také velmi užitečné, když potřebujete odeslat statickou adresu URL ingestu RTMP do nastavení konfigurace hardwarového zařízení pro kódování, jako je BlackMagic Atem Mini pro, nebo podobného kódování hardwaru a produkčních nástrojů. 
 
     > [!NOTE]
-    > V Azure Portal se adresa URL individuální nazývá "*předpona statického názvu hostitele*".
+    > V Azure Portal se adresa URL statického názvu hostitele nazývá "*předpona statického názvu hostitele*".
 
     Chcete-li zadat tento režim v rozhraní API, nastavte `useStaticHostName` na hodnotu `true` při vytváření (výchozí nastavení je `false` ). Když `useStaticHostname` je nastavená hodnota true, `hostnamePrefix` Určuje první část názvu hostitele přiřazeného k živým koncovým bodům a koncovým bodům ingestování událostí. Poslední název hostitele by byl kombinací této předpony, názvu účtu mediální služby a krátkého kódu pro Azure Media Services datové centrum.
 
     Chcete-li se vyhnout náhodnému tokenu v adrese URL, je také nutné před vytvořením předat vlastní přístupový token ( `LiveEventInput.accessToken` ).  Přístupový token musí být platný řetězec GUID (s pomlčkami nebo bez nich). Po nastavení je režim nepůjde aktualizovat.
 
-    Přístupový token musí být ve vašem datovém centru jedinečný. Pokud vaše aplikace potřebuje použít adresu URL individuální, doporučujeme vždy vytvořit novou instanci GUID pro přístupový token (místo opětovného použití existujícího identifikátoru GUID).
+    Přístupový token musí být jedinečný v oblasti Azure a účtu Media Services. Pokud vaše aplikace potřebuje použít adresu URL pro příjem statických hostitelů, doporučuje se vždycky vytvořit novou instanci GUID pro použití s konkrétní kombinací oblastí, účtu Media Services a živými událostmi.
 
-    Pomocí následujících rozhraní API povolte adresu URL individuální a nastavte přístupový token na platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
+    Pomocí následujících rozhraní API povolte adresu URL statického názvu hostitele a nastavte přístupový token na platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
 
-    |Jazyk|Povolit individuální adresu URL|Nastavení přístupového tokenu|
+    |Jazyk|Povolit adresu URL statického názvu hostitele|Nastavení přístupového tokenu|
     |---|---|---|
-    |REST|[Properties. vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
-    |Rozhraní příkazového řádku|[--individuální-URL](/cli/azure/ams/live-event#az-ams-live-event-create)|[--Access-token](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[Livestream. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[Properties. useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
+    |Rozhraní příkazového řádku|[--use-static-hostname](/cli/azure/ams/live-event#az-ams-live-event-create)|[--Access-token](/cli/azure/ams/live-event#optional-parameters)|
+    |.NET|[Livestream. useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání
 
 * Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).
-* *váš přístupový token*: platný řetězec GUID, který jste nastavili při použití režimu individuální. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *váš přístupový token*: platný řetězec GUID, který jste nastavili při použití nastavení statického názvu hostitele. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
 * *název streamu*: označuje název streamu pro konkrétní připojení. Hodnota názvu datového proudu je obvykle přidána živým kodérem, který používáte. Živý kodér můžete nakonfigurovat tak, aby k popisu připojení používal libovolný název, například: "video1_audio1", "video2_audio1", "Stream".
 
-#### <a name="non-vanity-url"></a>Jiná než individuální adresa URL
+#### <a name="non-static-hostname-ingest-url"></a>Adresa URL pro příjem nestatických hostitelů
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -171,7 +192,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>Adresa URL individuální
+#### <a name="static-hostname-ingest-url"></a>Adresa URL pro příjem statických názvů hostitelů
 
 V následujících cestách `<live-event-name>` znamená buď název přidělený události, nebo vlastní název použitý při vytváření živé události.
 

@@ -1,16 +1,14 @@
 ---
 title: Ladění aplikací pro Azure Service Fabric v systému Windows
 description: Naučte se monitorovat a diagnostikovat vaše služby napsané pomocí Microsoft Azure Service Fabric na místním vývojovém počítači.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a2502c24ef233c286872e2c265dcfdae6883f8ed
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86247417"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628828"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení místních počítačů pro vývoj
 > [!div class="op_single_selector"]

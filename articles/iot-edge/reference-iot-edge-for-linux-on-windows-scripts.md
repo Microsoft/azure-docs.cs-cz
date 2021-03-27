@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5286362369e0c4881cdf0c56bc13d1d340056be1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562507"
+ms.locfileid: "105612768"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Skripty PowerShellu pro IoT Edge pro Linux ve Windows
 
@@ -46,12 +46,15 @@ Příkaz **Deploy-eFlow** je hlavní metodou nasazení. Příkaz pro nasazení v
 | vmSizeDefintion | Maximálně 30 znaků | Definice počtu jader a dostupné paměti RAM pro virtuální počítač. **Výchozí hodnota**: Standard_K8S_v1. |
 | vmDiskSize | Mezi 8 GB a 256 GB | Maximální velikost disku dynamicky se zvětšující virtuální pevný disk. **Výchozí hodnota**: 16 GB. |
 | vmUser | Maximálně 30 znaků | Uživatelské jméno pro přihlášení k virtuálnímu počítači. |
-| vnetType | **Transparentní** nebo **ICS** | Typ virtuálního přepínače. **Výchozí hodnota**: transparentní |
+| vnetType | **Transparentní** nebo **ICS** | Typ virtuálního přepínače. **Výchozí hodnota**: transparentní Transparentní odkazuje na externí přepínač, zatímco ICS odkazuje na interní přepínač. |
 | vnetName | Není delší než 64 znaků. | Název virtuálního přepínače. **Výchozí hodnota**: external |
 | enableVtpm | Žádné | **Parametr Switch** Vytvořte virtuální počítač s povoleným nebo zakázaným čipem TPM. |
 | mobyPackageVersion | Maximálně 30 znaků |  Verze balíčku Moby, která se má ověřit nebo nainstalovat na virtuálním počítači.  **Výchozí hodnota:** 19.03.11. |
 | iotedgePackageVersion | Maximálně 30 znaků | Verze IoT Edgeho balíčku, který se má ověřit nebo nainstalovat na virtuálním počítači. **Výchozí hodnota:** 1.1.0. |
 | installPackages | Žádné | **Parametr Switch** Při přepínání se skript pokusí nainstalovat balíčky Moby a IoT Edge místo toho, aby procházel pouze ověření balíčků. |
+
+>[!NOTE]
+>Ve výchozím nastavení, pokud proces nemůže najít externí přepínač s názvem `External` , vyhledá všechny existující externí přepínače, pomocí kterých se získá IP adresa. Pokud není k dispozici žádný externí přepínač, bude vyhledán interní přepínač. Pokud není k dispozici žádný interní přepínač, pokusí se vytvořit výchozí přepínač, pomocí kterého se získá IP adresa.
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 

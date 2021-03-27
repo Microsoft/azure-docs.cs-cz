@@ -84,6 +84,22 @@
       href: tutorial-firmware-update.md
     - name: Testování připojení zařízení
       href: tutorial-connectivity.md
+    - name: Používání certifikátů X. 509
+      items:
+        - name: Úvod
+          href: tutorial-x509-introduction.md
+        - name: Pole certifikátu
+          href: tutorial-x509-certificates.md
+        - name: Použití zadaných skriptů
+          href: tutorial-x509-scripts.md
+        - name: Použití OpenSSL
+          href: tutorial-x509-openssl.md
+        - name: Vytváření certifikátů podepsaných svým držitelem
+          href: tutorial-x509-self-sign.md
+        - name: Prokazující vlastnictví
+          href: tutorial-x509-prove-possession.md
+        - name: Testování ověřování
+          href: tutorial-x509-test-certificate.md
 - name: Koncepty
   items:
     - name: Podpora TLS
@@ -319,8 +335,6 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Použití Azure CLI
               href: iot-hub-configure-file-upload-cli.md
-        - name: Zabezpečení vašeho centra s využitím certifikátu X.509
-          href: iot-hub-security-x509-get-started.md
         - name: Upgrade IoT Hubu
           href: iot-hub-upgrade.md
         - name: Konfigurace filtrování IP

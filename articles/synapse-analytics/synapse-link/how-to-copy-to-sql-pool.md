@@ -2,26 +2,26 @@
 title: Kopírovat synapse odkaz na data Azure Cosmos DB do vyhrazeného fondu SQL pomocí Apache Spark
 description: Načtěte data do datového rámce Spark, nahrajte data a načtěte je do vyhrazené tabulky fondu SQL.
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
 ms.date: 08/10/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 755782b117ef5a5619ddde3e1573fe1805117e77
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: ff04d43e72d4eca9800b330d5a4721ba951c85f9
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868558"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627638"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopírování dat z Azure Cosmos DB do vyhrazeného fondu SQL pomocí Apache Spark
 
 Odkaz na Azure synapse pro Azure Cosmos DB umožňuje uživatelům spouštět analýzy v reálném čase nad provozními daty v Azure Cosmos DB. Existují však situace, kdy je potřeba agregovat a rozšířit některá data pro poskytování uživatelů datového skladu. Data odkazů synapse se dají dělat v poznámkovém bloku a exportovat je jenom v několika buňkách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Zřídit pracovní prostor synapse](../quickstart-create-workspace.md) s:
     * [Fond Apache Spark bez serveru](../quickstart-create-apache-spark-pool-studio.md)
     * [vyhrazený fond SQL](../quickstart-create-sql-pool-studio.md)

@@ -2,25 +2,25 @@
 title: Zabezpečení propojené služby
 description: Naučte se zřizovat a zabezpečovat propojenou službu pomocí spravované virtuální sítě.
 services: synapse-analytics
-author: ArnoMicrosoft
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be7ee2f4b2b8472c5edeff63e143d99c958bfc5a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98220112"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627213"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů
 
 V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomocí privátního koncového bodu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/common/storage-account-create.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.

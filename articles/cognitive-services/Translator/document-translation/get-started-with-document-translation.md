@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047231"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612377"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Začínáme s překladem dokumentů (Preview)
 
@@ -37,8 +37,8 @@ Abyste mohli začít, budete potřebovat:
 
 > [!IMPORTANT]
 >
-> * Koncový bod nebudete používat na vašich Azure Portal _klíčech prostředků a na stránce koncového_ bodu globálního překladatele – `api.cognitive.microsofttranslator.com` , aby se požadavky HTTP převedly na překlad dokumentů.
 > * **Všechny požadavky rozhraní API na službu překladu dokumentů vyžadují vlastní koncový bod domény**.
+> * Koncový bod nebudete používat na vašich Azure Portal _klíčech prostředků a na stránce koncového_ bodu globálního překladatele – `api.cognitive.microsofttranslator.com` , aby se požadavky HTTP převedly na překlad dokumentů.
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>Jaký je vlastní koncový bod domény?
 
@@ -93,7 +93,7 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 
 * Vytvoření nového projektu
 * Nahraďte program. cs kódem C# uvedeným níže.
-* Nastavte koncový bod. klíč předplatného a hodnoty URL kontejneru v programu program. cs.
+* Nastavte hodnoty pro koncový bod, klíč předplatného a adresu URL kontejneru v programu program. cs.
 * K zpracování dat JSON přidejte [Newtonsoft.Jsv balíčku pomocí rozhraní .NET CLI](https://www.nuget.org/packages/Newtonsoft.Json/).
 * Spusťte program z adresáře projektu.
 
@@ -101,7 +101,7 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 
 * Vytvořte nový projekt Node.js.
 * Nainstalujte knihovnu Axios pomocí nástroje `npm i axios` .
-* Zkopírujte do projektu vložte kód níže.
+* Zkopírujte nebo vložte kód uvedený níže do projektu.
 * Nastavte hodnoty pro koncový bod, klíč předplatného a adresu URL kontejneru.
 * Spustíte program.
 
@@ -174,7 +174,7 @@ gradle run
 * Nastavte hodnoty pro koncový bod, klíč předplatného a adresu URL kontejneru.
 * Uložte soubor s příponou .go.
 * Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
-* Sestavte soubor, například: ' jít příklad sestavení-Code. přejít '.
+* Sestavte soubor. Například: ' přejít na příklad sestavení-Code. přejít '.
 * Spusťte soubor, například: "ukázkový kód".
 
  ---
@@ -207,26 +207,49 @@ Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následuj�
 ## <a name="post-a-translation-request"></a>ODESLÁNÍ žádosti o překlad
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>Text žádosti POST bez volitelného glossaryURLu
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>Vystavení textu žádosti pro překlad všech dokumentů v kontejneru
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>Vystavení textu žádosti o překlad konkrétního dokumentu v kontejneru
+
+* Ujistěte se, že jste zadali "storageType": "File"
+* Ujistěte se, že jste vytvořili zdrojovou adresu URL & token SAS pro konkrétní objekt BLOB nebo dokument (ne pro kontejner). 
+* Ujistěte se, že jste zadali název cílového souboru jako součást cílové adresy URL – i když je token SAS pro kontejner stále k dispozici.
+* Vzorový požadavek níže ukazuje jeden dokument, který je přeložen do dvou cílových jazyků.
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -235,44 +258,10 @@ Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následuj�
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>Vystavení textu žádosti s volitelným glossaryURL
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
-> Pro níže uvedené ukázky kódu budete mít pevný kód a koncový bod, kde je uvedeno. Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit.  Způsoby, jak bezpečně ukládat a přistupovat k vašim přihlašovacím údajům, najdete v tématu [zabezpečení Azure Cognitive Services](../../cognitive-services-security.md?tabs=command-line%2ccsharp) .
+> Pro níže uvedené ukázky kódu budete mít pevný kód a koncový bod, kde je uvedeno. Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit.  Způsoby, jak bezpečně ukládat a přistupovat k vašim přihlašovacím údajům, najdete v tématu [zabezpečení Azure Cognitive Services](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
 >
 > V závislosti na této operaci možná budete muset aktualizovat následující pole:
 >>>
@@ -1247,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>Omezení obsahu
 
-Následující tabulka uvádí omezení pro data, která se odesílají do překladu dokumentů.
+Následující tabulka uvádí omezení pro data, která odesíláte do překladu dokumentů (Preview).
 
 |Atribut | Omezení|
 |---|---|

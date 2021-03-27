@@ -8,13 +8,13 @@
       href: bicep-overview.md
 - name: Rychlé starty
   items:
-    - name: Vytváření šablon – portál
-      href: quickstart-create-templates-use-the-portal.md
-    - name: Vytváření šablon – VS Code
+    - name: Vytvoření šablon JSON – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Vytvoření bicep-VS Code
+    - name: Vytvoření šablon bicep – VS Code
       href: quickstart-create-bicep-use-visual-studio-code.md
-    - name: Vytvoření a nasazení specifikace šablony
+    - name: Vytvoření šablon JSON – portál
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Vytvořit specifikace šablony
       href: quickstart-create-template-specs.md
 - name: Kurzy
   items:
@@ -43,24 +43,34 @@
     - name: Začátečník bicep
       items:
         - name: 1. Vytvoření první šablony
+          displayName: Bicep
           href: bicep-tutorial-create-first-bicep.md
         - name: 2. Přidání parametrů
+          displayName: Bicep
           href: bicep-tutorial-add-parameters.md
         - name: 3. Přidání funkcí šablon
+          displayName: Bicep
           href: bicep-tutorial-add-functions.md
         - name: 4. Přidání proměnných
+          displayName: Bicep
           href: bicep-tutorial-add-variables.md
         - name: 5. Přidání výstupů
+          displayName: Bicep
           href: bicep-tutorial-add-outputs.md
         - name: 6 – použití exportované šablony
+          displayName: Bicep
           href: bicep-tutorial-export-template.md
         - name: 7. použití šablony pro rychlé zprovoznění
+          displayName: Bicep
           href: bicep-tutorial-quickstart-template.md
         - name: 8. Přidání značek
+          displayName: Bicep
           href: bicep-tutorial-add-tags.md
         - name: 9 – použít soubor parametrů
+          displayName: Bicep
           href: bicep-tutorial-use-parameter-file.md
         - name: 10 – přidat moduly
+          displayName: Bicep
           href: bicep-tutorial-add-modules.md
     - name: Nasazení
       items:

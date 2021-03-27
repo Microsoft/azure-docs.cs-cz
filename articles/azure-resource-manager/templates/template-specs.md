@@ -2,15 +2,15 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Popisuje, jak vytvořit specifikace šablony a sdílet je s ostatními uživateli ve vaší organizaci.
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043894"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626080"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
@@ -25,9 +25,16 @@ K nasazení specifikace šablony použijte standardní nástroje Azure, jako je 
 
 ## <a name="why-use-template-specs"></a>Proč používat specifikace šablon?
 
-Pokud v současné době máte šablony v úložišti GitHub nebo účtu úložiště, při pokusu o sdílení a používání šablon dojde k několika problémům. Aby ho uživatel mohl nasadit, musí být buď místní, nebo musí být adresa URL pro tuto šablonu veřejně přístupná. Chcete-li se vyhnout tomuto omezení, můžete sdílet kopie šablony s uživateli, kteří je potřebují nasadit, nebo otevřít přístup k úložišti nebo účtu úložiště. Když uživatelé vlastní místní kopie šablony, můžou se tyto kopie nakonec odchýlit od původní šablony. Když provedete veřejně přístupný úložiště nebo účet úložiště, můžete uživatelům, kteří mají přístup k šabloně, umožnit neúmyslnému.
+Specifikace šablony poskytují následující výhody:
 
-Výhodou použití specifikací šablon je, že můžete vytvářet kanonické šablony a sdílet je s týmy ve vaší organizaci. Specifikace šablony jsou zabezpečené, protože jsou k dispozici pro Azure Resource Manager pro nasazení, ale nejsou přístupné pro uživatele bez oprávnění Azure RBAC. Uživatelé potřebují ke specifikaci šablony jenom přístup pro čtení, aby mohli nasadit její šablonu, takže šablonu můžete sdílet, aniž by ji ostatní mohli upravovat.
+* Pro specifikaci šablony použijete standardní šablony ARM.
+* Přístup můžete spravovat prostřednictvím Azure RBAC místo tokenů SAS.
+* Uživatelé mohou nasadit specifikaci šablony bez přístupu pro zápis do šablony.
+* Specifikaci šablony můžete integrovat do stávajícího procesu nasazení, jako je PowerShellový skript nebo kanál DevOps.
+
+Specifikace šablon umožňují vytvářet kanonické šablony a sdílet je s týmy ve vaší organizaci. Specifikace šablony jsou zabezpečené, protože jsou k dispozici pro Azure Resource Manager pro nasazení, ale nejsou přístupné pro uživatele bez správného oprávnění. Uživatelé potřebují ke specifikaci šablony jenom přístup pro čtení, aby mohli nasadit její šablonu, takže šablonu můžete sdílet, aniž by ji ostatní mohli upravovat.
+
+Pokud v současné době máte šablony v úložišti GitHub nebo účtu úložiště, při pokusu o sdílení a používání šablon dojde k několika problémům. Chcete-li nasadit šablonu, je třeba vytvořit šablonu veřejně přístupná nebo spravovat přístup k tokenům SAS. Pro obdržení tohoto omezení můžou uživatelé vytvářet místní kopie, které se nakonec odchýlit od původní šablony. Šablony specifikace zjednodušují sdílení šablon.
 
 Šablony, které zahrnete do specifikace šablony, by měli ověřit správci ve vaší organizaci, aby postupoval podle požadavků a pokynů pro organizaci.
 

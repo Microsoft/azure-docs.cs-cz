@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení zálohování disku 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107274"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612853"
 ---
 # <a name="azure-disk-backup-support-matrix"></a>Matice podpory pro zálohování disků Azure
 
@@ -51,7 +51,7 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 
 - V současné době se Azure Portal prostředí pro konfiguraci zálohování disků omezí na maximálně 20 disků od stejného předplatného.
 
-- V současné době (ve verzi Preview) není podporováno použití PowerShellu a Azure CLI ke konfiguraci zálohování a obnovení disků.
+- Azure disk Backup podporuje PowerShell. Rozhraní příkazového řádku Azure se v současné době nepodporuje.
 
 - Při konfiguraci zálohování musí být vybraný disk, který se má zálohovat, a skupinu prostředků snímku, kde mají být snímky uložené, a to v rámci stejného předplatného. Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Přečtěte si další informace o [přírůstkových snímcích](../virtual-machines/disks-incremental-snapshots.md#restrictions) pro spravovaný disk. Další informace o tom, jak zvolit skupinu prostředků snímku, najdete v tématu  [Konfigurace zálohování](backup-managed-disks.md#configure-backup).
 
@@ -61,7 +61,7 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 
 - Podpora [privátních odkazů](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) u spravovaných disků umožňuje omezit export a import spravovaných disků tak, aby se staly jenom v rámci vaší virtuální sítě Azure. Azure disk Backup podporuje zálohování disků, které mají povolené soukromé koncové body. Nezahrnuje data záloh nebo snímky, které budou přístupné prostřednictvím privátního koncového bodu.
 
-- Během období Preview nemůžete zakázat zálohování, takže možnost **Zastavit zálohování a zachovat data zálohy** se nepodporuje. Můžete odstranit instanci zálohování, která neukončí pouze zálohování, ale také odstraní všechna data zálohy.
+- Můžete odstranit instanci zálohování, která ukončí zálohování, a také odstraní všechna data zálohy. V současné době nejde zálohování zakázat, protože možnost **Zastavit zálohování a zachovat data zálohy** se nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
 

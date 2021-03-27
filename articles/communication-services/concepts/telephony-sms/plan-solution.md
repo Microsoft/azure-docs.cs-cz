@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7b295c6dabfce6a624d93d75991163f464cfd46e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729528"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625224"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Typy telefonních čísel v komunikačních službách Azure
 
@@ -31,7 +31,7 @@ Komunikační služby Azure umožňují používat telefonní čísla k provád�
 
 ## <a name="azure-subscriptions-eligibility"></a>Způsobilost k předplatným Azure
 
-Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Telefonní čísla nejdou získat na zkušebních účtech ani na bezplatné kredity Azure. 
+Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Telefonní čísla nejdou získat na zkušebních účtech ani na bezplatné kredity Azure.
 
 Dostupnost telefonního čísla se v současné době omezuje na předplatná Azure, která mají fakturační adresu v USA a zdrojích komunikačních služeb, které mají umístění dat US.
 
@@ -59,13 +59,13 @@ Následující tabulka shrnuje tyto typy telefonních čísel:
 | Toll-Free         | + 1 ( *kód* oblasti bez poplatků) XXX xx xx | USA                      | Volání (odchozí), SMS (příchozí/odchozí)| Přiřazení telefonních čísel k systémům IRV (Interactive Voice Response)/roboty, aplikacím SMS                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Funkce telefonního čísla v komunikačních službách Azure
+### <a name="phone-number-capabilities-in-azure-communication-services"></a>Možnosti telefonního čísla v komunikačních službách Azure
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-U většiny telefonních čísel vám umožníme nakonfigurovat sadu funkcí "a la carte". Tyto funkce se dají vybrat při zapůjčení telefonních čísel v rámci komunikačních služeb Azure.
+U většiny telefonních čísel vám umožníme nakonfigurovat sadu funkcí "a la carte". Tyto možnosti se dají vybrat při zapůjčení telefonních čísel v rámci komunikačních služeb Azure.
 
-Funkce, které jsou vám k dispozici, závisí na zemi, ve které pracujete, v případu použití a na typu telefonního čísla, který jste vybrali. Tyto funkce se v jednotlivých zemích liší podle zákonných požadavků. Služba Azure Communication Services nabízí následující funkce telefonního čísla:
+Možnosti, které jsou k dispozici, závisí na zemi, ve které pracujete, v případu použití a na typu telefonního čísla, který jste vybrali. Tyto možnosti se v různých zemích liší podle zákonných požadavků. Komunikační služby Azure nabízí následující možnosti telefonního čísla:
 
 - **Jednosměrný odchozí SMS** Tato možnost umožňuje odesílat uživatelům zprávy SMS. To může být užitečné v případě oznámení a scénářů se dvěma faktory ověřování.
 - **Obousměrný příchozí a odchozí SMS** Tato možnost umožňuje odesílat a přijímat zprávy od uživatelů pomocí telefonních čísel. To může být užitečné ve scénářích služeb zákazníkům.
