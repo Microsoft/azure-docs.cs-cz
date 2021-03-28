@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889106"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640842"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Propojení Azure synapse Analytics a Azure Machine Learning pracovních prostorů (Preview)
 
@@ -31,13 +31,13 @@ Pracovní prostory můžete také propojit a připojit fond synapse Spark s jedn
 >[!IMPORTANT]
 > Integrace Azure Machine Learning a Azure synapse je ve verzi Public Preview. Funkce prezentované z `azureml-synapse` balíčku jsou [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) funkce verze Preview a můžou se kdykoli změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md?tabs=python).
 
-* [Vytvořte pracovní prostor synapse v Azure Portal](/synapse-analytics/quickstart-create-workspace.md).
+* [Vytvořte pracovní prostor synapse v Azure Portal](/azure/synapse-analytics/quickstart-create-workspace).
 
-* [Vytvoření fondu Apache Spark pomocí Azure Portal, webových nástrojů nebo synapse studia](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [Vytvoření fondu Apache Spark pomocí Azure Portal, webových nástrojů nebo synapse studia](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
 
 * Instalace [sady Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)
 

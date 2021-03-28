@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56b74e440fcb09ab206bbb069517dd756221f809
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87280762"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639552"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky s využitím sady Visual Studio
 
@@ -25,7 +25,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -37,7 +37,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
     > Když nainstalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali úlohu **vývoj pro Azure** .
     > Další informace najdete v tématu [Správa prostředků přidružených k vašim účtům Azure v Průzkumníkovi cloudu sady Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer).
 
-    Chcete-li nainstalovat Průzkumníka cloudu pro Visual Studio 2015, [Stáhněte si z Visual Studio Marketplace Průzkumníka cloudu](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Další informace najdete v tématu [Správa prostředků přidružených k vašim účtům Azure v Průzkumníkovi cloudu sady Visual Studio (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    Chcete-li nainstalovat Průzkumníka cloudu pro Visual Studio 2015, [Stáhněte si z Visual Studio Marketplace Průzkumníka cloudu](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Další informace najdete v tématu [Správa prostředků přidružených k vašim účtům Azure v Průzkumníkovi cloudu sady Visual Studio (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015&preserve-view=true).
 
   * [Sada Azure SDK (2.9.1 nebo novější)](https://azure.microsoft.com/downloads/)
 

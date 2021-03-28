@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472179"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643355"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Průběžné nasazování s vlastními kontejnery v Azure App Service
 
@@ -32,7 +32,7 @@ V nabídce vlevo klikněte na nastavení **centra nasazení**  >  .
 **Výběr** zdroje nasazení závisí na vašem scénáři:
 - **Registr kontejnerů** nastavuje CI/CD mezi registrem kontejneru a App Service.
 - Možnost **Akce GitHubu** je určena pro vás, pokud udržujete zdrojový kód pro Image kontejneru v GitHubu. Aktivované novými potvrzeními změn do úložiště GitHubu můžete spustit akci nasadit `docker build` a `docker push` přímo do registru kontejneru a potom aktualizovat aplikaci App Service, aby se spustila nová image. Další informace najdete v tématu [Jak funguje CI/CD s akcemi GitHubu](#how-cicd-works-with-github-actions).
-- Informace o nastavení služby CI/CD pomocí **Azure Pipelines** najdete v tématu [nasazení kontejneru webové aplikace Azure z Azure Pipelines](/devops/pipelines/targets/webapp-on-container-linux).
+- Informace o nastavení služby CI/CD pomocí **Azure Pipelines** najdete v tématu [nasazení kontejneru webové aplikace Azure z Azure Pipelines](/azure/devops/pipelines/targets/webapp-on-container-linux).
 
 > [!NOTE]
 > V případě aplikace Docker Compose vyberte **Container Registry**.

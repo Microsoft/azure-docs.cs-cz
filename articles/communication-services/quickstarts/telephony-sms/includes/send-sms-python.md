@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: aba9b71ec2fbfedecf08577c7bd2eae7a28a5588
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110329"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644342"
 ---
 Začněte s komunikačními službami Azure pomocí komunikačních služeb Python SDK pro posílání zpráv SMS.
 
@@ -107,7 +107,7 @@ sms_responses = sms_client.send(
 Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu. 
 
 > [!WARNING]
-> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 12223334444).
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
 
 ## <a name="send-a-1n-sms-message"></a>Odeslat zprávu o 1: N SMS
 
@@ -125,13 +125,16 @@ sms_responses = sms_client.send(
 
 ```
 
-Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number-1>` a `<to-phone-number-2>` telefonními čísly, na které chcete poslat zprávu. 
+Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number-1>` `<to-phone-number-2>` telefonními čísly, na které chcete poslat zprávu. 
+
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
 
 ## <a name="optional-parameters"></a>Volitelné parametry
 
 `enable_delivery_report`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
 
-`tag`Parametr je volitelný parametr, který lze použít ke konfiguraci vlastního označování.
+`tag`Parametr je volitelný parametr, který můžete použít k použití značky pro sestavu doručení.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 Spusťte aplikaci z adresáře aplikace pomocí `python` příkazu.

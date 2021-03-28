@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 03/26/2021
 ms.author: trbye
-ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 903e8db14a2830236ae81a2a3b5416491d03e8c7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95024989"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643246"
 ---
-# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Co je přepis konverzace na schůzkách (Preview)?
+# <a name="what-is-conversation-transcription-preview"></a>Co je přepis konverzace (Preview)?
 
 Přepis konverzace je řešení převodu [řeči na text](speech-to-text.md) , které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako _diarization_), aby poskytovala v reálném čase a/nebo asynchronní přepis jakékoli konverzace. Přepis konverzace rozlišuje mluvčí v konverzacích a určí, kdo, co a kdy a usnadňuje vývojářům přidávání řeči k textu do aplikací, které provádějí diarization více mluvčích.
 

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788617"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639847"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Kurz: zabezpečení ve spravované instanci Azure SQL pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 Další informace najdete v tématu [Přehled spravované instance Azure SQL](sql-managed-instance-paas-overview.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -106,7 +106,7 @@ Příklady připojení ke spravované instanci SQL najdete v následujících č
 
     ![Snímek obrazovky karty výsledky v Průzkumník objektů S s M S zobrazuje název, principal_id, SID, typ a type_desc nově přidaného přihlášení.](./media/aad-security-configure-tutorial/native-login.png)
 
-Další informace najdete v tématu [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)údajů.
+Další informace najdete v tématu [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)údajů.
 
 ## <a name="grant-permissions-to-create-logins"></a>Udělení oprávnění k vytváření přihlašovacích údajů
 
@@ -182,7 +182,7 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
     GO
     ```
 
-1. Vytvořte databázi ve spravované instanci pomocí syntaxe [Create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) . Tato databáze bude sloužit k testování přihlášení uživatelů v následující části.
+1. Vytvořte databázi ve spravované instanci pomocí syntaxe [Create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . Tato databáze bude sloužit k testování přihlášení uživatelů v následující části.
     1. V **Průzkumník objektů** klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
     1. V okně dotazu vytvořte pomocí následující syntaxe databázi s názvem **MyMITestDB**.
 
@@ -264,7 +264,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
     > [!IMPORTANT]
     > Při vytváření **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení) zadejte user_name jako stejný Login_name od **přihlášení**.
 
-    Další informace najdete v tématu [Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
+    Další informace najdete v tématu [Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 1. V novém okně dotazu vytvořte testovací tabulku pomocí následujícího příkazu T-SQL:
 

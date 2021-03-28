@@ -5,12 +5,12 @@ description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací úd
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 91d40a5a738737098b0941bf3e41e4edd515e6df
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501171"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640486"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
@@ -110,7 +110,7 @@ az aks update-credentials \
     --client-secret $SP_SECRET
 ```
 
-V případě malých a středně velkých clusterů chvíli trvá, než se přihlašovací údaje instančního objektu aktualizují ve službě AKS.
+Pro malé a středních clustery chvíli trvá, než se přihlašovací údaje instančního objektu aktualizují v AKS.
 
 ## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>Aktualizovat cluster AKS s novými přihlašovacími údaji aplikace AAD
 

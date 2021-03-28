@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27bc8171509e16f25c508dd71515d8cb25a11b0b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98674146"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639869"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
 
@@ -41,7 +41,7 @@ Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Násle
 3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger**.
 4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.net/docs/getting-started/netcore/cmdline) a pojmenujte ji **Functions. Tests**.
 5. Pomocí NuGet přidejte odkaz z testovací aplikace do [Microsoft. AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Odkázat na aplikaci *Functions*](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
+6. [Odkázat na aplikaci *Functions*](/visualstudio/ide/managing-references-in-a-project) v aplikaci *Functions. Tests* .
 
 ### <a name="create-test-classes"></a>Vytváření testovacích tříd
 

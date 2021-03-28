@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: feda0ccfa1dc6d02153b98ad084bd775a055e9e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fe37c9f7727535a292b029c342aa0e85ce0a86ec
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103012900"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644117"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika opakování v sadě Media Services SDK pro .NET
 
@@ -52,7 +52,7 @@ Následující tabulka popisuje výjimky, které sada Media Services SDK pro .NE
 | IOException |No |Yes |No |No |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> Stavové kódy WebException
-Následující tabulka uvádí, pro které kódy chyb WebException je logika opakování implementovaná. Výčet [WebExceptionStatus rovným](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) definuje stavové kódy.  
+Následující tabulka uvádí, pro které kódy chyb WebException je logika opakování implementovaná. Výčet [WebExceptionStatus rovným](/dotnet/api/system.net.webexceptionstatus) definuje stavové kódy.  
 
 | Status | Webový požadavek | Storage | Dotaz | Metody |
 | --- | --- | --- | --- | --- |

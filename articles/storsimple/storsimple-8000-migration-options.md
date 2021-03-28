@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 2386a7f03508be2a3e6c57111ae206807efaf3ed
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: cc67b678fabeb2a7878490a4ea713acb5709cdbc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567861"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643797"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti migrace dat ze zařízení StorSimple řady 5000–7000 
 
@@ -63,7 +63,7 @@ Další informace o [migraci na datovou platformu Cohesity](https://info.cohesit
 
 Nasuni usnadňuje zákazníkům s StorSimple 5000-7000 migraci a uchovávání dat v Azure.  Nasuni je špičkové řešení úložiště založené na Azure, které zákazníkům poskytuje výkon a zabezpečení, které očekávají od Prem řešení, s využitím cloudových hospodárnosti a škálování.  Kromě vysoce výkonného úložiště souborů Nasuni a Azure zaznamená zálohování a zotavení po havárii a zároveň vám umožní sdílet data po celém světě s využitím centralizované správy úložiště souborů a spolupracovat s nimi. 
 
-Nasuni je prostředí, které usnadňuje migraci – Začněte ještě dnes: https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni je prostředí, které usnadňuje migraci – Začněte ještě dnes: https://www.nasuni.com/blog-migrating-off-storsimple/
 
 #### <a name="migrate-to-talon-fast"></a>Migrace na Talon FAST
 

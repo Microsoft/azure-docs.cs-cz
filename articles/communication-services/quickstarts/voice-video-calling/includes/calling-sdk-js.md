@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: af5ec07a8fb2db0bd4b9b8f1af556ef54199400d
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609408"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645408"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,10 +21,10 @@ ms.locfileid: "105609408"
 ## <a name="install-the-sdk"></a>Instalace sady SDK
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 6 volání sady SDK.
+> Tento dokument používá verzi 1.0.0-beta. 10 pro volání sady SDK.
 
 Pomocí `npm install` příkazu můžete nainstalovat volání a běžné sady SDK komunikačních služeb Azure pro JavaScript.
-Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 5 volání knihovny.
+Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 10 volající knihovny.
 
 ```console
 npm install @azure/communication-common --save
@@ -54,6 +54,10 @@ Pokud máte `CallClient` instanci, můžete vytvořit `CallAgent` instanci volá
 Po vytvoření `callAgent` instance můžete k `getDeviceManager` přístupu použít metodu z `CallClient` instance `deviceManager` .
 
 ```js
+// Set the logger's log level
+setLogLevel('verbose');
+// Redirect logger output to wherever desired. By default it logs to console
+AzureLogger.log = (...args) => { console.log(...args) };
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationTokenCredential(userToken);
@@ -113,8 +117,8 @@ Po výběru kamery ji použijte k vytvoření `LocalVideoStream` instance. Před
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const cameras = await deviceManager.getCameras();
-videoDeviceInfo = cameras[0];
-localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const camera = cameras[0]
+localVideoStream = new LocalVideoStream(camera);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
 const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
@@ -168,14 +172,26 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-    //Get information about caller
+
+    //Get incoming call ID
+    var incomingCallId = incomingCall.id
+
+    // Get information about caller
     var callerInfo = incomingCall.callerInfo
 
-    //Accept the call
+    // Accept the call
     var call = await incomingCall.accept();
 
-    //Reject the call
+    // Reject the call
     incomingCall.reject();
+
+    // Subscribe to callEnded event and get the call end reason
+     incomingCall.on('callEnded', args => {
+        console.log(args.callEndReason);
+    });
+
+    // callEndReason is also a property of IncomingCall
+    var callEndReason = incomingCall.callEndReason;
 };
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
@@ -194,7 +210,7 @@ Získání jedinečného ID (řetězce) pro volání:
     const callId: string = call.id;
    ```
 
-Přečtěte si o ostatních účastnících volání kontrolou `remoteParticipant` kolekce:
+Přečtěte si o ostatních účastnících volání kontrolou `remoteParticipants` kolekce na instanci Call:
 
    ```js
    const remoteParticipants = call.remoteParticipants;
@@ -217,7 +233,6 @@ Získat stav volání:
    Vrátí řetězec představující aktuální stav volání:
 
   - `None`: Počáteční stav volání.
-  - `Incoming`: Označuje, že volání je příchozí. Musí být buď přijatý, nebo odmítnutý.
   - `Connecting`: Počáteční přechodový stav při umístění nebo přijetí volání.
   - `Ringing`: Pro odchozí volání indikuje, že volání pro vzdálené účastníky je cyklické. Je `Incoming` na své straně.
   - `EarlyMedia`: Označuje stav, ve kterém je přehráno oznámení před připojením volání.
@@ -231,8 +246,8 @@ Zjistěte, proč bylo volání ukončeno kontrolou `callEndReason` vlastnosti:
 
    ```js
    const callEndReason = call.callEndReason;
-   // callEndReason.code (number) code associated with the reason
-   // callEndReason.subCode (number) subCode associated with the reason
+   const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
    ```
 
 Zjistěte, zda je aktuální volání příchozí nebo odchozí `direction` . Zkontrolujte vlastnost. Vrátí `CallDirection` .
@@ -245,7 +260,7 @@ Zjistěte, zda je aktuální volání příchozí nebo odchozí `direction` . Zk
 Zkontroluje, jestli je aktuální mikrofon ztlumený. Vrátí `Boolean` .
 
    ```js
-   const muted = call.isMicrophoneMuted;
+   const muted = call.isMuted;
    ```
 
 Zjistíte, jestli se datový proud pro sdílení obrazovky odesílá z daného koncového bodu, a to tak, že zkontrolujete jeho `isScreenSharingOn` vlastnost. Vrátí `Boolean` .
@@ -291,7 +306,10 @@ await call.unmute();
 Chcete-li spustit video, je nutné zadat kamery pomocí `getCameras` metody `deviceManager` objektu. Pak vytvořte novou instanci `LocalVideoStream` předáním požadované kamery do `startVideo` metody jako argument:
 
 ```js
-const localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const deviceManager = await callClient.getDeviceManager();
+const cameras = await deviceManager.getCameras();
+const camera = cameras[0]
+const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
 ```
 
@@ -311,12 +329,13 @@ V případě, že se video posílá vyvoláním na instanci, můžete přepnout 
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
-localVideoStream.switchSource(cameras[1]);
+const camera = cameras[1];
+localVideoStream.switchSource(camera);
 ```
 
 ## <a name="manage-remote-participants"></a>Správa vzdálených účastníků
 
-Všichni vzdálení účastníci jsou zastoupeni `remoteParticipant` a jsou k dispozici prostřednictvím `remoteParticipants` kolekce v instanci volání.
+Všichni vzdálení účastníci jsou zastoupeni podle `RemoteParticipant` typu a jsou k dispozici prostřednictvím `remoteParticipants` kolekce na instanci volání.
 
 ### <a name="list-the-participants-in-a-call"></a>Výpis účastníků ve volání
 
@@ -341,6 +360,7 @@ Vzdálení účastníci mají sadu přidružených vlastností a kolekcí:
   - `{ communicationUserId: '<ACS_USER_ID'> }`: Objekt představující uživatele ACS.
   - `{ phoneNumber: '<E.164>' }`: Objekt představující telefonní číslo ve formátu E. 164.
   - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: Object představující uživatele týmů.
+  - `{ id: string }`: repredenting identifikátor objektu, který nevyhovuje žádnému z ostatních typů identifikátorů
 
 - `state`: Získá stav vzdáleného účastníka.
 
@@ -362,8 +382,8 @@ Vzdálení účastníci mají sadu přidružených vlastností a kolekcí:
 
   ```js
   const callEndReason = remoteParticipant.callEndReason;
-  // callEndReason.code (number) code associated with the reason
-  // callEndReason.subCode (number) subCode associated with the reason
+  const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+  const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
   ```
 
 - `isMuted` stav: Chcete-li zjistit, zda je vzdálený účastník ztlumený, ověřte `isMuted` vlastnost. Vrátí `Boolean` .
@@ -382,6 +402,11 @@ Vzdálení účastníci mají sadu přidružených vlastností a kolekcí:
 
   ```js
   const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  ```
+- `displayName`: Pro získání zobrazovaného jména pro tohoto vzdáleného účastníka Zkontrolujte vlastnost, která `displayName` vrací řetězec. 
+
+  ```js
+  const displayName = remoteParticipant.displayName;
   ```
 
 ### <a name="add-a-participant-to-a-call"></a>Přidání účastníka do volání
@@ -415,22 +440,22 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-Aby bylo možné vykreslit `RemoteVideoStream` , je nutné se přihlásit k odběru `isAvailableChanged` události. Pokud se `isAvailable` vlastnost změní na `true` , vzdálený účastník posílá datový proud. Poté vytvořte novou instanci `Renderer` a pak vytvořte novou `RendererView` instanci pomocí asynchronní `createView` metody.  Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní.
+Aby bylo možné vykreslit `RemoteVideoStream` , je nutné se přihlásit k odběru `isAvailableChanged` události. Pokud se `isAvailable` vlastnost změní na `true` , vzdálený účastník posílá datový proud. Poté vytvořte novou instanci `VideoStreamRenderer` a pak vytvořte novou `VideoStreamRendererView` instanci pomocí asynchronní `createView` metody.  Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní.
 
-Když se změní dostupnost vzdáleného datového proudu, můžete odstranit `Renderer` , zničit konkrétní `RendererView` instanci nebo zachovat vše. Zobrazovací jednotky připojené k nedostupnému datovému proudu budou mít za následek prázdný rámec videa.
+Vždy, když se změní dostupnost vzdáleného streamu, můžete zvolit zničení celého celku `VideoStreamRenderer` , jeho konkrétního `VideoStreamRendererView` nebo zachování, ale výsledkem bude zobrazení prázdného snímku videa.
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
-    let renderer: Renderer = new Renderer(remoteVideoStream);
+    let videoStreamRenderer: VideoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
     const displayVideo = () => {
-        const view = await renderer.createView();
+        const view = await videoStreamRenderer.createView();
         htmlElement.appendChild(view.target);
     }
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             displayVideo();
         } else {
-            renderer.dispose();
+            videoStreamRenderer.dispose();
         }
     });
     if (remoteVideoStream.isAvailable) {
@@ -449,12 +474,6 @@ Proudy vzdálených videí mají následující vlastnosti:
   const id: number = remoteVideoStream.id;
   ```
 
-- `Stream.size`: Výška a šířka vzdáleného streamu videa.
-
-  ```js
-  const size: {width: number; height: number} = remoteVideoStream.size;
-  ```
-
 - `mediaStreamType`: Může být `Video` nebo `ScreenSharing` .
 
   ```js
@@ -467,32 +486,32 @@ Proudy vzdálených videí mají následující vlastnosti:
   const type: boolean = remoteVideoStream.isAvailable;
   ```
 
-### <a name="renderer-methods-and-properties"></a>Metody a vlastnosti vykreslovacího modulu
+### <a name="videostreamrenderer-methods-and-properties"></a>Metody a vlastnosti VideoStreamRenderer
 
-Vytvořte `rendererView` instanci, kterou lze připojit v uživatelském rozhraní aplikace pro vykreslení vzdáleného streamu videa:
-
-  ```js
-  renderer.createView()
-  ```
-
-Dispose `renderer` a všechny přidružené `rendererView` instance:
+Vytvořte `VideoStreamRendererView` instanci, která může být připojena v uživatelském rozhraní aplikace pro vykreslení vzdáleného streamu videa, použijte asynchronní `createView()` metodu, která se vyřeší, když je datový proud připraven k vykreslení a vrátí objekt s `target` vlastností, která představuje `video` prvek, který lze připojit kdekoli ve stromu modelu DOM.
 
   ```js
-  renderer.dispose()
+  videoStreamRenderer.createView()
   ```
 
-### <a name="rendererview-methods-and-properties"></a>Metody a vlastnosti RendererView
+Dispose `videoStreamRenderer` a všechny přidružené `VideoStreamRendererView` instance:
 
-Při vytváření `rendererView` můžete zadat `scalingMode` `isMirrored` vlastnosti a. `scalingMode` může být `Stretch` , `Crop` , nebo `Fit` . Je `isMirrored` -li parametr zadán, vykreslený datový proud je vrácen svisle.
+  ```js
+  videoStreamRenderer.dispose()
+  ```
+
+### <a name="videostreamrendererview-methods-and-properties"></a>Metody a vlastnosti VideoStreamRendererView
+
+Když vytvoříte `VideoStreamRendererView` , můžete zadat `scalingMode` `isMirrored` vlastnosti a. `scalingMode` může být `Stretch` , `Crop` , nebo `Fit` . Je `isMirrored` -li parametr zadán, vykreslený datový proud je vrácen svisle.
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
+const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-Každá `RendererView` instance má `target` vlastnost, která představuje plochu vykreslování. Připojte tuto vlastnost v uživatelském rozhraní aplikace:
+Každá `VideoStreamRendererView` instance má `target` vlastnost, která představuje plochu vykreslování. Připojte tuto vlastnost v uživatelském rozhraní aplikace:
 
 ```js
-document.body.appendChild(rendererView.target);
+htmlElement.appendChild(view.target);
 ```
 
 Můžete aktualizovat voláním `scalingMode` `updateScalingMode` metody:
@@ -506,9 +525,6 @@ view.updateScalingMode('Crop')
 V nástroji `deviceManager` můžete zadat místní zařízení, která můžou přenášet vaše audio a video streamy ve volání. Pomůže vám taky požádat o oprávnění k přístupu k mikrofonu a kameře jiného uživatele pomocí rozhraní API nativního prohlížeče.
 
 Můžete získat přístup `deviceManager` voláním `callClient.getDeviceManager()` metody:
-
-> [!IMPORTANT]
-> Musíte mít objekt, abyste `callAgent` mohli získat přístup `deviceManager` .
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -538,26 +554,26 @@ V nástroji `deviceManager` můžete nastavit výchozí zařízení, které pou�
 const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.selectMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(localMicrophones[0]);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.selectSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
 ### <a name="local-camera-preview"></a>Místní kamera verze Preview
 
-`deviceManager` `Renderer` K zahájení vykreslování datových proudů z místní kamery můžete použít a. Tento datový proud se nebude posílat jiným účastníkům; je to místní kanál verze Preview.
+`deviceManager` `VideoStreamRenderer` K zahájení vykreslování datových proudů z místní kamery můžete použít a. Tento datový proud se nebude posílat jiným účastníkům; je to místní kanál verze Preview.
 
 ```js
 const cameras = await deviceManager.getCameras();
-const localVideoDevice = cameras[0];
-const localCameraStream = new LocalVideoStream(localVideoDevice);
-const renderer = new Renderer(localCameraStream);
-const view = await renderer.createView();
-document.body.appendChild(view.target);
+const camera = cameras[0];
+const localCameraStream = new LocalVideoStream(camera);
+const videoStreamRenderer = new VideoStreamRenderer(localCameraStream);
+const view = await videoStreamRenderer.createView();
+htmlElement.appendChild(view.target);
 
 ```
 

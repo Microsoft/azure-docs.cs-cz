@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110332"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644331"
 ---
 Začínáme s komunikačními službami Azure pomocí komunikačních služeb JavaScript SDK pro komunikaci, které vám umožní posílat zprávy SMS.
 
@@ -72,15 +72,15 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce sady 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS. |
-| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
-| SmsSendOptions | Toto rozhraní poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud `enableDeliveryReport` je nastaveno na `true` , pak dojde k vygenerování události po úspěšném doručení. |
 | SmsSendRequest | Toto rozhraní je modelem vytváření žádosti serveru SMS (např. Nakonfigurujte telefonní čísla na a z a obsah serveru SMS. |
+| SmsSendOptions | Toto rozhraní poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud `enableDeliveryReport` je nastaveno na `true` , pak dojde k vygenerování události po úspěšném doručení. |
+| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 Importujte **SmsClient** ze sady SDK a vytvořte její instanci pomocí připojovacího řetězce. Následující kód načte připojovací řetězec pro prostředek z proměnné prostředí s názvem `COMMUNICATION_SERVICES_CONNECTION_STRING` . Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
 
-Přidejte následující kód pro **send-sms.js**:
+Vytvořte a otevřete soubor s názvem **send-sms.js** a přidejte následující kód:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
+Měli byste nahradit `<from-phone-number>` telefonní číslo s povoleným serverem SMS, které je přidružené k vašemu prostředku komunikačních služeb, a `<to-phone-number-1>` `<to-phone-number-2>` s telefonními čísly, na které chcete poslat zprávu.
+
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Odeslat zprávu o 1: N SMS s možnostmi
 
@@ -127,12 +130,12 @@ K určení, zda má být povolena zpráva o doručení a nastavena vlastní zna�
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+Měli byste nahradit `<from-phone-number>` telefonním číslem s podporou serveru SMS, který je přidružený k vašemu prostředku komunikačních služeb, a `<to-phone-number-1>` `<to-phone-number-2>` s telefonními čísly, na které chcete poslat zprávu.
+
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
 
 `enableDeliveryReport`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
 `tag` je volitelný parametr, který můžete použít k použití značky pro sestavu doručení.

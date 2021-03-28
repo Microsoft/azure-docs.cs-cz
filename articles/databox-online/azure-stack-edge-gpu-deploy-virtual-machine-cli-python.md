@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 16dc95d4e32c683634aa2d96fc2af281612346e1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 38ba5679731b5e52eb06751a625aea9df69c76ca
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105568303"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643213"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 

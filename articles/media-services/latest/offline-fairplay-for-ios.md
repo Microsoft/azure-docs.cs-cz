@@ -2,26 +2,18 @@
 title: Media Services V3 FairPlay streaming pro iOS v režimu offline
 description: Toto téma poskytuje přehled a ukazuje, jak použít Azure Media Services V3 k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí nástroje Apple FairPlay v režimu offline.
 services: media-services
-keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
+manager: femila
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0412ef303a301873d437e03e91c58c0a2e8e7e15
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955224"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640735"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Online streamování FairPlay pro iOS s Media Services V3
 
@@ -49,7 +41,7 @@ Tento článek popisuje podporu FairPlay streamování (FPS) v režimu offline, 
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před implementací offline DRM pro FairPlay na zařízení s iOS 10 +:
 
@@ -205,10 +197,6 @@ Tři ukázkové testy v Media Services pokrývají následující tři scénář
 Tyto ukázky najdete na [tomto ukázkovém webu](https://aka.ms/poc#22)s odpovídajícím certifikátem aplikace hostovaným ve webové aplikaci Azure.
 V případě ukázky verze 3 nebo 4 sady SDK serveru FPS je v případě, že hlavní seznam testů obsahuje alternativní zvuk, v režimu offline, který přehrává jenom zvuk. Proto je potřeba obložení alternativního zvuku. Jinými slovy, druhý a třetí vzorek uvedený dříve pracuje v režimu online a offline. Ukázka uvedená jako první hraje zvuk pouze v režimu offline, zatímco online streamování funguje správně.
 
-## <a name="faq"></a>Časté otázky
+## <a name="offline-fairplay-questions"></a>Dotazy v režimu offline Fairplay
 
-Přečtěte si [Nejčastější dotazy týkající se řešení potíží](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode).
-
-## <a name="next-steps"></a>Další kroky
-
-Podívejte se, jak zajistit [ochranu pomocí AES-128](protect-with-aes128.md).
+Podívejte se na [online otázky k Fairplay](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode).

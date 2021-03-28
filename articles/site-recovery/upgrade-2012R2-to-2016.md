@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
-ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b3df487d690befadd249142c449163c2393f6df6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91250062"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640319"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Upgrade Windows Server serveru/System Center 2012 R2 VMM na Windows Server/VMM 2016 
 
@@ -54,7 +54,7 @@ Před upgradem Vezměte na vědomí následující: –
   > Při upgradu SCVMM 2012 R2 můžete v části Správa distribuovaných klíčů vybrat možnost **ukládání šifrovacích klíčů ve službě Active Directory**. Vyberte nastavení pro účet služby a správu distribuovaných klíčů pečlivě. Na základě vašeho výběru nebudou možná po upgradu k dispozici šifrovaná data, například hesla v šablonách, a mohou mít pravděpodobně vliv na replikaci s Azure Site Recovery
 
 > [!IMPORTANT]
-> Další informace najdete v dokumentaci k nástroji SCVMM týkající se [požadavků](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations) .
+> Další informace najdete v dokumentaci k nástroji SCVMM týkající se [požadavků](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#requirements-and-limitations) .
 
 ## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>Hostitelé Windows Serveru 2012 R2, kteří nejsou spravováni SCVMM 
 Níže uvedený seznam kroků se vztahuje na konfiguraci uživatele z [hostitelů Hyper-V do Azure](./hyper-v-azure-architecture.md) spouštěné pomocí následujícího [kurzu](./hyper-v-prepare-on-premises-tutorial.md) .
@@ -66,7 +66,7 @@ Níže uvedený seznam kroků se vztahuje na konfiguraci uživatele z [hostitel�
 2. U každého nového hostitele se systémem Windows Server 2016, který je představený v clusteru, odeberte odkaz na hostitele se systémem Windows Server 2012 R2 z Azure Site Recovery podle kroků uvedených v části [zde]. Mělo by se jednat o hostitele, kterého jste se rozhodli vyprázdnit & vyřadit z clusteru.
 3. Po spuštění příkazu *Update-VMVersion* pro všechny virtuální počítače se upgrady dokončily. 
 4. Pomocí kroků uvedených [tady](./hyper-v-azure-tutorial.md#set-up-the-source-environment) zaregistrujete nového hostitele Windows serveru 2016, abyste mohli Azure Site Recovery. Upozorňujeme, že lokalita Hyper-V je už aktivní a Vy stačí zaregistrovat nového hostitele v clusteru. 
-5.  Přejít na Azure Portal a ověřit stav replikovaného stavu v rámci Recovery Services
+5. Přejít na Azure Portal a ověřit stav replikovaného stavu v rámci Recovery Services
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>Upgrade hostitelů se systémem Windows Server 2012 R2 spravovaných pomocí samostatného serveru SCVMM 2012 R2
 Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradovat SCVMM 2012 R2 na SCVMM 2016. Postupujte podle následujících kroků:-
@@ -74,20 +74,20 @@ Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradov
 **Upgrade samostatného SCVMM 2012 R2 na SCVMM 2016**
 
 1.  Odinstalujte poskytovatele ASR tak, že přejdete na ovládací panel > programy-> programy a funkce – >Microsoft Azure Site Recovery a kliknete na odinstalovat.
-2. [Uchování databáze SCVMM a upgrade operačního systému](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
+2. [Uchování databáze SCVMM a upgrade operačního systému](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#back-up-and-upgrade-the-operating-system)
 3. V panelu **Přidat nebo odebrat programy** vyberte možnost odinstalovat **Nástroj VMM**  >  . b. Vyberte **Odebrat funkce** a pak vyberte V **mm Server pro správu a konzolu VMM**. c. V **Možnosti databáze** vyberte **Zachovat databázi**. d. Zkontrolujte souhrn a klikněte na **odinstalovat**.
 
-4. [Instalace nástroje VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
+4. [Instalace nástroje VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#install-vmm-2016)
 5. Spusťte SCVMM a zaškrtněte na kartě **prostředky infrastruktury** stav všech hostitelů. Kliknutím na **aktualizovat** získáte nejnovější stav. Měl by se zobrazit stav "vyžaduje pozornost". 
-17. Nainstalujte na SCVMM nejnovějšího [poskytovatele Microsoft Azure Site Recovery](https://aka.ms/downloaddra) .
-16. Nainstalujte nejnovějšího [agenta služby Microsoft Azure Recovery Services (MARS)](https://aka.ms/latestmarsagent) na každého hostitele clusteru. Aktualizujte, aby se SCVMM mohl úspěšně dotazovat na hostitele.
+17.    Nainstalujte na SCVMM nejnovějšího [poskytovatele Microsoft Azure Site Recovery](https://aka.ms/downloaddra) .
+16.    Nainstalujte nejnovějšího [agenta služby Microsoft Azure Recovery Services (MARS)](https://aka.ms/latestmarsagent) na každého hostitele clusteru. Aktualizujte, aby se SCVMM mohl úspěšně dotazovat na hostitele.
 
 **Upgrade hostitelů Windows Serveru 2012 R2 na Windows Server 2016**
 
 1. Postupujte podle kroků uvedených [tady](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) a spusťte proces postupného upgradu clusteru. 
 2. Po přidání nového hostitele do clusteru aktualizujte hostitele z konzoly SCVMM a nainstalujte agenta VMM do tohoto aktualizovaného hostitele.
 3. Spusťte *Update-VMVersion* a aktualizujte verze virtuálních počítačů virtuálních počítačů. 
-4.  Přejít na Azure Portal a ověřit replikovaný stav virtuálních počítačů v trezoru Recovery Services. 
+4. Přejít na Azure Portal a ověřit replikovaný stav virtuálních počítačů v trezoru Recovery Services. 
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-are-managed-by-highly-available-scvmm-2012-r2-server"></a>Upgrade hostitelů Windows Serveru 2012 R2 je spravovaný pomocí vysoce dostupného SCVMM 2012 R2 serveru.
 Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradovat SCVMM 2012 R2 na SCVMM 2016. Při upgradu serverů SCVMM 2012 R2 nakonfigurovaného s Azure Site Recovery kombinovaném režimu bez dalších serverů VMM & smíšený režim s dalšími servery VMM se podporuje následující režimy upgradu.
@@ -95,7 +95,7 @@ Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradov
 **Upgrade SCVMM 2012 R2 na SCVMM 2016**
 
 1.  Odinstalujte poskytovatele ASR tak, že přejdete na ovládací panel > programy-> programy a funkce – >Microsoft Azure Site Recovery a kliknete na odinstalovat.
-2. Postupujte podle kroků uvedených [tady](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) v závislosti na režimu upgradu, který chcete spustit.
+2. Postupujte podle kroků uvedených [tady](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#upgrade-a-standalone-vmm-server) v závislosti na režimu upgradu, který chcete spustit.
 3. Spusťte konzolu SCVMM a zaškrtněte na kartě **prostředky infrastruktury** stav všech hostitelů. Kliknutím na **aktualizovat** získáte nejnovější stav. Měl by se zobrazit stav "vyžaduje pozornost".
 4. Nainstalujte na SCVMM nejnovějšího [poskytovatele Microsoft Azure Site Recovery](https://aka.ms/downloaddra) .
 5. Aktualizujte nejnovějšího [agenta služby Microsoft Azure Recovery Services (MARS)](https://aka.ms/latestmarsagent) na každém hostiteli clusteru. Aktualizujte, aby se mohl SC VMM úspěšně dotazovat na hostitele.
@@ -106,8 +106,7 @@ Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradov
 1. Postupujte podle kroků uvedených [tady](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) a spusťte proces postupného upgradu clusteru.
 2. Po přidání nového hostitele do clusteru aktualizujte hostitele z konzoly SCVMM a nainstalujte agenta VMM do tohoto aktualizovaného hostitele.
 3. Spusťte *Update-VMVersion* a aktualizujte verze virtuálních počítačů virtuálních počítačů. 
-4.  Přejít na Azure Portal a ověřit replikovaný stav virtuálních počítačů v trezoru Recovery Services. 
+4. Přejít na Azure Portal a ověřit replikovaný stav virtuálních počítačů v trezoru Recovery Services. 
 
 ## <a name="next-steps"></a>Další kroky
 Po dokončení upgradu hostitelů můžete provést [Test převzetí služeb při selhání](tutorial-dr-drill-azure.md) k otestování stavu replikace a stavu zotavení po havárii.
-

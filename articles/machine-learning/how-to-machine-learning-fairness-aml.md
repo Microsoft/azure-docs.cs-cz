@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 70ad5d6d88dabb51e022a1fc5c011341b06f02fd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100366947"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640686"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Použití Azure Machine Learning s open source balíčkem Fairlearn k vyhodnocení spravedlivosti modelů ML (Preview)
 
@@ -31,7 +31,7 @@ V této příručce se dozvíte, jak pomocí [Fairlearn](https://fairlearn.githu
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Sada SDK pro Azure Machine Learning spravedlivosti 
 
-Sada SDK pro Azure Machine Learning spravedlivě `azureml-contrib-fairness` integruje Open Source balíček Pythonu [Fairlearn](http://fairlearn.github.io)v rámci Azure Machine Learning. Další informace o integraci Fairlearn v rámci Azure Machine Learning najdete v těchto [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). Další informace o Fairlearn najdete v ukázkové [příručce](https://fairlearn.github.io/master/auto_examples/) a [ukázkových poznámkových blocích](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
+Sada SDK pro Azure Machine Learning spravedlivě `azureml-contrib-fairness` integruje Open Source balíček Pythonu [Fairlearn](http://fairlearn.github.io)v rámci Azure Machine Learning. Další informace o integraci Fairlearn v rámci Azure Machine Learning najdete v těchto [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). Další informace o Fairlearn najdete v ukázkové [příručce](https://fairlearn.org/v0.6.0/auto_examples/) a [ukázkových poznámkových blocích](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
 
 Balíčky a nainstalujte pomocí následujících příkazů `azureml-contrib-fairness` `fairlearn` :
 ```bash
@@ -227,7 +227,7 @@ Následující příklad ukazuje, jak použít balíček s příspravedlivosti. 
     1. Pokud jste svůj původní model zaregistrovali pomocí předchozích kroků, můžete v levém podokně vybrat **modely** a zobrazit je.
     1. Vyberte model a pak kartu **spravedlivé** pro zobrazení řídicího panelu vizualizace vysvětlení.
 
-    Další informace o řídicím panelu vizualizace a o tom, co obsahuje, najdete v [uživatelské příručce](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard)pro Fairlearn.
+    Další informace o řídicím panelu vizualizace a o tom, co obsahuje, najdete v [uživatelské příručce](https://fairlearn.org/v0.6.0/user_guide/assessment.html#fairlearn-dashboard)pro Fairlearn.
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>Nahrávání přehledů o nerovnosti pro více modelů
 
@@ -338,9 +338,9 @@ Chcete-li porovnat více modelů a zjistit, jak se jejich hodnocení neliší, m
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Nahrajte si nezmírňované a zmírňované poznatky o rovnosti.
 
-Můžete použít [algoritmy pro zmírnění rizik](https://fairlearn.github.io/master/user_guide/mitigation.html)v Fairlearn, porovnat jejich vygenerované zmírňované modely s původním nehodnoceným modelem a přejít na výkon a kompromisy mezi porovnanými modely.
+Můžete použít [algoritmy pro zmírnění rizik](https://fairlearn.org/v0.6.0/user_guide/mitigation.html)v Fairlearn, porovnat jejich vygenerované zmírňované modely s původním nehodnoceným modelem a přejít na výkon a kompromisy mezi porovnanými modely.
 
-Příklad, který demonstruje použití algoritmu pro zmírnění [hledání v mřížce](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) (což znamená, že vytvoří kolekci rizikových modelů s různými kompromisy a výkonem), najdete v tomto [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
+Příklad, který demonstruje použití algoritmu pro zmírnění [hledání v mřížce](https://fairlearn.org/v0.6.0/user_guide/mitigation.html#grid-search) (což znamená, že vytvoří kolekci rizikových modelů s různými kompromisy a výkonem), najdete v tomto [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
 
 Nahrávání přehledů spravedlnosti v různých modelech v jednom spuštění umožňuje porovnat modely s ohledem na spravedlivé a výkon. Můžete kliknout na libovolný model zobrazený v grafu porovnání modelů a zobrazit podrobné informace o spravedlivém konkrétního modelu.
 

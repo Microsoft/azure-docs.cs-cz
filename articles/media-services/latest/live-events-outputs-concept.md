@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 0eff5b13a79f64de1863e82a2c9285788accf6fc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625292"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641539"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -225,14 +225,6 @@ Jakmile datový proud přetéká do živé události, můžete zahájit streamov
 
 Podrobné informace o živých výstupech najdete v tématu [Použití cloudového DVR](live-event-cloud-dvr.md).
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+## <a name="live-event-output-questions"></a>Dotazy na výstup živé události
 
-Přečtěte si článek [Nejčastější dotazy](frequently-asked-questions.md#live-streaming) .
-
-## <a name="ask-questions-and-get-updates"></a>Klást otázky a získávat aktualizace
-
-Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
-
-## <a name="next-steps"></a>Další kroky
-
-[Kurz živého streamování](stream-live-tutorial-with-api.md)
+Podívejte se na článek s [dotazy na výstup živé události](questions-collection.md#live-streaming) .

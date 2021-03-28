@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: 4465f88e3b0ccab8eace1936f426af8dd32af27b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8d6c2ea760b85e3170b26c63a28d4ac2b3a2ef5a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872247"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639465"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -83,7 +83,7 @@ Můžete také začít pomocí ukázek REST (GitHub) –
 
 Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat strukturovaná data z formulářů.
 
-|Název |Popis |
+|Název |Description |
 |---|---|
 | **Analyzovat rozložení** | Analyzovat dokument předaný jako datový proud pro extrakci textu, značek výběru, tabulek a struktury z dokumentu |
 | **Vlastní model výuky**| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nastavte parametr _useLabelFile_ na `true` Výukový program s ručně označenými daty. |
@@ -185,5 +185,5 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 
 Vyzkoušejte si náš online nástroj a rychlý Start, kde se dozvíte další informace o službě rozpoznávání formulářů.
 
-* [**Nástroj pro rozpoznávání formulářů**](https://fott-preview.microsoft.com/)
+* [**Nástroj pro rozpoznávání formulářů**](https://fott-preview.azurewebsites.net/)
 * [**Klientská knihovna a REST API – rychlý Start**](quickstarts/client-library.md)

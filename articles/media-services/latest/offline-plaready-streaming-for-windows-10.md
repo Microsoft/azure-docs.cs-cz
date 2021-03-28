@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aecae72b0bea07a0d8e240b3dcae7ee9b9662f95
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955222"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640718"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Online streamování PlayReady pro Windows 10 s Media Services V3
 
@@ -34,7 +34,7 @@ Azure Media Services podporuje stahování a přehrávání offline s ochranou D
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="overview"></a>Přehled
+## <a name="background-on-offline-mode-playback"></a>Přehrávání na pozadí v režimu offline
 
 Tato část poskytuje některé pozadí při přehrávání offline režimu, zejména proč:
 
@@ -61,12 +61,12 @@ Můžete použít dva typy doručování licencí PlayReady:
 
 Níže jsou uvedeny dvě sady testovacích prostředků, první z nich pomocí doručování licencí PlayReady v AMS a druhá z nich pomocí mého licenčního serveru aplikace PlayReady hostovaného na virtuálním počítači Azure:
 
-#1 assetu:
+## <a name="asset-1"></a>#1 assetu
 
 * Adresa URL postupného stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * LA_URL PlayReady (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
-#2 assetu:
+## <a name="asset-2"></a>#2 assetu
 
 * Adresa URL postupného stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * LA_URL PlayReady (místní): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
@@ -124,7 +124,3 @@ Ve shrnutí jsme dosáhli offline režimu na Azure Media Services:
 * Obsah je možné hostovat ve Azure Media Services nebo Azure Storage pro progresivní stahování;
 * Doručování licencí PlayReady může být z Azure Media Services nebo jinde;
 * Připravený plynulý obsah streamování se dá dál používat pro online streamování prostřednictvím POMLČKy nebo hladkého použití s technologií PlayReady jako DRM.
-
-## <a name="next-steps"></a>Další kroky
-
-[Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)

@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fb1b9e3458d08b8387c7f3978ff83c097fad2375
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659705"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644033"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Nastavení testovacího prostředí pro správu a vývoj pomocí SQL Server
 
 Tento článek popisuje, jak nastavit testovací prostředí pro základní třídu SQL Server Management a vývoj v Azure Lab Services.  Koncepty databází jsou jedním z úvodních kurzů, které jsou v rámci vysokoškolského ministerstva v oblasti počítačové vědy. Jazyk SQL (Structured Query Language) (SQL) je mezinárodní standard.  SQL je standardním jazykem pro relaci správy databází, včetně přidávání, přístupu a správy obsahu v databázi.  Je nejužitečnější pro své rychlé zpracování, prověřenou spolehlivost, jednoduchost a flexibilitu použití.
 
-V tomto článku si ukážeme, jak nastavit šablonu virtuálního počítače v testovacím prostředí pomocí sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)a [Azure Data Studio](https://github.com/microsoft/azuredatastudio).  V tomto testovacím prostředí budeme používat jednu sdílenou [SQL Server databázi](../azure-sql/database/sql-database-paas-overview.md) pro celé testovací prostředí. [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) je databázový stroj PaaS (Platform as a Service) z Azure.
+V tomto článku si ukážeme, jak nastavit šablonu virtuálního počítače v testovacím prostředí pomocí sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)a [Azure Data Studio](https://github.com/microsoft/azuredatastudio).  V tomto testovacím prostředí budeme používat jednu sdílenou [SQL Server databázi](../azure-sql/database/sql-database-paas-overview.md) pro celé testovací prostředí. [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) je databázový stroj PaaS (Platform as a Service) z Azure.
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
@@ -82,9 +82,9 @@ Teď, když je naše laboratoř vytvořená, můžeme upravit počítač šablon
 
 ## <a name="visual-studio"></a>Visual Studio
 
-Výše zvolená image zahrnuje [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/community/).  Všechny úlohy a sady nástrojů jsou už v imagi nainstalované.  Použijte Instalační program pro Visual Studio k [instalaci všech volitelných nástrojů](/visualstudio/install/modify-visual-studio?view=vs-2019) , které byste chtěli potřebovat.  [Přihlaste se k aplikaci Visual Studio](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio) , abyste mohli odemknout edici Community.
+Výše zvolená image zahrnuje [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/community/).  Všechny úlohy a sady nástrojů jsou už v imagi nainstalované.  Použijte Instalační program pro Visual Studio k [instalaci všech volitelných nástrojů](/visualstudio/install/modify-visual-studio?view=vs-2019&preserve-view=true) , které byste chtěli potřebovat.  [Přihlaste se k aplikaci Visual Studio](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019&preserve-view=true#how-to-sign-in-to-visual-studio) , abyste mohli odemknout edici Community.
 
-Sada Visual Studio obsahuje sadu nástrojů pro **ukládání a zpracování dat** , která zahrnuje nástroje SQL Server Data Tools (SSDT).  Další informace o schopnostech SSDT najdete v tématu [Přehled nástrojů SQL Server Data Tools](/sql/ssdt/sql-server-data-tools?view=sql-server-ver15).  Chcete-li ověřit připojení ke sdíleným SQL Server pro třídu, přečtěte si téma [připojení k databázi a procházení existujících objektů](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15). Pokud se zobrazí výzva, přidejte do [seznamu povolených počítačů](../azure-sql/database/firewall-configure.md) , které se můžou připojit k vaší instanci SQL Server, IP adresa počítače šablony.
+Sada Visual Studio obsahuje sadu nástrojů pro **ukládání a zpracování dat** , která zahrnuje nástroje SQL Server Data Tools (SSDT).  Další informace o schopnostech SSDT najdete v tématu [Přehled nástrojů SQL Server Data Tools](/sql/ssdt/sql-server-data-tools).  Chcete-li ověřit připojení ke sdíleným SQL Server pro třídu, přečtěte si téma [připojení k databázi a procházení existujících objektů](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects). Pokud se zobrazí výzva, přidejte do [seznamu povolených počítačů](../azure-sql/database/firewall-configure.md) , které se můžou připojit k vaší instanci SQL Server, IP adresa počítače šablony.
 
 Visual Studio podporuje několik úloh, včetně **webových & cloudových** a **desktopových &ch** úloh.  Oba tyto úlohy podporují SQL Server jako zdroj dat. Další informace o použití ASP.NET Core k SQL Server najdete [v tématu vytvoření ASP.NET Core a SQL Database aplikace v Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md) kurzu.  Pomocí knihovny [System. data. SqlClient](/dotnet/api/system.data.sqlclient) se můžete připojit k SQL Database z aplikace [Xamarin](/xamarin) .
 
@@ -113,7 +113,7 @@ Teď, když je Azure Data Studio nainstalovaná, nastavili jsme připojení k Az
 
 ## <a name="install-sql-server-management-studio"></a>Nainstalovat SQL Server Management Studio
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) je integrované prostředí pro správu jakékoli infrastruktury SQL.  SSMS je nástroj používaný správci databáze k nasazení, monitorování a upgradu infrastruktury dat.
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) je integrované prostředí pro správu jakékoli infrastruktury SQL.  SSMS je nástroj používaný správci databáze k nasazení, monitorování a upgradu infrastruktury dat.
 
 1. [Stáhněte si Management Studio SQL serveru](https://aka.ms/ssmsfullsetup). Po stažení spusťte instalační program.
 2. Na **úvodní** stránce klikněte na **nainstalovat**.

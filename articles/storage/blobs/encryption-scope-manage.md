@@ -1,37 +1,32 @@
 ---
-title: Vytváření a Správa oborů šifrování (Preview)
+title: Vytváření a Správa oborů šifrování
 description: Naučte se vytvořit rozsah šifrování pro izolaci dat objektů blob na úrovni kontejneru nebo objektu BLOB.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 03/26/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c29282637f6854248c98dff59f8fae46ad1a9d39
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209587"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640556"
 ---
-# <a name="create-and-manage-encryption-scopes-preview"></a>Vytváření a Správa oborů šifrování (Preview)
+# <a name="create-and-manage-encryption-scopes"></a>Vytváření a Správa oborů šifrování
 
-Obory šifrování (Preview) umožňují spravovat šifrování na úrovni jednotlivých objektů BLOB nebo kontejnerů. Obor šifrování izoluje data objektu blob v zabezpečené enklávě v rámci účtu úložiště. Obory šifrování můžete použít k vytvoření zabezpečených hranic mezi daty, která se nacházejí ve stejném účtu úložiště, ale patří různým zákazníkům. Další informace o oborech šifrování najdete v tématu [obory šifrování pro úložiště objektů BLOB (Preview)](encryption-scope-overview.md).
+Obory šifrování umožňují spravovat šifrování na úrovni jednotlivých objektů blob nebo kontejnerů. Obory šifrování můžete použít k vytvoření zabezpečených hranic mezi daty, která se nacházejí ve stejném účtu úložiště, ale patří různým zákazníkům. Další informace o oborech šifrování najdete v tématu [obory šifrování pro úložiště objektů BLOB](encryption-scope-overview.md).
 
 Tento článek ukazuje, jak vytvořit rozsah šifrování. Také ukazuje, jak určit rozsah šifrování při vytváření objektu BLOB nebo kontejneru.
-
-> [!IMPORTANT]
-> Obory šifrování jsou momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
->
-> Chcete-li se vyhnout neočekávaným nákladům, je nutné zakázat všechny obory šifrování, které aktuálně nepotřebujete.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Vytvoření oboru šifrování
 
-Rozsah šifrování můžete vytvořit pomocí klíče spravovaného společností Microsoft nebo pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault nebo Azure Key Vault modelu HSM (Managed hardware Security model) (ve verzi Preview). Pokud chcete vytvořit rozsah šifrování s klíčem spravovaným zákazníkem, musíte nejdřív vytvořit Trezor klíčů nebo spravovaný modul HSM a přidat klíč, který chcete použít pro tento obor. Trezor klíčů nebo spravovaný modul HSM musí mít povolenou ochranu vyprázdnění a musí být ve stejné oblasti jako účet úložiště.
+Můžete vytvořit rozsah šifrování, který je chráněný pomocí klíče spravovaného společností Microsoft, nebo pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault nebo v modelu Azure Key Vault Managed hardware Security model (HSM) (Preview). Pokud chcete vytvořit rozsah šifrování s klíčem spravovaným zákazníkem, musíte nejdřív vytvořit Trezor klíčů nebo spravovaný modul HSM a přidat klíč, který chcete použít pro tento obor. Trezor klíčů nebo spravovaný modul HSM musí mít povolenou ochranu vyprázdnění a musí být ve stejné oblasti jako účet úložiště.
 
 Rozsah šifrování je automaticky povolen při jeho vytváření. Po vytvoření oboru šifrování ho můžete zadat při vytváření objektu BLOB. Výchozí rozsah šifrování můžete zadat také při vytváření kontejneru, který se automaticky použije u všech objektů BLOB v kontejneru.
 
@@ -43,22 +38,16 @@ Pokud chcete vytvořit rozsah šifrování v Azure Portal, postupujte takto:
 1. Vyberte nastavení **šifrování** .
 1. Vyberte kartu **obory šifrování** .
 1. Kliknutím na tlačítko **Přidat** přidejte nový rozsah šifrování.
-1. V podokně vytvořit **obor šifrování** zadejte název nového oboru.
-1. Vyberte typ šifrování, buď **klíče spravované společností Microsoft** , nebo **klíče spravované zákazníkem**.
+1. V podokně **vytvořit obor šifrování** zadejte název nového oboru.
+1. Vyberte požadovaný typ podpory šifrovacího klíče, buď **klíče spravované společností Microsoft** , nebo **klíče spravované zákazníkem**.
     - Pokud jste vybrali **klíče spravované společností Microsoft**, kliknutím na **vytvořit** vytvořte rozsah šifrování.
-    - Pokud jste vybrali **klíče spravované zákazníkem**, zadejte Trezor klíčů nebo spravovaný modul HSM, klíč a verzi klíče, který chcete použít pro tento obor šifrování, jak je znázorněno na následujícím obrázku.
+    - Pokud jste vybrali **klíče spravované zákazníkem**, vyberte předplatné a zadejte Trezor klíčů nebo spravovaný modul HSM a klíč, který chcete použít pro tento obor šifrování, jak je znázorněno na následujícím obrázku.
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Snímek obrazovky znázorňující vytvoření oboru šifrování v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete vytvořit rozsah šifrování pomocí PowerShellu, nejdřív nainstalujte verzi modulu AZ. Storage Preview. Doporučuje se použít nejnovější verzi Preview, ale obory šifrování se podporují ve verzi 1.13.4-Preview a novější. Odeberte jakékoli jiné verze modulu AZ. Storage.
-
-Následující příkaz nainstaluje AZ. Storage [2.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) Module:
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.1.1-preview -AllowPrerelease
-```
+Pokud chcete vytvořit rozsah šifrování pomocí PowerShellu, nainstalujte modul příkaz [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) PowerShell, verze 3.4.0 nebo novější.
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Vytvoří rozsah šifrování chráněný klíči spravovanými Microsoftem.
 
@@ -89,9 +78,8 @@ Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodn
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 $keyVaultName = "<key-vault>"
-$keyUri = "<key-uri-with-version>"
+$keyUri = "<key-uri>"
 $scopeName2 = "customer2scope"
-
 
 # Assign a system managed identity to the storage account.
 $storageAccount = Set-AzStorageAccount -ResourceGroupName $rgName `
@@ -105,7 +93,9 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-Dále zavolejte příkaz **New-AzStorageEncryptionScope** s `-KeyvaultEncryption` parametrem a zadejte identifikátor URI klíče. Nezapomeňte zahrnout verzi klíče do identifikátoru URI klíče. Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
+Dále zavolejte příkaz **New-AzStorageEncryptionScope** s `-KeyvaultEncryption` parametrem a zadejte identifikátor URI klíče. Zahrnutí verze klíče do identifikátoru URI klíče je volitelné. Pokud tuto verzi klíče vynecháte, bude obor šifrování automaticky používat nejnovější verzi klíče. Pokud zadáte verzi klíče, musíte klíčovou verzi aktualizovat ručně, aby používala jinou verzi.
+
+Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
 
 ```powershell
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
@@ -117,7 +107,7 @@ New-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete vytvořit rozsah šifrování pomocí Azure CLI, nejdřív nainstalujte Azure CLI verze 2.4.0 nebo novější.
+Pokud chcete vytvořit rozsah šifrování pomocí Azure CLI, nejdřív nainstalujte Azure CLI verze 2.20.0 nebo novější.
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Vytvoří rozsah šifrování chráněný klíči spravovanými Microsoftem.
 
@@ -163,7 +153,9 @@ az keyvault set-policy \
     --key-permissions get unwrapKey wrapKey
 ```
 
-V dalším kroku zavolejte příkaz **AZ Storage Account Encryption-Scope Create** s `--key-uri` parametrem a zadejte identifikátor URI klíče. Nezapomeňte zahrnout verzi klíče do identifikátoru URI klíče. Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
+V dalším kroku zavolejte příkaz **AZ Storage Account Encryption-Scope Create** s `--key-uri` parametrem a zadejte identifikátor URI klíče. Zahrnutí verze klíče do identifikátoru URI klíče je volitelné. Pokud tuto verzi klíče vynecháte, bude obor šifrování automaticky používat nejnovější verzi klíče. Pokud zadáte verzi klíče, musíte klíčovou verzi aktualizovat ručně, aby používala jinou verzi.
+
+Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -176,7 +168,10 @@ az storage account encryption-scope create \
 
 ---
 
-Informace o tom, jak nakonfigurovat šifrování Azure Storage pomocí klíčů spravovaných zákazníkem v trezoru klíčů, najdete v tématu [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault](../common/customer-managed-keys-configure-key-vault.md). Informace o konfiguraci klíčů spravovaných zákazníkem ve spravovaném modulu HSM najdete v tématu [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault spravované HSM (Preview)](../common/customer-managed-keys-configure-key-vault-hsm.md).
+Informace o tom, jak nakonfigurovat Azure Storage šifrování pomocí klíčů spravovaných zákazníkem v trezoru klíčů nebo spravovaném HSM, najdete v následujících článcích:
+
+- [Konfigurace šifrování s použitím klíčů spravovaných zákazníkem uložených v Azure Key Vault](../common/customer-managed-keys-configure-key-vault.md)
+- [Nakonfigurujte šifrování pomocí klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault spravované HSM (Preview)](../common/customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="list-encryption-scopes-for-storage-account"></a>Vypsat obory šifrování pro účet úložiště
 
@@ -185,6 +180,10 @@ Informace o tom, jak nakonfigurovat šifrování Azure Storage pomocí klíčů 
 Pokud chcete zobrazit obory šifrování pro účet úložiště v Azure Portal, přejděte do nastavení **obory šifrování** pro účet úložiště. V tomto podokně můžete povolit nebo zakázat rozsah šifrování nebo změnit klíč pro rozsah šifrování.
 
 :::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Snímek obrazovky zobrazující seznam rozsahů šifrování v Azure Portal":::
+
+Chcete-li zobrazit podrobnosti o klíči spravovaném zákazníkem, včetně identifikátoru URI a verze klíče a o tom, zda je verze klíče automaticky aktualizována, postupujte podle odkazu ve sloupci **Key (klíč** ).
+
+:::image type="content" source="media/encryption-scope-manage/customer-managed-key-details-portal.png" alt-text="Snímek obrazovky zobrazující podrobnosti o klíči používaném s rozsahem šifrování":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -217,7 +216,7 @@ az storage account encryption-scope list \
 
 Při vytváření kontejneru můžete zadat výchozí rozsah šifrování. Objekty BLOB v tomto kontejneru budou ve výchozím nastavení používat tento obor.
 
-Jednotlivý objekt BLOB se dá vytvořit s vlastním oborem šifrování, pokud není nakonfigurovaný kontejner tak, aby vyžadoval, aby všechny objekty blob používaly výchozí obor.
+Jednotlivý objekt BLOB se dá vytvořit s vlastním oborem šifrování, pokud není nakonfigurovaný kontejner tak, aby vyžadoval, aby všechny objekty blob používaly výchozí obor. Další informace najdete v tématu [obory šifrování pro kontejnery a objekty blob](encryption-scope-overview.md#encryption-scopes-for-containers-and-blobs).
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
@@ -232,18 +231,15 @@ Pokud chcete vytvořit kontejner s výchozím rozsahem šifrování v Azure Port
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete vytvořit kontejner s výchozím rozsahem šifrování pomocí PowerShellu, zavolejte příkaz [New-AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) , který určí rozsah `-DefaultEncryptionScope` parametru. Příkaz **New-AzRmStorageContainer** vytvoří kontejner pomocí poskytovatele prostředků Azure Storage, který umožňuje konfiguraci oborů šifrování a dalších operací správy prostředků.
-
-Chcete-li vynutit všechny objekty BLOB v kontejneru pro použití výchozího oboru kontejneru, nastavte `-PreventEncryptionScopeOverride` parametr na `true` .
+Pokud chcete vytvořit kontejner s výchozím rozsahem šifrování pomocí PowerShellu, zavolejte příkaz [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) , který určí rozsah `-DefaultEncryptionScope` parametru. Chcete-li vynutit všechny objekty BLOB v kontejneru pro použití výchozího oboru kontejneru, nastavte `-PreventEncryptionScopeOverride` parametr na `true` .
 
 ```powershell
 $containerName1 = "container1"
-$containerName2 = "container2"
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 
 # Create a container with a default encryption scope that cannot be overridden.
-New-AzRmStorageContainer -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -Name $containerName1 `
+New-AzStorageContainer -Name $containerName1 `
+    -Context $ctx `
     -DefaultEncryptionScope $scopeName1 `
     -PreventEncryptionScopeOverride $true
 ```
@@ -274,7 +270,7 @@ Když nahráváte objekt blob, můžete pro tento objekt BLOB zadat rozsah šifr
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
-Pokud chcete nahrát objekt BLOB s rozsahem šifrování zadaným v Azure Portal, vytvořte nejprve rozsah šifrování, jak je popsáno v tématu [Vytvoření oboru šifrování](#create-an-encryption-scope). Potom postupujte podle těchto kroků a vytvořte objekt BLOB:
+Pokud chcete nahrát objekt BLOB s rozsahem šifrování prostřednictvím Azure Portal, vytvořte nejprve rozsah šifrování, jak je popsáno v tématu [Vytvoření oboru šifrování](#create-an-encryption-scope). Potom postupujte podle těchto kroků a vytvořte objekt BLOB:
 
 1. Přejděte do kontejneru, do kterého chcete nahrát objekt BLOB.
 1. Vyberte tlačítko **nahrát** a vyhledejte objekt blob, který se má nahrát.
@@ -286,22 +282,28 @@ Pokud chcete nahrát objekt BLOB s rozsahem šifrování zadaným v Azure Portal
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete nahrát objekt BLOB s oborem šifrování zadaným pomocí PowerShellu, zavolejte příkaz [set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) a zadejte obor šifrování pro objekt BLOB.
+Pokud chcete nahrát objekt BLOB s rozsahem šifrování prostřednictvím PowerShellu, zavolejte příkaz [set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) a zadejte obor šifrování pro objekt BLOB.
 
 ```powershell
 $containerName2 = "container2"
 $localSrcFile = "C:\temp\helloworld.txt"
-$ctx = (Get-AzStorageAccount -ResourceGroupName $rgName -StorageAccountName $accountName).Context
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 
 # Create a new container with no default scope defined.
 New-AzStorageContainer -Name $containerName2 -Context $ctx
+
 # Upload a block upload with an encryption scope specified.
-Set-AzStorageBlobContent -Context $ctx -Container $containerName2 -File $localSrcFile -Blob "helloworld.txt" -BlobType Block -EncryptionScope $scopeName2
+Set-AzStorageBlobContent -Context $ctx `
+    -Container $containerName2 `
+    -File $localSrcFile `
+    -Blob "helloworld.txt" `
+    -BlobType Block `
+    -EncryptionScope $scopeName2
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete nahrát objekt BLOB s oborem šifrování zadaným pomocí Azure CLI, zavolejte příkaz [AZ Storage BLOB upload](/cli/azure/storage/blob#az-storage-blob-upload) a zadejte rozsah šifrování pro objekt BLOB.
+Pokud chcete nahrát objekt BLOB s rozsahem šifrování přes rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage BLOB upload](/cli/azure/storage/blob#az-storage-blob-upload) a poskytněte rozsah šifrování pro objekt BLOB.
 
 Pokud používáte Azure Cloud Shell, postupujte podle kroků popsaných v části [nahrání objektu BLOB](storage-quickstart-blobs-cli.md#upload-a-blob) a vytvoření souboru v kořenovém adresáři. Tento soubor pak můžete nahrát do objektu BLOB pomocí následující ukázky.
 
@@ -406,10 +408,13 @@ az storage account encryption-scope update \
     --state Disabled
 ```
 
+> [!IMPORTANT]
+> Rozsah šifrování není možné odstranit. Chcete-li se vyhnout neočekávaným nákladům, je nutné zakázat všechny obory šifrování, které aktuálně nepotřebujete.
+
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Šifrování služby Azure Storage pro neaktivní uložená data](../common/storage-service-encryption.md)
-- [Obory šifrování pro úložiště objektů BLOB (Preview)](encryption-scope-overview.md)
+- [Obory šifrování pro úložiště objektů BLOB](encryption-scope-overview.md)
 - [Klíče spravované zákazníkem pro šifrování Azure Storage](../common/customer-managed-keys-overview.md)

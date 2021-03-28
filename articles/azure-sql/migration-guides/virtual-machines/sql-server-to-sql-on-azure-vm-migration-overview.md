@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: e237cf09616cb645bfc4659af4439086979b2565
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 2702451aa3645b2702f8f38c37574a6601249dac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023618"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641412"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Přehled migrace: SQL Server pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -140,7 +140,7 @@ Další pomoc najdete v následujících materiálech, které byly vyvinuty pro 
 |[Multiple-SQL-VM-VNet-interního nástroje](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|Tento dokument white paper popisuje kroky pro nastavení více virtuálních počítačů Azure v konfiguraci skupiny dostupnosti Always On SQL Server.|
 |[Virtuální počítače Azure podporující SSD úrovně Ultra na oblast](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|Tyto skripty PowerShellu poskytují programovou možnost načítající seznam oblastí, které podporují virtuální počítače Azure podporující Ultra SSD.|
 
-Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který je financován technickým týmem Azure Data Group. Základní Chartou programu data SQL expertem je odblokování a urychlení komplexní modernizace a konkurenční možnosti migrace datových platforem na datovou platformu Azure od Microsoftu. Pokud si myslíte, že by vaše organizace mohla zajímat účast v programu data SQL expertem, obraťte se prosím na svůj tým a požádejte ho, aby podal jmenování.
+Data tým SQL Engineering vyvinuli tyto prostředky. Základní Chart týmu je odblokování a urychlení komplexní modernizace pro projekty migrace datové platformy na datovou platformu Azure od Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 

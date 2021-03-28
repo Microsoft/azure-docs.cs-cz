@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841644"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641563"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Připojení k Azure SQL Database s využitím Azure AD Multi-Factor Authentication
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,7 +113,7 @@ Příklad jazyka C# spoléhá na [`System.Data.SqlClient`](/dotnet/api/system.da
   Tuto hodnotu použijte pro ověřování, které vyžaduje uživatelské jméno a heslo pro Azure AD. Ověřování provádí Azure SQL Database. Tato metoda nepodporuje Multi-Factor Authentication.
 
 > [!NOTE]
-> Pokud používáte .NET Core, budete chtít použít obor názvů [Microsoft. data. SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) . Další informace najdete na následujícím [blogu](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
+> Pokud používáte .NET Core, budete chtít použít obor názvů [Microsoft. data. SqlClient](/dotnet/api/microsoft.data.sqlclient) . Další informace najdete na následujícím [blogu](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Nastavení hodnot parametrů C# z Azure Portal
 
@@ -148,7 +148,7 @@ Další informace najdete v tématu [konfigurace Multi-Factor Authentication pro
 ## <a name="c-code-example"></a>Příklad kódu C#
 
 > [!NOTE]
-> Pokud používáte .NET Core, budete chtít použít obor názvů [Microsoft. data. SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) . Další informace najdete na následujícím [blogu](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
+> Pokud používáte .NET Core, budete chtít použít obor názvů [Microsoft. data. SqlClient](/dotnet/api/microsoft.data.sqlclient) . Další informace najdete na následujícím [blogu](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
 
 Vzorový program v jazyce C# spoléhá na sestavení knihovny DLL [*Microsoft. IdentityModel. clients. Active Directory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) .
 

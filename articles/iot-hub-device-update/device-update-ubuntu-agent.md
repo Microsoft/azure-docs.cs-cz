@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105560263"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644446"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta balíčku na serveru Ubuntu 18,04 x64
 
@@ -44,7 +44,7 @@ Pro usnadnění práce v tomto kurzu se používá [šablona Azure Resource Mana
 
 1. Začněte tím, že kliknete na tlačítko níže:
 
-   [![Tlačítko Nasazení do Azure pro iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0-rc4%2FedgeDeploy.json)
+   [![Tlačítko Nasazení do Azure pro iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fdevice-update-tutorial%2FedgeDeploy.json)
 
 1. V nově otevřeném okně vyplňte dostupná pole formuláře:
 
@@ -126,9 +126,9 @@ Přečtěte si licenčních podmínek před použitím balíčku. Vaše instalac
 
 1. Přejděte na vydaná [vydání aktualizací zařízení](https://github.com/Azure/iot-hub-device-update/releases) na GitHubu a klikněte na rozevírací seznam "prostředky".
 
-3. `apt-update-import-samples.zip`Kliknutím na něj si stáhněte.
+3. `Edge.package.update.samples.zip`Kliknutím na něj si stáhněte.
 
-5. Extrahujte obsah složky, abyste zjistili různé ukázky aktualizací a jejich odpovídající manifesty importu. 
+5. Extrahujte obsah složky, abyste zjistili ukázku aktualizace a příslušné manifesty importu. 
 
 2. V Azure Portal na levém navigačním panelu v IoT Hub vyberte možnost aktualizace zařízení v části Automatická správa zařízení.
 
@@ -136,10 +136,8 @@ Přečtěte si licenčních podmínek před použitím balíčku. Vaše instalac
 
 4. Vyberte + Importovat novou aktualizaci.
 
-5. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte `sample-package-update-1.0.1-importManifest.json` importovat manifest ze složky, kterou jste si dříve stáhli. Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte `sample-1.0.1-libcurl4-doc-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste si dříve stáhli.
-Tato aktualizace nainstaluje nejnovější dostupnou verzi nástroje `libcurl4-doc package` do zařízení.
-
-   Alternativně můžete vybrat soubor `sample-package-update-2-2.0.1-importManifest.json` importu manifestu a `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste předtím stáhli. Tím se do zařízení nainstaluje konkrétní verze v 7.58.0 `libcurl4-doc package` .
+5. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte `sample-1.0.1-aziot-edge-importManifest.json` importovat manifest ze složky, kterou jste si dříve stáhli. Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte `sample-1.0.1-aziot-edge-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste si dříve stáhli.
+Tato aktualizace aktualizuje `aziot-identity-service` a `aziot-edge` balíčky na verzi 1.2.0 ~ RC4-1 na vašem zařízení.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Snímek obrazovky znázorňující výběr aktualizačního souboru" lightbox="media/import-update/select-update-files.png":::
 
@@ -211,12 +209,6 @@ Tato aktualizace nainstaluje nejnovější dostupnou verzi nástroje `libcurl4-d
 1. Pokud chcete zobrazit nejnovější podrobnosti o stavu, vyberte aktualizovat. Pokračujte v tomto procesu, dokud se stav nezmění na úspěšné.
 
 Nyní jste dokončili úspěšnou kompletní aktualizaci balíčku pomocí aktualizace zařízení pro IoT Hub na zařízení s platformou Ubuntu Server 18,04 x64. 
-
-## <a name="bonus-steps"></a>Bonusové kroky
-
-1. Opakujte oddíly import aktualizace a nasadit aktualizaci.
-
-3. Během kroku import aktualizace vyberte `sample-package-update-1.0.2-importManifest.json` importovat soubor manifestu a `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste si dříve stáhli. Tato aktualizace odebere `libcurl4-doc package` z vašeho zařízení instalaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

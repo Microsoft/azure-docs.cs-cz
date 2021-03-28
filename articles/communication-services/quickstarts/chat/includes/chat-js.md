@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107005"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645381"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -250,7 +250,7 @@ Message sent!, message id:<number>
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Příjem zpráv chatu z konverzačního vlákna
 
-Díky signalizaci v reálném čase se můžete přihlásit k odběru nových příchozích zpráv a aktualizovat aktuální zprávy v paměti odpovídajícím způsobem. Komunikační služby Azure podporují [seznam událostí, ke kterým se můžete přihlásit](../../../concepts/chat/concepts.md#real-time-signaling).
+Díky signalizaci v reálném čase se můžete přihlásit k odběru nových příchozích zpráv a aktualizovat aktuální zprávy v paměti odpovídajícím způsobem. Komunikační služby Azure podporují [seznam událostí, ke kterým se můžete přihlásit](../../../concepts/chat/concepts.md#real-time-notifications).
 
 ```JavaScript
 // open notifications channel
@@ -286,17 +286,6 @@ Aktualizujte kartu v konzole nástroje byste měli najít seznam zpráv odeslan�
 `listMessages` Vrátí nejnovější verzi zprávy, včetně všech úprav nebo odstranění, ke kterým došlo u zprávy pomocí `updateMessage` a `deleteMessage` .
 Pro odstraněné zprávy `chatMessage.deletedOn` vrátí hodnotu DateTime, která indikuje, kdy se tato zpráva odstranila. U upravených zpráv `chatMessage.editedOn` vrátí hodnotu DateTime, která indikuje, kdy byla zpráva upravena. Původní čas vytvoření zprávy lze použít pomocí `chatMessage.createdOn` , který lze použít k řazení zpráv.
 
-`listMessages` vrátí různé typy zpráv, které mohou být identifikovány pomocí `chatMessage.type` . Tyto typy:
-
-- `Text`: Běžná zpráva chatu odeslaná účastníkem vlákna.
-
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno.
-
-- `ThreadActivity/AddParticipant`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna.
-
-- `ThreadActivity/RemoveParticipant`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna.
-
-Další podrobnosti najdete v tématu [typy zpráv](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 

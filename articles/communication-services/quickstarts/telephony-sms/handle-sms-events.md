@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – zpracování událostí SMS
+title: Rychlý Start – zpracování událostí SMS pro sestavy doručení a příchozí zprávy
 titleSuffix: An Azure Communication Services quickstart
 description: Naučte se zpracovávat události SMS pomocí komunikačních služeb Azure.
 author: mikben
@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d16a4d9ecd2e9246933b2543da3b05239ac2f7f
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655984"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644637"
 ---
-# <a name="quickstart-handle-sms-events"></a>Rychlý Start: zpracování událostí serveru SMS
+# <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>Rychlý Start: zpracování událostí SMS pro sestavy doručení a příchozí zprávy
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -29,7 +29,7 @@ Začínáme s komunikačními službami Azure pomocí Azure Event Grid k obsluze
 
 [Azure Event Grid](../../../event-grid/overview.md) je cloudová služba pro pokládání událostí. V tomto článku se dozvíte, jak se přihlásit k odběru událostí [služby Communication Service](../../../event-grid/event-schema-communication-services.md)a aktivovat událost pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V tomto článku pošleme události do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Prostředek služby Azure Communication Service. Další podrobnosti najdete v rychlém startu [Vytvoření zdroje komunikace Azure](../create-communication-resource.md) .
 - Telefonní číslo s povoleným SMS. [Získejte telefonní číslo](./get-phone-number.md).
@@ -117,6 +117,7 @@ V tomto rychlém startu jste zjistili, jak spotřebovávat události serveru SMS
 > [Odeslat SMS](../telephony-sms/send.md)
 
 Můžete také chtít:
+
 
  - [Další informace o konceptech zpracování událostí](../../../event-grid/event-schema-communication-services.md)
  - [Informace o Event Grid](../../../event-grid/overview.md)

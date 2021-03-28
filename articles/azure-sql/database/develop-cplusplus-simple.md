@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92674757"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643277"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Ujistěte se, že máte následující položky:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). Chcete-li sestavit a spustit tuto ukázku, je nutné nainstalovat komponenty jazyka C++.
-* [Vývoj pro Linux v systému Visual Studio](/cpp/linux/?view=vs-2019). Pokud vyvíjíte v systému Linux, je nutné také nainstalovat rozšíření sady Visual Studio Linux.
+* [Vývoj pro Linux v systému Visual Studio](/cpp/linux/). Pokud vyvíjíte v systému Linux, je nutné také nainstalovat rozšíření sady Visual Studio Linux.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database a SQL Server na virtuálních počítačích
 

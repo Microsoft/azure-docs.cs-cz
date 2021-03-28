@@ -3,14 +3,14 @@ title: CreateUiDefinition.jsv souboru pro podokno portálu
 description: Popisuje, jak vytvořit definice uživatelského rozhraní pro Azure Portal. Používá se při definování Azure Managed Applications.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319559"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641643"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Soubor createUiDefinition.json pro prostředí pro vytváření spravovaných aplikací Azure
 
@@ -63,25 +63,29 @@ Pomocí editoru JSON můžete vytvořit createUiDefinition a potom ho otestovat 
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,11 +107,13 @@ Pomocí editoru JSON můžete vytvořit createUiDefinition a potom ho otestovat 
 },
 ```
 
+Pro `isValid` vlastnost napište výraz, který se přeloží na hodnotu true nebo false. U `permission` Vlastnosti zadejte jednu z [akcí poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md).
+
 ### <a name="wizard"></a>Tip
 
 Tato `isWizard` vlastnost vám umožní před pokračováním na další krok vyžadovat úspěšné ověření každého kroku. Pokud `isWizard` vlastnost není zadána, výchozí hodnota je **false** a podrobné ověřování není vyžadováno.
 
-Pokud `isWizard` je povoleno, nastavte na **hodnotu true**, karta **základy** je k dispozici a všechny ostatní karty jsou zakázané. Když je vybráno tlačítko **Další** , ikona karty indikuje, zda bylo ověření karty úspěšné nebo selhalo. Po dokončení a ověření povinných polí karty můžete na další kartu povolit navigaci tlačítkem **Další** . Když všechny karty projdou ověřením, můžete přejít na stránku **Kontrola a vytvoření** a kliknutím na tlačítko **vytvořit** zahájit nasazení.
+Pokud `isWizard` je povoleno, nastavte na **hodnotu true**, karta **základy** je k dispozici a všechny ostatní karty jsou zakázané. Když je vybráno tlačítko **Další** , ikona karty indikuje, zda bylo ověření karty úspěšné nebo selhalo. Po dokončení a ověření povinných polí karty bude tlačítko **Další** umožňovat navigaci na další kartu. Když všechny karty projdou ověřením, můžete přejít na stránku **Kontrola a vytvoření** a kliknutím na tlačítko **vytvořit** zahájit nasazení.
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Průvodce kartami":::
 
@@ -117,7 +123,7 @@ Základní konfigurace umožňuje přizpůsobit krok základy.
 
 Pro `description` Zadejte řetězec s podporou Markdownu, který popisuje váš prostředek. Podporují se víceřádkové formáty a odkazy.
 
-`subscription`Prvky a `resourceGroup` umožňují zadat další ověření. Syntaxe pro určení platnosti je shodná s vlastním ověřením pro [textové pole](microsoft-common-textbox.md). Můžete také zadat `permission` ověřování pro předplatné nebo skupinu prostředků.  
+`subscription`Prvky a `resourceGroup` umožňují zadat více ověření. Syntaxe pro určení platnosti je shodná s vlastním ověřením pro [textové pole](microsoft-common-textbox.md). Můžete také zadat `permission` ověřování pro předplatné nebo skupinu prostředků.  
 
 Řízení předplatného přijímá seznam oborů názvů poskytovatele prostředků. Můžete například zadat **Microsoft. COMPUTE**. Pokud uživatel vybere předplatné, které nepodporují poskytovatele prostředků, zobrazí se chybová zpráva. K této chybě dojde, pokud poskytovatel prostředků není v tomto předplatném zaregistrován a uživatel nemá oprávnění k registraci poskytovatele prostředků.  
 
@@ -150,7 +156,7 @@ Následující příklad ukazuje textové pole, které bylo přidáno do výchoz
 
 ## <a name="steps"></a>Postup
 
-Vlastnost kroky obsahuje nula nebo více dalších kroků, které se zobrazí po základech. Každý krok obsahuje jeden nebo více prvků. Zvažte přidání kroků na roli nebo vrstvu nasazené aplikace. Přidejte například krok pro vstupy hlavního uzlu a krok pro pracovní uzly v clusteru.
+Vlastnost kroky obsahuje nula nebo více kroků, které se zobrazí po základech. Každý krok obsahuje jeden nebo více prvků. Zvažte přidání kroků na roli nebo vrstvu nasazené aplikace. Přidejte například krok pro vstupy primárního uzlu a krok pro pracovní uzly v clusteru.
 
 ```json
 "steps": [

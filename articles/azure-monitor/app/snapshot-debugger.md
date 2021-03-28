@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 57a417948d23d40801eb34cf10aab1e6f17037e6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786477"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644085"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](./app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](./asp-net-exceptions.md) na portálu Application Insights.
@@ -124,7 +124,7 @@ Verze 15,2 (nebo vyšší) sady Visual Studio 2017 publikuje ve výchozím nasta
 U výpočetních a dalších typů Azure se ujistěte, že se soubory symbolů nacházejí ve stejné složce hlavní aplikace. dll (obvykle `wwwroot/bin` ) nebo jsou k dispozici na aktuální cestě.
 
 > [!NOTE]
-> Další informace o různých možnostech symbolu, které jsou k dispozici, najdete v dokumentaci k sadě [Visual Studio](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Další informace o různých možnostech symbolu, které jsou k dispozici, najdete v dokumentaci k sadě [Visual Studio](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output
 ). Pro dosažení nejlepších výsledků doporučujeme použít "úplné", "přenosné" nebo "vložené".
 
 ### <a name="optimized-builds"></a>Optimalizovaná sestavení

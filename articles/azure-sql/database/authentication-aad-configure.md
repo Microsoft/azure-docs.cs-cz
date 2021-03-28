@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201205"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643423"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -115,7 +115,7 @@ Pokud chcete vašemu účtu SQL Managed instance udělit oprávnění ke čtení
 
     Proces změny správce může trvat několik minut. Pak se nový správce zobrazí v poli Správce služby Active Directory.
 
-Po zřízení správce Azure AD pro spravovanou instanci SQL můžete začít vytvářet objekty zabezpečení serveru Azure AD (přihlášení) pomocí syntaxe <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlášení</a> . Další informace najdete v tématu [Přehled spravované instance SQL](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
+Po zřízení správce Azure AD pro spravovanou instanci SQL můžete začít vytvářet objekty zabezpečení serveru Azure AD (přihlášení) pomocí syntaxe [Vytvoření přihlášení](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . Další informace najdete v tématu [Přehled spravované instance SQL](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
 
 > [!TIP]
 > Chcete-li později odebrat správce, v horní části stránky Správce služby Active Directory vyberte možnost **Odebrat správce** a pak vyberte **Uložit**.
@@ -345,8 +345,8 @@ Na všech klientských počítačích, ze kterých se vaše aplikace nebo uživa
 - .NET Framework 4,6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
 - Azure Active Directory knihovny ověřování pro SQL Server (*ADAL.DLL*). Níže jsou uvedené odkazy ke stažení pro instalaci nejnovějšího ovladače SSMS, ODBC a OLE DB, který obsahuje knihovnu *ADAL.DLL* .
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 pro SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [OLE DB ovladače 18 pro SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [ODBC Driver 17 pro SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB ovladače 18 pro SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 Tyto požadavky můžete splnit:
 
@@ -357,7 +357,7 @@ Tyto požadavky můžete splnit:
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Vytváření uživatelů s omezením namapovaných na identity Azure AD
 
-Protože spravovaná instance SQL podporuje objekty zabezpečení serveru Azure AD (přihlášení), není nutné používat uživatele databáze s omezením. Objekty zabezpečení (přihlášení) serveru Azure AD umožňuje vytvářet přihlášení z uživatelů, skupin nebo aplikací Azure AD. To znamená, že můžete ověřit pomocí SQL spravované instance pomocí přihlašovacích údajů serveru Azure AD, nikoli uživatele databáze s omezením. Další informace najdete v tématu [Přehled spravované instance SQL](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) najdete v tématu věnovaném <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlašovacích</a>údajů.
+Protože spravovaná instance SQL podporuje objekty zabezpečení serveru Azure AD (přihlášení), není nutné používat uživatele databáze s omezením. Objekty zabezpečení (přihlášení) serveru Azure AD umožňuje vytvářet přihlášení z uživatelů, skupin nebo aplikací Azure AD. To znamená, že můžete ověřit pomocí SQL spravované instance pomocí přihlašovacích údajů serveru Azure AD, nikoli uživatele databáze s omezením. Další informace najdete v tématu [Přehled spravované instance SQL](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) najdete v tématu věnovaném [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)údajů.
 
 Ověřování pomocí Azure Active Directory s SQL Database a Azure synapse ale vyžaduje používání uživatelů databáze s omezením na základě identity Azure AD. Uživatel databáze s omezením nemá přihlašovací údaje v hlavní databázi a mapuje se na identitu ve službě Azure AD, která je přidružená k databázi. Identitou Azure AD může být buď jednotlivý uživatelský účet, nebo skupina. Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné](/sql/relational-databases/security/contained-database-users-making-your-database-portable)databáze.
 

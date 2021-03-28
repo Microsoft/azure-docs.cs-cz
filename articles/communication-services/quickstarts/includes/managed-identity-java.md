@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce575a67552c89b17ff4ed9b44ab43a4bd12d67f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 417b6099a6b52fecf6f11e1074b346e9a63255c3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110721"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645365"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Přidání spravované identity do řešení komunikačních služeb (Java)
 
@@ -47,7 +47,7 @@ import java.io.IOException;
 import java.util.*;
 ```
 
-Níže uvedené příklady používají rozhraní [DefaultAzureCredential](/java/api/azure.identity.defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
+Níže uvedené příklady používají rozhraní [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
 
 `AZURE_CLIENT_SECRET``AZURE_CLIENT_ID`a `AZURE_TENANT_ID` proměnné prostředí jsou potřeba k vytvoření `DefaultAzureCredential` objektu. Pokud chcete vytvořit registrovanou aplikaci ve vývojovém prostředí a nastavit proměnné prostředí, přečtěte si téma [autorizace přístupu pomocí spravované identity](../managed-identity-from-cli.md).
 

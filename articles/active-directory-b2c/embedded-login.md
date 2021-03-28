@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4fbb09a2687673ef96252d8bdb0523d0c5f235ae
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772021"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639911"
 ---
 # <a name="embedded-sign-in-experience"></a>Vložené prostředí pro přihlašování
 
@@ -45,9 +45,9 @@ Element vloženého rámce `<iframe>` se používá k vložení dokumentu na web
 Při použití prvku IFRAME zvažte následující:
 
 - Vložené přihlášení podporuje pouze místní účty. Většina poskytovatelů sociálních identit (například Google a Facebook) blokuje jejich přihlašovací stránky při jejich vykreslování ve vložených rámečcích.
-- Vzhledem k tomu, že soubory cookie relací Azure AD B2C v rámci prvku IFRAME jsou považovány za soubory cookie třetích stran, některé prohlížeče (například Safari nebo Chrome v režimu anonymním) zablokují nebo vymažou tyto soubory cookie, což vede k nežádoucímu uživatelskému prostředí. Chcete-li tomuto problému zabránit, ujistěte se, že název domény aplikace a vaše Azure AD B2C doména mají *stejný původ*. Pokud chcete použít stejný původ, povolte pro klienta Azure AD B2C [vlastní domény](custom-domain.md) a pak nakonfigurujte svou webovou aplikaci se stejným zdrojem. Například aplikace hostovaná na https://app.contoso.com má stejný původ jako Azure AD B2C běžící na https://login.contoso.com .
+- Vzhledem k tomu, že soubory cookie relací Azure AD B2C v rámci prvku IFRAME jsou považovány za soubory cookie třetích stran, některé prohlížeče (například Safari nebo Chrome v režimu anonymním) zablokují nebo vymažou tyto soubory cookie, což vede k nežádoucímu uživatelskému prostředí. Chcete-li tomuto problému zabránit, ujistěte se, že název domény aplikace a vaše Azure AD B2C doména mají *stejný původ*. Pokud chcete použít stejný původ, povolte pro klienta Azure AD B2C [vlastní domény](custom-domain.md) a pak nakonfigurujte svou webovou aplikaci se stejným zdrojem. Například aplikace hostovaná na ' https://app.contoso.com ' má stejný původ jako Azure AD B2C spuštěná v ' https://login.contoso.com '.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete kroky v části [Začínáme s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
 * [Povolte vlastní domény](custom-domain.md) pro vaše zásady.

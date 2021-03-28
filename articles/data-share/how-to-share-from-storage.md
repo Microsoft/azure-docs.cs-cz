@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739258"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644668"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
@@ -178,7 +178,7 @@ Podle kroků v této části můžete nakonfigurovat umístění pro příjem da
 
    ![Snímek obrazovky s informacemi o tom, kde vybrat cílový účet úložiště](./media/map-target.png "Cílové úložiště") 
 
-1. Pokud pro sdílení na základě snímků používá poskytovatel dat plán snímků k pravidelné aktualizaci dat, můžete plán povolit z karty **plán snímků** . Zaškrtněte políčko vedle plánu snímku. Pak vyberte **Povolit**.
+1. Pokud pro sdílení na základě snímků používá poskytovatel dat plán snímků k pravidelné aktualizaci dat, můžete plán povolit z karty **plán snímků** . Zaškrtněte políčko vedle plánu snímku. Pak vyberte **Povolit**. Všimněte si, že první naplánovaný snímek začne do jedné minuty od časového plánu a následné snímky se spustí během několika sekund od naplánovaného času.
 
    ![Snímek obrazovky ukazující, jak povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků.")
 

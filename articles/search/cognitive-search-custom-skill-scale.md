@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043066"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641142"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Efektivní horizontální navýšení kapacity vlastní dovednosti
 
@@ -26,7 +26,7 @@ Vlastní dovednosti jsou webová rozhraní API, která implementují konkrétní
 
 + Projděte si [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) , kde se seznámíte se vstupním a výstupním rozhraním, které by měla vlastní dovednost implementovat.
 
-+ Nastavte své prostředí. V [tomto kurzu](/python/tutorial-vs-code-serverless-python-01) můžete začít pomocí rozšíření Visual Studio Code a Pythonu, a to od začátku po k nastavení funkce Azure bez serveru.
++ Nastavte své prostředí. V [tomto kurzu](/azure/azure-functions/create-first-function-vs-code-python) můžete začít pomocí rozšíření Visual Studio Code a Pythonu, a to od začátku po k nastavení funkce Azure bez serveru.
 
 ## <a name="skillset-configuration"></a>Konfigurace dovednosti
 

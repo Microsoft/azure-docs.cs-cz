@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 6a64bb2801830440dc49e72786c9c00a6e4796b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a98eed61904b580988fe34302999f3ec6a24ac9e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201623"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640920"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Instalace nebo odinstalace Azure IoT Edge pro Linux
 
@@ -24,7 +24,7 @@ Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge za�
 
 V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge v zařízeních se systémem Linux.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [ID registrovaného zařízení](how-to-register-device.md)
 
@@ -398,6 +398,8 @@ Zkontrolujte, zda je spuštěna služba IoT Edge System.
    sudo iotedge system status
    ```
 
+Úspěšná odpověď na stav je `Ok` .
+
 ::: moniker-end
 
 Pokud potřebujete řešit potíže se službou, načtěte protokoly služby.
@@ -491,7 +493,7 @@ Pomocí příkazů oblé můžete cílit na soubory součásti přímo z úloži
    2. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi služby identity:
 
       ```bash
-      curl -L <identity service link> -o aziot-identity-service.deb && sudo dpkg -i ./aziot-identity-service.deb
+      curl -L <identity service link> -o aziot-identity-service.deb && sudo apt-get install ./aziot-identity-service.deb
       ```
 
    3. Najděte **aziot** soubor, který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
@@ -499,7 +501,7 @@ Pomocí příkazů oblé můžete cílit na soubory součásti přímo z úloži
    4. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi IoT Edge.
 
       ```bash
-      curl -L <iotedge link> -o aziot-edge.deb && sudo dpkg -i ./aziot-edge.deb
+      curl -L <iotedge link> -o aziot-edge.deb && sudo apt-get install ./aziot-edge.deb
       ```
 
 <!-- end 1.2 -->

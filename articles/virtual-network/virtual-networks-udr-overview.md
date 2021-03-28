@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: c8d188c7bb7034cda450049c3d4912cc1517dae5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605208"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645276"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -96,10 +96,12 @@ Při vytváření trasy definované uživatelem můžete zadat následující ty
 
 V trasách definovaných uživatelem nemůžete jako typ dalšího segmentu směrování zadat **Partnerský vztah virtuálních sítí** ani **VirtualNetworkServiceEndpoint**. Trasy s typy dalších segmentů směrování **Partnerský vztah virtuálních sítí** nebo **VirtualNetworkServiceEndpoint** vytvoří Azure pouze v případě, že nakonfigurujete partnerský vztah virtuálních sítí nebo koncový bod služby.
 
-### <a name="service-tags-for-user-defined-routes-public-preview"></a>Značky služeb pro trasy definované uživatelem (Public Preview)
+### <a name="service-tags-for-user-defined-routes-preview"></a>Značky služeb pro trasy definované uživatelem (Preview)
 
 Jako předponu adresy pro uživatelem definovanou trasu teď můžete místo explicitního rozsahu IP adres zadat [označení služby](service-tags-overview.md) . Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje značku služby na změny adres. tím se minimalizuje složitost častých aktualizací pro uživatelsky definované trasy a snižuje počet tras, které je třeba vytvořit. V současné době můžete v každé směrovací tabulce vytvořit trasy 25 nebo méně směrování s visačkami služeb. </br>
 
+> [!IMPORTANT]
+> Značky služeb pro uživatelem definované trasy jsou momentálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 #### <a name="exact-match"></a>Přesná shoda
 V případě, že mezi trasou s explicitní předponou protokolu IP a trasou s označením služby dojde k přesné shodě předpony, bude trasa s explicitní předponou dána prioritou. Pokud se shodují předpony IP adres, budou trasy vyhodnoceny v následujícím pořadí: 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
-ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740371"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644669"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Sdílení a příjem dat ze služeb Azure SQL Database a Azure Synapse Analytics
 
@@ -36,7 +36,20 @@ Když se data přijímají do tabulky SQL a cílová tabulka ještě neexistuje,
 Níže je uveden seznam požadavků pro sdílení dat ze zdroje SQL. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Předpoklady pro sdílení z Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW)
-Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](https://youtu.be/hIE-TjJD8Dc) .
+
+
+Pokud chcete sdílet data pomocí Azure Active Directory ověřování, tady je seznam požadavků:
+
+* Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW) s tabulkami a zobrazeními, které chcete sdílet.
+* Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
+* **Správce SQL Server Azure Active Directory**
+* SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
+    1. V Azure Portal přejděte na SQL Server. V levém navigačním panelu vyberte *brány firewall a virtuální sítě* .
+    1. Klikněte na **Ano** , pokud chcete, aby *služby a prostředky Azure měly přístup k tomuto serveru*.
+    1. Klikněte na **+ Přidat IP adresu klienta**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím sdílení dat SQL z Azure Portal. Můžete také přidat rozsah IP adres.
+    1. Klikněte na **Uložit**. 
+
+Chcete-li sdílet data pomocí ověřování SQL, níže je uveden seznam požadavků. Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](https://youtu.be/hIE-TjJD8Dc) .
 
 * Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW) s tabulkami a zobrazeními, které chcete sdílet.
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
@@ -132,7 +145,9 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
     ![AddDatasets](./media/add-datasets.png "Přidat datové sady")    
 
-1. Vyberte svůj pracovní prostor SQL serveru nebo synapse, zadejte přihlašovací údaje, pokud se zobrazí výzva a vyberte **Další** a přejděte k objektu, který chcete sdílet, a vyberte přidat datové sady. Můžete vybrat tabulky a zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW) nebo tabulky z vyhrazeného fondu SQL Azure synapse Analytics (pracovní prostor). 
+1. Vyberte svůj pracovní prostor SQL serveru nebo synapse. Pokud používáte ověřování AAD a zaškrtnutím políčka **povolíte sdílení dat "vytvořit uživatele" skript SQL, zobrazí se v mém jménem** zaškrtávací políčko. Pokud používáte ověřování SQL, zadejte přihlašovací údaje a postupujte podle kroků v části požadavky na spuštění skriptu, který se zobrazí na obrazovce. To poskytuje oprávnění ke sdílení prostředků dat ke čtení z vaší databáze SQL. 
+
+   Vyberte **Další** a přejděte k objektu, který chcete sdílet, a vyberte přidat datové sady. Můžete vybrat tabulky a zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW) nebo tabulky z vyhrazeného fondu SQL Azure synapse Analytics (pracovní prostor). 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Vybrat datové sady")    
 
@@ -176,7 +191,18 @@ Pokud se rozhodnete přijímat data do Azure Storage, níže je uvedený seznam 
 Pokud se rozhodnete přijímat data do Azure SQL Database, najdete níže seznam požadavků Azure synapse Analytics. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Předpoklady pro příjem dat do Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW)
-Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](https://youtu.be/aeGISgK1xro) .
+
+Chcete-li přijímat data do serveru SQL Server, kde jste **Azure Active Directory správce** systému SQL Server, tady je seznam požadavků:
+
+* Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW).
+* Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
+* SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
+    1. V Azure Portal přejděte na SQL Server. V levém navigačním panelu vyberte *brány firewall a virtuální sítě* .
+    1. Klikněte na **Ano** , pokud chcete, aby *služby a prostředky Azure měly přístup k tomuto serveru*.
+    1. Klikněte na **+ Přidat IP adresu klienta**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím sdílení dat SQL z Azure Portal. Můžete také přidat rozsah IP adres.
+    1. Klikněte na **Uložit**. 
+    
+Chcete-li přijímat data do serveru SQL Server, kde nejste **správcem Azure Active Directory**, níže je uveden seznam požadavků. Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](https://youtu.be/aeGISgK1xro) .
 
 * Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW).
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli **Přispěvatel**. 
@@ -264,11 +290,11 @@ Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následuj
 
    ![Mapovat na cíl](./media/dataset-map-target.png "Mapovat na cíl") 
 
-1. Vyberte cílové úložiště dat, ve kterém chcete data vykládat. Budou přepsány všechny datové soubory nebo tabulky v cílovém úložišti dat se stejnou cestou a názvem. 
+1. Vyberte cílové úložiště dat, ve kterém chcete data vykládat. Budou přepsány všechny datové soubory nebo tabulky v cílovém úložišti dat se stejnou cestou a názvem. Pokud přidáváte data do cíle SQL a v případě, že se zobrazí **výše uvedené políčko pro vytvoření skriptu SQL, klikněte výše na možnost "vytvořit uživatele" na stránce Můj účet** zaškrtněte políčko. Jinak postupujte podle pokynů v části požadavky, aby se skript spouštěl na obrazovce. Tím udělíte oprávnění k zápisu prostředku pro sdílení dat pro vaši cílovou databázi SQL.
 
    ![Cílový účet úložiště](./media/dataset-map-target-sql.png "Cílové úložiště dat") 
 
-1. Pokud pro sdílení na základě snímků vytvořil poskytovatel dat plán snímků, který poskytuje pravidelnou aktualizaci dat, můžete také povolit plán snímků výběrem karty **plán snímku** . Zaškrtněte políčko vedle plánu snímku a vyberte **+ Povolit**.
+1. Pokud pro sdílení na základě snímků vytvořil poskytovatel dat plán snímků, který poskytuje pravidelnou aktualizaci dat, můžete také povolit plán snímků výběrem karty **plán snímku** . Zaškrtněte políčko vedle plánu snímku a vyberte **+ Povolit**. Všimněte si, že první naplánovaný snímek začne do jedné minuty od časového plánu a následné snímky se spustí během několika sekund od naplánovaného času.
 
    ![Povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků")
 

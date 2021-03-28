@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605752"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639468"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi pro služby SQL Database, SQL Managed Instance a Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
 
   - V hlavní databázi vytvořte další přihlášení SQL.
   - Pomocí příkazu [ALTER Server role](/sql/t-sql/statements/alter-server-role-transact-sql) přidejte přihlašovací údaje k [pevné roli serveru sysadmin](/sql/relational-databases/security/authentication-access/server-level-roles) . Toto přihlášení bude mít úplná oprávnění správce.
-  - Případně můžete vytvořit [přihlašovací údaje služby Azure AD](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) pomocí syntaxe [Vytvoření přihlašovacího jména](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) .
+  - Případně můžete vytvořit [přihlašovací údaje služby Azure AD](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) pomocí syntaxe [Vytvoření přihlašovacího jména](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) .
 
 - **V SQL Database Vytvořte přihlašovací údaje SQL s omezenými oprávněními pro správu.**
 
@@ -122,9 +122,9 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
 
 Příklady, jak vytvořit přihlašovací jména a uživatele, najdete v tématech:
 
-- [Vytvořit přihlašovací údaje pro Azure SQL Database](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Vytvoření přihlašovacích údajů pro spravovanou instanci Azure SQL](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Vytvoření přihlašovacích údajů pro Azure synapse](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Vytvořit přihlašovací údaje pro Azure SQL Database](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [Vytvoření přihlašovacích údajů pro spravovanou instanci Azure SQL](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [Vytvoření přihlašovacích údajů pro Azure synapse](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [Vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Vytváření uživatelů s omezením pro Azure AD](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 

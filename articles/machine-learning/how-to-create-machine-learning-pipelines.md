@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618198"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642257"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -32,7 +32,7 @@ Kanály ML se spouštějí na výpočetních cílech (viz [co jsou výpočetní 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) . `output_data1` je vyráběn jako výstup kroku. Tato data lze volitelně zaregistrovat jako datovou sadu voláním `register_on_complete` . Pokud vytvoříte `OutputFileDatasetConfig` v jednom kroku a použijete ho jako vstup do jiného kroku, tato závislost dat mezi kroky vytvoří implicitní pořadí spouštění v kanálu.
+Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) . `output_data1` je vyráběn jako výstup kroku. Tato data lze volitelně zaregistrovat jako datovou sadu voláním `register_on_complete` . Pokud vytvoříte `OutputFileDatasetConfig` v jednom kroku a použijete ho jako vstup do jiného kroku, tato závislost dat mezi kroky vytvoří implicitní pořadí spouštění v kanálu.
 
 `OutputFileDatasetConfig` objekty vracejí adresář a ve výchozím nastavení zapisuje výstup do výchozího úložiště dat pracovního prostoru.
 
@@ -106,7 +106,7 @@ output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_
 > Na konci spuštění kanálu byste měli buď programově odstranit mezilehlé údaje, použít úložiště dat se zkrácenými zásadami pro uchovávání dat, nebo pravidelně provádět vyčištění ručně.
 
 > [!TIP]
-> Nahrávejte pouze soubory související s danou úlohou. Jakékoli změny v souborech v adresáři dat se zobrazí jako důvod pro opětovné spuštění kroku při příštím spuštění kanálu i v případě, že je parametr znovu použit. 
+> Nahrávejte pouze soubory související s danou úlohou. Jakákoli změna souborů v adresáři dat se bude považovat za důvod k opakování tohoto kroku při dalším spuštění kanálu, a to i v případě, že je nastavené opakované používání. 
 
 ## <a name="set-up-a-compute-target"></a>Nastavení cíle výpočtů
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Použití datové sady 
 
-Datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL lze použít jako vstup do libovolného kroku kanálu. Můžete napsat výstup do [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)nebo pokud chcete zapisovat data do konkrétního úložiště dat [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig)použijte. 
+Datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL lze použít jako vstup do libovolného kroku kanálu. Můžete napsat výstup do [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)nebo pokud chcete zapisovat data do konkrétního úložiště dat [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig)použijte. 
 
 > [!IMPORTANT]
 > Zápis výstupních dat zpět do úložiště dat pomocí `OutputFileDatasetConfig` je podporovaný jenom pro úložiště Azure Blob, sdílenou složku Azure, adls pro dataúložiště pro obecné 1 a obecné 2. 

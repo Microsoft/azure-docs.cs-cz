@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 987b850d569c238902f57baaed4a2178f51bd79d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589612"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640344"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru ve službě Azure synapse Analytics
 
@@ -241,7 +241,7 @@ Určuje kódování: char se používá pro UTF8, widechar se používá pro sou
 
 CODEPAGE = {' ACP ' | VÝROBCE OEM | RAW | code_page}
 
-Určuje znakovou stránku dat v datovém souboru. Výchozí hodnota je 65001 (kódování UTF-8). Další podrobnosti o této možnosti najdete [tady](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage).
+Určuje znakovou stránku dat v datovém souboru. Výchozí hodnota je 65001 (kódování UTF-8). Další podrobnosti o této možnosti najdete [tady](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage).
 
 ## <a name="fast-delimited-text-parsing"></a>Analýza textu s rychlým oddělovačem
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 057a284f99dd7c3713249b19e8fc39212d9e6003
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092432"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640275"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu
 
@@ -53,7 +53,7 @@ Následující tabulka shrnuje nativní podporu DRM na různých platformách a 
 | **Windows 10** | PlayReady | Microsoft Edge/IE11 pro PlayReady|
 | **Zařízení s Androidem (telefon, tablet, TV)** |Widevine |Chrome pro Widevine |
 | **iOS** | FairPlay | Safari pro FairPlay (od verze iOS 11,2) |
-| **macOS** | FairPlay | Safari pro FairPlay (vzhledem k tomu, že Safari 9 + v Mac OS X 10.11 + El Capitan)|
+| **macOS** | FairPlay | Safari pro FairPlay (vzhledem k tomu, že Safari 9 + na macOS X 10.11 + El Capitan)|
 | **tvOS** | FairPlay | |
 
 Vzhledem k tomu, že aktuální stav nasazení pro každou DRM, služba obvykle vyžaduje implementaci dvou nebo tří několikanásobnou, aby bylo zajištěno, že budete řešit všechny typy koncových bodů tak, aby byly nejlepším způsobem.
@@ -357,9 +357,3 @@ Následující snímek obrazovky ukazuje scénář, který používá asymetrick
 ![Vlastní STS s asymetrickým klíčem](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
 V obou předchozích případech zůstává ověřování uživatelů stejné. Probíhá přes Azure AD. Jediným rozdílem je, že JWTs vydávají vlastní STS místo Azure AD. Když konfigurujete dynamickou ochranu CENC Protection, omezení služby doručování licencí určuje typ JWT, buď symetrický, nebo asymetrický klíč.
-
-## <a name="next-steps"></a>Další kroky
-
-* [Nejčastější dotazy](frequently-asked-questions.md)
-* [Přehled ochrany obsahu](content-protection-overview.md)
-* [Chraňte svůj obsah pomocí DRM](protect-with-drm.md)

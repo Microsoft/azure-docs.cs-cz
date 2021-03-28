@@ -2,25 +2,19 @@
 title: Online streamování Widevine pro Android
 description: V tomto tématu se dozvíte, jak nakonfigurovat účet Azure Media Services V3 pro offline streamování chráněného obsahu Widevine.
 services: media-services
-keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
+manager: femila
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: c19a8dd4f9a4b715b5f81a5a349edbffc2f7dea2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955203"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640691"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Online streamování Widevine pro Android s Media Services V3
 
@@ -47,7 +41,7 @@ Pro sestavování aplikací pro Android Player se vytvoří osnova tří možnos
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky
 
 Před implementací offline DRM pro Widevine v zařízeních s Androidem byste měli nejdřív:
 
@@ -158,14 +152,8 @@ Výše uvedená Open Source aplikace PWA je vytvořená v Node.js. Pokud chcete 
     - Certifikát musí mít důvěryhodnou certifikační autoritu a vývojový certifikát podepsaný svým držitelem nefunguje.
     - Certifikát musí obsahovat CN, který odpovídá názvu DNS webového serveru nebo brány.
 
-## <a name="faqs"></a>Nejčastější dotazy
+## <a name="more-information"></a>Další informace
 
-Další informace najdete v tématu [Nejčastější dotazy k Widevine](frequently-asked-questions.md#widevine-streaming-for-android).
-
-## <a name="additional-notes"></a>Další poznámky
+Další informace najdete v tématu [Widevine v kolekci otázek](questions-collection.md#widevine-streaming-for-android).
 
 Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
-
-## <a name="summary"></a>Souhrn
-
-Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem.  Také si odpověděli na některé běžné otázky týkající se offline streamování chráněného obsahu Widevine.

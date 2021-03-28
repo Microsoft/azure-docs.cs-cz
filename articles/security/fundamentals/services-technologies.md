@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585410"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641967"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Služby a technologie zabezpečení dostupné v Azure
 
@@ -59,8 +59,8 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 | [Azure &nbsp; SQL &nbsp; firewall](../../azure-sql/database/firewall-configure.md)|Funkce řízení přístupu k síti, která chrání před útoky prostřednictvím sítě do databáze. |
 |[&nbsp;Šifrování na &nbsp; úrovni buňky SQL &nbsp; Azure](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| Technologie zabezpečení databáze, která poskytuje šifrování na podrobné úrovni.  |
 | [&nbsp; &nbsp; Šifrování připojení Azure SQL](../../azure-sql/database/logins-create-manage.md)|Služba SQL Database zajišťuje zabezpečení řízením přístupu pomocí pravidel brány firewall omezujících připojení podle IP adresy, ověřovacích mechanismů vyžadujících po uživatelích prokázání identity a autorizačních mechanismů omezujících uživatelům přístup ke konkrétním akcím a datům. |
-| [Vždycky se šifrování Azure SQL](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Chrání citlivá data, jako jsou třeba čísla kreditních karet nebo národní identifikační čísla (například čísla sociálního pojištění USA) uložená v databázích Azure SQL Database nebo SQL Server.  |
-| [&nbsp;Transparentní šifrování dat Azure SQL &nbsp;](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkce zabezpečení databáze, která šifruje úložiště celé databáze. |
+| [Vždycky se šifrování Azure SQL](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|Chrání citlivá data, jako jsou třeba čísla kreditních karet nebo národní identifikační čísla (například čísla sociálního pojištění USA) uložená v databázích Azure SQL Database nebo SQL Server.  |
+| [&nbsp;Transparentní šifrování dat Azure SQL &nbsp;](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)| Funkce zabezpečení databáze, která šifruje úložiště celé databáze. |
 | [Auditování Azure SQL Database](../../azure-sql/database/auditing-overview.md)|Funkce auditování databáze, která sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage.  |
 
 
