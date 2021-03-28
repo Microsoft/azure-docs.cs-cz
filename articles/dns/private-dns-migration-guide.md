@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 72d046cde70d1224eb1fd47f527c9e49c6b002f6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3f0856f85e279f97934fff506a052c8fd214ff73
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500457"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641221"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrace starších Azure DNS privátních zón do nového modelu prostředků
 
@@ -25,7 +25,7 @@ az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
 ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že máte nainstalovanou nejnovější verzi Azure PowerShell. Další informace o Azure PowerShell (AZ) a o tom, jak ji nainstalovat, najdete v tématu. https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
@@ -108,7 +108,7 @@ Tento krok odstraní starší zóny DNS a měl by se provádět až po ověřen�
 
 Pokud používáte automatizaci, včetně šablon, skriptů PowerShellu nebo vlastního kódu vyvinutého pomocí sady SDK, musíte službu Automation aktualizovat tak, aby používala nový model prostředků pro privátní zóny DNS. Níže najdete odkazy na novou privátní dokumentaci k DNS CLI/PS/SDK.
 * [Azure DNS privátní zóny REST API](/rest/api/dns/privatedns/privatezones)
-* [Azure DNS rozhraní příkazového řádku privátních zón](/cli/azure/ext/privatedns/network/private-dns)
+* [Azure DNS rozhraní příkazového řádku privátních zón](/cli/azure/network/private-dns/link/vnet?view=azure-cli-latest)
 * [Prostředí PowerShell pro privátní zóny Azure DNS](/powershell/module/az.privatedns/)
 * [Sada SDK privátních zón Azure DNS](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 

@@ -9,13 +9,13 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a1bdb1b8ac1f545933a92e78fd13b745606f1da3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+zone_pivot_groups: acs-plat-azp-azcli-net-ps
+ms.openlocfilehash: bdfd4dfef57721a24b4c6981ae653ab4f17562fa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563769"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644744"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
 
@@ -23,8 +23,6 @@ ms.locfileid: "105563769"
 
 Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí sady .NET Management SDK. Sada Management SDK a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), nasazení a služby pro správu Azure. Všechny funkce, které jsou k dispozici v sadách SDK, jsou k dispozici v Azure Portal. 
 
-
-Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí sady .NET Management SDK. Sada Management SDK a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), nasazení a služby pro správu Azure. Všechny funkce, které jsou k dispozici v sadách SDK, jsou k dispozici v Azure Portal.
 
 > [!WARNING]
 > Mějte na paměti, že když jsou komunikační služby k dispozici v několika geografických oblastech, aby bylo možné získat telefonní číslo, musí mít zdroj umístění dat nastavené na US. Všimněte si také, že během veřejné verze Preview nejde přenést prostředky komunikace do jiného předplatného.
@@ -40,6 +38,11 @@ Začněte s komunikačními službami Azure tím, že zřizujete první prostře
 ::: zone pivot="platform-net"
 [!INCLUDE [.NET](./includes/create-resource-net.md)]
 ::: zone-end
+
+::: zone pivot="platform-powershell"
+[!INCLUDE [PowerShell](./includes/create-resource-powershell.md)]
+::: zone-end
+
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Přístup k vašim připojovacím řetězcům a koncovým bodům služby
 

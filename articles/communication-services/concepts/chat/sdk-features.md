@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 02cfb4abc4f553c8f4353d8488390ed45eb3a7e7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110810"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642229"
 ---
 # <a name="chat-sdk-overview"></a>Přehled sady Chat SDK 
 
@@ -28,7 +28,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 
 | Skupina funkcí | Schopnost | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
-| Základní funkce | Vytvoření konverzačního vlákna mezi 2 nebo více uživateli (až 250 uživatelů)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+| Základní funkce | Vytvořit chatovací vlákno mezi 2 nebo více uživateli                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
 |                   | Aktualizace tématu konverzačního vlákna                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
 |                   | Přidání nebo odebrání účastníků z konverzačního vlákna                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Vyberte, jestli se má sdílet historie zpráv chatu se přidaným účastníkem.                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
@@ -37,16 +37,16 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Uživatel, který má zadaného uživatele komunikace, získá seznam vláken konverzace, ke kterým je uživatel součástí.                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 |                   | Získat informace o konkrétním vlákně chatu                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
 |                   | Posílání a přijímání zpráv ve vlákně chatu                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
-|                   | Úprava obsahu odeslané zprávy                                                                                | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Odstranění zprávy                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Čtení oznámení pro zprávy, které byly přečteny jinými účastníky v chatu <br/> *Není k dispozici, pokud je v konverzačním vlákně více než 20 účastníků.*    | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Dostávat oznámení, když účastníci aktivně zadávají zprávu ve vlákně chatu <br/> *Není k dispozici, pokud je v konverzačním vlákně více než 20 členů.*      | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
-|                   | Získá všechny zprávy ve vlákně chatu. <br/>                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Aktualizace obsahu odeslané zprávy                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Odstraní zprávu, kterou jste odeslali dřív.                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Čtení oznámení pro zprávy, které byly přečteny jinými účastníky v chatu                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Dostávat oznámení, když účastníci aktivně zadávají zprávu ve vlákně chatu                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Získá všechny zprávy ve vlákně chatu.                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | Odeslat Unicode Emoji jako součást obsahu zprávy                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Signalizace v reálném čase (povolený pomocí vlastního signalizačního balíčku * *)|  Přihlaste se k odběru a Získejte aktualizace příchozích zpráv a dalších operací v aplikaci Chat v reálném čase. Seznam podporovaných aktualizací pro signalizaci v reálném čase najdete v tématu [Koncepty chatu](concepts.md#real-time-signaling) .                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  |    
-| Podpora Event Grid             | Využijte integraci s Azure Event Grid a nakonfigurujte komunikační službu pro provádění obchodní logiky na základě aktivity chatu nebo připojení vlastní služby nabízených oznámení.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-| Monitorování        | Pomocí metrik požadavků rozhraní API, které se vygenerovaly v Azure Portal, můžete vytvářet řídicí panely, monitorovat stav aplikace chatu a nastavovat výstrahy pro detekci anomálií.      | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | Konfigurace prostředku služby Communications pro příjem provozních protokolů pro účely monitorování a diagnostiky          | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|Oznámení v reálném čase (s povoleným proprietárním balíčkem pro signalizaci * * *)|  Klienti chatu se můžou přihlásit k odběru a získávat aktualizace příchozích zpráv v reálném čase a další operace, ke kterým dochází ve vlákně chatu. Seznam podporovaných aktualizací pro oznámení v reálném čase najdete v tématu [Koncepty chatu](concepts.md#real-time-notifications) .                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+| Integrace s Azure Event Grid             | Použijte události chatu dostupné v Azure Event Grid k připojení vlastních služeb oznámení nebo k odeslání této události Webhooku za účelem provedení obchodní logiky, jako je aktualizace záznamů CRM po dokončení chatu.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+| Vytváření sestav </br>(Tato informace je k dispozici na kartě monitorování pro prostředek komunikačních služeb na Azure Portal)      | Pochopení provozu rozhraní API z aplikace chatu sledováním publikovaných metrik v Azure Průzkumník metrik a nastavením výstrah pro detekci anomálií     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Monitorování a ladění řešení komunikačních služeb povolením diagnostického protokolování pro váš prostředek    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 
 
 * * Proprietární balíček signalizace se implementuje pomocí webových soketů. V případě, že nejsou podporovány webové sokety, dojde k přechodu na dlouhé cyklické dotazování.  
@@ -68,3 +68,4 @@ Následující tabulka představuje sadu podporovaných prohlížečů a verzí,
 
 Následující dokumenty můžou být zajímavé:  
 - Seznamte se s [Koncepty chatu](../chat/concepts.md)
+- Vysvětlení způsobu práce s [cenami](../pricing.md#chat) pro chat

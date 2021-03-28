@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: ff9d63459d0b645f14c62006a8f76f7dd4f986be
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110331"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644329"
 ---
 Začínáme s komunikačními službami Azure pomocí služby Communications Services C# SMS SDK k posílání zpráv SMS.
 
@@ -82,8 +82,8 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce služ
 | Název                                       | Description                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS.                           |
-| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
 | SmsSendOptions | Tato třída poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud je enable_delivery_report nastavené na hodnotu true, vygeneruje se po úspěšném doručení událost. |
+| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -104,8 +104,8 @@ Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte `Send` `SendAsync` f
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    from: "<from-phone-number>",
+    to: "<to-phone-number>",
     message: "Hello World via SMS"
 );
 
@@ -113,13 +113,16 @@ Console.WriteLine($"Sms id: {sendResult.MessageId}");
 ```
 Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
 
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>Odeslat zprávu o 1: N SMS s možnostmi
 Chcete-li odeslat zprávu SMS seznamu příjemců, zavolejte `Send` `SendAsync` funkci or ze SmsClient se seznamem telefonních čísel příjemců. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry.
 
 ```csharp
 Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+    from: "<from-phone-number>",
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" },
     message: "Weekly Promotion!",
     options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
     {
@@ -134,7 +137,14 @@ foreach (SmsSendResult result in results)
 }
 ```
 
+Měli byste nahradit `<from-phone-number>` telefonním číslem s podporou serveru SMS, který je přidružený k vašemu prostředku komunikačních služeb, a `<to-phone-number-1>` `<to-phone-number-2>` s telefonními čísly, na které chcete poslat zprávu.
+
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
+
 `enableDeliveryReport`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+
+`Tag` slouží k použití značky pro sestavu doručení.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097223"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641045"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase (Preview)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -128,7 +128,7 @@ Tento prostředek obsahuje instanci databázového účtu, kterou je možné obn
 | restorableLocations: creationTime | Čas ve standardu UTC, kdy se vytvořil regionální účet.|
 | restorableLocations: deletionTime | Čas ve standardu UTC, kdy se odstranil regionální účet. Tato hodnota je prázdná, pokud je místní účet živý.|
 
-Pokud chcete získat seznam všech účtů obnovitelné, přečtěte si článek [účty obnovitelné Database – list](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/list) nebo [obnovitelné Database Accounts-list podle umístění](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/listbylocation) .
+Pokud chcete získat seznam všech účtů obnovitelné, přečtěte si článek [účty obnovitelné Database – list](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/list) nebo [obnovitelné Database Accounts-list podle umístění](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/listbylocation) .
 
 ### <a name="restorable-sql-database"></a>Obnovitelné SQL Database
 
@@ -142,7 +142,7 @@ Každý prostředek obsahuje informace o události mutace, jako je vytváření 
 | operationType | Typ operace této události databáze. Tady jsou možné hodnoty:<br/><ul><li>Vytvořit: událost vytvoření databáze</li><li>Odstranit: událost odstranění databáze</li><li>Nahradit: událost změny databáze</li><li>SystemOperation: událost změny databáze aktivovaná systémem. Uživatel neinicioval tuto událost.</li></ul> |
 | database |Vlastnosti databáze SQL v době události|
 
-Seznam všech mutací databáze najdete v článku [databáze SQL obnovitelné – seznam](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqldatabases/list) článků.
+Seznam všech mutací databáze najdete v článku [databáze SQL obnovitelné – seznam](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqldatabases/list) článků.
 
 ### <a name="restorable-sql-container"></a>Obnovitelné kontejner SQL
 
@@ -156,7 +156,7 @@ Každý prostředek obsahuje informace o události mutace, jako je vytváření 
 | operationType | Typ operace této události kontejneru. Tady jsou možné hodnoty: <br/><ul><li>Vytvořit: událost vytvoření kontejneru</li><li>Odstranit: událost odstranění kontejneru</li><li>Replace: událost úprav kontejneru</li><li>SystemOperation: událost úpravy kontejneru spuštěná systémem. Uživatel neinicioval tuto událost.</li></ul> |
 | kontejner | Vlastnosti kontejneru SQL v době události.|
 
-Pokud chcete získat seznam všech mutací kontejnerů ve stejné databázi, přečtěte si článek [obnovitelné kontejnerů SQL – seznam](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlcontainers/list) .
+Pokud chcete získat seznam všech mutací kontejnerů ve stejné databázi, přečtěte si článek [obnovitelné kontejnerů SQL – seznam](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlcontainers/list) .
 
 ### <a name="restorable-sql-resources"></a>Obnovitelné prostředků SQL
 
@@ -167,7 +167,7 @@ Každý prostředek představuje jednu databázi a všechny kontejnery v této d
 | Databáze  | Název databáze SQL.
 | collectionNames   | Seznam kontejnerů SQL v této databázi.|
 
-Seznam SQL Database a kontejneru, který v daném časovém razítku a umístění existuje, získáte v článku [obnovitelné SQL Resources-list](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlresources/list) .
+Seznam SQL Database a kontejneru, který v daném časovém razítku a umístění existuje, získáte v článku [obnovitelné SQL Resources-list](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlresources/list) .
 
 ### <a name="restorable-mongodb-database"></a>Databáze obnovitelné MongoDB
 
@@ -180,7 +180,7 @@ Každý prostředek obsahuje informace o události mutace, jako je vytváření 
 | ownerResourceId   | ID prostředku databáze MongoDB |
 | operationType |   Typ operace této události databáze. Tady jsou možné hodnoty:<br/><ul><li> Vytvořit: událost vytvoření databáze</li><li> Odstranit: událost odstranění databáze</li><li> Nahradit: událost změny databáze</li><li> SystemOperation: událost změny databáze aktivovaná systémem. Uživatel neinicioval tuto událost. </li></ul> |
 
-Seznam všech mutací databáze najdete v článku [databáze obnovitelné MongoDB – seznam](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbdatabases/list) článků.
+Seznam všech mutací databáze najdete v článku [databáze obnovitelné MongoDB – seznam](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbdatabases/list) článků.
 
 ### <a name="restorable-mongodb-collection"></a>Kolekce MongoDB obnovitelné
 
@@ -193,7 +193,7 @@ Každý prostředek obsahuje informace o události mutace, jako je vytváření 
 | ownerResourceId   | ID prostředku kolekce MongoDB |
 | operationType |Typ operace této události kolekce. Tady jsou možné hodnoty:<br/><ul><li>Vytvořit: událost vytvoření kolekce</li><li>Odstranit: událost odstranění kolekce</li><li>Nahradit: událost změny kolekce</li><li>SystemOperation: událost změny kolekce aktivovaná systémem. Uživatel neinicioval tuto událost.</li></ul> |
 
-Pokud chcete získat seznam všech mutací kontejnerů ve stejné databázi, přečtěte si článek [obnovitelné MongoDB Collections-list](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbcollections/list) .
+Pokud chcete získat seznam všech mutací kontejnerů ve stejné databázi, přečtěte si článek [obnovitelné MongoDB Collections-list](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbcollections/list) .
 
 ### <a name="restorable-mongodb-resources"></a>Prostředky obnovitelné MongoDB
 
@@ -204,7 +204,7 @@ Každý prostředek představuje jednu databázi a všechny kolekce v rámci té
 | Databáze  |Název databáze MongoDB. |
 | collectionNames | Seznam kolekcí MongoDB v rámci této databáze. |
 
-Seznam všech kombinací databáze MongoDB a kolekcí, které existují na účtu v daném časovém razítku a umístění, najdete v článku [obnovitelné MongoDB Resources-list](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbresources/list) .
+Seznam všech kombinací databáze MongoDB a kolekcí, které existují na účtu v daném časovém razítku a umístění, najdete v článku [obnovitelné MongoDB Resources-list](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbresources/list) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521012"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642419"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Použití spravovaných identit s Azure Machine Learningm (Preview)
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak používat spravované identity k těmto akcí
 > [!IMPORTANT]
 > Použití spravovaných identit k řízení přístupu k prostředkům pomocí Azure Machine Learning je aktuálně ve verzi Preview. Funkce ve verzi Preview je poskytována tak, jak je, bez záruky podpory nebo smlouvy o úrovni služeb. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md)
@@ -234,7 +234,7 @@ Po nakonfigurování ACR bez uživatele s oprávněními správce, jak je popsá
 
 Při vytváření pracovního prostoru můžete zadat spravovanou identitu přiřazenou uživatelem, která se bude používat pro přístup k přidruženým prostředkům: ACR, Trezor klíčů, Storage a App Insights.
 
-Nejdřív [vytvořte spravovanou identitu přiřazenou uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])a poznamenejte si ID prostředku ARM spravované identity.
+Nejdřív [vytvořte spravovanou identitu přiřazenou uživatelem](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)a poznamenejte si ID prostředku ARM spravované identity.
 
 Pak pomocí rozhraní příkazového řádku Azure nebo sady Python SDK vytvořte pracovní prostor. Při použití rozhraní příkazového řádku zadejte ID pomocí `--primary-user-assigned-identity` parametru. Při použití sady SDK použijte `primary_user_assigned_identity` . Následují příklady použití rozhraní příkazového řádku Azure CLI a Python k vytvoření nového pracovního prostoru pomocí těchto parametrů:
 

@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502531"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643654"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -263,7 +263,7 @@ Pomocí Azure Machine Learning můžete pomocí automatizovaného ML vytvořit m
 
 Podívejte se, jak převést na formát ONNX [v tomto příkladu poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Zjistěte, které [algoritmy jsou v ONNX podporované](how-to-configure-auto-train.md#select-your-experiment-type).
 
-Modul runtime ONNX podporuje také jazyk C#, takže můžete použít model sestavený automaticky v aplikacích C# bez nutnosti opětovného kódování nebo jakékoli latence sítě, které zavádí koncové body REST. Přečtěte si další informace o [použití modelu AUTOML ONNX v aplikaci .NET s ml.NET](./how-to-use-automl-onnx-model-dotnet.md) a [Inferencing ONNX modely s rozhraním API ONNX runtime C#](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
+Modul runtime ONNX podporuje také jazyk C#, takže můžete použít model sestavený automaticky v aplikacích C# bez nutnosti opětovného kódování nebo jakékoli latence sítě, které zavádí koncové body REST. Přečtěte si další informace o [použití modelu AUTOML ONNX v aplikaci .NET s ml.NET](./how-to-use-automl-onnx-model-dotnet.md) a [Inferencing ONNX modely s rozhraním API ONNX runtime C#](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

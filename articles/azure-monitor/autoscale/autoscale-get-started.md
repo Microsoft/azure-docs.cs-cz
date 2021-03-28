@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: edc58ed4af3475a45804e3833424bec79d50ff89
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726049"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641552"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým škálováním v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -113,6 +113,10 @@ Nyní můžete nastavit počet instancí, které chcete ručně škálovat.
 
 K automatickému škálování se můžete kdykoli vrátit kliknutím na **Povolit automatické škálování** a pak na **Uložit**.
 
+### <a name="cool-down-period-effects"></a>Efekty doby chlazení
+
+Automatické škálování používá dobu chladnutí k tomu, aby se zabránilo "přepíná", což je rychlé a repetative škálování instancí.  Další informace najdete v tématu věnovaném [postupům pro vyhodnocení automatického škálování](autoscale-understanding-settings.md#autoscale-evaluation).  Další užitečné informace o přepíná a porozumění tom, jak monitorovat modul automatického škálování, najdete v tématu [osvědčené postupy automatického škálování](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types) a [řešení potíží s automatického škálování](autoscale-troubleshoot.md) . 
+
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Směrování provozu do instancí v pořádku (App Service)
 
 <a id="health-check-path"></a>
@@ -136,6 +140,7 @@ Další informace o přesouvání prostředků mezi oblastmi a zotavení po hav�
 ## <a name="next-steps"></a>Další kroky
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech operací modulu automatického škálování v předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech neúspěšných operací automatického škálování na více instancích ve vašem předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+
 
 <!--Reference-->
 [1]:https://portal.azure.com

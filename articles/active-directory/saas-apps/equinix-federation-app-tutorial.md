@@ -9,24 +9,24 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/27/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c772b3f30b211cf83512ca2ff2f10325fb4bc1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98735083"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642877"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s aplikací federace Equinix
 
-V tomto kurzu se dozvíte, jak integrovat Equinix federační aplikace s Azure Active Directory (Azure AD). Při integraci aplikace federace Equinix s Azure AD můžete:
+V tomto kurzu se dozvíte, jak integrovat Equinix federační aplikace s Azure Active Directory (Azure AD). Při integraci aplikace federace Equinix s Azure AD můžete provést následující akce:
 
 * Řízení ve službě Azure AD, která má přístup k aplikaci federace Equinix
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Equinix federační aplikace pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -37,7 +37,10 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Aplikace federace Equinix podporuje jednotné přihlašování se spuštěnou službou **SP**
+* Aplikace federace Equinix podporuje jednotné přihlašování iniciované v **SP** .
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-equinix-federation-app-from-the-gallery"></a>Přidání aplikace federace Equinix z Galerie
 
@@ -70,20 +73,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce integrace aplikací **federační aplikace Equinix** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
-
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `Equinix:<CUSTOM_IDENTIFIER>`
-
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<customerprefix>customerportal.equinix.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory Equinix Federation App Client](mailto:prodsecops@equinix.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat hodnotu, kontaktujte [tým podpory Equinix Federation App Client](mailto:prodsecops@equinix.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -92,6 +91,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. V části **Nastavení federační aplikace Equinix** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
@@ -128,13 +128,14 @@ V této části vytvoříte uživatele s názvem Britta Simon v aplikaci Equinix
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Equinix federační aplikace, kde můžete spustit tok přihlášení. 
+Přejít na adresu URL pro přihlašování k aplikaci Equinix Federation přímo a zahájit tok přihlášení.
 
-* Přejít na adresu URL pro přihlašování k aplikacím federace Equinix a spustit tok přihlášení přímo z tohoto účtu.
-
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici aplikace federace Equinix v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Equinix federační aplikace. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
+ > [!NOTE]
+ > Pokud se pokusíte otestovat aplikaci Azure pomocí odkazu **testovat tuto aplikaci** nebo kliknutím na dlaždici aplikace federace Equinix, nebude fungovat, protože IDP jednotné přihlašování, které Equinix ve výchozím nastavení nepodporuje.  Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování federační aplikace Equinix můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování federační aplikace Equinix můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

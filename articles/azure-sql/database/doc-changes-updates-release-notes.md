@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634834"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640081"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,12 +61,12 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 | Funkce | Podrobnosti |
 | ---| --- |
-| <a href="/azure/azure-sql/database/elastic-transactions-overview">Distribuované transakce</a> | Distribuované transakce napříč spravovanými instancemi. |
-| <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlašovací údaje na úrovni instance pomocí příkazu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">vytvořit přihlášení z externího poskytovatele</a> . |
+| [Distribuované transakce](/azure/azure-sql/database/elastic-transactions-overview) | Distribuované transakce napříč spravovanými instancemi. |
+| [Fondy instancí](/azure/sql-database/sql-database-instance-pools) | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
+| [Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)](/sql/t-sql/statements/create-login-transact-sql) | Vytvořte přihlašovací údaje na úrovni instance pomocí příkazu [vytvořit přihlášení z externího poskytovatele](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . |
 | [Transakční replikace](../managed-instance/replication-transactional-overview.md) | Proveďte replikaci změn z tabulek do jiných databází ve spravované instanci SQL, SQL Database nebo SQL Server. Nebo aktualizujte tabulky, když dojde ke změně některých řádků v jiných instancích spravované instance SQL nebo SQL Server. Informace najdete v tématu [Konfigurace replikace ve spravované instanci Azure SQL](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Detekce hrozeb |Informace najdete v tématu [konfigurace detekce hrozeb ve spravované instanci Azure SQL](../managed-instance/threat-detection-configure.md).|
-| Dlouhodobé uchovávání záloh | Informace najdete v tématu [Konfigurace dlouhodobého uchovávání záloh ve spravované instanci Azure SQL](../managed-instance/long-term-backup-retention-configure.md), která je aktuálně ve verzi Public Preview s omezením. | 
+| Dlouhodobé uchovávání záloh | Informace najdete v tématu [Konfigurace dlouhodobého uchovávání záloh ve spravované instanci Azure SQL](../managed-instance/long-term-backup-retention-configure.md), která je aktuálně ve verzi Public Preview s omezením. |
 
 ---
 

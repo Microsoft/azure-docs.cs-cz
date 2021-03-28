@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: a475441a845300d74014924415a4e48ae4de16df
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628284"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640218"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
@@ -317,24 +317,6 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 ### <a name="error-code-df-excel-invalidfile"></a>Kód chyby: DF-Excel-InvalidFile
 - **Zpráva**: je zadaný neplatný excelový soubor, ale podporují se jenom soubory. xlsx a. xls.
 
-### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Kód chyby: DF-AdobeIntegration-InvalidMapToFilter
-- **Zpráva**: pro vlastní prostředek může být k filtru mapován pouze jeden klíč nebo ID.
-
-### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Kód chyby: DF-AdobeIntegration-InvalidPartitionConfiguration
-- **Zpráva**: podporuje se jenom jeden oddíl. Schéma oddílu může být RoundRobin nebo hash.
-- **Doporučení**: v nastavení AdobeIntegration ověřte, že máte jenom jeden oddíl. Schéma oddílu může být RoundRobin nebo hash.
-
-### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Kód chyby: DF-AdobeIntegration-KeyColumnMissed
-- **Zpráva**: klíč musí být určen pro operace, které nelze vkládat.
-- **Doporučení**: Určete sloupce klíčů v nastavení AdobeIntegration pro operace, které nelze vkládat.
-
-### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Kód chyby: DF-AdobeIntegration-InvalidPartitionType
-- **Zpráva**: typ oddílu musí být roundRobin.
-- **Doporučení**: Ověřte, že typ oddílu je roundRobin v nastavení AdobeIntegration.
-
-### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Kód chyby: DF-AdobeIntegration-InvalidPrivacyRegulation
-- **Zpráva**: aktuálně je gdpr jenom v současnosti podporovaná ochrana osobních údajů.
-- **Doporučení**: potvrďte, že je v nastavení AdobeIntegration nastavená **možnost GDPR**(ochrana osobních údajů).
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Různé tipy pro řešení potíží
 - **Problém**: došlo k neočekávané výjimce a spuštění selhalo.

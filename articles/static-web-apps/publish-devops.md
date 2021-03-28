@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 701f999427d743c18f5dbcadb00cf303f97a8f53
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 472cf7b69078b3247c393ff65139bc29e5683a32
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627285"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639377"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Kurz: publikování statického Web Apps Azure pomocí Azure DevOps
 
@@ -57,9 +57,6 @@ V tomto kurzu se naučíte:
 1. Vyberte **Vytvořit**.
 
 1. V části _Podrobnosti nasazení_ se ujistěte, že jste vybrali možnost **jiné**. To vám umožní používat kód v úložišti Azure DevOps.
-
-    > [!NOTE]
-    > Funkce pro výběr _jiných_ funkcí je aktuálně vystaralá a ve všech předplatných Azure ještě nemusí být k dispozici.
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Podrobnosti o nasazení – ostatní":::
 

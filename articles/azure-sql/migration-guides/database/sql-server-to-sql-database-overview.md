@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 54c1b8c189264fb2e127ff04b0fdd9125f4c9aeb
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ef69b8cf0e51c6248862f4cabd4f4ce3598a811
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563134"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640363"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Přehled migrace: SQL Server pro Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -207,7 +207,7 @@ Další pomoc najdete v následujících materiálech, které byly vyvinuty pro 
 |[Automatizace shromažďování dat PerfMon pomocí programu Logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Nástroj, který shromažďuje PerMon data pro pochopení výkonu směrného plánu a pomáhá při migraci na cíle migrace. Tento nástroj používá logman.exe k vytvoření příkazu, který bude vytvářet, spouštět, zastavovat a odstraňovat čítače výkonu nastavené na vzdáleném SQL Server|
 |[Dokument White Paper – migrace databáze do služby Azure SQL DB pomocí BACPAC](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|Tento dokument white paper poskytuje pokyny a postupy, které vám pomůžou zrychlit migrace z SQL Server Azure SQL Database pomocí souborů BACPAC.|
 
-Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který je financován technickým týmem Azure Data Group. Základní Chartou programu data SQL expertem je odblokování a urychlení komplexní modernizace a konkurenční možnosti migrace datových platforem na datovou platformu Azure od Microsoftu. Pokud si myslíte, že by vaše organizace mohla zajímat účast v programu data SQL expertem, obraťte se prosím na svůj tým a požádejte ho, aby podal jmenování.
+Data tým SQL Engineering vyvinuli tyto prostředky. Základní Chart týmu je odblokování a urychlení komplexní modernizace pro projekty migrace datové platformy na datovou platformu Azure od Microsoftu.
 
 
 ## <a name="next-steps"></a>Další kroky

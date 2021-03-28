@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564418"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645113"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -39,7 +39,7 @@ Pro použití s [funkcí Speech SDK](speech-sdk.md) a/nebo [Speech-to text REST 
 #### <a name="batch-transcription"></a>Přepis Batch
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
-| Omezení REST API | Batch přepis není pro F0 k dispozici. | 300 požadavků za minutu |
+| Omezení převodu [řeči na text REST API v 2.0 a v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | Batch přepis není pro F0 k dispozici. | 300 požadavků za minutu |
 | Maximální velikost zvukového vstupního souboru | – | 1 GB |
 | Maximální velikost vstupního objektu BLOB (může obsahovat více než jeden soubor, například v archivu zip, nezapomeňte si uvědomit výše uvedený limit velikosti souboru) | – | 2,5 GB |
 | Maximální velikost kontejneru objektů BLOB | – | 5 GB |

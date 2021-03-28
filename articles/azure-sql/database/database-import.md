@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: b88c7aabe135b8e64869980b806852d92191440b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2412d3d2851d1b4d251b50ff3068b7dcafcccee8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105568677"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642037"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-
 
 1. Vyberte účet úložiště a kontejner pro soubor BACPAC a pak vyberte soubor BACPAC, ze kterého se má importovat.
 
-1. Zadejte novou velikost databáze (obvykle stejný jako zdroj) a zadejte přihlašovací údaje pro cíl SQL Server. Seznam možných hodnot pro novou databázi v Azure SQL Database najdete v tématu [Create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+1. Zadejte novou velikost databáze (obvykle stejný jako zdroj) a zadejte přihlašovací údaje pro cíl SQL Server. Seznam možných hodnot pro novou databázi v Azure SQL Database najdete v tématu [Create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
    ![Import2 databáze](./media/database-import/sql-server-import-database-settings.png)
 

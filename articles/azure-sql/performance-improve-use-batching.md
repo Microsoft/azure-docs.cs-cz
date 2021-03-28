@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792595"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641397"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Jak používat dávkování ke zlepšování Azure SQL Database a výkonu aplikací spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvním příkladu je každé jednotlivá volání implicitní transakce. V druhém příkladu explicitní transakce balí všechna volání. Na dokumentaci pro [protokol transakcí zápisu na úrovni](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)služby jsou záznamy protokolu po potvrzení transakce vyprázdněny na disk. Takže v transakci může zápis do transakčního protokolu zpozdit až do potvrzení transakce. V důsledku toho povolíte dávkování pro zápisy do transakčního protokolu serveru.
+Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvním příkladu je každé jednotlivá volání implicitní transakce. V druhém příkladu explicitní transakce balí všechna volání. Na dokumentaci pro [protokol transakcí zápisu na úrovni](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15&preserve-view=true#WAL)služby jsou záznamy protokolu po potvrzení transakce vyprázdněny na disk. Takže v transakci může zápis do transakčního protokolu zpozdit až do potvrzení transakce. V důsledku toho povolíte dávkování pro zápisy do transakčního protokolu serveru.
 
 Následující tabulka uvádí některé výsledky ad hoc testování. Testy prováděly stejné sekvenční vložení s transakcemi a bez nich. Pro další perspektivu se první sada testů vzdáleně spustila z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů běžela z cloudové služby a databáze, která se nachází v rámci stejného Microsoft Azure datacentra (Západní USA). Následující tabulka ukazuje dobu v milisekundách sekvenčních vkládání s transakcemi a bez nich.
 

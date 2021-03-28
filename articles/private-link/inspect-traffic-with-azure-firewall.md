@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108141"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641996"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Kontrola provozu směrovaného do privátního koncového bodu pomocí služby Azure Firewall
 
@@ -117,6 +117,7 @@ Vytvořte tři virtuální sítě a jejich odpovídající podsítě pro:
 V krocích níže nahraďte následující parametry:
 
 ### <a name="azure-firewall-network"></a>Azure Firewall sítě
+
 | Parametr                   | Hodnota                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -127,6 +128,7 @@ V krocích níže nahraďte následující parametry:
 | **\<subnet-address-range>** | 10.0.0.0/24          |
 
 ### <a name="virtual-machine-network"></a>Síť virtuálního počítače
+
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -137,13 +139,14 @@ V krocích níže nahraďte následující parametry:
 | **\<subnet-address-range>** | 10.1.0.0/24          |
 
 ### <a name="private-endpoint-network"></a>Síť privátního koncového bodu
+
 | Parametr                   | Hodnota                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myPEVNet         |
 | **\<region-name>**          | Středojižní USA      |
 | **\<IPv4-address-space>**   | 10.2.0.0/16          |
-| **\<subnet-name>**          | PrivateEndpointSubnet    |        |
+| **\<subnet-name>**          | PrivateEndpointSubnet |
 | **\<subnet-address-range>** | 10.2.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -564,7 +567,7 @@ V této části se soukromě připojíte k SQL Database pomocí privátního kon
     Address: 10.2.0.4
     ```
 
-2. Nainstalovat [SQL Server nástroje příkazového řádku](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools).
+2. Nainstalovat [SQL Server nástroje příkazového řádku](/sql/linux/quickstart-install-connect-ubuntu#tools).
 
 3. Spusťte následující příkaz pro připojení k SQL Server. Použijte Správce serveru a heslo, které jste definovali při vytváření SQL Server v předchozích krocích.
 

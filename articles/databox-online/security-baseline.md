@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 335056260ddea0c15db761df109e69333ef474f3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565193"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641371"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Základní hodnoty zabezpečení Azure pro Azure Stack Edge
 
@@ -298,7 +298,7 @@ Mějte na paměti, že k získání přehledu o úlohách a službách může b�
 
 **Doprovodné** materiály: k rozhraním API Azure Stack hraničních zařízení přes místní Azure Resource Manager můžou přistupovat jenom autorizovaní uživatelé, například "EdgeArmUser". Hesla uživatelského účtu lze spravovat pouze na Azure Portal. 
 
-- [Nastavení hesla Azure Resource Manageru](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
+- [Nastavení hesla Azure Resource Manageru](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

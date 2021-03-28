@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557365"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642390"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Řízení účtů místních služeb
 
@@ -60,7 +60,7 @@ Při vytváření nového účtu služby použijte následující kritéria.
 
 U uživatelských účtů používaných jako účty služeb použijte následující nastavení:
 
-* [**Vypršení platnosti účtu**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): Nastavte účet služby tak, aby po dobu kontroly automaticky vyprší platnost nastaveného času, pokud se nezjistí, že by měl pokračovat.
+* [**Vypršení platnosti účtu**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): Nastavte účet služby tak, aby po dobu kontroly automaticky vyprší platnost nastaveného času, pokud se nezjistí, že by měl pokračovat.
 
 *  **LogonWorkstations**: omezte oprávnění, kde se může účet služby přihlásit. Pokud se spustí místně na počítači a přistupuje pouze k prostředkům v tomto počítači, omezte jeho přihlášení na jiné místo.
 
@@ -149,7 +149,7 @@ Posouzení rizik, jakmile se pořídí a zdokumentující, může mít dopad na:
 
 Účet služby vytvořte jenom poté, co jsou důležité informace popsané ve vaší organizaci CMDB a provedete posouzení rizik. Omezení účtu by měla být zarovnaná na posouzení rizik. V případě potřeby zvažte následující omezení.:
 
-* [Vypršení platnosti účtu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Vypršení platnosti účtu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
    * U všech uživatelských účtů používaných jako účty služeb definujte reálné a přesné datum ukončení, které se má použít. Tuto možnost nastavte pomocí příznaku "platnost účtu". Další podrobnosti najdete v tématu[ set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration). 
 
@@ -193,7 +193,7 @@ Po odebrání všech oprávnění použijte tento postup k odebrání účtu.
 
 3. Odstraňte účet služby, jakmile bude splněna zásada zůstat zakázaná. 
 
-   * V případě účty spravované služby ho můžete [odinstalovat](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) pomocí PowerShellu nebo ručně odstranit z kontejneru účtu spravované služby.
+   * V případě účty spravované služby ho můžete [odinstalovat](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) pomocí PowerShellu nebo ručně odstranit z kontejneru účtu spravované služby.
 
    * V případě počítačů nebo uživatelských účtů můžete účet odstranit ručně ze služby Active Directory.
 

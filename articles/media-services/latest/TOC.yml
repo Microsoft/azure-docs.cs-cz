@@ -4,11 +4,12 @@
   items:
     - name: Informace o Media Services
       href: media-services-overview.md
-    - name: Co je nového v Media Services
-      displayName: release notes
+    - name: "Poznámky k\_verzi"
       href: release-notes.md
     - name: Media Services – dodržování předpisů
       href: concept-compliance.md
+    - name: Nejčastější dotazy
+      href: frequently-asked-questions.yml
 - name: Rychlé starty
   items:
     - name: Nastavení prostředí
@@ -262,9 +263,8 @@
       href: architectures-concept.md
     - name: Řešení potíží
       items:
-        - name: Nejčastější dotazy
-          displayName: faqs
-          href: frequently-asked-questions.md
+        - name: Kolekce otázek
+          href: questions-collection.md
         - name: Kódy chyb
           items:
             - name: Kódy chyb koncových bodů streamování
@@ -346,7 +346,7 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Kopírování videí bez kódování s využitím REST
           href: how-to-create-copy-video-audio-transform.md
-        - name: Vytváření úloh pomocí .NET
+        - name: Vytváření úloh pomocí rozhraní příkazového řádku
           href: cli-create-jobs.md
         - name: Vytvoření vstupu úlohy s využitím místního souboru a .NET
           displayName: upload

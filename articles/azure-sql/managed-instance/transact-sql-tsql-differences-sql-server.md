@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601368"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644919"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -139,7 +139,7 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
 ### <a name="logins-and-users"></a>Přihlášení a uživatelé
 
 - Přihlášení SQL vytvořená pomocí `FROM CERTIFICATE` , `FROM ASYMMETRIC KEY` a `FROM SID` jsou podporovaná. Viz [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql)údajů.
-- Jsou podporovány základní objekty (přihlašovací údaje) serveru služby Azure Active Directory (Azure AD) vytvořené pomocí syntaxe [Vytvoření přihlášení](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) nebo [Vytvoření uživatele z přihlášení [přihlášení Azure AD]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) . Tato přihlášení jsou vytvořena na úrovni serveru.
+- Jsou podporovány základní objekty (přihlašovací údaje) serveru služby Azure Active Directory (Azure AD) vytvořené pomocí syntaxe [Vytvoření přihlášení](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) nebo [Vytvoření uživatele z přihlášení [přihlášení Azure AD]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true) . Tato přihlášení jsou vytvořena na úrovni serveru.
 
     Spravovaná instance SQL podporuje objekty zabezpečení databáze Azure AD se syntaxí `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` . Tato funkce se označuje taky jako uživatelé databáze s omezením Azure AD.
 
@@ -525,7 +525,7 @@ Systémové databáze nejsou replikovány do sekundární instance ve skupině p
 ### <a name="tempdb"></a>DATABÁZE
 - Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště spravované instance SQL. `Tempdb` velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
 - `Tempdb` je vždy rozdělen do 12 datových souborů: 1 primární, označovaný také jako Master, datový soubor a 11 neprimárních datových souborů. Strukturu souborů nelze změnit a nelze do ní přidat nové soubory `tempdb` . 
-- [Paměťově optimalizovaná `tempdb` metadata](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), nová funkce databáze SQL Server 2019 v paměti, není podporována.
+- [Paměťově optimalizovaná `tempdb` metadata](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15&preserve-view=true#memory-optimized-tempdb-metadata), nová funkce databáze SQL Server 2019 v paměti, není podporována.
 - Objekty vytvořené v databázi modelů nelze automaticky vytvořit v nástroji `tempdb` po restartování nebo převzetí služeb při selhání, protože `tempdb` nezíská svůj počáteční seznam objektů z databáze modelů. Objekty musíte `tempdb` po každém restartování nebo převzetí služeb při selhání vytvořit ručně.
 
 ### <a name="msdb"></a>MSDB
@@ -534,13 +534,13 @@ Následující schémata MSDB ve spravované instanci SQL musí vlastnit jejich 
 
 - Obecné role
   - TargetServersRole
-- [Pevné databázové role](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Pevné databázové role](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15&preserve-view=true)
   - Role uživatele agenta SQL
   - Role čtenáře agenta SQL
   - Role operátora agenta SQL
-- [DatabaseMail role](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail role](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15&preserve-view=true#DBProfile):
   - DatabaseMailUserRole
-- [Role integračních služeb](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Role integračních služeb](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15&preserve-view=true):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator

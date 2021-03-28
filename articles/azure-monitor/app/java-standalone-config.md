@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 91ad5a6d95c634300db83d66df8f0407b4544cde
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: f349d260fff32427712442615cabf6d3958468ac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024162"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640040"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -284,6 +284,9 @@ Počínaje verzí 3.0.2 se konkrétní automaticky shromážděná telemetrie d�
   }
 }
 ```
+
+> Poznámka: Pokud hledáte přesnější ovládací prvek, například pro potlačení některých volání Redis, ale ne všechna volání Redis, přečtěte si téma [přepsání vzorkování](./java-standalone-sampling-overrides.md).
+
 
 ## <a name="heartbeat"></a>Tep
 

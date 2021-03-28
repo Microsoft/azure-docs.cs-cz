@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6f91adf499c62fef56a30c5f2945ba7a90a0b29
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644823"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640070"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Zabezpečení skupinových účtů spravované služby
 
@@ -41,7 +41,7 @@ Skupinové účty spravované služby (účty gMSA) jsou spravované účty dom�
 Použijte účty gMSA jako preferovaný typ účtu pro místní služby, pokud nepodporuje služba, jako je Clustering s podporou převzetí služeb při selhání.
 
 > [!IMPORTANT]
-> Před nasazením do produkčního prostředí musíte službu otestovat pomocí účty gMSA. Provedete to tak, že nastavíte testovací prostředí a zajistěte, aby aplikace mohla používat gMSA, a přístup k prostředkům, ke kterým potřebuje přístup. Další informace najdete v tématu [Podpora skupinových účtů spravované služby](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> Před nasazením do produkčního prostředí musíte službu otestovat pomocí účty gMSA. Provedete to tak, že nastavíte testovací prostředí a zajistěte, aby aplikace mohla používat gMSA, a přístup k prostředkům, ke kterým potřebuje přístup. Další informace najdete v tématu [Podpora skupinových účtů spravované služby](/system-center/scom/support-group-managed-service-accounts).
 
 
 Pokud služba nepodporuje použití služby účty gMSA, vaše další nejlepší možností je použít samostatný účet spravované služby (sMSA). sMSAs poskytují stejné funkce jako gMSA, ale jsou určené pro nasazení pouze na jednom serveru.
@@ -86,7 +86,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount”}
+Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>Správa účty gMSA

@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bcd45ab1270d478b05b3929d7b8914976612294
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101669070"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645300"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -161,7 +161,7 @@ Související informace najdete v článku znalostní báze **860340,1** na adre
 - **Omezení dynamického clusteringu a vyrovnávání zatížení.** Předpokládejme, že chcete použít dynamický cluster na serveru Oracle WebLogic Server a zveřejnit ho pomocí jediného veřejného koncového bodu s vyrovnáváním zatížení v Azure. To se dá udělat, pokud použijete pevné číslo portu pro každý ze spravovaných serverů (nedynamicky přiřadíte z rozsahu) a nespustíte více spravovaných serverů, než jsou počítače, které správce sleduje. To znamená, že pro každý virtuální počítač není k dispozici více než jeden spravovaný server. Pokud vaše konfigurace vede k více serverům Oracle WebLogic, než jsou virtuální počítače (tj. kde více instancí Oracle WebLogic Server sdílí stejný virtuální počítač), není možné, aby se více než jedna z těchto instancí serveru Oracle WebLogic mohla přivážet k danému číslu portu. Ostatní na tomto virtuálním počítači selžou.
 
    Pokud nakonfigurujete server pro správu tak, aby na jeho spravovaných serverech automaticky přiřadil jedinečná čísla portů, pak není vyrovnávání zatížení možné, protože Azure nepodporuje mapování z jednoho veřejného portu na několik privátních portů, které by se vyžadovaly pro tuto konfiguraci.
-- **Několik instancí Oracle WebLogic serveru na virtuálním počítači.** V závislosti na požadavcích vašeho nasazení můžete zvážit spuštění více instancí Oracle WebLogic serveru na stejném virtuálním počítači, pokud je virtuální počítač dostatečně velký. Například na virtuálním počítači střední velikosti, který obsahuje dvě jádra, můžete zvolit spuštění dvou instancí serveru Oracle WebLogic Server. Přesto však doporučujeme, abyste se vyhnuli zavedení jednoduchých selhání do vaší architektury, což by znamenalo, pokud jste použili jenom jeden virtuální počítač, na kterém běží víc instancí Oracle WebLogic serveru. Používání aspoň dvou virtuálních počítačů může být lepším přístupem a každý virtuální počítač pak může spustit víc instancí Oracle WebLogic serveru. Každá instance Oracle WebLogic serveru může být i nadále součástí stejného clusteru. V současné době není možné použít Azure k vyrovnávání zatížení koncových bodů, které jsou zveřejněné v nasazeních Oracle WebLogic Server v rámci stejného virtuálního počítače, protože nástroj pro vyrovnávání zatížení Azure vyžaduje, aby byly servery s vyrovnáváním zatížení distribuované mezi jedinečnými virtuálními počítači.
+- **Několik instancí Oracle WebLogic serveru na virtuálním počítači.** V závislosti na požadavcích vašeho nasazení můžete zvážit spuštění více instancí Oracle WebLogic serveru na stejném virtuálním počítači, pokud je virtuální počítač dostatečně velký. Například na virtuálním počítači s středních, který obsahuje dvě jádra, můžete zvolit spuštění dvou instancí serveru Oracle WebLogic Server. Přesto však doporučujeme, abyste se vyhnuli zavedení jednoduchých selhání do vaší architektury, což by znamenalo, pokud jste použili jenom jeden virtuální počítač, na kterém běží víc instancí Oracle WebLogic serveru. Používání aspoň dvou virtuálních počítačů může být lepším přístupem a každý virtuální počítač pak může spustit víc instancí Oracle WebLogic serveru. Každá instance Oracle WebLogic serveru může být i nadále součástí stejného clusteru. V současné době není možné použít Azure k vyrovnávání zatížení koncových bodů, které jsou zveřejněné v nasazeních Oracle WebLogic Server v rámci stejného virtuálního počítače, protože nástroj pro vyrovnávání zatížení Azure vyžaduje, aby byly servery s vyrovnáváním zatížení distribuované mezi jedinečnými virtuálními počítači.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Image virtuálních počítačů Oracle JDK
 

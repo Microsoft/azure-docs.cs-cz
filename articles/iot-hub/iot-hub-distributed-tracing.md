@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581981"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643674"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -35,7 +35,7 @@ Povolení distribuovaného trasování pro IoT Hub vám dává možnost:
 
 V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md) s distribuovaným trasováním. Podpora distribuovaného trasování pro ostatní sady SDK stále probíhá.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Verze Preview distribuovaného trasování je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 
@@ -93,7 +93,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klonovat zdrojový kód a inicializovat
 
-1. Nainstalujte [úlohu vývoj desktopových aplikací v C++](/cpp/build/vscpp-step-0-installation?view=vs-2019) pro Visual Studio 2019. Podporují se také sady Visual Studio 2017 a 2015.
+1. Nainstalujte [úlohu vývoj desktopových aplikací v C++](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) pro Visual Studio 2019. Podporují se také sady Visual Studio 2017 a 2015.
 
 1. Nainstalujte [cmake](https://cmake.org/). Zajistěte, aby byla v aplikaci, `PATH` a to zadáním `cmake -version` z příkazového řádku.
 

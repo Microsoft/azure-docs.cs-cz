@@ -2,23 +2,18 @@
 title: Přehled živého streamování
 description: Tento článek obsahuje přehled živého streamování pomocí Azure Media Services V3.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b552dcc0e6766316e55e9cdda6e462b2d4abfd2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c82c646e4befef9d409bb8e59a442642913ada22
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955915"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641518"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -123,16 +118,6 @@ Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na v
 - [Stavy a fakturace](live-event-states-billing.md)
 - [Latence](live-event-latency.md)
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+## <a name="live-streaming-questions"></a>Dotazy živého streamování
 
-Přečtěte si článek [Nejčastější dotazy](frequently-asked-questions.md#live-streaming) .
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
-
-Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
-
-## <a name="next-steps"></a>Další kroky
-
-* [Rychlý Start živého streamování](live-events-wirecast-quickstart.md)
-* [Kurz živého streamování](stream-live-tutorial-with-api.md)
-* [Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-v-2-v-3-migration-introduction.md)
+Přečtěte si článek o [online streamování dotazů](questions-collection.md#live-streaming) .

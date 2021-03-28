@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 74709d970f624f2d4cefaab77e8466361e4102cc
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: b6a9fa3ac85460a46653c171198a2dfea8580f3a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563425"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644493"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí referenční image Malina 3 B +
 
@@ -73,7 +73,7 @@ Pomocí vašeho oblíbeného nástroje pro blikání OS nainstalujte na SD kartu
    
 Aktualizace zařízení pro software Azure IoT Hub podléhá následujícím licenčním podmínkám:
    * [Aktualizace zařízení pro IoT Hub licenci](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [Licence klienta Optimalizace doručení](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [Licence klienta Optimalizace doručení](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 Přečtěte si licenčních podmínek před použitím agenta. Vaše instalace a použití představují Vaše přijetí těchto podmínek. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte aktualizaci zařízení pro agenta IoT Hub.
 

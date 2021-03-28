@@ -10,12 +10,12 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 4a9deded16de6b0de2ef5f88ffebd813b8e5b8c0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 0a59b18fa2c09cff943dbccd2203027cd72e146a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110330"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644310"
 ---
 Začínáme s komunikačními službami Azure pomocí komunikačních služeb Java SMS SDK pro posílání zpráv SMS.
 
@@ -106,8 +106,8 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce služ
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Tato třída vytvoří třídu SmsClient. Poskytnete ho pro koncové body, přihlašovací údaje a klienta http. |
 | SmsClient                    | Tato třída je potřebná pro všechny funkce SMS. Použijete ho k posílání zpráv SMS.                |
-| SmsSendResult                | Tato třída obsahuje výsledek ze služby SMS.                                          |
 | SmsSendOptions               | Tato třída poskytuje možnosti pro přidání vlastních značek a konfiguraci vytváření sestav o doručení. Pokud je deliveryReportEnabled nastavené na hodnotu true, vygeneruje se po úspěšném doručení událost.|                           |
+| SmsSendResult                | Tato třída obsahuje výsledek ze služby SMS.                                          |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -160,6 +160,12 @@ System.out.println("Message Id: " + sendResult.getMessageId());
 System.out.println("Recipient Number: " + sendResult.getTo());
 System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 ```
+
+Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
+
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>Odeslat zprávu o 1: N SMS s možnostmi
 Chcete-li odeslat zprávu SMS seznamu příjemců, zavolejte `send` metodu se seznamem telefonních čísel příjemců. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry.
 ```java
@@ -181,13 +187,14 @@ for (SmsSendResult result : sendResults) {
 }
 ```
 
-Měli byste nahradit `<from-phone-number>` telefonní číslo s povoleným SMS, které je přidružené k vašemu prostředku komunikačních služeb, a `<to-phone-number>` telefonní číslo nebo seznam telefonních čísel, na které chcete poslat zprávu.
+Měli byste nahradit `<from-phone-number>` telefonní číslo s povoleným SMS, které je přidružené k vašemu prostředku komunikačních služeb, a `<to-phone-number-1>` `<to-phone-number-2>` s telefonními čísly, na které chcete poslat zprávu.
 
-## <a name="optional-parameters"></a>Volitelné parametry
+> [!WARNING]
+> Všimněte si, že telefonní čísla by měla být zadána ve formátu E. 164 mezinárodní standard. (např.: + 14255550123).
 
-`deliveryReportEnabled`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+`setDeliveryReportEnabled`Metoda se používá ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
 
-`tag`Parametr je volitelný parametr, který můžete použít k použití značky pro sestavu doručení.
+`setTag`Metoda se používá k použití značky pro sestavu doručení.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 

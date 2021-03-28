@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e8fb6985da5046d0a1bad171cbc9742a15baf1af
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613217"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643441"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
 
@@ -255,7 +255,7 @@ Následuje seznam jiného softwaru používaného pro StorSimple k vytváření 
 | Cíl zálohování |Veeam |Veeam v 9 a novější |[StorSimple jako cíl zálohování s Veaam](storsimple-configure-backup-target-veeam.md)|
 | Cíl zálohování |Veritas Backup Exec |Backup Exec 16 a novější |[StorSimple jako cíl zálohování pomocí Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
 | Cíl zálohování |VERITAS NetBackup |NetBackup 7.7. x a novější  |[StorSimple jako cíl zálohování s NetBackup](storsimple-configure-backuptarget-netbackup.md)|
-| Globální sdílení souborů <br></br> Spolupráce |Talon  |[StorSimple s Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| Globální sdílení souborů <br></br> Spolupráce |Talon  |[StorSimple s Talon](https://www.theinfostride.com/talon-and-microsoft-to-host-azure-storsimple-web-conference-with-capita/) | |
 
 ## <a name="storsimple-terminology"></a>Terminologie StorSimple
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.

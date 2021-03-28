@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d83f6585500316515139f937a56889dfc1f8fac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459671"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642707"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Centrální Správa identit nabízí následující výhody:
 - Přiřazení přístupových práv k prostředkům k objektům zabezpečení Azure AD prostřednictvím přiřazení skupiny: Vytvoření skupin Azure AD, udělení přístupu ke skupinám a přidání jednotlivých členů do skupin. V databázi vytvořte uživatele databáze s omezením, kteří mapují vaše skupiny Azure AD. Pokud chcete přiřadit oprávnění v rámci databáze, uveďte uživatele přidružené ke skupinám Azure AD v databázových rolích s příslušnými oprávněními.
   - Projděte si články, [nakonfigurujte a spravujte Azure Active Directory ověřování pomocí SQL](authentication-aad-configure.md) a [použijte Azure AD pro ověřování pomocí SQL](authentication-aad-overview.md).
   > [!NOTE]
-  > Ve spravované instanci SQL můžete také vytvořit přihlašovací údaje, které se mapují na objekty zabezpečení Azure AD v hlavní databázi. Viz [Create Login (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+  > Ve spravované instanci SQL můžete také vytvořit přihlašovací údaje, které se mapují na objekty zabezpečení Azure AD v hlavní databázi. Viz [Create Login (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Použití skupin Azure AD zjednodušuje správu oprávnění a vlastníka skupiny a vlastník prostředku může přidat nebo odebrat členy do/ze skupiny.
 
@@ -136,7 +136,7 @@ Služba Azure AD Multi-Factor Authentication pomáhá zvýšit zabezpečení tí
 
 - Použijte režim interaktivního ověřování Azure AD pro Azure SQL Database a Azure SQL Managed instance, kde je vyžadováno interaktivní zadání hesla a pak Multi-Factor Authentication:
   - Použijte univerzální ověřování v SSMS. Přečtěte si článek [použití vícefaktorového ověřování Azure AD s Azure SQL Database, spravovanou instancí SQL, Azure synapse (podpora SSMS pro Multi-Factor Authentication)](authentication-mfa-ssms-overview.md).
-  - Použijte interaktivní ověřování podporované v nástroji SQL Server Data Tools (SSDT). Přečtěte si článek [Azure Active Directory podpora SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?view=azuresqldb-current).
+  - Použijte interaktivní ověřování podporované v nástroji SQL Server Data Tools (SSDT). Přečtěte si článek [Azure Active Directory podpora SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true).
   - Použijte další nástroje SQL podporující Multi-Factor Authentication.
     - Podpora průvodce SSMS pro export/extrakci/nasazení databáze  
     - [sqlpackage.exe](/sql/tools/sqlpackage): možnost '/UA '
@@ -196,7 +196,7 @@ V případě, že se hesla nedaří, ujistěte se, že jsou zabezpečená.
 
 - Pokud se nemůžete vyhnout heslům nebo tajným klíčům, ukládejte si uživatelská hesla a tajné klíče aplikace do Azure Key Vault a spravujte přístup prostřednictvím zásad Key Vault přístupu.
 
-- Různé architektury pro vývoj aplikací můžou nabízet i mechanizmy specifické pro ochranu tajných kódů v aplikaci. Například: [ASP.NET Core App](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1).
+- Různé architektury pro vývoj aplikací můžou nabízet i mechanizmy specifické pro ochranu tajných kódů v aplikaci. Například: [ASP.NET Core App](/aspnet/core/security/app-secrets?tabs=windows).
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>Použití ověřování SQL pro starší verze aplikací
 

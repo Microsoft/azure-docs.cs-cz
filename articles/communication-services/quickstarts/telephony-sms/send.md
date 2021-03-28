@@ -11,12 +11,12 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 70dce109ec751a5c14de539b9c7461857cedb941
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9514f1616c0d70d7d195af2f052c604973709204
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110333"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644349"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Rychlý Start: odeslání zprávy SMS
 
@@ -58,7 +58,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 V tomto rychlém startu jste zjistili, jak odesílat zprávy SMS pomocí komunikačních služeb Azure.
 
 > [!div class="nextstepaction"]
-> [Přihlášení k odběru událostí SMS](./handle-sms-events.md)
+> [Příjem událostí SMS a oznámení o doručení](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
 > [Typy telefonních čísel](../../concepts/telephony-sms/plan-solution.md)

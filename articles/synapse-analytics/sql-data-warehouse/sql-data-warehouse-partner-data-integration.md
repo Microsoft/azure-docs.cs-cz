@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ba03fe86c126c76faf91a06a96aaea6d1ffeddc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eecacef7f678001c9d65da540432154305549e2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594903"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645134"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
@@ -27,6 +27,7 @@ Pokud chcete vytvořit řešení datového skladu pomocí vyhrazeného fondu SQL
 | Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Založený na AB](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**Založený na AB**<br> Agilní digitální technický vývoj pro firmy ze společnosti Initio vám pomůže vyřešit náročné problémy se zpracováním dat a správou dat v podnikovém výpočetním prostředí. Cloudová platforma založená na službě AB umožňuje přístup a používání dat kdekoli v podnikovém ekosystému, ať už v Azure, nebo v místním prostředí, včetně dat uložených ve starších systémech. Kombinace intuitivního rozhraní s výkonnými funkcemi pro automatizaci, kvalitu dat, řízení dat a aktivní metadata umožňuje rychlý vývoj a skutečnou samoobslužnou práci s daty, aby analytici mohli rychle a efektivně provádět své úlohy. Přihlaste se k největším firmám na světě pomocí prostředí AB a zapněte velká data na smysluplná data. |[Stránka produktu](https://www.abinitio.com/) |
+| ![Aecorsoft](./media/sql-data-warehouse-partner-data-integration/aecorsoft-logo.png) |**Aecorsoft**<br> AecorSoft nabízí rychlé, škálovatelné a ELT softwarové řešení v reálném čase, které umožňuje zákazníkům SAP přinést složitá data SAP do Azure synapse Analytics a datovou platformu Azure. S úplným dodržováním předpisů SAP Application Layer Security je řešení AecorSoft oficiálně certifikováno pro SAP pro integraci s aplikacemi SAP. Funkce AecorSoft jedinečného rozdílového a Change Data Capture umožňují uživatelům SAP zasílat rozdílová data z tabulek SAP Transparent, pool a cluster do Azure ve formátu CSV, Parquet, Avro, ORC nebo GZIP. Kromě tabulkových dat SAP se plně podporují i mnoho dalších objektů SAP, jako jsou ČERNOBÍLé dotazy a zobrazení S/4HANA disky CD. |[Stránka produktu](https://www.aecorsoft.com/products/dataintegrator)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aecorsoftinc1588038796343.aecorsoftintegrationservice_adf)<br>|
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma je řešení pro extrakci, transformaci a načítání (ETL), které umožňuje datovým týmům integraci, obohacení a streamování dat z různých sila dat do datového skladu Azure synapse v reálném čase. |[Stránka produktu](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer poskytuje opakovaně pracovní postup pro analýzu dat samoobslužných služeb, který vede k hlubším přehledům v řádu hodin, ne k týdenům typickým z tradičních přístupů. Alteryx Designer pomáhá analytikům dat kombinací přípravy dat, míchání dat a analýz – prediktivní, statistická a prostorová – pomocí stejného intuitivního uživatelského rozhraní. |[Stránka produktu](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam poskytuje automatizované řešení pro načítání dat do datového skladu Azure synapse. Zjednodušuje dávkové načítání a přírůstkovou replikaci dat z mnoha zdrojů – SQL Server, Oracle, DB2, Sybase, MySQL a dalších. |[Stránka produktu](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |

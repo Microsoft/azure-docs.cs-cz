@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521777"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640120"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
 
@@ -27,7 +27,7 @@ Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure
 
 Pokud nejste připraveni k zpřístupnění dat pro školení modelů, ale chcete načíst data do poznámkového bloku pro zkoumání dat, přečtěte si téma Jak [Prozkoumat data v datové sadě](how-to-create-register-datasets.md#explore-data). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytváření a školení s datovými sadami potřebujete:
 
@@ -38,7 +38,7 @@ K vytváření a školení s datovými sadami potřebujete:
 * [Sada Azure Machine Learning SDK pro Python je nainstalovaná](/python/api/overview/azure/ml/install) (>= 1.13.0), která obsahuje `azureml-datasets` balíček.
 
 > [!Note]
-> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](/python/api/azureml-dataprep/) . Pro uživatele systému Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
+> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](https://pypi.org/project/azureml-dataprep/) . Pro uživatele systému Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
 
 ## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Využívání datových sad v školicích skriptech pro Machine Learning
 
@@ -260,7 +260,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 + [Poznámkové bloky datové sady](https://aka.ms/dataset-tutorial) ukazují a rozšiřují koncepty v tomto článku.
 + Podívejte se, jak [parametrize datové sady v kanálech ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * **Inicializace datové sady se nezdařila: časový limit čekání na bod připojení vypršel**: 
   * Pokud nemáte žádná pravidla odchozích [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a používáte `azureml-sdk>=1.12.0` , aktualizujete `azureml-dataset-runtime` a jeho závislosti na nejnovější podverzi, nebo pokud ji používáte v běhu, vytvořte znovu prostředí, aby bylo možné provést nejnovější opravu s opravou. 

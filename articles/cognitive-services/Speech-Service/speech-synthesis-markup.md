@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b0a96443e1f8596c48882bbdd92b9bb4b910beff
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: c4e70c7f74c202b7de44a259b8a680f57aeaa041
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567980"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645027"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -877,7 +877,7 @@ Prvky záložky nebudeme číst.
 Element Bookmark lze použít k odkazování na konkrétní umístění v rámci textu nebo sekvence značek.
 
 > [!NOTE]
-> `bookmark` element funguje pouze pro `en-US-AriaNeural` hlas v oblasti západní USA 2 ( `westus2` ) pro nyní.
+> `bookmark` element funguje jenom pro `en-US-AriaNeural` hlas pro nyní.
 
 **Syntax**
 

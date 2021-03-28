@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100094997"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642102"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Přihlášení a spouštění aplikací z portálu moje aplikace
 
@@ -39,11 +39,12 @@ Pokud nemáte přístup k portálu **Moje aplikace** , požádejte o oprávněn�
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
 
-K portálu **Moje aplikace** se dostanete z libovolného z následujících webových prohlížečů:
+K portálu **Moje aplikace** můžete získat přístup z libovolného z následujících webových prohlížečů. Microsoft doporučuje, abyste používali nejaktuálnější prohlížeč, který je kompatibilní s vaším operačním systémem.
 
-- Microsoft Edge (mobilní verze Edge je aktuálně jediným podporovaným mobilním prohlížečem)
-- Google Chrome
-- Mozilla Firefox, verze 26,0 nebo novější
+- Microsoft Edge (nejnovější verze, Desktop a mobilní zařízení)
+- Safari (nejnovější verze, Mac a iOS)
+- Chrome (nejnovější verze, Desktop a mobilní zařízení)
+- Firefox (nejnovější verze)
 
 K portálu moje aplikace můžete přistupovat a používat na svém počítači nebo z mobilní verze prohlížeče Edge na mobilním zařízení s iOS nebo Androidem.
 

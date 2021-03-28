@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: HT
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371962"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645291"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
@@ -39,9 +39,9 @@ Aby mohl uživatel zobrazit data nákladů pro předplatná Azure EA, musí mít
 | Fakturační účet<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Podnikový správce | Žádná | Všechna předplatná ze smlouvy Enterprise |
 | Oddělení | [https://ea.azure.com](https://ea.azure.com/) | Správce oddělení | Povolené nastavení **DA view charges** (Správce oddělení může zobrazit náklady) | Všechna předplatná patřící do registračního účtu propojeného s oddělením |
 | Registrační účet<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Vlastník účtu | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechna předplatná z registračního účtu |
-| Skupina pro správu | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechna předplatná spadající do skupiny pro správu |
-| Předplatné | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechny prostředky nebo skupiny prostředků v předplatném |
-| Skupina prostředků | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechny prostředky ve skupině prostředků |
+| Skupina pro správu | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo přispěvatel) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechna předplatná spadající do skupiny pro správu |
+| Předplatné | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo přispěvatel) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechny prostředky nebo skupiny prostředků v předplatném |
+| Skupina prostředků | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo přispěvatel) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechny prostředky ve skupině prostředků |
 
 <sup>1</sup>Fakturační účet se také označuje jako smlouva Enterprise nebo registrace.
 
@@ -52,8 +52,8 @@ Aby mohl uživatel zobrazit data nákladů pro předplatná Azure EA, musí mít
 
 Aby mohl uživatel zobrazit data nákladů pro další předplatná Azure, musí mít alespoň přístup pro čtení k nejméně jednomu z následujících rozsahů:
 
-- Účet Azure
 - Skupina pro správu
+- Předplatné
 - Skupina prostředků
 
 Když partneři zařadí zákazníky do Smlouvy se zákazníkem Microsoftu, jsou k dispozici různé rozsahy. Zákazníci CSP pak můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP. Další informace najdete v článku [Začínáme se službou Azure Cost Management pro partnery](get-started-partners.md).

@@ -10,18 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: daf6d90ae6b5d95c54e0e83eff4c2d606e7054fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585753"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639416"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM (Preview)
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM 
 
 [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů a klíče.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Tato funkce není k dispozici pro Azure Government.
+
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení tohoto článku:
 

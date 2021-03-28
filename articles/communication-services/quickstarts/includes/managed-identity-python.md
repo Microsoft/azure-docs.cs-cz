@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b37ebebdb99530ab615a313d9b269b9ce937b7f1
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cefdf77052e559853cc85d129799e288032186b8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110723"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645444"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution"></a>Přidání spravované identity do řešení komunikačních služeb
 
@@ -24,7 +24,7 @@ Přidejte následující `import` kód do kódu pro použití identity Azure.
 from azure.identity import DefaultAzureCredential
 ```
 
-Níže uvedené příklady používají rozhraní [DefaultAzureCredential](/python/api/azure.identity.defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
+Níže uvedené příklady používají rozhraní [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
 
 Pokud chcete zaregistrovat aplikaci ve vývojovém prostředí a nastavit proměnné prostředí, přečtěte si téma [autorizace přístupu pomocí spravované identity](../managed-identity-from-cli.md) .
 

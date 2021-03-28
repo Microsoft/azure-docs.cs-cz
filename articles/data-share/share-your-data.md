@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659620"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639537"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: Sdílení dat prostřednictvím služby Azure Data Share  
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Povolte plán snímků pro sdílenou složku dat. 
 > * Přidejte do ní příjemce. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlašovací e-mailová adresa Azure vašeho příjemce (pomocí e-mailového aliasu nebude fungovat).
@@ -42,23 +42,10 @@ V tomto kurzu se naučíte:
 Níže je uveden seznam požadavků pro sdílení dat ze zdroje SQL. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Předpoklady pro sdílení z Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW)
-Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](https://youtu.be/hIE-TjJD8Dc) .
 
 * Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW) s tabulkami a zobrazeními, které chcete sdílet.
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
-* Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k databázi. To lze provést pomocí následujících kroků: 
-    1. V Azure Portal přejděte na SQL Server a nastavte si ho jako **správce Azure Active Directory**.
-    1. Připojení k Azure SQL Database/datový sklad pomocí [Editoru dotazů](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) nebo SQL Server Management Studio Azure Active Directory ověřování. 
-    1. Spusťte následující skript, který přidá identitu spravovaného prostředku sdílené dat jako db_datareader. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 
-    
-        ```sql
-        create user "<share_acct_name>" from external provider;     
-        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
-        ```                   
-       Všimněte si, že *<share_acc_name>* je název vašeho prostředku pro sdílení dat. Pokud jste ještě nevytvořili prostředek pro sdílení dat, můžete se k tomuto předběžnému požadavku vrátit později.  
-
-* Uživatel Azure SQL Database s přístupem **"db_datareader"** , který umožňuje procházet a vybírat tabulky a zobrazení, která chcete sdílet. 
-
+* **Azure Active Directory správce** systému SQL Server
 * SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte na SQL Server. V levém navigačním panelu vyberte *brány firewall a virtuální sítě* .
     1. Klikněte na **Ano** , pokud chcete, aby *služby a prostředky Azure měly přístup k tomuto serveru*.
@@ -90,7 +77,6 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 ### <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Data Exploreru
 * Cluster Azure Průzkumník dat s databázemi, které chcete sdílet.
 * Oprávnění k zápisu do clusteru Azure Průzkumník dat, který se nachází v *Microsoft. Kusto/Clusters/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
-* Oprávnění k přidání přiřazení role do clusteru Azure Průzkumník dat, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli **Vlastník**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -186,7 +172,7 @@ K vytvoření prostředku použijte tyto příkazy:
 
     ![Přidání datových sad do sdílené složky](./media/datasets.png "Datové sady")
 
-1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. Pokud sdílíte z Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW), budete vyzváni k zadání přihlašovacích údajů SQL k vypsání tabulek.
+1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. Pokud sdílíte z Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW), budete vyzváni k zadání metody ověřování k vypsání tabulek. Vyberte ověřování AAD a zaškrtněte políčko dovolit, **aby sdílená data spouštěla skript "vytvořit uživatele" za jménem**. 
 
     ![AddDatasets](./media/add-datasets.png "Přidat datové sady")    
 
