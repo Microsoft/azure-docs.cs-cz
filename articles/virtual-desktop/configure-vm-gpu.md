@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018337"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709459"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace grafického procesoru (GPU) pro Windows Virtual Desktop
 
@@ -23,10 +23,10 @@ Podle pokynů v tomto článku vytvořte virtuální počítač Azure optimalizo
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Vyberte vhodnou velikost virtuálního počítače Azure optimalizované pro GPU
 
-Vyberte jednu z velikostí virtuálních počítačů Azure [NV-Series](../virtual-machines/nv-series.md), [NVv3-Series](../virtual-machines/nvv3-series.md)nebo [NVv4-Series](../virtual-machines/nvv4-series.md) . Jsou přizpůsobené pro virtualizaci aplikací a počítačů a umožňují zrychlit a povolit aplikace a uživatelské rozhraní Windows. Správná volba pro fond hostitelů závisí na mnoha faktorech, včetně konkrétních aplikačních úloh, požadované kvality uživatelského prostředí a nákladů. V obecném případě větší a užitečnější GPU nabízí lepší uživatelské prostředí při dané hustotě uživatelů, ale menší a zlomkové velikosti GPU umožňují přesnější kontrolu nad náklady a kvalitou.
+Vyberte jednu z velikostí virtuálních počítačů Azure [NV-Series](../virtual-machines/nv-series.md), [NVv3-Series](../virtual-machines/nvv3-series.md)nebo [NVv4-Series](../virtual-machines/nvv4-series.md) . Ty jsou přizpůsobené pro virtualizaci aplikací a počítačů a umožňují zrychlit využití GPU pro většinu aplikací a uživatelské rozhraní Windows. Správná volba pro fond hostitelů závisí na mnoha faktorech, včetně konkrétních aplikačních úloh, požadované kvality uživatelského prostředí a nákladů. V obecném případě větší a užitečnější GPU nabízí lepší uživatelské prostředí při dané hustotě uživatelů, ale menší a zlomkové velikosti GPU umožňují přesnější kontrolu nad náklady a kvalitou.
 
 >[!NOTE]
->Virtuální počítače Azure NC, NCv2, NCv3, ND a NDv2 Series obvykle nejsou vhodné pro hostitele relací virtuálních počítačů s Windows. Tyto virtuální počítače jsou přizpůsobené specializovaným, vysoce výkonným výpočetním nebo strojovým výukovým nástrojům, jako jsou ty, které jsou sestavené pomocí NVIDIA CUDA. Obecná akcelerace aplikací a počítačů pomocí NVIDIA GPU vyžaduje licencování NVIDIA GRID; Azure tuto službu poskytuje pro doporučené velikosti virtuálních počítačů, ale musí být uspořádaná samostatně pro virtuální počítače NC/ND-Series.
+>Virtuální počítače Azure NC, NCv2, NCv3, ND a NDv2 Series obvykle nejsou vhodné pro hostitele relací virtuálních počítačů s Windows. Tyto virtuální počítače jsou přizpůsobené specializovaným, vysoce výkonným výpočetním nebo strojovým výukovým nástrojům, jako jsou ty, které jsou sestavené pomocí NVIDIA CUDA. Nepodporují akceleraci GPU pro většinu aplikací nebo uživatelské rozhraní systému Windows.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Vytvoření fondu hostitelů, zřízení virtuálního počítače a konfigurace skupiny aplikací
 
@@ -41,9 +41,10 @@ Musíte taky nakonfigurovat skupinu aplikací nebo použít výchozí skupinu de
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instalace podporovaných grafických ovladačů ve vašem virtuálním počítači
 
-Pokud chcete využít výhod schopností GPU virtuálních počítačů Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat příslušné ovladače grafiky. Podle pokynů v části [podporované operační systémy a ovladače](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) nainstalujte ovladače od příslušného dodavatele grafiky, a to buď ručně, nebo pomocí rozšíření virtuálního počítače Azure.
+Pokud chcete využít výhod schopností GPU virtuálních počítačů Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat příslušné ovladače grafiky. Podle pokynů v části [podporované operační systémy a ovladače](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) nainstalujte ovladače. Podporují se jenom ovladače distribuované přes Azure.
 
-Pro virtuální počítače s Windows se podporují jenom ovladače distribuované pomocí Azure. Pro virtuální počítače Azure NV-Series s grafickými procesory NVIDIA, jenom [ovladače pro mřížku NVIDIA](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)a ne ovladače NVIDIA Tesla (CUDA), podporují akceleraci GPU pro aplikace a desktopy pro obecné účely.
+* Pro virtuální počítače Azure NV-Series nebo NVv3-Series, jenom ovladače NVIDIA GRID, nikoli ovladače NVIDIA CUDA, podporují akceleraci GPU pro většinu aplikací a uživatelské rozhraní Windows. Pokud se rozhodnete nainstalovat ovladače ručně, nezapomeňte nainstalovat ovladače mřížky. Pokud se rozhodnete nainstalovat ovladače pomocí rozšíření virtuálního počítače Azure, ovladače mřížky se automaticky nainstalují pro tyto velikosti virtuálních počítačů.
+* Pro virtuální počítače Azure NVv4-Series nainstalujte ovladače AMD poskytované Azure. Můžete je nainstalovat automaticky pomocí rozšíření virtuálního počítače Azure, nebo je můžete nainstalovat ručně.
 
 Po instalaci ovladače se vyžaduje restartování virtuálního počítače. Pomocí kroků pro ověření výše uvedených pokynů potvrďte, že ovladače grafiky byly úspěšně nainstalovány.
 

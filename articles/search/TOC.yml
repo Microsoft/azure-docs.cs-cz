@@ -420,7 +420,7 @@
           href: search-security-rbac.md
     - name: Monitorování
       items:
-        - name: Základy
+        - name: Přehled
           href: search-monitor-usage.md
         - name: Protokolování diagnostiky
           href: search-monitor-logs.md

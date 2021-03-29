@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cf500d529eb22cdd333d796f156eedcd284ea20d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110827"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642306"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu 
 
@@ -26,122 +26,73 @@ Další informace o konkrétních jazycích a funkcích sady SDK najdete v téma
 
 ## <a name="chat-overview"></a>Přehled chatu    
 
-Chatové konverzace se vyskytují v rámci konverzačních vláken. Vlákno konverzace může obsahovat mnoho zpráv a mnoho uživatelů. Každá zpráva patří do jednoho vlákna a uživatel může být součástí jednoho nebo více vláken. Každý uživatel ve vlákně chatu se nazývá účastník. Pouze účastníci vlákna mohou odesílat a přijímat zprávy a přidávat nebo odebírat další uživatele ve vlákně chatu. Komunikační služby ukládají historii chatů, dokud neprovedete operaci odstranění ve vlákně nebo zprávě chatu nebo dokud žádní účastníci nezůstanou ve vlákně chatu, kdy je vlákno konverzace osamocené a ve frontě se odstraní. 
-    
-## <a name="service-limits"></a>Omezení služby   
+Chatové konverzace se vyskytují v rámci **konverzačních vláken**. Vlákna chatu mají následující vlastnosti:
 
+- Vlákno chatu je jedinečným způsobem identifikováno `ChatThreadId` . 
+- Vlákna chatu můžou mít jednoho nebo více uživatelů, kteří jim můžou poslat zprávy. 
+- Uživatel může být součástí jednoho nebo více vláken chatu. 
+- Pouze účastníci vlákna mají přístup k danému vláknu chatu a mohou provádět pouze operace s vlákny chatu. Mezi tyto operace patří odesílání a příjem zpráv, přidávání účastníků a odebírání účastníků. 
+- Uživatelé jsou automaticky přidáni jako účastník na všechna zřetězená vlákna, která vytvoří.
+
+### <a name="user-access"></a>Přístup uživatelů
+Tvůrce vlákna a účastníci obvykle mají stejnou úroveň přístupu ke vláknu a můžou spouštět všechny související operace, které jsou v sadě SDK dostupné, včetně jejich odstranění. Účastníci nemají oprávnění k zápisu zpráv odesílaných jinými účastníky, což znamená, že odeslané zprávy může aktualizovat nebo odstranit pouze odesílatel zprávy. Pokud se k tomu pokusí další účastník, zobrazí se chyba. 
+
+Pokud chcete omezit přístup k funkcím chatu pro skupinu uživatelů, můžete nakonfigurovat přístup jako součást vaší důvěryhodné služby. Vaše důvěryhodná služba je služba, která orchestruje ověřování a autorizaci účastníků chatu. Podrobněji to prozkoumáme níže.  
+
+### <a name="chat-data"></a>Data chatu 
+Komunikační služby ukládají historii chatu, dokud je explicitně neodstraníte. Účastníci vlákna konverzace můžou použít `ListMessages` k zobrazení historie zpráv pro konkrétní vlákno. Uživatelé odebrání z konverzačního vlákna budou moci zobrazit předchozí historii zpráv, ale nebudou moci odesílat ani přijímat nové zprávy jako součást tohoto konverzačního vlákna. Plně nečinné vlákno bez účastníků se po 30 dnech automaticky odstraní. Další informace o datech uložených komunikačními službami najdete v dokumentaci o [ochraně osobních údajů](../privacy.md).  
+
+### <a name="service-limits"></a>Omezení služby  
 - Maximální počet účastníků povolených ve vlákně chatu je 250.   
 - Maximální povolená velikost zprávy je přibližně 28 KB.  
 - Pro vlákna chatu s více než 20 účastníky se příjem čtení a zadávání funkcí indikátoru nepodporuje.    
-- 
+
 ## <a name="chat-architecture"></a>Architektura chatu    
 
 K dispozici jsou dvě základní součásti pro konverzaci: 1) klientská aplikace pro důvěryhodné služby a 2).    
 
 :::image type="content" source="../../media/chat-architecture.png" alt-text="Diagram znázorňující architekturu chatu komunikačních služeb"::: 
 
- - **Důvěryhodná služba:** Aby bylo možné správně spravovat relaci konverzace, potřebujete službu, která vám pomůže se připojit ke komunikačním službám pomocí připojovacího řetězce prostředků. Tato služba zodpovídá za vytváření chatovacích vláken, správě seznamů účastníků vlákna a poskytování přístupových tokenů uživatelům. Další informace o přístupových tokenech najdete v našem rychlém startu [přístupových tokenů](../../quickstarts/access-tokens.md) .   
- - **Klientská aplikace:**  Klientská aplikace se připojí k vaší důvěryhodné službě a získá přístupové tokeny, které se používají pro připojení přímo ke komunikačním službám. Po navázání tohoto připojení může klientská aplikace odesílat a přijímat zprávy.   
-K vygenerování přístupových tokenů doporučujeme použít úroveň důvěryhodné služby. V tomto scénáři by strana na straně serveru byla zodpovědná za vytváření a správu uživatelů a vydávání tokenů.   
+ - **Důvěryhodná služba:** Aby bylo možné správně spravovat relaci konverzace, potřebujete službu, která vám pomůže se připojit ke komunikačním službám pomocí připojovacího řetězce prostředků. Tato služba zodpovídá za vytváření chatovacích vláken, přidávání a odebírání účastníků a vydávání přístupových tokenů uživatelům. Další informace o přístupových tokenech najdete v našem rychlém startu [přístupových tokenů](../../quickstarts/access-tokens.md) .  
+ - **Klientská aplikace:**  Klientská aplikace se připojí k vaší důvěryhodné službě a získá přístupové tokeny, které používají uživatelé pro připojení přímo ke komunikačním službám. Jakmile vaše důvěryhodná služba vytvoří chatovací vlákno a přidají uživatele jako účastníky, může pomocí klientské aplikace připojit se k konverzačnímu vláknu a odesílat zprávy. Použijte funkci oznámení v reálném čase, kterou budeme podrobněji popsáni v klientské aplikaci, abyste se mohli přihlásit k odběru zprávy &ch vláken od jiných účastníků.
+    
         
 ## <a name="message-types"></a>Typy zpráv    
 
-Služba Communications Services chat sdílí uživatelem generované zprávy i zprávy generované systémem, které se nazývají **aktivity vláken**. Aktivity vlákna jsou generovány při aktualizaci vlákna chatu. Při volání `List Messages` nebo `Get Messages` v konverzačním vlákně bude výsledek obsahovat textové zprávy generované uživatelem a také systémové zprávy v chronologickém pořadí. To vám pomůže určit, kdy se účastník přidal nebo odebral nebo když se aktualizovalo téma konverzačního vlákna. Podporované typy zpráv:  
-    
- - `Text`: Zpráva s prostým textem složená a odeslaná uživatelem jako součást konverzace chatu. 
- - `RichText/HTML`: Naformátovaná textová zpráva. Všimněte si, že uživatelé komunikačních služeb aktuálně nemůžou odesílat zprávy RTF. Tento typ zprávy je podporován zprávami odesílanými od týmů uživatelů ke komunikačním službám ve scénářích spolupráce týmů.   
- - `ThreadActivity/ParticipantAdded`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna. Například: 
+V rámci historie zpráv chat sdílí uživatelem generované zprávy i zprávy generované systémem. Systémové zprávy jsou generovány při aktualizaci vlákna chatu a mohou poznat, kdy byl účastník přidán nebo odebrán nebo když bylo aktualizováno téma konverzačního vlákna. Při volání `List Messages` nebo `Get Messages` v konverzačním vlákně bude výsledek obsahovat jak typ zprávy, tak v chronologickém pořadí.
+
+U uživatelem generovaných zpráv je možné typ zprávy nastavit `SendMessageOptions` při odesílání zprávy do konverzačního vlákna. Pokud není zadána žádná hodnota, budou ve výchozím nastavení služby Communications `text` Type. Nastavení této hodnoty je důležité při posílání kódu HTML. Když `html` se zadá, komunikační služby upraví obsah, aby se zajistilo, že se na klientských zařízeních bezpečně vykreslí.
+ - `text`: Zpráva s prostým textem složená a odeslaná uživatelem jako součást konverzačního vlákna. 
+ - `html`: Formátovaná zpráva pomocí HTML, která se skládá a odesílá uživatelem jako součást konverzačního vlákna. 
+
+Typy systémových zpráv: 
+ - `participantAdded`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna.
+ - `participantRemoved`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna.
+ - `topicUpdated`: Systémová zpráva, která indikuje, že téma vlákna bylo aktualizováno.
+
+## <a name="real-time-notifications"></a>Oznámení v reálném čase  
+
+Některé sady SDK (například JavaScript Chat SDK) podporují oznámení v reálném čase. Tato funkce umožňuje klientům naslouchat komunikačním službám pro aktualizace v reálném čase a příchozí zprávy do konverzačního vlákna, aniž by museli dotazovat rozhraní API. Klientská aplikace se může přihlásit k odběru následujících událostí:
+ - `chatMessageReceived` – Když účastník odešle novou zprávu do konverzačního vlákna.
+ - `chatMessageEdited` – Při úpravě zprávy ve vlákně chatu. 
+ - `chatMessageDeleted` – Při odstranění zprávy ve vlákně chatu.   
+ - `typingIndicatorReceived` – když jiný účastník pošle do konverzačního vlákna indikátor zápisu.    
+ - `readReceiptReceived` – když jiný účastník pošle oznámení o přečtení pro zprávu, kterou si přečte.  
+ - `chatThreadCreated` – Když uživatel komunikačních služeb vytvoří vlákno konverzace.    
+ - `chatThreadDeleted` – Když uživatel komunikačních služeb odstraní vlákno konverzace.    
+ - `chatThreadPropertiesUpdated` – Když se aktualizují vlastnosti vlákna chatu; v současné době je podporována pouze aktualizace tématu pro vlákno. 
+ - `participantsAdded` – Když se uživatel přidá jako účastník konverzačního vlákna.     
+ - `participantsRemoved` – Při odebrání existujícího účastníka z konverzačního vlákna.
+
+Oznámení v reálném čase je možné využít k poskytování možností chatování v reálném čase pro vaše uživatele. Aby bylo možné odesílat nabízená oznámení pro zprávy, které nezmizí vaši uživatelé, zatímco byly pryč, komunikační služby se integrují s Azure Event Grid pro publikování událostí souvisejících s chatem (operace post), které se dají připojit do vlastní služby oznámení aplikací. Další podrobnosti najdete v tématu [události serveru](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
 
-``` 
-{   
-            "id": "1613589626560",  
-            "type": "participantAdded", 
-            "sequenceId": "7",  
-            "version": "1613589626560", 
-            "content":  
-            {   
-                "participants": 
-                [   
-                    {   
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
-                        "displayName": "Jane",  
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
-                    }   
-                ],  
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:26Z" 
-        }   
-``` 
+## <a name="build-intelligent-ai-powered-chat-experiences"></a>Vytváření inteligentních prostředí pro konverzaci s AI   
 
-- `ThreadActivity/ParticipantRemoved`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna. Například:  
-
-``` 
-{   
-            "id": "1613589627603",  
-            "type": "participantRemoved",   
-            "sequenceId": "8",  
-            "version": "1613589627603", 
-            "content":  
-            {   
-                "participants": 
-                [   
-                    {   
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
-                        "displayName": "Jane",  
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
-                    }   
-                ],  
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:27Z" 
-        }   
-``` 
-
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma vlákna bylo aktualizováno. Například:   
-``` 
-{   
-            "id": "1613589623037",  
-            "type": "topicUpdated", 
-            "sequenceId": "2",  
-            "version": "1613589623037", 
-            "content":  
-            {   
-                "topic": "New topic",   
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
-            },  
-            "createdOn": "2021-02-17T19:20:23Z" 
-        }   
-``` 
-
-## <a name="real-time-signaling"></a>Signalizace v reálném čase  
-
-Sada chat JavaScript SDK obsahuje signalizaci v reálném čase. To umožňuje klientům naslouchat v reálném čase aktualizace a příchozí zprávy do konverzačního vlákna, aniž by museli dotazovat rozhraní API. K dispozici jsou tyto události:
-
- - `ChatMessageReceived` – Při odeslání nové zprávy do konverzačního vlákna. Tato událost není odeslána pro automaticky generované systémové zprávy, které byly popsány v předchozím tématu.   
- - `ChatMessageEdited` – Při úpravě zprávy ve vlákně chatu. 
- - `ChatMessageDeleted` – Při odstranění zprávy ve vlákně chatu.   
- - `TypingIndicatorReceived` – když jiný účastník zapíše zprávu do konverzačního vlákna.   
- - `ReadReceiptReceived` – když jiný účastník přečte zprávu, že se uživatel poslal ve vlákně chatu.     
- - `ChatThreadCreated` – Když se vytvoří vlákno konverzace pro uživatele komunikace. 
- - `ChatThreadDeleted` – Když je vlákno konverzace odstraněno uživatelem komunikace. 
- - `ChatThreadPropertiesUpdated` – Když se aktualizují vlastnosti vlákna chatu; v současné době podporujeme pouze aktualizaci tématu vlákna.   
- - `ParticipantsAdded` – Když se uživatel přidá jako účastník do konverzačního vlákna.  
- - `ParticipantsRemoved` – Při odebrání existujícího účastníka z konverzačního vlákna.
-
-
-## <a name="chat-events"></a>Události chatu  
-
-Signalizace v reálném čase umožňuje uživatelům chatovat v reálném čase. Vaše služby můžou použít Azure Event Grid k přihlášení k odběru událostí souvisejících s chatem. Další podrobnosti najdete v tématu [zpracování událostí – koncepční](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
-
-
-## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>Povolení inteligentních funkcí pomocí Cognitive Services se sadou Chat SDK    
-
-[Rozhraní API pro rozpoznávání Azure](../../../cognitive-services/index.yml) se sadou Chat SDK můžete použít k přidání inteligentních funkcí do aplikací. Můžete například: 
+Pomocí [rozhraní API pro rozpoznávání Azure](../../../cognitive-services/index.yml) se sadou Chat SDK můžete vytvářet případy použití jako:
 
 - Umožněte uživatelům, aby v různých jazycích navzájemly konverzaci.  
-- Pomoc agentovi podpory určení priorit lístků pomocí zjištění negativního míněníu příchozího problému od zákazníka.   
+- Pomoc agentovi podpory určení priorit lístků zjištěním záporné mínění příchozí zprávy od zákazníka. 
 - Analyzujte příchozí zprávy pro detekci klíčů a rozpoznávání entit a pro uživatele v aplikaci podle obsahu zprávy vyzvat relevantní informace.
 
 Jedním ze způsobů, jak toho dosáhnout, je použít vaši důvěryhodnou službu jako účastníka konverzačního vlákna. Řekněme, že chcete povolit převod jazyka. Tato služba bude odpovědná za naslouchání zpráv vyměňovaných jinými účastníky [1], volání rozhraní API pro rozpoznávání obsahu pro překlad obsahu na požadovaný jazyk [2, 3] a odeslání přeloženého výsledku jako zprávy ve vlákně chatu [4].

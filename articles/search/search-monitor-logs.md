@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592466"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709935"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Shromažďování a analýza dat protokolu pro Azure Kognitivní hledání
 
-Diagnostické nebo provozní protokoly poskytují přehled o podrobných operacích služby Azure Kognitivní hledání a jsou užitečné pro monitorování procesů služeb a úloh. Interně, některé systémové informace v back-endu existují v krátké době, stačí pro šetření a analýzu, pokud zadáte lístek podpory. Pokud ale chcete, aby se pro provozní data řídil směr od sebe, měli byste nakonfigurovat nastavení diagnostiky, které určuje, kde se mají shromažďovat informace o protokolování.
+Diagnostické nebo provozní protokoly poskytují přehled o podrobných operacích služby Azure Kognitivní hledání a jsou užitečné pro monitorování procesů služeb a úloh. Interně společnost Microsoft zachovává systémové informace v back-endu po krátkou dobu (asi 30 dní), stačí pro šetření a analýzu, pokud zadáte lístek podpory. Pokud ale chcete vlastnictví pro provozní data, měli byste nakonfigurovat nastavení diagnostiky, které určuje, kde se mají shromažďovat informace o protokolování.
 
 Protokolování diagnostiky je povoleno prostřednictvím integrace s [Azure monitor](../azure-monitor/index.yml). 
 
@@ -29,7 +29,7 @@ Při nastavování diagnostického protokolování budete požádáni o zadání
 | [Archivace s úložištěm objektů BLOB](../storage/blobs/storage-blobs-overview.md) | Události a metriky se archivují do kontejneru objektů BLOB a ukládají se do souborů JSON. Protokoly můžou být poměrně podrobné (za hodinu a minutu), které jsou užitečné pro zkoumání konkrétního incidentu, ale ne pro vyšetřování otevřeného a nedokončeného. K zobrazení nezpracovaného souboru protokolu nebo Power BI k agregaci a vizualizaci dat protokolu použijte Editor JSON.|
 | [Streamování do centra událostí](../event-hubs/index.yml) | Události a metriky se streamují do služby Azure Event Hubs. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvářejte prostředky předem, abyste při konfiguraci diagnostického protokolování mohli vybrat jednu nebo víc.
 
@@ -76,14 +76,14 @@ Dvě tabulky obsahují protokoly a metriky pro Azure Kognitivní hledání: **Az
 
 1. Zadejte následující dotaz, který vrátí tabelární sadu výsledků.
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. Opakujte předchozí kroky, počínaje **AzureDiagnostics** a vraťte všechny sloupce pro informativní účely, a potom klikněte na další selektivní dotaz, který extrahuje zajímavé informace.
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ Pokud jste povolili diagnostické protokolování, můžete zadat dotaz na **Azu
 
 Vrátí seznam operací a počet každého z nich.
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 Porovnejte požadavky na dotazy s operacemi indexování a vykreslete datové body v grafu s časovým plánem, abyste viděli, že se operace shodují.
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')

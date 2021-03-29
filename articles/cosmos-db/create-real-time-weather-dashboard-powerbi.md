@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73251fcbe9f149979d3fd62d14bbca86d77027f2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101657532"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640144"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -72,7 +72,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
    
    |Vlastnost  |Datový typ  |Filtrovat  |
    |---------|---------|---------|
-   |_ts     |   Číselný      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
+   |_ts        |   Číselný      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
    |Datum (například:-2019-08-19)     |   Řetězec      | [Document. Date] > DateTime. ToText (RangeStart, "rrrr-MM-DD") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-MM-DD")        |
    |Datum (například:-2019-08-11 12:00:00)   |  Řetězec       |  [Document. Date] > DateTime. ToText (RangeStart, "rrrr-mm-dd HH: mm: SS") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-mm-dd HH: mm: SS")       |
 
@@ -100,7 +100,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Vytvořit nový cluster Azure Analysis Services**  -  [Vytvořte instanci služby Azure Analysis Services](../analysis-services/analysis-services-create-server.md) ve stejné oblasti jako účet Azure Cosmos a cluster datacihly.
 
-1. **Vytvoření nového Analysis Services tabulkového projektu v aplikaci Visual Studio**  -   [Nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
+1. **Vytvoření nového Analysis Services tabulkového projektu v aplikaci Visual Studio**  -   [Nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Vytvořit Azure Analysis Services projekt":::
 

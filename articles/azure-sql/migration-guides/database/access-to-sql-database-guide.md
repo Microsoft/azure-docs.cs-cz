@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 48fe734b382d661f96a86ede181a1258e38120a1
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626533"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643593"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Průvodce migrací: přístup k Azure SQL Database
 
@@ -171,7 +171,7 @@ Další pomoc s dokončením tohoto scénáře migrace najdete v následujícím
 | --- | --- |
 | [Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Nabízí navrhované cílové platformy, připravenost do cloudu a úrovně nápravy aplikací a databází pro zadané úlohy. Nabízí jednoduché sestavování s jedním kliknutím a generování sestav, které pomáhá zrychlit vyhodnocení velkých nemovitostí poskytnutím automatizovaného procesu pro rozhodování zaměřeného na cílovou platformu. |
 
-Datový tým SQL pro vývoj dat vyvinul tento prostředek. Základní Chart týmu je odblokování a urychlení komplexní modernizace pro projekty migrace datové platformy na datovou platformu Azure od Microsoftu.
+Data tým SQL Engineering vyvinuli tyto prostředky. Základní Chart týmu je odblokování a urychlení komplexní modernizace pro projekty migrace datové platformy na datovou platformu Azure od Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 

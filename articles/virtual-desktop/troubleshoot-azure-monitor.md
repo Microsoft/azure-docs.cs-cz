@@ -1,24 +1,21 @@
 ---
-title: Řešení potíží s monitorováním ve verzi Preview virtuálních počítačů s Windows – Azure
+title: Řešení potíží s monitorováním virtuálního počítače s Windows – Azure
 description: Řešení potíží s Azure Monitor pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a07d7536d3d71b121c1dde761d8c290b8be01fe7
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: dda58868432248fe93a9fbc83d1e538dfc9b61ba
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628454"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709442"
 ---
-# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Řešení potíží s Azure Monitor pro virtuální počítače s Windows (Preview)
+# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Řešení potíží s Azure Monitor pro virtuální počítače s Windows
 
->[!IMPORTANT]
->Azure Monitor pro virtuální počítač s Windows je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Tento článek obsahuje známé problémy a řešení pro běžné problémy v Azure Monitor pro virtuální počítače s Windows (Preview).
+Tento článek obsahuje známé problémy a řešení pro běžné problémy v Azure Monitor pro virtuální počítače s Windows.
 
 ## <a name="issues-with-configuration-and-setup"></a>Problémy s konfigurací a nastavením
 

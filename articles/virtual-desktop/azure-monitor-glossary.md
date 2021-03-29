@@ -1,24 +1,21 @@
 ---
-title: Glosář pro monitorování virtuálních klientských počítačů s Windows – Azure
+title: Glosář monitorování virtuálních ploch Windows – Azure
 description: Glosář pojmů a konceptů souvisejících s Azure Monitor pro virtuální počítače s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 3/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627128"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709527"
 ---
-# <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Glosář Azure Monitor pro virtuální počítače s Windows (Preview)
-
->[!IMPORTANT]
->Azure Monitor pro virtuální počítač s Windows je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Glosář Azure Monitor pro virtuální počítače s Windows
 
 Tento článek uvádí a stručně popisuje klíčové pojmy a koncepty týkající se Azure Monitor pro virtuální počítače s Windows (Preview).
 

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176854"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709714"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -33,7 +33,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
@@ -98,7 +98,7 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 Pokud chcete otestovat přihlášení k *synchronizaci hodnot hash hesel* pomocí připraveného zavedení, postupujte podle pokynů v následující části.
 
-Informace o tom, které rutiny prostředí PowerShell použít, najdete v tématu [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Informace o tom, které rutiny prostředí PowerShell použít, najdete v tématu [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Předběžná práce pro synchronizaci hodnot hash hesel
 
@@ -251,9 +251,9 @@ Odpověď: Ne, tato funkce je navržena pro testování cloudového ověřován�
 
 **Otázka: mohu použít PowerShell k provedení připraveného zavedení?**
 
-Odpověď: Ano. Další informace o tom, jak používat PowerShell k provádění připraveného zavedení, najdete v tématu [Azure AD Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Odpověď: Ano. Další informace o tom, jak používat PowerShell k provádění připraveného zavedení, najdete v tématu [Azure AD Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="next-steps"></a>Další kroky
-- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [Změna metody přihlášení na synchronizaci hodnot hash hesel](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [Změna metody přihlášení na předávací ověřování](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

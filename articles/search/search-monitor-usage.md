@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa224a09317aafd49ae10c89ae0c50455ddd4602
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592365"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709918"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitorování operací a aktivit Azure Kognitivní hledání
 
@@ -38,9 +38,9 @@ Následující snímek obrazovky vám pomůže najít informace o monitorování
 
 * Karta **monitorování** na hlavní stránce Přehled zobrazuje objem dotazů, latenci a informace o tom, zda je služba pod tlakem.
 * **Protokol aktivit** v levém navigačním podokně je připojený k Azure Resource Manager. Sestavy protokolu aktivit jsou založené na akcích, které provádí Správce prostředků: dostupnost služby a stav, změny kapacity (repliky a oddíly) a aktivity týkající se klíčů rozhraní API.
-* Nastavení **monitorování** , dále mimo provoz, poskytuje konfigurovatelné výstrahy, metriky a diagnostické protokoly. Můžete je vytvořit, až je budete potřebovat. Po shromáždění a uložení dat můžete zadávat dotazy nebo vizualizovat informace pro přehledy.
+* Nastavení **monitorování** , dále mimo provoz, poskytuje konfigurovatelné výstrahy, vizualizaci metrik a diagnostické protokoly. Můžete je vytvořit, až je budete potřebovat. Po shromáždění a uložení dat můžete zadávat dotazy nebo vizualizovat informace pro přehledy.
 
-![Azure Monitor integrace ve službě vyhledávání](./media/search-monitor-usage/azure-monitor-search.png
+  ![Azure Monitor integrace ve službě vyhledávání](./media/search-monitor-usage/azure-monitor-search.png
  "Azure Monitor integrace ve službě vyhledávání")
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Monitor má svou vlastní fakturační strukturu a diagnostické protokoly
 
 ## <a name="monitor-user-access"></a>Sledovat přístup uživatelů
 
-Vzhledem k tomu, že indexy vyhledávání jsou součástí větší klientské aplikace, neexistuje žádná předdefinovaná metodologie pro řízení a monitorování přístupu pro jednotlivé uživatele k indexu. Předpokládá se, že požadavky pocházejí z klientské aplikace, a to buď pro žádosti správce, nebo na dotazy. Operace čtení a zápisu pro správce zahrnují vytváření, aktualizaci a odstraňování objektů napříč celou službou. Operace jen pro čtení jsou dotazy na kolekci dokumentů vymezené na jeden index. 
+Vzhledem k tomu, že indexy vyhledávání jsou součástí větší klientské aplikace, neexistuje žádná předdefinovaná metodologie pro řízení a monitorování přístupu pro jednotlivé uživatele k indexu. Předpokládá se, že požadavky pocházejí z klientské aplikace, které obsahují žádost o správu nebo dotaz. Operace čtení a zápisu pro správce zahrnují vytváření, aktualizaci a odstraňování objektů napříč celou službou. Operace jen pro čtení jsou dotazy na kolekci dokumentů vymezené na jeden index. 
 
 Jak vidíte v protokolech aktivit, jsou odkazy na volání pomocí klíčů správce nebo klíčů dotazů. Příslušný klíč je součástí požadavků, které pocházejí z kódu klienta. Služba není vybavena pro zpracování tokenů identity nebo zosobnění.
 

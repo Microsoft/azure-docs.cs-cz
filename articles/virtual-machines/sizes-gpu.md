@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a63a468301a5b0d54abd474fd9bb62212b890f76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09d62ea5f2db77c14e8faff44de7fb3ce759c6fe
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102554411"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709731"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro grafické procesory
 
@@ -31,11 +31,13 @@ Velikosti virtuálních počítačů optimalizované pro GPU jsou specializovan�
 
 Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače NVIDIA nebo AMD GPU.
 
-- Pro virtuální počítače, které jsou zajištěné grafickými procesory NVIDIA, nainstaluje [rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) příslušné ovladače NVIDIA CUDA nebo Grid. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).   
+- Pro virtuální počítače, které jsou zajištěné grafickými procesory NVIDIA, nainstaluje [rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) příslušné ovladače NVIDIA CUDA nebo Grid. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).
 
    Alternativně můžete ovladače NVIDIA GPU nainstalovat ručně. Další informace najdete v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s Windows](./windows/n-series-driver-setup.md) nebo [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s operačním systémem Linux](./linux/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
-- Pro virtuální počítače, které jsou založené na technologii AMD GPU, najdete informace v tématu [instalace ovladačů AMD GPU na virtuálních počítačích řady N-Series](./windows/n-series-amd-driver-setup.md) se systémem Windows pro podporované operační systémy, ovladače, instalace a postupy ověření.
+- Pro virtuální počítače, které jsou zajištěné technologií AMD GPU, nainstaluje [rozšíření ovladače AMD GPU](./extensions/hpccompute-amd-gpu-windows.md) příslušné ovladače AMD. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).
+
+   Alternativně můžete ovladače AMD GPU nainstalovat ručně. Podporované operační systémy, ovladače, instalace a postupy ověření najdete v tématu [instalace ovladačů AMD GPU pro virtuální počítače řady N-Series se systémem Windows](./windows/n-series-amd-driver-setup.md) .
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 

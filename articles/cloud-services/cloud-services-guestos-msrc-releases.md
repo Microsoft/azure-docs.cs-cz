@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/12/2021
+ms.date: 3/28/2021
 ms.author: gunnarc
-ms.openlocfilehash: 8cdec61b971e7028326a22ac7f7bd6046376427b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: c9a4a5229629b2a65b167a80fce8e502612dcf3c
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559107"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709901"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
 
 ## <a name="march-2021-guest-os"></a>Hostovaný operační systém od března 2021
 
->[!NOTE] 
-
->Hostovaný operační systém je v tuto chvíli odebírán na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému. Tento seznam se může změnit. 
 
 | Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 21-03 |  [5000822]  |  Nejnovější kumulativní aktualizace (LCU) | 6,29 | 9. března 2021 |
-|  Rel. 21-03 |  [4580325]  |  Aktualizace pro Flash | 3,95, 4,88, 5,53, 6,29 | 13. října 2020 |
-|  Rel. 21-03 |  [5000800]  |  Kumulativní aktualizace IE | 2,108, 3,95, 4,88 | 9. března 2021 |
-|  Rel. 21-03 |  [5000803]  |  Nejnovější kumulativní aktualizace (LCU) | 5,53 | 9. března 2021 |
-|  Rel. 21-03 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 2,108 | 13. října 2020 |
-|  Rel. 21-03 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | 2,108 | 13. října 2020 |
-|  Rel. 21-03 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 4,88 | 13. října 2020 |
-|  Rel. 21-03 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | 4,88 | 13. října 2020 |
-|  Rel. 21-03 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 3,95 | 13. října 2020 |
-|  Rel. 21-03 |  [4578954]  |  . .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality  | 3,95 | 13. října 2020 |
-|  Rel. 21-03 |  [4601060]  |  . .NET Framework 3,5 a kumulativní aktualizace 4.7.2  | 6,29 | 9. února 2021 |
-|  Rel. 21-03 |  [5000841]  |  Měsíční souhrn  | 2,108 | 9. března 2021 |
-|  Rel. 21-03 |  [5000847]  |  Měsíční souhrn  | 3,95 | 9. března 2021 |
-|  Rel. 21-03 |  [5000848]  |  Měsíční souhrn  | 4,88 | 9. března 2021 |
-|  Rel. 21-03 |  [4566426]  |  Aktualizace servisního zásobníku  | 3,95 | 14. července 2020 |
-|  Rel. 21-03 |  [4566425]  |  Aktualizace servisního zásobníku  | 4,88 | 14. července 2020 |
-|  Rel. 21-03 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení  | 4,88 | 19. srpna 2020 |
-|  Rel. 21-03 |  [4592510]  |  Aktualizace servisního zásobníku  | 2,108 | 8. prosince 2020 |
-|  Rel. 21-03 |  [5000859]  |  Aktualizace servisního zásobníku  | 6,29 | 9. března 2021 |
-|  Rel. 21-03 |  [4494175]  |  Vyžádal povolení mikrokódu  | 5,53 | Od 1. září 2020 |
-|  Rel. 21-03 |  [4494174]  |  Vyžádal povolení mikrokódu  | 6,29 | Od 1. září 2020 |
+|  Rel. 21-03 |  [5000822]  |  Nejnovější kumulativní aktualizace (LCU) | [6,29] | 9. března 2021 |
+|  Rel. 21-03 |  [4580325]  |  Aktualizace pro Flash | [3,95], [4,88], [5,53], [6,29] | 13. října 2020 |
+|  Rel. 21-03 |  [5000800]  |  Kumulativní aktualizace IE | [2,108], [3,95], [4,88] | 9. března 2021 |
+|  Rel. 21-03 |  [5000803]  |  Nejnovější kumulativní aktualizace (LCU) | [5,53] | 9. března 2021 |
+|  Rel. 21-03 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | [2,108] | 13. října 2020 |
+|  Rel. 21-03 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | [2,108] | 13. října 2020 |
+|  Rel. 21-03 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | [4,88] | 13. října 2020 |
+|  Rel. 21-03 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | [4,88] | 13. října 2020 |
+|  Rel. 21-03 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | [3,95] | 13. října 2020 |
+|  Rel. 21-03 |  [4578954]  |  . .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality  | [3,95] | 13. října 2020 |
+|  Rel. 21-03 |  [4601060]  |  . .NET Framework 3,5 a kumulativní aktualizace 4.7.2  | [6,29] | 9. února 2021 |
+|  Rel. 21-03 |  [5000841]  |  Měsíční souhrn  | [2,108] | 9. března 2021 |
+|  Rel. 21-03 |  [5000847]  |  Měsíční souhrn  | [3,95] | 9. března 2021 |
+|  Rel. 21-03 |  [5000848]  |  Měsíční souhrn  | [4,88] | 9. března 2021 |
+|  Rel. 21-03 |  [4566426]  |  Aktualizace servisního zásobníku  | [3,95] | 14. července 2020 |
+|  Rel. 21-03 |  [4566425]  |  Aktualizace servisního zásobníku  | [4,88] | 14. července 2020 |
+|  Rel. 21-03 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení  | [4,88] | 19. srpna 2020 |
+|  Rel. 21-03 |  [4592510]  |  Aktualizace servisního zásobníku  | [2,108] | 8. prosince 2020 |
+|  Rel. 21-03 |  [5000859]  |  Aktualizace servisního zásobníku  | [6,29] | 9. března 2021 |
+|  Rel. 21-03 |  [4494175]  |  Vyžádal povolení mikrokódu  | [5,53] | Od 1. září 2020 |
+|  Rel. 21-03 |  [4494174]  |  Vyžádal povolení mikrokódu  | [6,29] | Od 1. září 2020 |
 
 [5000822]: https://support.microsoft.com/kb/5000822
 [4580325]: https://support.microsoft.com/kb/4580325
@@ -73,7 +70,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [5000859]: https://support.microsoft.com/kb/5000859
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
-
+[2,108]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,95]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,88]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,53]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,29]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="february-2021-guest-os"></a>2021. února hostovaný operační systém
 

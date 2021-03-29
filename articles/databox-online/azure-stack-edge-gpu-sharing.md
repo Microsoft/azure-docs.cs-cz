@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6683e39cfa3601b1ae1fbbe02e69e4dc0a54e8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564891"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645231"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>Sdílení GPU na zařízení s grafickým procesorem Azure Stack Edge pro
 
-Graphics Processing Unit (GPU) je specializovaný procesor navržený tak, aby urychlil vykreslování grafiky. GPU můžou souběžně zpracovávat spoustu dat, což je užitečné pro strojové učení, úpravy videa a herní aplikace. Kromě procesoru pro výpočetní prostředky pro obecné účely můžou vaše zařízení Azure Stack Edge pro používat jeden nebo dva GPU NVIDIA Tesla T4 pro úlohy náročné na výpočetní výkon, jako je například hardwarová akcelerace Inferencing. Další informace najdete v tématu [grafický procesor Tesla T4 na NVIDIA](https://www.nvidia.com/data-center/tesla-t4/).
+Graphics Processing Unit (GPU) je specializovaný procesor navržený tak, aby urychlil vykreslování grafiky. GPU můžou souběžně zpracovávat spoustu dat, což je užitečné pro strojové učení, úpravy videa a herní aplikace. Kromě procesoru pro výpočetní prostředky pro obecné účely můžou vaše zařízení Azure Stack Edge pro používat jeden nebo dva GPU NVIDIA Tesla T4 pro úlohy náročné na výpočetní výkon, jako je například hardwarová akcelerace Inferencing. Další informace najdete v tématu [grafický procesor Tesla T4 na NVIDIA](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 
 
 ## <a name="about-gpu-sharing"></a>O sdílení GPU

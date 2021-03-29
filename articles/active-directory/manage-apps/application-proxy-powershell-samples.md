@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566647"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709476"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Příklady Azure AD PowerShellu pro Azure Proxy aplikací služby AD
 
@@ -32,7 +32,7 @@ Další informace o rutinách použitých v těchto ukázkách najdete v tématu
 | [Seznam základních informací pro všechny aplikace proxy aplikací](scripts/powershell-get-all-app-proxy-apps-basic.md) | Uvádí základní informace o všech aplikacích proxy aplikací ve vašem adresáři (AppId, DisplayName, ObjId). |
 | [Zobrazit rozšířené informace pro všechny aplikace proxy aplikací](scripts/powershell-get-all-app-proxy-apps-extended.md) | Zobrazí seznam rozšířených informací (AppId, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) o všech aplikacích proxy aplikací ve vašem adresáři.  |
 | [Vypsat všechny aplikace proxy aplikací podle skupiny konektorů](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Obsahuje seznam informací o všech aplikacích proxy aplikací ve vašem adresáři a skupin konektorů, ke kterým jsou aplikace přiřazené. |
-| [Získat všechny aplikace proxy aplikací pomocí zásad životnosti tokenů](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Zobrazí všechny aplikace proxy aplikací ve vašem adresáři se zásadami životnosti tokenu a jeho podrobnostmi. Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modulu graphu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview). |
+| [Získat všechny aplikace proxy aplikací pomocí zásad životnosti tokenů](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Zobrazí všechny aplikace proxy aplikací ve vašem adresáři se zásadami životnosti tokenu a jeho podrobnostmi. Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modulu graphu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true). |
 |**Skupiny konektorů**||
 | [Získat všechny skupiny konektorů a konektory v adresáři](scripts/powershell-get-all-connectors.md) | Zobrazí seznam všech skupin konektorů a konektorů ve vašem adresáři. |
 | [Přesunout všechny aplikace přiřazené ke skupině konektorů do jiné skupiny konektorů](scripts/powershell-move-all-apps-to-connector-group.md) | Přesune všechny aktuálně přiřazené aplikace do skupiny konektorů do jiné skupiny konektorů. |

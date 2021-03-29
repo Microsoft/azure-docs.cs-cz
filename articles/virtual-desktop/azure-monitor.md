@@ -1,24 +1,21 @@
 ---
-title: Použití monitorování virtuálních klientských počítačů s Windows ve verzi Preview – Azure
+title: Použití monitorování virtuálních klientských počítačů s Windows – Azure
 description: Jak používat Azure Monitor pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1c87763cb2ca482fc8ee15588d7287f0d9275fff
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627162"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709544"
 ---
-# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Monitorování nasazení pomocí Azure Monitor pro virtuální počítač s Windows (Preview)
+# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Monitorování nasazení pomocí Azure Monitor pro virtuální počítač s Windows
 
->[!IMPORTANT]
->Azure Monitor pro virtuální počítač s Windows je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Azure Monitor pro virtuální počítače s Windows (Preview) je řídicí panel založený na Azure Monitorch sešitech, které pomáhají profesionálům v oblasti IT pochopit prostředí virtuálních počítačů s Windows. Tento článek vás seznámí s postupem nastavení Azure Monitor pro virtuální plochu Windows pro monitorování prostředí virtuálních počítačů s Windows.
+Azure Monitor pro virtuální počítače s Windows je řídicí panel založený na Azure Monitorch sešitech, které pomáhají profesionálům v oblasti IT pochopit prostředí virtuálních počítačů s Windows. V tomto tématu se dozvíte, jak nastavit Azure Monitor pro virtuální plochu Windows pro monitorování prostředí virtuálních počítačů s Windows.
 
 ## <a name="requirements"></a>Požadavky
 

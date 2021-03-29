@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42b5ab2bbdebb2584b38531bd6458a98563ef42
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962990"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643743"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Opětovné nasazení balíčků SSIS do Azure SQL Database s využitím Azure Database Migration Service
 
 Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat projekty a balíčky SSIS ze zdrojového SSISDBu hostovaného SQL Server do cílového SSISDB hostovaného v Azure SQL Database, můžete je znovu nasadit pomocí Průvodce nasazením integračních služeb. Průvodce můžete spustit v rámci SQL Server Management Studio (SSMS).
 
-Pokud verze SSIS, kterou používáte, je starší než 2012, před opětovným nasazením SSIS projektů/balíčků do modelu nasazení projektu je nejprve nutné je převést pomocí Průvodce převodem projektu integrační služby, který lze také spustit z SSMS. Další informace naleznete v článku [Převod projektů do modelu nasazení projektu](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Pokud verze SSIS, kterou používáte, je starší než 2012, před opětovným nasazením SSIS projektů/balíčků do modelu nasazení projektu je nejprve nutné je převést pomocí Průvodce převodem projektu integrační služby, který lze také spustit z SSMS. Další informace naleznete v článku [Převod projektů do modelu nasazení projektu](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
 
 > [!NOTE]
 > Azure Database Migration Service (DMS) v současné době nepodporuje migraci zdrojového SSISDB do Azure SQL Database, ale projekty a balíčky SSIS můžete znovu nasadit pomocí následujícího postupu.
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vyhodnoťte zdrojové SSIS projekty/balíčky.
 > * Migrujte projekty a balíčky SSIS do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení těchto kroků potřebujete:
 

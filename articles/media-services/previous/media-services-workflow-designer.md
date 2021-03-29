@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 744d302afd21e6521fb17bf7bef6e68d21fb8372
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011149"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639394"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
 
@@ -45,7 +45,7 @@ Tento nástroj lze také použít k úpravě kteréhokoli z našich [publikovan�
 Po vytvoření je soubor pracovního postupu možné ho nahrát jako Asset a pak ho použít k Kódování mediálních souborů. Informace o tom, jak kódovat pomocí **Media Encoder Premium Workflow** pomocí **rozhraní .NET**, najdete v tématu [Rozšířené kódování pomocí Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Upravit existující pracovní postupy
-Výchozí [publikované pracovní postupy](media-services-workflow-designer.md#existing_workflows) lze upravit pomocí nástroje návrháře. Výchozí soubory pracovního postupu můžete získat [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Složka obsahuje také popis těchto souborů.
+Výchozí [publikované pracovní postupy](media-services-workflow-designer.md#existing_workflows) lze upravit pomocí nástroje návrháře. Výchozí soubory pracovního postupu můžete získat [tady](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md). Složka obsahuje také popis těchto souborů.
 
 Následující videa ukazují, jak používat návrháře.
 

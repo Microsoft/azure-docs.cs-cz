@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580058"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709748"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Naplánování nasazení proxy aplikací služby Azure AD
 
@@ -29,7 +29,7 @@ Tento článek obsahuje prostředky, které potřebujete k plánování, provozo
 
 V následující části najdete širokou škálu klíčových prvků plánování, které nastavíte jako efektivní prostředí pro nasazení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete s implementací, musíte splnit následující požadavky. V tomto [kurzu](application-proxy-add-on-premises-application.md)můžete zobrazit další informace o nastavení prostředí, včetně těchto požadavků.
 
@@ -172,7 +172,7 @@ Postup nasazení proxy aplikace je popsaný v tomto [kurzu pro přidání místn
 
 Publikování aplikací předpokládá, že jste splnili všechny požadavky a že máte několik konektorů, které se zobrazují na stránce proxy aplikace jako registrované a aktivní.
 
-Můžete také publikovat aplikace pomocí [prostředí PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview).
+Můžete také publikovat aplikace pomocí [prostředí PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true).
 
 Níže jsou uvedeny některé osvědčené postupy při publikování aplikace:
 

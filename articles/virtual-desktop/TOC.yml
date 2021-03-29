@@ -210,6 +210,8 @@
       href: security-guide.md
     - name: Podpora Linuxu
       href: linux-overview.md
+    - name: Odhad nákladů na Azure Monitor
+      href: azure-monitor-costs.md
     - name: Podporovaná nastavení souboru RDP
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: Doprovodné materiály k určení velikosti virtuálního počítače
