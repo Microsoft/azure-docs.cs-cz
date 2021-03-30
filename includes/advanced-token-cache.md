@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: kkrishna
 ms.openlocfilehash: 174946667885debc348370ef2c6f93206890e9c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94627999"
 ---
 Můžete použít implementaci mezipaměti tokenů MSAL, která umožňuje aplikacím, rozhraním API a službám použít mezipaměť přístupového tokenu k tomu, aby v jejich absenci pokračovala v jednání jménem uživatelů. To je užitečné hlavně v případě, že aplikace a služby na pozadí potřebují pokračovat v práci jménem uživatele poté, co uživatel ukončí front-end webovou aplikaci.

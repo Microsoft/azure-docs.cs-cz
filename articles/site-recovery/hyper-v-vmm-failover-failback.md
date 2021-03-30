@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74082604"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a obnovení záložních virtuálních počítačů Hyper-V replikovaných do sekundární místní lokality
@@ -35,7 +35,7 @@ Převzetí služeb při selhání a obnovení má tři fáze:
 3. Po plánovaném převzetí služeb při selhání můžete znovu spustit replikaci z primární lokality do sekundárního.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že jste dokončili postup [zotavení po havárii](hyper-v-vmm-test-failover.md) , abyste zkontrolovali, že všechno funguje podle očekávání.
 - Pro dokončení navrácení služeb po obnovení se ujistěte, že jsou primární a sekundární servery VMM připojené k Site Recovery.

@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed9b18144bb727af751fbcbbdd5cc6631afc40f
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185285"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105727225"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových ukotvení napříč relacemi a zařízeními
 
@@ -86,7 +86,7 @@ Vyberte **OK**.
 
 Otevřete Visual Studio Code a pak otevřete projekt ve složce *Sharing\SharingServiceSample* . 
 
-Pokud chcete službu sdílení nasadit prostřednictvím Visual Studio Code, postupujte podle pokynů v tématu <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">publikování ASP.NET Core aplikace do Azure pomocí Visual Studio Code</a>. Začněte v části otevření v Visual Studio Code. Nevytvářejte další projekt ASP.NET, jak je vysvětleno v předchozím kroku, protože již máte projekt k nasazení a publikování: SharingServiceSample.
+Pokud chcete službu sdílení nasadit prostřednictvím Visual Studio Code, postupujte podle pokynů v tématu <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2&preserve-view=true#open-it-with-visual-studio-code" target="_blank">publikování ASP.NET Core aplikace do Azure pomocí Visual Studio Code</a>. Začněte v části otevření v Visual Studio Code. Nevytvářejte další projekt ASP.NET, jak je vysvětleno v předchozím kroku, protože již máte projekt k nasazení a publikování: SharingServiceSample.
 
 ---
 

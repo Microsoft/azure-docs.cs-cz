@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91256434"
 ---
 # <a name="azure-ad-registered-devices"></a>Zařízení zaregistrovaná v Azure AD
 
 Cílem zařízení registrovaných v Azure AD je poskytnout vašim uživatelům podporu pro scénáře Přineste si vlastní zařízení (BYOD) nebo mobilní zařízení. V těchto scénářích může uživatel získat přístup k prostředkům spravovaným Azure Active Directory vaší organizace pomocí osobního zařízení.
 
-| Registrace Azure AD | Description |
+| Registrace Azure AD | Popis |
 | --- | --- |
 | **Definition** | Registrováno ve službě Azure AD bez vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Platí pro všechny uživatele s následujícími kritérii: |

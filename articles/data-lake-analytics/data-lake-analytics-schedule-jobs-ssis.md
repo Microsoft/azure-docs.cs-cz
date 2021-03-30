@@ -6,17 +6,17 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/17/2018
 ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221447"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí služba SSIS (SQL Server Integration Services) (SSIS)
 
 V tomto dokumentu se dozvíte, jak orchestrovat a vytvářet úlohy U-SQL pomocí služby SQL Server Integration Service (SSIS). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Azure Feature Pack pro integrační služby](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud) poskytuje [úlohu Azure Data Lake Analytics](/sql/integration-services/control-flow/azure-data-lake-analytics-task) a [Správce připojení Azure Data Lake Analytics](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager) , který pomáhá připojit se ke službě Azure Data Lake Analytics. Chcete-li použít tuto úlohu, nezapomeňte nainstalovat:
 

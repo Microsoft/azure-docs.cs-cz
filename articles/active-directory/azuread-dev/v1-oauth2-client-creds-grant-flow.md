@@ -14,10 +14,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85551700"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Volání služeb prostřednictvím přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
@@ -52,7 +52,7 @@ Existují dva případy v závislosti na tom, jestli se klientská aplikace rozh
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>První případ: žádost přístupového tokenu se sdíleným tajným klíčem
 Při použití sdíleného tajného klíče obsahuje požadavek na přístupový token služby na službu následující parametry:
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | grant_type |vyžadováno |Určuje požadovaný typ udělení. V toku udělení přihlašovacích údajů klienta musí být hodnota **client_credentials**. |
 | client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací** a pak na aplikaci. Client_id je *ID aplikace* |
@@ -73,7 +73,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
 Požadavek na přístupový token služby na službu s certifikátem obsahuje následující parametry:
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | grant_type |vyžadováno |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta musí být hodnota **client_credentials**. |
 | client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací** a pak na aplikaci. Client_id je *ID aplikace* |

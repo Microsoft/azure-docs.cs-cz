@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a78d3a76e2b13a120e9e744e181c95bfcb330f27
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92313918"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Kurz: odeslání lokalizovaných nabízených oznámení do systému iOS pomocí Azure Notification Hubs
@@ -73,7 +73,7 @@ Pak zajistěte, aby se zařízení registrovala se šablonou, která odkazuje na
 
 Další informace o šablonách najdete v článku [šablony](notification-hubs-templates-cross-platform-push-messages.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete kurz [nabízených oznámení na konkrétní zařízení se systémem iOS](notification-hubs-ios-xplat-segmented-apns-push-notification.md) a zpřístupníte kód, protože tento kurz se sestaví přímo na tomto kódu.
 * Visual Studio 2019 je volitelné.

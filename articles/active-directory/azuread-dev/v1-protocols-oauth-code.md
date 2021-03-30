@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85551645"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím Azure Active Directory s využitím toku poskytování kódů OAuth 2.0
@@ -78,7 +78,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &state=12345
 ```
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | tenant |vyžadováno |`{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klientů, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na tenantovi. |
 | client_id |vyžadováno |ID aplikace přiřazené vaší aplikaci, když ji zaregistrujete ve službě Azure AD. Najdete ho na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory** na bočním panelu služby klikněte na položku **Registrace aplikací** a vyberte aplikaci. |
@@ -134,7 +134,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu autorizace
 Následující tabulka popisuje různé chybové kódy, které mohou být vráceny v `error` parametru chybové odpovědi.
 
-| Kód chyby | Description | Akce klienta |
+| Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
 | invalid_request |Chyba protokolu, například chybějící požadovaný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | unauthorized_client |Klientská aplikace nemá oprávnění vyžadovat autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -163,7 +163,7 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | tenant |vyžadováno |`{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klientů, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na tenantovi. |
 | client_id |vyžadováno |ID aplikace přiřazené vaší aplikaci, když ji zaregistrujete ve službě Azure AD. Najdete ho v Azure Portal. ID aplikace se zobrazí v nastavení registrace aplikace. |
@@ -240,7 +240,7 @@ Ukázková chybová odpověď by mohla vypadat takto:
 #### <a name="http-status-codes"></a>Stavové kódy HTTP
 V následující tabulce jsou uvedeny stavové kódy HTTP, které vrátí koncový bod vystavení tokenu. V některých případech je kód chyby dostačující pro popis odpovědi, ale v případě, že dojde k chybám, je nutné analyzovat přiložený dokument JSON a prohlédnout si jeho kód chyby.
 
-| Kód HTTP | Description |
+| Kód HTTP | Popis |
 | --- | --- |
 | 400 |Výchozí kód HTTP. Používá se ve většině případů a je typicky způsoben chybnou žádostí. Opravte a odešlete požadavek znovu. |
 | 401 |Ověření se nezdařilo. V žádosti například chybí parametr client_secret. |
@@ -248,7 +248,7 @@ V následující tabulce jsou uvedeny stavové kódy HTTP, které vrátí koncov
 | 500 |Ve službě došlo k vnitřní chybě. Opakujte požadavek. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu tokenu
-| Kód chyby | Description | Akce klienta |
+| Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
 | invalid_request |Chyba protokolu, například chybějící požadovaný parametr. |Opravte a znovu odešlete žádost. |
 | invalid_grant |Autorizační kód je neplatný nebo vypršela jeho platnost. |Vyzkoušejte si nový požadavek na `/authorize` koncový bod. |
@@ -290,7 +290,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="bearer-scheme-error-codes"></a>Kódy chyb schémat nosiče
 Specifikace RFC 6750 definuje následující chyby pro prostředky, které používají hlavičku WWW-Authenticate a schéma nosiče v odpovědi.
 
-| Stavový kód HTTP | Kód chyby | Description | Akce klienta |
+| Stavový kód HTTP | Kód chyby | Popis | Akce klienta |
 | --- | --- | --- | --- |
 | 400 |invalid_request |Požadavek nemá správný formát. Například může chybět parametr nebo použít stejný parametr dvakrát. |Opravte chybu a opakujte požadavek. Tento typ chyby by měl nastat pouze během vývoje a byl zjištěn při počátečním testování. |
 | 401 |invalid_token |Přístupový token chybí, není platný nebo je odvolán. Hodnota parametru error_description poskytuje další podrobnosti. |Vyžádejte si nový token od autorizačního serveru. Pokud nový token neuspěje, došlo k neočekávané chybě. Odešle uživateli chybovou zprávu a pak to zkuste znovu po náhodném zpoždění. |

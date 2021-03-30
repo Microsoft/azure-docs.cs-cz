@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
 ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92316661"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
@@ -22,7 +22,7 @@ Tento článek poskytuje přehled požadavků a nastavení rozšíření a také
 > [!IMPORTANT]
 > Aplikace Service Fabric Java je možné vyvíjet na počítačích s Windows, ale dají se nasadit jenom do clusterů Azure Linux. Ladění aplikací Java není v systému Windows podporováno.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ve všech prostředích musí být nainstalované následující požadavky.
 

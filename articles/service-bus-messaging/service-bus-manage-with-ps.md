@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak používat modul Azure PowerShell k
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88065739"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Použití PowerShellu ke správě Service Busch prostředků
@@ -18,7 +18,7 @@ Service Bus entit můžete také spravovat pomocí šablon Azure Resource Manage
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat následující požadavky:
 
