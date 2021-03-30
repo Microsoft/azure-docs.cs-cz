@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86133823"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak můžete vytvořit řešení zotavení po havár
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Implementace zotavení po havárii pro aplikaci Dynamics AX pomocí Site Recovery vyžaduje následující předpoklady:
 
@@ -43,9 +43,9 @@ Pro účely vytvoření tohoto článku jsme používali virtuální počítače
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Hyper-V** | Yes | Yes
-**VMware** | Yes | Yes
-**Fyzický server** | Yes | Yes
+**Hyper-V** | Ano | Ano
+**VMware** | Ano | Ano
+**Fyzický server** | Ano | Ano
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Povolení zotavení po havárii aplikace Dynamics AX pomocí Site Recovery
 ### <a name="protect-your-dynamics-ax-application"></a>Ochrana aplikace Dynamics AX

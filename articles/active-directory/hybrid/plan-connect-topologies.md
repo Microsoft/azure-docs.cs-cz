@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359828"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
@@ -29,7 +29,7 @@ Tento článek popisuje různé místní a Azure Active Directory (Azure AD) top
 
 Tady je legenda k obrázkům v článku:
 
-| Description | Symbol |
+| Popis | Symbol |
 | --- | --- |
 | Místní doménová struktura služby Active Directory |![Místní doménová struktura služby Active Directory](./media/plan-connect-topologies/legendad1.png) |
 | Místní služba Active Directory s filtrovaným importem |![Služba Active Directory s filtrovaným importem](./media/plan-connect-topologies/legendad2.png) |

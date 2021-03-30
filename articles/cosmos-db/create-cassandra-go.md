@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: 595ec1aaa4aedc3916d1b4d46986dcabae887aaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93076397"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rychlý Start: Vytvoření aplikace v cestách pomocí `gocql` klienta pro správu dat Azure Cosmos DB rozhraní API Cassandra
@@ -30,7 +30,7 @@ ms.locfileid: "93076397"
 
 Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování. V tomto rychlém startu se začnete vytvořením účtu Azure Cosmos DB rozhraní API Cassandra. Pak spustíte aplikaci přejít a vytvoříte Cassandra prostor, tabulku a spustíte několik operací. Tato aplikace v cestách používá [gocql](https://github.com/gocql/gocql), což je klient Cassandra pro jazyk přejít. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=cassandrago-docs-abhishgu). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/?WT.mc_id=cassandrago-docs-abhishgu) bez předplatného Azure.
 - V počítači [se nainstaluje a získáte praktické](https://golang.org/) znalosti o cestách.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88192683"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro modul pravidel Azure CDN
@@ -59,7 +59,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 | Hodnota hlavičky žádosti | % {http_RequestHeader} | Vrátí hodnotu odpovídající hlavičce požadavku identifikovaného termínem RequestHeader. <br /><br />Pokud název hlavičky požadavku obsahuje spojovník (například User-Agent), nahraďte ho podtržítkem (například User_Agent).| Ukázkové použití:% {http_Connection}<br /><br />Ukázková hodnota: Keep-Alive | 
 | Hostitel žádosti | % {Host} | Určuje hostitele definovaného v adrese URL požadavku. | <www.mydomain.com> |
 | Protokol žádosti | % {request_protocol} | Označuje protokol žádosti. | HTTP/1.1 |
-| Schéma žádosti | % {schéma} | Určuje schéma požadavků. |http |
+| Schéma žádosti | % {schéma} | Určuje schéma požadavků. |HTTP |
 | Identifikátor URI žádosti (relativní) | % {request_uri} | Určuje relativní cestu, včetně řetězce dotazu definovaného v identifikátoru URI požadavku. | /Marketing/foo.js? LoggedIn = true |
 | Identifikátor URI žádosti (relativní bez řetězce dotazu) | % {URI} | Určuje relativní cestu k požadovanému obsahu. <br /><br/>Informace o klíči:<br />– Tato relativní cesta vyloučí řetězec dotazu.<br />– Tato relativní cesta odráží přepsání adresy URL. Adresa URL bude přepsána za následující podmínky:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Funkce přepisu adresy URL: Tato funkce přepíše relativní cestu definovanou v identifikátoru URI požadavku.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Adresa URL CNAME Edge: Tento typ požadavku se přepíše na odpovídající adresu URL CDN. |/800001/corigin/rewrittendir/foo.js |
 | Identifikátor URI žádosti | % {Request} | Popisuje požadavek. <br />Syntaxe: &lt; protokol HTTP &gt; &lt; relativní cesty &gt; k metodě &lt; http&gt; | ZÍSKAT/marketing/foo.js? LoggedIn = true HTTP/1.1 |
@@ -69,7 +69,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 V následující tabulce jsou popsány správné syntaxe pro určení proměnné HTTP.
 
 
-| Syntax | Příklad | Description |
+| Syntax | Příklad | Popis |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt; HTTPVariable &gt; . |
 | % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému  &lt; HTTPVariableDelimiter &gt; . |
@@ -92,7 +92,7 @@ Oddělovač lze zadat za proměnnou HTTP, aby bylo možné provést některý z 
 
 Oddělovače jsou popsány v následující tabulce.
 
-| Oddělovač | Description |
+| Oddělovač | Popis |
 | --------- | ----------- |
 | := | Označuje, že výchozí hodnota bude přiřazena proměnné, pokud je buď: <br />– Chybějící <br />-Nastavit na hodnotu NULL. |
 | :+ | Označuje, že se k proměnné přiřadí výchozí hodnota, když je jí přiřazena hodnota. |
@@ -125,7 +125,7 @@ Výchozí hodnota může být přiřazena k hlavičce, pokud splňuje některou 
 
 Následující tabulka popisuje, jak definovat výchozí hodnotu.
 
-| Podmínka | Syntax | Příklad | Description |
+| Podmínka | Syntax | Příklad | Popis |
 | --------- | ------ | --------| ----------- |
 | Nastavte hlavičku na výchozí hodnotu, pokud splňuje některou z následujících podmínek: <br /><br />– Chybějící hlavička <br /><br />-Hodnota hlavičky je nastavena na hodnotu NULL.| % {Proměnná: = hodnota} | % {http_referrer: = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud buď chybí, nebo nastaveno na hodnotu null. Žádná akce se neprovede, pokud byla nastavena. |
 | Nastavte hlavičku na výchozí hodnotu, pokud chybí. | % {Variable = hodnota} | % {http_referrer = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud chybí. Žádná akce se neprovede, pokud byla nastavena. |
@@ -187,7 +187,7 @@ V tomto ukázkovém scénáři je proměnná *REQUEST_URI* nastavena na:
 
 Následující tabulka ukazuje, jak tato syntaxe funguje.
 
-| Ukázková syntaxe | Výsledky | Description |
+| Ukázková syntaxe | Výsledky | Popis |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Vzhledem k tomu, že proměnná začíná vzorem, byla nahrazena. |
 | % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Vzhledem k tomu, že proměnná nekončí vzorem, došlo k žádné změně.|

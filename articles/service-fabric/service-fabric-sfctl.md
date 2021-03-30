@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257049"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,7 +18,7 @@ Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibiln
 Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v tématu podskupiny.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Description|
+|Podskupina|Popis|
 | --- | --- |
 | [aplikace](service-fabric-sfctl-application.md) | Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací. |
 | [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a hlášení služby chaos test Service. |
