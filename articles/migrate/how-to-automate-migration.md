@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.openlocfilehash: cdae1fe13f8e08cb6b817f8ec6431c77013020d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96754262"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Škálování migrace virtuálních počítačů VMware 
@@ -23,7 +23,7 @@ Azure Migrate skripty pro automatizaci migrace VMware jsou k dispozici ke staže
 - Tyto skripty podporují migraci virtuálních počítačů VMware se všemi disky. Skripty můžete aktualizovat, pokud chcete selektivně replikovat disky připojené k virtuálnímu počítači VMware. 
 - Skripty podporují použití doporučení pro posouzení. Pokud se doporučení k vyhodnocování nepoužívají, budou všechny disky připojené k virtuálnímu počítači VMware migrovány na stejný typ spravovaného disku (Standard nebo Premium). Můžete aktualizovat skripty, pokud chcete použít více typů spravovaných disků se stejným virtuálním počítačem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Dokončete kurz zjišťování](tutorial-discover-vmware.md) , abyste mohli připravit Azure a VMware pro migraci.
 - Doporučujeme, abyste dokončili druhý kurz pro [vyhodnocení virtuálních počítačů VMware](./tutorial-assess-vmware-azure-vm.md) před jejich migrací do Azure.

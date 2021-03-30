@@ -8,17 +8,17 @@ ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
 ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88010119"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Nakonfigurovat Configuration Manager koncového bodu Microsoft
 
 Tento článek vysvětluje, jak nakonfigurovat službu Microsoft Endpoint Configuration Manager tak, aby automaticky používala aktualizace pro hostitele virtuálních ploch Windows s Windows 10 Enterprise s více relacemi.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci tohoto nastavení budete potřebovat následující věci:
 

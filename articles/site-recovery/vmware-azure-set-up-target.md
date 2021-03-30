@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73693167"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Příprava cílového prostředí na zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů do Azure
 
 Tento článek popisuje, jak připravit cílové prostředí Azure na zahájení replikace virtuálních počítačů VMware nebo fyzických serverů do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Článek předpokládá:
 - Vytvořili jste trezor Recovery Services v [Azure Portal](https://portal.azure.com "portál Azure") k ochraně vašich zdrojových počítačů

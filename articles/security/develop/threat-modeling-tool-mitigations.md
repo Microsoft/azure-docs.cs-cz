@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68728031"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Omezení Microsoft Threat Modeling Tool
@@ -35,7 +35,7 @@ Omezení Threat Modeling Tool jsou zařazená do kategorií podle rámce zabezpe
 | Kategorie | Popis |
 | -------- | ----------- |
 | **[Auditování a protokolování](threat-modeling-tool-auditing-and-logging.md)** | Kdo co a kdy? Auditování a protokolování: Přečtěte si, jak vaše aplikace zaznamenává události související se zabezpečením. |
-| **[Přihlašovací](threat-modeling-tool-authentication.md)** | Kdo jste? Ověřování je proces, při kterém entita prokáže identitu jiné entity, obvykle prostřednictvím přihlašovacích údajů, jako je uživatelské jméno a heslo. |
+| **[Authentication](threat-modeling-tool-authentication.md)** | Kdo jste? Ověřování je proces, při kterém entita prokáže identitu jiné entity, obvykle prostřednictvím přihlašovacích údajů, jako je uživatelské jméno a heslo. |
 | **[Autorizace](threat-modeling-tool-authorization.md)** | Co můžete udělat? Autorizace je způsob, jakým vaše aplikace poskytuje řízení přístupu pro prostředky a operace. |
 | **[Zabezpečení komunikace](threat-modeling-tool-communication-security.md)** | Na koho se mluvíte? Zabezpečení komunikace zajišťuje, že veškerá komunikace je co možná nejbezpečnější. |
 | **[Správa konfigurace](threat-modeling-tool-configuration-management.md)** | Na koho vaše aplikace běží? K jakým databázím se připojuje? Jak vaše aplikace spravuje? Jak jsou tato nastavení zabezpečená? Správa konfigurace odkazuje na to, jak vaše aplikace zpracovává tyto provozní problémy. |

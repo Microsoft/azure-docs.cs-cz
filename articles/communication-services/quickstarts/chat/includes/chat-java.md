@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 800acddcb3527b9ca16d7fc664c2a3c27b528c25
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107004"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105726645"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,7 +56,7 @@ V souboru POM se na balíček odkazuje `azure-communication-chat` pomocí rozhra
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.4</version> 
+    <version>1.0.0-beta.7</version> 
 </dependency>
 ```
 
@@ -89,12 +89,17 @@ Další informace o [architektuře chatu](../../../concepts/chat/concepts.md)
 Při přidávání příkazů importu nezapomeňte přidat pouze importy z modelu COM. Azure. Communications. chat a com. Azure. Communications. chat. Models Namespaces, a ne z oboru názvů com. Azure. Communication. chat. Implements. V souboru App. Java, který byl vygenerován prostřednictvím Maven, můžete použít následující kód, který začíná na:
 
 ```Java
+package com.communication.quickstart;
+
 import com.azure.communication.chat.*;
 import com.azure.communication.chat.models.*;
 import com.azure.communication.common.*;
 import com.azure.core.http.HttpClient;
+import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
+import com.azure.core.http.rest.PagedIterable;
 
 import java.io.*;
+import java.util.*;
 
 public class App
 {
@@ -126,36 +131,51 @@ public class App
 }
 ```
 
-
 ## <a name="start-a-chat-thread"></a>Spustit chatovací vlákno
 
 Použijte `createChatThread` metodu k vytvoření vlákna chatu.
 `createChatThreadOptions` slouží k popisu požadavku vlákna.
 
-- Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce.
+- Použijte `topic` parametr konstruktoru k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce.
 - Slouží `participants` k vypsání účastníků vlákna, které mají být přidány do vlákna. `ChatParticipant` převezme uživatele, kterého jste vytvořili v rychlém startu [tokenu přístupu uživatele](../../access-tokens.md) .
 
-Odpověď `chatThreadClient` se používá k provádění operací na vytvořeném konverzačním vlákně: přidávání účastníků do konverzačního vlákna, odeslání zprávy, odstranění zprávy atd. Obsahuje vlastnost, `chatThreadId` která je jedinečné ID vlákna chatu. Vlastnost je přístupná prostřednictvím veřejné metody. getChatThreadId ().
+`CreateChatThreadResult` je odpověď vrácená z vytváření konverzačního vlákna. Obsahuje `getChatThread()` metodu, která vrátí `ChatThread` objekt, který lze použít k získání klienta vlákna, ze kterého můžete získat `ChatThreadClient` operaci pro provádění operací ve vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. `ChatThread` Objekt obsahuje také metodu, `getId()` která NAČTE jedinečné ID vlákna.
 
 ```Java
-List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
-
 ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
-    
+
 ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions("Topic")
+    .addParticipant(firstThreadParticipant)
+    .addParticipant(secondThreadParticipant);
 
-CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
-    .setTopic("Topic")
-    .setParticipants(participants);
-ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
-String chatThreadId = chatThreadClient.getChatThreadId();
+CreateChatThreadResult result = chatClient.createChatThread(createChatThreadOptions);
+String chatThreadId = result.getChatThread().getId();
+```
+
+## <a name="list-chat-threads"></a>Vypsat vlákna chatu
+
+Použijte `listChatThreads` metodu pro načtení seznamu existujících vláken chatu.
+
+```java
+PagedIterable<ChatThreadItem> chatThreads = chatClient.listChatThreads();
+
+chatThreads.forEach(chatThread -> {
+    System.out.printf("ChatThread id is %s.\n", chatThread.getId());
+});
+```
+
+## <a name="get-a-chat-thread-client"></a>Získat klienta vlákna chatu
+
+`getChatThreadClient`Metoda vrací klienta vlákna pro vlákno, které již existuje. Dá se použít k provádění operací na vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. `chatThreadId` je jedinečné ID existujícího konverzačního vlákna.
+
+```Java
+ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Odeslání zprávy do konverzačního vlákna
@@ -179,84 +199,66 @@ SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendC
 String chatMessageId = sendChatMessageResult.getId();
 ```
 
-
-## <a name="get-a-chat-thread-client"></a>Získat klienta vlákna chatu
-
-`getChatThreadClient`Metoda vrací klienta vlákna pro vlákno, které již existuje. Dá se použít k provádění operací na vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. `chatThreadId` je jedinečné ID existujícího konverzačního vlákna.
-
-```Java
-String chatThreadId = "Id";
-ChatThread chatThread = chatClient.getChatThread(chatThreadId);
-```
-
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Příjem zpráv chatu z konverzačního vlákna
 
 Můžete načíst zprávy chatu pomocí cyklického dotazování `listMessages` metody v klientovi vlákna konverzace v zadaných intervalech.
 
 ```Java
-chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
-    System.out.printf("Response headers are %s. Url %s  and status code %d %n", resp.getHeaders(),
-        resp.getRequest().getUrl(), resp.getStatusCode());
-    resp.getItems().forEach(message -> {
-        System.out.printf("Message id is %s.", message.getId());
-    });
+chatThreadClient.listMessages().forEach(message -> {
+    System.out.printf("Message id is %s.\n", message.getId());
 });
 ```
 
 `listMessages` Vrátí nejnovější verzi zprávy, včetně všech úprav nebo odstranění, ke kterým došlo u zprávy pomocí. editMessage () a. deleteMessage (). Pro odstraněné zprávy `chatMessage.getDeletedOn()` vrátí hodnotu DateTime, která indikuje, kdy se tato zpráva odstranila. U upravených zpráv `chatMessage.getEditedOn()` vrátí hodnotu DateTime, která indikuje, kdy byla zpráva upravena. Původní čas vytvoření zprávy lze `chatMessage.getCreatedOn()` využít pomocí a lze jej použít k řazení zpráv.
 
-`listMessages` vrátí různé typy zpráv, které mohou být identifikovány pomocí `chatMessage.getType()` . Tyto typy:
+Další informace o typech zpráv naleznete zde: [typy zpráv](../../../concepts/chat/concepts.md#message-types).
 
-- `text`: Běžná zpráva chatu odeslaná účastníkem vlákna.
+## <a name="send-read-receipt"></a>Odeslat oznámení pro čtení
 
-- `html`: Zpráva chatu HTML odeslaná účastníkem vlákna.
+Použijte `sendReadReceipt` metodu pro odeslání události přijetí pro čtení do konverzačního vlákna jménem uživatele.
+`chatMessageId` je jedinečné ID zprávy chatu, která byla přečtena.
 
-- `topicUpdated`: Systémová zpráva, která indikuje, že téma bylo aktualizováno.
+```Java
+String chatMessageId = message.getId();
+chatThreadClient.sendReadReceipt(chatMessageId);
+```
 
-- `participantAdded`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna.
+## <a name="list-chat-participants"></a>Seznam účastníků chatu
 
-- `participantRemoved`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna.
+Slouží `listParticipants` k načtení stránkované kolekce obsahující účastníky vlákna chatu identifikovaného pomocí chatThreadId.
 
-Další podrobnosti najdete v tématu [typy zpráv](../../../concepts/chat/concepts.md#message-types).
+```Java
+PagedIterable<ChatParticipant> chatParticipantsResponse = chatThreadClient.listParticipants();
+chatParticipantsResponse.forEach(chatParticipant -> {
+    System.out.printf("Participant id is %s.\n", ((CommunicationUserIdentifier) chatParticipant.getCommunicationIdentifier()).getId());
+});
+```
 
 ## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 
 Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj odebrat. Přidáním uživatelů udělíte jim přístup k posílání zpráv do konverzačního vlákna a k přidání nebo odebrání dalších účastníků. Musíte začít získáním nového přístupového tokenu a identity pro tohoto uživatele. Před voláním metody addParticipants se ujistěte, že jste pro tohoto uživatele získali nový přístupový token a identitu. Uživatel bude potřebovat přístupový token, aby mohl inicializovat svého chatového klienta.
 
-Použijte `addParticipants` metodu pro přidání účastníků do vlákna identifikovaného IDvlákna.
+Použijte `addParticipants` metodu pro přidání účastníků do vlákna.
 
-- Slouží `listParticipants` k vypsání účastníků, kteří mají být přidáni do konverzačního vlákna.
 - `communicationIdentifier`je povinné, je CommunicationIdentifier, které jste vytvořili pomocí CommunicationIdentityClient v rychlém startu pro [uživatelský přístup tokenu](../../access-tokens.md) .
-- `display_name`volitelné, je zobrazované jméno účastníka vlákna.
-- `share_history_time`volitelné, je čas, od kterého je historie chatu sdílena s účastníkem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Pokud chcete sdílet žádnou historii předchozí až po přidání účastníka, nastavte ho na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na požadované datum.
+- `displayName`volitelné, je zobrazované jméno účastníka vlákna.
+- `shareHistoryTime`volitelné, je čas, od kterého je historie chatu sdílena s účastníkem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Pokud chcete sdílet žádnou historii předchozí až po přidání účastníka, nastavte ho na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na požadované datum.
 
 ```Java
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity1)
-    .setDisplayName("Display Name 1");
+ChatParticipant thirdThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user3)
+    .setDisplayName("Display Name 3");
 
-ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity2)
-    .setDisplayName("Display Name 2");
+ChatParticipant fourthThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user4)
+    .setDisplayName("Display Name 4");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+participants.add(thirdThreadParticipant);
+participants.add(fourthThreadParticipant);
 
-AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
-    .setParticipants(participants);
-chatThreadClient.addParticipants(addChatParticipantsOptions);
-```
-
-## <a name="remove-participant-from-a-chat-thread"></a>Odebrání účastníka z konverzačního vlákna
-
-Podobně jako při přidávání účastníka do vlákna můžete odebrat účastníky z konverzačního vlákna. K tomu je potřeba sledovat identity přidaných účastníků.
-
-Použijte `removeParticipant` , kde `identifier` je CommunicationIdentifier, který jste vytvořili.
-
-```Java
-chatThreadClient.removeParticipant(identity);
+chatThreadClient.addParticipants(participants);
 ```
 
 ## <a name="run-the-code"></a>Spuštění kódu

@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/01/2019
 ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96754228"
 ---
 # <a name="scale-migration-of-vms"></a>Škálování migrace virtuálních počítačů 
@@ -25,7 +25,7 @@ Skripty Site Recovery jsou k dispozici ke stažení na [Azure PowerShell Samples
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Než začnete, musíte provést následující kroky:
 - Ujistěte se, že je ve vašem předplatném Azure vytvořený trezor Site Recovery.
 - Ujistěte se, že je konfigurační server a procesový Server nainstalovaný ve zdrojovém prostředí a že je trezor schopný zjistit prostředí.

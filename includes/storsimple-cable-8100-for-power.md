@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67175044"
 ---
 #### <a name="to-cable-for-power"></a>Na kabelové napájení
@@ -25,7 +25,7 @@ ms.locfileid: "67175044"
    
     **Napájení kabelem na zařízení 8100**
    
-   | Popisek | Description |
+   | Popisek | Popis |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |Kontroler 1 |

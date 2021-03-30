@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67235280"
 ---
 Teď, když jsou nastavené koncové body a směrování zpráv, si můžete zobrazit jejich konfiguraci na portálu. Přihlaste se k [Azure Portal](https://portal.azure.com) a pokračujte do **skupin prostředků**. V dalším kroku vyberte svoji skupinu prostředků a potom vyberte centrum (název centra začíná `ContosoTestHub` v tomto kurzu). Zobrazí se podokno IoT Hub.
