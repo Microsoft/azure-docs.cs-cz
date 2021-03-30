@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak zálohovat sdílenou složku soub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87077006"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Zálohování sdílené složky Azure pomocí PowerShellu

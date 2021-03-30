@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81260407"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Ladit hlavičku protokolu HTTP pro Azure CDN od Microsoftu
@@ -26,7 +26,7 @@ Hlavička odpovědi na ladění `X-Cache` poskytuje podrobnosti o tom, ze které
 
 ### <a name="response-header-format"></a>Formát hlavičky odpovědi
 
-Hlavička | Description
+Hlavička | Popis
 -------|------------
 X-mezipaměť: TCP_HIT | Tato hlavička se vrátí při doručování obsahu z mezipaměti Edge pro CDN. 
 X-mezipaměť: TCP_REMOTE_HIT | Tato hlavička se vrátí, když se obsah obsluhuje z místní mezipaměti CDN (původní vrstva ochrany).

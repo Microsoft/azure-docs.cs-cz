@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80398465"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Vlastní poskytovatelé prostředků Azure – přehled
@@ -82,7 +82,7 @@ Ukázkový vlastní poskytovatel prostředků s prostředky k **dissourcetype**:
 
 Rozhraní API přidané do Azure pro výše uvedenou ukázku:
 
-HttpMethod | Ukázkový identifikátor URI | Description
+HttpMethod | Ukázkový identifikátor URI | Popis
 ---|---|---
 PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-Preview | Azure REST API volání pro vytvoření nového prostředku.
 DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-Preview | Volání Azure REST API k odstranění existujícího prostředku.
@@ -112,7 +112,7 @@ Ukázkový vlastní poskytovatel prostředků s **akcemi**:
 
 Rozhraní API přidané do Azure pro výše uvedenou ukázku:
 
-HttpMethod | Ukázkový identifikátor URI | Description
+HttpMethod | Ukázkový identifikátor URI | Popis
 ---|---|---
 POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? API-Version = 2018-09 -01-Preview | Volání služby Azure REST API k aktivaci akce.
 

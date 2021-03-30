@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/13/2018
 ms.author: brjohnst
 ms.openlocfilehash: 998d0f1a84dc9cb2a07fb55286c1089787a263e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80272759"
 ---
 | Datový typ | Funkce povolené ve výrazech lambda s `any` | Funkce povolené ve výrazech lambda s `all` |

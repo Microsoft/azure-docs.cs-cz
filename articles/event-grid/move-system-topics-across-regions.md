@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89084530"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Přesunout Azure Event Grid systémová témata do jiné oblasti
@@ -22,7 +22,7 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 - **Ověřte nasazení**. Ověřte, jestli je Webhook vyvolaný při nahrávání souboru do úložiště objektů BLOB v cílové oblasti. 
 - Chcete-li **Dokončit přesunutí**, odstraňte prostředky (zdrojové události a systémové téma) ze zdrojové oblasti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Dokončete [rychlé zprovoznění: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](blob-event-quickstart-portal.md) ve zdrojové oblasti. Tento krok je **nepovinný**. Proveďte test kroků v tomto článku. Ponechte účet úložiště v samostatné skupině prostředků z plánu App Service a App Service. 
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 

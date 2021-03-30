@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260834"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Spuštění, zastavení a hlášení služby chaos test Service.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Description|
+|Podskupina|Popis|
 | --- | --- |
 | [CXL](service-fabric-sfctl-chaos-schedule.md) | Získejte a nastavte plán chaos. |
 ## <a name="commands"></a>Příkazy
@@ -35,7 +35,7 @@ Chcete-li získat další segment událostí chaos, můžete zadat token continu
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
 | --koncový čas – UTC | Čas souboru systému Windows představující čas ukončení časového rozsahu, pro který má být vygenerována sestava chaos. Podrobnosti naleznete v [metodě DateTime. ToFileTimeUtc](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) . |
@@ -45,7 +45,7 @@ Chcete-li získat další segment událostí chaos, můžete zadat token continu
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -60,13 +60,13 @@ Získá stav chaos, který označuje, jestli je chaos spuštěný, parametry cha
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -81,7 +81,7 @@ Pokud chaos v clusteru ještě neběží, spustí se chaos s předanými paramet
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Typ aplikace-Health-Policy-– mapování | Pole kódovaného slovníku (klíč/hodnota) JSON s maximálním počtem nezdravých aplikací pro konkrétní typy aplikací. Každá položka slovníku určuje jako klíč název typu aplikace a celé číslo pro hodnotu, která představuje MaxPercentUnhealthyApplications procento, které slouží k vyhodnocení aplikací zadaného typu aplikace. <br><br> Definuje mapu s maximálním procentem nezdravých aplikací pro konkrétní typy aplikací. Mapování zásad stavu aplikace lze použít při vyhodnocení stavu clusteru k popisu jednotlivých typů aplikací. Typy aplikací, které jsou součástí mapy, jsou vyhodnocovány proti procentům uvedeným v mapě a nikoli s globálním MaxPercentUnhealthyApplications definovaným v zásadách stavu clusteru. Aplikace typů aplikací zadaných na mapě se nezapočítávají na Globální fond aplikací. Pokud jsou například některé aplikace typu kritické, může správce clusteru přidat položku na mapu pro daný typ aplikace a přiřadit jí hodnotu 0% (Netolerovat žádné chyby). Všechny ostatní aplikace je možné vyhodnotit s MaxPercentUnhealthyApplications nastavenou na 20% a tolerovat některé chyby z tisíců instancí aplikací. Mapa zásad stavu aplikace se používá jenom v případě, že clusterový manifest umožňuje vyhodnocování stavu aplikace pomocí položky konfigurace pro HealthManager/EnableApplicationTypeHealthEvaluation. <br><br> Příklad řetězce kódovaného JSON: [{ \" Key \" : \" Fabric:/hlasovacího \" , \" Value \" : \" 0 \" }] |
 | --chaos-Target-Filter | Slovník kódovaný ve formátu JSON se dvěma klíči řetězcového typu. Tyto dva klíče jsou NodeTypeInclusionList a ApplicationInclusionList. Hodnoty pro oba tyto klíče jsou seznamem řetězců. chaos_target_filter definuje všechny filtry pro cílené chyby chaos, například při selhání pouze určitých typů uzlů nebo při selhání pouze určitých aplikací. <br><br> Pokud se chaos_target_filter nepoužívá, chaos chyby všechny entity clusteru. Pokud se používá chaos_target_filter, chaos chyby pouze entity, které splňují specifikaci chaos_target_filter. NodeTypeInclusionList a ApplicationInclusionList umožňují pouze sémantiku sjednocení. Není možné zadat průnik NodeTypeInclusionList a ApplicationInclusionList. Například není možné zadat "selhání této aplikace pouze v případě, že je na tomto typu uzlu". Jakmile je entita zahrnutá v NodeTypeInclusionList nebo ApplicationInclusionList, tuto entitu nejde vyloučit pomocí ChaosTargetFilter. I v případě, že se applicationX v ApplicationInclusionList nezobrazí, může v některých chaos iterace applicationX dojít k chybě, protože se stane na uzlu nodeType, který je součástí NodeTypeInclusionList. Pokud jsou NodeTypeInclusionList i ApplicationInclusionList prázdné, je vyvolána výjimka ArgumentException. Pro uzly těchto typů uzlů jsou povoleny všechny typy chyb (restartovat uzel, restartovat balíček kódu, odebrat repliku, restartovat repliku, přesunout primární a přesunout sekundární). Pokud se typ uzlu (říká NodeTypeX) se nezobrazí v NodeTypeInclusionList, pak chyby na úrovni uzlu (jako NodeRestart) nikdy nebudou pro uzly NodeTypeX povolené, ale pokud se aplikace v NodeTypeX stane umístěnou v uzlu ApplicationInclusionList, můžou se pořád povolit balíčky kódu a chyby repliky. V tomto seznamu může být zahrnutých maximálně 100 názvů typů uzlů. aby se tento počet zvýšil, je pro konfiguraci MaxNumberOfNodeTypesInChaosEntityFilter nutný upgrade konfigurace. Všechny repliky patřící ke službám těchto aplikací jsou snadněji k chybám repliky (restartování repliky, odebrání repliky, přesunutí primárního a přesunutí sekundárního) pomocí chaos. Chaos může restartovat balíček kódu pouze v případě, že balíček kódu hostuje pouze repliky těchto aplikací. Pokud se aplikace v tomto seznamu nezobrazí, může být stále chyba v některém chaos iteraci, pokud aplikace skončí na uzlu typu uzlu, který je součástí NodeTypeInclusionList. Pokud je však applicationX svázán s nodeType prostřednictvím omezení umístění a applicationX chybí od ApplicationInclusionList a uzel nodeType není v NodeTypeInclusionList, pak applicationX nebude nikdy chybět. V tomto seznamu může být zahrnutých maximálně 1000 názvů aplikací. aby se tento počet zvýšil, je pro konfiguraci MaxNumberOfApplicationsInChaosEntityFilter nutný upgrade konfigurace. |
@@ -99,7 +99,7 @@ Pokud chaos v clusteru ještě neběží, spustí se chaos s předanými paramet
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -114,13 +114,13 @@ Zastaví chaos spouštění nových chyb. Probíhající chyby se budou i nadál
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

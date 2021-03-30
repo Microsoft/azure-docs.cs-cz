@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91333898"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a správa hodnot s využitím proměnných v Azure Logic Apps
@@ -29,7 +29,7 @@ Proměnné existují a jsou globální jenom v instanci aplikace logiky, která 
 > [!IMPORTANT]
 > Ve výchozím nastavení se cyklická smyčka "for each" spouští paralelně. Když použijete proměnné ve smyčce, spusťte smyčku [sekvenčně](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) , aby proměnné vracely předvídatelné výsledky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -67,9 +67,9 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
 
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
-   | **Název** | Yes | <*název proměnné*> | Název proměnné, která se má zvýšit |
-   | **Typ** | Yes | <*typ proměnné*> | Datový typ proměnné |
-   | **Hodnota** | No | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
+   | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
+   | **Typ** | Ano | <*typ proměnné*> | Datový typ proměnné |
+   | **Hodnota** | Ne | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
    |||||
 
    Například:
@@ -207,8 +207,8 @@ Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidej
 
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
-   | **Název** | Yes | <*název proměnné*> | Název proměnné, která se má zvýšit |
-   | **Hodnota** | No | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
+   | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
+   | **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
    ||||
 
    Například:
@@ -328,8 +328,8 @@ Tady jsou vlastnosti pro akci **snížení proměnné** :
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| **Název** | Yes | <*název proměnné*> | Název proměnné, která se má snížit | 
-| **Hodnota** | No | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali určitou hodnotu pro snížení vaší proměnné. |
+| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má snížit | 
+| **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali určitou hodnotu pro snížení vaší proměnné. |
 ||||| 
 
 Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **snížení proměnné** zobrazí v definici aplikace logiky, která je ve formátu JSON.
@@ -361,8 +361,8 @@ Tady jsou vlastnosti pro akci **nastavit proměnnou** :
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| **Název** | Yes | <*název proměnné*> | Název proměnné, která se má změnit |
-| **Hodnota** | Yes | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
+| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
+| **Hodnota** | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
 ||||| 
 
 > [!NOTE]
@@ -419,8 +419,8 @@ Tady jsou vlastnosti pro akce **připojit k...** :
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| **Název** | Yes | <*název proměnné*> | Název proměnné, která se má změnit |
-| **Hodnota** | Yes | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
+| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
+| **Hodnota** | Ano | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
 |||||
 
 Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **připojit k proměnné pole** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad vytvoří proměnnou pole a přidá další hodnotu jako poslední položku v poli. Váš výsledek je aktualizovaná proměnná, která obsahuje toto pole: `[1,2,3,"red"]`

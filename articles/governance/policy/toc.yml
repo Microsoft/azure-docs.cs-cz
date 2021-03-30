@@ -46,6 +46,9 @@
     - name: Správa zásad správného řízení značek
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: Události změny stavu zásad směrování
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./tutorials/route-state-change-events.md
     - name: Implementace Azure Policy jako kódu s využitím GitHubu
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./tutorials/policy-as-code-github.md
@@ -126,6 +129,9 @@
     - name: Struktura přiřazení
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: Reakce na události změny stavu zásad
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./concepts/event-overview.md
     - name: Struktura výjimky
       displayName: 'waiver, mitigated, compliance'
       href: ./concepts/exemption-structure.md

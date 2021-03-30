@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 7649f9c13db1a10bdb48d19f1019ec3b31244f45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105235"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729827"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -62,7 +62,7 @@ Rozpoznávání řeči pomocí mikrofonu není **v Node.jspodporováno** a je po
 
 ## <a name="recognize-from-file"></a>Rozpoznat ze souboru 
 
-Pro rozpoznávání řeči ze zvukového souboru vytvořte pomocí, `AudioConfig` `fromWavFileInput()` který přijímá `Buffer` objekt. Pak inicializujte [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) a, předejte své `audioConfig` a `speechConfig` .
+Pro rozpoznávání řeči ze zvukového souboru vytvořte pomocí, `AudioConfig` `fromWavFileInput()` který přijímá `Buffer` objekt. Pak inicializujte [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) a, předejte své `audioConfig` a `speechConfig` .
 
 ```javascript
 const fs = require('fs');
