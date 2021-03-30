@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171376"
 ---
 # <a name="security-and-authentication"></a>Zabezpečení a ověřování
@@ -37,7 +37,7 @@ Event Grid modul hostuje koncové body HTTP i HTTPS. Každému IoT Edge modulu j
 
 Ve výchozím nastavení je povolená jenom komunikace HTTPS. Toto chování můžete přepsat pomocí  **inbound__serverAuth__tlsPolicy** konfigurace. Následující tabulka zachycuje možné hodnoty této vlastnosti.
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ---------------- | ------------ |
 | Striktní | Default (Výchozí). Povoluje pouze HTTPS
 | Povoleno | Povoluje protokol HTTP i HTTPS
@@ -58,20 +58,20 @@ Ve výchozím nastavení je modul Event Grid nakonfigurovaný tak, aby přijíma
 
 Ověřování na základě certifikátu je ve výchozím nastavení zapnuté. Ověřování na základě certifikátů můžete zakázat prostřednictvím **inbound__clientAuth__clientCert__enabled** vlastností. Následující tabulka zachycuje možné hodnoty.
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ----------------  | ------------ |
 | true | Default (Výchozí). Vyžaduje, aby všechny požadavky na modul Event Grid mohl předložit klientský certifikát. Kromě toho budete muset nakonfigurovat **inbound__clientAuth__clientCert__source**.
 | false (nepravda) | Vynutí, aby klient prezentující certifikát.
 
 Následující tabulka zachycuje možné hodnoty pro **inbound__clientAuth__clientCert__source**
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ---------------- | ------------ |
 | IoT Edge | Default (Výchozí). K ověření všech klientských certifikátů používá Trustbundle IoT Edge.
 
 Pokud klient zobrazí podepsané svým držitelem, ve výchozím nastavení Event Grid modul tyto žádosti odmítne. Můžete zvolit, aby klientské certifikáty podepsané svým držitelem povolili prostřednictvím vlastnosti **inbound__clientAuth__clientCert__allowUnknownCA** . Následující tabulka zachycuje možné hodnoty.
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ----------------  | ------------|
 | true | Default (Výchozí). Umožňuje úspěšné předložení certifikátů podepsaných svým držitelem.
 | false (nepravda) | Selže, pokud se zobrazí certifikáty podepsané svým držitelem.
@@ -85,7 +85,7 @@ Kromě ověřování založeného na certifikátech může modul Event Grid tak�
 
 Konfigurace pro řízení ověřování založeného na klíčích SAS je **inbound__clientAuth__sasKeys__enabled**.
 
-| Možné hodnoty | Description  |
+| Možné hodnoty | Popis  |
 | ----------------  | ------------ |
 | true | Povoluje ověřování založené na klíčích SAS. Vyžaduje **inbound__clientAuth__sasKeys__key1** nebo **inbound__clientAuth__sasKeys__key2**
 | false (nepravda) | Default (Výchozí). Ověřování na základě klíčů SAS je zakázané.
@@ -103,14 +103,14 @@ Každému IoT Edge modulu se přiřadí certifikát identity démon zabezpečen�
 
 Konfigurace pro řízení odchozího ověřování klientů je **outbound__clientAuth__clientCert__enabled**.
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ----------------  | ------------ |
 | true | Default (Výchozí). Vyžaduje, aby všechny odchozí požadavky z modulu Event Grid obsahovaly certifikát. Je nutné nakonfigurovat **outbound__clientAuth__clientCert__source**.
 | false (nepravda) | Nevyžadovat, aby modul Event Grid k dispozici certifikát.
 
 Konfigurace, která řídí zdroj certifikátu, je **outbound__clientAuth__clientCert__source**.
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ---------------- | ------------ |
 | IoT Edge | Default (Výchozí). Používá certifikát identity modulu konfigurovaný nástrojem IoT Edge démon zabezpečení.
 
@@ -120,21 +120,21 @@ Jeden z cílových typů pro předplatitele Event Grid je Webhook. Ve výchozím
 
 Konfigurace pro řízení cílových **outbound__webhook__httpsOnly** zásad pro Webhook.
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ----------------  | ------------ |
 | true | Default (Výchozí). Povoluje pouze předplatitele s koncovým bodem HTTPS.
 | false (nepravda) | Umožňuje odběratelům buď koncový bod HTTP, nebo HTTPS.
 
 Ve výchozím nastavení Event Grid modul ověří certifikát serveru předplatitele. Ověřování můžete přeskočit přepsáním **outbound__webhook__skipServerCertValidation**. Možné hodnoty:
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ----------------  | ------------ |
 | true | Neověřovat certifikát serveru odběratele.
 | false (nepravda) | Default (Výchozí). Ověří certifikát serveru odběratele.
 
 Pokud je certifikát předplatitele podepsaný svým držitelem, pak ve výchozím nastavení Event Grid modul tyto předplatitele odmítne. Chcete-li umožnit certifikát podepsaný svým držitelem, můžete přepsat **outbound__webhook__allowUnknownCA**. Následující tabulka zachycuje možné hodnoty (y).
 
-| Možné hodnoty | Description |
+| Možné hodnoty | Popis |
 | ----------------  | ------------ |
 | true | Default (Výchozí). Umožňuje úspěšné předložení certifikátů podepsaných svým držitelem.
 | false (nepravda) | Selže, pokud se zobrazí certifikáty podepsané svým držitelem.

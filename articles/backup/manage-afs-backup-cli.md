@@ -4,17 +4,17 @@ description: Naučte se používat rozhraní příkazového řádku Azure ke spr
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94566448"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Správa záloh sdílených složek Azure pomocí Azure CLI
 
 Azure CLI poskytuje prostředí příkazového řádku pro správu prostředků Azure. Je skvělým nástrojem pro vytváření vlastních automatizace pro používání prostředků Azure. Tento článek vysvětluje, jak provádět úlohy pro správu a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](./backup-overview.md). Tyto kroky můžete provést také s [Azure Portal](https://portal.azure.com/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že už máte sdílenou složku Azure zálohovanou [Azure Backup](./backup-overview.md). Pokud ho nemáte, přečtěte si téma [Zálohování sdílených složek Azure pomocí rozhraní příkazového řádku, ve kterém](backup-afs-cli.md) můžete nakonfigurovat zálohování sdílených složek. V tomto článku použijete následující prostředky:
    -  **Skupina prostředků**: *azurefiles*

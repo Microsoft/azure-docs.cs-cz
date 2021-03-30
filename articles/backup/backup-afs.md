@@ -4,10 +4,10 @@ description: Naučte se používat Azure Portal k zálohování sdílených slo�
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88890344"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
@@ -21,7 +21,7 @@ V tomto článku se naučíte:
 * Konfigurace zálohování v podokně sdílení souborů
 * Spuštění úlohy zálohování na vyžádání pro vytvoření bodu obnovení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Přečtěte si](azure-file-share-backup-overview.md) o řešení zálohování založeném na snímku Azure File Share.
 * Ujistěte se, že se sdílená složka nachází v jednom z [podporovaných typů účtů úložiště](azure-file-share-support-matrix.md).

@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649936"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Kurz: zprovoznění prostředků pomocí vlastních zprostředkovatelů Azure
 
 V tomto kurzu nasadíte do Azure vlastního poskytovatele prostředků, který rozšiřuje rozhraní Azure Resource Manager API o typ prostředku Microsoft. CustomProviders/Associations. V tomto kurzu se dozvíte, jak můžete roztáhnout stávající prostředky, které se nacházejí mimo skupinu prostředků, ve které se nachází instance vlastního zprostředkovatele. V tomto kurzu je vlastní poskytovatel prostředků napájený pomocí aplikace logiky Azure, ale můžete použít jakýkoli veřejný koncový bod rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete znát tyto informace:
 
@@ -235,13 +235,13 @@ Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírov
 
 8. Zadejte nastavení pro požadovaná pole a pak vyberte předplatné a skupinu prostředků. Pole **ID vlastního poskytovatele prostředků** můžete nechat prázdné.
 
-   | Název nastavení | Povinné? | Description |
+   | Název nastavení | Povinné? | Popis |
    | ------------ | -------- | ----------- |
    | Umístění | Ano | Umístění prostředků v šabloně. |
-   | Název aplikace logiky | No | Název aplikace logiky |
-   | Název vlastního poskytovatele prostředků | No | Název vlastního poskytovatele prostředků |
-   | ID vlastního poskytovatele prostředků | No | Stávající vlastní poskytovatel prostředků, který podporuje prostředek přidružení. Pokud sem zadáte hodnotu, aplikace logiky a nasazení vlastního poskytovatele se přeskočí. |
-   | Název přidružení | No | Název prostředku přidružení. |
+   | Název aplikace logiky | Ne | Název aplikace logiky |
+   | Název vlastního poskytovatele prostředků | Ne | Název vlastního poskytovatele prostředků |
+   | ID vlastního poskytovatele prostředků | Ne | Stávající vlastní poskytovatel prostředků, který podporuje prostředek přidružení. Pokud sem zadáte hodnotu, aplikace logiky a nasazení vlastního poskytovatele se přeskočí. |
+   | Název přidružení | Ne | Název prostředku přidružení. |
 
    Ukázkové parametry:
 

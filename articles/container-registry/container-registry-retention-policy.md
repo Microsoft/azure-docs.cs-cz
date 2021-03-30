@@ -4,10 +4,10 @@ description: Naučte se, jak ve službě Azure Container Registry povolit zásad
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83683456"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Nastavit zásady uchovávání informací pro netagované manifesty

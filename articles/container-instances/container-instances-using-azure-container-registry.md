@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92736724"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) je spravovaná služba registru kontejnerů založená na Azure, která slouží k ukládání privátních imagí kontejneru Docker. Tento článek popisuje, jak načítat image kontejneru uložené v Azure Container Registry při nasazení do Azure Container Instances. Doporučeným způsobem, jak nakonfigurovat přístup k registru, je vytvořit Azure Active Directory instanční objekt a heslo a přihlašovací údaje uložit v trezoru klíčů Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 **Azure Container Registry**: potřebujete službu Azure Container Registry, a alespoň jednu Image kontejneru v registru, abyste mohli dokončit kroky v tomto článku. Pokud potřebujete registr, přečtěte si téma [Vytvoření registru kontejnerů pomocí Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
 

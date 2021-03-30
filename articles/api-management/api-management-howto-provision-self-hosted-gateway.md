@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87050354"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Zřízení samoobslužné brány v Azure API Management
 
 Zřízení prostředku brány v instanci Azure API Management je předpokladem pro nasazení samoobslužné brány. Tento článek vás provede kroky k zřízení prostředku brány v API Management.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171563"
 ---
 # <a name="event-schemas"></a>Schémata událostí
@@ -55,12 +55,12 @@ Všechny události mají následující data nejvyšší úrovně:
 | Vlastnost | Typ | Vyžadováno | Popis |
 | -------- | ---- | ----------- |-----------
 | téma | řetězec | No | By se mělo shodovat s tématem, na kterém je publikovaná. Event Grid ji naplní názvem tématu, na kterém je publikovaná, pokud není zadaný. |
-| subject | řetězec | Yes | Cesta k předmětu události, kterou definuje vydavatel. |
-| eventType | řetězec | Yes | Typ události pro tento zdroj události, například BlobCreated. |
-| eventTime | řetězec | Yes | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| subject | řetězec | Ano | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Ano | Typ události pro tento zdroj události, například BlobCreated. |
+| eventTime | řetězec | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | ID | řetězec | No | Jedinečný identifikátor události |
-| data | object | No | Slouží k zaznamenání dat události, která jsou specifická pro entitu publikování. |
-| dataVersion | řetězec | Yes | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| data | object | Ne | Slouží k zaznamenání dat události, která jsou specifická pro entitu publikování. |
+| dataVersion | řetězec | Ano | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | No | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 ### <a name="example--eventgrid-schema-event"></a>Příklad: událost schématu EventGrid

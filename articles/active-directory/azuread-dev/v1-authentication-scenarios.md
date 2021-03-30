@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80154725"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
@@ -119,7 +119,7 @@ Deklarace identity přítomné v jakémkoli tokenu zabezpečení jsou závislé 
 
 Stručný popis každého typu deklarace identity vygenerovaného službou Azure AD najdete v následující tabulce. Podrobnější informace najdete v tématu [přístupové tokeny](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) a [tokeny ID](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) vydané službou Azure AD.
 
-| Deklarovat | Description |
+| Deklarovat | Popis |
 | --- | --- |
 | ID aplikace | Identifikuje aplikaci, která token používá. |
 | Cílová skupina | Identifikuje přijímající prostředek, pro který je token určený. |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92677723"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
@@ -37,7 +37,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
   * Postupujte podle triggeru s akcí Azure Blob Storage **získat obsah objektu BLOB** , který načte kompletní soubor a implicitně použije bloky dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -123,8 +123,8 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Účet úložiště** | Yes | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
+   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | **Účet úložiště** | Ano | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
    ||||
 
    Například:

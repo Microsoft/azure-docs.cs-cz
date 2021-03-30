@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92780831"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Nasaďte a prozkoumejte aplikaci víceklientské SaaS, která používá model databáze na tenanta s Azure SQL Database
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte:
 
 [Řada souvisejících výukových kurzů](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) k prozkoumávání různých vzorů návrhu a správy SaaS Kurzy se sestavují nad rámec tohoto počátečního nasazení. Při použití kurzů můžete prostudovat poskytnuté skripty, abyste viděli, jak jsou implementované různé vzory SaaS. Skripty ukazují, jak funkce SQL Database zjednodušují vývoj aplikací SaaS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro dokončení tohoto kurzu se ujistěte, že je nainstalovaná Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 
@@ -128,7 +128,7 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
 
     Části předchozího formátu jsou vysvětleny v následující tabulce.
 
-    | Část adresy URL        | Description       |
+    | Část adresy URL        | Popis       |
     | :-------------- | :---------------- |
     | události. Wingtip-DPT | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta (*-SA*) nebo *víceklientské databáze* (*-Mt*). |
     | . *&lt; Uživatel &gt;* | *AF1* v příkladu. |

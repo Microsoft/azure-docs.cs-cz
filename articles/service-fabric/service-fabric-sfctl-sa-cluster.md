@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 7e9f4b55945afc04e5c826b26632d68cb75e502f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260280"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
@@ -30,14 +30,14 @@ Konfigurace clusteru obsahuje vlastnosti clusteru, které zahrnují různé typy
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Configuration-API-Version [požadováno] | Verze rozhraní API samostatné konfigurace JSON clusteru |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -52,7 +52,7 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --cluster-config [požadováno] | Konfigurace clusteru. |
 | --Application-Health-policies | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
@@ -69,7 +69,7 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -92,13 +92,13 @@ Podrobnosti o stavu upgradu konfigurace clusteru pro samostatný cluster Service
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

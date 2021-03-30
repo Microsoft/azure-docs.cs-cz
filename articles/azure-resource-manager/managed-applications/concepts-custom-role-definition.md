@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81391831"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Artefakt definice vlastní role v Azure Managed Applications
@@ -63,7 +63,7 @@ Role se skládá buď z, `$.properties.roleName` nebo `id` :
 > [!NOTE]
 > Můžete použít buď `id` `roleName` pole nebo. Je vyžadována pouze jedna z nich. Tato pole se používají k vyhledání definice role, která se má použít. Pokud jsou zadány obě, bude `id` použito pole.
 
-|Vlastnost|Povinné?|Description|
+|Vlastnost|Povinné?|Popis|
 |---------|---------|---------|
-|id|Yes|ID předdefinované role. Můžete použít úplné ID nebo jenom identifikátor GUID.|
-|roleName|Yes|Název předdefinované role|
+|id|Ano|ID předdefinované role. Můžete použít úplné ID nebo jenom identifikátor GUID.|
+|roleName|Ano|Název předdefinované role|
