@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171665"
 ---
 # <a name="event-grid-configuration"></a>Konfigurace Event Grid
@@ -22,7 +22,7 @@ Event Grid poskytuje mnoho konfigurací, které je možné upravit pro každé p
 
 Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ověřování](security-authentication.md). Příklady jeho použití najdete v [tomto článku](configure-api-protocol.md).
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 |`inbound__serverAuth__tlsPolicy`| Zásada TLS modulu Event Grid. Výchozí hodnota je pouze HTTPS.
 |`inbound__serverAuth__serverCert__source`| Zdroj certifikátu serveru, který používá modul Event Grid pro konfiguraci protokolu TLS. Výchozí hodnota je IoT Edge.
@@ -31,7 +31,7 @@ Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ov
 
 Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ověřování](security-authentication.md). Příklady najdete v [tomto článku](configure-client-auth.md).
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 |`inbound__clientAuth__clientCert__enabled`| Pro zapnutí nebo vypnutí ověřování klientů na základě certifikátu. Výchozí hodnota je true (pravda).
 |`inbound__clientAuth__clientCert__source`| Zdroj pro ověřování klientských certifikátů. Výchozí hodnota je IoT Edge.
@@ -43,7 +43,7 @@ Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ov
 ## <a name="outgoing-client-authentication"></a>Odchozí ověřování klientů
 Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ověřování](security-authentication.md). Příklady najdete v [tomto článku](configure-identity-auth.md).
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 |`outbound__clientAuth__clientCert__enabled`| Zapnutí nebo vypnutí připojení certifikátu identity k odchozím žádostem. Výchozí hodnota je true (pravda).
 |`outbound__clientAuth__clientCert__source`| Zdroj pro načtení odchozího certifikátu modulu Event Grid Výchozí hodnota je IoT Edge.
@@ -52,7 +52,7 @@ Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ov
 
 Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ověřování](security-authentication.md). Příklady najdete v [tomto článku](configure-webhook-subscriber-auth.md).
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 |`outbound__webhook__httpsOnly`| Zásady, které určují, jestli se mají povolit jenom odběratelé HTTPS Výchozí hodnota je true (pouze HTTPS).
 |`outbound__webhook__skipServerCertValidation`| Příznak, který určuje, jestli se má ověřit certifikát předplatitele. Výchozí hodnota je true (pravda).
@@ -62,7 +62,7 @@ Obecné informace o ověřování klientů najdete v tématu [zabezpečení a ov
 
 Obecné informace o této funkci najdete v tématu [doručování a opakování](delivery-retry.md).
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Maximální počet pokusů o doručení události Výchozí hodnota je 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Hodnota TTL (Time to Live) v sekundách, po které se událost vynechá, pokud se nedodá. Výchozí hodnota je  **7200** sekund.
@@ -71,7 +71,7 @@ Obecné informace o této funkci najdete v tématu [doručování a opakování]
 
 Další informace o této funkci najdete v tématu [doručování a výstup dávkování](delivery-output-batching.md).
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 | `api__deliveryPolicyLimits__maxBatchSizeInBytes` | Maximální povolená hodnota `ApproxBatchSizeInBytes` ovladače Výchozí hodnota je `1_058_576`.
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Maximální povolená hodnota `MaxEventsPerBatch` ovladače Výchozí hodnota je `50`.
@@ -82,6 +82,6 @@ Další informace o této funkci najdete v tématu [doručování a výstup dáv
 
 Další informace o použití metrik s Event Grid v IoT Edge najdete v tématu [monitorování témat a odběrů](monitor-topics-subscriptions.md) .
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 | `metrics__reporterType` | Typ zpravodaje pro koncový bod metrik Výchozí hodnota je `none` a zakáže metriky. Nastavením `prometheus` této možnost povolíte metriky ve formátu Prometheus Exposition.

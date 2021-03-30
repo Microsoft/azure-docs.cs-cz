@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88923394"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter` , `$orderby` a `$select` v Azure kognitivní hledání
@@ -70,7 +70,7 @@ Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsah
 
 Příklady cest polí jsou uvedené v následující tabulce:
 
-| Cesta k poli | Description |
+| Cesta k poli | Popis |
 | --- | --- |
 | `HotelName` | Odkazuje na pole nejvyšší úrovně indexu. |
 | `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu. |

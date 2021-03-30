@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88922816"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Funkce OData v Azure kognitivní hledání
@@ -74,7 +74,7 @@ Existují dvě přetížení `search.in` funkce:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Typ | Description |
+| Název parametru | Typ | Popis |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Odkaz na pole řetězce (nebo proměnná rozsahu v poli kolekce řetězců v případě, kdy `search.in` se používá uvnitř `any` `all` výrazu or). |
 | `valueList` | `Edm.String` | Řetězec obsahující oddělený seznam hodnot, který se má shodovat s `variable` parametrem. Pokud `delimiters` parametr není zadán, výchozí oddělovače jsou mezera a čárka. |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85554927"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
@@ -29,7 +29,7 @@ Organizace s místními nároky obvykle při zřizování zařízení spoléhaj�
 
 Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Tato zařízení jsou zařízení, která jsou připojená k vaší místní službě Active Directory a zaregistrovaná ve vašem Azure Active Directory.
 
-| Připojení k hybridní službě Azure AD | Description |
+| Připojení k hybridní službě Azure AD | Popis |
 | --- | --- |
 | **Definition** | Připojeno k místní službě AD a službě Azure AD, která vyžaduje účet organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro hybridní organizace se stávající místní infrastrukturou AD |

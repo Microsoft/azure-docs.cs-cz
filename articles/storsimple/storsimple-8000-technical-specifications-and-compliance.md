@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68965292"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technické specifikace a dodržování předpisů pro zařízení StorSimple
@@ -46,7 +46,7 @@ EBOD skříň používá modul PCM 580 W a primární skříň používá 764 W 
 | Výstup |Snímač 5V síťového pohotovostní napětí \@ 2,0 A |Snímač 5V síťového pohotovostní napětí \@ 2,7 A |
 | + Snímač 5V síťového \@ 42 A |+ Snímač 5V síťového \@ 40 A | |
 | + Snímač 12V síťového \@ 38 A |+ Snímač 12V síťového \@ 38 A | |
-| Horká, připojitelná |Yes |Yes |
+| Horká, připojitelná |Ano |Ano |
 | Přepínače a diody LED |Přepínač zapnutí/vypnutí střídavého napájení a čtyři indikátory LED stavu |Přepínač zapnutí/vypnutí střídavého napájení a šest indikátorů stavu |
 | Chlazení skříně |Axiální chladicí ventilátory s proměnlivým ovládáním rychlosti ventilátoru |Axiální chladicí ventilátory s proměnlivým ovládáním rychlosti ventilátoru |
 

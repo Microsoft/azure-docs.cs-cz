@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73953905"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Připravit cíl (z VMware do Azure)
 
 Tento článek popisuje, jak připravit prostředí Azure tak, aby se spustila replikace fyzických serverů (x64) se systémem Windows nebo Linux do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Článek předpokládá:
 - Vytvořili jste Recovery Services trezor pro ochranu fyzických serverů. Z [Azure Portal](https://portal.azure.com "portál Azure")můžete vytvořit trezor Recovery Services.

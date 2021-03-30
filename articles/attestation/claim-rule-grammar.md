@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91285414"
 ---
 # <a name="claim-and-claim-rules"></a>Deklarace identity a pravidla deklarace identity
@@ -90,7 +90,7 @@ Vyhodnocení seznamu podmínek:
 
 Sada akcí, které jsou povoleny v zásadě, je popsána níže.
 
-| Operace akce | Description | Oddíly zásad, na které se vztahují |
+| Operace akce | Popis | Oddíly zásad, na které se vztahují |
 |--|--|--|
 | Povolit () | Příchozí sadu deklarací lze použít k výpočtu **issuancerules**. Nepřijímá žádnou deklaraci identity jako parametr. | **autorizačních pravidel** |
 | Deny () | Příchozí sada deklarací by se neměla používat k výpočtu **issuancerules** , že nepřijímá žádnou deklaraci identity jako parametr. | **autorizačních pravidel** |

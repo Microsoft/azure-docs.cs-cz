@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359760"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven Java V12
@@ -110,7 +110,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 :::row:::
    :::column span="2":::
       [Aktivace obnovitelné chyby pomocí klienta kontejneru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)

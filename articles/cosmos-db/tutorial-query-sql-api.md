@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: c206b68495b09988e49f37433ccd5616acd29cb7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93337774"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
@@ -66,7 +66,7 @@ Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prost
 Další informace o dotazech SQL najdete tady:
 * [Dotazy a syntaxe SQL](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Nemáte žádné z těchto prostředků? Dokončete [pětiminutový rychlý start](create-cosmosdb-resources-portal.md).
 

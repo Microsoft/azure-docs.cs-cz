@@ -4,10 +4,10 @@ description: Naučte se používat REST API k obnovení sdílených složek Azur
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88761793"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Obnovení sdílených složek Azure pomocí REST API
@@ -20,7 +20,7 @@ Na konci tohoto článku se dozvíte, jak provádět následující operace pomo
 * Obnovte úplnou sdílenou složku Azure.
 * Obnovte jednotlivé soubory nebo složky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpokládáme, že už máte zálohovanou sdílenou složku, kterou chcete obnovit. Pokud to neuděláte, přečtěte si článek [zálohování sdílené složky Azure pomocí REST API](backup-azure-file-share-rest-api.md) , kde se dozvíte, jak ho vytvořit.
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
-Název |  Typ   |   Description
+Název |  Typ   |   Popis
 --- | ---- | ----
 Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
-Název |  Typ   |   Description
+Název |  Typ   |   Popis
 --- | ---- | ----
 Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 

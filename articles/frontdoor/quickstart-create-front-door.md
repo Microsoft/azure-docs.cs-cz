@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91252260"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
@@ -26,7 +26,7 @@ Začněte s předními dvířky Azure pomocí Azure Portal k nastavení vysoké 
 
 V tomto rychlém startu fond front Azure vytvoří fondy dvou instancí webové aplikace, které běží v různých oblastech Azure. Vytvoříte konfiguraci front-dveří na základě stejné a stejné priority jako u back-endu. Tato konfigurace směruje provoz na nejbližší lokalitu, která spouští aplikaci. Přední dveře Azure neustále monitorují webovou aplikaci. Služba zajišťuje automatické převzetí služeb při selhání pro další dostupnou lokalitu, když nejbližší web není dostupný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
