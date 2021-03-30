@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88998233"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení do konkrétních telefonů Windows pomocí Azure Notification Hubs
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 > * Posílání označených oznámení
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete [kurz Zasílání nabízených oznámení aplikacím pro Windows Phone službou Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md). V tomto kurzu aktualizujete mobilní aplikaci, abyste si mohli zaregistrovat kategorie nejnovějších zpráv, které vás zajímají, a dostávat nabízená oznámení jenom k těmto kategoriím.
 

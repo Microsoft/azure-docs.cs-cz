@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241748"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Dvojité šifrování infrastruktury pro Azure Database for MySQL
 
 Naučte se, jak nastavit a spravovat dvojité šifrování infrastruktury pro váš Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 

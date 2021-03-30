@@ -9,14 +9,14 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "75659864"
 ---
 >[!IMPORTANT]
->Prostředky, které jste vytvořili jako předpoklady, můžete použít pro jiné kurzy Azure Machine Learning a články s postupy.
+>Prostředky, které jste vytvořili, můžete využít jako předpoklady pro jiné kurzy a články s postupy pro Azure Machine Learning.
 
 ### <a name="delete-everything"></a>Odstranit vše
 
@@ -36,7 +36,7 @@ Odstraněním skupiny prostředků se odstraní také všechny prostředky, kter
 
 V návrháři, kde jste vytvořili experiment, odstraňte jednotlivé prostředky tak, že je vyberete a pak vyberete tlačítko **Odstranit** .
 
-Cíl výpočtů, který jste zde vytvořili, *automaticky automaticky škáluje* na nula uzlů, pokud se nepoužívá. Tato akce se provádí kvůli minimalizaci nákladů.Pokud chcete odstranit cíl výpočtů, proveďte tyto kroky:
+Cíl výpočtů, který jste zde vytvořili, *automaticky automaticky škáluje* na nula uzlů, pokud se nepoužívá. Tato akce se provádí kvůli minimalizaci nákladů. Pokud chcete odstranit cíl výpočtů, proveďte tyto kroky:
 
 ![Odstranit prostředky](./media/aml-ui-cleanup/delete-asset.png)
 

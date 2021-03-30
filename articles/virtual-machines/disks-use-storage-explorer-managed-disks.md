@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88749377"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Použití Průzkumník služby Azure Storage ke správě Azure Managed disks
 
 Průzkumník služby Storage 1.10.0 umožňuje uživatelům nahrávat, stahovat a kopírovat spravované disky a také vytvářet snímky. Z důvodu těchto dalších možností můžete pomocí Průzkumník služby Storage migrovat data z místního prostředí do Azure a migrovat data mezi oblastmi Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku budete potřebovat následující:
 - Předplatné Azure

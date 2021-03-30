@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93146701"
 ---
 # <a name="edit-an-api"></a>Úprava rozhraní API
@@ -26,7 +26,7 @@ Kroky v tomto kurzu popisují, jak pomocí služby API Management (APIM) upravit
 + Můžete to provést přidáním, odstraněním nebo přejmenováním operací v instanci APIM. 
 + Můžete upravit swagger vašeho rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 + [Import a publikování vašeho prvního rozhraní API](import-and-publish.md)

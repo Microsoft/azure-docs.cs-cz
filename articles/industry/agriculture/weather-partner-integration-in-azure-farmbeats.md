@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93147075"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>Integrace s informacemi o počasí s FarmBeats
@@ -143,7 +143,7 @@ V rámci úlohy musí program vytvořit/WeatherDataLocation založenou na/Weathe
 WeatherDataModel | Popis |
 --- | ---
 Název  | Název datového modelu počasí |
-Description  | Smysluplný popis modelu |
+Popis  | Smysluplný popis modelu |
 Vlastnosti  | Další vlastnosti definované poskytovatelem dat. |
 Název > weatherMeasures  | Název míry počasí Například humidity_max. |
 weatherMeasures > datový typ  | Buď typ Double, nebo Enum. Pokud je vyžadováno Enum, measureEnumDefinition. |
@@ -165,12 +165,12 @@ pipelineDetails > parametry > popisu | Popis parametru |
 Vlastnosti  | Další vlastnosti od výrobce.
 Vlastnosti > programRunCommand | Příkaz Docker run. Tento příkaz se spustí, když zákazník spustí úlohu počasí. |
 
-WeatherDataLocation | Description |
+WeatherDataLocation | Popis |
 --- | ---
 weatherDataModelId  | ID odpovídající WeatherDataModel, která byla vytvořena během procesu Bootstrap.|
 location  | Zeměpisná šířka, zeměpisná délka a zvýšení úrovně. |
 Name | Název objektu. |
-Description | Popis umístění dat počasí |
+Popis | Popis umístění dat počasí |
 farmId | Volitelné ID farmy Zákazník toto ID poskytne jako součást parametru úlohy. |
 Vlastnosti  | Další vlastnosti od výrobce.
 

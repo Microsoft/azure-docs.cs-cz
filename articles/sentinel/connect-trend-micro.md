@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77588021"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Propojit Trend Micro hlubokého zabezpečení
@@ -26,7 +26,7 @@ ms.locfileid: "77588021"
 Pomocí konektoru trend Microed Security Connector můžete snadno propojit své podrobné protokoly zabezpečení se službou Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Díky tomu získáte lepší přehled o sítích a systémech vaší organizace a zlepšuje možnosti vaší operace zabezpečení.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 

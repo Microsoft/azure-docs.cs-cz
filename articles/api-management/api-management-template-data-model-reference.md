@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86243150"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Referenční informace k datovému modelu šablony Azure API Management
@@ -41,7 +41,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 -   [Hlavička](#Header)  
 -   [Požadavek HTTP](#HTTPRequest)  
 -   [Odpověď HTTP](#HTTPResponse)  
--   [Chybu](#Issue)  
+-   [Problém](#Issue)  
 -   [Operace](#Operation)  
 -   [Nabídka operace](#Menu)  
 -   [Položka nabídky operace](#MenuItem)  
@@ -127,7 +127,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="comment"></a><a name="Comment"></a> Vytvořena  
  `API`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`Id`|číslo|ID komentáře|  
 |`CommentText`|řetězec|Tělo komentáře Může zahrnovat HTML.|  
@@ -184,7 +184,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="http-response"></a><a name="HTTPResponse"></a> Odpověď HTTP  
  V této části je popsána `response` reprezentace.  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`statusCode`|kladné celé číslo|Stavový kód odezvy operace.|  
 |`description`|řetězec|Popis odezvy operace.|  
@@ -227,7 +227,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="paging"></a><a name="Paging"></a> Přenosu  
  `paging`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`Page`|číslo|Číslo aktuální stránky|  
 |`PageSize`|číslo|Maximální výsledky, které mají být zobrazeny na jedné stránce.|  
@@ -264,7 +264,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="provider"></a><a name="Provider"></a> Zprostředkovatele  
  `provider`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`Properties`|slovník řetězců|Vlastnosti tohoto zprostředkovatele ověřování.|  
 |`AuthenticationType`|řetězec|Typ poskytovatele. (Azure Active Directory, přihlášení na Facebooku, účet Google, účet Microsoft, Twitter).|  
@@ -346,7 +346,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a> Registrace uživatele  
  `user sign up`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boolean|Hodnota, kterou používá ovládací prvek registrace [pro registraci](api-management-page-controls.md#sign-up)|  
 |`Password`|řetězec|Heslo k uživatelskému účtu.|  

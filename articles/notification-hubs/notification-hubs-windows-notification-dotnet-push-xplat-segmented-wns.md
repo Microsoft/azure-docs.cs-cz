@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92320572"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Kurz: odesílání oznámení na konkrétní zařízení s Univerzální platforma Windows aplikacemi
@@ -47,7 +47,7 @@ V tomto kurzu provedete následující úlohy:
 > * Posílání označených oznámení
 > * Spuštění aplikace a generování oznámení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu dokončete [kurz o odesílání oznámení do aplikací pro Univerzální platformu Windows pomocí služby Azure Notification Hubs][get-started].  
 

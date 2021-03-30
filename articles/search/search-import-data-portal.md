@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935207"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Průvodce importem dat pro Azure Kognitivní hledání
@@ -75,7 +75,7 @@ Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním prů
 
 Na pozadí Průvodce vytvoří, nakonfiguruje a vyvolá následující objekty. Po spuštění Průvodce můžete jeho výstup najít na stránkách portálu. Stránka přehled vaší služby obsahuje seznam indexů, indexerů, zdrojů dat a dovednosti. Definice indexů se dají zobrazit v plném formátu JSON na portálu. Pro jiné definice můžete použít [REST API](/rest/api/searchservice/) k získání konkrétních objektů.
 
-| Objekt | Description | 
+| Objekt | Popis | 
 |--------|-------------|
 | [Zdroj dat](/rest/api/searchservice/create-data-source)  | Uchovává informace o připojení ke zdrojovým datům, včetně přihlašovacích údajů. Objekt zdroje dat se používá výhradně s indexery. | 
 | [Index](/rest/api/searchservice/create-index) | Fyzická datová struktura, která se používá pro fulltextové vyhledávání a další dotazy. | 

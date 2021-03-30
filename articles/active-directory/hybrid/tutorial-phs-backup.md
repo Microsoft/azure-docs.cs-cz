@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91313089"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz: nastavení KOSMETICE jako zálohy pro AD FS v Azure AD Connect
@@ -29,7 +29,7 @@ Následující kurz vás provede nastavením synchronizace hodnot hash hesel jak
 >[!NOTE]
 >V případě, že nemáte přístup k serveru Azure AD Connect nebo server nemá přístup k Internetu, můžete kontaktovat [Podpora Microsoftu](https://support.microsoft.com/en-us/contactus/) a pomoct se změnami na straně Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento kurz sestaví na tomto [kurzu: federovat jedno prostředí doménové struktury AD do cloudu](tutorial-federation.md) a před pokusem o provedení tohoto kurzu je v jednotlivých požadavcích.  Pokud jste tento kurz nedokončili, udělejte to ještě před provedením kroků v tomto dokumentu.
 
 >[!IMPORTANT]
