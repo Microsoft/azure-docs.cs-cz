@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84888706"
 ---
 # <a name="custom-reports-from-verizon"></a>Vlastní sestavy od Verizonu
@@ -68,7 +68,7 @@ Data ve formátu aplikace Excel můžete exportovat kliknutím na symbol aplikac
 
 ## <a name="edge-cnames-custom-report-fields"></a>Pole vlastní sestavy CNAME Edge
 
-| Pole                     | Description   |
+| Pole                     | Popis   |
 |---------------------------|---------------|
 | 2xx                       | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního zařízení, které má za následek 2xx stavový kód HTTP (například 200 OK). |
 | 3xx                       | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního typu, který má za následek 3xx stavový kód HTTP (například Nalezeno 302 nebo 304 Nezměněno. |
@@ -77,11 +77,11 @@ Data ve formátu aplikace Excel můžete exportovat kliknutím na symbol aplikac
 | % Přístupů do mezipaměti               | Označuje procento požadavků v mezipaměti, které byly obsluhovány přímo z mezipaměti žadateli. |
 | Přístupy do mezipaměti                | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního typu, který má za následek dosažení mezipaměti (například TCP_EXPIRED_HIT, TCP_HIT nebo TCP_PARTIAL_HIT). K mezipaměti dojde, když je nalezena verze požadovaného obsahu v mezipaměti. |
 | Přenesená data (MB)     | Označuje celkový objem přenesených dat (MB) z hraničních serverů do klientů HTTP (webových prohlížečů) pro hraniční záznam CNAME. Množství přenesených dat se počítá přidáním hlaviček odpovědí HTTP do těla odpovědi. V důsledku toho je objem přenesených dat pro každý Asset větší než skutečná velikost souboru. |
-| Description               | Identifikuje hraniční záznam CNAME podle jeho názvu hostitele. |
+| Popis               | Identifikuje hraniční záznam CNAME podle jeho názvu hostitele. |
 | Hits                      | Určuje celkový počet žádostí na hraniční záznam CNAME. |
 | Výpadky                    | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního typu, který má za následek neúspěšný přenos do mezipaměti (například TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS nebo TCP_MISS). K mezipaměti nedochází, když požadovaný obsah nebyl uložen do mezipaměti na hraničním serveru, který danou žádost dopustil. | 
 | Žádná mezipaměť                  | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního typu, který má za následek stavový kód CONFIG_NOCACHE cache.  |
-| Jiné                     | Určuje celkový počet požadavků nebo přenesených dat (MB) pro hraniční záznam CNAME, který má za následek stavový kód HTTP, který spadá mimo rozsah 2xx-5xx. |
+| Ostatní                     | Určuje celkový počet požadavků nebo přenesených dat (MB) pro hraniční záznam CNAME, který má za následek stavový kód HTTP, který spadá mimo rozsah 2xx-5xx. |
 | Platforma                  | Označuje platformu, která zpracovává provoz CNAME hraničního záznamu. |
 | Unassigned               | Označuje celkový počet požadavků nebo přenesených dat (MB) pro hraniční záznam CNAME, pro který se neprotokoluje informace o stavu mezipaměti nebo informace o stavovém kódu protokolu HTTP.  |
 | Neukládatelné do mezipaměti               | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního zařízení, které má za následek neukládatelné kódy stavu mezipaměti.  |

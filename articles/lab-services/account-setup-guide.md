@@ -4,21 +4,21 @@ description: Tato příručka správcům pomáhá rychle nastavit účet testova
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e1f36b6d0983c10926a790d42edef3736e848a59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104669385"
 ---
 # <a name="lab-account-setup-guide"></a>Průvodce nastavením účtu testovacího prostředí
 Pokud jste správce, musíte před nastavením prostředí Azure Lab Services vytvořit v rámci předplatného Azure *účet testovacího* prostředí. Účet testovacího prostředí je kontejner pro jednu nebo více cvičení a nastavení trvá jenom několik minut.
 
 Tato příručka obsahuje tři části:
--  Předpoklady
+-  Požadavky
 -  Plánování nastavení účtu testovacího prostředí
 -  Nastavení účtu testovacího prostředí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Následující části popisují, co musíte udělat, než budete moct nastavit účet testovacího prostředí.
 
 

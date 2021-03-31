@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96553120"
 ---
 # <a name="register-and-scan-azure-files"></a>Registrace a kontrola souborů Azure
@@ -20,7 +20,7 @@ ms.locfileid: "96553120"
 
 Soubory Azure podporují úplné a přírůstkové kontroly pro zachycení metadat a použití klasifikací v metadatech na základě klasifikací systému a zákazníka.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Pro nastavení a naplánování kontrol musíte být správcem zdroje dat. Podrobnosti najdete v tématu [oprávnění katalogu](catalog-permissions.md) .

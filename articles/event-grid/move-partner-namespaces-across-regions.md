@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89084545"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Přesunout Azure Event Grid obory názvů partnerů do jiné oblasti
@@ -24,7 +24,7 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
     > - Export **témat pro partnery** do šablony Azure Resource Manager není podporován, protože zákazníci nemůžou vytvořit partnerské téma přímo. 
     > - **Registrace partnerů** jsou globální prostředky (nevázané na žádnou konkrétní oblast), takže jejich přesunutí z jedné oblasti do jiné oblasti není možné. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 ## <a name="prepare"></a>Příprava

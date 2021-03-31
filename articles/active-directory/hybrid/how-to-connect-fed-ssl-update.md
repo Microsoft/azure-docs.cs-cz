@@ -17,10 +17,10 @@ ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279903"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu TLS/SSL pro farmu Active Directory Federation Services (AD FS) (AD FS)
@@ -36,7 +36,7 @@ Celou operaci aktualizace certifikátu TLS/SSL pro AD FSovou farmu napříč vš
 >[!NOTE]
 >Další informace o certifikátech, které používá AD FS, najdete v tématu [Principy certifikátů používaných v AD FS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11)).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **AD FS farma**: Ujistěte se, že vaše AD FS farma je Windows Server 2012 R2 nebo novější.
 * **Azure AD Connect**: Ujistěte se, že je verze Azure AD Connect 1.1.553.0 nebo vyšší. Použijete **aktualizaci úlohy AD FS certifikát SSL**.
