@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84791907"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Výpis přiřazení odmítnutí Azure pomocí REST API
@@ -29,7 +29,7 @@ ms.locfileid: "84791907"
 > [!NOTE]
 > Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [přiřazení odmítnutí Azure](deny-assignments.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
@@ -80,7 +80,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Description |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | (žádný filtr) | Zobrazí seznam všech přiřazení odepřít v, výše a pod zadaným oborem. |
     > | `$filter=atScope()` | Vypíše odmítnutá přiřazení jenom pro zadaný rozsah a vyšší. Nezahrnuje přiřazení zamítnutí v podoborech. |
@@ -102,7 +102,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít. Je vyžadován filtr.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Description |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | `$filter=atScope()` | Vypíše přiřazení zamítnutá jenom pro kořenový obor. Nezahrnuje přiřazení zamítnutí v podoborech. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Vypíše zamítnutá přiřazení se zadaným názvem. |

@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: how-to
 keywords: tělo, rámec, Azure, Kinect, tělo, sledování, tipy
 ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85277216"
 ---
 # <a name="access-data-in-body-frame"></a>Přístup k datům ve snímku těla

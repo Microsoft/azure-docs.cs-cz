@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.custom: devx-track-js
 ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99509397"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání pomocí sady JavaScript SDK
@@ -31,7 +31,7 @@ Pomocí [JavaScriptu/TYPSCRIPT SDK pro Azure kognitivní hledání](/javascript/
 
 Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) a spustit aplikaci z příkazového řádku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete mít k dispozici následující nástroje a služby:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.openlocfilehash: cedd0f5f96d31c9a3c7e587f1478a3c7dfc122cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí centra FCM
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat FCM HUB s Azure Active Directory (Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

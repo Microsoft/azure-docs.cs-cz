@@ -4,10 +4,10 @@ description: Přečtěte si o proměnných prostředí v Azure Service Fabric. O
 ms.topic: reference
 ms.date: 12/07/2017
 ms.openlocfilehash: b70249daa439b5a631b5a84b10c47f082ce75985
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574577"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric proměnných prostředí

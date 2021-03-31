@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85208769"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Jak nakonfigurovat přístup Azure Active Directory ke službě Azure blockchain
@@ -17,7 +17,7 @@ V tomto článku se dozvíte, jak udělit přístup a připojit se k uzlům slu�
 
 Azure AD poskytuje cloudovou správu identit a umožňuje používat jedinou identitu v celém podniku a přistupovat k aplikacím v Azure. Služba Azure Blockchain je integrovaná se službou Azure AD a nabízí výhody, jako je federace IDENTIFIKÁTORů, jednotné přihlašování a ověřování Multi-Factor Authentication.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvoření členu blockchain pomocí Azure Portal](create-member.md)
 

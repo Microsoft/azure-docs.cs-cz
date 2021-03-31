@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 4c56f8cba232220844a8a8f9c408a60c89c581cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91613624"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Pokrytí funkcí pro služby Azure PaaS <a name="paas-services"></a>
@@ -46,7 +46,7 @@ Následující tabulka ukazuje dostupnost funkcí Azure Security Center pro podp
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
 |Azure SQL Database|✔|✔|✔|
-|Azure SQL Managed Instance|✔|✔|✔|
+|Spravovaná instance Azure SQL|✔|✔|✔|
 |Obor názvů Azure Service Bus|✔|-|-|
 |Účet Azure Service Fabric|✔|-|-|
 |Účty úložiště Azure|✔|✔|-|

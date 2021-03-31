@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: jeedes
 ms.openlocfilehash: e9beb2c9e265982a9e10f3e6abee6bc3cba4a4a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Kurz: Azure Active Directory integrace s Proofpoint na vyžádání
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Proofpoint na vyžádání pomocí Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Proofpoint na vyžádání pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

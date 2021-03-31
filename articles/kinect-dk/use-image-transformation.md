@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: Kinect, Azure, senzor, sada SDK, systém souřadnic, kalibrace, projekt, neprojekt, transformace, RGB (Point-d) – Point Cloud
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85277140"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Použití transformací imagí sady Kinect pro senzory Azure
