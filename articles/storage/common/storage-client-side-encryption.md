@@ -11,10 +11,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588252"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side šifrování a Azure Key Vault pro Microsoft Azure Storage

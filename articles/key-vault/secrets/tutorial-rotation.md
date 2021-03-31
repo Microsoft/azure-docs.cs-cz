@@ -12,10 +12,10 @@ ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99805226"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které používají jednu sadu ověřovacích přihlašovacích údajů
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů 
 > [!NOTE]
 > Mezi kroky 3 a 4 by mohlo dojít k prodlevě. Během této doby se tajný kód v Key Vault nebude moci ověřit pro SQL Server. V případě selhání některého z kroků Event Grid opakování po dvou hodinách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault

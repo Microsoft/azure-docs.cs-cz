@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 11/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86187094"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Ukázky Azure Service Fabric PowerShellu
@@ -17,7 +17,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty PowerShellu pro vyt
 
 [!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| Skript | Description |
+| Skript | Popis |
 |-|-|
 | **Vytvoření clusteru** ||
 | [Vytvoření clusteru (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Vytvoří cluster Azure Service Fabric. |

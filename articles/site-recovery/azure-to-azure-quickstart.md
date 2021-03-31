@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86135706"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Rychlý Start: nastavení zotavení po havárii do sekundární oblasti Azure pro virtuální počítač Azure
@@ -17,7 +17,7 @@ Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategi
 
 V tomto rychlém startu se dozvíte, jak nastavit zotavení po havárii pro virtuální počítač Azure tím, že ho replikujte do sekundární oblasti Azure. Obecně platí, že k povolení replikace se používají výchozí nastavení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure a virtuální počítač.
 

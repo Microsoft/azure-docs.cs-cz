@@ -8,10 +8,10 @@ ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
 ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88891041"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Šablony Azure Resource Manager pro App Service
@@ -20,7 +20,7 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Az
 
 Další informace o syntaxi a vlastnostech JSON pro App Services prostředky najdete v tématu [typy prostředků Microsoft. Web](/azure/templates/microsoft.web/allversions).
 
-| Nasazení aplikace | Description |
+| Nasazení aplikace | Popis |
 |-|-|
 | [App Service plánování a základní aplikace pro Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Nasadí aplikaci App Service, která je nakonfigurovaná pro Linux. |
 | [App Service plánování a základní aplikace pro Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Nasadí aplikaci App Service, která je nakonfigurovaná pro Windows. |

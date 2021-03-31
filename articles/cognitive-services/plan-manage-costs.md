@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101699925"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Plánování a Správa nákladů pro Azure Cognitive Services
 
 Tento článek popisuje, jak plánujete a spravovat náklady na Azure Cognitive Services. Nejprve pomocí cenové kalkulačky Azure pomůže naplánovat náklady na Cognitive Services před tím, než přidáte jakékoli prostředky pro službu, abyste mohli odhadnout náklady. V dalším kroku můžete při přidávání prostředků Azure zkontrolovat odhadované náklady. Po zahájení práce s prostředky Cognitive Services (například řeč, Počítačové zpracování obrazu, LUIS, Analýza textu, překladatel atd.) pomocí Cost Management funkcí nastavte rozpočty a sledujte náklady. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Cognitive Services jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na Cognitive Services, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Analýza nákladů v Cost Management podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 

@@ -7,17 +7,17 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
 ms.openlocfilehash: cd7604e33a9f98d9104eecabb20369fe2fcee8a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86119629"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Ukázky Azure PowerShell pro Azure Data Share
 
 Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Data Share.
 
-|Ukázky PowerShellu|Description|
+|Ukázky PowerShellu|Popis|
 |---|---|
 |[Vytvořit nový účet pro sdílení dat](scripts/powershell/create-new-share-account-powershell.md)| Tento skript PowerShellu vytvoří nový účet pro sdílení dat. |
 |[Vytvoření nové sdílené složky dat](scripts/powershell/create-new-share-powershell.md)| Tento skript PowerShellu vytvoří novou sdílenou složku dat. |

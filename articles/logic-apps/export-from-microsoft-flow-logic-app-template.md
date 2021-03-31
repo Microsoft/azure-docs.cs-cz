@@ -7,10 +7,10 @@ ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101699092"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
@@ -26,7 +26,7 @@ V Azure Logic Apps nejsou k dispozici všechny konektory Power Automate. Můžet
 
 * Pokud chcete zjistit, které Logic Apps konektory nemají ekvivalenty vypnutí napájení, přečtěte si téma [Logic Apps konektory](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

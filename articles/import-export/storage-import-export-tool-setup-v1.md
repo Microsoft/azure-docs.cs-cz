@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8bfb55cbe8ba4876e94dc1622cbee33e4d471a65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98706306"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Nastavení nástroje Azure pro import/export v1
@@ -24,7 +24,7 @@ Nástroj Microsoft Azure Import/Export je nástroj pro přípravu a opravu jedno
 
 -   Po přijetí jednotek z dokončené úlohy exportu můžete pomocí tohoto nástroje opravit všechny soubory, které byly na jednotkách poškozeny nebo nebyly nalezeny.  
 
-## <a name="prerequisites"></a>Předpoklady  
+## <a name="prerequisites"></a>Požadavky  
 Pokud připravujete jednotky pro úlohu importu, musíte splnit následující předpoklady:  
 
 -   Musíte mít aktivní předplatné Azure.  

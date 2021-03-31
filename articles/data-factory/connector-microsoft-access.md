@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
 ms.openlocfilehash: f0864eb65fb1f7dcf803ea48f762ab41b8468aac
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588762"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Kopírování dat z a do aplikace Microsoft Access pomocí Azure Data Factory
@@ -28,7 +28,7 @@ Tento konektor Microsoft Access se podporuje pro následující činnosti:
 
 Data ze zdroje Microsoft Access můžete kopírovat do libovolného podporovaného úložiště dat jímky nebo z libovolného podporovaného zdrojového úložiště dat do jímky Microsoft Access. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento konektor Microsoft Accessu, musíte:
 

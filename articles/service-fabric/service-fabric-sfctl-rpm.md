@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260284"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
@@ -30,14 +30,14 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Task-ID [povinné] | ID úlohy opravy |
 | --verze | Aktuální číslo verze úlohy opravy. Pokud je hodnota nenulová, požadavek bude úspěšný pouze v případě, že tato hodnota odpovídá skutečné aktuální verzi úlohy opravy. Pokud je nula, není provedena žádná kontrolní verze. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -52,14 +52,14 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Task-ID [povinné] | ID dokončené úlohy opravy, která se má odstranit |
 | --verze | Aktuální číslo verze úlohy opravy. Pokud je hodnota nenulová, požadavek bude úspěšný pouze v případě, že tato hodnota odpovídá skutečné aktuální verzi úlohy opravy. Pokud je nula, není provedena žádná kontrolní verze. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -74,7 +74,7 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --prováděcí modul – filtr | Název prováděcího modulu, jehož deklarované úkoly by měly být uvedeny v seznamu. |
 | --State-Filter | Bitové nebo následující hodnoty určující, které stavy úloh by měly být zahrnuty v seznamu výsledků. <ul><li>1 – vytvořeno</li><li>2 – tvrzeno</li><li>4 – Příprava</li><li>8 – schváleno</li><li>16 provedení</li><li>32 – obnovování</li><li>64 – dokončeno</li></ul>
@@ -82,7 +82,7 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98935408"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
@@ -25,7 +25,7 @@ Získáte informace o těchto tématech:
 > * Upravte a znovu publikujte funkci PowerShellu pro automatizaci nasazení skupiny kontejnerů s jedním kontejnerem.
 > * Ověřte nasazení kontejneru aktivovaného protokolem HTTP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tématu [Vytvoření první funkce v Azure použijte Visual Studio Code](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment) pro požadavky na instalaci a použití Visual Studio Code s rozšířením Azure Functions v operačním systému.
 

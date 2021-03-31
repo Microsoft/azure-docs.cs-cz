@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
 ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588745"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Vytvoření vlastní domény na Azure front-SKU Standard/Premium SKU (Preview) pomocí Azure Portal
@@ -30,7 +30,7 @@ Po vytvoření profilu služby Azure front-endu Standard nebo Premium bude mít 
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v tématu [**doplňujících podmínek použití pro Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [rychlý Start: Vytvoření front-dveří Standard/Premium](create-front-door-portal.md).
 
 * Pokud ještě nemáte vlastní doménu, musíte ji nejdřív koupit se zprostředkovatelem domény. Příklad najdete v tématu [Nákup vlastního názvu domény](../../app-service/manage-custom-dns-buy-domain.md).

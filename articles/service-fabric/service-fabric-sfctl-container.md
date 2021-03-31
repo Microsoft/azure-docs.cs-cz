@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f82883b68ab911fb0b89fc117d9a9d77e05a781a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86245887"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -27,7 +27,7 @@ Vyvolá rozhraní API kontejneru na kontejneru nasazeném na Service Fabric uzlu
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Code-Package-instance-ID [požadováno] | ID, které jednoznačně identifikuje instanci balíčku kódu nasazenou v uzlu Service Fabric. <br><br> Dá se načíst pomocí kódu "Service-Package-list". |
@@ -42,7 +42,7 @@ Vyvolá rozhraní API kontejneru na kontejneru nasazeném na Service Fabric uzlu
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -55,7 +55,7 @@ Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Code-Package-instance-ID [požadováno] | ID instance balíčku kódu, kterou lze načíst pomocí příkazu Service Code-Package-list. |
@@ -67,7 +67,7 @@ Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

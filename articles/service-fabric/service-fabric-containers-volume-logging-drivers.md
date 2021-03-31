@@ -4,10 +4,10 @@ description: Service Fabric podporuje použití souborů Azure k zálohování s
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86247689"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Ovladač svazku souborů Azure pro Service Fabric
@@ -18,7 +18,7 @@ Ovladač svazku souborů Azure je [modul plug-in Docker Volume](https://docs.doc
 > Pro obecnou dostupnost byla vydaná verze 6.5.661.9590 modulu plug-in svazku souborů Azure.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Verze Windows pro modul plug-in Volume Files ve Windows funguje v [systému Windows Server verze 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [windows 10 verze 1709](/windows/whats-new/whats-new-windows-10-version-1709) nebo novější operační systémy.
 
 * Verze Linux modulu plug-in Volume Files pro Linux funguje na všech verzích operačních systémů podporovaných nástrojem Service Fabric.

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.custom: mvc
 ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98935737"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Rychlý Start: spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí konzoly R
@@ -18,7 +18,7 @@ Služba ML Services v Azure HDInsight umožňuje skriptům R používat Apache S
 
 V tomto rychlém startu se dozvíte, jak spustit skript R s konzolou R, která demonstruje použití Sparku pro distribuované výpočty R. Definujete výpočetní kontext pro místní provádění výpočtů na hraničním uzlu a znovu rozšíříte napříč uzly v clusteru HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 

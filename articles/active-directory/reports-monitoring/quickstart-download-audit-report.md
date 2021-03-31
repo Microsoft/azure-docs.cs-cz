@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68989682"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy auditování pomocí portálu Azure Portal
 
 V tomto rychlém startu se dozvíte, jak stáhnout soubor CSV protokolů auditu pro vašeho tenanta za posledních 24 hodin. Z Azure Portal můžete stáhnout záznamy až 250 000. Záznamy jsou seřazené podle nejnovějších, takže ve výchozím nastavení získáte nejnovější záznamy 250 000. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 

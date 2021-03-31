@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91327540"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití golang k dotazování databáze v Azure SQL Database nebo spravované instanci Azure SQL
@@ -24,7 +24,7 @@ ms.locfileid: "91327540"
 
 V tomto rychlém startu použijete programovací jazyk [golang](https://godoc.org/github.com/denisenkom/go-mssqldb) pro připojení k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance. Potom spustíte příkazy jazyka Transact-SQL k dotazování a úpravě dat. [Golang](https://golang.org/) je open source programovací jazyk, který usnadňuje sestavování jednoduchého, spolehlivého a efektivního softwaru.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
