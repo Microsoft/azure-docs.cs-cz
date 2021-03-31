@@ -172,7 +172,7 @@
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Práce s upozorněními zjištěnými senzorem
           items:
-            - name: O výstrahách senzorů
+            - name: Vysvětlení výstrah senzorů
               href: how-to-work-with-alerts-on-your-sensor.md
             - name: Filtrování a správa výstrah ze stránky s výstrahami
               href: how-to-view-alerts.md
@@ -181,11 +181,11 @@
               displayName: 'PCAP, metadata, alerts, link, device map,'
             - name: Typy a popisy výstrah
               href: alert-engine-messages.md
-              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational'
-            - name: Správa události upozornění
+              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational, severity, minor, major, critical, warning, alerts list, security alerts,'
+            - name: Správa událostí výstrah
               href: how-to-manage-the-alert-event.md
               displayName: 'PCAP, acknowledge, learn, mute, policy'
-            - name: Urychlení reakce na incidenty upozornění
+            - name: Urychlení pracovních postupů výstrah
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
             - name: Předávání informací o upozornění

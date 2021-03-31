@@ -6,17 +6,17 @@ ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 969e60cd08a65adb1dd731aa7c6c3f9872e288fd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83835032"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>Použití Azure Automation grafické sady Runbook SDK (Preview)
 
 [Grafické Runbooky](automation-graphical-authoring-intro.md) vám pomůžou spravovat složitosti základního kódu pracovního postupu prostředí Windows PowerShell nebo PowerShell. Sada SDK pro grafické vytváření Microsoft Azure Automation umožňuje vývojářům vytvářet a upravovat grafické Runbooky pro použití s Azure Automation. Tento článek popisuje základní kroky při vytváření grafického Runbooku z vašeho kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Importujte `Orchestrator.GraphRunbook.Model.dll` balíček stažením [sady SDK](https://www.microsoft.com/download/details.aspx?id=50734).
 

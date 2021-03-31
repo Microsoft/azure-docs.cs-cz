@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88936703"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
@@ -49,10 +49,10 @@ Verze 3,0 přidává ochranu privátních koncových bodů tím, že omezuje př
 | Rozhraní API | Kategorie| Podrobnosti |
 |-----|--------|------------------|
 | [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | Brána firewall protokolu IP | Omezte přístup ke koncovému bodu služby na seznam povolených IP adres. Koncepty a pokyny pro portál najdete v tématu [Konfigurace brány firewall protokolu IP](service-configure-firewall.md) . |
-| [Prostředek sdíleného privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Vytvořte sdílený prostředek privátního propojení, který bude používán vyhledávací službou.  |
-| [Připojení privátního koncového bodu](/rest/api/searchmanagement/privateendpointconnections) | Private Link | Navázání a Správa připojení k vyhledávací službě prostřednictvím privátního koncového bodu. Koncepty a pokyny pro portál najdete v tématu [Vytvoření privátního koncového bodu](service-create-private-endpoint.md) .|
-| [Prostředky privátního propojení](/rest/api/searchmanagement/privatelinkresources/) | Private Link | Pro vyhledávací službu, která má připojení privátního koncového bodu, získejte seznam všech služeb, které se používají ve stejné virtuální síti. Pokud vaše řešení pro vyhledávání obsahuje indexery, které jsou vyžádané ze zdrojů dat Azure (Azure Storage, Cosmos DB, Azure SQL), nebo používají Cognitive Services nebo Key Vault, musí mít všechny tyto prostředky ve virtuální síti koncové body a toto rozhraní API by mělo vracet seznam. |
-| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Toto je vlastnost pro žádosti o vytvoření nebo aktualizaci služby. Když je tato zakázaná, privátní odkaz je jediným rozhraním přístupu. |
+| [Prostředek sdíleného privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) | Privátní propojení | Vytvořte sdílený prostředek privátního propojení, který bude používán vyhledávací službou.  |
+| [Připojení privátního koncového bodu](/rest/api/searchmanagement/privateendpointconnections) | Privátní propojení | Navázání a Správa připojení k vyhledávací službě prostřednictvím privátního koncového bodu. Koncepty a pokyny pro portál najdete v tématu [Vytvoření privátního koncového bodu](service-create-private-endpoint.md) .|
+| [Prostředky privátního propojení](/rest/api/searchmanagement/privatelinkresources/) | Privátní propojení | Pro vyhledávací službu, která má připojení privátního koncového bodu, získejte seznam všech služeb, které se používají ve stejné virtuální síti. Pokud vaše řešení pro vyhledávání obsahuje indexery, které jsou vyžádané ze zdrojů dat Azure (Azure Storage, Cosmos DB, Azure SQL), nebo používají Cognitive Services nebo Key Vault, musí mít všechny tyto prostředky ve virtuální síti koncové body a toto rozhraní API by mělo vracet seznam. |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Privátní propojení | Toto je vlastnost pro žádosti o vytvoření nebo aktualizaci služby. Když je tato zakázaná, privátní odkaz je jediným rozhraním přístupu. |
 
 ### <a name="breaking-changes"></a>Změny způsobující chyby
 

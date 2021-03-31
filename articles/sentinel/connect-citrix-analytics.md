@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77588378"
 ---
 # <a name="connect-citrix-analytics-security"></a>Připojení Citrix Analytics (zabezpečení) 
@@ -27,7 +27,7 @@ Integrace Citrix Analytics (zabezpečení) s Azure Sentinel vám pomůže export
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 

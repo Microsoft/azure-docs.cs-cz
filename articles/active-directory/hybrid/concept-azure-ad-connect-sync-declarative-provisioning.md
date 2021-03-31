@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91313616"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synchronizace: principy deklarativního zřizování
@@ -53,7 +53,7 @@ Obor tohoto obrázku by měl být čten jako (oddělení = IT a země = Dánsko)
 
 Modul Scope podporuje následující operace.
 
-| Operace | Description |
+| Operace | Popis |
 | --- | --- |
 | ROVNÁ SE, NOTEQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota rovna hodnotě v atributu. Pro vícehodnotové atributy viz ISIN a ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota menší než hodnota v atributu. |

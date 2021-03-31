@@ -12,17 +12,17 @@ ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89010898"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Volání REST API operací s autorizací sdíleného klíče
 
 V tomto článku se dozvíte, jak volat Azure Storage rozhraní REST API, včetně toho, jak vytvořit autorizační hlavičku. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Až se dozvíte, jak zavolat operaci REST, můžete tyto znalosti využít k používání dalších Azure Storagech operací REST.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ukázková aplikace obsahuje seznam kontejnerů objektů BLOB pro účet úložiště. K tomu, abyste si vyzkoušeli kód v tomto článku, potřebujete následující položky:
 

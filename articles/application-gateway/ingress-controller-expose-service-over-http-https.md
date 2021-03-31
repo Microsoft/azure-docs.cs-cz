@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3b816ddc0eccf8c406cfed37d6bfc594e27d3629
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85850351"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Vystavení služby AKS přes HTTP nebo HTTPS pomocí Application Gateway 
 
 Tyto kurzy vám pomůžou znázornit využití [prostředků Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat a vystavit tak ukázkovou službu Kubernetes prostřednictvím [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) přes HTTP nebo HTTPS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Byl nainstalován `ingress-azure` Helm graf.
   - [**Nasazení bezserverová**](ingress-controller-install-new.md): Pokud začínáte od začátku, přečtěte si tyto pokyny k instalaci, které popisují postup nasazení clusteru AKS pomocí Application Gateway a instalace řadiče pro příchozí bránu Application Gateway do clusteru AKS.

@@ -4,10 +4,10 @@ description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu slu
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86529008"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Použití Azure Portal k zobrazení oznámení o stavu služby
@@ -24,7 +24,7 @@ Existují různé třídy oznámení o stavu služby:
 
 Každé oznámení o stavu služby zahrnuje podrobnosti o rozsahu a dopadu na vaše prostředky. Podrobnosti zahrnují:
 
-Název vlastnosti | Description
+Název vlastnosti | Popis
 -------- | -----------
 barev | Jedna z následujících hodnot: **admin** nebo **Operation**.
 correlationId | Obvykle identifikátor GUID ve formátu řetězce. Události, které patří do stejné akce, obvykle sdílejí stejné ID korelace.

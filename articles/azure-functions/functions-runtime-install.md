@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86540379"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat Modul runtime služby Azure Functions Preview 2
@@ -25,7 +25,7 @@ Chcete-li nainstalovat Modul runtime služby Azure Functions verze Preview 2, po
 1. Dokončete konfiguraci Modul runtime služby Azure Functions verze Preview 2.
 1. Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete Modul runtime služby Azure Functions Preview, musíte mít k dispozici následující prostředky:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 83bf6c6a9c8d6f344b881e2603246fe9c0ead7cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-renraku"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s RENRAKU
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat RENRAKU s Azure Active Directory (Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

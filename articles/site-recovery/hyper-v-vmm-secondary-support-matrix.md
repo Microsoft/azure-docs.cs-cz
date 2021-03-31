@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86131165"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
@@ -53,14 +53,14 @@ Replikovat se dají jenom počítače se systémem Linux s následujícím úlo�
 
 **Konfigurace** | **Podporováno**  
 --- | --- 
-Seskupování síťových adaptérů hosta | Yes 
-Hostitel-síť VLAN | Yes 
-Hostitel – IPv4 | Yes 
-Hostitel – IPv6 | No 
-Virtuální počítač hosta – seskupování síťových adaptérů | No
-Virtuální počítač hosta – IPv4 | Yes
-Virtuální počítač hosta – IPv6 | No
-Virtuální počítač hosta – Windows/Linux – statická IP adresa | Yes
+Seskupování síťových adaptérů hosta | Ano 
+Hostitel-síť VLAN | Ano 
+Hostitel – IPv4 | Ano 
+Hostitel – IPv6 | Ne 
+Virtuální počítač hosta – seskupování síťových adaptérů | Ne
+Virtuální počítač hosta – IPv4 | Ano
+Virtuální počítač hosta – IPv6 | Ne
+Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
@@ -71,9 +71,9 @@ Virtuální počítač hosta – více síťových karet | Ano
 **Úložiště (hostitel)** | **Podporováno**
 --- | --- 
 NFS | –
-SMB 3.0 |  Yes
-SÍŤ SAN (ISCSI) | Yes
-Multipath (multi-Path) | Yes
+SMB 3.0 |  Ano
+SÍŤ SAN (ISCSI) | Ano
+Multipath (multi-Path) | Ano
 
 ### <a name="guest-or-physical-server-storage"></a>Úložiště hostů nebo fyzických serverů
 
@@ -81,26 +81,26 @@ Multipath (multi-Path) | Yes
 --- | --- | 
 FORMÁTU |  –
 VHD/VHDX | Ano (až 16 disků)
-Virtuální počítač 2. generace | Yes
-Disk sdíleného clusteru | No
-Zašifrovaný disk | No
+Virtuální počítač 2. generace | Ano
+Disk sdíleného clusteru | Ne
+Zašifrovaný disk | Ne
 UEFI| –
-NFS | No
-SMB 3.0 | No
+NFS | Ne
+SMB 3.0 | Ne
 RDM | –
-Disk > 1 TB | Yes
-Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Yes
-Prostory úložiště | Yes
-Hot Add/Remove disk | No
-Vyloučení disku | Yes
-Multipath (multi-Path) | Yes
+Disk > 1 TB | Ano
+Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
+Prostory úložiště | Ano
+Hot Add/Remove disk | Ne
+Vyloučení disku | Ano
+Multipath (multi-Path) | Ano
 
 ## <a name="vaults"></a>Trezory
 
 **Akce** | **Podporováno**
 --- | --- 
-Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  No
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | No
+Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  Ne
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | Ne
 
 ## <a name="azure-site-recovery-provider"></a>Poskytovatel Azure Site Recovery
 
