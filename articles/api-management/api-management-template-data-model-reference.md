@@ -127,7 +127,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="comment"></a><a name="Comment"></a> Vytvořena  
  `API`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`Id`|číslo|ID komentáře|  
 |`CommentText`|řetězec|Tělo komentáře Může zahrnovat HTML.|  
@@ -184,7 +184,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="http-response"></a><a name="HTTPResponse"></a> Odpověď HTTP  
  V této části je popsána `response` reprezentace.  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`statusCode`|kladné celé číslo|Stavový kód odezvy operace.|  
 |`description`|řetězec|Popis odezvy operace.|  
@@ -227,7 +227,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="paging"></a><a name="Paging"></a> Přenosu  
  `paging`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`Page`|číslo|Číslo aktuální stránky|  
 |`PageSize`|číslo|Maximální výsledky, které mají být zobrazeny na jedné stránce.|  
@@ -264,7 +264,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="provider"></a><a name="Provider"></a> Zprostředkovatele  
  `provider`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`Properties`|slovník řetězců|Vlastnosti tohoto zprostředkovatele ověřování.|  
 |`AuthenticationType`|řetězec|Typ poskytovatele. (Azure Active Directory, přihlášení na Facebooku, účet Google, účet Microsoft, Twitter).|  
@@ -346,7 +346,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a> Registrace uživatele  
  `user sign up`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boolean|Hodnota, kterou používá ovládací prvek registrace [pro registraci](api-management-page-controls.md#sign-up)|  
 |`Password`|řetězec|Heslo k uživatelskému účtu.|  

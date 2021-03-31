@@ -45,7 +45,7 @@ Vytvoří Service Fabric aplikaci pomocí zadaného popisu.
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --App-Name [povinné] | Název aplikace, včetně \: schématu identifikátoru URI Fabric. |
 | --Typ aplikace [povinné] | V manifestu aplikace se našel název typu aplikace. |
@@ -58,7 +58,7 @@ Vytvoří Service Fabric aplikaci pomocí zadaného popisu.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -73,7 +73,7 @@ Aby bylo možné aplikaci odstranit, je třeba ji vytvořit. Odstraněním aplik
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Force-Remove | Odeberte Service Fabric aplikaci nebo službu vynuceně, aniž byste museli projít sekvenci řádného vypnutí. Tento parametr lze použít k vynucenému odstranění aplikace nebo služby, pro kterou odstranění probíhá časování z důvodu problémů v kódu služby, který brání řádnému zavření replik. |
@@ -81,7 +81,7 @@ Aby bylo možné aplikaci odstranit, je třeba ji vytvořit. Odstraněním aplik
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -96,7 +96,7 @@ Tento dotaz vrátí informace o systémové aplikaci, pokud je zadané ID aplika
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Node-Name [povinné] | Název uzlu |
@@ -105,7 +105,7 @@ Tento dotaz vrátí informace o systémové aplikaci, pokud je zadané ID aplika
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -120,7 +120,7 @@ Získá informace o stavu aplikace nasazené na Service Fabric uzlu. EventsHealt
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Node-Name [povinné] | Název uzlu |
@@ -131,7 +131,7 @@ Získá informace o stavu aplikace nasazené na Service Fabric uzlu. EventsHealt
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -146,7 +146,7 @@ Načte seznam aplikací nasazených na Service Fabric uzlu. Výsledky neobsahuj�
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
@@ -156,7 +156,7 @@ Načte seznam aplikací nasazených na Service Fabric uzlu. Výsledky neobsahuj�
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -171,7 +171,7 @@ Vrátí stav stavu aplikace Service Fabric. Odpověď hlásí stav OK, chyba neb
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --deployed-Applications-Health-Filter | Umožňuje filtrování objektů stavu nasazených aplikací vrácených v důsledku dotazu na stav aplikace na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se jenom nasazené aplikace, které odpovídají filtru. Všechny nasazené aplikace se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot, získaná pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, pak se vrátí stav nasazených aplikací s hodnotou OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
@@ -182,7 +182,7 @@ Vrátí stav stavu aplikace Service Fabric. Odpověď hlásí stav OK, chyba neb
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -197,7 +197,7 @@ Vrátí informace o aplikaci, která byla vytvořena nebo v procesu vytváření
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Exclude-Application-Parameters | Příznak, který určuje, zda budou z výsledku vyloučeny parametry aplikace. |
@@ -205,7 +205,7 @@ Vrátí informace o aplikaci, která byla vytvořena nebo v procesu vytváření
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -220,7 +220,7 @@ Získá informace o aplikacích, které byly vytvořeny nebo v procesu vytváře
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Application-Definition-druh – filtr | Slouží k filtrování ApplicationDefinitionKind, což je mechanismus používaný k definování aplikace Service Fabric.  <br> -Výchozí-výchozí hodnota, která provede stejnou funkci jako výběr možnosti vše. Hodnota je 0.  <br> -All – filtr, který odpovídá zadanému vstupu s libovolnou hodnotou ApplicationDefinitionKind Hodnota je 65535.  <br> -ServiceFabricApplicationDescription – filtr, který odpovídá zadanému vstupu s hodnotou ApplicationDefinitionKind ServiceFabricApplicationDescription. Hodnota je 1.  <br> -Napsat-Filter, který odpovídá vstupu s ApplicationDefinitionKind hodnotou. Hodnota je 2. |
 | --Typ aplikace-název | Název typu aplikace, který slouží k filtrování aplikací pro dotazování. Tato hodnota by neměla obsahovat verzi typu aplikace. |
@@ -231,7 +231,7 @@ Získá informace o aplikacích, které byly vytvořeny nebo v procesu vytváře
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -246,14 +246,14 @@ Vrátí informace o načítání aplikace, která byla vytvořena nebo v procesu
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -268,7 +268,7 @@ Odpověď obsahuje XML manifestu aplikace jako řetězec.
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Typ aplikace-název [povinné] | Název typu aplikace |
 | --Typ aplikace-verze [požadováno] | Verze typu aplikace |
@@ -276,7 +276,7 @@ Odpověď obsahuje XML manifestu aplikace jako řetězec.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -291,7 +291,7 @@ Zřídí Service Fabric typ aplikace s clusterem. Zřizování se vyžaduje pře
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Application-Package-Download-URI | Cesta k balíčku aplikace ". sfpkg", ze kterého lze balíček aplikace stáhnout pomocí protokolů HTTP nebo HTTPS. <br><br> Jenom pro druh zřizování externí úložiště. Balíček aplikace může být uložený v externím úložišti, které poskytuje operaci GET pro stažení souboru. Podporované protokoly jsou HTTP a HTTPS a cesta musí umožňovat přístup pro čtení. |
 | --Typ aplikace-sestavení-cesta | Jenom pro úložiště imagí druh zřizování. Relativní cesta k balíčku aplikace v úložišti imagí, kterou jste zadali během operace předchozího odeslání. |
@@ -303,7 +303,7 @@ Zřídí Service Fabric typ aplikace s clusterem. Zřizování se vyžaduje pře
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -318,7 +318,7 @@ Hlásí stav zadané aplikace Service Fabric. Sestava musí obsahovat informace 
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem. Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
@@ -333,7 +333,7 @@ Hlásí stav zadané aplikace Service Fabric. Sestava musí obsahovat informace 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -348,7 +348,7 @@ Vrátí informace o typech aplikací, které jsou zřízeny nebo v procesu zřiz
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Typ aplikace-název [povinné] | Název typu aplikace |
 | --Typ aplikace-verze | Verze typu aplikace |
@@ -359,7 +359,7 @@ Vrátí informace o typech aplikací, které jsou zřízeny nebo v procesu zřiz
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -374,7 +374,7 @@ Vrátí informace o typech aplikací, které jsou zřízeny nebo v procesu zřiz
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Typ aplikace-definice-druh – filtr | Slouží k filtrování ApplicationTypeDefinitionKind, což je mechanismus používaný k definování typu aplikace Service Fabric.  <br> -Výchozí-výchozí hodnota, která provede stejnou funkci jako výběr možnosti vše. Hodnota je 0.  <br> -All – filtr, který odpovídá zadanému vstupu s libovolnou hodnotou ApplicationTypeDefinitionKind Hodnota je 65535.  <br> -ServiceFabricApplicationPackage – filtr, který odpovídá zadanému vstupu s hodnotou ApplicationTypeDefinitionKind ServiceFabricApplicationPackage. Hodnota je 1.  <br> -Napsat-Filter, který odpovídá vstupu s ApplicationTypeDefinitionKind hodnotou. Hodnota je 2. |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
@@ -384,7 +384,7 @@ Vrátí informace o typech aplikací, které jsou zřízeny nebo v procesu zřiz
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -399,7 +399,7 @@ Tuto operaci lze provést pouze v případě, že byly odstraněny všechny inst
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Typ aplikace-název [povinné] | Název typu aplikace |
 | --Typ aplikace-verze [požadováno] | Verze typu aplikace, jak je definováno v manifestu aplikace. |
@@ -408,7 +408,7 @@ Tuto operaci lze provést pouze v případě, že byly odstraněny všechny inst
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -423,7 +423,7 @@ Ověří zadané parametry upgradu aplikace a spustí upgrade aplikace, pokud js
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --verze aplikace [povinné] | Verze typu cílové aplikace (nalezená v manifestu aplikace) pro upgrade aplikace. |
@@ -445,7 +445,7 @@ Ověří zadané parametry upgradu aplikace a spustí upgrade aplikace, pokud js
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -460,7 +460,7 @@ Obnoví nemonitorované ruční Service Fabric upgrade aplikace. Service Fabric 
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --upgrade-název domény [povinné] | Název upgradovací domény, ve které se má pokračovat v upgradu. |
@@ -468,7 +468,7 @@ Obnoví nemonitorované ruční Service Fabric upgrade aplikace. Service Fabric 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -483,14 +483,14 @@ Spustí vrácení aktuálního upgradu aplikace na předchozí verzi. Toto rozhr
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -505,14 +505,14 @@ Vrátí informace o stavu nejnovější inovace aplikace spolu s podrobnostmi, k
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -527,7 +527,7 @@ Volitelně můžete zobrazit průběh nahrávání pro každý soubor v balíčk
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Path [povinné] | Cesta k balíčku místní aplikace |
 | --Compress | Platí pouze pro Service Fabric balíčky aplikací. Vytvořte novou složku obsahující komprimovaný balíček aplikace do výchozího umístění nebo do umístění určeného parametrem Compressed location a potom nahrajte nově vytvořenou složku. <br><br> Pokud již komprimovaný soubor vygenerovala služba sfctl, bude při nastavení tohoto příznaku přepsán. Pokud adresář není balíček aplikace, bude vrácena chyba. Je-li již komprimovaný balíček aplikace, složka bude zkopírována do umístění. Ve výchozím nastavení se nově vytvořený komprimovaný balíček aplikace odstraní po úspěšném nahrání. Pokud nahrávání není úspěšné, podle potřeby prosím vyčistěte komprimovaný balíček. Odstraněním není odebrána žádná prázdná adresářů, která mohla být vytvořena, pokud parametr komprimovaného umístění odkazuje na neexistující adresáře. |
@@ -539,7 +539,7 @@ Volitelně můžete zobrazit průběh nahrávání pro každý soubor v balíčk
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

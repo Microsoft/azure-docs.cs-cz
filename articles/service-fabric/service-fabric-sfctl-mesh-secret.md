@@ -30,13 +30,13 @@ Odstraní zadaný tajný prostředek a všechny jeho pojmenované hodnoty.
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -51,7 +51,7 @@ Načte informace o všech tajných zdrojích v dané skupině prostředků. Tyto
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -66,13 +66,13 @@ Načte informace o prostředku tajného kódu se zadaným názvem. Tyto informac
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

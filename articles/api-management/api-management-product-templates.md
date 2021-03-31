@@ -79,7 +79,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |Stránkování|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce Products|  
 |Filtrování|Entita [filtrování](api-management-template-data-model-reference.md#Filtering)|Informace o filtrování pro stránku seznam produktů.|  
@@ -204,7 +204,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |Produkt|[Product](api-management-template-data-model-reference.md#Product) (Produkt)|Zadaný produkt.|  
 |IsDeveloperSubscribed|boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  

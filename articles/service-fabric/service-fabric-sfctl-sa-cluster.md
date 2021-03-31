@@ -30,14 +30,14 @@ Konfigurace clusteru obsahuje vlastnosti clusteru, které zahrnují různé typy
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Configuration-API-Version [požadováno] | Verze rozhraní API samostatné konfigurace JSON clusteru |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -52,7 +52,7 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --cluster-config [požadováno] | Konfigurace clusteru. |
 | --Application-Health-policies | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
@@ -69,7 +69,7 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -92,13 +92,13 @@ Podrobnosti o stavu upgradu konfigurace clusteru pro samostatný cluster Service
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

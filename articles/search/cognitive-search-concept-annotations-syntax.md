@@ -25,7 +25,7 @@ Příklady v tomto článku jsou založené na poli *obsahu* generovaném automa
 
 Než začnete s syntaxí zkontrolovat, Podívejme se na několik důležitých konceptů, abychom lépe porozuměli ukázkám uvedeným dále v tomto článku.
 
-| Období | Popis |
+| Období | Description |
 |------|-------------|
 | Obohacený dokument | Obohacený dokument je interní struktura vytvořená a používaná kanálem, aby obsahovala všechny poznámky týkající se dokumentu. Obohacený dokument si můžete představit jako strom poznámek. Obecně platí, že Poznámka vytvořená z předchozí poznámky se zobrazí jako podřízená.<p/>Obohacené dokumenty existují pouze po dobu trvání provádění dovednosti. Po namapování obsahu na index vyhledávání už obohacený dokument není potřeba. I když nepracujete s obohacenými dokumenty přímo, je vhodné mít při vytváření dovednosti k dispozici duševní modely dokumentů. |
 | Kontext obohacení | Kontext, ve kterém probíhá obohacení, s ohledem na to, který prvek je obohacen. Ve výchozím nastavení je kontext rozšíření obohacen na `"/document"` úrovni a je vymezen na jednotlivé dokumenty. Když se dovednost spustí, výstupy této dovednosti se stanou [vlastnostmi definovaného kontextu](#example-2).|

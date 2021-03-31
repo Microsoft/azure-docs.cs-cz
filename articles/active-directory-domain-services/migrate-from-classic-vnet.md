@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
 ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98013035"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure Active Directory Domain Services z modelu klasických virtuálních sítí do Správce prostředků
@@ -329,7 +329,7 @@ Jako poslední možnost se Azure AD Domain Services dá obnovit z poslední dost
 
 Chcete-li obnovit spravovanou doménu ze zálohy, [otevřete lístek podpory případu pomocí Azure Portal][azure-support]. Zadejte ID adresáře, název domény a důvod pro obnovení. Dokončení procesu podpory a obnovení může trvat několik dní.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte po migraci do modelu nasazení Správce prostředků problémy, přečtěte si některé z následujících běžných oblastí pro odstraňování potíží:
 

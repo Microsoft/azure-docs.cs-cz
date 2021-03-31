@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101703503"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Povolení Azure Diagnostics v Azure Cloud Services (Classic)
@@ -25,7 +25,7 @@ Další informace najdete v tématu [přehled Azure Diagnostics](../azure-monito
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Postup povolení diagnostiky v roli pracovního procesu
 Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která generuje data telemetrie pomocí třídy EventSource .NET. Azure Diagnostics se používá ke shromažďování dat telemetrie a jejich uložení v účtu úložiště Azure. Při vytváření role pracovního procesu Visual Studio automaticky povolí diagnostiku 1,0 jako součást řešení v sadách Azure SDK pro .NET 2,4 a starší. Následující pokyny popisují proces vytvoření role pracovního procesu, zakázání diagnostiky 1,0 z řešení a nasazení diagnostiky 1,2 nebo 1,3 do role pracovního procesu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že máte předplatné Azure a používáte sadu Visual Studio se sadou Azure SDK. Pokud předplatné Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Nezapomeňte [nainstalovat a nakonfigurovat Azure PowerShell verze 0.8.7 nebo novější][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Krok 1: vytvoření role pracovního procesu
@@ -191,7 +191,7 @@ V **Průzkumník serveru** sady Visual Studio přejděte do účtu úložiště 
 ## <a name="configuration-file-schema"></a>Schéma konfiguračního souboru
 Konfigurační soubor diagnostiky definuje hodnoty, které se použijí k inicializaci nastavení konfigurace diagnostiky při spuštění agenta diagnostiky. Platné hodnoty a příklady najdete v [nejnovějším referenčním schématu](../azure-monitor/agents/diagnostics-extension-versions.md) .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud máte problémy, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) , kde najdete nápovědu k běžným problémům.
 
 ## <a name="next-steps"></a>Další kroky

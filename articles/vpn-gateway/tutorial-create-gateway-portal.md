@@ -7,10 +7,10 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880555"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí Azure Portal
@@ -30,7 +30,7 @@ Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rám
 
 :::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="Diagram virtuální sítě a brány VPN":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

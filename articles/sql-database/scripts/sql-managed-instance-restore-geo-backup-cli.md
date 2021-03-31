@@ -56,7 +56,7 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 | [AZ SQL MIDB](/cli/azure/sql/midb) | Příkazy databáze spravované instance. |
 

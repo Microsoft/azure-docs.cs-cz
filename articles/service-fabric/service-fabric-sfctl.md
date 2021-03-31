@@ -18,7 +18,7 @@ Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibiln
 Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v tématu podskupiny.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Popis|
+|Podskupina|Description|
 | --- | --- |
 | [aplikace](service-fabric-sfctl-application.md) | Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací. |
 | [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a hlášení služby chaos test Service. |

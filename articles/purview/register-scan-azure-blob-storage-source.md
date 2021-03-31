@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
 ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880637"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Registrace a Prohledávání Azure Blob Storage
@@ -22,7 +22,7 @@ Tento článek popisuje, jak zaregistrovat účet Azure Blob Storage v dosah a n
 
 Azure Blob Storage podporuje úplné a přírůstkové kontroly pro zachycení metadat a schématu. Také klasifikuje data automaticky podle systémových a vlastních pravidel klasifikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.

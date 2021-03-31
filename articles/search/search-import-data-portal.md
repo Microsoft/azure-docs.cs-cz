@@ -75,7 +75,7 @@ Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním prů
 
 Na pozadí Průvodce vytvoří, nakonfiguruje a vyvolá následující objekty. Po spuštění Průvodce můžete jeho výstup najít na stránkách portálu. Stránka přehled vaší služby obsahuje seznam indexů, indexerů, zdrojů dat a dovednosti. Definice indexů se dají zobrazit v plném formátu JSON na portálu. Pro jiné definice můžete použít [REST API](/rest/api/searchservice/) k získání konkrétních objektů.
 
-| Objekt | Popis | 
+| Objekt | Description | 
 |--------|-------------|
 | [Zdroj dat](/rest/api/searchservice/create-data-source)  | Uchovává informace o připojení ke zdrojovým datům, včetně přihlašovacích údajů. Objekt zdroje dat se používá výhradně s indexery. | 
 | [Index](/rest/api/searchservice/create-index) | Fyzická datová struktura, která se používá pro fulltextové vyhledávání a další dotazy. | 

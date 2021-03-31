@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak sledovat náklady na 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98892333"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledovat náklady spojené s testovacím prostředím v Azure DevTest Labs
