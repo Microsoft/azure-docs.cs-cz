@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88008589"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Kurz: Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic)
@@ -31,7 +31,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 > * Připojte virtuální počítače k doméně služby Active Directory.
 > * Zaregistrujte virtuální počítače na virtuálním počítači s Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tenant na virtuálním počítači. Předchozí [kurz](tenant-setup-azure-active-directory.md) vytvoří tenanta.
 * [Modul PowerShell pro virtuální počítače s Windows](/powershell/windows-virtual-desktop/overview/)

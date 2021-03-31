@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96019126"
 ---
 # <a name="scale-with-additional-process-servers"></a>Škálování pomocí dalších procesových serverů
@@ -41,7 +41,7 @@ Ověřte požadavky na velikost shrnuté v tabulce. Obecně platí, že pokud po
 
 Kde je každý chráněný zdrojový počítač nakonfigurovaný se 3 disky o velikosti 100 GB.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Požadavky na další procesový Server jsou shrnuté v následující tabulce.
 

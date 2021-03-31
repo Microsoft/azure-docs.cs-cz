@@ -67,9 +67,9 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
 
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
-   | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
-   | **Typ** | Ano | <*typ proměnné*> | Datový typ proměnné |
-   | **Hodnota** | Ne | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
+   | **Název** | Yes | <*název proměnné*> | Název proměnné, která se má zvýšit |
+   | **Typ** | Yes | <*typ proměnné*> | Datový typ proměnné |
+   | **Hodnota** | No | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
    |||||
 
    Například:
@@ -207,8 +207,8 @@ Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidej
 
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
-   | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
-   | **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
+   | **Název** | Yes | <*název proměnné*> | Název proměnné, která se má zvýšit |
+   | **Hodnota** | No | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
    ||||
 
    Například:
@@ -328,8 +328,8 @@ Tady jsou vlastnosti pro akci **snížení proměnné** :
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má snížit | 
-| **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali určitou hodnotu pro snížení vaší proměnné. |
+| **Název** | Yes | <*název proměnné*> | Název proměnné, která se má snížit | 
+| **Hodnota** | No | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali určitou hodnotu pro snížení vaší proměnné. |
 ||||| 
 
 Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **snížení proměnné** zobrazí v definici aplikace logiky, která je ve formátu JSON.
@@ -361,8 +361,8 @@ Tady jsou vlastnosti pro akci **nastavit proměnnou** :
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
-| **Hodnota** | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
+| **Název** | Yes | <*název proměnné*> | Název proměnné, která se má změnit |
+| **Hodnota** | Yes | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
 ||||| 
 
 > [!NOTE]
@@ -419,8 +419,8 @@ Tady jsou vlastnosti pro akce **připojit k...** :
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
-| **Hodnota** | Ano | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
+| **Název** | Yes | <*název proměnné*> | Název proměnné, která se má změnit |
+| **Hodnota** | Yes | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
 |||||
 
 Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **připojit k proměnné pole** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad vytvoří proměnnou pole a přidá další hodnotu jako poslední položku v poli. Váš výsledek je aktualizovaná proměnná, která obsahuje toto pole: `[1,2,3,"red"]`

@@ -208,7 +208,7 @@ Schéma pro datovou část XML EventStream [MPEG-SPOJOVNÍK] je definováno jako
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Předdefinované identifikátory URI IDENTIFIKÁTORů podporovaných schémat
-| Identifikátor URI ID schématu                 | Popis                                                                                                                                                                                                                                          |
+| Identifikátor URI ID schématu                 | Description                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/EMSG/ID3 | Popisuje, jak lze metadata [ID3v2] přenést jako časované metadata v rámci fragmentované MP4 kompatibilního s CMAF [MPEGCMAF]. Další informace najdete v tématu [časované metadata ve formátu Common Media Application Format (CMAF)](https://github.com/AOMediaCodec/id3-emsg) . |
 

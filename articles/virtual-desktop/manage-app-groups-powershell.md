@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88008640"
 ---
 # <a name="manage-app-groups-using-powershell"></a>Správa skupin aplikací pomocí PowerShellu
@@ -26,7 +26,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Vytvořte skupinu RemoteApp.
 > * Udělení přístupu k aplikacím vzdálené aplikace RemoteApp.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md) pro nastavení modulu PowerShell a přihlásíte se ke svému účtu Azure.
 

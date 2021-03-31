@@ -4,10 +4,10 @@ description: Naučte se analyzovat historické trendy a získat hlubší přehle
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102506003"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Získání přehledů pomocí centra zálohování

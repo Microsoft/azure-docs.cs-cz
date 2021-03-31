@@ -227,7 +227,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |referenceCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
 |errorCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  

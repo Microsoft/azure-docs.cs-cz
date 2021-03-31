@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103573876"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Vytvořit řadič dat v Azure Data Studio
@@ -22,7 +22,7 @@ Můžete vytvořit řadič dat pomocí Azure Data Studio prostřednictvím Prův
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Potřebujete přístup ke clusteru Kubernetes a pokud chcete, aby váš soubor kubeconfig odkazoval na cluster Kubernetes, na který chcete nasadit.
 - Musíte [nainstalovat nástroje klienta](install-client-tools.md) , včetně **Azure Data Studio** rozšíření Azure Data Studio s názvem **ARC Azure** a **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .

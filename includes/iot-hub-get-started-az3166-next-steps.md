@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
 ms.openlocfilehash: 1383f976e73fd9a59b87201cac8aeeb043f3c1cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98900835"
 ---
 Další informace o tom, jak začít s Azure IoT Hub a prozkoumat další scénáře IoT pomocí IoT DevKit, najdete v následujících tématech:

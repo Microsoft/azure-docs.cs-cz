@@ -63,7 +63,7 @@ Když vytvoříte veřejnou IP adresu pomocí **standardní** SKU veřejné IP a
 
 Když vytvoříte veřejnou IP adresu pomocí **základní** veřejné IP adresy (SKU), brána se nasadí jako místní brána a nebude mít do brány vestavěnou redundanci zón.
 
-## <a name="faq"></a><a name="faq"></a>DOTAZ
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní při nasazení těchto nových SKU?
 

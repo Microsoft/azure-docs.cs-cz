@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 9a29244745b154aa81997813fcf4e1457f599270
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103622010"
 ---
 Kontejner poskytuje [rozhraní API koncového bodu na bázi REST](../rest-text-to-speech.md). K dispozici je mnoho [ukázkových projektů zdrojového kódu](https://github.com/Azure-Samples/Cognitive-Speech-TTS) pro platformu, architekturu a jazykové variace.
