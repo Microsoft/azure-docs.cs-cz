@@ -13,10 +13,10 @@ ms.date: 01/22/2021
 ms.author: nacanuma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
 ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99820312"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace
@@ -26,7 +26,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 > [!div renderon="docs"]
 > ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-daemon/java-console-daemon.svg)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 

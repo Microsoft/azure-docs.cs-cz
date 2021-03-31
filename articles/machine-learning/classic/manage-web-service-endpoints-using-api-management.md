@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518024"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio (Classic) pomocí API Management
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak rychle začít používat API Management ke
 ## <a name="what-is-azure-api-management"></a>Co je Azure API Management?
 Azure API Management je služba Azure, která umožňuje spravovat koncové body REST API definováním uživatelského přístupu, omezování využívání a monitorování řídicího panelu. Další podrobnosti najdete na [webu Azure API Management](https://azure.microsoft.com/services/api-management/) . Informace o tom, jak začít s Azure API Management, najdete v [příručce pro import a publikování](../../api-management/import-and-publish.md). Tato druhá příručka, na které je založena tato příručka, zahrnuje další témata, včetně konfigurace oznámení, cen vrstev, zpracování odpovědí, ověřování uživatelů, vytváření produktů, předplatných vývojářů a řídicích panelů využití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení této příručky potřebujete:
 
 * Účet Azure:

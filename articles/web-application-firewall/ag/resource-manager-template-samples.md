@@ -18,6 +18,6 @@ ms.locfileid: "87075451"
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Firewall webových aplikací Azure.
 
-| Template (Šablona) | Popis |
+| Template (Šablona) | Description |
 | -------- | ----------- |
 | [Application Gateway v2 s firewallem webových aplikací](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Vytvoří Application Gateway v2 s bránou firewall webových aplikací v2.|

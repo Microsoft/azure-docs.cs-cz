@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
 ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98762963"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurace akce GitHubu pro vytvoření instance kontejneru
@@ -31,7 +31,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 > [!IMPORTANT]
 > Akce GitHub pro Azure Container Instances je momentálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte.
 * **Azure CLI** – k dokončení kroků rozhraní PŘÍKAZového řádku Azure můžete použít Azure Cloud Shell nebo místní instalaci rozhraní PŘÍKAZového řádku Azure. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].

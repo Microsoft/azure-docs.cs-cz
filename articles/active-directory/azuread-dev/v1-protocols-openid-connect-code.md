@@ -108,7 +108,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| Parametr | Typ | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | tenant |vyžadováno |`{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klientů, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na tenantovi. |
 | client_id |vyžadováno |ID aplikace přiřazené vaší aplikaci, když ji zaregistrujete ve službě Azure AD. Najdete ho v Azure Portal. Klikněte na **Azure Active Directory**, klikněte na **Registrace aplikací**, vyberte aplikaci a na stránce aplikace vyhledejte ID aplikace. |
@@ -161,7 +161,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Následující tabulka popisuje různé chybové kódy, které mohou být vráceny v `error` parametru chybové odpovědi.
 
-| Kód chyby | Popis | Akce klienta |
+| Kód chyby | Description | Akce klienta |
 | --- | --- | --- |
 | invalid_request |Chyba protokolu, například chybějící požadovaný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | unauthorized_client |Klientská aplikace nemá oprávnění vyžadovat autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| Parametr | Typ | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | post_logout_redirect_uri |doporučil |Adresa URL, na kterou má být uživatel přesměrován po úspěšném odhlášení.  Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací.  Pokud není zahrnut *post_logout_redirect_uri* , zobrazí se uživateli obecná zpráva. |
 

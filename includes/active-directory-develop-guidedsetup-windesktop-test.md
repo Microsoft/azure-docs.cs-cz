@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82181527"
 ---
 ## <a name="test-your-code"></a>Testování kódu
@@ -41,7 +41,7 @@ Při prvním přihlášení do aplikace se zobrazí také výzva k poskytnutí s
 
 Po přihlášení byste měli vidět informace o profilu uživatele, které jsou vráceny voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v poli **výsledky volání rozhraní API** . Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenInteractive` nebo, `AcquireTokenSilent` by měly být viditelné v poli **informace o tokenu** . Výsledky obsahují následující vlastnosti:
 
-|Vlastnost  |Formát  |Popis |
+|Vlastnost  |Formát  |Description |
 |---------|---------|---------|
 |**Uživatelské jméno** |<span>user@domain.com</span> |Uživatelské jméno, které se používá k identifikaci uživatele.|
 |**Vypršení platnosti tokenu** |DateTime |Čas vypršení platnosti tokenu MSAL rozšiřuje datum vypršení platnosti tím, že podle potřeby obnoví token.|

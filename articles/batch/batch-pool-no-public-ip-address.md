@@ -7,10 +7,10 @@ ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
 ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97007666"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Vytvoření fondu služby Azure Batch bez veřejných IP adres
@@ -28,7 +28,7 @@ Pokud chcete omezit přístup k těmto uzlům a snížit zjistitelnost těchto u
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Ověřování**. Aby bylo možné použít fond bez veřejných IP adres v rámci [virtuální sítě](./batch-virtual-network.md), musí klientské rozhraní API služby Batch používat ověřování Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md). Pokud nevytváříte fond v rámci virtuální sítě, můžete použít ověřování Azure AD nebo ověřování založené na klíčích.
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612894"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
 Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> počítačové zpracování obrazu </a> pro úroveň Standard S1 v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -586,7 +586,7 @@ Modul pro prostorové analýzy začne spotřebovávat videosoubor a bude se nep�
 
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud narazíte na problémy při spuštění nebo spuštění kontejneru, přečtěte si téma [telemetrie a řešení potíží](spatial-analysis-logging.md) , kde najdete kroky pro běžné problémy. Tento článek obsahuje také informace o generování a shromažďování protokolů a shromažďování stavu systému.
 

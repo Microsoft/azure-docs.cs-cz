@@ -53,14 +53,14 @@ Replikovat se dají jenom počítače se systémem Linux s následujícím úlo�
 
 **Konfigurace** | **Podporováno**  
 --- | --- 
-Seskupování síťových adaptérů hosta | Ano 
-Hostitel-síť VLAN | Ano 
-Hostitel – IPv4 | Ano 
-Hostitel – IPv6 | Ne 
-Virtuální počítač hosta – seskupování síťových adaptérů | Ne
-Virtuální počítač hosta – IPv4 | Ano
-Virtuální počítač hosta – IPv6 | Ne
-Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
+Seskupování síťových adaptérů hosta | Yes 
+Hostitel-síť VLAN | Yes 
+Hostitel – IPv4 | Yes 
+Hostitel – IPv6 | No 
+Virtuální počítač hosta – seskupování síťových adaptérů | No
+Virtuální počítač hosta – IPv4 | Yes
+Virtuální počítač hosta – IPv6 | No
+Virtuální počítač hosta – Windows/Linux – statická IP adresa | Yes
 Virtuální počítač hosta – více síťových karet | Ano
 
 
@@ -71,9 +71,9 @@ Virtuální počítač hosta – více síťových karet | Ano
 **Úložiště (hostitel)** | **Podporováno**
 --- | --- 
 NFS | –
-SMB 3.0 |  Ano
-SÍŤ SAN (ISCSI) | Ano
-Multipath (multi-Path) | Ano
+SMB 3.0 |  Yes
+SÍŤ SAN (ISCSI) | Yes
+Multipath (multi-Path) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Úložiště hostů nebo fyzických serverů
 
@@ -81,26 +81,26 @@ Multipath (multi-Path) | Ano
 --- | --- | 
 FORMÁTU |  –
 VHD/VHDX | Ano (až 16 disků)
-Virtuální počítač 2. generace | Ano
-Disk sdíleného clusteru | Ne
-Zašifrovaný disk | Ne
+Virtuální počítač 2. generace | Yes
+Disk sdíleného clusteru | No
+Zašifrovaný disk | No
 UEFI| –
-NFS | Ne
-SMB 3.0 | Ne
+NFS | No
+SMB 3.0 | No
 RDM | –
-Disk > 1 TB | Ano
-Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
-Prostory úložiště | Ano
-Hot Add/Remove disk | Ne
-Vyloučení disku | Ano
-Multipath (multi-Path) | Ano
+Disk > 1 TB | Yes
+Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Yes
+Prostory úložiště | Yes
+Hot Add/Remove disk | No
+Vyloučení disku | Yes
+Multipath (multi-Path) | Yes
 
 ## <a name="vaults"></a>Trezory
 
 **Akce** | **Podporováno**
 --- | --- 
-Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  Ne
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | Ne
+Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  No
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | No
 
 ## <a name="azure-site-recovery-provider"></a>Poskytovatel Azure Site Recovery
 

@@ -76,19 +76,19 @@ Metoda opravy hotfix zahrnuje následující tři kroky:
 
 Je nutné stáhnout a nainstalovat následující opravy hotfix v předepsaném pořadí a v navrhovaných složkách:
 
-| Objednávka | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednávka | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |Aktualizace softwaru<br> Stáhnout _HcsSoftwareUpdate.exe_ i _CisMSDAgent.exe_ |Pravidelný <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
 
 Pokud aktualizujete ze zařízení se systémem Update 4, budete muset kumulativní aktualizace operačního systému instalovat jenom jako aktualizace pro druhé objednávky.
 
-| Objednávka | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednávka | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 2a. |KB4025336 |Balíček kumulativních aktualizací operačního systému <br> Stáhnout verzi Windows Serveru 2012 R2 |Pravidelný <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 Při instalaci ze zařízení se systémem Update 3 nebo starší verze nainstalujte kromě kumulativních aktualizací následující:
 
-| Objednávka | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednávka | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 2b. |KB4011841 <br> KB4011842 |Ovladače LSI a aktualizace firmwaru <br> Aktualizace firmwaru USM (verze 3,38) |Pravidelný <br></br>Bez přerušení |~ 3 hodiny <br> (zahrnuje 2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Balíček aktualizace zabezpečení operačního systému <br> Stáhnout verzi Windows Serveru 2012 R2 |Pravidelný <br></br>Bez přerušení |- |SecondOrderUpdate|
@@ -97,7 +97,7 @@ Při instalaci ze zařízení se systémem Update 3 nebo starší verze nainstal
 
 Je také možné, že budete muset nainstalovat aktualizace firmwaru disku nad všemi aktualizacemi, které jsou uvedeny v předchozích tabulkách. Spuštěním rutiny můžete ověřit, zda potřebujete aktualizace firmwaru disku `Get-HcsFirmwareVersion` . Pokud používáte tyto verze firmwaru: `XMGJ` , `XGEG` , `KZ50` , `F6C2` , `VR08` , `N003` , `0107` , pak tyto aktualizace nemusíte instalovat.
 
-| Objednávka | KB | Popis | Typ aktualizace | Čas instalace | Nainstalovat do složky|
+| Objednávka | KB | Description | Typ aktualizace | Čas instalace | Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Firmware disku |Údržba <br></br>Rušivé |~ 30 minut | ThirdOrderUpdate |
 

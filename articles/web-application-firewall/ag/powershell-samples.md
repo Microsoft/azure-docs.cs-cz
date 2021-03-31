@@ -18,6 +18,6 @@ ms.locfileid: "86507246"
 
 Následující tabulka obsahuje odkazy na Azure PowerShell příklady skriptu pro Azure Application Gateway.
 
-| Příklad | Popis |
+| Příklad | Description |
 | ------- | ----------- |
 |[Vlastní pravidla WAF v2](../scripts/waf-custom-rules-powershell.md)|Vytvoří Application Gateway webové aplikace firewall v2 s vlastními pravidly. |

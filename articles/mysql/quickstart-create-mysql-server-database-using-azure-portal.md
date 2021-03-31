@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98567805"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure Portal
 
 Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit Azure Database for MySQL jeden server. Také se dozvíte, jak se připojit k serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-mysql-single-server"></a>Vytvoření jednoho serveru Azure Database for MySQL

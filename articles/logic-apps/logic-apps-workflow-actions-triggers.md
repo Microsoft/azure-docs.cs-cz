@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784304"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
@@ -825,7 +825,7 @@ Tady jsou některé běžně používané typy akcí:
 | [**HTTP**](#http-action) | Volá koncový bod HTTP. | 
 | [**Připojení**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí tyto položky zadaným znakem oddělovače. | 
 | [**Analyzovat JSON**](#parse-json-action) | Vytvoří uživatelsky přívětivé tokeny z vlastností v obsahu JSON. Pak můžete odkazovat na tyto vlastnosti zahrnutím tokenů do aplikace logiky. | 
-| [**Dotaz**](#query-action) | Vytvoří pole z položek v jiném poli na základě podmínky nebo filtru. | 
+| [**Zadávání**](#query-action) | Vytvoří pole z položek v jiném poli na základě podmínky nebo filtru. | 
 | [**Odpověď**](#response-action) | Vytvoří odpověď na příchozí volání nebo požadavek. | 
 | [**Vyberte**](#select-action) | Vytvoří pole s objekty JSON transformací položek z jiného pole na základě zadané mapy. | 
 | [**Tabulka**](#table-action) | Vytvoří z pole tabulku CSV nebo HTML. | 

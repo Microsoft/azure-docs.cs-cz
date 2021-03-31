@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: yelevin
 ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99807729"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Připojení protokolů diagnostiky a auditu služby Azure SQL Database
@@ -27,7 +27,7 @@ Konektor služby Azure SQL Database umožňuje streamovat auditování vašich d
 
 Přečtěte si další informace o [monitorování databází SQL Azure](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 

@@ -29,7 +29,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
 | --Service-ID | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez \: schématu identifikátoru URI Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
@@ -37,7 +37,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -52,7 +52,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
 | --Service-ID | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez \: schématu identifikátoru URI Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
@@ -60,7 +60,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

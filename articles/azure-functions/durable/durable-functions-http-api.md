@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84697839"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
@@ -18,7 +18,7 @@ Rozšíření Durable Functions zpřístupňuje sadu integrovaných rozhraní AP
 
 Všechna rozhraní API HTTP implementovaná rozšířením vyžadují následující parametry. Datový typ všech parametrů je `string` .
 
-| Parametr        | Typ parametru  | Description |
+| Parametr        | Typ parametru  | Popis |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Řetězec dotazu    | Název [centra úloh](durable-functions-task-hubs.md). Pokud není zadaný, předpokládá se aktuální název centra úloh aplikace Function App. |
 | **`connection`** | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadaný, předpokládá se výchozí připojovací řetězec pro aplikaci Function App. |
@@ -82,7 +82,7 @@ Content-Length: 83
 
 Datová část odpovědi pro případy **protokolu HTTP 202** je objekt JSON s následujícími poli:
 
-| Pole                       | Description                          |
+| Pole                       | Popis                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |ID instance orchestrace. |
 | **`statusQueryGetUri`**     |Adresa URL stavu instance orchestrace. |
@@ -166,7 +166,7 @@ Může být vráceno několik možných hodnot stavového kódu.
 
 Datová část odpovědi pro případy **http 200** a **HTTP 202** je objekt JSON s následujícími poli:
 
-| Pole                 | Datový typ | Description |
+| Pole                 | Datový typ | Popis |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | řetězec    | Běhový stav instance Mezi hodnoty patří *spuštění*, *čeká*, *Chyba*, *zrušeno*, *ukončeno*, *dokončeno*. |
 | **`input`**           | JSON      | Data JSON používaná k inicializaci instance. Toto pole je `null` , pokud je `showInput` parametr řetězce dotazu nastaven na hodnotu `false` .|
@@ -427,7 +427,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole                 | Typ parametru  | Description |
+| Pole                 | Typ parametru  | Popis |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Řetězec dotazu    | Filtruje seznam vyčištěných instancí, které byly vytvořeny v nebo po daném časovém razítku ISO8601.|
 | **`createdTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Při zadání se vyfiltruje seznam vyčištěných instancí, které byly vytvořeny před zadaným časovým razítkem ISO8601 nebo před ním.|

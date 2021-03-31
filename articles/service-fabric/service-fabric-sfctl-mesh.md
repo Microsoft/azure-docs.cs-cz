@@ -16,7 +16,7 @@ ms.locfileid: "86257240"
 Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Popis|
+|Podskupina|Description|
 | --- | --- |
 | [aplikace](service-fabric-sfctl-mesh-app.md) | Získejte a odstraňte prostředky aplikace. |
 | [Code-Package-log](service-fabric-sfctl-mesh-code-package-log.md) | Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služby. |

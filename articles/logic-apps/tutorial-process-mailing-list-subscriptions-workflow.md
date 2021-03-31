@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/07/2020
 ms.openlocfilehash: 1690b8d143b86e5caa691f5f8f479f715f57f0c8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054649"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Kurz: vytváření pracovních postupů pro automatizované schvalování pomocí Azure Logic Apps
@@ -34,7 +34,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Přehled dokončené aplikace logiky na vysoké úrovni](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

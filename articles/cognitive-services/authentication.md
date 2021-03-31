@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94363319"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
@@ -24,7 +24,7 @@ Každý požadavek na službu rozpoznávání Azure musí obsahovat hlavičku ov
 * Ověřování pomocí [tokenu](#authenticate-with-an-authentication-token)
 * Ověřování pomocí [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před vytvořením žádosti potřebujete účet Azure a předplatné Azure Cognitive Services. Pokud již účet máte, přejděte k další části a přejděte k dalšímu oddílu. Pokud účet nemáte, máme v něm průvodce, který vám pomůže nastavit [účet Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 

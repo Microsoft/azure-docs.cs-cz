@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: jeedes
 ms.openlocfilehash: bf85e28a096e1eb0de429a12def4a350971a315a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94363795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mevisio"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Mevisio
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Mevisio s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Mevisio svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
