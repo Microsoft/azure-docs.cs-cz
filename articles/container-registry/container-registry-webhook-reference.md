@@ -36,7 +36,7 @@ Webhook aktivovaný při vložení image kontejneru do úložiště
 
 ### <a name="push-event-payload"></a>Datová část události push
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -46,7 +46,7 @@ Webhook aktivovaný při vložení image kontejneru do úložiště
 
 ### <a name="target"></a><a name="target"></a>cílové
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`size`|Int32|Počet bajtů obsahu. Stejné jako pole length.|
@@ -57,7 +57,7 @@ Webhook aktivovaný při vložení image kontejneru do úložiště
 
 ### <a name="request"></a><a name="request"></a>Request
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |------------------|----------|-----------|
 |`id`|Řetězec|ID žádosti, která iniciovala událost.|
 |`host`|Řetězec|Externě přístupný název hostitele instance registru, jak je určen hlavičkou hostitele HTTP na příchozích požadavcích.|
@@ -100,7 +100,7 @@ Webhook aktivovaný při vložení grafu Helm do úložiště
 
 ### <a name="chart-push-event-payload"></a>Datová část události nabízeného grafu
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -109,7 +109,7 @@ Webhook aktivovaný při vložení grafu Helm do úložiště
 
 ### <a name="target"></a><a name="helm_target"></a>cílové
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`size`|Int32|Počet bajtů obsahu.|
@@ -150,7 +150,7 @@ Webhook aktivovaný při odstranění úložiště imagí nebo manifestu Neaktiv
 
 ### <a name="delete-event-payload"></a>Odstranit datovou část události
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -160,7 +160,7 @@ Webhook aktivovaný při odstranění úložiště imagí nebo manifestu Neaktiv
 
 ### <a name="target"></a><a name="delete_target"></a> cílové
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`digest`|Řetězec|Výtah obsahu definovaný specifikací registru v2 HTTP API.|
@@ -168,7 +168,7 @@ Webhook aktivovaný při odstranění úložiště imagí nebo manifestu Neaktiv
 
 ### <a name="request"></a><a name="delete_request"></a> Request
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |------------------|----------|-----------|
 |`id`|Řetězec|ID žádosti, která iniciovala událost.|
 |`host`|Řetězec|Externě přístupný název hostitele instance registru, jak je určen hlavičkou hostitele HTTP na příchozích požadavcích.|
@@ -212,7 +212,7 @@ Webhook aktivovaný při odstranění grafu Helm nebo úložiště
 
 ### <a name="chart-delete-event-payload"></a>Datová část události odstranění grafu
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -221,7 +221,7 @@ Webhook aktivovaný při odstranění grafu Helm nebo úložiště
 
 ### <a name="target"></a><a name="chart_delete_target"></a> cílové
 
-|Prvek|Typ|Popis|
+|Prvek|Typ|Description|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`size`|Int32|Počet bajtů obsahu.|

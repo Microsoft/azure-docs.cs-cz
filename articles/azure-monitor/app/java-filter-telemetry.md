@@ -7,10 +7,10 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.openlocfilehash: 35a95ac32fc4390e08d3c7fee2b9f9ff52202e4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100573815"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
@@ -264,7 +264,7 @@ public TelemetryProcessor successFilter() {
 Budete muset vytvořit vlastní parametry filtru v nástroji `application.properties` a využít k předání těchto parametrů do vlastního filtru nahlasovou architekturu jarních konfigurací. 
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 *Můj filtr nefunguje.*
 

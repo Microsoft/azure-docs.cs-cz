@@ -117,7 +117,7 @@ Tady je pracovní postup nejvyšší úrovně v rámci **korelačního doručov�
 
 ![Pracovní postup nejvyšší úrovně šablony](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | V závislosti na zadaném opakování Tato aktivační událost Service Bus zkontroluje všechny zprávy ve frontě Service Bus. Pokud ve frontě existuje zpráva, aktivuje se Trigger, který vytvoří a spustí instanci pracovního postupu. <p><p>Pojem *Náhled – zámek* znamená, že Trigger odesílá požadavek na načtení zprávy z fronty. Pokud zpráva existuje, aktivační událost tuto zprávu načte a zamkne, aby se v této zprávě nedošlo k žádnému dalšímu zpracování, dokud nevyprší doba platnosti zámku. Podrobnosti získáte [inicializací relace](#initialize-session). |
 | **`Init isDone`** | Tato [Akce **inicializovat proměnnou**](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) vytvoří logickou proměnnou, která je nastavena na `false` a označuje, že jsou splněny následující podmínky: <p><p>-V relaci nejsou k dispozici žádné další zprávy, které by bylo možné číst. <br>– Zámek relace již není nutné obnovit, aby bylo možné dokončit aktuální instanci pracovního postupu. <p><p>Podrobnosti najdete v tématu [inicializace relace](#initialize-session). |
@@ -133,7 +133,7 @@ Tady je tok nejvyšší úrovně v `Try` [akci oboru](../logic-apps/logic-apps-c
 
 ![Pracovní postup akce "Try" oboru](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | **`Send initial message to topic`** | Tuto akci můžete nahradit jakoukoliv akcí, kterou chcete zpracovat první zprávu z relace ve frontě. ID relace určuje relaci. <p><p>Pro tuto šablonu Service Bus akce odešle první zprávu do Service Bus tématu. Podrobnosti najdete v tématu [zpracování úvodní zprávy](#handle-initial-message). |
 | (paralelní větev) | Tato [Akce paralelní větve](../logic-apps/logic-apps-control-flow-branches.md) vytvoří dvě cesty: <p><p>-Větvi #1: pokračuje ve zpracování zprávy. Další informace najdete v tématu [větev #1: dokončení počáteční zprávy ve frontě](#complete-initial-message). <p><p>-Větvi #2: Pokud se něco nepovede, ponecháte zprávu a vydáte k vyzvednutí další spuštění triggeru. Další informace najdete v tématu [větev #2: opuštění počáteční zprávy z fronty](#abandon-initial-message). <p><p>Obě cesty se připojí později v **relaci ukončení ve frontě a akce úspěšné** , které jsou popsané v dalším řádku. |
@@ -144,7 +144,7 @@ Tady je tok nejvyšší úrovně v `Try` [akci oboru](../logic-apps/logic-apps-c
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>#1 větve: dokončení počáteční zprávy ve frontě
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | `Complete initial message in queue` | Tato akce Service Bus označí úspěšné načtení zprávy jako dokončenou a odebere zprávu z fronty, aby se zabránilo rezpracování. Podrobnosti najdete v tématu [zpracování úvodní zprávy](#handle-initial-message). |
 | `While there are more messages for the session in the queue` | To, [ **dokud** smyčka](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nadále nezíská zprávy, zatímco existují zprávy nebo dokud neuplyne jedna hodina. Další informace o akcích v této smyčce najdete v části, [zatímco pro relaci ve frontě existuje více zpráv](#while-more-messages-for-session). |
@@ -168,7 +168,7 @@ Tady je tok nejvyšší úrovně v `Catch` akci oboru při sbalení podrobností
 
 ![Pracovní postup akce oboru catch](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Tato akce Service Bus zavře relaci ve frontě, aby zámek relace zůstal otevřený. Podrobnosti najdete v tématu [uzavření relace ve frontě a selhání](#close-session-fail). |
 | **`Find failure msg from 'Try' block`** | Tato [Akce **pole filtru**](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) vytvoří pole ze vstupů a výstupů ze všech akcí v `Try` oboru na základě zadaných kritérií. V tomto případě tato akce vrátí výstupy z akcí, které byly výsledkem `Failed` stavu. Podrobnosti najdete v tématu [vyhledání zprávy o selhání z bloku try](#find-failure-message). |
@@ -195,11 +195,11 @@ Pokud chcete zadat hodnoty pro aktivační událost a akce v rámci **korelačn�
 
   | Vlastnost | Vyžadováno pro tento scénář | Hodnota | Popis |
   |----------|----------------------------|-------|-------------|
-  | **Název fronty** | Ano | <*název fronty*> | Název pro dříve vytvořenou frontu Service Bus. V tomto příkladu se používá "Fabrikam-Service-Bus-Queue". |
-  | **Typ fronty** | Ano | **Hlavní** | Vaše primární Service Bus fronta |
-  | **ID relace** | Ano | **Další k dispozici** | Tato možnost načte relaci každého spuštění triggeru na základě ID relace ze zprávy ve frontě Service Bus. Relace je taky zamčená, takže žádná jiná aplikace logiky ani jiný klient nemůže zpracovat zprávy, které se vztahují k této relaci. Následující akce pracovního postupu zpracovávají všechny zprávy, které jsou přidružené k této relaci, jak je popsáno dále v tomto článku. <p><p>Zde jsou další informace o možnostech dalších **ID relace** : <p>- **None**: výchozí možnost, která nemá žádné relace a nedá se použít pro implementaci sekvenčního vzoru convoy. <p>- **Zadejte vlastní hodnotu**: tuto možnost použijte, pokud znáte ID relace, které chcete použít, a pro ID relace vždy chcete spustit Trigger. <p>**Poznámka**: konektor Service Bus může současně uložit omezený počet jedinečných relací z Azure Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [zprávy Exchange v cloudu s Azure Logic Apps a Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
-  | **Interval** | Ano | <*počet intervalů*> | Počet časových jednotek mezi opakováními před vrácením zprávy se změnami. |
-  | **Frekvence** | Ano | **Sekundy**, **minuty**, **hodiny**, **den**, **týden** nebo **měsíc** | Jednotka času, kterou má opakování použít při kontrole zprávy <p>**Tip**: Pokud chcete přidat **časové pásmo** nebo **čas spuštění**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** . |
+  | **Název fronty** | Yes | <*název fronty*> | Název pro dříve vytvořenou frontu Service Bus. V tomto příkladu se používá "Fabrikam-Service-Bus-Queue". |
+  | **Typ fronty** | Yes | **Hlavní** | Vaše primární Service Bus fronta |
+  | **ID relace** | Yes | **Další k dispozici** | Tato možnost načte relaci každého spuštění triggeru na základě ID relace ze zprávy ve frontě Service Bus. Relace je taky zamčená, takže žádná jiná aplikace logiky ani jiný klient nemůže zpracovat zprávy, které se vztahují k této relaci. Následující akce pracovního postupu zpracovávají všechny zprávy, které jsou přidružené k této relaci, jak je popsáno dále v tomto článku. <p><p>Zde jsou další informace o možnostech dalších **ID relace** : <p>- **None**: výchozí možnost, která nemá žádné relace a nedá se použít pro implementaci sekvenčního vzoru convoy. <p>- **Zadejte vlastní hodnotu**: tuto možnost použijte, pokud znáte ID relace, které chcete použít, a pro ID relace vždy chcete spustit Trigger. <p>**Poznámka**: konektor Service Bus může současně uložit omezený počet jedinečných relací z Azure Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [zprávy Exchange v cloudu s Azure Logic Apps a Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
+  | **Interval** | Yes | <*počet intervalů*> | Počet časových jednotek mezi opakováními před vrácením zprávy se změnami. |
+  | **Frekvence** | Yes | **Sekundy**, **minuty**, **hodiny**, **den**, **týden** nebo **měsíc** | Jednotka času, kterou má opakování použít při kontrole zprávy <p>**Tip**: Pokud chcete přidat **časové pásmo** nebo **čas spuštění**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** . |
   |||||
 
   Další informace o aktivačních událostech najdete [v tématu Service Bus – při přijetí zprávy ve frontě (prohlížení zámku)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Aktivační událost výstupuje [ServiceBusMessage](/connectors/servicebus/#servicebusmessage).

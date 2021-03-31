@@ -33,12 +33,12 @@ Se správou konsorcia ve službě Azure blockchain můžete spravovat účastní
 
 | Akce | Role uživatele | Role Správce
 |--------|:----:|:------------:|
-| Vytvořit nového člena | Ano | Ano |
-| Pozvat nové členy | Ne | Ano |
-| Nastavení nebo změna role člena účastníka | Ne | Ano |
+| Vytvořit nového člena | Yes | Yes |
+| Pozvat nové členy | No | Yes |
+| Nastavení nebo změna role člena účastníka | No | Yes |
 | Zobrazovaný název člena změny | Pouze pro vlastního člena | Pouze pro vlastního člena |
-| Odebrání členů | Pouze pro vlastního člena | Ano |
-| Účast v transakcích blockchain | Ano | Ano |
+| Odebrání členů | Pouze pro vlastního člena | Yes |
+| Účast v transakcích blockchain | Yes | Yes |
 
 ### <a name="user-role"></a>Role uživatele
 

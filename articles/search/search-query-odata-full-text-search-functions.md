@@ -69,7 +69,7 @@ K dispozici je také diagram interaktivní syntaxe:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Typ | Popis |
+| Název parametru | Typ | Description |
 | --- | --- | --- |
 | `search` | `Edm.String` | Vyhledávací dotaz (buď v [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxi dotazů Lucene). |
 | `searchFields` | `Edm.String` | Čárkami oddělený seznam vyhledávacích polí, ve kterých chcete hledat; Výchozí hodnota pro všechna hledaná pole v indexu. Při použití [vyhledávacího pole](query-lucene-syntax.md#bkmk_fields) v `search` parametru přepíše specifikátory pole v dotazu Lucene všechna pole zadaná v tomto parametru. |

@@ -125,11 +125,11 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Umístění definice** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Název** | Ano | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
-   | **Popis** | Ne | <*Policy – definice – název*> | Popis definice zásady |
-   | **Kategorie** | Ano | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
-   | **Vynucení zásad** | Ano | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
+   | **Umístění definice** | Yes | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Název** | Yes | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
+   | **Popis** | No | <*Policy – definice – název*> | Popis definice zásady |
+   | **Kategorie** | Yes | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
+   | **Vynucení zásad** | Yes | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
    ||||
 
 1. V části **pravidlo zásad** se pole pro úpravy JSON předem vyplní šablonou definic zásad. Nahraďte tuto šablonu [definicí zásad](../governance/policy/concepts/definition-structure.md) na základě vlastností popsaných v následující tabulce a pomocí této syntaxe:
@@ -246,11 +246,11 @@ Když vytvoříte připojení v aplikaci logiky, toto připojení existuje jako 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Umístění definice** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Název** | Ano | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
-   | **Popis** | Ne | <*Policy – definice – název*> | Popis definice zásady |
-   | **Kategorie** | Ano | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
-   | **Vynucení zásad** | Ano | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
+   | **Umístění definice** | Yes | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Název** | Yes | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
+   | **Popis** | No | <*Policy – definice – název*> | Popis definice zásady |
+   | **Kategorie** | Yes | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
+   | **Vynucení zásad** | Yes | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
    ||||
 
 1. V části **pravidlo zásad** se pole pro úpravy JSON předem vyplní šablonou definic zásad. Nahraďte tuto šablonu [definicí zásad](../governance/policy/concepts/definition-structure.md) na základě vlastností popsaných v následující tabulce a pomocí této syntaxe:
@@ -331,14 +331,14 @@ Dál je potřeba přiřadit definici zásady, ve které chcete zásady vyhovět,
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Rozsah** | Ano | Prostředky, u kterých chcete vynutilit přiřazení zásady. <p><p>1. vedle pole **obor** vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **předplatné** vyberte předplatné Azure. <br>3. v seznamu **Skupina prostředků** vyberte skupinu prostředků. <br>4. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Vyloučení** | Ne | Všechny prostředky Azure, které se mají vyloučit z přiřazení zásad. <p><p>1. klikněte na tlačítko se třemi tečkami (**...**) vedle pole **vyloučení** . <br>2. v seznamu **prostředků** vyberte prostředek > **Přidat do vybraného oboru**. <br>3. Jakmile budete hotovi, vyberte **Uložit**. |
-   | **Definice zásady** | Ano | Název definice zásady, kterou chcete přiřadit a vykonat. Tento příklad pokračuje s příkladem zásady Instagramu, "Block Instagramu Connections". <p><p>1. Vyberte tlačítko se třemi tečkami (**...**) vedle pole **definice zásady** . <br>2. Vyhledejte a vyberte definici zásady pomocí filtru **typů** nebo **vyhledávacího** pole. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Název přiřazení** | Ano | Název, který se má použít pro přiřazení zásady, pokud se liší od definice zásady |
-   | **ID přiřazení** | Ano | Automaticky vygenerované ID pro přiřazení zásady |
-   | **Popis** | Ne | Popis přiřazení zásady |
-   | **Vynucení zásad** | Ano | Nastavení, které povoluje nebo zakazuje přiřazení zásady |
-   | **Přiřadil** | Ne | Jméno osoby, která vytvořila a používala přiřazení zásady |
+   | **Rozsah** | Yes | Prostředky, u kterých chcete vynutilit přiřazení zásady. <p><p>1. vedle pole **obor** vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **předplatné** vyberte předplatné Azure. <br>3. v seznamu **Skupina prostředků** vyberte skupinu prostředků. <br>4. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Vyloučení** | No | Všechny prostředky Azure, které se mají vyloučit z přiřazení zásad. <p><p>1. klikněte na tlačítko se třemi tečkami (**...**) vedle pole **vyloučení** . <br>2. v seznamu **prostředků** vyberte prostředek > **Přidat do vybraného oboru**. <br>3. Jakmile budete hotovi, vyberte **Uložit**. |
+   | **Definice zásady** | Yes | Název definice zásady, kterou chcete přiřadit a vykonat. Tento příklad pokračuje s příkladem zásady Instagramu, "Block Instagramu Connections". <p><p>1. Vyberte tlačítko se třemi tečkami (**...**) vedle pole **definice zásady** . <br>2. Vyhledejte a vyberte definici zásady pomocí filtru **typů** nebo **vyhledávacího** pole. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Název přiřazení** | Yes | Název, který se má použít pro přiřazení zásady, pokud se liší od definice zásady |
+   | **ID přiřazení** | Yes | Automaticky vygenerované ID pro přiřazení zásady |
+   | **Popis** | No | Popis přiřazení zásady |
+   | **Vynucení zásad** | Yes | Nastavení, které povoluje nebo zakazuje přiřazení zásady |
+   | **Přiřadil** | No | Jméno osoby, která vytvořila a používala přiřazení zásady |
    ||||
 
    Například pokud chcete přiřadit zásadu ke skupině prostředků Azure pomocí příkladu Instagramu:
@@ -363,7 +363,7 @@ Pokud chcete vyzkoušet zásady, začněte vytvářet připojení pomocí konekt
 
 Tato zpráva obsahuje tyto informace:
 
-| Popis | Content |
+| Description | Content |
 |-------------|---------|
 | Důvod selhání | `"Resource 'instagram' was disallowed by policy."` |
 | Název přiřazení | `"Block Instagram connections"` |
