@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67175421"
 ---
 Úloha vytvoří výstupní soubor JSON obsahující metadata o zjištěných a sledovaných plochách. Metadata obsahují souřadnice označující umístění obličeje a také číslo ID obličeje, které signalizuje sledování daného jednotlivce. Pokud dojde ke ztrátě nebo překrytí čelní plochy v rámci tohoto rámce, je pro ně možné resetovat čísla ID obličeje. Výsledkem je, že někteří jednotlivci mají přiřazené více ID.

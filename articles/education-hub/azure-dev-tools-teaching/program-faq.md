@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92675704"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Nejčastější dotazy týkající se Centrum Education
@@ -54,7 +54,7 @@ Azure for Students poskytuje přístup ke všem produktům Azure, které jsou v�
 
 ### <a name="can-i-apply-any-of-my-100-credit-toward-azure-marketplace-offers"></a>Můžu pro Azure Marketplace nabídky použít jakýkoliv kredit z $100?
 
-No. Váš kredit nemůžete použít pro Azure Marketplace nabídky. Mnoho Azure Marketplaceových partnerů však nabízí bezplatné zkušební verze nebo plány úrovně Free pro svá řešení.
+Ne. Váš kredit nemůžete použít pro Azure Marketplace nabídky. Mnoho Azure Marketplaceových partnerů však nabízí bezplatné zkušební verze nebo plány úrovně Free pro svá řešení.
 
 ## <a name="azure-for-students-starter"></a>Azure for Students Starter
 
@@ -186,7 +186,7 @@ Aplikace Microsoft Visio<br>
 Visual Studio Code<br>
 Visual Studio Community<br>
 Visual Studio Enterprise<br>
-Visual Studio for Mac<br>
+Visual Studio pro Mac<br>
 Windows 10<br>
 Windows Server<br>
    :::column-end:::
@@ -232,7 +232,7 @@ Po schválení se budete moct přihlásit k [portálu sady Visual Studio](https:
 
 ### <a name="does-microsoft-azure-dev-tools-for-teaching-include-microsoft-office"></a>Zahrnuje Microsoft Azure vývojářské nástroje pro vzdělávání systém Microsoft Office?
 
-No. Cílem Microsoft Azurech vývojářských nástrojů pro vzdělávání je poskytnout oddělením, vyučujícím a studentům nástroje potřebné k tomu, aby se konkrétně rozšířila studie vývoje a testování softwaru. Proto poskytujeme technologie, jako je Windows Server, Visual Studio .NET, SQL Server a sada SDK platformy.
+Ne. Cílem Microsoft Azurech vývojářských nástrojů pro vzdělávání je poskytnout oddělením, vyučujícím a studentům nástroje potřebné k tomu, aby se konkrétně rozšířila studie vývoje a testování softwaru. Proto poskytujeme technologie, jako je Windows Server, Visual Studio .NET, SQL Server a sada SDK platformy.
 
 ### <a name="does-azure-dev-tools-for-teaching-include-azure-credit"></a>Zahrnuje Azure dev Tools pro vzdělávání kredit Azure?
 
@@ -240,7 +240,7 @@ Ne, Microsoft Azure vývojářské nástroje pro výukové předplatné nezahrnu
 
 ### <a name="do-students-need-an-office-365-or-active-directory-account-to-access-azure-dev-tools-for-teaching"></a>Potřebují studenti pro přístup k vývojářským nástrojům Azure pro pedagogy účet Office 365 nebo Active Directory?
 
-No. Studenti nepotřebují účet Office 365. Pokud mají studenti přístup k vašemu účtu služby Active Directory, používají stejné přihlašovací údaje pro přihlášení k softwaru.
+Ne. Studenti nepotřebují účet Office 365. Pokud mají studenti přístup k vašemu účtu služby Active Directory, používají stejné přihlašovací údaje pro přihlášení k softwaru.
 
 Pokud studenti nepoužívají službu Active Directory, musí vytvořit [účet Microsoft](https://account.microsoft.com/account) (pokud ho ještě nemají) pomocí stejné e-mailové adresy, kterou jim poskytnete.
 

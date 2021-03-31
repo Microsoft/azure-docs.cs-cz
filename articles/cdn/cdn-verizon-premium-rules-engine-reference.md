@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91362576"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Odkazy na modul Azure CDN z Verizon Premium Rules
@@ -67,7 +67,7 @@ Pracovní postup, pomocí kterého se dá zásady použít v produkčním nebo p
 
 ![Pracovní postup nasazení zásad](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Krok |Description |
+|Krok |Popis |
 |---------|---------|
 |[Vytvořit koncept](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    Koncept se skládá ze sady pravidel definujících způsob, jakým by měly být požadavky na obsah zpracovávány přes CDN.     |
 |Zamknout koncept   |     Po dokončení konceptu by měl být uzamčen a převeden na zásadu jen pro čtení.    |
@@ -105,7 +105,7 @@ osa | Jedna nabídka nemá zvláštní význam. Sada jednoduchých uvozovek vša
 
 Regulární výrazy definují vzor, který je prohledáván v rámci textové hodnoty. Zápis regulárního výrazu definuje konkrétní význam pro nejrůznější symboly. Následující tabulka uvádí, jak jsou speciální znaky ošetřeny podmínkami shody a funkcemi, které podporují regulární výrazy.
 
-Speciální znak | Description
+Speciální znak | Popis
 ------------------|------------
 \ | Zpětné lomítko řídí znak, který následuje, což způsobí, že tento znak bude považován za hodnotu literálu namísto převzetí jeho regulárního výrazu. Například následující syntaxe řídí hvězdičku: `\*`
 % | Význam symbolu procenta závisí na jeho využití.<br/><br/> `%{HTTPVariable}`: Tato syntaxe identifikuje proměnnou HTTP.<br/>`%{HTTPVariable%Pattern}`: Tato syntaxe používá symbol procenta k identifikaci proměnné HTTP a jako oddělovače.<br />`\%`: Uvozovací znak v procentech umožňuje použití jako literálové hodnoty nebo k označení kódování adresy URL (například `\%20` ).

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539869"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Dynamické zřizování Service Bus oborů názvů a entit 
@@ -156,7 +156,7 @@ namespace SBusManagementClient
 ## <a name="microsoftazuremanagementservicebus"></a>Microsoft.Azure.Management.ServiceBus 
 Tato knihovna je součástí sady SDK ovládacího prvku na základě Azure Resource Manager. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít s používáním této knihovny, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 

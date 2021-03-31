@@ -15,16 +15,16 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539706"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
 Tento článek popisuje všechna nastavení pro vytvoření koncového bodu služby [Azure Content Delivery Network (CDN)](cdn-overview.md) v existujícím profilu CDN. Po vytvoření profilu a koncového bodu můžete začít doručování obsahu vašim zákazníkům. Rychlý Start při vytváření profilu a koncového bodu najdete v tématu [rychlý Start: vytvoření profilu Azure CDN a koncového bodu](cdn-create-new-endpoint.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než budete moct vytvořit koncový bod CDN, musíte vytvořit aspoň jeden profil CDN, který může obsahovat jeden nebo víc koncových bodů CDN. K uspořádání koncových bodů CDN podle internetové domény, webové aplikace nebo jiných kritérií můžete použít několik profilů. Vzhledem k tomu, že ceny CDN se používají na úrovni profilu CDN, musíte vytvořit několik profilů CDN, pokud chcete používat kombinaci Azure CDN cenové úrovně. Pokud chcete vytvořit profil CDN, přečtěte si téma [Vytvoření nového profilu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal

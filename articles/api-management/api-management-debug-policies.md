@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 2e45d1274cf7332dbca70eaa8fc51f0ac98e5359
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648012"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Ladění zásad Azure API Management v Visual Studio Code
@@ -25,7 +25,7 @@ ms.locfileid: "101648012"
 
 Tento článek popisuje, jak ladit zásady API Management pomocí [rozšíření Azure API Management pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pomocí tohoto [rychlého](get-started-create-service-instance.md) startu nejprve vytvořte API Management instanci vývojové vrstvy.
 

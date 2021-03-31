@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95973418"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: povolení zpětného zápisu zařízení
@@ -85,7 +85,7 @@ Zpětný zápis zařízení by teď měl správně fungovat. Uvědomte si, že m
 ## <a name="enable-conditional-access"></a>Povolit podmíněný přístup
 Podrobné pokyny pro povolení tohoto scénáře jsou k dispozici v rámci [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../devices/overview.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Zaškrtávací políčko zpětného zápisu je pořád zakázané.
 Pokud políčko pro zpětný zápis zařízení není povolené, i když jste postupovali podle výše uvedených kroků, následující kroky vás provedou tím, co Průvodce instalací ověří před tím, než je box povolený.
 
