@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 011bbbda07806f1493ae27fbeef8509f0d12c44b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518445"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Kurz: integrace RunMyProcess s Azure Active Directory
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat RunMyProcess s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -158,7 +158,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k RunMyProcess, musí se zřídi
 
 1. V části **nastavení uživatele** proveďte následující kroky:
 
-    ![Profilu](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profil")
+    ![Profil](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profil")
   
     a. Do příslušných textových polí zadejte **název** a **E-mail** platného účtu Azure AD, který chcete zřídit.
 

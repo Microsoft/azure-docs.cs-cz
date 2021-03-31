@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84710367"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
@@ -34,7 +34,7 @@ Tyto akce vám pomůžou pracovat s daty v polích.
 | [**Vytvořit tabulku CSV**](#create-csv-table-action) | Vytvoří tabulku hodnot s oddělovači (CSV) z pole. |
 | [**Vytvořit tabulku HTML**](#create-html-table-action) | Vytvoří tabulku HTML z pole. |
 | [**Filtrovat pole**](#filter-array-action) | Vytvořte podmnožinu pole z pole na základě zadaného filtru nebo podmínky. |
-| [**Zúčastnit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
+| [**Připojení**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
 | [**Vyberte**](#select-action) | Vytvoří pole z určených vlastností pro všechny položky v jiném poli. |
 ||| 
 
@@ -50,7 +50,7 @@ Tyto akce vám pomůžou pracovat s daty ve formátu JavaScript Object Notation 
 
 Chcete-li vytvořit složitější transformace JSON, přečtěte si téma [provádění pokročilých TRANSFORMACÍ JSON pomocí tekutých šablon](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak přesunout vyhrazený cluster Azu
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89380704"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Přesunutí clusteru vyhrazeného pro Azure Event Hubs do jiné oblasti
@@ -15,7 +15,7 @@ V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro
 
 Pokud máte další prostředky, jako jsou obory názvů a centra událostí ve skupině prostředků Azure, která obsahuje cluster Event Hubs, možná budete chtít exportovat šablonu na úrovni skupiny prostředků, aby se všechny související prostředky mohly přesunout do nové oblasti v jednom kroku. Kroky v tomto článku vám ukážou, jak exportovat **cluster Event Hubs** do šablony. Postup pro export **skupiny prostředků** do šablony je podobný. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že se vyhrazený cluster dá vytvořit v cílové oblasti. Nejjednodušší způsob, jak to zjistit, je použít Azure Portal k pokusu o [vytvoření Event Hubs vyhrazeného clusteru](event-hubs-dedicated-cluster-create-portal.md). Zobrazí se seznam oblastí, které jsou v daném okamžiku pro vytvoření clusteru podporovány. 
 
 ## <a name="prepare"></a>Příprava

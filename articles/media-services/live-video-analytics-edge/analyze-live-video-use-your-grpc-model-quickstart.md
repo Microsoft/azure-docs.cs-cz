@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
 ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89421513"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>Rychlý Start: Analýza živého videa pomocí vlastního modelu gRPC
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT 
 [!INCLUDE [header](includes/analyze-live-video-your-grpc-model-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/analyze-live-video-your-grpc-model-quickstart/csharp/prerequisites.md)]

@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89073212"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
@@ -173,8 +173,8 @@ Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete 
 
 | Obsahuje požadavek `triggerState` ? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
-| No | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
-| Yes | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
+| Ne | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
+| Ano | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
 ||| 
 
 | Počet nalezených souborů | Odpověď rozhraní API | 

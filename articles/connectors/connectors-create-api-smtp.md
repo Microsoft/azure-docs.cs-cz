@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87283941"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odeslání e-mailu z účtu SMTP pomocí Azure Logic Apps
 
 Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) můžete vytvářet automatizované úlohy a pracovní postupy, které odesílají e-maily z vašeho účtu SMTP. Můžete také použít další akce výstup z akcí SMTP. Například po odeslání e-mailu prostřednictvím protokolu SMTP můžete týmu Odeslat výstrahu do časové rezervy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -51,12 +51,12 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název připojení** | Yes | Název připojení k serveru SMTP | 
-   | **Adresa serveru SMTP** | Yes | Adresa serveru SMTP | 
-   | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro váš účet SMTP | 
-   | **Heslo** | Yes | Heslo pro váš účet SMTP | 
-   | **Port serveru SMTP** | No | Konkrétní port na serveru SMTP, který chcete použít | 
-   | **Povolit SSL?** | No | Zapněte nebo vypněte šifrování TLS/SSL. | 
+   | **Název připojení** | Ano | Název připojení k serveru SMTP | 
+   | **Adresa serveru SMTP** | Ano | Adresa serveru SMTP | 
+   | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro váš účet SMTP | 
+   | **Heslo** | Ano | Heslo pro váš účet SMTP | 
+   | **Port serveru SMTP** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
+   | **Povolit SSL?** | Ne | Zapněte nebo vypněte šifrování TLS/SSL. | 
    |||| 
 
 1. Zadejte potřebné podrobnosti pro vybranou akci. 

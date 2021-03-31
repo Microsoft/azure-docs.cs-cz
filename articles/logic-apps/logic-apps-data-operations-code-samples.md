@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84712441"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Vzorové kódy operací s daty pro Azure Logic Apps
@@ -222,7 +222,7 @@ Pokud chcete vyzkoušet [příklad akce **pole filtru**](../logic-apps/logic-app
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Spojit
+## <a name="join"></a>Připojení
 
 Pokud chcete vyzkoušet [příklad akce **spojení**](../logic-apps/logic-apps-perform-data-operations.md#join-action), můžete použít tyto definice akcí:
 

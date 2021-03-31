@@ -4,10 +4,10 @@ description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data sl
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89378317"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Zálohování farmy služby SharePoint v Azure Stack
@@ -32,7 +32,7 @@ Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit někol
 
 * MABS neposkytuje zálohu databází SharePoint SQL Server hostovaných ve sdílených složkách souborového serveru se škálováním na více systému (SOFS).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že jste splnili všechny [předpoklady pro použití Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Mezi úlohy pro požadavky patří: vytvoření trezoru služby Backup, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace Azure Backup Server s trezorem.
 

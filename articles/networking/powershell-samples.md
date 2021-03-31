@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
 ms.openlocfilehash: aa3304cbabb183368f0e47415e64120854f43535
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87282071"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>Ukázky Azure PowerShell pro sítě
 
 Následující tabulka obsahuje odkazy na skripty vytvořené pomocí Azure PowerShell.
 
-| Skript | Description |
+| Skript | Popis |
 |-|-|
 |**Připojení mezi prostředky Azure**||
 | [Vytvoření virtuální sítě pro vícevrstvé aplikace](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Provoz do front-endové podsítě je omezený na HTTP, zatímco provoz do back-endové podsítě je omezený na SQL na portu 1433. |

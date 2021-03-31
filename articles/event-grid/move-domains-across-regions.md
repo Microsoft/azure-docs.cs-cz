@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89084548"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Přesunutí domén Azure Event Grid do jiné oblasti
@@ -25,7 +25,7 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 - **Ověřte nasazení**. Odešle událost do tématu domény v doméně a ověří, zda je vyvolána obslužná rutina události přidružená k předplatnému. 
 - Chcete-li **Dokončit přesunutí**, odstraňte doménu ze zdrojové oblasti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 ## <a name="prepare"></a>Příprava

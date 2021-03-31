@@ -4,10 +4,10 @@ description: Naučte se integrovat Azure DevTest Labs do Azure Pipelines nepřet
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288921"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrace Azure DevTest Labs do kanálu CI/CD Azure Pipelines
@@ -24,7 +24,7 @@ Tento článek popisuje, jak pomocí úloh Azure DevTest Labs vytvořit a nasadi
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Zaregistrujte se nebo se přihlaste do své organizace [Azure DevOps](https://dev.azure.com) a [vytvořte projekt](/vsts/organizations/projects/create-project) v organizaci. 
   

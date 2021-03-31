@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96003578"
 ---
 # <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Zastaralé: Konfigurace nastavení Baidu cloudového nabízení pro Centrum oznámení v Azure Portal
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nakonfigurovat nastavení služby Baidu Cloud 
 > [!IMPORTANT]
 > Tento kurz je zastaralý. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
 
 ## <a name="configure-baidu-cloud-push"></a>Konfigurace nabízených oznámení cloudu Baidu
