@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88761640"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Správa prostředků databáze IBM Informix pomocí Azure Logic Apps
@@ -25,7 +25,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru In
 
 V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat operace databáze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -78,14 +78,14 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. Zadejte tyto informace o připojení a pak vyberte **vytvořit**.
 
-   | Vlastnost | Vlastnost JSON | Vyžadováno | Příklad hodnoty | Description |
+   | Vlastnost | Vlastnost JSON | Vyžadováno | Příklad hodnoty | Popis |
    |----------|---------------|----------|---------------|-------------|
-   | Název připojení | `name` | Yes | `informix-demo-connection` | Název, který se má použít pro připojení k databázi Informix |
-   | Server | `server` | Yes | Cloudu `informixdemo.cloudapp.net:9089` <br>– Místní: `informixdemo:9089` | Adresa TCP/IP nebo alias, který je ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP |
-   | databáze | `database` | Yes | `nwind` | Název relační databáze DRDA (RDBNAM) nebo název databáze Informix (dbname). Informix akceptuje řetězec 128 bajtů. |
+   | Název připojení | `name` | Ano | `informix-demo-connection` | Název, který se má použít pro připojení k databázi Informix |
+   | Server | `server` | Ano | Cloudu `informixdemo.cloudapp.net:9089` <br>– Místní: `informixdemo:9089` | Adresa TCP/IP nebo alias, který je ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP |
+   | databáze | `database` | Ano | `nwind` | Název relační databáze DRDA (RDBNAM) nebo název databáze Informix (dbname). Informix akceptuje řetězec 128 bajtů. |
    | Authentication | `authentication` | Pouze místní | **Basic** nebo **Windows** (Kerberos) | Typ ověřování, který požaduje vaše databáze Informix. Tato vlastnost se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
-   | Uživatelské jméno | `username` | No | <*databáze – uživatelské jméno*> | Uživatelské jméno pro databázi |
-   | Heslo | `password` | No | <*databáze – heslo*> | Heslo pro databázi |
+   | Uživatelské jméno | `username` | Ne | <*databáze – uživatelské jméno*> | Uživatelské jméno pro databázi |
+   | Heslo | `password` | Ne | <*databáze – heslo*> | Heslo pro databázi |
    | brána | `gateway` | Pouze místní | -<*Azure – předplatné*> <br>-<*Azure-on-premises-data-Gateway-Resource*> | Předplatné Azure a název prostředku Azure pro místní bránu dat, kterou jste vytvořili v Azure Portal. Vlastnost **brány** a dílčí vlastnosti se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
    ||||||
 

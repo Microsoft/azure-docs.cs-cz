@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77588293"
 ---
 # <a name="connect-extrahop-revealx"></a>Připojení ExtraHop Reveal(x)
@@ -26,7 +26,7 @@ ms.locfileid: "77588293"
 Konektor dat ExtraHop (x) umožňuje snadno připojit systém zobrazení (x) ke službě Azure Sentinel pro zobrazení řídicích panelů, vytvářet vlastní výstrahy a vylepšit šetření. Tato integrace vám umožní získat přehled o síti vaší organizace a zlepšit možnosti vaší operace zabezpečení.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 

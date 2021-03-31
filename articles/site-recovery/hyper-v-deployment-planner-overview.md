@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
 ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86528940"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery zotavení po havárii technologie Hyper-V do Azure
@@ -72,17 +72,17 @@ Nástroj poskytuje následující podrobnosti:
 
 |**Kategorie** | **Z VMware do Azure** |**Z Hyper-V do Azure**|**Z Azure do Azure**|**Z Hyper-V do sekundární lokality**|**Z VMware do sekundární lokality**
 --|--|--|--|--|--
-Podporované scénáře |Yes|Yes|No|Ano*|No
+Podporované scénáře |Ano|Ano|Ne|Ano*|Ne
 Podporovaná verze | vCenter 6,7, 6,5, 6,0 nebo 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|NA|Cluster Hyper-V, hostitel Hyper-V|NA|
 Počet serverů, které jde profilovat, na spuštěnou instanci Plánovače nasazení služby Azure Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| NA |Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| NA
 
 *Nástroj je primárně určen pro scénář zotavení po havárii z Hyper-V do Azure. Pro zotavení po havárii z Hyper-V na sekundární server ho jde použít pouze k pochopení doporučení na straně zdroje, jako je požadovaná šířka pásma, požadovaný prázdný prostor úložiště na každém ze zdrojových serverů Hyper-V a počet dávek počáteční replikace a definice dávek.  Ignorujte doporučení Azure a náklady ze sestavy. Také pro zotavení po havárii z Hyper-V na sekundární server nejde použít operaci Zjištění propustnosti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních počítačů, profilace a generování sestav. Existuje také čtvrtá možnost – výpočet pouze propustnosti. V následující tabulce jsou uvedeny požadavky na server, na kterém se musí provést jednotlivé fáze:
 
-| Požadavek na server | Description |
+| Požadavek na server | Popis |
 |---|---|
 |Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure (*. blob.core.windows.net) z tohoto serveru, port 443<br>[Toto je volitelné. K dispozici je možnost zadat dostupnou šířku pásma během generování sestavy ručně.]</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilování, musí být přidány do seznamu TrustedHosts virtuálního počítače klienta, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
 | Generování sestav | Počítač s Windows nebo Windows Server s aplikací Microsoft Excel 2013 nebo novější |

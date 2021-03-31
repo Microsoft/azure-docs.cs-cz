@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88923088"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Kognitivní hledáníu (FAQ)
@@ -91,7 +91,7 @@ Je srozumitelnější, že nechcete spouštět integrované dovednosti nebo vlas
 
 Další informace o [přírůstkovém obohacení](cognitive-search-incremental-indexing-conceptual.md)
 
-## <a name="design-patterns"></a>Způsoby návrhu
+## <a name="design-patterns"></a>Vzory návrhu
 
 ### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Jaký je nejlepší přístup k implementaci lokalizovaného vyhledávání?
 

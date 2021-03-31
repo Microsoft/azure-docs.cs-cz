@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421205"
 ---
 # <a name="resnet"></a>ResNet
@@ -50,7 +50,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name       | Rozsah | Typ    | Výchozí           | Description                              |
+| Name       | Rozsah | Typ    | Výchozí           | Popis                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Název modelu | Všechny   | Režim    | resnext101 \_ 32x8d | Název určité struktury ResNet       |
 | Předvlakované | Všechny   | Logická hodnota | Ano              | Jestli se má používat model předučený na ImageNet |
@@ -58,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="output"></a>Výstup  
 
-| Název            | Typ                    | Description                              |
+| Název            | Typ                    | Popis                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model ResNet, který se dá připojit ke Pytorch modelu výuky. |
 
