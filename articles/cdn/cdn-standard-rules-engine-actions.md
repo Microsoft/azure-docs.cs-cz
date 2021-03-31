@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87760120"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
@@ -30,7 +30,7 @@ Pomocí této akce můžete přepsat hodnotu TTL (Time to Live) koncového bodu 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování mezipaměti |  Description              
+Chování mezipaměti |  Popis              
 ---------------|----------------
 Vynechat mezipaměť | Pokud je vybrána tato možnost a pravidlo odpovídá, není obsah uložen do mezipaměti.
 Přepis | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. Pro hlavičkovou odpověď Cache-Control s hodnotami "žádná mezipaměť", "Private", "No-Store" nebude tato akce platná.
@@ -48,7 +48,7 @@ Tuto akci použijte k úpravě klíče mezipaměti založeného na řetězcích 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování | Description
+Chování | Popis
 ---------|------------
 Zařadit členy | Pokud je vybrána tato možnost a pravidlo odpovídá, budou řetězce dotazů zadané v parametrech zahrnuty při vygenerování klíče mezipaměti. 
 Ukládat do mezipaměti každou jedinečnou adresu URL | Pokud je vybrána tato možnost a pravidlo odpovídá, každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. 
@@ -102,7 +102,7 @@ Pomocí této akce přepište cestu k žádosti, která je v cestě k původním
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Description 
+Pole | Popis 
 ------|------------
 Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( **/** ) jako hodnotu zdrojového vzoru.
 Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor.

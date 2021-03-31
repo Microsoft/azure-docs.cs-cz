@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
 ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90563144"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Jaké jsou možnosti architektury Azure Firewall Manageru?
@@ -44,7 +44,7 @@ Následující tabulka porovnává tyto dvě možnosti architektury a může vá
 |**Podpora více poskytovatelů zabezpečení**|Podporuje se ručně nakonfigurovaným vynuceným tunelovým propojením na brány firewall třetích stran.|Automatizovaná podpora pro dva poskytovatele zabezpečení: Azure Firewall pro filtrování privátních přenosů a třetí strana pro filtrování Internetu|
 |**Firewall webových aplikací ve službě Application Gateway** |Podporováno v Virtual Network|Aktuálně podporované v síti paprsků|
 |**Síťové virtuální zařízení**|Podporováno v Virtual Network|Aktuálně podporované v síti paprsků|
-|**Podpora Azure DDoS Protection Standard**|Yes|No|
+|**Podpora Azure DDoS Protection Standard**|Ano|No|
 
 ## <a name="next-steps"></a>Další kroky
 

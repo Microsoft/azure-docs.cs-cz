@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87798507"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Vytvoření kontroly přístupu balíčku přístupu v Azure AD – Správa nároků
 
 Pokud chcete snížit riziko zastaralého přístupu, měli byste povolit pravidelné kontroly uživatelů, kteří mají aktivní přiřazení k balíčku přístupu ve správě nároků ve službě Azure AD. Můžete povolit recenze, když vytvoříte nový balíček pro přístup nebo upravíte existující balíček pro přístup. Tento článek popisuje, jak povolit kontroly přístupu pro balíčky přístupu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete povolit recenze balíčků pro přístup, musíte splnit požadavky pro vytvoření balíčku přístupu:
 - Azure AD Premium P2

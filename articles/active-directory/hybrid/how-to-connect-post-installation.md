@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89657119"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a Správa Azure AD Connect
@@ -72,7 +72,7 @@ Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednot
 
 ![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Další úloha | Description |
+| Další úloha | Popis |
 | --- | --- |
 |**Nastavení ochrany osobních údajů**|Podívejte se, jaká data telemetrie se s Microsoftem sdílí.|
 |**Zobrazit aktuální konfiguraci**|Podívejte se na vaše aktuální řešení Azure AD Connect.  To zahrnuje obecná nastavení, synchronizované adresáře a nastavení synchronizace. |

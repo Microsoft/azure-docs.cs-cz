@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90054989"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Použití Snapshot Manager StorSimple ke správě katalogu záloh
@@ -56,7 +56,7 @@ Katalog záloh můžete zobrazit rozbalením uzlu **zálohovat katalog** v podok
 ## <a name="restore-a-volume"></a>Obnovení svazku
 K obnovení svazku ze zálohy použijte následující postup.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 Pokud jste to ještě neudělali, vytvořte svazek a skupinu svazků a pak svazek odstraňte. Ve výchozím nastavení StorSimple Snapshot Manager zálohuje svazek před tím, než umožní jeho odstranění. Tato preventivní opatření můžou zabránit ztrátě dat, pokud se svazek neúmyslně odstraní nebo pokud je potřeba obnovit data z jakéhokoli důvodu. 
 
 StorSimple Snapshot Manager zobrazí během vytváření předběžné opatrnosti následující zprávu.
@@ -112,7 +112,7 @@ Pomocí následujícího postupu můžete odstranit snímek ze zálohy katalogu.
 ## <a name="recover-a-file"></a>Obnovení souboru
 Pokud se soubor ze svazku omylem odstraní, můžete soubor obnovit tak, že nakopírujete snímek, který se předá odstraněním, pomocí snímku vytvoříte klon svazku a pak zkopírujete soubor z klonovaného svazku do původního svazku.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 Než začnete, ujistěte se, že máte aktuální zálohu skupiny svazků. Pak odstraňte soubor uložený na jednom ze svazků v této skupině svazků. Nakonec pomocí následujících kroků obnovte odstraněný soubor ze zálohy. 
 
 #### <a name="to-recover-a-deleted-file"></a>Obnovení odstraněné souboru
