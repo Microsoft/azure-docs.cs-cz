@@ -7,11 +7,11 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 125d4a02d06e2792f9a2a4e646c3788dcf223318
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612826"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgrade veřejné Load Balancer Azure
@@ -21,9 +21,6 @@ Existují dva fáze upgradu:
 
 1. Změňte metodu přidělování IP adres z dynamické na statickou.
 2. Spuštěním skriptu PowerShellu dokončete upgrade a migraci provozu.
-
-> [!IMPORTANT]
-> V tuto chvíli probíhá údržba skriptu. Informace o tom, jak upgradovat veřejné IP adresy ze základních SKU a standardní SKU, najdete [tady](../virtual-network/virtual-network-public-ip-address-upgrade.md) .
 
 ## <a name="upgrade-overview"></a>Přehled upgradu
 

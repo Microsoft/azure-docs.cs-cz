@@ -29,7 +29,7 @@ Organizace s místními nároky obvykle při zřizování zařízení spoléhaj�
 
 Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Tato zařízení jsou zařízení, která jsou připojená k vaší místní službě Active Directory a zaregistrovaná ve vašem Azure Active Directory.
 
-| Připojení k hybridní službě Azure AD | Popis |
+| Připojení k hybridní službě Azure AD | Description |
 | --- | --- |
 | **Definition** | Připojeno k místní službě AD a službě Azure AD, která vyžaduje účet organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro hybridní organizace se stávající místní infrastrukturou AD |

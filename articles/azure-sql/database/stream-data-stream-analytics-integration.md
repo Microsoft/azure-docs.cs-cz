@@ -12,10 +12,10 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 36a96a1927aeedb5f841083241d487e0c61d6813
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96454018"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Streamování dat do Azure SQL Database pomocí Integrace Azure Stream Analytics (Preview)
@@ -33,7 +33,7 @@ Uživatelé teď můžou ingestovat, zpracovávat, zobrazovat a analyzovat strea
 > [!IMPORTANT]
 > Azure Stream Analytics úloha může mít výstup do Azure SQL Database, spravované instance Azure SQL nebo Azure synapse Analytics. Další informace najdete v tématu [výstupy](../../stream-analytics/stream-analytics-define-outputs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto článku budete potřebovat následující:
 

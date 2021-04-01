@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 51e0fb2ffa7b573ecfeda163d9ad99597ff735a2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92109200"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operace systému souborů při Azure Data Lake Storage Gen1 pomocí REST API
@@ -29,7 +29,7 @@ ms.locfileid: "92109200"
 
 V tomto článku se dozvíte, jak používat rozhraní REST API WebHDFS a Data Lake Storage Gen1 rozhraní REST API k provádění operací systému souborů v Azure Data Lake Storage Gen1. Pokyny k provádění operací správy účtů na Data Lake Storage Gen1 pomocí REST API najdete v tématu [operace správy účtů na data Lake Storage Gen1 pomocí REST API](data-lake-store-get-started-rest-api.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).

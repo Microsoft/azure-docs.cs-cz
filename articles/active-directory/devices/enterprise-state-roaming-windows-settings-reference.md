@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252963"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
@@ -26,12 +26,12 @@ Následuje seznam nastavení, která budou v systému Windows 10 roamingovaná n
 
 V následující tabulce najdete souhrn typů zařízení a účtů, které jsou podporované architekturou synchronizace, zálohování a obnovení ve Windows 10.
 
-| Typ účtu a operace | Plocha | Mobilní |
+| Typ účtu a operace | Desktop | Mobilní |
 | --- | --- | --- |
-| Azure Active Directory: synchronizace |Yes |No |
-| Azure Active Directory: zálohování a obnovení |No |No |
-| Účet Microsoft: synchronizace |Yes |Yes |
-| Účet Microsoft: zálohování a obnovení |No |Yes |
+| Azure Active Directory: synchronizace |Ano |Ne |
+| Azure Active Directory: zálohování a obnovení |Ne |Ne |
+| Účet Microsoft: synchronizace |Ano |Ano |
+| Účet Microsoft: zálohování a obnovení |Ne |Ano |
 
 ## <a name="what-is-backup"></a>Co je zálohování?
 
@@ -69,13 +69,13 @@ V následující tabulce se ve sloupci skupina nastavení zobrazí další polo�
 Interní položky ve sloupci skupina nastavení odkazují na nastavení a aplikace, které se můžou zakázat jenom v synchronizaci v rámci samotné aplikace, nebo vypnutím synchronizace pro celé zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení Zásady skupiny.
 Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do skupiny.
 
-| Nastavení | Plocha | Mobilní | Group (Skupina) |
+| Nastavení | Desktop | Mobilní | Group (Skupina) |
 | --- | --- | --- | --- |
 | **Účty**: obrázek účtu |synchronizace |× |Motiv |
 | **Účty**: Další nastavení účtu |× |× | |
 | **Rozšířené mobilní širokopásmové** připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |× |× |Hesla |
 | **Data aplikací**: jednotlivé aplikace můžou synchronizovat data |synchronizovat zálohu |synchronizovat zálohu |internal |
-| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Jiné |
+| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Ostatní |
 | **Bluetooth**: všechna nastavení Bluetooth |× |× | |
 | **Příkazový řádek**: výchozí nastavení pro příkazový řádek |synchronizace |× |internal |
 | **Přihlašovací údaje**: schránka na přihlašovací údaje |synchronizace |synchronizace |heslo |

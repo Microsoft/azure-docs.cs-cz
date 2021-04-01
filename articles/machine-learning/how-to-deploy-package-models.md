@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
 ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93312640"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Jak zabalit registrovaný model pomocí Docker
 
 Tento článek ukazuje, jak zabalit registrovaný Azure Machine Learning model pomocí Docker.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že jste už v pracovním prostoru machine learningu provedli školení a zaregistrovali model. Pokud se chcete dozvědět, jak naučit a registrovat model scikit-učení, [postupujte podle tohoto kurzu](how-to-train-scikit-learn.md).
 

@@ -61,7 +61,7 @@ Postupujte podle těchto pokynů, pokud jste připraveni odebrat modul Power and
    
      **Obrázek 1** Přední panel zařízení  
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Tlačítko pro ztlumení |
    | 2 |Výkon systému |
@@ -74,7 +74,7 @@ Postupujte podle těchto pokynů, pokud jste připraveni odebrat modul Power and
    
      **Obrázek 2** Zpět PCM s indikátorem LED diod
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Výpadek napájení elektrické sítě |
    | 2 |Selhání ventilátoru |
@@ -88,7 +88,7 @@ Postupujte podle těchto pokynů, pokud jste připraveni odebrat modul Power and
    
      **Obrázek 3** Vrácení zařízení s modulem plug-in 
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |

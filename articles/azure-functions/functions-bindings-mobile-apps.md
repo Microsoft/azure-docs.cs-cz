@@ -135,7 +135,7 @@ Informace o vlastnostech atributů, které můžete konfigurovat, najdete v [ná
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `MobileTable` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 | **textový**| Není k dispozici | Musí být nastavené na "mobilní".|
 | **směr**| Není k dispozici |Musí být nastavené na "in"|
@@ -293,7 +293,7 @@ public static object Run(
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `MobileTable` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 | **textový**| Není k dispozici | Musí být nastavené na "mobilní".|
 | **směr**| Není k dispozici |Musí být nastavené na out.|

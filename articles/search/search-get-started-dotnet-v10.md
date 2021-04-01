@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94701836"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí starší verze Microsoft. Azure. Search Client Library v10 za účelem
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak vytvořit aplikaci. Můžete si také [Stáhnout
 > [!NOTE]
 > Ukázkový kód v tomto článku používá pro jednoduchost synchronní metody Azure Kognitivní hledání verze 10 .NET SDK. U produkčních scénářů ale doporučujeme používat asynchronní metody ve vašich vlastních aplikacích, abyste je zachovali a mohli reagovat. Můžete například použít `CreateAsync` a `DeleteAsync` místo `Create` a `Delete` .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
