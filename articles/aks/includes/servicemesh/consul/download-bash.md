@@ -4,10 +4,10 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 4e35f8cbf6c32bdfd100b651ab10e3248f8b8b2d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86244123"
 ---
 V prostředí založeném na bash systému Linux, [podsystém Windows pro Linux][install-wsl] nebo MacOS, použijte `curl` ke stažení verze grafu Consul Helm následujícím způsobem:

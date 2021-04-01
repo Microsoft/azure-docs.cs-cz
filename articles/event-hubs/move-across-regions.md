@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Eve
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96019918"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
@@ -15,7 +15,7 @@ V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro
  
 Pokud máte v rámci skupiny prostředků Azure, která obsahuje obor názvů Event Hubs, další prostředky, možná budete chtít exportovat šablonu na úrovni skupiny prostředků, aby se všechny související prostředky mohly přesunout do nové oblasti v jednom kroku. Kroky v tomto článku ukazují, jak exportovat **obor názvů** do šablony. Postup pro export **skupiny prostředků** do šablony je podobný. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 - Pokud jste povolili **funkci zachycení** pro centra událostí v oboru názvů, přesuňte účty [Azure Storage nebo Azure Data Lake Store gen 2](../storage/common/storage-account-move.md) nebo [Azure Data Lake Store 1.1](../data-lake-store/data-lake-store-migration-cross-region.md) . teprve potom přesuňte obor názvů Event Hubs. Můžete také přesunout skupinu prostředků, která obsahuje obory názvů úložiště i Event Hubs do jiné oblasti, a to pomocí následujících kroků, které jsou podobné těm, které jsou popsané v tomto článku. 

@@ -15,10 +15,10 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369136"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI
@@ -32,7 +32,7 @@ Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním 
 
 Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytvoření vlastních rolí budete potřebovat:
 

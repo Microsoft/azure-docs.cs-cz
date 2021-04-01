@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359451"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
@@ -27,7 +27,7 @@ ms.locfileid: "97359451"
 Tento článek popisuje kroky potřebné k vytvoření clusteru nezávislého na doméně služby Active Directory se skupinou dostupnosti Always On. Tato funkce se také označuje jako cluster pracovní skupiny. Tento článek se zaměřuje na kroky, které jsou důležité pro přípravu a konfiguraci pracovní skupiny a skupiny dostupnosti, a lesky na kroky, které jsou pokryté v jiných článcích, jako je vytvoření clusteru nebo nasazení skupiny dostupnosti. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci skupiny dostupnosti pracovních skupin budete potřebovat následující:
 - Alespoň dva virtuální počítače se systémem Windows Server 2016 (nebo vyšší), které používají SQL Server 2016 (nebo vyšší), nasazené do stejné skupiny dostupnosti nebo jiné zóny dostupnosti pomocí statických IP adres. 

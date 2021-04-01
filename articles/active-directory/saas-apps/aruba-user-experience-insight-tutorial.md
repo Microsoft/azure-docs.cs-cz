@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 144e121b140e47ebda62530354943d5d27cce094
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aruba-user-experience-insight"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s uživatelským prostředím Aruba – přehled
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat přehled o uživatelském prostředí 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Aruba uživatelského prostředí pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

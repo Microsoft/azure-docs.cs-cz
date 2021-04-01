@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359859"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB s využitím konektoru Power BI
@@ -27,7 +27,7 @@ Tento článek popisuje kroky potřebné k propojení účtu služby Azure Cosmo
 > [!NOTE]
 > Připojení k Azure Cosmos DB pomocí konektoru Power BI se v současné době podporuje jenom pro Azure Cosmos DB účty rozhraní SQL API a Gremlin API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než budete postupovat podle pokynů v tomto Power BI kurzu, ujistěte se, že máte přístup k následujícím prostředkům:
 
 * [Stáhněte si nejnovější verzi Power BI Desktop](https://powerbi.microsoft.com/desktop).

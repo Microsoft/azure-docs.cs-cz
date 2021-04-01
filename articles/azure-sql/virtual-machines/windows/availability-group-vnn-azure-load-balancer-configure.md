@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces AG VNN
+title: Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces VNN skupiny dostupnosti
 description: Naučte se konfigurovat Azure Load Balancer pro směrování provozu do naslouchacího procesu VNN (Virtual Network Name) pro vaši skupinu dostupnosti s SQL Server na virtuálních počítačích Azure pro zajištění vysoké dostupnosti a zotavení po havárii (HADR).
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,13 +16,13 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359876"
 ---
-# <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces AG VNN
+# <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces VNN skupiny dostupnosti
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 V Azure Virtual Machines clustery pomocí nástroje pro vyrovnávání zatížení uchovávají IP adresy, které se musí nacházet na jednom uzlu clusteru. V tomto řešení má nástroj pro vyrovnávání zatížení uloženou IP adresu pro naslouchací proces virtuální sítě (VNN) pro skupinu dostupnosti Always On (AG). 
@@ -33,7 +33,7 @@ Pro použití alternativní možnosti připojení pro zákazníky, kteří jsou 
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 

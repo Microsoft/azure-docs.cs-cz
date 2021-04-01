@@ -16,7 +16,7 @@ ms.locfileid: "86245581"
 Nakonfigurujte nastavení místní pro tuto instanci sfctl.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Popis|
+|Podskupina|Description|
 | --- | --- |
 | [telemetrie](service-fabric-sfctl-settings-telemetry.md) | Nakonfigurujte nastavení telemetrie jako místní pro tuto instanci sfctl. |
 

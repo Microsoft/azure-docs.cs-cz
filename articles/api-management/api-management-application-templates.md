@@ -80,7 +80,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  
 |`Applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace viditelné pro aktuálního uživatele.|  

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 12/11/2020
 ms.author: rolyon
 ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369222"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Vytvoření nebo aktualizace vlastních rolí pomocí portálu Azure Portal
 
 Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak pomocí Azure Portal vytvořit vlastní role.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytvoření vlastních rolí budete potřebovat:
 

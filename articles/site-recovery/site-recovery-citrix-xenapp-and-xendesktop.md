@@ -56,9 +56,9 @@ Pro účely tohoto článku se k nastavení zotavení po havárii použila nasaz
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Hyper-V** | Není v oboru | Ano
-**VMware** | Není v oboru | Ano
-**Fyzický server** | Není v oboru | Ano
+**Hyper-V** | Není v oboru | Yes
+**VMware** | Není v oboru | Yes
+**Fyzický server** | Není v oboru | Yes
 
 ### <a name="versions"></a>Verze
 Zákazníci můžou nasazovat komponenty XenApp jako Virtual Machines spuštěné v Hyper-V nebo VMware nebo jako fyzické servery. Azure Site Recovery může chránit jak fyzické, tak i virtuální nasazení v Azure.

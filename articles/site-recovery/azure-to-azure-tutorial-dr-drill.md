@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: c7cd1898f27f3b7255009efb40f6bcc8938dbf9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395574"
 ---
 # <a name="tutorial-run-a-disaster-recovery-drill-for-azure-vms"></a>Kurz: spuštění postupu zotavení po havárii pro virtuální počítače Azure
@@ -26,7 +26,7 @@ Naučte se, jak spustit postup zotavení po havárii do jiné oblasti Azure, pro
 > [!NOTE]
 > V tomto kurzu najdete minimální kroky pro spuštění postupu zotavení po havárii. Pokud chcete spustit podrobnou analýzu s úplným testováním infrastruktury, přečtěte si informace o [sítích](azure-to-azure-about-networking.md)virtuálních počítačů Azure, [automatizaci](azure-to-azure-powershell.md)a [řešení potíží](azure-to-azure-troubleshoot-errors.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento kurz, musíte povolit zotavení po havárii pro jeden nebo několik virtuálních počítačů Azure. Provedete to [provedením prvního kurzu](azure-to-azure-tutorial-enable-replication.md) v této řadě.
 

@@ -254,7 +254,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Nastavit interpoly  
  Interpolace umožňují nastavit tvar sklonu, který se používá pro bodování. Vzhledem k tomu, že je bodování vysoké, je sklon vždy nižší, ale interpolace určuje křivku sklonu dolů. Můžete použít následující interpolace:  
 
-| Interpolace | Popis |  
+| Interpolace | Description |  
 |-|-|  
 |`linear`|U položek, které jsou v rozsahu Max a min, se zvýšení použité pro položku provede v nepřetržitém snížení množství. Lineární je výchozí interpolací pro profil vyhodnocování.|  
 |`constant`|Pro položky, které jsou v rozsahu od začátku do konce, se pro výsledky řazení použije konstantní zvýšení.|  

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96017436"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
@@ -20,7 +20,7 @@ Místní konfigurační server nastavíte při použití služby [Azure Site Rec
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tabulka shrnuje předpoklady pro nasazení místního počítače konfiguračního serveru.
 
@@ -71,7 +71,7 @@ Nejnovější verzi instalačního souboru konfiguračního serveru najdete na p
      ![Brána firewall](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. Na stránce **Kontrola předpokladů** instalační program provede kontrolu a ověří, že lze spustit instalaci. Pokud se zobrazí varování u položky **Kontrola synchronizace globálního času**, ověřte, že čas na systémových hodinách (nastavení **Datum a čas**) je stejný jako časové pásmo.
 
-    ![Předpoklady](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Požadavky](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. Na stránce **Konfigurace MySQL** vytvořte přihlašovací údaje pro přihlašování k nainstalované instanci serveru MySQL.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)

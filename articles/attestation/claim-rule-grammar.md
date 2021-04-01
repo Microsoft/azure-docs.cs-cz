@@ -90,7 +90,7 @@ Vyhodnocení seznamu podmínek:
 
 Sada akcí, které jsou povoleny v zásadě, je popsána níže.
 
-| Operace akce | Popis | Oddíly zásad, na které se vztahují |
+| Operace akce | Description | Oddíly zásad, na které se vztahují |
 |--|--|--|
 | Povolit () | Příchozí sadu deklarací lze použít k výpočtu **issuancerules**. Nepřijímá žádnou deklaraci identity jako parametr. | **autorizačních pravidel** |
 | Deny () | Příchozí sada deklarací by se neměla používat k výpočtu **issuancerules** , že nepřijímá žádnou deklaraci identity jako parametr. | **autorizačních pravidel** |

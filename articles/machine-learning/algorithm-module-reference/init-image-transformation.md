@@ -67,7 +67,7 @@ Po dokončení transformace můžete ve výstupu modulu [transformace obrázku p
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name                    | Rozsah   | Typ    | Výchozí | Popis                              |
+| Name                    | Rozsah   | Typ    | Výchozí | Description                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Změna velikosti                  | Všechny     | Logická hodnota | Ano    | Změnit velikost vstupního PIL obrázku na danou velikost |
 | Velikost                    | >= 1     | Integer | 256     | Zadejte požadovanou velikost výstupu.          |
@@ -93,7 +93,7 @@ Po dokončení transformace můžete ve výstupu modulu [transformace obrázku p
 
 ###  <a name="output"></a>Výstup  
 
-| Název                        | Typ                    | Popis                              |
+| Název                        | Typ                    | Description                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Transformace výstupního obrázku | TransformationDirectory | Transformace výstupního obrázku, kterou lze připojit k **použití modulu transformace obrázku** . |
 
