@@ -31,7 +31,7 @@ Ano. Dříve bylo možné používat pouze kořenové certifikáty podepsané sv
 
 ### <a name="can-i-use-certificates-from-azure-key-vault"></a>Můžu použít certifikáty z Azure Key Vault?
 
-Ne.
+No.
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>Jaké nástroje se dají použít k vytvoření certifikátů?
 

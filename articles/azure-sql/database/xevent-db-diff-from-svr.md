@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96501205"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Rozšířené události v Azure SQL Database 
@@ -32,7 +32,7 @@ Další informace o rozšířených událostech jsou k dispozici na adrese:
 - [Rychlé zprovoznění: rozšířené události v SQL Server](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 - [Rozšířené události](/sql/relational-databases/extended-events/extended-events)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto tématu se předpokládá, že už máte znalosti:
 

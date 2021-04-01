@@ -8,17 +8,17 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 9df10760164dcd0d207663c14107f72c46b76d25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96501239"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Nasazení modelu ze sady Visual Studio
 
 Jakmile ve svém předplatném Azure vytvoříte server, můžete na něj nasadit databázi tabulkového modelu. Můžete použít Visual Studio s projekty Analysis Services k sestavení a nasazení projektu tabelárního modelu, na kterém pracujete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Na začátek budete potřebovat:
 
@@ -53,7 +53,7 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 A je to!
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud nasazení selhalo při nasazování metadat, je pravděpodobně proto, že se Visual Studio nemůže připojit k vašemu serveru. Ujistěte se, že se můžete připojit k serveru pomocí SQL Server Management Studio (SSMS). Potom zkontrolujte, jestli je vlastnost Server nasazení projektu správná.
 

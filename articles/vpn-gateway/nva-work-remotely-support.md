@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
 ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96499675"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Vzdálená práce: požadavky na síťové virtuální zařízení (síťové virtuální zařízení) pro vzdálenou práci
@@ -35,7 +35,7 @@ Všichni hlavní dodavatelé síťové virtuální zařízení v Azure Marketpla
 - **Počet instancí** – Pokud očekáváte, že budete mít velký počet uživatelů a připojení, dojde k omezením toho, co může dosáhnout škálování velikosti instancí síťové virtuální zařízení.  Zvažte nasazení více instancí virtuálních počítačů.
 - **IPSec VPN vs SSL VPN** – v obecných implementacích IPSec VPN je lepší než implementace SSL VPN.  
 - **Licencování** – zajistěte, aby licence k softwaru, které jste zakoupili pro řešení síťové virtuální zařízení, pokryly prudký nárůst, ke kterému může docházet během epidemie COVID-19.  Řada multilicenčních programů síťové virtuální zařízení omezuje počet připojení nebo šířku pásma, na které je řešení schopné.
-- **Akcelerované síťové služby** – uvažujte o řešení síťové virtuální zařízení, které podporuje urychlené síťové služby.  Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z cesty k datům, snižuje latenci, kolísání a využití procesoru pro použití s nejnáročnějšími síťovými úlohami na podporovaných typech virtuálních počítačů. Akcelerované sítě se podporují na většině účelových a výpočetních instancí s optimálním využitím dvou nebo více vCPU.
+- **Akcelerované síťové služby** – uvažujte o řešení síťové virtuální zařízení, které podporuje urychlené síťové služby.  Akcelerované síťové služby povolují na virtuálním počítači virtualizaci rozhraní SR-IOV (Single-Root I/O Virtualization), která výrazně zvyšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z cesty k datům, snižuje latenci, kolísání a využití procesoru pro použití s nejnáročnějšími síťovými úlohami na podporovaných typech virtuálních počítačů. Akcelerované sítě se podporují na většině účelových a výpočetních instancí s optimálním využitím dvou nebo více vCPU.
 
 ## <a name="monitoring-resources"></a>Monitorování prostředků
 

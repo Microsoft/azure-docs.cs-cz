@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: chlound
 ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96491243"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
@@ -23,7 +23,7 @@ Příklad v tomto článku používá [modul SQL SQLServer](/powershell/module/s
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
 > Následující příklad předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být do pravidla brány firewall zahrnutá veřejná IP adresa iniciátoru žádosti.

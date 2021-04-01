@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/07/2021
 ms.author: jeedes
 ms.openlocfilehash: 402dede34324d4837b3a18ad80df289ad903c6de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735103"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ephoto-dam"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s přehradou EPHOTO
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat EPHOTO přehradu pomocí Azure Active 
 * Umožněte uživatelům, aby se automaticky přihlásili k přehradám EPHOTO pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92018691"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
@@ -27,7 +27,7 @@ ms.locfileid: "92018691"
 
 Další informace o zabezpečení uživatelů ve službě Azure Analysis Services najdete v článku o [ověřování a oprávněních uživatelů](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ve vašem předplatném je služba Azure Active Directory.
 - Ve vašem předplatném je vytvořený [server Azure Analysis Services](../analysis-services-create-server.md).
