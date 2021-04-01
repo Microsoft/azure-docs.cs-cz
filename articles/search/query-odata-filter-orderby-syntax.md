@@ -70,7 +70,7 @@ Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsah
 
 Příklady cest polí jsou uvedené v následující tabulce:
 
-| Cesta k poli | Popis |
+| Cesta k poli | Description |
 | --- | --- |
 | `HotelName` | Odkazuje na pole nejvyšší úrovně indexu. |
 | `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu. |

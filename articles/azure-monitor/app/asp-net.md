@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97028984"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurace Application Insights pro web ASP.NET
 
 Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesílala telemetrická data do služby [Azure Application Insights](./app-insights-overview.md). Funguje pro aplikace ASP.NET, které jsou hostované ve vlastních serverech IIS místně nebo v cloudu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalujte si nejnovější verzi sady [Visual Studio 2019 pro Windows](https://www.visualstudio.com/downloads/) s následujícími úlohami:
@@ -350,7 +350,7 @@ Přestože je možné ručně přidat fragment kódu do záhlaví každé strán
 
 Chcete-li přidat monitorování na straně klienta, otevřete `_Layout.cshtml` soubor a postupujte podle [pokynů pro instalaci na](javascript.md#snippet-based-setup) straně klienta JavaScript v konfiguraci sady JavaScript na straně klienta.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 V aktuální verzi sady Visual Studio 2019 je známý problém, který při ukládání klíče instrumentace v tajnosti uživatele je u aplikací založených na .NET Framework poškozen a klíč, který je nakonec nutné pevně zakódované do applicationinsights.config souboru, aby se tato chyba mohla vyřešit. Tento článek je navržený tak, aby se předešlo tomuto problému zcela bez použití uživatelských tajných klíčů.  
 

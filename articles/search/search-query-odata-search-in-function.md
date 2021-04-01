@@ -74,7 +74,7 @@ Existují dvě přetížení `search.in` funkce:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Typ | Popis |
+| Název parametru | Typ | Description |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Odkaz na pole řetězce (nebo proměnná rozsahu v poli kolekce řetězců v případě, kdy `search.in` se používá uvnitř `any` `all` výrazu or). |
 | `valueList` | `Edm.String` | Řetězec obsahující oddělený seznam hodnot, který se má shodovat s `variable` parametrem. Pokud `delimiters` parametr není zadán, výchozí oddělovače jsou mezera a čárka. |

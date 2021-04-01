@@ -20,7 +20,7 @@ ms.locfileid: "88962702"
 
 Následující tabulka obsahuje odkazy na skripty terraformu.
 
-| Skript | Popis |
+| Skript | Description |
 |-|-|
 |**Vytvoření aplikace**||
 | [Vytvářejte dvě aplikace a bezpečně se připojte pomocí privátního koncového bodu a integrace virtuální sítě.](./scripts/terraform-secure-backend-frontend.md )| Vytvoří dvě aplikace App Service a spojí aplikace s privátním koncovým bodem a integrací virtuální sítě. |

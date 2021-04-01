@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-| Název       | Typ                       | Popis                       |
+| Název       | Typ                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Vlastnosti | AzurefilesharebackupReques | Vlastnosti BackupRequestResource |
 

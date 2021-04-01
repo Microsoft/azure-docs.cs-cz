@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89145331"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Přesunout Azure Event Grid vlastní témata do jiné oblasti
@@ -25,7 +25,7 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 - **Ověřte nasazení**. Ověřte, zda je vlastní téma vytvořeno v cílové oblasti. 
 - Chcete-li **Dokončit přesunutí**, odstraňte vlastní téma ze zdrojové oblasti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Dokončete [rychlé zprovoznění: směrování vlastních událostí do webového koncového bodu](custom-event-quickstart-portal.md) ve zdrojové oblasti. Proveďte tento krok, abyste mohli testovat kroky v tomto článku. 
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
