@@ -7,10 +7,10 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: 916d799ba08f46cb86ee2e22c4af7fc1b92b385f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386148"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
@@ -19,7 +19,7 @@ Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integrat
 
 Pomocí této funkce můžete spouštět balíčky SSIS uložené v SSISDB ve spravované instanci SQL, systému souborů, jako jsou soubory Azure, nebo v úložišti balíčků prostředí Azure-SSIS Integration runtime.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít tuto funkci, [Stáhněte](/sql/ssms/download-sql-server-management-studio-ssms) a nainstalujte nejnovější SQL Server Management Studio (SSMS). Podrobnosti o podpoře verze, jak je uvedeno níže:
 

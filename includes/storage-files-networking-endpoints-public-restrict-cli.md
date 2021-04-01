@@ -9,10 +9,10 @@ ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98673839"
 ---
 Abychom omezili přístup k veřejnému koncovému bodu účtu úložiště na konkrétní virtuální sítě pomocí koncových bodů služby, musíme nejdřív shromáždit informace o účtu úložiště a virtuální síti. `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` K získání těchto informací vyplňte,,, a `<subnet-name>` .

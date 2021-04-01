@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84699103"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8100
@@ -153,7 +153,7 @@ Dalším krokem je připojení zařízení k napájení, síti a sériovému př
 ## <a name="cable-your-storsimple-8100-device"></a>Zapojení kabeláže zařízení StorSimple 8100
 Následující postupy vysvětlují, jak můžete zařízení StorSimple 8100 připojit k napájení, síťovému a sériovému připojení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Než začnete zapojovat kabeláž zařízení, budete potřebovat následující:
 
 * Zařízení úložiště, kompletně nezabalená a připojená do racku.

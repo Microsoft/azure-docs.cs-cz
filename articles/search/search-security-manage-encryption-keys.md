@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
 ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98119284"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
@@ -41,7 +41,7 @@ Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsa
 
 Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, pak se šifrování spravovaného klíče omezí jenom na datový disk, a to s výjimkou dočasných disků, které služba používá.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto scénáři se používají následující nástroje a služby.
 

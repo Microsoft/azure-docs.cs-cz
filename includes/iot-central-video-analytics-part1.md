@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2f3e4bf640b8da31a7fa4d818b94b0372d3026b8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96763401"
 ---
 Ukázková aplikace zahrnuje dvě simulovaná zařízení a jednu IoT Edge bránu. V následujících kurzech se dozvíte dva přístupy k experimentování s funkcemi brány a jejich pochopení:
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření šablony zařízení pro zařízení IoT Edge brány
 > * Přidání zařízení brány do aplikace IoT Central
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této série kurzů potřebujete:
 

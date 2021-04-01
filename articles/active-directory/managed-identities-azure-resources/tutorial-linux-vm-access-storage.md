@@ -16,10 +16,10 @@ ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98131266"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuální počítači s Linuxem pro přístup k Azure Storage 
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Udělení přístupu spravované identitě virtuálního počítače s Linuxem ke kontejneru Azure Storage
 > * Získání přístupového tokenu a jeho použití k volání Azure Storage
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
