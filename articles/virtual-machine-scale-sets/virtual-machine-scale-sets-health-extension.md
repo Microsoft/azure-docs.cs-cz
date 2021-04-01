@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84783040"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití rozšíření Stav aplikace se škálovacími sadami virtuálních počítačů
@@ -21,7 +21,7 @@ Monitorování stavu vaší aplikace je důležitým signálem pro správu a upg
 
 Tento článek popisuje, jak můžete pomocí rozšíření pro stav aplikace monitorovat stav aplikací nasazených ve službě Virtual Machine Scale Sets.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že máte zkušenosti s nástrojem:
 -   [Rozšíření](../virtual-machines/extensions/overview.md) virtuálních počítačů Azure
 -   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) virtuálních počítačů Scale Sets

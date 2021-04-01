@@ -9,10 +9,10 @@ ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 35e080e0fe45c18ad6a6d5392e0c78b116853c3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98027464"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
@@ -53,7 +53,7 @@ V předchozím diagramu je úplně vlevo vaše podniková síť. V závislosti n
 
 Vzhledem ke složitosti těchto tří různých síťových prostředí vysoké úrovně. Je často optimální začít na okrajích a zkusit Ukázat, kde je výkon dobrý, a kde se snižuje. Tento přístup může přispět k identifikaci problému s doménou směrování těchto tří. Pak můžete své řešení potíží zaměřit na konkrétní prostředí.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 Většinu problémů se sítí se dá analyzovat a izolovat pomocí základních nástrojů, jako je třeba příkazy traceroute. Je zřídka nutné jako analýzu paketů použít nástroje jako Wireshark. 
 
 Pro pomoc s řešením potíží se vyvinula sada Azure Connectivity Toolkit (AzureCT), která do snadného balíčku tyto nástroje umísťuje. Pro testování výkonu můžou nástroje, jako je iPerf a PSPing, poskytnout informace o vaší síti. iPerf je běžně používaný nástroj pro základní testy funkční výkonnosti a je poměrně snadno použitelný. PSPing je nástroj pro použití testu, který vyvinula společnost Sysinternals. PSPing může k přístupu ke vzdálenému hostiteli použít příkazy protokolu ICMP i TCP. Oba tyto nástroje jsou odlehčené a jsou "nainstalují" jednoduše kopírování soubory do adresáře na hostiteli.
@@ -99,7 +99,7 @@ Existují tři základní kroky pro použití této sady nástrojů pro testová
 
     Podrobné výsledky testů iPerf a PSPing jsou v jednotlivých textových souborech v adresáři nástrojů AzureCT na adrese "C:\ACTTools.".
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud test výkonnosti neposkytuje očekávané výsledky, zjistíte, proč by měl být progresivní postup s podrobnými kroky. S ohledem na počet komponent v cestě bude systematický přístup poskytovat rychlejší cestu k řešení, než je možné proejít. Pomocí systematického řešení můžete zabránit v provádění zbytečných testů vícekrát.
 
 >[!NOTE]

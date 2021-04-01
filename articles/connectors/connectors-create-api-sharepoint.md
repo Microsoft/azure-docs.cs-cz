@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: c72330792e508361830c1bf391f85eefe78bdd1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87283975"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Monitorování a správa prostředků SharePointu pomocí Azure Logic Apps
@@ -33,7 +33,7 @@ Pomocí Azure Logic Apps a SharePointového konektoru můžete vytvářet automa
 Můžete použít triggery, které získávají odpovědi ze SharePointu a zpřístupnit výstup ostatním akcím. Akce v aplikaci Logic Apps můžete použít k provádění úloh v SharePointu. Můžete také použít jiné akce výstup z akcí SharePointu. Například pokud pravidelně načítáte soubory ze SharePointu, můžete odesílat zprávy do svého týmu pomocí konektoru časové rezervy.
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 

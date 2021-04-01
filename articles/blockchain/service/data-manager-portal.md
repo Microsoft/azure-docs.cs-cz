@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85200677"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
@@ -20,7 +20,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Vytvoření instance blockchain Data Manager pro uzel transakce služby Azure blockchain
 * Přidání aplikací blockchain
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md). Služba Azure blockchain Service úrovně *Standard* se doporučuje při použití blockchain data Manager.
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)

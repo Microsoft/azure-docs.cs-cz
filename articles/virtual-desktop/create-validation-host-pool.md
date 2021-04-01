@@ -7,10 +7,10 @@ ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97563241"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služby
@@ -30,7 +30,7 @@ Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagn
 >[!IMPORTANT]
 >Virtuální plocha Windows s integrací správy prostředků Azure v současné době má potíže při povolování a zakazování ověřovacích prostředí. Tento článek aktualizujeme, až problém vyřešíme.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
 
