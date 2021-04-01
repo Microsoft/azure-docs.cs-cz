@@ -123,8 +123,8 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Účet úložiště** | Ano | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
+   | **Název připojení** | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | **Účet úložiště** | Yes | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
    ||||
 
    Například:

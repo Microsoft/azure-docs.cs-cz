@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81730753"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu AMQP
@@ -68,7 +68,7 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Další informace o výměně zpráv z cloudu na zařízení mezi službou a centrem IoT a mezi zařízením a službou IoT Hub najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](iot-hub-devguide-messages-c2d.md). Klient služby používá dva odkazy k posílání zpráv a přijímání zpětné vazby pro dříve odeslané zprávy ze zařízení, jak je popsáno v následující tabulce:
 
-| Vytvořil(a) | Typ odkazu | Cesta odkazu | Description |
+| Vytvořil(a) | Typ odkazu | Cesta odkazu | Popis |
 |------------|-----------|-----------|-------------|
 | Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou `To` vlastnost nastavenou na cestu k přijímači cílového zařízení `/devices/<deviceID>/messages/devicebound` . |
 | Služba | Odkaz na přijímače | `/messages/serviceBound/feedback` | Zprávy o dokončení, odmítnutí a zrušení zpětné vazby, které pocházejí ze zařízení přijatých prostřednictvím tohoto odkazu, se službou. Další informace o zprávách zpětné vazby najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](./iot-hub-devguide-messages-c2d.md#message-feedback). |
@@ -262,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 Následující cesty odkazů jsou podporovány jako operace zařízení:
 
-| Vytvořil(a) | Typ odkazu | Cesta odkazu | Description |
+| Vytvořil(a) | Typ odkazu | Cesta odkazu | Popis |
 |------------|-----------|-----------|-------------|
 | Zařízení | Odkaz na přijímače | `/devices/<deviceID>/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tomto odkazu přijímají na základě každého cílového zařízení. |
 | Zařízení | Odkaz odesílatele | `/devices/<deviceID>/messages/events` | Zprávy typu zařízení-Cloud, které jsou odesílány ze zařízení, se odesílají prostřednictvím tohoto odkazu. |

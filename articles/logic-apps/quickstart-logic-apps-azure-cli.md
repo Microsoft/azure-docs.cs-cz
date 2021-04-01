@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
 ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97033370"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomoc
 
 Pokud s Logic Apps začínáte, můžete se také seznámit s tím, jak vytvořit své první aplikace logiky [prostřednictvím Azure Portal](quickstart-create-first-logic-app-workflow.md), [v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)a [v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nainstalované na místním počítači.

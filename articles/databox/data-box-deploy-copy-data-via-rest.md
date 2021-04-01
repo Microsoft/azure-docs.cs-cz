@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94337589"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Kurz: použití rozhraní REST API ke kopírování dat do Azure Data Boxho úložiště objektů BLOB  
@@ -239,7 +239,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Připojení k Data Box BLOB Storage přes *http* nebo *https*
 > * Kopírování dat do Data Boxu
 

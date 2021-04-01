@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86524850"
 ---
 # <a name="move-an-app-service-resource-to-another-region"></a>Přesunutí prostředku App Service do jiné oblasti
@@ -19,7 +19,7 @@ Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi o
 
 Pro snazší kopírování vaší aplikace můžete [naklonovat jednotlivé App Service aplikace](app-service-web-app-cloning.md) do plánu App Service v jiné oblasti, ale mají [omezení](app-service-web-app-cloning.md#current-restrictions), zejména v případě, že nepodporují aplikace pro Linux.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že je aplikace App Service v oblasti Azure, ze které chcete přejít.
 - Ujistěte se, že cílová oblast podporuje App Service a všechny související služby, jejichž prostředky chcete přesunout.

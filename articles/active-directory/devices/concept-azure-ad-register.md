@@ -22,7 +22,7 @@ ms.locfileid: "91256434"
 
 Cílem zařízení registrovaných v Azure AD je poskytnout vašim uživatelům podporu pro scénáře Přineste si vlastní zařízení (BYOD) nebo mobilní zařízení. V těchto scénářích může uživatel získat přístup k prostředkům spravovaným Azure Active Directory vaší organizace pomocí osobního zařízení.
 
-| Registrace Azure AD | Popis |
+| Registrace Azure AD | Description |
 | --- | --- |
 | **Definition** | Registrováno ve službě Azure AD bez vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Platí pro všechny uživatele s následujícími kritérii: |

@@ -4,10 +4,10 @@ description: Tento článek poskytuje omezení a kvóty pro Azure Event Hubs. Na
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: f07176d01dd2444f3def93d4295ef898cca61561
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86512380"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Kvóty a omezení služby Azure Event Hubs

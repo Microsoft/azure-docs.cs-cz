@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91774456"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Převzetí služeb při selhání na StorSimple Cloud Appliance
@@ -31,7 +31,7 @@ Další informace o převzetí služeb při selhání zařízení a způsobu jeh
 
 Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na jiné fyzické zařízení, přečtěte si [převzetí služeb při selhání na fyzické zařízení StorSimple](storsimple-8000-device-failover-physical-device.md). Pokud chcete převzít služby zařízení při selhání, převzetí [služeb při selhání na stejné fyzické zařízení StorSimple](storsimple-8000-device-failover-same-device.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 

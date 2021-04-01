@@ -50,7 +50,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name       | Rozsah | Typ    | Výchozí           | Popis                              |
+| Name       | Rozsah | Typ    | Výchozí           | Description                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Název modelu | Všechny   | Režim    | resnext101 \_ 32x8d | Název určité struktury ResNet       |
 | Předvlakované | Všechny   | Logická hodnota | Ano              | Jestli se má používat model předučený na ImageNet |
@@ -58,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="output"></a>Výstup  
 
-| Název            | Typ                    | Popis                              |
+| Název            | Typ                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model ResNet, který se dá připojit ke Pytorch modelu výuky. |
 
