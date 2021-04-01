@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit sdílenou složku v testovacím prostřed
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87282241"
 ---
 # <a name="test-your-app-in-azure"></a>Testování aplikace v Azure 
@@ -15,7 +15,7 @@ Tento článek popisuje kroky pro testování vaší aplikace v Azure pomocí De
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 1. [Vytvořte si předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte, a přihlaste se [Azure Portal](https://portal.azure.com).
 2. Postupujte podle pokynů v [tomto článku](devtest-lab-create-lab.md) a vytvořte testovací prostředí pomocí Azure DevTest Labs. Připněte testovací prostředí na řídicí panel, abyste ho mohli snadno najít při příštím přihlášení. Azure DevTest Labs vám umožní rychle vytvářet prostředky v rámci Azure minimalizací odpadů a řízení nákladů. Další informace o DevTest Labs najdete v tématu [Přehled](devtest-lab-overview.md). 
 3. Podle pokynů v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) vytvořte účet Azure Storage ve skupině prostředků testovacího prostředí. Na stránce **vytvořit účet úložiště** vyberte **použít existující** pro **skupinu prostředků** a vyberte **skupinu prostředků testovacího prostředí**. 

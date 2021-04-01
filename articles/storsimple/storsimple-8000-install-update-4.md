@@ -74,7 +74,7 @@ Metoda opravy hotfix zahrnuje následující tři kroky:
 
 Je nutné stáhnout a nainstalovat následující opravy hotfix v předepsaném pořadí a v navrhovaných složkách:
 
-| Objednávka | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednávka | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Aktualizace softwaru |Pravidelný <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
 | 2a. |KB4011841 <br> KB4011842 |Ovladače LSI a aktualizace firmwaru <br> Aktualizace firmwaru USM (verze 3,38) |Pravidelný <br></br>Bez přerušení |~ 3 hodiny <br> (zahrnuje 2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Je nutné stáhnout a nainstalovat následující opravy hotfix v předepsaném 
 
 Je také možné, že budete muset nainstalovat aktualizace firmwaru disku nad všemi aktualizacemi, které jsou uvedeny v předchozích tabulkách. Spuštěním rutiny můžete ověřit, zda potřebujete aktualizace firmwaru disku `Get-HcsFirmwareVersion` . Pokud používáte tyto verze firmwaru: `XMGJ` , `XGEG` , `KZ50` , `F6C2` , `VR08` , `N002` , `0106` , pak tyto aktualizace nemusíte instalovat.
 
-| Objednávka | KB | Popis | Typ aktualizace | Čas instalace | Nainstalovat do složky|
+| Objednávka | KB | Description | Typ aktualizace | Čas instalace | Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Firmware disku |Údržba <br></br>Rušivé |~ 30 minut | ThirdOrderUpdate |
 

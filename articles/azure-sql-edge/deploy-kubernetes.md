@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395287"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Nasazení kontejneru Edge Azure SQL v Kubernetes
@@ -43,7 +43,7 @@ V následujícím diagramu `azure-sql-edge` se nezdařil uzel hostující kontej
 
 ![Azure SQL Edge v clusteru Kubernetes po selhání uzlu](media/deploy-kubernetes/kubernetes-sql-edge-after-node-fail.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Cluster Kubernetes**
    - Tento kurz vyžaduje cluster Kubernetes. Postup ke správě clusteru pomocí [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) . 

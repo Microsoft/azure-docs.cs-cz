@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861812"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
@@ -460,7 +460,7 @@ Historická aktualizace atributu **userPrincipalName** , který používá synch
 
 Informace o tom, jak tuto funkci ověřit nebo zapnout, najdete v tématu [synchronizace aktualizací userPrincipalName](./how-to-connect-syncservice-features.md).
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Váš tým podpory by měl pochopit, jak řešit problémy s ověřováním, které vznikají během nebo po změně federace na spravovanou. Následující dokumentaci k řešení potíží vám pomohou týmu podpory seznámení s běžnými kroky při řešení potíží a s příslušnými akcemi, které vám mohou pomoci izolovat a vyřešit problém.
 

@@ -5,17 +5,17 @@ services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93398041"
 ---
 # <a name="manage-office-365-services"></a>Správa služeb Office 365
 
 Pro správu předplatných služeb Office 365 můžete použít Azure Automation pro produkty, jako je Microsoft Word a Microsoft Outlook. Interakce s Office 365 jsou povolené službou [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md). Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke správě předplatných služeb Office 365 v Azure Automation potřebujete následující:
 

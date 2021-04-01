@@ -26,8 +26,8 @@ Když připojíte svazek *gitrepo nepodporují* , můžete nastavit tři vlastno
 | Vlastnost | Povinné | Popis |
 | -------- | -------- | ----------- |
 | `repository` | Ano | Úplná adresa URL, včetně `http://` nebo `https://` , úložiště Git, které se má klonovat.|
-| `directory` | Ne | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem " `..` ".  Pokud zadáte " `.` ", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
-| `revision` | Ne | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento parametr nezadáte, `HEAD` je revize naklonována. |
+| `directory` | No | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem " `..` ".  Pokud zadáte " `.` ", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
+| `revision` | No | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento parametr nezadáte, `HEAD` je revize naklonována. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Připojit svazek Gitrepo nepodporují: Azure CLI
 

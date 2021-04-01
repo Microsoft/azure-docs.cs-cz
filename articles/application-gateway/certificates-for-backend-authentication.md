@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397718"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytváření certifikátů pro povolení back-endu ve službě Azure Application Gateway
@@ -25,7 +25,7 @@ V tomto článku získáte informace o těchto tématech:
 - Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)
 - Export důvěryhodného kořenového certifikátu z back-endu certifikátu (SKU verze 2)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vygenerování ověřovacích certifikátů nebo důvěryhodných kořenových certifikátů vyžadovaných pro povolení back-end instancí s Application Gateway je nutný existující certifikát back-endu. Certifikát back-endu může být stejný jako certifikát TLS/SSL nebo jiný pro zvýšení zabezpečení. Application Gateway neposkytuje žádný mechanismus pro vytvoření nebo zakoupení certifikátu TLS/SSL. Pro účely testování můžete vytvořit certifikát podepsaný svým držitelem, ale neměli byste ho používat pro produkční úlohy. 
 
