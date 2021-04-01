@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: charwen
 ms.openlocfilehash: 001d2ff6789ec4cfcc391171f0859b67ab1ee0a5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077775"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Připojení k sadě škálování virtuálního počítače pomocí Azure bastionu
 
 V tomto článku se dozvíte, jak bezpečně a hladce RDP na instanci sady škálování virtuálních počítačů s Windows ve službě Azure Virtual Network pomocí Azure bastionu. K instanci sady škálování virtuálního počítače se můžete připojit přímo z Azure Portal. Při použití Azure bastionu virtuální počítače nevyžadují klienta, agenta ani další software. Další informace o Azure bastionu najdete v tématu [Přehled](bastion-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste pro virtuální síť nastavili hostitele Azure bastionu, ve kterém se sada škálování virtuálního počítače nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](./tutorial-create-host-portal.md). Jakmile je služba bastionu zřízená a nasazená ve vaší virtuální síti, můžete ji použít pro připojení k instanci sady škálování virtuálního počítače v této virtuální síti. Bastionu předpokládá, že používáte protokol RDP pro připojení k sadě škálování virtuálních počítačů s Windows, a SSH pro připojení k sadě škálování virtuálních počítačů se systémem Linux. Informace o připojení k virtuálnímu počítači se systémem Linux najdete v tématu [připojení k virtuálnímu počítači](bastion-connect-vm-ssh.md)se systémem Linux.
 

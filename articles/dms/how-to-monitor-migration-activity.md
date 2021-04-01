@@ -108,7 +108,7 @@ V dolní části okna jsou uvedené tabulky a zobrazí se rychlý souhrn průbě
 
 Následující tabulka popisuje pole zobrazená v podrobnostech na úrovni tabulky.
 
-| Název pole        | Popis       |
+| Název pole        | Description       |
 | ------------- | ------------- |
 | **Úplné načtení dokončeno**      | Počet tabulek dokončil úplné načtení dat. |
 | **Úplné načtení ve frontě**      | Počet tabulek, které jsou zařazeny do fronty pro úplné načtení.      |
@@ -129,7 +129,7 @@ K dispozici jsou dvě karty, které znázorňují průběh migrace v plném zat�
 
 Následující tabulka popisuje pole zobrazená v průběhu migrace na úrovni tabulky.
 
-| Název pole        | Popis       |
+| Název pole        | Description       |
 | ------------- | ------------- |
 | **Stav – synchronizace**      | Průběžná synchronizace je spuštěná. |
 | **Insert**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |

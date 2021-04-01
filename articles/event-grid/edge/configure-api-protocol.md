@@ -18,7 +18,7 @@ ms.locfileid: "91322576"
 
 Tato příručka obsahuje příklady možných konfigurací protokolu Event Grid modulu. Modul Event Grid zpřístupňuje rozhraní API pro své operace správy a běhu. Následující tabulka zachycuje protokoly a porty.
 
-| Protokol | Port | Popis |
+| Protokol | Port | Description |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Ve výchozím nastavení vypnuté. Užitečné jenom při testování. Není vhodné pro produkční úlohy.
 | HTTPS | 4438 | Výchozí

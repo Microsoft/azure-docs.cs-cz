@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97814325"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Iniciovat převzetí služeb při selhání účtu úložiště
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak iniciovat převzetí služeb při selhání účtu �
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct v účtu úložiště provést převzetí služeb při selhání, ujistěte se, že je váš účet úložiště nakonfigurovaný pro geografickou replikaci. Váš účet úložiště může používat kteroukoli z následujících možností redundance:
 

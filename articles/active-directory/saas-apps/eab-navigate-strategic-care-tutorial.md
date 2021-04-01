@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: jeedes
 ms.openlocfilehash: d443f1f85caf53a40d5cd80b4f9438427d18a4fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454492"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s EAB navigovat strategické péče
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat EAB navigovat strategickou péči s Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

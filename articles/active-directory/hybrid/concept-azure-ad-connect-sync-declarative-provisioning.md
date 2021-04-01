@@ -53,7 +53,7 @@ Obor tohoto obrázku by měl být čten jako (oddělení = IT a země = Dánsko)
 
 Modul Scope podporuje následující operace.
 
-| Operace | Popis |
+| Operace | Description |
 | --- | --- |
 | ROVNÁ SE, NOTEQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota rovna hodnotě v atributu. Pro vícehodnotové atributy viz ISIN a ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota menší než hodnota v atributu. |

@@ -34,9 +34,9 @@ Následující tabulka popisuje dostupné typy úložišť a jejich možnosti:
 
 | Případ použití | Modul plug-in svazku | Čtení a zápis jednou | Velký počet jen pro čtení | Čtení a zápis mnoha | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Sdílená konfigurace       | Azure Files   | Ano | Ano | Ano | Ano |
-| Data strukturovaných aplikací        | Disky Azure   | Ano | Ne  | Ne  | Ano |
-| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Ano | Ano | Ano | Ne |
+| Sdílená konfigurace       | Azure Files   | Yes | Yes | Yes | Yes |
+| Data strukturovaných aplikací        | Disky Azure   | Yes | No  | No  | Yes |
+| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Yes | Yes | Yes | No |
 
 Dva primární typy úložiště poskytované pro svazky v AKS se zálohují na disky Azure nebo soubory Azure. Pro zvýšení zabezpečení oba typy úložiště ve výchozím nastavení používají šifrování služby Azure Storage (SSE), které šifruje neaktivní neaktivní data. Disky se momentálně nedají šifrovat pomocí Azure Disk Encryption na úrovni uzlu AKS.
 
