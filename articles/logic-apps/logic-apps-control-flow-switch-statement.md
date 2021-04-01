@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89657459"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytvořte příkazy Switch, které spouštějí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
@@ -23,7 +23,7 @@ Předpokládejme například, že chcete, aby aplikace logiky, která provede r�
 > Podobně jako u všech programovacích jazyků podporují příkazy Switch jenom operátory rovnosti. Pokud potřebujete jiné relační operátory, například "větší než", použijte [podmíněný příkaz](../logic-apps/logic-apps-control-flow-conditional-statement.md).
 > Aby bylo zajištěno deterministické chování při spuštění, musí být v případech jedinečné a statické hodnoty namísto dynamických tokenů nebo výrazů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

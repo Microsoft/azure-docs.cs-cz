@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91449140"
 ---
 # <a name="front-door-routing-methods"></a>Metody směrování front-dveří
@@ -69,7 +69,7 @@ Vážená metoda umožňuje několik užitečných scénářů:
 * **Migrace aplikace do Azure**: Vytvořte back-end fond s Azure i s externími back-endy. Upravte váhu back-endy tak, aby dávala nové back-endy. Tuto možnost můžete kdykoli nastavit počínaje tím, že zaškrtnete nové back-endy a pak jim přiřadíte nejnižší váhu, pomalu ji zvýšíte na úrovně, kde přebírají většinu provozu. Nakonec můžete zakázat méně upřednostňovaná back-endy a odebrat je z fondu.  
 * Rozšiřování **cloudů pro další kapacitu**: rychlé rozšíření místního nasazení do cloudu tak, že ho umístíte za přední dveře. Pokud potřebujete dodatečnou kapacitu v cloudu, můžete přidat nebo povolit další back-endy a určit, jakou část provozu přechází na jednotlivé back-end.
 
-## <a name="session-affinity"></a><a name = "affinity"></a>Spřažení relace
+## <a name="session-affinity"></a><a name = "affinity"></a>Spřažení relací
 Ve výchozím nastavení bez spřažení relací předávají přední dveře požadavky pocházející ze stejného klienta na různé back-endy. Některé stavové aplikace nebo v určitých scénářích vyplývajících z žádostí stejného uživatele dávají přednost stejnému back-endu, který zpracoval původní požadavek. Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném back-endu. Pomocí spravovaných souborů cookie můžou přední dveře Azure směrovat provoz z uživatelské relace do stejného back-endu ke zpracování.
 
 Spřažení relací je možné povolit na úrovni hostitele front-endu, to znamená pro všechny nakonfigurované domény (nebo subdomény). Po povolení přidá služba Front Door k relaci uživatele soubor cookie. Spřažení relací na základě souborů cookie umožňuje službě Front Door identifikovat různé uživatele i v případě, že jsou skryti za stejnou IP adresou. Díky tomu je možné rovnoměrněji distribuovat provoz mezi různé back-endy.

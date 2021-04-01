@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: 693984ceaef1a71ebfbe4122c18a45a563c9c101
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93100421"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: dotazování dat z rozhraní API Cassandra účtu v Azure Cosmos DB
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento článek patří do vícedílného kurzu. Než začnete, ujistěte se, že jste dokončili předchozí kroky, abyste vytvořili rozhraní API Cassandra účet, místo, tabulku a [načetli ukázková data do tabulky](cassandra-api-load-data.md). 
 

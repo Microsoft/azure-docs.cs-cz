@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit fond služby Batch, který používá va�
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.openlocfilehash: e822311718847e173763847d503335f71457308b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91849324"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Vytvořit fond Azure Batch se zadanými veřejnými IP adresami
@@ -18,7 +18,7 @@ Můžete vytvořit seznam statických veřejných IP adres pro použití s virtu
 
 Pokud chcete získat informace o vytváření fondů bez veřejných IP adres, přečtěte si téma [Vytvoření fondu Azure Batch bez veřejných IP adres](./batch-pool-no-public-ip-address.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Ověřování**. Aby bylo možné používat veřejnou IP adresu, musí klientské rozhraní API služby Batch používat [ověřování Azure Active Directory (AD)](batch-aad-auth.md).
 

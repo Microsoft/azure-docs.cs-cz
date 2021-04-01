@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 01/16/2021
 ms.openlocfilehash: 6c61e26ca858c5eb12ffe0219993f7477b0e8133
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98606094"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql-flexible-server"></a>Rychlý Start: použití jazyků Java a JDBC s Azure Database for PostgreSQLm flexibilním serverem
@@ -21,7 +21,7 @@ Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a 
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.

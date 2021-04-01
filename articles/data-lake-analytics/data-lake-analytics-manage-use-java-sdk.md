@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218472"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace Java
@@ -18,7 +18,7 @@ ms.locfileid: "92218472"
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí Azure Java SDK. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Java Development Kit (JDK) 8** (pomocí java verze 1,8).
 * **IntelliJ** nebo jiný vhodný Java Development Environment. Pokyny v tomto dokumentu používají IntelliJ.
 * Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md). Identifikátor URI a klíč odpovědi jsou k dispozici na portálu, jakmile máte vytvořenou aplikaci a vygenerujete klíč.

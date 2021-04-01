@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84343213"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky protokolu HTTP specifické pro Verizon pro modul pravidel pro Azure CDN
@@ -37,7 +37,7 @@ Hlavička požadavku | Popis | Příklad
 ---------------|-------------|--------
 [Vedení](#via-request-header) | Identifikuje server POP, který odeslal požadavek na zdrojový server. | Protokol HTTP/1.1 ECS (DCA/1A2B)
 X-předané – pro | Určuje IP adresu žadatele.| 10.10.10.10
-X-předáno – proto | Označuje protokol žádosti. | http
+X-předáno – proto | Označuje protokol žádosti. | HTTP
 X-host | Určuje název hostitele žádosti. | cdn.mydomain.com
 X – Midgress | Určuje, zda byl požadavek proxy serverem prostřednictvím dalšího serveru CDN. Například server, který je na serveru POP nebo server brány POP serveru pro a. <br />Tato hlavička se přidá do žádosti pouze v případě, že dojde k midgress provozu. V tomto případě je hlavička nastavená na hodnotu 1, aby označovala, že žádost byla proxy serverem prostřednictvím dalšího serveru CDN.| 1
 [Hostitel](#host-request-header) | Identifikuje hostitele a port, kde může být nalezen požadovaný obsah. | marketing.mydomain.com:80

@@ -10,10 +10,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 765fd3afc7fe688d3e6b0e3394e7dc8c39af69b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93096848"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Postup vytvoření aplikace Java, která používá Azure Cosmos DB SQL API a změna procesoru kanálu
@@ -25,7 +25,7 @@ Tato příručka vás provede jednoduchou aplikací v jazyce Java, která použ�
 > Tento kurz je určen pouze pro Azure Cosmos DB Java SDK v4. Další informace najdete v Azure Cosmos DB zpráva k [vydání verze](sql-api-sdk-java-v4.md)Java SDK v4, [úložiště pro Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB [tipy pro výkon](performance-tips-java-sdk-v4-sql.md)Java SDK v4 a Azure Cosmos DB [Průvodce řešením potíží](troubleshoot-java-sdk-v4-sql.md) se sadou Java SDK v4. Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Identifikátor URI a klíč pro váš Azure Cosmos DB účet
 

@@ -4,10 +4,10 @@ description: V tomto kurzu použijete efekt změny Azure Policy k vytvoření a 
 ms.date: 10/05/2020
 ms.topic: tutorial
 ms.openlocfilehash: 9efeb27151cd3a32741f1bdb6d1d90d3304c5874
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91876273"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa řízení značek pomocí Azure Policy
@@ -28,7 +28,7 @@ V tomto kurzu provedete následující úlohy:
 > - Namapujte každý požadavek na definici zásady.
 > - Seskupení zásad značek k iniciativě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
