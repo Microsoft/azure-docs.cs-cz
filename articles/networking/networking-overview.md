@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98234184"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled síťových služeb Azure
@@ -93,7 +93,7 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou chránit v
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
+### <a name="azure-private-link"></a><a name="privatelink"></a>Privátní odkaz Azure
 [Privátní odkaz Azure](../private-link/private-link-overview.md) vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím privátního koncového bodu ve vaší virtuální síti.
 Provoz mezi vaší virtuální sítí a službou přenáší páteřní síť Microsoftu. Vystavení vaší služby pro veřejný Internet již není nutné. Ve virtuální síti můžete vytvořit vlastní službu privátního propojení a předat ji zákazníkům.
 

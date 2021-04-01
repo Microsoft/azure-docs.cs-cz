@@ -248,7 +248,7 @@ Parametry a vlastnosti konstruktoru atributu jsou popsány v oddílu [Konfigurac
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `NotificationHub` atribut:
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** |Není k dispozici| Musí být nastaven na hodnotu `notificationHub` . |
 |**směr** |Není k dispozici| Musí být nastaven na hodnotu `out` . | 

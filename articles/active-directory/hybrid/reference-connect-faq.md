@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644727"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
@@ -268,7 +268,7 @@ Níže jsou uvedeny některé osvědčené postupy, které byste měli implement
 **Povolit kosmetice pro detekci nevrácených přihlašovacích údajů** Synchronizace hodnot hash hesel taky umožňuje [zjišťování nevrácených přihlašovacích údajů](../identity-protection/concept-identity-protection-risks.md) pro vaše hybridní účty. Společnost Microsoft spolupracuje s tmavými webovými výzkumníky a orgány činnými v oblasti a hledá veřejně dostupné páry uživatelského jména a hesla. Pokud některý z těchto párů odpovídá vašim uživatelům, je přidružený účet přesunutý na vysoké riziko. 
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 **Otázka: Jak můžu získat pomoc s Azure AD Connect?**
 
 [Hledání ve znalostní bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)

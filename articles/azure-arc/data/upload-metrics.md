@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
 ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575696"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Nahrát metriky do Azure Monitor
@@ -26,7 +26,7 @@ Pravidelně můžete exportovat metriky monitorování a pak je nahrát do Azure
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že jste vytvořili požadovaný instanční objekt a přiřadili ho příslušné roli. Podrobnosti najdete tady:
 * [Vytvoření instančního objektu](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)

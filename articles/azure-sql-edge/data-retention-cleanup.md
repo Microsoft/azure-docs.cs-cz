@@ -70,7 +70,7 @@ Operace čištění zásad uchovávání dat se dají monitorovat pomocí rozš�
 
 Následující šest rozšířených událostí vám pomůžou sledovat stav operací čištění. 
 
-| Název | Popis |
+| Název | Description |
 |------| ------------|
 | data_retention_task_started  | Nastane, pokud se spustí úloha na pozadí pro vyčištění tabulek se zachováním zásad uchovávání informací. |
 | data_retention_task_completed  | Vyvolá se v případě, že je úloha na pozadí pro vyčištění tabulek se zakončením zásad uchovávání informací. |

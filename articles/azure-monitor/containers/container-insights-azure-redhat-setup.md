@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708369"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí služby Container Insights
@@ -39,7 +39,7 @@ Container Insights podporuje monitorování Azure Red Hat OpenShift, jak je pops
 - Živá data (Preview)
 - [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Pracovní prostor služby Log Analytics](../logs/design-logs-deployment.md).
 
