@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97387050"
 ---
 # <a name="display-controls"></a>Ovládací prvky zobrazení
@@ -28,7 +28,7 @@ Následující obrázek znázorňuje přihlašovací stránku s vlastním uplatn
 
 ![Příklad ovládacího prvku vykresleného zobrazení](media/display-controls/display-control-email.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
  V části [metadata](self-asserted-technical-profile.md#metadata) [technického profilu s vlastním](self-asserted-technical-profile.md)přístavem musí být odkazovaný [ContentDefinition](contentdefinitions.md) `DataUri` nastaven na stránku verze kontraktu 2.0.0 nebo vyšší. Například:
 

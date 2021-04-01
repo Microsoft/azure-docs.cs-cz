@@ -4,10 +4,10 @@ description: Přehled omezení Service Bus – úrovně Standard a Premium
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85340951"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Omezování operací na Azure Service Bus

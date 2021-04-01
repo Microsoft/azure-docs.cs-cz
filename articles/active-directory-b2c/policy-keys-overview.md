@@ -38,9 +38,9 @@ Prostředek nejvyšší úrovně pro klíče zásad v Azure AD B2C je kontejner 
 
 | Atribut |  Vyžadováno | Poznámky |
 | --- | --- |--- |
-| `use` | Ano | Použití: identifikuje zamýšlené použití veřejného klíče. Šifrování dat `enc` nebo ověřování signatury dat `sig` .|
-| `nbf`| Ne | Datum a čas aktivace. |
-| `exp`| Ne | Datum a čas vypršení platnosti. |
+| `use` | Yes | Použití: identifikuje zamýšlené použití veřejného klíče. Šifrování dat `enc` nebo ověřování signatury dat `sig` .|
+| `nbf`| No | Datum a čas aktivace. |
+| `exp`| No | Datum a čas vypršení platnosti. |
 
 Doporučujeme nastavit hodnoty aktivace klíče a vypršení platnosti podle vašich standardů infrastruktury veřejných klíčů. Tyto certifikáty možná budete muset pravidelně otáčet z důvodů zabezpečení nebo zásad. Můžete mít například zásadu pro otočení všech certifikátů každý rok.
 

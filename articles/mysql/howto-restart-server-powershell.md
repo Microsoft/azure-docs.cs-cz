@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 94b3586f13ad1f5bf5f042ef1dc824bd0a5da0d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94542197"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-powershell"></a>Restartování serveru Azure Database for MySQL pomocí prostředí PowerShell
@@ -22,7 +22,7 @@ Pokud je služba zaneprázdněná, je restartování serveru blokované. Napří
 
 Množství času potřebného k dokončení restartování závisí na procesu obnovení MySQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 

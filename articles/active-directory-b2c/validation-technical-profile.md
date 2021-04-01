@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85202989"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu ověření ve Azure Active Directory B2C vlastní zásady
@@ -47,7 +47,7 @@ Technický profil s vlastním uplatněním může definovat technický profil ov
 
 Element **ValidationTechnicalProfiles** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Technický profil, který se má použít k ověření některých nebo všech výstupních deklarací odkazujícího technického profilu. |
 
@@ -55,13 +55,13 @@ Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Yes | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
-|ContinueOnError|No| Označuje, zda má ověřování všech následných technických profilů ověřování pokračovat, pokud tento technický profil ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
-|ContinueOnSuccess | No | Označuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
+| ReferenceId | Ano | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
+|ContinueOnError|Ne| Označuje, zda má ověřování všech následných technických profilů ověřování pokračovat, pokud tento technický profil ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
+|ContinueOnSuccess | Ne | Označuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
 
 Element **ValidationTechnicalProfile** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Předběžné podmínky | 0:1 | Seznam předpokladů, které musí být splněny, aby byl technický profil ověření proveden. |
 
@@ -70,11 +70,11 @@ Prvek **předběžné podmínky** obsahuje následující atribut:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. Buď `ClaimsExist` je zadáno, aby bylo zajištěno, že akce budou provedeny v případě, že zadané deklarace existují v aktuální sadě deklarací uživatele, nebo `ClaimEquals` zda je zadána akce, pokud zadaná deklarace identity existuje a její hodnota je rovna zadané hodnotě. |
-| `ExecuteActionsIf` | Yes | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
+| `ExecuteActionsIf` | Ano | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
 
 Prvek **podmínky** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Hodnota | 1: n | Data, která se používají při kontrole. Pokud je typ této kontroly `ClaimsExist` , toto pole určuje ClaimTypeReferenceId k dotazování na. Pokud je typ kontroly `ClaimEquals` , toto pole určuje ClaimTypeReferenceId k dotazování na. Zatímco jiný element Value obsahuje hodnotu, která má být kontrolována.|
 | Akce | 1:1 | Akce, která má být provedena, pokud je splněna podmínka kontroly předběžných podmínek v rámci kroku orchestrace. Hodnota **Akce** je nastavena na `SkipThisValidationTechnicalProfile` . Určuje, že by se neměl spustit přidružený technický profil ověření. |

@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008160"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
@@ -23,7 +23,7 @@ V tomto článku se naučíte, jak používat Visual Studio Code k místnímu vy
 
 ![Snímek obrazovky ukazuje Visual Studio Code okno s trvalou funkcí.](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -167,7 +167,7 @@ V tomto článku se naučíte, jak se v rámci sady Visual Studio 2019 místně 
 
 ![Snímek obrazovky ukazuje okno sady Visual Studio 2019 s trvalou funkcí.](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 

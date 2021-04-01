@@ -72,7 +72,7 @@ Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednot
 
 ![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Další úloha | Popis |
+| Další úloha | Description |
 | --- | --- |
 |**Nastavení ochrany osobních údajů**|Podívejte se, jaká data telemetrie se s Microsoftem sdílí.|
 |**Zobrazit aktuální konfiguraci**|Podívejte se na vaše aktuální řešení Azure AD Connect.  To zahrnuje obecná nastavení, synchronizované adresáře a nastavení synchronizace. |

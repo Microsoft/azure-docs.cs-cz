@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90936330"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>Migrace: SQL Server do spravované instance SQL ARC s podporou Azure
@@ -28,7 +28,7 @@ Použijte úložiště objektů BLOB v Azure pro migraci na spravovanou instanci
 
 Tato metoda používá Azure Blob Storage jako dočasné umístění úložiště, ze kterého můžete zálohovat a pak obnovit z.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Nainstalovat Azure Data Studio](install-client-tools.md)
 - [Nainstalovat Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
@@ -124,7 +124,7 @@ Další informace o zálohování na adresu URL najdete tady:
 
 V této metodě se dozvíte, jak vytvořit záložní soubor, který vytvoříte pomocí libovolné metody, a pak ho zkopírovat do místního úložiště ve spravované instanci Azure SQL pod, abyste se mohli vrátit z nějakého místa, podobně jako v typickém systému souborů v systému Windows nebo Linux. V tomto scénáři budete pomocí příkazu `kubectl cp` Kopírovat soubor z jednoho místa do systému souborů pod.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Nainstalujte a nakonfigurujte kubectl, aby odkazovaly na cluster Kubernetes, ve kterém se nasazují datové služby Azure ARC.
 - Máte nástroj, jako je Azure Data Studio nebo server pro správu SQL Server nainstalovaný a připojený k SQL Server, kde chcete vytvořit záložní soubor nebo už máte vytvořený existující soubor. bak v místním systému souborů.
