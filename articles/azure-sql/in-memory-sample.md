@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92786577"
 ---
 # <a name="in-memory-sample"></a>Ukázka In-Memory
@@ -363,7 +363,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [Použití In-Memory OLTP v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-#### <a name="tools"></a>Nástroje
+#### <a name="tools"></a>nástroje
 
 - [Azure Portal](https://portal.azure.com/)
 

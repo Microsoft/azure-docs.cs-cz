@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89231142"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
@@ -267,8 +267,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Klíč|Odstranění nastavení společnosti|
 |Klíč|Snížení úrovně partnera|
 |Klíč|Adresář je odstraněný|
-|Jiné|Adresář je trvale odstraněný|
-|Jiné|Adresář s naplánovaným odstraněním|
+|Ostatní|Adresář je trvale odstraněný|
+|Ostatní|Adresář s naplánovaným odstraněním|
 |Prostředek|Propagace společnosti u partnera|
 |Prostředek|Vyprázdnění vlastností Rights Management|
 |Prostředek|Odebrání partnera ze společnosti|
@@ -507,11 +507,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Zvýšení oprávnění|
 |Správa adresářů|Odebráno|
 |Správa adresářů|Změny nastavení role|
-|Jiné|ScanAlertsNow|
-|Jiné|Registrace|
-|Jiné|Pozastavení|
-|Jiné|UpdateAlertSettings|
-|Jiné|UpdateCurrentState|
+|Ostatní|ScanAlertsNow|
+|Ostatní|Registrace|
+|Ostatní|Pozastavení|
+|Ostatní|UpdateAlertSettings|
+|Ostatní|UpdateCurrentState|
 |Správa zásad|Ukončení kontroly přístupu|
 |Správa zásad|Přidání schvalovatele k žádosti o schválení|
 |Správa zásad|Přidání revidujícího ke kontrole přístupu|
@@ -523,8 +523,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Jiné|Vytvoření žádosti o schválení|
-|Jiné|Odstranění kontroly přístupu|
+|Ostatní|Vytvoření žádosti o schválení|
+|Ostatní|Odstranění kontroly přístupu|
 |Správa uživatelů|Odebrání revidujícího z kontroly přístupu|
 |Správa uživatelů|Žádost o použití výsledku kontroly|
 |Správa uživatelů|Žádost a zastavení kontroly|

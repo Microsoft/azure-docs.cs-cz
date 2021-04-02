@@ -43,9 +43,9 @@ Pro účely vytvoření tohoto článku jsme používali virtuální počítače
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Hyper-V** | Ano | Ano
-**VMware** | Ano | Ano
-**Fyzický server** | Ano | Ano
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fyzický server** | Yes | Yes
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Povolení zotavení po havárii aplikace Dynamics AX pomocí Site Recovery
 ### <a name="protect-your-dynamics-ax-application"></a>Ochrana aplikace Dynamics AX

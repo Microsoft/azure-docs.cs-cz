@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90894124"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Povolit výpočetní síť na Azure Stack Edge pro
@@ -27,7 +27,7 @@ Chcete-li konfigurovat síť, proveďte následující kroky:
 
 V tomto kurzu použijete modul aplikace webserver k předvedení scénáře.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 
