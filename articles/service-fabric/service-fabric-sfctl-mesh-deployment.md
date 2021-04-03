@@ -26,14 +26,14 @@ Vytvoří nasazení Service Fabricch prostředků sítě.
 
 ### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Input-YAML-Files [povinné] | Relativní nebo absolutní cesty k souborům YAML nebo relativní nebo absolutní cesta k adresáři (rekurzivní), který obsahuje soubory YAML, oddělených čárkami. |
 | --parametry | Relativní nebo absolutní cesta k souboru YAML nebo objektu JSON, který obsahuje parametry, které je třeba přepsat. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

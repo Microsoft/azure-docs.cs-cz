@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3e6c7dd0a75a05f15fe6d59bbf5fa47b2940d86a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96919879"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>Synchronizace dat mezi několika databázemi v Azure SQL Database pomocí PowerShellu
@@ -35,7 +35,7 @@ Přehled Synchronizace dat SQL najdete v tématu [synchronizace dat napříč n�
 > [!IMPORTANT]
 > Synchronizace dat SQL v tuto chvíli nepodporuje spravovanou instanci SQL Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvoří databázi v Azure SQL Database z ukázkové databáze AdventureWorksLT jako databáze centra.
 - Vytvořte databázi v Azure SQL Database ve stejné oblasti jako databáze synchronizace.

@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97630305"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: horizontálních oddílů data na pracovních uzlech v Azure Database for PostgreSQL – škálovatelné (Citus)
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (
 > * Vytváření omezení pro distribuované tabulky
 > * Spouštění dotazů na distribuovaných datech
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz vyžaduje spuštěnou skupinu serverů Citus () se dvěma pracovními uzly. Pokud nemáte spuštěnou skupinu serverů, postupujte podle kurzu [Vytvoření skupiny serverů](tutorial-hyperscale-server-group.md) a pak se vraťte k tomuto.
 

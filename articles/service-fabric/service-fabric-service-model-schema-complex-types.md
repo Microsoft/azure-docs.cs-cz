@@ -355,12 +355,12 @@ Deklarativně popisuje typ a verzi aplikace. Jeden nebo více manifestů služeb
 ```
 ### <a name="content-element-details"></a>Podrobnosti elementu obsahu
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Text popisující tuto aplikaci
 
 |Atribut|Hodnota|
 |---|---|
-|name|Popis|
+|name|Description|
 |typ|xs: String|
 |Hodnota|0|
 
@@ -1080,12 +1080,12 @@ Uživatelem definovaný řetězec verze pro dokument manifestu clusteru.
 |name|Verze|
 |použije|vyžadováno|
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Popis manifestu clusteru
 
 |Atribut|Hodnota|
 |---|---|
-|name|Popis|
+|name|Description|
 
 ### <a name="content-element-details"></a>Podrobnosti elementu obsahu
 
@@ -6609,12 +6609,12 @@ Identifikátor tohoto manifestu služby, nestrukturovaný řetězec.
 
 ### <a name="content-element-details"></a>Podrobnosti elementu obsahu
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Text popisující tuto službu
 
 |Atribut|Hodnota|
 |---|---|
-|name|Popis|
+|name|Description|
 |typ|xs: String|
 |Hodnota|0|
 
@@ -6943,11 +6943,11 @@ Hodnota kontrolního součtu tohoto obsahu pro ServicePack
 
 ### <a name="content-element-details"></a>Podrobnosti elementu obsahu
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 |Atribut|Hodnota|
 |---|---|
-|name|Popis|
+|name|Description|
 |typ|xs: String|
 |Hodnota|0|
 
