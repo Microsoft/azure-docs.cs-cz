@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94540208"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API
@@ -21,7 +21,7 @@ V tomto článku se naučíte, jak vytvářet a spravovat repliky pro čtení ve
 ## <a name="azure-cli"></a>Azure CLI
 Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli)
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) , který se bude používat jako zdrojový server. 

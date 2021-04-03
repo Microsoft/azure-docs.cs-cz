@@ -12,10 +12,10 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97028049"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla Azure Active Directory do místního prostředí
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 > * Povolit možnost zpětného zápisu hesla v Azure AD Connect
 > * Povolení zpětného zápisu hesla ve službě Azure AD SSPR
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

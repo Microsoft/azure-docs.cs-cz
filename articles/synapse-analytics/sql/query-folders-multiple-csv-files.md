@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462625"
 ---
 # <a name="query-folders-and-multiple-files"></a>Dotazování složek a několika souborů  
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL 
 
 Fond SQL bez serveru podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows. Větší flexibilita je však k dispozici, protože je povoleno více zástupných znaků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

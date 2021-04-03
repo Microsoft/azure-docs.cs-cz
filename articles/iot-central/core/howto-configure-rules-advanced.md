@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92123316"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Použití pracovních postupů k integraci aplikace IoT Central Azure s dalšími Cloud Services
@@ -25,7 +25,7 @@ Konektor Azure IoT Central v3 pro automatické automatizace a Azure Logic Apps u
 - Když pravidlo v aplikaci Azure IoT Central vyvolá, může aktivovat pracovní postup v Power Automate nebo Azure Logic Apps. Tyto pracovní postupy můžou spouštět akce v jiných cloudových službách, jako je Microsoft 365 nebo služba třetí strany.
 - Událost v jiné cloudové službě, jako je například Microsoft 365, může aktivovat pracovní postup v Power Automate nebo Azure Logic Apps. Tyto pracovní postupy mohou spouštět akce nebo načítat data z aplikace IoT Central.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

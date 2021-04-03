@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 65e424c6275f9990a5d5a42a54bc4131300a45bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Azure Active Directory integrace s ovládacím prvkem Workspot
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat řízení Workspot s využitím Azure Acti
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure AD](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s ovládacím prvkem Workspot potřebujete tyto věci:
 

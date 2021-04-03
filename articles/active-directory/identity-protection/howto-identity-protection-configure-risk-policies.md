@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95997626"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Postupy: konfigurace a povolení zásad rizik
@@ -31,7 +31,7 @@ Obě zásady pracují na automatizaci reakcí na detekci rizik ve vašem prostř
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chce vaše organizace uživatelům dovolit, aby při zjištění rizik prováděli nápravu, je nutné, aby se uživatelé zaregistrovali pro Samoobslužné resetování hesla i pro službu Azure AD Multi-Factor Authentication. Pro zajištění nejlepšího prostředí doporučujeme [, abyste povolili kombinované možnosti registrace informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md) . Umožnění, aby si uživatelé sami opravili stav do produktivního přípravení rychleji, aniž by museli mít zásah správce. Správci můžou tyto události pořád zobrazit a prozkoumat je po faktu. 
 
