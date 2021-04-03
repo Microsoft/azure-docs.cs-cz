@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80437772"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Co je Azure Data Box Heavy?
@@ -59,7 +59,7 @@ Data Box Heavy je navržená tak, aby se do Azure přesunula obrovský objem dat
 
 V této verzi Data Box Heavy zařízení obsahuje následující funkce.
 
-| Specifikace                                          | Description              |
+| Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | ~ 500 kg. <br>Zařízení pro uzamykání kol pro přenos|
 | Dimenze                                              | Šířka: 26 palců (výška: 28 palců): 48 palců |

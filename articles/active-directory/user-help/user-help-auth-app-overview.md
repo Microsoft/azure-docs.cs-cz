@@ -37,7 +37,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 
 ## <a name="terminology"></a>Terminologie
 
-| Období|Popis|
+| Období|Description|
 | ----|-----------|
 | Dvojúrovňové ověřování | Proces ověření, který vyžaduje, abyste konkrétně použili jenom dvě části ověřovacích informací, jako je heslo a PIN kód. Aplikace Microsoft Authenticator podporuje standardní dvojúrovňové ověřování a přihlašování se všemi hesly. |
 | Multi-Factor Authentication (MFA) | Každé dvojúrovňové ověřování je Multi-Factor Authentication a vyžaduje, abyste v závislosti na požadavcích vaší organizace používali *aspoň* dvě části ověřovacích informací. |
@@ -71,7 +71,7 @@ V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné p
 
 ## <a name="in-this-section"></a>V této části
 
-| Článek | Popis |
+| Článek | Description |
 | ------ | ------------ |
 | [Stažení a instalace aplikace](user-help-auth-app-download-install.md) | Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení s Androidem a iOS. |
 | [Přidat pracovní nebo školní účty](user-help-auth-app-add-work-school-account.md) | V této části najdete popis postupu přidání různých pracovních nebo školních a osobních účtů do aplikace Microsoft Authenticator. |
