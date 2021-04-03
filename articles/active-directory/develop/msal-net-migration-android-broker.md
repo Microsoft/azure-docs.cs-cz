@@ -13,17 +13,17 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92206665"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>Migrace aplikací pro Android, které používají zprostředkovatele z ADAL.NET na MSAL.NET
 
 Pokud máte aplikaci pro Xamarin Android, která aktuálně používá knihovnu Azure Active Directory Authentication Library pro .NET (ADAL.NET) a [zprostředkovatele ověřování](msal-android-single-sign-on.md), je čas migrovat do [knihovny Microsoft Authentication Library pro .NET ](msal-overview.md) (MSAL.NET).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aplikace Xamarin Android je už integrovaná s zprostředkovatelem ([Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [Portál společnosti Intune](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)) a ADAL.NET, které potřebujete migrovat na MSAL.NET.
 

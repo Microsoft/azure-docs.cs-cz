@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
 ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94959777"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Podpora Azure IoT Hub Device Provisioning Service (DPS) pro virtuální sítě
@@ -43,7 +43,7 @@ Zařízení, která pracují v místních sítích, můžou pomocí [virtuální
 Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, pomocí které je k dispozici prostředek Azure. Když budete mít privátní koncový bod pro prostředek DPS, budete moct povolit zařízením, která pracují v rámci vaší virtuální sítě, vyžádat si zřizování pomocí prostředku DPS bez povolení provozu do veřejného koncového bodu.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že jsou splněné následující předpoklady:
 
