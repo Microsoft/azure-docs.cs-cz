@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91565067"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Přidání obchodních partnerů do účtů integrace pro Azure Logic Apps
@@ -27,7 +27,7 @@ Pokud chcete definovat podrobnosti o zprávách vyměňovaných s vašimi partne
 
 V rámci smlouvy zadáte podrobnosti pro zpracování příchozích a odchozích zpráv z perspektivy hostitelského partnera. U příchozích zpráv **Nastavení příjmu** určují, jak má hostitelský partner dostávat zprávy od hostovaného partnera v rámci smlouvy. U odchozích zpráv **nastavení odesílání** určuje způsob, jakým hostující partner odesílá zprávy hostovanému partnerovi.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

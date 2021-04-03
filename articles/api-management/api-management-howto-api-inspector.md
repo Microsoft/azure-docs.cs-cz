@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94542310"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Kurz: ladění rozhraní API pomocí trasování požadavků
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="Nástroj pro inspekci rozhraní API":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
