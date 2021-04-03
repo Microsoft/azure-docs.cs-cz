@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92455303"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Kurz: Integrace Azure Active Directory jednotného přihlašování (SSO) pomocí jednotného přihlašování ContractSafe typu Saml2
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ContractSafe typu Saml2 SSO pomocí Az
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Na začátek budete potřebovat:
 

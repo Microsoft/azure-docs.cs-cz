@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 60a182764639341fcda159356dd9fe6c65cfabd9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89463608"
 ---
 # <a name="move-an-azure-relay-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Relay do jiné oblasti
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak přesunout Azure Relay obor názvů z jedné o
     V druhém režimu se přenos WCF generuje automaticky, když se k dané adrese koncového bodu připojí naslouchací proces (Server). Pokud je naslouchací proces připojen ke službě Relay, zobrazí se seznam přenosů WCF v Azure Portal. Pro přenos v tomto režimu je vlastnost- **Dynamic** nastavena na **hodnotu true** , protože je dynamicky generována. Dynamický přenos WCF nezmizí, když se naslouchací proces odpojí. 
 1. **Nasazení** prostředků pomocí šablony do cílové oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že je služba Azure Relay v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=service-bus&regions=all). 
  
 ## <a name="prepare"></a>Příprava

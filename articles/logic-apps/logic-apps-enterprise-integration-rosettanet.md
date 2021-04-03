@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91565101"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Zprávy Exchange RosettaNet pro integraci B2B Enterprise v Azure Logic Apps
@@ -51,7 +51,7 @@ Tady je několik konceptů a pojmů, které jsou jedinečné pro specifikaci Ros
 
   V případě PIP s jednou akcí je jedinou odpovědí zpráva potvrzujícího signálu. V případě, že se jedná o akci PIP s dvojitou odezvou, iniciátor obdrží zprávu odpovědi a kromě toku zpráv s jednou akcí odpoví spolu s potvrzením.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
