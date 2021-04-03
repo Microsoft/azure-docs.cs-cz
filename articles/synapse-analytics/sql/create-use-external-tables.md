@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462297"
 ---
 # <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Vytváření a používání externích tabulek pomocí neserverového fondu SQL ve službě Azure synapse Analytics
@@ -22,7 +22,7 @@ V této části se dozvíte, jak vytvářet a používat [externí tabulky](deve
 - Veřejné úložiště, kde uživatelé přistupují k souborům veřejného úložiště.
 - Chráněné úložiště, kde uživatelé přistupují k souborům úložiště pomocí pověření SAS, identity Azure AD nebo spravované identity pracovního prostoru synapse.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je vytvoření databáze, ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří následující objekty, které jsou použity v této ukázce:
 - PŘIHLAŠOVACÍ údaje v oboru databáze `sqlondemand` , které umožňují přístup k `https://sqlondemandstorage.blob.core.windows.net` účtu úložiště Azure Protected SAS.

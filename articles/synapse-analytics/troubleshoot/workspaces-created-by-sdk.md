@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.date: 11/24/2020
 ms.openlocfilehash: f5d0aae975d476da47510a1f2fd164cbc5f32945
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466172"
 ---
 # <a name="troubleshoot-azure-synapse-analytics-workspaces-created-using-sdk"></a>Řešení potíží s pracovními prostory Azure synapse Analytics vytvořenými pomocí sady SDK
@@ -19,7 +19,7 @@ ms.locfileid: "96466172"
 Tento článek popisuje kroky pro řešení potíží při spouštění synapse studia z pracovního prostoru synapse, který byl vytvořen pomocí sady SDK (Software Development Kit).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor synapse se vytvořil pomocí sady SDK.
 
