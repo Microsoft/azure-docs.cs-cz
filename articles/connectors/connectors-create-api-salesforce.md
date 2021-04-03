@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 9950951ab5189c8c7b72de78bca9465ec5f22748
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87290590"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorování, vytváření a správa prostředků Salesforce s využitím Azure Logic Apps
@@ -23,7 +23,7 @@ Pomocí Azure Logic Apps a konektoru Salesforce můžete vytvářet automatizova
 
 Můžete použít triggery Salesforce, které získávají odpovědi ze služby Salesforce, a zpřístupnit výstup ostatním akcím. Akce v aplikacích logiky můžete použít k provádění úloh s prostředky Salesforce. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 

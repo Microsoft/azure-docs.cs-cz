@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792391"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte, jak snadno přidat všechno, co potřebujete, abyste
 
 Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby umožňovaly Key Vault, najdete v tématu [Key Vault připojené služby – co se stalo s mým projektem ASP.NET 4.7.1](#how-your-aspnet-framework-project-is-modified) nebo [Key Vault připojenou službou – co se stalo s mým ASP.NET corem projektem](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual Studio 2019 verze 16,3** nebo novější [Stáhnout nyní](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -125,7 +125,7 @@ Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou
    ```
 1. Spusťte aplikaci místně v rámci ladicího programu, přepněte na kartu **o** a ověřte, zda se zobrazí hodnota z Key Vault.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud je váš Key Vault spuštěný na jiném účet Microsoft než jste přihlášeni k Visual Studiu (například Key Vault je spuštěný ve vašem pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se chyba v souboru program. cs, který Visual Studio nemůže získat přístup k Key Vault. Pokud chcete tento problém vyřešit:
 
