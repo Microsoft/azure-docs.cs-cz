@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: ceb6e84b31067f7289b9e003a4fb273ce717de33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89079094"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Přehled nasazení Azure Firewall Manageru
@@ -25,19 +25,19 @@ Je k dispozici více než jeden způsob nasazení Azure Firewall Manageru, ale d
 1.  Vytvoření zásady brány firewall
 
     - Vytvoření nové zásady
-<br>*nebo*<br>
+<br>*ani*<br>
     - Odvození základní zásady a přizpůsobení místních zásad
-<br>*nebo*<br>
+<br>*ani*<br>
     - Importuje pravidla z existující Azure Firewall. Nezapomeňte odebrat pravidla překladu adres (NAT) ze zásad, které by se měly použít napříč několika branami firewall.
 1. Vytvoření architektury hub a paprsků
    - Vytvoření centra Virtual Network s použitím partnerského vztahu virtuálních sítí pomocí správce Azure Firewall a virtuálních sítí s partnerským paprskem
-<br>*nebo*<br>
+<br>*ani*<br>
     - Vytvoření virtuální sítě a přidání připojení virtuální sítě a virtuálních sítí s partnerským paprskem do ní pomocí partnerského vztahu virtuálních sítí
 
 3. Vyberte zprostředkovatelé zabezpečení a přidružte zásady brány firewall. V současné době je jako podporovaný zprostředkovatel jenom Azure Firewall.
 
    - To se provádí při vytváření Virtual Network centra.
-<br>*nebo*<br>
+<br>*ani*<br>
     - Převeďte stávající virtuální síť na Virtual Network centra. Je také možné převést více virtuálních sítí.
 
 4. Nakonfigurujte uživatelsky definované trasy pro směrování provozu do vašeho centra Virtual Network firewall.
@@ -47,11 +47,11 @@ Je k dispozici více než jeden způsob nasazení Azure Firewall Manageru, ale d
 
 1. Vytvoření architektury hub a paprsků
 
-   - Vytvořte zabezpečeného virtuálního rozbočovače pomocí správce Azure Firewall a přidejte připojení k virtuální síti.<br>*nebo*<br>
+   - Vytvořte zabezpečeného virtuálního rozbočovače pomocí správce Azure Firewall a přidejte připojení k virtuální síti.<br>*ani*<br>
    - Vytvořte virtuální síť WAN hub a přidejte připojení k virtuální síti.
 2. Vybrat poskytovatele zabezpečení
 
-   - Při vytváření zabezpečeného virtuálního rozbočovače se dokončila.<br>*nebo*<br>
+   - Při vytváření zabezpečeného virtuálního rozbočovače se dokončila.<br>*ani*<br>
    - Převeďte stávající virtuální centrum sítě WAN na zabezpečené virtuální centrum.
 3. Vytvoření zásady brány firewall a její přidružení ke svému centru
 

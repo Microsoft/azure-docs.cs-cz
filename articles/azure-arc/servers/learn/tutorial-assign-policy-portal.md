@@ -4,10 +4,10 @@ description: V tomto kurzu použijete Azure Portal k vytvoření přiřazení Az
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91826592"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Kurz: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
@@ -16,7 +16,7 @@ Prvním krokem k porozumění dodržování předpisů v Azure je zjištění st
 
 Na konci tohoto procesu úspěšně identifikujete počítače, které nemají nainstalovaného agenta Log Analytics pro systém Windows nebo Linux. _Neodpovídají_ přiřazení zásad.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96603329"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>Přehled podpory IoT Hub MQTT 5 (Preview)
@@ -20,7 +20,7 @@ ms.locfileid: "96603329"
 
 Tento dokument definuje rozhraní API roviny dat IoT Hub přes protokol MQTT verze 5,0. Kompletní definice v tomto rozhraní API najdete v tématu [Reference k rozhraní API](iot-hub-mqtt-5-reference.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Povolit režim náhledu](iot-hub-preview-mode.md) na značce nové IoT Hub a vyzkoušet MQTT 5.
 - Vyžaduje se předchozí znalost [specifikace MQTT 5](https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html) .

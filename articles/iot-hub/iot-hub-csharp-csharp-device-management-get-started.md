@@ -11,10 +11,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89018395"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
@@ -35,7 +35,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * **TriggerReboot**. Tato aplikace volá přímou metodu v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizované hlášené vlastnosti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Visual Studio
 

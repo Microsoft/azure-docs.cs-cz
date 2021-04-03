@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89177427"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
@@ -25,7 +25,7 @@ Používali jste knihovnu Azure Active Directory Authentication Library pro .NET
 
 Kde byste měli začít? Tento článek vám pomůže s migrací aplikace pro Xamarin iOS z ADAL do MSAL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že už máte aplikaci Xamarin iOS integrovanou se zprostředkovatelem iOS. Pokud to neuděláte, přejděte přímo na MSAL.NET a spusťte implementaci zprostředkovatele tam. Informace o tom, jak vyvolat zprostředkovatele iOS v MSAL.NET pomocí nové aplikace, najdete v [této dokumentaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications).
 
 ## <a name="background"></a>Pozadí

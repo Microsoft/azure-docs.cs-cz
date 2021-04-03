@@ -10,10 +10,10 @@ ms.date: 10/15/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: ce97c22cf4bfbe5cca01183574597706a8c239e7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96468162"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-r"></a>Kurz: připojení k Azure Stack Edge pro R
@@ -26,11 +26,11 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Připojení k fyzickému zařízení
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se ujistěte, že:
 
@@ -72,7 +72,7 @@ Teď jste na stránce **Přehled** svého zařízení. Dalším krokem je konfig
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Připojení k fyzickému zařízení
 
 

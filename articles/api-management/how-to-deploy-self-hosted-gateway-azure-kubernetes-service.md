@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87015217"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Nasazení do Azure Kubernetes Service
 
 Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure API Management do [služby Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/). Další informace o nasazení brány pro místní hostování do clusteru Kubernetes najdete v tomto[dokumentu](how-to-deploy-self-hosted-gateway-kubernetes.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 - [Vytvoření clusteru Azure Kubernetes](../aks/kubernetes-walkthrough-portal.md)

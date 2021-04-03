@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
 ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96461858"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
@@ -37,7 +37,7 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
 - Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné**.
 - Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics **nepřístupné**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.

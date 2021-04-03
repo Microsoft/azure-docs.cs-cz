@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252929"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení Zásady skupiny a MDM
@@ -32,7 +32,7 @@ V následujících tabulkách jsou popsána nastavení zásad, která jsou k dis
 
 Nastavení zásad MDM se vztahuje na systémy Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile existuje jenom pro účet Microsoft roamingu prostřednictvím účtu OneDrive uživatele. Podrobnosti o tom, jaká zařízení jsou podporovaná pro synchronizaci na základě služby Azure AD, najdete v tématu [zařízení a koncové body](enterprise-state-roaming-windows-settings-reference.md) .
 
-| Název | Description |
+| Název | Popis |
 | --- | --- |
 | Umožňuje připojení k účtu Microsoft. |Umožňuje uživatelům ověřování pomocí účet Microsoft na zařízení. |
 | Povolí synchronizaci mých nastavení. |Umožňuje uživatelům roaming nastavení systému Windows a dat aplikací. Zakázáním těchto zásad se zakáže synchronizace i zálohování na mobilních zařízeních. |
@@ -43,7 +43,7 @@ Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou přip
 
 Tato nastavení se nacházejí v: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Název | Description |
+| Název | Popis |
 | --- | --- |
 | Účty: blokovat účty Microsoft |Nastavení této zásady zabrání uživatelům v přidávání nových účtů Microsoft na tento počítač. |
 | Nesynchronizovat |Brání uživatelům v roamingu nastavení Windows a dat aplikací. |
