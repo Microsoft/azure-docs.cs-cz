@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: efbb8a9ca0d475939d7713fa6a6a4a8245aead90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92457057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s bizagi pro automatizaci digitálních procesů
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat bizagi pro služby automatizace digit�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

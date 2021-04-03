@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94566091"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Odeslat aktivitu vlastních příkazů klientské aplikaci
@@ -26,7 +26,7 @@ Dokončili jste následující úkoly:
 - Definování a odeslání vlastní datové části JSON z aplikace Custom Commands
 - Příjem a vizualizace vlastního obsahu datové části JSON z klientské aplikace sady Speech pro rozpoznávání řeči v C#
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka používá Visual Studio 2019
 > * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)

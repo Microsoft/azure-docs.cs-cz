@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
 ms.openlocfilehash: 09a17712287c73fa165b4bec77682831a51edfa3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98060562"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Rychlý Start: detekce událostí pohybu a vygenerování
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak začít se službou Live video Analytic
 [!INCLUDE [header](includes/detect-motion-emit-events-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/detect-motion-emit-events-quickstart/csharp/prerequisites.md)]

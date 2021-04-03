@@ -4,10 +4,10 @@ description: Přečtěte si, jak se zaregistrovat do testovacího prostředí, Z
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: 6d5585082473a363df5f25f331475536544ae828
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96433134"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
