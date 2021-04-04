@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 6355afe6ce5decbed029db4536b1b1b19f5a876c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94541500"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Připojit existující Azure App Service k serveru Azure Database for MySQL
@@ -46,7 +46,7 @@ Můžete explicitně přidat všechny odchozí IP adresy vašich Azure App Servi
 
 I když se služba Azure App Service pokusí zachovat v průběhu času konstantní IP adresy, existují případy, kdy se IP adresy můžou změnit. K tomu může dojít například v případě, že dojde k recyklování nebo operacím škálování nebo když se v regionálních datových centrech Azure přidaly nové počítače ke zvýšení kapacity. Když se IP adresy změní, může aplikace v případě výpadku v události způsobit výpadky, které už se k serveru MySQL nepřipojí. Mějte na paměti, že při výběru jednoho z předchozích řešení je potřeba vzít na vědomí.
 
-## <a name="ssl-configuration"></a>Konfigurace SSL
+## <a name="ssl-configuration"></a>Konfigurace protokolu SSL
 Azure Database for MySQL má standardně povolený protokol SSL. Pokud vaše aplikace nepoužívá pro připojení k databázi protokol SSL, musíte na serveru MySQL zakázat protokol SSL. Podrobnosti o tom, jak nakonfigurovat SSL, najdete v tématu [použití protokolu SSL s Azure Database for MySQL](howto-configure-ssl.md).
 
 ### <a name="django-pymysql"></a>Django (PyMySQL)

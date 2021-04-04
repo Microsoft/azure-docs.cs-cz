@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98625028"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
@@ -30,7 +30,7 @@ Azure Maps poskytuje řadu služeb pro podporu sledování zařízení vstupují
 > * Pomocí [Azure Event Grid](../event-grid/overview.md) se můžete přihlásit k odběru událostí pro Azure Maps geografické ploty. Nastavili jste dva odběry událostí Webhooku, které volají koncové body HTTP definované ve vašich dvou aplikacích logiky. Aplikace logiky pak pošle vhodná e-mailová oznámení o přemístění nebo zapisování geografického zařízení.
 > * Využijte [Hledat geografické ploty získat rozhraní API](/rest/api/maps/spatial/getgeofence) pro příjem oznámení v případě, že se nějaké zařízení ukončí a pak vstoupí do oblastí geografické oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.

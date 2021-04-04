@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: yelevin
 ms.openlocfilehash: b21ce75bfb33b5a8869c63b7d3f71fb9f0c93768
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98621291"
 ---
 # <a name="connect-data-from-azure-firewall"></a>Připojení dat z Azure Firewall
@@ -24,7 +24,7 @@ Protokoly Azure Firewall můžete připojit ke službě Azure Sentinel, což vá
 
 Přečtěte si další informace o [monitorování protokolů Azure firewall](../firewall/firewall-diagnostics.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 
