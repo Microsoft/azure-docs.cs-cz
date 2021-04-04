@@ -67,7 +67,7 @@ Pracovní postup, pomocí kterého se dá zásady použít v produkčním nebo p
 
 ![Pracovní postup nasazení zásad](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Krok |Popis |
+|Krok |Description |
 |---------|---------|
 |[Vytvořit koncept](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    Koncept se skládá ze sady pravidel definujících způsob, jakým by měly být požadavky na obsah zpracovávány přes CDN.     |
 |Zamknout koncept   |     Po dokončení konceptu by měl být uzamčen a převeden na zásadu jen pro čtení.    |
@@ -105,7 +105,7 @@ osa | Jedna nabídka nemá zvláštní význam. Sada jednoduchých uvozovek vša
 
 Regulární výrazy definují vzor, který je prohledáván v rámci textové hodnoty. Zápis regulárního výrazu definuje konkrétní význam pro nejrůznější symboly. Následující tabulka uvádí, jak jsou speciální znaky ošetřeny podmínkami shody a funkcemi, které podporují regulární výrazy.
 
-Speciální znak | Popis
+Speciální znak | Description
 ------------------|------------
 \ | Zpětné lomítko řídí znak, který následuje, což způsobí, že tento znak bude považován za hodnotu literálu namísto převzetí jeho regulárního výrazu. Například následující syntaxe řídí hvězdičku: `\*`
 % | Význam symbolu procenta závisí na jeho využití.<br/><br/> `%{HTTPVariable}`: Tato syntaxe identifikuje proměnnou HTTP.<br/>`%{HTTPVariable%Pattern}`: Tato syntaxe používá symbol procenta k identifikaci proměnné HTTP a jako oddělovače.<br />`\%`: Uvozovací znak v procentech umožňuje použití jako literálové hodnoty nebo k označení kódování adresy URL (například `\%20` ).

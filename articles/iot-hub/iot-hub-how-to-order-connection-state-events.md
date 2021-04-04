@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92147272"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Uspořádání událostí připojení zařízení z Azure IoT Hubu pomocí služby Azure Cosmos DB
@@ -21,7 +21,7 @@ Azure Event Grid vám pomůže sestavovat aplikace založené na událostech a s
 
 Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. K identifikaci většího čísla můžete použít porovnání řetězců. Pokud řetězec převádíte na šestnáctkovou hodnotu, bude číslo 256. Pořadové číslo se přesně zvyšuje a poslední událost bude mít vyšší číslo než jiné události. To je užitečné v případě, že se zařízení často připojuje a odpojuje a chcete zajistit, aby se k aktivaci navazující akce používala jenom poslední událost, protože Azure Event Grid nepodporuje řazení událostí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aktivní účet Azure. Pokud ho nemáte, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 

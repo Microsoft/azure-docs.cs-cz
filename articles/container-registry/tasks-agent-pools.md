@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98920303"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Spuštění úlohy ACR ve vyhrazeném fondu agentů
@@ -35,7 +35,7 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 - Pro každý registr je výchozí celková kvóta vCPU (jádro) 16 pro všechny standardní fondy agentů a pro izolované fondy agentů je 0. Otevřete [žádost o podporu][open-support-ticket] pro další přidělení.
 - V tuto chvíli nemůžete zrušit běh úlohy ve fondu agentů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.3.1 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli]. Nebo spusťte v [Azure Cloud Shell](../cloud-shell/quickstart.md).
 * Pokud ještě nemáte registr kontejnerů, vytvořte si [ho][create-reg-cli] (je potřeba Premium úrovně) v oblasti verze Preview.

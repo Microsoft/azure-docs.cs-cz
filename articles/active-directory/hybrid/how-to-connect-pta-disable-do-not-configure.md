@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919931"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect"></a>Při použití Azure AD Connect zakázat PTA
@@ -27,7 +27,7 @@ Pokud používáte předávací ověřování s Azure AD Connect a máte nastave
 
 Zakázání PTA můžete provést pomocí následujících rutin. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Vyžadují se tyto požadavky:
 - Libovolný počítač s Windows, na kterém je nainstalovaný agent PTA. 
 - Agent musí být ve verzi 1.5.1742.0 nebo novější. 
