@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95997065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí inteligentního globálního řízení
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat inteligentní řízení globálních z
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

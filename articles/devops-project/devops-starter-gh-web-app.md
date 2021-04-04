@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
 ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97588773"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>Kurz: nasazení aplikace Node.js do webové aplikace Azure pomocí DevOps Starter pro akce GitHubu
@@ -34,7 +34,7 @@ V tomto kurzu:
 > * Konfigurace monitorování pomocí Azure Application Insights
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 

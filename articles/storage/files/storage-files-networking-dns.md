@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94630188"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Konfigurace přesměrování DNS pro Azure Files
@@ -38,7 +38,7 @@ Konfigurace předávání DNS pro soubory Azure vyžaduje, aby virtuální poč�
 
 V této příručce se dozvíte, jak nakonfigurovat předávání DNS pro koncový bod služby Azure Storage, takže kromě souborů Azure se požadavky na překlad názvů DNS pro všechny ostatní služby Azure Storage (Azure Blob Storage, Azure Table Storage, Azure Queue Storage atd.) předají do privátní služby DNS Azure. Další koncové body pro ostatní služby Azure je možné přidat i v případě potřeby. Přesměrování DNS zpátky na místní servery DNS se taky nakonfigurují a povolí cloudové prostředky ve vaší virtuální síti (třeba serveru DFS-N) k překladu místních názvů počítačů. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než budete moct nastavit předávání DNS do služby soubory Azure, musíte provést následující kroky:
 
 - Účet úložiště, který obsahuje sdílenou složku Azure, se chcete připojit. Informace o tom, jak vytvořit účet úložiště a sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).

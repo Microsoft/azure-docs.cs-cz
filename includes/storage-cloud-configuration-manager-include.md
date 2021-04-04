@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: cedfd719a5f0aeed6fc2e932d3aa5189b83c9796
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96025492"
 ---
 [Knihovna správce konfigurace Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) poskytuje třídu pro potřeby analýzy připojovacího řetězce z konfiguračního souboru. Třída [CloudConfigurationManager](/previous-versions/azure/reference/mt634650(v=azure.100)) analyzuje nastavení konfigurace. Analyzuje nastavení pro klientské aplikace, které běží na ploše, na mobilním zařízení, na virtuálním počítači Azure nebo v cloudové službě Azure.

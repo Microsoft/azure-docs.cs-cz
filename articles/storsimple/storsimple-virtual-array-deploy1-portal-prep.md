@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87070329"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení StorSimple Virtual Array – Příprava Azure Portal
@@ -52,7 +52,7 @@ Kontrolní seznam konfigurace popisuje informace, které je třeba shromáždit 
 * Stáhněte si [Kontrolní seznam konfigurace souborového serveru StorSimple Virtual Array](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
 * Stáhněte si [Kontrolní seznam konfigurace serveru iSCSI Virtual Array StorSimple](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady najdete požadavky na konfiguraci pro službu StorSimple Správce zařízení, vaše virtuální pole StorSimple a síť datacenter.
 

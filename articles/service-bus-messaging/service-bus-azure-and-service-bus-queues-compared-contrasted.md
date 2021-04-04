@@ -4,10 +4,10 @@ description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nab�
 ms.topic: article
 ms.date: 11/04/2020
 ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96928303"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast

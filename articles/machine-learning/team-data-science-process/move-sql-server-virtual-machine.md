@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c80a90b07e25942e751d52cafa47f6e3e94852ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93320328"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
@@ -38,7 +38,7 @@ V tomto dokumentu se předpokládá, že příkazy SQL se spouštějí z SQL Ser
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).

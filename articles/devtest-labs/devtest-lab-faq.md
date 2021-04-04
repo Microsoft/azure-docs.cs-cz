@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na některé nejčastější dota
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590269"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
@@ -367,7 +367,7 @@ Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí 
 
 Skupiny zabezpečení sítě můžete použít také pro virtuální počítače nebo podsítě. Tento krok přidá další vrstvu ochrany pro povolení/blokování provozu.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>Proč se moje existující virtuální síť neukládá správně?
 Jednou z možností je, že název virtuální sítě obsahuje tečky. Pokud ano, zkuste odebrat období nebo je nahraďte pomlčkami. Pak zkuste znovu uložit virtuální síť.

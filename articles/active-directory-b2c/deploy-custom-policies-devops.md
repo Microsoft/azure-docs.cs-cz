@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96928728"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Nasazení vlastních zásad pomocí Azure Pipelines
@@ -31,7 +31,7 @@ Pro povolení Azure Pipelines správy vlastních zásad v rámci Azure AD B2C js
 > [!IMPORTANT]
 > Správa Azure AD B2C vlastních zásad pomocí kanálu Azure aktuálně používá operace ve **verzi Preview** , které jsou k dispozici na `/beta` KONCOVÉM bodu rozhraní API Microsoft Graph. Použití těchto rozhraní API v produkčních aplikacích není podporováno. Další informace najdete v referenčních informacích ke [koncovému bodu Microsoft Graph REST API beta](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta

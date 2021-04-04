@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 06/20/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: d81e529d7073e8200c5a1d1fa8f51504b1dc9259
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218438"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozšiřování skriptů U-SQL pomocí kódu Pythonu v Azure Data Lake Analytics
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jsou ve vašem Azure Data Lake Analytics účtu nainstalované rozšíření Pythonu.
 

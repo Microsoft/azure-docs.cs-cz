@@ -12,17 +12,17 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: 5a65ff28a38e42e05844063a330c0325f16b2247
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94363285"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>Recept: průzkum inteligentního umění s Cognitive Services pro velké objemy dat
 
 V tomto příkladu použijeme Cognitive Services pro velké objemy dat a přidáte inteligentní poznámky do kolekce otevřeného přístupu z metropolitního Museumu umění (ste). To nám umožní vytvořit inteligentní vyhledávací modul pomocí Azure Search, a to i bez ručních poznámek. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít klíč předplatného pro Počítačové zpracování obrazu a Kognitivní hledání. Podle pokynů v části [Vytvoření účtu Cognitive Services](../../cognitive-services-apis-create-account.md) se přihlaste k odběru počítačové zpracování obrazu a Získejte svůj klíč.
   > [!NOTE]

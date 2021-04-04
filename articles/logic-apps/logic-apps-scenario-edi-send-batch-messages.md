@@ -8,10 +8,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000398"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Zprávy EDI Exchange jako dávky nebo skupiny mezi obchodními partnery v Azure Logic Apps
@@ -30,7 +30,7 @@ V tomto článku sestavíte řešení pro dávkování tak, že vytvoříte dvě
 
 Ujistěte se, že přijímač Batch a odesilatel dávky sdílejí stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li postupovat podle tohoto příkladu, budete potřebovat tyto položky:
 

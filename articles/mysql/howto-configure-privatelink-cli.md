@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: da6a2b97d2656d56fa2aa0e7259fba433bd7b81e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95998579"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí rozhraní příkazového řádku
@@ -120,7 +120,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekladuje na nakonfigurovanou soukromou IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).
+> Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekládá na nakonfigurovanou privátní IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 

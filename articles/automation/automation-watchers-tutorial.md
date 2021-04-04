@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.openlocfilehash: ca4c4013e0044811a5bac8786996761b8a5c45f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97682755"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Sledování aktualizovaných souborů pomocí úlohy sledovacího procesu
@@ -31,7 +31,7 @@ Tento článek vás provede procesem vytvoření úlohy sledovacího procesu, kt
 * Aktivace sledovacího procesu
 * Kontrola výstupu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku jsou potřeba následující:
 

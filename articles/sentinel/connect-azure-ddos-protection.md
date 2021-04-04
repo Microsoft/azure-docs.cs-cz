@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: yelevin
 ms.openlocfilehash: 8089b1e74e88db81c1c15ad2cbf2072abcfff241
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98621341"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Připojení dat z Azure DDoS Protection
 
 Služba DDoS (Distributed DOS) se pokouší vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet. [Ochrana Azure DDoS](../ddos-protection/ddos-protection-overview.md)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje robustní ochranu před útoky DDoS. Protokoly Azure DDoS Protection můžete připojit ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytváření vlastních výstrah a začlenit je k vylepšení šetření. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 

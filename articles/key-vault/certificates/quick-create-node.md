@@ -9,10 +9,10 @@ ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 1064c6a1e2dddaae98e94ccceca7b1d550897393
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97930850"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Rychlý Start: Azure Key Vault klientské knihovny pro certifikáty pro JavaScript (verze 4)
@@ -27,7 +27,7 @@ Další informace o Key Vault a certifikátech najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled certifikátů](about-certificates.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Aktuální [Node.js](https://nodejs.org) pro váš operační systém.
