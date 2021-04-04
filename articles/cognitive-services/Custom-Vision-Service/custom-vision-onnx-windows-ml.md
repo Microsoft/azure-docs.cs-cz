@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94616072"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Použití modelu ONNX z Custom Vision s Windows ML (Preview)
@@ -23,7 +23,7 @@ Naučte se používat model ONNX exportovaný ze služby Custom Vision s Windows
 
 V této příručce se dozvíte, jak použít soubor ONNX exportovaný z Custom Vision Service s Windows ML. Ukázkovou aplikaci UWP použijete s vlastním vyškolenou klasifikátorovou imagí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Windows 10 verze 1809 nebo vyšší
 * Windows SDK pro Build 17763 nebo vyšší

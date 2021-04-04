@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96437180"
 ---
 # <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Cvičení v Azure Lab Services – nejčastější dotazy (FAQ)
