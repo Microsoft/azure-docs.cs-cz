@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 02/09/2021
 ms.author: justinha
 ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100090985"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Nejčastější dotazy týkající se služby Azure Active Directory (Active Directory Domain Services)
@@ -160,7 +160,7 @@ No. Azure AD Domain Services je služba Azure s průběžnými platbami, která 
 ### <a name="what-azure-regions-is-the-service-available-in"></a>K jakým oblastem Azure je služba dostupná?
 Seznam oblastí Azure, kde je Azure AD Domain Services k dispozici, najdete na stránce [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services/) .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Řešení běžných potíží s konfigurací nebo správou Azure AD Domain Services najdete v [Průvodci odstraňováním potíží](troubleshoot.md) .
 

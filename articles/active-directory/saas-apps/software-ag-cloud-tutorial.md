@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726103"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování do programu Software AG Cloud
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Software AG Cloud s Azure Active Direc
 * Umožněte, aby se vaši uživatelé automaticky přihlásili do cloudu Software AG pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

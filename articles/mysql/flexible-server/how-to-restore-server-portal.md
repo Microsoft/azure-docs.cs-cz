@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241952"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Obnovení k určitému bodu v čase Azure Database for MySQL-flexibilního serveru (Preview)
@@ -21,7 +21,7 @@ ms.locfileid: "93241952"
 
 Tento článek poskytuje podrobný postup, jak provádět obnovování v čase v flexibilním serveru pomocí zálohování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 

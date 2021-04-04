@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 360aad288b4f91cb784e0f0e0cfd7dea47a140fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98727934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-certent-equity-management"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se správou jmění Certent
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat správu Certent cenných papírů pomo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Certent řízení kapitálu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

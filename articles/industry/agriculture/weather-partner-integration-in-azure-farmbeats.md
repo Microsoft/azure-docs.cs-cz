@@ -143,7 +143,7 @@ V rámci úlohy musí program vytvořit/WeatherDataLocation založenou na/Weathe
 WeatherDataModel | Popis |
 --- | ---
 Název  | Název datového modelu počasí |
-Popis  | Smysluplný popis modelu |
+Description  | Smysluplný popis modelu |
 Vlastnosti  | Další vlastnosti definované poskytovatelem dat. |
 Název > weatherMeasures  | Název míry počasí Například humidity_max. |
 weatherMeasures > datový typ  | Buď typ Double, nebo Enum. Pokud je vyžadováno Enum, measureEnumDefinition. |
@@ -165,12 +165,12 @@ pipelineDetails > parametry > popisu | Popis parametru |
 Vlastnosti  | Další vlastnosti od výrobce.
 Vlastnosti > programRunCommand | Příkaz Docker run. Tento příkaz se spustí, když zákazník spustí úlohu počasí. |
 
-WeatherDataLocation | Popis |
+WeatherDataLocation | Description |
 --- | ---
 weatherDataModelId  | ID odpovídající WeatherDataModel, která byla vytvořena během procesu Bootstrap.|
 location  | Zeměpisná šířka, zeměpisná délka a zvýšení úrovně. |
 Name | Název objektu. |
-Popis | Popis umístění dat počasí |
+Description | Popis umístění dat počasí |
 farmId | Volitelné ID farmy Zákazník toto ID poskytne jako součást parametru úlohy. |
 Vlastnosti  | Další vlastnosti od výrobce.
 

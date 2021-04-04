@@ -4,10 +4,10 @@ description: Konfigurace přihlašovacích údajů úložiště pro stahování 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 0c6421fed88a3909db717c13a6b3faf51c4491cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574815"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurace přihlašovacích údajů úložiště pro vaši aplikaci ke stažení imagí kontejneru

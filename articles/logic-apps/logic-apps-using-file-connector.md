@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91873230"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
@@ -28,7 +28,7 @@ Pomocí Azure Logic Apps a konektoru systému souborů můžete vytvářet autom
 
 V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, jak je popsáno v tomto ukázkovém scénáři: zkopírování souboru nahraného do Dropboxu do sdílené složky a odeslání e-mailu. K bezpečnému připojení k místním systémům využívají Logic Apps místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Technické informace specifické pro konektor najdete v referenčních informacích o [konektoru systému souborů](/connectors/filesystem/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

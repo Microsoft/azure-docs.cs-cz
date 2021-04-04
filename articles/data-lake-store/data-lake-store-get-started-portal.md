@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91578576"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal
@@ -26,7 +26,7 @@ ms.locfileid: "91578576"
 
 Naučte se, jak pomocí Azure Portal vytvořit účet Data Lake Storage Gen1 a provádět základní operace, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace najdete v tématu [přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
