@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92790963"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
@@ -47,7 +47,7 @@ Kdokoli může stáhnout zdrojový kód C# a PowerShell pro lístky Wingtip z [j
 
 K dispozici je řada souvisejících kurzů, které se při tomto počátečním nasazení sestavují. Kurzy navrhují řadu SaaSch návrhů a vzorů správy. Při práci v kurzech doporučujeme projít tyto skripty, abyste viděli, jak jsou implementované různé vzory SaaS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 

@@ -15,10 +15,10 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97357218"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Registrace více virtuálních počítačů SQL v Azure pomocí rozšíření agenta SQL IaaS
@@ -35,7 +35,7 @@ Tento článek vás seznámí s ručním registrací SQL Server virtuálních po
 
 Proces registrace nevede k žádnému riziku bez výpadků a nerestartuje službu SQL Server nebo virtuální počítač. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, budete potřebovat následující: 
 
