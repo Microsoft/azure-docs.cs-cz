@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f10f9840a34c9ca6525ed20060433a6db47a4b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453793"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exactcare-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ExactCare SSO
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování ExactCare p
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

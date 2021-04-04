@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96497924"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
@@ -48,7 +48,7 @@ Před přesunutím serveru do jiné oblasti se doporučuje vytvořit podrobný p
 > [!NOTE]
 > Pokud k připojení ke zdrojům dat používáte místní bránu dat, musíte taky přesunout prostředek brány do oblasti cílového serveru. Další informace najdete v tématu [instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Účet úložiště Azure**: vyžaduje se pro uložení záložního souboru. ABF.
 - **SQL Server Management Studio (SSMS)**: vyžaduje se pro zálohování a obnovení databází modelu.

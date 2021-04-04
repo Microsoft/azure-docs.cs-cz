@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92173686"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure Static Web Apps ve verzi Preview
 
 Ve výchozím nastavení poskytuje Azure static Web Apps automaticky generovaný název domény. V tomto článku se dozvíte, jak namapovat vlastní název domény na statickou Web Apps aplikaci Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Název zakoupené domény
 - Přístup k vlastnostem konfigurace DNS pro vaši doménu

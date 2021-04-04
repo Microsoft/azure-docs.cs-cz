@@ -8,10 +8,10 @@ ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4814a12a870d5317ad91c3514327ba0daad7ed69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99225366"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
@@ -19,7 +19,7 @@ Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve
 
 Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -226,7 +226,7 @@ Agenta si můžete stáhnout z webu [Microsoft Download Center](https://go.micro
 > [!Important]  
 > Pokud máte v úmyslu použít Synchronizace souborů Azure s clusterem s podporou převzetí služeb při selhání, musí být agent Synchronizace souborů Azure nainstalovaný na všech uzlech v clusteru. Aby bylo možné pracovat s Synchronizace souborů Azure, musí být každý uzel v clusteru zaregistrován.
 
-Doporučujeme, abyste provedli následující akce:
+Doporučujeme postupovat takto:
 - Pokud chcete zjednodušit řešení potíží a údržbu serveru, ponechte výchozí instalační cestu (C:\Program Files\Azure\StorageSyncAgent).
 - Povolte Microsoft Update, aby zůstaly aktuální Synchronizace souborů Azure. Všechny aktualizace a Agent Synchronizace souborů Azure, včetně aktualizací funkcí a oprav hotfix, se vyskytují v Microsoft Update. Doporučujeme nainstalovat nejnovější aktualizaci pro Synchronizace souborů Azure. Další informace najdete v tématu [synchronizace souborů Azure Update Policy](storage-sync-files-planning.md#azure-file-sync-agent-update-policy).
 

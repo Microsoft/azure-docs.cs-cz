@@ -12,10 +12,10 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99095354"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro servery služby Azure SQL Database
@@ -108,7 +108,7 @@ Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje o
 
 Základ a příkaz COPY se běžně používají k načítání dat do služby Azure synapse Analytics z účtů Azure Storage pro příjem dat s vysokou propustností. Pokud účet Azure Storage, který načítáte data z omezení, přistupuje pouze k sadě podsítí virtuální sítě, připojení při použití základny a příkazu Kopírovat pro účet úložiště se přeruší. Pokud chcete povolit scénáře importu a exportu pomocí KOPÍROVACÍho a základu služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečené k virtuální síti, postupujte podle kroků v této části.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Pomocí [této příručky](/powershell/azure/install-az-ps)nainstalujte Azure PowerShell.
 - Pokud máte účet pro obecné účely v1 nebo Azure Blob Storage, musíte nejdřív upgradovat na obecné účely v2 podle kroků v části [upgrade na účet úložiště pro obecné účely verze 2](../../storage/common/storage-account-upgrade.md).
@@ -233,7 +233,7 @@ Rutiny PowerShellu pro virtuální sítě SQL volají interně volání rozhran�
 
 - [Pravidla virtuální sítě: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte už mít podsíť, která je označená konkrétním *typem* koncového bodu služby virtuální sítě, který se týká SQL Database.
 

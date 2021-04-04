@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: d74279c9c4d5d88e5837046e9484f5af7aad1442
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96001146"
 ---
 Toto `ApplicationInsights` nastavení umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](/azure/application-insights) . Application Insights poskytuje podrobné monitorování vašeho kontejneru. Svůj kontejner můžete snadno monitorovat z důvodu dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vašem kontejneru.
