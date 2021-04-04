@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.openlocfilehash: 8a174c3b2bfb390eb7d691ae1bdcb0e28dde9032
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96751083"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
@@ -23,7 +23,7 @@ Příklady v tomto článku se používají [Azure PowerShell](/powershell/azure
 
 [Přečtěte si další informace](../virtual-machines/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Přečtěte si kurz](tutorial-migrate-vmware.md) migrace virtuálních počítačů VMware do Azure s replikací bez agentů, abyste pochopili požadavky na nástroj.
 - [Postupujte podle těchto pokynů](./create-manage-projects.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .

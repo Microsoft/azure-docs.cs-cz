@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96743373"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
@@ -59,7 +59,7 @@ Když je rozšíření serveru NPS pro Azure integrované s NPS a Brána vzdále
 1. Server NPS, ve kterém je rozšíření nainstalované, pošle na Brána vzdálené plochy Server zprávu RADIUS Access-Accept pro zásady CAP k vzdálené ploše.
 1. Uživateli je udělen přístup k požadovanému síťovému prostředku prostřednictvím Brána VP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato část podrobně popisuje požadavky nezbytné před integrací Azure AD MFA s Brána vzdálené plochy. Než začnete, musíte mít splněné následující požadavky.  
 

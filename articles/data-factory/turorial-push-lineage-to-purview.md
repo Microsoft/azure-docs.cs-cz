@@ -10,10 +10,10 @@ ms.custom:
 - references_regions
 ms.date: 12/3/2020
 ms.openlocfilehash: 3f2297ae619145ec19b53ba79d70b7c085cbcaab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361447"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Vložení dat Data Factory řádků do Azure dosah (Preview)
@@ -22,7 +22,7 @@ ms.locfileid: "100361447"
 
 V tomto kurzu použijete Data Factory uživatelské rozhraní (UI) k vytvoření kanálu, který spouští aktivity a data na řádcích sestav pro účet Azure dosah. Pak můžete zobrazit všechny informace o zadaném řádku v účtu Azure dosah.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Azure Data Factory**. Pokud nemáte Azure Data Factory, přečtěte si téma [vytvoření Azure Data Factory](./quickstart-create-data-factory-portal.md).
 * **Účet Azure dosah**. Účet dosah zachycuje všechna data na řádku generovaná objektem pro vytváření dat. Pokud nemáte účet Azure dosah, přečtěte si téma [Vytvoření Azure dosah](../purview/create-catalog-portal.md).

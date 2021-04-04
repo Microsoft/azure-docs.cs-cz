@@ -9,10 +9,10 @@ ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a0694003e2eb5005186f5c7ad450533437955d82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92217924"
 ---
 Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway klasické virtuální sítě otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
