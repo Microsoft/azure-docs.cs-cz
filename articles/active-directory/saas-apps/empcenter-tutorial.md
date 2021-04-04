@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.openlocfilehash: b537b29e4ea866d7636eff05d043a00c710af0d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Kurz: Azure Active Directory integrace s EmpCenter
@@ -30,7 +30,7 @@ Integrace EmpCenter s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s EmpCenter potřebujete následující položky:
 

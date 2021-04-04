@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020464"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Kurz: zápis uživatelsky definované funkce jazyka C# pro Azure Stream Analytics úlohy (Preview)
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Otestujte úlohu Stream Analytics místně.
 > * Publikujte svoji úlohu do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 

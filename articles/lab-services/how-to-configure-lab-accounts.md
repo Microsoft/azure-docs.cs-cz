@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak nakonfigurovat automatické vypínán�
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91650030"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Konfigurace automatického vypnutí virtuálních počítačů pro účet testovacího prostředí

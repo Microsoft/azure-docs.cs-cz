@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.openlocfilehash: 3d36f74231b7253a46691b7418aa44ec37d816bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454646"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Kurz: Azure Active Directory integrace s držby Novotný Factiva
@@ -30,7 +30,7 @@ Integrace držby Novotný Factiva se službou Azure AD poskytuje následující 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s držby Petr Factiva potřebujete následující položky:
 

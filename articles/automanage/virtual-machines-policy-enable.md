@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91714893"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Povolit pro virtuální počítače možnost automanage prostřednictvím Azure Policy
@@ -20,7 +20,7 @@ ms.locfileid: "91714893"
 Pokud chcete povolit autosprávu pro spoustu virtuálních počítačů, můžete to udělat pomocí integrované [Azure Policy](..\governance\azure-management.md). Tento článek vás provede hledáním správné zásady a jejím přiřazením, aby se povolila funkce automanage v Azure Portal.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
