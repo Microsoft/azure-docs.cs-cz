@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87420222"
 ---
 # <a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
@@ -289,7 +289,7 @@ Tyto kategorie a jejich příslušné klíče platí pro aplikace Azure, Virtual
 | --- | --- | --- | --- |
 | ***Analýza** _ | _*_Analytics_*_ | _*_analýzy – Azure – aplikace_*_ | _ *_Analytics – amp_** |
 | Přehledy dat | data – přehledy | data – přehledy | data – přehledy |
-| Analýza dat | data – analýza | data – analýza | data – analýza |
+| Datové analýzy | data – analýza | data – analýza | data – analýza |
 | Velký objem dat | velké objemy dat | bigData | velké objemy dat |
 | Prediktivní analýza | prediktivní analýza | prediktivní analýza | prediktivní analýza |
 | Analýzy v reálném čase/streamování | streamování v reálném čase – analýza | streamování v reálném čase – analýza | streamování v reálném čase – analýza |

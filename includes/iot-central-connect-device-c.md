@@ -5,13 +5,13 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
 ms.openlocfilehash: 16cba46d9c0f6a933965366d82eb8e21c4ab1ca6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97033832"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku potřebujete následující aplikaci Azure IoT Central vytvořenou pomocí šablony **vlastní aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](../articles/iot-central/core/quick-deploy-iot-central.md). Aplikace musí být vytvořená na základě 14. července 2020 nebo po ní.
 

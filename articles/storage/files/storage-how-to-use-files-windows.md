@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94626890"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
@@ -41,7 +41,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Zkontrolujte, že je otevřený port 445: Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Můžete zjistit, jestli brána firewall blokuje port 445 pomocí `Test-NetConnection` rutiny. Další informace o tom, jak obejít blokovaný port 445, najdete v části [Příčina 1: port 445 je blokován](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) v naší příručce pro řešení potíží s Windows.
 
