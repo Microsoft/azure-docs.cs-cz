@@ -13,10 +13,10 @@ ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 89923bbbb6f1745a4efe033d795a6ee90d1e4d32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223189"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Ukázka konfigurace protokolu IPv6 front-endu ve virtuální síťové skriptu pomocí Standard Load Balancer (Preview)
@@ -27,7 +27,7 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před nasazením duální aplikace stacku do Azure musíte nakonfigurovat předplatné jenom jednou pro tuto funkci verze Preview pomocí následujících Azure PowerShell:
 
 Zaregistrujte se následujícím způsobem:
