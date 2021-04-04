@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928025"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
@@ -23,7 +23,7 @@ Můžete například nakonfigurovat službu, která bude zálohovat svá data a 
 - **Případ ztráty dat**: náhodné odstranění nebo poškození služby. Správce například omylem odstraní službu.
 - **Případ poškození dat**: chyby ve službě způsobují poškození dat. Například poškození dat může nastat, pokud upgrade kódu služby zapisuje vadná data do spolehlivé kolekce. V takovém případě může být nutné obnovit kód i data do předchozího stavu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aby bylo možné spustit obnovení, musí být pro cluster povolená _služba analýzy chyb (v)_ .
 - _Služba obnovení záloh (BRS)_ vytvořila zálohu.

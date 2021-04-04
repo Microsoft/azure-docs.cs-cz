@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: b15b20ee8e643dc260578d17913810aaf68cc929
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181087"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Kurz: Konfigurace AlertMedia pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v AlertMedia i Azure Active
 > * Zřizování skupin a členství ve skupinách v AlertMedia
 > * [Jednotné přihlašování](./alertmedia-tutorial.md) k AlertMedia (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

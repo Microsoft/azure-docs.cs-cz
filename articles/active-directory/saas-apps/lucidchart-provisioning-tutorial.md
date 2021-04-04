@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: e7447a8d742caef7a2c2ff0211e7e8002307b9e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96177945"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v Lucidchart i Azure Active
 > * Zřizování skupin a členství ve skupinách v Lucidchart
 > * [Jednotné přihlašování](./lucidchart-tutorial.md) k Lucidchart (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

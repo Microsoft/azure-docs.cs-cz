@@ -4,10 +4,10 @@ description: Azure Data Box můžete použít k počátečnímu počátečnímu 
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752545"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline osazení pomocí Azure Data Box pro DPM a MABS (Preview)
@@ -201,7 +201,7 @@ Po úspěšném zálohování dat do Azure Data Box Disk postupujte podle těcht
 
 - Po úspěšném vytvoření bodu obnovení, který odpovídá počátečnímu zálohování, pak server DPM/MABS odstraní účet úložiště (nebo konkrétní obsah) přidružený k úloze Azure Data Box.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Agent Microsoft Azure Backup (MAB) na serveru DPM vytvoří pro vás aplikaci Azure AD ve vašem tenantovi. Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro dosazení hodnot do režimu offline.
 

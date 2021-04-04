@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: Zhchia
 ms.openlocfilehash: d003a512ebde626b8726dfccc58110e53f1cd467
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180910"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace globální synchronizace identity Relay pro Automatické zřizování uživatelů
@@ -38,7 +38,7 @@ Tento kurz popisuje kroky, které je třeba provést v globální synchronizaci 
 > [!NOTE]
 > Konektor pro zřizování globální předávací identity pro synchronizaci využívá metodu autorizace SCIM, která se už nepodporuje z důvodu obav zabezpečení. Úsilí s globálním přenosem umožňuje přepnout na bezpečnější metodu autorizace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

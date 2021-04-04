@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
 ms.openlocfilehash: aef8eb429bf772dff4d4b0de629cb1118b140e10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180383"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appian"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Appian
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Appian s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Appian svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

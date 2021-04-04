@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752273"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
@@ -24,7 +24,7 @@ Azure Key Vault poskytuje dva typy kontejnerů pro ukládání a správu tajnýc
 |Typ kontejneru|Podporované typy objektů|Koncový bod roviny dat|
 |--|--|--|
 | **Trezory**|<ul><li>Klíče chráněné softwarem</li><li>Klíče chráněné HSM (s SKU úrovně Premium)</li><li>Certifikáty</li><li>Klíče účtu úložiště</li></ul> | https://{trezor-Name}. trezor. Azure. NET
-|**Managed HSM** |<ul><li>Klíče chráněné pomocí HSM</li></ul> | https://{HSM-Name}. managedhsm. Azure. NET
+|**Spravovaný modul HSM** |<ul><li>Klíče chráněné pomocí HSM</li></ul> | https://{HSM-Name}. managedhsm. Azure. NET
 
 Tady jsou přípony adres URL používané pro přístup k jednotlivým typům objektů.
 

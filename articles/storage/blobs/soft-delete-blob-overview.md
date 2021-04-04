@@ -10,15 +10,15 @@ ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100390352"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
-Obnovitelné odstranění pro objekty blob chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je u objektů BLOB povolená možnost obnovitelného odstranění pro účet úložiště, objekty blob, verze objektů BLOB a snímky v tomto účtu úložiště se po odstranění můžou obnovit v době uchování, kterou zadáte.
+Obnovitelné odstranění objektů blob chrání vaše data před náhodným nebo chybným upravením nebo odstraněním. Pokud pro účet úložiště povolíte obnovitelné odstranění objektů blob, budete moct v rámci zadané doby uchovávání obnovit odstraněné objekty blob, verze objektů blob a snímky v tomto účtu úložiště.
 
 Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout obnovitelné odstranění. Další informace o povolení obnovitelného odstranění najdete v tématu [povolení a Správa obnovitelného odstranění objektů BLOB](./soft-delete-blob-enable.md).
 
