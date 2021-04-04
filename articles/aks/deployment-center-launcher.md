@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932213"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum nasazení pro Azure Kubernetes
@@ -24,7 +24,7 @@ V tomto kurzu:
 > * Projděte si kanál průběžného doručování (CD).
 > * Vyčistěte prostředky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 

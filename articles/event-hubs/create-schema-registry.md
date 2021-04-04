@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.custom: references_regions
 ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576804"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Vytvoření registru schématu Azure Event Hubs (Preview)
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit skupinu schémat se schématy v regi
 > - Tato funkce je k dispozici pouze ve **standardních** a **vyhrazených** vrstvách, nikoli na úrovni **Basic** .
 > - Pokud je centrum událostí ve **virtuální síti**, nebudete moct v Azure Portal vytvářet schémata, pokud nebudete mít přístup k portálu z virtuálního počítače ve stejné virtuální síti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 [Vytvořte obor názvů Event Hubs](event-hubs-create.md#create-an-event-hubs-namespace). Můžete použít také existující obor názvů. 
 
 ## <a name="create-a-schema-group"></a>Vytvoření skupiny schémat

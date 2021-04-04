@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96451615"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Připojení k fondu SQL bez serveru pomocí Power BI Professional
@@ -28,7 +28,7 @@ ms.locfileid: "96451615"
 
 V tomto kurzu provedeme kroky pro připojení Power BIho desktopu k fondu SQL bez serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vystavování dotazů potřebujete následující nástroje:
 

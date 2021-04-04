@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96451601"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k Synapse SQL pomocí sady Visual Studio a SSDT
@@ -32,7 +32,7 @@ Pomocí sady Visual Studio se můžete dotazovat na vyhrazený fond SQL pomocí 
 > [!NOTE]
 > SSDT není podporován fondem SQL bez serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít tento kurz, musíte mít následující komponenty:
 
