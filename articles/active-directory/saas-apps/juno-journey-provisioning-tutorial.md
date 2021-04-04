@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0efb451997b0ed842e6757a7e6b30dd88b33f4aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96177881"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Kurz: Konfigurace Juno cesty pro Automatické zřizování uživatelů
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci cesty Juno a Azure
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Juno cestou
 > * [Jednotné přihlašování](./juno-journey-tutorial.md) k Juno cestě (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

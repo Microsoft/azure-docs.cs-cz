@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97106967"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Kurz: Přidání prostředku do šablony ARM
 
 V [předchozím kurzu](template-tutorial-create-first-template.md)jste zjistili, jak vytvořit prázdnou šablonu Azure Resource Manager (šablonu ARM) a nasadit ji. Teď můžete nasadit skutečný prostředek. V tomto kurzu přidáte účet úložiště. Dokončení tohoto kurzu trvá přibližně **9 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [Úvodní kurz týkající se šablon](template-tutorial-create-first-template.md), ale není to nutné.
 

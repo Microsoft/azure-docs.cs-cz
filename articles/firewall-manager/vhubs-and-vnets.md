@@ -44,7 +44,7 @@ Následující tabulka porovnává tyto dvě možnosti architektury a může vá
 |**Podpora více poskytovatelů zabezpečení**|Podporuje se ručně nakonfigurovaným vynuceným tunelovým propojením na brány firewall třetích stran.|Automatizovaná podpora pro dva poskytovatele zabezpečení: Azure Firewall pro filtrování privátních přenosů a třetí strana pro filtrování Internetu|
 |**Firewall webových aplikací ve službě Application Gateway** |Podporováno v Virtual Network|Aktuálně podporované v síti paprsků|
 |**Síťové virtuální zařízení**|Podporováno v Virtual Network|Aktuálně podporované v síti paprsků|
-|**Podpora Azure DDoS Protection Standard**|Ano|No|
+|**Podpora Azure DDoS Protection Standard**|Yes|No|
 
 ## <a name="next-steps"></a>Další kroky
 

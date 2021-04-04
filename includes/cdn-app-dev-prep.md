@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95993379"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete psát kód pro správu CDN, musíte provést nějakou přípravu, aby kód mohl pracovat s Azure Resource Manager. K provedení této přípravy potřebujete:
 
 * Vytvořte skupinu prostředků, která bude obsahovat profil CDN vytvořený v tomto kurzu.

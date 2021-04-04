@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96121752"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Propojení dat od poskytovatelů analýzy hrozeb
@@ -64,7 +64,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Připojení Azure Sentinel k vaší platformě pro analýzu hrozeb
 
-### <a name="prerequisites"></a>Předpoklady  
+### <a name="prerequisites"></a>Požadavky  
 
 - Role Azure AD buď globálního správce nebo správce zabezpečení, aby udělila oprávnění k produktu TIP nebo vlastní aplikaci, která používá přímou integraci s rozhraním API Microsoft Graph tiIndicators Security.
 
@@ -94,7 +94,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Připojení Azure Sentinel k serverům TAXII
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel pro ukládání indikátorů hrozeb.
 

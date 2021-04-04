@@ -15,17 +15,17 @@ ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 531c42b763f234baaf6a93924979b8c7dca57423
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87905801"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>Ukázky Azure PowerShellu pro API Management
 
 Následující tabulka obsahuje ukázky skriptů pro práci se službou API Management z PowerShellu.
 
-| Zřizování a správa | Description |
+| Zřizování a správa | Popis |
 | -------------------- | ----------- |
 |[Přidat uživatele](./scripts/powershell-add-user-and-get-subscription-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří uživatele v API Managementu a získá klíč předplatného.|
 |[Vytvoření služby APIM](./scripts/powershell-create-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Vytvoří službu API Management se skladovou položkou Developer.|
