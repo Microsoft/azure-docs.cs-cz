@@ -4,10 +4,10 @@ description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluste
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92319889"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric

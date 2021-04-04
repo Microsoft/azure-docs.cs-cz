@@ -16,10 +16,10 @@ ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: feab48f32396bcc89621433930c9a9f4689d8286
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97355439"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Kurz: ruční konfigurace skupiny dostupnosti (SQL Server na virtuálních počítačích Azure)
@@ -33,7 +33,7 @@ I když tento článek konfiguruje prostředí skupiny dostupnosti ručně, je m
 **Časový odhad**: po dokončení splnění [požadavků](availability-group-manually-configure-prerequisites-tutorial.md) zabere asi 30 minut.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On SQL Server. Pokud potřebujete další informace, přečtěte si téma [Přehled skupin dostupnosti Always On (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 

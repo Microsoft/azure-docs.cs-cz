@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359811"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
@@ -26,7 +26,7 @@ Místní konfigurační server nasadíte při použití [Azure Site Recovery](si
 
 Konfigurační server musí být nastavený jako vysoce dostupný virtuální počítač VMware s určitým minimálním požadavky na hardware a velikost. Pro pohodlné a snadné nasazení Site Recovery poskytuje šablonu aplikace Open Virtualization Virtualization (vajíček), která umožňuje nastavit konfigurační server, který splňuje všechny požadavky, které jsou tady uvedené.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Minimální požadavky na hardware pro konfigurační server jsou shrnuté v následujících oddílech.
 

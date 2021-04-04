@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94629287"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Site-to-site pro použití se soubory Azure
@@ -23,7 +23,7 @@ Důrazně doporučujeme, abyste si přečetli [Přehled sítě Azure Files](stor
 
 Tento článek podrobně popisuje kroky pro konfiguraci sítě VPN typu Site-to-site pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat provoz synchronizace pro Synchronizace souborů Azure přes síť Site-to-Site VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Sdílená složka Azure, kterou byste chtěli místně připojit. Sdílené složky Azure se nasazují v rámci účtů úložiště, což jsou konstrukce správy, které představují sdílený fond úložiště, ve kterém můžete nasazovat víc sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Další informace o tom, jak nasadit sdílené složky Azure a účty úložiště, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 
 - Privátní koncový bod pro účet úložiště, který obsahuje sdílenou složku Azure, kterou chcete místně připojit. Další informace o tom, jak vytvořit privátní koncový bod, najdete v tématu [Konfigurace koncových bodů sítě Azure Files](storage-files-networking-endpoints.md?tabs=azure-portal). 

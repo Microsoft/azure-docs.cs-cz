@@ -75,8 +75,8 @@ Při plánování síťové infrastruktury clusteru avere vFXT postupujte podle 
   |----------|-----------|----------|
   | Skupina prostředků | Ano, je-li prázdné | Musí být prázdné|
   | Účet úložiště | **Ano** , pokud se po vytvoření clusteru připojí existující kontejner objektů BLOB <br/>  **Ne** při vytváření nového kontejneru objektů BLOB během vytváření clusteru | Existující kontejner objektů BLOB musí být prázdný. <br/> &nbsp; |
-  | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
-  | Podsíť | Ano | Nemůže obsahovat jiné prostředky. |
+  | Virtuální síť | Yes | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
+  | Podsíť | Yes | Nemůže obsahovat jiné prostředky. |
 
 ## <a name="ip-address-requirements"></a>Požadavky na IP adresu
 

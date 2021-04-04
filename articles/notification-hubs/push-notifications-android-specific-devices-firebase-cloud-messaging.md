@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: be83471681948cbb9fe85f0d135343ab73bd72bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92315090"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: posílání oznámení na konkrétní zařízení pomocí Notification Hubs a Firebase cloudového zasílání zpráv Google
@@ -42,7 +42,7 @@ V tomto kurzu provedete následující akce:
 > * Odešlete označená oznámení.
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz sestaví na aplikaci, kterou jste vytvořili v [kurzu: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md). Před zahájením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md).
 

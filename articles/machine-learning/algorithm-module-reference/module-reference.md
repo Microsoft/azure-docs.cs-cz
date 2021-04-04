@@ -32,7 +32,7 @@ Nápovědu k výběru algoritmů najdete v tématu.
 ## <a name="data-preparation-modules"></a>Moduly pro přípravu dat
 
 
-| Funkce | Popis | Modul |
+| Funkce | Description | Modul |
 | --- |--- | --- |
 | Vstup a výstup dat | Přesuňte data z cloudových zdrojů do vašeho kanálu. Zápis výsledků nebo mezilehlých dat do Azure Storage, SQL Database nebo podregistru, při spuštění kanálu nebo použití cloudového úložiště k výměně dat mezi kanály.  | [Ruční zadávání dat](enter-data-manually.md) <br/> [Exportovat data](export-data.md) <br/> [Import dat](import-data.md) |
 | transformace dat | Operace s daty, která jsou jedinečná pro strojové učení, jako je normalizace nebo binningu dat, snižování dimenzionálního omezení a převod dat mezi různými formáty souborů.| [Přidat sloupce](add-columns.md) <br/> [Přidat řádky](add-rows.md) <br/> [Použití matematických operací](apply-math-operation.md) <br/> [Použití transformace SQL](apply-sql-transformation.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Oříznutí hodnot](clip-values.md) <br/> [Převod na C](convert-to-csv.md) <br/> [Převod na datovou sadu](convert-to-dataset.md) <br/> [Převod na hodnoty indikátoru](convert-to-indicator-values.md) <br/> [Úpravy metadat](edit-metadata.md) <br/> [Seskupení dat do přihrádek](group-data-into-bins.md) <br/> [Spojení dat](join-data.md) <br/> [Normalizace dat](normalize-data.md) <br/> [Rozdělení a ukázky](partition-and-sample.md)  <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Transformace pro výběr sloupců](select-columns-transform.md) <br/> [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Rozdělení dat](split-data.md) |
@@ -41,7 +41,7 @@ Nápovědu k výběru algoritmů najdete v tématu.
 
 ## <a name="machine-learning-algorithms"></a>Algoritmy strojového učení
 
-| Funkce | Popis | Modul |
+| Funkce | Description | Modul |
 | --- |--- | --- |
 | Regrese | Předpověď hodnoty. | [Posílená regrese rozhodovacího stromu](boosted-decision-tree-regression.md) <br/> [Regrese rozhodovacího lesa](decision-forest-regression.md) <br/> [Rychlá kvantilová regrese rozhodovacích stromů](fast-forest-quantile-regression.md)  <br/> [Lineární regrese](linear-regression.md)  <br/> [Regrese neurální sítě](neural-network-regression.md)  <br/> [Poissonova regrese](poisson-regression.md)  <br/>|
 | Clustering | Seskupte data dohromady.| [Clustering K-Means](k-means-clustering.md)
@@ -49,7 +49,7 @@ Nápovědu k výběru algoritmů najdete v tématu.
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Moduly pro vytváření a vyhodnocování modelů
 
-| Funkce | Popis | Modul |
+| Funkce | Description | Modul |
 | --- |--- | --- |
 | Školení modelů | Spusťte data pomocí algoritmu. |  [Trénování modelu clusteringu](train-clustering-model.md) <br/> [Trénování modelu](train-model.md) <br/> [Pytorch model výuky](train-pytorch-model.md) <br/> [Ladění hyperparametrů modelů](tune-model-hyperparameters.md) |
 | Bodování a vyhodnocení modelu | Změřte přesnost vyučeného modelu. | [Použití transformace](apply-transformation.md) <br/> [Přiřazení dat do clusterů](assign-data-to-clusters.md) <br/> [Křížové ověření modelu](cross-validate-model.md) <br/> [Vyhodnocení modelu](evaluate-model.md) <br/> [Model určení skóre obrázků](score-image-model.md) <br/> [Určení skóre modelu](score-model.md) |
