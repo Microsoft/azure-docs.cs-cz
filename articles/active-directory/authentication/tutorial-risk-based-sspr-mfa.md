@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97aabfa39954aa6ba937166eb54c05ac4874ea7e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96741334"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-ad-multi-factor-authentication-or-password-changes"></a>Kurz: použití zjišťování rizik pro přihlášení uživatelů k aktivaci Multi-Factor Authentication nebo změny hesla služby Azure AD
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Zapnutí vícefaktorového ověřování na základě rizikové události
 > * Testování zásad na základě rizik pro pokusy o přihlášení uživatelů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

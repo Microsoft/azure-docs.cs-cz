@@ -16,10 +16,10 @@ ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97358312"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Konfigurace DNN pro instanci clusteru s podporou převzetí služeb při selhání
@@ -39,7 +39,7 @@ Název distribuované sítě (DNN) nahrazuje název virtuální sítě (VNN) jak
 
 V případě nasazení FCI stále existuje VNN, ale klient se připojuje k názvu DNS DNN místo názvu VNN. 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Před dokončením kroků v tomto článku byste už měli mít:
 

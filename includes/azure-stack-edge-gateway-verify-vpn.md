@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: efa9e996cbfbc8954c294b4da8900b1d5bcbeeed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466642"
 ---
 K ověření sítě VPN můžete vytvořit účet úložiště, který může být k dispozici jenom pro virtuální síť, kterou jste vytvořili. Pomocí těchto kroků vytvořte a přidružte tento účet úložiště k virtuální síti, kterou jste vytvořili:

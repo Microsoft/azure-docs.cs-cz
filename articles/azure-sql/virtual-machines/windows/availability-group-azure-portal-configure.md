@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359502"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Použití Azure Portal ke konfiguraci skupiny dostupnosti (Preview) pro SQL Server na virtuálním počítači Azure 
@@ -33,7 +33,7 @@ Tato funkce je aktuálně ve verzi Preview.
 I když tento článek používá Azure Portal ke konfiguraci prostředí skupiny dostupnosti, je taky možné to udělat pomocí [PowerShellu nebo Azure CLI](availability-group-az-commandline-configure.md), [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md)nebo [ručně](availability-group-manually-configure-tutorial.md) . 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci skupiny dostupnosti Always On pomocí Azure Portal musíte mít následující požadavky: 
 
@@ -238,7 +238,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ---
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud narazíte na problémy, můžete zkontrolovat historii nasazení a zkontrolovat běžné chyby i jejich rozlišení. 
 

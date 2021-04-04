@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148429"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
@@ -66,7 +66,7 @@ Po dokončení nasazování můžete běžící aplikaci zobrazit tak, že přej
 
 Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-westus*.
 
-Vyberte adresu URL webové aplikace v pravém horním rohu přehledu **App Service** a zobrazte běžící aplikaci v prohlížeči.
+Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
 
 ![Snímek obrazovky s zvýrazněnou adresou URL webové aplikace zobrazuje přehled App Service.][deploy-app-portal-04]
 
@@ -96,7 +96,7 @@ Stejně jako v předchozí části můžete běžící aplikaci zobrazit tak, ž
 
 Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-eastus*.
 
-Vyberte adresu URL webové aplikace v pravém horním rohu **přehledu App Service** a zobrazte běžící aplikaci v prohlížeči.
+Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
 
 ![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-07]
 

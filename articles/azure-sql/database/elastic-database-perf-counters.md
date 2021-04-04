@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92781256"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Vytváření čítačů výkonu pro sledování výkonu správce map horizontálních oddílů
@@ -28,7 +28,7 @@ Můžete zachytit výkon [správce mapy horizontálních oddílů](elastic-scale
 
 **Pro nejnovější verzi:** Přejít na [Microsoft. Azure. SqlDatabase. ElasticScale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Viz také [Upgrade aplikace, aby se použila nejnovější knihovna klienta elastické databáze](elastic-scale-upgrade-client-library.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Chcete-li vytvořit kategorii a čítače výkonu, musí být uživatel členem místní skupiny **Administrators** v počítači, který je hostitelem aplikace.  
 * Chcete-li vytvořit instanci čítače výkonu a aktualizovat čítače, musí být uživatel členem skupiny **Administrators** nebo **Performance Monitor Users** .
