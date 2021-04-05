@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791590"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core v Azure Service Fabric Reliable Services
@@ -472,7 +472,7 @@ Při zpřístupnění Internetu by služba bez stavu měla používat známý a 
 | Typ | Doporučení | Poznámky |
 | ---- | -------------- | ----- |
 | Webový server | Kestrel | Kestrel je upřednostňovaný webový server, jak je podporován v systémech Windows a Linux. |
-| Konfigurace portu | static | V konfiguraci ServiceManifest.xml by měl být nakonfigurovaný dobře známý statický port `Endpoints` , třeba 80 pro protokol HTTP nebo 443 pro protokol HTTPS. |
+| Konfigurace portů | static | V konfiguraci ServiceManifest.xml by měl být nakonfigurovaný dobře známý statický port `Endpoints` , třeba 80 pro protokol HTTP nebo 443 pro protokol HTTPS. |
 | ServiceFabricIntegrationOptions | Žádné | Použijte `ServiceFabricIntegrationOptions.None` možnost při konfiguraci služby Service Fabric middleware pro integraci, aby se služba nepokoušela ověřit příchozí požadavky pro jedinečný identifikátor. Externí uživatelé vaší aplikace nebudou znát jedinečné identifikační údaje, které používá middleware. |
 | Počet instancí | -1 | V typických případech použití by nastavení počet instancí mělo být nastavené na hodnotu *-1*. To se provádí tak, že je instance dostupná na všech uzlech, které přijímají provoz z nástroje pro vyrovnávání zatížení. |
 
@@ -497,7 +497,7 @@ Bezstavové služby, které se volají jenom v rámci clusteru, by měly použí
 | Typ | Doporučení | Poznámky |
 | ---- | -------------- | ----- |
 | Webový server | Kestrel | I když můžete použít HTTP.sys pro interní bezstavové služby, je nejlepším serverem, který umožňuje sdílet hostitele více instancí služby.  |
-| Konfigurace portu | dynamicky přiřazené | Víc replik stavové služby může sdílet hostitelský proces nebo hostitelský operační systém, takže bude potřebovat jedinečné porty. |
+| Konfigurace portů | dynamicky přiřazené | Víc replik stavové služby může sdílet hostitelský proces nebo hostitelský operační systém, takže bude potřebovat jedinečné porty. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Díky dynamickému přiřazování portů toto nastavení zabrání problému chybné identity popsanému výše. |
 | InstanceCount | Libovolný | Nastavení počtu instancí lze nastavit na libovolnou hodnotu nutnou k provozu služby. |
 
@@ -507,7 +507,7 @@ Stavové služby, které jsou volány pouze v rámci clusteru, by měly použív
 | Typ | Doporučení | Poznámky |
 | ---- | -------------- | ----- |
 | Webový server | Kestrel | `HttpSysCommunicationListener`Není určen pro použití ve stavových službách, ve kterých repliky sdílí hostitelský proces. |
-| Konfigurace portu | dynamicky přiřazené | Víc replik stavové služby může sdílet hostitelský proces nebo hostitelský operační systém, takže bude potřebovat jedinečné porty. |
+| Konfigurace portů | dynamicky přiřazené | Víc replik stavové služby může sdílet hostitelský proces nebo hostitelský operační systém, takže bude potřebovat jedinečné porty. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Díky dynamickému přiřazování portů toto nastavení zabrání problému chybné identity popsanému výše. |
 
 ## <a name="next-steps"></a>Další kroky

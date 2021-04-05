@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102607947"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Přidání atributů uživatele a přizpůsobení uživatelského vstupu v Azure Active Directory B2C
@@ -32,7 +32,7 @@ ms.locfileid: "102607947"
 
 V tomto článku shromáždíte nový atribut během cesty pro registraci v Azure Active Directory B2C (Azure AD B2C). Získáte město uživatele, nakonfigurujete ho jako rozevírací seznam a definujete, jestli je potřeba poskytnout.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103196941"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
@@ -30,7 +30,7 @@ Nástroje pro Azure IoT Edge pro Visual Studio přináší následující výhod
 
 V tomto článku se dozvíte, jak pomocí nástrojů pro Azure IoT Edge pro Visual Studio 2019 vyvíjet moduly IoT Edge. Naučíte se také, jak nasadit projekt do zařízení Azure IoT Edge. V současné době poskytuje Visual Studio 2019 podporu pro moduly napsané v jazyce C a C#. Podporované architektury zařízení jsou Windows x64 a Linux x64 nebo ARM32. Další informace o podporovaných operačních systémech, jazycích a architekturách najdete v tématu [Podpora jazyků a architektur](module-development.md#language-and-architecture-support).
   
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že používáte počítač nebo virtuální počítač s Windows jako vývojový počítač. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 

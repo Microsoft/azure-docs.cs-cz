@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96013747"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
@@ -34,7 +34,7 @@ Můžete se podívat na následující video o obnovování vícevrstvé aplikac
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že rozumíte následujícímu:
 

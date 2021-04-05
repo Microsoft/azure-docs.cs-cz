@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94874521"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
@@ -19,7 +19,7 @@ Ve službě Azure SignalR je k dispozici [rozhraní REST API](https://github.com
 
 V tomto rychlém startu se dozvíte, jak odesílat zprávy z aplikace příkazového řádku do aplikací připojených klientů v jazyce C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 

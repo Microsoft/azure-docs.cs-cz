@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102607913"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
@@ -35,7 +35,7 @@ Součástí vašeho adresáře Azure AD B2C je [předdefinovaná sada atributů]
 
 Azure AD B2C umožňuje zvětšit sadu atributů uložených v každém uživatelském účtu. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](microsoft-graph-operations.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

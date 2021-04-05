@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chrá
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98987001"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
@@ -358,7 +358,7 @@ Je možné změnit předplatné Azure ze stavu, ve kterém *vypršela platnost* 
 - Při *zrušení zřízení* předplatného ztratí funkčnost. Obnovení předplatného na *aktivní* revives funkce zálohování a obnovení. Pokud se zálohovaná data na místním disku uchovávají s dostatečně velkým obdobím uchovávání, můžou se data ze zálohy načíst. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušení zřízení* .
 - I když platnost předplatného *vypršela*, ztratí funkčnost. Po *vypršení platnosti* předplatného se nespustí naplánované zálohy.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud Microsoft Azure Backup server selhává s chybami při fázi nastavení (nebo zálohování nebo obnovení), přečtěte si [dokument kódy chyb](https://support.microsoft.com/kb/3041338).
 Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.md) dotazech.

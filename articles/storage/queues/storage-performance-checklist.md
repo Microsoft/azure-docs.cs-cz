@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97585662"
 ---
 <!-- docutune:casing "Timeout and Server Busy errors" -->
@@ -40,7 +40,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; | Konfigurace .NET | [Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; | Konfigurace .NET | [Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-the-minimum-number-of-threads) |
 | &nbsp; | Paralelismu | [Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; | Nástroje | [Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; | nástroje | [Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; | Opakování | [Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; | Opakování | [Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; | Konfigurace | [Vypnuli jste algoritmus Nagle, aby se zlepšil výkon malých požadavků?](#disable-nagles-algorithm) |

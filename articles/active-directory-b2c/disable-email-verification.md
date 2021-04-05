@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 0f70c8d501a7d56f4bc29e0f2b065760cad625e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97585016"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Zakázat ověřování e-mailů při registraci zákazníka v Azure Active Directory B2C
@@ -31,7 +31,7 @@ Někteří vývojáři aplikací chtějí během procesu registrace přeskočit 
 > [!WARNING]
 > Vypnutí ověřování e-mailu v procesu registrace může vést k spamu. Pokud zakážete výchozí ověřování e-mailů poskytnutých Azure AD B2C, doporučujeme implementovat systém náhradního ověřování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 ## <a name="disable-email-verification"></a>Zakázání ověření e-mailu

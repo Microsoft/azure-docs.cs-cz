@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/21/2021
 ms.author: raynew
 ms.openlocfilehash: b728170521570ff0d83b67671109e82adb7fa7b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102584304"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>Přesunutí prostředků mezi oblasti v PowerShellu
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 **Požadavek** | **Popis**
 --- | ---
 **Oprávnění předplatného** | Ověřte, že máte přístup *vlastníka* k předplatnému obsahující prostředky, které chcete přesunout.<br/><br/> **Proč potřebuji přístup k vlastníkovi?** Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná. Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
