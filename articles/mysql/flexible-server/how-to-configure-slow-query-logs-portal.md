@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: a61c8e3451d661dae2e5ad56a0d4a947252ec873
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94540059"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům pro Azure Database for MySQL-flexibilní Server pomocí Azure Portal
@@ -20,7 +20,7 @@ ms.locfileid: "94540059"
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout Azure Database for MySQL flexibilního [dotazování serveru protokoly](concepts-slow-query-logs.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Kroky v tomto článku vyžadují, abyste měli [flexibilní Server](quickstart-create-server-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování

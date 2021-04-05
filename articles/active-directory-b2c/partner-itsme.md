@@ -12,17 +12,17 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87489511"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurace itsme OpenID Connect (OIDC) pomocí Azure Active Directory B2C
 
 Aplikace itsme Digital ID vám umožní bezpečně se přihlásit bez čtecího zařízení, hesla, dvojúrovňového ověřování nebo více kódů PIN. Aplikace itsme poskytuje silné ověřování zákazníků s ověřenou identitou. V tomto článku se dozvíte, jak integrovat ověřování Azure AD B2C pomocí itsme OpenID Connect (OIDC) pomocí zásad toku uživatele tajného kódu klienta.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -40,7 +40,7 @@ Abyste mohli začít, budete potřebovat:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-| Krok | Description |
+| Krok | Popis |
 |------|------|
 |1     | Na svém webu nebo v aplikaci zahrňte **Přihlaste se pomocí tlačítka itsme** , a to tak, že se Přizpůsobte v toku Azure AD B2C uživatele. Tok interakce se spustí, když uživatel klikne na toto tlačítko.  |
 |2     | Azure AD B2C spustí tok OpenID Connect odesláním žádosti o autorizaci do rozhraní API tajného kódu klienta itsme. K dispozici je také koncový bod známého/OpenID-Configuration obsahující informace o koncových bodech.  |

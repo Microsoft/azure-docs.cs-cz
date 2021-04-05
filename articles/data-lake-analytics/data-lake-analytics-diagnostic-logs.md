@@ -125,7 +125,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -139,7 +139,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -175,7 +175,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -193,7 +193,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | JobId |Řetězec |ID přiřazené k úloze |
 | JobName |Řetězec |Název, který byl zadán pro úlohu |
