@@ -8,10 +8,10 @@ ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96348649"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumník služby Azure Storage
@@ -24,7 +24,7 @@ Použijte stejný nástroj ke správě různých entit Azure na jednom místě. 
 > [!NOTE]
 > Integrace služby Azure Cosmos DB s Průzkumníkem služby Storage je zastaralá. Všechny stávající funkce nebudou odebrány z tohoto vydání nejméně po dobu jednoho roku. Místo toho byste měli použít [portál Azure Portal](https://portal.azure.com/), [desktopovou aplikaci Azure portal](https://portal.azure.com/App/Download) nebo samostatný [Azure Cosmos DB Explorer](data-explorer.md) . Tyto alternativní možnosti obsahují mnoho nových funkcí, které Průzkumník služby Storage v současnosti nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Cosmos s rozhraním API SQL nebo rozhraním API Azure Cosmos DB pro MongoDB. Pokud účet nemáte, můžete ho vytvořit v Azure Portal. Další informace najdete v tématu [Azure Cosmos DB: sestavení webové aplikace SQL API s využitím .NET a Azure Portal](create-sql-api-dotnet.md) .
 
@@ -249,7 +249,7 @@ Můžete kliknout pravým tlačítkem na předplatné v podokně Průzkumník a 
 
 * Operace pro **aktivační události** a systém **souborů UDF** jsou podobné **uloženým procedurám**.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Níže jsou uvedena řešení běžných potíží, které vznikají při použití Azure Cosmos DB v Průzkumník služby Storage.
 

@@ -25,7 +25,7 @@ Hodnota atributu UserPrincipalName je uživatelské jméno Azure AD pro uživate
 ## <a name="upn-terminology"></a>Terminologie hlavního názvu uživatele
 V tomto článku se používá následující terminologie:
 
-|Období|Popis|
+|Období|Description|
 |-----|-----|
 |Počáteční doména|Výchozí doména (onmicrosoft.com) v Tenantovi služby Azure AD. Například contoso.onmicrosoft.com.|
 |Adresa pro směrování e-mailů Microsoft Online (MOERA)|Azure AD vypočítá MOERA z atributu Azure AD MailNickName a počáteční doménu Azure AD jako &lt; MailNickName &gt;&#64;&lt; počáteční doménu &gt; .|

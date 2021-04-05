@@ -12,17 +12,17 @@ ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
 ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97588807"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>Nastavení CI/CD pro aplikaci pro Node.js s DevOps Starter pomocí akcí GitHubu
 
 V tomto rychlém startu použijete zjednodušené úvodní prostředí DevOps k nastavení pracovního postupu průběžné integrace (CI) a průběžného doručování (CD) pro vaši aplikaci Node.js pomocí akcí GitHubu. DevOps Starter můžete použít k nastavení všeho, co potřebujete pro vývoj, nasazování a monitorování vaší aplikace. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Účet [GitHub](https://github.com/)

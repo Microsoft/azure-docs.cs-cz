@@ -69,7 +69,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 V následující tabulce jsou popsány správné syntaxe pro určení proměnné HTTP.
 
 
-| Syntax | Příklad | Popis |
+| Syntax | Příklad | Description |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt; HTTPVariable &gt; . |
 | % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému  &lt; HTTPVariableDelimiter &gt; . |
@@ -92,7 +92,7 @@ Oddělovač lze zadat za proměnnou HTTP, aby bylo možné provést některý z 
 
 Oddělovače jsou popsány v následující tabulce.
 
-| Oddělovač | Popis |
+| Oddělovač | Description |
 | --------- | ----------- |
 | := | Označuje, že výchozí hodnota bude přiřazena proměnné, pokud je buď: <br />– Chybějící <br />-Nastavit na hodnotu NULL. |
 | :+ | Označuje, že se k proměnné přiřadí výchozí hodnota, když je jí přiřazena hodnota. |
@@ -125,7 +125,7 @@ Výchozí hodnota může být přiřazena k hlavičce, pokud splňuje některou 
 
 Následující tabulka popisuje, jak definovat výchozí hodnotu.
 
-| Podmínka | Syntax | Příklad | Popis |
+| Podmínka | Syntax | Příklad | Description |
 | --------- | ------ | --------| ----------- |
 | Nastavte hlavičku na výchozí hodnotu, pokud splňuje některou z následujících podmínek: <br /><br />– Chybějící hlavička <br /><br />-Hodnota hlavičky je nastavena na hodnotu NULL.| % {Proměnná: = hodnota} | % {http_referrer: = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud buď chybí, nebo nastaveno na hodnotu null. Žádná akce se neprovede, pokud byla nastavena. |
 | Nastavte hlavičku na výchozí hodnotu, pokud chybí. | % {Variable = hodnota} | % {http_referrer = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud chybí. Žádná akce se neprovede, pokud byla nastavena. |
@@ -187,7 +187,7 @@ V tomto ukázkovém scénáři je proměnná *REQUEST_URI* nastavena na:
 
 Následující tabulka ukazuje, jak tato syntaxe funguje.
 
-| Ukázková syntaxe | Výsledky | Popis |
+| Ukázková syntaxe | Výsledky | Description |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Vzhledem k tomu, že proměnná začíná vzorem, byla nahrazena. |
 | % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Vzhledem k tomu, že proměnná nekončí vzorem, došlo k žádné změně.|
