@@ -15,10 +15,10 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361549"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna licenčního modelu virtuálního počítače SQL v Azure
@@ -47,7 +47,7 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se dá nakonfigurovat při zřizování virtuálního počítače, nebo kdykoli později. Přepínání modelů licencí nepředstavuje žádné výpadky, nerestartuje virtuální počítač ani službu SQL Server, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Změna modelu licencování virtuálního počítače s SQL Server má následující požadavky: 
 

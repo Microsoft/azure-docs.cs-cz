@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 79076db9de4122c19fcb03bbfc938214097e19f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181590"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Kurz: Konfigurace Rollbar pro Automatické zřizování uživatelů
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v Rollbar i Azure Active Di
 > * Zřizování skupin a členství ve skupinách v Rollbar
 > * [Jednotné přihlašování](./rollbar-tutorial.md) k Rollbar (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

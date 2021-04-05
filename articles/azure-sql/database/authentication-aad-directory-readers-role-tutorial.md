@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
 ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99094705"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Kurz: přiřazení role čtenářů adresáře ke skupině Azure AD a správa přiřazení rolí
@@ -29,7 +29,7 @@ V tomto kurzu se používá funkce zavedené v části [použití cloudových sk
 
 Další informace o výhodách přiřazení role čtenáři adresáře ke skupině Azure AD pro Azure SQL najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Instance Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](authentication-aad-configure.md).
 - SQL Database, Managed instance SQL nebo Azure synapse.

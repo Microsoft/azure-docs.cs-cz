@@ -17,15 +17,15 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919948"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem a akcelerovanými síťovými službami pomocí Azure CLI
 
-V tomto kurzu se dozvíte, jak vytvořit virtuální počítač se systémem Linux s akcelerovanými síťovými službami. Informace o vytvoření virtuálního počítače s Windows a akcelerované sítě najdete v tématu [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](create-vm-accelerated-networking-powershell.md)službami. Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z DataPath, snižuje latenci, kolísání a využití CPU a používá se u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dvěma virtuálními počítači s a bez urychlení sítě:
+V tomto kurzu se dozvíte, jak vytvořit virtuální počítač se systémem Linux s akcelerovanými síťovými službami. Informace o vytvoření virtuálního počítače s Windows a akcelerované sítě najdete v tématu [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](create-vm-accelerated-networking-powershell.md)službami. Akcelerované síťové služby povolují na virtuálním počítači virtualizaci rozhraní SR-IOV (Single-Root I/O Virtualization), která výrazně zvyšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z DataPath, snižuje latenci, kolísání a využití CPU a používá se u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dvěma virtuálními počítači s a bez urychlení sítě:
 
 ![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
