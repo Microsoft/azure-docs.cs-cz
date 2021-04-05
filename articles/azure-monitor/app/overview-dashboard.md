@@ -4,10 +4,10 @@ description: Sledujte aplikace s využitím Azure Application Insights a přehle
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97504096"
 ---
 # <a name="application-insights-overview-dashboard"></a>Řídicí panel přehledu Application Insights
@@ -51,7 +51,7 @@ Chcete-li přejít zpět k prostředí přehledu, stačí vybrat:
 
 ![Tlačítko Přehled](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pro data zobrazená v řídicím panelu je aktuálně povolený limit 30 dní dat. Pokud vyberete filtr času delší než 30 dní, nebo pokud vyberete **Konfigurovat nastavení dlaždic** a nastavit vlastní časový rozsah přesahující 30 dní, váš řídicí panel se nezobrazí déle než 30 dní dat, a to ani s výchozím uchováním dat 90 dnů. Pro toto chování není aktuálně k dispozici žádné alternativní řešení.
 

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92781222"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
@@ -27,7 +27,7 @@ Pokud máte existující databázi, přečtěte si téma [migrace existujících
 
 Pro pochopení objektů SQL potřebných pro dotazování si přečtěte téma [dotazování napříč horizontálně rozdělenými databázemi](elastic-query-horizontal-partitioning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Stáhněte si a spusťte [ukázku Začínáme s nástroji pro elastic Database](elastic-scale-get-started.md).
 

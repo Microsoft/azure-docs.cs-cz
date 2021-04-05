@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
 ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913836"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Kurz: nasazení skupiny s více kontejnery pomocí Docker Compose 
@@ -33,7 +33,7 @@ V tomto článku:
 > * Vytvoření kontextu Azure pro Docker
 > * Uvedení aplikace v Azure Container Instances
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Azure CLI** – v místním počítači musíte mít nainstalované rozhraní příkazového řádku Azure. Doporučuje se verze 2.10.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 

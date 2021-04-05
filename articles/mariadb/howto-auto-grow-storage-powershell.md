@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665153"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>Automatické zvětšení úložiště na serveru Azure Database for MariaDB pomocí prostředí PowerShell
@@ -23,7 +23,7 @@ Automatické zvětšení úložiště zabrání vašemu serveru [dosáhnout limi
 > [!IMPORTANT]
 > Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 

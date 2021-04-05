@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92890144"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>Přidání dalších připojení S2S k virtuální síti: Azure Portal
@@ -26,7 +26,7 @@ Tento článek vám pomůže přidat další připojení typu Site-to-Site (S2S)
 
 Tento článek se týká Správce prostředků virtuální sítě, která má RouteBased bránu VPN. Tyto kroky se nevztahují na nové konfigurace souběžného připojení ExpressRoute/site-to-site. Pokud však přidáváte pouze nové připojení VPN k již existující konfiguraci s jednou konfigurací současně, můžete použít tento postup. Informace o současných připojeních najdete v tématu [koexistující připojení ExpressRoute/S2S](../expressroute/expressroute-howto-coexist-resource-manager.md) .
 
-## <a name="prerequisites"></a><a name="before"></a>Předpoklady
+## <a name="prerequisites"></a><a name="before"></a>Požadavky
 
 Ověřte následující položky:
 

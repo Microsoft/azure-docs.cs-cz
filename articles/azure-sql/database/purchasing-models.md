@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92788821"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
@@ -37,7 +37,7 @@ Následující tabulka a graf se porovnávají a kontrastují s nákupními mode
 |**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
 |Model založený na jednotkách DTU|Tento model vychází ze sady prostředků COMPUTE, úložiště a vstupně-výstupních prostředků. Velikosti výpočetních prostředků se vyjadřují v jednotkách DTU v případě jednoúčelových databází a v jednotkách eDTU (jednotky elastických databázových transakcí) v případě elastických fondů. Další informace o jednotkách DTU a eDTU najdete v části [Co jsou jednotky DTU a eDTU](purchasing-models.md#dtu-based-purchasing-model)?|Zákazníci, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředků|
-|založené na vCore|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na virtuálních jádrech umožňuje také šetřit náklady s využitím [Zvýhodněného hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) pro SQL Server.|Zákazníci, kteří flexibilitu hodnot, řízení a transparentnost|
+|Model založený na virtuálních jádrech|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na virtuálních jádrech umožňuje také šetřit náklady s využitím [Zvýhodněného hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) pro SQL Server.|Zákazníci, kteří flexibilitu hodnot, řízení a transparentnost|
 ||||  
 
 ![Porovnání cenového modelu](./media/purchasing-models/pricing-model.png)
