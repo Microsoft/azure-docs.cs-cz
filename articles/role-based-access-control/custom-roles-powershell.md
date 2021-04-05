@@ -15,10 +15,10 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369170"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure PowerShell
@@ -34,7 +34,7 @@ Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoře
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytvoření vlastních rolí budete potřebovat:
 

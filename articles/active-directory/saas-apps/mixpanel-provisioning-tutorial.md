@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: ab261d4ca04fed04c8a3e1046c0a4c563767ad4c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181998"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>Kurz: Konfigurace Mixpanelu pro Automatické zřizování uživatelů
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v Mixpanelu i Azure Active 
 > * Zřizování skupin a členství ve skupinách v Mixpanelu
 > * [Jednotné přihlašování](./mixpanel-tutorial.md) k mixpanelu (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 

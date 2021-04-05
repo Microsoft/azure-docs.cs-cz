@@ -4,10 +4,10 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro volán�
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 670ceba95d937be278c44c34704cb844eead480d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98920050"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí REST API
@@ -16,7 +16,7 @@ Prvním krokem při použití Azure Resource graphu s REST API je ověřit, jest
 
 Na konci tohoto procesu budete mít nástroje pro volání koncových bodů REST API a spuštění prvního dotazu na diagram prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

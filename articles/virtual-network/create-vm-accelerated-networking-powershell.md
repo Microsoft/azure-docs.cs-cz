@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
 ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919965"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows a akcelerovanými síťovými službami pomocí Azure PowerShellu
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s Windows s akce
 > [!NOTE]
 > Pokud chcete používat akcelerované síťové služby s virtuálním počítačem se systémem Linux, přečtěte si článek [Vytvoření virtuálního počítače se systémem Linux s akcelerovanými sítěmi](create-vm-accelerated-networking-cli.md).
 
-Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z cesty k datům, což snižuje latenci, kolísání a využití procesoru u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující diagram znázorňuje, jak dva virtuální počítače komunikují s a bez urychlení sítě:
+Akcelerované síťové služby povolují na virtuálním počítači virtualizaci rozhraní SR-IOV (Single-Root I/O Virtualization), která výrazně zvyšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z cesty k datům, což snižuje latenci, zpoždění a využití procesoru u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující diagram znázorňuje, jak dva virtuální počítače komunikují s a bez urychlení sítě:
 
 ![Komunikace mezi virtuálními počítači Azure a bez urychlení sítě](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -57,7 +57,7 @@ Následující distribuce jsou podporovány přímo z Galerie Azure:
 - **Windows Server 2016 Datacenter** 
 - **Windows Server 2012 R2 Datacenter**
 
-## <a name="limitations-and-constraints"></a>Omezení a omezení
+## <a name="limitations-and-constraints"></a>Limity a omezení
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
 
