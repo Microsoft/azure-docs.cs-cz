@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
 ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96341644"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: Použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
@@ -35,7 +35,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Import dat z různých zdrojů dat
 > * Export ze služby Azure Cosmos DB do formátu JSON
 
-## <a name="prerequisites"></a><a id="Prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že provedete následující kroky:
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98201429"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení ke službě Azure Database for MySQL s přesměrováním
@@ -57,7 +57,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Předpoklady 
+#### <a name="prerequisites"></a>Požadavky 
 - Verze PHP 7.2.15 + a 7.3.2 +
 - HRUŠKY PHP 
 - PHP – MySQL
@@ -96,7 +96,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Předpoklady 
+#### <a name="prerequisites"></a>Požadavky 
 - Verze PHP 7.2.15 + a 7.3.2 +
 - PHP – MySQL
 - Server Azure Database for MySQL

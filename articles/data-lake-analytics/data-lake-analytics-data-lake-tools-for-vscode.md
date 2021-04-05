@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: 40e3ce17e036312e7c3fdee95fcb42d06f5845e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96751355"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Použití nástrojů Azure Data Lake pro Visual Studio Code
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak můžete pomocí Nástroje Azure Data Lake pro
 
 [![Video Player: Azure Data Lake nástroje pro VS Code](media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png)](https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode")
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Data Lake nástroje pro VS Code podporují systémy Windows, Linux a macOS. Místní spuštění U-SQL a místní ladění funguje pouze v systému Windows.
 

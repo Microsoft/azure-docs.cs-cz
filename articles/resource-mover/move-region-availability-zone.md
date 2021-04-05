@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 88006fb354af2673496c6476090d7f73c8a005e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95542996"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Přesun virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak přesunout virtuální počítače Azure (a so
 
 Pokud chcete přesunout virtuální počítače do jiné zóny dostupnosti ve stejné oblasti, [Přečtěte si tento článek](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Přístup *vlastníka* k předplatnému, ve kterém se nacházejí prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní mapování zdrojového a cílového umístění v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.

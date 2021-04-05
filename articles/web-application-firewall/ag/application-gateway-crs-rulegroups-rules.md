@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98746505"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací
@@ -45,7 +45,7 @@ POČÍTAČOVÝ systém 3,1 obsahuje 13 skupin pravidel, jak je znázorněno v n�
 
 |Skupina pravidla|Description|
 |---|---|
-|**[Obecné](#general-31)**|Obecná skupina|
+|**[Všeobecně](#general-31)**|Obecná skupina|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Metody uzamčení (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|Ochrana před skenery portů a prostředí|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|Ochrana proti problémům s protokolem a kódováním|
@@ -65,7 +65,7 @@ POČÍTAČOVÝ systém 3,0 zahrnuje 12 skupin pravidel, jak je znázorněno v n�
 
 |Skupina pravidla|Description|
 |---|---|
-|**[Obecné](#general-30)**|Obecná skupina|
+|**[Všeobecně](#general-30)**|Obecná skupina|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Metody uzamčení (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|Ochrana před skenery portů a prostředí|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|Ochrana proti problémům s protokolem a kódováním|
