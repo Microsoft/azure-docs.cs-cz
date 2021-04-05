@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
 ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97797265"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Přesunutí prostředků mezi oblasti (ze skupiny prostředků)
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak přesunout prostředky z konkrétní skupiny p
 > Prostředek Azure Resource stěhovací je momentálně ve verzi Public Preview.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pro předplatné, ve kterém se nacházejí prostředky, které chcete přesunout, potřebujete přístup *vlastníka* .
     - Při prvním přidání prostředku pro konkrétní mapování zdrojového a cílového umístění v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.

@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95026023"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrace s klientskou aplikací pomocí sady Speech SDK
@@ -25,7 +25,7 @@ V tomto článku se naučíte, jak pomocí sady Speech SDK spuštěné v aplikac
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
 - Vytvoření klientské aplikace Univerzální platforma Windows (UWP) pomocí sady Speech SDK, která vám umožní komunikovat s vlastními aplikacemi příkazů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete postupovat podle těchto rychlých startů:
 > [!div class = "checklist"]

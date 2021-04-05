@@ -90,11 +90,11 @@ Můžete mít jeden spravovaný portál a několik samoobslužných portálů. O
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Podporuje portál Azure Resource Manager šablony nebo je kompatibilní se sadou API Management DevOps Resource Kit?
 
-Ne.
+No.
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Je obsah portálu uložený s funkcí zálohování a obnovení v API Management?
 
-Ne.
+No.
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Musím pro závislosti spravovaného portálu povolit další připojení VNet?
 
@@ -196,7 +196,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | Ne              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

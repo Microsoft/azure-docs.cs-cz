@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 84e8c7fc1d2655ea0685ac79841a9c467bf766cf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect-saml-authentication"></a>Kurz: Azure Active Directory integrace s ověřováním SAML v RStudio Connect
@@ -27,7 +27,7 @@ Integrace ověřování SAML RStudio Connect s Azure AD poskytuje následující
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k RStudio připojení SAML (jednotné přihlašování) ke svým účtům Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat integraci Azure AD s ověřováním SAML RStudio Connect, potřebujete následující položky:
 

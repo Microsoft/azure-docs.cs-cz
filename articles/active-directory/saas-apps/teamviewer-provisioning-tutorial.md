@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182236"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Kurz: Konfigurace TeamVieweru pro Automatické zřizování uživatelů
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v TeamVieweru i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a TeamViewerem
 > * [Jednotné přihlašování](./teamviewer-tutorial.md) k TeamVieweru (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

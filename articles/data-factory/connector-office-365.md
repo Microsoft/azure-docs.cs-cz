@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: a7df69e7c5701074b40d6fa8340d8a0e247f00de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392999"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopírování dat z Office 365 do Azure pomocí Azure Data Factory
@@ -30,7 +30,7 @@ V rámci jedné aktivity kopírování teď můžete **Kopírovat data z Office 
 >- Ujistěte se, že oblast Azure Integration Runtime použitá pro aktivitu kopírování a cíl je ve stejné oblasti, ve které se nachází poštovní schránka uživatelů klienta Office 365. Informace o tom, jak se určuje Azure IR umístění, najdete [tady](concepts-integration-runtime.md#integration-runtime-location) . Seznam podporovaných oblastí Office a odpovídajících oblastí Azure najdete v [tabulce](/graph/data-connect-datasets#regions) .
 >- Ověřování instančního objektu je jediným ověřovacím mechanismem podporovaným pro Azure Blob Storage, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2 jako s cílovými úložišti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete kopírovat data z Office 365 do Azure, musíte provést následující požadované kroky:
 

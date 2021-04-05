@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011846"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Správa schématu v SaaS aplikaci, která používá horizontálně dělené víceklientské databáze
@@ -41,7 +41,7 @@ Co se v tomto kurzu naučíte:
 > * Aktualizuje referenční data ve všech databázích tenanta.
 > * Vytvoří index tabulky ve všech databázích tenantů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aplikace víceklientské lístky Wingtip již musí být nasazené:
     - Pokyny najdete v prvním kurzu, který zavádí společnost Wingtip Tickets SaaS multi-tenant Database App:<br />[Nasazení a zkoumání horizontálně dělené aplikace s více klienty, která používá Azure SQL Database](./saas-multitenantdb-get-started-deploy.md).
