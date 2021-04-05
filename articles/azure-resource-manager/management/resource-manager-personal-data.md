@@ -4,10 +4,10 @@ description: Naučte se spravovat osobní data přidružená k Azure Resource Ma
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693698"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Správa osobních údajů spojených s Azure Resource Manager

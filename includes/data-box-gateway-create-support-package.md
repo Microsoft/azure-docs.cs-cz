@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: f002fec531a0355e803a1545990fc0b13b535742
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581797"
 ---
 Pokud se setkáte s problémy zařízení, můžete vytvořit balíček pro podporu ze systémových protokolů. Podpora Microsoftu používá tento balíček k řešení problémů. Pomocí těchto kroků vytvořte balíček pro podporu:

@@ -4,10 +4,10 @@ description: Clustery Service Fabric můžete vytvořit na libovolném virtuáln
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576124"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porovnání clusterů Azure a samostatných Service Fabric v systému Windows Server a Linux

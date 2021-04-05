@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
 ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99251977"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Připojení dat Azure Active Directory (Azure AD) do Azure Sentinel
@@ -42,7 +42,7 @@ K shromažďování dat z [Azure Active Directory](../active-directory/fundament
 
 > [!IMPORTANT]
 > Jak je uvedeno výše, některé z dostupných typů protokolů jsou momentálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Jakákoli licence Azure AD (Free/O365/P1/P2) je dostatečná pro ingestování přihlašovacích protokolů do služby Azure Sentinel. Pro Azure Monitor (Log Analytics) a Sentinel Azure můžete platit další poplatky za GB.
 

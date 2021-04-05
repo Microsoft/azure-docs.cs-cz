@@ -15,10 +15,10 @@ ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
 ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94748161"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 J
 
 V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Po [napsání Java pomocí Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) nainstalujte:
 

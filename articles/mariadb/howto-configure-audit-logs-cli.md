@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c1d446d8ee2863077ad84c361876758336f5a3cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665170"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Konfigurace a přístup k protokolům auditu Azure Database for Marie DB v Azure CLI
@@ -20,7 +20,7 @@ ms.locfileid: "98665170"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení této příručky:
 

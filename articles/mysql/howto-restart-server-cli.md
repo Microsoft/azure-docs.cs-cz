@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 77f20bba76ee3a37e6a72481e0b3d13c9904b106
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94541823"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Restartování serveru Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
@@ -21,7 +21,7 @@ Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například slu
 
 Čas potřebný k dokončení restartování závisí na procesu obnovení MySQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení této příručky:
 

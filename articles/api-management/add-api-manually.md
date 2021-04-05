@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96183812"
 ---
 # <a name="add-an-api-manually"></a>Ruční přidání rozhraní API
@@ -27,7 +27,7 @@ Pokud chcete importovat existující rozhraní API, přečtěte si články v č
 
 V tomto článku vytvoříme prázdné rozhraní API a jako rozhraní API back-endu určíme [httpbin.org](https://httpbin.org) (veřejnou testovací službu).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
