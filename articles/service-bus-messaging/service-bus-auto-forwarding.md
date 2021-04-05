@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/20/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98678984"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Zřetězení Service Bus entit pomocí procesu autopřesměrovávání
@@ -68,7 +68,7 @@ Podrobné informace o autopřesměrovávání najdete v následujících referen
 
 Další informace o vylepšení výkonu Service Bus najdete v tématu. 
 
-* [Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus](service-bus-performance-improvements.md)
+* [Osvědčené postupy pro zlepšení výkonu pomocí Service Bus zasílání zpráv](service-bus-performance-improvements.md)
 * [Dělené entity zasílání zpráv][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

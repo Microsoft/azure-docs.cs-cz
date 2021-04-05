@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
 ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96012969"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Kurz: přístup a přizpůsobení portálu pro vývojáře
@@ -31,7 +31,7 @@ Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled por
 
 :::image type="content" source="media/api-management-howto-developer-portal-customize/cover.png" alt-text="Portál pro vývojáře API Management – režim správce" border="false":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 - Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md) .

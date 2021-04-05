@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94836916"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkcí Azure Active Directory
@@ -26,7 +26,7 @@ Dobře plánovaná a spuštěná infrastruktura identity PAVES způsob zabezpeč
 
 Zákazníci navíc můžou ověřit své [zabezpečené skóre identity](identity-secure-score.md) a zjistit, jak se budou zarovnávat podle osvědčených postupů Microsoftu. Před a po implementaci těchto doporučení Zkontrolujte své zabezpečené skóre, abyste viděli, jak dobře pracujete v porovnání s ostatními uživateli ve vašem odvětví a s jinými organizacemi vaší velikosti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Mnohé z doporučení v tomto průvodci můžete implementovat pomocí Azure AD Free nebo bez licence vůbec. Tam, kde jsou licence požadovány, je pro splnění této smlouvy nutné zadat, jaká licence je vyžadována minimálně.
 

@@ -4,10 +4,10 @@ description: Zabezpečená komunikace v rámci samostatného nebo místního clu
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791033"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509

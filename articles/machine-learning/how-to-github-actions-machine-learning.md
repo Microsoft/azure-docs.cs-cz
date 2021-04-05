@@ -11,10 +11,10 @@ ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
 ms.openlocfilehash: b21f53f8ec76257fc19e0e30cd025ecc46ad2188
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102218277"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Použití akcí GitHubu s Azure Machine Learning
@@ -24,7 +24,7 @@ Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) , které vám p
 > [!NOTE]
 > Akce GitHubu pro Azure Machine Learning jsou k dispozici tak, jak jsou, a společnost Microsoft je plně nepodporuje. Pokud narazíte na problémy s určitou akcí, otevřete problém pro akci v úložišti. Například pokud narazíte na problém s akcí AML-Deploy, nahlaste problém v [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) úložišti.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  

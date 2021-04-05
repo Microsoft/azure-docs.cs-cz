@@ -7,17 +7,17 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96302464"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
 Tento článek vám ukáže, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a Azure Active Directory Domain Services (služba AD DS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste už nastavili instanci služby Azure služba AD DS. Pokud ho ještě nemáte, postupujte podle pokynů v části [Vytvoření základní spravované domény](../active-directory-domain-services/tutorial-create-instance.md) a potom se vraťte sem.
 
