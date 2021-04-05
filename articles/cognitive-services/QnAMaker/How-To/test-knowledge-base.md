@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96353149"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Otestujte znalostní bázi v QnA Maker
@@ -130,7 +130,7 @@ Nástroj Batch test použijte, když chcete:
 * určení nejlepší odpovědi a skóre pro sadu otázek
 * ověřit očekávanou odpověď pro sadu otázek
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Buď [vytvořte službu QnA maker](../Quickstarts/create-publish-knowledge-base.md) , nebo použijte existující službu, která používá anglický jazyk.

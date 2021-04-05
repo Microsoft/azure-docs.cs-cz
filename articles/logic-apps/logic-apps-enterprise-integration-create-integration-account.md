@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101705581"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Vytváření a správa účtů integrace pro podnikové integrace B2B v Azure Logic Apps
@@ -41,7 +41,7 @@ V tomto tématu se dozvíte, jak provádět tyto úlohy:
 
 * Odstraňte účet pro integraci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

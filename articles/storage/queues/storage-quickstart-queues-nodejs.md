@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-js
 ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97586529"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Rychlý Start: V12 klientské knihovny pro Azure Queue Storage pro JavaScript
@@ -36,7 +36,7 @@ Další prostředky:
 - [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-queue)
 - [ukázky](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Účet Azure Storage – [Vytvoření účtu úložiště](../common/storage-account-create.md)

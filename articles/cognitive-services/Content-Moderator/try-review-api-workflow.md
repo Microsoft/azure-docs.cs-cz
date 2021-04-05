@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 79749533d636f4b73ff3bef6b12d9e842ac485ea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96905140"
 ---
 # <a name="define-and-use-moderation-workflows-api-console"></a>Definování a použití pracovních postupů moderování (konzola rozhraní API)
 
 Pracovní postupy jsou cloudově přizpůsobené filtry, které můžete použít ke efektivnějšímu zpracování obsahu. Pracovní postupy se můžou připojit k nejrůznějším službám a filtrovat obsah různými způsoby a pak provést příslušné akce. V této příručce se dozvíte, jak používat rozhraní REST API pracovního postupu prostřednictvím konzoly API k vytváření a používání pracovních postupů. Jakmile pochopíte strukturu rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s REST.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 

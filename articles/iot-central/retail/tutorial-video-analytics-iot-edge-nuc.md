@@ -9,10 +9,10 @@ ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
 ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99831922"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (Intel NUC)
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Nastavení brány IoT Edge
 > * Připojit k zařízení Intel NUC místní fotoaparát kompatibilní s ONVIF
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete, měli byste provést předchozí [aplikaci Live video Analytics v azure IoT Central (Yolo V3)](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [vytvořit video Analytics v kurzu Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md).
 * Zařízení, jako je Intel NUC, na kterém běží Linux, který může spouštět kontejnery Docker a má dostatečné výpočetní výkon pro spuštění analýzy videí.

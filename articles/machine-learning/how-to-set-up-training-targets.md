@@ -12,10 +12,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
 ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102518496"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurace a odesílání trénovacích spuštění
@@ -26,7 +26,7 @@ Po školení je běžné začít na místním počítači a později škálovat 
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění skriptu**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install) (>= 1.13.0)
@@ -176,7 +176,7 @@ Příklady konfigurace spuštění různých školicích scénářů najdete v t
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * **Spuštění selhalo `jwt.exceptions.DecodeError` s**: přesná chybová zpráva: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
     

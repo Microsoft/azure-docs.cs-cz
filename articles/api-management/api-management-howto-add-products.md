@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545152"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Kurz: vytvoření a publikování produktu  
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 :::image type="content" source="media/api-management-howto-add-products/added-product.png" alt-text="API Management produktů na portálu":::
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -42,10 +42,10 @@ V tomto kurzu se naučíte:
 
     :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="Přidat produkt na portálu":::
 
-    | Název                     | Popis                                                                                                                                                                                                                                                                                                             |
+    | Název                     | Description                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Zobrazované jméno             | Název, který se má zobrazit na [portálu pro vývojáře](api-management-howto-developer-portal.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Popis              | Poskytněte informace o produktu, jako je jeho účel, rozhraní API, ke kterým poskytuje přístup, a další podrobnosti.                                                                                                                                               |
+    | Description              | Poskytněte informace o produktu, jako je jeho účel, rozhraní API, ke kterým poskytuje přístup, a další podrobnosti.                                                                                                                                               |
     | Stav                    | Vyberte možnost **Publikováno** , pokud chcete produkt publikovat. Předtím, než bude možné volat rozhraní API v produktu, je nutné produkt publikovat. Ve výchozím nastavení jsou nové produkty publikovány a jsou viditelné pouze pro skupinu  **správců** .                                                                                      |
     | Vyžaduje předplatné    | Vyberte, jestli se uživatel musí přihlásit k odběru produktu.                                                                                                                                                                                                                                   |
     | Vyžaduje schválení        | Tuto možnost vyberte, pokud chcete, aby správce zkontroloval a přijal nebo odmítl pokusy o přihlášení k tomuto produktu. Pokud není vybraná, pokusy o přihlášení k odběru se automaticky schvalují.                                                                                                                         |

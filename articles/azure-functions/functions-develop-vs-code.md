@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493938"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
@@ -39,7 +39,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat rozšíření
 > [!IMPORTANT]
 > Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][Azure Functions pro Visual Studio Code], musíte splnit tyto požadavky:
 

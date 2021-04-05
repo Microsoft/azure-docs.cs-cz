@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 45447a26c0455fc5945af8b8e9f7442af7facfbe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99830681"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Přehled vývoje aplikací pro Azure Database for MySQL 
@@ -22,7 +22,7 @@ Tento článek popisuje faktory návrhu, které by měl vývojář postupovat p�
 ## <a name="language-and-platform"></a>Jazyk a platforma
 K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odkazy na ukázky kódu najdete v tématech [knihovny připojení používané pro připojení k Azure Database for MySQL](concepts-connection-libraries.md)
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 Azure Database for MySQL používá komunitu MySQL, která je kompatibilní s nástroji pro správu MySQL, jako jsou například nástroje Workbench nebo MySQL, jako je například aplikace Workbench nebo MySQL, například mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql), [dbForge Studio pro MySQL](https://www.devart.com/dbforge/mysql/studio/) a další. K interakci s databázovou službou můžete použít taky Azure Portal, rozhraní příkazového řádku Azure a rozhraní REST API.
 
 ## <a name="resource-limitations"></a>Omezení prostředků

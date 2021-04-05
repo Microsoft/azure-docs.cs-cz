@@ -10,10 +10,10 @@ author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519108"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Nainstalovat & použít rozšíření CLI pro Azure Machine Learning
@@ -29,7 +29,7 @@ Azure Machine Learning CLI je rozšíření [Azure CLI](/cli/azure/), rozhraní 
 
 Rozhraní příkazového řádku není náhradou za sadu Azure Machine Learning SDK. Jedná se o doplňkový nástroj, který je optimalizovaný pro zpracování vysoce parametrizovaných úloh, které se dobře hodí pro automatizaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud chcete použít rozhraní příkazového řádku, musíte mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 

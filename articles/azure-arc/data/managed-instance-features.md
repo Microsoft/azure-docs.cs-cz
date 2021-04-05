@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97589215"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funkce a možnosti spravované instance SQL ARC Azure
@@ -133,7 +133,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 | PolyBase | No |
 
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Spravovaná instance SQL s podporou ARC Azure podporuje různé datové nástroje, které vám můžou pomoci při správě vašich dat.
 
