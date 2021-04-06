@@ -7,10 +7,10 @@ ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550653"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí integrační služby (ISE) s využitím rozhraní REST API služby Logic Apps
@@ -25,7 +25,7 @@ Další informace o dalších způsobech vytvoření ISE najdete v těchto člá
 * [Vytvoření ISE pomocí ukázkové Azure Resource Manager šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [Vytvoření ISE, který podporuje použití klíčů spravovaných zákazníkem k šifrování neaktivních dat](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné [předpoklady](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky na přístup](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 

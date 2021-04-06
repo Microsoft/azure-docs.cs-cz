@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 794934e9c3e45f2aeed9310636a0f3ec30daf7de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735330"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ClientVPNem AWS
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat AWS ClientVPN s Azure Active Directory
 * Umožněte uživatelům, aby se automaticky přihlásili k AWS ClientVPN s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

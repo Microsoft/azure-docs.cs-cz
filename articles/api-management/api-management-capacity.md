@@ -13,10 +13,10 @@ ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
 ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93081055"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapacita instance služby Azure API Management
@@ -28,7 +28,7 @@ Tento článek vysvětluje, co je **kapacita** a jak se chová. Ukazuje, jak zí
 > [!IMPORTANT]
 > Tento článek popisuje, jak můžete na základě metriky kapacity monitorovat a škálovat svou instanci Azure API Management. Je ale stejně důležité pochopit, co se stane, když konkrétní instance API Management skutečně *dosáhla* své kapacity. Azure API Management nepoužije žádné omezování na úrovni služby, aby se zabránilo fyzickému přetížení instancí. Když instance dosáhne své fyzické kapacity, bude se chovat podobně jako jakýkoli přetížený webový server, který nedokáže zpracovat příchozí požadavky: latence se zvýší, připojení se zahozena a dojde k chybám časového limitu atd. To znamená, že klienti rozhraní API by měli být připravení pracovat s touto možností podobně jako u jakékoli jiné externí služby (např. použitím zásad opakování).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li postupovat podle kroků v tomto článku, musíte mít:
 

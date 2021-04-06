@@ -4,10 +4,10 @@ description: Tento článek popisuje podporu Azure Instance Metadata Service pro
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: 49b70928ae972da8e0a0d14d711e4b6f246cca6a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96939103"
 ---
 # <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>Ověřování u prostředků Azure pomocí serverů s povoleným ARC
@@ -38,7 +38,7 @@ Váš kód, který je spuštěn na serveru, může požádat o token z koncovéh
 
 Proměnná prostředí systému **IDENTITY_ENDPOINT** slouží ke zjištění koncového bodu identity aplikacemi. Aplikace by se měly pokoušet načíst hodnoty **IDENTITY_ENDPOINT** a **IMDS_ENDPOINT** a použít je. Aplikace s libovolnou úrovní přístupu můžou vytvářet požadavky na koncové body. Odpovědi na metadata jsou zpracovávány jako normální a jsou předány všem procesům v počítači. Nicméně když se vytvoří žádost, která by vystavila token, potřebujeme, aby klient poskytoval tajný klíč k ověření, že mají přístup k datům, která jsou dostupná jenom pro uživatele s vyššími oprávněními.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Porozumění spravovaným identitám.
 - Server se připojil a zaregistroval se servery s podporou ARC.

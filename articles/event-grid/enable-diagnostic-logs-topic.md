@@ -4,16 +4,16 @@ description: Tento článek poskytuje podrobné pokyny k povolení diagnostický
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576447"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Povolení diagnostických protokolů pro témata nebo domény služby Azure Event Grid
 Tento článek poskytuje podrobné pokyny, jak povolit nastavení diagnostiky pro Event Grid témata nebo domény.  Tato nastavení umožňují zachytit a zobrazit protokoly **selhání publikování a doručení** . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Téma zřízené Event gridu
 - Zřízené cíle pro zachytávání diagnostických protokolů. Může to být jeden z následujících cílů ve stejném umístění jako téma Event Grid:

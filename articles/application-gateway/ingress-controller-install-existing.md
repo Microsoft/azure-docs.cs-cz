@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693736"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Instalace AGIC (příchozího adaptéru Application Gateway) pomocí existující Application Gateway
@@ -27,7 +27,7 @@ AGIC [sleduje prostředky](https://kubernetes.io/docs/concepts/services-networki
 - [Instalace kontroleru příchozího přenosu dat pomocí Helm](#install-ingress-controller-as-a-helm-chart)
 - [Více clusterů a sdílených Application Gateway](#multi-cluster--shared-application-gateway): Nainstalujte AGIC do prostředí, kde Application Gateway se sdílí mezi jedním nebo více clustery AKS a/nebo jinými součástmi Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto dokumentu se předpokládá, že už máte nainstalované tyto nástroje a infrastrukturu:
 - [AKS](https://azure.microsoft.com/services/kubernetes-service/) s povolenými [pokročilými sítěmi](../aks/configure-azure-cni.md)
 - [Application Gateway v2](./tutorial-autoscale-ps.md) ve stejné virtuální síti jako AKS
