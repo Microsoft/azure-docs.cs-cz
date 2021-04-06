@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
 ms.openlocfilehash: cb0fd5464f7025d71dd384c56233aefa6a6cd364
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98218718"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Rychlý Start: transformace dat pomocí toků mapování dat
@@ -27,7 +27,7 @@ V tomto rychlém startu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Pracovní prostor Azure synapse**: Vytvořte pracovní prostor Synapse pomocí Azure Portal podle pokynů v tématu [rychlý Start: vytvoření pracovního prostoru synapse](quickstart-create-workspace.md).

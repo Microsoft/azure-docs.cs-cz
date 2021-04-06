@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 09/28/2020
 ms.openlocfilehash: b2f77e4bd8df66084937da3dd203ebb71d9a3511
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100368791"
 ---
 # <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>Kopírování dat z MongoDB Atlas pomocí Azure Data Factory
@@ -26,7 +26,7 @@ Data z databáze MongoDB Atlas můžete kopírovat do libovolného podporovanéh
 
 Konkrétně tento konektor MongoDB Atlas podporuje **verze až 4,2**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud používáte Azure Integration Runtime pro kopírování, nezapomeňte do seznamu IP adres pro MongoDB Atlas přidat IP [adresy Azure Integration runtime](azure-integration-runtime-ip-addresses.md) efektivní oblasti.
 

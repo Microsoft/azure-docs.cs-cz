@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3c41b218ac0d347b2e58931421493755346b13d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97591969"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>Kurz: práce s frontami Azure Queue Storage v .NET
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > - Vyhledat argumenty příkazového řádku
 > - Sestavte a spusťte aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Získejte bezplatnou kopii [Visual Studio Codeového](https://code.visualstudio.com/download) editoru pro různé platformy.
 - Stáhněte a nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download) verze 3,1 nebo novější.

@@ -4,10 +4,10 @@ description: Aplikace Azure Service Fabric lze spouštět v clusterech, které j
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98787973"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Správa aplikací pro víc prostředí

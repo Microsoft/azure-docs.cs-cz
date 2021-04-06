@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785545"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
@@ -90,7 +90,7 @@ Pokud už instanci aplikace nepotřebujete, můžete ji trvale odebrat pomocí r
 ## <a name="unregister-an-application-type"></a>Zrušení registrace typu aplikace
 Pokud již určitou verzi typu aplikace nepotřebujete, měli byste zrušit registraci konkrétní verze typu aplikace pomocí rozhraní API pro [zrušení registrace](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) . Rušení registrace nepoužívaných verzí typů aplikací uvolní prostor úložiště používaný úložištěm imagí. U verze typu aplikace se může zrušit registrace, pokud se nevytváří instance žádné aplikace proti této verzi typu aplikace. Také typ aplikace nemůže mít žádné probíhající upgrady aplikace, na které se odkazuje na verzi typu aplikace.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage požádá o ImageStoreConnectionString
 Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) a Get-ImageStoreConnectionStringFromClusterManifest:
 

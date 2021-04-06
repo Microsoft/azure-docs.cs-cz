@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
 ms.openlocfilehash: caedefbf3887205b68bcd5de5e7cd5f1f7d7f53c
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104801005"
 ---
 # <a name="migrate-data-from-cassandra-to-an-azure-cosmos-db-cassandra-api-account-by-using-azure-databricks"></a>Migrace dat z Cassandra do účtu Azure Cosmos DB rozhraní API Cassandra pomocí Azure Databricks
@@ -28,7 +28,7 @@ Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podniková
 
 Existuje mnoho způsobů, jak migrovat databázové úlohy z jedné platformy do jiné. [Azure Databricks](https://azure.microsoft.com/services/databricks/) je nabídka typu platforma jako služba (PaaS) pro [Apache Spark](https://spark.apache.org/) , která nabízí způsob, jak provádět offline migrace ve velkém měřítku. Tento článek popisuje kroky potřebné k migraci dat z nativních Cassandra klíčů a tabulek Apache do Azure Cosmos DB rozhraní API Cassandra pomocí Azure Databricks.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Zřídí účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account).
 

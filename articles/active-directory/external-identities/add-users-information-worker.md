@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98219908"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Způsob, jakým uživatelé ve vaší organizaci můžou pozvat uživatele typu Host do aplikace
@@ -73,7 +73,7 @@ Po nakonfigurování aplikace pro samoobslužné uživatele můžou vlastníci a
 7. Vyberte možnost **Přidat** a automaticky odešlete pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Samoobslužná správa aplikací vyžaduje určité počáteční nastavení globálním správcem a správcem Azure AD. V rámci tohoto nastavení nakonfigurujete aplikaci pro samoobslužnou službu a přiřadíte skupinu k aplikaci, kterou může vlastník aplikace spravovat. Skupinu můžete také nakonfigurovat tak, aby umožňovala komukoli požádat o členství, ale vyžaduje schválení vlastníka skupiny. (Další informace o [správě skupin samoobslužných služeb](../enterprise-users/groups-self-service-management.md).) 
 
