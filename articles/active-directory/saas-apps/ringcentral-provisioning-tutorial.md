@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104800759"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v RingCentral i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a RingCentral
 > * [Jednotné přihlašování](./ringcentral-tutorial.md) k RingCentral (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

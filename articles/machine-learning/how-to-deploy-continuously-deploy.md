@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: how-to, tracking-python, deploy
 ms.openlocfilehash: 9de971639e22f9656ea75dc64993ac5881efbffb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102609409"
 ---
 # <a name="continuously-deploy-models"></a>Průběžné nasazování modelů
 
 Tento článek ukazuje, jak používat průběžné nasazování ve službě Azure DevOps k automatické kontrole nových verzí registrovaných modelů a vložení těchto nových modelů do produkčního prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste už zaregistrovali model v pracovním prostoru Azure Machine Learning. V [tomto kurzu](how-to-train-scikit-learn.md) najdete příklad školení a registrace modelu scikit-učení.
 

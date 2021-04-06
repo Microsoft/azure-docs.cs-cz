@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519601"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
@@ -111,9 +111,9 @@ K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální p
 **Kód chyby**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: dosáhlo se maximálního limitu kolekce bodů obnovení. <br>
 
-- K tomuto problému může dojít, pokud je zámek skupiny prostředků bodu obnovení znemožněný automatickým čištěním bodů obnovení.
-- K tomuto problému může dojít také v případě, že je aktivováno více záloh za den. V současné době doporučujeme jenom jednu zálohu za den, protože body okamžitého obnovení se uchovávají po dobu 1-5 dnů na základě nakonfigurovaného uchování snímku a k virtuálnímu počítači se dá v jednom okamžiku přidružit jenom 18 RPs. <br>
-- Počet bodů obnovení mezi kolekcemi bodů obnovení a skupinami prostředků pro virtuální počítač nemůže překročit 18. Chcete-li vytvořit nový bod obnovení, odstraňte existující body obnovení.
+- K tomuto problému může dojít v případě, že je na skupině prostředků bodů obnovení zámek, který brání automatickému vyčištění bodů obnovení.
+- K tomuto problému může dojít také v případě, že se aktivuje zálohování vícekrát za den. V současné době doporučujeme provádět zálohování pouze jednou za den, protože body okamžitého obnovení se podle nakonfigurovaného uchovávání snímků uchovávají po dobu 1 až 5 dnů a k virtuálnímu počítači může být najednou přidružených maximálně 18 bodů okamžitého obnovení. <br>
+- Počet bodů obnovení mezi kolekcemi bodů obnovení a skupinami prostředků pro virtuální počítač nemůže překročit 18. Pokud chcete vytvořit nový bod obnovení, odstraňte existující body obnovení.
 
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků virtuálního počítače a potom operaci spusťte znovu, aby se aktivovala operace vyčištění.
@@ -181,7 +181,7 @@ Poslední úloha zálohování se nezdařila, protože probíhá existující ú
      - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a vyberete **Zrušit** nebo použijete [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Pokud jste znovu nakonfigurovali zálohu v jiném trezoru, ujistěte se, že ve starém trezoru nejsou spuštěné žádné úlohy zálohování. Pokud existuje, zrušte úlohu zálohování.
      - Pokud chcete zrušit úlohu zálohování, klikněte pravým tlačítkem na úlohu zálohování a vyberte **Zrušit** nebo použít [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) .
-4. Opakujte operaci zálohování.
+4. Zopakujte operaci zálohování.
 
 Pokud naplánovaná operace zálohování trvá déle, v konfliktu s další konfigurací zálohování, Projděte si [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance)a [aspekty obnovení](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
@@ -272,7 +272,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 | Příčina | Řešení |
 | --- | --- |
 | Stav virtuálního počítače je nesprávně hlášený, protože virtuální počítač je vypnutý v protokol RDP (Remote Desktop Protocol) (RDP). | Pokud vypnete virtuální počítač v RDP, zkontrolujte portál a určete, jestli je stav virtuálního počítače správný. Pokud není správná, vypněte virtuální počítač na portálu pomocí možnosti **vypnutí** na řídicím panelu virtuálních počítačů. |
-| Virtuální počítač nemůže získat adresu hostitele nebo prostředku infrastruktury z protokolu DHCP. | Služba DHCP musí být povolená v rámci hosta, aby mohla záloha virtuálního počítače IaaS fungovat. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředku infrastruktury z odpovědi DHCP 245, nemůže stáhnout ani spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste ji nakonfigurovat přes **Azure Portal** nebo **PowerShell** a zajistěte, aby byla ve virtuálním počítači povolená možnost DHCP. [Přečtěte si další informace](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí PowerShellu.
+| Virtuální počítač nemůže získat adresu hostitele nebo prostředku infrastruktury z protokolu DHCP. | Aby fungovalo zálohování virtuálního počítače IaaS, musí v hostovi být povolený protokol DHCP. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředku infrastruktury z odpovědi DHCP 245, nemůže stáhnout ani spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste ji nakonfigurovat přes **Azure Portal** nebo **PowerShell** a zajistěte, aby byla ve virtuálním počítači povolená možnost DHCP. [Přečtěte si další informace](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí PowerShellu.
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 

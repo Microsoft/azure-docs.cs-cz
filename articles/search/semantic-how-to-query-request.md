@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104654658"
 ---
 # <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Vytvoření dotazu pro sémantická titulky v Kognitivní hledání
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak formulovat požadavek hledání, který použ�
 
 Titulky a odpovědi jsou extrahovány pomocí textu v dokumentu hledání. Sémantický podsystém určuje, která část obsahu má vlastnosti titulku nebo odpovědi, ale nevytváří nové věty ani fráze. Z tohoto důvodu může obsah, který obsahuje vysvětlení nebo definice, fungovat nejlépe pro sémantické vyhledávání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Vyhledávací služba na úrovni Standard (S1, S2, S3), která se nachází v jedné z těchto oblastí: Střed USA – sever, Západní USA, Západní USA 2, Východní USA 2, Severní Evropa, Západní Evropa. Pokud máte v jedné z těchto oblastí existující službu S1 nebo větší, můžete požádat o přístup bez nutnosti vytvářet novou službu.
 
