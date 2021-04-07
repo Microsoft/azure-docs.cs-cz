@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97607979"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > [!WARNING]
 > V tomto rychlém startu se používají staré balíčky **Azure-eventhubs** a **Azure-eventhubs-EPH** . Rychlý Start, který používá nejnovější balíček  **Azure-Messaging-eventhubs** , najdete v tématu [posílání a přijímání událostí pomocí Azure-Messaging-eventhubs](event-hubs-java-get-started-send.md). Pokud chcete aplikaci přesunout z použití starého balíčku na nový, přečtěte si [Průvodce migrace z Azure-eventhubs do Azure-Messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 

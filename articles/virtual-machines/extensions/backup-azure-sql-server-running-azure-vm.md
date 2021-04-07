@@ -9,10 +9,10 @@ ms.author: dacurwin
 ms.collection: windows
 ms.date: 07/05/2019
 ms.openlocfilehash: 46cc4b23ca7dd70da3f917a3399406480dc9fdbd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102557093"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
@@ -20,7 +20,7 @@ ms.locfileid: "102557093"
 Azure Backup, mimo jiné nabídky, poskytuje podporu pro zálohování úloh, jako je SQL Server spouštění na virtuálních počítačích Azure. Vzhledem k tomu, že aplikace SQL běží v rámci virtuálního počítače Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností.
 K tomu Azure Backup nainstaluje na virtuální počítač rozšíření **AzureBackupWindowsWorkload** , ve kterém je spuštěná SQL Server během procesu registrace aktivovaného uživatelem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Seznam podporovaných scénářů najdete v tématu věnovaném [podpoře](../../backup/sql-support-matrix.md#scenario-support) , které podporuje Azure Backup.
 
