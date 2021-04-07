@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095720"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
@@ -28,7 +28,7 @@ Naučíte se:
 
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
 Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.

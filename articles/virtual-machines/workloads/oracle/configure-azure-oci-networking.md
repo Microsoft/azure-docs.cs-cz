@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.openlocfilehash: 09264f9f20411e7536eb4a1dbf12ac297e7e3ef9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675705"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
@@ -31,7 +31,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
 
 ![Připojení k síti mezi cloudy](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * K navázání připojení mezi Azure a OCI musíte mít aktivní předplatné Azure a aktivní nájem architektury OCI.
 

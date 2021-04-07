@@ -9,10 +9,10 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.openlocfilehash: cb5abf59c446ef0835375bac45d1e852144a6f28
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97935270"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro Java
@@ -25,7 +25,7 @@ Další prostředky:
 * [Produktová dokumentace](index.yml)
 * [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys/src/samples/java/com/azure/security/keyvault/keys)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší
 - [Apache Maven](https://maven.apache.org)

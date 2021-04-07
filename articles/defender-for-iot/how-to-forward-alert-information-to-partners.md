@@ -4,10 +4,10 @@ description: Pomocí pravidel předávání můžete odesílat informace o výst
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778793"
 ---
 # <a name="forward-alert-information"></a>Předávání informací o upozornění
@@ -108,7 +108,7 @@ Zadejte následující parametry:
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="Nakonfigurujte šifrování pro pravidlo předávání.":::
 
-| Výstupní pole textové zprávy syslog | Popis |
+| Výstupní pole textové zprávy syslog | Description |
 |--|--|
 | Datum a čas | Datum a čas, kdy počítač serveru syslog tyto informace přijal. |
 | Priorita | Uživatel. Alert |
@@ -117,7 +117,7 @@ Zadejte následující parametry:
 | Zpráva | Senzor: název snímače.<br /> Výstraha: název výstrahy.<br /> Typ: Typ výstrahy. Může se jednat o **porušení protokolu**, **porušení zásad**, **malware**, **anomálii** nebo **provoz**.<br /> Závažnost: Závažnost výstrahy. Může být **Upozornění**, **podverze**, **hlavní** nebo **kritická**.<br /> Zdroj: název zdrojového zařízení.<br /> Zdrojová IP adresa: IP adresa zdrojového zařízení.<br /> Cíl: název cílového zařízení.<br /> Cílová IP adresa: IP adresa cílového zařízení.<br /> Zpráva: zpráva výstrahy.<br /> Skupina výstrah: Skupina výstrah přidružená k výstraze. |
 
 
-| Výstup objektu syslog | Popis |
+| Výstup objektu syslog | Description |
 |--|--|
 | Datum a čas |   Datum a čas, kdy počítač serveru syslog tyto informace přijal. |  
 | Priorita |    Uživatel. Alert | 
@@ -125,14 +125,14 @@ Zadejte následující parametry:
 | Zpráva | Název snímače: název zařízení. <br /> Čas upozornění: čas, kdy byla výstraha zjištěna: může se lišit od času počítače serveru syslog a závisí na konfiguraci časového pásma pravidla předávání. <br /> Název výstrahy: název výstrahy. <br /> Zpráva upozornění: zpráva výstrahy. <br /> Závažnost výstrahy: Závažnost výstrahy: **Upozornění**, **podverze**, **hlavní** nebo **kritická**. <br /> Typ výstrahy: **porušení protokolu**, **porušení zásad**, **malware**, **anomálie** nebo **provoz**. <br /> Protokol: protokol výstrahy.  <br /> **Source_MAC**: IP adresa, název, dodavatel nebo operační systém zdrojového zařízení. <br /> Destination_MAC: IP adresa, název, dodavatel nebo operační systém cíle. Pokud data chybí, bude hodnota **N/a**. <br /> alert_group: Skupina výstrah přidružená k výstraze. |
 
 
-| Výstupní formát syslog CEF | Popis |
+| Výstupní formát syslog CEF | Description |
 |--|--|
 | Datum a čas | Datum a čas, kdy počítač serveru syslog tyto informace přijal. |
 | Priorita | Uživatel. Alert | 
 | Název hostitele | IP adresa senzoru |
 | Zpráva | CEF: 0 <br />Azure Defender for IoT <br />Název snímače: název zařízení snímače. <br />Verze senzoru <br />Název výstrahy: název výstrahy. <br />Msg: zpráva výstrahy. <br />protokol: protokol výstrahy. <br />závažnost: **Upozornění**, **podverze**, **hlavní** nebo **kritická**. <br />Typ: **porušení protokolu**, **porušení zásad**, **malware**, **anomálie** nebo **provozní**. <br /> začátek: čas, kdy byla výstraha zjištěna. <br />Může se lišit od času počítače serveru syslog a závisí na konfiguraci časového pásma pravidla předávání. <br />src_ip: IP adresa zdrojového zařízení.  <br />dst_ip: IP adresa cílového zařízení.<br />Cat: Skupina výstrah přidružená k výstraze.  |
 
-| Výstupní formát syslog LEEF | Popis |
+| Výstupní formát syslog LEEF | Description |
 |--|--|
 | Datum a čas |   Datum a čas, kdy počítač serveru syslog tyto informace přijal. |  
 | Priorita |    Uživatel. Alert | 

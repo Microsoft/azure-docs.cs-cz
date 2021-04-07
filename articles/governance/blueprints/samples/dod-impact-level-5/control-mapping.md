@@ -4,10 +4,10 @@ description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovn
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 01f786684e5f8d73f57eb9f4741593c01fe1c8d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98034777"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Mapování ovládacího prvku pro vzorek dopadu na 5. plán na úrovni účinku

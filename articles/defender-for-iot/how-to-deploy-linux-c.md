@@ -4,10 +4,10 @@ description: Přečtěte si, jak nainstalovat a nasadit agenta zabezpečení zal
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 6f59db7ff24412c66a6a4898b14272ea9540fdd2
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778810"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Nasazení programu Defender pro agenta zabezpečení založeného na IoT C pro Linux
@@ -19,7 +19,7 @@ V této příručce se dozvíte, jak nainstalovat a nasadit agenta zabezpečení
 - Odinstalace agenta
 - Řešení potíží
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Další typy platforem a agentů najdete v tématu [Volba správného agenta zabezpečení](how-to-deploy-agent.md).
 
