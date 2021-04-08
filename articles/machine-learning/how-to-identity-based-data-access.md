@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
 ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520009"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>Připojení k úložišti pomocí přístupu k datům založeným na identitě (Preview)
@@ -57,7 +57,7 @@ Stejné chování platí v případě, že
 Některé scénáře strojového učení zahrnují školicí modely s privátními daty. V takových případech odborníci na data potřebují spustit školicí pracovní postupy bez ozáření s důvěrnými vstupními daty. V tomto scénáři se pro ověřování přístupu k datům používá spravovaná identita výpočetní služby. Správci úložiště tak můžou udělit přístup ke službě **úložiště dat objektů BLOB úložiště** spravované identitě, kterou výpočetní služba používá ke spuštění školicí úlohy a nikoli jednotlivým odborníkům na data. Přečtěte si, jak [nastavit spravovanou identitu na výpočetním prostředí](how-to-create-attach-compute-cluster.md#managed-identity).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
