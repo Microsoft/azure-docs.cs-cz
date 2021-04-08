@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: nitinme
 ms.openlocfilehash: d0b77e6af36f0a71405f6c032bfdd121abeb0071
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97560266"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Aktualizace příkazu z webového koncového bodu
@@ -23,7 +23,7 @@ Pokud vaše klientská aplikace vyžaduje aktualizaci stavu průběžného pří
 
 V tomto článku se dozvíte, jak aktualizovat probíhající příkaz z webového koncového bodu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
 > * Už [vytvořená aplikace Vlastní příkazy](quickstart-custom-commands-application.md)
 

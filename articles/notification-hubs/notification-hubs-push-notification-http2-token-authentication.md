@@ -17,10 +17,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96460470"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) na APNS
@@ -86,11 +86,11 @@ Zde je ukázka kódu ilustrující správné použití:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
-string token = "YOUR PRIVATE KEY HERE";
-string keyId = "YOUR KEY ID HERE";
-string appName = "YOUR APP NAME HERE";
-string appId = "YOUR APP ID HERE";
-NotificationHubDescription desc = new NotificationHubDescription("PATH TO YOUR HUB");
+string token = "YOUR PRIVATE KEY HERE&quot;;
+string keyId = &quot;YOUR KEY ID HERE&quot;;
+string appName = &quot;YOUR APP NAME HERE&quot;;
+string appId = &quot;YOUR APP ID HERE&quot;;
+NotificationHubDescription desc = new NotificationHubDescription(&quot;PATH TO YOUR HUB");
 desc.ApnsCredential = new ApnsCredential(token, keyId, appId, appName);
 desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/device";
 nm.UpdateNotificationHubAsync(desc);

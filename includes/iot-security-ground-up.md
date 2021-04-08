@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95553927"
 ---
 Internet věcí (IoT) představuje jedinečné problémy se zabezpečením, ochranou osobních údajů a dodržováním předpisů pro firmy po celém světě. Na rozdíl od tradičních počítačové technologie, kde se tyto problémy dotýkají softwaru a způsobu jeho implementace, se v IoT projeví, co se stane, když se světů na internetu a fyzickou akci sblížení. Ochrana řešení IoT vyžaduje zajištění zabezpečeného zřizování zařízení, zabezpečení připojení mezi těmito zařízeními a cloudem a zabezpečení ochrany dat v cloudu během zpracování a ukládání. Práce s těmito funkcemi je však omezená na prostředky, geografickou distribuci nasazení a velký počet zařízení v rámci řešení.
