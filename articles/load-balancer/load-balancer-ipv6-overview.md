@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94700675"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
@@ -40,12 +40,12 @@ Následující obrázek znázorňuje funkce protokolu IPv6 pro Azure Load Balanc
 
 Po nasazení může internetový klient s podporou protokolu IPv4 nebo IPv6 komunikovat s veřejnými adresami IPv4 nebo IPv6 (nebo názvy hostitelů) internetového Load Balancer Azure. Nástroj pro vyrovnávání zatížení směruje pakety IPv6 na privátní adresy IPv6 virtuálních počítačů pomocí překladu adres (NAT). Internetový klient IPv6 nemůže komunikovat přímo s adresou IPv6 virtuálních počítačů.
 
-## <a name="features"></a>Funkce
+## <a name="features&quot;></a>Funkce
 
 Nativní podpora protokolu IPv6 pro virtuální počítače nasazené prostřednictvím Azure Resource Manager poskytuje:
 
 1. Služby IPv6 s vyrovnáváním zatížení pro klienty IPv6 na internetu
-2. Nativní koncové body IPv6 a IPv4 na virtuálních počítačích ("duální stackd")
+2. Nativní koncové body IPv6 a IPv4 na virtuálních počítačích (&quot;duální stackd")
 3. Příchozí a odchozí připojení iniciovaná nativní IPv6
 4. Podporované protokoly, jako jsou TCP, UDP a HTTP (S), umožňují celou škálu architektur služeb.
 

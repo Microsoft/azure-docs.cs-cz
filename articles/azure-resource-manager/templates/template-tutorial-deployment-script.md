@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97963959"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Kurz: vytvoření certifikátu podepsaného svým držitelem pomocí skriptů pro nasazení
@@ -36,7 +36,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Microsoft Learn modul, který pokrývá skripty nasazení, najdete v tématu věnovaném [rozšiřování šablon ARM pomocí skriptů nasazení](/learn/modules/extend-resource-manager-template-deployment-scripts/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 

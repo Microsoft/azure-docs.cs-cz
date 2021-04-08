@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92636778"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) ke sledování pomocí barev
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat sledování barev pomocí Azure Active
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96000024"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Úlohy týmu vedoucích k týmovému zpracování týmových dat
@@ -49,7 +49,7 @@ Následující kurz vás provede podrobnými kroky.
 > [!NOTE] 
 > Tento článek používá Azure DevOps a DSVM k nastavení týmového prostředí TDSP, protože to je způsob implementace TDSP v Microsoftu. Pokud váš tým používá jiné hostování kódu nebo vývojové platformy, úkoly vedoucí týmu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že [správce skupiny](group-manager-tasks.md)nastavil následující prostředky a oprávnění:
 

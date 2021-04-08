@@ -86,7 +86,7 @@ První výstup modulu poskytuje zdrojová data pro každý řádek spolu s někt
 
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **Vizualizace výsledků skóre**.
 
-| Nový název sloupce      | Popis                              |
+| Nový název sloupce      | Description                              |
 | -------------------- | ---------------------------------------- |
 | Vyhodnocené popisky        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
 | Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |

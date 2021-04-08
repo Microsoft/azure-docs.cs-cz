@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
 ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94967397"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Přístup k prostředkům IBM DB2 a jejich správa pomocí Azure Logic Apps
@@ -47,7 +47,7 @@ Konektor IBM DB2 podporuje tyto databázové operace, které se mapují na odpov
 | Odebrání jednoho řádku pomocí odstranění | Odstranit řádek |
 |||
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

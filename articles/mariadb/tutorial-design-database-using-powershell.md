@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 9b4500df459e4d4ef67f97dc4fa923988f30401b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664497"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>Kurz: návrh Azure Database for MariaDB pomocí prostředí PowerShell
@@ -28,7 +28,7 @@ Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu
 > - Aktualizace dat
 > - Obnovení dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

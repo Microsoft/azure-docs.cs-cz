@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: e09ac39037024b5c360af4bb6ada26590b142924
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359587"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight
@@ -20,7 +20,7 @@ ms.locfileid: "97359587"
 
 Tento článek popisuje, jak získat přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight-Spark z Spark-Shell. HDInsight je Hortonworks Hadoop PaaS v Azure, který využívá úložiště objektů pro HDFS a je v několika různých charakterech, jako je [Spark](../hdinsight/spark/apache-spark-overview.md).  Obsah tohoto dokumentu odkazuje na HDInsight-Spark, ale vztahuje se na všechny distribuce Hadoop.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Zřídit Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
