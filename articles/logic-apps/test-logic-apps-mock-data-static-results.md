@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93027699"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím povedených dat nastavením statických výsledků
@@ -21,7 +21,7 @@ Při testování vašich aplikací logiky možná nebudete připraveni na skute�
 
 Pokud jste například nastavili statické výsledky pro akci odeslat poštu v aplikaci Outlook 365, modul Logic Apps vrátí pouze ta data, která jste zadali jako statické výsledky, nikoli volat Outlook a odeslat e-mail.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 

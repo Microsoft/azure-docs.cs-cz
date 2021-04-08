@@ -7,10 +7,10 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93422956"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Místní ladění Azure Functions PowerShellu
@@ -246,7 +246,7 @@ Modul runtime Azure Functions spouští několik příkazů před samotným vyvo
 
 Pokud má dojít k tomuto přerušení, `continue` Spusťte `c` příkaz nebo, který přeskočí tuto zarážku. Pak se zastaví na očekávané zarážce.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte během ladění problémy, měli byste ověřit následující:
 

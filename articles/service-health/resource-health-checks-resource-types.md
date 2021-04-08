@@ -4,10 +4,10 @@ description: Podporované typy prostředků prostřednictvím služby Azure Reso
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97883363"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96534076"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
@@ -21,7 +21,7 @@ Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric n
 > [!NOTE]
 > Tento článek se týká prostředí pro vývoj pro Linux.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  V clusteru Windows nemůžete spouštět kontejnery Linux.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Vývojový počítač s:
   * [Service Fabric SDK a nástroje](service-fabric-get-started-linux.md)
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 

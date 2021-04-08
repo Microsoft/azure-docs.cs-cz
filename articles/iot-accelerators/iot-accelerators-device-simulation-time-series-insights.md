@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96854559"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
 
 Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii z simulovaných zařízení a testovat vaše řešení IoT. V této příručce se dozvíte, jak vizualizovat a analyzovat simulaci telemetrie pomocí Time Series Insightsho prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

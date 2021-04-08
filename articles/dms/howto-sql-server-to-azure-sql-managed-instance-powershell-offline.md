@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.openlocfilehash: 90663b6beb4f1e3f7ade32e603a53c8b9d9158f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98697810"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-offline-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do spravované instance SQL offline pomocí prostředí PowerShell & Azure Database Migration Service
@@ -36,7 +36,7 @@ V tomto článku získáte informace o těchto tématech:
 Tento článek popisuje kroky pro offline migraci, ale je také možné migrovat [online](howto-sql-server-to-azure-sql-managed-instance-powershell-online.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení těchto kroků potřebujete:
 

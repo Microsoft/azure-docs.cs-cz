@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96558857"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Kurz: Konfigurace 8x8 pro Automatické zřizování uživatelů
@@ -29,7 +29,7 @@ Tento kurz popisuje kroky, které je třeba provést v konzole pro správu 8x8, 
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a 8x8
 > * [Jednotné přihlašování](./8x8virtualoffice-tutorial.md) k 8x8 (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
