@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97608812"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TimeOffManager
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat TimeOffManager s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -140,13 +140,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-timeoffmanager-sso"></a>Konfigurace jednotného přihlašování TimeOffManager
+## <a name="configure-timeoffmanager-sso&quot;></a>Konfigurace jednotného přihlašování TimeOffManager
 
 1. V jiném okně webového prohlížeče se přihlaste k webu TimeOffManager společnosti jako správce.
 
 2. Přejít na **\> Možnosti účtu účtu \> nastavení s jedním Sign-On**.
    
-    ![Snímek obrazovky zobrazuje nastavení jednoho Sign-On vybrané z možností účtu.](./media/timeoffmanager-tutorial/ic795917.png "Nastavení jednoho Sign-On")
+    ![Snímek obrazovky zobrazuje nastavení jednoho Sign-On vybrané z možností účtu.](./media/timeoffmanager-tutorial/ic795917.png &quot;Nastavení jednoho Sign-On")
 
 3. V části **nastavení s jedním Sign-On** proveďte následující kroky:
    

@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
 ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101707138"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Rychlý Start: zabezpečené připojení k virtuálnímu počítači přes prohlížeč prostřednictvím privátní IP adresy
 
 Pomocí Azure Portal a Azure bastionu se můžete připojit k virtuálnímu počítači přes prohlížeč. V tomto článku rychlý Start se dozvíte, jak nakonfigurovat Azure bastionu na základě nastavení virtuálního počítače a pak se k VIRTUÁLNÍmu počítači připojit prostřednictvím portálu. Virtuální počítač nepotřebuje veřejnou IP adresu, klientský software, agenta nebo speciální konfiguraci. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti. Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](bastion-overview.md).
 
-## <a name="prerequisites"></a><a name="prereq"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereq"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Abyste se mohli připojit k VIRTUÁLNÍmu počítači přes prohlížeč pomocí bastionu, musíte být schopni se přihlásit k Azure Portal.
 
@@ -100,7 +100,7 @@ Existuje několik různých způsobů konfigurace hostitele bastionu. V následu
    :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="Snímek obrazovky s krokem 3":::
 1. Po dokončení hodnot vyberte **vytvořit Azure bastionu pomocí výchozí hodnoty**. Azure ověří vaše nastavení a pak vytvoří hostitele. Vytvoření a nasazení hostitele a jeho prostředků trvá asi 5 minut.
 
-## <a name="connect"></a><a name="connect"></a>Připojit
+## <a name="connect"></a><a name="connect"></a>Síti
 
 Po nasazení bastionu do virtuální sítě se obrazovka změní na stránku připojit.
 

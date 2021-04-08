@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99089338"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Galerie modulů plug-in Azure Media Player #
@@ -36,7 +36,7 @@ ms.locfileid: "99089338"
 | Usnadnění přístupu                      | | | |
 | Přiblížit                             | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/zoom/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-zoom-plugin)                     | Tento modul plug-in na obrazovce hráčů zobrazuje škálu přiblížení umožňující přetahování, takže se můžou čtenáři přiblížit k obsahu. |
 | Živé titulky                       | Příspěvek na [blogu Azure](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | – | *Další informace najdete v příspěvku.* Konečný pracovní postup, který je určený pro živý modul plug-in pro Azure Media Player, klikněte na odkaz vlevo a přejděte k webu SubPly a zjistěte další informace o řešení. |
-| Klávesové zkratky                            | <strike>[Ukázka](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | Modul plug-in klávesové zkratky umožňuje čtenářům řídit různé aspekty přehrávače s obecnými kombinacemi modulů plug-in, jako je F pro celou obrazovku, pro funkci ztlumení a šipky pro řízení indikátoru průběhu. *Poznámka: Tento modul plug-in už je integrovaný do AMP, ale můžete ho použít jako prostředek.* |
+| Klávesové zkratky                            | <strike>[Ukázka](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHubu](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | Modul plug-in klávesové zkratky umožňuje čtenářům řídit různé aspekty přehrávače s obecnými kombinacemi modulů plug-in, jako je F pro celou obrazovku, pro funkci ztlumení a šipky pro řízení indikátoru průběhu. *Poznámka: Tento modul plug-in už je integrovaný do AMP, ale můžete ho použít jako prostředek.* |
 | Sociální sítě                              | | | |
 | Sdílení                               | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Tento modul plug-in přidá na řídicí panel přehrávače tlačítko sdílet, aby mohli vaši uživatelé sdílet video, které sleduje s přáteli přes Facebook, Twitter nebo LinkedIn. |
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102566630"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure na webu Marketplace
@@ -23,7 +23,7 @@ Tento kurz se doporučuje, pokud chcete rychle začít nasazovat důvěrný výp
 
 Pokud vás zajímá nasazení důvěrného výpočetního virtuálního počítače s více vlastními konfiguracemi, postupujte podle [kroků pro nasazení virtuálního počítače Azure Portal důvěrného COMPUTE](quick-create-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791875"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>Volat funkce z Azure Logic Apps
@@ -27,7 +27,7 @@ Chcete-li spustit fragmenty kódu bez použití Azure Functions, přečtěte si,
 > [!NOTE]
 > Integrace mezi Logic Apps a Azure Functions v současnosti nefunguje s povolenými sloty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
