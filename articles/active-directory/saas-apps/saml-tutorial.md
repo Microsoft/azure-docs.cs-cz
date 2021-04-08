@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
 ms.openlocfilehash: 477180a6576d52e3386e18b6e2ba12dd33e4d794
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101654404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Kurz: Azure Active Directory integrace s povolenou aplikací obchodní aplikace s tokenem SAML 1,1
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat obchodní aplikaci s povoleným tokene
 * Umožněte uživatelům, aby se automaticky přihlásili k obchodní aplikaci s povoleným tokenem SAML 1,1 s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

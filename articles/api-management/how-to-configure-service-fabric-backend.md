@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/29/2021
 ms.author: apimpm
 ms.openlocfilehash: f6474dbd02c501612b951ddae490385a5d843fbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99500627"
 ---
 # <a name="set-up-a-service-fabric-backend-in-api-management-using-the-azure-portal"></a>Nastavení Service Fabricho back-endu v API Management pomocí Azure Portal
@@ -22,7 +22,7 @@ Tento článek popisuje, jak nakonfigurovat službu [Service Fabric](../service-
 
 Pozadí naleznete v tématu [back-endy v API Management](backends.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky na konfiguraci ukázkové služby v Service Fabricovém clusteru se systémem Windows jako vlastní back-end:
 
