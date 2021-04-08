@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93359897"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrakce informací v Excelu pomocí Analýza textu a automatizace 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Extrakce textu z aplikace Excel a odeslání do rozhraní API pro analýzu textu 
 > * K aktualizaci excelového listu použijte informace z rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Microsoft Azure. [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) nebo se [přihlaste](https://portal.azure.com/).
 - Prostředek Analýza textu. Pokud ho ještě nemáte, můžete [ho vytvořit v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a k dokončení tohoto kurzu použít bezplatnou úroveň.

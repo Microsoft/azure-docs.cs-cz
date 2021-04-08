@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88005427"
 ---
 #  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží s virtuálními počítači s Windows (Classic), zpětná vazba a podpora
@@ -31,7 +31,7 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 >[!NOTE]
 > Máme Fórum odborné komunity, které můžete navštívit a diskutovat o problémech s produktovým týmem a aktivními členy komunity. Pokud chcete začít diskuzi, navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) .
 
-| **Chybu**                                                            | **Navrhované řešení**  |
+| **Problém**                                                            | **Navrhované řešení**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Vytváření tenanta virtuálních klientů Windows                                                    | Pokud dojde k výpadku Azure, [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/). v opačném případě [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu, vyberte **nasazení** pro typ problému a pak vyberte **problémy s vytvářením tenanta virtuálních klientů Windows** pro problémový typ problému.|
 | Přístup k šablonám Marketplace v Azure Portal       | Pokud dojde k výpadku Azure, [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/). <br> <br> Azure Marketplace šablony virtuálních klientů Windows jsou volně dostupné.|

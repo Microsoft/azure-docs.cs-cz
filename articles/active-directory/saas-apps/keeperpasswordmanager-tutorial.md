@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
 ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96178017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Kurz: Azure Active Directory integrace s nástrojem Správce hesel & digitálního trezoru
@@ -28,7 +28,7 @@ Tato integrace poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí & digitálního trezoru Správce úložiště, potřebujete tyto kroky:
 

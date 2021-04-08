@@ -15,10 +15,10 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87485639"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Kurz: Vytvoření vlastní role Azure pomocí Azure CLI
@@ -52,7 +52,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Projděte si seznam operací pro [poskytovatele prostředků Microsoft.Support](resource-provider-operations.md#microsoftsupport). Je užitečné znát operace, které máte k dispozici k vytváření oprávnění.
 
-    | Operace | Description |
+    | Operace | Popis |
     | --- | --- |
     | Microsoft.Support/register/action | Registruje poskytovatele prostředků podpory. |
     | Microsoft.Support/supportTickets/read | Umožňuje získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobností kontaktu a komunikací) nebo seznam lístků podpory pro všechna předplatná. |
