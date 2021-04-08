@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
 ms.openlocfilehash: c58566c628eedd1dbc3d86ae6a142156cbf31211
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585192"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Boomi
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Boomi s Azure Active Directory (Azure 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Boomi svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -155,17 +155,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Klikněte na tlačítko **Uložit** .
 
-### <a name="create-boomi-test-user"></a>Vytvořit testovacího uživatele Boomi
+### <a name="create-boomi-test-user&quot;></a>Vytvořit testovacího uživatele Boomi
 
 Aby se uživatelé Azure AD mohli přihlašovat k Boomi, musí se zřídit v Boomi. V případě Boomi je zřizování ručním úkolem.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Chcete-li zřídit uživatelský účet, proveďte následující kroky:
+### <a name=&quot;to-provision-a-user-account-perform-the-following-steps&quot;></a>Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
 1. Přihlaste se k webu Boomi společnosti jako správce.
 
 1. Po přihlášení přejděte na **Správa uživatelů** a přejděte na **Uživatelé**.
 
-    ![Snímek obrazovky znázorňující stránku správy uživatelů s vybranými uživateli.](./media/boomi-tutorial/user.png "Uživatelé")
+    ![Snímek obrazovky znázorňující stránku správy uživatelů s vybranými uživateli.](./media/boomi-tutorial/user.png &quot;Uživatelé")
 
 1. Klikněte na **+**  ikonu a otevře se dialogové okno **Přidat/udržovat role uživatele** .
 

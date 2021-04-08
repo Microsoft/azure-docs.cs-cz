@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/5/2021
 ms.author: jeedes
 ms.openlocfilehash: 53b4702bd4ac5b4fe608eb7a0e161f36d6cb4cb5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726928"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s procházím
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte, jak se dá integrovat s Azure Active Directory (Azur
 * Umožněte uživatelům, aby se automaticky přihlásili k účtu Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

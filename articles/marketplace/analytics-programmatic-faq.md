@@ -1,5 +1,5 @@
 ---
-title: Programový přístup k běžným dotazům analytického data
+title: Běžné dotazy k programovému přístupu k analytickým datům
 description: Nejčastější dotazy týkající se programového přístupu k analytickým datům v partnerském centru pro vaše nabídky komerčního tržiště.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 393a718632138f4ffcf26e4875eea9ba3d886897
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583733"
 ---
-# <a name="programmatic-access-of-analytics-data-common-questions"></a>Programový přístup k běžným dotazům analytického data
+# <a name="programmatic-access-of-analytics-data-common-questions"></a>Běžné dotazy k programovému přístupu k analytickým datům
 
 Tento článek obsahuje nejčastější dotazy týkající se programového přístupu k analytickým datům v partnerském centru pro vaše nabídky komerčního tržiště.
 

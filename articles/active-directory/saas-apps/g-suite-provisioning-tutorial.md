@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: Zhchia
 ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583747"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
@@ -33,7 +33,7 @@ Tento kurz popisuje kroky, které je třeba provést v G Suite a Azure Active Di
 > * Zřizování skupin a členství ve skupinách v G Suite
 > * [Jednotné přihlašování](./google-apps-tutorial.md) do G Suite (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

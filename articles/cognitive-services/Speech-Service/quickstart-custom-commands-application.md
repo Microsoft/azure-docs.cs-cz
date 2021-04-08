@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
 ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102434623"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Vytvoření hlasového asistenta pomocí vlastních příkazů
@@ -35,7 +35,7 @@ V současné době vlastní příkazy podporují odběry řeči vytvořené v t�
 * Southeast Asia
 * Indie – střed
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.</a> Seznam podporovaných oblastí najdete výše v části **dostupnost oblasti** .

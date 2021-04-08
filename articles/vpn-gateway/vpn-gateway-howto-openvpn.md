@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.openlocfilehash: 137e4e1372ef1af3319c0b9af7ba965fffcb9e34
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104584036"
 ---
 # <a name="configure-openvpn-for-point-to-site-vpn-gateways"></a>Konfigurace OpenVPN pro brány VPN typu Point-to-site
 
 Tento článek vám pomůže nastavit **Protokol OpenVPN®** v Azure VPN Gateway. Můžete použít buď portál, nebo pokyny pro PowerShell.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Článek předpokládá, že již máte funkční prostředí typu Point-to-site. Pokud to neuděláte, vytvořte ho pomocí jedné z následujících metod.
 

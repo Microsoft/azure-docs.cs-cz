@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: eebe1c77c9af6791be94c16f0f792a9e7deb9a6e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103017405"
 ---
 # <a name="input-metadata"></a>Vstupní metadata
@@ -127,7 +127,7 @@ Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-s
 | Název | Typ | Description |
 | --- | --- | --- |
 | **FourCC**<br /><br /> Vyžadováno |**xs: String** |FourCCový kodek pro video. |
-| **Profilu** |**xs: String** |Profil stopy videa. |
+| **Profil** |**xs: String** |Profil stopy videa. |
 | **Obsah** |**xs: String** |Úroveň stopy videa |
 | **PixelFormat** |**xs: String** |Formát pixelu stopy videa |
 | **Width (Šířka)**<br /><br /> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
