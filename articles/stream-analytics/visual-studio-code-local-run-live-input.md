@@ -7,17 +7,17 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
 ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93122890"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí Visual Studio Code
 
 Můžete použít Azure Stream Analytics nástroje pro Visual Studio Code k otestování Stream Analytics úloh místně proti vstupu do živého streamu. Vstup může pocházet ze zdroje, jako je Azure Event Hubs nebo Azure IoT Hub. Výsledky výstupu se odesílají jako soubory JSON do složky ve vašem projektu s názvem **LocalRunOutputs**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download) a restartujte Visual Studio Code.
 

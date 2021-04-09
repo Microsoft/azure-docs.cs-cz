@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899231"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Připojení z místního prostředí k CloudSimple pomocí ExpressRoute
@@ -25,7 +25,7 @@ Pokud už máte připojení Azure ExpressRoute z externího umístění (třeba 
 
 Pro navázání Global Reachho připojení z místního prostředí se vyžaduje blok adres sítě a **/29** .  Adresní prostor/29 se používá pro tranzitní síť mezi okruhy ExpressRoute.  Tranzitní síť by se neměla překrývat s žádnou z vašich virtuálních sítí Azure, místními sítěmi ani CloudSimple privátních cloudových sítí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aby bylo možné navázat spojení mezi okruhem a sítěmi privátního cloudu CloudSimple, je vyžadován okruh Azure ExpressRoute.
 * Uživatel musí mít oprávnění k vytváření autorizačních klíčů na okruhu ExpressRoute.

@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93090507"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení k rozhraní API Cassandra služby Azure Cosmos DB ze Sparku
@@ -20,7 +20,7 @@ ms.locfileid: "93090507"
 
 Tento článek je jedním z řady článků o Azure Cosmos DB rozhraní API Cassandra integraci z Sparku. Články zahrnují připojení, operace jazyka DDL (Data Definition Language), operace DML (Basic data prohledává jazyk) a rozšířené Azure Cosmos DB rozhraní API Cassandra integraci z Sparku. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Zřídí účet Azure Cosmos DB rozhraní API Cassandra.](create-cassandra-dotnet.md#create-a-database-account)
 
 * Zajištění výběru prostředí Spark [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight – Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) | Ostatní].
@@ -54,7 +54,7 @@ V následující tabulce jsou uvedeny Azure Cosmos DB parametry konfigurace prop
 
 Nastavte propustnost a stupeň paralelismu těchto parametrů na základě zatížení, které očekáváte pro úlohy Spark, a propustnosti, kterou jste zřídili pro váš účet Cosmos DB.
 
-## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení k Azure Cosmos DB rozhraní API Cassandra ze Sparku
+## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení k rozhraní API Cassandra služby Azure Cosmos DB ze Sparku
 
 ### <a name="cqlsh"></a>cqlsh
 Následující příkazy podrobně popisují, jak se připojit k Azure CosmosDB rozhraní API Cassandra z cqlsh.  To je užitečné při ověřování při spuštění ukázek ve Sparku.<br>
