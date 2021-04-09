@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: e926dcd4b05d137c7927bdfe5221923d25d4670c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100093484"
 ---
 # <a name="full-backup-and-restore"></a>Úplné zálohování a obnovení
@@ -26,13 +26,13 @@ Spravovaný HSM podporuje vytváření úplné zálohy celého obsahu modulu HSM
 Zálohování je operace roviny dat. Volající iniciující operaci zálohování musí mít oprávnění k provedení operace dataaction **společnosti Microsoft. managedHsm/Backup/Start/Action**.
 
 K provedení úplného zálohování mají oprávnění pouze následující předdefinované role:
-- Spravovaný správce HSM
-- Spravované zálohování HSM
+- Správce spravovaného HSM
+- Zálohování spravovaného HSM
 
-K provedení úplného zálohování je nutné zadat následující informace:
-- Název HSM nebo adresa URL
+Pokud chcete spustit úplné zálohování, musíte zadat následující informace:
+- Název nebo adresa URL HSM
 - Název účtu úložiště
-- Kontejner úložiště objektů BLOB v účtu úložiště
+- Kontejner úložiště objektů blob účtu úložiště
 - Token SAS kontejneru úložiště s oprávněními `crdw`
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -75,7 +75,7 @@ az keyvault backup start --hsm-name mhsmdemo2 --storage-account-name mhsmdemobac
 Obnovení je operace roviny dat. Volající spouštějící operaci obnovení musí mít oprávnění k provedení operace dataaction **Microsoft. WebmanagedHsm/Restore/Start/Action**. Zdrojový modul HARDWAROVÉho zabezpečení, ve kterém se vytvořila záloha, a cílový modul HSM, ve kterém se provede obnovení, **musí** mít stejnou doménu zabezpečení. Přečtěte si další [informace o spravované doméně zabezpečení HSM](security-domain.md).
 
 K provedení úplného obnovení musíte zadat následující informace:
-- Název HSM nebo adresa URL
+- Název nebo adresa URL HSM
 - Název účtu úložiště
 - Kontejner objektů BLOB účtu úložiště
 - Token SAS kontejneru úložiště s oprávněními `rl`

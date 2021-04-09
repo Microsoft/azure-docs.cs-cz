@@ -10,10 +10,10 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98219449"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Rychlý Start: vytvoření nové propojené služby Azure Machine Learning v synapse
@@ -26,7 +26,7 @@ Například tento odkaz na pracovní prostor Azure Machine Learning umožňuje t
 
 - Naobohacení dat pomocí předpovědi díky zavedení modelu Machine Learning z registru modelu Azure Machine Learning a určení skóre modelu v synapse fondech SQL. Další podrobnosti najdete v tématu [kurz: Průvodce bodování modelu Machine Learning pro synapse fondy SQL serveru](tutorial-sql-pool-model-scoring-wizard.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 - [Pracovní prostor synapse Analytics](../get-started-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterými pracujete.
