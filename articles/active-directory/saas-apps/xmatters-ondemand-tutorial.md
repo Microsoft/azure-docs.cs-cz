@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Azure Active Directory integrace s xMatters OnDemand
@@ -27,7 +27,7 @@ Integrace xMatters OnDemand s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k xMatters OnDemand (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat integraci Azure AD s xMatters OnDemand, budete potřebovat následující položky:
 
@@ -110,7 +110,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -122,7 +122,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k xMatters OnDemand.
 
@@ -135,13 +135,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 
-## <a name="configure-xmatters-ondemand-sso"></a>Konfigurace xMatters OnDemand SSO
+## <a name=&quot;configure-xmatters-ondemand-sso&quot;></a>Konfigurace xMatters OnDemand SSO
 
 1. V jiném okně webového prohlížeče se přihlaste k webu XMatters OnDemand Company jako správce.
 
 2. Klikněte na **správce** a pak klikněte na **Podrobnosti společnosti**.
 
-    ![Stránka pro správu](./media/xmatters-ondemand-tutorial/admin.png "Správce")
+    ![Stránka pro správu](./media/xmatters-ondemand-tutorial/admin.png &quot;Správce")
 
 3. Na stránce **Konfigurace SAML** proveďte následující kroky:
 

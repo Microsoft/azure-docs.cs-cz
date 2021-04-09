@@ -48,9 +48,9 @@ SumCost je například název sloupce, který je vybrán v příkladu sdíleném
 
 ![Obrázek ukazující sloupce No, dodavatel a ovocné sloupce před a po transformaci unipivot pomocí sloupce ovoce jako unipivot Key.](media/data-flow/unpivot3.png)
 
-Když nastavíte uspořádání sloupců na "normální", budou se seskupovat všechny nové sloupce, které nejsou Překlopné z jedné hodnoty. Nastavení uspořádání sloupců na příčné bude seskupovat nové nekontingenční sloupce vygenerované z existujícího sloupce.
+Když nastavíte uspořádání sloupců na "normální&quot;, budou se seskupovat všechny nové sloupce, které nejsou Překlopné z jedné hodnoty. Nastavení uspořádání sloupců na příčné bude seskupovat nové nekontingenční sloupce vygenerované z existujícího sloupce.
 
-![Snímek obrazovky ukazuje výsledek transformace.](media/data-flow//unpivot7.png "Unpivot možnosti 5")
+![Snímek obrazovky ukazuje výsledek transformace.](media/data-flow//unpivot7.png &quot;Unpivot možnosti 5")
 
 Poslední nepivotovaná sada výsledků dat zobrazuje celkový počet sloupců, které se teď nepivotují na samostatné hodnoty řádků.
 

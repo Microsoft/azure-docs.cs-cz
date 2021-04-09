@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
 ms.openlocfilehash: f5caac0a0da3595075dddd5a273a6883a0cca468
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97861821"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
@@ -93,7 +93,7 @@ Kromě toho jsou v Cognitive Services nabídce [více služeb](cognitive-service
 * LUIS
 * Analýza textu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 

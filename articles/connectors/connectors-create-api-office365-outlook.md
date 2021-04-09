@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
 ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095459"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
@@ -24,7 +24,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Of
 
 Libovolný Trigger můžete použít ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo při výskytu události v rozdílové službě, jako je například Salesforce. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Outlooku, ke kterému se přihlašujete pomocí [pracovního nebo školního účtu](https://www.office.com/). Pokud máte @outlook.com @hotmail.com účet nebo, použijte místo toho [konektor Outlook.com](../connectors/connectors-create-api-outlook.md) . Pokud se chcete připojit k Outlooku pomocí jiného uživatelského účtu, jako je třeba účet služby, přečtěte si téma [připojení pomocí dalších účtů](#connect-using-other-accounts).
 
