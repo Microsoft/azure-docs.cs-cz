@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675046"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s neserverovým fondem SQL ve službě Azure synapse Analytics
@@ -219,7 +219,7 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
     - Azure Synapse Studio 

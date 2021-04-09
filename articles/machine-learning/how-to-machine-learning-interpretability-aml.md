@@ -12,10 +12,10 @@ ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
 ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98222747"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
@@ -561,7 +561,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
 
    Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()` .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * **Zhuštěná data nejsou podporovaná**: model, který porušuje řídicí panely nebo se v podstatě zpomaluje s velkým počtem funkcí, proto Momentálně nepodporujeme formát zhuštěných dat. Kromě toho vznikají Obecné problémy s pamětí s velkými datovými sadami a velkým počtem funkcí. 
 

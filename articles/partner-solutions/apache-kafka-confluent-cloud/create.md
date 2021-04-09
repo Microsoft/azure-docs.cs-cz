@@ -7,17 +7,17 @@ ms.date: 01/15/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: f4c6dacf63b1be44e826fe6841c87ccec4bf9b1a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98253763"
 ---
 # <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud"></a>Rychlý Start: Začínáme s Apache Kafka pro Cloud s nefluenti
 
 V tomto rychlém startu použijete Azure Portal k vytvoření instance Apache Kafka pro Cloud.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 - Musíte mít roli _vlastníka_ nebo _přispěvatele_ pro vaše předplatné Azure. Integraci mezi Azure a influent může nastavit jenom uživatelé s přístupem _vlastníka_ nebo _přispěvatele_ . Než začnete, [Ověřte, že máte odpovídající přístup](../../role-based-access-control/check-access.md).

@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.reviewer: calui
 ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255963"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
@@ -250,7 +250,7 @@ K provedení následujících kroků potřebujete oprávnění *správce tenanta
 6. Přidejte skupinu do zásady dvoufázové zavedení, jak je znázorněno v následujícím příkladu. Hodnotu v parametru *-ID* nahraďte hodnotou vrácenou pro ID zásady v kroku 4 a nahraďte hodnotu v parametru *-RefObjectId* *číslem ID* , které jste si poznamenali v kroku 5. Může trvat až 1 hodinu, než se uživatelé ve skupině můžou pomocí svých proxy adres přihlašovat.
 
    ```powershell
-   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID&quot; -RefObjectId &quot;GROUP_OBJECT_ID"
    ```
    
 Pro nové členy přidané do skupiny může trvat až 24 hodin, než se budou moct pomocí svých proxy adres přihlašovat.
@@ -260,7 +260,7 @@ Pro nové členy přidané do skupiny může trvat až 24 hodin, než se budou m
 Pokud chcete skupinu odebrat ze zásady dvoufázové zavedení, spusťte následující příkaz:
 
 ```powershell
-Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID&quot; -ObjectId &quot;GROUP_OBJECT_ID" 
 ```
 
 ### <a name="removing-policies"></a>Odebírají se zásady

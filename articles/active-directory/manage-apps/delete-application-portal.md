@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 1/5/2021
 ms.author: kenwith
 ms.openlocfilehash: 187f4a1d524e0343130808aa4b4c18222fa982c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99259266"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)
@@ -23,7 +23,7 @@ V tomto rychlém startu se pomocí Azure Portal odstraní aplikace, která se p�
 
 Další informace o jednotném přihlašování a Azure najdete v tématu [co je Single Sign-On (SSO)](what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete odstranit aplikaci z tenanta Azure AD, budete potřebovat:
 

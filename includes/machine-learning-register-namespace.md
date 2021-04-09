@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/01/2020
 ms.author: larryfr
 ms.openlocfilehash: e92d3ac9ed4330cc1680428a426e881538cb0e78
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102623562"
 ---
 * Při vytváření nového pracovního prostoru můžete buď automaticky vytvořit služby, které pracovní prostor potřebuje, nebo použít existující služby. Pokud chcete používat __existující služby z jiného předplatného Azure__ , než je pracovní prostor, musíte v předplatném, které tyto služby obsahuje, zaregistrovat obor názvů Azure Machine Learning. Například vytvořením pracovního prostoru v předplatném A, který používá účet úložiště z předplatného B, musí být obor názvů Azure Machine Learning zaregistrován v předplatném B před tím, než budete moci použít účet úložiště v pracovním prostoru.

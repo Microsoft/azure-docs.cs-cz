@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98740818"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
@@ -72,7 +72,7 @@ Pokud používáte hesla, ujistěte se, že účty obsahují silná hesla, kter�
 
 Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádných účtů a aktivovat oznámení ostatním správcům. Když monitorete aktivitu na účtech s oddělovači, můžete ověřit, že tyto účty jsou používány pouze pro účely testování nebo k skutečným mimořádným událostem. Pomocí služby Azure Log Analytics můžete monitorovat protokoly přihlášení a aktivovat e-maily a upozornění serveru SMS vašim správcům, když se přihlásí účty se systémem Break.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. [Odešlete přihlašovací protokoly služby Azure AD](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) , aby se Azure monitor.
 

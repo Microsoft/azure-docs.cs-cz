@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.openlocfilehash: 147a7868d99e8ba479ea490b5467fed3386fc161
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101102967"
 ---
 Pokud je potřeba, aby vaše aplikace vytvořily jiní uživatelé, musíte do prostředku pro vytváření Azure Portal přidat přidružené e-mailové adresy.
