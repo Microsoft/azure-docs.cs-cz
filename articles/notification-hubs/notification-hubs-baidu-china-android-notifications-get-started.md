@@ -16,10 +16,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 098fb0ed967dcacac24ce3abfd4843f9fe14ff49
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101727171"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
@@ -30,7 +30,7 @@ Nabídka cloudu Baidu představuje čínskou cloudovou službu, kterou můžete 
 
 Vzhledem k nedostupnosti obchodu Google Play a služby Firebase Cloud Messaging (FCM) v Číně je nutné pro aplikace používat jiné obchody a služby nabízených oznámení. Baidu je jednou z nich a aktuálně ji používá Centrum oznámení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu budete potřebovat:
 
@@ -460,7 +460,7 @@ V této části ukážeme odesílání oznámení pomocí konzolové aplikace .N
     ```csharp
     private static async void SendNotificationAsync()
     {
-        NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
+        NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString&quot;, &quot;NotificationHubName");
         string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
         var result = await hub.SendBaiduNativeNotificationAsync(message);
     }

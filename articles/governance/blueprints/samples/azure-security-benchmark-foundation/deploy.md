@@ -4,10 +4,10 @@ description: Nasaďte kroky pro ukázkový plán Azure Security benchmark Founda
 ms.date: 03/12/2021
 ms.topic: sample
 ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103232609"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Nasazení ukázky plánu Azure Security benchmark Foundation
@@ -138,7 +138,7 @@ Následující tabulka uvádí seznam parametrů podrobného plánu:
 |Šablona Azure Network Watcher|Šablona Resource Manageru|Umístění Network Watcher|Umístění prostředku Network Watcher|
 |Šablona Azure Network Watcher|Šablona Resource Manageru|Network Watcher umístění skupiny prostředků|Pokud je už Network Watcher povolený, hodnota tohoto parametru se **musí** shodovat s umístěním existující Network Watcher skupiny prostředků.|
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k chybě `The resource group 'NetworkWatcherRG' failed to deploy due to the
 following error: Invalid resource group location '{location}'. The Resource group already exists in

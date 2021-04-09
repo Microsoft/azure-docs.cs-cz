@@ -160,8 +160,6 @@
       href: fslogix-containers-azure-files.md
     - name: Možnosti úložiště pro kontejnery profilů FSLogix
       href: store-fslogix-profile.md
-    - name: Integrace partnerů
-      href: partners.md
     - name: Windows Virtual Desktop – nejčastější dotazy
       href: faq.md
     - name: Nejčastější dotazy k Windows 10 Enterprise pro více relací

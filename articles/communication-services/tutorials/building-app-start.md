@@ -8,16 +8,14 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7eb44987dca033ecdac9ef2ca63fb1da97dc9678
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: a5a23d6a06c8cdff4deabac5251597b7ffe0c833
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109178"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728041"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Kurz: Příprava webové aplikace pro komunikační služby Azure (Node.js)
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Pomocí komunikačních služeb Azure můžete do svých aplikací přidat komunikaci v reálném čase. V tomto kurzu se naučíte, jak nastavit webovou aplikaci, která podporuje komunikační služby Azure. Toto je úvodní kurz pro nové vývojáře, kteří chtějí začít používat komunikaci v reálném čase.
 

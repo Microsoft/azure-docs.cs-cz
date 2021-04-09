@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 6dc91dc07d11f195092343e657911a884d8bf475
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104865991"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalace Jupyter Notebook na vašem počítači a připojení k Apache Spark v HDInsight
@@ -25,7 +25,7 @@ Při instalaci Jupyter a připojení k Apache Spark ve službě HDInsight jsou z
 
 Další informace o vlastních jádrech a Spark Magic najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery Apache Spark Linux v HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Místní Poznámkový blok se připojí ke clusteru HDInsight.
 

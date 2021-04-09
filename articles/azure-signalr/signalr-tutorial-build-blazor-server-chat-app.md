@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1423e8aaf4b50db94cda0b935a7b1658249893e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97755901"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726341"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Kurz: Vytvoření aplikace chat serveru Blazor
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak vytvořit a upravit aplikaci Blazor serveru. Dozv
 > * Rychlé nasazení Azure App Service v aplikaci Visual Studio.
 > * Migrujte místní signál do služby Azure Signal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Nainstalovat [sadu .NET Core 3,0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) (verze >= 3.0.100)
 * Instalace sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (verze >= 16,3)
 > Verze Visual Studio 2019 Preview funguje i pro vydání nejnovější šablony aplikace Blazor serveru, která cílí na novější verzi .Net Core.
@@ -361,7 +361,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
 
 ## <a name="publish-to-azure"></a>Publikování do Azure
 
-   V současné době aplikace Blazor pracuje na místním signálu a při nasazení do Azure App Service je navržena pro použití [služby signalizace Azure](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) , která umožňuje škálovat aplikaci serveru Blazor na velký počet souběžných připojení k signalizaci. Kromě toho globální dosah a vysoce výkonná datová centra služby signalizace významně pomáhají při snižování latence kvůli geografickým zeměpisům.
+   V současné době aplikace Blazor pracuje na místním signálu a při nasazení do Azure App Service je navržena pro použití [služby signalizace Azure](/aspnet/core/signalr/scale#azure-signalr-service) , která umožňuje škálovat aplikaci serveru Blazor na velký počet souběžných připojení k signalizaci. Kromě toho globální dosah a vysoce výkonná datová centra služby signalizace významně pomáhají při snižování latence kvůli geografickým zeměpisům.
 
 > [!IMPORTANT]
 > V aplikaci Blazor Server jsou stavy uživatelského rozhraní udržovány na straně serveru, což znamená, že v tomto případě je vyžadován server v rychlém stavu. Pokud je k dispozici jeden aplikační server, je server v rychlém designu zajištěný. Pokud ale existuje několik aplikačních serverů, může vyjednávání klienta a připojení přejít na jiné servery a vede k chybám uživatelského rozhraní v aplikaci Blazor. Proto je třeba povolit server v rychlém příkladu níže v `appsettings.json` :
@@ -385,7 +385,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
 
    Tato závislost služby provede následující akce, které umožní aplikaci automaticky přepnout na službu Azure Signal Service v Azure.
 
-   * Aktualizujte [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) , aby používala službu Azure Signal Service.
+   * Aktualizujte [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) , aby používala službu Azure Signal Service.
    * Přidejte odkaz na balíček NuGet služby pro signály Azure.
    * Aktualizujte vlastnosti profilu a uložte nastavení závislostí.
    * Konfigurace úložiště tajných klíčů závisí na vaší volbě.
@@ -423,10 +423,10 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    }
    ```
 
-1. Konfigurace služby signalizace Azure `ConnectionString` buď v `appsetting.json` nástroji, nebo pomocí nástroje [správce tajných klíčů](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager)
+1. Konfigurace služby signalizace Azure `ConnectionString` buď v `appsetting.json` nástroji, nebo pomocí nástroje [správce tajných klíčů](/aspnet/core/security/app-secrets?tabs=visual-studio#secret-manager)
 
 > [!NOTE]
-> Krok 2 se dá nahradit pomocí [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) do sady Signal SDK.
+> Krok 2 se dá nahradit pomocí [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) do sady Signal SDK.
 > 
 > 1. Přidání konfigurace pro zapnutí služby signalizace Azure v `appsetting.json`
 >    ```js

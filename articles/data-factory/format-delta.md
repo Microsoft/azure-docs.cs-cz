@@ -4,14 +4,14 @@ description: Transformace a přesun dat ze rozdílových Lake pomocí formátu D
 author: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 03/26/2020
 ms.author: daperlov
-ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74df809f2206a105b405ba184949ef887096ebc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100386488"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932501"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Rozdílový formát v Azure Data Factory
 
@@ -75,6 +75,8 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány rozd
 | Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | `Optimal` nebo `Fastest` | compressionLevel |
 | Vacuum | Zadejte prahovou hodnotu uchování v hodinách pro starší verze tabulky. Výchozí hodnota je 0 nebo menší než 30 dní. | ano | Integer | sávací |
 | Update – metoda | Určete, které operace aktualizace jsou povoleny na rozdílovém Lake. Pro metody, které nejsou vloženy, je nutné před označením řádků označit předchozí transformaci řádků. | ano | `true` nebo `false` | lze odstranit <br> vložitelný <br> aktualizovatelné <br> sloučení |
+| Optimalizovaný zápis | Zajištění vyšší propustnosti pro operace zápisu prostřednictvím Optimalizace interního náhodného vykonání v modulech Spark. V důsledku toho si můžete všimnout méně oddílů a souborů o větší velikosti. | ne | `true` nebo `false` | optimizedWrite: true |
+| Automatická komprese | Po dokončení jakékoliv operace zápisu vytvoří Spark automaticky ```OPTIMIZE``` příkaz pro opětovné uspořádání dat. v případě potřeby bude mít v případě potřeby další oddíly, aby bylo možné lépe číst výkon v budoucnu. | ne | `true` nebo `false` |   autoCompact: true |
 
 ### <a name="delta-sink-script-example"></a>Příklad skriptu jímky v rozdílu
 

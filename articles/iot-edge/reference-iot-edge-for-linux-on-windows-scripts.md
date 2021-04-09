@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: a24b39107d8f78c049afa230fe678ec92852eeb0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612768"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959683"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Skripty PowerShellu pro IoT Edge pro Linux ve Windows
 
@@ -41,7 +41,7 @@ Příkaz **Deploy-eFlow** je hlavní metodou nasazení. Příkaz pro nasazení v
 | registrationId | ID registrace existujícího zařízení IoT Edge | ID registrace pro zřízení zařízení IoT Edge (**x509** nebo **symetrický**). |
 | identityCertLocVm | Cesta ke složce; musí být ve složce, kterou může služba vlastnit. `iotedge` | Absolutní cílová cesta certifikátu identity na virtuálním počítači pro zřízení zařízení IoT Edge (**x509** nebo **symetrický**). |
 | identityCertLocWin | Cesta k adresáři | Absolutní cesta ke zdroji certifikátu identity ve Windows pro zřízení zařízení IoT Edge (**x509** nebo **symetrický**). |
-| identityPkLocVm |  | Cesta ke složce; musí být ve složce, kterou může služba vlastnit. `iotedge` | Absolutní cílová cesta k privátnímu klíči identity na virtuálním počítači pro zřízení zařízení IoT Edge (**x509** nebo **symetrický**). |
+| identityPkLocVm | Cesta ke složce; musí být ve složce, kterou může služba vlastnit. `iotedge` | Absolutní cílová cesta k privátnímu klíči identity na virtuálním počítači pro zřízení zařízení IoT Edge (**x509** nebo **symetrický**). |
 | identityPkLocWin | Cesta k adresáři | Absolutní cesta ke zdroji privátního klíče identity ve Windows pro zřízení zařízení IoT Edge (**x509** nebo **symetrický**). |
 | vmSizeDefintion | Maximálně 30 znaků | Definice počtu jader a dostupné paměti RAM pro virtuální počítač. **Výchozí hodnota**: Standard_K8S_v1. |
 | vmDiskSize | Mezi 8 GB a 256 GB | Maximální velikost disku dynamicky se zvětšující virtuální pevný disk. **Výchozí hodnota**: 16 GB. |
@@ -74,7 +74,7 @@ Příkaz **zřídit-EflowVm** přidá informace o zřizování pro vaše zaříz
 | registrationId | ID registrace existujícího zařízení IoT Edge | ID registrace pro zřízení zařízení IoT Edge (**DPS**) |
 | identityCertLocVm | Cesta ke složce; musí být ve složce, kterou může služba vlastnit. `iotedge` | Absolutní cílová cesta certifikátu identity na virtuálním počítači pro zřízení zařízení IoT Edge (**DPS**, **x509**). |
 | identityCertLocWin | Cesta k adresáři | Absolutní cesta ke zdroji certifikátu identity ve Windows pro zřízení zařízení IoT Edge (**DPS**, **x509**). |
-| identityPkLocVm |  | Cesta ke složce; musí být ve složce, kterou může služba vlastnit. `iotedge` | Absolutní cílová cesta k privátnímu klíči identity na virtuálním počítači pro zřízení zařízení IoT Edge (**DPS**, **x509**). |
+| identityPkLocVm  | Cesta ke složce; musí být ve složce, kterou může služba vlastnit. `iotedge` | Absolutní cílová cesta k privátnímu klíči identity na virtuálním počítači pro zřízení zařízení IoT Edge (**DPS**, **x509**). |
 | identityPkLocWin | Cesta k adresáři | Absolutní cesta ke zdroji privátního klíče identity ve Windows pro zřízení zařízení IoT Edge (**DPS**, **x509**). |
 
 ## <a name="get-eflowvmname"></a>Get-EflowVmName

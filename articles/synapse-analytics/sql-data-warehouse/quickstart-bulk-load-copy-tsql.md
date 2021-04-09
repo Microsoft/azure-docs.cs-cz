@@ -12,10 +12,10 @@ ms.author: gaursa
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 2f97c630189a0f037f1231bb2386fcb7226a9350
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104600033"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
@@ -32,7 +32,7 @@ V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQ
 - Využití SQL Serverch formátů data pro soubory CSV
 - Zadejte v cestě umístění úložiště zástupné znaky a více souborů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu se předpokládá, že už máte vyhrazený fond SQL. Pokud nevytvoříte vyhrazený fond SQL, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 

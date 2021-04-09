@@ -4,12 +4,12 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky A
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28c31681b8fbe981cd51db294c91276dfd65d71f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102619167"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932756"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -324,7 +324,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
+Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](/rest/api/resources/managementlocks/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
 
 Chcete-li vytvořit zámek, spusťte příkaz:
 
