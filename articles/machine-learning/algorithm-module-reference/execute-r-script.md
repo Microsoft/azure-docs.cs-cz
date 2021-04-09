@@ -147,7 +147,7 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
 1. Do textového pole **skript jazyka r** zadejte nebo vložte platný skript r.
 
     > [!NOTE]
-    > Při psaní skriptu buďte opatrní. Ujistěte se, že neexistují žádné chyby syntaxe, jako je například použití nedeklarovaných proměnných nebo neimportované moduly nebo funkce. Věnujte další pozornost seznamu předinstalovaných balíčků na konci tohoto článku. Pokud chcete používat balíčky, které nejsou uvedené, nainstalujte je do skriptu. Příklad: `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
+    > Při psaní skriptu buďte opatrní. Ujistěte se, že neexistují žádné chyby syntaxe, jako je například použití nedeklarovaných proměnných nebo neimportované moduly nebo funkce. Věnujte další pozornost seznamu předinstalovaných balíčků na konci tohoto článku. Pokud chcete používat balíčky, které nejsou uvedené, nainstalujte je do skriptu. Příklad: `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`.
     
     Abychom vám pomohli začít, je textové pole **skriptu jazyka R** předem vyplněno ukázkovým kódem, který lze upravit nebo nahradit.
     

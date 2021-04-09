@@ -417,10 +417,10 @@ Test synchronizace hodnot hash hesel:
    ![Snímek obrazovky zobrazující portál Office 365](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image20.png)
 
 
-### <a name="test-seamless-sso"></a>Plynulé testování jednotného přihlašování
+### <a name="test-seamless-sso&quot;></a>Plynulé testování jednotného přihlašování
 
 1. Přihlaste se k počítači připojenému k doméně, který je připojený k podnikové síti.
-2. V aplikaci Internet Explorer nebo Chrome použijte jednu z následujících adres URL (v doméně nahraďte "contoso"):
+2. V aplikaci Internet Explorer nebo Chrome použijte jednu z následujících adres URL (v doméně nahraďte &quot;contoso"):
 
    * https: \/ \/ myapps.Microsoft.com/contoso.com
    * https: \/ \/ myapps.Microsoft.com/contoso.onmicrosoft.com

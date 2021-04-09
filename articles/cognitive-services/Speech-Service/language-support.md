@@ -12,10 +12,10 @@ ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
 ms.openlocfilehash: 17511778f63a2d7270178042c4bb414cdd6630c3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104955461"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
@@ -38,8 +38,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Jazyk                 | Národní prostředí (BCP-47) | Vlastní nastavení  | [Rozpoznávání jazyka](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Text                                   | Ano                           | 
-| Arabština (Egypt)                     | `ar-EG` | Text                                   | Ano                          |
+| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Text                                   | Yes                           | 
+| Arabština (Egypt)                     | `ar-EG` | Text                                   | Yes                          |
 | Arabština (Irák)                      | `ar-IQ` | Text                                   |                           |
 | Arabština (Izrael)                    | `ar-IL` | Text                                   |                           |
 | Arabština (Jordánsko)                    | `ar-JO` | Text                                   |                           |
@@ -47,62 +47,62 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabština (Libanon)                   | `ar-LB` | Text                                   |                           |
 | Arabština (Omán)                      | `ar-OM` | Text                                   |                           |
 | Arabština (Katar)                     | `ar-QA` | Text                                   |                           |
-| Arabština (Saúdská Arábie)              | `ar-SA` | Text                                   | Ano                          |
+| Arabština (Saúdská Arábie)              | `ar-SA` | Text                                   | Yes                          |
 | Arabština (stav palestinská samospráva)        | `ar-PS` | Text                                   |                           |
-| Arabština (Sýrie)                     | `ar-SY` | Text                                   | Ano                          |
+| Arabština (Sýrie)                     | `ar-SY` | Text                                   | Yes                          |
 | Arabština (Spojené arabské emiráty)      | `ar-AE` | Text                                   |                           |
 | Bulharština (Bulharsko)               | `bg-BG` | Text                                   |                           |
-| katalánština (Španělsko)                    | `ca-ES` | Text                                   | Ano                          |
-| Čínština (kantonština, tradiční)   | `zh-HK` | Zvuk (20201015)<br>Text                 |        Ano                   |
-| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Zvuk (20200910)<br>Text                 |     Ano                      |
-| Čínština (tchajwanský mandarinka)       | `zh-TW` | Zvuk (20190701, 20201015)<br>Text                 |           Ano                |
+| katalánština (Španělsko)                    | `ca-ES` | Text                                   | Yes                          |
+| Čínština (kantonština, tradiční)   | `zh-HK` | Zvuk (20201015)<br>Text                 |        Yes                   |
+| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Zvuk (20200910)<br>Text                 |     Yes                      |
+| Čínština (tchajwanský mandarinka)       | `zh-TW` | Zvuk (20190701, 20201015)<br>Text                 |           Yes                |
 | chorvatština (Chorvatsko)                 | `hr-HR` | Text                                   |                           |
 | čeština (Česká republika)             | `cs-CZ` | Text                                   |                           |
-| dánština (Dánsko)                   | `da-DK` | Text                                   | Ano                          |
-| nizozemština (Nizozemsko)                | `nl-NL` | Zvuk (20201015)<br>Text                                   |    Ano                       |
-| Angličtina (Austrálie)                | `en-AU` | Zvuk (20201019)<br>Text                 | Ano                          |
-| Angličtina (Kanada)                   | `en-CA` | Zvuk (20201019)<br>Text                 | Ano                          |
+| dánština (Dánsko)                   | `da-DK` | Text                                   | Yes                          |
+| nizozemština (Nizozemsko)                | `nl-NL` | Zvuk (20201015)<br>Text                                   |    Yes                       |
+| Angličtina (Austrálie)                | `en-AU` | Zvuk (20201019)<br>Text                 | Yes                          |
+| Angličtina (Kanada)                   | `en-CA` | Zvuk (20201019)<br>Text                 | Yes                          |
 | Angličtina (Ghana)                    | `en-GH` | Text                                   |                           |
 | Angličtina (Hongkong)                | `en-HK` | Text                                   |                           |
-| Angličtina (Indie)                    | `en-IN` | Zvuk (20200923)<br>Text                 | Ano                          |
+| Angličtina (Indie)                    | `en-IN` | Zvuk (20200923)<br>Text                 | Yes                          |
 | Angličtina (Irsko)                  | `en-IE` | Text                                   |                           |
 | Angličtina (Keňa)                    | `en-KE` | Text                                   |                           |
-| Angličtina (Nový Zéland)              | `en-NZ` | Zvuk (20201019)<br>Text                 |  Ano                         |
+| Angličtina (Nový Zéland)              | `en-NZ` | Zvuk (20201019)<br>Text                 |  Yes                         |
 | Angličtina (Nigérie)                  | `en-NG` | Text                                   |                           |
 | Angličtina (Filipíny)              | `en-PH` | Text                                   |                           |
 | Angličtina (Singapur)                | `en-SG` | Text                                   |                           |
 | Angličtina (Jihoafrická republika)             | `en-ZA` | Text                                   |                           |
 | Angličtina (Tanzánie)                 | `en-TZ` | Text                                   |                           |
-| Angličtina (Spojené království)           | `en-GB` | Zvuk (20201019)<br>Text<br>Výslovnost| Ano                          |
-| Angličtina (Spojené státy)            | `en-US` | Zvuk (20201019, 20210223)<br>Text<br>Výslovnost| Ano                          |
+| Angličtina (Spojené království)           | `en-GB` | Zvuk (20201019)<br>Text<br>Výslovnost| Yes                          |
+| Angličtina (Spojené státy)            | `en-US` | Zvuk (20201019, 20210223)<br>Text<br>Výslovnost| Yes                          |
 | Estonština (Estonsko)                  | `et-EE` | Text                                   |                           |
 | Filipínský (Filipíny)             | `fil-PH`| Text                                   |                           |
-| finština (Finsko)                  | `fi-FI` | Text                                   |     Ano                      |
-| Francouzština (Kanada)                    | `fr-CA` | Zvuk (20201015)<br>Text                 |     Ano                      |
-| francouzština (Francie)                    | `fr-FR` | Zvuk (20201015)<br>Text<br>Výslovnost|      Ano                     |
+| finština (Finsko)                  | `fi-FI` | Text                                   |     Yes                      |
+| Francouzština (Kanada)                    | `fr-CA` | Zvuk (20201015)<br>Text                 |     Yes                      |
+| francouzština (Francie)                    | `fr-FR` | Zvuk (20201015)<br>Text<br>Výslovnost|      Yes                     |
 | Francouzština (Švýcarsko)               | `fr-CH` | Text                                   |                           |
 | Němčina (Rakousko)                   | `de-AT` | Text                                   |                           |
-| němčina (Německo)                   | `de-DE` | Zvuk (20190701, 20200619, 20201127)<br>Text<br>Výslovnost|  Ano                         |
+| němčina (Německo)                   | `de-DE` | Zvuk (20190701, 20200619, 20201127)<br>Text<br>Výslovnost|  Yes                         |
 | Řečtina (Řecko)                     | `el-GR` | Text                                   |                           |
 | Gudžarátština (Indie)                  | `gu-IN` | Text                                   |                           |
-| hindština (Indie)                      | `hi-IN` | Zvuk (20200701)<br>Text                 |     Ano                      |
+| hindština (Indie)                      | `hi-IN` | Zvuk (20200701)<br>Text                 |     Yes                      |
 | Maďarština (Maďarsko)                | `hu-HU` | Text                                   |                           |
 | Indonéština (Indonésie)             | `id-ID` | Text                                   |                           |
 | Irština (Irsko)                     | `ga-IE` | Text                                   |                           |
-| italština (Itálie)                    | `it-IT` | Zvuk (20201016)<br>Text<br>Výslovnost|      Ano                     |
-| japonština (Japonsko)                   | `ja-JP` | Text                                   |      Ano                     |
-| korejština (Jižní Korea)                     | `ko-KR` | Zvuk (20201015)<br>Text                 |      Ano                     |
+| italština (Itálie)                    | `it-IT` | Zvuk (20201016)<br>Text<br>Výslovnost|      Yes                     |
+| japonština (Japonsko)                   | `ja-JP` | Text                                   |      Yes                     |
+| korejština (Jižní Korea)                     | `ko-KR` | Zvuk (20201015)<br>Text                 |      Yes                     |
 | lotyština (Lotyšsko)                   | `lv-LV` | Text                                   |                           |
 | litevština (Litva)             | `lt-LT` | Text                                   |                           |
 | Malajština (Malajsie)                    | `ms-MY` | Text                                   |                           |
 | Maltština (Malta)                     | `mt-MT` | Text                                   |                           |
 | Maráthština (Indie)                    | `mr-IN` | Text                                   |                           |
-| Norština, Bokmål (Norsko)         | `nb-NO` | Text                                   |     Ano                      |
-| polština (Polsko)                    | `pl-PL` | Text                                   |       Ano                    |
-| Portugalština (Brazílie)                | `pt-BR` | Zvuk (20190620, 20201015)<br>Text<br>Výslovnost|          Ano                 |
-| portugalština (Portugalsko)              | `pt-PT` | Text                                   |             Ano              |
+| Norština, Bokmål (Norsko)         | `nb-NO` | Text                                   |     Yes                      |
+| polština (Polsko)                    | `pl-PL` | Text                                   |       Yes                    |
+| Portugalština (Brazílie)                | `pt-BR` | Zvuk (20190620, 20201015)<br>Text<br>Výslovnost|          Yes                 |
+| portugalština (Portugalsko)              | `pt-PT` | Text                                   |             Yes              |
 | rumunština (Rumunsko)                 | `ro-RO` | Text                                   |                           |
-| ruština (Rusko)                   | `ru-RU` | Zvuk (20200907)<br>Text                 |                Ano           |
+| ruština (Rusko)                   | `ru-RU` | Zvuk (20200907)<br>Text                 |                Yes           |
 | slovenština (Slovensko)                  | `sk-SK` | Text                                   |                           |
 | slovinština (Slovinsko)               | `sl-SI` | Text                                   |                           |
 | Španělština (Argentina)                | `es-AR` | Text                                   |                           |
@@ -117,20 +117,20 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Španělština (Rovníková Guinea)        | `es-GQ` | Text                                   |                           |
 | Španělština (Guatemala)                | `es-GT` | Text                                   |                           |
 | Španělština (Honduras)                 | `es-HN` | Text                                   |                           |
-| Španělština (Mexiko)                   | `es-MX` | Zvuk (20200907)<br>Text                 |    Ano                       |
+| Španělština (Mexiko)                   | `es-MX` | Zvuk (20200907)<br>Text                 |    Yes                       |
 | Španělština (Nikaragua)                | `es-NI` | Text                                   |                           |
 | Španělština (Panama)                   | `es-PA` | Text                                   |                           |
 | Španělština (Paraguay)                 | `es-PY` | Text                                   |                           |
 | Španělština (Peru)                     | `es-PE` | Text                                   |                           |
 | Španělština (Portoriko)              | `es-PR` | Text                                   |                           |
-| Španělština (Španělsko)                    | `es-ES` | Zvuk (20201015)<br>Text                 |  Ano                         |
+| Španělština (Španělsko)                    | `es-ES` | Zvuk (20201015)<br>Text                 |  Yes                         |
 | Španělština (Uruguay)                  | `es-UY` | Text                                   |                           |
 | Španělština (USA)                      | `es-US` | Text                                   |                           |
 | Španělština (Venezuela)                | `es-VE` | Text                                   |                           |
-| švédština (Švédsko)                   | `sv-SE` | Text                                   |   Ano                        |
+| švédština (Švédsko)                   | `sv-SE` | Text                                   |   Yes                        |
 | Tamilština (Indie)                      | `ta-IN` | Text                                   |                           |
 | Telugština (Indie)                     | `te-IN` | Text                                   |                           |
-| thajština (Thajsko)                    | `th-TH` | Text                                   |      Ano                     |
+| thajština (Thajsko)                    | `th-TH` | Text                                   |      Yes                     |
 | turečtina (Turecko)                   | `tr-TR` | Text                                   |                           |
 | Vietnamština (Vietnam)               | `vi-VN` | Text                                   |                           |
 
@@ -406,21 +406,21 @@ Vlastní hlas je k dispozici v úrovni Standard a neuronové. Podporované jazyk
 
 | Jazyk | Národní prostředí | Standard | Neuronové |
 |--|--|--|--|
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Ano | Ano |
-| Čínština (Mandarin, zjednodušená), anglické dvojjazyčné | `zh-CN` dvojjazyčný | Ano | Ano |
-| Angličtina (Austrálie) | `en-AU` | Ne | Ano |
-| Angličtina (Indie) | `en-IN` | Ano | Ano |
-| Angličtina (Spojené království) | `en-GB` | Ano | Ano |
-| Angličtina (Spojené státy) | `en-US` | Ano | Ano |
-| Francouzština (Kanada) | `fr-CA` | Ne | Ano |
-| francouzština (Francie) | `fr-FR` | Ano | Ano |
-| němčina (Německo) | `de-DE` | Ano | Ano |
-| italština (Itálie) | `it-IT` | Ano | Ano |
-| japonština (Japonsko) | `ja-JP` | Ne | Ano |
-| korejština (Jižní Korea) | `ko-KR` | Ne | Ano |
-| Portugalština (Brazílie) | `pt-BR` | Ano | Ano |
-| Španělština (Mexiko) | `es-MX` | Ano | Ano |
-| Španělština (Španělsko) | `es-ES` | Ne | Ano |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Yes | Yes |
+| Čínština (Mandarin, zjednodušená), anglické dvojjazyčné | `zh-CN` dvojjazyčný | Yes | Yes |
+| Angličtina (Austrálie) | `en-AU` | No | Yes |
+| Angličtina (Indie) | `en-IN` | Yes | Yes |
+| Angličtina (Spojené království) | `en-GB` | Yes | Yes |
+| Angličtina (Spojené státy) | `en-US` | Yes | Yes |
+| Francouzština (Kanada) | `fr-CA` | No | Yes |
+| francouzština (Francie) | `fr-FR` | Yes | Yes |
+| němčina (Německo) | `de-DE` | Yes | Yes |
+| italština (Itálie) | `it-IT` | Yes | Yes |
+| japonština (Japonsko) | `ja-JP` | No | Yes |
+| korejština (Jižní Korea) | `ko-KR` | No | Yes |
+| Portugalština (Brazílie) | `pt-BR` | Yes | Yes |
+| Španělština (Mexiko) | `es-MX` | Yes | Yes |
+| Španělština (Španělsko) | `es-ES` | No | Yes |
 
 Vyberte správné národní prostředí, které odpovídá školicím datům, které máte k dispozici pro výuku vlastního hlasového modelu. Například pokud jsou data nahrávání mluveného mluveného zvýraznění v angličtině, vyberte `en-GB` .
 
