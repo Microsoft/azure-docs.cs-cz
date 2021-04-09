@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 528e1056574379f922b5de15f442b7fd92d8cf8c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104592451"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-faxplus"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí služby FAX. I
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat FAX. PLUS s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke službě FAX. A navíc se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -105,7 +105,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -117,7 +117,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k faxu. I.
 
@@ -129,7 +129,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-faxplus-sso"></a>Nakonfigurujte FAX. A SSO
+## <a name=&quot;configure-faxplus-sso&quot;></a>Nakonfigurujte FAX. A SSO
 
 1. Přihlaste se ke svému faxu. A navíc k firemnímu webu jako správce.
 
@@ -137,7 +137,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 3. Na panelu **Konfigurace** klikněte na tlačítko **Aktivace jednotného přihlašování** a proveďte následující kroky.
     
-    ![Zohledňují](./media/fax.plus-tutorial/configuration.png "Účet") 
+    ![Zohledňují](./media/fax.plus-tutorial/configuration.png &quot;Účet") 
 
     a. Do textového pole **ID entity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 

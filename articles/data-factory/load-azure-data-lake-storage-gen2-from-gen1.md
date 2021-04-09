@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
 ms.openlocfilehash: 4a4bc0b55928fcaa40cd1cb03ca0522e611df476
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101727715"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
@@ -28,7 +28,7 @@ Azure Data Factory nabízí řešení pro přesun spravovaných dat se škálov�
 
 V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data Factory zkopírovat data z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 * Azure Data Lake Storage Gen1 účet s daty.

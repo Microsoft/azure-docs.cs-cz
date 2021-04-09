@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: jeedes
 ms.openlocfilehash: 77d810fc8327e3777102f2a09f0ca32835aad4b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Kurz: Azure Active Directory integrace s výukou ke sledování povědomí o zabezpečení KnowBe4
@@ -27,7 +27,7 @@ Integrace KnowBe4ch školení k zabezpečení pomocí Azure AD poskytuje násled
 * Uživatelům můžete povolit, aby se automaticky přihlásili k KnowBe4 školením na zabezpečení (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí školení KnowBe4 Security potřebujete následující položky:
 

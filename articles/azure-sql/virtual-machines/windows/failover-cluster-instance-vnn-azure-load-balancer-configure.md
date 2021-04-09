@@ -16,10 +16,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97357972"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Konfigurace Azure Load Balancer pro instanci clusteru s podporou převzetí služeb při selhání VNN
@@ -32,7 +32,7 @@ V tomto článku se naučíte konfigurovat nástroj pro vyrovnávání zatížen
 Pokud chcete použít alternativní možnost připojení pro SQL Server 2019 CU2 a novější, zvažte místo zjednodušené konfigurace a vylepšeného převzetí služeb při selhání [název distribuované sítě](failover-cluster-instance-distributed-network-name-dnn-configure.md) . 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 

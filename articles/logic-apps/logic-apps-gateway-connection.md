@@ -7,10 +7,10 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99218990"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
@@ -50,7 +50,7 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 
 Můžete také vytvořit [vlastní konektory](../logic-apps/custom-connector-overview.md) , které se připojují ke zdrojům dat přes HTTP nebo HTTPS pomocí REST nebo protokolu SOAP. I když samotné brány neúčtují mimořádné náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md). Aby bylo možné vytvořit prostředek brány, který odkazuje na tuto instalaci, musí tato instalace brány existovat.
 

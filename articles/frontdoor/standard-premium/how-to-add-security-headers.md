@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: c08ba57f43969bb2f0ee9c66b6cb4e92879ed258
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101099107"
 ---
 # <a name="configure-security-headers-with-azure-front-door-standardpremium-preview-rule-set"></a>Konfigurace záhlaví zabezpečení se sadou pravidel pro Azure front-end Standard/Premium (Preview)
@@ -28,7 +28,7 @@ Následující příklad ukazuje, jak přidat hlavičku Content-Security-Policy 
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než budete moct nakonfigurovat konfiguraci hlaviček zabezpečení, musíte nejdřív vytvořit přední dveře. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](create-front-door-portal.md).
 * Přečtěte si, jak [nastavit sadu pravidel](how-to-configure-rule-set.md) , pokud jste předtím nepoužívali funkci sady pravidel.
