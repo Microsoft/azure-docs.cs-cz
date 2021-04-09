@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 43cac81717027b39210d6cd9cb9ad0baa596f50d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943186"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštění dotazů Apache Hive pomocí PowerShellu
@@ -21,7 +21,7 @@ Tento dokument poskytuje příklad použití Azure PowerShell ke spouštění do
 > [!NOTE]  
 > Tento dokument neposkytuje podrobný popis toho, co HiveQL příkazy, které jsou používány v příkladech. Informace o HiveQL, které se používají v tomto příkladu, najdete v tématu [použití Apache Hive s Apache Hadoop ve službě HDInsight](hdinsight-use-hive.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -83,7 +83,7 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
    >
    > Další informace o **řetězcích** najdete v tématu [řetězce](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se po dokončení úlohy nevrátí žádné informace, podívejte se na protokoly chyb. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec `hivejob.ps1` souboru, uložte ho a pak ho znovu spusťte.
 

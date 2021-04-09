@@ -5,10 +5,10 @@ ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: 8d631ffcb14af93f10e578097470efc6156287d5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99594312"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Rychlý Start: vytvoření sdíleného dotazu pomocí šablony ARM
@@ -21,7 +21,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro vytvoření sdíleného dotazu do Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

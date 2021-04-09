@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
 ms.openlocfilehash: a3bb0a2877c71d19b05f424dc44e302c69577b2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101662201"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---windows-server"></a>Osvědčené postupy pro virtuální počítače Azure automanage – Windows Server

@@ -8,10 +8,10 @@ ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98986458"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
@@ -46,7 +46,7 @@ Možnost publikování v režimu Transact je aktuálně podporována pro násled
 
 ### <a name="billing-infrastructure-costs"></a>Náklady na infrastrukturu fakturace
 
-U **virtuálních počítačů** a **aplikací Azure** se poplatky za využití infrastruktury Azure účtují na základě předplatného Azure zákazníka. Poplatky za využití infrastruktury se účtují a zobrazují se odděleně od licenčních poplatků poskytovatele softwaru na faktuře zákazníka.
+U **virtuálních počítačů** a **aplikací Azure** se poplatky za využití infrastruktury Azure účtují na základě předplatného Azure zákazníka. Na faktuře zákazníka jsou poplatky za využití infrastruktury uvedené odděleně od licenčních poplatků poskytovatele softwaru.
 
 V případě **aplikací SaaS** musí vydavatel považovat za poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu položku nákladů.  Je reprezentována jako paušální poplatek zákazníkovi. Využití infrastruktury Azure se spravuje a účtuje přímo vydavateli. Zákazníky nevidí skutečné poplatky za využití infrastruktury. Vydavatelé obvykle můžou využít poplatky za využití infrastruktury Azure na ceny za licence na software. Licenční poplatky na software se neměří nebo využívají spotřebu uživatelů.
 

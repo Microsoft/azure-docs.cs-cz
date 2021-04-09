@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 monikerRange: '>=iotedge-2020-11'
 ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103199146"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge (Preview)
@@ -43,7 +43,7 @@ Všechny kroky v tomto článku jsou sestavené na těch v tématu [konfigurace 
 * **Zjišťování brány**: Ujistěte se, že podřízené zařízení může najít své nadřazené zařízení v místní síti.
 * **Zabezpečené připojení**: navažte zabezpečené připojení k důvěryhodným certifikátům, které jsou součástí stejného řetězce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Centrum IoT úrovně Free nebo Standard.
 * Aspoň dvě **IoT Edge zařízení**, jednu jako zařízení nejvyšší vrstvy a jedno nebo více zařízení nižší vrstvy. Pokud nemáte dostupná IoT Edgeá zařízení, můžete [Azure IoT Edge spustit na virtuálních počítačích s Ubuntu](how-to-install-iot-edge-ubuntuvm.md).

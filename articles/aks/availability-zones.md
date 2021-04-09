@@ -6,10 +6,10 @@ ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 03/16/2021
 ms.openlocfilehash: 4c5b0ceb3f8e0b96f18a67ed0c7dbf1b56ac30da
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583543"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
@@ -108,7 +108,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 V dalším kroku použijte příkaz [kubectl popsat][kubectl-describe] pro výpis uzlů v clusteru a filtr na hodnotu *Failure-Domain.beta.Kubernetes.IO/Zone* . Následující příklad je pro prostředí bash.
 
 ```console
-kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
+kubectl describe nodes | grep -e "Name:&quot; -e &quot;failure-domain.beta.kubernetes.io/zone"
 ```
 
 Následující příklad výstupu ukazuje tři uzly distribuované v rámci zadané oblasti a zón dostupnosti, jako je *eastus2-1* pro první zónu dostupnosti a *eastus2-2* pro druhou zónu dostupnosti:

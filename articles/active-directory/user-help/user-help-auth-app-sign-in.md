@@ -12,10 +12,10 @@ ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103471762"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
@@ -31,7 +31,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
   >[!Important]
   >Tato metoda přihlašování k telefonu funguje jenom u vašich pracovních nebo školních a osobních účtů Microsoft. Vaše účty jiných společností než Microsoft vyžadují, abyste používali standardní proces ověřování dvou faktorů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít aplikaci Microsoft Authenticator, musíte:
 

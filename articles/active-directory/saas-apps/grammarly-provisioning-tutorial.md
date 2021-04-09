@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/16/2021
 ms.author: Zhchia
 ms.openlocfilehash: ca01289ce66afe642081e5be17373e640dd1e46d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864801"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>Kurz: Konfigurace gramatiky pro Automatické zřizování uživatelů
@@ -33,7 +33,7 @@ Tento kurz popisuje kroky, které je třeba provést v gramatické i Azure Activ
 > * Odebrat uživatele v gramatickém případě, že už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a gramaticky
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

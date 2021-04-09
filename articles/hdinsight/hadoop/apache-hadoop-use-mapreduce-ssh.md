@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 991b91d1feee185d17bbf01266e0392f347e1a66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939636"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce s Apache Hadoop v HDInsight pomocí SSH
@@ -21,7 +21,7 @@ Přečtěte si, jak odesílat MapReduce úlohy z připojení SSH (Secure Shell) 
 > [!NOTE]
 > Pokud jste již obeznámeni s používáním Apache Hadoopch serverů se systémem Linux, ale jste novinkou ke službě HDInsight, přečtěte si [tipy pro HDInsight se systémem Linux](../hdinsight-hadoop-linux-information.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 

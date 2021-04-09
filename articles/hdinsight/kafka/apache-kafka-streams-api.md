@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
 ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939206"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: použití rozhraní API streamování Apache Kafka ve službě Azure HDInsight
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace témat Kafka
 > * Spuštění kódu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Kafka ve službě HDInsight 3.6. Informace o tom, jak vytvořit Kafka v clusteru HDInsight, najdete v dokumentu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) .
 

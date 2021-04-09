@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
 ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519924"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Připojení ke službám úložiště v Azure
@@ -31,7 +31,7 @@ Pro používání s nízkým kódem si přečtěte téma jak použít [Azure Mac
 >[!TIP]
 > V tomto článku se předpokládá, že se chcete ke službě úložiště připojit pomocí přihlašovacích údajů pro ověřování na základě přihlašovacích údajů, jako je instanční objekt nebo token sdíleného přístupového podpisu (SAS). Mějte na paměti, že pokud jsou přihlašovací údaje zaregistrované v úložišti dat, můžou tyto přihlašovací údaje načíst všichni uživatelé s rolí *čtenáře* pracovních prostorů. [Přečtěte si další informace o roli *čtenáře* pracovních prostorů.](how-to-assign-roles.md#default-roles) <br><br>Pokud se to týká, zjistěte, jak se [připojit ke službám úložiště s přístupem na základě identity](how-to-identity-based-data-access.md). <br><br>Tato funkce je [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 

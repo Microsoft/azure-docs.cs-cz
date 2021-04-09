@@ -6,17 +6,17 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
 ms.openlocfilehash: e79c2f361108f1daa3c4a125491d1b399e050648
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104863696"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
 V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Storage.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 

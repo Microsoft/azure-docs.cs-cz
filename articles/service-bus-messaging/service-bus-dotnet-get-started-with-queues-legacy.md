@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652985"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
@@ -18,7 +18,7 @@ V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a
 > [!WARNING]
 > V tomto rychlém startu se používá starý balíček Microsoft. Azure. ServiceBus. Rychlý Start, který používá nejnovější balíček Azure. Messaging. ServiceBus, najdete v tématu [posílání a přijímání událostí pomocí balíčku Azure. Messaging. ServiceBus](service-bus-dotnet-get-started-with-queues.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.

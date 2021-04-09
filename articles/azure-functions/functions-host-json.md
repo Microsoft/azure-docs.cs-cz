@@ -4,10 +4,10 @@ description: Referenční dokumentace pro Azure Functions host.jsv souboru s mod
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: cbedf2212c52d8f1996d3cce0d96d494313ea525
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102608814"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
@@ -318,7 +318,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
 |counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
-## <a name="http"></a>http
+## <a name="http"></a>HTTP
 
 Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook-output.md#hostjson-settings).
 

@@ -10,17 +10,17 @@ ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.openlocfilehash: 500587dc6564aa55eb430365eb67bb958bbd2482
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519975"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Vytvoření řadiče dat ARC Azure pomocí nástrojů pro Kubernetes
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Přehled informací najdete v tématu [vytvoření řadiče dat ARC Azure](create-data-controller.md) .
 

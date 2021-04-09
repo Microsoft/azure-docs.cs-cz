@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
 ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102607607"
 ---
-# <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Řešení potíží s odchozím připojením SMTP v Azure
+# <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Odstraňování potíží s odchozím připojením SMTP v Azure
 
 Od 15. listopadu 2017 se odchozí e-mailové zprávy, které se odesílají přímo do externích domén (například outlook.com a gmail.com) z virtuálního počítače, zpřístupňují jenom pro určité typy předplatného v Azure. Odchozí připojení SMTP, která používají port TCP 25, byla zablokována. (Port 25 se používá hlavně pro neověřené doručování e-mailů.)
 
 Tato změna chování se týká jenom předplatných a nasazení, která se vytvořila po 15. listopadu 2017.
 
-## <a name="recommended-method-of-sending-email"></a>Doporučený způsob odesílání e-mailů
+## <a name="recommended-method-of-sending-email"></a>Doporučený způsob posílání e-mailů
 
 Pro posílání e-mailů z virtuálních počítačů Azure nebo z Azure App Service doporučujeme použít ověřené služby SMTP relay. (Tyto přenosové služby se obvykle připojují přes port TCP 587, ale podporují jiné porty.) Tyto služby se používají k údržbě IP nebo reputace domény, aby se minimalizovala možnost, že poskytovatelé e-mailů od jiných výrobců odmítnou zprávy. [SendGrid](https://sendgrid.com/partners/azure/) je taková přenosová služba SMTP, ale existují další. Je možné, že máte také zabezpečenou službu SMTP relay, která běží místně, kterou můžete použít.
 

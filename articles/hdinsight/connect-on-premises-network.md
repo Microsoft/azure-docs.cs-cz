@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104863373"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
@@ -39,7 +39,7 @@ V následujícím diagramu jsou zelenými řádky požadavky na prostředky, kte
 
 :::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="Diagram postupu při řešení požadavků DNS v konfiguraci" border="false":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
