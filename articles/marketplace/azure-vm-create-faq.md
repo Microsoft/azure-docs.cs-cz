@@ -1,5 +1,5 @@
 ---
-title: Běžné dotazy k virtuálnímu počítači v Azure Marketplace
+title: Běžné dotazy k virtuálním počítačům na Azure Marketplace
 description: Při vytváření virtuálního počítače v Azure Marketplace se zjistily běžné otázky.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104593420"
 ---
-# <a name="common-questions-about-vm-in-azure-marketplace"></a>Běžné dotazy k virtuálnímu počítači v Azure Marketplace
+# <a name="common-questions-about-vm-in-azure-marketplace"></a>Běžné dotazy k virtuálním počítačům na Azure Marketplace
 
 Tyto nejčastější dotazy se týkají běžných problémů, se kterými se můžete setkat při vytváření nabídky virtuálního počítače v Azure Marketplace.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94965727"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Správa záznamů a sad záznamů DNS pomocí Azure Portal
@@ -87,13 +87,13 @@ K odebrání záznamů ze sady záznamů můžete použít Azure Portal. Všimn�
 3. Ověřte, zda název odpovídá sadě záznamů, kterou chcete odstranit, a potom klikněte na tlačítko **Ano**.
 4. V okně **zóna DNS** ověřte, že sada záznamů již není viditelná.
 
-## <a name="work-with-ns-and-soa-records"></a>Práce s záznamy NS a SOA
+## <a name="work-with-ns-and-soa-records&quot;></a>Práce s záznamy NS a SOA
 
 Záznamy NS a SOA, které se automaticky vytvoří, se spravují jinak než jiné typy záznamů.
 
-### <a name="modify-soa-records"></a>Upravit záznamy SOA
+### <a name=&quot;modify-soa-records&quot;></a>Upravit záznamy SOA
 
-Nemůžete přidávat ani odebírat záznamy z automaticky vytvořené sady záznamů SOA ve vrcholu zóny (název = " \@ "). Můžete však změnit libovolný parametr v rámci záznamu SOA (kromě "hostitel") a hodnoty TTL sady záznamů.
+Nemůžete přidávat ani odebírat záznamy z automaticky vytvořené sady záznamů SOA ve vrcholu zóny (název = &quot; \@ "). Můžete však změnit libovolný parametr v rámci záznamu SOA (kromě "hostitel") a hodnoty TTL sady záznamů.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>Úprava záznamů NS ve vrcholu zóny
 

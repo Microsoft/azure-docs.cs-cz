@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: twooley
 ms.openlocfilehash: c6520036f3ddb8799025129391330268b0604886
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723802"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Migrace Azure Data Lake Storage Gen1 napříč oblastmi
 
 Jak Azure Data Lake Storage Gen1 bude k dispozici v nových oblastech, můžete zvolit jednorázovou migraci, abyste mohli využít nové oblasti. Zjistěte, co je třeba vzít v úvahu při plánování a dokončení migrace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Další informace najdete v tématu [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Data Lake Storage Gen1 ve dvou různých oblastech**. Další informace najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).

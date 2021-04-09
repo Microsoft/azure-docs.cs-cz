@@ -11,10 +11,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94949477"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
@@ -27,7 +27,7 @@ V tomto scénáři rozšiřujeme data tokenů uživatele integrací s podnikový
 
 Interakci můžete také navrhnout jako technický profil ověřování. To je vhodné, když REST API bude ověřovat data na obrazovce a vracet deklarace identity. Další informace najdete v tématu [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 - Naučte se [integrovat REST API výměn deklarací identity do vlastních zásad Azure AD B2C](custom-policy-rest-api-intro.md).

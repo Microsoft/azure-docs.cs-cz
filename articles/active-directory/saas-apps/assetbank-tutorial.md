@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 00b6f116ef6f4c6c21578ef05595ed1903777948
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Kurz: Integrace Azure Active Directory s bankou prostředků
@@ -30,7 +30,7 @@ Integrování bank prostředků do Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s bankou Asset bank potřebujete následující položky:
 

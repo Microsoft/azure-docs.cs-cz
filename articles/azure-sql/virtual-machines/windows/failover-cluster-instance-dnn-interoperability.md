@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97358210"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Interoperabilita funkcí s SQL Server FCI & DNN
@@ -42,7 +42,7 @@ U pojmenované instance by se mělo provést mapování síťových aliasů pro 
 
 Pro ovladače ODBC, OLEDB, ADO.NET, JDBC, PHP a Node.js musí uživatelé explicitně zadat název DNS DNN jako název serveru v připojovacím řetězci. Pokud chcete zajistit rychlé připojení při převzetí služeb při selhání, přidejte `MultiSubnetFailover=True` do připojovacího řetězce, pokud ho klient SQL podporuje. 
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 Uživatelé nástrojů [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms), [Sqlcmd](/sql/tools/sqlcmd-utility), [Azure Data Studio](/sql/azure-data-studio/what-is)a [SQL Server Data Tools](/sql/ssdt/sql-server-data-tools) musí explicitně zadat název DNS DNN jako název serveru v připojovacím řetězci. 
 

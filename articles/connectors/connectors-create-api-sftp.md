@@ -10,10 +10,10 @@ ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
 ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92673805"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP v Azure Logic Apps
@@ -34,7 +34,7 @@ Můžete použít triggery, které sledují události na vašem serveru SFTP a z
 
 Konektor SFTP zpracovává pouze soubory, které jsou *50 MB nebo menší* , a nepodporuje vytváření [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). U větších souborů použijte [konektor SFTP-SSH](../connectors/connectors-sftp-ssh.md). Rozdíly mezi konektorem SFTP a konektorem SFTP-SSH najdete v článku [porovnání protokolu SFTP-SSH versus SFTP](../connectors/connectors-sftp-ssh.md#comparison) v článku o protokolu SFTP-SSH.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
