@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101725318"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Použití Azure CDN s SAS
@@ -32,7 +32,7 @@ Pomocí SAS můžete definovat různé parametry přístupu k objektu blob, jako
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Nastavení Azure CDN pro práci s SAS úložiště
 Pro použití SAS s Azure CDN se doporučuje použít následující tři možnosti. U všech možností se předpokládá, že jste už vytvořili pracovní SAS (viz požadavky). 
  
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Začněte tím, že vytvoříte účet úložiště a potom pro svůj Asset vygenerujete SAS. Můžete vygenerovat dva typy uložených přístupových podpisů: SAS služby nebo SAS účtu. Další informace najdete v tématu [typy podpisů sdíleného přístupu](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures).
 
 Po vygenerování tokenu SAS můžete k souboru BLOB Storage získat přístup připojením `?sv=<SAS token>` k adrese URL. Tato adresa URL má následující formát: 

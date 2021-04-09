@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 56eab06bd1afd18bfd4e23b9acb0b44d7bd1f80b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98737028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Concur cestovném a výdaji
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Concur cestovné a výdaje pomocí Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Concur Cestovnému a výdajům pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

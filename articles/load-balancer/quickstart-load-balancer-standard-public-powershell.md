@@ -17,17 +17,17 @@ ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
 ms.openlocfilehash: 2052669d3d1ae2bdb7aa1687c4dc348c9420d126
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102615359"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
 Začněte s Azure Load Balancer pomocí Azure PowerShell k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell

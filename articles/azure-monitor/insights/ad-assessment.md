@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: bff61ec9dfcb985ea0111ca58bfd58273e1fe432
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101723244"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí Active Directory s využitím řešení kontroly stavu Active Directory ve službě Azure Monitor
@@ -32,7 +32,7 @@ Po přidání řešení a dokončení kontroly se na řídicím panelu **kontrol
 
 ![Obrázek řídicího panelu kontroly stavu služby AD](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Řešení kontroly stavu služby Active Directory vyžaduje, aby na každém počítači, který má Log Analytics agenta pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)), byla nainstalovaná podporovaná verze .NET Framework 4.6.2 nebo vyšší.  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
 * Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2, Windows Server 2016 a Windows Server 2019.

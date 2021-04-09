@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3fd837a4c547b227147752b03b6a7312c733a5ae
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578017"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057010"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
 
@@ -370,6 +370,12 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - Důvod: připojení k serveru se neobvykle ukončilo.
    - Řešení: zkuste to po nějaké době znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
+
+##### <a name="other-errors"></a>Další chyby
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - Důvod: ID události 220 se nachází v protokolech událostí registrace zařízení uživatele. Systém Windows nemůže získat přístup k objektu počítače ve službě Active Directory. V události může být zahrnut kód chyby systému Windows. Kódy chyb ERROR_NO_SUCH_LOGON_SESSION (1312) a ERROR_NO_SUCH_USER (1317) se týkají potíží s replikací v místní službě AD.
+   - Řešení: řešení potíží s replikací ve službě AD. Problémy s replikací můžou být přechodné a můžou se po určité době docházet.
 
 ##### <a name="federated-join-server-errors"></a>Chyby serveru federovaného připojení
 

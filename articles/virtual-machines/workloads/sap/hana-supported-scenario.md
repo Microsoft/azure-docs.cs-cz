@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a49c55da0bb8018b3faa7c6f70b02e79d9478603
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101666679"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
@@ -406,7 +406,7 @@ Tato topologie podporuje dva uzly v konfiguraci automatického převzetí služe
 
 ![Automatické převzetí služeb při selhání hostitele (1 + 1)](media/hana-supported-scenario/scaleup-with-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -420,7 +420,7 @@ Jsou předem nakonfigurované následující síťová rozhraní:
 | C | TYP II | režim\<tenantNo+1> | team0. tenant + 1 | Mezi uzly a úložištěm |
 | D | TYP II | režim\<tenantNo+3> | team0. tenant + 3 | Nakonfigurováno, ale nepoužívá se |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Jsou předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -433,9 +433,9 @@ Jsou předem nakonfigurované následující přípojné body:
 
 
 
-### <a name="key-considerations"></a>Klíčové aspekty
+### <a name=&quot;key-considerations&quot;></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- V pohotovostním režimu: pro instalaci instance HANA v pohotovostní jednotce se nakonfigurují svazky a přípojné body (s označením "požadováno pro instalaci HANA").
+- V pohotovostním režimu: pro instalaci instance HANA v pohotovostní jednotce se nakonfigurují svazky a přípojné body (s označením &quot;požadováno pro instalaci HANA").
  
 
 ## <a name="scale-out-with-standby"></a>Horizontální navýšení kapacity pomocí úsporného režimu
@@ -522,7 +522,7 @@ Tato topologie podporuje více uzlů ve škálování na více instancí s použ
 ![Horizontální navýšení kapacity pomocí replikace úložiště v systému DR](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -536,7 +536,7 @@ Jsou předem nakonfigurované následující síťová rozhraní:
 | C | TYP II | režim\<tenantNo+1> | team0. tenant + 1 | Mezi uzly a úložištěm |
 | D | TYP II | režim\<tenantNo+3> | team0. tenant + 3 | Nakonfigurováno, ale nepoužívá se |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Jsou předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -552,9 +552,9 @@ Jsou předem nakonfigurované následující přípojné body:
 |/hana/log/SID/mnt00001 | Instalace souborů protokolu pro produkční identifikátor SID | 
 
 
-### <a name="key-considerations"></a>Klíčové aspekty
+### <a name=&quot;key-considerations&quot;></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
--  Na webu DR: jsou nakonfigurované svazky a přípojné body (u instalace s označením "požadováno pro instalaci HANA") pro instalaci instance provozní HANA v HLI jednotce DR. 
+-  Na webu DR: jsou nakonfigurované svazky a přípojné body (u instalace s označením &quot;požadováno pro instalaci HANA") pro instalaci instance provozní HANA v HLI jednotce DR. 
 - Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](./hana-overview-high-availability-disaster-recovery.md). 
 - Spouštěcí svazek pro *třídu typu SKU I* se replikuje do uzlu Dr.
 
@@ -658,7 +658,7 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ![Vysoká dostupnost a zotavení po havárii pomocí HSR](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -672,7 +672,7 @@ Jsou předem nakonfigurované následující síťová rozhraní:
 | C | TYP II | režim\<tenantNo+1> | team0. tenant + 1 | Mezi uzly a úložištěm |
 | D | TYP II | režim\<tenantNo+3> | team0. tenant + 3 | Nakonfigurováno, ale nepoužívá se |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Jsou předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -689,9 +689,9 @@ Jsou předem nakonfigurované následující přípojné body:
 |/hana/logbackups/SID | Protokoly znovu pro produkční identifikátor SID |
 
 
-### <a name="key-considerations"></a>Klíčové aspekty
+### <a name=&quot;key-considerations&quot;></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako "výr DR instance") pro instalaci instance v produkčním prostředí HANA na HLI jednotce DR. 
+- Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako &quot;výr DR instance") pro instalaci instance v produkčním prostředí HANA na HLI jednotce DR. 
 - Uzel primární lokality se synchronizuje s uzlem DR pomocí replikace systému HANA. 
 - [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
 
@@ -703,7 +703,7 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ![Vysoká dostupnost a zotavení po havárii s HSR (náklady optimalizované)](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet&quot;></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -717,7 +717,7 @@ Jsou předem nakonfigurované následující síťová rozhraní:
 | C | TYP II | režim\<tenantNo+1> | team0. tenant + 1 | Mezi uzly a úložištěm |
 | D | TYP II | režim\<tenantNo+3> | team0. tenant + 3 | Nakonfigurováno, ale nepoužívá se |
 
-### <a name="storage"></a>Storage
+### <a name=&quot;storage&quot;></a>Storage
 Jsou předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -737,9 +737,9 @@ Jsou předem nakonfigurované následující přípojné body:
 |/hana/log/QA-SID/mnt00001 | Instalace souborů protokolu pro kontrolu zabezpečení pro QA |
 |/hana/logbackups/QA-SID | Protokoly znovu pro identifikátor SID pro QA |
 
-### <a name="key-considerations"></a>Klíčové aspekty
+### <a name=&quot;key-considerations&quot;></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako "výr DR instance") pro instalaci instance v produkčním prostředí HANA na HLI jednotce DR. 
+- Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako &quot;výr DR instance") pro instalaci instance v produkčním prostředí HANA na HLI jednotce DR. 
 - Na webu DR: jsou nakonfigurovaná data, zálohy protokolů, protokoly a sdílené svazky pro QA (s označením "instalace instance QA") pro instalaci instance QA.
 - Uzel primární lokality se synchronizuje s uzlem DR pomocí replikace systému HANA. 
 - [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.

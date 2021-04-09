@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
 ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103419231"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
@@ -16,7 +16,7 @@ ms.locfileid: "103419231"
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 

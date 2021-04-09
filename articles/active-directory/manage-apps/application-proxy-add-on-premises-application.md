@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: 6a7f50268a09ae451b1e9dda2ca354ded31efb68
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200758"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
@@ -40,7 +40,7 @@ V tomto kurzu:
 > * Přidá místní aplikaci do tenanta služby Azure AD.
 > * Ověří, jestli se testovací uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K přidání místní aplikace do služby Azure AD potřebujete:
 

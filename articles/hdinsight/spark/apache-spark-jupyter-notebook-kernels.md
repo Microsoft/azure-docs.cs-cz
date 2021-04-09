@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: ef2bc5e00779200e5447c8829a437824657a2227
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104865974"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Jupyter Notebook v clusterech Apache Spark ve službě Azure HDInsight
@@ -22,7 +22,7 @@ Clustery HDInsight Spark poskytují jádra, která můžete použít s Jupyter N
 
 V tomto článku se naučíte používat tyto jádra a výhody jejich používání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -67,7 +67,7 @@ Tady je několik výhod používání nových jader s Jupyter Notebook v cluster
 
     V následující tabulce jsou uvedeny různé Magic dostupné prostřednictvím jader.
 
-   | Paket | Příklad | Popis |
+   | Paket | Příklad | Description |
    | --- | --- | --- |
    | Nápověda |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
    | příjemce |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
@@ -87,7 +87,7 @@ Tady je několik výhod používání nových jader s Jupyter Notebook v cluster
 
 `%%sql`Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který se zobrazí při spouštění dotazů. V následující tabulce je uveden výstup.
 
-| Parametr | Příklad | Popis |
+| Parametr | Příklad | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledku dotazu v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. Název proměnné datového rámce je název proměnné, kterou zadáte. |
 | -q |`-q` |Pomocí tohoto parametru můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>` . Pokud chcete vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je například `CREATE TABLE` příkaz), použijte `-q` bez zadání `-o` argumentu. |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: f8090ea9c0d307d1bd290c4cf4dac9bfaabf7c4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 63ea6821097327498803abc6577f28e595883bc0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576313"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932926"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure Portal
 
@@ -34,7 +34,9 @@ Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci 
 
 V tomto kurzu se používá [Azure Portal](https://portal.azure.com). Můžete použít také rozhraní příkazového [řádku Azure](tutorial-create-route-table-cli.md) nebo [Azure PowerShell](tutorial-create-route-table-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
+
+Než začnete, budete potřebovat účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: 8f2bbd327adca6eef62d5e79f422f61d460ea7a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589268"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Kurz: nasazení propojené šablony
 
 V [předchozích kurzech](./deployment-tutorial-local-template.md)jste zjistili, jak nasadit šablonu, která je uložená v místním počítači. Pro nasazení složitých řešení můžete rozdělit šablonu na mnoho šablon a tyto šablony nasadit pomocí hlavní šablony. V tomto kurzu se naučíte, jak nasadit hlavní šablonu obsahující odkaz na propojenou šablonu. Jakmile se nasadí hlavní šablona, aktivuje se nasazení propojené šablony. Naučíte se také, jak ukládat a zabezpečovat šablony pomocí tokenu SAS. Dokončení trvá přibližně **12 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili předchozí kurz, ale není to nutné.
 

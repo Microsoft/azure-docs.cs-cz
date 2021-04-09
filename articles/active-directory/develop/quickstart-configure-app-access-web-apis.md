@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100651370"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
@@ -26,7 +26,7 @@ V tomto rychlém startu poskytnete klientskou aplikaci registrovanou s platformo
 
 Když v registraci klientské aplikace zadáte obory webového rozhraní API, klientská aplikace může získat přístupový token obsahující tyto obory z platformy Microsoft identity. Ve svém kódu může webové rozhraní API poskytovat přístup k prostředkům na základě oprávnění, které je založené na oborech nalezených v přístupovém tokenu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Dokončení [rychlého startu: registrace aplikace](quickstart-register-app.md)

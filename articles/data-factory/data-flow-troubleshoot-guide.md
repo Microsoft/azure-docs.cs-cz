@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/18/2021
-ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.date: 03/25/2021
+ms.openlocfilehash: 72ab685b58f7d940fe4d682cacba6212fe80ced8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105640218"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933079"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
@@ -341,6 +341,110 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 1. Ověřte stav připojení datové sady. V každé transformaci zdroje a jímky použijte propojenou službu pro každou datovou sadu, kterou používáte, a otestujte připojení.
 2. Ověřte stav připojení k souborům a tabulkám v Návrháři toku dat. V režimu ladění vyberte možnost **data Preview** na vašich zdrojových transformacích, abyste měli jistotu, že budete mít přístup k datům.
 3. Pokud vše vypadá správně v náhledu dat, přejdete do návrháře kanálů a zadáte tok dat do aktivity kanálu. Ladění kanálu pro ucelený test.
+
+### <a name="improvement-on-csvcdm-format-in-data-flow"></a>Zlepšení formátu CSV/CDM v toku dat 
+
+Pokud použijete **formátování s oddělovači textu nebo CDM pro mapování toku dat ve službě Azure Data Factory v2**, může dojít ke změnám chování stávajících kanálů z důvodu vylepšení oddělovače text/CDM v toku dat, který začíná **1. května 2021**. 
+
+Před vylepšením může dojít k následujícím problémům, ale po vylepšení byly problémy vyřešeny. Přečtěte si následující obsah, abyste zjistili, jestli vám toto vylepšení mělo vliv. 
+
+#### <a name="scenario-1-encounter-the-unexpected-row-delimiter-issue"></a>Scénář 1: narazí na neočekávaný problém s oddělovačem řádků
+
+ Máte vliv na tyto podmínky:
+ - Použití textu s oddělovači s nastavením víceřádkového nastavení nastaveným na hodnotu true nebo CDM jako zdroj.
+ - První řádek obsahuje více než 128 znaků. 
+ - Oddělovač řádků v datových souborech není `\n` .
+
+ Před zlepšením může být výchozí oddělovač řádků `\n` neočekávaně použit k analýze textových souborů s oddělovači, protože pokud je nastavení víceřádkového nastavení nastaveno na hodnotu true, zruší platnost nastavení oddělovače řádků a oddělovač řádků se automaticky detekuje na základě prvních 128 znaků. Pokud se vám nedaří zjistit skutečný oddělovač řádků, vrátí se do `\n` .  
+
+ Po vylepšení by se měly provádět všechny tři oddělovače řádků: `\r` , `\n` , `\r\n`
+ 
+ Následující příklad ukazuje jednu změnu chování kanálu po vylepšení:
+
+ **Příklad**:<br/>
+   Pro následující sloupec:<br/>
+    `C1, C2, {long first row}, C128\r\n `<br/>
+    `V1, V2, {values………………….}, V128\r\n `<br/>
+ 
+   Před vylepšením `\r` se udržuje v hodnotě sloupce. Výsledek analyzovaného sloupce je:<br/>
+   `C1 C2 {long first row} C128`**`\r`**<br/>
+   `V1 V2 {values………………….} V128`**`\r`**<br/> 
+
+   Po zlepšení by měl výsledek analyzovaného sloupce:<br/>
+   `C1 C2 {long first row} C128`<br/>
+   `V1 V2 {values………………….} V128`<br/>
+  
+#### <a name="scenario-2-encounter-an-issue-of-incorrectly-reading-column-values-containing-rn"></a>Scénář 2: narazí na problém nesprávně čtených hodnot sloupců obsahujících "\r\n"
+
+ Máte vliv na tyto podmínky:
+ - Použití textu s oddělovači s nastavením víceřádkové hodnoty nastavenou na hodnotu true nebo CDM jako zdroj. 
+ - Oddělovač řádků je `\r\n` .
+
+ Před vylepšením při čtení hodnoty sloupce `\r\n` může být v něm nesprávně nahrazeno `\n` . 
+
+ Po vylepšení nebude `\r\n` hodnota ve sloupci nahrazena hodnotou `\n` .
+
+ Následující příklad ukazuje jednu změnu chování kanálu po vylepšení:
+ 
+ **Příklad**:<br/>
+  
+ Pro následující sloupec:<br/>
+  **`"A\r\n"`**`, B, C\r\n`<br/>
+
+ Před vylepšení je výsledkem analyzovaného sloupce:<br/>
+  **`A\n`**` B C`<br/>
+
+ Po zlepšení by měl výsledek analyzovaného sloupce:<br/>
+  **`A\r\n`**` B C`<br/>  
+
+#### <a name="scenario-3-encounter-an-issue-of-incorrectly-writing-column-values-containing-n"></a>Scénář 3: narazí na problém nesprávně zapsaných hodnot sloupce obsahující ' \n '
+
+ Máte vliv na tyto podmínky:
+ - Použití textu s oddělovači jako jímky.
+ - Hodnota sloupce obsahuje `\n` .
+ - Oddělovač řádků je nastaven na hodnotu `\r\n` .
+ 
+ Před vylepšením při psaní hodnoty sloupce `\n` může být v něm nesprávně nahrazeno `\r\n` . 
+
+ Po vylepšení nebude `\n` hodnota ve sloupci nahrazena hodnotou `\r\n` .
+ 
+ Následující příklad ukazuje jednu změnu chování kanálu po vylepšení:
+
+ **Příklad**:<br/>
+
+ Pro následující sloupec:<br/>
+ **`A\n`**` B C`<br/>
+
+ Před vylepšením je jímka sdíleného svazku clusteru:<br/>
+  **`"A\r\n"`**`, B, C\r\n` <br/>
+
+ Po zlepšení by měla jímka sdíleného svazku clusteru:<br/>
+  **`"A\n"`**`, B, C\r\n`<br/>
+
+#### <a name="scenario-4-encounter-an-issue-of-incorrectly-reading-empty-string-as-null"></a>Scénář 4: narazí na problém s nesprávně čitelným prázdným řetězcem jako s hodnotou NULL
+ 
+ Máte vliv na tyto podmínky:
+ - Použití textu s oddělovači jako zdroje. 
+ - Hodnota NULL je nastavena na hodnotu, která není prázdná. 
+ - Hodnota sloupce je prázdný řetězec a není v uvozovkách. 
+ 
+ Před vylepšením je hodnota sloupce prázdného řetězce bez uvozovek přečtena jako hodnota NULL. 
+
+ Po zlepšení se prázdný řetězec neanalyzuje jako hodnota NULL. 
+ 
+ Následující příklad ukazuje jednu změnu chování kanálu po vylepšení:
+
+ **Příklad**:<br/>
+
+ Pro následující sloupec:<br/>
+  `A, ,B, `<br/>
+
+ Před vylepšení je výsledkem analyzovaného sloupce:<br/>
+  `A null B null`<br/>
+
+ Po zlepšení by měl výsledek analyzovaného sloupce:<br/>
+  `A "" (empty string) B "" (empty string)`<br/>
+
 
 ## <a name="next-steps"></a>Další kroky
 

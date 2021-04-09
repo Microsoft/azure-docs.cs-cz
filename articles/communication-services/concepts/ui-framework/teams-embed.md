@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 99263695aa0842daf59f23cda115dcb5b27b7add
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e55cfb1a4dff7bfda2323e68777d6f50514b1608
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804002"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930230"
 ---
 # <a name="teams-embed"></a>Týmy vkládají
 
@@ -21,7 +21,7 @@ ms.locfileid: "104804002"
 
 Vložení týmů je funkce komunikačních služeb Azure zaměřené na vzájemné interakce mezi uživatelem a obchodním voláním. Jádrem systému pro vložení týmů je [video a hlasové volání](../voice-video-calling/calling-sdk-features.md), ale týmy vkládají systémová sestavení v voláních primitiv Azure, aby poskytovaly ucelené uživatelské prostředí na základě schůzek Microsoft Teams.
 
-Týmy vkládají klientské knihovny jsou uzavřené – zdroj a zpřístupňují vám tyto možnosti v klíč, složeném formátu. Odstraněné týmy se vloží do plátna vaší aplikace a Klientská knihovna vygeneruje kompletní uživatelské prostředí. Vzhledem k tomu, že se toto uživatelské prostředí velmi podobá schůzkám Microsoft teams, můžete využít tyto možnosti:
+Týmy vkládají sady SDK jsou uzavřené a zpřístupňují je v klíč složeném formátu. Odřadíte týmy do plátna vaší aplikace a sada SDK vytvoří kompletní uživatelské prostředí. Vzhledem k tomu, že se toto uživatelské prostředí velmi podobá schůzkám Microsoft teams, můžete využít tyto možnosti:
 
 - Zkrácená doba vývoje a složitost strojírenství
 - Znalost koncových uživatelů s týmy

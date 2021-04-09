@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
 ms.openlocfilehash: c46a8753c87e981d9e3d6ecdd698bbbe6cba9894
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104775778"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient obdrží z požadavku jeden z následujících návratových kódů `POST` .
 
-| Kód | Text | Popis |
+| Kód | Text | Description |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
 | 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |

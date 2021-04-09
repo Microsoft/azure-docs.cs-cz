@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105957994"
 ---
-V této kategorii jsou uvedená doporučení **64** .
+V této kategorii jsou uvedená doporučení **65** .
 
 |Doporučení |Description |Závažnost |
 |---|---|---|
@@ -24,6 +24,7 @@ V této kategorii jsou uvedená doporučení **64** .
 |Uchovávání auditu pro SQL servery by se mělo nastavit aspoň na 90 dní. |Auditovat SQL servery nakonfigurované s dobou uchování auditování kratší než 90 dní.<br />(Související zásady: [servery SQL by měly být nakonfigurované s uchováním dat v závislosti na 90 dnech nebo vyšším.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |Nízká |
 |Auditování na SQL serveru by mělo být povolené. |Povolte auditování na SQL Server ke sledování databázových činností napříč všemi databázemi na serveru a jejich uložení v protokolu auditu.<br />(Související zásady: [auditování na SQL serveru by mělo být povolené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9).) |Nízká |
 |V předplatném by mělo být povolené Automatické zřizování agenta Log Analytics. |K monitorování ohrožení zabezpečení a hrozeb Azure Security Center shromažďuje data z virtuálních počítačů Azure. Data shromažďuje agent Log Analytics, dříve označovaný jako Microsoft Monitoring Agent (MMA), který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do vašeho pracovního prostoru Log Analytics pro účely analýzy. Doporučujeme povolit Automatické zřizování pro automatické nasazení agenta na všechny podporované virtuální počítače Azure a všechny nově vytvořené.<br />(Související zásady: [Automatické zřizování agenta Log Analytics musí být ve vašem předplatném povolené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17).) |Nízká |
+|Clustery Kubernetes s povolenou službou Azure ARC by měly mít nainstalované rozšíření v programu Azure Defender. |Rozšíření Azure Defenderu pro Azure ARC zajišťuje ochranu před hrozbami pro clustery Kubernetes s povoleným obloukem. Rozšíření shromažďuje data ze všech uzlů řídicí plochy v clusteru a odesílá je do Azure Defenderu pro Kubernetes back-end v cloudu pro další analýzu. Další informace najdete v https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc .<br />(Žádné související zásady) |Vysoká |
 |Mezipaměť Azure pro Redis by se měla nacházet v rámci virtuální sítě. |Nasazení Azure Virtual Network (VNet) poskytuje rozšířené zabezpečení a izolaci pro mezipaměť Azure pro Redis a podsítě, zásady řízení přístupu a další funkce pro další omezení přístupu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě.<br />(Související zásady: [mezipaměť Azure pro Redis by měla být umístěná ve virtuální síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4).) |Střední |
 |Účty Azure Cosmos DB by měly mít pravidla brány firewall |Pravidla brány firewall by měla být definovaná na vašich Azure Cosmos DB účtech, aby nedocházelo k provozu z neautorizovaných zdrojů. Účty, které mají definováno aspoň jedno pravidlo IP s povoleným filtrem virtuální sítě, se považují za vyhovující. Účty, které zakazují veřejný přístup, se taky považují za vyhovující.<br />(Související zásady: [účty Azure Cosmos DB by měly mít pravidla brány firewall](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)) |Střední |
 |Azure Cosmos DB účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat |Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování v klidovém Azure Cosmos DB. Ve výchozím nastavení jsou data v klidovém stavu zašifrovaná pomocí klíčů spravovaných službou, ale klíče spravované zákazníkem (CMK) se běžně vyžadují ke splnění standardů dodržování legislativních předpisů. CMKs povolí šifrování dat pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace o šifrování CMK najdete na adrese https://aka.ms/cosmosdb-cmk .<br />(Související zásady: [účty Azure Cosmos DB by měly používat klíče spravované zákazníkem k šifrování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)neaktivních dat) |Vysoká |

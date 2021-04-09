@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
 ms.openlocfilehash: 8451067ae86e95269c0c2f22554e1654ac64c1e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593773"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>Zjistěte, jaký software je nainstalovaný na vašich virtuálních počítačích.
@@ -27,7 +27,7 @@ Co se v tomto kurzu naučíte:
 > * Zobrazení nainstalovaného softwaru
 > * Vyhledávání nainstalovaného softwaru v protokolech inventáře
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 

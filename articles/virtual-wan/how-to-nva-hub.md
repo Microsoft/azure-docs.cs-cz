@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: f02edf8e192f4d32f8bd2583d46bbb17c86d2049
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102454800"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Postup vytvoření síťového virtuálního zařízení ve službě Azure Virtual WAN hub (Preview)
@@ -25,7 +25,7 @@ Dokumentaci k nasazení **Cisco SD-WAN** v Azure Virtual WAN najdete v článku 
 
 Dokumentaci k nasazení **VMware SD-WAN** v rámci Azure Virtual WAN najdete v [Průvodci nasazením pro VMware SD-WAN ve virtuálním centru sítě WAN](https://kb.vmware.com/s/article/82746) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 

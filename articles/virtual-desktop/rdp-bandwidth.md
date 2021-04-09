@@ -6,18 +6,19 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe12c985f5d9a519380d1d9b5a7d6c2820630c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325175"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932331"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>Požadavky na šířku pásma protokol RDP (Remote Desktop Protocol) (RDP)
 
 Protokol RDP (Remote Desktop Protocol) (RDP) je složitá technologie, která využívá různé techniky k dokonalému doručování vzdálené grafiky serveru do klientského zařízení. V závislosti na případu použití, dostupnosti výpočetních prostředků a šířce pásma sítě protokol RDP dynamicky upravuje různé parametry, aby bylo zajištěno, že bude doručovat nejlepší uživatelské prostředí.
 
-Protokol RDP (Remote Desktop Protocol) multiplexuje více dynamických virtuálních kanálů (DVCs) do jednoho datového kanálu odesílaného přes jiné síťové přenosy. Pro vzdálenou grafiku, vstup, přesměrování zařízení, tisk a další jsou k dispozici samostatné DVCs. Partneři WVD můžou také implementovat svá rozšíření, která používají rozhraní SOUBĚŽNÁ.
+Protokol RDP (Remote Desktop Protocol) multiplexuje více dynamických virtuálních kanálů (DVCs) do jednoho datového kanálu odesílaného přes jiné síťové přenosy. Pro vzdálenou grafiku, vstup, přesměrování zařízení, tisk a další jsou k dispozici samostatné DVCs. Partneři virtuálních počítačů s Windows můžou používat i rozšíření, která používají rozhraní SOUBĚŽNÁ.
+
 Množství dat odesílaných přes protokol RDP závisí na aktivitě uživatele. Uživatel může například pracovat se základním obsahem textu pro většinu relací a využívat minimální šířku pásma, ale následně vygenerovat výtisk 200 dokumentu na místní tiskárně. Tato tisková úloha bude používat velký objem šířky pásma sítě.
 
 Při použití vzdálené relace významně ovlivňuje dostupnou šířku pásma vaší sítě kvalitu vašeho prostředí. Různé aplikace a rozlišení zobrazení vyžadují různé konfigurace sítě, takže je nutné zajistit, aby konfigurace sítě vyhovovala vašim potřebám.

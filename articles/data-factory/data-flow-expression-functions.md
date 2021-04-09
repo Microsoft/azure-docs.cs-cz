@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563925"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933107"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat
 
@@ -143,13 +143,6 @@ Vrátí první nenulovou hodnotu ze sady vstupů. Všechny vstupy by měly být 
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
-### <code>collect</code>
-<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-Shromáždí všechny hodnoty výrazu v agregované skupině do pole. Struktury je možné shromažďovat a transformovat do alternativních struktur během tohoto procesu. Počet položek bude stejný jako počet řádků v dané skupině a může obsahovat hodnoty null. Počet shromážděných položek by měl být malý.  
-* ``collect(salesPerson)``
-* ``collect(firstName + lastName))``
-* ``collect(@(name = salesPerson, sales = salesAmount) )``
-___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
 Získá názvy všech výstupních sloupců pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.  
@@ -277,6 +270,10 @@ ___
 <code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
 Řídí řetězec v závislosti na formátu. Hodnoty literálu pro přijatelný formát jsou "JSON", "XML", "ECMAScript", "HTML", "Java".
 ___
+### <code>expr</code>
+<code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
+Výsledkem je výraz z řetězce. To je stejné jako zápis tohoto výrazu do formuláře, který není literál. To lze použít k předání parametrů jako řetězcové reprezentace.
+*   expr (' Price * discount ') => any ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 Vypočítá faktoriál čísla.  
@@ -856,6 +853,13 @@ ___
 Na základě kritérií získá průměrnou hodnotu sloupce.  
 * ``avgIf(region == 'West', sales)``  
 ___
+### <code>collect</code>
+<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
+Shromáždí všechny hodnoty výrazu v agregované skupině do pole. Struktury je možné shromažďovat a transformovat do alternativních struktur během tohoto procesu. Počet položek bude stejný jako počet řádků v dané skupině a může obsahovat hodnoty null. Počet shromážděných položek by měl být malý.  
+* ``collect(salesPerson)``
+* ``collect(firstName + lastName))``
+* ``collect(@(name = salesPerson, sales = salesAmount) )``
+___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
 Získá agregovaný počet hodnot. Pokud jsou zadány volitelné sloupce, ignorují se hodnoty NULL v počtu.  
@@ -900,6 +904,10 @@ Získá první hodnotu skupiny sloupců. Pokud je vynechán druhý parametr igno
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+### <code>isDistinct</code>
+<code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+Najde, zda je sloupec nebo sada sloupců odlišná. Nepočítá hodnotu null jako jedinečnou hodnotu. *   ``isDistinct(custId, custName) => boolean``
+*   ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Získá špičatost sloupce.  
@@ -1217,6 +1225,14 @@ ___
 
 Převodní funkce slouží k převodu dat a testování datových typů.
 
+### <code>isBitSet</code>
+<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+Kontroluje, zda je v tomto bitset nastavena bitová pozice. * ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
+___
+### <code>setBitSet</code>
+<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+Nastaví bitové pozice v tomto bitset. * ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
+___  
 ### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Kontroluje, zda je řetězcová hodnota logická hodnota podle pravidel ``toBoolean()``
@@ -1431,6 +1447,11 @@ Vyberte pole sloupců podle názvu v datovém proudu. Jako druhý argument můž
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
+### <code>byPath</code>
+<code><b>byPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => any</b></code><br/><br/>
+Vyhledá hierarchickou cestu podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Pokud se taková cesta nenajde, vrátí hodnotu null. Názvy sloupců/cesty známé v době návrhu by měly být řešeny stejným názvem nebo cestou zápisu tečky. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
+* ``byPath('grandpa.parent.child') => column`` 
+___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
 Vybere hodnotu sloupce podle relativní pozice (na základě 1) v datovém proudu. Pokud je pozice mimo rozsah, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...). Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
@@ -1439,6 +1460,11 @@ Vybere hodnotu sloupce podle relativní pozice (na základě 1) v datovém proud
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hasPath</code>
+<code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
+Zkontroluje, jestli v datovém proudu existuje určitá hierarchická cesta podle názvu. Jako druhý argument můžete předat volitelný název datového proudu. Názvy sloupců/cesty známé v době návrhu by měly být řešeny stejným názvem nebo cestou zápisu tečky. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
+* ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
 <code><b>hex(<value1>: binary) => string</b></code><br/><br/>
