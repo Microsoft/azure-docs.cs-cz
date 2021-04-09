@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 6008ca1549629bcbb582f38de2ab1b453cd73a99
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94843753"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Vývoj pro platformu Android Platforms pomocí sad SDK Azure IoT
@@ -20,7 +20,7 @@ ms.locfileid: "94843753"
 
 Tento kurz popisuje kroky pro vytvoření aplikace na straně zařízení v Androidu pomocí sady Azure IoT Java SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Android podporuje hardware s operačním systémem Androidu.  [Dokumentaci k Androidu](https://developer.android.com/things/get-started/kits#flash-at) můžete sledovat v tématu Postup pro Flash Androidu.  Ujistěte se, že zařízení s Androidem je připojené k Internetu se základními periferními zařízeními, jako jsou klávesnice, displeje a připojené myší.  V tomto kurzu se používá Malina Pi 3.
 

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104772548"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění ve službě Azure Sentinel
@@ -36,11 +36,11 @@ Existují tři vyhrazené předdefinované role Sentinel Azure.
 
 **Všechny předdefinované role Azure Sentinel udělují přístup pro čtení k datům v pracovním prostoru Sentinel Azure.**
 
-- [Čtečka Sentinel Azure](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) může zobrazovat data, incidenty, sešity a další prostředky Sentinel Azure.
+- [Čtenář služby Azure Sentinel](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) může zobrazit data, incidenty, sešity a další prostředky služby Azure Sentinel.
 
-- Kromě výše uvedeného může spravovat incidenty [Azure Sentinel](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) (přiřazovat, odpustit atd.).
+- [Reagující služby Azure Sentinel](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) může kromě výše uvedeného spravovat incidenty (přiřazovat je, zavírat je atd.).
 
-- [Azure Sentinel Přispěvatel](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) může kromě výše uvedených vytvořit a upravit sešity, analytická pravidla a další prostředky služby Azure Sentinel.
+- [Přispěvatel služby Azure Sentinel](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) může kromě výše uvedeného vytvářet a upravovat sešity, analytická pravidla a další prostředky služby Azure Sentinel.
 
 - [Přispěvatel Azure Sentinel Automation](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) umožňuje, aby Azure Sentinel přidal playbooky do pravidel automatizace. Není určeno pro uživatelské účty.
 

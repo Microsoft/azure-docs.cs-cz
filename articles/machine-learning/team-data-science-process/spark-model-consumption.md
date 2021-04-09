@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104774486"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Modely strojového učení založené na zprovoznění Spark
@@ -32,7 +32,7 @@ Poznámkový blok [pySpark-Machine-Learning-data-věda-Spark-model-spotřebe. ip
 Pokud chcete upravit Poznámkový blok Jupyter pro Spark 1,6 pro použití s clusterem HDInsight Spark 2,0, nahraďte soubor kódu Pythonu [tímto souborem](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Tento kód ukazuje, jak spotřebovávat modely vytvořené ve Spark 2,0.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. K dokončení tohoto Názorného postupu potřebujete účet Azure a cluster HDInsight 1,6 (nebo Spark 2,0). Pokyny, jak tyto požadavky naplnit, najdete v tématu [Přehled vědeckého zpracování dat pomocí Sparku ve službě Azure HDInsight](spark-overview.md) . Toto téma také obsahuje popis zde používaných dat taxislužby NYC 2013 a pokyny, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
 2. Vytvářejte modely strojového učení, které se tady mají vyhodnotit, pomocí tématu [zkoumání a modelování dat pomocí Sparku](spark-data-exploration-modeling.md) pro cluster Spark 1,6 nebo pro notebooky Spark 2,0. 
