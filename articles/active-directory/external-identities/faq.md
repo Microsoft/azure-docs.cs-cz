@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3308c2263f80a0772a389900e08c81cfe8da32a2
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952622"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
@@ -120,7 +120,7 @@ Pokud má partner tenanta Azure AD federovaného do místní ověřovací infras
 Odstraňujeme rozdíly mezi spoluprací B2B a B2C (Business-to-Consumer), z nichž jsou identity podporované. Použitá identita není dobrým důvodem pro výběr mezi použitím B2B nebo pomocí B2C. Informace o volbě možnosti spolupráce najdete v tématu [porovnání spolupráce B2B a B2C v Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Může se místní účet Azure AD B2C pozvat do tenanta Azure AD pro spolupráci B2B?
-Ne. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
+No. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jaké aplikace a služby podporují uživatele typu Host Azure B2B?
 Všechny aplikace integrované s Azure AD můžou podporovat uživatele typu Host Azure B2B, ale musí používat koncový bod nastavený jako tenant k ověřování uživatelů typu Host. Je také možné, že budete muset [přizpůsobit deklarace identity](claims-mapping.md) v tokenu SAML, který je vydaný, když se uživatel typu Host ověří do aplikace. 

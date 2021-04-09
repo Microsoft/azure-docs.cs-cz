@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102500542"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Přehled zřizování protokolů v Azure Portal (Preview)
@@ -43,7 +43,7 @@ Toto téma poskytuje přehled protokolů zřizování. Protokoly poskytují odpo
 * Které uživatele byly úspěšně odebrány z Adobe?
 * Které uživatele z Workday byly úspěšně vytvořeny ve službě Active Directory? 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tito uživatelé mají přístup k datům v protokolech zřizování:
 

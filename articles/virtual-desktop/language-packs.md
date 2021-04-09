@@ -7,10 +7,10 @@ ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fc7892db2ca11ab7970835f8979360961ee01104
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103463336"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Přidání jazykových sad do bitové kopie Windows 10 s více relacemi
@@ -24,7 +24,7 @@ Existují dva způsoby, jak můžete přizpůsobit jazykovým potřebám uživat
 
 Druhá metoda je mnohem efektivnější a nákladově efektivní. Je ale na vás, abyste se rozhodli, kterou metodu nejlépe vyhovuje vašim potřebám. Tento článek vám ukáže, jak přizpůsobit jazyky pro image.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli přidat několik jazyků, budete potřebovat následující věci, abyste mohli přizpůsobit image Windows 10 Enterprise s více relacemi:
 

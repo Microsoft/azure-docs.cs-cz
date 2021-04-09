@@ -3,32 +3,30 @@ title: Integrace Azure Service Bus se službou Azure Private Link
 description: Naučte se integrovat Azure Service Bus se službou Azure Private Link.
 author: spelluru
 ms.author: spelluru
-ms.date: 10/07/2020
+ms.date: 03/29/2021
 ms.topic: article
-ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 833d7e9fb4d517b71aab5039ae9081407eed84cd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427143"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960533"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Povolení přístupu k Azure Service Bus obory názvů prostřednictvím privátních koncových bodů
 Služba privátního propojení Azure vám umožňuje přístup ke službám Azure (například Azure Service Bus, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
-
-> [!IMPORTANT]
-> Tato funkce je podporovaná s úrovní **premium** Azure Service Bus. Další informace o úrovni Premium najdete v článku [Service Bus úrovně pro zasílání zpráv na úrovni Premium a Standard](service-bus-premium-messaging.md) .
 
 Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../private-link/private-link-overview.md)
 
->[!WARNING]
-> Implementace privátních koncových bodů může ostatním službám Azure zabránit v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené soukromé koncové body. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
->
-> Následující služby společnosti Microsoft musí být ve virtuální síti.
-> - Azure App Service
-> - Azure Functions
+## <a name="important-points"></a>Důležité body
+- Tato funkce je podporovaná s úrovní **premium** Azure Service Bus. Další informace o úrovni Premium najdete v článku [Service Bus úrovně pro zasílání zpráv na úrovni Premium a Standard](service-bus-premium-messaging.md) .
+- Implementace privátních koncových bodů může ostatním službám Azure zabránit v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých **důvěryhodných služeb** i v případě, že jsou povolené soukromé koncové body. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
 
+    Následující služby společnosti Microsoft musí být ve virtuální síti.
+    - Azure App Service
+    - Azure Functions
+- Zadejte **alespoň jedno pravidlo IP nebo pravidlo virtuální sítě** pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče). 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
@@ -51,15 +49,16 @@ Pokud již máte existující obor názvů, můžete vytvořit privátní koncov
 1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte **Service Bus**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
-2. V nabídce vlevo vyberte v části **Nastavení** možnost **sítě** . 
-
+2. V nabídce vlevo vyberte v části **Nastavení** možnost **sítě** .     Ve výchozím nastavení je vybraná možnost **vybrané sítě** .
+ 
     > [!NOTE]
     > Karta **síť** se zobrazí jenom pro obory názvů úrovně **Premium** .  
-    
-    Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud na tuto stránku nepřidáte aspoň jedno pravidlo firewallu protokolu IP nebo virtuální síť, můžete k oboru názvů přistupovat přes veřejný Internet (pomocí přístupového klíče).
-
+   
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Stránka sítě – výchozí" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
-    
+
+    > [!WARNING]
+    > Pokud na tuto stránku nepřidáte aspoň jedno pravidlo firewallu protokolu IP nebo virtuální síť, můžete k oboru názvů přistupovat přes veřejný Internet (pomocí přístupového klíče).
+   
     Pokud vyberete možnost **všechny sítě** , obor názvů Service Bus akceptuje připojení z libovolné IP adresy (pomocí přístupového klíče). Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
     ![Firewall – vybraná možnost všechny sítě](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)

@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a52931b69187d18984b9b6938832dafe64111ffe
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105641062"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728126"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Komunikační služby Azure se zavazují, aby naši zákazníci mohli splnit požadavky na ochranu osobních údajů a osobní údaje. Jako vývojář, který používá komunikační služby s přímým vztahem na lidi, kteří používají aplikaci, jste si potenciálně kontrolují svá data. Vzhledem k tomu, že služba Azure Communication Services ukládá a šifruje tato data v klidovém znění, je nejpravděpodobnější procesor těchto dat. Tato stránka shrnuje, jak služba uchovává data a jak můžete tato data identifikovat, exportovat a odstranit.
 

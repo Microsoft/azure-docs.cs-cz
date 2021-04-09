@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
 ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102505898"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
@@ -154,7 +154,7 @@ Azure podporuje dvě nabídky DBaaS pro datové vrstvy platformy SAP BOBI – [A
 
 Azure SQL Database nabízí následující tři nákupní modely:
 
-- založené na vCore
+- Model založený na virtuálních jádrech
 
   Umožňuje zvolit počet virtuální jádra, velikost paměti a velikost a rychlost úložiště. Nákupní model založený na vCoreech vám také umožní použít [Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) k získání úspory nákladů. Tento model je vhodný pro zákazníky, kteří flexibilitu hodnot, řízení a transparentnost.
 

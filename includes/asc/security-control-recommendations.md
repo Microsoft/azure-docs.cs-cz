@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 14655abc403248e0ce22d22aeca342032b930fb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 635ce116509204726762127210923a408b62ea78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103468005"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958352"
 ---
 <table class="tg">
 <thead>
@@ -99,7 +99,7 @@ ms.locfileid: "103468005"
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0,8</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit rozšířenou ochranu před internetovými útoky</p></strong>Azure Security Center volitelné plány ochrany před internetovými útoky v programu Azure Defender poskytují komplexní ochranu vašeho prostředí. Pokud Security Center zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.<br>Každý plán Azure Defender je samostatnou volitelnou nabídkou, kterou můžete povolit pomocí relevantního doporučení v tomto řízení zabezpečení.<br><a href="/azure/security-center/threat-protection">Přečtěte si další informace o ochraně před hrozbami v Security Center</a>.</td>
-    <td class="tg-lboi"; width=55%>- Je potřeba povolit Azure Defender pro App Service.<br />- Je potřeba povolit Azure Defender pro Azure SQL Database servery.<br />- V Azure Defenderu by se měly povolit Registry kontejnerů.<br />- Je potřeba povolit Azure Defender pro Key Vault.<br />- Je potřeba povolit Azure Defender pro Kubernetes.<br />- V Azure Defenderu by se měly povolit servery.<br />- Je potřeba povolit Azure Defender pro SQL servery na počítačích.<br />- Je potřeba povolit Azure Defender pro úložiště.</td>
+    <td class="tg-lboi"; width=55%>- Clustery Kubernetes s povolenou službou Azure ARC by měly mít nainstalované rozšíření v programu Azure Defender.<br />- Je potřeba povolit Azure Defender pro App Service.<br />- Je potřeba povolit Azure Defender pro Azure SQL Database servery.<br />- V Azure Defenderu by se měly povolit Registry kontejnerů.<br />- Je potřeba povolit Azure Defender pro Key Vault.<br />- Je potřeba povolit Azure Defender pro Kubernetes.<br />- V Azure Defenderu by se měly povolit servery.<br />- Je potřeba povolit Azure Defender pro SQL servery na počítačích.<br />- Je potřeba povolit Azure Defender pro úložiště.</td>
   </tr>
 </tbody>
 </table>

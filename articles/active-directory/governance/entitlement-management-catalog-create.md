@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592927"
+ms.locfileid: "105960142"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
@@ -81,7 +81,7 @@ Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto pro
 
     Tyto prostředky teď můžou být zahrnuté do balíčků přístupu v katalogu.
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>Přidat web s více geografickými weby služby SharePoint
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>Přidání víceúrovňového SharePointového webu (Preview)
 
 1. Pokud máte [více geograficky](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) povolených pro SharePoint, vyberte prostředí, ze kterého chcete vybrat weby.
     

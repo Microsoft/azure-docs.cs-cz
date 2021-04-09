@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c01984f6a359c0fd1f5d06d26d97d4a84973f57
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979568"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056741"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení vyžádání do konfigurace aplikace pomocí Azure Pipelines
 
@@ -33,7 +33,10 @@ ms.locfileid: "99979568"
 1. V části **kanály** vyberte **připojení služby**.
 1. Pokud nemáte žádná existující připojení služby, klikněte na tlačítko **vytvořit připojení služby** uprostřed obrazovky. V opačném případě klikněte v pravém horním rohu stránky na **nové připojení služby** .
 1. Vyberte **Azure Resource Manager**.
-1. Vyberte **instanční objekt (automatický)**.
+![Snímek obrazovky zobrazuje výběr Azure Resource Manager v rozevíracím seznamu nové připojení služby.](./media/new-service-connection.png)
+1. V dialogovém okně **metoda ověřování** vyberte **instanční objekt (automatický)**.
+    > [!NOTE]
+    > **Spravované ověřování identity** není aktuálně pro úlohu konfigurace aplikace podporováno.
 1. Vyplňte své předplatné a prostředek. Dejte vašemu připojení služby název.
 
 Teď, když se vytvoří připojení ke službě, vyhledejte název přiřazeného objektu služby. V dalším kroku přidáte nové přiřazení role k tomuto instančnímu objektu.
@@ -49,9 +52,11 @@ Přiřaďte správnou roli konfigurace aplikace k připojení služby, které se
 
 1. Přejděte do cílového úložiště konfigurace aplikace. Návod k nastavení úložiště konfigurace aplikace najdete v tématu [Vytvoření úložiště konfigurace aplikace](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) v některém z rychlých startů konfigurace aplikace Azure.
 1. Na levé straně vyberte **řízení přístupu (IAM)**.
-1. V horní části vyberte **+ Přidat** a vyberte **Přidat přiřazení role**.
+1. Na pravé straně klikněte na tlačítko **Přidat přiřazení rolí** .
+![Na snímku obrazovky se zobrazí tlačítko Přidat přiřazení rolí. ](./media/add-role-assignment-button.png) .
 1. V části **role** vyberte **čtečka konfiguračních dat aplikace**. Tato role umožňuje, aby úkol četl z úložiště konfigurace aplikace. 
 1. Vyberte objekt služby přidružený k připojení služby, které jste vytvořili v předchozí části.
+![Snímek obrazovky se zobrazí v dialogovém okně Přidat přiřazení role.](./media/add-role-assignment-reader.png)
 
 > [!NOTE]
 > Aby bylo možné vyřešit Azure Key Vault odkazy v rámci konfigurace aplikace, musí být připojení služby také uděleno oprávnění ke čtení tajných kódů v odkazovaných trezorech klíčů Azure.
@@ -61,12 +66,17 @@ Přiřaďte správnou roli konfigurace aplikace k připojení služby, které se
 V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v kanálu sestavení Azure DevOps.
 
 1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálu sestavení najdete v tématu  [Vytvoření prvního kanálu](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
-      - Pokud vytváříte nový kanál sestavení, klikněte na **Nový kanál** a vyberte úložiště pro svůj kanál. Vyberte **Zobrazit pomocníka** na pravé straně kanálu a vyhledejte úlohu **Konfigurace aplikace Azure** .
-      - Pokud používáte existující kanál sestavení, vyberte **Upravit** pro úpravu kanálu. Na kartě **úlohy** vyhledejte úlohu **Konfigurace aplikace Azure** .
+      - Pokud vytváříte nový kanál sestavení, v posledním kroku procesu na kartě **Revize** vyberte **Zobrazit pomocníka** na pravé straně kanálu.
+      ![Snímek obrazovky se zobrazí tlačítko Zobrazit pomocníka pro nový kanál.](./media/new-pipeline-show-assistant.png)
+      - Pokud používáte existující kanál sestavení, klikněte na tlačítko **Upravit** v pravém horním rohu.
+      ![Snímek obrazovky zobrazující tlačítko Upravit pro existující kanál.](./media/existing-pipeline-show-assistant.png)
+1. Vyhledejte úlohu **Konfigurace aplikace Azure** .
+![Snímek obrazovky se zobrazí dialogové okno Přidat úlohu s konfigurací aplikace Azure do vyhledávacího pole.](./media/add-azure-app-configuration-task.png)
 1. Nakonfigurujte potřebné parametry pro úlohu, aby vyčetly klíčové hodnoty z úložiště konfigurace aplikace. Popisy parametrů jsou k dispozici v části **parametry** níže a v popiscích tlačítek vedle jednotlivých parametrů.
       - Nastavte parametr **předplatné Azure** na název připojení služby, které jste vytvořili v předchozím kroku.
       - Nastavte **název konfigurace aplikace** na název prostředku vašeho úložiště konfigurace aplikace.
       - Pro zbývající parametry ponechte výchozí hodnoty.
+![Snímek obrazovky se zobrazí parametry úlohy konfigurace aplikace.](./media/azure-app-configuration-parameters.png)
 1. Uložit a zařadit sestavení do fronty V protokolu sestavení se zobrazí všechny chyby, ke kterým došlo během provádění úlohy.
 
 ## <a name="use-in-releases"></a>Použít ve verzích
@@ -76,8 +86,12 @@ V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v 
 1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k vydaným kanálům vydaných verzí najdete v tématu [kanály verzí](/azure/devops/pipelines/release).
 1. Vyberte existující kanál verze. Pokud ho nemáte, klikněte na **Nový kanál** a vytvořte nový.
 1. Kliknutím na tlačítko **Upravit** v pravém horním rohu upravte kanál verze.
-1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete v tématu [Přidání fází, závislostí & podmínek](/azure/devops/pipelines/release/environments).
-1. Klikněte na možnost **+** Spustit na agentovi a pak na kartu **Přidat úlohy** přidejte úlohu **Konfigurace aplikace Azure** .
+1. V rozevíracím seznamu **úlohy** vyberte **fázi** , do které chcete úkol přidat. Další informace o fázích najdete [tady](/azure/devops/pipelines/release/environments).
+![Snímek obrazovky se zobrazí vybraná fáze v rozevíracím seznamu úkoly.](./media/pipeline-stage-tasks.png)
+1. Klikněte na tlačítko **+** Další do úlohy, do které chcete přidat nový úkol.
+![Snímek obrazovky se zobrazeným tlačítkem plus vedle úlohy.](./media/add-task-to-job.png)
+1. Vyhledejte úlohu **Konfigurace aplikace Azure** .
+![Snímek obrazovky se zobrazí dialogové okno Přidat úlohu s konfigurací aplikace Azure do vyhledávacího pole.](./media/add-azure-app-configuration-task.png)
 1. Nakonfigurujte potřebné parametry v rámci úlohy, aby vyčetly klíčové hodnoty z úložiště konfigurace aplikace. Popisy parametrů jsou k dispozici v části **parametry** níže a v popiscích tlačítek vedle jednotlivých parametrů.
       - Nastavte parametr **předplatné Azure** na název připojení služby, které jste vytvořili v předchozím kroku.
       - Nastavte **název konfigurace aplikace** na název prostředku vašeho úložiště konfigurace aplikace.

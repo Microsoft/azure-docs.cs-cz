@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8a06471129f8d79e1ced150f7410392b91d498b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728024"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Nejčastější dotazy k importu Azure Key Vault certifikátů
 
@@ -28,7 +28,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se impor
 V případě operace importu certifikátu Azure Key Vault akceptuje dva formáty souboru certifikátu: PEM a PFX. I když jsou PEM soubory s pouze veřejnou částí, Key Vault vyžaduje a přijímá pouze PEM nebo soubor PFX s privátním klíčem. Další informace najdete v tématu [Import certifikátu do Key Vault](./tutorial-import-certificate.md#import-a-certificate-to-key-vault).
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Když naimportujem certifikát chráněný heslem, aby se Key Vault a pak si ho stáhl, proč se mi nezobrazuje heslo, které je k němu přidružené?
-    
+     
 Po importu a ochraně certifikátu v Key Vault se jeho přidružené heslo neuloží. Heslo je během operace importu vyžadováno pouze jednou. Jedná se o návrh, ale kdykoli můžete získat certifikát jako tajný kód a převést ho z formátu base64 na PFX přidáním hesla prostřednictvím [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx).
 
 ### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>Jak mohu vyřešit chybu "špatný parametr"? Jaké jsou podporované formáty certifikátů pro import do Key Vault?
@@ -42,8 +42,8 @@ Další informace najdete v tématu [požadavky na certifikáty](./certificate-s
 Ne, nemůžete provádět operace s certifikáty pomocí šablony Azure Resource Manager (ARM). Doporučeným řešením je použít metody importu certifikátu v rozhraní API Azure, Azure CLI nebo PowerShellu. Pokud máte existující certifikát, můžete ho naimportovat jako tajný kód.
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Když naimportujem certifikát přes Azure Portal, zobrazí se chyba "něco se pokazilo". Jak se dá prozkoumat?
-    
-Pokud chcete zobrazit výstižnější chybu, importujte soubor certifikátu pomocí [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) nebo [PowerShellu](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+     
+Pokud chcete zobrazit výstižnější chybu, importujte soubor certifikátu pomocí [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) nebo [PowerShellu](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate).
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Jak můžu vyřešit typ chyby: přístup byl odepřen nebo uživatel nemá oprávnění k importu certifikátu?
     

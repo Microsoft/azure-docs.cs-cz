@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 39ee1c1cc5b52dc62e3199536234c1f7d9381436
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104721473"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Připojení k Azure Percept DK přes SSH
 
 Postupujte podle následujících kroků a nastavte připojení SSH ke službě Azure Percept DK prostřednictvím OpenSSH nebo [výstupu](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Hostitelský počítač se systémem Windows, Linux nebo OS X s funkcí Wi-Fi
 - Klient SSH (pokyny k instalaci najdete v další části)

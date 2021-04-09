@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 04/12/2018
 ms.openlocfilehash: 1fc437637fde524da125af9191bf9de79a2e9c37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558997"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
@@ -32,7 +32,7 @@ Přetrasování je jediný nástroj, který poskytuje všechny následující fu
 
 Toto rozšíření poskytuje instalační cestu pro agenta pro Linux pro opětovné trasování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém 
 

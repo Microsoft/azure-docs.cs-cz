@@ -7,10 +7,10 @@ ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577780"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
@@ -32,7 +32,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte aplikaci App Service](./index.yml).
 - U privátního certifikátu se ujistěte, že splňuje všechny [požadavky od App Service](#private-certificate-requirements).
@@ -377,11 +377,11 @@ Najděte zámek certifikátu pomocí typu zámku **Delete**. Napravo od něj vyb
 
 Nyní můžete certifikát App Service odstranit. V levém navigačním panelu vyberte **Přehled**  >  **Odstranit**. V potvrzovacím dialogovém okně zadejte název certifikátu a vyberte **OK**.
 
-## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
+## <a name="automate-with-scripts&quot;></a>Automatizace pomocí skriptů
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name=&quot;azure-cli&quot;></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 

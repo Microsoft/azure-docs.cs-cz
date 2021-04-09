@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
 ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Azure Active Directory integrace s TalentLMS
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TalentLMS s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TalentLMS svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s TalentLMS potřebujete následující položky:
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -108,7 +108,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k TalentLMS.
 
@@ -120,13 +120,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="configure-talentlms-sso"></a>Konfigurace jednotného přihlašování TalentLMS
+### <a name=&quot;configure-talentlms-sso&quot;></a>Konfigurace jednotného přihlašování TalentLMS
 
 1. V jiném okně webového prohlížeče se přihlaste k webu TalentLMS společnosti jako správce.
 
 1. V části **nastavení & účtu** klikněte na kartu **Uživatelé** .
 
-    ![Nastavení & účtu](./media/talentlms-tutorial/IC777296.png "Nastavení & účtu")
+    ![Nastavení & účtu](./media/talentlms-tutorial/IC777296.png &quot;Nastavení & účtu")
 
 1. Klikněte na **jeden Sign-On (SSO)**,
 

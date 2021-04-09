@@ -3,12 +3,12 @@ title: Azure Service Bus geograficky zotavení po havárii | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Service Bus
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933751"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
@@ -156,7 +156,7 @@ Vezměte v úvahu následující skutečnosti:
 
 4. Synchronizace entit může nějakou dobu trvat přibližně 50-100 entit za minutu. Předplatná a pravidla se také počítají jako entity.
 
-### <a name="availability-zones"></a>Zóny dostupnosti
+## <a name="availability-zones"></a>Zóny dostupnosti
 
 SKU Service Bus Premium podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění s izolací chyb v rámci stejné oblasti Azure. Service Bus spravuje tři kopie úložiště pro zasílání zpráv (1 primární a 2 sekundární). Service Bus udržuje všechny tři kopie synchronizovány s daty a operacemi správy. Pokud primární kopie neproběhne úspěšně, jedna ze sekundárních kopií bude povýšena na primární bez pozorovaného výpadku. Pokud se aplikace zobrazí jako přechodné odpojení od Service Bus, logika opakování v sadě SDK se automaticky znovu připojí k Service Bus. 
 
