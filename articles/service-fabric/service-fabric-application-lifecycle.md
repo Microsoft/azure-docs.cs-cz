@@ -4,10 +4,10 @@ description: Popisuje vývoj, nasazení, testování, upgrade, údržbu a odebí
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: ae0c79cdaafc8fc016d463a01046f0a02121330a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785731"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
@@ -48,7 +48,7 @@ Příklady najdete v tématu [nasazení aplikace](service-fabric-deploy-remove-a
 
 Další informace najdete v [úvodu ke službě analýzy chyb](service-fabric-testability-overview.md) .
 
-## <a name="upgrade"></a>Upgradovat
+## <a name="upgrade"></a>Upgrade
 1. *Vývojář služby* aktualizuje prvky služeb instance aplikace nebo opravuje chyby a poskytuje novou verzi manifestu služby.
 2. *Vývojář aplikace* Přepisuje a parameterizes nastavení konfigurace a nasazení konzistentních služeb a poskytuje novou verzi manifestu aplikace. Vývojář aplikace potom v rámci aplikace zahrnuje nové verze manifestů služby a v aktualizovaném balíčku aplikace poskytuje novou verzi typu aplikace.
 3. *Správce aplikace* zahrnuje novou verzi typu aplikace do cílové aplikace tím, že aktualizuje příslušné parametry.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 53ca2ac73fdec9d3b39ffc04cbb24aca707a72eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dbd5b507fd4a7b2434158dbdc80584a7fd348732
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490445"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726579"
 ---
 # <a name="azure-hdinsight-versions"></a>Verze Azure HDInsight
 
@@ -21,12 +21,12 @@ Sady HDInsight Apache Hadoop součásti prostředí a platformy HDInsight do bal
 
 Tato tabulka obsahuje seznam verzí HDInsight, které jsou k dispozici v Azure Portal a dalších metodách nasazení, jako jsou PowerShell, CLI a .NET SDK.
 
-| Verze HDInsight | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |
-| --- | --- | --- | --- | --- | --- |
-| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |Září 24, 2018 | | |Yes |
-| [HDInsight 3,6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |4. dubna 2017      | * 30. června 2021 |30. června 2021 |Yes |
+| Verze HDInsight | Operační systém virtuálního počítače | Datum vydání| Typ podpory | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |
+| --- | --- | --- | --- | --- | --- | ---|
+| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |Září 24, 2018 | [Standard](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) | | |Yes |
+| [HDInsight 3,6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |4. dubna 2017      | [Basic](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) | Vypršení platnosti Standard Support – 30. června 2021 <br> Vypršení platnosti podpora Basic – 3. dubna 2022 |4. dubna 2022 |Yes |
 
-* Rozšiřujeme časový rámec podpory pro určité typy clusterů HDInsight 3,6. Viz [verze komponent HDInsight 3,6](hdinsight-36-component-versioning.md).
+* Od 1. července 2021 Microsoft nabídne podpora Basic pro určité typy clusterů HDI 3,6. Viz [verze komponent HDInsight 3,6](hdinsight-36-component-versioning.md).
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
@@ -34,9 +34,13 @@ Další poznámky k verzi nástroje HDInsight najdete v [poznámkách k verzi HD
 
 ## <a name="support-options-for-hdinsight-versions"></a>Možnosti podpory pro verze HDInsight
 
-HDInsight nabízí standardní podporu, která je definovaná jako časový interval, po kterém je verze HDInsight podporovaná zákaznickou službou a podporou Microsoftu.
+Podpora je definovaná jako časové období, kdy služba a podpora Microsoftu podporuje verzi HDInsight. HDInsight nabízí dva typy podpory: 
+- **Standard Support** je časové období, ve kterém Microsoft poskytuje aktualizace a podporu clusterů HDInsight.  
+    Doporučujeme sestavovat řešení pomocí nejnovější plně podporované verze. 
+- **Podpora Basic** je časové období, ve kterém Microsoft poskytne omezené obsluhy poskytovatele prostředků HDInsight. Image HDInsight a součásti open-source softwaru (OSS) nebudou obsluhované.   V clusterech HDInsight se budou opravovat jenom kritické opravy zabezpečení.  
+  Společnost Microsoft nedoporučuje vytvářet nové clustery ani vytvářet žádná nová řešení, pokud je verze v podpora Basic. Doporučujeme migrovat existující clustery na nejnovější plně podporovanou verzi. 
 
-**Vypršení platnosti podpory** znamená, že Microsoft už neposkytuje podporu pro konkrétní verzi HDInsight. A už není k dispozici prostřednictvím Azure Portal pro vytváření clusteru.
+**Vypršení platnosti podpory** znamená, že Microsoft už neposkytuje podporu pro konkrétní verzi HDInsight. A již nemusí být k dispozici prostřednictvím Azure Portal pro vytvoření clusteru.
 
 **Vyřazení** znamená, že existující clustery verze HDInsight i nadále fungují tak, jak jsou. Nové clustery této verze se nedají vytvořit prostřednictvím žádného prostředku, který zahrnuje rozhraní příkazového řádku a sady SDK. Jiné funkce roviny ovládacího prvku, jako je ruční škálování a automatické škálování, nejsou zaručené pracovat po datu vyřazení. Podpora není k dispozici pro vyřazené verze.
 

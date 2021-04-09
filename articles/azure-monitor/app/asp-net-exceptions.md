@@ -4,12 +4,12 @@ description: Zachyťte výjimky z aplikací ASP.NET spolu s telemetrie žádost�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 926516075c7d43e6e800403a69ff3ab8f1233fcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88936499"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726987"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve webových aplikacích pomocí služby Application Insights
 Výjimky v živé webové aplikaci jsou hlášeny [Application Insights](./app-insights-overview.md). Neúspěšné žádosti s výjimkami a dalšími událostmi můžete korelovat na straně klienta i serveru, abyste mohli rychle diagnostikovat příčiny.
@@ -215,7 +215,7 @@ Neošetřené výjimky, které pocházejí z řadičů, obvykle způsobují odpo
 ### <a name="prior-versions-support"></a>Podpora předchozích verzí
 Pokud používáte MVC 4 (a předchozí) Application Insights web SDK 2,5 (a předchozí), Sledujte výjimky v následujících příkladech.
 
-Pokud je konfigurace [customErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) `Off` , budou k dispozici výjimky pro [modul HTTP](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) ke shromáždění. Pokud je však `RemoteOnly` (výchozí) nebo `On` , bude výjimka vymazána a nebude k dispozici pro Application Insights pro automatické shromáždění. Můžete to opravit přepsáním [třídy System. Web. Mvc. HandleErrorAttribute](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)a použitím přepsané třídy, jak je znázorněno pro různé verze MVC níže ([zdroj GitHubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Pokud je konfigurace [customErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) `Off` , budou k dispozici výjimky pro [modul HTTP](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) ke shromáždění. Pokud je však `RemoteOnly` (výchozí) nebo `On` , bude výjimka vymazána a nebude k dispozici pro Application Insights pro automatické shromáždění. Můžete to opravit přepsáním [třídy System. Web. Mvc. HandleErrorAttribute](/dotnet/api/system.web.mvc.handleerrorattribute)a použitím přepsané třídy, jak je znázorněno pro různé verze MVC níže ([zdroj GitHubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;

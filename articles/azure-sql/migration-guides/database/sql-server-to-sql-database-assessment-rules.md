@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
 ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027206"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Pravidla vyhodnocení SQL Server pro Azure SQL Database migraci
@@ -25,7 +25,7 @@ Nástroje pro migraci ověřují svou zdrojovou SQL Server instanci tak, že spu
 Tento článek poskytuje seznam pravidel používaných k vyhodnocení proveditelnosti migrace databáze SQL Server do Azure SQL Database. 
 
 
-## <a name="bulk-insert"></a>Hromadné vložení (Bulk insert)<a id="BulkInsert"></a>
+## <a name="bulk-insert"></a>Hromadné vložení<a id="BulkInsert"></a>
 
 **Title: BULK INSERT se zdrojem dat objektů BLOB mimo Azure se v Azure SQL Database nepodporuje.**   
 **Kategorie**: problém   

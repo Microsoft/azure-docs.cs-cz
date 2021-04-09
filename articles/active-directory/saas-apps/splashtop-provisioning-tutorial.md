@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/19/2021
 ms.author: Zhchia
 ms.openlocfilehash: af76b051350c896d5de3d2827de1f51ef3191f1a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652653"
 ---
 # <a name="tutorial-configure-splashtop-for-automatic-user-provisioning"></a>Kurz: Konfigurace Splashtop pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v Splashtop i Azure Active 
 > * Zřizování skupin a členství ve skupinách v Splashtop
 > * [Jednotné přihlašování](./splashtop-tutorial.md) k Splashtop (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

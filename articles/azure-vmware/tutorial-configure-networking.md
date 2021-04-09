@@ -4,10 +4,10 @@ description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení 
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103494346"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMware v Azure
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > * Připojení okruhu ExpressRoute k bráně
 > * Vyhledání adres URL pro vCenter a NSX Manager
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Virtuální síť, kterou jste vytvořili [privátní cloud řešení Azure VMware](tutorial-create-private-cloud.md). 
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě

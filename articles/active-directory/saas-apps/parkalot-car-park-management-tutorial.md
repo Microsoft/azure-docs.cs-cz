@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
 ms.openlocfilehash: 0098d28d2b211ad9e4bbe60a44c5de4058f2b96b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101651404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-parkalot---car-park-management"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím systému správy zaparkování Parkalot-auta
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat správu parkování Parkalot s využit
 * Umožněte uživatelům, aby se do Parkalot zaparkování pomocí svých účtů Azure AD automaticky přihlásili.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

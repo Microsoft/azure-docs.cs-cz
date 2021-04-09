@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: baanders
 ms.openlocfilehash: f9740c50bbfd178bccbbc2424796475f1eee12bb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951000"
 ---
 Pokyny k tomu, jak to provést, najdete v části [**publikování aplikace Function App do Azure**](../articles/digital-twins/how-to-create-azure-function.md#publish-the-function-app-to-azure) tématu *Postupy: nastavení funkce pro zpracování dat* v článku.

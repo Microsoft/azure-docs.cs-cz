@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: 11c1d76b5784587f234455f81595778897569eb1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99594346"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>Kurz: konfigurace sítě pro Azure Stack Edge pro R
@@ -26,13 +26,13 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se ujistěte, že:
 
@@ -150,7 +150,7 @@ Toto je volitelná konfigurace.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru

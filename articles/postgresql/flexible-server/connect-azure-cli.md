@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/06/2021
 ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102614339"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Rychlý Start: připojení a dotazování pomocí Azure CLI pomocí Azure Database for PostgreSQL-flexibilního serveru
@@ -21,7 +21,7 @@ ms.locfileid: "102614339"
 
 Tento rychlý Start ukazuje, jak se připojit k Azure Database for PostgreSQL flexibilnímu serveru pomocí příkazu Azure CLI s ```az postgres flexible-server connect``` příkazem. Tento příkaz umožňuje testovat připojení k databázovému serveru a spouštět dotazy. Můžete také spustit více dotazů pomocí interaktivního režimu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - Nainstalovat nejnovější verzi [Azure CLI](/cli/azure/install-azure-cli) (2.20.0 nebo vyšší)
 - Přihlášení pomocí příkazu Azure CLI pomocí ```az login``` příkazu 

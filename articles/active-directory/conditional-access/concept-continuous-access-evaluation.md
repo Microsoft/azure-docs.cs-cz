@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 44091cda479f2c0ccbe77bb9989ee2eda4c40f9d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109008"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727089"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -167,7 +167,7 @@ Vysvětlení kanálů aktualizace Office najdete v tématu [Přehled kanálů ak
 
 Změny zásad provedené správci můžou trvat až jeden den. Některá optimalizace byla provedena za účelem snížení zpoždění na dvě hodiny. Ale nepokrývá všechny scénáře ještě předtím. 
 
-Pokud dojde k naléhavosti a potřebujete, aby byly aktualizované zásady aplikovány na konkrétní uživatele okamžitě, měli byste použít tento [příkaz PowerShellu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) nebo "odvolat relaci" na stránce profilu uživatele k odvolání relace uživatelů. tím se zajistí, že se aktualizované zásady použijí okamžitě.
+Pokud dojde k naléhavosti a potřebujete, aby byly aktualizované zásady aplikovány na konkrétní uživatele okamžitě, měli byste použít tento [příkaz PowerShellu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) nebo "odvolat relaci" na stránce profilu uživatele k odvolání relace uživatelů. tím se zajistí, že se aktualizované zásady použijí okamžitě.
 
 ### <a name="coauthoring-in-office-apps"></a>Spoluvytváření v aplikacích Office
 

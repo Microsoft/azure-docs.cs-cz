@@ -4,10 +4,10 @@ description: Přehled ukázky služby CI Microsoft Azure Foundation srovnávací
 ms.date: 03/11/2021
 ms.topic: sample
 ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103197806"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>Ukázka modelu Microsoft Azure CI 1.1.0 Foundation v testu výkonnosti
