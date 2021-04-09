@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579735"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace ve službě Azure Active Directory B2C
@@ -29,7 +29,7 @@ S jednotným přihlašováním se uživatelé přihlásí jedním účtem a zís
 
 Když se uživatel poprvé přihlásí k aplikaci, Azure AD B2C trvá relaci založenou na souborech cookie. Po následné žádosti o ověření Azure AD B2C přečte a ověří relaci založenou na souborech cookie a vydá přístupový token bez vyzvání uživatele k opětovnému přihlášení. Pokud platnost relace na základě souborů cookie vyprší nebo se stala neplatnou, zobrazí se uživateli výzva k opětovnému přihlášení.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

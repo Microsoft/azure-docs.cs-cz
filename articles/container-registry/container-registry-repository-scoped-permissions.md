@@ -4,10 +4,10 @@ description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úlo�
 ms.topic: article
 ms.date: 02/04/2021
 ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99988253"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními vymezenými úložištěm
@@ -59,7 +59,7 @@ Následující obrázek znázorňuje vztah mezi tokeny a mapami rozsahu.
 
 ![Tokeny registru a mapy oborů](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Azure CLI** – příklady příkazů pro příkazy Azure CLI v tomto článku vyžadují Azure CLI verze 2.17.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 * **Docker** – k ověření pomocí registru pro vyžádání nebo vložení imagí potřebujete místní instalaci Docker. Docker poskytuje pokyny k instalaci pro systémy [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms).

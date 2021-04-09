@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100576428"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
@@ -85,7 +85,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Poradce při potížích
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 

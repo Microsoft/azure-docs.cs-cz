@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 6b8ad268087d7371519e02a9d7614b207a8c4ac0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98730551"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Kurz: Azure Active Directory integrace s nevázaným bridgeline
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat bridgeline bez vazby s Azure Active Di
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k bridgeline bez vazby na své účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat integraci Azure AD s bridgeline bez vazby, budete potřebovat následující položky:
 

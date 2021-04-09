@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/03/2021
 ms.author: stevelas
 ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99988225"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
@@ -19,7 +19,7 @@ Pomocí služby Azure Container Registry můžete ukládat a spravovat [artefakt
 
 V tomto článku se dozvíte, jak pomocí nástroje [Registry OCI jako úložiště (Oras)](https://github.com/deislabs/oras) odeslat ukázkový artefakt – textový soubor – do služby Azure Container Registry. Pak z registru spusťte artefakt. Pomocí různých nástrojů příkazového řádku, které jsou vhodné pro každý artefakt, můžete spravovat nejrůznější artefakty OCI v registru kontejnerů Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Registr kontejnerů Azure** – Vytvořte registr kontejnerů ve svém předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md).
 * **Nástroj Oras** – Stáhněte a nainstalujte si aktuální verzi Oras pro váš operační systém z [úložiště GitHub](https://github.com/deislabs/oras/releases). Nástroj se uvolní jako komprimovaný tarballu ( `.tar.gz` soubor). Extrahujte a nainstalujte soubor pomocí standardních postupů pro váš operační systém.

@@ -12,10 +12,10 @@ author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
 ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103573434"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak zabezpečit následující Inferencing prostř
 > - Cluster AKS s privátním odkazem
 > - Azure Container Instances (ACI)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 

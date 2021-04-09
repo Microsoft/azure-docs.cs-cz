@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
 ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104772055"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
@@ -48,7 +48,7 @@ Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení
 
 Pokud chcete používat komunikaci TLS mezi zdrojem syslog a službou pro předávání syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že počítač se systémem Linux, který používáte jako službu pro překládání protokolů, používá jeden z následujících operačních systémů:
 

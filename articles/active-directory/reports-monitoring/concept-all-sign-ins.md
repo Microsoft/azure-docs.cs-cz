@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103574556"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Sestavy aktivit přihlašování Azure Active Directory – Preview
@@ -47,7 +47,7 @@ Tento článek poskytuje přehled sestavy aktivit přihlašování s náhledem n
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct začít používat tuto funkci, měli byste znát odpovědi na tyto otázky:
 
@@ -102,7 +102,7 @@ V okně sestavy přihlášení můžete přepínat mezi:
 
 
 
-## <a name="user-sign-ins"></a>Přihlášení uživatelů
+## <a name="user-sign-ins&quot;></a>Přihlášení uživatelů
 
 Každá karta v okně přihlášení zobrazuje výchozí sloupce níže. Některé karty mají další sloupce:
 
@@ -120,7 +120,7 @@ Každá karta v okně přihlášení zobrazuje výchozí sloupce níže. Někter
 
 
 
-### <a name="interactive-user-sign-ins"></a>Přihlášení interaktivního uživatele
+### <a name=&quot;interactive-user-sign-ins&quot;></a>Přihlášení interaktivního uživatele
 
 
 Přihlášení interaktivního uživatele jsou přihlášení, kde uživatel poskytuje ověřovací faktor pro Azure AD nebo komunikuje přímo se službou Azure AD nebo pomocnou aplikací, jako je například aplikace Microsoft Authenticator. Mezi faktory, které uživatelé poskytují, patří hesla, odpovědi na výzvy MFA, biometrické faktory nebo kódy QR, které uživatel poskytuje pro Azure AD nebo pro pomocnou aplikaci.
@@ -155,7 +155,7 @@ Kromě výchozích polí se v sestavě interaktivní přihlášení zobrazují t
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Sloupce přihlášení interaktivního uživatele](./media/concept-all-sign-ins/columns-interactive.png "Sloupce přihlášení interaktivního uživatele")
+![Sloupce přihlášení interaktivního uživatele](./media/concept-all-sign-ins/columns-interactive.png &quot;Sloupce přihlášení interaktivního uživatele")
 
 
 

@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387508"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
@@ -27,7 +27,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat MongoDB můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje jenom přesun dat z úložiště MongoDB data do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště MongoDB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Aby se služba Azure Data Factory mohla připojit k místní databázi MongoDB, musíte nainstalovat tyto komponenty:
 
 - Podporované verze MongoDB jsou: 2,4, 2,6, 3,0, 3,2, 3,4 a 3,6.

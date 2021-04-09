@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 30a8208babab2991c9d9e86cc419ac50e1530d7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101099218"
 ---
 # <a name="azure-front-door-standardpremium-preview-health-probe-monitoring"></a>Monitorování sondy stavu pro Azure front-end Standard/Premium (Preview)
