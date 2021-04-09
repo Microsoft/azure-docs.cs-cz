@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
 ms.openlocfilehash: 2ca5f0311102c27c1233098a18ff16701b99ea2a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104950786"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
@@ -97,7 +97,7 @@ Zatmění pro Windows: vývojová platforma podporovaná nástrojem TmaxSoft<br/
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Naplánujte si útratu několika dní a sestavte veškerý požadovaný software a dokončete všechny ruční procesy.
 

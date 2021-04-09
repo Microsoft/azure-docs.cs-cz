@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591469"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
@@ -31,7 +31,7 @@ V tomto článku se naučíte:
 > * Přesuňte data do nového účtu úložiště.
 > * Odstraňte prostředky ve zdrojové oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 

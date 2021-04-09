@@ -12,17 +12,17 @@ ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579786"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Kurz: Konfigurace Arkose Labs pomocí Azure Active Directory B2C
 
 V tomto ukázkovém kurzu se dozvíte, jak integrovat Azure Active Directory (AD) B2C ověřování pomocí [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 

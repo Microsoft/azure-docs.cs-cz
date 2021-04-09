@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: e4f19afc0edf0f43b64548ae1c93ed5ff8dfa8a1
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866569"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
@@ -20,7 +20,7 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit for [zatmění](https://www.e
 * Pro přístup k prostředkům clusteru Azure HDInsight Spark.
 * Pro vývoj a spouštění aplikace Scala Spark lokálně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Apache Spark clusteru v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 

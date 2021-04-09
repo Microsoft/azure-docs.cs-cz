@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101670968"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Instalace SAP HANA na virtuálních počítačích Azure
@@ -29,7 +29,7 @@ Tato příručka vám pomůže nasměrovat na správné prostředky pro úspěš
 > [!NOTE]
 > Tato příručka popisuje nasazení SAP HANA do virtuálních počítačů Azure. Informace o tom, jak nasadit SAP HANA do velkých instancí HANA, najdete v tématu [Jak nainstalovat a nakonfigurovat SAP Hana (velké instance) v Azure](./hana-installation.md).
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tato příručka také předpokládá, že jste obeznámeni s:
 * SAP HANA a SAP NetWeaver a jak je nainstalovat místně.
 * Jak nainstalovat a provozovat instance aplikací SAP HANA a SAP v Azure

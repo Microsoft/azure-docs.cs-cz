@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102634681"
 ---
 # <a name="input-metadata"></a>Vstupní metadata
@@ -66,7 +66,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | Název | Description |
 | --- | --- |
 | **FourCC**<br />Vyžadováno |Videokodek FourCC kód, který je hlášen pomocí FFmpeg.<br /><br />Příklad: `"FourCC": "avc1" | "hev1" | "hvc1"` |
-| **Profilu** |Profil stopy videa. <br /><br />Příklad: `"Profile": "Main"`|
+| **Profil** |Profil stopy videa. <br /><br />Příklad: `"Profile": "Main"`|
 | **Obsah** |Úroveň stopy videa <br /><br />Příklad: `"Level": "3.2"`|
 | **PixelFormat** |Formát pixelu stopy videa <br /><br />Příklad: `"PixelFormat": "yuv420p"`|
 | **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech <br /><br />Příklad: `"Width": "1280"`|

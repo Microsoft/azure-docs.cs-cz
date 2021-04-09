@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
 ms.openlocfilehash: a167fedcb42560dec55cdbce40e36180d65e0179
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951793"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
@@ -219,7 +219,7 @@ Povolené oblasti:
 
 Jedná se o aktuální omezení úrovně služby škálování na úrovni služeb (GA).  Aktivně pracujeme na odebrání tolika těchto omezení, co je možné.
 
-| Problém | Popis |
+| Problém | Description |
 | :---- | :--------- |
 | Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelnými škálováními. Budou filtrovány ze zobrazení.  | Vlastní škálování má samostatnou metodu pro správu záloh, takže nastavení uchovávání Long-Term a nastavení uchovávání záloh v určitém časovém okamžiku neplatí. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.<br><br>Pro databáze migrované do škálování z jiných Azure SQL Database úrovní služeb se zálohy před migrací uchovávají po dobu [uchovávání záloh](automated-backups-overview.md#backup-retention) zdrojové databáze. Tyto zálohy lze použít k [obnovení](recovery-using-backups.md#programmatic-recovery-using-automated-backups) zdrojové databáze k určitému bodu v čase před migrací.|
 | Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je [programově](recovery-using-backups.md#programmatic-recovery-using-automated-backups)podporována. Obnovená databáze nebude škálovatelná. |

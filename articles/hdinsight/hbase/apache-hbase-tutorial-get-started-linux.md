@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
 ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866603"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Použití rozhraní REST API HBase pomocí Curl
 > * Kontrola stavu clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

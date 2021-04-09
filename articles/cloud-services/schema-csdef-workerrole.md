@@ -3,17 +3,18 @@ title: Schéma Azure Cloud Services (Classic) def. role pracovního procesu | Mi
 description: Role pracovního procesu Azure se používá pro zobecněný vývoj a může provádět zpracování na pozadí pro webovou roli. Přečtěte si o schématu role pracovního procesu Azure.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8ba321d95cc030d75ff9286c92c57335695790b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743130"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934066"
 ---
 # <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Role pracovního procesu schéma definice pro Azure Cloud Services (Classic)
 

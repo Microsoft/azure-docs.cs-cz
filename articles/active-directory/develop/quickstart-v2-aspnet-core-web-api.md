@@ -13,10 +13,10 @@ ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
 ms.openlocfilehash: 30593c51f17b99989409ddd22c9c1caa28468039
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104720827"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity
@@ -24,7 +24,7 @@ ms.locfileid: "104720827"
 V tomto rychlém startu si stáhnete ukázku kódu ASP.NET Core webového rozhraní API a zkontrolujete způsob, jakým omezuje přístup k prostředkům jenom na autorizované účty. Ukázka podporuje autorizaci osobních účtů a účtů Microsoft v jakékoli organizaci Azure Active Directory (Azure AD).
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Předpoklady
+> ## <a name="prerequisites"></a>Požadavky
 >
 > - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Tenant Azure Active Directory](quickstart-create-new-tenant.md)

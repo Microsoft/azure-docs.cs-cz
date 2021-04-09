@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104675821"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní šablonami HTML v Azure Active Directory B2C
@@ -116,7 +116,7 @@ Tady je přehled tohoto procesu:
 1. Nastavte sdílení prostředků mezi zdroji (CORS) pro vaši webovou aplikaci.
 1. Nasměrujte zásady na svůj vlastní identifikátor URI obsahu zásad.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

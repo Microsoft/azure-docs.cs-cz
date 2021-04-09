@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102632594"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>Kurz: Přidání značek do souborů Azure Resource Manager bicep
@@ -19,7 +19,7 @@ V tomto kurzu se naučíte přidávat značky do prostředků v souborech bicep.
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [kurz týkající se šablon pro rychlý Start](bicep-tutorial-quickstart-template.md), ale není to nutné.
 

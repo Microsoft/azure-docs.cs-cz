@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
 ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104802909"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
@@ -33,7 +33,7 @@ Pro používání s nízkým kódem si přečtěte [kurz: Předpověď poptávky
 
 Na rozdíl od metod klasických časových řad jsou v automatizovaných ML hodnotách časových řad "pivoted", aby se do regresory staly další dimenze společně s jinými koproměnnými. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodejů, interakcí s historickými trendy, směnným kursem a cenou všech společně provedou všechny výsledky prodeje. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete, 
 
@@ -128,7 +128,7 @@ Automatizované strojové učení automaticky zkouší různé modely a algoritm
 >[!Tip]
 > Tradiční regresní modely jsou testovány také jako součást systému doporučení pro předpovědi experimentů. Úplný seznam modelů najdete v [tabulce podporovaných modelů](how-to-configure-auto-train.md#supported-models) . 
 
-Modely| Popis | Výhody
+Modely| Description | Výhody
 ----|----|---
 Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
 Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Například při překlopení mince je pravděpodobnost, že se vám povede k získání hlav, 50%, bez ohledu na to, jestli jste překlopi dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.

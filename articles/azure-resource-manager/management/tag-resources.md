@@ -4,12 +4,12 @@ description: Ukazuje, jak použít značky k uspořádání prostředků Azure k
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e755a378fd71ea2763cc3e43477876fa3e8c5d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896219"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934185"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Používání značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -684,10 +684,10 @@ Následující šablona přidá značky z objektu do skupiny prostředků nebo p
 
 Pokud chcete pracovat se značkami prostřednictvím REST API Azure, použijte:
 
-* [Značky – vytvořit nebo aktualizovat v oboru](/rest/api/resources/tags/createorupdateatscope) (operace PUT)
-* [Značky – aktualizace v oboru](/rest/api/resources/tags/updateatscope) (operace opravy)
-* [Značky – získat v oboru](/rest/api/resources/tags/getatscope) (operace Get)
-* [Značky – odstranění v oboru](/rest/api/resources/tags/deleteatscope) (operace odstranění)
+* [Značky – vytvořit nebo aktualizovat v oboru](/rest/api/resources/resources/tags/createorupdateatscope) (operace PUT)
+* [Značky – aktualizace v oboru](/rest/api/resources/resources/tags/updateatscope) (operace opravy)
+* [Značky – získat v oboru](/rest/api/resources/resources/tags/getatscope) (operace Get)
+* [Značky – odstranění v oboru](/rest/api/resources/resources/tags/deleteatscope) (operace odstranění)
 
 ## <a name="inherit-tags"></a>Zdědit značky
 
