@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/04/2021
+ms.date: 03/31/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: c4ab8c9f4e1f9dae8c10e155729c639c089fb77a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727111"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107193"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Role správců pro klasický odběr, role Azure a role Azure AD
 
@@ -115,7 +115,7 @@ Role Azure na nejvyšší úrovni řídí oprávnění ke správě prostředků 
 | --- | --- |
 | Správa přístupu k prostředkům Azure | Správa přístupu k prostředkům Azure Active Directory |
 | Podpora vlastních rolí | Podpora vlastních rolí |
-| Možnost zadání oboru na více úrovních (skupina pro správu, předplatné, skupina prostředků, prostředek) | [Rozsah](../active-directory/roles/custom-overview.md#scope) lze zadat na úrovni tenanta (v rámci celé organizace) nebo na jednotlivé objekty (například na konkrétní aplikaci). |
+| Možnost zadání oboru na více úrovních (skupina pro správu, předplatné, skupina prostředků, prostředek) | [Rozsah](../active-directory/roles/custom-overview.md#scope) se dá zadat na úrovni tenanta (v celé organizaci), jednotce pro správu nebo na individuálním objektu (například v konkrétní aplikaci). |
 | Dostupnost informací o roli na portálu Azure Portal, v Azure CLI, Azure PowerShellu, šablonách Azure Resource Manageru, rozhraní REST API | K informacím o rolích se dá získat pøístup na portálu pro správu Azure, Microsoft 365 centru pro správu, Microsoft Graph, AzureAD PowerShellu. |
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Překrývají se role Azure a role Azure AD?

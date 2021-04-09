@@ -1,5 +1,5 @@
 ---
-title: Popis zahrnutého souboru: zahrnout souborové služby: Event-Centre Author: spelluru MS. Service: Event-Centers MS. téma: include MS. Date: 02/01/2021 MS. Author: spelluru MS. Custom: "include File", "FastTrack-Edit", "IoT", "Event-hub"
+title: Popis zahrnutého souboru: zahrnout souborové služby: Event-Centre Author: spelluru MS. Service: Event-Centers MS. téma: include MS. Date: 03/31/2021 MS. Author: spelluru MS. Custom: "include File", "FastTrack-Edit", "IoT", "Event-hub"
 
 ---
 
@@ -13,13 +13,12 @@ Následující omezení jsou společná napříč všemi úrovněmi.
 | Počet Event Hubs oborů názvů na předplatné |- |100 |
 | Počet Center událostí na obor názvů | Následné žádosti o vytvoření nového centra událostí budou odmítnuty. |10 |
 | Velikost názvu centra událostí |- | 256 znaků |
-| Velikost názvu skupiny uživatelů |- | 256 znaků |
+| Velikost názvu skupiny uživatelů | Kafka protokol nevyžaduje vytvoření skupiny příjemců. | <p>Kafka: 256 znaků</p><p>AMQP: 50 znaků |
 | Počet neepochach přijímačů na skupinu uživatelů |- |5 |
 | Počet autorizačních pravidel na obor názvů | Následné žádosti o vytvoření autorizačního pravidla jsou odmítnuté.|12 |
 | Počet volání metody Getruntimeinformation – |  - | 50 za sekundu | 
 | Počet virtuálních sítí (VNet) | - | 128 | 
 | Počet pravidel konfigurace protokolu IP | - | 128 | 
-
 
 ### <a name="basic-vs-standard-tiers"></a>Úrovně Basic a Standard
 V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrovně Basic a Standard. 

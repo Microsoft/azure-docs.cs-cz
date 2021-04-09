@@ -4,16 +4,16 @@ description: Přečtěte si o obnovitelném odstranění sdílených složek Azu
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 0fecc9fc954a1ac648e8f60badf69ad1d2e8f1cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93126936"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937290"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Zabránit náhodnému odstranění sdílených složek Azure
 
@@ -33,7 +33,7 @@ U dočasně odstraněných souborů Premium se v celkovém výpočtu kvóty úč
 
 ### <a name="enabling-or-disabling-soft-delete"></a>Povolení nebo zakázání obnovitelného odstranění
 
-Obnovitelné odstranění sdílených složek je na úrovni účtu úložiště povolené. v důsledku toho se nastavení obnovitelného odstranění aplikuje na všechny sdílené složky v rámci účtu úložiště. Obnovitelné odstranění můžete kdykoli povolit nebo zakázat. Při vytváření nového účtu úložiště je obnovitelné odstranění sdílených složek ve výchozím nastavení zakázané, můžete ho povolit během nasazování nebo kdykoli později. Obnovitelné odstranění zůstane pro existující účty úložiště ve výchozím nastavení zakázané. Pokud jste nakonfigurovali [zálohování sdílené složky](../../backup/azure-file-share-backup-overview.md) Azure pro sdílenou složku Azure, pak bude v účtu úložiště této sdílené složky automaticky povolené obnovitelné odstranění sdílených složek Azure.
+Obnovitelné odstranění sdílených složek je na úrovni účtu úložiště povolené. v důsledku toho se nastavení obnovitelného odstranění aplikuje na všechny sdílené složky v rámci účtu úložiště. Obnovitelné odstranění je ve výchozím nastavení povoleno pro nové účty úložiště a lze je kdykoli zakázat nebo povolit. Obnovitelné odstranění není automaticky povolené pro existující účty úložiště, pokud se pro sdílenou složku Azure v tomto účtu úložiště nenakonfigurovalo [zálohování sdílené složky Azure](../../backup/azure-file-share-backup-overview.md) . Pokud je zálohování sdílené složky Azure nakonfigurované, pak se v účtu úložiště této sdílené složky automaticky povolí obnovitelné odstranění pro sdílené složky Azure.
 
 Pokud pro sdílené složky povolíte obnovitelné odstranění, odstraňte některé sdílené složky a pak zakažte možnost obnovitelné odstranění. Pokud se sdílené složky uložily v tomto období, můžete ke sdíleným složkám pořád přistupovat a obnovovat je. Pokud povolíte obnovitelné odstranění, musíte také nakonfigurovat dobu uchovávání.
 

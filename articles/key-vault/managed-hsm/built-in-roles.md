@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105557220"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Předdefinované role RBAC místního spravovaného HSM
@@ -23,13 +23,13 @@ Spravovaná místní RBAC v modulu HSM má několik předdefinovaných rolí. Ty
 
 |Název role|Popis|ID|
 |---|---|---|
-|Spravovaný správce HSM| Uděluje oprávnění k provádění všech operací souvisejících s doménou zabezpečení, úplným zálohováním a obnovením a správou rolí. Nepovoluje se provádět žádné operace správy klíčů.|a290e904-7015-4bba-90c8-60543313cdb4|
+|Správce spravovaného HSM| Uděluje oprávnění k provádění všech operací souvisejících s doménou zabezpečení, úplným zálohováním a obnovením a správou rolí. Nepovoluje se provádět žádné operace správy klíčů.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Spravovaný pracovník kryptografických modulů HSM|Uděluje oprávnění provádět všechny úlohy správy rolí, vyprázdnit nebo obnovit odstraněné klíče a exportovat klíče. Nepovoluje se provádět žádné jiné operace správy klíčů.|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
 |Spravovaný kryptografický uživatel HSM|Uděluje oprávnění k provádění všech operací správy klíčů s výjimkou vymazání nebo obnovení odstraněných klíčů a exportu klíčů.|21dbd100-6940-42c2-9190-5d6cb909625b|
 |Správce zásad spravovaného HSM| Uděluje oprávnění k vytváření a odstraňování přiřazení rolí.|4bd23610-cdcf-4971-bdee-bdc562cc28e4|
 |Spravovaný auditor kryptografie HSM|Uděluje oprávnění ke čtení (ale nepoužívá) atributům klíče.|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
 |Spravované šifrování šifrovací služby HSM| Uděluje oprávnění používat klíč pro šifrování služby. |33413926-3206-4cdd-b39a-83574fe37a17|
-|Spravované zálohování HSM| Uděluje oprávnění k provádění jediného klíče nebo úplného zálohování HSM.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
+|Zálohování spravovaného HSM| Uděluje oprávnění k provádění jediného klíče nebo úplného zálohování HSM.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>Povolené operace
 > [!NOTE]  

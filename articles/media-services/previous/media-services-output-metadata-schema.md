@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 519aa158d60eae97eb4c1b792bcecfc8a6c066e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103008271"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
@@ -101,7 +101,7 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 | --- | --- | --- |
 | **Účet**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Index tohoto videa na základě nuly **Poznámka:**  Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. |
 | **FourCC**<br/><br/> Vyžadováno |**xs: String** |FourCCový kodek pro video. |
-| **Profilu** |**xs: String** |Profil H264 (platí jenom pro kodek H264). |
+| **Profil** |**xs: String** |Profil H264 (platí jenom pro kodek H264). |
 | **Obsah** |**xs: String** |Úroveň H264 (platí pouze pro kodek H264). |
 | **Width (Šířka)**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
 | **Height (Výška)**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
