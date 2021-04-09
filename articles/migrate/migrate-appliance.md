@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778334"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
@@ -301,16 +301,16 @@ Platforma hostitele serveru (Windows/Linux) | SERVERPROPERTY
 Výchozí cesta zálohování | SERVERPROPERTY
 Výchozí cesta k datovým souborům | SERVERPROPERTY a Software\Microsoft\MSSQLServer\MSSQLServer
 Výchozí cesta souborů protokolu | SERVERPROPERTY a Software\Microsoft\MSSQLServer\MSSQLServer
-Ne. jader na serveru | sys.dm_os_schedulers sys.dm_os_sys_info
+No. jader na serveru | sys.dm_os_schedulers sys.dm_os_sys_info
 Název kolace serveru | SERVERPROPERTY
-Ne. jader na serveru s VIDITELNÝm ONLINE stavem | sys.dm_os_schedulers
+No. jader na serveru s VIDITELNÝm ONLINE stavem | sys.dm_os_schedulers
 Jedinečné ID serveru | sys.dm_server_registry
 HA povoleno nebo ne | SERVERPROPERTY
 Rozšíření fondu vyrovnávací paměti je povolené nebo ne. | sys.dm_os_buffer_pool_extension_configuration
 Cluster s podporou převzetí služeb při selhání nakonfigurovaný nebo ne | SERVERPROPERTY
 Server jenom v režimu ověřování systému Windows | SERVERPROPERTY
 Server nainstaluje základnu. | SERVERPROPERTY
-Ne. logických procesorů v systému | sys.dm_server_registry sys.dm_os_sys_info
+No. logických procesorů v systému | sys.dm_server_registry sys.dm_os_sys_info
 Poměr počtu logických nebo fyzických jader, které jsou vystaveny jedním balíčkem fyzického procesoru | sys.dm_os_schedulers sys.dm_os_sys_info
 Žádný fyzický procesor v systému | sys.dm_os_schedulers sys.dm_os_sys_info
 Datum a čas posledního spuštění serveru | sys.dm_server_registry
@@ -318,7 +318,7 @@ Maximální využití paměti serveru (v MB) | sys.dm_os_process_memory
 Celková hodnota uživatelů napříč všemi databázemi | sys. databases, sys. Logins
 Celková velikost všech uživatelských databází | sys.databases
 Velikost dočasné databáze | sys.master_files sys.configurations sys.dm_os_sys_info
-Ne. přihlášení | přihlášení sys.
+No. přihlášení | přihlášení sys.
 Seznam propojených serverů | sys. Servers
 Seznam úloh agenta | [msdb]. [dbo]. [tabulka sysjobs], [sys]. [syslogins], [msdb]. [dbo]. [syscategories]
 

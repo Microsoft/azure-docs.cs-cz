@@ -9,10 +9,10 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 03/16/2021
 ms.openlocfilehash: 6c23fe86af030d371e12914062bb9558e8db3484
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104776157"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>Mapování polí CEF a CommonSecurityLog
@@ -23,7 +23,7 @@ Další informace najdete v tématu [připojení externího řešení pomocí b�
 
 ## <a name="a---c"></a>A–C
 
-|Název klíče CEF  |Název pole CommonSecurityLog  |Popis  |
+|Název klíče CEF  |Název pole CommonSecurityLog  |Description  |
 |---------|---------|---------|
 | usnáší    |    <a name="deviceaction"></a> DeviceAction     |  Akce zmíněná v události       |
 |   aplikace  |    ApplicationProtocol     |  Protokol použitý v aplikaci, například HTTP, HTTPS, SSHv2, Telnet, POP, IMPA, IMAPs atd.   |
@@ -32,7 +32,7 @@ Další informace najdete v tématu [připojení externího řešení pomocí b�
 
 ## <a name="d"></a>D
 
-|Název klíče CEF  |Název CommonSecurityLog  |Popis  |
+|Název klíče CEF  |Název CommonSecurityLog  |Description  |
 |---------|---------|---------|
 |Dodavatel zařízení     |  DeviceVendor       | Řetězec, který společně s definicemi produktů a verzí zařízení, jednoznačně identifikuje typ odesílajícího zařízení.       |
 |Produkt zařízení     |   DeviceProduct      |   Řetězec, který společně s definicemi výrobce zařízení a verze, jednoznačně identifikuje typ odesílajícího zařízení.        |
@@ -70,7 +70,7 @@ Další informace najdete v tématu [připojení externího řešení pomocí b�
 
 ## <a name="e---i"></a>E-I
 
-|Název klíče CEF  |Název CommonSecurityLog  |Popis  |
+|Název klíče CEF  |Název CommonSecurityLog  |Description  |
 |---------|---------|---------|
 |end     |  EndTime       | Čas, kdy aktivita související s událostí skončila.        |
 |externalId    |   ExternalID      | ID, které používá zdrojové zařízení. Obvykle tyto hodnoty zvyšují hodnoty, které jsou přidruženy k události.        |
@@ -89,7 +89,7 @@ Další informace najdete v tématu [připojení externího řešení pomocí b�
 
 ## <a name="m---p"></a>M-P
 
-|Název klíče CEF  |Název CommonSecurityLog  |Popis  |
+|Název klíče CEF  |Název CommonSecurityLog  |Description  |
 |---------|---------|---------|
 |msg   |  Zpráva       | Zpráva, která poskytuje další podrobnosti o události.        |
 |Name     |  Aktivita       |   Řetězec, který představuje uživatelsky čitelný a srozumitelný popis události.     |
@@ -109,7 +109,7 @@ Další informace najdete v tématu [připojení externího řešení pomocí b�
 
 ## <a name="r---t"></a>R-T
 
-|Název klíče CEF  |Název CommonSecurityLog  |Popis  |
+|Název klíče CEF  |Název CommonSecurityLog  |Description  |
 |---------|---------|---------|
 |Důvod     |  Důvod      |Důvod, proč byla vygenerována událost auditu. <br><br>Příkladem je `Bad password` nebo `Unknown user`.         |
 |Žádost     |   RequestURL      | Adresa URL, na kterou se přistupoval požadavek HTTP, včetně protokolu. Například `http://www/secure.com`.        |
@@ -141,7 +141,7 @@ Další informace najdete v tématu [připojení externího řešení pomocí b�
 Následující názvy polí **CommonSecurityLog** nemají mapování v CEF klíčích:
 
 
-|Název pole CommonSecurityLog  |Popis  |
+|Název pole CommonSecurityLog  |Description  |
 |---------|---------|
 |**OriginalLogSeverity**     |  Vždy prázdné, podporováno pro integraci s CiscoASA. <br>Podrobnosti o hodnotách závažnosti protokolu najdete v poli [LogSeverity](#logseverity) .       |
 |**RemoteIP**     |     Vzdálená IP adresa. <br>Tato hodnota je založená na poli [CommunicationDirection](#communicationdirection) , pokud je to možné.     |

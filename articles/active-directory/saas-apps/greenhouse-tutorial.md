@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Kurz: Azure Active Directory integrace se skleníkem
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat skleníky s Azure Active Directory (Az
 * Umožněte uživatelům, aby se do skleníku automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -146,7 +146,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     >[!NOTE]
     >Případně můžete také odeslat soubor **XML s federačními metadaty** kliknutím na možnost **zvolit soubor** .
 
-### <a name="create-greenhouse-test-user"></a>Vytvořit uživatele skleníkového testu
+### <a name="create-greenhouse-test-user&quot;></a>Vytvořit uživatele skleníkového testu
 
 Aby se uživatelé Azure AD mohli přihlásit ke skleníku, musí se zřídit do skleníku. V případě skleníku je zřizování ručním úkolem.
 
@@ -159,7 +159,7 @@ Aby se uživatelé Azure AD mohli přihlásit ke skleníku, musí se zřídit do
 
 2. Přejít na adresu **> uživatelé > noví uživatelé**
    
-    ![Uživatelé](./media/greenhouse-tutorial/create-user-1.png "Uživatelé")
+    ![Uživatelé](./media/greenhouse-tutorial/create-user-1.png &quot;Uživatelé")
 
 4. V části **Přidat nové uživatele** proveďte následující kroky:
    

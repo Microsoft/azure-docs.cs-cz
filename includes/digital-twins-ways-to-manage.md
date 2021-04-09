@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 11/11/2020
 ms.author: baanders
 ms.openlocfilehash: 02f6c59a76a3fdb7bd4360570b29d7b40a1aff8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102473701"
 ---
 V tomto článku se naučíte, jak provádět různé operace správy pomocí [ **sady** Azure Digital revlákens .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/management). Můžete také vytvořit stejné volání správy pomocí dalších jazykových sad SDK popsaných v tématu [*Postupy: použití rozhraní API a sad SDK digitálních vláken Azure*](../articles/digital-twins/how-to-use-apis-sdks.md).

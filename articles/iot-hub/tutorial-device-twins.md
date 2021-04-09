@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733296"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -196,15 +196,15 @@ Následující snímek obrazovky ukazuje výstup z back-endové aplikace, je na 
 
 ![Snímek obrazovky, který zobrazuje výstup z back-endové aplikace a zvýrazní, jak pošle aktualizaci.](./media/tutorial-device-twins/BackEnd1.png)
 
-## <a name="receive-state-information"></a>Příjem informací o stavu
+## <a name="receive-state-information&quot;></a>Příjem informací o stavu
 
 Back-endová aplikace přijme ze zařízení informace o stavu jako ohlášené vlastnosti. Zařízení nastaví ohlášené vlastnosti a odešle je do centra IoT. Back-endová aplikace může číst aktuální hodnoty ohlášených vlastností z dvojčete zařízení, které je uloženo v centru.
 
-### <a name="send-reported-properties-from-a-device"></a>Odeslání ohlášených vlastností ze zařízení
+### <a name=&quot;send-reported-properties-from-a-device&quot;></a>Odeslání ohlášených vlastností ze zařízení
 
 Aktualizace hodnot ohlášených vlastností můžete odesílat jako opravy. Následující fragment kódu obsahuje šablonu opravy, kterou simulované zařízení odesílá. Před odesláním do centra aktualizuje simulované zařízení pole opravy:
 
-[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 "Reported properties patches")]
+[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 &quot;Reported properties patches")]
 
 K odeslání opravy, která obsahuje ohlášené vlastnosti, do centra používá simulované zařízení následující funkce:
 
