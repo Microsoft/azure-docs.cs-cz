@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 0180f94109d01443390da363d9e09c5ad0b26d18
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 32b287c3d7b1974db5a079d1ee84aaafad3faed7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496112"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727684"
 ---
 # <a name="hdinsight-36-component-versions"></a>Verze komponent HDInsight 3,6
 
@@ -19,20 +19,22 @@ V tomto článku se dozvíte o komponentách a verzích prostředí Apache Hadoo
 
 ## <a name="support-for-hdinsight-36"></a>Podpora pro HDInsight 3,6
 
+Od 1. července 2021 Microsoft nabídne podpora Basic pro určité typy clusterů HDI 3,6.
 Následující tabulka uvádí časový rámec podpory pro typy clusterů HDInsight 3,6.
 
-| Typ clusteru                    | Verze frameworku | Aktuální doba platnosti podpory        | Nové datum vypršení platnosti podpory |
-|---------------------------------|-------------------|-----------------------------------|-----------------------------|
-| HDInsight 3,6 Hadoop            | 2.7.3             | 31. prosince 2020                      | 30. června 2021               |
-| HDInsight 3,6 Spark             | 2.3               | 31. prosince 2020                      | 30. června 2021               |
-| HDInsight 3,6 Spark             | 2,2               | Vyřazení 30. června 2020          |                             |
-| HDInsight 3,6 Spark             | 2.1               | Vyřazení 30. června 2020          |                             |
-| HDInsight 3,6 Kafka             | 1.1               | 31. prosince 2020                      | 30. června 2021               |
-| HDInsight 3,6 Kafka             | 1.0               | Vyřazení 30. června 2020.         |                             |
-| Adaptéry HDInsight 3,6             | 1.1               | 31. prosince 2020                      | 30. června 2021               |
-| Interaktivní dotaz HDInsight 3,6 | 2.1               | 31. prosince 2020                      | 30. června 2021               |
-| HDInsight 3,6 – zaplavení             | 1.1               | 31. prosince 2020                      | 30. června 2021               |
-| Služby HDInsight 3,6 ML      | 9.3               | 31. prosince 2020                      | 31. prosince 2020                |
+| Typ clusteru                    | Verze frameworku | Doba platnosti Standard Support       | podpora Basic datum vypršení platnosti | Datum vyřazení |
+|---------------------------------|-------------------|-----------------------------------|------------------------------|-----------------|
+| HDInsight 3,6 Hadoop            | 2.7.3             | 30. června 2021                     | 3. dubna 2022                | 4. dubna 2022 |
+| HDInsight 3,6 Spark             | 2.3               | 30. června 2021                     | 3. dubna 2022                | 4. dubna 2022 |
+| HDInsight 3,6 Kafka             | 1.1               | 30. června 2021                     | 3. dubna 2022                | 4. dubna 2022 |
+| Adaptéry HDInsight 3,6             | 1.1               | 30. června 2021                     | 3. dubna 2022                | 4. dubna 2022 |
+| Interaktivní dotaz HDInsight 3,6 | 2.1               | 30. června 2021                     | 3. dubna 2022                | 4. dubna 2022 |
+| HDInsight 3,6 – zaplavení             | 1.1               | 30. června 2021                     | 3. dubna 2022                | 4. dubna 2022 |
+| Služby HDInsight 3,6 ML      | 9.3               | -                                 | -                            | 31. prosince 2020 |
+| HDInsight 3,6 Spark             | 2,2               | -                                 | -                            | 30. června 2020 |
+| HDInsight 3,6 Spark             | 2.1               | -                                 | -                            | 30. června 2020 |
+| HDInsight 3,6 Kafka             | 1.0               | -                                 | -                            | 30. června 2020 |
+
 ## <a name="apache-components-available-with-hdinsight-version-36"></a>Součásti Apache dostupné ve verzi HDInsight 3,6
 
 Verze komponent OSS přidružené k HDInsight 3,6 jsou uvedené v následující tabulce.

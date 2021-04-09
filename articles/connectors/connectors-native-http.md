@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 tags: connectors
 ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719436"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak použít Trigger HTTP a akci HTTP, aby vaše a
 
 Informace o šifrování, zabezpečení a autorizaci pro odchozí volání z vaší aplikace logiky, jako je například [TLS (Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), certifikáty podepsané svým držitelem nebo [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), najdete v tématu [zabezpečený přístup a přístup k datům pro odchozí volání do jiných služeb a systémů](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

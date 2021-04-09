@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932399"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
@@ -35,7 +35,7 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 
 2. Vytvořte textový soubor s názvem **AduUpdate. psm1** v adresáři, ve kterém se nachází soubor s obrázkem aktualizace nebo soubor manifestu apt. Pak otevřete rutinu prostředí PowerShell [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) , zkopírujte obsah do textového souboru a uložte textový soubor.
 
-3. V PowerShellu přejděte do adresáře, kde jste vytvořili rutinu PowerShellu z kroku 2. Potom následujícím příkazem:
+3. V PowerShellu přejděte do adresáře, kde jste vytvořili rutinu PowerShellu z kroku 2. Použijte níže uvedenou možnost kopírování a potom vložte do PowerShellu příkazy pro spuštění příkazů:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -63,7 +63,7 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
     | aktualizovat | Identifikátor pro třídu aktualizací. Třída může být cokoliv, co zvolíte. Často se jedná o název zařízení nebo modelu.
     | updateVersion | Číslo verze, které rozlišuje tuto aktualizaci od ostatních, kteří mají stejného poskytovatele a název. Neodpovídá verzi jednotlivého softwarové komponenty v zařízení (ale může se rozhodnout, jestli si zvolíte).
     | Typ aktualizace | <ul><li>Zadat `microsoft/swupdate:1` pro aktualizaci obrázku</li><li>Zadat `microsoft/apt:1` pro aktualizaci balíčku</li></ul>
-    | installedCriteria | <ul><li>Zadejte hodnotu SWVersion pro `microsoft/swupdate:1` typ aktualizace.</li><li>Zadejte doporučenou hodnotu pro `microsoft/apt:1` typ aktualizace.
+    | installedCriteria | <ul><li>Zadejte hodnotu SWVersion pro `microsoft/swupdate:1` typ aktualizace.</li><li>Zadejte **název-Version**, kde _název_ je název manifestu apt a _verze_ je verze manifestu apt. Například contoso-IoT-Edge-1.0.0.0.
     | updateFilePath (celkem) | Cesta k souborům aktualizací v počítači
 
 

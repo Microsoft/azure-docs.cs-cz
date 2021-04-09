@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
 ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101718178"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 
 [Nabízená úloha konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) přenáší hodnoty klíč-hodnota z konfiguračního souboru do úložiště konfigurace aplikace. Tato úloha v rámci kanálu umožňuje úplné funkce kruhů, protože teď můžete získat nastavení z úložiště konfigurace aplikace a nabízet nastavení do úložiště konfigurace aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Prostředek konfigurace aplikace – vytvořte si ho zdarma ve [Azure Portal](https://portal.azure.com).
@@ -93,7 +93,7 @@ Následující parametry používá úloha nabízení konfigurace aplikace:
 
 Po vyplnění požadovaných parametrů spusťte kanál. Všechny klíčové hodnoty v zadaném konfiguračním souboru se nahrají do konfigurace aplikace.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 

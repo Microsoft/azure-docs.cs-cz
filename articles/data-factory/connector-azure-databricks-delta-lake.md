@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/29/2021
+ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364235"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726783"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopírování dat z Azure Databricks rozdílových Lake pomocí Azure Data Factory
 
@@ -33,7 +33,7 @@ Obecně platí, že Azure Data Factory podporuje rozdílové Lake s následujíc
 - [Mapování toku dat](concepts-data-flow-overview.md) podporuje [Formát obecného rozdílu](format-delta.md) v Azure Storage jako zdroj a jímka pro čtení a zápis rozdílových souborů pro ETL bez kódu a spouštění na spravovaných Azure Integration runtime.
 - [Aktivity datacihlů](transform-data-databricks-notebook.md) podporují orchestraci prostředí ETL zaměřeného na kód nebo úlohy strojového učení v rámci rozdílových Lake.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento Azure Databricks rozdílového konektoru Lake, musíte nastavit cluster v Azure Databricks.
 
@@ -42,7 +42,7 @@ Pokud chcete použít tento Azure Databricks rozdílového konektoru Lake, musí
 
 Cluster datacihly musí mít přístup ke službě Azure Blob nebo Azure Data Lake Storage Gen2 účtu, a to jak kontejner úložiště, tak systém souborů, který se používá pro zdroj, jímku a přípravu a kontejner nebo systém souborů, kde chcete zapsat rozdílové tabulky Lake.
 
-- Pokud chcete použít **Azure Data Lake Storage Gen2**, můžete nakonfigurovat **instanční objekt** nebo **přístupový klíč účtu úložiště** v clusteru datacihly jako součást konfigurace Apache Spark. Postupujte podle kroků v části [přímý přístup k instančnímu objektu](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) nebo [přímý přístup pomocí přístupového klíče účtu úložiště](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
+- Pokud chcete použít **Azure Data Lake Storage Gen2**, můžete nakonfigurovat **instanční objekt** v clusteru datacihly jako součást konfigurace Apache Spark. Postupujte podle kroků v části [přímý přístup k instančnímu objektu](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20).
 
 - Pokud chcete používat **úložiště objektů BLOB v Azure**, můžete v rámci konfigurace Apache Spark nakonfigurovat **přístupový klíč účtu úložiště** nebo **token SAS** v clusteru datacihly. Postupujte podle kroků v části [přístup k úložišti objektů BLOB v Azure pomocí rozhraní RDD API](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
 

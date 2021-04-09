@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100583803"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
@@ -45,7 +45,7 @@ Agent Application Insights se nachází zde: https://www.powershellgallery.com/p
 - [Set-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#set-applicationinsightsmonitoringconfig)
 - [Spustit – ApplicationInsightsMonitoringTrace](./status-monitor-v2-api-reference.md#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 - [Řešení potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: Zhchia
 ms.openlocfilehash: 25a2a370e4a88348c2acac931e5f3e1a6f247d1d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104599676"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>Kurz: Konfigurace AWS jednoho Sign-On pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci AWS jednoho Sign-O
 > * Zřizování skupin a členství ve skupinách v AWS jednom Sign-On
 > * [Jednotné přihlašování]() k AWS jednomu Sign-On
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

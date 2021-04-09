@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 5824457a9f2ce411a871b5e76802ecf2e2f106c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099501"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727038"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Výstrahy a incidenty zabezpečení v Azure Security Center
 
@@ -73,13 +73,12 @@ Security Center přiřadí závažnosti výstrahám, které vám pomůžou urči
 > [!NOTE]
 > Závažnost výstrahy se na portálu a ve verzích REST API, které předchází 01-01-2019, zobrazuje jinak. Pokud používáte starší verzi rozhraní API, upgradujte na konzistentní prostředí popsané níže.
 
-| Závažnost          | Doporučená odpověď                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Závažnost          | Doporučená odpověď      |
+|---|---|
 | **Vysoká**          | Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů.                                                                                                               |
 | **Medium**        | Je pravděpodobné, že podezřelá aktivita může znamenat, že dojde k ohrožení bezpečnosti prostředku. Při analýze nebo hledání je jistota Security Center střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekci na základě anomálií. Například pokus o přihlášení z umístění neobvyklé.                                                                                                                |
 | **Nízká**           | Může se jednat o neškodný pozitivní nebo blokovaný útok. Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, která může nastat, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutina prováděná správci. Security Center vám většinou neřekne při zablokování útoků, pokud se nejedná o zajímavý případ, který doporučujeme najít. |
-| **Informační** | Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z řady výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu.                                                                                                                         |  |
-|                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Informační** | Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z řady výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu.                                                                                                                         |
 
 ## <a name="export-alerts"></a>Export výstrah
 

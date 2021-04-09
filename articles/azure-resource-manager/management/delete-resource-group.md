@@ -4,12 +4,12 @@ description: Popisuje, jak odstranit skupiny prostředků a prostředky. Popisuj
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 244d59ffc096b5e219e27fd376b07baecde3670e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8dd6c3f9ac178a518545a662eb94d33066f7614b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932722"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
 
@@ -130,4 +130,4 @@ Pokud máte požadovaný přístup, ale žádost o odstranění se nepovede, mů
 ## <a name="next-steps"></a>Další kroky
 
 * Vysvětlení Správce prostředků konceptů najdete v tématu [Azure Resource Manager Overview](overview.md).
-* Příkazy pro odstranění najdete v tématech [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)a [REST API](/rest/api/resources/resourcegroups/delete).
+* Příkazy pro odstranění najdete v tématech [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)a [REST API](/rest/api/resources/resources/resourcegroups/delete).

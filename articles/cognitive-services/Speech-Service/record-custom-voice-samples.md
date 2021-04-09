@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101722309"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam ukázek hlasu pro vytvoření vlastního hlasu
@@ -163,14 +163,14 @@ Záznam v 44,1 kHz 16 bitů monophonic (Kvalita CD) nebo lepší. Aktuální sta
 
 V ideálním případě mají různí lidé v rolích ředitele, inženýr a talentů. Nepokoušejte se to udělat sami. V gesto roztažení prstů může být jedním z uživatelů ředitel i inženýr.
 
-### <a name="before-the-session"></a>Před relací
+### <a name="before-the-session&quot;></a>Před relací
 
 Abyste se vyhnuli zaznamenání času studia, spusťte skript s hlasovým talentů před relaci nahrávání. I když se hlasový talentů bude dobře rozumět textu, může objasnit výslovnost všech neznámých slov.
 
 > [!NOTE]
 > Většina záznamů studia nabízí elektronický zobrazení skriptů v záznamovém kabině. V takovém případě zadejte poznámky ke spuštění přímo do dokumentu skriptu. Pořád budete chtít v průběhu relace pořizovat poznámky k papírové kopii, i když. Většina techniků bude chtít také pevně nakopírovat. A pořád budete potřebovat třetí tištěnou kopii jako zálohu pro talentů pro případ, že je počítač mimo provoz.
 
-Vaše hlasová talentů může požádat o to, které slovo chcete zdůraznit v utterance ("rozhodné slovo"). Řekněte jim, že chcete přirozeným čtením bez zvláštního zdůraznění. Při syntetizování řeči je možné přidat zdůraznění. neměl by být součástí původního záznamu.
+Vaše hlasová talentů může požádat o to, které slovo chcete zdůraznit v utterance (&quot;rozhodné slovo"). Řekněte jim, že chcete přirozeným čtením bez zvláštního zdůraznění. Při syntetizování řeči je možné přidat zdůraznění. neměl by být součástí původního záznamu.
 
 Nasměrujte talentů tak, aby vysloví odlišně. Každé slovo skriptu by mělo být vyslovované jako zapsané. Zvuky by se neměly vynechat ani se musí nacházet společně, protože jsou běžné při příležitostném rozpoznávání řeči, *Pokud je ve skriptu nevytvořila možnost*.
 

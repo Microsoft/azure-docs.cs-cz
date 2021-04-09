@@ -6,10 +6,10 @@ ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719776"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
@@ -204,13 +204,13 @@ A zobrazte agregace metrik pro každou dimenzi _FormFactor_ :
 
 ![Faktory formuláře](./media/get-metric/formfactor.png)
 
-### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>Jak používat MetricIdentifier, pokud existuje více než tři dimenze
+### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions&quot;></a>Jak používat MetricIdentifier, pokud existuje více než tři dimenze
 
 V současné době je dostupná 10 dimenzí, ale více než tři dimenze vyžaduje použití `MetricIdentifier` :
 
 ```csharp
-// Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
-// MetricIdentifier id = new MetricIdentifier("[metricNamespace]","[metricId],"[dim1]","[dim2]","[dim3]","[dim4]","[dim5]");
+// Add &quot;using Microsoft.ApplicationInsights.Metrics;&quot; to use MetricIdentifier
+// MetricIdentifier id = new MetricIdentifier(&quot;[metricNamespace]&quot;,&quot;[metricId],&quot;[dim1]&quot;,&quot;[dim2]&quot;,&quot;[dim3]&quot;,&quot;[dim4]&quot;,&quot;[dim5]");
 MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold", "FormFactor", "GraphicsCard", "MemorySpeed", "BatteryCapacity", "StorageCapacity");
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");

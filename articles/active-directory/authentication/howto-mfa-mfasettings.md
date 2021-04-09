@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471647"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932909"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurace nastavení Multi-Factor Authentication služby Azure AD
 
@@ -231,7 +231,7 @@ K nastavení služby se dá získat pøístup z Azure Portal tak, že přejdete 
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
 
-Funkce _důvěryhodných IP adres_ ve službě Azure AD Multi-Factor Authentication obchází výzvy služby Multi-Factor Authentication pro uživatele, kteří se přihlásí z definovaného rozsahu IP adres. Můžete nastavit rozsahy důvěryhodných IP adres pro vaše místní prostředí, když se uživatelé nacházejí v jednom z těchto umístění, takže se nezobrazuje žádná služba Azure AD Multi-Factor Authentication.
+Funkce _důvěryhodných IP adres_ ve službě Azure AD Multi-Factor Authentication obchází výzvy služby Multi-Factor Authentication pro uživatele, kteří se přihlásí z definovaného rozsahu IP adres. Pro místní prostředí můžete nastavit rozsahy důvěryhodných IP adres, takže když se uživatelé nacházejí v jednom z těchto umístění, není k dispozici žádná služba Azure AD Multi-Factor Authentication prompt. Funkce _Trusted ip_ Multi-Factor Authentication služby Azure AD vyžaduje edici Azure AD Premium P1. 
 
 > [!NOTE]
 > Důvěryhodné IP adresy můžou zahrnovat rozsahy privátních IP adres jenom v případě, že použijete MFA Server. Pro cloudové Multi-Factor Authentication Azure AD můžete použít jenom rozsahy veřejných IP adres.

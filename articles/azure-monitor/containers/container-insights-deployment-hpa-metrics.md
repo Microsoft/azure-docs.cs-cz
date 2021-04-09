@@ -4,10 +4,10 @@ description: Tento článek popisuje, co & nasazení (horizontálního automatic
 ms.topic: conceptual
 ms.date: 08/09/2020
 ms.openlocfilehash: c8bb100b756ea92d73e1c3a698f119b4f8157930
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101717702"
 ---
 # <a name="deployment--hpa-metrics-with-container-insights"></a>Nasazení & metriky HPA s využitím kontejneru Insights

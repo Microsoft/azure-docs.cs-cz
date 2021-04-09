@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101717736"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets
@@ -38,13 +38,13 @@ V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com
 
     | Profily & pravidla | Description |
     |--- | --- |
-    | **Profilu** |**Na základě výkonu nebo metriky** |
+    | **Profil** |**Na základě výkonu nebo metriky** |
     | Pravidlo |Počet zpráv ve frontě Service Bus > x |
     | Pravidlo |Počet zpráv ve frontě Service Bus < y |
     | Pravidlo |PROCESOR% > n |
     | Pravidlo |PROCESOR% < p |
-    | **Profilu** |**Hodiny ráno v týdnu (bez pravidel)** |
-    | **Profilu** |**Den spuštění produktu (bez pravidel)** |
+    | **Profil** |**Hodiny ráno v týdnu (bez pravidel)** |
+    | **Profil** |**Den spuštění produktu (bez pravidel)** |
 
 4. Tady je hypotetický scénář pro škálování, který používáme pro tento návod.
 

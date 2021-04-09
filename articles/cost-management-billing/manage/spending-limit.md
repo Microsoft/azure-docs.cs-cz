@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: df5c5ed74a5e0a63727962fa86d261cfb588a384
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 47f1a1ed182420852682e908c7cd8b5e094bc085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690557"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932552"
 ---
 # <a name="azure-spending-limit"></a>Limit útraty Azure
 
-Limit útraty v Azure zabraňuje překročení částky kreditu. Všem novým zákazníkům, kteří si zaregistrují bezplatný účet Azure nebo typy předplatných, které zahrnují kredit na několik měsíců, se standardně aktivuje limit útraty. Limit útraty odpovídá výši kreditu a není možné ho změnit. Pokud jste si například zaregistrovali bezplatný účet Azure, váš limit útraty je 200 USD a není možné ho změnit na 500 USD. Můžete ho ale kdykoliv zrušit. To znamená, že buď nemáte žádný limit, nebo máte limit odpovídající výši kreditu. Tento limit vám znemožní provádět většinu typů útraty. Limit útraty není dostupný u předplatných s plány závazků nebo s průběžnými platbami. Prohlédněte si [úplný seznam typů předplatného Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
+Limit útraty v Azure zabraňuje překročení částky kreditu. Všem novým zákazníkům, kteří si zaregistrují bezplatný účet Azure nebo typy předplatných, které zahrnují kredit na několik měsíců, se standardně aktivuje limit útraty. Limit útraty se rovná množství kreditu. Nemůžete změnit velikost limitu útraty. Pokud jste si například zaregistrovali bezplatný účet Azure, váš limit útraty je 200 USD a není možné ho změnit na 500 USD. Můžete ho ale kdykoliv zrušit. To znamená, že buď nemáte žádný limit, nebo máte limit odpovídající výši kreditu. Tento limit vám znemožní provádět většinu typů útraty. Limit útraty není dostupný u předplatných s plány závazků nebo s průběžnými platbami. Prohlédněte si [úplný seznam typů předplatného Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
 
 ## <a name="reaching-a-spending-limit"></a>Dosažení limitu útraty
 

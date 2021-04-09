@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2021
 ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719372"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
@@ -145,7 +145,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |

@@ -10,19 +10,19 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 56b411a490fe1a0c45ea4dd183d88defd61a2fde
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: f8986ef895c5766d363261ef263851ee96d9c0da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105640854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727667"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 
 
 V tomto článku se naučíte, jak zobrazit spuštění experimentů a metriky v TensorBoard pomocí [ `tensorboard` balíčku](/python/api/azureml-tensorboard/) v hlavní sadě SDK pro Azure Machine Learning. Po kontrole spuštění experimentů můžete lépe vyladit a přeškolovat modely strojového učení.
 
-[TensorBoard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) je sada webových aplikací pro kontrolu a porozumění vaší struktuře experimentů a výkonu.
+[TensorBoard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard) je sada webových aplikací pro kontrolu a porozumění vaší struktuře experimentů a výkonu.
 
 Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na typu experimentu:
 + Pokud váš experiment nativně Vypisuje soubory protokolů, které jsou spotřební TensorBoard, jako je PyTorch, chainer a TensorFlow experimenty, můžete [Spustit TensorBoard přímo](#launch-tensorboard) z historie spuštění experimentu. 

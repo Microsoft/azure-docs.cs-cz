@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f613a14f84999fced888ae72de11328bc7c90811
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104780000"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
@@ -180,11 +180,11 @@ Následující tabulka obsahuje popis vlastností, které můžete použít v č
 
 | Vlastnost | Popis | Povinné | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Ano |NA |
-| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Ano |NA |
-| style |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |Ne |01/01/0001 |
-| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |Ne |NA |
+| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Yes |NA |
+| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Yes |NA |
+| style |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |No |EndOfInterval |
+| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |No |01/01/0001 |
+| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |No |NA |
 
 ### <a name="offset-example"></a>Příklad posunutí
 Ve výchozím nastavení se pro každý den ( `"frequency": "Day", "interval": 1` ) řezy začnou začínat časem UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
@@ -228,8 +228,8 @@ Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kte
 
 | Název zásady | Popis | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |NA |
-| minimumRows | Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |NA |
+| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |NA |
+| minimumRows | Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -262,7 +262,7 @@ Další informace o těchto vlastnostech a příkladech najdete v článku o [vy
 ## <a name="activity-policies"></a>Zásady aktivit
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |

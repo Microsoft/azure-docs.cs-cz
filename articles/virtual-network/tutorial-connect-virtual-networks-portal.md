@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 71ba82cfd5f0f4166d25983f3f80530da45bdeac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017912"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932943"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -32,7 +32,9 @@ Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztah
 
 Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-connect-virtual-networks-cli.md) nebo [Azure PowerShellu](tutorial-connect-virtual-networks-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
+
+Než začnete, budete potřebovat účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -171,6 +173,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak propojit dvě virtuální sítě ve stejné oblasti Azure s využitím partnerského vztahu virtuálních sítí. Můžete vytvářet také partnerské vztahy virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region) a [různých předplatných Azure](create-peering-different-subscriptions.md#portal), stejně jako vytvářet [návrhy hvězdicovitých sítí](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) s partnerskými vztahy. Další informace o partnerských vztazích virtuálních sítí najdete v tématech [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) a [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md).
+> [!div class="nextstepaction"]
+> [Další informace o partnerském vztahu virtuálních sítí](virtual-network-peering-overview.md)
 
-Informace o připojení vlastního počítače k virtuální síti prostřednictvím sítě VPN a práci s prostředky ve virtuální síti nebo v partnerských virtuálních sítích najdete v tématu [Připojení počítače k virtuální síti](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
