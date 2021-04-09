@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
 ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105026032"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Pravidla vyhodnocení pro SQL Server migraci spravované instance Azure SQL
@@ -67,7 +67,7 @@ Při migraci na spravovanou instanci SQL Azure budete muset převést příkazy 
 
 Další informace: [rozdíly CLR ve spravované instanci Azure SQL ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
-## <a name="bulk-insert"></a>Hromadné vložení (Bulk insert)<a id="BulkInsert"></a>
+## <a name="bulk-insert"></a>Hromadné vložení<a id="BulkInsert"></a>
 
 **Title: BULK INSERT se zdrojem dat objektu BLOB mimo Azure není ve spravované instanci SQL Azure podporován.**   
 **Kategorie**: problém   

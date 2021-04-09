@@ -6,10 +6,10 @@ ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: b9c5053a2a49c942cc89bd50c65e13f3a2f8d9d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99625872"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace stávající aplikace v .NET pro Service Fabric Mesh
@@ -26,7 +26,7 @@ V aplikaci Visual Studio 2017 můžete přidat podporu kontejneru do ASP.NET a k
 > [!NOTE]
 > Projekty .NET **Core** nejsou aktuálně podporovány.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

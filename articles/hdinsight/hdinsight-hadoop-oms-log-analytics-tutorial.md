@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
 ms.openlocfilehash: 0dfa89f50dedad41394cb77f1cca9b2dd3a65308
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104865532"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight s využitím protokolů služby Azure Monitor
@@ -22,7 +22,7 @@ Naučte se, jak povolit protokoly Azure Monitor pro monitorování operací clus
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Log Analytics. Tento pracovní prostor si můžete představit jako jedinečné Azure Monitor zaprotokolované prostředí s vlastním úložištěm dat, zdroji dat a řešeními. Pokyny najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
 

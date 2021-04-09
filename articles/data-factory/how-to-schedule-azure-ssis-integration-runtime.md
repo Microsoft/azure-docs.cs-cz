@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.openlocfilehash: 40c3b8ab228c93fd4c681281d89d16f88ddf30f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100384363"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
@@ -24,7 +24,7 @@ Alternativně můžete vytvořit aktivity webu v kanálech ADF a spustit nebo za
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud jste už Azure-SSIS IR ještě nezřídili, zřiďte ho podle pokynů v tomto [kurzu](./tutorial-deploy-ssis-packages-azure.md). 
 
 ## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Vytvářejte a naplánujte kanály ADF, které začínají a nebo zastavují Azure-SSIS IR

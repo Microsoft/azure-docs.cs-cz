@@ -4,10 +4,10 @@ description: Vysvětluje, jak nakonfigurovat Azure Sentinel pro příjem dat z v
 ms.topic: how-to
 ms.date: 12/28/2020
 ms.openlocfilehash: b481dd31b73e741d265a569076f1ddc076ad4a45
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778946"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Připojení dat z programu Defender pro IoT do Azure Sentinel 
@@ -16,7 +16,7 @@ Použijte Defender pro IoT Connector ke streamování všech vašich Defenderů 
 
 Tato integrace umožňuje organizacím rychle detekovat útoky s více fázemi, které jsou často mezi sebou a hranicemi. Kromě toho Defender pro integraci IoT s funkcemi orchestrace, automatizace a odezva zabezpečení Azure Sentinel umožňuje automatizovanou reakci a prevenci pomocí integrované playbooky optimalizované pro. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění **ke čtení** a **zápisu** v pracovním prostoru, na kterém je nasazená Azure Sentinel
 - V příslušném IoT Hub musí být **povolený** **Defender pro IoT** .

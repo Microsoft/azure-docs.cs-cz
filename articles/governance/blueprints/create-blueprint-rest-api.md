@@ -4,10 +4,10 @@ description: V tomto rychlém startu použijete Azure modrotisky k vytváření,
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105558971"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rychlý Start: definování a přiřazení Azure Blueprint s REST API

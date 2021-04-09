@@ -5,10 +5,10 @@ ms.author: alkohli
 ms.topic: include
 ms.date: 03/23/2021
 ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105104067"
 ---
 K řešení chyb souvisejících s výpočty použijte IoT Edge odezvy agenta modulu runtime. Tady je seznam možných odpovědí:

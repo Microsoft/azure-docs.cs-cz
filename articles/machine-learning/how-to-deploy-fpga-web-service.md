@@ -12,10 +12,10 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
 ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519312"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Nasazení modelů ML na pole – programovatelné pole brány (FPGA) s Azure Machine Learning 
@@ -60,7 +60,7 @@ Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine L
 
 V tomto příkladu vytvoříte graf TensorFlow, abyste mohli předzpracovat vstupní image, vytvořit ji featurizer pomocí ResNet 50 na FPGA a pak tyto funkce spustit prostřednictvím klasifikátoru, který je vyškolený na ImageNet sadě dat. Model se pak nasadí do clusteru AKS.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho nemáte, vytvořte účet s průběžnými [platbami](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) (bezplatné účty Azure nemají nárok na FPGA kvótu).
 

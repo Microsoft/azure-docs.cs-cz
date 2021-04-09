@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
 ms.openlocfilehash: d063aec3b093f00640d909a6ce3c2cde6d2d2420
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102547420"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření Linux 3,0
@@ -67,7 +67,7 @@ Podporované distribuce a verze:
 - Debian 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
 * Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
@@ -204,7 +204,7 @@ Nejnovější verze rozšíření je **3,0**. **Všechny staré verze (2. x) jso
 >
 > Chcete-li provést migraci z 2. x na tuto novou verzi rozšíření, je nutné odinstalovat starou příponu (pod starým názvem vydavatele) a pak nainstalovat verzi 3 rozšíření.
 
-Doporučit
+Doporučení:
 
 * Nainstalujte rozšíření s povoleným automatickým upgradem dílčí verze.
   * V případě virtuálních počítačů modelu nasazení Classic zadejte jako verzi hodnotu 3. *, pokud chcete rozšíření instalovat prostřednictvím Azure XPLAT CLI nebo PowerShellu.

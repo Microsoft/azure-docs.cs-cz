@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387355"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesunutí dat z DB2 pomocí aktivity kopírování Azure Data Factory
@@ -27,7 +27,7 @@ Tento článek popisuje, jak můžete použít aktivitu kopírování v nástroj
 
 Data Factory aktuálně podporuje pouze přesun dat z databáze DB2 do [podporovaného úložiště dat jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Přesun dat z jiných úložišť dat do databáze DB2 není podporován.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Data Factory podporuje připojení k místní databázi DB2 pomocí [brány pro správu dat](data-factory-data-management-gateway.md). Podrobné pokyny k nastavení kanálu dat brány pro přesun dat najdete v článku věnovaném [přesunutí dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Brána je povinná i v případě, že je DB2 hostovaný na virtuálním počítači Azure s IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat. Pokud se brána může připojit k databázi, můžete bránu nainstalovat na jiný virtuální počítač.

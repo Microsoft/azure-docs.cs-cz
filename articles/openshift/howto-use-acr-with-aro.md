@@ -7,17 +7,17 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 01/10/2021
 ms.openlocfilehash: 651b73db084e8090f59faeffa9991c2ac468ca08
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100634409"
 ---
 # <a name="use-azure-container-registry-with-azure-red-hat-openshift-aro"></a>Použití Azure Container Registry s Azure Red Hat OpenShift (ARO)
 
 Azure Container Registry (ACR) je spravovaná služba registrů kontejnerů, kterou můžete použít k ukládání privátních imagí kontejnerů Docker s podnikovými funkcemi, jako je geografická replikace. Pokud chcete získat přístup k ACR z clusteru ARO, cluster se může ověřit pomocí ACR uložení přihlašovacích údajů Docker do tajného klíče Kubernetes.  Stejně tak cluster ARO může použít imagePullSecret ve specifikaci pod k ověření proti registru při načítání image. V tomto článku se dozvíte, jak nastavit Azure Container Registry pomocí clusteru Azure Red Hat OpenShift k ukládání a vybírání privátních imagí kontejnerů Docker.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto průvodci se předpokládá, že máte existující Azure Container Registry. Pokud to neuděláte, pomocí pokynů Azure Portal nebo [Azure CLI](../container-registry/container-registry-get-started-azure-cli.md) vytvořte registr kontejnerů.
 

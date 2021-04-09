@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100417287"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformace dat v rozdílových Lake pomocí mapování toků dat
@@ -22,7 +22,7 @@ Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznáme
 
 V tomto kurzu použijete plátno toku dat k vytvoření toků dat, které vám umožní analyzovat a transformovat data v Azure Data Lake Storage (ADLS) Gen2 a uložit je v rozdílových Lake.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 
@@ -68,11 +68,11 @@ V tomto kroku vytvoříte kanál, který obsahuje aktivitu toku dat.
 
     ![Snímek obrazovky, který ukazuje, kde se má tok dat pojmenovat při vytváření nového toku dat.](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Sestavení logiky transformace v plátně toku dat
+## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Sestavení logiky transformace v plátně toku dat
 
 V tomto kurzu budete generovat dva toky dat. Tok dat Fist je jednoduchý zdroj pro jímku, který vygeneruje nový rozdílový Lake ze souboru ve formátu CSV. Nakonec vytvoříte tento návrh toku, abyste mohli aktualizovat data v rozdílových Lake.
 
-![Konečný tok](media/data-flow/data-flow-tutorial-6.png "Konečný tok")
+![Konečný tok](media/data-flow/data-flow-tutorial-6.png &quot;Konečný tok")
 
 ### <a name="tutorial-objectives"></a>Cíle kurzu
 
