@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98939837"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru rozpoznávání jazyka Analýza textu do služby Azure Kubernetes
 
 Přečtěte si, jak nasadit kontejner rozpoznávání jazyka. Tento postup vám ukáže, jak vytvořit místní kontejnery Docker, nasdílet kontejnery do vlastního privátního registru kontejnerů, spustit kontejner v clusteru Kubernetes a otestovat ho ve webovém prohlížeči.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně. Nepoužívejte Azure Cloud Shell.
 

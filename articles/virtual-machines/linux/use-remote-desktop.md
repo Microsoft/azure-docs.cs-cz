@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
 ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104580364"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Instalace a konfigurace xrdp pro používání vzdálené plochy s Ubuntu
@@ -22,7 +22,7 @@ Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z p�
 
 Článek byl WRITEN a testován pomocí virtuálního počítače s Ubuntu 18,04. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 

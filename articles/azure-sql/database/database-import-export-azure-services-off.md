@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724165"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Import nebo export Azure SQL Database, aniž by bylo možné povolit službám Azure přístup k serveru
@@ -132,7 +132,7 @@ Rychlosti exportu se liší v důsledku mnoha faktorů (například datový tvar
 
 Nejlepšího výkonu dosáhnete, když můžete vyzkoušet následující strategie:
 
-1. Zajistěte, aby v databázi neběžely žádné jiné úlohy. Vytvoření kopie před exportem může být nejlepším řešením, aby se zajistilo, že nejsou spuštěné žádné další úlohy.
+1. Ujistěte se, že v databázi neběží žádná další úloha. Vytvoření kopie před exportem může být nejlepším řešením, aby se zajistilo, že nejsou spuštěné žádné další úlohy.
 2. Zvyšte cíl na úrovni databázové služby (SLO) pro lepší zpracování úlohy exportu (primárně čtení I/O). Pokud je databáze momentálně GP_Gen5_4, možná Pro důležité obchodní informace vrstva pomůžete s úlohou čtení.
 3. Ujistěte se, že existují clusterované indexy, zejména pro velké tabulky.
 4. Virtuální počítače by měly být ve stejné oblasti jako databáze, aby se zabránilo omezením sítě.

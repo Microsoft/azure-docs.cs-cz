@@ -4,10 +4,10 @@ description: Zařazení spuštění úlohy ACR do fronty pro sestavení Image po
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98916061"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Spouštění úloh ACR pomocí šablon Správce prostředků
@@ -26,7 +26,7 @@ Správce prostředků šablona pro zařazení spuštění úlohy do fronty je u�
 * Je nutné zadat vzdálený kontext, jako je například úložiště GitHub, jako [zdrojové umístění](container-registry-tasks-overview.md#context-locations) pro spuštění úlohy. Nemůžete použít místní zdrojový kontext.
 * Pro úlohy spouštěné pomocí spravované identity je povolená jenom spravovaná identita *přiřazená uživatelem* .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte. 
 * **Rozvětvení ukázkové úložiště** – pro příklady úloh, které jsou tady uvedené, použijte uživatelské rozhraní GitHubu k rozvětvení následujícího ukázkového úložiště do svého účtu GitHubu: https://github.com/Azure-Samples/acr-build-helloworld-node . Toto úložiště obsahuje vzorový fázemi a zdrojový kód pro vytváření malých imagí kontejneru.

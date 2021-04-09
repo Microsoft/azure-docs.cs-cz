@@ -10,10 +10,10 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
 ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98737910"
 ---
 # <a name="enable-write-accelerator"></a>Povolit Akcelerátor zápisu
@@ -63,7 +63,7 @@ Omezení IOPS jsou vázaná na virtuální počítač a *ne* na disk. Všechny A
 
 V následujících částech se dozvíte, jak můžete Akcelerátor zápisu povolit na virtuálních pevných discích Azure Premium Storage.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Následující požadavky se vztahují na použití Akcelerátor zápisu v tomto okamžiku:
 

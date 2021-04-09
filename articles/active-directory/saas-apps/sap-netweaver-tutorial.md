@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
 ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97962801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP NetWeaver
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat SAP NetWeaver s Azure Active Directory
 * Umožněte uživatelům, aby se do SAP NetWeaver automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

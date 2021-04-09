@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936689"
 ---
 # <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Kurz: předpoklady pro použití Cognitive Services ve službě Azure synapse Analytics
@@ -28,7 +28,7 @@ Tento kurz zahrnuje:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Azure Data Lake Storage Gen2 systému souborů, se kterým pracujete.
 

@@ -4,10 +4,10 @@ description: Tento článek popisuje Defender pro příkazy IoT CLI pro senzory 
 ms.date: 12/12/2020
 ms.topic: article
 ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778674"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Práce s příkazy CLI Defenderu for IoT
@@ -254,7 +254,7 @@ Pomocí příkazu můžete použít následující atributy `directions` :
 ## <a name="system-actions"></a>Systémové akce
 Následující tabulka popisuje příkazy, které jsou k dispozici pro provádění různých systémových akcí v programu Defender pro IoT:
 
-|Name|Kód|Popis|
+|Name|Kód|Description|
 |----|----|-----------|
 |Zobrazit datum|`date`|Vrátí aktuální datum na hostiteli ve formátu GMT.|
 |Restartujte hostitele.|`system reboot`|Restartuje hostitelské zařízení.|

@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
 ms.openlocfilehash: ad56b6af9a9071812ad6fa581954010df3b6b5d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574833"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště tabulek v Azure

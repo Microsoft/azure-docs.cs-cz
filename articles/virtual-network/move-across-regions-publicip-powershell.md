@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: a21d088680855b74e7259028ed7ef55165707c56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98938684"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>Přesuňte konfiguraci veřejné IP adresy Azure do jiné oblasti pomocí Azure PowerShell
@@ -21,7 +21,7 @@ Existují různé scénáře, ve kterých byste chtěli přesunout existující 
 **Veřejné IP adresy Azure jsou specifické pro oblast a nejde je přesunout z jedné oblasti do druhé.** Můžete ale použít šablonu Azure Resource Manager k exportu stávající konfigurace veřejné IP adresy.  Potom můžete prostředek připravit v jiné oblasti tak, že do šablony vyexportujete veřejnou IP adresu, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [Export skupin prostředků do šablon](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že je veřejná IP adresa Azure v oblasti Azure, ze které chcete přejít.
 

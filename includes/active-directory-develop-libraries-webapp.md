@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 124290321815d22cad74d235205401b9380ff395
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104578361"
 ---
 | Jazyk/rozhraní | Projekt zapnut<br/>GitHubu                                                                                     | Balíček                                                                                                    | Úvod<br/>Začínáme                               | Přihlášení uživatelů                                            | Přístup k webovým rozhraním API                                                    | Všeobecně dostupná (GA) *nebo*<br/>Verze Public Preview<sup>1</sup> |

@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: a143c0aa19241b532cabff95fe6bf85679e4007c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652288"
 ---
 # <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě adresářů a souborů v Azure Data Lake Storage Gen2
@@ -24,7 +24,7 @@ Další informace o tom, jak získat, nastavit a aktualizovat seznamy řízení 
 
 [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-file-datalake/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  |  Reference k rozhraní [API](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)  |  Mapování Gen1 na [Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -144,4 +144,4 @@ Tento příklad vytiskne cestu každého podadresáře a souboru, který se nach
 - [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 - [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 - [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-sdk-for-python/issues)
+- [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)
