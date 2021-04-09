@@ -8,10 +8,10 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 005fd85a152ee2765facda0d961bd9119d1598e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387406"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
@@ -29,7 +29,7 @@ Data z místního úložiště dat Cassandra můžete kopírovat do libovolného
 ## <a name="supported-versions"></a>Podporované verze
 Konektor Cassandra podporuje následující verze Cassandra: 2. x a 3. x. V případě aktivity spuštěné v místním prostředí Integration Runtime se Cassandra 3. x podporuje od verze IR 3,7 a vyšší.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Aby se služba Azure Data Factory mohla připojit k místní databázi Cassandra, musíte nainstalovat Správa dat bránu do stejného počítače, který hostuje databázi, nebo na samostatném počítači, abyste se vyhnuli konkurenčním prostředkům s databází. Správa dat Gateway je komponenta, která připojuje místní zdroje dat ke cloudovým službám zabezpečeným a spravovaným způsobem. Podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) . Podrobné pokyny týkající se nastavení brány a datového kanálu pro přesun dat najdete v článku [o přesunu dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Bránu musíte použít pro připojení k databázi Cassandra, i když je databáze hostovaná v cloudu, například na virtuálním počítači Azure s IaaS. Y můžete mít bránu na stejném virtuálním počítači, který hostuje databázi, nebo na samostatném virtuálním počítači, pokud se brána může připojit k databázi.

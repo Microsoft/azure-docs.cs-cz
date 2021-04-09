@@ -4,10 +4,10 @@ description: Konfigurace úlohy Azure Container Registry (úloha ACR) pro přís
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 789d2c141f8b7c3f2eb8daa31d99090e3d028a43
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98915824"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
@@ -26,7 +26,7 @@ Tento příklad ukazuje kroky buď pomocí uživatelsky přiřazené nebo spravo
 
 V reálném scénáři může organizace udržovat sadu základních imagí, které používají všechny vývojové týmy pro vytváření aplikací. Tyto základní image jsou uložené v podnikovém registru, přičemž každý vývojový tým má jenom práva k získání. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete dva služby Azure Container Registry:
 

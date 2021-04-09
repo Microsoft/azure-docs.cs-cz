@@ -10,10 +10,10 @@ ms.date: 10/14/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
 ms.openlocfilehash: e9f4d4f4ad27081bb105cdb1698438837fc2fe02
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100546665"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-mini-r"></a>Kurz: Konfigurace nastavení zařízení pro Azure Stack hraniční Mini R
@@ -26,12 +26,12 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než nakonfigurujete nastavení související s zařízením na Azure Stack hraničním zařízení v systému R pomocí GPU, ujistěte se, že:
 
@@ -123,7 +123,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas

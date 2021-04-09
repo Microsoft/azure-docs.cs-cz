@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572258"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
 
 Tento kurz popisuje, jaké jsou protokoly prostředků pro službu Azure Signal, jak je nastavit a jak s nimi řešit potíže. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete povolit protokoly prostředků, budete si muset někam uložit data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 
 * [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.

@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: fdb2c47781312505a62c5e95d25c9d9364e3b610
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583750"
 ---
 # <a name="get-started-with-programmatic-access-to-analytics-data"></a>Začínáme s programovým přístupem k analytickým datům
@@ -24,10 +24,10 @@ Pomocí tohoto průvodce můžete programově přistupovat ke komerčním datům
 
 Rozhraní API pro přístup k obchodním sestavám na webu Marketplace vám umožní asynchronně naplánovat vlastní sestavy analytických dat. Tato funkce umožňuje definovat dotazy a šablony vytváření sestav podle vašich potřeb, nastavit plán a získat včas a důvěryhodné sestavy v naplánovaných intervalech.
 
-Klíčovou hodnotou programového přístupu ke komerčním datům na webu Marketplace jsou přizpůsobená vytváření sestav a integrace s interními systémy a platformami BI.
+Klíčovou hodnotou programového přístupu k analytickým datům na komerčním marketplace je možnost přizpůsobení generování sestav a integrace s interními systémy a platformami BI.
 
 > [!NOTE]
-> Partneři budou potřebovat vyhrazené inženýrské prostředky pro jednorázové zprovoznění rozhraní API.
+> Partneři k jednorázovému onboardingu k rozhraní API potřebují vyhrazené inženýrské prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 

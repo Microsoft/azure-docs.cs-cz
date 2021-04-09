@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
 ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99979568"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení vyžádání do konfigurace aplikace pomocí Azure Pipelines
 
 Úloha [Konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task) přebírá klíčové hodnoty z úložiště konfigurace aplikace a nastavuje je jako proměnné kanálu Azure, které mohou být spotřebovány následujícími úlohami. Tato úloha doplňuje úlohu [nabízení konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) , která z konfiguračního souboru vloží hodnoty klíč-to do úložiště konfigurace aplikace. Další informace najdete v tématu [nastavení nabízených oznámení do konfigurace aplikací pomocí Azure Pipelines](push-kv-devops-pipeline.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Úložiště konfigurace aplikace – vytvořte si ho zdarma ve [Azure Portal](https://portal.azure.com).
@@ -107,7 +107,7 @@ A hodnota bude vytištěna do konzoly.
 > [!NOTE]
 > Azure Key Vault odkazy v konfiguraci aplikace budou vyřešeny a nastaveny jako [tajné proměnné](/azure/devops/pipelines/process/variables#secret-variables). V kanálech Azure jsou tajné proměnné z protokolu maskované. Nejsou předávány do úkolů jako proměnné prostředí a musí být předány jako vstupy. 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 

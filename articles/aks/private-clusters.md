@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 3/5/2021
 ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104771851"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
@@ -24,7 +24,7 @@ Privátní cluster je dostupný ve veřejných oblastech, Azure Government a v o
 > [!NOTE]
 > Azure Government weby jsou podporovány, ale US Gov – Texas aktuálně nejsou podporovány z důvodu chybějící podpory privátních odkazů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure CLI verze 2.2.0 nebo novější
 * Služba privátního propojení je podporována pouze u standardních Azure Load Balancer. Základní Azure Load Balancer nejsou podporované.  
@@ -75,7 +75,7 @@ Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 - CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID vyžaduje, abyste v tomto formátu pro globální cloud Azure vytvořili zónu Privátní DNS: `privatelink.<region>.azmk8s.io` . Budete potřebovat ID prostředku, které Privátní DNS zóna dopředá.  Navíc budete potřebovat identitu přiřazenou uživatelem nebo instanční objekt s alespoň `private dns zone contributor` `vnet contributor` rolemi a.
 - "plně kvalifikovaný název domény (FQDN) lze využít s" CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID "pouze k poskytnutí možností subdomény `privatelink.<region>.azmk8s.io`
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Verze Preview verze AKS 0.5.3 nebo novější
 * Rozhraní API verze 2020-11-01 nebo novější

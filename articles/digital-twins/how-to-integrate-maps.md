@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102201426"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
@@ -25,7 +25,7 @@ Tento postup se zabývá těmito postupy:
 2. Vytvoření funkce pro aktualizaci Azure Maps funkce vnitřních map stateset
 3. Jak ukládat ID map a ID stateset funkcí do grafu digitálních vláken Azure
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Postupujte podle kurzu digitálních vláken Azure [*: připojení kompletního řešení*](./tutorial-end-to-end.md).
     * Tuto dvojitou cestu rozšíříte pomocí dalšího koncového bodu a trasy. Z tohoto kurzu taky přidáte další funkci do aplikace Function App. 

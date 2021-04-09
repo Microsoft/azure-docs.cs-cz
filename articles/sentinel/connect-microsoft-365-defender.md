@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: 6500805a4dc7e26f5e1bc601df9ea78279ae17e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101709338"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Připojení dat z Microsoft 365 Defenderu k Azure Sentinel
@@ -43,7 +43,7 @@ Další informace o integraci incidentů a rozšířené shromažďování udál
 >
 > Konektor programu Microsoft 365 Defender je momentálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít platnou licenci pro Microsoft 365 Defender, jak je popsáno v tématu [požadavky Microsoft 365 Defenderu](/microsoft-365/security/mtp/prerequisites). 
 
