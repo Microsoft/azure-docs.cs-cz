@@ -4,10 +4,10 @@ description: Tento model Azure Policy poskytuje příklad použití operátoru v
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 8392c69ff3d63ff4ecad2a26d5d914b4766147b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92072879"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Vzor Azure Policy: operátor hodnoty

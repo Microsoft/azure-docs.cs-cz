@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92132767"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Kurz: vytvoření zásady WAF na Azure CDN pomocí Azure Portal
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Přidružte ho ke koncovému bodu CDN. Zásady WAF můžete přidružit pouze k koncovým bodům, které jsou hostovány na **Azure CDN Standard od společnosti Microsoft** SKU.
 > * Konfigurace pravidel WAF
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pomocí pokynů v rychlém startu vytvořte profil Azure CDN a koncový bod [: vytvořte Azure CDN profil a koncový bod](../../cdn/cdn-create-new-endpoint.md). 
 
