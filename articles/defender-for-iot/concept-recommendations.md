@@ -4,10 +4,10 @@ description: Přečtěte si o konceptu doporučení zabezpečení a o tom, jak s
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.openlocfilehash: a9e33248354aab659694e39df605cc070fdaaf73
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104779337"
 ---
 # <a name="security-recommendations-for-iot-hub"></a>Doporučení zabezpečení pro IoT Hub
@@ -21,7 +21,7 @@ V tomto článku najdete seznam doporučení, která se můžou aktivovat na sv�
 
 Výstrahy doporučení poskytují přehled a návrhy akcí pro zlepšení stav zabezpečení vašeho prostředí.
 
-| Závažnost | Name | Zdroj dat | Popis |
+| Závažnost | Name | Zdroj dat | Description |
 |--|--|--|--|
 | Vysoká | Totožná pověření ověřování používaná více zařízeními | IoT Hub | IoT Hub přihlašovací údaje pro ověřování používají více zařízení. Tento proces může znamenat, že zařízení illegitimate zosobňuje legitimní zařízení. Duplicitní použití přihlašovacích údajů zvyšuje riziko zosobnění zařízení škodlivým objektem actor. |
 | Střední | Výchozí zásady filtru IP adres by se měly odepřít. | IoT Hub | Konfigurace filtru IP adres by měla mít pravidla definovaná pro povolený provoz a měla by ve výchozím nastavení Odepřít všechny ostatní přenosy. |

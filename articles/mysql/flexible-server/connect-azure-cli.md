@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/01/2021
 ms.openlocfilehash: b28c4457129985a1d5c47d251873eaa52a253f72
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102607964"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Rychlý Start: připojení a dotazování pomocí Azure CLI pomocí Azure Database for MySQL-flexibilního serveru
@@ -21,7 +21,7 @@ ms.locfileid: "102607964"
 
 Tento rychlý Start ukazuje, jak se připojit k Azure Database for MySQL flexibilnímu serveru pomocí příkazu Azure CLI s ```az mysql flexible-server connect``` příkazem. Tento příkaz umožňuje testovat připojení k databázovému serveru a spouštět dotazy přímo na serveru.  Můžete také použít příkaz Spustit v interaktivním režimu pro spuštění více dotazů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - Nainstalovat nejnovější verzi [Azure CLI](/cli/azure/install-azure-cli) (2.20.0 nebo vyšší)

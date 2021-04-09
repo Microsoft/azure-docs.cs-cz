@@ -4,10 +4,10 @@ description: Nejčastější dotazy v Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584167"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
@@ -65,7 +65,7 @@ Když metrika překročí nad prahovou hodnotu, dostanete e-maily.
 
 Některé body ke zvážení:
 
-* Výstraha má dva stavy ("výstrahy" a "v pořádku"). Stav je vyhodnocen pouze v případě, že je přijata metrika.
+* Výstraha má dva stavy ("výstrahy&quot; a &quot;v pořádku"). Stav je vyhodnocen pouze v případě, že je přijata metrika.
 * E-mail se pošle jenom v případě, že se změní stav. To je důvod, proč je nutné odesílat metriky s vysokou a nízkou hodnotou.
 * Pro vyhodnocení výstrahy je průměrem přijatých hodnot za předchozí období. K tomu dochází pokaždé, když je přijata metrika, takže e-maily je možné odeslat častěji, než je období, které jste nastavili.
 * Vzhledem k tomu, že e-maily jsou odesílány na "Alert" a "v pořádku", možná budete chtít vzít v úvahu, že se událost jednoho snímku považuje za podmínku dvou stavů. Například namísto události "dokončená úloha" se zobrazí podmínka "probíhá úloha", kde získáte e-maily na začátku a na konci úlohy.

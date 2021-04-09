@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
 ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944271"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
@@ -22,7 +22,7 @@ Python 2.7 se ve výchozím nastavení instaluje v HDInsight 3,0 a novějších 
 
 HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce Java. Jython běží přímo na prostředí Java Virtual Machine a nepoužívá streamování. Jython je doporučený interpret Pythonu při použití Pythonu s prasetem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **Klient SSH**. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -560,7 +560,7 @@ Výstup pro úlohu **vepřového chovu** by měl vypadat podobně jako u násled
 ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 ```
 
-## <a name="troubleshooting"></a><a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a><a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="errors-when-running-jobs"></a>Chyby při spouštění úloh
 

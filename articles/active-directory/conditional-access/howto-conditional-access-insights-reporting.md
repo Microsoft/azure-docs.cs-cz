@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574169"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Přehledy podmíněného přístupu a vytváření sestav
 
 Přehled podmíněného přístupu a sešit vytváření sestav vám umožní pochopit dopad zásad podmíněného přístupu ve vaší organizaci v průběhu času. Během přihlašování se můžou vztahovat jedna nebo víc zásad podmíněného přístupu a udělit přístup v případě, že určité ovládací prvky grantu splní nebo odepře přístup jinak. Vzhledem k tomu, že při každém přihlašování může být vyhodnoceno více zásad podmíněného přístupu, umožňuje sešit přehledů a vytváření sestav zkoumat dopad jednotlivých zásad nebo podmnožiny všech zásad.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete povolit sešit Insights a vytváření sestav, musí mít váš tenant Log Analytics pracovní prostor pro uchovávání dat protokolů přihlášení. Aby mohli uživatelé používat podmíněný přístup, musí mít Azure AD Premium licence P1 nebo P2.
 
@@ -113,7 +113,7 @@ Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 > [!TIP]
 > Úprava stavu **zásad povolení** u existující zásady z **na na** **sestavu – zakáže jenom** existující vynucení zásad. 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Proč se dotazy nedaří kvůli chybě oprávnění?
 

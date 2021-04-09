@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864036"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
@@ -22,7 +22,7 @@ Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykresl
 
 Tato dokumentace používá Azure Maps Web SDK, ale služby Azure Maps lze použít s libovolným mapovým ovládacím prvkem. [Zde](open-source-projects.md#third-part-map-control-plugins) je několik oblíbených open source mapových ovládacích prvků, které Azure Maps tým vytvořil modul plug-in pro.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít Ovládací prvek Mapa na webové stránce, musíte mít jeden z následujících požadavků:
 
@@ -200,9 +200,9 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
    ![Obrázek mapy znázorňující vykreslený výsledek](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>Lokalizace mapy
+## <a name="localizing-the-map&quot;></a>Lokalizace mapy
 
-Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení pro vykreslenou mapu. První možností je přidat tyto informace do globálního `atlas` oboru názvů, což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
+Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení pro vykreslenou mapu. První možností je přidat tyto informace do globálního `atlas` oboru názvů, což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu (&quot;fr-FR") a místní zobrazení na "auto":
 
 ```javascript
 atlas.setLanguage('fr-FR');

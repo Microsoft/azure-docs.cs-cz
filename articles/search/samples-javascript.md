@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104955937"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Ukázky kódu JavaScriptu pro Azure Kognitivní hledání
@@ -32,7 +32,7 @@ Ukázky kódu z vývojového týmu Azure SDK ukazují použití rozhraní API. T
 
 ### <a name="javascript-sdk-samples"></a>Ukázky sady JavaScript SDK
 
-| ukázky | Popis |
+| ukázky | Description |
 |---------|-------------|
 | [indexy](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [vyhledávací indexy](search-what-is-an-index.md). Tato ukázková kategorie také obsahuje ukázkový test služby. |
 | [dataSourceConnections (pro indexery)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit zdroje dat indexeru, které jsou vyžadovány pro indexování [podporovaných zdrojů dat Azure](search-indexer-overview.md#supported-data-sources)pomocí indexeru. |
@@ -42,7 +42,7 @@ Ukázky kódu z vývojového týmu Azure SDK ukazují použití rozhraní API. T
 
 ### <a name="typescript-samples"></a>Ukázky TypeScriptu
 
-| ukázky | Popis |
+| ukázky | Description |
 |---------|-------------|
 | [indexy](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [vyhledávací indexy](search-what-is-an-index.md). Tato ukázková kategorie také obsahuje ukázkový test služby. |
 | [dataSourceConnections (pro indexery)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit zdroje dat indexeru, které jsou vyžadovány pro indexování [podporovaných zdrojů dat Azure](search-indexer-overview.md#supported-data-sources)pomocí indexeru. |
@@ -65,6 +65,6 @@ Ukázky kódu z týmu Kognitivní hledání ukazují funkce a pracovní postupy.
 
 Následující ukázky jsou publikovány také týmem Kognitivní hledání, ale nejsou odkazovány v dokumentaci. Přidružené soubory Readme poskytují pokyny k používání.
 
-| ukázky | Popis |
+| ukázky | Description |
 |---------|-------------|
 | [Azure-Search-reagovat – šablona](https://github.com/dereklegenzoff/azure-search-react-template) | Reakce šablony pro Azure Kognitivní hledání (github.com) |

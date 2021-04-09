@@ -4,10 +4,10 @@ description: Naučte se, jak povolit velké množství počítačů pro servery 
 ms.date: 03/18/2021
 ms.topic: conceptual
 ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105023278"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Plánování a nasazení serverů s povoleným ARC

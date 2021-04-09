@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222322"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro Azure SQL Database
@@ -30,7 +30,7 @@ Query Performance Insight nabízí inteligentní analýzu dotazů pro izolované
 
 ![Query Performance Insight](./media/query-performance-insight-use/opening-title.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Query Performance Insight vyžaduje, aby [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) bylo ve vaší databázi aktivní. Ve výchozím nastavení se automaticky povolí pro všechny databáze ve Azure SQL Database. Pokud není úložiště dotazů spuštěné, Azure Portal vás vyzve, abyste ho povolili.
 
@@ -186,7 +186,7 @@ Identifikace dlouhotrvajících dotazů:
    > Pro porovnání s grafem Performance Query doporučujeme použít vlastní graf DTU.
    >
 
-## <a name="review-top-queries-per-execution-count"></a>Zobrazit nejčastější dotazy na počet spuštění
+## <a name="review-top-queries-per-execution-count&quot;></a>Zobrazit nejčastější dotazy na počet spuštění
 
 Uživatelská aplikace, která používá databázi, může být pomalá, i když vysoký počet spuštění nemusí ovlivnit vlastní databázi a využití prostředků je nízké.
 
@@ -194,7 +194,7 @@ V některých případech může vysoký počet spuštění vést k většímu p
 
 Mnoho webů založených na datech má například vysoce přístup k databázi pro každý požadavek uživatele. I když sdružování připojení pomáhá, zvýšené zatížení sítě a zatížení na serveru může zpomalit výkon. Obecně platí, že je potřeba se na minimum zacyklovat.
 
-Identifikujte často spouštěné dotazy ("konverzace"):
+Identifikujte často spouštěné dotazy (&quot;konverzace"):
 
 1. Otevřete **vlastní** kartu v Query Performance Insight pro vybranou databázi.
 2. Změňte metriky na **počet spuštění**.

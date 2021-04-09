@@ -4,10 +4,10 @@ description: Defender pro agenty zabezpečení IoT shromažďuje data a systémo
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.openlocfilehash: c0280e97549009a1e4911c072a7a8ec052684b4e
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104779320"
 ---
 # <a name="event-aggregation-preview"></a>Agregace událostí (Preview)

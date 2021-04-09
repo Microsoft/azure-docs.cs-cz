@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864813"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
@@ -131,10 +131,10 @@ K dispozici jsou tyto typy komprese:
 
 | Formát | Nástroj | Algoritmus | Přípona souboru | Rozdělitelné? |
 | --- | --- | --- | --- | --- |
-| GZIP | GZIP | DEFLATE | `.gz` | Ne |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ano |
+| GZIP | GZIP | DEFLATE | `.gz` | No |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Ano, pokud je indexovaný |
-| Snappy | – | Snappy | Snappy | Ne |
+| Snappy | – | Snappy | Snappy | No |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří několik mapovačů. Pokud jsou vstupní data text, `bzip2` je to nejlepší možnost. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
 ms.openlocfilehash: 92e3be9111abe5712549ba85ef4550a9ac1473f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104596803"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Postup změny velikosti zařízení pro správu logických svazků, která používají Azure Disk Encryption
@@ -28,7 +28,7 @@ Tento proces změny velikosti můžete použít v následujících prostředích
     - Rozšíření s jedním průchodem
     - Rozšíření pro duální průchod
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte následující:
 
