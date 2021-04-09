@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Kurz: Azure Active Directory integrace s Zscaler dvě
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Zscaler dvě s Azure Active Directory 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscaler dvěma účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD pomocí Zscaler dvou budete potřebovat následující položky:
 
@@ -200,14 +200,14 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     b. Klikněte na tlačítko **aktivovat**.
 
-## <a name="configuring-proxy-settings"></a>Konfigurace nastavení proxy serveru
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurace nastavení proxy serveru v Internet Exploreru
+## <a name="configuring-proxy-settings&quot;></a>Konfigurace nastavení proxy serveru
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Konfigurace nastavení proxy serveru v Internet Exploreru
 
 1. Spusťte **aplikaci Internet Explorer**.
 
 2. V nabídce **nástroje** vyberte **Možnosti Internetu** . otevře se dialogové okno **Možnosti Internetu** .   
     
-     ![Možnosti Internetu](./media/zscaler-two-tutorial/ic769492.png "Možnosti Internetu")
+     ![Možnosti Internetu](./media/zscaler-two-tutorial/ic769492.png &quot;Možnosti Internetu")
 
 3. Klikněte na kartu **připojení** .   
   

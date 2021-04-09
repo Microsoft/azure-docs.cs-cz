@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat S
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570573"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
@@ -79,7 +79,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 | Zprávy| Počet zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
 | Aktivní zprávy| Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
 | Nedoručené zprávy| Počet nedoručených zpráv ve frontě nebo tématu <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/>Dimenze: název entity |
-| Naplánované zprávy| Počet naplánovaných zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr  <br/> Dimenze: název entity |
+| Plánované zprávy| Počet naplánovaných zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr  <br/> Dimenze: název entity |
 | Dokončené zprávy| Počet dokončených zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
 | Opuštěné zprávy| Počet zrušených zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
 | Velikost | Velikost entity (fronty nebo tématu) v bajtech <br/><br/>Jednotka: počet <br/>Typ agregace: průměr <br/>Dimenze: název entity | 

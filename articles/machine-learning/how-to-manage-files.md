@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 02/05/2021
 ms.openlocfilehash: 474b3123513e4b8acf19ba9cdb42c3384ea3ced2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100101343"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>Jak vytvářet a spravovat soubory v pracovním prostoru
 
 Naučte se vytvářet a spravovat soubory v pracovním prostoru Azure Machine Learning.  Tyto soubory jsou uložené ve výchozím úložišti pracovních prostorů. Soubory a složky lze sdílet s kýmkoli jiným s přístupem pro čtení k pracovnímu prostoru a lze je použít z libovolných výpočetních instancí v pracovním prostoru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).

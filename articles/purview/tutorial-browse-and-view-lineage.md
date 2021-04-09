@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: 7ffbe2ded44ded4f580655f6ae9e98391490f94a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97696102"
 ---
 # <a name="tutorial-browse-assets-in-azure-purview-preview-and-view-their-lineage"></a>Kurz: procházení assetů ve službě Azure dosah (Preview) a zobrazení jejich vydaných řádků
@@ -30,7 +30,7 @@ V tomto kurzu:
 > * Vyhledejte prostředky v katalogu.
 > * Zobrazení počtu assetů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Úplný [kurz: přejděte na domovskou stránku Azure dosah (Preview) a vyhledejte Asset](tutorial-asset-search.md).
 

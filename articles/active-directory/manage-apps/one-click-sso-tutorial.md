@@ -17,10 +17,10 @@ ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50f705e587010d956c29a71127e97dd85cb517ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99258248"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Konfigurace aplikace jedním kliknutím jednotného přihlašování
@@ -37,7 +37,7 @@ Funkce jednotného přihlašování jedním kliknutím je určená ke konfigurac
 - Efektivnější a přesná konfigurace jednotného přihlašování.
 - Pro instalaci není nutná žádná komunikace s partnerem ani podpora. Aplikace poskytuje uživatelské rozhraní pro konfiguraci SAML.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aktivní předplatné aplikace, které se má nakonfigurovat pomocí jednotného přihlašování. Budete také potřebovat přihlašovací údaje správce.
 - **Rozšíření zabezpečené přihlašování aplikace** z Microsoftu nainstalované v prohlížeči Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).

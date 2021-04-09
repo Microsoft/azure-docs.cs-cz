@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 54bce5e839786862a6dac9aeb685dd364547a09a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98685020"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Sestava využití a přehledů na portálu Azure Active Directory
@@ -31,7 +31,7 @@ Pomocí sestavy využití a přehled můžete získat pohled na přihlašovací 
 *   U kterých aplikací se neúspěšná přihlášení? 
 *   Jaké jsou nejčastější chyby při přihlašování u každé aplikace?
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pro přístup k datům ze sestavy využití a přehled potřebujete:
 
