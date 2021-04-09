@@ -5,17 +5,17 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96763787"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
 Pomocí [konektoru Ethereem blockchain](/connectors/blockchainethereum/) s [Azure Logic Apps](../../logic-apps/index.yml) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Tento článek vysvětluje, jak můžete pomocí konektoru Ethereem blockchain odeslat informace blockchain do jiné služby nebo zavolat funkci blockchain. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončete volitelný rychlý úvodní požadavek [: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
 - Pokud s Azure Logic Apps začínáte, zvažte, jak si projít Microsoft Learn moduly [Úvod do Azure Logic Apps](/learn/modules/intro-to-logic-apps/) a [zavolejte rozhraní API z pracovního postupu Logic Apps pomocí vlastního konektoru](/learn/modules/logic-apps-and-custom-connectors/).

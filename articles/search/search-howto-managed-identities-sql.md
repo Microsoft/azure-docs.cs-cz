@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358418"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity
@@ -170,7 +170,7 @@ Další informace o rozhraní API Create indexeru najdete v části [Vytvoření
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se při pokusu indexeru o připojení ke zdroji dat zobrazí chybová zpráva s informacemi o tom, že klient nemá povolený přístup k serveru, podívejte se na [běžné chyby indexeru](./search-indexer-troubleshooting.md).
 

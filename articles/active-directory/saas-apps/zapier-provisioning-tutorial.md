@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: d2c1704182a2a59f8e3f79c2d4e671167ce661d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96183069"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zapier pro Automatické zřizování uživatelů
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v Zapier i Azure Active Dir
 > * Zřizování skupin a členství ve skupinách v Zapier
 > * Jednotné přihlašování k Zapier (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

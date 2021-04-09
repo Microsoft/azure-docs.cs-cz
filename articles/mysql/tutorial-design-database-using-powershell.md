@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: fd8294d60ed0af4e8d1eeb8a3cd07c737b69aadd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011451"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Kurz: návrh Azure Database for MySQL pomocí prostředí PowerShell
@@ -28,7 +28,7 @@ Azure Database for MySQL je relační databázová služba v cloudu Microsoftu z
 > - Aktualizace dat
 > - Obnovení dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

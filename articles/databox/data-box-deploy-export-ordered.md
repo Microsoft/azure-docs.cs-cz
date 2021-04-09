@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98789191"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box
@@ -28,7 +28,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Sledovat objednávku exportu
 > * Zrušit export objednávky
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před objednáním zařízení dokončete následující požadavky na konfiguraci pro Data Box službu a zařízení.
 

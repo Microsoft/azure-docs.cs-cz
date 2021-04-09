@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010227"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Kurz: transformace a ochrana rozhraní API
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Zásady na portálu":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98679462"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
@@ -256,7 +256,7 @@ Základní metriky zahrnují četnost požadavků, závislostí a výjimek. Metr
 - PerfCounters se podporují, když je aplikace spuštěná na LIBOVOLNÝch počítačích s Windows (virtuální počítač nebo cloudová služba nebo na Prem atd.). (AspNetCore SDK verze 2.7.1 nebo vyšší), ale pro aplikace cílené na .NET Core 2,0 nebo vyšší.
 - PerfCounters se podporují, pokud je aplikace spuštěná kdekoli (Linux, Windows, App Service pro Linux, kontejnery atd.) v nejnovějších verzích (tj. AspNetCore SDK verze 2.8.0 nebo vyšší), ale jenom pro aplikace cílené na .NET Core 2,0 nebo vyšší.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Live Metrics Stream používá jiné IP adresy než jiné telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](./ip-addresses.md) v bráně firewall otevřené. Také ověřte, zda jsou v bráně firewall serverů otevřeny [Odchozí porty pro Live Metrics Stream](./ip-addresses.md#outgoing-ports) .
 

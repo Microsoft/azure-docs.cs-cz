@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
 ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99475739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TravelPerk
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TravelPerk s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TravelPerk svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

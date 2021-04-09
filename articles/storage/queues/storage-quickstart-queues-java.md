@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
 ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97588212"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rychlý Start: V12 klientské knihovny pro Azure Queue Storage pro Java
@@ -35,7 +35,7 @@ Další prostředky:
 - [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
 - [ukázky](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší
 - [Apache Maven](https://maven.apache.org/download.cgi)

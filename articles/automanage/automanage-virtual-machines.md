@@ -10,10 +10,10 @@ ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
 ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101643510"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
@@ -34,7 +34,7 @@ Po připojení virtuálních počítačů k Azure automanage je každá služba 
 
 Azure automanage také automaticky monitoruje při zjištění posunu a oprav. To znamená, že pokud je váš virtuální počítač připojen do Azure automanage, nebudeme ho konfigurovat jenom na osvědčené postupy Azure, ale monitoruje váš počítač, aby se zajistilo, že bude nadále dodržovat tyto osvědčené postupy napříč celým životním cyklem. Pokud váš virtuální počítač posune nebo odchyluje od těchto postupů (například pokud je služba offboarded), Opravme ji a odešleme váš počítač zpátky do požadovaného stavu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před tím, než se pokusíte povolit službu Azure na virtuálních počítačích, je třeba zvážit několik požadavků.
 

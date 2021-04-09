@@ -100,7 +100,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -112,7 +112,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k cukru CRM.
 
@@ -124,13 +124,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-sugar-crm-sso"></a>Konfigurace jednotného přihlašování pro cukr CRM
+## <a name=&quot;configure-sugar-crm-sso&quot;></a>Konfigurace jednotného přihlašování pro cukr CRM
 
 1. V jiném okně webového prohlížeče se přihlaste k webu cukr CRM společnosti jako správce.
 
 1. Přejít na **správce**.
 
-    ![Správce](./media/sugarcrm-tutorial/ic795888.png "Správce")
+    ![Správce](./media/sugarcrm-tutorial/ic795888.png &quot;Správce")
 
 1. V části **Správa** klikněte na **Správa hesel**.
 
