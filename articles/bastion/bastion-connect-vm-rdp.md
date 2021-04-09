@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521526"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Připojení k virtuálnímu počítači s Windows pomocí Azure bastionu
@@ -20,7 +20,7 @@ Pomocí Azure bastionu se můžete bezpečně a bez problémů připojit k virtu
 
 Azure bastionu poskytuje zabezpečené připojení ke všem virtuálním počítačům ve virtuální síti, ve které se zřídí. Použití Azure bastionu chrání vaše virtuální počítače před vystavení portů RDP/SSH na vnějším světě a zároveň zajišťuje zabezpečený přístup pomocí protokolu RDP/SSH. Další informace najdete v tématu [co je Azure bastionu?](bastion-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ověřte, že jste splnili následující kritéria:
 
@@ -35,7 +35,7 @@ Než začnete, ověřte, že jste splnili následující kritéria:
 * Porty: pro připojení k virtuálnímu počítači s Windows musíte na svém VIRTUÁLNÍm počítači s Windows otevřít následující porty:
   * Příchozí porty: RDP (3389)
 
-## <a name="connect"></a><a name="rdp"></a>Připojit
+## <a name="connect"></a><a name="rdp"></a>Síti
 
 [!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
  

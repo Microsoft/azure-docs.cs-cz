@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
 ms.openlocfilehash: f4e34e850391696506beed9f6f386f85528dff24
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92283895"
 ---
 Pokud jste vybrali některý z virtuálních počítačů, které jsou předem nakonfigurované s operačním systémem (a volitelné další služby), už jste si vybrali standardní velikost virtuálního počítače Azure. Doporučený postup je spuštění řešení s předem nakonfigurovaným operačním systémem. Pokud ale instalujete operační systém ručně, musíte v imagi virtuálního počítače nastavit velikost primárního virtuálního pevného disku. Zajistěte, aby velikost disku operačního systému byla v mezích pro Linux nebo Windows.

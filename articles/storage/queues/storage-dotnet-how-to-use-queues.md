@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d54b8f15c90aa8f6ffcc04453fee0349e501f47d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97585747"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s Azure Queue Storage pomocí rozhraní .NET
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte, jak napsat kód .NET pro některé běžné scénář
 
 **Odhadovaný čas dokončení:** 45 minut
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [Účet Azure Storage](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)

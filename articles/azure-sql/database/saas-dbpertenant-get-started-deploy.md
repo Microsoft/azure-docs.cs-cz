@@ -128,7 +128,7 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
 
     Části předchozího formátu jsou vysvětleny v následující tabulce.
 
-    | Část adresy URL        | Popis       |
+    | Část adresy URL        | Description       |
     | :-------------- | :---------------- |
     | události. Wingtip-DPT | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta (*-SA*) nebo *víceklientské databáze* (*-Mt*). |
     | . *&lt; Uživatel &gt;* | *AF1* v příkladu. |

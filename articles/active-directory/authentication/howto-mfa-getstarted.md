@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861302"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Plánování nasazení Multi-Factor Authentication služby Azure AD
@@ -31,7 +31,7 @@ K rychlému zobrazení Multi-Factor Authentication Azure AD v akci a pak se vra�
 > [!div class="nextstepaction"]
 > [Povolení vícefaktorového ověřování Azure AD](tutorial-enable-azure-mfa.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením nasazení Multi-Factor Authentication služby Azure AD existují nezbytné položky, které byste měli vzít v úvahu.
 
