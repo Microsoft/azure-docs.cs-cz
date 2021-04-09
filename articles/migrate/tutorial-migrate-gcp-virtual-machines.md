@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
 ms.openlocfilehash: 12b8e30b0107b6b008cbd6467ada7c2d44f5e6d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98871634"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Zjišťování, vyhodnocení a migrace virtuálních počítačů Google Cloud Platform (GCP) do Azure
@@ -61,7 +61,7 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
 
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Zajistěte, aby virtuální počítače s GCP, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s GCP se považují za účely migrace jako fyzické. Přečtěte si [podporované operační systémy a verze jádra](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Ke kontrole verzí operačního systému a jádra pro virtuální počítače se systémem Linux můžete použít standardní příkazy, jako je *hostnamectl* nebo *uname-a* .  Doporučujeme provést test, abyste ověřili, jestli virtuální počítač funguje podle očekávání, než budete pokračovat v rámci aktuální migrace.
 - Zajistěte, aby virtuální počítače s GCP splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.

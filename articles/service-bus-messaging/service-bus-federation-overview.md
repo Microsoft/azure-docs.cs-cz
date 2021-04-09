@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled replikace událostí a federace m
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880823"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>Replikace zpráv a federace mezi oblastmi

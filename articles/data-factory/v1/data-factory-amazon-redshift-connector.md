@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100377546"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
@@ -29,7 +29,7 @@ Data Factory aktuálně podporuje pouze přesun dat z Amazon RedShift do [podpor
 > [!TIP]
 > Pokud chcete dosáhnout nejlepšího výkonu při kopírování velkých objemů dat z Amazon RedShift, zvažte použití integrovaného příkazu RedShift **Unload** prostřednictvím služby Amazon Simple Storage Service (Amazon S3). Podrobnosti najdete v tématu [použití uvolnění ke kopírování dat z Amazon RedShift](#use-unload-to-copy-data-from-amazon-redshift).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Pokud přesouváte data do místního úložiště dat, nainstalujte [Správa dat bránu](data-factory-data-management-gateway.md) na místní počítač. Udělte bráně přístup ke clusteru Amazon RedShift pomocí IP adresy místního počítače. Pokyny najdete v tématu [autorizace přístupu ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Pokud chcete přesunout data do úložiště dat Azure, přečtěte si část [výpočetní IP adresa a rozsahy SQL používané datacentry Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 

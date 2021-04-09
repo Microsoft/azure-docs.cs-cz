@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/02/2021
 ms.author: victorh
 ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97854906"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
@@ -26,7 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 - Upravte back-end fond a přidejte do něj App Service.
 - Upravit nastavení HTTP s povoleným přepínačem vybrat hostitele
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Application Gateway: Vytvořte Aplikační bránu bez cíle back-end fondu. Další informace najdete v tématu [rychlý Start: směrování webového provozu pomocí Azure Application Gateway-Azure Portal](quick-create-portal.md)
 

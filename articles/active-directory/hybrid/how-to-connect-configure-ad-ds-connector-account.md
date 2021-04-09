@@ -13,10 +13,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96349935"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu konektoru služby AD DS 
@@ -92,13 +92,13 @@ Můžete také nastavit oprávnění pro konkrétní organizační jednotku nebo
 
 Výjimkou těchto běžných parametrů je `Set-ADSyncRestrictedPermissions` rutina, která se používá k nastavení oprávnění pro účet služba AD DSového konektoru a `Set-ADSyncPasswordHashSyncPermissions` rutina, protože oprávnění požadovaná pro synchronizaci hodnoty hash hesla se nastavují jenom v kořenu domény, takže tato rutina nezahrnuje `-ObjectDN` `-SkipAdminSdHolders` parametry nebo.
 
-### <a name="determine-your-ad-ds-connector-account"></a>Určení účtu konektoru služba AD DS 
+### <a name="determine-your-ad-ds-connector-account&quot;></a>Určení účtu konektoru služba AD DS 
 V případě, že je již Azure AD Connect nainstalován a chcete zjistit, co je účet služba AD DS Connector, který je aktuálně používán Azure AD Connect, můžete spustit rutinu: 
 
 ``` powershell
 Get-ADSyncADConnectorAccount 
 ```
-### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Vyhledání objektů služba AD DS s děděním oprávnění zakázáno 
+### <a name=&quot;locate-ad-ds-objects-with-permission-inheritance-disabled&quot;></a>Vyhledání objektů služba AD DS s děděním oprávnění zakázáno 
 V případě, že chcete zjistit, zda služba AD DS objekt s děděním oprávnění zakázán, můžete spustit: 
 
 ``` powershell
@@ -110,16 +110,16 @@ Ve výchozím nastavení tato rutina bude hledat pouze organizační jednotky s 
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -ObjectClass * 
 ```
  
-### <a name="view-ad-ds-permissions-of-an-object"></a>Zobrazení služba AD DS oprávnění objektu 
+### <a name=&quot;view-ad-ds-permissions-of-an-object&quot;></a>Zobrazení služba AD DS oprávnění objektu 
 Pomocí níže uvedené rutiny můžete zobrazit seznam oprávnění aktuálně nastavených pro objekt služby Active Directory zadáním jeho rozlišujícího typu: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
 ```
 
-## <a name="configure-ad-ds-connector-account-permissions"></a>Konfigurace oprávnění účtu konektoru služby AD DS 
+## <a name=&quot;configure-ad-ds-connector-account-permissions&quot;></a>Konfigurace oprávnění účtu konektoru služby AD DS 
  
-### <a name="configure-basic-read-only-permissions"></a>Konfigurace základních oprávnění Read-Only 
+### <a name=&quot;configure-basic-read-only-permissions&quot;></a>Konfigurace základních oprávnění Read-Only 
 Chcete-li nastavit základní oprávnění jen pro čtení pro účet služba AD DSho konektoru, když nepoužíváte žádnou Azure AD Connect funkci, spusťte příkaz: 
 
 ``` powershell
@@ -148,8 +148,8 @@ Tato rutina nastaví následující oprávnění:
 |Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Podřízené objekty kontaktu| 
 
  
-### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurace služby MS-DS-Consistency-GUID oprávnění 
-Pokud chcete nastavit oprávnění pro účet konektoru služba AD DS při použití atributu ms-DS-Consistency-GUID jako zdrojového ukotvení (označovaného taky jako možnost "nechat Azure spravovat zdrojovou kotvu pro mě"), spusťte: 
+### <a name=&quot;configure-ms-ds-consistency-guid-permissions&quot;></a>Konfigurace služby MS-DS-Consistency-GUID oprávnění 
+Pokud chcete nastavit oprávnění pro účet konektoru služba AD DS při použití atributu ms-DS-Consistency-GUID jako zdrojového ukotvení (označovaného taky jako možnost &quot;nechat Azure spravovat zdrojovou kotvu pro mě"), spusťte: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 

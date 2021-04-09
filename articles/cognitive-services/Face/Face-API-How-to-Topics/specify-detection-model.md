@@ -12,10 +12,10 @@ ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102425766"
 ---
 # <a name="specify-a-face-detection-model"></a>Určení modelu detekce obličeje
@@ -28,7 +28,7 @@ Přečtěte si, kde se dozvíte, jak určit model detekce obličeje v určitých
 
 Pokud si nejste jistí, jestli byste měli použít nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) a vyhodnoťte nový model a porovnejte výsledky pomocí aktuální datové sady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Měli byste být obeznámeni s konceptem rozpoznávání obličeje AI. Pokud ne, přečtěte si koncepční Průvodce rozpoznáváním obličeje nebo průvodce postupy:
 

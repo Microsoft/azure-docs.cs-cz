@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98730652"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Kurz nasazení virtuálního počítače F5 BIG-IP Virtual Edition ve službě Azure IaaS pro zajištění zabezpečeného hybridního přístupu
@@ -26,7 +26,7 @@ Tento kurz vás provede koncovým procesem nasazení verze BIG-IP vitural Editio
 
 - Pracovní instance, která se má použít k testování nových aktualizací systému BIG-IP a oprav hotfix
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předchozí prostředí BIG-IP s velkým objemem adres nebo znalostí se ale nedoporučuje, ale doporučujeme, abyste familiarizingi pomocí [terminologie F5 Big-IP](https://www.f5.com/services/resources/glossary). Nasazení služby BIG-IP v Azure pro službu SHA vyžaduje:
 

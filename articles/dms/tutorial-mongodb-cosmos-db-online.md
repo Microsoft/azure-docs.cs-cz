@@ -13,10 +13,10 @@ ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 02/03/2021
 ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101715662"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Kurz: migrace MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB online pomocí DMS
@@ -48,7 +48,7 @@ V tomto kurzu migrujete datovou sadu v MongoDB hostovaném na virtuálním poč�
 
 Tento článek popisuje online migraci z MongoDB Azure Cosmos DB a rozhraní API pro MongoDB. Offline migrace najdete v článku [migrace MongoDB do Azure Cosmos DB rozhraní API pro MongoDB v režimu offline pomocí DMS](tutorial-mongodb-cosmos-db.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

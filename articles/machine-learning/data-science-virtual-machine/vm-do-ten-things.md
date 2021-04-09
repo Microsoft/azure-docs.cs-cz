@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101657396"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Datové vědy s Data Science Virtual Machine Windows
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datov
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Potřebujete předplatné Azure. Můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 * Pokyny pro zřízení Data Science Virtual Machine v Azure Portal jsou k dispozici v [tématu Vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
@@ -155,7 +155,7 @@ Další informace o tom, jak pomocí Gitu pracovat s úložištěm GitHubu, najd
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Azure Blob Storage je spolehlivá, ekonomická služba pro cloudové úložiště pro velké a malé objemy dat. Tato část popisuje, jak můžete přesouvat data do úložiště objektů BLOB a přistupovat k datům uloženým v objektu blob Azure.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 * Vytvořte účet Azure Blob Storage z [Azure Portal](https://portal.azure.com).
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 0ddcb239ba106bcdc2f0a29d68eb395876fadc06
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100384108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services"></a>Kurz: Azure Active Directory integrace s Amazon Web Services
@@ -45,7 +45,7 @@ Doporučujeme *, abyste nepřipojili* jednu aplikaci AWS ke všem účtům AWS, 
 
 * Všechny účty AWS používají stejný soubor XML s federačními metadaty. V době, kdy se změna certifikátu aktualizuje, může být aktualizace certifikátu na všech účtech AWS ve stejnou dobu obrovským cvičením.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s AWS potřebujete následující položky:
 

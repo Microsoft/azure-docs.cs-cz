@@ -4,10 +4,10 @@ description: Analytické dotazy se dají zobrazit v Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584317"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
@@ -77,7 +77,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky Power BI Desktop se zvýrazněnou změnou názvu](./media/export-power-bi/changetitle.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Může dojít k chybám souvisejícím s přihlašovacími údaji nebo velikostí datové sady. Zde jsou některé informace o tom, co dělat o těchto chybách.
 

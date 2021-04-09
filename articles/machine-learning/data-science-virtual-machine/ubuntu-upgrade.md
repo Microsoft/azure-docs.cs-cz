@@ -10,17 +10,17 @@ ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101659456"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Upgrade prostředí Data Science Virtual Machine na Ubuntu 18.04
 
 Pokud máte Data Science Virtual Machine, na kterém běží starší verze, jako je například Ubuntu 16,04 nebo CentOS, měli byste migrovat DSVM na Ubuntu 18,04. Při migraci se zajistí, že získáte nejnovější opravy operačního systému, ovladače, předinstalovaný software a verze knihoven. V tomto dokumentu se dozvíte, jak migrovat z dřívějších verzí Ubuntu nebo z CentOS. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Znalost pomocí SSH a příkazového řádku pro Linux
 

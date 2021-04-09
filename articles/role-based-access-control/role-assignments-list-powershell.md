@@ -15,10 +15,10 @@ ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556939"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Vypsání přiřazení rolí Azure pomocí Azure PowerShell
@@ -30,7 +30,7 @@ ms.locfileid: "100556939"
 > [!NOTE]
 > Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [PowerShell v Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 

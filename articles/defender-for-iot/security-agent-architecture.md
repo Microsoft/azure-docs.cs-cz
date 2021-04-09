@@ -4,10 +4,10 @@ description: V tomto rychlém startu se naučíte pochopit architekturu agenta z
 ms.topic: quickstart
 ms.date: 01/24/2021
 ms.openlocfilehash: 2e7d7d1e6770667b1ce966724611cc003116409d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778504"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Rychlý Start: Referenční architektura agenta zabezpečení
@@ -31,7 +31,7 @@ Agenti zabezpečení služby IoT pro IoT se vyvíjeli jako open source projekty 
 - [Defender pro agenta založeného na IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Defender pro agenta založeného na systému IoT C#](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Žádné
 

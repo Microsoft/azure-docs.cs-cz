@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak integrovat Confluence SAML SSO Microsoftu pomocí
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian Confluence. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace Confluence. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování Confluence SAML od Microsoftu budete potřebovat následující položky:
 
