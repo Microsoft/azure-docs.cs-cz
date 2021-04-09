@@ -3,12 +3,12 @@ title: Replikace Azure Stackch virtuálních počítačů do Azure pomocí Azure
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96016896"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728381"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure Stack do Azure
 
@@ -56,7 +56,7 @@ Replikace funguje následujícím způsobem:
 7. Replikované počítače komunikují s konfiguračním serverem (port HTTPS 443 příchozí, pro správu replikací. Počítače odesílají data replikace na procesový Server (port HTTPS 9443 příchozí – lze upravit).
 8. Provoz se přes internet replikuje do veřejných koncových bodů úložiště Azure. Alternativně můžete použít veřejný partnerský vztah Azure ExpressRoute. Přenos replikačních dat přes síť site-to-site VPN z místního serveru do Azure není podporovaný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je seznam toho, co potřebujete k nastavení tohoto scénáře.
 
@@ -314,7 +314,7 @@ Pak spusťte převzetí služeb při selhání následujícím způsobem:
 
 ### <a name="fail-back-to-azure-stack"></a>Navrácení služeb po obnovení do Azure Stack
 
-Když je vaše primární lokalita znovu spuštěná, můžete navrátit služby po obnovení z Azure do Azure Stack. Provedete to podle kroků uvedených [tady](/azure-stack/operator/site-recovery-failback?view=azs-2005).
+Když je vaše primární lokalita znovu spuštěná, můžete navrátit služby po obnovení z Azure do Azure Stack. Provedete to podle kroků uvedených [tady](/azure-stack/operator/site-recovery-failback).
 
 ## <a name="conclusion"></a>Závěr
 

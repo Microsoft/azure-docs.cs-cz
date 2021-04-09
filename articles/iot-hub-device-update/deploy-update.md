@@ -7,17 +7,17 @@ ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 0a11c8e8946229941c1fe60f7f2ce84d9fadb2ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101679238"
 ---
 # <a name="deploy-an-update-using-device-update-for-iot-hub"></a>Nasazení aktualizace pomocí aktualizace zařízení pro IoT Hub
 
 Přečtěte si, jak nasadit aktualizaci do zařízení IoT pomocí aktualizace zařízení pro IoT Hub.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). Doporučujeme pro IoT Hub použít úroveň S1 (Standard) nebo vyšší. 
 * [Pro zřízené zařízení se úspěšně naimportovala aspoň jedna aktualizace.](import-update.md) 

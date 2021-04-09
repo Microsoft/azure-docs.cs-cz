@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.custom: ''
 ms.openlocfilehash: aad9419fdb139ff615bfe07075be78a2ca4ee4ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102489068"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
@@ -48,7 +48,7 @@ Když konfigurujete šifrování registru pomocí klíče spravovaného zákazn�
 
 Podrobnosti najdete v části [Výběr ID klíče s nebo bez verze klíče](#choose-key-id-with-or-without-key-version) a [verze aktualizace klíče](#update-key-version)dále v tomto článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít kroky Azure CLI v tomto článku, potřebujete Azure CLI verze 2.2.0 nebo novější, nebo Azure Cloud Shell. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -233,7 +233,7 @@ V závislosti na klíči, který se používá k zašifrování registru, je vý
     "lastKeyRotationTimestamp": xxxxxxxx
     "versionedKeyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789...",
   },
-  "status": "enabled"
+  "status&quot;: &quot;enabled"
 }
 ```
 

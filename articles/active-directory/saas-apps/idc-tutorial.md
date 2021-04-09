@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: jeedes
 ms.openlocfilehash: 20f5a34208dbf4a6c0f84567a75673b8eeeb5e79
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104720317"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s IDC
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat IDC s Azure Active Directory (Azure AD
 * Umožněte uživatelům, aby se automaticky přihlásili k IDC pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

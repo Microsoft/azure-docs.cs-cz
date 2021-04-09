@@ -10,10 +10,10 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102501563"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
@@ -203,9 +203,9 @@ PŘIHLAŠOVACÍ jméno na úrovni serveru musí odpovídat celé cestě k účtu
 
 | Externí zdroj dat       | Předpona | Cesta k účtu úložiště                                |
 | -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
-| Azure Data Lake Storage Gen1 | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Storage Gen2 | https  | <storage_account>. dfs.core.windows.net              |
+| Azure Blob Storage         | HTTPS  | <storage_account>. blob.core.windows.net             |
+| Azure Data Lake Storage Gen1 | HTTPS  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen2 | HTTPS  | <storage_account>. dfs.core.windows.net              |
 
 Přihlašovací údaje v oboru serveru umožňují přístup k úložišti Azure pomocí následujících typů ověřování:
 
