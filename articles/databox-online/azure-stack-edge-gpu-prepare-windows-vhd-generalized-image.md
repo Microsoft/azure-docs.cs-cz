@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/18/2021
 ms.author: alkohli
 ms.openlocfilehash: 978099accd57d15c750a27f77b2e220f569a2dd0
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104962485"
 ---
 # <a name="use-generalized-image-from-windows-vhd-to-create-a-vm-image-for-your-azure-stack-edge-pro-device"></a>Vytvoření image virtuálního počítače pro zařízení Azure Stack Edge pro pomocí generalizované image z Windows VHD
@@ -52,7 +52,7 @@ Pracovní postup vysoké úrovně pro přípravu virtuálního pevného disku Wi
 1. K nasazení virtuálních počítačů na zařízení použijte zobecněnou image. Další informace najdete v tématu [nasazení virtuálního počítače přes Azure Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md) nebo [nasazení virtuálního počítače přes PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než připravíte virtuální pevný disk Windows pro použití jako zobecněnou image na Azure Stack Edge, ujistěte se, že:
 

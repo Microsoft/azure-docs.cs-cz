@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
 ms.openlocfilehash: 9a3117b64c516120f8556b7b63b24e5ef906f973
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PagerDuty
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat PagerDuty s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k PagerDuty svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -95,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -107,7 +107,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PagerDuty.
 
@@ -119,13 +119,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-pagerduty-sso"></a>Konfigurace jednotného přihlašování PagerDuty
+## <a name=&quot;configure-pagerduty-sso&quot;></a>Konfigurace jednotného přihlašování PagerDuty
 
 1. V jiném okně webového prohlížeče se přihlaste k webu PagerDuty společnosti jako správce.
 
 2. V nabídce v horní části klikněte na **Nastavení účtu**.
 
-    ![Nastavení účtu](./media/pagerduty-tutorial/ic778535.png "Nastavení účtu")
+    ![Nastavení účtu](./media/pagerduty-tutorial/ic778535.png &quot;Nastavení účtu")
 
 3. Klikněte na **jednotné přihlašování**.
 

@@ -4,10 +4,10 @@ description: Popisuje rozdíl mezi operacemi řídicí roviny a roviny dat. Oper
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105544090"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Rovina ovládacího prvku Azure a rovina dat

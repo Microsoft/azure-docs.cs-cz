@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
 ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550423"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace nezměněných cloudů pro Automatické zřizování uživatelů
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci obou kroků, kter�
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Fort změna cloudu
 > * [Jednotné přihlašování](fortes-change-cloud-tutorial.md) pro Fort změny v cloudu (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

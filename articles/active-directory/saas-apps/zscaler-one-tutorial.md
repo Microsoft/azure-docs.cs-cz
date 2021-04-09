@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 3f825e247aff5c8fc53eb8610f33bd8e0b7fce3d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735628"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Kurz: Azure Active Directory integrace s Zscaler 1
@@ -28,7 +28,7 @@ Integrace Zscaler s jednou pomocí Azure AD vám poskytne následující výhody
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat integraci Azure AD s Zscaler, budete potřebovat následující položky:
 
@@ -189,14 +189,14 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. Klikněte na tlačítko **aktivovat**.
 
-## <a name="configuring-proxy-settings"></a>Konfigurace nastavení proxy serveru
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurace nastavení proxy serveru v Internet Exploreru
+## <a name="configuring-proxy-settings&quot;></a>Konfigurace nastavení proxy serveru
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Konfigurace nastavení proxy serveru v Internet Exploreru
 
 1. Spusťte **aplikaci Internet Explorer**.
 
 2. V nabídce **nástroje** vyberte **Možnosti Internetu** . otevře se dialogové okno **Možnosti Internetu** .   
 
-    ![Možnosti Internetu](./media/zscaler-one-tutorial/ic769492.png "Možnosti Internetu")
+    ![Možnosti Internetu](./media/zscaler-one-tutorial/ic769492.png &quot;Možnosti Internetu")
 
 3. Klikněte na kartu **připojení** .   
 

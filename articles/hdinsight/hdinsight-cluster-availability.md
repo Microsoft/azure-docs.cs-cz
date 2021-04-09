@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: dcbe44defeb89ad2f67833b263e5f4983070a46c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104863526"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí Apache Ambari ve službě Azure HDInsight
@@ -52,7 +52,7 @@ Chcete-li zobrazit seznam definic výstrah a jejich stavů, vyberte kartu **výs
 
 Ambari nabízí mnoho předdefinovaných výstrah souvisejících s dostupností, včetně:
 
-| Název výstrahy                        | Popis   |
+| Název výstrahy                        | Description   |
 |---|---|
 | Shrnutí stavu datauzel           | Tato výstraha na úrovni služby se aktivuje, pokud existují chybné datauzly.|
 | Stav vysoké dostupnosti NameNode | Tato výstraha na úrovni služby se aktivuje, pokud není spuštěný aktivní NameNode nebo pohotovostní NameNode.|

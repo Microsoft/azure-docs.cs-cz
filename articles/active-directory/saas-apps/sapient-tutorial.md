@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/10/2021
 ms.author: jeedes
 ms.openlocfilehash: 65713a27f16a2af7cab5c389c3e9793d0d44ff8c
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104956240"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sapient"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Sapient
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Sapient s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Sapient svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

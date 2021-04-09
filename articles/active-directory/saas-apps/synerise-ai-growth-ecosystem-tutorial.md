@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: jeedes
 ms.openlocfilehash: 0ffc6543a2597e39470c0d4aff86e7d5a1631d69
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736622"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synerise-ai-growth-operating-system"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s růstovým operačním systémem Synerise AI
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Synerise s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Synerise svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
