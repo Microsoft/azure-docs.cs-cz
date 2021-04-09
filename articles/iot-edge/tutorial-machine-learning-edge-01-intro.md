@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103463234"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
@@ -37,7 +37,7 @@ V této části kurzu se zabývá:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 

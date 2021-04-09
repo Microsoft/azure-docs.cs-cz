@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779932"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932450"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -24,7 +24,7 @@ Tento článek vás provede procesem vytvoření koncových bodů a tras pomocí
 
 Alternativně můžete také spravovat koncové body a trasy pomocí [rozhraní API pro směrování událostí](/rest/api/digital-twins/dataplane/eventroutes), sady [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)nebo rozhraní příkazového [řádku Azure Digital revlákens CLI](how-to-use-cli.md). Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
@@ -153,7 +153,9 @@ Pokud chcete přidat filtr událostí při vytváření trasy události, použij
 Můžete buď vybrat některé z běžných možností filtru Basic, nebo použít rozšířené možnosti filtru k psaní vlastních filtrů.
 
 >[!NOTE]
-> Filtry rozlišují **Velká** a malá písmena a musí se shodovat s případem datové části (což nemusí nutně odpovídat modelu Case).
+> Filtry rozlišují **Velká** a malá písmena a musí se shodovat s případem datové části. 
+>
+> Pro filtry telemetrie to znamená, že velká a malá písmena musí odpovídat velikosti písmen v telemetrii odesílané zařízením, a nemusí nutně znamenat velikost písmen definované v modelu vlákna.
 
 #### <a name="use-the-basic-filters"></a>Použít základní filtry
 

@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f4a8e8f26e88a73fc73c309ef336813282589f3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 336059007cfca40a74ad5a4395c6f9a59215bb58
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488172"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105825777"
 ---
 # <a name="quickstart-get-started-with-ui-framework-base-components"></a>Rychlý Start: Začínáme se základními komponentami uživatelského rozhraní
 
@@ -25,7 +25,7 @@ Komponenty rozhraní uživatelského rozhraní jsou dodávány ve dvou charakter
 - **Základní komponenty** reprezentují diskrétní možnosti komunikace; jsou to základní stavební kameny, které se dají použít k vytváření komplexních komunikačních prostředí. 
 - **Složené komponenty** jsou uživatelsky funkční prostředí pro běžné komunikační scénáře, které byly sestaveny pomocí **základních komponent** jako stavební bloky a zabalené, aby je bylo možné snadno integrovat do aplikací.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (doporučeno uzlem 12).
@@ -52,7 +52,7 @@ Na konci tohoto procesu by měla být ve složce úplná aplikace `my-app` . V t
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Pomocí `npm install` příkazu nainstalujte pro JavaScript službu Azure Communication Services volání klientské knihovny. Přesuňte poskytnuté tarballu (Private Preview) do adresáře moje aplikace.
+Pomocí `npm install` příkazu nainstalujete službu Azure Communication Services, která volá sadu SDK pro JavaScript. Přesuňte poskytnuté tarballu (Private Preview) do adresáře moje aplikace.
 
 ```console
 
@@ -76,7 +76,7 @@ npm run start
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny uživatelského rozhraní služby Azure Communication Services:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce sady SDK uživatelského rozhraní služby Azure Communication Services:
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

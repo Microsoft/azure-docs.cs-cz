@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9a7028dfaeb94e87366de7acfa8cebc4c2f4c767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac359e73ae71fd2163fb178caab4a2b5f908a008
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746822"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057452"
 ---
 # <a name="extend-the-iot-plug-and-play-bridge"></a>Rozšiřování technologie Plug and Play mostu IoT
 [Most iot technologie Plug and Play](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) umožňuje připojit stávající zařízení připojená k bráně ke službě IoT Hub. Pomocí tohoto mostu namapujete rozhraní IoT technologie Plug and Play na připojená zařízení. Rozhraní IoT technologie Plug and Play definuje telemetrii, kterou zařízení odesílá, vlastnosti synchronizované mezi zařízením a cloudem a příkazy, na které zařízení reaguje. Můžete nainstalovat a nakonfigurovat aplikaci Open-Source mostu v bránách systému Windows nebo Linux. Most se navíc dá spustit jako modul modulu runtime Azure IoT Edge.

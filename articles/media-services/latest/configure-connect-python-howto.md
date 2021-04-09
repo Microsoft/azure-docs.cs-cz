@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: de78008a4645690cfc900f77670204bb892daf51
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24e2ba4027dc818256dc9572f697fe7ec5a5a56b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105042964"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960686"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Připojení k Media Services V3 API – Python
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 P
 
 - Stažení Pythonu z [Python.org](https://www.python.org/downloads/)
 - Ujistěte se, že jste nastavili `PATH` proměnnou prostředí.
-- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- [Vytvořte účet Media Services](./account-create-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 - Postupujte podle kroků v tématu [rozhraní API pro přístup k](./access-api-howto.md) výběru metody ověřování instančního objektu. Poznamenejte si ID předplatného ( `SubscriptionId` ), ID klienta aplikace (), `AadClientId` ověřovací klíč ( `AadSecret` ) a ID tenanta ( `AadTenantId` ), které budete potřebovat v pozdějších krocích.
 
 > [!IMPORTANT]

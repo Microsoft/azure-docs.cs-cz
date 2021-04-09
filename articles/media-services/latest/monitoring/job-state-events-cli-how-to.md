@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47d079aa5038a5ef09df30f0561c258bfbf6a9f7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 967b509ff4832bb8c70c5802699d62f1b209c516
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609323"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959649"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Vytváření a sledování událostí Media Services pomocí Event Grid pomocí Azure CLI
 
@@ -27,14 +27,14 @@ Azure Event Grid je služba zpracování událostí pro cloud. Tato služba pou�
 
 V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí pro váš účet Azure Media Services. Potom můžete aktivovat události pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V tomto článku odesíláte události do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Nainstalujte a použijte rozhraní příkazového řádku místně. Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
     V současné době nejsou v Azure Cloud Shell správné příkazy rozhraní příkazového [řádku Media Services V3](/cli/azure/ams) . Doporučuje se používat rozhraní příkazového řádku místně.
 
-- [Vytvořte účet Media Services](../create-account-howto.md).
+- [Vytvořte účet Media Services](../account-create-how-to.md).
 
     Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
 

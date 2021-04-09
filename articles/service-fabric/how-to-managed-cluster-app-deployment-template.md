@@ -3,12 +3,12 @@ title: Nasazení aplikace spravovaného clusteru Service Fabric (Preview) pomoc�
 description: Nasaďte aplikaci do spravovaného clusteru Azure Service Fabric (Preview) pomocí šablony Azure Resource Manager.
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100642394"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728007"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>Nasazení aplikace spravovaného clusteru Service Fabric (Preview) pomocí šablony ARM
 
@@ -94,7 +94,7 @@ Ukázková aplikace obsahuje [šablony Azure Resource Manager](https://github.co
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Název clusteru, do kterého nasazujete | SF – cluster123                                                |                                                              |
 | aplikace            | Název aplikace                 | Hlasování                                                       |
-| verze    | ID prostředku, typ aplikace a verze aplikace       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | Musí odpovídat ApplicationManifest.xml                 |              |
+| verze    | ID prostředku, typ aplikace a verze aplikace       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | Musí odpovídat ApplicationManifest.xml                 |
 | serviceName            | Název služby         | VotingWeb                                             | Musí být ve formátu ServiceType            |
 | serviceTypeName        | Název typu služby                | VotingWebType                                                    | Musí odpovídat ServiceManifest.xml                 |
 | appPackageUrl          | Adresa URL pro úložiště objektů BLOB aplikace     | https: \/ /servicefabricapps.blob.Core.Windows.NET/Apps/voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů BLOB (postup nastavení adresy URL je popsán dále v článku) |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016759"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067397"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -117,7 +117,7 @@ Platí následující důležité informace:
 Následující články popisují další kroky, které vám pomohou začít s ochranou obsahu:
 
 * [Ochrana pomocí šifrování úložiště](media-services-rest-storage-encryption.md)
-* [Ochrana pomocí šifrování AES](media-services-protect-with-aes128.md)
+* [Ochrana pomocí šifrování AES](media-services-playready-license-template-overview.md)
 * [Ochrana pomocí PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
 * [Ochrana pomocí FairPlay](media-services-protect-hls-with-FairPlay.md)
 

@@ -5,21 +5,21 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 8e6ceebc9e92dabe66baeb9aeff0ae9692e2bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101099149"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067550"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Co je pravidlo sady pro Azure front-end Standard/Premium (Preview)?
 
 > [!Note]
 > Tato dokumentace je určena pro Azure front-end Standard/Premium (Preview). Hledáte informace o frontách Azure na začátku? Podívejte se [sem](../front-door-overview.md).
 
-Sada pravidel je přizpůsobený modul pravidel, který seskupuje kombinaci pravidel do jedné sady, kterou můžete přidružit k více trasám. Sada pravidel umožňuje přizpůsobit způsob zpracování požadavků na hranici a způsob, jakým tyto požadavky zpracovávají přední dveře Azure.
+Sada pravidel je přizpůsobený modul pravidel, který seskupuje kombinaci pravidel do jedné sady. Můžete přidružit sadu pravidel s více trasami. Sada pravidel umožňuje přizpůsobit způsob zpracování požadavků na hranici a způsob, jakým tyto požadavky zpracovávají přední dveře Azure.
 
 > [!IMPORTANT]
 > Služba Azure front-in standard/Premium (Preview) je aktuálně ve verzi Public Preview.
@@ -60,16 +60,19 @@ Pomocí sady pravidel front-end pro Azure můžete vytvořit kombinaci konfigura
 
 Další omezení kvóty najdete v tématu [omezení a kvóty předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-* *Sada pravidel*: sada pravidel, která je přidružena k jedné nebo více [trasám](concept-route.md). Každá konfigurace je omezená na 25 pravidel. Můžete vytvořit až 10 konfigurací.
+* *Sada pravidel*: sada pravidel, která je přidružena k jedné nebo více [trasám](concept-route.md).
 
 * *Pravidlo sady pravidel*: pravidlo složené z až 10 podmínek shody a 5 akcí. Pravidla jsou místní pro sadu pravidel a nelze je exportovat pro použití v rámci sad pravidel. Uživatelé můžou vytvořit stejné pravidlo v několika sadách pravidel.
 
-* *Podmínka shody*: existuje mnoho podmínek shody, které lze využít k analýze příchozích požadavků. Pravidlo může obsahovat až 10 podmínek shody. Podmínky shody jsou vyhodnocovány pomocí operátoru **and** . *Regulární výraz je podporován v podmínkách*. Úplný seznam podmínek shody najdete v části [Podmínka sady pravidel](concept-rule-set-match-conditions.md).
+* *Podmínka shody*: existuje mnoho podmínek shody, které lze využít k analýze příchozích požadavků. Pravidlo může obsahovat až 10 podmínek shody. Podmínky shody jsou vyhodnocovány pomocí operátoru **and** . *Regulární výraz je podporován v podmínkách*. Úplný seznam podmínek shody najdete v [podmínkách shody sady pravidel](concept-rule-set-match-conditions.md).
 
 * *Akce*: akce určují, jak AFD zpracovává příchozí požadavky na základě podmínek porovnání. Můžete upravit chování ukládání do mezipaměti, upravit hlavičky žádosti a hlavičky odpovědí, provést přepsání adresy URL a přesměrování adresy URL. *Proměnné serveru jsou podporovány při akci*. Pravidlo může obsahovat až 10 podmínek shody. Je možné najít úplný seznam akcí, které lze provést v rámci [akcí sady pravidel](concept-rule-set-actions.md).
+
+## <a name="arm-template-support"></a>Podpora šablon ARM
+
+Sady pravidel lze konfigurovat pomocí Azure Resource Manager šablon. [Podívejte se na příklad šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). Chování můžete přizpůsobit pomocí fragmentů JSON nebo bicep, které jsou uvedené v příkladech dokumentace pro podmínky a [Akce](concept-rule-set-actions.md) [shody](concept-rule-set-match-conditions.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si, jak [vytvořit frontu Standard/Premium](create-front-door-portal.md).
 * Naučte se konfigurovat svoji první [sadu pravidel](how-to-configure-rule-set.md).
- 

@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 12e371dd24203625ab8987018bb223b532938e16
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 58a3aa073ea114c18db0082f48ae557fb00dd137
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495721"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728432"
 ---
 # <a name="reference-documentation-overview"></a>Přehled referenční dokumentace
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Následující tabulka podrobně popisuje dostupné balíčky komunikačních služeb spolu s odpovídající referenční dokumentaci:
 

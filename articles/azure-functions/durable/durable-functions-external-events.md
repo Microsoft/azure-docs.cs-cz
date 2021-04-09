@@ -4,12 +4,12 @@ description: Naučte se zpracovávat externí události v rozšíření Durable 
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99576325"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728483"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externích událostí v Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Funkce nástroje Orchestrator mají možnost čekat a naslouchat externím udál
 
 ## <a name="wait-for-events"></a>Počkat na události
 
-Metody [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.NET), `waitForExternalEvent` (JavaScript) a `wait_for_external_event` (Python) [vazby triggeru Orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
+Metody [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy&preserve-view=true) (.NET), `waitForExternalEvent` (JavaScript) a `wait_for_external_event` (Python) [vazby triggeru Orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,7 +230,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>Odesílání událostí
 
-Můžete použít metody [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.NET) nebo `raiseEventAsync` (JavaScript) k odeslání externí události do orchestrace. Tyto metody jsou zpřístupněny prostřednictvím vazby [klienta Orchestration](durable-functions-bindings.md#orchestration-client) . K odeslání externí události do orchestrace můžete také použít integrované [rozhraní HTTP API události vyvolání](durable-functions-http-api.md#raise-event) .
+Můžete použít metody [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy&preserve-view=true) (.NET) nebo `raiseEventAsync` (JavaScript) k odeslání externí události do orchestrace. Tyto metody jsou zpřístupněny prostřednictvím vazby [klienta Orchestration](durable-functions-bindings.md#orchestration-client) . K odeslání externí události do orchestrace můžete také použít integrované [rozhraní HTTP API události vyvolání](durable-functions-http-api.md#raise-event) .
 
 Vyvolaná událost zahrnuje *ID instance*, *EventName* a *eventData* jako parametry. Funkce Orchestrator zpracovává tyto události pomocí `WaitForExternalEvent` rozhraní API (.NET) nebo `waitForExternalEvent` (JavaScript). Aby bylo možné zpracovat událost, je nutné, aby se *EventName* shodovala na koncích odesílání i přijímání. Data události musí být také JSON-serializovatelný.
 

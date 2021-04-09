@@ -10,10 +10,10 @@ ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101693454"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder pomocí PowerShellu
@@ -23,7 +23,7 @@ Tento článek ukazuje, jak můžete vytvořit přizpůsobenou image Windows pom
 > [!CAUTION]
 > Azure image Builder je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb. Nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

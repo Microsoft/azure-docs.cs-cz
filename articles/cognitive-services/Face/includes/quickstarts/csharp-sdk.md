@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445369"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958330"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -22,12 +22,12 @@ Pomocí klientské knihovny obličeje pro .NET:
 
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvořit skupinu osob](#create-a-person-group)
+* [Vytvoření osoby](#create-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 
 [Referenční dokumentace](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Ukázky](/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
@@ -124,7 +124,7 @@ Níže uvedené fragmenty kódu ukazují, jak provádět následující úlohy p
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvořit skupinu osob](#create-a-person-group)
+* [Vytvoření osoby](#create-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -186,7 +186,7 @@ Následující kód vytiskne podrobnosti o shodě do konzoly:
 
 Operace identifikace přebírá obrázek osoby (nebo více lidí) a hledá identitu každé plošky v imagi (vyhledávání rozpoznávání obličeje). Porovnává každou zjištěnou plochu s **osobou**, databázi různých objektů **osob** , jejichž funkce obličeje jsou známy. Aby bylo možné operaci identifikace provést, musíte nejprve vytvořit a naučit pracovní samostatnou **osobu** .
 
-### <a name="create-a-person-group"></a>Vytvořit skupinu osob
+### <a name="create-a-persongroup"></a>Vytvoření osoby
 
 Následující kód vytvoří **osobu** , která má šest různých objektů **Person** . Přidružuje každou **osobu** k sadě ukázkových imagí a pak vlaky zaznamená, aby každou osobu rozpoznali vlastnostmi obličeje. Objekty **Person** a **Person** se používají při operacích ověřit, identifikovat a seskupit.
 

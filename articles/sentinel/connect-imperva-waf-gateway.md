@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: a37abf369d1f34dc8f4a27802dfad88dab79be44
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101698429"
 ---
 # <a name="connect-your-imperva-waf-gateway-appliance-to-azure-sentinel"></a>Připojení zařízení brány Imperva WAF k Azure Sentinel
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak připojit zařízení brány Imperva WAF ke slu�
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru Sentinel Azure.
 

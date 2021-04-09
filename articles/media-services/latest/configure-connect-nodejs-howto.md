@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216424"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960720"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k rozhraní Media Services V3 API – Node.js
 
@@ -27,12 +27,12 @@ ms.locfileid: "102216424"
 
 V tomto článku se dozvíte, jak se připojit ke službě Azure Media Services V3 node.js SDK pomocí metody přihlašování instančního objektu. Budete pracovat se soubory v úložišti ukázek *Media-Services-V3-Node-kurzy* . Ukázka *HelloWorld-ListAssets* obsahuje kód pro připojení a pak vypíše prostředky v účtu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Instalace Visual Studio Code.
 - Nainstalujte [Node.js](https://nodejs.org/en/download/).
 - Nainstalujte [TypeScript](https://www.typescriptlang.org/download).
-- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- [Vytvořte účet Media Services](./account-create-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 - Vytvořte instanční objekt pro vaši aplikaci. Viz [rozhraní API pro přístup](./access-api-howto.md).<br/>**Tip pro** Nechejte toto okno otevřené nebo zkopírujte všechno na kartě JSON do poznámkového bloku. 
 - Nezapomeňte získat nejnovější verzi sady [AZUREMEDIASERVICES SDK pro JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices).
 
