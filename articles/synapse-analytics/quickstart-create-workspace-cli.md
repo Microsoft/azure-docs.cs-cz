@@ -10,10 +10,10 @@ ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676460"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí Azure CLI
@@ -24,7 +24,7 @@ V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stažení a instalace [JQ](https://stedolan.github.io/jq/download/)a jednoduchého a flexibilního procesoru JSON příkazového řádku
 - [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md)

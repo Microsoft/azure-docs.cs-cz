@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: alkemper
 ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932757"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Framework
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nastavte si aplikaci .NET Framework pro aktualizaci konfigurace v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží do aplikace nejnovější konfiguraci.
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)

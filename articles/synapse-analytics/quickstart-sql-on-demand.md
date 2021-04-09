@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8607355069bbae5983239ddbd3e8752143f31497
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676344"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Rychlý Start: použití fondu SQL bez serveru
@@ -22,7 +22,7 @@ Synapse fond SQL bez serveru je služba dotazů bez serveru, která umožňuje s
 
 V tomto rychlém startu se zobrazí dotazování: CSV, Apache Parquet a soubory JSON.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyberte si klienta SQL pro vydávání dotazů:
 

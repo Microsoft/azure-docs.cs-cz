@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
 ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98732037"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s protokolem SSL VPN FortiGate
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat FortiGate SSL VPN s Azure Active Direc
 * Umožněte uživatelům, aby se automaticky přihlásili k FortiGate SSL VPN pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

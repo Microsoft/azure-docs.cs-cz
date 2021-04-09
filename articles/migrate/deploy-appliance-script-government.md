@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
 ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104775200"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
@@ -22,7 +22,7 @@ Podle tohoto článku nasaďte [zařízení Azure Migrate](./migrate-appliance-a
 > Možnost nasazení zařízení pomocí šablony (pro servery v prostředí VMware a prostředí technologie Hyper-V) není v Azure Government podporovaná.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém serveru nebo na virtualizovaném serveru.
 

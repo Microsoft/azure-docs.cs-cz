@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
 ms.openlocfilehash: 73a9d9c7ab321aebd615922e5d4395c0318e809c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100580448"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>Připojte řešení Proofpoint na vyžádání e-mailu (POD) do Azure Sentinel
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak připojit zařízení zabezpečení e-mailu Proo
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 

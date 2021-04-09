@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: baed7607c1d096aafae5c1d163b6b5e0844e8ad6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590371"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appsec-flow-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) pomocí jednotného přihlašování AppSec Flow
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování AppSec Flow
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k AppSec přihlašování ke službě Flow pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

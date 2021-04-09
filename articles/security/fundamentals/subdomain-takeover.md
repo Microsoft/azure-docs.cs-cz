@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
 ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389446"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
@@ -100,7 +100,7 @@ Nástroj podporuje prostředky Azure uvedené v následující tabulce. Nástroj
 
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Spusťte dotaz jako uživatel, který má:
 

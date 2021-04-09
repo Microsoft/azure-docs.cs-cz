@@ -4,10 +4,10 @@ description: Přečtěte si o integraci nasazení řešení Azure VMware v archi
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99062741"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků

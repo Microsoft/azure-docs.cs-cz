@@ -7,17 +7,17 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96930513"
 ---
 # <a name="azure-active-directory-authentication"></a>Ověřování služby Azure Active Directory
 
 Požadavky HTTP můžete ověřit pomocí `Bearer` schématu ověřování s tokenem získaným z Azure Active Directory (Azure AD). Tyto požadavky je nutné přenést přes protokol TLS (Transport Layer Security).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte přiřadit objekt zabezpečení, který se používá k vyžádání tokenu Azure AD pro jednu z platných [rolí konfigurace aplikace Azure](./rest-api-authorization-azure-ad.md).
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6fdc9c70d1c9fc67c38edfd794354f9e03321c73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro BitBucket
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat EasySSO pro BitBucket s Azure Active D
 * Umožněte uživatelům, aby se automaticky přihlásili k EasySSO pro BitBucket s účty Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující:
 

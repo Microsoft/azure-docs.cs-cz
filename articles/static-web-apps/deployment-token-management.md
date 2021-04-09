@@ -8,10 +8,10 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 1/31/2021
 ms.openlocfilehash: fe1edb2693993d02a705039c18b04c8d1b7b9725
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101744801"
 ---
 # <a name="reset-deployment-tokens-in-azure-static-web-apps-preview"></a>Resetování tokenů nasazení v Azure static Web Apps (Preview)
@@ -23,7 +23,7 @@ Za normálních okolností se nemusíte starat o token nasazení, ale tady jsou 
 * **Ohrožení bezpečnosti tokenů**: resetujte token, pokud je vystavený externí straně.
 * **Nasazení z samostatného úložiště GitHubu**: Pokud ručně nasazujete z samostatného úložiště GitHubu, musíte v novém úložišti nastavit token nasazení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Existující úložiště GitHub s nakonfigurovaným statickým Web Appsm Azure.
 - Pokud ho nemáte, přečtěte si téma [Vytvoření první statické aplikace](getting-started.md) .
