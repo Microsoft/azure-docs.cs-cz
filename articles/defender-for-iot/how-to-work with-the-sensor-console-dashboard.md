@@ -4,10 +4,10 @@ description: Řídicí panel vám umožní rychle zobrazit stav zabezpečení va
 ms.date: 11/03/2020
 ms.topic: article
 ms.openlocfilehash: e9bc650e9c306d12ef63994852816c96e1bdf40a
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781530"
 ---
 # <a name="the-dashboard"></a>Řídicí panel
@@ -42,7 +42,7 @@ Měřidlo nepotvrzených výstrah (UA) ve středu stránky indikuje počet takov
 
 Každé pole stav je popsané v této části.
 
-| Stavové pole a měřidla | Popis |
+| Stavové pole a měřidla | Description |
 | -------------- | -------------- |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/critical-alert-status-box-v2.png" alt-text="Kritické výstrahy"::: | **Kritické výstrahy** – pole v horní polovině stránky indikuje počet kritických výstrah. Toto políčko zaškrtněte, pokud chcete zobrazit popisy výstrah na časové ose a v seznamu pod měřidly.                              |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/major-alert-status-box-v2.png" alt-text="Hlavní upozornění"::: | **Hlavní upozornění** – pole v pravém horním rohu stránky indikuje počet hlavních výstrah. Toto políčko zaškrtněte, pokud chcete zobrazit popisy výstrah na časové ose a v seznamu pod měřidly.                                     |

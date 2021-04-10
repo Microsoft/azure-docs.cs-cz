@@ -10,10 +10,10 @@ ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100546971"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Kurz: Konfigurace certifikátů pro Azure Stack Edge pro pomocí GPU
@@ -26,10 +26,10 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace certifikátů pro fyzické zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým procesorem, ujistěte se, že:
 
@@ -174,7 +174,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace certifikátů pro fyzické zařízení
 
 Informace o tom, jak aktivovat zařízení Azure Stack Edge pro, najdete tady:

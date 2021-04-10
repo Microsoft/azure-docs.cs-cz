@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 60b720f3f5d91570e32ecf3d03aa7065f93990c5
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 24886ff3e01e9d9b4c01eabc917ced433599c0fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868201"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727106"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -56,13 +56,13 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 Následující odkazy ukazují, jak povolit synapse odkaz pomocí Azure CLI:
 
-* [Vytvoření nového účtu Azure Cosmos DB s povoleným odkazem na synapse](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
-* [Aktualizace existujícího účtu Azure Cosmos DB pro povolení odkazu synapse](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+* [Vytvoření nového účtu Azure Cosmos DB s povoleným odkazem na synapse](/cli/azure/cosmosdb#az_cosmosdb_create-optional-parameters)
+* [Aktualizace existujícího účtu Azure Cosmos DB pro povolení odkazu synapse](/cli/azure/cosmosdb#az_cosmosdb_update-optional-parameters)
 
 ### <a name="powershell"></a>PowerShell
 
-* [Vytvoření nového účtu Azure Cosmos DB s povoleným odkazem na synapse](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
-* [Aktualizace existujícího účtu Azure Cosmos DB pro povolení odkazu synapse](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+* [Vytvoření nového účtu Azure Cosmos DB s povoleným odkazem na synapse](/powershell/module/az.cosmosdb/new-azcosmosdbaccount#description)
+* [Aktualizace existujícího účtu Azure Cosmos DB pro povolení odkazu synapse](/powershell/module/az.cosmosdb/update-azcosmosdbaccount)
 
 
 Následující odkazy ukazují, jak povolit synapse odkaz pomocí prostředí PowerShell:
@@ -179,15 +179,15 @@ except exceptions.CosmosResourceExistsError:
 
 Následující odkazy ukazují, jak vytvořit kontejnery s povoleným analytickým úložištěm pomocí rozhraní příkazového řádku Azure:
 
-* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
-* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_create-examples)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
 
 ### <a name="powershell"></a>PowerShell
 
 Následující odkazy ukazují, jak vytvořit kontejnery s povoleným analytickým úložištěm pomocí prostředí PowerShell:
 
-* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
-* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection#description)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
 
 
 ## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Volitelné – aktualizace doby provozu v analytickém úložišti
@@ -245,15 +245,15 @@ V současné době se nepodporuje.
 
 Následující odkazy ukazují, jak aktualizovat kontejnery analytická hodnota TTL pomocí Azure CLI:
 
-* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
-* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_update)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_update)
 
 ### <a name="powershell"></a>PowerShell
 
 Následující odkazy ukazují, jak aktualizovat kontejnery analytická hodnota TTL pomocí prostředí PowerShell:
 
-* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
-* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer)
 
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Připojení k pracovnímu prostoru synapse

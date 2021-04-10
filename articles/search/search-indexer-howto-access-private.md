@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 0b30cb1767e733861d8418ea29e564bc90a5bc70
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676506"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Vytvoření připojení indexeru prostřednictvím privátního koncového bodu
@@ -182,7 +182,7 @@ Pokud je v `properties.provisioningState` prostředku `Succeeded` a je to `prope
 > [!NOTE]
 > Pokud již existují indexery, můžete je aktualizovat prostřednictvím [rozhraní API Put](/rest/api/searchservice/create-indexer) nastavením na `executionEnvironment` `private` .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Pokud se vytvoření indexeru nepovede a zobrazí se chybová zpráva, například "přihlašovací údaje zdroje dat jsou neplatné", znamená to, že buď není stav připojení privátního koncového bodu dosud *schváleno* , nebo není připojení funkční. Chcete-li tento problém vyřešit: 
   * Získejte stav sdíleného prostředku privátního propojení pomocí [rozhraní Get API](/rest/api/searchmanagement/sharedprivatelinkresources/get). Pokud je stav *schváleno*, obraťte se na `properties.provisioningState` prostředek. Pokud je tady stav `Incomplete` , znamená to, že se některé z podkladových závislostí prostředku nepodařilo nastavit. `PUT`Nové vydání žádosti o opětovné vytvoření sdíleného prostředku privátního propojení by mělo problém vyřešit. Může být nutné provést znovu schválení. Opětovným zkontrolováním stavu prostředku ověřte, zda je problém vyřešen.

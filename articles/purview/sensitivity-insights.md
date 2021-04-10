@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676568"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Přehledy o vašich datech v Azure dosah s popisem citlivosti
@@ -32,7 +32,7 @@ V této příručce se dozvíte, jak:
 >
 > Chcete-li zobrazit popisky citlivosti Power BI assety, zobrazte Asset v [Data Catalog dosah](how-to-search-catalog.md).
 > 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 

@@ -14,17 +14,17 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: it-pro
 ms.openlocfilehash: d834f4ccd8dba26c895e0578f161813fc49332ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556296"
 ---
 # <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Přiřazení rolí Azure externím uživatelům typu Host pomocí Azure Portal
 
 [Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít Azure RBAC k udělení pouze oprávnění, která uživatelé v prostředí potřebují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete přiřadit role Azure nebo odebrat přiřazení rolí, musíte mít:
 

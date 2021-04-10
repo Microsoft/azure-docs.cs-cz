@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
 ms.openlocfilehash: 24c8e2aafed6ee7b8823effc350dee4edb5e4873
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101650801"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Kurz: Konfigurace Hoxhunt pro Automatické zřizování uživatelů
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v Hoxhunt i Azure Active Di
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Hoxhunt
 > * [Jednotné přihlašování](hoxhunt-tutorial.md) k Hoxhunt (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

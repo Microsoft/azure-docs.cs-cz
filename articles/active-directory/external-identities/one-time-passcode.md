@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688463"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-mailové ověřování heslem jednorázového hesla
@@ -66,13 +66,13 @@ Můžete se podívat, jestli se uživatel typu Host ověřuje pomocí jednorázo
 > [!NOTE]
 > Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou se i nadále ověřovat pomocí jednorázového hesla. Pokud chcete aktualizovat metodu ověřování, můžete odstranit svůj uživatelský účet hosta a znovu ho pozvat.
 
-### <a name="example"></a>Příklad
+### <a name="example&quot;></a>Příklad
 
 Uživatel typu host teri@gmail.com je pozván společnosti Fabrikam, která nemá nastavenu Google Federation. Teri nemá účet Microsoft. Obdrží pro ověřování jednorázové heslo.
 
-## <a name="disable-email-one-time-passcode"></a>Zakázat jednorázové heslo pro odesílání e-mailů
+## <a name=&quot;disable-email-one-time-passcode&quot;></a>Zakázat jednorázové heslo pro odesílání e-mailů
 
-Od října 2021 se funkce jednorázového hesla pro e-mail zapne pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. V tuto chvíli už společnost Microsoft nebude podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované ("virové" nebo "just-in-time") účty Azure AD a klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat.
+Od října 2021 se funkce jednorázového hesla pro e-mail zapne pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. V tuto chvíli už společnost Microsoft nebude podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované (&quot;virové&quot; nebo &quot;just-in-time") účty Azure AD a klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat.
 
 > [!NOTE]
 >

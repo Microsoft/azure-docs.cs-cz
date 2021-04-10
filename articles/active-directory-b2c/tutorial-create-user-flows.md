@@ -11,10 +11,10 @@ ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781292"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 > [!IMPORTANT]
 > Změnili jsme způsob, jakým označujeme verze toků uživatelů. Dříve jsme nabízeli verze v1 (připravené pro produkční prostředí) a verze v1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021** se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Zaregistrujte své aplikace](tutorial-register-applications.md) , které jsou součástí uživatelských toků, které chcete vytvořit.
 

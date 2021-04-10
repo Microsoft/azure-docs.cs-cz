@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556862"
 ---
 # <a name="assign-azure-roles-to-a-managed-identity-preview"></a>Přiřazení rolí Azure ke spravované identitě (Preview)
@@ -25,7 +25,7 @@ K spravované identitě můžete přiřadit roli pomocí stránky **řízení p�
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 

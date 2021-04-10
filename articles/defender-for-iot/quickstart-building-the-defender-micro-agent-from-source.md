@@ -4,10 +4,10 @@ description: Mikroagenti zahrnuje infrastrukturu, která se dá použít k přiz
 ms.date: 1/18/2021
 ms.topic: quickstart
 ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781105"
 ---
 # <a name="build-the-defender-micro-agent-from-source-code-preview"></a>Sestavení agenta Defender Micro ze zdrojového kódu (Preview)
@@ -42,7 +42,7 @@ Nedoporučujeme vypínat kontrolu podpisů pro produkční prostředí.
 
 Pokud pro produkční scénáře potřebujete jinou konfiguraci, obraťte se na tým Defender for IoT. 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 1. Obraťte se na svého správce účtu, aby požádal o přístup k programu Defender pro zdrojový kód IoT.
  

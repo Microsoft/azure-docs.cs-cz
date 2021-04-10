@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: cb4995c0c71d0bcebb3cdd8ec471a92b7820cb9d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100535157"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý start: Nastavení tenanta
@@ -28,7 +28,7 @@ Tenant reprezentuje organizaci. Jedná se o vyhrazenou instanci služby Azure AD
 
 Každý tenant Azure AD je samostatný a oddělený od ostatních tenantů Azure AD. Má své vlastní reprezentace pracovních a školních identit, identit uživatelů (Pokud se jedná o klienta Azure AD B2C) a registraci aplikací. Registrace aplikace ve vašem tenantovi může umožňovat ověřování jenom z účtů v rámci vašeho tenanta nebo všech tenantů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure, který má aktivní předplatné. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

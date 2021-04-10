@@ -4,10 +4,10 @@ description: V tomto kurzu se dozvíte, jak připojit funkci ke službě Azure V
 ms.topic: article
 ms.date: 2/22/2021
 ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027410"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Kurz: Integrace Azure Functions s virtuální sítí Azure pomocí privátních koncových bodů
@@ -87,7 +87,7 @@ Vaše virtuální sítě budou potřebovat účet úložiště, který je odděl
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Skupina prostředků, kterou jste vytvořili pomocí aplikace Function App. |
     | **Název** | mysecurestorage| Název účtu úložiště, na který se použije privátní koncový bod. |
-    | **[Věřitel](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili aplikaci Function App. |
+    | **[Oblast](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili aplikaci Function App. |
 
 1. Vyberte **Zkontrolovat a vytvořit**. Po dokončení ověření vyberte **vytvořit**.
 
@@ -104,7 +104,7 @@ Vaše virtuální sítě budou potřebovat účet úložiště, který je odděl
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. |
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Skupina prostředků, kterou jste vytvořili pomocí aplikace Function App. |
     | **Název** | myServiceBus| Název služby Service Bus, pro kterou bude privátní koncový bod použit. |
-    | **[Věřitel](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili aplikaci Function App. |
+    | **[Oblast](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili aplikaci Function App. |
     | **Cenová úroveň** | Premium | Vyberte tuto vrstvu pro použití privátních koncových bodů s Azure Service Bus. |
 
 1. Vyberte **Zkontrolovat a vytvořit**. Po dokončení ověření vyberte **vytvořit**.
@@ -130,7 +130,7 @@ Vytvořte virtuální síť, do které se aplikace Function App integruje:
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Skupina prostředků, kterou jste vytvořili pomocí aplikace Function App. |
     | **Název** | myVirtualNet| Název virtuální sítě, ke které se aplikace Function App připojí |
-    | **[Věřitel](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili aplikaci Function App. |
+    | **[Oblast](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili aplikaci Function App. |
 
 1. Na kartě **IP adresy** vyberte **Přidat podsíť**. Pomocí následující tabulky nakonfigurujte nastavení podsítě.
 
@@ -162,7 +162,7 @@ Vytvoření privátních koncových bodů pro úložiště Azure Files a Azure B
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Vyberte skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. | |
     | **Název** | koncový bod souboru | Název privátního koncového bodu pro soubory z vašeho účtu úložiště. |
-    | **[Věřitel](https://azure.microsoft.com/regions/)** | myFunctionRegion | Vyberte oblast, ve které jste vytvořili účet úložiště. |
+    | **[Oblast](https://azure.microsoft.com/regions/)** | myFunctionRegion | Vyberte oblast, ve které jste vytvořili účet úložiště. |
 
 1. Na kartě **prostředek** použijte nastavení privátního koncového bodu, které je uvedené v následující tabulce.
 
@@ -203,7 +203,7 @@ Vytvořte privátní koncový bod pro uzamknutí služby Service Bus:
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Skupina prostředků, kterou jste vytvořili pomocí aplikace Function App. |
     | **Název** | SB – koncový bod | Název privátního koncového bodu pro soubory z vašeho účtu úložiště. |
-    | **[Věřitel](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili účet úložiště. |
+    | **[Oblast](https://azure.microsoft.com/regions/)** | myFunctionRegion | Oblast, ve které jste vytvořili účet úložiště. |
 
 1. Na kartě **prostředek** použijte nastavení privátního koncového bodu, které je uvedené v následující tabulce.
 

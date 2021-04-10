@@ -4,10 +4,10 @@ description: Rozšíření jsou malé aplikace, které usnadňují konfiguraci p
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100417169"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Použití rozšíření se fondy Batch
@@ -16,7 +16,7 @@ Rozšíření jsou malé aplikace, které usnadňují konfiguraci po zřízení 
 
 Můžete kontrolovat stav živého rozšíření, která používáte, a načíst informace, které vrátí, aby bylo možné provést všechny možnosti detekce, oprav nebo diagnostiky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Fondy s rozšířeními musí používat [konfiguraci virtuálního počítače](nodes-and-pools.md#virtual-machine-configuration).
 - Typ rozšíření CustomScript je vyhrazený pro službu Azure Batch a nedá se přepsat.

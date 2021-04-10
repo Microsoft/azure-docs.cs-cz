@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103417698"
 ---
 Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány a propojeny se sadou Speech SDK. Místo toho budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).

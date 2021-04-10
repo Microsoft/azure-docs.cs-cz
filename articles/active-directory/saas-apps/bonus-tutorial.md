@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s využitím bonusu
@@ -30,7 +30,7 @@ Služba Azure AD integruje bonus s následujícími výhodami:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s využitím bonusu potřebujete následující položky:
 
@@ -124,13 +124,13 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Konfigurace jednorázových Sign-On
+### <a name="configure-bonusly-single-sign-on&quot;></a>Konfigurace jednorázových Sign-On
 
 1. V jiném okně prohlížeče se přihlaste k vašemu **bonusovém** tenantovi.
 
 1. Na panelu nástrojů v horní části klikněte na **Nastavení** a pak vyberte **integrace a aplikace**.
 
-    ![Bonusová část pro sociální sítě](./media/bonus-tutorial/ic773686.png "Bonusly")
+    ![Bonusová část pro sociální sítě](./media/bonus-tutorial/ic773686.png &quot;Bonusly")
 1. V části **jednotné přihlašování** vyberte **SAML**.
 
 1. Na stránce dialogu **SAML** proveďte následující kroky:
@@ -197,7 +197,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-bonusly-test-user"></a>Vytvořit bonusový test uživatele
+### <a name="create-bonusly-test-user&quot;></a>Vytvořit bonusový test uživatele
 
 Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonusně. V případě bonusu je zřizování ručním úkolem.
 
@@ -210,7 +210,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
 1. Klikněte na **Nastavení**.
 
-    ![Nastavení](./media/bonus-tutorial/ic781041.png "Nastavení")
+    ![Nastavení](./media/bonus-tutorial/ic781041.png &quot;Nastavení")
 
 1. Klikněte na kartu **Uživatelé a bonusy** .
 
