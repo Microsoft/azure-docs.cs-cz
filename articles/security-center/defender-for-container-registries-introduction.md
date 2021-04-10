@@ -3,16 +3,16 @@ title: Azure Defender pro Registry kontejnerů – výhody a funkce
 description: Seznamte se s výhodami a funkcemi Azure Defenderu pro Registry kontejnerů.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176633"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010688"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Úvod do Azure Defenderu pro registry kontejnerů
 
@@ -47,7 +47,7 @@ Pro kontrolu imagí jsou k dispozici tři aktivační události:
 
 - Při **vložení** – pokaždé, když se do registru pošle obrázek, Security Center automaticky vyhledá tento obrázek. Pokud chcete spustit kontrolu obrázku, nahrajte ho do úložiště.
 
-- **Nedávno načteno** – protože nové chyby zabezpečení se objevují každý den, **Azure Defender pro Registry kontejnerů** také prohledává všechny image, které byly během posledních 30 dnů vyžádány. Za opětovné prohledání se neúčtují žádné další poplatky; Jak je uvedeno výše, Fakturuje se jednou na obrázek.
+- **Nedávno načteno** – protože nové chyby zabezpečení se objevují každý den, **Azure Defender pro Registry kontejnerů** také prohledává každý týden každý obrázek, který byl během posledních 30 dnů získán. Za tato prověřování se neúčtují žádné další poplatky. Jak je uvedeno výše, Fakturuje se jednou na obrázek.
 
 - **Při importu** Azure Container Registry nástroje pro import do registru přinášejí image z Docker Hub, Microsoft Container registry nebo jiného služby Azure Container Registry. **Azure Defender pro Registry kontejneru** prohledává všechny podporované bitové kopie, které naimportujete. Další informace najdete v [importu imagí kontejneru do registru kontejneru](../container-registry/container-registry-import-images.md).
  

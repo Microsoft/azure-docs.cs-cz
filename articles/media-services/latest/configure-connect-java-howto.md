@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06923d7c198edc324d85b726cf91694d8cf7e1ca
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94748161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961349"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
 
@@ -37,7 +37,7 @@ V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
    - Apache Maven
    - Balíček rozšíření Java
 - Ujistěte se, že jste nastavili `JAVA_HOME` a `PATH` proměnné prostředí.
-- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- [Vytvořte účet Media Services](./account-create-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 - Postupujte podle kroků v tématu [rozhraní API pro přístup](./access-api-howto.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný kód) a ID tenanta, které budete potřebovat v pozdějším kroku.
 
 Také si přečtěte:

@@ -4,13 +4,13 @@ description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci vytvořen
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/06/2020
-ms.openlocfilehash: b051f349716b5597adee4509cfe774978a8f61aa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: f7d5d473b8fe24d8dd5018a718ea96f286b1c030
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972503"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275834"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -121,4 +121,4 @@ Až budete s tímto rychlým startem hotovi, vyberte **Moje aplikace** z horní 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Identifikace běžných záměrů a entit](./tutorial-machine-learned-entity.md)
+> [Vývoj iterativních aplikací pro LUIS](./luis-concept-app-iteration.md)

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3bc821f31e0463000c9089e48818249f2c046ede
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564938"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107102991"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -173,7 +173,7 @@ V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z va�
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Zahájení odesílání dat IoT do digitálních vláken Azure
 
-Pokud chcete začít odesílat data do Time Series Insights, budete muset začít aktualizovat digitální vlastnosti v digitálních provlastnostech Azure pomocí změny hodnot dat. Použijte příkaz [AZ DT s dvojitou aktualizací](/cli/azure/ext/azure-iot/dt/twin#ext-azure-iot-az-dt-twin-update) .
+Pokud chcete začít odesílat data do Time Series Insights, budete muset začít aktualizovat digitální vlastnosti v digitálních provlastnostech Azure pomocí změny hodnot dat. Použijte příkaz [AZ DT s dvojitou aktualizací](/cli/azure/dt/twin#az_dt_twin_update) .
 
 Pokud používáte kompletní kurz ([*kurz: připojení kompletního řešení*](tutorial-end-to-end.md)), které vám pomůže s nastavením prostředí, můžete začít odesílat Simulovaná data IoT spuštěním projektu *DeviceSimulator* z ukázky. Pokyny najdete v části [*Konfigurace a spuštění simulace*](tutorial-end-to-end.md#configure-and-run-the-simulation) v tomto kurzu.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro přejít'
+title: 'Rychlý Start: Klientská knihovna pro rozpoznávání optického znaku pro přejít'
 titleSuffix: Azure Cognitive Services
-description: Začněte s tímto rychlým startem pomocí Počítačové zpracování obrazu klientské knihovny pro.
+description: Začněte s tímto rychlým startem s využitím klientské knihovny pro rozpoznávání optického rozpoznávání znaků.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,19 +10,16 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 9cb46a57792ecdd650a8a9f5025a5055257057ec
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0ae059054c68da662e05342525987f6925184906
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622151"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073713"
 ---
 <a name="HOLTop"></a>
 
-Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
-
-* Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
-* Přečtěte si vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
+Pomocí klientské knihovny pro rozpoznávání OCR si můžete přečíst vytištěný a rukou psaný text z obrázků.
 
 [Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)  |  [Balíček](https://github.com/Azure/azure-sdk-for-go)
 
@@ -33,7 +30,6 @@ Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* [Vytvořte proměnné prostředí](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a v `COMPUTER_VISION_ENDPOINT` uvedeném pořadí.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -96,28 +92,25 @@ Vytvořte proměnné pro klíč předplatného Počítačové zpracování obraz
 > [!IMPORTANT]
 > Nezapomeňte odebrat klíč předplatného z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](../../../../key-vault/general/overview.md).
 
-Dále začnete přidávat kód pro provádění různých Počítačové zpracování obrazuch operací.
+V dalším kroku začnete přidávat kód pro provádění různých operací OCR.
 
 > [!div class="nextstepaction"]
 > [Jsem u klienta nastavil](?success=set-up-client#object-model) [problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=set-up-client)
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu jít SDK.
+Následující třídy a rozhraní zpracovávají některé z hlavních funkcí sady SDK pro rozpoznávání OCR.
 
 |Název|Description|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu, jako je například analýza obrázku a čtení textu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
-|[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Tento typ obsahuje výsledky volání funkce **AnalyzeImage** . Pro každou funkci konkrétní kategorie existují podobné typy.|
 |[ReadOperationResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ReadOperationResult)| Tento typ obsahuje výsledky operace čtení dávky. |
-|[VisualFeatureTypes](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#VisualFeatureTypes)| Tento typ definuje různé druhy analýz obrázků, které je možné provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot VisualFeatureTypes. |
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Počítačové zpracování obrazu klientské knihovny pro přejít:
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny OCR pro funkci přejít:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza obrázku](#analyze-an-image)
 * [Číst vytištěné a ručně psaný text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -130,105 +123,13 @@ Vytvořte `main` funkci a přidejte do ní následující kód, který vytvoří
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#analyze-an-image) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=authenticate-client)
+> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#read-printed-and-handwritten-text) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=authenticate-client)
 
-## <a name="analyze-an-image"></a>Analýza obrázku
 
-Následující kód používá objekt klienta k analýze vzdálené image a k vytištění výsledků do konzoly. Můžete získat textový popis, kategorizaci, seznam značek, zjištěných objektů, zjištěných značek, zjištěné plošky, příznaky obsahu pro dospělé, hlavní barvy a typ obrázku.
-
-### <a name="set-up-test-image"></a>Nastavit testovací image
-
-Nejdřív uložte odkaz na adresu URL obrázku, který chcete analyzovat. Umístěte ho do `main` funkce.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
-
-> [!TIP]
-> Můžete také analyzovat místní bitovou kopii. Podívejte se na metody [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) , jako je například **DescribeImageInStream**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) , kde najdete scénáře týkající se místních imagí.
-
-### <a name="specify-visual-features"></a>Zadat vizuální funkce
-
-Následující volání funkce extrahují různé vizuální funkce z ukázkové image. Tyto funkce definujete v následujících oddílech.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze)]
-
-### <a name="get-image-description"></a>Získat popis obrázku
-
-Následující funkce získá seznam generovaných titulků pro obrázek. Další informace o popisu obrázku najdete v tématu [popisujícím obrázky](../../concept-describing-images.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_describe)]
-
-### <a name="get-image-category"></a>Získat kategorii obrázku
-
-Následující funkce získá zjištěnou kategorii obrázku. Další informace najdete v tématu [kategorizace imagí](../../concept-categorizing-images.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_categorize)]
-
-### <a name="get-image-tags"></a>Získat značky obrázku
-
-Následující funkce získá sadu zjištěných značek v obrázku. Další informace najdete v tématu [značky obsahu](../../concept-tagging-images.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_tags)]
-
-### <a name="detect-objects"></a>Detekovat objekty
-
-Následující funkce detekuje běžné objekty v imagi a tiskne je do konzoly. Další informace najdete v tématu [detekce objektů](../../concept-object-detection.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_objects)]
-
-### <a name="detect-brands"></a>Detekovat značky
-
-Následující kód detekuje firemní značky a loga v imagi a vytiskne je do konzoly. Další informace najdete v [rozpoznávání značek](../../concept-brand-detection.md).
-
-Nejprve deklarujte odkaz na nový obrázek v rámci vaší `main` funkce.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_brand_url)]
-
-Následující kód definuje funkci detekce značky.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_brands)]
-
-### <a name="detect-faces"></a>Rozpoznávání tváří
-
-Následující funkce vrátí zjištěné plošky v obrázku s jejich souřadnicemi obdélníku a určitými atributy obličeje. Další informace najdete v tématu [rozpoznávání tváře](../../concept-detecting-faces.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_faces)]
-
-### <a name="detect-adult-racy-or-gory-content"></a>Zjištění obsahu pro dospělé, pikantní nebo gorie
-
-Následující funkce vytiskne zjištěnou přítomnost obsahu pro dospělé v imagi. Další informace najdete v článku [obsah pro dospělé, pikantní a gorie](../../concept-detecting-adult-content.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_adult)]
-
-### <a name="get-image-color-scheme"></a>Získat barevné schéma obrázku
-
-Následující funkce vytiskne zjištěné atributy barev v obrázku, jako jsou dominantní barvy a Barva zvýraznění. Další informace najdete v tématu [Barevná schémata](../../concept-detecting-color-schemes.md).
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_color)]
-
-### <a name="get-domain-specific-content"></a>Získání obsahu specifického pro doménu
-
-Počítačové zpracování obrazu může použít specializované modely k dalšímu analýze imagí. Další informace najdete v tématu [obsah specifický pro doménu](../../concept-detecting-domain-content.md). 
-
-Následující kód analyzuje data o zjištěných celebrit v imagi.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_celebs)]
-
-Následující kód analyzuje data o zjištěných orientačních seznamech v obrázku.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_landmarks)]
-
-### <a name="get-the-image-type"></a>Získat typ obrázku
-
-Následující funkce vytiskne informace o typu obrázku &mdash; , ať už se jedná o Klipart nebo kreslení čáry.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
-
-> [!div class="nextstepaction"]
-> [Analyzoval jsem obrázek](?success=analyze-image#read-printed-and-handwritten-text) , který [jsem narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Kód v této části definuje funkci, `RecognizeTextReadAPIRemoteImage` která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
+Služba OCR může číst viditelný text v obrázku a převést jej na datový proud znaků. Kód v této části definuje funkci, `RecognizeTextReadAPIRemoteImage` která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
 
 Přidejte odkaz na vzorový obrázek a volání funkce ve `main` funkci.
 
@@ -281,9 +182,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 ## <a name="next-steps"></a>Další kroky
 
+V tomto rychlém startu jste zjistili, jak nainstalovat knihovnu klienta pro rozpoznávání OCR a použít rozhraní API pro čtení. V dalším kroku se dozvíte víc o funkcích rozhraní API pro čtení.
+
 > [!div class="nextstepaction"]
-> [Odkaz na rozhraní API pro počítačové zpracování obrazu (Přejít)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
+>[Volání rozhraní API pro čtení](../../Vision-API-How-to-Topics/call-read-api.md)
 
-
-* [Co je počítačové zpracování obrazu?](../../overview.md)
+* [Přehled rozpoznávání OCR](../../overview-ocr.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go).

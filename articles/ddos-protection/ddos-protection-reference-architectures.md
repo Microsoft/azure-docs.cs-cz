@@ -3,7 +3,7 @@ title: Azure DDoS Protection referenční architektury
 description: Naučte se referenční architektury Azure DDoS Protection.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b74ebf332790fd9a08840c8c76d99e2b014dac43
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94992433"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103075"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection referenční architektury
 
@@ -59,6 +59,20 @@ Veškerý provoz z Internetu určeného do webové aplikace je směrován do [Ap
 Doporučujeme, abyste nakonfigurovali Application Gateway WAF SKU (režim prevence), která vám umožní chránit proti útokům vrstvy 7 (HTTP/HTTPS/WebSocket). Kromě toho jsou webové aplikace nakonfigurované tak, aby [přijímaly jenom přenosy z Application Gateway](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) IP adresy.
 
 Další informace o této referenční architektuře najdete v [tomto článku](/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+
+## <a name="protecting-on-premises-resources"></a>Ochrana místních prostředků
+
+K ochraně místních prostředků můžete využít škálování, kapacitu a efektivitu Azure DDoS Protection Standard, a to díky hostování veřejné IP adresy v Azure a přesměrování provozu na back-end Server do místního prostředí.
+
+![Ochrana premch prostředků](./media/reference-architectures/ddos-on-prem.png)
+
+Pokud máte webovou aplikaci, která přijímá provoz z Internetu, můžete hostovat webovou aplikaci za Application Gateway a chránit ji pomocí WAF proti webovým útokům vrstvy 7, jako je například injektáže SQL a slowloris. Back-endové zdroje vaší aplikace budou v místním prostředí, které je připojené přes síť VPN. 
+
+Back-endové prostředky v místním prostředí nebudou zpřístupněny veřejnému Internetu. K Internetu se zveřejňuje jenom veřejná IP adresa AppGW/WAF a název DNS vaší aplikace se mapuje na tuto veřejnou IP adresu. 
+
+Pokud je ve virtuální síti povolená služba DDoS Protection Standard, která obsahuje AppGW/WAF, DDoS Protection Standard bude chránit vaše aplikace tím, že bude zmírnit špatný provoz a bude do vaší aplikace směrovat předpokládaný čistý provoz. 
+
+V tomto [článku](https://docs.microsoft.com/azure/azure-vmware/protect-azure-vmware-solution-with-application-gateway) se dozvíte, jak můžete použít DDoS Protection Standard vedle Application Gateway k ochraně webové aplikace běžící na řešení Azure VMware.
 
 ## <a name="mitigation-for-non-web-paas-services"></a>Zmírnění rizik pro jiné než webové služby PaaS Services
 

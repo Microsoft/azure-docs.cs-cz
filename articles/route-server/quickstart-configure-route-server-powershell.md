@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
 ms.openlocfilehash: a3ab3a801872cc20b4e41bbff02ad6474c3bab8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104655202"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure PowerShell
@@ -23,7 +23,7 @@ Tento článek vám pomůže nakonfigurovat partnerský server Azure tak, aby se
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ujistěte se, že máte nejnovější moduly PowerShellu, nebo můžete na portálu použít Azure Cloud Shell.

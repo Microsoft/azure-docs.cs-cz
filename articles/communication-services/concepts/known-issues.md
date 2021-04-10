@@ -8,15 +8,15 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: 7be40ac5f6cda7a81d68ca0b17f377891dd58480
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: b9ed71a8fc9346ecd454eba98dcbb3b13186eba2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606041"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276038"
 ---
-# <a name="known-issues-azure-communication-services-sdks"></a>Známé problémy: sady SDK služby Azure Communication Services
-Tento článek poskytuje informace o omezeních a známých problémech týkajících se sad Azure Communication Services SDK.
+# <a name="known-issues-azure-communication-services-calling-sdks"></a>Známé problémy: služby Azure Communication Services pro volání sad SDK
+Tento článek poskytuje informace o omezeních a známých problémech týkajících se komunikačních služeb Azure, které volají sady SDK.
 
 > [!IMPORTANT]
 > Existuje několik faktorů, které mohou ovlivnit kvalitu volání. Další informace o konfiguraci sítě komunikačních služeb a testování osvědčených postupů najdete v dokumentaci k **[požadavkům sítě](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)** .
@@ -47,7 +47,10 @@ Aplikace nemůžou vytvořit výčet/mluvčí zařízení (jako Bluetooth) v Saf
 Pokud používáte Safari v macOS, vaše aplikace nebude moct vytvářet výčet a vybírat reproduktory prostřednictvím Správce zařízení komunikačních služeb. V tomto scénáři je potřeba zařízení vybrat přes operační systém. Pokud používáte Chrome v macOS, může aplikace zobrazit nebo vybrat zařízení prostřednictvím komunikačních služeb Správce zařízení.
 
 ### <a name="audio-connectivity-is-lost-when-receiving-sms-messages-or-calls-during-an-ongoing-voip-call"></a>Při přijímání zpráv SMS nebo volání během probíhajícího volání VoIP dojde ke ztrátě zvukového připojení.
-Mobilní prohlížeče neudržují připojení ve stavu na pozadí. To může vést k degradované možnosti volání, pokud bylo volání VoIP přerušeno událostí, která aplikaci vloží do pozadí.
+K tomuto problému může dojít z několika důvodů:
+
+- Některé mobilní prohlížeče neudržují připojení ve stavu na pozadí. To může vést k degradované možnosti volání, pokud bylo volání VoIP přerušeno událostí, která aplikaci vloží do pozadí. 
+- V některých případech volání SMS nebo PSTN zaznamená zvukový zvuk a neuvolní zvuk zpátky do volání VoIP. Společnost Apple vyřešila tento problém ve verzích iOS 14.4.1 +. 
 
 <br/>Klientská knihovna: volání (JavaScript)
 <br/>Prohlížeče: Safari, Chrome
@@ -95,9 +98,16 @@ Pokud se uživatelé rozhodnou rychle zapnout nebo vypnout video, zatímco volá
  - Pokud uživatel začne používat zvuk a pak zahájí a zastaví video, když je hovor ve `Connecting` stavu.
  - Pokud uživatel začne používat zvuk a pak zahájí a zastaví video, když je hovor ve `Lobby` stavu.
 
-
 #### <a name="possible-causes"></a>Možné příčiny
 V rámci šetření.
+
+### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>Výčet/přístup k zařízením pro Safari v MacOS a iOS 
+Pokud se po určité době udělí přístup k zařízením, resetují se oprávnění zařízení. Safari v MacOS a v iOS neudržuje oprávnění moc dlouho, pokud se nezíská datový proud. Nejjednodušší způsob, jak tento problém obejít, je volat rozhraní API DeviceManager. askDevicePermission () před voláním rozhraní API výčtu zařízení ve Správci zařízení (DeviceManager. getcameras (), DeviceManager. getspeakers () a DeviceManager. getmicrophones ()). Pokud jsou k dispozici oprávnění, nezobrazí se uživateli nic, pokud ne, zobrazí se znovu dotaz.
+
+<br/>Ovlivněná zařízení: iPhone
+<br/>Klientská knihovna: volání (JavaScript)
+<br/>Prohlížeče: Safari
+<br/>Operační systém: iOS
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>Vykreslování videí vzdáleného účastníka může někdy trvat dlouhou dobu.
 Během probíhajícího volání skupiny _uživatel a_ pošle video a pak se _uživateli B_ připojí volání. V některých případech se uživateli B nezobrazuje video od uživatele A, nebo uživatel A video začíná vykreslování po dlouhém zpoždění. K tomuto problému může dojít v důsledku síťového prostředí, které vyžaduje další konfiguraci. Pokyny k konfiguraci sítě najdete v dokumentaci k [požadavkům na síť](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements) .

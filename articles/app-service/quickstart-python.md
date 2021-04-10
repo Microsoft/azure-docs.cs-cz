@@ -6,22 +6,19 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
+adobe-target-activity: DocsExp–393165–A/B–Docs/PythonQuickstart–CLIvsPortal–FY21Q4
 adobe-target-experience: Experience B
-adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: 36c1b112127fadd5149c62a92ca469322db65edd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+adobe-target-content: ./quickstart-python-portal
+ms.openlocfilehash: e0542d47ff2c687f5f9470edb0cbb34ebc79554c
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592349"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010860"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí Azure App Service v systému Linux
 
-V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Service v systému Linux](overview.md#app-service-on-linux), vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Pomocí místního [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli) na počítači se systémem Mac, Linux nebo Windows nasadíte ukázku s použitím této baňky nebo Djangoch architektur. Webová aplikace, kterou nakonfigurujete, využívá bezplatnou App Serviceovou úroveň, takže v tomto článku nebudete mít žádné náklady.
-
-> [!TIP]
-> Pokud raději místo toho použijete Visual Studio Code, postupujte podle našeho **[Visual Studio Codeu pro rychlý start App Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.
+V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Service v systému Linux](overview.md#app-service-on-linux), vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Pomocí místního [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli) na počítači se systémem Mac, Linux nebo Windows nasadíte ukázku s použitím této baňky nebo Djangoch architektur. Webová aplikace, kterou nakonfigurujete, používá základní App Serviceovou vrstvu, u které se v předplatném Azure vyskytnou malé náklady.
 
 ## <a name="set-up-your-initial-environment"></a>Nastavení počátečního prostředí
 

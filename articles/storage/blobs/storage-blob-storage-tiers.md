@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e2f3296eb6d4286bb4ef7081c1459109c40915f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656834"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962301"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Úrovně přístupu pro Azure Blob Storage – horká, studená a archivní
 
@@ -86,7 +86,7 @@ Mezi scénáře použití archivní úrovně přístupu patří:
 - Data o kompatibilitě a archivaci, která je potřeba ukládat po dlouhou dobu a která se špatně při použití
 
 > [!NOTE]
-> Archivní úroveň není podporována pro účty ZRS, GZRS nebo RA-GZRS. Migrace z LRS na GRS není podporovaná, pokud účet úložiště obsahuje objekty BLOB v archivní úrovni.
+> Archivní úroveň není podporována pro účty ZRS, GZRS nebo RA-GZRS. Migrace z LRS na GRS je podporovaná tak dlouho, dokud se nepřesunuly žádné objekty blob do archivní úrovně, zatímco účet byl nastavený na LRS. Účet se dá přesunout zpátky na GRS, pokud se aktualizace provádí méně než 30 dní od okamžiku, kdy se účet stal LRS, a žádné objekty BLOB se přesunuly do archivní úrovně, zatímco účet byl nastavený na LRS.
 
 ## <a name="account-level-tiering"></a>Vrstvení na úrovni účtu
 

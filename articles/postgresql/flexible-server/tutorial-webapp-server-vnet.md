@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104657582"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Kurz: vytvoření Azure Database for PostgreSQL flexibilního serveru s webovou aplikací App Services ve virtuální síti
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte, jak:
 > * Přidání webové aplikace do virtuální sítě
 > * Připojení k Postgres z webové aplikace 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

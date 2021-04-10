@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591873"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010787"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Připojení k Azure Database for MySQL pomocí dbForge studia pro MySQL
 
@@ -78,9 +78,7 @@ V důsledku naší migrace databáze se databáze *world_x* ve službě Azure My
 dbForge Studio for MySQL obsahuje několik nástrojů, které umožňují migrovat databáze MySQL, schémata MySQL and\or data do Azure. Výběr funkcí závisí na vašich potřebách a požadavcích vašeho projektu. Pokud potřebujete selektivně přesunout databázi, to znamená migrovat některé tabulky MySQL do Azure, je nejlepší použít funkce pro porovnání schématu a dat.
 V tomto příkladu migrujeme *světová* databáze, která se nachází na serveru MySQL, a Azure Database for MySQL. Logika za procesem migrace s využitím funkcí porovnání schématu a dat v dbForge studiu pro MySQL je vytvoření prázdné databáze v Azure Database for MySQL, jejich následné synchronizaci s požadovanou databází MySQL pomocí nástroje porovnání schématu a pak pomocí nástroje pro porovnání dat. Tímto způsobem jsou schémata a data MySQL přesně přesunuty do Azure.
 
-### <a name="connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Připojení k Azure Database for MySQL a vytvoření prázdné databáze
-
-Připojte se k Azure Database for MySQL a vytvořte prázdnou databázi.
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Krok 1. Připojení k Azure Database for MySQL a vytvoření prázdné databáze
 
 ### <a name="step-2-schema-synchronization"></a>Krok 2. Synchronizace schématu
 

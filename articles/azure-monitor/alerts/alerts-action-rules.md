@@ -4,10 +4,10 @@ description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak 
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105036777"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
@@ -59,9 +59,9 @@ Nejdřív vyberte obor (předplatné Azure, skupinu prostředků nebo cílový p
 
 ![Rozsah pravidla akce](media/alerts-action-rules/action-rules-new-rule-creation-flow-scope.png)
 
-### <a name="filter-criteria"></a>Kritéria filtru
+### <a name="filter-criteria&quot;></a>Kritéria filtru
 
-Volitelně můžete definovat filtry, takže pravidlo bude platit pro konkrétní podmnožinu výstrah nebo konkrétní události pro každou výstrahu (například pouze "Trigger" nebo pouze "vyřešené").
+Volitelně můžete definovat filtry, takže pravidlo bude platit pro konkrétní podmnožinu výstrah nebo konkrétní události pro každou výstrahu (například pouze &quot;Trigger&quot; nebo pouze &quot;vyřešené").
 
 Jsou k dispozici tyto filtry:
 

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: bfe39020da0be245f47d0c954de7598914d6534d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 401033e210db0a9d65d138fd12c9d3365b311a62
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105051331"
+ms.locfileid: "105962148"
 ---
 # <a name="media-services-v3-samples"></a>Ukázky Media Services v3
 
@@ -47,7 +47,7 @@ Najdete popis a odkazy na ukázky, které můžete hledat na jednotlivých kart�
 | [ContentProtection/OfflinePlayReadyAndWidevine](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/OfflinePlayReadyAndWidevine)|Jak dynamicky Šifrovat obsah pomocí PlayReady a Widevine DRM a přehrát obsah bez žádosti o licenci od licenční služby. Ukazuje, jak vytvořit transformaci s integrovaným přednastaveným AdaptiveStreaming, odeslat úlohu, vytvořit ContentKeyPolicy s omezením Open a s trvalou konfigurací PlayReady/Widevine, přidružit ContentKeyPolicy k StreamingLocator a vytisknout adresu URL pro přehrávání.|
 | [Streamování/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|Jak vytvořit transformaci s integrovaným předplatným AdaptiveStreaming, odeslat úlohu, vytvořit filtr assetu a filtr účtu, přidružit filtry ke lokátorům streamování a tisknout adresy URL pro přehrávání.|
 | [Streamování/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|Jak vytvořit transformaci s integrovaným předplatným AdaptiveStreaming, odeslat úlohu, publikovat výstupní Asset pro HLS a PŘERUŠOVANé streamování.|
-| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Doprovodné materiály a osvědčené postupy pro produkční systém s využitím kódování nebo analýz na vyžádání. Čtenáři by měli začít s vysokou dostupností v doprovodném článku [s Media Services a vod](https://docs.microsoft.com/azure/media-services/latest/media-services-high-availability-encoding). Pro ukázku [HighAvailabilityEncodingStreaming](/HighAvailabilityEncodingStreaming/Readme.md) je k dispozici samostatný soubor řešení. |
+| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Doprovodné materiály a osvědčené postupy pro produkční systém s využitím kódování nebo analýz na vyžádání. Čtenáři by měli začít s vysokou dostupností v doprovodném článku [s Media Services a vod](https://docs.microsoft.com/azure/media-services/latest/architecture-high-availability-encoding-concept). Pro ukázku [HighAvailabilityEncodingStreaming](/HighAvailabilityEncodingStreaming/Readme.md) je k dispozici samostatný soubor řešení. |
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 

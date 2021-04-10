@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Node.js'
-description: Začínáme s klientskou knihovnou Počítačové zpracování obrazu pro Node.js s tímto rychlým startem
+title: 'Rychlý Start: Klientská knihovna pro rozpoznávání optického znaku pro Node.js'
+description: Začínáme s klientskou knihovnou pro rozpoznávání optických znaků pro Node.js s tímto rychlým startem
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,19 +10,16 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: be583fd530424262e8119295d2ff3df303acbfac
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: cb4679152740b73d6bb9cf7288fcaa811b6d6141
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622348"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073543"
 ---
 <a name="HOLTop"></a>
 
-Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
-
-* Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
-* Přečtěte si vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
+Pomocí klientské knihovny pro rozpoznávání optických znaků si můžete přečíst vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
 
 [Referenční dokumentace](/javascript/api/@azure/cognitiveservices-computervision/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -87,19 +84,17 @@ Vytvořte proměnné pro klíč předplatného Počítačové zpracování obraz
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu Node.js SDK.
+Následující třídy a rozhraní zpracovávají některé z hlavních funkcí sady OCR Node.js SDK.
 
 |Název|Description|
 |---|---|
 | [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
-|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot **VisualFeatureTypes** . |
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Počítačové zpracování obrazu klientské knihovny pro Node.js:
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny OCR pro Node.js:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza obrázku](#analyze-an-image)
 * [Číst vytištěné a ručně psaný text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -116,127 +111,13 @@ Pak definujte funkci `computerVision` a deklarujte asynchronní řadu s primárn
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
 
 > [!div class="nextstepaction"]
-> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#analyze-an-image) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=authenticate-client)
+> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#read-printed-and-handwritten-text) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=authenticate-client)
 
-## <a name="analyze-an-image"></a>Analýza obrázku
 
-Kód v této části analyzuje vzdálené image pro extrakci různých vizuálních funkcí. Tyto operace můžete provádět jako součást metody **analyzeImage** objektu klienta, nebo je můžete volat pomocí individuálních metod. Podrobnosti najdete v [referenční dokumentaci](/javascript/api/@azure/cognitiveservices-computervision/) .
-
-> [!NOTE]
-> Můžete také analyzovat místní bitovou kopii. Podívejte se na metody [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) , jako je například **analyzeImageInStream**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) , kde najdete scénáře týkající se místních imagí.
-
-### <a name="get-image-description"></a>Získat popis obrázku
-
-Následující kód získá seznam generovaných titulků pro obrázek. Další podrobnosti najdete v tématu [popisujícím obrázky](../../concept-describing-images.md) .
-
-Nejdřív definujte adresu URL obrázku, který se má analyzovat:
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_describe_image)]
-
-Pak přidejte následující kód, který získá popis obrázku a vytiskne ho do konzoly.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_describe)]
-
-### <a name="get-image-category"></a>Získat kategorii obrázku
-
-Následující kód získá zjištěnou kategorii obrázku. Další podrobnosti najdete v tématu [kategorizace imagí](../../concept-categorizing-images.md) .
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories)]
-
-Definujte pomocnou funkci `formatCategories` :
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories_format)]
-
-### <a name="get-image-tags"></a>Získat značky obrázku
-
-Následující kód získá sadu zjištěných značek v obrázku. Další podrobnosti najdete v tématu [značky obsahu](../../concept-tagging-images.md) .
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tags)]
-
-Definujte pomocnou funkci `formatTags` :
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tagsformat)]
-
-### <a name="detect-objects"></a>Detekovat objekty
-
-Následující kód detekuje běžné objekty v imagi a vytiskne je do konzoly. Další podrobnosti najdete v tématu věnovaném [detekci objektů](../../concept-object-detection.md) .
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
-
-Definujte pomocnou funkci `formatRectObjects` pro vrácení souřadnic horní, levý, dolní a pravé, spolu s šířkou a výškou.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
-
-### <a name="detect-brands"></a>Detekovat značky
-
-Následující kód detekuje firemní značky a loga v imagi a vytiskne je do konzoly. Další podrobnosti najdete v tématu [rozpoznávání značek](../../concept-brand-detection.md) .
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_brands)]
-
-### <a name="detect-faces"></a>Rozpoznávání tváří
-
-Následující kód vrátí zjištěné plošky v obrázku s jejich souřadnicemi obdélníku a vyberte možnost atributy obličeje. Další podrobnosti najdete v tématu [rozpoznávání tváře](../../concept-detecting-faces.md) .
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_faces)]
-
-Definujte pomocnou funkci `formatRectFaces` :
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
-
-### <a name="detect-adult-racy-or-gory-content"></a>Zjištění obsahu pro dospělé, pikantní nebo gorie
-
-Následující kód vytiskne zjištěnou přítomnost obsahu pro dospělé v imagi. Další podrobnosti najdete v článku [obsah pro dospělé, pikantní a gorie](../../concept-detecting-adult-content.md) .
-
-Zadejte adresu URL obrázku, který se má použít:
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)]
-
-Pak přidejte následující kód pro zjištění obsahu pro dospělé a vytiskněte výsledky do konzoly.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)]
-
-### <a name="get-image-color-scheme"></a>Získat barevné schéma obrázku
-
-Následující kód vytiskne zjištěné atributy barev v obrázku, jako jsou dominantní barvy a Barva zvýraznění. Další podrobnosti najdete v tématu [Barevná schémata](../../concept-detecting-color-schemes.md) .
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors)]
-
-Definujte pomocnou funkci `printColorScheme` pro tisk podrobností o barevném schématu do konzoly.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors_print)]
-
-### <a name="get-domain-specific-content"></a>Získání obsahu specifického pro doménu
-
-Počítačové zpracování obrazu může použít specializovaný model k další analýze imagí. Další podrobnosti najdete v tématu [obsah specifický pro doménu](../../concept-detecting-domain-content.md) .
-
-Nejdřív definujte adresu URL obrázku, který se má analyzovat:
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_domain_image)]
-
-Následující kód analyzuje data o zjištěných orientačních seznamech v obrázku.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks)]
-
-Definujte pomocnou funkci `formatRectDomain` pro analýzu dat umístění zjištěných orientačních bodů.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks_rect)]
-
-### <a name="get-the-image-type"></a>Získat typ obrázku
-
-Následující kód Vytiskne informace o typu obrázku &mdash; , ať už se jedná o Klipart nebo kreslení čáry.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
-
-Definujte pomocnou funkci `describeType` :
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
-
-> [!div class="nextstepaction"]
-> [Analyzoval jsem obrázek](?success=analyze-image#read-printed-and-handwritten-text) , který [jsem narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může viditelný text extrahovat v obrázku a převést jej na datový proud. Tato ukázka používá operace čtení.
+Služba OCR může extrahovat viditelný text v obrázku a převést jej na datový proud. Tato ukázka používá operace čtení.
 
 ### <a name="set-up-test-images"></a>Nastavení testovacích imagí
 
@@ -291,9 +172,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 ## <a name="next-steps"></a>Další kroky
 
+V tomto rychlém startu jste zjistili, jak nainstalovat knihovnu klienta pro rozpoznávání OCR a použít rozhraní API pro čtení. V dalším kroku se dozvíte víc o funkcích rozhraní API pro čtení.
+
 > [!div class="nextstepaction"]
->[Odkaz na rozhraní API pro počítačové zpracování obrazu (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
+>[Volání rozhraní API pro čtení](../../Vision-API-How-to-Topics/call-read-api.md)
 
-
-* [Co je počítačové zpracování obrazu?](../../overview.md)
+* [Přehled rozpoznávání OCR](../../overview-ocr.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).

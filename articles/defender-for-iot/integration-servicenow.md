@@ -4,10 +4,10 @@ description: Program Defender for IoT ICS pro ServiceNow poskytuje analytikům S
 ms.date: 1/17/2021
 ms.topic: article
 ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786001"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>Defender pro aplikaci správy služby ICS pro IoT pro ServiceNow
@@ -324,7 +324,7 @@ Tento článek popisuje informace o výstrahách zařízení nabízených do Ser
 | Vytvořeno | Čas a datum, kdy byla výstraha vygenerována. |
 | Modul | Modul, který zjistil událost. |
 | Nadpis | Název výstrahy. |
-| Popis | Popis výstrahy |
+| Description | Popis výstrahy |
 | Protokol | Protokol zjištěný v provozu. |
 | Závažnost | Závažnost výstrahy definovaná v programu Defender pro IoT |
 | Náplně | Název senzoru, který zjistil provoz. |
@@ -344,7 +344,7 @@ Vyberte položku ve sloupci vytvořeno pro zobrazení informací o výstrahách 
 
 Tento článek popisuje typ výstrah, které jednotlivé moduly aktivují.
 
-| Typ upozornění | Popis |
+| Typ upozornění | Description |
 |--|--|
 | Upozornění na porušení zásad | Aktivováno, když modul porušení zásad detekuje odchylku od dříve zjištěného provozu. Například: <br /><br />– Zjistilo se nové zařízení. <br /><br />– V zařízení se zjistila nová konfigurace. <br /><br />– Zařízení, které není definované jako programové zařízení, provede změnu v programování. <br /><br />– Změnila se verze firmwaru. |
 | Výstrahy porušení protokolu | Aktivováno, když modul porušení protokolu detekuje struktury paketů nebo hodnoty polí, které nevyhovují specifikaci protokolu. |

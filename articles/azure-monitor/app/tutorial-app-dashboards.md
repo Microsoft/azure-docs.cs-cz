@@ -1,18 +1,17 @@
 ---
 title: Vytvoření vlastních řídicích panelů ve službě Azure Application Insights | Microsoft Docs
 description: Kurz vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperf-fy21q1
-ms.openlocfilehash: 701480300101b019830c57d9aa000534fa63bb6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bad0b17bb2fed9d9f54cdd44042ec88708f35fd
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100627111"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103721"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -60,7 +59,7 @@ Jeden řídicí panel může obsahovat prostředky z více aplikací, skupin pro
 5. Vyhledejte dlaždici **Markdown** a přetáhněte ji na řídicí panel.  Tato dlaždice umožňuje přidat text formátovaný v Markdownu, který je ideální pro přidání popisného textu do řídicího panelu. Další informace najdete v tématu [použití dlaždice Markdownu na řídicích panelech Azure k zobrazení vlastního obsahu](../../azure-portal/azure-portal-markdown-tile.md).
 6. Přidejte text do vlastností dlaždice a změňte její velikost na plátně řídicího panelu.
 
-    [![Úprava dlaždice Markdown](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
+    [![Úprava dlaždice Markdown](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/markdown.png#lightbox)
 
 7. Vyberte **Hotovo přizpůsobení** v horní části obrazovky a ukončete režim přizpůsobení dlaždice.
 

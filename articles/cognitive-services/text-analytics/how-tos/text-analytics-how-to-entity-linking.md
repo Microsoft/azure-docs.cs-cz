@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598996"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280560"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -206,7 +206,7 @@ Verze 3,0 obsahuje pouze synchronní operaci. Následující JSON je příkladem
 
 ## <a name="post-the-request"></a>Publikování žádosti
 
-Analýza se provede po přijetí žádosti. Informace o velikosti a počtu požadavků, které můžete odeslat za minutu a sekundy, najdete v části [omezení dat](../overview.md#data-limits) v přehledu.
+Analýza se provede po přijetí žádosti. Informace o velikosti a počtu požadavků, které můžete odeslat za minutu a sekundy, najdete v článku [omezení dat](../overview.md#data-limits) .
 
 Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládají žádná data a výsledky se vrátí hned v odpovědi.
 

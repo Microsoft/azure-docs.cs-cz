@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9c4ffee437e3049f8e480375f0b1373fce09fe77
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: dc8f8f7ced1c5915c2ea54390685806cfcdd257f
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105646008"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280305"
 ---
 <!-- NOTE this file is temporary and a placeholder until the FAQ file update is completed. -->
 
@@ -34,7 +34,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 - Další data, která jsou přidružená k účtu Media Services (včetně šifrovacích klíčů obsahu, klíčů pro ověření tokenu, JobInputHttp adres URL a dalších metadat entit), se ukládají do úložiště vlastněných společností Microsoft v oblasti vybrané pro Media Services účet.
     - Z důvodu [požadavků](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) na umístění dat v oblasti Brazílie – jih a jihovýchodní Asie se data dalších účtů ukládají v rámci redundantní zóny a jsou obsažena v jedné oblasti. V jihovýchodní Asie se všechna data dalších účtů ukládají v Singapuru a v oblasti Brazílie – jih jsou data uložená v Brazílii.
     - V oblastech jiných než Brazílie – jih a jihovýchodní Asie můžou být data dalších účtů uložená také v úložišti vlastněných společností Microsoft v [spárované oblasti](../../best-practices-availability-paired-regions.md).
-- Azure Media Services je místní služba a neposkytuje [vysokou dostupnost](media-services-high-availability-encoding.md) nebo replikaci dat. Zákazníci, kteří potřebují tyto funkce, jsou vysoce doporučováni při vytváření řešení pomocí Media Services účtů v několika oblastech.  Ukázka ukazující, jak vytvořit řešení pro vysokou dostupnost s Media Services video na vyžádání je dostupné jako průvodce.
+- Azure Media Services je místní služba a neposkytuje [vysokou dostupnost](architecture-high-availability-encoding-concept.md) nebo replikaci dat. Zákazníci, kteří potřebují tyto funkce, jsou vysoce doporučováni při vytváření řešení pomocí Media Services účtů v několika oblastech.  Ukázka ukazující, jak vytvořit řešení pro vysokou dostupnost s Media Services video na vyžádání je dostupné jako průvodce.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Jaká jsou omezení Azure Portal Media Services V3?
 
@@ -44,15 +44,15 @@ Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní 
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jaké role Azure můžou provádět akce s Azure Media Services prostředky? 
 
-Přečtěte si téma [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](rbac-overview.md).
+Přečtěte si téma [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](security-rbac-concept.md).
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Návody Stream do zařízení Apple iOS?
 
-Ujistěte se, že máte **(Format = M3U8-AAPL)** na konci vaší cesty (po **/manifest** části adresy URL), aby server zdroje dat pro streamování vrátil HTTP Live Streaming (HLS) pro spotřebu na nativních zařízeních Apple iOS. Podrobnosti najdete v tématu [doručování obsahu](dynamic-packaging-overview.md).
+Ujistěte se, že máte **(Format = M3U8-AAPL)** na konci vaší cesty (po **/manifest** části adresy URL), aby server zdroje dat pro streamování vrátil HTTP Live Streaming (HLS) pro spotřebu na nativních zařízeních Apple iOS. Podrobnosti najdete v tématu [doručování obsahu](encode-dynamic-packaging-concept.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaká je doporučená metoda pro zpracování videí?
 
-Pomocí [transformací](/rest/api/media/transforms) můžete nakonfigurovat běžné úlohy pro kódování a analýzu videí. Každá transformace popisuje recept nebo pracovní postup úloh pro zpracování vašich videosouborů nebo zvukových souborů. [Úloha](/rest/api/media/jobs) je skutečný požadavek na Media Services, jak použít transformaci na vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní API Media Services nebo kterékoli z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
+Pomocí [transformací](/rest/api/media/transforms) můžete nakonfigurovat běžné úlohy pro kódování a analýzu videí. Každá transformace popisuje recept nebo pracovní postup úloh pro zpracování vašich videosouborů nebo zvukových souborů. [Úloha](/rest/api/media/jobs) je skutečný požadavek na Media Services, jak použít transformaci na vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní API Media Services nebo kterékoli z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transform-jobs-concept.md).
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Video se nahrálo, zakódoval a publikovalo. Proč se video při pokusu o streamování nebude přehrávat?
 
@@ -60,7 +60,7 @@ Jedním z nejběžnějších důvodů je, že nemáte koncový bod streamování
 
 ### <a name="how-does-pagination-work"></a>Jak funguje stránkování?
 
-Při použití stránkování byste měli vždy použít další odkaz k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky. Podrobnosti a příklady najdete v tématu [filtrování, řazení, stránkování](entities-overview.md).
+Při použití stránkování byste měli vždy použít další odkaz k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky. Podrobnosti a příklady najdete v tématu [filtrování, řazení, stránkování](filter-order-page-entitites-how-to.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jaké funkce ještě nejsou v Azure Media Services V3 k dispozici?
 
@@ -68,7 +68,7 @@ Podrobnosti najdete [v Průvodci migrací](migrate-v-2-v-3-migration-introductio
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaký je proces přesunutí účtu Media Services mezi předplatnými?  
 
-Podrobnosti najdete v tématu [přesun Media Services účtu mezi předplatnými](media-services-account-concept.md).
+Podrobnosti najdete v tématu [přesun Media Services účtu mezi předplatnými](account-move-account-how-to.md).
 
 ## <a name="live-streaming"></a>Živé streamování 
 
@@ -93,7 +93,7 @@ Máte tyto možnosti:
 
 Media Services V3 Live Encoding ještě nepodporuje vkládání videa nebo obrazových obrázků v živém streamu. 
 
-Pro přepnutí zdrojového videa můžete použít [živý místní kodér](recommended-on-premises-live-encoders.md) . Řada aplikací nabízí možnost přepnout zdroje, včetně Wirecast streamování, přepínač studia (v iOS) a OBS studia (bezplatná aplikace).
+Pro přepnutí zdrojového videa můžete použít [živý místní kodér](encode-recommended-on-premises-live-encoders.md) . Řada aplikací nabízí možnost přepnout zdroje, včetně Wirecast streamování, přepínač studia (v iOS) a OBS studia (bezplatná aplikace).
 
 ## <a name="content-protection"></a>Ochrana obsahu
 
@@ -109,7 +109,7 @@ Nemusíte používat žádného konkrétního poskytovatele tokenu, jako je Azur
 
 Ujistěte se, že Vystavitel, skupina a deklarace identity se přesně shodují mezi tím, co je v tokenu JWT, a `ContentKeyPolicyRestriction` hodnotou použitou v `ContentKeyPolicy` .
 
-Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynamického šifrování](content-protection-overview.md).
+Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynamického šifrování](drm-content-protection-concept.md).
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Jak a kde získá token JWT před jeho použitím k vyžádání licence nebo klíče?
 
@@ -127,8 +127,8 @@ Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování li
 
 Další informace naleznete v tématu:
 
-- [Přehled ochrany obsahu](content-protection-overview.md)
-- [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
+- [Přehled ochrany obsahu](drm-content-protection-concept.md)
+- [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](architecture-design-multi-drm-system.md)
 
 ### <a name="should-i-use-http-or-https"></a>Mám použít protokol HTTP nebo HTTPS?
 Aplikace aktéra ASP.NET MVC musí podporovat následující:
@@ -163,11 +163,11 @@ Zákazníci se často investovali do farmy licenčních serverů buď ve vlastn�
 
 V současné době můžete použít [Azure Portal](https://portal.azure.com/) k těmto akcím:
 
-* Spravujte [živé události](live-events-outputs-concept.md) v Media Services V3. 
+* Spravujte [živé události](live-event-outputs-concept.md) v Media Services V3. 
 * Umožňuje zobrazit (Nespravovat) [prostředky](assets-concept.md)v3. 
 * [Získejte informace o přístupu k rozhraním API](./access-api-howto.md). 
 
-Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/), [Azure CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+Pro všechny ostatní úlohy správy (například [transformace a úlohy](transform-jobs-concept.md) a [Ochrana obsahu](drm-content-protection-concept.md)) použijte [REST API](/rest/api/media/), [Azure CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Je v v3 koncept AssetFile?
 
@@ -207,7 +207,7 @@ Stažená struktura souborů na zařízení se systémem iOS vypadá jako na ná
 
 První složka s názvem, který končí spojovníkem následovaným číslem, obsahuje obsah videa. Číselná hodnota je šířka pásma ve špičce pro verze videa. Druhá složka s názvem, který končí čárkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem `Data` obsahuje hlavní seznam skladeb obsahu FPS. Nakonec boot.xml poskytuje úplný popis `.movpkg` obsahu složky. 
 
-![Struktura offline souborů pro ukázkovou aplikaci FairPlay iOS](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+![Struktura offline souborů pro ukázkovou aplikaci FairPlay iOS](media/drm-offline-fairplay-for-ios-concept/offline-fairplay-file-structure.png)
 
 Zde je ukázkový soubor boot.xml:
 
@@ -253,7 +253,7 @@ V závislosti na obchodní logice vlastní služby STS se v tokenu JWT vydávaj�
 
 #### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Jaké je mapování mezi Widevine a Media Services úrovní zabezpečení DRM?
 
-Přehled architektury DRM společnosti Google "Widevine" definuje tři úrovně zabezpečení. [Dokumentace Azure Media Services v šabloně licence Widevine](widevine-license-template-overview.md) ale popisuje pět úrovní zabezpečení (požadavky na odolnost klienta pro přehrávání). V této části se dozvíte, jak se mapují úrovně zabezpečení.
+Přehled architektury DRM společnosti Google "Widevine" definuje tři úrovně zabezpečení. [Dokumentace Azure Media Services v šabloně licence Widevine](drm-widevine-license-template-concept.md) ale popisuje pět úrovní zabezpečení (požadavky na odolnost klienta pro přehrávání). V této části se dozvíte, jak se mapují úrovně zabezpečení.
 
 Obě sady úrovní zabezpečení jsou definované Google Widevine. Rozdíl je v úrovni využití: architektura nebo rozhraní API. V rozhraní API Widevine se používá pět úrovní zabezpečení. `content_key_specs`Objekt, který obsahuje `security_level` , je rekonstruován a předán službě Widevine Global Delivery Service pomocí licenční služby Azure Media Services Widevine. Následující tabulka ukazuje mapování mezi dvěma sadami úrovní zabezpečení.
 

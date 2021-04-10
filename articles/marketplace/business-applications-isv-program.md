@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99507532"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103381"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce onboardingem programu Microsoft Business Applications ISV (Independent Software Vendor) Connect
 
@@ -25,7 +25,7 @@ Pokud chcete zaregistrovat a využít výhody pro Business Applications softwaru
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Nastavení účtu partnerského centra Microsoftu
 
-Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte kroky popsané v článku [Vytvoření účtu komerčního tržiště v partnerském centru](./partner-center-portal/create-account.md). Tento článek poskytuje všechny kroky pro vytvoření nového účtu a také informace o přidání nových vydavatelů do programu komerčního tržiště.
+Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte kroky popsané v článku [Vytvoření účtu komerčního tržiště v partnerském centru](create-account.md). Tento článek poskytuje všechny kroky pro vytvoření nového účtu a také informace o přidání nových vydavatelů do programu komerčního tržiště.
 
 > [!NOTE]
 > Tento krok vyžaduje roli *vlastníka* nebo *manažera* v partnerském centru.
