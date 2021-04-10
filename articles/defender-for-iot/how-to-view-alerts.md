@@ -7,10 +7,10 @@ ms.author: shhazam
 ms.date: 3/22/2021
 ms.topic: how-to
 ms.openlocfilehash: 391d1872124c7332bdaa6008a244490b47df4bf7
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781581"
 ---
 # <a name="filter-and-manage-alerts-from-the-alerts-page"></a>Filtrování a správa výstrah ze stránky s výstrahami 
@@ -31,7 +31,7 @@ Zobrazení výstrah:
 
 Výstrahy můžete zobrazit podle různých kategorií v hlavním zobrazení **výstrahy** . Vyberte výstrahu, chcete-li zkontrolovat podrobnosti a spravovat událost.
 
-| Seřadit podle typu | Popis |
+| Seřadit podle typu | Description |
 |--|--|
 | **Důležité výstrahy** | Výstrahy seřazené podle důležitosti. |
 | **Připnuté výstrahy** | Upozorňuje, že uživatel připnul k dalšímu šetření. Připnuté výstrahy nejsou archivovány a jsou uloženy po dobu 14 dní v připnuté složce. |

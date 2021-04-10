@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0f030683954ede013f769bf8584e6cf82bab69f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c6a53acd63b6aa882674f6aa29e1f7152f5b0a30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103555422"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728806"
 ---
 # <a name="copy-data-from-google-cloud-storage-to-azure-storage-by-using-azcopy-preview"></a>Kopírování dat ze služby Google Cloud Storage do Azure Storage pomocí AzCopy (Preview)
 
@@ -63,7 +63,7 @@ AzCopy používá [blok Put z](/rest/api/storageservices/put-block-from-url) roz
 
 Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, které mají hierarchický obor názvů.
 
-|    |     |
+| Syntaxe/příklad  |  Kód |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Příklad** | `azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -74,7 +74,7 @@ Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, kte
 
 Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, které mají hierarchický obor názvů.
 
-|    |     |
+| Syntaxe/příklad  |  Kód |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Příklad** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -87,7 +87,7 @@ Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, kte
 
 Obsah adresáře můžete zkopírovat bez zkopírování samotného adresáře, který obsahuje zástupný symbol (*).
 
-|    |     |
+| Syntaxe/příklad  |  Kód |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Příklad** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -97,7 +97,7 @@ Obsah adresáře můžete zkopírovat bez zkopírování samotného adresáře, 
 
 Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, které mají hierarchický obor názvů.
 
-|    |     |
+| Syntaxe/příklad  |  Kód |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Příklad** | `azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -109,7 +109,7 @@ Nejprve nastavte `GOOGLE_CLOUD_PROJECT` ID projektu pro Google Cloud Project.
 
 Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, které mají hierarchický obor názvů.
 
-|    |     |
+| Syntaxe/příklad  |  Kód |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Příklad** | `azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -121,7 +121,7 @@ Nejprve nastavte `GOOGLE_CLOUD_PROJECT` ID projektu pro Google Cloud Project.
 
 Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kontejneru. Použijte stejnou syntaxi adresy URL ( `blob.core.windows.net` ) pro účty, které mají hierarchický obor názvů.
 
-|    |     |
+| Syntaxe/příklad  |  Kód |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://storage.cloud.google.com/<bucket*name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Příklad** | `azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |

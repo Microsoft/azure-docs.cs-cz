@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100581207"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
@@ -22,7 +22,7 @@ Azure Automation může odesílat datové proudy úloh sady Runbook a streamová
 * Korelujte úlohy mezi účty Automation.
 * Pomocí vlastních zobrazení a vyhledávacích dotazů můžete vizualizovat výsledky Runbooku, stav úlohy Runbooku a další související klíčové ukazatele nebo metriky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít odesílat protokoly pro automatizaci Azure Monitor protokolů, budete potřebovat:
 

@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: aacbf2ceab8580727b1885bf6533cd74a7c4e60a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101099059"
 ---
 # <a name="cache-purging-in-azure-front-door-standardpremium-preview"></a>Vymazání mezipaměti v Azure front-end Standard/Premium (Preview)
@@ -30,7 +30,7 @@ Osvědčeným postupem je zajistit, aby vaši uživatelé vždycky získali nejn
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Přečtěte si [mezipaměť front-dveří Azure](concept-caching.md) , abyste zjistili, jak funguje ukládání do mezipaměti.
 

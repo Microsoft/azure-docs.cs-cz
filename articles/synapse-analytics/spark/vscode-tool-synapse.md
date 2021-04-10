@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
 ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943771"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí VSCode pomocí pracovního prostoru synapse
@@ -22,7 +22,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 

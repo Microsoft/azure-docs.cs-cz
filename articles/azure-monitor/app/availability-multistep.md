@@ -4,10 +4,10 @@ description: Nastavení webových testů s více kroky pro monitorování webov�
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719844"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
@@ -138,7 +138,7 @@ Porovnáním různých relací identifikujte token předaný zpět z webu ověř
 Uložte webový test pomocí sady Visual Studio.
 Parametrizujte tokeny, nastavte parametr při vrácení tokenu z ověřovatele a použijte ho v dotazu na web. (Sada Visual Studio se pokusí o parametrizaci testu, ale nebude tokeny parametrizovat správně.)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

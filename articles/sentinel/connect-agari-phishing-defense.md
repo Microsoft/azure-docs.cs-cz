@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: a60a0291d6669b2a9115dffa8e0d4d63fae4a440
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101724434"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Propojte svá řešení ochrany před podvodnými útoky a ochranou před hrozbami v Azure Sentinel
@@ -33,7 +33,7 @@ Kromě toho můžou zákazníci s podporou ochrany před hrozbami využít výho
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro připojení ochrany před podvodnými útoky a ochranou proti útokům z agaru do Azure Sentinel se vyžadují následující:
 

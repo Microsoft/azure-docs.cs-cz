@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103563160"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Použití rozhraní příkazového řádku Azure ke správě seznamů ACL v Azure Data Lake Storage Gen2
@@ -25,7 +25,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Referenční informace](/cli/azure/storage/fs/access)  |  [Ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -257,7 +257,7 @@ az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --con
 ## <a name="see-also"></a>Viz také
 
 - [ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-- [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
+- [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-cli-extensions/issues)
 - [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 - [Model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
 - [Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

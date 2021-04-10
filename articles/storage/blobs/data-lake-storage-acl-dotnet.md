@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 626e89d8d758d5fe31ef6c913076a9154274bb61
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100654094"
 ---
 # <a name="use-net-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Použití rozhraní .NET ke správě seznamů ACL v Azure Data Lake Storage Gen2
@@ -24,7 +24,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  |  Ukázka rekurzivního [seznamu ACL](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)  |  Reference k rozhraní [API](/dotnet/api/azure.storage.files.datalake)  |  Mapování Gen1 na [Gen2](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-net/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -234,6 +234,6 @@ Příklad, který v dávkách nastavuje rekurzivní seznamy ACL zadáním veliko
 - [ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
 - [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
 - [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-sdk-for-net/issues)
+- [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-net/issues)
 - [Model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
 - [Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

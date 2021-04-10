@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 00c28a9ede01a74f4ae64109d277276050047461
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653760"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
@@ -21,7 +21,7 @@ Přihlašovací údaje pro úložiště dat a výpočetní služby můžete ukl�
 
 V současné době všechny typy aktivit kromě vlastní aktivity podporují tuto funkci. Pro konfiguraci konektoru se konkrétně podívejte na podrobnosti v části Vlastnosti propojené služby v [jednotlivých tématech](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce závisí na spravované identitě objektu pro vytváření dat. Naučte se, jak to funguje ze [spravované identity pro datovou továrnu](data-factory-service-identity.md) , a ujistěte se, že je k datové továrně přidružená jedna.
 

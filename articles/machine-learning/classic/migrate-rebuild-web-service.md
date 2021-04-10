@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
 ms.openlocfilehash: 5e467d22cc3230bd9945fb276dc16cf1fa765bb6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103565006"
 ---
 # <a name="rebuild-a-studio-classic-web-service-in-azure-machine-learning"></a>Opětovné sestavení webové služby studia (Classic) v Azure Machine Learning
@@ -26,7 +26,7 @@ Tento článek je součástí studia (Classic) pro Azure Machine Learning řady 
 > [!NOTE]
 > Tato řada migrace se zaměřuje na návrháře přetahování. Další informace o tom, jak programově nasazovat modely, najdete v tématu [nasazení modelů strojového učení v Azure](../how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Pracovní prostor služby Azure Machine Learning. [Vytvořte pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace).
