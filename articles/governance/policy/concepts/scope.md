@@ -1,20 +1,19 @@
 ---
 title: Vysvětlení oboru v Azure Policy
 description: Popisuje pojem oboru v Azure Resource Manager a způsob, jakým se vztahuje na Azure Policy k řízení toho, které prostředky Azure Policy vyhodnotí.
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90984427"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167732"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Vysvětlení oboru v Azure Policy
 
-K dispozici je několik nastavení, která určují, které prostředky jsou schopné vyhodnocovat a které prostředky vyhodnocují Azure Policy. Primární koncept pro tyto ovládací prvky je _Rozsah_.
-Podrobný přehled naleznete [v tématu Scope in Azure Resource Manager](../../../azure-resource-manager/management/overview.md#understand-scope).
-Tento článek vysvětluje dopad _oboru_ v Azure Policy a související objekty a vlastnosti.
+Existuje mnoho nastavení, které určuje, které prostředky je možné vyhodnotit a které prostředky vyhodnocují Azure Policy. Primární koncept pro tyto ovládací prvky je _Rozsah_. Obor v Azure Policy je založený na tom, jak rozsah funguje v Azure Resource Manager. Podrobný přehled naleznete [v tématu Scope in Azure Resource Manager](../../../azure-resource-manager/management/overview.md#understand-scope).
+Tento článek vysvětluje důležitost _rozsahu_ v Azure Policy a související objekty a vlastnosti.
 
 ## <a name="definition-location"></a>Umístění definice
 

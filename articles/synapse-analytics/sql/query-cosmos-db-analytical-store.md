@@ -10,12 +10,12 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 10262b168b91370956c9559ba688c72213ba7618
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 64a112fd29ee9e3fbb82d9b54322415569b3ff85
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870989"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209532"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve službě Azure synapse Link
 
@@ -33,22 +33,31 @@ Fond SQL bez serveru umožňuje dotazovat se na Azure Cosmos DB analytické úlo
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET s klíčem](#tab/openrowset-key)
 
-Aby bylo možné podporovat dotazování a analýzu dat ve službě Azure Cosmos DB Analytical Store, fond SQL bez serveru používá následující `OPENROWSET` syntaxi:
+Aby bylo možné podporovat dotazování a analýzu dat v Azure Cosmos DB analytickém úložišti, je použit fond SQL bez serveru. Fond SQL bez serveru používá `OPENROWSET` syntaxi SQL, takže je nutné nejprve převést Azure Cosmos DB připojovací řetězec do tohoto formátu:
 
 ```sql
 OPENROWSET( 
        'CosmosDB',
-       '<Azure Cosmos DB connection string>',
+       '<SQL connection string for Azure Cosmos DB>',
        <Container name>
     )  [ < with clause > ] AS alias
 ```
 
-Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti `OPENROWSET` funkce.
+Připojovací řetězec SQL pro Azure Cosmos DB Určuje název účtu Azure Cosmos DB, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti `OPENROWSET` funkce. Některé z těchto informací lze považovat ze standardního připojovacího řetězce Azure Cosmos DB.
 
-Připojovací řetězec má následující formát:
+Převod ze standardního formátu připojovacího řetězce Azure Cosmos DB:
+
+```
+AccountEndpoint=https://<database account name>.documents.azure.com:443/;AccountKey=<database account master key>;
+```
+
+Připojovací řetězec SQL má následující formát:
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
+
+Oblast je volitelná. Je-li tento parametr vynechán, je použita primární oblast kontejneru.
 
 Název kontejneru Azure Cosmos DB je zadán bez uvozovek v `OPENROWSET` syntaxi. Pokud má název kontejneru nějaké speciální znaky, například pomlčkou (-), měl by se název v syntaxi uzavřít do hranatých závorek ( `[]` ) `OPENROWSET` .
 
@@ -59,13 +68,14 @@ Můžete použít `OPENROWSET` syntaxi, která odkazuje na přihlašovací údaj
 ```sql
 OPENROWSET( 
        PROVIDER = 'CosmosDB',
-       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       CONNECTION = '<SQL connection string for Azure Cosmos DB without account key>',
        OBJECT = '<Container name>',
        [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
     )  [ < with clause > ] AS alias
 ```
 
-Připojovací řetězec Azure Cosmos DB v tomto případě neobsahuje klíč. Připojovací řetězec má následující formát:
+Připojovací řetězec SQL pro Azure Cosmos DB v tomto případě neobsahuje klíč. Připojovací řetězec má následující formát:
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>'
 ```
@@ -165,6 +175,7 @@ I když funkce automatického odvození schématu v nástroji `OPENROWSET` posky
 Tyto ploché dokumenty JSON ve Azure Cosmos DB můžou být reprezentované jako sada řádků a sloupců v synapse SQL. `OPENROWSET`Funkce umožňuje určit podmnožinu vlastností, které chcete číst, a přesné typy sloupců v `WITH` klauzuli:
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET s klíčem](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -173,7 +184,9 @@ FROM OPENROWSET(
        Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
+
 ### <a name="openrowset-with-credential"></a>[OPENROWSET s přihlašovacími údaji](#tab/openrowset-credential)
+
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
@@ -186,7 +199,9 @@ FROM OPENROWSET(
       OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+   
 ```
+
 ---
 Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
@@ -256,7 +271,7 @@ WITH (  paper_id    varchar(8000),
 Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
 | paper_id | title | zprostředkovatele identity | Autoři |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | bb11206963e831f... | Doplňující informace epidemi... | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
 | bb1206963e831f1... | Použití Convalescent séra v imunní-E... | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
 | bb378eca9aac649... | Tylosema esculentum (Marama) hlízy a B... | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 

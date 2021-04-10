@@ -12,10 +12,10 @@ ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
 ms.openlocfilehash: 9da83746cdaf693922b88841cd9c0fac432611c9
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870836"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
@@ -76,7 +76,7 @@ Než začnete používat toto rozhraní API, pochopte:
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Hlavička | Popis | Požadováno/volitelné |
+| Hlavička | Description | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
@@ -213,7 +213,7 @@ Tyto oblasti jsou podporované pro převod textu na řeč pomocí REST API. Ujis
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Hlavička | Popis | Požadováno/volitelné |
+| Hlavička | Description | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
 | `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Vyžadováno |

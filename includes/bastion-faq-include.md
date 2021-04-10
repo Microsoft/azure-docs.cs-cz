@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ba0e7173c41e26a698596fa18bf1fc1453f3fb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99628960"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073352"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Potřebuji na svém virtuálním počítači veřejnou IP adresu pro připojení přes Azure bastionu?
 
@@ -22,6 +22,10 @@ No. Když se připojíte k VIRTUÁLNÍmu počítači pomocí Azure bastionu, nep
 ### <a name="is-ipv6-supported"></a>Je podporován protokol IPv6?
 
 V současné době se nepodporuje protokol IPv6. Azure bastionu podporuje jenom protokol IPv4.
+
+### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Můžu použít Azure bastionu se zónami Privátní DNS Azure?
+
+Používání Azure bastionu se zónami Azure Privátní DNS se v tuto chvíli nepodporuje. Před nasazením prostředku Azure bastionu se ujistěte, že virtuální síť hostitele není propojená s privátní zónou DNS.
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Potřebuji klienta RDP nebo SSH?
 

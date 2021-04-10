@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: Zdroje a prostředky
       items:
-        - name: Podpora standardního hlasu
-          href: language-support.md#standard-voices
         - name: Podpora neurálního hlasu
           href: language-support.md#neural-voices
         - name: Podpora oblastí
@@ -249,7 +247,7 @@
     - name: Přehled rozpoznávání záměru
       href: intent-recognition.md
     - name: Rychlé zprovoznění rozpoznávání záměrů
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: Návody
       items:
         - name: 'Rozpoznávání záměru řeči s využitím LUIS, C#'
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: Povolení privátního koncového bodu
       href: speech-services-private-link.md
+    - name: Povolit koncový bod služby virtuální sítě
+      href: speech-service-vnet-service-endpoint.md
     - name: Konfigurace OpenSSL pro Linux
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

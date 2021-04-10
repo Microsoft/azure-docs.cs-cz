@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ee483872535c58bde521cf0a751058fdc2fecd40
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871448"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (C#)
@@ -94,7 +94,7 @@ topologyBuilder.SetJavaBolt(
 
 Kompletní verzi projektu vytvořeného v tomto článku si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Přesto ale budete muset zadat nastavení konfigurace podle kroků v tomto článku.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3111b3a102abd923169cf655f1d71e79b19f7d5d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d287f5dc239339f79d2d8237e7739de7793920c4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598129"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108604"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrace a kontrola Azure synapse Analytics
 
@@ -26,7 +26,7 @@ Azure synapse Analytics (dřív SQL DW) podporuje úplné a přírůstkové kont
 
 Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) v Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.
@@ -93,7 +93,7 @@ Kromě toho musíte také vytvořit uživatele služby Azure AD ve službě Azur
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [ServicePrincipalName]
+ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
 GO
 ```
 

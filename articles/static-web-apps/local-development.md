@@ -2,207 +2,152 @@
 title: Nastavení místního vývoje pro statickou Web Apps Azure
 description: Naučte se nastavit místní vývojové prostředí pro statickou Web Apps Azure.
 services: static-web-apps
-author: burkeholland
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.author: buhollan
+ms.date: 04/02/2021
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91326163"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275492"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Nastavení místního vývoje pro Azure static Web Apps Preview
 
-Instance statického Web Apps Azure se skládá ze dvou různých typů aplikací. První je webová aplikace pro váš statický obsah. Webové aplikace se často vytvářejí pomocí front-endové architektury a knihoven nebo se statickými generátory webů. Druhým aspektem je rozhraní API, což je Azure Functions aplikace, která poskytuje bohatší prostředí pro vývoj v back-endu.
+Při publikování do cloudu má web Azure static Web Apps mnoho služeb, které společně fungují, jako by se jedná o stejnou aplikaci. Mezi tyto služby patří:
 
-Při spuštění v cloudu Azure static Web Apps hladce namapuje požadavky na `api` trasu z webové aplikace do aplikace Azure Functions, aniž by vyžadovala konfiguraci CORS. V místním prostředí je nutné nakonfigurovat aplikaci tak, aby napodobuje toto chování.
+- Statická webová aplikace
+- Rozhraní API pro Azure Functions
+- Služby ověřování a autorizace
+- Služby Směrování a konfigurace
 
-Tento článek popisuje doporučené osvědčené postupy pro místní vývoj, včetně následujících konceptů:
+Tyto služby musí vzájemně komunikovat a služba Azure static Web Apps zpracovává tuto integraci pro vás v cloudu.
 
-- Nastavení webové aplikace pro statický obsah
-- Konfigurace aplikace Azure Functions pro rozhraní API vaší aplikace
-- Ladění a spuštění aplikace
-- Osvědčené postupy pro strukturu souborů a složek vaší aplikace
+V místním prostředí se ale tyto služby neseskupují automaticky.
+
+Aby se zajistilo podobné prostředí jako v Azure, rozhraní příkazového [řádku Azure Static Web Apps](https://github.com/Azure/static-web-apps-cli) poskytuje tyto služby:
+
+- Místní statický server lokality
+- Server proxy k vývojovému serveru front-end rozhraní
+- Proxy k koncovým bodům rozhraní API – k dispozici prostřednictvím Azure Functions Core Tools
+- Maketa ověřování a autorizační Server
+- Vynucování místních tras a nastavení konfigurace
+
+## <a name="how-it-works"></a>Jak to funguje
+
+Následující tabulka ukazuje, jak se požadavky zpracovávají místně.
+
+:::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Tok požadavků a odpovědí v Azure static Web App CLI":::
+
+> [!IMPORTANT]
+> Přejděte na adresu [http://localhost:4280](http://localhost:4280) pro přístup k aplikaci obsluhované rozhraním příkazového řádku.
+
+- **Požadavky odeslané** na port `4280` se předávají příslušnému serveru v závislosti na typu požadavku.
+
+- Požadavky na **statický obsah** , jako je HTML nebo CSS, se zpracovávají interním serverem pro statický obsah CLI nebo serverem front-end rozhraní pro ladění.
+
+- Žádosti o **ověření a autorizaci** zpracovává emulátor, který pro vaši aplikaci poskytuje falešný profil identity.
+
+- **Functions Core Tools runtime** zpracovává požadavky na rozhraní API webu.
+
+- **Odpovědi** ze všech služeb jsou vraceny do prohlížeče, jako kdyby byly všechny jednotlivé aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
-- [Rozšíření pro živý Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) pro Visual Studio Code
-  - Nutné jenom v případě, že nepoužíváte rozhraní příkazového řádku front-end JavaScript nebo statického generátoru webu.
+- **Stávající web Azure Static Web Apps**: Pokud ho ještě nemáte, začněte s aplikací [Vanilla-API](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) Starter.
+- **[Node.js](https://nodejs.org) s npm**: Spusťte [Node.js verzi LTS](https://nodejs.org) , která zahrnuje přístup k [npm](https://www.npmjs.com/).
+- **[Visual Studio Code](https://code.visualstudio.com/)**: používá se pro ladění aplikace API, ale nevyžaduje se pro rozhraní příkazového řádku.
 
-## <a name="run-projects-locally"></a>Spustit projekty místně
+## <a name="get-started"></a>Začínáme
 
-Místní spuštění statické webové aplikace Azure zahrnuje tři procesy v závislosti na tom, jestli projekt obsahuje rozhraní API.
+Otevřete terminál do kořenové složky stávajícího webu Azure static Web Apps.
 
-- Spuštění místního webového serveru
-- Spuštění rozhraní API
-- Připojení webového projektu k rozhraní API
+1. Nainstalujte rozhraní příkazového řádku.
 
-V závislosti na tom, jak je web sestavený, může nebo nemusí být nutný k spuštění aplikace v prohlížeči místní webový server. Při použití front-end rozhraní JavaScript a generátorů statických webů je tato funkce integrovaná do příslušných rozhraní příkazového řádku (rozhraní příkazového řádku). Následující odkazy odkazují na odkaz CLI pro výběr platforem, knihoven a generátorů.
+    `npm install -g @azure/static-web-apps-cli`
 
-### <a name="javascript-frameworks-and-libraries"></a>JavaScriptové architektury a knihovny
+1. Sestavte aplikaci, pokud to vyžaduje vaše aplikace.
 
-- [Angular CLI](https://angular.io/cli)
-- [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html)
-- [Reagovat CLI](https://create-react-app.dev/)
+    Spustit `npm run build` nebo ekvivalentní příkaz pro váš projekt.
 
-### <a name="static-site-generators"></a>Generátory statických webů
+1. Přejděte do výstupního adresáře aplikace. Výstupní složky se často nazývají _Build_ nebo něco podobného.
 
-- [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/)
-- [Hugo](https://gohugo.io/getting-started/quick-start/)
-- [Jekyll](https://jekyllrb.com/docs/usage/)
+1. Spusťte rozhraní příkazového řádku.
 
-Pokud k obsluze svého webu používáte nástroj rozhraní příkazového řádku, můžete přeskočit na běžící část [rozhraní API](#run-api-locally) .
+    `swa start`
 
-### <a name="running-a-local-web-server-with-live-server"></a>Spuštění místního webového serveru s živým serverem
+1. Přejděte k [http://localhost:4280](http://localhost:4280) zobrazení aplikace v prohlížeči.
 
-Live Server Extension for Visual Studio Code poskytuje místní vývojový webový server, který obsluhuje statický obsah.
+### <a name="other-ways-to-start-the-cli"></a>Další způsoby, jak spustit rozhraní příkazového řádku
 
-#### <a name="create-a-repository"></a>Vytvořte úložiště
+| Description | Příkaz |
+|--- | --- |
+| Obsluha konkrétní složky | `swa start ./output-folder` |
+| Použití běžícího vývojového serveru architektury | `swa start http://localhost:3000` |
+| Spuštění aplikace Functions ve složce | `swa start ./output-folder --api ./api` |
+| Použití spuštěné aplikace Functions | `swa start ./output-folder --api http://localhost:7071` |
 
-1. Ujistěte se, že jste přihlášeni k GitHubu, a [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) pomocí této šablony přejděte do a vytvořte nový projekt GitHubu s názvem **Vanilla-API**.
+## <a name="authorization-and-authentication-emulation"></a>Emulace autorizace a ověřování
 
-    :::image type="content" source="media/local-development/vanilla-api.png" alt-text="Nové okno úložiště GitHubu":::
+Statický Web Apps CLI emuluje [tok zabezpečení](./authentication-authorization.md) implementovaný v Azure. Když se uživatel přihlásí, můžete v aplikaci definovat falešný profil identity, který jste vrátili.
 
-1. Otevřete Visual Studio Code.
+Když se například pokusíte přejít na `/.auth/login/github` , vrátí se stránka, která vám umožní definovat profil identity.
 
-1. Stisknutím klávesy **F1** otevřete paletu příkazů.
+> [!NOTE]
+> Emulátor funguje s jakýmkoli poskytovatelem zabezpečení, nikoli jenom GitHubem.
 
-1. Do vyhledávacího pole zadejte **Clone** a vyberte **git: Clone**.
+:::image type="content" source="media/local-development/auth-emulator.png" alt-text="Místní ověřování a emulátor autorizace":::
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="možnost klonování Git v Visual Studio Code":::
+Emulátor poskytuje stránku, která vám umožní zadat následující hlavní hodnoty [klienta](./user-information.md#client-principal-data) :
 
-1. Jako **adresu URL úložiště** zadejte následující hodnotu.
+| Hodnota | Popis |
+| --- | --- |
+| **Uživatelské jméno** | Název účtu, který je přidružený k poskytovateli zabezpečení. Tato hodnota se zobrazí jako `userDetails` vlastnost v objektu zabezpečení klienta a je generována automaticky, pokud nezadáte hodnotu. |
+| **ID uživatele** | Hodnota, kterou vygenerovalo rozhraní příkazového řádku  |
+| **Role** | Seznam názvů rolí, kde jsou jednotlivé názvy na novém řádku  |
 
-   ```http
-   git@github.com:<YOUR_GITHUB_ACCOUNT>/vanilla-api.git
-   ```
+Po přihlášení:
 
-1. Vyberte umístění složky pro nový projekt.
+- `/.auth/me`K načtení [objektu zabezpečení klienta](./user-information.md)uživatele můžete použít koncový bod nebo koncový bod funkce.
 
-1. Při zobrazení výzvy k otevření klonovaného úložiště vyberte **Otevřít**.
+- Když přejdete k `./auth/logout` vymazání objektu zabezpečení klienta a odhlásíte uživatele s přípravou.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Otevřít v novém okně":::
+## <a name="debugging"></a>Ladění
 
-Visual Studio Code otevře Klonovaný projekt v editoru.
+Ve statické webové aplikaci existují dva kontexty ladění. První je pro web se statickým obsahem a druhý pro funkce rozhraní API. Místní ladění je možné tím, že umožňuje, aby statické Web Apps CLI používaly pro jeden nebo oba tyto kontexty vývojové servery.
 
-### <a name="run-the-website-locally-with-live-server"></a>Místní spuštění webu pomocí živého serveru
+Následující kroky ukazují běžný scénář, který používá vývojové servery pro kontexty ladění.
 
-1. Stisknutím klávesy **F1** otevřete paletu příkazů.
+1. Spusťte server pro vývoj statických webů. Tento příkaz je specifický pro rozhraní front-end, které používáte, ale často se dodává ve formě příkazů `npm run build` , jako jsou, `npm start` nebo `npm run dev` .
 
-1. Do vyhledávacího pole zadejte **Live Server** a vyberte **živý Server: otevřít na Live serveru.**
+1. Otevřete složku aplikace API v Visual Studio Code a spusťte ladicí relaci.
 
-    Otevře se karta prohlížeče pro zobrazení aplikace.
+1. Předejte adresy pro statický Server a Server rozhraní API do příkazu tak, že je uvedete `swa start` v pořadí.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="Jednoduchý statický web běžící v prohlížeči":::
+    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
 
-    Tato aplikace provede požadavek HTTP na `api/message` koncový bod. V tuto chvíli se tato žádost nezdařila, protože část rozhraní API této aplikace musí být spuštěná.
+Následující snímky obrazovky znázorňují terminály pro typický scénář ladění:
 
-### <a name="run-api-locally"></a>Spustit rozhraní API místně
+Web statického obsahu je spuštěn prostřednictvím `npm run dev` .
 
-Rozhraní API pro statické Web Apps služby Azure jsou napájená pomocí Azure Functions. Podrobnosti týkající se přidání rozhraní API do projektu statického Web Apps Azure najdete v tématu [Přidání rozhraní API do služby Azure static Web Apps s Azure Functions](add-api.md) .
+:::image type="content" source="media/local-development/run-dev-static-server.png" alt-text="Server pro vývoj statických webů":::
 
-V rámci procesu vytváření rozhraní API je pro Visual Studio Code vytvořena konfigurace spuštění. Tato konfigurace se nachází ve složce _. VSCode_ . Tato složka obsahuje všechna požadovaná nastavení pro místní sestavování a spouštění rozhraní API.
+Aplikace Azure Functions API spouští ladicí relaci v Visual Studio Code.
 
-1. V Visual Studio Code spusťte rozhraní API stisknutím klávesy **F5** .
+:::image type="content" source="media/local-development/visual-studio-code-debugging.png" alt-text="Ladění rozhraní API Visual Studio Code":::
 
-1. Otevře se nová instance Terminálové služby, která zobrazuje výstup z procesu sestavení rozhraní API.
+Statický Web Apps CLI se spouští pomocí vývojových serverů.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Rozhraní API běžící v Visual Studio Code terminálu":::
+:::image type="content" source="media/local-development/static-web-apps-cli-terminal.png" alt-text="Terminál Azure static Web Apps CLI":::
 
-   Stavový řádek v Visual Studio Code je nyní oranžová. Tato barva indikuje, že rozhraní API je teď spuštěné a že je připojený ladicí program.
+Nyní požadavky na přechod přes port `4280` se směrují buď na server pro vývoj statických obsahu, nebo na relaci ladění rozhraní API.
 
-1. Potom stiskněte **kombinaci kláves Ctrl/Cmd** a kliknutím na adresu URL v terminálu otevřete okno prohlížeče, které volá rozhraní API.
-
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Prohlížeč výsledek volání rozhraní API":::
-
-### <a name="debugging-the-api"></a>Ladění rozhraní API
-
-1. Otevřete soubor _API/GetMessage/index.js_ v Visual Studio Code.
-
-1. Klikněte na levý okraj na řádku 2 a nastavte zarážku. Zobrazí se červená tečka, která indikuje, že je nastavená zarážka.
-
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Zarážka v Visual Studio Code":::
-
-1. V prohlížeči aktualizujte stránku běžící na <http://127.0.0.1:7071/api/message> .
-
-1. Zarážka je v Visual Studio Code a spuštění programu je pozastavené.
-
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Pozice zarážky v Visual Studio Code":::
-
-   V Visual Studio Code pro vaše rozhraní API [je k dispozici kompletní prostředí ladění](https://code.visualstudio.com/Docs/editor/debugging) .
-
-1. Pokračujte v provádění kliknutím na tlačítko **pokračovat** na panelu ladění.
-
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Tlačítko pokračovat v Visual Studio Code":::
-
-### <a name="calling-the-api-from-the-application"></a>Volání rozhraní API z aplikace
-
-Po nasazení Azure static Web Apps automaticky mapuje tyto požadavky do koncových bodů ve složce _rozhraní API_ . Toto mapování zajišťuje, aby žádosti z aplikace do rozhraní API vypadaly jako v následujícím příkladu.
-
-```javascript
-let response = await fetch("/api/message");
-```
-
-V závislosti na tom, jestli je vaše aplikace sestavená pomocí rozhraní příkazového řádku jazyka JavaScript, existují dva způsoby, jak nakonfigurovat cestu k `api` trase při místním spuštění aplikace.
-
-- Konfigurační soubory prostředí (doporučeno pro JavaScriptové architektury a knihovny)
-- Místní proxy server
-
-### <a name="environment-configuration-files"></a>Konfigurační soubory prostředí
-
-Pokud vytváříte aplikaci s využitím front-endové architektury, které mají rozhraní příkazového řádku, měli byste použít konfigurační soubory prostředí. Jednotlivé architektury nebo knihovny mají jiný způsob zpracování těchto konfiguračních souborů prostředí. Je běžné mít konfigurační soubor pro vývoj, který se používá, když vaše aplikace běží místně, a jednu pro produkční prostředí, která se používá, když je vaše aplikace spuštěná v produkčním prostředí. Rozhraní příkazového řádku pro generátor JavaScriptu nebo statických webů, které používáte, bude automaticky znát použití vývojového souboru v místním počítači a produkční soubor, když je vaše aplikace sestavená pomocí statického Web Apps Azure.
-
-V konfiguračním souboru pro vývoj můžete zadat cestu k rozhraní API, která odkazuje na místní umístění, `http:127.0.0.1:7071` kde rozhraní API vaší lokality běží místně.
-
-```
-API=http:127.0.0.1:7071/api
-```
-
-V konfiguračním souboru produkčního prostředí zadejte cestu k rozhraní API jako `api` . Tímto způsobem bude vaše aplikace při spuštění v produkčním prostředí volat rozhraní API prostřednictvím "yoursite.com/api".
-
-```
-API=api
-```
-
-Na tyto hodnoty konfigurace se dá odkazovat jako na proměnné prostředí uzlu v JavaScriptu pro webovou aplikaci.
-
-```js
-let response = await fetch(`${process.env.API}/message`);
-```
-
-Když se rozhraní příkazového řádku používá ke spuštění vašeho webu v režimu pro vývoj nebo při vytváření lokality pro produkční prostředí, `process.env.API` hodnota se nahradí hodnotou z příslušného konfiguračního souboru.
-
-Další informace o konfiguraci souborů prostředí pro front-endové rozhraní JavaScript a knihovny najdete v těchto článcích:
-
-- [Úhlové proměnné prostředí](https://angular.io/guide/build#configuring-application-environments)
-- [Reagovat – přidávání vlastních proměnných prostředí](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Vue – režimy a proměnné prostředí](https://cli.vuejs.org/guide/mode-and-env.html)
-
-[!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
-
-##### <a name="restart-live-server"></a>Restartovat živý Server
-
-1. Stisknutím **klávesy F1** otevřete paletu příkazů v Visual Studio Code.
-
-1. Zadejte **živý Server** a vyberte **živý Server: zastavit živý Server**.
-
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Příkaz Zastavit živý Server v paletě příkazů sady Visual Studio":::
-
-1. Stisknutím klávesy **F1** otevřete paletu příkazů.
-
-1. Zadejte **živý Server** a vyberte **živý Server: otevřít v Live serveru**.
-
-1. Aktualizujte aplikaci běžící na `http://locahost:3000` . V prohlížeči se teď zobrazí zpráva vrácená z rozhraní API.
-
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Hello z rozhraní API zobrazeného v prohlížeči":::
+Další informace o různých scénářích ladění s pokyny k přizpůsobení portů a adres serverů najdete v části [úložiště CLI statického Web Apps Azure](https://github.com/Azure/static-web-apps-cli).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Konfigurace nastavení aplikace](application-settings.md)
+> [Konfigurace aplikace](configuration.md)

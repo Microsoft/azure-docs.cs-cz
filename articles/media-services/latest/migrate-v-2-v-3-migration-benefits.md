@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 114635722a0a131fc146eb2ab69984effb211a88
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 9dd3525f4efec3c49950839306ee5419c7850c69
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559753"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275409"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Krok 1 – pochopení výhod migrace na rozhraní Media Services API V3
 
@@ -44,21 +44,21 @@ Byla zjištěna významná vylepšení Media Services se systémem v3.
 | Podpora privátních odkazů | Zákazníci budou mít přístup k koncovým bodům Media Services pro doručování klíčů, LiveEvents a starají prostřednictvím PrivateEndpoint ve své virtuální síti. |
 | [Customer-spravovaných Key](concept-use-customer-managed-keys-byok.md) nebo Přineste si vlastní klíč (BYOK) support | Zákazníci můžou data v účtu Media Services šifrovat pomocí klíče ve svých Azure Key Vault. |
 | **Aktiva** | |
-| Asset může mít několik [lokátorů streamování](streaming-locators-concept.md) s různými nastaveními [dynamického balení](dynamic-packaging-overview.md) a dynamického šifrování. | U každého assetu je povolený limit datových lokátorů 100. Zákazníci můžou do assetu ukládat jednu kopii mediálního obsahu, ale můžou sdílet různé adresy URL streamování s různými zásadami streamování nebo zásadami ochrany obsahu, které jsou založené na cílové cílové skupině.
+| Asset může mít několik [lokátorů streamování](stream-streaming-locators-concept.md) s různými nastaveními [dynamického balení](encode-dynamic-packaging-concept.md) a dynamického šifrování. | U každého assetu je povolený limit datových lokátorů 100. Zákazníci můžou do assetu ukládat jednu kopii mediálního obsahu, ale můžou sdílet různé adresy URL streamování s různými zásadami streamování nebo zásadami ochrany obsahu, které jsou založené na cílové cílové skupině.
 | **Zpracování úlohy** ||
-| V3 zavádí koncepci [transformací](transforms-jobs-concept.md)   pro zpracování úloh založených na souborech. | Transformaci lze použít k vytvoření opakovaně použitelných konfigurací, k vytvoření Azure Resource Manager šablon a k izolaci nastavení zpracování mezi několika zákazníky nebo klienty. |
+| V3 zavádí koncepci [transformací](transform-jobs-concept.md)   pro zpracování úloh založených na souborech. | Transformaci lze použít k vytvoření opakovaně použitelných konfigurací, k vytvoření Azure Resource Manager šablon a k izolaci nastavení zpracování mezi několika zákazníky nebo klienty. |
 | Pro zpracování úloh založených na souborech můžete jako vstup použít adresu URL HTTP (S). | Nemusíte mít obsah, který je už uložený v Azure, ani nemusíte vytvářet vstupní prostředky. |
 | **Živé události** ||
 | Živé události služby Premium 1080p | Nová skladová SKU události umožňuje zákazníkům získat kódování v cloudu s využitím výstupu až 1080p v rámci řešení. |
-| Nová podpora živého streamování s [nízkou latencí](live-event-latency.md) pro živé události | To umožňuje uživatelům sledovat živé události blíž k reálnému času, než by toto nastavení mělo povoleno. |
-| Live Event Preview podporuje [dynamické balení](dynamic-packaging-overview.md)   a dynamické šifrování. | To umožňuje ochranu obsahu ve verzi Preview a nepřerušované a HLS balení. |
+| Nová podpora živého streamování s [nízkou latencí](live-event-latency-reference.md) pro živé události | To umožňuje uživatelům sledovat živé události blíž k reálnému času, než by toto nastavení mělo povoleno. |
+| Live Event Preview podporuje [dynamické balení](encode-dynamic-packaging-concept.md)   a dynamické šifrování. | To umožňuje ochranu obsahu ve verzi Preview a nepřerušované a HLS balení. |
 | Živé výstupy nahrazují programy | Živý výstup je jednodušší použít než entita programu v rozhraních API v2. |
 | Vylepšení aplikace RTMP ingestování pro živé události je vylepšená a podporuje více kodérů. | Zvyšuje stabilitu a poskytuje flexibilitu zdrojového kodéru. |
 | Živé události můžou streamovat nepřetržitě. | Můžete hostovat živou událost a zajistit, aby se vaše cílová skupina vykonávala delší období. |
 | Živý přepis při dynamických událostech | Live přepis umožňuje zákazníkům automaticky přepisovat mluvený jazyk na text v reálném čase během živého vysílání událostí. Tím se výrazně zlepšuje přístupnost živých událostí. |
-| [Úsporný režim](live-events-outputs-concept.md#standby-mode) u živých událostí | Živé události, které jsou v pohotovostním stavu, jsou méně nákladné než spouštění živých událostí. Díky tomu mohou zákazníci udržovat sadu živých událostí, které jsou připravené k zahájení během několika sekund, a to za nižší náklady než udržování sady spuštěných živých událostí. Snížené ceny za pohotovostní živé události začnou platit v únoru 2021 pro většinu oblastí a zbylé další kroky v dubnu 2021.
+| [Úsporný režim](live-event-outputs-concept.md#standby-mode) u živých událostí | Živé události, které jsou v pohotovostním stavu, jsou méně nákladné než spouštění živých událostí. Díky tomu mohou zákazníci udržovat sadu živých událostí, které jsou připravené k zahájení během několika sekund, a to za nižší náklady než udržování sady spuštěných živých událostí. Snížené ceny za pohotovostní živé události začnou platit v únoru 2021 pro většinu oblastí a zbylé další kroky v dubnu 2021.
 |**Ochrana obsahu** ||
-| [Ochrana obsahu](content-key-policy-concept.md)   podporuje víc klíčových funkcí. | Zákazníci teď můžou ve svých lokátorech streamování používat víc šifrovacích klíčů obsahu. |
+| [Ochrana obsahu](drm-content-key-policy-concept.md)   podporuje víc klíčových funkcí. | Zákazníci teď můžou ve svých lokátorech streamování používat víc šifrovacích klíčů obsahu. |
 | **Monitorování** | |
 | Podpora oznámení [Azure EventGrid](monitoring/reacting-to-media-services-events.md) | Oznámení EventGrid jsou ve větším množství funkcí. Existuje více typů oznámení, širší podpora SDK pro příjem oznámení ve vaší vlastní aplikaci a další stávající služby Azure, které mohou fungovat jako obslužné rutiny událostí. |
 | [Podpora a Integrace Azure Monitor v Azure Portal](monitoring/monitor-events-portal-how-to.md) | To zákazníkům umožňuje vizualizovat Media Services využití kvót účtu, statistiky streamování v reálném čase a statistiky ingestování a archivace pro živé události. Zákazníci teď můžou nastavovat upozornění a provádět nezbytné akce na základě dat metrik v reálném čase. |
