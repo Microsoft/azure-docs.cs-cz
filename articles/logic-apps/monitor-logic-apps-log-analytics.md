@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
 ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101721255"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
@@ -21,7 +21,7 @@ Pokud chcete nastavit protokolování pro aplikaci logiky, můžete [povolit Log
 
 Tento článek ukazuje, jak povolit Log Analytics pro nové Logic Apps a stávající aplikace logiky, jak nainstalovat a nastavit řešení pro správu Logic Apps a jak nastavit a vytvářet dotazy na protokoly Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, potřebujete [Log Analytics pracovní prostor](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Pokud nemáte pracovní prostor, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md).
 

@@ -3,22 +3,22 @@ title: Import imagí kontejnerů
 description: Naimportujte image kontejneru do služby Azure Container Registry pomocí rozhraní API Azure, aniž byste museli spouštět příkazy Docker.
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988237"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221496"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
 
 Můžete snadno importovat (kopírovat) image kontejneru do služby Azure Container Registry bez použití příkazů Docker. Například importujte obrázky z registru pro vývoj do produkčního registru nebo zkopírujte základní image z veřejného registru.
 
-Azure Container Registry zpracovává řadu běžných scénářů pro kopírování imagí z existujícího registru:
+Azure Container Registry zpracovává řadu běžných scénářů pro kopírování imagí a dalších artefaktů z existujícího registru:
 
-* Import z veřejného registru
+* Import imagí z veřejného registru
 
-* Import z jiného služby Azure Container Registry ve stejném nebo jiném předplatném Azure nebo tenantovi
+* Import imagí nebo artefaktů OCI, včetně Helm 3 grafů z jiného služby Azure Container Registry, ve stejném nebo jiném předplatném Azure nebo tenantovi
 
 * Import z privátního registru kontejnerů mimo Azure
 
@@ -41,7 +41,7 @@ Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste 
 > * Import do nebo z registru kontejneru Azure s omezeným přístupem k síti vyžaduje, aby [**přístup důvěryhodných služeb**](allow-access-trusted-services.md) k síti mohl obejít. Ve výchozím nastavení je nastavení povoleno a povoluje import. Pokud není toto nastavení povolené v nově vytvořeném registru s privátním koncovým bodem nebo s pravidly brány firewall registru, import se nezdaří. 
 > * V existujícím omezeném síťovém registru kontejneru Azure, který se používá jako zdroj nebo cíl importu, je povolení této funkce zabezpečení sítě volitelné, ale doporučené.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte službu Azure Container Registry, vytvořte registr. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 

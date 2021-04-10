@@ -19,10 +19,10 @@ ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: dcdc325633aff5ab828cb1c82f4bb2d8becee967
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102560034"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
@@ -39,7 +39,7 @@ Ve virtuálním počítači není k dispozici žádné Průběžné vytváření
 
 Tento článek poskytuje informace o obou scénářích: použití rozšíření DSC pro službu Automation pro automatizaci a používání rozšíření DSC jako nástroje pro přiřazení konfigurací k virtuálním počítačům pomocí sady Azure SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Místní počítač**: Pokud chcete pracovat s rozšířením virtuálního počítače Azure, musíte použít Azure Portal nebo sadu Azure PowerShell SDK.
 - **Agent hosta**: virtuální počítač Azure NAKONFIGUROVANÝ konfigurací DSC musí být operační systém, který podporuje Windows Management Framework (WMF) 4,0 nebo novější. Úplný seznam podporovaných verzí operačních systémů najdete v části [Historie verzí rozšíření DSC](../../automation/automation-dsc-extension-history.md).

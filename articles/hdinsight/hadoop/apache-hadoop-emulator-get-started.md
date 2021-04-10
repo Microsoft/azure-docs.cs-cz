@@ -7,17 +7,17 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866671"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
 
 Přečtěte si, jak nainstalovat Apache Hadoop izolovaného prostoru (sandbox) z Hortonworks na virtuálním počítači, abyste se seznámili s ekosystémem Hadoop. Izolovaný prostor (sandbox) poskytuje místní vývojové prostředí pro další informace o Hadoop, Hadoop systém souborů DFS (Distributed File System) (HDFS) a odeslání úlohy. Jakmile budete s Hadoop obeznámeni, můžete začít používat Hadoop v Azure tím, že vytvoříte cluster HDInsight. Další informace o tom, jak začít, najdete v tématu Začínáme [se systémem Hadoop ve službě HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Oracle VirtualBox](https://www.virtualbox.org/). Stáhněte si ho a nainstalujte [odsud.](https://www.virtualbox.org/wiki/Downloads)
 

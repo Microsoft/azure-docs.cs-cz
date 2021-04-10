@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 6dd2f8a228c582e99f7d7281bd2d31faff8cadda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010792"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Živé streamování pomocí místních kodérů pomocí Azure Portal
@@ -37,7 +37,7 @@ ms.locfileid: "103010792"
 
 Tento kurz vás provede kroky pro vytvoření **Kanálu**, který je nakonfigurován pro průchozí doručování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: ed185413cff155610b2b088b1791169e33f6ce7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 150bf38ebb248f15bf1ed82186c16b6b3f7ac40b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103464433"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728721"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>Vytvoření prostředí Azure Time Series Insights Gen2 pomocí Azure CLI
 
@@ -23,7 +23,7 @@ Tento dokument vás provede vytvořením nového prostředí Time Series Insight
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte účet úložiště Azure pro [chladírenský sklad](./concepts-storage.md#cold-store)vašeho prostředí. Tento účet je určený pro dlouhodobé uchovávání a analýzu historických dat.
 
@@ -62,13 +62,13 @@ az tsi environment gen2 create --name "my-tsi-env" --location eastus2 --resource
 
 Pomocí Azure CLI můžete odstranit jednotlivý prostředek, například Time Series Insights prostředí, nebo odstranit skupinu prostředků a všechny její prostředky, včetně všech Time Series Insights prostředí.
 
-Pokud chcete [odstranit Time Series Insights prostředí](/cli/azure/ext/timeseriesinsights/tsi/environment?view=azure-cli-latest#ext_timeseriesinsights_az_tsi_environment_delete), spusťte následující příkaz:
+Pokud chcete [odstranit Time Series Insights prostředí](/cli/azure/ext/timeseriesinsights/tsi/environment#ext_timeseriesinsights_az_tsi_environment_delete), spusťte následující příkaz:
 
 ```azurecli-interactive
 az tsi environment delete --name "my-tsi-env" --resource-group $rg
 ```
 
-Pokud chcete [Odstranit účet úložiště](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_delete), spusťte následující příkaz:
+Pokud chcete [Odstranit účet úložiště](/cli/azure/storage/account#az_storage_account_delete), spusťte následující příkaz:
 
 ```azurecli-interactive
 az storage account delete --name $storage --resource-group $rg

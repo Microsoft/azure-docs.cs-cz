@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
 ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101094924"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
@@ -22,7 +22,7 @@ Z aplikace bez interaktivního rozhraní .NET potřebujete:
 * ID klienta aplikace Azure Active Directory (Azure AD). Viz [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 * Tajný klíč aplikace služby Azure AD. Viz [získat klíč pro ověření aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster An HDInsight. Podívejte se na [Úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 

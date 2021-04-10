@@ -3,18 +3,20 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950055"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166696"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
 Update Management v Azure Automation můžete použít ke správě aktualizací operačního systému pro virtuální počítače s Windows a Linux v Azure, v místních prostředích a v dalších cloudových prostředích. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
+
+Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../../lighthouse/overview.md)k dispozici několik klientů pro zákazníky. Azure Lighthouse umožňuje provádět operace ve velkém měřítku napříč několika klienty Azure Active Directory (Azure AD) najednou a provádět úlohy správy, jako je Update Management efektivnější v rámci těch tenantů, za které zodpovídáte.
 
 > [!NOTE]
 > Počítač nakonfigurovaný s Update Management nemůžete použít ke spouštění vlastních skriptů z Azure Automation. Tento počítač může spustit pouze skript pro aktualizaci podepsaný společností Microsoft.
@@ -24,7 +26,7 @@ Update Management v Azure Automation můžete použít ke správě aktualizací 
 
 K automatickému stažení a instalaci dostupných *důležitých* a *bezpečnostních oprav zabezpečení* na virtuálním počítači Azure si Projděte [Automatické opravy hosta virtuálního počítače](../../virtual-machines/automatic-vm-guest-patching.md) pro virtuální počítače s Windows.
 
-Než nasadíte Update Management a povolíte správu vašich počítačů, ujistěte se, že rozumíte informacím v následujících částech.  
+Než nasadíte Update Management a povolíte správu vašich počítačů, ujistěte se, že rozumíte informacím v následujících částech.
 
 ## <a name="about-update-management"></a>O Update Management
 
@@ -40,7 +42,7 @@ Následující diagram znázorňuje, jak Update Management vyhodnocuje a aplikuj
 
 ![Pracovní postup Update Management](./media/overview/update-mgmt-updateworkflow.png)
 
-Update Management lze použít k nasazování nativně do počítačů ve více předplatných ve stejném tenantovi.
+Update Management lze použít pro nativně nasazení do počítačů ve více předplatných ve stejném tenantovi nebo napříč klienty pomocí [Azure delegovaných prostředků](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 Po uvolnění balíčku trvá tato oprava 2 až 3 hodiny, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12 až 15 hodin, než se oprava zobrazí po jejím vydání. Když počítač dokončí kontrolu kompatibility aktualizací, agent přepošle informace hromadně do Azure Monitor protokolů. V počítači s Windows se kontrola kompatibility ve výchozím nastavení spouští každých 12 hodin. U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud je agent Log Analytics restartován, spustí se kontrola kompatibility do 15 minut.
 
@@ -131,7 +133,7 @@ Virtuální počítače vytvořené z imagí Red Hat Enterprise Linux na vyžád
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li vytvořit a spravovat nasazení aktualizací, potřebujete specifická oprávnění. Další informace o těchto oprávněních najdete v tématu věnovaném [přístupu na základě rolí – Update Management](../automation-role-based-access-control.md#update-management-permissions).
+Chcete-li vytvořit a spravovat nasazení aktualizací, potřebujete specifická oprávnění. Další informace o těchto oprávněních najdete v tématu [přístup na základě rolí – Update Management](../automation-role-based-access-control.md#update-management-permissions).
 
 ## <a name="update-management-components"></a>Update Management komponenty
 
@@ -167,11 +169,11 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 | --- | --- | --- |
-| Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 

@@ -1,0 +1,133 @@
+### YamlMime:Landing
+title: Dokumentace základních informací o sítích Azure
+summary: Služba Azure Networking Services vám umožní přístup k propojení prostředků Azure a místních prostředků, ochraně, doručování a monitorování aplikací v síti Azure.
+metadata:
+  title: Dokumentace základních informací o sítích Azure
+  description: Přečtěte si o síťových službách v Azure, které poskytují připojení mezi prostředky Azure, připojením z místní sítě k prostředkům Azure, pomůžou chránit vaše síťové prostředky, škálovat doručování aplikací a pomáhat monitorovat vaši síť.
+  ms.service: networking
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 03/30/2021
+  ms.openlocfilehash: 69017e082491b784ada194a0d0bab7ac6ed50274
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106166577"
+landingContent:
+- title: O sítích Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou Sítě Azure?
+      url: networking-overview.md
+  - linkListType: concept
+    links:
+    - text: Co je to globální síť Microsoft?
+      url: ../microsoft-global-network.md
+  - linkListType: learn
+    links:
+    - text: Sestavení síťové infrastruktury v Azure
+      url: /learn/paths/architect-network-infrastructure/
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Virtual Network?
+      url: ../../virtual-network/virtual-networks-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření virtuální sítě
+      url: ../../virtual-network/quick-create-portal.md
+- title: Komunikace s internetem
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je veřejná IP adresa?
+      url: ../../virtual-network/virtual-networks-overview.md
+    - text: Co je brána NAT virtuální sítě?
+      url: ../../virtual-network/nat-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření veřejné IP adresy
+      url: ../../virtual-network/create-public-ip-portal.md
+    - text: Vytvoření brány NAT
+      url: ../../virtual-network/tutorial-create-nat-gateway-portal.md
+- title: Připojení virtuálních sítí
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Partnerské vztahy virtuálních sítí
+      url: ../../virtual-network/virtual-network-peering-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí
+      url: ../../virtual-network/tutorial-connect-virtual-networks-portal.md
+- title: Privátní přístup k síťovým prostředkům
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je privátní koncový bod Azure?
+      url: ../../private-link/private-endpoint-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření privátního koncového bodu
+      url: ../../private-link/create-private-endpoint-portal.md
+- title: Vyrovnávání zatížení aplikací
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Nástroj pro vyrovnávání zatížení sítě
+      url: ../../load-balancer/load-balancer-overview.md
+    - text: Zabezpečený Cloud CDN a globální nástroj pro vyrovnávání zatížení
+      url: ../../frontdoor/front-door-overview.md
+    - text: Nástroj pro vyrovnávání zatížení webových aplikací
+      url: ../../application-gateway/overview.md
+    - text: Nástroj pro vyrovnávání zatížení založený na DNS
+      url: ../../traffic-manager/traffic-manager-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření síťového nástroje pro vyrovnávání zatížení
+      url: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md
+    - text: Nasazení zabezpečeného cloudu CDN a globálního nástroje pro vyrovnávání zatížení
+      url: ../../frontdoor/quickstart-create-front-door.md
+    - text: Vytvoření nástroje pro vyrovnávání zatížení webové aplikace
+      url: ../../application-gateway/quick-create-portal.md
+    - text: Vytvoření nástroje pro vyrovnávání zatížení založeného na DNS
+      url: ../../traffic-manager/quickstart-create-traffic-manager-profile.md
+- title: Zabezpečení virtuální sítě
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Skupiny zabezpečení sítě
+      url: ../../virtual-network/network-security-groups-overview.md
+    - text: Azure DDoS Protection Standard
+      url: ../../ddos-protection/ddos-protection-overview.md
+    - text: Azure Firewall
+      url: ../../firewall/overview.md
+  - linkListType: tutorial
+    links:
+    - text: Omezení síťového přístupu k prostředkům PaaS
+      url: ../../virtual-network/tutorial-restrict-network-access-to-resources.md
+    - text: Vytvoření a konfigurace Azure DDoS Protection Standard
+      url: ../../ddos-protection/manage-ddos-protection.md
+    - text: Nasazení a konfigurace služby Azure Firewall
+      url: ../../firewall/tutorial-firewall-deploy-portal.md
+- title: Připojení místních sítí k virtuálním sítím
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Připojení VPN – VPN Gateway
+      url: ../../vpn-gateway/vpn-gateway-about-vpngateways.md
+    - text: Vyhrazená soukromá připojení – ExpressRoute
+      url: ../../expressroute/expressroute-introduction.md
+    - text: VPN a vyhrazená privátní připojení – virtuální síť WAN
+      url: ../../virtual-wan/virtual-wan-about.md
+  - linkListType: tutorial
+    links:
+    - text: Připojení místní sítě k virtuální síti – šifrování sítě VPN
+      url: ../../vpn-gateway/tutorial-site-to-site-portal.md
+    - text: Rozšiřování místní sítě do Azure pomocí ExpressRoute
+      url: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md

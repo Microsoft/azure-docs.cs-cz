@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/26/2020
-ms.openlocfilehash: 77df97eaecc59bc9160bcf63ae5d3904cd79ec79
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 04/02/2021
+ms.openlocfilehash: e518ea83608472753d3463a980aae169b291d4de
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215183"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221292"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 
@@ -84,20 +84,6 @@ az login
 Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
-
-## <a name="install-the-machine-learning-extension"></a>Instalace rozšíření Machine Learning
-
-Pokud chcete nainstalovat rozšíření Machine Learning, použijte následující příkaz:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-Pokud se zobrazí zpráva, že rozšíření je již nainstalováno, použijte následující příkaz, který aktualizuje na nejnovější verzi:
-
-```azurecli-interactive
-az extension update -n azure-cli-ml
-```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

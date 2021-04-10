@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123033"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166883"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Nasazení Cloud Services (Rozšířená podpora) pomocí sady Azure SDK
 
@@ -156,7 +156,8 @@ Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Vytvořte veřejnou IP adresu a (volitelně) nastavte vlastnost Popisek DNS veřejné IP adresy. Pokud používáte statickou IP adresu, musí být v konfiguračním souboru služby odkazována jako vyhrazená IP adresa.
+7. Vytvořte veřejnou IP adresu a nastavte vlastnost Popisek DNS pro veřejnou IP adresu. Cloud Services (Rozšířená podpora) podporuje jenom [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) veřejné IP adresy SKU). Veřejné IP adresy Standard SKU nefungují s Cloud Services.
+Pokud používáte statickou IP adresu, musíte na ni odkazovat jako na Vyhrazená IP adresa v souboru konfigurace služby (. cscfg).
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +172,7 @@ Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Vytvořte objekt profilu sítě a přidružte veřejnou IP adresu k front-endu vytvořeného nástroje pro vyrovnávání zatížení vytvořené platformou.
+8. Vytvořte objekt profilu sítě a přidružte veřejnou IP adresu k front-endu nástroje pro vyrovnávání zatížení. Platforma Azure automaticky vytvoří prostředek "klasický" SKU pro vyrovnávání zatížení ve stejném předplatném jako prostředek cloudové služby. Prostředek nástroje pro vyrovnávání zatížení je prostředkem, který je jen pro čtení v ARM. Jakékoli aktualizace prostředku se podporují jenom prostřednictvím souborů nasazení cloudové služby (. cscfg &. csdef).
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 

@@ -49,7 +49,7 @@
     - name: Ochrana před útoky DDoS
       href: front-door-ddos.md
     - name: Nejčastější dotazy ke službě Front Door
-      href: front-door-faq.md
+      href: front-door-faq.yml
     - name: Geografické filtrování
       href: front-door-geo-filtering.md
     - name: Sondy stavu

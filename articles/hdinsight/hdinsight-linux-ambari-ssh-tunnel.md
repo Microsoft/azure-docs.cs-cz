@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: ef7e0450725b456a7fb2b1ab61c50d7edece52ce
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867555"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším uživatelská rozhraní
@@ -37,7 +37,7 @@ Služby nainstalované s akcemi skriptu, které zveřejňují webovou službu, b
 
 [Tunelové propojení Secure Shell (SSH)](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) připojuje port na místním počítači k hlavnímu uzlu v HDInsight. Provoz odeslaný na místní port je směrován prostřednictvím připojení SSH k hlavnímu uzlu. Požadavek je vyřešen, jako kdyby vznikl na hlavním uzlu. Odpověď se pak přesměruje zpátky přes tunel na pracovní stanici.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 

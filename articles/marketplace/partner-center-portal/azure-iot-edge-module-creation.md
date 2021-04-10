@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99096436"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166747"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -172,7 +172,7 @@ Poskytněte dodatečné online dokumenty o vaší nabídce. Můžete přidat až
 - **Název** – zákazníci uvidí název na stránce s podrobnostmi o vaší nabídce.
 - **Odkaz (URL)** – zadejte odkaz pro zákazníky k zobrazení online dokumentu. Odkaz musí začínat na `http://` nebo `https://` .
 
-Nezapomeňte přidat aspoň jeden odkaz na svou dokumentaci a jeden odkaz na kompatibilní IoT Edge zařízení z [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/).
+Nezapomeňte přidat aspoň jeden odkaz na svou dokumentaci a jeden odkaz na kompatibilní IoT Edge zařízení z [katalogu zařízení Azure IoT](https://devicecatalog.azure.com/).
 
 ### <a name="contact-information"></a>Kontaktní informace
 

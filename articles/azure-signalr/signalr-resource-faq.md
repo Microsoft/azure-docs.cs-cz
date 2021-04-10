@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3b84756f390930be5124c6bda54d07078d29053
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579302"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166917"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
@@ -62,13 +62,13 @@ Pro nové aplikace by se mělo použít jenom výchozí režim bez serveru. Hlav
 
 Klasický režim je určený pro zpětnou kompatibilitu pro existující aplikace, takže by se neměl používat pro nové aplikace.
 
-Další informace o režimu služby v [tomto dokumentu](concept-service-mode.md).
+Další informace o režimu služby najdete v části [režim služby ve službě Azure Signal Service](concept-service-mode.md).
 
 ## <a name="can-i-send-message-from-client-in-serverless-mode"></a>Můžu poslat zprávu z klienta v režimu bez serveru?
 
 Můžete odeslat zprávu z klienta, pokud nakonfigurujete v instanci signalizace možnost nadřazený. Nadřazený objekt je sada koncových bodů, které mohou přijímat zprávy a události připojení ze služby signalizace. Pokud není nakonfigurované žádné nadřazené, budou se zprávy z klienta ignorovat.
 
-Další informace o nadřazeného zobrazení najdete v [tomto dokumentu](concept-upstream.md).
+Další informace o nadřazeném nástroji najdete v tématu [nastavení pro odesílání dat](concept-upstream.md).
 
 V současnosti je ve verzi Public Preview.
 

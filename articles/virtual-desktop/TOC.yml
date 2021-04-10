@@ -128,6 +128,12 @@
       href: key-distribution-center-proxy.md
     - name: Nastavení role Brána VP
       href: rd-gateway-role.md
+    - name: Spustit virtuální počítač při připojení
+      items:
+        - name: Nastavení spuštění virtuálního počítače při připojení
+          href: start-virtual-machine-connect.md
+        - name: Nejčastější dotazy ke spuštění virtuálního počítače
+          href: start-virtual-machine-connect-faq.md
 - name: Koncepty
   items:
     - name: Vestavěné role
@@ -163,7 +169,7 @@
     - name: Windows Virtual Desktop – nejčastější dotazy
       href: faq.md
     - name: Nejčastější dotazy k Windows 10 Enterprise pro více relací
-      href: windows-10-multisession-faq.md
+      href: windows-10-multisession-faq.yml
     - name: Připojení aplikace MSIX
       items:
         - name: Co je připojení aplikace MSIX?
@@ -236,8 +242,6 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: Skupina podpory technické komunity
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: Fórum UserVoice
-      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Plány Microsoft 365 do budoucna
       href: 'https://aka.ms/wvdroadmap'
     - name: Šablony Azure Resource Manageru

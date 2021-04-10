@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 846d4a259f0fcd204bcad6c898efc999c3765fd3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4d2a345ed49fae2e1d77b3c5da44b305d069874e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962560"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729452"
 ---
 # <a name="azure-stack-edge-2103-release-notes"></a>Zpráva k vydání verze Azure Stack Edge 2103
 
@@ -54,7 +54,7 @@ Ve verzi Azure Stack Edge 2103 jsou k dispozici následující nové funkce.
 
 V následující tabulce jsou uvedeny problémy, které byly vydány v předchozích verzích a opraveny v aktuální verzi.
 
-| Ne. | Funkce | Problém | 
+| No. | Funkce | Problém | 
 | --- | --- | --- |
 |**1.**|Kubernetes |Pokud je povolen webový proxy server, nefunguje registr kontejneru Edge.|
 |**2.**|Kubernetes |Registr kontejneru Edge nefunguje s moduly IoT Edge.| 
@@ -63,7 +63,7 @@ V následující tabulce jsou uvedeny problémy, které byly vydány v předchoz
 
 Následující tabulka poskytuje souhrn známých problémů verze 2103.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 |**1.**|Funkce ve verzi Preview |V této verzi jsou k dispozici tyto funkce: místní Azure Resource Manager, virtuální počítače, Správa cloudu pro virtuální počítače, Správa cloudu Azure Kubernetes, síť VPN pro Azure Stack Edge pro R a Azure Stack hraniční Mini R, služba multi-Process Service (MPS) pro grafický procesor Azure Stack Edge pro a je dostupná ve verzi Preview.  |Tyto funkce budou všeobecně dostupné v pozdějších verzích. |
 |**2.**|Virtuální počítače GPU |Před touto verzí se v průběhu aktualizace nespravoval životní cyklus virtuálních počítačů GPU. Proto při aktualizaci na verzi 2103 se virtuální počítače GPU během aktualizace automaticky nezastaví. Před aktualizací zařízení budete muset virtuální počítače GPU `stop-stayProvisioned` před tím, než budete aktualizovat, ručně zastavit pomocí příznaku. Další informace najdete v tématu [pozastavení nebo vypnutí virtuálního počítače](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#suspend-or-shut-down-the-vm).<br> Všechny virtuální počítače GPU spuštěné před aktualizací se spustí po aktualizaci. V těchto případech se úlohy běžící na virtuálních počítačích řádně neukončí. A virtuální počítače můžou po aktualizaci potenciálně skončit v nežádoucím stavu. <br>Všechny virtuální počítače GPU, které se zastavily prostřednictvím nástroje `stop-stayProvisioned` před aktualizací, se po aktualizaci automaticky spustí. <br>Pokud zastavíte virtuální počítače GPU prostřednictvím Azure Portal, budete muset po aktualizaci zařízení ručně spustit virtuální počítač.| Pokud používáte virtuální počítače GPU s Kubernetes, před aktualizací zastavte virtuální počítače GPU hned. <br>Po zastavení virtuálních počítačů GPU převezme Kubernetes jednotky GPU, které používaly virtuální počítače. <br>Čím déle jsou virtuální počítače GPU v zastaveném stavu, tím větší je riziko, že Kubernetes převezme procesory GPU. |
@@ -75,7 +75,7 @@ Následující tabulka poskytuje souhrn známých problémů verze 2103.
 
 Následující tabulka poskytuje souhrn známých problémů přenesených z předchozích verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge pro + Azure SQL | Vytvoření databáze SQL vyžaduje přístup správce.   |Proveďte následující kroky místo kroků 1-2 v [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) . <ul><li>V místním uživatelském rozhraní zařízení povolte výpočetní rozhraní. Vyberte **compute > port # > povolit pro výpočetní > použít.**</li><li>Stáhnout `sqlcmd` na klientském počítači z https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Připojte se k IP adrese rozhraní COMPUTE (port, který byl povolený), a přidejte na konec adresy znak ", 1401".</li><li>Poslední příkaz bude vypadat takto: Sqlcmd-S {Interface IP}, 1401-U SA-P "Strong! Passw0rd".</li>Pak by se měly shodovat kroky 3-4 z aktuální dokumentace. </li></ul> |
 | **2.** |Aktualizovat| Přírůstkové změny objektů BLOB obnovených prostřednictvím **aktualizace** se nepodporují. |U koncových bodů objektů BLOB jsou částečné aktualizace objektů BLOB po obnovení možné kvůli tomu, že se aktualizace nebudou nahrávat do cloudu. Například posloupnost akcí, jako například:<ul><li>Vytvoření objektu BLOB v cloudu Nebo odstraňte dříve nahraný objekt BLOB ze zařízení.</li><li>Obnovte objekt BLOB z cloudu do zařízení pomocí funkce aktualizovat.</li><li>Aktualizujte jenom část objektu BLOB pomocí rozhraní REST API sady Azure SDK.</li></ul>Tyto akce můžou vést k tomu, že aktualizované oddíly objektu BLOB se v cloudu neaktualizují. <br>**Alternativní řešení**: Nahraďte celé objekty BLOB pomocí nástrojů, jako je například Robocopy nebo běžné kopírování souborů prostřednictvím Průzkumníka nebo příkazového řádku.|
@@ -98,7 +98,7 @@ Následující tabulka poskytuje souhrn známých problémů přenesených z př
 |**čl.**|Kubernetes + aktualizovat |Starší verze softwaru, například verze 2008, mají problém aktualizace konfliktu časování, který způsobí, že se aktualizace nezdaří s ClusterConnectionException. |Použití novějších buildů by mělo pomoci vyhnout se tomuto problému. Pokud se tento problém opakuje, alternativní řešení je pokus o upgrade, který by měl být v činnosti.|
 |**20o**|Internet Explorer|Pokud jsou povolené rozšířené funkce zabezpečení, možná nebudete mít přístup k místním webovým stránkám uživatelského rozhraní. | Zakažte rozšířené zabezpečení a restartujte prohlížeč.|
 |**20.**|Řídicí panel Kubernetes | Koncový bod *https* pro řídicí panel Kubernetes s certifikátem SSL se nepodporuje. | |
-|**22.**|Kubernetes |Kubernetes nepodporuje ":" v názvech proměnných prostředí, které jsou používány aplikacemi .NET. To je také vyžadováno pro fungování modulu Event Grid IoT Edge, aby fungovalo na Azure Stack hraničních zařízeních a dalších aplikacích. Další informace najdete v [dokumentaci ke službě ASP.NET Core](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Nahraďte ":" dvojitým podtržítkem. Další informace najdete v tématu [problém Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201) .|
+|**22.**|Kubernetes |Kubernetes nepodporuje ":" v názvech proměnných prostředí, které jsou používány aplikacemi .NET. To je také vyžadováno pro fungování modulu Event Grid IoT Edge, aby fungovalo na Azure Stack hraničních zařízeních a dalších aplikacích. Další informace najdete v [dokumentaci ke službě ASP.NET Core](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration#environment-variables).|Nahraďte ":" dvojitým podtržítkem. Další informace najdete v tématu [problém Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201) .|
 |**listopadu.** |Cluster Azure ARC + Kubernetes |Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes.  |Pokud chcete odstranění prostředků odstranit z úložiště Git, nastavte `--sync-garbage-collection` v OperatorParams ARC. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
 |**24.**|NFS |Aplikace, které používají připojení ke sdílené složce NFS na vašem zařízení k zápisu dat, by měly používat exkluzivní zápis. To zajišťuje, že se zápisy zapisují na disk.| |
 |**0,25.**|Konfigurace výpočtů |Konfigurace výpočtů se nezdařila v konfiguracích sítě, kde brány nebo přepínače nebo směrovače reagují na žádosti protokolu ARP (Address Resolution Protocol) pro systémy, které v síti neexistují.| |

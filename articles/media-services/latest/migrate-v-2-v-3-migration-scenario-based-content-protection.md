@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7ef41b76f343d8997feebc4a366deda7ce6a2afa
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644057"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729401"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře ochrany obsahu
 
@@ -38,11 +38,11 @@ Při migraci na rozhraní V3 API zjistíte, že potřebujete mít přístup k n�
 
 Pokud jste například dříve provedli prostředek v2 s ID **"NB: CID: UUID: 8cb39104-122c-496e-9ac5-7f9e2c2547b8"**, zjistíte, že při výpisu starých prostředků v2 prostřednictvím rozhraní API V3 bude název nyní částí identifikátoru GUID na konci (v tomto případě **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"**.)
 
-Můžete zadat dotaz na **StreamingLocators** přidružené k assetům vytvořeným v rozhraní v2 API pomocí nové metody V3 [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) v entitě Asset.  Také odkaz na verzi sady .NET Client SDK [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet)
+Můžete zadat dotaz na **StreamingLocators** přidružené k assetům vytvořeným v rozhraní v2 API pomocí nové metody V3 [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) v entitě Asset.  Také odkaz na verzi sady .NET Client SDK [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true)
 
 Výsledky metody **ListStreamingLocators** vám poskytnou **název** a **StreamingLocatorId** lokátoru spolu s **StreamingPolicyName**.
 
-Chcete-li najít **ContentKeys** , který se používá ve vaší **StreamingLocators** pro ochranu obsahu, můžete zavolat metodu [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet) .  
+Chcete-li najít **ContentKeys** , který se používá ve vaší **StreamingLocators** pro ochranu obsahu, můžete zavolat metodu [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
 
 Všechny **prostředky** , které byly vytvořeny a publikovány pomocí rozhraní v2 API, budou mít v [zásadách streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)k dispozici [zásady pro klíč obsahu](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) i klíč obsahu definované v rozhraních API v3.
 

@@ -4,10 +4,10 @@ description: Naučte se spravovat jednotlivé senzory, včetně správy aktivač
 ms.date: 02/02/2021
 ms.topic: how-to
 ms.openlocfilehash: df1d1dd6ca2085fb3ab12c104723c63e32249403
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781955"
 ---
 # <a name="manage-individual-sensors"></a>Správa individuálních senzorů
@@ -278,7 +278,7 @@ Při použití příkazu CLI:
 
 Spravujte certifikáty pomocí následujících příkazů:
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Vygenerovat nový privátní klíč a žádost o podepsání certifikátu | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Vygenerování certifikátu podepsaného svým držitelem | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -288,7 +288,7 @@ Spravujte certifikáty pomocí následujících příkazů:
 
 Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátního klíče, použijte tyto příkazy;
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Ověření žádosti o podepsání certifikátu (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
 | Ověřit privátní klíč | `openssl rsa -in privateKey.key -check` |
@@ -296,13 +296,13 @@ Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátní
 
 Pokud se zobrazí chyba, že se soukromý klíč neshoduje s certifikátem, nebo pokud certifikát, který jste nainstalovali do lokality, není důvěryhodný, použijte k opravě chyby tyto příkazy.
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Zkontrolujte hodnotu hash MD5 veřejného klíče a ujistěte se, že se shoduje s tím, co je v rámci zástupce nebo privátního klíče. | první. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> odst. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 1. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Chcete-li převést certifikáty a klíče do různých formátů, aby byly kompatibilní s konkrétními typy serverů nebo softwaru, použijte tyto příkazy;
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Převod souboru DER (. CRT. cer. der) na PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Převod souboru PEM na DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
