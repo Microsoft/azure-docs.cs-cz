@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/29/2021
 ms.author: victorh
-ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e955c6b760c06ce802dfae0193d34954eab99892
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731084"
 ---
 # <a name="what-are-security-partner-providers"></a>Kdo jsou poskytovatelé partnerů pro zabezpečení?
 
@@ -30,17 +30,22 @@ Podporovaní partneři zabezpečení jsou **Zscaler**, **[Check Point](check-poi
 
 Pomocí partnerů zabezpečení můžete filtrovat internetový provoz v následujících situacích:
 
-- Virtual Network (VNet) na Internet
+- Virtual Network (VNet-to-Internet)
 
-   Využijte pokročilou aplikaci Internet Protection pro vaše cloudové úlohy běžící v Azure.
+   Pro cloudové úlohy spuštěné v Azure použijte pokročilou uživatele internetovou ochranu.
 
-- Z větve k Internetu
+- Z větvení na Internet
 
    Využijte možnosti připojení a globální distribuce Azure a jednoduše přidejte NSaaS filtrování třetích stran pro scénáře sítě Internet. Pomocí Azure Virtual WAN můžete vytvořit globální tranzitní síť a hraniční zabezpečení.
 
 Podporovány jsou následující scénáře:
-- Síť VNet/větev k Internetu prostřednictvím poskytovatele zabezpečení a dalšího přenosu dat (paprsky až paprsky, paprsky do větve, větvení na paprsky) prostřednictvím Azure Firewall.
-- Virtuální síť/větev k Internetu prostřednictvím poskytovatele zabezpečení partnera
+- Dva poskytovatelé zabezpečení v centru
+
+   Síť VNet/připojení k Internetu prostřednictvím poskytovatele zabezpečení a dalších přenosů (paprsků, paprsků a větví) prostřednictvím Azure Firewall.
+- Jeden zprostředkovatel v centru
+
+   - Veškerý provoz (paprsky až paprsky, směrování mezi větvemi, síť VNet/síť-Internet) zabezpečený Azure Firewall
+   - Síť VNet/síť k Internetu prostřednictvím poskytovatele zabezpečení partnera
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Osvědčené postupy pro filtrování internetového provozu na zabezpečených virtuálních rozbočovačích
 

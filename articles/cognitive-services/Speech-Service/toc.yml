@@ -456,7 +456,84 @@
                   href: windows-voice-assistants-best-practices.md
                 - name: Ukázky a nejčastější dotazy
                   href: windows-voice-assistants-faq.md
-- name: Nástroje
+- name: Návody
+  items:
+    - name: Povolit protokolování
+      href: how-to-use-logging.md
+    - name: Sledování využití paměti
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Povolení privátního koncového bodu
+      href: speech-services-private-link.md
+    - name: Konfigurace OpenSSL pro Linux
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: Konfigurace RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Kontejnery
+      items:
+        - name: Instalace a spuštění kontejnerů služby Speech
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Konfigurace kontejnerů služby Speech
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: Dávkové zpracování s využitím kontejnerů služby Speech
+          href: speech-container-batch-processing.md
+        - name: Kontejnery služby Speech s Kubernetes a Helmem
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Kontejnery služby Speech ve službě Azure Container Instances
+          displayName: 'ACI,azure container instances,container instances,containers'
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Nejčastější dotazy ke kontejnerům
+          href: speech-container-faq.md
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: ../containers/index.yml
+    - name: Migrace
+      items:
+        - name: Z rozhraní API pro zpracování řeči Bingu
+          href: how-to-migrate-from-bing-speech.md
+        - name: Z rozhraní Translator Speech API
+          href: how-to-migrate-from-translator-speech-api.md
+- name: Zařízení
+  items:
+    - name: Dokumentace ke Speech Devices
+      href: index-devices.yml
+    - name: Přehled
+      items:
+        - name: Co je sada Speech Devices SDK?
+          href: speech-devices-sdk.md
+        - name: Získání sady Speech Devices SDK
+          href: get-speech-devices-sdk.md
+        - name: Ukázky sady Speech Devices SDK (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Hardware
+      items:
+        - name: Doporučení pro mikrofonní pole
+          href: speech-devices-sdk-microphone.md
+        - name: Podrobnosti k Roobo v1
+          href: speech-devices-sdk-roobo-v1.md
+        - name: Podrobnosti k Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
+    - name: Návody
+      items:
+        - name: Jak nakonfigurovat pole mikrofonů
+          href: how-to-devices-microphone-array-configuration.md
+    - name: Rychlý start
+      items:
+        - name: Použití sady Speech Devices SDK
+          href: speech-devices-sdk-quickstart.md
+    - name: Zdroje a prostředky
+      items:
+        - name: Řešení potíže se sadou Speech Devices SDK
+          href: speech-devices-sdk-troubleshooting.md
+    - name: Referenční informace
+      items:
+        - name: Poznámky k verzi sady Speech Devices SDK
+          href: devices-sdk-release-notes.md
+- name: Zdroje informací
   items:
     - name: Speech SDK
       items:
@@ -505,85 +582,6 @@
           href: 'https://speech.microsoft.com'
         - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
           href: ./quickstart-custom-commands-application.md
-- name: Nasadit
-  items:
-    - name: Povolit protokolování
-      href: how-to-use-logging.md
-    - name: Sledování využití paměti
-      href: how-to-track-speech-sdk-memory-usage.md
-    - name: Povolení privátního koncového bodu
-      href: speech-services-private-link.md
-    - name: Konfigurace OpenSSL pro Linux
-      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-      href: how-to-configure-openssl-linux.md
-    - name: Konfigurace RHEL/CentOS 7
-      href: how-to-configure-rhel-centos-7.md
-      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Kontejnery
-      items:
-        - name: Instalace a spuštění kontejnerů služby Speech
-          displayName: 'containers,install container,run container'
-          href: speech-container-howto.md
-        - name: Konfigurace kontejnerů služby Speech
-          displayName: 'containers,configure containers,container config,configuration'
-          href: speech-container-configuration.md
-        - name: Dávkové zpracování s využitím kontejnerů služby Speech
-          href: speech-container-batch-processing.md
-        - name: Kontejnery služby Speech s Kubernetes a Helmem
-          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: Kontejnery služby Speech ve službě Azure Container Instances
-          displayName: 'ACI,azure container instances,container instances,containers'
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Nejčastější dotazy ke kontejnerům
-          href: speech-container-faq.md
-        - name: Dokumentace ke kontejnerům Cognitive Services
-          href: ../containers/index.yml
-- name: Zařízení
-  items:
-    - name: Dokumentace ke Speech Devices
-      href: index-devices.yml
-    - name: Přehled
-      items:
-        - name: Co je sada Speech Devices SDK?
-          href: speech-devices-sdk.md
-        - name: Získání sady Speech Devices SDK
-          href: get-speech-devices-sdk.md
-        - name: Ukázky sady Speech Devices SDK (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: Hardware
-      items:
-        - name: Doporučení pro mikrofonní pole
-          href: speech-devices-sdk-microphone.md
-        - name: Podrobnosti k Roobo v1
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Podrobnosti k Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-    - name: Návody
-      items:
-        - name: Jak nakonfigurovat pole mikrofonů
-          href: how-to-devices-microphone-array-configuration.md
-    - name: Rychlý start
-      items:
-        - name: Použití sady Speech Devices SDK
-          href: speech-devices-sdk-quickstart.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Řešení potíže se sadou Speech Devices SDK
-          href: speech-devices-sdk-troubleshooting.md
-    - name: Referenční informace
-      items:
-        - name: Poznámky k verzi sady Speech Devices SDK
-          href: devices-sdk-release-notes.md
-- name: Migrace
-  items:
-    - name: Z rozhraní API pro zpracování řeči Bingu
-      href: how-to-migrate-from-bing-speech.md
-    - name: Z rozhraní Translator Speech API
-      href: how-to-migrate-from-translator-speech-api.md
-- name: Zdroje a prostředky
-  items:
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Dokumentace ke Swaggeru

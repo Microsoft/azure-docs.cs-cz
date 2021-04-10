@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
 ms.openlocfilehash: 3cbeb1dbd207eec7f58465a24f33808bf2e7c7c0
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867606"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Vývoj aplikace Scala Maven pomocí IntelliJ
 > * Vytvoření samostatného projektu Scala
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 

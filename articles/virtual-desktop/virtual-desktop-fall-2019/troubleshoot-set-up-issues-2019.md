@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1695e7aa0a202a5946f9038049b51c6a8fd45ad5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95014828"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934661"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Vytvoření fondu tenanta a hostitele ve virtuální ploše Windows (Classic)
 
@@ -31,11 +31,11 @@ Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **P�
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální plochy verze 1809](../media/AzureMarketPlace.png)
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Vytváří se tenant virtuální plochy Windows.
+## <a name="creating-windows-virtual-desktop-tenant&quot;></a>Vytváří se tenant virtuální plochy Windows.
 
 Tato část se věnuje potenciálním problémům při vytváření tenanta virtuálních klientů Windows.
 
-### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Chyba: AADSTS650052 aplikace potřebuje přístup ke službě.
+### <a name=&quot;error-aadsts650052-the-app-needs-access-to-a-service&quot;></a>Chyba: AADSTS650052 aplikace potřebuje přístup ke službě.
 
 Příklad nezpracované chyby:
 
@@ -406,7 +406,7 @@ Pokud používáte šablonu Azure Resource Manager GitHubu, zadejte hodnoty pro 
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Chyba: vmSubnet není k dispozici při konfiguraci virtuálních sítí
 
-**Příčina:** V šabloně tržiště WVD se v uživatelském rozhraní zobrazí jenom podsítě, které mají aspoň tolik IP adres, kolik je dostupných jako celkový počet virtuálních počítačů zadaných v šabloně. Skutečný počet dostupných IP adres v podsíti musí být roven počtu nově nasazených virtuálních počítačů, které však nelze vypočítat pomocí aktuálního uživatelského rozhraní.
+**Příčina:** V šabloně virtuálního počítače s Windows se v uživatelském rozhraní zobrazí jenom podsítě, které mají aspoň tolik IP adres, kolik jich je dostupných jako celkový počet virtuálních počítačů zadaných v šabloně. Skutečný počet dostupných IP adres v podsíti musí být roven počtu nově nasazených virtuálních počítačů, které však nelze vypočítat pomocí aktuálního uživatelského rozhraní.
 
 **Oprava:** Můžete zadat podsíť s aspoň tolik IP adresami, kolik je k dispozici jako počet virtuálních počítačů, které se přidávají pomocí uživatelského rozhraní Marketplace. to se dá udělat zadáním názvu podsítě v parametru "**existingSubnetName**" při opětovném [nasazení stávajícího nasazení](expand-existing-host-pool-2019.md#redeploy-from-azure) nebo [nasazení pomocí základní šablony ARM z GitHubu](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 

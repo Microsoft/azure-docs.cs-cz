@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449247"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550734"
 ---
 # <a name="health-probes"></a>Sondy stavu
 
@@ -24,6 +24,9 @@ Aby bylo možné určit stav a blízkost každého back-endu pro dané prostřed
 
 > [!WARNING]
 > Vzhledem k tomu, že přední dvířka mají globálně mnoho hraničních prostředí, může být objem sondy stavu pro back-endy poměrně vysoký od 25 požadavků každou minutu až po 1200 požadavků za minutu, v závislosti na konfiguraci frekvence sond stavu. S výchozí frekvencí sondy 30 sekund by měl mít svazek sondy na back-endu přibližně 200 požadavků za minutu.
+
+> [!NOTE]
+> Sondy HTTP/HTTPS na začátku jsou odesílány s `User-Agent` hlavičkovou sadou s hodnotou: `Edge Health Probes` . 
 
 ## <a name="supported-protocols"></a>Podporované protokoly
 

@@ -137,6 +137,8 @@
           href: how-to-setup-lab-gpu.md
         - name: Příprava šablony virtuálního počítače s Windows
           href: how-to-prepare-windows-template.md
+        - name: Použití externího úložiště souborů
+          href: how-to-attach-external-storage.md
         - name: Řízení chování při vypínání Windows
           href: how-to-windows-shutdown.md
         - name: Zobrazení informací o podpoře (vyučující)

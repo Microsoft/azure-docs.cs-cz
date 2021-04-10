@@ -8,10 +8,10 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869663"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Průvodce nastavením velikosti clusterů Azure HDInsight Interactive Query (LLAPa registru)
@@ -29,7 +29,7 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 ***Poznámka: všechny doporučené konfigurace jsou založené na pracovním uzlu typ D14 v2.***  
 
 ### <a name="configuration"></a>**Rozšířeného**    
-| Konfigurační klíč      | Doporučená hodnota  | Popis |
+| Konfigurační klíč      | Doporučená hodnota  | Description |
 | :---        |    :----:   | :---     |
 | příz. NodeManager. Resource. paměť-MB | 102400 (MB) | Celková velikost paměti (v MB) pro všechny kontejnery PŘÍZe na uzlu | 
 | příze. Scheduler. maximum – přidělení-MB | 102400 (MB) | Maximální přidělení pro každou žádost kontejneru v RM v MB. Požadavky na paměť vyšší než tato hodnota se projeví |

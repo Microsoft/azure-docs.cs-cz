@@ -26,8 +26,10 @@
           href: quickstarts/chat/meeting-interop.md
     - name: Telefonie a SMS
       items:
-        - name: Správa telefonních čísel
+        - name: Získání telefonního čísla
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Portování telefonního čísla do Azure
+          href: quickstarts/telephony-sms/port-phone-number.md
         - name: Přidání telefonních hovorů do vaší aplikace
           href: quickstarts/voice-video-calling/pstn-call.md
         - name: Odeslání zprávy SMS
@@ -92,6 +94,8 @@
           href: concepts/telephony-sms/messaging-policy.md
     - name: Hlasové hovory a videohovory
       items:
+        - name: Známé problémy
+          href: concepts/known-issues.md
         - name: Přehled volání sady SDK
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Koncepce hlasových hovorů a videohovorů
@@ -135,8 +139,6 @@
       href: concepts/notifications.md
     - name: Interoperabilita Teams
       href: concepts/teams-interop.md
-    - name: Známé problémy
-      href: concepts/known-issues.md
 - name: ukázky
   items:
     - name: Přehled
@@ -151,6 +153,8 @@
   items:
     - name: Přehled referenční dokumentace
       href: concepts/reference.md
+    - name: Azure CLI
+      href: /cli/azure/ext/communication/communication
     - name: Rozhraní REST API dokumentace
       href: /rest/api/communication/
     - name: Knihovny pro volání
@@ -158,7 +162,7 @@
         - name: Volání (JavaScript)
           href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: Volání (Android/Java)
-          href: /java/api/com.azure.communication.calling
+          href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
         - name: Volání (iOS)
           href: /objectivec/communication-services/calling/
     - name: Knihovny pro chat
