@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
 ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870207"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý Start: vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
@@ -18,7 +18,7 @@ Apache Storm je škálovatelný výpočetní systém v reálném čase odolný p
 
 V tomto rychlém startu použijete příklad z projektu Apache [-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) k vytvoření a monitorování Apache Storm topologie do existujícího clusteru Apache Storm.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 

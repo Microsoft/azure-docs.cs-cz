@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: b1f742c1de259f6c1c06d9b31a8788699f0b8426
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99537217"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580025"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Odhad a správa kapacity služby Azure Kognitivní hledání
 
@@ -48,17 +48,19 @@ V Kognitivní hledání je Správa horizontálních oddílůa detailem implement
 
 + Gramatiky automatického dokončování: Automatické dokončování dotazů, kde se shody provádějí na prvních několika znakech částečně zadaného výrazu, přijměte přibližný parametr, který forgives malé odchylky v pravopisu. Pro automatické dokončování je přibližné porovnání omezené na výrazy v rámci aktuální horizontálních oddílů. Například pokud horizontálních oddílů obsahuje "Microsoft" a částečný výraz "micor", vyhledávací web bude v tomto horizontálních oddílů odpovídat "Microsoft", ale ne v jiném horizontálních oddílů, které obsahují zbývající části indexu.
 
-## <a name="how-to-evaluate-capacity-requirements"></a>Jak vyhodnotit požadavky na kapacitu
+## <a name="approaching-estimation"></a>Blíží se odhad
 
-Kapacita a náklady na provoz služby se dostanou rukou. Vrstvy ukládají omezení na dvou úrovních: úložiště a obsah (například počet indexů ve službě). Je důležité vzít v úvahu, protože podle toho, co se vám limit dosahuje, je platný limit.
+Kapacita a náklady na provoz služby se dostanou rukou. Vrstvy ukládají omezení na dvou úrovních: obsah (například počet indexů ve službě) a úložiště. Je důležité vzít v úvahu, protože podle toho, co se vám limit dosahuje, je platný limit.
 
-Množství indexů a jiných objektů se obvykle řídí obchodními a technickými požadavky. Například můžete mít více verzí stejného indexu pro aktivní vývoj, testování a produkci.
+Počty indexů a dalších objektů jsou obvykle vypočítány provozními a technickými požadavky. Například můžete mít více verzí stejného indexu pro aktivní vývoj, testování a produkci.
 
 Požadavky na úložiště se určují podle velikosti indexů, které očekáváte k sestavení. Neexistují žádné tuhé heuristické a obecné informace, které vám pomůžou s odhady. Jediným způsobem, jak určit velikost indexu, je [sestavení jednoho](search-what-is-an-index.md). Jeho velikost bude založena na importovaných datech, analýze textu a konfiguraci indexu, například na tom, jestli povolíte moduly pro návrhy, filtrování a řazení.
 
 Pro fulltextové vyhledávání je primární strukturou dat [obrácená struktura indexu](https://en.wikipedia.org/wiki/Inverted_index) , která má jiné charakteristiky než zdrojová data. U převráceného indexu se velikost a složitost určují podle obsahu, nikoli nutně podle množství dat, která do něj zadáte. Velký zdroj dat s vysokou redundancí může mít za následek menší index než menší datová sada, která obsahuje vysoce proměnlivý obsah. Je proto možné pouze odvodit velikost indexu na základě velikosti původní datové sady.
 
-> [!NOTE] 
+Atributy indexu, jako je povolení filtrů a řazení, budou mít vliv na požadavky na úložiště. Použití modulu pro návrhy má také dopady na úložiště. Další informace najdete v tématu [atributy a velikost indexu](search-what-is-an-index.md#index-size).
+
+> [!NOTE]
 > I když odhaduje budoucí potřeby indexů a úložiště, může to vypadat stejně jako v případě vysokého odhadu. Pokud je kapacita vrstvy příliš nízká, budete muset zřídit novou službu na vyšší úrovni a pak [znovu načíst své indexy](search-howto-reindex.md). Neexistuje žádný místní upgrade služby z jedné úrovně na jinou.
 >
 
@@ -87,7 +89,7 @@ Vyhrazené prostředky můžou sloužit k většímu počtu vzorkování a zprac
     + Začíná vysoká, v S2 nebo dokonce S3, pokud testování zahrnuje rozsáhlé indexování a načítání dotazů.
     + Pokud indexuje velké množství dat a zatížení dotazů je relativně nízké, stejně jako u interní obchodní aplikace, začněte s optimalizovaným úložištěm, v L1 nebo L2.
 
-1. [Sestavte počáteční index](search-what-is-an-index.md) pro určení způsobu, jakým zdrojová data přecházejí do indexu. Toto je jediný způsob, jak odhadnout velikost indexu.
+1. [Sestavte počáteční index](search-what-is-an-index.md) pro určení způsobu, jakým zdrojová data přecházejí do indexu. Toto je jediný způsob, jak odhadnout velikost indexu. 
 
 1. Na portálu [monitorujte úložiště, omezení služeb, svazek dotazů a latenci](search-monitor-usage.md) . Na portálu se zobrazí dotazy za sekundu, omezené dotazy a latence hledání. Všechny tyto hodnoty vám pomohou při rozhodování, zda jste vybrali správnou úroveň.
 
@@ -111,7 +113,7 @@ Vrstvy optimalizované pro úložiště jsou užitečné pro úlohy s velkým ob
 
 **Smlouvy o úrovni služeb**
 
-Funkce bezplatné úrovně a verze Preview neposkytují [smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Pro všechny Fakturovatelné úrovně se SLA projeví, když zřizujete dostatečnou redundanci pro vaši službu. Pro dotaz (čtení) SLA musíte mít dvě nebo víc replik. Musíte mít tři nebo víc replik pro dotazování a indexování (pro čtení i zápis) SLA. Počet oddílů nemá vliv na SLA.
+Do funkcí úrovně Free a Preview se nevztahují [smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Pro všechny Fakturovatelné úrovně se SLA projeví, když zřizujete dostatečnou redundanci pro vaši službu. Pro dotaz (čtení) SLA musíte mít dvě nebo víc replik. Musíte mít tři nebo víc replik pro dotazování a indexování (pro čtení i zápis) SLA. Počet oddílů nemá vliv na SLA.
 
 ## <a name="tips-for-capacity-planning"></a>Tipy pro plánování kapacity
 
@@ -119,24 +121,30 @@ Funkce bezplatné úrovně a verze Preview neposkytují [smlouvy o úrovni služ
 
 + Mějte na paměti, že jediným nevýhodouem zřizování je, že pokud jsou skutečné požadavky větší než vaše předpovědi, možná budete muset tuto službu vytrhnout. Aby nedošlo k přerušení služeb, vytvořili byste novou službu na vyšší úrovni a běžela vedle sebe, dokud všechny aplikace a požadavky necílí na nový koncový bod.
 
-## <a name="when-to-add-partitions-and-replicas"></a>Kdy přidat oddíly a repliky
+## <a name="when-to-add-capacity"></a>Kdy přidat kapacitu
 
-Zpočátku je služba přidělena minimální úroveň prostředků, které se skládají z jednoho oddílu a jedné repliky.
+Zpočátku je služba přidělena minimální úroveň prostředků, které se skládají z jednoho oddílu a jedné repliky. [Úroveň, kterou zvolíte](search-sku-tier.md) , určuje velikost a rychlost oddílu a každá vrstva je optimalizovaná kolem sady vlastností, které odpovídají různým scénářům. Pokud zvolíte vyšší úroveň, budete možná potřebovat méně oddílů, než když provedete S1. Jedna z otázek, které budete potřebovat k zodpovězení na základě samy zaměřeného testování, je, jestli větší a levnější oddíl poskytuje lepší výkon než dvě levnější oddíly v rámci služby zřízené na nižší úrovni.
 
 Jedna služba musí mít dostatek prostředků pro zpracování všech úloh (indexování a dotazů). Na pozadí se nespouští žádné úlohy. Indexování můžete naplánovat na časy, kdy jsou požadavky na dotazy přirozeně méně časté, ale služba nebude jinak určovat prioritu jednoho úkolu v jiném. Kromě toho určité množství redundance vyplynule výkon dotazů při interní aktualizaci služeb nebo uzlů.
 
-V rámci obecného pravidla hledají aplikace za následek větší repliky než oddíly, zejména v případě, že operace služby jsou posunuty k úlohám dotazů. Oddíl o [vysoké dostupnosti](#HA) vysvětluje, proč.
+Mezi pokyny k určení toho, jestli přidat kapacitu, patří:
 
-[Úroveň, kterou zvolíte](search-sku-tier.md) , určuje velikost a rychlost oddílu a každá vrstva je optimalizovaná kolem sady vlastností, které odpovídají různým scénářům. Pokud zvolíte vyšší úroveň, budete možná potřebovat méně oddílů, než když provedete S1. Jedna z otázek, které budete potřebovat k zodpovězení na základě samy zaměřeného testování, je, jestli větší a levnější oddíl poskytuje lepší výkon než dvě levnější oddíly v rámci služby zřízené na nižší úrovni.
++ Splnění kritérií vysoké dostupnosti pro smlouvu o úrovni služeb
++ Frekvence chyb HTTP 503 se zvyšuje.
++ Očekává se velké svazky dotazů.
+
+V rámci obecného pravidla hledají aplikace za následek větší repliky než oddíly, zejména v případě, že operace služby jsou posunuty k úlohám dotazů. Každá replika je kopií vašeho indexu, což umožňuje službě vyrovnávat zatížení žádostí proti více kopiím. Veškeré vyrovnávání zatížení a replikace indexu spravuje Azure Kognitivní hledání a kdykoli můžete změnit počet replik vyhrazených pro vaši službu. V rámci standardní vyhledávací služby můžete přidělit až 12 replik a 3 repliky ve službě Basic Search. Přidělení repliky je možné provést buď z [Azure Portal](search-create-service-portal.md) , nebo z některé z programových možností.
 
 Prohledat aplikace, které vyžadují aktualizaci dat téměř v reálném čase, budou potřebovat rozčlenit více oddílů než repliky. Přidávání oddílů rozšíří operace čtení/zápisu v rámci většího počtu výpočetních prostředků. Nabízí také více místa na disku pro ukládání dalších indexů a dokumentů.
 
-Větším indexům trvá dotaz déle. V takovém případě se může stát, že při každém přírůstkovém navýšení oddílů se v replikách vyžaduje menší, ale úměrný nárůst. Složitost vašich dotazů a svazků dotazů se projeví v tom, jak se rychle vykoná provádění dotazů.
+Nakonec se dotazování větších indexů trvá déle. V takovém případě se může stát, že při každém přírůstkovém navýšení oddílů se v replikách vyžaduje menší, ale úměrný nárůst. Složitost vašich dotazů a svazků dotazů se projeví v tom, jak se rychle vykoná provádění dotazů.
 
 > [!NOTE]
 > Přidání dalších replik nebo oddílů zvyšuje náklady na provoz služby a může způsobit mírné variace při objednání výsledků. Nezapomeňte se podívat na [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) , abyste porozuměli důsledkům fakturace při přidávání dalších uzlů. [Následující graf](#chart) vám může pomáhat s křížovým odkazem na počet jednotek hledání potřebných pro konkrétní konfiguraci. Další informace o tom, jak další repliky ovlivňují zpracování dotazů, najdete v tématu [řazení výsledků](search-pagination-page-layout.md#ordering-results).
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>Postup přidělení replik a oddílů
+<a name="adjust-capacity"></a>
+
+## <a name="add-or-reduce-replicas-and-partitions"></a>Přidávání a zmenšování replik a oddílů
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a vyberte vyhledávací službu.
 
@@ -158,7 +166,7 @@ Větším indexům trvá dotaz déle. V takovém případě se může stát, že
 
    :::image type="content" source="media/search-capacity-planning/3-save-confirm.png" alt-text="Uložit změny" border="true":::
 
-   Dokončení změn kapacity může trvat až několik hodin. Po spuštění procesu nemůžete operaci zrušit a v reálném čase není monitorování pro repliky a úpravy oddílů. Během probíhajících změn však zůstane vidět následující zpráva.
+   Změny kapacity mohou trvat až 15 minut až do několika hodin, než se dokončí. Po spuštění procesu nemůžete operaci zrušit a v reálném čase není monitorování pro repliky a úpravy oddílů. Během probíhajících změn však zůstane vidět následující zpráva.
 
    :::image type="content" source="media/search-capacity-planning/4-updating.png" alt-text="Stavová zpráva na portálu" border="true":::
 
@@ -192,31 +200,7 @@ Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další i
 > Počet replik a oddílů se rozdělí i na 12 (konkrétně 1, 2, 3, 4, 6, 12). Je to proto, že Azure Kognitivní hledání předdělí každý index na 12 horizontálních oddílů, aby se mohl rozdělit na stejné části ve všech oddílech. Například pokud má vaše služba tři oddíly a vytvoříte index, každý oddíl bude obsahovat čtyři horizontálních oddílůy indexu. Jak Azure Kognitivní hledání horizontálních oddílů index je podrobný popis implementace, se může v budoucích verzích změnit. I když je číslo 12 dnes, neměli byste očekávat, že toto číslo bude v budoucnu vždy 12.
 >
 
-<a id="HA"></a>
-
-## <a name="high-availability"></a>Vysoká dostupnost
-
-Vzhledem k tomu, že je snadné a poměrně rychlé horizontální navýšení kapacity, doporučujeme, abyste začali s jedním oddílem a jednou nebo dvěma replikami a pak nastavili horizontální navýšení kapacity pro sestavení dotazů. Úlohy dotazů běží hlavně na replikách. Pokud potřebujete větší propustnost nebo vysokou dostupnost, budete pravděpodobně potřebovat další repliky.
-
-K dispozici jsou obecná doporučení pro vysokou dostupnost:
-
-+ Dvě repliky pro vysokou dostupnost úloh jen pro čtení (dotazů)
-
-+ Tři nebo více replik pro vysokou dostupnost úloh čtení a zápisu (dotazy a indexování při přidání, aktualizaci nebo odstranění jednotlivých dokumentů)
-
-Smlouvy o úrovni služeb (SLA) pro Azure Kognitivní hledání jsou zaměřené na operace dotazování a indexových aktualizací, které se skládají z přidávání, aktualizace a odstraňování dokumentů.
-
-Úroveň Basic je vystaralá na jednom oddílu a tři repliky. Pokud chcete, aby flexibilita okamžitě reagovala na kolísání poptávky při indexování i propustnosti dotazů, vezměte v úvahu jednu z úrovní Standard.  Pokud zjistíte, že vaše požadavky na úložiště roste mnohem rychleji než propustnost dotazu, vezměte v úvahu jednu z vrstev optimalizovaných pro úložiště.
-
-## <a name="about-queries-per-second-qps"></a>O dotazech za sekundu (QPS)
-
-Vzhledem k velkému počtu faktorů, které se blíží k výkonu dotazů, Microsoft nepublikuje očekávaná QPS čísla. Odhady QPS musí být vyvíjeny nezávisle u každého zákazníka, a to pomocí úrovně služeb, konfigurace, indexu a konstrukcí dotazů, které jsou platné pro vaši aplikaci. Velikost indexu a složitost, velikost a složitost dotazů a množství přenosů jsou primárními determinanty QPS. Neexistuje žádný způsob, jak nabízet smysluplné odhady v případě, že tyto faktory nejsou známy.
-
-Odhady jsou předvídatelné při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). QPS můžete odhadnout přesněji, protože máte kontrolu nad více parametry. Pokyny pro přístup k odhadu najdete v tématu [výkon a optimalizace pro Azure kognitivní hledání](search-performance-optimization.md).
-
-Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat nižší propustnost dotazů a vyšší latenci než na úrovni Standard.
-
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Jak odhadnout a spravovat náklady](search-sku-manage-costs.md)
+> [Správa nákladů](search-sku-manage-costs.md)

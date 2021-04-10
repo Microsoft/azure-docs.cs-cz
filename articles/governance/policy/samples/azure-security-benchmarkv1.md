@@ -1,15 +1,15 @@
 ---
 title: Podrobnosti dodržování předpisů v souladu s předpisy pro Azure Security benchmark v1
 description: Podrobnosti o integrované iniciativě dodržování předpisů Azure Security test v1. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0d90cadb215dc1d67f2588d5434fec2202133917
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cd63c657821fe15a8dade3535db5612a219a8a1c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032582"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090014"
 ---
 # <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Podrobnosti o integrované iniciativě dodržování předpisů v Azure Security test v1
 

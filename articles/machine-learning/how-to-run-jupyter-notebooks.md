@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 257fc6544061c2ef9c3fdbfb8c33bc06ed2db6e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566331"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066199"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 
 Přečtěte si, jak spustit poznámkové bloky Jupyter přímo ve vašem pracovním prostoru v Azure Machine Learning Studiu. I když můžete spustit [Jupyter](https://jupyter.org/) nebo [JupyterLab](https://jupyterlab.readthedocs.io), můžete také upravit a spustit poznámkové bloky, aniž byste museli opustit pracovní prostor.
 
 Informace o tom, jak vytvářet a spravovat soubory, včetně poznámkových bloků, najdete v tématu [Vytvoření a Správa souborů ve vašem pracovním prostoru](how-to-manage-files.md).
+
+> [!IMPORTANT]
+> Funkce označené jako (Preview) se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,17 +51,27 @@ Pomocí detailního režimu můžete rozšířit aktuální zobrazení, abyste s
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Přepnout detailní režim nebo standardní zobrazení":::
 
-## <a name="use-intellisense"></a>Používání technologie IntelliSense
+## <a name="code-completion-intellisense"></a>Dokončování kódu (IntelliSense)
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Tyto funkce vám pomůžou získat další informace o kódu, který používáte, sledovat parametry, které píšete, a přidávat volání vlastností a metod s pouze několika klávesami.  
 
-Při psaní kódu použijte kombinaci kláves CTRL + mezerník pro aktivaci technologie IntelliSense.
+### <a name="use-code-snippets-preview"></a>Použití fragmentů kódu (Preview)
+
+Pro aktivaci fragmentů kódu technologie IntelliSense použijte **kombinaci kláves CTRL + MEZERNÍK** .  Posuňte se na návrhy nebo začněte psát a Najděte kód, který chcete vložit.  Po vložení kódu, TAB přes argumenty pro přizpůsobení kódu pro vlastní použití.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="Vložení fragmentu kódu":::
+
+Tyto stejné fragmenty kódu jsou k dispozici po otevření poznámkového bloku v VS Code. Úplný seznam dostupných fragmentů naleznete v tématu [Azure Machine Learning vs Code fragmenty](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md).
+
+Seznam fragmentů můžete procházet a hledat pomocí panelu nástrojů poznámkového bloku a otevřít tak panel fragment.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="Otevřít panel nástrojů fragmentu na panelu nástrojů Poznámkový blok":::
+
+Z panelu fragmenty kódu můžete také odeslat žádost o přidání nových fragmentů kódu.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="Panel fragment kódu umožňuje navrhovat nový fragment kódu.":::
 
 ## <a name="clean-your-notebook-preview"></a>Vyčištění poznámkového bloku (Preview)
-
-> [!IMPORTANT]
-> Funkce Shromážděte je aktuálně ve verzi Public Preview.
-> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V průběhu vytváření poznámkového bloku obvykle skončíte s buňkami, které jste použili pro zkoumání nebo ladění dat. Funkce *shromáždit* vám pomůže vytvořit čistý Poznámkový blok bez těchto cizích buněk.
 
@@ -158,7 +171,7 @@ Tyto akce resetují stav poznámkového bloku a obnoví všechny proměnné v po
 
 ## <a name="add-new-kernels"></a>Přidat nové jádra
 
-[Pomocí terminálu ](how-to-access-terminal.md#add-new-kernels) vytvořte a přidejte do své výpočetní instance nové jádro. Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na připojené výpočetní instanci.
+[Pomocí terminálu](how-to-access-terminal.md#add-new-kernels) vytvořte a přidejte do své výpočetní instance nové jádro. Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na připojené výpočetní instanci.
 
 Pomocí rozevíracího seznamu jádro na pravé straně můžete změnit některý z nainstalovaných jader.  
 

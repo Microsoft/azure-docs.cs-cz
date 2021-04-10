@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 02/18/2021
 ms.openlocfilehash: 310182a3b46f0682efe420387bba0da311707e8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104606595"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
@@ -60,7 +60,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 * **Azure Storage**. Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 

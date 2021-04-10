@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: 00573f01aab5e9aa86befaebb6b514c76a01b67d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871771"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
@@ -26,7 +26,7 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 > [!NOTE]  
 > Další možností definování pracovních postupů pomocí HDInsight je použití Azure Data Factory. Další informace o Data Factory najdete v tématu [použití nástroje Apache prasete a Apache Hive s Data Factory](../data-factory/transform-data.md). Pokud chcete používat Oozie v clusterech s Balíček zabezpečení podniku, přečtěte si téma [spuštění Apache Oozie v clusterech HDInsight Hadoop s balíček zabezpečení podniku](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 

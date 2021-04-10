@@ -14,10 +14,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104798389"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Nastavení toku resetování hesla v Azure Active Directory B2C
@@ -41,7 +41,7 @@ Tok resetování hesla se vztahuje na místní účty v Azure AD B2C, které pou
 
 Běžný postup po migraci uživatelů na Azure AD B2C s náhodnými hesly spočívá v tom, že uživatelé ověřují své e-mailové adresy a resetují hesla během jejich prvního přihlášení. Je také běžné vynutit, aby uživatel resetoval heslo poté, co správce změní heslo; Pokud chcete tuto funkci povolit, přečtěte si téma [vynucení resetování hesla](force-password-reset.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

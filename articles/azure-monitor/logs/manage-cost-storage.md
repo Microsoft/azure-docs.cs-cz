@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 5048364aed1eea8d0c32d9134a4ba5a22d28b989
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 64b794f4a749816af71f9c5f14dddf2bbcbc6512
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560450"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279608"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -41,7 +41,7 @@ Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacit
 
 U všech cenových úrovní je velikost dat události počítána z řetězcové reprezentace vlastností, které jsou uloženy v Log Analytics pro tuto událost, bez ohledu na to, zda jsou data odesílána z agenta nebo přidána během procesu příjmu. To zahrnuje všechna [vlastní pole](custom-fields.md) , která jsou přidána, když jsou shromažďována data a uložena v Log Analytics. Při výpočtu velikosti události jsou vyloučeny některé vlastnosti společné pro všechny typy dat, včetně některých [log Analyticsch standardních vlastností](./log-standard-columns.md). To zahrnuje `_ResourceId` , `_SubscriptionId` , `_ItemId` , `_IsBillable` `_BilledSize` a `Type` . Všechny ostatní vlastnosti uložené v Log Analytics jsou zahrnuté do výpočtu velikosti události. Některé datové typy jsou zcela bezplatné poplatky za příjem dat, například AzureActivity, prezenční signál a typy využití. Chcete-li zjistit, zda byla událost vyloučena z fakturace pro příjem dat, můžete použít `_IsBillable` vlastnost, jak je uvedeno [níže](#data-volume-for-specific-events). Použití je hlášeno v GB (1,0 E9 bajtů). 
 
-Všimněte si také, že některá řešení, jako je [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Správa konfigurace a konfigurace](https://azure.microsoft.com/pricing/details/automation/) [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/) , mají své vlastní cenové modely. 
+Všimněte si také, že některá řešení, jako je například [Azure Defender (Security Center)](https://azure.microsoft.com/pricing/details/azure-defender/), [Správa konfigurace a konfigurace](https://azure.microsoft.com/pricing/details/automation/) [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/) , mají své vlastní cenové modely. 
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics vyhrazené clustery
 
@@ -51,9 +51,9 @@ Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho 
 
 Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při [konfiguraci clusteru](customer-managed-keys.md#customer-managed-key-operations). Tyto dva režimy jsou: 
 
-1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení na základě uzlů z [Azure Security Center](../../security-center/index.yml) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. 
+1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení jednotlivých uzlů z [Azure Defenderu (Security Center)](../../security-center/index.yml) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. 
 
-2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.) Pokud je celkový objem dat zpracovaných v pracovním prostoru za den menší než rezervace kapacity, pak se každý pracovní prostor fakturuje za jeho ingestovaná data na základě sazby za nevyužitou kapacitu na GB tím, že je vyúčtováním zlomku kapacity rezervace a nevyužité části rezervace kapacity se účtují do prostředku clusteru. Pokud celkový objem dat, který se během dne ingestuje do pracovního prostoru, je větší než rezervace kapacity, pak se pro každý pracovní prostor účtuje zlomek kapacity na základě jeho zlomku a v každém pracovním prostoru se podílem přijatých dat nad rámec rezervace kapacity. K prostředku clusteru se nic neúčtuje, pokud je celkový objem dat ingestný do pracovního prostoru za den nad rezervací kapacity.
+2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure defenderu (Security Center)](../../security-center/index.yml) pro každý pracovní prostor.) Pokud je celkový objem dat zpracovaných v pracovním prostoru za den menší než rezervace kapacity, pak se každý pracovní prostor fakturuje za jeho ingestovaná data na základě sazby za nevyužitou kapacitu na GB tím, že je vyúčtováním zlomku kapacity rezervace a nevyužité části rezervace kapacity se účtují do prostředku clusteru. Pokud celkový objem dat, který se během dne ingestuje do pracovního prostoru, je větší než rezervace kapacity, pak se pro každý pracovní prostor účtuje zlomek kapacity na základě jeho zlomku a v každém pracovním prostoru se podílem přijatých dat nad rámec rezervace kapacity. K prostředku clusteru se nic neúčtuje, pokud je celkový objem dat ingestný do pracovního prostoru za den nad rezervací kapacity.
 
 V možnostech fakturace clusteru se uchovávání dat účtuje podle pracovního prostoru. Všimněte si, že při vytváření clusteru začíná fakturace clusteru bez ohledu na to, jestli byly pracovní prostory přidružené ke clusteru. Všimněte si také, že pracovní prostory přidružené k clusteru už nemají cenovou úroveň.
 
@@ -77,7 +77,7 @@ Do faktury Azure se přidají poplatky za Log Analytics. Podrobnosti o fakturaci
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Zobrazení využití Log Analytics na faktuře Azure 
 
-Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/cluster pro Log Analytics clustery), abyste mohli sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, například Azure Security Center a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
+Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/cluster pro Log Analytics clustery), abyste mohli sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, jako je například Azure Defender (Security Center) a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
 
 Další vysvětlení vašeho využití můžete získat [stažením informací o využití z webu Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Ve stažené tabulce uvidíte využití jednotlivých prostředků Azure (např. pracovního prostoru služby Log Analytics) po dnech. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít prvním filtrováním ve sloupci měřiče měření, ve kterém se zobrazí "Log Analytics", "Insight and Analytics" (používané některými staršími cenovými úrovněmi) a "Azure Monitor" (používané cenovými úrovněmi rezervace kapacity) a pak přidat filtr do sloupce ID instance, který je "obsahuje pracovní prostor" nebo "obsahuje cluster" (druhý k zahrnutí Log Analyticsho využití clusteru). Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou také další podrobnosti, které vám pomůžou [porozumět informacím na faktuře za Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -97,7 +97,7 @@ Pokud chcete změnit Log Analytics cenové úrovně vašeho pracovního prostoru
 
 ## <a name="legacy-pricing-tiers"></a>Starší cenové úrovně
 
-Předplatná, která měl Log Analytics pracovní prostor nebo prostředek Application Insights před 2. dubna 2018 nebo jsou propojená s smlouva Enterprise, která začala před 1. února 2019, bude i nadále mít přístup k používání starších cenových úrovní: **Free**, **Standalone (za GB)** a **per Node (OMS)**.  Pracovní prostory v bezplatné cenové úrovni budou mít denní příjem dat omezený na 500 MB (kromě datových typů zabezpečení shromažďovaných v [Azure Security Center](../../security-center/index.yml)) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v cenové úrovni samostatného nebo počtu uzlů mají uživatelsky konfigurovatelné uchovávání dat od 30 do 730 dnů.
+Předplatná, která měl Log Analytics pracovní prostor nebo prostředek Application Insights před 2. dubna 2018 nebo jsou propojená s smlouva Enterprise, která začala před 1. února 2019, bude i nadále mít přístup k používání starších cenových úrovní: **Free**, **Standalone (za GB)** a **per Node (OMS)**.  Pracovní prostory v bezplatné cenové úrovni budou mít denní příjem dat omezený na 500 MB (kromě datových typů zabezpečení shromažďovaných službou [Azure Defender (Security Center)](../../security-center/index.yml)) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v cenové úrovni samostatného nebo počtu uzlů mají uživatelsky konfigurovatelné uchovávání dat od 30 do 730 dnů.
 
 Využití na samostatné cenové úrovni se účtuje podle povrstveného objemu dat. Je hlášen ve službě **Log Analytics** a měřič se nazývá "Analýza dat". 
 
@@ -105,18 +105,18 @@ Cenové úrovně na jednotlivé uzly se účtují za monitorované virtuální p
 
 1. Uzel: Toto je využití v počtu monitorovaných uzlů (virtuálních počítačů) v jednotkách uzlu * měsíců.
 2. Nadlimitní využití dat na uzel: Jedná se o počet GB dat, která se převezmou nad agregovaným přidělením dat.
-3. Data zahrnutá na uzel: Jedná se o množství zpracovaných dat, která byla pokrytá agregovaným přidělením dat. Tento měřič se používá také v případě, že je pracovní prostor ve všech cenových úrovních a zobrazuje množství dat, která jsou pokrytá Azure Security Center.
+3. Data zahrnutá na uzel: Jedná se o množství zpracovaných dat, která byla pokrytá agregovaným přidělením dat. Tento měřič se používá také v případě, že je pracovní prostor ve všech cenových úrovních a zobrazuje množství dat, která jsou zahrnuta v programu Azure Defender (Security Center).
 
 > [!TIP]
 > Pokud má váš pracovní prostor přístup k cenové úrovni **na jednotlivých uzlech** , ale zjistíte, jestli by byl méně nákladně v úrovni průběžných plateb, můžete [pomocí následujícího dotazu](#evaluating-the-legacy-per-node-pricing-tier) snadno získat doporučení. 
 
 Pracovní prostory vytvořené před dubna 2016 mají přístup také k původním cenovým úrovním **Standard** a **Premium** , které mají pevnou dobu uchovávání dat 30 a 365 dnů v uvedeném pořadí. Nové pracovní prostory nelze vytvořit v cenové úrovni **Standard** nebo **Premium** a pokud je pracovní prostor přesunut z těchto úrovní, nelze jej přesunout zpět. Měřiče příjmu dat pro tyto starší úrovně se nazývají "Analyzovaná data".
 
-K dispozici je také některé chování mezi používáním starších Log Analytics vrstev a způsobu, jakým se účtují využití [Azure Security Center](../../security-center/index.yml). 
+K dispozici je také některé chování mezi používáním starších Log Analytics vrstev a způsobu, jakým se účtují využití v [Azure Defenderu (Security Center)](../../security-center/index.yml). 
 
-1. Pokud je pracovní prostor ve starší verzi úrovně Standard nebo Premium, Azure Security Center se bude účtovat jenom pro Log Analytics příjem dat, ne na uzel.
-2. Pokud je pracovní prostor ve starší verzi na vrstvu uzlu, Azure Security Center se bude účtovat pomocí aktuálního [cenového modelu založeného na uzlu Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/). 
-3. V jiných cenových úrovních (včetně rezervací kapacity), pokud Azure Security Center bylo povoleno před 19. června 2017, Azure Security Center bude účtováno pouze za Log Analytics přijímání dat. Jinak se Azure Security Center bude účtovat pomocí aktuálního cenového modelu založeného na uzlu Azure Security Center.
+1. Pokud je pracovní prostor ve starší verzi úrovně Standard nebo Premium, bude se Azure Defender účtovat jenom za Log Analytics ingestování dat, ne na uzel.
+2. Pokud je pracovní prostor ve starší verzi na vrstvu uzlu, bude se Azure Defender účtovat pomocí aktuálního [cenového modelu založeného na uzlu Azure Defenderu](https://azure.microsoft.com/pricing/details/security-center/). 
+3. V jiných cenových úrovních (včetně rezervací kapacity) platí, že pokud je Azure Defender povolený dřív než 19. června 2017, bude se vám Azure Defender účtovat jenom Log Analytics ingestování dat. V opačném případě se Azure Defender bude účtovat pomocí aktuálního cenového modelu založeného na uzlu Azure Defender.
 
 Další podrobnosti o omezeních cenové úrovně jsou k dispozici v [limitech, kvótách a omezeních předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces).
 
@@ -125,9 +125,9 @@ Další podrobnosti o omezeních cenové úrovně jsou k dispozici v [limitech, 
 > [!NOTE]
 > Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo OMS Add-On pro System Center, vyberte cenovou úroveň Log Analytics *na jednotlivých uzlech* .
 
-## <a name="log-analytics-and-security-center"></a>Log Analytics a Security Center
+## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics a Azure Defender (Security Center)
 
-[Azure Security Center](../../security-center/index.yml) fakturace je úzce spjata s Log Analytics fakturace. Security Center poskytuje 500 MB/s pro následující podmnožinu [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) a datové typy aktualizace a UpdateSummary, pokud je povolené Update Management řešení neběží v pracovním prostoru nebo cílení řešení. Pokud je pracovní prostor ve starší verzi na cenové úrovni pro jednotlivé uzly, Security Center a Log Analytics alokace se zkombinují a společně se aplikují na všechna fakturovatelná ingestovaná data.  
+Fakturace v programu [Azure Defender (Security Center)](../../security-center/index.yml) je úzce vázaná na log Analyticsou fakturaci. V Azure Defenderu se pro následující podmnožiny [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) a datové typy pro aktualizace a UpdateSummary zobrazí 500 MB/s. další [informace](https://docs.microsoft.com/azure/security-center/security-center-pricing#what-data-types-are-included-in-the-500-mb-free-data-limit)jsou k dispozici v případě, že řešení Update Management neběží v pracovním prostoru. Pokud je pracovní prostor ve starší verzi na cenové úrovni na jednom uzlu, bude se v programu Azure Defender a přidělení Log Analytics kombinovat a použít společně pro všechna fakturovatelná příjemovaná data.  
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
@@ -215,7 +215,7 @@ Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů 
 > Denní limit nemůže zastavit shromažďování dat přesně na zadané úrovni zakončení a je očekáváno několik přebytečných dat, zejména v případě, že pracovní prostor přijímá velké objemy dat. [Níže](#view-the-effect-of-the-daily-cap) najdete dotaz, který je užitečný při studiu chování denního limitu. 
 
 > [!WARNING]
-> Denní limit nebrání shromažďování datových typů WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus, Update a UpdateSummary, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
+> Denní limit nebrání shromažďování datových typů WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus, Update a UpdateSummary, s výjimkou pracovních prostorů, ve kterých byl program Azure Defender (Security Center) nainstalován před 19. června 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
 
@@ -232,6 +232,14 @@ Následující postup popisuje, jak nakonfigurovat limit pro správu objemu dat,
 :::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Log Analytics konfiguraci omezení dat":::
     
 Denní limit se dá nakonfigurovat přes ARM nastavením `dailyQuotaGb` parametru v části podle `WorkspaceCapping` popsaných v [pracovních prostorech – vytvořit nebo aktualizovat](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping). 
+
+Pomocí tohoto dotazu můžete sledovat změny provedené na denním limitu:
+
+```kusto
+_LogOperation | where Operation == "Workspace Configuration" | where Detail contains "Daily quota"
+```
+
+Přečtěte si další informace o funkci [_LogOperation](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace) . 
 
 ### <a name="view-the-effect-of-the-daily-cap"></a>Zobrazení účinku denního limitu
 
@@ -253,7 +261,7 @@ Usage
 
 Když při splnění prahové hodnoty limitu dat prezentujeme Azure Portal vizuální sestavování, toto chování se nemusí nutně sjednotit na to, jak budete spravovat provozní problémy, které vyžadují okamžitou pozornost.  Chcete-li dostávat oznámení o výstrahách, můžete v Azure Monitor vytvořit nové pravidlo výstrahy.  Další informace najdete v tématu [jak vytvářet, zobrazovat a spravovat výstrahy](../alerts/alerts-metric.md).
 
-Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Operation` tabulky pomocí `_LogOperation` funkce. 
+Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Operation` tabulky pomocí `_LogOperation` funkce ([Další informace](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace)). 
 
 - Cíl: Vyberte prostředek Log Analytics
 - Měřítk 
@@ -344,7 +352,7 @@ Všimněte si, že klauzule `where _IsBillable = true` filtruje datové typy z u
 
 ### <a name="data-volume-by-solution"></a>Objem dat podle řešení
 
-Dotaz použitý k zobrazení objemu fakturovatelných dat podle řešení za poslední měsíc (s výjimkou posledního částečného dne) je:
+Dotaz, který se používá k zobrazení fakturovatelný objem dat podle řešení za poslední měsíc (s výjimkou posledního částečného dne), můžete vytvořit pomocí datového typu [použití](https://docs.microsoft.com/azure/azure-monitor/reference/tables/usage) jako:
 
 ```kusto
 Usage 
@@ -383,26 +391,26 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Objem dat podle počítače
 
-`Usage`Datový typ neobsahuje informace na úrovni počítače. Chcete-li zobrazit **Velikost** zpracovaných dat na jeden počítač, použijte `_BilledSize` [vlastnost](./log-standard-columns.md#_billedsize), která poskytuje velikost v bajtech:
+`Usage`Datový typ neobsahuje informace na úrovni počítače. Chcete-li zobrazit **Velikost** ingestovaná fakturovatelná data na počítač, použijte `_BilledSize` [vlastnost](./log-standard-columns.md#_billedsize), která poskytuje velikost v bajtech:
 
 ```kusto
-find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
-| where _IsBillable == true 
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer, Type
+| where _IsBillable == true and Type != "Usage"
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName 
-| sort by BillableDataBytes nulls last
+| sort by BillableDataBytes desc nulls last
 ```
 
-`_IsBillable` [Vlastnost](./log-standard-columns.md#_isbillable) určuje, jestli se za ingestovaná data účtují poplatky. 
+`_IsBillable` [Vlastnost](./log-standard-columns.md#_isbillable) určuje, jestli se za ingestovaná data účtují poplatky. Typ použití je vynechán, protože se jedná pouze o analýzu trendů dat. 
 
 Chcete-li zobrazit **počet** fakturovaných událostí zpracovaných na počítač, použijte 
 
 ```kusto
 find where TimeGenerated > ago(24h) project _IsBillable, Computer
-| where _IsBillable == true 
+| where _IsBillable == true and Type != "Usage"
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  
-| sort by eventCount nulls last
+| sort by eventCount desc nulls last
 ```
 
 > [!TIP]
@@ -478,6 +486,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 
 | Zdroj velkého objemu dat | Postup snížení objemu dat |
 | -------------------------- | ------------------------- |
+| Pravidla shromažďování dat      | [Agent Azure monitor](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) používá pravidla shromažďování dat ke správě kolekce dat. [Shromažďování dat můžete omezit](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent#limit-data-collection-with-custom-xpath-queries) pomocí vlastních dotazů XPath. | 
 | Přehledy o kontejnerech         | [Nakonfigurujte službu Container Insights](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost) tak, aby shromáždila pouze data, která požadujete. |
 | Události zabezpečení            | Vyberte [běžné nebo minimální události zabezpečení](../../security-center/security-center-enable-data-collection.md#data-collection-tier). <br> Změňte zásady auditu zabezpečení tak, aby se shromažďovaly jenom potřebné události. Zaměřte se hlavně na potřebu shromažďovat události pro <br> - [audit platformy Filtering Platform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [audit registru](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [audit systému souborů](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [audit objektu jádra](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [audit manipulace s popisovačem](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – audit vyměnitelného úložiště |
 | Čítače výkonu       | Změňte [konfiguraci čítačů výkonu](../agents/data-sources-performance-counters.md) tak, aby se: <br> – Snížila četnost shromažďování dat <br> – Snížil počet čítačů výkonu |
@@ -548,7 +557,7 @@ Rozhodnutí o tom, jestli jsou pracovní prostory s přístupem k starší verzi
 
 K usnadnění tohoto posouzení se dá použít následující dotaz k vytvoření doporučení pro optimální cenovou úroveň na základě vzorů používání pracovního prostoru.  Tento dotaz prohlíží monitorované uzly a data ingestovaná do pracovního prostoru za posledních 7 dnů. každý den vyhodnocuje, která cenová úroveň byla optimální. Chcete-li použít dotaz, je nutné zadat
 
-1. zda pracovní prostor používá Azure Security Center nastavením `workspaceHasSecurityCenter` na `true` nebo `false` , 
+1. zda pracovní prostor používá Azure Defender (Security Center) nastavením `workspaceHasSecurityCenter` na `true` nebo `false` , 
 2. Aktualizujte ceny, pokud máte specifické slevy a
 3. Zadejte počet dní, po který se má vyhledat a analyzovat `daysToEvaluate` . To je užitečné v případě, že dotaz trvá příliš dlouho, než se podíváme na 7 dní dat. 
 
@@ -556,7 +565,7 @@ Tady je dotaz doporučení cenové úrovně:
 
 ```kusto
 // Set these parameters before running query
-// Pricing details available at https://azure.microsoft.com/en-us/pricing/details/monitor/
+// Pricing details available at https://azure.microsoft.com/pricing/details/monitor/
 let daysToEvaluate = 7; // Enter number of previous days to analyze (reduce if the query is taking too long)
 let workspaceHasSecurityCenter = false;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your montly price per monitored nodes
@@ -676,6 +685,10 @@ Když se shromažďování dat zastaví, stav OperationStatus je **Upozornění*
 
 Chcete-li být upozorněni na zastavení shromažďování dat, postupujte podle kroků popsaných v části *Vytvoření výstrahy denního datového zakončení* , která bude oznámena při zastavení shromažďování dat. Pomocí kroků popsaných v tématu [Vytvoření skupiny akcí](../alerts/action-groups.md) nakonfigurujte akci e-mailu, Webhooku nebo Runbooku pro pravidlo výstrahy. 
 
+## <a name="late-arriving-data"></a>Pozdní doručení dat   
+
+Mohou nastat situace, kdy se data ingestují s velmi starými časovými razítky, například pokud Agent nemůže komunikovat s Log Analytics v důsledku problému s připojením, nebo situace, kdy má hostitel nesprávně nastavené časové datum/čas. Chcete-li diagnostikovat tyto problémy, použijte `_TimeReceived` kromě sloupce také sloupec ([Další informace](https://docs.microsoft.com/azure/azure-monitor/logs/log-standard-columns#_timereceived)) `TimeGenerated` . `TimeReceived` je čas, kdy byl záznam přijat bodem příjmu Azure Monitor v cloudu Azure.  
+
 ## <a name="limits-summary"></a>Souhrn omezení
 
 Existují další limity Log Analytics, některé z nich závisí na cenové úrovni Log Analytics. Ty jsou zdokumentovány v [limitech, kvótách a omezeních předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces).
@@ -686,7 +699,7 @@ Existují další limity Log Analytics, některé z nich závisí na cenové úr
 - Další informace o použití vyhledávacího jazyka najdete [v tématu prohledávání protokolů v protokolu Azure monitor](../logs/log-query-overview.md) . Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
 - Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../alerts/alerts-metric.md).
 - K shromažďování dat z požadovaných skupin počítačů použijte [cílení na řešení](../insights/solution-targeting.md) .
-- Pokud chcete nakonfigurovat efektivní zásadu shromažďování událostí, Projděte si téma [Zásady filtrování Azure Security Center](../../security-center/security-center-enable-data-collection.md).
+- Pokud chcete nakonfigurovat efektivní zásady shromažďování událostí, Projděte si téma [Zásady filtrování v Azure Defenderu (Security Center)](../../security-center/security-center-enable-data-collection.md).
 - Změňte [konfiguraci čítačů výkonu](../agents/data-sources-performance-counters.md).
 - Pokud chcete upravit nastavení shromažďování událostí, zkontrolujte [konfiguraci protokolu událostí](../agents/data-sources-windows-events.md).
 - Pokud chcete upravit nastavení kolekce syslog, zkontrolujte [konfiguraci syslogu](../agents/data-sources-syslog.md).

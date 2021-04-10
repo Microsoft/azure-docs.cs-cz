@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612894"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108352"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -311,7 +311,7 @@ V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge
 Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 V hostitelském počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy. Nahraďte `ADD DEVICE CONNECTION STRING HERE` připojovacím řetězcem. Uložte soubor a zavřete ho. Spuštěním tohoto příkazu restartujte službu IoT Edge v hostitelském počítači.
@@ -334,7 +334,7 @@ Otevřete Průvodce [vytvořením virtuálního počítače](https://ms.portal.a
 
 Zadejte název virtuálního počítače a vyberte oblast, která se má (US) Západní USA 2. Nezapomeňte nastavit `Availability Options` na "bez nutnosti redundance infrastruktury". Úplnou konfiguraci a další krok pro vyhledání správné velikosti virtuálního počítače najdete na obrázku níže. 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="Podrobnosti o konfiguraci virtuálního počítače." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="Podrobnosti o konfiguraci virtuálního počítače." lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 Velikost virtuálního počítače vyhledáte tak, že vyberete "Zobrazit všechny velikosti" a pak zobrazíte seznam pro velikosti virtuálních počítačů, které nejsou Premium Storage, zobrazené níže.
 
@@ -473,7 +473,7 @@ V dalším kroku zaregistrujete virtuální počítač jako zařízení IoT Edge
 Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Na virtuálním počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy. Nahraďte `ADD DEVICE CONNECTION STRING HERE` připojovacím řetězcem. Uložte soubor a zavřete ho. Spuštěním tohoto příkazu restartujte službu IoT Edge na virtuálním počítači.
@@ -542,10 +542,6 @@ Po dokončení nasazení a spuštění kontejneru se v **hostitelském počíta�
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>Konfigurace operací prováděných prostorovou analýzou
 
 K nakonfigurování kontejneru pro použití připojených fotoaparátů, konfiguraci operací a dalších operací budete muset použít [operace prostorové analýzy](spatial-analysis-operations.md) . Pro každé zařízení kamery, které nakonfigurujete, se operace pro prostorovou analýzu vygenerují výstupní proud zpráv JSON, které se odešlou do vaší instance Azure IoT Hub.
-
-## <a name="redeploy-or-delete-the-deployment"></a>Opětovné nasazení nebo odstranění nasazení
-
-Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Použít výstup generovaný kontejnerem
 

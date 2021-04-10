@@ -11,10 +11,10 @@ ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
 ms.openlocfilehash: cdc9f344e108fc58399f9bcb2a9f02a4659ecfe1
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105627672"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Podporované funkce Azure Synapse Linku pro Azure Cosmos DB

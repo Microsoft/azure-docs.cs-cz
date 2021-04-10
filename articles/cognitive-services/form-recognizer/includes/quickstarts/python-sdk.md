@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: f28fba451a5fbad9efe76e0d6bd39488beebb103
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761146"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073446"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -26,7 +26,7 @@ ms.locfileid: "104761146"
 
 [Referenční dokumentace](/python/api/azure-ai-formrecognizer)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Python 3.x](https://www.python.org/)
@@ -77,7 +77,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 ## <a name="object-model"></a>Objektový model
 
-Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různé typy klientů. První `form_recognizer_client` slouží k dotazování služby na rozpoznaná pole a obsah formuláře. Druhá možnost slouží `form_training_client` k vytváření a správě vlastních modelů, které můžete použít ke zlepšení rozpoznávání. 
+Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různé typy klientů. První `form_recognizer_client` slouží k dotazování služby pro rozpoznávání polí a obsahu formuláře. Druhý `form_training_client` slouží k vytváření a správě vlastních modelů, které můžete použít ke zlepšení rozpoznávání. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -139,7 +139,7 @@ Budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
   
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Načítání adresy URL SAS":::
-* Použijte ukázku z obrázků a příjemů obsažených v následujících ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) nebo můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB). 
+* Použijte ukázkový formulář a obrázky příjmu obsažené v níže uvedených ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) nebo můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. 
 
 > [!NOTE]
 > Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](/python/api/azure-ai-formrecognizer) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
@@ -454,7 +454,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="general"></a>Obecné
 

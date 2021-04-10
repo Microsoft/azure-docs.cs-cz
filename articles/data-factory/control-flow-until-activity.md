@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 2ac5474f1b20e409da01c531ef13060e72fd548c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786120"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
@@ -51,11 +51,11 @@ Aktivita Until funguje stejně jako smyčka Do-Until v programovacích jazycích
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název `Until` aktivity | Řetězec | Ano
-typ | Musí být nastavené **na do**. | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
-timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss` . Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
-Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true` . | Pole aktivit. |  Ano
+name | Název `Until` aktivity | Řetězec | Yes
+typ | Musí být nastavené **na do**. | Řetězec | Yes
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Yes
+timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss` . Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | No
+Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true` . | Pole aktivit. |  Yes
 
 ## <a name="example-1"></a>Příklad 1
 

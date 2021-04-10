@@ -4,10 +4,10 @@ description: Vyřešte potíže se senzorem a místní konzolou pro správu, aby
 ms.date: 03/14/2021
 ms.topic: article
 ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785440"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Řešení potíží se senzory a místní konzolou pro správu
@@ -254,7 +254,7 @@ Export protokolů:
 
 1. Chcete-li definovat, jaká data chcete exportovat, vyberte kategorie dat:  
 
-    | Exportovat kategorii | Popis |
+    | Exportovat kategorii | Description |
     |--|--|
     | **Protokoly operačního systému** | Tuto možnost vyberte, pokud chcete získat informace o stavu operačního systému. |
     | **Protokoly instalace a upgradu** | Tuto možnost vyberte, pokud chcete prozkoumat parametry konfigurace instalace a upgradu. |
