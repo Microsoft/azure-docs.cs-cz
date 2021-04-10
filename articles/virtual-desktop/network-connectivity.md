@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 378d341ee867b69fac22f5eb15952d104a7bf19d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221206"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167324"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>Principy připojení k síti virtuálních počítačů s Windows
 
@@ -50,7 +50,7 @@ Pořadí připojení klienta popsané níže:
 
 ## <a name="connection-security"></a>Zabezpečení připojení
 
-TLS 1,2 se používá pro všechna připojení inicializovaná z klientů a hostitelů relací k součástem infrastruktury virtuálních počítačů s Windows. Virtuální počítač s Windows používá stejné šifry TLS 1,2 jako [přední dveře Azure](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Je důležité se ujistit, že klientské počítače i hostitelé relací můžou tyto šifry použít.
+TLS 1,2 se používá pro všechna připojení inicializovaná z klientů a hostitelů relací k součástem infrastruktury virtuálních počítačů s Windows. Virtuální počítač s Windows používá stejné šifry TLS 1,2 jako [přední dveře Azure](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Je důležité se ujistit, že klientské počítače i hostitelé relací můžou tyto šifry použít.
 Pro přenos zpětného připojení se klient a hostitel relace připojí k bráně virtuální plochy Windows. Po navázání připojení TCP klient nebo hostitel relace ověří certifikát brány virtuální plochy Windows.
 Po zřízení základního přenosu protokol RDP vytvoří vnořené připojení TLS mezi klientem a hostitelem relace pomocí certifikátů hostitele relace. Ve výchozím nastavení se certifikát používaný pro šifrování RDP během nasazení vygeneruje v operačním systému sami. V případě potřeby můžou zákazníci nasazovat centrálně spravované certifikáty vydané certifikační autoritou organizace. Další informace o konfiguraci certifikátů najdete v [dokumentaci k Windows serveru](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

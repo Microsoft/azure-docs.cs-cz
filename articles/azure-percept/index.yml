@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: mimcco
   ms.date: 03/25/2021
-  ms.openlocfilehash: 61e9d784d899cb8f0741f27aee0bdb7031bb37d1
-  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+  ms.openlocfilehash: 0cf9e95897554cb51ff6837dec72700124471025
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/26/2021
-  ms.locfileid: "105562541"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106107723"
 landingContent:
 - title: Co je Azure Percept?
   linkLists:
@@ -33,13 +33,15 @@ landingContent:
       url: overview-percept-security.md
     - text: integrace 80/20
       url: overview-8020-integration.md
+    - text: Modely AI pro Azure Percept
+      url: overview-ai-models.md
 - title: Začínáme s Azure Percept DK
   linkLists:
   - linkListType: quickstart
     links:
     - text: Unbox a sestavte si Azure Percept DK
       url: quickstart-percept-dk-unboxing.md
-    - text: Připojení Azure Percept DK k Azure a nasazení modelu AI Vision
+    - text: Připojení Azure Percept DK k Azure
       url: quickstart-percept-dk-set-up.md
   - linkListType: reference
     links:
@@ -47,13 +49,15 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Datový list Azure Percept Vision
       url: azure-percept-vision-datasheet.md
-    - text: Řešení potíží
+    - text: Obecné řešení potíží s Azure Percept DK
       url: troubleshoot-dev-kit.md
+    - text: Řešení potíží s instalačním prostředím
+      url: how-to-troubleshoot-setup.md
 - title: Začínáme se službou Azure Percept audio
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Nastavení služby Azure Percept audio
+    - text: Nastavení zvuku Azure Percept
       url: quickstart-percept-audio-setup.md
   - linkListType: reference
     links:
@@ -61,9 +65,9 @@ landingContent:
       url: azure-percept-audio-datasheet.md
     - text: Řešení potíží se zvukem v Azure Percept
       url: troubleshoot-audio-accessory-speech-module.md
-    - text: LED a tlačítko zvuku Azure Percept
+    - text: Chování LED a tlačítka pro Azure Percept audio
       url: audio-button-led-behavior.md
-- title: Sestavení prototypu pro revize bez kódu
+- title: Sestavení řešení pro vize bez kódu
   linkLists:
   - linkListType: tutorial
     links:
@@ -79,11 +83,11 @@ landingContent:
       url: how-to-capture-images.md
     - text: Zobrazení telemetrie DevKit
       url: how-to-view-telemetry.md
-  - linkListType: concept
+  - linkListType: reference
     links:
-    - text: Práce s řešeními AI
-      url: overview-ai-models.md
-- title: Vytvoření řešení hlasového asistenta bez kódu
+    - text: Řešení potíží s řešením Vision
+      url: vision-solution-troubleshooting.md
+- title: Vytvoření řešení pro rozpoznávání řeči bez kódu
   linkLists:
   - linkListType: tutorial
     links:
@@ -91,9 +95,9 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: Správa hlasového asistenta
+    - text: Konfigurace hlasového asistenta v Azure Percept studiu
       url: how-to-manage-voice-assistant.md
-    - text: Konfigurace hlasového asistenta pomocí IoT Hub
+    - text: Konfigurace hlasového asistenta v IoT Hub
       url: how-to-configure-voice-assistant.md
 - title: Pokročilý vývoj s využitím Azure Percept
   linkLists:
@@ -113,9 +117,9 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: Nastavení aktualizací přes Air
+    - text: Nastavení OTA (Over-The-Air) aktualizací
       url: how-to-set-up-over-the-air-updates.md
-    - text: Aktualizace přes Air
+    - text: Aktualizace zařízení přes Air (OTA)
       url: how-to-update-over-the-air.md
-    - text: Aktualizace přes USB
+    - text: Aktualizace zařízení přes USB
       url: how-to-update-via-usb.md

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
 ms.openlocfilehash: 08b1294436ead372234104008a48ca23e56de389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589306"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview-deprecated"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s ADP Globalview (zastaralé)
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat ADP Globalview (nepoužívané) pomoc�
 * Umožněte uživatelům, aby se automaticky přihlásili do složky ADP Globalview (nepoužívané) se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

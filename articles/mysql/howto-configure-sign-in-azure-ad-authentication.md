@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 808c3589ba5b51b035ccc8165489c4d11203dd66
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612224"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728262"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -78,7 +78,6 @@ Příklad (pro veřejný cloud):
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
-
 Výše uvedená hodnota prostředku musí být zadaná přesně tak, jak je znázorněno. U ostatních cloudů se hodnota prostředku dá vyhledat pomocí:
 
 ```azurecli-interactive
@@ -90,6 +89,13 @@ Pro Azure CLI verze 2.0.71 a novější je možné příkaz zadat v následujíc
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
+Pomocí PowerShellu můžete k získání přístupového tokenu použít následující příkaz:
+
+```azurepowershell-interactive
+$accessToken = Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net
+$accessToken.Token | out-file C:\temp\MySQLAccessToken.txt
+```
+
 
 Po úspěšném ověření bude služba Azure AD vracet přístupový token:
 
@@ -105,13 +111,17 @@ Po úspěšném ověření bude služba Azure AD vracet přístupový token:
 
 Token je základní řetězec 64, který zakóduje všechny informace o ověřeném uživateli a cílí na službu Azure Database for MySQL.
 
-> [!NOTE]
-> Platnost přístupového tokenu je kdekoli mezi 5 minutami a 60 minutami. Než začnete s přihlášením k Azure Database for MySQL, doporučujeme získat přístupový token těsně před inicializací.
+Platnost přístupového tokenu je kdekoli mezi ***5 minutami a 60 minutami***. Než začnete s přihlášením k Azure Database for MySQL, doporučujeme získat přístupový token těsně před inicializací. K zobrazení platnosti tokenu můžete použít následující příkaz prostředí PowerShell. 
+
+```azurepowershell-interactive
+$accessToken.ExpiresOn.DateTime
+```
 
 ### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>Krok 3: použití tokenu jako hesla pro přihlášení pomocí MySQL
 
-Při připojování musíte použít přístupový token jako heslo uživatele MySQL. Při použití klientů GUI, jako je MySQLWorkbench, můžete k načtení tokenu použít výše uvedenou metodu. 
+Při připojování musíte použít přístupový token jako heslo uživatele MySQL. Při použití klientů GUI, jako je MySQLWorkbench, můžete použít metodu popsanou výše k načtení tokenu. 
 
+#### <a name="using-mysql-cli"></a>Použití rozhraní MySQL CLI
 Při použití rozhraní příkazového řádku můžete použít tuto krátkou ruku k připojení: 
 
 **Příklad (Linux/macOS):**
@@ -121,8 +131,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+#### <a name="using-mysql-workbench"></a>Použití aplikace MySQL Workbench
+* Spusťte MySQL Workbench a klikněte na možnost databáze a pak klikněte na připojit k databázi.
+* Do pole název hostitele zadejte plně kvalifikovaný název domény MySQL. mydb.mysql.database.azure.com
+* Do pole uživatelské jméno zadejte název správce MySQL Azure Active Directory a přihlaste se jako název serveru MySQL, nikoli plně kvalifikovaný název domény, například. user@tenant.onmicrosoft.com@mydb
+* V poli Heslo klikněte na Uložit do trezoru a vložte přístupový token ze souboru, např. C:\temp\MySQLAccessToken.txt
+* Klikněte na kartu Upřesnit a ujistěte se, že jste zaškrtli políčko Povolit modul plug-in pro ověřování před nešifrovaným
+* Kliknutím na OK se připojte k databázi.
 
-Důležité informace při připojování:
+#### <a name="important-considerations-when-connecting"></a>Důležité informace při připojování:
 
 * `user@tenant.onmicrosoft.com` je název uživatele nebo skupiny Azure AD, se kterou se snažíte připojit.
 * Po názvu uživatele nebo skupiny Azure AD vždy připojovat název serveru (např. `@mydb` )

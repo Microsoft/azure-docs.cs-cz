@@ -4,10 +4,10 @@ description: Přečtěte si o výstrahách zabezpečení a doporučené náprav�
 ms.topic: conceptual
 ms.date: 2/16/2021
 ms.openlocfilehash: 73b3a1ca3e52f571ab7b531235650b6bda870691
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784556"
 ---
 # <a name="defender-for-iot-hub-security-alerts"></a>Defender pro IoT Hub výstrahy zabezpečení
@@ -22,7 +22,7 @@ Další informace najdete v tématu [přizpůsobitelná upozornění](concept-cu
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Integrované výstrahy pro IoT Hub
 
-| Závažnost | Název | Popis | Navrhovaná náprava |
+| Závažnost | Název | Description | Navrhovaná náprava |
 |--|--|--|--|
 | **Střední** závažnost |  |  |  |
 | Nový certifikát se přidal do IoT Hub. | Střední | \' \' Do IoT Hub \' % {DescIoTHubName} se přidal certifikát s názvem% {DescCertificateName} \' . Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu. | 1. Ujistěte se, že certifikát přidala oprávněná strana. <br> 2. Pokud ho nepřidala autorizovaný účastník, odeberte ho a upozorněte ho do organizačního týmu zabezpečení. |

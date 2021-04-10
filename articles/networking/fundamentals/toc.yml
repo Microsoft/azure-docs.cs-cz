@@ -1,0 +1,144 @@
+- name: Dokumentace základních informací o sítích
+  href: index.yml
+- name: Přehled
+  items:
+    - name: O sítích Azure
+      href: networking-overview.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření virtuální sítě
+      href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+- name: Kurzy
+  items:
+    - name: Omezení síťového přístupu
+      href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Architektura
+      href: architecture-guides.md
+    - name: Plánování a návrh
+      items:
+        - name: Azure pro odborníky na sítě
+          href: ../azure-for-network-engineers.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Vzdálená práce
+          href: ../working-remotely-support.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Virtuální sítě
+          href: ../../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení mezi místními sítěmi – síť VPN
+          href: ../../vpn-gateway/design.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení mezi místními sítěmi – vyhrazené privátní
+          href: ../../expressroute/expressroute-workflows.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Globální síť Microsoftu
+      items:
+        - name: Přehled
+          href: ../microsoft-global-network.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Latence sítě v Azure
+          href: ../azure-network-latency.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Předvolba internetového směrování v Azure
+          href: ../../virtual-network/routing-preference-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Připojení ke cloudové síti
+      items:
+        - name: Virtuální síť
+          href: ../../virtual-network/virtual-networks-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Veřejná IP adresa
+          href: ../../virtual-network/public-ip-addresses.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS
+          href: ../../dns/dns-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Směrování provozu sítě
+          href: ../../virtual-network/virtual-networks-udr-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení virtuálních sítí
+          href: ../../virtual-network/virtual-network-peering-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Soukromý přístup k prostředkům
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení z místního prostředí do Azure – šifrování virtuální privátní sítě
+          href: ../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Rozšíření místního prostředí do Azure – privátní připojení
+          href: ../../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Pouze odchozí připojení k Internetu
+          href: ../../virtual-network/nat-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Zabezpečení sítě
+      items:
+        - name: Skupiny zabezpečení sítě
+          href: ../../virtual-network/network-security-groups-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privátní koncový bod
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Síťová brána firewall
+          href: ../../firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ochrana před útoky DDoS
+          href: ../../ddos-protection/ddos-protection-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Firewall webových aplikací
+          href: ../../web-application-firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+    - name: Škálovatelné doručování aplikací
+      items:
+        - name: Možnosti vyrovnávání zatížení v Azure
+          href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=/azure/networking/fundamentals/toc.json
+        - name: Nástroj pro vyrovnávání zatížení sítě
+          href: ../../load-balancer/load-balancer-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Zabezpečený Cloud CDN a globální nástroj pro vyrovnávání zatížení
+          href: ../../frontdoor/front-door-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Nástroj pro vyrovnávání zatížení webových aplikací
+          href: ../../application-gateway/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Nástroj pro vyrovnávání zatížení založený na DNS
+          href: ../../traffic-manager/traffic-manager-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Monitorování sítě
+      items:
+        - name: Monitorování sítě pomocí Azure Monitor
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Monitorovat a opravovat stav sítě
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+- name: Návody
+  items:
+    - name: Vytvoření cloudových sítí a připojení k nim
+      items:
+        - name: Vytvoření virtuální sítě
+          href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Vytvoření veřejné IP adresy
+          href: ../../virtual-network/create-public-ip-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Optimalizace nákladů na směrování
+          href: ../../virtual-network/routing-preference-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Vytvoření brány NAT pro odchozí připojení
+          href: ../../virtual-network/tutorial-create-nat-gateway-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Vytvoření záznamu a zóny Azure DNS
+          href: ../../dns/dns-getstarted-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Směrování provozu pomocí směrovacích tabulek
+          href: ../../virtual-network/tutorial-create-route-table-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení virtuálních sítí
+          href: ../../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Soukromý přístup k prostředkům
+          href: ../../private-link/create-private-endpoint-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení místní sítě k virtuální síti – šifrování sítě VPN
+          href: ../../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Připojení mezi místními sítěmi – vyhrazené
+          href: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Zabezpečení sítě
+      items:
+        - name: Omezení síťového přístupu
+          href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Filtrování provozu sítě
+          href: ../../virtual-network/tutorial-filter-network-traffic.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Nasazení síťové brány firewall
+          href: ../../firewall/tutorial-firewall-deploy-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ochrana sítě před útoky DDoS
+          href: ../../ddos-protection/manage-ddos-protection.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Škálování doručování aplikací
+      items:
+        - name: Vytvoření síťového nástroje pro vyrovnávání zatížení
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Nasazení zabezpečeného cloudu CDN a globálního nástroje pro vyrovnávání zatížení
+          href: ../../frontdoor/quickstart-create-front-door.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Vytvoření nástroje pro vyrovnávání zatížení webové aplikace
+          href: ../../application-gateway/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Vytvoření nástroje pro vyrovnávání zatížení založeného na DNS
+          href: ../../traffic-manager/quickstart-create-traffic-manager-profile.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Monitorování sítě
+      items:
+        - name: Monitorování stavu sítě
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Monitorování komunikace mezi prostředky Azure
+          href: ../../network-watcher/connection-monitor-create-using-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure Monitor Network Insights
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json

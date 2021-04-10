@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 03/22/2021
-  ms.openlocfilehash: 4ee35ada4e72e9a7c896514cb6616a0f9f5e27a4
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.date: 03/30/2021
+  ms.openlocfilehash: 874f0636042c592cefce5a4d3fa15b7839fbac5e
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/29/2021
-  ms.locfileid: "105731832"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106108060"
 landingContent:
 - title: Informace o službě Azure VMware Solution
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: introduction.md
     - text: Aktualizace platformy
       url: azure-vmware-solution-platform-updates.md
-    - text: Časté otázky
-      url: faq.yml
   - linkListType: concept
     links:
     - text: Privátní cloud a clustery
@@ -40,6 +38,26 @@ landingContent:
       url: concepts-monitor-repair-private-cloud.md
     - text: Upgrady privátních cloudů
       url: concepts-upgrades.md
+- title: Časté otázky
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Obecné
+      url: /azure/azure-vmware/faq#general
+    - text: Výpočetní výkon, síť, úložiště a záloha
+      url: /azure/azure-vmware/faq#compute,-network,-storage,-and-backup
+    - text: Hostitelé, clustery a privátní cloudy
+      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+    - text: Řešení Azure VMware a software VMware
+      url: /azure/azure-vmware/faq#azure-vmware-solution-and-vmware-software
+    - text: Připojení
+      url: /azure/azure-vmware/faq#connectivity
+    - text: Účty a oprávnění
+      url: /azure/azure-vmware/faq#accounts-and-privileges
+    - text: Fakturace a podpora
+      url: /azure/azure-vmware/faq#billing-and-support
+    - text: Komunikace se zákazníky
+      url: /azure/azure-vmware/faq#customer-communication
 - title: Začínáme
   linkLists:
   - linkListType: deploy
@@ -72,22 +90,6 @@ landingContent:
       url: tutorial-delete-private-cloud.md
 - title: Rozšiřování služby Azure VMware Solution
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Správa DHCP
-      url: manage-dhcp.md
-    - text: Konfigurace síťových součástí NSX
-      url: configure-nsx-network-components-azure-portal.md
-    - text: Nasazení zotavení po havárii pro virtuální počítače
-      url: disaster-recovery-for-virtual-machines.md
-    - text: Nasazení virtuálního počítače přes knihovnu obsahu
-      url: ./deploy-vm-content-library.md
-    - text: Nastavení serveru GitHub Enterprise
-      url: github-enterprise-server.md
-    - text: Využití veřejných IP adres
-      url: public-ip-usage.md
-    - text: Vytvoření tunelu IPSec
-      url: create-ipsec-tunnel.md
   - linkListType: reference
     links:
     - text: Žádost o kvótu hostitele řešení Azure VMware
@@ -97,7 +99,21 @@ landingContent:
     - text: Úspora nákladů s využitím rezervované instance
       url: reserved-instance.md
     - text: Posouzení migrace
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+  - linkListType: how-to-guide
+    links:
+    - text: Správa DHCP
+      url: manage-dhcp.md
+    - text: Konfigurace síťových součástí NSX
+      url: configure-nsx-network-components-azure-portal.md
+    - text: Nasazení zotavení po havárii pro virtuální počítače
+      url: disaster-recovery-for-virtual-machines.md
+    - text: Nastavení serveru GitHub Enterprise
+      url: github-enterprise-server.md
+    - text: Využití veřejných IP adres
+      url: public-ip-usage.md
+    - text: Vytvoření tunelu IPSec
+      url: create-ipsec-tunnel.md
 - title: Nativní integrace Azure
   linkLists:
   - linkListType: how-to-guide
@@ -116,6 +132,8 @@ landingContent:
       url: protect-azure-vmware-solution-with-application-gateway.md
     - text: Traffic Manager
       url: deploy-traffic-manager-balance-workloads.md
+    - text: Konfigurace výstrah a práce s metrikami
+      url: configure-alerts-for-azure-vmware-solution.md
 - title: Řešení VMware
   linkLists:
   - linkListType: how-to-guide
@@ -124,6 +142,8 @@ landingContent:
       url: vrealize-operations-for-azure-vmware-solution.md
     - text: Nasazení VMware Horizonu
       url: azure-vmware-solution-horizon.md
+    - text: Nasazení virtuálních počítačů z knihovny obsahu
+      url: ./deploy-vm-content-library.md
 - title: Ekosystém VMware
   linkLists:
   - linkListType: reference
@@ -154,6 +174,8 @@ landingContent:
       url: https://youtu.be/BoQYvqzb6Y8
     - text: Plánování migrace a kapacity
       url: https://youtu.be/NoNG-hkksrA
+    - text: Otočení vCenter & hesla NSX-T pomocí Azure Logic App
+      url: https://youtu.be/cK1qY3knj88
 - title: Řešení potíží
   linkLists:
   - linkListType: reference

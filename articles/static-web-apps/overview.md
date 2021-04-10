@@ -5,24 +5,24 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: f4e900c8bcdcb5febec39421e098b19ad10b8b00
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558886"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166393"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Co je Azure static Web Apps Preview?
 
-Azure static Web Apps je služba, která automaticky sestaví a nasadí do Azure všechny služby Stack Web Apps z úložiště GitHubu.
+Azure static Web Apps je služba, která automaticky sestaví a nasadí celé Stack Web Apps do Azure z úložiště kódu.
 
-:::image type="content" source="media/overview/static-apps-overview.png" alt-text="Přehled statického Web Apps":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Diagram přehledu statického Web Apps Azure":::
 
-Pracovní postup Azure static Web Apps je přizpůsobený dennímu pracovnímu postupu vývojáře. Aplikace jsou sestavené a nasazené na základě interakcí GitHubu.
+Pracovní postup Azure static Web Apps je přizpůsobený dennímu pracovnímu postupu vývojáře. Aplikace jsou sestavené a nasazené v závislosti na změnách kódu.
 
-Když vytvoříte prostředek Azure Static Web Apps, Azure nastaví v úložišti zdrojového kódu této aplikace pracovní postup GitHub Actions, který bude monitorovat vámi vybranou větev. Pokaždé, když zadáte potvrzení změn nebo přijmete žádosti o přijetí změn do sledované větve, akce GitHub automaticky vytvoří a nasadí vaši aplikaci a její rozhraní API do Azure.
+Když vytvoříte prostředek statického Web Apps Azure, Azure komunikuje přímo s GitHubem nebo Azure DevOps a monitoruje větev podle vašeho výběru. Pokaždé, když zadáte potvrzení změn nebo přijmete žádosti o přijetí změn do sledované větve, automaticky se spustí sestavení a vaše aplikace a rozhraní API se nasadí do Azure.
 
 Statické webové aplikace se běžně vytvářejí pomocí knihoven a platforem, jako je například úhlová, reakce, Svelte, Vue nebo Blazor, kde není vyžadováno vykreslování na straně serveru. Tyto aplikace zahrnují prostředky HTML, CSS, JavaScript a grafické materiály. U tradičního webového serveru se tyto prostředky obsluhují z jednoho serveru spolu se všemi požadovanými koncovými body rozhraní API.
 
@@ -32,7 +32,7 @@ Statické Web Apps jsou statické prostředky oddělené od tradičního webové
 
 - **Webové hostování** pro statický obsah, jako jsou HTML, CSS, JavaScript a obrázky.
 - **Integrovaná podpora rozhraní API** poskytovaná Azure Functions.
-- **Špičková integrace GitHubu** , kde změny úložiště spustí sestavení a nasazení.
+- Špičková **integrace GitHubu a Azure DevOps Integration** , kde změny úložiště spustí sestavení a nasazení.
 - **Globálně distribuovaný** statický obsah, který zapisuje obsah blíž k uživatelům.
 - **Bezplatné certifikáty SSL**, které se automaticky Obnovují.
 - **Vlastní domény** , které poskytují vlastní přizpůsobení vaší aplikaci.

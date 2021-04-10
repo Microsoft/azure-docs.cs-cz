@@ -7,14 +7,14 @@ manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 02/20/2021
 ms.author: bwren
-ms.openlocfilehash: 68e947a6e13ba5195815fe966ec69ec6a2f4b8e1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3c99002a4f8613ff40a116eeceded4b3bada1c15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562966"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936151"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Přehled metrik Azure Monitor
 Metriky Azure Monitor jsou funkcí Azure Monitor, která shromažďuje číselná data z [monitorovaných prostředků](../monitor-reference.md) do databáze časových řad. Metriky jsou číselné hodnoty, které jsou shromažďovány v pravidelných intervalech a popisují určitý aspekt systému v určitou dobu. Metriky v Azure Monitor jsou odlehčené a umožňují podpoře scénářů téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Můžete je interaktivně analyzovat pomocí Průzkumníka metrik, pokud je hodnota překročena prahovou hodnotou nebo je vizualizovat v sešitu nebo řídicím panelu, bude aktivní upozornění.
@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít me
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění metriky](../alerts/alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](../alerts/action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
 | **Vizualizace** | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../app/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../visualize/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](../visualize/grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
 | **Automatizace** |  Pomocí [automatického škálování](../autoscale/autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |
-| **Stahovat** | Přístup k hodnotám metrik z příkazového řádku pomocí  [rutin PowerShellu](/powershell/module/az.applicationinsights)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](./rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí  [CLI](/cli/azure/monitor/metrics). |
+| **Stahovat** | Přístup k hodnotám metrik z příkazového řádku pomocí  [rutin PowerShellu](/powershell/module/az.monitor)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](./rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí  [CLI](/cli/azure/monitor/metrics). |
 | **Export** | [Směrování metriky do protokolů](./resource-logs.md#send-to-azure-storage) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](./stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
 | **Archiv** | [Archivujte](./platform-logs-overview.md) historii výkonu nebo stavu prostředku pro účely dodržování předpisů, auditování nebo offline generování sestav. |
 
@@ -104,7 +104,7 @@ Tato metrika může odpovídat na otázky, jako je třeba propustnost sítě pro
 Pro většinu prostředků v Azure se metriky ukládají po dobu 93 dnů. Existují některé výjimky:
 
 **Metriky hostovaného operačního systému**
--   **Klasické metriky hostovaného operačního systému**. Jedná se o čítače výkonu shromážděné [diagnostickým rozšířením systému Windows (WAD)](../agents/diagnostics-extension-overview.md) nebo [Linux DIAGNOSTIC Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) a směrované na účet služby Azure Storage. Uchovávání těchto metrik je 14 dní.
+-   **Klasické metriky hostovaného operačního systému**. Jedná se o čítače výkonu shromážděné [diagnostickým rozšířením systému Windows (WAD)](../agents/diagnostics-extension-overview.md) nebo [Linux DIAGNOSTIC Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) a směrované na účet služby Azure Storage. Uchovávání těchto metrik je zaručené aspoň 14 dní, ale do účtu úložiště se nezapisuje žádné skutečné datum vypršení platnosti. Z důvodů výkonu portál omezuje množství dat, která se na svazku zobrazují. Proto může být skutečný počet dní načtený portálem delší než 14 dnů, pokud není objem zapsaných dat velmi velký.  
 -   **Metriky hostovaného operačního systému odeslané do Azure monitor metriky**. Jedná se o čítače výkonu shromážděné [diagnostickým rozšířením systému Windows (WAD)](../agents/diagnostics-extension-overview.md) , které se odesílají do [Azure monitor dat](../agents/diagnostics-extension-overview.md#data-destinations)nebo prostřednictvím [agenta InfluxData telegraf](https://www.influxdata.com/time-series-platform/telegraf/) v počítačích se systémem Linux. Uchovávání těchto metrik je 93 dnů.
 -   **Metriky hostovaného operačního systému shromážděné agentem Log Analytics**. Jedná se o čítače výkonu shromažďované agentem Log Analytics a odeslané do pracovního prostoru Log Analytics. Uchovávání těchto metrik je 31 dní a dá se prodloužit na 2 roky.
 
