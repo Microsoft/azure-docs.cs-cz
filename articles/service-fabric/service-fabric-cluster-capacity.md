@@ -4,12 +4,12 @@ description: Typy uzlů, odolnost, spolehlivost a další věci, které je potř
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714931"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732580"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -111,7 +111,7 @@ Použijte tato doporučení pro správu typů uzlů pomocí stříbrné nebo zla
 * Udržujte minimální počet pěti uzlů pro všechny sady škálování virtuálních počítačů, které mají povolenou úroveň odolnosti Gold nebo stříbrné. Cluster zadáte chybový stav, pokud budete škálovat pod tuto prahovou hodnotu a budete muset ručně vyčistit stav ( `Remove-ServiceFabricNodeState` ) odebraných uzlů.
 * Každá sada škálování virtuálního počítače s úrovní odolnosti stříbrného nebo zlata musí být v Service Fabricm clusteru namapována na vlastní typ uzlu. Mapování několika sad Virtual Machine Scale Sets na jeden typ uzlu zabráníte správnému fungování koordinace mezi Service Fabricm clusterem a infrastrukturou Azure.
 * Neodstraňujte náhodné instance virtuálních počítačů, ve funkci vždy používejte škálování Virtual Machine Scale-Scale. Odstranění náhodných instancí virtuálních počítačů může mít za následek vytvoření nerovnováhy v instanci virtuálního počítače mezi [doménami upgradu](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) a [doménami selhání](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains). Tato nerovnováha by mohla negativně ovlivnit schopnost systémů správně vyrovnávat zatížení mezi instancemi služby nebo replikami služeb.
-* Pokud používáte automatické škálování, nastavte pravidla tak, aby se operace škálování (odebírání instancí virtuálních počítačů) prováděly pouze v jednom uzlu. Horizontální navýšení kapacity více než jedné instance není bezpečné.
+* Pokud používáte automatické škálování, nastavte pravidla tak, aby se operace škálování (odebírání instancí virtuálních počítačů) prováděly pouze v jednom uzlu. Škálování v několika instancích není v jednom okamžiku bezpečné.
 * Při odstraňování nebo rušení přidělování virtuálních počítačů na primárním uzlu nikdy snižte počet přidělených virtuálních počítačů pod tím, co vyžaduje úroveň spolehlivosti. Tyto operace budou v rámci škálované sady s úrovní odolnosti stříbrného nebo zlata zablokované na neomezenou dobu.
 
 ### <a name="changing-durability-levels"></a>Změna úrovní odolnosti

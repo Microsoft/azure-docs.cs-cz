@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d2ecfb5a58641938062166bcd7c61a7d91764a3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 480b8ef401387863693bc88c3d508ce296636c93
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093468"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107580"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Vytvoření lokátoru streamování a adres URL
 
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak vytvořit Lokátor streamování a vytvořit adresu 
 
 ## <a name="prerequisite"></a>Požadavek
 
-Náhled [dynamického balení](dynamic-packaging-overview.md)
+Náhled [dynamického balení](encode-dynamic-packaging-concept.md)
 
 ## <a name="java"></a>Java
 
@@ -165,10 +165,10 @@ Viz kompletní ukázka kódu: [EncodingWithMESPredefinedPreset](https://github.c
 
 ## <a name="see-also"></a>Viz také
 
-* [Vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-howto.md)
+* [Vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-how-to.md)
 * [Vytváření filtrů pomocí REST](filters-dynamic-manifest-rest-howto.md)
-* [Vytváření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md)
+* [Vytváření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-how-to.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Chraňte svůj obsah pomocí DRM](protect-with-drm.md).
+[Chraňte svůj obsah pomocí DRM](drm-protect-with-drm-tutorial.md).

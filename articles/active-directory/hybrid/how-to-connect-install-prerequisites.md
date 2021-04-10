@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426786"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107907"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -37,7 +37,7 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 * Tenant Azure AD umožňuje ve výchozím nastavení 50 000 objektů. Při ověřování domény se limit zvyšuje na 300 000 objektů. Pokud ve službě Azure AD potřebujete ještě více objektů, otevřete případ podpory, abyste tento limit ještě víc zvýšili. Potřebujete-li více než 500 000 objektů, budete potřebovat licenci, například Microsoft 365, Azure AD Premium nebo Enterprise Mobility + Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Příprava místních dat
-* Použijte [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) k identifikaci chyb, jako jsou duplicity a problémy s formátováním v adresáři, ještě než se synchronizujete do Azure AD a Microsoft 365.
+* Použijte [IdFix](https://github.com/Microsoft/idfix) k identifikaci chyb, jako jsou duplicity a problémy s formátováním v adresáři, ještě než se [synchronizujete do Azure AD a Microsoft 365](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac).
 * Podívejte se [na volitelné funkce synchronizace, které můžete ve službě Azure AD povolit](how-to-connect-syncservice-features.md), a vyhodnoťte, které funkce byste měli povolit.
 
 ### <a name="on-premises-active-directory"></a>Místní služby Active Directory

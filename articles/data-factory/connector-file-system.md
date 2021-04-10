@@ -4,14 +4,14 @@ description: Naučte se, jak kopírovat data ze systému souborů do podporovan�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 03/29/2021
 ms.author: jingwang
-ms.openlocfilehash: a7cfcd77c4aeb12e2fca98a3564f34683b41ee21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c49b543b13dddf4c4ba7e36196795c6a0d638ae2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588994"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731951"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopírování dat do nebo ze systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -36,7 +36,10 @@ Konkrétně tento konektor systému souborů podporuje:
 - Kopírování souborů pomocí ověřování **systému Windows** .
 - Soubory se kopírují jako soubory nebo se analyzují nebo generují pomocí [podporovaných formátů souborů a kompresních kodeků](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Namapovaná síťová jednotka není při načítání dat ze sdílené síťové složky podporovaná. Místo toho použijte skutečnou cestu, například ` \\server\share` .
+
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

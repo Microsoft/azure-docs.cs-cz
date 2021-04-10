@@ -9,13 +9,13 @@ ms.devlang: azurepowershell
 ms.date: 09/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b1cea4b72049386ad7a1cc3e67003861c694812c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101671948"
 ---
-# <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>Rychlý Start: nasazení Azure Monitor pro řešení SAP pomocí Azure PowerShell
+# <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>Rychlý start: Nasazení služby Azure Monitor pro řešení SAP s využitím Azure PowerShellu
 
 Tento článek popisuje, jak můžete vytvořit Azure Monitor pro prostředky řešení SAP pomocí modulu [AZ. HanaOnAzure](/powershell/module/az.hanaonazure/#sap-hana-on-azure) PowerShell.
 

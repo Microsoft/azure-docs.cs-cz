@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489558"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275647"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -87,6 +87,8 @@ Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, k
 
 Výše uvedený příklad nastaví server DNS na veřejně dostupnou službu DNS. Pokud hraniční zařízení nemá k této IP adrese přístup z jeho prostředí, nahraďte ho adresou serveru DNS, která je přístupná.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Umístit `daemon.json` do správného umístění pro vaši platformu:
 
 | Platforma | Umístění |
@@ -102,6 +104,24 @@ Restartujte modul kontejnerů, aby se aktualizace projevily.
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (PowerShell pro správu) | `Restart-Service iotedge-moby -Force` |
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Místo `daemon.json` v `/etc/docker` adresáři na svém zařízení.
+
+Pokud umístění již obsahuje `daemon.json` soubor, přidejte do něj klíč **DNS** a soubor uložte.
+
+Restartujte modul kontejnerů, aby se aktualizace projevily.
+
+```bash
+sudo systemctl restart docker
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 **Možnost 2: nastavení serveru DNS v nasazení IoT Edge na modul**
 
@@ -275,6 +295,9 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
 :::moniker-end
 <!-- end 1.2 -->
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nelze získat protokoly IoT Edge démona v systému Windows.
 
 **Pozorované chování:**
@@ -297,6 +320,9 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
 
 ## <a name="stability-issues-on-smaller-devices"></a>Problémy s stabilitou na menších zařízeních
 
@@ -388,6 +414,7 @@ Zařízení IoT Edge za bránou získají své image modulu z nadřazeného IoT 
 Ujistěte se, že nadřazený IoT Edge zařízení může přijímat příchozí žádosti z podřízeného IoT Edge zařízení. Pro požadavky přicházející z podřízeného zařízení otevřete síťový provoz na portech 443 a 6617.
 
 :::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Další kroky
 

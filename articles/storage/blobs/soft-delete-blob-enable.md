@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c89e42736f5b8de65ed93ccb57f8d034d4240bc8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995297"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729078"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Povolení a Správa obnovitelného odstranění pro objekty blob
 
@@ -146,7 +146,7 @@ Chcete-li obnovit objekty blob, které byly omylem odstraněny, zavolejte u těc
 
 Chcete-li provést obnovení na konkrétní verzi objektu blob, nejdříve zavolejte příkaz Undelete u objektu BLOB a potom zkopírujte požadovaný snímek do objektu BLOB. Následující příklad obnoví objekt blob bloku na jeho naposledy vygenerovaný snímek:
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 

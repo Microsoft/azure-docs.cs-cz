@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: c61ad4d26c4a03889d9ac80332335543ec4140b7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868977"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
@@ -32,7 +32,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 

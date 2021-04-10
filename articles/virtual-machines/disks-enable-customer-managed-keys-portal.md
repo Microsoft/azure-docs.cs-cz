@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7fbcf37620f9d6edfb0f312c2eb09ef2d7994232
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499386"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731632"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Použití Azure Portal k povolení šifrování na straně serveru pomocí klíčů spravovaných zákazníkem pro spravované disky
 
@@ -32,8 +32,6 @@ Klíče spravované zákazníkem teď mají následující omezení:
 
     - Pro Windows: [zkopírování spravovaného disku](./windows/disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)
 
-- Podporují se jenom [softwarové a hardwarové klíče RSA](../key-vault/keys/about-keys.md) velikosti 2 048, 3 072 a 4 096-bit, žádné jiné klíče ani velikosti.
-    - Klíče [HSM](../key-vault/keys/hsm-protected-keys.md) vyžadují úroveň **Premium** trezorů klíčů Azure.
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
 Následující části obsahují informace o tom, jak povolit a používat klíče spravované zákazníkem pro spravované disky:

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676e5f03c8d0085a4d041662a80c63d385071919
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485533"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166713"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -147,7 +147,7 @@ Předběžné úlohy a následné úkoly se spouštějí jako Runbooky a nativn�
 * Účet Spustit jako
 * Runbook, který chcete spustit
 
-Pro interakci s počítači s Azure byste měli použít rutinu [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) k interakci s virtuálními počítači Azure. Příklad toho, jak to udělat, najdete v ukázce Runbooku [Update Management – spuštění skriptu pomocí příkazu Run](https://github.com/azureautomation/update-management-run-script-with-run-command).
+Pro interakci s počítači s Azure byste měli použít rutinu [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) k interakci s virtuálními počítači Azure. Příklad toho, jak to udělat, najdete v ukázce Runbooku [Update Management-Run Script with Run Command](https://github.com/azureautomation/update-management-run-script-with-run-command).
 
 ### <a name="interact-with-non-azure-machines"></a>Interakce s počítači mimo Azure
 
@@ -158,7 +158,7 @@ Předběžné úkoly a následné úkoly běží v kontextu Azure a nemají př�
 * Sada Runbook, kterou chcete spustit místně
 * Nadřazený Runbook
 
-Aby bylo možné pracovat s počítači mimo Azure, je spuštěn nadřazený Runbook v kontextu Azure. Tato sada runbook volá podřízený Runbook pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Musíte zadat `RunOn` parametr a zadat název Hybrid Runbook Worker, na kterém se má skript spustit. Podívejte se na příklad Runbooku [Update Management – spusťte skript místně](https://github.com/azureautomation/update-management-run-script-locally).
+Aby bylo možné pracovat s počítači mimo Azure, je spuštěn nadřazený Runbook v kontextu Azure. Tato sada runbook volá podřízený Runbook pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Musíte zadat `RunOn` parametr a zadat název Hybrid Runbook Worker, na kterém se má skript spustit. Viz příklad Runbooku [Update Management-Run Script lokálně](https://github.com/azureautomation/update-management-run-script-locally).
 
 ## <a name="abort-patch-deployment"></a>Přerušit nasazení opravy
 
@@ -238,9 +238,9 @@ Write-Output $context
 #Example: How to create and write to a variable using the pre-script:
 <#
 #Create variable named after this run so it can be retrieved
-New-AzAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
+New-AzAutomationVariable -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccount -Name $runId -Value "" -Encrypted $false
 #Set value of variable
-Set-AutomationVariable –Name $runId -Value $vmIds
+Set-AutomationVariable -Name $runId -Value $vmIds
 #>
 
 #Example: How to retrieve information from a variable set during the pre-script

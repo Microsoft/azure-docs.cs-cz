@@ -37,17 +37,17 @@ Ve většině případů je vhodné sestavovat toky dat v režimu ladění, abys
 > [!NOTE]
 > Každá relace ladění, kterou uživatel spustí z uživatelského rozhraní prohlížeče ADF, je nová relace se svým vlastním clusterem Spark. Pomocí zobrazení monitorování pro relace ladění výše můžete zobrazit a spravovat relace ladění na objekt pro vytváření. Účtuje se vám každá hodina, po kterou se spouští každá relace ladění, včetně času TTL.
 
-## <a name="cluster-status"></a>Stav clusteru
+## <a name="cluster-status&quot;></a>Stav clusteru
 
 Indikátor stavu clusteru v horní části návrhové plochy se po přípravě clusteru na ladění změní na zelený. Pokud je váš cluster již zateplný, bude zelený indikátor zobrazen téměř okamžitě. Pokud váš cluster ještě nebyl spuštěný, když jste zadali režim ladění, pak cluster Spark provede studenou spouštěcí službu. Indikátor se dokončí, dokud prostředí není připravené na interaktivní ladění.
 
 Až budete s laděním hotovi, vypněte přepínač ladění, aby cluster Spark mohl skončit a nadále se vám nebude účtovat aktivita ladění.
 
-## <a name="debug-settings"></a>Nastavení ladění
+## <a name=&quot;debug-settings&quot;></a>Nastavení ladění
 
 Jakmile zapnete režim ladění, můžete upravit způsob, jakým datový tok data zobrazí. Nastavení ladění můžete upravit kliknutím na nastavení ladění na panelu nástrojů plátna toku dat. Tady můžete vybrat omezení počtu řádků nebo zdroj souborů, které se mají použít pro každou transformaci vašich zdrojů. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také vybrat pracovní propojenou službu, která se má použít pro zdroj Azure synapse Analytics. 
 
-![Nastavení ladění](media/data-flow/debug-settings.png "Nastavení ladění")
+![Nastavení ladění](media/data-flow/debug-settings.png &quot;Nastavení ladění")
 
 Pokud máte v toku dat nebo kterékoli z jeho odkazovaných datových sad parametry, můžete určit, které hodnoty se mají použít během ladění, a to tak, že vyberete kartu **parametry** .
 

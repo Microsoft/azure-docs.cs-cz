@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a532ae9485efa9571137130d32ba0827728e8094
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257976"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166866"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
 
@@ -68,11 +68,23 @@ Z bezpečnostních důvodů je to pevný požadavek a nebudeme podporovat zástu
 
 ### <a name="dns-updates"></a>Aktualizace DNS
 
-Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem CNAME pro externí adresu URL (například  `*.adventure-works.com` ) odkazující na externí adresu URL koncového bodu proxy aplikace. V případě aplikací se zástupnými znaky musí záznam CNAME ukazovat na příslušné externí adresy URL:
+Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem CNAME pro externí adresu URL (například  `*.adventure-works.com` ) odkazující na externí adresu URL koncového bodu proxy aplikace. V případě aplikací se zástupnými znaky musí záznam CNAME ukazovat na příslušnou externí adresu URL:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
 Pokud chcete potvrdit, že jste svůj záznam CNAME správně nakonfigurovali, můžete použít nástroj [nslookup](/windows-server/administration/windows-commands/nslookup) v jednom z cílových koncových bodů, například `expenses.adventure-works.com` .  Vaše odpověď by měla zahrnovat už zmíněný alias ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
+
+### <a name="using-connector-groups-assigned-to-an-app-proxy-cloud-service-region-other-than-the-default-region"></a>Použití skupin konektorů přiřazených k jiné oblasti cloudové služby App proxy, než je výchozí oblast
+Pokud máte konektory nainstalované v oblastech, které se liší od výchozí oblasti tenanta, může být vhodné změnit oblast, pro kterou je vaše skupina konektorů optimalizovaná, aby se zlepšil výkon při přístupu k těmto aplikacím. Další informace najdete v tématu [optimalizace skupin konektorů pro použití nejbližší cloudové služby aplikačního proxy serveru](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
+ 
+Pokud skupina konektorů přiřazená k aplikaci se zástupnými znaky používá **jinou oblast než výchozí oblast**, budete muset záznam CNAME aktualizovat tak, aby odkazoval na konkrétní externí adresu URL konkrétního regionu. K určení příslušné adresy URL použijte následující tabulku:
+
+| Oblast přiřazená konektorem | Externí adresa URL |
+| ---   | ---         |
+| Asie | `<yourAADTenantId>.asia.tenant.runtime.msappproxy.net`|
+| Austrálie  | `<yourAADTenantId>.aus.tenant.runtime.msappproxy.net` |
+| Evropa  | `<yourAADTenantId>.eur.tenant.runtime.msappproxy.net`|
+| Severní Amerika  | `<yourAADTenantId>.nam.tenant.runtime.msappproxy.net` |
 
 ## <a name="considerations"></a>Požadavky
 

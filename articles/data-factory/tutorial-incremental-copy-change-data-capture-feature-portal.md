@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101724978"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
@@ -48,7 +48,7 @@ V tomto kurzu vytvoříte kanál, který provede následující operace:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Azure SQL Database spravovaná instance**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte Azure SQL Database spravovanou instanci, přečtěte si článek [vytvoření Azure SQL Database spravované instance](../azure-sql/managed-instance/instance-create-quickstart.md) , kde najdete kroky pro jeho vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **raw**. 
 

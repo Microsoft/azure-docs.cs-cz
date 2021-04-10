@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 3/22/2021
 ms.author: aahi
 ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868167"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure Command-Line (CLI)
@@ -29,7 +29,7 @@ V tomto rychlém startu se dozvíte, jak se zaregistrovat k Azure Cognitive Serv
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Platné předplatné Azure – [Vytvořte si ho](https://azure.microsoft.com/free/cognitive-services) zdarma.
 * [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli)

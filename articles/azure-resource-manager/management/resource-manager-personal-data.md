@@ -3,12 +3,12 @@ title: Osobní údaje
 description: Naučte se spravovat osobní data přidružená k Azure Resource Manager operací.
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f616fa58c53a7f666978bd1db60d10a9266e342
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693698"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934202"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Správa osobních údajů spojených s Azure Resource Manager
 
@@ -24,13 +24,13 @@ V případě nasazení Správce prostředků zachovává hodnoty parametrů a st
 
 K vypsání **nasazení** v historii použijte:
 
-* [Seznam podle skupiny prostředků](/rest/api/resources/deployments/listbyresourcegroup)
+* [Seznam podle skupiny prostředků](/rest/api/resources/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
 * [AZ Deployment Group list](/cli/azure/deployment/group#az_deployment_group_list)
 
 Pokud chcete z historie odstranit **nasazení** , použijte:
 
-* [Odstranit](/rest/api/resources/deployments/delete)
+* [Odstranit](/rest/api/resources/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [AZ Deployment Group DELETE](/cli/azure/deployment/group#az_deployment_group_delete)
 
@@ -40,13 +40,13 @@ Název skupiny prostředků přetrvává, dokud skupinu prostředků neodstraní
 
 K vypsání **skupin prostředků** použijte:
 
-* [Seznam](/rest/api/resources/resourcegroups/list)
+* [Seznam](/rest/api/resources/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [AZ Group list](/cli/azure/group#az-group-list)
 
 Pokud chcete odstranit **skupiny prostředků**, použijte:
 
-* [Odstranit](/rest/api/resources/resourcegroups/delete)
+* [Odstranit](/rest/api/resources/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
@@ -56,13 +56,13 @@ Názvy značek a hodnoty jsou trvalé, dokud neodstraníte nebo nezměníte zna�
 
 Chcete-li zobrazit seznam **značek**, použijte:
 
-* [Seznam](/rest/api/resources/tags/list)
+* [Seznam](/rest/api/resources/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [AZ tag list](/cli/azure/tag#az-tag-list)
 
 Chcete-li odstranit **značky**, použijte:
 
-* [Odstranit](/rest/api/resources/tags/delete)
+* [Odstranit](/rest/api/resources/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [AZ tag DELETE](/cli/azure/tag#az-tag-delete)
 

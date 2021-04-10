@@ -4,10 +4,10 @@ description: V tomto rychlém startu se naučíte, jak začít s porozuměním z
 ms.topic: quickstart
 ms.date: 2/18/2021
 ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784488"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Rychlý Start: Začínáme s Defenderem pro IoT
@@ -18,7 +18,7 @@ Tento článek poskytuje přehled kroků, které budete provádět při nastavov
 - Nainstalujte software senzoru a místní konzolu pro správu.
 - Proveďte počáteční aktivaci senzoru a konzoly pro správu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Žádné
 

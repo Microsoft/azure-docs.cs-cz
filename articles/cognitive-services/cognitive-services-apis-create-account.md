@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
 ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868218"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí Azure Portal
@@ -25,7 +25,7 @@ Azure Cognitive Services jsou cloudové služby s rozhraními REST API a sady SD
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).
 

@@ -5,21 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: b2f91f0036a86151588c8c138dac5421ad54e18e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db9ad08f9a939a22e1e0e1cfba0537e6356394ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586416"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731531"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Instalace agenta Azure Monitor (Preview)
 Tento článek poskytuje různé možnosti, které jsou aktuálně k dispozici pro instalaci [agenta Azure monitor](azure-monitor-agent-overview.md) na virtuálních počítačích Azure i serverech s podporou ARC Azure a také možnosti vytváření [přidružení s pravidly shromažďování dat](data-collection-rule-azure-monitor-agent.md) , která určují, která data má agent shromažďovat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před instalací agenta Azure Monitor se vyžaduje splnění následujících požadavků.
 
 - Na virtuálních počítačích Azure musí být povolená [Identita spravovaného systému](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) . To není vyžadováno pro servery s podporou ARC Azure. Identita systému bude povolena automaticky, pokud je agent nainstalován jako součást procesu pro [Vytvoření a přiřazení pravidla shromažďování dat pomocí Azure Portal](#install-with-azure-portal).
 - Ve virtuální síti pro virtuální počítač musí být povolená [značka služby AzureResourceManager](../../virtual-network/service-tags-overview.md) .
+
+> [!IMPORTANT]
+> Agent Azure Monitor v současné době nepodporuje síťové proxy servery.
 
 ## <a name="virtual-machine-extension-details"></a>Podrobnosti o rozšíření virtuálního počítače
 Agent Azure Monitor se implementuje jako [rozšíření virtuálního počítače Azure](../../virtual-machines/extensions/overview.md) s podrobnostmi v následující tabulce. Dá se nainstalovat pomocí kterékoli z metod instalace rozšíření virtuálních počítačů, včetně těch, které jsou popsané v tomto článku.

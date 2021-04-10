@@ -10,15 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96487673"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729129"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -153,7 +150,7 @@ Modelování návrhu aplikace a vytváření [výčtu hrozeb a](https://docs.goo
 
 | Hrozba | Vlastnost zabezpečení | Potenciální omezení pro platformu Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1). |
+| Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](/aspnet/core/security/enforcing-ssl?tabs=visual-studio). |
 | Manipulace              | Integrita             | Ověřte certifikáty protokolu SSL/TLS. Aplikace, které používají protokol SSL/TLS, musí plně ověřit certifikáty X. 509 entit, ke kterým se připojují. Pomocí Azure Key Vault certifikátů můžete [spravovat certifikáty x509](../../key-vault/general/about-keys-secrets-certificates.md). |
 | Popírání odpovědnosti            | Neodvolatelnost       | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure.|
 | Zveřejnění informací | Důvěrnost       | Šifrování citlivých dat v [klidovém umístění](../fundamentals/encryption-atrest.md) a [přenosu](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
@@ -233,7 +230,7 @@ Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby 
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Vyžadovat opakované ověření pro důležité transakce
 
-[Padělání požadavků napříč weby](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (označované také jako *XSRF* nebo *CSRF*) představuje útok proti aplikacím hostovaným na webu, ve kterých škodlivá webová aplikace ovlivňuje interakci mezi klientským prohlížečem a webovou aplikací, která tento prohlížeč důvěřuje. Útoky na padělání žádostí mezi weby jsou možné, protože webové prohlížeče odesílají některé typy ověřovacích tokenů automaticky pomocí všech požadavků na web.
+[Padělání požadavků napříč weby](/aspnet/core/security/anti-request-forgery) (označované také jako *XSRF* nebo *CSRF*) představuje útok proti aplikacím hostovaným na webu, ve kterých škodlivá webová aplikace ovlivňuje interakci mezi klientským prohlížečem a webovou aplikací, která tento prohlížeč důvěřuje. Útoky na padělání žádostí mezi weby jsou možné, protože webové prohlížeče odesílají některé typy ověřovacích tokenů automaticky pomocí všech požadavků na web.
 Tato forma využití se označuje také jako útok s *jedním kliknutím* nebo při *jízdě relace* , protože útok využívá dřív ověřenou relaci uživatele.
 
 Nejlepším způsobem, jak chránit před tímto druhem útoku, je požádat uživatele o něco, co může jenom uživatel poskytnout před každou důležitou transakci, jako je nákup, deaktivace účtu nebo změna hesla. Můžete požádat uživatele, aby znovu zadal heslo, dokončili CAPTCHA nebo odeslali tajný token, který by měl mít jenom uživatel. Nejběžnějším přístupem je tajný token.
@@ -303,7 +300,7 @@ Zajistěte, aby:
 
 ### <a name="use-logging-and-alerting"></a>Použití protokolování a upozorňování
 
-[Protokolujte](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) své problémy se zabezpečením pro vyšetřování zabezpečení a aktivujte výstrahy týkající se problémů, abyste zajistili, že lidé budou včas informovat o problémech. Povolte auditování a protokolování pro všechny součásti. Protokoly auditu by měly zachytit kontext uživatele a identifikovat všechny důležité události.
+[Protokolujte](/aspnet/core/fundamentals/logging/) své problémy se zabezpečením pro vyšetřování zabezpečení a aktivujte výstrahy týkající se problémů, abyste zajistili, že lidé budou včas informovat o problémech. Povolte auditování a protokolování pro všechny součásti. Protokoly auditu by měly zachytit kontext uživatele a identifikovat všechny důležité události.
 
 Ověřte, že nechcete protokolovat žádná citlivá data, která uživatel odešle do vaší lokality. Mezi příklady citlivých dat patří:
 

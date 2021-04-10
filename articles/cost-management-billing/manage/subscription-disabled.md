@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: d7b5f1ae6db633bd1af10b1a0de1392c2a1fbcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1c40102f8815cf7299a99d290b7f57b386ede401
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685526"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055123"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Opětovná aktivace zakázaného předplatného Azure
 
@@ -23,7 +23,7 @@ Vaše předplatné Azure se může zakázat z důvodu vypršení platnosti kredi
 
 ## <a name="your-credit-is-expired"></a>Vypršela platnost vašeho kreditu
 
-Registrací bezplatného účtu Azure získáte bezplatné zkušební předplatné, které nabízí 200 USD v kreditech Azure na 30 dnů a 12měsíční přístup k bezplatným službám. Po uplynutí 30 dnů Azure vaše předplatné zakáže. Vaše předplatné se zakáže, aby se vám neúčtovaly poplatky za využití nad rámec kreditů a bezplatných služeb zahrnutých ve vašem předplatném. Pokud chcete dále využívat služby Azure, musíte [předplatné upgradovat](upgrade-azure-subscription.md). I po upgradu bude vaše předplatné mít přístup k bezplatným službám na 12 měsíců. Účtují se jenom za využití nad rámec bezplatného množstevního limitu služby.
+Když se přihlásíte k bezplatnému účtu Azure, získáte bezplatné zkušební předplatné, které 200 vám poskytne kredit Azure ve vaší fakturační měně na 30 dní a 12 měsíců bezplatných služeb. Po uplynutí 30 dnů Azure vaše předplatné zakáže. Vaše předplatné se zakáže, aby se vám neúčtovaly poplatky za využití nad rámec kreditů a bezplatných služeb zahrnutých ve vašem předplatném. Pokud chcete dále využívat služby Azure, musíte [předplatné upgradovat](upgrade-azure-subscription.md). I po upgradu bude vaše předplatné mít přístup k bezplatným službám na 12 měsíců. Účtují se jenom za využití nad rámec bezplatného množstevního limitu služby.
 
 ## <a name="you-reached-your-spending-limit"></a>Dosažení limitu útraty
 

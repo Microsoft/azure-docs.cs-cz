@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý Start: Vytvoření front Azure Storage na portálu'
 description: Vytvořte frontu pomocí Azure Portal. Pak použijte Azure Portal k přidání zprávy, zobrazení vlastností zprávy a vyřazení zprávy do fronty.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 08/13/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 146a6809baebde406fb94f0d36973f95c971170b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97585543"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275817"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý Start: vytvoření fronty a přidání zprávy s Azure Portal
 
 V tomto rychlém startu se dozvíte, jak pomocí [Azure Portal](https://portal.azure.com/) vytvořit frontu v Azure Storage a přidat a vyřadit zprávy z fronty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
