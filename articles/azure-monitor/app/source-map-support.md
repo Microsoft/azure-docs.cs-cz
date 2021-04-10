@@ -7,10 +7,10 @@ ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98933938"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Podpora zdrojového mapování pro aplikace JavaScriptu
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat nebo změnit účet úložiště nebo kontejner obje
 > [!div class="mx-imgBorder"]
 > ![Překonfigurujte vybraný kontejner Azure Blob tak, že přejdete na okno Vlastnosti.](./media/source-map-support/reconfigure.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>Požadované nastavení řízení přístupu na základě role Azure (RBAC) na kontejneru objektů BLOB
 

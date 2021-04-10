@@ -6,10 +6,10 @@ ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102632777"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>Kurz: Přidání parametrů do souboru Azure Resource Manager bicep
@@ -18,7 +18,7 @@ V [předchozím kurzu](bicep-tutorial-create-first-bicep.md)jste zjistili, jak n
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [Vytvoření prvního souboru bicep](bicep-tutorial-create-first-bicep.md), ale není to nutné.
 

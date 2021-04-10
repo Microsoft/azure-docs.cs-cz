@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: 16c6c5e317591b70c3a1300453093fc715e213fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939677"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí PowerShellu
@@ -18,7 +18,7 @@ ms.locfileid: "98939677"
 
 Tento dokument poskytuje příklad použití Azure PowerShell ke spuštění úlohy MapReduce v clusteru Hadoop v HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -80,7 +80,7 @@ Chcete-li zobrazit slova a počty vytvářené úlohou, otevřete soubor **outpu
 > [!NOTE]  
 > Výstupní soubory úlohy MapReduce jsou neměnné. Takže pokud tuto ukázku znovu spustíte, musíte změnit název výstupního souboru.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se po dokončení úlohy nevrátí žádné informace, zobrazte chyby úlohy. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec souboru **mapreducejob.ps1** následující příkaz. Pak soubor uložte a znovu spusťte skript.
 

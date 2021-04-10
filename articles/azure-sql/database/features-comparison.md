@@ -13,10 +13,10 @@ ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 03/08/2021
 ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102489765"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Porovnání funkcí: Azure SQL Database a Azure SQL Managed instance
@@ -154,7 +154,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | Koncový bod služby virtuální sítě | [Ano](vnet-service-endpoint-rule-overview.md) | No |
 | Globální partnerský vztah virtuální sítě | Ano, použití [privátních koncových bodů IP a služeb](vnet-service-endpoint-rule-overview.md) | Ano, pomocí [partnerského vztahu virtuálních sítí](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913). |
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 Azure SQL Database a Azure SQL Managed instance podporují různé datové nástroje, které vám můžou pomoci při správě vašich dat.
 

@@ -8,10 +8,10 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
 ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945206"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>Kurz: vytvoření připojení typu Site-to-site v Azure Portal
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Ověření připojení
 > * Připojení k virtuálnímu počítači
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
