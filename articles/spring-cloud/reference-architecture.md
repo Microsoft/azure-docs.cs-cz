@@ -7,10 +7,10 @@ ms.author: akaleshian
 ms.service: spring-cloud
 description: Tato referenční architektura je základem pro používání Azure jarního cloudu pomocí typického podnikového centra a návrhu paprsků.
 ms.openlocfilehash: 74183ca2decf8487e5c41cf36d5784538021077f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877870"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Referenční architektura pro jarní cloudy Azure

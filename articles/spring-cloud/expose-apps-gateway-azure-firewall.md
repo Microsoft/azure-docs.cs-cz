@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 6c22d1bae4f1d116aa52846880498c7c2a425174
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104878144"
 ---
 # <a name="expose-applications-to-the-internet-using-application-gateway-and-azure-firewall"></a>Zveřejňujte aplikace na internetu pomocí Application Gateway a Azure Firewall
 
 Tento dokument vysvětluje, jak vystavit aplikace na internetu pomocí Application Gateway a Azure Firewall. Když je instance služby jarní cloudová služba Azure nasazená ve vaší virtuální síti, aplikace v instanci služby jsou dostupné jenom v privátní síti. Aby bylo možné aplikace zpřístupnit v Internetu, je nutné integraci s **Azure Application Gateway** a volitelně i s **Azure firewall**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Azure CLI verze 2.0.4 nebo novější](/cli/azure/install-azure-cli).
 

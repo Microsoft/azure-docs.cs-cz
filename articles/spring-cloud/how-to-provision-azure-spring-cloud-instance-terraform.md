@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877894"
 ---
 # <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Zřízení instance služby jarního cloudu Azure pomocí Terraformu
@@ -31,7 +31,7 @@ Tento příklad vytvoří instanci cloudu Azure jaře pomocí Terraformu. Postup
 > * Dotazy, případy použití a užitečné vzory: [část terraformu na portálu komunity HashiCorp](https://discuss.hashicorp.com/c/terraform-core)
 > * Otázky související se zprostředkovatelem: [oddíl Terraformu Providers na portálu komunity HashiCorp](https://discuss.hashicorp.com/c/terraform-providers)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/09/2021
 ms.author: magoedte
 ms.openlocfilehash: 6d22e93fe8bd36e24520108bc310d5b08c25120c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102560017"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Požadovaná rozšíření konfigurace stavu pomocí šablon Azure Resource Manager
@@ -346,7 +346,7 @@ Tady je postup, jak se v předchozím formátu přizpůsobí aktuálnímu formá
 | protectedSettings.configurationUrlSasToken |možnost. SasToken |
 | protectedSettings.configurationDataUrlSasToken |Token SAS z protectedSettings. DataBlobUri |
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Tady jsou některé chyby, ke kterým může dojít, a jak je můžete opravit.
 

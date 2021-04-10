@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889878"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731291"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Nastavení omezení přístupu Azure App Service
 
@@ -178,7 +178,7 @@ Kromě toho, že je možné řídit přístup k vaší aplikaci, můžete omezit
 ### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Omezení přístupu ke konkrétní instanci front-dveří Azure
 Přenos z front Azure do vaší aplikace pochází z dobře známé sady rozsahů IP adres definovaných ve značce služby AzureFrontDoor. back-end. Pomocí pravidla omezení značek služby můžete omezit provoz tak, aby se nacházely jenom z front-dveří Azure. Aby se zajistil provoz jenom z vaší konkrétní instance, budete muset dál vyfiltrovat příchozí požadavky na základě jedinečné hlavičky HTTP, kterou odesílají přední dveře Azure.
 
-:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Snímek obrazovky se stránkou omezení přístupu v Azure Portal, kde se dozvíte, jak přidat omezení pro front-in Azure":::
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Snímek obrazovky se stránkou omezení přístupu v Azure Portal, kde se dozvíte, jak přidat omezení pro front-in Azure":::
 
 Příklad PowerShellu:
 

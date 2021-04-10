@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cfb4abc4f553c8f4353d8488390ed45eb3a7e7
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 1d40d90f0f64328bbf7103015f52ea4b132d2e51
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105642229"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729622"
 ---
 # <a name="chat-sdk-overview"></a>Přehled sady Chat SDK 
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
 Sady SDK pro konverzační služby Azure Communication Services slouží k přidávání bohatých konverzací v reálném čase do vašich aplikací.
     

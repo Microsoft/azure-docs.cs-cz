@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d792c1eb0a85f2a898d1dc5c63047a4553f13b0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724623"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106768"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>Odolnost sestavení pomocí vyhodnocení průběžného přístupu
 
@@ -47,6 +47,8 @@ Aby bylo možné používat CAE, musí být služba i klient podporující CAE. 
 Microsoft spolupracuje s oborem vytváření [standardů](https://openid.net/wg/sse/) , které umožní používání této funkce pro aplikace třetích stran. Můžete také vyvíjet aplikace, které podporují CAE. Další informace najdete v tématu postup sestavení odolnosti ve vaší aplikaci.
 
 ## <a name="how-do-i-implement-cae"></a>Návody implementovat CAE?
+
+* [Aktualizujte kód tak, aby používal rozhraní API s podporou CAE](../develop/app-resilience-continuous-access-evaluation.md).
 
 * [Povolte CAE](../conditional-access/concept-continuous-access-evaluation.md) v konfiguraci zabezpečení Azure AD.
 

@@ -22,6 +22,8 @@
       href: groups-concept.md
     - name: Jednotky pro správu
       href: administrative-units.md
+    - name: Osvědčené postupy
+      href: best-practices.md
     - name: Zabezpečení
       items:
         - name: Plánování zabezpečení rolí

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 12/26/2020
-ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 4d497adf5229819527608157a7a840d514f4292c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594253"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732342"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,6 +178,12 @@ Při provádění operací OLTP použijte `<fog-name>.database.windows.net` jako
 
 Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte `<fog-name>.secondary.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměruje na sekundární. Je také vhodné určit záměr čtení v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly` .
 
+> [!NOTE]
+> V úrovních služeb Premium, Pro důležité obchodní informace a škálování služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) k snižování zátěže dotazů jen pro čtení, a to pomocí `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Pokud jste nakonfigurovali geograficky replikované sekundární umístění, můžete se s využitím této možnosti připojit k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
+>
+> - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `ApplicationIntent=ReadOnly` a `<fog-name>.database.windows.net` .
+> - Chcete-li se připojit k replice jen pro čtení v sekundárním umístění, použijte `ApplicationIntent=ReadOnly` a `<fog-name>.secondary.database.windows.net` .
+
 ### <a name="preparing-for-performance-degradation"></a>Příprava na snížení výkonu
 
 Typická aplikace Azure používá několik služeb Azure a skládá se z několika součástí. Automatické převzetí služeb při selhání ve skupině převzetí služeb při selhání se aktivuje v závislosti na stavu samotných komponent Azure SQL. Jiné služby Azure v primární oblasti nemusí být ovlivněny výpadkem a jejich komponenty mohou být v této oblasti stále dostupné. Jakmile se primární databáze přepne do oblasti zotavení po havárii, může se zvýšit latence mezi závislými komponentami. Aby se zabránilo dopadu vyšší latence na výkon aplikace, zajistěte redundanci všech komponent aplikace v oblasti zotavení po havárii a postupujte podle [pokynů pro zabezpečení sítě](#failover-groups-and-network-security).
@@ -267,7 +273,7 @@ Při provádění operací OLTP použijte `<fog-name>.zone_id.database.windows.n
 Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému sekundárnímu serveru, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
 
 > [!NOTE]
-> V úrovních služeb Premium, Pro důležité obchodní informace a škálování služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) ke spouštění úloh dotazů jen pro čtení pomocí kapacity jedné nebo více replik jen pro čtení, a to pomocí `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Pokud jste nakonfigurovali geograficky replikované sekundární umístění, můžete se s využitím této možnosti připojit k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
+> Ve Pro důležité obchodní informace vrstvě podporuje spravovaná instance SQL použití [replik jen pro čtení](read-scale-out.md) k přesměrování zatížení dotazů jen pro čtení, a to pomocí `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Pokud jste nakonfigurovali geograficky replikované sekundární umístění, můžete se s využitím této možnosti připojit k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
 >
 > - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `ApplicationIntent=ReadOnly` a `<fog-name>.<zone_id>.database.windows.net` .
 > - Chcete-li se připojit k replice jen pro čtení v sekundárním umístění, použijte `ApplicationIntent=ReadOnly` a `<fog-name>.secondary.<zone_id>.database.windows.net` .

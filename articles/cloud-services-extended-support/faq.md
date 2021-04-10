@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 33bafac9247f007978fef568469d643f1a1098df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107512"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383582"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Nejčastější dotazy ke službám Azure Cloud Services (s rozšířenou podporou)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Cloud Services (Rozšířená podpora).
@@ -57,6 +57,9 @@ Nasazení Cloud Services (Rozšířená podpora) podporuje pouze zastavený stav
 
 ### <a name="do-cloud-services-extended-support-deployments-support-scaling-across-clusters-availability-zones-and-regions"></a>Podporují nasazení Cloud Services (Rozšířená podpora) škálování napříč clustery, zónami dostupnosti a oblastmi?
 Nasazení Cloud Services (Rozšířená podpora) se nedají škálovat mezi víc clusterů, zón dostupnosti a oblastmi. 
+
+### <a name="how-can-i-get-the-deployment-id-for-my-cloud-service-extended-support"></a>Jak získám ID nasazení pro cloudovou službu (rozšířenou podporu)
+ID nasazení, ke kterému se dá také přistupovat pomocí rozhraní API [CloudServiceInstanceView](https://docs.microsoft.com/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) . Je k dispozici také na Azure Portal v okně role a instance cloudové služby (Rozšířená podpora).
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Existují nějaké cenové rozdíly mezi Cloud Services (Classic) a Cloud Services (Rozšířená podpora)?
 Cloud Services (Rozšířená podpora) používá veřejné IP adresy Azure Key Vault a Basic (ARM).Zákazníci vyžadující certifikáty potřebují použít Azure Key Vault pro správu certifikátů ([Další informace](https://azure.microsoft.com/pricing/details/key-vault/) o cenách Azure Key Vault.)   Každá veřejná IP adresa pro Cloud Services (Rozšířená podpora) se účtuje samostatně ([Další informace](https://azure.microsoft.com/pricing/details/ip-addresses/) o cenách veřejných IP adres). 

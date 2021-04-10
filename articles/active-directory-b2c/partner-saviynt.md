@@ -12,10 +12,10 @@ ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103465670"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
@@ -30,7 +30,7 @@ V tomto ukázkovém kurzu nastavíte Saviynt tak, aby poskytovalo podrobné ří
 
 - Zabezpečení na úrovni dat k určení, jestli uživatel může provádět určitou operaci na konkrétním uživateli. Například správce helpdesku pro oblast UK může spravovat pouze uživatele ve Velké Británii.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 

@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: b2f7ae79cf43e257c3e13d2da7fec5c83dd3fab0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564109"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937273"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -33,6 +33,8 @@ Tento článek vysvětluje, jak můžete získat přístup k prostředkům SAP z
     * Pokud spouštíte aplikaci logiky v [prostředí ISE (Premium-Level Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), přečtěte si část [požadavky ISE](#ise-prerequisites).
 
 * [Aplikační Server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [Server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) , ze kterého chcete získat přístup Logic Apps. Informace o tom, jaké servery SAP a akce SAP můžete s konektorem používat, najdete v tématu [Kompatibilita SAP](#sap-compatibility).
+
+    * Server SAP musíte nakonfigurovat tak, aby povoloval použití RFC. Další informace najdete v následující poznámce SAP: [460089-minimální autorizační profily pro externí programy RFC](https://launchpad.support.sap.com/#/notes/460089). 
 
 * Obsah zprávy, který se pošle na Server SAP, jako je například ukázkový soubor IDoc. Tento obsah musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít. IDocs můžete [poslat pomocí schématu plochého souboru, a to tak, že je zabalíte do obálky XML](#send-flat-file-idocs).
 

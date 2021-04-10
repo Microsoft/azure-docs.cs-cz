@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f41034331ed21e194fc2b86c2902c5957333313
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121945"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010594"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -22,11 +22,48 @@ V tomto článku se zvýrazňují možnosti, funkce a vylepšení, které byly n
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>Březen 2021
+
+Verze z března 2021 se zavedla 6. dubna 2021.
+
+Zkontrolujte omezení této verze ve [známých problémech – datové služby s podporou ARC Azure (Preview)](known-issues.md).
+
+Azure Data CLI ( `azdata` ) číslo verze: 20.3.2. Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+
+### <a name="data-controller"></a>Řadič dat
+
+- Nasaďte řadič dat datových služeb s podporou ARC Azure v režimu přímého připojení z portálu. Začněte od [nasazení data Controller – režim přímého připojení – požadavky](deploy-data-controller-direct-mode-prerequisites.md).
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL s povoleným škálováním Azure ARC
+
+Vlastní definice prostředků (CRD) pro PostgreSQL byly konsolidovány do jediného CRD. Podívejte se na následující tabulku.
+
+|Vydat |CRD |
+|-----|-----|
+|Únor 2021 a předchozí| postgresql-11s.arcdata.microsoft.com<br/>postgresql-12s.arcdata.microsoft.com |
+|Od března 2021 | postgresqls.arcdata.microsoft.com
+
+Předchozí CRDs odstraníte při čištění minulých instalací. Viz [Vyčištění z minulých instalací](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
+
+### <a name="azure-arc-enabled-managed-instance"></a>Spravovaná instance s povoleným ARC Azure
+
+- Teď můžete obnovit databázi do spravované instance SQL se 3 replikami a automaticky se přidá do skupiny dostupnosti. 
+
+- Nyní se můžete připojit k sekundárnímu koncovému bodu jen pro čtení na spravovaných instancích SQL nasazených se 3 replikami. Slouží `azdata arc sql endpoint list` k zobrazení sekundárního koncového bodu připojení jen pro čtení.
+
+### <a name="known-issues"></a>Známé problémy
+
+- V režimu přímého připojení je nahrávání využití, metrik a protokolů v tuto `azdata arc dc upload` chvíli blokované. Použití se automaticky nahraje. Nahrání pro řadič dat vytvořený v nepřímém režimu připojení by mělo fungovat i nadále.
+- Nasazení řadiče dat v přímém režimu lze provádět pouze z Azure Portal a není k dispozici z klientských nástrojů, jako jsou azdata, Azure Data Studio nebo kubectl.
+- Nasazení spravované instance SQL s podporou ARC Azure v přímém režimu se dá dělat jenom z Azure Portal a není dostupné z nástrojů, jako je azdata, Azure Data Studio nebo kubectl.
+- Nasazení PostgeSQL s povoleným rozšířením Azure ARC v přímém režimu momentálně není k dispozici.
+- Automatické odesílání dat o využití v režimu přímého připojení nebude úspěšné, pokud použijete proxy prostřednictvím `–proxy-cert <path-t-cert-file>` .
+
 ## <a name="february-2021"></a>Únor 2021
 
 ### <a name="new-capabilities-and-features"></a>Nové funkce a funkce
 
-Azure Data CLI ( `azdata` ) číslo verze: 20.3.1. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) . Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+Azure Data CLI ( `azdata` ) číslo verze: 20.3.1. Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 Mezi další aktualizace patří:
 
@@ -44,7 +81,7 @@ Problémy spojené s touto verzí najdete v tématu [známé problémy – datov
 
 ### <a name="new-capabilities-and-features"></a>Nové funkce a funkce
 
-Azure Data CLI ( `azdata` ) číslo verze: 20.3.0. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) . Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+Azure Data CLI ( `azdata` ) číslo verze: 20.3.0. Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 Mezi další aktualizace patří:
 - Lokalizovaný portál dostupný pro 17 nových jazyků
@@ -70,7 +107,7 @@ Mezi další aktualizace patří:
 
 ### <a name="new-capabilities--features"></a>Nové funkce & funkcemi
 
-Azure Data CLI ( `azdata` ) číslo verze: 20.2.5. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) .
+Azure Data CLI ( `azdata` ) číslo verze: 20.2.5. Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 Zobrazení koncových bodů pro spravovanou instanci SQL a PostgreSQL škálování pomocí příkazů Azure Data CLI ( `azdata` ) `azdata arc sql endpoint list` a `azdata arc postgres endpoint list` .
 
@@ -127,16 +164,9 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Zrušte zaškrtnutí políček u jednotlivých zón a určete možnost žádná.":::
 
-#### <a name="postgresql"></a>PostgreSQL
-
-- PostgreSQL s povoleným rozšířením Azure ARC vrátí nepřesnou chybovou zprávu, pokud se nemůže obnovit k relativnímu bodu v čase, který určíte. Pokud jste například zadali bod v čase k obnovení, který je starší než vaše zálohy, obnovení se nezdaří a zobrazí se chybová zpráva, například: Chyba: (404). Důvod: Nenalezeno. Tělo odpovědi HTTP: {"Code": 404, "internalStatus": "NOT_FOUND", "důvod": "nepovedlo se obnovit zálohu pro server...}
-Pokud k tomu dojde, restartujte příkaz po určení bodu v čase, který je v rozsahu kalendářních dat, pro které máte zálohy. Tento rozsah určíte tak, že zadáte svoje zálohy a prohlížíte data, ve kterých byly provedeny.
-- Obnovení bodu v čase je podporováno pouze v rámci skupin serverů. Cílový server operace obnovení bodu v čase nemůže být server, ze kterého jste provedli zálohování. Musí se jednat o jinou skupinu serverů. Úplné obnovení je však podporováno pro stejnou skupinu serverů.
-- Při úplném obnovení je vyžadováno ID zálohy. Pokud neindikujete ID zálohy, použije se ve výchozím nastavení poslední záloha. Tato verze v této verzi nefunguje.
-
 ## <a name="october-2020"></a>Říjen 2020 
 
-Azure Data CLI ( `azdata` ) číslo verze: 20.2.3. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) .
+Azure Data CLI ( `azdata` ) číslo verze: 20.2.3. Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 ### <a name="breaking-changes"></a>Změny způsobující chyby
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
 ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871193"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Monitorování instancí App Service pomocí kontroly stavu
@@ -48,7 +48,7 @@ V tomto článku se pomocí Azure Portal ke sledování instancí App Service po
 
 Kromě konfigurace možností kontroly stavu můžete také nakonfigurovat následující [nastavení aplikace](configure-common.md):
 
-| Název nastavení aplikace | Povolené hodnoty | Popis |
+| Název nastavení aplikace | Povolené hodnoty | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximální počet selhání nástroje test. Například pokud je nastavena na `2` , vaše instance budou odebrány po `2` neúspěšných příkazech otestuje. Při vertikálním navýšení nebo zmenšování App Service nástroj příkazového řádku otestuje cestu kontroly stavu, aby bylo zajištěno, že budou nové instance připravené. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Aby nedocházelo k nenáročným instancím v pořádku, nebudou vyloučeny žádné více než polovinu instancí. Pokud je například plán App Service škálovat na čtyři instance a tři nejsou v pořádku, bude vyloučeno nejvíce dvou. Ostatní dvě instance (v pořádku a jedna není v pořádku) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Chcete-li toto chování přepsat, nastavte nastavení aplikace na hodnotu mezi `0` a `100` . Vyšší hodnota znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50). |

@@ -8,34 +8,33 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564751"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106381770"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
 V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšířené podpory) pomocí [šablon ARM](../azure-resource-manager/templates/overview.md). 
-
-> [!IMPORTANT]
-> Cloud Services (Rozšířená podpora) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="before-you-begin"></a>Než začnete
 
 1. Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora) a vytvořte přidružené prostředky.
 
 2. Vytvořte novou skupinu prostředků pomocí [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) nebo [PowerShellu](../azure-resource-manager/management/manage-resource-groups-powershell.md). Tento krok je nepovinný, pokud používáte existující skupinu prostředků.
+
+3. Vytvořte veřejnou IP adresu a nastavte vlastnost Popisek DNS pro veřejnou IP adresu. Cloud Services (Rozšířená podpora) podporuje jenom [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) veřejné IP adresy SKU). Veřejné IP adresy Standard SKU nefungují s Cloud Services.
+Pokud používáte statickou IP adresu, musí se v souboru konfigurace služby (. cscfg) odkazovat jako na Vyhrazená IP adresa. Pokud používáte existující IP adresu, přeskočte tento krok a přidejte informace o IP adrese přímo do nastavení konfigurace nástroje pro vyrovnávání zatížení vaší šablony ARM.
+
+4. Vytvořte objekt profilu sítě a přidružte veřejnou IP adresu k front-endu nástroje pro vyrovnávání zatížení. Platforma Azure automaticky vytvoří prostředek "klasický" SKU pro vyrovnávání zatížení ve stejném předplatném jako prostředek cloudové služby. Prostředek nástroje pro vyrovnávání zatížení je prostředkem, který je jen pro čtení v ARM. Jakékoli aktualizace prostředku se podporují jenom prostřednictvím souborů nasazení cloudové služby (. cscfg &. csdef).
  
-3. Vytvořte nový účet úložiště pomocí [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) nebo [PowerShellu](../storage/common/storage-account-create.md?tabs=azure-powershell). Tento krok je nepovinný, pokud používáte existující účet úložiště.
+5. Vytvořte nový účet úložiště pomocí [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) nebo [PowerShellu](../storage/common/storage-account-create.md?tabs=azure-powershell). Tento krok je nepovinný, pokud používáte existující účet úložiště.
 
-4. Nahrajte soubory definice služby (. csdef) a konfigurace služby (. cscfg) do účtu úložiště pomocí [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [PowerShellu](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Získejte identifikátory URI SAS obou souborů, které mají být přidány do šablony ARM dále v tomto kurzu.
+6. Nahrajte soubory definice služby (. csdef) a konfigurace služby (. cscfg) do účtu úložiště pomocí [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [PowerShellu](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Získejte identifikátory URI SAS obou souborů, které mají být přidány do šablony ARM dále v tomto kurzu.
 
-5. Volitelné Vytvořte Trezor klíčů a nahrajte certifikáty.
+6. Volitelné Vytvořte Trezor klíčů a nahrajte certifikáty.
 
     -  Certifikáty mohou být připojeny ke cloudovým službám, aby bylo možné zabezpečenou komunikaci do a ze služby. Aby bylo možné používat certifikáty, musí být jejich kryptografické otisky zadány v souboru konfigurace služby (. cscfg) a odeslány do trezoru klíčů. Trezor klíčů je možné vytvořit pomocí [Azure Portal](../key-vault/general/quick-create-portal.md) nebo [PowerShellu](../key-vault/general/quick-create-powershell.md).
     - Přidružený Trezor klíčů musí být umístěný ve stejné oblasti a předplatném jako cloudová služba.
@@ -351,7 +350,7 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
           }
         },
         {
-          "apiVersion": "2020-10-01-preview",
+          "apiVersion": "2021-03-01",
           "type": "Microsoft.Compute/cloudServices",
           "name": "[variables('cloudServiceName')]",
           "location": "[parameters('location')]",

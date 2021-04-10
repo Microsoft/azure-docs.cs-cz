@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779966"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936304"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -24,7 +24,7 @@ Tento článek vás provede procesem vytváření koncových bodů a tras pomoc�
 
 Alternativně můžete také spravovat koncové body a trasy pomocí [Azure Portal](https://portal.azure.com). Verzi tohoto článku, která místo toho používá portál, najdete v tématu [*How to: Manage Endpoints and Routes (portál)*](how-to-manage-routes-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-cli.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
@@ -158,7 +158,7 @@ Po nastavení koncového bodu s nedoručenými zprávami budou v účtu úloži�
 
 Nedoručené zprávy budou odpovídat schématu původní události, která byla určena k doručení do původního koncového bodu.
 
-Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření oznámení](how-to-interpret-event-data.md#digital-twin-life-cycle-notifications):
+Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření oznámení](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications):
 
 ```json
 {
@@ -234,12 +234,14 @@ Další informace o použití rozhraní příkazového řádku a příkazů, kte
 Bez filtrování se koncovým bodům dostanou nejrůznější události z digitálních vláken Azure:
 * Telemetrie aktivovaná pomocí [digitálních vláken](concepts-twins-graph.md) pomocí rozhraní API služby Azure Digital Service
 * Dvojitá oznámení o změně vlastností, která se aktivují při změnách vlastností u všech vláken v instanci digitálních vláken Azure
-* Události životního cyklu aktivované při vytváření nebo odstraňování vazeb
+* Události životního cyklu, aktivované při vytváření nebo odstraňování vazeb
 
 Odesílaným událostem můžete omezit přidáváním **filtru** pro koncový bod do trasy události.
 
 >[!NOTE]
-> Filtry rozlišují **Velká** a malá písmena a musí se shodovat s případem datové části (což nemusí nutně odpovídat modelu Case).
+> Filtry rozlišují **Velká** a malá písmena a musí se shodovat s případem datové části. 
+>
+> Pro filtry telemetrie to znamená, že velká a malá písmena musí odpovídat velikosti písmen v telemetrii odesílané zařízením, a nemusí nutně znamenat velikost písmen definované v modelu vlákna. 
 
 Chcete-li přidat filtr, můžete použít požadavek PUT na *protokol https://{The-Azure-Digital-reprops-název_hostitele}/eventRoutes/{Event-Route-Name}? API-Version = 2020-10-31* s následujícím textem:
 

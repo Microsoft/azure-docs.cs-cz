@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/25/2021
 ms.author: aahi
 keywords: místní, Docker, kontejner, analýza mínění, zpracování přirozeného jazyka
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc5406cec54defd118ba350ba59b8d7311cff563
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432056"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089699"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
@@ -49,6 +49,8 @@ Před použitím Analýza textu kontejnerů musíte splnit následující předp
 |Prostředek Analýza textu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure [Analýza textu](../../cognitive-services-apis-create-account.md) s [cenovou úrovní](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)Free (F0) nebo Standard (y). K získání klíče rozhraní API a identifikátoru URI koncového bodu budete potřebovat přejít na stránku **klíč a koncový bod** prostředku v Azure Portal. <br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků. <br><br>**{ENDPOINT_URI}**: koncový bod pro váš prostředek. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+Pokud používáte Analýza textu pro kontejner stavů, musí být k dispozici i potvrzení [zodpovědného AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health)  (Rai) s hodnotou `accept` .
 
 ## <a name="the-host-computer"></a>Hostitelský počítač
 

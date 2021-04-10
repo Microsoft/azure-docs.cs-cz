@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433552"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936576"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
@@ -33,7 +33,7 @@ Model _recognition_04_ (publikovaný 2021) je nejpřesnější model, který je 
 Přečtěte si, kde se dozvíte, jak zadat vybraný model v různých operacích obličeje a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a chcete zjistit, jestli byste měli přejít na nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Měli byste být obeznámeni s koncepty detekce a identifikace obličeje. Pokud ne, přečtěte si tyto příručky jako první:
 
@@ -87,7 +87,7 @@ V rozhraní API [pro rozpoznávání tváře] se žádná změna nezměnila. Sta
 
 ## <a name="find-similar-faces-with-specified-model"></a>Hledání podobných plošek se zadaným modelem
 
-Můžete také zadat model rozpoznávání pro hledání podle podobnosti. Verzi modelu můžete přiřadit `recognitionModel` při vytváření seznamu obličeje pomocí [FaceList-Create] API nebo [LargeFaceList-Create]. Pokud tento parametr nezadáte, `recognition_01` použije se ve výchozím nastavení model. V seznamu obličeje bude vždy použit model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání do seznamu se k tomuto modelu přiřadí nové plošky. tuto změnu nelze po vytvoření změnit. Pokud chcete zjistit, pro který model je seznam obličeje nakonfigurovaný pomocí, použijte rozhraní API [FaceList-Get] s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
+Můžete také zadat model rozpoznávání pro hledání podle podobnosti. Verzi modelu můžete přiřadit `recognitionModel` při vytváření **FaceList** pomocí [FaceList-Create] API nebo [LargeFaceList-Create]. Pokud tento parametr nezadáte, `recognition_01` použije se ve výchozím nastavení model. **FaceList** bude vždy používat model rozpoznávání, ve kterém byl vytvořen, a při jejich přidání do seznamu se k tomuto modelu přiřadí nové plošky. tuto změnu nelze po vytvoření změnit. Pokud chcete zjistit, ke kterému modelu je **FaceList** nakonfigurovaný, použijte rozhraní [FaceList-Get] API s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
 
 Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
@@ -95,7 +95,7 @@ Podívejte se na následující příklad kódu pro klientskou knihovnu rozhran�
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Tento kód vytvoří seznam obličeje s názvem `My face collection` pomocí _recognition_04ho_ modelu pro extrakci funkcí. Když vyhledáte tento seznam obličeje pro podobné plošky nově zjištěné plochy, je nutné, aby tato hlava byla detekována ([rozpoznávání obličeje]) pomocí modelu _recognition_04_ . Jak je uvedeno v předchozí části, model musí být konzistentní.
+Tento kód vytvoří volání **FaceList** s `My face collection` použitím modelu _recognition_04_ pro extrakci funkcí. Při hledání tohoto **FaceListu** pro podobné plošky na nově zjištěnou plochu musí být tato ploška detekována ([rozpoznávání obličeje]) pomocí modelu _recognition_04_ . Jak je uvedeno v předchozí části, model musí být konzistentní.
 
 U [podobných] rozhraní API se nezměnila žádná změna. zadáváte pouze verzi modelu v detekci.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: ffc09daa15e742ca2b5b8a2fa9323e33fe317c60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 827e4d883fd9e80ae84845d620cc4ca00816f56e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200390"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551305"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Postup vytvoření nabídky virtuálního počítače na Azure Marketplace
 
@@ -58,20 +58,7 @@ Chcete-li povolit testovací jednotku, zaškrtněte políčko **Povolit testovac
 
 ## <a name="configure-customer-leads-management"></a>Konfigurace správy zájemců zákazníků
 
-Když publikujete nabídku na komerční tržišti s partnerským centrem, připojte ji k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt. Pokud chcete povolit testovací jednotku (viz předchozí část), vyžaduje se připojení k CRM. V opačném případě je připojení k CRM volitelné.
-
-1. V části **zájemci na zákazníky** vyberte odkaz **připojit** .
-1. V dialogovém okně **Podrobnosti připojení** vyberte cíl zájemce.
-1. Vyplňte pole, která se zobrazí. Podrobný postup najdete v následujících článcích:
-
-   - [Konfigurace nabídky pro odesílání zájemců do tabulky Azure](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
-   - [Konfigurace nabídky pro odeslání zájemců do dynamics 365 Customer Engagement](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement) (dřív Dynamics CRM Online)
-   - [Konfigurace nabídky k odeslání potenciálních zákazníků do koncového bodu HTTPS](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
-   - [Konfigurace nabídky pro odesílání zájemců do markety](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
-   - [Konfigurace nabídky pro odesílání zájemců do Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
-
-1. Pokud chcete ověřit zadanou konfiguraci, vyberte odkaz **ověřit** .
-1. Vyberte **Connect** (Připojit).
+[!INCLUDE [Customer leads](includes/customer-leads.md)] 
 
 Než budete pokračovat na další kartu v nabídce vlevo na **Další, vyberte** **Uložit koncept** .
 
