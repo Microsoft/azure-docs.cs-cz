@@ -6,43 +6,46 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/16/2021
 ms.author: matjazl
-ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018210"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934708"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrace důvěrné klientské aplikace v Azure Active Directory
 
-V tomto kurzu se dozvíte, jak zaregistrovat důvěrnou klientskou aplikaci v Azure Active Directory. 
+V tomto kurzu se dozvíte, jak zaregistrovat důvěrnou klientskou aplikaci v Azure Active Directory (Azure AD).  
 
-Registrace klientské aplikace je Azure Active Directory reprezentace aplikace, kterou lze použít k ověřování jménem uživatele a požadování přístupu k [aplikacím prostředků](register-resource-azure-ad-client-app.md). Důvěrná klientská aplikace je aplikace, která může být důvěryhodná pro uchování tajného klíče a při vyžádání přístupových tokenů prezentuje tajný klíč. Příklady důvěrných aplikací jsou aplikace na straně serveru.
+Registrace klientské aplikace je reprezentace aplikace v Azure AD, kterou je možné použít k ověřování jménem uživatele a požadování přístupu k [aplikacím prostředků](register-resource-azure-ad-client-app.md). Důvěrná klientská aplikace je aplikace, která může být důvěryhodná pro uchování tajného klíče a při vyžádání přístupových tokenů prezentuje tajný klíč. Příklady důvěrných aplikací jsou aplikace na straně serveru. 
 
-Pokud chcete zaregistrovat novou důvěrnou aplikaci na portálu, postupujte podle těchto kroků.
+Pokud chcete zaregistrovat novou důvěrnou klientskou aplikaci, podívejte se na následující postup. 
 
 ## <a name="register-a-new-application"></a>Registrace nové aplikace
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**.
+1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**.
 
-1. Vyberte **Registrace aplikací**.
+1. Vyberte **Registrace aplikací**. 
 
     ![Azure Portal. Registrace nové aplikace](media/how-to-aad/portal-aad-new-app-registration.png)
 
 1. Vyberte **Nová registrace**.
 
-1. Zadejte zobrazovaný název aplikace.
+1. Poskytněte aplikaci zobrazované uživatelské jméno.
 
-1. Zadejte adresu URL odpovědi. Tyto podrobnosti lze později změnit, ale pokud znáte adresu URL odpovědi vaší aplikace, zadejte ji nyní.
+1. U **podporovaných typů účtů** vyberte, kdo může aplikaci používat, nebo přístup k tomuto rozhraní API.
+
+1. Volitelné Zadejte **identifikátor URI pro přesměrování**. Tyto podrobnosti lze později změnit, ale pokud znáte adresu URL odpovědi vaší aplikace, zadejte ji nyní.
 
     ![Nová registrace aplikace důvěrného klienta](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+
 1. Vyberte **Zaregistrovat**.
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění API by tato aplikace měla být schopná považovat za uživatele:
+Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění API by tato aplikace měla požádat jménem uživatelů.
 
 1. Vyberte **oprávnění rozhraní API**.
 
@@ -50,7 +53,7 @@ Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění AP
 
 1. Vyberte **Přidat oprávnění**.
 
-    Pokud používáte rozhraní API Azure pro FHIR, přidáte oprávnění k rozhraním API pro zdravotní péče Azure pomocí hledání **rozhraní API pro zdravotní péče Azure** v části **rozhraní API, které používá moje organizace**. Tuto adresu budete moct najít, jenom když už máte [nasazené rozhraní API Azure pro FHIR](fhir-paas-powershell-quickstart.md).
+    Pokud používáte rozhraní API Azure pro FHIR, přidáte do rozhraní API pro **zdravotní péči Azure oprávnění v části** rozhraní API, které **používá moje organizace**. Výsledek hledání pro rozhraní API zdravotní péče Azure se vrátí jenom v případě, že už máte [nasazené rozhraní API Azure pro FHIR](fhir-paas-powershell-quickstart.md).
 
     Pokud odkazujete na jinou aplikaci prostředků, vyberte svou [registraci aplikace prostředků rozhraní API FHIR](register-resource-azure-ad-client-app.md) , kterou jste vytvořili dříve v části **Moje rozhraní API**.
 
@@ -58,24 +61,31 @@ Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění AP
     :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="Důvěrný klient. Moje organizační rozhraní API" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
     
 
-3. Vyberte obory (oprávnění), na které by tajná aplikace měla být schopná požádat jménem uživatele:
+1. Vyberte obory (oprávnění), které důvěrná klientská aplikace vyzve jménem uživatele. Vyberte **user_impersonation** a pak vyberte **Přidat oprávnění**.
 
     :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="Důvěrný klient. Delegovaná oprávnění":::
 
+
 ## <a name="application-secret"></a>Tajný kód aplikace
 
-1. Vyberte **certifikáty & tajných** kódů.
-1. Vyberte **Nový tajný klíč klienta**. 
+1. Vyberte **certifikáty & tajných** kódů a pak vyberte **nový tajný klíč klienta**. 
 
     ![Důvěrný klient. Tajný klíč aplikace](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
 
-2. Zadejte popis a dobu trvání tajného kódu (buď 1 rok, 2 roky nebo nikdy).
+1. Zadejte **Popis** tajného klíče klienta. Vyberte vypršení platnosti (v 1 roce, v 2 letech nebo nikdy) a pak klikněte na **Přidat**.
 
-3. Po vygenerování se na portálu zobrazí jenom jednou. Poznamenejte si ho a bezpečně ho uložte.
+   ![Přidat tajný klíč klienta](media/how-to-aad/add-a-client-secret.png)
 
+1. Po vytvoření tajného řetězce klienta zkopírujte jeho **hodnotu** a **ID** a uložte je do zabezpečeného umístění podle vašeho výběru.
+
+   :::image type="content" source="media/how-to-aad/client-secret-string-password.png" alt-text="Řetězec tajného klíče klienta."::: 
+
+> [!NOTE]
+>Řetězec tajného klíče klienta je v Azure Portal viditelný jenom jednou. Když opustíte webové stránky certifikáty & tajných kódů a pak se vrátíte zpět, řetězec hodnoty se zamaskuje. Je důležité vytvořit kopii tajného řetězce klienta hned po jeho vygenerování. Pokud nemáte záložní kopii tajného klíče klienta, je nutné zopakovat výše uvedené kroky a znovu je vygenerovat.
+ 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s postupem registrace důvěrné klientské aplikace v Azure Active Directory. V dalším kroku získáte přístup k serveru FHIR pomocí post.
+V tomto článku jste provedli kroky k registraci důvěrné klientské aplikace v Azure AD. Provedli jste také postup přidání oprávnění rozhraní API k rozhraní API zdravotní péče Azure. Nakonec jste si ukázali, jak vytvořit tajný klíč aplikace. Kromě toho se můžete dozvědět, jak získat přístup k serveru FHIR pomocí post.
  
 >[!div class="nextstepaction"]
 >[Přístup k rozhraní API Azure pro FHIR s využitím post](access-fhir-postman-tutorial.md)

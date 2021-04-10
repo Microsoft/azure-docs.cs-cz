@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392268"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934338"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -57,8 +57,8 @@ Rozsah se vztahuje jen na individuální předplatná s průběžnými platbami 
 
 Ve výchozím nastavení mohou rezervace zobrazovat a spravovat následující uživatelé:
 
-- Do objednávky rezervace se přidá osoba, která rezervaci koupí, a správce účtu pro fakturační předplatné použité k nákupu rezervace.
-- Správci fakturace pro smlouvy Enterprise a Smlouvy se zákazníkem Microsoftu
+- Osoba, která si koupila rezervaci a vlastníka účtu pro fakturační předplatné, získá přístup k objednávce rezervace Azure RBAC.
+-  Smlouva Enterprise a přispěvatelé fakturace na zákaznickou smlouvu od Microsoftu můžou spravovat všechny rezervace z Cost Management + fakturace > transakce rezervace > vybrat modrý banner.
 
 Pokud chcete správu rezervací umožnit ostatním, máte dvě možnosti:
 

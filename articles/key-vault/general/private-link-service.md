@@ -9,10 +9,10 @@ ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 78a57cb896f09b686d35bedd79442025ebcb7c67
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104604589"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
@@ -23,7 +23,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K integraci trezoru klíčů s privátním propojením Azure budete potřebovat následující:
 

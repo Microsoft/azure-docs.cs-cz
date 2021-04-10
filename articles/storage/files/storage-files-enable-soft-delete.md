@@ -8,12 +8,12 @@ ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 13e6668337b82ea4be86eadcbc6f7797a72771c6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023471"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727565"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Povolit obnovitelné odstranění u sdílených složek Azure
 
@@ -35,7 +35,7 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.3 a novějším [modulu CLI Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.3 a novějším [modulu CLI Azure](/cli/azure/install-azure-cli).
 
 ## <a name="getting-started-with-cli"></a>Začínáme s rozhraním příkazového řádku
 

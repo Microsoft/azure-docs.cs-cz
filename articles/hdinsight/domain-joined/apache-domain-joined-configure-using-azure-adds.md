@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
 ms.openlocfilehash: 6f478b97464cd47e9d0e04bfe83bd48a2b3bfe7c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867096"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Konfigurace clusterů HDInsight pro integraci Azure Active Directory s Balíček zabezpečení podniku
@@ -26,7 +26,7 @@ Balíček zabezpečení podniku (ESP) poskytuje integraci služby Active Directo
 > [!NOTE]  
 > Protokol ESP je všeobecně dostupný v HDInsight 3,6 a 4,0 pro tyto typy clusterů: Apache Spark, Interactive, Hadoop a HBA. Protokol ESP pro Apache Kafka typ clusteru je ve verzi Preview s nejvyšší podporou jenom pro nejvyšší úsilí. Clustery ESP vytvořené před datem ESP GA (1. října 2018) nejsou podporovány.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete moci vytvořit cluster HDInsight s podporou protokolu ESP, je nutné provést několik požadavků:
 

@@ -10,10 +10,10 @@ ms.collection: linux
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
 ms.openlocfilehash: 4027e9c336d938c3877e56b0eb59edea6ac1d992
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101671969"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Nasazování podnikových aplikací v Javě v Azure s využitím JBoss EAP v Red Hat Enterprise Linuxu
@@ -24,7 +24,7 @@ JBoss EAP je open source platforma aplikačního serveru. Zajišťuje zabezpeče
 
 JBoss EAP a RHEL obsahují všechno, co potřebujete k sestavování, spouštění, nasazování a správě podnikových aplikací v jazyce Java v jakémkoli prostředí. Kombinace je open source řešení pro místní, virtuální prostředí a v privátních, veřejných i hybridních cloudech.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 * Účet Azure s aktivním předplatným. Pokud chcete získat předplatné Azure, aktivujte si své [kredity Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si [vytvořte účet zdarma](https://azure.microsoft.com/pricing/free-trial).
 

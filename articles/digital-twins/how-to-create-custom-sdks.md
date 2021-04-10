@@ -11,10 +11,10 @@ ms.custom:
 - devx-track-js
 - contperf-fy21q3
 ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102561836"
 ---
 # <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních jazykových sad SDK pro digitální vlákna Azure pomocí automatického REST
@@ -23,7 +23,7 @@ Pokud potřebujete pracovat s digitálními úkoly Azure pomocí jazyka, který 
 
 Příklady v tomto článku ukazují vytvoření [sady SDK datové roviny](how-to-use-apis-sdks.md#overview-data-plane-apis), ale tento proces bude fungovat také pro VYGENEROVÁNÍ  [sady SDK řídicích rovin](how-to-use-apis-sdks.md#overview-control-plane-apis) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné vygenerovat sadu SDK, budete nejprve muset na svém místním počítači dokončit následující instalaci:
 * Instalace [**AutoRest**](https://github.com/Azure/autorest), verze 2.0.4413 (verze 3 není aktuálně podporovaná)

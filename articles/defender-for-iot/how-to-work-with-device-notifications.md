@@ -4,10 +4,10 @@ description: Oznámení obsahují informace o aktivitě sítě, které by mohly 
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781326"
 ---
 # <a name="work-with-device-notifications"></a>Práce s oznámeními zařízení
@@ -40,7 +40,7 @@ Postup zobrazení oznámení:
 
 Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajímají.
 
-| Filtrovat podle | Popis |
+| Filtrovat podle | Description |
 |--|--|
 | Filtrovat podle typu | Zobrazit oznámení, která pokrývají určitou oblast zájmu. Můžete například zobrazit pouze oznámení o neaktivních zařízeních. |
 | Filtrovat podle rozsahu kalendářních dat | Zobrazí oznámení, která pokrývají konkrétní časový rozsah. Můžete například zobrazit oznámení odesílaná pouze za poslední týden. |
@@ -50,7 +50,7 @@ Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajím
 
 Následující tabulka popisuje typy oznámení, které můžete obdržet, spolu s možnostmi jejich zpracování. Informace o zařízení můžete aktualizovat pomocí Doporučené hodnoty nebo oznámení zavřít. Po zavření oznámení se informace o zařízení neaktualizují o Doporučené informace. Pokud se znovu zjistí provoz, oznámení se pošle znovu.
 
-| Typy událostí oznámení | Popis | Odpovědi |
+| Typy událostí oznámení | Description | Odpovědi |
 |--|--|--|
 | Zjistila se nová IP adresa. | K zařízení je přidružená nová IP adresa. Je možné zjistit pět scénářů: <br /><br /> K zařízení se přidružil další IP adresa. Toto zařízení je také přidruženo k existující adrese MAC.<br /><br /> Zjistila se nová IP adresa pro zařízení, které používá existující adresu MAC. V současné době zařízení nekomunikuje pomocí IP adresy.<br /> <br /> Zjistila se nová IP adresa pro zařízení, které používá název pro rozhraní NetBIOS. <br /><br /> Jako rozhraní pro správu zařízení přidruženého k adrese MAC byla zjištěna IP adresa. <br /><br /> Zjistila se nová IP adresa pro zařízení, které používá virtuální IP adresu. | **Nastavení další IP adresy na zařízení** (sloučení zařízení) <br /> <br />**Nahradit existující IP adresu** <br /> <br /> **Zrušit**<br /> Odeberte oznámení. |
 | Neaktivní zařízení | V zařízení se nezjistil provoz po dobu delší než 60 dní. | **Odstranit** <br /> Pokud toto zařízení není součástí vaší sítě, odeberte ho. <br /><br />**Zrušit** <br /> Pokud je zařízení součástí vaší sítě, odeberte oznámení. Pokud je zařízení neaktivní (například kvůli omylu odpojenému odpojení od sítě), zavřete oznámení a znovu připojte zařízení. |

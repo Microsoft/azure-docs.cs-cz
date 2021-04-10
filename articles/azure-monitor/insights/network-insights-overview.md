@@ -6,10 +6,10 @@ author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
 ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104605796"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
@@ -71,7 +71,7 @@ Různé filtry vám pomůžou škálovat směrem dolů ke konkrétní cestě a s
 
 Vyberte **Zobrazit podrobné metriky** a otevřete tak předkonfigurovaný sešit, který poskytuje podrobné metriky pro aplikační bránu, všechny prostředky fondu back-endu a IP adresy front-endu. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Připojení
+## <a name="connectivity"></a><a name="connectivity"></a>Komunikační
 
 Karta **připojení** nabízí snadný způsob, jak vizualizovat všechny testy nakonfigurované přes [monitorování připojení](../../network-watcher/connection-monitor-overview.md) a monitor připojení (Classic) pro vybranou sadu předplatných.
 

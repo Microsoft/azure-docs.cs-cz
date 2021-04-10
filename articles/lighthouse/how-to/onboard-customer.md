@@ -1,14 +1,14 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c02bbb789ffac262521c2f76c62081a21cd6602c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556110"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934304"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -143,7 +143,7 @@ Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutou v [�
 |Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!TIP]
-> I když nemůžete připojit celou skupinu pro správu v jednom nasazení, můžete [zásadu nasadit na úrovni skupiny pro správu](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Zásada zkontroluje, jestli je každé předplatné ve skupině pro správu delegované na zadaného spravovaného tenanta, a pokud ne, vytvoří přiřazení na základě zadaných hodnot.
+> I když nemůžete připojit celou skupinu pro správu v jednom nasazení, můžete [zásadu nasadit na úrovni skupiny pro správu](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Zásada používá [deployIfNotExists efekt](../../governance/policy/concepts/effects.md#deployifnotexists) ke kontrole, jestli je každé předplatné ve skupině pro správu delegované na zadaného spravovaného tenanta, a pokud ne, vytvoří přiřazení na základě hodnot, které zadáte. Pak budete mít přístup ke všem předplatným ve skupině pro správu, i když bude nutné na nich pracovat jako s jednotlivými předplatnými (místo toho, aby se ve skupině pro správu provedly akce jako celku).
 
 Následující příklad ukazuje upravený **delegatedResourceManagement.parameters.js** souboru, který se dá použít k zaregistrování předplatného. Soubory parametrů skupiny prostředků (nacházející se ve složce [RG-delegované pro správu prostředků](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) jsou podobné, ale také obsahují parametr **RgName** pro identifikaci konkrétních skupin prostředků, které se mají připojit.
 
@@ -306,7 +306,7 @@ az account list
 
 Pokud po zprovoznění zákazníka potřebujete provést změny, můžete [delegování aktualizovat](update-delegation.md). [Přístup k delegování](remove-delegation.md) můžete také odebrat úplně.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se vám nepodaří úspěšně připojit zákazníka nebo pokud vaši uživatelé mají potíže s přístupem k delegovaným prostředkům, Projděte si následující tipy a požadavky a zkuste to znovu.
 

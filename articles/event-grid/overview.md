@@ -3,12 +3,12 @@ title: Co je Azure Event Grid?
 description: Odešle data události ze zdroje do obslužných rutin pomocí Azure Event Grid. Sestavujte aplikace založené na událostech a integrujte je se službami Azure.
 ms.topic: overview
 ms.date: 01/28/2021
-ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a410f56da9e28403fb98d92332e6d67c064bac4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99055126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934854"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -22,7 +22,8 @@ Tento článek obsahuje přehled Azure Event Gridu. Pokud chcete začít pracova
 
 :::image type="content" source="./media/overview/functional-model.png" alt-text="Event Grid model zdrojů a obslužných rutin" lightbox="./media/overview/functional-model-big.png":::
 
-Tento obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny a není vyčerpávajícím seznamem podporovaných integrací.
+> [!NOTE]
+> Tento obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny a není vyčerpávajícím seznamem podporovaných integrací. Seznam všech podporovaných zdrojů událostí najdete v následující části. 
 
 ## <a name="event-sources"></a>Zdroje událostí
 
@@ -38,6 +39,7 @@ V současné době následující služby Azure podporují odesílání událost
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Skupiny prostředků Azure](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

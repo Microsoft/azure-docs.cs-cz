@@ -64,8 +64,8 @@ Kurzy ukazují postupy založené na scénářích pro některé z hlavních Med
 * [Kódování vzdáleného souboru a streamování videa – REST](stream-files-tutorial-with-rest.md)
 * [Kódování načteného souboru a streamování videa – .NET](stream-files-tutorial-with-api.md)
 * [Živé streamování – .NET](stream-live-tutorial-with-api.md)
-* [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
-* [Dynamické šifrování AES-128 – .NET](protect-with-aes128.md)
+* [Analýza videa – .NET](analyze-videos-tutorial.md)
+* [Dynamické šifrování AES-128 – .NET](drm-playready-license-template-concept.md)
 
 ### <a name="samples"></a>ukázky
 
@@ -75,12 +75,12 @@ Pomocí [tohoto prohlížeče ukázek](/samples/browse/?products=azure-media-ser
 
 Návody obsahují ukázky kódu, které demonstrují, jak dokončit úlohu. V této části najdete spoustu příkladů. Tady je několik z nich:
 
-* [Vytvoření účtu – rozhraní příkazového řádku](./create-account-howto.md)
+* [Vytvoření účtu – rozhraní příkazového řádku](./account-create-how-to.md)
 * [Přístup k rozhraním API – rozhraní příkazového řádku](./access-api-howto.md)
 * [Kódování pomocí protokolu HTTPS jako vstup úlohy – .NET](job-input-from-http-how-to.md)  
 * [Monitorování událostí – portál](monitoring/monitor-events-portal-how-to.md)
-* [Dynamické šifrování pomocí více DRM – technologie .NET](protect-with-drm.md) 
-* [Postup kódování pomocí vlastního transformačního rozhraní příkazového řádku](custom-preset-cli-howto.md)
+* [Dynamické šifrování pomocí více DRM – technologie .NET](drm-protect-with-drm-tutorial.md) 
+* [Postup kódování pomocí vlastního transformačního rozhraní příkazového řádku](encode-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

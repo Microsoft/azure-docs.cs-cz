@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1901104aa05b4e7ea3a318ee8e886c745f2a6eb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98045253"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936040"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -23,6 +23,8 @@ Je možné vygenerovat několik typů oznámení a zprávy s oznámením mohou v
 Tento graf znázorňuje různé typy oznámení:
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
+
+## <a name="notification-structure"></a>Struktura oznámení
 
 Obecně platí, že oznámení se skládají ze dvou částí: hlavičky a textu. 
 
@@ -87,19 +89,66 @@ Zpráva s oznámením o životním cyklu:
 }
 ```
 
-## <a name="message-format-detail-for-different-event-types"></a>Podrobnosti formátu zprávy pro různé typy událostí
+V následujících částech najdete další podrobnosti o různých typech oznámení vysílaných IoT Hub a digitálních Vlákenách Azure (nebo jiných službách Azure IoT). Přečtěte si informace o akcích, které aktivují jednotlivé typy oznámení, a o sadě polí zahrnutých do každého typu textu oznámení.
 
-V této části najdete podrobnější informace o různých typech oznámení vysílaných IoT Hub a digitálních Vlákenách Azure (nebo jiných službách Azure IoT). Přečtěte si informace o akcích, které aktivují jednotlivé typy oznámení, a o sadě polí zahrnutých do každého typu textu oznámení.
+## <a name="digital-twin-change-notifications"></a>Oznámení o změně digitálního vlákna
 
-### <a name="digital-twin-life-cycle-notifications"></a>Oznámení digitálního vlákna životního cyklu
+Při aktualizaci digitálního vlákna se aktivují **oznámení o změně digitálního vlákna** , třeba:
+* Když se změní hodnoty vlastnosti nebo metadata.
+* Při změně digitálního vlákna nebo metadat komponenty. Příkladem tohoto scénáře je změna modelu digitálního vlákna.
+
+### <a name="properties"></a>Vlastnosti
+
+Tady jsou pole v těle oznámení o změně digitálního vlákna.
+
+| Name    | Hodnota |
+| --- | --- |
+| `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT |
+| `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*
+| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
+| `type` | `Microsoft.DigitalTwins.Twin.Update` |
+| `datacontenttype` | `application/json` |
+| `subject` | ID digitálního vlákna |
+| `time` | Časové razítko při výskytu operace u digitálního vlákna |
+| `traceparent` | Kontext trasování W3C pro událost |
+
+### <a name="body-details"></a>Podrobnosti těla
+
+Tělo `Twin.Update` oznámení je dokument opravy JSON obsahující aktualizaci digitálního vlákna.
+
+Řekněme například, že digitální vlákna bylo aktualizováno pomocí následující opravy.
+
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
+
+Příslušné oznámení (Pokud synchronně vykonává služba, například digitální vlákna Azure, které aktualizují digitální vlákna) by mělo tělo, jako je:
+
+```json
+{
+    "modelId": "dtmi:example:com:floor4;2",
+    "patch": [
+      {
+        "value": 40,
+        "path": "/Temperature",
+        "op": "replace"
+      },
+      {
+        "value": 30,
+        "path": "/comp1/prop1",
+        "op": "add"
+      }
+    ]
+  }
+```
+
+## <a name="digital-twin-lifecycle-notifications"></a>Oznámení o digitálních cyklech digitálního vlákna
 
 Všechny [digitální vlákna](concepts-twins-graph.md) vydávají oznámení, bez ohledu na to, jestli představují [IoT Hub zařízení v digitálních](how-to-ingest-iot-hub-data.md) prostředcích Azure nebo ne. Důvodem je oznámení o **životním cyklu**, která se týkají digitálního vlákna.
 
-Oznámení životního cyklu se aktivují v těchto případech:
+Oznámení o životním cyklu se aktivují v těchto případech:
 * Vytvoří se digitální dvojitá vlákna.
 * Digitální zdvojení se odstraní.
 
-#### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnosti
 
 Tady jsou pole v těle oznámení o životním cyklu.
 
@@ -114,7 +163,7 @@ Tady jsou pole v těle oznámení o životním cyklu.
 | `time` | Časové razítko, kdy došlo k operaci na vlákna |
 | `traceparent` | Kontext trasování W3C pro událost |
 
-#### <a name="body-details"></a>Podrobnosti těla
+### <a name="body-details"></a>Podrobnosti těla
 
 Tělo je ovlivněné digitální, reprezentované ve formátu JSON. Toto schéma je *zdrojem digitálního vlákna 7,1*.
 
@@ -181,11 +230,11 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
 }
 ```
 
-### <a name="digital-twin-relationship-change-notifications"></a>Oznámení o změně vztahu digitálního vlákna
+## <a name="digital-twin-relationship-change-notifications"></a>Oznámení o změně vztahu digitálního vlákna
 
 **Oznámení o změně vztahu** se aktivují, když se vytvoří, aktualizuje nebo odstraní jakákoli relace digitálního vlákna. 
 
-#### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnosti
 
 Tady jsou pole v těle oznámení o změně hrany.
 
@@ -200,7 +249,7 @@ Tady jsou pole v těle oznámení o změně hrany.
 | `time` | Časové razítko při výskytu operace u vztahu |
 | `traceparent` | Kontext trasování W3C pro událost |
 
-#### <a name="body-details"></a>Podrobnosti těla
+### <a name="body-details"></a>Podrobnosti těla
 
 Tělo je datová část relace, také ve formátu JSON. Používá stejný formát jako `GET` požadavek pro relaci prostřednictvím [rozhraní DigitalTwins API](/rest/api/digital-twins/dataplane/twins). 
 
@@ -233,55 +282,6 @@ Tady je příklad upozornění na vytvoření nebo odstranění vztahu:
     "$targetId": "device2",
     "connectionType": "WIFI"
 }
-```
-
-### <a name="digital-twin-change-notifications"></a>Oznámení o změně digitálního vlákna
-
-Při aktualizaci digitálního vlákna se aktivují **oznámení o změně digitálního vlákna** , třeba:
-* Když se změní hodnoty vlastnosti nebo metadata.
-* Při změně digitálního vlákna nebo metadat komponenty. Příkladem tohoto scénáře je změna modelu digitálního vlákna.
-
-#### <a name="properties"></a>Vlastnosti
-
-Tady jsou pole v těle oznámení o změně digitálního vlákna.
-
-| Name    | Hodnota |
-| --- | --- |
-| `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT |
-| `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
-| `type` | `Microsoft.DigitalTwins.Twin.Update` |
-| `datacontenttype` | `application/json` |
-| `subject` | ID digitálního vlákna |
-| `time` | Časové razítko při výskytu operace u digitálního vlákna |
-| `traceparent` | Kontext trasování W3C pro událost |
-
-#### <a name="body-details"></a>Podrobnosti těla
-
-Tělo `Twin.Update` oznámení je dokument opravy JSON obsahující aktualizaci digitálního vlákna.
-
-Řekněme například, že digitální vlákna bylo aktualizováno pomocí následující opravy.
-
-:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
-
-Příslušné oznámení (Pokud synchronně vykonává služba, například digitální vlákna Azure, které aktualizují digitální vlákna) by mělo tělo, jako je:
-
-```json
-{
-    "modelId": "dtmi:example:com:floor4;2",
-    "patch": [
-      {
-        "value": 40,
-        "path": "/Temperature",
-        "op": "replace"
-      },
-      {
-        "value": 30,
-        "path": "/comp1/prop1",
-        "op": "add"
-      }
-    ]
-  }
 ```
 
 ## <a name="next-steps"></a>Další kroky

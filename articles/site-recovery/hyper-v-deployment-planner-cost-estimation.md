@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e5a1f727f32fda7740b958cb3f03a3a4a3ae03f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999208"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727548"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
 
@@ -168,13 +168,13 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 Plánovač nasazení služby Site Recovery může vygenerovat sestavu nákladů s libovolnou z následujících měn.
 
 |Měna|Name|Měna|Name|Měna|Name|
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |ARS|Argentinské peso ($)|AUD|Australský dolar ($)|BRL|Brazilský real (R$)|
 |CAD|Kanadský dolar ($)|CHF|Švýcarský frank (chf)|DKK|Dánská koruna (kr)|
-|EUR|Euro (€)|GBP|Britská libra (ł)|HKD|Hongkongský dolar (HK$)|
+|EUR|Euro ( &euro; )|GBP|Britská libra (ł)|HKD|Hongkongský dolar (HK$)|
 |IDR|Indonéská rupie (Rp)|INR|Indická rupie (₹)|JPY|Japonské jenu (y)|
 |KRW|Výhra v korejštině (₩)|MXN|Mexické peso (MX$)|MYR|Malajsijský ringgit (RM$)|
-|NOK|Norská koruna (kr)||NZD|Novozélandský dolar ($)||RUB|Ruský rubl (руб)|
+|NOK|Norská koruna (kr)|NZD|Novozélandský dolar ($)|RUB|Ruský rubl (руб)|
 |SAR|Saúdský rijál (SR)|SEK|Švédská koruna (kr)|TWD|Tchajwanský dolar (NT$)|
 |TRY|Turecká lira (TL)|USD| Americký dolar ($)|ZAR|Jihoafrický rand (R)|
 

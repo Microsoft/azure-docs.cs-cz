@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: jeedes
 ms.openlocfilehash: c80d61e367288edfc207fb0160b5d03152ad6ce4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583781"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortes-change-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se Fort – změna cloudu
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat změny v cloudu s Azure Active Directo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke Fort změny v cloudu s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

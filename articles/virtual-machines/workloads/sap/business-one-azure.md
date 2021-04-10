@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
 ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102506884"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
@@ -22,7 +22,7 @@ Podnik One podporuje dvě různé databáze:
 
 V případě SQL Server platí základní požadavky na nasazení, jak je popsáno v [nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](./dbms_guide_general.md) . v případě SAP HANA se v tomto dokumentu zmiňují doporučení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K použití tohoto průvodce potřebujete základní znalosti následujících součástí Azure:
 
 - [Virtuální počítače Azure ve Windows](../../windows/tutorial-manage-vm.md)

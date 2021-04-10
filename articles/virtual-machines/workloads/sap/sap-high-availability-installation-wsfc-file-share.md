@@ -17,10 +17,10 @@ ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a3759bbe92a2de8515c7d812637acd88070f8d46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103490904"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
@@ -199,7 +199,7 @@ ms.locfileid: "103490904"
 
 Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure, s clusterem Windows Server s podporou převzetí služeb při selhání (WSFC) a Scale-Out souborový server jako možnost pro clustering instancí SAP ASCS/SCS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si následující články:
 
