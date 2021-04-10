@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 05ca559478276cf64d8097c2d066054c8fa4fc9d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98734459"
 ---
 # <a name="tutorial-configure-wedo-for-automatic-user-provisioning"></a>Kurz: Konfigurace WEDO pro Automatické zřizování uživatelů
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v WEDO i Azure Active Direc
 > * Udržujte atributy uživatele synchronizované mezi Azure AD a WEDO.
 > * [Jednotné přihlašování](wedo-tutorial.md) k WEDO (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589661"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
@@ -30,7 +30,7 @@ Pomocí Přineste si vlastní úložiště se tyto artefakty nahrají do účtu 
 1. Služba Application Insights Profiler nebo Snapshot Debugger bude analyzovat příchozí objekt BLOB a zapsat zpět výsledky analýzy a soubory protokolu do úložiště objektů BLOB. V závislosti na dostupné výpočetní kapacitě k tomuto procesu může dojít kdykoli po nahrání.
 1. Když zobrazíte trasování profileru nebo analýzu ladicího programu snímků, služba načte výsledky analýzy z úložiště objektů BLOB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Ujistěte se, že jste svůj účet úložiště vytvořili ve stejném umístění jako prostředek Application Insights. Například Pokud je prostředek Application Insights Západní USA 2, musí být váš účet úložiště také v Západní USA 2. 
 * Udělte roli Přispěvatel dat objektů BLOB úložiště do aplikace AAD "přístup k důvěryhodnému úložišti diagnostické služby" v účtu úložiště prostřednictvím uživatelského rozhraní Access Control (IAM).
 * Pokud je povolené soukromé propojení, nakonfigurujte další nastavení tak, aby umožňovalo připojení k naší důvěryhodné službě Microsoftu z vašeho Virtual Network. 
@@ -229,7 +229,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Obrázek 2,0_
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="template-schema-schema_uri-isnt-supported"></a>Schéma šablony {schema_uri} se nepodporuje.
 * Ujistěte se, že `$schema` je vlastnost šablony platná. Musí splňovat následující vzor: `https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Ujistěte se, že `schema_version` je šablona v rámci platných hodnot: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .
