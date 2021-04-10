@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 33171527f03b0cc386f683f55f6cf9a70913abdb
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871210"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
@@ -18,7 +18,7 @@ ms.locfileid: "104871210"
 
 Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apache Hadoop](https://hadoop.apache.org/) ve službě Azure HDInsight. Pro informace o správě clusterů Hadoop ve službě HDInsight pomocí jiných nástrojů použijte selektor karet výše.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 

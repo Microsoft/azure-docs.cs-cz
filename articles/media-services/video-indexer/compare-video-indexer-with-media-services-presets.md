@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceb105409ff218cd633eb36d793e8fc16c7d135c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047334"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961536"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnat Azure Media Services V3 předvolby a Video Indexer 
 
@@ -31,7 +31,7 @@ V současné době dochází k překrytí mezi funkcemi nabízenými [rozhraním
 
 |Funkce|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
 |---|---|---|
-|Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/analyzing-video-audio-files-concept.md)|
+|Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/analyze-video-audio-files-concept.md)|
 |Možnosti|Úplný seznam podporovaných funkcí najdete v článku: <br/> [Přehled](video-indexer-overview.md)|Vrátí jenom video přehledy.|
 |Fakturace|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Dodržování předpisů|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "video indexer", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "Media Services", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|

@@ -16,10 +16,10 @@ ms.workload: media
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.openlocfilehash: 3828d5288c730e8fc0595a0deb6f1cb3267e885e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104609311"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Vytvoření a monitorování událostí Media Services se službou Event Grid s využitím webu Azure Portal
@@ -32,7 +32,7 @@ V tomto článku použijete Azure Portal k přihlášení k odběru událostí p
 
 Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 * Musíte mít aktivní předplatné Azure.
 * Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](../create-account-howto.md)

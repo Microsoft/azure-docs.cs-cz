@@ -4,10 +4,10 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Azure Ev
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 596b07210d35f648af78e45b7472c620a4361e8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104601019"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal 
@@ -19,7 +19,7 @@ Vyhrazené clustery se zřídí a účtují podle **kapacitních jednotek (kapac
 > Toto samoobslužné prostředí je teď dostupné ve verzi Preview na webu [Azure Portal](https://aka.ms/eventhubsclusterquickstart). Pokud máte nějaké dotazy týkající se vyhrazené nabídky, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 - Účet Azure: Pokud ho ještě nemáte, [Zakupte si účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) ještě před tím, než začnete. Tato funkce není podporována s bezplatným účtem Azure. 

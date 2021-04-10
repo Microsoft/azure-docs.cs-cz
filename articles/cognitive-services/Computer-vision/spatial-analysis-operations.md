@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bdcbb38a56e46d01a5580f6d32ef733df8911b67
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99981778"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108332"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -29,6 +29,7 @@ Kontejner prostorových analýz implementuje následující operace:
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon | Vygeneruje událost _personZoneEnterExitEvent_ , když uživatel zadá nebo ukončí zónu a poskytne směrové informace s očíslovanou stranou zóny, která byla překročena. Vygeneruje _personZoneDwellTimeEvent_ , když osoba opustí zónu a poskytne směrové informace a počet milisekund, které osoba strávila v zóně. |
 | cognitiveservices Account. Vision. spatialanalysis-persondistance | Sleduje, když lidé narušují pravidlo vzdálenosti. <br> Pravidelně generuje _personDistanceEvent_ s umístěním každého porušení vzdálenosti. |
+| cognitiveservices Account. Vision. spatialanalysis | Obecná operace, kterou lze použít ke spuštění všech výše uvedených scénářů. Tato možnost je užitečnější, pokud chcete spouštět více scénářů ve stejné kameře nebo používat systémové prostředky (například GPU) efektivněji. |
 
 Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, které mají schopnost vizualizovat snímky videa při jejich zpracování. Aby `xhost +` bylo možné vizualizaci snímků a událostí videa povolit, bude nutné spustit na hostitelském počítači.
 
@@ -38,6 +39,7 @@ Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, kter�
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon. Debug | Vygeneruje událost _personZoneEnterExitEvent_ , když uživatel zadá nebo ukončí zónu a poskytne směrové informace s očíslovanou stranou zóny, která byla překročena. Vygeneruje _personZoneDwellTimeEvent_ , když osoba opustí zónu a poskytne směrové informace a počet milisekund, které osoba strávila v zóně. |
 | cognitiveservices Account. Vision. spatialanalysis-persondistance. Debug | Sleduje, když lidé narušují pravidlo vzdálenosti. <br> Pravidelně generuje _personDistanceEvent_ s umístěním každého porušení vzdálenosti. |
+| cognitiveservices Account. Vision. spatialanalysis. Debug | Obecná operace, kterou lze použít ke spuštění všech výše uvedených scénářů. Tato možnost je užitečnější, pokud chcete spouštět více scénářů ve stejné kameře nebo používat systémové prostředky (například GPU) efektivněji. |
 
 Prostorová analýza se dá také spustit s [živým video analýzou](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) jako jejich modul video AI. 
 
@@ -49,6 +51,7 @@ Prostorová analýza se dá také spustit s [živým video analýzou](../../medi
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon. livevideoanalytics | Vygeneruje událost _personZoneEnterExitEvent_ , když uživatel zadá nebo ukončí zónu a poskytne směrové informace s očíslovanou stranou zóny, která byla překročena. Vygeneruje _personZoneDwellTimeEvent_ , když osoba opustí zónu a poskytne směrové informace a počet milisekund, které osoba strávila v zóně.  |
 | cognitiveservices Account. Vision. spatialanalysis-persondistance. livevideoanalytics | Sleduje, když lidé narušují pravidlo vzdálenosti. <br> Pravidelně generuje _personDistanceEvent_ s umístěním každého porušení vzdálenosti. |
+| cognitiveservices Account. Vision. spatialanalysis. livevideoanalytics | Obecná operace, kterou lze použít ke spuštění všech výše uvedených scénářů. Tato možnost je užitečnější, pokud chcete spouštět více scénářů ve stejné kameře nebo používat systémové prostředky (například GPU) efektivněji. |
 
 K dispozici jsou také operace živé analýzy videí ve `.debug` verzi (např. cognitiveservices Account. Vision. spatialanalysis-personcount. livevideoanalytics. Debug), které mají schopnost vizualizovat video snímky při zpracování. Aby `xhost +` bylo možné vizualizaci snímků a událostí videa povolit, bude nutné spustit na hostitelském počítači.
 
@@ -65,11 +68,12 @@ Jedná se o parametry, které vyžaduje každá z těchto prostorových analytic
 | VIDEO_SOURCE_ID | Popisný název zařízení kamery nebo streamu videa. Tím se vrátí výstup JSON události.|
 | VIDEO_IS_LIVE| True pro zařízení kamery; hodnota false pro zaznamenaná videa|
 | VIDEO_DECODE_GPU_INDEX| Který grafický procesor k dekódování snímku videa. Ve výchozím nastavení je 0. By měl být stejný jako `gpu_index` v jiné konfiguraci uzlu jako `VICA_NODE_CONFIG` , `DETECTOR_NODE_CONFIG` .|
-| INPUT_VIDEO_WIDTH | Šířka rámečku vstupního videa nebo streamu (např. 1920). Jeho volitelné pole a pokud je zadaný rámec bude škálované na tuto dimenzi, ale stále bude zachovat poměr stran.|
-| DETECTOR_NODE_CONFIG | JSON určující, na kterém GPU se má spustit uzel detektoru By měl být v následujícím formátu: `"{ \"gpu_index\": 0 }",`|
+| INPUT_VIDEO_WIDTH | Šířka rámečku vstupního videa nebo streamu (např. 1920). Toto pole je volitelné a pokud je k dispozici, bude se tento snímek škálovat na tuto dimenzi a přitom zachovává poměr stran.|
+| DETECTOR_NODE_CONFIG | JSON určující, na kterém GPU se má spustit uzel detektoru Měl by být v následujícím formátu: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | Konfigurace JSON pro zónu a řádek, jak je uvedeno níže.|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` Pokud chcete, aby se zjistilo, že uživatelé mají ve videu v datovém proudu více uživatelů, `False` zakažte ho Ve výchozím nastavení je tato hodnota zakázaná. Detekce masky obličeje vyžaduje, aby byl parametr šířky vstupní videa 1920 `"INPUT_VIDEO_WIDTH": 1920` . Atribut masky obličeje nebude vrácen, pokud se zjištěné osoby netýkají kamery nebo jsou příliš daleko od ní. Další informace najdete v průvodci [umístěním kamery](spatial-analysis-camera-placement.md) . |
 
+### <a name="detector-node-parameter-settings"></a>Nastavení parametrů uzlu detektoru
 Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorové analýzy.
 
 ```json
@@ -78,12 +82,9 @@ Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorov
 "do_calibration": true,
 "enable_recalibration": true,
 "calibration_quality_check_frequency_seconds":86400,
-"calibration_quality_check_sampling_num": 80,
-"calibration_quality_check_sampling_times": 5,
 "calibration_quality_check_sample_collect_frequency_seconds": 300,
 "calibration_quality_check_one_round_sample_collect_num":10,
-"calibration_quality_check_queue_max_size":1000,
-"recalibration_score": 75
+"calibration_quality_check_queue_max_size":1000
 }
 ```
 
@@ -93,15 +94,12 @@ Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorov
 | `do_calibration` | řetězec | Indikuje, že je zapnutá kalibrace. `do_calibration` aby funkce **cognitiveservices Account. Vision. spatialanalysis-persondistance** fungovala správně, musí mít hodnotu true. ve výchozím nastavení je do_calibration nastaveno na hodnotu true. |
 | `enable_recalibration` | bool | Určuje, zda je zapnuta automatická rekalibrace. Výchozí je `true`.|
 | `calibration_quality_check_frequency_seconds` | int | Minimální počet sekund mezi jednotlivými změnami kvality k určení, jestli je nutná znovu kalibrace. Výchozí hodnota je `86400` (24 hodin). Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_num` | int | Počet náhodně vybraných vzorků uložených dat, které se mají použít pro měření chyby kontroly kvality Výchozí je `80`. Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_times` | int | Počet, kolikrát se budou měřit chyby na různých sadách náhodně vybraných datových vzorků pro kontrolu kvality. Výchozí je `5`. Používá se pouze v případě `enable_recalibration=True` .|
 | `calibration_quality_check_sample_collect_frequency_seconds` | int | Minimální počet sekund mezi shromažďováním nových vzorků dat pro rekalibraci a kontrolu kvality. Výchozí hodnota je `300` (5 minut). Používá se pouze v případě `enable_recalibration=True` .|
 | `calibration_quality_check_one_round_sample_collect_num` | int | Minimální počet nových vzorků dat, které se mají shromáždit na konci kolekce vzorků Výchozí je `10`. Používá se pouze v případě `enable_recalibration=True` .|
 | `calibration_quality_check_queue_max_size` | int | Maximální počet ukázek dat, které se mají uložit při kalibraci modelu kamery Výchozí je `1000`. Používá se pouze v případě `enable_recalibration=True` .|
-| `recalibration_score` | int | Maximální prahová hodnota kvality pro zahájení rekalibrace. Výchozí je `75`. Používá se pouze v případě `enable_recalibration=True` . Kvalita kalibrace se počítá na základě inverzní relace s chybou reprojekce cíle obrázku. Vzhledem k zjištěným cílům v rámečcích 2D snímků jsou cíle prodány do prostorového prostoru a znovu procházejí zpátky do snímku 2D obrázku pomocí stávajících parametrů kalibrace kamery. Chyba opětovného proprojekce se měří v průměrných vzdálenostech mezi zjištěnými cíli a znovu plánovanými cíli.|
 | `enable_breakpad`| bool | Určuje, zda chcete povolit Breakpad, který se používá ke generování výpisu stavu systému pro použití při ladění. `false`Ve výchozím nastavení je to. Pokud ho nastavíte na `true` , budete také muset přidat `"CapAdd": ["SYS_PTRACE"]` do `HostConfig` části kontejneru `createOptions` . Ve výchozím nastavení se výpis stavu systému nahraje do aplikace [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter, pokud chcete, aby se výpisy paměti nahrály do vlastní aplikace AppCenter, můžete proměnnou prostředí přepsat `RTPT_APPCENTER_APP_SECRET` pomocí tajného kódu aplikace.
 
-
+## <a name="spatial-analysis-operations-configuration-and-output"></a>Konfigurace a výstup operací prostorové analýzy
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Konfigurace zóny pro cognitiveservices Account. Vision. spatialanalysis-personcount
 
  Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfiguruje zónu. Pro tuto operaci můžete nakonfigurovat více zón.
@@ -239,6 +237,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
         "output_frequency":1,
         "minimum_distance_threshold":6.0,
         "maximum_distance_threshold":35.0,
+        "aggregation_method": "average"
            "threshold": 16.00,
            "focus": "footprint"
             }
@@ -258,9 +257,86 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 | `output_frequency` | int | Rychlost, s jakou jsou události odchozí Když `output_frequency` je = X, každá událost X je výstupní, ex. `output_frequency` = 2 znamená, že každá další událost je výstup. `output_frequency`Je použitelný pro i `event` `interval` .|
 | `minimum_distance_threshold` | float| Vzdálenost ve stopách, která aktivuje událost "TooClose", pokud jsou lidé méně, než je vzdálenost od sebe.|
 | `maximum_distance_threshold` | float| Vzdálenost ve stopách, která spustí událost "TooFar", pokud jsou lidé větší než vzdálenost.|
+| `aggregation_method` | řetězec| Metoda pro agregovaný výsledek persondistance Aggregation_method platí pro i `mode` `average` .|
 | `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu).|
 
-Informace o konfiguracích zóny a řádku najdete v pokynech k [umístění kamery](spatial-analysis-camera-placement.md) .
+### <a name="configuration-for-cognitiveservicesvisionspatialanalysis"></a>Konfigurace pro cognitiveservices Account. Vision. spatialanalysis
+Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfiguruje řádek a zónu pro **cognitiveservices Account. Vision. spatialanalysis**. Pro tuto operaci můžete nakonfigurovat více řádků nebo zón a každý řádek nebo zóna může mít různé události.
+
+ ```
+{
+  "lines": [
+    {
+      "name": "doorcamera",
+      "line": {
+        "start": {
+          "x": 0,
+          "y": 0.5
+        },
+        "end": {
+          "x": 1,
+          "y": 0.5
+        }
+      },
+      "events": [
+        {
+          "type": "linecrossing",
+          "config": {
+            "trigger": "event",
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        }
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "name": "lobbycamera",
+      "polygon": [[0.3, 0.3],[0.3, 0.9],[0.6, 0.9],[0.6, 0.3],[0.3, 0.3]],
+      "events": [
+        {
+          "type": "persondistance",
+          "config": {
+            "trigger": "event",
+            "output_frequency": 1,
+            "minimum_distance_threshold": 6.0,
+            "maximum_distance_threshold": 35.0,
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "count",
+          "config": {
+            "trigger": "event",
+            "output_frequency": 1,
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "zonecrossing",
+          "config": {
+            "threshold": 48.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "zonedwelltime",
+          "config": {
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+## <a name="camera-configuration"></a>Konfigurace kamery
+
+Další informace o tom, jak nakonfigurovat zóny a řádky, najdete v pokynech k [umístění kamery](spatial-analysis-camera-placement.md) .
 
 ## <a name="spatial-analysis-operation-output"></a>Výstup operace prostorové analýzy
 
@@ -325,7 +401,7 @@ Ukázkový formát JSON pro výstup události v této operaci.
             },
             "metadata": {
             "attributes": {
-                "face_Mask": 0.99
+                "face_mask": 0.99
             }
         }
         },
@@ -352,7 +428,7 @@ Ukázkový formát JSON pro výstup události v této operaci.
             },
             "metadata":{
             "attributes": {
-                "face_noMask": 0.99
+            "face_nomask": 0.99
             }
             }
     }
@@ -379,8 +455,8 @@ Ukázkový formát JSON pro výstup události v této operaci.
 | `type` | řetězec| Typ oblasti|
 | `points` |  – kolekce| Levý horní a dolní pravý bod, pokud je typ oblasti obdélník |
 | `confidence` | float| Spolehlivost algoritmu|
-| `face_Mask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) označuje zjištěnou osobu, která má formu o přítvářku. |
-| `face_noMask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) znamená, že zjištěná osoba **nepoužívá** masku obličeje. |
+| `face_mask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) označuje zjištěnou osobu, která má formu o přítvářku. |
+| `face_nomask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) znamená, že zjištěná osoba **nepoužívá** masku obličeje. |
 
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
@@ -394,14 +470,6 @@ Ukázkový formát JSON pro výstup události v této operaci.
 | `cameraHeight` | float | Výška kamery nad vozovkou v metrech Toto je odvozeno z automatické kalibrace. |
 | `focalLength` | float | Délka ohniska kamery v pixelech Toto je odvozeno z automatické kalibrace. |
 | `tiltUpAngle` | float | Úhel naklonění kamery od svislého. Toto je odvozeno z automatické kalibrace.|
-
-| Název pole SourceInfo | Typ| Description|
-|---------|---------|---------|
-| `id` | řetězec| ID kamery|
-| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
-| `width` | int | Šířka rámečku videa|
-| `height` | int | Výška snímku videa|
-| `frameId` | int | Identifikátor snímku|
 
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingline-ai-insights"></a>Formát JSON pro cognitiveservices Account. Vision. spatialanalysis-personcrossingline AI Insights
@@ -452,7 +520,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
             "confidence": 0.9005028605461121,
             "metadata": {
             "attributes": {
-                "face_Mask": 0.99
+                "face_mask": 0.99
             }
         }
         }
@@ -467,7 +535,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 | `detectionsId` | array| Pole o velikosti 1 jedinečného identifikátoru detekce osob, která aktivovala tuto událost|
 | `properties` |  – kolekce| Kolekce hodnot|
 | `trackinId` | řetězec| Jedinečný identifikátor zjištěné osoby|
-| `status` | řetězec| Směr křížových čar, buď ' CrossLeft ' nebo ' CrossRight '|
+| `status` | řetězec| Směr křížových čar, buď ' CrossLeft ' nebo ' CrossRight '. Směr je založen na předstání na začátku na konci řádku. CrossRight je překřížený zleva doprava. CrossLeft je překřížený zprava doleva.|
 | `zone` | řetězec | Pole Name (název) řádku, který byl překročen|
 
 | Název pole detekce | Typ| Description|
@@ -478,8 +546,8 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 | `type` | řetězec| Typ oblasti|
 | `points` |  – kolekce| Levý horní a dolní pravý bod, pokud je typ oblasti obdélník |
 | `confidence` | float| Spolehlivost algoritmu|
-| `face_Mask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) označuje zjištěnou osobu, která má formu o přítvářku. |
-| `face_noMask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) znamená, že zjištěná osoba **nepoužívá** masku obličeje. |
+| `face_mask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) označuje zjištěnou osobu, která má formu o přítvářku. |
+| `face_nomask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) znamená, že zjištěná osoba **nepoužívá** masku obličeje. |
 
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
@@ -542,7 +610,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace s `zonecrossing` typem S
             "confidence": 0.6267998814582825,
         "metadata": {
         "attributes": {
-        "face_Mask": 0.99
+        "face_mask": 0.99
         }
         }
            
@@ -613,7 +681,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace s `zonedwelltime` typem 
 | `properties` |  – kolekce| Kolekce hodnot|
 | `trackinId` | řetězec| Jedinečný identifikátor zjištěné osoby|
 | `status` | řetězec| Směr křížení mnohoúhelníku, buď ENTER, nebo Exit|
-| `side` | int| Číslo strany mnohoúhelníku, kterou osoba přejíždí. Každá strana je očíslovanou hranou mezi dvěma vrcholy mnohoúhelníku, které představují vaši zónu. Hrana mezi prvními dvěma vrcholy mnohoúhelníku představuje první stranu|
+| `side` | int| Číslo strany mnohoúhelníku, kterou osoba přejíždí. Každá strana je očíslovanou hranou mezi dvěma vrcholy mnohoúhelníku, které představují vaši zónu. Hrana mezi prvními dvěma vrcholy mnohoúhelníku představuje první stranu. ' Side ' je prázdné, pokud událost není přidružena k určité straně z důvodu překrytí. Například k ukončení došlo, když osoba zmizí, ale neviděla se nad stranou zóny, nebo když se osoba objevila v zóně, ale neviděla se stranou.|
 | `durationMs` | float | Počet milisekund, které reprezentují čas strávený osobou v zóně. Toto pole je k dispozici, pokud je typ události _personZoneDwellTimeEvent_|
 | `zone` | řetězec | Pole Name (název) mnohoúhelníku, které představuje zónu, která byla překročena.|
 
@@ -625,8 +693,8 @@ Ukázka JSON pro detekci výstupu pomocí této operace s `zonedwelltime` typem 
 | `type` | řetězec| Typ oblasti|
 | `points` |  – kolekce| Levý horní a dolní pravý bod, pokud je typ oblasti obdélník |
 | `confidence` | float| Spolehlivost algoritmu|
-| `face_Mask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) označuje zjištěnou osobu, která má formu o přítvářku. |
-| `face_noMask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) znamená, že zjištěná osoba **nepoužívá** masku obličeje. |
+| `face_mask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) označuje zjištěnou osobu, která má formu o přítvářku. |
+| `face_nomask` | float | Hodnota spolehlivosti atributu s rozsahem (0-1) znamená, že zjištěná osoba **nepoužívá** masku obličeje. |
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>Formát JSON pro cognitiveservices Account. Vision. spatialanalysis-persondistance AI Insights
 
@@ -765,6 +833,9 @@ V tomto příkladu `centerGroundPoint` je `{x: 4, y: 5}` . To znamená, že něk
 | `focalLength` | float | Délka ohniska kamery v pixelech Toto je odvozeno z automatické kalibrace. |
 | `tiltUpAngle` | float | Úhel naklonění kamery od svislého. Toto je odvozeno z automatické kalibrace.|
 
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-ai-insights"></a>Formát JSON pro cognitiveservices Account. Vision. spatialanalysis AI Insights
+
+Výstup této operace závisí na konfiguraci `events` , například pokud existuje `zonecrossing` událost konfigurovaná pro tuto operaci, výstup bude stejný jako `cognitiveservices.vision.spatialanalysis-personcrossingpolygon` .
 
 ## <a name="use-the-output-generated-by-the-container"></a>Použít výstup generovaný kontejnerem
 

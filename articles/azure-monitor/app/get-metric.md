@@ -2,21 +2,20 @@
 title: Get-Metric v Azure Monitor Application Insights
 description: Zjistěte, jak efektivně používat volání getmetric () k zachycení místně předem agregovaných metrik pro aplikace .NET a .NET Core pomocí Azure Monitor Application Insights
 ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22baa1ae9554601a72ffdb848b87d99281067967
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719776"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384285"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
 Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()` a `GetMetric()` . Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()` neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
 
-## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus getmetric
+## <a name="pre-aggregating-vs-non-pre-aggregating-api"></a>Předběžná agregace rozhraní API, které není předem agregováno
 
 `TrackMetric()` odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()` je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním kanálem sady SDK inicializátorů telemetrie a procesorů. Na rozdíl od `TrackMetric()` , `GetMetric()` zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
 
@@ -286,7 +285,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu nebudou volání `TrackValue()` sledována.
+* `seriesCountLimit` je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()` , která by obvykle způsobila, že nová série vrátí hodnotu false.
 * `valuesPerDimensionLimit` podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
 * `restrictToUInt32Values` Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
 

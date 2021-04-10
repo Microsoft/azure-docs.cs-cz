@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: jeedes
 ms.openlocfilehash: 480d68205c1f49397fa33bee3155be318f2e7c70
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104607156"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acunetix-360"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Acunetix 360
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Acunetix 360 s Azure Active Directory 
 * Umožněte uživatelům, aby se automaticky přihlásili k Acunetix 360 pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

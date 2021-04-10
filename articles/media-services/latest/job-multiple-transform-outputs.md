@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ada86e0ce44977789eaa5d6327c0aad2883b47d
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102635837"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108842"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Vytvoření úlohy s více transformačními výstupy
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Toto téma ukazuje, jak vytvořit transformaci pomocí dvou transformačních výstupů. První z nich volá, aby byl vstup kódovaný pro streamování s adaptivní přenosovou rychlostí s předdefinovaným přednastaveným [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) . Druhé jedno volání zvukového signálu ve vstupním videu se zpracuje pomocí [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). Po vytvoření transformace můžete odeslat úlohu, která zpracuje vaše video odpovídajícím způsobem. Vzhledem k tomu, že v tomto příkladu zadáváme dva transformační výstupy, je nutné zadat dva výstupy úloh. Můžete zvolit, aby se výstupy úloh nasměrovaly do stejného Assetu (jak je vidět níže), nebo můžete mít do samostatných assetů zápis výsledků.
+Toto téma ukazuje, jak vytvořit transformaci pomocí dvou transformačních výstupů. První z nich volá, aby byl vstup kódovaný pro streamování s adaptivní přenosovou rychlostí s předdefinovaným přednastaveným [AdaptiveStreaming](encode-concept.md#builtinstandardencoderpreset) . Druhé jedno volání zvukového signálu ve vstupním videu se zpracuje pomocí [AudioAnalyzerPreset](analyze-video-audio-files-concept.md#built-in-presets). Po vytvoření transformace můžete odeslat úlohu, která zpracuje vaše video odpovídajícím způsobem. Vzhledem k tomu, že v tomto příkladu zadáváme dva transformační výstupy, je nutné zadat dva výstupy úloh. Můžete zvolit, aby se výstupy úloh nasměrovaly do stejného Assetu (jak je vidět níže), nebo můžete mít do samostatných assetů zápis výsledků.
 
 > [!TIP]
 > Než začnete s vývojem, přečtěte si téma [vývoj s Media Services V3 API](media-services-apis-overview.md) (obsahuje informace o přístupu k rozhraním API, konvencím pojmenování atd.

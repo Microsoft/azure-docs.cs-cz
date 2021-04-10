@@ -13,16 +13,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: f11aec770818cd4ceeeda1ae7decf30acb9ca92b
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fc3717436619468e2db0bf4b408059112dae24cc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630659"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384149"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>Kurz: použití skriptů dodaných společností Microsoft k vytváření testovacích certifikátů
 
-Microsoft poskytuje skripty PowerShellu a Bash, které vám pomůžou pochopit, jak vytvářet vlastní certifikáty X. 509 a ověřovat je IoT Hub. Skripty se nacházejí v [GitHubu](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates). Jsou k dispozici pouze pro demonstrační účely. Certifikáty, které vytvořily, se nesmí používat pro produkční prostředí. Certifikáty obsahují pevně zakódované heslo ("1234") a vyprší po 30 dnech. V produkčním prostředí budete muset použít vlastní osvědčené postupy pro vytváření certifikátů a správu životního cyklu.
+Microsoft poskytuje skripty PowerShellu a Bash, které vám pomůžou pochopit, jak vytvářet vlastní certifikáty X. 509 a ověřovat je IoT Hub. Skripty se nacházejí v [úložišti](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)GitHubu. Jsou k dispozici pouze pro demonstrační účely. Certifikáty, které vytvořily, se nesmí používat pro produkční prostředí. Certifikáty obsahují pevně zakódované heslo ("1234") a vyprší po 30 dnech. V produkčním prostředí budete muset použít vlastní osvědčené postupy pro vytváření certifikátů a správu životního cyklu.
 
 ## <a name="powershell-scripts"></a>Skripty prostředí PowerShell
 
@@ -30,7 +30,7 @@ Microsoft poskytuje skripty PowerShellu a Bash, které vám pomůžou pochopit, 
 
 Získejte OpenSSL pro Windows. Viz <https://www.openssl.org/docs/faq.html#MISC4> místa ke stažení nebo <https://www.openssl.org/source/> sestavení ze zdroje. Pak spusťte předběžné skripty:
 
-1. Zkopírujte skripty z [GitHubu](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) do místního adresáře, ve kterém chcete pracovat. Všechny soubory budou vytvořeny jako podřízené položky tohoto adresáře.
+1. Zkopírujte skripty z tohoto [úložiště](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) GitHub do místního adresáře, ve kterém chcete pracovat. Všechny soubory budou vytvořeny jako podřízené položky tohoto adresáře.
 
 1. Spusťte PowerShell jako správce.
 

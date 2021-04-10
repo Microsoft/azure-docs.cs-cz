@@ -8,10 +8,10 @@ author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877893"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Škálování aplikace ve jarním cloudu Azure
@@ -24,7 +24,7 @@ Tato dokumentace ukazuje, jak škálovat libovolnou aplikaci mikroslužeb pomoc�
 
 Po dokončení budete potřebovat, abyste v každé aplikaci v rámci služby provedli rychlé ruční změny. Změna měřítka se projeví během několika sekund a nevyžaduje žádné změny kódu nebo opětovné nasazení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li provést tyto postupy, potřebujete:
 

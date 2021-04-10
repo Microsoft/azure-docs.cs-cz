@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877834"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Integrace Azure Spring Cloudu se řešeními pro vyrovnávání zatížení Azure
@@ -26,7 +26,7 @@ Azure už poskytuje různá řešení pro vyrovnávání zatížení. Existují 
 2.  Integrace jarního cloudu Azure s využitím služby Azure App Gateway
 3.  Integrace jarního cloudu Azure s využitím front-dveří Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure jaře Cloud: [jak vytvořit cloudovou službu Azure na jaře](./spring-cloud-quickstart.md)
 * Azure Traffic Manager: [Postup vytvoření Traffic Manageru](../traffic-manager/quickstart-create-traffic-manager-profile.md)

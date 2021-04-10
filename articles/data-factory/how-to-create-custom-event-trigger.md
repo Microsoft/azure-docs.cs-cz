@@ -8,10 +8,10 @@ ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.openlocfilehash: 2d2f26b24e7fa10d9244de8f99d78c64a44b3d61
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785644"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-custom-event-preview"></a>Vytvoření triggeru, který spouští kanál v reakci na vlastní událost (Preview)
@@ -92,10 +92,10 @@ Následující tabulka poskytuje přehled prvků schématu, které souvisejí s 
 
 | **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Povinné** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **oboru** | ID prostředku Azure Resource Manager tématu Event gridu. | Řetězec | ID Azure Resource Manager | Ano |
+| **oboru** | ID prostředku Azure Resource Manager tématu Event gridu. | Řetězec | ID Azure Resource Manager | Yes |
 | **událost** | Typ událostí, které způsobují, že se aktivační událost aktivuje. | Pole řetězců    |  | Ano, je očekávána alespoň jedna hodnota. |
-| **subjectBeginsWith** | Pole předmětu musí začínat vzorem poskytnutým pro aktivaci triggeru. Například `factories` aktivuje Trigger jenom pro událost, která začíná na `factories` . | Řetězec   | | Ne |
-| **subjectEndsWith** | Pole předmětu musí končit vzorem poskytnutým pro aktivaci triggeru. | Řetězec   | | Ne |
+| **subjectBeginsWith** | Pole předmětu musí začínat vzorem poskytnutým pro aktivaci triggeru. Například `factories` aktivuje Trigger jenom pro událost, která začíná na `factories` . | Řetězec   | | No |
+| **subjectEndsWith** | Pole předmětu musí končit vzorem poskytnutým pro aktivaci triggeru. | Řetězec   | | No |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 

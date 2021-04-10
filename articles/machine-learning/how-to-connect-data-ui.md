@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508227"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027648"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Připojení k datům pomocí Azure Machine Learning studia
 
@@ -35,7 +35,7 @@ Pro prostředí prvního kódu si přečtěte následující články, které po
 * [Připojte se ke službám úložiště Azure s úložištěm dat](how-to-access-data.md). 
 * [Vytvořte Azure Machine Learning datové sady](how-to-create-register-datasets.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -69,7 +69,7 @@ Následující příklad ukazuje, jak formulář vypadá při vytváření **úl
 Po vytvoření úložiště dat vytvořte datovou sadu pro interakci s daty. Datové sady zabalí vaše data do laxně vytvářená vyhodnoceného spotřebního objektu pro úlohy strojového učení, jako je například školení. [Další informace o datových sadách](how-to-create-register-datasets.md)
 
 Existují dva typy datových sad, DataSet a TabularDataset. 
-[Datové sady](how-to-create-register-datasets.md#filedataset) souborů vytvářejí odkazy na jeden nebo více souborů nebo na veřejné adresy URL. Zatímco [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) reprezentuje vaše data v tabulkovém formátu. 
+[Datové sady](how-to-create-register-datasets.md#filedataset) souborů vytvářejí odkazy na jeden nebo více souborů nebo na veřejné adresy URL. Zatímco [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) reprezentuje vaše data v tabulkovém formátu. TabularDatasets můžete vytvořit ze souborů. csv,. TSV,. Parquet,. JSON a z výsledků dotazu SQL.
 
 Následující kroky a animace ukazují, jak vytvořit datovou sadu v [Azure Machine Learning Studiu](https://ml.azure.com).
 

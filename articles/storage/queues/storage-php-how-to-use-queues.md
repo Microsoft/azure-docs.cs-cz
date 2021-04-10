@@ -1,19 +1,19 @@
 ---
 title: Použití Queue Storage z PHP – Azure Storage
 description: Naučte se používat službu Azure Queue Storage k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv. Ukázky jsou napsané v PHP.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 01/11/2018
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 69369d81892a10c390aa31a2c46f79fdfa41206d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d559fd52cffe893b3f7d61842982fdc2ecd0a48
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592020"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275919"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Použití Queue Storage z PHP
 

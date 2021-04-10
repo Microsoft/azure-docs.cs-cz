@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 901d86b5569be61f89178dac460b8750bce9ea73
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: dfdd7286013bbb6462fb8e5b1bdf52e6ed738029
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605531"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384676"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Co je poradce pro metriky (Preview)? 
 
@@ -27,6 +27,11 @@ Poradce pro metriky je součástí Azure Cognitive Services, který používá A
 * Diagnostika anomálií a pomáhat s analýzou hlavní příčiny
 
 :::image type="content" source="media/metrics-advisor-overview.png" alt-text="Přehled Poradce pro metriky":::
+
+Tato dokumentace obsahuje následující typy článků:
+* [Rychlé starty](./Quickstarts/web-portal.md) jsou podrobné pokyny, které vám umožní volat službu a získat výsledky v krátké době. 
+* [Příručky](./how-tos/onboard-your-data.md) návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném způsobu.
+* [Koncepční články](glossary.md) poskytují podrobné vysvětlení funkcí a funkcí služby.
 
 ## <a name="connect-to-a-variety-of-data-sources"></a>Připojení k nejrůznějším zdrojům dat
 

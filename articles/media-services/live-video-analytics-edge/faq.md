@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge Nejčastější dotazy – Azure
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se analýzy živých videí na IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105032788"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275953"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Nejčastější dotazy k analýze videí na IoT Edge
 
@@ -57,7 +57,7 @@ Ne, na hraničních zařízeních nepodporujeme zjišťování ONVIF (Open Netwo
 
 **Můžu přejít zpět prostředky zaznamenané do Azure Media Services z okraje pomocí technologie streamování, jako je HLS nebo POMLČKa?**
 
-Ano. Můžete streamovat zaznamenané prostředky jako jakýkoliv jiný Asset v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování vám poskytnete přístup k rozhraní Apple HTTP Live Streaming (HLS) nebo dynamickému adaptivnímu streamování přes HTTP (POMLČKu, označované také jako MPEG-POMLČKa) pro streamování do libovolné platformy přehrávače podporující rozhraní. Další informace o vytváření a publikování manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
+Ano. Můžete streamovat zaznamenané prostředky jako jakýkoliv jiný Asset v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování vám poskytnete přístup k rozhraní Apple HTTP Live Streaming (HLS) nebo dynamickému adaptivnímu streamování přes HTTP (POMLČKu, označované také jako MPEG-POMLČKa) pro streamování do libovolné platformy přehrávače podporující rozhraní. Další informace o vytváření a publikování manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/encode-dynamic-packaging-concept.md).
 
 **Můžu u archivovaného assetu použít standardní ochranu obsahu a funkce DRM Media Services?**
 
@@ -69,7 +69,7 @@ Podporují se všechny standardní přehrávače podporující kompatibilní HLS
 
 Mezi Doporučené přehrávače pro testování patří:
 
-* [Přehrávač médií Azure](../latest/use-azure-media-player.md)
+* [Přehrávač médií Azure](../latest/player-use-azure-media-player-how-to.md)
 * [HLS.js](https://hls-js.netlify.app/demo/)
 * [Video.js](https://videojs.com/)
 * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)

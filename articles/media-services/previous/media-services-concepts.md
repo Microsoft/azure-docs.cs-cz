@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: fbe387b3f86dfd10cbc4e80a02ee2528e43c4b67
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d5743b3328248617b9158cfb1f8960549784c564
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016878"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055990"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services koncepty
 
@@ -157,7 +157,7 @@ Při konfiguraci zásad s omezeným tokenem je nutné zadat primární ověřova
 
 Další informace najdete v následujících článcích:
 - [Přehled ochrany obsahu](media-services-content-protection-overview.md)
-- [Ochrana pomocí AES-128](media-services-protect-with-aes128.md)
+- [Ochrana pomocí AES-128](media-services-playready-license-template-overview.md)
 - [Ochrana pomocí PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Doručování

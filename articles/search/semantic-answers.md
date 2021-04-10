@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104722425"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Vrácení sémantické odpovědi v Azure Kognitivní hledání
@@ -24,7 +24,7 @@ Když vytváříte [sémantický dotaz](semantic-how-to-query-request.md), můž
 
 V tomto článku se dozvíte, jak vyžádat sémantickou odpověď, rozbalit odpověď a zjistit, jaké charakteristiky obsahu nejlépe přispívají k vytváření vysoce kvalitních odpovědí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Všechny požadavky, které platí pro [sémantické dotazy](semantic-how-to-query-request.md) , se vztahují také na odpovědi, včetně úrovně služeb a oblasti.
 

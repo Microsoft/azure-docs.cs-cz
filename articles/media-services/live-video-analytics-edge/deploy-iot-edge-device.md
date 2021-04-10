@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718926"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961553"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
@@ -25,7 +25,7 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 * [Vytvoření a nastavení IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
 * [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge.md)
-* [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
+* [Vytvoření účtu Azure Media Services](../latest/account-create-how-to.md)
 
     * Použijte jednu z těchto oblastí: Východní USA 2, Východní USA, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
     * Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).

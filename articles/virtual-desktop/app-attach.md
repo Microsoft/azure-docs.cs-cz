@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98185763"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448266"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Vytváření skriptů PowerShellu pro připojení aplikace MSIX (Preview)
 
@@ -27,7 +27,7 @@ Toto téma vás seznámí s postupem nastavení skriptů PowerShellu pro připoj
 
 ## <a name="install-certificates"></a>Instalace certifikátů
 
-Je nutné nainstalovat certifikáty na všech hostitelích relací ve fondu hostitelů, kteří budou hostovat přístupové body z aplikace MSIX připojit balíčky.
+Je nutné nainstalovat certifikáty na všechny hostitele relací ve fondu hostitelů, kteří budou hostovat aplikace z aplikace MSIX připojit balíčky.
 
 Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsaný svým držitelem, tady je postup, jak ho nainstalovat:
 

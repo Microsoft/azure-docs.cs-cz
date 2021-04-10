@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf6b2f6b964a056b9d90f08c0586fcbdec5b260
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865617"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167272"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Nasazení cloudové služby (Rozšířená podpora) pomocí Azure PowerShell
 
 V tomto článku se dozvíte, jak pomocí `Az.CloudService` modulu PowerShellu nasadit Cloud Services (rozšířenou podporu) v Azure, která má více rolí (webrole a role pracovního procesu) a rozšíření vzdálené plochy. 
-
-> [!IMPORTANT]
-> Cloud Services (Rozšířená podpora) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -73,13 +69,14 @@ Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. Vytvořte veřejnou IP adresu a (volitelně) nastavte vlastnost Popisek DNS veřejné IP adresy. Pokud používáte statickou IP adresu, musí se v konfiguračním souboru služby odkazovat jako na Vyhrazená IP adresa.  
+7. Vytvořte veřejnou IP adresu a nastavte vlastnost Popisek DNS pro veřejnou IP adresu. Cloud Services (Rozšířená podpora) podporuje jenom [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) veřejné IP adresy SKU). Veřejné IP adresy Standard SKU nefungují s Cloud Services.
+Pokud používáte statickou IP adresu, musíte na ni odkazovat jako na Vyhrazená IP adresa v souboru konfigurace služby (. cscfg). 
 
     ```powershell
     $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
     ```
 
-8. Vytvořte objekt síťového profilu a přidružte veřejnou IP adresu ke front-endu vytvořené platformy pro vyrovnávání zatížení.  
+8. Vytvořte objekt profilu sítě a přidružte veřejnou IP adresu k front-endu nástroje pro vyrovnávání zatížení. Platforma Azure automaticky vytvoří prostředek "klasický" SKU pro vyrovnávání zatížení ve stejném předplatném jako prostředek cloudové služby. Prostředek nástroje pro vyrovnávání zatížení je prostředkem, který je jen pro čtení v ARM. Jakékoli aktualizace prostředku se podporují jenom prostřednictvím souborů nasazení cloudové služby (. cscfg &. csdef).
 
     ```powershell
     $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  

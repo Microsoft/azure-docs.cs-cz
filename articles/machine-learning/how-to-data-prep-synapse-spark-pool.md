@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96917b805640f0cfe38f28ba263e2e7ce55bce7f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956209"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066156"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro tahání dat (Preview)
 
-V tomto článku se dozvíte, jak připojit a spustit fond Apache Spark s využitím [Azure synapse Analytics](/synapse-analytics/overview-what-is.md) pro data tahání ve velkém měřítku. 
+V tomto článku se dozvíte, jak připojit a spustit fond Apache Spark s využitím [Azure synapse Analytics](../synapse-analytics/overview-what-is.md) pro data tahání ve velkém měřítku. 
 
 Tento článek obsahuje pokyny pro interaktivní provádění úloh tahání dat v rámci vyhrazené Synapseové relace v notebooku Jupyter. Pokud dáváte přednost použití kanálů Azure Machine Learning, přečtěte si téma [Jak používat Apache Spark (využívá Azure synapse Analytics) v kanálu Machine Learning (Preview)](how-to-use-synapsesparkstep.md).
 
@@ -310,7 +310,7 @@ input1 = train_ds.as_mount()
 
 ## <a name="example-notebook"></a>Příklad poznámkového bloku
 
-Podrobný příklad kódu, jak provést školení pro přípravu a modelování dat z jednoho poznámkového bloku s Azure synapse Analytics a Azure Machine Learning, najdete v tomto [koncovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) .
+Podrobný příklad kódu, jak provést školení pro přípravu a modelování dat z jednoho poznámkového bloku s Azure synapse Analytics a Azure Machine Learning, najdete v tomto [koncovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) .
 
 ## <a name="next-steps"></a>Další kroky
 

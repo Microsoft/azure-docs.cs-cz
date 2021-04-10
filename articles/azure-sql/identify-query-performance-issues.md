@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98217222"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109165"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy kritických bodů výkonu dotazů ve službě Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -139,7 +139,7 @@ Opětovná kompilace (nebo nová kompilace po vyřazení mezipaměti) může st�
 
 - **Změna fyzického návrhu**: například nově vytvořené indexy efektivněji pokrývají požadavky dotazu. Nové indexy lze použít pro novou kompilaci, pokud se nástroj Optimalizátor dotazů rozhodne, že použití tohoto nového indexu je více optimální než použití struktury dat, která byla původně vybrána pro první verzi provedení dotazu. Všechny fyzické změny v odkazovaných objektech mohou mít za následek novou volbu plánu v době kompilace.
 
-- **Rozdíly mezi prostředky serveru**: Pokud se plán v jednom systému liší od plánu v jiném systému, může být dostupnost prostředků, například počet dostupných procesorů, ovlivněna tím, který plán se vygeneruje. Pokud má například jeden systém více procesorů, může být zvolen paralelní plán.
+- **Rozdíly mezi prostředky serveru**: Pokud se plán v jednom systému liší od plánu v jiném systému, může být dostupnost prostředků, například počet dostupných procesorů, ovlivněna tím, který plán se vygeneruje. Pokud má například jeden systém více procesorů, může být zvolen paralelní plán. Další informace o paralelismuách v Azure SQL Database najdete v tématu [Konfigurace maximálního stupně paralelismu (MAXDOP) v Azure SQL Database](database/configure-max-degree-of-parallelism.md).
 
 - **Různé statistiky**: statistiky spojené s odkazovanými objekty se možná změnily nebo můžou být v nepodstatném rozdílu od statistik původních systémů. Pokud se změní Statistika a provede se opětovná kompilace, používá Optimalizátor dotazů statistiku, která začíná od okamžiku jejich změny. Změny distribuce a četnosti dat revidované statistiky se mohou lišit od původní kompilace. Tyto změny slouží k vytvoření odhadů mohutnosti. (*Odhady mohutnosti* jsou počet řádků, které se mají přesměrovat do logického stromu dotazů.) Změny odhadů mohutnosti můžou vést k volbě různých fyzických operátorů a přidružených objednávek operací. I drobné změny statistik můžou mít za následek změnu plánu spuštění dotazu.
 
@@ -181,6 +181,8 @@ Nemusíte vždycky snadno identifikovat změnu objemu úloh, která je příčin
 
 Pomocí Intelligent Insights můžete zjistit [zvýšení zatížení](database/intelligent-insights-troubleshoot-performance.md#workload-increase) a [naplánovat regrese](database/intelligent-insights-troubleshoot-performance.md#plan-regression).
 
+- **Paralelismus**: nadměrný paralelismus může zhoršit výkon ostatních souběžných úloh omezují dalších dotazů na prostředky procesoru a pracovního vlákna. Další informace o paralelismuách v Azure SQL Database najdete v tématu [Konfigurace maximálního stupně paralelismu (MAXDOP) v Azure SQL Database](database/configure-max-degree-of-parallelism.md).
+
 ## <a name="waiting-related-problems"></a>Problémy související s čekáním
 
 Po zrušení neoptimálního plánu a problémů *souvisejících* s výkonem, které souvisejí s problémy se spouštěním, je problém s výkonem většinou u dotazů čekání na určitý prostředek. Problémy související s čekáním můžou způsobovat tyto příčiny:
@@ -220,6 +222,11 @@ Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky
 > - [TigerToolbox čekání a zámky](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
+## <a name="see-also"></a>Viz také
+
+* [Konfigurace maximálního stupně paralelismu (MAXDOP) v Azure SQL Database](database/configure-max-degree-of-parallelism.md)
+* [Pochopení a řešení potíží s blokováním Azure SQL Database v Azure SQL Database](database/understand-resolve-blocking.md)
+
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled monitorování a ladění SQL Database](database/monitor-tune-overview.md)
+* [Přehled monitorování a ladění SQL Database](database/monitor-tune-overview.md)

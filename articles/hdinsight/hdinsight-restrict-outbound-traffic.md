@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 06990a5bd1d6619f07952e84870a01f5cd5068df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872077"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384421"
 ---
-# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
+# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Nakonfigurujte pro clustery Azure HDInsight odchozí síťový provoz přes bránu firewall.
 
 Tento článek popisuje kroky pro zabezpečení odchozího provozu z clusteru HDInsight pomocí Azure Firewall. Následující postup předpokládá, že konfigurujete Azure Firewall pro existující cluster. Pokud nasazujete nový cluster za bránou firewall, vytvořte nejdřív cluster HDInsight a podsíť. Pak postupujte podle kroků uvedených v této příručce.
 
@@ -32,7 +32,7 @@ Souhrn kroků pro uzamčení odchozích dat ze stávajícího HDInsight s Azure 
 
 1. Vytvořte podsíť.
 1. Vytvořte bránu firewall.
-1. Přidat do brány firewall pravidla aplikací
+1. Přidejte do brány firewall pravidla aplikací.
 1. Přidejte do brány firewall Síťová pravidla.
 1. Vytvořte směrovací tabulku.
 
@@ -76,7 +76,7 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | HTTPS:443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
     | Rule_3 | * | HTTPS:443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. NET | Nahraďte `storage_account_name` skutečným názvem účtu úložiště. Pokud chcete použít jenom připojení HTTPS, ujistěte se, že je v účtu úložiště povolený [možnost zabezpečený přenos vyžaduje](../storage/common/storage-require-secure-transfer.md) . Pokud používáte privátní koncový bod pro přístup k účtům úložiště, tento krok není potřebný a přenos úložiště se nepředává do brány firewall.|
+    | Rule_4 | * | HTTPS:443 | storage_account_name. blob. Core. Windows. NET | Nahraďte `storage_account_name` skutečným názvem účtu úložiště. Ujistěte se, že je v účtu úložiště zapnutá [možnost zabezpečený přenos vyžaduje](../storage/common/storage-require-secure-transfer.md) . Pokud používáte privátní koncový bod pro přístup k účtům úložiště, tento krok není potřebný a přenos úložiště se nepředává do brány firewall.|
 
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Title: zadejte podrobnosti kolekce pravidel aplikace.":::
 
@@ -84,7 +84,7 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí síťových pravidel
 
-Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
+Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight. 
 
 1. Pokračujeme z předchozího kroku, přejdete na **kolekce pravidel sítě**  >  **+ přidat kolekci pravidel sítě**.
 
@@ -102,14 +102,14 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     | Name | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | Pokud používáte výchozí SQL Server poskytovaný službou HDInsight, nakonfigurujte síťové pravidlo v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. Pokud používáte vlastní SQL Server pro Ambari, Oozie, Ranger a podregistr metaúložiště, stačí, když povolíte provoz na vlastní SQL servery.|
+    | Rule_5 | TCP | * | SQL | 1433, 11000-11999 | Pokud používáte výchozí SQL Server poskytovaný službou HDInsight, nakonfigurujte síťové pravidlo v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. Pokud používáte vlastní SQL Server pro Ambari, Oozie, Ranger a podregistr metaúložiště, stačí, když povolíte provoz na vlastní SQL servery. Pokud chcete zjistit, proč je kromě 1433 potřeba taky Rozsah portů 11000-11999, přečtěte si téma [Azure SQL Database a architektura připojení Azure synapse Analytics](../azure-sql/database/connectivity-architecture.md) . |
     | Rule_6 | TCP | * | Azure Monitor | * | volitelné Toto pravidlo by mělo přidat zákazníci, kteří chtějí používat funkci automatického škálování. |
     
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Title: zadejte kolekci pravidel aplikace.":::
 
 1. Vyberte **Přidat**.
 
-### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky
+### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky 
 
 Vytvořte směrovací tabulku s následujícími položkami:
 

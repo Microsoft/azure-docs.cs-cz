@@ -3,15 +3,15 @@ title: Rozbalte existující fond hostitelů Windows Virtual Desktop (Classic) s
 description: Postup rozšíření stávajícího fondu hostitelů na nové hostitele relací ve virtuální ploše Windows (Classic).
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88009167"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551947"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Rozšíření existujícího fondu hostitelů na nové hostitele relací ve virtuálním počítači s Windows (Classic)
 
@@ -39,7 +39,7 @@ Při prvním vytvoření fondu hostitelů a hostitele relací budete také potř
 Další tři části představují tři metody, které můžete použít k rozšíření fondu hostitelů. Můžete to udělat s libovolným nástrojem pro nasazení, se kterým máte v pohodlí.
 
 >[!NOTE]
->Během fáze nasazení uvidíte chybové zprávy pro předchozí prostředky virtuálních počítačů hostitele relace, pokud jsou aktuálně vypnuté. K těmto chybám dochází, protože Azure nemůže spustit rozšíření PowerShell DSC, aby ověřil, jestli jsou virtuální počítače hostitele relace správně zaregistrované ve vašem existujícím fondu hostitelů. Tyto chyby můžete bezpečně ignorovat nebo se můžete vyhnout chybám spuštěním všech virtuálních počítačů hostitelů relací v existujícím fondu hostitelů před zahájením procesu nasazení.
+>Během fáze nasazení uvidíte chybové zprávy pro předchozí prostředky virtuálních počítačů hostitele relace, pokud jsou aktuálně vypnuté. K těmto chybám dochází, protože Azure nemůže spustit rozšíření PowerShell DSC, aby ověřil, jestli jsou virtuální počítače hostitele relace správně zaregistrované ve vašem existujícím fondu hostitelů. Hostitel relace, jehož název končí na "-0", musí být spuštěný, ale tyto chyby můžete bezpečně ignorovat pro ostatní hostitele relací nebo se můžete vyhnout chybám spuštěním všech virtuálních počítačů hostitele relace v existujícím fondu hostitelů před zahájením procesu nasazení.
 
 ## <a name="redeploy-from-azure"></a>Opětovné nasazení z Azure
 
@@ -96,7 +96,7 @@ Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste za
 1. Vyberte velikost virtuálního počítače, která odpovídá stávajícím virtuálním počítačům hostitele relace.
 
     >[!NOTE]
-    >Pokud se konkrétní velikost virtuálního počítače, kterou hledáte, nezobrazuje v selektoru velikosti virtuálního počítače, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace. Pokud si chcete vyžádat velikost virtuálního počítače, vytvořte žádost nebo nahlaste stávající požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Pokud se konkrétní velikost virtuálního počítače, kterou hledáte, nezobrazuje v selektoru velikosti virtuálního počítače, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace.
 
 2. Pokud chcete vybrat celkový počet hostitelů relací, které chcete mít ve fondu hostitelů, upravte *profil využití*, *Celkový počet uživatelů* a *počet parametrů virtuálních počítačů* . Pokud například rozšíříte fond hostitelů z pěti hostitelů relace na osm, nakonfigurujte tyto možnosti tak, aby se dosáhlo 8 virtuálních počítačů.
 3. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte název "prefix", virtuální počítače budou nazývány "prefix-0," prefix-1, "atd.

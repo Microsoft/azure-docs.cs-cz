@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98675182"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382453"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Registrace aplikace Microsoft Graph
 
@@ -56,31 +56,38 @@ Předtím, než můžou skripty a aplikace pracovat s [rozhraním Microsoft Grap
 1. Vyberte **Zaregistrovat**.
 1. Poznamenejte si **ID aplikace (klienta)** , které se zobrazí na stránce s přehledem aplikace. Tuto hodnotu použijete v pozdějším kroku.
 
-### <a name="grant-api-access"></a>Udělení přístupu k rozhraní API
+## <a name="grant-api-access"></a>Udělení přístupu k rozhraní API
 
-Potom udělte registrovanou aplikaci oprávnění k manipulaci s prostředky klienta prostřednictvím volání rozhraní Microsoft Graph API.
+Aby vaše aplikace měla přístup k datům v Microsoft Graph, udělte registrovaným aplikacím příslušná [oprávnění aplikace](https://docs.microsoft.com/graph/permissions-reference). Skutečná oprávnění vaší aplikace jsou plná úroveň oprávnění, která jsou odvozena z oprávnění. Chcete-li například *vytvořit*, *číst*, *aktualizovat* a *Odstranit* každého uživatele v Azure AD B2C tenanta, přidejte oprávnění **User. četl. All** . 
+
+> [!NOTE]
+> **Uživatel. čtení. všechna** oprávnění nezahrnují možnost aktualizovat hesla uživatelského účtu. Pokud vaše aplikace potřebuje aktualizovat hesla uživatelského účtu, [udělte roli správce uživatele](#optional-grant-user-administrator-role). Při udělování role [Správce uživatelů](../active-directory/roles/permissions-reference.md#user-administrator) se nepožaduje **uživatel.** Role Správce uživatelů zahrnuje vše potřebné ke správě uživatelů.
+
+Aplikaci můžete udělit více oprávnění aplikace. Pokud například vaše aplikace potřebuje spravovat skupiny ve vašem tenantovi Azure AD B2C, přidejte také **skupinu. oprávnìní. All. všechna** oprávnění. 
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
 
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+## <a name="optional-grant-user-administrator-role"></a>Volitelné Udělení role Správce uživatelů
 
-Nyní máte aplikaci, která má oprávnění k *vytváření*, *čtení*, *aktualizaci* a *odstraňování* uživatelů ve vašem tenantovi Azure AD B2C. Přejděte k další části a přidejte oprávnění k *aktualizaci hesla* .
+Pokud vaše aplikace nebo skript potřebuje aktualizovat hesla uživatelů, je třeba přiřadit k aplikaci roli *Správce uživatelů* . Role [Správce uživatelů](../active-directory/roles/permissions-reference.md#user-administrator) má pevně danou sadu oprávnění, kterou udělíte vaší aplikaci. 
 
-## <a name="enable-user-delete-and-password-update"></a>Povolit odstranění a aktualizaci hesla uživatele
-
-Oprávnění *číst a zapisovat data adresáře* **nezahrnují možnost** odstraňovat uživatele nebo aktualizovat hesla uživatelských účtů.
-
-Pokud vaše aplikace nebo skript potřebuje odstranit uživatele nebo aktualizovat hesla, přiřaďte aplikaci roli *Správce uživatelů* :
+Chcete-li přidat roli *správce uživatele* , postupujte takto:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a pomocí filtru **adresář + odběr** přepněte na svého tenanta Azure AD B2C.
 1. Vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat** vyberte **role a správci**.
-1. Vyberte roli **správce uživatele** .
+1. Vyberte roli **správce uživatele** . 
 1. Vyberte **Přidat přiřazení**.
-1. Do textového pole pro **Výběr** zadejte název aplikace, kterou jste zaregistrovali dříve, například *managementapp1*. Vyberte aplikaci, která se zobrazí ve výsledcích hledání.
+1. Do textového pole pro **Výběr** zadejte název nebo ID aplikace, kterou jste zaregistrovali dříve, například *managementapp1*. Jakmile se zobrazí ve výsledcích hledání, vyberte svou aplikaci.
 1. Vyberte **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
+
+## <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
+
+Vaše aplikace potřebuje tajný klíč klienta k prokázání své identity při žádosti o token. K přidání tajného klíče klienta použijte následující postup:
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
 
 ## <a name="next-steps"></a>Další kroky
 

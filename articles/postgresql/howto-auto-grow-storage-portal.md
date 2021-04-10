@@ -1,17 +1,17 @@
 ---
 title: Automatické zvětšování úložiště-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Tento článek popisuje, jak můžete pomocí Azure Portal v Azure Database for PostgreSQL jednom serveru nakonfigurovat automatické zvětšování úložiště.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: d49047e9b3a65da90f4a5ac9e4b3cb1e32bd59a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20c1d598cdb8bc68a3f2348547569a8f2719858c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489978"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551386"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatické zvětšení úložiště pomocí Azure Portal v Azure Database for PostgreSQL-jednom serveru
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for PostgreSQL pro růst, aniž by to ovlivnilo zatížení.

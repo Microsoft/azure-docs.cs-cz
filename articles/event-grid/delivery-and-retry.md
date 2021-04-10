@@ -4,10 +4,10 @@ description: Popisuje, jak Azure Event Grid doručuje události a jak zpracováv
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105629270"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování

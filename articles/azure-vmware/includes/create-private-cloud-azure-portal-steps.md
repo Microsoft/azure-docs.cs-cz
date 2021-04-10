@@ -2,13 +2,13 @@
 title: Vytvoření privátního cloudu řešení Azure VMware
 description: Postup vytvoření privátního cloudu řešení Azure VMware pomocí Azure Portal.
 ms.topic: include
-ms.date: 02/17/2021
-ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 6b4e5631d1a4b6c5bf56b01aba12752595ef63b8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725392"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073376"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -34,7 +34,7 @@ ms.locfileid: "101725392"
 1. Po dokončení vyberte **zkontrolovat + vytvořit**. Na další obrazovce ověřte zadané informace. Pokud jsou informace správné, vyberte **vytvořit**.
 
    > [!NOTE]
-   > Tento krok trvá zhruba dvě hodiny. 
+   > Tento krok trvá zhruba 3-4 hodin. Přidání jednoho uzlu v existujícím nebo stejném clusteru trvá 30-45 minut.
 
 1. Ověřte, že nasazení proběhlo úspěšně. Přejděte do skupiny prostředků, kterou jste vytvořili, a vyberte svůj privátní cloud.  Po dokončení nasazení se zobrazí stav **dokončeno** . 
 

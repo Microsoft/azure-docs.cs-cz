@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: konfigurace a povolení programu Defender-IoT-Micro-Agent pro Azure RTO'
-description: Naučte se, jak připojit a povolit službu Defender-IoT-Micro-Agent pro Azure RTO ve službě Azure IoT Hub.
+description: V tomto rychlém startu se dozvíte, jak připojit a povolit službu Defender-IoT-Micro-Agent pro Azure RTO ve službě Azure IoT Hub.
 services: defender-for-iot
 ms.topic: quickstart
 ms.date: 01/24/2021
-ms.openlocfilehash: db0fc0be3cd10bc57a46cb5a056ca5e057ae255a
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 0575e9303068b203a5d8cd51c8a8cc1843de6f4d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781156"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384631"
 ---
 # <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>Rychlý Start: Defender-IoT-Micro Agent pro Azure RTO (Preview)
 
 Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje, jak povolit službu Defender-IoT-Micro-Agent pro Azure RTO ve IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 ### <a name="supported-devices"></a>Podporovaná zařízení
 

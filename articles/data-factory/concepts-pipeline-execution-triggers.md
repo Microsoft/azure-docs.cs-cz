@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 271dbd87950018cebbd23841d32324afa42511e7
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785797"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
@@ -231,7 +231,7 @@ Pokud chcete, aby aktivační událost plánovače aktivovala spuštění kanál
 ### <a name="schema-overview"></a>Přehled schématu
 Následující tabulka obsahuje přehled hlavních elementů schématu souvisejících s opakováním a plánováním aktivační události:
 
-| Vlastnost JSON | Popis |
+| Vlastnost JSON | Description |
 | --- | --- |
 | **Spuštění** | Hodnota data a času. V případě základních plánů se hodnota vlastnosti **startTime** vztahuje pouze na první výskyt. U složitějších plánů aktivační událost nezačíná dřív než v čas určený hodnotou **startTime**. |
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. <!-- This property is optional. --> |
@@ -279,11 +279,11 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 | Vlastnost JSON | Typ | Vyžadováno | Výchozí hodnota | Platné hodnoty | Příklad |
 | --- | --- | --- | --- | --- | --- |
-| **Spuštění** | řetězec | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **vzorec** | object | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **doba** | číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | řetězec | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **CXL** | object | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **Spuštění** | řetězec | Yes | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **vzorec** | object | Yes | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **doba** | číslo | No | 1 | 1 až 1 000 | `"interval":10` |
+| **endTime** | řetězec | Yes | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **CXL** | object | No | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
 Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovládá spouštění aktivační události:
@@ -310,7 +310,7 @@ Pokud je zadáno více elementů **plánu** , pořadí vyhodnocení je od nejvě
 
 Následující tabulka obsahuje podrobný popis elementů **schedule**:
 
-| Element JSON | Popis | Platné hodnoty |
+| Element JSON | Description | Platné hodnoty |
 | --- | --- | --- |
 | **minuty** | Minuty v hodině, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel |
 | **hodin** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel |
@@ -329,7 +329,7 @@ Tato část obsahuje příklady plánů opakování. Zaměřuje se na objekt **s
 
 V příkladech se předpokládá, že hodnota **intervalu** je 1 a hodnota **frekvence** je správná podle definice plánu. Například není možné, aby vlastnost **frequency** měla hodnotu „day“ a zároveň objekt **schedule** obsahoval úpravu atributu **monthDays**. Tyto typy omezení jsou popsané v tabulce v předchozí části.
 
-| Příklad | Popis |
+| Příklad | Description |
 | --- | --- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |

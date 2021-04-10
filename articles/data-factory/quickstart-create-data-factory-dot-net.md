@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/27/2021
 ms.author: jingwang
-ms.openlocfilehash: 59cd364e5568b3509d0c06d439d39b132b202df6
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 3c667fe20b392bfb52b8300ce4b8b59d15a13b9a
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105641761"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385424"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
@@ -106,14 +106,13 @@ Dále vytvořte konzolovou aplikaci C# .NET v aplikaci Visual Studio:
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
 > [!NOTE]
-> U účtů US Azure gov je nutné  *https://management.usgovcloudapi.net* místo *https://management.azure.com/* a vytvořit klienta pro správu služby Data Factory použít baseUri. 
-> 
+> V případě cloudů v rámci svrchovaného cloudu je nutné použít příslušné koncové body specifické pro Cloud pro ActiveDirectoryAuthority a ResourceManagerUrl (BaseUri). Například v US Azure gov byste měli místo a použít autoritu namísto a a https://login.microsoftonline.us https://login.microsoftonline.com https://management.usgovcloudapi.net https://management.azure.com/ pak vytvořit klienta pro správu služby Data Factory. Pomocí PowerShellu můžete snadno získat adresy URL koncových bodů pro různé cloudy spuštěním příkazu Get-AzEnvironment |. Format-list, který vrátí seznam koncových bodů pro každé cloudové prostředí.
 
 3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy **DataFactoryManagementClient** . Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
 
    ```csharp
    // Authenticate and create a data factory management client
-   var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
+   var context = new AuthenticationContext("https://login.microsoftonline.com/" + tenantID);
    ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
    AuthenticationResult result = context.AcquireTokenAsync(
        "https://management.azure.com/", cc).Result;

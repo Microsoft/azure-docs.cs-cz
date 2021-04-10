@@ -2,19 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 684c71c6ad76ee6063702894fb7b2249895bc5fc
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 84bbc8d093a7eefc8186f18b942b0e89522d3f5f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105036950"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089439"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Služba signalizace Azure by měla zakázat přístup k veřejné síti.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Aby bylo možné zvýšit zabezpečení prostředku služby signalizace Azure, ujistěte se, že není vystaveno veřejnému Internetu a je přístupný pouze z privátního koncového bodu. Zakažte vlastnost přístup k veřejné síti, jak je popsáno v tématu [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Tato možnost zakáže přístup ze všech veřejných adresních prostorů mimo rozsah IP adres Azure a odepře všechna přihlášení, která odpovídají pravidlům brány firewall na základě IP adresy nebo virtuální sítě. Tím se snižuje riziko úniku dat. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
 |[Služba signalizace Azure by měla používat SKU s povoleným privátním propojením.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Privátní odkaz Azure umožňuje připojit virtuální síť ke službám Azure bez veřejné IP adresy ve zdroji nebo cíli, který chrání vaše prostředky před riziky úniku veřejných dat. Zásady omezují skladové položky s povoleným privátním propojením pro službu Azure Signal Service. Další informace o privátním odkazu najdete na adrese: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |
 |[Služba signalizace Azure by měla používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Privátní odkaz Azure umožňuje připojit virtuální síť ke službám Azure bez veřejné IP adresy ve zdroji nebo cíli. Platforma privátních odkazů zpracovává připojení mezi klientem a službami přes páteřní síť Azure. Mapováním privátních koncových bodů na prostředek služby signalizace Azure místo na celou službu snížíte rizika úniku dat. Přečtěte si další informace o privátních odkazech na adrese: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
+|[Konfigurace privátních koncových bodů na službu Azure Signal Service](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef45854f-b33f-49a3-8041-9057e915d88f) |Privátní koncové body spojují vaši virtuální síť se službami Azure bez veřejné IP adresy ve zdroji nebo cíli. Mapováním privátních koncových bodů na prostředky služby signalizace Azure můžete snížit rizika úniku dat. Další informace najdete na adrese [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |DeployIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_DeployIfNotExists.json) |
 |[Úprava prostředků služby signalizace Azure pro zakázání přístupu k veřejné síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62a3ae95-8169-403e-a2d2-b82141448092) |Aby bylo možné zvýšit zabezpečení prostředku služby signalizace Azure, ujistěte se, že není vystaveno veřejnému Internetu a je přístupný pouze z privátního koncového bodu. Zakažte vlastnost přístup k veřejné síti, jak je popsáno v tématu [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Tato možnost zakáže přístup ze všech veřejných adresních prostorů mimo rozsah IP adres Azure a odepře všechna přihlášení, která odpovídají pravidlům brány firewall na základě IP adresy nebo virtuální sítě. Tím se snižuje riziko úniku dat. |Upravit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_Modify.json) |

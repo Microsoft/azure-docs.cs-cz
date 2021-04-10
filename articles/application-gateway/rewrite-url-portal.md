@@ -2,24 +2,24 @@
 title: Přepsání adresy URL a řetězce dotazu pomocí Azure Application Gateway-Azure Portal
 description: Naučte se, jak pomocí Azure Portal nakonfigurovat adresu URL a řetězec dotazu pro Azure Application Gateway.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 7/16/2020
-ms.author: surmb
-ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215769"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384753"
 ---
-# <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Přepište adresu URL pomocí Azure Application Gateway-Azure Portal (Preview)
+# <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Přepište adresu URL pomocí Azure Application Gateway-Azure Portal
 
 Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat instanci [SKU Application Gateway v2](application-gateway-autoscaling-zone-redundant.md) , aby se přepsala adresa URL.
 
 >[!NOTE]
-> Funkce přepisu adresy URL je ve verzi Preview a je k dispozici pouze pro Standard_v2 a WAF_v2 SKU Application Gateway. Nedoporučuje se používat v produkčním prostředí. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Funkce pro přepsání adresy URL je k dispozici pouze pro Standard_v2 a WAF_v2 SKU Application Gateway. Když je u brány s povoleným WAF nakonfigurovaná možnost přepsat adresu URL, provedou se vyhodnocení WAF na přepsaných hlavičkách a adrese URL. [Další informace](rewrite-http-headers-url.md#using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

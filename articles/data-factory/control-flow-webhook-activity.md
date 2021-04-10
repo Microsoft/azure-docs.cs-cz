@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785933"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
@@ -55,15 +55,15 @@ Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu.
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-**name** | Název aktivity Webhooku. | Řetězec | Ano |
-**textový** | Musí být nastavené na Webhook. | Řetězec | Ano |
-**Metoda** | Metoda REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je POST. | Ano |
-**Adresa URL** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano |
+**name** | Název aktivity Webhooku. | Řetězec | Yes |
+**textový** | Musí být nastavené na Webhook. | Řetězec | Yes |
+**Metoda** | Metoda REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je POST. | Yes |
+**Adresa URL** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Yes |
 **záhlaví** | Hlavičky, které se odesílají do žádosti Tady je příklad, který nastaví jazyk a typ v žádosti: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano. `Content-Type` `"headers":{ "Content-Type":"application/json"}` Požaduje se záhlaví. |
-**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](./control-flow-web-activity.md#request-payload-schema) . | Ano |
-**přihlašovací** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](./control-flow-web-activity.md#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ne |
-**timeout** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *HH*:*mm*:*SS*. | Řetězec | Ne |
-**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | Ne |
+**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](./control-flow-web-activity.md#request-payload-schema) . | Yes |
+**přihlašovací** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](./control-flow-web-activity.md#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | No |
+**timeout** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *HH*:*mm*:*SS*. | Řetězec | No |
+**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | No |
 
 ## <a name="authentication"></a>Authentication
 

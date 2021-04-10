@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561887"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279659"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -175,10 +175,6 @@ Následující tabulka ukazuje, které úrovně přístupu jsou k dispozici pro 
 > [!IMPORTANT]
 > Změna úrovně přístupu pro existující účet úložiště nebo objekt BLOB může mít za následek další poplatky. Další informace najdete v tématu [fakturace účtu úložiště](#storage-account-billing).
 
-## <a name="encryption"></a>Šifrování
-
-Všechna data v účtu úložiště se šifrují na straně služby. Další informace o šifrování najdete v tématu [šifrování služby Azure Storage pro](storage-service-encryption.md)neaktivní neaktivní data.
-
 ## <a name="storage-account-endpoints"></a>Koncové body účtu úložiště
 
 Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, který je uložen v Azure Storage má adresu, která obsahuje jedinečný název účtu. Kombinace názvu účtu a koncového bodu služby Azure Storage tvoří koncové body pro váš účet úložiště.
@@ -200,22 +196,17 @@ Vytvořte adresu URL pro přístup k objektu v účtu úložiště připojením 
 
 Svůj účet úložiště můžete také nakonfigurovat tak, aby používal vlastní doménu pro objekty blob. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro účet Azure Storage](../blobs/storage-custom-domain-name.md).  
 
-## <a name="control-access-to-account-data"></a>Řízení přístupu k datům účtu
+## <a name="migrating-a-storage-account"></a>Migrace účtu úložiště
 
-Ve výchozím nastavení jsou data ve vašem účtu dostupná pouze pro vás, vlastníka účtu. Máte kontrolu nad tím, kdo může mít přístup k vašim datům a jaká oprávnění mají.
+Následující tabulka shrnuje a odkazuje na pokyny k přesunutí, upgradu nebo migraci účtu úložiště:
 
-Každý požadavek vytvořený na váš účet úložiště musí být autorizovaný. Na úrovni služby musí požadavek zahrnovat platnou *autorizační* hlavičku. Konkrétně tato hlavička obsahuje všechny informace potřebné k tomu, aby služba před spuštěním ověřila požadavek.
-
-Přístup k datům ve vašem účtu úložiště můžete udělit pomocí některého z následujících přístupů:
-
-- **Azure Active Directory:** Použijte přihlašovací údaje pro Azure Active Directory (Azure AD) k ověření uživatele, skupiny nebo jiné identity pro přístup k datům objektů BLOB a front. Pokud je ověření identity úspěšné, pak Azure AD vrátí token, který se použije při autorizaci žádosti do úložiště objektů BLOB v Azure nebo ve frontě. Další informace najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
-- **Autorizace sdíleného klíče:** Použijte přístupový klíč účtu úložiště k vytvoření připojovacího řetězce, který vaše aplikace používá za běhu pro přístup k Azure Storage. Hodnoty v připojovacím řetězci slouží k vytvoření hlavičky *autorizace* , která je předána Azure Storage. Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
-- **Sdílený přístupový podpis:** Sdílený přístupový podpis (SAS) je token, který umožňuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Token SAS zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Když vytvoříte SAS, můžete určit, která oprávnění SAS udělí prostředku, a interval, po kterém jsou oprávnění platná. Token SAS se dá podepsat buď pomocí přihlašovacích údajů Azure AD, nebo pomocí sdíleného klíče. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
-
-> [!NOTE]
-> Ověřování uživatelů nebo aplikací pomocí přihlašovacích údajů Azure AD zajišťuje zabezpečení a jednoduchost použití prostřednictvím jiných způsobů autorizace. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS.
->
-> Microsoft doporučuje použít autorizaci Azure AD pro Azure Storage objekty BLOB a aplikace fronty, pokud je to možné.
+| Scénář migrace | Podrobnosti |
+|--|--|
+| Přesunutí účtu úložiště do jiného předplatného | Azure Resource Manager poskytuje možnosti pro přesunutí prostředku do jiného předplatného. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Přesunutí účtu úložiště do jiné skupiny prostředků | Azure Resource Manager poskytuje možnosti pro přesunutí prostředku do jiné skupiny prostředků. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Přesunutí účtu úložiště do jiné oblasti | Pokud chcete přesunout účet úložiště, vytvořte jeho kopii v jiné oblasti. Pak přesuňte data do tohoto účtu pomocí AzCopy nebo jiného nástroje podle vašeho výběru. Další informace najdete v tématu [přesunutí účtu Azure Storage do jiné oblasti](storage-account-move.md). |
+| Upgrade na účet úložiště pro obecné účely v2 | Účet úložiště pro obecné účely v1 nebo účet Blob Storage můžete upgradovat na účet pro obecné účely v2. Tato akce se nedá vrátit zpátky. Další informace najdete v tématu [upgrade na účet úložiště pro obecné účely v2](storage-account-upgrade.md). |
+| Migrace klasického účtu úložiště na Azure Resource Manager | Model nasazení Azure Resource Manager je modelem nasazení Classic nadřazený s ohledem na funkčnost, škálovatelnost a zabezpečení. Další informace o migraci účtu klasického úložiště na Azure Resource Manager najdete v tématu [Migrace účtů úložiště](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) v **migraci prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager**. |
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopírování dat do účtu úložiště
 
@@ -240,6 +231,10 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 > [!IMPORTANT]
 > Objekty blob šifrované na straně klienta ukládají metadata šifrování s objektem blob. Pokud kopírujete objekt blob šifrovaný na straně klienta, ujistěte se, že operace kopírování zachová metadata objektu blob, zejména metadata šifrování. Pokud objekt blob zkopírujete bez metadat šifrování, obsah objektu blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
+## <a name="encryption"></a>Šifrování
+
+Všechna data v účtu úložiště se šifrují na straně služby. Další informace o šifrování najdete v tématu [šifrování služby Azure Storage pro](storage-service-encryption.md)neaktivní neaktivní data.
+
 ## <a name="storage-account-billing"></a>Fakturace účtu úložiště
 
 VyAzure Storage účty na základě využití účtu úložiště. Všechny objekty v rámci účtu úložiště se fakturují společně jako skupina. Náklady na úložiště se počítají v závislosti na následujících faktorech:
@@ -260,5 +255,5 @@ Na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/
 
 - [Vytvoření účtu úložiště](storage-account-create.md)
 - [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)
-- [Upgrade na účet úložiště pro obecné účely verze 2](storage-account-upgrade.md)
+- [Upgrade na účet úložiště pro obecné účely v2](storage-account-upgrade.md)
 - [Obnovení odstraněného účtu úložiště](storage-account-recover.md)

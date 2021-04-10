@@ -2,13 +2,13 @@
 title: Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
-ms.date: 07/08/2020
-ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/01/2021
+ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716733"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167886"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem
 
@@ -33,7 +33,7 @@ Tento článek popisuje následující:
 
 - Tato funkce nesouvisí s [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), která používá šifrování disků virtuálního počítače založeného na hostu pomocí nástroje BitLocker (pro Windows) a DM-Crypt (pro Linux).
 
-- Trezor Recovery Services lze zašifrovat pouze s klíči uloženými v Azure Key Vault nacházející se ve **stejné oblasti**. Klíče také musí být pouze **klíče RSA 2048** a měly by být v **povoleném** stavu.
+- Trezor Recovery Services lze zašifrovat pouze s klíči uloženými v Azure Key Vault nacházející se ve **stejné oblasti**. Klíče také musí být pouze **klíče RSA** a měly by být v **povoleném** stavu.
 
 - Přesunutí šifrovaného trezoru Recovery Services CMK napříč skupinami prostředků a předplatnými není v současné době podporováno.
 - Když přesunete Recovery Services trezor již zašifrovaný pomocí klíčů spravovaných zákazníkem na nového tenanta, budete muset aktualizovat Recovery Services trezor a znovu vytvořit a znovu nakonfigurovat spravovanou identitu trezoru a CMK (která by se měla nacházet v novém tenantovi). Pokud to neuděláte, operace zálohování a obnovení začnou selhat. Všechna oprávnění řízení přístupu na základě role (RBAC) nastavená v rámci předplatného se taky musí překonfigurovat.
@@ -42,6 +42,9 @@ Tento článek popisuje následující:
 
     >[!NOTE]
     >K použití zákaznických klíčů pro zálohy v úložišti Recovery Services použijte AZ Module 5.3.0 nebo vyšší.
+    
+    >[!Warning]
+    >Pokud používáte PowerShell ke správě šifrovacích klíčů pro zálohování, nedoporučujeme aktualizovat klíče z portálu.<br></br>Pokud klíč aktualizujete z portálu, nemůžete použít PowerShell k další aktualizaci šifrovacího klíče, dokud nebude k dispozici aktualizace PowerShellu pro podporu nového modelu. Můžete však pokračovat v aktualizaci klíče z Azure Portal.
 
 Pokud jste úložiště Recovery Services nevytvořili a nenakonfigurujete, můžete [si ho přečíst zde](backup-create-rs-vault.md).
 
@@ -59,22 +62,32 @@ Tato část zahrnuje následující kroky:
 
 Aby se dosáhlo zamýšlených výsledků, je nutné, aby všechny tyto kroky následovaly v uvedeném pořadí. Jednotlivé kroky jsou podrobněji popsány níže.
 
-### <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Povolení spravované identity pro váš Recovery Services trezor
+## <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Povolení spravované identity pro váš Recovery Services trezor
 
-Azure Backup používá spravovanou identitu přiřazenou systémem k ověření trezoru Recovery Services pro přístup k šifrovacím klíčům uloženým v Azure Key Vault. Pokud chcete pro svůj Recovery Services trezor povolit spravovanou identitu, postupujte podle níže uvedených kroků.
+Azure Backup používá spravované identity přiřazené systémem a uživatelem přiřazené identity k ověřování trezoru Recovery Services pro přístup k šifrovacím klíčům uloženým v Azure Key Vault. Pokud chcete pro svůj Recovery Services trezor povolit spravovanou identitu, postupujte podle níže uvedených kroků.
 
 >[!NOTE]
 >Po povolení nesmí být spravovaná identita zakázaná **(ještě dočasně** ). Zakázání spravované identity může vést k nekonzistentnímu chování.
+
+### <a name="enable-system-assigned-managed-identity-for-the-vault"></a>Povolit spravovanou identitu přiřazenou systémem pro trezor
 
 **Na portálu:**
 
 1. Přejít na váš Recovery Services trezor – > **Identita**
 
-    ![Nastavení identity](./media/encryption-at-rest-with-cmk/managed-identity.png)
+    ![Nastavení identity](media/encryption-at-rest-with-cmk/enable-system-assigned-managed-identity-for-vault.png)
 
-1. Změňte **stav** na **zapnuto** a vyberte **Uložit**.
+1. Přejděte na kartu **přiřazené systémem** .
 
-1. Generuje se ID objektu, což je spravovaná identita trezoru přiřazená systémem.
+1. Změňte **stav** na **zapnuto**.
+
+1. Kliknutím na **Save (Uložit** ) Povolte identitu trezoru.
+
+Generuje se ID objektu, což je spravovaná identita trezoru přiřazená systémem.
+
+>[!NOTE]
+>Po povolení nesmí být spravovaná identita zakázaná (ještě dočasně). Zakázání spravované identity může vést k nekonzistentnímu chování.
+
 
 **S prostředím PowerShell:**
 
@@ -98,7 +111,28 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Přiřaďte oprávnění k trezoru Recovery Services pro přístup k šifrovacímu klíči v Azure Key Vault
+### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>Přiřazení spravované identity přiřazené uživateli k trezoru
+
+Pokud chcete přiřadit spravovanou identitu pro Recovery Services k vašemu úložišti, proveďte následující kroky:
+
+1.  Přejít na váš Recovery Services trezor – > **Identita**
+
+    ![Přiřazení spravované identity přiřazené uživateli k trezoru](media/encryption-at-rest-with-cmk/assign-user-assigned-managed-identity-to-vault.png)
+
+1.  Přejděte na kartu **přiřazené uživatelem** .
+
+1.  Kliknutím na **+ Přidat** Přidejte spravovanou identitu přiřazenou uživatelem.
+
+1.  V okně **Přidat spravovanou identitu přiřazenou uživateli** , které se otevře, vyberte předplatné pro vaši identitu.
+
+1.  V seznamu vyberte identitu. Můžete také filtrovat podle názvu identity nebo skupiny prostředků.
+
+1.  Po dokončení klikněte na tlačítko **Přidat** a dokončete přiřazení identity.
+
+## <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Přiřaďte oprávnění k trezoru Recovery Services pro přístup k šifrovacímu klíči v Azure Key Vault
+
+>[!Note]
+>Pokud používáte uživatelsky přiřazené identity, musí být stejná oprávnění přiřazena k identitě přiřazené uživateli.
 
 Pro přístup k Azure Key Vault, který obsahuje šifrovací klíč, teď musíte povolit Recovery Services trezor. To se provádí tak, že se pro přístup k Key Vault povolí spravovaná identita Recovery Servicesového trezoru.
 
@@ -120,7 +154,7 @@ Na **portálu**:
 
 1. Vyberte **Uložit** a uložte změny provedené v zásadách přístupu Azure Key Vault.
 
-### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Povolení ochrany obnovitelného odstranění a vyprázdnění na Azure Key Vault
+## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Povolení ochrany obnovitelného odstranění a vyprázdnění na Azure Key Vault
 
 U Azure Key Vault, který ukládá šifrovací klíč, je potřeba **Povolit ochranu před odstraněním a vyprázdněním** . Můžete to provést z uživatelského rozhraní Azure Key Vault, jak je znázorněno níže. (Případně tyto vlastnosti lze nastavit při vytváření Key Vault). Přečtěte si další informace o těchto Key Vaultch [vlastnostech.](../key-vault/general/soft-delete-overview.md)
 
@@ -160,7 +194,7 @@ Pomocí následujícího postupu můžete povolit ochranu pomocí obnovitelného
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
-### <a name="assign-encryption-key-to-the-rs-vault"></a>Přiřazení šifrovacího klíče k trezoru RS
+## <a name="assign-encryption-key-to-the-rs-vault"></a>Přiřazení šifrovacího klíče k trezoru RS
 
 >[!NOTE]
 > Než budete pokračovat, zajistěte následující:
@@ -172,7 +206,7 @@ Pomocí následujícího postupu můžete povolit ochranu pomocí obnovitelného
 
 Jakmile budou tyto možnosti zajištěny, pokračujte výběrem šifrovacího klíče pro váš trezor.
 
-#### <a name="to-assign-the-key-in-the-portal"></a>Přiřazení klíče na portálu
+### <a name="to-assign-the-key-in-the-portal"></a>Přiřazení klíče na portálu
 
 1. Přejít na Recovery Services trezor – **vlastnosti** >
 
@@ -192,7 +226,7 @@ Jakmile budou tyto možnosti zajištěny, pokračujte výběrem šifrovacího kl
     1. Procházet a vyberte klíč z Key Vault v podokně výběr klíče.
 
         >[!NOTE]
-        >Při zadávání šifrovacího klíče pomocí podokna pro výběr klíče se klíč automaticky otočí, kdykoli je povolená nová verze klíče.
+        >Při zadávání šifrovacího klíče pomocí podokna pro výběr klíče se klíč automaticky otočí, kdykoli je povolená nová verze klíče. [Další informace](#enabling-auto-rotation-of-encryption-keys) o povolení automatického rotace šifrovacích klíčů.
 
         ![Vyberte klíč z trezoru klíčů.](./media/encryption-at-rest-with-cmk/key-vault.png)
 
@@ -206,7 +240,7 @@ Jakmile budou tyto možnosti zajištěny, pokračujte výběrem šifrovacího kl
 
     ![Protokol aktivit](./media/encryption-at-rest-with-cmk/activity-log.png)
 
-#### <a name="to-assign-the-key-with-powershell"></a>Přiřazení klíče k PowerShellu
+### <a name="to-assign-the-key-with-powershell"></a>Přiřazení klíče k PowerShellu
 
 Pomocí příkazu [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) Povolte šifrování pomocí klíčů spravovaných zákazníkem a přiřaďte nebo aktualizujte šifrovací klíč, který se má použít.
 
@@ -249,8 +283,8 @@ Než budete pokračovat v konfiguraci ochrany, důrazně doporučujeme, abyste m
 > Než budete pokračovat v konfiguraci ochrany, musíte **úspěšně** dokončit následující kroky:
 >
 >1. Vytvoření trezoru záloh
->1. Povoluje spravovanou identitu přiřazenou systémem úložiště záloh.
->1. Pro přístup k šifrovacím klíčům z vaší Key Vault jsou přiřazena oprávnění k vašemu trezoru záloh.
+>1. Povolena spravovaná identita přiřazená systémem Recovery Servicesového úložiště nebo přiřazení spravované identity přiřazené uživatelem do trezoru
+>1. Pro přístup k šifrovacím klíčům z vaší Key Vault máte přiřazená oprávnění k vašemu trezoru záloh (nebo k spravované identitě přiřazené uživatelem).
 >1. Povolení obnovitelného odstranění a vymazání ochrany pro Key Vault
 >1. Byl přiřazen platný šifrovací klíč pro úložiště záloh.
 >
@@ -311,6 +345,44 @@ Při provádění obnovení souboru budou obnovená data šifrována klíčem po
 ### <a name="restoring-sap-hanasql-databases-in-azure-vms"></a>Obnovení databází SAP HANA/SQL na virtuálních počítačích Azure
 
 Při obnovení ze zálohované SAP HANA/databáze SQL běžící na virtuálním počítači Azure se obnovená data šifrují pomocí šifrovacího klíče, který se používá v umístění cílového úložiště. Může se jednat o klíč spravovaný zákazníkem nebo o klíč spravovaný platformou, který se používá k šifrování disků virtuálního počítače.
+
+## <a name="additional-topics"></a>Další témata
+
+### <a name="enable-encryption-using-customer-managed-keys-at-vault-creation-in-preview"></a>Povolení šifrování pomocí klíčů spravovaných zákazníkem při vytváření trezoru (ve verzi Preview)
+
+>[!NOTE]
+>Povolení šifrování při vytváření trezoru pomocí zákaznických klíčů je omezené na verzi Public Preview a vyžaduje povolení a výpis předplatných. Pokud si chcete zaregistrovat verzi Preview, vyplňte [formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u) a napište nám na [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
+Když je povolené předplatné, zobrazí se karta **záložní šifrování** . Díky tomu můžete v zálohování povolit šifrování pomocí klíčů spravovaných zákazníkem během vytváření nového trezoru Recovery Services. Chcete-li šifrování povolit, proveďte následující kroky:
+
+1. Vedle karty **základy** zadejte na kartě **zálohování šifrování** šifrovací klíč a identitu, která se má použít pro šifrování.
+
+   ![Povolit šifrování na úrovni trezoru](media/encryption-at-rest-with-cmk/enable-encryption-using-cmk-at-vault.png)
+
+
+   >[!NOTE]
+   >Nastavení platí jenom pro zálohování a jsou volitelná.
+
+1. Jako typ šifrování vyberte **použít klíč spravovaný zákazníkem** .
+
+1. Pokud chcete zadat klíč, který se má použít pro šifrování, vyberte příslušnou možnost.
+
+   Můžete zadat identifikátor URI pro šifrovací klíč, nebo procházet a vybrat klíč. Když zadáte klíč pomocí možnosti **Key Vault vyberte** , automatické otočení šifrovacího klíče se automaticky povolí. [Přečtěte si další informace o automatickém otočení](#enabling-auto-rotation-of-encryption-keys). 
+
+1. Zadejte spravovanou identitu přiřazenou uživatelem pro správu šifrování pomocí klíčů spravovaných zákazníkem. Kliknutím na **Vybrat** můžete procházet a vybrat požadovanou identitu.
+
+1. Po dokončení pokračujte přidáním značek (volitelné) a pokračujte v vytváření trezoru.
+
+### <a name="enabling-auto-rotation-of-encryption-keys"></a>Povolení automatického otočení šifrovacích klíčů
+
+Když zadáte klíč spravovaný zákazníkem, který se musí použít k zašifrování záloh, použijte k jeho zadání následující metody:
+
+- Zadejte identifikátor URI klíče.
+- Vybrat z Key Vault
+
+Pomocí možnosti **vybrat z Key Vault** lze povolit automatické otočení pro vybraný klíč. Tím se eliminuje ruční úsilí při aktualizaci na další verzi. Pomocí této možnosti ale:
+- Aby se projevila aktualizace verze klíče, může to trvat až hodinu.
+- Pokud se nová verze klíče projeví, původní verze by měla být k dispozici (v povoleném stavu) pro alespoň jednu další úlohu zálohování po uplatnění aktualizace klíče.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
