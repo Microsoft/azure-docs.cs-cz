@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 03/16/2021
-ms.openlocfilehash: e9031dc77054a2bbac8015bbbdd7b9ed2a35e84f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.date: 03/26/2021
+ms.openlocfilehash: 59847f745037acec47415489cdf61d119a7807af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043338"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936270"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
 
@@ -24,12 +24,13 @@ Klientská aplikace může získat přístup k rozhraní Azure API pro FHIR pros
 
 - Koncový bod FHIR v Azure. 
 
-   Pokud chcete nasadit rozhraní API Azure pro FHIR (spravované služby), můžete použít [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShell](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure](fhir-paas-cli-quickstart.md).
+  Pokud chcete nasadit rozhraní API Azure pro FHIR (spravované služby), můžete použít [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShell](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure](fhir-paas-cli-quickstart.md).
+
 - Registrovaná [aplikace důvěrného klienta](register-confidential-azure-ad-client-app.md) pro přístup ke službě FHIR.
 - Pro přístup ke službě FHIR jste udělili oprávnění k aplikaci důvěrného klienta, například "FHIR data Přispěvatel". Další informace najdete v tématu [Konfigurace služby Azure RBAC pro FHIR](./configure-azure-rbac.md).
 - Po instalaci. 
     
-    Další informace o nástroji pro odesílání najdete v tématu [Začínáme s post](https://www.getpostman.com).
+  Další informace o nástroji pro odesílání najdete v tématu [Začínáme s post](https://www.getpostman.com).
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR Server a podrobnosti ověřování
 
@@ -62,6 +63,8 @@ Pokud se pokusíte o přístup k prostředkům s omezeným přístupem, dojde k 
 ![Ověřování se nezdařilo](media/tutorial-postman/postman-authentication-failed.png)
 
 ## <a name="obtaining-an-access-token"></a>Získání přístupového tokenu
+Vyberte **Get New Access Token** (Získat nový přístupový token).
+
 Pokud chcete získat platný přístupový token, vyberte **autorizace** a v rozevírací nabídce **typ** vyberte **OAuth 2,0** .
 
 ![Nastavte OAuth 2,0](media/tutorial-postman/postman-select-oauth2.png)
@@ -76,13 +79,13 @@ V dialogovém okně **Načíst nový přístupový token** zadejte následujíc�
 |-----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------|
 | Název tokenu            | MYTOKEN                                                                                                         | Název, který zvolíte          |
 | Typ udělení            | Autorizační kód                                                                                              |                            |
-| Adresa URL zpětného volání          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
+| Adresa URL zpětného volání          | `https://www.getpostman.com/oauth2/callback`                                                                    |                            |
 | Ověřovací adresa URL              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` je `https://MYACCOUNT.azurehealthcareapis.com` pro Azure API pro FHIR |
-| Adresa URL přístupového tokenu      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
-| ID klienta             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | ID aplikace             |
-| Tajný klíč klienta         | `XXXXXXXX`                                                                                                        | Tajný klíč klienta          |
-| Obor | `<Leave Blank>` |
-| Stav                |  `1234`                                                                                                           |                            |
+| Adresa URL přístupového tokenu      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                    |                            |
+| ID klienta             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                           | ID aplikace             |
+| Tajný klíč klienta         | `XXXXXXXX`                                                                                                      | Tajný klíč klienta          |
+| Obor | `<Leave Blank>` | Obor se nepoužívá. Proto může být ponecháno prázdné.  
+| Stav                 | `1234`     | [Stav](https://learning.postman.com/docs/sending-requests/authorization/) je neprůhledná hodnota, která zabraňuje padělání požadavků mezi weby. Je volitelný a může mít libovolnou hodnotu, například ' 1234 '.                           |
 | Ověření klienta | Poslat přihlašovací údaje klienta v těle                                                                                 |                 
 
 Vyberte **token žádosti** , který bude provedený pomocí Azure Active Directoryho toku ověřování a token se vrátí do post. Pokud dojde k chybě ověřování, přečtěte si další podrobnosti v konzole pro odesílání. **Poznámka**: na pásu karet vyberte **Zobrazit** a pak vyberte **Zobrazit konzolu pro publikování**. Klávesová zkratka pro konzolu pro odesílání je **ALT + CTRL + C**.
@@ -133,7 +136,7 @@ Vyberte **Odeslat** a určete tak, že pacient byl úspěšně vytvořen.
 
 ![Snímek obrazovky, který ukazuje, že pacient byl úspěšně vytvořen.](media/tutorial-postman/postman-patient-created.png)
 
-Pokud hledání v pacientech zopakujete, měli byste teď vidět záznam pacienta:
+Pokud hledání v pacientech zopakujete, měli byste teď vidět záznam pacienta.
 
 ![Vytvořený pacient](media/tutorial-postman/postman-patient-found.png)
 

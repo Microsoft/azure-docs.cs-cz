@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6eed0ed3e936b0e9a534c82a3105c2ed37cab3d5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485415"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932365"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (Preview) – nejčastější dotazy
 
@@ -36,6 +36,9 @@ Server směrování Azure podporuje pouze Border Gateway Protocol (BGP). Vaše s
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Směruje Server Azure Route Server přenos dat mezi síťové virtuální zařízení a můjmi virtuálními počítači?
 
 No. Server tras Azure vyměňuje pouze trasy protokolu BGP s vaším síťové virtuální zařízení. Přenos dat směřuje přímo z síťové virtuální zařízení k vybranému virtuálnímu počítači a přímo z virtuálního počítače do síťové virtuální zařízení.
+
+### <a name="does-azure-route-server-store-customer-data"></a>Ukládá Azure Route Server data o zákaznících?
+No. Server tras Azure vyměňuje pouze trasy protokolu BGP s vaším síťové virtuální zařízení a pak je šíří do vaší virtuální sítě.
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>Pokud Azure Route Server dostane stejnou trasu z více než jednoho síťové virtuální zařízení, bude programovat všechny kopie trasy (ale každý s jiným dalším segmentem směrování) k virtuálním počítačům ve virtuální síti?
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0231f7f3882218ef88d6151488da6aa23e4cb8e4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580177"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106683"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -46,7 +46,7 @@ Následující diagram znázorňuje komponenty, které nakonfigurujete ve svých
 
 ![Projekce skupiny prostředků](./media/azure-monitor/resource-group-projection.png)
 
-Během tohoto nasazení nakonfigurujete svého klienta Azure AD B2C i klienta služby Azure AD, kde bude hostovaný pracovní prostor Log Analytics. Účtu Azure AD B2C by měla být přiřazena role [globální správce](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) v tenantovi Azure AD B2C. Účet Azure AD, který se používá ke spuštění nasazení, musí mít přiřazenou roli [vlastníka](../role-based-access-control/built-in-roles.md#owner) v předplatném Azure AD. Je také důležité se ujistit, že jste přihlášeni ke správnému adresáři, jak jste dokončili každý krok, jak je popsáno v tématu.
+Během tohoto nasazení nakonfigurujete svého klienta Azure AD B2C i klienta služby Azure AD, kde bude hostovaný pracovní prostor Log Analytics. Účtu Azure AD B2C by měla být přiřazena role [globální správce](../active-directory/roles/permissions-reference.md#global-administrator) v tenantovi Azure AD B2C. Účet Azure AD, který se používá ke spuštění nasazení, musí mít přiřazenou roli [vlastníka](../role-based-access-control/built-in-roles.md#owner) v předplatném Azure AD. Je také důležité se ujistit, že jste přihlášeni ke správnému adresáři, jak jste dokončili každý krok, jak je popsáno v tématu.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. Vytvořte nebo vyberte skupinu prostředků.
 

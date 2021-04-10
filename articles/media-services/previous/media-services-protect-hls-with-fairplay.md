@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15aab28b7dfbaf305412f1080346b54cc6827437
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 870b567d5917c405a3eef70a27b1a19c021d7a80
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009636"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055140"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady
 
@@ -33,7 +33,7 @@ Azure Media Services slouží k dynamickému šifrování obsahu HTTP Live Strea
 
 * **Nejasný klíč pro obálku AES-128**
 
-    Celý blok dat je zašifrovaný pomocí režimu **CBC AES-128** . Dešifrování datového proudu je podporováno v nativním přehrávači pro iOS a OS X. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-protect-with-aes128.md).
+    Celý blok dat je zašifrovaný pomocí režimu **CBC AES-128** . Dešifrování datového proudu je podporováno v nativním přehrávači pro iOS a OS X. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-playready-license-template-overview.md).
 * **Apple FairPlay**
 
     Jednotlivé ukázky videa a zvuku jsou zašifrované pomocí režimu **CBC AES-128** . **Fairplay streamování** (FPS) je integrované do operačních systémů zařízení s nativní podporou pro iOS a Apple TV. Safari v OS X umožňuje použití snímků na základě podpory rozhraní EME (Encrypted Media Extensions).

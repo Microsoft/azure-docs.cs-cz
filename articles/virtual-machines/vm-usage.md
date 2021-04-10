@@ -1,5 +1,5 @@
 ---
-title: Principy využití virtuálních počítačů Azure
+title: Principy používání virtuálních počítačů Azure
 description: Vysvětlení podrobností o využití virtuálních počítačů
 services: virtual-machines
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: ba973bd5609dacf05eca842025d4e828d8a9f841
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102550943"
 ---
-# <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
+# <a name="understanding-azure-virtual-machine-usage"></a>Principy používání virtuálních počítačů Azure
 Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="download-your-usage-details"></a>Stažení podrobností o využití

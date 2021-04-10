@@ -8,19 +8,20 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d5e4920dcc422e848266f35c8a59175b5149b924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7aebb10fb3855936d930685f1a8eef2588140ad1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492739"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930451"
 ---
 # <a name="telephony-concepts"></a>Koncepce telefonního subsystému
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
+
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Komunikační služby Azure, které volají klientské knihovny, se dají použít k přidání telefonního subsystému a sítě PSTN do vašich aplikací. Tato stránka shrnuje klíčové koncepty a možnosti telefonního subsystému. Další informace o konkrétních jazycích a funkcích klientské knihovny najdete v [knihovně volání knihovny](../../quickstarts/voice-video-calling/calling-client-samples.md) .
+Komunikační služby Azure, které volají sady SDK, můžete použít k přidání telefonního subsystému a sítě PSTN do svých aplikací. Tato stránka shrnuje klíčové koncepty a možnosti telefonního subsystému. Další informace o konkrétních jazycích a funkcích sady SDK najdete v [knihovně volání knihovny](../../quickstarts/voice-video-calling/calling-client-samples.md) .
 
 ## <a name="overview-of-telephony"></a>Přehled telefonního subsystému
 Vždycky, když vaši uživatelé komunikují s tradičním telefonním číslem, se volání usnadňují hlasovým voláním sítě PSTN (s použitím veřejné komutované telefonní sítě). Pokud chcete uskutečnit a přijímat volání do veřejné telefonní sítě, musíte do svého prostředku Azure Communications Services přidat možnosti telefonního subsystému. V takovém případě signalizace a média používají pro připojení uživatelů kombinaci technologií založených na protokolu IP a PSTN. Komunikační služby poskytují dva diskrétní způsoby, jak kontaktovat síť PSTN: volání do cloudu Azure a rozhraní SIP.

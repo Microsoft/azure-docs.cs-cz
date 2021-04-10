@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: fa5ecd19863e8a37efdf533e68aeaed053c552f8
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: a5ba50b65cea573b8dbfdb17f671caee37cba459
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731492"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -59,7 +59,7 @@ Při vytváření registrace aplikace postupujte podle těchto kroků:
 Po dokončení registrace se v Azure Portal zobrazí podokno s **přehledem** registrace aplikace. Zobrazí se **ID aplikace (klienta)**. Označuje se taky jako *ID klienta*. Tato hodnota jednoznačně identifikuje vaši aplikaci na platformě Microsoft identity. 
 
 > [!IMPORTANT]
-> Nové registrace aplikací jsou ve výchozím nastavení skryty uživatelům. Až budete připraveni na to, aby uživatelé aplikaci viděli na své [stránce Moje aplikace](../user-help/my-apps-portal-end-user-access.md) , můžete ji povolit. Pokud chcete aplikaci povolit, přejděte v Azure Portal do části **Azure Active Director**  >  **Enterprise Applications** a vyberte aplikaci. Pak na stránce **vlastnosti** přepínací tlačítko **Zobrazit uživatelům?** na Ano.
+> Nové registrace aplikací jsou ve výchozím nastavení skryty uživatelům. Až budete připraveni na to, aby uživatelé aplikaci viděli na své [stránce Moje aplikace](../user-help/my-apps-portal-end-user-access.md) , můžete ji povolit. Pokud chcete aplikaci povolit, přejděte v Azure Portal na **Azure Active Directory**  >  **podnikové aplikace** a vyberte aplikaci. Pak na stránce **vlastnosti** přepínací tlačítko **Zobrazit uživatelům?** na Ano.
 
 Kód vaší aplikace, nebo častěji knihovna ověřování použitá ve vaší aplikaci, používá také ID klienta. ID se používá jako součást ověřování tokenů zabezpečení, které přijímá z platformy identity.
 

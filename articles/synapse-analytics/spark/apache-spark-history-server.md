@@ -10,10 +10,10 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101670694"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
@@ -42,11 +42,11 @@ Server historie Apache Spark je webové uživatelské rozhraní pro dokončené 
 
     ![Otevřete Server historie Spark.](./media/apache-spark-history-server/open-spark-history-server.png)
 
-### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>Otevření webového uživatelského rozhraní serveru historie Sparku z datového uzlu
+### <a name="open-the-spark-history-server-web-ui-from-data-node&quot;></a>Otevření webového uživatelského rozhraní serveru historie Sparku z datového uzlu
 
 1. Z vašeho poznámkového bloku Azure synapse Studio vyberte z výstupní buňky spuštění úlohy možnost **Server historie Spark** nebo z panelu stav na konci dokumentu poznámkového bloku. Vyberte **Podrobnosti o relaci**.
 
-   ![Spustit historii Spark serveru 1](./media/apache-spark-history-server/launch-history-server2.png "Spustit server historie Sparku")
+   ![Spustit historii Spark serveru 1](./media/apache-spark-history-server/launch-history-server2.png &quot;Spustit server historie Sparku")
 
 2. Z panelu snímku vyberte možnost **Server historie Spark** .
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 8ca50ae77d9d9e200db3318b8e087b72697c343a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 3d29e99f3b539fdbea2a19df7ffc25d4e41a5376
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731254"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -36,7 +36,7 @@ K více serverům se lze připojovat prostřednictvím prostředí Windows Power
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Máte další náklady na nastavení brány VPN jako aktivní-aktivní?
 
-Ne.
+No.
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení mezi různými místy?
 
@@ -74,7 +74,7 @@ Brány založené na směrování implementují sítě VPN založené na směrov
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat moji bránu VPN založenou na zásadách na základě směrování?
 
-Ne. Typ brány se nedá změnit ze zásad, které jsou založené na směrování, nebo z směrování na základě zásad. Pokud chcete změnit typ brány, musíte bránu odstranit a znovu vytvořit. Tento proces trvá přibližně 60 minut. Když vytváříte novou bránu, nemůžete zachovat IP adresu původní brány.
+No. Typ brány se nedá změnit ze zásad, které jsou založené na směrování, nebo z směrování na základě zásad. Pokud chcete změnit typ brány, musíte bránu odstranit a znovu vytvořit. Tento proces trvá přibližně 60 minut. Když vytváříte novou bránu, nemůžete zachovat IP adresu původní brány.
 
 1. Odstraňte všechna připojení přidružená k bráně.
 
@@ -93,7 +93,7 @@ Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsa
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>Je možné nasazovat do podsítě brány virtuální počítače nebo instance role?
 
-Ne.
+No.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Je možné získat IP adresu brány VPN předtím, než se vytvoří?
 
@@ -196,6 +196,10 @@ Tato část se týká modelu nasazení Resource Manager.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Návody povolit směrování mezi připojeními VPN typu Site-to-site a my ExpressRoute?
+
+Pokud chcete povolit směrování mezi vaší větví připojenou k ExpressRoute a vaší větví připojenou k připojení VPN typu Site-to-site, budete muset nastavit [Server směrování Azure](../route-server/expressroute-vpn-support.md).
+
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Je možné používat bránu VPN Azure pro provoz mezi místními servery a jinou virtuální sítí?
 
 **Model nasazení Resource Manager**<br>
@@ -246,7 +250,7 @@ K virtuálnímu počítači se lze připojit pomocí privátní IP adresy i z ji
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity-does-all-the-traffic-from-my-vm-go-through-that-connection"></a>Pokud se virtuální počítač nachází ve virtuální síti s možností připojení mezi různými místy, prochází tímto připojením veškerý provoz z virtuálního počítače?
 
-Ne. Bránou virtuální sítě prochází pouze s cílovou IP adresou uvedenou v nastavených rozsazích IP adres místní sítě pro příslušnou virtuální síť. Provoz s cílovou IP adresou v příslušné virtuální síti probíhá v rámci této virtuální sítě. Ostatní provoz je odesílán prostřednictvím služby Load Balancer do veřejných sítí nebo prostřednictvím brány VPN Azure, pokud je použito vynucené tunelování.
+No. Bránou virtuální sítě prochází pouze s cílovou IP adresou uvedenou v nastavených rozsazích IP adres místní sítě pro příslušnou virtuální síť. Provoz s cílovou IP adresou v příslušné virtuální síti probíhá v rámci této virtuální sítě. Ostatní provoz je odesílán prostřednictvím služby Load Balancer do veřejných sítí nebo prostřednictvím brány VPN Azure, pokud je použito vynucené tunelování.
 
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>Řešení potíží s připojením ke vzdálené ploše virtuálního počítače
 

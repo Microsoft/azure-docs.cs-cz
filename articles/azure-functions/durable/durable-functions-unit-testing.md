@@ -4,10 +4,10 @@ description: Přečtěte si, jak Durable Functions testování částí.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103491040"
 ---
 # <a name="durable-functions-unit-testing"></a>Testování částí Durable Functions
@@ -17,7 +17,7 @@ Testování částí je důležitou součástí moderních postupů vývoje soft
 > [!NOTE]
 > Tento článek poskytuje pokyny pro testování částí Durable Functions aplikací cílících na Durable Functions 2. x. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Příklady v tomto článku vyžadují znalost následujících konceptů a platforem:
 

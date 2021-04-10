@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/22/2020
 ms.author: baanders
 ms.openlocfilehash: fb148551db798207a52bd7aef629da79dd3341e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102212806"
 ---
 V `DefaultAzureCredential` případě bude ukázka Hledat přihlašovací údaje v místním prostředí, jako je například přihlášení k Azure v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo v aplikaci Visual Studio nebo Visual Studio Code. Z tohoto důvodu byste se měli *přihlásit k Azure místně* prostřednictvím jednoho z těchto mechanismů a nastavit přihlašovací údaje pro ukázku.
