@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2021
 ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589663"
 ---
 # <a name="social-media-analysis-with-azure-stream-analytics"></a>Analýza sociálních médií pomocí Azure Stream Analytics
@@ -29,7 +29,7 @@ Společnost, která má web s novinkami na pracovišti, má za následek získá
 
 Aby bylo možné v reálném čase na Twitteru identifikovat témata týkající se trendů, společnost potřebuje analýzy v reálném čase o svazku na disku a mínění pro klíčové témata.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V této příručce se naučíte používat klientskou aplikaci, která se připojuje k Twitteru a hledá tweety s určitými hashtagy (které můžete nastavit). Pokud chcete spustit aplikaci a analyzovat tweety pomocí Azure Stream Analytics, musíte mít následující:
 

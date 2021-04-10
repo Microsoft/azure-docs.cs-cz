@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jingwang
 ms.openlocfilehash: 9c274bdfb5854529dbb82bd2d8b7cefdf07390b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588898"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru HDFS pomocí Azure Data Factory
@@ -37,7 +37,7 @@ Konkrétně konektor HDFS podporuje:
 - Kopírování souborů pomocí protokolu *webhdfs* nebo integrované podpory *DistCp* .
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -248,7 +248,7 @@ Tato část popisuje chování, které je výsledkem použití cesty seznamu sou
 
 Aktivita kopírování podporuje použití DistCp ke kopírování souborů do úložiště objektů BLOB v Azure (včetně [připravené kopie](copy-activity-performance.md)) nebo Azure Data Lake Store. V takovém případě může DistCp využít výkon vašeho clusteru místo spuštění v místním prostředí Integration runtime. Použití DistCp poskytuje lepší propustnost kopírování, zejména v případě, že je cluster velmi výkonný. Na základě konfigurace ve vaší datové továrně aktivita kopírování automaticky vytvoří příkaz DistCp, odešle ho do vašeho clusteru Hadoop a monitoruje stav kopírování.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete pomocí DistCp kopírovat soubory z HDFS do úložiště objektů BLOB v Azure (včetně připravené kopie) nebo Azure Data Lake Store, ujistěte se, že cluster Hadoop splňuje následující požadavky:
 

@@ -3,12 +3,12 @@ title: Koncepty – identita a přístup
 description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d49ce27ee74621874281a555651c09a73048928
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026900"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109811"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
@@ -93,6 +93,9 @@ Aby se zabránilo vytváření rolí, které se nedají přiřadit ani odstranit
    Přidaná oprávnění se zobrazí v sekci **oprávnění** pro daný objekt.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>Přístup a identita správce NSX – T
+
+>[!NOTE]
+>NSX-T 2,5 se aktuálně podporuje.
 
 Pro přístup ke Správci NSX-T použijte účet *správce* . Má úplná oprávnění a umožňuje vytvářet a spravovat brány (T1) vrstvy 1 (T1), segmenty (logické přepínače) a všechny služby. Oprávnění poskytují přístup k bráně NSX-T úrovně 0 (T0). Změna v bráně T0 by mohla způsobit snížení výkonu sítě nebo přístupu k privátnímu cloudu. Otevřete žádost o podporu v Azure Portal, abyste požádali o změny v bráně NSX-T T0.
 

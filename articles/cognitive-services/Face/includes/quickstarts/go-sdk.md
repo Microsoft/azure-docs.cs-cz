@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 2c693c9e972cdfc66cce0d52323c113b6006bd97
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445431"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958074"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro funkci přejít. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -22,12 +22,12 @@ Použijte klientskou knihovnu služby FACET k přechodu na:
 
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
+* [Vytvoření a výuka person](#create-and-train-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 
 [Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [Stažení sady SDK](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
@@ -106,7 +106,7 @@ Tyto ukázky kódu ukazují, jak dokončit základní úlohy pomocí klientské 
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
+* [Vytvoření a výuka person](#create-and-train-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -161,7 +161,7 @@ Následující kód vytiskne podrobnosti o shodě do konzoly.
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
 
 
-## <a name="create-and-train-a-person-group"></a>Vytvoření a výuka skupiny osob
+## <a name="create-and-train-a-persongroup"></a>Vytvoření a výuka person
 
 Pro krokování v tomto scénáři je nutné uložit následující image do kořenového adresáře projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
@@ -202,11 +202,11 @@ Jakmile budete mít k plošky, provedete tuto **osobu** , aby bylo možné ident
 Operace identifikace přebírá obrázek osoby (nebo více lidí) a hledá identitu každé plošky v imagi (vyhledávání rozpoznávání obličeje). Porovnává každou zjištěnou plochu s **osobou**, databázi různých objektů **osob** , jejichž funkce obličeje jsou známy.
 
 > [!IMPORTANT]
-> Aby bylo možné spustit tento příklad, musíte nejprve spustit kód v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group).
+> Aby bylo možné spustit tento příklad, musíte nejprve spustit kód v části [Vytvoření a výuka osoby](#create-and-train-a-persongroup).
 
 ### <a name="get-a-test-image"></a>Získat image testu
 
-Následující kód vypadá v kořenu projektu _test-image-person-group.jpg_ obrázku a načítá ho do paměti programu. Tento obrázek najdete ve stejném úložišti jako obrázky používané v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
+Následující kód vypadá v kořenu projektu _test-image-person-group.jpg_ obrázku a načítá ho do paměti programu. Tento obrázek najdete ve stejném úložišti jako obrázky používané v části [Vytvoření a výuka osoby](#create-and-train-a-persongroup): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 

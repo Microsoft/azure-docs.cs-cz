@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: bc1978f6ed0aa3e38f25fa03fc54ddc7d4efb9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033329"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961060"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -43,7 +43,7 @@ Některé prostředky negenerují metriky neustále. Azure například neshroma�
 
 [Většina metrik v Azure se ukládá po dobu 93 dnů](../essentials/data-platform-metrics.md#retention-of-metrics). V každém grafu však můžete zadávat dotazy na data maximálně za 30 dnů. Toto omezení neplatí pro [metriky založené na protokolech](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
-**Řešení:** Pokud se zobrazí prázdný graf nebo se v grafu zobrazí pouze část dat metriky, ověřte, zda rozdíl mezi počátečním a koncovým datem v nástroji pro výběr času nepřekročí 30 dní.
+**Řešení:** Pokud se zobrazí prázdný graf nebo se v grafu zobrazí pouze část dat metriky, ověřte, zda rozdíl mezi počátečním a koncovým datem v nástroji pro výběr času nepřekročí 30 dní. Po výběru intervalu 30 dnů můžete [Posunout](metrics-charts.md#pan) graf tak, aby se zobrazilo okno úplné uchovávání.
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Všechny hodnoty metrik byly mimo vymezený rozsah osy Y
 
