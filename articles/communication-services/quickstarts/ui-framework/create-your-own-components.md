@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 093fcfd95d291d959ed49cc39a227a99f14a0383
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 798b898f6e2367e3096bcf985715fd48de3d394f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930213"
 ---
 # <a name="quickstart-create-your-own-ui-framework-component"></a>Rychlý Start: Vytvoření vlastní komponenty architektury uživatelského rozhraní
 
@@ -22,7 +22,7 @@ Začněte s komunikačními službami Azure pomocí architektury uživatelského
 
 V tomto rychlém startu se dozvíte, jak vytvořit vlastní komponenty pomocí předdefinovaného rozhraní stavu nabízeného architekturou uživatelského rozhraní. Tento přístup je ideální pro vývojáře, kteří potřebují další přizpůsobení a chtějí používat vlastní prostředky návrhu pro prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (doporučeno uzlem 12).
@@ -47,7 +47,7 @@ Na konci tohoto procesu byste měli mít úplnou aplikaci v rámci této složky
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Pomocí `npm install` příkazu nainstalujte pro JavaScript službu Azure Communication Services volání klientské knihovny. Přesuňte poskytnuté tarballu (Private Preview) do adresáře moje aplikace.
+Pomocí `npm install` příkazu nainstalujete službu Azure Communication Services, která volá sadu SDK pro JavaScript. Přesuňte poskytnuté tarballu (Private Preview) do adresáře moje aplikace.
 
 ```console
 
@@ -71,7 +71,7 @@ npm run start
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny uživatelského rozhraní služby Azure Communication Services:
+Následující třídy a rozhraní zpracovávají některé hlavní funkce sady SDK uživatelského rozhraní služby Azure Communication Services:
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

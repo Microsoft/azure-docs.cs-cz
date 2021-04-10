@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c258ac62617cb6ac954e0b8c59928225c7f477b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518734"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935565"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -110,15 +110,16 @@ Můžete také upravit tabulku spustit seznam a vybrat vícenásobná spuštěn�
 
 ![Podrobnosti o spuštění v Azure Machine Learning Studiu](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="view-log-files-for-a-run"></a>Zobrazení souborů protokolu pro spuštění 
+### <a name="view-and-download-log-files-for-a-run"></a>Zobrazení a stažení souborů protokolu pro spuštění 
 
 Soubory protokolu jsou zásadním prostředkem pro ladění úloh Azure ML. Přechod k podrobnostem konkrétního spuštění, aby se zobrazily jeho protokoly a výstupy:  
 
 1. Přejděte na kartu **experimenty** .
 1. Vyberte runID pro konkrétní spuštění.
 1. V horní části stránky vyberte **výstupy a protokoly** .
+2. Vyberte **Stáhnout vše** a Stáhněte si všechny protokoly do složky zip.
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="Snímek obrazovky s částí výstupu a protokolů běhu":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/download-logs.png" alt-text="Snímek obrazovky s částí výstupu a protokolů běhu":::
 
 Níže uvedené tabulky zobrazují obsah souborů protokolu ve složkách, které vidíte v této části.
 

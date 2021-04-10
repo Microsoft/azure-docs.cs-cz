@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
 ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105047775"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
@@ -230,7 +230,7 @@ Microsoft [Azure Application Gateway](../../application-gateway/overview.md) pos
 
 ![Application Gateway](./media/overview/azure-security-figure-2.png)
 
-Umožňuje optimalizovat produktivitu webové farmy tím, že se v Application Gateway ukončí ukončení protokolu TLS náročné na procesor (označované také jako "přesměrování zpracování TLS" nebo "přemostění TLS"). Poskytuje taky další možnosti směrování vrstvy 7, jako je kruhové dotazování příchozích přenosů, spřažení relací na základě souborů cookie, směrování založené na cestách URL a možnost hostování několika webů za jedním Application Gateway. Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7.
+Umožňuje optimalizovat produktivitu webové farmy tím, že se v Application Gateway ukončí ukončení protokolu TLS náročné na procesor (označované také jako "přesměrování zpracování TLS&quot; nebo &quot;přemostění TLS"). Poskytuje taky další možnosti směrování vrstvy 7, jako je kruhové dotazování příchozích přenosů, spřažení relací na základě souborů cookie, směrování založené na cestách URL a možnost hostování několika webů za jedním Application Gateway. Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7.
 
 Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu.
 

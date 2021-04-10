@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 45f3a7152add8d64d961feb055413760df01eb94
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105025607"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uchovávání informací uživatelů pro webové aplikace pomocí Application Insights
@@ -36,7 +36,7 @@ Pokud se vám ještě nezobrazuje data na portálu Application Insights, [Přeč
 
 Uživatelé mohou umístit ukazatel myši nad buňky nástroje pro uchovávání a získat tak přístup k tlačítku Analytics a popisům tlačítek, které vysvětlují, co buňka znamená. Tlačítko Analýza převezme uživatele do nástroje Analytics Tool s předem vyplněným dotazem, který vygeneruje uživatele z buňky. 
 
-## <a name="use-business-events-to-track-retention"></a>Použití obchodních událostí ke sledování uchovávání informací
+## <a name="use-business-events-to-track-retention&quot;></a>Použití obchodních událostí ke sledování uchovávání informací
 
 Chcete-li získat nejužitečnější analýzu uchovávání informací, změřte události, které představují významné obchodní aktivity. 
 
@@ -45,7 +45,7 @@ Mnoho uživatelů může například v aplikaci otevřít stránku bez hraní hr
 Dobrým zvykem je zakódovat vlastní události, které reprezentují klíčové obchodní akce, a využít je k analýze uchovávání informací. Chcete-li zachytit výsledek hry, je nutné napsat řádek kódu k odeslání vlastní události do Application Insights. Pokud ho píšete v kódu webové stránky nebo v Node.JS, vypadá to jako:
 
 ```JavaScript
-    appinsights.trackEvent("won game");
+    appinsights.trackEvent(&quot;won game");
 ```
 
 Nebo v kódu serveru ASP.NET:

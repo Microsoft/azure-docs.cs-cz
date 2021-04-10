@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s BlueJeans pro Azure AD
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat BlueJeans pro Azure AD s Azure Active 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -144,13 +144,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-bluejeans-for-azure-ad-sso"></a>Konfigurace BlueJeans pro jednotné přihlašování Azure AD
+## <a name="configure-bluejeans-for-azure-ad-sso&quot;></a>Konfigurace BlueJeans pro jednotné přihlašování Azure AD
 
 1. V jiném okně webového prohlížeče se přihlaste k **BlueJeans pro web společnosti Azure AD** jako správce.
 
 2. Přejít na **\> Nastavení skupiny správců \> zabezpečení**.
 
-    ![Snímek obrazovky zobrazuje část okna prohlížeče s vybranou kartou správce s nastavením skupiny a vybraným zabezpečením.](./media/bluejeans-tutorial/ic785868.png "Správce")
+    ![Snímek obrazovky zobrazuje část okna prohlížeče s vybranou kartou správce s nastavením skupiny a vybraným zabezpečením.](./media/bluejeans-tutorial/ic785868.png &quot;Správce")
 
 3. V části **zabezpečení** proveďte následující kroky:
 
