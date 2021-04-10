@@ -4,10 +4,10 @@ description: Naučte se, jak lépe odhadnout náklady, které vám mohou vznikno
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578557"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby

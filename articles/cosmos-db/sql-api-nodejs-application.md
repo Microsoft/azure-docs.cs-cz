@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359536"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: vytvoření Node.js webové aplikace pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
@@ -39,7 +39,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Připojení aplikace ke službě Azure Cosmos DB
 > * Spuštění a nasazení aplikace v Azure
 
-## <a name="prerequisites"></a><a name="_Toc395783176"></a>Předpoklady
+## <a name="prerequisites"></a><a name="_Toc395783176"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující prostředky:
 

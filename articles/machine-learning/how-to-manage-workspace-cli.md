@@ -11,10 +11,10 @@ ms.date: 03/05/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
 ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102489544"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
@@ -22,7 +22,7 @@ ms.locfileid: "102489544"
 
 V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s Azure Machine Learning prostředky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -402,7 +402,7 @@ az group delete -g <resource-group-name>
 
 Další informace najdete v tématu [AZ ml Workspace Delete](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

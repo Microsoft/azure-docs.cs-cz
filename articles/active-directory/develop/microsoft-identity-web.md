@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100102542"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
@@ -68,7 +68,7 @@ Tento ukázkový příkaz rozhraní .NET CLI, který je pořízený z našeho [k
 dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
-#### <a name="github"></a>GitHub
+#### <a name="github"></a>GitHubu
 
 Microsoft Identity web je open source projekt hostovaný na GitHubu: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-web</a>
 

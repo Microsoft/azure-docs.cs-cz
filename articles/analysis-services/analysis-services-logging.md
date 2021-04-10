@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2bee856adef1208aabbe65ecd5fd11235579bb82
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100582705"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
@@ -215,7 +215,7 @@ Existují stovky dotazů, které můžete použít. Další informace o dotazech
 
 V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako server služby Analysis Service. Pak použijete Set-AzDiagnosticSetting k zapnutí protokolování diagnostiky a odeslání výstupu do nového účtu úložiště.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 K dokončení tohoto kurzu musíte mít následující prostředky:
 
 * Existující server Azure Analysis Services. Pokyny k vytvoření prostředku serveru najdete v tématu [vytvoření serveru v Azure Portal](analysis-services-create-server.md)nebo [Vytvoření Azure Analysis Servicesho serveru pomocí PowerShellu](analysis-services-create-powershell.md).

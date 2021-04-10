@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 419f25ee3df471bc2fc4526254f5677b8bd71856
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96342691"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Kurz: Konfigurace ověřování identity cloudové platformy SAP pro Automatické zřizování uživatelů
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v rámci ověřo
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

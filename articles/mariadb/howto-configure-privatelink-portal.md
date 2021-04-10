@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98659620"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí portálu
@@ -179,7 +179,7 @@ V této části vytvoříte na server MariaDB privátní koncový bod.
     ![Privátní odkaz se vytvořil.](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
 
     > [!NOTE] 
-    > Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekladuje na nakonfigurovanou soukromou IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).
+    > Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekládá na nakonfigurovanou privátní IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Připojení k virtuálnímu počítači přes vzdálenou plochu (RDP)
 

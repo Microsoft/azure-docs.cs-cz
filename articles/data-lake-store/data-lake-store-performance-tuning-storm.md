@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: twooley
 ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97725033"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen1
 
 Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu topologie Azure. Je například důležité pochopit charakteristiky práce prováděné spoutů a šrouby (zda je práce v/v nebo v paměti). Tento článek obsahuje řadu pokynů pro ladění výkonu, včetně řešení běžných potíží.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).

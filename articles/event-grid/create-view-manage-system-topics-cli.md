@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak pomocí Azure CLI vytvářet, zobrazov
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c847c7f25e3a656b798e186a408e560b9ee9e6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98633218"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Vytváření, zobrazování a Správa systémových témat Event Grid pomocí Azure CLI

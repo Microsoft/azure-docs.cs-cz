@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97107342"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánování ve službě Azure Kubernetes Service (AKS)

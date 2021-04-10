@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359910"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure
@@ -38,7 +38,7 @@ Ostatní části Konfigurace skupiny dostupnosti se musí provádět ručně, na
 I když tento článek používá šablony pro rychlý Start Azure ke konfiguraci prostředí skupiny dostupnosti, je taky možné ho použít [Azure Portal](availability-group-azure-portal-configure.md), [PowerShellu nebo rozhraní příkazového řádku Azure](availability-group-az-commandline-configure.md)nebo taky [ručně](availability-group-manually-configure-tutorial.md) . 
  
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 K automatizaci nastavení skupiny dostupnosti Always On pomocí šablon pro rychlý Start musíte mít následující požadavky: 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
 - Skupina prostředků s řadičem domény. 

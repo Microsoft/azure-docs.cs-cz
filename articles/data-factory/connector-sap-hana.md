@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
 ms.openlocfilehash: ce3c1e22dd030c0730bf4d9859591c00860908a7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382272"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
@@ -44,7 +44,7 @@ Konkrétně tento konektor SAP HANA podporuje:
 > [!TIP]
 > Chcete-li kopírovat data **do** SAP HANA úložiště dat, použijte obecný konektor ODBC. Podrobnosti najdete v části [SAP HANA jímka](#sap-hana-sink) . Všimněte si, že propojené služby konektoru SAP HANA Connector a konektor ODBC mají jiný typ, takže se nedá znovu použít.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento konektor SAP HANA, musíte:
 

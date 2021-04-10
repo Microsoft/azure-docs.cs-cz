@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 552d53ff0257105ff61397e281504c5270512319
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103573859"
 ---
 # <a name="use-powershell-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů a souborů v Azure Data Lake Storage Gen2
@@ -25,7 +25,7 @@ Další informace o tom, jak získat, nastavit a aktualizovat seznamy řízení 
 
 [Referenční informace](/powershell/module/Az.Storage/)  |  Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
