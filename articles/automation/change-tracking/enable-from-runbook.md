@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: e5b42d6102737b778ea5d19cd7da3c2f64881b1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100585931"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Povolení řešení Change Tracking a Inventory z runbooku
@@ -24,7 +24,7 @@ Tato metoda používá dva Runbooky:
 * **Enable-MultipleSolution** – primární Runbook, který vyzývá k informacím o konfiguraci, zadá dotaz na zadaný virtuální počítač a provede další kontroly ověřování a potom vyvolá sadu Runbook **Enable-AutomationSolution** pro konfiguraci Change Tracking a inventáře pro každý virtuální počítač v zadané skupině prostředků.
 * **Enable-AutomationSolution** – povolí Change Tracking a inventář pro jeden nebo více virtuálních počítačů zadaných v cílové skupině prostředků. Ověří splnění požadavků, ověří, že je nainstalované rozšíření virtuálního počítače Log Analytics a když se nenalezne, nainstaluje a přidá virtuální počítače do konfigurace oboru v zadaném Log Analytics pracovním prostoru, který je propojený s účtem Automation.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../automation-security-overview.md) pro správu počítačů.

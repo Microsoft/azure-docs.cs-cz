@@ -3,15 +3,15 @@ title: Azure Marketplace fondu hostitelů Windows Virtual Desktop (Classic) – 
 description: Postup vytvoření fondu hostitelů pro virtuální počítače s Windows (Classic) pomocí Azure Marketplace.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008589"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121876"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Kurz: Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic)
 
@@ -80,10 +80,10 @@ Karta **Konfigurace virtuálních počítačů** :
 1. Buď přijměte výchozí hodnoty, nebo upravte počet a velikost virtuálních počítačů.
 
     >[!NOTE]
-    >Pokud se v selektoru velikosti nezobrazí konkrétní velikost virtuálního počítače, kterou hledáte, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace. Pokud si chcete vyžádat velikost, vytvořte žádost nebo si přehlaste stávající požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Pokud se v selektoru velikosti nezobrazí konkrétní velikost virtuálního počítače, kterou hledáte, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace.
 
-1. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte *předponu*, virtuální počítače se budou jmenovat **prefix-0**, **prefix-1** atd.
-1. Vyberte **Další: nastavení virtuálního počítače**.
+2. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte *předponu*, virtuální počítače se budou jmenovat **prefix-0**, **prefix-1** atd.
+3. Vyberte **Další: nastavení virtuálního počítače**.
 
 ### <a name="virtual-machine-settings"></a>Nastavení virtuálního počítače
 

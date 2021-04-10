@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
 ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100383224"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>Jak vytvořit plány pro nabídku spravované služby
@@ -79,12 +79,12 @@ Chcete-li přidat až 10 000 ID předplatných s. Soubor CSV:
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
-V této části se vytvoří manifest s autorizačními informacemi pro správu zákaznických prostředků. Tyto informace jsou nutné, aby bylo možné povolit [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md).
+V této části se vytvoří manifest s autorizačními informacemi pro správu zákaznických prostředků. Tyto informace se vyžadují k povolení [správy delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md).
 
 Projděte si [klienty, role a uživatele ve scénářích Azure Lighthouse](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles) , abyste zjistili, které role jsou podporované, a osvědčené postupy pro definování autorizací.
 
 > [!NOTE]
-> Uživatelé a role v autorizačních položkách budou platit pro každého zákazníka, který plán aktivuje. Pokud chcete omezit přístup na konkrétního zákazníka, budete muset publikovat privátní plán pro výhradní použití.
+> Uživatelé a role ve vašich položkách autorizace budou platit pro všechny zákazníky, kteří si plán aktivují. Pokud chcete omezit přístup na konkrétního zákazníka, musíte publikovat privátní plán, který bude využívat výhradně tento zákazník.
 
 ### <a name="manifest"></a>Manifest
 

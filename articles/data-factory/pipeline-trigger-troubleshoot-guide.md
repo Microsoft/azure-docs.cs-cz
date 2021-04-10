@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
 ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105563408"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Řešení potíží s orchestrací kanálu a triggery v Azure Data Factory
@@ -66,7 +66,7 @@ Při vytváření aktivity kopírování vyberte možnost **binární kopírová
 
 ### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime-for-data-flow"></a>Spuštění kanálu se při dosažení limitu kapacity prostředí Integration runtime pro tok dat nezdařilo.
 
-**Chybu**
+**Problém**
 
 Chybová zpráva:
 
@@ -135,7 +135,7 @@ Známá fakta o příkazu *foreach*
  **Řešení**
  
 * Limit souběžnosti: Pokud má váš kanál zásady souběžnosti, ověřte, že neprobíhá žádná stará spuštění kanálu. Maximální souběžnost kanálu povolená v Azure Data Factory je 10 kanálů. 
-* Omezení monitorování: na plátně pro vytváření ADF vyberte svůj kanál a určete, jestli má přiřazenou vlastnost souběžnosti. Pokud k tomu dojde, přejdete do zobrazení monitorování a zajistěte, aby v posledních 45 dnech nic neprobíhalo. Pokud je něco v průběhu, můžete ho zrušit a nové spuštění kanálu by se mělo spustit.
+* Omezení monitorování: na plátně pro vytváření ADF vyberte svůj kanál a určete, jestli má přiřazenou vlastnost souběžnosti. Pokud ano, přejděte do zobrazení Monitorování a ujistěte se, že právě neprobíhá žádné spuštění z posledních 45 dnů. Pokud je něco v průběhu, můžete ho zrušit a nové spuštění kanálu by se mělo spustit.
 * Přechodné problémy: je možné, že váš běh byl ovlivněn přechodným problémem sítě, selháním přihlašovacích údajů, výpadky služeb atd.  Pokud k tomu dojde, Azure Data Factory má interní proces obnovení, který monitoruje všechna spuštění a spouští je, když si vyvšimla, že došlo k chybě. K tomuto procesu dochází každou hodinu, takže pokud je spuštění zablokované déle než jednu hodinu, vytvořte případ podpory.
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>Pro aktivity v kopírování ADF a toku dat se prodlouží doba spuštění.

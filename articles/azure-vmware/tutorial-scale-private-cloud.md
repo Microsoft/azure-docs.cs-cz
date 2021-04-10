@@ -4,10 +4,10 @@ description: V tomto kurzu použijete Azure Portal ke škálování privátního
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103463586"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Kurz: škálování privátního cloudu řešení Azure VMware
@@ -20,7 +20,7 @@ V tomto kurzu použijete Azure Portal k těmto akcím:
 > * Přidání clusteru do existujícího privátního cloudu
 > * Přidání hostitelů do existujícího clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu budete potřebovat existující privátní cloud. Pokud jste ještě nevytvořili privátní cloud, vytvořte ho pomocí [kurzu Vytvoření privátního cloudu](tutorial-create-private-cloud.md) . 
 

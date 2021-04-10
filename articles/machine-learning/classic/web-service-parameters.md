@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
 ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518330"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Použít parametry webové služby Azure Machine Learning Studio (Classic)
@@ -61,8 +61,8 @@ Předpokládejme například, že máme experiment s modulem [exportu dat][write
    Vyberte možnost nastavit jako parametr webové služby.
    
    Položka se přidá do části **parametry webové služby** v dolní části podokna vlastností s názvem cesta k objektu BLOB začínajícího kontejnerem. Toto je parametr webové služby, který je nyní přidružen k tomuto parametru modulu [Export dat][writer] .
-4. Chcete-li přejmenovat parametr webové služby, klikněte na jeho název, zadejte "cestu k objektu BLOB" a stiskněte klávesu **ENTER** . 
-5. Chcete-li zadat výchozí hodnotu pro parametr webové služby, klikněte na ikonu napravo od názvu, vyberte možnost zadat výchozí hodnotu, zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu **ENTER** .
+4. Chcete-li přejmenovat parametr webové služby, klikněte na jeho název, zadejte "cestu k objektu BLOB&quot; a stiskněte klávesu **ENTER** . 
+5. Chcete-li zadat výchozí hodnotu pro parametr webové služby, klikněte na ikonu napravo od názvu, vyberte možnost zadat výchozí hodnotu, zadejte hodnotu (například &quot;container1/output1.csv") a stiskněte klávesu **ENTER** .
    
    ![Parametr webové služby](./media/web-service-parameters/parameter.png)
 6. Klikněte na **Spustit**. 

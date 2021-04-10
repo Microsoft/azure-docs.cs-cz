@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103464101"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
@@ -38,7 +38,7 @@ Funkce Azure, kterou vytvoříte v tomto kurzu, filtruje data o teplotě vygener
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -77,7 +77,7 @@ Vytvořte šablonu řešení Functions v jazyce C#, kterou lze přizpůsobit vla
 
    ![Zadání úložiště imagí Dockeru](./media/tutorial-deploy-function/repository.png)
 
-### <a name="add-your-registry-credentials"></a>Přidání přihlašovacích údajů registru
+### <a name="add-your-registry-credentials&quot;></a>Přidání přihlašovacích údajů registru
 
 V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejneru, které soubor sdílí s modulem runtime IoT Edge. Modul runtime tyto přihlašovací údaje potřebuje k přetažení vašich privátních imagí do zařízení IoT Edge.
 
@@ -87,7 +87,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo**, které jste zkopírovali z registru kontejneru Azure.
 3. Soubor uložte.
 
-### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
+### <a name=&quot;select-your-target-architecture&quot;></a>Vyberte cílovou architekturu.
 
 V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
@@ -95,7 +95,7 @@ V současné době Visual Studio Code může vyvíjet moduly C pro zařízení s
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 
-### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
+### <a name=&quot;update-the-module-with-custom-code&quot;></a>Aktualizace modulu pomocí vlastního kódu
 
 Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici před jejich přesměrováním na IoT Hub.
 
@@ -120,7 +120,7 @@ Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici p�
    {
        public static class CSharpFunction
        {
-           [FunctionName("CSharpFunction")]
+           [FunctionName(&quot;CSharpFunction")]
            public static async Task FilterMessageAndSendMessage(
                [EdgeHubTrigger("input1")] Message messageReceived,
                [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,

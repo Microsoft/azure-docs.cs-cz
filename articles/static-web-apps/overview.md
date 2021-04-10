@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: f4e900c8bcdcb5febec39421e098b19ad10b8b00
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105558886"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Co je Azure static Web Apps Preview?

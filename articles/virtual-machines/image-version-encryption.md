@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
 ms.openlocfilehash: 258d8ab6ab23a95d73b8ed0c2549f373cf097674
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102554084"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
@@ -23,7 +23,7 @@ Pro šifrování imagí můžete spoléhat na klíče spravované platformou neb
 
 Šifrování na straně serveru prostřednictvím klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do trezoru klíčů, nebo vygenerovat nové klíče RSA v Azure Key Vault.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek vyžaduje, abyste již v každé oblasti, kam chcete replikovat bitovou kopii, nastavili šifrování disku:
 

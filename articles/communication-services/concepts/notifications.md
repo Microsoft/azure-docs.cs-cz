@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9bf3067737ee1f4e15deaf31677513e5ac99cbd1
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9a878dc5cdbbe336e7279d0cd919bd17cd42d0e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108124"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728211"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Chat a volání sad SDK služby Azure Communications vytvoří kanál pro zasílání zpráv v reálném čase, který umožňuje efektivní a spolehlivé doručování zpráv do připojených klientů. Díky tomu můžete do svých aplikací vytvořit bohatou funkci komunikace v reálném čase, aniž byste museli implementovat složitou logiku dotazování HTTP. V mobilních aplikacích ale tento kanál signalizace zůstane připojený jenom v případě, že je vaše aplikace aktivní v popředí. Pokud chcete, aby uživatelé přijímali příchozí hovory nebo zprávy chatu, když je vaše aplikace na pozadí, měli byste použít nabízená oznámení.
 

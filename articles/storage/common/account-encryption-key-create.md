@@ -6,123 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2020
+ms.date: 03/31/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8150375eff98374e21d200d98c04158b07f1c243
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2bc71100a92d1811d69af31a7a3085af36f60a8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789688"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121927"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
 Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení používá úložiště fronty a úložiště tabulek klíč, který je vymezen na službu a je spravován společností Microsoft. K šifrování dat front nebo tabulek můžete také použít klíče spravované zákazníkem. Pokud chcete používat klíče spravované zákazníkem s frontami a tabulkami, musíte nejdřív vytvořit účet úložiště, který používá šifrovací klíč, který je vymezen na účet, a ne na službu. Po vytvoření účtu, který používá šifrovací klíč účtu pro data front a tabulek, můžete nakonfigurovat klíče spravované zákazníkem pro tento účet úložiště.
 
 Tento článek popisuje, jak vytvořit účet úložiště, který spoléhá na klíč, který je vymezený pro daný účet. Při prvním vytvoření účtu používá společnost Microsoft klíč účtu k šifrování dat v účtu a tento klíč spravuje Microsoft. Následně můžete nakonfigurovat klíče spravované zákazníkem pro účet, abyste mohli využít výhod těchto výhod, včetně možnosti poskytovat vlastní klíče, aktualizovat verzi klíče, otáčet klíče a odvolávat řízení přístupu.
-
-## <a name="about-the-feature"></a>O funkci
-
-Pokud chcete vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu pro frontu a úložiště tabulek, musíte se nejdřív zaregistrovat, aby se tato funkce používala v Azure. V důsledku omezené kapacity si uvědomte, že může trvat několik měsíců, než se schválí žádosti o přístup.
-
-Můžete vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu pro frontu a úložiště tabulek v následujících oblastech:
-
-- East US
-- Středojižní USA
-- Západní USA 2  
-
-### <a name="register-to-use-the-account-encryption-key"></a>Registrace pro použití šifrovacího klíče účtu
-
-K registraci pro použití šifrovacího klíče účtu s frontou nebo úložištěm tabulek použijte PowerShell nebo Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
-
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud se chcete zaregistrovat v Azure CLI, zavolejte příkaz [AZ Feature Register](/cli/azure/feature#az-feature-register) .
-
-```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[Šablona](#tab/template)
-
-–
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Ověření stavu registrace
-
-Pokud chcete zjistit stav registrace pro frontu nebo úložiště tabulky, použijte PowerShell nebo Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Pokud chcete zjistit stav vaší registrace pomocí PowerShellu, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
-
-```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[Šablona](#tab/template)
-
-–
-
----
-
-### <a name="re-register-the-azure-storage-resource-provider"></a>Znovu zaregistrovat poskytovatele prostředků Azure Storage
-
-Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. K opětovné registraci poskytovatele prostředků použijte PowerShell nebo Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Chcete-li znovu zaregistrovat poskytovatele prostředků v prostředí PowerShell, zavolejte příkaz [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud chcete poskytovatele prostředků v Azure CLI znovu zaregistrovat, zavolejte příkaz [AZ Provider Register](/cli/azure/provider#az-provider-register) .
-
-```azurecli
-az provider register --namespace 'Microsoft.Storage'
-```
-
-# <a name="template"></a>[Šablona](#tab/template)
-
-–
-
----
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Vytvoření účtu, který používá šifrovací klíč účtu
 
@@ -247,6 +147,10 @@ az storage account show /
 –
 
 ---
+
+## <a name="pricing-and-billing"></a>Ceny a fakturace
+
+Účet úložiště, který je vytvořený tak, aby používal šifrovací klíč s oborem, se účtuje za kapacitu úložiště tabulky a transakce s jinou sazbou, než je účet, který používá výchozí klíč v oboru služby. Podrobnosti najdete v tématu [ceny služby Azure Table Storage](https://azure.microsoft.com/pricing/details/storage/tables/).
 
 ## <a name="next-steps"></a>Další kroky
 

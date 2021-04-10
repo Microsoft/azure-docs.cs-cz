@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0bddb03094b73dbd6d3b8d44c76ab242caa515dc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466758"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727854"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Přehled řízení přístupu na základě role v Azure Active Directory
 
@@ -30,15 +30,13 @@ Tento článek popisuje, jak porozumět řízení přístupu na základě role A
 Oba systémy obsahují podobně použité definice rolí a přiřazení rolí. Oprávnění role Azure AD se ale nedají použít ve vlastních rolích Azure ani naopak.
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Principy řízení přístupu na základě role v Azure AD
-Azure AD podporuje 2 typy definic rolí – 
+Azure AD podporuje 2 typy definic rolí:
 * [Předdefinované role](./permissions-reference.md)
 * [Vlastní role](./custom-create.md)
 
 Předdefinované role jsou mimo box s pevnou sadou oprávnění. Tyto definice rolí nelze upravovat. Existuje mnoho [předdefinovaných rolí](./permissions-reference.md) , které Azure AD podporuje, a seznam roste. Azure AD podporuje také [vlastní role](./custom-create.md), aby bylo možné zaokrouhlit okraje a splnit vaše sofistikované požadavky. Udělení oprávnění pomocí vlastních rolí Azure AD je dvoustupňový proces, který zahrnuje vytvoření vlastní definice role a její přiřazení pomocí přiřazení role. Vlastní definice role je kolekce oprávnění, která přidáte ze seznamu přednastavených. Tato oprávnění jsou stejná oprávnění, která se používají ve vestavěných rolích.  
 
 Po vytvoření vlastní definice role (nebo pomocí předdefinované role) ji můžete přiřadit k uživateli vytvořením přiřazení role. Přiřazení role uděluje uživateli oprávnění v definici role v zadaném oboru. Tento dvoustupňový proces vám umožní vytvořit definici jedné role a přiřadit ji v různých oborech mnohokrát. Obor definuje sadu prostředků Azure AD, ke kterým má člen role přístup. Nejběžnější je obor v rozsahu pro organizaci (v rámci organizace). Vlastní role může být přiřazena v oboru celé organizace, což znamená, že člen role má oprávnění role pro všechny prostředky v organizaci. Vlastní roli lze také přiřadit v oboru objektu. Příkladem oboru objektu může být jedna aplikace. Stejnou roli je možné přiřadit jednomu uživateli přes všechny aplikace v organizaci a pak jinému uživateli s rozsahem jenom aplikace se sestavami výdajů společnosti Contoso.  
-
-Integrované a vlastní role Azure AD fungují v konceptech podobně jako [řízení přístupu na základě role v Azure (RBAC)](../develop/access-tokens.md#payload-claims). [Rozdíl mezi těmito dvěma systémy řízení přístupu na základě rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md) spočívá v tom, že Azure RBAC řídí přístup k prostředkům Azure, jako jsou virtuální počítače nebo úložiště, pomocí správy prostředků Azure a vlastní role Azure AD řídí přístup k prostředkům Azure ad pomocí Graph API. Oba systémy využívají koncept definic rolí a přiřazení rolí. Oprávnění služby Azure AD RBAC nelze zahrnout do rolí Azure ani naopak.
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Jak Azure AD určuje, jestli má uživatel přístup k prostředku
 

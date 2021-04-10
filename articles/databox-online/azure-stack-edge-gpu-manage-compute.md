@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.openlocfilehash: 057f80049b13a265925f2d6f24a008d1e1e04c96
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102638069"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Správa výpočetních prostředků na GPU Azure Stack Edge pro
@@ -51,7 +51,7 @@ Pokud chcete vytvořit Trigger, proveďte následující kroky v Azure Portal.
 
     - **Naplánované triggery** – zadejte počáteční datum a čas a interval opakování v hodinách, minutách nebo sekundách. Zadejte také název tématu. Téma vám poskytne flexibilitu při směrování triggeru na modul nasazený na zařízení.
 
-        Vzorový řetězec trasy: `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"` .
+        Vzorový řetězec trasy: `"route3&quot;: &quot;FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint(&quot;modules/modulename/inputs/input1")"` .
 
         ![Přidání sdílené složky systému souborů NFS](media/azure-stack-edge-gpu-manage-compute/add-scheduled-trigger.png)
 
