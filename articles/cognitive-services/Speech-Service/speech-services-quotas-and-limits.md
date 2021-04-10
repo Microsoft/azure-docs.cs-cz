@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645113"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937052"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -63,19 +63,19 @@ Pro použití s [funkcí Speech SDK](speech-sdk.md) a/nebo [Speech-to text REST 
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>Kvóty pro převod textu na řeč a omezení na prostředek řeči
 V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny cenové úrovně nastavitelované.
 
-| Kvóta | Zdarma (F0)<sup>3</sup> | Standardní (S0) |
-|--|--|--|
-| **Maximální počet transakcí za sekundu (TPS) pro hlasy Standard a neuronové** | 200<sup>4</sup> | 200<sup>4</sup> |  |
-| **Limit souběžných požadavků pro vlastní hlas** |  |  |
-| Výchozí hodnota | 10 | 10 |
-| Měnitelný | Č.<sup>5</sup> | Ano<sup>5</sup> |
-| **Kvóty specifické pro protokol HTTP** |  |
-| Maximální délka zvuku vytvořená na žádost | 10 min | 10 min |
-| Maximální počet jedinečných `<voice>` značek v SSML | 50 | 50 |
-| **Kvóty specifické pro protokol WebSocket** |  |  |
-|Maximální délka zvuku vytvořená pro zapnutí | 10 min | 10 min |
-|Maximální velikost zprávy SSML na hodnotu Turn |64 kB |64 kB |
-| **Omezení REST API** | 20 požadavků za minutu | 300 požadavků za minutu |
+| Kvóta                                                                          | Zdarma (F0)<sup>3</sup>  | Standardní (S0)   |
+|--------------------------------------------------------------------------------|------------------------|-----------------|
+| **Maximální počet transakcí za sekundu (TPS) pro hlasy Standard a neuronové** | 200<sup>4</sup>        | 200<sup>4</sup> |
+| **Limit souběžných požadavků pro vlastní hlas**                                  |                        |                 |
+| Výchozí hodnota                                                                  | 10                     | 10              |
+| Měnitelný                                                                     | Č.<sup>5</sup>         | Ano<sup>5</sup> |
+| **Kvóty specifické pro protokol HTTP**                                                       |                        |                 |
+| Maximální délka zvuku vytvořená na žádost                                          | 10 min                 | 10 min          |
+| Maximální počet jedinečných `<voice>` značek v SSML                                  | 50                     | 50              |
+| **Kvóty specifické pro protokol WebSocket**                                                  |                        |                 |
+| Maximální délka zvuku vytvořená pro zapnutí                                             | 10 min                 | 10 min          |
+| Maximální velikost zprávy SSML na hodnotu Turn                                                 | 64 kB                  | 64 kB           |
+| **Omezení REST API**                                                             | 20 požadavků za minutu | 300 požadavků za minutu |
 
 
 <sup>3</sup> **zdarma (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>

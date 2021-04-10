@@ -5,13 +5,14 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/10/2021
+ms.subservice: metrics
+ms.openlocfilehash: 93d30663034c7560550160960af20f0a465d93c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031391"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936168"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Vysvětlení metrik Azure Monitor metriky metriky a zobrazení
 
@@ -26,6 +27,7 @@ Když přidáte metriku do grafu, Průzkumník metrik automaticky vybere jeho v�
 Řekněme, že nejdřív nadefinujeme několik výrazů:
 
 - **Hodnota metriky** – jediná hodnota měření získaná pro konkrétní prostředek.
+- **Databáze časových řad** – databáze optimalizované pro ukládání a načítání datových bodů, která obsahuje hodnotu a odpovídající časové razítko. 
 - **Časové období** – obecné časové období.
 - **Časový interval** – časové období mezi shromážděním dvou hodnot metrik. 
 - **Časový rozsah** – časový interval zobrazený v grafu. Typická výchozí hodnota je 24 hodin. K dispozici jsou pouze konkrétní rozsahy. 
@@ -33,7 +35,9 @@ Když přidáte metriku do grafu, Průzkumník metrik automaticky vybere jeho v�
 - **Typ agregace** – typ statistik vypočítaný z více hodnot metriky.  
 - **Aggregate** – proces přebírání více vstupních hodnot a jejich použití k vytvoření jedné výstupní hodnoty prostřednictvím pravidel definovaných typem agregace. Například přebírání průměru více hodnot.  
 
-Metriky představují řadu hodnot metrik zachycených v pravidelném časovém intervalu. Když graf vykreslíte, hodnoty vybrané metriky se samostatně agregují podle časové členitosti (označují se také jako časové intervaly). Velikost časového rozlišení můžete vybrat pomocí [panelu pro výběr Průzkumník metrikho času](../essentials/metrics-getting-started.md#select-a-time-range). Pokud neprovedete explicitní výběr, časové rozlišení se automaticky vybere v závislosti na aktuálně vybraném časovém rozsahu. Po výběru se hodnoty metrik, které byly zachyceny během každého intervalu členitosti, agreguje a umístí do grafu – jedna hodnota DataPoint na interval.
+## <a name="summary-of-process"></a>Shrnutí procesu
+
+Metriky představují řadu hodnot uložených s časovým razítkem. V Azure se většina metrik ukládá v databázi časových řad Azure metrik. Při vykreslení grafu se hodnoty vybrané metriky načítají z databáze a pak se samostatně agreguje podle zvolené časové členitosti (označuje se také jako časový interval). Velikost časového rozlišení můžete vybrat pomocí [panelu pro výběr Průzkumník metrikho času](../essentials/metrics-getting-started.md#select-a-time-range). Pokud neprovedete explicitní výběr, časové rozlišení se automaticky vybere v závislosti na aktuálně vybraném časovém rozsahu. Po výběru se hodnoty metrik, které byly zachyceny během každého intervalu členitosti, agreguje a umístí do grafu – jedna hodnota DataPoint na interval.
 
 ## <a name="aggregation-types"></a>Typy agregace 
 
@@ -82,9 +86,11 @@ Je důležité určit, co je pro vaše zatížení "normální", abyste věděli
 
 ## <a name="how-the-system-collects-metrics"></a>Způsob, jakým systém shromažďuje metriky
 
-Shromažďování dat se liší podle metriky. Existují dva typy období shromažďování.
+Shromažďování dat se liší podle metriky. 
 
 ### <a name="measurement-collection-frequency"></a>Frekvence shromažďování měření 
+
+Existují dva typy období shromažďování.
 
 - **Regular** – metrika se shromažďuje v konzistentním časovém intervalu, který se neliší.
 

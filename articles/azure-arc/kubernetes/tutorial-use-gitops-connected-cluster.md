@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 1459d4a0f15595c6f658d73fcb9cb533023f0eb8
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 987fb5745b6528eb96b4237f698b3ae371d69287
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025713"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731815"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Kurz: nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC Azure 
 
@@ -21,7 +21,7 @@ V tomto kurzu použijete konfigurace pomocí GitOps v clusteru Kubernetes s povo
 > [!div class="checklist"]
 > * Vytvořte konfiguraci v clusteru Kubernetes s povoleným ARC Azure pomocí ukázkového úložiště Git.
 > * Ověřte, že konfigurace byla úspěšně vytvořena.
-> * Použijte formulář pro konfiguraci privátního úložiště Git.
+> * Použijte konfiguraci z privátního úložiště Git.
 > * Ověřte konfiguraci Kubernetes.
 
 ## <a name="prerequisites"></a>Požadavky

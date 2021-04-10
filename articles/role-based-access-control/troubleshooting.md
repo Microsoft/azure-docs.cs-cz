@@ -2,7 +2,6 @@
 title: Řešení potíží s Azure RBAC
 description: Řešení potíží s řízením přístupu na základě role Azure (Azure RBAC)
 services: azure-portal
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555889"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580108"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -68,11 +66,16 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+
+- Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat.
+
+    Pro vyřešení tohoto scénáře byste měli nastavit `principalType` vlastnost na `ServicePrincipal` při vytváření přiřazení role. Musíte také nastavit `apiVersion` přiřazení role na `2018-09-01-preview` nebo vyšší. Další informace najdete v tématu [přiřazení rolí Azure k novému instančnímu objektu pomocí REST API](role-assignments-rest.md#new-service-principal) nebo [přiřazení rolí Azure k novému instančnímu objektu pomocí šablon Azure Resource Manager](role-assignments-template.md#new-service-principal)
+
 - Pokud se pokusíte odebrat přiřazení role posledního vlastníka pro předplatné, může se zobrazit chyba "nelze odstranit poslední přiřazení správce RBAC". Odebrání přiřazení role posledního vlastníka pro předplatné se nepodporuje, aby se předešlo osamocení předplatného. Pokud chcete zrušit předplatné, přečtěte si téma [zrušení předplatného Azure](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
-- Pokud potřebujete postup, jak vytvořit vlastní roli, přečtěte si kurzy k vlastním rolím pomocí [Azure Portal](custom-roles-portal.md) (aktuálně ve verzi Preview), [Azure PowerShell](tutorial-custom-role-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](tutorial-custom-role-cli.md).
+- Pokud potřebujete postup, jak vytvořit vlastní roli, přečtěte si kurzy k vlastním rolím pomocí [Azure Portal](custom-roles-portal.md), [Azure PowerShell](tutorial-custom-role-powershell.md)nebo rozhraní příkazového [řádku Azure](tutorial-custom-role-cli.md).
 - Pokud nemůžete aktualizovat existující vlastní roli, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleDefinition/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator).
 - Pokud se vám nedaří odstranit vlastní roli a zobrazuje se chybová zpráva Na roli odkazují stávající přiřazení rolí (kód: RoleDefinitionHasAssignments), znamená to, že vlastní roli stále používají některá přiřazení rolí. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
 - Pokud se při pokusu o vytvoření nové vlastní role zobrazí chybová zpráva Došlo k překročení limitu definic rolí. Při pokusu o vytvoření nové vlastní role se nedají vytvářet žádné další definice rolí (kód: RoleDefinitionLimitExceeded). Odstraňte všechny vlastní role, které se nepoužívají. Azure podporuje v adresáři až **5000** vlastních rolí. (Pro Azure Německo a Azure Čína 21Vianet je limit 2000 vlastních rolí.)

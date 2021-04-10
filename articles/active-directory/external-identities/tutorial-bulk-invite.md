@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01deae46c442fc95c6aead0f11de929f47163c3c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3b4e4892c01775b472cd8cdcf0f35b920d7e5e86
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586529"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055671"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD
 
@@ -50,7 +50,7 @@ Stáhněte a vyplňte šablonu sdíleného svazku clusteru hromadného nahrání
 - Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
 - Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozvánky odeslat. Účty se nesmí nacházet ve vaší organizaci. Můžete použít libovolný typ účtu, včetně sociálních účtů jako jsou adresy gmail.com nebo outlook.com.
 

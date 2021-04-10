@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: fe8714f38c6a04b311a748f3eb081be82eb86635
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937239"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -60,7 +60,7 @@ Azure Monitor může shromažďovat data z [nejrůznějších zdrojů](monitor-r
 - **Data monitorování předplatného Azure**: data o provozu a správě předplatného Azure a také údaje o stavu a provozu samotného Azure. 
 - **Data monitorování tenanta Azure**: data o provozu služeb Azure na úrovni tenanta, jako je Azure Active Directory.
 
-Azure Monitor začne shromažďovat data, jakmile vytvoříte předplatné Azure a začnete přidávat prostředky, jako jsou virtuální počítače a webové aplikace.  Záznamy [protokolů aktivit](essentials/platform-logs-overview.md) při vytváření nebo úpravách prostředků [Metriky](data-platform.md) vás informují o tom, jak prostředek pracuje, a prostředky, které je náročné. 
+Azure Monitor začne shromažďovat data, jakmile vytvoříte předplatné Azure a začnete přidávat prostředky, jako jsou virtuální počítače a webové aplikace.  Záznamy [protokolů aktivit](essentials/platform-logs-overview.md) při vytváření nebo úpravách prostředků [Metriky](essentials/data-platform-metrics.md) vás informují o tom, jak prostředek pracuje, a prostředky, které je náročné. 
 
 [Povolte diagnostiku](essentials/platform-logs-overview.md) , abyste rozšířili shromažďovaná data do interní operace prostředků.  [Přidejte agenta](agents/agents-overview.md) pro výpočetní prostředky pro shromažďování telemetrie ze svých hostovaných operačních systémů. 
 

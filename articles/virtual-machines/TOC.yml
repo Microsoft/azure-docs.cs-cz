@@ -1258,31 +1258,31 @@
         - name: Rozhraní příkazového řádku
           items:
             - name: Vytvoření spravovaného disku z VHD
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Vytvoření spravovaného disku ze snímku
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Zkopírování spravovaného disku do stejného nebo jiného předplatného
               href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
             - name: Zkopírování snímku do stejného nebo jiného předplatného
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: Export snímku jako VHD do účtu úložiště
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
             - name: Export spravovaného disku jako virtuálního pevného disku do účtu úložiště
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
         - name: PowerShell
           items:
             - name: Vytvoření spravovaného disku z VHD
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: Vytvoření spravovaného disku ze snímku
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
             - name: Zkopírování snímku do stejného nebo jiného předplatného
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: Export snímku jako VHD do účtu úložiště
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
             - name: Export spravovaného disku jako virtuálního pevného disku do účtu úložiště
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd
             - name: Vytvoření snímku z VHD
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
 - name: Sítě
   items:
     - name: Přehled
@@ -1720,12 +1720,10 @@
             - name: Windows
               displayName: Enable disaster recovery
               href: ./windows/tutorial-disaster-recovery.md
-        - name: Povolení zotavení po havárii pro virtuální počítač
-          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
-        - name: Spuštění postupu zotavení po havárii pro virtuální počítač
-          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
         - name: Převzetí služeb při selhání virtuálního počítače do jiné oblasti
           href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+        - name: Navrácení služeb po obnovení virtuálního počítače do primární oblasti
+          href: ../site-recovery/azure-to-azure-tutorial-failback.md
     - name: Přesun a migrace virtuálních počítačů
       items:
         - name: Změna předplatného nebo skupiny prostředků

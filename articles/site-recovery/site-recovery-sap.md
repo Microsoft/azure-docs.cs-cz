@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711939"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
@@ -24,7 +24,7 @@ Pomocí Site Recovery můžete:
 
 Nasazení aplikací SAP NetWeaver můžete chránit pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek popisuje osvědčené postupy pro ochranu nasazení SAP NetWeaver v Azure při replikaci do jiného datového centra Azure pomocí Site Recovery. Článek popisuje podporované scénáře a konfigurace a postup testování převzetí služeb při selhání (přechody k zotavení po havárii) a skutečné převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 

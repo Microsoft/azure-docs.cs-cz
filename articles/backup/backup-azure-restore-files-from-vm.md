@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864886"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579374"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -133,12 +133,12 @@ Také se ujistěte, že máte [správný počítač pro spuštění skriptu ilr]
 
 Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
 
-- `download.microsoft.com`
+- `download.microsoft.com` nebo `AzureFrontDoor.FirstParty` značka služby v NSG
 - Adresy URL služby obnovení (GEO-NAME) odkazují na oblast, ve které se nachází trezor Recovery Services.)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Pro veřejné oblasti Azure)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Pro státní správu USA Azure)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Pro Azure Německo)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Pro veřejné oblasti Azure) nebo `AzureBackup` označení služby v NSG
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Pro Azure Čína 21Vianet) nebo `AzureBackup` značka služby v NSG
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Pro státní správu USA Azure) nebo `AzureBackup` štítek služby v NSG
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Pro Azure Německo) nebo `AzureBackup` tag služby v NSG
 - Odchozí porty 53 (DNS), 443, 3260
 
 > [!NOTE]

@@ -4,14 +4,14 @@ description: Seznam metrik dostupných pro každý typ prostředku s Azure Monit
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/06/2021
+ms.date: 04/01/2021
 ms.author: robb
-ms.openlocfilehash: 2437ab80a23ffc39c180bcdf72921fdf13768541
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0854d56930dbc8decfcf8f96a814f082e361de62
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033499"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167239"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -55,7 +55,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 > [!IMPORTANT] 
 > Tato nejnovější aktualizace přidá nový sloupec a změní pořadí metrik na abecední. Informace o přidaných objektech znamená, že následující tabulky mohou mít horizontální posuvník v dolní části, v závislosti na šířce okna prohlížeče. Pokud se domníváte, že jste neztratili nějaké informace, použijte posuvník a zobrazte celou tabulku.
-
 ## <a name="microsoftaadiamazureadmetrics"></a>Microsoft. aadiam/azureADMetrics
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
@@ -148,7 +147,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |HttpIncomingRequestDuration|Yes|HttpIncomingRequestDuration|Počet|Průměr|Latence požadavku HTTP.|StatusCode, ověřování|
 |ThrottledHttpRequestCount|Yes|ThrottledHttpRequestCount|Počet|Počet|Omezené požadavky HTTP.|Žádné dimenze|
 
-
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
@@ -203,7 +201,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Tomcat. Threads. Current|Yes|Tomcat. Threads. Current|Počet|Celkem|Počet aktuálních vláken Tomcat|Nasazení, AppName, pod|
 |celkem – požadavky|Yes|celkem – požadavky|Počet|Průměr|Celkový počet žádostí za dobu života procesu|Nasazení, AppName, pod|
 |pracovní sada|Yes|pracovní sada|Počet|Průměr|Množství pracovní sady používané procesem (MB)|Nasazení, AppName, pod|
-
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
@@ -376,8 +373,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|RequestLatency|Yes|Latence požadavku|Milisekund|Celkem|Doba, kterou server zavedl ke zpracování žádosti|Operace, ověřování, protokol|
-|RequestsTraffic|Yes|Požadavky na provoz|Procento|Počet|Počet provedených požadavků|Operace, ověřování, protokol, StatusCode, StatusCodeClass|
+|RequestLatency|Yes|Latence požadavku|Milisekund|Celkem|Doba, kterou server zavedl ke zpracování žádosti|Operace, ověřování, protokol, datacentrum|
+|RequestsTraffic|Yes|Požadavky na provoz|Procento|Počet|Počet provedených požadavků|Operace, ověřování, protokol, StatusCode, StatusCodeClass, DataCenter|
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
@@ -604,7 +601,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |totalkeys|Yes|Celkem klíčů|Počet|Maximum||Žádné dimenze|
 |usedmemory|Yes|Využitá paměť|Bajty|Maximum||Žádné dimenze|
 |usedmemorypercentage|Yes|Využitá paměť v procentech|Procento|Maximum||InstanceId|
-|usedmemoryRss|Yes|RSS využité paměti|Bajty|Maximum||InstanceId|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
@@ -619,7 +615,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ByteHitRatio|Yes|Poměr přístupů do bajtu|Procento|Průměr|Toto je poměr celkového počtu bajtů poskytovaných z mezipaměti v porovnání s celkovými bajty odpovědí.|Koncový bod|
-|OriginHealthPercentage|Yes|Počáteční procento stavu|Procento|Průměr|Procento úspěšných sond stavu z AFDX do back-endu.|Původ, OriginPool|
+|OriginHealthPercentage|Yes|Počáteční procento stavu|Procento|Průměr|Procento úspěšných sond stavu z AFDX do back-endu.|Původ, původce|
 |OriginLatency|Yes|Latence původu|Milisekund|Průměr|Čas vypočítaný z doby, kdy byl požadavek odeslán přes AFDX Edge do back-endu, dokud AFDX nepřijal poslední bajt odpovědi z back-endu.|Počátek, koncový bod|
 |OriginRequestCount|Yes|Počet požadavků na původ|Počet|Celkem|Počet požadavků odeslaných z AFDX na počátek.|Stavu protokolu HTTP, HttpStatusGroup, počátek, koncový bod|
 |Percentage4XX|Yes|Procento 4XX|Procento|Průměr|Procento všech požadavků klientů, pro které je kód stavu odpovědi 4XX|Koncový bod, ClientRegion, ClientCountry|
@@ -804,8 +800,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
-|Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem. K dispozici pouze na virtuálních počítačích řady B-Series|Žádné dimenze|
+|Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování. K dispozici pouze na virtuálních počítačích řady B-Series|Žádné dimenze|
 |Procento spotřebované šířky pásma datového disku|Yes|Procento spotřebované šířky pásma datového disku|Procento|Průměr|Procento využité šířky pásma datového disku za minutu|(|
 |Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Yes|Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Procento|Průměr|Procento využitých vstupně-výstupních datových disků za minutu|(|
 |Maximální šířka pásma shluku datového disku|Yes|Maximální šířka pásma shluku datového disku|Počet|Průměr|Maximální počet bajtů za sekundu datový disk propustnosti se může dosáhnout při roztržení.|(|
@@ -859,8 +855,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
-|Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem. K dispozici pouze na virtuálních počítačích řady B-Series|Žádné dimenze|
+|Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování. K dispozici pouze na virtuálních počítačích řady B-Series|Žádné dimenze|
 |Procento spotřebované šířky pásma datového disku|Yes|Procento spotřebované šířky pásma datového disku|Procento|Průměr|Procento využité šířky pásma datového disku za minutu|LUN, VMName|
 |Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Yes|Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Procento|Průměr|Procento využitých vstupně-výstupních datových disků za minutu|LUN, VMName|
 |Maximální šířka pásma shluku datového disku|Yes|Maximální šířka pásma shluku datového disku|Počet|Průměr|Maximální počet bajtů za sekundu datový disk propustnosti se může dosáhnout při roztržení.|LUN, VMName|
@@ -914,8 +910,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
-|Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem. K dispozici pouze na virtuálních počítačích řady B-Series|Žádné dimenze|
+|Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování. K dispozici pouze na virtuálních počítačích řady B-Series|Žádné dimenze|
 |Procento spotřebované šířky pásma datového disku|Yes|Procento spotřebované šířky pásma datového disku|Procento|Průměr|Procento využité šířky pásma datového disku za minutu|(|
 |Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Yes|Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Procento|Průměr|Procento využitých vstupně-výstupních datových disků za minutu|(|
 |Maximální šířka pásma shluku datového disku|Yes|Maximální šířka pásma shluku datového disku|Počet|Průměr|Maximální počet bajtů za sekundu datový disk propustnosti se může dosáhnout při roztržení.|(|
@@ -992,11 +988,25 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |apiserver_current_inflight_requests|No|Žádosti o inletu|Počet|Průměr|Maximální počet aktuálně použitých požadavků na apiserver za typ žádosti za poslední sekundu|requestKind|
+|cluster_autoscaler_cluster_safe_to_autoscale|No|Stav clusteru|Počet|Průměr|Určuje, jestli se má cluster pro automatické škálování na clusteru provést akce.||
+|cluster_autoscaler_scale_down_in_cooldown|No|Horizontální navýšení kapacity cooldown|Počet|Průměr|Určuje, zda je horizontální snížení kapacity v cooldown – během tohoto časového období nebudou žádné uzly odebrány.||
+|cluster_autoscaler_unneeded_nodes_count|No|Nepotřebné uzly|Počet|Průměr|Cluster auotscaler označí tyto uzly jako kandidáty na odstranění a nakonec se odstraní.||
+|cluster_autoscaler_unschedulable_pods_count|No|Unschedulable lusky|Počet|Průměr|Počet lusků, které se v clusteru aktuálně unschedulable||
 |kube_node_status_allocatable_cpu_cores|No|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Počet|Průměr|Celkový počet dostupných jader procesoru ve spravovaném clusteru||
 |kube_node_status_allocatable_memory_bytes|No|Celková velikost dostupné paměti ve spravovaném clusteru|Bajty|Průměr|Celková velikost dostupné paměti ve spravovaném clusteru||
 |kube_node_status_condition|No|Stavy pro různé podmínky uzlu|Počet|Průměr|Stavy pro různé podmínky uzlu|podmínka, stav, status2, uzel|
 |kube_pod_status_phase|No|Počet lusků podle fáze|Počet|Průměr|Počet lusků podle fáze|fáze, obor názvů pod|
 |kube_pod_status_ready|No|Počet lusků ve stavu připraveno|Počet|Průměr|Počet lusků ve stavu připraveno|obor názvů, pod, podmínka|
+|node_cpu_usage_millicores|Yes|Využití CPU Millicores|MilliCores|Průměr|Agregované měření využití CPU v millicores napříč clusterem|uzel, nodepool|
+|node_cpu_usage_percentage|Yes|Procento využití procesoru|Procento|Průměr|Agregované průměrné využití procesoru měřené v procentech v rámci clusteru|uzel, nodepool|
+|node_disk_usage_bytes|Yes|Využité bajty disku|Bajty|Průměr|Místo na disku využité v bajtech podle zařízení|uzel, nodepool, zařízení|
+|node_disk_usage_percentage|Yes|Procento využitého disku|Procento|Průměr|Místo na disku využité v procentech podle zařízení|uzel, nodepool, zařízení|
+|node_memory_rss_bytes|Yes|Paměť RSS – bajty|Bajty|Průměr|Využitá paměť RSS kontejneru v bajtech|uzel, nodepool|
+|node_memory_rss_percentage|Yes|Procento paměti RSS|Procento|Průměr|Paměť RSS kontejneru využitá v procentech|uzel, nodepool|
+|node_memory_working_set_bytes|Yes|Bajty pracovní sady paměti|Bajty|Průměr|Využitá paměť pracovní sady kontejneru v bajtech|uzel, nodepool|
+|node_memory_working_set_percentage|Yes|Procento pracovní sady paměti|Procento|Průměr|Paměť pracovní sady kontejneru využitá v procentech|uzel, nodepool|
+|node_network_in_bytes|Yes|Síť v bajtech|Bajty|Průměr|Počet přijatých bajtů sítě|uzel, nodepool|
+|node_network_out_bytes|Yes|Výstupní bajty sítě|Bajty|Průměr|Přenesené bajty sítě|uzel, nodepool|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
@@ -1199,6 +1209,20 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |txlogs_storage_used|Yes|Využité úložiště protokolu transakcí|Bajty|Průměr|Využité úložiště protokolu transakcí|Žádné dimenze|
 |write_iops|Yes|Zápis IOPS|Počet|Průměr|Počet vstupně-výstupních operací zápisu datových disků za sekundu|Žádné dimenze|
 |write_throughput|Yes|Bajty propustnosti zápisu/s|Počet|Průměr|Počet bajtů zapsaných za sekundu na datový disk během období monitorování|Žádné dimenze|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|---|---|---|---|---|---|---|
+|active_connections|Yes|Aktivní připojení|Počet|Průměr|Aktivní připojení|ServerName|
+|cpu_percent|Yes|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|ServerName|
+|IOPS|Yes|IOPS|Počet|Průměr|Vstupně-výstupní operace za sekundu|ServerName|
+|memory_percent|Yes|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|ServerName|
+|network_bytes_egress|Yes|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|ServerName|
+|network_bytes_ingress|Yes|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|ServerName|
+|storage_percent|Yes|Procento úložiště|Procento|Průměr|Procento úložiště|ServerName|
+|storage_used|Yes|Využité úložiště|Bajty|Průměr|Využité úložiště|ServerName|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
@@ -1444,6 +1468,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |CassandraTableUpdate|No|Tabulka Cassandra se aktualizovala.|Počet|Počet|Tabulka Cassandra se aktualizovala.|ResourceName, ChildResourceName, |
 |CreateAccount|Yes|Účet vytvořen|Počet|Počet|Účet vytvořen|Žádné dimenze|
 |Využití datausage|No|Využití dat|Bajty|Celkem|Celkové využití dat nahlášené s členitosti 5 minut|CollectionName, DatabaseName, region|
+|DedicatedGatewayRequests|Yes|DedicatedGatewayRequests|Počet|Počet|Požadavky na vyhrazenou bránu|DatabaseName, CollectionName, CacheExercised, OperationName, region|
 |DeleteAccount|Yes|Účet se odstranil.|Počet|Počet|Účet se odstranil.|Žádné dimenze|
 |DocumentCount|No|Počet dokumentů|Počet|Celkem|Celkový počet dokumentů hlášených v rozmezí 5 minut|CollectionName, DatabaseName, region|
 |DocumentQuota|No|Kvóta dokumentu|Bajty|Celkem|Celková kvóta úložiště vykazovaná s členitosti 5 minut|CollectionName, DatabaseName, region|
@@ -1679,12 +1704,16 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |CategorizedGatewayRequests|Yes|Zařadit požadavky na bránu|Počet|Celkem|Počet požadavků brány podle kategorií (1xx/2xx/3xx/4xx/5xx)|Stavu protokolu http|
 |GatewayRequests|Yes|Žádosti o bránu|Počet|Celkem|Počet žádostí o bránu|Stavu protokolu http|
 |KafkaRestProxy.ConsumerRequest.m1_delta|Yes|RequestThroughput příjemce proxy REST|CountPerSecond|Celkem|Počet požadavků uživatelů na Kafka REST proxy|Počítač, téma|
+|KafkaRestProxy.ConsumerRequestFail.m1_delta|Yes|Neúspěšné žádosti příjemce proxy REST|CountPerSecond|Celkem|Výjimky žádosti o příjemce|Počítač, téma|
 |KafkaRestProxy.ConsumerRequestTime.p95|Yes|RequestLatency příjemce proxy REST|Milisekund|Průměr|Latence zprávy v žádosti spotřebitele prostřednictvím proxy serveru REST Kafka|Počítač, téma|
+|KafkaRestProxy.ConsumerRequestWaitingInQueueTime.p95|Yes|Backlog žádosti o příjemce proxy REST|Milisekund|Průměr|Délka fronty proxy serveru REST uživatele|Počítač, téma|
 |KafkaRestProxy.MessagesIn.m1_delta|Yes|MessageThroughput výrobce REST proxy|CountPerSecond|Celkem|Počet zpráv producenta prostřednictvím proxy REST Kafka|Počítač, téma|
 |KafkaRestProxy.MessagesOut.m1_delta|Yes|MessageThroughput příjemce proxy REST|CountPerSecond|Celkem|Počet zákaznických zpráv prostřednictvím proxy REST Kafka|Počítač, téma|
 |KafkaRestProxy.OpenConnections|Yes|ConcurrentConnections REST proxy|Počet|Celkem|Počet souběžných připojení prostřednictvím proxy REST Kafka|Počítač, téma|
 |KafkaRestProxy.ProducerRequest.m1_delta|Yes|RequestThroughput výrobce REST proxy|CountPerSecond|Celkem|Počet žádostí o producenta na Kafka REST proxy|Počítač, téma|
+|KafkaRestProxy.ProducerRequestFail.m1_delta|Yes|Neúspěšné žádosti producenta REST proxy|CountPerSecond|Celkem|Výjimky žádosti producenta|Počítač, téma|
 |KafkaRestProxy.ProducerRequestTime.p95|Yes|RequestLatency výrobce REST proxy|Milisekund|Průměr|Latence zprávy v žádosti producenta prostřednictvím proxy Kafka REST|Počítač, téma|
+|KafkaRestProxy.ProducerRequestWaitingInQueueTime.p95|Yes|Backlog žádosti výrobce proxy REST|Milisekund|Průměr|Délka fronty proxy REST producenta|Počítač, téma|
 |NumActiveWorkers|Yes|Počet aktivních pracovníků|Počet|Maximum|Počet aktivních pracovníků|MetricName|
 
 
@@ -1790,18 +1819,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |DataExport. Messages. Filtered|Yes|Filtrované zprávy exportu dat|Počet|Celkem|Počet zpráv, které byly předány filtry při exportu dat|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |dataexports. Messages. Received|Yes|Přijaté zprávy exportu dat|Počet|Celkem|Počet zpráv příchozích do exportu dat před zpracováním filtrování a obohacení|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |DataExport. Messages. psaná|Yes|Napsané zprávy exportu dat|Počet|Celkem|Počet zpráv zapsaných do cílového umístění|exportId, exportDisplayName, destinationId, destinationDisplayName|
-
-
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
-|---|---|---|---|---|---|---|
-|ApiLatency|No|ApiLatency|6|0|Měří latenci požadavků rozhraní API provedených do Microsoft. IoTSpaces v milisekundách.|Žádné dimenze|
-|FunctionExecutionLatency|No|FunctionExecutionLatency|6|0|Měření latence uživatelsky definovaného spuštění funkce v milisekundách pro Microsoft. IoTSpaces|Žádné dimenze|
-|MessageEgressFailure|No|MessageEgressFailure|2|3|Vyhledá lokalizovaný řetězec podobný řetězci počet neúspěšných měření událostí v počtu pro Microsoft. IoTSpaces|Žádné dimenze|
-|MessageEgressLatency|No|MessageEgressLatency|6|0|Měří latenci od dispečera do jiných koncových bodů v milisekundách pro Microsoft. IoTSpaces|Žádné dimenze|
-|MessageEgressSuccess|No|MessageEgressSuccess|2|3|Vyhledá lokalizovaný řetězec podobný řetězci počet dokončených měr v počtu pro Microsoft. IoTSpaces|Žádné dimenze|
-|ProcessingLatency|No|ProcessingLatency|6|0|Měří latenci ze zprávy ingestné na odeslanou událost v milisekundách pro Microsoft. IoTSpaces|Žádné dimenze|
 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. managedhsms – trezor/
@@ -2021,6 +2038,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |ContentKeyPolicyCount|Yes|Počet zásad klíče obsahu|Počet|Průměr|Kolik zásad pro klíč obsahu se už v aktuálním účtu Media Service vytvořilo|Žádné dimenze|
 |ContentKeyPolicyQuota|Yes|Kvóta zásad pro klíč obsahu|Počet|Průměr|Kolik zásad pro klíč obsahu je pro aktuální účet Media Service povolené|Žádné dimenze|
 |ContentKeyPolicyQuotaUsedPercentage|Yes|Procento využité kvóty zásad klíčů obsahu|Procento|Průměr|Procento použitých zásad klíče obsahu v aktuálním účtu Media Service|Žádné dimenze|
+|MaxChannelsAndLiveEventsCount|Yes|Maximální kvóta živé události|Počet|Maximum|Maximální počet živých událostí povolených v aktuálním účtu Media Services|Žádné dimenze|
+|MaxRunningChannelsAndLiveEventsCount|Yes|Maximální spuštěná kvóta živé události|Počet|Maximum|Maximální počet spuštěných živých událostí povolených v aktuálním účtu Media Services|Žádné dimenze|
 |RunningChannelsAndLiveEventsCount|Yes|Spuštění počtu živých událostí|Počet|Průměr|Celkový počet spuštěných živých událostí v aktuálním účtu Media Services|Žádné dimenze|
 |StreamingPolicyCount|Yes|Počet zásad streamování|Počet|Průměr|Kolik zásad streamování už je v aktuálním účtu Media Service vytvořené|Žádné dimenze|
 |StreamingPolicyQuota|Yes|Kvóta zásad streamování|Počet|Průměr|Počet povolených zásad streamování pro aktuální účet Media Service|Žádné dimenze|
@@ -2041,9 +2060,9 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|Procesor|Yes|Využití procesoru|Procento|Průměr|Využití procesoru pro koncové body streamování Premium Tato data nejsou k dispozici pro standardní koncové body streamování.|VmId|
+|Procesor|Yes|Využití procesoru|Procento|Průměr|Využití procesoru pro koncové body streamování Premium Tato data nejsou k dispozici pro standardní koncové body streamování.|Žádné dimenze|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech).|OutputFormat|
-|EgressBandwidth|No|Šířka pásma pro výstup|BitsPerSecond|Průměr|Šířka pásma pro odchozí přenosy v bitech za sekundu|VmId|
+|EgressBandwidth|No|Šířka pásma pro výstup|BitsPerSecond|Průměr|Šířka pásma pro odchozí přenosy v bitech za sekundu|Žádné dimenze|
 |Žádosti|Yes|Žádosti|Počet|Celkem|Požadavky na koncový bod streamování.|OutputFormat, HttpStatusCode, ErrorCode|
 |SuccessE2ELatency|Yes|Koncová latence úspěch|Milisekund|Průměr|Průměrná latence pro úspěšné požadavky v milisekundách.|OutputFormat|
 
@@ -2086,7 +2105,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |AverageReadLatency|Yes|Průměrná latence čtení|Milisekund|Průměr|Průměrná latence čtení v milisekundách na operaci|Žádné dimenze|
 |AverageWriteLatency|Yes|Průměrná latence zápisu|Milisekund|Průměr|Průměrná latence zápisu v milisekundách na operaci|Žádné dimenze|
-|CbsVolumeBackupActive|Yes|Je zálohování svazku pozastavené|Počet|Průměr|Pozastavila se zásada zálohování pro svazek? 1, pokud ano, 0, pokud ne.|Žádné dimenze|
+|CbsVolumeBackupActive|Yes|Je zálohování svazku pozastavené|Počet|Průměr|Pozastavila se zásada zálohování pro svazek? 0, pokud ano, 1, pokud ne.|Žádné dimenze|
 |CbsVolumeLogicalBackupBytes|Yes|Bajty zálohy svazku|Bajty|Průměr|Celkový počet bajtů zálohovaných pro tento svazek.|Žádné dimenze|
 |CbsVolumeOperationComplete|Yes|Je dokončená operace zálohování svazku|Počet|Průměr|Dokončila se poslední operace zálohování nebo obnovení svazku úspěšně? 1, pokud ano, 0, pokud ne.|Žádné dimenze|
 |CbsVolumeOperationTransferredBytes|Yes|Bajty posledního přeneseného svazku ze zálohy|Bajty|Průměr|Celkový počet bajtů přenesených pro poslední operaci zálohování nebo obnovení.|Žádné dimenze|
@@ -2132,14 +2151,14 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |EstimatedBilledCapacityUnits|No|Odhadované jednotky s rozpisem kapacity|Počet|Průměr|Odhadované jednotky kapacity, které se budou účtovat|Žádné dimenze|
 |FailedRequests|Yes|Neúspěšné požadavky|Počet|Celkem|Počet neúspěšných žádostí, které Application Gateway obsluhovány|BackendSettingsPool|
 |FixedBillableCapacityUnits|No|Pevné fakturovatelné jednotky kapacity|Počet|Průměr|Minimální jednotky kapacity, které se budou účtovat|Žádné dimenze|
-|HealthyHostCount|Yes|Počet hostitelů v pořádku|Počet|Průměr|Počet nefunkčních hostitelů back-endu|BackendSettingsPool|
+|HealthyHostCount|Yes|Počet hostitelů v pořádku|Počet|Průměr|Počet hostitelů back-endu, kteří jsou v pořádku|BackendSettingsPool|
 |MatchedCount|Yes|Distribuce všech pravidel v firewallu webových aplikací|Počet|Celkem|Celková distribuce pravidla v bráně firewall webových aplikací pro příchozí provoz|Rules, RuleId|
 |NewConnectionsPerSecond|No|Nová připojení za sekundu|CountPerSecond|Průměr|Nová připojení za sekundu vytvořená Application Gateway|Žádné dimenze|
 |ResponseStatus|Yes|Stav odpovědi|Počet|Celkem|Stav odpovědi HTTP vrácený Application Gateway|HttpStatusGroup|
 |Propustnost|No|Propustnost|BytesPerSecond|Průměr|Počet bajtů za sekundu, které Application Gateway zasloužily|Žádné dimenze|
 |TlsProtocol|Yes|Protokol TLS klienta|Počet|Celkem|Počet požadavků TLS a non-TLS iniciované klientem, který vytvořil spojení s Application Gateway. Chcete-li zobrazit distribuci protokolu TLS, filtrujte podle protokolu TLS (Dimension TLS).|Naslouchací proces, TlsProtocol|
 |TotalRequests|Yes|Požadavky celkem|Počet|Celkem|Počet úspěšných požadavků, které Application Gateway obsluhovány|BackendSettingsPool|
-|UnhealthyHostCount|Yes|Počet hostitelů není v pořádku|Počet|Průměr|Počet nezdravých hostitelů back-endu|BackendSettingsPool|
+|UnhealthyHostCount|Yes|Počet hostitelů není v pořádku|Počet|Průměr|Počet hostitelů back-endu, kteří nejsou v pořádku|BackendSettingsPool|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
@@ -2152,6 +2171,17 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |NetworkRuleHit|Yes|Počet volání síťových pravidel|Počet|Celkem|Počet přístupů k síťovým pravidlům|Stav, důvod, protokol|
 |SNATPortUtilization|Yes|Využití portu SNAT|Procento|Průměr|Procento odchozích portů SNAT, které se aktuálně používají|Protokol|
 |Propustnost|No|Propustnost|BitsPerSecond|Průměr|Propustnost zpracovaná touto bránou firewall|Žádné dimenze|
+
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
+
+|Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|---|---|---|---|---|---|---|
+|pingmesh|No|Stav komunikace bastionu|Počet|Průměr|Stav komunikace zobrazuje hodnotu 1, pokud je veškerá komunikace dobrá a 0, pokud je její hodnota špatná.||
+|rušování|No|Počet relací|Počet|Celkem|Počet relací pro bastionu. Zobrazit v součtu a na instanci.|Hostitel|
+|celkem|Yes|Celková paměť|Počet|Průměr|Celkový počet statistik paměti.|Hostitel|
+|usage_user|No|Použitý procesor|Počet|Průměr|Statistiky využití procesoru.|procesor, hostitel|
+|protokoly|Yes|Využitá paměť|Počet|Průměr|Statistika využití paměti|Hostitel|
 
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/připojení
@@ -2201,10 +2231,10 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |ErGatewayConnectionBitsOutPerSecond|No|BitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|ConnectionName|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Yes|Počet tras inzerovaných pro partnerský vztah (Preview)|Počet|Maximum|Počet tras inzerovaných pro partnerský vztah podle ExpressRouteGateway|roleInstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Yes|Počet tras získaných z partnerského vztahu (Preview)|Počet|Maximum|Počet tras zjištěných z partnerského vztahu podle ExpressRouteGateway|roleInstance|
-|ExpressRouteGatewayCpuUtilization|Yes|Využití procesoru (Preview)|Počet|Průměr|Využití procesoru bránou ExpressRoute|roleInstance|
+|ExpressRouteGatewayCpuUtilization|Yes|Využití procesoru|Počet|Průměr|Využití procesoru bránou ExpressRoute|roleInstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|No|Četnost změn tras (Preview)|Počet|Celkem|Četnost změn tras v bráně ExpressRoute|roleInstance|
 |ExpressRouteGatewayNumberOfVmInVnet|No|Počet virtuálních počítačů v Virtual Network (Preview)|Počet|Maximum|Počet virtuálních počítačů v Virtual Network|Žádné dimenze|
-|ExpressRouteGatewayPacketsPerSecond|No|Pakety za sekundu (Preview)|CountPerSecond|Průměr|Počet paketů ExpressRoute brány|roleInstance|
+|ExpressRouteGatewayPacketsPerSecond|No|Pakety za sekundu|CountPerSecond|Průměr|Počet paketů ExpressRoute brány|roleInstance|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
@@ -2366,10 +2396,10 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |AverageBandwidth|Yes|Šířka pásma S2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma brány mezi lokalitami v bajtech za sekundu|Žádné dimenze|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Yes|Počet tras inzerovaných pro partnerský vztah (Preview)|Počet|Maximum|Počet tras inzerovaných pro partnerský vztah podle ExpressRouteGateway|roleInstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Yes|Počet tras získaných z partnerského vztahu (Preview)|Počet|Maximum|Počet tras zjištěných z partnerského vztahu podle ExpressRouteGateway|roleInstance|
-|ExpressRouteGatewayCpuUtilization|Yes|Využití procesoru (Preview)|Počet|Průměr|Využití procesoru bránou ExpressRoute|roleInstance|
+|ExpressRouteGatewayCpuUtilization|Yes|Využití procesoru|Počet|Průměr|Využití procesoru bránou ExpressRoute|roleInstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|No|Četnost změn tras (Preview)|Počet|Celkem|Četnost změn tras v bráně ExpressRoute|roleInstance|
 |ExpressRouteGatewayNumberOfVmInVnet|No|Počet virtuálních počítačů v Virtual Network (Preview)|Počet|Maximum|Počet virtuálních počítačů v Virtual Network|Žádné dimenze|
-|ExpressRouteGatewayPacketsPerSecond|No|Pakety za sekundu (Preview)|CountPerSecond|Průměr|Počet paketů ExpressRoute brány|roleInstance|
+|ExpressRouteGatewayPacketsPerSecond|No|Pakety za sekundu|CountPerSecond|Průměr|Počet paketů ExpressRoute brány|roleInstance|
 |P2SBandwidth|Yes|Šířka pásma P2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma sítě typu Point-to-site brány v bajtech za sekundu|Žádné dimenze|
 |P2SConnectionCount|Yes|Počet připojení P2S|Počet|Maximum|Počet připojení typu point-to-site brány|Protokol|
 |TunnelAverageBandwidth|Yes|Šířka pásma tunelu|BytesPerSecond|Průměr|Průměrná šířka pásma tunelu v bajtech za sekundu|ConnectionName, RemoteIP|
@@ -2379,6 +2409,13 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |TunnelIngressBytes|Yes|Počet bajtů příchozího přenosu dat tunelu|Bajty|Celkem|Příchozí bajty tunelu|ConnectionName, RemoteIP|
 |TunnelIngressPacketDropTSMismatch|Yes|Počet zahození paketů příchozího přenosu dat tunelu kvůli neshodě SP|Počet|Celkem|Počet zahození příchozích paketů tunelu kvůli neshodě selektoru provozu|ConnectionName, RemoteIP|
 |TunnelIngressPackets|Yes|Tunelové pakety pro příchozí připojení|Počet|Celkem|Počet příchozích paketů tunelu|ConnectionName, RemoteIP|
+|TunnelNatAllocations|No|Přidělení tunelového překladu adres (NAT)|Počet|Celkem|Počet přidělení pro pravidlo překladu adres (NAT) na tunelu|– Natrule, connectionName, RemoteIP|
+|TunnelNatedBytes|No|Tunelové NATed bajty|Bajty|Celkem|Počet bajtů, které se NATed na tunelu pomocí pravidla překladu adres (NAT) |– Natrule, connectionName, RemoteIP|
+|TunnelNatedPackets|No|Tunelové pakety NATed|Počet|Celkem|Počet paketů, které se NATed na tunelu pomocí pravidla překladu adres (NAT)|– Natrule, connectionName, RemoteIP|
+|TunnelNatFlowCount|No|Toky tunelového překladu NAT|Počet|Celkem|Počet toků NAT v tunelu podle typu toku a pravidla překladu adres (NAT)|– Natrule, connectionName, RemoteIP, FlowType|
+|TunnelNatPacketDrop|No|Vyčerpání paketů NAT tunelu|Počet|Celkem|Počet paketů NATed v tunelu, který je vyřazený pomocí typu drop a pravidla překladu adres (NAT)|– Natrule, connectionName, RemoteIP, DropType|
+|TunnelReverseNatedBytes|No|NATed bajty zpětného propojení|Bajty|Celkem|Počet bajtů, které se NATed pomocí pravidla překladu adres (NAT) zpět na tunel|– Natrule, connectionName, RemoteIP|
+|TunnelReverseNatedPackets|No|Tunelové reverzní NATed pakety|Počet|Celkem|Počet paketů v tunelu, které byly reverzní NATed pravidlem překladu adres (NAT)|– Natrule, connectionName, RemoteIP|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
@@ -2408,6 +2445,13 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |TunnelIngressBytes|Yes|Počet bajtů příchozího přenosu dat tunelu|Bajty|Celkem|Příchozí bajty tunelu|ConnectionName, RemoteIP|
 |TunnelIngressPacketDropTSMismatch|Yes|Počet zahození paketů příchozího přenosu dat tunelu kvůli neshodě SP|Počet|Celkem|Počet zahození příchozích paketů tunelu kvůli neshodě selektoru provozu|ConnectionName, RemoteIP|
 |TunnelIngressPackets|Yes|Tunelové pakety pro příchozí připojení|Počet|Celkem|Počet příchozích paketů tunelu|ConnectionName, RemoteIP|
+|TunnelNatAllocations|No|Přidělení tunelového překladu adres (NAT)|Počet|Celkem|Počet přidělení pro pravidlo překladu adres (NAT) na tunelu|– Natrule, connectionName, RemoteIP|
+|TunnelNatedBytes|No|Tunelové NATed bajty|Bajty|Celkem|Počet bajtů, které se NATed na tunelu pomocí pravidla překladu adres (NAT) |– Natrule, connectionName, RemoteIP|
+|TunnelNatedPackets|No|Tunelové pakety NATed|Počet|Celkem|Počet paketů, které se NATed na tunelu pomocí pravidla překladu adres (NAT)|– Natrule, connectionName, RemoteIP|
+|TunnelNatFlowCount|No|Toky tunelového překladu NAT|Počet|Celkem|Počet toků NAT v tunelu podle typu toku a pravidla překladu adres (NAT)|– Natrule, connectionName, RemoteIP, FlowType|
+|TunnelNatPacketDrop|No|Vyčerpání paketů NAT tunelu|Počet|Celkem|Počet paketů NATed v tunelu, který je vyřazený pomocí typu drop a pravidla překladu adres (NAT)|– Natrule, connectionName, RemoteIP, DropType|
+|TunnelReverseNatedBytes|No|NATed bajty zpětného propojení|Bajty|Celkem|Počet bajtů, které se NATed pomocí pravidla překladu adres (NAT) zpět na tunel|– Natrule, connectionName, RemoteIP|
+|TunnelReverseNatedPackets|No|Tunelové reverzní NATed pakety|Počet|Celkem|Počet paketů v tunelu, které byly reverzní NATed pravidlem překladu adres (NAT)|– Natrule, connectionName, RemoteIP|
 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/obory názvů/NotificationHubs
@@ -2574,16 +2618,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |QueryPoolJobQueueLength|Yes|Délka fronty úloh fondu dotazů (datové sady) (Gen1)|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů. Podporováno pouze pro prostředky Power BI Embedded generace 1.|Žádné dimenze|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/účty
-
-|Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
-|---|---|---|---|---|---|---|
-|ScanCancelled|Yes|Kontrola zrušena|Počet|Celkem|Určuje počet zrušených kontrol.|ResourceId|
-|ScanCompleted|Yes|Kontrola dokončena|Počet|Celkem|Určuje počet kontrol, které byly úspěšně dokončeny.|ResourceId|
-|ScanFailed|Yes|Kontrola se nezdařila|Počet|Celkem|Indikuje, že počet kontrol se nezdařil.|ResourceId|
-|ScanTimeTaken|Yes|Doba kontroly provedena|Sekundy|Celkem|Určuje celkovou dobu kontroly v sekundách.|ResourceId|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. dosah/účty
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
@@ -2682,6 +2716,15 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |OutboundTraffic|Yes|Odchozí provoz|Bajty|Celkem|Odchozí provoz služby|Žádné dimenze|
 |SystemErrors|Yes|Systémové chyby|Procento|Maximum|Procento systémových chyb|Žádné dimenze|
 |UserErrors|Yes|Chyby uživatele|Procento|Maximum|Procento uživatelských chyb|Žádné dimenze|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|---|---|---|---|---|---|---|
+|ConnectionCount|Yes|Počet připojení|Počet|Maximum|Množství připojení uživatele.|Žádné dimenze|
+|InboundTraffic|Yes|Příchozí provoz|Bajty|Celkem|Příchozí provoz služby|Žádné dimenze|
+|OutboundTraffic|Yes|Odchozí provoz|Bajty|Celkem|Odchozí provoz služby|Žádné dimenze|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
@@ -2902,6 +2945,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |ServerSyncSessionResult|Yes|Výsledek relace synchronizace|Počet|Průměr|Metrika, která protokoluje hodnotu 1 pokaždé, když koncový bod serveru úspěšně dokončí relaci synchronizace s koncovým bodem cloudu|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncBatchTransferredFileBytes|Yes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|SyncGroupName, ServerEndpointName, SyncDirection|
+|StorageSyncRecallComputedSuccessRate|Yes|Míra úspěšnosti odvolání ve vrstvě cloudu|Procento|Průměr|Procento všech odvolání, která byla úspěšná|SyncGroupName, servername|
 |StorageSyncRecalledNetworkBytesByApplication|Yes|Velikost odvolání při vrstvení cloudu podle aplikace|Bajty|Celkem|Velikost dat vrácených aplikací|SyncGroupName, servername, ApplicationName|
 |StorageSyncRecalledTotalNetworkBytes|Yes|Velikost odvolání při vyvolání vrstvy cloudu|Bajty|Celkem|Velikost vrácených dat|SyncGroupName, servername|
 |StorageSyncRecallIOTotalSizeBytes|Yes|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerName|
@@ -2956,6 +3000,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |LateInputEvents|Yes|Zpožděné vstupní události|Počet|Celkem|Zpožděné vstupní události|ID logického, PartitionId|
 |OutputEvents|Yes|Výstupní události|Počet|Celkem|Výstupní události|ID logického, PartitionId|
 |OutputWatermarkDelaySeconds|Yes|Zpoždění vodoznaku|Sekundy|Maximum|Zpoždění vodoznaku|ID logického, PartitionId|
+|ProcessCPUUsagePercentage|Yes|Využití procesoru v% (Preview)|Procento|Maximum|Využití procesoru v% (Preview)|ID logického, PartitionId|
 |ResourceUtilization|Yes|Využití SU%|Procento|Maximum|Využití SU%|ID logického, PartitionId|
 
 
@@ -3136,7 +3181,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |AverageResponseTime|Yes|Průměrná doba odezvy (nepoužívané)|Sekundy|Průměr|Průměrná doba, jakou trvalo, aby aplikace sloužila požadavkům (v sekundách)|Instance|
 |BytesReceived|Yes|Data v|Bajty|Celkem|Množství příchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
 |BytesSent|Yes|Výstupní data|Bajty|Celkem|Velikost odchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
-|CpuTime|Yes|Čas procesoru|Sekundy|Celkem|Množství procesoru spotřebovaného aplikací v řádu sekund Pro další informace o této metrikě. Viz https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (čas procesoru vs. procento procesoru). Nedá se použít pro Azure Functions.|Instance|
+|CpuTime|Yes|Čas procesoru|Sekundy|Celkem|Množství procesoru spotřebovaného aplikací v řádu sekund Pro další informace o této metrikě. Nedá se použít pro Azure Functions. Viz https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage (čas procesoru vs. procento procesoru).|Instance|
 |CurrentAssemblies|Yes|Aktuální sestavení|Počet|Průměr|Aktuální počet sestavení načtených napříč všemi doménami AppDomain v této aplikaci.|Instance|
 |FileSystemUsage|Yes|Využití systému souborů|Bajty|Průměr|Procento kvóty systému souborů spotřebované aplikací|Žádné dimenze|
 |FunctionExecutionCount|Yes|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce K dispozici pouze pro Azure Functions.|Instance|
@@ -3180,7 +3225,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |AverageResponseTime|Yes|Průměrná doba odezvy (nepoužívané)|Sekundy|Průměr|Průměrná doba, jakou trvalo, aby aplikace sloužila požadavkům (v sekundách)|Instance|
 |BytesReceived|Yes|Data v|Bajty|Celkem|Množství příchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
 |BytesSent|Yes|Výstupní data|Bajty|Celkem|Velikost odchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
-|CpuTime|Yes|Čas procesoru|Sekundy|Celkem|Množství procesoru spotřebovaného aplikací v řádu sekund Pro další informace o této metrikě. Viz https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (čas procesoru vs. procento procesoru).|Instance|
+|CpuTime|Yes|Čas procesoru|Sekundy|Celkem|Množství procesoru spotřebovaného aplikací v řádu sekund Pro další informace o této metrikě. Nedá se použít pro Azure Functions. Viz https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage (čas procesoru vs. procento procesoru).|Instance|
 |CurrentAssemblies|Yes|Aktuální sestavení|Počet|Průměr|Aktuální počet sestavení načtených napříč všemi doménami AppDomain v této aplikaci.|Instance|
 |FileSystemUsage|Yes|Využití systému souborů|Bajty|Průměr|Procento kvóty systému souborů spotřebované aplikací|Žádné dimenze|
 |FunctionExecutionCount|Yes|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
@@ -3224,7 +3269,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |FunctionHits|Yes|FunctionHits|Počet|Celkem|FunctionHits|Instance|
 |SiteErrors|Yes|SiteErrors|Počet|Celkem|SiteErrors|Instance|
 |SiteHits|Yes|SiteHits|Počet|Celkem|SiteHits|Instance|
-
 
 ## <a name="next-steps"></a>Další kroky
 

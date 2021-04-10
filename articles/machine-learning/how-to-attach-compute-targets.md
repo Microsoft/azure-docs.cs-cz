@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149337"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167664"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Nastavení cílových výpočetních prostředků pro školení a nasazení modelu
 
@@ -53,7 +53,7 @@ Pokud chcete použít výpočetní cíle spravované pomocí Azure Machine Learn
 
 ## <a name="whats-a-compute-target"></a>Co je cílový výpočetní výkon?
 
-Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Pro nasazení modelu můžete také použít výpočetní cíle, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
+Pomocí Azure Machine Learning můžete model vyškolit na různých prostředcích nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Pro nasazení modelu můžete také použít výpočetní cíle, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
 
 ## <a name="local-computer"></a><a id="local"></a>Místní počítač
@@ -64,9 +64,12 @@ Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovan
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Vzdálené virtuální počítače
 
-Azure Machine Learning podporuje také připojení virtuálního počítače Azure. Virtuální počítač musí být Azure Data Science Virtual Machine (DSVM). Tento virtuální počítač je předem konfigurovaným vývojovým prostředím pro datové vědy a AI v Azure. Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](./how-to-configure-environment.md#dsvm).
+Azure Machine Learning podporuje také připojení virtuálního počítače Azure. Virtuální počítač musí být Azure Data Science Virtual Machine (DSVM). Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](./how-to-configure-environment.md#dsvm).
 
-1. **Vytvořit**: Vytvořte DSVM ještě před tím, než ho použijete ke školení svého modelu. Pokud chcete tento prostředek vytvořit, přečtěte si téma [zřízení Data Science Virtual Machine pro Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
+> [!TIP]
+> Místo vzdáleného virtuálního počítače doporučujeme použít [výpočetní instanci Azure Machine Learning](concept-compute-instance.md). Je to plně spravované cloudové výpočetní řešení, které je specifické pro Azure Machine Learning. Další informace najdete v tématu [Vytvoření a Správa výpočetní instance Azure Machine Learning](how-to-create-manage-compute-instance.md).
+
+1. **Vytvořit**: Azure Machine Learning pro vás nemůže vytvořit vzdálený virtuální počítač. Místo toho je nutné vytvořit virtuální počítač a potom ho připojit k pracovnímu prostoru Azure Machine Learning. Informace o vytvoření DSVM najdete v tématu [zřízení Data Science Virtual Machine pro Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Azure Machine Learning podporuje jenom virtuální počítače, které spouštějí **Ubuntu**. Když vytváříte virtuální počítač nebo zvolíte existující virtuální počítač, musíte vybrat virtuální počítač, který používá Ubuntu.
@@ -120,11 +123,16 @@ Azure Machine Learning podporuje také připojení virtuálního počítače Azu
    src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
    ```
 
+> [!TIP]
+> Pokud chcete __Odebrat__ (odpojit) virtuální počítač z pracovního prostoru, použijte metodu [RemoteCompute. detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) .
+>
+> Azure Machine Learning neodstraní virtuální počítač za vás. Virtuální počítač musíte ručně odstranit pomocí Azure Portal, CLI nebo sady SDK pro virtuální počítač Azure.
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platforma poskytuje Apache Spark, které je možné použít ke školení modelu.
 
-1. **Vytvořit**: Vytvořte cluster HDInsight předtím, než ho použijete ke školení svého modelu. Informace o vytvoření clusteru Spark v HDInsight najdete [v tématu Vytvoření clusteru Spark v HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Vytvořit**: Azure Machine Learning pro vás nemůže vytvořit cluster HDInsight. Místo toho musíte vytvořit cluster a pak ho připojit k pracovnímu prostoru Azure Machine Learning. Další informace najdete v tématu [Vytvoření clusteru Spark v HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning vyžaduje, aby cluster HDInsight měl __veřejnou IP adresu__.
@@ -165,8 +173,10 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
-
-Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](how-to-set-up-training-targets.md).
+> [!TIP]
+> Pokud chcete z pracovního prostoru __Odebrat__ (odpojit) cluster HDInsight, použijte metodu [HDInsightCompute. detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) .
+>
+> Azure Machine Learning neodstraní cluster HDInsight za vás. Musíte ho ručně odstranit pomocí Azure Portal, CLI nebo sady SDK pro Azure HDInsight.
 
 ## <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
@@ -215,7 +225,7 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Dá se použít jako cíl služby COMPUTE s kanálem Azure Machine Learning.
 
-Před použitím vytvořte pracovní prostor Azure Databricks. Pokud chcete vytvořit prostředek pracovního prostoru, přečtěte si téma [spuštění úlohy Spark v dokumentu Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) .
+> [! Důležité: Azure Machine Learning nemůže vytvořit Azure Databricks cíl výpočtů. Místo toho musíte vytvořit pracovní prostor Azure Databricks a pak ho připojit k pracovnímu prostoru Azure Machine Learning. Pokud chcete vytvořit prostředek pracovního prostoru, přečtěte si téma [spuštění úlohy Spark v dokumentu Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) .
 
 Pokud chcete připojit Azure Databricks jako cíl výpočetních prostředků, zadejte následující informace:
 
@@ -330,7 +340,6 @@ Azure Container Instances (ACI) se vytváří dynamicky při nasazení modelu. N
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
 Služba Azure Kubernetes Service (AKS) umožňuje různým možnostem konfigurace při použití s Azure Machine Learning. Další informace najdete v tématu [Vytvoření a připojení služby Azure Kubernetes](how-to-create-attach-kubernetes.md).
-
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 

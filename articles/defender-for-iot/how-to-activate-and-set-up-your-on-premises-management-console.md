@@ -3,12 +3,12 @@ title: Aktivace a nastavení místní konzoly pro správu
 description: Aktivace konzoly pro správu zajišťuje, aby se senzory zaregistrovaly v Azure a odesílaly informace do místní konzoly pro správu a aby místní Konzola pro správu prováděla úlohy správy na připojených senzorech.
 ms.date: 3/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 89ce6da3521248ff7373e23ae8831106cbee74de
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 86bbebb54753145e087865acd8c0d4690a53aa99
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784624"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383756"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivace a nastavení místní konzoly pro správu 
 
@@ -33,29 +33,37 @@ Přihlášení do konzoly pro správu:
 
 Pokud jste zapomněli heslo, vyberte možnost **obnovit heslo**  a pokyny, jak obnovit heslo, najdete v tématu [obnovení hesla](how-to-manage-the-on-premises-management-console.md#password-recovery) .
 
-## <a name="get-and-upload-an-activation-file"></a>Získání a nahrání aktivačního souboru
+## <a name="activate-the-on-premises-management-console"></a>Aktivace místní konzoly pro správu
 
 Po prvním přihlášení budete muset aktivovat místní konzolu pro správu, a to tak, že získáte a nahrajete aktivační soubor. 
 
-Získání aktivačního souboru:
+Aktivace místní konzoly pro správu:
 
-1. Přejděte na stránku s **cenami** na portálu Azure Defender pro IoT Portal. 
-1. Vyberte předplatné, ke kterému chcete přidružit místní konzolu pro správu.
-1. Vyberte možnost **Stáhnout aktivační soubor pro kartu Konzola pro správu** . Aktivační soubor se stáhne.
+1. Přihlaste se k místní konzole pro správu.
+
+1. V oznámení výstrahy v horní části obrazovky vyberte odkaz **provést akci** .
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/take-action.png" alt-text="Vyberte odkaz přijmout akci z výstrahy v horní části obrazovky.":::
+
+1. Na místní obrazovce Aktivace vyberte odkaz **Azure Portal** .
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/azure-portal.png" alt-text="V místní zprávě vyberte odkaz Azure Portal.":::
+ 
+1. Vyberte předplatné, ke kterému se má přidružit místní Konzola pro správu, a pak vyberte tlačítko **Stáhnout soubor pro aktivaci místní konzoly pro správu** . Aktivační soubor se stáhne.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Stáhněte si aktivační soubor.":::
 
-Postup nahrání aktivačního souboru:
+   Pokud jste ještě nepřipojili předplatné, [Zaregistrujte odběr](how-to-manage-subscriptions.md#onboard-a-subscription).
 
-1. V místní konzole pro správu přejděte na stránku **nastavení systému** .
-1. Vyberte ikonu **Aktivace** :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
-1. Vyberte možnost **zvolit soubor** a vyberte soubor, který se stáhl.
+1. Přejděte zpět na místní obrazovku **Aktivace** a vyberte **možnost zvolit soubor**.
+
+1. Vyberte stažený soubor.
 
 Po počáteční aktivaci může počet monitorovaných zařízení překročit počet potvrzených zařízení, která jsou definovaná během připojování. K tomu dochází, pokud k konzole pro správu připojíte více senzorů. Pokud dojde k nesouladu mezi počtem monitorovaných zařízení a počtem potvrzených zařízení, zobrazí se v konzole pro správu upozornění. V takovém případě Nahrajte nový aktivační soubor.
 
 ## <a name="set-up-a-certificate"></a>Nastavení certifikátu
 
-Po instalaci konzoly pro správu se vygeneruje místní certifikát podepsaný svým držitelem, který se použije pro přístup ke konzole nástroje. Po prvním přihlášení správce ke konzole pro správu se tomuto uživateli zobrazí výzva k připojení certifikátu protokolu SSL/TLS. 
+Po instalaci konzoly pro správu se vygeneruje místní certifikát podepsaný svým držitelem. Tento certifikát se používá pro přístup ke konzole nástroje. Po prvním přihlášení správce ke konzole pro správu se tomuto uživateli zobrazí výzva k připojení certifikátu protokolu SSL/TLS. 
 
 K dispozici jsou dvě úrovně zabezpečení:
 
@@ -76,7 +84,9 @@ Konzola podporuje následující typy certifikátů:
 Postup nahrání certifikátu:
 
 1. Až se vám zobrazí výzva po přihlášení, zadejte název certifikátu.
+
 1. Nahrajte soubory CRT a klíče.
+
 1. Zadejte heslo a v případě potřeby nahrajte soubor PEM.
 
 Po nahrání certifikátu podepsaného certifikační autority může být nutné aktualizovat obrazovku.
@@ -84,6 +94,7 @@ Po nahrání certifikátu podepsaného certifikační autority může být nutn�
 Zakázání ověřování mezi konzolou pro správu a připojenými senzory:
 
 1. Vyberte **Další**.
+
 1. Vypněte přepínač **Povolit ověřování na úrovni systému** .
 
 Informace o nahrání nového certifikátu, podporovaných souborech certifikátů a souvisejících položkách najdete v tématu [Správa místní konzoly pro správu](how-to-manage-the-on-premises-management-console.md).
@@ -100,21 +111,23 @@ K dispozici jsou dvě možnosti propojení programu Azure Defender pro IoT senzo
 
 Po připojení musíte nastavit lokalitu s těmito senzory.
 
-### <a name="connect-sensors-from-the-sensor-console"></a>Připojení senzorů z konzoly senzorů
+### <a name="connect-sensors-to-the-on-premises-management-console-from-the-sensor-console"></a>Připojení senzorů k místní konzole pro správu z konzoly senzorů
 
-Připojení specifických senzorů k místní konzole pro správu z konzoly snímače:
+Senzory můžete připojit k místní konzole pro správu z konzoly snímače:
 
-1. V levém podokně konzoly senzorů vyberte **nastavení systému**.
+1. V místní konzole pro správu vyberte **nastavení systému**.
 
-2. Vyberte **připojení ke správě**.
+1. Zkopírujte **připojovací řetězec kopírování**.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-not-connected.png" alt-text="Snímek obrazovky se stavovým oknem místní konzoly pro správu se zobrazením nepřipojeného":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-string.png" alt-text="Zkopírujte připojovací řetězec pro senzor.":::
 
-3. Do textového pole **adresa** zadejte IP adresu místní konzoly pro správu, ke které se chcete připojit.
+1. Na senzoru přejděte na **nastavení systému** a vyberte **připojení ke konzole pro správu** . :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-to-management-console.png" border="false":::
 
-4. Vyberte **Connect** (Připojit). Změny stavu:
+1. Vložte zkopírovaný připojovací řetězec z místní konzoly pro správu do pole **připojovací řetězec** .
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-connected.png" alt-text="Snímek obrazovky se stavovým oknem místní konzoly pro správu, které se zobrazuje jako připojené":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/paste-connection-string.png" alt-text="Vložte zkopírovaný připojovací řetězec do pole Připojovací řetězec.":::
+
+1. Vyberte **Connect** (Připojit).
 
 ### <a name="connect-sensors-by-using-tunneling"></a>Propojení senzorů pomocí tunelování
 
@@ -161,61 +174,55 @@ Přístupové skupiny umožňují lepší kontrolu nad tím, kde uživatelé spr
 
 ### <a name="how-it-works"></a>Jak to funguje
 
-Pro každou lokalitu můžete definovat obchodní jednotku a oblast. Pak můžete přidat zóny, což jsou logické entity v síti. 
+Můžete definovat organizační jednotku a oblast pro každou lokalitu ve vaší organizaci. Pak můžete přidat zóny, což jsou logické entity, které existují ve vaší síti. 
 
-Pro každou zónu byste měli přiřadit aspoň jeden senzor. Model s pěti úrovněmi poskytuje flexibilitu a členitost potřebnou k zajištění systému ochrany, který odráží strukturu vaší organizace.
-
-Své weby můžete upravovat přímo z libovolného zobrazení mapy. Při otvírání lokality z zobrazení mapy se počet otevřených výstrah zobrazí vedle každé zóny.
-
-:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Snímek obrazovky místní konzoly pro správu s překrytím dat v Berlín":::
+Měli byste přiřadit aspoň jeden senzor na zónu. Model s pěti úrovněmi poskytuje flexibilitu a členitost potřebnou k zajištění systému ochrany, který odráží strukturu vaší organizace.
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/diagram-of-sensor-showing-relationships.png" alt-text="Diagram znázorňující senzory a regionální vztah":::
+
+Pomocí podnikového zobrazení můžete přímo upravovat své weby. Když vyberete lokalitu z podnikového zobrazení, zobrazí se vedle každé zóny počet otevřených výstrah.
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Snímek obrazovky místní konzoly pro správu s překrytím dat v Berlín":::
 
 Nastavení lokality:
 
 1. Přidejte nové obchodní jednotky, které budou odpovídat logické struktuře vaší organizace.
 
-2. Přidejte nové oblasti, aby odrážely oblasti vaší organizace.
+   1. V podnikovém zobrazení vyberte **všechny lokality**  >  **spravovat obchodní jednotky**.
 
-3. Přidat web.
+      :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-business-unit.png" alt-text="V rozevírací nabídce všechny weby na obrazovce podnikového zobrazení vyberte Spravovat organizační jednotku.":::
 
-4. Přidání zón do lokality.
+   1. Zadejte název nové organizační jednotky a vyberte **Přidat**.
 
-5. Připojte senzory.
+1. Přidejte nové oblasti, aby odrážely oblasti vaší organizace.
 
-6. Přiřaďte senzor k zónám webu.
+   1. V podnikovém zobrazení vyberte **všechny oblasti**  >  **Spravovat oblasti**.
 
-Postup přidání obchodních jednotek:
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-regions.png" alt-text="Vyberte všechny oblasti a pak spravujte oblasti pro správu oblastí ve vašem podniku.":::
 
-1. V podnikovém zobrazení vyberte **všechny lokality**  >  **spravovat obchodní jednotky**.
+   1. Zadejte název nové oblasti a vyberte **Přidat**.
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-business-unit-screen.png" alt-text="Snímek obrazovky znázorňující zobrazení spravovat organizační jednotky":::
+1. Přidat web.
 
-2. Zadejte název nové organizační jednotky a vyberte **Přidat**.
+   1. V podnikovém zobrazení vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: na horním panelu. Kurzor se zobrazí jako znaménko plus ( **+** ).
 
-Přidání nové oblasti:
+   1. Umístěte umístění do **+** umístění nové lokality a vyberte ho. Otevře se dialogové okno **vytvořit nový web** .
 
-1. V podnikovém zobrazení vyberte **všechny oblasti**  >  **Spravovat oblasti**.
+      :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="Snímek obrazovky s zobrazením pro vytvoření nového webu":::
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-regions-screen.png" alt-text="Snímek obrazovky znázorňující zobrazení Správa oblastí":::
+   1. Zadejte název a fyzickou adresu pro novou lokalitu a vyberte **Uložit**. Nová lokalita se zobrazí na mapě webu.
 
-2. Zadejte název nové oblasti a vyberte **Přidat**.
+4. [Přidání zón do lokality](#create-enterprise-zones).
 
-Přidání nového webu:
+5. [Připojte senzory](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console).
 
-1. V podnikovém zobrazení vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: na horním panelu. Kurzor se zobrazí jako znaménko plus ( **+** ).
-
-2. Umístěte umístění do **+** umístění nové lokality a vyberte ho. Otevře se dialogové okno **vytvořit nový web** .
-
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="Snímek obrazovky s zobrazením pro vytvoření nového webu":::
-
-3. Zadejte název a fyzickou adresu pro novou lokalitu a vyberte **Uložit**. Nová lokalita se zobrazí na mapě webu.
+6. [Přiřaďte senzor k zónám webu](#assign-sensors-to-zones).
 
 Odstranění webu:
 
 1. V okně **Správa lokality** vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: z panelu, který obsahuje název lokality, a pak vyberte **Odstranit lokalitu**. Zobrazí se okno potvrzení, které ověřuje, zda chcete odstranit web.
 
-2. V potvrzovacím poli vyberte **Ano**. Okno pro potvrzení se zavře a zobrazí se okno **Správa lokality** bez webu, který jste odstranili.
+2. V potvrzovacím poli vyberte **Potvrdit**.
 
 ## <a name="create-enterprise-zones"></a>Vytvořit podnikové zóny
 
@@ -250,11 +257,11 @@ Postup přidání zóny do lokality:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-zone-screen.png" alt-text="Snímek obrazovky s zobrazením vytvořit nové zóny":::
 
-2. Zadejte název zóny.
+1. Zadejte název zóny.
 
-3. Zadejte popis nové zóny, který jasně uvádí charakteristiky, které jste použili k rozdělení lokality do zón.
+1. Zadejte popis nové zóny, který jasně uvádí charakteristiky, které jste použili k rozdělení lokality do zón.
 
-4. Vyberte **Uložit**. Nová zóna se zobrazí v okně **Správa lokality** v lokalitě, do které tato zóna patří.
+1. Vyberte **Uložit**. Nová zóna se zobrazí v okně **Správa lokality** v lokalitě, do které tato zóna patří.
 
 Postup úpravy zóny:
 
@@ -262,13 +269,13 @@ Postup úpravy zóny:
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/zone-edit-screen.png" alt-text="Snímek obrazovky, který zobrazuje dialogové okno Upravit zónu":::
 
-2. Upravte parametry zóny a vyberte **Uložit**.
+1. Upravte parametry zóny a vyberte **Uložit**.
 
 Postup odstranění zóny:
 
 1. V okně **Správa lokality** vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: z panelu, který obsahuje název zóny, a pak vyberte **Odstranit zónu**.
 
-2. V potvrzovacím poli vyberte **Ano**.
+1. V potvrzovacím poli vyberte **Ano**.
 
 Filtrování podle stavu připojení:
 
@@ -302,23 +309,23 @@ Postup přiřazení senzoru:
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassigned-sensors-view.png" alt-text="Snímek obrazovky zobrazení nepřiřazených senzorů":::
 
-2. Ověřte, zda je stav **připojení** připojen. Pokud ne, přečtěte si téma [připojení senzorů k místní konzole pro správu](#connect-sensors-to-the-on-premises-management-console) , kde najdete podrobnosti o připojení. 
+1. Ověřte, zda je stav **připojení** připojen. Pokud ne, přečtěte si téma [připojení senzorů k místní konzole pro správu](#connect-sensors-to-the-on-premises-management-console) , kde najdete podrobnosti o připojení. 
 
-3. Vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: pro senzor, který chcete přiřadit.
+1. Vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: pro senzor, který chcete přiřadit.
 
-4. V dialogovém okně **přiřadit senzor** vyberte organizační jednotku, oblast, lokalitu a zónu, které chcete přiřadit.
+1. V dialogovém okně **přiřadit senzor** vyberte organizační jednotku, oblast, lokalitu a zónu, které chcete přiřadit.
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-sensor-screen.png" alt-text="Snímek obrazovky s zobrazením pro přiřazení senzorů":::
 
-5. Vyberte **přiřadit**.
+1. Vyberte **přiřadit**.
 
 Zrušení přiřazení a odstranění snímače:
 
 1. Odpojte senzor z místní konzoly pro správu. Podrobnosti najdete v tématu [připojení senzorů k místní konzole pro správu](#connect-sensors-to-the-on-premises-management-console) .
 
-2. V okně **Správa lokality** vyberte senzor a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: . Senzor se zobrazí v seznamu nepřiřazených senzorů za chvíli.
+1. V okně **Správa lokality** vyberte senzor a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: . Senzor se zobrazí v seznamu nepřiřazených senzorů za chvíli.
 
-3. Pokud chcete odstranit nepřiřazený senzor z webu, vyberte snímač ze seznamu nepřiřazených senzorů a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
+1. Pokud chcete odstranit nepřiřazený senzor z webu, vyberte snímač ze seznamu nepřiřazených senzorů a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
 ## <a name="see-also"></a>Viz také
 

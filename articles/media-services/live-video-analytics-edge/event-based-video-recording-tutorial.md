@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702313"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279812"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -426,7 +426,7 @@ Můžete prozkoumávat Media Services Asset, který byl vytvořen grafem, přihl
 1. V průvodci, který se otevře, přijměte výchozí možnosti a vyberte **Přidat**. Další informace najdete v tématu [přehrávání videa](video-playback-concept.md).
 
     > [!TIP]
-    > Ujistěte se, že [koncový bod streamování běží](../latest/streaming-endpoint-concept.md).
+    > Ujistěte se, že [koncový bod streamování běží](../latest/stream-streaming-endpoint-concept.md).
 1. Přehrávač by měl načíst video. Vyberte **Přehrát** a zobrazte ho.
 
 > [!NOTE]

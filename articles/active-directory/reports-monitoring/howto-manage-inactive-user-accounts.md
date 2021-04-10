@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660660"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167545"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postupy: Správa neaktivních uživatelských účtů v Azure AD
 
@@ -47,10 +47,9 @@ Neaktivní účty zjistíte tak, že vyhodnocujete vlastnost **lastSignInDateTim
 
 - **Uživatelé podle data**: v tomto scénáři si vyžádáte seznam uživatelů s lastSignInDateTime před zadaným datem: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
-
-
-
-
+> [!NOTE]
+> Je možné, že budete muset vygenerovat sestavu posledního přihlašovacího data všech uživatelů, pokud ano, můžete použít následující scénář.
+> **Datum a čas posledního přihlášení pro všechny uživatele**: v tomto scénáři si vyžádáte seznam všech uživatelů a poslední lastSignInDateTime pro každého příslušného uživatele: `https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>Co je potřeba vědět
 

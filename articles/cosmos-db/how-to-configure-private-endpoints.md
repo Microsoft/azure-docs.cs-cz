@@ -4,15 +4,15 @@ description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d21943c90e1f77bd4a43cdfd27b183df018f6cc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 034eb35eeef975be23cc318aa797282008d71728
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101690664"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936899"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -70,7 +70,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Virtuální síť| Vyberte svou virtuální síť. |
     | Podsíť | Vyberte podsíť. |
     |**Integrace Privátní DNS**||
-    |Integrovat s privátní zónou DNS |Vyberte **Ano**. <br><br/> Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích. |
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. <br><br/> Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích. <br><br/> Pokud pro tuto možnost vyberete Ano, vytvoří se také skupina privátních zón DNS. Skupina zón DNS je propojení mezi privátní zónou DNS a soukromým koncovým bodem. Tento odkaz vám pomůže automaticky aktualizovat soukromou zónu DNS, když dojde k aktualizaci privátního koncového bodu. Když například přidáte nebo odeberete oblasti, soukromá zóna DNS se automaticky aktualizuje. |
     |Zóna Privátního DNS |Vyberte **privatelink.documents.Azure.com**. <br><br/> Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.|
     |||
 
@@ -78,6 +78,8 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
 1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Pokud jste pro účet Azure Cosmos schválili privátní odkaz, v podokně Azure Portal není dostupná možnost **všechny sítě** v podokně **Brána firewall a virtuální sítě** .
+
+## <a name="api-types-and-private-zone-names"></a><a id="private-zone-name-mapping"></a>Typy rozhraní API a názvy privátních zón
 
 Následující tabulka ukazuje mapování mezi různými typy rozhraní API účtu Azure Cosmos, podporovaných dílčími prostředky a odpovídajícími názvy privátních zón. K účtům Gremlin a rozhraní API pro tabulky můžete přistupovat prostřednictvím rozhraní SQL API, takže existují dvě položky pro tato rozhraní API.
 
@@ -145,6 +147,8 @@ Po vytvoření privátního koncového bodu ho můžete integrovat s privátní 
 
 ```azurepowershell-interactive
 Import-Module Az.PrivateDns
+
+# Zone name differs based on the API type and group ID you are using. 
 $zoneName = "privatelink.documents.azure.com"
 $zone = New-AzPrivateDnsZone -ResourceGroupName $ResourceGroupName `
   -Name $zoneName
@@ -159,19 +163,19 @@ $pe = Get-AzPrivateEndpoint -Name $PrivateEndpointName `
 
 $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
   -ApiVersion "2019-04-01"
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName `
-  -RecordType A -ZoneName $zoneName  `
-  -ResourceGroupName $ResourceGroupName -Ttl 600 `
-  -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-  -IPv4Address $ipconfig.properties.privateIPAddress)  
-}
-}
+
+# Create DNS configuration
+
+$PrivateDnsZoneId = $zone.ResourceId
+
+$config = New-AzPrivateDnsZoneConfig -Name $zoneName`
+ -PrivateDnsZoneId $PrivateDnsZoneId
+
+## Create a DNS zone group
+New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName`
+ -PrivateEndpointName $PrivateEndpointName`
+ -Name "MyPrivateZoneGroup"`
+ -PrivateDnsZoneConfig $config
 ```
 
 ### <a name="fetch-the-private-ip-addresses"></a>Načtení privátních IP adres
@@ -242,6 +246,7 @@ az network private-endpoint create \
 Po vytvoření privátního koncového bodu ho můžete integrovat s privátní zónou DNS pomocí následujícího skriptu Azure CLI:
 
 ```azurecli-interactive
+#Zone name differs based on the API type and group ID you are using. 
 zoneName="privatelink.documents.azure.com"
 
 az network private-dns zone create --resource-group $ResourceGroupName \
@@ -253,15 +258,13 @@ az network private-dns link vnet create --resource-group $ResourceGroupName \
    --virtual-network $VNetName \
    --registration-enabled false 
 
-#Query for the network interface ID  
-networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
- 
-# Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
-az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
- 
-#Create DNS records 
-az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName
-az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
+#Create a DNS zone group
+az network private-endpoint dns-zone-group create \
+   --resource-group $ResourceGroupName \
+   --endpoint-name $PrivateEndpointName \
+   --name "MyPrivateZoneGroup" \
+   --private-dns-zone $zoneName \
+   --zone-name "myzone"
 ```
 
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Vytvoření privátního koncového bodu pomocí šablony Správce prostředků
@@ -460,38 +463,6 @@ Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názve
 }
 ```
 
-Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateZoneRecords_template.json".
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "DNSRecordName": {
-            "type": "string"
-        },
-        "IPAddress": {
-            "type":"string"
-        }        
-    },
-    "resources": [
-         {
-            "type": "Microsoft.Network/privateDnsZones/A",
-            "apiVersion": "2018-09-01",
-            "name": "[parameters('DNSRecordName')]",
-            "properties": {
-                "ttl": 300,
-                "aRecords": [
-                    {
-                        "ipv4Address": "[parameters('IPAddress')]"
-                    }
-                ]
-            }
-        }    
-    ]
-}
-```
-
 **Definování souboru parametrů pro šablonu**
 
 Vytvořte pro šablonu následující dva soubory parametrů. Vytvoří PrivateZone_parameters.js. s následujícím kódem:
@@ -511,18 +482,65 @@ Vytvořte pro šablonu následující dva soubory parametrů. Vytvoří PrivateZ
 }
 ```
 
-Vytvoří PrivateZoneRecords_parameters.js. s následujícím kódem:
+Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateZoneGroup_template.json". Tato šablona vytvoří pro existující virtuální síť skupinu privátních zón DNS pro stávající účet rozhraní SQL API služby Azure Cosmos.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "type": "string"
+        },
+        "PrivateEndpointDnsGroupName": {
+            "value": "string"
+        },
+        "privateEndpointName":{
+            "value": "string"
+        }        
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-06-01",
+            "name": "[parameters('PrivateEndpointDnsGroupName')]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]",
+                "[variables('privateEndpointName')]"
+            ],
+          "properties": {
+            "privateDnsZoneConfigs": [
+              {
+                "name": "config1",
+                "properties": {
+                  "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]"
+                }
+              }
+            ]
+          }
+        }
+    ]
+}
+```
+
+**Definování souboru parametrů pro šablonu**
+
+Vytvořte pro šablonu následující dva soubory parametrů. Vytvoří PrivateZoneGroup_parameters.js. s následujícím kódem:
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "DNSRecordName": {
+        "privateZoneName": {
             "value": ""
         },
-        "IPAddress": {
-            "type":"object"
+        "PrivateEndpointDnsGroupName": {
+            "value": ""
+        },
+        "privateEndpointName":{
+            "value": ""
         }
     }
 }
@@ -555,15 +573,18 @@ $PrivateZoneName = "myPrivateZone.documents.azure.com"
 # Name of the private endpoint to create
 $PrivateEndpointName = "myPrivateEndpoint"
 
+# Name of the DNS zone group to create
+$PrivateEndpointDnsGroupName = "myPrivateDNSZoneGroup"
+
 $cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
 $VNetResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($VNetName)"
 $SubnetResourceId = "$($VNetResourceId)/subnets/$($SubnetName)"
 $PrivateZoneTemplateFilePath = "PrivateZone_template.json"
 $PrivateZoneParametersFilePath = "PrivateZone_parameters.json"
-$PrivateZoneRecordsTemplateFilePath = "PrivateZoneRecords_template.json"
-$PrivateZoneRecordsParametersFilePath = "PrivateZoneRecords_parameters.json"
 $PrivateEndpointTemplateFilePath = "PrivateEndpoint_template.json"
 $PrivateEndpointParametersFilePath = "PrivateEndpoint_parameters.json"
+$PrivateZoneGroupTemplateFilePath = "PrivateZoneGroup_template.json"
+$PrivateZoneGroupParametersFilePath = "PrivateZoneGroup_parameters.json"
 
 ## Step 2: Login your Azure account and select the target subscription
 Login-AzAccount 
@@ -594,21 +615,15 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
     -PrivateEndpointName $PrivateEndpointName
 $deploymentOutput
 
-## Step 6: Map the private endpoint to the private zone
-$networkInterface = Get-AzResource -ResourceId $deploymentOutput.Outputs.privateEndpointNetworkInterface.Value -ApiVersion "2019-04-01"
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
-    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.',2)[0]
-        $dnsZone = $fqdn.split('.',2)[1]
-        Write-Output "Deploying PrivateEndpoint DNS Record $($PrivateZoneName)/$($recordName) Template on $($resourceGroupName)"
-        New-AzResourceGroupDeployment -Name "PrivateEndpointDNSDeployment" `
-            -ResourceGroupName $ResourceGroupName `
-            -TemplateFile $PrivateZoneRecordsTemplateFilePath `
-            -TemplateParameterFile $PrivateZoneRecordsParametersFilePath `
-            -DNSRecordName "$($PrivateZoneName)/$($RecordName)" `
-            -IPAddress $ipconfig.properties.privateIPAddress
-    }
-}
+## Step 6: Create the private zone
+New-AzResourceGroupDeployment -Name "PrivateZoneGroupDeployment" `
+    -ResourceGroupName $ResourceGroupName `
+    -TemplateFile $PrivateZoneGroupTemplateFilePath `
+    -TemplateParameterFile $PrivateZoneGroupParametersFilePath `
+    -PrivateZoneName $PrivateZoneName `
+    -PrivateEndpointName $PrivateEndpointName`
+    -PrivateEndpointDnsGroupName $PrivateEndpointDnsGroupName
+
 ```
 
 ## <a name="configure-custom-dns"></a>Konfigurace vlastního systému DNS
@@ -653,13 +668,17 @@ Pokud používáte privátní propojení s účtem Azure Cosmos prostřednictví
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizace privátního koncového bodu při přidání nebo odebrání oblasti
 
-Pokud nepoužíváte privátní skupinu zón DNS, přidání nebo odebrání oblastí pro účet Azure Cosmos vyžaduje, abyste přidali nebo odebrali položky DNS pro tento účet. Po přidání nebo odebrání oblastí můžete aktualizovat privátní zónu DNS podsítě tak, aby odrážela přidané nebo odebrané položky DNS a odpovídající privátní IP adresy.
+Například pokud nasadíte účet Azure Cosmos ve třech oblastech: "Západní USA," Střed USA "a" Západní Evropa ". Při vytváření privátního koncového bodu pro svůj účet jsou v podsíti vyhrazené čtyři privátní IP adresy. Pro každou ze tří oblastí existuje jedna IP adresa a pro koncový bod Global/region-nezávislá je k dispozici jedna IP adresa. Později můžete do účtu Azure Cosmos přidat novou oblast (například "Východní USA"). Privátní zóna DNS se aktualizuje následujícím způsobem:
 
-Představte si například, že nasazujete účet Azure Cosmos ve třech oblastech: "Západní USA," Střed USA "a" Západní Evropa ". Při vytváření privátního koncového bodu pro svůj účet jsou v podsíti vyhrazené čtyři privátní IP adresy. Pro každou ze tří oblastí existuje jedna IP adresa a pro koncový bod Global/region-nezávislá je k dispozici jedna IP adresa.
+* **Pokud se používá skupina privátních zón DNS:**
 
-Později můžete do účtu Azure Cosmos přidat novou oblast (například "Východní USA"). Po přidání nové oblasti je potřeba přidat odpovídající záznam DNS do privátní zóny DNS nebo vlastního serveru DNS.
+  Pokud používáte privátní skupinu zón DNS, soukromá zóna DNS se automaticky aktualizuje při aktualizaci privátního koncového bodu. V předchozím příkladu se po přidání nové oblasti automaticky aktualizuje privátní zóna DNS.
 
-Stejný postup můžete použít při odebrání oblasti. Po odebrání této oblasti je potřeba odebrat odpovídající záznam DNS z privátní zóny DNS nebo vlastního serveru DNS.
+* **Pokud se nepoužívá skupina privátních zón DNS:**
+
+  Pokud nepoužíváte privátní skupinu zón DNS, budete přidávat nebo odebírat oblasti účtu Azure Cosmos, abyste mohli přidat nebo odebrat položky DNS pro tento účet. Po přidání nebo odebrání oblastí můžete aktualizovat privátní zónu DNS podsítě tak, aby odrážela přidané nebo odebrané položky DNS a odpovídající privátní IP adresy.
+
+  V předchozím příkladu je po přidání nové oblasti potřeba přidat odpovídající záznam DNS do privátní zóny DNS nebo vlastního serveru DNS. Stejný postup můžete použít při odebrání oblasti. Po odebrání této oblasti je potřeba odebrat odpovídající záznam DNS z privátní zóny DNS nebo vlastního serveru DNS.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 

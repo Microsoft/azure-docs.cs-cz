@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607996"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935239"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -191,6 +191,10 @@ Velikost svazku hlášená klientem SMB je maximální velikost, na kterou můž
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Mám potíže s připojením ke sdílené složce SMB. Co bych měl/a dělat?
 
 Osvědčeným postupem je nastavit maximální toleranci pro synchronizaci hodin počítače na pět minut. Další informace najdete v tématu [Maximální tolerance synchronizace hodin počítače](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
+
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>Můžu spravovat `SMB Shares` , `Sessions` a `Open Files` prostřednictvím konzoly pro správu počítače (MMC)?
+
+Správa systému `SMB Shares` , `Sessions` a a `Open Files` prostřednictvím konzoly pro správu počítače (MMC) není aktuálně podporována.
 
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Jak získám IP adresu svazku SMB přes portál?
 

@@ -1,17 +1,22 @@
 ---
-title: Systémové požadavky
-description: Získejte požadavky na systém potřebné ke spuštění programu Azure Defender pro IoT.
+title: 'Rychlý Start: požadavky na systém'
+description: V tomto rychlém startu získáte požadavky na systém potřebné ke spuštění programu Azure Defender pro IoT.
 ms.date: 11/30/2020
 ms.topic: quickstart
-ms.openlocfilehash: 78d5948554ae531c4b2f77d67bb916d5290db943
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2aae849b6ee772c2aa29c680f3b107af3ed600b0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780935"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382942"
 ---
-# <a name="system-prerequisites"></a>Systémové požadavky
+# <a name="quickstart-system-prerequisites"></a>Rychlý Start: požadavky na systém
+
 V tomto článku jsou uvedené požadavky na systém pro spuštění programu Azure Defender pro IoT.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Žádné
 
 ## <a name="minimum-requirements"></a>Minimální požadavky
 
@@ -27,7 +32,7 @@ Defender pro IoT směruje veškerý provoz ze všech evropských oblastí do Zá
 
 Další informace najdete v tématu [IoT Hub podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-- [Identifikace požadovaných zařízení](how-to-identify-required-appliances.md)
-- [O programu Azure Defender pro síť IoT](how-to-set-up-your-network.md)
+> [!div class="nextstepaction"]
+> [Identifikace požadovaných zařízení](how-to-identify-required-appliances.md)

@@ -9,10 +9,10 @@ author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
 ms.openlocfilehash: 33db214013111b0dd4540a1b1d2947b7d1854db9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104607479"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
@@ -63,7 +63,7 @@ $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Agent virtuálního počítače s Windows potřebuje ke spuštění aspoň Windows Server 2008 SP2 (64-bit) a .NET Framework 4,0. Podívejte [se na podporu minimálních verzí pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 

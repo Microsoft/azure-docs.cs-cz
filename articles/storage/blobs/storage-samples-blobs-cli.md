@@ -1,25 +1,25 @@
 ---
 title: Ukázky v Azure CLI pro službu Blob Storage | Microsoft Docs
 description: Viz odkazy na ukázky v Azure CLI pro práci s Azure Blob Storage, jako je vytvoření účtu úložiště, odstranění kontejnerů s určitou předponou a další.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b18d332132bcaa8b3297179c7992eb9cc2f88d8
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88035038"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279642"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Ukázky v Azure CLI pro službu Azure Blob Storage
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI pro vytvoření a správu služby Azure Storage.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 |**Účty úložiště**||
 | [Vytvoření účtu úložiště a načtení/obměna přístupových klíčů](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří účet služby Azure Storage a načte a obmění jeho přístupové klíče. |

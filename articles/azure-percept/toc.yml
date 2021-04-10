@@ -62,9 +62,9 @@
           href: how-to-view-telemetry.md
     - name: Vývoj řešení pro rozpoznávání řeči pomocí Azure Percept DK
       items:
-        - name: Konfigurace hlasového asistenta v Azure Percept studiu
-          href: how-to-configure-voice-assistant.md
         - name: Konfigurace hlasového asistenta v IoT Hub
+          href: how-to-configure-voice-assistant.md
+        - name: Konfigurace hlasového asistenta v Azure Percept studiu
           href: how-to-manage-voice-assistant.md
     - name: Aktualizace zařízení s Percept Azure
       items:
@@ -82,7 +82,7 @@
           href: how-to-connect-to-percept-dk-over-serial.md
     - name: nástroje
       items:
-        - name: Instalační program sady devtools Pack
+        - name: Instalační program sady nástrojů pro vývojáře
           href: dev-tools-installer.md
     - name: Řešení potíží
       items:

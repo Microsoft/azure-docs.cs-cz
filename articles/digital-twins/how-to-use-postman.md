@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.openlocfilehash: d4a6e25578cd26b10b34f74a9f859d4957cc553b
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104783808"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Jak používat metodu POST k posílání žádostí do rozhraní API digitálních vláken Azure
@@ -29,7 +29,7 @@ Tento článek popisuje, jak nakonfigurovat [klienta post REST](https://www.getp
 
 Digitální vlákna Azure mají dvě sady rozhraní API, se kterými můžete pracovat: **rovina dat** a **rovina ovládacího prvku**. Další informace o rozdílu mezi těmito sadami rozhraní API naleznete v tématu [*How to: use the Azure Digital Revlákens API and SDKs*](how-to-use-apis-sdks.md). Tento článek obsahuje informace pro obě sady rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete pokračovat v používání metody post pro přístup k rozhraním API digitálních vláken Azure, musíte nastavit instanci digitálních vláken Azure a stáhnout post. Zbytek této části vás provede následujícími kroky.
 
