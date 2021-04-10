@@ -83,7 +83,7 @@ Výstup se podobá tomuto:
   "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
+  "managementEndpointUrl&quot;: &quot;https://management.core.windows.net/"
 }
 ```
 

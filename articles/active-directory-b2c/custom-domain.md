@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 2de419885938b27ebce4a934db5ef966965b3dbd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104580160"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Povolení vlastních domén pro Azure Active Directory B2C
@@ -54,7 +54,7 @@ Při používání vlastních domén Vezměte v úvahu následující skutečnos
 - Po nakonfigurování vlastních domén budou uživatelé i nadále mít přístup k Azure AD B2C výchozímu názvu domény *<název tenanta>. b2clogin.com* (Pokud nepoužíváte vlastní zásadu a [zablokujete přístup](#block-access-to-the-default-domain-name).
 - Pokud máte více aplikací, proveďte jejich migraci do vlastní domény, protože prohlížeč ukládá relaci Azure AD B2C pod aktuálně používaný název domény.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/09/2020
+ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f636b8ec04d151c855112102421dd2df0ccb6ff8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96348378"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932875"
 ---
 # <a name="saml-token-claims-reference"></a>Odkaz na deklarace identity tokenu SAML
 
@@ -34,7 +34,7 @@ Platforma Microsoft Identity Platform generuje při zpracování každého toku 
 > |Metoda ověřování | `amr` |Určuje způsob ověření předmětu tokenu. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Jméno | `given_name` |Poskytuje první nebo "dané" jméno uživatele, jak je nastaveno v objektu uživatele Azure AD. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |Skupiny | `groups` |Poskytuje ID objektů, které představují členství ve skupině daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a lze je bezpečně použít ke správě přístupu, jako je vynucení autorizace pro přístup k prostředku. Skupiny zahrnuté v deklaraci skupin jsou nakonfigurovány na základě jednotlivých aplikací prostřednictvím vlastnosti "groupMembershipClaims" manifestu aplikace. Hodnota null bude vyloučit všechny skupiny, hodnota "Security Group" bude zahrnovat pouze členství ve skupině zabezpečení služby Active Directory a hodnota "vše" bude zahrnovat skupiny zabezpečení a distribuční seznamy Microsoft 365. <br><br> **Poznámky**: <br> Pokud počet skupin, na kterých uživatel patří, se nachází v rámci limitu (150 pro SAML, 200 pro JWT), pak bude deklarace nadlimitního využití přičtena do koncového bodu grafu obsahujícího seznam skupin pro uživatele. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | Indikátor překročení skupin | `groups:src1` | Pro žádosti o tokeny, které nejsou omezené na délku, ale jsou pro něj i moc velké, se zahrne odkaz na seznam úplných skupin pro uživatele. V případě SAML se přidá jako nová deklarace místo `groups` deklarace identity. | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | Indikátor překročení skupin | `groups:src1` | Pro žádosti o tokeny, které nejsou omezené na délku, ale jsou pro něj i moc velké, se zahrne odkaz na seznam úplných skupin pro uživatele. V případě SAML se přidá jako nová deklarace místo `groups` deklarace identity. <br><br> **Poznámky**: <br> Graph API služby Azure AD nahrazuje rozhraním API Microsoft Graph. Další informace o ekvivalentním koncovém bodu najdete v tématu [Uživatel: getMemberObjects](https://docs.microsoft.com/graph/api/user-getmemberobjects). | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Zprostředkovatel identity | `idp` |Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota je shodná s hodnotou deklarace vystavitele, pokud se uživatelský účet nepoužívá v jiném tenantovi než Vystavitel. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |Ukládá čas, kdy byl token vydán. Často se používá k měření aktuálnosti tokenů. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Vystavitel | `iss` |Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. V tokenech, které Azure AD vrací, je Vystavitel sts.windows.net. Identifikátor GUID v hodnotě deklarace vystavitele je ID tenanta adresáře služby Azure AD. ID tenanta je neměnný a spolehlivý identifikátor adresáře. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |

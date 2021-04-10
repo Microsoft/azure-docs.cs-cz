@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743113"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935716"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -120,7 +120,7 @@ Po instalaci služby WebSocket a desktopové aplikace Teams použijte následuj�
 
 3. Vyberte **verzi**.
 
-      Pokud jste načetli optimalizace médií, zobrazí se v banneru **WVD Media optimalizované pro multimédia**. Pokud se v banneru zobrazuje **WVD médium Nepřipojeno**, ukončete aplikaci teams a zkuste to znovu.
+      Pokud se načetly optimalizace médií, zobrazí se v banneru **optimalizované médium virtuálních počítačů s Windows**. Pokud se v banneru zobrazuje **médium s virtuálním počítačem s Windows není připojené**, ukončete aplikaci teams a zkuste to znovu.
 
 4. Vyberte svůj obrázek profilu uživatele a pak vyberte **Nastavení**.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 2d799cb85bfa6cbfa233410eaf0825bb42bb3fa9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 09712396286ed0236f798aa9d9ce7e899255f480
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799305"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935494"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -63,7 +63,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[Ostražití](https://vigilant.it/manage-cloud-service/)|[Kontroly stavu Azure: 5 dní posouzení](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 dní implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|[Spravovaná NAC se správcem zásad ClearPass Aruba](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_aruba_clearpass?tab=Overview)|[Vandis spravované ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis spravované VWAN využívající Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis spravované VWAN využívající Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview); [Spravované VWAN využívající Barracuda CLOUDGEN WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_barracuda_vwan?tab=Overview)|
 
-K dispozici jsou Azure Marketplace nabídky pro spravované služby ExpressRoute, Virtual WAN, služby zabezpečení a soukromé hraniční zóny od následujících partnerů Azure pro síťové rozhraní MSP: [Amdocs](https://www.amdocs.com/); [Sítě Cirrus Core](https://cirruscorenetworks.com/); [Společnost Cognizant](https://www.cognizant.com/cognizant-digital-systems-technology/cloud-enablement-services); [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);   Pro   [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/); [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Zertia](https://zertia.es/)
+K dispozici jsou Azure Marketplace nabídky pro spravované služby ExpressRoute, Virtual WAN, služby zabezpečení a soukromé hraniční zóny od následujících partnerů Azure pro síťové rozhraní MSP: [Amdocs](https://www.amdocs.com/); [Sítě Cirrus Core](https://cirruscorenetworks.com/); [Společnost Cognizant](https://www.cognizant.com/cognizant-digital-systems-technology/cloud-enablement-services); [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);   Pro   [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/); [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Ses](https://www.ses.com/networks/cloud/ses-and-azure-expressroute); [Zertia](https://zertia.es/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>Partneři ExpressRoute
 

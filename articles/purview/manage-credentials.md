@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103461704"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Přihlašovací údaje pro ověřování zdroje v Azure dosah
 
 Tento článek popisuje, jak můžete vytvořit přihlašovací údaje v Azure dosah. Tyto uložené přihlašovací údaje vám umožní rychle znovu použít a použít uložené informace o ověřování pro vaše kontroly zdrojů dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Trezor klíčů Azure. Další informace o tom, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
 

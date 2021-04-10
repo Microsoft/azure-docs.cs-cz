@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 74ced2ecadb5ccfe5cdb7966550e469ae4f8ab31
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 8a29bc0d98c1286dcf09da59dc21ac2b2e09f478
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612258"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935613"
 ---
 # <a name="form-recognizer-custom-models"></a>Vlastní modely pro rozpoznávání formulářů
 
@@ -34,36 +34,37 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit model, kte
 Na nejvyšší úrovni je postup pro sestavování, školení a používání vlastního modelu následující:
 
 > [!div class="nextstepaction"]
-> [1. Sestavte datovou sadu školení](build-training-data-set.md#custom-model-input-requirements)
+>Sestavit datovou sadu školení] (Build-Train-data-set. MD # Custom-model-Input-požadavky)
 
 Sestavování vlastního modelu začíná vytvořením datové sady školení. Budete potřebovat minimálně pět dokončených forem stejného typu pro ukázkovou datovou sadu. Mohou mít různé typy souborů a obsahovat text i rukopis. Formuláře musí být stejného typu dokumentu a splňovat [požadavky na vstup](build-training-data-set.md#custom-model-input-requirements) pro nástroj pro rozpoznávání formulářů.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [2. Nahrajte datovou sadu školení.](build-training-data-set.md#upload-your-training-data)
+> [Nahrát datovou sadu školení](build-training-data-set.md#upload-your-training-data)
 
 Budete potřebovat nahrát školicí data do kontejneru úložiště objektů BLOB v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure Storage pomocí kontejneru, *Přečtěte si téma* [Azure Storage rychlý Start pro Azure Portal](../../storage/blobs/storage-quickstart-blobs-portal.md). Pomocí bezplatné cenové úrovně (F0) můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 > [!div class="nextstepaction"]
-> [3. školení vlastního modelu](quickstarts/client-library.md#train-a-custom-model)
+>[Výuka vlastního modelu](quickstarts/client-library.md#train-a-custom-model)
 
 Model můžete optimalizovat [bez použití](quickstarts/client-library.md#train-a-model-without-labels) [popisků](quickstarts/client-library.md#train-a-model-with-labels) a datových sad. Neoznačené datové sady spoléhají výhradně na rozhraní API pro rozložení ke zjišťování a identifikaci klíčových informací bez přidání lidského vstupu. Označené datové sady se také spoléhají na rozhraní API pro rozložení, ale kromě vašich specifických popisků a umístění polí jsou zahrnuté i doplňkové lidské vstupy. Chcete-li použít data s popisky i bez popisku, začněte s alespoň pěti dokončenými formuláři stejného typu pro povinná školicí data a poté přidejte do požadované datové sady data bez popisků.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;  
 
 >[!div class="nextstepaction"]
-> [4. Analýza dokumentů pomocí vlastního modelu](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
+>[Analýza dokumentů pomocí vlastního modelu](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
 
 Otestujte nově vyškolený model pomocí formuláře, který není součástí školicí sady dat. Můžete pokračovat v provádění dalších školení pro zlepšení výkonu vlastního modelu.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [5. Správa vlastních modelů](quickstarts/client-library.md#manage-custom-models)
+>[Správa vlastních modelů](quickstarts/client-library.md#manage-custom-models)
 
 Kdykoli můžete zobrazit seznam všech vlastních modelů v rámci vašeho předplatného, načítat informace o konkrétním vlastním modelu nebo odstranit vlastní model z vašeho účtu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o klientské knihovně pro rozpoznávání formulářů najdete v naší referenční dokumentaci k rozhraní API.
+
 > [!div class="nextstepaction"]
-> [Reference k rozhraní API pro rozpoznávání formulářů](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)
+> [Reference k rozhraní API pro rozpoznávání formulářů](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
 >

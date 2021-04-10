@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99834370"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: Vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření pravidla
 > * Přidat akci e-mailu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do](./quick-create-simulated-device.md) rychlých startů aplikace IoT Central k vytvoření šablony zařízení **kontroleru senzorů** , se kterou chcete pracovat.
 
