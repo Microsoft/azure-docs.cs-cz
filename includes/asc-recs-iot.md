@@ -6,15 +6,15 @@ ms.date: 03/22/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 388798b9f1ada6921fb79363678ecd17a3041227
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104801455"
 ---
 V této kategorii je **12** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |Výchozí zásady filtru IP adres by se měly odepřít. |Konfigurace filtru IP adres musí mít pravidla definovaná pro povolený provoz a měla by ve výchozím nastavení Odepřít všechny ostatní přenosy.<br />(Žádné související zásady) |Střední |
 |Měly by být povolené diagnostické protokoly v IoT Hub. |Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě.<br />(Související zásady: [protokoly diagnostiky v IoT Hub by měly být povolené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f383856f8-de7f-44a2-81fc-e5135b5c2aa4)) |Nízká |

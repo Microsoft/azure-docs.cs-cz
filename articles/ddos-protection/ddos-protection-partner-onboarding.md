@@ -3,17 +3,17 @@ title: Partnerství s Azure DDoS Protection standardem
 description: Principy partnerských příležitostí povolených Azure DDoS Protection Standard
 ms.service: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: a7a21dcaea22ed0d1c077d0c42ddb5b4bd50d24f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 625f77a6d9dbeaf612df884434ab39b943587791
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539328"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103194"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerství s Azure DDoS Protection standardem
 Tento článek popisuje možnosti partnerských serverů, které jsou povolené standardem Azure DDoS Protection. Tento článek je navržený tak, aby pomohla manažerům produktu a obchodním vývojářům pochopení investičních cest a poskytoval přehled o propozicích partnerských funkcí.

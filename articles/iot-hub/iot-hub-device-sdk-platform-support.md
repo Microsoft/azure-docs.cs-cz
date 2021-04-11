@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: c47e67375e093ff6e9a5cf7193c76eeeb5228e29
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: ab450c6ec6ae32cafcf07e88940736f209973d8d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045642"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168038"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Podpora platforem sady SDK pro zařízení Azure IoT
 
@@ -22,7 +22,7 @@ Kromě sad SDK pro zařízení poskytuje společnost Microsoft několik dalšíc
 
 * Microsoft spolupracuje s několika partnerskými společnostmi, aby jim usnadnil publikování vývojových sad založených na sadě Azure IoT C SDK pro své hardwarové platformy.
 
-* Microsoft spolupracuje s důvěryhodnými partnery Microsoftu k poskytování stále se rozšiřující sady zařízení, která byla testována a certifikována pro Azure IoT. Aktuální seznam těchto zařízení najdete v [katalogu zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/).
+* Microsoft spolupracuje s důvěryhodnými partnery Microsoftu k poskytování stále se rozšiřující sady zařízení, která byla testována a certifikována pro Azure IoT. Aktuální seznam těchto zařízení najdete v [katalogu zařízení Azure Certified for IoT](https://devicecatalog.azure.com/).
 
 * Microsoft poskytuje vrstvu abstrakce (PAL) na platformě Azure IoT Hub zařízení C SDK, která vývojářům pomáhá snadno přenést sadu SDK na platformu. Další informace najdete v tématu [pokyny pro přenos v sadě C SDK](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
@@ -114,9 +114,9 @@ Pokud vaše platforma zařízení nepokrývá jednu z předchozích sekcí, mů�
 
 Microsoft spolupracuje s řadou partnerů, aby mohli průběžně rozšiřovat Azure IoT Universe pomocí testovaných a certifikovaných zařízení Azure IoT.
 
-* Pokud chcete procházet zařízení s certifikací Azure IoT Certified, přečtěte si téma [Microsoft Azure Certified for IoT katalogu zařízení](https://catalog.azureiotsolutions.com/).
+* Pokud chcete procházet zařízení s certifikací Azure IoT Certified, přečtěte si téma [Microsoft Azure Certified for IoT katalogu zařízení](https://devicecatalog.azure.com/).
 
-* Další informace o ekosystému Azure Certified for IoT najdete v tématu [připojení k ekosystému Certified for IoT](https://catalog.azureiotsolutions.com/register).
+* Další informace o ekosystému Azure Certified for IoT najdete v tématu [připojení k ekosystému Certified for IoT](../certification/overview.md).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Připojení k IoT Hub bez sady SDK
 

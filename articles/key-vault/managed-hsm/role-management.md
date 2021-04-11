@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951738"
 ---
 # <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
@@ -28,7 +28,7 @@ Aby objekt zabezpečení (například uživatel, instanční objekt, skupina neb
 
 Seznam všech spravovaných rolí modulu HSM a operací, které umožňují, najdete v tématu [vestavěné předdefinované role HSM](built-in-roles.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 

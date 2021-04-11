@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: da293f15ba070fc9a00ad37defd6a76175ded2f2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 579a7114a06386fe48fcc074cc1095e980837ba0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587275"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732172"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -265,7 +265,7 @@ Ano. ExpressRoute může existovat společně s sítěmi VPN typu Site-to-site. 
 
 ### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Návody povolit směrování mezi připojeními VPN typu Site-to-site a my ExpressRoute?
 
-Pokud chcete povolit směrování mezi vaší větví připojenou k Expressoute a vaší větví připojenou k připojení VPN typu Site-to-site, budete muset nastavit [Server směrování Azure](../route-server/expressroute-vpn-support.md).
+Pokud chcete povolit směrování mezi vaší větví připojenou k ExpressRoute a vaší větví připojenou k připojení VPN typu Site-to-site, budete muset nastavit [Server směrování Azure](../route-server/expressroute-vpn-support.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Proč je ve virtuální síti přidružená veřejná IP adresa k bráně ExpressRoute?
 

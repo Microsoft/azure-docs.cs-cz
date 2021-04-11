@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 27c2ab96106bbfcc05b8fa12daf9b6f7b816c5c7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048370"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579976"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Vytváření a Správa připojení ke službě Active Directory pro Azure NetApp Files
 
@@ -215,7 +215,9 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Například uživatelské účty používané pro instalaci SQL Server v některých scénářích musí být udělena zvýšená oprávnění zabezpečení. Pokud k instalaci SQL Server používáte účet bez oprávnění správce (doména) a účet nemá přiřazená oprávnění zabezpečení, měli byste k účtu přidat oprávnění zabezpečení.  
 
         > [!IMPORTANT]
-        > Účet domény, který se používá pro instalaci SQL Server, už musí existovat, než ho přidáte do pole **uživatelé oprávnění zabezpečení** . Když přidáte účet instalátoru SQL Server pro uživatele s **oprávněním zabezpečení**, služba Azure NetApp Files může účet ověřit tím, že se obrátí na řadič domény. Příkaz se nemusí zdařit, pokud se nemůže připojit k řadiči domény.  
+        > Použití funkce **zabezpečení oprávnění uživatelé** vyžaduje, abyste odeslali žádost pořadníku prostřednictvím **[sdílených složek Azure NetApp Files SMB nepřetržitá dostupnosti Public Preview stránky pro odeslání pořadníku](https://aka.ms/anfsmbcasharespreviewsignup)**. Před použitím této funkce počkejte na oficiální e-mail s potvrzením od Azure NetApp Files týmu.        
+        > 
+        > Použití této funkce je volitelné a podporuje se jenom pro SQL Server. Účet domény, který se používá pro instalaci SQL Server, už musí existovat, než ho přidáte do pole **uživatelé oprávnění zabezpečení** . Když přidáte účet instalátoru SQL Server pro uživatele s **oprávněním zabezpečení**, služba Azure NetApp Files může účet ověřit tím, že se obrátí na řadič domény. Příkaz se nemusí zdařit, pokud se nemůže připojit k řadiči domény.  
 
         Další informace o `SeSecurityPrivilege` a SQL Server najdete v tématu [instalace SQL Server se nezdařila, pokud účet nastavení nemá určitá uživatelská práva](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
 

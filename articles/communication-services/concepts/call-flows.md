@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8f7bfd63d858fb409286268c318c9f66474e3d53
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 7651142d1c2b24da64d9f72dd2300dc0c3807e93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110912"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937871"
 ---
 # <a name="call-flow-basics"></a>Základy toků volání
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-phone-numbers.md)]
 
 Následující část obsahuje přehled toků volání v komunikačních službách Azure. Signalizace a toky médií závisí na typech volání, která vaši uživatelé provádějí. Mezi příklady typů volání patří VoIP, One-to-One pro veřejné telefonní sítě a volání skupin obsahující kombinaci účastníků připojení VoIP a PSTN. Zkontrolujte [typy volání](./voice-video-calling/about-call-types.md).
 

@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/23/2021
 ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951279"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatické ladění v Azure SQL Database a spravované instanci Azure SQL
@@ -63,9 +63,9 @@ K dispozici jsou možnosti automatického ladění Azure SQL Database a Azure SQ
 
 | Možnost automatického ladění | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :----------------------------- | ----- | ----- |
-| **Vytvořit index** – identifikuje indexy, které mohou zlepšit výkon úloh, vytváří indexy a automaticky ověřuje, zda se zvýšil výkon dotazů. | Ano | Ne |
-| **Drop index** – nepoužívané (za posledních 90 dní) a duplicitní indexy. Jedinečné indexy, včetně indexů podporujících primární klíč a jedinečná omezení, nejsou nikdy vyřazeny. Tato možnost se může automaticky zakázat, když se dotazy s nápovědami indexů nacházejí v úloze nebo když zatížení provádí přepínání oddílů. U úrovní služeb Premium a Pro důležité obchodní informace Tato možnost nikdy nepoužije nepoužívané indexy, ale odstraní duplicitní indexy, pokud existují. | Ano | Ne |
-| **Vynutit poslední dobrý dobrý plán** (automatický opravný plán) – identifikuje dotazy Azure SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazuje se pomocí posledního známého funkčního plánu místo navýšení plánu. | Ano | Ano |
+| **Vytvořit index** – identifikuje indexy, které mohou zlepšit výkon úloh, vytváří indexy a automaticky ověřuje, zda se zvýšil výkon dotazů. | Yes | No |
+| **Drop index** – nepoužívané (za posledních 90 dní) a duplicitní indexy. Jedinečné indexy, včetně indexů podporujících primární klíč a jedinečná omezení, nejsou nikdy vyřazeny. Tato možnost se může automaticky zakázat, když se dotazy s nápovědami indexů nacházejí v úloze nebo když zatížení provádí přepínání oddílů. U úrovní služeb Premium a Pro důležité obchodní informace Tato možnost nikdy nepoužije nepoužívané indexy, ale odstraní duplicitní indexy, pokud existují. | Yes | No |
+| **Vynutit poslední dobrý dobrý plán** (automatický opravný plán) – identifikuje dotazy Azure SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazuje se pomocí posledního známého funkčního plánu místo navýšení plánu. | Yes | Yes |
 
 ### <a name="automatic-tuning-for-sql-database"></a>Automatické ladění pro SQL Database
 

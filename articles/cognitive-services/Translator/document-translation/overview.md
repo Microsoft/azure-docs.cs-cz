@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f84dc66828f2ebf13316b3348fd93933a2223b5a
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 0d9ef13de29ac140d94e9e4c05b14f35b9e5834c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612275"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968165"
 ---
 # <a name="what-is-document-translation-preview"></a>Co je překlad dokumentu (Preview)?
 
@@ -54,7 +54,6 @@ Překlad dokumentu podporuje následující typy souborů dokumentů:
 |Microsoft Word|.docx| Textový soubor dokumentu.|
 |Tabulátory nebo hodnoty oddělené tabulátorem|. TSV/. Tab| Soubor nezpracovaných dat oddělený tabulátorem používaný tabulkovými aplikacemi.|
 |Text|.txt| Neformátovaný textový dokument.|
-|Výměna paměti pro překlad|.tmx|Open XML standard, který se používá pro výměnu dat překladu paměti (TM) vytvořených počítačovým překladem (CAT) a lokalizaci aplikací.|
 
 ## <a name="supported-glossary-formats"></a>Podporované formáty glosáře
 

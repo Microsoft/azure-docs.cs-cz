@@ -86,6 +86,8 @@
           href: automation-role-based-access-control.md
         - name: Přesun účtu Automation do jiného předplatného
           href: how-to/move-account.md
+        - name: Odstranit účet Automation
+          href: delete-account.md
         - name: Migrace z Orchestratoru na Azure Automation (beta verze)
           href: automation-orchestrator-migration.md
     - name: Sdílené prostředky

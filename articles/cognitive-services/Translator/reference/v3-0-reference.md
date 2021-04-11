@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b391c5a435c2dd2f19a3f170bf7c84edd7143f2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100650758"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063028"
 ---
 # <a name="translator-v30"></a>Překladatel v 3.0
 
@@ -35,7 +35,7 @@ Microsoft Translator se obsluhuje z více umístění datových center. V souča
 
 * **Severní Amerika:** Východní USA, Střed USA – jih, Středozápadní USA a Západní USA 2 
 * **Asie a Tichomoří:** Korea – jih, Japonsko – východ, jihovýchodní Asie a Austrálie – východ
-* **Evropa:** Severní Evropa, Západní Evropa, Švýcarsko – sever <sup>1, 2</sup>a Švýcarsko – západ <sup>1, 2</sup>
+* **Evropa:** Severní Evropa Západní Evropa
 
 Žádosti překladače Microsoftu jsou ve většině případů zpracovávány v datacentru, které je nejblíže místu, kde požadavek vznikl. V případě selhání datacentra se může žádost směrovat mimo zeměpisnou oblast Azure.
 
@@ -48,7 +48,7 @@ Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastm
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
-<sup>1</sup> zákazník s prostředkem umístěným v Švýcarsko – sever nebo Švýcarsko – západ může zajistit, aby jejich požadavky na textové rozhraní API byly obsluhovány v rámci Švýcarska. Pokud chcete zajistit, aby se požadavky zpracovaly ve Švýcarsku, vytvořte prostředek překladatele v oblasti prostředků Švýcarsko – sever nebo Švýcarsko – západ a pak ve svých požadavcích rozhraní API použijte vlastní koncový bod prostředku. Příklad: Pokud vytvoříte prostředek překladatele v Azure Portal s názvem "oblast prostředků" jako "Švýcarsko – sever" a název prostředku je "My-ch-n", váš vlastní koncový bod je " https://my-ch-n.cognitiveservices.azure.com ". A vzorový požadavek k překladu:
+<sup>1</sup> zákazníci s prostředkem umístěným v Švýcarsko – sever nebo Švýcarsko – západ mohou zajistit, aby jejich požadavky na textové rozhraní API byly obsluhovány v rámci Švýcarska. Pokud chcete zajistit, aby se požadavky zpracovaly ve Švýcarsku, vytvořte prostředek překladatele v oblasti prostředků Švýcarsko – sever nebo Švýcarsko – západ a pak ve svých požadavcích rozhraní API použijte vlastní koncový bod prostředku. Příklad: Pokud vytvoříte prostředek překladatele v Azure Portal s názvem "oblast prostředků" jako "Švýcarsko – sever" a název prostředku je "My-ch-n", váš vlastní koncový bod je " https://my-ch-n.cognitiveservices.azure.com ". A vzorový požadavek k překladu:
 ```curl
 // Pass secret key and region using headers to a custom endpoint
 curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
@@ -57,7 +57,7 @@ curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translat
 -H "Content-Type: application/json" \
 -d "[{'Text':'Hello'}]" -v
 ```
-<sup>2</sup> . Vlastní Překladatel není aktuálně k dispozici ve Švýcarsku.
+<sup>2</sup> vlastní Překladatel není aktuálně k dispozici ve Švýcarsku.
 
 ## <a name="authentication"></a>Authentication
 

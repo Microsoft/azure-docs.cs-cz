@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104802297"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby SolarWinds Service Desk (dříve Samanage) pro Automatické zřizování uživatelů
@@ -49,7 +49,7 @@ Když se vaše aplikace migruje, v části **přihlašovací údaje správce** s
 > * Zřizování skupin a členství ve skupinách v SolarWinds oddělení služeb
 > * [Jednotné přihlašování](./samanage-tutorial.md) do služby SolarWinds Service Desk (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

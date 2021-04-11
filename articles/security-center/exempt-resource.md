@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d3627f6bcda7a18204c24fc2a1347c4a512c5369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149728"
+ms.locfileid: "105968199"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Vyloučení prostředků a doporučení ze zabezpečeného skóre 
 
@@ -33,7 +33,7 @@ V takových případech můžete vytvořit výjimku pro doporučení pro:
 | Aspekt                          | Podrobnosti                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:                  | Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| Stanov                        | Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se můžou v budoucnu uplatňovat poplatky.                                                                                                                                                                 |
+| Stanov                        | Toto je prémiová funkce Azure Policy nabízená zákazníkům v Azure Defenderu bez dalších poplatků. Pro ostatní uživatele se můžou v budoucnu uplatňovat poplatky.                                                                                                                                                                 |
 | Požadované role a oprávnění: | **Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
 | Omezení:                    | Výjimky je možné vytvořit jenom pro doporučení zahrnutá v výchozích iniciativách Security Center, srovnávacích testech zabezpečení Azure nebo kterékoli ze zadaných regulativních standardních iniciativ. Doporučení, která jsou generována z vlastních iniciativ, nelze vyloučit. Přečtěte si další informace o vztazích mezi [zásadami, iniciativami a doporučeními](security-policy-concept.md). |
 | Cloud                         | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                                                                                                                                                         |

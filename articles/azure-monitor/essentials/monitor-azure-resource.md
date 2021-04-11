@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: af2803a945821a23ff59f196967d792a6593009f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 203af340a8bd48bdb6dee70f92c2ecc39708b8e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033380"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732325"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure s využitím služby Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -63,7 +63,7 @@ Některá data monitorování se shromažďují automaticky, ale možná budete 
 
 - [Metriky platforem](../essentials/data-platform-metrics.md) – metriky platformy se shromažďují automaticky do [Azure monitor metrik](../essentials/data-platform-metrics.md) bez nutnosti konfigurace. Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
 - [Protokoly prostředků](./platform-logs-overview.md) – protokoly prostředků se automaticky generují pomocí prostředků Azure, ale neshromažďují se bez nastavení diagnostiky.  Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
-- [Protokol aktivit](./platform-logs-overview.md) – protokol aktivit je shromažďován automaticky bez nutnosti konfigurace a může být zobrazen v Azure Portal. Vytvořte nastavení diagnostiky, které se zkopíruje do protokolů Azure Monitor nebo je předají mimo Azure.
+- [Protokol aktivit](./platform-logs-overview.md) – protokol aktivit je shromažďován automaticky bez nutnosti konfigurace a lze jej zobrazit v Azure Portal. Vytvořte nastavení diagnostiky, které se zkopíruje do protokolů Azure Monitor nebo je předají mimo Azure.
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
 Shromažďování dat do protokolů Azure Monitor vyžaduje pracovní prostor Log Analytics. Můžete rychle začít monitorovat službu tím, že vytvoříte nový pracovní prostor, ale v pracovním prostoru, který shromažďuje data z jiných služeb, může dojít k hodnotě. V tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../logs/quick-create-workspace.md) najdete podrobné informace o vytváření pracovního prostoru a [návrhu nasazení Azure Monitorch protokolů](../logs/design-logs-deployment.md) , které vám pomůžou určit nejlepší návrh pracovního prostoru pro vaše požadavky. Pokud používáte existující pracovní prostor ve vaší organizaci, budete potřebovat příslušná oprávnění, jak je popsáno v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../logs/manage-access.md). 

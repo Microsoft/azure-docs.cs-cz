@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363198"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168157"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
 
@@ -59,7 +59,7 @@ Některé [šablony aplikací](concepts-app-templates.md) již obsahují šablon
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Vytvoření šablony zařízení z katalogu zařízení
 
-Jako tvůrce můžete rychle začít vytvářet vaše řešení pomocí certifikovaného zařízení. Podívejte se na seznam v [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/alldevices). IoT Central se integruje s katalogem zařízení, abyste mohli naimportovat model zařízení z některého z certifikovaných zařízení. Chcete-li vytvořit šablonu zařízení z jednoho z těchto zařízení v IoT Central:
+Jako tvůrce můžete rychle začít vytvářet vaše řešení pomocí certifikovaného zařízení. Podívejte se na seznam v [katalogu zařízení Azure IoT](https://devicecatalog.azure.com). IoT Central se integruje s katalogem zařízení, abyste mohli naimportovat model zařízení z některého z certifikovaných zařízení. Chcete-li vytvořit šablonu zařízení z jednoho z těchto zařízení v IoT Central:
 
 1. V aplikaci IoT Central otevřete stránku **šablony zařízení** .
 1. Vyberte **+ Nová** a potom z katalogu vyberte kterákoli z certifikovaných zařízení. IoT Central vytvoří šablonu zařízení založenou na tomto modelu zařízení.

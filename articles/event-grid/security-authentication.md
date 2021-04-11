@@ -3,12 +3,12 @@ title: Ověřování doručování událostí do obslužných rutin událostí (
 description: Tento článek popisuje různé způsoby ověřování doručování do obslužných rutin událostí v Azure Event Grid.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 98d7a4a0dee6c355ec340668bef7d8b306f97496
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7a105c36b7c924e35c295edc43107353d738d5b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98633116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968131"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Ověřování doručování událostí do obslužných rutin událostí (Azure Event Grid)
 Tento článek poskytuje informace o ověřování doručování událostí do obslužných rutin událostí. Také ukazuje, jak zabezpečit koncové body Webhooku, které se používají k přijímání událostí z Event Grid pomocí Azure Active Directory (Azure AD) nebo sdíleného tajného klíče.
@@ -40,7 +40,7 @@ Vzhledem k tomu, že parametry dotazu můžou obsahovat klientské tajné klíč
 Další informace o doručování událostí do webhooků najdete v tématu [doručování událostí Webhooku](webhook-event-delivery.md) .
 
 > [!IMPORTANT]
-Azure Event Grid podporuje pouze koncové body Webhooku **protokolu HTTPS** . 
+> Azure Event Grid podporuje pouze koncové body Webhooku **protokolu HTTPS** . 
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Ověření koncového bodu pomocí CloudEvents v 1.0
 Pokud už jste obeznámeni s Event Grid, můžete znát metodu handshake ověřování koncového bodu, abyste zabránili zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](webhook-event-delivery.md) pomocí metody **http** . Další informace najdete v tématu [Webhooky HTTP 1,1 pro doručování událostí – verze 1,0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Když pro výstup použijete schéma CloudEvents, Event Grid používá místo mechanismu události ověřování Event Grid ochranu proti zneužívání CloudEvents v 1.0. Další informace najdete v tématu [použití schématu CloudEvents v 1.0 s Event Grid](cloudevents-schema.md). 

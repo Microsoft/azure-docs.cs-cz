@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035416"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579762"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Použití Logstash k připojení zdrojů dat k Sentinel Azure
 
@@ -44,7 +44,9 @@ Modul Logstash se skládá ze tří součástí:
 - Výstupní moduly plug-in: přizpůsobení odesílání shromážděných a zpracovaných dat do různých cílů.
 
 > [!NOTE]
-> Sentinel Azure podporuje pouze vlastní dodaný výstupní modul plug-in. Nepodporuje výstupní moduly plug-in třetích stran pro službu Azure Sentinel nebo jakýkoli jiný modul plug-in Logstash jakéhokoli typu.
+> - Sentinel Azure podporuje pouze vlastní dodaný výstupní modul plug-in. Aktuální verze tohoto modulu plug-in je verze v 1.0.0, vydané 2020-08-25. Nepodporuje výstupní moduly plug-in třetích stran pro službu Azure Sentinel nebo jakýkoli jiný modul plug-in Logstash jakéhokoli typu.
+>
+> - Modul plug-in Logstash pro výstup Azure podporuje jenom **Logstash verze od 7,0 do 7,9**.
 
 Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON do vašeho pracovního prostoru Log Analytics pomocí Log Analytics REST API kolekce dat HTTP. Data se ingestují do vlastních protokolů.
 
@@ -67,19 +69,21 @@ Použijte informace ze struktury Logstash dokumentu [konfiguračního souboru](h
 
 | Název pole | Datový typ | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | řetězec | Zadejte identifikátor GUID ID vašeho pracovního prostoru. * |
-| `workspace_key` | řetězec | Zadejte identifikátor GUID primárního klíče pracovního prostoru. * |
+| `workspace_id` | řetězec | Zadejte identifikátor GUID ID pracovního prostoru (viz TIP). |
+| `workspace_key` | řetězec | Zadejte identifikátor GUID primárního klíče pracovního prostoru (viz TIP). |
 | `custom_log_table_name` | řetězec | Nastavte název tabulky, do které budou přijímány protokoly. Pro každý výstupní modul plug-in se dá nakonfigurovat jenom jeden název tabulky. V části **protokoly** v **tabulkách** v kategorii **vlastní protokoly** se jako přípona zobrazí tabulka protokolu Azure Sentinel `_CL` . |
 | `endpoint` | řetězec | Volitelné pole. Ve výchozím nastavení je to koncový bod Log Analytics. Pomocí tohoto pole můžete nastavit alternativní koncový bod. |
 | `time_generated_field` | řetězec | Volitelné pole. Tato vlastnost přepisuje výchozí pole **TimeGenerated** v Log Analytics. Zadejte název pole časového razítka ve zdroji dat. Data v poli musí odpovídat formátu ISO 8601 ( `YYYY-MM-DDThh:mm:ssZ` ). |
 | `key_names` | array | Zadejte seznam Log Analytics výstupních polí schématu. Každá položka seznamu by měla být uzavřena do jednoduchých uvozovek a položek oddělených čárkami a celým seznamem uzavřeným v hranatých závorkách. Viz následující příklad. |
 | `plugin_flush_interval` | číslo | Volitelné pole. Nastavte pro definování maximálního intervalu (v sekundách) mezi přenosy zpráv, které se mají Log Analytics. Výchozí hodnota je 5. |
-    | `amount_resizing` | boolean | True nebo false Povolte nebo zakažte mechanismus automatického škálování, který upraví velikost vyrovnávací paměti zpráv podle objemu přijatých dat protokolu. |
+| `amount_resizing` | boolean | True nebo false Povolte nebo zakažte mechanismus automatického škálování, který upraví velikost vyrovnávací paměti zpráv podle objemu přijatých dat protokolu. |
 | `max_items` | číslo | Volitelné pole. Platí pouze v případě, že je `amount_resizing` nastavena hodnota "NEPRAVDA". Použijte k nastavení limitu velikosti vyrovnávací paměti zpráv (v záznamech). Výchozí hodnota je 2000.  |
 | `azure_resource_id` | řetězec | Volitelné pole. Definuje ID prostředku Azure, ve kterém se nacházejí data. <br>Hodnota ID prostředku je užitečná hlavně v případě, že používáte při použití správy [kontextu prostředků RBAC](resource-context-rbac.md) přístup pouze k určitým datům. |
 | | | |
 
-* ID a primární klíč pracovního prostoru můžete najít v prostředku pracovního prostoru v části **Správa agentů**.
+> [!TIP]
+> - ID a primární klíč pracovního prostoru můžete najít v prostředku pracovního prostoru v části **Správa agentů**.
+> - Vzhledem k **tomu, že** při použití přihlašovacích údajů a jiných citlivých informací uložených v nešifrovaném textu v konfiguračních souborech není v souladu s osvědčenými postupy zabezpečení, důrazně doporučujeme, abyste **Logstash úložiště klíčů** používali k bezpečnému zahrnutí **ID pracovního prostoru** a **primárního klíče pracovního prostoru** v konfiguraci. Pokyny najdete v [dokumentaci pro elastické](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html) .
 
 #### <a name="sample-configurations"></a>Ukázkové konfigurace
 
@@ -175,5 +179,5 @@ Pokud nevidíte žádná data v tomto souboru protokolu, vygenerujte a odešlete
 ## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste zjistili, jak používat Logstash k připojení externích zdrojů dat ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Naučte se, jak [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](tutorial-detect-threats-built-in.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.

@@ -1,18 +1,15 @@
 ---
 title: Architektura zotavení po havárii virtuálního počítače VMware v Azure Site Recovery
 description: Tento článek poskytuje přehled komponent a architektury, které se používají při nastavování zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
-author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
-ms.author: raynew
-ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24333ccc5096e7f04f016444de2b0a7e13ae7bfa
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652224"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579804"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z VMware do Azure
 
@@ -47,7 +44,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
-| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.us`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
 
 Úplný seznam adres URL, které se mají filtrovat pro komunikaci mezi místní infrastrukturou Azure Site Recovery a službami Azure, najdete [v části požadavky na síť v článku](vmware-azure-deploy-configuration-server.md#prerequisites)požadavky.

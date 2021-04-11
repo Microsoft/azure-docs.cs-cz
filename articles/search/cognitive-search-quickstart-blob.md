@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/21/2021
 ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104770967"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
@@ -23,7 +23,7 @@ V rámci přípravy vytvoříte několik prostředků a nahrajete ukázkové obr
 
 Chcete začít s kódem? Viz [kurz: použití Rest a AI ke generování vyhledávaného obsahu z objektů blob Azure](cognitive-search-tutorial-blob.md) nebo [kurzu: k vygenerování vyhledávaného obsahu z objektů blob Azure použijte .NET a AI](cognitive-search-tutorial-blob-dotnet.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, vydejte tyto požadavky:
 

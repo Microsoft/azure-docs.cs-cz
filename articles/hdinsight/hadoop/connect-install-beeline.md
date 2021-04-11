@@ -4,13 +4,13 @@ description: Naučte se připojit k klientovi Apache Beeline a spouštět dotazy
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.date: 05/27/2020
-ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 5dcb6168a263be11410126ff08bd8b015da5af46
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944456"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103432"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Připojte se k Apache Beeline ve službě HDInsight nebo ji nainstalujte místně.
 
@@ -77,7 +77,9 @@ Apache Spark poskytuje vlastní implementaci HiveServer2, která se někdy ozna�
 
 #### <a name="through-public-or-private-endpoints"></a>Prostřednictvím veřejných nebo privátních koncových bodů
 
-Použitý připojovací řetězec je trochu odlišný. Místo obsahujícího `httpPath=/hive2` použití `httpPath/sparkhive2` . Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro svůj cluster. U clusterů ESP použijte úplný název uživatele (například user@domain.com ). Nahraďte `password` heslem přihlašovacího účtu clusteru.
+Použitý připojovací řetězec je trochu odlišný. Místo obsahujícího `httpPath=/hive2` použití `httpPath/sparkhive2` . Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro svůj cluster. Nahraďte `password` heslem přihlašovacího účtu clusteru.
+> [!NOTE]
+> V případě clusterů ESP nahraďte `admin` úplným hlavním názvem uživatele (například user@domain.com ). 
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'

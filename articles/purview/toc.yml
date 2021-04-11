@@ -12,6 +12,10 @@ items:
         href: create-catalog-portal.md
       - name: Vytvoření účtu Purview – Azure PowerShell
         href: create-catalog-powershell.md
+      - name: Vytvoření účtu dosah – .NET SDK
+        href: create-purview-dotnet.md
+      - name: Vytvoření účtu dosah – Python
+        href: create-purview-python.md
   - name: Kurzy
     items:
       - name: Úvodní sada

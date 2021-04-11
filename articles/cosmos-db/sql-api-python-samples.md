@@ -10,10 +10,10 @@ ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
 ms.openlocfilehash: 947a958b7cce6909332ebdb1832be168bfdd0bde
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104801804"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Příklady Azure Cosmos DB Python
@@ -33,7 +33,7 @@ Ukázková řešení, která dělají operace CRUD a další běžné operace t�
 * Odkazy na úlohy v jednotlivých ukázkových souborech projektů v Pythonu.
 * Odkazy na související referenční obsah rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Cosmos DB. Máte tyto možnosti:
     * V rámci předplatného Azure Active:

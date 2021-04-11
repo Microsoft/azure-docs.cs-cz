@@ -8,10 +8,10 @@ ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104950965"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure se [služ
 
 Další informace o fázích _zřizování_ a _vyřazení_ a lepší pochopení sady obecných fází správy zařízení, které jsou společné pro všechny projekty IoT v podniku, najdete v [části *životní cyklus zařízení*](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) v dokumentaci správy zařízení IoT Hub.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct nastavit zřizování, musíte nastavit následující:
 * **instance digitálního vlákna Azure**. Postupujte podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md) pro vytvoření instance digitálních vláken Azure. Shromážděte **_název hostitele_** instance v Azure Portal ([pokyny](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).

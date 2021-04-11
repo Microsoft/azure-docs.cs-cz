@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f02c9ad10e2b03bddc7c3ca2cfb54932464b69a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97901228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731747"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurace front-endové architektur a knihoven pomocí Azure static Web Apps Preview
 
@@ -52,6 +52,7 @@ Záměr sloupců tabulky je vysvětlen následujícími položkami:
 | [Polymer](https://www.polymer-project.org/) | `build/default` | Není k dispozici |
 | [Preact](https://preactjs.com/) | `build` | Není k dispozici |
 | [React](https://reactjs.org/) | `build` | Není k dispozici |
+| [RedwoodJS](https://redwoodjs.com/) | `web/dist` | `yarn rw build` |
 | [Kóty](https://stenciljs.com/) | `www` | Není k dispozici |
 | [Svelte](https://svelte.dev/) | `public` | Není k dispozici |
 | [Three.js](https://threejs.org/) | `/` | Není k dispozici |

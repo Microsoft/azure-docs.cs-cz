@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175987"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731985"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Co je potřeba pro vaši službu Azure NetApp Files, která se mění na Volume hard disk
 
 Od začátku služby Azure NetApp Files používal mechanizmus zřizování a Automatický růst kapacity fondu. Azure NetApp Files svazky se dynamicky zřídí v nakládání fondu kapacit s podporou pro zákazníky u vybrané úrovně a velikosti. Velikosti svazků (kvóty) se používají k zajištění výkonu a kapacity a kvóty můžete kdykoli upravit. Toto chování znamená, že v současné době je kvóta svazku pomocí páčky výkonu pro řízení šířky pásma pro svazek. V současné době se podkladové fondy kapacit při vyplňování kapacity zvětšují automaticky.   
 
 > [!IMPORTANT] 
-> Chování při zřizování svazku a fondu kapacit Azure NetApp Files se změní na *manuální a ovládaný* mechanismus.  **Od 1. dubna 2021 (aktualizované) budou velikosti svazků (kvóta) spravovat výkon šířky pásma i zřízené kapacity a základní fondy kapacity se už nebudou automaticky rozšiřovat.** 
+> Chování při zřizování svazku a fondu kapacit Azure NetApp Files se změní na *manuální a ovládaný* mechanismus.  **Od 30. dubna 2021 (aktualizované) budou velikosti svazků (kvóta) spravovat výkon šířky pásma i zřízené kapacity a základní fondy kapacity se už nebudou automaticky rozšiřovat.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Důvody pro změnu pevné kvóty multilicence
 

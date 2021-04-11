@@ -14,10 +14,10 @@ keywords: ''
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
 ms.openlocfilehash: 146fc59704719fd3aebb03b9b90a176221beea10
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104950684"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Provozování Micro Enterprise serveru 5,0 v kontejneru Docker v Azure
@@ -28,7 +28,7 @@ Docker přidá do aplikací přenositelnost a izolaci. Můžete například expo
 
 V tomto kurzu se do **Windows 2016 Datacenter** nainstaluje virtuální počítač s kontejnery z Azure Marketplace. Tento virtuální počítač obsahuje **Docker 18.09.0**. Následující postup ukazuje, jak nasadit kontejner, spustit ho a pak se k němu připojit pomocí emulátoru 3270.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, podívejte se na tyto požadavky:
 

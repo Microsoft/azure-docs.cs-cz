@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951466"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Prediktivní zřizování a nasazování mikroslužeb v Azure
@@ -145,10 +145,10 @@ Připojovací řetězce jsou také definovány jako vnořený prostředek.
 
 ![Ukazuje, jak jsou připojovací řetězce definovány jako vnořené prostředky v kódu JSON.](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-V `properties` elementu pro je `config/connectionstrings` každý připojovací řetězec definován také jako název: dvojice hodnot s konkrétním formátem `"<name>" : {"value": "…", "type": "…"}` . Pro `type` element jsou možné hodnoty `MySql` ,, a `SQLServer` `SQLAzure` `Custom` .
+V `properties` elementu pro je `config/connectionstrings` každý připojovací řetězec definován také jako název: dvojice hodnot s konkrétním formátem `"<name>&quot; : {&quot;value&quot;: &quot;…&quot;, &quot;type&quot;: &quot;…&quot;}` . Pro `type` element jsou možné hodnoty `MySql` ,, a `SQLServer` `SQLAzure` `Custom` .
 
 > [!TIP]
-> Chcete-li zobrazit konečný seznam typů připojovacích řetězců, spusťte následující příkaz v Azure PowerShell: \[ Enum]:: GetNames ("Microsoft. windowsazure. Commands. Utilities. Web. Services. webentities. DatabaseType")
+> Chcete-li zobrazit konečný seznam typů připojovacích řetězců, spusťte následující příkaz v Azure PowerShell: \[ Enum]:: GetNames (&quot;Microsoft. windowsazure. Commands. Utilities. Web. Services. webentities. DatabaseType")
 > 
 > 
 
