@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/31/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558257"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167358"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurace dočasného přístupového průchodu ve službě Azure AD pro registraci metod ověřování bez hesla (Preview)
 
@@ -57,7 +57,7 @@ Postup konfigurace zásady dočasného přístupu k metodě ověřování:
    | Jednorázové použití | Ne | True nebo false | Pokud je zásada nastavená na hodnotu false, průchody v tenantovi se dají v rámci platnosti (maximální doba života) použít buď jednou, nebo více než jednou. Když vynutíte jednorázové použití v zásadách dočasného přístupového průchodu, všechny průchody vytvořené v tenantovi se vytvoří jako jednorázové použití. |
    | Délka | 8 | 8-48 znaků | Definuje délku hesla. |
 
-## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Vytvoření dočasného přístupového průchodu na portálu Azure AD
+## <a name="create-a-temporary-access-pass"></a>Vytvoření dočasného přístupového průchodu
 
 Po povolení zásady můžete vytvořit dočasný přístupový průchod pro uživatele v Azure AD. Tyto role mohou provádět následující akce týkající se dočasného přístupového průchodu.
 
@@ -66,9 +66,7 @@ Po povolení zásady můžete vytvořit dočasný přístupový průchod pro už
 - Správci ověřování můžou vytvořit, odstranit, zobrazit dočasný přístup k předávání u členů (s výjimkou samotných).
 - Globální správce může zobrazit podrobnosti o dočasném přístupu pro uživatele (bez čtení samotného kódu).
 
-Vytvoření dočasného přístupového průchodu:
-
-1. Přihlaste se k portálu buď jako globální správce, správce privilegovaného ověřování nebo Správce ověřování. 
+1. Přihlaste se k Azure Portal jako globální správce, správce privilegovaného ověřování nebo Správce ověřování. 
 1. Klikněte na **Azure Active Directory**, vyhledejte uživatele, vyberte uživatele, například *Novák zelený*, a pak zvolte **metody ověřování**.
 1. V případě potřeby vyberte možnost pro **nové prostředí metod ověřování uživatelů**.
 1. Vyberte možnost **Přidání metod ověřování**.
@@ -80,6 +78,30 @@ Vytvoření dočasného přístupového průchodu:
 1. Po přidání se zobrazí podrobnosti o dočasném přístupovém průchodu. Poznamenejte si skutečný údaj hodnoty úspěšnosti dočasného přístupu. Tuto hodnotu zadáte uživateli. Po kliknutí na tlačítko **OK** nemůžete tuto hodnotu zobrazit.
    
    ![Snímek obrazovky s podrobnostmi o dočasném přístupu](./media/how-to-authentication-temporary-access-pass/details.png)
+
+Následující příkazy ukazují, jak vytvořit a získat dočasný přístup pomocí prostředí PowerShell:
+
+```powershell
+# Create a Temporary Access Pass for a user
+$properties = @{}
+$properties.isUsableOnce = $True
+$properties.startDateTime = '2021-03-11 06:00:00'
+$propertiesJSON = $properties | ConvertTo-Json
+
+New-MgUserAuthenticationTemporaryAccessPassMethod -UserId user2@contoso.com -BodyParameter $propertiesJSON
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM TAPRocks!
+
+# Get a user's Temporary Access Pass
+Get-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM
+
+```
 
 ## <a name="use-a-temporary-access-pass"></a>Použít dočasný přístupový průchod
 
@@ -108,6 +130,13 @@ Neplatnost dočasného přístupového průchodu s vypršenou platností nelze p
 1. Na portálu Azure AD přejděte na **uživatele**, vyberte uživatele, například *klepněte na uživatel* a pak zvolte **metody ověřování**.
 1. Na pravé straně metody ověřování **dočasná metoda Access Pass (Preview)** zobrazené v seznamu vyberte **Odstranit**.
 
+Můžete také použít PowerShell:
+
+```powershell
+# Remove a user's Temporary Access Pass
+Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -TemporaryAccessPassAuthenticationMethodId c5dbd20a-8b8f-4791-a23f-488fcbde3b38
+```
+
 ## <a name="replace-a-temporary-access-pass"></a>Nahrazení dočasného přístupového průchodu 
 
 - Uživatel může mít pouze jeden dočasný přístupový průchod. Heslo lze použít při počátečním a koncovém čase dočasného přístupového průchodu.
@@ -123,8 +152,8 @@ Pamatujte na tato omezení:
 
 - Pokud k registraci metody bez hesla, jako je FIDO2 nebo přihlašování telefonem, uživatel používá jednorázové dočasné přístupy, musí dokončit registraci během 10 minut od přihlášení s jednorázovým dočasným přístupem. Toto omezení se nevztahuje na dočasný přístupový průchod, který lze použít více než jednou.
 - Uživatelé typu Host se nemůžou přihlásit pomocí dočasného přístupového průchodu.
-- Uživatelům v oboru pro zásady registrace samoobslužného resetování hesla (SSPR) bude nutné zaregistrovat jednu z metod SSPR po přihlášení pomocí dočasného přístupového průchodu. Pokud uživatel bude používat jenom FIDO2 klíč, vylučte je ze zásad SSPR nebo zakažte zásady registrace SSPR. 
-- Dočasný přístupový průchod nelze použít s adaptérem rozšíření serveru NPS (Network Policy Server) a Active Directory Federation Services (AD FS) (AD FS).
+- Uživatelům v oboru pro zásadu registrace samoobslužného resetování hesla (SSPR) *nebo* [zásady registrace pro vícefaktorové ověřování identity](../identity-protection/howto-identity-protection-configure-mfa-policy.md) se budou muset zaregistrovat metody ověřování po přihlášení pomocí dočasného přístupového průchodu. Uživatelé v oboru těchto zásad budou přesměrováni do [režimu přerušení kombinované registrace](concept-registration-mfa-sspr-combined.md#combined-registration-modes). Toto prostředí v současné době nepodporuje registraci FIDO2 a přihlášení k telefonu. 
+- Dočasný přístupový průchod se nedá použít s rozšířením serveru NPS (Network Policy Server) a adaptérem Active Directory Federation Services (AD FS) (AD FS), nebo během instalační program systému Windowsho/předem připraveného prostředí (OOBE) a automatického pilotního nasazení. 
 - Pokud je v tenantovi zapnuté bezproblémové jednotné přihlašování, zobrazí se uživatelům výzva k zadání hesla. Odkaz **použít váš dočasný přístup** bude k dispozici pro uživatele, aby se přihlásil pomocí dočasného přístupového průchodu.
 
   ![Snímek obrazovky s použitím dočasného předávacího přístupu](./media/how-to-authentication-temporary-access-pass/alternative.png)

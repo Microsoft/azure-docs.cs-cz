@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b502690a62410f1e8d2950074e8b479f7dc7f88
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b9d3f6973c210e7bd91c088ee7a276bfbcc48ce
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609317"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121978"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémat pro události Media Services
 
@@ -330,7 +330,7 @@ Datový objekt má následující vlastnosti:
 | encoderPort | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
 | resultCode | řetězec | Důvod zamítnutí připojení. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../live-event-error-codes.md).
+Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../live-event-error-codes-reference.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -400,7 +400,7 @@ Datový objekt má následující vlastnosti:
 | encoderPort | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
 | resultCode | řetězec | Důvod odpojení kodéru Může být bezproblémové odpojení nebo chyba. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../live-event-error-codes.md).
+Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../live-event-error-codes-reference.md).
 
 Kódy výsledků řádného odpojení:
 
@@ -676,4 +676,4 @@ Událost má následující data nejvyšší úrovně:
 
 - [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Živé kódy chyb událostí](../live-event-error-codes.md)
+- [Živé kódy chyb událostí](../live-event-error-codes-reference.md)

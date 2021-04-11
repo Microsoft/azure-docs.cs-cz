@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e24b7540ea1ac41774e2c23781265f9a61940cb1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629270"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276735"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -17,7 +17,7 @@ Tento článek popisuje, jak Azure Event Grid zpracovává události v případ�
 Event Grid poskytuje trvalé doručování. Každou zprávu pro každé předplatné zajišťuje **aspoň jednou** . Události se odesílají do registrovaného koncového bodu každého předplatného hned. Pokud koncový bod nepotvrdí příjem události, Event Grid pokusy o doručení události.
 
 > [!NOTE]
-> Event Grid nezaručuje obdobu doručování událostí, takže předplatitelé je mohou obdržet mimo pořadí. 
+> Event Grid nezaručuje pořadí doručování událostí, takže předplatitelé je mohou obdržet mimo pořadí. 
 
 ## <a name="batched-event-delivery"></a>Doručování událostí v dávce
 
@@ -55,11 +55,11 @@ Další informace o použití rozhraní příkazového řádku Azure s Event Gri
 
 ## <a name="retry-schedule-and-duration"></a>Plán opakování a doba trvání
 
-Pokud EventGrid obdrží při pokusu o doručení události chybu, EventGrid rozhodne, zda má opakovat doručení nebo nedoručené písmeno, nebo událost vyřaďte na základě typu chyby. 
+Pokud EventGrid obdrží při pokusu o doručení události chybu, EventGrid rozhodne, zda by měla opakovat doručení, nedoručené písmeno události nebo vyřadit událost na základě typu chyby. 
 
-Pokud chyba vrácená koncovým bodem je chyba související s konfigurací, kterou nelze opravit pomocí opakování (například při odstranění koncového bodu), EventGrid buď odkládání zpráv událostí, nebo událost odstraňte, pokud není Nenakonfigurováno nedoručené písmeno.
+Pokud je chyba vrácená předplatným koncovým bodem chybou související s konfigurací, kterou nelze opravit pomocí opakování (například při odstranění koncového bodu), EventGrid provede v události nedoručené písmeno nebo událost vyřaďte, pokud není Nenakonfigurováno nedoručené zprávy.
 
-Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
+V následující tabulce jsou popsány typy koncových bodů a chyb, pro které opakování neproběhne:
 
 | Typ koncového bodu | Kódy chyb |
 | --------------| -----------|
@@ -67,7 +67,7 @@ Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
 | Webhook | 400 Chybný požadavek, je příliš velká entita žádosti 413, 403 zakázáno, 404 Nenalezeno, 401 Neautorizováno |
  
 > [!NOTE]
-> Pokud pro koncový bod není nakonfigurované Dead-Letter, události se při výskytu chyb ztratí. Pokud nechcete, aby se tyto druhy událostí vynechaly, zvažte konfiguraci nedoručených zpráv.
+> Pokud pro koncový bod není nakonfigurované Dead-Letter, události se vynechá, když dojde k výše uvedeným chybám. Pokud nechcete, aby byly tyto druhy událostí vyřazeny, zvažte konfiguraci Dead-Letter.
 
 Pokud chyba vrácená předplacenou koncovým bodem není mezi výše uvedeným seznamem, EventGrid provede opakování pomocí zásad popsaných níže:
 
@@ -89,7 +89,7 @@ Pokud koncový bod během 3 minut odpoví, Event Grid se pokusí odebrat událos
 
 Event Grid přidá ke všem opakovaným krokům malou náhodnost a může oportunisticky přeskočit některé opakované pokusy, pokud je koncový bod konzistentně nezdravý, v dlouhou dobu nebo se může převažovat za přetížený.
 
-V případě deterministického chování nastavte čas události na živý a maximální počet pokusů o doručení v [zásadách opakování předplatného](manage-event-delivery.md).
+V případě deterministického chování nastavte čas události na živé a maximální počet pokusů o doručení v [zásadách opakování předplatného](manage-event-delivery.md).
 
 Ve výchozím nastavení Event Grid vyprší platnost všech událostí, které nejsou dodány do 24 hodin. [Zásady opakování můžete přizpůsobit](manage-event-delivery.md) při vytváření odběru události. Zadáváte maximální počet pokusů o doručení (výchozí hodnota je 30) a čas do provozu události (výchozí hodnota je 1440 minut).
 
@@ -111,11 +111,11 @@ Event Grid pošle událost do umístění nedoručených zpráv, když se pokus�
 
 Doba do živého vypršení platnosti se kontroluje jenom při příštím naplánovaném pokusu o doručení. Takže i v případě, že doba do provozu vyprší před dalším plánovaným pokusem o doručení, je tato událost kontrolována pouze v okamžiku příštího doručení a následně v nedoručených písmenech. 
 
-Poslední pokus o doručení události a při jejím doručování do umístění nedoručených zpráv je prodleva pět minut. Toto zpoždění má za cíl snížit počet operací BLOB Storage. Pokud umístění nedoručených zpráv není k dispozici po dobu čtyř hodin, událost se zahozena.
+Poslední pokus o doručení události a při jejím doručování do umístění nedoručených zpráv je prodleva pět minut. Účelem tohoto zpoždění je snížit počet operací úložiště objektů BLOB. Pokud umístění nedoručených zpráv není k dispozici po dobu čtyř hodin, událost se zahozena.
 
 Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Koncový bod pro tento kontejner zadáte při vytváření odběru události. Koncový bod je ve formátu: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Po odeslání události do umístění nedoručených zpráv můžete chtít být upozorněni. Pokud chcete použít Event Grid k reakci na nedoručené události, [Vytvořte odběr událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů BLOB s nedoručenými písmeny. Pokaždé, když úložiště BLOB nedoručených zpráv obdrží nedoručenou událost, Event Grid upozorní vaši obslužnou rutinu. Obslužná rutina reaguje na akce, které chcete provést pro sjednocení nedoručených událostí. Příklad nastavení umístění nedoručeného písmen a zásad opakování najdete v tématu [zásady nedoručených zpráv a opakování](manage-event-delivery.md).
+Po odeslání události do umístění nedoručených zpráv možná budete chtít být upozorněni. Pokud chcete použít Event Grid k reakci na nedoručené události, [Vytvořte odběr událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů BLOB s nedoručenými písmeny. Pokaždé, když úložiště BLOB nedoručených zpráv obdrží nedoručenou událost, Event Grid upozorní vaši obslužnou rutinu. Obslužná rutina reaguje na akce, které chcete provést pro sjednocení nedoručených událostí. Příklad nastavení umístění nedoručených zpráv a zásad opakování najdete v tématu [zásady pro nedoručené dopisy a opakování](manage-event-delivery.md).
 
 ## <a name="delivery-event-formats"></a>Formáty událostí doručení
 V této části najdete příklady událostí a nedoručených událostí v různých formátech schématu doručení (Event Grid schéma, schéma CloudEvents 1,0 a vlastní schéma). Další informace o těchto formátech najdete v článku [Event Grid schématu](event-schema.md) a [cloudové události 1,0](cloud-event-schema.md) . 
@@ -288,7 +288,7 @@ Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), se po
 | 503 – Nedostupná služba | Opakovat po 30 sekundách nebo více |
 | Všichni ostatní | Opakovat po 10 sekundách nebo více |
 
-## <a name="delivery-with-custom-headers"></a>Doručování s vlastními hlavičkami
+## <a name="custom-delivery-properties"></a>Vlastní vlastnosti doručování
 Odběry událostí umožňují nastavit hlavičky protokolu HTTP, které jsou zahrnuté v doručených událostech. Tato funkce umožňuje nastavit vlastní hlavičky, které jsou vyžadovány cílem. Při vytváření odběru událostí můžete nastavit až 10 hlaviček. Každá hodnota hlavičky by neměla být větší než 4 096 (4K) bajtů. Můžete nastavit vlastní hlavičky pro události, které jsou dodány do následujících umístění:
 
 - Webhooky
@@ -296,7 +296,7 @@ Odběry událostí umožňují nastavit hlavičky protokolu HTTP, které jsou za
 - Azure Event Hubs
 - Hybrid Connections přenosu
 
-Další informace najdete v tématu [doručování s vlastními záhlavími](delivery-properties.md). 
+Další informace najdete v tématu [vlastní vlastnosti doručování](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

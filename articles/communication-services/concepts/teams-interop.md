@@ -9,14 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b641ec37d134303ae6b31c092cd3c50811477a7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108413"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276752"
 ---
 # <a name="teams-interoperability"></a>Interoperabilita Teams
+
+[!INCLUDE [Public Preview](../includes/public-preview-include-document.md)]
 
 > [!IMPORTANT]
 > Pokud chcete povolit nebo zakázat [interoperabilitu tenanta týmů](../concepts/teams-interop.md), vyplňte [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u).
@@ -41,7 +43,7 @@ Když se uživatel komunikačních služeb připojí k pracovním postupům, zob
 
 Komunikace týmů služby Communications je v současnosti ve verzi Private Preview. V případě všeobecně dostupného přístupu se uživatelům komunikačních služeb bude zacházeno jako "uživatelé s externím přístupem". Přečtěte si další informace o externím přístupu při [volání, chatu a spolupráci s lidmi mimo vaši organizaci v Microsoft Teams](/microsoftteams/communicate-with-users-from-other-organizations).
 
-Uživatelé komunikačních služeb mohou připojit schůze plánovaných týmů, pokud jsou v [nastavení schůzky](/microsoftteams/meeting-settings-in-teams)povoleny anonymní spojení.
+Uživatelé komunikačních služeb mohou připojit schůze plánovaných týmů, pokud jsou v [nastavení schůzky](/microsoftteams/meeting-settings-in-teams)povoleny anonymní spojení. Pokud je pro kanál naplánována schůzka, uživatelé komunikačních služeb se nebudou moci připojit k chatu ani odesílat a přijímat zprávy.
 
 ## <a name="teams-in-government-clouds-gcc"></a>Týmy v cloudech pro státní správu (RSZ)
 Interoperabilita komunikačních služeb Azure není v současnosti kompatibilní s nasazeními týmů pomocí [Microsoft 365ch státních institucí (RSZ)](/MicrosoftTeams/plan-for-government-gcc) . 

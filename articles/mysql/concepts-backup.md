@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010350"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
@@ -96,7 +96,7 @@ Odhadovaná doba pro obnovení serveru závisí na několika faktorech:
 ```sql
 select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
 ```
-Pro velkou nebo velmi aktivní databázi může obnovení trvat několik hodin. Pokud v oblasti dojde k dlouhodobému výpadku, je možné, že se iniciuje velký počet požadavků na geografickou obnovu pro zotavení po havárii. Pokud existuje mnoho požadavků, může se zvýšit doba obnovení pro jednotlivé databáze. Většina obnovení databáze se dokončí za méně než 12 hodin.
+Pro velkou nebo velmi aktivní databázi může obnovení trvat několik hodin. Pokud v nějaké oblasti dojde k dlouhodobému výpadku, je možné, že se iniciuje velký počet žádostí o geografické obnovení za účelem zotavení po havárii. V případě velkého počtu žádostí se může prodloužit doba potřebná k obnovení jednotlivých databází. Většina obnovení databáze se dokončí za méně než 12 hodin.
 
 > [!IMPORTANT]
 > Odstraněné servery je možné obnovit pouze do **pěti dnů** od odstranění, po jejichž uplynutí budou zálohy odstraněny. Záloha databáze je k dispozici a obnovena pouze z předplatného Azure, které je hostitelem serveru. Postup obnovení vyřazeného serveru najdete v části [popsané kroky](howto-restore-dropped-server.md). Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).

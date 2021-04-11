@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598962"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219497"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -26,6 +26,12 @@ Rozhraní API pro analýzu textu je cloudová služba, která poskytuje funkce N
 Rozhraní API je součástí služby [Azure Cognitive Services](../index.yml), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít s REST API [verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) nebo [verze 3,1-Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)nebo v [klientské knihovně](quickstarts/client-libraries-rest-api.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
+
+Tato dokumentace obsahuje následující typy článků:
+* [Rychlé starty](./quickstarts/client-libraries-rest-api.md) jsou podrobné pokyny, které umožňují uskutečnit volání služby a získat výsledky v krátké době. 
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném [způsobu.](./how-tos/text-analytics-how-to-call-api.md)
+* [Koncepty](text-analytics-user-scenarios.md) poskytují podrobné vysvětlení funkcí a funkcí služby.
+* [Kurzy](./tutorials/tutorial-power-bi-key-phrases.md) jsou delší než příručky, které ukazují, jak tuto službu používat jako součást v širších obchodních řešeních.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 

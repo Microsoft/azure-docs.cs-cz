@@ -5,10 +5,10 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101725998"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Přehled automatického škálování v Microsoft Azure
@@ -81,8 +81,8 @@ Příklady kódu naleznete v tématu.
 * [Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets](autoscale-virtual-machine-scale-sets.md)  
 * [REST API automatického škálování](/rest/api/monitor/autoscalesettings)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Vodorovné a svislé škálování
-Automatické škálování se škáluje pouze vodorovně, což znamená zvýšení ("výstup") nebo snížení (v) v počtu instancí virtuálních počítačů.  Horizontální je větší flexibilita v cloudové situaci, protože umožňuje spuštění potenciálně tisíců virtuálních počítačů za účelem zpracování zatížení.
+## <a name="horizontal-vs-vertical-scaling&quot;></a>Vodorovné a svislé škálování
+Automatické škálování se škáluje pouze vodorovně, což znamená zvýšení (&quot;výstup") nebo snížení (v) v počtu instancí virtuálních počítačů.  Horizontální je větší flexibilita v cloudové situaci, protože umožňuje spuštění potenciálně tisíců virtuálních počítačů za účelem zpracování zatížení.
 
 Naopak svislé škálování se liší. Udržuje stejný počet virtuálních počítačů, ale zpřístupňuje virtuální počítače více ("nahoru") nebo méně ("nižší"). Výkon se měří v paměti, rychlosti procesoru, místo na disku atd.  Vertikální škálování má větší omezení. Závisí na dostupnosti většího hardwaru, který rychle narazí na horní limit a může se lišit podle oblasti. Vertikální škálování také obvykle vyžaduje, aby se virtuální počítač zastavil a restartoval.
 

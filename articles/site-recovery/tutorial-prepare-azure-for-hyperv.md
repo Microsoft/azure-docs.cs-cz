@@ -1,19 +1,16 @@
 ---
 title: Příprava Azure na zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Přečtěte si, jak připravit Azure na zotavení po havárii místních virtuálních počítačů Hyper-V pomocí Azure Site Recovery
-author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
 ms.date: 11/14/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5ca03336fc60abbb458615e922a2556dd21a79a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ec1c41935d200ad220716940f898549d835510ba
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739674"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579284"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Příprava prostředků Azure pro zotavení po havárii technologie Hyper-V
 

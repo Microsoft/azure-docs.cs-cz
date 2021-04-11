@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8eddd5d346003af0c2b41d65fc0aa09c86f48c7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93346770"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167443"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Příprava technických prostředků IoT Edge modulu
 
@@ -39,14 +39,14 @@ Váš modul musí podporovat všechny platformy vrstvy 1 podporované aplikací 
 
 - Poskytněte nejnovější značku a značku verze (například 1.0.1), které jsou značky manifestu sestavené pomocí [nástroje GitHub Manifest-Tool](https://github.com/estesp/manifest-tool).
 
-- Pomocí karty seznam nabídek v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace) můžete přidat odkaz v části **užitečné odkazy** do [katalogu zařízení Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
+- Pomocí karty seznam nabídek v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace) můžete přidat odkaz v části **užitečné odkazy** do [katalogu zařízení Azure IoT Edge Certified](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible).
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Podmnožina platforem vrstvy 1, kterou podporuje IoT Edge
 
 Váš modul musí podporovat podmnožinu (alespoň jednu) platforem vrstvy 1, kterou podporuje IoT Edge (jak je uvedeno v [Azure IoT Edge podpoře](../../iot-edge/support.md)). Modul používající tuto možnost platformy musí:
 
 - Poskytněte nejnovější značku a značku verze (například 1.0.1), které jsou značky manifestu sestavené s [manifestem](https://github.com/estesp/manifest-tool) GitHubu, pokud je podporovaná víc než jedna platforma. Značky manifestu jsou volitelné jenom v případě, že je podporovaná jedna platforma.
-- V [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace) použijte kartu seznam nabídek a přidejte odkaz v části **užitečné odkazy** na alespoň jeden IoT Edge zařízení z [katalogu zařízení Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/).
+- V [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace) použijte kartu seznam nabídek a přidejte odkaz v části **užitečné odkazy** na alespoň jeden IoT Edge zařízení z [katalogu zařízení Azure IoT Edge Certified](https://devicecatalog.azure.com/).
 
 :::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Toto je obrázek části Seznam nabídek v rámci partnerského centra.":::
 
@@ -54,7 +54,7 @@ Váš modul musí podporovat podmnožinu (alespoň jednu) platforem vrstvy 1, kt
 
 Dimenze modulu IoT Edge (například CPU, paměť RAM, úložiště a GPU) na cílových IoT Edgech zařízeních musí splňovat následující požadavky:
 
-- Modul musí spolupracovat s aspoň jedním zařízením IoT Edge z [katalogu zařízení Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/).
+- Modul musí spolupracovat s aspoň jedním zařízením IoT Edge z [katalogu zařízení Azure IoT Edge Certified](https://devicecatalog.azure.com/).
 
 - Minimální požadavky na hardware musí být zdokumentovány jako poslední odstavec v popisu nabídky (na kartě seznam nabídek v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace)). V případě potřeby můžete také zobrazit seznam doporučených požadavků na hardware, pokud se výrazně liší. Přidejte například následující část na konec popisu nabídky:
 

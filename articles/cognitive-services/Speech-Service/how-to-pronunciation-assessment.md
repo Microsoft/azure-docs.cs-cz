@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: dc1ab8bd1a851f7fafd5c001ac73e66973e1b64c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102051884"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167426"
 ---
 # <a name="pronunciation-assessment"></a>Posouzení výslovnosti
 
@@ -28,7 +28,7 @@ Pedagogé můžou využít schopnost vyhodnotit výslovnost více mluvčích v r
 V tomto článku se dozvíte, jak nastavit `PronunciationAssessmentConfig` a načíst `PronunciationAssessmentResult` pomocí sady Speech SDK.
 
 > [!NOTE]
-> Funkce hodnocení výslovnosti aktuálně podporuje pouze jazyk `en-US` .
+> Funkce posouzení výslovnosti aktuálně podporuje `en-US` jazyk, který je k dispozici ve všech [oblastech pro převod řeči na text](regions.md#speech-to-text-text-to-speech-and-translation). Podpora `en-GB` `zh-CN` jazyků a je ve verzi Preview, která je dostupná v `westus` `eastasia` `centralindia` oblastech a.
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Posouzení výslovnosti pomocí sady Speech SDK
 
@@ -194,9 +194,63 @@ Tato tabulka obsahuje seznam výsledných parametrů pro vyhodnocení výslovnos
 | `PronunciationScore` | Celkové skóre označující kvalitu výslovnosti daného řeči. To je agregované z `AccuracyScore` `FluencyScore` a `CompletenessScore` s váhou. |
 | `ErrorType` | Tato hodnota označuje, zda je slovo vynecháno, vloženo nebo špatně vyslovované, ve srovnání s `ReferenceText` . Možné hodnoty jsou `None` (to znamená, že toto slovo neobsahuje žádnou chybu), `Omission` `Insertion` a `Mispronunciation` . |
 
+### <a name="sample-responses"></a>Ukázkové odpovědi
+
+Typický výsledek vyhodnocení výslovnosti ve formátu JSON:
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronunciationAssessment":
+        {
+            "PronScore" : 84.4,
+            "AccuracyScore" : 100.0,
+            "FluencyScore" : 74.0,
+            "CompletenessScore" : 100.0,
+        },
+        "Words": [
+            {
+              "Word" : "Good",
+              "Offset" : 500000,
+              "Duration" : 2700000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            },
+            {
+              "Word" : "morning",
+              "Offset" : 5300000,
+              "Duration" : 900000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            }
+        ]
+      }
+  ]
+}
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 <!-- TODO: update JavaScript sample links after release -->
+
+* Podívejte se na [video Úvod](https://www.youtube.com/watch?v=cBE8CUHOFHQ) k posouzení výslovnosti a [video](https://www.youtube.com/watch?v=zFlwm7N4Awc)
+
+* Vyzkoušejte si [ukázku hodnocení výslovnosti](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment/BrowserJS) .
 
 ::: zone pivot="programming-language-csharp"
 * Posouzení výslovnosti najdete v [ukázkovém kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949) na GitHubu.
@@ -219,3 +273,5 @@ Tato tabulka obsahuje seznam výsledných parametrů pro vyhodnocení výslovnos
 ::: zone-end
 
 * [Referenční dokumentace sady Speech SDK](speech-sdk.md)
+
+* [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)

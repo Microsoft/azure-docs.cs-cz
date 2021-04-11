@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501224"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167392"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -328,19 +328,19 @@ Sada Runbook může použít výstup aktivity ve složitějším výrazu, např�
 Například následující podmínka Určuje, jestli je virtuální počítač z aktivity s názvem `Get-AzureVM` aktuálně zastavený.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped"
 ```
 
 Následující podmínka Určuje, zda je stejný virtuální počítač v jiném stavu než zastaveno.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -ne "Stopped"
 ```
 
 Pomocí [logického operátoru](/powershell/module/microsoft.powershell.core/about/about_logical_operators), například nebo, můžete ve svém Runbooku spojit několik `-and` podmínek `-or` . Například následující podmínka kontroluje, jestli je virtuální počítač v předchozím příkladu ve stavu zastaveno nebo zastavování.
 
 ```powershell-interactive
-($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
+($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopping")
 ```
 
 ### <a name="use-hashtables"></a>Použití zatřiďovacími tabulkami

@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
 ms.date: 3/23/2021
-ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 259a8581d16f4fd6958a0d9ec2631f667d362b19
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044256"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579480"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Plánování událostí údržby Azure v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Událost údržby může způsobit jednu nebo více rekonfigurace v závislosti 
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Postup simulace plánované události údržby
 
-Zajištění odolnosti klientských aplikací proti událostem údržby před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací a přispěje k dostupnosti aplikací pro koncové uživatele. Při provádění [ručního převzetí služeb při selhání](https://aka.ms/mifailover-techblog) prostřednictvím PowerShellu, CLI nebo REST API můžete testovat chování klientské aplikace během plánovaných událostí údržby. Vytvoří stejné chování jako událost údržby při převedení primární repliky do offline režimu.
+Zajištění odolnosti klientských aplikací proti událostem údržby před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací a přispěje k dostupnosti aplikací pro koncové uživatele. Pomocí prostředí PowerShell, rozhraní příkazového řádku nebo REST API [můžete testovat chování](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla#testing-application-fault-resiliency) klientské aplikace během plánovaných událostí údržby. Viz také [inicializace ručního převzetí služeb při selhání](https://aka.ms/mifailover-techblog) pro spravovanou instanci. Vytvoří stejné chování jako událost údržby při převedení primární repliky do offline režimu.
 
 ## <a name="retry-logic"></a>Logika opakování
 

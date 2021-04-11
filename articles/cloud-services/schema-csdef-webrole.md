@@ -3,17 +3,18 @@ title: Azure Cloud Services (Classic) def. schéma webrole | Microsoft Docs
 description: Webová role Azure je přizpůsobená pro programování webových aplikací podporující ASP.NET, PHP, WCF a FastCGI. Přečtěte si o elementech definice služby webové role.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 3c5811649d7d6c0aa1e90ed34c61be6a7f9339f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3266be461af50d74988ad4834f2f8fc548e383
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934083"
 ---
 # <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Definice schématu webrole v Azure Cloud Services (Classic)
 

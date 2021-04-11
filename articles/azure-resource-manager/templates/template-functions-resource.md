@@ -2,13 +2,13 @@
 title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k načtení hodnot o prostředcích.
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: efd7c554e6da8b60d4834d1a1290407a6b9e94d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/01/2021
+ms.openlocfilehash: caf95246e1a0e3954f8608f5c13b03e4390c36a2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544107"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219548"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -17,7 +17,6 @@ Správce prostředků poskytuje následující funkce pro získání hodnot pros
 * [extensionResourceId](#extensionresourceid)
 * [seznamu](#list)
 * [pickZones](#pickzones)
-* [dodavateli](#providers)
 * [odkaz](#reference)
 * [resourceGroup](#resourcegroup)
 * [Prostředku](#resourceid)
@@ -539,94 +538,6 @@ Pomocí odpovědi z pickZones můžete určit, jestli se má pro zóny zadat hod
 > Smyčky a copyIndex () ještě nejsou implementované.  Viz [smyčky](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md).
 
 ---
-
-## <a name="providers"></a>dodavateli
-
-`providers(providerNamespace, [resourceType])`
-
-Vrátí informace o poskytovateli prostředků a jeho podporovaných typech prostředků. Pokud nezadáte typ prostředku, funkce vrátí všechny podporované typy pro poskytovatele prostředků.
-
-### <a name="parameters"></a>Parametry
-
-| Parametr | Povinné | Typ | Description |
-|:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |řetězec |Obor názvů poskytovatele |
-| resourceType |No |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
-
-### <a name="return-value"></a>Vrácená hodnota
-
-Každý podporovaný typ je vrácen v následujícím formátu:
-
-```json
-{
-  "resourceType": "{name of resource type}",
-  "locations": [ all supported locations ],
-  "apiVersions": [ all supported API versions ]
-}
-```
-
-Řazení pole vrácených hodnot není zaručeno.
-
-### <a name="providers-example"></a>Příklad poskytovatelů
-
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) ukazuje, jak používat funkci poskytovatele:
-
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "providerNamespace": {
-      "type": "string"
-    },
-    "resourceType": {
-      "type": "string"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "providerOutput": {
-      "type": "object",
-      "value": "[providers(parameters('providerNamespace'), parameters('resourceType'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param providerNamespace string
-param resourceType string
-
-output providerOutput array = providers(providerNamespace, resourceType)
-```
-
----
-
-U poskytovatele prostředků **Microsoft. Web** **a typu** prostředku vrátí předchozí příklad objekt v následujícím formátu:
-
-```json
-{
-  "resourceType": "sites",
-  "locations": [
-    "South Central US",
-    "North Europe",
-    "West Europe",
-    "Southeast Asia",
-    ...
-  ],
-  "apiVersions": [
-    "2016-08-01",
-    "2016-03-01",
-    "2015-08-01-preview",
-    "2015-08-01",
-    ...
-  ]
-}
-```
 
 ## <a name="reference"></a>reference
 

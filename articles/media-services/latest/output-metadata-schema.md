@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: f26905366949c2c198e52f78bc7adb734cbb7f90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612452"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
@@ -53,7 +53,7 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, kter�
 | --- | --- |
 | **Účet**<br /> Vyžadováno |Index tohoto videa na základě nuly **Poznámka:**  Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. <br /><br />Příklad: `"Id": 1`|
 | **FourCC**<br />Vyžadováno | Videokodek FourCC kód, který je hlášen pomocí FFmpeg.  <br /><br />Příklad: `"FourCC": "avc1" | "hev1" | "hvc1"`|
-| **Profilu** |Profil H264 (platí jenom pro kodek H264)  <br /><br />Příklad: `"Profile": "High"` |
+| **Profil** |Profil H264 (platí jenom pro kodek H264)  <br /><br />Příklad: `"Profile": "High"` |
 | **Obsah** |Úroveň H264 (platí pouze pro kodek H264).  <br /><br />Příklad: `"Level": "3.2"`|
 | **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
 | **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|

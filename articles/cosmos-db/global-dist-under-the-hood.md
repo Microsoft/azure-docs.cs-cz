@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 592a9b89379094c88881c3c8485c7e38a1613b34
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486382"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219480"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globální distribuce dat pomocí Azure Cosmos DB – pod kapotou
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,7 +61,7 @@ Služba umožňuje konfigurovat databáze Cosmos buď s jednou oblastí pro záp
 
 ## <a name="conflict-resolution"></a>Řešení konfliktů
 
-Náš návrh pro šíření aktualizací, řešení konfliktů a sledování příčin se nechte inspirovat z předchozích prací na [algoritmech epidemie](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systému. I když se zadržely jádra nápadů a poskytovaly pohodlný rámec referenčních informací pro komunikaci s návrhem systému Cosmos DB, mají také významnou transformaci, jak jsme je použili pro Cosmos DB systém. To bylo potřeba, protože předchozí systémy byly navržené bez zásad správného řízení prostředků ani s škálováním, na kterém Cosmos DB potřebuje pracovat, ani poskytovat funkce (například konzistence s ohraničenou neaktuálností) a přísné a komplexní SLA, které Cosmos DB doručí svým zákazníkům.  
+Náš návrh pro šíření aktualizací, řešení konfliktů a sledování příčin se nechte inspirovat z předchozích prací na [algoritmech epidemie](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf) systému. I když se zadržely jádra nápadů a poskytovaly pohodlný rámec referenčních informací pro komunikaci s návrhem systému Cosmos DB, mají také významnou transformaci, jak jsme je použili pro Cosmos DB systém. To bylo potřeba, protože předchozí systémy byly navržené bez zásad správného řízení prostředků ani s škálováním, na kterém Cosmos DB potřebuje pracovat, ani poskytovat funkce (například konzistence s ohraničenou neaktuálností) a přísné a komplexní SLA, které Cosmos DB doručí svým zákazníkům.  
 
 Odvolá, že sada oddílů je distribuovaná napříč několika oblastmi a následuje Cosmos databáze (zápisy ve více oblastech) pro replikaci dat mezi fyzickými oddíly, které tvoří danou sadu oddílů. Každý fyzický oddíl (sada oddílů) přijímá zápisy a obsluhuje čtení obvykle pro klienty, kteří jsou místní k této oblasti. Zápisy přijaté fyzickým oddílem v rámci oblasti jsou trvale potvrzené a připravené v rámci fyzického oddílu před potvrzením klientovi. Jedná se o nezávazně-zápisy a šíří se do jiných fyzických oddílů v rámci sady oddílů pomocí kanálu anti-entropie. Klienti si můžou vyžádat buď nezávazně nebo potvrzené zápisy, předáním hlavičky žádosti. Šíření proti entropii (včetně četnosti šíření) je dynamické na základě topologie oddílu, oblasti a oblasti fyzických oddílů a úrovně konzistence nakonfigurované. V rámci sady oddílů Cosmos DB postupovat podle primárního schématu potvrzení s dynamicky vybraným oddílem arbiter. Výběr arbiter je dynamický a je nedílnou součástí opětovné konfigurace sady oddílů založené na topologii překrytí. Potvrzené zápisy (včetně víceřádkových nebo dávkových aktualizací) jsou zaručené pro objednání. 
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 42c4c91b6715ffec4c734632c69623206bc6dbae
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559872"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075998"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Změny v terminologii a entitě mezi Media Services V2 a V3
 
@@ -73,7 +73,7 @@ Projděte si zásady vytváření názvů, které se vztahují k prostředkům M
 | **Kódování** <!--new row --> |||
 | Přenosové rychlosti kódování <!--new row --> | přenosové rychlosti měřené v KB/s: 128 (KB/s)| bity za sekundu ex: 128000 (bity za sekundu)|
 | Kódování DRM FairPlay <!--new row --> | V Media Services V2 lze zadat inicializační vektor (IV). | V Media Services V3 nelze zadat FairPlay IV.|
-| Kodér úrovně Premium <!--new row --> | Kodér úrovně Premium a starší indexer| [Kodér úrovně Premium](../previous/media-services-encode-asset.md) a starší [procesory media Analytics](../previous/legacy-components.md) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3. Přidali jsme podporu pro mapování zvukových kanálů na standardní kodér.  Podívejte [se na zvuk v dokumentaci k rozhraní Swagger pro kódování Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  | Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . |
+| Kodér úrovně Premium <!--new row --> | Kodér úrovně Premium a starší indexer| [Kodér úrovně Premium](../previous/media-services-encode-asset.md) a starší [procesory media Analytics](../previous/legacy-components.md) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3. Přidali jsme podporu pro mapování zvukových kanálů na standardní kodér.  Podívejte [se na zvuk v dokumentaci k rozhraní Swagger pro kódování Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  <br/> Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . |
 | **Transformace a úlohy** <!--new row -->|||
 | Zpracování protokolu HTTPS na základě úloh <!--new row --> |<!-- empty -->| Pro zpracování úloh založených na souborech můžete jako vstup použít adresu URL HTTPS. Nemusíte mít obsah, který je už uložený v Azure, ani nemusíte vytvářet prostředky. |
 | Šablony ARM pro úlohy <!--new row --> | Šablony ARM v v2 neexistovaly. | Transformaci lze použít k vytvoření opakovaně použitelných konfigurací, k vytvoření Azure Resource Manager šablon a k izolaci nastavení zpracování mezi několika zákazníky nebo klienty. |

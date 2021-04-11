@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6a80f73a97a5732f00e10107fff2330038210a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732560"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122012"
 ---
 # <a name="networking"></a>Sítě
 
@@ -87,7 +87,7 @@ Další informace o příchozích pravidlech zabezpečení:
 
 * **Aplikace**. Rozsah portů aplikace by měl být dostatečně velký, aby pokryl požadavky vašich aplikací na koncový bod. Tento rozsah by měl být exkluzivní z rozsahu dynamických portů v počítači, to znamená ephemeralPorts rozsah nastavený v konfiguraci. Service Fabric tyto porty používá, kdykoli jsou vyžadovány nové porty a postará se o otevření brány firewall pro tyto porty na uzlech.
 
-* Protokol **SMB**. Protokol SMB používá služba úložiště bitových kopií pro dva scénáře. Tento port je potřeba ke stažení balíčků z úložiště bitových kopií pomocí uzlů i k jejich replikaci mezi replikami. 
+* Protokol **SMB**. Volitelné, modul runtime verze 7.1 + ve výchozím nastavení nepoužívá protokol SMB. Protokol SMB používá služba úložiště bitových kopií pro dva scénáře. Tento port je potřeba ke stažení balíčků z úložiště bitových kopií pomocí uzlů i k jejich replikaci mezi replikami. 
 
 * Protokol **RDP**. Volitelné, pokud se vyžaduje protokol RDP z Internetu nebo VirtualNetwork pro scénáře JumpBox. 
 
@@ -101,7 +101,7 @@ Další informace o příchozích pravidlech zabezpečení:
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Síť            |Všechny         |TCP       |VirtualNetwork     |VirtualNetwork    |Povolit
 |3910       |Poskytovatel prostředků  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Povolit
-|3920       |Upgradovat            |443         |TCP       |VirtualNetwork     |Internet          |Povolit
+|3920       |Upgrade            |443         |TCP       |VirtualNetwork     |Internet          |Povolit
 |3950       |Blokovat odchozí     |Všechny         |Všechny       |Všechny                |Všechny               |Odepřít
 
 Další informace o odchozích pravidlech zabezpečení:

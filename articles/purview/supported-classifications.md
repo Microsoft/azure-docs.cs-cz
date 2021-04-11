@@ -6,20 +6,20 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 02/05/2021
-ms.openlocfilehash: 37df9a276339b80a81e6ac5d5db14872de9edff4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 4/1/2021
+ms.openlocfilehash: e1d3d495d958465e966701aa7ce91bc2706b48e0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065850"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219582"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Podporované klasifikace v Azure dosah
 
 Tento článek obsahuje seznam podporovaných a definovaných systémových klasifikací v Azure dosah (Preview).
 
 
-- **Rozdílová prahová hodnota shody**: celkový počet jedinečných datových hodnot, které musí být ve sloupci nalezeny předtím, než skener spustí datový vzor. Naše pravidla klasifikace systému vyžadují, aby v každém sloupci bylo aspoň 8 jedinečných hodnot, aby je bylo možné považovat za klasifikace. Tato hodnota vyžaduje, aby tento sloupec obsahoval dostatek dat, aby ho mohl přesně klasifikovat skener. Například sloupec, který obsahuje více řádků, které obsahují hodnotu 1, nebude klasifikován. Sloupce, které obsahují jeden řádek s hodnotou a zbytek řádků, obsahují hodnoty null ani nebudou klasifikovány. Pokud zadáte více vzorů, bude tato hodnota platit pro každý z nich.
+- **Rozdílová prahová hodnota shody**: celkový počet jedinečných datových hodnot, které musí být ve sloupci nalezeny předtím, než skener spustí datový vzor. Rozdílová prahová hodnota pro porovnání nemá žádnou akci s porovnáváním vzorů, ale je předpokladem pro porovnávání vzorů. Naše pravidla klasifikace systému vyžadují, aby v každém sloupci bylo aspoň 8 jedinečných hodnot, aby je bylo možné považovat za klasifikace. Tato hodnota vyžaduje, aby tento sloupec obsahoval dostatek dat, aby ho mohl přesně klasifikovat skener. Například sloupec, který obsahuje více řádků, které obsahují hodnotu 1, nebude klasifikován. Sloupce, které obsahují jeden řádek s hodnotou a zbytek řádků, obsahují hodnoty null ani nebudou klasifikovány. Pokud zadáte více vzorů, bude tato hodnota platit pro každý z nich.
 
 - **Minimální prahová hodnota shody**: Jedná se o minimální procento shody hodnot dat ve sloupci, který musí být nalezen skenerem pro použití klasifikace. Systémová hodnota klasifikace je nastavená na 60%.
 
