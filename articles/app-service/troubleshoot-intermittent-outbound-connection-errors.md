@@ -8,10 +8,10 @@ ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
 ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104799101"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
@@ -125,7 +125,7 @@ I když PHP nepodporuje sdružování připojení, můžete zkusit použít trva
 
 Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny podle velikosti pracovního procesu. Můžete si prohlédnout omezení pro [Číselná omezení mezi virtuálními počítači izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 
@@ -157,7 +157,7 @@ Připojení TCP a porty SNAT přímo nesouvisejí. Rozpoznávání využití př
 * Limit připojení TCP nastane na úrovni instance pracovního procesu. Služba Vyrovnávání zatížení sítě Azure nepoužívá metriku připojení TCP pro omezení portů SNAT.
 * Omezení připojení TCP jsou popsaná v části [Číselná omezení pro různé virtuální počítače izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 

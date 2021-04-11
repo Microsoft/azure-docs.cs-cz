@@ -9,10 +9,10 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 643d1cd6df3791b2e5ea2118425eecb29dbcdea2
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104879259"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Rychlý Start: nastavení serveru pro konfiguraci jarního cloudu Azure
@@ -21,7 +21,7 @@ Azure jarní cloudový konfigurační server je centralizovaná služba Konfigur
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete předchozí rychlý Start v této sérii: [zřízení Azure jaře Cloud Service](spring-cloud-quickstart-provision-service-instance.md).
 
@@ -40,7 +40,7 @@ Tento příkaz oznamuje konfiguračnímu serveru, aby vyhledal konfigurační da
 ::: zone pivot="programming-language-java"
 Azure pružinový konfigurační server pro Cloud je centralizovaná služba Konfigurace distribuovaných systémů. Používá připojenou vrstvu úložiště, která aktuálně podporuje místní úložiště, Git a podverzi.  Nastavte konfigurační server pro nasazení aplikací mikroslužeb do jarního cloudu Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalovat JDK 8](/java/azure/jdk/)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)

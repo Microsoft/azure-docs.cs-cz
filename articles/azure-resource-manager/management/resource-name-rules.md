@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934168"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210189"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -16,7 +16,7 @@ Tento článek shrnuje pravidla a omezení pro vytváření prostředků Azure. 
 
 Tento článek obsahuje seznam prostředků podle oboru názvů poskytovatele prostředků. Seznam způsobů, jak poskytovatelé prostředků odpovídají službám Azure, najdete v tématu [poskytovatelé prostředků pro služby Azure](azure-services-resource-providers.md).
 
-V názvech prostředků se nerozlišují velká a malá písmena, pokud výslovně nejsou uvedené ve sloupci platné znaky.
+V názvech prostředků se nerozlišují malá a velká písmena, pokud není uvedeno ve sloupci platné znaky.
 
 V následujících tabulkách pojem alfanumerický označuje:
 
@@ -177,11 +177,18 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Galerie/image/verze | image | 32-bitové celé číslo | Čísla a tečky. |
 > | images | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
 > | snímky | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
-> | virtualMachines | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Virtuální počítače s Windows nemůžou zahrnovat tečku ani končit pomlčkou.<br><br>Virtuální počítače se systémem Linux nemůžou končit tečkou nebo spojovníkem. |
-> | virtualMachineScaleSets | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
+> | virtualMachines | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Virtuální počítače s Windows nemůžou zahrnovat tečku ani končit pomlčkou.<br><br>Virtuální počítače se systémem Linux nemůžou končit tečkou nebo spojovníkem. |
+> | virtualMachineScaleSets | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
 
 > [!NOTE]
 > Virtuální počítače Azure mají dva odlišné názvy: název prostředku a název hostitele. Když na portálu vytvoříte virtuální počítač, použije se stejná hodnota pro oba názvy. Omezení v předchozí tabulce jsou pro název hostitele. Název vlastního prostředku může mít až 64 znaků.
+
+## <a name="microsoftcommunication"></a>Microsoft. Communication
+
+> [!div class="mx-tableFixed"]
+> | Entita | Rozsah | Délka | Platné znaky |
+> | --- | --- | --- | --- |
+> | communicationServices | global | 1–63 | Alfanumerické znaky, spojovníky a podtržítka. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -599,7 +606,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | nasazení | skupina prostředků | 1-64 | Alfanumerické znaky, podtržítka, kulaté závorky, spojovníky a tečky. |
-> | ResourceGroups | předplatné | 1–90 | Alfanumerické znaky, podtržítka, závorky, spojovníky, tečky a znaky Unicode, které odpovídají [dokumentaci regulárního výrazu](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Nemůže končit tečkou. |
+> | ResourceGroups | předplatné | 1–90 | Alfanumerické znaky, podtržítka, závorky, spojovníky, tečky a znaky Unicode, které odpovídají [dokumentaci regulárního výrazu](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nemůže končit tečkou. |
 > | tagName | prostředek | 1-512 | Nejde použít:<br>`<>%&\?/` |
 > | tagName/tagValues | název značky | 1-256 | Všechny znaky. |
 > | templateSpecs | skupina prostředků | 1–90 | Alfanumerické znaky, podtržítka, kulaté závorky, spojovníky a tečky. |
@@ -706,10 +713,12 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | --- | --- | --- | --- |
 > | certifikáty | skupina prostředků | 1-260 | Nejde použít:<br>`/` <br><br>Nemůže končit mezerou nebo tečkou.  | 
 > | serverových farem | skupina prostředků | 1-40 | Alfanumerické znaky a spojovníky. |
-> | místa | global | 2-60 | Obsahuje alfanumerické znaky a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
+> | místa | globální nebo na doménu. Viz poznámka níže. | 2-60 | Obsahuje alfanumerické znaky a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | lokality/sloty | webovém | 2-59 | Alfanumerické znaky a spojovníky. |
 
 > [!NOTE]
+> Web musí mít globálně jedinečnou adresu URL. Při vytváření webu, který používá plán hostování, je adresa URL `http://<app-name>.azurewebsites.net` . Název aplikace musí být globálně jedinečný. Když vytvoříte web, který používá App Service Environment, musí být název aplikace jedinečný v rámci [domény pro App Service Environment](../../app-service/environment/using-an-ase.md#app-access). V obou případech je adresa URL webu globálně jedinečná.
+>
 > Azure Functions mají stejná pravidla a omezení pro pojmenování jako Microsoft. Web/Web.
 
 ## <a name="next-steps"></a>Další kroky

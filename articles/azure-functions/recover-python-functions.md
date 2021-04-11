@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56da006dc5a0eef46d5b13984983ca680359b968
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87846033"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168089"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Řešení chyb Pythonu ve službě Azure Functions
 
@@ -19,6 +19,8 @@ Následuje seznam průvodců odstraňováním potíží pro běžné problémy v
 
 * [ModuleNotFoundError a chyba při importu](#troubleshoot-modulenotfounderror)
 * [Nejde importovat ' cygrpc '.](#troubleshoot-cannot-import-cygrpc)
+* [Python byl ukončen s kódem 137](#troubleshoot-python-exited-with-code-137)
+* [Python byl ukončen s kódem 139](#troubleshoot-python-exited-with-code-139)
 
 ## <a name="troubleshoot-modulenotfounderror"></a>Řešení potíží s ModuleNotFoundError
 
@@ -26,22 +28,22 @@ Tato část vám pomůže vyřešit chyby související s modulem ve vaší apli
 
 > `Exception: ModuleNotFoundError: No module named 'module_name'.`
 
-K tomuto problému dochází, když se aplikace funkce Pythonu nepovede načíst modul Pythonu. Hlavní příčinou této chyby je jeden z následujících problémů:
+K této chybě dojde, když se aplikaci funkce Pythonu nepovede načíst modul Pythonu. Hlavní příčinou této chyby je jeden z následujících problémů:
 
-- [Balíček se nenašel.](#the-package-cant-be-found)
-- [Balíček se nevyřešil řádným kolečkem pro Linux](#the-package-isnt-resolved-with-proper-linux-wheel)
-- [Balíček je nekompatibilní s verzí překladače Pythonu.](#the-package-is-incompatible-with-the-python-interpreter-version)
-- [Balíček je v konfliktu s jinými balíčky.](#the-package-conflicts-with-other-packages)
-- [Balíček podporuje jenom platformy Windows nebo macOS.](#the-package-only-supports-windows-or-macos-platforms)
+* [Balíček se nenašel.](#the-package-cant-be-found)
+* [Balíček se nevyřešil řádným kolečkem pro Linux](#the-package-isnt-resolved-with-proper-linux-wheel)
+* [Balíček je nekompatibilní s verzí překladače Pythonu.](#the-package-is-incompatible-with-the-python-interpreter-version)
+* [Balíček je v konfliktu s jinými balíčky.](#the-package-conflicts-with-other-packages)
+* [Balíček podporuje jenom platformy Windows nebo macOS.](#the-package-only-supports-windows-or-macos-platforms)
 
 ### <a name="view-project-files"></a>Zobrazit soubory projektu
 
 Chcete-li zjistit skutečnou příčinu problému, je třeba získat soubory projektů Pythonu, které jsou spuštěny ve vaší aplikaci Function App. Pokud nemáte soubory projektu v místním počítači, můžete je získat jedním z následujících způsobů:
 
-- Pokud má aplikace Function App `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace a její hodnota je adresa URL, Stáhněte si soubor tak, že zkopírujete a vložíte adresu URL do prohlížeče.
-- Pokud má aplikace Function App `WEBSITE_RUN_FROM_PACKAGE` a je nastavená na `1` , přejděte na `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` adresu a Stáhněte si soubor z poslední `href` adresy URL.
-- Pokud aplikace Function App nemá výše zmíněné nastavení aplikace, přejděte na `https://<app-name>.scm.azurewebsites.net/api/settings` adresu a vyhledejte ji v části `SCM_RUN_FROM_PACKAGE` . Stáhněte si soubor tak, že zkopírujete a vložíte adresu URL do prohlížeče.
-- Pokud žádná z těchto možností není pro vás vhodná, přejděte k `https://<app-name>.scm.azurewebsites.net/DebugConsole` obsahu v části a odhalte ho `/home/site/wwwroot` .
+* Pokud má aplikace Function App `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace a její hodnota je adresa URL, Stáhněte si soubor tak, že zkopírujete a vložíte adresu URL do prohlížeče.
+* Pokud má aplikace Function App `WEBSITE_RUN_FROM_PACKAGE` a je nastavená na `1` , přejděte na `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` adresu a Stáhněte si soubor z poslední `href` adresy URL.
+* Pokud aplikace Function App nemá výše zmíněné nastavení aplikace, přejděte na `https://<app-name>.scm.azurewebsites.net/api/settings` adresu a vyhledejte ji v části `SCM_RUN_FROM_PACKAGE` . Stáhněte si soubor tak, že zkopírujete a vložíte adresu URL do prohlížeče.
+* Pokud žádná z těchto možností není pro vás vhodná, přejděte k `https://<app-name>.scm.azurewebsites.net/DebugConsole` obsahu v části a odhalte ho `/home/site/wwwroot` .
 
 Zbytek tohoto článku vám pomůže vyřešit možné příčiny této chyby, když zkontrolujete obsah aplikace Function App, zjistíte původní příčinu a vyřešíte konkrétní problém.
 
@@ -150,7 +152,7 @@ Tato část vám pomůže odstranit chyby související s cygrpc ve vaší aplik
 
 > `Cannot import name 'cygrpc' from 'grpc._cython'`
 
-K tomuto problému dochází, když se aplikace funkce Pythonu nespustí se správným překladačem Pythonu. Hlavní příčinou této chyby je jeden z následujících problémů:
+K této chybě dojde, když se aplikace funkce Pythonu nespustí se správným překladačem Pythonu. Hlavní příčinou této chyby je jeden z následujících problémů:
 
 - [Interpret jazyka Python neodpovídá architektuře operačního systému](#the-python-interpreter-mismatches-os-architecture)
 - [Interpret Pythonu není podporován Azure Functions pracovníkem Pythonu](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)
@@ -177,6 +179,42 @@ Pracovník Pythonu Azure Functions podporuje jenom Python 3,6, 3,7 a 3,8.
 Zkontrolujte prosím, jestli váš interpret Pythonu odpovídá očekávané verzi `py --version` ve Windows nebo `python3 --version` v systémech podobných platformě UNIX. Zajistěte, aby byl vrácen výsledek Python 3.6. x, Python 3.7. x nebo Python 3.8. x.
 
 Pokud vaše verze překladače Pythonu nesplňuje naše očekávání, Stáhněte si prosím překladač Python 3,6, 3,7 nebo 3,8 z [Python Software Foundation](https://python.org/downloads/release).
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-137"></a>Řešení potíží s Pythonem skončilo s kódem 137
+
+Chyby kódu 137 jsou obvykle způsobeny problémy způsobenými nedostatkem paměti ve vaší aplikaci funkcí Pythonu. V důsledku toho se zobrazí následující chybová zpráva Azure Functions:
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 137`
+
+K této chybě dojde, když je aplikace funkcí Pythonu nuceně ukončena operačním systémem pomocí SIGKILL signálu. Tento signál obvykle indikuje chybu nedostatku paměti v procesu Pythonu. Azure Functions platforma má [omezení služby](functions-scale.md#service-limits) , které ukončí všechny aplikace Function App, které překročily tento limit.
+
+Pokud chcete analyzovat kritické body paměti ve vaší aplikaci Function App, přečtěte si část kurz v tématu [profilace paměti u funkcí Pythonu](python-memory-profiler-reference.md#memory-profiling-process) .
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-139"></a>Řešení potíží s Pythonem skončilo s kódem 139
+
+Tato část vám pomůže vyřešit chyby při selhání segmentace v aplikaci funkcí Pythonu. K těmto chybám obvykle dojde v následující Azure Functions chybové zprávě:
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 139`
+
+K této chybě dojde, když je aplikace funkcí Pythonu nuceně ukončena operačním systémem pomocí SIGSEGV signálu. Tento signál označuje narušení segmentace paměti, které může být způsobeno neočekávaným čtením nebo zápisem do omezené paměťové oblasti. V následujících částech uvádíme seznam běžných hlavních příčin.
+
+### <a name="a-regression-from-third-party-packages"></a>Regrese z balíčků třetích stran
+
+V requirements.txt Function App se v každém nasazení Azure Functions upgraduje nepřipnutý balíček na nejnovější verzi. Dodavatelé těchto balíčků můžou v nejnovější verzi zavést regrese. Pokud chcete tento problém vyřešit, zkuste komentovat příkazy importu, zakázat odkazy na balíčky nebo připnutí balíčku k předchozí verzi v requirements.txt.
+
+### <a name="unpickling-from-a-malformed-pkl-file"></a>Zrušení výběru nesprávně vytvořeného souboru. pkl
+
+Pokud vaše aplikace Function App používá k načtení objektu Python ze souboru. pkl knihovnu Python pickel, je možné, že soubor. pkl obsahuje chybně vytvořený řetězec bajtů nebo v něm není platný odkaz na adresu. Chcete-li provést obnovení z tohoto problému, zkuste zadat komentář k funkci picklist. Load ().
+
+### <a name="pyodbc-connection-collision"></a>Kolize připojení Pyodbc
+
+Pokud vaše aplikace Function App používá oblíbený ovladač ODBC Database [pyodbc](https://github.com/mkleehammer/pyodbc), je možné, že se v rámci jedné aplikace Function App otevírá víc připojení. Pokud se chcete tomuto problému vyhnout, použijte prosím vzor singleton a ujistěte se, že se v aplikaci Function App používá jenom jedno připojení pyodbc.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

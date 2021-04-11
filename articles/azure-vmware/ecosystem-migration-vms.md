@@ -4,10 +4,10 @@ description: Přečtěte si o špičkových řešeních migrace pro virtuální 
 ms.topic: reference
 ms.date: 03/22/2021
 ms.openlocfilehash: ad3ef11ee6cc55c83abd985d4945c3bb844932d2
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104787520"
 ---
 # <a name="migration-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Řešení migrace pro virtuální počítače řešení Azure VMware (VM)

@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955222"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552100"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
 Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn nejnovějších nových funkcí a vylepšení. 
+
+## <a name="april-2021"></a>Duben 2021
+
+* [Active Directory Domain Services (přidání) mapování uživatele LDAP pomocí rozšířených skupin NFS](configure-ldap-extended-groups.md) (Preview)   
+
+    Ve výchozím nastavení Azure NetApp Files při zpracování přihlašovacích údajů uživatele NFS, jak je definováno v [dokumentu RFC 5531](https://tools.ietf.org/html/rfc5531), podporovat až 16 ID skupin. Díky této nové funkci teď můžete zvýšit maximální až 1 024, pokud máte uživatele, kteří jsou členy více než výchozí počet skupin. Pro podporu této funkce se teď dají přidat taky svazky systému souborů NFS, aby se přidal protokol LDAP, který umožňuje uživatelům služby Active Directory LDAP s položkami rozšířených skupin (s až 1024 skupinami) získat přístup ke svazku. 
 
 ## <a name="march-2021"></a>Březen 2021
 

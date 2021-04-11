@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0b7f0427708eece75b5d418b68dd1c7a2e90853f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028790"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108689"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
 
@@ -59,7 +59,7 @@ Ne, Video Indexer poskytuje integraci více modelů strojového učení do jedno
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Jaké formáty médií Video Indexer podporují?
 
-Video Indexer podporuje většinu běžných formátů médií. Další podrobnosti najdete v seznamu [formátů Azure Media Encoder Standard](../latest/media-encoder-standard-formats.md) .
+Video Indexer podporuje většinu běžných formátů médií. Další podrobnosti najdete v seznamu [formátů Azure Media Encoder Standard](../latest/encode-media-encoder-standard-formats-reference.md) .
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Návody nahrát mediální soubor do Video Indexer a jaká jsou omezení?
 

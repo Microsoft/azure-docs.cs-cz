@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104670900"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii s využitím Azure Site Recovery pro sdílené složky hostované v StorSimple
@@ -37,7 +37,7 @@ Tento dokument podrobně vysvětluje, jak můžete vytvořit řešení pro zotav
 ## <a name="supported-azure-site-recovery-deployment-options"></a>Podporované možnosti nasazení Azure Site Recovery
 Zákazníci mohou nasadit souborové servery jako fyzické servery nebo virtuální počítače běžící na technologii Hyper-V nebo VMware a pak vytvořit sdílené složky ze svazků Carved z úložiště StorSimple. Azure Site Recovery může chránit fyzické i virtuální nasazení buď na sekundární lokalitu, nebo na Azure. Tento dokument obsahuje podrobné informace o řešení zotavení po havárii s Azure jako lokalitu pro obnovení pro virtuální počítač souborového serveru hostovaný na Hyper-V a s sdílenými složkami v StorSimple Storage. Další scénáře, ve kterých je virtuální počítač souborového serveru na VIRTUÁLNÍm počítači VMware nebo fyzický počítač, se dají implementovat podobně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Implementace řešení pro zotavení po havárii typu jedním kliknutím, který používá Azure Site Recovery pro sdílené složky hostované v úložišti StorSimple, má následující požadavky:
 
    - Místní virtuální počítač souborového serveru Windows Server 2012 R2 hostovaný na Hyper-V nebo VMware nebo na fyzickém počítači

@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 3f1f26acbba0f5830421e760d6a68a11f618fa85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58132b6d038abe0db02d1e58f8c8a8f64962ff49
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648986"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279710"
 ---
-# <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Kurz: přihlášení uživatelů v Node.js Web App & Express
+# <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Kurz: přihlášení uživatelů ve webové aplikaci Node.js & Express
 
 V tomto kurzu vytvoříte webovou aplikaci, která se přihlásí uživatelům. Webová aplikace, kterou sestavíte, používá [Microsoft Authentication Library (MSAL) pro uzel](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node).
 

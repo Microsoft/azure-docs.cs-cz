@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104798880"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
@@ -48,16 +48,16 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 | Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
+| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
 |   |   | Aktuální Windows | Bez trvalého přihlášení | Ano<sup>5</sup> |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
+|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-|   | Spravované | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+|   | Spravované | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
 | Registrováno v Azure AD | Federované/spravované | Windows Current/Windows nižší úrovně | Trvalá/netrvalá | Neuvedeno |
 
 <sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 V1803 nebo novější a Windows Server 2019.

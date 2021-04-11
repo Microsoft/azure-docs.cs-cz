@@ -4,7 +4,7 @@ description: Seznamte se s osvědčenými postupy pro navrhování, sestavován�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d28d55c8dff16df987f6535b0f1452b840b35c43
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841984"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960499"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -127,10 +127,8 @@ Níže jsou uvedené osvědčené postupy pro používání App Service.
 **Osvědčený postup**: Sledujte stav zabezpečení vašich App Servicech prostředí.   
 **Podrobnosti**: pomocí Azure Security Center můžete monitorovat App Service prostředí. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/asset-inventory.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků.
 
-> [!NOTE]
-> App Service monitorování je ve verzi Preview a je k dispozici pouze na [úrovni Standard](../../security-center/security-center-pricing.md) Security Center.
->
->
+## <a name="azure-cloud-services"></a>Azure Cloud Services
+[Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) je příkladem PaaS. Stejně jako Azure App Service je tato technologie navržena tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz. Stejným způsobem, jako hostuje App Service na virtuálních počítačích, je to také Cloud Services Azure. Máte ale větší kontrolu nad virtuálními počítači. Na virtuální počítače, které používají Azure Cloud Services, můžete nainstalovat vlastní software a k nim můžete přistupovat vzdáleně.
 
 ## <a name="install-a-web-application-firewall"></a>Instalace firewallu webových aplikací
 Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování mnoha vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
@@ -149,13 +147,13 @@ Ověřování ochrany zabezpečení je důležité jako testování jakékoli ji
 
 Fuzzy testuje je metoda pro hledání chyb programu (chyby kódu) tím, že poskytuje chybná vstupní data do programových rozhraní (vstupní body), která analyzují a spotřebovávají tato data. [Zjišťování rizik zabezpečení společnosti Microsoft](https://www.microsoft.com/en-us/security-risk-detection/) je cloudový nástroj, který můžete použít k vyhledání chyb a dalších chyb zabezpečení v softwaru před nasazením do Azure. Nástroj je navržený tak, aby zachytával chyby zabezpečení před nasazením softwaru, takže nemusíte opravovat chybu, zabývat se havárií nebo reagovat na útok po vydání softwaru.
 
-
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jsme se zaměřili na výhody zabezpečení nasazení Azure PaaS a osvědčené postupy zabezpečení pro cloudové aplikace. Dále se seznamte s doporučenými postupy pro zabezpečení webových a mobilních řešení PaaS pomocí konkrétních služeb Azure. Začneme s Azure App Service, Azure SQL Database a Azure synapse Analytics a Azure Storage. V případě, že budou k dispozici články o doporučených postupech pro jiné služby Azure, budou odkazy uvedeny v následujícím seznamu:
+V tomto článku jsme se zaměřili na výhody zabezpečení nasazení Azure PaaS a osvědčené postupy zabezpečení pro cloudové aplikace. Dále se seznamte s doporučenými postupy pro zabezpečení webových a mobilních řešení PaaS pomocí konkrétních služeb Azure. Začneme s využitím Azure App Service, Azure SQL Database a Azure synapse Analytics, Azure Storage a Azure Cloud Services. V případě, že budou k dispozici články o doporučených postupech pro jiné služby Azure, budou odkazy uvedeny v následujícím seznamu:
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database a Azure synapse Analytics](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
+- [Azure Cloud Services](../../cloud-services/security-baseline.md)
 - Azure Cache for Redis
 - Azure Service Bus
 - Firewall webových aplikací
@@ -165,5 +163,6 @@ V tématu [vývoj zabezpečených aplikací v Azure](https://azure.microsoft.com
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
-* [Blog týmu pro zabezpečení Azure](/archive/blogs/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu. secure@microsoft.com
+
+- [Blog týmu pro zabezpečení Azure](/archive/blogs/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
+- [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu. secure@microsoft.com

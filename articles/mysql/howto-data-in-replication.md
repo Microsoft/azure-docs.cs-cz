@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c12068c6a2c75c7be8b5572b901a714d397b2ca
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030745"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209914"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
@@ -21,19 +21,16 @@ Tento článek popisuje, jak nastavit [replikace vstupních dat](concepts-data-i
 > Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 >
 
-Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, [replikace vstupních dat](concepts-data-in-replication.md)  synchronizuje data ze zdrojového serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, [replikace vstupních dat](concepts-data-in-replication.md)  synchronizuje data ze zdrojového serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách. Replikace vstupních dat je založený na umístění binárního souboru protokolu (binlog) nebo replikaci založené na gtid, která je nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](concepts-data-in-replication.md#limitations-and-considerations) na replikaci dat.
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Vytvoření serveru MySQL, který se bude používat jako replika
+## <a name="1-create-a-azure-database-for-mysql-single-server-to-be-used-as-replica"></a>1. Vytvořte Azure Database for MySQL jediný server, který se bude používat jako replika.
 
-1. Vytvořit nový Azure Database for MySQL server
-
-   Vytvořte nový server MySQL (např. "replica.mysql.database.azure.com"). Informace o [vytvoření serveru Azure Database for MySQL pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) pro vytvoření serveru. Tento server je server repliky v Replikace vstupních dat.
+1. Vytvořit nový Azure Database for MySQL jeden server (např. "replica.mysql.database.azure.com"). Informace o [vytvoření serveru Azure Database for MySQL pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) pro vytvoření serveru. Tento server je server repliky v Replikace vstupních dat.
 
    > [!IMPORTANT]
-   > Azure Database for MySQL server musí být vytvořený v cenové úrovni optimalizované pro Pro obecné účely nebo paměť.
-   >
+   > Azure Database for MySQL server se musí vytvořit v Pro obecné účely nebo paměťově optimalizované cenové úrovně, protože replikace dat je podporovaná jenom v těchto úrovních.
 
 2. Vytváření stejných uživatelských účtů a odpovídajících oprávnění
 
@@ -42,8 +39,12 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 3. Přidejte IP adresu zdrojového serveru k pravidlům brány firewall repliky.
 
    Pomocí webu [Azure Portal](howto-manage-firewall-using-portal.md) nebo [Azure CLI](howto-manage-firewall-using-cli.md) aktualizujte pravidla brány firewall.
+   
+4. **Volitelné** – Pokud chcete použít [replikaci založenou na gtid](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) ze zdrojového serveru na server repliky Azure Database for MySQL, bude nutné na Azure Database for MySQL serveru povolit následující parametry serveru, jak je znázorněno na obrázku na portálu níže.
 
-## <a name="configure-the-source-server"></a>Konfigurace zdrojového serveru
+   :::image type="content" source="./media/howto-data-in-replication/enable-gtid.png" alt-text="Povolit gtid na serveru Azure Database for MySQL":::
+
+## <a name="2-configure-the-source-mysql-server"></a>2. konfigurace zdrojového serveru MySQL
 
 Následující kroky připravují a konfigurují hostovaný Server MySQL v místním prostředí, ve virtuálním počítači nebo databázové službě hostované jinými poskytovateli cloudu pro Replikace vstupních dat. Tento server je "zdroj" v rámci replikace dat.
 
@@ -110,7 +111,6 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
        ```bash
        log-bin=mysql-bin.log
        ```
-     
    4. Aby se změny projevily, restartujte zdrojový server MySQL.
    5. Po restartování serveru ověřte, zda je povoleno binární protokolování, spuštěním stejného dotazu jako dříve:
    
@@ -125,6 +125,14 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
+   **Volitelné** – Pokud chcete použít [replikaci založenou na gtid](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html), budete muset ověřit, jestli je na zdrojovém serveru povolená možnost gtid. Pokud chcete zjistit, jestli je režim gtid ZAPNUTý, můžete na svém zdrojovém serveru MySQL spustit následující příkaz.
+   
+   ```sql
+   show variables like 'gtid_mode';
+   ```
+   >[!IMPORTANT]
+   > Všechny servery mají gtid_mode nastavené na výchozí hodnotu Vypnuto. Nemusíte na zdrojovém serveru MySQL povolit konkrétně gtid k nastavení replikace dat. Pokud je na zdrojovém serveru už povolený gtid, můžete k nastavení replikace na základě gtid použít replikaci založenou na ech, která je Azure Database for MySQL jenom na jednom serveru. Replikaci na základě souborů můžete použít k nastavení replikace dat pro všechny servery bez ohledu na konfiguraci režimu gtid na zdrojovém serveru.
+
 
 5. Vytvoření nové role replikace a nastavení oprávnění
 
@@ -182,18 +190,22 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    ```sql
     show master status;
    ```
-
    Výsledek by měl vypadat přibližně takto: Nezapomeňte si poznamenat název binárního souboru, jak bude použit v pozdějších krocích.
 
    :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Výsledky hlavního stavu":::
+   
 
-## <a name="dump-and-restore-source-server"></a>Výpis a obnovení zdrojového serveru
+## <a name="3-dump-and-restore-source-server"></a>3. výpis a obnovení zdrojového serveru
 
 1. Určete databáze a tabulky, které chcete replikovat, do Azure Database for MySQL a proveďte výpis ze zdrojového serveru.
 
     Pomocí mysqldump můžete vypsat databáze z hlavní větve. Podrobnosti najdete v tématu věnovaném [výpisu & obnovení](concepts-migrate-dump-restore.md). Není nutné vypsat knihovnu MySQL a knihovnu testů.
 
-2. Nastavte zdrojový server na režim čtení/zápisu.
+2. **Volitelné** – Pokud chcete použít [replikaci založenou na gtid](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html), budete muset určit gtid poslední transakce spuštěné v hlavní větvi. Pomocí následujícího příkazu můžete poznamenat gtid poslední transakce spuštěnou na hlavním serveru.
+   ```sql
+   show global variables like 'gtid_executed';
+   ```
+3. Nastavte zdrojový server na režim čtení/zápisu.
 
    Po dokončení databáze změňte zdrojový server MySQL zpátky na režim pro čtení a zápis.
 
@@ -205,8 +217,14 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 3. Obnovte soubor s výpisem paměti na novém serveru.
 
    Obnovte soubor s výpisem paměti na server vytvořený ve službě Azure Database for MySQL. Informace o tom, jak obnovit soubor s výpisem paměti na server MySQL, najdete v tématu [výpis & obnovení](concepts-migrate-dump-restore.md) . Pokud je soubor s výpisem paměti velký, nahrajte ho do virtuálního počítače v Azure ve stejné oblasti jako server repliky. Obnovte ji na Azure Database for MySQL server z virtuálního počítače.
+   
+4. **Volitelné** – Poznamenejte si gtid obnoveného serveru na Azure Database for MySQL, abyste měli jistotu, že je stejná jako hlavní. Pomocí následujícího příkazu můžete poznamenat gtid hodnoty vyprázdnění gtid na serveru repliky Azure Database for MySQL. Hodnota gtid_purged by měla být stejná jako gtid_executed na hlavní stránce popsána v kroku 2 pro fungování replikace založené na gtid.
 
-## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>Připojit zdroj a servery repliky ke spuštění Replikace vstupních dat
+   ```sql
+   show global variables like 'gtid_purged';
+   ```
+
+## <a name="4-link-source-and-replica-servers-to-start-data-in-replication"></a>4. Propojte zdroj a servery repliky, které se budou spouštět Replikace vstupních dat
 
 1. Nastavte zdrojový server.
 
@@ -215,12 +233,17 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    Pokud chcete propojit dva servery a spustit replikaci, přihlaste se k cílovému serveru repliky ve službě Azure DB for MySQL a nastavte externí instanci jako zdrojový server. K tomu je potřeba použít `mysql.az_replication_change_master` uloženou proceduru na serveru Azure DB for MySQL.
 
    ```sql
-   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   **Volitelné** – Pokud chcete použít [replikaci založenou na gtid](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html), budete muset k propojení těchto dvou serverů použít následující příkaz.
+    ```sql
+   call mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_ssl_ca>');
    ```
 
    - master_host: název hostitele zdrojového serveru
    - master_user: uživatelské jméno pro zdrojový Server
    - master_password: heslo pro zdrojový Server
+   - master_port: číslo portu, na kterém zdrojový server naslouchá připojením. (3306 je výchozí port, na kterém MySQL naslouchá)
    - master_log_file: název souboru binárního protokolu se spustí. `show master status`
    - master_log_pos: binární umístění protokolu se spouští. `show master status`
    - master_ssl_ca: kontext certifikátu certifikační autority. Pokud nepoužíváte protokol SSL, předejte prázdný řetězec.
@@ -282,7 +305,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    Pokud je stav `Slave_IO_Running` a v `Slave_SQL_Running` hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master` Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace.
 
-## <a name="other-stored-procedures"></a>Jiné uložené procedury
+## <a name="other-useful-stored-procedures-for-data-in-replication-operations"></a>Další užitečné uložené procedury pro operace replikace dat
 
 ### <a name="stop-replication"></a>Zastavení replikace
 
@@ -307,6 +330,19 @@ Pokud chcete přeskočit chybu replikace a pokračovat v replikaci, použijte n�
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+ **Volitelné** – Pokud chcete použít [replikaci založenou na gtid](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html), použijte k přeskočení transakce následující uloženou proceduru.
+
+```sql
+call mysql. az_replication_skip_gtid_transaction(‘<transaction_gtid>’)
+```
+Procedura může přeskočit transakci pro daný gtid. Pokud formát gtid není pravý nebo pokud již byla provedena transakce gtid, spuštění procedury se nezdaří. Gtid pro transakci lze určit analýzou binárního protokolu pro kontrolu událostí transakcí. MySQL poskytuje nástroj [mysqlbinlog](https://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html) k analýze binárních protokolů a zobrazení jejich obsahu v textovém formátu, který se dá použít k identifikaci gtid transakce.
+
+Pokud chcete přeskočit další transakci po umístění aktuální replikace, použijte následující příkaz k identifikaci gtid další transakce, jak je znázorněno níže.
+
+```sql
+SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos][LIMIT [offset,] row_count]
+```
+  :::image type="content" source="./media/howto-data-in-replication/show-binary-log.png" alt-text="Zobrazit výsledky binárního protokolu":::
 
 ## <a name="next-steps"></a>Další kroky
 

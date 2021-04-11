@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f21e4aa9bd46ed5524cf83d083a70b9b04f03056
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678125"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011131"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Nejčastější dotazy Azure Maps počasí Services (Preview)
 
@@ -103,7 +103,7 @@ Ano. Kromě paprskových a satelitních Azure Maps dlaždic v reálném čase si
 
 **Nabízíte ikony pro různé povětrnostní podmínky?**
 
-Ano. [Tady](./weather-services-concepts.md#weather-icons)můžete najít ikony a jejich příslušné kódy. Všimněte si, že pouze některá rozhraní API služby počasí (verze Preview), jako je například  [načíst aktuální podmínky rozhraní API](/rest/api/maps/weather/getcurrentconditionspreview), vrátí *iconCode* v odpovědi. Další informace naleznete v aktuální ukázce WeatherConditions open source [Code](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
+Ano. [Tady](./weather-services-concepts.md#weather-icons)můžete najít ikony a jejich příslušné kódy. Všimněte si, že pouze některá rozhraní API služby počasí (verze Preview), jako je například  [načíst aktuální podmínky rozhraní API](/rest/api/maps/weather/getcurrentconditions), vrátí *iconCode* v odpovědi. Další informace naleznete v aktuální ukázce WeatherConditions open source [Code](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
 
 ## <a name="next-steps"></a>Další kroky
 

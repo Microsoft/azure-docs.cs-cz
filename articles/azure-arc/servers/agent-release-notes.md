@@ -2,13 +2,13 @@
 title: Co je nového u agenta serverů s podporou ARC Azure
 description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Mnohé z mnoha souhrnných problémů jsou odkazy na další podrobnosti.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470502"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109063"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Co je nového u agenta serverů s podporou ARC Azure
 
@@ -24,9 +24,9 @@ Verze 1,4
 
 ## <a name="new-feature"></a>Nová funkce
 
-- Byla přidána podpora privátních koncových bodů.
+- Byla přidána podpora privátních koncových bodů, který je aktuálně ve verzi omezené verze Preview.
 - Rozbalený seznam ukončovacích kódů pro azcmagent.
-- Parametry konfigurace agenta se teď dají číst ze souboru s parametrem--config.
+- Parametry konfigurace agenta se teď dají číst ze souboru s `--config` parametrem.
 
 ## <a name="fixed"></a>Pevný
 

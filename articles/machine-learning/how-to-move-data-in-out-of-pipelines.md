@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 0c4f1fbc0ed27dbf3b7347e0e4c12f1926ac1377
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 65e93cdeb5592eef92fe8c8261231179fae6af67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566247"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731798"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -28,7 +28,7 @@ Tento článek vám ukáže, jak:
 - Rozdělit `Dataset` data na podmnožiny, jako jsou například školení a podmnožiny ověřování
 - Vytvoření `OutputFileDatasetConfig` objektů pro přenos dat do dalšího kroku kanálu
 - Použití `OutputFileDatasetConfig` objektů jako vstupu do postupu kanálu
-- Vytváření nových `Dataset` objektů z `OutputFileDatasetConfig` vámi wisƒh k zachování
+- Vytvořit nové objekty, které chcete `Dataset` `OutputFileDatasetConfig` zachovat
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -126,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 

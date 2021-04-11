@@ -1,25 +1,25 @@
 ---
-title: Kvóty a omezení služeb Speech
+title: Kvóty a omezení služby Speech Service
 titleSuffix: Azure Cognitive Services
-description: Rychlá reference, podrobný popis a osvědčené postupy pro kvóty a omezení služby Speech pro rozpoznávání řeči v Azure
+description: Rychlá reference, podrobný popis a osvědčené postupy týkající se kvót a omezení služby rozpoznávání řeči v Azure
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937052"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011169"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
+# <a name="speech-service-quotas-and-limits"></a>Kvóty a omezení služby Speech Service
 
-Tento článek obsahuje stručný přehled a **podrobný popis** kvót a omezení pro rozpoznávání řeči v Azure pro všechny [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Obsahuje taky některé osvědčené postupy, které brání omezení požadavků. 
+Tento článek obsahuje stručný přehled a **podrobný popis** kvót a omezení služby rozpoznávání řeči v Azure pro všechny [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Obsahuje taky některé osvědčené postupy, které brání omezení požadavků. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Rychlé reference k kvótám a omezením
 Přejít k [kvótám a omezením pro převod textu na řeč](#text-to-speech-quotas-and-limits-per-speech-resource)
@@ -98,9 +98,13 @@ V dalších oddílech jsou popsány zvláštní případy úpravy kvót.<br/>
 Přejděte na [text na řeč. Zvýšení limitu souběžných požadavků na přepis pro vlastní hlas](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>Převod řeči na text: zvýšení limitu souběžných požadavků online přepisu
-Ve výchozím nastavení je počet souběžných požadavků omezený na 20 prostředků na řeč (základní model) nebo na vlastní koncový bod (vlastní model). U cenové úrovně Standard se dá tuto částku zvýšit. Před odesláním žádosti se ujistěte, že jste obeznámeni s materiálem v [této části](#detailed-description-quota-adjustment-and-best-practices) a máte na paměti tyto [osvědčené postupy](#general-best-practices-to-mitigate-throttling-during-autoscaling).
+Ve výchozím nastavení je počet souběžných požadavků omezený na 100 na zdroj řeči (základní model) a na 20 na vlastní koncový bod (vlastní model). U cenové úrovně Standard se dá tuto částku zvýšit. Před odesláním žádosti se ujistěte, že jste obeznámeni s materiálem v [této části](#detailed-description-quota-adjustment-and-best-practices) a máte na paměti tyto [osvědčené postupy](#general-best-practices-to-mitigate-throttling-during-autoscaling).
 
-Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** náklady. Služba Speech Services používá "platíte jenom za to, co používáte". Limit definuje, jak vysoké může být služba škálovatelná, než začne omezovat vaše požadavky.
+>[!NOTE]
+> Pokud používáte vlastní modely, uvědomte si prosím, že jeden prostředek řeči může být přidružený k mnoha vlastním koncovým bodům hostujícím mnoho nasazení vlastních modelů. Každý vlastní koncový bod má výchozí počet souběžných limitů požadavků (20) nastaveného vytvořením. Pokud ho potřebujete upravit, musíte provést úpravu každého vlastního koncového bodu **samostatně**. Všimněte si také, že hodnota počet souběžných požadavků pro základní model zdroje řeči nemá **žádný** vliv na vlastní koncové body přidružené k tomuto prostředku.
+
+
+Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** náklady. Služba Speech používá "platíte jenom za to, co používáte". Limit definuje, jak vysoké může být služba škálovatelná, než začne omezovat vaše požadavky.
 
 Souběžná omezení požadavků pro **základní** a **vlastní** modely je potřeba upravit **samostatně**.
 
@@ -168,7 +172,7 @@ Obecně se doporučuje testovat úlohy a vzory úloh před tím, než budete pok
 ### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>Převod textu na řeč: zvýšení limitu počtu souběžných požadavků pro vlastní hlas
 Ve výchozím nastavení je počet souběžných požadavků pro vlastní hlasový koncový bod omezený na 10. U cenové úrovně Standard se dá tuto částku zvýšit. Před odesláním žádosti se ujistěte, že jste obeznámeni s materiálem v [této části](#detailed-description-quota-adjustment-and-best-practices) a máte na paměti tyto [osvědčené postupy](#general-best-practices-to-mitigate-throttling-during-autoscaling).
 
-Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** náklady. Služba Speech Services používá "platíte jenom za to, co používáte". Limit definuje, jak vysoké může být služba škálovatelná, než začne omezovat vaše požadavky.
+Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** náklady. Služba Speech používá "platíte jenom za to, co používáte". Limit definuje, jak vysoké může být služba škálovatelná, než začne omezovat vaše požadavky.
 
 Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 

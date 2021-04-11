@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 03/19/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 8382dd10536a8c0475444d0cdff30340ad124e9c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104722799"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-a-public-load-balancer-using-the-azure-portal"></a>Kurz: Integrace brány NAT s veřejným nástrojem pro vyrovnávání zatížení pomocí Azure Portal
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření brány NAT
 > * Ověřte odchozí připojení virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

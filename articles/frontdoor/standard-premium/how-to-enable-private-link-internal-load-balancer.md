@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: tyao
 ms.openlocfilehash: 6876692bcf752570ecdc5d42b65da81992ad3743
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104803667"
 ---
 # <a name="connect-azure-front-door-premium-to-an-internal-load-balancer-origin-with-private-link"></a>Připojit přední dveře Azure ke zdroji interního vyrovnávání zatížení pomocí privátního odkazu
 
 Tento článek vás provede postupem konfigurace SKU Azure front-SKU pro připojení ke svému zdroji interního nástroje pro vyrovnávání zatížení pomocí služby privátního propojení Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvořte [službu privátního propojení](../../private-link/create-private-link-service-portal.md).
 

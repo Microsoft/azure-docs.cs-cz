@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91556087cd3e7ccd85550c721f70b8608fdc4ffd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678268"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168446"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -282,7 +282,7 @@ Pokud chcete prozkoumat rozhraní API Azure Maps použitá v tomto kurzu, přeč
 
 Seznam zařízení, která jsou v Azure Certified for IoT, získáte na webu:
 
-* [Zařízení s certifikací Azure](https://catalog.azureiotsolutions.com/)
+* [Zařízení s certifikací Azure](https://devicecatalog.azure.com/)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

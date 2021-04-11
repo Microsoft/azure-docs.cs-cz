@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: a14f8e0ba3ae5cca75cf6518320023703a6d1700
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fbf2a30d029a579026fa9c590f59bedff594f4b8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626380"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109199"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -119,7 +119,7 @@ Další informace o vysoké dostupnosti v měřítku najdete v tématu [Vysoká 
 
 ## <a name="testing-application-fault-resiliency"></a>Testování odolnosti proti chybám aplikace
 
-Vysoká dostupnost je základní součástí služby SQL Database a platformy SQL Managed Instance, která funguje pro vaši databázovou aplikaci transparentně. Nicméně chápeme, že možná budete chtít otestovat, jaký budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Převzetí služeb při selhání můžete aktivovat ručně voláním speciálního rozhraní API pro restartování databáze, elastického fondu nebo spravované instance. V případě redundantní databáze nebo elastického fondu zóny by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární databázi v zóně dostupnosti odlišnou od zóny dostupnosti staré primární služby. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající databázové relace, můžete také ověřit, jestli se v důsledku změn v latenci sítě změní na koncový výkon. Vzhledem k tomu, že operace restartování je rušivá a velké množství těchto prostředků by mohlo navýšit platformu, pro každou databázi, elastický fond nebo spravovanou instanci je každých 15 minut povoleno pouze jedno volání převzetí služeb při selhání.
+Vysoká dostupnost je základní součástí služby SQL Database a platformy SQL Managed Instance, která funguje pro vaši databázovou aplikaci transparentně. Nicméně chápeme, že možná budete chtít otestovat, jaký budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Převzetí služeb při selhání můžete aktivovat ručně voláním speciálního rozhraní API pro restartování databáze, elastického fondu nebo spravované instance. V případě zóny redundantního serveru nebo databáze zřízené Pro obecné účely a elastického fondu by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární databázi v zóně dostupnosti odlišnou od zóny dostupnosti staré primární služby. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající databázové relace, můžete také ověřit, jestli se v důsledku změn v latenci sítě změní na koncový výkon. Vzhledem k tomu, že operace restartování je rušivá a velké množství těchto prostředků by mohlo navýšit platformu, pro každou databázi, elastický fond nebo spravovanou instanci je každých 15 minut povoleno pouze jedno volání převzetí služeb při selhání.
 
 Převzetí služeb při selhání se dá iniciovat pomocí PowerShellu, REST API nebo Azure CLI:
 

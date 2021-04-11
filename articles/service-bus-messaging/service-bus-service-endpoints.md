@@ -2,14 +2,14 @@
 title: Konfigurace koncových bodů služby virtuální sítě pro Azure Service Bus
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. ServiceBus do virtuální sítě.
 ms.topic: article
-ms.date: 02/12/2021
+ms.date: 03/29/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b5aba6c5ad4e1e6d0c90b99ebcdf441bb35cc39
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960448"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních virtuálních sítí
 Integrace Service Bus s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
@@ -18,16 +18,14 @@ Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě n
 
 Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť a odpovídajícím oborem názvů Service Bus, a to i přes pozorovatelnou síťovou adresu koncového bodu služby zasílání zpráv ve veřejném rozsahu IP adres.
 
-Implementace integrace virtuálních sítí může ostatním službám Azure zabránit v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené koncové body síťové služby. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
+## <a name="important-points"></a>Důležité body
+- Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) . Při použití koncových bodů služby virtuální sítě s Service Bus byste neměli povolit tyto koncové body v aplikacích, které používají obory názvů Service Bus úrovně Standard a Premium. Vzhledem k tomu, že úroveň Standard nepodporuje virtuální sítě. Koncový bod je omezený jenom na obory názvů úrovně Premium.
+- Implementace integrace virtuálních sítí může ostatním službám Azure zabránit v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých **důvěryhodných služeb** i v případě, že jsou povolené koncové body síťové služby. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
 
-Následující služby společnosti Microsoft musí být ve virtuální síti.
-- Azure App Service
-- Azure Functions
-
-Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) . Při použití koncových bodů služby virtuální sítě s Service Bus byste neměli povolit tyto koncové body v aplikacích, které používají obory názvů Service Bus úrovně Standard a Premium. Vzhledem k tomu, že úroveň Standard nepodporuje virtuální sítě. Koncový bod je omezený jenom na obory názvů úrovně Premium.
-
-> [!IMPORTANT]
-> Zadejte alespoň jedno pravidlo IP nebo pravidlo virtuální sítě pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče).  
+    Následující služby společnosti Microsoft musí být ve virtuální síti.
+    - Azure App Service
+    - Azure Functions
+- Zadejte **alespoň jedno pravidlo IP nebo pravidlo virtuální sítě** pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče).  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé scénáře zabezpečení povolené integrací virtuální sítě 
 

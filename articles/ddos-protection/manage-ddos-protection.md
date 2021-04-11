@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: d0b2ccc0bf5d38e9a72bf780875d3b6f29733189
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: b38f2831136b0ccec4aa241135f2fd342c939845
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026747"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936882"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard
 
@@ -70,10 +70,9 @@ Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatn
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>Povolit ochranu DDoS pro existující virtuální síť
 
 1. Vytvořte plán DDoS Protection tak, že vyplníte kroky v tématu [Vytvoření plánu DDoS Protection](#create-a-ddos-protection-plan), pokud nemáte existující plán DDoS Protection.
-2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
-3. Do **pole Hledat prostředky, služby a dokumenty** v horní části portálu zadejte název virtuální sítě, pro kterou chcete povolit DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
-4. V části **Nastavení** vyberte **DDoS Protection**.
-5. Vyberte **Standard**. V části **plán ochrany DDoS** vyberte existující plán DDoS Protection nebo plán, který jste vytvořili v kroku 1, a pak vyberte **Uložit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.
+2. Do **pole Hledat prostředky, služby a dokumenty** v horní části Azure Portal zadejte název virtuální sítě, pro kterou chcete povolit DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
+3. V části **Nastavení** vyberte **DDoS Protection**.
+4. Vyberte **Standard**. V části **plán ochrany DDoS** vyberte existující plán DDoS Protection nebo plán, který jste vytvořili v kroku 1, a pak vyberte **Uložit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Povolit DDoS Protection pro všechny virtuální sítě
 

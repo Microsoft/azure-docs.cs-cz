@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Klientská knihovna pro Azure Queue Storage V12 – Java'
 description: Naučte se, jak pomocí V12 knihovny klienta Azure Queue Storage pro Java vytvořit frontu a do ní přidat zprávy. Pak se dozvíte, jak číst a odstraňovat zprávy z fronty. Naučíte se také, jak odstranit frontu.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/01/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
-ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79b10e8281fe8189b490fe97dfe896179c8e64fc
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588212"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275868"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rychlý Start: V12 klientské knihovny pro Azure Queue Storage pro Java
 

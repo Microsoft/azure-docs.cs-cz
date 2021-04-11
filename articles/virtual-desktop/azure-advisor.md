@@ -3,15 +3,15 @@ title: Integrace virtuální plochy Windows s Azure Advisor – Azure
 description: Jak používat Azure Advisor s nasazením virtuálního počítače s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: b141d3829e9d98cb793d2038e93331804d2e6b8f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89147437"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448283"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>Použití Azure Advisor s virtuálním počítačem s Windows
 
@@ -61,5 +61,3 @@ Když vyberete kategorii, přejdete na stránku její aktivní doporučení. Na 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak vyřešit doporučení, přečtěte si téma [jak vyřešit Azure Advisor doporučení](azure-advisor-recommendations.md).
-
-Pokud máte návrhy na nová doporučení, publikujte ji na našem [Azure Advisorovém fóru hlasového uživatele](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations).

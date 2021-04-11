@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653826"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275800"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly 
 
@@ -89,6 +89,8 @@ Pokud chcete sdílet zpětnou vazbu nebo narazit na problémy s touto funkcí, s
 ### <a name="security-key-provisioning"></a>Zřizování klíče zabezpečení
 
 Bezpečnostní klíče zřizování a zrušení zřizování nejsou k dispozici.
+
+**Poznámka:** Přihlášení FIDO2 do mezipaměti se nepovede na hybridním počítači připojeném ke službě Azure AD, který je specifický pro Win10 20H2 verze (když není dostupná LOS na DC) V současné době probíhá šetření pomocí techniků.
 
 ### <a name="upn-changes"></a>Změny hlavního názvu uživatele (UPN)
 

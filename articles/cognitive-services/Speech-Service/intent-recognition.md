@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: rozpoznávání záměru
-ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018697"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210359"
 ---
 # <a name="what-is-intent-recognition"></a>Co je rozpoznávání záměru?
 
@@ -33,7 +33,7 @@ Pomocí rozpoznávání záměrů můžou vaše aplikace, nástroje a zařízen�
 
 ## <a name="get-started"></a>Začínáme
 
-Projděte si [rychlý Start](quickstarts/intent-recognition.md) a začněte s rozpoznáváním záměrů.
+Projděte si [rychlý Start](get-started-intent-recognition.md) a začněte s rozpoznáváním záměrů.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -53,6 +53,6 @@ Vzorový kód pro rozpoznávání záměru:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dokončete [rychlé](quickstarts/intent-recognition.md) zprovoznění rozpoznávání záměrů.
+* Dokončete [rychlé](get-started-intent-recognition.md) zprovoznění rozpoznávání záměrů.
 * [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Získat sadu Speech SDK](speech-sdk.md)

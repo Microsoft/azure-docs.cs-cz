@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68d90fa56d5dce902a44a32b322e582a81e419d5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392778"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011633"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Mapování schématu a datového typu v aktivitě kopírování
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -22,7 +22,7 @@ Tento článek popisuje, jak Azure Data Factory aktivita kopírování provádí
 
 ### <a name="default-mapping"></a>Výchozí mapování
 
-Ve výchozím nastavení aktivita kopírování mapuje zdrojová data do jímky **podle názvů sloupců** , a to způsobem, který rozlišuje velká a malá písmena. Pokud jímka neexistuje, například zápis do souborů, názvy zdrojových polí budou trvalé jako názvy jímky. Toto výchozí mapování podporuje flexibilní schémata a posun schématu ze zdroje na jímku od spuštění po spuštění – všechna data vrácená zdrojovým úložištěm dat lze zkopírovat do jímky.
+Ve výchozím nastavení aktivita kopírování mapuje zdrojová data do jímky **podle názvů sloupců** , a to způsobem, který rozlišuje velká a malá písmena. Pokud jímka neexistuje, například zápis do souborů, názvy zdrojových polí budou trvalé jako názvy jímky. Pokud jímka již existuje, musí obsahovat všechny sloupce, které jsou kopírovány ze zdroje. Toto výchozí mapování podporuje flexibilní schémata a posun schématu ze zdroje na jímku od spuštění po spuštění – všechna data vrácená zdrojovým úložištěm dat lze zkopírovat do jímky.
 
 Pokud je váš zdroj textový soubor bez čáry záhlaví, vyžaduje se [explicitní mapování](#explicit-mapping) , protože zdroj neobsahuje názvy sloupců.
 

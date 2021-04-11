@@ -1,5 +1,5 @@
 ---
-title: Monitorování diagnostiky Azure – ověření identity Azure
+title: Monitorování diagnostiky Azure pro Azure Attestation
 description: Monitorování diagnostiky Azure pro Azure Attestation
 services: attestation
 author: msmbaldwin
@@ -7,22 +7,20 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d01e7817906927295591353b710afe2899aacdf1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2773be4bc67e125c18d5d38c951685e4f4fceaf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726474"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168344"
 ---
-# <a name="setting-up-diagnostics-with-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Nastavení diagnostiky pomocí koncového bodu čipu TPM (Trusted Platform Module) Azure Attestation
+# <a name="set-up-diagnostics-with-a-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Nastavení diagnostiky pomocí koncového bodu čipu TPM (Trusted Platform Module) Azure Attestation
 
-[Protokoly platforem](../azure-monitor/essentials/platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](../azure-monitor/essentials/data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění. 
+Tento článek vám pomůže vytvořit a nakonfigurovat nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění. [Protokoly platforem](/azure/azure-monitor/platform/platform-logs-overview) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](/azure/azure-monitor/platform/data-platform-metrics) se ve výchozím nastavení shromažďují a ukládají se do databáze Azure monitor metrik.
 
-Služba koncového bodu TPM je povolena s nastavením diagnostiky a lze ji použít k monitorování aktivity. Pokud chcete nastavit [monitorování Azure](../azure-monitor/overview.md) pro koncový bod služby TPM pomocí prostředí PowerShell, postupujte podle následujících kroků. 
+Než začnete, ujistěte se, že jste [nastavili Azure Attestation s Azure PowerShell](quickstart-powershell.md).
 
-Nastavte službu Azure Attestation. 
-
-[Nastavení ověření Azure pomocí Azure PowerShell](./quickstart-powershell.md)
+V nastavení diagnostiky je povolená služba čipu TPM (Trusted Platform Module), která se dá použít k monitorování aktivity. Pomocí následujícího kódu nastavte [monitorování Azure](/azure/azure-monitor/overview) pro koncový bod služby TPM.
 
 ```powershell
 
@@ -41,4 +39,5 @@ Nastavte službu Azure Attestation.
  Set-AzDiagnosticSetting -ResourceId $ attestationProvider.Id -StorageAccountId $ storageAccount.Id -Enabled $true 
 
 ```
-Protokoly aktivit najdete v části kontejnery účtu úložiště. Podrobné informace najdete v [protokolech shromáždění zdrojů z prostředku Azure a pomocí Azure monitor – Azure monitor](../azure-monitor/essentials/tutorial-resource-logs.md)
+
+Protokoly aktivit jsou v části **kontejnery** účtu úložiště. Další informace najdete v tématu [shromáždění a analýza protokolů prostředků z prostředku Azure](/azure/azure-monitor/learn/tutorial-resource-logs).

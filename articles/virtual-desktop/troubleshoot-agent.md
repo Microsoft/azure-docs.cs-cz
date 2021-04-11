@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 86296385a0e657246e415f326261ce401e3cdeaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604181"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168208"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Řešení běžných problémů s agentem virtuálních počítačů s Windows
 
@@ -106,7 +106,7 @@ Pokud chcete tento problém vyřešit, ověřte, že máte přístup k BrokerURI
    > ![Snímek obrazovky neúspěšného načteného globálního přístupu zprostředkovatele](media/unsuccessful-broker-global.png)
 
 8. Pokud síť blokuje tyto adresy URL, budete muset odblokovat požadované adresy URL. Další informace najdete v tématu [požadovaný seznam adres URL](safe-url-list.md).
-9. Pokud se tím problém nevyřeší, ujistěte se, že nemáte žádné zásady skupiny s šiframi, které blokují agenta pro připojení k zprostředkovateli. Virtuální počítač s Windows používá stejné šifry TLS 1,2 jako [přední dveře Azure](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door). Další informace najdete v tématu [zabezpečení připojení](network-connectivity.md#connection-security).
+9. Pokud se tím problém nevyřeší, ujistěte se, že nemáte žádné zásady skupiny s šiframi, které blokují agenta pro připojení k zprostředkovateli. Virtuální počítač s Windows používá stejné šifry TLS 1,2 jako [přední dveře Azure](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Další informace najdete v tématu [zabezpečení připojení](network-connectivity.md#connection-security).
 
 ## <a name="error-3703"></a>Chyba: 3703
 

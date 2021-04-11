@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043015"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168174"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -38,7 +38,7 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
 | Stanov                        | Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .                                                                                                                                                                                                                                             |
 | Podporované platformy:            |  • Počítače Azure s Windows<br> • Počítače s obloukem v Azure, na kterých běží Windows|
-| Podporované verze systému Windows:  |  • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy (evd)|
+| Podporované verze systému Windows:  |  • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (dřív Enterprise pro virtuální plochy (evd)|
 | Nepodporované operační systémy:  |  • Windows 10 (jiné než EVD nebo WVD)<br> • Linux|
 | Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**|
 | Cloud                         | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |

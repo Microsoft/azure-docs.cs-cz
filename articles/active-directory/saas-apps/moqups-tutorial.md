@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: jeedes
 ms.openlocfilehash: c6db83dd46d988b5e8b4122a9e89e3c36136ad89
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104798985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moqups"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Moqups
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Moqups s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Moqups svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

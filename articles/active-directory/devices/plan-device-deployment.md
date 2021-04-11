@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936443"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551777"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -54,7 +54,7 @@ Klíčové výhody poskytování identity Azure AD pro vaše zařízení:
 
 Video:  [podmíněný přístup s ovládacími prvky zařízení](https://youtu.be/NcONUf-jeS4)
 
-Nejčastější dotazy: [Nejčastější dotazy k správě zařízení Azure AD](faq.md)  a [nastavení a roaming dat](enterprise-state-roaming-faqs.md) 
+Nejčastější dotazy: [Nejčastější dotazy k správě zařízení Azure AD](faq.yml)  a [nastavení a roaming dat](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Plánování projektu nasazení
 
@@ -239,9 +239,9 @@ Zkontrolujte podporované a nepodporované platformy pro integrovaná zařízen�
 
 | Nástroje pro správu zařízení| Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD|
 | - | - | - | - |
-| [Správa mobilních zařízení (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Příklad: Microsoft Intune| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
-| [Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 a novější)| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
-| [Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Jenom Windows)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
+| [Správa mobilních zařízení (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Příklad: Microsoft Intune| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| 
+| [Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 a novější)| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| 
+| [Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Jenom Windows)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| 
 
 
 
