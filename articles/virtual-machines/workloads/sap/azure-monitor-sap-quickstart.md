@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: d9febb4efba85d47abe1cc11a3cb52dc0393c036
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101672008"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554055"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Nasazení Azure Monitor pro řešení SAP pomocí Azure Portal
 
@@ -81,12 +81,23 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. V rozevíracím seznamu vyberte operační systém (Linux). 
 
-> [!IMPORTANT]
-> Pokud chcete nakonfigurovat poskytovatele operačního systému (Linux), ujistěte se, že je v každé instanci BareMetal nainstalovaná Node_Exporter. Další informace najdete v tématu [Node_Exporter](https://github.com/prometheus/node_exporter)
+>[!IMPORTANT]
+> Pokud chcete nakonfigurovat poskytovatele operačního systému (Linux), ujistěte se, že je na každém hostiteli (BareMetal nebo VM), který chcete monitorovat, nainstalovaná nejnovější verze Node_Exporter. Použijte tento odkaz [Link] (Pokud https://prometheus.io/download/#node_exporter) chcete najít nejnovější verzi. Další informace najdete v tématu [Node_Exporter](https://github.com/prometheus/node_exporter)
 
 2. Zadejte název, který bude identifikátorem instance BareMetal.
 3. Zadejte koncový bod exportéra uzlu ve formátu http://IP:9100/metrics .
-4. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit**   dokončete nasazení. 
+
+>[!IMPORTANT]
+> Použijte prosím privátní IP adresu hostitele se systémem Linux. Ujistěte se prosím, že hostitel a prostředek AMS jsou ve stejné virtuální síti. 
+
+>[!Note]
+> Na hostiteli se systémem Linux by měl být otevřen port brány firewall "9100".
+>Pokud používáte bránu firewall-cmd: firewall-cmd--trvalá--Add-port = 9100/TCP firewall-cmd--reload, pokud používáte UFW: UFW Allow 9100/TCP UFW reloading
+
+>[!Tip]
+> Pokud je hostitel systému Linux virtuálním počítačem Azure, zajistěte, aby všechny platné skupin zabezpečení sítě povolovaly příchozí provoz na portu 9100 od "VirtualNetwork" jako zdroj.
+ 
+5. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit**   dokončete nasazení. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Poskytovatel Microsoft SQL Server

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9f35a698510f8637c3fe66528e6d64e5cd87b693
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099875"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553817"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
@@ -226,6 +226,14 @@ Po zaregistrování ověřte, zda je poskytovatel prostředků **Microsoft. Netw
    "type": "Microsoft.Network/expressRoutePorts"
    }  
    ```
+
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="resources"></a>Vygenerovat písmeno autorizace (LOA)
+
+Zadejte nedávno vytvořený název prostředku ExpressRoute Direct, název skupiny prostředků a název zákazníka pro zápis LOA do a (volitelně) definujte umístění souboru pro uložení dokumentu. Pokud na cestu k souboru neodkazuje, dokument se stáhne do aktuálního adresáře.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>Změnit AdminState pro odkazy
 

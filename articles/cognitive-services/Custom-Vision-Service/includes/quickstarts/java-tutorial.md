@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 4c789b86c00f28778e94432e21106bd36cc84322
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: c169572e8af8ba992e604fc51b31db1146f11fda
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803562"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112940"
 ---
 Začněte používat Custom Vision klientské knihovny pro Java k sestavení modelu klasifikace imagí. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -28,7 +28,7 @@ Pomocí klientské knihovny Custom Vision pro jazyk Java:
 [Referenční dokumentace](/java/api/overview/azure/cognitiveservices/client/customvision) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(předpověď)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| Artefakty (Maven) [(školení](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) ) [(předpovědi)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar)–  | 
  [ukázky](/samples/browse/?products=azure&terms=custom%20vision)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -99,7 +99,7 @@ V třídě **CustomVisionQuickstart** aplikace vytvořte proměnné pro klíče 
 
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud Custom Vision prostředky, které jste vytvořili v části **předpoklady** , se úspěšně nasadily, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče a koncový bod můžete najít na stránkách **klíčů a koncových bodů** prostředků. Společně s koncovým bodem školicích prostředků budete muset získat jak školicí, tak i předpověď.
+> Přejděte na Azure Portal. Pokud Custom Vision prostředky, které jste vytvořili v části **předpoklady** , se úspěšně nasadily, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče a koncový bod můžete najít na stránkách **klíčů a koncových bodů** prostředků. Budete potřebovat získat klíče pro vaše školicí i předpovědní prostředky spolu s koncovým bodem rozhraní API pro školicí prostředek.
 >
 > Hodnotu ID prostředku předpovědi můžete najít na kartě **vlastnosti** prostředku, která je uvedená jako **ID předplatného**.
 > 
@@ -113,7 +113,7 @@ V metodě **Main** aplikace přidejte volání metod používaných v rámci toh
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce Custom Vision klientské knihovny Java.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
 |[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Tato třída zpracovává dotazování vašich modelů pro klasifikaci imagí předpovědi.|

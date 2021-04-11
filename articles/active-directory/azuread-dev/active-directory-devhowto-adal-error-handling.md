@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da47893839322f06cebfbee40902414040bb87d8
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85383730"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075198"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Došlo k chybě při zpracování osvědčených postupů pro klienty knihovny Azure Active Directory Authentication Library (ADAL).
 
@@ -197,7 +197,7 @@ V případě selhání může aplikace zobrazit uživatelské rozhraní, aby moh
 
 Zpracování chyb v nativních aplikacích lze definovat dvěma případy:
 
-|  |  |
+| Obchodní případ | Description  |
 |------|-------------|
 | **Případ 1**:<br>Chyba bez opakování (ve většině případů) | 1. nepokusit se o okamžité opakování Prezentujte uživatelské rozhraní koncového uživatele na základě konkrétní chyby, která vyvolá opakování (například "zkusit se znovu přihlásit" nebo "stáhnout aplikaci služby Azure AD Broker"). |
 | **Případ 2**:<br>Opakovaná chyba | 1. proveďte jeden pokus znovu, protože koncový uživatel mohl zadat stav, který má za následek úspěch.<br><br>2. Pokud se to nepovede znovu, přihlaste uživatelské rozhraní koncového uživatele na základě konkrétní chyby, která vyvolá opakování (zkuste se znovu přihlásit, Stáhněte si aplikaci Azure AD Broker atd.). |
@@ -371,7 +371,7 @@ Pokud vytváříte jednostránkovou aplikaci pomocí adal.js s AcquireToken, kó
 
 Neúspěšné AcquireToken má následující případy:
 
-|  |  |
+| Obchodní případ | Description  |
 |------|-------------|
 | **Případ 1**:<br>Přeložit pomocí interaktivního požadavku | 1. Pokud se přihlášení () nepovede, neprovádějte okamžité opakování. Zkuste to znovu jenom po akci uživatele s výzvou k opakování.|
 | **Případ 2**:<br>Nelze přeložit s interaktivním požadavkem. Chyba je opakovaná. | 1. proveďte jeden pokus znovu, protože hlavní uživatel zadal stav, který má za následek úspěch.<br><br>2. Pokud se opakování nepovede, přeprezentujte koncovému uživateli akci na základě konkrétní chyby, která může vyvolat opakování (zkuste se znovu přihlásit). |

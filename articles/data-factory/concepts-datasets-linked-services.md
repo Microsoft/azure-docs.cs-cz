@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
 ms.openlocfilehash: 167fb0014f2f0a9e7a2530fe276289f94347146e
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785780"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
@@ -65,10 +65,10 @@ Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu J
 
 Vlastnost | Popis | Vyžadováno |
 -------- | ----------- | -------- |
-name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
-typ | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: DelimitedText, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Ano |
-schema | Schéma datové sady představuje fyzický datový typ a tvar. | Ne |
-typeProperties | Vlastnosti typu jsou pro každý typ odlišné. Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
+name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Yes |
+typ | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: DelimitedText, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Yes |
+schema | Schéma datové sady představuje fyzický datový typ a tvar. | No |
+typeProperties | Vlastnosti typu jsou pro každý typ odlišné. Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Yes |
 
 Po importu schématu datové sady vyberte tlačítko **importovat schéma** a zvolte Import ze zdroje nebo z místního souboru. Ve většině případů importujete schéma přímo ze zdroje. Pokud již máte místní soubor schématu (soubor Parquet nebo CSV s hlavičkou), můžete Data Factory nasměrovat na základní schéma tohoto souboru.
 

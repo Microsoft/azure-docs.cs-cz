@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 565d801fb569f818613fd31b7492c0847eef9a7a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580991"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169347"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
@@ -128,7 +128,7 @@ Následující problémy jsou možné příčiny:
 #### <a name="resolution"></a>Řešení
 
 ##### <a name="mistyped-workspace-id-or-key"></a>ID nebo klíč netypového pracovního prostoru
-Pokud chcete ověřit, jestli se ID pracovního prostoru nebo klíč pracovního prostoru agenta nevytvořilo, přečtěte si téma [Přidání nebo odebrání pracovního prostoru – agent](../../azure-monitor/agents/agent-manage.md#windows-agent) pro Windows pro agenta Windows nebo [Přidání nebo odebrání pracovního prostoru – agenta Linux](../../azure-monitor/agents/agent-manage.md#linux-agent) pro agenta Linux. Ujistěte se, že jste vybrali úplný řetězec z Azure Portal a pečlivě ho zkopírujte a vložte.
+Pokud chcete ověřit, jestli se ID nebo klíč pracovního prostoru agenta nevytvořilo, přečtěte si téma [Přidání nebo odebrání pracovního prostoru – agent](../../azure-monitor/platform/agent-manage.md#windows-agent) pro Windows pro agenta Windows nebo [Přidání nebo odebrání agenta v pracovním prostoru](../../azure-monitor/platform/agent-manage.md#linux-agent) pro agenta pro Linux. Ujistěte se, že jste vybrali úplný řetězec z Azure Portal a pečlivě ho zkopírujte a vložte.
 
 ##### <a name="configuration-not-downloaded"></a>Konfigurace nebyla stažena.
 

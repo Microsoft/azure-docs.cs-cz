@@ -244,12 +244,22 @@
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
             - name: Použít zobecněnou bitovou kopii systému Windows
               href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+            - name: Použití specializované image Windows
+              href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
             - name: Podporované typy a velikosti virtuálních počítačů
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
             - name: Připojit ke konzole virtuálních počítačů
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
             - name: Správa síťových rozhraní
               href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+            - name: Správa disků
+              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+            - name: Správa velikostí virtuálních počítačů
+              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: Správa značek virtuálních počítačů
+              href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+            - name: Vytvořit virtuální přepínač
+              href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
         - name: Správa certifikátů
           items:
             - name: Požadavky

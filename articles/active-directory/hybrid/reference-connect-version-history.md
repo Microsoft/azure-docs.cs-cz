@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955444"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074535"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -57,8 +57,18 @@ Další informace o [automatickém upgradu](how-to-connect-install-automatic-upg
 >
 >Informace o historii verzí v vyřazených verzích najdete v článku [archiv Historie vydání verze Azure AD Connect](reference-connect-version-history-archive.md) .
 
+## <a name="1640"></a>1.6.4.0
+
+### <a name="release-status"></a>Stav verze
+3/31/2021: vydáno pouze pro stažení, není k dispozici pro automatický upgrade
+
+### <a name="bug-fixes"></a>Opravy chyb
+- Tato verze opravuje chybu ve verzi 1.6.2.4, kde po upgradu na tuto verzi nebyla funkce Azure AD Connect Health správně zaregistrována a nefungovala. Zákazníci, kteří mají nasazené sestavení 1.6.2.4, jsou požádáni o aktualizaci serveru Azure AD Connect pomocí tohoto sestavení, který bude správně registrovat funkci stavu. 
 
 ## <a name="1624"></a>1.6.2.4
+>[!IMPORTANT]
+> Aktualizace na 30. března 2021: v tomto buildu jsme zjistili problém. Po instalaci tohoto sestavení nejsou služby Health Service registrovány. Doporučujeme neinstalovat toto sestavení. Brzy vydáte opravu hotfix.
+> Pokud jste už toto sestavení nainstalovali, můžete ručně zaregistrovat služby Health Service pomocí rutiny, jak je znázorněno v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#manually-register-azure-ad-connect-health-for-sync) .
 
 >[!NOTE]
 > - Tato verze bude dostupná jenom pro stažení.
@@ -66,7 +76,7 @@ Další informace o [automatickém upgradu](how-to-connect-install-automatic-upg
 > - Tato verze vyhodnotí server AADConnect do nového koncového bodu v2. Všimněte si, že tento koncový bod není podporovaný v německém národním cloudu, v rámci čínského národního cloudu a v cloudu pro státní správu USA, a pokud potřebujete nasadit tuto verzi v těchto cloudech, musíte podle [těchto pokynů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) přejít zpátky na koncový bod v1. V důsledku tohoto selhání dojde k chybám při synchronizaci.
 
 ### <a name="release-status"></a>Stav verze
-3/19/2021: vydáno ke stažení
+3/19/2021: vydáno ke stažení, není k dispozici pro automatický upgrade
 
 ### <a name="functional-changes"></a>Funkční změny
 

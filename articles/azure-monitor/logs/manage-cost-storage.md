@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 64b794f4a749816af71f9c5f14dddf2bbcbc6512
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279608"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554038"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -494,7 +494,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 | Syslog                     | Změňte [konfiguraci syslogu](../agents/data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
 | AzureDiagnostics           | Změnit [kolekci protokolů prostředků](../essentials/diagnostic-settings.md#create-in-azure-portal) na: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
 | Data řešení z počítačů, které řešení nepotřebují | K shromažďování dat z požadovaných skupin počítačů použijte [cílení na řešení](../insights/solution-targeting.md) . |
-| Application Insights | Zkontrolovat možnosti pro [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
+| Application Insights | Kontrola možností pro [správu Application Insightsho objemu dat](../app/pricing.md#managing-your-data-volume) |
 | [Analýza SQL](../insights/azure-sql.md) | K ladění nastavení auditování použijte [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) . |
 | Azure Sentinel | Zkontrolujte všechny [zdroje dat Sentinel](../../sentinel/connect-data-sources.md) , které jste nedávno povolili jako zdroje dalšího objemu dat. |
 

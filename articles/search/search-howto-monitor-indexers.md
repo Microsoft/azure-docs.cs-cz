@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed79831559802efdf7e3813f48b74c2fd3c63e87
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063236"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581872"
 ---
-# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky služby Azure Kognitivní hledání indexer
+# <a name="monitor-indexer-status-and-results-in-azure-cognitive-search"></a>Monitoruje stav a výsledky indexeru v Azure Kognitivní hledání
 
 Můžete monitorovat zpracování indexerem v Azure Portal nebo programově prostřednictvím volání REST nebo sady Azure SDK. Kromě stavu o samotném indexeru můžete kontrolovat počáteční a koncové časy a podrobné chyby a upozornění z konkrétního běhu.
 

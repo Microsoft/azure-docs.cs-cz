@@ -23,6 +23,8 @@
   items:
     - name: Přehled ověřených partnerů
       href: .\validated-partners\data-management\partner-overview.md
+    - name: Porovnání nástrojů pro migraci
+      href: ./validated-partners/data-management/migration-tools-comparison.md
   expanded: false
 - name: Partneři primárního a sekundárního úložiště
   items:

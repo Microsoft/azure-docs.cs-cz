@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 96917b805640f0cfe38f28ba263e2e7ce55bce7f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3d8c8f8df162d31c4f646866d7c82e9af237eaa8
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066156"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553800"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro tahání dat (Preview)
 
@@ -198,6 +198,7 @@ df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.w
 Následující kód ukazuje, jak číst data v z **Azure Data Lake Storage generace 1 (adls Gen 1)** s přihlašovacími údaji instančního objektu. 
 
 ```python
+%%synapse
 
 # setup service principal which has access of the data
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.access.token.provider.type","ClientCredential")
@@ -207,7 +208,7 @@ sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.credential", "<client secret>")
 
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.refresh.url",
-https://login.microsoftonline.com/<tenant id>/oauth2/token)
+"https://login.microsoftonline.com/<tenant id>/oauth2/token")
 
 df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>")
 
@@ -216,14 +217,15 @@ df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>"
 Následující kód ukazuje, jak číst data z **Azure Data Lake Storage generace 2 (adls Gen 2)** s přihlašovacími údaji instančního objektu. 
 
 ```python
+%%synapse
+
 # setup service principal which has access of the data
 sc._jsc.hadoopConfiguration().set("fs.azure.account.auth.type.<storage account name>.dfs.core.windows.net","OAuth")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth.provider.type.<storage account name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.id.<storage account name>.dfs.core.windows.net", "<client id>")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.secret.<storage account name>.dfs.core.windows.net", "<client secret>")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.endpoint.<storage account name>.dfs.core.windows.net",
-https://login.microsoftonline.com/<tenant id>/oauth2/token)
-
+"https://login.microsoftonline.com/<tenant id>/oauth2/token")
 
 df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows.net/<path>")
 
@@ -308,9 +310,11 @@ input1 = train_ds.as_mount()
 
 ```
 
-## <a name="example-notebook"></a>Příklad poznámkového bloku
+## <a name="example-notebooks"></a>Příklady poznámkových bloků
 
-Podrobný příklad kódu, jak provést školení pro přípravu a modelování dat z jednoho poznámkového bloku s Azure synapse Analytics a Azure Machine Learning, najdete v tomto [koncovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) .
+Po přípravě dat se dozvíte, jak [využít cluster Synase Spark jako cíl výpočetní služby pro školení modelů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb).
+
+V tomto [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) najdete další koncepty a ukázky možností integrace služby Azure synapse Analytics a Azure Machine Learning.
 
 ## <a name="next-steps"></a>Další kroky
 

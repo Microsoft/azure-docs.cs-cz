@@ -4,12 +4,12 @@ description: Apache Spark úloha běží pomalu, pokud kontejner úložiště Az
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
-ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d256292956b42c65722ea5f9c87d6835297d1d40
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946355"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219089"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Úlohy Apache Sparku jsou pomalé, když kontejner úložiště Azure obsahuje velké množství souborů ve službě Azure HDInsight
 
@@ -28,6 +28,8 @@ Aby bylo možné sledovat oddíly, Spark musí udržovat, `FileStatusCache` kter
 V Spark 2,1 ale nemusíme aktualizovat mezipaměť po každém zápisu, Spark zkontroluje, jestli se stávající sloupec oddílu shoduje s navrhovanou operací zápisu v aktuální žádosti o zápis, takže bude také vést k vypsání operací na začátku každého zápisu.
 
 Tento problém s výkonem by měl být vyřešen v Spark 2,2 při zápisu dat v režimu připojení.
+
+Ve Spark 2,3 se očekává stejné chování jako Spark 2,2.
 
 ## <a name="resolution"></a>Řešení
 

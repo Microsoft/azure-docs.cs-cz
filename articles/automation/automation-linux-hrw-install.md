@@ -3,14 +3,14 @@ title: Nasazení Hybrid Runbook Worker pro Linux v Azure Automation
 description: V tomto článku se dozvíte, jak nainstalovat Azure Automation Hybrid Runbook Worker ke spouštění Runbooků na počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182328"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030045"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -20,7 +20,7 @@ Linux Hybrid Runbook Worker spouští Runbooky jako speciálního uživatele, kt
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující.
 
@@ -106,6 +106,31 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 Požadavky na síť pro Hybrid Runbook Worker najdete v tématu [Konfigurace sítě](automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Instalace Hybrid Runbook Worker pro Linux
+
+Existují dvě metody nasazení Hybrid Runbook Worker. Sadu Runbook můžete importovat a spustit z Galerie runbooků v Azure Portal, nebo můžete ručně spustit sérii příkazů PowerShellu k provedení stejné úlohy.
+
+### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Import Runbooku z Galerie runbooků
+
+Postup importu je podrobně popsán v tématu [Import runbooků z GitHubu pomocí Azure Portal](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal). Název Runbooku, který se má importovat, je **vytvořit Automation Linux HybridWorker**.
+
+Sada Runbook používá následující parametry.
+
+| Parametr | Status | Popis |
+| ------- | ----- | ----------- |
+| `Location` | Povinné | Umístění pracovního prostoru Log Analytics. |
+| `ResourceGroupName` | Povinné | Skupina prostředků pro váš účet Automation. |
+| `AccountName` | Povinné | Název účtu Automation, ve kterém se bude registrovat pracovní proces Hybrid run. |
+| `CreateLA` | Povinné | Pokud má hodnotu true, používá hodnotu `WorkspaceName` k vytvoření pracovního prostoru Log Analytics. Pokud má hodnotu false, hodnota `WorkspaceName` musí odkazovat na existující pracovní prostor. |
+| `LAlocation` | Volitelné | Místo, kde bude vytvořen Log Analytics pracovní prostor nebo kde již existuje. |
+| `WorkspaceName` | Volitelné | Název pracovního prostoru Log Analytics, který se má vytvořit nebo použít. |
+| `CreateVM` | Povinné | Pokud má hodnotu true, použijte hodnotu `VMName` jako název nového virtuálního počítače. Pokud je hodnota false, použijte `VMName` k vyhledání a registraci existujícího virtuálního počítače. |
+| `VMName` | Volitelné | Název virtuálního počítače, který je buď vytvořen, nebo registrován, v závislosti na hodnotě `CreateVM` . |
+| `VMImage` | Volitelné | Název image virtuálního počítače, která se má vytvořit |
+| `VMlocation` | Volitelné | Umístění virtuálního počítače, který je buď vytvořen, nebo zaregistrován. Pokud toto umístění není zadáno, použije se hodnota `LAlocation` . |
+| `RegisterHW` | Povinné | Pokud je hodnota true, zaregistrujte virtuální počítač jako hybridního pracovního procesu. |
+| `WorkerGroupName` | Povinné | Název skupiny Hybrid Worker |
+
+### <a name="manually-run-powershell-commands"></a>Ruční spuštění příkazů PowerShellu
 
 Pokud chcete nainstalovat a nakonfigurovat Hybrid Runbook Worker pro Linux, proveďte následující kroky.
 

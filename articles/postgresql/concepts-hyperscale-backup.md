@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92485371"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968301"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Zálohování a obnovení v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -58,7 +58,7 @@ Nastavení brány firewall a parametry serveru PostgreSQL nejsou zachované z p�
 Po obnovení z některého mechanismu obnovení byste měli provést následující kroky, aby se uživatelé a aplikace mohli zálohovat a spustit:
 
 * Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
-* Aby se uživatelé mohli připojit, zajistěte, aby byla k dismístě vhodná pravidla brány firewall na úrovni serveru a sítě. Tato pravidla se nekopírují z původní skupiny serverů.
+* Zajistěte, aby se uživatelé mohli připojit ke správné bráně firewall na úrovni serveru. Tato pravidla se nekopírují z původní skupiny serverů.
 * Podle potřeby upravte parametry serveru PostgreSQL. Parametry se nekopírují z původní skupiny serverů.
 * Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
 * Podle potřeby nakonfigurujte výstrahy.

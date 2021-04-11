@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452131"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554089"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění ve službě Azure Key Vault
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452131"
 > V trezorech klíčů musíte okamžitě povolit obnovitelné odstranění. Možnost Odhlásit se z slabého odstranění bude brzy zastaralá. Zobrazit [Úplné podrobnosti](soft-delete-change.md)
 
 > [!IMPORTANT]
-> Obnovitelné odstraněné úložiště aktivuje odstranění nastavení pro integraci s Key Vault službami, tj. přiřazení rolí Azure RBAC, Event Grid předplatných, Azure Monitor nastavení diagnostiky. Po obnovení odstraněných Key Vault nastavení pro integrované služby bude nutné ručně znovu vytvořit. 
+> Obnovitelné odstraněný trezor aktivuje odstranění nastavení pro integraci s Key Vault službami, tj. přiřazení rolí Azure RBAC, Event Grid předplatných. Po obnovení odstraněných Key Vault nastavení pro integrované služby bude nutné ručně znovu vytvořit. 
 
 Funkce obnovitelného odstranění Key Vault umožňuje obnovení odstraněných trezorů a odstraněných objektů trezoru klíčů (například klíče, tajné klíče a certifikáty), označované jako obnovitelné odstranění. Konkrétně řešíme následující scénáře: Tato ochrana nabízí následující ochrany:
 

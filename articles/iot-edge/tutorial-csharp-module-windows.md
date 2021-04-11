@@ -9,12 +9,13 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: 84e5bbff11d0a5ff5d47ca43a3da54d1f1fb5555
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464053"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218851"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj modulů C# IoT Edge pomocí kontejnerů Windows
 
@@ -23,7 +24,7 @@ ms.locfileid: "103464053"
 V tomto článku se dozvíte, jak pomocí sady Visual Studio vyvíjet kód v jazyce C# a nasadit ho do zařízení s Windows, které běží Azure IoT Edge.
 
 >[!NOTE]
->IoT Edge 1,1 LTS je poslední kanál verze, který bude podporovat kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
+>IoT Edge 1,1 LTS je poslední kanál verze, který podporuje kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
 
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje vaši obchodní logiku přímo v zařízeních IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru.
 

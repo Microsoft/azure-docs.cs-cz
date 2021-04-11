@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e43c472c939049e5dfd4ec4df909a3178ef8e2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100388579"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553256"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Vylepšení syntézy pomocí nástroje pro tvorbu zvukového obsahu
 
@@ -44,7 +44,7 @@ Po registraci k účtu Azure budete muset vytvořit prostředek pro rozpoznává
 Nasazení nového prostředku řeči chvíli trvá. Po dokončení nasazení můžete zahájit cestu k vytváření zvukového obsahu. 
 
  >[!NOTE]
-   > Pokud máte v úmyslu používat hlasy neuronové, ujistěte se, že jste vytvořili prostředek v [oblasti, která podporuje hlasy neuronové](regions.md#standard-and-neural-voices).
+   > Pokud máte v úmyslu používat hlasy neuronové, ujistěte se, že jste vytvořili prostředek v [oblasti, která podporuje hlasy neuronové](regions.md#neural-and-standard-voices).
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>Krok 3 – přihlášení k vytváření zvukového obsahu pomocí účtu Azure a prostředku řeči
 

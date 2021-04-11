@@ -1,5 +1,5 @@
 ---
-title: Kurz – vystavení a ověření ověřitelných přihlašovacích údajů pomocí vašeho tenanta (Preview)
+title: Kurz – vystavení a ověření ověřitelných přihlašovacích údajů pomocí vašeho tenanta Azure (Preview)
 description: Změna ukázkového kódu ověřitelných přihlašovacích údajů pro práci s vaším klientem Azure
 documentationCenter: ''
 author: barclayn
@@ -10,14 +10,14 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 95d3ab19565ed04d9bf7d59ba7262d40b4971d34
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169904"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553375"
 ---
-# <a name="tutorial-issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Kurz: vystavení a ověření ověřitelných přihlašovacích údajů pomocí vašeho tenanta (Preview)
+# <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Kurz – vystavení a ověření ověřitelných přihlašovacích údajů pomocí vašeho tenanta (Preview)
 
 > [!IMPORTANT]
 > Azure Active Directory ověřitelných přihlašovacích údajů je aktuálně ve verzi Public Preview.
@@ -66,7 +66,7 @@ Registrace aplikace s názvem "aplikace kapesního VC" ve službě Azure AD a z�
 
    ![koncové body vystavitele](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-key-vault"></a>Nastavení aplikace pro uzly s přístupem k Key Vault
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Nastavení aplikace pro uzly s přístupem k Azure Key Vault
 
 K ověření žádosti o vystavování přihlašovacích údajů uživatele web vystavitele používá vaše kryptografické klíče v Azure Key Vault. Pro přístup k Azure Key Vault potřebuje váš web ID klienta a tajný klíč klienta, které se dají použít k ověření Azure Key Vault.
 
@@ -183,7 +183,7 @@ Předtím, než můžeme udělat změny v naší ukázkové aplikaci, je potřeb
 
    ![identifikátor klíče pro přihlášení](media/issue-verify-verifable-credentials-your-tenant/issuer-signing-key-ion.png)
 
-### <a name="did-document"></a>Dokument DID 
+### <a name="did-document"></a>Dokument DID
 
 1. Otevřete [Průzkumníka sítě pro DIF Ion](https://identity.foundation/ion/explorer/) .
 
@@ -308,7 +308,7 @@ Teď, když jsme vydali ověřitelné přihlašovací údaje z našeho vlastníh
     
    ![Nová žádost o oprávnění](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
 
-8. Neúspěšně jste ověřili vaše přihlašovací údaje a web by měl zobrazovat vaše jméno a příjmení z uživatelského účtu služby Azure AD. 
+8. Úspěšně jste ověřili přihlašovací údaje a web by měl zobrazovat vaše jméno a příjmení z uživatelského účtu služby Azure AD. 
 
 Nyní jste dokončili kurz a je oficiálně ověřený odborník na přihlašovací údaje. Vaše ukázková aplikace používá vaše služby pro vydávání i ověřování a zároveň zapisuje deklarace do ověřitelných přihlašovacích údajů z Azure AD. 
 

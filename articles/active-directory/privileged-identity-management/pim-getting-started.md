@@ -14,12 +14,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c00824e7fb0529cd14e3d7b757d513ee739fe283
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90600717"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504409"
 ---
 # <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
 
@@ -70,7 +70,7 @@ Jakmile Privileged Identity Management nastavíte, můžete se naučit, jak se p
 | Úkol a Správa | Description |
 | --- | --- |
 | **Moje role**  | Zobrazí seznam oprávněných a aktivních rolí, které vám jsou přiřazeny. Toto je místo, kde můžete aktivovat jakoukoli přiřazenou oprávněnou roli. |
-| **Moje žádosti** | Zobrazí vaše nedokončené žádosti o aktivaci přiřazení oprávněných rolí. |
+| **Žádosti čekající na vyřízení** | Zobrazí vaše nedokončené žádosti o aktivaci přiřazení oprávněných rolí. |
 | **Schvalování žádostí** | Zobrazí seznam žádostí o aktivaci oprávněných rolí uživateli ve vašem adresáři, který jste určili ke schválení. |
 | **Kontrola přístupu** | Zobrazí seznam aktivních kontrol přístupu, které jste přiřadili k dokončení, ať už kontrolujete přístup sami nebo někomu jinému. |
 | **Role Azure AD** | Zobrazí řídicí panel a nastavení pro správce privilegovaných rolí ke správě přiřazení rolí Azure AD. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje jenom informace o uživateli, který přistupuje k řídicímu panelu, ne k celé organizaci. |

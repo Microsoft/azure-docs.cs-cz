@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: a2d8a215dfc34073783a5d8a6233ec8dbae4ec17
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463353"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218868"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj IoT Edgech modulů pomocí kontejnerů Windows
 
@@ -23,7 +24,7 @@ ms.locfileid: "103463353"
 Pomocí sady Visual Studio můžete vyvíjet a nasazovat kód do zařízení s Windows, na kterých běží IoT Edge.
 
 >[!NOTE]
->IoT Edge 1,1 LTS je poslední kanál verze, který bude podporovat kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
+>IoT Edge 1,1 LTS je poslední kanál verze, který podporuje kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
 
 Tento kurz vás provede vývojem a nasazením vlastního kódu do zařízení IoT Edge. Tento kurz je vhodný pro ostatní kurzy, které vám pojdou podrobněji o konkrétních programovacích jazycích nebo službách Azure.
 

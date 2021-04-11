@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609254"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553987"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Použití Azure Monitor s pracovním prostorem Azure synapse Analytics
 
@@ -103,10 +103,14 @@ Přihlaste se k Azure Portal a vyberte **monitorování**  >  **výstrah** a vyt
 
 Tady jsou protokoly emitované pracovními prostory Azure synapse Analytics:
 
-| Název Log Analytics tabulky | Název kategorie protokolu                 | Description |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | Žádosti rozhraní API služby Azure synapse Gateway. |
-| SynapseRbacOperations         | SynapseRbacOperations          | Operace řízení přístupu založeného na rolích Azure synapse (SRBAC). |
+| Název Log Analytics tabulky       | Název kategorie protokolu              | Description          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | Žádosti rozhraní API služby Azure synapse Gateway. |
+| SynapseRbacOperations          | SynapseRbacOperations          | Operace řízení přístupu založeného na rolích Azure synapse (SRBAC). |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | V Azure synapse se ukončily požadavky na integrovaný fond SQL bez serveru. |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Spouští se kanál integrace služby Azure synapse. |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Spouští se aktivita Azure synapse Integration. |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Spustí se aktivační událost integrace služby Azure synapse. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Vyhrazené protokoly fondů SQL
 

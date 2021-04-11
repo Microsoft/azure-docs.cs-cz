@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: c766c78705a1c1e40a9385360d35ac06a3db3a5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 675e99797a507cdcf96ad33ab13c4f386f6f372c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99252233"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169024"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte modul Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -34,7 +34,7 @@ Pokud chcete nahrát virtuální pevný disk do Azure, budete muset vytvořit pr
 
 Tento druh spravovaného disku má dva jedinečné stavy:
 
-- ReadToUpload, což znamená, že disk je připravený k přijetí nahrávání, ale nevytvořil se žádný [podpis zabezpečeného přístupu](../../storage/common/storage-sas-overview.md) (SAS).
+- ReadyToUpload, což znamená, že disk je připravený k přijetí nahrávání, ale nevytvořil se žádný [podpis zabezpečeného přístupu](../../storage/common/storage-sas-overview.md) (SAS).
 - ActiveUpload, což znamená, že disk je připravený k přijetí nahrávání a vygeneroval se SAS.
 
 > [!NOTE]
