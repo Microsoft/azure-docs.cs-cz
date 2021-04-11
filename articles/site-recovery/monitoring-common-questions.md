@@ -1,19 +1,16 @@
 ---
 title: Běžné otázky týkající se monitorování Azure Site Recovery
 description: Získejte odpovědi na běžné otázky týkající se Azure Site Recovery monitoring, pomocí integrovaného monitorování a Azure Monitor (Log Analytics).
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.date: 07/31/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 715fd3a30dcc37a26b07f2ca1c6a0f2ce168a23a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82131150"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581718"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>Běžné otázky týkající se monitorování Site Recovery
 

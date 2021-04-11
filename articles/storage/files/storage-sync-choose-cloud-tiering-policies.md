@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/24/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2ed1b8162c49ccc26cb98dd02897a9c40f809d14
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01bf9ac6a3bfcb30fb6e6a6f9d56de3f9f516f03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204380"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059271"
 ---
 # <a name="choose-cloud-tiering-policies"></a>Zvolit zásady cloudového vrstvení
 
@@ -34,8 +34,13 @@ U agentů verze 9 a novějších je minimální velikost souboru na vrstvu zalo�
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 kB   |
 |64 KB (65536)    | 128 kB  |
+|128 KB (131072) | 256 kB |
+|256 KB (262144) | 512 kB |
+|512 KB (524288) | 1 MB |
+|1 MB (1048576) | 2 MB |
+|2 MB (2097152) | 4 MB |
 
-Velikosti clusterů až do 64 KB se v současné době podporují, ale u větších velikostí nefunguje vrstva cloudu.
+Velikost clusteru až 2 MB je podporovaná v agentovi Synchronizace souborů Azure verze 12, ale u větších velikostí nefunguje vrstva cloudu.
 
 Všechny systémy souborů používané systémem Windows organizují pevný disk na základě velikosti clusteru (označované také jako velikost alokační jednotky). Velikost clusteru představuje nejmenší množství místa na disku, které lze použít k uložení souboru. Když velikosti souborů nejdou na sudý násobek velikosti clusteru, je potřeba použít další místo pro uložení souboru do další násobky velikosti clusteru.
 

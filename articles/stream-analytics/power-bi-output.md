@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/7/2021
+ms.openlocfilehash: 07b7715935756293467f2a3004109df9bf679661
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020056"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029995"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI výstup z Azure Stream Analytics
 
@@ -73,9 +73,10 @@ dvojité | dvojité | Řetězec | Řetězec | dvojité
 Řetězec | Řetězec | Řetězec | Řetězec | Řetězec 
 Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
 
-## <a name="output-batch-size"></a>Velikost výstupní dávky
+## <a name="limitations-and-best-practices"></a>Omezení a osvědčené postupy
+V současné době je možné Power BI volat zhruba jednou za sekundu. Vizuály streamování podporují pakety o 15 KB. Kromě toho se vizuály streamování nezdaří (ale i nadále funguje). Z důvodu těchto omezení Power BI sami přirozeně zapůjčení do případů, kdy Azure Stream Analytics významným omezením zatížení dat. Doporučujeme použít bubnové okno nebo skákající okno, aby bylo zajištěno, že nabízení dat je nejvýše jedna nabízená oznámení za sekundu a že váš dotaz je v rámci požadavků na propustnost.
 
-Velikost výstupní dávky najdete v tématu [Power BI omezení rozhraní REST API](/power-bi/developer/automation/api-rest-api-limitations).
+Další informace o velikosti výstupních dávek najdete v tématu [Power BI omezení rozhraní REST API](/power-bi/developer/automation/api-rest-api-limitations).
 
 ## <a name="next-steps"></a>Další kroky
 

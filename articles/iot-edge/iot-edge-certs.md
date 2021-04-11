@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c54f935ed05451df5922ff1a3d564c775703700
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490989"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029348"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
@@ -25,7 +25,7 @@ IoT Edge certifikáty používají moduly a zařízení IoT pro příjem dat k o
 >[!NOTE]
 >Tento článek se týká certifikátů, které se používají k zabezpečení připojení mezi různými součástmi na zařízení IoT Edge nebo mezi zařízením IoT Edge a všemi koncovými zařízeními. Pomocí certifikátů můžete také ověřit, že zařízení IoT Edge IoT Hub. Tyto ověřovací certifikáty se liší a nejsou popsány v tomto článku. Další informace o ověřování zařízení pomocí certifikátů najdete v tématu [Vytvoření a zřízení IoT Edge zařízení pomocí certifikátů X. 509](how-to-auto-provision-x509-certs.md).
 
-Tento článek vysvětluje, jak IoT Edge certifikáty můžou fungovat v produkčních, vývojových a testovacích scénářích. I když se skripty liší (PowerShell vs. bash), koncepty jsou stejné mezi systémy Linux a Windows.
+Tento článek vysvětluje, jak IoT Edge certifikáty můžou fungovat v produkčních, vývojových a testovacích scénářích.
 
 ## <a name="iot-edge-certificates"></a>Certifikáty IoT Edge
 

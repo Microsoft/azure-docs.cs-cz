@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/26/2021
+ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a794274248a12af97174dcc4e86bd4231e9d9dda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c046129293fcfbcea8ecaf98da72b9126dd540a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727480"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030334"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -26,6 +26,7 @@ Podporovány jsou následující verze agenta Synchronizace souborů Azure:
 | RTM | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
 | Verze V12 – [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 26. března 2021 | Podporované – let |
+| Verze v 11.3 – [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 7. dubna 2021 | Podporováno |
 | V 11.2 release – [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2. února 2021 | Podporováno |
 | V 11.1 release – [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 4. listopadu 2020 | Podporováno |
 | V 10.1 verze – [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 5. června 2020 | Verze Supported agenta vyprší 7. června 2021 |
@@ -76,8 +77,9 @@ Následující poznámky k verzi jsou pro 12.0.0.0 agenta Synchronizace souborů
     - Vylepšený výkon detekce změn, aby se zjistily soubory, které se ve sdílené složce Azure změnily.
     - Vylepšení výkonu pro odsouhlasení relací synchronizace. 
     - Vylepšení synchronizace pro snížení ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED a ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED chyb.
-    - Pokud je u svazku povolené odstranění duplicitních dat, nemusí se soubory na úrovni serveru 2019 zdařit.
-    - AFSDiag nemůže komprimovat soubory, pokud je soubor větší než 2GiB.
+    - Opravili jsme chybu, která způsobuje poškození dat v případě, že je povolená vrstva cloudu a kopírují se vrstvené soubory pomocí parametru Robocopy s parametrem/B.
+    - Opravili jsme chybu, která může způsobit selhání souborů na úrovni serveru 2019, pokud je u tohoto svazku povolené odstranění duplicitních dat.
+    - Opravili jsme chybu, která může způsobit selhání AFSDiag komprimace souborů, pokud je soubor větší než 2GiB.
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
 Před nasazením Synchronizace souborů Azure byste měli vyhodnotit, jestli je kompatibilní s vaším systémem pomocí nástroje Synchronizace souborů Azure Evaluation Tool. Tento nástroj je Azure PowerShell rutinou, která kontroluje potenciální problémy se systémem souborů a datovou sadou, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny k instalaci a používání najdete v části [Nástroj pro vyhodnocení](./storage-sync-files-planning.md#evaluation-cmdlet) v příručce pro plánování. 
@@ -131,8 +133,12 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
 - Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
-    > [!Warning]  
-    > Příkaz Robocopy/B není u Synchronizace souborů Azure podporován. Použití přepínače Robocopy/B s koncovým bodem serveru Synchronizace souborů Azure jako zdroj může vést k poškození souboru.
+
+## <a name="agent-version-11300"></a>Verze agenta 11.3.0.0
+Následující poznámky k verzi jsou pro verzi 11.3.0.0 agenta Synchronizace souborů Azure vydané 7. dubna 2021. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 11.1.0.0.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a problémy, které jsou vyřešeny 
+Opravili jsme chybu, která způsobuje poškození dat v případě, že je povolená vrstva cloudu a kopírují se vrstvené soubory pomocí parametru Robocopy s parametrem/B.
 
 ## <a name="agent-version-11200"></a>Verze agenta 11.2.0.0
 Následující poznámky k verzi jsou pro verzi 11.2.0.0 agenta Synchronizace souborů Azure vydané 2. února 2021. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 11.1.0.0.

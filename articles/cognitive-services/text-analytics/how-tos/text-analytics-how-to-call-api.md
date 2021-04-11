@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599203"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029773"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -34,6 +34,14 @@ Před použitím rozhraní API pro analýzu textu budete muset vytvořit prostř
 2.  Vyberte oblast, kterou chcete použít pro koncový bod.  Všimněte si prosím, že `/analyze` `/health` koncové body a jsou dostupné jenom v těchto oblastech: Západní USA 2, Východní USA 2, Střed USA, Severní Evropa a západní Evropa.
 
 3.  Vytvořte prostředek Analýza textu a v levé části stránky přejdete do okna klíče a koncový bod. Zkopírujte klíč, který se použije později při volání rozhraní API. Později ho přidáte jako hodnotu pro `Ocp-Apim-Subscription-Key` hlavičku.
+
+4. Postup kontroly počtu textových záznamů, které byly odeslány pomocí prostředku Analýza textu:
+
+    1. V Azure Portal přejděte k prostředku Analýza textu. 
+    2. V navigační nabídce vlevo klikněte na **metriky** v části **monitorování** . 
+    3. Vyberte *zpracované textové záznamy* v rozevíracím seznamu pro **metriku**.
+    
+Textový záznam je 1000 znaků.
 
 ## <a name="change-your-pricing-tier"></a>Změna cenové úrovně 
 

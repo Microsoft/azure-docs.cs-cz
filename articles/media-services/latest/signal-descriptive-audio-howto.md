@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596718"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277398"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
 
@@ -29,9 +29,9 @@ Tento článek ukazuje, jak zakódovat video, nahrát zvukový soubor MP4 (kodek
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet Media Services](./create-account-howto.md).
+- [Vytvořte účet Media Services](./account-create-how-to.md).
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](./access-api-howto.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
-- Zkontrolujte [dynamické balení](dynamic-packaging-overview.md).
+- Zkontrolujte [dynamické balení](encode-dynamic-packaging-concept.md).
 - Projděte si kurz [nahrávání, kódování a streamování videí](stream-files-tutorial-with-api.md) .
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Vytvoření vstupního prostředku a nahrání místního souboru do tohoto prostředku 
@@ -64,7 +64,7 @@ V případě tohoto článku předejte `outputAsset.Name` hodnotu `SubmitJobAsyn
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvořit transformaci a úlohu, která zakóduje nahraný soubor
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transforms-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transform-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
 Následující příklad vytvoří transformaci (Pokud neexistuje).
 
@@ -245,4 +245,4 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-[Analýza videí](analyze-videos-tutorial-with-api.md)
+[Analýza videí](analyze-videos-tutorial.md)

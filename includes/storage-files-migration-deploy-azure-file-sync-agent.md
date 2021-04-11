@@ -1,18 +1,19 @@
 ---
-title: Nasazení agenta Synchronizace souborů Azure
-description: Nasaďte agenta Synchronizace souborů Azure. Společný textový blok sdílený v rámci migračních dokumentů.
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: f038392f03b94aa2c2450531c9da4a11d9900295
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file
+ms.openlocfilehash: 7c1ea3fbf8e5cef4b1e8f8a2b0963fdd66584f5a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93043160"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075554"
 ---
 V této části nainstalujete agenta Synchronizace souborů Azure do instance Windows serveru.
 

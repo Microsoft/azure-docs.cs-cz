@@ -1,18 +1,19 @@
 ---
-title: Mapování struktury složek na Synchronizace souborů Azure topologii
-description: Namapujte existující strukturu souborů a složek na sdílené složky Azure pro použití s Synchronizace souborů Azure. Společný textový blok sdílený v rámci migračních dokumentů.
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: 265d14d7cca05ff510e747c8d3a3b071e44a0a68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file
+ms.openlocfilehash: a8dd83a9584d218d56c7350d6d634bfe4610b790
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102202395"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075555"
 ---
 V tomto kroku si vyhodnocujete, kolik sdílených složek Azure potřebujete. Jedna instance nebo cluster Windows serveru může synchronizovat až 30 sdílených složek Azure.
 

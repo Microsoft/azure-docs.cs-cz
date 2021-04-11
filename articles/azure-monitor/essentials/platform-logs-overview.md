@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2b22746b7a78349580220f4aa7579876fd21c33
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033295"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074586"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Přehled protokolů platformy Azure
 Protokoly platforem poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Generují se automaticky, přestože potřebujete nakonfigurovat některé protokoly platformy, které se mají přemístit do jednoho nebo více cílů, aby je bylo možné zachovat. Tento článek obsahuje přehled protokolů platforem, včetně informací, které poskytují, a o tom, jak je můžete nakonfigurovat pro shromažďování a analýzu.
@@ -45,8 +45,8 @@ Protokoly platforem můžete odesílat do jednoho nebo více cílů v následuj�
 
 | Cíl | Description |
 |:---|:---|
-| Pracovní prostor služby Log Analytics | Analyzujte protokoly všech vašich prostředků Azure společně a využijte výhod všech funkcí, které jsou k dispozici pro [Azure monitor protokolů](../logs/data-platform-logs.md) , včetně [dotazů protokolu](../logs/log-query-overview.md) a [výstrah protokolů](../alerts/alerts-log.md). Připněte výsledky dotazu protokolu na řídicí panel Azure nebo ho do sešitu zahrňte jako součást interaktivní sestavy. |  |
-| Centrum událostí | Odesílat data protokolu platformy mimo Azure, například pro SIEM nebo vlastní platformu telemetrie třetích stran.
+| Pracovní prostor služby Log Analytics | Analyzujte protokoly všech vašich prostředků Azure společně a využijte výhod všech funkcí, které jsou k dispozici pro [Azure monitor protokolů](../logs/data-platform-logs.md) , včetně [dotazů protokolu](../logs/log-query-overview.md) a [výstrah protokolů](../alerts/alerts-log.md). Připněte výsledky dotazu protokolu na řídicí panel Azure nebo ho do sešitu zahrňte jako součást interaktivní sestavy. | 
+| Centrum událostí | Odesílat data protokolu platformy mimo Azure, například pro SIEM nebo vlastní platformu telemetrie třetích stran. |
 | Azure Storage | Archivujte protokoly pro audit nebo zálohování. |
 
 - Podrobnosti o vytvoření nastavení diagnostiky pro protokol aktivit nebo protokoly prostředků najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění](../essentials/diagnostic-settings.md). 

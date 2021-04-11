@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4f333c4bb66195e6c99bd45dcc7c29a0b9a2eaa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6431328a0969ced0d98cbc7ff047cc0673ecb91
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591423"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074552"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics – poznámky k verzi
 
@@ -90,7 +90,9 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 |**Úroveň kompatibility databáze (Preview)**| V této verzi teď uživatelé můžou nastavit úroveň kompatibility databáze a získat tak chování jazyka Transact-SQL a zpracování dotazů konkrétní verze synapse modulu SQL. Další informace najdete v tématu [Sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a [Změna konfigurace s rozsahem databáze](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).|
-|**Sp_describe_undeclared_parameters**| Umožňuje uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace najdete v tématu [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).| <br/><br/><br/>
+|**Sp_describe_undeclared_parameters**| Umožňuje uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace najdete v tématu [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).| 
+
+<br/><br/><br/>
 
 | Vylepšení nástrojů                                         | Podrobnosti                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

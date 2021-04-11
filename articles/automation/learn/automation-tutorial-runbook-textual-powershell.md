@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 896b4db433164471f41aa09791ede5d677028bfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e5573634edf29698e7b118487fb2ec4e22e8eec
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896609"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169432"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Kurz: vytvoření Runbooku PowerShellu
 
@@ -138,7 +138,7 @@ Jak je znázorněno v následujícím příkladu, připojení spustit jako je vy
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
 
@@ -170,7 +170,7 @@ Jak je znázorněno v následujícím příkladu, připojení spustit jako je vy
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
 
@@ -202,7 +202,7 @@ Teď, když se váš Runbook ověřuje pro vaše předplatné Azure, můžete sp
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    while(!($connectionResult) -and ($logonAttempt -le 10))
@@ -237,7 +237,7 @@ Sada Runbook aktuálně spouští virtuální počítač, který je pevně zakó
     [string]$ResourceGroupName
    )
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    while(!($connectionResult) -and ($logonAttempt -le 10))

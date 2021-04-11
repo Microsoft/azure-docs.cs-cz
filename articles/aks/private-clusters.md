@@ -3,13 +3,13 @@ title: Vytvoření privátního clusteru služby Azure Kubernetes
 description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 3/5/2021
-ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/31/2021
+ms.openlocfilehash: 474c9a5d58627cec59904ccbcc5b3597de314612
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771851"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120363"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -77,7 +77,7 @@ Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Verze Preview verze AKS 0.5.3 nebo novější
+* Verze Preview verze AKS 0.5.7 nebo novější
 * Rozhraní API verze 2020-11-01 nebo novější
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Vytvoření privátního clusteru AKS s využitím zóny Privátní DNS (Preview)
@@ -91,6 +91,7 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
+
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Možnosti připojení k privátnímu clusteru
 
 Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chcete spravovat Server API, budete muset použít virtuální počítač, který má přístup k Azure Virtual Network AKS (VNet) clusteru. K dispozici je několik možností pro vytvoření síťového připojení k privátnímu clusteru.
@@ -98,8 +99,61 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chc
 * Vytvořte virtuální počítač ve stejné službě Azure Virtual Network (VNet) jako cluster AKS.
 * Použijte virtuální počítač v samostatné síti a nastavte [partnerský vztah virtuálních sítí][virtual-network-peering].  Další informace o této možnosti najdete v části níže.
 * Použijte [expresní trasu nebo připojení k síti VPN][express-route-or-VPN] .
+* Použijte [funkci příkazu spustit pro AKS](#aks-run-command-preview).
 
 Nejjednodušší možností je vytvoření virtuálního počítače ve stejné virtuální síti jako cluster AKS.  Expresní směrování a sítě VPN přidávají náklady a vyžadují další složitost sítě.  Partnerský vztah virtuálních sítí vyžaduje, abyste naplánovali rozsahy směrování sítě, aby se zajistilo, že se překrývají rozsahy.
+
+### <a name="aks-run-command-preview"></a>AKS Run – příkaz (Preview)
+
+V současné době, kdy potřebujete získat přístup k privátnímu clusteru, je nutné to udělat v rámci virtuální sítě clusteru nebo v partnerské síti nebo v klientském počítači. To obvykle vyžaduje, aby byl počítač připojený prostřednictvím sítě VPN nebo Express Route k virtuální síti clusteru nebo JumpBox, který se má vytvořit ve virtuální síti clusteru. Příkaz AKS Run umožňuje vzdáleně vyvolávat příkazy v clusteru AKS prostřednictvím rozhraní AKS API. Tato funkce poskytuje rozhraní API, které umožňuje například spouštět příkazy za běhu ze vzdáleného přenosného počítače pro soukromý cluster. To může výrazně pomoct s rychlým přístupem k privátnímu clusteru za běhu, když klientský počítač není v privátní síti clusteru a přitom stále uchovává a vynucuje stejné ovládací prvky RBAC a privátní Server API.
+
+### <a name="register-the-runcommandpreview-preview-feature"></a>Registrace `RunCommandPreview` funkce Preview
+
+Chcete-li použít nové rozhraní API pro spuštění příkazu, musíte povolit `RunCommandPreview` příznak funkce v předplatném.
+
+Zaregistrujte `RunCommandPreview` příznak funkce pomocí příkazu [az Feature Register] [az-Feature-Register], jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "RunCommandPreview"
+```
+
+Zobrazení stavu v *registraci* trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/RunCommandPreview')].{Name:name,State:properties.state}"
+```
+
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="use-aks-run-command"></a>Použití příkazu Run AKS
+
+Jednoduchý příkaz
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl get pods -n kube-system"
+```
+
+Nasazení manifestu připojením konkrétního souboru
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f deployment.yaml
+```
+
+Nasazení manifestu připojením celé složky
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f .
+```
+
+Provedení Helm instalace a předání konkrétního manifestu hodnot
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
+```
 
 ## <a name="virtual-network-peering"></a>Peering virtuálních sítí
 

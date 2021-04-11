@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Active Directory ověřitelných přihlašovacích údajů
+summary: Ověřitelné přihlašovací údaje vám pomůžou vytvářet řešení, která zákazníkům umožňují spravovat vlastní data.
+metadata:
+  author: barclayn
+  description: Naučte se, jak začlenit ověřitelná pověření do řešení, která zákazníkům umožňují řídit informace sami sebe.
+  manager: daveba
+  ms.author: barclayn
+  ms.collection: na
+  ms.date: 03/30/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106175693"
+landingContent:
+- title: O ověřitelných přihlašovacích údajích
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Úvod do Azure Active Directory ověřitelných přihlašovacích údajů
+      url: decentralized-identifier-overview.md
+  - linkListType: video
+    links:
+    - text: Řízení přístupu k prostředkům
+      url: https://www.youtube.com/watch?v=r20hCF9NbTo
+- title: Ověřitelné přihlašovací údaje, které zavedou lidi k řízení jejich osobních údajů
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Začínáme s ověřitelnými přihlašovacími údaji
+      url: get-started-verifiable-credentials.md
+  - linkListType: concept
+    links:
+    - text: Příklady komunikace služby vystavitele
+      url: issuer-openid.md
+- title: Jak propojit
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Propojte doménu s vaším distribuovaným identifikátorem.
+      url: how-to-dnsbind.md

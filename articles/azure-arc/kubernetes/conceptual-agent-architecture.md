@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Tento článek poskytuje přehled architektury agentů Kubernetes s povoleným ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953064"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442537"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektura agenta Kubernetes povoleného ARC Azure
 
@@ -49,7 +49,10 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
         | `deployment.apps/cluster-metadata-operator` | Shromažďuje metadata clusteru včetně verze clusteru, počtu uzlů a verze agenta Azure Arc. |
         | `deployment.apps/resource-sync-agent` | Synchronizuje výše uvedená metadata clusteru do Azure. |
         | `deployment.apps/flux-logs-agent` | Shromažďuje protokoly z operátorů toku nasazených jako součást konfigurace správy zdrojového kódu. |
-    
+        | `deployment.apps/extension-manager` | Nainstaluje a spravuje životní cyklus helmch diagramů rozšíření. |  
+        | `deployment.apps/clusterconnect-agent` | Agent reverzního proxy serveru, který umožňuje funkci připojení clusteru poskytovat přístup ke `apiserver` clusteru. Toto je volitelná součást nasazená jenom `cluster-connect` v případě, že je v clusteru povolená funkce.   |
+        | `deployment.apps/guard` | Server Webhooku pro ověřování a autorizaci, který se používá pro funkci AAD RBAC. Toto je volitelná součást nasazená jenom `azure-rbac` v případě, že je v clusteru povolená funkce.   |
+
 1. Jakmile budou všechna okna s povoleným Kubernetes agentem Azure v `Running` stavech, ověřte, že je váš cluster připojený ke službě Azure ARC. Měli byste vidět:
     * Prostředek Kubernetes s povoleným ARC Azure v [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Azure tento prostředek sleduje jako projekci clusteru Kubernetes spravovaného zákazníkem, nikoli vlastního clusteru Kubernetes.
     * Metadata clusteru (jako verze Kubernetes, verze agenta a počet uzlů) se zobrazí v prostředku Kubernetes s povoleným jako metadaty.

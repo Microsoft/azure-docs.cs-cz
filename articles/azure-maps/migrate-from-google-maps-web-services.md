@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386845"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076384"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Kurz: migrace webové služby z Google Maps
 
@@ -46,11 +46,11 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 | Geokódování               | [Hledání](/rest/api/maps/search)                                   |                         
 | Hledání míst           | [Hledání](/rest/api/maps/search)                                   |                         
 | Umístit automatické dokončování      | [Hledání](/rest/api/maps/search)                                   |                         
-| Přichycení k cestám            | Viz část [Výpočet tras a pokynů](#calculate-routes-and-directions) .            
-| Omezení rychlosti            | Přečtěte si oddíl [Reverse INCODE a souřadnice](#reverse-geocode-a-coordinate) .                  
+| Přichycení k cestám            | Viz část [Výpočet tras a pokynů](#calculate-routes-and-directions) .  |        
+| Omezení rychlosti            | Přečtěte si oddíl [Reverse INCODE a souřadnice](#reverse-geocode-a-coordinate) .         |         
 | Statická mapa              | [Vykreslování](/rest/api/maps/render/getmapimage)                       |                         
 | Časové pásmo               | [Časové pásmo](/rest/api/maps/timezone)                              |                         
-| Zvýšení oprávnění               | [Zvýšení úrovně oprávnění (Preview)](/rest/api/maps/elevation)                   |                         |
+| Zvýšení oprávnění               | [Zvýšení úrovně oprávnění (Preview)](/rest/api/maps/elevation)                   | 
 
 Následující rozhraní API služby nejsou v tuto chvíli k dispozici v Azure Maps:
 

@@ -2,25 +2,27 @@
 title: Definování více instancí vlastnosti
 description: Pomocí operace kopírování v šabloně Azure Resource Manager (šablona ARM) můžete iterovat několikrát při vytváření vlastnosti prostředku.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1bee4fb672fc0794d5372a4af60b1270105f1755
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889004"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385747"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastnosti v šablonách ARM
 
-V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager (šablona ARM). Přidáním `copy` elementu do oddílu Properties (vlastnosti) prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazování. Nemusíte se také vyhnout opakování syntaxe šablony.
+V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager (šablona ARM). Přidáním smyčky kopírování do oddílu vlastností prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazování. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete použít jenom `copy` s prostředky nejvyšší úrovně, i když použijete `copy` u vlastnosti. Další informace o změně podřízeného prostředku na prostředek nejvyšší úrovně najdete v tématu [iterace u podřízeného prostředku](copy-resources.md#iteration-for-a-child-resource).
+Můžete použít pouze kopírovací smyčku s prostředky nejvyšší úrovně, i když použijete smyčku kopírování na vlastnost. Další informace o změně podřízeného prostředku na prostředek nejvyšší úrovně najdete v tématu [iterace u podřízeného prostředku](copy-resources.md#iteration-for-a-child-resource).
 
-Můžete také použít kopírování s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
+Můžete také použít kopírovací smyčku s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
 ## <a name="syntax"></a>Syntax
 
-Element Copy má následující obecný formát:
+# <a name="json"></a>[JSON](#tab/json)
+
+Přidejte `copy` element do části Resources (prostředky) vaší šablony a nastavte počet položek pro vlastnost. Element Copy má následující obecný formát:
 
 ```json
 "copy": [
@@ -38,22 +40,54 @@ Pro `name` Zadejte název vlastnosti prostředku, kterou chcete vytvořit.
 
 `input`Vlastnost určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků konstruovaných z hodnoty `input` Vlastnosti.
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Smyčky lze použít k deklaraci více vlastností:
+
+- Iterace nad polem:
+
+  ```bicep
+  <property-name>: [for <item> in <collection>: {
+    <properties>
+  }
+  ```
+
+- Iterace nad prvky pole
+
+  ```bicep
+  <property-name>: [for (<item>, <index>) in <collection>: {
+    <properties>
+  }
+  ```
+
+- Index smyčky using
+
+  ```bicep
+  <property-name>: [for <index> in range(<start>, <stop>): {
+    <properties>
+  }
+  ```
+
+---
+
 ## <a name="copy-limits"></a>Omezení kopírování
 
 Počet nemůže být větší než 800.
 
 Počet nemůže být záporné číslo. Pokud nasadíte šablonu s poslední verzí rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API, může to být nula. Konkrétně je nutné použít:
 
-* Azure PowerShell **2,6** nebo novější
-* Azure CLI **2.0.74** nebo novější
-* REST API verze **2019-05-10** nebo novější
-* [Odkazovaná nasazení](linked-templates.md) musí pro typ prostředku nasazení používat rozhraní API verze **2019-05-10** nebo novější.
+- Azure PowerShell **2,6** nebo novější
+- Azure CLI **2.0.74** nebo novější
+- REST API verze **2019-05-10** nebo novější
+- [Odkazovaná nasazení](linked-templates.md) musí pro typ prostředku nasazení používat rozhraní API verze **2019-05-10** nebo novější.
 
 Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
 
 ## <a name="property-iteration"></a>Iterace vlastnosti
 
-Následující příklad ukazuje, jak použít `copy` `dataDisks` vlastnost na virtuálním počítači:
+Následující příklad ukazuje, jak použít smyčku kopírování na `dataDisks` vlastnost na virtuálním počítači:
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -74,7 +108,7 @@ Následující příklad ukazuje, jak použít `copy` `dataDisks` vlastnost na v
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2020-06-01",
       ...
       "properties": {
         "storageProfile": {
@@ -84,13 +118,14 @@ Následující příklad ukazuje, jak použít `copy` `dataDisks` vlastnost na v
               "name": "dataDisks",
               "count": "[parameters('numberOfDataDisks')]",
               "input": {
-                "diskSizeGB": 1023,
                 "lun": "[copyIndex('dataDisks')]",
-                "createOption": "Empty"
+                "createOption": "Empty",
+                "diskSizeGB": 1023
               }
             }
           ]
         }
+        ...
       }
     }
   ]
@@ -99,13 +134,13 @@ Následující příklad ukazuje, jak použít `copy` `dataDisks` vlastnost na v
 
 Všimněte si, že při použití `copyIndex` v rámci iterace vlastnosti je nutné zadat název iterace. Iterace vlastnosti také podporuje argument posunu. Posun musí být zadán za názvem iterace, například `copyIndex('dataDisks', 1)` .
 
-Správce prostředků rozbalí `copy` pole během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
+Nasazená šablona bude:
 
 ```json
 {
   "name": "examplevm",
   "type": "Microsoft.Compute/virtualMachines",
-  "apiVersion": "2017-03-30",
+  "apiVersion": "2020-06-01",
   "properties": {
     "storageProfile": {
       "dataDisks": [
@@ -134,57 +169,57 @@ Následující příklad šablony vytvoří skupinu převzetí služeb při selh
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "primaryServerName": {
-            "type": "string"
-        },
-        "secondaryServerName": {
-            "type": "string"
-        },
-        "databaseNames": {
-            "type": "array",
-            "defaultValue": [
-                "mydb1",
-                "mydb2",
-                "mydb3"
-            ]
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "primaryServerName": {
+      "type": "string"
     },
-    "variables": {
-        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    "secondaryServerName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Sql/servers/failoverGroups",
-            "apiVersion": "2015-05-01-preview",
-            "name": "[variables('failoverName')]",
-            "properties": {
-                "readWriteEndpoint": {
-                    "failoverPolicy": "Automatic",
-                    "failoverWithDataLossGracePeriodMinutes": 60
-                },
-                "readOnlyEndpoint": {
-                    "failoverPolicy": "Disabled"
-                },
-                "partnerServers": [
-                    {
-                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
-                    }
-                ],
-                "copy": [
-                    {
-                        "name": "databases",
-                        "count": "[length(parameters('databaseNames'))]",
-                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
-                    }
-                ]
-            }
-        }
-    ],
-    "outputs": {
+    "databaseNames": {
+      "type": "array",
+      "defaultValue": [
+        "mydb1",
+        "mydb2",
+        "mydb3"
+      ]
     }
+  },
+  "variables": {
+    "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/failoverGroups",
+      "apiVersion": "2015-05-01-preview",
+      "name": "[variables('failoverName')]",
+      "properties": {
+        "readWriteEndpoint": {
+          "failoverPolicy": "Automatic",
+          "failoverWithDataLossGracePeriodMinutes": 60
+        },
+        "readOnlyEndpoint": {
+          "failoverPolicy": "Disabled"
+        },
+        "partnerServers": [
+          {
+            "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+          }
+        ],
+        "copy": [
+          {
+            "name": "databases",
+            "count": "[length(parameters('databaseNames'))]",
+            "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+  }
 }
 ```
 
@@ -216,7 +251,64 @@ Následující příklad šablony vytvoří skupinu převzetí služeb při selh
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+@minValue(0)
+@maxValue(16)
+@description('The number of dataDisks to be returned in the output array.')
+param numberOfDataDisks int = 16
+
+resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+  properties: {
+    storageProfile: {
+      ...
+      dataDisks: [for i in range(0, numberOfDataDisks): {
+        lun: i
+        createOption: 'Empty'
+        diskSizeGB: 1023
+      }]
+    }
+    ...
+  }
+}
+```
+
+Nasazená šablona bude:
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2020-06-01",
+  "properties": {
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "lun": 0,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        },
+        {
+          "lun": 1,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        },
+        {
+          "lun": 2,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        }
+      ],
+      ...
+```
+
+---
+
 Můžete použít iteraci prostředků a vlastností společně. Odkázat na iteraci vlastnosti podle názvu.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -250,20 +342,44 @@ Můžete použít iteraci prostředků a vlastností společně. Odkázat na ite
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for i in range(0, 2): {
+  name: concat(vnetname, i)
+  location: resourceGroup().location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        addressPrefix
+      ]
+    }
+    subnets: [for j in range(0, 2): {
+      name: 'subnet-${j}'
+      properties: {
+        addressPrefix: subnetAddressPrefix[j]
+      }
+    }]
+  }
+}]
+```
+
+---
+
 ## <a name="example-templates"></a>Příklady šablon
 
 Následující příklad ukazuje běžný scénář pro vytvoření více než jedné hodnoty pro vlastnost.
 
-|Template (Šablona)  |Description  |
+|Template (Šablona)  |Popis  |
 |---------|---------|
 |[Nasazení virtuálního počítače s proměnným počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků s virtuálním počítačem. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
-* Pro jiné použití kopie elementu viz:
-  * [Iterace prostředků v šablonách ARM](copy-resources.md)
-  * [Iterace proměnných v šablonách ARM](copy-variables.md)
-  * [Výstupní iterace v šablonách ARM](copy-outputs.md)
-* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
-* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).
+- Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
+- Další použití smyčky kopírování najdete v těchto tématech:
+  - [Iterace prostředků v šablonách ARM](copy-resources.md)
+  - [Iterace proměnných v šablonách ARM](copy-variables.md)
+  - [Výstupní iterace v šablonách ARM](copy-outputs.md)
+- Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+- Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).

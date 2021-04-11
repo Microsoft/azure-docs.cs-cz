@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b5d0a8b12ad07c5be3a4cfc0840acc81aa0c395
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879322"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060728"
 ---
-# <a name="how-to-plan-a-virtual-machine-offer"></a>Postup plánování nabídky virtuálního počítače
+# <a name="plan-a-virtual-machine-offer"></a>Plánování nabídky virtuálních počítačů
 
 Tento článek popisuje různé možnosti a požadavky pro publikování nabídky virtuálního počítače na komerčním webu Marketplace. Nabídky virtuálních počítačů jsou nasazené a účtované prostřednictvím Azure Marketplace.
 
@@ -102,7 +102,7 @@ Můžete omezit zjišťování a nasazování virtuálního počítače na konkr
 
 Další informace najdete v tématu [plány a ceny pro komerční nabídky na webu Marketplace](plans-pricing.md) a [soukromé nabídky na komerčním webu Microsoft Marketplace](private-offers.md).
 
-## <a name="test-drives"></a>Testovací verze
+## <a name="test-drive"></a>Testovací jednotka
 
 Pro virtuální počítač se můžete rozhodnout pro povolení testovacích jednotek. Testovací jednotky poskytují zákazníkům přístup k předkonfigurovanému prostředí po dobu určitého počtu hodin. Můžete povolit testovací jednotky pro libovolnou možnost publikování, ale tato funkce má další požadavky. Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](what-is-test-drive.md). Informace o konfiguraci různých druhů testovacích jednotek najdete v tématu [Technická konfigurace testovacích](test-drive-technical-configuration.md)jednotek.
 

@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: e1e44f5aa4250d63c2addafd2661b09bae2b38e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c9e81786f9bd45961b38dbd9336ea98be1ab2010
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199913"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059772"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Rychlý Start: odeslání telemetrie IoT ze zařízení s Androidem
 
@@ -27,7 +27,7 @@ ms.locfileid: "102199913"
 
 V tomto rychlém startu odešlete telemetrii do Azure IoT Hub z aplikace pro Android běžící na fyzickém nebo simulovaném zařízení. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu se k posílání telemetrie používá předem napsaná aplikace pro Android. Telemetrii se načte z IoT Hub pomocí Azure Cloud Shell. Před spuštěním aplikace vytvoříte centrum IoT a zaregistrujete zařízení do centra.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

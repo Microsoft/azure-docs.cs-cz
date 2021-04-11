@@ -1,0 +1,50 @@
+- name: Dokumentace k ověřitelným přihlašovacím údajům Azure AD
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Úvod do Azure Active Directory ověřitelných přihlašovacích údajů
+      href: decentralized-identifier-overview.md
+- name: Kurzy
+  expanded: true
+  items:
+    - name: Začínáme s ověřitelnými přihlašovacími údaji
+      href: get-started-verifiable-credentials.md
+    - name: Konfigurace ověřitelných přihlašovacích údajů ve vašem tenantovi
+      items:
+        - name: 1. nastavení ověřitelného vystavitele přihlašovacích údajů ve vlastní službě Azure AD
+          href: enable-your-tenant-verifiable-credentials.md
+        - name: 2 – připojení vystavitele ověřitelných přihlašovacích údajů k vlastní službě Azure AD
+          href: issue-verify-verifiable-credentials-your-tenant.md
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Podrobnosti protokolu OpenID Connect
+      href: issuer-openid.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Jak přizpůsobit přihlašovací údaje
+      href: credential-design.md
+    - name: Správa odvolání přihlašovacích údajů
+      href: how-to-issuer-revoke.md
+    - name: Propojení domény s vaší doménou
+      href: how-to-dnsbind.md
+    - name: Odhlásit z ověřitelných přihlašovacích údajů
+      href: how-to-opt-out.md
+- name: ukázky
+  expanded: true
+  items:
+    - name: Ukázková aplikace uzlu
+      href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
+    - name: Vystavitel ukázek
+      href: 'https://didvc-issuer-sample.azurewebsites.net/'
+    - name: Ukázka ověřovatele
+      href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: Zdroje a prostředky
+  expanded: true
+  items:
+    - name: Nejčastější dotazy
+      href: verifiable-credentials-faq.md
+    - name: Jak vytvořit vývojářský účet
+      href: how-to-create-a-free-developer-account.md

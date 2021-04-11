@@ -2,18 +2,15 @@
 title: Nastavení zotavení po havárii po migraci do Azure pomocí Azure Site Recovery
 description: Tento článek popisuje, jak připravit počítače na nastavení zotavení po havárii mezi oblastmi Azure po migraci do Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41fa4f5d042b5c284a58b0fd87486e2309b03053
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86135673"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581725"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 

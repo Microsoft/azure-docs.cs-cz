@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba332ed0e949c3c209dc3bd2d72d37187a200eea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641866"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030130"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Průvodce migrací: MySQL pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-V této příručce se dozvíte, jak migrovat databázi MySQL do služby Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro MySQL (SSMA for MySQL). 
+V této příručce se dozvíte, [jak migrovat](https://azure.microsoft.com/migration/migration-journey) databázi MySQL do služby Azure SQL database pomocí SQL Server Pomocník pro [migraci](https://azure.microsoft.com/migration/migration-journey) pro MySQL (SSMA for MySQL). 
 
 Další příručky k migraci najdete v tématu [Průvodce migrací databáze Azure](https://docs.microsoft.com/data-migration). 
 
@@ -33,7 +33,7 @@ Než začnete migrovat databázi MySQL do databáze SQL, udělejte toto:
 
 ## <a name="pre-migration"></a>Před migrací 
 
-Až splníte požadavky, budete připraveni zjistit topologii vašeho prostředí a posoudit proveditelnost migrace.
+Až splníte požadavky, budete připraveni zjistit topologii vašeho prostředí a posoudit proveditelnost [migrace do cloudu Azure](https://azure.microsoft.com/migration).
 
 ### <a name="assess"></a>Posouzení 
 
@@ -178,3 +178,6 @@ Data tým SQL Engineering vyvinuli tyto prostředky. Základní Chart týmu je o
 - Další příručky k migraci najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/). 
 
 - Videa k migraci najdete v tématu [Přehled cesty migrace a doporučené služby a nástroje pro migraci a hodnocení](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/).
+
+- Další [zdroje migrace](https://azure.microsoft.com/migration/resources/)do cloudu najdete v tématu [řešení migrace do cloudu](https://azure.microsoft.com/migration).
+

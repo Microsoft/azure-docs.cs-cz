@@ -16,12 +16,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: d17bdc00d18e1822264a4fd4cfa244146a58055f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 33952f34170b84650b39fceae0953b3bcdd12c51
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217274"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059767"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Rychlý Start: řízení zařízení připojeného ke službě Azure IoT Hub pomocí jazyka Java
 
@@ -29,7 +29,7 @@ ms.locfileid: "102217274"
 
 V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub s aplikací Java. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě aplikace Java: aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace a aplikace služby, která volá přímo metodu na simulovaném zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709714"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385577"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrace na cloudové ověřování pomocí postupného uvedení
 
 Příprava na přípravu umožňuje selektivně testovat skupiny uživatelů s možnostmi cloudového ověřování, jako je Azure AD Multi-Factor Authentication (MFA), podmíněný přístup, ochrana identity pro nevrácená pověření, řízení identit a další, a to před vyjmutím z domén.  Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
     
@@ -79,7 +79,7 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 - Správci mohou zavést cloudové ověřování pomocí skupin zabezpečení. Abyste se vyhnuli latenci při použití místních skupin zabezpečení služby Active Directory, doporučujeme, abyste používali skupiny zabezpečení cloudu. Platí následující podmínky:
 
     - Na jednu funkci můžete použít maximálně 10 skupin. To znamená, že můžete použít 10 skupin pro každou *synchronizaci hodnot hash hesel*, *předávací ověřování* a *bezproblémové jednotné přihlašování*.
-    - Vnořené skupiny se *nepodporují*. Tento obor platí i pro Public Preview.
+    - Vnořené skupiny se *nepodporují*. 
     - Pro fáze zavedení se *nepodporují* dynamické skupiny.
     - Objekty kontaktu uvnitř skupiny zablokují přidávání skupiny.
 
@@ -168,19 +168,19 @@ Můžete zavést jednu z těchto možností:
 
 Postupujte následovně:
 
-1. Pokud chcete získat přístup k UŽIVATELSKÉmu rozhraní verze Preview, přihlaste se k [portálu Azure AD](https://aka.ms/stagedrolloutux).
+1. Pokud chcete získat přístup k UŽIVATELSKÉmu prostředí, přihlaste se k [portálu Azure AD](https://aka.ms/stagedrolloutux).
 
-2. Vyberte odkaz **povolit dvoufázové zavedení pro přihlášení ke spravovanému uživateli (Preview)** .
+2. Vyberte odkaz **povolit dvoufázové zavedení pro přihlášení ke spravovanému uživateli** .
 
    Chcete-li například povolit *možnost a*, posuňte **synchronizaci hodnot hash hesel** a **bezproblémové jednotné přihlašování** na **zapnuto**, jak je znázorněno na následujících obrázcích.
 
-   ![Stránka Azure AD Connect](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   ![Stránka "povolit funkce pro přípravu na více verzí (Preview)"](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. Přidejte skupiny do funkce, aby se povolilo *předávací ověřování* a *bezproblémové jednotné přihlašování*. Aby nedošlo k vypršení časového limitu uživatelského rozhraní, ujistěte se, že skupiny zabezpečení neobsahují nejdříve 200 členů.
 
-   ![Stránka "Správa skupin pro synchronizaci hodnot hash hesel (Preview)"](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >Členové ve skupině jsou automaticky povoleni pro připravené zavedení. Vnořené a dynamické skupiny se pro připravené zavedení nepodporují.

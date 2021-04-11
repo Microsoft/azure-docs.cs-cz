@@ -3,18 +3,17 @@ title: Vytvoření virtuální sítě – rychlý Start – Azure PowerShell
 titlesuffix: Azure Virtual Network
 description: V tomto rychlém startu vytvoříte virtuální síť pomocí Azure Portal. Virtuální síť umožňuje prostředkům Azure komunikovat mezi sebou a s internetem.
 author: KumudD
-Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
 ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b27f050d3d37daab05e8c5125d6b75a6bb4dea50
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ee10327ab95a3e66e5592593ae72d6e5cd8d606
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199029"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060597"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Rychlý start: Vytvoření virtuální sítě pomocí PowerShellu
 
@@ -22,7 +21,7 @@ Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počíta
 
 V tomto rychlém startu zjistíte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě do ní nasadíte dva virtuální počítače. Pak se k virtuálním počítačům připojíte z Internetu a soukromě komunikujte přes virtuální síť.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell

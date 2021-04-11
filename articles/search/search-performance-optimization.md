@@ -1,99 +1,45 @@
 ---
-title: Škálování pro zajištění výkonu
+title: Dostupnost a kontinuita
 titleSuffix: Azure Cognitive Search
-description: Naučte se techniky a osvědčené postupy pro optimalizaci výkonu Azure Kognitivní hledání a konfigurace optimálního škálování.
-manager: nitinme
+description: Naučte se, jak zajistit vysokou dostupnost služby vyhledávání a odolnost proti výpadkům v obdobích nebo dokonce závažných chybách.
 author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 493f6759f63f023572f38647076e04425acf9d6a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670722"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581529"
 ---
-# <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
+# <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Dostupnost a provozní kontinuita v Azure Kognitivní hledání
 
-Tento článek popisuje osvědčené postupy pro pokročilé scénáře se sofistikovanými požadavky na škálovatelnost a dostupnost.
+V Kognitivní hledání dosahuje dostupnost prostřednictvím několika replik, zatímco provozní kontinuita (a zotavení po havárii) se dosahuje prostřednictvím několika vyhledávacích služeb. V tomto článku najdete pokyny, které můžete použít jako výchozí bod pro vývoj strategie, která splňuje vaše obchodní požadavky jak pro dostupnost, tak pro průběžné operace.
 
-## <a name="start-with-baseline-numbers"></a>Začínáme s čísly směrného plánu
+<a name="scale-for-availability"></a>
 
-Než budete mít větší úsilí na nasazení, ujistěte se, že víte, jak vypadá typické načítání dotazů. Následující pokyny vám pomůžou s příchodem na čísla dotazů na základní hodnoty.
+## <a name="high-availability"></a>Vysoká dostupnost
 
-1. Vyberte cílovou latenci (nebo maximální dobu), po kterou by měla být dokončena typická žádost o hledání.
+V Kognitivní hledání repliky jsou kopie vašeho indexu. Pokud máte víc replik, umožníte službě Azure Kognitivní hledání restartovat počítač a provést údržbu proti jedné replice, zatímco provádění dotazů pokračuje na dalších replikách. Další informace o přidávání replik najdete v tématu [Přidání nebo zmenšení replik a oddílů](search-capacity-planning.md#adjust-capacity).
 
-1. Vytvoření a otestování reálné úlohy pro vaši vyhledávací službu pomocí realistické sady dat pro měření těchto latencí.
-
-1. Začněte s nízkým počtem dotazů za sekundu (QPS) a pak postupně zvyšujte počet provedených v testu, dokud latence dotazu neklesne pod předdefinovaný cíl. Toto je důležitý srovnávací test, který vám pomůže při plánování škálování, protože vaše aplikace roste v používání.
-
-1. Pokud je to možné, znovu použijte připojení HTTP. Pokud používáte sadu Azure Kognitivní hledání .NET SDK, znamená to, že byste měli znovu použít instanci nebo instanci [SearchClient](/dotnet/api/azure.search.documents.searchclient) a pokud používáte REST API, měli byste znovu použít jeden HttpClient.
-
-1. Lišící se v závislosti na požadavcích na dotazy, takže vyhledávání probíhá přes různé části indexu. Variace je důležitá, protože pokud průběžně spouštíte stejné požadavky na hledání, zahájí ukládání dat do mezipaměti lepší výkon, než může s více různými množinami dotazů.
-
-1. Můžete měnit strukturu požadavků na dotazy, abyste získali různé typy dotazů. Ne každý vyhledávací dotaz provádí na stejné úrovni. Například vyhledávání dokumentů nebo návrh hledání je obvykle rychlejší než dotaz s významným počtem omezujících vlastností a filtrů. Složení testu by mělo zahrnovat různé dotazy, přibližně stejné poměry, jako byste očekávali v produkčním prostředí.  
-
-Při vytváření těchto testovacích úloh jsou k dispozici některé charakteristiky Kognitivní hledání Azure, které je potřeba vzít v úvahu:
-
-+ Je možné přetížit vaši službu tím, že najednou zadáváme příliš mnoho vyhledávacích dotazů. Pokud k tomu dojde, zobrazí se kódy odpovědí HTTP 503. Abyste se vyhnuli 503 během testování, začněte s různými rozsahy žádostí o hledání, abyste viděli rozdíly v sazbách latence při přidávání dalších požadavků hledání.
-
-+ Azure Kognitivní hledání nespouští úlohy indexování na pozadí. Pokud vaše služba současně zpracovává úlohy dotazů a indexování, vezměte tuto možnost v úvahu tím, že zavedete indexování úloh do testů dotazů nebo prozkoumáte možnosti spouštění úloh indexování v době mimo špičku.
-
-> [!Tip]
-> Můžete simulovat reálné zatížení dotazů pomocí nástrojů pro zátěžové testování. Vyzkoušejte [zátěžové testování pomocí Azure DevOps](/azure/devops/test/load-test/get-started-simple-cloud-load-test) nebo použijte některou z těchto [alternativ](/azure/devops/test/load-test/overview#alternatives).
-
-## <a name="scale-for-high-query-volume"></a>Škálování pro velký objem dotazů
-
-Služba je přetížena v případě, že dotazy trvají příliš dlouho nebo když služba zahajuje žádosti. Pokud k tomu dojde, můžete problém vyřešit jedním ze dvou způsobů:
-
-+ **Přidat repliky**  
-
-  Každá replika je kopií vašich dat, což umožňuje službě vyrovnávat zatížení žádostí proti více kopiím.  Veškeré vyrovnávání zatížení a replikace dat spravuje Azure Kognitivní hledání a kdykoli můžete změnit počet replik, které jsou pro vaši službu vyhrazené. V rámci standardní vyhledávací služby můžete přidělit až 12 replik a 3 repliky ve službě Basic Search. Repliky je možné upravit buď z [Azure Portal](search-create-service-portal.md) , nebo pomocí [PowerShellu](search-manage-powershell.md).
-
-+ **Vytvoření nové služby na vyšší úrovni**  
-
-  Azure Kognitivní hledání je součástí [řady vrstev](https://azure.microsoft.com/pricing/details/search/) a každá z nich nabízí různé úrovně výkonu. V některých případech můžete mít tolik dotazů, že úroveň, na kterou se nacházíte, nemůže poskytovat dostatečné vyřízení, a to i v případě, že se repliky vyčerpáním. V takovém případě zvažte přesunutí do vyšší úrovně, například úrovně Standard S3, navržené pro scénáře s velkým počtem dokumentů a velmi vysokým zatížením dotazů.
-
-## <a name="scale-for-slow-individual-queries"></a>Škálování pro pomalé jednotlivé dotazy
-
-Dalším důvodem pro vysokou latenci je, že dokončení jednoho dotazu trvá příliš dlouho. V takovém případě vám nebudou přidány repliky. K dispozici jsou dvě možné možnosti, které mohou obsahovat následující informace:
-
-+ **Zvětšit oddíly**
-
-  Oddíl rozdělí data mezi další výpočetní prostředky. Dva oddíly rozdělí data na polovinu, třetí oddíl je rozdělí na třetinu a tak dále. Jedním z pozitivních vedlejších účinků je to, že pomalejší dotazy někdy provádějí rychleji v důsledku paralelního zpracování. Poznamenali jsme paralelní zpracování dotazů s nízkou selektivitou, jako jsou dotazy, které odpovídají mnoha dokumentům, nebo omezující vlastnosti, které poskytují počty přes velký počet dokumentů. Vzhledem k tomu, že je potřeba významné výpočty, aby bylo možné určit skóre relevanci dokumentů nebo počet dokumentů, přidání dalších oddílů pomáhá rychleji provádět dotazy.  
-   
-  Ve standardní službě vyhledávání může být maximálně 12 oddílů a 1 oddíl služby Basic Search. Oddíly lze upravit buď z [Azure Portal](search-create-service-portal.md) , nebo z [prostředí PowerShell](search-manage-powershell.md).
-
-+ **Omezit pole vysoké mohutnosti**
-
-  Pole s vysokou mohutnou sestává z pole s vysokou hodnotou, které má velký počet jedinečných hodnot, a výsledkem je, že při výpočtu výsledků spotřebovává významné prostředky. Například když nastavíte pole ID produktu nebo popis jako plošku nebo filtr, bude se počítat jako vysoká mohutnost, protože většina hodnot z dokumentu do dokumentu je jedinečná. Pokud je to možné, omezte počet polí vysoké mohutnosti.
-
-+ **Zvýšit úroveň vyhledávání**  
-
-  Přechod na vyšší úroveň Kognitivní hledání Azure může být jiný způsob, jak zlepšit výkon pomalých dotazů. Každá vyšší úroveň poskytuje rychlejší procesory a více paměti, které mají pozitivní dopad na výkon dotazů.
-
-## <a name="scale-for-availability"></a>Škálování pro dostupnost
-
-Repliky neumožňují nejen snížit latenci dotazů, ale můžou taky umožňovat vysokou dostupnost. U jedné repliky byste měli očekávat pravidelné výpadky, protože se server restartuje po aktualizacích softwaru nebo pro jiné události údržby, ke kterým dojde. V důsledku toho je důležité vzít v úvahu, jestli vaše aplikace vyžaduje vysokou dostupnost hledání (dotazů) a také zápisy (indexování událostí). Azure Kognitivní hledání nabízí možnosti smlouvy SLA pro všechny placené nabídky vyhledávání s následujícími atributy:
+Pro každou jednotlivou vyhledávací službu společnost Microsoft garantuje minimálně 99,9% dostupnost pro konfigurace, které splňují tato kritéria: 
 
 + Dvě repliky pro vysokou dostupnost úloh jen pro čtení (dotazů)
 
-+ Tři nebo více replik pro vysokou dostupnost úloh pro čtení a zápis (dotazy a indexování)
++ Tři nebo více replik pro vysokou dostupnost úloh pro čtení a zápis (dotazy a indexování) 
 
-Další podrobnosti najdete na webu [Azure Kognitivní hledání smlouva SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-
-Vzhledem k tomu, že repliky jsou kopiemi vašich dat, může Azure Kognitivní hledání provádět restartování počítače a údržbu proti jedné replice, zatímco provádění dotazů pokračuje na dalších replikách. Naopak pokud ponecháte repliky, budete mít k disgradaci výkonu dotazů. za předpokladu, že tyto repliky byly prostředkem, který se používá.
+Pro úroveň Free se neposkytuje žádná smlouva SLA. Další informace najdete v tématu [SLA pro Azure kognitivní hledání](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 <a name="availability-zones"></a>
 
-### <a name="availability-zones"></a>Zóny dostupnosti
+## <a name="availability-zones"></a>Zóny dostupnosti
 
-[Zóny dostupnosti](../availability-zones/az-overview.md) rozdělit datová centra oblasti do samostatných skupin fyzického umístění tak, aby poskytovala vysokou dostupnost v rámci stejné oblasti. U Kognitivní hledání jednotlivé repliky představují jednotky pro přiřazení zóny. Vyhledávací služba běží v jedné oblasti. jeho repliky běží v různých zónách.
+[Zóny dostupnosti](../availability-zones/az-overview.md) jsou schopnosti platformy Azure, které rozdělí datová centra oblasti do různých fyzických skupin umístění, aby poskytovala vysokou dostupnost v rámci stejné oblasti. Pokud používáte Zóny dostupnosti pro Kognitivní hledání, jednotlivé repliky představují jednotky pro přiřazení zóny. Vyhledávací služba běží v jedné oblasti. jeho repliky běží v různých zónách.
 
-Zóny dostupnosti se službou Azure Kognitivní hledání můžete využít tak, že do vyhledávací služby přidáte dvě nebo víc replik. Každá replika bude umístěna v jiné zóně dostupnosti v rámci dané oblasti. Pokud máte více replik, než Zóny dostupnosti, repliky budou rozloženy mezi Zóny dostupnosti, jak je to možné.
+Zóny dostupnosti se službou Azure Kognitivní hledání můžete využít tak, že do vyhledávací služby přidáte dvě nebo víc replik. Každá replika bude umístěna v jiné zóně dostupnosti v rámci dané oblasti. Pokud máte více replik, než Zóny dostupnosti, repliky budou rozloženy mezi Zóny dostupnosti, jak je to možné. V rámci neexistují žádné konkrétní akce, s výjimkou [Vytvoření vyhledávací služby](search-create-service-portal.md) v oblasti, která poskytuje zóny dostupnosti a potom ke konfiguraci služby pro [použití více replik](search-capacity-planning.md#adjust-capacity).
 
 Azure Kognitivní hledání aktuálně podporuje Zóny dostupnosti pro služby úrovně Standard nebo vyšší, které byly vytvořeny v jedné z následujících oblastí:
 
@@ -112,21 +58,31 @@ Azure Kognitivní hledání aktuálně podporuje Zóny dostupnosti pro služby �
 
 Zóny dostupnosti nemá vliv na [smlouva SLA Azure kognitivní hledání](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Pro dotaz na vysokou dostupnost stále potřebujete 3 nebo více replik.
 
-## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Škálování pro geograficky distribuované úlohy a geografickou redundanci
+## <a name="multiple-services-in-separate-geographic-regions"></a>Více služeb v samostatných geografických oblastech
 
-Pro geograficky distribuovaná zatížení budou mít uživatelé, kteří se nacházejí daleko od datového centra hostitele, vyšší míru latence. Jedním z rizik je zřídit několik vyhledávacích služeb v oblastech s užším okolím pro tyto uživatele.
+I když většina zákazníků používá jenom jednu službu, redundance služby může být nutná v případě následujících provozních požadavků:
 
-Azure Kognitivní hledání v současné době neposkytuje automatizovanou metodu geografické replikace indexů Azure Kognitivní hledání napříč různými oblastmi, ale existují některé techniky, které mohou tento proces snadno implementovat a spravovat. Ty jsou popsány v následujících částech.
++ [Provozní kontinuita a zotavení po havárii (BCDR)](../best-practices-availability-paired-regions.md) (kognitivní hledání neposkytuje okamžitý převzetí služeb při selhání v případě výpadku).
++ Globálně nasazené aplikace Pokud požadavky na dotazy a indexování pocházejí ze všech po celém světě, uživatelé, kteří jsou nejblíže k datovému centru hostitele, budou mít rychlejší výkon. Vytváření dalších služeb v oblastech s blízkou blízkosti těmto uživatelům může vymezit výkon pro všechny uživatele.
++ [Víceklientské architektury](search-modeling-multitenant-saas-applications.md) se někdy volají na dvě nebo více služeb.
 
-Cílem geografické distribuované sady vyhledávacích služeb je mít dva nebo více indexů dostupných ve dvou nebo více oblastech, kde je uživatel směrován do služby Azure Kognitivní hledání, která poskytuje nejnižší latenci, jak je vidět v tomto příkladu:
+Pokud potřebujete dvě další služby vyhledávání, jejich vytvoření v různých oblastech může splňovat požadavky na aplikace pro zajištění kontinuity a obnovení a také kratší dobu odezvy pro globální uživatelskou základnu.
+
+Služba Azure Kognitivní hledání v současné době neposkytuje automatizovanou metodu hledání geografických replikovaných indexů napříč různými oblastmi, ale existuje několik postupů, které je možné použít, aby bylo možné tento proces snadno implementovat a spravovat. Ty jsou popsány v následujících částech.
+
+Cílem geografické distribuované sady vyhledávacích služeb je mít dva nebo více indexů dostupných ve dvou nebo více oblastech, kde je uživatel směrován do služby Azure Kognitivní hledání, která poskytuje nejnižší latenci:
 
    ![Mezi kartami služeb podle oblasti][1]
 
+Tuto architekturu můžete implementovat vytvořením několika služeb a návrhem strategie pro synchronizaci dat. Volitelně můžete pro žádosti o směrování zahrnout prostředek, jako je Azure Traffic Manager. Další informace najdete v tématu [Vytvoření vyhledávací služby](search-create-service-portal.md).
+
+<a name="data-sync"></a>
+
 ### <a name="keep-data-synchronized-across-multiple-services"></a>Udržování dat synchronizovaných napříč více službami
 
-Existují dvě možnosti, jak udržovat služby distribuované služby Search v synchronizaci, které se skládají buď pomocí služby [azure kognitivní hledání indexer](search-indexer-overview.md) , nebo rozhraní API push (také označovaného jako [kognitivní hledání Azure REST API](/rest/api/searchservice/)).  
+Existují dvě možnosti, jak udržet synchronizaci dvou nebo více služeb distribuovaných hledání, které se skládají buď pomocí [indexeru služby Azure kognitivní hledání](search-indexer-overview.md) nebo rozhraní push API (také označovaného jako [kognitivní hledání Azure REST API](/rest/api/searchservice/)). 
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Použití indexerů pro aktualizaci obsahu ve více službách
+#### <a name="option-1-use-indexers-for-updating-content-on-multiple-services"></a>Možnost 1: použití indexerů pro aktualizaci obsahu ve více službách
 
 Pokud již indexer používáte v jedné službě, můžete u druhé služby nakonfigurovat druhý indexer tak, aby používal stejný objekt zdroje dat, a nastavovat data ze stejného umístění. Každá služba v každé oblasti má svůj vlastní indexer a cílový index (váš index vyhledávání není sdílený, což znamená, že data jsou duplicitní), ale každý indexer odkazuje na stejný zdroj dat.
 
@@ -134,15 +90,31 @@ Tady je přehled toho, co by architektura vypadala jako.
 
    ![Jeden zdroj dat s kombinacemi distribuovaných indexerů a služeb][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Použití rozhraní REST API pro doručování aktualizací obsahu ve více službách
+#### <a name="option-2-use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Možnost 2: použití rozhraní REST API pro doručování aktualizací obsahu ve více službách
 
-Pokud používáte službu Azure Kognitivní hledání REST API k [nabízení obsahu v indexu služby azure kognitivní hledání](/rest/api/searchservice/update-index), můžete uchovávat různé služby vyhledávání v synchronizaci tím, že zadáte změny ve všech vyhledávacích službách pokaždé, když se vyžaduje aktualizace. V kódu se ujistěte, že se nezdařily případy, kdy aktualizace jedné služby vyhledávání selže, ale u jiných vyhledávacích služeb je úspěšná.
+Pokud používáte Azure Kognitivní hledání REST API k [nabízení obsahu do indexu vyhledávání](tutorial-optimize-indexing-push-api.md), můžete uchovávat různé služby vyhledávání v synchronizaci tím, že zadáte změny ve všech vyhledávacích službách pokaždé, když se vyžaduje aktualizace. V kódu se ujistěte, že se nezdařily případy, kdy aktualizace jedné služby vyhledávání selže, ale u jiných vyhledávacích služeb je úspěšná.
 
-## <a name="leverage-azure-traffic-manager"></a>Využití Azure Traffic Manager
+### <a name="use-azure-traffic-manager-to-coordinate-requests"></a>Koordinace požadavků pomocí Traffic Manager Azure
 
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umožňuje směrovat požadavky na více geograficky umístěných webů, které jsou následně zajištěny několika vyhledávacími službami. Jednou z výhod Traffic Manager je to, že se dá vyzkoušet Azure Kognitivní hledání a zajistit tak, že bude k dispozici a směrovat uživatele na alternativní vyhledávací služby v případě výpadku. Kromě toho, pokud odesíláte žádosti o vyhledávání prostřednictvím webů Azure, vám Azure Traffic Manager umožňuje vyrovnávat zatížení případů, kde web není, ale není Azure Kognitivní hledání. Tady je příklad, jak architektura, která využívá Traffic Manager.
 
    ![Křížové karty služeb podle oblasti s centrálním Traffic Manager][3]
+
+## <a name="disaster-recovery-and-service-outages"></a>Zotavení po havárii a výpadky služeb
+
+I když můžeme data vyřazením z provozu, služba Azure Kognitivní hledání neposkytuje okamžité převzetí služeb při selhání, pokud dojde k výpadku na úrovni clusteru nebo datového centra. Pokud dojde v datovém centru k chybě clusteru, bude provozní tým zjišťovat a fungovat na obnovení služby. Během obnovování služby dojde k výpadku, ale můžete požádat o kredity služby na nedostupnost služby na [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+
+Pokud se v případě závažných selhání mimo kontrolu Microsoftu vyžaduje nepřetržitá služba, můžete [zřídit další službu](search-create-service-portal.md) v jiné oblasti a implementovat strategii geografické replikace, abyste zajistili, že indexy budou plně redundantní napříč všemi službami.
+
+Zákazníci, kteří používají [indexery](search-indexer-overview.md) k naplnění a aktualizaci indexů, mohou zvládnout zotavení po havárii pomocí geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každý spouští indexer, můžou indexovat stejný zdroj dat, aby bylo možné geografickou redundanci. Pokud provádíte indexování ze zdrojů dat, které jsou taky geograficky redundantní, uvědomte si, že služby Azure Kognitivní hledání indexery můžou provádět přírůstkové indexování (sloučení aktualizací z nových, upravených nebo odstraněných dokumentů) z primárních replik. V případě události převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
+
+Pokud nepoužíváte indexery, použijete kód aplikace k paralelnímu nabízení objektů a dat do různých vyhledávacích služeb. Další informace najdete v tématu [zachování synchronizovaných dat napříč více službami](#data-sync).
+
+## <a name="back-up-and-restore-alternatives"></a>Zálohování a obnovení alternativ
+
+Vzhledem k tomu, že Azure Kognitivní hledání není primární řešení úložiště dat, neposkytuje Microsoft formální mechanismus pro samoobslužné zálohování a obnovu. K zálohování definice a snímku indexu do řady souborů JSON ale můžete použít ukázkový kód **index-Backup-Restore** v tomto [úložišti ukázek Azure kognitivní hledání .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) a pak tyto soubory použít k obnovení indexu v případě potřeby. Tento nástroj může také přesouvat indexy mezi úrovněmi služeb.
+
+V opačném případě váš kód aplikace použitý k vytvoření a naplnění indexu je možnost de facto Restore, pokud index omylem odstraníte. Pokud chcete index znovu sestavit, odstraňte ho (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu ho načtěte z primárního úložiště dat.
 
 ## <a name="next-steps"></a>Další kroky
 

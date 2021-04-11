@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 04/06/2021
 ms.author: duau
-ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a7e81c57552fdc24262522343a08fdabba71bfd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019459"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552576"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
@@ -40,8 +40,8 @@ Při kombinaci těchto globálních a regionálních služeb bude vaše aplikace
 
 ## <a name="global-load-balancing"></a>Globální vyrovnávání zatížení
 **Traffic Manager** poskytuje globální vyrovnávání zatížení DNS. Vyhledá příchozí požadavky DNS a odpoví na zdravý back-end, a to za zásadu směrování, kterou si zákazník vybral. Pro metody směrování jsou k disdobu tyto možnosti:
-- * * Směrování výkonu odesílá požadavky do nejbližšího back-endu s nejmenší latencí.
-- **Priorita směrování** směruje veškerý provoz do back-endu do back-endu a další back-endy jako zálohu.
+- **Směrování výkonu** odesílá požadavky do nejbližšího back-endu s minimální latencí.
+- **Priorita směrování** směruje veškerý provoz do back-endu a další back-endy jako zálohu.
 - **Směrování váženého kruhového dotazování** distribuuje provoz na základě váhy přiřazené ke každému back-endu.
 - **Geografické směrování** zajišťuje, aby žádosti, které získávají zdroje z konkrétních geografických oblastí, byly zpracovány pomocí back-endu mapovaných pro tyto oblasti. (Například všechny požadavky ze Španělska by měly být směrovány do oblasti Francie – střed Azure)
 - **Směrování podsítě** umožňuje mapovat rozsahy IP adres na back-endy, aby příchozí požadavky na tyto IP adresy byly odesílány do konkrétního back-endu. (Například všichni uživatelé, kteří se připojují z rozsahu IP adres vaší podnikové sídel, by měli mít jiný webový obsah než uživatelé s obecnými uživateli.)
