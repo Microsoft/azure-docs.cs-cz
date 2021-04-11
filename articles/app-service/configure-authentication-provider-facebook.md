@@ -3,16 +3,16 @@ title: Konfigurace ověřování na Facebooku
 description: Naučte se nakonfigurovat ověřování na Facebooku jako zprostředkovatele identity pro App Service nebo Azure Functions aplikaci.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc639eaea76b3309d6ed047e73c726040da19639
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519959"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078005"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlašovacích údajů na Facebooku
 
@@ -52,29 +52,24 @@ K dokončení postupu v tomto článku potřebujete účet Facebook s ověřenou
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Přidání informací o Facebooku do aplikace
 
-1. Přihlaste se k [Azure Portal] a přejděte do aplikace App Service.
-1. Vyberte **Nastavení**  >  **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. Vyberte **Facebook** a pak vložte do hodnot ID aplikace a tajné hodnoty aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
-1. Vyberte **OK**.
+1. Přihlaste se k [Azure Portal] a přejděte do aplikace.
+1. V nabídce na levé straně vyberte **ověřování** . Klikněte na **Přidat zprostředkovatele identity**.
+1. V rozevíracím seznamu Zprostředkovatel identity vyberte **Facebook** . Vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve.
 
-   ![Snímek obrazovky s nastavením Facebooku mobilní aplikace][0]
+    Tajný kód bude uložen jako [nastavení aplikace](./configure-common.md#configure-app-settings) typu "slot – vždy" s názvem `FACEBOOK_PROVIDER_AUTHENTICATION_SECRET` . Toto nastavení můžete později aktualizovat, aby se používaly [Key Vault odkazy](./app-service-key-vault-references.md) , pokud chcete tajný klíč spravovat v Azure Key Vault.
 
-    Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
-1. Volitelné Pokud chcete omezit přístup jenom na uživatele ověřované přes Facebook, nastavte **akci, která se má provést, když se žádost neověřuje** na **Facebooku**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechny neověřené požadavky na Facebook pro ověřování.
+1. Pokud se jedná o prvního zprostředkovatele identity nakonfigurovaného pro aplikaci, zobrazí se také výzva s oddílem **nastavení ověřování App Service** . V opačném případě se můžete přesunout k dalšímu kroku.
+    
+    Tyto možnosti určují, jak vaše aplikace reaguje na neověřené požadavky, a výchozí výběry přesměrují všechny požadavky na přihlášení pomocí tohoto nového poskytovatele. Přizpůsobením tohoto chování teď můžete změnit nebo upravit toto nastavení později z hlavní obrazovky pro **ověřování** výběrem možnosti **Upravit** vedle **nastavení ověřování**. Další informace o těchto možnostech najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
 
-   > [!CAUTION]
-   > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. Pro takové aplikace může být vhodnější použití **anonymních požadavků (žádná akce)** , aby aplikace ručně spouštěla ověřování. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
+1. Volitelné Klikněte na **Další: obory** a přidejte libovolné obory, které aplikace potřebuje. Budou požadovány v době přihlášení pro toky založené na prohlížeči.
+1. Klikněte na **Přidat**.
 
-1. Vyberte **Uložit**.
-
-Nyní jste připraveni použít Facebook pro ověřování ve vaší aplikaci.
+Nyní jste připraveni použít Facebook pro ověřování ve vaší aplikaci. Poskytovatel bude uveden na obrazovce **ověřování** . Odtud můžete tuto konfiguraci poskytovatele upravit nebo odstranit.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Další kroky
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-[0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
 [Vývojáři Facebooku]: https://go.microsoft.com/fwlink/p/?LinkId=268286

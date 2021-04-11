@@ -3,16 +3,16 @@ title: Konfigurace ověřování společnosti Microsoft
 description: Naučte se nakonfigurovat ověřování účtu Microsoft jako zprostředkovatele identity pro App Service nebo Azure Functions aplikaci.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 9ec9c102680496407106a3bf9b7683890c7a63ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e7b4c7ed1950b2fa585639a3097cc1f5688d739
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93043242"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077928"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení k účtu Microsoft
 
@@ -20,8 +20,8 @@ ms.locfileid: "93043242"
 
 V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service nebo Azure Functions, aby používaly AAD pro podporu přihlašovacích údajů pro osobní účet Microsoft.
 
-> [!NOTE]
-> Poskytovatel identity AAD používají osobní účty Microsoft i účty organizace. V tuto chvíli není možné nakonfigurovat tohoto zprostředkovatele identity tak, aby podporoval oba typy protokolů.
+> [!IMPORTANT]
+> I když je poskytovatel účtu Microsoft stále podporovaný, doporučuje se místo toho použít k tomu aplikace [Microsoft Identity Platform Provider (Azure AD)](./configure-authentication-provider-aad.md). Platforma Microsoft Identity Platform nabízí podporu jak pro účty organizace, tak pro osobní účty Microsoft.
 
 ## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>Registrace aplikace pomocí účtu Microsoft
 

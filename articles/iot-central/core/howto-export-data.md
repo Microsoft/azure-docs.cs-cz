@@ -4,16 +4,16 @@ description: Jak používat novou export dat k exportu dat IoT do Azure a vlastn
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d57f24f8cb4b59ce9b9cd5853be11fb2d104d75
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100522610"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277891"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak používat novou funkci exportu dat v Azure IoT Cen
 
 Můžete například:
 
-- Průběžně exportujte data telemetrie a změny vlastností ve formátu JSON téměř v reálném čase.
+- Průběžně exportujte telemetrie, změny vlastností, životní cyklus zařízení a data životního cyklu šablon zařízení ve formátu JSON prakticky v reálném čase.
 - Filtrování datových proudů pro export dat, která odpovídají vlastním podmínkám.
 - Obohacení datových proudů o vlastní hodnoty a hodnoty vlastností ze zařízení.
 - Odešlete data do umístění, jako jsou například Azure Event Hubs, Azure Service Bus, Azure Blob Storage a koncové body Webhooku.
@@ -133,21 +133,19 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
     | :------------- | :---------- | :----------- |
     |  Telemetrie | Exportujte zprávy telemetrie ze zařízení téměř v reálném čase. Každá exportovaná zpráva obsahuje úplný obsah původní zprávy zařízení, normalizováno.   |  [Formát zprávy telemetrie](#telemetry-format)   |
     | Změny vlastností | Exportujte změny do vlastností zařízení a cloudu téměř v reálném čase. V případě vlastností zařízení jen pro čtení jsou exportovány změny hlášených hodnot. Pro vlastnosti pro čtení i zápis jsou vyexportovány obě hlášené i požadované hodnoty. | [Formát zprávy o změně vlastnosti](#property-changes-format) |
+    | Životní cyklus zařízení | Exportujte události registrované a odstraněné zařízení. | [Formát zprávy o změnách v životním cyklu zařízení](#device-lifecycle-changes-format) |
+    | Životní cyklus šablon zařízení | Exportujte změny šablony publikovaného zařízení, včetně vytvořeného, aktualizovaného a odstraněného. | [Formát zprávy o změně životního cyklu šablony zařízení](#device-template-lifecycle-changes-format) | 
 
-<a name="DataExportFilters"></a>
-1. Volitelně můžete přidat filtry pro snížení objemu exportovaných dat. Pro každý typ exportu dat jsou k dispozici různé typy filtrů:
-
-    K filtrování telemetrie můžete:
-
-    - **Vyfiltruje** exportovaný datový proud tak, aby obsahoval pouze telemetrii ze zařízení, která odpovídají názvu zařízení, ID zařízení a podmínky filtru šablony zařízení.
-    - **Filtrovat** přes možnosti: Pokud zvolíte položku telemetrie v rozevíracím seznamu **název** , exportovaný datový proud obsahuje jenom telemetrii, která splňuje podmínku filtru. Pokud v rozevíracím seznamu **název** zvolíte položku zařízení nebo cloudová vlastnost, exportovaný datový proud obsahuje jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.
-    - **Filtr vlastností zpráv**: zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
-
-    Chcete-li filtrovat změny vlastností, použijte **Filtr schopností**. V rozevíracím seznamu vyberte položku Vlastnosti. Exportovaný datový proud obsahuje pouze změny vybrané vlastnosti, která splňuje podmínku filtru.
-
-<a name="DataExportEnrichmnents"></a>
-1. Volitelně můžete rozšířit exportované zprávy s dalšími metadaty páru klíč-hodnota. K dispozici jsou následující obohacení pro telemetrie a vlastnost pro změny typů exportu dat:
-
+1. Volitelně můžete přidat filtry pro snížení objemu exportovaných dat. Pro každý typ exportu dat jsou k dispozici různé typy filtrů: <a name="DataExportFilters"></a>
+    
+    | Typ dat | Dostupné filtry| 
+    |--------------|------------------|
+    |Telemetrie|<ul><li>Filtrovat podle názvu zařízení, ID zařízení a šablony zařízení</li><li>Filtrovat datový proud tak, aby obsahoval jenom telemetrii, která splňuje podmínky filtru</li><li>Filtrovat Stream tak, aby obsahoval jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.</li><li>Filtrovat datový proud tak, aby obsahoval pouze telemetrii, která má *vlastnosti zprávy* splňující podmínku filtru. *Vlastnosti zprávy* (označované také jako *Vlastnosti aplikace*) se odesílají do kontejneru párů klíč-hodnota v každé zprávě telemetrie volitelně odesílané zařízeními, která používají sady SDK pro zařízení. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. [Další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
+    |Změny vlastností|<ul><li>Filtrovat podle názvu zařízení, ID zařízení a šablony zařízení</li><li>Filtrovat datový proud tak, aby obsahoval pouze změny vlastností, které splňují podmínky filtru</li></ul>|
+    |Životní cyklus zařízení|<ul><li>Filtrovat podle názvu zařízení, ID zařízení a šablony zařízení</li><li>Filtrovat Stream tak, aby obsahoval jenom změny ze zařízení s vlastnostmi, které odpovídají podmínkám filtru</li></ul>|
+    |Životní cyklus šablon zařízení|<ul><li>Filtrovat podle šablony zařízení</li></ul>|
+    
+1. Volitelně můžete rozšířit exportované zprávy s dalšími metadaty páru klíč-hodnota. K dispozici jsou následující obohacení pro telemetrie a vlastnost pro změny typů exportu dat: <a name="DataExportEnrichmnents"></a>
     - **Vlastní řetězec**: přidá do každé zprávy vlastní statický řetězec. Zadejte libovolný klíč a zadejte libovolnou hodnotu řetězce.
     - **Vlastnost**: přidá do každé zprávy aktuální nahlášenou vlastnost nebo hodnotu vlastnosti cloudu. Zadejte libovolný klíč a vyberte vlastnost zařízení nebo cloudu. Pokud je vyexportovaná zpráva ze zařízení, které nemá zadanou vlastnost, vyexportovaná zpráva nezíská obohacení.
 
@@ -207,6 +205,7 @@ Každá exportovaná zpráva obsahuje normalizovanou podobu celé zprávy odesla
 - `deviceId`: ID zařízení, které odeslalo zprávu telemetrie.
 - `schema`: Název a verze schématu datové části.
 - `templateId`: ID šablony zařízení přidružené k zařízení.
+- `enqueuedTime`: Čas, kdy byla zpráva přijata IoT Central.
 - `enrichments`: Jakékoli obohacení nastavené na export.
 - `messageProperties`: Další vlastnosti, které zařízení poslalo se zprávou. Tyto vlastnosti jsou někdy označovány jako *Vlastnosti aplikace*. [Další informace najdete v dokumentaci IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -349,6 +348,7 @@ Každá zpráva nebo záznam představuje jednu změnu vlastnosti zařízení ne
 - `messageType`: Buď `cloudPropertyChange` , `devicePropertyDesiredChange` nebo `devicePropertyReportedChange` .
 - `deviceId`: ID zařízení, které odeslalo zprávu telemetrie.
 - `schema`: Název a verze schématu datové části.
+- `enqueuedTime`: Čas, kdy byla tato změna zjištěna IoT Central.
 - `templateId`: ID šablony zařízení přidružené k zařízení.
 - `enrichments`: Jakékoli obohacení nastavené na export.
 
@@ -377,13 +377,78 @@ Následující příklad ukazuje zprávu o změně exportovaných vlastností p�
 }
 ```
 
+## <a name="device-lifecycle-changes-format"></a>Formát změn životního cyklu zařízení
+
+Každá zpráva nebo záznam představuje jednu změnu jednoho zařízení. Mezi informace v exportované zprávě patří:
+
+- `applicationId`: ID aplikace IoT Central.
+- `messageSource`: Zdroj zprávy – `deviceLifecycle` .
+- `messageType`: Buď `registered` nebo `deleted` .
+- `deviceId`: ID zařízení, které bylo změněno.
+- `schema`: Název a verze schématu datové části.
+- `templateId`: ID šablony zařízení přidružené k zařízení.
+- `enqueuedTime`: Čas, kdy došlo k této změně v IoT Central.
+- `enrichments`: Jakékoli obohacení nastavené na export.
+
+V případě Event Hubs a Service Bus IoT Central exportuje data nových zpráv do centra událostí nebo Service Bus fronty nebo tématu téměř v reálném čase. Ve vlastnostech uživatele (také označovaných jako vlastnosti aplikace) každé zprávy `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` jsou automaticky zahrnuty,,, a `iotcentral-message-type` .
+
+Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu.
+
+Následující příklad ukazuje exportovanou zprávu o životním cyklu zařízení přijatou v Azure Blob Storage.
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceLifecycle",
+  "messageType": "registered",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+## <a name="device-template-lifecycle-changes-format"></a>Formát změn životního cyklu šablon zařízení
+
+Každá zpráva nebo záznam představuje jednu změnu pro jednu publikovanou šablonu zařízení. Mezi informace v exportované zprávě patří:
+
+- `applicationId`: ID aplikace IoT Central.
+- `messageSource`: Zdroj zprávy – `deviceTemplateLifecycle` .
+- `messageType`: Buď `created` , `updated` nebo `deleted` .
+- `schema`: Název a verze schématu datové části.
+- `templateId`: ID šablony zařízení přidružené k zařízení.
+- `enqueuedTime`: Čas, kdy došlo k této změně v IoT Central.
+- `enrichments`: Jakékoli obohacení nastavené na export.
+
+V případě Event Hubs a Service Bus IoT Central exportuje data nových zpráv do centra událostí nebo Service Bus fronty nebo tématu téměř v reálném čase. Ve vlastnostech uživatele (také označovaných jako vlastnosti aplikace) každé zprávy `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` jsou automaticky zahrnuty,,, a `iotcentral-message-type` .
+
+Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu.
+
+Následující příklad ukazuje exportovanou zprávu o životním cyklu zařízení přijatou v Azure Blob Storage.
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceTemplateLifecycle",
+  "messageType": "created",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>Porovnání exportu a exportu dat ze starších verzí
 
 V následující tabulce jsou uvedeny rozdíly mezi [exportem starších dat](howto-export-data-legacy.md) a novými funkcemi exportu dat:
 
 | Možnosti  | Export zastaralých dat | Nový export dat |
 | :------------- | :---------- | :----------- |
-| Dostupné datové typy | Telemetrie, zařízení a šablony zařízení | Telemetrie, změny vlastností |
+| Dostupné datové typy | Telemetrie, zařízení a šablony zařízení | Telemetrie, změny vlastností, změny životního cyklu zařízení, změny životního cyklu šablon zařízení |
 | Filtrování | Žádné | Závisí na typu exportovaného dat. Pro telemetrii, filtrování podle telemetrie, vlastností zpráv a hodnot vlastností |
 | Obohacení | Žádné | Obohacení vlastním řetězcem nebo hodnotou vlastnosti v zařízení |
 | Cíle | Azure Event Hubs, Azure Service Bus fronty a témata, Azure Blob Storage | Stejné jako u starších verzí exportu dat a webhooků|

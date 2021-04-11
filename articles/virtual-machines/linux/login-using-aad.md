@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 44dfd07a5b749d88552bb1dcac2ee4b4e5ce65e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565236"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554072"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -140,7 +140,7 @@ Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředk
 
 ## <a name="using-conditional-access"></a>Použití podmíněného přístupu
 
-Před autorizací přístupu k virtuálním počítačům se systémem Linux v Azure, které jsou povolené pomocí přihlášení Azure AD, můžete vyhovět zásadám podmíněného přístupu, jako je vícefaktorové ověřování nebo kontrolu rizik přihlašování uživatelů. Pokud chcete použít zásady podmíněného přístupu, musíte vybrat aplikaci přihlášení k virtuálnímu počítači Azure Linux z možnosti přiřazení cloudových aplikací nebo akcí a pak použít rizikové přihlašování jako podmínku nebo vyžadovat vícefaktorové ověřování jako řízení přístupu pro udělení. 
+Před autorizací přístupu k virtuálním počítačům se systémem Linux v Azure, které jsou povolené pomocí přihlášení Azure AD, můžete vyhovět zásadám podmíněného přístupu, jako je vícefaktorové ověřování nebo kontrolu rizik přihlašování uživatelů. Pokud chcete použít zásady podmíněného přístupu, musíte v možnosti přiřazení cloudových aplikací nebo akcí Microsoft Azure vybrat aplikaci pro přihlášení k virtuálnímu počítači se systémem Linux a pak použít jako podmínku přihlašování nebo vyžadovat vícefaktorové ověřování jako řízení přístupu pro udělení. 
 
 > [!WARNING]
 > Pro přihlášení k virtuálnímu počítači se nepodporuje Multi-Factor Authentication služby Azure AD, které jsou povolené nebo vyžadované pro uživatele.

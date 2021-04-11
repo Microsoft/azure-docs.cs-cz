@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674989"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256578"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Kurz konfigurace Nevisu pomocí Azure Active Directory B2C pro ověřování bez hesla
 
@@ -32,7 +32,7 @@ Abyste mohli začít, budete potřebovat:
 
 - [Tenant Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
-- Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](./custom-policy-get-started.md), pokud chcete do svého toku zásad registrace integrovat Nevis.
+- Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](./tutorial-create-user-flows.md?pivots=b2c-custom-policy), pokud chcete do svého toku zásad registrace integrovat Nevis.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -270,4 +270,4 @@ Další informace najdete v následujících článcích.
 
 - [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

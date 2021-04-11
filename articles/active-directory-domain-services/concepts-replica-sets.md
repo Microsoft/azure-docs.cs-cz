@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/30/2021
 ms.author: justinha
-ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bcd3ebef027ec72728be21b0fe1504236f553ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689058"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058166"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Klíčové pojmy a funkce pro Azure Active Directory Domain Services sady replik
 
@@ -54,7 +54,7 @@ Následující příklad ukazuje spravovanou doménu se třemi sadami replik pro
 
 Výchozí SKU pro spravovanou doménu je SKU *podniku* , které podporuje několik sad replik. Pokud chcete vytvořit další sady replik, pokud jste změnili na *standardní* SKU, [upgradujte spravovanou doménu](change-sku.md) na *Enterprise* nebo *Premium*.
 
-Maximální podporovaný počet sad replik je čtyři, včetně první repliky vytvořené při vytváření spravované domény.
+Maximální podporovaný počet sad replik je pět, včetně první repliky vytvořené při vytváření spravované domény.
 
 Faktura za každou sadu replik je založena na skladové jednotce konfigurace domény. Pokud máte například spravovanou doménu, která používá skladovou položku *Enterprise* a máte tři sady replik, vaše předplatné se účtuje za hodinu pro každou ze tří sad replik.
 
@@ -66,7 +66,7 @@ No. Sady replik musí být ve stejném předplatném jako spravovaná doména.
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Kolik sad replik můžu vytvořit?
 
-Můžete vytvořit maximálně čtyři sady replik – počáteční sada replik pro spravovanou doménu a tři další sady replik.
+Můžete vytvořit maximálně pět sad replik – počáteční sadu replik pro spravovanou doménu a čtyři další sady replik.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Jak se budou informace o uživatelích a skupinách synchronizovat se sadami replik?
 

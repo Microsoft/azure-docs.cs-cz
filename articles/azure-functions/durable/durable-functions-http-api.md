@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84697839"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220449"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
 
@@ -18,7 +18,7 @@ Rozšíření Durable Functions zpřístupňuje sadu integrovaných rozhraní AP
 
 Všechna rozhraní API HTTP implementovaná rozšířením vyžadují následující parametry. Datový typ všech parametrů je `string` .
 
-| Parametr        | Typ parametru  | Popis |
+| Parametr        | Typ parametru  | Description |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Řetězec dotazu    | Název [centra úloh](durable-functions-task-hubs.md). Pokud není zadaný, předpokládá se aktuální název centra úloh aplikace Function App. |
 | **`connection`** | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadaný, předpokládá se výchozí připojovací řetězec pro aplikaci Function App. |
@@ -82,7 +82,7 @@ Content-Length: 83
 
 Datová část odpovědi pro případy **protokolu HTTP 202** je objekt JSON s následujícími poli:
 
-| Pole                       | Popis                          |
+| Pole                       | Description                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |ID instance orchestrace. |
 | **`statusQueryGetUri`**     |Adresa URL stavu instance orchestrace. |
@@ -128,6 +128,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
@@ -140,6 +141,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
@@ -153,20 +155,21 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 | **`createdTimeFrom`**   | Řetězec dotazu    | Volitelný parametr. Když se tato klauzule zadá, vyfiltruje seznam vrácených instancí, které byly vytvořené na základě zadaného časového razítka ISO8601 nebo po ní.|
 | **`createdTimeTo`**     | Řetězec dotazu    | Volitelný parametr. Při zadání se vyfiltruje seznam vrácených instancí, které byly vytvořeny před zadaným časovým razítkem ISO8601 nebo před ním.|
 | **`runtimeStatus`**     | Řetězec dotazu    | Volitelný parametr. Když se tato parametr zadá, vyfiltruje seznam vrácených instancí na základě jejich běhového stavu. Seznam možných hodnot běhového stavu najdete v článku [dotazování instancí](durable-functions-instance-management.md) . |
+| **`returnInternalServerErrorOnFailure`**  | Řetězec dotazu    | Volitelný parametr. Když se nastaví na `true` , toto rozhraní API vrátí odpověď HTTP 500 namísto 200, pokud je instance ve stavu selhání. Tento parametr je určený pro scénáře automatizovaného dotazování na stav. |
 
 ### <a name="response"></a>Odpověď
 
 Může být vráceno několik možných hodnot stavového kódu.
 
-* **HTTP 200 (ok)**: Zadaná instance je v dokončeném stavu.
+* **HTTP 200 (ok)**: Zadaná instance je ve stavu dokončeno nebo nezdařilo se.
 * **HTTP 202 (přijato)**: Zadaná instance probíhá.
 * **HTTP 400 (chybný požadavek)**: Zadaná instance se nezdařila nebo byla ukončena.
 * **HTTP 404 (Nenalezeno)**: Zadaná instance neexistuje nebo nebyla spuštěna.
-* **HTTP 500 (interní chyba serveru)**: Zadaná instance selhala s neošetřenou výjimkou.
+* **HTTP 500 (interní chyba serveru)**: vráceno pouze v případě, že `returnInternalServerErrorOnFailure` je parametr nastaven na hodnotu `true` a Zadaná instance selhala s neošetřenou výjimkou.
 
 Datová část odpovědi pro případy **http 200** a **HTTP 202** je objekt JSON s následujícími poli:
 
-| Pole                 | Datový typ | Popis |
+| Pole                 | Datový typ | Description |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | řetězec    | Běhový stav instance Mezi hodnoty patří *spuštění*, *čeká*, *Chyba*, *zrušeno*, *ukončeno*, *dokončeno*. |
 | **`input`**           | JSON      | Data JSON používaná k inicializaci instance. Toto pole je `null` , pokud je `showInput` parametr řetězce dotazu nastaven na hodnotu `false` .|
@@ -427,7 +430,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole                 | Typ parametru  | Popis |
+| Pole                 | Typ parametru  | Description |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Řetězec dotazu    | Filtruje seznam vyčištěných instancí, které byly vytvořeny v nebo po daném časovém razítku ISO8601.|
 | **`createdTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Při zadání se vyfiltruje seznam vyčištěných instancí, které byly vytvořeny před zadaným časovým razítkem ISO8601 nebo před ním.|

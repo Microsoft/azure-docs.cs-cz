@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025811"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076288"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Kurz: implementace CI/CD pomocí GitOps s využitím clusterů Kubernetes s podporou ARC Azure
 
@@ -58,7 +58,7 @@ V tomto kurzu se seznámíte s Azure DevOps, Azure Reposmi a kanály a Azure CLI
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Import aplikací a úložišť GitOps do Azure Repos
 
-Importujte [úložiště aplikace](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#application-repo) a [úložiště GitOps](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#gitops-repo) do Azure Repos. Pro tento kurz použijte následující příklad úložišť:
+Importujte [úložiště aplikace](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) a [úložiště GitOps](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) do Azure Repos. Pro tento kurz použijte následující příklad úložišť:
 
 * **oblouk – cicd – demo –** úložiště aplikace src
    * Adresa URL https://github.com/Azure/arc-cicd-demo-src
@@ -338,4 +338,4 @@ V tomto kurzu jste nastavili kompletní pracovní postup CI/CD, který implement
 V našem koncepčním článku se dozvíte víc o GitOps a konfiguracích s povoleným Kubernetes ARC Azure.
 
 > [!div class="nextstepaction"]
-> [Pracovní postup CI/CD pomocí GitOps – Kubernetes s podporou ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd)
+> [Pracovní postup CI/CD pomocí GitOps – Kubernetes s podporou ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)

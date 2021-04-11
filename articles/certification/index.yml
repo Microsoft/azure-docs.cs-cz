@@ -1,0 +1,24 @@
+### YamlMime:Landing
+title: Dokumentace k zařízení s certifikací Azure
+summary: Tento program je vaším základem pro snadné odlišení, zvýšení úrovně a hledání zařízení IoT, která jsou sestavena pro spuštění v Azure.
+metadata:
+  title: Program zařízení s certifikací Azure
+  description: Tento program je vaším základem pro snadné odlišení, zvýšení úrovně a hledání zařízení IoT, která jsou sestavena pro spuštění v Azure.
+  ms.service: certification
+  ms.topic: landing-page
+  author: cbroad
+  ms.author: cbroad
+  ms.date: 03/18/2021
+  ms.openlocfilehash: 3fa7e18388fc35eebdfdd0d0aec2be308765b4e1
+  ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/30/2021
+  ms.locfileid: "105970079"
+landingContent:
+- title: O programu zařízení s certifikací Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je program zařízení s certifikací Azure?
+      url: ./overview.md

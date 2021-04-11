@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644668"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103806"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
@@ -201,7 +201,7 @@ Výkon snímku úložiště je ovlivněn řadou faktorů kromě počtu souborů 
 
 * Souběžný přístup ke zdrojovým a cílovým úložištím dat.  
 * Umístění zdrojových a cílových úložišť dat. 
-* V případě přírůstkového snímku může počet souborů ve sdílené datové sadě ovlivnit čas, který bude mít za následek vyhledání seznamu souborů s časem poslední změny po posledním úspěšném snímku. 
+* U přírůstkového snímku může počet souborů ve sdílené datové sadě ovlivnit dobu potřebnou k vyhledání seznamu souborů s časem poslední změny po posledním úspěšném snímku. 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376aa04228113c56f0f797f737833802c9eca021
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98184335"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029484"
 ---
 # <a name="how-traffic-manager-works"></a>Jak Traffic Manager funguje
 
@@ -30,7 +30,7 @@ Traffic Manager poskytuje dvě klíčové výhody:
 
 Když se klient pokusí připojit se ke službě, musí nejprve přeložit název DNS služby na IP adresu. Potom se klient připojí k této IP adrese, aby získal přístup ke službě.
 
-**Nejdůležitějším bodem, který je třeba pochopit, je, že Traffic Manager funguje na úrovni DNS.**  Traffic Manager používá DNS k přímému směrování klientů na konkrétní koncové body služby na základě pravidel metody směrování provozu. Klienti se připojují k vybranému koncovému bodu **přímo**. Traffic Manager není proxy server nebo brána. Traffic Manager se nezobrazuje přenos procházející mezi klientem a službou.
+**Nejdůležitějším bodem, který je třeba pochopit, je, že Traffic Manager pracuje na úrovni DNS, která je na vrstvě aplikace (vrstva-7).**  Traffic Manager používá DNS k přímému směrování klientů na konkrétní koncové body služby na základě pravidel metody směrování provozu. Klienti se připojují k vybranému koncovému bodu **přímo**. Traffic Manager není proxy server nebo brána. Traffic Manager se nezobrazuje přenos procházející mezi klientem a službou.
 
 ## <a name="traffic-manager-example"></a>Příklad Traffic Manager
 

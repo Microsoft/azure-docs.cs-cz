@@ -1,198 +1,88 @@
 ---
-title: Povolení a Správa obnovitelného odstranění pro objekty blob
+title: Povolení obnovitelného odstranění pro objekty blob
 titleSuffix: Azure Storage
-description: Povolit obnovitelné odstranění objektů blob, aby bylo možné snadněji obnovit data v případě, že se omylem změnila nebo odstranila.
+description: Povolte obnovitelné odstranění pro objekty blob pro ochranu dat objektů BLOB před náhodným odstraněním nebo přepsáním.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: c89e42736f5b8de65ed93ccb57f8d034d4240bc8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 11323f2aec05935b9dc45187ed54597e61af924d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729078"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554109"
 ---
-# <a name="enable-and-manage-soft-delete-for-blobs"></a>Povolení a Správa obnovitelného odstranění pro objekty blob
+# <a name="enable-soft-delete-for-blobs"></a>Povolení obnovitelného odstranění pro objekty blob
 
-Částečný odstranění objektu BLOB chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je pro účet úložiště povolené obnovitelné odstranění objektů blob, můžou se objekty blob, verze objektů BLOB a snímky v tomto účtu úložiště po jejich odstranění obnovit v rámci doby uchování, kterou zadáte.
+Měkké odstranění objektu BLOB chrání jednotlivé objekty BLOB a jejich verze, snímky a metadata před náhodným odstraněním nebo přepsáním tím, že v systému v zadaném časovém období udržuje Odstraněná data. Během doby uchování můžete objekt BLOB obnovit do jeho stavu při odstranění. Po vypršení doby uchování se objekt BLOB trvale odstraní. Další informace o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md).
 
-Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout funkci BLOB Soft DELETE. V tomto článku se dozvíte, jak povolit obnovitelné odstranění pro objekty blob. Další podrobnosti o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md).
-
-Další informace o tom, jak povolit obnovitelné odstranění kontejnerů, najdete v tématu [povolení a Správa obnovitelného odstranění kontejnerů](soft-delete-container-enable.md).
+Obnovitelné odstranění objektu BLOB je součástí komplexní strategie ochrany dat pro data objektů BLOB. Další informace o doporučeních Microsoftu pro ochranu dat najdete v tématu [Přehled ochrany dat](data-protection-overview.md).
 
 ## <a name="enable-blob-soft-delete"></a>Povolit obnovitelné odstranění objektu BLOB
 
+Obnovitelné odstranění objektu BLOB je ve výchozím nastavení pro nový účet úložiště zakázané. Obnovitelné odstranění účtu úložiště můžete kdykoli povolit nebo zakázat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Povolit obnovitelné odstranění pro objekty BLOB v účtu úložiště pomocí Azure Portal:
+Pokud chcete pro svůj účet úložiště povolit obnovitelné odstranění objektů BLOB pomocí Azure Portal, postupujte takto:
 
 1. Na webu [Azure Portal](https://portal.azure.com/) přejděte ke svému účtu úložiště.
 1. V části **BLOB Service** Najděte možnost **Ochrana dat** .
-1. Nastavte vlastnost **měkkého odstranění objektu BLOB** na *povolenou*.
-1. V části **zásady uchovávání informací** určete, jak dlouho se mají dočasně odstraněné objekty blob uchovávat pomocí Azure Storage.
+1. V části **obnovení** vyberte **zapnout obnovitelné odstranění pro objekty blob**.
+1. Zadejte dobu uchování mezi 1 a 365 dny. Microsoft doporučuje minimální dobu uchování po dobu sedmi dnů.
 1. Uložte provedené změny.
 
-![Snímek obrazovky webu Azure Portal se zvolenou službou data Protection BLOB](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
-
-Chcete-li zobrazit obnovitelné odstraněné objekty blob, zaškrtněte políčko **Zobrazit odstraněné objekty blob** .
-
-![Snímek stránky služby BLOB data Protection s zvýrazněnou možností zobrazit odstraněné objekty blob](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
-
-Pokud chcete pro daný objekt BLOB zobrazit obnovitelné odstraněné snímky, vyberte objekt BLOB a pak klikněte na **Zobrazit snímky**.
-
-![Snímek stránky služby BLOB data Protection se zvýrazněnou možností zobrazení snímků](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
-
-Ujistěte se, že je zaškrtnuté políčko **Zobrazit odstraněné snímky** .
-
-![Snímek stránky zobrazení snímků se zvýrazněnou možností zobrazit odstraněné objekty blob](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
-
-Když kliknete na měkký odstraněný objekt BLOB nebo snímek, Všimněte si, že se zobrazí nové vlastnosti objektu BLOB. Označují, že se objekt odstranil, a kolik dní zbývá, dokud platnost snímku objektu BLOB nebo objektu BLOB neproběhne trvale. Pokud neměkký odstraněný objekt není snímkem, budete mít také možnost ho zrušit.
-
-![Snímek obrazovky podrobností nepodmíněného odstraněného objektu.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-properties.png)
-
-Pamatujte, že zrušení odstranění objektu BLOB také zruší odstranění všech přidružených snímků. Chcete-li obnovit odstraněné obnovitelné snímky pro aktivní objekt blob, klikněte na objekt BLOB a vyberte možnost zrušit **odstranění všech snímků**.
-
-![Snímek obrazovky s podrobnostmi nepodmíněného odstraněného objektu BLOB.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
-
-Po obnovení snímků objektu blob můžete kliknutím na **zvýšit úroveň** zkopírovat snímek přes kořenový objekt blob, čímž se obnoví objekt blob do snímku.
-
-![Snímek stránky zobrazení snímků se zvýrazněnou možností zvýšení úrovně](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+:::image type="content" source="media/soft-delete-blob-enable/blob-soft-delete-configuration-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit obnovitelné odstranění v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Pokud chcete v PowerShellu povolit obnovitelné odstranění objektů blob, zavolejte příkaz [Enable-AzStorageBlobDeleteRetentionPolicy](/powershell/module/az.storage/enable-azstorageblobdeleteretentionpolicy) , který určí dobu uchování ve dnech.
 
-Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB. Následující příklad povoluje obnovitelné odstranění pro podmnožinu účtů v rámci předplatného:
+Následující příklad povoluje dočasné odstranění objektů BLOB a nastavuje dobu uchování na sedm dní. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
-```powershell
-Set-AzContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
+```azurepowershell
+Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account> `
+    -RetentionDays 7
 ```
 
-Pomocí následujícího příkazu můžete ověřit, zda bylo toto obnovitelné odstranění zapnuté:
+Pokud chcete ověřit aktuální nastavení pro obnovitelné odstranění objektu blob, zavolejte příkaz [Get-AzStorageBlobServiceProperty](/powershell/module/az.storage/get-azstorageblobserviceproperty) :
 
-```powershell
-$MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
-```
-
-Chcete-li obnovit objekty blob, které byly omylem odstraněny, zavolejte u těchto objektů BLOB příkaz **Undelete BLOB** . Nezapomeňte, že volání **Undelete BLOB**, jak u aktivních, tak i u objektů BLOB s odstraněnými objekty, obnoví všechny přidružené obnovitelné snímky odstraněné jako aktivní. Následující příklad volá odstraněné objekty **BLOB** u všech provizorních odstraněných a aktivních objektů BLOB v kontejneru:
-
-```powershell
-# Create a context by specifying storage account name and key
-$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
-
-# Get the blobs in a given container and show their properties
-$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
-$Blobs.ICloudBlob.Properties
-
-# Undelete the blobs
-$Blobs.ICloudBlob.Undelete()
-```
-Chcete-li najít aktuální zásady uchovávání informací o tichém odstranění, použijte následující příkaz:
-
-```azurepowershell-interactive
-   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
+```azurepowershell
+$properties = Get-AzStorageBlobServiceProperty -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$properties.DeleteRetentionPolicy.Enabled
+$properties.DeleteRetentionPolicy.Days
 ```
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-CLI)
 
-Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
+Pokud chcete povolit obnovitelné odstranění objektů BLOB pomocí rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) a určete dobu uchování ve dnech.
+
+Následující příklad povoluje dočasné odstranění objektů BLOB a nastavuje dobu uchování na sedm dní. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli-interactive
-az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+az storage account blob-service-properties update --account-name <storage-account> \
+    --resource-group <resource-group> \
+    --enable-delete-retention true \
+    --delete-retention-days 7
 ```
 
-Chcete-li ověřit, zda je funkce obnovitelné odstranění zapnutá, použijte následující příkaz: 
+Chcete-li zjistit aktuální nastavení pro obnovitelné odstranění objektu blob, zavolejte příkaz [AZ Storage Account BLOB-Service-Properties show](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_show) :
 
 ```azurecli-interactive
-az storage blob service-properties delete-policy show --account-name mystorageaccount 
+az storage account blob-service-properties show --account-name <storage-account> \
+    --resource-group <resource-group>
 ```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
-
-```python
-# Make the requisite imports
-from azure.storage.blob import BlockBlobService
-from azure.storage.common.models import DeleteRetentionPolicy
-
-# Initialize a block blob service
-block_blob_service = BlockBlobService(
-    account_name='<enter your storage account name>', account_key='<enter your storage account key>')
-
-# Set the blob client's service property settings to enable soft delete
-block_blob_service.set_blob_service_properties(
-    delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
-```
-
-# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
-
-Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
-
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_EnableSoftDelete":::
-
-Chcete-li obnovit objekty blob, které byly omylem odstraněny, zavolejte u těchto objektů BLOB příkaz redelete. Nezapomeňte, že volání **Undelete**, jak u aktivních, tak i u tichých odstraněných objektů BLOB obnoví všechny přidružené obnovitelné snímky odstraněné jako aktivní. Následující příklad volá Undelete u všech provizorních odstraněných a aktivních objektů BLOB v kontejneru:
-
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
-
-Chcete-li provést obnovení na konkrétní verzi objektu blob, nejdříve zavolejte příkaz Undelete u objektu BLOB a potom zkopírujte požadovaný snímek do objektu BLOB. Následující příklad obnoví objekt blob bloku na jeho naposledy vygenerovaný snímek:
-
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
-
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
-
-Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
-
-```csharp
-// Get the blob client's service property settings
-ServiceProperties serviceProperties = blobClient.GetServiceProperties();
-
-// Configure soft delete
-serviceProperties.DeleteRetentionPolicy.Enabled = true;
-serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
-
-// Set the blob client's service property settings
-blobClient.SetServiceProperties(serviceProperties);
-```
-
-Chcete-li obnovit objekty blob, které byly omylem odstraněny, zavolejte u těchto objektů BLOB příkaz **Undelete BLOB** . Nezapomeňte, že volání **Undelete BLOB**, jak u aktivních, tak i u objektů BLOB s odstraněnými objekty, obnoví všechny přidružené obnovitelné snímky odstraněné jako aktivní. Následující příklad volá odstraněné objekty **BLOB** pro všechny obnovitelné a aktivní objekty BLOB v kontejneru:
-
-```csharp
-// Recover all blobs in a container
-foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobListingDetails: BlobListingDetails.Deleted))
-{
-       await blob.UndeleteAsync();
-}
-```
-
-Pokud chcete provést obnovení na konkrétní verzi objektu blob, nejdřív zavolejte operaci **obnovení objektu BLOB** a potom zkopírujte požadovaný snímek přes objekt BLOB. Následující příklad obnoví objekt blob bloku na jeho naposledy vygenerovaný snímek:
-
-```csharp
-// Undelete
-await blockBlob.UndeleteAsync();
-
-// List all blobs and snapshots in the container prefixed by the blob name
-IEnumerable<IListBlobItem> allBlobVersions = container.ListBlobs(
-    prefix: blockBlob.Name, useFlatBlobListing: true, blobListingDetails: BlobListingDetails.Snapshots);
-
-// Restore the most recently generated snapshot to the active blob
-CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)version).IsSnapshot &&
-    ((CloudBlockBlob)version).Name == blockBlob.Name) as CloudBlockBlob;
-blockBlob.StartCopy(copySource);
-```  
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovitelné odstranění pro úložiště objektů BLOB](./soft-delete-blob-overview.md)
-- [Správa verzí objektů BLOB](versioning-overview.md)
+- [Obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md)
+- [Správa a obnovení objektů BLOB s odstraněnou přípouštějící](soft-delete-blob-manage.md)

@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu pro média – přehled
 description: Přehled ukázky podrobného plánu pro média Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly pro média.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: f2b9e29d8f5095947587107cc372beb34b18abb7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: HT
+ms.openlocfilehash: f883a22b7af50adedd527bc6783cab435904010a
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034981"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386359"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>Přehled ukázky podrobného plánu pro média
 

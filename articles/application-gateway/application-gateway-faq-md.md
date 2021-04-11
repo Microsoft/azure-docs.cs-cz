@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc803814e493ffef6f5928dc9971f9f6f864342d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102619150"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221734"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -394,6 +394,16 @@ Pokud používáte SKU verze V1 služby Application Gateway/WAF, museli byste no
 Další informace najdete v dokumentaci [sem](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers).
 
 Pokud používáte SKU verze V2 služby Application Gateway/WAF, nemusíte v nastavení HTTP nahrávat nový certifikát, protože SKU v2 používá "důvěryhodné kořenové certifikáty" a není nutné provádět žádnou akci.
+
+## <a name="configuration---mutual-authentication"></a>Konfigurace – vzájemné ověřování
+
+### <a name="what-is-mutual-authentication"></a>Co je vzájemné ověřování?
+
+Vzájemné ověřování je obousměrné ověřování mezi klientem a serverem. Vzájemné ověřování pomocí Application Gateway v současné době umožňuje bráně ověřit klienta odesílajícího požadavek, což je ověřování klientů. Obvykle je klient jediným z nich, který ověřuje Application Gateway. Vzhledem k tomu, že Application Gateway nyní může také ověřit klienta, dojde k vzájemnému ověření, kde Application Gateway a klient se vzájemně ověřuje. 
+
+### <a name="is-mutual-authentication-available-between-application-gateway-and-its-backend-pools"></a>Je mezi Application Gateway a jejich fondy back-endu k dispozici vzájemné ověřování?
+
+Ne, vzájemné ověřování je aktuálně k dispozici pouze mezi klientem front-end a Application Gateway. Vzájemné ověřování back-endu není v současné době podporováno.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfigurace – řadič pro příchozí přenosy pro AKS
 

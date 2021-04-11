@@ -7,12 +7,12 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 049a0ad45ea82210d8fac28db0fb3d067841bba4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d553f6c87d1044f8bde7460a0ea7bf123dd1851
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625139"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450068"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL pomocí importu a exportu
 
@@ -35,13 +35,13 @@ Vytvořte na serveru Azure Database for MySQL prázdnou databázi pomocí MySQL 
 
 Připojte se k následujícím akcím:
 
-1. V Azure Portal vyhledejte informace o připojení v podokně **Přehled** vaší Azure Database for MySQL.
+1. V Azure Portal vyhledejte informace o připojení v podokně **přehled** Azure Database for MySQL.
 
    :::image type="content" source="./media/concepts-migrate-import-export/1_server-overview-name-login.png" alt-text="Snímek obrazovky s informacemi o připojení Azure Database for MySQL serveru v Azure Portal.":::
 
 1. Přidejte informace o připojení do aplikace MySQL Workbench.
 
-   :::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Připojovací řetězec MySQL Workbench":::
+   :::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Snímek obrazovky připojovacího řetězce MySQL Workbench":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Určení, kdy použít techniky importu a exportu
 
@@ -50,12 +50,12 @@ Připojte se k následujícím akcím:
 
 V následujících scénářích použijte nástroje MySQL k importu a exportu databází do databáze MySQL. Další nástroje najdete v části metody migrace (stránka 22) [Průvodce migrací databáze MySQL do Azure](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf). 
 
-- Pokud potřebujete selektivně zvolit několik tabulek, které se mají importovat z existující databáze MySQL do vaší databáze MySQL Azure, je nejlepší použít techniku importu a exportu.  Díky tomu můžete z migrace vynechat všechny nepotřebné tabulky a ušetřit tak čas a prostředky. Například použijte `--include-tables` přepínač nebo s parametrem `--exclude-tables` [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) a `--tables` přepínač s [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- Pokud potřebujete selektivně zvolit několik tabulek, které se mají importovat z existující databáze MySQL do vaší databáze MySQL Azure, je nejlepší použít techniku importu a exportu. Díky tomu můžete z migrace vynechat všechny nepotřebné tabulky a ušetřit tak čas a prostředky. Například použijte `--include-tables` `--exclude-tables` přepínač nebo s [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables)a `--tables` přepínač s [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Pokud přesouváte databázové objekty jiné než tabulky, je třeba tyto objekty explicitně vytvořit. Zahrňte omezení (primární klíč, cizí klíč a indexy), zobrazení, funkce, procedury, aktivační události a všechny další databázové objekty, které chcete migrovat.
 - Když migrujete data z jiných zdrojů dat než databáze MySQL, vytvoříte ploché soubory a naimportujete je pomocí [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 > [!Important]
-> Jeden server i flexibilní Server podporují *jenom modul úložiště InnoDB*. Zajistěte, aby všechny tabulky v databázi používaly modul úložiště InnoDB při načítání dat do služby Azure Database for MySQL.
+> Jeden server i flexibilní Server podporují jenom modul úložiště InnoDB. Zajistěte, aby všechny tabulky v databázi používaly modul úložiště InnoDB při načítání dat do služby Azure Database for MySQL.
 >
 > Pokud zdrojová databáze používá jiný modul úložiště, před migrací databáze převeďte na modul InnoDB. Pokud máte například WordPress nebo webovou aplikaci, která používá modul MyISAM, nejprve převeďte tabulky migrací dat do tabulek InnoDB. Pomocí klauzule `ENGINE=INNODB` Nastavte modul pro vytvoření tabulky a potom přeneste data do kompatibilní tabulky před migrací.
 
@@ -127,7 +127,7 @@ K exportu dat MySQL můžete použít podokno **Export dat** .
 
 1. Vyberte databázové objekty, které chcete exportovat, a nakonfigurujte související možnosti.
 1. Vyberte **aktualizovat** a načtěte aktuální objekty.
-1. V případě potřeby můžete vybrat možnost **Upřesnit možnosti** v pravém horním rohu a Upřesnit operaci exportu. Například přidejte zámky tabulek, použijte místo příkazů INSERT a nahraďte identifikátory uvozovek znaky.
+1. V případě potřeby můžete vybrat možnost **Upřesnit možnosti** v pravém horním rohu a Upřesnit operaci exportu. Například přidejte zámky tabulek, použijte `replace` místo `insert` příkazů a identifikátory uvozovek pomocí znaků typu zaškrtnutí.
 1. Pokud chcete zahájit proces exportu, vyberte **Spustit export** .
 
 

@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 987fb5745b6528eb96b4237f698b3ae371d69287
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec83d8d56ad67d8c64c6ac3151ca3819e88c0616
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731815"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449592"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Kurz: nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC Azure 
 
@@ -30,6 +30,14 @@ V tomto kurzu použijete konfigurace pomocí GitOps v clusteru Kubernetes s povo
 - Existující Kubernetes připojený cluster s podporou Azure ARC.
     - Pokud jste ještě nepřipojili cluster, Projděte si náš průvodce [rychlým startem clusteru Kubernetes s povoleným připojením k Azure ARC](quickstart-connect-cluster.md).
 - Porozumění výhodám a architektuře této funkce. Další informace najdete v [tématu Konfigurace a GitOps v článku Kubernetes s podporou ARC Azure](conceptual-configurations.md).
+- Nainstalujte `k8s-configuration` rozšíření Azure CLI verze >= 1.0.0:
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
+
+    >[!TIP]
+    > Pokud `k8s-configuration` je rozšíření už nainstalované, můžete ho aktualizovat na nejnovější verzi pomocí následujícího příkazu: `az extension update --name k8s-configuration`
 
 ## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
@@ -235,7 +243,7 @@ Při vytvoření nebo aktualizaci konfigurace se stane několik věcí:
 
 Během procesu zřizování se prostředek konfigurace přesune po několika změnách stavu. Sledujte průběh pomocí `az k8s-configuration show ...` příkazu výše:
 
-| Změna fáze | Description |
+| Změna fáze | Popis |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | Představuje počáteční a průběžné stavy. |
 | `complianceStatus` -> `Installed`  | `config-agent` cluster byl úspěšně nakonfigurován a nasazen `flux` bez chyby. |

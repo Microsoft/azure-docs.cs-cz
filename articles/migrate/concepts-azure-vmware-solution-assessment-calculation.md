@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 1d9918786b22faddaeb07a12f0840b36a11ffe4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55f0562ae08a6e5a6b38bd0b6fc9f781b94ab64
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778377"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078685"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Přehled posouzení (migrace do řešení VMware Azure)
 
@@ -31,6 +31,9 @@ Hodnocení, která vytvoříte pomocí Azure Migrate, jsou snímkem dat v určit
 **Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. Místní servery můžete vyhodnotit v prostředí [VMware](how-to-set-up-appliance-vmware.md) a [Hyper-V](how-to-set-up-appliance-hyper-v.md) a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure pomocí tohoto typu posouzení.
 **Azure SQL** | Vyhodnotí migraci místních SQL serverů z prostředí VMware do Azure SQL Database nebo spravované instance Azure SQL.
 **Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> Pokud se v nástroji pro zjišťování a hodnocení nesprávný počet testů virtuálního počítače Azure nebo služby AVS nepoužívá, klikněte na celkový počet posouzení, abyste přešli na všechna posouzení, a přepočítejte virtuální počítač Azure nebo funkce pro vyhodnocování funkce AVS. Nástroj pro zjišťování a hodnocení pak zobrazí správný počet pro tento typ posouzení. 
 
 Posouzení řešení Azure VMware (AVS) poskytuje dvě možnosti pro kritéria změny velikosti:
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557008"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078736"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -49,7 +49,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Visua
 > [!NOTE]
 > Informace o aktuálních známých problémech najdete na [stránce Logic Apps Public Preview známé problémy v GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
 
@@ -101,9 +101,9 @@ Chcete-li při použití macOS nebo Linux místně sestavit a spustit Visual Stu
 1. Uložte připojovací řetězec někam do trezoru. Po vytvoření projektu aplikace logiky v Visual Studio Code je nutné přidat řetězec do **local.settings.jsv** souboru ve složce na kořenové úrovni vašeho projektu.
 
    > [!IMPORTANT]
-   > Pokud plánujete nasazení do kontejneru Docker, budete také muset přidat tento připojovací řetězec do souboru Docker, který používáte pro nasazení.
-
-### <a name="tools"></a>Nástroje
+   > Pokud plánujete nasazení do kontejneru Docker, budete také muset použít tento připojovací řetězec se souborem Docker, který používáte pro nasazení. V produkčních scénářích se ujistěte, že tyto tajné klíče a citlivé informace chráníte a Zabezpečete například pomocí trezoru klíčů.
+  
+### <a name="tools"></a>nástroje
 
 * [Visual Studio Code 1.30.1 (leden 2019) nebo vyšší](https://code.visualstudio.com/), což je zdarma. Také si stáhněte a nainstalujte tyto nástroje pro Visual Studio Code, pokud je ještě nemáte:
 
@@ -304,6 +304,9 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
          }
       }
       ```
+
+      > [!IMPORTANT]
+      > V produkčních scénářích se ujistěte, že tyto tajné klíče a citlivé informace chráníte a Zabezpečete například pomocí trezoru klíčů.
 
    1. Až budete hotovi, nezapomeňte změny uložit.
 
@@ -1205,7 +1208,10 @@ Pokud nejste obeznámeni s Docker, přečtěte si tato témata:
 
 * Soubor Docker pro pracovní postup, který použijete při sestavování kontejneru Docker
 
-  Například tento ukázkový soubor Docker nasadí aplikaci logiky. Určuje připojovací řetězec, který obsahuje přístupový klíč pro účet Azure Storage, který se použil k publikování aplikace logiky do Azure Portal. Tento řetězec najdete v tématu [získání připojovacího řetězce účtu úložiště](#find-storage-account-connection-string).
+  Například tento ukázkový soubor Docker nasadí aplikaci logiky a určí připojovací řetězec, který obsahuje přístupový klíč pro účet Azure Storage, který se použil pro publikování aplikace logiky do Azure Portal. Tento řetězec najdete v tématu [získání připojovacího řetězce účtu úložiště](#find-storage-account-connection-string). Další informace najdete v článku [osvědčené postupy pro psaní souborů Docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
+  
+  > [!IMPORTANT]
+  > V produkčních scénářích se ujistěte, že tyto tajné klíče a citlivé informace chráníte a Zabezpečete například pomocí trezoru klíčů. Pro soubory Docker si přečtěte [Obrázek sestavení pomocí BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) a [spravujte citlivá data pomocí Docker tajných klíčů](https://docs.docker.com/engine/swarm/secrets/).
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ Pokud nejste obeznámeni s Docker, přečtěte si tato témata:
 
    RUN cd /home/site/wwwroot
    ```
-
-   Další informace najdete v tématu [osvědčené postupy pro zápis souborů Docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) .
 
 <a name="find-storage-account-connection-string"></a>
 

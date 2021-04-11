@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3a794d8915c820abecd530911f05ac649e5e538c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aa394cda245bd3a457a16c19660bfe08553d14d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379909"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058880"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Jaké jsou srovnání mezi Azure CDNmi funkcemi produktu?
 
@@ -71,7 +71,7 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | **Jednoduché používání** | **Microsoft – standardní** | **Akamai úrovně Standard** | **Verizon úrovně Standard** | **Verizon úrovně Premium** | 
 | Snadná integrace se službami Azure, jako jsou [Storage](cdn-create-a-storage-account-with-cdn.md), [Web Apps](cdn-add-to-web-app.md) a [Media Services](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Správa prostřednictvím [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md)nebo [PowerShellu](cdn-manage-powershell.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Komprese typů MIME](./cdn-improve-performance.md)  |Pouze výchozí |Konfigurovatelné |Konfigurovatelné  |Konfigurovatelné  |
+| [Komprese typů MIME](./cdn-improve-performance.md)  |Konfigurovatelné |Konfigurovatelné |Konfigurovatelné  |Konfigurovatelné  |
 | Kódování komprese  |GZIP, brotli |GZIP |GZIP, Deflate, bzip2, brotli  |GZIP, Deflate, bzip2, brotli  |
 
 ## <a name="migration"></a>Migrace

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5037450d401153811899b8d769ca92af7ce4068e
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936287"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103772"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Použití rozhraní příkazového řádku Azure Digital Twins
 
@@ -25,7 +25,7 @@ Kromě správy instance digitálních vláken Azure v Azure Portal má digitáln
 * Správa [tras](concepts-route-events.md)
 * Konfigurace [zabezpečení](concepts-security.md) prostřednictvím řízení přístupu na základě role Azure (Azure RBAC)
 
-Sada příkazů se nazývá **AZ DT** a je součástí [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Úplný seznam příkazů a jejich použití můžete zobrazit jako součást Referenční dokumentace pro `az iot` sadu příkazů: [ *AZ DT* Command reference](/cli/azure/ext/azure-iot/dt).
+Sada příkazů se nazývá **AZ DT** a je součástí [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Úplný seznam příkazů a jejich použití můžete zobrazit jako součást Referenční dokumentace pro `az iot` sadu příkazů: [ *AZ DT* Command reference](/cli/azure/dt).
 
 ## <a name="uses-deploy-and-validate"></a>Použití (nasazení a ověření)
 
@@ -61,4 +61,4 @@ az extension add --upgrade -n azure-iot
 ## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte rozhraní příkazového řádku a jeho úplnou sadu příkazů prostřednictvím referenčních dokumentů:
-* [*AZ DT* Command reference](/cli/azure/ext/azure-iot/dt)
+* [*AZ DT* Command reference](/cli/azure/dt)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508805"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029399"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -39,7 +39,7 @@ Tady jsou některé klíčové podrobnosti o privátních koncových bodech:
 
 - Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní jen pro čtení. Rozhraní jsou přiřazovány dynamicky privátních IP adres z podsítě, která je mapována na prostředek privátního propojení. Hodnota privátní IP adresy zůstane beze změny pro celý životní cyklus privátního koncového bodu.
  
-- Privátní koncový bod musí být nasazený ve stejné oblasti jako virtuální síť. 
+- Privátní koncový bod musí být nasazený ve stejné oblasti a předplatném jako virtuální síť. 
  
 - Prostředek privátního propojení se dá nasadit v jiné oblasti, než je virtuální síť a soukromý koncový bod.
  

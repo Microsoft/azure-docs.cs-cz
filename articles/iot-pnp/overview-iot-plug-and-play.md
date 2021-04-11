@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594565"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079008"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Co je IoT Plug and Play?
 
@@ -68,7 +68,7 @@ Jako tvůrce zařízení můžete vyvíjet hardwarový produkt IoT, který podpo
 
 ## <a name="device-certification"></a>Certifikace zařízení
 
-[Program pro certifikaci zařízení iot technologie Plug and Play](howto-certify-device.md) ověří, jestli zařízení splňuje požadavky na certifikaci technologie Plug and Play IoT. Certifikované zařízení můžete přidat do seznamu veřejně [certifikovaných pro katalog zařízení Azure IoT](https://aka.ms/devicecatalog).
+[Program pro certifikaci zařízení iot technologie Plug and Play](../certification/program-requirements-pnp.md) ověří, jestli zařízení splňuje požadavky na certifikaci technologie Plug and Play IoT. Certifikované zařízení můžete přidat do seznamu veřejně [certifikovaných pro katalog zařízení Azure IoT](https://aka.ms/devicecatalog).
 
 ## <a name="next-steps"></a>Další kroky
 

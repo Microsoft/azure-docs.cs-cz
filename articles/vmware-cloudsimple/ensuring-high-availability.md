@@ -8,32 +8,32 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c80b9fd65588fe6c390f44b34509168f3bfb549
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895746"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077682"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Zajistěte vysokou dostupnost aplikace při spuštění v prostředí VMware v Azure
 
 Řešení CloudSimple poskytuje vysokou dostupnost pro vaše aplikace běžící na VMware v prostředí Azure. V následující tabulce jsou uvedeny scénáře selhání a související funkce vysoké dostupnosti.
 
-| Scénář selhání | Je aplikace chráněná? | Funkce HA platformy | Funkce VMware HA | Azure HA – funkce |
------------- | ------------- | ------------ | ------------ | ------------- |
-| Selhání disku | ANO | Rychlé nahrazení neúspěšného uzlu | [O výchozích zásadách úložiště síti vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Selhání ventilátoru | ANO | Redundantní ventilátory, rychlá výměna neúspěšného uzlu |  |  |
-| Selhání síťové karty | ANO | Redundantní síťová karta, rychlá výměna neúspěšného uzlu
-| Selhání napájení hostitele | ANO | Redundantní zdroj napájení |  |  |
-| Selhání hostitele ESXi | ANO | rychlé nahrazení neúspěšného uzlu | [VMware vSphere vysoká dostupnost](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| Chyba virtuálního počítače | ANO | [Služby vyrovnávání zatížení](load-balancers.md)  | [VMware vSphere vysoká dostupnost](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer pro bezstavové virtuální počítače VMware |
-| Selhání portu přepínání listů | ANO | Redundantní síťová karta |  |  |
-| Selhání přepínání listů | ANO | Redundantní přepínače na list |  |  |
-| Selhání racku | ANO | Skupiny umístění |  |  |
-| Síťové připojení k místnímu řadiči domény | ANO  | Redundantní síťové služby |  | Redundantní okruhy ER |
-| Síťové připojení k Azure | ANO | |  | Redundantní okruhy ER |
-| Selhání datacentra | ANO |  |  | Zóny dostupnosti |
-| Regionální selhání | ANO  |  |  | Oblast Azure |
+|  Scénář selhání  |  Je aplikace chráněná?  |  Funkce HA platformy  |  Funkce VMware HA  |  Azure HA – funkce  |
+|----------------------------------------|------------------------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+|  Selhání disku  |  ANO  |  Rychlé nahrazení neúspěšného uzlu  |  [O výchozích zásadách úložiště síti vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html)  |  |
+|  Selhání ventilátoru  |  ANO  |  Redundantní ventilátory, rychlá výměna neúspěšného uzlu  |  |  |
+|  Selhání síťové karty  |  ANO  |  Redundantní síťová karta, rychlá výměna neúspěšného uzlu  |  |  |
+|  Selhání napájení hostitele  |  ANO  |  Redundantní zdroj napájení  |  |  |
+|  Selhání hostitele ESXi  |  ANO  |  rychlé nahrazení neúspěšného uzlu  |  [VMware vSphere vysoká dostupnost](https://www.vmware.com/products/vsphere/high-availability.html)  |  |
+|  Chyba virtuálního počítače  |  ANO  |  [Nástroje pro vyrovnávání zatížení](load-balancers.md)  |  [VMware vSphere vysoká dostupnost](https://www.vmware.com/products/vsphere/high-availability.html)  |  Azure Load Balancer pro bezstavové virtuální počítače VMware  |
+|  Selhání portu přepínání listů  |  ANO  |  Redundantní síťová karta  |  |  |
+|  Selhání přepínání listů  |  ANO  |  Redundantní přepínače na list  |  |  |
+|  Selhání racku  |  ANO  |  Skupiny umístění  |  |  |
+|  Síťové připojení k místnímu řadiči domény  |  ANO  |  Redundantní síťové služby  |  |  Redundantní okruhy ER  |
+|  Síťové připojení k Azure  |  ANO  |  |  |  Redundantní okruhy ER  |
+|  Selhání datacentra  |  ANO  |  |  |  Zóny dostupnosti  |
+|  Regionální selhání  |  ANO  |  |  |  Oblasti Azure  |
 
 Řešení Azure VMware podle CloudSimple poskytuje následující funkce vysoké dostupnosti.
 

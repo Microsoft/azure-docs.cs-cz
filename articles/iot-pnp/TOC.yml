@@ -44,7 +44,7 @@
     - name: Digitální dvojčata
       href: concepts-digital-twin.md
     - name: Certifikace zařízení
-      href: concepts-certification-program.md
+      href: ../certification/program-requirements-pnp.md
     - name: Úložiště modelů
       href: concepts-model-repository.md
     - name: Použití modelů v řešení
@@ -61,8 +61,6 @@
       href: howto-use-embedded-c.md
     - name: Správa digitálních dvojčat
       href: howto-manage-digital-twin.md
-    - name: Certifikace zařízení
-      href: howto-certify-device.md
     - name: Jak připojit ukázku technologie Plug and Play mostu IoT
       href: howto-use-iot-pnp-bridge.md
     - name: Sestavování a nasazování IoT technologie Plug and Play mostu

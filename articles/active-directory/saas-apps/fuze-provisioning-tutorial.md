@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 04/05/2021
 ms.author: zhchia
-ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96179248"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450085"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>Kurz: Konfigurace Fuze pro Automatické zřizování uživatelů
 
@@ -144,6 +144,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 ## <a name="connector-limitations"></a>Omezení konektoru
 
 * Fuze podporuje vlastní atributy SCIM s názvem **oprávnění**. Tyto atributy je možné vytvořit a Neaktualizovat. 
+* Rozhraní Fuze SCIM API nepodporuje filtrování u atributu userName. V důsledku toho může dojít k chybám v protokolech při pokusu o synchronizaci stávajícího uživatele, který nemá atribut userName, ale existuje s e-mailem, který odpovídá názvu userPrincipalName ve službě Azure AD. 
 
 ## <a name="change-log"></a>Protokol změn
 

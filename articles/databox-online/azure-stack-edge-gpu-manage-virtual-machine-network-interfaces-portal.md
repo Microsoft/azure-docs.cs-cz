@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to manage network interfaces on an Azure Stack Edge Pro device so that I can use it to run applications using Edge compute before sending it to Azure.
-ms.openlocfilehash: 84077f174fabd02afcd5171e8d365e8cbd3a52c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e709b04b4eac60e6cc0ba3e53eb77583162dfef
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027589"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078873"
 ---
 # <a name="use-the-azure-portal-to-manage-network-interfaces-on-the-vms-on-your-azure-stack-edge-pro-gpu"></a>Pomocí Azure Portal můžete spravovat síťová rozhraní na virtuálních počítačích na procesorovém GPU Azure Stack Edge pro.
 
@@ -40,7 +39,7 @@ Vaše zařízení podporuje jenom jeden virtuální přepínač, ale několik vi
 
 Než začnete spravovat virtuální počítače na svém zařízení prostřednictvím Azure Portal, ujistěte se, že:
 
-1. Povolili jste síťové rozhraní pro výpočty na svém zařízení. Tato akce vytvoří na VIRTUÁLNÍm počítači virtuální přepínač na tomto síťovém rozhraní. 
+1. Máte přístup k aktivovanému zařízení GPU Azure Stack Edge pro. Povolili jste síťové rozhraní pro výpočty na svém zařízení. Tato akce vytvoří na VIRTUÁLNÍm počítači virtuální přepínač na tomto síťovém rozhraní. 
     1. V místním uživatelském rozhraní zařízení, pokračujte na **COMPUTE**. Vyberte síťové rozhraní, které budete používat k vytvoření virtuálního přepínače.
 
         > [!IMPORTANT] 

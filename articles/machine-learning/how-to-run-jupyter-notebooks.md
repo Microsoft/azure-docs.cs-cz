@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066199"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220704"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 
@@ -46,16 +46,19 @@ Na panelu nástrojů poznámkového bloku můžete také spustit Jupyter nebo Ju
 
 Pomocí detailního režimu můžete rozšířit aktuální zobrazení, abyste se mohli soustředit na aktivní karty. Detailní režim skryje Průzkumníka souborů poznámkových bloků.
 
-1. Na panelu nástrojů okna terminálu vyberte **detailní režim** pro zapnutí detailního režimu. V závislosti na šířce okna se to může nacházet pod položkou nabídky **...** na panelu nástrojů.
+1. Na panelu nástrojů okna terminálu vyberte **detailní režim** pro zapnutí detailního režimu. V závislosti na šířce okna se nástroj může nacházet pod položkou nabídky **...** na panelu nástrojů.
 1. V detailním režimu se po výběru **standardního zobrazení** vraťte do standardního zobrazení.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Přepnout detailní režim nebo standardní zobrazení":::
 
 ## <a name="code-completion-intellisense"></a>Dokončování kódu (IntelliSense)
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Tyto funkce vám pomůžou získat další informace o kódu, který používáte, sledovat parametry, které píšete, a přidávat volání vlastností a metod s pouze několika klávesami.  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) je podpora dokončování kódu, která zahrnuje mnoho funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Pomocí několika klávesových úhozů můžete:
+* Přečtěte si další informace o kódu, který používáte.
+* Udržujte si přehled o parametrech, které píšete
+* Přidání volání do vlastností a metod 
 
-### <a name="use-code-snippets-preview"></a>Použití fragmentů kódu (Preview)
+### <a name="insert-code-snippets-preview"></a>Vložit fragmenty kódu (Preview)
 
 Pro aktivaci fragmentů kódu technologie IntelliSense použijte **kombinaci kláves CTRL + MEZERNÍK** .  Posuňte se na návrhy nebo začněte psát a Najděte kód, který chcete vložit.  Po vložení kódu, TAB přes argumenty pro přizpůsobení kódu pro vlastní použití.
 
@@ -67,7 +70,7 @@ Seznam fragmentů můžete procházet a hledat pomocí panelu nástrojů poznám
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="Otevřít panel nástrojů fragmentu na panelu nástrojů Poznámkový blok":::
 
-Z panelu fragmenty kódu můžete také odeslat žádost o přidání nových fragmentů kódu.
+Na panelu fragmenty můžete také odeslat žádost o přidání nových fragmentů kódu.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="Panel fragment kódu umožňuje navrhovat nový fragment kódu.":::
 
@@ -284,9 +287,9 @@ Pomocí následujících klávesových zkratek můžete snáze procházet a spou
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
-
+* Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
 * Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se [k ní dostat jenom z virtuální sítě](./how-to-secure-training-vnet.md#compute-instance). Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro < název instance >. < oblasti >. instances.azureml.ms s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
+
     
 ## <a name="next-steps"></a>Další kroky
 

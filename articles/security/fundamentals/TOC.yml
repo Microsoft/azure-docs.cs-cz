@@ -4,6 +4,8 @@
   items:
     - name: Seznámení se zabezpečením Azure
       href: overview.md
+    - name: Komplexní zabezpečení
+      href: end-to-end.md
     - name: Sdílená odpovědnost v cloudu
       href: shared-responsibility.md
 - name: Zabezpečení úloh v Azure

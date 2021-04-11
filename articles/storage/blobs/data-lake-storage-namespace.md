@@ -4,16 +4,16 @@ description: Popisuje koncept hierarchického oboru názvů pro Azure Data Lake 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912990"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220500"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarchický obor názvů
 
@@ -44,6 +44,10 @@ Obecně doporučujeme, abyste zapnuli hierarchický obor názvů pro úlohy úlo
 Důvody pro povolení hierarchického oboru názvů jsou určeny analýzou nákladů na vlastnictví. Obecně řečeno, vylepšení latence úloh v důsledku akcelerace úložiště bude vyžadovat pro kratší dobu výpočetní prostředky. Kvůli manipulaci s atomovou službou, která je povolená hierarchickým oborem názvů, se dá zlepšit latence pro mnoho úloh. V mnoha úlohách výpočetní prostředky představuje > 85% celkových nákladů, takže i mírné snížení latence úloh se rovná významnému množství úspor nákladů na celkové náklady. I v případech, kdy povolení hierarchického oboru názvů zvyšuje náklady na úložiště, je celkové náklady na vlastnictví stále snížené z důvodu snížených výpočetních nákladů.
 
 K analýze rozdílů v cenách úložiště dat, cenách transakcí a cenách rezervací kapacity úložiště mezi účty, které mají plochý hierarchický obor názvů oproti hierarchickému oboru názvů, najdete informace v tématu [Azure Data Lake Storage Gen2 ceny](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+
+## <a name="enabling-a-hierarchical-namespace"></a>Povolení hierarchického oboru názvů
+
+V existujícím účtu úložiště nemůžete povolit hierarchický obor názvů. Hierarchický obor názvů můžete povolit pouze v případě, že vytvoříte účet úložiště. Pokyny najdete v tématu [Vytvoření účtu úložiště pro použití s Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9a878dc5cdbbe336e7279d0cd919bd17cd42d0e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728211"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220784"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -67,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Připojení centra oznámení pomocí Azure Portal
 
-Na portálu přejděte do svého prostředku služby Azure Communication Services. V rámci prostředku služby Communications Services vyberte nabízená oznámení v levé nabídce stránky komunikační služby a připojte centrum oznámení, které jste zřídili dříve. Do tohoto pole budete muset zadat připojovací řetězec a resourceId:
+1. Na portálu přejdete na prostředek služby Azure Communication Services.
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení v rámci Azure Portal":::
+1. V rámci prostředku služby Communications Services vyberte **nabízená oznámení** v nabídce vlevo na stránce komunikační služby a připojte centrum oznámení, které jste zřídili dříve.
+
+1. Vyberte **připojit centrum oznámení**. Zobrazí se seznam Center oznámení, které je možné připojit.
+ 
+1. Vyberte centrum oznámení, které byste chtěli použít pro tento prostředek.
+ 
+   - Pokud potřebujete vytvořit nové centrum, vyberte **vytvořit nové centrum oznámení** a získejte nové centrum pro tento prostředek.
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení v rámci Azure Portal":::
+
+Nyní se zobrazí Centrum oznámení, které jste propojili s připojeným stavem.
+
+Pokud chcete pro prostředek použít jiný rozbočovač, vyberte **Odpojit** a pak zopakováním postupu propojte různé centrum oznámení.
 
 > [!NOTE]
-> Pokud je připojovací řetězec centra oznámení Azure aktualizovaný, je nutné aktualizovat také prostředek komunikačních služeb.
-Jakákoli změna způsobu propojení rozbočovače se projeví v rovině dat (tj. při posílání oznámení) během maximální doby v ``10`` minutách. To platí také v případě, že je centrum propojeno poprvé, **Pokud** se předtím poslala nějaká oznámení.
+> Jakákoli změna způsobu propojení rozbočovače se odrazí v rovině dat (tj. při posílání oznámení) do maximálního povoleného období 10 minut. Stejné chování platí v případě, že je rozbočovač propojen poprvé, **Pokud** byla oznámení odeslána před změnou.
 
 ### <a name="device-registration"></a>Registrace zařízení
 

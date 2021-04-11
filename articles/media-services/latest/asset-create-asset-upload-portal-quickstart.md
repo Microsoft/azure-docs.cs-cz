@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 3f175ff8e7c809032f35cdea9dc3cffa8345b82c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 929d8412b3be894e80a13d9a2bd07ab7401b8dda
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106819"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277857"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
 
@@ -41,8 +41,8 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
     
     Zrevidujte
 
-    * [Lokátory streamování](streaming-locators-concept.md)
-    * [Zásady streamování](streaming-policy-concept.md)
+    * [Lokátory streamování](stream-streaming-locators-concept.md)
+    * [Zásady streamování](stream-streaming-policy-concept.md)
     * [Balení a doručování](encode-dynamic-packaging-concept.md)
     * [Filtry](filters-concept.md)
 * Svůj obsah můžete chránit šifrováním pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. [Šifrování obsahu pomocí Azure Portal](drm-encrypt-content-how-to.md) rychlý Start ukazuje, jak nakonfigurovat ochranu obsahu.
@@ -94,7 +94,7 @@ K publikování assetu teď musíte do assetu přidat Lokátor streamování.
 
     > [!NOTE]
     > Pokud chcete, aby byl datový proud zašifrovaný, je nutné vytvořit zásadu klíče obsahu a nastavit ji na lokátoru streamování. Podrobnosti najdete v tématu [šifrování obsahu pomocí Azure Portal](drm-encrypt-content-how-to.md).
-1. V okně **Přidat Lokátor streamování** zvolíte jednu z předdefinovaných zásad streamování. Podrobné informace najdete v tématu [zásady streamování](streaming-policy-concept.md) .
+1. V okně **Přidat Lokátor streamování** zvolíte jednu z předdefinovaných zásad streamování. Podrobné informace najdete v tématu [zásady streamování](stream-streaming-policy-concept.md) .
 
     ![Lokátor streamování](./media/asset-create-asset-upload-portal-quickstart/streaming-locator.png)
 
@@ -105,7 +105,7 @@ Po publikování assetu ho můžete streamovat přímo na portálu.
 Nebo zkopírujte adresu URL streamování a použijte ji v klientském přehrávači.
 
 > [!NOTE]
-> Ujistěte se, že [koncový bod streamování](streaming-endpoint-concept.md) běží. Při prvním vytvoření účtu Media Service se vytvoří výchozí koncový bod streamování, který je v zastaveném stavu, takže ho budete muset spustit, než budete moct streamovat obsah.<br/>Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
+> Ujistěte se, že [koncový bod streamování](stream-streaming-endpoint-concept.md) běží. Při prvním vytvoření účtu Media Service se vytvoří výchozí koncový bod streamování, který je v zastaveném stavu, takže ho budete muset spustit, než budete moct streamovat obsah.<br/>Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
 
 ## <a name="cleanup-resources"></a>Vyčištění prostředků
 

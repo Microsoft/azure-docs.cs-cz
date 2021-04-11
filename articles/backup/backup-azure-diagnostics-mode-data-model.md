@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2682bf0483b38c50e64bf4ec5255c89f931ab0f0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500984"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078906"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -199,9 +199,9 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | MonthlyRetentionDaysOfTheWeek_s |Text ||Dny v týdnu vybrané pro měsíční uchování |
 | MonthlyRetentionWeeksOfTheMonth_s |Text ||Týdny v měsíci, kdy je nastaveno měsíční uchovávání, například jako první, poslední |
 | YearlyRetentionDuration_s |Desetinné číslo ||Celková doba uchování v letech pro nakonfigurovaná zálohování |
-| YearlyRetentionTimes_s |Text ||Datum a čas, kdy se nakonfiguruje roční uchování |
-| YearlyRetentionMonthsOfTheYear_s |Text ||Měsíců v roce vybraných pro roční uchování |
-| YearlyRetentionFormat_s |Text ||Typ konfigurace pro roční uchování, například denně pro každý den, týdně na základě týdne | |
+| YearlyRetentionTimes_s |Text | | Datum a čas, kdy se nakonfiguruje roční uchování |
+| YearlyRetentionMonthsOfTheYear_s |Text | | Měsíců v roce vybraných pro roční uchování |
+| YearlyRetentionFormat_s |Text ||Typ konfigurace pro roční uchování, například denně pro každý den, týdně na základě týdne |
 | YearlyRetentionDaysOfTheMonth_s |Text ||Data v měsíci vybraná pro roční uchování |
 | SynchronisationFrequencyPerDay_s |Celé číslo |v2|Počet pokusů za den, kdy je záloha souborů synchronizovaná pro SC DPM a MABS |
 | DiffBackupFormat_s |Text |v2|Formát pro rozdílové zálohování SQL v zálohování virtuálních počítačů Azure |

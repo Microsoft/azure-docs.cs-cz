@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936783"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078664"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -235,7 +235,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 | ------------- | -------------- |
 | Chybová | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
-| Informační | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informační | Zapisuje do protokolování na úrovni _informací_ . |
+| Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`** <br/> Zapisuje do protokolování na úrovni _informací_ . |
 | Ladění | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
