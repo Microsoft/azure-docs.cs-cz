@@ -2,14 +2,14 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky Azure pomocí zámku pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932756"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030062"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -32,13 +32,15 @@ Zámky služby Resource Manager se vztahují jen na operace, které probíhají 
 
 Použití zámků může vést k neočekávaným výsledkům, protože některé operace, které nezpůsobují úpravu prostředku, skutečně vyžadují akce blokované zámkem. Zámky zabrání operacím, které vyžadují požadavek POST, na rozhraní Azure Resource Manager API. Mezi běžné příklady operací, které jsou blokované zámky, patří:
 
-* Zámek jen pro čtení v **účtu úložiště** zabraňuje uživatelům v výpisu klíčů účtu. Operace s [klíči seznamu](/rest/api/storagerp/storageaccounts/listkeys) Azure Storage se zpracovává prostřednictvím žádosti post k ochraně přístupu k klíčům účtu, které poskytují úplný přístup k datům v účtu úložiště. Pokud je pro účet úložiště nakonfigurovaný zámek jen pro čtení, uživatelé, kteří nemají klíče účtu, musí pro přístup k datům objektů BLOB nebo front použít přihlašovací údaje Azure AD. Zámek jen pro čtení taky brání přiřazení rolí Azure RBAC, které jsou vymezené na účet úložiště nebo na kontejner dat (kontejner objektů BLOB nebo fronta).
+* Zámek jen pro čtení v **účtu úložiště** zabraňuje uživatelům v výpisu klíčů účtu. Operace s [klíči seznamu](/rest/api/storagerp/storageaccounts/listkeys) Azure Storage se zpracovává prostřednictvím žádosti post k ochraně přístupu k klíčům účtu, které poskytují úplný přístup k datům v účtu úložiště. Pokud je pro účet úložiště nakonfigurovaný zámek jen pro čtení, musí uživatelé, kteří nemají klíče účtu, používat přihlašovací údaje Azure AD pro přístup k datům BLOB nebo Queue. Zámek jen pro čtení taky brání přiřazení rolí Azure RBAC, které jsou vymezené na účet úložiště nebo na kontejner dat (kontejner objektů BLOB nebo fronta).
 
-* Zámek nejde odstranit v **účtu úložiště** . nebrání tomu, aby se data v tomto účtu odstranila ani nezměnila. Tento typ zámku chrání jenom samotný účet úložiště a nechrání data objektů blob, front, tabulek nebo souborů v rámci tohoto účtu úložiště. 
+* Zámek nejde odstranit na **účtu úložiště** , protože nebrání odstranění ani úpravě dat v tomto účtu. Tento typ zámku chrání jenom samotný účet úložiště a nechrání data objektů blob, front, tabulek nebo souborů v rámci tohoto účtu úložiště. 
 
-* Zámek jen pro čtení v **účtu úložiště** nebrání v odstranění ani úpravě dat v tomto účtu. Tento typ zámku chrání jenom účet úložiště, který se odstraňuje nebo upravuje, a v rámci tohoto účtu úložiště nechrání data objektů blob, front, tabulek ani souborů. 
+* Zámek jen pro čtení v **účtu úložiště** nebrání odstranění ani úpravě dat v rámci daného účtu. Tento typ zámku chrání jenom samotný účet úložiště, aby se odstranil nebo upravil a nechránil data objektů blob, front, tabulek nebo souborů v rámci tohoto účtu úložiště. 
 
 * Zámek jen pro čtení u prostředku **App Service** zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
+
+* Zámek jen pro čtení u **skupiny prostředků** , která obsahuje **plán App Service** , vám zabrání v vertikálním [navýšení nebo zmenšení plánu](../../app-service/manage-scale-up.md).
 
 * Zámek jen pro čtení ve **skupině prostředků** , která obsahuje **virtuální počítač** , zabrání všem uživatelům v spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
 
@@ -324,7 +326,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](/rest/api/resources/managementlocks/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
+Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
 
 Chcete-li vytvořit zámek, spusťte příkaz:
 

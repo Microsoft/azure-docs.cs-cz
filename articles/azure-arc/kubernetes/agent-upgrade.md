@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Upgrady agenta řízení pro Kubernetes s povoleným rozšířením Azure ARC
 keywords: Kubernetes, oblouk, Azure, K8s, kontejnery, agent, upgrade
-ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29df9973ead167e7774924cc3a0c685606092d28
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954543"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442520"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Upgrade agentů Kubernetes s povoleným ARC Azure
 
@@ -53,7 +53,7 @@ az connectedk8s update --name AzureArcTest1 --resource-group AzureArcTest --auto
 Pokud jste zakázali automatický upgrade agentů, můžete ručně zahájit upgrade pro tyto agenty pomocí `az connectedk8s upgrade` příkazu, jak je znázorněno níže:
 
 ```console
-az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.0.1
+az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.1.0
 ```
 
 Kubernetes s povoleným Azure ARC následuje po standardním [schématu sémantických verzí](https://semver.org/) `MAJOR.MINOR.PATCH` pro správu verzí svých agentů. 

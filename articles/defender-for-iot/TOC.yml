@@ -6,10 +6,10 @@
   items:
     - name: Co je nového?
       href: release-notes.md
-    - name: Architektura řešení bez agentů
+    - name: Co je architektura řešení bez agentů
       displayName: 'deployment, where to deploy'
       href: architecture.md
-    - name: Architektura řešení založená na agentech
+    - name: Co je architektura řešení založená na agentech
       href: architecture-agent-based.md
 - name: Rychlé starty
   expanded: true
@@ -121,20 +121,31 @@
               href: how-to-install-software.md
         - name: Příprava senzorů
           items:
-            - name: Nasazení senzorů
-              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
+            - name: Spravovat senzory
+              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions, offboarding'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Aktivace a nastavení senzoru
               displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
               href: how-to-activate-and-set-up-your-sensor.md
         - name: Příprava místní konzoly pro správu
           items:
+            - name: Správa předplatných
+              displayName: 'onboard, offboard, subscription, billing, pricing, payment'
+              href: how-to-manage-subscriptions.md
             - name: Aktivace a nastavení místní konzoly pro správu
               displayName: 'deployment, activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
             - name: Nastavení vysoké dostupnosti
               displayName: 'primary, secondary, failover, failback fail, recovery'
               href: how-to-set-up-high-availability.md
+        - name: Příprava senzorů
+          items:
+            - name: Nasazení senzorů
+              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
+              href: how-to-manage-sensors-on-the-cloud.md
+            - name: Aktivace a nastavení senzoru
+              displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              href: how-to-activate-and-set-up-your-sensor.md
         - name: Správa uživatelů a uživatelského přístupu
           items:
             - name: Vytváření a správa uživatelů

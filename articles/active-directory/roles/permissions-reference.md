@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 03/29/2021
+ms.date: 04/06/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad8466dca6634b0e72ef4a65acb537006dba3bda
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 0e356363d91c3aa429fd958c1dd3bc553e7a4d29
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108536"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030232"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
@@ -57,6 +57,7 @@ V tomto článku jsou uvedené předdefinované role Azure AD, které můžete p
 > | [Správce názvů domén](#domain-name-administrator) | Může spravovat názvy domén v cloudu i v místním prostředí. | 8329153b-31d0-4727-b945-745eb3bc5f31 |
 > | [Správce Dynamics 365](#dynamics-365-administrator) | Může spravovat všechny aspekty produktu Dynamics 365. | 44367163-eba1-44c3-98af-f5787879f96a |
 > | [Správce Exchange](#exchange-administrator) | Může spravovat všechny aspekty produktu Exchange. | 29232cdf-9323-42fd-ade2-1d097af3e4de |
+> | [Správce příjemce Exchange](#exchange-recipient-administrator) | Může vytvořit nebo aktualizovat příjemce Exchange Online v rámci organizace Exchange Online. | 31392ffb-586c-42d1-9346-e59415a2cc4e |
 > | [Správce toku externího ID uživatele](#external-id-user-flow-administrator) | Může vytvářet a spravovat všechny aspekty toků uživatelů. | 6e591065-9bad-43ed-90f3-e9424366d2f0 |
 > | [Správce atributů toku uživatele externího ID](#external-id-user-flow-attribute-administrator) | Může vytvořit a spravovat schéma atributů dostupné pro všechny toky uživatelů. | 0f971eea-41eb-4569-a71e-57bb8a3eff1e |
 > | [Správce externích zprostředkovatelů identity](#external-identity-provider-administrator) | Může nakonfigurovat zprostředkovatele identity pro použití v přímé federaci. | be2f45a1-457d-42af-a067-6ec1fa63bc45 |
@@ -65,7 +66,7 @@ V tomto článku jsou uvedené předdefinované role Azure AD, které můžete p
 > | [Správce skupin](#groups-administrator) | Členové této role mohou vytvářet a spravovat skupiny, vytvářet a spravovat nastavení skupin, jako jsou zásady vytváření názvů a vypršení platnosti, a zobrazit aktivity skupin a sestavy auditování. | fdd7a751-b60b-444a-984c-02652fe8fa1c |
 > | [Pozvánka hosta](#guest-inviter) | Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou pozvat hosty. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Správce helpdesku](#helpdesk-administrator) | Může resetovat hesla pro správce bez oprávnění správce a helpdesku. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
-> | [Správce hybridní identity](#hybrid-identity-administrator) | Může spravovat AD s zřizováním cloudu Azure AD, Azure AD Connect a federačními nastaveními. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Správce hybridní identity](#hybrid-identity-administrator) | Může spravovat AD do zřizování cloudu Azure AD, Azure AD Connect a nastavení federace. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Správce Insights](#insights-administrator) | Má v aplikaci Microsoft 365 Insights přístup pro správu. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Vedoucí firmy pro Insights](#insights-business-leader) | Může zobrazit a sdílet řídicí panely a přehledy prostřednictvím aplikace M365 Insights. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Správce Intune](#intune-administrator) | Může spravovat všechny aspekty produktu Intune. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
@@ -121,9 +122,9 @@ Tato role také uděluje možnost udělit souhlas pro delegovaná oprávnění a
 > | Microsoft. Directory/aplikace/odstranit | Odstranit všechny typy aplikací |
 > | Microsoft. Directory/Applications/applicationProxy/Read | Číst všechny vlastnosti proxy aplikace |
 > | Microsoft. Directory/Applications/applicationProxy/Update | Aktualizovat vlastnosti proxy všech aplikací |
-> | Microsoft. Directory/Applications/applicationProxyAuthentication/Update | Aktualizovat vlastnosti ověřování proxy aplikací |
-> | Microsoft. Directory/Applications/applicationProxySslCertificate/Update | Aktualizace vlastních domén proxy aplikace |
-> | Microsoft. Directory/Applications/applicationProxyUrlSettings/Update | Aktualizovat interní a externí adresy URL proxy aplikace |
+> | Microsoft. Directory/Applications/applicationProxyAuthentication/Update | Aktualizovat ověřování u všech typů aplikací |
+> | Microsoft. Directory/Applications/applicationProxySslCertificate/Update | Aktualizovat nastavení certifikátu SSL pro proxy aplikací |
+> | Microsoft. Directory/Applications/applicationProxyUrlSettings/Update | Aktualizovat nastavení adresy URL pro proxy aplikací |
 > | Microsoft. Directory/Applications/appRoles/Update | Aktualizuje vlastnost appRoles u všech typů aplikací. |
 > | Microsoft. Directory/Applications/publikum/Update | Aktualizace vlastnosti cílové skupiny pro aplikace |
 > | Microsoft. Directory/Applications/Authentication/Update | Aktualizovat ověřování u všech typů aplikací |
@@ -198,7 +199,7 @@ Uživatelé v této roli můžou vytvářet datovou část útoku, ale nemůžou
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytváření a Správa datových částí útoku v simulátoru útoků |
-> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Čtení sestav simulace útoků, odpovědí a přidružených školení |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy pro simulace útoků útoku a související školení. |
 
 ## <a name="attack-simulation-administrator"></a>Správce simulace útoků
 
@@ -208,7 +209,7 @@ Uživatelé v této roli můžou vytvářet a spravovat všechny aspekty vytvoř
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytváření a Správa datových částí útoku v simulátoru útoků |
-> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Čtení sestav simulace útoků, odpovědí a přidružených školení |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy pro simulace útoků útoku a související školení. |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/simulace/allProperties/allTasks | Vytváření a Správa šablon simulace útoků v simulátoru útoku |
 
 ## <a name="authentication-administrator"></a>Správce ověřování
@@ -261,7 +262,7 @@ Role správce [ověřování](#authentication-administrator) a [správce privile
 | Správce zásad ověřování | No | No | Yes | Yes | Yes |
 
 > [!IMPORTANT]
-> Tato role nemůže spravovat nastavení MFA na starším portálu pro správu MFA nebo v tokenech OATH pro hardware. 
+> Tato role nemůže spravovat nastavení MFA na starším portálu pro správu MFA nebo v tokenech OATH pro hardware.
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -491,12 +492,12 @@ Uživatelé s touto rolí mají možnost spravovat Azure Active Directory nastav
 > | --- | --- |
 > | Microsoft. Directory/conditionalAccessPolicies/Create | Vytvoření zásad podmíněného přístupu |
 > | Microsoft. Directory/conditionalAccessPolicies/DELETE | Odstranění zásad podmíněného přístupu |
-> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Číst zásady. vlastnost conditionalAccess |
+> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst podmíněný přístup pro zásady |
+> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Přečtěte si vlastníky zásad podmíněného přístupu. |
+> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Přečtěte si vlastnost "použito na" pro zásady podmíněného přístupu. |
 > | Microsoft. Directory/conditionalAccessPolicies/Basic/Update | Aktualizace základních vlastností pro zásady podmíněného přístupu |
-> | Microsoft. Directory/conditionalAccessPolicies/Owners/Update | Vlastnost Update policies. conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/tenantDefault/Update | Vlastnost Update policies. conditionalAccess |
+> | Microsoft. Directory/conditionalAccessPolicies/Owners/Update | Aktualizace vlastníků pro zásady podmíněného přístupu |
+> | Microsoft. Directory/conditionalAccessPolicies/tenantDefault/Update | Aktualizace výchozího tenanta pro zásady podmíněného přístupu |
 > | Microsoft. Directory/crossTenantAccessPolicies/Create | Vytvoření zásad pro přístup mezi klienty |
 > | Microsoft. Directory/crossTenantAccessPolicies/DELETE | Odstranění zásad pro přístup mezi klienty |
 > | Microsoft. Directory/crossTenantAccessPolicies/Standard/Read | Čtení základních vlastností zásad přístupu mezi klienty |
@@ -655,7 +656,7 @@ Uživatelé v této roli mohou číst a aktualizovat základní informace o uži
 > | Microsoft. Directory/Groups/dynamicMembershipRule/Update | Aktualizovat dynamické pravidlo členství skupin s výjimkou skupin, které lze přiřadit k rolím |
 > | Microsoft. Directory/Groups/groupType/Update | Aktualizace vlastnosti groupType pro skupinu |
 > | Microsoft. Directory/Groups/Members/Update | Aktualizace členů skupin bez skupin s přiřazením rolí |
-> | Microsoft. Directory/Groups/onPremWriteBack/Update | Aktualizace skupin Azure AD pro zápis zpět do místního prostředí |
+> | Microsoft. Directory/Groups/onPremWriteBack/Update | Aktualizace skupin Azure Active Directory pro zápis do místního prostředí s využitím Azure AD Connect |
 > | Microsoft. Directory/Groups/Owners/Update | Aktualizace vlastníků skupin bez skupin s přiřazením rolí |
 > | Microsoft. Directory/Groups/Settings/Update | Aktualizovat nastavení skupin |
 > | Microsoft. Directory/Groups/Visibility/Update | Aktualizuje vlastnost viditelnost skupin. |
@@ -667,7 +668,7 @@ Uživatelé v této roli mohou číst a aktualizovat základní informace o uži
 > | Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Správa tajných klíčů a přihlašovacích údajů pro zřizování aplikací |
 > | Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Spusťte, restartujte a pozastavte úlohy synchronizace – zřizování aplikací. |
 > | Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Vytváření a Správa synchronizace – úloh a schémat pro zřizování aplikací |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení služby aktéra přímý přístup k datům skupiny |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení instančního objektu s přímým přístupem k datům skupiny |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
 > | Microsoft. Directory/Users/assignLicense | Správa uživatelských licencí |
 > | Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
@@ -731,6 +732,17 @@ Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Excha
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a správa žádostí o Microsoft 365 služby |
 > | Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Čtení sestav využití Office 365 |
 > | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v centru pro správu Microsoft 365. |
+
+## <a name="exchange-recipient-administrator"></a>Správce příjemce Exchange
+
+Uživatelé s touto rolí mají oprávnění ke čtení pro příjemce a přístup pro zápis k atributům příjemců v Exchangi Online. Další informace o [příjemce Exchange](/exchange/recipients/recipients).
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. Exchange/allRecipients/allProperties/allTasks | Vytváření a odstraňování všech příjemců a čtení a aktualizace všech vlastností příjemců v Exchangi Online |
+> | Microsoft. Office 365. Exchange/messageTracking/allProperties/allTasks | Správa všech úloh ve sledování zpráv v Exchangi Online |
+> | Microsoft. Office 365. Exchange/Migration/allProperties/allTasks | Spravovat všechny úlohy související s migrací příjemců v Exchangi Online |
 
 ## <a name="external-id-user-flow-administrator"></a>Správce toku externího ID uživatele
 
@@ -820,10 +832,10 @@ Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure 
 > | Microsoft. Directory/serviceAction/activateService | Může pro službu provést akci "aktivovat službu". |
 > | Microsoft. Directory/serviceAction/disableDirectoryFeature | Může provést akci služby zakázat funkci adresáře. |
 > | Microsoft. Directory/serviceAction/enableDirectoryFeature | Může provést akci služby povolit funkci adresáře. |
-> | Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Může provádět akci služby Getavailableextentionproperties. |
+> | Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Může provádět akci služby getAvailableExtentionProperties. |
 > | Microsoft. Directory/servicePrincipals/allProperties/allTasks | Vytváření a odstraňování objektů služby a čtení a aktualizace všech vlastností |
 > | Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. Microsoft-Company-Admin | Udělení souhlasu pro všechna oprávnění k jakékoli aplikaci |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení služby aktéra přímý přístup k datům skupiny |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení instančního objektu s přímým přístupem k datům skupiny |
 > | Microsoft. Directory/servicePrincipals/Synchronization/Standard/Read | Čtení nastavení zřizování přidružených k vašemu instančnímu objektu |
 > | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti v sestavách přihlášení, včetně privilegovaných vlastností. |
 > | Microsoft. Directory/subscribedSkus/allProperties/allTasks | Nákup a Správa předplatných a odstraňování předplatných |
@@ -898,9 +910,9 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > | Microsoft. Directory/policies/Standard/Read | Číst základní vlastnosti zásad |
 > | Microsoft. Directory/policies/Owners/Read | Čtení vlastníků zásad |
 > | Microsoft. Directory/policies/policyAppliedTo/Read | Číst zásady. vlastnost policyAppliedTo |
-> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Číst zásady. vlastnost conditionalAccess |
+> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst podmíněný přístup pro zásady |
+> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Přečtěte si vlastníky zásad podmíněného přístupu. |
+> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Přečtěte si vlastnost "použito na" pro zásady podmíněného přístupu. |
 > | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/servicePrincipals/Authentication/Read | Číst vlastnosti ověřování u instančních objektů |
 > | Microsoft. Directory/servicePrincipals/Synchronization/Standard/Read | Čtení nastavení zřizování přidružených k vašemu instančnímu objektu |
@@ -934,11 +946,11 @@ Uživatelé v této roli můžou vytvářet a spravovat skupiny a její nastaven
 > | Microsoft. Directory/Groups/dynamicMembershipRule/Update | Aktualizovat dynamické pravidlo členství skupin s výjimkou skupin, které lze přiřadit k rolím |
 > | Microsoft. Directory/Groups/groupType/Update | Aktualizace vlastnosti groupType pro skupinu |
 > | Microsoft. Directory/Groups/Members/Update | Aktualizace členů skupin bez skupin s přiřazením rolí |
-> | Microsoft. Directory/Groups/onPremWriteBack/Update | Aktualizace skupin Azure AD pro zápis zpět do místního prostředí |
+> | Microsoft. Directory/Groups/onPremWriteBack/Update | Aktualizace skupin Azure Active Directory pro zápis do místního prostředí s využitím Azure AD Connect |
 > | Microsoft. Directory/Groups/Owners/Update | Aktualizace vlastníků skupin bez skupin s přiřazením rolí |
 > | Microsoft. Directory/Groups/Settings/Update | Aktualizovat nastavení skupin |
 > | Microsoft. Directory/Groups/Visibility/Update | Aktualizuje vlastnost viditelnost skupin. |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení služby aktéra přímý přístup k datům skupiny |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení instančního objektu s přímým přístupem k datům skupiny |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Azure |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Čtení a konfigurace Service Health v centru pro správu Microsoft 365 |
@@ -1133,7 +1145,7 @@ Uživatelé v této roli mají plný přístup ke všem nastavením znalostní b
 > | Microsoft. Directory/groups. Security/Owners/Update | Aktualizace vlastníků skupin zabezpečení s vyloučením skupin s přiřazením rolí |
 > | Microsoft. Office 365. Knowledge/contentUnderstanding/allProperties/allTasks | Čtení a aktualizace všech vlastností porozumění obsahu v centru pro správu Microsoft 365 |
 > | Microsoft. Office 365. Knowledge/knowledgeNetwork/allProperties/allTasks | Čtení a aktualizace všech vlastností znalostní sítě v centru pro správu Microsoft 365 |
-> | Microsoft. Office 365. protectionCenter/sensitivityLabels/allProperties/Read | Číst popisky citlivosti v centrech zabezpečení a dodržování předpisů |
+> | Microsoft. Office 365. protectionCenter/sensitivityLabels/allProperties/Read | Načte všechny vlastnosti popisků citlivosti v centrech zabezpečení a dodržování předpisů. |
 > | Microsoft. Office 365. sharePoint/allEntities/allTasks | Vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v SharePointu |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a správa žádostí o Microsoft 365 služby |
 > | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v centru pro správu Microsoft 365. |
@@ -1292,7 +1304,7 @@ Nepoužívat. Tato role se už nepoužívá a v budoucnu se odebere z Azure AD. 
 > | Microsoft. Directory/Contacts/Create | Vytvoření kontaktů |
 > | Microsoft. Directory/Contacts/DELETE | Odstranit kontakty |
 > | Microsoft. Directory/Contacts/Basic/Update | Aktualizace základních vlastností u kontaktů |
-> | Microsoft. Directory/domény/Basic/allTasks | Vytváření a odstraňování domén a čtení a aktualizace standardních vlastností |
+> | Microsoft. Directory/domény/allProperties/allTasks | Vytváření a odstraňování domén a čtení a aktualizace všech vlastností |
 > | Microsoft. Directory/Groups/Create | Vytváření skupin s vyloučením skupin s přiřazením rolí |
 > | Microsoft. Directory/Groups/DELETE | Odstranit skupiny s výjimkou skupiny přiřazení role |
 > | Microsoft. Directory/skupiny/obnovení | Obnovení odstraněných skupin |
@@ -1528,12 +1540,12 @@ Ochrana ATP a EDR v programu Windows Defender | Přiřazení rolí<br>Správa sk
 > | Microsoft. Directory/policies/tenantDefault/Update | Aktualizace výchozích zásad organizace |
 > | Microsoft. Directory/conditionalAccessPolicies/Create | Vytvoření zásad podmíněného přístupu |
 > | Microsoft. Directory/conditionalAccessPolicies/DELETE | Odstranění zásad podmíněného přístupu |
-> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Číst zásady. vlastnost conditionalAccess |
+> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst podmíněný přístup pro zásady |
+> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Přečtěte si vlastníky zásad podmíněného přístupu. |
+> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Přečtěte si vlastnost "použito na" pro zásady podmíněného přístupu. |
 > | Microsoft. Directory/conditionalAccessPolicies/Basic/Update | Aktualizace základních vlastností pro zásady podmíněného přístupu |
-> | Microsoft. Directory/conditionalAccessPolicies/Owners/Update | Vlastnost Update policies. conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/tenantDefault/Update | Vlastnost Update policies. conditionalAccess |
+> | Microsoft. Directory/conditionalAccessPolicies/Owners/Update | Aktualizace vlastníků pro zásady podmíněného přístupu |
+> | Microsoft. Directory/conditionalAccessPolicies/tenantDefault/Update | Aktualizace výchozího tenanta pro zásady podmíněného přístupu |
 > | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Čtení všech prostředků v Privileged Identity Management |
 > | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizovat zásady instančních objektů |
@@ -1543,7 +1555,7 @@ Ochrana ATP a EDR v programu Windows Defender | Přiřazení rolí<br>Správa sk
 > | Microsoft. Office 365. protectionCenter/allEntities/Standard/Read | Načte standardní vlastnosti všech prostředků v centrech zabezpečení a dodržování předpisů. |
 > | Microsoft. Office 365. protectionCenter/allEntities/Basic/Update | Aktualizuje základní vlastnosti všech prostředků v centrech zabezpečení a dodržování předpisů. |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytváření a Správa datových částí útoku v simulátoru útoků |
-> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Čtení sestav simulace útoků, odpovědí a přidružených školení |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy pro simulace útoků útoku a související školení. |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/simulace/allProperties/allTasks | Vytváření a Správa šablon simulace útoků v simulátoru útoku |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Čtení a konfigurace Service Health v centru pro správu Microsoft 365 |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a správa žádostí o Microsoft 365 služby |
@@ -1580,7 +1592,7 @@ Ochrana ATP a EDR v programu Windows Defender | Všechna oprávnění role čten
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a správa žádostí o Microsoft 365 služby |
 > | Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/allTasks | Správa všech aspektů programu Microsoft Defender pro koncový bod |
 
-## <a name="security-reader"></a>Čtenář zabezpečení
+## <a name="security-reader"></a>Čtecí modul zabezpečení
 
 Uživatelé s touto rolí mají globální přístup jen pro čtení k funkcím souvisejícím se zabezpečením, včetně všech informací v Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management, a také možnost číst Azure Active Directory sestav a protokolů auditu a v centru zabezpečení pro & 365 zabezpečení pro Office. Další informace o oprávněních sady Office 365 jsou k dispozici na stránce [oprávnění v centru zabezpečení & dodržování předpisů](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -1606,16 +1618,16 @@ Ochrana ATP a EDR v programu Windows Defender | Zobrazit a prozkoumat výstrahy.
 > | Microsoft. Directory/policies/Standard/Read | Číst základní vlastnosti zásad |
 > | Microsoft. Directory/policies/Owners/Read | Čtení vlastníků zásad |
 > | Microsoft. Directory/policies/policyAppliedTo/Read | Číst zásady. vlastnost policyAppliedTo |
-> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Číst zásady. vlastnost conditionalAccess |
-> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Číst zásady. vlastnost conditionalAccess |
+> | Microsoft. Directory/conditionalAccessPolicies/Standard/Read | Číst podmíněný přístup pro zásady |
+> | Microsoft. Directory/conditionalAccessPolicies/Owners/Read | Přečtěte si vlastníky zásad podmíněného přístupu. |
+> | Microsoft. Directory/conditionalAccessPolicies/policyAppliedTo/Read | Přečtěte si vlastnost "použito na" pro zásady podmíněného přístupu. |
 > | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Čtení všech prostředků v Privileged Identity Management |
 > | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti v sestavách přihlášení, včetně privilegovaných vlastností. |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health |
 > | Microsoft. Office 365. protectionCenter/allEntities/Standard/Read | Načte standardní vlastnosti všech prostředků v centrech zabezpečení a dodržování předpisů. |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/Read | Čtení všech vlastností datových částí útoku v simulátoru útoku |
-> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Čtení sestav simulace útoků, odpovědí a přidružených školení |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy pro simulace útoků útoku a související školení. |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/simulace/allProperties/číst | Přečtěte si všechny vlastnosti šablon simulace útoků v simulátoru útoku. |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Čtení a konfigurace Service Health v centru pro správu Microsoft 365 |
 > | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v centru pro správu Microsoft 365. |
@@ -1697,7 +1709,7 @@ Uživatelé v této roli můžou spravovat všechny aspekty úloh Microsoft Team
 > | Microsoft. Directory/groups. Unified/Basic/Update | Aktualizace základních vlastností u Microsoft 365 skupin s vyloučením skupin, které lze přiřadit rolím |
 > | Microsoft. Directory/groups. Unified/Members/Update | Aktualizace členů skupin Microsoft 365 s vyloučením skupin, které lze přiřadit rolím |
 > | Microsoft. Directory/groups. Unified/Owners/Update | Aktualizace vlastníků skupin Microsoft 365 s vyloučením skupin, které lze přiřadit rolím |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení služby aktéra přímý přístup k datům skupiny |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení instančního objektu s přímým přístupem k datům skupiny |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Azure |
 > | Microsoft. Office 365. Network/Performance/allProperties/Read | Čtení všech vlastností výkonu sítě v centru pro správu Microsoft 365 |
@@ -1814,7 +1826,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 > | Microsoft. Directory/Groups/dynamicMembershipRule/Update | Aktualizovat dynamické pravidlo členství skupin s výjimkou skupin, které lze přiřadit k rolím |
 > | Microsoft. Directory/Groups/groupType/Update | Aktualizace vlastnosti groupType pro skupinu |
 > | Microsoft. Directory/Groups/Members/Update | Aktualizace členů skupin bez skupin s přiřazením rolí |
-> | Microsoft. Directory/Groups/onPremWriteBack/Update | Aktualizace skupin Azure AD pro zápis zpět do místního prostředí |
+> | Microsoft. Directory/Groups/onPremWriteBack/Update | Aktualizace skupin Azure Active Directory pro zápis do místního prostředí s využitím Azure AD Connect |
 > | Microsoft. Directory/Groups/Owners/Update | Aktualizace vlastníků skupin bez skupin s přiřazením rolí |
 > | Microsoft. Directory/Groups/Settings/Update | Aktualizovat nastavení skupin |
 > | Microsoft. Directory/Groups/Visibility/Update | Aktualizuje vlastnost viditelnost skupin. |
@@ -1854,7 +1866,7 @@ Například:
 | namespace | Produkt nebo služba, které vystavují úkol a jsou součástí `microsoft` . Například všechny úlohy ve službě Azure AD používají `microsoft.directory` obor názvů. |
 | entita | Logická funkce nebo komponenta vystavené službou v Microsoft Graph. Například Azure AD zveřejňuje uživatele a skupiny, OneNote zpřístupňuje poznámky a Exchange zveřejňuje poštovní schránky a kalendáře. Existuje speciální `allEntities` klíčové slovo pro zadání všech entit v oboru názvů. Tato funkce se často používá v rolích, které udělují přístup k celému produktu. |
 | PropertySet – | Konkrétní vlastnosti nebo aspekty entity, pro které se uděluje přístup Například `microsoft.directory/applications/authentication/read` udělí možnost číst adresu URL odpovědi, adresu URL pro odhlášení a vlastnost implicitního toku u objektu aplikace v Azure AD.<ul><li>`allProperties` Určuje všechny vlastnosti entity, včetně privilegovaných vlastností.</li><li>`standard` určí společné vlastnosti, ale vyloučí privilegované objekty související s `read` akcí. Například `microsoft.directory/user/standard/read` umožňuje číst standardní vlastnosti, jako je veřejné telefonní číslo a e-mailová adresa, ale ne soukromé sekundární telefonní číslo nebo e-mailovou adresu, která se používá pro službu Multi-Factor Authentication.</li><li>`basic` určí společné vlastnosti, ale vyloučí privilegované objekty související s `update` akcí. Sada vlastností, které lze číst, se může lišit od toho, co můžete aktualizovat. To je důvod, proč existují `standard` a `basic` klíčová slova, která se mají odrážet.</li></ul> |
-| akce | Povolená operace, většinou je vytváření, čtení, aktualizace nebo odstranění (CRUD). Existuje speciální `allTasks` klíčové slovo pro určení všech výše uvedených možností (vytvoření, čtení, aktualizace a odstranění). |
+| action | Povolená operace, většinou je vytváření, čtení, aktualizace nebo odstranění (CRUD). Existuje speciální `allTasks` klíčové slovo pro určení všech výše uvedených možností (vytvoření, čtení, aktualizace a odstranění). |
 
 ## <a name="deprecated-roles"></a>Zastaralé role
 
@@ -1882,7 +1894,7 @@ Uživatel typu host | Nezobrazeno, protože nemůže být použit | NA
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](#partner-tier2-support)
 Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | NA
-User | Nezobrazeno, protože nemůže být použit | NA
+Uživatel | Nezobrazeno, protože nemůže být použit | NA
 Připojení zařízení na pracovišti | Zastaralé | [Dokumentace k zastaralým rolím](#deprecated-roles)
 
 ## <a name="password-reset-permissions"></a>Oprávnění pro resetování hesla

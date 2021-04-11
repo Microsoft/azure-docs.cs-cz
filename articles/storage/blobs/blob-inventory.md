@@ -2,20 +2,20 @@
 title: Použití inventáře Azure Storage pro správu dat objektů BLOB (Preview)
 description: Azure Storage Inventory je nástroj, který vám umožní získat přehled o všech datech objektů BLOB v rámci účtu úložiště.
 services: storage
-author: mhopkins-msft
+author: twooley
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: mhopkins
-ms.reviewer: yzheng
+ms.author: twooley
+ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 8310de465a6416102a7ce4e614ead7029e6be87a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950922"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277262"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Použití inventáře Azure Storage objektů BLOB pro správu dat objektů BLOB (Preview)
 
@@ -37,6 +37,7 @@ Verze Preview inventáře objektů BLOB je dostupná na účtech úložiště v 
 - Kanada – východ
 - East US
 - USA – východ 2
+- West Europe
 
 ### <a name="pricing-and-billing"></a>Ceny a fakturace
 
@@ -202,6 +203,14 @@ Událost vzorku:
   "eventTime": "2020-10-13T15:47:54Z"
 }
 ```
+
+## <a name="known-issues"></a>Známé problémy
+
+Tato část popisuje omezení a známé problémy funkce Azure Storage inventáře objektů BLOB.
+
+### <a name="inventory-job-fails-to-complete"></a>Úlohu inventáře se nepodařilo dokončit.
+
+Aby se účet s miliony objektů BLOB a hierarchickými obory názvů povolil, nemusíte dokončit úlohu inventáře do 24 hodin. Pokud k tomu dojde, není vytvořen žádný soubor inventáře.
 
 ## <a name="next-steps"></a>Další kroky
 

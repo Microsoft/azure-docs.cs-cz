@@ -1,342 +1,336 @@
-### YamlMime:Hub
+### YamlMime:Hub 
 title: Dokumentace ke službě Sítě Azure
-summary: Seznamte se s různými dostupnými síťovými službami Azure, které zajišťují možnosti připojení k vašim prostředkům v Azure, doručují a chrání aplikace a pomáhají zabezpečit vaši síť.
+summary: 'Seznamte se s různými dostupnými síťovými službami Azure, které zajišťují možnosti připojení k vašim prostředkům v Azure, doručují a chrání aplikace a pomáhají zabezpečit vaši síť.'
 brand: azure
 metadata:
   title: Dokumentace ke službě Sítě Azure
-  description: Síťové služby Azure zajišťují možnosti připojení k vašim prostředkům v Azure, doručují a chrání aplikace a pomáhají zabezpečit vaši síť.
+  description: 'Síťové služby Azure zajišťují možnosti připojení k vašim prostředkům v Azure, doručují a chrání aplikace a pomáhají zabezpečit vaši síť.'
   ms.service: virtual-network
   ms.topic: hub-page
-  ms.collection: 
+  ms.collection: null
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 09/28/2020
-  ms.openlocfilehash: c701f1f54955257fd60fe8d58fb703a1d26d1169
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102503393"
+  ms.date: 03/30/2021
 highlightedContent:
   items:
-  - title: Co jsou Sítě Azure?
-    itemType: overview
-    url: networking-overview.md
-  - title: Co je nového v Sítích Azure?
-    itemType: whats-new
-    url: https://azure.microsoft.com/updates/?category=networking
-  - title: Možnosti vyrovnávání zatížení v Azure
-    itemType: architecture
-    url: /azure/architecture/guide/technology-choices/load-balancing-overview
-  - title: Hvězdicová topologie sítě v Azure
-    itemType: architecture
-    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: Co je Azure Orbital?
-    itemType: concept
-    url: azure-orbital-overview.md
-  - title: Práce na dálku y využitím služeb Azure
-    itemType: concept
-    url: working-remotely-support.md
+    - title: Co jsou Sítě Azure?
+      itemType: overview
+      url: fundamentals/networking-overview.md
+    - title: Co je nového v Sítích Azure?
+      itemType: whats-new
+      url: 'https://azure.microsoft.com/updates/?category=networking'
+    - title: Možnosti vyrovnávání zatížení v Azure
+      itemType: architecture
+      url: /azure/architecture/guide/technology-choices/load-balancing-overview
+    - title: Hvězdicová topologie sítě v Azure
+      itemType: architecture
+      url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+    - title: Co je Azure Orbital?
+      itemType: concept
+      url: azure-orbital-overview.md
+    - title: Práce na dálku y využitím služeb Azure
+      itemType: concept
+      url: working-remotely-support.md
 conceptualContent:
   items:
-  - title: Virtuální síť
-    links:
-    - url: ../virtual-network/virtual-networks-overview.md
-      itemType: concept
-      text: Co je virtuální síť Azure?
-    - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
-      itemType: tutorial
-      text: Omezení síťového přístupu k prostředkům
-    - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
-      itemType: tutorial
-      text: Připojení k virtuální síti Azure
-    - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
-      itemType: how-to-guide
-      text: Řešení potíží s filtrováním síťového provozu
-    footerLink:
-      url: ../virtual-network/index.yml
-      text: Další informace
-  - title: Připojení z místního prostředí do Azure – šifrování virtuální privátní sítě
-    links:
-    - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
-      itemType: overview
-      text: Co je Azure VPN Gateway?
-    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
-      itemType: tutorial
-      text: Připojení typu site-to-site
-    - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
-      itemType: how-to-guide
-      text: Připojení typu point-to-site
-    - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
-      itemType: how-to-guide
-      text: Řešení potíží se službami VPN Gateway
-    footerLink:
-      url: ../vpn-gateway/index.yml
-      text: Další informace
-  - title: Rozšíření místního prostředí do Azure – privátní připojení
-    links:
-    - url: ../expressroute/expressroute-introduction.md
-      itemType: concept
-      text: Co je Azure ExpressRoute?
-    - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
-      itemType: tutorial
-      text: Vytvoření a úprava okruhu ExpressRoute
-    - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
-      itemType: tutorial
-      text: Propojení virtuální sítě k okruhu ExpressRoute
-    - url: ../expressroute/expressroute-troubleshooting-network-performance.md
-      itemType: how-to-guide
-      text: Řešení potíží s výkonem sítě
-    footerLink:
-      url: ../expressroute/index.yml
-      text: Další informace
-  - title: DNS
-    links:
-    - url: ../dns/dns-overview.md
-      itemType: overview
-      text: Co je Azure DNS?
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: overview
-      text: Co je Privátní DNS v Azure?
-    - url: ../dns/dns-delegate-domain-azure-dns.md
-      itemType: tutorial
-      text: Hostování domény a subdomény
-    - url: ../dns/dns-getstarted-portal.md
-      itemType: tutorial
-      text: Řešení problémů s Azure DNS
-    footerLink:
-      url: ../dns/index.yml
-      text: Další informace
-  - title: Nástroj pro vyrovnávání zatížení sítě
-    links:
-    - url: ../load-balancer/load-balancer-overview.md
-      itemType: overview
-      text: Co je Azure Load Balancer?
-    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
-      itemType: whats-new
-      text: Novinky
-    - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
-      itemType: quickstart
-      text: Vyrovnávání zatížení internetového provozu do virtuálních počítačů
-    - url: ../load-balancer/load-balancer-troubleshoot.md
-      itemType: how-to-guide
-      text: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
-    footerLink:
-      url: ../load-balancer/index.yml
-      text: Další informace
-  - title: Nástroj pro vyrovnávání zatížení na základě DNS
-    links:
-    - url: ../traffic-manager/traffic-manager-overview.md
-      itemType: overview
-      text: Co je Azure Traffic Manager?
-    - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
-      itemType: tutorial
-      text: Směrování provozu pro zajištění nízké latence
-    - url: ../traffic-manager/traffic-manager-routing-methods.md
-      itemType: concept
-      text: Metody směrování provozu
-    - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
-      itemType: how-to-guide
-      text: Řešení potíží se sníženým výkonem Traffic Manageru
-    footerLink:
-      url: ../traffic-manager/index.yml
-      text: Další informace
-  - title: Nástroj pro vyrovnávání zatížení webových aplikací
-    links:
-    - url: ../application-gateway/overview.md
-      itemType: overview
-      text: Co je Azure Application Gateway?
-    - url: ../application-gateway/quick-create-portal.md
-      itemType: quickstart
-      text: Směrování webového provozu s využitím portálu
-    - url: ../application-gateway/application-gateway-faq.yml
-      itemType: concept
-      text: Nejčastější dotazy
-    - url: ../application-gateway/application-gateway-troubleshooting-502.md
-      itemType: how-to-guide
-      text: Řešení chyb typu Chybná brána
-    footerLink:
-      url: ../application-gateway/index.yml
-      text: Další informace
-  - title: Zabezpečený Cloud CDN a globální nástroj pro vyrovnávání zatížení
-    links:
-    - url: ../frontdoor/front-door-overview.md
-      itemType: overview
-      text: Co je Azure Front Door Service?
-    - url: ../frontdoor/standard-premium/overview.md
-      itemType: overview
-      text: Co je Azure front dveří Standard/Premium (Preview)?
-    - url: ../frontdoor/front-door-custom-domain.md
-      itemType: how-to-guide
-      text: Přidání vlastní domény do služby Azure Front Door Service
-    - url: ../frontdoor/front-door-how-to-redirect-https.md
-      itemType: how-to-guide
-      text: Přesměrování HTTP na HTTPS
-    footerLink:
-      url: ../frontdoor/index.yml
-      text: Další informace
-  - title: Monitorování stavu sítě
-    links:
-    - url: ../network-watcher/network-watcher-monitoring-overview.md
-      itemType: overview
-      text: Co je Azure Network Watcher?
-    - url: ../network-watcher/traffic-analytics.md
-      itemType: concept
-      text: Analýza provozu v Azure
-    - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
-      itemType: tutorial
-      text: Protokolování toku síťového provozu do a z virtuálního počítače
-    footerLink:
-      url: ../network-watcher/index.yml
-      text: Další informace
-  - title: Síťová brána firewall
-    links:
-    - url: ../firewall/overview.md
-      itemType: overview
-      text: Co je brána Azure Firewall?
-    - url: ../firewall/tutorial-firewall-deploy-portal.md
-      itemType: tutorial
-      text: Nasazení a konfigurace služby Azure Firewall
-    - url: ../firewall/tutorial-firewall-dnat.md
-      itemType: tutorial
-      text: Filtrování příchozího internetového provozu s využitím služby Azure Firewall
-    footerLink:
-      url: ../firewall/index.yml
-      text: Další informace
-  - title: Zabezpečený přístup k virtuálním počítačům Azure
-    links:
-    - url: ../bastion/bastion-overview.md
-      itemType: overview
-      text: Co je Azure Bastion?
-    - url: ../bastion/tutorial-create-host-portal.md
-      itemType: how-to-guide
-      text: Vytvoření hostitele služby Azure Bastion
-    - url: ../bastion/troubleshoot.md
-      itemType: how-to-guide
-      text: Řešení potíží se službou Azure Bastion
-    footerLink:
-      url: ../bastion/index.yml
-      text: Další informace
-  - title: Správa zabezpečení sítě
-    links:
-    - url: ../firewall-manager/overview.md
-      itemType: overview
-      text: Co je Azure Firewall Manager?
-    - url: ../firewall-manager/secured-virtual-hub.md
-      itemType: concept
-      text: Co je zabezpečené virtuální centrum?
-    - url: ../firewall-manager/secure-cloud-network.md
-      itemType: tutorial
-      text: Zabezpečení virtuální sítě WAN s využitím Azure Firewall Manageru
-    footerLink:
-      url: ../firewall-manager/index.yml
-      text: Další informace
-  - title: Brána firewall webových aplikací
-    links:
-    - url: ../web-application-firewall/overview.md
-      itemType: overview
-      text: Co je Firewall webových aplikací Azure?
-    - url: ../web-application-firewall/ag/ag-overview.md
-      itemType: concept
-      text: WAF ve službě Application Gateway
-    - url: ../web-application-firewall/afds/afds-overview.md
-      itemType: concept
-      text: WAF ve službě Azure Front Door Service
-    - url: ../web-application-firewall/cdn/cdn-overview.md
-      itemType: concept
-      text: WAF ve službě Azure CDN
-    - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
-      itemType: how-to-guide
-      text: Řešení potíží s WAF pro Application Gateway
-    footerLink:
-      url: ../web-application-firewall/index.yml
-      text: Další informace
-  - title: Privátní přístup ke službě
-    links:
-    - url: ../private-link/private-link-overview.md
-      itemType: overview
-      text: Co je privátní propojení Azure?
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: concept
-      text: Co je privátní koncový bod Azure?
-    - url: ../private-link/troubleshoot-private-link-connectivity.md
-      itemType: how-to-guide
-      text: Řešení potíží s Azure Private Linkem
-    footerLink:
-      url: ../private-link/index.yml
-      text: Další informace
-  - title: DDoS Protection
-    links:
-    - url: ../ddos-protection/ddos-protection-overview.md
-      itemType: overview
-      text: Co je Azure DDoS Protection na úrovni Standard?
-    - url: ../ddos-protection/manage-ddos-protection.md
-      itemType: how-to-guide
-      text: Správa služby DDoS Protection
-    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
-      itemType: concept
-      text: Onboarding partnerů
-    footerLink:
-      url: ../ddos-protection/index.yml
-      text: Další informace
-  - title: Síť pro doručování obsahu
-    links:
-    - url: ../cdn/cdn-overview.md
-      itemType: overview
-      text: Co je Azure Content Delivery Network?
-    - url: ../cdn/cdn-create-new-endpoint.md
-      itemType: quickstart
-      text: Vytvoření koncového bodu a profilu CDN
-    - url: ../cdn/cdn-standard-rules-engine-reference.md
-      itemType: concept
-      text: Reference ke stroji pravidel Standard pro Azure CDN
-    - url: ../cdn/cdn-troubleshoot-endpoint.md
-      itemType: how-to-guide
-      text: Řešení potíží s koncovými body Azure CDN
-    footerLink:
-      url: ../cdn/index.yml
-      text: Další informace
-  - title: Sjednocená hvězdicová síť
-    links:
-    - url: ../virtual-wan/virtual-wan-about.md
-      itemType: overview
-      text: Co je Azure Virtual WAN?
-    - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
-      itemType: concept
-      text: Architektura globální přenosové sítě – Azure Virtual WAN
-    - url: ../virtual-wan/virtual-wan-locations-partners.md
-      itemType: concept
-      text: Umístění a partneři pro Azure Virtual WAN
-    - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
-      itemType: how-to-guide
-      text: Migrace z hvězdicové topologie sítě
-    footerLink:
-      url: ../virtual-wan/index.yml
-      text: Další informace
-  - title: Služby Peering Service
-    links:
-    - url: ../peering-service/about.md
-      itemType: overview
-      text: Co je Azure Peering Service?
-    - url: ../internet-peering/overview.md
-      itemType: overview
-      text: Co je internetový peering?
-    - url: ../internet-peering/overview-peering-service.md
-      itemType: concept
-      text: Internetový peering vs. Peering Service v Azure
-    footerLink:
-      url: ../peering-service/index.yml
-      text: Další informace
+    - title: Principy základních informací o sítích v Azure
+      links:
+        - url: fundamentals/networking-overview.md
+          itemType: overview
+          text: Co jsou Sítě Azure?
+        - url: ../virtual-network/quick-create-portal.md
+          itemType: get-started
+          text: Vytvoření virtuální sítě
+        - url: microsoft-global-network.md
+          itemType: concept
+          text: Globální síť Microsoftu
+      footerLink:
+        url: ../networking/fundamentals/index.yml
+        text: Zobrazit více
+    - title: Virtuální síť
+      links:
+        - url: ../virtual-network/virtual-networks-overview.md
+          itemType: concept
+          text: Co je virtuální síť Azure?
+        - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
+          itemType: tutorial
+          text: Omezení síťového přístupu k prostředkům
+        - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+          itemType: tutorial
+          text: Připojení k virtuální síti Azure
+        - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
+          itemType: how-to-guide
+          text: Řešení potíží s filtrováním síťového provozu
+      footerLink:
+        url: ../virtual-network/index.yml
+        text: Další informace
+    - title: Připojení z místního prostředí do Azure – šifrování virtuální privátní sítě
+      links:
+        - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+          itemType: overview
+          text: Co je Azure VPN Gateway?
+        - url: ../vpn-gateway/tutorial-site-to-site-portal.md
+          itemType: tutorial
+          text: Připojení typu site-to-site
+        - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
+          itemType: how-to-guide
+          text: Připojení typu point-to-site
+        - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
+          itemType: how-to-guide
+          text: Řešení potíží se službami VPN Gateway
+      footerLink:
+        url: ../vpn-gateway/index.yml
+        text: Další informace
+    - title: Rozšíření místního prostředí do Azure – privátní připojení
+      links:
+        - url: ../expressroute/expressroute-introduction.md
+          itemType: concept
+          text: Co je Azure ExpressRoute?
+        - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
+          itemType: tutorial
+          text: Vytvoření a úprava okruhu ExpressRoute
+        - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
+          itemType: tutorial
+          text: Propojení virtuální sítě k okruhu ExpressRoute
+        - url: ../expressroute/expressroute-troubleshooting-network-performance.md
+          itemType: how-to-guide
+          text: Řešení potíží s výkonem sítě
+      footerLink:
+        url: ../expressroute/index.yml
+        text: Další informace
+    - title: DNS
+      links:
+        - url: ../dns/dns-overview.md
+          itemType: overview
+          text: Co je Azure DNS?
+        - url: ../private-link/private-endpoint-overview.md
+          itemType: overview
+          text: Co je Privátní DNS v Azure?
+        - url: ../dns/dns-delegate-domain-azure-dns.md
+          itemType: tutorial
+          text: Hostování domény a subdomény
+        - url: ../dns/dns-getstarted-portal.md
+          itemType: tutorial
+          text: Řešení problémů s Azure DNS
+      footerLink:
+        url: ../dns/index.yml
+        text: Další informace
+    - title: Nástroj pro vyrovnávání zatížení sítě
+      links:
+        - url: ../load-balancer/load-balancer-overview.md
+          itemType: overview
+          text: Co je Azure Load Balancer?
+        - url: 'https://azure.microsoft.com/updates/?category=networking&query=load%20balancer'
+          itemType: whats-new
+          text: Novinky
+        - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
+          itemType: quickstart
+          text: Vyrovnávání zatížení internetového provozu do virtuálních počítačů
+        - url: ../load-balancer/load-balancer-troubleshoot.md
+          itemType: how-to-guide
+          text: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
+      footerLink:
+        url: ../load-balancer/index.yml
+        text: Další informace
+    - title: Nástroj pro vyrovnávání zatížení na základě DNS
+      links:
+        - url: ../traffic-manager/traffic-manager-overview.md
+          itemType: overview
+          text: Co je Azure Traffic Manager?
+        - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
+          itemType: tutorial
+          text: Směrování provozu pro zajištění nízké latence
+        - url: ../traffic-manager/traffic-manager-routing-methods.md
+          itemType: concept
+          text: Metody směrování provozu
+        - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
+          itemType: how-to-guide
+          text: Řešení potíží se sníženým výkonem Traffic Manageru
+      footerLink:
+        url: ../traffic-manager/index.yml
+        text: Další informace
+    - title: Nástroj pro vyrovnávání zatížení webových aplikací
+      links:
+        - url: ../application-gateway/overview.md
+          itemType: overview
+          text: Co je Azure Application Gateway?
+        - url: ../application-gateway/quick-create-portal.md
+          itemType: quickstart
+          text: Směrování webového provozu s využitím portálu
+        - url: ../application-gateway/application-gateway-faq.yml
+          itemType: concept
+          text: Nejčastější dotazy
+        - url: ../application-gateway/application-gateway-troubleshooting-502.md
+          itemType: how-to-guide
+          text: Řešení chyb typu Chybná brána
+      footerLink:
+        url: ../application-gateway/index.yml
+        text: Další informace
+    - title: Zabezpečený Cloud CDN a globální nástroj pro vyrovnávání zatížení
+      links:
+        - url: ../frontdoor/front-door-overview.md
+          itemType: overview
+          text: Co je Azure Front Door Service?
+        - url: ../frontdoor/standard-premium/overview.md
+          itemType: overview
+          text: Co je Azure front dveří Standard/Premium (Preview)?
+        - url: ../frontdoor/front-door-custom-domain.md
+          itemType: how-to-guide
+          text: Přidání vlastní domény do služby Azure Front Door Service
+        - url: ../frontdoor/front-door-how-to-redirect-https.md
+          itemType: how-to-guide
+          text: Přesměrování HTTP na HTTPS
+      footerLink:
+        url: ../frontdoor/index.yml
+        text: Další informace
+    - title: Monitorování stavu sítě
+      links:
+        - url: ../network-watcher/network-watcher-monitoring-overview.md
+          itemType: overview
+          text: Co je Azure Network Watcher?
+        - url: ../network-watcher/traffic-analytics.md
+          itemType: concept
+          text: Analýza provozu v Azure
+        - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
+          itemType: tutorial
+          text: Protokolování toku síťového provozu do a z virtuálního počítače
+      footerLink:
+        url: ../network-watcher/index.yml
+        text: Další informace
+    - title: Síťová brána firewall
+      links:
+        - url: ../firewall/overview.md
+          itemType: overview
+          text: Co je brána Azure Firewall?
+        - url: ../firewall/tutorial-firewall-deploy-portal.md
+          itemType: tutorial
+          text: Nasazení a konfigurace služby Azure Firewall
+        - url: ../firewall/tutorial-firewall-dnat.md
+          itemType: tutorial
+          text: Filtrování příchozího internetového provozu s využitím služby Azure Firewall
+      footerLink:
+        url: ../firewall/index.yml
+        text: Další informace
+    - title: Zabezpečený přístup k virtuálním počítačům Azure
+      links:
+        - url: ../bastion/bastion-overview.md
+          itemType: overview
+          text: Co je Azure Bastion?
+        - url: ../bastion/tutorial-create-host-portal.md
+          itemType: how-to-guide
+          text: Vytvoření hostitele služby Azure Bastion
+        - url: ../bastion/troubleshoot.md
+          itemType: how-to-guide
+          text: Řešení potíží se službou Azure Bastion
+      footerLink:
+        url: ../bastion/index.yml
+        text: Další informace
+    - title: Správa zabezpečení sítě
+      links:
+        - url: ../firewall-manager/overview.md
+          itemType: overview
+          text: Co je Azure Firewall Manager?
+        - url: ../firewall-manager/secured-virtual-hub.md
+          itemType: concept
+          text: Co je zabezpečené virtuální centrum?
+        - url: ../firewall-manager/secure-cloud-network.md
+          itemType: tutorial
+          text: Zabezpečení virtuální sítě WAN s využitím Azure Firewall Manageru
+      footerLink:
+        url: ../firewall-manager/index.yml
+        text: Další informace
+    - title: Brána firewall webových aplikací
+      links:
+        - url: ../web-application-firewall/overview.md
+          itemType: overview
+          text: Co je Firewall webových aplikací Azure?
+        - url: ../web-application-firewall/ag/ag-overview.md
+          itemType: concept
+          text: WAF ve službě Application Gateway
+        - url: ../web-application-firewall/afds/afds-overview.md
+          itemType: concept
+          text: WAF ve službě Azure Front Door Service
+        - url: ../web-application-firewall/cdn/cdn-overview.md
+          itemType: concept
+          text: WAF ve službě Azure CDN
+        - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
+          itemType: how-to-guide
+          text: Řešení potíží s WAF pro Application Gateway
+      footerLink:
+        url: ../web-application-firewall/index.yml
+        text: Další informace
+    - title: Privátní přístup ke službě
+      links:
+        - url: ../private-link/private-link-overview.md
+          itemType: overview
+          text: Co je privátní propojení Azure?
+        - url: ../private-link/private-endpoint-overview.md
+          itemType: concept
+          text: Co je privátní koncový bod Azure?
+        - url: ../private-link/troubleshoot-private-link-connectivity.md
+          itemType: how-to-guide
+          text: Řešení potíží s Azure Private Linkem
+      footerLink:
+        url: ../private-link/index.yml
+        text: Další informace
+    - title: DDoS Protection
+      links:
+        - url: ../ddos-protection/ddos-protection-overview.md
+          itemType: overview
+          text: Co je Azure DDoS Protection na úrovni Standard?
+        - url: ../ddos-protection/manage-ddos-protection.md
+          itemType: how-to-guide
+          text: Správa služby DDoS Protection
+        - url: ../ddos-protection/ddos-protection-partner-onboarding.md
+          itemType: concept
+          text: Onboarding partnerů
+      footerLink:
+        url: ../ddos-protection/index.yml
+        text: Další informace
+    - title: Síť pro doručování obsahu
+      links:
+        - url: ../cdn/cdn-overview.md
+          itemType: overview
+          text: Co je Azure Content Delivery Network?
+        - url: ../cdn/cdn-create-new-endpoint.md
+          itemType: quickstart
+          text: Vytvoření koncového bodu a profilu CDN
+        - url: ../cdn/cdn-standard-rules-engine-reference.md
+          itemType: concept
+          text: Reference ke stroji pravidel Standard pro Azure CDN
+        - url: ../cdn/cdn-troubleshoot-endpoint.md
+          itemType: how-to-guide
+          text: Řešení potíží s koncovými body Azure CDN
+      footerLink:
+        url: ../cdn/index.yml
+        text: Další informace
+    - title: Sjednocená hvězdicová síť
+      links:
+        - url: ../virtual-wan/virtual-wan-about.md
+          itemType: overview
+          text: Co je Azure Virtual WAN?
+        - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
+          itemType: concept
+          text: Architektura globální přenosové sítě – Azure Virtual WAN
+        - url: ../virtual-wan/virtual-wan-locations-partners.md
+          itemType: concept
+          text: Umístění a partneři pro Azure Virtual WAN
+        - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
+          itemType: how-to-guide
+          text: Migrace z hvězdicové topologie sítě
+      footerLink:
+        url: ../virtual-wan/index.yml
+        text: Další informace
 additionalContent:
   sections:
-  - items:
-    - title: Příkazy Azure PowerShellu pro sítě Azure
-      summary: Další informace o síťových rutinách Azure
-      url: /powershell/module/az.network/#networking
-    - title: Příkazy Azure CLI pro sítě Azure
-      summary: Příkazy pro sítě Azure najdete v referenčních informacích k rozhraní příkazového řádku.
-      url: /cli/azure/network
-    - title: Blogy k sítím Azure
-      summary: Projděte si nejnovější blogy věnované sítím Azure.
-      url: https://azure.microsoft.com/blog/topics/networking/
+    - items:
+        - title: Příkazy Azure PowerShellu pro sítě Azure
+          summary: Další informace o síťových rutinách Azure
+          url: /powershell/module/az.network/#networking
+        - title: Příkazy Azure CLI pro sítě Azure
+          summary: Příkazy pro sítě Azure najdete v referenčních informacích k rozhraní příkazového řádku.
+          url: /cli/azure/network
+        - title: Blogy k sítím Azure
+          summary: Projděte si nejnovější blogy věnované sítím Azure.
+          url: 'https://azure.microsoft.com/blog/topics/networking/'

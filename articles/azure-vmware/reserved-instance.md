@@ -1,14 +1,14 @@
 ---
-title: Úspora nákladů pomocí rezervované instance řešení Azure VMware
-description: Naučte se koupit rezervovanou instanci pro řešení Azure VMware.
+title: Rezervované instance řešení Azure VMware
+description: Naučte se koupit rezervovanou instanci pro řešení Azure VMware. Rezervovaná instance pokrývá jenom výpočetní část vašeho využití a zahrnuje náklady na licencování softwaru.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 6f181d4b6ee7e2098130633fef0eb8558add0308
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550971"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210020"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Úspora nákladů pomocí řešení Azure VMware
 
@@ -58,7 +58,7 @@ Tyto požadavky se vztahují k zakoupení rezervované instance vyhrazeného hos
    | Obor        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
    | Oblast       | Oblast Azure, která je pokrytá rezervací.   |
    | Velikost hostitele    | AV36    |
-   | Označení         | Jeden rok nebo tři roky.  |
+   | Pojem         | Jeden rok nebo tři roky.  |
    | Množství     | Počet instancí, které se mají koupit v rámci rezervace Množství je počet spuštěných hostitelů řešení Azure VMware, které mohou získat fakturační slevu.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Nákup rezervovaných instancí pro předplatné CSP
@@ -87,7 +87,7 @@ Poskytovatelé CSP, kteří chtějí koupit rezervované instance pro své záka
    | Obor        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
    | Oblast       | Oblast Azure, která je pokrytá rezervací.   |
    | Velikost hostitele    | AV36    |
-   | Označení         | Jeden rok nebo tři roky.  |
+   | Pojem         | Jeden rok nebo tři roky.  |
    | Množství     | Počet instancí, které se mají koupit v rámci rezervace Množství je počet spuštěných hostitelů řešení Azure VMware, které mohou získat fakturační slevu.     |
 
 Další informace o tom, jak zobrazit zakoupené rezervace pro zákazníka, najdete v článku [zobrazení rezervací Azure jako poskytovatele Cloud Solution Provider (CSP)](../cost-management-billing/reservations/how-to-view-csp-reservations.md) .
@@ -135,7 +135,7 @@ Poskytovatelé CSP můžou zrušit, vyměnit nebo vrátit refundaci s určitými
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste si pokryli, že jste si koupili rezervovanou instanci řešení Azure VMware, možná se budete chtít dozvědět něco:
+Teď, když jste si pokryli rezervovanou instanci řešení Azure VMware, budete možná chtít získat informace o:
 
 - [Vytváření posouzení řešení Azure VMware](../migrate/how-to-create-azure-vmware-solution-assessment.md).
 - [Správa DHCP pro řešení Azure VMware](manage-dhcp.md).

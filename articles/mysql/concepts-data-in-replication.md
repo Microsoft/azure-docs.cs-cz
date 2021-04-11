@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab2433bfa4df3d75f10bc9128dc736ff6d12be76
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996215"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210512"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL
 
-Replikace vstupních dat umožňuje synchronizovat data z externího serveru MySQL do služby Azure Database for MySQL. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Replikace vstupních dat umožňuje synchronizovat data z externího serveru MySQL do služby Azure Database for MySQL. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu. Replikace vstupních dat je založen na umístění binárního protokolu (binlog) nebo na bázi replikace založené na gtidech, která je nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
 ## <a name="when-to-use-data-in-replication"></a>Kdy použít Replikace vstupních dat
 V hlavních scénářích, které je potřeba zvážit, je použití Replikace vstupních dat:
@@ -35,20 +35,20 @@ Pokud chcete přeskočit replikaci tabulek ze zdrojového serveru (hostovaných 
 
 Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) .
 
+## <a name="supported-in-general-purpose-or-memory-optimized-tier-only"></a>Podporováno pouze v Pro obecné účely nebo paměťově optimalizované vrstvě
+Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
+
 ### <a name="requirements"></a>Požadavky
 - Verze zdrojového serveru musí být aspoň MySQL verze 5,6. 
 - Verze serveru pro zdroj a replika musí být stejné. Musí být například MySQL verze 5,6 nebo musí být MySQL verze 5,7.
 - Každá tabulka musí mít primární klíč.
 - Zdrojový server by měl používat modul MySQL InnoDB.
 - Uživatel musí mít oprávnění ke konfiguraci binárního protokolování a vytváření nových uživatelů na zdrojovém serveru.
-- Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mysql.az_replication_change_master` . Podívejte se na následující [Příklady](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
+- Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v `mysql.az_replication_change_master` uložené proceduře nebo uložený postup obsažený certifikát certifikační autority SSL zadaný pro tuto doménu `mysql.az_replication_change_master_with_gtid` . Podívejte se na následující [Příklady](./howto-data-in-replication.md#4-link-source-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
 - Zajistěte, aby byla IP adresa zdrojového serveru přidaná do pravidel brány firewall serveru repliky Azure Database for MySQL. Pomocí webu [Azure Portal](./howto-manage-firewall-using-portal.md) nebo [Azure CLI](./howto-manage-firewall-using-cli.md) aktualizujte pravidla brány firewall.
 - Ujistěte se, že počítač, který hostuje zdrojový server, umožňuje příchozí i odchozí provoz na portu 3306.
 - Ujistěte se, že zdrojový server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Jiné
-- Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
-- Identifikátory globálních transakcí (GTID) se nepodporují.
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak [nastavit replikaci dat](howto-data-in-replication.md) .

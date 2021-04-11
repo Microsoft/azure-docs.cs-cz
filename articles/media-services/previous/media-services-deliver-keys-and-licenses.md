@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2d965ec17fb605362c1e8cd8ef781a6bd2029d0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465704"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067380"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Použití Media Services k doručování licencí DRM nebo klíčů AES
 
@@ -54,7 +54,7 @@ Následující diagram znázorňuje hlavní kroky, které musíte provést, abys
     ```
  
 ## <a name="net-code-example"></a>Příklad kódu .NET
-Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL pro získání licence PlayReady nebo Widevine. Pokud chcete nakonfigurovat místní server, budete potřebovat klíč obsahu, ID klíče a adresu URL pro získání licence. Po nakonfigurování místního serveru můžete streamovat z vlastního serveru streamování. Vzhledem k tomu, že zašifrovaný datový proud odkazuje na licenční server Media Services, váš hráč si vyžádá licenci od Media Services. Pokud zvolíte ověřování pomocí tokenu, Media Services licenční server ověří token, který jste odeslali prostřednictvím protokolu HTTPS. Pokud je token platný, licenční server licence zaručí zpátky do svého přehrávače. Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL pro získání licence PlayReady nebo Widevine. Pokud chcete doručovat klíče AES-128, je nutné vytvořit klíč obsahu obálky a získat adresu URL pro získání klíče. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-protect-with-aes128.md).
+Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL pro získání licence PlayReady nebo Widevine. Pokud chcete nakonfigurovat místní server, budete potřebovat klíč obsahu, ID klíče a adresu URL pro získání licence. Po nakonfigurování místního serveru můžete streamovat z vlastního serveru streamování. Vzhledem k tomu, že zašifrovaný datový proud odkazuje na licenční server Media Services, váš hráč si vyžádá licenci od Media Services. Pokud zvolíte ověřování pomocí tokenu, Media Services licenční server ověří token, který jste odeslali prostřednictvím protokolu HTTPS. Pokud je token platný, licenční server licence zaručí zpátky do svého přehrávače. Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL pro získání licence PlayReady nebo Widevine. Pokud chcete doručovat klíče AES-128, je nutné vytvořit klíč obsahu obálky a získat adresu URL pro získání klíče. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-playready-license-template-overview.md).
 
 ```csharp
 using System;
@@ -357,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>Viz také
 * [Použití běžného dynamického šifrování PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
-* [Použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md)
+* [Použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-playready-license-template-overview.md)

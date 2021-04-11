@@ -2,13 +2,13 @@
 title: Azure Service Bus zasílání zpráv – fronty, témata a odběry
 description: Tento článek poskytuje přehled entit zasílání zpráv Azure Service Bus (fronty, témata a odběry).
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096333"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209820"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 Azure Service Bus podporuje sadu cloudových technologií orientovaných na zprávy, včetně spolehlivé služby Řízení front zpráv a trvalého publikování/odběru zpráv. Tyto možnosti zprostředkujícího zasílání zpráv se dají představit jako funkce odděleného zasílání zpráv, které podporují publikování a dočasná odhlašování a vyrovnávání zatížení pomocí úlohy Service Busho zasílání zpráv. Oddělená komunikace má mnoho výhod. Například klienti a servery se mohou připojit podle potřeby a provádět jejich operace asynchronním způsobem.
@@ -53,7 +53,7 @@ V mnoha scénářích musí být zprávy, které mají specifické vlastnosti, z
 
 Úplný pracovní příklad najdete na webu GitHub [TopicSubscriptionWithRuleOperationsSample Sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) .
 
-Další informace o možných hodnotách filtru naleznete v dokumentaci ke třídám [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) .
+Další informace o filtrech najdete v tématu [filtry a akce tématu](topic-filters.md).
 
 ## <a name="java-message-service-jms-20-entities"></a>Entity služby zprávy Java (JMS) 2,0
 K dispozici jsou tyto entity prostřednictvím rozhraní JMS (Java Message Service) 2,0 API.

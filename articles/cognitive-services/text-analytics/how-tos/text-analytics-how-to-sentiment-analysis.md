@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599119"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276990"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Postupy: analýza dolování mínění a jejich názoru
 
-Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsoby, jak zjistit pozitivní a negativní mínění. Pokud odešlete žádost o Analýza mínění, rozhraní API vrátí mínění popisky (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu. Můžete také odesílat názory na požadavky na dolování pomocí Analýza míněního koncového bodu, který poskytuje podrobné informace o stanoviscích souvisejících se slovy (například s atributy produktů nebo služeb) v textu. 
+Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsoby, jak zjistit pozitivní a negativní mínění. Pokud odešlete žádost o Analýza mínění, rozhraní API vrátí mínění popisky (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu. Můžete také odesílat názory na požadavky na dolování pomocí Analýza míněního koncového bodu, který poskytuje podrobné informace o stanoviscích souvisejících se slovy (například s atributy produktů nebo služeb) v textu.
 
 Modely AI používané rozhraním API jsou součástí služby, stačí ale odeslat obsah k analýze.
 
@@ -151,7 +151,7 @@ Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která
 
 Analýza mínění v 3.1 může vracet objekty odpovědi pro dolování Analýza mínění a stanovisek.
   
-Mínění Analysis vrátí popisek mínění a hodnocení spolehlivosti pro celý dokument a každou větu v něm. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. Dokument může mít několik vět a hodnocení spolehlivosti v jednotlivých dokumentech nebo větách přidalo až 1. hodnocení 
+Mínění Analysis vrátí popisek mínění a hodnocení spolehlivosti pro celý dokument a každou větu v něm. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. Dokument může mít několik vět a hodnocení spolehlivosti v jednotlivých dokumentech nebo větách přidalo až 1.
 
 Dolování podle názoru vyhledá v textu cíle (podstatné jméno nebo slovesa) a jejich přidružené hodnocení (adjektivum). V níže uvedené reakci je věta, *že má restaurace skvělou potravinu a naše čekací služba byla uživatelsky přívětivá a* má dva cíle: *jídlo* a *čekací* služba. Vlastnost každého cíle `relations` obsahuje `ref` hodnotu s odkazem na identifikátor URI na asociované `documents` `sentences` objekty, a `assessments` .
 

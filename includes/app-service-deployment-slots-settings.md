@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 922a34bd1a147d407041d2945b14df18a18d7287
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed53cb60f6fb3bca93900941a8a6a53bed99d779
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104761247"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073644"
 ---
 Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigurace upravitelná. Některé prvky konfigurace následují po prohození obsahu (ne pro konkrétní sloty), zatímco jiné konfigurační prvky zůstávají na stejném slotu po prohození (specifické pro slot). Následující seznamy obsahují nastavení, která se mění při prohození slotů.
 
@@ -40,6 +40,7 @@ Funkce označené hvězdičkou (*) jsou plánovány jako neswapé.
 * Sdílení prostředků mezi zdroji (CORS)
 * Integrace virtuální sítě
 * Mapování cest
+* Nastavení končící příponou _EXTENSION_VERSION
 
 > [!NOTE]
 > Chcete-li tato nastavení vyměnit, přidejte nastavení aplikace `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` do každé pozice aplikace a nastavte její hodnotu na `0` nebo `false` . Tato nastavení jsou buď všechna zaměnitelné, nebo vůbec ne. Nemůžete dělat jenom některá nastavení, která by se dala měnit, a ne ostatní.

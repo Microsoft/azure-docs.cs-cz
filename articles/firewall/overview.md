@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: victorh
-ms.openlocfilehash: 6855eb50519afacdf971ffcb8b70aa289b7cfe26
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066326"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385169"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -52,9 +52,8 @@ Další informace o tom, co je nového v Azure Firewall, najdete v tématu [Aktu
 
 Brána Azure Firewall má následující známé problémy:
 
-|Problém  |Description  |Omezení rizik  |
+|Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
-|Pokud aktualizujete pravidlo z IP adresy na skupinu IP adres nebo naopak pomocí portálu, oba typy se uloží, ale na portálu se zobrazí jenom jedna.|K tomuto problému dochází u klasických pravidel.<br><br>Když pomocí portálu aktualizujete typ zdroje pravidla překladu adres (NAT) z IP adresy na skupinu IP adres nebo naopak, uloží se oba typy do back-endu, ale prezentuje jenom nově aktualizovaný typ.<br><br>K tomuto problému dochází, když aktualizujete typ cílového pravidla sítě nebo aplikace z IP adresy na typ skupiny IP adres nebo naopak.|Oprava na portálu je zaměřená na březen 2021.<br><br>Mezitím pomocí Azure PowerShell, Azure CLI nebo rozhraní API můžete změnit pravidlo z IP adresy na skupinu IP adres nebo naopak.|
 |Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla filtrování sítě pro protokoly jiné než TCP/UDP nefungují s SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](../load-balancer/load-balancer-overview.md). Zkoumáme možnosti podpory tohoto scénáře v budoucí verzi.|
 |Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a CLI v síťových pravidlech nepodporují protokol ICMP jako platný protokol.|Protokol ICMP je stále možné používat prostřednictvím portálu a REST API. Pracujeme na přidání protokolu ICMP v PowerShellu a rozhraní příkazového řádku brzy.|
 |Značky plně kvalifikovaného názvu domény vyžadují, aby byl nastavený protokol: port|Pravidla aplikací s značkami plně kvalifikovaného názvu domény vyžadují port: definice protokolu.|Jako hodnotu port: protokol můžete použít **https**. Pracujeme na tom, aby toto pole bylo volitelné při použití značek FQDN.|
@@ -78,6 +77,7 @@ Brána Azure Firewall má následující známé problémy:
 |Funkce Spustit/zastavit nefunguje s bránou firewall nakonfigurovanou v režimu vynuceného tunelového propojení.|Spuštění/zastavení nefunguje s bránou Azure firewall nakonfigurovanou v režimu vynuceného tunelového propojení. Při pokusu o spuštění Azure Firewall s nakonfigurovaným vynuceným tunelovým propojením dojde k následující chybě:<br><br>*Set-AzFirewall: AzureFirewall nelze přidat konfiguraci IP adresy pro správu FW-XX do existující brány firewall. Pokud chcete používat vynucené tunelové propojení, proveďte znovu nasazení s konfigurací IP adresy pro správu. <br> StatusCode: 400 <br> ReasonPhrase: Chybný požadavek*|V rámci šetření.<br><br>Jako alternativní řešení můžete odstranit existující bránu firewall a vytvořit novou se stejnými parametry.|
 |Nejde přidat značky zásad brány firewall pomocí portálu.|Zásady Azure Firewall mají omezení podpory oprav, které vám brání v přidávání značky pomocí Azure Portal. Vygenerovala se následující chyba: *značky pro prostředek se nepovedlo Uložit*.|Probíhá šetření opravy. Nebo můžete použít rutinu Azure PowerShell `Set-AzFirewallPolicy` k aktualizaci značek.|
 |Protokol IPv6 ještě není podporovaný.|Pokud přidáte adresu IPv6 k pravidlu, brána firewall se nezdařila.|Používejte jenom IPv4 adresy. V rámci šetření je podporována podpora protokolu IPv6.|
+|Aktualizace více skupin IP adres se nezdařila s chybou konfliktu.|Když aktualizujete dva nebo více IPGroups připojených ke stejné bráně firewall, jeden z prostředků přejde do stavu selhání.|Jedná se o známý problém nebo omezení. <br><br>Při aktualizaci IPGroup aktivuje aktualizace všech bran firewall, ke kterým je IPGroup připojen. Pokud je v době, kdy je brána firewall stále ve stavu *aktualizace* , spuštěná aktualizace pro druhý IPGroup, aktualizace IPGroup se nezdařila.<br><br>Aby nedocházelo k selhání, je třeba po jednom aktualizovat IPGroups připojené ke stejné bráně firewall. Povolí dostatek času mezi aktualizacemi, aby se brána firewall mohla dostat do stavu *aktualizace* .| 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,12 +4,12 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562191"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056568"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -282,7 +282,9 @@ Další informace
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Shromažďování protokolů pomocí dotnet – trasování
 
-Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)Pro shromažďování protokolů, které mohou další pomoc při řešení potíží, taky zákazníci můžou použít nástroj .NET Core pro různé platformy. To může být zvláště užitečné pro prostředí založená na systému Linux.
+
+Po instalaci nástroje [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) Spusťte níže uvedený příkaz v bash.
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -294,4 +296,3 @@ Naučte se, jak odebrat Application Insights v aplikaci Visual Studio podle krok
 
 ## <a name="still-not-working"></a>Pořád nepracujeme...
 * [Microsoft Q&Stránka s otázkou pro Application Insights](/answers/topics/azure-monitor.html)
-
