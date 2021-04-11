@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 2/5/2021
-ms.openlocfilehash: 2966618619aa40ed60c2f3d0fb2c8e080d34a016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/24/2021
+ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617042"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222144"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Vlastní klasifikace v Azure dosah
 
@@ -28,7 +28,7 @@ Máte také možnost vytvářet vlastní klasifikace, pokud některá z výchoz�
 
 ## <a name="steps-to-create-a-custom-classification"></a>Postup vytvoření vlastní klasifikace
 
-Pokud chcete vytvořit vlastní klasifikaci, udělejte toto:
+K vytvoření vlastní klasifikace použijte následující postup:
 
 1. Z katalogu vyberte v nabídce vlevo položku **Centrum pro správu** .
 
@@ -68,7 +68,7 @@ Mezi tyto podrobnosti patří počet zjištěných instancí, formální název,
 
 ## <a name="custom-classification-rules"></a>Vlastní pravidla klasifikace
 
-Služba katalogu poskytuje sadu výchozích pravidel klasifikace, které skener používá k automatickému zjišťování určitých datových typů. Můžete také přidat vlastní pravidla klasifikace, abyste zjistili další typy dat, které by se vám mohly zajímat při hledání v rámci vašich datových nemovitostí. Tato funkce může být velmi výkonná, když se \' znovu pokusíte najít data v rámci své datové nemovitosti.
+Služba katalogu poskytuje sadu výchozích pravidel klasifikace, které skener používá k automatickému zjišťování určitých datových typů. Můžete také přidat vlastní pravidla klasifikace, abyste zjistili další typy dat, které by se vám mohly zajímat při hledání v rámci vašich datových nemovitostí. Tato funkce může být výkonná, když se snažíte najít data v rámci své datové nemovitosti.
 
 Příklad: řekněme, \' že společnost s názvem Contoso má ID zaměstnanců, které jsou standardizovány v celé společnosti, a to ve slově \" Zaměstnanec, \" následovaný identifikátorem GUID, aby bylo možné vytvořit zaměstnance {GUID}. Například jedna instance ID zaměstnance vypadá jako `EMPLOYEE9c55c474-9996-420c-a285-0d0fc23f1f55` .
 
@@ -109,7 +109,7 @@ Vytvoření vlastního pravidla klasifikace:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Vytvořit nové pravidlo regulárního výrazu" border="true":::
 
-1. Pokud se rozhodnete vygenerovat navrhovaný vzor regulárního výrazu, po nahrání souboru vyberte jeden z navrhovaných vzorů a kliknutím na tlačítko **Přidat ke vzorům** použijte navrhovaná data a vzorce sloupců. Navrhované vzory můžete upravit nebo můžete také zadat vlastní vzory bez odeslání souboru.
+1. Pokud se rozhodnete vygenerovat navrhovaný vzor regulárního výrazu, po nahrání souboru vyberte jeden z navrhovaných vzorů a vyberte možnost **Přidat ke vzorům** pro použití navrhovaných vzorců dat a sloupců. Navrhované vzory můžete upravit nebo můžete také zadat vlastní vzory bez odeslání souboru.
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Generovat navrhovaný regulární výraz" border="true":::
 
@@ -128,6 +128,14 @@ Vytvoření vlastního pravidla klasifikace:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Před vytvořením ověřit pravidlo" border="true":::
 
+1. Před dokončením procesu vytváření otestujte pravidlo klasifikace, abyste ověřili, že bude používat značky pro vaše prostředky. Klasifikace v pravidle budou aplikovány na ukázková data, která se nahrála stejně jako při prohledávání. To znamená, že všechny klasifikace systému a vaše vlastní klasifikace budou odpovídat datům v souboru.
+
+   Vstupní soubory můžou zahrnovat soubory s oddělovači (CSV, PSV, SSV, TSV), JSON nebo XML obsah. Obsah bude analyzován v závislosti na příponě souboru vstupního souboru. Data s oddělovači mohou mít příponu souboru, která odpovídá jakémukoli zmíněnému typu. Například data TSV mohou existovat v souboru s názvem MySampleData.csv. Obsah s oddělovači musí mít také minimálně 3 sloupce.
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-screen.png" alt-text="Testovací pravidlo před vytvořením" border="true":::
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-uploaded-file-result-screen.png" alt-text="Zobrazit použité klasifikace po nahrání testovacího souboru" border="true":::
+
 ### <a name="creating-a-dictionary-rule"></a>Vytvoření pravidla slovníku
 
 1. Při vytváření pravidla slovníku se zobrazí následující obrazovka. Nahrajte soubor, který obsahuje všechny možné hodnoty pro klasifikaci, kterou vytváříte v jednom sloupci.
@@ -136,9 +144,9 @@ Vytvoření vlastního pravidla klasifikace:
 
 1. Po vygenerování slovníku můžete upravit jedinečnou shodu a prahovou hodnotu minimální shody a pravidlo odeslat.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Pravidlo dosah slovníku – upravte rozdílovou prahovou hodnotu shody a minimální prahovou hodnotu shody." border="true":::
+- **Rozdílová prahová hodnota shody**: celkový počet jedinečných datových hodnot, které musí být ve sloupci nalezeny předtím, než skener spustí datový vzor. Rozdílová prahová hodnota pro porovnání nemá žádnou akci s porovnáváním vzorů, ale je předpokladem pro porovnávání vzorů. Navrhovaná hodnota je 8. Tuto hodnotu lze ručně upravit v rozsahu od 2 do 32. Tato hodnota vyžaduje, aby tento sloupec obsahoval dostatek dat, aby ho mohl přesně klasifikovat skener. Například sloupec, který obsahuje více řádků, které obsahují hodnotu 1, nebude klasifikován. Sloupce, které obsahují jeden řádek s hodnotou a zbytek řádků, obsahují hodnoty null ani nebudou klasifikovány. Pokud zadáte více vzorů, bude tato hodnota platit pro každý z nich.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Vytvoří pravidlo slovníku s zaškrtnutím slovníku generovaného slovníkem." border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Vytvořte pravidlo slovníku s zaškrtnutím Dictionary-Generated." border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

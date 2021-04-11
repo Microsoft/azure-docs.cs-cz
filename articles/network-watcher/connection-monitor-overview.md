@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712313"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490484"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
 
@@ -358,6 +358,8 @@ Pro sítě, jejichž zdroje jsou virtuálními počítači Azure, se dají zjist
     * Tunelové propojení mezi dvěma branami je odpojené nebo chybí.
     * Druhá brána se nenašla tunelem.
     * Nenašly se žádné informace o partnerském vztahu.
+> [!NOTE]
+> Pokud máte 2 připojené brány a jedna z nich není ve stejné oblasti jako zdrojový koncový bod, CM ji identifikuje jako "žádná trasa získaná" pro zobrazení topologie. Připojení není ovlivněno. Jedná se o známý problém a oprava probíhá. 
 * V Microsoft Edge chyběla trasa.
 * Provoz se zastavil kvůli systémovým trasám nebo UDR.
 * Protokol BGP není v připojení brány povolen.

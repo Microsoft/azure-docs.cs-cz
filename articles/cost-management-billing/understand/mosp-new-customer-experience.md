@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575462"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122504"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Začínáme s aktualizovaným fakturačním účtem Azure
 
@@ -26,11 +26,11 @@ Správa nákladů a faktur je jednou z klíčových součástí cloudového pros
 
 Následující diagram porovnává starý a nový fakturační účet:
 
-![Diagram znázorňující porovnání hierarchie fakturace ve starém a novém účtu](./media/mosp-new-customer-experience/comparison-old-new-account.png)
+:::image type="content" source="./media/mosp-new-customer-experience/comparison-old-new-account.png" alt-text="Diagram znázorňující porovnání hierarchie fakturace ve starém a novém účtu." border="false" lightbox="./media/mosp-new-customer-experience/comparison-old-new-account.png":::
 
 Váš fakturační účet obsahuje jeden nebo několik fakturačních profilů, pomocí nichž můžete spravovat faktury a způsoby platby. Každý fakturační profil obsahuje nejméně jeden oddíl faktury, který vám umožňuje organizovat náklady na faktuře pro tento profil.
 
-![Diagram znázorňující novou fakturační hierarchii](./media/mosp-new-customer-experience/new-billing-account-hierarchy.png)
+:::image type="content" source="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png" alt-text="Diagram znázorňující novou fakturační hierarchii" border="false" lightbox="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png":::
 
 Role ve fakturačním účtu mají nejvyšší úroveň oprávnění. Tyto role by se měly přiřazovat uživatelům, kteří potřebují zobrazovat faktury a sledovat náklady pro celý účet, jako jsou manažeři financí nebo IT v organizaci nebo jednotlivec, který si účet zaregistroval. Podrobnosti najdete v části [Role a úlohy související s fakturačním účtem](../manage/understand-mca-roles.md#billing-account-roles-and-tasks). Po aktualizaci účtu se uživateli, který má ve starém fakturačním účtu roli správce účtu, pro nový účet poskytne role vlastníka.
 
@@ -60,7 +60,21 @@ Vaše nové prostředí zahrnuje následující možnosti fakturace a správy n�
 
 **Předvídatelnější měsíční fakturační období:** V novém účtu začíná fakturační období prvním dnem v měsíci a končí posledním dnem v měsíci, a to bez ohledu na to, kdy jste se k použití Azure zaregistrovali. Faktura se vygeneruje na začátku každého měsíce a bude obsahovat všechny poplatky za předchozí měsíc.
 
-**Jedna měsíční faktura pro několik předplatných:** Máte možnost dostávat měsíční fakturu pro každé předplatné, nebo jednu fakturu pro několik předplatných.
+**Získejte jednu měsíční fakturu pro více předplatných** – ve vašem stávajícím účtu získáte fakturu pro každé předplatné Azure. Po aktualizaci vašeho účtu se zachová stávající chování, ale budete mít flexibilitu při konsolidaci poplatků za Vaše předplatná na jediné faktuře. Po aktualizaci účtu postupujte podle následujících kroků a Konsolidujte své poplatky na jednu fakturu:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Vyhledejte **Cost Management a fakturace**.  
+   ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/mosp-new-customer-experience/billing-search-cost-management-billing.png)
+3. Na levé straně obrazovky vyberte **předplatná Azure** . 
+4. V tabulce jsou uvedena předplatná Azure, za která platíte. Ve sloupci profil fakturace byste našli Fakturační profil, který se fakturuje v rámci předplatného. Poplatky za předplatné se zobrazí na faktuře pro fakturační profil. Pokud chcete konsolidovat poplatky za všechna Vaše předplatná na jediné faktuře, musíte propojit všechna Vaše předplatná s jedním fakturačním profilem.  
+    :::image type="content" source="./media/mosp-new-customer-experience/list-azure-subscriptions.png" alt-text="Snímek obrazovky, který zobrazuje seznam předplatných Azure." lightbox="./media/mosp-new-customer-experience/list-azure-subscriptions.png" :::
+5. Vyberte fakturační profil, který chcete použít. 
+6. Vyberte předplatné, které není propojené s profilem fakturace, který jste zvolili v kroku 5. Klikněte na tři tečky u předplatného. Vyberte **Změnit oddíl faktury**.  
+    :::image type="content" source="./media/mosp-new-customer-experience/select-change-invoice-section.png" alt-text="Snímek obrazovky, který ukazuje, kde najít možnost změny části faktury" lightbox="./media/mosp-new-customer-experience/select-change-invoice-section-zoomed-in.png" :::
+7. Vyberte profil fakturace, který jste zvolili v kroku #5.  
+    :::image type="content" source="./media/mosp-new-customer-experience/change-invoice-section.png" alt-text="Snímek obrazovky, který ukazuje, jak změnit oddíl faktury" lightbox="./media/mosp-new-customer-experience/change-invoice-section-zoomed-in.png" :::
+8. Vyberte **změnit**.
+9. Opakujte kroky 6-8 pro všechny ostatní odběry. 
 
 **Jedna měsíční faktura pro předplatná Azure, plány podpory a produkty z Azure Marketplace:** Dostanete jednu měsíční fakturu pro všechny poplatky, včetně poplatků za využití předplatných Azure, za plány podpory a za nákupy na Azure Marketplace.
 
@@ -98,6 +112,12 @@ V rámci přípravy na nové prostředí doporučujeme následující:
 
 V novém prostředí se vaše faktura vygeneruje přibližně devátého dne v měsíci a bude obsahovat všechny poplatky za předchozí měsíc. Toto datum se může lišit od data, kdy se faktury generovaly ve starém účtu. Pokud faktury sdílíte s ostatními, upozorněte je na změnu data.
 
+
+**Faktury za první měsíc po migraci**
+
+Den, kdy se Váš účet aktualizuje, vaše stávající neúčtované poplatky se dokončují a faktury za tyto poplatky obdržíte na den, kdy obvykle obdržíte faktury. Například Jan má dvě předplatná Azure – Azure sub 01 s fakturačním cyklem od pátého dne v měsíci do čtvrtého dne následujícího měsíce a Azure sub 02 s fakturačním cyklem z desátého dne v měsíci do devátého dne v příštím měsíci. Jan získá faktury pro předplatné Azure obvykle na pátý měsíc. Když se teď v poslední době aktualizuje účet Jan, účtují se poplatky za Azure sub 01 od března 5. dubna a účtují se za Azure sub 02 od 10. března do 9. dubna. Jan obdrží dvě faktury, jednu pro každou proceduru v dubnu 5. Po aktualizaci účtu bude fakturační cyklus Jan na základě kalendářního měsíce a bude pokrývat všechny poplatky vzniklé od začátku kalendářního měsíce až do konce tohoto kalendářního měsíce.  Faktury za předchozí kalendářní měsíc jsou k dispozici na 9. roku v měsíci. Takže v příkladu výše obdrží Jan od 5. dubna až do 30. května další fakturu. 
+
+
 **Nová rozhraní API pro správu nákladů a fakturaci**
 
 Pokud k dotazování nebo aktualizaci fakturačních dat nebo údajů o využití používáte rozhraní API pro fakturaci nebo Cost Management, musíte použít nová rozhraní API. Následující tabulka uvádí rozhraní API, která nefungují s novým fakturačním účtem, a změny, které musíte v novém fakturačním účtu udělat.
@@ -106,6 +126,7 @@ Pokud k dotazování nebo aktualizaci fakturačních dat nebo údajů o využit�
 |---------|---------|
 |[Fakturační účty – seznam](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | V rozhraní API pro fakturační účty – seznam má starý fakturační účet jako typ smlouvy nastavený **MicrosoftOnlineServiceProgram**, v novém fakturačním účtu bude nastavený typ smlouvy **MicrosoftCustomerAgreement**. Pokud využíváte závislost na typu smlouvy, proveďte příslušnou aktualizaci. |
 |[Faktury – seznam podle předplatného pro fakturaci](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Toto rozhraní API vrátí jenom faktury, které se vygenerovaly před aktualizací vašeho účtu. Pokud chcete získat faktury vygenerované v novém fakturačním účtu, musíte použít rozhraní API pro [faktury seznam podle fakturačního účtu](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount). |
+
 
 ## <a name="cost-management-updates-after-account-update"></a>Aktualizace Cost Managementu po aktualizaci účtu
 
@@ -141,7 +162,7 @@ Při použití aktualizovaného účtu dostanete jednu fakturu se všemi poplatk
 
 Pokud například vaše fakturační období pro původní účet bylo od 24. listopadu do 23. prosince, po upgradu se přejde na období od 1. listopadu do 30. listopadu, od 1. prosince do 31. prosince atd.
 
-:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Obrázek s porovnáním starých a nových fakturačních období" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Snímek obrazovky znázorňující porovnání starých a nových fakturačních období" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
 
 #### <a name="budgets"></a>Rozpočty
 
@@ -156,7 +177,7 @@ Nový fakturační účet nabízí vylepšené funkce exportu. Můžete napřík
 
 Například pro fakturační období od 23. prosince do 22. ledna budou ve vyexportovaném souboru CSV k dispozici údaje o nákladech a využití za tuto dobu. Po dokončení aktualizace bude export obsahovat data za kalendářní měsíc. Například od 1. ledna do 31. ledna atd.
 
-:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Obrázek s porovnáním podrobností starých a nových exportů" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Snímky obrazovky znázorňující porovnání starých a nových podrobností o exportu" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Další informace
 

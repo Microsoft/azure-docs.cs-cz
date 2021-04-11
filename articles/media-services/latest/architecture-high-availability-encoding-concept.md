@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106972"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277874"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Vysoká dostupnost pomocí Media Services a videa na vyžádání (VOD)
 
@@ -61,7 +61,7 @@ Tento diagram vysoké úrovně ukazuje architekturu ukázky, která vám umožn�
 
 * [Vytvořte](./account-create-how-to.md) dva (nebo více) Azure Media Services účty. Tyto dva účty se musí nacházet v různých oblastech. Další informace najdete v tématu [oblasti, ve kterých je nainstalovaná služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
 * Nahrajte médium do stejné oblasti, ze které plánujete úlohu odeslat. Další informace o tom, jak spustit kódování, najdete v tématu [Vytvoření vstupu úlohy z adresy URL https](./job-input-from-http-how-to.md) nebo [Vytvoření vstupu úlohy z místního souboru](./job-input-from-local-file-how-to.md).
-* Pokud budete později potřebovat [úlohu](./transforms-jobs-concept.md) znovu odeslat do jiné oblasti, můžete ji použít `JobInputHttp` nebo použít `Copy-Blob` ke kopírování dat z kontejneru zdrojových prostředků do kontejneru assetů v alternativní oblasti.
+* Pokud budete později potřebovat [úlohu](./transform-jobs-concept.md) znovu odeslat do jiné oblasti, můžete ji použít `JobInputHttp` nebo použít `Copy-Blob` ke kopírování dat z kontejneru zdrojových prostředků do kontejneru assetů v alternativní oblasti.
 
 ### <a name="monitoring"></a>Monitorování
 
@@ -72,10 +72,10 @@ Tento diagram vysoké úrovně ukazuje architekturu ukázky, která vám umožn�
 
     Další informace najdete tady:
 
-    * Podívejte se na [ukázku audio Analytics](./transforms-jobs-concept.md) , kde se dozvíte, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání záložního pro případ, že Azure Event Grid zprávy z nějakého důvodu jsou zpožděny.
+    * Podívejte se na [ukázku audio Analytics](./transform-jobs-concept.md) , kde se dozvíte, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání záložního pro případ, že Azure Event Grid zprávy z nějakého důvodu jsou zpožděny.
     * Podívejte se na [Azure Event Grid schémat pro Media Services události](./media-services-event-schemas.md).
 
-* Při vytváření [úlohy](./transforms-jobs-concept.md):
+* Při vytváření [úlohy](./transform-jobs-concept.md):
     * Náhodně vyberte účet ze seznamu aktuálně používaných účtů (Tento seznam bude normálně obsahovat oba účty, ale pokud se zjistí problémy, může obsahovat jenom jeden účet). Pokud je seznam prázdný, vyvolejte výstrahu, aby mohl operátor prozkoumat.
     * Vytvořte záznam, který bude sledovat každou úlohu inletu a použitou oblast nebo účet.
 * Když `JobStateChange` obslužná rutina získá oznámení, že úloha dosáhla naplánovaného stavu, zaznamenejte čas, který vstoupí do plánovaného stavu, a na oblast nebo účet, který jste použili.

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 21bb1856409b7fbea1eeffb8b3769dd63119da50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612843"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278177"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
@@ -55,7 +55,7 @@ Azure Firewall Zóny dostupnosti jsou k dispozici v oblastech, které podporují
 > [!NOTE]
 > Zóny dostupnosti lze nakonfigurovat pouze během nasazování. Existující bránu firewall nemůžete nakonfigurovat tak, aby zahrnovala Zóny dostupnosti.
 
-Další informace o Zóny dostupnosti najdete v tématu [oblasti a zóny dostupnosti v Azure](../availability-zones/az-overview.md) .
+Další informace o Zóny dostupnosti najdete v tématu [oblasti a zóny dostupnosti v Azure](../availability-zones/az-overview.md).
 
 ## <a name="unrestricted-cloud-scalability"></a>Neomezená cloudová škálovatelnost
 
@@ -86,6 +86,8 @@ Filtrování na základě [logiky hrozeb](threat-intel.md)lze povolit pro bránu
 Veškeré IP adresy pro odchozí provoz z virtuálních sítí se překládají na veřejnou IP adresu brány Azure Firewall na základě zdroje (SNAT). Můžete identifikovat a povolit provoz pocházející z vaší virtuální sítě do vzdálených internetových cílů. Azure Firewall nesnat, pokud je cílová IP adresa privátního rozsahu IP adres na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). 
 
 Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall na jednu z privátních IP adres firewallu v AzureFirewallSubnet. Azure Firewall **můžete nakonfigurovat tak,** aby nesnat na svůj rozsah veřejných IP adres. Další informace najdete v tématu [Azure firewall rozsahy privátních IP adres SNAT](snat-private-range.md).
+
+V Azure Firewall metrik můžete monitorovat využití portů SNAT. Přečtěte si naše doporučení k využití portů SNAT v [dokumentaci k protokolům a metrikám brány firewall](logs-and-metrics.md#metrics).
 
 ## <a name="inbound-dnat-support"></a>Podpora DNAT u příchozích přenosů
 

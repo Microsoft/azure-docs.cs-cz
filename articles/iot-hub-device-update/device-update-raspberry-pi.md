@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b6a9fa3ac85460a46653c171198a2dfea8580f3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644493"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121332"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí referenční image Malina 3 B +
 
@@ -81,7 +81,7 @@ Přečtěte si licenčních podmínek před použitím agenta. Vaše instalace a
 
 Teď je potřeba přidat zařízení do Azure IoT Hub.  V rámci služby Azure IoT Hub se pro zařízení vygeneruje připojovací řetězec.
 
-1. Z Azure Portal spusťte IoT Hub aktualizace zařízení.
+1. Z Azure Portal spusťte IoT Hub Azure.
 2. Vytvoří nové zařízení.
 3. Na levé straně stránky přejděte do ' Explorers ' > ' zařízení IoT ' > vyberte možnost "nové".
 4. Zadejte název zařízení v části ID zařízení – Ujistěte se, že je zaškrtnuté políčko vygenerovat klíče.
@@ -103,9 +103,9 @@ Teď je potřeba přidat zařízení do Azure IoT Hub.  V rámci služby Azure I
  
 Nahraďte `<device connection string>` připojovacím řetězcem.
  ```markdown
-    echo "connection_string=<device connection string>" > adu-conf.txt  
-    echo "aduc_manufacturer=ADUTeam" >> adu-conf.txt
-    echo "aduc_model=RefDevice" >> adu-conf.txt
+    echo "connection_string=<device connection string>" > /adu/adu-conf.txt  
+    echo "aduc_manufacturer=ADUTeam" >> /adu/adu-conf.txt
+    echo "aduc_model=RefDevice" >> /adu/adu-conf.txt
    ```
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>Připojit zařízení v IoT Hub aktualizace zařízení
@@ -127,9 +127,9 @@ V níže uvedeném kroku import aktualizace použijte číslo verze.
 
 1. Přihlaste se [Azure Portal](https://portal.azure.com) a přejděte do IoT Hub.
 
-2. V levém navigačním podokně v části zařízení IoT nebo IoT Edge Najděte své zařízení IoT a přejděte k zařízení s dvojitou platností.
+2. V levém navigačním podokně v části zařízení IoT nebo IoT Edge Najděte své zařízení IoT a přejděte ke zdvojenému nebo modulu zařízení.
 
-3. V případě, že je zařízení s dvojitou hodnotou, odstraňte všechny existující hodnoty značky aktualizace zařízení nastavením na hodnotu null.
+3. V modulu, který je v modulu agenta aktualizace zařízení, odstraňte všechny existující hodnoty značky aktualizace zařízení nastavením na hodnotu null. Pokud používáte identitu zařízení s agentem aktualizace zařízení, udělejte tyto změny na vlákna zařízení.
 
 4. Přidejte novou hodnotu značky aktualizace zařízení, jak je uvedeno níže.
 

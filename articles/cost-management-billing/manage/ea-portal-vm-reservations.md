@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98597959"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220896"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Rezervované instance virtuálních počítačů Azure EA
 
@@ -96,7 +96,7 @@ Pokud zákazníci se smlouvou Azure Enterprise využijí celou svoji zálohu na 
 
 ### <a name="reserved-instance-expiration"></a>Vypršení platnosti rezervované instance
 
-30 dnů před vypršením platnosti rezervace a při vypršení její platnosti obdržíte e-mailová oznámení. Po vypršení platnosti rezervace zůstanou nasazené virtuální počítače spuštěné a budou se účtovat podle tarifů průběžných plateb. Další informace najdete v [nabídce rezervovaných instancí virtuálních počítačů](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+Dostanete e-mailová oznámení, prvních 1 30 dní před vypršením platnosti rezervace a jinou při vypršení platnosti. Po vypršení platnosti rezervace zůstanou nasazené virtuální počítače spuštěné a budou se účtovat podle tarifů průběžných plateb. Další informace najdete v [nabídce rezervovaných instancí virtuálních počítačů](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>Další kroky
 

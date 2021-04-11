@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 889a04d68de45a6270ae0c38615d841a526ad86a
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052139"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490688"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights pomocí pravidel shromažďování dat (Preview)
 [Stav hosta](vminsights-health-overview.md) pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Tento článek popisuje, jak můžete upravit výchozí monitorování napříč několika virtuálními počítači pomocí pravidel shromažďování dat.
@@ -175,17 +175,17 @@ Seznam jednoho nebo více řetězců, které definují, které monitory v hierar
 Následující tabulka uvádí aktuální dostupné názvy monitorování.
 
 | Název typu | Název | Description |
-|:---|:---|:---|
-| kořen | kořen | Monitor nejvyšší úrovně představující stav virtuálního počítače | |
-| využití CPU | využití CPU | Monitorování využití procesoru. | |
-| logické disky | logické disky | Agregované monitorování stavu všech monitorovaných disků ve virtuálním počítači s Windows. | |
-| logické disky\|* | logické disky \| C:<br>logický disk \| D: | Agregované monitorování stavu sledování daného disku na virtuálním počítači s Windows. | 
-| na logických discích – \| * \| volné místo | logické disky \| C: \| volné místo<br>logické disky \| D: \| volné místo | Monitorování volného místa na disku na virtuálním počítači s Windows |
+|:----------|:-----|:------------|
+| kořen | kořen | Monitor nejvyšší úrovně představující stav virtuálního počítače |
+| využití CPU | využití CPU | Monitorování využití procesoru. |
+| logické disky | logické disky | Agregované monitorování stavu všech monitorovaných disků ve virtuálním počítači s Windows. |
+| logické disky\|\* | logické disky \| C:<br>logický disk \| D: | Agregované monitorování stavu sledování daného disku na virtuálním počítači s Windows. |
+| na logických discích – \| \* \| volné místo | logické disky \| C: \| volné místo<br>logické disky \| D: \| volné místo | Monitorování volného místa na disku na virtuálním počítači s Windows |
 | systémy souborů | systémy souborů | Agregované monitorování pro stav všech systémů souborů na virtuálním počítači se systémem Linux. |
-| systémy souborů\|* | systémy souborů\|/<br>/MNT systému souborů \| | Agregovaný monitor sledování stavu systému souborů virtuálního počítače se systémem Linux. | systémy souborů|/var/log |
-| systém souborů \| * \| – volné místo | systém souborů \| / \| – volné místo<br>systém souborů \| /mnt \| volné místo | Monitorování volného místa na disku v systému souborů virtuálních počítačů se systémem Linux. | 
-| paměť | paměť | Agregované monitorování stavu paměti virtuálního počítače. | |
-| \|dostupná paměť| \|dostupná paměť | Sledování dostupné paměti na virtuálním počítači. | |
+| systémy souborů\|\* | systémy souborů\|/<br>/MNT systému souborů \| | Agregovaný monitor sledování stavu systému souborů virtuálního počítače se systémem Linux. |
+| systém souborů \| \* \| – volné místo | systém souborů \| / \| – volné místo<br>systém souborů \| /mnt \| volné místo | Monitorování volného místa na disku v systému souborů virtuálních počítačů se systémem Linux. |
+| paměť | paměť | Agregované monitorování stavu paměti virtuálního počítače. |
+| \|dostupná paměť | \|dostupná paměť | Sledování dostupné paměti na virtuálním počítači. |
 
 
 ## <a name="alertconfiguration-element"></a>element alertConfiguration

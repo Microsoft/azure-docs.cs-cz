@@ -3,12 +3,12 @@ title: Povolení spravované identity na Azure Event Grid vlastní témata a dom
 description: Tento článek popisuje, jak povolit identitu spravované služby pro Azure Event Grid vlastní téma nebo doménu.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 06fd4d6e472b33496e773596b0f3afc8e70be948
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b93fd44282d9e19e7111dd52c73d8d4c01c67a10
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630424"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278214"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-custom-topic-or-domain"></a>Přiřazení identity spravované systémem k Event Grid vlastnímu tématu nebo doméně 
 V tomto článku se dozvíte, jak povolit systémově spravovanou identitu pro Event Grid vlastní téma nebo doménu. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
@@ -59,4 +59,4 @@ Příkaz pro aktualizaci existující domény je podobný ( `az eventgrid domain
 
 
 ## <a name="next-steps"></a>Další kroky
-Přidejte identitu do příslušné role (například Service Bus odesílatel dat) v cíli (například Service Bus Queue). Podrobný postup najdete v tématu [Přidání identity do rolí Azure v umístěních](add-identity-roles.md). 
+Přidejte identitu do příslušné role (například Service Bus odesílatel dat) v cíli (například Service Bus Queue). Podrobný postup najdete v tématu [udělení spravované identity přístup k Event Grid cíli](add-identity-roles.md). 

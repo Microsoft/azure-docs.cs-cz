@@ -51,6 +51,8 @@
   items:
     - name: Nasazení poskytovatelů partnerů pro zabezpečení
       href: deploy-trusted-security-partner.md
+    - name: Zabezpečení privátních koncových bodů
+      href: private-link-inspection-secure-virtual-hub.md
     - name: Migrace na zásady firewallu – PowerShell
       href: migrate-to-policy.md
     - name: Nastavení DNS

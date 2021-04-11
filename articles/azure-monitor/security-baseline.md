@@ -4,22 +4,20 @@ description: Základní Azure Monitor zabezpečení poskytuje postupy a prostře
 author: msmbaldwin
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c697180ed9a4b020da392a33d7ce34f6727ec7b3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd3bb5e3060752d086f80f44a8f136cb861669c0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568201"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078515"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Základní hodnoty zabezpečení Azure pro Azure Monitor
 
-Tato základní hodnota zabezpečení platí pro Azure Monitor pokynů od [zabezpečení Azure Security test 1,0](../security/benchmarks/overview-v1.md) . Azure Security Benchmark poskytuje doporučení, jak můžete zabezpečit svá cloudová řešení v Azure.
-Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím testem zabezpečení Azure a souvisejících pokynů, které se vztahují na Azure monitor. **Ovládací prvky** , které se nevztahují k Azure monitor byly vyloučeny. 
+Tato základní hodnota zabezpečení platí pro Azure Monitor pokynů od [verze 1.0 služby Azure Security test](../security/benchmarks/overview-v1.md) . Azure Security Benchmark poskytuje doporučení, jak můžete zabezpečit svá cloudová řešení v Azure. Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím testem zabezpečení Azure a souvisejících pokynů, které se vztahují na Azure monitor. **Ovládací prvky** , které se nevztahují na Azure monitor nebo pro které je odpovědnost od Microsoftu, jsou vyloučené.
 
- 
 Pokud chcete zjistit, jak Azure Monitor kompletně mapuje srovnávací test zabezpečení Azure, přečtěte si [celý soubor mapování standardních hodnot Azure monitor Security](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Zabezpečení sítě
@@ -36,9 +34,9 @@ Pravidla virtuální sítě umožňují Azure Monitor přijímat jenom komunikac
 
 Pomocí Log Analytics brány můžete odesílat data do pracovního prostoru Log Analytics v Azure Monitor jménem počítačů, které se nemůžou přímo připojit k Internetu, což brání tomu, aby se počítače připojovaly k Internetu. 
 
-- [Jak nastavit privátní odkaz pro Azure Monitor](./logs/private-link-security.md)
+- [Jak nastavit privátní odkaz pro Azure Monitor](/azure/azure-monitor/platform/private-link-security)
 
-- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](./agents/gateway.md)
+- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](/azure/azure-monitor/platform/gateway)
 
 **Odpovědnost:** Zákazník
 
@@ -50,9 +48,9 @@ Pomocí Log Analytics brány můžete odesílat data do pracovního prostoru Log
 
 Při použití Azure Monitor s privátním odkazem získáte přístup k protokolování sítě, jako jsou data zpracovaná privátním koncovým bodem (v/v).
 
-- [Požadavky na síť pro agenty Azure Monitor](./agents/log-analytics-agent.md#network-requirements)
+- [Požadavky na síť pro agenty Azure Monitor](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
 
-- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](./agents/gateway.md)
+- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](/azure/azure-monitor/platform/gateway)
 
 - [Jak povolit protokoly toku skupin zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -78,11 +76,11 @@ Při použití Azure Monitor s privátním odkazem získáte přístup k protoko
 
 **Doprovodné** materiály: Azure monitor je součástí služeb Azure Core a nelze je nasadit jako službu samostatně. Azure Monitor součásti, včetně agenta Azure Monitor a sady Application Insights SDK, mohou být nasazeny s vašimi prostředky a to může mít vliv na stav zabezpečení těchto prostředků.
 
-- [Požadavky na síť pro agenty Azure Monitor](./agents/log-analytics-agent.md#network-requirements)
+- [Požadavky na síť pro agenty Azure Monitor](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
 
-- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](./agents/gateway.md) 
+- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](/azure/azure-monitor/platform/gateway) 
 
-- [Viz Začínáme s Application Insights](./app/app-insights-overview.md#get-started)
+- [Viz Začínáme s Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
 
 - [Jak nastavit webové testy dostupnosti](app/monitor-web-app-availability.md)
 
@@ -94,9 +92,9 @@ Při použití Azure Monitor s privátním odkazem získáte přístup k protoko
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny v síťových prostředcích, které souvisejí s Azure monitor. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny těchto důležitých síťových prostředků.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](./essentials/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](./alerts/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Odpovědnost:** Zákazník
 
@@ -112,9 +110,9 @@ Při použití Azure Monitor s privátním odkazem získáte přístup k protoko
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](./essentials/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](./vm/quick-collect-azurevm.md)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -132,9 +130,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Pokyny**: Azure monitor používá protokoly aktivit, protokol aktivit je automaticky povolen a ukládá operace prováděné na Azure Monitorch prostředcích, jako například: kdo spustil operaci, kdy k operaci došlo, stavu operace a dalších užitečných informací o auditu. 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](./essentials/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-- [Principy protokolování a různých typů protokolů v Azure](./essentials/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
 
 **Odpovědnost:** Zákazník
 
@@ -148,9 +146,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro jakékoliv dlouhodobé nebo archivní úložiště protokolů.
 
-- [Změnit dobu uchovávání dat v Log Analytics](./logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
 **Odpovědnost:** Zákazník
 
@@ -164,9 +162,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Začínáme s Log Analytics dotazy](./logs/log-analytics-tutorial.md)
+- [Začínáme s Log Analytics dotazy](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](./logs/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
 
 **Odpovědnost:** Zákazník
 
@@ -180,7 +178,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](./alerts/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
 
 **Odpovědnost:** Zákazník
 
@@ -194,9 +192,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Pokyny**: řízení přístupu na základě role v Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky existují předdefinované role, které je možné inventarizovat nebo dotazovat pomocí nástrojů, jako jsou Azure CLI, Azure PowerShell nebo Azure Portal.
 
-- [Postup získání role adresáře v Azure Active Directory (Azure AD) pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Postup získání role adresáře v Azure Active Directory (Azure AD) pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Odpovědnost:** Zákazník
 
@@ -284,7 +282,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
+- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -296,7 +294,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 **Doprovodné** materiály: máte přístup k aktivitě pro přihlášení k Azure Active Directory (Azure AD), událostem auditu a rizikovým protokolům událostí, které umožňují integraci s jakýmkoli nástrojem Siem/monitoring. Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Odpovědnost:** Zákazník
 
@@ -326,7 +324,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor](./logs/manage-access.md)
+- [Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor](/azure/azure-monitor/platform/manage-access)
 
 **Odpovědnost:** Zákazník
 
@@ -352,7 +350,7 @@ Pomocí Azure Active Directory (Azure AD) Privileged Identity Management privile
 
 Application Insights a Log Analytics obou pokračovat, umožní ingestovat data TLS 1,1 a TLS 1,0. Data mohou být omezena na TLS 1,2 nakonfigurováním na straně klienta.
 
-- [Bezpečné posílání dat pomocí protokolu TLS 1,2](./logs/data-security.md#sending-data-securely-using-tls-12)
+- [Bezpečné posílání dat pomocí protokolu TLS 1,2](/azure/azure-monitor/platform/data-security#sending-data-securely-using-tls-12)
 
 **Odpovědnost:** Sdílené
 
@@ -373,7 +371,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: ke správě přístupu k Azure monitor použijte řízení přístupu na základě role (RBAC) Azure.
 
-- [Role, oprávnění a zabezpečení v Azure Monitor](./roles-permissions-security.md)
+- [Role, oprávnění a zabezpečení v Azure Monitor](/azure/azure-monitor/platform/roles-permissions-security)
 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -385,9 +383,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: Azure monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený ve vaší Azure Key Vault a k němuž má přístup úložiště pomocí spravovaného ověřování identity přiřazené systémem. Tento klíč spravovaný zákazníkem (CMK) může být buď software, nebo hardware-HSM Protected.
 
-- [Azure Monitor klíčů spravovaných zákazníkem](./logs/customer-managed-keys.md)
+- [Azure Monitor klíčů spravovaných zákazníkem](/azure/azure-monitor/platform/customer-managed-keys)
 
-- [Zabezpečení dat Log Analytics](./logs/data-security.md)
+- [Zabezpečení dat Log Analytics](/azure/azure-monitor/platform/data-security)
 
 - [Shromažďování, uchování a ukládání dat v nástroji Application Insights](app/data-retention-privacy.md)
 
@@ -401,7 +399,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny v Azure monitor a souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](./alerts/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Odpovědnost:** Zákazník
 
@@ -431,13 +429,13 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí Azure CLI můžete zadávat dotazy a zjišťovat Azure monitor prostředky v rámci předplatných. Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se v rámci předplatných mohli vytvořit výčet všech předplatných Azure i prostředků
 
-- [Azure Monitor CLI](/cli/azure/monitor)
+- [Azure Monitor CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest&amp;preserve-view=true)
 
-- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
+- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-- [Role, oprávnění a zabezpečení v Azure Monitor](./roles-permissions-security.md)
+- [Role, oprávnění a zabezpečení v Azure Monitor](/azure/azure-monitor/platform/roles-permissions-security)
 
 **Odpovědnost:** Zákazník
 
@@ -493,7 +491,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 **Doprovodné** materiály: sjednotit inventář v pravidelných intervalech a zajistit, aby se v předplatném včas odstranily neautorizované Azure monitor související prostředky.  
 
-- [Odstranit pracovní prostor Azure Log Analytics](./logs/delete-workspace.md)
+- [Odstranit pracovní prostor Azure Log Analytics](/azure/azure-monitor/platform/delete-workspace)
 
 **Odpovědnost:** Zákazník
 
@@ -505,7 +503,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **Odpovědnost:** Zákazník
 
@@ -535,9 +533,9 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 Pokud používáte funkce APM živého streamování, zajistěte, aby byl kanál zabezpečený s tajným klíčem rozhraní API, a to i klíč instrumentace.
 
-- [Zabezpečení APM Live Metrics Stream](./app/live-stream.md#secure-the-control-channel)
+- [Zabezpečení APM Live Metrics Stream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)
 
-- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 - [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
@@ -567,7 +565,7 @@ Pokud používáte funkce APM živého streamování, zajistěte, aby byl kanál
 
 **Doprovodné** materiály: pomocí Azure DevOps bezpečně ukládejte a spravujte kód, jako je vlastní zásady Azure a šablony Azure Resource Manager. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -581,7 +579,7 @@ Pokud používáte funkce APM živého streamování, zajistěte, aby byl kanál
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Aliasy Azure Policy](../governance/policy/concepts/definition-structure.md#aliases)
+- [Aliasy Azure Policy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **Odpovědnost:** Zákazník
 
@@ -607,7 +605,7 @@ Pokud používáte funkce APM živého streamování, zajistěte, aby byl kanál
 
 - [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/general/assign-access-policy-portal)
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/general/assign-access=policy-portal)
 
 **Odpovědnost:** Zákazník
 
@@ -661,7 +659,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 **Pokyny**: pomocí Azure Resource Manager exportujte Azure monitor a související prostředky do šablony JavaScript Object Notation (JSON), která se dá použít jako záloha pro Azure monitor a související konfigurace.  K automatickému spouštění zálohovacích skriptů použijte Azure Automation. 
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./logs/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](/azure/azure-monitor/samples/resource-manager-workspace)
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -675,11 +673,11 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 **Pokyny**: pomocí Azure Resource Manager exportujte Azure monitor a související prostředky do šablony JavaScript Object Notation (JSON), která se dá použít jako záloha pro Azure monitor a související konfigurace. Zálohování klíčů spravovaných zákazníkem v rámci služby Azure Key Vault Pokud Azure Monitor související prostředky používají klíče spravované zákazníkem,
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./logs/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](/azure/azure-monitor/platform/template-workspace-configuration)
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 **Odpovědnost:** Zákazník
 
@@ -689,9 +687,9 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 **Doprovodné** materiály: Zajistěte, aby bylo možné pravidelně provádět obnovování pomocí Azure Resource Manager zálohovaných souborů šablon. Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./logs/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](/azure/azure-monitor/samples/resource-manager-workspace)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **Odpovědnost:** Zákazník
 
@@ -703,7 +701,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 Kromě toho povolte Soft-Delete a vyprázdnit ochranu v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. Pokud se Azure Storage používá k ukládání záloh šablon Azure Resource Manager, povolte obnovitelné odstranění, aby se data ukládala a obnovila při odstraňování objektů BLOB nebo snímků objektů BLOB.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -807,5 +805,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
-- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
+- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)

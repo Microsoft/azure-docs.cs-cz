@@ -190,7 +190,7 @@
           href: delivery-and-retry.md
         - name: Doručení událostí webhooku
           href: webhook-event-delivery.md
-        - name: Vlastnosti doručení
+        - name: Vlastní vlastnosti doručování
           href: delivery-properties.md
     - name: Zotavení po havárii
       items:
@@ -280,9 +280,9 @@
               href: enable-identity-custom-topics-domains.md
             - name: Povolení spravované identity pro systémové téma
               href: enable-identity-system-topics.md
-            - name: Přidání identity do rolí Azure v umístěních
+            - name: Udělit spravované identitě přístup k Event Grid cíli
               href: add-identity-roles.md
-            - name: 'Vytvoření odběrů událostí, které používají identitu'
+            - name: 'Vytvoření odběru událostí, který používá spravovanou identitu'
               href: managed-service-identity.md
         - name: Zabezpečené doručování událostí prostřednictvím privátního odkazu
           href: consume-private-endpoints.md

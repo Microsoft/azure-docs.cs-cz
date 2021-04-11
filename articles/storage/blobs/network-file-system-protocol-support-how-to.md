@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428639"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490450"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
@@ -82,7 +82,7 @@ Při konfiguraci účtu vyberte tyto hodnoty:
 
 |Nastavení | Výkon úrovně Premium | Standardní výkon  
 |----|---|---|
-|Umístění|Všechny dostupné oblasti |Jedna z následujících oblastí: Austrálie – východ, Korea – střed a Střed USA – jih   
+|Umístění|Všechny dostupné oblasti |Jedna z následujících oblastí: Austrálie – východ, Korea – střed, Východní USA a Střed USA – jih   
 |Výkon|Premium| Standard
 |Druh účtu|BlockBlobStorage| Obecné účely v2
 |Replikace|Místně redundantní úložiště (LRS)| Místně redundantní úložiště (LRS)
@@ -97,7 +97,7 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|Nástroje|Sady SDK|
+|nástroje|Sady SDK|
 |---|---|
 |[Azure Portal](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)|[Java](data-lake-storage-directory-file-acl-java.md)|

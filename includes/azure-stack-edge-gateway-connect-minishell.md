@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/08/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89e648099a5ac6d905f475319cc108dd0d05a6e9
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105105434"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081153"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -58,8 +58,15 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta Windows.
 
     Pokud se zobrazí chyba související se vztahem důvěryhodnosti, zkontrolujte, jestli je na klientovi, který přistupuje k vašemu zařízení, nainstalovaný podpisový řetězec uzlu, který jste nahráli do vašeho zařízení.
 
+    Pokud certifikáty nepoužíváte (doporučujeme použít certifikáty!), můžete tuto kontrolu přeskočit pomocí možností relace: `-SkipCACheck -SkipCNCheck -SkipRevocationCheck` .
+
+    ```powershell
+    $sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck 
+    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions    
+    ```
+
     > [!NOTE] 
-    > Když použijete tuto `-UseSSL` možnost, bude Vzdálená komunikace prostřednictvím prostředí PowerShell prostřednictvím *protokolu HTTPS*. Pro vzdálené připojení prostřednictvím PowerShellu doporučujeme vždycky používat *protokol HTTPS* . I když relace *http* není nejbezpečnější metodou připojení, je přijatelná v důvěryhodných sítích.
+    > Když použijete tuto `-UseSSL` možnost, bude Vzdálená komunikace prostřednictvím prostředí PowerShell prostřednictvím *protokolu HTTPS*. Pro vzdálené připojení prostřednictvím PowerShellu doporučujeme vždycky používat *protokol HTTPS* . 
 
 6. Po zobrazení výzvy zadejte heslo. Použijte stejné heslo, které se použije k přihlášení k místnímu webovému uživatelskému rozhraní. Výchozí heslo místního webového uživatelského rozhraní je *Heslo1*. Po úspěšném připojení k zařízení pomocí vzdáleného prostředí PowerShell se zobrazí následující vzorový výstup:  
 
@@ -77,27 +84,30 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta Windows.
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Vzdálené připojení z klienta se systémem Linux
+> [!IMPORTANT]
+> V aktuální verzi se můžete připojit k rozhraní PowerShell zařízení jenom přes klienta Windows. `-UseSSL`Možnost nefunguje u klientů se systémem Linux.
 
-V klientovi se systémem Linux, který budete používat pro připojení:
+<!--### Remotely connect from a Linux client-->
 
-- [Nainstalujte nejnovější prostředí PowerShell Core pro Linux](/powershell/scripting/install/installing-powershell-core-on-linux) z GitHubu, abyste získali funkci Vzdálená komunikace SSH. 
-- [Nainstalujte jenom `gss-ntlmssp` balíček z modulu NTLM](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). U klientů Ubuntu použijte následující příkaz:
+<!--On the Linux client that you'll use to connect:
+
+- [Install the latest PowerShell Core for Linux](/powershell/scripting/install/installing-powershell-core-on-linux) from GitHub to get the SSH remoting feature. 
+- [Install only the `gss-ntlmssp` package from the NTLM module](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). For Ubuntu clients, use the following command:
     - `sudo apt-get install gss-ntlmssp`
 
-Pokud potřebujete další informace, přečtěte si [v protokolu SSH Vzdálená komunikace PowerShellu](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
+For more information, go to [PowerShell remoting over SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
-Pomocí těchto kroků se můžete vzdáleně připojit z klienta NFS.
+Follow these steps to remotely connect from an NFS client.
 
-1. K otevření relace PowerShellu zadejte:
+1. To open PowerShell session, type:
 
     `pwsh`
  
-2. Pro připojení pomocí vzdáleného klienta zadejte:
+2. For connecting using the remote client, type:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    Po zobrazení výzvy zadejte heslo, které jste použili k přihlášení do zařízení.
+    When prompted, provide the password used to sign into your device.
  
 > [!NOTE]
-> Tento postup nefunguje na Mac OS.
+> This procedure does not work on Mac OS.-->

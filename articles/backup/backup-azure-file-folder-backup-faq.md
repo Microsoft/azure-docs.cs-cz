@@ -2,13 +2,13 @@
 title: Agent Microsoft Azure Recovery Services (MARS) – nejčastější dotazy
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 09c54d7f24ba4bea1bf9081333f345b1a246a4d6
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917354"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505463"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
 
@@ -100,6 +100,10 @@ Toto upozornění se může objevit i v případě, že jste nakonfigurovali zá
 
 * Když se server nebo nastavení obnovily do známého funkčního stavu, plány zálohování se můžou stát nesynchronizovanými.
 * Pokud se zobrazí toto upozornění, [nakonfigurujte](backup-azure-manage-windows-server.md) znovu zásady zálohování a pak spusťte zálohování na vyžádání, aby se místní server znovu synchronizoval s Azure.
+
+### <a name="i-see-a-few-jobs-are-stuck-in-the-in-progress-state-for-a-long-time-under-backup-jobs-in-the-azure-portal-how-can-i-resolve-these"></a>V průběhu úlohy zálohování v Azure Portal se zobrazuje několik úloh zablokovaných ve stavu probíhá po dlouhou dobu. Jak je mohu vyřešit?
+
+K tomu může dojít, pokud se úlohu nepovedlo dokončit kvůli důvodům, například k problémům s připojením k síti, vypnutí počítače nebo ukončení procesu. Tady se nevyžaduje žádná akce uživatele. Po 30 dnech budou tyto úlohy automaticky označeny jako **neúspěšné** . [Další informace](backup-windows-with-mars-agent.md#run-an-on-demand-backup) o spuštění úlohy zálohování na vyžádání pomocí agenta Mars.
 
 ## <a name="manage-the-backup-cache-folder"></a>Správa složky mezipaměti pro zálohování
 
@@ -209,7 +213,7 @@ V rámci bezpečnostního opatření Azure Backup zachová nejaktuálnější bo
 
 Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví. Všechny soubory obnovené před zrušením zůstávají v nakonfigurovaném cíli (původní nebo alternativní umístění) bez vrácení zpět.
 
-### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>Zálohuje agent MARS a obnoví seznamy řízení přístupu (ACL) nastavené u souborů, složek a svazků?
+### <a name="does-the-mars-agent-backup-and-restore-acls-set-on-files-folders-and-volumes"></a>Je pro soubory, složky a svazky nastavené seznamy ACL pro zálohování a obnovení agenta MARS?
 
 * Agent MARS zálohuje seznamy řízení přístupu (ACL) nastavené na soubory, složky a svazky.
 * U možnosti obnovení svazku pro obnovení svazku nabízí agent MARS možnost přeskočit obnovení oprávnění ACL k souboru nebo složce, která se obnovuje.

@@ -3,12 +3,12 @@ title: Protokoly diagnostiky pro Hybrid Connections
 description: Tento článek poskytuje přehled všech protokolů aktivit a diagnostiky, které jsou k dispozici pro Azure Relay.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590870"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079093"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Povolit protokoly diagnostiky pro Azure Relay Hybrid Connections
 Když začnete používat Hybrid Connections Azure Relay, možná budete chtít monitorovat, jak a kdy jsou posluchači a odesílatelé spuštěni a zavřeni a jak se budou vaše Hybrid Connections vytvářet a jsou odesílány zprávy. Tento článek poskytuje přehled protokolů aktivit a diagnostiky, které poskytuje služba Azure Relay. 
@@ -80,29 +80,29 @@ Tady je ukázka události hybridních připojení ve formátu JSON.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Události a operace zaznamenané v diagnostických protokolech
 
-| Operace | Description | 
-| --------- | ----------- | 
-| AuthorizationFailed | Autorizace se nezdařila.|
-| InvalidSasToken | Neplatný token SAS | 
-| ListenerAcceptingConnection | Naslouchací proces přijímá připojení. |
-| ListenerAcceptingConnectionTimeout | Vypršel časový limit naslouchacího procesu pro přijetí připojení. |
-| ListenerAcceptingHttpRequestFailed | Naslouchací proces přijal požadavek HTTP se nezdařil z důvodu výjimky. |
-| ListenerAcceptingRequestTimeout | Vypršel časový limit žádosti o přijetí naslouchacího procesu. |  
-| ListenerClosingFromExpiredToken | Naslouchací proces se zavírá, protože platnost tokenu zabezpečení vypršela. | 
-| ListenerRejectedConnection | Naslouchací proces odmítl připojení. |
-| ListenerReturningHttpResponse | Naslouchací proces vrací odpověď HTTP. |  
-| ListenerReturningHttpResponseFailed | Naslouchací proces vrací odpověď HTTP s kódem chyby. | 
- ListenerSentHttpResponse | Služba Relay obdržela odpověď HTTP od naslouchacího procesu. | 
-| ListenerUnregistered | Naslouchací proces není zaregistrován. | 
-| ListenerUnresponsive | Naslouchací proces nereaguje při vracení odpovědi. | 
-| MessageSendingToListener | Zpráva se odesílá do naslouchacího procesu. |
-| MessageSentToListener | Zpráva se odešle do naslouchacího procesu. | 
-| NewListenerRegistered | Byl zaregistrován nový naslouchací proces. |
-| NewSenderRegistering | Probíhá registrace nového odesílatele. | 
-| ProcessingRequestFailed | Zpracování operace hybridního připojení se nezdařilo. | 
-| SenderConnectionClosed | Připojení odesílatele je ukončeno. |
-| SenderListenerConnectionEstablished | Odesílatel a naslouchací proces se úspěšně navázal připojení. |
-| SenderSentHttpRequest | Odesílatel odeslal požadavek HTTP. | 
+| Operace                           | Description                                                     |
+|-------------------------------------|-----------------------------------------------------------------|
+| AuthorizationFailed                 | Autorizace se nezdařila.                                           |
+| InvalidSasToken                     | Neplatný token SAS                                              |
+| ListenerAcceptingConnection         | Naslouchací proces přijímá připojení.                           |
+| ListenerAcceptingConnectionTimeout  | Vypršel časový limit naslouchacího procesu pro přijetí připojení.                |
+| ListenerAcceptingHttpRequestFailed  | Naslouchací proces přijal požadavek HTTP se nezdařil z důvodu výjimky. |
+| ListenerAcceptingRequestTimeout     | Vypršel časový limit žádosti o přijetí naslouchacího procesu.                   |
+| ListenerClosingFromExpiredToken     | Naslouchací proces se zavírá, protože platnost tokenu zabezpečení vypršela. |
+| ListenerRejectedConnection          | Naslouchací proces odmítl připojení.                       |
+| ListenerReturningHttpResponse       | Naslouchací proces vrací odpověď HTTP.                     |
+| ListenerReturningHttpResponseFailed | Naslouchací proces vrací odpověď HTTP s kódem chyby. |
+| ListenerSentHttpResponse            | Služba Relay obdržela odpověď HTTP od naslouchacího procesu.  |
+| ListenerUnregistered                | Naslouchací proces není zaregistrován.                                   |
+| ListenerUnresponsive                | Naslouchací proces nereaguje při vracení odpovědi.         |
+| MessageSendingToListener            | Zpráva se odesílá do naslouchacího procesu.                              |
+| MessageSentToListener               | Zpráva se odešle do naslouchacího procesu.                                    |
+| NewListenerRegistered               | Byl zaregistrován nový naslouchací proces.                                        |
+| NewSenderRegistering                | Probíhá registrace nového odesílatele.                                      |
+| ProcessingRequestFailed             | Zpracování operace hybridního připojení se nezdařilo.     |
+| SenderConnectionClosed              | Připojení odesílatele je ukončeno.                                |
+| SenderListenerConnectionEstablished | Odesílatel a naslouchací proces se úspěšně navázal připojení.    |
+| SenderSentHttpRequest               | Odesílatel odeslal požadavek HTTP.                                |
 
 
 ## <a name="next-steps"></a>Další kroky

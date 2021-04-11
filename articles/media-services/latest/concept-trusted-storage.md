@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585395"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279455"
 ---
 # <a name="trusted-storage-for-media-services"></a>Důvěryhodné úložiště pro Media Services
 
@@ -29,7 +29,7 @@ Pokud ale chcete použít bránu firewall k zabezpečení účtu úložiště a 
 
 ## <a name="tutorial"></a>Kurz
 
-Další informace o povolení důvěryhodného úložiště najdete v kurzu [Media Services důvěryhodné úložiště](tutorial-trusted-storage-rest.md) .
+Další informace o povolení důvěryhodného úložiště najdete v kurzu [Media Services důvěryhodné úložiště](security-trusted-storage-rest-tutorial.md) .
 
 > [!NOTE]
 > Aby Media Services mohl číst a zapisovat do účtu úložiště, je třeba udělit přístup přispěvatele dat objektu BLOB úložiště spravované identity v AMS.  Udělení obecné role přispěvatele nebude fungovat, protože nepovoluje správná oprávnění k rovině dat.

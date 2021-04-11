@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef4eb3eb55ec1f062efb0f8215a3619f526b1ad2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011931"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063980"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementace streamování převzetí služeb při selhání s Media Services V2
 
@@ -753,7 +753,7 @@ V této části vytvoříte schopnost zvládnout redundanci.
 
 Příklad v tomto tématu ukazuje vymazání streamování. Pokud chcete provést chráněný streamování, je potřeba, abyste si nastavili několik dalších věcí, musíte použít stejný **AssetDeliveryPolicy**, stejnou adresu URL serveru **ContentKeyAuthorizationPolicy** nebo externí klíč a vy budete muset duplikovat klíče obsahu se stejným identifikátorem.
 
-Další informace o ochraně obsahu najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-protect-with-aes128.md).
+Další informace o ochraně obsahu najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-playready-license-template-overview.md).
 
 ## <a name="see-also"></a>Viz také
 

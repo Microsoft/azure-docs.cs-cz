@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ef0aa8ba1983ca30fd44c27fe570b6b5f51733a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5105df5793d37b166b017585a62c962933a0b019
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101744868"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081160"
 ---
 ## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a> Vytvoření plánované webové úlohy
 
@@ -31,7 +31,7 @@ ms.locfileid: "101744868"
     
     | Nastavení      | Ukázková hodnota   |
     | ------------ | ----------------- | 
-    | <abbr title="Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než `-` a `_` .">Name</a> | myScheduledWebJob |  |
+    | <abbr title="Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než `-` a `_` .">Name</a> | myScheduledWebJob | 
     | <abbr title="Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu.">Nahrání souboru</abbr> | ConsoleApp.zip |
     | <abbr title="Mezi typy patří průběžné, aktivované.">Typ</abbr> | Aktivuje |
     | <abbr title="Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.">Aktivační události</a> | Plánované |

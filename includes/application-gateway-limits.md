@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612940"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106450553"
 ---
 | Prostředek | Omezení | Poznámka |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "98612940"
 | Počet sad pravidel přepsání |400| |
 | Počet sad záhlaví nebo adres URL na základě sady pravidel pro přepsání|40| |
 | Počet podmínek na přepsání sady pravidel|40| |
-| Souběžná připojení WebSocket |Střední brány 20 tisíc<br> Velké brány 50 tis| |
+| Souběžná připojení WebSocket |Střední brány 20 tisíc<sup>2</sup><br> Velké brány 50 tis<sup>2</sup>| |
 | Maximální délka adresy URL|32 KB| |
 | Maximální velikost hlavičky pro HTTP/2 |4KB| |
 | Maximální velikost nahrávání souborů, Standard |2 GB | |
@@ -45,3 +45,5 @@ ms.locfileid: "98612940"
 | Maximální počet WAF vyloučení na Application Gateway|40||
 
 <sup>1</sup> v případě SKU s POVOLENým WAF je nutné omezit počet prostředků na 40.
+
+<sup>2</sup> limit je na jednu Application Gateway instanci na prostředek Application Gateway.

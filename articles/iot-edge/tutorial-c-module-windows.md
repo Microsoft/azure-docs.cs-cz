@@ -9,12 +9,13 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8f019c8f3c560fdfdc0c8e5992389c253c9b0d74
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: a67bf92dbee9bf3d444add3be32544e4c3eba4f3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103463370"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221598"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj modulů C IoT Edge s využitím kontejnerů Windows
 
@@ -23,7 +24,7 @@ ms.locfileid: "103463370"
 V tomto článku se dozvíte, jak pomocí sady Visual Studio vyvíjet kód C a nasadit ho do zařízení s Windows, na kterém běží Azure IoT Edge.
 
 >[!NOTE]
->IoT Edge 1,1 LTS je poslední kanál verze, který bude podporovat kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
+>IoT Edge 1,1 LTS je poslední kanál verze, který podporuje kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
 
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje vaši obchodní logiku přímo v zařízeních IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru.
 
@@ -40,7 +41,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz ukazuje, jak vytvořit modul v jazyce C pomocí sady Visual Studio 2019 a jak ho nasadit na zařízení s Windows. Pokud vyvíjíte moduly pomocí kontejnerů Linux, místo toho použijte k [vývoji modulů C IoT Edge pomocí kontejnerů Linux](tutorial-csharp-module.md) .
 

@@ -24,23 +24,21 @@
     - name: Vývoj modulů vlastního kódu
       items:
         - name: C
-          items:
-            - name: Moduly jazyka C pro zařízení s Linuxem
-              href: tutorial-c-module.md
-            - name: Moduly jazyka C pro zařízení s Windows
-              href: tutorial-c-module-windows.md
+          href: tutorial-c-module.md
         - name: C#
-          items:
-            - name: Moduly jazyka C# pro zařízení s Linuxem
-              href: tutorial-csharp-module.md
-            - name: Moduly jazyka C# pro zařízení s Windows
-              href: tutorial-csharp-module-windows.md
+          href: tutorial-csharp-module.md
         - name: Java
           href: tutorial-java-module.md
         - name: Node.js
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
+        - name: Použití kontejnerů Windows
+          items:
+            - name: C
+              href: tutorial-c-module-windows.md
+            - name: C#
+              href: tutorial-csharp-module-windows.md
     - name: Nasazení služeb Azure jako modulů
       items:
         - name: Filtrování dat s využitím Azure Functions

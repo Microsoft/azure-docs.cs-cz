@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu Klientská knihovna pro Java'
-description: V tomto rychlém startu Začínáme s klientskou knihovnou Počítačové zpracování obrazu pro Java.
+title: 'Rychlý Start: Klientská knihovna pro rozpoznávání optického znaku pro Java'
+description: V tomto rychlém startu se naučíte používat klientskou knihovnu pro rozpoznávání optického znaku pro Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,19 +10,16 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 58266e1d41344baf042349ed8b0ca9974a966827
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 84ac8e8309d9f1d0536d0f7a16ab9cd9f3c10a2c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622250"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284751"
 ---
 <a name="HOLTop"></a>
 
-Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
-
-* Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
-* Přečtěte si vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
+Pomocí klientské knihovny pro rozpoznávání optického rozpoznávání znaků můžete číst vytištěné a ručně psaný text na obrázcích.
 
 [Referenční dokumentace](/java/api/overview/azure/cognitiveservices/client/computervision)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision)  | [Artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -101,27 +98,29 @@ Definujte třídu **ComputerVisionQuickstarts**. Vytvořte proměnné pro klíč
 
 V metodě **Main** aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Později je budete definovat.
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_maincalls)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_beginmain)]
 
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_authinmain)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_readinmain)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_endmain)]
 > [!div class="nextstepaction"]
 > [Jsem u klienta nastavil](?success=set-up-client#object-model) [problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=set-up-client)
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní zpracovávají některé hlavní funkce Počítačové zpracování obrazu Java SDK.
+Následující třídy a rozhraní zpracovávají některé z hlavních funkcí sady OCR Java SDK.
 
 |Název|Description|
 |---|---|
 | [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
-|[ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision)| Tato třída pochází z objektu klienta a přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.|
-|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot VisualFeatureTypes. |
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Počítačové zpracování obrazu klientské knihovny pro Java:
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny OCR pro jazyk Java:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza obrázku](#analyze-an-image)
 * [Číst vytištěné a ručně psaný text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -131,116 +130,13 @@ V nové metodě vytvořte instanci objektu [ComputerVisionClient](/java/api/com.
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
-> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#analyze-an-image) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=authenticate-client)
+> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#read-printed-and-handwritten-text) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=authenticate-client)
 
-## <a name="analyze-an-image"></a>Analýza obrázku
-
-Následující kód definuje metodu, `AnalyzeLocalImage` která používá objekt klienta k analýze místní image a vytištění výsledků. Metoda vrátí textový popis, kategorizaci, seznam značek, zjištěné plošky, příznaky obsahu pro dospělé, hlavní barvy a typ obrázku.
-
-> [!TIP]
-> Můžete také analyzovat vzdálenou bitovou kopii pomocí adresy URL. Podívejte se na metody [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) , jako je například **AnalyzeImage**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) , kde najdete scénáře týkající se vzdálených imagí.
-
-### <a name="set-up-test-image"></a>Nastavit testovací image
-
-Nejprve vytvořte **prostředky/** složky v **Src/Main/** složce projektu a přidejte obrázek, který chcete analyzovat. Pak přidejte následující definici metody do třídy **ComputerVisionQuickstarts** . Změňte hodnotu `pathToLocalImage` tak, aby odpovídala vašemu souboru obrázku. 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
-
-### <a name="specify-visual-features"></a>Zadat vizuální funkce
-
-Dále určete, které vizuální funkce chcete ve své analýze extrahovat. Úplný seznam najdete v [VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes) výčtu.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
-
-### <a name="analyze"></a>Analýza
-Tento blok vytiskne podrobné výsledky do konzoly pro každý obor analýzy obrázků. Metoda **analyzeImageInStream** vrací objekt **ImageAnalysis** , který obsahuje všechny extrahované informace.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
-
-Následující části ukazují, jak podrobně analyzovat tyto informace.
-
-### <a name="get-image-description"></a>Získat popis obrázku
-
-Následující kód získá seznam generovaných titulků pro obrázek. Další informace najdete v tématu [popisujícím obrázky](../../concept-describing-images.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
-
-### <a name="get-image-category"></a>Získat kategorii obrázku
-
-Následující kód získá zjištěnou kategorii obrázku. Další informace najdete v tématu [kategorizace imagí](../../concept-categorizing-images.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
-
-### <a name="get-image-tags"></a>Získat značky obrázku
-
-Následující kód získá sadu zjištěných značek v obrázku. Další informace najdete v tématu [značky obsahu](../../concept-tagging-images.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
-
-### <a name="detect-faces"></a>Rozpoznávání tváří
-
-Následující kód vrátí zjištěné plošky v obrázku s jejich souřadnicemi obdélníku a vybere atributy obličeje. Další informace najdete v tématu [rozpoznávání tváře](../../concept-detecting-faces.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
-
-### <a name="detect-objects"></a>Detekovat objekty
-
-Následující kód vrátí zjištěné objekty v obrázku s jejich souřadnicemi. Další informace najdete v tématu [detekce objektů](../../concept-object-detection.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_objects)]
-
-
-### <a name="detect-brands"></a>Detekovat značky
-
-Následující kód vrátí zjištěná loga značky v obrázku s jejich souřadnicemi. Další informace najdete v tématu [rozpoznávání značek](../../concept-brand-detection.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_brands)]
-
-
-
-### <a name="detect-adult-racy-or-gory-content"></a>Zjištění obsahu pro dospělé, pikantní nebo gorie
-
-Následující kód vytiskne zjištěnou přítomnost obsahu pro dospělé v imagi. Další informace najdete v článku [obsah pro dospělé, pikantní a gorie](../../concept-detecting-adult-content.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
-
-### <a name="get-image-color-scheme"></a>Získat barevné schéma obrázku
-
-Následující kód vytiskne zjištěné atributy barev v obrázku, jako jsou dominantní barvy a Barva zvýraznění. Další informace najdete v tématu [Barevná schémata](../../concept-detecting-color-schemes.md).
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
-
-### <a name="get-domain-specific-content"></a>Získání obsahu specifického pro doménu
-
-Počítačové zpracování obrazu může použít specializovaný model k další analýze imagí. Další informace najdete v tématu [obsah specifický pro doménu](../../concept-detecting-domain-content.md). 
-
-Následující kód analyzuje data o zjištěných celebrit v imagi.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
-
-Následující kód analyzuje data o zjištěných orientačních seznamech v obrázku.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
-
-### <a name="get-the-image-type"></a>Získat typ obrázku
-
-Následující kód Vytiskne informace o typu obrázku &mdash; , ať už se jedná o Klipart nebo kreslení čáry.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
-
-> [!div class="nextstepaction"]
-> [Analyzoval jsem obrázek](?success=analyze-image#read-printed-and-handwritten-text) , který [jsem narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=analyze-image)
-
-### <a name="close-out-the-method"></a>Zavřít metodu
-
-Dokončete blok try/catch a zavřete metodu.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyze_catch)]
 
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Tato část definuje metodu, `ReadFromFile` která přijímá místní cestu k souboru a tiskne text obrázku do konzoly.
+Služba OCR může číst viditelný text v obrázku a převést jej na datový proud znaků. Tato část definuje metodu, `ReadFromFile` která přijímá místní cestu k souboru a tiskne text obrázku do konzoly.
 
 > [!TIP]
 > Můžete také číst text ve vzdálené imagi, na kterou odkazuje adresa URL. Podívejte se na metody [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) , jako je **čtení**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) , kde najdete scénáře týkající se vzdálených imagí.
@@ -313,11 +209,11 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak provádět základní úlohy pomocí Počítačové zpracování obrazu knihovny Java. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
+V tomto rychlém startu jste se dozvěděli, jak provádět základní úlohy pomocí knihovny OCR jazyka Java. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
 > [!div class="nextstepaction"]
->[Odkaz na Počítačové zpracování obrazu (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
+>[Referenční informace k sadě OCR SDK (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
 
 
-* [Co je počítačové zpracování obrazu?](../../overview.md)
+* [Přehled rozpoznávání OCR](../../overview-ocr.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).
