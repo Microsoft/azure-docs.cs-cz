@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011772"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256119"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -169,7 +169,7 @@ Přenosová služba je sada webových služeb, které můžou vývojáři použ�
 
 Další informace najdete v [dokumentaci služby Traffic Service](/rest/api/maps/traffic).
 
-### <a name="weather-services-preview"></a>Počasí Services (Preview) 
+### <a name="weather-services"></a>Služby Weather
 
 Služba počasí nabízí rozhraní API, pomocí kterých můžou vývojáři načíst informace o počasí pro konkrétní umístění. Informace obsahují podrobnosti, jako je například datum a čas pozorování, stručný popis povětrnostních podmínek, ikona počasí, příznaky indikátoru měření, teplota a informace o rychlosti větru. Vrátí se také další podrobnosti, jako je RealFeel™ teploty a UV index.
 

@@ -3,22 +3,18 @@ title: Dynamické balení v Azure Media Services V3
 description: Tento článek obsahuje přehled dynamického balení v Azure Media Services.
 author: myoungerman
 manager: femila
-editor: ''
 services: media-services
-documentationcenter: ''
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e396841231659c27f199a7353565c5d69e02877
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633049"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061991"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -41,7 +37,7 @@ Chcete-li zpřístupnit pro klienty přehrávání videa v kódovaném prostřed
 
 Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů.
 
-Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování, přečtěte si téma [protokoly streamování a typy šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování, přečtěte si téma [protokoly streamování a typy šifrování](drm-content-protection-concept.md#streaming-protocols-and-encryption-types).
 
 ### <a name="hls-protocol"></a>Protokol HLS
 
@@ -49,9 +45,9 @@ Váš klient streamování může určit následující formáty HLS:
 
 |Protokol|Příklad|
 |---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
 
 > [!NOTE]
 > V předchozích pokynech od společnosti Apple se doporučuje, aby záloha pro sítě s malou šířkou pásma poskytovala datový proud, který je jen pro zvuk.  V současné době Media Services kodér automaticky vygeneruje zvuk, který se jenom sleduje.  Pokyny pro Apple nyní obsahují informace o tom, *že by nemělo být* zahrnuté zvukové stopy, zejména pro distribuci Apple TV.  Chcete-li zabránit přehrávači ve výchozím nastavení zvukového zvuku, doporučujeme použít značku "pouze zvuk = false" v adrese URL, která odebere pouze zvukovou verzi v HLS, nebo jednoduše použít HLS-v3. Například, `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
@@ -62,8 +58,8 @@ Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK
 
 |Protokol|Příklad|
 |---|---|
-|MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
-|MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+|MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 
 ### <a name="smooth-streaming-protocol"></a>Protokol Smooth Streaming
 
@@ -71,7 +67,7 @@ Váš klient streamování může určit následující formáty Smooth Streamin
 
 |Protokol|Poznámky a příklady| 
 |---|---|
-|Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 |Smooth Streaming 2,0 (starší manifest)|Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují `r-tag` . Klienti s těmito hráči můžou používat formát, který zakazuje značku r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 > [!NOTE]
@@ -115,7 +111,7 @@ Tady je běžný pracovní postup pro živé streamování s *dynamickým balen�
 1. Získejte adresu URL náhledu a použijte ji k ověření, že se vstup z kodéru přijímá.
 1. Vytvořte nový Asset.
 1. Vytvořte živý výstup a použijte název assetu, který jste vytvořili.<br />Živý výstup archivuje Stream do assetu.
-1. Vytvořte Lokátor streamování s integrovanými typy zásad streamování.<br />Pokud máte v úmyslu zašifrovat svůj obsah, Projděte si [Přehled ochrany obsahu](content-protection-overview.md).
+1. Vytvořte Lokátor streamování s integrovanými typy zásad streamování.<br />Pokud máte v úmyslu zašifrovat svůj obsah, Projděte si [Přehled ochrany obsahu](drm-content-protection-concept.md).
 1. Vypíšete cesty na lokátoru streamování, abyste získali adresy URL, které se mají použít.
 1. Získejte název hostitele pro koncový bod streamování, ze kterého chcete streamovat.
 1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). *Koncový bod streamování* se stará o poskytování správného manifestu a požadavků pro různé formáty.
@@ -312,7 +308,7 @@ Chcete-li řídit počet běhů, formátů, přenosové rychlosti a časová obd
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
-*Dynamické šifrování* můžete použít k dynamickému šifrování živého obsahu nebo na vyžádání pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple Fairplay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
+*Dynamické šifrování* můžete použít k dynamickému šifrování živého obsahu nebo na vyžádání pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple Fairplay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](drm-content-protection-concept.md).
 
 > [!NOTE]
 > Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.

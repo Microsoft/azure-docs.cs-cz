@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564462"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284387"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -151,8 +151,8 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Podporováno pro virtuální počítače Azure se spravovanými i nespravovanými disky. Nepodporuje se u klasických virtuálních počítačů. | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL/SAP HANA | Ve verzi Preview                                                      | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Virtuální počítač Azure               | Podporováno pro virtuální počítače Azure se spravovanými i nespravovanými disky. Nepodporuje se u klasických virtuálních počítačů. | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ, g IOWA a g) – Virginia. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | Ve verzi Preview                                                      | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ, g IOWA a g) – Virginia. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | Agent MARS/místní  | No                                                           | –               |
 | AFS (sdílené složky Azure)                 | No                                                           | –               |
 

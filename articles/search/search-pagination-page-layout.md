@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98209827"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504222"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
@@ -137,12 +137,16 @@ Služby vytvořené po 15. červenci 2020 budou mít k dispozici jiné zvýrazň
 
 Nové chování:
 
-* Vrátí se pouze fráze, které odpovídají úplným dotazům fráze. Dotaz "Super Bowl" bude vracet například takto:
++ Vrátí se pouze fráze, které odpovídají úplným dotazům fráze. Fráze dotazu "Super Bowl" bude vracet takto:
 
-    ```html
-    '<em>super bowl</em> is super awesome with a bowl of chips'
-    ```
-  Všimněte si, že pojem *Bowl čipy* nemá žádné zvýrazňování, protože neodpovídá celé frázi.
+  ```json
+  "@search.highlights": {
+      "sentence": [
+          "The <em>super</em> <em>bowl</em> is super awesome with a bowl of chips"
+     ]
+  ```
+
+  Všimněte si, že jiné instance *Super* a *Bowl* nemají žádné zvýraznění, protože tyto instance neodpovídají celé frázi.
 
 Při psaní kódu klienta, který implementuje zvýrazňování přístupů, si pamatujte na tuto změnu. Mějte na paměti, že to nebude mít vliv, pokud vytvoříte úplně novou službu vyhledávání.
 

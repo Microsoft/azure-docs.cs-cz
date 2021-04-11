@@ -2,13 +2,13 @@
 title: Přehled zálohování disku Azure
 description: Přečtěte si o řešení zálohování disku Azure.
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.date: 04/09/2021
+ms.openlocfilehash: 42f37c1f500be719e0bd79bad41226ab3ab2d911
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107291"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285135"
 ---
 # <a name="overview-of-azure-disk-backup"></a>Přehled zálohování disku Azure
 
@@ -31,20 +31,20 @@ Azure disk Backup je řešení konzistentní bez agentů a neúspěšného selh�
 
 Řešení zálohování disku Azure je užitečné v následujících scénářích:
 
-- Nutnost častých záloh za den bez quiescent aplikací
-- Aplikace spuštěné v clusteru: zápis do sdílených disků v clusterech s podporou převzetí služeb při selhání Windows serveru i v clusterech systému Linux
-- Konkrétní nutnost zálohování bez agentů z důvodu zabezpečení nebo vlivu na výkon aplikace
+- Je potřeba pro časté zálohování za den bez quiescent aplikace.
+- Aplikace spuštěné v clusteru: na sdílené disky se zapisují jak cluster Windows serveru s podporou převzetí služeb při selhání, tak clustery Linux.
+- Specifická nutnost zálohování bez agentů z důvodu zabezpečení nebo vlivu na výkon aplikace.
 - Zálohování virtuálního počítače s konzistentní aplikací se nedá provést, protože obchodní aplikace nepodporují služba Stínová kopie svazku (VSS).
 
 Službu Azure disk Backup zvažte ve scénářích, kde:
 
-- kritická aplikace je spuštěná na virtuálním počítači Azure, který požaduje více záloh za den, aby splňovala cíl bodu obnovení, ale bez dopadu na produkční prostředí nebo výkon aplikace.
-- vaše organizace nebo oborové nařízení omezuje instalaci agentů z důvodu obav zabezpečení
-- spuštění vlastních předzálohovacích skriptů a vyvolání zablokování a rozmrazení na virtuálních počítačích se systémem Linux pro získání zálohy konzistentní s aplikacemi přináší nepatřičná režie na produkční úlohy.
-- aplikace s využitím kontejnerů, které běží na službě Azure Kubernetes (AKS cluster), používají jako trvalé úložiště spravované disky. V současné době je nutné zálohovat spravovaný disk prostřednictvím skriptů automatizace, které je obtížné spravovat.
-- spravovaný disk je držitelem důležitých podnikových dat, používá se jako sdílená složka nebo obsahuje záložní soubory databáze a vy chcete optimalizovat náklady na zálohování, protože se neinvesticí do zálohování virtuálních počítačů Azure.
-- Máte spoustu virtuálních počítačů s jedním diskem s operačním systémem Linux a Windows (tj. virtuální počítač, který má jenom disk s operačním systémem a žádné připojené datové disky), který hostuje servery webserver nebo State, a slouží jako přípravné prostředí s nastavením konfigurace aplikace a k ochraně disku s operačním systémem potřebujete nákladově efektivní řešení zálohování. Například pro aktivaci rychlého zálohování na vyžádání před upgradem nebo opravou virtuálního počítače
-- na virtuálním počítači je spuštěná konfigurace operačního systému, kterou řešení zálohování virtuálních počítačů Azure nepodporuje (například Windows 2008 32-bit Server).
+- Kritická aplikace je spuštěná na virtuálním počítači Azure, který požaduje více záloh za den, aby splňovala cíl bodu obnovení, ale bez dopadu na produkční prostředí nebo výkon aplikace.
+- Vaše organizace nebo oborové pravidlo omezí instalaci agentů z důvodu zabezpečení.
+- Spuštění vlastních předzálohovacích skriptů a volání zablokování a rozmrazování na virtuálních počítačích se systémem Linux za účelem získání zálohy konzistentní s aplikacemi přináší nepatřičné nároky na produkční úlohy.
+- Aplikace s využitím kontejnerů, které běží na službě Azure Kubernetes (AKS cluster), používají jako trvalé úložiště spravované disky. V současné době je nutné zálohovat spravovaný disk prostřednictvím skriptů automatizace, které je obtížné spravovat.
+- Spravovaný disk je držitelem důležitých podnikových dat, používá se jako sdílená složka nebo obsahuje záložní soubory databáze a vy chcete optimalizovat náklady na zálohování, a to bez investování do zálohování virtuálních počítačů Azure.
+- Máte spoustu virtuálních počítačů s jedním diskem s operačním systémem Linux a Windows (tj. virtuální počítač, který má jenom disk s operačním systémem a žádné připojené datové disky), který hostuje webový server, počítače bez stavů nebo slouží jako přípravné prostředí s nastavením konfigurace aplikace, a pro ochranu disku s operačním systémem potřebujete nákladově efektivní řešení zálohování. Například pro aktivaci rychlého zálohování na vyžádání před upgradem nebo opravou virtuálního počítače.
+- Na virtuálním počítači je spuštěná konfigurace operačního systému, kterou řešení zálohování virtuálních počítačů Azure nepodporuje (například Windows 2008 32-bit Server).
 
 ## <a name="how-the-backup-and-restore-process-works"></a>Jak proces zálohování a obnovení funguje
 
@@ -54,7 +54,7 @@ Službu Azure disk Backup zvažte ve scénářích, kde:
 
 - Pokud chcete nakonfigurovat zálohování, použijte úložiště záloh, přiřaďte zásadu zálohování, vyberte spravovaný disk, který se má zálohovat, a zadejte skupinu prostředků, ve které se mají snímky ukládat a spravovat. Azure Backup automaticky spustí naplánované úlohy zálohování, které vytvoří přírůstkový snímek disku podle četnosti zálohování. Starší snímky se odstraní v závislosti na době uchování, kterou určuje zásada zálohování.
 
-- Azure Backup používá [přírůstkové snímky](../virtual-machines/disks-incremental-snapshots.md#restrictions) spravovaného disku. Přírůstkové snímky představují cenově výhodné zálohování spravovaných disků v čase, které se fakturují za rozdílové změny na disku od posledního snímku. Vždycky se ukládají do nejefektivnějšího úložiště na úrovni Standard HDD bez ohledu na typ úložiště nadřazených disků. První snímek disku zabere použitou velikost disku a po sobě jdoucí přírůstkové snímky uloží na disk rozdílové změny od posledního snímku.
+- Azure Backup používá [přírůstkové snímky](../virtual-machines/disks-incremental-snapshots.md#restrictions) spravovaného disku. Přírůstkové snímky představují cenově výhodné zálohování spravovaných disků v čase, které se fakturují za rozdílové změny na disku od posledního snímku. Ty se vždycky ukládají do nejefektivnějšího úložiště na úrovni Standard HDD bez ohledu na typ úložiště nadřazených disků. První snímek disku zabere použitou velikost disku a po sobě jdoucí přírůstkové snímky uloží na disk rozdílové změny od posledního snímku.
 
 - Jakmile nakonfigurujete zálohu spravovaného disku, vytvoří se instance zálohování v trezoru záloh. Pomocí instance Backup můžete najít stav operací zálohování, aktivovat zálohování na vyžádání a provádět operace obnovení. Můžete také zobrazit stav zálohování napříč několika trezory a instancemi zálohování pomocí centra zálohování, které poskytuje jediné podokno se skleněným zobrazením.
 
@@ -62,12 +62,12 @@ Službu Azure disk Backup zvažte ve scénářích, kde:
 
 - Úložiště záloh používá spravovanou identitu pro přístup k dalším prostředkům Azure. Ke konfiguraci zálohy spravovaného disku a obnovení z minulé zálohy vyžaduje spravovaná identita trezoru služby Backup sadu oprávnění na zdrojovém disku, skupinu prostředků snímku, kde se vytvářejí a spravují snímky, a cílovou skupinu prostředků, ve které chcete zálohu obnovit. Pomocí řízení přístupu na základě role Azure (RBAC) můžete udělit oprávnění ke spravované identitě. Spravovaná identita je instanční objekt speciálního typu, který se dá použít jenom s prostředky Azure. Přečtěte si další informace o [spravovaných identitách](../active-directory/managed-identities-azure-resources/overview.md).
 
-- Služba Azure disk Backup v současné době podporuje provozní zálohování spravovaných disků a nekopíruje zálohy do úložiště trezorů záloh. Podrobný seznam podporovaných a nepodporovaných scénářů a dostupnost oblastí najdete v tabulce [podpory](disk-backup-support-matrix.md).
+- Služba Azure disk Backup v současné době podporuje provozní zálohování spravovaných disků a nekopíruje zálohy do úložiště trezorů záloh. Podrobný seznam podporovaných a nepodporovaných scénářů a dostupnost oblastí najdete v tabulce [podpory](disk-backup-support-matrix.md) .
 
 ## <a name="pricing"></a>Ceny
 
-Azure Backup nabízí řešení pro správu životního cyklu snímků pro ochranu disků Azure. Snímky disku vytvořené pomocí Azure Backup se ukládají do skupiny prostředků v rámci vašeho předplatného Azure a účtují poplatky za **úložiště snímků** . Další podrobnosti o cenách snímků najdete na stránce s [cenami služby Managed disk](https://azure.microsoft.com/pricing/details/managed-disks/) . Vzhledem k tomu, že se snímky nekopírují do trezoru služby Backup, Azure Backup neúčtuje poplatek za **chráněnou instanci** a náklady na **úložiště zálohy** se nepoužijí. Kromě toho přírůstkové snímky zabírají rozdílové změny od posledního snímku a jsou vždy uložené ve standardním úložišti bez ohledu na typ úložiště nadřazených disků a účtují se podle ceny standardního úložiště. Díky tomu bude Azure disk Backup finančně efektivním řešením.
+Azure Backup nabízí řešení pro správu životního cyklu snímků pro ochranu disků Azure. Snímky disku vytvořené pomocí Azure Backup se ukládají do skupiny prostředků v rámci vašeho předplatného Azure a účtují poplatky za **úložiště snímků** . Další podrobnosti o cenách snímků najdete na stránce s [cenami služby Managed disk](https://azure.microsoft.com/pricing/details/managed-disks/) .<br></br>Vzhledem k tomu, že se snímky nekopírují do trezoru služby Backup, Azure Backup neúčtuje poplatek za **chráněnou instanci** a náklady na **úložiště zálohy** se nepoužijí. Kromě toho přírůstkové snímky zabírají rozdílové změny jako poslední snímek a jsou vždy uložené na standardním úložišti bez ohledu na typ úložiště nadřazených disků a účtují se podle ceny standardního úložiště. Díky tomu bude Azure disk Backup finančně efektivním řešením.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Matice podpory pro zálohování disků Azure](disk-backup-support-matrix.md)
+[Matice podpory pro zálohování disků Azure](disk-backup-support-matrix.md)

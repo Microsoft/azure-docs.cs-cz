@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 047b295d68e872b4dc334e53b5b9da0ec07d5826
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043746"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257071"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Nastavení toku registrace a přihlašování v Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 
 ## <a name="create-a-sign-up-and-sign-in-policy"></a>Vytvoření zásady registrace a přihlašování
 
-Vlastní zásady jsou sada souborů XML, které nahrajete do svého tenanta Azure AD B2C, abyste mohli definovat cesty uživatelů. Nabízíme počáteční balíčky s několika předem sestavenými zásadami, včetně registrace a přihlášení, resetování hesla a zásad úprav profilů. Další informace najdete v tématu [Začínáme s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md).
+Vlastní zásady jsou sada souborů XML, které nahrajete do svého tenanta Azure AD B2C, abyste mohli definovat cesty uživatelů. Nabízíme počáteční balíčky s několika předem sestavenými zásadami, včetně registrace a přihlášení, resetování hesla a zásad úprav profilů. Další informace najdete v tématu [Začínáme s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ::: zone-end
 

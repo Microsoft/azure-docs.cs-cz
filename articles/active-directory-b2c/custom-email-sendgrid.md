@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 44ba2e39de37703de66aefd1fe843d0ca5002b6b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031303"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256969"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vlastní ověření e-mailu pomocí SendGrid
 
-Pomocí vlastního e-mailu v Azure Active Directory B2C (Azure AD B2C) můžete posílat přizpůsobené e-maily uživatelům, kteří se zaregistrují k používání vašich aplikací. Pomocí [DisplayControls](display-controls.md) (aktuálně ve verzi Preview) a poskytovatele e-mailu třetích stran SendGrid můžete použít vlastní e-mailovou šablonu a z těchto umístění *:* adresa a předmět, stejně jako lokalizace podpory a vlastní nastavení jednorázového hesla (jednorázového hesla).
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Pomocí vlastního e-mailu v Azure Active Directory B2C (Azure AD B2C) můžete posílat přizpůsobené e-maily uživatelům, kteří se zaregistrují k používání vašich aplikací. Když použijete poskytovatele e-mailu jiného výrobce SendGrid, můžete použít vlastní e-mailovou šablonu a z těchto umístění *:* adresa a předmět, stejně jako lokalizace podpory a vlastní nastavení jednorázového hesla.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [SendGrid](https://sendgrid.com), [Mailjet](https://Mailjet.com)nebo [SparkPost](https://sparkpost.com), vlastní REST API nebo libovolného poskytovatele e-mailu založeného na protokolu HTTP (včetně vaší vlastní). Tento článek popisuje nastavení řešení, které používá SendGrid.
 
@@ -556,3 +567,5 @@ Příklad vlastní zásady ověřování e-mailu najdete na GitHubu:
 
 - [Ověření vlastního e-mailu – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - Informace o použití vlastního REST API nebo kteréhokoli poskytovatele e-mailové adresy SMTP založeného na protokolu HTTP najdete v tématu [definice RESTful Technical Profile ve vlastních zásadách Azure AD B2C](restful-technical-profile.md).
+
+::: zone-end

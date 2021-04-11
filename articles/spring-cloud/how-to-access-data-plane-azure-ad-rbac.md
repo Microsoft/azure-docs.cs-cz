@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 23e24e562ea6fa10eee82c54c9ab2a701dd10351
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169880"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505328"
 ---
 # <a name="access-config-server-and-service-registry"></a>Přístup ke konfiguračnímu serveru a registru služby
 
@@ -49,6 +49,9 @@ Po přiřazení role čtečky dat cloudu Azure je možné, že zákazníci budou
 
     * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
     * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+
+>[!NOTE]
+> Pokud používáte Azure Čína, nahraďte prosím `*.azuremicroservices.io` za `*.microservices.azure.cn` , [Další informace](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Přístup k složenému koncovému bodu pomocí přístupového tokenu. Pokud chcete zajistit autorizaci, vložte přístupový token do hlavičky.  Podporovaná je jenom metoda GET.
 

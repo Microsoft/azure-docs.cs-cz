@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5707d873bbf67add78f9a8e29fcb9135898486d6
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316065"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226833"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Kurz: Konfigurace cloudových prostředků pro zřizování zařízení pomocí IoT Hub Device Provisioning Service
 
@@ -120,7 +120,7 @@ V tomto kurzu jste se naučili:
 > * Propojení centra IoT se službou Device Provisioning
 > * Nastavení zásad přidělování ve službě Device Provisioning
 
-V dalším kurzu se dozvíte, jak nastavit zařízení pro zřizování.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak nastavit zařízení pro zřizování.
 
 > [!div class="nextstepaction"]
 > [Nastavení zařízení pro zřizování](tutorial-set-up-device.md)
