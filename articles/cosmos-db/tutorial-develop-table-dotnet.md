@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f4817e53cb36bc96add19d855750a73a151b4891
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104772293"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s rozhraním Azure Cosmos DB API pro tabulky a Azure Table Storage s využitím .NET SDK
@@ -27,7 +27,7 @@ Pomocí Azure Cosmos DB rozhraní API pro tabulky nebo úložiště tabulek Azur
 
 Tento kurz popisuje ukázku, která vám ukáže, jak používat [Microsoft Azure Cosmos DB knihovny tabulek pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) s Azure Cosmos DB rozhraní API pro tabulky a scénáři úložiště tabulek Azure. Je nutné použít připojení specifické pro službu Azure. Tyto scénáře jsou prozkoumání pomocí příkladů jazyka C#, které ilustrují vytváření tabulek, vkládání a aktualizaci dat, dotazování dat a odstraňování tabulek.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 800acddcb3527b9ca16d7fc664c2a3c27b528c25
-ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
+ms.openlocfilehash: afb8a6f7d18a36503253da3666a1325eef228651
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105726645"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958222"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,7 +56,7 @@ V souboru POM se na balíček odkazuje `azure-communication-chat` pomocí rozhra
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.7</version> 
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -66,7 +66,7 @@ Pro ověřování musí klient odkazovat na `azure-communication-common` balíč
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version> 
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -82,7 +82,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce služ
 | ChatThreadAsyncClient | Tato třída je potřebná pro funkci asynchronního zřetězení chatu. Získáte instanci prostřednictvím ChatAsyncClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, posílání oznámení a čtení. |
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
-Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. Je nutné použít třídu CommunicationTokenCredential ze společné sady SDK k předání tokenu klientovi chatu. 
+Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. Je nutné použít třídu CommunicationTokenCredential ze společné sady SDK k předání tokenu klientovi chatu.
 
 Další informace o [architektuře chatu](../../../concepts/chat/concepts.md)
 
@@ -106,7 +106,7 @@ public class App
     public static void main( String[] args ) throws IOException
     {
         System.out.println("Azure Communication Services - Chat Quickstart");
-        
+
         // Your unique Azure Communication service endpoint
         String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 
@@ -139,7 +139,8 @@ Použijte `createChatThread` metodu k vytvoření vlákna chatu.
 - Použijte `topic` parametr konstruktoru k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce.
 - Slouží `participants` k vypsání účastníků vlákna, které mají být přidány do vlákna. `ChatParticipant` převezme uživatele, kterého jste vytvořili v rychlém startu [tokenu přístupu uživatele](../../access-tokens.md) .
 
-`CreateChatThreadResult` je odpověď vrácená z vytváření konverzačního vlákna. Obsahuje `getChatThread()` metodu, která vrátí `ChatThread` objekt, který lze použít k získání klienta vlákna, ze kterého můžete získat `ChatThreadClient` operaci pro provádění operací ve vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. `ChatThread` Objekt obsahuje také metodu, `getId()` která NAČTE jedinečné ID vlákna.
+`CreateChatThreadResult` je odpověď vrácená z vytváření konverzačního vlákna.
+Obsahuje `getChatThread()` metodu, která vrátí `ChatThread` objekt, který lze použít k získání klienta vlákna, ze kterého můžete získat `ChatThreadClient` operaci pro provádění operací ve vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. `ChatThread` Objekt obsahuje také metodu, `getId()` která NAČTE jedinečné ID vlákna.
 
 ```Java
 ChatParticipant firstThreadParticipant = new ChatParticipant()

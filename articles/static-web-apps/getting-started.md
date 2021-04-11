@@ -7,20 +7,20 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182651"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449138"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Rychlý Start: Vytvoření první statické lokality pomocí statického Web Apps Azure
 
-Služba Azure static Web Apps publikuje web do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu nasadíte webovou aplikaci do statických webových aplikací Azure pomocí rozšíření Visual Studio Code.
+Služba Azure static Web Apps zveřejňuje web tím, že vytváří aplikace z úložiště kódu. V tomto rychlém startu nasadíte aplikaci do statických webových aplikací Azure pomocí rozšíření Visual Studio Code.
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
@@ -32,7 +32,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](ht
 
 [!INCLUDE [clone the repository](../../includes/static-web-apps-get-started-clone-repo.md)]
 
-Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a otevřete úložiště, které jste právě naklonoval na váš počítač v editoru.
+Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a otevřete úložiště, které jste naklonoval na svém počítači v editoru.
 
 ## <a name="create-a-static-web-app"></a>Vytvoření statické webové aplikace
 
@@ -43,7 +43,7 @@ Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a 
     > [!NOTE]
     > Vyžaduje se přihlášení k Azure a GitHubu. Pokud ještě ve Visual Studio Code nejste přihlášení k Azure a GitHubu, rozšíření vás během procesu vytváření vyzve k přihlášení k oběma účtům.
 
-1. Umístěte myš nad popisek _Static Web Apps_ a vyberte **symbol plus**.
+1. V popisku _statického Web Apps_ vyberte znaménko **plus**.
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Název aplikace":::
 
@@ -53,45 +53,34 @@ Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a 
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Vytvoření statické webové aplikace":::
 
-1. Vyberte větev **main** (Hlavní) a stiskněte **Enter**.
+1. Vyberte Předvolby, které odpovídají typu aplikace.
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Název větve":::
+    # <a name="no-framework"></a>[Žádná architektura](#tab/vanilla-javascript)
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Přednastavení aplikace: žádné rozhraní":::
 
-1. **/** Jako umístění pro kód aplikace vyberte a stiskněte klávesu **ENTER**.
+    Zadejte **./** jako umístění souborů aplikace
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Umístění kódu aplikace":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Umístění souborů aplikace":::
 
-1. Rozšíření hledá umístění rozhraní API ve vaší aplikaci. Tento článek se nevěnuje implementaci rozhraní API.
-
-    Vyberte **Skip for now** (Prozatím přeskočit) a stiskněte **Enter**.
+    Jako umístění pro rozhraní Azure Functions API vyberte **Přeskočit?**
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Umístění rozhraní API":::
 
-1. Vyberte umístění, ve kterém se mají v aplikaci vytvářet soubory pro produkční prostředí.
+    Zadejte **./** jako výstupní umístění sestavení
 
-    # <a name="no-framework"></a>[Žádná architektura](#tab/vanilla-javascript)
-
-    Zrušte zaškrtnutí políčka a stiskněte klávesu **ENTER**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Cesta k souborům aplikace":::
+    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Umístění výstupu sestavení aplikace":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    Zadejte **DIST/úhlové základní** a stiskněte klávesu **ENTER**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Cesta k souborům aplikace Angular":::
+    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="Přednastavení aplikací: úhlová":::
 
     # <a name="react"></a>[React](#tab/react)
 
-    Zadejte **build** a stiskněte **Enter**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Cesta k souborům aplikace React":::
+    :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="Přednastavení aplikace: reakce":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    Zadejte **dist** a stiskněte **Enter**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Cesta k souborům aplikace Vue":::
+    :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="Přednastavení aplikace: Vue":::
 
     ---
 
@@ -103,11 +92,13 @@ Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a 
 
     :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Potvrzení o vytvoření":::
 
-1. V okně Průzkumníka Visual Studio Code přejděte na uzel, který má název vašeho předplatného a rozbalte ho. Všimněte si, že může trvat několik minut, než se nasazení dokončí. Pak se vraťte do oddílu static Web Apps a vyberte název aplikace a potom klikněte pravým tlačítkem na My-First-static-Web-App a vyberte otevřít na portálu. zobrazí se aplikace v Azure Portal.
+    Potom klikněte na tlačítko **otevřít akce v GitHubu**. Na této stránce se zobrazuje stav sestavení aplikace.
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Otevření na portálu":::
+    Po dokončení akce GitHubu můžete přejít na publikovaný web.
 
-[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
+1. Chcete-li zobrazit web v prohlížeči, klikněte pravým tlačítkem na projekt v rozšíření statické Web Apps a vyberte **Procházet lokalita**.
+
+    :::image type="content" source="media/getting-started/extension-browse-site.png" alt-text="Procházet web":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -12,10 +12,10 @@ ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104600084"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití Azure Stream Analytics s vyhrazeným fondem SQL ve službě Azure synapse Analytics
@@ -24,7 +24,7 @@ Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dos
 
 V tomto článku se dozvíte, jak použít vyhrazený fond SQL jako výstupní jímku pro příjem dat s vysokou propustností s Azure Stream Analytics úlohami.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure Stream Analytics úlohy – Chcete-li vytvořit úlohu Azure Stream Analytics, postupujte podle kroků v kurzu [Začínáme s Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) :  
 

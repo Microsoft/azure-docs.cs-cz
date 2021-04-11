@@ -1,18 +1,22 @@
 ---
-title: Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)
-description: Naučte se, jak pro nová zařízení vytvořit jednotlivé vlákna DefenderIotMicroAgent modulu.
+title: 'Rychlý Start: vytvoření neaplikace Defender IoT Micro agent Module (Preview)'
+description: V tomto rychlém startu se dozvíte, jak vytvořit jednotlivé vlákna DefenderIotMicroAgent modulu pro nová zařízení.
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5036eefbd77a22d492f6ce7d3c7d15f50a081490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1bcaa76e9bfbe417bfd0d4b539b8e0c7ff95c7b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781054"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384507"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)
+# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>Rychlý Start: vytvoření neaplikace Defender IoT Micro agent Module (Preview)
 
 Pro nová zařízení můžete vytvořit vlastní vlákna **DefenderIotMicroAgent** modulu. Pro všechna zařízení v IoT Hub můžete také dávkově vytvořit vlákna. 
+
+## <a name="prerequisites"></a>Požadavky
+
+- Žádné
 
 ## <a name="device-twins"></a>Vlákna zařízení 
 
@@ -70,4 +74,5 @@ Ověření, zda pro konkrétní zařízení existuje program Defender-IoT-Micro-
 
 ## <a name="next-steps"></a>Další kroky 
 
-V dalším článku se dozvíte, jak [prozkoumat doporučení zabezpečení](quickstart-investigate-security-recommendations.md).
+> [!div class="nextstepaction"]
+> [prozkoumat doporučení zabezpečení](quickstart-investigate-security-recommendations.md)

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 128a57f02ebd85e4fece3c1417b8afc5c845514a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94989118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732223"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -98,7 +98,7 @@ Rutiny používané v tomto příkladu kódu jsou následující:
 - [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, pro který je nakonfigurován odkaz na, ze serveru 1 na server 2.
 - [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias DNS ze serveru 2 pomocí názvu aliasu.
 
-## <a name="limitations-during-preview"></a>Omezení ve verzi Preview
+## <a name="limitations"></a>Omezení
 
 V současné době má alias DNS tato omezení:
 

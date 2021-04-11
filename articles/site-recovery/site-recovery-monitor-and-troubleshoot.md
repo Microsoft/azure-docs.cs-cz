@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery monitorování | Microsoft Docs
 description: Monitorování a řešení potíží s Azure Site Recoverymi problémy a operacemi replikace pomocí portálu
-author: raynew
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: raynew
-ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a80f68c230bfed5caad4fd5ce474d8d06fd3d093
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023563"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579323"
 ---
 # <a name="monitor-site-recovery"></a>Monitorování Site Recovery
 
@@ -152,7 +149,7 @@ V části **replikované položky** Získejte seznam replikovaných počítačů
 3. Kliknutím na **sloupce** zobrazíte další sloupce, například chcete-li zobrazit RPO, problémy s konfigurací cíle a chyby replikace.
 4. Kliknutím na **Filtr** zobrazíte informace na základě konkrétních parametrů, jako je třeba stav replikace nebo konkrétní zásada replikace.
 5. Klikněte pravým tlačítkem na počítač a inicializujte operace, jako je třeba testovací převzetí služeb při selhání, nebo zobrazte konkrétní podrobnosti o chybách, které jsou k němu přidružené.
-6. Kliknutím na počítač můžete přejít k podrobnostem. Podrobnosti zahrnují:
+6. Kliknutím na počítač můžete přejít k podrobnostem. Mezi podrobnosti patří:
    - **Informace o replikaci**: aktuální stav a stav počítače.
    - **RPO** (cíl bodu obnovení): aktuální RPO pro virtuální počítač a čas, kdy byl naposledy vypočítán cíl RPO.
    - **Body obnovení**: nejnovější dostupné body obnovení pro daný počítač.

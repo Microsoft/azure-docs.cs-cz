@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.openlocfilehash: eb9ce65985521fb3f82032f04aec62538a157639
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785458"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
@@ -38,7 +38,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 > Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [plánování a spouštění v Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -483,7 +483,7 @@ V tomto kurzu jste vytvořili objekt pro zpracování dat Azure, který zpracov�
 V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování zkopírovat data z Azure Blob do Azure SQL, projděte si článek [Kurz: Kopírování dat z Azure Blob do Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Viz také
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
 | [Rozhraní REST API služby Data Factory – referenční informace](/rest/api/datafactory/) |Tady najdete rozsáhlou dokumentaci o rutinách služby Data Factory. |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |

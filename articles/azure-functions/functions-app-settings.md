@@ -4,10 +4,10 @@ description: Referenční dokumentace k nastavení aplikace Azure Functions nebo
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104773075"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
@@ -109,7 +109,7 @@ Pokud je toto nastavení aplikace vynecháno nebo nastaveno na `false` , zobraz�
 
 ![Cílová stránka aplikace Function App](media/functions-app-settings/function-app-landing-page.png)
 
-## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
+## <a name="azurewebjobsdotnetreleasecompilation&quot;></a>AzureWebJobsDotNetReleaseCompilation
 
 `true` znamená použití režimu vydání při kompilování kódu .NET; `false` znamená použít režim ladění. Výchozí je `true`.
 
@@ -117,7 +117,7 @@ Pokud je toto nastavení aplikace vynecháno nebo nastaveno na `false` , zobraz�
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
-## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
+## <a name=&quot;azurewebjobsfeatureflags&quot;></a>AzureWebJobsFeatureFlags
 
 Seznam funkcí beta oddělených čárkami, které mají být povoleny. Funkce beta verze povolené těmito příznaky nejsou připravené pro produkční prostředí, ale je možné je povolit pro experimentální použití předtím, než budou živá.
 
@@ -125,9 +125,9 @@ Seznam funkcí beta oddělených čárkami, které mají být povoleny. Funkce b
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
-## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
+## <a name=&quot;azurewebjobssecretstoragetype&quot;></a>AzureWebJobsSecretStorageType
 
-Určuje úložiště nebo poskytovatele, které se použijí pro úložiště klíčů. V současné době jsou podporovaná úložiště BLOB Storage ("blob") a místní systém souborů ("soubory"). Výchozí hodnota je objekt BLOB ve verzi 2 a systém souborů ve verzi 1.
+Určuje úložiště nebo poskytovatele, které se použijí pro úložiště klíčů. V současné době jsou podporovaná úložiště BLOB Storage (&quot;blob") a místní systém souborů ("soubory"). Výchozí hodnota je objekt BLOB ve verzi 2 a systém souborů ve verzi 1.
 
 |Klíč|Ukázková hodnota|
 |---|------------|

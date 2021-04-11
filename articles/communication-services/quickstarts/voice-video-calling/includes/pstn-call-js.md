@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
 ms.openlocfilehash: df8d3bb5986fd31f4a9079b6e6e077126867dbfe
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104729494"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).

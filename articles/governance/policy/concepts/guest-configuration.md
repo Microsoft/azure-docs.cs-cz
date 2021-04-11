@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: a18f230c1b7b1eb2c953542e276127f4f47cbb39
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 6fb3ed3644ccdb5de8f03bedf56943a91570322b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802518"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733022"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -176,7 +176,10 @@ Rozšíření konfigurace hosta zapisuje soubory protokolu do následujících u
 
 Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux
+
+- Virtuální počítač Azure: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+- Virtuální počítač Azure: `/var/lib/GuestConfig/arc_policy_logs/gc_agent.log`
 
 ### <a name="collecting-logs-remotely"></a>Vzdálené shromažďování protokolů
 
@@ -210,9 +213,9 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 Klient konfigurace hosta stáhne balíčky obsahu do počítače a extrahuje obsah.
 Chcete-li ověřit, jaký obsah byl stažen a uložen, zobrazte níže uvedená umístění složek.
 
-Windows: `c:\programdata\guestconfig\configurations`
+Windows: `c:\programdata\guestconfig\configuration`
 
-Linux: `/var/lib/guestconfig/configurations`
+Linux: `/var/lib/GuestConfig/Configuration`
 
 ## <a name="guest-configuration-samples"></a>Ukázky konfigurace hosta
 

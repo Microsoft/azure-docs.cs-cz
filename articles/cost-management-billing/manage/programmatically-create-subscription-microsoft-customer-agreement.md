@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 779a1410641f945dc8dbf38aecf65b97d64971b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5409c30020db2c8d7acf3c23df5a7d709d872341
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593954"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963270"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Programové vytváření předplatných Azure pro Smlouvu se zákazníkem Microsoftu s využitím nejnovějších rozhraní API
 
@@ -28,7 +28,9 @@ Když vytvoříte předplatné Azure programově, na toto předplatné se vztahu
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli vytvářet předplatná, musíte mít roli vlastníka, přispěvatele nebo tvůrce předplatného Azure pro oddíl faktury nebo roli vlastníka nebo přispěvatele pro fakturační profil nebo fakturační účet. Další informace najdete v tématu [Role a úlohy fakturace předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Abyste mohli vytvářet předplatná, musíte mít roli vlastníka, přispěvatele nebo tvůrce předplatného Azure pro oddíl faktury nebo roli vlastníka nebo přispěvatele pro fakturační profil nebo fakturační účet. Roli hlavního názvu služby (SPN) můžete taky přidělit. Další informace o rolích a přiřazení oprávnění k nim najdete v tématu [role a úlohy fakturace předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+
+Pokud k vytváření odběrů používáte hlavní název služby (SPN), použijte k vytvoření předplatných identifikátor ObjectId pro registraci aplikace Azure AD pomocí [Azure Active Directory PowerShellu](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list). 
 
 Pokud nevíte, jestli máte přístup k účtu se Smlouvou se zákazníkem Microsoftu, projděte si část [Kontrola přístupu ke Smlouvě se zákazníkem Microsoftu](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement).
 
