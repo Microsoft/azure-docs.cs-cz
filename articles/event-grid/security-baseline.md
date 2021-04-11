@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1bc1df4582c83b093b6ed25d03cc73aef9a81483
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5423c26b15c5ba9fa84e5d823f75f3c82a8cb8b4
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563935"
+ms.locfileid: "105968114"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Základní hodnoty zabezpečení Azure pro Event Grid
 
@@ -48,9 +48,7 @@ Azure Event Grid také podporuje řízení přístupu na základě veřejných I
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
-**Doprovodné** materiály: použijte Azure Security Center a sledujte doporučení pro ochranu sítě, která vám pomůžou zabezpečit prostředky Event Grid v Azure. Při použití
-
-Virtuální počítače Azure pro přístup k prostředkům Event Grid, povolí protokoly toku NSG (Network Security Group) a odesílají protokoly do účtu úložiště pro audit provozu.
+**Doprovodné** materiály: použijte Azure Security Center a sledujte doporučení pro ochranu sítě, která vám pomůžou zabezpečit prostředky Event Grid v Azure. Pokud k přístupu k prostředkům Event Grid používáte virtuální počítače Azure, povolte protokoly toku NSG (Network Security Group) a odešlete protokoly do účtu úložiště pro audit provozu.
 
 - [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 

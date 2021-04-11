@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: a177fc7e17dc91a0d57fa6dee87b80921d7fd8f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043576"
+ms.locfileid: "105967961"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -113,6 +113,10 @@ Po dokončení kontroly SFC nainstalujte aktualizace Windows a restartujte poč�
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
+1. U virtuálních počítačů se staršími operačními systémy (Windows Server 2012 R2 nebo Windows 8.1 a níže) se ujistěte, že je nainstalovaná nejnovější Služba komponent integračních služeb technologie Hyper-V. Další informace najdete v tématu [aktualizace integračních komponent technologie Hyper-V pro virtuální počítač s Windows](https://support.microsoft.com/topic/hyper-v-integration-components-update-for-windows-virtual-machines-8a74ffad-576e-d5a0-5a2f-d6fb2594f990).
+
+> [!NOTE]
+> Ve scénáři, ve kterém se mají virtuální počítače nastavovat pomocí řešení zotavení po havárii mezi místním serverem VMware a Azure, nejde použít službu integračních komponent technologie Hyper-V. Pokud je to tento případ, obraťte se prosím na podporu VMware, aby se virtuální počítač migruje do Azure a aby byl souběžně umístěný na VMware serveru.
 
 ## <a name="check-the-windows-services"></a>Kontrola služeb pro Windows
 
@@ -266,6 +270,8 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 1. Nastavte nastavení konfigurační data spouštění (BCD).
 
    ```powershell
+   cmd
+
    bcdedit.exe /set "{bootmgr}" integrityservices enable
    bcdedit.exe /set "{default}" device partition=C:
    bcdedit.exe /set "{default}" integrityservices enable
@@ -279,6 +285,8 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
    bcdedit.exe /set "{bootmgr}" bootems yes
    bcdedit.exe /ems "{current}" ON
    bcdedit.exe /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+   exit
    ```
 
 1. Protokol výpisu paměti může být užitečný při řešení potíží s chybami systému Windows. Povolit shromažďování protokolů výpisu paměti:
@@ -351,6 +359,10 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 1. Odinstalujte všechny další software nebo ovladače třetí strany, které se vztahují k fyzickým součástem nebo jiné virtualizační technologii.
 
 ### <a name="install-windows-updates"></a>Nainstalovat aktualizace Windows
+
+> [!NOTE]
+> Abyste se vyhnuli nechtěnému restartování během zřizování virtuálních počítačů, doporučujeme, abyste dokončili všechny instalace služby Windows Update a zajistili, že nečekáte na restartování. Jedním ze způsobů, jak to provést, je instalace všech aktualizací Windows a restartování virtuálního počítače před provedením migrace do Azure. </br><br>
+>Pokud potřebujete také vytvořit generalizaci operačního systému (Sysprep), musíte před spuštěním příkazu Sysprep aktualizovat systém Windows a restartovat virtuální počítač.
 
 V ideálním případě byste měli udržovat počítač aktualizovaný na *úrovni oprav*, pokud to není možné, zajistěte, aby byly nainstalované následující aktualizace. Nejnovější aktualizace získáte na stránkách historie Windows Update: [Windows 10 a Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 a Windows Server 2012 R2](https://support.microsoft.com/help/4009470) a [Windows 7 SP1 a Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 

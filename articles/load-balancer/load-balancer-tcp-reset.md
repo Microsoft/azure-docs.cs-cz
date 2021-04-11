@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b555d7972e88df85e08dbcb1737231755c21361
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696740"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448844"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer resetování TCP a časový limit nečinnosti
 
@@ -58,7 +58,6 @@ Udržování připojení TCP funguje ve scénářích, kdy životnost baterie ne
 ## <a name="limitations"></a>Omezení
 
 - Resetování TCP se odesílá jenom během navázání připojení TCP.
-- Pro interní nástroje pro vyrovnávání zatížení s nakonfigurovanými porty HA se neposílá TCP resetování.
 - Časový limit nečinnosti protokolu TCP nemá vliv na pravidla vyrovnávání zatížení na protokolu UDP.
 
 ## <a name="next-steps"></a>Další kroky

@@ -14,10 +14,10 @@ ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589459"
 ---
 # <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS k migraci aplikací do Azure AD
@@ -33,7 +33,7 @@ Sestava aktivita aplikace AD FS v Azure Portal vám umožní rychle určit, kter
 
 Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiřazenou některou z těchto rolí správce: globální správce, čtenář sestav, čtenář zabezpečení, správce aplikace nebo správce cloudové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vaše organizace musí aktuálně používat AD FS k přístupu k aplikacím.
 * Azure AD Connect Health musí být ve vašem tenantovi Azure AD povolené.

@@ -3,77 +3,70 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je rozhraní API Detektoru anomálií?
+    - name: Co je anomálie detektor?
       href: overview.md
-- name: Rychlé starty
-  expanded: true
+    - name: Ceny a omezení
+      href: 'https://aka.ms/adpricing'
+- name: Rychlý Start detektoru anomálií
+  href: ./quickstarts/client-libraries.md
+- name: ukázky
   items:
-    - name: Klientská knihovna
-      items:
-        - name: Klientské knihovny Detektoru anomálií
-          href: ./quickstarts/client-libraries.md
-- name: Kurzy
-  items:
-    - name: Vizualizace anomálií jako dávky s využitím Power BI
-      href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: Interaktivní ukázka
+      href: 'https://aka.ms/adDemo'
+    - name: Jupyter Notebooks
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
+    - name: ukázek Azure
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
 - name: Návody
   items:
     - name: Zjištění anomálií ve vašich datech
       href: how-to/identify-anomalies.md
-    - name: Nasazení do IoT Edge
-      href: how-to/deploy-anomaly-detection-on-iot-edge.md
-    - name: Použití kontejnerů
+    - name: Nasazení detektoru anomálií
       items:
-        - name: Instalace a spuštění kontejnerů
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
-          href: anomaly-detector-container-howto.md
-        - name: Konfigurace kontejnerů
-          href: anomaly-detector-container-configuration.md
-          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
-        - name: Použití instancí kontejneru
-          href: how-to/deploy-anomaly-detection-on-container-instances.md
-        - name: Dokumentace ke kontejnerům Cognitive Services
-          href: ../containers/index.yml
+        - name: Nasazení do IoT Edge
+          href: how-to/deploy-anomaly-detection-on-iot-edge.md
+        - name: Kontejnery
+          items:
+            - name: Dokumentace ke kontejnerům Cognitive Services
+              href: 'https://docs.microsoft.com/azure/cognitive-services/containers/'
+            - name: Instalace a spuštění kontejnerů
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+              href: anomaly-detector-container-howto.md
+            - name: Konfigurace kontejnerů
+              href: anomaly-detector-container-configuration.md
+              displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+            - name: Použití instancí kontejneru
+              href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Koncepty
   items:
     - name: Osvědčené postupy rozhraní API detektoru anomálií
       href: concepts/anomaly-detection-best-practices.md
-- name: Referenční informace
-  items:
-    - name: Reference k rozhraní REST API
-      href: 'https://aka.ms/anomaly-detector-rest-api-ref'
-    - name: Sady SDK
-      items:
-        - name: .NET
-          href: 'https://aka.ms/anomaly-detector-dotnet-ref'
-        - name: Přejít
-          href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
-        - name: Python
-          href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
-        - name: Node.js
-          href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
-    - name: Technické blogy
-      items:
-        - name: Představujeme rozhraní API Detektoru anomálií Azure
-          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
-        - name: Přehled algoritmu SR-CNN
-          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
-    - name: Ukázka
-      items:
-        - name: Interaktivní ukázka
-          href: 'https://aka.ms/adDemo'
-        - name: Poznámkový blok Jupyter
-          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
-    - name: Dokument k SR-CNN v KDD 2019
+    - name: Detekce anomálií pro spektrální zbytky (SR) a konvoluční neuronové NET (CNN)
       href: 'https://arxiv.org/abs/1906.03821'
-- name: Zdroje a prostředky
+- name: Kurzy
   items:
-    - name: Možnosti pomoci a podpory
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
-    - name: Ceny
-      href: 'https://aka.ms/adpricing'
-    - name: Regionální dostupnost
+    - name: Vizualizace anomálií jako dávky s využitím Power BI
+      href: tutorials/batch-anomaly-detection-powerbi.md
+- name: Reference
+  items:
+    - name: REST API detektoru anomálií
+      href: 'https://aka.ms/anomaly-detector-rest-api-ref'
+    - name: .NET
+      href: 'https://aka.ms/anomaly-detector-dotnet-ref'
+    - name: Přejít
+      href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
+    - name: Python
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
+    - name: Node.js
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+- name: Zdroje informací
+  items:
+    - name: Podpora oblastí
       href: 'https://aka.ms/adregion'
+    - name: Naučit se moduly
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
+    - name: Podpora & pomoci
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: Obsah generovaný uživateli
       href: user-generated-content.md
     - name: Zapojte se skupiny poradců k Detektoru anomálií v Microsoft Teams
@@ -82,3 +75,11 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: Technické blogy
+      items:
+        - name: Představujeme rozhraní API Detektoru anomálií Azure
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: Přehled algoritmu SR-CNN
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'

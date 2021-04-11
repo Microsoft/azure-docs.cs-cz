@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614407"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448550"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -222,7 +222,7 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: *90*)                   | Určuje časový limit pro jakoukoliv operaci web Windows Update (hledání nebo stažení nebo instalace). Pokud operace není dokončena v rámci zadaného časového limitu, je přerušena.       |
 | WURescheduleCount     | Int <br> (Výchozí: *5*)                  | Maximální počet, kolikrát služba aktualizuje službu Windows Update, pokud se operace trvale nezdařila.          |
 | WURescheduleTimeInMinutes | Int <br>(Výchozí: *30*) | Interval, ve kterém služba aktualizuje aktualizace systému Windows, pokud chyba přetrvává. |
-| WUFrequency           | Textový řetězec s oddělovači (výchozí: *týdně, středa, 7:00:00*)     | Frekvence pro instalaci aktualizací systému Windows. Formáty a možné hodnoty jsou následující: <br>-Monthly, DD, HH: MM: SS (příklad: *měsíčně, 5, 12:22:32*). Povolené hodnoty pro pole _DD_ (den) jsou čísla od 1 do 28 do _Poslední_. <br>-Týdně, Day, HH: MM: SS (příklad: *týdně, úterý, 12:22:32*)  <br>-Denně, HH: MM: SS (příklad: *denně, 12:22:32*)  <br>-Week, Day, HH: MM: SS (příklad: *2, pátek, 21:00:00* INDIKUJE 9:00 dop. UTC v pátek za druhý týden v každém měsíci) <br>- *Žádné* znamená, že aktualizace systému Windows by se neměly provádět.  <br><br> Časy jsou ve formátu UTC.|
+| WUFrequency           | Textový řetězec s oddělovači (výchozí: *týdně, středa, 7:00:00*)     | Frekvence pro instalaci aktualizací systému Windows. Formáty a možné hodnoty jsou následující: <br>-Monthly, DD, HH: MM: SS (příklad: *měsíčně, 5, 12:22:32*). Povolené hodnoty pro pole _DD_ (den) jsou čísla od 1 do 28 do _Poslední_. <br>-Týdně, Day, HH: MM: SS (příklad: *týdně, úterý, 12:22:32*)  <br>-Denně, HH: MM: SS (příklad: *denně, 12:22:32*)  <br>-MonthlyByWeekAndDay, Week, Day, HH: MM: SS (příklad: *MonthlyByWeekAndDay, 2, pátek, 21:00:00* INDIKUJE 9:00 dop. UTC v pátek za druhý týden v každém měsíci) <br>- *Žádné* znamená, že aktualizace systému Windows by se neměly provádět.  <br><br> Časy jsou ve formátu UTC.|
 | AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: *pravda*) | Nastavením tohoto příznaku přijímá aplikace End-User licenční smlouvu web Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
@@ -370,7 +370,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
    Pokud se stále nacházejí další problémy, přihlaste se k virtuálnímu počítači nebo virtuálním počítačům a seznamte se s nimi pomocí protokolů událostí systému Windows. Dřív zmíněná úloha opravy může existovat jenom v následujících podstavech prováděcího modulu:
 
-      ExecutorSubState | Description
+      ExecutorSubState | Popis
     -- | -- 
       Žádné = 1 |  Znamená, že na uzlu neexistují žádné probíhající operace. Stav může být v přechodném stavu.
       DownloadCompleted = 2 | Znamená, že operace stahování byla dokončena se úspěchem, částečnou chybou nebo selháním.

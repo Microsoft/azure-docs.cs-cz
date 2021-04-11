@@ -10,18 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcd48354372a196ea903c335e5e22caf20e25996
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720385"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219650"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Osvědčené postupy pro fond SQL bez serveru ve službě Azure synapse Analytics
 
 V tomto článku najdete kolekci osvědčených postupů pro použití fondu SQL bez serveru. Fond SQL bez serveru je prostředkem ve službě Azure synapse Analytics.
 
 Fond SQL bez serveru umožňuje dotazování souborů ve vašich účtech úložiště Azure. Nemá místní úložiště ani možnosti ingestování. Všechny soubory, které dotaz cílí, jsou externí pro fond SQL bez serveru. Všechno, co souvisí s čtením souborů ze služby Storage, může mít dopad na výkon dotazů.
+
+Některé obecné pokyny:
+- Ujistěte se, že jsou klientské aplikace společně umístěného s fondem SQL bez serveru.
+  - Pokud používáte klientské aplikace mimo Azure (například Power BI Desktop, SSMS, reklamy), ujistěte se, že používáte fond bez serveru v některé oblasti, která je blízko klientského počítače.
+- Ujistěte se, že úložiště (Azure Data Lake, Cosmos DB) a fond SQL bez serveru jsou ve stejné oblasti.
+- Zkuste [optimalizovat rozložení úložiště](#prepare-files-for-querying) pomocí dělení a udržování souborů v rozsahu od 100 MB do 10 GB.
+- Pokud vracíte velký počet výsledků, ujistěte se, že používáte SSMS nebo ADS, a ne synapse Studio. Synapse Studio je webový nástroj, který není určený pro velké sady výsledků. 
+- Pokud filtrujete výsledky podle sloupce řetězec, zkuste použít určitou `BIN2_UTF8` kolaci.
+- Zkuste ukládat výsledky do mezipaměti na straně klienta pomocí Power BI režimu importu nebo Azure Analysis Services a pravidelně je aktualizujte. Fondy SQL bez serveru nemůžou poskytovat interaktivní prostředí v Power BI přímý dotazový režim, pokud používáte složité dotazy nebo zpracování velkých objemů dat.
 
 ## <a name="client-applications-and-network-connections"></a>Klientské aplikace a síťová připojení
 
@@ -66,7 +75,11 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
 ### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>Vyhledání CosmosDB analytického úložiště a neserverového fondu SQL
 
-Ujistěte se, že je vaše CosmosDB analytické úložiště umístěno ve stejné oblasti jako pracovní prostor synapse. Dotazy na různé oblasti můžou způsobit obrovský latenci.
+Ujistěte se, že je vaše CosmosDB analytické úložiště umístěno ve stejné oblasti jako pracovní prostor synapse. Dotazy na různé oblasti můžou způsobit obrovský latenci. V připojovacím řetězci použijte vlastnost region k explicitnímu zadání oblasti, ve které se bude ukládat analytické úložiště (viz [dotaz CosmosDb s využitím fondu SQL bez serveru](query-cosmos-db-analytical-store.md#overview)):
+
+```
+'account=<database account name>;database=<database name>;region=<region name>'
+```
 
 ## <a name="csv-optimizations"></a>Optimalizace sdílených svazků clusteru
 

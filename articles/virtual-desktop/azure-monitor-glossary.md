@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
-ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
+manager: femila
+ms.openlocfilehash: 8ed4c2cffffca79ea545358b8ad639118e87e013
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105709527"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448198"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Glosář Azure Monitor pro virtuální počítače s Windows
 
@@ -174,7 +174,7 @@ V následující tabulce jsou uvedené požadované protokoly událostí Windows
 |Aplikace|Chyba a upozornění|
 |Microsoft-Windows-TerminalServices-RemoteConnectionManager/admin|Chyba, upozornění a informace|
 |Microsoft-Windows-TerminalServices-LocalSessionManager/Operational|Chyba, upozornění a informace|
-|Systém|Chyba a upozornění|
+|Systémový|Chyba a upozornění|
 | Microsoft-FSLogix – aplikace/provozní|Chyba, upozornění a informace|
 |Microsoft-FSLogix – aplikace/Správce|Chyba, upozornění a informace|
 
@@ -182,10 +182,10 @@ Další informace o protokolech událostí systému Windows naleznete v tématu 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít s Azure Monitor pro virtuální počítače s Windows, podívejte se na tyto články:
+- Informace o tom, jak začít, najdete v tématu [použití Azure monitor pro virtuální plochu Windows k monitorování vašeho nasazení](azure-monitor.md).
+- Pokud chcete odhadnout, měřit a spravovat náklady na úložiště dat, přečtěte si téma [odhad nákladů na Azure monitor](azure-monitor-costs.md).
+- Pokud narazíte na problém, podívejte se do [Průvodce odstraňováním potíží](troubleshoot-azure-monitor.md) , kde najdete nápovědu a známé problémy.
 
-- [Monitorování nasazení pomocí Azure Monitor pro virtuální počítač s Windows](azure-monitor.md)
-- [Řešení potíží s virtuálním počítačem s Windows Azure Monitor](troubleshoot-azure-monitor.md)
 
 Můžete také nastavit Azure Advisor, které vám pomůžou zjistit, jak řešit běžné problémy a jak se jim vyhnout. Přečtěte si další informace o [použití Azure Advisor s virtuálním počítačem s Windows](azure-advisor.md).
 

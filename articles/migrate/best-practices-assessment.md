@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 1bf844dafe450e90213db2e447bb5392064eb245
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fac488ba1881b6b79139eaf2468237e546737177
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786766"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077326"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
@@ -27,6 +27,8 @@ Vyhodnocení vytvořená pomocí Azure Migrate: Nástroj pro zjišťování a ho
 **Azure SQL** | Vyhodnotí migraci místních SQL serverů z prostředí VMware do Azure SQL Database nebo spravované instance Azure SQL. [Další informace](concepts-azure-sql-assessment-calculation.md)
 **Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
+> [!NOTE]
+> Pokud se v nástroji pro zjišťování a hodnocení nesprávný počet testů virtuálního počítače Azure nebo služby AVS nepoužívá, klikněte na celkový počet posouzení, abyste přešli na všechna posouzení, a přepočítejte virtuální počítač Azure nebo funkce pro vyhodnocování funkce AVS. Nástroj pro zjišťování a hodnocení pak zobrazí správný počet pro tento typ posouzení. 
 
 ### <a name="sizing-criteria"></a>Kritéria stanovení velikosti
 Možnosti pro kritéria změny velikosti v Azure Migrate posouzení:

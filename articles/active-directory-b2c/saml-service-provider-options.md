@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fea39388b6b4387dfc4fe95d1cdfb3e523a8089c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470774"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382432"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Možnosti registrace aplikace SAML v Azure AD B2C
 
@@ -34,7 +34,86 @@ Tento článek popisuje možnosti konfigurace, které jsou k dispozici při při
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="encrypted-saml-assertions"></a>Šifrované kontrolní výrazy SAML
+
+## <a name="saml-response-signature"></a>Signatura odpovědi SAML
+
+Můžete zadat certifikát, který se má použít k podepsání zpráv SAML. Zpráva je `<samlp:Response>` element v odpovědi SAML odeslané do aplikace.
+
+Pokud ještě nemáte klíč zásad, [vytvořte ho](saml-service-provider.md#create-a-policy-key). Pak nakonfigurujte `SamlMessageSigning` položku metadat v technickém profilu vystavitele tokenu SAML. `StorageReferenceId`Musí odkazovat na název klíče zásad.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+### <a name="saml-response-signature-algorithm"></a>Algoritmus podpisu odpovědi SAML
+
+Můžete nakonfigurovat algoritmus podpisu použitý k podepsání kontrolního výrazu SAML. Možné hodnoty jsou `Sha256` , `Sha384` , `Sha512` nebo `Sha1` . Zajistěte, aby technický profil a aplikace používaly stejný algoritmus podpisu. Používejte jenom algoritmus, který podporuje váš certifikát.
+
+Nakonfigurujte algoritmus podpisu pomocí `XmlSignatureAlgorithm` klíče metadat v rámci elementu metadat předávající strany.
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="saml-assertions-signature"></a>Signatura kontrolního výrazu SAML
+
+Když aplikace očekává, že oddíl kontrolního výrazu SAML má být podepsán, ujistěte se, že poskytovatel služby SAML nastavil na `WantAssertionsSigned` `true` . Pokud je nastavená na `false` nebo neexistuje, oddíl kontrolního výrazu se nepodepisuje. Následující příklad ukazuje metadata poskytovatele služby SAML s `WantAssertionsSigned` nastavením na `true` .
+
+```xml
+<EntityDescriptor ID="id123456789" entityID="https://samltestapp2.azurewebsites.net" validUntil="2099-12-31T23:59:59Z" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+  <SPSSODescriptor  WantAssertionsSigned="true" AuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+  ...
+  </SPSSODescriptor>
+</EntityDescriptor>
+```  
+
+### <a name="saml-assertions-signature-certificate"></a>Certifikát podpisu pro vyhodnocení SAML
+
+Vaše zásada musí určovat certifikát, který se má použít k podepsání oddílu vyhodnocení SAML odpovědi SAML. Pokud ještě nemáte klíč zásad, [vytvořte ho](saml-service-provider.md#create-a-policy-key). Pak nakonfigurujte `SamlAssertionSigning` položku metadat v technickém profilu vystavitele tokenu SAML. `StorageReferenceId`Musí odkazovat na název klíče zásad.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+## <a name="saml-assertions-encryption"></a>Šifrování vyhodnocení SAML
 
 Když aplikace očekává, že by kontrolní výrazy SAML byly v šifrovaném formátu, je nutné zajistit, aby v zásadách Azure AD B2C bylo povolené šifrování.
 
@@ -158,26 +237,6 @@ Poskytujeme kompletní ukázkovou zásadu, kterou můžete použít pro testová
 1. Aktualizujte `TenantId` tak, aby odpovídaly názvu tenanta, například *contoso.b2clogin.com*.
 1. Ponechte název zásady *B2C_1A_signup_signin_saml*.
 
-## <a name="saml-response-signature-algorithm"></a>Algoritmus podpisu odpovědi SAML
-
-Můžete nakonfigurovat algoritmus podpisu použitý k podepsání kontrolního výrazu SAML. Možné hodnoty jsou `Sha256` , `Sha384` , `Sha512` nebo `Sha1` . Zajistěte, aby technický profil a aplikace používaly stejný algoritmus podpisu. Používejte jenom algoritmus, který podporuje váš certifikát.
-
-Nakonfigurujte algoritmus podpisu pomocí `XmlSignatureAlgorithm` klíče metadat v rámci elementu metadat předávající strany.
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-  <TechnicalProfile Id="PolicyProfile">
-    <DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="SAML2"/>
-    <Metadata>
-      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-    </Metadata>
-   ..
-  </TechnicalProfile>
-</RelyingParty>
-```
-
 ## <a name="saml-response-lifetime"></a>Doba životnosti odezvy SAML
 
 Můžete nastavit dobu, po kterou odpověď SAML zůstane platná. Nastavte dobu života pomocí `TokenLifeTimeInSeconds` položky metadat v rámci technického profilu vystavitele tokenu SAML. Tato hodnota je počet sekund, které mohou uplynout od `NotBefore` časového razítka vypočítaného v době vystavení tokenu. Výchozí doba života je 300 sekund (5 minut).
@@ -279,9 +338,9 @@ Příklad:
 
 Můžete spravovat relaci mezi Azure AD B2C a aplikací předávající strany SAML pomocí `UseTechnicalProfileForSessionManagement` elementu a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider).
 
-## <a name="force-users-to-re-authenticate"></a>Vynutit opakované ověřování uživatelů 
+## <a name="force-users-to-reauthenticate"></a>Vynutí opětovné ověření uživatelů 
 
-K vynucení opětovného ověření uživatelů může aplikace zahrnovat `ForceAuthn` atribut v žádosti o ověření SAML. `ForceAuthn`Atribut je logická hodnota. Při nastavení na hodnotu true dojde k zrušení platnosti relace uživatelů při Azure AD B2C a uživatel bude nucen znovu provést ověření. Následující žádost o ověření SAML ukazuje, jak nastavit `ForceAuthn` atribut na hodnotu true. 
+K vynucení opětovného ověření uživatelů může aplikace zahrnovat `ForceAuthn` atribut v žádosti o ověření SAML. `ForceAuthn`Atribut je logická hodnota. Při nastavení na hodnotu true se při Azure AD B2C zruší platnost relace uživatelů a uživatel bude nucen ho znovu ověřit. Následující žádost o ověření SAML ukazuje, jak nastavit `ForceAuthn` atribut na hodnotu true. 
 
 
 ```xml
@@ -290,6 +349,28 @@ K vynucení opětovného ověření uživatelů může aplikace zahrnovat `Force
        ForceAuthn="true" ...>
     ...
 </samlp:AuthnRequest>
+```
+
+## <a name="sign-the-azure-ad-b2c-idp-saml-metadata"></a>Podepsat metadata Azure AD B2C IdP SAML
+
+Můžete dát Azure AD B2C k podepsání jeho dokumentu metadat SAML IdP, pokud to vyžaduje aplikace. Pokud ještě nemáte klíč zásad, [vytvořte ho](saml-service-provider.md#create-a-policy-key). Pak nakonfigurujte `MetadataSigning` položku metadat v technickém profilu vystavitele tokenu SAML. `StorageReferenceId`Musí odkazovat na název klíče zásad.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
 ```
 
 ## <a name="debug-the-saml-protocol"></a>Ladit protokol SAML

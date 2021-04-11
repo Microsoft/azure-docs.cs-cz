@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519108"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219616"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Nainstalovat & použít rozšíření CLI pro Azure Machine Learning
 
@@ -60,22 +60,7 @@ Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI
 
 ## <a name="install-the-extension"></a>Instalace rozšíření
 
-Chcete-li nainstalovat rozšíření Machine Learning CLI, použijte následující příkaz:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> Příklady souborů, které můžete použít s níže uvedenými příkazy, najdete [tady](https://aka.ms/azml-deploy-cloud).
-
-Po zobrazení výzvy vyberte možnost `y` Instalace rozšíření.
-
-Chcete-li ověřit, zda bylo rozšíření nainstalováno, použijte následující příkaz k zobrazení seznamu dílčích příkazů specifických pro ML:
-
-```azurecli-interactive
-az ml -h
-```
+Rozšíření se automaticky nainstaluje při prvním pokusu o použití příkazu, který začíná na `az ml` .
 
 ## <a name="update-the-extension"></a>Aktualizace rozšíření
 
@@ -84,7 +69,6 @@ Chcete-li aktualizovat rozšíření Machine Learning CLI, použijte následují
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>Odebrání rozšíření
 

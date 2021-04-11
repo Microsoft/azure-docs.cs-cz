@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: a56e5a4cae7c5a8e931b074f08a7152e53a8eb31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104674729"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý Start: vytvoření Azure Data Catalog
@@ -23,7 +23,7 @@ Tento rychlý Start vám pomůže začít s vytvářením Azure Data Catalog.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!Note]
 > Z důvodu požadavků na zabezpečení Azure Azure Data Catalog má protokol TLS (enfored Transport Layer Security) 1,2. TLS 1,0 a TLS 1,1 jsou zakázané. Pokud počítač není aktualizovaný pro TLS 1,2, může dojít k chybám při spuštění registračního nástroje. Pokud chcete aktualizovat počítač pro TLS 1,2, přečtěte si téma [Povolení zabezpečení transportní vrstvy (1,2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2) .

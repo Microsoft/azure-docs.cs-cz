@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604664"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167494"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Konfigurace synchronizace hodnot hash selektivního hesla pro Azure AD Connect
 
@@ -83,7 +83,7 @@ Následující část popisuje, jak povolit synchronizaci hodnot hash selektivn�
 - Nastavte hodnotu atributu ve službě Active Directory, která byla definována jako atribut oboru pro uživatele, které mají být povoleny při synchronizaci hodnot hash hesel. 
 
 >[!Important]
->Postup konfigurace selektivní synchronizace hodnot hash hesel bude platit jenom pro uživatelské objekty, které mají atribut **adminDescription** vyplněný ve službě Active Directory hodnotou **PHSFiltered**.
+>Kroky pro konfiguraci selektivní synchronizace hodnot hash hesel budou mít vliv jenom na uživatelské objekty, které mají atribut **adminDescription** vyplněný ve službě Active Directory hodnotou **PHSFiltered**.
 Pokud tento atribut není naplněný nebo je hodnota jiná než **PHSFiltered** , tato pravidla nebudou použita pro objekty uživatele.
 
 
@@ -95,7 +95,7 @@ Pokud tento atribut není naplněný nebo je hodnota jiná než **PHSFiltered** 
      ![Vybrat pravidlo](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
  3. První pravidlo zakáže synchronizaci hodnot hash hesel. Zadejte následující název nového vlastního pravidla: **v části z AD-User AccountEnabled-Filter users from kosmetice**.
  Změňte hodnotu priority na číslo nižší než 100 (například **90** nebo podle toho, co je nejnižší hodnota dostupná ve vašem prostředí).
- Ujistěte se, že políčka **Povolit synchronizaci hesla** a **zakázáno** nejsou zaškrtnutá a c.
+ Ujistěte se, že políčka **Povolit synchronizaci hesla** a **zakázáno** nejsou zaškrtnutá.
  Klikněte na **Next** (Další).
   ![Upravit příchozí](media/how-to-connect-selective-password-hash-synchronization/exclude-3.png)
  4. V **Filtr oboru** klikněte na **Přidat klauzuli**.
@@ -155,7 +155,7 @@ Následuje souhrn akcí, které budou provedeny v následujících krocích:
 - Nastavte hodnotu atributu ve službě Active Directory, která byla definována jako atribut oboru pro uživatele, které mají být povoleny při synchronizaci hodnot hash hesel. 
 
 >[!Important]
->Postup konfigurace selektivní synchronizace hodnot hash hesel bude platit jenom pro uživatelské objekty, které mají atribut **adminDescription** vyplněný ve službě Active Directory hodnotou **PHSIncluded**.
+>Kroky pro konfiguraci selektivní synchronizace hodnot hash hesel budou mít vliv jenom na uživatelské objekty, které mají atribut **adminDescription** vyplněný ve službě Active Directory hodnotou **PHSIncluded**.
 Pokud tento atribut není naplněný nebo je hodnota jiná než **PHSIncluded** , tato pravidla nebudou použita pro objekty uživatele.
 
 

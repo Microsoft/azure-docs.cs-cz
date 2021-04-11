@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93335887"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448538"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotazování kontejneru Azure Cosmos
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíč�
 Například zvažte následující dotaz s filtrem rovnosti na `DeviceId` . Pokud tento dotaz spustíte na kontejneru rozděleném na oddíly `DeviceId` , tento dotaz se vyfiltruje na jeden fyzický oddíl.
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 Stejně jako v předchozím příkladu tento dotaz bude také filtrovat na jeden oddíl. Přidání dalšího filtru se `Location` nezmění:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 Tady je dotaz, který má pro klíč oddílu Filtr rozsahu a nebude vymezen na jeden fyzický oddíl. Aby byl dotaz v rámci oddílu, dotaz musí mít filtr rovnosti, který zahrnuje klíč oddílu:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>Dotazování napříč oddíly
@@ -46,7 +46,7 @@ Tady je dotaz, který má pro klíč oddílu Filtr rozsahu a nebude vymezen na j
 Následující dotaz nemá filtr na klíč oddílu ( `DeviceId` ). Proto musí být ventilátor na všechny fyzické oddíly, kde se spouští s indexem každého oddílu:
 
 ```sql
-    SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 Každý fyzický oddíl má svůj vlastní index. Proto když v kontejneru spustíte dotaz na více oddílů, efektivně spustíte jeden dotaz *na* fyzický oddíl. Azure Cosmos DB budou automaticky agregovat výsledky napříč různými fyzickými oddíly.

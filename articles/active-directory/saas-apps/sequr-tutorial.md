@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
 ms.openlocfilehash: 82c05f77781abdaea3b2c84aa1071656c206439a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104669853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-genea-access-control"></a>Kurz: Azure Active Directory integrace s genovou a Access Control
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Access Control genů pomocí Azure Act
 * Umožněte uživatelům, aby se automaticky přihlásili do genové Access Control s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Access Control genové aplikace potřebujete následující položky:
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b365e347802824e855797afb8c68e5249bf0adb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586804"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579617"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: Konfigurace bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
 
@@ -37,6 +37,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Porty: pro připojení k virtuálnímu počítači s Windows musíte na svém VIRTUÁLNÍm počítači s Windows otevřít následující porty:
   * Příchozí porty: RDP (3389)
+
+ >[!NOTE]
+ >Používání Azure bastionu se zónami Azure Privátní DNS se v tuto chvíli nepodporuje. Než začnete, ujistěte se prosím, že virtuální síť, ve které plánujete nasadit prostředek bastionu, není propojená s privátní zónou DNS.
+ >
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

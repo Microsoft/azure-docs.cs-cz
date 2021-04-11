@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 04/05/2021
 ms.author: mimart
-ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a2382146cd8b85b8eef54b924a206dda7107b0f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85200172"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382452"
 ---
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/) 
 
@@ -19,8 +19,9 @@ ms.locfileid: "85200172"
 1. Vyberte kartu **rozhraní Microsoft API** a pak vyberte **Microsoft Graph**.
 1. Vyberte **oprávnění aplikace**.
 1. Rozbalte příslušnou skupinu oprávnění a zaškrtněte políčko oprávnění pro udělení vaší aplikaci pro správu. Například:
+    * **Uživatel**  >  **User. proall. All**: pro scénáře migrace uživatelů nebo správy uživatelů.
+    * **Skupina**  >  **Group. četl. All**: pro vytváření skupin, čtení a aktualizaci členství ve skupinách a odstraňování skupin.
     * **AuditLog**  >  **AuditLog. Read. All**: pro čtení protokolů auditu adresáře.
-    * **Adresář**  >  **Directory.** prokládání. All: pro scénáře migrace uživatelů nebo správy uživatelů.
     * **Zásada**  >  **Policy. TrustFramework**: pro scénáře průběžné integrace a průběžného doručování (CI/CD). Například nasazení vlastních zásad pomocí Azure Pipelines.
 1. Vyberte **Přidat oprávnění**. Jak je směrované, počkejte několik minut, než budete pokračovat k dalšímu kroku.
 1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)**.
