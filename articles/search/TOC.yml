@@ -13,8 +13,6 @@
   items:
     - name: Portál
       items:
-        - name: Vytvoření služby
-          href: search-create-service-portal.md
         - name: Vytvoření indexu
           href: search-get-started-portal.md
         - name: Vytvoření ukázkové aplikace
@@ -138,20 +136,30 @@
           href: security-baseline.md
 - name: Návody
   items:
-    - name: Plánování
+    - name: Správa
       items:
         - name: Volba úrovně
           href: search-sku-tier.md
-        - name: Odhad a správa kapacity
+        - name: Plánování kapacity
           href: search-capacity-planning.md
-        - name: Odhadněte náklady
-          href: search-sku-manage-costs.md
+        - name: Vytvoření služby
+          href: search-create-service-portal.md
         - name: Omezení služby
           href: search-limits-quotas-capacity.md
-        - name: Škálování pro zajištění výkonu
+        - name: Správa nákladů
+          href: search-sku-manage-costs.md
+        - name: Dostupnost a obnovení
           href: search-performance-optimization.md
-        - name: Víceklientská architektura
+        - name: Architektura s více tenanty
           href: search-modeling-multitenant-saas-applications.md
+        - name: Správa na portálu
+          href: search-manage.md
+        - name: Správa pomocí PowerShellu
+          href: search-manage-powershell.md
+        - name: Správa pomocí Azure CLI
+          href: search-manage-azure-cli.md
+        - name: Přesun služby napříč oblastmi
+          href: search-howto-move-across-regions.md
     - name: Vývoj
       items:
         - name: Verze rozhraní API
@@ -276,6 +284,10 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Virtuální počítače Azure s SQL Serverem
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Řešení potíží s indexerem
+          href: search-indexer-troubleshooting.md
+        - name: Řešení chyb a upozornění indexeru
+          href: cognitive-search-common-errors-warnings.md
     - name: Sady dovedností
       items:
         - name: Připojení prostředku služeb Cognitive Services
@@ -376,8 +388,28 @@
           href: semantic-ranking.md
         - name: Profily skórování
           href: index-add-scoring-profiles.md
+    - name: Výkon a sledování
+      items:
+        - name: Analýza výkonu
+          href: search-performance-analysis.md
+        - name: Tipy pro lepší výkon
+          href: search-performance-tips.md
+        - name: Protokolování diagnostiky
+          href: search-monitor-logs.md
+        - name: Vizualizace diagnostických protokolů
+          href: search-monitor-logs-powerbi.md
+        - name: Přehled monitorování
+          href: search-monitor-usage.md
+        - name: Monitorování dotazů
+          href: search-monitor-queries.md
+        - name: Monitorování indexování založené na indexerech
+          href: search-howto-monitor-indexers.md
+        - name: Monitorování interakcí na straně klienta
+          href: search-traffic-analytics.md
     - name: Zabezpečení
       items:
+        - name: Práva správce
+          href: search-security-rbac.md
         - name: Šifrování dat
           items:
             - name: Klíče spravované zákazníkem
@@ -406,38 +438,6 @@
               href: search-security-trimming-for-azure-search.md
             - name: Filtrování identit uživatelů
               href: search-security-trimming-for-azure-search-with-aad.md
-    - name: Spravovat
-      items:
-        - name: Portál
-          href: search-manage.md
-        - name: PowerShell
-          href: search-manage-powershell.md
-        - name: Azure CLI
-          href: search-manage-azure-cli.md
-        - name: Přesun služby napříč oblastmi
-          href: search-howto-move-across-regions.md
-        - name: Přístup správce na základě role
-          href: search-security-rbac.md
-    - name: Monitorování
-      items:
-        - name: Přehled
-          href: search-monitor-usage.md
-        - name: Protokolování diagnostiky
-          href: search-monitor-logs.md
-        - name: Vizualizace diagnostických protokolů
-          href: search-monitor-logs-powerbi.md
-        - name: Monitorování aktivity dotazů
-          href: search-monitor-queries.md
-        - name: Monitorování indexerů
-          href: search-howto-monitor-indexers.md
-        - name: Prohledání analýzy provozu
-          href: search-traffic-analytics.md
-    - name: Řešení potíží
-      items:
-        - name: Problémy s indexerem
-          href: search-indexer-troubleshooting.md
-        - name: Chyby a upozornění indexeru
-          href: cognitive-search-common-errors-warnings.md
 - name: Referenční informace
   items:
     - name: Azure CLI

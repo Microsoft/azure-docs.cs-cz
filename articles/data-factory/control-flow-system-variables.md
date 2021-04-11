@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: b85efa7ac4481ab9eb2b2637aee7d9e5e76e8f3f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786052"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
@@ -24,7 +24,7 @@ Tento článek popisuje systémové proměnné, které podporuje Azure Data Fact
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @pipeline(). DataFactory |Název datové továrny, ve které běží běh kanálu. |
 | @pipeline(). Kanálu |Název kanálu |
@@ -41,7 +41,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. |
 | @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** aktivoval pro vyvolání spuštění kanálu. Může se mírně lišit od naplánovaného času triggeru. |
@@ -50,7 +50,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pr
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @trigger(). Outputs. windowStartTime |Začátek okna přidruženého ke spuštění triggeru |
 | @trigger(). Outputs. windowEndTime |Konec okna přidruženého ke spuštění triggeru |
@@ -61,7 +61,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pr
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @triggerBody(). fileName  |Název souboru, jehož vytvořením nebo odstraněním způsobilo aktivaci triggeru.   |
 | @triggerBody(). název_složky  |Cesta ke složce, která obsahuje soubor určený parametrem `@triggerBody().fileName` . První segment cesty ke složce je název kontejneru Azure Blob Storage.  |
@@ -74,7 +74,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pr
 >[!NOTE]
 >Azure Data Factory očekává, že se vlastní událost naformátuje pomocí [schématu události Azure Event Grid](../event-grid/event-schema.md).
 
-| Název proměnné | Popis
+| Název proměnné | Description
 | --- | --- |
 | @triggerBody(). Event. eventType | Typ událostí, které spustily vlastní spuštění triggeru událostí. Typ události je pole definované zákazníkem a přebírat se všemi hodnotami typu String. |
 | @triggerBody(). Event. Subject | Předmět vlastní události, která způsobila, že se Trigger aktivuje. |

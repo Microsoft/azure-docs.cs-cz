@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
 ms.openlocfilehash: 108dfb48f602f776ae50290c1b45ceecd8569421
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105607299"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
@@ -1807,7 +1807,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-97864              | [PODREGISTR-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | Automatické sloučení se při vložení do adresáře jako orcfile nezdařilo.                                      |
 | CHYBA-98814              | [HDFS – 13314](https://issues.apache.org/jira/browse/HDFS-13314)   | NameNode by měl volitelně skončit, pokud zjistí poškození FsImage                              |
 
-**Upgradovat**
+**Upgrade**
 
 | **ID chyby Hortonworks** | **Apache JIRA**                                                                                                                | **Souhrn**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|

@@ -512,6 +512,8 @@
               href: database/elastic-pool-resource-management.md
             - name: Diagnostika výkonu hyperškálování
               href: database/hyperscale-performance-diagnostics.md
+            - name: Zablokovat CRUD T-SQL
+              href: database/block-crud-tsql.md
         - name: Zabezpečení
           items:
             - name: Audit do účtu úložiště za virtuální sítí nebo branou firewall

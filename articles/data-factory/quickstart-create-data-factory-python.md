@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 04/06/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889412"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449269"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -75,9 +75,12 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
     ```
     > [!NOTE] 
     > V některých běžných závislostech může být balíček Azure-identity v konfliktu s "Azure-CLI". Pokud splňujete jakýkoliv problém s ověřováním, odeberte Azure-CLI a jeho závislosti nebo použijte čistý počítač bez instalace balíčku Azure-CLI, aby fungoval.
+    > V případě cloudů z svrchovaného cloudu je nutné použít příslušné konstanty specifické pro Cloud.  Další informace najdete [v tématu připojení ke všem regionům pomocí knihoven Azure pro více cloudů v Pythonu | Pokyny pro připojení k Pythonu v cloudech svrchovaného Microsoft Docs.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    
     
 ## <a name="create-a-data-factory-client"></a>Vytvoření klienta datové továrny
 
+  
 1. Vytvořte soubor s názvem **datafactory.py**. Přidejte následující příkazy pro přidání odkazů na obory názvů.
 
     ```python
@@ -122,6 +125,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
     ```
 3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
+        
     ```python
     def main():
 
@@ -136,6 +140,11 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
 
         # Specify your Active Directory client ID, client secret, and tenant ID
         credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        
+        # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
+        # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
+        # credentials = DefaultAzureCredential(authority=CLOUD.endpoints.active_directory, tenant_id=tenant_id)
+        
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 17511778f63a2d7270178042c4bb414cdd6630c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9be9e9b4c5153776bd78675cdc0c9da8c0506f75
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955461"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106764"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -59,7 +59,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | chorvatština (Chorvatsko)                 | `hr-HR` | Text                                   |                           |
 | čeština (Česká republika)             | `cs-CZ` | Text                                   |                           |
 | dánština (Dánsko)                   | `da-DK` | Text                                   | Yes                          |
-| nizozemština (Nizozemsko)                | `nl-NL` | Zvuk (20201015)<br>Text                                   |    Yes                       |
+| nizozemština (Nizozemsko)                | `nl-NL` | Zvuk (20201015)<br>Text<br>Výslovnost|    Yes                       |
 | Angličtina (Austrálie)                | `en-AU` | Zvuk (20201019)<br>Text                 | Yes                          |
 | Angličtina (Kanada)                   | `en-CA` | Zvuk (20201019)<br>Text                 | Yes                          |
 | Angličtina (Ghana)                    | `en-GH` | Text                                   |                           |
@@ -74,14 +74,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Angličtina (Jihoafrická republika)             | `en-ZA` | Text                                   |                           |
 | Angličtina (Tanzánie)                 | `en-TZ` | Text                                   |                           |
 | Angličtina (Spojené království)           | `en-GB` | Zvuk (20201019)<br>Text<br>Výslovnost| Yes                          |
-| Angličtina (Spojené státy)            | `en-US` | Zvuk (20201019, 20210223)<br>Text<br>Výslovnost| Yes                          |
+| Angličtina (Spojené státy)            | `en-US` | Zvuk (20201019)<br>Text<br>Výslovnost| Yes                          |
 | Estonština (Estonsko)                  | `et-EE` | Text                                   |                           |
 | Filipínský (Filipíny)             | `fil-PH`| Text                                   |                           |
 | finština (Finsko)                  | `fi-FI` | Text                                   |     Yes                      |
-| Francouzština (Kanada)                    | `fr-CA` | Zvuk (20201015)<br>Text                 |     Yes                      |
+| Francouzština (Kanada)                    | `fr-CA` | Zvuk (20201015)<br>Text<br>Výslovnost|     Yes                      |
 | francouzština (Francie)                    | `fr-FR` | Zvuk (20201015)<br>Text<br>Výslovnost|      Yes                     |
-| Francouzština (Švýcarsko)               | `fr-CH` | Text                                   |                           |
-| Němčina (Rakousko)                   | `de-AT` | Text                                   |                           |
+| Francouzština (Švýcarsko)               | `fr-CH` | Text<br>Výslovnost                  |                           |
+| Němčina (Rakousko)                   | `de-AT` | Text<br>Výslovnost                  |                           |
 | němčina (Německo)                   | `de-DE` | Zvuk (20190701, 20200619, 20201127)<br>Text<br>Výslovnost|  Yes                         |
 | Řečtina (Řecko)                     | `el-GR` | Text                                   |                           |
 | Gudžarátština (Indie)                  | `gu-IN` | Text                                   |                           |
@@ -94,39 +94,39 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | korejština (Jižní Korea)                     | `ko-KR` | Zvuk (20201015)<br>Text                 |      Yes                     |
 | lotyština (Lotyšsko)                   | `lv-LV` | Text                                   |                           |
 | litevština (Litva)             | `lt-LT` | Text                                   |                           |
-| Malajština (Malajsie)                    | `ms-MY` | Text                                   |                           |
-| Maltština (Malta)                     | `mt-MT` | Text                                   |                           |
+| malajština (Malajsie)                   | `ms-MY` | Text                                   |                           |
+| Maltština (Malta)                    | `mt-MT` | Text                                   |                           |
 | Maráthština (Indie)                    | `mr-IN` | Text                                   |                           |
 | Norština, Bokmål (Norsko)         | `nb-NO` | Text                                   |     Yes                      |
 | polština (Polsko)                    | `pl-PL` | Text                                   |       Yes                    |
 | Portugalština (Brazílie)                | `pt-BR` | Zvuk (20190620, 20201015)<br>Text<br>Výslovnost|          Yes                 |
-| portugalština (Portugalsko)              | `pt-PT` | Text                                   |             Yes              |
+| portugalština (Portugalsko)              | `pt-PT` | Text<br>Výslovnost                  |             Yes              |
 | rumunština (Rumunsko)                 | `ro-RO` | Text                                   |                           |
 | ruština (Rusko)                   | `ru-RU` | Zvuk (20200907)<br>Text                 |                Yes           |
 | slovenština (Slovensko)                  | `sk-SK` | Text                                   |                           |
 | slovinština (Slovinsko)               | `sl-SI` | Text                                   |                           |
-| Španělština (Argentina)                | `es-AR` | Text                                   |                           |
-| Španělština (Bolívie)                  | `es-BO` | Text                                   |                           |
-| Španělština (Chile)                    | `es-CL` | Text                                   |                           |
-| Španělština (Kolumbie)                 | `es-CO` | Text                                   |                           |
-| Španělština (Kostarika)               | `es-CR` | Text                                   |                           |
-| Španělština (Kuba)                     | `es-CU` | Text                                   |                           |
-| Španělština (Dominikánská republika)       | `es-DO` | Text                                   |                           |
-| Španělština (Ekvádor)                  | `es-EC` | Text                                   |                           |
-| Španělština (Salvador)              | `es-SV` | Text                                   |                           |
+| Španělština (Argentina)                | `es-AR` | Text<br>Výslovnost                  |                           |
+| Španělština (Bolívie)                  | `es-BO` | Text<br>Výslovnost                  |                           |
+| Španělština (Chile)                    | `es-CL` | Text<br>Výslovnost                  |                           |
+| Španělština (Kolumbie)                 | `es-CO` | Text<br>Výslovnost                  |                           |
+| Španělština (Kostarika)               | `es-CR` | Text<br>Výslovnost                  |                           |
+| Španělština (Kuba)                     | `es-CU` | Text<br>Výslovnost                  |                           |
+| Španělština (Dominikánská republika)       | `es-DO` | Text<br>Výslovnost                  |                           |
+| Španělština (Ekvádor)                  | `es-EC` | Text<br>Výslovnost                  |                           |
+| Španělština (Salvador)              | `es-SV` | Text<br>Výslovnost                  |                           |
 | Španělština (Rovníková Guinea)        | `es-GQ` | Text                                   |                           |
-| Španělština (Guatemala)                | `es-GT` | Text                                   |                           |
-| Španělština (Honduras)                 | `es-HN` | Text                                   |                           |
-| Španělština (Mexiko)                   | `es-MX` | Zvuk (20200907)<br>Text                 |    Yes                       |
-| Španělština (Nikaragua)                | `es-NI` | Text                                   |                           |
-| Španělština (Panama)                   | `es-PA` | Text                                   |                           |
-| Španělština (Paraguay)                 | `es-PY` | Text                                   |                           |
-| Španělština (Peru)                     | `es-PE` | Text                                   |                           |
-| Španělština (Portoriko)              | `es-PR` | Text                                   |                           |
-| Španělština (Španělsko)                    | `es-ES` | Zvuk (20201015)<br>Text                 |  Yes                         |
-| Španělština (Uruguay)                  | `es-UY` | Text                                   |                           |
-| Španělština (USA)                      | `es-US` | Text                                   |                           |
-| Španělština (Venezuela)                | `es-VE` | Text                                   |                           |
+| Španělština (Guatemala)                | `es-GT` | Text<br>Výslovnost                  |                           |
+| Španělština (Honduras)                 | `es-HN` | Text<br>Výslovnost                  |                           |
+| Španělština (Mexiko)                   | `es-MX` | Zvuk (20200907)<br>Text<br>Výslovnost|    Yes                       |
+| Španělština (Nikaragua)                | `es-NI` | Text<br>Výslovnost                  |                           |
+| Španělština (Panama)                   | `es-PA` | Text<br>Výslovnost                  |                           |
+| Španělština (Paraguay)                 | `es-PY` | Text<br>Výslovnost                  |                           |
+| Španělština (Peru)                     | `es-PE` | Text<br>Výslovnost                  |                           |
+| Španělština (Portoriko)              | `es-PR` | Text<br>Výslovnost                  |                           |
+| Španělština (Španělsko)                    | `es-ES` | Zvuk (20201015)<br>Text<br>Výslovnost|  Yes                         |
+| Španělština (Uruguay)                  | `es-UY` | Text<br>Výslovnost                  |                           |
+| Španělština (USA)                      | `es-US` | Text<br>Výslovnost                  |                           |
+| Španělština (Venezuela)                | `es-VE` | Text<br>Výslovnost                  |                           |
 | švédština (Švédsko)                   | `sv-SE` | Text                                   |   Yes                        |
 | Tamilština (Indie)                      | `ta-IN` | Text                                   |                           |
 | Telugština (Indie)                     | `te-IN` | Text                                   |                           |
@@ -155,73 +155,83 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | Jazyk | Národní prostředí | Pohlaví | Název hlasu | Podpora stylů |
 |---|---|---|---|---|
 | Arabština (Egypt) | `ar-EG` | Female | `ar-EG-SalmaNeural` | Obecné |
-| Arabština (Egypt) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>Nová</sup> | Obecné |
+| Arabština (Egypt) | `ar-EG` | Male | `ar-EG-ShakirNeural` | Obecné |
 | Arabština (Saúdská Arábie) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Obecné |
-| Arabština (Saúdská Arábie) | `ar-SA` | Male | `ar-SA-HamedNeural` <sup>Nová</sup> | Obecné |
+| Arabština (Saúdská Arábie) | `ar-SA` | Male | `ar-SA-HamedNeural` | Obecné |
 | Bulharština (Bulharsko) | `bg-BG` | Female | `bg-BG-KalinaNeural` | Obecné |
-| Bulharština (Bulharsko) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>Nová</sup> | Obecné |
+| Bulharština (Bulharsko) | `bg-BG` | Male | `bg-BG-BorislavNeural` | Obecné |
 | katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Obecné |
-| katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>Nová</sup> | Obecné |
-| katalánština (Španělsko) | `ca-ES` | Male | `ca-ES-EnricNeural` <sup>Nová</sup> | Obecné |
+| katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-JoanaNeural` | Obecné |
+| katalánština (Španělsko) | `ca-ES` | Male | `ca-ES-EnricNeural` | Obecné |
 | Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | Obecné |
-| Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>Nová</sup> | Obecné |
-| Čínština (kantonština, tradiční) | `zh-HK` | Male | `zh-HK-WanLungNeural` <sup>Nová</sup> | Obecné |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
+| Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` | Obecné |
+| Čínština (kantonština, tradiční) | `zh-HK` | Male | `zh-HK-WanLungNeural` | Obecné |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | Podřízený hlas, optimalizovaný pro mluvený popis scénáře |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male | `zh-CN-YunyangNeural` | Optimalizováno pro čtení zpráv,<br /> více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Male | `zh-CN-YunyeNeural` | Optimalizováno pro mluvený popis scénáře  |
-| Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>Nová</sup> | Obecné |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Male | `zh-CN-YunyeNeural` | Optimalizováno pro mluvený popis scénáře |
+| Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` | Obecné |
 | Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | Obecné |
-| Čínština (tchajwanský mandarinka) | `zh-TW` | Male | `zh-TW-YunJheNeural` <sup>Nová</sup> | Obecné |
+| Čínština (tchajwanský mandarinka) | `zh-TW` | Male | `zh-TW-YunJheNeural` | Obecné |
 | chorvatština (Chorvatsko) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` | Obecné |
-| chorvatština (Chorvatsko) | `hr-HR` | Male | `hr-HR-SreckoNeural` <sup>Nová</sup> | Obecné |
+| chorvatština (Chorvatsko) | `hr-HR` | Male | `hr-HR-SreckoNeural` | Obecné |
 | Čeština (Čeština) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` | Obecné |
-| Čeština (Čeština) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` <sup>Nová</sup> | Obecné |
+| Čeština (Čeština) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` | Obecné |
 | dánština (Dánsko) | `da-DK` | Female | `da-DK-ChristelNeural` | Obecné |
-| dánština (Dánsko) | `da-DK` | Male | `da-DK-JeppeNeural` <sup>Nová</sup> | Obecné |
+| dánština (Dánsko) | `da-DK` | Male | `da-DK-JeppeNeural` | Obecné |
+| Nizozemština (Belgie) | `nl-BE` | Female | `nl-BE-DenaNeural` <sup>Nová</sup> | Obecné | 
+| Nizozemština (Belgie) | `nl-BE` | Male | `nl-BE-ArnaudNeural` <sup>Nová</sup> | Obecné | 
 | nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-ColetteNeural` | Obecné |
-| nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-FennaNeural` <sup>Nová</sup> | Obecné |
-| nizozemština (Nizozemsko) | `nl-NL` | Male | `nl-NL-MaartenNeural` <sup>Nová</sup> | Obecné |
+| nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-FennaNeural` | Obecné |
+| nizozemština (Nizozemsko) | `nl-NL` | Male | `nl-NL-MaartenNeural` | Obecné |
 | Angličtina (Austrálie) | `en-AU` | Female | `en-AU-NatashaNeural` | Obecné |
 | Angličtina (Austrálie) | `en-AU` | Male | `en-AU-WilliamNeural` | Obecné |
 | Angličtina (Kanada) | `en-CA` | Female | `en-CA-ClaraNeural` | Obecné |
-| Angličtina (Kanada) | `en-CA` | Male | `en-CA-LiamNeural` <sup>Nová</sup> | Obecné |
+| Angličtina (Kanada) | `en-CA` | Male | `en-CA-LiamNeural` | Obecné |
 | Angličtina (Indie) | `en-IN` | Female | `en-IN-NeerjaNeural` | Obecné |
-| Angličtina (Indie) | `en-IN` | Male | `en-IN-PrabhatNeural` <sup>Nová</sup> | Obecné |
+| Angličtina (Indie) | `en-IN` | Male | `en-IN-PrabhatNeural` | Obecné |
 | Angličtina (Irsko) | `en-IE` | Female | `en-IE-EmilyNeural` | Obecné |
-| Angličtina (Irsko) | `en-IE` | Male | `en-IE-ConnorNeural` <sup>Nová</sup> | Obecné |
+| Angličtina (Irsko) | `en-IE` | Male | `en-IE-ConnorNeural` | Obecné |
+| Angličtina (Filipíny) | `en-PH` | Female | `en-PH-RosaNeural` <sup>Nová</sup> | Obecné | 
+| Angličtina (Filipíny) | `en-PH` | Male | `en-PH-JamesNeural` <sup>Nová</sup> | Obecné | 
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-LibbyNeural` | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-MiaNeural` | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Male | `en-GB-RyanNeural` | Obecné |
-| Angličtina (Spojené státy) | `en-US` | Female | `en-US-AriaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Angličtina (Spojené státy) | `en-US` | Female | `en-US-AriaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` | Obecné |
+| Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyNeural` | Obecné |
+| Estonština (Estonsko) | `et-EE` | Female | `et-EE-AnuNeural` | Obecné |
+| Estonština (Estonsko) | `et-EE` | Male | `et-EE-KertNeural` | Obecné |
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-NooraNeural` | Obecné |
-| finština (Finsko) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>Nová</sup> | Obecné |
-| finština (Finsko) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>Nová</sup> | Obecné |
+| finština (Finsko) | `fi-FI` | Female | `fi-FI-SelmaNeural` | Obecné |
+| finština (Finsko) | `fi-FI` | Male | `fi-FI-HarriNeural` | Obecné |
+| Francouzština (Belgie) | `fr-BE` | Female | `fr-BE-CharlineNeural` <sup>Nová</sup> | Obecné | 
+| Francouzština (Belgie) | `fr-BE` | Male | `fr-BE-GerardNeural` <sup>Nová</sup> | Obecné | 
 | Francouzština (Kanada) | `fr-CA` | Female | `fr-CA-SylvieNeural` | Obecné |
-| Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-AntoineNeural` <sup>Nová</sup> | Obecné |
+| Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-AntoineNeural` | Obecné |
 | Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-JeanNeural` | Obecné |
 | francouzština (Francie) | `fr-FR` | Female | `fr-FR-DeniseNeural` | Obecné |
 | francouzština (Francie) | `fr-FR` | Male | `fr-FR-HenriNeural` | Obecné |
 | Francouzština (Švýcarsko) | `fr-CH` | Female | `fr-CH-ArianeNeural` | Obecné |
-| Francouzština (Švýcarsko) | `fr-CH` | Male | `fr-CH-FabriceNeural` <sup>Nová</sup> | Obecné |
+| Francouzština (Švýcarsko) | `fr-CH` | Male | `fr-CH-FabriceNeural` | Obecné |
 | Němčina (Rakousko) | `de-AT` | Female | `de-AT-IngridNeural` | Obecné |
-| Němčina (Rakousko) | `de-AT` | Male | `de-AT-JonasNeural` <sup>Nová</sup> | Obecné |
+| Němčina (Rakousko) | `de-AT` | Male | `de-AT-JonasNeural` | Obecné |
 | němčina (Německo) | `de-DE` | Female | `de-DE-KatjaNeural` | Obecné |
 | němčina (Německo) | `de-DE` | Male | `de-DE-ConradNeural` | Obecné |
 | Němčina (Švýcarsko) | `de-CH` | Female | `de-CH-LeniNeural` | Obecné |
-| Němčina (Švýcarsko) | `de-CH` | Male | `de-CH-JanNeural` <sup>Nová</sup> | Obecné |
+| Němčina (Švýcarsko) | `de-CH` | Male | `de-CH-JanNeural` | Obecné |
 | Řečtina (Řecko) | `el-GR` | Female | `el-GR-AthinaNeural` | Obecné |
-| Řečtina (Řecko) | `el-GR` | Male | `el-GR-NestorasNeural` <sup>Nová</sup> | Obecné |
+| Řečtina (Řecko) | `el-GR` | Male | `el-GR-NestorasNeural` | Obecné |
 | Hebrejština (Izrael) | `he-IL` | Female | `he-IL-HilaNeural` | Obecné |
-| Hebrejština (Izrael) | `he-IL` | Male | `he-IL-AvriNeural` <sup>Nová</sup> | Obecné |
+| Hebrejština (Izrael) | `he-IL` | Male | `he-IL-AvriNeural` | Obecné |
 | hindština (Indie) | `hi-IN` | Female | `hi-IN-SwaraNeural` | Obecné |
-| hindština (Indie) | `hi-IN` | Male | `hi-IN-MadhurNeural` <sup>Nová</sup> | Obecné |
+| hindština (Indie) | `hi-IN` | Male | `hi-IN-MadhurNeural` | Obecné |
 | Maďarština (Maďarsko) | `hu-HU` | Female | `hu-HU-NoemiNeural` | Obecné |
-| Maďarština (Maďarsko) | `hu-HU` | Male | `hu-HU-TamasNeural` <sup>Nová</sup> | Obecné |
-| Indonéština (Indonésie) | `id-ID` | Female | `id-ID-GadisNeural` <sup>Nová</sup> | Obecné |
+| Maďarština (Maďarsko) | `hu-HU` | Male | `hu-HU-TamasNeural` | Obecné |
+| Indonéština (Indonésie) | `id-ID` | Female | `id-ID-GadisNeural` | Obecné |
 | Indonéština (Indonésie) | `id-ID` | Male | `id-ID-ArdiNeural` | Obecné |
+| Irština (Irsko) | `ga-IE` | Female | `ga-IE-OrlaNeural` | Obecné |
+| Irština (Irsko) | `ga-IE` | Male | `ga-IE-ColmNeural` | Obecné |
 | italština (Itálie) | `it-IT` | Female | `it-IT-ElsaNeural` | Obecné |
 | italština (Itálie) | `it-IT` | Female | `it-IT-IsabellaNeural` | Obecné |
 | italština (Itálie) | `it-IT` | Male | `it-IT-DiegoNeural` | Obecné |
@@ -229,46 +239,58 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | japonština (Japonsko) | `ja-JP` | Male | `ja-JP-KeitaNeural` | Obecné |
 | korejština (Jižní Korea) | `ko-KR` | Female | `ko-KR-SunHiNeural` | Obecné |
 | korejština (Jižní Korea) | `ko-KR` | Male | `ko-KR-InJoonNeural` | Obecné |
+| lotyština (Lotyšsko) | `lv-LV` | Female | `lv-LV-EveritaNeural` | Obecné |
+| lotyština (Lotyšsko) | `lv-LV` | Male | `lv-LV-NilsNeural` | Obecné |
+| litevština (Litva) | `lt-LT` | Female | `lt-LT-OnaNeural` | Obecné |
+| litevština (Litva) | `lt-LT` | Male | `lt-LT-LeonasNeural` | Obecné |
 | malajština (Malajsie) | `ms-MY` | Female | `ms-MY-YasminNeural` | Obecné |
-| malajština (Malajsie) | `ms-MY` | Male | `ms-MY-OsmanNeural` <sup>Nová</sup> | Obecné |
+| malajština (Malajsie) | `ms-MY` | Male | `ms-MY-OsmanNeural` | Obecné |
+| Maltština (Malta) | `mt-MT` | Female | `mt-MT-GraceNeural` | Obecné |
+| Maltština (Malta) | `mt-MT` | Male | `mt-MT-JosephNeural` | Obecné |
 | Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-IselinNeural` | Obecné |
-| Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>Nová</sup> | Obecné |
-| Norština, Bokmål (Norsko) | `nb-NO` | Male | `nb-NO-FinnNeural` <sup>Nová</sup> | Obecné |
-| polština (Polsko) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` <sup>Nová</sup> | Obecné |
+| Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-PernilleNeural` | Obecné |
+| Norština, Bokmål (Norsko) | `nb-NO` | Male | `nb-NO-FinnNeural` | Obecné |
+| polština (Polsko) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` | Obecné |
 | polština (Polsko) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | Obecné |
-| polština (Polsko) | `pl-PL` | Male | `pl-PL-MarekNeural` <sup>Nová</sup> | Obecné |
-| Portugalština (Brazílie) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| polština (Polsko) | `pl-PL` | Male | `pl-PL-MarekNeural` | Obecné |
+| Portugalština (Brazílie) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Portugalština (Brazílie) | `pt-BR` | Male | `pt-BR-AntonioNeural` | Obecné |
 | portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-FernandaNeural` | Obecné |
-| portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-RaquelNeural` <sup>Nová</sup> | Obecné |
-| portugalština (Portugalsko) | `pt-PT` | Male | `pt-PT-DuarteNeural` <sup>Nová</sup> | Obecné |
+| portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-RaquelNeural` | Obecné |
+| portugalština (Portugalsko) | `pt-PT` | Male | `pt-PT-DuarteNeural` | Obecné |
 | rumunština (Rumunsko) | `ro-RO` | Female | `ro-RO-AlinaNeural` | Obecné |
-| rumunština (Rumunsko) | `ro-RO` | Male | `ro-RO-EmilNeural` <sup>Nová</sup> | Obecné |
+| rumunština (Rumunsko) | `ro-RO` | Male | `ro-RO-EmilNeural` | Obecné |
 | ruština (Rusko) | `ru-RU` | Female | `ru-RU-DariyaNeural` | Obecné |
-| ruština (Rusko) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` <sup>Nová</sup> | Obecné |
-| ruština (Rusko) | `ru-RU` | Male | `ru-RU-DmitryNeural` <sup>Nová</sup> | Obecné |
+| ruština (Rusko) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` | Obecné |
+| ruština (Rusko) | `ru-RU` | Male | `ru-RU-DmitryNeural` | Obecné |
 | slovenština (Slovensko) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` | Obecné |
-| slovenština (Slovensko) | `sk-SK` | Male | `sk-SK-LukasNeural` <sup>Nová</sup> | Obecné |
+| slovenština (Slovensko) | `sk-SK` | Male | `sk-SK-LukasNeural` | Obecné |
 | slovinština (Slovinsko) | `sl-SI` | Female | `sl-SI-PetraNeural` | Obecné |
-| slovinština (Slovinsko) | `sl-SI` | Male | `sl-SI-RokNeural` <sup>Nová</sup> | Obecné |
+| slovinština (Slovinsko) | `sl-SI` | Male | `sl-SI-RokNeural` | Obecné |
 | Španělština (Mexiko) | `es-MX` | Female | `es-MX-DaliaNeural` | Obecné |
 | Španělština (Mexiko) | `es-MX` | Male | `es-MX-JorgeNeural` | Obecné |
 | Španělština (Španělsko) | `es-ES` | Female | `es-ES-ElviraNeural` | Obecné |
 | Španělština (Španělsko) | `es-ES` | Male | `es-ES-AlvaroNeural` | Obecné |
 | švédština (Švédsko) | `sv-SE` | Female | `sv-SE-HilleviNeural` | Obecné |
-| švédština (Švédsko) | `sv-SE` | Female | `sv-SE-SofieNeural` <sup>Nová</sup> | Obecné |
-| švédština (Švédsko) | `sv-SE` | Male | `sv-SE-MattiasNeural` <sup>Nová</sup> | Obecné |
+| švédština (Švédsko) | `sv-SE` | Female | `sv-SE-SofieNeural` | Obecné |
+| švédština (Švédsko) | `sv-SE` | Male | `sv-SE-MattiasNeural` | Obecné |
 | Tamilština (Indie) | `ta-IN` | Female | `ta-IN-PallaviNeural` | Obecné |
-| Tamilština (Indie) | `ta-IN` | Male | `ta-IN-ValluvarNeural` <sup>Nová</sup> | Obecné |
+| Tamilština (Indie) | `ta-IN` | Male | `ta-IN-ValluvarNeural` | Obecné |
 | Telugština (Indie) | `te-IN` | Female | `te-IN-ShrutiNeural` | Obecné |
-| Telugština (Indie) | `te-IN` | Male | `te-IN-MohanNeural` <sup>Nová</sup> | Obecné |
+| Telugština (Indie) | `te-IN` | Male | `te-IN-MohanNeural` | Obecné |
 | thajština (Thajsko) | `th-TH` | Female | `th-TH-AcharaNeural` | Obecné |
 | thajština (Thajsko) | `th-TH` | Female | `th-TH-PremwadeeNeural` | Obecné |
-| thajština (Thajsko) | `th-TH` | Male | `th-TH-NiwatNeural` <sup>Nová</sup> | Obecné |
+| thajština (Thajsko) | `th-TH` | Male | `th-TH-NiwatNeural` | Obecné |
 | turečtina (Turecko) | `tr-TR` | Female | `tr-TR-EmelNeural` | Obecné |
-| turečtina (Turecko) | `tr-TR` | Male | `tr-TR-AhmetNeural` <sup>Nová</sup> | Obecné |
+| turečtina (Turecko) | `tr-TR` | Male | `tr-TR-AhmetNeural` | Obecné |
+| ukrajinština (Ukrajina) | `uk-UA` | Female | `uk-UA-PolinaNeural` <sup>Nová</sup> | Obecné | 
+| ukrajinština (Ukrajina) | `uk-UA` | Male | `uk-UA-OstapNeural` <sup>Nová</sup> | Obecné | 
+| Urdština (Pákistán) | `ur-PK` | Female | `ur-PK-UzmaNeural` <sup>Nová</sup>  | Obecné | 
+| Urdština (Pákistán) | `ur-PK` | Male | `ur-PK-AsadNeural` <sup>Nová</sup> | Obecné | 
 | Vietnamština (Vietnam) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | Obecné |
-| Vietnamština (Vietnam) | `vi-VN` | Male | `vi-VN-NamMinhNeural` <sup>Nová</sup> | Obecné |
+| Vietnamština (Vietnam) | `vi-VN` | Male | `vi-VN-NamMinhNeural` | Obecné |
+| Velština (Spojené království) | `cy-GB` | Female | `cy-GB-NiaNeural` <sup>Nová</sup> | Obecné | 
+| Velština (Spojené království) | `cy-GB` | Male | `cy-GB-AledNeural` <sup>Nová</sup> | Obecné | 
 
 #### <a name="neural-voices-in-preview"></a>Hlasy neuronové ve verzi Preview
 
@@ -281,21 +303,11 @@ Níže jsou hlasy neuronové ve verzi Public Preview.
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` | Vrchní hlas, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | Obecné, více aktérů rolí a stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male   | `zh-CN-YunxiNeural` | Obecné, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Estonština (Estonsko) | `et-EE` | Female | `et-EE-AnuNeural` | Obecné |
-| Estonština (Estonsko) | `et-EE` | Male | `et-EE-KertNeural` <sup>Nová</sup> | Obecné |
-| Irština (Irsko) | `ga-IE` | Female | `ga-IE-OrlaNeural` | Obecné |
-| Irština (Irsko) | `ga-IE` | Male | `ga-IE-ColmNeural` <sup>Nová</sup> | Obecné |
-| lotyština (Lotyšsko) | `lv-LV` | Female | `lv-LV-EveritaNeural` | Obecné |
-| lotyština (Lotyšsko) | `lv-LV` | Male | `lv-LV-NilsNeural` <sup>Nová</sup> | Obecné |
-| litevština (Litva) | `lt-LT` | Female | `lt-LT-OnaNeural` | Obecné |
-| litevština (Litva) | `lt-LT` | Male | `lt-LT-LeonasNeural` <sup>Nová</sup> | Obecné |
-| Maltština (Malta) | `mt-MT` | Female | `mt-MT-GraceNeural` | Obecné |
-| Maltština (Malta) | `mt-MT` | Male | `mt-MT-JosephNeural` <sup>Nová</sup> | Obecné |
 
 > [!IMPORTANT]
 > Hlasy ve verzi Public Preview jsou dostupné jenom ve třech oblastech služby: Východní USA, Západní Evropa a jihovýchodní Asie.
 
-Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
+Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#neural-and-standard-voices).
 
 Další informace o tom, jak můžete nakonfigurovat a upravit hlasy neuronové, jako jsou například mluvené styly, najdete v tématu [řeč syntézy kódu](speech-synthesis-markup.md#adjust-speaking-styles).
 
@@ -307,7 +319,7 @@ Další informace o tom, jak můžete nakonfigurovat a upravit hlasy neuronové,
 
 ### <a name="standard-voices"></a>Standardní hlasy
 
-Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a národních prostředích, což vám umožní převést text na syntetizované řeč. Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
+Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a národních prostředích, což vám umožní převést text na syntetizované řeč. Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#neural-and-standard-voices).
 
 > [!NOTE]
 > Se dvěma výjimkami se vytvářejí standardní hlasy ze vzorků, které používají vzorkovací frekvenci 16 kHz.

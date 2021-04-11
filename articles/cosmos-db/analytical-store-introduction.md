@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Cosmos DB analytické úložiště?
+title: Co je analytické úložiště Azure Cosmos DB?
 description: Přečtěte si o Azure Cosmos DB transakční (založený na řádku) a analytickém (sloupcovém) úložišti. Výhody analytického úložiště, dopad na výkon pro rozsáhlé úlohy a automatickou synchronizaci dat z transakčního úložiště do analytického úložiště
 author: Rodrigossz
 ms.service: cosmos-db
@@ -8,10 +8,10 @@ ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
 ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105046208"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Co je Azure Cosmos DB analytické úložiště?

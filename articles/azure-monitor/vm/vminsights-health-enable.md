@@ -4,14 +4,14 @@ description: Popisuje, jak ve svém předplatném povolit stav hosta služby VM 
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/16/2020
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f6c67e0e9ef1dd2a4092033a9479801cd0e8e7d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732750"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449303"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Povolit stav hosta virtuálního počítače Insights (Preview)
 Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
@@ -26,6 +26,8 @@ Stav hosta virtuálních počítačů Insights má ve verzi Public Preview tato 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 Virtuální počítač musí používat jeden z následujících operačních systémů: 
 
+  - CentOS 7,5, 7,6, 7,7, 7,8, 7,9
+  - RedHat 7,5, 7,6, 7,7, 7,8, 7,9
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 nebo novější
 
@@ -45,7 +47,7 @@ Virtuální počítač se musí nacházet v jedné z následujících oblastí:
 - Východní USA 2 EUAP
 - Francie – střed
 - Německo – středozápad
-- Japonsko – východ
+- Japan East
 - Jižní Korea – střed
 - USA – středosever
 - Severní Evropa
@@ -74,7 +76,7 @@ Log Analytics pracovní prostor se musí nacházet v jedné z následujících o
 - USA – východ 2
 - Východní USA 2 EUAP
 - Francie – střed
-- Japonsko – východ
+- Japan East
 - USA – středosever
 - Severní Evropa
 - Středojižní USA

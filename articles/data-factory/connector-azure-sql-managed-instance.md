@@ -8,10 +8,10 @@ author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
 ms.openlocfilehash: eae085a73e8f43813aa3f02fa910c7931f10f36c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104597407"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopírování a transformace dat ve spravované instanci SQL Azure pomocí Azure Data Factory
@@ -38,11 +38,11 @@ U aktivity kopírování tato Azure SQL Database konektor podporuje tyto funkce:
 >[!NOTE]
 > Tento konektor teď nepodporuje [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) spravované instance SQL. Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a SQL Server ovladač ODBC prostřednictvím prostředí Integration runtime v místním prostředí. Další informace najdete v části [použití Always Encrypted](#using-always-encrypted) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro přístup ke [veřejnému koncovému bodu](../azure-sql/managed-instance/public-endpoint-overview.md)spravované instance SQL můžete použít Azure Data Factory spravované prostředí Azure Integration runtime. Ujistěte se, že jste povolili veřejný koncový bod a zároveň povolili provoz veřejného koncového bodu ve skupině zabezpečení sítě, aby se Azure Data Factory mohl připojit k vaší databázi. Další informace najdete v [těchto pokynech](../azure-sql/managed-instance/public-endpoint-configure.md).
 
-Pro přístup k privátnímu koncovému bodu spravované instance SQL nastavte místní [prostředí Integration runtime](create-self-hosted-integration-runtime.md) , které má přístup k databázi. Pokud zřídíte místní prostředí Integration runtime ve stejné virtuální síti jako vaše spravovaná instance, ujistěte se, že je váš počítač Integration runtime v jiné podsíti než vaše spravovaná instance. Pokud zřídíte místní prostředí Integration runtime v jiné virtuální síti než vaše spravovaná instance, můžete k připojení k virtuální síti použít buď partnerský vztah virtuální sítě, nebo virtuální síť. Další informace najdete v tématu [připojení aplikace k spravované instanci SQL](../azure-sql/managed-instance/connect-application-instance.md).
+Pro přístup k privátnímu koncovému bodu spravované instance SQL nastavte místní [prostředí Integration runtime](create-self-hosted-integration-runtime.md) , které má přístup k databázi. Pokud zřídíte místní prostředí Integration runtime ve stejné virtuální síti, kde se nachází vaše spravovaná instance, zajistěte, aby byl počítač Integration runtime v jiné podsíti než tato spravovaná instance. Pokud zřídíte místní prostředí Integration runtime v jiné virtuální síti, než kde se nachází vaše spravovaná instance, můžete pro připojení k virtuální síti použít buď partnerský vztah virtuální sítě, nebo virtuální síť. Další informace najdete v tématu [připojení aplikace k spravované instanci SQL](../azure-sql/managed-instance/connect-application-instance.md).
 
 ## <a name="get-started"></a>Začínáme
 

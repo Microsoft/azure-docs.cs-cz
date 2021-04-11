@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33adaf33ba15b49b0a7e4d3e8f1b2a8c435a7966
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100650676"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449031"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
@@ -218,7 +218,7 @@ Pomocí Visual Studio Code proveďte potvrzení a vložení změn do vzdálenéh
 
 ## <a name="create-a-static-web-app"></a>Vytvoření statické webové aplikace
 
-1. Přejít na [Azure Portal](https://portal.azure.com)
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Klikněte na **Vytvořit prostředek**.
 1. Vyhledat **statickou webovou aplikaci**
 1. Klikněte na **statická webová aplikace (Preview)** .
@@ -255,7 +255,7 @@ Dále přidejte následující podrobnosti o sestavení.
 
     :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Pracovní postup GitHubu":::
 
-1. Po dokončení nasazení může organizační jednotka přejít do webové aplikace kliknutím na odkaz _Adresa URL_ zobrazený na stránce _Přehled_ .
+1. Po dokončení nasazení můžete přejít do webové aplikace kliknutím na odkaz _URL_ zobrazený na stránce _Přehled_ .
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Přístup ke statické adrese URL aplikace z Azure Portal":::
 
@@ -263,7 +263,7 @@ Dále přidejte následující podrobnosti o sestavení.
 
 Pokud nechcete, aby se tato aplikace nadále používala k dalšímu použití, můžete pomocí následujících kroků odstranit statickou webovou aplikaci Azure a její související prostředky.
 
-1. Přejít na [Azure Portal](https://portal.azure.com)
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Do horního panelu vyhledávání zadejte **skupiny prostředků** .
 1. Klikněte na **skupiny prostředků** .
 1. Vybrat **myResourceGroup**

@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918073"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551641"
 ---
 # <a name="dynamic-data-masking"></a>Dynamické maskování dat 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -72,13 +72,13 @@ Pomocí REST API můžete programově spravovat zásady a pravidla maskování d
 
 ### <a name="data-masking-policies"></a>Zásady maskování dat
 
-- [Vytvořit nebo aktualizovat](/rest/api/sql/datamaskingpolicies/createorupdate): vytvoří nebo aktualizuje zásadu maskování dat databáze.
-- [Get](/rest/api/sql/datamaskingpolicies/get): Získá zásadu maskování dat databáze. 
+- [Vytvořit nebo aktualizovat](/rest/api/sql/2014-04-01/datamaskingpolicies/createorupdate): vytvoří nebo aktualizuje zásadu maskování dat databáze.
+- [Get](/rest/api/sql/2014-04-01/datamaskingpolicies/get): Získá zásadu maskování dat databáze. 
 
 ### <a name="data-masking-rules"></a>Pravidla maskování dat
 
-- [Vytvořit nebo aktualizovat](/rest/api/sql/datamaskingrules/createorupdate): vytvoří nebo aktualizuje pravidlo maskování dat databáze.
-- [Seznam podle databáze](/rest/api/sql/datamaskingrules/listbydatabase): načte seznam pravidel pro maskování dat databáze.
+- [Vytvořit nebo aktualizovat](/rest/api/sql/2014-04-01/datamaskingrules/createorupdate): vytvoří nebo aktualizuje pravidlo maskování dat databáze.
+- [Seznam podle databáze](/rest/api/sql/2014-04-01/datamaskingrules/listbydatabase): načte seznam pravidel pro maskování dat databáze.
 
 ## <a name="permissions"></a>Oprávnění
 

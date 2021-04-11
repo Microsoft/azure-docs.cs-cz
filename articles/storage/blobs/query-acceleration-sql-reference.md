@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95908774"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963253"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů
 
@@ -122,8 +122,8 @@ Jazyk SQL pro zrychlení dotazů podporuje následující standardní řetězcov
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |Vrátí znakový výraz s malými znakovými daty převedenými na velká písmena.|
 |[PODŘETĚZEC](/sql/t-sql/functions/substring-transact-sql)    |Vrátí část znakového, binárního, textového nebo obrázkového výrazu v SQL Server.|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Odstraní znak znaku mezery (32) nebo jiné zadané znaky od začátku a konce řetězce.|
-|NULA    |Description|
-|KONCOVÉ    |Description|
+|NULA    |Odstraní znak znaku mezery (32) nebo jiné zadané znaky od začátku řetězce.|
+|KONCOVÉ    |Odstraní znak znaku mezery (32) nebo jiné zadané znaky od konce řetězce.|
 
 Tady je několik příkladů:
 

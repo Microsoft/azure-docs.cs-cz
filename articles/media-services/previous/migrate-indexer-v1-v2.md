@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: eb4f662a4b34d748da0e97da9b64a386be3f5c49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b1960aa2d08a189e04aea8906c10e761dc1c57a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016419"
+ms.locfileid: "105962641"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrace z Media Indexer a Media Indexer 2 na Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!IMPORTANT]
-> Doporučujeme, aby zákazníci migrovali ze služby indexer V1 a služby indexer v2, aby používali [Základní režim Media Services V3 AudioAnalyzerPreset](../latest/analyzing-video-audio-files-concept.md). Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](./legacy-components.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
+> Doporučujeme, aby zákazníci migrovali ze služby indexer V1 a služby indexer v2, aby používali [Základní režim Media Services V3 AudioAnalyzerPreset](../latest/analyze-video-audio-files-concept.md). Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](./legacy-components.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
 Azure Media Services Video Indexer je postavená na Azure Media Analytics, Azure Kognitivní hledání Cognitive Services (například rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a Custom Speech Service). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru. Pokud chcete zjistit, jaké scénáře se Video Indexer můžou použít v, jaké funkce nabízí a jak začít, přečtěte si téma [video indexer video a zvukové modely](../video-indexer/video-indexer-overview.md). 
 
-Přehledy z vašich videosouborů a zvukových souborů můžete extrahovat pomocí [přednastavení analyzátoru Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md) nebo přímo pomocí [rozhraní video indexer API](https://api-portal.videoindexer.ai/). V současné době dochází k překrytí mezi funkcemi nabízenými rozhraními API Video Indexer a rozhraními API Media Services V3.
+Přehledy z vašich videosouborů a zvukových souborů můžete extrahovat pomocí [přednastavení analyzátoru Azure Media Services V3](../latest/analyze-video-audio-files-concept.md) nebo přímo pomocí [rozhraní video indexer API](https://api-portal.videoindexer.ai/). V současné době dochází k překrytí mezi funkcemi nabízenými rozhraními API Video Indexer a rozhraními API Media Services V3.
 
 > [!NOTE]
 > Chcete-li porozumět rozdílům mezi předvolbami Video Indexer vs. Media Services Analyzer, Projděte si [dokument porovnání](../video-indexer/compare-video-indexer-with-media-services-presets.md).
@@ -49,7 +49,7 @@ V následující části najdete relevantní odkazy: [Jak můžu začít s video
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Začínáme s rozhraními API pro Media Services V3
 
-Rozhraní Azure Media Services V3 API umožňuje z vašich videí a zvukových souborů extrahovat přehledy pomocí [přednastavených funkcí analyzátoru Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md).
+Rozhraní Azure Media Services V3 API umožňuje z vašich videí a zvukových souborů extrahovat přehledy pomocí [přednastavených funkcí analyzátoru Azure Media Services V3](../latest/analyze-video-audio-files-concept.md).
 
 **AudioAnalyzerPreset** umožňuje extrahovat z zvukového souboru nebo videosouboru více zvukových přehledů. Výstup obsahuje soubor VTT nebo TTML pro záznam zvuku a soubor JSON (se všemi dalšími dalšími informacemi o službě Audio Insights). Zvukové poznatky zahrnují klíčová slova, indexování mluvčích a analýzu mínění řeči. AudioAnalyzerPreset podporuje také rozpoznávání jazyka pro konkrétní jazyky. Podrobné informace najdete v tématu [transformace](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
@@ -57,7 +57,7 @@ Rozhraní Azure Media Services V3 API umožňuje z vašich videí a zvukových s
 
 Pokud chcete začít, podívejte se na:
 
-* [Kurz](../latest/analyze-videos-tutorial-with-api.md)
+* [Kurz](../latest/analyze-videos-tutorial.md)
 * Ukázky AudioAnalyzerPreset: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) nebo [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
 * Ukázky VideoAnalyzerPreset: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) nebo [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 

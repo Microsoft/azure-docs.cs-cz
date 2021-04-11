@@ -2,15 +2,31 @@
 author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 2/3/21
+ms.date: 03/30/2021
 ms.author: parkerra
-ms.openlocfilehash: f32c4d24a2799b3f98f7e635748af378be8c560d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fca9efdf0e39157de5cdd6358477e2ce6f93ff29
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99550373"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076685"
 ---
-Otevřete projekt v Unity. Postupujte podle pokynů uvedených <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.html" target="_blank">tady</a> a importujte balíčky prostorových ukotvení Azure, které jste stáhli do projektu Unity, pomocí Správce balíčků Unity.
+# <a name="web-download"></a>[Stažení webu](#tab/unity-package-web-ui)
 
-Můžete rozbalit `Packages` složku v zobrazení projektu a ověřit, zda byly naimportovány správné balíčky.
+Postupujte podle pokynů uvedených <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.html" target="_blank">tady</a> a importujte balíčky prostorových ukotvení Azure, které jste stáhli do projektu Unity, pomocí Správce balíčků Unity.
+
+# <a name="npm-download"></a>[Stažení NPM](#tab/unity-package-npm)
+
+Postupujte podle pokynů uvedených <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.html" target="_blank">tady</a> a importujte balíčky prostorových ukotvení Azure, které jste stáhli do projektu Unity, pomocí Správce balíčků Unity.
+
+# <a name="mixed-reality-feature-tool-beta"></a>[Nástroj funkce Mixed reality (beta verze)](#tab/unity-package-mixed-reality-feature-tool)
+
+Tento krok vyžaduje, aby byl <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Nástroj funkce Mixed reality</a> stažený a dostupný.
+
+> [!NOTE]
+> <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Nástroj funkce Mixed reality</a> v současné době podporuje jenom Windows.
+
+1. Použijte dokumentaci k <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">nástroji funkce Mixed reality</a> k nastavení nástroje a Naučte se, jak ho používat.
+2. Do složky projektu Unity nainstalujte balíček sady SDK prostorových kotev pro Azure a také všechny balíčky specifické pro konkrétní platformu.
+
+---

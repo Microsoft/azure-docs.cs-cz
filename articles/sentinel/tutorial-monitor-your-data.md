@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
 ms.openlocfilehash: 048a089209ef7c5f20c96f77593e2cf39590147e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104600515"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: Vizualizace a monitorování dat
@@ -33,7 +33,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 > * Použití vestavěných sešitů
 > * Vytváření nových sešitů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pro skupinu prostředků pracovního prostoru Azure Sentinel musíte mít alespoň oprávnění čtenář nebo přispěvatel sešitu.
 

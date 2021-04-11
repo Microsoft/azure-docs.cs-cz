@@ -2,14 +2,14 @@
 title: Rozšířené použití AuthN/AuthZ
 description: Naučte se přizpůsobit funkci ověřování a autorizace v App Service pro různé scénáře a získat deklarace identity uživatelů a různé tokeny.
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fc2916cbccc21262467533b0b497b14f4f4b941c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034873"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076866"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -18,10 +18,9 @@ V tomto článku se dozvíte, jak přizpůsobit integrované [ověřování a au
 Pokud chcete rychle začít, přečtěte si jedno z následujících kurzů:
 
 * [Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service](tutorial-auth-aad.md)
-* [Konfigurace aplikace pro použití přihlášení Azure Active Directory](configure-authentication-provider-aad.md)
+* [Jak nakonfigurovat aplikaci tak, aby používala přihlášení k platformě Microsoft Identity Platform](configure-authentication-provider-aad.md)
 * [Konfigurace aplikace pro použití přihlášení k Facebooku](configure-authentication-provider-facebook.md)
 * [Konfigurace aplikace pro použití přihlášení ke Googlu](configure-authentication-provider-google.md)
-* [Konfigurace aplikace pro použití přihlášení k účtu Microsoft](configure-authentication-provider-microsoft.md)
 * [Konfigurace aplikace pro použití přihlášení k Twitteru](configure-authentication-provider-twitter.md)
 * [Jak nakonfigurovat aplikaci pro přihlášení pomocí poskytovatele OpenID Connect (Preview)](configure-authentication-provider-openid-connect.md)
 * [Jak nakonfigurovat aplikaci pro přihlášení pomocí přihlášení pomocí Apple (Preview)](configure-authentication-provider-apple.md)
@@ -37,8 +36,7 @@ V **akci, která se má provést, když se žádost neověřuje**, vyberte možn
 Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Například:
 
 ```html
-<a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
+<a href="/.auth/login/aad">Log in with the Microsoft Identity Platform</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
@@ -159,7 +157,6 @@ Z kódu serveru jsou tokeny specifické pro poskytovatele vloženy do hlavičky 
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Token Facebooku | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
-| Účet Microsoft | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
@@ -175,7 +172,6 @@ Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace]
 - **Google**: připojí `access_type=offline` k `/.auth/login/google` volání rozhraní API parametr řetězce dotazu. Pokud používáte sadu Mobile Apps SDK, můžete do jednoho z přetížení přidat parametr `LogicAsync` (viz [aktualizace tokenů Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: neposkytuje aktualizační tokeny. Do vypršení platnosti tokenů po dobu 60 dnů (viz [doba ukončení a rozšíření přístupových tokenů Facebook](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: přístupové tokeny neprošly (viz [Nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/authentication/faq)).
-- **Účet Microsoft**: při [konfiguraci nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md)vyberte `wl.offline_access` obor.
 - **Azure Active Directory**: v nástroji [https://resources.azure.com](https://resources.azure.com) proveďte následující kroky:
     1. V horní části stránky vyberte možnost **čtení/zápis**.
     2. V levém prohlížeči přejděte na **odběry** > * *_\<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
@@ -280,14 +276,26 @@ Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. 
 
 Pokud žádná z ostatních úrovní neposkytne autorizaci, kterou potřebujete, nebo pokud vaše platforma nebo zprostředkovatel identity není podporována, musíte napsat vlastní kód, který autorizuje uživatele na základě [deklarací identity uživatele](#access-user-claims).
 
-## <a name="updating-the-configuration-version-preview"></a>Aktualizuje se verze konfigurace (Preview).
+## <a name="updating-the-configuration-version"></a>Aktualizace konfigurační verze
 
-Pro funkci ověřování/autorizace existují dvě verze rozhraní API pro správu. Pro prostředí "ověřování (Preview)" v Azure Portal se vyžaduje verze Preview v2. Aplikace, která už používá rozhraní API V1, může po provedení několika změn upgradovat na verzi v2. Konkrétně musí být konfigurace tajného klíče přesunuta do nastavení aplikace slot-rychlé. Konfigurace poskytovatele účtů Microsoft není ve verzi v2 předposílána i dál.
+Pro funkci ověřování/autorizace existují dvě verze rozhraní API pro správu. Pro prostředí "ověřování" v Azure Portal se vyžaduje verze v2. Aplikace, která už používá rozhraní API V1, může po provedení několika změn upgradovat na verzi v2. Konkrétně musí být konfigurace tajného klíče přesunuta do nastavení aplikace slot-rychlé. To lze provést automaticky z oddílu ověřování portálu pro vaši aplikaci.
 
 > [!WARNING]
-> Migrace do verze V2 Preview zakáže správu funkce App Service ověřování/autorizace pro vaši aplikaci prostřednictvím některých klientů, jako je jejich existující prostředí v Azure Portal, Azure CLI a Azure PowerShell. Toto nelze vrátit zpět. Během období Preview není Migrace produkčních úloh doporučována ani podporována. Pro testovací aplikace byste měli postupovat pouze podle kroků v této části.
+> Migrace na verzi v2 zakáže správu funkce App Service ověřování/autorizace pro vaši aplikaci prostřednictvím některých klientů, jako je jejich existující prostředí v Azure Portal, Azure CLI a Azure PowerShell. Toto nelze vrátit zpět.
 
-### <a name="moving-secrets-to-application-settings"></a>Přesun tajných kódů do nastavení aplikace
+Rozhraní v2 API nepodporuje vytvoření ani úpravu účtu Microsoft jako samostatného poskytovatele, který byl proveden v v1. Místo toho využívá sblíženou [platformu Microsoft Identity](../active-directory/develop/v2-overview.md) k přihlašování uživatelů pomocí účtů Azure AD a osobních účtů Microsoft. Při přepnutí na rozhraní API v2 se ke konfiguraci poskytovatele Microsoft Identity Platform Provider používá Azure Active Directory konfigurace v1. Zprostředkovatel účtu Microsoft V1 se přenese do procesu migrace a bude dál fungovat jako normální, ale doporučuje se přejít na novější model Microsoft Identity Platform. Další informace najdete v tématu [Podpora pro registrace zprostředkovatele účtů Microsoft](#support-for-microsoft-account-provider-registrations) .
+
+Proces automatizované migrace přesune tajné kódy zprostředkovatelů do nastavení aplikace a následně převede zbytek konfigurace do nového formátu. Použití automatické migrace:
+
+1. Na portálu přejděte na svou aplikaci a vyberte možnost nabídky **ověřování** .
+1. Pokud je aplikace nakonfigurovaná pomocí modelu V1, zobrazí se tlačítko **upgrade** .
+1. Přečtěte si popis v příkazovém řádku s potvrzením. Pokud jste připraveni provést migraci, klikněte na tlačítko **upgradovat** v příkazovém řádku.
+
+### <a name="manually-managing-the-migration"></a>Ruční správa migrace
+
+Následující kroky vám umožní ručně migrovat aplikaci do rozhraní API v2, pokud nechcete používat automatickou verzi uvedenou výše.
+
+#### <a name="moving-secrets-to-application-settings"></a>Přesun tajných kódů do nastavení aplikace
 
 1. Získejte existující konfiguraci pomocí rozhraní v1 API:
 
@@ -397,9 +405,7 @@ Pro funkci ověřování/autorizace existují dvě verze rozhraní API pro sprá
 
 Nyní jste migrovali aplikaci pro ukládání tajných klíčů zprostředkovatele identity jako nastavení aplikace.
 
-### <a name="support-for-microsoft-account-registrations"></a>Podpora pro registrace účet Microsoft
-
-Rozhraní v2 API aktuálně nepodporuje účet Microsoft jako odlišného poskytovatele. Místo toho využívá sblíženou [platformu Microsoft Identity](../active-directory/develop/v2-overview.md) k přihlašování uživatelů pomocí osobních účtů Microsoft. Při přepnutí na rozhraní API v2 se ke konfiguraci poskytovatele Microsoft Identity Platform Provider používá Azure Active Directory konfigurace v1.
+#### <a name="support-for-microsoft-account-provider-registrations"></a>Podpora registrací poskytovatelů účtů Microsoft
 
 Pokud vaše existující konfigurace obsahuje poskytovatele účtu Microsoft a neobsahuje poskytovatele Azure Active Directory, můžete přepnout konfiguraci na poskytovatele Azure Active Directory a pak provést migraci. Použijte následující postup:
 
@@ -413,12 +419,10 @@ Pokud vaše existující konfigurace obsahuje poskytovatele účtu Microsoft a n
 1. V tuto chvíli jste úspěšně zkopírovali konfiguraci, ale stávající konfigurace poskytovatele účtů Microsoft zůstane. Než ho odeberete, ujistěte se, že všechny části vaší aplikace odkazují na poskytovatele Azure Active Directory prostřednictvím přihlašovacích odkazů atd. Ověřte, že všechny části aplikace fungují podle očekávání.
 1. Po ověření toho, že věci budou fungovat na poskytovateli AAD Azure Active Directory, můžete odebrat konfiguraci poskytovatele účtů Microsoft.
 
-Některé aplikace už můžou mít samostatné registrace pro Azure Active Directory a účet Microsoft. Tyto aplikace nejdou v tuto chvíli migrovat. 
-
 > [!WARNING]
 > Tyto dvě registrace je možné konvergovat úpravou [podporovaných typů účtů](../active-directory/develop/supported-accounts-validation.md) pro registraci aplikace AAD. To však vynutí novou výzvu k zadání souhlasu pro uživatele účtu Microsoft a deklarace identity těchto uživatelů se mohou lišit ve struktuře, `sub` zejména změnit hodnoty, protože se používá nové ID aplikace. Tento přístup se nedoporučuje, pokud se důkladně nerozumí. Místo toho byste měli počkat na podporu těchto dvou registrací na povrchu rozhraní API v2.
 
-### <a name="switching-to-v2"></a>Přepínání na v2
+#### <a name="switching-to-v2"></a>Přepínání na v2
 
 Po provedení výše uvedených kroků přejděte do aplikace v Azure Portal. Vyberte část "ověřování (Preview)". 
 

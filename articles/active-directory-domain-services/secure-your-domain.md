@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: justinha
 ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951928"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zakázání slabých šifr a synchronizace hodnot hash hesel k zabezpečení Azure Active Directory Domain Services spravované domény
@@ -24,7 +24,7 @@ Ve výchozím nastavení umožňuje Azure Active Directory Domain Services (Azur
 
 V tomto článku se dozvíte, jak zakázat šifry protokolu NTLM V1 a TLS V1 a vypnout synchronizaci hodnot hash hesel protokolu NTLM.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 

@@ -3,12 +3,12 @@ title: Použití přímých metod v živé analýze videí v IoT Edge – Azure
 description: Live video Analytics na IoT Edge zveřejňuje několik přímých metod. Přímé metody jsou založeny na konvencích popsaných v tomto tématu.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656236"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076985"
 ---
 # <a name="direct-methods"></a>Přímé metody
 
@@ -381,7 +381,7 @@ Klíčové aspekty:
 | Chyby ověřování grafu | 400 | GraphValidationError |
 | Chyby ověřování modulu | 400 | ModuleValidationError |
 | Chyby ověřování prostředků | 409 | ResourceValidationError |
-| Obecné chyby serveru | Rozsah 500 |  |  |
+| Obecné chyby serveru | Rozsah 500 |  | 
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 

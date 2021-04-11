@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 342c535cadb1a2d3f2d18478d8941d9ea61bdf72
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040239"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448963"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade z Application Insights Java 2. x SDK
 
@@ -45,72 +45,12 @@ V sadě 2. x SDK byly názvy operací předponou metody HTTP ( `GET` , `POST` at
 
 :::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="Názvy operací s předponou metody http":::
 
-Fragment kódu níže konfiguruje 3 procesory telemetrie, které se kombinují k replikaci předchozího chování.
-Procesor telemetrie provádí následující akce (v uvedeném pořadí):
+Počínaje 3.0.3 můžete toto chování 2. x vrátit zpátky pomocí
 
-1. První procesor telemetrie je procesor s rozsahem (je typu `span` ), což znamená, že platí pro `requests` a `dependencies` .
-
-   Bude odpovídat jakémukoli rozsahu, který má atribut s názvem `http.method` a má název rozpětí, který začíná na `/` .
-
-   Pak se tento název rozbalí do atributu s názvem `tempName` .
-
-2. Druhý procesor telemetrie je také procesor s rozsahem.
-
-   Bude odpovídat jakémukoli rozsahu, který má atribut s názvem `tempName` .
-
-   Pak aktualizuje název rozsahu zřetězením dvou atributů `http.method` a `tempName` oddělených mezerou.
-
-3. Poslední procesor telemetrie je procesor atributů (je typu `attribute` ), což znamená, že se vztahuje na všechny telemetrie, které mají atributy ( `requests` aktuálně `dependencies` a `traces` ).
-
-   Bude odpovídat jakékoli telemetrie s atributem s názvem `tempName` .
-
-   Pak odstraní atribut s názvem `tempName` , aby se nenahlásil jako vlastní dimenze.
-
-```
+```json
 {
   "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "attributes": [
-            { "key": "http.method", "value": "" }
-          ],
-          "spanNames": [ "^/" ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [ "^(?<tempName>.*)$" ]
-          }
-        }
-      },
-      {
-        "type": "span",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "name": {
-          "fromAttributes": [ "http.method", "tempName" ],
-          "separator": " "
-        }
-      },
-      {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "actions": [
-          { "key": "tempName", "action": "delete" }
-        ]
-      }
-    ]
+    "httpMethodInOperationName": true
   }
 }
 ```

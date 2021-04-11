@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: c2dc193d65ff1c85837477c0a8fd345f11d59bcd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a0e4b7e759e27dafb1d847dc5d7ce464b440e98c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960652"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Nahrání souborů do účtu Media Services na webu Azure Portal
 
@@ -32,7 +32,7 @@ ms.locfileid: "103009740"
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. Aktuální soubory pro nahrávání pomocí portálu najdete v tématu [použití portálu k nahrávání, kódování a streamování obsahu](../latest/manage-assets-quickstart.md).<br/>Podívejte se také na: [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. Aktuální soubory pro nahrávání pomocí portálu najdete v tématu [použití portálu k nahrávání, kódování a streamování obsahu](../latest/asset-create-asset-upload-portal-quickstart.md).<br/>Podívejte se také na: [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Ve službě Azure Media Services nahráváte digitální soubory do prostředku. Prostředek může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů bude váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 

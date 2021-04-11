@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d572509b3b2b3a0fc69f207d005984ee07ce34a4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389174"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076815"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link pro Azure Data Factory
 
@@ -54,7 +54,7 @@ Povolení služby privátního propojení pro každý z předchozích komunikač
    - Spojení příkazů mezi místním prostředím Integration runtime a službou Azure Data Factory se dá bezpečně provést v prostředí privátní sítě. Přenos dat mezi místním prostředím Integration runtime a službou Azure Data Factory prochází pomocí privátního propojení. 
 - **Aktuálně není podporováno**:
    - Interaktivní vytváření, které používá místní prostředí Integration runtime, jako je například test Connection, procházení seznamu složek a seznam tabulek, získání schématu a náhled dat, prochází pomocí privátního odkazu.
-   - Novou verzi prostředí Integration runtime v místním prostředí je možné stáhnout automaticky z webu Microsoft Download Center, pokud povolíte automatické aktualizace.
+   - Nová verze prostředí Integration runtime v místním prostředí, která se dá stáhnout automaticky z webu Microsoft Download Center, pokud povolíte automatické aktualizace, není v tuto chvíli podporována.
 
    > [!NOTE]
    > U funkcí, které aktuálně nejsou podporovány, je stále nutné nakonfigurovat dříve uvedenou doménu a port ve virtuální síti nebo v podnikové bráně firewall. 

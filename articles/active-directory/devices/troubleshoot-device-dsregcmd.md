@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 614b3f927dc22bc534168f8fe95cc2f97031b621
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ced48308673c6688def7b949fc225eeb5b2ced4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725519"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551726"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
 
@@ -345,4 +345,4 @@ Tato část provádí kontroly požadovaných součástí pro zřizování Windo
 
 ## <a name="next-steps"></a>Další kroky
 
-Otázky najdete v tématu [Nejčastější dotazy ke správě zařízení](faq.md) .
+Otázky najdete v tématu [Nejčastější dotazy ke správě zařízení](faq.yml) .

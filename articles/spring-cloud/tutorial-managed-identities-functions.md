@@ -7,10 +7,10 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
 ms.openlocfilehash: 99e3611711e9a25119a4428d7736a36073163894
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104879157"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity k vyvolání Azure Functions ze jarní cloudové aplikace Azure
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci Az
 Azure Functions i App Services mají integrovanou podporu ověřování Azure Active Directory (Azure AD). Díky použití této integrované funkce ověřování společně se spravovanými identitami pro jarní cloud Azure můžeme vyvolávat služby RESTful s využitím moderní sémantiky OAuth. Tato metoda nevyžaduje uložení tajných kódů v kódu a poskytuje podrobnější ovládací prvky pro řízení přístupu k externím prostředkům. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 * [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli)

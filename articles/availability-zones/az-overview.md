@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44ff938d0990a1a7794140a82c0e9222bb69a5d7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596004"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384251"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
@@ -23,7 +23,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Description |
+| Termín nebo koncept | Popis |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -87,8 +87,8 @@ Pokud nabídka služeb není v konkrétní oblasti dostupná, můžete svůj zá
 Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: základní, hlavní a specializované. Kategorie služeb jsou přiřazeny při obecné dostupnosti. Služby často spouštějí životní cyklus jako specializovanou službu a jako požadavek a zvýšení využití se můžou zvýšit na běžný nebo základní. V následující tabulce jsou uvedeny kategorie služeb jako základní, hlavní. Měli byste si uvědomit následující informace o tabulce:
 
 - Některé služby jsou jiné než regionální. Informace a seznam neoblastních služeb najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
-- Starší generace služeb nebo virtuálních počítačů nejsou v seznamu. Další informace najdete v dokumentaci v [předchozích generacích velikostí virtuálních počítačů](../virtual-machines/sizes-previous-gen.md) .
-- . Službám není přiřazena žádná kategorie, dokud nebude Obecná dostupnost (GA). Informace a seznam služeb ve verzi Preview najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). 
+- Starší generace služeb nebo virtuálních počítačů nejsou v seznamu. Další informace najdete v dokumentaci na [předchozích generacích velikostí virtuálních počítačů](../virtual-machines/sizes-previous-gen.md).
+- Službám není přiřazena žádná kategorie, dokud nebude Obecná dostupnost (GA). Informace a seznam služeb ve verzi Preview najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
 > | Základní                           | Hlavní fáze                                        | 

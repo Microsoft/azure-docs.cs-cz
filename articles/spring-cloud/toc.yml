@@ -99,6 +99,8 @@
           href: how-to-bind-redis.md
         - name: Navázání aplikace na Azure MySQL
           href: how-to-bind-mysql.md
+        - name: Spravovaná identita pro připojení Azure SQL Database
+          href: connect-managed-identity-to-azure-sql.md
         - name: Integrace s řešeními pro vyrovnávání zatížení v Azure
           href: how-to-integrate-azure-load-balancers.md
     - name: Monitorování
@@ -133,6 +135,20 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Vytváření rolí a oprávnění
           href: how-to-permissions.md
+        - name: Povolit kompletní přenosovou vrstvu zabezpečení
+          href: how-to-enable-end-to-end-tls.md
+        - name: Přístup ke konfiguračnímu serveru a registru služby
+          href: how-to-access-data-plane-azure-ad-rbac.md
+    - name: Integrace
+      items:
+        - name: Navázání aplikace na Azure CosmosDB
+          href: how-to-bind-cosmos.md
+        - name: Navázání aplikace na Azure Cache for Redis
+          href: how-to-bind-redis.md
+        - name: Navázání aplikace na Azure MySQL
+          href: how-to-bind-mysql.md
+        - name: Integrace s řešeními pro vyrovnávání zatížení v Azure
+          href: how-to-integrate-azure-load-balancers.md
     - name: Automatizace
       items:
         - name: CI/CD s využitím Azure DevOps

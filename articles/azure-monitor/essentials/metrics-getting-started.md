@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df745e7612dbd5b5bb9029b89d7f74974270c2d1
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490281"
+ms.locfileid: "105962709"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -45,7 +45,7 @@ Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků
 ## <a name="select-a-time-range"></a>Vyberte časový rozsah.
 
 > [!WARNING]
-> [Většina metrik v Azure se ukládá po dobu 93 dnů](../essentials/data-platform-metrics.md#retention-of-metrics). Nemůžete ale zadat dotaz na data na libovolný graf na více než 30 dnů. Toto omezení neplatí pro [metriky založené na protokolech](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+> [Většina metrik v Azure se ukládá po dobu 93 dnů](../essentials/data-platform-metrics.md#retention-of-metrics). Nemůžete ale zadat dotaz na data na libovolný graf na více než 30 dnů. Chcete-li zobrazit úplné uchovávání, můžete graf [Posunout](metrics-charts.md#pan) . Omezení 30 dnů se nevztahuje na [metriky založené na protokolu](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
 Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. Panel **pro výběr času** použijte ke změně časového rozsahu, přiblížení nebo oddálení v grafu. 
 

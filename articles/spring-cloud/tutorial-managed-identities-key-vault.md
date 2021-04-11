@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: bbfafeaf9ce24911bb4893748d456d22e02fc411
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104879155"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity pro připojení Key Vault k aplikaci pro jarní cloudovou službu Azure
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro cloudovou a
 
 Azure Key Vault můžete použít k bezpečnému ukládání a pečlivému řízení přístupu k tokenům, heslům, certifikátům, klíčům rozhraní API a dalším tajným klíčům vaší aplikace. Spravovanou identitu můžete vytvořit v Azure Active Directory (AAD) a ověřit u jakékoli služby, která podporuje ověřování AAD, včetně Key Vault, aniž byste museli zobrazovat přihlašovací údaje v kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 * [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli)

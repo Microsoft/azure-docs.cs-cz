@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 64ff778f9735c690f4622402ef2e3124185fa3ea
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104879137"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
@@ -22,7 +22,7 @@ Modul plug-in IntelliJ pro jarní cloud Azure podporuje nasazení aplikací z N�
 
 Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [IntelliJ nápad, komunita/Ultimate Edition, verze 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Instalace modulu plug-in

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104597704"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
@@ -38,7 +38,7 @@ U aktuální funkce platí následující omezení:
 > [!NOTE]
 > Před instalací této verze chceme, abyste věděli o [další verzi](https://github.com/microsoft/startstopv2-deployments), která je ve verzi Preview hned teď.  Tato nová verze (v2) nabízí stejné funkce jako tato, ale je navržená tak, aby využila výhod novější technologie v Azure. Přidává některé běžně požadované funkce od zákazníků, jako je podpora více předplatných z jedné instance spuštění/zastavení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](./automation-security-overview.md#run-as-accounts). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
 

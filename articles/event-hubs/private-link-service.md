@@ -3,12 +3,12 @@ title: Integrace služby Azure Event Hubs se službou privátního propojení Az
 description: Naučte se integrovat Azure Event Hubs se službou Azure Private Link.
 ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5c01788044f3c3a5d875a24172e7222ff195f81
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427747"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960839"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Povolení přístupu k oborům názvů Azure Event Hubs prostřednictvím privátních koncových bodů 
 Služba privátního propojení Azure umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
@@ -17,11 +17,10 @@ Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../private-link/private-link-overview.md)
 
-> [!WARNING]
-> Povolení privátních koncových bodů může ostatním službám Azure zabránit v interakci s Event Hubs.  Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené soukromé koncové body. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
-
->[!NOTE]
-> Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. Na úrovni **Basic** se nepodporuje.
+## <a name="important-points"></a>Důležité body
+- Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. Na úrovni **Basic** se nepodporuje.
+- Povolení privátních koncových bodů může ostatním službám Azure zabránit v interakci s Event Hubs.  Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých **důvěryhodných služeb** i v případě, že jsou povolené soukromé koncové body. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
+- Zadejte **alespoň jedno pravidlo IP nebo pravidlo virtuální sítě** pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče). 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
@@ -51,8 +50,8 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
 
     :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="Karta sítě – volba vybraných sítí" lightbox="./media/private-link-service/selected-networks-page.png":::    
 
-    > [!NOTE]
-    > Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud nezadáte pravidlo brány firewall protokolu IP nebo přidáte virtuální síť, bude k oboru názvů možné přistupovat prostřednictvím veřejného Internetu. 
+    > [!WARNING]
+    > Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud nezadáte pravidlo brány firewall protokolu IP nebo přidáte virtuální síť, přístup k oboru názvů lze získat prostřednictvím veřejného Internetu (pomocí přístupové klávesy). 
 1. V horní části stránky vyberte kartu **připojení privátního koncového bodu** . 
 1. V horní části stránky vyberte tlačítko **+ soukromý koncový bod** .
 

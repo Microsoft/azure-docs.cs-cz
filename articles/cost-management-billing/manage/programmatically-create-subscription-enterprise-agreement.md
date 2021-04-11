@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3f07d18ccdca87f6395b24e4e3f9e6ee91cfaee3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3275fe0a72b70038cf834436e8290b9c55643414
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593964"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963287"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Programové vytváření předplatných Azure se smlouvou Enterprise s využitím nejnovějších rozhraní API
 
@@ -31,7 +31,8 @@ Když vytvoříte předplatné Azure programově, na toto předplatné se vztahu
 K vytvoření předplatného je potřeba, abyste pro registrační účet měli roli vlastníka. Existují dva způsoby, jak tuto roli získat:
 
 * Podnikový správce pro vaši registraci vás [může nastavit jako vlastníka účtu](https://ea.azure.com/helpdocs/addNewAccount) (vyžaduje se přihlášení) a to z vás udělá vlastníka tohoto registračního účtu.
-* [Přístup vám může udělit](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) stávající vlastník registračního účtu. Podobně platí, že pokud chcete k vytvoření předplatného EA využít instanční objekt, musíte [tomuto instančnímu objektu udělit možnost vytvářet předplatná](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+* [Přístup vám může udělit](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) stávající vlastník registračního účtu. Podobně platí, že pokud chcete k vytvoření předplatného EA využít instanční objekt, musíte [tomuto instančnímu objektu udělit možnost vytvářet předplatná](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
+    Pokud k vytváření odběrů používáte hlavní název služby (SPN), použijte k vytvoření předplatných identifikátor ObjectId pro registraci aplikace Azure AD pomocí [Azure Active Directory PowerShellu](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list).
   > [!NOTE]
   > Ujistěte se, že používáte správnou verzi rozhraní API pro udělení oprávnění vlastníka registračního účtu. Pro tento článek a rozhraní API, která jsou v něm dokumentovaná, použijte rozhraní API verze [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Pokud migrujete na novější rozhraní API, musíte znovu udělit oprávnění vlastníka s využitím verze [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Předchozí konfigurace vytvořená s verzí [2015-07-01](grant-access-to-create-subscription.md) se automaticky nepřevede na použití s novějšími rozhraními API.
 
@@ -231,7 +232,7 @@ Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-A
 Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
 
 ```azurepowershell-interactive
-New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload "Production"
 ```
 
 V rámci odpovědi příkazu se vrátí údaj subscriptionId.

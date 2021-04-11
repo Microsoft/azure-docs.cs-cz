@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709510"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551624"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Microsoft 365
 
@@ -65,7 +65,7 @@ Níže jsou uvedené role, které můžou nakonfigurovat a používat vypršení
 Role | Oprávnění
 -------- | --------
 Globální správce, správce skupiny nebo Správce uživatelů | Může vytvořit, číst, aktualizovat nebo odstranit nastavení zásad vypršení platnosti skupin Microsoft 365.<br>Může obnovit libovolnou skupinu Microsoft 365.
-User | Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může číst nastavení zásad vypršení platnosti.
+Uživatel | Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může číst nastavení zásad vypršení platnosti.
 
 Další informace o oprávněních k obnovení odstraněné skupiny najdete [v tématu Obnovení odstraněné Microsoft 365 skupiny v Azure Active Directory](groups-restore-deleted.md).
 
@@ -91,6 +91,7 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
 > - Když nastavíte vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 35 dní do vypršení platnosti, pokud se skupina automaticky neobnoví nebo ji vlastník obnoví.
 > - Když se dynamická skupina odstraní a obnoví, zobrazuje se jako nová skupina a znovu se vyplní podle pravidla. Tento proces může trvat až 24 hodin.
 > - Oznámení o vypršení platnosti skupin používaných v týmech se zobrazí v informačním kanálu vlastník týmů.
+> - Pokud pro vybrané skupiny povolíte vypršení platnosti, můžete do seznamu přidat až 500 skupin. Pokud potřebujete přidat více než 500 skupin, můžete pro všechny své skupiny Povolit vypršení platnosti. V takovém případě se omezení skupiny 500 nepoužije.
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 

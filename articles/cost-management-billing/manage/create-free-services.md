@@ -7,16 +7,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: b475990a6b079de5e9ff01e52c2135f3c99a4f2f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 15c97640ab1f4e862aab0aff4b3965822daafb2b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055633"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219820"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Vytvoření služeb zahrnutých v bezplatném účtu Azure
 
-Během prvních 30 dnů od vytvoření bezplatného účtu Azure máte na fakturační měnu 200 USD, která se bude používat na jakékoli službě, s výjimkou nákupů na webu Marketplace třetích stran. Prostřednictvím bezplatného kreditu můžete experimentovat s různými úrovněmi a typy služeb Azure a vyzkoušet si práci s platformou Azure. Pokud používáte služby nebo prostředky Azure, které nejsou během této doby bezplatné, poplatky se odečítají od vašeho kreditu.
+Během prvních 30 dnů od vytvoření bezplatného účtu Azure máte USD200 kredit ve fakturační měně, který budete používat na jakékoli službě, s výjimkou nákupů na webu Marketplace třetích stran. Prostřednictvím bezplatného kreditu můžete experimentovat s různými úrovněmi a typy služeb Azure a vyzkoušet si práci s platformou Azure. Pokud používáte služby nebo prostředky Azure, které nejsou během této doby bezplatné, poplatky se odečítají od vašeho kreditu.
 
 Pokud svůj kredit nepoužijete do konce prvních 30 dnů, zmizí. Po uplynutí prvních 30 dnů až do 12 měsíců po registraci můžete používat omezené množství *některých služeb* – ne všechny služby Azure jsou bezplatné. Pokud před uplynutím prvních 30 dnů provedete upgrade a máte zbývající kredit, můžete jeho zbývající část využít po zbývající dny v rámci předplatného s průběžnými platbami. Pokud si například 1. listopadu zaregistrujete bezplatný účet a 5. listopadu ho upgradujete, můžete váš kredit v novém předplatném s průběžnými platbami využívat až do 30. listopadu. 
 

@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952333"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
@@ -34,7 +34,7 @@ Pokud používáte distribuci systému Linux, která není uvedená v předchoz�
 uname -r
 ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalovaný balíček CIFS-util.**  
@@ -250,22 +250,22 @@ Od verze Linux kernel 4,18 se modul jádra SMB, který se volá `cifs` z původn
 
 | Distribuce | Může zakázat protokol SMB 1. |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | Ne |
-| Ubuntu 18.04 | Ano |
-| Ubuntu 19.04 + | Ano |
-| Debian 8-9 | Ne |
-| Debian 10 + | Ano |
-| Fedora 29 + | Ano |
-| CentOS 7 | Ne | 
-| CentOS 8 + | Ano |
-| Red Hat Enterprise Linux 6. x-7. x | Ne |
-| Red Hat Enterprise Linux 8 + | Ano |
-| openSUSE, přestupné 15,0 | Ne |
-| openSUSE přestupné 15.1 + | Ano |
-| openSUSE Tumbleweed | Ano |
-| SUSE Linux Enterprise 11. x-12. x | Ne |
-| SUSE Linux Enterprise 15 | Ne |
-| SUSE Linux Enterprise 15,1 | Ne |
+| Ubuntu 14.04 – 16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE, přestupné 15,0 | No |
+| openSUSE přestupné 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15,1 | No |
 
 Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux podporuje `disable_legacy_dialects` parametr Module.
 

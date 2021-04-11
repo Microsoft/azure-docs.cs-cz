@@ -8,20 +8,20 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/05/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee767cbeafcce604ecb4a79ce0fdf21c70bbb47c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102210814"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219633"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro prostředky a pracovní postupy služby Azure Machine Learning
 
 
-Přečtěte si, jak nastavit ověřování pro váš pracovní prostor Azure Machine Learning. Ověřování do vašeho pracovního prostoru Azure Machine Learning je založené na __Azure Active Directory__ (Azure AD) pro většinu věcí. Obecně platí tři pracovní postupy pro ověřování, které můžete použít při připojování k pracovnímu prostoru:
+Přečtěte si, jak nastavit ověřování pro váš pracovní prostor Azure Machine Learning. Ověřování do vašeho pracovního prostoru Azure Machine Learning je založené na __Azure Active Directory__ (Azure AD) pro většinu věcí. Obecně platí tři ověřovací pracovní postupy, které můžete použít při připojování k pracovnímu prostoru:
 
 * __Interaktivní__: účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během _experimentů a iterativního vývoje_. Interaktivní ověřování umožňuje řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
 
@@ -70,12 +70,6 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
     Pokud máte více předplatných Azure, můžete `az account set -s <subscription name or ID>` k nastavení předplatného použít příkaz. Další informace najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
 
     Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
-
-1. Nainstalujte Azure Machine Learning rozšíření:
-
-    ```azurecli-interactive
-    az extension add -n azure-cli-ml
-    ```
 
 1. Vytvoření instančního objektu. V následujícím příkladu se vytvoří SP s názvem **ml-auth** :
 

@@ -3,12 +3,12 @@ title: Testování částí Azure Durable Functions
 description: Přečtěte si, jak Durable Functions testování částí.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe5a25e0296eb183ef2426e12f7bdee35633ec78
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491040"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076628"
 ---
 # <a name="durable-functions-unit-testing"></a>Testování částí Durable Functions
 
@@ -33,13 +33,13 @@ Příklady v tomto článku vyžadují znalost následujících konceptů a plat
 
 Napodobování se podporuje přes toto rozhraní:
 
-* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationClient), [IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.IDurableEntityClient) a [IDurableClient](/dotnet/api/microsoft.azure.webjobs.IDurableClient)
+* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient), [IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentityclient) a [IDurableClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableclient)
 
-* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationContext)
+* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext)
 
-* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.IDurableActivityContext)
+* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)
   
-* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.IDurableEntityContext)
+* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentitycontext)
 
 Tato rozhraní lze použít s různými triggery a vazbami, které podporuje Durable Functions. Při provádění Azure Functions spustí modul runtime Functions kód vaší funkce s konkrétní implementací těchto rozhraní. V případě testování částí můžete předat v poměrné verzi těchto rozhraní k otestování obchodní logiky.
 
