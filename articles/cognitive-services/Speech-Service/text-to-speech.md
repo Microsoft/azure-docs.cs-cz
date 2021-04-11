@@ -12,18 +12,18 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: převod textu na řeč
-ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449354"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106084"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na řeč, která umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči typu člověk. Vyberte si ze standardních nebo neuronové hlasů nebo vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici v rámci výběru počtu jazyků a národních prostředí. Úplný seznam podporovaných hlasů, jazyků a národních prostředí najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na řeč, která umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči typu člověk. Používejte hlasy neuronové, nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. Úplný seznam podporovaných hlasů, jazyků a národních prostředí najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 Tato dokumentace obsahuje následující typy článků:
 
@@ -42,8 +42,6 @@ Tato dokumentace obsahuje následující typy článků:
 
 * Asynchronní syntéza dlouhého zvuku – používá [rozhraní API dlouhého zvukového rozhraní](long-audio-api.md) k asynchronnímu syntetizování souborů přemluveného textu na řeč delší než 10 minut (například zvukové knihy nebo přednášky). Na rozdíl od syntézy prováděné pomocí sady Speech SDK nebo řeči-text REST API nevrátí odpovědi v reálném čase. Očekává se, že se požadavky odesílají asynchronně, odpovědi se dotazují na a že se při zpřístupnění ze služby stáhne syntetizované zvuky. Jsou podporovány pouze vlastní hlasy neuronové.
 
-* Standardní hlasy – vytvořené pomocí metod syntézy statistických ukazatelů nebo sloučení zřetězení. Tyto hlasy jsou vysoce srozumitelnější a zdravé přirozené. Můžete snadno povolit vašim aplikacím mluvit ve více než 45 jazycích, a to s využitím široké škály možností hlasu. Tyto hlasy poskytují přesnost na vysokou výslovnost, včetně podpory zkratek, rozšíření akronymů, výkladů data a času, telefonů a dalších. Úplný seznam standardních hlasů najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
-
 * Neuronové hlasy – špičkové sítě neuronové se používají k překonání limitů tradiční syntézy řeči s ohledem na zátěž a nevyužití v mluveném jazyce. Prosody předpověď a Hlasová syntéza se provádí současně, což vede k více kapalinovým a přirozeným výstupům. Hlasy neuronové se dají použít k zajištění většího přirozeného a poutavého působení chatovacích robotů o a hlasových asistentů, převodu digitálních textů, jako jsou například e-knihy na audiobooks, a k vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci se systémy AI. Úplný seznam hlasů pro neuronové najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 * Upravit styly speaking pomocí jazyka SSML-Speech syntézy (SSML) je značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Další informace najdete v tématu [postup](speech-synthesis-markup.md) pro úpravu stylu speaking.
@@ -51,7 +49,7 @@ Tato dokumentace obsahuje následující typy článků:
 * Visemes- [visemes](how-to-speech-synthesis-viseme.md) jsou klíčovým výsledkem pozorovaného hlasu, včetně pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném. Visemes mají silnou korelaci s hlasy a fonémy. Pomocí událostí viseme v sadě Speech SDK můžete vygenerovat data animace obličeje, která se dají použít k animování plošek v oblasti komunikace, vzdělávání, zábavy a zákaznických služeb v sadě LIP.
 
 > [!NOTE]
-> Viseme funguje jenom pro `en-US-AriaNeural` hlas.
+> Události viseme se v tuto chvíli podporují jenom pro `en-US-AriaNeural` hlasový vstup.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -66,7 +64,7 @@ Vzorový kód pro převod textu na řeč je k dispozici na GitHubu. Tyto ukázky
 
 ## <a name="customization"></a>Přizpůsobení
 
-Kromě standardních a neuronové hlasů můžete vytvářet a doladit vlastní hlasy, které jsou pro váš produkt nebo značku jedinečné. Vše, co vše trvá, je několik zvukových souborů a přidružených přepisů. Další informace najdete v tématu [Začínáme s vlastním hlasem](how-to-custom-voice.md) .
+Kromě hlasů neuronové můžete vytvářet a doladit vlastní hlasy, které jsou pro váš produkt nebo značku jedinečné. Vše, co vše trvá, je několik zvukových souborů a přidružených přepisů. Další informace najdete v tématu [Začínáme s vlastním hlasem](how-to-custom-voice.md) .
 
 ## <a name="pricing-note"></a>Poznámka k ceně
 

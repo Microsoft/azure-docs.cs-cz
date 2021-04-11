@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/01/2021
+ms.date: 04/06/2021
 ms.author: yashar
-ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a6ddcef1493f15442a723bcc93850e6197db84d8
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030697"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285594"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů
 
@@ -39,6 +39,7 @@ Koupíte rezervovanou instanci virtuálního počítače s velikostí Standard_D
 - Scénář 1: spuštění osmi 8 Standard_DS1_v2 virtuálních počítačů s poměrem 1. Vaše sleva na rezervaci se vztahuje na všechny 8 těchto virtuálních počítačů.
 - Scénář 2: spuštění dvou virtuálních počítačů velikosti Standard_DS2_v2 s poměrem 2. Také spusťte virtuální počítač velikosti Standard_DS3_v2 s poměrem 4. Celkové nároky jsou 2 + 2 + 4 = 8. Proto se sleva vaší rezervace vztahuje na všechny tři tyto virtuální počítače.
 - Scénář 3: spuštění jednoho Standard_DS5_v2 s poměrem 16. Vaše sleva za rezervaci se vztahuje na polovinu výpočetních nákladů tohoto virtuálního počítače.
+- Scénář 4: spusťte jeden Standard_DS5_v2 s poměrem 16 a Zakupte další Standard_DS4_v2 rezervaci s poměrem 8. Obě rezervace kombinují a aplikují slevu na celý virtuální počítač.
 
 V následujících částech se dozvíte, jaké velikosti jsou ve stejné skupině řad, když koupíte rezervovanou instanci virtuálního počítače optimalizovanou pro flexibilitu velikosti instance.
 

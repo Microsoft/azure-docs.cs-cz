@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/28/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6a2d7ad92c209a93d740d60808c2cbd2f90c6b4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574638"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258414"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu. V tomto článku se dozvíte, jak vytvořit svazek, který využívá duální protokol NFSv3 a SMB s podporou mapování uživatelů LDAP.  
+Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu. V tomto článku se dozvíte, jak vytvořit svazek, který využívá duální protokol NFSv3 a SMB s podporou mapování uživatelů LDAP. 
 
+Pokud chcete vytvořit svazky systému souborů NFS, přečtěte si téma [vytvoření svazku NFS](azure-netapp-files-create-volumes.md). Pokud chcete vytvořit svazky SMB, přečtěte si téma [vytvoření svazku SMB](azure-netapp-files-create-volumes-smb.md). 
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -39,7 +40,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Ujistěte se, že je klient NFS aktuální a že používá nejnovější aktualizace pro daný operační systém.
 * Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
-* Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
+* Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS). Pokud používáte AADDS, nesmí být protokol LDAP over TLS povolený.
 * Verze systému souborů NFS používaná svazkem s duálním protokolem je NFSv3. V takovém případě platí následující požadavky:
     * Duální protokol nepodporuje rozšířené atributy seznamů ACL systému Windows `set/get` z klientů systému souborů NFS.
     * Klienti NFS nemohou měnit oprávnění pro styl zabezpečení systému souborů NTFS a klienti systému Windows nemohou měnit oprávnění pro svazky s duálním protokolem ve stylu UNIX.   
@@ -121,6 +122,17 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
  
     Svazek dědí atributy předplatného, skupiny prostředků a umístění z fondu kapacity. Stav nasazení svazku můžete monitorovat na kartě Oznámení.
 
+## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>Povolení místního uživatele systému souborů NFS s protokolem LDAP pro přístup ke svazku se dvěma protokoly 
+
+Pro přístup ke svazku se dvěma protokoly, který má povolenou možnost LDAP s rozšířenými skupinami, můžete povolit uživatele místního klienta NFS, kteří nejsou k dispozici na serveru Windows LDAP. Provedete to tak, že povolíte možnost **Povolit místní uživatele NFS s protokolem LDAP** následujícím způsobem:
+
+1. Klikněte na **připojení služby Active Directory**.  V existujícím připojení služby Active Directory klikněte na místní nabídku (tři tečky `…` ) a vyberte **Upravit**.  
+
+2. V okně **Upravit nastavení služby Active Directory** , které se zobrazí, vyberte možnost **Povolení místních uživatelů NFS s protokolem LDAP** .  
+
+    ![Snímek obrazovky zobrazující možnost povolení místních uživatelů systému souborů NFS s protokolem LDAP](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
+
+
 ## <a name="manage-ldap-posix-attributes"></a>Správa atributů LDAP POSIX
 
 Pomocí modulu snap-in konzoly MMC Uživatelé a počítače služby Active Directory můžete spravovat atributy POSIX, jako je UID, domovský adresář a další hodnoty.  Následující příklad ukazuje Editor atributů služby Active Directory:  
@@ -129,9 +141,9 @@ Pomocí modulu snap-in konzoly MMC Uživatelé a počítače služby Active Dire
 
 Pro uživatele LDAP a skupiny LDAP musíte nastavit následující atributy: 
 * Požadované atributy pro uživatele LDAP:   
-    `uid`: Alice, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * Požadované atributy pro skupiny LDAP:   
-    `objectClass`: "POSIX", `gidNumber` : 555
+    `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>Konfigurace klienta NFS 
 
@@ -141,3 +153,4 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 * [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md)
 * [Řešení potíží se svazky SMB nebo Dual-Protocol](troubleshoot-dual-protocol-volumes.md)
+* [Řešení potíží se svazkem LDAP](troubleshoot-ldap-volumes.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 492571ac76acfcf388954a4b714b6603aced7338
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91708539"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107665"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
 
@@ -58,7 +58,7 @@ Všechny podmínky Microsoft Azure Marketplace smluv a zásad se vztahují na na
 
 Chcete-li publikovat modul IoT Edge do Azure Marketplace, je nutné splnit následující požadavky:
 
-- Přístup k partnerskému centru. Další informace najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](partner-center-portal/create-account.md).
+- Přístup k partnerskému centru. Další informace najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](create-account.md).
 - Hostování modulu IoT Edge v Azure Container Registry.
 - Připravte si metadata modulu IoT Edge, například (nevyčerpávající seznam):
     - Název

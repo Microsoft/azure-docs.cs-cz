@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8435cab1855e9df871d17ff7fa393b6ab2cf0cb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f07e9dbd574d8a27e6048154c72b9afc24b6ba4
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736335"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s konzolou správce Netskope
 
@@ -37,13 +37,12 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Konzola správce Netskope podporuje jednotné přihlašování (SSO) **IDP** .
+* Konzola pro správu Netskope podporuje **aktualizace SP a IDP** iniciované jednotného přihlašování.
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
-
-## <a name="adding-netskope-administrator-console-from-the-gallery"></a>Přidání konzoly správce Netskope z Galerie
+## <a name="add-netskope-administrator-console-from-the-gallery"></a>Přidání konzoly správce Netskope z Galerie
 
 Pokud chcete nakonfigurovat integraci konzoly pro správu Netskope do služby Azure AD, musíte přidat konzolu správce Netskope z Galerie do svého seznamu spravovaných aplikací SaaS.
 
@@ -142,19 +141,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V levém navigačním podokně klikněte na kartu **Nastavení** .
 
-    ![Snímek obrazovky se zobrazeným nastavením vybraným v navigačním podokně.](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Snímek obrazovky se zobrazeným nastavením vybraným v navigačním podokně.](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. Klikněte na kartu **Správa** .
 
-    ![Snímek obrazovky se zobrazí Správa vybraná z nastavení.](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![Snímek obrazovky se zobrazí Správa vybraná z nastavení.](./media/netskope-cloud-security-tutorial/administration.png)
 
 1. Klikněte na kartu **jednotné přihlašování** .
 
-    ![Snímek obrazovky S vybraným v administrativním zobrazení.](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![Snímek obrazovky S vybraným v administrativním zobrazení.](./media/netskope-cloud-security-tutorial/tab.png)
 
 1. V části **nastavení sítě** proveďte následující kroky:
     
-    ![Snímek obrazovky zobrazuje nastavení sítě, kde můžete zadat hodnoty, které jsou popsány.](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![Snímek obrazovky zobrazuje nastavení sítě, kde můžete zadat hodnoty, které jsou popsány.](./media/netskope-cloud-security-tutorial/network.png)
 
     a. Zkopírujte hodnotu **adresy URL služby assertion Consumer Service** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -162,7 +161,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V části **nastavení jednotného přihlašování/slo** klikněte na **Upravit nastavení** .
 
-    ![Snímek obrazovky ukazuje nastavení s S/S v, kde můžete vybrat upravit nastavení.](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![Snímek obrazovky ukazuje nastavení s S/S v, kde můžete vybrat upravit nastavení.](./media/netskope-cloud-security-tutorial/settings.png)
 
 1. V místním okně **Nastavení** proveďte následující kroky:
 
@@ -188,11 +187,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V levém navigačním podokně klikněte na kartu **Nastavení** .
 
-    ![Snímek obrazovky zobrazuje vybraná nastavení.](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Snímek obrazovky zobrazuje vybraná nastavení.](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. Klikněte na kartu **Aktivní platforma** .
 
-    ![Snímek obrazovky se zobrazí aktivní Platforma vybraná z nastavení.](./media/netskope-cloud-security-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí aktivní Platforma vybraná z nastavení.](./media/netskope-cloud-security-tutorial/user-1.png)
 
 1. Klikněte na kartu **Uživatelé** .
 

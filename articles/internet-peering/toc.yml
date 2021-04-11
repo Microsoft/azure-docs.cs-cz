@@ -20,6 +20,8 @@
       href: walkthrough-exchange-all.md
     - name: Podrobný průvodce programem Peering Service Partner
       href: walkthrough-peering-service-all.md
+    - name: Návod pro partnery komunikačních služeb
+      href: walkthrough-communications-services-partner.md
     - name: Přidružení partnerského čísla ASN k předplatnému Azure
       items:
         - name: Portál

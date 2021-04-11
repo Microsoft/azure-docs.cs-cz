@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53878384f4eb056f0cb23ec9005043ac26c8fad2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521964"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492557"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Rychlý Start: použití Azure Portal k vytvoření Azure Database for MySQL flexibilního serveru
 
@@ -51,11 +51,14 @@ K vytvoření flexibilního serveru proveďte tyto kroky:
     Předplatné|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, vyberte předplatné, ve kterém se má prostředek fakturovat.|
     Skupina prostředků|**myresourcegroup**| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.|
     Název serveru |**mydemoserver**|Jedinečný název, který identifikuje flexibilní Server. Název domény `mysql.database.azure.com` se připojí k názvu serveru, který zadáte. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.|
+    Oblast|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
+    Typ úlohy| Vývoj | V případě produkčních úloh můžete zvolit malou, střední nebo velkou velikost v závislosti na [MAX_CONNECTIONS](concepts-server-parameters.md#max_connections) požadavcích.|
+    Zóna dostupnosti| Žádná předvolba | Pokud se vaše aplikace na virtuálních počítačích Azure, službě Virtual Machine Scale Sets nebo instanci AKS zřídí v konkrétní zóně dostupnosti, můžete zadat flexibilní Server ve stejné zóně dostupnosti, do které se společné umístění aplikace a databáze, aby se zlepšil výkon vydělením latence sítě napříč zónami.|
+    Vysoká dostupnost| Výchozí | U produkčních serverů důrazně doporučujeme povolit redundantní vysokou dostupnost zóny (HA) pro zajištění kontinuity podnikových aplikací a ochranu před selháními zón.|
+    Verze MySQL|**5.7**| Hlavní verze MySQL.|
     Uživatelské jméno správce |**mydemouser**| Vlastní přihlašovací účet, který se má použít, když se připojujete k serveru. Uživatelské jméno správce nemůže být **azure_superuser**, **admin**, **Administrator**, **root**, **Guest** ani **Public**.|
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Musí také obsahovat znaky ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #,% atd.).|
-    Oblast|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
-    Verze|**5.7**| Hlavní verze MySQL.|
-    Výpočty + úložiště | **Shluky**, **Standard_B1ms**, **10 GIB**, **7 dní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. Pro **výpočetní vrstvu**, **výpočetní velikost**, **velikost úložiště** a **dobu uchovávání** záloh jsou výchozí hodnoty pro **Standard_B1ms**, **10 GIB** a **7 dní** . Tyto hodnoty můžete ponechat beze změny nebo je upravit. Pokud chcete uložit výběr výpočtů a úložišť, vyberte **Uložit** a pokračujte v konfiguraci. Následující snímek obrazovky ukazuje možnosti výpočtů a úložiště.|
+    Výpočty + úložiště | **Shluky**, **Standard_B1ms**, **10 GIB**, **100 IOPS**, **7 dní** | Konfigurace výpočtů, úložiště, IOPS a zálohování pro nový server. Vyberte **Konfigurovat Server**. Pro **výpočetní vrstvu**, **výpočetní velikost**, **velikost úložiště**, **iops** a **dobu uchovávání** záloh jsou k **disStandard_B1ms**, **10**– **100 IOPS** a **7 dní** výchozí hodnoty. Tyto hodnoty můžete ponechat beze změny nebo je upravit. V případě rychlejšího načítání dat během migrace se doporučuje zvýšit počet vstupně-výstupních operací na maximální velikost podporovanou výpočetní velikostí a později ji škálovat zpět na úsporu nákladů. Pokud chcete uložit výběr výpočtů a úložišť, vyberte **Uložit** a pokračujte v konfiguraci. Následující snímek obrazovky ukazuje možnosti výpočtů a úložiště.|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Snímek obrazovky zobrazující možnosti výpočtů a úložiště":::
 
@@ -89,16 +92,21 @@ Pokud jste vytvořili flexibilní Server pomocí privátního přístupu (Integr
 
 Pokud jste vytvořili flexibilní Server pomocí veřejného přístupu (povolených IP adres), můžete přidat místní IP adresu do seznamu pravidel brány firewall na serveru. Podrobné pokyny najdete v [dokumentaci k vytvoření nebo správě pravidel brány firewall](how-to-manage-firewall-portal.md) .
 
-K připojení serveru z místního prostředí můžete použít buď [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) , nebo [MySQL Workbench](./connect-workbench.md) . 
+K připojení serveru z místního prostředí můžete použít buď [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) , nebo [MySQL Workbench](./connect-workbench.md) . Azure Database for MySQL flexibilní Server podporuje připojení klientských aplikací ke službě MySQL pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). TLS je průmyslový standardní protokol, který zajišťuje šifrovaná síťová připojení mezi databázovým serverem a klientskými aplikacemi, což vám umožní dodržovat požadavky na dodržování předpisů. Pokud se chcete připojit k serveru MySQL Flexible, budete muset stáhnout [veřejný certifikát SSL](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) pro ověření certifikační autority.
+
+Následující příklad ukazuje, jak se připojit k flexibilnímu serveru pomocí rozhraní příkazového řádku MySQL. Pokud už není nainstalovaný, nainstaluje se příkaz MySQL Command-line. Budete si stahovat certifikát DigiCertGlobalRootCA potřebný pro připojení SSL. Pro vymáhání ověření certifikátu TLS/SSL použijte nastavení--SSL-Mode = požadované připojovací řetězec. Předat cestu k místnímu souboru certifikátu k parametru--SSL-CA. Nahraďte hodnoty skutečným názvem serveru a heslem.
 
 ```bash
+sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
 Pokud jste zřídili flexibilní Server pomocí **veřejného přístupu**, můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash) pro připojení k flexibilnímu serveru pomocí předem nainstalovaného klienta MySQL, jak je znázorněno níže:
 
-Aby bylo možné použít Azure Cloud Shell k připojení k flexibilnímu serveru, bude potřeba, abyste povolili přístup k síti z Azure Cloud Shell k flexibilnímu serveru. Chcete-li to dosáhnout, můžete přejít do okna **sítě** v Azure Portal pro váš flexibilní Server MySQL a zaškrtnout políčko v části **Brána firewall** , které uvádí, "povolení veřejného přístupu z jakékoli služby Azure v rámci Azure na tento server" a kliknutím na Uložit zachovat nastavení.
+Aby bylo možné použít Azure Cloud Shell k připojení k flexibilnímu serveru, bude potřeba, abyste povolili přístup k síti z Azure Cloud Shell k flexibilnímu serveru. Chcete-li to dosáhnout, můžete přejít do okna **sítě** v Azure Portal pro váš flexibilní Server MySQL a zaškrtnout políčko v části **Brána firewall** , které uvádí, "povolení veřejného přístupu z jakékoli služby Azure v rámci Azure na tento server", jak je znázorněno na následujícím snímku obrazovky, a kliknutím na Uložit nastavení zachovat.
+
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Snímek obrazovky, který ukazuje, jak Azure Cloud Shell přístup k síti MySQL flexibilnímu serveru pro konfiguraci sítě veřejného přístupu.":::
 
 > [!NOTE]
 > Zaškrtnutím **tohoto seznamu povolíte veřejný přístup z jakékoli služby Azure v rámci Azure do tohoto serveru** , který se má použít jenom pro vývoj nebo testování. Nakonfiguruje bránu firewall tak, aby povolovala připojení z IP adres přidělených libovolné službě nebo prostředku Azure, včetně připojení z předplatných ostatních zákazníků.
@@ -109,6 +117,9 @@ Klikněte na tlačítko **vyzkoušet** a spusťte Azure Cloud Shell a pomocí n�
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+> [!IMPORTANT]
+> Při připojování k flexibilnímu serveru pomocí Azure Cloud Shell budete muset použít parametr--SSL = true a ne--SSL-Mode = REQUIRED.
+> Primárním důvodem je Azure Cloud Shell, který se dodává s předinstalovaným mysql.exe klientem z distribuce MariaDB, která vyžaduje parametr--SSL, zatímco klient MySQL od distribuce Oracle vyžaduje parametr--SSL-Mode.
 
 Pokud se během připojování k flexibilnímu serveru, který jste použili dříve, zobrazí následující chybová zpráva, nezmeškali jste nastavení pravidla brány firewall pomocí příkazu "povolení veřejného přístupu z jakékoli služby Azure v rámci Azure na tento server" zmíněného dřív, nebo když se možnost neuloží. Zkuste prosím nastavit bránu firewall a zkuste to znovu.
 

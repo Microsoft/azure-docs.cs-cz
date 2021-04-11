@@ -237,6 +237,8 @@
               href: storage-files-migration-nas-hybrid.md
             - name: Migrace z místního serveru NAS do hybridního souborového serveru pomocí DataBox
               href: storage-files-migration-nas-hybrid-databox.md
+            - name: Migrace z místního serveru NAS do sdílených složek Azure pomocí DataBox
+              href: storage-files-migration-nas-cloud-databox.md
         - name: Ze StorSimple
           items:
             - name: Průvodce migrací StorSimple 8100 a 8600

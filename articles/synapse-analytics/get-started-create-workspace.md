@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: a4fa902268d9a19cd0003a2fdaa4c5e58989a4ff
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f186acbe030dcbb0c2bad22586a8b2a5d1aa520d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218936"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259791"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -64,6 +64,16 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 
 * Otevřete pracovní prostor synapse v [Azure Portal](https://portal.azure.com)v části **Přehled** v pracovním prostoru synapse vyberte **otevřít** v dialogovém okně Otevřít synapse Studio.
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
+
+## <a name="place-sample-data-into-the-primary-storage-account"></a>Vložení ukázkových dat do primárního účtu úložiště
+Pro mnoho příkladů v této příručce Začínáme budeme používat malou datovou sadu ukázek 100 tisíc řádků NYX taxislužby. Začneme tak, že ho umístíte do primárního účtu úložiště, který jste vytvořili pro daný pracovní prostor.
+
+* Stáhněte si tento soubor do počítače: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
+* V synapse Studiio přejděte do centra dat. 
+* Klikněte na možnost **propojeno**.
+* V kategorii **Azure Data Lake Storae Gen2** uvidíte položku s názvem jako **MyWorkspace (primární-contosolake)** .
+* Klikněte na kontejner s názvem **Uživatelé (primární)** .
+* Klikněte na **nahrát** a vyberte `NYCTripSmall.parquet` soubor, který jste stáhli.
 
 ## <a name="next-steps"></a>Další kroky
 

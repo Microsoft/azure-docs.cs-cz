@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2f044ab267365885260b031638572846184bc83
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698140"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063181"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurace Azure Defenderu pro úložiště
 
@@ -50,7 +50,7 @@ Službu Azure Defender pro úložiště můžete nakonfigurovat libovolným z n�
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
-Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Azure Defender se automaticky nastaví na všechny vaše účty úložiště. Můžete povolit nebo zakázat Azure Defender pro účty úložiště v rámci určitého předplatného následujícím způsobem:
+Azure Defender je integrovaný do Azure Security Center. Když v předplatném povolíte Azure Defender, bude se Azure Defender pro Azure Storage automaticky povolit pro všechny vaše účty úložiště. Můžete povolit nebo zakázat Azure Defender pro účty úložiště v rámci určitého předplatného následujícím způsobem:
 
 1. Spusťte **Azure Security Center** v [Azure Portal](https://portal.azure.com).
 1. V hlavní nabídce vyberte v části **Správa** možnost **cenové & nastavení**.
@@ -94,20 +94,38 @@ Pomocí Azure Policy můžete povolit Azure Defender napříč účty úložišt
 
     :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Přiřazení zásady pro povolení služby Azure Defender pro úložiště":::
 
-### <a name="rest-api"></a>[REST API](#tab/rest-api)
-
-Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení Azure Defenderu pro konkrétní účet úložiště.
-
-- [Rozšířená ochrana před internetovými útoky – vytvořit](/rest/api/securitycenter/advancedthreatprotection/create)
-- [Rozšířená ochrana před internetovými útoky – získání](/rest/api/securitycenter/advancedthreatprotection/get)
-
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Použijte následující rutiny PowerShellu:
+Pokud chcete povolit Azure Defender pro účet úložiště pomocí PowerShellu, nejdřív se ujistěte, že máte nainstalovaný modul [AZ. Security](https://www.powershellgallery.com/packages/Az.Security) . Dále zavolejte příkaz [Enable-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection) . Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
-- [Povolit rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Získat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Zakázat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+```azurepowershell
+Enable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+Pokud chcete zjistit nastavení Azure Defenderu pro účet úložiště pomocí PowerShellu, zavolejte příkaz [Get-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/get-azsecurityadvancedthreatprotection) . Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```azurepowershell
+Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete povolit Azure Defender pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Security ATP Storage Update](/cli/azure/security/atp/storage#az_security_atp_storage_update) . Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```azurecli
+az security atp storage update \
+    --resource-group <resource-group> \
+    --storage-account <storage-account> \
+    --is-enabled true
+```
+
+Pokud chcete zjistit nastavení Azure Defenderu pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Security ATP Storage show](/cli/azure/security/atp/storage#az_security_atp_storage_show) . Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```azurecli
+az security atp storage show \
+    --resource-group <resource-group> \
+    --storage-account <storage-account>
+```
 
 ---
 
@@ -137,5 +155,6 @@ Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o p�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- Další informace o [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Úvod do Azure Defenderu pro úložiště](../../security-center/defender-for-storage-introduction.md)
+- [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Protokoly v Azure Storage účty](/rest/api/storageservices/About-Storage-Analytics-Logging)

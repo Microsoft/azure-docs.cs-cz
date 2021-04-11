@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108328"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259825"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -32,20 +32,16 @@ V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat 
 
 ## <a name="understanding-serverless-apache-spark-pools"></a>Principy Apache Sparkch fondů bez serveru
 
-Fond Spark bez serveru je způsob, jak určit, jak chce uživatel pracovat se Sparkem. Když začnete používat fond, v případě potřeby se vytvoří relace Spark. Fond řídí, kolik prostředků Sparku bude tato relace používat, a jak dlouho bude relace před automatickým pozastavením trvat. Platíte za prostředky Spark používané během této relace, nikoli pro samotný fond. Tímto způsobem fond Spark vám umožní pracovat se Sparkem, aniž by se museli starat o správu clusterů. To se podobá tomu, jak funguje fond SQL bez serveru.
+Fond Spark bez serveru je způsob, jak určit, jak chce uživatel pracovat se Sparkem. Když začnete používat fond, v případě potřeby se vytvoří relace Spark. Fond řídí, kolik prostředků Sparku bude tato relace používat, a jak dlouho bude relace poslední, než se automaticky pozastaví. Platíte za prostředky Spark používané během této relace, nikoli pro samotný fond. Tímto způsobem fond Spark vám umožní pracovat se Sparkem, aniž by se museli starat o správu clusterů. To se podobá tomu, jak funguje fond SQL bez serveru.
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analýza dat NYC taxislužby v BLOB Storage pomocí Sparku
 
-1. V synapse studiu přejít do centra pro **vývoj**
+1. V synapse studiu přejdete do centra pro **vývoj** .
 2. Vytvoří nový Poznámkový blok s výchozí jazykovou sadou nastavenou na **PySpark (Python)**.
 3. Vytvořte novou buňku kódu a vložte do ní následující kód.
     ```py
     %%pyspark
-    from azureml.opendatasets import NycTlcYellow
-
-    data = NycTlcYellow()
-    df = data.to_spark_dataframe()
-    # Display 10 rows
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
 1. V poznámkovém bloku vyberte v nabídce **připojit k** **Spark1** fond Spark bez serveru, který jsme vytvořili dříve.
@@ -60,7 +56,7 @@ Fond Spark bez serveru je způsob, jak určit, jak chce uživatel pracovat se Sp
 
 Data jsou k dispozici prostřednictvím datového rámce s názvem **data**. Načtěte ho do databáze Spark s názvem **nyctaxi**.
 
-1. Přidejte do poznámkového bloku nový a potom zadejte následující kód:
+1. Do poznámkového bloku přidejte novou buňku kódu a pak zadejte následující kód:
 
     ```py
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b46efa53bba3b845fa5837b91a3707f4a85d298e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98659933"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258771"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení v Azure Database for MariaDB
 
@@ -19,33 +19,47 @@ Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v 
 
 ## <a name="backups"></a>Zálohování
 
-Azure Database for MariaDB zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
+Azure Database for MariaDB přebírá zálohy datových souborů a transakčního protokolu. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete [nakonfigurovat](howto-restore-server-portal.md#set-backup-configuration) až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
-Tyto záložní soubory nejsou přístupné uživatelům a není možné je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MariaDB. Pomocí [mysqldump](howto-migrate-dump-restore.md) můžete zkopírovat databázi.
+Tyto záložní soubory nejsou přístupné uživatelům a není možné je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MySQL. Pomocí [mysqldump](howto-migrate-dump-restore.md) můžete zkopírovat databázi.
 
-### <a name="backup-frequency"></a>Frekvence zálohování
+Typ a četnost zálohování závisí na úložišti back-endu serverů.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Servery s úložištěm až 4 TB
+### <a name="backup-type-and-frequency"></a>Typ a frekvence zálohování
 
-Pro servery, které podporují až 4 TB maximálního úložiště, se k úplným zálohám dochází každý týden. Rozdílové zálohy se vyskytují dvakrát denně. Zálohování transakčních protokolů probíhá každých pět minut.
+#### <a name="basic-storage-servers"></a>Servery úrovně Basic Storage
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Servery s až 16 TB úložiště
-V podmnožině [oblastí Azure](concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové. 
+Základní úložiště je back-end úložiště podporující [servery základních vrstev](concepts-pricing-tiers.md). Zálohy na základních serverech úložiště jsou založené na snímcích. Celý snímek databáze se provádí denně. Pro základní servery úložiště nejsou prováděny žádné rozdílové zálohy a zálohy všech snímků jsou pouze úplné zálohy databáze.
 
-Rozdílové zálohování snímků se provádí alespoň jednou denně. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MariaDB) překračuje 50 GB od poslední rozdílové zálohy. Každý den je možné provést rozdílové zálohování snímků maximálně šestkrát. 
+Zálohování transakčních protokolů probíhá každých pět minut.
 
-Zálohování transakčních protokolů probíhá každých pět minut. 
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Servery úložiště pro obecné účely s úložištěm s kapacitou až 4 TB
+
+Úložiště pro obecné účely je úložiště back-endu podporující [pro obecné účely](concepts-pricing-tiers.md) a [paměťově optimalizovanou úroveň](concepts-pricing-tiers.md) serveru. U serverů s úložištěm pro obecné účely až do 4 TB dojde k úplnému zálohování v každém týdnu. Rozdílové zálohy se vyskytují dvakrát denně. Zálohování transakčních protokolů probíhá každých pět minut. Zálohy v úložišti pro obecné účely až do 4 TB úložiště nejsou založené na snímcích a v době zálohování nevyužívají propustnost v/v. U rozsáhlých databází (> 1 TB) na 4 TB úložiště doporučujeme zvážit
+
+- Zřizování dalších IOPs pro účet pro zálohování IOs nebo
+- Případně můžete migrovat na úložiště pro obecné účely, které podporuje až 16 TB úložiště, pokud je v preferovaných [oblastech Azure](./concepts-pricing-tiers.md#storage)dostupná základní infrastruktura úložiště. Pro účely úložiště pro obecné účely, který podporuje až 16 TB úložiště, se neúčtují žádné další náklady. Pokud potřebujete pomoc s migrací do úložiště o 16 TB, otevřete prosím lístek podpory z Azure Portal.
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Servery úložiště pro obecné účely s úložištěm až 16 TB
+
+V podmnožině [oblastí Azure](./concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](concepts-pricing-tiers.md#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
+
+Rozdílové zálohování snímků se provádí alespoň jednou denně. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MariaDB) překračuje 50 GB od poslední rozdílové zálohy. Každý den je možné provést rozdílové zálohování snímků maximálně šestkrát.
+
+Zálohování transakčních protokolů probíhá každých pět minut.
+ 
 
 ### <a name="backup-retention"></a>Uchování záloh
 
 Zálohy se uchovávají na základě nastavení období uchovávání záloh na serveru. Můžete vybrat dobu uchování 7 až 35 dní. Výchozí doba uchování je 7 dní. Dobu uchování během vytváření serveru nebo později můžete nastavit tak, že aktualizujete konfiguraci zálohování pomocí [Azure Portal](howto-restore-server-portal.md#set-backup-configuration) nebo rozhraní příkazového [řádku Azure CLI](howto-restore-server-cli.md#set-backup-configuration). 
 
 Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v čase dá načíst, protože je založené na dostupných zálohách. Období uchovávání záloh lze také považovat za okno obnovení z perspektivy obnovení. Všechny zálohy potřebné k provedení obnovení k určitému bodu v čase v rámci období uchovávání záloh jsou uchovávány v úložišti záloh. Pokud je například doba uchovávání záloh nastavená na 7 dní, okno obnovení se považuje za posledních 7 dní. V tomto scénáři jsou zachovány všechny zálohy potřebné k obnovení serveru za posledních 7 dní. Okno uchování zálohy po dobu sedmi dnů:
+
 - Servery s úložištěm až 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
 -   Servery s až 16 TB úložiště uchovávají úplný snímek databáze, všechny rozdílové snímky a zálohy protokolů transakcí za posledních 8 dní.
 
 #### <a name="long-term-retention-of-backups"></a>Dlouhodobé uchovávání záloh
-Dlouhodobá doba uchovávání záloh přesahujících 35 dnů zatím není službou nativně podporována. Máte možnost použít mysqldump k vytvoření zálohy a jejich uložení na dlouhodobé uchovávání. Náš tým podpory blogged [krok za](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) krokem ke sdílení toho, jak ho můžete dosáhnout. 
+Dlouhodobá doba uchovávání záloh přesahujících 35 dní není v tuto chvíli službou nativně podporována. Máte možnost použít mysqldump k ukládání záloh a jejich uložení na dlouhodobé uchovávání. Náš tým podpory blogged [krok za](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) krokem ke sdílení toho, jak ho můžete dosáhnout. 
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 

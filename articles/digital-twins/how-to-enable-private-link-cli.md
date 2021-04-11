@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4dab08983fc1348ca49e728a65d48aa65fe19a47
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102202939"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105710"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Povolit privátní přístup pomocí privátního odkazu (Preview): Azure CLI
 
@@ -53,21 +53,21 @@ az network private-endpoint create --connection-name {private_link_service_conne
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>Správa připojení privátního koncového bodu na instanci
 
-Po vytvoření privátního koncového bodu pro instanci digitálních vláken Azure můžete použít příkazy [**AZ DT Network Private-Endpoint Connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) , abyste mohli dál spravovat **připojení** privátních koncových bodů s ohledem na instanci. Operace zahrnují:
+Po vytvoření privátního koncového bodu pro instanci digitálních vláken Azure můžete použít příkazy [**AZ DT Network Private-Endpoint Connection**](/cli/azure/dt/network/private-endpoint/connection) , abyste mohli dál spravovat **připojení** privátních koncových bodů s ohledem na instanci. Operace zahrnují:
 * Zobrazit připojení privátního koncového bodu
 * Nastavení stavu připojení privátního koncového bodu
 * Odstranit připojení privátního koncového bodu
 * Zobrazit seznam všech připojení privátního koncového bodu pro instanci
 
-Další informace a příklady najdete v [dokumentaci **AZ DT Network Private-Endpoint** reference](/cli/azure/ext/azure-iot/dt/network/private-endpoint).
+Další informace a příklady najdete v [dokumentaci **AZ DT Network Private-Endpoint** reference](/cli/azure/dt/network/private-endpoint).
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Správa dalších informací o privátních odkazech v instanci digitálních vláken Azure
 
-Další informace o stavu privátního propojení vaší instance můžete získat pomocí příkazů [**AZ DT Network Private-Link**](/cli/azure/ext/azure-iot/dt/network/private-link) . Operace zahrnují:
+Další informace o stavu privátního propojení vaší instance můžete získat pomocí příkazů [**AZ DT Network Private-Link**](/cli/azure/dt/network/private-link) . Operace zahrnují:
 * Výpis privátních odkazů přidružených k instanci digitálních vláken Azure
 * Zobrazit privátní odkaz přidružený k instanci
 
-Další informace a příklady najdete v [referenční dokumentaci **AZ DT Network Private-Link**](/cli/azure/ext/azure-iot/dt/network/private-link).
+Další informace a příklady najdete v [referenční dokumentaci **AZ DT Network Private-Link**](/cli/azure/dt/network/private-link).
 
 ## <a name="disable--enable-public-network-access-flags"></a>Zakázat/povolit příznaky přístupu k veřejné síti
 
@@ -79,7 +79,7 @@ V tomto článku se dozvíte, jak aktualizovat hodnotu příznaku sítě pomocí
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-V rozhraní příkazového řádku Azure můžete zakázat nebo povolit přístup k veřejné síti přidáním `--public-network-access` parametru do `az dt create` příkazu. I když tento příkaz lze také použít k vytvoření nové instance, můžete ji použít k úpravě vlastností existující instance zadáním názvu instance, která již existuje. (Další informace o tomto příkazu najdete v [referenční dokumentaci](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) nebo v [obecných pokynech k nastavení instance digitálního vlákna Azure](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
+V rozhraní příkazového řádku Azure můžete zakázat nebo povolit přístup k veřejné síti přidáním `--public-network-access` parametru do `az dt create` příkazu. I když tento příkaz lze také použít k vytvoření nové instance, můžete ji použít k úpravě vlastností existující instance zadáním názvu instance, která již existuje. (Další informace o tomto příkazu najdete v [referenční dokumentaci](/cli/azure/dt#az_dt_create) nebo v [obecných pokynech k nastavení instance digitálního vlákna Azure](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
 
 Pokud chcete **Zakázat** přístup k veřejné síti pro instanci digitálních vláken Azure, použijte `--public-network-access` jako příklad tento parametr:
 

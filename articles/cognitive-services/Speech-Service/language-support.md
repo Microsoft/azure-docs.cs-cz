@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9be9e9b4c5153776bd78675cdc0c9da8c0506f75
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106764"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256153"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -38,7 +38,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Jazyk                 | Národní prostředí (BCP-47) | Vlastní nastavení  | [Rozpoznávání jazyka](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Text                                   | Yes                           | 
+| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Text                                   |                           | 
 | Arabština (Egypt)                     | `ar-EG` | Text                                   | Yes                          |
 | Arabština (Irák)                      | `ar-IQ` | Text                                   |                           |
 | Arabština (Izrael)                    | `ar-IL` | Text                                   |                           |
@@ -47,9 +47,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabština (Libanon)                   | `ar-LB` | Text                                   |                           |
 | Arabština (Omán)                      | `ar-OM` | Text                                   |                           |
 | Arabština (Katar)                     | `ar-QA` | Text                                   |                           |
-| Arabština (Saúdská Arábie)              | `ar-SA` | Text                                   | Yes                          |
+| Arabština (Saúdská Arábie)              | `ar-SA` | Text                                   |                           |
 | Arabština (stav palestinská samospráva)        | `ar-PS` | Text                                   |                           |
-| Arabština (Sýrie)                     | `ar-SY` | Text                                   | Yes                          |
+| Arabština (Sýrie)                     | `ar-SY` | Text                                   |                           |
 | Arabština (Spojené arabské emiráty)      | `ar-AE` | Text                                   |                           |
 | Bulharština (Bulharsko)               | `bg-BG` | Text                                   |                           |
 | katalánština (Španělsko)                    | `ca-ES` | Text                                   | Yes                          |
@@ -64,10 +64,10 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Angličtina (Kanada)                   | `en-CA` | Zvuk (20201019)<br>Text                 | Yes                          |
 | Angličtina (Ghana)                    | `en-GH` | Text                                   |                           |
 | Angličtina (Hongkong)                | `en-HK` | Text                                   |                           |
-| Angličtina (Indie)                    | `en-IN` | Zvuk (20200923)<br>Text                 | Yes                          |
+| Angličtina (Indie)                    | `en-IN` | Zvuk (20200923)<br>Text                 |                          |
 | Angličtina (Irsko)                  | `en-IE` | Text                                   |                           |
 | Angličtina (Keňa)                    | `en-KE` | Text                                   |                           |
-| Angličtina (Nový Zéland)              | `en-NZ` | Zvuk (20201019)<br>Text                 |  Yes                         |
+| Angličtina (Nový Zéland)              | `en-NZ` | Zvuk (20201019)<br>Text                 |                          |
 | Angličtina (Nigérie)                  | `en-NG` | Text                                   |                           |
 | Angličtina (Filipíny)              | `en-PH` | Text                                   |                           |
 | Angličtina (Singapur)                | `en-SG` | Text                                   |                           |
@@ -83,7 +83,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Francouzština (Švýcarsko)               | `fr-CH` | Text<br>Výslovnost                  |                           |
 | Němčina (Rakousko)                   | `de-AT` | Text<br>Výslovnost                  |                           |
 | němčina (Německo)                   | `de-DE` | Zvuk (20190701, 20200619, 20201127)<br>Text<br>Výslovnost|  Yes                         |
-| Řečtina (Řecko)                     | `el-GR` | Text                                   |                           |
+| Řečtina (Řecko)                     | `el-GR` | Text                                   |  Yes                         |
 | Gudžarátština (Indie)                  | `gu-IN` | Text                                   |                           |
 | hindština (Indie)                      | `hi-IN` | Zvuk (20200701)<br>Text                 |     Yes                      |
 | Maďarština (Maďarsko)                | `hu-HU` | Text                                   |                           |
@@ -101,7 +101,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | polština (Polsko)                    | `pl-PL` | Text                                   |       Yes                    |
 | Portugalština (Brazílie)                | `pt-BR` | Zvuk (20190620, 20201015)<br>Text<br>Výslovnost|          Yes                 |
 | portugalština (Portugalsko)              | `pt-PT` | Text<br>Výslovnost                  |             Yes              |
-| rumunština (Rumunsko)                 | `ro-RO` | Text                                   |                           |
+| rumunština (Rumunsko)                 | `ro-RO` | Text                                   |  Yes                         |
 | ruština (Rusko)                   | `ru-RU` | Zvuk (20200907)<br>Text                 |                Yes           |
 | slovenština (Slovensko)                  | `sk-SK` | Text                                   |                           |
 | slovinština (Slovinsko)               | `sl-SI` | Text                                   |                           |

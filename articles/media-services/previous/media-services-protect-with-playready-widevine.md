@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a0e8a513023c093157a3f14a64de9f87de543ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd544b9eec0c1839ad94ede65e9d4ccde6df81dc
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009449"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063337"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Použití běžného dynamického šifrování PlayReady nebo Widevine
 
@@ -46,9 +46,9 @@ Další informace najdete v tématu Integrace s [Axinom](media-services-axinom-i
 
 Služba Media Services podporuje více způsobů autorizace uživatelů, kteří žádají o klíč. Zásady autorizace pro klíč k obsahu mohou obsahovat jedno nebo více omezení autorizace: buď otevřená omezení, nebo omezení s tokenem. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve formátu [jednoduchých webových tokenů](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) a [webových tokenů JSON](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT). 
 
-Další informace najdete v tématu [Konfigurace zásad autorizace klíče k obsahu](media-services-protect-with-aes128.md#configure_key_auth_policy).
+Další informace najdete v tématu [Konfigurace zásad autorizace klíče k obsahu](media-services-portal-configure-content-key-auth-policy.md).
 
-Abyste mohli využívat dynamické šifrování, je třeba mít prostředek (označovaný také jako asset), který obsahuje sadu souborů MP4 s více přenosovými rychlostmi nebo zdrojové soubory technologie Smooth Streaming s více přenosovými rychlostmi. U assetu je také nutné nakonfigurovat zásady pro doručování (popsáno dále v tomto tématu). Potom, na základě formátu určeného v adrese URL streamování, server streamování na vyžádání zajistí, aby byl datový proud doručen v protokolu podle vašeho výběru. Výsledkem je, že ukládáte a platíte za soubory jen v jednom úložném formátu. Služba Media Services sestaví a odešle odpovídající odpověď HTTP na základě jednotlivých žádosti od klientů.
+Pokud chcete využít výhod dynamického šifrování, vytvořte Asset, který obsahuje sadu souborů MP4 s více přenosovými rychlostmi, nebo Smooth Streaming zdrojové soubory s více přenosovými rychlostmi. U assetu je také nutné nakonfigurovat zásady pro doručování (popsáno dále v tomto tématu). Potom, na základě formátu určeného v adrese URL streamování, server streamování na vyžádání zajistí, aby byl datový proud doručen v protokolu podle vašeho výběru. Výsledkem je, že ukládáte a platíte za soubory jen v jednom úložném formátu. Služba Media Services sestaví a odešle odpovídající odpověď HTTP na základě jednotlivých žádosti od klientů.
 
 Tento článek je užitečný pro vývojáře pracující na aplikacích, které doručují média s několikanásobnou ochranou DRM, například PlayReady a Widevine. Tento článek ukazuje, jak nakonfigurovat službu doručování licencí PlayReady pomocí zásad autorizace tak, aby licence PlayReady nebo Widevine mohli dostávat pouze autorizovaní klienti. Také ukazuje, jak používat dynamické šifrování s licencemi DRM PlayReady nebo Widevine přes streamování DASH.
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: ab5c71b787876c31aaa70fbbfb04fc86721dd168
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4d9efd99a60c93dbfef2d6f45971781d71e83fb
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958327"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105051"
 ---
 Aby bylo možné začít pracovat s digitálními událostmi Azure v otevřeném [Azure Cloud Shell](https://shell.azure.com) , první věc, kterou je třeba provést, se přihlaste a nastavte kontext prostředí na vaše předplatné pro tuto relaci. Spusťte tyto příkazy v Cloud Shell:
 
@@ -27,7 +27,7 @@ Pokud jste toto předplatné použili u digitálních vláken Azure jako první,
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Dále přidáte [**Microsoft Azure rozšíření IoT pro Azure CLI**](/cli/azure/ext/azure-iot/iot) do vašeho Cloud Shell, abyste povolili příkazy pro interakci s digitálními interakcemi Azure a dalšími službami IoT. Spusťte tento příkaz, abyste se ujistili, že máte nejnovější verzi rozšíření:
+Dále přidáte [**Microsoft Azure rozšíření IoT pro Azure CLI**](/cli/azure/service-page/azure%20iot) do vašeho Cloud Shell, abyste povolili příkazy pro interakci s digitálními interakcemi Azure a dalšími službami IoT. Spusťte tento příkaz, abyste se ujistili, že máte nejnovější verzi rozšíření:
 
 ```azurecli-interactive
 az extension add --upgrade -n azure-iot

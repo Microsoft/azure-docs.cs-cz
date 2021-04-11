@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2ec7c8fe312787d153c76b0b0194354e1717db7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 758a2fc607217f38306f8d50273c580daf523982
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016708"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492690"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard
 
@@ -271,8 +271,8 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>Viz také
 
-- [Postup při kódování s vlastní transformací pomocí rozhraní příkazového řádku](../latest/custom-preset-cli-howto.md)
-- [Kódování pomocí Media Services verze 3](../latest/encoding-concept.md)
+- [Postup při kódování s vlastní transformací pomocí rozhraní příkazového řádku](../latest/transform-custom-preset-cli-how-to.md)
+- [Kódování pomocí Media Services verze 3](../latest/encode-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

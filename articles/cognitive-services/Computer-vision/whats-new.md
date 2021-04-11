@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f102bbe45fd5eea853ba63def4f1c1a92888ca46
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487096"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285939"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
@@ -40,7 +40,7 @@ Počítačové zpracování obrazu Read API verze 3.2 Public Preview, který je 
 * Extrahuje text pouze pro vybrané stránky pro vícestránkové dokument.
 * K dispozici jako [Distroless kontejner](./computer-vision-how-to-install-containers.md?tabs=version-3-2) pro místní nasazení.
 
-[Přečtěte si další informace](concept-recognizing-text.md) o rozhraní API pro čtení.
+Další informace najdete v tématu [Průvodce čtením rozhraní API](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Použijte rozhraní Read API v 3.2 Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
@@ -83,7 +83,7 @@ Verze Public Preview rozhraní API pro Počítačové zpracování obrazu v 3.1 
 
 * Tato verze Preview rozhraní API pro čtení podporuje angličtina, holandština, francouzština, němčina, italština, japonština, portugalština, zjednodušená čínština a španělština.
 
-Další informace najdete v tématu [Přehled rozhraní API pro čtení](concept-recognizing-text.md) .
+Další informace najdete v tématu [Průvodce čtením rozhraní API](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Další informace o rozhraní Read API v 3.1 Public Preview 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
@@ -95,18 +95,20 @@ Verze Public Preview rozhraní API pro čtení v Počítačové zpracování obr
 
 * Tato verze Preview rozhraní API pro čtení podporuje angličtinu, holandštinu, francouzštinu, němčinu, italštinu, portugalštinu, zjednodušenou čínštinu a španělštinu.
 
-Další informace najdete v tématu [Přehled rozhraní API pro čtení](concept-recognizing-text.md) .
+Další informace najdete v tématu [Průvodce čtením rozhraní API](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Další informace o rozhraní Read API v 3.1 Public Preview 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Květen 2020
-Rozhraní API pro počítačové zpracování obrazu v 3.0 vstoupila všeobecná dostupnost s aktualizacemi [rozhraní API pro čtení](concept-recognizing-text.md):
+S aktualizacemi rozhraní API pro čtení se zadala Obecná dostupnost rozhraní API pro počítačové zpracování obrazu v 3.0:
 
 * Podpora pro angličtina, holandština, francouzština, němčina, italština, portugalština a španělštinu
 * Vylepšená přesnost
 * Hodnocení spolehlivosti pro každé extrahované slovo
 * Nový výstupní formát
+
+Další informace najdete v [přehledu rozpoznávání OCR](overview-ocr.md) .
 
 ## <a name="march-2020"></a>Březen 2020
 

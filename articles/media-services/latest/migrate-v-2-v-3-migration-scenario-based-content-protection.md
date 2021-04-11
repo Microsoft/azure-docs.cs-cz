@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/26/2021
+ms.date: 04/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a481759da3f1e7d67accdca7b4322db53abbcb0c
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064490"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490943"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře ochrany obsahu
 
@@ -30,46 +30,62 @@ Tento článek poskytuje podrobné informace a pokyny k migraci případů použ
 
 V novém rozhraní API V3 použijte podporu pro [multi-klíčové](architecture-design-multi-drm-system.md) funkce.
 
-Konkrétní postup najdete v tématu věnovaném konceptům, kurzům a návodům k ochraně obsahu.
+Konkrétní postup najdete v tématu koncepty ochrany obsahu, kurzy a návody na konci tohoto článku.
 
-## <a name="visibility-of-v2-assets-streaminglocators-and-properties-in-the-v3-api-for-content-protection-scenarios"></a>Viditelnost prostředků v2, StreamingLocators a vlastností v rozhraní V3 API pro scénáře ochrany obsahu
+> [!NOTE]
+> Zbývající část tohoto článku popisuje, jak můžete migrovat ochranu obsahu V2 na verzi V3 pomocí .NET.  Pokud potřebujete pokyny nebo vzorový kód pro jiný jazyk nebo metodu, vytvořte prosím pro tuto stránku problém GitHubu.
 
-Při migraci na rozhraní V3 API zjistíte, že potřebujete mít přístup k některým vlastnostem nebo klíčům obsahu z prostředků v2. Jedním z klíčových rozdílů je, že rozhraní v2 API použije **AssetId** jako primární identifikační klíč a nové rozhraní API V3 používá název entity správy prostředků Azure jako primární identifikátor.  Vlastnost v2 **Asset.Name** se obvykle nepoužívá jako jedinečný identifikátor, takže při migraci na verzi 3 zjistíte, že se názvy assetů v2 teď zobrazí v poli **Asset. Description** .
+## <a name="v3-visibility-of-v2-assets-streaminglocators-and-properties"></a>V3 viditelnost prostředků, StreamingLocators a vlastností v2
 
-Pokud jste například dříve provedli prostředek v2 s ID **"NB: CID: UUID: 8cb39104-122c-496e-9ac5-7f9e2c2547b8"**, zjistíte, že při výpisu starých prostředků v2 prostřednictvím rozhraní API V3 bude název nyní částí identifikátoru GUID na konci (v tomto případě **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"**.)
+V rozhraní v2 API, `Assets` , `StreamingLocators` a `ContentKeys` byly použity k ochraně obsahu streamování. Při migraci do rozhraní V3 API jsou vaše rozhraní v2 API `Assets` , `StreamingLocators` a `ContentKeys` všechny dostupné automaticky v rozhraní V3 API a veškerá data v nich jsou k dispozici pro přístup.
 
-Můžete zadat dotaz na **StreamingLocators** přidružené k assetům vytvořeným v rozhraní v2 API pomocí nové metody V3 [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) v entitě Asset.  Také odkaz na verzi sady .NET Client SDK [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true)
+Nemůžete ale *aktualizovat* žádné vlastnosti entit v2 prostřednictvím rozhraní V3 API, které jste vytvořili v v2.
 
-Výsledky metody **ListStreamingLocators** vám poskytnou **název** a **StreamingLocatorId** lokátoru spolu s **StreamingPolicyName**.
+Pokud potřebujete aktualizovat, změnit nebo změnit obsah uložený v entitách v2, aktualizujte je pomocí rozhraní v2 API nebo vytvořte nové entity rozhraní V3 API, které chcete migrovat.
 
-Chcete-li najít **ContentKeys** , který se používá ve vaší **StreamingLocators** pro ochranu obsahu, můžete zavolat metodu [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
+## <a name="asset-identifier-differences"></a>Rozdíly v identifikátorech prostředků
 
-Všechny **prostředky** , které byly vytvořeny a publikovány pomocí rozhraní v2 API, budou mít v [zásadách streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)k dispozici [zásady pro klíč obsahu](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) i klíč obsahu definované v rozhraních API v3.
+K migraci budete potřebovat přístup k vlastnostem nebo klíčům obsahu z prostředků v2.  Je důležité si uvědomit, že rozhraní v2 API používá `AssetId` jako primární identifikační klíč, ale nové rozhraní API V3 používá jako primární identifikátor *název entity správy prostředků Azure* .  (Vlastnost v2 `Asset.Name` se nepoužívá jako jedinečný identifikátor.) S rozhraním API V3 se teď název Assetu v2 zobrazí jako `Asset.Description` .
+
+Pokud jste například dříve vytvořili prostředek v2 s ID `nb:cid:UUID:8cb39104-122c-496e-9ac5-7f9e2c2547b8` , identifikátor je nyní na konci identifikátoru GUID `8cb39104-122c-496e-9ac5-7f9e2c2547b8` . Tato hodnota se zobrazí při výpisu prostředků v2 prostřednictvím rozhraní V3 API.
+
+Všechny prostředky, které byly vytvořeny a publikovány pomocí rozhraní v2 API, budou mít `ContentKeyPolicy` `ContentKey` v rozhraní V3 API a místo výchozí zásady klíče obsahu v `StreamingPolicy` .
+
+Další informace najdete v dokumentaci [zásad pro klíč obsahu](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) a v dokumentaci k [zásadám streamování](https://docs.microsoft.com/azure/media-services/latest/stream-streaming-policy-concept) .
+
+## <a name="use-azure-media-services-explorer-amse-v2-and-amse-v3-tools-side-by-side"></a>Použití nástrojů Azure Media Services Explorer (AMSE) v2 a AMSE V3 vedle sebe
+
+Pomocí [nástroje v2 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v4.3.15.0) společně s [nástrojem V3 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) Porovnejte data pro vytvoření a publikování assetu pomocí rozhraní API v2. Vlastnosti by měly být viditelné, ale v různých umístěních.
+
+## <a name="use-the-net-content-protection-migration-sample"></a>Použijte ukázku migrace obsahu .NET Content Protection
+
+Můžete najít ukázku kódu pro porovnání rozdílů v identifikátorech assetů pomocí [v2tov3MigrationSample](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/v2tov3Migration) v části ContentProtection v ukázkách kódu Media Services.
+
+## <a name="list-the-streaming-locators"></a>Seznam lokátorů streamování
+
+Můžete zadat dotaz na `StreamingLocators` přidružený k assetům vytvořeným v rozhraní v2 API pomocí nové metody V3 [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) v entitě Asset.  Také odkaz na verzi sady .NET Client SDK [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true)
+
+Výsledky `ListStreamingLocators` metody vám poskytne `Name` a `StreamingLocatorId` z lokátoru spolu s `StreamingPolicyName` .
+
+## <a name="find-the-content-keys"></a>Vyhledání klíčů obsahu
+
+Chcete-li najít `ContentKeys` použití s vaší `StreamingLocators` , můžete zavolat metodu [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
 
 Další informace o ochraně obsahu v rozhraní V3 API najdete v článku [Ochrana obsahu pomocí Media Services dynamické šifrování.](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept)
 
-## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>Jak zobrazit seznam prostředků v2 a nastavení ochrany obsahu pomocí rozhraní V3 API
+## <a name="change-the-v2-contentkeypolicy-keeping-the-same-contentkey"></a>Změňte ContentKeyPolicy v2 tak, aby zachovalo stejné ContentKey.
 
-V rozhraní v2 API byste běžně používali **assety**, **StreamingLocators** a **ContentKeys** k ochraně obsahu streamování.
-Při migraci do rozhraní API V3 jsou vaše Assety rozhraní API v2, StreamingLocators a ContentKeys automaticky vystavené v rozhraní V3 API a všechna data, která jsou v nich dostupná, jsou k dispozici pro přístup.
+Nejdřív byste měli zrušit publikování (odebrání všech lokátorů streamování) na Assetu prostřednictvím sady v2 SDK. Jak na to:
 
-## <a name="can-i-update-v2-properties-using-the-v3-api"></a>Můžu aktualizovat vlastnosti v2 pomocí rozhraní V3 API?
+1. Odstraňte lokátor.
+1. Zrušit propojení `ContentKeyAuthorizationPolicy` .
+1. Zrušit propojení `AssetDeliveryPolicy` .
+1. Zrušit propojení `ContentKey` .
+1. Odstraňte `ContentKey` .
+1. Vytvořte nový `StreamingLocator` ve verzi V3 pomocí hodnoty V3 `StreamingPolicy` a `ContentKeyPolicy` zadáním konkrétního identifikátoru klíče obsahu a hodnoty klíče.
 
-Ne, nemůžete aktualizovat žádné vlastnosti u entit v2 prostřednictvím rozhraní V3 API, které bylo vytvořeno pomocí StreamingLocators, StreamingPolicies, zásad pro klíče obsahu a klíčů obsahu v v2.
-Pokud potřebujete aktualizovat, změnit nebo změnit obsah uložený v entitách v2, budete ho muset aktualizovat prostřednictvím rozhraní v2 API nebo vytvořit nové entity rozhraní V3 API, abyste je mohli migrovat do popředí.
-
-## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>Návody změnit ContentKeyPolicy používané pro prostředek v2, který je publikovaný a zachovat stejný klíč obsahu?
-
-V této situaci byste nejdřív měli zrušit publikování (odebrání všech lokátorů streamování) na Assetu pomocí sady v2 SDK (odstraňte lokátor, odpojte zásady autorizace klíčů obsahu, odpojíte zásady doručení assetů, odpojíte klíč obsahu, odstraníte klíč obsahu) a pak vytvoříte novou **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** ve formátu V3 pomocí direktivy V3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) a [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept).
-
-Při vytváření **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** je nutné zadat konkrétní identifikátor klíče obsahu a hodnotu klíče.
-
-Všimněte si, že je možné odstranit Lokátor v2 pomocí rozhraní V3 API, ale neodebere se klíč obsahu ani zásady klíče obsahu použité v případě, že byly vytvořeny v rozhraní v2 API.  
-
-## <a name="using-amse-v2-and-amse-v3-side-by-side"></a>Použití AMSE v2 a AMSE V3 vedle sebe
-
-Při migraci obsahu z verze V2 na V3 doporučujeme nainstalovat [Nástroj v2 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v4.3.15.0) společně s [nástrojem V3 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) , abyste pomohli porovnat data, která se zobrazují vedle sebe, pro Asset vytvořený a publikovaný přes rozhraní API v2. Vlastnosti by měly být viditelné, ale v poněkud různých umístěních.  
-
+> [!NOTE]
+> Je možné odstranit Lokátor v2 pomocí rozhraní V3 API, ale neodebere klíč obsahu ani zásady klíče obsahu, pokud byly vytvořeny v rozhraní v2 API.
 
 ## <a name="content-protection-concepts-tutorials-and-how-to-guides"></a>Koncepty, kurzy a návody k ochraně obsahu
 
@@ -80,7 +96,7 @@ Při migraci obsahu z verze V2 na V3 doporučujeme nainstalovat [Nástroj v2 Azu
 - [Media Services V3 se šablonou licence PlayReady](drm-playready-license-template-concept.md)
 - [Přehled šablon licencí Media Services V3 with Widevine](drm-widevine-license-template-concept.md)
 - [Konfigurace a licenční požadavky pro Apple FairPlay](drm-fairplay-license-overview.md)
-- [Zásady streamování](streaming-policy-concept.md)
+- [Zásady streamování](stream-streaming-policy-concept.md)
 - [Zásady pro klíč obsahu](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>Kurzy
@@ -96,7 +112,8 @@ Při migraci obsahu z verze V2 na V3 doporučujeme nainstalovat [Nástroj v2 Azu
 
 ## <a name="samples"></a>ukázky
 
-[V ukázkách kódu můžete také porovnat kód v2 a V3](migrate-v-2-v-3-migration-samples.md).
+- [v2tov3MigrationSample](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/v2tov3Migration)
+- [V ukázkách kódu můžete také porovnat kód v2 a V3](migrate-v-2-v-3-migration-samples.md).
 
 ## <a name="tools"></a>nástroje
 

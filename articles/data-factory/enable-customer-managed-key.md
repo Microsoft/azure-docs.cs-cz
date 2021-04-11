@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443864"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222677"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Šifrování Azure Data Factory pomocí klíčů spravovaných zákazníkem
 
@@ -137,6 +137,23 @@ Chcete-li změnit klíč používaný k šifrování Data Factory, je nutné ru�
 ## <a name="disable-customer-managed-keys"></a>Zakázat klíče spravované zákazníkem
 
 Po povolení funkce klíče spravovaného zákazníkem podle návrhu už nemůžete odebrat speciální krok zabezpečení. Pro šifrování továrny a dat vždycky očekáváme klíč poskytnutý zákazníkem.
+
+## <a name="customer-managed-key-and-continuous-integration-and-continuous-deployment"></a>Spravovaný klíč zákazníka a průběžná integrace a průběžné nasazování
+
+Ve výchozím nastavení není konfigurace CMK v šabloně pro vytváření Azure Resource Manager (ARM) součástí. Zahrnutí nastavení šifrování spravovaného klíče zákazníka v šabloně ARM pro průběžnou integraci (CI/CD):
+
+1. Ujistěte se, že je objekt pro vytváření v režimu Git.
+1. Přejít na portál pro správu – část zákaznická Správa klíčů
+1. Zaškrtnout možnost _Zahrnout v ŠABLONĚ ARM_
+
+  :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="Snímek obrazovky obsahující nastavení spravovaného klíče zákazníka v šabloně ARM":::
+
+V šabloně ARM budou přidána následující nastavení. Tyto vlastnosti lze naparametrizovanit v kanálu průběžné integrace a doručování úpravou [konfigurace Azure Resource Manager parametrů](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template) .
+
+  :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Snímek obrazovky obsahující nastavení spravovaného klíče zákazníka v šabloně Azure Resource Manager.":::
+
+> [!NOTE]
+> Přidáním nastavení šifrování do šablon ARM přidáte nastavení na úrovni továrny, které přepíše další nastavení na úrovni továrny, jako jsou konfigurace Git, v jiných prostředích. Pokud máte tato nastavení povolená v prostředí se zvýšenými oprávněními, jako je UAT nebo PROD, přečtěte si prosím [globální parametry v CI/CD](author-global-parameters.md#cicd).
 
 ## <a name="next-steps"></a>Další kroky
 

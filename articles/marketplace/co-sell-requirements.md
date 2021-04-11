@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593386"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107087"
 ---
 # <a name="co-sell-requirements"></a>Požadavky na společný prodej
 
@@ -35,7 +35,7 @@ Aby bylo možné dosáhnout stavu připraveného pro společný prodej, je nutn�
 
 **Všichni partneři**:
 
-- Mít [v partnerském centru ID MPN a aktivní účet komerčního tržiště](./partner-center-portal/create-account.md).
+- Mít [v partnerském centru ID MPN a aktivní účet komerčního tržiště](create-account.md).
 - Ujistěte se, že máte v partnerském centru kompletní [obchodní profil](/partner-center/create-a-marketing-profile) . Jako kvalifikovaný partner Microsoftu vám váš obchodní profil pomůže prezentovat vaši firmu zákazníkům, kteří hledají vaše jedinečná řešení a odbornosti, aby vyhledali své obchodní potřeby. výsledkem jsou [referenčníky](/partner-center/referrals).
 - Dokončete **společný prodej pomocí karty Microsoft** a publikujte nabídku na komerčním webu Marketplace.
 - Poskytněte prodejní kontakt pro každý společný prodej oprávněného geografického a povinného vyúčtování.
@@ -59,7 +59,7 @@ Poskytujeme šablony, které vám pomůžou tyto dokumenty vytvořit. Další in
 
 ### <a name="publish-your-offer-live"></a>Publikování vaší nabídky živě
 
-Aby bylo možné získat nárok na stav připraveného pro společný prodej, musí být vaše nabídka nebo řešení publikována živě na nejméně jednom z online obchodů pro komerční tržiště: Azure Marketplace nebo Microsoft AppSource. Informace o publikování nabídek na komerčním webu Marketplace najdete v tématu [Průvodce publikováním podle typu nabídky](publisher-guide-by-offer-type.md). Pokud jste nabídku ještě nepublikovali na komerčním webu Marketplace, ujistěte se, že máte [účet komerčního tržiště](./partner-center-portal/create-account.md).
+Aby bylo možné získat nárok na stav připraveného pro společný prodej, musí být vaše nabídka nebo řešení publikována živě na nejméně jednom z online obchodů pro komerční tržiště: Azure Marketplace nebo Microsoft AppSource. Informace o publikování nabídek na komerčním webu Marketplace najdete v tématu [Průvodce publikováním podle typu nabídky](publisher-guide-by-offer-type.md). Pokud jste nabídku ještě nepublikovali na komerčním webu Marketplace, ujistěte se, že máte [účet komerčního tržiště](create-account.md).
 
 ## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Požadavky na motivovaní stav společného prodeje Azure IP
 

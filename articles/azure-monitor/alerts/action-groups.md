@@ -3,14 +3,14 @@ title: Vytváření a správa skupin akcí na webu Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772344"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104979"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -162,12 +162,10 @@ Ve skupině akcí můžete mít omezený počet ITSM akcí.
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 ### <a name="secure-webhook"></a>Zabezpečený webhook
+Akce zabezpečený Webhook skupiny akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
 
 > [!NOTE]
 > Použití akce Webhooku vyžaduje, aby cílový koncový bod Webhooku buď nevyžadoval úspěšné fungování výstrahy, nebo mohl analyzovat informace kontextu výstrahy, které jsou k dispozici jako součást operace POST. Pokud koncový bod Webhooku nemůže zpracovat informace kontextu výstrahy sám o sobě, můžete použít řešení jako [akci aplikace logiky](./action-groups-logic-app.md) pro vlastní manipulaci s informacemi v kontextu výstrahy, aby odpovídala očekávanému formátu dat Webhooku.
-> Uživatel by měl být **vlastníkem** instančního objektu Webhooku, aby se zajistilo, že zabezpečení nebude narušeno. Protože každý zákazník Azure má přístup ke všem ID objektů prostřednictvím portálu bez kontroly jeho majitele, může kdokoli přidat zabezpečený Webhook do své vlastní skupiny akcí pro upozornění na upozornění služby Azure monitor, které porušuje zabezpečení.
-
-Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
 
 1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz [chráněné webové rozhraní API: registrace aplikace](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
     - Nakonfigurujte chráněné rozhraní API, které bude [volat aplikace typu démon](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).

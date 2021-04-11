@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e1554b1728b120145a06124e4703065a98a4e466
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4f4bfdb5d09da6a9967b53ca56bb2491976592a1
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670087"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105880"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro Android pomocí prostorových kotev Azure
 
@@ -30,7 +30,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -45,6 +45,8 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 ## <a name="download-and-open-the-unity-sample-project"></a>Stáhněte a otevřete vzorový projekt Unity.
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Podle [zde](../how-tos/setup-unity-project.md#download-asa-packages) uvedených pokynů stáhněte a importujte balíčky služby ASA SDK vyžadované pro platformu Android.
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
@@ -66,7 +68,7 @@ V aplikaci vyberte **BasicDemo** pomocí šipek a pak stiskněte tlačítko **P�
 
 Podle pokynů v aplikaci založte a odvoláte kotvu.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="rendering-issues"></a>Problémy vykreslování
 

@@ -3,21 +3,21 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 03/20/2021
+ms.date: 04/08/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
-manager: lizross
+manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: acb9b6d9d2080c63243ec4b924d07a927d6ccdfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774435"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107053"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
-Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku najdete informace o:
+Aktualizace virtuálních klientů systému Windows jsou pravidelně aktualizovány. V tomto článku najdete informace o:
 
 - Nejnovější aktualizace
 - Nové funkce
@@ -42,12 +42,62 @@ Agent virtuálních klientů Windows se aktualizuje aspoň jednou měsíčně.
 
 Co je se změnil v agentu virtuálních počítačů Windows:
 
-- Verze 1.0.2800.2800: Tato aktualizace byla vydána v březnu 2021 a opravila problém se zpětným připojením.
-- Verze 1.0.2800.2700: Tato aktualizace byla vydána v únoru 2021 a vyřešila problém orchestrace odepření přístupu.
+- Verze 1.0.2866.1500: Tato aktualizace byla vydána 26. března 2021 a vyřešila problém s kontrolou stavu zásobníku.
+- Verze 1.0.2800.2802: Tato aktualizace byla vydána 10. března 2021 a má Obecná vylepšení a opravy chyb.
+- Verze 1.0.2800.2800: Tato aktualizace byla vydána 2. března 2021 a opravila problém se zpětným připojením.
+- Verze 1.0.2800.2700: Tato aktualizace byla vydána 10. února 2021 a má Obecná vylepšení a opravy chyb.
+- Verze 1.0.2800.2700: Tato aktualizace byla vydána 4. února 2021 a vyřešila problém orchestrace odepření přístupu.
 
 ## <a name="fslogix-updates"></a>FSLogix aktualizace
 
 Zajímá se o nejnovějších aktualizacích pro FSLogix? Podívejte se, [co je nového na FSLogix](/fslogix/whats-new).
+
+## <a name="march-2021"></a>Březen 2021
+
+Tady je postup, který se změnil v březnu 2021.
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Aktualizace uživatelského rozhraní Azure Portal pro virtuální počítač s Windows
+
+Pro Azure Portal jsme udělali následující aktualizace pro virtuální počítače s Windows:
+
+- Povolili jsme nové možnosti dostupnosti (Skupina dostupnosti a zóny) pro pracovní postupy pro vytváření fondů hostitelů a přidávání virtuálních počítačů.
+- Opravili jsme problém, kdy se ve stavu "potřebuje pomoc" objevil jako nedostupný. Nyní bude mít hostitel vedle něj ikonu upozornění.
+- Povolili jsme řazení aktivních relací.
+- Nyní můžete odesílat zprávy nebo odhlásit konkrétní uživatele na kartě Podrobnosti hostitele.
+- Změnili jste pole limit maximálního počtu relací.
+- Přidali jsme do pracovního postupu cestu ověření organizační jednotky pro vytvoření fondu hostitelů.
+- Při vytváření fondu osobních hostitelů teď můžete použít nejnovější verzi image Windows 10.
+
+### <a name="generation-2-images-and-trusted-launch"></a>Image 2. generace a důvěryhodné spuštění
+
+Azure Marketplace teď mají image 2. generace pro víc relací Windows 10 Enterprise a Windows 10 Enterprise. Tyto image vám umožní použití důvěryhodných spouštěcích virtuálních počítačů. Další informace o virtuálních počítačích 2. generace na místě [vytvoří virtuální počítač generace 1 nebo 2](../virtual-machines/generation-2.md). Informace o tom, jak zřídit virtuální počítače s důvěryhodným spuštěním virtuálních počítačů s Windows, najdete v [našem příspěvku TechCommunity](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170).
+
+### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>FSLogix je teď předem nainstalovaný na imagí s více relacemi Windows 10 Enterprise.
+
+Na základě zpětné vazby od zákazníků jsme nastavili novou verzi image Windows 10 Enterprise s více relacemi, která už má nainstalovanou nenakonfigurovanou verzi FSLogix. Doufáme, že to usnadňuje nasazení virtuálních počítačů s Windows.
+
+### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor pro virtuální počítač s Windows je teď všeobecně dostupná.
+
+Azure Monitor pro virtuální počítač s Windows je teď všeobecně dostupná pro veřejnost. Tato funkce je Automatizovaná služba, která monitoruje vaše nasazení a umožňuje zobrazit události, stav a návrhy řešení potíží na jednom místě. Další informace najdete v [naší dokumentaci](azure-monitor.md) nebo si Projděte [náš TechCommunity příspěvek](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861).
+
+### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>Aktualizace pro týmy na virtuálním počítači s Windows z března 2021
+
+Pro týmy na virtuálním počítači s Windows jsme provedli následující aktualizace:
+
+- Vylepšili jsme výkon kvality videa u volání a režimu 2x2.
+- Snížili jsme využití CPU o 5-10% (v závislosti na generaci procesoru) pomocí snižování zátěže hardwaru pro zpracování videa (XVP).
+- Starší počítače teď můžou používat XVP a hardwarová dekódování pro plynulé zobrazení vstupních streamů videa v režimu 2x2.
+- Aktualizovali jsme WebRTC Stack z M74 na M88 pro lepší výkon synchronizace AV a méně přechodných problémů.
+- Nahradili jsme náš software H264 Encoder pomocí OpenH264 (OSS, který se používá v týmech na webu), což zvýšilo kvalitu videa odchozí kamery.
+- Pro Teams Server jsme povolili režim 2x2 pro obecné veřejné, 30. března. režim 2x2 zobrazuje až čtyři příchozí streamy videa současně.
+
+### <a name="start-vm-on-connect-public-preview"></a>Spuštění virtuálního počítače v Connect Public Preview
+
+Nové nastavení fondu hostitelů, spustit virtuální počítač v Connect, je teď dostupné ve verzi Public Preview. Toto nastavení umožňuje zapnout vaše virtuální počítače, kdykoli je budete potřebovat. Pokud chcete ušetřit náklady, bude nutné zrušit přidělení virtuálních počítačů konfigurací nastavení Azure Compute. Další informace najdete v [našem blogovém příspěvku](https://aka.ms/wvdstartvmonconnect) a [naší dokumentaci](start-virtual-machine-connect.md).
+
+### <a name="windows-virtual-desktop-specialty-certification"></a>Speciální certifikace virtuálních počítačů s Windows
+
+Vydali jsme beta verzi pro zkoušku AZ-140, která vám umožní prokázat vaše znalosti v rámci virtuálního klienta Windows v Azure. Pokud se chcete dozvědět víc, podívejte se na [náš TechCommunity příspěvek](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
 
 ## <a name="february-2021"></a>Únor 2021
 

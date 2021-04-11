@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 91c8834b48625aac0f279f84648d374df15fbdd0
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108805"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285390"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Odpovědnosti zákazníků při provozování jarního cloudu Azure ve virtuální síti
 Tento dokument obsahuje specifikace pro používání jarního cloudu Azure ve virtuální síti.
@@ -33,7 +33,7 @@ Níže je uveden seznam požadavků na prostředky pro služby Azure jaře Cloud
 ## <a name="azure-spring-cloud-network-requirements"></a>Požadavky na síť cloudu Azure na jaře
 
   | Cílový koncový bod | Port | Použití | Poznámka |
-  |------|------|------|
+  |------|------|------|------|
   | *: 1194 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | Základní Správa clusteru Kubernetes. | |
   | *: 443 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 443 | TCP: 443 | Správa služby jarní cloudová služba Azure | Informace o instanci služby "requiredTraffics" mohou být známy v datové části prostředků v části "networkProfile". |
   | *: 9000 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | Základní Správa clusteru Kubernetes. |
@@ -43,9 +43,9 @@ Níže je uveden seznam požadavků na prostředky pro služby Azure jaře Cloud
   | *. servicebus.windows.net:443 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – EventHub: 443 | TCP: 443 | Centrum událostí Azure. | Dá se nahradit povolením  [koncového bodu služby Azure Event Hubs ve virtuální síti](../virtual-network/virtual-network-service-endpoints-overview.md). |
   
 
-## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Požadavky na plně kvalifikovaný název domény v cloudu Azure a pravidla pro aplikace
+## <a name="azure-spring-cloud-fqdn-requirementsapplication-rules"></a>Požadavky na plně kvalifikovaný název domény v cloudu Azure a pravidla pro aplikace
 
-Azure Firewall poskytuje plně kvalifikovaný název domény (FQDN) **AzureKubernetesService** ke zjednodušení následujících konfigurací.
+Azure Firewall poskytuje **AzureKubernetesService** značek plně kvalifikovaného názvu domény pro zjednodušení následujících konfigurací:
 
   | Cílový plně kvalifikovaný název domény | Port | Použití |
   |------|------|------|
@@ -61,6 +61,15 @@ Azure Firewall poskytuje plně kvalifikovaný název domény (FQDN) **AzureKuber
   | *mscrl.microsoft.com* | HTTPS: 80 | Požadované cesty řetězení certifikátů společnosti Microsoft. |
   | *crl.microsoft.com* | HTTPS: 80 | Požadované cesty řetězení certifikátů společnosti Microsoft. |
   | *crl3.digicert.com* | HTTPS: 80 | Cesty řetěz certifikátů SSL třetích stran. |
+  
+## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>Nepovinný plně kvalifikovaný název domény Azure jarního cloudu pro správu výkonu aplikací třetích stran
+
+Azure Firewall poskytuje **AzureKubernetesService** značek plně kvalifikovaného názvu domény pro zjednodušení následujících konfigurací:
+
+  | Cílový plně kvalifikovaný název domény | Port | Použití                                                          |
+  | ---------------- | ---- | ------------------------------------------------------------ |
+  | kolektor *. NewRelic. com | TCP: 443/80 | Požadované sítě nových agentů Relic APM z oblasti USA, viz také téma [agenti APM](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents). |
+  | kolektor *. eu01. Nr-data.net | TCP: 443/80 | Požadované sítě nových agentů Relic APM z oblasti EU viz také téma [agenti APM](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents). |
 
 ## <a name="see-also"></a>Viz také
 * [Přístup k aplikaci v privátní síti](access-app-virtual-network.md)

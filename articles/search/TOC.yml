@@ -392,6 +392,8 @@
       items:
         - name: Analýza výkonu
           href: search-performance-analysis.md
+        - name: Srovnávací testy výkonu
+          href: performance-benchmarks.md
         - name: Tipy pro lepší výkon
           href: search-performance-tips.md
         - name: Protokolování diagnostiky

@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563816"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106798"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Požadavky pro programové získání přístupu k analytickým datům
 
@@ -20,7 +20,7 @@ Než budete moct programově přistupovat ke komerčním datům na webu Marketpl
 
 ## <a name="commercial-marketplace-enrollment"></a>Registrace komerčního tržiště
 
-Chcete-li získat přístup k datům z komerčního obchodu na webu Marketplace, musíte se zaregistrovat v programu komerčního tržiště a mít účet partnerského centra. Další informace najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](./partner-center-portal/create-account.md).
+Chcete-li získat přístup k datům z komerčního obchodu na webu Marketplace, musíte se zaregistrovat v programu komerčního tržiště a mít účet partnerského centra. Další informace najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](create-account.md).
 
 ## <a name="create-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 

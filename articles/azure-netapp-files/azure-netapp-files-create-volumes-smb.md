@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c673f7a9556193fb05e05ea372bfccd17cd3c5ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868507"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259621"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMB3.
+Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. 
+
+V tomto článku se dozvíte, jak vytvořit svazek SMB3. Informace o svazcích NFS najdete v tématu [vytvoření svazku NFS](azure-netapp-files-create-volumes.md). Svazky s duálním protokolem najdete v tématu [vytvoření svazku se dvěma protokoly](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -128,10 +130,12 @@ Přístup ke svazku SMB je spravovaný prostřednictvím oprávnění.
 
 ### <a name="share-permissions"></a>Oprávnění ke sdílení  
 
-Ve výchozím nastavení má nový svazek oprávnění ke sdílení **všech uživatelů a úplné řízení** . Členové skupiny Domain Admins mohou změnit oprávnění ke sdílení pomocí správy počítače v účtu počítače, který se používá pro Azure NetApp Files svazek.
+Ve výchozím nastavení má nový svazek oprávnění ke sdílení **všech uživatelů a úplné řízení** . Členové skupiny Domain Admins můžou oprávnění ke sdílení změnit takto:  
 
-![](../media/azure-netapp-files/smb-mount-path.png) 
- ![ Oprávnění k nastavení sdílené složky pro cestu pro připojení SMB](../media/azure-netapp-files/set-share-permissions.png) 
+1. Namapujte sdílenou složku na jednotku.  
+2. Pravým tlačítkem myši klikněte na jednotku, vyberte **vlastnosti** a pak přejděte na kartu **zabezpečení** .
+
+[![Nastavení oprávnění ke sdílení](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
 ### <a name="ntfs-file-and-folder-permissions"></a>Oprávnění k souborům a složkám NTFS  
 

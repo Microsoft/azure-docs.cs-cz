@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ab93a8742d210969ef6ad10683bed92221c1a57
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491549"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256697"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>Migrace webového rozhraní API založeného na OWIN do b2clogin.com nebo vlastní domény
 
@@ -30,7 +30,7 @@ V následujících částech najdete příklad povolení více vystavitelů ve w
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující Azure AD B2C prostředky:
 
-* [Uživatelské toky](tutorial-create-user-flows.md) nebo [vlastní zásady](custom-policy-get-started.md) vytvořené ve vašem tenantovi
+* [Uživatelské toky](tutorial-create-user-flows.md?pivots=b2c-user-flow) nebo [vlastní zásady](tutorial-create-user-flows.md?pivots=b2c-custom-policy) vytvořené ve vašem tenantovi
 
 ## <a name="get-token-issuer-endpoints"></a>Získat koncové body vystavitele tokenů
 

@@ -3,20 +3,20 @@ title: Microsoft Teams na virtuálním počítači s Windows – Azure
 description: Jak používat Microsoft Teams na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935716"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285254"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
 >[!IMPORTANT]
->Optimalizace médií pro týmy je podporovaná pro Microsoft 365 vládní organizace (RSZ) a GCC-High prostředí. Pro GCC-High nebo DoD není podporována optimalizace médií pro týmy.
+>Optimalizace médií pro týmy je podporovaná pro Microsoft 365 vládní organizace (RSZ) a GCC-High prostředí. Pro Microsoft 365 DoD není podporována optimalizace médií pro týmy.
 
 >[!NOTE]
 >Optimalizace médií pro Microsoft Teams je k dispozici pouze pro stolního klienta Windows na počítačích s Windows 10. Optimalizace médií vyžadují desktopový klient Windows verze 1.2.1026.0 nebo novější.
@@ -148,11 +148,7 @@ Použití týmů ve virtualizovaném prostředí se liší od použití týmů v
 - Aplikace Teams nepodporuje tlačítka HID ani ovládací prvky diody LED s jinými zařízeními.
 - Nové prostředí pro schůzky (NME) se v prostředích VDI v současnosti nepodporuje.
 
-Pro týmy známé problémy, které nesouvisejí s virtualizovanými prostředími, najdete informace v tématu [Podpora týmů ve vaší organizaci](/microsoftteams/known-issues) .
-
-## <a name="uservoice-site"></a>Web UserVoice
-
-Poskytněte zpětnou vazbu pro Microsoft Teams na virtuální ploše Windows na webu Teams [UserVoice](https://microsoftteams.uservoice.com/).
+Pro týmy známé problémy, které nesouvisejí s virtualizovanými prostředími, najdete informace v tématu [Podpora týmů ve vaší organizaci](/microsoftteams/known-issues).
 
 ## <a name="collect-teams-logs"></a>Shromažďovat protokoly týmů
 

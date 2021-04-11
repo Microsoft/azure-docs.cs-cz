@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519380"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259264"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
@@ -139,7 +139,7 @@ V době nasazení modelu by byl pro úspěšný uzel AKS nasazení modelu schopn
 
 Po nasazení modelu a spuštění služby se aplikace AzureML-FE automaticky zjistí pomocí rozhraní AKS API a bude připravená na směrování požadavků. Musí být schopný komunikovat s modelem lusků.
 >[!Note]
->Pokud nasazený model vyžaduje jakékoli připojení (například dotazování externí databáze nebo jiné služby REST, stažení blogu atd.), mělo by být povoleno řešení DNS i odchozí komunikace pro tyto služby.
+>Pokud nasazený model vyžaduje jakékoli připojení (například dotazování externí databáze nebo jiné služby REST, stažení objektu BLOB atd.), měla by být povolena jak rozlišení DNS, tak odchozí komunikace pro tyto služby.
 
 ## <a name="deploy-to-aks"></a>Nasazení do AKS
 
@@ -179,7 +179,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` názvem výpočetního cíle AKS. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Nahraďte `myservice` názvem, který tuto službu poskytne:
 
 ```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]

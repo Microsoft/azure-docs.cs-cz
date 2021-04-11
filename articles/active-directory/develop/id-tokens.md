@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf7940af03c02d96f6ed2ca452322ad012bc6a2d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175384"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105353"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -124,6 +124,12 @@ Aby se zajistilo, že velikost tokenu nepřekračuje limity velikosti hlavičky 
   ...
 }
 ```
+
+## <a name="id-token-lifetime"></a>Životnost tokenu ID
+
+Ve výchozím nastavení je token ID platný po dobu 1 hodiny po 1 hodinu, klient musí získat nový token ID.
+
+Můžete upravit životnost tokenu ID, abyste mohli řídit, jak často platnost klientské aplikace vyprší aplikační relaci, a jak často vyžaduje, aby uživatel znovu provedl ověření (buď v tichém nebo interaktivním případě). Další informace najdete v tématu [konfigurovatelné životnosti tokenů](active-directory-configurable-token-lifetimes.md).
 
 ## <a name="validating-an-id_token"></a>Ověřování id_token
 

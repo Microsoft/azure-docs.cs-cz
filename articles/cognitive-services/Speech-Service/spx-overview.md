@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98539765"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106118"
 ---
 # <a name="what-is-the-speech-cli"></a>Co je CLI služby Speech?
 
@@ -36,7 +36,7 @@ Sadu Speech SDK použijte v těchto případech:
 
 * Rozpoznávání řeči – převod řeči na text buď ze zvukových souborů, nebo přímo z mikrofonu, nebo přepisovat zaznamenané konverzace.
 
-* Syntéza řeči – převod textu na řeč pomocí vstupu z textových souborů nebo zadání přímo z příkazového řádku Přizpůsobte charakteristiky výstupů řeči pomocí [konfigurací SSML](speech-synthesis-markup.md)a buď [standardních, nebo neuronové hlasů](speech-synthesis-markup.md#standard-neural-and-custom-voices).
+* Syntéza řeči – převod textu na řeč pomocí vstupu z textových souborů nebo zadání přímo z příkazového řádku Přizpůsobte charakteristiky výstupů řeči pomocí [konfigurací SSML](speech-synthesis-markup.md)a buď [standardních, nebo neuronové hlasů](speech-synthesis-markup.md#neural-and-custom-voices).
 
 * Překlad řeči – přeloží zvuk ve zdrojovém jazyce na text nebo zvuk v cílovém jazyce.
 
