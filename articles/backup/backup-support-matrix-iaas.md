@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0150a4c1a8fbd756de6fc16142f0115b05098ed
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609783"
+ms.locfileid: "105967825"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -153,6 +153,7 @@ Zálohování virtuálních počítačů Azure s zámky | Nepodporované pro nes
 [Spotové virtuální počítače](../virtual-machines/spot-vms.md) | Neplatné. Azure Backup obnoví virtuální počítače na místě jako běžné virtuální počítače Azure.
 [Vyhrazený hostitel Azure](../virtual-machines/dedicated-hosts.md) | Podporováno
 Konfigurace prostorů úložiště Windows na samostatných virtuálních počítačích Azure | Podporováno
+[VM Scale Sets Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Podporuje se pro jednotné i flexibilní modely orchestrace k zálohování a obnovení jednoho virtuálního počítače Azure.
 
 ## <a name="vm-storage-support"></a>Podpora úložiště virtuálních počítačů
 

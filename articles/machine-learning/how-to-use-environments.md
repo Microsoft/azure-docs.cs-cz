@@ -12,10 +12,10 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 10491733d7473932a3eeb0e93dabe74a71d99fc8
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889038"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Vytvoření & použití softwarových prostředí v Azure Machine Learning
@@ -34,7 +34,7 @@ Příklady v tomto článku ukazují, jak:
 
 Základní informace o tom, jak prostředí pracují v Azure Machine Learning, najdete v tématu [co jsou ml prostředí](concept-environments.md) . Informace o konfiguraci vývojových prostředí najdete [tady](how-to-configure-environment.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)

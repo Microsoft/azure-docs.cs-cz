@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97387832"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167460"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Nasazení akcelerátoru řešení pomocí webu azureiotsolutions.com
 
@@ -54,7 +54,7 @@ Další informace o uživatelích a rolích ve službě Azure AD najdete v násl
 
 ## <a name="choose-your-device"></a>Zvolit zařízení
 
-Lokalita AzureIoTSolutions.com odkazuje na [katalog zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/).
+Lokalita AzureIoTSolutions.com odkazuje na [katalog zařízení Azure Certified for IoT](https://devicecatalog.azure.com/).
 
 V katalogu je uveden seznam stovek certifikovaných hardwarových zařízení IoT, se kterými se můžete připojit k vašim akcelerátorům řešení a začít sestavovat řešení IoT.
 

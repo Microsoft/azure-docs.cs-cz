@@ -12,10 +12,10 @@ ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e703a8f91f18467660ef7e1b91fdb034feeb00b1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102549528"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření Azure Diagnostics pro virtuální počítače s Windows
@@ -24,7 +24,7 @@ ms.locfileid: "102549528"
 
 Rozšíření Azure Diagnostics VM umožňuje shromažďovat data monitorování, například čítače výkonu a protokoly událostí, z virtuálního počítače s Windows. Můžete přesně určit, jaká data chcete shromažďovat a kam chcete data přejít, jako je například účet Azure Storage nebo centrum událostí Azure. Tato data můžete také použít k sestavování grafů v Azure Portal nebo vytváření výstrah metrik.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 

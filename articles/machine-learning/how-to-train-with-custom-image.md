@@ -11,10 +11,10 @@ ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889157"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak používat vlastní image Docker při výuce m
 
 Azure Machine Learning poskytuje výchozí obrázek Docker Base. Pomocí Azure Machine Learning prostředí můžete také určit jinou základní image, jako je například jedna ze spravovaných [základních imagí Azure Machine Learning](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat vaše závislosti a udržovat užší kontrolu nad verzemi komponent při spouštění školicích úloh.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spusťte kód v některém z těchto prostředí:
 

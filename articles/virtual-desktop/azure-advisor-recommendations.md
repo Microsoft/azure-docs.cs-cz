@@ -3,15 +3,15 @@ title: Návod k Azure Advisormu virtuálnímu počítači s Windows – Azure
 description: Postup řešení Azure Advisor doporučení pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90033026"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448300"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Jak vyřešit Azure Advisor doporučení
 
@@ -72,10 +72,6 @@ Toto doporučení se zobrazí v části vynikající provozní kvalita.
 Abyste měli jistotu, že váš virtuální počítač funguje správně, musíte odblokovat konkrétní adresy URL. Seznam můžete zobrazit v [seznamu bezpečných adres URL](safe-url-list.md). Pokud nejsou adresy URL odblokovány, nebude váš virtuální počítač správně fungovat.
 
 Pokud chcete toto doporučení vyřešit, ujistěte se, že jste odblokování všech adres URL v [seznamu bezpečných adres URL](safe-url-list.md). Pomocí značky služby nebo značek plně kvalifikovaného názvu domény můžete také odblokovat adresy URL.
-
-## <a name="propose-new-recommendations"></a>Navrhnout nová doporučení
-
-Můžete nám pomoci vylepšit Azure Advisor odesláním nápadů k doporučením. Vaše doporučení by mohlo pomáhat jinému uživateli na obtížném místě. Pokud chcete odeslat návrh, navštivte [náš fórum UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations) a vyplňte formulář pro odeslání. Když vyplníte formulář, nezapomeňte nám sdělit, co je co nejvíce podrobností.
 
 ## <a name="next-steps"></a>Další kroky
 

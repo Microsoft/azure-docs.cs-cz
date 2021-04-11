@@ -11,17 +11,17 @@ ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 3ecf4458b052f4fdc0eb2e6e697b0468c71ce9c2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519652"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>Aktivovat kanály strojového učení
 
 V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Plán můžete vytvořit na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat. Nakonec se dozvíte, jak pomocí dalších služeb Azure, aplikace Azure Logic a Azure Data Factory spustit kanály. Aplikace logiky Azure umožňuje komplexnější aktivaci logiky nebo chování. Kanály Azure Data Factory umožňují volat kanál strojového učení v rámci většího kanálu orchestrace dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 

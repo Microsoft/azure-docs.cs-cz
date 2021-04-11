@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
 ms.openlocfilehash: cd6e4e62123b4d4b927cf385aaf64a066eecc1e0
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104887746"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Postup aktualizace služby Azure Percept DK přes připojení USB
@@ -28,7 +28,7 @@ V této příručce se dozvíte, jak úspěšně aktualizovat operační systém
 >
 > Postupujte podle všech instrukcí v uvedeném pořadí. Přeskočení kroků může být vaše sada pro vývoj v nepoužitelném stavu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK
 - Hostitelský počítač se systémem Windows, Linux nebo OS X s možností Wi-Fi a dostupným portem USB-C nebo USB-A

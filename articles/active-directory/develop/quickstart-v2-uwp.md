@@ -13,10 +13,10 @@ ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104658505"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
@@ -26,7 +26,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Předpoklady
+> ## <a name="prerequisites"></a>Požadavky
 >
 > * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)

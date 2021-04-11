@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
 ms.openlocfilehash: 8187a71e89c364ef5a52d7ad4615ed03e6b24a4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104592046"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
@@ -45,7 +45,7 @@ Konkrétně tento konektor SQL Server podporuje:
 >[!NOTE]
 >Tento konektor teď nepodporuje SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a ovladač SQL Server ODBC. Postupujte [podle pokynů ke](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver) stažení ovladače ODBC a konfigurací připojovacích řetězců.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

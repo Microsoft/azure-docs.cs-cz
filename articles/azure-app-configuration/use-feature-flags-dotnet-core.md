@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4d54e1ff07b250b5595d2f8aee5f022bd2359721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726423"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729503"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -218,7 +218,7 @@ Podle konvence se `FeatureManagement` oddíl tohoto dokumentu JSON používá pr
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Použití injektáže závislosti pro přístup k IFeatureManager 
 
-U některých operací, jako je například ruční kontrola hodnot příznaku funkce, je třeba získat instanci [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti. V následujícím příkladu `IFeatureManager` je do podpisu konstruktoru pro řadič přidán argument typu. Modul runtime automaticky vyřeší odkaz a poskytuje rozhraní při volání konstruktoru. Pokud používáte šablonu aplikace, ve které kontroler již obsahuje jeden nebo více argumentů vkládání závislostí v konstruktoru, například `ILogger` , můžete přidat `IFeatureManager` jako další argument:
+U některých operací, jako je například ruční kontrola hodnot příznaku funkce, je třeba získat instanci [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?preserve-view=true&view=azure-dotnet-preview). Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti. V následujícím příkladu `IFeatureManager` je do podpisu konstruktoru pro řadič přidán argument typu. Modul runtime automaticky vyřeší odkaz a poskytuje rozhraní při volání konstruktoru. Pokud používáte šablonu aplikace, ve které kontroler již obsahuje jeden nebo více argumentů vkládání závislostí v konstruktoru, například `ILogger` , můžete přidat `IFeatureManager` jako další argument:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     
@@ -322,7 +322,7 @@ public IActionResult Index()
 }
 ```
 
-Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované rozhraní [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?view=azure-dotnet-preview) . Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
+Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované rozhraní [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?preserve-view=true&view=azure-dotnet-preview) . Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
 
 ## <a name="mvc-views"></a>Zobrazení MVC
 

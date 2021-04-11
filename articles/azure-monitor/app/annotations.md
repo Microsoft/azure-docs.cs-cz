@@ -3,12 +3,12 @@ title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 776efd56aaa523d1c2621c51cba0446a42bb7411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9132e65e4705fd9125d97a5e095fe5f0850229a2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461908"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011046"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -96,7 +96,10 @@ Pokud chcete povolit poznámky v sešitu, přejít na **Upřesnit nastavení** a
 Vyberte libovolnou značku poznámky a otevřete tak podrobnosti o vydané verzi, včetně žadatele, větve správy zdrojového kódu, kanálu vydání a prostředí.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Vytváření vlastních poznámek z PowerShellu
-Pomocí skriptu prostředí PowerShell pro CreateReleaseAnnotation z GitHubu můžete vytvářet poznámky z libovolného procesu, který chcete, bez použití Azure DevOps.
+Skript prostředí PowerShell pro CreateReleaseAnnotation můžete použít k vytvoření poznámek ze všech procesů, které chcete, bez použití Azure DevOps.
+
+> [!IMPORTANT]
+> Pokud používáte PowerShell 7,1, přidejte `-SkipHttpErrorCheck` na konec řádku 26. Příklad: `$request = Invoke-WebRequest -Uri $fwLink -MaximumRedirection 0 -UseBasicParsing -ErrorAction Ignore -SkipHttpErrorCheck`.
 
 1. Vytvořte místní kopii CreateReleaseAnnotation.ps1:
 
@@ -256,8 +259,8 @@ Pomocí skriptu prostředí PowerShell pro CreateReleaseAnnotation z GitHubu mů
 
 Skript můžete upravit například tak, aby bylo možné vytvořit poznámky za minulosti.
 
+
 ## <a name="next-steps"></a>Další kroky
 
 * [vytvářet pracovní položky,](./diagnostic-search.md#create-work-item)
 * [Automatizace v prostředí PowerShell](./powershell.md)
-

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a972123604cafbfc4c6753c1fe3ad21147b53b2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715543"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550655"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -71,7 +71,7 @@ Konfigurace diagnostických protokolů pro vaše přední dveře:
 
 3. Vyberte **zapnout diagnostiku**. Archivujte diagnostické protokoly spolu se metrikami do účtu úložiště, streamujte je do centra událostí nebo je odešlete do protokolů Azure Monitor.
 
-Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodinách). Diagnostické protokoly poskytují jednotlivé požadavky rozhraní API s každou položkou, která má následující schéma:
+Přední dveře aktuálně poskytují diagnostické protokoly. Diagnostické protokoly poskytují jednotlivé požadavky rozhraní API s každou položkou, která má následující schéma:
 
 | Vlastnost  | Popis |
 | ------------- | ------------- |

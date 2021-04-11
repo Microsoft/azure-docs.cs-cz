@@ -12,17 +12,17 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: a4391ecb7175b0e473b47cc3de43fd113795bc6b
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889021"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for MySQL
 
 V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Pythonu. Pak použijete příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac, Ubuntu Linux a Windows. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro tento rychlý Start budete potřebovat:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free).

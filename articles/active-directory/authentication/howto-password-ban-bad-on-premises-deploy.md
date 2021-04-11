@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653809"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010575"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -88,7 +88,7 @@ Platí následující základní požadavky:
 * Služba distribuce klíčů musí být povolená na všech řadičích domény v doméně, která běží na Windows Serveru 2012 a novějších verzích. Ve výchozím nastavení je tato služba povolená přes ruční spuštění aktivační události.
 
 * Mezi aspoň jedním řadičem domény v každé doméně a aspoň jedním serverem, který hostuje proxy službu pro ochranu hesel Azure AD, musí existovat síťové připojení. Toto připojení musí řadiči domény dovolit přístup k portu mapovače koncových bodů RPC 135 a portu serveru RPC na proxy službě.
-    * Ve výchozím nastavení je port serveru RPC dynamickým portem RPC, ale je možné ho nakonfigurovat tak, aby [používal statický port](#static).
+    * Ve výchozím nastavení je port serveru RPC dynamickým portem RPC z rozsahu (49152 – 65535), ale je možné ho nakonfigurovat tak, aby [používal statický port](#static).
 * Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít síťový přístup k následujícím koncovým bodům:
 
     |**Koncový bod**|**Účel**|

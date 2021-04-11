@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643510"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276905"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -70,6 +70,8 @@ Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu:
 Pokud povolujete možnost automanage s existujícím účtem automanage:
 * Role **Přispěvatel** ve skupině prostředků, která obsahuje vaše virtuální počítače
 
+Účet pro automatizované řízení **bude udělen oprávnění Přispěvatel** a **zásady prostředků přispěvatelům** , aby mohli provádět akce na autospravovaných počítačích.
+
 > [!NOTE]
 > Pokud chcete použít automanage na virtuálním počítači, který je připojený k pracovnímu prostoru v jiném předplatném, musíte mít oprávnění popsaná výše v každém předplatném.
 
@@ -94,6 +96,19 @@ Pokud pro virtuální počítač používáte službu automanage poprvé, může
 
 Jediná doba, kterou možná budete potřebovat k interakci s tímto virtuálním počítačem za účelem správy těchto služeb, je v události, kterou jsme se pokusili opravit váš virtuální počítač, ale to se nepovedlo. Pokud jsme váš virtuální počítač úspěšně napravili, převedeme ho zpátky do dodržování předpisů, aniž by vás upozornili na vás. Další podrobnosti najdete v tématu [stav virtuálních počítačů](#status-of-vms).
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Povolení automanage pro virtuální počítače pomocí Azure Policy
+Můžete taky povolit automatické řízení na virtuálních počítačích se škálováním pomocí integrovaných Azure Policy. Zásada má DeployIfNotExists účinek, což znamená, že všechny vhodné virtuální počítače umístěné v rámci této zásady budou automaticky připojené k automatické správě osvědčených postupů pro virtuální počítače.
+
+Přímý odkaz na tuto zásadu [najdete tady](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3).
+
+### <a name="how-to-apply-the-policy"></a>Jak používat zásady
+1. Po zobrazení definice zásady klikněte na tlačítko **přiřadit** .
+1. Vyberte obor, ve kterém chcete zásadu použít (může se jednat o skupinu pro správu, předplatné nebo skupinu prostředků).
+1. V části **parametry** zadejte parametry pro účet automanage, konfigurační profil a efekt (efekt by se obvykle DeployIfNotExists).
+    1. Pokud nemáte účet pro správu, budete [ho muset vytvořit](#create-an-automanage-account).
+1. V části **náprava** zaškrtněte políčko klikněte na úlohu nápravy. Tím se provede připojování k autosprávě.
+1. Klikněte na tlačítko **zkontrolovat + vytvořit** a ujistěte se, že všechna nastavení vypadají dobře.
+1. Klikněte na **Vytvořit**.
 
 ## <a name="environment-configuration"></a>Konfigurace prostředí
 
@@ -142,6 +157,43 @@ Pokud povolujete možnost automanage s existujícím účtem pro správu, musít
 > [!NOTE]
 > Když zakážete možnosti pro automanage, budete mít i oprávnění účtu automanage u všech přidružených předplatných. Ručně odeberte oprávnění tak, že na stránce IAM předplatného odeberete nebo odstraníte účet pro správu. Účet automanage nelze odstranit, pokud stále spravuje všechny počítače.
 
+### <a name="create-an-automanage-account"></a>Vytvoření účtu pro autosprávu
+Účet pro správu můžete vytvořit pomocí portálu nebo pomocí šablony ARM.
+
+#### <a name="portal"></a>Portál
+1. Přechod na okno pro **správu** v portálu
+1. **V existujícím počítači** klikněte na Povolit.
+1. V části **Upřesnit** klikněte na vytvořit nový účet.
+1. Vyplňte požadovaná pole a klikněte na **vytvořit** .
+
+#### <a name="arm-template"></a>Šablona ARM
+Následující šablonu ARM uložte jako `azuredeploy.json` a spusťte následující příkaz: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automanageAccountName": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-06-30-preview",
+            "type": "Microsoft.Automanage/accounts",
+            "name": "[parameters('automanageAccountName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="status-of-vms"></a>Stav virtuálních počítačů
 

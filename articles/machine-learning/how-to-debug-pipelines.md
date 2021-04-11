@@ -11,10 +11,10 @@ ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
 ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102522083"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Řešení potíží s kanály strojového učení
@@ -27,8 +27,8 @@ Následující tabulka obsahuje běžné problémy při vývoji kanálů s poten
 
 | Problém | Možné řešení |
 |--|--|
-| Nejde předat data do `PipelineData` adresáře. | Ujistěte se, že jste ve skriptu vytvořili adresář, který odpovídá tomu, kde váš kanál očekává výstupní data kroku. Ve většině případů vstupní argument definuje výstupní adresář a pak adresář vytvoří explicitně. Použijte `os.makedirs(args.output_dir, exist_ok=True)` k vytvoření výstupního adresáře. V tomto [kurzu](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) najdete příklad ukázkového skriptu, který ukazuje tento vzor návrhu. |
-| Chyby závislostí | Pokud ve svém vzdáleném kanálu dojde k chybám závislostí, které nevznikly při místním testování, potvrďte, že závislosti a verze vzdáleného prostředí odpovídají hodnotám ve vašem testovacím prostředí. (Viz [sestavování prostředí, ukládání do mezipaměti a opakované použití](./concept-environments.md#environment-building-caching-and-reuse)|
+| Nejde předat data do `PipelineData` adresáře. | Ujistěte se, že jste ve skriptu vytvořili adresář, který odpovídá očekávanému umístění výstupních dat kroků kanálu. Ve většině případů bude výstupní adresář definovat vstupní argument a pak explicitně vytvoříte adresář. K vytvoření výstupního adresáře použijte `os.makedirs(args.output_dir, exist_ok=True)`. V tomto [kurzu](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) najdete příklad ukázkového skriptu, který ukazuje tento vzor návrhu. |
+| Chyby závislostí | Pokud ve vzdáleném kanálu dochází k chybám závislostí, ke kterým při místním testování nedocházelo, ověřte, že závislosti vzdáleného prostředí a jejich verze odpovídají závislostem a verzím v testovacím prostředí. (Viz [sestavování prostředí, ukládání do mezipaměti a opakované použití](./concept-environments.md#environment-building-caching-and-reuse)|
 | Dvojznačné chyby s cíli výpočtů | Zkuste odstranit a znovu vytvořit výpočetní cíle. Opětovné vytváření výpočetních cílů je rychlé a může vyřešit některé přechodné problémy. |
 | Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je opětovné použití zakázané, `allow_reuse` parametr v kroku se nastaví na `False` . |
 | Nenutně funguje kanál. | Aby se zajistilo, že kroky se spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře zdrojového kódu pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte `source_directory` parametr v objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |

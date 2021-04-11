@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 574340825567dcd512a5da1b311c57fe12954e34
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c3ae5c7b1c45d170548f6fa00481094117e1737
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937358"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Co je Azure front dveří Standard/Premium (Preview)?
 
@@ -28,7 +28,7 @@ Pomocí služby Azure front bran Standard/Premium můžete transformovat své gl
 
 Přední dveře Azure (Standard/Premium) fungují ve vrstvě 7 (vrstva HTTP/HTTPS) pomocí protokolu libovolného vysílání s rozdělenou sítí TCP a Microsoftem, aby se zlepšilo globální připojení. Na základě vaší přizpůsobené metody směrování pomocí sady pravidel můžete zajistit, aby přední dveře Azure směrovaly požadavky klientů na nejrychlejší a nejvíce dostupný počátek. Počátek aplikace je jakákoli internetová služba hostovaná v rámci Azure nebo mimo ni. Přední dveře Azure (Standard/Premium) poskytují řadu metod pro směrování provozu a možnosti monitorování stavu původu tak, aby vyhovovaly různým potřebám aplikací a automatickým scénářům pro převzetí služeb při selhání. Podobně jako u Traffic Manager je přední dveře odolná vůči chybám, včetně selhání do celé oblasti Azure.
 
-Přední dvířka Azure také chrání vaši aplikaci na okrajích s integrovanou ochranou firewallu webových aplikací, ochranou bot a integrovaným rozložením 3/vrstvy 4 distribuovaná ochrana DDoS (Denial of Service). Zabezpečuje taky vaše soukromé back-endy pomocí služby privátního propojení. Přední dveře Azure poskytují nejlepší zabezpečení Microsoftu v globálním měřítku.  
+Přední dvířka Azure také chrání vaši aplikaci na okrajích s integrovanou ochranou firewallu webových aplikací, ochranou robotů a integrovanou ochranou DDoS (Distributed Denial of Service) vrstvy 3/vrstvy 4. Zabezpečuje taky vaše soukromé back-endy pomocí služby privátního propojení. Přední dveře Azure poskytují nejlepší zabezpečení Microsoftu v globálním měřítku.  
 
 >[!NOTE]
 > Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení.

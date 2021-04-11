@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589323"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
@@ -59,7 +59,7 @@ Aby bylo možné použít omezení tenanta, klienti musí být schopni se připo
 
 K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se vyžaduje následující konfigurace. Tyto doprovodné materiály jsou obecné, takže byste měli v dokumentaci dodavatele proxy serveru vyhledat konkrétní kroky implementace.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Proxy musí být schopné provádět zachycení protokolu TLS, vkládání hlaviček HTTP a filtrovat cíle pomocí plně kvalifikovaného názvu domény nebo adresy URL.
 

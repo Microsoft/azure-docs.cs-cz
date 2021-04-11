@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: Přečtěte si o výchozích kvótách, omezených velikostech SKU virtuálních počítačů uzlů a dostupnosti oblastí služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 9592b03f5bd9e9436db5665e040b4afd3b68b764
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/25/2021
+ms.openlocfilehash: 3e1e74834153584525d2093d2a1bb8ba8e991e5a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87562731"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011460"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)
 
-Všechny služby Azure nastavily výchozí limity a kvóty pro prostředky a funkce. Některé skladové položky virtuálních počítačů jsou taky omezené pro použití.
+Všechny služby Azure nastavily výchozí limity a kvóty pro prostředky a funkce, včetně omezení využití pro určité skladové položky virtuálních počítačů (VM).
 
 Tento článek podrobně popisuje výchozí omezení prostředků pro prostředky Azure Kubernetes Service (AKS) a dostupnost AKS v oblastech Azure.
 
@@ -27,7 +27,9 @@ Tento článek podrobně popisuje výchozí omezení prostředků pro prostředk
 Na zřízenou infrastrukturu se vztahují všechny další omezení sítě, výpočtů a úložiště. Příslušné limity najdete v tématu [omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 > [!IMPORTANT]
-> Při upgradu clusteru AKS se dočasně spotřebují další prostředky. Tyto prostředky zahrnují dostupné IP adresy v podsíti virtuální sítě nebo vCPU kvótu virtuálních počítačů. Pokud používáte kontejnery Windows serveru, jediný doporučený přístup k použití nejnovějších aktualizací uzlů je provedení operace upgradu. Selhání procesu upgradu clusteru může znamenat, že nemáte dostupný adresní prostor IP adres ani vCPU kvótu pro zpracování těchto dočasných prostředků. Další informace o procesu upgradu uzlů Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
+> Když upgradujete cluster AKS, dočasně se spotřebují další prostředky. Mezi tyto prostředky patří dostupné IP adresy v podsíti virtuální sítě nebo v vCPU kvótě virtuálního počítače. 
+>
+> Pro kontejnery Windows serveru můžete provést operaci upgradu a použít nejnovější aktualizace uzlů. Pokud nemáte dostupný adresní prostor IP adres nebo vCPU kvótu pro zpracování těchto dočasných prostředků, proces upgradu clusteru se nezdaří. Další informace o procesu upgradu uzlů Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
 ## <a name="restricted-vm-sizes"></a>Omezené velikosti virtuálních počítačů
 
@@ -49,7 +51,7 @@ Nejnovější seznam, kde můžete nasadit a spouštět clustery, najdete v tém
 
 ## <a name="next-steps"></a>Další kroky
 
-Některé výchozí limity a kvóty je možné zvýšit. Pokud váš prostředek podporuje zvýšení, požádejte o zvýšení žádosti o [podporu Azure][azure-support] (pro **typ problému** vyberte možnost **kvóta**).
+Můžete zvýšit určitá výchozí omezení a kvóty. Pokud váš prostředek podporuje zvýšení, požádejte o zvýšení žádosti o [podporu Azure][azure-support] (pro **typ problému** vyberte možnost **kvóta**).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
