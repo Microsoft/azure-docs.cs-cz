@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877839"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Nasazení jarního cloudu Azure ve virtuální síti
@@ -29,7 +29,7 @@ Nasazení umožňuje:
 > [!Note]
 > Virtuální síť Azure si můžete vybrat jenom v případě, že vytvoříte novou instanci služby Azure jaře Cloud Service. Po vytvoření Azure jarního cloudu se nedá změnit na použití jiné virtuální sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Podle pokynů v části [registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu rozhraní příkazového řádku Azure Zaregistrujte poskytovatele prostředků jarních cloudů Azure **Microsoft. AppPlatform** a **Microsoft. ContainerService** :
 

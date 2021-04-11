@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
-ms.openlocfilehash: 80edac3106a79a706ee1ef18c48d41d1ad6c3eaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce0ed303790ad27c99864cc44ea85c96ac3ec468
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724587"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962233"
 ---
 # <a name="create-a-basic-audio-transform"></a>Vytvoří základní transformaci zvuku.
 
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak vytvořit základní transformaci zvuku.  V rámci v
 
 ## <a name="prerequisites"></a>Požadavky
 
-Postupujte podle kroků v části [Vytvoření účtu Media Services](./create-account-howto.md) a vytvořte potřebný Media Services účet a skupinu prostředků pro vytvoření assetu.
+Postupujte podle kroků v části [Vytvoření účtu Media Services](./account-create-how-to.md) a vytvořte potřebný Media Services účet a skupinu prostředků pro vytvoření assetu.
 
 ## <a name="methods"></a>Metody
 

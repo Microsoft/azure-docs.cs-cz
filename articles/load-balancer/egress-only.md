@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a96e6b567c04f2e0561a0a754e854a0e2b1ad6b0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94694989"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076254"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí
 
@@ -278,7 +278,7 @@ Vytvořte **myPublicBackendPool** fond adres back-end:
     | IP adresa front-endu | Vyberte **LoadBalancerFrontEnd**.|
     | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15 minut**.|
     | Resetování protokolu TCP | Vyberte **Povoleno**.|
-    | Back-endový fond | Vyberte **myPublicBackendPool**.| |
+    | Back-endový fond | Vyberte **myPublicBackendPool**.|
     | Přidělování portů-> přidělování portů | Vyberte **použít výchozí počet odchozích portů** . |
 
 4. Vyberte **Přidat**.

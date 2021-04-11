@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: f55a82eeddc8d4515b0f1333b615244976975097
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877838"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
@@ -22,7 +22,7 @@ Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžet
 ::: zone pivot="programming-language-csharp"
 V tomto článku se dozvíte, jak povolit aplikaci .NET Core Steeltoe k použití distribuovaného trasování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle těchto postupů, potřebujete aplikaci Steeltoe, která je už [připravená pro nasazení do služby Azure jaře Cloud](how-to-prepare-app-deployment.md).
 
@@ -103,7 +103,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Zobrazte mapy závislostí pro vaše aplikace mikroslužeb.
 > * Vyhledávejte data trasování pomocí různých filtrů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete průvodce [nasazením prvního jarního cloudu aplikace na platformě Azure](spring-cloud-quickstart.md) , abyste zřídili a spustili službu jarní cloudu Azure.
 

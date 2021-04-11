@@ -5,18 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c26a7f53609193bf373c3f7f9b1037405d4e518
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509026"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122131"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
-
->[!NOTE]
->Při přechodu Microsoft Operations Management Suite (OMS) na monitorování Microsoft Azure se terminologie mění. Tento článek se týká brány OMS jako brány Azure Log Analytics. 
->
 
 Tento článek popisuje, jak nakonfigurovat komunikaci s Azure Automation a Azure Monitor pomocí brány Log Analytics, když jsou počítače, které jsou přímo připojené nebo monitorované Operations Manager, nemají přístup k Internetu. 
 
@@ -89,6 +85,9 @@ Brána Log Analytics je dostupná v těchto jazycích:
 Brána Log Analytics podporuje pouze TLS (Transport Layer Security) 1,0, 1,1 a 1,2.  Nepodporuje SSL (Secure Sockets Layer) (SSL).  Aby se zajistila bezpečnost dat při přenosu do Log Analytics, nakonfigurujte bránu tak, aby používala aspoň protokol TLS 1,2. Jsou ohrožené starší verze TLS nebo SSL. I když v současné době umožňují zpětnou kompatibilitu, nepoužívejte je.  
 
 Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../logs/data-security.md#sending-data-securely-using-tls-12). 
+
+>[!NOTE]
+>Brána je předávací proxy server, který neukládá žádná data. Jakmile agent naváže spojení s Azure Monitor, řídí se stejným tokem šifrování s bránou nebo bez ní. Data jsou zašifrovaná mezi klientem a koncovým bodem. Vzhledem k tomu, že brána je jenom tunel, nemá možnost kontrolovat, co se posílá.
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
 

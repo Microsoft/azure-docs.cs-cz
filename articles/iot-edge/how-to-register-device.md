@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
 ms.openlocfilehash: d75f184a324a9d418b0af2e3cf5790205af0fa42
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200719"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>Registrace zařízení IoT Edge v IoT Hub
@@ -42,7 +42,7 @@ Pokud máte k dispozici mnoho zařízení a nechcete je ručně zřídit, použi
 * [Vytvoření a zřízení IoT Edgech zařízení pomocí čipu TPM](how-to-auto-provision-simulated-device-linux.md)
 * [Vytvoření a zřízení IoT Edge zařízení pomocí symetrických klíčů](how-to-auto-provision-symmetric-keys.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

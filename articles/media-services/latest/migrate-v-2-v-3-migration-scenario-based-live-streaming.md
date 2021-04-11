@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 322a599d5ad02ddcf19c61261d968d098b6c9871
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563122"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122046"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Průvodce migrací na základě scénáře živého streamování
 
@@ -35,12 +35,12 @@ Azure Portal teď podporuje nastavení a správu živých událostí.  Doporuču
 
 Před přesunutím obsahu z verze V2 na V3 otestujte nový způsob doručování živých událostí pomocí Media Services. Tady jsou funkce v3, se kterými můžete pracovat, a zvažte migraci.
 
-- Vytvoří novou [živou událost](live-events-outputs-concept.md#live-events) v3 pro kódování. Můžete povolit [Předvolby kódování 1080p a 720p](live-event-types-comparison.md#system-presets).
-- Místo programů použít entitu [Live Output](live-events-outputs-concept.md#live-outputs)
+- Vytvoří novou [živou událost](live-event-outputs-concept.md#live-events) v3 pro kódování. Můžete povolit [Předvolby kódování 1080p a 720p](live-event-types-comparison-reference.md#system-presets).
+- Místo programů použít entitu [Live Output](live-event-outputs-concept.md#live-outputs)
 - Vytvořte [Lokátory streamování](streaming-locators-concept.md).
-- Berte v úvahu, že budete potřebovat [HLS a přerušované](dynamic-packaging-overview.md) živé streamování.
-- Pokud budete vyžadovat rychlé spuštění živých událostí, prozkoumejte nové funkce v [pohotovostním režimu](live-events-outputs-concept.md#standby-mode) .
-- Pokud chcete svou živou událost přepisovat, když se děje, prozkoumejte novou funkci pro [živý přepis](live-transcription.md) .
+- Berte v úvahu, že budete potřebovat [HLS a přerušované](encode-dynamic-packaging-concept.md) živé streamování.
+- Pokud budete vyžadovat rychlé spuštění živých událostí, prozkoumejte nové funkce v [pohotovostním režimu](live-event-outputs-concept.md#standby-mode) .
+- Pokud chcete svou živou událost přepisovat, když se děje, prozkoumejte novou funkci pro [živý přepis](live-event-live-transcription-how-to.md) .
 - Pokud potřebujete delší dobu trvání streamování, vytvořte v zcela nepřetržitou živé události v hodnotě v3.
 - Pomocí [Event Grid](monitoring/monitor-events-portal-how-to.md) můžete monitorovat živé události.
 
@@ -50,22 +50,22 @@ Konkrétní kroky najdete v tématu Koncepty, kurzy a návody k dynamickým udá
 
 ### <a name="concepts"></a>Koncepty
 
-- [Živé streamování s Azure Media Services V3](live-streaming-overview.md)
-- [Živé události a živé výstupy v Media Services](live-events-outputs-concept.md)
+- [Živé streamování s Azure Media Services V3](stream-live-streaming-concept.md)
+- [Živé události a živé výstupy v Media Services](live-event-outputs-concept.md)
 - [Ověřená místní kodéry živého streamování](recommended-on-premises-live-encoders.md)
-- [Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání](live-event-cloud-dvr.md)
-- [Live – přepis (Preview)](live-transcription.md)
-- [Porovnání typů živých událostí](live-event-types-comparison.md)
-- [Stavy a fakturace živých událostí](live-event-states-billing.md)
-- [Nastavení nízké latence události za provozu](live-event-latency.md)
-- [Media Services kódy chyb živé události](live-event-error-codes.md)
+- [Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání](live-event-cloud-dvr-time-how-to.md)
+- [Live-Event-Live-přepis-How-to (Preview)](live-event-live-transcription-how-to.md)
+- [Porovnání typů živých událostí](live-event-types-comparison-reference.md)
+- [Stavy a fakturace živých událostí](live-event-states-billing-concept.md)
+- [Nastavení nízké latence události za provozu](live-event-latency-reference.md)
+- [Media Services kódy chyb živé události](live-event-error-codes-reference.md)
 
 ### <a name="tutorials-and-quickstarts"></a>Kurzy a rychlé starty
 
 - [Kurz: živé streamování pomocí Media Services](stream-live-tutorial-with-api.md)
-- [Vytvoření živého datového proudu Azure Media Services pomocí OBS](live-events-obs-quickstart.md)
-- [Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu](manage-assets-quickstart.md)
-- [Rychlý Start: vytvoření streamu Azure Media Services Live pomocí Wirecast](live-events-wirecast-quickstart.md)
+- [Vytvoření živého datového proudu Azure Media Services pomocí OBS](live-event-obs-quickstart.md)
+- [Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu](asset-create-asset-upload-portal-quickstart.md)
+- [Rychlý Start: vytvoření streamu Azure Media Services Live pomocí Wirecast](live-event-wirecast-quickstart.md)
 
 ## <a name="samples"></a>ukázky
 

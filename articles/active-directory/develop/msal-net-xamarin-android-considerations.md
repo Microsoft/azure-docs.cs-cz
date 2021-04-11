@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 11642480ac817b50d102e396b8ab5e200948a615
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103199568"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Požadavky na konfiguraci a tipy pro řešení potíží pro Xamarin Android s MSAL.NET
@@ -229,7 +229,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 Další informace najdete v tématu věnovaném [použití webových prohlížečů pro MSAL.NET](msal-net-web-browsers.md) a [Xamarin Android System Browser](msal-net-system-browser-android-considerations.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="general-tips"></a>Obecné tipy
 

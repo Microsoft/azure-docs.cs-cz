@@ -51,14 +51,26 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration schéma
           href: schema-cscfg-networkconfiguration.md
-    - name: Nejčastější dotazy
-      href: faq.md
 - name: Postup
   items:
-    - name: Použít rozšíření vzdálené plochy
-      href: enable-rdp.md
-    - name: Použít rozšíření WAD
-      href: enable-wad.md
+    - name: Migrace na Cloud Services (Rozšířená podpora)
+      items:
+        - name: Přehled migrace
+          href: in-place-migration-overview.md
+        - name: Technické podrobnosti o migraci
+          href: in-place-migration-technical-details.md
+        - name: Migrace pomocí Azure Portal
+          href: in-place-migration-portal.md
+        - name: Migrace pomocí prostředí PowerShell
+          href: in-place-migration-powershell.md
+        - name: Běžné chyby a známé problémy
+          href: in-place-migration-common-errors.md
+    - name: Použít rozšíření
+      items:
+        - name: Použít rozšíření vzdálené plochy
+          href: enable-rdp.md
+        - name: Použít rozšíření WAD
+          href: enable-wad.md
     - name: Povolení upozornění
       href: enable-alerts.md
     - name: Konfigurace škálování
@@ -67,6 +79,16 @@
       href: certificates-and-key-vault.md
     - name: Vygenerovat šablonu ARM pomocí portálu
       href: generate-template-portal.md
+    - name: Prohození dvou cloudových služeb
+      href: swap-cloud-service.md
+    - name: Potlačit podrobnosti SKU
+      href: override-sku.md
+    - name: Řešení potíží
+      items:
+        - name: Chyba při spuštění role
+          href: role-startup-failure.md
+        - name: Nejčastější dotazy
+          href: faq.md
 - name: ukázky
   items:
     - name: Ukázkové šablony

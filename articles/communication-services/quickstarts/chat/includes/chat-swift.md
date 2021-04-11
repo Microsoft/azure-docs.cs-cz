@@ -10,58 +10,57 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b7bf924ba8514aa8da1d466ea4852f3f9caaf646
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5bf4bbe2c8dc863f67dffb50609f7775a4499e3a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726642"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073313"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Nainstalujte [Xcode](https://developer.apple.com/xcode/) a [Cocoapods](https://cocoapods.org/). k vytvoření aplikace pro iOS pro rychlý Start a Cocoapods k instalaci závislostí použijeme Xcode.
-- Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset **zaznamenat koncový bod prostředku** .
-- Vytvořte **dva** uživatele služby ACS a vydejte jim [token přístupu uživatele](../../access-tokens.md)k přístupovému tokenu. Nezapomeňte nastavit rozsah pro **chat** a **Poznamenejte si řetězec tokenu a také řetězec userId**. V tomto rychlém startu vytvoříme vlákno s počátečním účastníkem a potom do tohoto vlákna přidá druhý účastník.
+- Nainstalujte [Xcode](https://developer.apple.com/xcode/) a [CocoaPods](https://cocoapods.org/). Xcode použijete k vytvoření aplikace pro iOS pro rychlý Start a CocoaPods k instalaci závislostí.
+- Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [rychlý Start: vytvoření a Správa prostředků komunikačních služeb](../../create-communication-resource.md). V tomto rychlém startu je potřeba zaznamenat koncový bod prostředku.
+- Vytvořte dva uživatele v komunikačních službách Azure a vydejte jim [token přístupu uživatele](../../access-tokens.md). Nezapomeňte nastavit obor na `chat` a poznamenat si `token` řetězec a také `userId` řetězec. V tomto rychlém startu vytvoříte vlákno s počátečním účastníkem a potom do vlákna přidáte druhého účastníka.
 
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-new-ios-application"></a>Vytvoření nové aplikace pro iOS
 
-Otevřete Xcode a vyberte `Create a new Xcode project` .
+Otevřete Xcode a vyberte **vytvořit nový projekt Xcode**. Pak jako platformu a **aplikaci** pro šablonu vyberte **iOS** .
 
-V dalším okně vyberte `iOS` jako platformu a `App` pro šablonu.
+Jako název projektu zadejte **ChatQuickstart**. Pak jako **životní cyklus vyberte jako** rozhraní, **UIKit aplikaci delegáta** **a jako** jazyk.
 
-Při volbě možnosti zadejte `ChatQuickstart` název projektu. Jako `Storyboard` `UIKit App Delegate` životní cyklus a jako jazyk vyberte jako rozhraní `Swift` .
-
-Klikněte na tlačítko Další a vyberte adresář, ve kterém chcete vytvořit projekt.
+Vyberte **Další** a vyberte adresář, ve kterém chcete vytvořit projekt.
 
 ### <a name="install-the-libraries"></a>Instalace knihoven
 
-K instalaci nezbytných závislostí komunikačních služeb použijeme Cocoapods.
+Pomocí CocoaPods nainstalujte nezbytné závislosti komunikačních služeb.
 
-Z příkazového řádku přejděte do kořenového adresáře projektu pro `ChatQuickstart` iOS.
-
-Vytvořte souboru podfile: `pod init`
+Z příkazového řádku, pokračujte v kořenovém adresáři `ChatQuickstart` projektu iOS. Vytvořte souboru podfile pomocí následujícího příkazu: `pod init` .
 
 Otevřete souboru podfile a přidejte následující závislosti do `ChatQuickstart` cíle:
+
 ```
 pod 'AzureCommunication', '~> 1.0.0-beta.9'
 pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
 ```
 
-Instalace závislostí vytvoří také pracovní prostor Xcode: `pod install`
+Nainstalujte závislosti pomocí následujícího příkazu: `pod install` . Všimněte si, že se tím také vytvoří pracovní prostor Xcode.
 
-**Po spuštění pod instalací znovu otevřete projekt v Xcode výběrem nově vytvořeného `.xcworkspace` .**
+Po spuštění `pod install` znovu otevřete projekt v Xcode tak, že vyberete nově vytvořený `.xcworkspace` .
 
-### <a name="setup-the-placeholders"></a>Nastavení zástupných symbolů
+### <a name="set-up-the-placeholders"></a>Nastavení zástupných symbolů
 
 Otevřete pracovní prostor `ChatQuickstart.xcworkspace` v Xcode a pak otevřete `ViewController.swift` .
 
-V tomto rychlém startu přidáme náš kód do a `viewController` zobrazíme výstup v konzole Xcode. Tento rychlý Start neřeší vytváření uživatelského rozhraní v iOS. 
+V tomto rychlém startu přidáte svůj kód do a `viewController` zobrazíte výstup v konzole Xcode. Tento rychlý Start neřeší sestavování uživatelského rozhraní v iOS. 
 
-V horní části `viewController.swift` importu `AzureCommunication` `AzureCommunicatonChat` knihoven a:
+V horní části `viewController.swift` , importujte `AzureCommunication` `AzureCommunicatonChat` knihovny a:
 
 ```
 import AzureCommunication
@@ -98,7 +97,7 @@ override func viewDidLoad() {
     }
 ```
 
-K synchronizaci našeho kódu pro demonstrační účely použijeme semafor. V následujících krocích nahradíme zástupné symboly ukázkovým kódem pomocí knihovny chatu služby Azure Communications.
+Pro demonstrační účely budeme k synchronizaci kódu použít semafor. V následujících krocích nahradíte zástupné symboly ukázkovým kódem pomocí knihovny chatu služby Azure Communications.
 
 
 ### <a name="create-a-chat-client"></a>Vytvoření chatového klienta
@@ -120,24 +119,24 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
     )
 ```
 
-Nahraďte `<ACS_RESOURCE_ENDPOINT>` koncovým bodem prostředku ACS.
-Nahraďte `<ACCESS_TOKEN>` platným přístupovým tokenem ACS.
+Nahraďte `<ACS_RESOURCE_ENDPOINT>` koncovým bodem prostředku služby Azure Communication Services. Nahraďte `<ACCESS_TOKEN>` platným přístupovým tokenem komunikační služby.
 
-V tomto rychlém startu se nezabývá vytvořením vrstvy služby pro správu tokenů pro aplikaci Chat, i když se doporučuje. Další informace o [architektuře chatu](../../../concepts/chat/concepts.md) najdete v následující dokumentaci.
+Tento rychlý Start nezahrnuje vytvoření vrstvy služby pro správu tokenů pro vaši aplikaci chatu, ale doporučuje se to. Další informace najdete v části "architektura chatu" v tématu [koncepce chatu](../../../concepts/chat/concepts.md).
 
-Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
+Další informace o tokenech přístupu uživatele najdete v tématu [rychlý Start: vytváření a Správa přístupových tokenů](../../access-tokens.md).
 
 ## <a name="object-model"></a>Objektový model 
+
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Chat SDK pro JavaScript.
 
 | Název                                   | Description                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
-| ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, odesílání oznámení o přečtení a čtení a čtení a k odběru událostí chatu. |
+| `ChatClient` | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
+| `ChatThreadClient` | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím `ChatClient` a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv. Můžete ho taky použít k přidání, odebrání a získání uživatelů, posílání oznámení o přečtení a čtení a k přihlášení k odběru událostí chatu. |
 
 ## <a name="start-a-chat-thread"></a>Spustit chatovací vlákno
 
-Nyní použijeme náš `ChatClient` k vytvoření nového vlákna s počátečním uživatelem.
+Nyní můžete použít `ChatClient` k vytvoření nového vlákna s počátečním uživatelem.
 
 Nahraďte komentář `<CREATE A CHAT THREAD>` následujícím kódem:
 
@@ -168,11 +167,11 @@ semaphore.wait()
 
 Nahraďte `<USER_ID>` platným ID uživatele komunikační služby.
 
-Tady používáme semafor pro čekání na obslužnou rutinu dokončení, než budete pokračovat. `threadId`V pozdějších krocích budeme používat odpověď vrácenou do obslužné rutiny dokončení.
+Semafor se tady používá pro čekání na obslužnou rutinu dokončení, než budete pokračovat. V pozdějších krocích použijete `threadId` odpověď z odpovědi vrácené do obslužné rutiny dokončení.
 
 ## <a name="get-a-chat-thread-client"></a>Získat klienta vlákna chatu
 
-Teď, když jsme vytvořili chatovací vlákno, získáte `ChatThreadClient` k provádění operací v rámci tohoto vlákna.
+Nyní, když jste vytvořili chatovací vlákno, můžete získat a `ChatThreadClient` provést operace v rámci tohoto vlákna.
 
 Nahraďte komentář `<CREATE A CHAT THREAD CLIENT>` následujícím kódem:
 
@@ -202,7 +201,7 @@ chatThreadClient.send(message: message) { result, _ in
 semaphore.wait()
 ```
 
-Nejdřív sestavíme, `SendChatMessageRequest` který obsahuje zobrazované jméno a zobrazované jméno odesílatele (volitelně může obsahovat i čas historie sdílené složky). Odpověď vrácená obslužné rutině dokončení obsahuje ID zprávy, která byla odeslána.
+Nejprve sestavíte `SendChatMessageRequest` , který obsahuje zobrazovaný název a zobrazované jméno odesílatele. Tento požadavek může také obsahovat čas historie sdílení, pokud ho chcete zahrnout. Odpověď vrácená obslužné rutině dokončení obsahuje ID zprávy, která byla odeslána.
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 
@@ -226,9 +225,9 @@ chatThreadClient.add(participants: [user]) { result, _ in
 semaphore.wait()
 ```
 
-Nahraďte `<USER_ID>` ID uživatele služby ACS, které má uživatel přidat.
+Nahraďte `<USER_ID>` ID uživatele komunikačních služeb uživatele, který se má přidat.
 
-Při přidávání účastníka do vlákna můžou odpověď vrácené dokončení obsahovat chyby. Tyto chyby reprezentují selhání při přidávání konkrétních účastníků.
+Pokud přidáváte účastníka do vlákna, vrácená odpověď může obsahovat chyby. Tyto chyby reprezentují selhání při přidávání konkrétních účastníků.
 
 ## <a name="list-users-in-a-thread"></a>Výpis uživatelů ve vlákně
 
@@ -270,9 +269,9 @@ chatThreadClient
     }
 ```
 
-Nahraďte `<USER ID>` ID uživatele komunikačních služeb odebíraného účastníkem.
+Nahraďte `<USER ID>` ID uživatele komunikačních služeb odebraného účastníka.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-V Xcode stiskněte tlačítko Spustit a sestavte a spusťte projekt. V konzole můžete zobrazit výstup z kódu a výstup protokolovacího nástroje z ChatClient.
+V Xcode vyberte **Spustit** a sestavte a spusťte projekt. V konzole nástroje můžete zobrazit výstup z kódu a výstup protokolovacího nástroje z klienta chat.
 

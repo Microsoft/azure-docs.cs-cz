@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 20c75672bc7198fb028278dc5432cc6a77e3766e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103016861"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Haivision KB Live k odeslání živého datového proudu s jednou přenosovou rychlostí
@@ -33,7 +33,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat kodér kodéru [HAVISION KB](htt
 
 V tomto kurzu se dozvíte, jak spravovat Azure Media Services (AMS) pomocí nástroje Azure Media Services Explorer (AMSE). Tento nástroj se spouští jenom na počítačích s Windows. Pokud používáte systém Mac nebo Linux, použijte Azure Portal k vytvoření [kanálů](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programů](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 *   Přístup k kodéru Haivision KB, na kterém běží software SW verze 5.01 nebo vyšší.
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
 * Ujistěte se, že je spuštěný koncový bod streamování. Další informace najdete v tématu [Správa koncových bodů streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md) .

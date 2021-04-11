@@ -4,12 +4,12 @@ description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d658d7e64f720a3fb700d157cd5194ff50a48c33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471637"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122097"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -702,6 +702,9 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 V [Průzkumník metrik](../essentials/metrics-charts.md)můžete vytvořit graf, který počítá **uživatele, ověřené** a **uživatelské účty**.
 
 Můžete také [Vyhledat](./diagnostic-search.md) body dat klienta s konkrétními uživatelskými jmény a účty.
+
+> [!NOTE]
+> [Vlastnost EnableAuthenticationTrackingJavaScript třídy ApplicationInsightsServiceOptions](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) v .NET Core SDK zjednodušuje konfiguraci JavaScriptu, která je nutná pro vložení uživatelského jména jako ID ověření pro každé trasování odesílané Application Insights JavaScript SDK. Pokud je tato vlastnost nastavená na hodnotu true, uživatelské jméno uživatele v ASP.NET Core se vypíše spolu s [telemetrie na straně klienta](asp-net-core.md#enable-client-side-telemetry-for-web-applications), takže už se `appInsights.setAuthenticatedUserContext` nepotřebné ruční přidání nemuselo, protože ho sada SDK pro ASP.NET Core už vystavila. ID ověření se taky pošle na server, kde SDK v .NET Core ho bude identifikovat a použít pro jakoukoliv telemetrii na straně serveru, jak je popsáno v [referenčních informacích k rozhraní JavaScript API](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#setauthenticatedusercontext). Pro aplikace JavaScriptu, které nefungují stejným způsobem jako ASP.NET Core MVC (například zabezpečené webové aplikace), byste ale museli `appInsights.setAuthenticatedUserContext` ručně přidat.
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>Filtrování, vyhledávání a segmentace dat pomocí vlastností
 

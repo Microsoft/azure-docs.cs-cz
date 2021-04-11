@@ -3,17 +3,18 @@ title: Schéma role pro Azure Cloud Services (Classic) | Microsoft Docs
 description: Element role konfiguračního souboru služby určuje, kolik instancí rolí se má nasadit pro každou roli, konfigurační hodnoty a kryptografické otisky certifikátů.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd46a37ada1fb96797faee6c8491359561e065d7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743436"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934151"
 ---
 # <a name="azure-cloud-services-classic-config-role-schema"></a>Schéma konfigurační role pro Azure Cloud Services (Classic)
 

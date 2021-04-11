@@ -3,19 +3,19 @@ title: Podpora tenkých klientů Windows pro virtuální počítače – Azure
 description: Stručný přehled podpory tenkého klienta pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 905451b4ce9c7a2a7c7aa2331ce3d433a9952223
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491465"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122029"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
-K prostředkům virtuálních klientů s Windows se můžete dostat ze zařízení se systémem Linux pomocí [webového klienta](connect-web.md) nebo následujících podporovaných klientů, které poskytují naši klienti se systémem Linux tenkých klientů. Pracujeme s řadou partnerů, aby bylo možné podporovat Podporované klienty virtuálních klientů Windows na dalších operačních systémech a zařízeních se systémem Linux. Pokud potřebujete podporu virtuálních počítačů s Windows na platformě Linux, která zde není uvedená, dejte nám na naší [stránce UserVoice](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)informace.
+K prostředkům virtuálních klientů s Windows se můžete dostat ze zařízení se systémem Linux pomocí [webového klienta](connect-web.md) nebo následujících podporovaných klientů, které poskytují naši klienti se systémem Linux tenkých klientů. Pracujeme s řadou partnerů, aby bylo možné podporovat Podporované klienty virtuálních klientů Windows na dalších operačních systémech a zařízeních se systémem Linux.
 
 ## <a name="connect-with-your-linux-device"></a>Připojení k zařízení se systémem Linux
 

@@ -47,6 +47,10 @@
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
         - name: Integrace interního nástroje pro vyrovnávání zatížení brány NAT
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: Back-end založený na protokolu IP
+      items:
+        - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí back-endu založeného na protokolu IP
+          href: tutorial-load-balancer-ip-backend-portal.md
 - name: ukázky
   items:
     - name: Azure CLI

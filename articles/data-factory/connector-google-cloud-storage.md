@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jingwang
 ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588983"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopírování dat z Google Cloud Storage pomocí Azure Data Factory
@@ -30,7 +30,7 @@ Tento konektor Google Cloud Storage se podporuje pro následující činnosti:
 
 Konkrétně tento konektor Google Cloud Storage podporuje kopírování souborů, jako je, nebo k analýze souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md). Využívá interoperabilitu kompatibilní s GC S3.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V účtu úložiště Google Cloud se vyžaduje následující nastavení:
 

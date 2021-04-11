@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc054d1294b55ddd3937ebc7b91643aa349cd8ea
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071559"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122182"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
@@ -46,7 +46,7 @@ Když vytvoříte Trezor klíčů v rámci předplatného Azure, automaticky se 
 
 - **Pouze aplikace**: aplikace představuje instanční objekt nebo spravovanou identitu. Tato identita je nejběžnější scénář pro aplikace, které pravidelně potřebují přistupovat k certifikátům, klíčům nebo tajným klíčům z trezoru klíčů. Aby tento scénář fungoval, `objectId` musí být aplikace zadaná v zásadách přístupu a `applicationId` nesmí být zadána nebo musí být zadaná  `null` .
 - **Pouze uživatel**: uživatel přistupuje k trezoru klíčů z jakékoli aplikace zaregistrované v tenantovi. Příklady tohoto typu přístupu zahrnují Azure PowerShell a Azure Portal. Aby tento scénář fungoval, `objectId` musí být uživatel uveden v zásadách přístupu a `applicationId` nesmí být zadán nebo musí být zadán  `null` .
-- **Aplikace-plus – uživatel** (někdy označovaný jako _složená identita_): uživatel je vyžadován pro přístup k trezoru klíčů z konkrétní aplikace _a_ aplikace musí k zosobnění uživatele používat tok spouštěný jménem ověřování (OBO). Aby tento scénář fungoval, `applicationId` `objectId` musí být v zásadách přístupu zadány obě i. `applicationId`Identifikuje požadovanou aplikaci a `objectId` identifikuje uživatele. V současné době tato možnost není k dispozici pro rovinu dat Azure RBAC (Preview).
+- **Aplikace-plus – uživatel** (někdy označovaný jako _složená identita_): uživatel je vyžadován pro přístup k trezoru klíčů z konkrétní aplikace _a_ aplikace musí k zosobnění uživatele používat tok spouštěný jménem ověřování (OBO). Aby tento scénář fungoval, `applicationId` `objectId` musí být v zásadách přístupu zadány obě i. `applicationId`Identifikuje požadovanou aplikaci a `objectId` identifikuje uživatele. V současné době tato možnost není k dispozici pro rovinu dat Azure RBAC.
 
 Ve všech typech přístupu se aplikace ověřuje pomocí Azure AD. Aplikace používá jakoukoli [podporovanou metodu ověřování](../../active-directory/develop/authentication-vs-authorization.md) založenou na typu aplikace. Aplikace získá token pro prostředek v rovině pro udělení přístupu. Prostředek je koncový bod v rovině pro správu nebo data na základě prostředí Azure. Aplikace použije token a pošle REST API žádost o Key Vault. Pokud se chcete dozvědět víc, Projděte si [celý tok ověřování](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -61,14 +61,14 @@ Přístup k trezorům probíhá přes dvě rozhraní nebo roviny. Tyto roviny p�
 - *Rovina správy* je místo, kde spravujete Key Vault sebe sama a jedná se o rozhraní používané k vytváření a odstraňování trezorů. Můžete také číst vlastnosti trezoru klíčů a spravovat zásady přístupu.
 - *Rovina dat* umožňuje pracovat s daty uloženými v trezoru klíčů. Můžete přidávat, odstraňovat a upravovat klíče, tajné klíče a certifikáty.
 
-Aplikace přistupují k rovinám prostřednictvím koncových bodů. Ovládací prvky přístupu pro tyto dvě roviny pracují nezávisle. Abyste aplikaci udělili přístup k používání klíčů v trezoru klíčů, udělíte přístup k rovině dat pomocí zásad přístupu Key Vault nebo Azure RBAC (Preview). Pokud chcete uživateli udělit oprávnění ke čtení Key Vault vlastností a značek, ale ne přístup k datům (klíčům, tajným klíčům nebo certifikátům), udělíte přístup k rovině správy pomocí Azure RBAC.
+Aplikace přistupují k rovinám prostřednictvím koncových bodů. Ovládací prvky přístupu pro tyto dvě roviny pracují nezávisle. Pokud chcete aplikaci udělit přístup k používání klíčů v trezoru klíčů, udělíte přístup k rovině dat pomocí zásad přístupu Key Vault nebo Azure RBAC. Pokud chcete uživateli udělit oprávnění ke čtení Key Vault vlastností a značek, ale ne přístup k datům (klíčům, tajným klíčům nebo certifikátům), udělíte přístup k rovině správy pomocí Azure RBAC.
 
 V následující tabulce jsou uvedeny koncové body pro řídicí a datové roviny.
 
 | &nbsp;Rovina přístupu | Koncové body přístupu | Operace | &nbsp;Mechanismus řízení přístupu |
 | --- | --- | --- | --- |
 | Rovina správy | **Globální**<br> management.azure.com:443<br><br> **Azure Čína 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Státní správa USA Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 | Vytváření, čtení, aktualizace a odstraňování trezorů klíčů<br><br>Nastavení zásad přístupu Key Vault<br><br>Nastavení značek Key Vault | Azure RBAC |
-| Rovina dat | **Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína 21Vianet:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Státní správa USA Azure:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 | Klíče: šifrování, dešifrování, wrapKey, unwrapKey, podpis, ověření, získání, vypsání, vytvoření, aktualizace, import, odstranění, obnovení, zálohování, obnovení, vyprázdnění<br><br> Certifikáty: managecontacts, getissuer, listissuers, setissuers, deleteissuers, manageissuers, získat, seznam, vytvořit, importovat, aktualizovat, odstranit, obnovit, zálohovat, obnovit, vymazat<br><br>  Tajné kódy: získání, seznam, nastavení, odstranění, obnovení, zálohování, obnovení, vyprázdnění | Zásada přístupu Key Vault nebo Azure RBAC (Preview)|
+| Rovina dat | **Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína 21Vianet:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Státní správa USA Azure:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 | Klíče: šifrování, dešifrování, wrapKey, unwrapKey, podpis, ověření, získání, vypsání, vytvoření, aktualizace, import, odstranění, obnovení, zálohování, obnovení, vyprázdnění<br><br> Certifikáty: managecontacts, getissuer, listissuers, setissuers, deleteissuers, manageissuers, získat, seznam, vytvořit, importovat, aktualizovat, odstranit, obnovit, zálohovat, obnovit, vymazat<br><br>  Tajné kódy: získání, seznam, nastavení, odstranění, obnovení, zálohování, obnovení, vyprázdnění | Zásada přístupu Key Vault nebo Azure RBAC |
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Správa přístupu pro správu k Key Vault
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb30913d71df46f4c0afedd475d40205c1429258
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108056"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122199"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -34,15 +34,19 @@ K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prost�
 
 ## <a name="basics-tab--project-details"></a>Karta základy > podrobnosti o projektu
 Vyplňte následující pole:
-    1. **Předplatné** – vyberte nějaké předplatné.
-    1. **Skupina prostředků** – použijte jakoukoli skupinu prostředků.
-    1. **Skupina prostředků** – ponechte toto pole prázdné.
+
+1. **Předplatné** – vyberte nějaké předplatné.
+1. **Skupina prostředků** – použijte jakoukoli skupinu prostředků.
+1. **Skupina prostředků** – ponechte toto pole prázdné.
 
 
 ## <a name="basics-tab--workspace-details"></a>Karta základy > podrobnosti o pracovním prostoru
-Vyplňte následující pole: 1. **Název pracovního prostoru** – vyberte libovolný globálně jedinečný název. V tomto kurzu použijeme **MyWorkspace**.
+Vyplňte následující pole:
+
+1. **Název pracovního prostoru** – vyberte libovolný globálně jedinečný název. V tomto kurzu použijeme **MyWorkspace**.
 1. **Oblast** – vyberte libovolnou oblast.
-1. **Vybrat data Lake Storage Gen 2** první. Klikněte na tlačítko **z předplatného**.
+1. **Vybrat Data Lake Storage Gen 2**
+1. Klikněte na tlačítko **z předplatného**.
 1. Podle **názvu účtu** klikněte na **vytvořit nový** a pojmenujte nový účet úložiště **contosolake** nebo podobný, protože tento název musí být jedinečný.
 1. Podle **názvu systému souborů** klikněte na **vytvořit nový** a pojmenujte **uživatele** IT. Tím se vytvoří kontejner úložiště s názvem **Uživatelé**. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
 1. Zaškrtněte políčko přiřadit roli Přispěvatel dat objektů BLOB úložiště v poli Data Lake Storage Gen2 účet. 
@@ -60,16 +64,6 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 
 * Otevřete pracovní prostor synapse v [Azure Portal](https://portal.azure.com)v části **Přehled** v pracovním prostoru synapse vyberte **otevřít** v dialogovém okně Otevřít synapse Studio.
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

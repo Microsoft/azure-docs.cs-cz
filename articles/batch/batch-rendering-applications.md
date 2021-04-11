@@ -4,10 +4,10 @@ description: Je možné použít jakékoli aplikace pro vykreslování Azure Bat
 ms.date: 03/12/2021
 ms.topic: how-to
 ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103496639"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Předinstalované aplikace na imagí virtuálních počítačů dávkového vykreslování

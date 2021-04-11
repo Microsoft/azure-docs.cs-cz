@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3a09e3f2bf29c09066e9414f9aa02a7879375425
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c0108cf07f1c734ccf4b6e42c013f7237eb7daf2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563527"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122063"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře balení a doručení
 
@@ -30,10 +30,10 @@ Významné změny způsobu, jakým se obsah zveřejňuje v rozhraní V3 API. Nov
 
 ## <a name="packaging-and-delivery-in-v3"></a>Balení a doručování v v3
 
-1. Vytvořte [zásady pro klíč obsahu](content-key-policy-concept.md).
+1. Vytvořte [zásady pro klíč obsahu](drm-content-key-policy-concept.md).
 1. Vytvořte [Lokátory streamování](streaming-locators-concept.md).
 1. Získání [cest streamování](create-streaming-locator-build-url.md) 
-    1. Nakonfigurujte ho pro [přerušovaný](dynamic-packaging-overview.md#mpeg-dash-protocol) nebo [HLS](dynamic-packaging-overview.md#hls-protocol) přehrávač.
+    1. Nakonfigurujte ho pro [přerušovaný](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) nebo [HLS](encode-dynamic-packaging-concept.md#hls-protocol) přehrávač.
 
 Konkrétní kroky najdete v tématu věnovaném publikování konceptů, výukových kurzů a návodů.
 
@@ -41,9 +41,9 @@ Konkrétní kroky najdete v tématu věnovaném publikování konceptů, výukov
 
 ### <a name="concepts"></a>Koncepty
 
-- [Dynamické balení v Media Services V3](dynamic-packaging-overview.md)
+- [Dynamické balení v Media Services V3](encode-dynamic-packaging-concept.md)
 - [Filtry](filters-concept.md)
-- [Filtrování manifestů pomocí dynamického balíčku](filters-dynamic-manifest-overview.md)
+- [Filtrování manifestů pomocí dynamického balíčku](filters-dynamic-manifest-concept.md)
 - [Koncové body streamování (počátek) v Azure Media Services](streaming-endpoint-concept.md)
 - [Streamování obsahu pomocí integrace CDN](scale-streaming-cdn.md)
 - [Lokátory streamování](streaming-locators-concept.md)
@@ -53,7 +53,7 @@ Konkrétní kroky najdete v tématu věnovaném publikování konceptů, výukov
 - [Správa koncových bodů streamování pomocí Media Services V3](manage-streaming-endpoints-howto.md)
 - [Ukázka CLI: Publikování assetu](cli-publish-asset.md)
 - [Vytvoření lokátoru streamování a adres URL](create-streaming-locator-build-url.md)
-- [Stažení výsledků úlohy](download-results-howto.md)
+- [Stažení výsledků úlohy](job-download-results-how-to.md)
 - [Signály popisné zvukové stopy](signal-descriptive-audio-howto.md)
 - [Kompletní nastavení Azure Media Playeru](../azure-media-player/azure-media-player-full-setup.md)
 - [Jak používat Video.js Player s Azure Media Services](how-to-video-js-player.md)

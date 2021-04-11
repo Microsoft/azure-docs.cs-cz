@@ -1,14 +1,14 @@
 ---
-title: O výstrahách senzorů
+title: Vysvětlení výstrah senzorů
 description: Pracujte s výstrahami, které vám pomůžou zlepšit zabezpečení a provoz vaší sítě.
-ms.date: 11/30/2020
+ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781343"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729418"
 ---
 # <a name="about-sensor-alerts"></a>O výstrahách senzorů
 
@@ -44,7 +44,7 @@ K dispozici jsou další nástroje, které vám pomůžou zdokonalit a urychlit 
 
 Výstrahy se aktivují, když senzory zjišťují změny v síťovém provozu a chování, které vyžadují vaši pozornost. Tento článek popisuje druh výstrah, které každý modul spouští.
 
-| Typ upozornění | Popis |
+| Typ upozornění | Description |
 |-|-|
 | Upozornění na porušení zásad | Aktivováno, když modul porušení zásad detekuje odchylku od dříve zjištěného provozu. Například: <br /> – Zjistilo se nové zařízení.  <br /> – V zařízení se zjistila nová konfigurace. <br /> – Zařízení, které není definované jako programové zařízení, provede změnu v programování. <br /> – Změnila se verze firmwaru. |
 | Výstrahy porušení protokolu | Aktivováno, když modul porušení protokolu detekuje struktury paketů nebo hodnoty polí, které nevyhovují specifikaci protokolu. | 
@@ -64,9 +64,10 @@ Například:
 
   - V sestavách hodnocení rizik jsou hlášeny malware události zjištěné v síťových zařízeních. Pokud jsou výstrahy týkající se událostí malwaru *ztlumeny*, ovlivněná zařízení nebudou v sestavě posouzení rizik vypočítána.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-- [Výukové a inteligentní školicí režimy IT](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [Zobrazení informací uvedených v upozorněních](how-to-view-information-provided-in-alerts.md)
-- [Správa události upozornění](how-to-manage-the-alert-event.md)
-- [Urychlení pracovních postupů výstrah](how-to-accelerate-alert-incident-response.md)
+[Výukové a inteligentní školicí režimy IT](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
+ [Zobrazení informací uvedených v výstrahách](how-to-view-information-provided-in-alerts.md) 
+ [Spravovat událost výstrahy](how-to-manage-the-alert-event.md) 
+ [Urychlení pracovních postupů výstrah](how-to-accelerate-alert-incident-response.md) 
+ [Typy a popisy výstrah](alert-engine-messages.md)

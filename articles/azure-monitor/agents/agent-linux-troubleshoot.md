@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 6c262e75bfc3fe9c7fb5ce3e00b42b0ff6cbe3bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0e5a817bad87391b84c43ceae0751fc6ebffd1f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952945"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076151"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -88,12 +88,12 @@ Zjistili jsme, že při čisté opakované instalaci agenta se vyřeší i vět�
 
 | Kód chyby | Význam |
 | --- | --- |
-| NOT_DEFINED | Vzhledem k tomu, že nezbytné závislosti nejsou nainstalovány, modul plug-in auoms audit nebude nainstalován. | Instalace auoms selhala, nainstalujte balíček audited. |
+| NOT_DEFINED | Vzhledem k tomu, že nejsou nainstalované nezbytné závislosti, nebude se instalovat modul plug-in auoms audited. Instalace auoms selhala, nainstalujte balíček audited. |
 | 2 | Pro sadu prostředí se dala zadat neplatná možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití |
 | 3 | Sada Shell neposkytla žádnou možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití. |
 | 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
 | 5 | Sada prostředí musí být spuštěná jako kořenová nebo během připojování se vrátila 403 chyba. Spusťte příkaz pomocí příkazu `sudo` . |
-| 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent-*x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
+| 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent- \* x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent- \* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 18 | Instalace balíčku OMSConfig se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
