@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc7892db2ca11ab7970835f8979360961ee01104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bac5ef9805dba5f06befeae3049566cb0483306
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463336"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169551"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Přidání jazykových sad do bitové kopie Windows 10 s více relacemi
 
@@ -265,4 +265,4 @@ Jakmile uživatel změní nastavení jazyka, bude se muset odhlásit z relace vi
 
 Pokud jste zajímá o známých problémech pro jazykové sady, přečtěte si téma [přidání jazykových sad ve Windows 10 verze 1803 a novějších verzích: známé problémy](/windows-hardware/manufacture/desktop/language-packs-known-issue).
 
-Pokud máte další dotazy týkající se více relací Windows 10 Enterprise, podívejte se na naše [Nejčastější dotazy](windows-10-multisession-faq.md).
+Pokud máte další dotazy týkající se více relací Windows 10 Enterprise, podívejte se na naše [Nejčastější dotazy](windows-10-multisession-faq.yml).

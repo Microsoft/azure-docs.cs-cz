@@ -4,10 +4,10 @@ description: Naučte se spouštět aplikace MPI (Message Passing Interface) pomo
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.openlocfilehash: 51fc580e0bb31e0e975c53b44887a5889a784eea
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105605667"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve Batch

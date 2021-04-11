@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: e4f0a3ea85fa479826fe9e666df2b18f8dba7ce3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8654b557de8242910c665596ca8bfd29fe86d1ff
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92079118"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106578829"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Vytvoření hostitele služby Azure Bastion pomocí Azure CLI
 
@@ -25,6 +25,10 @@ Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](./
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
 [!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
+
+ >[!NOTE]
+ >Používání Azure bastionu se zónami Azure Privátní DNS se v tuto chvíli nepodporuje. Než začnete, ujistěte se prosím, že virtuální síť, ve které plánujete nasadit prostředek bastionu, není propojená s privátní zónou DNS.
+ >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 

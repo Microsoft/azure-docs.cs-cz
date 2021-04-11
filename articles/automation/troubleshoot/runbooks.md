@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea9d8a4899b0d725c9791192d68373b44acee11f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723805"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168735"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -90,9 +90,9 @@ Chcete-li zjistit, co je chybné, postupujte podle následujících kroků:
    ```powershell
    $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred
+   Add-AzureAccount -Credential $Cred
    #Using Azure Resource Manager
-   Connect-AzAccount –Credential $Cred
+   Connect-AzAccount -Credential $Cred
    ```
 
 1. Pokud se ověření nepovede místně, nenastavíte správně své přihlašovací údaje pro Azure Active Directory (Azure AD). Pokud chcete správně nastavit účet Azure AD, přečtěte si článek [ověřování v Azure pomocí Azure Active Directory](../automation-use-azure-ad.md).
@@ -201,11 +201,11 @@ Pomocí těchto kroků zjistíte, jestli jste se ověřili do Azure a máte př�
 
 1. Abyste se ujistili, že váš skript funguje samostatně, otestujte ho mimo Azure Automation.
 1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) `Select-*` .
-1. Přidejte `Disable-AzContextAutosave –Scope Process` na začátek Runbooku. Tato rutina zajišťuje, že se jakékoli přihlašovací údaje použijí pouze pro spuštění aktuální sady Runbook.
+1. Přidejte `Disable-AzContextAutosave -Scope Process` na začátek Runbooku. Tato rutina zajišťuje, že se jakékoli přihlašovací údaje použijí pouze pro spuštění aktuální sady Runbook.
 1. Pokud se chybová zpráva zobrazuje stále, upravte kód přidáním `AzContext` parametru pro `Connect-AzAccount` a poté spusťte kód.
 
    ```powershell
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -242,7 +242,7 @@ Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad
 * Abyste se vyhnuli odkazování na špatné předplatné, zakažte v automatizaci v sadě Runbook ukládání kontextu pomocí následujícího kódu na začátku každé sady Runbook.
 
    ```azurepowershell-interactive
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
    ```
 
 * Rutiny Azure PowerShell podporují `-DefaultProfile` parametr. Přidali jsme všechny rutiny AZ a AzureRm, které podporují spouštění více skriptů PowerShellu ve stejném procesu a umožňují určit kontext a které předplatné použít pro jednotlivé rutiny. Pomocí sad Runbook byste při vytváření sady Runbook měli objekt kontextu Uložit (tj. když se účet přihlásí) a pokaždé, když se změní, a při zadání rutiny AZ odkazovat na kontext.

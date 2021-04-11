@@ -5,19 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 04/01/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c9568c51fe3a59dba83a66fc35c8d9112ade167f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101749883"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106178599"
 ---
 Profily pro klienty Azure VPN (Windows 10) můžete nasadit pomocí Microsoft Intune. Tento článek vám pomůže vytvořit profil Intune s využitím vlastních nastavení.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+>* Tento článek se týká nasazení profilů, které používají Azure Active Directory jenom pro ověřování.
+
+
+## <a name="prerequisites"></a>Požadavky
 
 * Zařízení jsou už zaregistrovaná ve službě Intune MDM.
 * Klient Azure VPN pro Windows 10 je už na klientském počítači nasazený.

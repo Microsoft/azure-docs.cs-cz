@@ -4,10 +4,10 @@ description: Přehled důvodů, proč je vytváření cloudových aplikací s p�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 46d4be7321057bd7a5ee19e0aca136c8c60d43bc
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105044426"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat při sestavování aplikací přístup k mikroslužbám

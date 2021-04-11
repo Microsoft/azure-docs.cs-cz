@@ -1,17 +1,16 @@
 ---
 title: Navrhování nasazení Azure Monitorch protokolů | Microsoft Docs
 description: Tento článek popisuje pokyny a doporučení pro zákazníky, kteří připravují nasazení pracovního prostoru v Azure Monitor.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8502c35a145e4a041f9d44b8396fe16f5db3febc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030830"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384200"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -64,7 +63,7 @@ Díky řízení přístupu na základě role Azure (Azure RBAC) můžete uživat
 
 Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které jsou uvedeny v následující tabulce. Jednotlivé jsou popsány v následujících částech.
 
-| Faktor | Description |
+| Faktor | Popis |
 |:---|:---|
 | [Režim přístupu](#access-mode) | Metoda, kterou uživatel používá pro přístup k pracovnímu prostoru.  Definuje rozsah dostupných dat a režim řízení přístupu, který se použije. |
 | [Režim řízení přístupu](#access-control-mode) | Nastavení v pracovním prostoru definující, zda jsou oprávnění použita na úrovni pracovního prostoru nebo prostředku. |

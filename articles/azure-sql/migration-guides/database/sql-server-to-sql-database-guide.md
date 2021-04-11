@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f7df4889d1d54605ab2b5cd79f3039f06fab197
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564921"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027869"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Průvodce migrací: SQL Server Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
-Tato příručka vám pomůže s migrací instance SQL Server do Azure SQL Database. 
+V této příručce se dozvíte, [jak migrovat](https://azure.microsoft.com/migration/migration-journey) instanci SQL Server do Azure SQL Database. 
 
 Můžete migrovat SQL Server spuštěná místně nebo na: 
 
@@ -36,7 +36,7 @@ Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-s
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Chcete-li migrovat SQL Server do Azure SQL Database, ujistěte se, že máte následující požadavky: 
+Pro [migraci SQL Server](https://azure.microsoft.com/migration/migration-journey) do Azure SQL Database se ujistěte, že máte následující požadavky: 
 
 - Zvolená [Metoda migrace](sql-server-to-sql-database-overview.md#compare-migration-options) a odpovídající nástroje.
 - [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) nainstalovaný na počítači, který se může připojit ke zdrojovému SQL Server.
@@ -47,7 +47,7 @@ Chcete-li migrovat SQL Server do Azure SQL Database, ujistěte se, že máte ná
 
 ## <a name="pre-migration"></a>Před migrací
 
-Až ověříte, že je vaše zdrojové prostředí podporované, začněte s fází před migrací. Seznamte se se všemi existujícími zdroji dat, vyhodnoťte proveditelnost migrace a Identifikujte případné blokující problémy, které by mohly bránit vaší migraci. 
+Až ověříte, že je vaše zdrojové prostředí podporované, začněte s fází před migrací. Seznamte se se všemi existujícími zdroji dat, vyhodnoťte proveditelnost migrace a Identifikujte případné blokující problémy, které by mohly bránit [migraci do cloudu Azure](https://azure.microsoft.com/migration).
 
 ### <a name="discover"></a>Zjišťování
 
@@ -200,6 +200,10 @@ Další informace najdete v tématu [správa Azure SQL Database po migraci](../.
 
 - Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat i v speciálních úlohách, najdete v tématu [služba a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 
+
+- Další informace o [Azure Migrate](https://azure.microsoft.com/services/azure-migrate) najdete v tématu.
+   - [Azure Migrate](../../../migrate/migrate-services-overview.md)
+
 - Další informace o SQL Database najdete v těchto tématech:
     - [Přehled Azure SQL Database](../../database/sql-database-paas-overview.md)
    - [Kalkulačka celkových nákladů na vlastnictví Azure](https://azure.microsoft.com/pricing/tco/calculator/) 
@@ -207,7 +211,8 @@ Další informace najdete v tématu [správa Azure SQL Database po migraci](../.
 
 - Další informace o cyklu rozhraní a přijetí pro migrace do cloudu najdete v tématu.
    -  [Cloud Adoption Framework pro Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Osvědčené postupy pro výpočet nákladů a úloh migrace do Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Osvědčené postupy pro výpočet nákladů a velikosti úloh pro migraci do Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Prostředky Migrace do cloudu](https://azure.microsoft.com/migration/resources)
 
 - Postup vyhodnocení vrstvy přístupu k aplikaci najdete v tématu [sada Data Access Migration Toolkit (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) .
 - Podrobnosti o tom, jak provádět testování vrstvy přístupu k datům A/B, najdete [Pomocník pro experimentování s databázemi](/sql/dea/database-experimentation-assistant-overview).

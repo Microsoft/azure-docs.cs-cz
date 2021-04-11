@@ -2,14 +2,14 @@
 title: Zálohování Azure Database for PostgreSQL
 description: Přečtěte si o Azure Database for PostgreSQL zálohování s dlouhodobou uchováváním (Preview).
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eba9d78dda45197c0d1e92195980f3d731734a8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737568"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011700"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL zálohování s dlouhodobou dobou uchovávání (Preview)
 
@@ -135,10 +135,9 @@ V následujících pokynech jsou podrobné pokyny ke konfiguraci zálohování v
 
 1. Definujte nastavení **uchování** . Můžete přidat jedno nebo více pravidel uchovávání. Každé pravidlo uchovávání informací předpokládá vstupy pro konkrétní zálohy a úložiště dat a dobu uchování pro tyto zálohy.
 
-1. Zálohy si můžete uložit v jednom ze dvou úložišť dat (nebo vrstev): **záložní úložiště dat** (standardní úroveň) nebo **úložiště dat archivu** (ve verzi Preview). Můžete zvolit mezi **dvěma možnostmi vrstvení** k definování, kdy jsou zálohy rozloženy mezi dvě úložiště dat:
+1. Zálohy si můžete uložit v jednom ze dvou úložišť dat (nebo vrstev): **záložní úložiště dat** (standardní úroveň) nebo **úložiště dat archivu** (ve verzi Preview).
 
-    - Pokud dáváte přednost záložní kopii v úložištích záložních i archivních dat, vyberte možnost **okamžitě** zkopírovat.
-    - Pokud chcete přesunout zálohu do úložiště dat v úložišti zálohovaných dat, vyberte možnost přesunout **na konec platnosti** .
+   Můžete zvolit **vypršení platnosti** , pokud chcete přesunout zálohu do úložiště dat archivu po jeho vypršení platnosti v úložišti zálohovaných dat.
 
 1. **Výchozí pravidlo uchovávání** se použije při absenci jiného pravidla uchovávání informací a má výchozí hodnotu tří měsíců.
 
@@ -197,7 +196,21 @@ Pomocí tohoto podrobného průvodce můžete spustit obnovení:
 
     ![Obnovit jako soubory](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. Pokud je bod obnovení v archivní úrovni, je nutné před obnovením obnovit bod obnovení.
+   
+   ![Nastavení pro dehydrataci](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   Zadejte následující další parametry požadované pro vysazování:
+   - **Priorita pro vysazování:** Výchozí hodnota je **Standard**.
+   - **Doba vysazování:** Maximální doba pro vysazování je 30 dní a minimální doba přisazení je 10 dní. Výchozí hodnota je **15**.
+   
+   Bod obnovení je uložený v **záložním úložišti dat** pro zadanou dobu trvání opětovného vysazování.
+
+
 1. Zkontrolujte informace a vyberte **obnovit**. Tím se aktivuje odpovídající úloha obnovení, kterou je možné sledovat v rámci **úloh zálohování**.
+
+>[!NOTE]
+>Podpora archivu pro Azure Database for PostgreSQL je v omezeném verzi Public Preview.
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Požadovaná oprávnění pro konfiguraci zálohování a obnovení
 
@@ -220,7 +233,7 @@ Vyberte ze seznamu pravidel uchovávání, která byla definována v přidružen
 
 ### <a name="stop-protection"></a>Zastavení ochrany
 
-Ochranu zálohované položky můžete zastavit. Tím se také odstraní přidružené body obnovení pro danou zálohovanou položku. Ještě neposkytujeme možnost Zastavit ochranu a přitom zachovat existující body obnovení.
+Ochranu zálohované položky můžete zastavit. Tím se také odstraní přidružené body obnovení pro danou zálohovanou položku. Pokud body obnovení nejsou v archivní úrovni po dobu minimálně šesti měsíců, bude odstranění těchto bodů obnovení znamenat náklady na předčasné odstranění. Ještě neposkytujeme možnost Zastavit ochranu a přitom zachovat existující body obnovení.
 
 ![Zastavení ochrany](./media/backup-azure-database-postgresql/stop-protection.png)
 

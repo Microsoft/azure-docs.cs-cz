@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616396"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058948"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > - Ověření domény
 > - Zakázat protokol HTTPS pro vlastní doménu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
@@ -172,15 +172,18 @@ Udělte Azure CDN oprávnění přistupovat k certifikátům (tajným kódům) v
 
 3. V části Typ správy certifikátu vyberte **Použít vlastní certifikát**. 
 
-    ![Konfigurace certifikátu](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="Snímek obrazovky s postupem konfigurace certifikátu pro koncový bod CDN":::
 
-4. Vyberte trezor klíčů, certifikát (tajný kód) a verzi certifikátu.
+4. Vyberte Trezor klíčů, certifikát, tajný klíč a verzi certifikátu/tajného klíče.
 
     Azure CDN zobrazí následující informace: 
     - Účty trezoru klíčů pro ID vašeho předplatného 
-    - Certifikáty (tajné kódy) v rámci vybraného trezoru klíčů 
-    - Dostupné verze certifikátu 
+    - Certifikáty/tajné klíče v rámci vybraného trezoru klíčů. 
+    - Dostupné verze certifikátu a tajného klíče.
  
+    > [!NOTE]
+    > Aby se certifikát automaticky přetočil na nejnovější verzi, pokud je ve vašem Key Vault k dispozici novější verze certifikátu, nastavte prosím pro certifikát nebo tajný kód nejnovější verzi. Pokud je vybraná konkrétní verze, musíte ručně vybrat novou verzi pro otočení certifikátu. Pro nasazení nové verze certifikátu nebo tajného klíče trvá až 24 hodin. 
+   
 5. Výběrem možnosti **Zapnuto** povolte HTTPS.
   
 6. Pokud používáte certifikát, ověření domény se nevyžaduje. Nadále [čekat na šíření](#wait-for-propagation).
@@ -234,7 +237,7 @@ DigiCert odešle e-mail s ověřovacím e-mailem na následující e-mailové ad
 * **hostmaster@your-domain-name.com**  
 * **postmaster@your-domain-name.com**  
 
-Měli byste obdržet e-mail za několik minut, než žádost schválíte. V případě, že používáte filtr spamu, přidejte verification@digicert.com do seznamu povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
+Měli byste obdržet e-mail za několik minut, než žádost schválíte. V případě, že používáte filtr spamu, přidejte verification@digicert.com do jeho povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
     
 ![E-mail pro ověření domény](./media/cdn-custom-ssl/domain-validation-email.png)
 

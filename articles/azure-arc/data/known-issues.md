@@ -9,20 +9,51 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee652047a33d73ece2d7648905fa590d90b1fb2f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121996"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029501"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Známé problémy – datové služby s podporou ARC Azure (Preview)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="data-controller"></a>Řadič dat
+
+- V režimu přímého připojení můžete pomocí Azure Portal vytvořit řadič dat. Nasazení s jinými nástroji datových služeb s podporou ARC Azure se nepodporuje. Konkrétně nemůžete nasadit řadič dat v režimu přímého připojení s některým z následujících nástrojů v této verzi.
+   - Azure Data Studio
+   - Azure Data CLI ( `azdata` )
+   - Nativní nástroje Kubernetes
+
+   [Nasadit řadič dat ARC Azure | Režim přímého připojení](deploy-data-controller-direct-mode.md) vysvětluje, jak vytvořit řadič dat na portálu. 
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL s povoleným škálováním Azure ARC
+
+- Nasazení skupiny serverů Postgres s povoleným rozšířením Azure ARC v řadiči dat ARC, který je povolený pro režim přímého připojení, není podporované.
+- Předání neplatné hodnoty `--extensions` parametru při úpravě konfigurace skupiny serverů za účelem povolení dalších rozšíření nesprávně obnoví seznam povolených rozšíření na základě toho, co byl v době vytvoření skupiny serverů, a zabrání uživateli v vytváření dalších rozšíření. Jediným řešením dostupným v takovém případě je odstranit skupinu serverů a znovu ji nasadit.
+
 ## <a name="february-2021"></a>Únor 2021
 
-- Režim připojeného clusteru je zakázán.
+### <a name="data-controller"></a>Řadič dat
+
+- Režim clusteru přímého připojení je zakázaný.
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL s povoleným škálováním Azure ARC
+
+- Obnovení bodu v čase není podporováno pro úložiště NFS v systému souborů NFS.
+- Rozšíření pg_cron není možné současně povolit a konfigurovat. Pro tento postup je nutné použít dva příkazy. Jeden příkaz pro povolení a jeden příkaz pro konfiguraci. 
+
+   Například:
+   ```console
+   § azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+   § azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+   ```
+
+   První příkaz vyžaduje restartování skupiny serverů. Takže před provedením druhého příkazu se ujistěte, že stav skupiny serverů přešl z aktualizace na připravený. Pokud před dokončením restartování spustíte druhý příkaz, dojde k chybě. V takovém případě jednoduše počkejte na chvíli a znovu spusťte druhý příkaz.
 
 ## <a name="introduced-prior-to-february-2021"></a>Zavedeno před únorem 2021
 
@@ -43,12 +74,6 @@ ms.locfileid: "102121996"
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Zrušte zaškrtnutí políček u jednotlivých zón a určete možnost žádná.":::
 
-### <a name="postgresql"></a>PostgreSQL
-
-- PostgreSQL s povoleným rozšířením Azure ARC vrátí nepřesnou chybovou zprávu, pokud se nemůže obnovit k relativnímu bodu v čase, který určíte. Pokud jste například zadali bod v čase k obnovení, který je starší než vaše zálohy, obnovení se nezdaří a zobrazí se chybová zpráva, například: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}`
-Pokud k tomu dojde, restartujte příkaz po určení bodu v čase, který je v rozsahu kalendářních dat, pro které máte zálohy. Tento rozsah určíte tak, že zadáte svoje zálohy a prohlížíte data, ve kterých byly provedeny.
-- Obnovení bodu v čase je podporováno pouze v rámci skupin serverů. Cílový server operace obnovení bodu v čase nemůže být server, ze kterého jste provedli zálohování. Musí se jednat o jinou skupinu serverů. Úplné obnovení je však podporováno pro stejnou skupinu serverů.
-- Při úplném obnovení je vyžadováno ID zálohy. Pokud neindikujete ID zálohy, použije se ve výchozím nastavení poslední záloha. Tato verze v této verzi nefunguje.
 
 ## <a name="next-steps"></a>Další kroky
 

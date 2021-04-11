@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: cdc5b261abe91c31d31827aeab03c9e8838b2a91
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fada68ba395b959e557542eb8c230561aad84214
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630702"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384319"
 ---
 # <a name="tutorial-understanding-x509-public-key-certificates"></a>Kurz: porozumění certifikátům veřejného klíče X. 509
 
@@ -106,6 +106,13 @@ Formát soukromého úložiště klíčů definovaného [specifikací RFC 5208](
 ### <a name="pkcs12-key-and-certificate"></a>Klíč a certifikát PKCS # 12
 
 Složitý formát, který může ukládat a chránit klíč a celý řetěz certifikátů. Obvykle se používá s příponou. pfx. PKCS č. 12 je synonymem formátu PFX.
+
+## <a name="for-more-information"></a>Další informace
+
+Další informace najdete v následujících tématech:
+
+* [Průvodce laymanem na X. 509 Certificate žargonu](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
+* [Konceptuální porozumění certifikátům CA X. 509 v oboru IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
 
 ## <a name="next-steps"></a>Další kroky
 

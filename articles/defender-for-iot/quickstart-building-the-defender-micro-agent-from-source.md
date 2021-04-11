@@ -1,16 +1,16 @@
 ---
-title: Sestavení agenta Defender Micro ze zdrojového kódu (Preview)
-description: Mikroagenti zahrnuje infrastrukturu, která se dá použít k přizpůsobení distribuce.
+title: 'Rychlý Start: sestavení agenta Defender Micro ze zdrojového kódu (Preview)'
+description: V tomto rychlém startu se dozvíte o mikroagentovi, který obsahuje infrastrukturu, kterou je možné použít k přizpůsobení distribuce.
 ms.date: 1/18/2021
 ms.topic: quickstart
-ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3a8f82989d6abbaf2657e4b45638c77b3b2f704
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781105"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384593"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>Sestavení agenta Defender Micro ze zdrojového kódu (Preview)
+# <a name="quickstart-build-the-defender-micro-agent-from-source-code-preview"></a>Rychlý Start: sestavení agenta Defender Micro ze zdrojového kódu (Preview)
 
 Mikroagenti zahrnuje infrastrukturu, která se dá použít k přizpůsobení distribuce. Chcete-li zobrazit seznam dostupných parametrů konfigurace, Prohlédněte si `configs/LINUX_BASE.conf` soubor.
 
@@ -32,17 +32,7 @@ Přepsání hodnot:
 
     `cmake -DCMAKE_BUILD_TYPE=Debug -Dlog_level=DEBUG -Dlog_level_cmdline:BOOL=ON -DIOT_SECURITY_MODULE_DIST_TARGET=UBUNTU1804 ..` 
 
-## <a name="baseline-configuration-signing"></a>Podepisování konfigurace standardních hodnot 
-
-Agent ověřuje pravost konfiguračních souborů, které jsou umístěny na disku, a ve výchozím nastavení snižuje riziko manipulace.
-
-Tento proces můžete zastavit definováním příznaku preprocesoru `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` .
-
-Nedoporučujeme vypínat kontrolu podpisů pro produkční prostředí. 
-
-Pokud pro produkční scénáře potřebujete jinou konfiguraci, obraťte se na tým Defender for IoT. 
-
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
 1. Obraťte se na svého správce účtu, aby požádal o přístup k programu Defender pro zdrojový kód IoT.
  
@@ -77,7 +67,17 @@ Pokud pro produkční scénáře potřebujete jinou konfiguraci, obraťte se na 
 
 1. Volitelné Stažení a instalace [VSCode](https://code.visualstudio.com/download ) 
 
-1. Volitelné Nainstalujte [rozšíření C/C++](https://code.visualstudio.com/docs/languages/cpp ) pro VSCode.
+1. Volitelné Nainstalujte [rozšíření C/C++](https://code.visualstudio.com/docs/languages/cpp ) pro VSCode.-None
+
+## <a name="baseline-configuration-signing"></a>Podepisování konfigurace standardních hodnot 
+
+Agent ověřuje pravost konfiguračních souborů, které jsou umístěny na disku, a ve výchozím nastavení snižuje riziko manipulace.
+
+Tento proces můžete zastavit definováním příznaku preprocesoru `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` .
+
+Nedoporučujeme vypínat kontrolu podpisů pro produkční prostředí. 
+
+Pokud pro produkční scénáře potřebujete jinou konfiguraci, obraťte se na tým Defender for IoT. 
 
 ## <a name="building-the-defender-iot-micro-agent"></a>Sestavení agenta programu Defender IoT Micro 
 

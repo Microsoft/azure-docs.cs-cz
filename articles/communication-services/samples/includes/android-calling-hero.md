@@ -2,26 +2,29 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: e8ef354480c69fa9b0b5407c88209b368485127d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
-ms.translationtype: HT
+ms.author: dademath
+ms.openlocfilehash: c6e8be5462e0caffec7a1c88dae54f3f818ec323
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729896"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498809"
 ---
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
+
+
 Skupina komunikačních služeb Azure, která **volá Hero Sample pro Android** , ukazuje, jak lze pomocí komunikačních služeb volat Android SDK vytvořit skupinu volání, která zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
 
 ## <a name="download-code"></a>Stažení kódu
 
-Vyhledá finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-android-calling-hero).
+Vyhledejte projekt pro tuto ukázku na [GitHubu](https://github.com/Azure-Samples/communication-services-android-calling-hero). Verzi ukázky s [týmovou spolupráci](../../concepts/teams-interop.md) můžete najít v samostatné [větvi](https://github.com/Azure-Samples/communication-services-android-calling-hero/tree/feature/teams_interop).
 
 ## <a name="overview"></a>Přehled
 

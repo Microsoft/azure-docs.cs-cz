@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 03/12/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q3
-ms.openlocfilehash: c3f21471e486f88daf8d79b74633c076d27ac8e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9021c3f70c9fc053998d1b31271a1ca3b0124b4d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557577"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169534"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
-Při použití Azure Machine Learningho pracovního prostoru s privátním koncovým bodem existuje [několik způsobů, jak řešit překlad názvů DNS](../private-link/private-endpoint-dns.md). Ve výchozím nastavení Azure automaticky zpracovává překlad adres IP pro váš pracovní prostor a soukromý koncový bod. Pokud místo toho _použijete vlastní server DNS_ _, musíte ručně vytvořit položky DNS nebo pro tento pracovní prostor použít podmíněné servery pro dodávání.
+Při použití Azure Machine Learningho pracovního prostoru s privátním koncovým bodem existuje [několik způsobů, jak řešit překlad názvů DNS](../private-link/private-endpoint-dns.md). Ve výchozím nastavení Azure automaticky zpracovává překlad adres IP pro váš pracovní prostor a soukromý koncový bod. Pokud místo toho __použijete vlastní server DNS__, musíte ručně vytvořit položky DNS nebo pro tento pracovní prostor použít podmíněné servery pro dodávání.
 
 > [!IMPORTANT]
 > Tento článek popisuje, jak najít plně kvalifikovaný název domény (FQDN) a IP adresy pro tyto položky, které neposkytuje informace o konfiguraci záznamů DNS pro tyto položky. Informace o tom, jak přidat záznamy, najdete v dokumentaci k vašemu softwaru DNS.
@@ -46,11 +46,12 @@ Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) použ�
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > Název pracovního prostoru pro tento plně kvalifikovaný název domény může být zkrácený. Zkrácení se zkrátí, aby byl plně kvalifikovaný název domény menší nebo roven 63 znaků.
+    > Název pracovního prostoru pro tento plně kvalifikovaný název domény může být zkrácený. Zkrácení se zachová `ml-<workspace-name, truncated>-<region>-<workspace-guid>` 63 znaků.
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
-    > Instance služby COMPUTE jsou dostupné jenom v rámci virtuální sítě.
+    > * Instance služby COMPUTE jsou dostupné jenom v rámci virtuální sítě.
+    > * IP adresa pro tento plně kvalifikovaný název **domény není IP** adresou výpočetní instance. Místo toho použijte privátní IP adresu privátního koncového bodu v pracovním prostoru (IP adresy `*.api.azureml.ms` položek).
 
 ## <a name="azure-china-21vianet-regions"></a>Oblasti Azure Čína 21Vianet
 
@@ -61,7 +62,7 @@ Následující plně kvalifikované názvy domén jsou pro oblasti Azure Čína 
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
 
     > [!NOTE]
-    > Název pracovního prostoru pro tento plně kvalifikovaný název domény může být zkrácený. Zkrácení se zkrátí, aby byl plně kvalifikovaný název domény menší nebo roven 63 znaků.
+    > Název pracovního prostoru pro tento plně kvalifikovaný název domény může být zkrácený. Zkrácení se zachová `ml-<workspace-name, truncated>-<region>-<workspace-guid>` 63 znaků.
 * `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>Najít IP adresy
 
@@ -108,7 +109,7 @@ Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného 
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Pokud máte výpočetní instanci, použijte `<instance-name>.<region>.instances.azureml.ms` , kde `<instance-name>` je název vaší výpočetní instance. Použijte prosím privátní IP adresu privátního koncového bodu v pracovním prostoru. Počítejte s tím, že ke výpočetní instanci se dá dostat jenom z virtuální sítě.
+> * Pokud máte výpočetní instanci, použijte `<instance-name>.<region>.instances.azureml.ms` , kde `<instance-name>` je název vaší výpočetní instance. Použijte privátní IP adresu privátního koncového bodu v pracovním prostoru. Instance služby COMPUTE se dá použít jenom v rámci virtuální sítě.
 >
 > Pro všechny tyto IP adresy použijte stejnou adresu jako u `*.api.azureml.ms` položek vrácených z předchozích kroků.
 

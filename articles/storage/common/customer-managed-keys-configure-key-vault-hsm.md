@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218634"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059356"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault spravovaném HSM (Preview)
 
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Konfigurace šifrování pomocí klíče ve spravovaném modulu HSM
 
-Nakonec nakonfigurujte Azure Storage šifrování pomocí klíčů spravovaných zákazníkem tak, aby používaly klíč uložený ve spravovaném HSM. Mezi podporované typy klíčů patří klíče RSA-HSM velikostí 2048, 3072 a 4096. Nainstalujte rozhraní příkazového řádku Azure CLI 2.12.0 nebo novější, abyste mohli nakonfigurovat šifrování tak, aby používalo klíč spravovaný zákazníkem ve spravovaném modulu HSM. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+Nakonec nakonfigurujte Azure Storage šifrování pomocí klíčů spravovaných zákazníkem tak, aby používaly klíč uložený ve spravovaném HSM. Mezi podporované typy klíčů patří klíče RSA-HSM velikostí 2048, 3072 a 4096. Informace o tom, jak vytvořit klíč ve spravovaném modulu HSM, najdete v tématu [vytvoření klíče HSM](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+
+Nainstalujte rozhraní příkazového řádku Azure CLI 2.12.0 nebo novější, abyste mohli nakonfigurovat šifrování tak, aby používalo klíč spravovaný zákazníkem ve spravovaném modulu HSM. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud chcete automatickou aktualizaci verze klíče pro klíč spravovaný zákazníkem, vynechejte verzi klíče při konfiguraci šifrování s použitím klíčů spravovaných zákazníkem pro účet úložiště. Chcete-li aktualizovat nastavení šifrování účtu úložiště, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account#az_storage_account_update) , jak je znázorněno v následujícím příkladu. Zahrňte `--encryption-key-source parameter` a nastavte ho tak, aby se `Microsoft.Keyvault` pro účet povolily klíče spravované zákazníkem. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 

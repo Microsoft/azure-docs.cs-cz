@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: c2fa1441f5b7d8af4d610c5341f60009e57173af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 120bfe2eefae3c1721073060231c6c2a1962b7c8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560943"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110270"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ Postup pro tuto úlohu používá virtuální síť na základě hodnot v násle
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    ```
-1. Přidejte podsíť brány do svého Virtual Network. Podsíť brány musí mít název "GatewaySubnet". Podsíť brány musí být/27 nebo větší (/26,/25 atd.).
+1. Přidejte podsíť brány do svého Virtual Network. Podsíť brány musí mít název "GatewaySubnet". Podsíť brány musí být/27 nebo větší (/26,/25 atd.). Pokud plánujete připojit 16 okruhů ExpressRoute k bráně, **musíte** vytvořit podsíť brány o velikosti/26 nebo větší.
 
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26

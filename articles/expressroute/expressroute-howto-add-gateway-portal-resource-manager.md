@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e70b41dfba03b7439313350746724c6f8e90bc34
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564768"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110321"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Před zahájením konfigurace si můžete zobrazit [video](https://azure.microso
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Přidání podsítě brány":::
 
-1. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **rozsahu adres** tak, aby odpovídaly vašim požadavkům na konfiguraci. Doporučujeme vytvořit podsíť brány s příponou/27 nebo větší (/26,/25 atd.).
+1. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **rozsahu adres** tak, aby odpovídaly vašim požadavkům na konfiguraci. Doporučujeme vytvořit podsíť brány s příponou/27 nebo větší (/26,/25 atd.). Pokud plánujete připojit 16 okruhů ExpressRoute k bráně, **musíte** vytvořit podsíť brány o velikosti/26 nebo větší.
 
     Pokud používáte virtuální síť Dual stack a naplánujete použití privátního partnerského vztahu založeného na protokolu IPv6 přes ExpressRoute, klikněte na **Přidat IP6 adresního prostoru** a vstupní hodnoty **rozsahu IPv6 adres** .
 

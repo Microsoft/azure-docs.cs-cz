@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3325960793a5a0d7bc48ca8030c675d7ebf0c026
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93097579"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442588"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Možnosti migrace místních nebo cloudových dat na Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,8 +64,8 @@ Při výběru nástroje pro migraci rozhodují následující faktory:
 
 |Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Požadavky|
 |---------|---------|---------|---------|---------|
-|Offline|[cqlsh kopírování příkazu](cassandra-import-data.md#migrate-data-using-cqlsh-copy-command)|Soubory CSV | API Cassandra v Azure Cosmos DB| &bull; Snadné nastavení. <br/>&bull; Není vhodné pro velké datové sady. <br/>&bull; Funguje pouze v případě, že zdrojem je tabulka Cassandra.|
-|Offline|[Kopírovat tabulku pomocí Sparku](cassandra-import-data.md#migrate-data-using-spark) | &bull;Apache Cassandra<br/>&bull;API Cassandra v Azure Cosmos DB| API Cassandra v Azure Cosmos DB | &bull; Může využívat možnosti Sparku k paralelizovat transformaci a ingestování. <br/>&bull; Vyžaduje konfiguraci s vlastní zásadou opakování pro zpracování omezení.|
+|Offline|[cqlsh kopírování příkazu](cassandra-import-data.md#migrate-data-by-using-the-cqlsh-copy-command)|Soubory CSV | API Cassandra v Azure Cosmos DB| &bull; Snadné nastavení. <br/>&bull; Není vhodné pro velké datové sady. <br/>&bull; Funguje pouze v případě, že zdrojem je tabulka Cassandra.|
+|Offline|[Kopírovat tabulku pomocí Sparku](cassandra-import-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;API Cassandra v Azure Cosmos DB| API Cassandra v Azure Cosmos DB | &bull; Může využívat možnosti Sparku k paralelizovat transformaci a ingestování. <br/>&bull; Vyžaduje konfiguraci s vlastní zásadou opakování pro zpracování omezení.|
 |Online|[Striim (z Oracle DB/Apache Cassandra)](cosmosdb-cassandra-api-migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> Další podporované zdroje najdete na [webu Striim](https://www.striim.com/sources-and-targets/) .|&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;API Cassandra v Azure Cosmos DB <br/><br/> Další podporované cíle najdete na [webu Striim](https://www.striim.com/sources-and-targets/) .| &bull; Funguje s velkým množstvím zdrojů, jako je Oracle, DB2, SQL Server. <br/>&bull; Snadné sestavování kanálů ETL a poskytuje řídicí panel pro monitorování. <br/>&bull; Podporuje větší datové sady. <br/>&bull; Vzhledem k tomu, že se jedná o nástroj třetí strany, musí být zakoupen z webu Marketplace a nainstalován v uživatelském prostředí.|
 |Online|[Blitzz (z Oracle DB/Apache Cassandra)](oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>Další podporované zdroje najdete na [webu Blitzz](https://www.blitzz.io/) . |Azure Cosmos DB rozhraní API Cassandra. <br/><br/>Další podporované cíle najdete na [webu Blitzz](https://www.blitzz.io/) . | &bull; Podporuje větší datové sady. <br/>&bull; Vzhledem k tomu, že se jedná o nástroj třetí strany, musí být zakoupen z webu Marketplace a nainstalován v uživatelském prostředí.|
 

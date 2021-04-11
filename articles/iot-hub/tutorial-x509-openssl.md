@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 0d083d856138d7895a6e03f4d290ef3c4ddebd05
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4379c8f43bbfa539179b821bf6b18a01518afad6
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630661"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384302"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>Kurz: vytvoření testovacích certifikátů pomocí OpenSSL
 
@@ -101,6 +101,13 @@ authorityKeyIdentifier   = keyid:always
 basicConstraints         = critical,CA:true,pathlen:0
 extendedKeyUsage         = clientAuth,serverAuth
 keyUsage                 = critical,keyCertSign,cRLSign
+subjectKeyIdentifier     = hash
+
+[client_ext]
+authorityKeyIdentifier   = keyid:always
+basicConstraints         = critical,CA:false
+extendedKeyUsage         = clientAuth
+keyUsage                 = critical,digitalSignature
 subjectKeyIdentifier     = hash
 
 ```
@@ -244,13 +251,19 @@ Nyní máte certifikát kořenové certifikační autority i certifikát podří
 
 1. Vyberte možnost **Generovat ověřovací kód**. Další informace najdete v tématu [prokázání vlastnictví certifikátu certifikační autority](tutorial-x509-prove-possession.md).
 
-1. Zkopírujte ověřovací kód do schránky. Je nutné nastavit ověřovací kód jako předmět certifikátu. Pokud je například ověřovací kód BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A, přidejte ho jako předmět certifikátu, jak je znázorněno v následujícím kroku.
+1. Zkopírujte ověřovací kód do schránky. Je nutné nastavit ověřovací kód jako předmět certifikátu. Pokud je například ověřovací kód BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A, přidejte ho jako předmět certifikátu, jak je znázorněno v kroku 9.
 
 1. Vygenerujte privátní klíč.
 
   ```bash
-    $ openssl req -new -key pop.key -out pop.csr
+    $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+  ```
 
+9. Vygenerujte žádost o podepsání certifikátu (CSR) z privátního klíče. Přidejte ověřovací kód jako předmět certifikátu.
+
+  ```bash
+  openssl req -new -key pop.key -out pop.csr
+  
     -----
     Country Name (2 letter code) [XX]:.
     State or Province Name (full name) []:.
@@ -267,16 +280,16 @@ Nyní máte certifikát kořenové certifikační autority i certifikát podří
  
   ```
 
-9. Vytvořte certifikát pomocí konfiguračního souboru kořenové certifikační autority a CSR.
+10. Vytvořte certifikát pomocí konfiguračního souboru kořenové certifikační autority a CSR pro ověření držitele certifikátu.
 
   ```bash
     openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
-10. Výběr nového certifikátu v zobrazení **Podrobnosti o certifikátu**
+11. Vyberte nový certifikát v zobrazení **Podrobnosti o certifikátu** . Pokud chcete najít soubor PEM, přejděte do složky certifikáty.
 
-11. Po nahrání certifikátu vyberte **ověřit**. Stav certifikátu certifikační autority by měl být změněn na **ověřeno**.
+12. Po nahrání certifikátu vyberte **ověřit**. Stav certifikátu certifikační autority by měl být změněn na **ověřeno**.
 
 ## <a name="step-8---create-a-device-in-your-iot-hub"></a>Krok 8 – vytvoření zařízení v IoT Hub
 

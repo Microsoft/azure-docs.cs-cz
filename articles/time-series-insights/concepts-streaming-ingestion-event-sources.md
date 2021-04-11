@@ -1,20 +1,20 @@
 ---
 title: Zdroje událostí ingestování streamování – Azure Time Series Insights Gen2 | Microsoft Docs
 description: Přečtěte si o streamování dat do Azure Time Series Insights Gen2.
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: ec41f7503ec179cb1fa6172e94e613933f719c93
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953600"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504392"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -35,7 +35,7 @@ K vytváření, úpravám a odebírání zdrojů událostí vašeho prostředí 
 
 Při vytváření zdroje událostí máte možnost určit, jaká existující data se mají shromažďovat. Toto nastavení je volitelné. Dostupné jsou tyto možnosti:
 
-| Název   |  Popis  |  Příklad šablony Azure Resource Manager |
+| Název   |  Description  |  Příklad šablony Azure Resource Manager |
 |----------|-------------|------|
 | EarliestAvailable | Ingestovat všechna dříve existující data uložená v rámci IoT nebo centra událostí | `"ingressStartAt": {"type": "EarliestAvailable"}` |
 | EventSourceCreationTime |  Začněte ingestovat data, která dorazí po vytvoření zdroje událostí. Všechna dříve existující data, která byla streamovaná před vytvořením zdroje událostí, se budou ignorovat. Toto je výchozí nastavení v Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
@@ -75,7 +75,7 @@ Při vytváření zdroje událostí máte možnost určit, jaká existující da
 
 - Při poskytování připojovacích řetězců zdrojové události postupujte podle principu minimálního oprávnění. V případě Event Hubs nakonfigurujte zásady sdíleného přístupu pouze s deklarací *Odeslat* a pro IoT Hub použijte pouze oprávnění *k připojení služby* .
 
-> [!CAUTION] 
+> [!CAUTION]
 > Pokud odstraníte IoT Hub nebo centrum událostí a znovu vytvoříte nový prostředek se stejným názvem, budete muset vytvořit nový zdroj událostí a připojit nový IoT Hub nebo centrum událostí. Data nebudou ingestovaná, dokud tento krok nedokončíte.
 
 ## <a name="production-workloads"></a>Produkční úlohy

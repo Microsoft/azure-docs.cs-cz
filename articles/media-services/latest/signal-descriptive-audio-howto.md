@@ -13,10 +13,10 @@ ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104596718"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
@@ -27,7 +27,7 @@ Do svého videa můžete přidat záznam mluveného komentáře, který umožní
 
 Tento článek ukazuje, jak zakódovat video, nahrát zvukový soubor MP4 (kodek AAC) obsahující popisný zvuk do výstupního prostředku a upravit soubor. ISM tak, aby obsahoval popisný zvuk.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](./access-api-howto.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.

@@ -10,10 +10,10 @@ ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567708"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
@@ -71,7 +71,7 @@ V tomto scénáři Předpokládejme, že jste vytvořili virtuální počítač 
 1. [Spusťte relaci vzdálené plochy (RDP) a připojte se k virtuálnímu počítači](../../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine). 
 1. Pak můžete provést některé základní kontroly připojení, abyste zajistili, že se virtuální počítač připojuje k SQL Database prostřednictvím privátního koncového bodu pomocí následujících nástrojů:
     1. Telnet
-    1. PsPing
+    1. Psping
     1. Nmap
     1. SQL Server Management Studio (SSMS)
 

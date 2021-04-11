@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104949834"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Osvědčené postupy pro nasazení Azure dosah
@@ -24,7 +24,7 @@ Dobře plánované nasazení platformy pro řízení dat (například Azure dosa
 - Vylepšená analytická spolupráce
 - Maximalizace návratnosti investic.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Přístup k Microsoft Azure pomocí vývojového nebo produkčního předplatného
 * Možnost vytvářet prostředky Azure, včetně dosah
@@ -91,7 +91,7 @@ Mezi klíčové zúčastněné strany, které byste mohli chtít zahrnout:
 |**Datový analytik**|Umožňuje vytvořit snímek podnikového problému a analyzovat data, abychom mohli dělat podniková rozhodnutí.|
 |**Architekt dat**|Navrhněte databáze pro klíčové podnikové aplikace společně s návrhem a implementací zabezpečení dat.|
 |**Odborník na data**|Provoz a údržba datových zásobníků, vyžádání dat z různých zdrojů, integrace a Příprava dat, nastavení datových kanálů|
-|**Datový vědec**|Sestavování analytických modelů a nastavení datových produktů, pro které budou mít k dispozici rozhraní API|
+|**Odborník na datové vědy**|Sestavování analytických modelů a nastavení datových produktů, pro které budou mít k dispozici rozhraní API|
 |**Správce databáze**|Vlastní, sledovat a řešit incidenty a požadavky související s databází v rámci smluv o úrovni služeb (SLA); Může nastavit datové kanály|
 |**DevOps**|Vývoj a implementace obchodních aplikací; může zahrnovat psaní skriptů a možností orchestrace.|
 |**Specialista na zabezpečení dat**|Posouzení celkové bezpečnosti sítě a dat, která zahrnuje data přicházející z dosah a z nich|

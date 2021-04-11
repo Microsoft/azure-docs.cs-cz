@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7d9e2f02eadec9fac93f14a0fe137c72a35224be
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727905"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168854"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
@@ -25,7 +25,7 @@ Tato ukázka byla sestavena pro vývojáře a usnadňuje vám práci s komunika�
 ## <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
 > [!IMPORTANT]
-> [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)..
+> [Tato ukázka je k dispozici **na GitHubu**.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)..
 
 Postupujte podle/Project/Readme.MD a nastavte projekt a spusťte ho místně na svém počítači.
 Po spuštění [ukázky webové volání](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) na vašem počítači se zobrazí následující cílová stránka:

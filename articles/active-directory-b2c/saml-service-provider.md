@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107385"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384268"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -45,7 +45,7 @@ Organizace, které používají Azure AD B2C jako řešení pro správu identit 
 3. Pokud se uživatel přihlásí pomocí federovaného poskytovatele identity, pošle se Azure AD B2C odpověď tokenu.
 4. Azure AD B2C generuje kontrolní výraz SAML a odešle ho do aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu SAML a znalost implementace SAML aplikace
@@ -71,22 +71,42 @@ Aby bylo možné vytvořit vztah důvěryhodnosti mezi vaší aplikací a Azure 
 
 | Využití | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Podepisování požadavku SAML  | No | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci, který aplikace používá k podepisování požadavků SAML odeslaných do Azure AD B2C. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C ověří podpis požadavku SAML pomocí veřejného klíče z metadat aplikace.|
-| Šifrování kontrolního výrazu SAML  | No | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C může šifrovat kontrolní výrazy ve vaší aplikaci pomocí veřejného klíče. Aplikace používá privátní klíč k dešifrování kontrolního výrazu.|
+| Podepisování požadavku SAML  | Ne | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci, který aplikace používá k podepisování požadavků SAML odeslaných do Azure AD B2C. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C ověří podpis požadavku SAML pomocí veřejného klíče z metadat aplikace.|
+| Šifrování kontrolního výrazu SAML  | Ne | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C může šifrovat kontrolní výrazy ve vaší aplikaci pomocí veřejného klíče. Aplikace používá privátní klíč k dešifrování kontrolního výrazu.|
 
 **Azure AD B2C certifikátů**
 
 | Využití | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Podepisování odpovědí SAML | Yes | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. |
+| Podepisování odpovědí SAML | Ano  | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. |
+| Podepisování kontrolního výrazu SAML | Ano | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání kontrolního výrazu odpovědi SAML. `<saml:Assertion>`Část odpovědi SAML.  |
 
 V produkčním prostředí doporučujeme používat certifikáty vydané veřejnou certifikační autoritou. Tento postup však můžete provést i u certifikátů podepsaných svým držitelem.
 
-### <a name="prepare-a-self-signed-certificate-for-saml-response-signing"></a>Příprava certifikátu podepsaného svým držitelem pro podepisování odpovědí SAML
+### <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
-Musíte vytvořit podpisový certifikát odpovědi SAML, aby vaše aplikace mohla důvěřovat kontrolnímu výrazu z Azure AD B2C.
+Pokud chcete mít vztah důvěryhodnosti mezi vaší aplikací a Azure AD B2C, vytvořte podpisový certifikát SAML. Azure AD B2C používá tento certifikát k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. 
+
+> [!TIP]
+> Klíč zásad, který vytvoříte v této části, můžete použít pro jiné účely, jako je například přihlášení [kontrolního výrazu SAML](saml-service-provider-options.md#saml-assertions-signature). 
+
+### <a name="obtain-a-certificate"></a>Získání certifikátu
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
+
+### <a name="upload-the-certificate"></a>Odeslání certifikátu
+
+Certifikát musíte uložit do svého tenanta Azure AD B2C.
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+1. Pro **Možnosti** vyberte možnost `Upload` .
+1. Zadejte **název** klíče zásad. Například, `SamlIdpCert`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+1. Vyhledejte a vyberte soubor Certificate. pfx s privátním klíčem.
+1. Klikněte na **Vytvořit**.
 
 ## <a name="enable-your-policy-to-connect-with-a-saml-application"></a>Povolení připojení k zásadě pomocí aplikace SAML
 
@@ -111,6 +131,7 @@ Vyhledejte `<ClaimsProviders>` část a přidejte následující fragment kódu 
       </Metadata>
       <CryptographicKeys>
         <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
@@ -147,51 +168,6 @@ Vyhledejte `<ClaimsProviders>` část a přidejte následující fragment kódu 
     </TechnicalProfile>
 ```
 
-#### <a name="sign-the-azure-ad-b2c-idp-saml-metadata-optional"></a>Podepsat Azure AD B2C IdP metadata SAML (volitelné)
-
-Můžete dát Azure AD B2C k podepsání jeho dokumentu metadat SAML IdP, pokud to vyžaduje aplikace. Provedete to tak, že vygenerujete a nahrajete klíč zásad podepisování metadat SAML IdP, jak je znázorněno v [přípravě certifikátu podepsaného svým držitelem pro podepisování odpovědí SAML](#prepare-a-self-signed-certificate-for-saml-response-signing). Pak nakonfigurujte `MetadataSigning` položku metadat v technickém profilu vystavitele tokenu SAML. `StorageReferenceId`Musí odkazovat na název klíče zásad.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
-
-#### <a name="sign-the-azure-ad-b2c-idp-saml-response-element-optional"></a>Podepsat element odpovědi SAML Azure AD B2C IdP (volitelné)
-
-Můžete zadat certifikát, který se má použít k podepsání zpráv SAML. Zpráva je `<samlp:Response>` element v odpovědi SAML odeslané do aplikace.
-
-Pokud chcete zadat certifikát, vygenerujte a nahrajte klíč zásad, jak je znázorněno v [přípravě certifikátu podepsaného svým držitelem pro podepisování odpovědí SAML](#prepare-a-self-signed-certificate-for-saml-response-signing). Pak nakonfigurujte `SamlMessageSigning` položku metadat v technickém profilu vystavitele tokenu SAML. `StorageReferenceId`Musí odkazovat na název klíče zásad.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
 ## <a name="configure-your-policy-to-issue-a-saml-response"></a>Konfigurace zásady, aby vydávala odpověď SAML
 
 Teď, když vaše zásada může vytvářet odpovědi SAML, je nutné nakonfigurovat zásadu, aby vydávala odpověď SAML namísto výchozí odezvy JWT pro vaši aplikaci.

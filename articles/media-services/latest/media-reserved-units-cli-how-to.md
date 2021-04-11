@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: inhenkel
 ms.openlocfilehash: 06c0c6333b84697415ef598d4c5e853d5c006f08
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870156"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>Postup škálování rezervovaných jednotek médií
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak škálovat rezervované jednotky médií (MRSs
 > [!WARNING]
 > Tento příkaz už nebude fungovat pro účty Media Services, které jsou vytvořené pomocí verze 2020-05-01 rozhraní API nebo novějšího. Pro tyto účty už nejsou potřebné rezervované jednotky médií, protože systém bude automaticky škálovat nahoru a dolů na základě zatížení. Pokud nevidíte možnost spravovat MRUs v Azure Portal, používáte účet, který byl vytvořen s rozhraním API 2020-05-01 nebo novějším.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Vytvořte účet Media Services](./create-account-howto.md).
 

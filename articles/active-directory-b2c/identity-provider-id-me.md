@@ -12,12 +12,12 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3c5df0c4112f07a465d38e789b1401132ed25931
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72fe52ad1da1941f09ad9f3264f3a2d1789c3e2f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103488801"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028957"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu ID.me pomocí Azure Active Directory B2C
 
@@ -166,7 +166,7 @@ V dalším kroku budete potřebovat transformaci deklarací identity, abyste moh
 ## <a name="test-your-custom-policy"></a>Testování vlastních zásad
 
 1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte tlačítko **Spustit** .
 1. Na stránce registrace nebo přihlášení vyberte **ID.me** , abyste se přihlásili pomocí účtu ID.me.
 

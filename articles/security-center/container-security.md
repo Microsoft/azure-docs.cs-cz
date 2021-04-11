@@ -1,23 +1,18 @@
 ---
-title: Zabezpečení kontejneru v Azure Security Center | Microsoft Docs
-description: Přečtěte si o funkcích zabezpečení kontejneru Azure Security Center.
-services: security-center
-documentationcenter: na
+title: Zabezpečení kontejneru pomocí Azure Security Center a Azure Defenderu
+description: Další informace o funkcích zabezpečení kontejneru Azure Security Center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/07/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9fddb27ee6a1139fa8b07c6c19dd4fdf1a20096e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101337"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029130"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejnerů ve službě Security Center
 
@@ -27,9 +22,9 @@ Security Center může chránit následující typy prostředků kontejneru:
 
 | Typ prostředku | Ochrana nabízená nástrojem Security Center |
 |:--------------------:|-----------|
-| ![Služba Kubernetes](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Clustery Azure Kubernetes Service (AKS)** | – Průběžné hodnocení konfigurací clusterů AKS poskytují přehled o chybných konfiguracích a pokyny, které vám pomohou vyřešit zjištěné problémy.<br>[Přečtěte si další informace o posílení zabezpečení prostředí prostřednictvím doporučení zabezpečení](#environment-hardening).<br><br>– Ochrana před hrozbami pro clustery AKS a uzly Linux. Výstrahy pro podezřelé aktivity poskytuje nepovinný  [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md).<br>[Přečtěte si další informace o ochraně za běhu pro uzly a clustery AKS](#run-time-protection-for-aks-nodes-and-clusters).|
-| ![Hostitel kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Hostitelé kontejneru**<br>(Virtuální počítače s Docker) | – Průběžné hodnocení vašich konfigurací Docker vám poskytne přehled o chybných konfiguracích a pokyny, které vám pomůžou vyřešit případné zjištěné problémy s volitelným  [Azure Defenderem pro servery](defender-for-servers-introduction.md).<br>[Přečtěte si další informace o posílení zabezpečení prostředí prostřednictvím doporučení zabezpečení](#environment-hardening).|
-| ![Registr kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Registry Azure Container Registry (ACR)** | – Nástroj pro vyhodnocení a správu ohrožení zabezpečení imagí v ACR registrech založených na Azure Resource Manager s volitelným [Azure Defenderem pro Registry kontejnerů](defender-for-container-registries-introduction.md).<br>[Přečtěte si další informace o kontrole chyb zabezpečení v imagích kontejnerů](#vulnerability-management---scanning-container-images). |
+| ![Služba Kubernetes](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Clustery Kubernetes** | Průběžné posuzování vašich clusterů, které poskytují přehled o nepravidelných konfiguracích a pokyny, které vám pomohou zmírnit zjištěné hrozby. Přečtěte si další informace o [posílení zabezpečení prostředí prostřednictvím doporučení zabezpečení](#environment-hardening).<br><br>Ochrana před hrozbami pro clustery a uzly Linux. Upozornění na podezřelé aktivity poskytuje [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md). Tento plán Azure Defenderu chrání clustery Kubernetes bez ohledu na to, jestli jsou hostované ve službě Azure Kubernetes (AKS), v místním prostředí nebo na jiných poskytovatelích cloudu. existující. <br>Přečtěte si další informace o [ochraně za běhu pro uzly a clustery Kubernetes](#run-time-protection-for-kubernetes-nodes-and-clusters).|
+| ![Hostitel kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Hostitelé kontejneru**<br>(Virtuální počítače s Docker) | Průběžné hodnocení vašich prostředí Docker, které poskytuje přehled o nepravidelných konfiguracích a pokyny, které vám pomohou zmírnit hrozby identifikované volitelným programem [Azure Defender pro servery](defender-for-servers-introduction.md).<br>Přečtěte si další informace o [posílení zabezpečení prostředí prostřednictvím doporučení zabezpečení](#environment-hardening).|
+| ![Registr kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Registry Azure Container Registry (ACR)** | Nástroje pro posouzení a správu ohrožení zabezpečení pro image v ACR Registry založené na Azure Resource Manager s volitelným [Azure Defenderem pro Registry kontejnerů](defender-for-container-registries-introduction.md).<br>Přečtěte si další informace o [kontrole chyb zabezpečení v imagích kontejnerů](#vulnerability-management---scanning-container-images). |
 |||
 
 Tento článek popisuje, jak můžete použít Security Center společně s nepovinnými plány Azure Defender pro Registry kontejnerů, servery a Kubernetes, ke zlepšení, monitorování a údržbě zabezpečení vašich kontejnerů a jejich aplikací.
@@ -38,7 +33,7 @@ Naučíte se, jak Security Center pomáhá s těmito základními aspekty zabezp
 
 - [Správa ohrožení zabezpečení – kontrola imagí kontejnerů](#vulnerability-management---scanning-container-images)
 - [Posílení zabezpečení prostředí](#environment-hardening)
-- [Ochrana za běhu pro uzly a clustery AKS](#run-time-protection-for-aks-nodes-and-clusters)
+- [Ochrana za běhu pro uzly a clustery Kubernetes](#run-time-protection-for-kubernetes-nodes-and-clusters)
 
 Na následujícím snímku obrazovky vidíte stránku inventáře prostředků a různé typy prostředků kontejneru chráněné Security Center.
 
@@ -103,7 +98,7 @@ Můžete například stanovit, že by se neměly vytvářet privilegované konte
 Další informace najdete v informacích o [ochraně úloh Kubernetes](kubernetes-workload-protections.md).
 
 
-## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>Ochrana za běhu pro uzly a clustery AKS
+## <a name="run-time-protection-for-kubernetes-nodes-and-clusters"></a>Ochrana za běhu pro uzly a clustery Kubernetes
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 

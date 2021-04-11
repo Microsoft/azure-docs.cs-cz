@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 579a7114a06386fe48fcc074cc1095e980837ba0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732172"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552236"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -22,7 +22,7 @@ ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojen
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Jaké jsou výhody používání ExpressRoute a privátních síťových připojení?
 
-Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Nabízejí vyšší zabezpečení, spolehlivost a rychlost s nižší a konzistentní latencí než typická připojení přes Internet. V některých případech může použití připojení ExpressRoute k přenosu dat mezi místními zařízeními a Azure přinést významné cenové výhody.
+Připojení ExpressRoute neprocházejí přes veřejný internet. Nabízejí vyšší zabezpečení, spolehlivost a rychlost s nižší a konzistentní latencí než typická připojení přes Internet. V některých případech může použití připojení ExpressRoute k přenosu dat mezi místními zařízeními a Azure přinést významné cenové výhody.
 
 ### <a name="where-is-the-service-available"></a>Kde je služba k dispozici?
 
@@ -46,7 +46,7 @@ No. Soukromé připojení libovolné rychlosti od svého poskytovatele služeb s
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, mám možnost použít více než mi vyřízenou šířku pásma?
 
-Ano, můžete použít až dvojnásobek limitu šířky pásma, který jste využívali, pomocí šířky pásma dostupného pro sekundární připojení okruhu ExpressRoute. Integrovaná redundance vašeho okruhu je nakonfigurovaná pomocí primárních a sekundárních připojení, z nichž každá má vyřízenou šířku pásma až po dva směrovače Microsoft Enterprise Edge (směrovači msee). Šířka pásma dostupná prostřednictvím sekundárního připojení se dá v případě potřeby použít pro další provoz. Vzhledem k tomu, že sekundární připojení je určeno pro redundanci, není zaručeno a nemělo by se používat k dalšímu provozu po delší dobu. Další informace o tom, jak používat oba připojeních k přenosu provozu, najdete v tématu [použití jako nedokončené cesty](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
+Ano, můžete použít až dvojnásobek limitu šířky pásma, který jste využívali, pomocí šířky pásma dostupného pro sekundární připojení okruhu ExpressRoute. Integrovaná redundance vašeho okruhu je nakonfigurovaná pomocí primárních a sekundárních připojení, z nichž každá má vyřízenou šířku pásma až po dva směrovače Microsoft Enterprise Edge (směrovači msee). Šířka pásma dostupná prostřednictvím sekundárního připojení se dá v případě potřeby použít pro další provoz. Vzhledem k tomu, že sekundární připojení je určeno pro redundanci, není zaručeno a nemělo by se používat k dalšímu provozu po delší dobu. Další informace o tom, jak používat obě připojení k přenosu provozu, najdete v tématu [použití jako nedokončené cesty](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
 
 Pokud máte v úmyslu používat k přenosu provozu pouze primární připojení, je šířka pásma pro připojení pevná a při pokusu o její přehlášení dojde k vyššímu poklesu paketů. Pokud provoz přes bránu ExpressRoute, je pevná šířka pásma pro SKU brány a nemůže být roztékat. Šířku pásma jednotlivých SKU brány najdete v tématu [informace o branách virtuální sítě ExpressRoute](expressroute-about-virtual-network-gateways.md#aggthroughput).
 
@@ -95,7 +95,7 @@ Pokud je pro partnerský vztah Microsoft Azure povolen okruh ExpressRoute, můž
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunita Azure Global Services)
 * Veřejné IP adresy Azure pro IaaS (Virtual Machines, Virtual Network brány, nástroje pro vyrovnávání zatížení atd.)  
-* Podporuje se i většina ostatních služeb Azure. Podívejte se prosím přímo na službu, kterou chcete použít k ověření podpory.
+* Podporuje se i většina ostatních služeb Azure. Zkontrolujte přímo se službou, kterou chcete použít k ověření podpory.
 
 **Nepodporováno:**
 
@@ -108,7 +108,7 @@ Pokud je pro partnerský vztah Microsoft Azure povolen okruh ExpressRoute, můž
 
 ### <a name="public-peering"></a>Veřejný partnerský vztah
 
-Veřejný partnerský vztah byl zakázán pro nové okruhy ExpressRoute. Služby Azure jsou teď dostupné v partnerském vztahu Microsoftu. Pokud jste okruh, který byl vytvořen před veřejným partnerským vztahem, zastaralý, můžete zvolit používání partnerského vztahu Microsoftu nebo veřejného partnerského vztahu v závislosti na službách, které požadujete.
+Veřejný partnerský vztah byl zakázán pro nové okruhy ExpressRoute. Služby Azure jsou teď dostupné v partnerském vztahu Microsoftu. Pokud jste okruh, který byl vytvořen před veřejným partnerským vztahem, zastaralý, můžete zvolit použití partnerského vztahu Microsoftu nebo veřejného partnerského vztahu v závislosti na službách, které požadujete.
 
 Další informace a kroky konfigurace veřejného partnerského vztahu najdete v tématu [veřejné partnerské vztahy ExpressRoute](about-public-peering.md).
 
@@ -171,7 +171,7 @@ Pro návrh pro zajištění vysoké dostupnosti se podívejte [sem](./designing-
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Návody zajistěte vysokou dostupnost ve virtuální síti připojené k ExpressRoute?
 
-Vysokou dostupnost můžete dosáhnout připojením až čtyř okruhů ExpressRoute ve stejném umístění partnerského vztahu k vaší virtuální síti nebo připojením okruhů ExpressRoute v různých umístěních partnerských vztahů (například Singapur, Singapur2) do vaší virtuální sítě. Pokud dojde k výpadku jednoho okruhu ExpressRoute, připojení převezme služby při selhání jiným okruhem ExpressRoute. Provoz, který opouští vaši virtuální síť, se ve výchozím nastavení směruje na základě ECMP (EQUAL cost multi-Path Routing). Pomocí váhy připojení můžete upřednostnit jeden okruh na jiný. Další informace najdete v tématu [optimalizace směrování ExpressRoute](expressroute-optimize-routing.md).
+Vysokou dostupnost můžete dosáhnout připojením až 16 okruhů ExpressRoute ve stejném umístění partnerského vztahu k vaší virtuální síti nebo připojením okruhů ExpressRoute v různých umístěních partnerských vztahů (například Singapur, Singapur2) do vaší virtuální sítě. Pokud dojde k výpadku jednoho okruhu ExpressRoute, připojení převezme služby při selhání jiným okruhem ExpressRoute. Provoz, který opouští vaši virtuální síť, se ve výchozím nastavení směruje na základě ECMP (EQUAL cost multi-Path Routing). Pomocí váhy připojení můžete upřednostnit jeden okruh na jiný. Další informace najdete v tématu [optimalizace směrování ExpressRoute](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Návody zajistěte, aby byl můj provoz určený pro veřejné služby Azure, jako je Azure Storage a Azure SQL v partnerském vztahu Microsoftu nebo veřejný partnerský vztah, upřednostňován na cestě ExpressRoute?
 
@@ -351,13 +351,17 @@ Náklady najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing
 Ano. Poplatky za ExpressRoute Premium se vztahují na poplatky za okruhy ExpressRoute a poplatky, které vyžaduje poskytovatel připojení.
 
 ## <a name="expressroute-local"></a>ExpressRoute místní
+
 ### <a name="what-is-expressroute-local"></a>Co je ExpressRoute místní?
-ExpressRoute Local je SKU okruhu ExpressRoute, kromě standardní SKU a SKU úrovně Premium. Klíčovou funkcí místní je, že místní okruh v umístění partnerského vztahu ExpressRoute poskytuje přístup pouze k jedné nebo dvěma oblastem Azure v nebo téměř stejné Metro. Na rozdíl od standardního okruhu získáte přístup ke všem oblastem Azure v geopolitické oblasti a okruhu Premium pro všechny oblasti Azure globálně. 
+
+ExpressRoute Local je SKU okruhu ExpressRoute, kromě standardní SKU a SKU úrovně Premium. Klíčovou funkcí místní je, že místní okruh v umístění partnerského vztahu ExpressRoute poskytuje přístup pouze k jedné nebo dvěma oblastem Azure v nebo téměř stejné Metro. Na rozdíl od standardního okruhu získáte přístup ke všem oblastem Azure v geopolitické oblasti a okruhu Premium pro všechny oblasti Azure globálně. Konkrétně pomocí místní SKU můžete inzerovat pouze trasy (přes Microsoft a soukromý partnerský vztah) z odpovídající místní oblasti okruhu ExpressRoute. Nebudete moci přijímat trasy pro jiné oblasti, než je definovaná místní oblast.
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Jaké jsou výhody ExpressRoute Local?
+
 I když potřebujete platit přenos odchozích dat pro okruh Standard nebo Premium ExpressRoute, nebudete za váš přenos odchozích dat platit samostatně pro místní okruh ExpressRoute. Jinými slovy, cena za ExpressRoute Local zahrnuje poplatky za přenos dat. ExpressRoute Local je výhodnější řešení, pokud máte obrovské množství dat, která se mají přenést, a můžete přenést data prostřednictvím privátního připojení k umístění partnerského vztahu ExpressRoute v blízkosti požadovaných oblastí Azure. 
 
 ### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Jaké funkce jsou k dispozici a co nejsou v ExpressRoute místním prostředí?
+
 V porovnání se standardním okruhem ExpressRoute má místní okruh stejnou sadu funkcí s výjimkou:
 * Rozsah přístupu k oblastem Azure, jak je popsáno výše
 * ExpressRoute Global Reach není k dispozici v místním prostředí.
@@ -365,6 +369,7 @@ V porovnání se standardním okruhem ExpressRoute má místní okruh stejnou sa
 ExpressRoute Local má také stejné limity pro prostředky (např. počet virtuální sítě na okruh) jako standard. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Kde je ExpressRoute k dispozici místní a u kterých oblastí Azure je každé umístění partnerského vztahu namapované?
+
 ExpressRoute Local je k dispozici v umístěních partnerských vztahů, kde jedna nebo dvě oblasti Azure jsou blízko. Není k dispozici v umístění partnerského vztahu, kde neexistuje oblast Azure v tomto státě nebo zemi nebo oblasti. Přečtěte si prosím přesná mapování na [stránce umístění](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-microsoft-365"></a>ExpressRoute pro Microsoft 365

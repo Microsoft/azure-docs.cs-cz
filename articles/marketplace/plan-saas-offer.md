@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 7d421cf20aa054fb3e1e4877ee610a284eeff7c9
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 6f08fa0b2126112fa17fd61be6f44bb5cc6d5396
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627046"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552151"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
-Tento článek popisuje různé možnosti a požadavky pro publikování nabídek SaaS (software jako služba) na komerčním webu Microsoft Marketplace. SaaS nabízí vašim zákazníkům doručovat a licencovat softwarová řešení prostřednictvím online předplatných. Jako vydavatel SaaS spravujete a platíte za infrastrukturu potřebnou k podpoře používání vaší nabídky vašimi zákazníky. Tento článek vám pomůže připravit vaši nabídku publikování na komerční tržišti s partnerským centrem.
+Tento článek popisuje různé možnosti a požadavky pro publikování nabídek SaaS (software jako služba) na komerčním webu Microsoft Marketplace. SaaS nabízí, abyste svým zákazníkům mohli doručovat a licencovat softwarová řešení prostřednictvím online předplatných. Jako vydavatel SaaS spravujete a platíte za infrastrukturu potřebnou k podpoře používání vaší nabídky vašimi zákazníky. Tento článek vám pomůže připravit vaši nabídku publikování na komerční tržišti s partnerským centrem.
 
 ## <a name="listing-options"></a>Možnosti zápisu
 
@@ -134,6 +134,28 @@ Pokud se rozhodnete použít standardní smlouvu, máte možnost přidat do stan
 > [!NOTE]
 > Po publikování nabídky pomocí standardní smlouvy pro komerční web Marketplace nemůžete použít vlastní podmínky a ujednání. Jedná se o scénář "nebo". Vaše řešení si buď nabídnete v rámci standardní smlouvy, nebo podle vašich vlastních podmínek. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
 
+
+## <a name="microsoft-365-integration"></a>Integrace Microsoftu 365
+
+Integrace s Microsoft 365 umožňuje vaší nabídce SaaS poskytovat prostředí pro více Microsoft 365ch aplikací prostřednictvím souvisejících bezplatných doplňků, jako jsou aplikace pro týmy, doplňky pro Office a řešení SharePoint Framework. Zákazníkům můžete usnadnit zjišťování všech omezujících vlastností řešení E2E (webové služby a související doplňky) a jejich nasazení v rámci jednoho procesu zadáním následujících informací. 
+  - Pokud se vaše nabídka SaaS integruje s Microsoft Graph, zadejte ID aplikace Azure Active Directory (AAD) používané vaší nabídkou SaaS pro integraci. Správci můžou zkontrolovat přístupová oprávnění požadovaná pro správné fungování nabídky SaaS, která je nastavená na ID aplikace AAD, a udělit přístup, pokud je v době nasazení potřeba rozšířené oprávnění správce. 
+    
+     Pokud se rozhodnete prodávat nabídku prostřednictvím Microsoftu, jedná se o stejné ID aplikace AAD, které jste zaregistrovali pro použití na cílové stránce, abyste získali základní informace o uživateli potřebné k dokončení Aktivace předplatného zákazníka. Podrobné pokyny najdete v tématu [vytvoření cílové stránky pro SaaS nabídku s podporou transakcí na komerčním webu Marketplace](azure-ad-transactable-saas-landing-page.md). 
+    
+   -    Zadejte seznam souvisejících doplňků, které fungují s vaší nabídkou SaaS, kterou chcete propojit. Zákazníci budou moct zjistit vaše řešení E2E na AppSource a správci můžou nasadit jak SaaS, tak i všechny související doplňky, které jste propojili v rámci stejného procesu prostřednictvím centra pro správu Microsoft 365.
+    
+        Aby bylo možné propojit související doplňky, je nutné zadat odkaz AppSource tohoto doplňku. to znamená, že doplněk musí být nejprve publikován do AppSource. Podporované typy doplňků, které můžete propojit: aplikace pro týmy, doplňky pro Office a SharePoint Framework (SPFx). Každý propojený doplněk musí být pro nabídku SaaS jedinečný. 
+
+U propojených produktů se hledání v AppSource vrátí s jedním výsledkem, který zahrnuje SaaS a všechny propojené doplňky. Zákazník může přecházet mezi stránkami s podrobnostmi o produktu nabídky SaaS a propojenými doplňky. Správci IT mohou kontrolovat a nasazovat SaaS i propojené doplňky v rámci stejného procesu prostřednictvím integrovaného a připojeného prostředí v centru pro správu Microsoft 365. Další informace najdete v tématu [test a nasazení aplikací Microsoft 365 – Microsoft 365 správce](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps).
+
+### <a name="microsoft-365-integration-support-limitations"></a>Omezení podpory Microsoft 365 integrace
+Zjišťování jako jediné řešení E2E je podporováno v AppSource pro všechny případy, ale zjednodušené nasazení řešení E2E, jak je popsáno výše prostřednictvím centra pro správu Microsoft 365, není podporováno v následujících scénářích:
+
+   - Stejný doplněk je propojen s více než jednou SaaS nabídkou.
+   - Nabídka SaaS je propojená s doplňky, ale Neintegruje se s Microsoft Graph a není k dispozici žádné ID aplikace AAD.
+  - Nabídka SaaS je propojená s doplňky, ale ID aplikace AAD zadané pro integraci Microsoft Graph se sdílí napříč několika SaaS nabídkami.
+
+ 
 ## <a name="offer-listing-details"></a>Podrobnosti o seznamu nabídek
 
 Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském centru, na stránce se **seznamem nabídek** zadáte text, obrázky, volitelná videa a další podrobnosti. Toto jsou informace, které se zákazníkům zobrazí při zjištění seznamu nabídek na komerčním webu Marketplace, jak je znázorněno v následujícím příkladu.

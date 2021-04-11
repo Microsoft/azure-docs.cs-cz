@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4b357213f4e552fd791fb575d8b7a287b924c7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3aacc6c50024cfdca3af639e7c6d14f69ed00519
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489066"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029042"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Nastavení registrace a přihlášení pomocí účtu Azure AD B2C z jiného tenanta Azure AD B2C
 
@@ -229,7 +229,7 @@ Azure AD B2C můžete definovat jako zprostředkovatele deklarací přidáním A
 ## <a name="test-your-custom-policy"></a>Testování vlastních zásad
 
 1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte tlačítko **Spustit** .
 1. Na stránce registrace nebo přihlášení vyberte **Fabrikam** pro přihlášení k druhému tenantovi Azure AD B2C.
 
