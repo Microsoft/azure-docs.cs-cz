@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: logické operátory v definici zásady'
 description: Tento vzor Azure Policy poskytuje příklady použití logických operátorů v definici zásady.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: feb9e50b0c73c19027b747cf0f95fa1cb6fbd47c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88545586"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093346"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy Pattern: logické operátory
 
@@ -16,7 +16,7 @@ Definice zásady může obsahovat několik podmíněných příkazů. Může bý
 
 ## <a name="sample-1-one-logical-operator"></a>Ukázka 1: jeden logický operátor
 
-Tato definice zásad vyhodnocuje účty CosmosDB, aby bylo možné zjistit, zda jsou konfigurovány automatické převzetí služeb při selhání a více umístění pro zápis. Pokud nejsou, [audit](../concepts/effects.md#audit) triggery a vytvoří položku protokolu, pokud je prostředek nedodržující předpisy vytvořen nebo aktualizován.
+Tato definice zásad vyhodnocuje účty [Azure Cosmos DB](../../../cosmos-db/introduction.md) , aby bylo možné zjistit, zda jsou konfigurovány automatické převzetí služeb při selhání a více umístění pro zápis. Pokud nejsou, [audit](../concepts/effects.md#audit) triggery a vytvoří položku protokolu, pokud je prostředek nedodržující předpisy vytvořen nebo aktualizován.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
@@ -41,7 +41,7 @@ Tento **policyRule. if** blok také obsahuje jeden **allOf**, ale každá podmí
 
 ## <a name="sample-3-combining-logical-operators"></a>Ukázka 3: kombinování logických operátorů
 
-Tato definice zásad vyhodnocuje účty na jaře Java, aby bylo možné zjistit, zda není buď trasování zapnuto, nebo pokud trasování není v úspěšném stavu.
+Tato definice zásad vyhodnocuje [jarní účty Azure](/azure/developer/java/spring-framework) , aby bylo možné zjistit, zda není buď trasování povolené, nebo pokud trasování není v úspěšném stavu.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 

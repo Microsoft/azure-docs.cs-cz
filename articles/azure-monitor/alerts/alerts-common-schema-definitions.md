@@ -4,19 +4,19 @@ description: Principy běžných definic schémat výstrah pro Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045390"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491708"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
 Tento článek popisuje [běžné definice schématu výstrah](./alerts-common-schema.md) pro Azure monitor, včetně těch pro Webhooky, Azure Logic Apps, Azure Functions a Azure Automation Runbooky. 
 
 Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a příčinu výstrahy. Tyto instance jsou popsané ve společném schématu v následujících částech:
-* **Essentials**: sada standardizovaných polí společných pro všechny typy výstrah, které popisují, k jakým prostředkům se výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
+* **Essentials**: sada standardizovaných polí společných pro všechny typy výstrah, které popisují, k jakým prostředkům se výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). Definice závažnosti najdete v [přehledu výstrah](alerts-overview.md#overview). 
 * **Kontext výstrahy**: sada polí, která popisují příčinu výstrahy, s poli, která se liší v závislosti na typu výstrahy. Například výstraha metriky obsahuje pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit obsahuje informace o události, která vygenerovala výstrahu. 
 
 **Ukázková datová část výstrahy**

@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/07/2021
+ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800019"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031099"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Propustnost můžete zřídit na úrovni kontejneru nebo databáze na úrovni je
 | --- | --- |
 | Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) . |
 | Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) . |
-| Maximální počet ru na (logický) oddíl | 10 000 |
+| Maximální počet ru na oddíl (logický & fyzický) | 10 000 |
 | Maximální velikost úložiště napříč všemi položkami na (logický) oddíl | 20 GB |
 | Maximální počet různých (logických) klíčů oddílu | Unlimited |
 | Maximální velikost úložiště na kontejner | Unlimited |

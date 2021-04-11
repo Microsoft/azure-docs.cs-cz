@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40e9e2b0e7437566a132f2402d3bed01b284d11a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102109065"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081113"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Vytvoření ručně aktivované webové úlohy
 
@@ -33,7 +33,7 @@ ms.locfileid: "102109065"
    | <abbr title="Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než `-` a `_` .">Name</abbr> | myTriggeredWebJob | 
     | <abbr title="Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu.">Nahrání souboru</abbr> | ConsoleApp.zip |
     | <abbr title="Mezi typy patří průběžné, aktivované.">Typ</abbr> | Aktivuje | 
-    | <abbr title="Typy obsahují naplánované nebo ruční">Aktivační události</a> | Ruční | |
+    | <abbr title="Typy obsahují naplánované nebo ruční">Aktivační události</a> | Ruční | 
 
 4. Klikněte na **OK**. 
 

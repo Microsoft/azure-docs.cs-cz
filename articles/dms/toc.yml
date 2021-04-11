@@ -37,7 +37,7 @@
   items:
     - name: Migrace SQL Serveru
       items:
-        - name: pro Azure SQL Database
+        - name: na Azure SQL Database
           href: tutorial-sql-server-to-azure-sql.md
         - name: Do Azure SQL Managed Instance (offline)
           href: tutorial-sql-server-to-managed-instance.md
@@ -93,6 +93,10 @@
           href: how-to-migrate-ssis-packages.md
         - name: Spravovaná instance Azure SQL
           href: how-to-migrate-ssis-packages-managed-instance.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/dms
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

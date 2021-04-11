@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108352"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284715"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -547,8 +547,8 @@ K nakonfigurování kontejneru pro použití připojených fotoaparátů, konfig
 
 Pokud chcete začít spotřebovávat výstup generovaný kontejnerem, přečtěte si následující články:
 
-*   K připojení ke koncovému bodu Azure IoT Hub a příjmu událostí použijte sadu Azure Event hub SDK pro zvolený programovací jazyk. Další informace najdete v tématu [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
-*   Nastavte směrování zpráv v Azure IoT Hub pro odesílání událostí do jiných koncových bodů nebo ukládání událostí do Azure Blob Storage atd. Další informace najdete v tématu [IoT Hub směrování zpráv](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
+*    K připojení ke koncovému bodu Azure IoT Hub a příjmu událostí použijte sadu Azure Event hub SDK pro zvolený programovací jazyk. Další informace najdete v tématu [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+*    Nastavte směrování zpráv v Azure IoT Hub pro odesílání událostí do jiných koncových bodů nebo ukládání událostí do Azure Blob Storage atd. Další informace najdete v tématu [IoT Hub směrování zpráv](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Spuštění prostorové analýzy s nahraným videosouborem
 

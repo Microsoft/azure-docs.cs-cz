@@ -4,16 +4,16 @@ description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/06/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 782e632f8707b4cafb6d33438f6c8da7e8b08c30
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961298"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491386"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -45,16 +45,16 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 
 
 ## <a name="azure-regions-with-availability-zones"></a>Oblasti Azure s Zóny dostupnosti
-
+ 
 
 | Amerika           | Evropa               | Afrika              | Asie a Tichomoří   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
 | Brazílie – jih       | Francie – střed       | Jihoafrická Jižní Afrika – sever * | Austrálie – východ |
-| Střední Kanada     | Německo – středozápad |                     | Japonsko – východ     |
-| USA – střed         | Severní Evropa         |                     | Korea – střed * |
-| East US            | Spojené království – jih             |                     | Southeast Asia |
-| USA – východ 2          | West Europe          |                     |                |
+| Střední Kanada     | Německo – středozápad |                     | Střed Indie * |
+| USA – střed         | Severní Evropa         |                     | Japan East     |
+| East US            | Spojené království – jih             |                     | Korea – střed * |
+| USA – východ 2          | West Europe          |                     | Southeast Asia |
 | Střed USA – jih |                      |                     |                |
 | USA (Gov) – Virginia    |                      |                     |                |
 | Západní USA 2        |                      |                     |                |
@@ -115,89 +115,100 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 
 **Běžné služby**
 
-| Produkty                                        | Odolnost |
-|-------------------------------------------------|:------------:|
-| Prostředí App Service                        |      : large_blue_diamond:  |
-| Azure Active Directory Domain Services          |      : large_blue_diamond:  |
-| Azure Bastion                                   |      : large_blue_diamond:  |
-| Azure Cache for Redis                           |      : large_blue_diamond:  |
-| Azure Cognitive Services: Analýza textu        |      : large_blue_diamond:  |
-| Průzkumník dat Azure                             |      : large_blue_diamond:  |
-| Azure Database for MySQL – flexibilní Server      |      : large_blue_diamond:  |
-| Azure Database for PostgreSQL – flexibilní Server |      : large_blue_diamond:  |
-| Azure DDoS Protection                           |      : large_blue_diamond:  |
-| Azure Disk Encryption                           |      : large_blue_diamond:  |
-| Azure Firewall                                  |      : large_blue_diamond:  |
-| Azure Firewall Manager                          |      : large_blue_diamond:  |
-| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
-| Azure Private Link                              |      : large_blue_diamond:  |
-| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
-| Azure Site Recovery                             |      : large_blue_diamond:  |
-| Azure SQL: virtuální počítač                      |      : large_blue_diamond:  |
-| Azure Search                                    |      : large_blue_diamond:  |
-| Azure Web Application Firewall                  |      : large_blue_diamond:  |
-| Container Registry                              |      : large_blue_diamond:  |
-| Event Grid                                      |      : large_blue_diamond:  |
-| Network Watcher                                 |      : large_blue_diamond:  |
-| Network Watcher: Analýza provozu              |      : large_blue_diamond:  |
-| Power BI Embedded                               |      : large_blue_diamond:  |
-| Blob Storage úrovně Premium                            |      : large_blue_diamond:  |
-| Storage: soubory Azure Premium                    |      : large_blue_diamond:  |
-| Virtual Machines: vyhrazený hostitel Azure          |      : large_blue_diamond:  |
-| Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
-| Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Dv4-Series                    |      : large_blue_diamond:  |
-| Virtual Machines: Edsv4-Series                  |      : large_blue_diamond:  |
-| Virtual Machines: Edv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Esv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
-| Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: řada M-Series                      |      : large_blue_diamond:  |
-| Virtuální síť WAN                                     |      : large_blue_diamond:  |
-| Virtuální síť WAN: ExpressRoute                       |      : large_blue_diamond:  |
-| Virtuální síť WAN: připojení typu Point-to-Site VPN Gateway          |      : large_blue_diamond:  |
-| Virtuální síť WAN: VPN Gateway typu Site-to-site           |      : large_blue_diamond:  |
+
+|     Produkty                                                    | Odolnost             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Prostředí App Service                                    | : large_blue_diamond:  |
+|     Azure Active Directory Domain Services                      | : large_blue_diamond:  |
+|     Azure Bastion                                               | : large_blue_diamond:  |
+|     Azure Cache for Redis                                       | : large_blue_diamond:  |
+|     Azure Cognitive Search                                      | : large_blue_diamond:  |
+|     Azure Cognitive Services: Analýza textu                    | : large_blue_diamond:  |
+|     Průzkumník dat Azure                                         | : large_blue_diamond:  |
+|     Azure Database for MySQL – flexibilní Server                  | : large_blue_diamond:  |
+|     Azure Database for PostgreSQL – flexibilní Server             | : large_blue_diamond:  |
+|     Azure DDoS Protection                                       | : large_blue_diamond:  |
+|     Azure Disk Encryption                                       | : large_blue_diamond:  |
+|     Azure Firewall                                              | : large_blue_diamond:  |
+|     Azure Firewall Manager                                      | : large_blue_diamond:  |
+|     Azure Kubernetes Service (AKS)                              | : large_blue_diamond:  |
+|     Azure Private Link                                          | : large_blue_diamond:  |
+|     Azure Site Recovery                                         | : large_blue_diamond:  |
+|     Azure SQL: virtuální počítač                                  | : large_blue_diamond:  |
+|     Azure Web Application Firewall                              | : large_blue_diamond:  |
+|     Container Registry                                          | : large_blue_diamond:  |
+|     Event Grid                                                  | : large_blue_diamond:  |
+|     Network Watcher                                             | : large_blue_diamond:  |
+|     Network Watcher: Analýza provozu                          | : large_blue_diamond:  |
+|     Power BI Embedded                                           | : large_blue_diamond:  |
+|     Blob Storage úrovně Premium                                        | : large_blue_diamond:  |
+|     Storage: soubory Azure Premium                                | : large_blue_diamond:  |
+|     Virtual Machines: vyhrazený hostitel Azure                      | : large_blue_diamond:  |
+|     Virtual Machines: Ddsv4-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Ddv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Dsv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Dv4-Series                                | : large_blue_diamond:  |
+|     Virtual Machines: Edsv4-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Edv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Esv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Ev4-Series                                | : large_blue_diamond:  |
+|     Virtual Machines: Fsv2-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: řada M-Series                                  | : large_blue_diamond:  |
+|     Virtuální síť WAN                                                 | : large_blue_diamond:  |
+|     Virtuální síť WAN: ExpressRoute                                   | : large_blue_diamond:  |
+|     Virtuální síť WAN: připojení typu Point-to-Site VPN Gateway                      | : large_blue_diamond:  |
+|     Virtuální síť WAN: VPN Gateway typu Site-to-site                       | : large_blue_diamond:  |
+
+
+**Specializované služby**
+
+|     Produkty                                                    | Odolnost             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure Red Hat OpenShift                                     | : large_blue_diamond:  |
+|     Cognitive Services: detektor anomálií                        | : large_blue_diamond:  |
+|     Cognitive Services: Nástroj pro rozpoznávání formulářů                         | : large_blue_diamond:  |
+|     Úložiště: Ultra disk                                         | : large_blue_diamond:  |
 
 
 **Bez regionu**
 
-|     Produkty                                  |     Odolnost    |
-|-----------------------------------------------|:-------------------:|
-|     Azure DNS                                 |     : globe_with_meridians:             |
-|     Azure Active Directory                  |     : globe_with_meridians:             |
-|     Azure Advanced Threat Protection          |     : globe_with_meridians:             |
-|     Azure Advisor                             |     : globe_with_meridians:             |
-|     Azure Blueprints                          |     : globe_with_meridians:             |
-|     Azure Bot Services                        |     : globe_with_meridians:             |
-|     Azure Front Door                          |     : globe_with_meridians:             |
-|     Azure Defender pro IoT                  |     : globe_with_meridians:             |
-|     Azure Front Door                           |     : globe_with_meridians:             |
-|     Azure Information Protection            |     : globe_with_meridians:             |
-|     Lighthouse Azure                        |     : globe_with_meridians:             |
-|     Azure Managed Applications              |     : globe_with_meridians:             |
-|     Azure Maps                                |     : globe_with_meridians:             |
-|     Azure Policy                              |     : globe_with_meridians:             |
-|     Graf prostředků Azure                    |     : globe_with_meridians:             |
-|     Azure Sentinel                            |     : globe_with_meridians:             |
-|     Azure Stack                               |     : globe_with_meridians:             |
-|     Azure Stack Edge                        |     : globe_with_meridians:             |
-|     Cloud Shell                               |     : globe_with_meridians:             |
-|     Content Delivery Network                  |     : globe_with_meridians:             |
-|     Správa nákladů                           |     : globe_with_meridians:             |
-|     Customer Lockbox pro Microsoft Azure    |     : globe_with_meridians:             |
-|     Intune                                    |     : globe_with_meridians:             |
-|     Služba partnerského vztahu Microsoft Azure         |     : globe_with_meridians:             |
-|     portál Microsoft Azure                  |     : globe_with_meridians:             |
-|     Microsoft Cloud App Security              |     : globe_with_meridians:             |
-|     Microsoft Graph                           |     : globe_with_meridians:             |
-|     Security Center                         |     : globe_with_meridians:             |
-|     Traffic Manager                         |     : globe_with_meridians:             |
+|     Produkty                                                    | Odolnost             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure DNS                                                   | : globe_with_meridians: |
+|     Azure Active Directory                                    | : globe_with_meridians: |
+|     Azure Advanced Threat Protection                            | : globe_with_meridians: |
+|     Azure Advisor                                               | : globe_with_meridians: |
+|     Azure Blueprints                                            | : globe_with_meridians: |
+|     Azure Bot Services                                          | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Defender pro IoT                                    | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Information Protection                              | : globe_with_meridians: |
+|     Lighthouse Azure                                          | : globe_with_meridians: |
+|     Azure Managed Applications                                | : globe_with_meridians: |
+|     Azure Maps                                                  | : globe_with_meridians: |
+|     Diagnostika výkonu Azure                               | : globe_with_meridians: |
+|     Azure Policy                                                | : globe_with_meridians: |
+|     Graf prostředků Azure                                      | : globe_with_meridians: |
+|     Azure Sentinel                                              | : globe_with_meridians: |
+|     Azure Stack                                                 | : globe_with_meridians: |
+|     Azure Stack Edge                                          | : globe_with_meridians: |
+|     Cloud Shell                                                 | : globe_with_meridians: |
+|     Content Delivery Network                                    | : globe_with_meridians: |
+|     Správa nákladů                                             | : globe_with_meridians: |
+|     Customer Lockbox pro Microsoft Azure                      | : globe_with_meridians: |
+|     Intune                                                      | : globe_with_meridians: |
+|     Služba partnerského vztahu Microsoft Azure                           | : globe_with_meridians: |
+|     portál Microsoft Azure                                    | : globe_with_meridians: |
+|     Microsoft Cloud App Security                                | : globe_with_meridians: |
+|     Microsoft Graph                                             | : globe_with_meridians: |
+|     Security Center                                           | : globe_with_meridians: |
+|     Traffic Manager                                           | : globe_with_meridians: |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Ceny pro virtuální počítače v Zóny dostupnosti
 
-Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádné další náklady. Další informace najdete na stránce s [cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+Zóny dostupnosti Azure jsou k dispozici v rámci vašeho předplatného Azure. Další informace najdete na [stránce s cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 
 ## <a name="get-started-with-availability-zones"></a>Začínáme s Zóny dostupnosti

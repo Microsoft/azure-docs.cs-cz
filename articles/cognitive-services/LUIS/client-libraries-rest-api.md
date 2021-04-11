@@ -2,7 +2,7 @@
 title: 'Rychlý Start: Language Understanding (LUIS) SDK klientské knihovny a REST API'
 description: Vytvoření a dotazování aplikace LUIS pomocí klientských knihoven LUIS SDK a REST API.
 ms.topic: quickstart
-ms.date: 12/09/2020
+ms.date: 03/29/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
@@ -11,12 +11,12 @@ author: aahill
 keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, LUIS, Azure Luis, přirozené jazykové porozumění, AI chatovací robot, chatovací robot maker, porozumění přirozenému jazyku
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: 7ff5844cf9f1bce45df438fc00e24da28c438b05
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939211"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278911"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>Rychlý Start: Language Understanding (LUIS) klientské knihovny a REST API
 
@@ -61,9 +61,5 @@ Další chyby – Pokud se zobrazí chyba, která není pokrytá v předchozím 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je rozhraní API pro Language Understanding (LUIS)?](what-is-luis.md)
-* [Co je nového?](whats-new.md)
-* [Záměry](luis-concept-intent.md), [entity](luis-concept-entity-types.md)a [Příklady projevy](luis-concept-utterance.md)a [předem připravených entit](luis-reference-prebuilt-entities.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code).
-* Porozumění přirozenému jazyku: [porozumění přirozenému jazyku (NLU) a zpracování přirozeného jazyka (NLP)](artificial-intelligence.md)
-* Roboty: [AI chatovacích robotů o](luis-csharp-tutorial-bf-v4.md "kurz k chatovací robot maker")
+> [!div class="nextstepaction"]
+> [Vývoj iterativních aplikací pro LUIS](./luis-concept-app-iteration.md)

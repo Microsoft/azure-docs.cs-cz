@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: e882ae89da2fd081d6b41d3d42e998d3600f0e18
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120740"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490286"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -32,6 +32,7 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 ## <a name="march-2021"></a>Březen 2021
 
+- [Nastavit automatické aktualizace sešitů v režimu zobrazení](#set-workbooks-to-automatically-refresh-while-in-view-mode)
 - [Nové detekce pro Azure Firewall](#new-detections-for-azure-firewall)
 - [Pravidla automatizace a playbooky aktivované incidentem](#automation-rules-and-incident-triggered-playbooks) (včetně všech nových dokumentace PlayBook)
 - [Nové obohacení výstrah: vylepšené mapování entit a vlastní podrobnosti](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
@@ -39,6 +40,20 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 - [Filtry incidentů a předvolby řazení jsou nyní uloženy ve vaší relaci (Public Preview).](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Integrace incidentů v programu Microsoft 365 Defender (Public Preview)](#microsoft-365-defender-incident-integration-public-preview)
 - [Nové konektory Microsoft Service Connector pomocí Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>Nastavit automatické aktualizace sešitů v režimu zobrazení
+
+Uživatelé Sentinel Azure teď můžou používat novou [Azure monitor schopnost](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555) automaticky aktualizovat data sešitu během relace zobrazení.
+
+V každém sešitu nebo šabloně sešitu vyberte možnost :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false"::: **automaticky aktualizovat** a zobrazte možnosti intervalu. Vyberte možnost, kterou chcete použít pro aktuální relaci zobrazení, a vyberte **použít**.
+
+- Podporované intervaly aktualizace jsou v rozsahu od **5 minut** do **1 dne**.
+- Ve výchozím nastavení je automatická aktualizace vypnutá. Pro optimalizaci výkonu je automatická aktualizace také vypnuta při každém zavření sešitu a neběží na pozadí. Při příštím otevření sešitu znovu zapněte automatické obnovení podle potřeby.
+- Automatická aktualizace je pozastavena při úpravách sešitu a intervaly automatické aktualizace se restartují pokaždé, když přepnete zpět do režimu zobrazení v režimu úprav.
+
+    Intervaly se také restartují, pokud sešit ručně aktualizujete tak, že vyberete :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: tlačítko **aktualizovat** .
+
+Další informace najdete v tématu [kurz: vizualizace a monitorování dat](tutorial-monitor-your-data.md) a dokumentace k [Azure monitor](../azure-monitor/visualize/workbooks-overview.md).
 
 ### <a name="new-detections-for-azure-firewall"></a>Nové detekce pro Azure Firewall
 
@@ -317,7 +332,7 @@ Tato aktualizace pro službu Azure Sentinel zahrnuje nové lovecké dotazy, kter
 - **Dopad**
 - **Počáteční přístup**
 - **Dočasné**
-- **Eskalace oprávnění**
+- **Elevace oprávnění**
 
 Přidané lovecké dotazy jsou navržené tak, aby vám pomohly najít podezřelou aktivitu ve vašem prostředí. I když můžou vracet legitimní aktivity a potenciálně škodlivou aktivitu, můžou být užitečné při vyplňování vašeho lovu. 
 

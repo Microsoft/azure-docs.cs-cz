@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1894ffb7ca75a283e3a74d17c3e73de51fc46d8d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169921"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222737"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Jak vytvořit bezplatného tenanta Azure Active Directoryho vývojáře
 
@@ -32,15 +32,15 @@ Existují dva jednoduché způsoby, jak vytvořit bezplatná Azure Active Direct
 
 Pokud se rozhodnete zaregistrovat bezplatný program pro vývojáře Microsoft 365, musíte postupovat podle několika snadných kroků:
 
-1. Klikněte na tlačítko připojit se na obrazovce.
+1. Klikněte na tlačítko **připojit** se na obrazovce.
 
 2. Přihlaste se pomocí nového účtu Microsoft nebo použijte existující (pracovní) účet, který už máte.
 
-3. Na stránce registrace vyberte oblast, zadejte název společnosti a před kliknutím na další klikněte na tlačítko Další.
+3. Na stránce registrace vyberte oblast, zadejte název společnosti a před kliknutím na další klikněte na tlačítko **Další**.
 
-4. Klikněte na nastavit předplatné. Určete oblast, ve které chcete vytvořit nového tenanta, vytvořte uživatelské jméno, doménu a zadejte heslo. Tím se vytvoří nový tenant a první správce tenanta.
+4. Klikněte na **nastavit předplatné**. Určete oblast, ve které chcete vytvořit nového tenanta, vytvořte uživatelské jméno, doménu a zadejte heslo. Tím se vytvoří nový tenant a první správce tenanta.
 
-5. Zadejte informace o zabezpečení potřebné k ochraně účtu správce nového tenanta. Tím se nastaví ověřování MFA pro účet.
+5. Zadejte informace o zabezpečení potřebné k ochraně účtu správce nového tenanta. Tím se pro tento účet nastaví ověřování MFA.
 
 
 V tuto chvíli jste vytvořili tenanta s 25 uživateli s uživatelskými licencemi. Mezi licence E5 patří licence Azure AD P2. Volitelně můžete přidat ukázkové datové sady s uživateli, skupinami, poštou a SharePointem, které vám pomůžou s testováním ve vývojovém prostředí. U ověřené služby pro vystavování přihlašovacích údajů nejsou vyžadovány.

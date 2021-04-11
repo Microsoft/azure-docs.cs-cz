@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bc821f31e0463000c9089e48818249f2c046ede
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5ac8c5bb68430a1e886a89709d5e256beb8819c8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107102991"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257275"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -40,7 +40,7 @@ Pomocí níže uvedené cesty budete připojeni Time Series Insights k digitáln
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Vytvořit trasu a filtr pro oznámení o aktualizacích dvojčete
 
-Instance digitálních vláken Azure mohou generovat [události s dvojitou aktualizací](how-to-interpret-event-data.md) pokaždé, když se aktualizuje stav vlákna. V této části vytvoříte [**trasu událostí**](concepts-route-events.md) digitálních vláken Azure, která bude tyto události aktualizace směrovat na Azure [Event Hubs](../event-hubs/event-hubs-about.md) pro další zpracování.
+Instance digitálních vláken Azure můžou generovat [události s dvojitou změnou](concepts-event-notifications.md#digital-twin-change-notifications) pokaždé, když se aktualizuje stav vlákna. V této části vytvoříte [**trasu událostí**](concepts-route-events.md) digitálních vláken Azure, která bude tyto události aktualizace směrovat na Azure [Event Hubs](../event-hubs/event-hubs-about.md) pro další zpracování.
 
 Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutorial-end-to-end.md) projde scénářem, kde se k aktualizaci atributu teploty na digitálním vlákna představujícím místnost používá teploměr. Tento model spoléhá na nepřesné aktualizace a nepředávací telemetrii ze zařízení IoT, což vám poskytne flexibilitu při změně podkladového zdroje dat, aniž by bylo potřeba aktualizovat logiku Time Series Insights.
 

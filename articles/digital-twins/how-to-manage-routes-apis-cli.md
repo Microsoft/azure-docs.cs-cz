@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7efebaf23bd8e897243f6ee12b23d3821a4c033
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936304"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257326"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. K tomu je potřeba nejprve nastavit **koncové body**, které mohou události přijímat. Pak můžete vytvořit  [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
+V digitálních prostředcích Azure můžete směrovat [oznámení událostí](concepts-event-notifications.md) na služby pro příjem dat nebo připojené výpočetní prostředky. K tomu je potřeba nejprve nastavit **koncové body**, které mohou události přijímat. Pak můžete vytvořit  [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
 
 Tento článek vás provede procesem vytváření koncových bodů a tras pomocí [rozhraní REST API](/rest/api/azure-digitaltwins/), [sady .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)a rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
@@ -48,7 +48,7 @@ V této části se dozvíte, jak tyto koncové body vytvořit pomocí rozhraní 
 
 ### <a name="create-the-endpoint"></a>Vytvoření koncového bodu
 
-Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Následující příklady ukazují, jak vytvořit koncové body pomocí příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) pro rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md). Zástupné symboly v příkazech nahraďte podrobnostmi vašich vlastních prostředků.
+Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Následující příklady ukazují, jak vytvořit koncové body pomocí příkazu [AZ DT Endpoint Create](/cli/azure/dt/endpoint/create) pro rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md). Zástupné symboly v příkazech nahraďte podrobnostmi vašich vlastních prostředků.
 
 Vytvoření koncového bodu Event Grid:
 
@@ -119,7 +119,7 @@ Postupujte podle následujících kroků a nastavte tyto prostředky úložišt�
     
 #### <a name="create-the-dead-letter-endpoint"></a>Vytvoření koncového bodu s nedoručenými písmeny
 
-Pokud chcete vytvořit koncový bod, který má povolené nedoručené zprávy, přidejte následující parametr nedoručených zpráv do příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) pro rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Pokud chcete vytvořit koncový bod, který má povolené nedoručené zprávy, přidejte následující parametr nedoručených zpráv do příkazu [AZ DT Endpoint Create](/cli/azure/dt/endpoint/create) pro rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
 Hodnota parametru je **identifikátor URI SAS nedoručených zpráv** , který se skládá z názvu účtu úložiště, názvu kontejneru a tokenu SAS, který jste shromáždili v [předchozí části](#set-up-storage-resources). Tento parametr vytvoří koncový bod s ověřováním pomocí klíče.
 
@@ -158,7 +158,7 @@ Po nastavení koncového bodu s nedoručenými zprávami budou v účtu úloži�
 
 Nedoručené zprávy budou odpovídat schématu původní události, která byla určena k doručení do původního koncového bodu.
 
-Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření oznámení](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications):
+Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření oznámení](concepts-event-notifications.md#digital-twin-lifecycle-notifications):
 
 ```json
 {
@@ -204,7 +204,7 @@ Pokud název trasy neexistuje, žádné zprávy se nesměrují mimo digitální 
 
 Jedna trasa by měla umožňovat výběr více oznámení a typů událostí. 
 
-Trasy událostí je možné vytvořit pomocí [rozhraní API roviny dat služby Azure Digital **EventRoutess**](/rest/api/digital-twins/dataplane/eventroutes) a [příkazu **AZ DT Route** CLI](/cli/azure/ext/azure-iot/dt/route). Zbytek této části vás provede procesem vytváření.
+Trasy událostí je možné vytvořit pomocí [rozhraní API roviny dat služby Azure Digital **EventRoutess**](/rest/api/digital-twins/dataplane/eventroutes) a [příkazu **AZ DT Route** CLI](/cli/azure/dt/route). Zbytek této části vás provede procesem vytváření.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Vytváření tras pomocí rozhraní API a sady C# SDK
 
@@ -225,7 +225,7 @@ Následující ukázková metoda ukazuje, jak vytvořit, vypsat a odstranit tras
 
 ### <a name="create-routes-with-the-cli"></a>Vytváření tras pomocí rozhraní příkazového řádku
 
-Trasy je taky možné spravovat pomocí příkazů [AZ DT Route](/cli/azure/ext/azure-iot/dt/route) pro rozhraní příkazového řádku Azure Digital revlákens. 
+Trasy je taky možné spravovat pomocí příkazů [AZ DT Route](/cli/azure/dt/route) pro rozhraní příkazového řádku Azure Digital revlákens. 
 
 Další informace o použití rozhraní příkazového řádku a příkazů, které jsou k dispozici, najdete v tématu [*Postup: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
@@ -256,4 +256,4 @@ Tady jsou podporované filtry tras. Pomocí podrobností ve sloupci *schéma tex
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o různých typech zpráv o událostech, které můžete získat:
-* [*Postupy: interpretace dat událostí*](how-to-interpret-event-data.md)
+* [*Koncepty: oznamování událostí*](concepts-event-notifications.md)

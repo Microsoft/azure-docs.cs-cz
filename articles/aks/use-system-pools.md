@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c65d3a7316d431c57d9fb75775e271bf9f34ca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178826"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223264"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
@@ -43,7 +43,8 @@ Fondy systémových uzlů mají následující omezení:
 * Systémové fondy osType musí být Linux.
 * Fondy uživatelských uzlů osType můžou být Linux nebo Windows.
 * Systémové fondy musí obsahovat alespoň jeden uzel a fondy uživatelských uzlů můžou obsahovat nula nebo víc uzlů.
-* Fondy systémových uzlů vyžadují SKU virtuálního počítače minimálně 2 vCPU a 4 GB paměti.
+* Fondy systémových uzlů vyžadují SKU virtuálního počítače minimálně 2 vCPU a 4 GB paměti. Virtuální počítače (B Series) se ale nedoporučuje.
+* Doporučuje se minimálně dva uzly 4 vCPU (např. Standard_DS4_v2), zejména pro velké clustery (několik CoreDNS pod replikami, 3 – 4 + doplňky atd.).
 * Fondy systémových uzlů musí podporovat aspoň 30 lusků, jak je popsáno v části [vzorec minimální a maximální hodnoty pro lusky][maximum-pods].
 * Fondy uzlů bodu musí vyžadovat fondy uživatelských uzlů.
 * Přidání dalšího fondu uzlů systému nebo změna fondu uzlů, který je fondem uzlů systému, nebude *automaticky přesouvat* systémové lusky. Systémové lusky mohou běžet na stejném fondu uzlů i v případě, že je změníte na fond uživatelských uzlů. Pokud odstraníte nebo zmenšíte rozsah uzlů, na kterých je spuštěný systém lusky, který byl dřív ve fondu uzlů systému, znovu nasadí tyto systémové lusky s preferovaným plánováním do nového fondu uzlů systému.

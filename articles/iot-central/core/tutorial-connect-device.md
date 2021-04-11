@@ -11,18 +11,18 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833962"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491053"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central
 
 *Tento článek se týká tvůrců řešení a vývojářů zařízení.*
 
-V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit klientskou aplikaci k aplikaci Azure IoT Central. Aplikace simuluje chování termostatového zařízení. Když se aplikace připojí k IoT Central, pošle ID modelu modelu zařízení termostatu. IoT Central používá ID modelu k načtení modelu zařízení a pro vás vytvoří šablonu zařízení. Přidáte do šablony zařízení vlastní nastavení a zobrazení, která operátorovi umožní komunikovat se zařízením.
+V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit klientskou aplikaci k aplikaci Azure IoT Central. Aplikace simuluje chování zařízení řadiče teploty. Když se aplikace připojí k IoT Central, pošle ID modelu modelu zařízení řadiče teploty. IoT Central používá ID modelu k načtení modelu zařízení a pro vás vytvoří šablonu zařízení. Přidáte do šablony zařízení vlastní nastavení a zobrazení, která operátorovi umožní komunikovat se zařízením.
 
 V tomto kurzu se naučíte:
 
@@ -70,7 +70,7 @@ Jako vývojář zařízení můžete použít zobrazení **nezpracovaných dat**
 
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="Zobrazení nezpracovaná data":::
 
-V tomto zobrazení můžete vybrat sloupce, které chcete zobrazit, a nastavit časový rozsah, který chcete zobrazit. Sloupec **nemodelovaná data** zobrazuje data ze zařízení, která neodpovídají žádné definici vlastnosti nebo telemetrie v šabloně zařízení.
+V tomto zobrazení můžete vybrat sloupce, které chcete zobrazit, a nastavit časový rozsah, který chcete zobrazit. Sloupec **nemodelovaná data** zobrazuje data zařízení, která neodpovídají žádné definici vlastnosti nebo telemetrie v šabloně zařízení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467379"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285327"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních faktur pomocí předdefinovaných modelů faktur. Rozhraní API pro fakturaci umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková hodnota, splatné částky faktury, částka daně, částka na straně expedice, fakturaci, položky řádků a další. Předem připravené fakturační rozhraní API je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview.
+Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních faktur pomocí předdefinovaných modelů faktur. Rozhraní API pro fakturaci umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/overview-ocr.md) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková hodnota, splatné částky faktury, částka daně, částka na straně expedice, fakturaci, položky řádků a další. Předem připravené fakturační rozhraní API je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview.
 
 ## <a name="what-does-the-invoice-service-do"></a>K čemu služba faktur používá?
 

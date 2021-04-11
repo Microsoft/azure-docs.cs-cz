@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729401"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064490"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře ochrany obsahu
 
@@ -28,7 +28,7 @@ Tento článek poskytuje podrobné informace a pokyny k migraci případů použ
 
 ## <a name="protect-content-in-v3-api"></a>Ochrana obsahu v rozhraní V3 API
 
-V novém rozhraní API V3 použijte podporu pro [multi-klíčové](design-multi-drm-system-with-access-control.md) funkce.
+V novém rozhraní API V3 použijte podporu pro [multi-klíčové](architecture-design-multi-drm-system.md) funkce.
 
 Konkrétní postup najdete v tématu věnovaném konceptům, kurzům a návodům k ochraně obsahu.
 
@@ -44,9 +44,9 @@ Výsledky metody **ListStreamingLocators** vám poskytnou **název** a **Streami
 
 Chcete-li najít **ContentKeys** , který se používá ve vaší **StreamingLocators** pro ochranu obsahu, můžete zavolat metodu [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
 
-Všechny **prostředky** , které byly vytvořeny a publikovány pomocí rozhraní v2 API, budou mít v [zásadách streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)k dispozici [zásady pro klíč obsahu](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) i klíč obsahu definované v rozhraních API v3.
+Všechny **prostředky** , které byly vytvořeny a publikovány pomocí rozhraní v2 API, budou mít v [zásadách streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)k dispozici [zásady pro klíč obsahu](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) i klíč obsahu definované v rozhraních API v3.
 
-Další informace o ochraně obsahu v rozhraní V3 API najdete v článku [Ochrana obsahu pomocí Media Services dynamické šifrování.](https://docs.microsoft.com/azure/media-services/latest/content-protection-overview)
+Další informace o ochraně obsahu v rozhraní V3 API najdete v článku [Ochrana obsahu pomocí Media Services dynamické šifrování.](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept)
 
 ## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>Jak zobrazit seznam prostředků v2 a nastavení ochrany obsahu pomocí rozhraní V3 API
 
@@ -60,7 +60,7 @@ Pokud potřebujete aktualizovat, změnit nebo změnit obsah uložený v entitác
 
 ## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>Návody změnit ContentKeyPolicy používané pro prostředek v2, který je publikovaný a zachovat stejný klíč obsahu?
 
-V této situaci byste nejdřív měli zrušit publikování (odebrání všech lokátorů streamování) na Assetu pomocí sady v2 SDK (odstraňte lokátor, odpojte zásady autorizace klíčů obsahu, odpojíte zásady doručení assetů, odpojíte klíč obsahu, odstraníte klíč obsahu) a pak vytvoříte novou **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** ve formátu V3 pomocí direktivy V3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) a [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept).
+V této situaci byste nejdřív měli zrušit publikování (odebrání všech lokátorů streamování) na Assetu pomocí sady v2 SDK (odstraňte lokátor, odpojte zásady autorizace klíčů obsahu, odpojíte zásady doručení assetů, odpojíte klíč obsahu, odstraníte klíč obsahu) a pak vytvoříte novou **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** ve formátu V3 pomocí direktivy V3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) a [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept).
 
 Při vytváření **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** je nutné zadat konkrétní identifikátor klíče obsahu a hodnotu klíče.
 
@@ -75,24 +75,24 @@ Při migraci obsahu z verze V2 na V3 doporučujeme nainstalovat [Nástroj v2 Azu
 
 ### <a name="concepts"></a>Koncepty
 
-- [Ochrana obsahu pomocí Media Services dynamického šifrování](content-protection-overview.md)
-- [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
-- [Media Services V3 se šablonou licence PlayReady](playready-license-template-overview.md)
-- [Přehled šablon licencí Media Services V3 with Widevine](widevine-license-template-overview.md)
-- [Konfigurace a licenční požadavky pro Apple FairPlay](fairplay-license-overview.md)
+- [Ochrana obsahu pomocí Media Services dynamického šifrování](drm-content-protection-concept.md)
+- [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](architecture-design-multi-drm-system.md)
+- [Media Services V3 se šablonou licence PlayReady](drm-playready-license-template-concept.md)
+- [Přehled šablon licencí Media Services V3 with Widevine](drm-widevine-license-template-concept.md)
+- [Konfigurace a licenční požadavky pro Apple FairPlay](drm-fairplay-license-overview.md)
 - [Zásady streamování](streaming-policy-concept.md)
-- [Zásady pro klíč obsahu](content-key-policy-concept.md)
+- [Zásady pro klíč obsahu](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>Kurzy
 
-[Rychlý Start: použití portálu k šifrování obsahu](encrypt-content-quickstart.md)
+[Rychlý Start: použití portálu k šifrování obsahu](drm-encrypt-content-how-to.md)
 
 ### <a name="how-to-guides"></a>Průvodce postupy
 
-- [Získání podpisového klíče ze stávajících zásad](get-content-key-policy-dotnet-howto.md)
-- [Online streamování FairPlay pro iOS s Media Services V3](offline-fairplay-for-ios.md)
-- [Online streamování Widevine pro Android s Media Services V3](offline-widevine-for-android.md)
-- [Online streamování PlayReady pro Windows 10 s Media Services V3](offline-plaready-streaming-for-windows-10.md)
+- [Získání podpisového klíče ze stávajících zásad](drm-get-content-key-policy-dotnet-how-to.md)
+- [Online streamování FairPlay pro iOS s Media Services V3](drm-offline-fairplay-for-ios-concept.md)
+- [Online streamování Widevine pro Android s Media Services V3](drm-offline-widevine-for-android.md)
+- [Online streamování PlayReady pro Windows 10 s Media Services V3](drm-offline-playready-streaming-for-windows-10.md)
 
 ## <a name="samples"></a>ukázky
 

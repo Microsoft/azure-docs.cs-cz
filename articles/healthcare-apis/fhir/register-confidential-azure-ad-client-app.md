@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/08/2021
 ms.author: matjazl
-ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934708"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284425"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrace důvěrné klientské aplikace v Azure Active Directory
 
@@ -29,7 +29,7 @@ Pokud chcete zaregistrovat novou důvěrnou klientskou aplikaci, podívejte se n
 
 1. Vyberte **Registrace aplikací**. 
 
-    ![Azure Portal. Registrace nové aplikace](media/how-to-aad/portal-aad-new-app-registration.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure Portal. Registrace nové aplikace":::
 
 1. Vyberte **Nová registrace**.
 
@@ -39,7 +39,7 @@ Pokud chcete zaregistrovat novou důvěrnou klientskou aplikaci, podívejte se n
 
 1. Volitelné Zadejte **identifikátor URI pro přesměrování**. Tyto podrobnosti lze později změnit, ale pokud znáte adresu URL odpovědi vaší aplikace, zadejte ji nyní.
 
-    ![Nová registrace aplikace důvěrného klienta](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="Nová registrace aplikace důvěrného klienta":::
 
 1. Vyberte **Zaregistrovat**.
 
@@ -49,7 +49,7 @@ Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění AP
 
 1. Vyberte **oprávnění rozhraní API**.
 
-    ![Důvěrný klient. API – oprávnění](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png" alt-text="Důvěrný klient. Oprávnění rozhraní API.":::
 
 1. Vyberte **Přidat oprávnění**.
 
@@ -70,11 +70,11 @@ Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění AP
 
 1. Vyberte **certifikáty & tajných** kódů a pak vyberte **nový tajný klíč klienta**. 
 
-    ![Důvěrný klient. Tajný klíč aplikace](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Důvěrný klient. Tajný klíč aplikace":::
 
-1. Zadejte **Popis** tajného klíče klienta. Vyberte vypršení platnosti (v 1 roce, v 2 letech nebo nikdy) a pak klikněte na **Přidat**.
+1. Zadejte **Popis** tajného klíče klienta. Vyberte rozevírací nabídku pro **vypršení platnosti** a zvolte časový rámec vypršení platnosti a pak klikněte na **Přidat**.
 
-   ![Přidat tajný klíč klienta](media/how-to-aad/add-a-client-secret.png)
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="Přidejte tajný klíč klienta.":::
 
 1. Po vytvoření tajného řetězce klienta zkopírujte jeho **hodnotu** a **ID** a uložte je do zabezpečeného umístění podle vašeho výběru.
 

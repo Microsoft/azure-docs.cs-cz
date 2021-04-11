@@ -1,18 +1,18 @@
 ---
 title: Automatické zvětšování úložiště – Azure PowerShell-Azure Database for PostgreSQL
 description: Tento článek popisuje, jak můžete povolit automatické zvětšování úložiště pomocí prostředí PowerShell v Azure Database for PostgreSQL.
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 05333aa4a42b821366ea7ad0a564781422fda66a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 00292d3f45554908b3a6e5c3477ad1c5031f5176
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551046"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228040"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>Automatické zvětšení úložiště na serveru Azure Database for PostgreSQL pomocí prostředí PowerShell
 

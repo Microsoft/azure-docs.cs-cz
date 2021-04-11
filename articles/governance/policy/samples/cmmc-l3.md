@@ -1,15 +1,15 @@
 ---
 title: Podrobnosti dodržování předpisů v souladu s předpisy pro CMMC úrovně 3
 description: Podrobnosti o integrované iniciativě CMMC úrovně 3 pro dodržování předpisů Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f567e195dd25fb69d57d84c76f42567e7411f634
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6b30de446269d764d5dfa8be97245d0df577862
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034550"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094009"
 ---
 # <a name="details-of-the-cmmc-level-3-regulatory-compliance-built-in-initiative"></a>Podrobnosti o integrované iniciativě CMMC úrovně 3 pro dodržování legislativních předpisů
 
@@ -19,9 +19,11 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 Následující mapování jsou ovládací prvky **CMMC úrovně 3** . Pomocí navigace na pravé straně můžete přejít přímo ke konkrétní **doméně dodržování předpisů**. Mnohé z ovládacích prvků jsou implementovány s definicí [Azure Policy](../overview.md) iniciativou. Chcete-li zkontrolovat definici kompletní iniciativy, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** .
 Pak vyhledejte a vyberte definici předdefinované iniciativy **CMMC úrovně 3** pro dodržování předpisů.
 
+Tato integrovaná iniciativa se nasadí jako součást ukázky podrobného plánu [CMMC úrovně 3](../../blueprints/samples/cmmc-l3.md).
+
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../overview.md) .
-> Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **se v Azure Policy** vztahuje pouze na samotné definice zásad; Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi doménami dodržování předpisů, ovládacími prvky a definicemi Azure Policy pro tento standard dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json).
+> Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **se v Azure Policy** vztahuje pouze na samotné definice zásad; Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi doménami dodržování předpisů, ovládacími prvky a definicemi Azure Policy pro tento standard dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json).
 
 ## <a name="access-control"></a>Řízení přístupu
 

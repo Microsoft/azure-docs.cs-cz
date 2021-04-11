@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9fe49f44e157708c3083e2c73757988877fbfcb5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563459"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121094"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -54,7 +54,7 @@ Další jazyky pro přepis a Subtitling videa jsou nyní k dispozici ve AudioAna
 * Thajština, "th-TH"
 * Turečtina, tr-TR
 
-Seznamte se s nejnovějšími dostupnými jazyky v článku věnovaném [analýze videí a zvukových souborů.](analyzing-video-audio-files-concept.md)
+Seznamte se s nejnovějšími dostupnými jazyky v článku věnovaném [analýze videí a zvukových souborů.](analyze-video-audio-files-concept.md)
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -134,7 +134,7 @@ Podívejte se na nejnovější ukázky v úložišti centra Git **[služby Media
 
 Živé události teď podporují režim fakturace s nižšími náklady pro "úsporu". To zákazníkům umožňuje předem přidělit živé události za nižší náklady na vytvoření "aktivních fondů". Zákazníci pak můžou použít úsporné živé události k přechodu do běžícího stavu rychleji než od začátku po vytvoření.  Tím se zkracuje čas na spuštění kanálu významně a umožňuje rychlé přidělování v hotovém fondu počítačů, které běží v nižším cenovém režimu.
 [Tady](https://azure.microsoft.com/pricing/details/media-services)najdete nejnovější informace o cenách.
-Další informace o pohotovostním stavu a dalších stavech živých událostí najdete v článku [stavy událostí živého vysílání a fakturace.](./live-event-states-billing.md)
+Další informace o pohotovostním stavu a dalších stavech živých událostí najdete v článku [stavy událostí živého vysílání a fakturace.](./live-event-states-billing-concept.md)
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -146,17 +146,17 @@ Azure Media Services je teď v Azure Portal k dispozici v oblasti Norsko – vý
 
 ### <a name="basic-audio-analysis"></a>Základní analýza zvuku
 
-Přednastavení zvukové analýzy teď obsahuje cenovou úroveň základního režimu. Nový režim základní zvukové analyzátoru poskytuje možnost nízkého výkonu pro extrakci přepisu řeči a formátování titulků a titulků. Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Podívejte se na seznam [podporovaných jazyků.](analyzing-video-audio-files-concept.md#built-in-presets)
+Přednastavení zvukové analýzy teď obsahuje cenovou úroveň základního režimu. Nový režim základní zvukové analyzátoru poskytuje možnost nízkého výkonu pro extrakci přepisu řeči a formátování titulků a titulků. Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Podívejte se na seznam [podporovaných jazyků.](analyze-video-audio-files-concept.md#built-in-presets)
 
 Zákazníci, kteří používají indexer V1 a indexer v2, by měli migrovat na základní předvolby analýzy zvuku.
 
-Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyzing-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](how-to-create-basic-audio-transform.md).
+Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyze-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](how-to-create-basic-audio-transform.md).
 
 ### <a name="live-events"></a>Živé události
 
 Po zastavení živých událostí jsou nyní povoleny aktualizace většiny vlastností. Kromě toho můžou uživatelé zadat předponu pro statický název hostitele pro vstupní a náhledové adresy URL pro aktivní událost. VanityUrl je nyní volána `useStaticHostName` pro lepší reflektování záměru vlastnosti.
 
-Živé události teď mají pohotovostní stav.  Podívejte [se na živé události a živé výstupy v Media Services](./live-events-outputs-concept.md).
+Živé události teď mají pohotovostní stav.  Podívejte [se na živé události a živé výstupy v Media Services](./live-event-outputs-concept.md).
 
 Živá událost podporuje příjem různých vstupních poměrů stran. Režim Stretch umožňuje zákazníkům určit chování roztažení výstupu.
 
@@ -173,7 +173,7 @@ Live Encoding teď přidává schopnost zasílat fragmenty intervalu pevného sn
 
 V dynamickém balíčku je teď k dispozici podpora starší verze formátu souboru s podporou technologie PlayReady Protected (PIFF 1,1). To poskytuje podporu pro starší sady inteligentních televizních pořadů od společnosti Samsung a LG, které implementovaly počáteční koncepty služby Common Encryption Standard (CENC) publikované Microsoftem.  Formát PIFF 1,1 se označuje také jako formát šifrování, který byl dříve podporován knihovnou klienta Silverlight. V současné době je jediným scénářem použití tohoto formátu šifrování zaměření na starší verzi inteligentního televizního vysílání, kde v některých oblastech zůstane netriviální počet inteligentních televizorů, které podporují jenom Smooth Streaming šifrování PIFF 1,1.
 
-Pokud chcete použít novou podporu šifrování PIFF 1,1, změňte hodnotu šifrování na PIFF v cestě URL lokátoru streamování. Další podrobnosti najdete v [přehledu Content Protection.](content-protection-overview.md)
+Pokud chcete použít novou podporu šifrování PIFF 1,1, změňte hodnotu šifrování na PIFF v cestě URL lokátoru streamování. Další podrobnosti najdete v [přehledu Content Protection.](drm-content-protection-concept.md)
 Například: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -187,11 +187,11 @@ Například: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000
 
 ### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Ochrana obsahu pomocí Media Services a Azure AD
 
-Publikovali jsme kurz nazvaný [kompletní ochrana obsahu pomocí Azure AD](./azure-ad-content-protection.md).
+Publikovali jsme kurz nazvaný [kompletní ochrana obsahu pomocí Azure AD](./architecture-azure-ad-content-protection.md).
 
 ### <a name="high-availability"></a>Vysoká dostupnost
 
-Zveřejnili jsme vysokou dostupnost s Media Services a [přehledem](./media-services-high-availability-encoding.md) a [ukázkou](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)videa na vyžádání (vod).
+Zveřejnili jsme vysokou dostupnost s Media Services a [přehledem](./architecture-high-availability-encoding-concept.md) a [ukázkou](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)videa na vyžádání (vod).
 
 ## <a name="june-2020"></a>Červen 2020
 
@@ -243,7 +243,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 Živý přepis je teď ve verzi Public Preview a dostupný pro použití v oblasti Západní USA 2.
 
-Živý přepis je navržený tak, aby fungoval ve spojení s živými událostmi jako doplňkovou funkcí.  Podporuje se u živých událostí předávacího a standardního kódování nebo Premium.  Když je tato funkce povolená, služba použije funkci [řeči k textu](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services k přepisovat mluveného slova v příchozím zvukovém textu. Tento text je pak k dispozici pro doručování s videem a zvukem v protokolech MPEG-POMLČKy a HLS. Fakturace je založena na novém doplňkovém měřiči, který má za následek dodatečné náklady, když je ve stavu spuštěno.  Podrobnosti o živém přepisu a fakturaci najdete v tématu [živý přepis](live-transcription.md) .
+Živý přepis je navržený tak, aby fungoval ve spojení s živými událostmi jako doplňkovou funkcí.  Podporuje se u živých událostí předávacího a standardního kódování nebo Premium.  Když je tato funkce povolená, služba použije funkci [řeči k textu](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services k přepisovat mluveného slova v příchozím zvukovém textu. Tento text je pak k dispozici pro doručování s videem a zvukem v protokolech MPEG-POMLČKy a HLS. Fakturace je založena na novém doplňkovém měřiči, který má za následek dodatečné náklady, když je ve stavu spuštěno.  Podrobnosti o živém přepisu a fakturaci najdete v tématu [živý přepis](live-event-live-transcription-how-to.md) .
 
 > [!NOTE]
 > V současné době je živý přepis dostupný jenom jako funkce Preview v oblasti Západní USA 2. V tuto chvíli podporuje přepis mluvených slov v angličtině (EN-US).
@@ -251,7 +251,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 ### <a name="content-protection"></a>Ochrana obsahu
 
 Funkce *Prevence opětovného přehrání tokenu* , která byla vydaná v omezených oblastech zpátky v září, je teď dostupná ve všech oblastech.
-Media Services zákazníci teď můžou nastavit limit počtu, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [Prevence opětovného přehrání tokenu](content-protection-overview.md#token-replay-prevention).
+Media Services zákazníci teď můžou nastavit limit počtu, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [Prevence opětovného přehrání tokenu](drm-content-protection-concept.md#token-replay-prevention).
 
 ### <a name="new-recommended-live-encoder-partners"></a>Noví doporučení partneři pro živé kodéry
 
@@ -310,7 +310,7 @@ Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](../previ
 
 ### <a name="content-protection"></a>Ochrana obsahu
 
-Při streamování obsahu chráněného omezením tokenu musí koncoví uživatelé získat token, který se odešle jako součást žádosti o doručení klíče. Funkce *Prevence opětovného přehrání tokenu* umožňuje Media Services zákazníkům nastavit limit, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [Prevence opětovného přehrání tokenu](content-protection-overview.md#token-replay-prevention).
+Při streamování obsahu chráněného omezením tokenu musí koncoví uživatelé získat token, který se odešle jako součást žádosti o doručení klíče. Funkce *Prevence opětovného přehrání tokenu* umožňuje Media Services zákazníkům nastavit limit, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [Prevence opětovného přehrání tokenu](drm-content-protection-concept.md#token-replay-prevention).
 
 Od července byla funkce Preview dostupná jenom v USA – střed a USA – středozápad.
 
@@ -340,7 +340,7 @@ Podrobnosti najdete v tématu [monitorování metrik Media Services a diagnostic
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Podpora více zvukových stop v dynamickém balení 
 
-Při streamování assetů, které mají více zvukových stop s více kodeky a jazyky, teď [Dynamická balení](dynamic-packaging-overview.md) podporuje více zvukových stop pro výstup HLS (verze 4 nebo vyšší).
+Při streamování assetů, které mají více zvukových stop s více kodeky a jazyky, teď [Dynamická balení](encode-dynamic-packaging-concept.md) podporuje více zvukových stop pro výstup HLS (verze 4 nebo vyšší).
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>Oblast Korea je otevřená pro Media Services 
 
@@ -352,7 +352,7 @@ Další informace najdete v tématu [cloudy a oblasti, ve kterých existuje Medi
 
 Byly přidány aktualizace, které zahrnují vylepšení výkonu Media Services.
 
-* Maximální velikost souboru podporovaná pro zpracování byla aktualizována. Viz, [kvóty a omezení](limits-quotas-constraints.md).
+* Maximální velikost souboru podporovaná pro zpracování byla aktualizována. Viz, [kvóty a omezení](limits-quotas-constraints-reference.md).
 * [Vylepšení rychlosti kódování](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>Duben 2019
@@ -360,11 +360,11 @@ Byly přidány aktualizace, které zahrnují vylepšení výkonu Media Services.
 ### <a name="new-presets"></a>Nové předvolby
 
 * [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) se přidal do vestavěných přednastavení analyzátoru.
-* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) se přidal do vestavěných přednastavení kodéru. Další informace najdete v tématu [kódování s ohledem na obsah](content-aware-encoding.md). 
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) se přidal do vestavěných přednastavení kodéru. Další informace najdete v tématu [kódování s ohledem na obsah](encode-content-aware-concept.md). 
 
 ## <a name="march-2019"></a>Březen 2019
 
-Dynamické balení teď podporuje Dolby ATMOS. Další informace najdete v tématu [zvukové kodeky podporované dynamickým balením](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+Dynamické balení teď podporuje Dolby ATMOS. Další informace najdete v tématu [zvukové kodeky podporované dynamickým balením](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging).
 
 Teď můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. Další informace najdete v tématu [přidružení filtrů k lokátoru streamování](filters-concept.md#associating-filters-with-streaming-locator).
 
@@ -378,7 +378,7 @@ Do schémat Azure Event Grid byla přidána událost [Microsoft. Media. JobOutpu
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Soubory Media Encoder Standard a MPI 
 
-Při kódování s Media Encoder Standard k vytvoření souborů MP4 se vygeneruje nový soubor. MPI a přidá se do výstupního prostředku. Tento soubor MPI má za cíl zlepšit výkon pro [dynamické balení](dynamic-packaging-overview.md) a streamování.
+Při kódování s Media Encoder Standard k vytvoření souborů MP4 se vygeneruje nový soubor. MPI a přidá se do výstupního prostředku. Tento soubor MPI má za cíl zlepšit výkon pro [dynamické balení](encode-dynamic-packaging-concept.md) a streamování.
 
 Soubor MPI byste neměli upravovat ani odebírat nebo v rámci služby nemusíte mít žádnou závislost na existenci (nebo ne) takového souboru.
 
@@ -518,7 +518,7 @@ Pokud jste vytvořili filtry prostředků nebo účtů mezi 09/28 a 10/12 pomoc�
 
 V sadě .NET SDK jsou k dispozici následující funkce:
 
-* **Transformuje** a **úlohy** ke kódování nebo analýze mediálního obsahu. Příklady najdete v tématu [streamování souborů](stream-files-tutorial-with-api.md) a [Analýza](analyze-videos-tutorial-with-api.md).
+* **Transformuje** a **úlohy** ke kódování nebo analýze mediálního obsahu. Příklady najdete v tématu [streamování souborů](stream-files-tutorial-with-api.md) a [Analýza](analyze-videos-tutorial.md).
 * **Lokátory streamování** pro publikování a streamování obsahu do zařízení koncových uživatelů
 * Zásady **streamování** a **zásady klíčů obsahu** ke konfiguraci doručování klíčů a ochrany obsahu (DRM) při doručování obsahu.
 * **Živé události** a **živé výstupy** umožňují konfigurovat ingestování a archivaci obsahu živého streamování.
