@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: ab30b19160294b334c8c5abdfbcc1dc0da370f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b602cbfde22cc87b42a32b007c19b626814d1660
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103495867"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554191"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,9 +25,9 @@ Zadejte **komunikaci** buď na vstupu **na webu Marketplace** , nebo na panelu h
 
 :::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Snímek obrazovky znázorňující hledání komunikačních služeb na panelu hledání.":::
 
-Ve výsledcích vyberte **komunikační služby** a pak vyberte **Přidat**.
+Ve výsledcích vyberte **komunikační služby** a pak vyberte **vytvořit**.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Snímek obrazovky, na kterém se nachází panel Azure, zvýraznění tlačítka Přidat":::
+:::image type="content" source="../media/create-a-communication-resource/create-communication-portal.png" alt-text="Snímek obrazovky s panelem komunikační služby zvýrazněním tlačítka vytvořit.":::
 
 Nyní můžete nakonfigurovat prostředek komunikačních služeb. Na první stránce procesu vytváření budete požádáni o zadání:
 

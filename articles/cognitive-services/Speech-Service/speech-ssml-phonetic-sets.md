@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
-ms.openlocfilehash: 580de0112c99eef4ba22ba946f6a2b81bc326001
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e5480b7412291c427c5eaea94a63343f12c62cf
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432039"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077512"
 ---
 # <a name="speech-service-phonetic-sets"></a>Fonetické sady pro hlasové služby
 
@@ -234,30 +234,30 @@ Telefonická sada pro hlasové služby přináší zátěž po samohláskě zat�
 
 | `sapi` | `ipa` | Příklad 1 | Příklad 2 | Příklad 3 |
 |--|--|--|--|--|
-| b | `b` | ANK **B** |  | [<sup>1</sup>](#de-c-1) PU **b** |  |
+| b | `b` | ANK **B** | | [<sup>1</sup>](#de-c-1) PU **b** | 
 | c | `ç` | **Ch** Emie | mögli **ch** St | [<sup>2</sup>](#de-c-2)i **ch** |
-| d | `d` | **d** anken | [<sup>3</sup>](#de-c-3) . Len **d** l | [<sup>4</sup>](#de-c-4) . Clau **d** e |  |
+| d | `d` | **d** anken | [<sup>3</sup>](#de-c-3) . Len **d** l | [<sup>4</sup>](#de-c-4) . Clau **d** e | 
 | jh | `ʤ` | **J** EFF | gemana **g** t | [<sup>5</sup>](#de-c-5) . Kanál **g** e |
-| f | `f` | Ahrtdauer **F** | angri **FF** slustig | abbruchrei **f** |  |
-| g | `g` | **g** UT |  | [<sup>6</sup>](#de-c-6) GRE **g** |  |
-| h | `h` | **H** ausanbau |  |  |  |
-| y | `j` | **J** od | Reakt **i** on | hu **i** |  |
-| k | `k` | **K** OMA | Aspe **k** t | Flec **k** |  |
-| l | `l` | **l** au | ähne **l** n | zuvie **l** |  |
-| m | `m` | **M** UT | A **m** t | Leh **m** |  |
-| n | `n` | **n** un | u **n** d | Huh **n** |  |
-| plyn | `ŋ` | [<sup>7</sup>](#de-c-7)**NG** Uyen | Šva **NK** | R **z** |  |
-| p | `p` | **P** Artner | abru **p** t | Ča **p** |  |
-| stránkovací | `pf` | Záchranná disketa **PF** | přehradit **PF** t | Do **BF** |  |
-| r | `ʀ`, `r`, `ʁ` | Eise jazyka **R** | KNU **RR** t | Há **r** |  |
-| s | `s` | taccato [<sup>8</sup>](#de-c-8)**S** | BI **s** t | Mie **s** |  |
-| SH | `ʃ` | **SCH** ravidlo | mi **SCH** t | Lappi **SCH** |  |
-| t | `t` | **T** Raum | S **t** raße | Mu **t** |  |
-| licence | `ts` | **Z** g | Ar **z** t | WIT **z** |  |
-| ch | `tʃ` | **Tsch** echien | aufgepu **tsch** t | bundesdeu **tsch** |  |
-| v | `v` | **w** inken | Q **u** Alle | [<sup>9</sup>](#de-c-9) GR **ó** ve |  |
+| f | `f` | Ahrtdauer **F** | angri **FF** slustig | abbruchrei **f** |  
+| g | `g` | **g** UT |  [<sup>6</sup>](#de-c-6) GRE **g** |  |
+| h | `h` | **H** ausanbau |  |  | 
+| y | `j` | **J** od | Reakt **i** on | hu **i** | 
+| k | `k` | **K** OMA | Aspe **k** t | Flec **k** | 
+| l | `l` | **l** au | ähne **l** n | zuvie **l** | 
+| m | `m` | **M** UT | A **m** t | Leh **m** | 
+| n | `n` | **n** un | u **n** d | Huh **n** | 
+| plyn | `ŋ` | [<sup>7</sup>](#de-c-7)**NG** Uyen | Šva **NK** | R **z** | 
+| p | `p` | **P** Artner | abru **p** t | Ča **p** | 
+| stránkovací | `pf` | Záchranná disketa **PF** | přehradit **PF** t | Do **BF** |
+| r | `ʀ`, `r`, `ʁ` | Eise jazyka **R** | KNU **RR** t | Há **r** | 
+| s | `s` | taccato [<sup>8</sup>](#de-c-8)**S** | BI **s** t | Mie **s** | 
+| SH | `ʃ` | **SCH** ravidlo | mi **SCH** t | Lappi **SCH** | 
+| t | `t` | **T** Raum | S **t** raße | Mu **t** | 
+| licence | `ts` | **Z** g | Ar **z** t | WIT **z** | 
+| ch | `tʃ` | **Tsch** echien | aufgepu **tsch** t | bundesdeu **tsch** | 
+| v | `v` | **w** inken | Q **u** Alle | [<sup>9</sup>](#de-c-9) GR **ó** ve | 
 | x | [<sup>10</sup>](#de-c-10) `x` ,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) . Ba **ch** erach | Ma **ch** t mögli **ch** St | Schma **ch** ' i **ch** ' |
-| z | `z` | **s** uper |  |  |  |
+| z | `z` | **s** uper |  |  | 
 | ZH | `ʒ` | Enre **G** | B **znovu** ezinski | EDVI **g** e |
 
 <a id="de-c-1"></a>

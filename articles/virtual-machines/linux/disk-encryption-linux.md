@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6ebec78d5a9e82cc8a2f6ceb020a8b9552d6311e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c131f64c540c14830e13619e0e832bbe67b675e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604011"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443897"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
@@ -416,6 +416,7 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
 - Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).
 - Šifrování virtuálních počítačů v clusterech s podporou převzetí služeb při selhání
+- Šifrování [disků Azure Ultra](../disks-enable-ultra-ssd.md).
 
 ## <a name="next-steps"></a>Další kroky
 

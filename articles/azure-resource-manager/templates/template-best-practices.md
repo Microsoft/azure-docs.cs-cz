@@ -3,12 +3,12 @@ title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon (šablon ARM). Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257993"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219939"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
@@ -160,7 +160,7 @@ Pokud vaše šablona funguje podle očekávání, doporučujeme, abyste dál pou
 
 Nepoužívejte parametr pro verzi rozhraní API. Vlastnosti a hodnoty prostředků se mohou lišit podle verze rozhraní API. Technologie IntelliSense v editoru kódu nemůže určit správné schéma, pokud je verze rozhraní API nastavena na parametr. Pokud předáte verzi rozhraní API, která neodpovídá vlastnostem ve vaší šabloně, nasazení se nezdaří.
 
-Nepoužívejte proměnné pro verzi rozhraní API. Konkrétně Nepoužívejte [funkci poskytovatelé](template-functions-resource.md#providers) k dynamickému získání verzí rozhraní API během nasazování. Dynamicky načtená verze rozhraní API nemusí odpovídat vlastnostem ve vaší šabloně.
+Nepoužívejte proměnné pro verzi rozhraní API. 
 
 ## <a name="resource-dependencies"></a>Závislosti prostředků
 

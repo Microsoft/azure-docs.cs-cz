@@ -2,26 +2,27 @@
 title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699602"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220109"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
-Tento článek vám pomůže řešit problémy, se kterými se můžete setkat při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall. 
+Tento článek vám pomůže řešit problémy, se kterými se můžete setkat při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall nebo proxy server. 
 
 ## <a name="symptoms"></a>Příznaky
 
 Může zahrnovat jednu nebo více z následujících možností:
 
 * Nelze vyžádat nebo načíst obrázky a zobrazí se chybová zpráva. `dial tcp: lookup myregistry.azurecr.io`
+* Nelze vyžádat nebo načíst obrázky a zobrazí se chybová zpráva. `Client.Timeout exceeded while awaiting headers`
 * Nepovedlo se odeslat nebo načíst image a zobrazí se chyba rozhraní příkazového řádku Azure CLI. `Could not connect to the registry login server`
 * Nepovedlo se načíst image z registru do služby Azure Kubernetes nebo jiné služby Azure.
-* Nejde získat přístup k registru za proxy HTTPS a zobrazí se chyba. `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Nejde získat přístup k registru za proxy HTTPS a zobrazí `Error response from daemon: login attempt failed with status: 403 Forbidden` se chyba. `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
 * Nepovedlo se nakonfigurovat nastavení virtuální sítě a zobrazí se chyba. `Failed to save firewall and virtual network settings for container registry`
 * Nejde získat přístup k nastavení registru v Azure Portal nebo spravovat registr pomocí rozhraní příkazového řádku Azure CLI.
 * Nelze přidat nebo změnit nastavení virtuální sítě ani pravidla veřejného přístupu.
@@ -41,7 +42,7 @@ Pokud chcete získat další informace o stavu prostředí registru a volitelně
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
 
-Pokud máte potíže s použitím služby Registry wih Azure Kubernetes, spusťte pomocí příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) , zda je registr přístupný z clusteru AKS.
+Pokud máte problémy s používáním služby Azure Kubernetes s integrovaným registrem, spusťte příkaz [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) , který ověří, jestli se cluster AKS může dostat do registru.
 
 > [!NOTE]
 > Při potížích s ověřováním v registru nebo autorizací může dojít k určitým potížím se síťovým připojením. Viz [Poradce při potížích s přihlášením do registru](container-registry-troubleshoot-login.md).
@@ -57,7 +58,7 @@ Pokud chcete získat přístup k registru z za bránou firewall nebo proxy serve
 
 V případě geograficky replikovaného registru nakonfigurujte přístup ke koncovému bodu dat pro každou místní repliku.
 
-Za proxy serverem HTTPS zajistěte, aby byl klient Docker i démon Docker pro chování proxy nakonfigurován.
+Za proxy serverem HTTPS zajistěte, aby byl klient Docker i démon Docker pro chování proxy nakonfigurován. Pokud změníte nastavení proxy pro démona Docker, nezapomeňte spustit démona znovu. 
 
 Protokoly prostředků registru v tabulce ContainerRegistryLoginEvents mohou přispět k diagnostice pokusy o připojení, která je blokovaná.
 

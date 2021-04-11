@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 85a3505dd347b96036c28c85c089afa04e3e3bd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d4a801d0cf0a2355334272053ff86dd846b6bbf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104609376"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030300"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>Řešení potíží s SQL Insights (Preview)
 Pokud chcete řešit problémy se shromažďováním dat v SQL Insights, Projděte si stav monitorovacího počítače na kartě **Spravovat profil** . Tato akce bude mít jeden z následujících stavů:
@@ -171,10 +171,13 @@ InsightsMetrics
 ```
 
 ```
-Operation 
- | where OperationCategory == "WorkloadInsights" 
- | summarize Errors = countif(OperationStatus == 'Error') 
+WorkloadDiagnosticLogs
+| summarize Errors = countif(Status == 'Error')
 ```
+
+> [!NOTE]
+> Pokud se v datovém typu WorkloadDiagnosticLogs nezobrazí žádná data, může být nutné aktualizovat profil monitorování, aby tato data mohla být uložena.  V části uživatelské rozhraní SQL Insights vyberte Spravovat profil a pak vyberte Upravit profil a pak vyberte aktualizovat profil monitorování.
+
 
 Ve většině případů poskytujeme informace pro řešení potíží v našich zobrazeních protokolů: 
 

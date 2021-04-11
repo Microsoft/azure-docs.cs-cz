@@ -3,12 +3,12 @@ title: Jak spravovat agenta pro Container Insights | Microsoft Docs
 description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby s kontejnerem Log Analytics agentem používaným službou Container Insights.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b485f4d49f0dd80f712d96779098c26be3f6de1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713792"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442571"
 ---
 # <a name="how-to-manage-the-container-insights-agent"></a>Jak spravovat agenta pro Container Insights
 
@@ -79,21 +79,6 @@ curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
-
-Podrobné informace o použití instančního objektu s tímto příkazem najdete v tématu **použití instančního objektu** v tématu [povolení monitorování clusteru Kubernetes s povoleným](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) vydaným Azure ARC.
-
-### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Upgrade agenta na Kubernetes s povoleným rozšířením Azure ARC
-
-Provedením následujícího příkazu Upgradujte agenta v clusteru Kubernetes s povoleným ARC Azure.
-
-```console
-curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
-export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
-bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
-```
-
-Podrobné informace o použití instančního objektu s tímto příkazem najdete v tématu **použití instančního objektu** v tématu [povolení monitorování clusteru Kubernetes s povoleným](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) vydaným Azure ARC.
-
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Postup zakázání shromažďování proměnných prostředí v kontejneru
 

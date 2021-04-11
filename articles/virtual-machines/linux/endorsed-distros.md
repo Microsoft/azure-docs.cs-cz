@@ -2,24 +2,19 @@
 title: Distribuce systému Linux schválená v Azure
 description: Přečtěte si informace o systému Linux v distribucích schválených Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE.
 services: virtual-machines
-documentationcenter: ''
 author: danielsollondon
-manager: gwallace
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 01/03/2021
+ms.date: 04/06/2021
 ms.author: guybo
-ms.openlocfilehash: 091a06fd608763ac7265670733890e93bf71dde1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e602909467ca155beb010c5bdd61e6f6408dd12a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547403"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553783"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 
@@ -35,7 +30,7 @@ Agent Azure Linux je již předinstalovaný na Azure Marketplace imagí a je obv
 
 | Distribuce | Verze | Ovladače | Agent |
 | --- | --- | --- | --- |
-| CentOS podle neautorizovaných vln softwaru |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [stažení v lis](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: v jádru |Balíček: v [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS pomocí neautorizovaných vln softwaru (dřív označovaného jako OpenLogic) |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [stažení v lis](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: v jádru |Balíček: v [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS je teď [konec životnosti](https://coreos.com/os/eol/) od 26. května 2020. |Již není k dispozici | | |
 | Debian podle credativ |8. x, 9. x, 10. x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Flatcar Container Linux od Kinvolk| Pro, stabilní, beta verze| V jádru | WA-Linux-agent je už nainstalovaný v/usr/share/OEM/bin/waagent |

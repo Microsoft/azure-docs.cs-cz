@@ -16,19 +16,19 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c575904d994232726cf8d0d9152b02130fd29cea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 68b72cca319772fa52829c6b95237e15f083a2e7
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013247"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962658"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!IMPORTANT]
-> Doporučujeme, aby zákazníci migrovali ze služby indexer V1 a služby indexer v2, aby používali [Základní režim Media Services V3 AudioAnalyzerPreset](../latest/analyzing-video-audio-files-concept.md). Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](./legacy-components.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
+> Doporučujeme, aby zákazníci migrovali ze služby indexer V1 a služby indexer v2, aby používali [Základní režim Media Services V3 AudioAnalyzerPreset](../latest/analyze-video-audio-files-concept.md). Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](./legacy-components.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
 Azure Media Indexer umožňuje zpřístupnění obsahu mediálních souborů a vytvoření fulltextového přepisu pro skryté titulky a klíčová slova. V dávce můžete zpracovat jeden mediální soubor nebo několik mediálních souborů.  
 

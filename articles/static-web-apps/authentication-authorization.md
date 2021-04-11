@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419282"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218630"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro službu Azure Static Web Apps ve verzi Preview
 
@@ -57,7 +57,7 @@ Pozvánky jsou specifické pro jednotlivé zprostředkovatele autorizace, takže
 | ---------------------- | ----------------- |
 | Azure Active Directory | e-mailovou adresu     |
 | Facebook               | e-mailovou adresu     |
-| GitHub                 | username          |
+| GitHubu                 | username          |
 | Google<sup>1</sup>     | e-mailovou adresu     |
 | Twitter                | username          |
 
@@ -156,7 +156,13 @@ Pokud se rozhodnete podporovat více než jednoho poskytovatele, musíte pro ka�
 
 ### <a name="post-login-redirect"></a>Přesměrování po přihlášení
 
-Pokud chcete, aby se uživatel po přihlášení vrátil na konkrétní stránku, zadejte adresu URL v `post_login_redirect_uri` parametru řetězce dotazu.
+Pokud chcete, aby se uživatel po přihlášení vrátil na konkrétní stránku, zadejte v `post_login_redirect_uri` parametru řetězce dotazu úplnou adresu URL.
+
+Například:
+
+```html
+<a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a>
+```
 
 ## <a name="logout"></a>Odhlásit
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: b9dda384e2ef30808559d10012dea2909b2af0fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90676b134d06af7ef088b2041116b17022da2700
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206930"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110219"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Kurz: připojení virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
   * Ujistěte se, že je nakonfigurovaný privátní partnerský vztah Azure. Musí být vytvořen partnerský vztah protokolu BGP mezi vaší sítí a Microsoftem, aby bylo možné povolit kompletní připojení.
   * Ujistěte se, že máte virtuální síť a že byla vytvořena a plně zřízena Brána virtuální sítě. Podle pokynů [nakonfigurujte bránu virtuální sítě pro ExpressRoute](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md). Nezapomeňte použít `--gateway-type ExpressRoute` .
 * Na standardní okruh ExpressRoute můžete propojit až 10 virtuálních sítí. Pokud používáte standardní okruh ExpressRoute, musí být všechny virtuální sítě ve stejné geopolitické oblasti. 
-* Jedna virtuální síť může být propojená s až čtyřmi okruhy ExpressRoute. K vytvoření nového objektu připojení pro každý okruh ExpressRoute, ke kterému se připojujete, použijte následující postup. Okruhy ExpressRoute můžou být ve stejném předplatném, různých předplatných nebo kombinaci obou.
+* Jedna virtuální síť může být propojená s až 16 okruhy ExpressRoute. K vytvoření nového objektu připojení pro každý okruh ExpressRoute, ke kterému se připojujete, použijte následující postup. Okruhy ExpressRoute můžou být ve stejném předplatném, různých předplatných nebo kombinaci obou.
 * Pokud povolíte doplněk ExpressRoute Premium, můžete propojit virtuální sítě mimo geopolitickou oblast okruhu ExpressRoute. Doplněk Premium vám také umožní připojit více než 10 virtuálních sítí k okruhu ExpressRoute v závislosti na zvolené šířce pásma. Další podrobnosti o doplňku Premium najdete v [nejčastějších dotazech](expressroute-faqs.md) .
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě ve stejném předplatném k okruhu

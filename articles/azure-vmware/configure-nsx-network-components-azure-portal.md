@@ -3,16 +3,16 @@ title: Konfigurace síťových součástí NSX v řešení Azure VMware
 description: Naučte se používat konzolu řešení Azure VMware ke konfiguraci segmentů sítě NSX-T.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a4702efe8ea26234d074f421d2e6eab871eba5f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716917"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733091"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurace síťových součástí NSX v řešení Azure VMware
 
-Privátní cloud řešení Azure VMware je ve výchozím nastavení součástí NSX-T jako softwarově definovaná síť (SDDC). Je dodáván předem zřízené s bránou NSX-T úrovně 0 v aktivním/aktivním režimu a výchozí bránou NSX-T vrstvy 1 v aktivním nebo pohotovostním režimu.  Tyto brány umožňují propojení segmentů (logických přepínačů) a poskytování East-West a North-South připojení. 
+Privátní cloud řešení Azure VMware je ve výchozím nastavení součástí NSX-T jako softwarově definovaná síť (SDDC). Je dodáván předem zřízené s bránou NSX-T úrovně 0 v **aktivním/aktivním** režimu a výchozí bránou NSX-t vrstvy 1 v aktivním nebo pohotovostním režimu.  Tyto brány umožňují propojení segmentů (logických přepínačů) a poskytování East-West a North-South připojení. 
 
 Po nasazení privátního cloudu řešení Azure VMware můžete nakonfigurovat potřebné objekty NSX-T z konzoly řešení Azure VMware v části **práce s úlohami**.  Konzola nabízí zjednodušený pohled na operace NSX-T, které správce VMware potřebuje denně a cílí na uživatele, kteří nejsou obeznámení s NSX-T.  
 
@@ -27,7 +27,7 @@ K dispozici máte čtyři možnosti konfigurace komponent NSX-T v konzole řeše
  
 :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking.png" alt-text="Snímek obrazovky zobrazující čtyři možnosti v konzole řešení Azure VMware pro konfiguraci NSX-T.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Virtuální počítače vytvořené nebo migrované do privátního cloudu řešení Azure VMware by měly být připojené k segmentu. 
 
 ## <a name="create-an-nsx-t-segment-in-the-azure-portal"></a>Vytvoření segmentu NSX-T v Azure Portal

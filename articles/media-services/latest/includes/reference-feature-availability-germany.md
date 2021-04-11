@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: e646c3fd8422380a542f559b40b222033d5d74dc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9c0246d68de8c01b1779d5a95d405c61536f277e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612801"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283057"
 ---
 <!--Feature availability in region-->
 ## <a name="germany"></a>Německo
@@ -17,9 +17,9 @@ ms.locfileid: "104612801"
 | Funkce | Německo – sever (veřejné) | Německo – středozápad (veřejné) |
 | --- | :---: | :---: |
 | [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |![Azure EventGrid Německo – sever (veřejný) – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![Azure EventGrid Německo – středozápad (veřejný) – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![Azure EventGrid Německo – sever (veřejný) – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Německo – středozápad (veřejný) – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![Obecná dostupnost AudioAnalyzerPreset Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost AudioAnalyzerPreset Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
-| [StandardEncoderPreset](../encoding-concept.md) | ![Obecná dostupnost StandardEncoderPreset Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost StandardEncoderPreset Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
-| [LiveEvents](../live-streaming-overview.md) | ![Obecná dostupnost LiveEvents Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost LiveEvents Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
-| [Starají](../streaming-endpoint-concept.md) | ![Obecná dostupnost starají Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost starají Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
-| [LiveTranscription](../live-transcription.md) |![Obecná dostupnost LiveTranscription Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost LiveTranscription Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
+| [VideoAnalyzerPreset](../analyze-video-audio-files-concept.md) | | |
+| [AudioAnalyzerPreset](../analyze-video-audio-files-concept.md) | | |
+| [StandardEncoderPreset](../encode-concept.md) | ![Obecná dostupnost StandardEncoderPreset Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost StandardEncoderPreset Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
+| [LiveEvents](../stream-live-streaming-concept.md) | ![Obecná dostupnost LiveEvents Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost LiveEvents Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
+| [Starají](../stream-streaming-endpoint-concept.md) | ![Obecná dostupnost starají Německo – sever (veřejné)](../media/azure-clouds-regions/ga.svg) |![Obecná dostupnost starají Německo – středozápad (veřejné)](../media/azure-clouds-regions/ga.svg) |
+| [LiveTranscription](../live-event-live-transcription-how-to.md) |  | |

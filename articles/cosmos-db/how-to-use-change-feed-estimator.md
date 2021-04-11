@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/15/2019
+ms.date: 04/01/2021
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d4e461b25a25ecdf0d4d89ee7f1c82b9d4a0737
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339831"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220160"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Tento článek popisuje, jak můžete monitorovat průběh instancí [procesoru 
 
 ## <a name="why-is-monitoring-progress-important"></a>Proč je monitorování důležité?
 
-Procesor změn kanálu funguje jako ukazatel, který přechází mezi [kanálem změn](./change-feed.md) a přináší změny implementace delegáta. 
+Procesor změn kanálu funguje jako ukazatel, který přechází mezi [kanálem změn](./change-feed.md) a přináší změny implementace delegáta.
 
 Nasazení procesoru změny kanálu může zpracovávat změny za určitou míru na základě dostupných prostředků, jako jsou například CPU, paměť, síť a tak dále.
 
@@ -32,7 +32,9 @@ Identifikace tohoto scénáře vám pomůže pochopit, jestli potřebujeme šká
 
 ## <a name="implement-the-change-feed-estimator"></a>Implementace Estimator kanálu změn
 
-Podobně jako u [procesoru Change feed](./change-feed-processor.md)funguje Estimator kanálu změn jako model nabízených oznámení. Estimator vyhodnotí rozdíl mezi poslední zpracovávanou položkou (definovanou stavem kontejneru zapůjčení) a poslední změnou v kontejneru a nasdílením této hodnoty do delegáta. Interval, ve kterém je měření prováděno, lze také přizpůsobit výchozí hodnotu 5 sekund.
+### <a name="as-a-push-model-for-automatic-notifications"></a>Jako model nabízených oznámení pro automatická oznámení
+
+Podobně jako u [procesoru Change feed](./change-feed-processor.md)může Estimator Change feed fungovat jako model nabízených oznámení. Estimator vyhodnotí rozdíl mezi poslední zpracovávanou položkou (definovanou stavem kontejneru zapůjčení) a poslední změnou v kontejneru a nasdílením této hodnoty do delegáta. Interval, ve kterém je měření prováděno, lze také přizpůsobit výchozí hodnotu 5 sekund.
 
 Pokud je například procesor pro změnu kanálu definován takto:
 
@@ -52,8 +54,29 @@ Příklad delegáta, který obdrží odhad, je:
 
 Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení toho, jak se v průběhu času chová průběh.
 
+### <a name="as-an-on-demand-detailed-estimation"></a>Jako podrobný odhad na vyžádání
+
+Na rozdíl od modelu nabízených oznámení existuje alternativa, která vám umožní získat odhad na vyžádání. Tento model poskytuje také podrobnější informace:
+
+* Odhadované prodlevy na zapůjčení
+* Instance vlastnící a zpracovávající jednotlivá zapůjčení, abyste mohli zjistit, jestli došlo k potížím s instancí.
+
+Pokud je procesor změny kanálu definovaný takto:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimatorDetailed)]
+
+Estimator můžete vytvořit se stejnou konfigurací zapůjčení:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimatorDetailed)]
+
+A kdykoli budete chtít, s frekvencí, kterou požadujete, můžete získat podrobný odhad:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=GetIteratorEstimatorDetailed)]
+
+Každá `ChangeFeedProcessorState` z nich bude obsahovat informace o zapůjčení a prodlevě a také o tom, kdo je aktuální instancí vlastnící. 
+
 > [!NOTE]
-> Estimator kanálu změn není nutné nasazovat jako součást procesoru změny kanálu ani být součástí stejného projektu. Může být nezávislý a musí běžet v zcela jiné instanci. Stačí použít stejný název a konfiguraci zapůjčení.
+> Estimator kanálu změn není nutné nasazovat jako součást procesoru změny kanálu ani být součástí stejného projektu. Může být nezávislý a spuštěný v zcela jiné instanci, která se doporučuje. Stačí použít stejný název a konfiguraci zapůjčení.
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: přizpůsobování, přizpůsobování v Azure, Machine Learning
-ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2577502907b69e134651c93ab7a98fc51e9aaa6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928541"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169245"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -21,11 +21,14 @@ Přizpůsobování Azure je cloudová služba, která umožňuje vašim aplikac�
 > [!TIP]
 > Obsah je libovolná jednotka informací, například text, obrázky, adresa URL, e-maily nebo cokoli jiného, co chcete vybrat a zobrazit pro uživatele.
 
-Než začnete, můžete si vyzkoušet [přizpůsobování pomocí této interaktivní ukázky](https://personalizationdemo.azurewebsites.net/).
+Tato dokumentace obsahuje následující typy článků:  
 
-<!--
-![What is personalizer animation](./media/what-is-personalizer.gif)
--->
+* [**Rychlé starty**](quickstart-personalizer-sdk.md) jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.  
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném [**způsobu.**](how-to-settings.md)  
+* [**Koncepty**](how-personalizer-works.md) poskytují podrobné vysvětlení funkcí a funkcí služby.  
+* [**Kurzy**](tutorial-use-personalizer-web-app.md) jsou delší než příručky, které ukazují, jak používat službu jako součást v širších obchodních řešeních.  
+
+Než začnete, vyzkoušejte si [přizpůsobení pomocí této interaktivní ukázky](https://personalizationdemo.azurewebsites.net/).
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Jak přizpůsobuje výběr nejlepší položky obsahu?
 
@@ -100,18 +103,6 @@ Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší p
         * Hned po zobrazení obsahu
         * Nebo někdy později v offline systému
     1. [Vyhodnoťte smyčku](concepts-offline-evaluation.md) pomocí offline zkušebního období po určité době použití. Testování v režimu offline umožňuje testovat a hodnotit efektivitu služby přizpůsobeného službou bez změny kódu nebo ovlivnění uživatelského prostředí.
-
-## <a name="complete-a-quickstart"></a>Dokončení rychlého startu
-
-Nabízíme rychlé zprovoznění v jazycích C#, JavaScript a Python. Každý rychlý Start je navržený tak, aby vám poučení základních vzorů návrhu a abyste spustili kód za méně než 10 minut. 
-
-* [Rychlý Start: jak používat klientskou knihovnu pro přizpůsobování](./quickstart-personalizer-sdk.md)
-
-Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejte si naše kurzy a Naučte se, jak používat přizpůsobení ve webových aplikacích, chat roboty nebo poznámkovém bloku Azure.
-
-* [Kurz: použití přizpůsobení ve webové aplikaci .NET](tutorial-use-personalizer-web-app.md)
-* [Kurz: použití přizpůsobeného prostředí v robotu chatu pro .NET](tutorial-use-personalizer-chat-bot.md)
-* [Kurz: použití individuálního nastavení v poznámkovém bloku Azure](tutorial-use-azure-notebook-generate-loop-data.md)
 
 ## <a name="reference"></a>Reference 
 

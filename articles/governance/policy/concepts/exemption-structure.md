@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti o struktuře výjimky zásad
 description: Popisuje definici výjimky zásad, kterou používá Azure Policy k vyloučení prostředků z vyhodnocení iniciativ nebo definic.
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecf956d7507dfa2168e4f2591e4b661423801365
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950172"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091731"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy struktura výjimky
 

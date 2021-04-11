@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100635383"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076781"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
@@ -30,8 +30,19 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
 
 1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte "autorizovanou aplikaci" ani `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
 
-   > [!IMPORTANT]
-   > Odkazy na Key Vault nejsou předposílány s využitím tajných kódů uložených v trezoru klíčů s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md) , pokud je aplikace hostovaná v rámci [App Service Environment](./environment/intro.md).
+### <a name="access-network-restricted-vaults"></a>Přístup k trezorům s omezeným přístupem k síti
+
+> [!NOTE]
+> Pro aplikace založené na systému Linux není předem možné přeložit tajné klíče z trezoru klíčů s omezeným přístupem k síti, pokud není aplikace hostována v rámci [App Service Environment](./environment/intro.md).
+
+Pokud je váš trezor nakonfigurovaný s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md), budete také muset zajistit, aby aplikace měla přístup k síti.
+
+1. Ujistěte se, že aplikace má nakonfigurované možnosti odchozí sítě, jak je popsáno v tématu [App Service síťové funkce](./networking-features.md) a [Azure Functions možnosti sítě](../azure-functions/functions-networking-options.md).
+
+2. Ujistěte se, že účty pro konfiguraci trezoru pro síť nebo podsíť, ke kterým budou mít přístup vaše aplikace.
+
+> [!IMPORTANT]
+> Přístup k trezoru prostřednictvím integrace virtuální sítě je aktuálně nekompatibilní s [automatickými aktualizacemi tajných kódů bez zadané verze](#rotation).
 
 ## <a name="reference-syntax"></a>Referenční syntaxe
 
@@ -56,6 +67,9 @@ Máte k dispozici i další možnosti:
 ```
 
 ## <a name="rotation"></a>Obměna
+
+> [!IMPORTANT]
+> [Přístup k trezoru prostřednictvím integrace virtuální sítě](#access-network-restricted-vaults) je aktuálně nekompatibilní s automatickými aktualizacemi tajných kódů bez zadané verze.
 
 Pokud v odkazu není uvedená verze, aplikace použije nejnovější verzi, která existuje v Key Vault. Když budou k dispozici novější verze, například s událostí otáčení, aplikace se automaticky aktualizuje a začne používat nejnovější verzi během jednoho dne. Jakékoli změny konfigurace aplikace způsobí okamžitou aktualizaci na nejnovější verze všech odkazovaných tajných kódů.
 

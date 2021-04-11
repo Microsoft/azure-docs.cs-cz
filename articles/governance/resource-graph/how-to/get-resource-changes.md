@@ -1,14 +1,14 @@
 ---
 title: Získání změn prostředků
 description: Pochopte, jak zjistit, kdy byl prostředek změněn, získat seznam vlastností, které se změnily, a vyhodnotit rozdíly.
-ms.date: 01/27/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594650"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219072"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
@@ -145,6 +145,10 @@ Každá zjištěná událost změny pro **ResourceID** má následující vlastn
 - **beforeSnapshot** – obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl proveden před zjištěním změny.
 - **afterSnapshot** – obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl proveden po zjištění změny.
 - **ChangeType** – popisuje typ změny zjištěné u celého záznamu změny mezi **beforeSnapshot** a **afterSnapshot**. Hodnoty jsou: _vytvořit_, _aktualizovat_ a _Odstranit_. Pole vlastností **propertyChanged** je zahrnuto pouze v případě, že je nastavena _aktualizace_ **ChangeType** .
+
+  > [!IMPORTANT]
+  > _Vytvoření_ je k dispozici pouze u prostředků, které dříve existovaly a byly odstraněny během posledních 14 dní.
+
 - **propertyChanged** – toto pole vlastností podrobně popisuje všechny vlastnosti prostředku, které byly aktualizovány mezi **beforeSnapshot** a **afterSnapshot**:
   - **PropertyName** – název vlastnosti prostředku, která byla změněna.
   - **changeCategory** – popisuje, co změna provedla. Hodnoty jsou: _systém_ a _uživatel_.

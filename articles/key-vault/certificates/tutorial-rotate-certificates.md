@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204044"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581824"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Kurz: Konfigurace automatického rotace certifikátů v Key Vault
 
@@ -51,7 +51,7 @@ Vytvořte certifikát nebo importujte certifikát do trezoru klíčů (viz [Post
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Aktualizace atributů životního cyklu certifikátu
 
-V Azure Key Vault můžete pro čas vytvoření certifikátu aktualizovat atributy životního cyklu certifikátu.
+V Azure Key Vault můžete aktualizovat atributy životního cyklu certifikátu v době vytváření certifikátu nebo po něm.
 
 Certifikát vytvořený v Key Vault může být:
 
@@ -83,7 +83,7 @@ Key Vault automaticky otočí certifikáty prostřednictvím zavedených partner
         |  Automaticky obnovit v daném čase| Poslat všem kontaktům e-mail v daném čase |
         |-----------|------|
         |Výběrem této možnosti se *zapne* automatické otočení. | Vyberete-li tuto možnost, *nedojde* k automatickému otočení, ale budete upozorněni pouze na kontakty.|
-
+         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
 1. Vyberte **Vytvořit**.
 
 ![Životní cyklus certifikátů](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

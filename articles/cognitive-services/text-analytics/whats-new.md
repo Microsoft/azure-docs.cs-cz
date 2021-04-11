@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ed3a11381285a9422380eb14ff301a2b9ea816a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598894"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093550"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -51,11 +51,12 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
     * Nový `Date` typ entity.
     * Detekce kontrolního výrazu, která nahrazuje detekci negace (k dispozici pouze v rozhraní API verze 3.1-Preview. 4).
     * Nová upřednostňovaná `name` vlastnost pro propojené entity, která je normalizována z různých systémů ontologie a kódování (k dispozici pouze v rozhraní API verze 3.1-Preview. 4). 
-* Do úložiště náhledu kontejneru se uvolnila nová image kontejneru s označením `3.0.015370001-onprem-amd64` a novou verzí modelu `2021-03-01` . 
-* Analýza textu pro Image stavu se přesunou do nového úložiště v příštím měsíci.  Sledujte prosím e-mailovou komunikaci v umístění svého nového domova.
+* Do úložiště náhledu kontejneru se uvolnila nová image kontejneru s označením `3.0.015490002-onprem-amd64` a novou verzí modelu `2021-03-01` . 
+    * Tato bitová kopie kontejneru již nebude k dispozici ke stažení `containerpreview.azurecr.io` po 26 2021. dubna.
+* K dispozici je teď nový Analýza textu pro Image kontejneru Health se stejným modelem – verze `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare` . Od dubna 26 budete moct stáhnout jenom kontejner z tohoto úložiště.
+
 > [!div class="nextstepaction"]
 > [Další informace o Analýza textu pro stav](how-tos/text-analytics-for-health.md)
->
 
 ### <a name="text-analytics-resource-portal-update"></a>Analýza textu aktualizace portálu prostředků
 * **Zpracované textové záznamy** jsou nyní k dispozici jako metrika v části **monitorování** pro prostředek analýza textu v Azure Portal.  

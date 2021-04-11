@@ -3,12 +3,12 @@ title: Funkce šablon
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707315"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220177"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
 
@@ -176,7 +176,6 @@ Správce prostředků poskytuje následující funkce pro získání hodnot pros
 * [listSecrets](template-functions-resource.md#list)
 * [seznamu](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
-* [dodavateli](template-functions-resource.md#providers)
 * [odkaz](template-functions-resource.md#reference)
 * [](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
 * [ResourceID](template-functions-resource.md#resourceid) -lze použít v jakémkoli oboru, ale platné parametry se mění v závislosti na rozsahu.

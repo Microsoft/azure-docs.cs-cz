@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory obchodních na zákazníky (B2C)
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory B2C (Business-to-zákazníka).
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,37 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557866"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443708"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: co je nového
 
 Vítá vás novinky v Azure Active Directory B2C dokumentaci. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě B2C, najdete v tématu [novinky v Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Povolení vlastních domén pro Azure Active Directory B2C](custom-domain.md)
+- [Prozkoumejte riziko pomocí Identity Protection v Azure AD B2C](identity-protection-investigate-risk.md)
+- [Nastavení registrace a přihlášení pomocí Apple ID pomocí Azure Active Directory B2C (Preview)](identity-provider-apple-id.md)
+- [Nastavení vynucení toku resetování hesla v Azure Active Directory B2C](force-password-reset.md)
+- [Vložené prostředí pro přihlašování](embedded-login.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Nastavte si registraci a přihlaste se pomocí účtu Amazon pomocí Azure Active Directory B2C](identity-provider-amazon.md)
+- [Nastavte přihlášení pomocí poskytovatele služby Salesforce SAML pomocí protokolu SAML v Azure Active Directory B2C](identity-provider-salesforce-saml.md)
+- [Migrace webového rozhraní API založeného na OWIN do b2clogin.com nebo vlastní domény](multiple-token-endpoints.md)
+- [Technické profily](technicalprofiles.md)
+- [Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C](conditional-access-user-flow.md)
+- [Nastavení toku resetování hesla v Azure Active Directory B2C](add-password-reset-policy.md)
+- [RelyingParty](relyingparty.md)
+
 
 ## <a name="february-2021"></a>Únor 2021
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ffffeb38aeb9d1f01f376d58a52323bb7b84b306
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c105fe217834dc9e0e652a42ebf3b526972b228
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98676319"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961366"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování COMPUTE pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí T-SQL
 
@@ -99,12 +99,12 @@ Změna jednotek datového skladu:
 
 ## <a name="monitor-scale-change-request"></a>Monitorování žádostí o změnu rozsahu
 
-K zobrazení průběhu předchozí žádosti o změnu můžete použít syntaxi T-SQL `WAITFORDELAY` a dotázat se na stav dynamického zobrazení správy (DMV) sys.dm_operation_status.
+Chcete-li zobrazit průběh předchozí žádosti o změnu, můžete použít `WAITFORDELAY` syntaxi T-SQL k cyklickému dotazování [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) dynamické zobrazení správy (DMV).
 
 Pokud se chcete dotázat na stav změny objektu služby:
 
 1. Klikněte pravým tlačítkem na **master** a vyberte **New Query** (Nový dotaz).
-2. Spuštěním následujícího dotazu se dotážete na stav DMV sys.dm_operation_status.
+2. Spusťte následující dotaz pro dotazování [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) DMV.
 
     ```sql
     WHILE

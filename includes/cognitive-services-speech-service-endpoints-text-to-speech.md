@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 1eefb7097f672552956e90a19e0a7b411cae8a24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455678"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554632"
 ---
-### <a name="standard-and-neural-voices"></a>Hlasy Standard a neuronové
+### <a name="neural-and-standard-voices"></a>Neuronové a standardní hlasy
 
-Pomocí této tabulky můžete určit **dostupnost standardních hlasů** podle oblasti/koncového bodu:
+Pomocí této tabulky můžete určit **dostupnost neuronové a standardní hlasy** podle oblasti/koncového bodu:
 
 | Oblast | Koncový bod |
 |--------|----------|
@@ -34,26 +34,13 @@ Pomocí této tabulky můžete určit **dostupnost standardních hlasů** podle 
 | Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA – středozápad | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
 | USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 > [!TIP]
 > [Hlasy ve verzi Preview](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview) jsou dostupné jenom v těchto třech oblastech: Východní USA, západní Evropa a jihovýchodní Asie.
-
-Pomocí této tabulky můžete určit **dostupnost hlasů neuronové** podle oblasti/koncového bodu:
-
-| Oblast | Koncový bod |
-|--------|----------|
-| Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 
-| Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
-| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
-| West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 ### <a name="custom-voices"></a>Vlastní hlasy
 

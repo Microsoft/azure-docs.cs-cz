@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7d089d8f57bf8ef1278d262129cc8ddfc81d581
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52cb4480e8b7820d656b8ab66f12486c2062dca5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257739"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443487"
 ---
 # <a name="compare-remote-access-solutions"></a>Porovnání řešení vzdáleného přístupu
 
@@ -34,21 +34,21 @@ Tato tabulka vám pomůže pochopit, jak brány pro správu hrozeb (TMG), Unifie
 
 | Funkce | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Ověření certifikátu | Yes | Yes | - | - |
-| Selektivní publikování aplikací v prohlížeči | Yes | Yes | Yes | Yes |
-| Předběžné ověření a jednotné přihlašování | Yes | Yes | Yes | Yes | 
-| Brána firewall vrstvy 2/3 | Yes | Yes | - | - |
-| Možnosti předávaného proxy serveru | Yes | - | - | - |
-| Možnosti sítě VPN | Yes | Yes | - | - |
-| Bohatá podpora protokolů | - | Yes | Ano, pokud se používá přes protokol HTTP | Ano, pokud je spuštěn přes protokol HTTP nebo prostřednictvím Brána vzdálené plochy |
-| Slouží jako proxy server ADFS | - | Yes | Yes | - |
-| Jeden portál pro přístup k aplikaci | - | Yes | - | Yes |
-| Překlad odkazu na text odpovědi | Yes | Yes | - | Yes | 
-| Ověřování pomocí hlaviček | - | Yes | - | Ano, s PingAccess | 
-| Cloud – škálování zabezpečení | - | - | - | Yes | 
-| Podmíněný přístup | - | Yes | - | Yes |
-| Žádné součásti v zóně demilitarizovaná (DMZ) | - | - | - | Yes |
-| Žádná příchozí připojení | - | - | - | Yes |
+| Ověření certifikátu | Ano | Ano | - | - |
+| Selektivní publikování aplikací v prohlížeči | Ano | Ano | Ano | Ano |
+| Předběžné ověření a jednotné přihlašování | Ano | Ano | Ano | Ano | 
+| Brána firewall vrstvy 2/3 | Ano | Ano | - | - |
+| Možnosti předávaného proxy serveru | Ano | - | - | - |
+| Možnosti sítě VPN | Ano | Ano | - | - |
+| Bohatá podpora protokolů | - | Ano | Ano, pokud se používá přes protokol HTTP | Ano, pokud je spuštěn přes protokol HTTP nebo prostřednictvím Brána vzdálené plochy |
+| Slouží jako proxy server ADFS | - | Ano | Ano | - |
+| Jeden portál pro přístup k aplikaci | - | Ano | - | Ano |
+| Překlad odkazu na text odpovědi | Ano | Ano | - | Ano | 
+| Ověřování pomocí hlaviček | - | Ano | - | Ano, s PingAccess | 
+| Cloud – škálování zabezpečení | - | - | - | Ano | 
+| Podmíněný přístup | - | Ano | - | Ano |
+| Žádné součásti v zóně demilitarizovaná (DMZ) | - | - | - | Ano |
+| Žádná příchozí připojení | - | - | - | Ano |
 
 Pro většinu scénářů doporučujeme Azure Proxy aplikací služby AD jako moderní řešení. Proxy webových aplikací je preferován pouze ve scénářích, které vyžadují proxy server pro AD FS a nemůžete použít vlastní domény v Azure Active Directory. 
 
@@ -64,4 +64,4 @@ V porovnání s podobnými produkty nabízí Azure Proxy aplikací služby AD je
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití aplikace Azure AD k poskytování zabezpečeného vzdáleného přístupu k místním aplikacím](application-proxy.md)
+- [Použití Azure Proxy aplikací služby AD k zajištění zabezpečeného vzdáleného přístupu k místním aplikacím](application-proxy.md)

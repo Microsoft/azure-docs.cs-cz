@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589215"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076645"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funkce a možnosti spravované instance SQL ARC Azure
 
@@ -117,19 +117,19 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 | Funkce | SQL Managed Instance s podporou služby Azure Arc |
 |--|--|
 | JSON | Yes |
-| Úložiště dotazů | Yes |  |
-| Dočasné | Yes |  |
-| Nativní podpora jazyka XML | Yes |  |
-| Indexování XML | Yes |  |
-| UPSERT možnosti sloučení & | Yes |  |
-| Datové typy data a času | Yes |  |
-| Podpora pro mezinárodní využití | Yes |  |
+| Úložiště dotazů | Yes | 
+| Dočasné | Yes | 
+| Nativní podpora jazyka XML | Yes | 
+| Indexování XML | Yes | 
+| UPSERT možnosti sloučení & | Yes | 
+| Datové typy data a času | Yes | 
+| Podpora pro mezinárodní využití | Yes | 
 | Fulltextové a sémantické vyhledávání | No |
-| Specifikace jazyka v dotazu | Yes |  |
-| Service Broker (zasílání zpráv) | Yes |  |
-| Koncové body Transact-SQL | Yes |  |
-| Graph | Yes |  |
-| Machine Learning Services | No |  |
+| Specifikace jazyka v dotazu | Yes | 
+| Service Broker (zasílání zpráv) | Yes | 
+| Koncové body Transact-SQL | Yes | 
+| Graph | Yes | 
+| Machine Learning Services | No |
 | PolyBase | No |
 
 
