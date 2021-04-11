@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: jeedes
 ms.openlocfilehash: f56f2dc974df58575c72c93a0609026cd7bbf88d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Veracode
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Veracode s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Veracode svým účtům Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Snímek obrazovky s oddílem nastavení Veracode s zvýrazněnými adresami URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Veracode.
 
@@ -117,13 +117,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-veracode-sso"></a>Konfigurace jednotného přihlašování Veracode
+## <a name=&quot;configure-veracode-sso&quot;></a>Konfigurace jednotného přihlašování Veracode
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Veracode společnosti jako správce.
 
 1. V nabídce v horní části vyberte **Nastavení**  >  **správce**.
    
-    ![Snímek obrazovky se správou Veracode s ikonami nastavení a zvýrazněným správcem](./media/veracode-tutorial/admin.png "Správa")
+    ![Snímek obrazovky se správou Veracode s ikonami nastavení a zvýrazněným správcem](./media/veracode-tutorial/admin.png &quot;Správa")
 
 1. Vyberte kartu **SAML** .
 

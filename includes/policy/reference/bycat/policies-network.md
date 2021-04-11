@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4b67952565ae7d5e8a05661fba2129177072007c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: a6522eb54980cb28f08ce91e29a6a18943d49040
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105033122"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106088946"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
@@ -36,6 +36,7 @@ ms.locfileid: "105033122"
 |[Přístup přes SSH z Internetu by měl být zablokovaný.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |Tato zásada Audituje jakékoli pravidlo zabezpečení sítě, které umožňuje přístup přes SSH z Internetu. |Audit, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
 |[Účty úložiště by měly používat koncový bod služby virtuální sítě.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F60d21c4f-21a3-4d94-85f4-b924e6aeeda4) |Tato zásada Audituje jakýkoliv účet úložiště, který není nakonfigurovaný tak, aby používal koncový bod služby virtuální sítě. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_StorageAccount_Audit.json) |
 |[Virtuální počítače by měly být připojené ke schválené virtuální síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd416745a-506c-48b6-8ab1-83cb814bcaa3) |Tato zásada Audituje všechny virtuální počítače připojené k virtuální síti, která není schválená. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ApprovedVirtualNetwork_Audit.json) |
+|[Virtuální sítě by se měly chránit pomocí Azure DDoS Protection úrovně Standard.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d) |Chraňte své virtuální sítě proti útokům prostřednictvím protokolu a zabezpečení pomocí Azure DDoS Protection Standard. Další informace najdete na adrese [https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs) . |Upravit, auditovat, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json) |
 |[Virtuální sítě by měly používat zadanou bránu virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1776c76-f58c-4245-a8d0-2b207198dc8b) |Tato zásada Audituje jakoukoli virtuální síť, pokud výchozí trasa nesměruje na zadanou bránu virtuální sítě. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetwork_ApprovedVirtualNetworkGateway_AuditIfNotExists.json) |
 |[Firewall webových aplikací (WAF) by měla být povolená pro Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |Nasazení firewallu webových aplikací Azure (WAF) před veřejnými webovými aplikacemi za účelem další kontroly příchozího provozu. Firewall webových aplikací (WAF) zajišťuje centralizovanou ochranu webových aplikací před běžnými útoky a ohroženími zabezpečení, jako jsou například injektáže SQL, skriptování mezi weby, místní a vzdálené spuštění souborů. Můžete taky omezit přístup k vašim webovým aplikacím podle zemí, rozsahů IP adres a dalších parametrů http (s) prostřednictvím vlastních pravidel. |Audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
 |[Služba WAF (firewall webových aplikací) by měla být povolená pro službu Azure front-dveří](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |Nasazení firewallu webových aplikací Azure (WAF) před veřejnými webovými aplikacemi za účelem další kontroly příchozího provozu. Firewall webových aplikací (WAF) zajišťuje centralizovanou ochranu webových aplikací před běžnými útoky a ohroženími zabezpečení, jako jsou například injektáže SQL, skriptování mezi weby, místní a vzdálené spuštění souborů. Můžete taky omezit přístup k vašim webovým aplikacím podle zemí, rozsahů IP adres a dalších parametrů http (s) prostřednictvím vlastních pravidel. |Audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |

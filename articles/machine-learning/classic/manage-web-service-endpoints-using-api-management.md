@@ -65,8 +65,8 @@ Vytvoření rozhraní API:
 
 1. Klikněte na **Přidat rozhraní API**.
 2. Zadejte **název webového rozhraní API** (Tento příklad používá rozhraní API pro ukázku demo).
-3. Jako **adresu URL webové služby** zadejte " `https://ussouthcentral.services.azureml.net` ".
-4. Zadejte * * příponu adresy URL webového rozhraní API. Tím se stane poslední část adresy URL, kterou zákazníci použijí pro odesílání požadavků do instance služby (v tomto příkladu se používá "AzureML-demo").
+3. Jako **adresu URL webové služby** zadejte " `https://ussouthcentral.services.azureml.net` &quot;.
+4. Zadejte * * příponu adresy URL webového rozhraní API. Tím se stane poslední část adresy URL, kterou zákazníci použijí pro odesílání požadavků do instance služby (v tomto příkladu se používá &quot;AzureML-demo").
 5. V případě **schématu URL webového rozhraní API** vyberte **https**.
 6. V případě **produktů** vyberte **Starter**.
 7. Klikněte na **Uložit**.

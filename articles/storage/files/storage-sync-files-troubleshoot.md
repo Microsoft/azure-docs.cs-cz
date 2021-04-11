@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491295"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727599"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -373,7 +373,7 @@ Následující tabulka obsahuje všechny znaky Unicode, které Synchronizace sou
 ### <a name="common-sync-errors"></a>Běžné chyby synchronizace
 <a id="-2147023673"></a>**Relace synchronizace byla zrušena.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (desetinné číslo)** | -2147023673 | 
@@ -384,7 +384,7 @@ Relace synchronizace mohou selhat z různých důvodů, včetně restartování 
 
 <a id="-2147012889"></a>**Nebylo možné navázat spojení se službou.**    
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80072EE7 |
 | **HRESULT (desetinné číslo)** | -2147012889 | 
@@ -395,7 +395,7 @@ Relace synchronizace mohou selhat z různých důvodů, včetně restartování 
 
 <a id="-2134376372"></a>**Služba omezila požadavek na uživatele.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (desetinné číslo)** | -2134376372 |
@@ -406,7 +406,7 @@ Není vyžadována žádná akce; Server se znovu pokusí. Pokud tato chyba trv�
 
 <a id="-2134364043"></a>**Synchronizace je zablokovaná, dokud zjišťování změn nedokončí následné obnovení.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (desetinné číslo)** | -2134364043 |
@@ -417,7 +417,7 @@ Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový b
 
 <a id="-2147216747"></a>**Synchronizace se nezdařila, protože synchronizovaná databáze byla uvolněna.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80041295 |
 | **HRESULT (desetinné číslo)** | -2147216747 |
@@ -428,7 +428,7 @@ K této chybě obvykle dochází v případě, že aplikace zálohování vytvo�
 
 <a id="-2134364065"></a>**Synchronizace nemá přístup ke sdílené složce Azure zadané v koncovém bodu cloudu.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (desetinné číslo)** | -2134364065 |
@@ -444,7 +444,7 @@ K této chybě dochází, protože agent Synchronizace souborů Azure nemůže z
 
 <a id="-2134351804"></a>**Synchronizace se nezdařila, protože žádost není autorizována k provedení této operace.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c86044 |
 | **HRESULT (desetinné číslo)** | -2134351804 |
@@ -460,7 +460,7 @@ K této chybě dochází, protože agent Synchronizace souborů Azure nemá opr�
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Použitý název účtu úložiště nelze přeložit.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (desetinné číslo)** | -2134364064 |
@@ -477,7 +477,7 @@ K této chybě dochází, protože agent Synchronizace souborů Azure nemá opr�
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Při přístupu k účtu úložiště došlo k neznámé chybě.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8308a |
 | **HRESULT (desetinné číslo)** | -2134364022 |
@@ -489,7 +489,7 @@ K této chybě dochází, protože agent Synchronizace souborů Azure nemá opr�
 
 <a id="-2134364014"></a>**Synchronizace se nezdařila z důvodu zamčení účtu úložiště.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83092 |
 | **HRESULT (desetinné číslo)** | -2134364014 |
@@ -500,7 +500,7 @@ K této chybě dochází, protože účet úložiště má [Zámek prostředků]
 
 <a id="-1906441138"></a>**Synchronizace se nezdařila z důvodu problému s databází synchronizace.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (desetinné číslo)** | -1906441138 |
@@ -511,7 +511,7 @@ K této chybě dochází, pokud dojde k potížím s interní databází, kterou
 
 <a id="-2134364053"></a>**Verze agenta Synchronizace souborů Azure nainstalovaná na serveru není podporovaná.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (desetinné číslo)** | -2134364053 |
@@ -522,7 +522,7 @@ K této chybě dochází v případě, že se verze agenta Synchronizace soubor�
 
 <a id="-2134351810"></a>**Dosáhli jste limitu úložiště sdílené složky Azure.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (desetinné číslo)** | -2134351810 |
@@ -548,7 +548,7 @@ Pokud je sdílená složka plná a kvóta není nastavená, jedním z možných 
 
 <a id="-2134351824"></a>**Sdílenou složku Azure se nepovedlo najít.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (desetinné číslo)** | -2134351824 |
@@ -564,7 +564,7 @@ Pokud se sdílená složka Azure odstranila, musíte vytvořit novou sdílenou s
 
 <a id="-2134364042"></a>**Synchronizace je pozastavená, i když je toto předplatné Azure pozastavené.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (desetinné číslo)** | -2134364042 |
@@ -575,7 +575,7 @@ K této chybě dochází v případě, že dojde k pozastavení předplatného A
 
 <a id="-2134375618"></a>**Účet úložiště má nakonfigurovanou bránu firewall nebo virtuální sítě.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8033e |
 | **HRESULT (desetinné číslo)** | -2134375618 |
@@ -586,7 +586,7 @@ K této chybě dochází v případě, že je sdílená složka Azure nepřístu
 
 <a id="-2134375911"></a>**Synchronizace se nezdařila z důvodu problému s databází synchronizace.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (desetinné číslo)** | -2134375911 |
@@ -602,7 +602,7 @@ Pokud tato chyba trvá déle než pár hodin, vytvořte žádost o podporu a my 
 
 <a id="-2146762487"></a>**Serveru se nepodařilo navázat zabezpečené připojení. Cloudová služba přijala neočekávaný certifikát.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (desetinné číslo)** | -2146762487 |
@@ -627,7 +627,7 @@ Když nastavíte tuto hodnotu registru, agent Synchronizace souborů Azure při 
 
 <a id="-2147012894"></a>**Nebylo možné navázat spojení se službou.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80072EE2 |
 | **HRESULT (desetinné číslo)** | -2147012894 |
@@ -638,7 +638,7 @@ Když nastavíte tuto hodnotu registru, agent Synchronizace souborů Azure při 
 
 <a id="-2134375680"></a>**Synchronizace se nezdařila z důvodu problému s ověřováním.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (desetinné číslo)** | -2134375680 |
@@ -649,7 +649,7 @@ K této chybě obvykle dochází kvůli nesprávnému času na serveru. Pokud se
 
 <a id="-2134364040"></a>**Synchronizace se nezdařila z důvodu vypršení platnosti certifikátu.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83078 |
 | **HRESULT (desetinné číslo)** | -2134364040 |
@@ -673,7 +673,7 @@ Pokud platnost certifikátu pro ověřování klientů vypršela, vyřešte prob
 
 <a id="-2134375896"></a>**Synchronizace se nezdařila z důvodu nenalezení ověřovacího certifikátu.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c80228 |
 | **HRESULT (desetinné číslo)** | -2134375896 |
@@ -693,7 +693,7 @@ Při řešení tohoto problému postupujte následovně:
 
 <a id="-2134364039"></a>**Synchronizace se nezdařila, protože nebyla nalezena Identita ověřování.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83079 |
 | **HRESULT (desetinné číslo)** | -2134364039 |
@@ -704,14 +704,14 @@ K této chybě dochází kvůli selhání odstranění koncového bodu serveru, 
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Svazek, na kterém je umístěný koncový bod serveru, má nedostatek místa na disku.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (desetinné číslo)** | -1906441711 |
 | **Text chyby** | JET_errLogDiskFull |
 | **Požadována náprava** | Yes |
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (desetinné číslo)** | -2134375654 |
@@ -722,7 +722,7 @@ K této chybě dochází kvůli zaplnění svazku. K této chybě obvykle dochá
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Služba ještě není připravená na synchronizaci s tímto koncovým bodem serveru.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (desetinné číslo)** | -2134364145 |
@@ -733,21 +733,21 @@ K této chybě dochází, protože koncový bod cloudu byl vytvořen s obsahem j
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Synchronizace se nezdařila z důvodu problémů s mnoha jednotlivými soubory.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (desetinné číslo)** | -2134375877 |
 | **Text chyby** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Požadována náprava** | Yes |
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (desetinné číslo)** | -2134375908 |
 | **Text chyby** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Požadována náprava** | Yes |
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (desetinné číslo)** | -2134375853 |
@@ -761,7 +761,7 @@ Relace synchronizace se nezdaří s jednou z těchto chyb, pokud existuje mnoho 
 
 <a id="-2134376423"></a>**Synchronizace se nezdařila z důvodu problému s cestou koncového bodu serveru.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (desetinné číslo)** | -2134376423 |
@@ -772,7 +772,7 @@ Ujistěte se, že cesta existuje, je na místním svazku NTFS a není bodem rozb
 
 <a id="-2134375817"></a>**Synchronizace se nezdařila, protože verze ovladače filtru není kompatibilní s verzí agenta.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (desetinné číslo)** | -2134375817 |
@@ -783,7 +783,7 @@ K této chybě dochází, protože načtená verze ovladače filtru vrstvení cl
 
 <a id="-2134376373"></a>**Služba není momentálně k dispozici.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (desetinné číslo)** | -2134376373 |
@@ -794,7 +794,7 @@ K této chybě dochází kvůli nedostupnosti služby Synchronizace souborů Azu
 
 <a id="-2146233088"></a>**Synchronizace se nezdařila z důvodu výjimky.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80131500 |
 | **HRESULT (desetinné číslo)** | -2146233088 |
@@ -805,7 +805,7 @@ K této chybě dochází, protože synchronizace selhala kvůli výjimce. Pokud 
 
 <a id="-2134364045"></a>**Synchronizace se nezdařila, protože u účtu úložiště došlo k převzetí služeb při selhání do jiné oblasti.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83073 |
 | **HRESULT (desetinné číslo)** | -2134364045 |
@@ -816,7 +816,7 @@ K této chybě dochází, protože došlo k převzetí služeb účtu úložišt
 
 <a id="-2134375922"></a>**Synchronizace se nezdařila z důvodu přechodného problému s databází synchronizace.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (desetinné číslo)** | -2134375922 |
@@ -827,7 +827,7 @@ K této chybě dochází kvůli internímu problému s databází synchronizace.
 
 <a id="-2134364024"></a>**Synchronizace se nezdařila z důvodu změny v Azure Active Directory tenant**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83088 |
 | **HRESULT (desetinné číslo)** | -2134364024 | 
@@ -840,7 +840,7 @@ Až budete mít nejnovější verzi agenta, musíte aplikaci Microsoft. StorageS
 
 <a id="-2134364010"></a>**Synchronizace se nezdařila z důvodu nekonfigurace výjimky brány firewall a virtuální sítě**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83096 |
 | **HRESULT (desetinné číslo)** | -2134364010 | 
@@ -851,7 +851,7 @@ K této chybě dochází, pokud jsou v účtu úložiště povolena nastavení b
 
 <a id="-2147024891"></a>**Synchronizace se nezdařila, protože oprávnění ve složce System Volume Information jsou nesprávná.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80070005 |
 | **HRESULT (desetinné číslo)** | -2147024891 |
@@ -870,7 +870,7 @@ Při řešení tohoto problému postupujte následovně:
 
 <a id="-2134375810"></a>**Synchronizace se nezdařila, protože sdílená složka Azure byla odstraněna a znovu vytvořena.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8027e |
 | **HRESULT (desetinné číslo)** | -2134375810 |
@@ -889,7 +889,7 @@ Pokud chcete tento problém vyřešit, provedením následujících kroků odstr
 
 <a id="-2145844941"></a>**Synchronizace se nezdařila, protože požadavek HTTP byl přesměrován**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80190133 |
 | **HRESULT (desetinné číslo)** | -2145844941 |
@@ -900,7 +900,7 @@ K této chybě dochází, protože Synchronizace souborů Azure nepodporuje pře
 
 <a id="-2134364027"></a>**Během offline přenosu dat vypršel časový limit, ale stále probíhá.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (desetinné číslo)** | -2134364027 |
@@ -911,7 +911,7 @@ K této chybě dojde, když operace přijímání dat překročí časový limit
 
 <a id="-2134375814"></a>**Synchronizace se nezdařila, protože na serveru nelze nalézt cestu koncového bodu serveru.**  
 
-| | |
+| Chyba | Kód |
 |-|-|
 | **HRESULT** | 0x80c8027a |
 | **HRESULT (desetinné číslo)** | -2134375814 |

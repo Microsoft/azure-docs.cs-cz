@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
 ms.openlocfilehash: 78ac9ae4aa8611f50caa94c84d3e6c95e58fc91c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102200729"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Použití kontejnerů služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči v místním prostředí použijte následující požadavky:
 

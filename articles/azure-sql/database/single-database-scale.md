@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625259"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106649"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování prostředků jednoúčelové databáze ve službě Azure SQL Database
 
@@ -62,9 +62,6 @@ Odhadovaná latence změny úrovně služby, škálování výpočetní velikost
 >
 > Pokud chcete zjistit, jestli databáze používá úložiště PFS, spusťte v kontextu databáze následující dotaz. Pokud je hodnota ve sloupci AccountType `PremiumFileStorage` nebo `PremiumFileStorage-ZRS` , databáze používá úložiště PFS.
 
-[!NOTE]
- Redundantní vlastnost zóny zůstane při škálování od Pro důležité obchodní informace do Pro obecné účely úrovně stejná jako výchozí. Latence pro tento downgrade v případě, že je povolená redundance zóny a latence přechodu na redundanci zóny pro Pro obecné účely úroveň bude úměrná velikosti databáze.
-
 ```sql
 SELECT s.file_id,
        s.type_desc,
@@ -73,6 +70,9 @@ SELECT s.file_id,
 FROM sys.database_files AS s
 WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
+
+> [!NOTE]
+> Redundantní vlastnost zóny zůstane při škálování od Pro důležité obchodní informace do Pro obecné účely úrovně stejná jako výchozí. Latence pro tento downgrade v případě, že je povolená redundance zóny a latence přechodu na redundanci zóny pro Pro obecné účely úroveň bude úměrná velikosti databáze.
 
 > [!TIP]
 > Informace o monitorování probíhajících operací najdete v tématech: [Správa operací pomocí příkazu SQL REST API](/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).

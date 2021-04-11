@@ -8,10 +8,10 @@ ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
 ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99594227"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybridní připojení Azure App Service
@@ -160,7 +160,7 @@ Pokud chcete někomu mimo předplatné povolit hostování instance HCM pro dan�
 
 ![Ruční přidání hybridního připojení][11]
 
-### <a name="upgrade"></a>Upgradovat ###
+### <a name="upgrade"></a>Upgrade ###
 
 Existují pravidelné aktualizace Správce hybridního připojení, které řeší problémy nebo poskytují vylepšení. Po vydání upgradů se v uživatelském rozhraní HCM zobrazí místní nabídka. Při použití upgradu se změny projeví a restartuje HCM. 
 
@@ -199,7 +199,7 @@ Existující hybridní připojení můžete přidat k ostatním App Service Web 
 
 Kdokoli, kdo má `Reader` přístup k Relay, uvidí hybridní  připojení při pokusu o jeho přidání do webové aplikace v Azure Portal, ale nebude ho moct _Přidat_ , protože nemá oprávnění k načtení připojovacího řetězce, který se používá k navázání připojení přenosu. Aby bylo možné úspěšně přidat hybridní připojení, musí mít `listKeys` oprávnění ( `Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action` ). `Contributor`Role nebo jakákoli jiná role, která zahrnuje toto oprávnění pro předávání, umožní uživatelům používat hybridní připojení a přidat ho do vlastních Web Apps.
 
-## <a name="troubleshooting"></a>Poradce při potížích ##
+## <a name="troubleshooting"></a>Řešení potíží ##
 
 Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje **, vaše** hybridní připojení není nakonfigurované na žádném HCM, které má přístup k Azure. Když se HCM ukáže jako **Nepřipojeno** , je třeba kontrolovat několik věcí:
 

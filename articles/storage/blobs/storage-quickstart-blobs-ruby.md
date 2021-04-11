@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: ec3fc490466f5fce36b67b2f3744e4ee5cc0ae79
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96781092"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>Rychlý Start: Klientská knihovna pro Azure Blob Storage pro Ruby
 
 Naučte se pomocí Ruby vytvářet, stahovat a vypisovat objekty BLOB v kontejneru ve Microsoft Azure Blob Storage.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 

@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
 ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701633"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a nasadit první webovou apli
 
 Až budete hotovi, budete mít skupinu prostředků Azure, která se skládá z App Service plánu hostování a App Service s nasazenou webovou aplikací.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - Nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a webu** .
@@ -315,12 +315,12 @@ Vzorový kód .NET Core je spuštěný v App Service v systému Linux s předdef
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
-## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
+## <a name="update-and-redeploy-the-code&quot;></a>Aktualizace a opětovné nasazení kódu
 
 V místním adresáři otevřete soubor _Startup.cs_. Proveďte malou změnu textu ve volání metody `context.Response.WriteAsync`:
 
 ```csharp
-await context.Response.WriteAsync("Hello Azure!");
+await context.Response.WriteAsync(&quot;Hello Azure!");
 ```
 
 Uložte změny a pak znovu nasaďte aplikaci pomocí `az webapp up` příkazu:
