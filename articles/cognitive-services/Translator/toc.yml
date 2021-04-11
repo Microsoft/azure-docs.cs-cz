@@ -132,8 +132,6 @@
           href: custom-translator/training-and-model.md
         - name: Skóre BLEU
           href: custom-translator/what-is-bleu-score.md
-        - name: Šifrování
-          href: encrypt-data-at-rest.md
 - name: Překlad dokumentu
   items:
     - name: Co je překlad dokumentů?
@@ -146,8 +144,6 @@
           href: document-translation/create-sas-tokens.md
     - name: Reference
       items:
-        - name: REST API překladu dokumentů
-          href: /rest/api/cognitiveservices/translator/documenttranslation
         - name: Získat formáty dokumentů
           href: document-translation/reference/get-document-formats.md
         - name: Získat formáty glosáře
@@ -170,5 +166,9 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
+    - name: Šifrování
+      href: encrypt-data-at-rest.md
     - name: Vzorový kód na GitHubu
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: Ochrana osobních údajů a soubory cookie
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

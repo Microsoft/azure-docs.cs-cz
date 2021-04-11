@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/03/2021
 ms.author: jencook
 ms.openlocfilehash: 757ce9b7502316bbc8a5b8f27ba672048b7bbace
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102563417"
 ---
 # <a name="fortanix-confidential-computing-manager-in-an-azure-managed-application"></a>Fortanix důvěrného Computing Manageru ve spravované aplikaci Azure
@@ -24,7 +24,7 @@ Fortanix je dodavatel softwaru třetí strany s produkty a službami postaveným
 > [!NOTE]
 >Produkty, na které se odkazuje v tomto dokumentu, nejsou pod kontrolou Microsoftu. Společnost Microsoft poskytuje tyto informace jenom jako pohodlí a odkaz na tyto produkty od jiných výrobců nepředpokládá, že Microsoft.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Soukromý registr Docker pro nabízení převedených imagí aplikace
 - Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.

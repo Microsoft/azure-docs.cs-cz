@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b43a99eb561cbfa340e0b3f318782bef2ca17c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11182b8331f218b970d867764f575ba5b7854d62
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023431"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550689"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -66,7 +66,7 @@ Obě možnosti umožňují správcům:
 > [!TIP]
 > - Hybridní zařízení s Windows 10 připojená k Azure AD nemají vlastníka. Pokud hledáte zařízení podle vlastníka a nenalezli jste ho, vyhledejte ID zařízení.
 >
-> - Pokud se v zaregistrovaném sloupci zobrazí zařízení, které je připojené k hybridní službě Azure AD se stavem "čeká", znamená to, že zařízení bylo synchronizované z Azure AD Connect a čeká na dokončení registrace z klienta. Přečtěte si další informace o [Naplánování hybridní implementace služby Azure AD JOIN](hybrid-azuread-join-plan.md). Další informace najdete v článku o [nejčastějších](faq.md)dotazech k zařízení.
+> - Pokud se v zaregistrovaném sloupci zobrazí zařízení, které je připojené k hybridní službě Azure AD se stavem "čeká", znamená to, že zařízení bylo synchronizované z Azure AD Connect a čeká na dokončení registrace z klienta. Přečtěte si další informace o [Naplánování hybridní implementace služby Azure AD JOIN](hybrid-azuread-join-plan.md). Další informace najdete v článku o [nejčastějších](faq.yml)dotazech k zařízení.
 >
 > - U některých zařízení s iOS můžou názvy zařízení, které obsahují apostrofy, potenciálně používat různé znaky, které vypadají jako apostrofy. Takže hledání těchto zařízení je trochu obtížné – Pokud nevidíte výsledky hledání správně, ujistěte se, že hledaný řetězec obsahuje znak, který se shoduje s apostrofem.
 
@@ -123,7 +123,7 @@ Chcete-li zobrazit nebo zkopírovat klíče nástroje BitLocker, musíte být bu
 - Správce helpdesku
 - Správce služby Intune
 - Správce zabezpečení
-- Čtenář zabezpečení
+- Čtecí modul zabezpečení
 
 ### <a name="device-list-filtering-preview"></a>Filtrování seznamu zařízení (Preview)
 

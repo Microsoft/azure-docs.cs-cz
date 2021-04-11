@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773500"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552593"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -738,6 +738,34 @@ Pro existující clustery AKS můžete také přidat nový fond uzlů a pro své
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
+### <a name="use-a-public-ip-prefix"></a>Použít předponu veřejné IP adresy
+
+Existuje několik [výhod používání předpony veřejné IP adresy][public-ip-prefix-benefits]. AKS podporuje používání adres z existující předpony veřejné IP adresy pro vaše uzly předáním ID prostředku s příznakem `node-public-ip-prefix` při vytváření nového clusteru nebo přidáním fondu uzlů.
+
+Nejdřív vytvořte předponu veřejné IP adresy pomocí [AZ Network Public-IP prefix Create][az-public-ip-prefix-create]:
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+Podívejte se na výstup a poznamenejte si `id` předponu:
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+Nakonec při vytváření nového clusteru nebo přidání nového fondu uzlů použijte příznak `node-public-ip-prefix` a předejte mu ID prostředku předpony:
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>Vyhledat veřejné IP adresy pro uzly
+
 Veřejné IP adresy pro uzly můžete vyhledat různými způsoby:
 
 * Použijte příkaz Azure CLI [AZ VMSS list-instance-Public-IP][az-list-ips].
@@ -821,3 +849,5 @@ Používejte [skupiny umístění pro Proximity][reduce-latency-ppg] , abyste sn
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

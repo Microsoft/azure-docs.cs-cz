@@ -12,10 +12,10 @@ ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
 ms.openlocfilehash: efedb21a1ec1ed53a8c6bfadf337d23a89c04383
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520172"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak sdílet kanál strojového učení se svými k
 
 Kanály strojového učení jsou opakovaně použitelnými pracovními postupy pro úlohy strojového učení. Jedna výhoda kanálů zvyšuje spolupráci. Můžete také vytvářet verze kanálů a umožnit tak zákazníkům používat aktuální model při práci na nové verzi. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvoření [pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu
 
@@ -350,13 +350,13 @@ Můžete také spustit publikovaný kanál z studia:
 
 1. Vyberte konkrétní kanál, který se má spustit, spotřebovat nebo zkontrolovat výsledky předchozích spuštění koncového bodu kanálu.
 
-## <a name="disable-a-published-pipeline"></a>Zakázání publikovaného kanálu
+## <a name="disable-a-published-pipeline&quot;></a>Zakázání publikovaného kanálu
 
 Pokud chcete kanál ze seznamu publikovaných kanálů skrýt, můžete ho zakázat v sadě Studio nebo v sadě SDK:
 
 ```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
-p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p = PublishedPipeline.get(ws, id=&quot;068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 

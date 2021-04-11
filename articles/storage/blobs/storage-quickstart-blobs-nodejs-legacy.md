@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure v10 za účelem pro JavaScript'
 description: Vytváření, odesílání a odstraňování objektů BLOB a kontejnerů v Node.js pomocí Azure Storage klientské knihovny v10 za účelem pro JavaScript
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ddcce3e624de7e8bed62783bdc22c5c4211e19e2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98599446"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280101"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node.js
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Node.js. Obj
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node.js](storage-quickstart-blobs-nodejs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).

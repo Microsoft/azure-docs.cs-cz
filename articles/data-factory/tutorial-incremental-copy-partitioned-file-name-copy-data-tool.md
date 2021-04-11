@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
 ms.openlocfilehash: 26703920fda8746badf085f96686f922ee250513
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104606629"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného do oddílů pomocí nástroje Kopírování dat
@@ -30,7 +30,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření kanálu pomocí nástroje pro kopírování dat
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure**: jako _zdroj_  dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).

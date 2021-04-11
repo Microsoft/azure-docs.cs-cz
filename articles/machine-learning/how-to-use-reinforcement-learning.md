@@ -11,10 +11,10 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q2
 ms.openlocfilehash: 4c03016d003978b3c56361595bec7c559205574b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520876"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
@@ -36,7 +36,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spusťte tento kód v některém z těchto prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. Můžete rychle klonovat a spustit vyztužení ukázkových poznámkových bloků na instanci služby Azure Machine Learning Compute.
 

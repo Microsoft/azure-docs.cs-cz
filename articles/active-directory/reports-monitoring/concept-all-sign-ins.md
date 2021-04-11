@@ -17,19 +17,19 @@ ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574556"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552729"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Sestavy aktivit přihlašování Azure Active Directory – Preview
 
 Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
 
 - **Aktivita** 
-    - **Přihlášení** – informace o tom, kdy se uživatelé, aplikace a spravované prostředky přihlásí ke službě Azure AD a chtějí získat přístup k prostředkům.
+    - **Přihlášení** – informace o tom, kdy se uživatelé, aplikace a spravované prostředky přihlásí ke službě Azure AD a přístup k prostředkům.
     - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitě systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
 - **Zabezpečení** 
     - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
@@ -210,7 +210,7 @@ Aby se usnadnilo shrnutí dat, jsou seskupeny neinteraktivní přihlašovací ud
 
 - Aplikace
 
-- User
+- Uživatel
 
 - IP adresa
 

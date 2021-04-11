@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095565"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552427"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Změna podpory kanálu v Azure Blob Storage
 
@@ -67,14 +67,11 @@ Při povolování kanálu změn je potřeba mít na paměti několik věcí.
 Povolte na svém účtu úložiště změnu kanálu pomocí Azure Portal:
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště.
+1. V části **BLOB Service** přejděte na možnost **Ochrana dat** .
+1. V části **sledování** vyberte **zapnout kanál změny objektů BLOB**.
+1. Klikněte na tlačítko **Uložit** a potvrďte nastavení ochrany dat.
 
-2. Přejděte do možnosti **Ochrana dat** v části **BLOB Service**.
-
-3. Klikněte na možnost **povoleno** v části **objekt pro změnu datového kanálu**.
-
-4. Klikněte na tlačítko **Uložit** a potvrďte nastavení **ochrany dat** .
-
-    ![Snímek obrazovky zobrazující nastavení ochrany dat](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
+    :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit informační kanál změn v Azure Portal":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

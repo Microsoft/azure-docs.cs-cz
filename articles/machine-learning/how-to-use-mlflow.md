@@ -12,10 +12,10 @@ ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 02684ba91c207357e15684870a6fa0ceab3e17ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520961"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Analýza a sledování modelů ML pomocí MLflow a Azure Machine Learning (Preview)
@@ -60,7 +60,7 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 |Monitorování výkonu modelu||✓|  |   |
 | Zjišťování odchylek dat |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte balíček `azureml-mlflow`. 
     * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.

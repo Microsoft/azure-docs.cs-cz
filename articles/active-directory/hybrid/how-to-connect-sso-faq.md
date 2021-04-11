@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 52b450ecc8aff379dbdb8d58f9b7609cf730ad27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98107867"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731662"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
@@ -126,7 +126,7 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
 
    Po dokončení průvodce se ve vašem tenantovi zakáže bezproblémové jednotné přihlašování. Zobrazí se ale zpráva na obrazovce, která načte následující:
 
-   Jednotné přihlašování je teď zakázané, ale k provedení vyčištění je potřeba provést další kroky ručního postupu. Další informace
+   Jednotné přihlašování je teď zakázané, ale k provedení vyčištění je potřeba provést další kroky ručního postupu. Další [informace](tshoot-connect-sso.md#step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature)
 
    Pokud chcete dokončit proces vyčištění, postupujte podle kroků 2 a 3 na místním serveru, na kterém běží Azure AD Connect.
 

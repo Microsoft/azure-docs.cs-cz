@@ -12,10 +12,10 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: ea984fdc4abeb08f4b080e913a0c34b99c59d93c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102561105"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozšíření pro systém Linux snímku virtuálního počítače pro Azure Backup
@@ -26,7 +26,7 @@ Azure Backup poskytuje podporu pro zálohování úloh z místního prostředí 
 
 Rozšíření VMSnapshot se zobrazí v Azure Portal pouze pro nespravované virtuální počítače.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 Seznam podporovaných operačních systémů najdete v tématu operační systémy, které [podporuje Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)

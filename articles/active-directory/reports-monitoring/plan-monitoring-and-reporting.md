@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577763"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552610"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -47,7 +47,7 @@ S monitorováním Azure AD můžete směrovat protokoly do:
 * centrum událostí Azure, kde se můžete integrovat s existujícími nástroji SIEM, jako je Splunk, SumoLogic nebo QRadar.
 
 > [!NOTE]
-Nedávno jsme začali používat místo Log Analytics Azure Monitor protokoly. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](../../azure-monitor/data-platform.md). Podrobnosti najdete v tématu [Azure monitor změny terminologie](../../azure-monitor/terminology.md) .
+> Nedávno jsme začali používat místo Log Analytics Azure Monitor protokoly. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](../../azure-monitor/data-platform.md). Podrobnosti najdete v tématu [Azure monitor změny terminologie](../../azure-monitor/terminology.md) .
 
 [Přečtěte si další informace o zásadách uchovávání sestav](./reference-reports-data-retention.md).
 
@@ -147,7 +147,7 @@ Sestavy služby Azure AD mohou číst následující role:
 
 * Správce zabezpečení
 
-* Čtenář zabezpečení
+* Čtecí modul zabezpečení
 
 * Čtenář sestav
 

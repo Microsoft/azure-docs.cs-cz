@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd047419275d98049f883bb88a83708a9dfdd7d3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199777"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066887"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
 
@@ -36,7 +36,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 > * Spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra.
 > * Zobrazte výsledky a ověřte, že rozšíření zprávy fungují podle očekávání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

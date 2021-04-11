@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d657f1df14b083631227cb7c19f64b65be8801d0
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587861"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010461"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Úvod k zabezpečení účtů služeb Azure
 
@@ -26,7 +26,7 @@ Existují tři typy účtů služeb, které jsou nativně Azure Active Directory
 
 ## <a name="types-of-azure-active-directory-service-accounts"></a>Typy účtů Azure Active Directory služby
 
-Pro služby hostované v Azure doporučujeme používat spravovanou identitu, pokud je to možné, a instanční objekt, pokud ne. Spravované identity se nedají použít pro služby hostované mimo Azure. V takovém případě doporučujeme instanční objekt. Pokud můžete použít spravovanou identitu nebo instanční objekt, udělejte to. Nedoporučujeme používat uživatelský účet Azure Active Directory jako instanční objekt. Souhrn najdete v následující tabulce.
+Pro služby hostované v Azure doporučujeme používat spravovanou identitu, pokud je to možné, a instanční objekt, pokud ne. Spravované identity se nedají použít pro služby hostované mimo Azure. V takovém případě doporučujeme instanční objekt. Pokud můžete použít spravovanou identitu nebo instanční objekt, udělejte to. Nedoporučujeme používat účet uživatele Azure Active Directory jako účet služby. Souhrn najdete v následující tabulce.
  
 
 | Hostování služeb| Spravovaná identita| Instanční objekt| Uživatelský účet Azure |
@@ -54,7 +54,7 @@ Instanční objekt je místní reprezentace objektu aplikace v jednom tenantovi 
 
 Existují dva mechanismy ověřování pomocí instančních objektů – klientské certifikáty a tajné klíče klienta. Certifikáty jsou bezpečnější: Pokud je to možné, používejte klientské certifikáty. Na rozdíl od klientských tajných klíčů nelze klientské certifikáty omylem vkládat do kódu.
 
-Informace o zabezpečení instančních objektů najdete v tématu zabezpečení instančních objektů.
+Informace o zabezpečení instančních objektů najdete v tématu [zabezpečení instančních objektů](service-accounts-principal.md).
 
  
 ## <a name="next-steps"></a>Další kroky

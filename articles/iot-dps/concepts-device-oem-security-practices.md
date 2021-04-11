@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527203"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010537"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Postupy zabezpečení pro výrobce zařízení Azure IoT
 V případě více výrobců zařízení IoT je užitečné zjistit pokyny k běžným postupům. Tento článek shrnuje doporučené postupy zabezpečení, které je potřeba vzít v úvahu při výrobě zařízení pro použití se službou Azure IoT Device Provisioning (DPS).  
@@ -177,7 +177,7 @@ V tuto chvíli procesu nainstalujte klienta DPS spolu s rozsahem ID a globální
     > Pokud používáte čip TPM softwaru, můžete ho hned nainstalovat.  Extrahujte EK_pub ve stejnou dobu.
 
 #### <a name="step-4-device-is-packaged-and-sent-to-the-warehouse"></a>Krok 4: zařízení je zabaleno a odesláno do skladu.
-Zařízení může být ve skladu po dobu 6-12 měsíců, než se nasadí. 
+Zařízení může být někdy ve skladu až po dobu až do roku, než se nasadí a zřídí s DPS.  Pokud zařízení v datovém skladu po dlouhou dobu před nasazením zaplníte, mohou zákazníci, kteří nasazují zařízení, potřebovat aktualizovat firmware, software nebo přihlašovací údaje s vypršenou platností.
 
 #### <a name="step-5-device-is-installed-into-the-location"></a>Krok 5: zařízení se instaluje do umístění.
 Jakmile zařízení dorazí do konečného umístění, provede to prostřednictvím automatizovaného zřizování s DPS.

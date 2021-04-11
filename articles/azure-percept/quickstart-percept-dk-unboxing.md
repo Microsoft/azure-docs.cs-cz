@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
 ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104608176"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>Rychlý Start: Unbox a sestavení komponent Azure Percept DK
 
 Po přijetí služby Azure Percept DK si v této příručce najdete informace o tom, jak připojit komponenty a zapnout zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Percept DK (DevKit)
 - P7 Screwdriver (nepovinný, použitý k zabezpečení konektoru napájecího kabelu do nosné desky)

@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/08/2018
+ms.date: 04/06/2021
 ms.author: kumud
-ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 077e92b67f0cf6dac673cc870b7ff8c86fbe60dd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234150"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551284"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
 
-Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. Aby bylo možné zvolit řešení pro zotavení po havárii, musí vlastníci obchodních a technologických funkcí nejprve určit úroveň funkčnosti, která je vyžadována během havárie, jako je například nedostupné, částečně dostupná prostřednictvím omezené funkčnosti nebo plně dostupná.
+Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. Aby bylo možné zvolit řešení pro zotavení po havárii, firmy a vlastníci technologického programu, musí nejprve určit úroveň funkčnosti, která je požadována během havárie, jako je například nedostupné, částečně dostupná prostřednictvím omezené funkčnosti nebo plně dostupná.
 Většina podnikových zákazníků vybírá architekturu s více oblastmi pro odolnost proti selhání aplikace nebo úrovně infrastruktury. Zákazníci si můžou v poli Quest vybrat několik přístupů, aby dosáhli převzetí služeb při selhání a vysokou dostupnost prostřednictvím redundantní architektury. Tady jsou některé z oblíbených přístupů:
 
-- **Aktivní – pasivní s studeným pohotovostním režimem**: v tomto řešení pro převzetí služeb při selhání nejsou virtuální počítače a další zařízení běžící v pohotovostním režimu aktivní, dokud nebudete potřebovat převzetí služeb při selhání. Provozní prostředí se ale replikuje ve formě záloh, imagí virtuálních počítačů nebo šablon Správce prostředků do jiné oblasti. Tento mechanismus převzetí služeb při selhání je cenově výhodnější, ale trvá déle, než se dokončí úplné převzetí služeb při selhání.
+- **Aktivní – pasivní s studeným pohotovostním režimem**: v tomto řešení s podporou převzetí služeb při selhání nejsou virtuální počítače a další zařízení běžící v pohotovostní oblasti aktivní, dokud nebude potřeba převzetí služeb při selhání. Produkční prostředí se ale bude replikovat ve formě záloh, imagí virtuálních počítačů nebo šablon Správce prostředků do jiné oblasti. Tento mechanismus převzetí služeb při selhání je cenově výhodnější, ale trvá déle, než se dokončí úplné převzetí služeb při selhání.
  
     ![Aktivní/pasivní s studeným pohotovostním režimem](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
     *Obrázek – aktivní/pasivní s konfigurací zotavení po havárii v pohotovostním režimu*
 
-- **Aktivní/pasivní s pilotním světlem**: v tomto řešení pro převzetí služeb při selhání je pohotovostní prostředí nastavené s minimální konfigurací. Instalační program má pouze nezbytné služby, které jsou spuštěny pro podporu pouze minimální a kritické sady aplikací. V jeho nativním formátu může tento scénář provádět jenom minimální funkce, ale může škálovat a vytvářet další služby, aby se při převzetí služeb při selhání provádělo hromadné zatížení v produkčním prostředí.
+- **Aktivní/pasivní s pilotním světlem**: v tomto řešení pro převzetí služeb při selhání je pohotovostní prostředí nastavené s minimální konfigurací. Instalační program má pouze nezbytné služby, které jsou spuštěny pro podporu pouze minimální a kritické sady aplikací. V jeho nativním formátu může tento scénář provádět jenom minimální funkce, ale může škálovat a vytvářet víc služeb, aby se při převzetí služeb při selhání provádělo hromadné načtení z provozu.
     
     ![Aktivní/pasivní s pilotním světlem](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Obrázek: aktivní/pasivní s pilotní konfigurací – konfigurace zotavení po havárii*
 
-- **Aktivní/pasivní s teplým pohotovostním režimem**: v tomto řešení převzetí služeb při selhání je pohotovostní oblast předem zahřívání a je připravená na základní zatížení, automatické škálování je zapnuté a všechny instance jsou v provozu. Toto řešení se neškáluje, aby bylo možné provádět úplné provozní zatížení, ale je funkční a všechny služby jsou spuštěné. Toto řešení je rozšířenou verzí přístupového světla pilotního přístupu.
+- **Aktivní/pasivní s teplým pohotovostním režimem**: v tomto řešení s podporou převzetí služeb při selhání se tato oblast dokončí předem a je připravená na získání základního zatížení, automatické škálování je zapnuté a všechny instance jsou spuštěné. Toto řešení se neškáluje tak, aby bylo možné provádět úplné provozní zatížení, ale je funkční a všechny služby jsou spuštěné. Toto řešení je rozšířenou verzí přístupového světla pilotního přístupu.
     
     ![Aktivní/pasivní s teplým pohotovostním režimem](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -64,7 +64,7 @@ Je důležité pochopit několik konceptů služby DNS, které jsou široce pou�
 - **Priorita směrování** – priorita směrování závisí na kontrolách stavu koncových bodů. Služba Azure Traffic Manager ve výchozím nastavení odesílá veškerý provoz do koncového bodu s nejvyšší prioritou a při selhání nebo havárie Traffic Manager směruje provoz do sekundárního koncového bodu. Další informace najdete v tématu [Priorita metody směrování](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
 
 ## <a name="manual-failover-using-azure-dns"></a>Ruční převzetí služeb při selhání pomocí Azure DNS
-Řešení Azure DNS ručního převzetí služeb při selhání pro zotavení po havárii používá standardní mechanismus DNS pro převzetí služeb při selhání záložní lokality. Ruční možnost prostřednictvím Azure DNS funguje nejlépe při použití ve spojení s pohotovostním nebo zkušebním přístupem. 
+Řešení Azure DNS ručního převzetí služeb při selhání pro zotavení po havárii používá standardní mechanismus DNS pro převzetí služeb při selhání záložní lokalitou. Ruční možnost prostřednictvím Azure DNS funguje nejlépe při použití ve spojení s pohotovostním nebo zkušebním přístupem. 
 
 ![Ruční převzetí služeb při selhání pomocí Azure DNS](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
 
@@ -94,7 +94,7 @@ V rámci této zóny vytvořte tři záznamy (například www \. contoso.com, Pr
 
 *Obrázek – vytvoření záznamů zóny DNS v Azure*
 
-V tomto scénáři má web na webu \. contoso.com hodnotu TTL 30 minut, což je dobře pod uvedeným RTO a odkazuje na produkční web prod.contoso.com. Tato konfigurace je během normálních obchodních operací. Hodnota TTL pro prod.contoso.com a dr.contoso.com byla nastavena na 300 sekund nebo 5 minut. Můžete použít službu monitorování Azure, jako je Azure Monitor nebo Azure App Insights, nebo jakákoli řešení monitorování partnerů, jako je dynaTrace, můžete dokonce použít domácí vypěstovaná řešení, která můžou monitorovat nebo detekovat selhání na úrovni aplikace nebo virtuální infrastruktury.
+V tomto scénáři má web na webu \. contoso.com hodnotu TTL 30 minut, což je dobře pod uvedeným RTO a odkazuje na produkční web prod.contoso.com. Tato konfigurace je během normálních obchodních operací. Hodnota TTL pro prod.contoso.com a dr.contoso.com byla nastavena na 300 sekund nebo 5 minut. Můžete použít službu monitorování Azure, jako je Azure Monitor nebo Azure App Insights, nebo jakákoli řešení monitorování partnerů, jako je dynaTrace. Můžete dokonce použít domácí vypěstovaná řešení, která můžou monitorovat nebo detekovat selhání na úrovni aplikace nebo virtuální infrastruktury.
 
 ### <a name="step-3-update-the-cname-record"></a>Krok 3: aktualizace záznamu CNAME
 
@@ -126,7 +126,7 @@ Pokud máte složité architektury a několik sad prostředků schopných prová
 *Obrázek – automatické převzetí služeb při selhání s využitím Azure Traffic Manager*
 
 Nicméně pouze primární oblast aktivně zpracovává síťové požadavky uživatelů. Sekundární oblast bude aktivní pouze v případě, že dojde k přerušení služby v primární oblasti. V takovém případě všechny nové požadavky na síť směrují do sekundární oblasti. Vzhledem k tomu, že je záloha databáze skoro okamžitá, mají obě služby Vyrovnávání zatížení IP adresy, které se můžou kontrolovat stav a instance jsou vždycky v provozu, tato topologie nabízí možnost přechodu na RTO a převzetí služeb při selhání bez nutnosti ručního zásahu. Sekundární oblast převzetí služeb při selhání musí být připravená přejít hned po selhání primární oblasti.
-Tento scénář je ideální pro použití Traffic Manager Azure, která obsahuje předem připravené sondy pro různé typy kontrol stavu, včetně http/https a TCP. Azure Traffic Manager má také modul pravidel, který se dá nakonfigurovat na převzetí služeb při selhání, pokud dojde k selhání, jak je popsáno níže. Pojďme zvážit následující řešení pomocí Traffic Manager:
+Tento scénář je ideální pro použití Traffic Manager Azure, která obsahuje předem připravené sondy pro různé typy kontrol stavu, včetně http/https a TCP. Azure Traffic Manager má také modul pravidel, který se dá nakonfigurovat tak, aby převzal služby při selhání, jak je popsáno níže. Pojďme zvážit následující řešení pomocí Traffic Manager:
 - Zákazník má oblast #1 koncový bod známý jako prod.contoso.com se statickou IP adresou 100.168.124.44 a oblastí #2 koncový bod známý jako dr.contoso.com se statickou IP adresou jako 100.168.124.43. 
 -   Každé z těchto prostředí je frontou prostřednictvím veřejné vlastnosti, jako je třeba nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení je možné nakonfigurovat tak, aby měl koncový bod založený na DNS nebo plně kvalifikovaný název domény (FQDN), jak je uvedeno výše.
 -   Všechny instance v oblasti 2 jsou při replikaci téměř v reálném čase s oblastí 1. Kromě toho jsou image počítačů aktuální a všechna data softwaru a konfigurace jsou opravená a jsou v souladu s oblastí 1.  
@@ -155,7 +155,7 @@ Podobně Vytvořte i koncový bod obnovení po havárii v rámci Traffic Manager
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Krok 3: nastavení kontroly stavu a konfigurace převzetí služeb při selhání
 
-V tomto kroku nastavíte hodnotu TTL pro DNS na 10 sekund, která je zavedená z většiny rekurzivních překladačů internetového přenosu. Tato konfigurace znamená, že žádné překladače DNS nebudou tyto informace ukládat do mezipaměti déle než 10 sekund. Pro nastavení monitorování koncového bodu je cesta aktuální nastavená na/nebo root, ale můžete upravit nastavení koncového bodu a vyhodnotit cestu, například prod.contoso.com/index. Níže uvedený příklad ukazuje protokol **https** jako protokol zjišťování. Můžete ale také zvolit **protokol HTTP** nebo **TCP** . Volba protokolu závisí na koncové aplikaci. Interval zjišťování je nastavený na 10 sekund, který umožňuje rychlé zjišťování a opakování je nastavené na 3. V důsledku toho Traffic Manager převzetí služeb při selhání druhého koncového bodu, pokud dojde k selhání tří po sobě jdoucích intervalů. Následující vzorec definuje celkovou dobu automatizovaného převzetí služeb při selhání: čas pro převzetí služeb při selhání = TTL + opakování * interval zjišťování a v tomto případě je tato hodnota 10 + 3 × 10 = 40 sekund (max).
+V tomto kroku nastavíte hodnotu TTL pro DNS na 10 sekund, která je zavedená z většiny rekurzivních překladačů internetového přenosu. Tato konfigurace znamená, že žádné překladače DNS nebudou tyto informace ukládat do mezipaměti déle než 10 sekund. Pro nastavení monitorování koncového bodu je cesta aktuální nastavená na/nebo root, ale můžete upravit nastavení koncového bodu a vyhodnotit cestu, například prod.contoso.com/index. Níže uvedený příklad ukazuje protokol **https** jako protokol zjišťování. Můžete ale také zvolit **protokol HTTP** nebo **TCP** . Volba protokolu závisí na koncové aplikaci. Interval zjišťování je nastavený na 10 sekund, který umožňuje rychlé zjišťování a opakování je nastavené na 3. V důsledku toho Traffic Manager převzít služby při selhání druhého koncového bodu, pokud dojde k selhání tří po sobě jdoucích intervalů. Následující vzorec definuje celkovou dobu automatizovaného převzetí služeb při selhání: čas pro převzetí služeb při selhání = TTL + opakování * interval zjišťování a v tomto případě je tato hodnota 10 + 3 × 10 = 40 sekund (max).
 Je-li opakování nastaveno na hodnotu 1 a hodnota TTL je nastavena na hodnotu 10 sekund, pak je doba pro převzetí služeb při selhání 10 + 1 × 10 = 20 sekund. Nastavte opakování na hodnotu větší než **1** , aby nedošlo k převzetí služeb při selhání kvůli falešně pozitivnímu nebo libovolnému výkyvůi sítě. 
 
 
@@ -165,7 +165,7 @@ Je-li opakování nastaveno na hodnotu 1 a hodnota TTL je nastavena na hodnotu 1
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>Způsob fungování automatického převzetí služeb při selhání pomocí Traffic Manager
 
-Během havárie se primární koncový bod vyhledá a stav se změní na **Degradováno** a lokalita pro zotavení po havárii zůstane **online**. Ve výchozím nastavení Traffic Manager odesílá veškerý provoz na primární koncový bod (s nejvyšší prioritou). Pokud se primární koncový bod jeví jako snížený, Traffic Manager směruje provoz do druhého koncového bodu, pokud zůstane v dobrém stavu. Jedna má možnost konfigurovat další koncové body v rámci Traffic Manager, které mohou sloužit jako další koncové body převzetí služeb při selhání, nebo jako nástroj pro vyrovnávání zatížení, který sdílí zatížení mezi koncovými body.
+Během havárie se primární koncový bod vyhledá a stav se změní na **Degradováno** a lokalita pro zotavení po havárii zůstane **online**. Ve výchozím nastavení Traffic Manager odesílá veškerý provoz na primární koncový bod (s nejvyšší prioritou). Pokud se primární koncový bod jeví jako snížený, Traffic Manager směruje provoz do druhého koncového bodu, pokud zůstane v dobrém stavu. Jedna může nakonfigurovat více koncových bodů v rámci Traffic Manager, které mohou sloužit jako dodatečné koncové body převzetí služeb při selhání, nebo jako nástroje pro vyrovnávání zatížení, které sdílejí zatížení mezi
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).

@@ -15,16 +15,16 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a03f3c57d3fbc7efe20055343eab3db33aa8194
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99259080"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikace a Qlik – smysl 
 Proxy aplikací služby Azure Active Directory a Qliký smysl spolupracovali společně, aby bylo zajištěno, že k zajištění vzdáleného přístupu pro nasazení rozpoznávání Qlik budete moct snadno používat proxy aplikace.  
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Zbývající část tohoto scénáře předpokládá, že jste provedli následující akce:
  
 - Byl nakonfigurován [Qlik smysl](https://community.qlik.com/docs/DOC-19822). 
