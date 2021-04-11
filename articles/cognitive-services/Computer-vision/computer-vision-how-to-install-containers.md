@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432549"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285718"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102432549"
 
 Kontejnery umožňují spouštět rozhraní API Počítačového zpracování obrazu ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejnery Počítačové zpracování obrazu.
 
-Kontejner OCR *pro čtení* umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](concept-recognizing-text.md#read-api).
+Kontejner OCR *pro čtení* umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v tématu [Průvodce čtením rozhraní API](Vision-API-How-to-Topics/call-read-api.md).
 
 ## <a name="read-32-preview-container"></a>Přečíst kontejner 3,2 – Preview
 
@@ -96,7 +96,7 @@ K dispozici jsou image kontejneru pro čtení.
 
 Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu Stáhněte image kontejneru.
 
-### <a name="docker-pull-for-the-read-container"></a>Pull Docker pro kontejner pro čtení
+### <a name="docker-pull-for-the-read-ocr-container"></a>Čtecí modul Docker pro kontejner OCR pro čtení
 
 # <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 Tento příkaz:
 
-* Spustí načtený kontejner z image kontejneru.
+* Spustí načtený kontejner OCR z image kontejneru.
 * Přiděluje 8 PROCESORových jader a 18 gigabajtů (GB) paměti.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 Tento příkaz:
 
-* Spustí načtený kontejner z image kontejneru.
+* Spustí načtený kontejner OCR z image kontejneru.
 * Přiděluje 8 PROCESORových jader a 16 gigabajtů (GB) paměti.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
@@ -392,7 +392,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 ---
 
 > [!IMPORTANT]
-> Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](./computer-vision-resource-container-config.md).
+> Pokud nasadíte více čtecích kontejnerů OCR za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](./computer-vision-resource-container-config.md).
 
 ### <a name="synchronous-read"></a>Synchronní čtení
 
@@ -445,7 +445,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 * Počítačové zpracování obrazu poskytuje kontejner pro Linux pro Docker, zapouzdření čtení.
 * Image kontejnerů se stáhnou z registru kontejnerů "kontejner ve verzi Preview" v Azure.
 * Image kontejneru se spouštějí v Docker.
-* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech pro čtení, a to zadáním identifikátoru URI hostitele kontejneru.
+* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech pro rozpoznávání OCR zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.
 
 > [!IMPORTANT]
@@ -454,7 +454,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [konfigurace kontejnerů](computer-vision-resource-container-config.md) pro nastavení konfigurace
-* Přečtěte si [počítačové zpracování obrazu přehled](overview.md) , kde najdete další informace o rozpoznávání vytištěného a rukopisného textu.
-* Podrobnosti o metodách podporovaných kontejnerem najdete v [rozhraní API pro počítačové zpracování obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
+* Další informace o rozpoznávání tiskového a rukopisného textu najdete v [přehledu optického rozpoznávání znaků](overview-ocr.md) .
+* Podrobnosti o metodách podporovaných kontejnerem najdete v tématu [rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
 * Přečtěte si [Nejčastější dotazy](FAQ.md) k řešení problémů souvisejících se počítačové zpracování obrazu funkcemi.
 * Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

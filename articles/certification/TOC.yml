@@ -1,0 +1,47 @@
+- name: Dokumentace k zařízení s certifikací Azure
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je program zařízení s certifikací Azure?
+      href: overview.md
+- name: Kurzy
+  expanded: true
+  items:
+    - name: 1. výběr správné certifikace
+      href: tutorial-00-selecting-your-certification.md
+    - name: 2. vytvoření projektu
+      href: tutorial-01-creating-your-project.md
+    - name: 3 – přidávání podrobností o zařízení
+      href: tutorial-02-adding-device-details.md
+    - name: 4. testování zařízení
+      href: tutorial-03-testing-your-device.md
+    - name: 5. publikování zařízení
+      href: tutorial-04-publishing-your-device.md
+- name: Požadavky programu
+  items:
+    - name: Zařízení s certifikací Azure
+      href: program-requirements-azure-certified-device.md
+    - name: IoT Plug and Play
+      href: program-requirements-pnp.md
+    - name: Spravovaná hrana
+      href: program-requirements-edge-managed.md
+    - name: Zabezpečení Edge – jádro (Preview)
+      href: program-requirements-edge-secured-core.md
+- name: Koncepty
+  items:
+    - name: Starší verze zařízení
+      href: concepts-legacy.md
+    - name: Koncepce marketingu
+      href: concepts-marketing.md
+- name: Návody
+  items:
+    - name: Postup úpravy publikovaného zařízení
+      href: how-to-edit-published-device.md
+    - name: Jak certifikovat nepřímo připojené zařízení
+      href: how-to-indirectly-connected-devices.md
+    - name: Jak používat součást komponent
+      href: how-to-using-the-components-feature.md
+- name: Zdroje informací
+  items:
+    - name: Glosář certifikace
+      href: resources-glossary.md

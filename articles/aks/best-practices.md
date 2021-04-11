@@ -3,19 +3,24 @@ title: Osvědčené postupy pro službu Azure Kubernetes (AKS)
 description: Kolekce operátoru clusteru a osvědčené postupy pro vývojáře při sestavování a správě aplikací ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/09/2021
+ms.openlocfilehash: f4bd109ce6827de26b1649380b6f6a2ba7c10e17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686255"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105897"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Doporučené postupy pro vytváření a správu aplikací ve službě Azure Kubernetes (AKS) pro operátora clusteru a vývojáře
 
-K úspěšnému sestavování a spouštění aplikací ve službě Azure Kubernetes Service (AKS) jsou k dispozici některé klíčové důležité informace, které je potřeba pochopit a implementovat. Mezi tyto oblasti patří víceklientské a funkce Scheduleru, cluster a zabezpečení, nebo provozní kontinuita a zotavení po havárii. Následující osvědčené postupy jsou seskupené, které usnadňují operátorům clusteru a vývojářům pochopit důležité informace pro každou z těchto oblastí a implementují příslušné funkce.
+Sestavování a spouštění aplikací ve službě Azure Kubernetes Service (AKS) vyžaduje porozumění a implementaci některých klíčových doporučení, včetně těchto:
+* Funkce víceklientské architektury a plánovače.
+* Zabezpečení clusteru a pod.
+* Provozní kontinuita a zotavení po havárii. 
 
-Tyto osvědčené postupy a koncepční články byly napsány ve spojení se skupinou produktů AKS, technickými týmy a týmy pro pole, včetně globálních černých pásů (GBBs).
+
+AKS Produktová skupina, technické týmy a týmy pro pole (včetně globálních černých pásů [GBBs]) přispěly do zapsaného a seskupené z následujících osvědčených postupů a koncepčních článků. Jejich účelem je pomáhat provozovatelům clusteru a vývojářům porozumět výše uvedeným hlediskům a implementovat příslušné funkce.
+
 
 ## <a name="cluster-operator-best-practices"></a>Doporučené postupy pro operátora clusteru
 

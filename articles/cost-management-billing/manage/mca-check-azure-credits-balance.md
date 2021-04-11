@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: cf5772e9cf08eaa7f34acd59a9c96da6f20cd03d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 96c37ded2750ad3e4882b203d71c75c9f4608e9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131407"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285905"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
@@ -368,7 +368,7 @@ V odpovědi rozhraní API se vrátí všechny transakce, které ovlivnily zůsta
 
 Na fakturačním účtu pro smlouvu se zákazníkem Microsoftu spravujete své faktury a způsoby platby pomocí fakturačních profilů. Pro každý fakturační profil se jednou za měsíc generuje faktura a k úhradě této faktury používáte zvolené způsoby platby.
 
-Kredity, které získáte, přiřadíte k fakturačnímu profilu. Ve chvíli vytváření faktury pro tento fakturační profil se kredity automaticky uplatní na celkové poplatky a vypočítá se částka, kterou máte zaplatit. Zbývající částku uhradíte pomocí nastavených způsobů platby, například šekem, bezhotovostním převodem nebo platební kartou.
+Přiřadíte kredity, které získáte k fakturačnímu profilu. Ve chvíli vytváření faktury pro tento fakturační profil se kredity automaticky uplatní na celkové poplatky a vypočítá se částka, kterou máte zaplatit. Zbývající částku uhradíte pomocí nastavených způsobů platby, například šekem, bezhotovostním převodem nebo platební kartou.
 
 ## <a name="products-that-arent-covered-by-azure-credits"></a>Produkty, na které se nevztahují kredity Azure
 

@@ -4,19 +4,19 @@ description: Poskytuje přehled infrastruktury BareMetal v Azure.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/06/2021
-ms.openlocfilehash: bccb171ce364a5129489c437f2f18156cc563a1b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 04/08/2021
+ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579066"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257564"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Co je BareMetal infrastruktura v Azure?
 
 Microsoft Azure nabízí cloudovou infrastrukturu se široké škálou integrovaných cloudových služeb, které vyhovují vašim obchodním potřebám. V některých případech ale možná budete muset spouštět služby na holé servery bez vrstvy virtualizace. Je možné, že budete potřebovat kořenový přístup a kontrolu nad operačním systémem (OS). Pro splnění takových potřeb Azure nabízí infrastrukturu BareMetal pro několik nejdůležitějších a důležitých aplikací.
 
-Infrastruktura BareMetal se skládá z vyhrazených instancí BareMetal (výpočetních instancí), vysoce výkonného úložiště a vhodného úložiště (NFS, dNFS, ISCSI a Fiber Channel) a také sady virtuálních sítí LAN (VLAN) specifických pro funkci v izolovaném prostředí. Úložiště se dá sdílet mezi BareMetal instancemi, aby se povolily funkce jako clustery se škálováním na více systémů nebo vytváření párů s vysokou dostupností pomocí STONITH.
+Infrastruktura BareMetal se skládá z vyhrazených instancí BareMetal (výpočetních instancí), vysoce výkonného úložiště a vhodného úložiště (NFS, ISCSI a Fibre Channel), jakož i sady virtuálních sítí LAN (VLAN) specifických pro funkci v izolovaném prostředí. Úložiště se dá sdílet mezi BareMetal instancemi, aby se povolily funkce jako clustery se škálováním na více systémů nebo vytváření párů s vysokou dostupností pomocí STONITH.
  
 Toto prostředí má také speciální sítě VLAN, ke kterým máte přístup, pokud v předplatném Azure spouštíte virtuální počítače v jedné nebo několika virtuálních sítích Azure (virtuální sítě). Celé prostředí se reprezentuje jako skupina prostředků ve vašem předplatném Azure.
 
@@ -40,7 +40,7 @@ BareMetal infrastruktura nabízí tyto výhody:
     - Až 1 PB/tenant 
     - IOPS až do 1,2 milionů/tenantů 
     - 40/100-GB šířky pásma sítě
-    - Přístup přes systém souborů NFS, dNFS, ISCSI a FC
+    - Přístup přes systém souborů NFS, ISCSI a FC
 - Redundantní napájení, napájení, síťové karty, tory, porty, sítě WAN, úložiště a Správa
 - Výměna za chodu při selhání (bez nutnosti překonfigurování)
 - Okna koordinovaných údržby pro zákazníky

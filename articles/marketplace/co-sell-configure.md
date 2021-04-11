@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ab7a0c3fa947fdf62672013b5a557d0447eb67c5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563391"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106849"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurace společného prodeje pro komerční nabídku na webu Marketplace
 
@@ -38,7 +38,7 @@ Možnost společného prodeje je k dispozici pro následující typy nabídek.
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 1. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
     > [!TIP]
-    > Pokud nevidíte **komerční tržiště** v levém navigačním panelu, [Vytvořte si účet komerčního tržiště v partnerském centru](./partner-center-portal/create-account.md) a ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
+    > Pokud nevidíte **komerční tržiště** v levém navigačním panelu, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) a ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 1. Na kartě **Přehled** vyberte nabídku, kterou chcete společně prodávat.
     > [!NOTE]
     > Můžete nakonfigurovat společný prodej pro novou nabídku, která ještě není publikovaná, nebo s nabídkou, která už je publikovaná.

@@ -1,14 +1,14 @@
 ---
 title: Aktivace a nastavení místní konzoly pro správu
 description: Aktivace konzoly pro správu zajišťuje, aby se senzory zaregistrovaly v Azure a odesílaly informace do místní konzoly pro správu a aby místní Konzola pro správu prováděla úlohy správy na připojených senzorech.
-ms.date: 3/18/2021
+ms.date: 4/6/2021
 ms.topic: how-to
-ms.openlocfilehash: 86bbebb54753145e087865acd8c0d4690a53aa99
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: db0d2a84feeb5bf52932842badda8c126994c05d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383756"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492150"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivace a nastavení místní konzoly pro správu 
 
@@ -217,6 +217,10 @@ Nastavení lokality:
 5. [Připojte senzory](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console).
 
 6. [Přiřaďte senzor k zónám webu](#assign-sensors-to-zones).
+
+### <a name="delete-a-site"></a>Odstranění webu
+
+Pokud už lokalitu nepotřebujete, můžete ji odstranit z místní konzoly pro správu.
 
 Odstranění webu:
 

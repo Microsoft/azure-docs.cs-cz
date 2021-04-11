@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97795424"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491997"
 ---
 # <a name="what-are-device-templates"></a>Co jsou šablony zařízení?
 
@@ -39,70 +39,122 @@ Model zařízení definuje, jak zařízení komunikuje s vaší aplikací IoT Ce
 
 Vývojář řešení může také exportovat soubor JSON, který obsahuje model zařízení. Vývojář zařízení může pomocí tohoto dokumentu JSON pochopit, jak má zařízení komunikovat s aplikací IoT Central.
 
-Soubor JSON, který definuje model zařízení, používá program [Digital DTDL Definition Language () v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central očekává, že soubor JSON bude obsahovat model zařízení s rozhraními definovanými jako vložené místo v samostatných souborech.
+Soubor JSON, který definuje model zařízení, používá program [Digital DTDL Definition Language () v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central očekává, že soubor JSON bude obsahovat model zařízení s rozhraními definovanými jako vložené místo v samostatných souborech. Další informace najdete v tématu [Průvodce modelováním IoT technologie Plug and Play](../../iot-pnp/concepts-modeling-guide.md).
 
 Typické zařízení IoT se skládá z těchto součástí:
 
 - Vlastní části, které tvoří jedinečné zařízení.
 - Standardní části, které jsou společné pro všechna zařízení.
 
-Tyto části se nazývají _rozhraní_ v modelu zařízení. Rozhraní definují podrobnosti jednotlivých částí, které vaše zařízení implementuje. Rozhraní jsou opakovaně použitelná napříč modely zařízení. V rozhraní DTDL komponenta odkazuje na rozhraní definované v samostatném souboru DTDL.
+Tyto části se nazývají _rozhraní_ v modelu zařízení. Rozhraní definují podrobnosti jednotlivých částí, které vaše zařízení implementuje. Rozhraní jsou opakovaně použitelná napříč modely zařízení. V DTDL komponenta odkazuje na jiné rozhraní, které může být definováno v samostatném souboru DTDL nebo v samostatné části souboru.
 
-Následující příklad ukazuje osnovu modelu zařízení pro zařízení řadiče pro teploty. Výchozí komponenta obsahuje definice pro `workingSet` , `serialNumber` a `reboot` . Model zařízení zahrnuje také `thermostat` `deviceInformation` rozhraní a:
+Následující příklad ukazuje osnovu modelu zařízení pro [zařízení řadiče pro teploty](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json). Výchozí komponenta obsahuje definice pro `workingSet` , `serialNumber` a `reboot` . Model zařízení obsahuje také dvě `thermostat` komponenty a `deviceInformation` komponentu. Obsah tří součástí byl z důvodu zkrácení odebraný:
 
 ```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:TemperatureController;1",
-  "@type": "Interface",
-  "displayName": "Temperature Controller",
-  "description": "Device with two thermostats and remote reboot.",
-  "contents": [
-    {
-      "@type": [
-        "Telemetry", "DataSize"
-      ],
-      "name": "workingSet",
-      "displayName": "Working Set",
-      "description": "Current working set of the device memory in KiB.",
-      "schema": "double",
-      "unit" : "kibibyte"
-    },
-    {
-      "@type": "Property",
-      "name": "serialNumber",
-      "displayName": "Serial Number",
-      "description": "Serial number of the device.",
-      "schema": "string"
-    },
-    {
-      "@type": "Command",
-      "name": "reboot",
-      "displayName": "Reboot",
-      "description": "Reboots the device after waiting the number of seconds specified.",
-      "request": {
-        "name": "delay",
-        "displayName": "Delay",
-        "description": "Number of seconds to wait before rebooting the device.",
-        "schema": "integer"
+[
+  {
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ],
+    "@id": "dtmi:com:example:TemperatureController;2",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "DataSize"
+        ],
+        "description": {
+          "en": "Current working set of the device memory in KiB."
+        },
+        "displayName": {
+          "en": "Working Set"
+        },
+        "name": "workingSet",
+        "schema": "double",
+        "unit": "kibibit"
+      },
+      {
+        "@type": "Property",
+        "displayName": {
+          "en": "Serial Number"
+        },
+        "name": "serialNumber",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@type": "Command",
+        "commandType": "synchronous",
+        "description": {
+          "en": "Reboots the device after waiting the number of seconds specified."
+        },
+        "displayName": {
+          "en": "Reboot"
+        },
+        "name": "reboot",
+        "request": {
+          "@type": "CommandPayload",
+          "description": {
+            "en": "Number of seconds to wait before rebooting the device."
+          },
+          "displayName": {
+            "en": "Delay"
+          },
+          "name": "delay",
+          "schema": "integer"
+        }
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat1"
+        },
+        "name": "thermostat1",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat2"
+        },
+        "name": "thermostat2",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "DeviceInfo"
+        },
+        "name": "deviceInformation",
+        "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1"
       }
-    },
-    {
-      "@type" : "Component",
-      "schema": "dtmi:com:example:Thermostat;1",
-      "name": "thermostat",
-      "displayName": "Thermostat",
-      "description": "Thermostat One."
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
-      "name": "deviceInformation",
-      "displayName": "Device Information interface",
-      "description": "Optional interface with basic device hardware information."
+    ],
+    "displayName": {
+      "en": "Temperature Controller"
     }
-  ]
-}
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:example:Thermostat;2",
+    "@type": "Interface",
+    "displayName": "Thermostat",
+    "description": "Reports current temperature and provides desired temperature control.",
+    "contents": [
+      ...
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+    "@type": "Interface",
+    "displayName": "Device Information",
+    "contents": [
+      ...
+    ]
+  }
+]
 ```
 
 Rozhraní má některá povinná pole:
@@ -132,7 +184,7 @@ Následující příklad ukazuje definici rozhraní termostata:
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;2",
   "@type": "Interface",
   "displayName": "Thermostat",
   "description": "Reports current temperature and provides desired temperature control.",
@@ -143,8 +195,8 @@ Následující příklad ukazuje definici rozhraní termostata:
         "Temperature"
       ],
       "name": "temperature",
-      "displayName" : "Temperature",
-      "description" : "Temperature in degrees Celsius.",
+      "displayName": "Temperature",
+      "description": "Temperature in degrees Celsius.",
       "schema": "double",
       "unit": "degreeCelsius"
     },
@@ -157,7 +209,7 @@ Následující příklad ukazuje definici rozhraní termostata:
       "schema": "double",
       "displayName": "Target Temperature",
       "description": "Allows to remotely specify the desired target temperature.",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "writable": true
     },
     {
@@ -167,7 +219,7 @@ Následující příklad ukazuje definici rozhraní termostata:
       ],
       "name": "maxTempSinceLastReboot",
       "schema": "double",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "displayName": "Max temperature since last reboot.",
       "description": "Returns the max temperature since last device reboot."
     },
@@ -183,7 +235,7 @@ Následující příklad ukazuje definici rozhraní termostata:
         "schema": "dateTime"
       },
       "response": {
-        "name" : "tempReport",
+        "name": "tempReport",
         "displayName": "Temperature Report",
         "schema": {
           "@type": "Object",
@@ -199,17 +251,17 @@ Následující příklad ukazuje definici rozhraní termostata:
               "schema": "double"
             },
             {
-              "name" : "avgTemp",
+              "name": "avgTemp",
               "displayName": "Average Temperature",
               "schema": "double"
             },
             {
-              "name" : "startTime",
+              "name": "startTime",
               "displayName": "Start Time",
               "schema": "dateTime"
             },
             {
-              "name" : "endTime",
+              "name": "endTime",
               "displayName": "End Time",
               "schema": "dateTime"
             }
@@ -233,9 +285,9 @@ Volitelná pole, jako je zobrazované jméno a popis, umožňují přidat dalš�
 
 Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení znamenají, že se hodnota vlastnosti zařízení hlásí jako aktualizace vaší aplikace IoT Central. Vaše aplikace IoT Central nemůže nastavit hodnotu vlastnosti jen pro čtení.
 
-Můžete také označit vlastnost jako zapisovatelnou na rozhraní. Zařízení může obdržet aktualizaci zapisovatelné vlastnosti z vaší aplikace IoT Central a také aktualizace hodnot vlastností sestav aplikace.
+Vlastnost můžete také označit jako zapisovatelné v rozhraní. Zařízení může přijmout aktualizaci vlastnosti s možností zápisu z vaší aplikace IoT Central a také aktualizovat hodnoty vlastností pro vytváření sestav v aplikaci.
 
-Zařízení není nutné připojit k nastavením hodnot vlastností. Aktualizované hodnoty se přenesou, když se zařízení příště připojí k aplikaci. Toto chování platí pro vlastnosti jen pro čtení i pro zápis.
+Zařízení není nutné připojit k nastavením hodnot vlastností. Aktualizované hodnoty se přenesou, když se zařízení příště připojí k aplikaci. Toto chování platí pro vlastnosti určené jen pro čtení i pro zápis.
 
 Nepoužívejte vlastnosti k odeslání telemetrie ze zařízení. Například vlastnost jen pro čtení, například `temperatureSetting=80` by měla znamenat, že se teplota zařízení nastavila na 80 a zařízení se snaží získat nebo zůstat v této teplotě.
 

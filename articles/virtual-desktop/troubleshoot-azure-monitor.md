@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dda58868432248fe93a9fbc83d1e538dfc9b61ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ef1a7f92fd31e8ae87a0ead6b5071d8240aa993e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709442"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286398"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Řešení potíží s Azure Monitor pro virtuální počítače s Windows
 
@@ -81,4 +81,6 @@ Níže jsou uvedené problémy a omezení, o kterých jsme se dozvěděli, a pra
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud si nejste jistí, jak interpretovat data nebo se chcete dozvědět víc o běžných termínech, podívejte se na [glosář Azure monitor pro virtuální počítače s Windows](azure-monitor-glossary.md). Pokud se chcete dozvědět, jak nastavit a používat Azure Monitor pro virtuální počítače s Windows, přečtěte si téma [použití Azure monitor pro virtuální plochu Windows k monitorování vašeho nasazení](azure-monitor.md).
+- Informace o tom, jak začít, najdete v tématu [použití Azure monitor pro virtuální plochu Windows k monitorování vašeho nasazení](azure-monitor.md).
+- Pokud chcete odhadnout, měřit a spravovat náklady na úložiště dat, přečtěte si téma [odhad nákladů na Azure monitor](azure-monitor-costs.md).
+- Podívejte se na náš [Glosář](azure-monitor-glossary.md) , kde najdete další informace o pojmech a konceptech souvisejících s Azure monitor pro virtuální počítače s Windows.

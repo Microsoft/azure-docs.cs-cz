@@ -4,14 +4,14 @@ description: Úprava cílů úložiště mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0c505937d4adbe2596e91ed7269676e60ada8253
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772571"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258907"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
@@ -151,7 +151,10 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 ### <a name="change-the-usage-model"></a>Změna modelu použití
 
-Model použití má vliv na to, jak mezipaměť uchovává data. Další informace najdete [v tématu Výběr modelu využití](hpc-cache-add-storage.md#choose-a-usage-model) .
+Model použití má vliv na to, jak mezipaměť uchovává data. Další informace najdete v tématu [Principy modelů používání mezipaměti](cache-usage-models.md) .
+
+> [!NOTE]
+> Pokud změníte modely použití, bude pravděpodobně nutné znovu připojit klienty, aby nedocházelo k chybám NLM. Přečtěte si informace o [tom, kdy se mají klienti znovu připojit](cache-usage-models.md#know-when-to-remount-clients-for-nlm) .
 
 Pokud chcete změnit model použití pro cíl úložiště NFS, použijte jednu z těchto metod.
 

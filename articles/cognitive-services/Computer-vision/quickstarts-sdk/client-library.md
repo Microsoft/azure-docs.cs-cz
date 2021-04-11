@@ -1,14 +1,14 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu Klientská knihovna'
+title: 'Rychlý Start: čtení klientské knihovny nebo REST API'
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat Azure Počítačové zpracování obrazu ve vaší aplikaci prostřednictvím nativní klientské knihovny v jazyce podle vašeho výběru.
+description: Naučte se používat optické rozpoznávání znaků (OCR) ve vaší aplikaci prostřednictvím nativní klientské knihovny v jazyce podle vašeho výběru.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/15/2020
+ms.date: 03/21/2020
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -17,16 +17,16 @@ ms.custom:
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
 keywords: počítačové zpracování obrazu, Služba Computer visioning
-ms.openlocfilehash: 50976de4a60e5330740bcbf387d74c505316c0cf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 865002fbc9e492b43b9c572468f722c85c6cc4b8
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560810"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284752"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>Rychlý Start: použití klientské knihovny Počítačové zpracování obrazu
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Rychlý Start: použití klientské knihovny pro čtení nebo REST API
 
-Začněte s Počítačové zpracování obrazu REST API nebo klientské knihovny. Služba Počítačové zpracování obrazu poskytuje algoritmy AI pro zpracování imagí a vracení informací o jejich vizuálních funkcích. Pomocí těchto kroků nainstalujete balíček do aplikace a vyzkoušíte vzorový kód pro základní úlohy.
+Začněte s REST API nebo klientské knihovny pro čtení. Služba čtení poskytuje algoritmy AI pro extrakci viditelného textu z obrázků a jejich vrácení jako strukturovaných řetězců. Pomocí těchto kroků nainstalujete balíček do aplikace a vyzkoušíte vzorový kód pro základní úlohy.
 
 
 

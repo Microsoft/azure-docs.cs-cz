@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950801"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285837"
 ---
 # <a name="ocr-cognitive-skill"></a>Dovednost rozpoznávání OCR
 
 Dovednosti **optického rozpoznávání znaků (OCR)** rozpoznává vytištěný a ručně psaný text v souborech obrázků. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](../cognitive-services/computer-vision/overview.md) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) . Dovednosti v **OCR** se mapují na následující funkce:
 
-+ V angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemštině se používá nové rozhraní API [pro čtení](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) .
-+ Pro všechny ostatní jazyky se používá rozhraní ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) .
++ V angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemštině se používá nové rozhraní API [pro čtení](../cognitive-services/computer-vision/overview-ocr.md#read-api) .
++ Pro všechny ostatní jazyky se používá starší rozhraní API pro [optické rozpoznávání znaků](../cognitive-services/computer-vision/overview-ocr.md#ocr-api) .
 
 Dovednost **optického rozpoznávání znaků** extrahuje text ze souborů obrázků. Mezi podporované formáty souborů patří:
 
@@ -43,8 +43,8 @@ U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Description |
 |--------------------|-------------|
-| `detectOrientation`   | Umožňuje automatickou detekci orientace obrázku. <br/> Platné hodnoty: true nebo false.|
-| `defaultLanguageCode` | <p>   Kód jazyka vstupního textu Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Čeština) <br/>da (dánština) <br/>NL (holandština) <br/>EN (angličtina) <br/>Fi (Finština)  <br/>FR (francouzština) <br/>  de (němčina) <br/>El (řečtina) <br/> hu (Maďarština) <br/> IT (italština) <br/>  Ja (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   pl (polština) <br/> PT (portugalština) <br/>  ru (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (arabské písmo) <br/> ro (rumunština) <br/> sr-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (slovenština) <br/>  unk (neznámé) <br/><br/> Pokud kód jazyka není zadán nebo je null, jazyk bude nastaven na angličtinu. Pokud je jazyk explicitně nastaven na "unk", jazyk bude automaticky rozpoznán. </p> |
+| `detectOrientation`    | Umožňuje automatickou detekci orientace obrázku. <br/> Platné hodnoty: true nebo false.|
+| `defaultLanguageCode` | <p>    Kód jazyka vstupního textu Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Čeština) <br/>da (dánština) <br/>NL (holandština) <br/>EN (angličtina) <br/>Fi (Finština)  <br/>FR (francouzština) <br/>  de (němčina) <br/>El (řečtina) <br/> hu (Maďarština) <br/> IT (italština) <br/>  Ja (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   pl (polština) <br/> PT (portugalština) <br/>  ru (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (arabské písmo) <br/> ro (rumunština) <br/> sr-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (slovenština) <br/>  unk (neznámé) <br/><br/> Pokud kód jazyka není zadán nebo je null, jazyk bude nastaven na angličtinu. Pokud je jazyk explicitně nastaven na "unk", jazyk bude automaticky rozpoznán. </p> |
 | `lineEnding` | Hodnota, která má být použita mezi každým zjištěným řádkem. Možné hodnoty: "Space", "CarriageReturn", "odřádkování".  Výchozí hodnota je "Space". |
 
 Dříve existoval parametr s názvem "textExtractionAlgorithm", který určuje, zda by měla být tato dovednost extrahována "vytištěna" nebo "rukou" text.  Tento parametr je zastaralý a už není nutný, protože nejnovější algoritmus rozhraní API pro čtení je schopný extrahovat oba typy textu najednou.  Pokud definice dovednosti už tento parametr obsahuje, nemusíte ho odebírat, ale už se nepoužije a oba typy textu se budou extrahovat bez ohledu na to, k čemu je nastavené.
@@ -57,9 +57,9 @@ Dříve existoval parametr s názvem "textExtractionAlgorithm", který určuje, 
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
-| Název výstupu     | Description                   |
+| Název výstupu      | Description                   |
 |---------------|-------------------------------|
-| `text`            | Z obrázku byl extrahován prostý text.   |
+| `text`             | Z obrázku byl extrahován prostý text.   |
 | `layoutText`    | Komplexní typ, který popisuje extrahovaný text a umístění, kde byl text nalezen.|
 
 

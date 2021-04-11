@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227020"
+ms.locfileid: "107257496"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
@@ -93,12 +93,14 @@ Další informace o tom, jak obnovit odstraněné objekty, najdete v tématu [Sp
 
 ## <a name="blob-soft-delete-and-versioning"></a>Měkké odstranění a správa verzí objektu BLOB
 
-Pokud pro účet úložiště povolíte správu verzí objektů BLOB a obnovitelné odstranění objektů blob, přepsání objektu BLOB automaticky vytvoří novou verzi. Nová verze není Odstraněná a při vypršení doby uchování dočasného odstranění se neodebere. Nevytvořily se žádné snímky odstraněné. Když odstraníte objekt blob, bude aktuální verze objektu BLOB předchozí verzí a aktuální verze se odstraní. Nevytvoří se žádná nová verze a nevytvoří se žádné snímky odstraněné.
+Pokud pro účet úložiště povolíte správu verzí objektů BLOB a obnovitelné odstranění objektů blob, přepsání objektu BLOB automaticky vytvoří novou verzi. Nová verze není Odstraněná a při vypršení doby uchování dočasného odstranění se neodebere. Nevytvořily se žádné snímky odstraněné. Při odstranění objektu BLOB se stane aktuální verze objektu BLOB předchozí verzí a už neexistuje aktuální verze. Nevytvoří se žádná nová verze a nevytvoří se žádné snímky odstraněné.
 
-Povolení obnovitelného odstranění a správy verzí společně chrání verze objektů BLOB před odstraněním. Když je povolené obnovitelné odstranění, vytvoří se verze s odstraněnou verzí. Pomocí operace obnovení **objektu BLOB** můžete obnovit odstraněnou verzi, pokud existuje aktuální verze objektu BLOB. Pokud není k dispozici žádná aktuální verze, je nutné před voláním operace **Undelete objektu BLOB** zkopírovat předchozí verzi do aktuální verze.
+Povolení obnovitelného odstranění a správy verzí společně chrání verze objektů BLOB před odstraněním. Když je povolené obnovitelné odstranění, vytvoří se verze s odstraněnou verzí. Pomocí operace obnovení **objektu BLOB** můžete obnovit dočasně odstraněné verze během doby uchovávání obnovitelného odstranění. Operace obnovení **objektu BLOB** vždy obnoví všechny místně odstraněné verze objektu BLOB. Není možné obnovit pouze jednu odstraněnou verzi.
+
+Po uplynutí doby uchování obnovitelného odstranění budou všechny odstraněné verze objektů BLOB trvale odstraněny.
 
 > [!NOTE]
-> Volání operace **obnovení objektu BLOB** u odstraněného objektu blob, když je povolená Správa verzí, obnoví všechny odstraněné verze nebo snímky, ale neobnoví základní objekt BLOB. Chcete-li obnovit základní objekt blob, zvyšte úroveň předchozí verze tak, že ji zkopírujete do základního objektu BLOB.
+> Volání operace **obnovení objektu BLOB** u odstraněného objektu blob, když je povolená Správa verzí, obnoví všechny odstraněné verze nebo snímky, ale neobnoví aktuální verzi. Chcete-li obnovit aktuální verzi, povýší předchozí verzi jejich zkopírováním do aktuální verze.
 
 Microsoft doporučuje, aby se pro vaše účty úložiště povolila jak Správa verzí, tak i předběžné odstranění objektů BLOB pro optimální ochranu dat. Další informace o použití správy verzí objektů BLOB a obnovitelného odstranění najdete v tématu [Správa verzí objektů BLOB a obnovitelné odstranění](versioning-overview.md#blob-versioning-and-soft-delete).
 

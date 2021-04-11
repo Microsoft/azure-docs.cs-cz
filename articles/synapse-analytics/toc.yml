@@ -45,6 +45,9 @@ items:
       - name: 9. Seznámení se znalostním centrem
         href: get-started-knowledge-center.md
         displayName: 'get, started'
+      - name: 10 Přidání správce
+        href: get-started-add-admin.md
+        displayName: 'get, started'
   - name: Pracovní prostor
     items:
       - name: Rychlé starty
@@ -565,6 +568,8 @@ items:
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
           - name: Monitorování Apache Spark metrik na úrovni aplikace pomocí Prometheus a Grafana
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
+          - name: Shromažďování a vizualizace metrik a protokolů pomocí Azure Log Analytics (Náhled)
+            href: ./spark/apache-spark-azure-log-analytics.md
       - name: Koncepty
         items:
           - name: Apache Spark

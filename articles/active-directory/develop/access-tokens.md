@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/18/2021
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8630dd2fb1157fbeba99f2a06d73712ab46a63f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f5a60f14799e872d835d651fc043edd27dfc6990
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035063"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105591"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -176,6 +176,12 @@ Identity Microsoftu se můžou ověřovat různými způsoby, které můžou bý
 | `ngcmfa` | Ekvivalent – `mfa` slouží ke zřizování určitých pokročilých typů přihlašovacích údajů. |
 | `wiaormfa`| Uživatel použil k ověření přihlašovací údaje systému Windows nebo MFA. |
 | `none` | Neudělalo se žádné ověřování. |
+
+## <a name="access-token-lifetime"></a>Doba života přístupového tokenu
+
+Výchozí doba platnosti přístupového tokenu se liší v závislosti na klientské aplikaci požadující token. Například klienti s podporou testování nepřetržitého přístupu (CAE), kteří vyjednávají s relacemi CAE, uvidí dlouhou životnost tokenu (až 28 hodin).  Po vypršení přístupového tokenu musí klient použít obnovovací token (obvykle v tichém režimu) k získání nového obnovovacího tokenu a přístupového tokenu.
+
+Dobu života přístupového tokenu můžete upravit tak, abyste mohli řídit, jak často aplikace vyprší aplikační relaci, a jak často vyžaduje, aby uživatel znovu provedl ověření (buď v tichém nebo interaktivním případě). Další informace najdete v tématu [konfigurovatelné životnosti tokenů](active-directory-configurable-token-lifetimes.md).
 
 ## <a name="validating-tokens"></a>Ověřování tokenů
 

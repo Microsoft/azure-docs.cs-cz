@@ -3,12 +3,12 @@ title: Uložení Helm grafů
 description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úložišť v Azure Container Registry
 ms.topic: article
 ms.date: 06/12/2020
-ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537863"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223077"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
 
@@ -31,7 +31,7 @@ Helm 3 by se měly použít k hostování Helm grafů v Azure Container Registry
 * Použití `helm chart` příkazů v rozhraní příkazového řádku Helm k vložení, vyžádání a správě Helm grafů v registru
 * Použijte `helm install` k instalaci grafů do clusteru Kubernetes z místní mezipaměti úložiště.
 > [!NOTE]
-> Od Helm 3 se nepoužívají příkazy [AZ ACR Helm][az-acr-helm] pro použití s klientem Helm 2. Seznamte se s [plánem produktu](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Pokud jste již dříve nasadili grafy Helm 2, přečtěte si téma [migrace Helm v2 na V3](https://helm.sh/docs/topics/v2_v3_migration/).
+> Od Helm 3 se nepoužívají příkazy [AZ ACR Helm][az-acr-helm] pro použití s klientem Helm 2. Před odebráním příkazu bude k dispozici pouze oznámení o třech měsících. Pokud jste již dříve nasadili grafy Helm 2, přečtěte si téma [migrace Helm v2 na V3](https://helm.sh/docs/topics/v2_v3_migration/).
 
 ## <a name="prerequisites"></a>Požadavky
 

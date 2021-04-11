@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169279"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293868"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>O službě Azure Cloud Services (Rozšířená podpora)
 
-> [!IMPORTANT]
-> Cloud Services (Rozšířená podpora) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Cloud Services (Rozšířená podpora) je nový model nasazení založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) produkt a je v současnosti ve verzi Public Preview. Cloud Services (Rozšířená podpora) má primární výhodu při poskytování místní odolnosti a paritě funkcí v Azure Cloud Services nasazených pomocí Azure Service Manager. Nabízí také některé funkce ARM, jako je například přístup a řízení na základě role (RBAC), značky, zásady a podpora šablon nasazení.  
+Cloud Services (Rozšířená podpora) je nový model nasazení založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) produkt a je teď všeobecně dostupný. Cloud Services (Rozšířená podpora) má primární výhodu při poskytování místní odolnosti a paritě funkcí v Azure Cloud Services nasazených pomocí Azure Service Manager. Nabízí také některé funkce ARM, jako je například přístup a řízení na základě role (RBAC), značky, zásady a podpora šablon nasazení.  
 
 V této změně se model nasazení založený na Azure Service Manager pro Cloud Services přejmenuje [Cloud Services (Classic)](../cloud-services/cloud-services-choose-me.md). Zachováte si možnost vytvářet a rychle nasazovat webové a cloudové aplikace a služby. V závislosti na aktuální poptávce budete moci škálovat infrastrukturu cloudových služeb a zajistit, aby výkon vašich aplikací zůstal stále při současném snížení nákladů.  
 

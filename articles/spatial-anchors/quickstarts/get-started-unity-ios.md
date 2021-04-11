@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0fe193ee76c56ec57d0643f4a156739d1a51230c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b341237d0e703239233f7ac0e9664f5fb90bbb4b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670083"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105799"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro iOS pomocí prostorových kotev Azure
 
@@ -30,7 +30,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -43,6 +43,8 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 ## <a name="download-and-open-the-unity-sample-project"></a>Stáhněte a otevřete vzorový projekt Unity.
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Podle pokynů [zde](../how-tos/setup-unity-project.md#download-asa-packages) Stáhněte a importujte balíčky služby ASA SDK požadované pro platformu iOS.
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
@@ -64,7 +66,7 @@ V aplikaci vyberte **BasicDemo** pomocí šipek a pak stiskněte tlačítko **P�
 
 Po dokončení zastavte aplikaci stisknutím tlačítka **zastavit** v Xcode.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="rendering-issues"></a>Problémy vykreslování
 

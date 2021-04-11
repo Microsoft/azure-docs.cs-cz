@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: jingwang
-ms.openlocfilehash: daf3691b48f7bf12e9ef51de7d4253dad9dbd2b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cff49e4ddb7423e1e5956e1436cefd18abe6dfe
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026866"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107070"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textový formát s oddělovači v Azure Data Factory
 
@@ -185,8 +185,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány jím
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
 | Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu `part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Název souboru jako data sloupce: řetězec <br> Výstup do jednoho souboru: `['<fileName>']` <br> Název složka jako data sloupce: řetězec | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames <br> rowFolderUrlColumn |
 | Citace – vše | Uzavření všech hodnot do uvozovek | ne | `true` nebo `false` | quoteAll |
-
-rowFolderUrlColumn:
+| Hlavička | Přidání hlaviček zákazníka do výstupních souborů | ne | `[<string array>]` | header |
 
 ### <a name="sink-example"></a>Příklad jímky
 

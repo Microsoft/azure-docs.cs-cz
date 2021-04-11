@@ -4,13 +4,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
-ms.date: 07/09/2020
-ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/01/2021
+ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96026943"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106288583"
 ---
 ## <a name="business-disaster-recovery"></a>Zotavení po havárii podniku
 
@@ -24,7 +24,7 @@ Další funkce s vysokou dostupností poskytované prostřednictvím Azure (a ta
 
 - **Převzetí služeb při selhání**: Azure zajišťuje [geografickou replikaci a vyrovnávání zatížení](/azure/architecture/resiliency/recovery-loss-azure-region).
 - Obnovení **dat** a **obnovení úložiště**: Azure nabízí [několik možností, jak uchovávat a obnovovat data](/azure/architecture/resiliency/recovery-data-corruption).
-- **Azure Site Recovery**: Azure poskytuje funkce Site Recovery prostřednictvím [Azure Site Recovery](../articles/site-recovery/index.yml).
+- **Azure Site Recovery**: Azure poskytuje funkce pro obnovení prostřednictvím [Azure Site Recovery](../articles/site-recovery/index.yml).
 - **Azure Backup**: [Azure Backup](../articles/backup/backup-architecture.md) podporuje místní i cloudové zálohování virtuálních počítačů Azure.
 
 Ujistěte se, že jste povolili příslušné funkce Azure a zajistili globální a vysokou dostupnost pro vaše zařízení a uživatele v různých oblastech.
@@ -44,7 +44,7 @@ Integrace Azure Time Series Insights s ostatními službami nabízí další mo�
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-Existuje několik způsobů, jak uchovávat data Azure Time Series Insights, aplikace a služby spuštěné, i když jsou přerušeny. 
+Existuje několik způsobů, jak uchovávat data Azure Time Series Insights, aplikace a služby spuštěné, i když jsou přerušeny.
 
 Je ale možné, že se vyžaduje také kompletní záložní kopie prostředí Azure Time Series, a to z těchto důvodů:
 
@@ -63,12 +63,13 @@ Vytvoření duplicitního prostředí:
 Pokud dojde k události:
 
 1. Pokud je vaše primární oblast ovlivněná během incidentu po havárii, přesměrujte operace do prostředí zálohování Azure Time Series Insights.
+1. Vzhledem k tomu, že pořadová čísla centra se po převzetí služeb při selhání restartují z 0, vytvořte znovu zdroj událostí v obou oblastech nebo prostředích s různými skupinami uživatelů, abyste se vyhnuli vytváření co by
 1. Pomocí druhé oblasti můžete zálohovat a obnovovat všechna Azure Time Series Insights telemetrie a data dotazů.
 
 > [!IMPORTANT]
 > Pokud dojde k převzetí služeb při selhání:
-> 
-> * Může dojít také ke zpoždění.
-> * V průběhu přesměrování operací se může vyskytnout chvilkový špička zpracování zpráv.
-> 
+>
+> - Může dojít také ke zpoždění.
+> - V průběhu přesměrování operací se může vyskytnout chvilkový špička zpracování zpráv.
+>
 > Další informace najdete v tématu [zmírnění latence v Azure Time Series Insights](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md).

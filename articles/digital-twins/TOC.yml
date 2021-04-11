@@ -43,6 +43,8 @@
       href: concepts-query-units.md
     - name: Integrace s dalšími službami
       href: concepts-integration.md
+    - name: Oznámení událostí
+      href: concepts-event-notifications.md
     - name: Trasy událostí
       href: concepts-route-events.md
     - name: Zabezpečení pro řešení Azure Digital Twins
@@ -91,8 +93,6 @@
           href: how-to-manage-twin.md
         - name: Správa grafu dvojčat s využitím vztahů
           href: how-to-manage-graph.md
-        - name: Interpretace dat událostí
-          href: how-to-interpret-event-data.md
         - name: Nastavení funkce Azure pro zpracování dat
           href: how-to-create-azure-function.md
         - name: Dotazování na graf dvojčat

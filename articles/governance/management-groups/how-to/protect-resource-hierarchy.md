@@ -3,12 +3,12 @@ title: Jak chránit hierarchii prostředků – zásady správného řízení Az
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
 ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d13a0235152046eff2585da170d5fba0e9d3b09
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594582"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259077"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
@@ -50,7 +50,7 @@ Pokud chcete nakonfigurovat toto nastavení v Azure Portal, postupujte takto:
 
 ### <a name="set-default-management-group-with-rest-api"></a>Nastavit výchozí skupinu pro správu pomocí REST API
 
-Pro konfiguraci tohoto nastavení pomocí REST API se zavolá koncový bod [Nastavení hierarchie](/rest/api/resources/hierarchysettings) . K tomu použijte následující REST API identifikátor URI a formát textu. Nahraďte `{rootMgID}` ID vaší kořenové skupiny pro správu a `{defaultGroupID}` ID skupiny pro správu, která se má stát výchozí skupinou pro správu:
+Pro konfiguraci tohoto nastavení pomocí REST API se zavolá koncový bod [Nastavení hierarchie](/rest/api/managementgroups/hierarchysettings) . K tomu použijte následující REST API identifikátor URI a formát textu. Nahraďte `{rootMgID}` ID vaší kořenové skupiny pro správu a `{defaultGroupID}` ID skupiny pro správu, která se má stát výchozí skupinou pro správu:
 
 - Identifikátor URI v REST API
 
@@ -91,7 +91,7 @@ Pokud chcete nakonfigurovat toto nastavení v Azure Portal, postupujte takto:
 
 ### <a name="set-require-authorization-with-rest-api"></a>Nastavit vyžadovat autorizaci pomocí REST API
 
-Pro konfiguraci tohoto nastavení pomocí REST API se zavolá koncový bod [Nastavení hierarchie](/rest/api/resources/hierarchysettings) . K tomu použijte následující REST API identifikátor URI a formát textu. Tato hodnota je _logická_ hodnota, a proto pro ni zadejte hodnotu **true** nebo **false** . Hodnota **true** povolí tuto metodu ochrany vaší hierarchie skupiny pro správu:
+Pro konfiguraci tohoto nastavení pomocí REST API se zavolá koncový bod [Nastavení hierarchie](/rest/api/managementgroups/hierarchysettings) . K tomu použijte následující REST API identifikátor URI a formát textu. Tato hodnota je _logická_ hodnota, a proto pro ni zadejte hodnotu **true** nebo **false** . Hodnota **true** povolí tuto metodu ochrany vaší hierarchie skupiny pro správu:
 
 - Identifikátor URI v REST API
 

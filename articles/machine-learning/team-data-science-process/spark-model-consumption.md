@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a8d46b5ff10fdaa62f7747aac654e0b1ca78c42
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774486"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259145"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Modely strojového učení založené na zprovoznění Spark
 
@@ -374,7 +374,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 Doba potřebná k provedení výše v buňce: 19,22 sekund
 
 ## <a name="score-a-linear-regression-model"></a>Skóre modelu lineární regrese
-[LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) používáme k vytvoření trendu lineární regrese s využitím stochastického přechodu (SGD) pro optimalizaci, který předpovídá množství placeného tipu. 
+[LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) používáme k vytvoření trendu lineární regrese s využitím stochastického přechodu (SGD) pro optimalizaci, který předpovídá množství placeného tipu. 
 
 Kód v této části ukazuje, jak načíst model lineární regrese z úložiště objektů BLOB v Azure, skóre pomocí proměnných s měřítkem a pak výsledky uložit zpátky do objektu BLOB.
 

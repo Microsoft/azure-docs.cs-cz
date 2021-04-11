@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: e89cb847bcd5d0137354c07fe97148bcbeca2714
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af365ef9b94702fa6634235a95a91297d6b7ae50
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786290"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107122"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce ve službě Azure Data Factory
 
@@ -161,6 +161,30 @@ V následujícím příkladu kanál přijímá parametry **inputPath** a **outpu
     }
 }
 ```
+
+### <a name="replacing-special-characters"></a>Nahrazení speciálních znaků
+
+Editor dynamického obsahu automaticky řídí znaky, jako jsou dvojité uvozovky, zpětné lomítko v obsahu při dokončení úprav. To způsobuje problémy, pokud chcete nahradit posun řádku nebo tabulátory pomocí **znaku \n**, **\t** ve funkci Replace (). Můžete upravit dynamický obsah v zobrazení kódu pro odebrání nadbytečného výrazu ve výrazu, nebo můžete postupovat podle následujících kroků pro nahrazení speciálních znaků pomocí jazyka výrazů:
+
+1. Kódování adresy URL proti původní hodnotě řetězce
+1. Nahraďte řetězec kódovaný v adrese URL, například posun řádku (% 0A), znak návratu na začátek řádku (% 0D), horizontální kartu (%09).
+1. Dekódování adresy URL
+
+Například proměnná *CompanyName* s znakem nového řádku ve své hodnotě, výraz `@uriComponentToString(replace(uriComponent(variables('companyName')), '%0A', ''))` může odebrat znak nového řádku. 
+
+```json
+Contoso-
+Corporation
+```
+
+### <a name="escaping-single-quote-character"></a>Řídicí znak jednoduché uvozovky
+
+Funkce výrazu používají jednoduché uvozovky pro parametry řetězcové hodnoty. Pomocí dvou jednoduchých uvozovek můžete v řetězcových funkcích řídicího znaku. Například výraz `@concat('Baba', ''' ', 'book store')` bude vrácen pod výsledek.
+
+```
+Baba's book store
+```
+
 ### <a name="tutorial"></a>Kurz
 Tento [kurz](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vás provede procesem předávání parametrů mezi kanálem a aktivitou a mezi aktivitami.
 
@@ -216,7 +240,7 @@ Tyto funkce jsou užitečné v rámci podmínek, které je možné použít k vy
 | [rovná](control-flow-expression-language-functions.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
 | [greater](control-flow-expression-language-functions.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
-| [if](control-flow-expression-language-functions.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
+| [Přestože](control-flow-expression-language-functions.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
 | [tolik](control-flow-expression-language-functions.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](control-flow-expression-language-functions.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
 | [mění](control-flow-expression-language-functions.md#not) | Zkontroluje, jestli je výraz nepravdivý. |

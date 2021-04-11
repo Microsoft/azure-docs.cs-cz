@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225339"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285679"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transakční replikace se spravovanou instancí Azure SQL (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -154,7 +154,7 @@ V této konfiguraci je databáze v Azure SQL Database nebo spravované instanci 
 
 [Aktivní geografická replikace](../database/active-geo-replication-overview.md) není u spravované instance SQL podporována pomocí transakční replikace. Místo aktivní geografické replikace používejte [skupiny s automatickým převzetím služeb při selhání](../database/auto-failover-group-overview.md), ale Všimněte si, že při převzetí služeb při selhání se publikace musí [ručně odstranit](transact-sql-tsql-differences-sql-server.md#replication) z primární spravované instance a znovu vytvořit v sekundární spravované instanci SQL.
 
-Pokud je geografická replikace povolená u **vydavatele** nebo **distributora** spravované instance SQL ve [skupině převzetí služeb při selhání](../database/auto-failover-group-overview.md), musí správce spravované instance SQL vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární úrovni. V tomto scénáři jsou potřeba následující aktivity:
+Pokud je **Vydavatel** nebo **distributor** spravované instance SQL ve [skupině převzetí služeb při selhání](../database/auto-failover-group-overview.md), musí správce spravované instance SQL vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární situaci. V tomto scénáři jsou potřeba následující aktivity:
 
 1. Zastavte všechny úlohy replikace běžící v databázi, pokud existují.
 1. Z vydavatele vyřaďte metadata odběru spuštěním následujícího skriptu v databázi vydavatele:

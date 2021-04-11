@@ -5,21 +5,39 @@
   href: overview.md
 - name: Správa účtů
   items:
-    - name: Vytvoření nového účtu v partnerském centru
-      href: partner-center-portal/create-account.md
-    - name: Správa vašeho účtu
-      href: partner-center-portal/manage-account.md
-    - name: Vyhledání nebo vytvoření pracovního účtu společnosti
-      href: partner-center-portal/company-work-accounts.md
-    - name: Migrace účtu z CPP do partnerského centra
-      href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: Informování Microsoftu
-      href: submit-legal-notice.md
+    - name: Obecná správa účtů
+      items:
+        - name: Vytvoření nového účtu v partnerském centru
+          href: create-account.md
+        - name: Přidat nové vydavatele
+          href: add-publishers.md
+        - name: Správa vašeho účtu
+          href: manage-account.md
+        - name: Přepnout účty
+          href: switch-accounts.md
+        - name: Správa tenantů
+          href: manage-tenants.md
+        - name: Vyhledání nebo vytvoření pracovního účtu společnosti
+          href: company-work-accounts.md
+        - name: Migrace účtu z CPP do partnerského centra
+          href: account-migration-from-cpp-to-pc.md
+        - name: Informování Microsoftu
+          href: submit-legal-notice.md
+    - name: Správa uživatelů
+      items:
+        - name: Přidávání a správa uživatelů
+          href: add-manage-users.md
+        - name: Přiřazení uživatelských rolí
+          href: user-roles.md
+        - name: Správa skupin
+          href: manage-groups.md
+        - name: Přidávání a Správa aplikací Azure AD
+          href: manage-aad-apps.md
 - name: Koncepty
   items:
     - name: Možnosti zápisu
       href: determine-your-listing-type.md
-    - name: Transakce na komerčním marketplace
+    - name: Možnosti Transact
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Soukromé nabídky
       href: private-offers.md

@@ -4,14 +4,14 @@ description: Popisuje různé modely využití mezipaměti a jejich výběr mezi
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3ad252520ca0cf7acdb3c84ef1da87c8076f3172
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a22f4b257476e96c51ae491b8570e3798f7b3ab7
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775710"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259723"
 ---
 # <a name="understand-cache-usage-models"></a>Vysvětlení modelů využití mezipaměti
 
@@ -39,7 +39,7 @@ Modely využití integrované do mezipaměti HPC Azure mají pro tato nastavení
 
 ## <a name="choose-the-right-usage-model-for-your-workflow"></a>Volba správného modelu použití pro váš pracovní postup
 
-Pro každý cíl úložiště připojeného k systému souborů NFS, který používáte, musíte zvolit model využití. Cíle Azure Blob Storage mají integrovaný model použití, který nejde přizpůsobit.
+Pro každý cíl úložiště protokolu NFS, který používáte, musíte zvolit model využití. Cíle Azure Blob Storage mají integrovaný model použití, který nejde přizpůsobit.
 
 Modely využití mezipaměti HPC vám umožní zvolit způsob vyrovnávání rychlé odezvy s rizikem při získávání zastaralých dat. Chcete-li optimalizovat rychlost čtení souborů, nesmíte se starat o to, zda jsou soubory v mezipaměti zkontrolovány proti back-endové soubory. Na druhé straně, pokud chcete mít jistotu, že jsou soubory vždycky aktuální se vzdáleným úložištěm, vyberte model, který se často kontroluje.
 
@@ -77,6 +77,29 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
 Pokud máte dotazy týkající se modelu nejlepšího využití pro pracovní postup Azure HPC cache, kontaktujte svého zástupce Azure nebo otevřete žádost o podporu pro pomoc.
+
+## <a name="know-when-to-remount-clients-for-nlm"></a>Informace o tom, kdy se mají znovu připojit klienti pro NLM
+
+V některých situacích může být nutné znovu připojit klienty, pokud změníte model využití cíle úložiště. To je potřeba kvůli způsobu, jakým modely použití zpracovávají požadavky nástroje Network Lock Manager (NLM).
+
+Mezipaměť HPC je mezi klienty a back-end systémem úložiště. Mezipaměť obvykle projde požadavky NLM do back-endového systému úložiště, ale v některých případech samotné mezipaměti potvrdí požadavek NLM a vrátí hodnotu klientovi. V mezipaměti HPC Azure se to děje jenom v případě, že používáte model využití **těžkých silných, zřídka se zápisy** (nebo ve standardním cíli BLOB Storage, které nemají konfigurovatelné modely využití).
+
+Došlo k malému riziku konfliktu souborů, pokud změníte mezi modelem použití s **nečastými zápisy** a různými modely využití. Neexistuje žádný způsob, jak přenést aktuální stav NLM z mezipaměti do systému úložiště nebo naopak. Proto je stav zámku klienta nepřesný.
+
+Znovu připojte klienty, abyste měli jistotu, že mají správný stav NLM s novým správcem zámků.
+
+Pokud vaši klienti odesílají požadavek NLM, když model využití nebo back-end úložiště ho nepodporuje, zobrazí se mu chyba.
+
+### <a name="disable-nlm-at-client-mount-time"></a>Zakázat NLM v době připojení klienta
+
+Bez ohledu na to, jestli vaše klientské systémy odesílají požadavky NLM, není vždycky snadné.
+
+Ověřování NLM můžete zakázat, pokud klienti připojí cluster pomocí možnosti ``-o nolock`` v ``mount`` příkazu.
+
+Přesné chování ``nolock`` možnosti závisí na klientském operačním systému, proto si projděte dokumentaci ke službě Mount (muž 5 NFS) pro klientský operační systém. Ve většině případů se zámek přesune místně do klienta. Pokud vaše aplikace zamkne soubory mezi více klienty, buďte opatrní.
+
+> [!NOTE]
+> ADLS – systém souborů NFS nepodporuje NLM. Při použití cíle úložiště ADLS se systémem souborů NFS byste měli vypnout ověřování NLM pomocí možnosti připojit výše.
 
 ## <a name="next-steps"></a>Další kroky
 

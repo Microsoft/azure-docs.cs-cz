@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b6104bcf68c720fa727d16e408a25adcba805aa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96854729"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259570"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek NFS. 
+Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. 
+
+V tomto článku se dozvíte, jak vytvořit svazek NFS. Svazky SMB najdete v tématu [vytvoření svazku SMB](azure-netapp-files-create-volumes-smb.md). Svazky s duálním protokolem najdete v tématu [vytvoření svazku se dvěma protokoly](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Než začnete 
 * Musíte mít už nastavený fond kapacity.  
@@ -112,6 +114,8 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
         Pokud používáte protokol Kerberos s NFSv 4.1, vyžadují se další konfigurace. Postupujte podle pokynů v části [Konfigurace šifrování protokolu Kerberos nfsv 4.1](configure-kerberos-encryption.md).
 
+    * Pokud chcete pro přístup ke svazku povolit uživatele služby Active Directory LDAP a rozšířené skupiny (až 1024 skupin), vyberte možnost **LDAP** . Postupujte podle pokynů v tématu [Konfigurace přidat LDAP s rozšířenými skupinami pro přístup ke svazkům NFS pro](configure-ldap-extended-groups.md) dokončení požadovaných konfigurací. 
+ 
     * Volitelně můžete [nakonfigurovat zásady exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md).
 
     ![Zadat protokol NFS](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -127,6 +131,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
 * [Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Konfigurace šifrování Kerberos NFSv4.1](configure-kerberos-encryption.md)
+* [Konfigurace Přidání LDAP pomocí rozšířených skupin pro přístup ke svazkům NFS](configure-ldap-extended-groups.md)
 * [Připojení nebo odpojení svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)

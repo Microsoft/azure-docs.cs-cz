@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 653eacd11c4a3c7ab500abff809a6b9bf8229c1f
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094658"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492065"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Správa rolí pro smlouvu Enterprise v Azure
 
@@ -22,6 +22,7 @@ Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různýc
 
 - Podnikový správce
 - Podnikový správce (jen pro čtení)<sup>1</sup>
+- Nákupčí EA
 - Správce oddělení
 - Správce oddělení (jen pro čtení)
 - Vlastník účtu<sup>2</sup>
@@ -61,6 +62,7 @@ Následující diagram znázorňuje jednoduché hierarchie Azure EA.
 Následující role administrativního uživatele jsou součástí registrace Enterprise:
 
 - Podnikový správce
+- Nákupčí EA
 - Správce oddělení
 - Vlastník účtu
 - Správce služeb
@@ -80,12 +82,24 @@ Uživatelé s touto rolí mají nejvyšší úroveň přístupu. Mohou:
 - spravovat jiné podnikové správce,
 - spravovat správce oddělení,
 - spravovat kontakty pro oznámení,
+- Kupte si služby Azure, včetně rezervací.
 - zobrazovat využití napříč všemi účty,
 - zobrazovat nefakturované poplatky napříč všemi účty.
 - zobrazovat a spravovat všechny objednávky a rezervace, které souvisejí se smlouvou Enterprise.
   - Podnikový správce (jen pro čtení) může zobrazovat rezervace a objednávky rezervací. Nemůže je ale spravovat.
 
 V podnikové registraci můžete mít více podnikových správců. Podnikovým správcům můžete udělit přístup jen pro čtení. Všichni navíc přebírají roli Správce oddělení.
+
+### <a name="ea-purchaser"></a>Nákupčí EA
+
+Uživatelé s touto rolí mají oprávnění k nákupu služeb Azure, ale nemůžou spravovat účty. Mohou:
+
+- Kupte si služby Azure, včetně rezervací.
+- zobrazovat využití napříč všemi účty,
+- zobrazovat nefakturované poplatky napříč všemi účty.
+- zobrazovat a spravovat všechny objednávky a rezervace, které souvisejí se smlouvou Enterprise.
+
+Role nákupčího programu EA je aktuálně povolena pouze pro přístup založený na hlavním názvu služby. Informace o tom, jak přiřadit roli k hlavnímu názvu služby, najdete v tématu [přiřazení rolí k hlavním názvům služeb Azure smlouva Enterprise](assign-roles-azure-service-principals.md).
 
 ### <a name="department-administrator"></a>Správce oddělení
 
@@ -126,6 +140,7 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 |---|---|
 |Podnikový správce|Unlimited|
 |Podnikový správce (jen pro čtení)|Unlimited|
+| Nákupčí EA přiřazený k hlavnímu názvu služby | Unlimited |
 |Správce oddělení|Unlimited|
 |Správce oddělení (jen pro čtení)|Unlimited|
 |Vlastník účtu|1 na účet<sup>3</sup>|
@@ -134,18 +149,19 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organizační struktura a oprávnění podle role
 
-|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení)|Vlastník účtu| Partner|
-|---|---|---|---|---|---|---|
-|Zobrazení podnikových správců|✔|✔|✘|✘|✘|✔|
-|Přidání nebo odebrání podnikových správců|✔|✘|✘|✘|✘|✘|
-|Zobrazení kontaktů pro oznámení<sup>4</sup> |✔|✔|✘|✘|✘|✔|
-|Přidání nebo odebrání kontaktů pro oznámení<sup>4</sup> |✔|✘|✘|✘|✘|✘|
-|Vytvoření a správa oddělení |✔|✘|✘|✘|✘|✘|
-|Zobrazení správců oddělení|✔|✔|✔|✔|✘|✔|
-|Přidání nebo odebrání správců oddělení|✔|✘|✔|✘|✘|✘|
-|Zobrazení účtů v registraci |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
-|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✔<sup>5</sup>|✘|✘|✘|
-|Vytvoření a správa předplatných a oprávnění předplatných|✘|✘|✘|✘|✔|✘|
+|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)| Nákupčí EA | Správce oddělení|Správce oddělení (jen pro čtení)|Vlastník účtu| Partner|
+|---|---|---|---|---|---|---|---|
+|Zobrazení podnikových správců|✔|✔| ✔|✘|✘|✘|✔|
+|Přidání nebo odebrání podnikových správců|✔|✘|✘|✘|✘|✘|✘|
+|Zobrazení kontaktů pro oznámení<sup>4</sup> |✔|✔|✔|✘|✘|✘|✔|
+|Přidání nebo odebrání kontaktů pro oznámení<sup>4</sup> |✔|✘|✘|✘|✘|✘|✘|
+|Vytvoření a správa oddělení |✔|✘|✘|✘|✘|✘|✘|
+|Zobrazení správců oddělení|✔|✔|✔|✔|✔|✘|✔|
+|Přidání nebo odebrání správců oddělení|✔|✘|✘|✔|✘|✘|✘|
+|Zobrazení účtů v registraci |✔|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✘|✔<sup>5</sup>|✘|✘|✘|
+|Nákup rezervací|✔|✘|✔|✘|✘|✘|✘|
+|Vytvoření a správa předplatných a oprávnění předplatných|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Kontaktům pro oznámení se odesílá e-mailová komunikace týkající se smlouvy Azure Enterprise.
 - <sup>5</sup> Úloha je omezená na účty ve vašem oddělení.
@@ -166,14 +182,14 @@ Další informace o přidání správce oddělení najdete v tématu věnovaném
 
 ## <a name="usage-and-costs-access-by-role"></a>Přístup k využití a nákladům podle role
 
-|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení) |Vlastník účtu| Partner|
-|---|---|---|---|---|---|---|
-|Zobrazení zůstatku kreditu včetně zálohy na Azure|✔|✔|✘|✘|✘|✔|
-|Zobrazení kvót útraty oddělení|✔|✔|✘|✘|✘|✔|
-|Nastavení kvót útraty oddělení|✔|✘|✘|✘|✘|✘|
-|Zobrazení ceníku EA v organizaci|✔|✔|✘|✘|✘|✔|
-|Zobrazení podrobností o využití a nákladech|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
-|Správa prostředků na webu Azure Portal|✘|✘|✘|✘|✔|✘|
+|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Nákupčí EA|Správce oddělení|Správce oddělení (jen pro čtení) |Vlastník účtu| Partner|
+|---|---|---|---|---|---|---|---|
+|Zobrazení zůstatku kreditu včetně zálohy na Azure|✔|✔|✔|✘|✘|✘|✔|
+|Zobrazení kvót útraty oddělení|✔|✔|✔|✘|✘|✘|✔|
+|Nastavení kvót útraty oddělení|✔|✘|✘|✘|✘|✘|✘|
+|Zobrazení ceníku EA v organizaci|✔|✔|✔|✘|✘|✘|✔|
+|Zobrazení podrobností o využití a nákladech|✔|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Správa prostředků na webu Azure Portal|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **DA view charges** (Správce oddělení může zobrazit náklady). Správce oddělení pak může zobrazit podrobnosti o nákladech daného oddělení.
 - <sup>7</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **AO view charges** (Vlastník účtu může zobrazit náklady). Vlastník účtu pak může zobrazit podrobnosti o nákladech daného účtu.
@@ -198,8 +214,6 @@ V následující tabulce je uvedený vztah mezi rolemi správce smlouvy Enterpri
 |Žádná|Neuvedeno |Vlastník|Maloobchodní ceny|
 
 Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Roli Azure je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042721"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095165"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Kvóty ve službě Azure static Web Apps Preview
 
@@ -29,7 +29,7 @@ Pro Azure static Web Apps ve verzi Preview existují následující kvóty.
 | Velikost aplikace                    | 250 MB           |
 | Předprodukční prostředí | 3                |
 | Vlastní domény              | 1                |
-| Autorizace<br><br>S vlastními rolemi a pravidly směrování | Max. 25 pozvaných a přiřazených rolí koncovým uživatelům |
+| Autorizace (s vlastními rolemi a pravidly směrování) | Maximálně 25 koncových uživatelů, kteří můžou patřit do vlastních rolí |
 | Azure Functions             | K dispozici        |
 | SLA                         | Žádné             |
 

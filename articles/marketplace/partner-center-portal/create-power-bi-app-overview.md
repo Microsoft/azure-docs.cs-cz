@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13c659592b7e0b45d0d58519e3620babb8cb3c6a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679136"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107563"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI
 
@@ -72,7 +72,7 @@ Po vytvoření a otestování aplikace v Power BI uložte webovou adresu instala
 
 Mezi obchodní požadavky patří procedurální, smluvní a právní závazky. Musíte:
 
-- Být registrovaným vydavatelem komerčního obchodu na webu Marketplace. Pokud nejste registrováni, postupujte podle kroků v části [Vytvoření účtu komerčního tržiště v partnerském centru](create-account.md).
+- Být registrovaným vydavatelem komerčního obchodu na webu Marketplace. Pokud nejste registrováni, postupujte podle kroků v části [Vytvoření účtu komerčního tržiště v partnerském centru](../create-account.md).
 - Poskytněte obsah, který splňuje kritéria pro uvedení vaší nabídky na AppSource. Další informace najdete v tématu [seznam aplikací pro AppSource? Tady je postup](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - Odsouhlaste se a postupujte podle [prohlášení Microsoftu o zásadách ochrany osobních údajů](https://privacy.microsoft.com/privacystatement).
 

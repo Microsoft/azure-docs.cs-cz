@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905566"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223171"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>Kurz: Přidání ověřování do webové aplikace běžící na Azure App Service
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 Pro tento kurz potřebujete webovou aplikaci nasazenou pro App Service. Můžete použít existující webovou aplikaci nebo můžete postupovat podle pokynů [ASP.NET Core rychlý Start](quickstart-dotnetcore.md) k vytvoření a publikování nové webové aplikace pro App Service.
 
-Bez ohledu na to, jestli používáte existující webovou aplikaci, nebo vytvořte novou, poznamenejte si název webové aplikace a název skupiny prostředků, do které je webová aplikace nasazená. Tyto názvy budete potřebovat v rámci tohoto kurzu. V celém tomto kurzu příklady názvů v postupech a snímcích obrazovky obsahují *SecureWebApp*.
+Bez ohledu na to, jestli používáte existující webovou aplikaci, nebo vytvořte novou, poznamenejte si název webové aplikace a název skupiny prostředků, do které je webová aplikace nasazená. Tyto názvy budete potřebovat v rámci tohoto kurzu. 
 
 ## <a name="configure-authentication-and-authorization"></a>Konfigurace ověřování a autorizace
 
@@ -53,17 +53,19 @@ V **skupiny prostředků** vyhledejte a vyberte skupinu prostředků. V **přehl
 
 :::image type="content" alt-text="Snímek obrazovky znázorňující výběr stránky správy vaší aplikace" source="./media/scenario-secure-app-authentication-app-service/select-app-service.png":::
 
-V nabídce vlevo vaší aplikace vyberte **ověřování/autorizace** a pak povolte App Service ověřování výběrem **zapnuto**.
+V nabídce vlevo vaší aplikace vyberte **ověřování** a pak klikněte na **Přidat zprostředkovatele identity**.
 
-V části **Akce, která se má provést, když požadavek nebude ověřený** vyberte **Přihlásit se přes Azure Active Directory**.
+Na stránce **Přidat poskytovatele identity** vyberte **Microsoft** jako **poskytovatele identity** pro přihlášení k identitám Microsoft a Azure AD.
 
-V části **Zprostředkovatelé ověřování** vyberte **Azure Active Directory**. Vyberte **expresní** a potom přijměte výchozí nastavení pro vytvoření nové aplikace Active Directory. Vyberte **OK**.
+V případě registračního  >  **typu aplikace** registrace aplikace **Vyberte vytvořit novou registraci aplikace**.
 
-:::image type="content" alt-text="Snímek obrazovky, který zobrazuje expresní ověřování." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
+U   >  **podporovaných typů účtů** pro registraci aplikací vyberte **aktuální tenant – jeden tenant**.
 
-Na stránce **ověřování/autorizace** vyberte **Uložit**.
+V části **nastavení ověřování App Service** ponechte možnost **ověřování** nastavenou na **vyžadovat ověření** a **neověřené požadavky** nastavené na **http 302 Nalezeno přesměrování: doporučuje se pro weby**.
 
-Jakmile se zobrazí oznámení se zprávou `Successfully saved the Auth Settings for <app-name> App` , aktualizujte stránku portálu.
+V dolní části stránky **Přidat poskytovatele identity** klikněte na **Přidat** , aby se povolilo ověřování pro webovou aplikaci.
+
+:::image type="content" alt-text="Snímek obrazovky, který ukazuje konfiguraci ověřování." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 Teď máte aplikaci, která je zabezpečená App Service ověřováním a autorizací.
 

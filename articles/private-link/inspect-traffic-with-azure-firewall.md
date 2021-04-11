@@ -8,14 +8,17 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3059d88c9894ba50a608afaf1cb23367dfaf089c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641996"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259451"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Kontrola provozu směrovaného do privátního koncového bodu pomocí služby Azure Firewall
+
+> [!NOTE]
+> Pokud chcete zabezpečit provoz do privátních koncových bodů v Azure Virtual WAN pomocí zabezpečeného virtuálního rozbočovače, přečtěte si téma [zabezpečený provoz určený do privátních koncových bodů ve službě Azure Virtual WAN](../firewall-manager/private-link-inspection-secure-virtual-hub.md).
 
 Soukromý koncový bod Azure je základní stavební blok pro privátní propojení Azure. Privátní koncové body umožňují prostředkům Azure nasazeným ve virtuální síti komunikovat soukromě s prostředky privátního propojení.
 
