@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232047"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255967"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -60,6 +60,12 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |SecretEncryptionCertX509StoreName|řetězec, doporučená hodnota je my (žádná výchozí) |    Dynamická|    Určuje certifikát, který se má použít pro šifrování a dešifrování přihlašovacích údajů s názvem úložiště certifikátů X. 509, který se používá k šifrování šifrovacích přihlašovacích údajů, které používá služba obnovení záloh. |
 |TargetReplicaSetSize|int, výchozí hodnota je 0|Static| TargetReplicaSetSize pro BackupRestoreService |
 
+## <a name="centralsecretservice"></a>CentralSecretService
+
+| **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
+| --- | --- | --- | --- |
+|DeployedState |wstring, výchozí hodnota je L "Disabled" |Static |odstraňování šablon stylů CSS ze dvou fází |
+
 ## <a name="clustermanager"></a>ClusterManager
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -95,6 +101,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
+|AllowCreateUpdateMultiInstancePerNodeServices |Logická hodnota, výchozí hodnota je false. |Dynamická|Umožňuje vytvoření více bezstavových instancí služby na jeden uzel. Tato funkce je aktuálně ve verzi Preview. |
 |PerfMonitorInterval |Čas v sekundách, výchozí hodnota je 1. |Dynamická|Zadejte časový interval v sekundách. Interval sledování výkonu Nastavení na hodnotu 0 nebo záporná hodnota zakáže monitorování. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -304,6 +311,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false. |Static|Zásady hodnocení stavu clusteru: Povolit pro vyhodnocení stavu podle typu aplikace. |
+|EnableNodeTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false. |Static|Zásady hodnocení stavu clusteru: Povolit vyhodnocení stavu podle typu uzlu. |
 |MaxSuggestedNumberOfEntityHealthReports|Int, výchozí hodnota je 100 |Dynamická|Maximální počet zpráv o stavu, které může entita mít, než vyvolává obavy o logice vytváření sestav o stavu sledovacího zařízení. Každá entita o stavu by měla mít relativně malý počet sestav o stavu. Pokud počet sestav překročí toto číslo, mohou nastat problémy s implementací sledovacího zařízení. Entita s příliš mnoha sestavami je označena prostřednictvím sestavy stavu upozornění, když je entita vyhodnocena. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
@@ -349,7 +357,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |DisableContainers|logická hodnota, výchozí hodnota je FALSE.|Static|Konfigurace pro zákaz použití kontejnerů místo DisableContainerServiceStartOnContainerActivatorOpen, což je nepoužívané konfigurace |
 |DisableDockerRequestRetry|logická hodnota, výchozí hodnota je FALSE. |Dynamická| Ve výchozím nastavení SF komunikuje pomocí příkazu DD (Docker Dameon) s časovým limitem "DockerRequestTimeout" pro každý odeslaný požadavek HTTP. Pokud DD nereaguje v rámci tohoto časového období; SF znovu odešle požadavek, pokud stále zbývá operace na nejvyšší úrovni.  S kontejnerem HyperV; DD někdy vybere mnohem více času, aby kontejner mohl vyvolat nebo deaktivovat. V takových případech DD žádosti vyprší od SF perspektivy a SF opakuje operaci. Někdy se zdá, že přidá větší tlak na DD. Tato konfigurace umožňuje zakázat tento pokus o opakování a počkat na odpověď DD. |
 |DnsServerListTwoIps | Logická hodnota, výchozí hodnota je FALSE. | Static | Tyto příznaky přidávají místní server DNS dvakrát, aby bylo možné zmírnit občasné řešení problémů. |
-| DockerTerminateOnLastHandleClosed | logická hodnota, výchozí hodnota je FALSE. | Static | Ve výchozím nastavení, pokud hostitele fabrichost vrátilo spravuje dockerd (na základě: SkipDockerProcessManagement = = false), toto nastavení nakonfiguruje, co se stane, když dojde k chybě hostitele fabrichost vrátilo nebo dockerd. Pokud je `true` Tato možnost nastavena na hodnotu v případě, že dojde k vynucenému ukončení všech spuštěných kontejnerů, bude klientovi HCS nuceně ukončen. Pokud je sada nastavena na kontejnery, budou dál fungovat `false` . Poznámka: předchozí až 8,0 Toto chování bylo neúmyslně ekvivalentem `false` . Výchozím nastavením `true` tady je to, co se ve výchozím nastavení stane, že se při restartování těchto procesů projeví pro naši logiku vyčištění. |
+| DockerTerminateOnLastHandleClosed | logická hodnota, výchozí hodnota je TRUE. | Static | Ve výchozím nastavení, pokud hostitele fabrichost vrátilo spravuje dockerd (na základě: SkipDockerProcessManagement = = false), toto nastavení nakonfiguruje, co se stane, když dojde k chybě hostitele fabrichost vrátilo nebo dockerd. Pokud je `true` Tato možnost nastavena na hodnotu v případě, že dojde k vynucenému ukončení všech spuštěných kontejnerů, bude klientovi HCS nuceně ukončen. Pokud je sada nastavena na kontejnery, budou dál fungovat `false` . Poznámka: předchozí až 8,0 Toto chování bylo neúmyslně ekvivalentem `false` . Výchozím nastavením `true` tady je to, co se ve výchozím nastavení stane, že se při restartování těchto procesů projeví pro naši logiku vyčištění. |
 | DoNotInjectLocalDnsServer | logická hodnota, výchozí hodnota je FALSE. | Static | Zabraňuje modulu runtime vložit místní IP adresu jako server DNS pro kontejnery. |
 |EnableActivateNoWindow| logická hodnota, výchozí hodnota je FALSE.|Dynamická| Aktivovaný proces se vytvoří na pozadí bez konzoly. |
 |EnableContainerServiceDebugMode|logická hodnota, výchozí hodnota je TRUE.|Static|Povolí nebo zakáže protokolování kontejnerů Docker.  Pouze Windows.|
@@ -552,6 +560,8 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |MovementPerPartitionThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600. |Static| Zadejte časový interval v sekundách. Označuje délku minulého intervalu, pro který se má sledovat pohyb repliky pro každý oddíl (používá se společně s MovementPerPartitionThrottleThreshold). |
 |MovementPerPartitionThrottleThreshold | Uint, výchozí hodnota je 50 |Dynamická| Pro oddíl se neobjeví žádný pohyb související s vyrovnáváním, pokud počet ovlivněných pohybů pro repliky tohoto oddílu dosáhl nebo překročil MovementPerFailoverUnitThrottleThreshold v minulém intervalu, který je určen MovementPerPartitionThrottleCountingInterval. |
 |MoveParentToFixAffinityViolation | Logická hodnota, výchozí hodnota je false. |Dynamická| Nastavení, které určuje, jestli je možné přesunout nadřazené repliky a opravit omezení spřažení.|
+|NodeTaggingEnabled | Logická hodnota, výchozí hodnota je false. |Dynamická| Pokud je true; Funkce NodeTagging bude povolena. |
+|NodeTaggingConstraintPriority | Int, výchozí hodnota je 0 |Dynamická| Konfigurovatelná priorita označování uzlů |
 |PartiallyPlaceServices | Logická hodnota, výchozí hodnota je true. |Dynamická| Určuje, zda budou všechny repliky služby v clusteru umístěny na hodnotu "vše" nebo "nic", na které jsou přiděleny omezené vhodné uzly.|
 |PlaceChildWithoutParent | Logická hodnota, výchozí hodnota je true. | Dynamická|Nastavení, které určuje, zda lze repliku podřízené služby umístit, pokud není nastavena žádná nadřazená replika. |
 |PlacementConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení umístění: 0: tvrdý; 1: soft; negativní: ignoruje se. |
@@ -572,7 +582,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |UpgradeDomainConstraintPriority | Int, výchozí hodnota je 1.| Dynamická|Určuje prioritu omezení domény upgradu: 0: tvrdý; 1: soft; negativní: ignoruje se. |
 |UseMoveCostReports | Logická hodnota, výchozí hodnota je false. | Dynamická|Dá pokyn k ignorování nákladového prvku funkce bodování. Výsledkem je potenciálně velký počet přesunů pro lepší vyvážené umístění. |
 |UseSeparateSecondaryLoad | Logická hodnota, výchozí hodnota je true. | Dynamická|Nastavení, které určuje, zda má být pro sekundární repliky použito samostatné zatížení. |
-|UseSeparateSecondaryMoveCost | Logická hodnota, výchozí hodnota je false. | Dynamická|Nastavení, které určuje, zda mají být pro sekundární repliky použity samostatné náklady na přesun. |
+|UseSeparateSecondaryMoveCost | Logická hodnota, výchozí hodnota je true. | Dynamická|Nastavení, které určuje, zda má PLB použít jiné náklady na přesun pro sekundární uzel na každém uzlu. Pokud je vypnutá funkce UseSeparateSecondaryMoveCost: – hlášené náklady na přesunutí pro sekundární uzel na jednom uzlu způsobí overwritting přesun nákladů na jednotlivé sekundární (na všech ostatních uzlech), pokud je zapnutá funkce UseSeparateSecondaryMoveCost: – hlášené náklady na přesunutí pro sekundární uzel na jednom uzlu se projeví pouze u tohoto sekundárního (bez vlivu na sekundární hodnoty na jiných uzlech) – Pokud dojde k selhání repliky, vytvoří se nová replika s výchozími náklady na přesun, které jsou zadané na úrovni služby – Pokud PLB přesouvá existující náklady na přesun repliky. |
 |ValidatePlacementConstraint | Logická hodnota, výchozí hodnota je true. |Dynamická| Určuje, jestli se má PlacementConstraint výraz pro službu ověřit, když se aktualizuje ServiceDescription služby. |
 |ValidatePrimaryPlacementConstraintOnPromote| Logická hodnota, výchozí hodnota je TRUE. |Dynamická|Určuje, jestli se má pro převzetí služeb při selhání vyhodnotit výraz PlacementConstraint pro službu pro primární preference. |
 |VerboseHealthReportLimit | Int, výchozí hodnota je 20 | Dynamická|Definuje počet, kolikrát musí být replika Neumístěná předtím, než se pro ni nahlásí upozornění na stav (Pokud je zapnuté podrobné hlášení stavu). |
@@ -767,6 +777,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |RecoverServicePartitions |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro obnovování oddílů služby. |
 |Operace recoversystempartitions |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro obnovování oddílů systémových služeb. |
 |RemoveNodeDeactivations |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro vrácení deaktivace na více uzlech. |
+|ReportCompletion |wstring, výchozí hodnota je L "admin". |Dynamická| Konfigurace zabezpečení pro dokončení generování sestav. |
 |ReportFabricUpgradeHealth |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro obnovení upgradu clusteru s aktuálním průběhem upgradu. |
 |ReportFault |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro chybu generování sestav. |
 |ReportHealth |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro vytváření sestav stavu. |

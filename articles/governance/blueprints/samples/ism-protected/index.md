@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu Australian Government ISM PROTECTED – přehled
 description: Přehled ukázky podrobného plánu pro Australian Government ISM PROTECTED Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISM PROTECTED.
-ms.date: 01/21/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: ee28ccb0d76327f3db073c98bcbc44a78c2f1a17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 365d83633462873d9f67dace1729d1ddcee92b3f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98707364"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386380"
 ---
 # <a name="overview-of-the-australian-government-ism-protected-blueprint-sample"></a>Přehled ukázky podrobného plánu pro Australian Government ISM PROTECTED
 

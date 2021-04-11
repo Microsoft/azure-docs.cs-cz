@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc084da6ef7f26b9e434acf8985c7077f5eaffe2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95992942"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078362"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a správa smluv obchodních partnerů v Azure Logic Apps
 
@@ -60,14 +60,13 @@ V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole z
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název** | Yes | <*smlouva – název*> | Název vaší smlouvy |
-   | **Typ smlouvy** | Yes | **AS2**, **X12** nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. | |  
+   | **Typ smlouvy** | Yes | **AS2**, **X12** nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. |
    | **Partner hostitele** | Yes | <*Host-partner – název*> | Partner hostitele představuje organizaci, která určuje smlouvu. |
    | **Hostitelská identita** | Yes | <*Host-partner – identifikátor*> | Identifikátor hostitelského partnera |
    | **Partner hosta** | Yes | <*Host – partner – název*> | Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
    | **Identita hosta** | Yes | <*Host – partner – identifikátor*> | Identifikátor hostovaného partnera |
    | **Nastavení příjmu** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner obdrží všechny příchozí zprávy od hostovaného partnera v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>- [Nastavení zprávy AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zprávy EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Nastavení zprávy X12](logic-apps-enterprise-integration-x12.md) |
    | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner odesílá všechny odchozí zprávy partnerovi hosta v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>- [Nastavení zprávy AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zprávy EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Nastavení zprávy X12](logic-apps-enterprise-integration-x12.md) |
-   |||||
 
    > [!IMPORTANT]
    > Řešení smlouvy závisí na shodě s těmito položkami, které jsou definovány v partnerovi a příchozí zprávě:

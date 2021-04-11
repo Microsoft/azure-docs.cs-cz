@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592751"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078498"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu ve službě Application Gateway
 ==================================================
@@ -176,12 +176,12 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 | **Chyba** | **Akce** |
 | --- | --- |
-| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže předat přihlašovací údaje pro ověření. Buď povolte \" protokol HTTP 401 \" ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
-| Neshoda stavového kódu testu: přijata 403 | Přístup je zakázán. Ověřte, jestli je na serveru back-end povolený přístup k cestě. | |
-| Neshoda stavového kódu testu: přijata 404 | Stránka se nenašla. Ověřte, zda je na serveru back-end přístupná cesta k názvu hostitele. Změňte název hostitele nebo parametr cesty na hodnotu, která je k dispozici. | |
-| Neshoda stavového kódu testu: přijata 405 | Požadavky testu na Application Gateway používají metodu HTTP GET. Ověřte, zda server tuto metodu povoluje. | |
-| Neshoda stavového kódu testu: přijata 500 | Vnitřní chyba serveru. Zkontrolujte stav back-endového serveru a jestli jsou služby spuštěné. | |
-| Neshoda stavového kódu testu: přijata 503 | Nedostupná služba. Zkontrolujte stav back-endového serveru a jestli jsou služby spuštěné. | |
+| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže předat přihlašovací údaje pro ověření. Buď povolte \" protokol HTTP 401 \" ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. |
+| Neshoda stavového kódu testu: přijata 403 | Přístup je zakázán. Ověřte, jestli je na serveru back-end povolený přístup k cestě. |
+| Neshoda stavového kódu testu: přijata 404 | Stránka se nenašla. Ověřte, zda je na serveru back-end přístupná cesta k názvu hostitele. Změňte název hostitele nebo parametr cesty na hodnotu, která je k dispozici. |
+| Neshoda stavového kódu testu: přijata 405 | Požadavky testu na Application Gateway používají metodu HTTP GET. Ověřte, zda server tuto metodu povoluje. |
+| Neshoda stavového kódu testu: přijata 500 | Vnitřní chyba serveru. Zkontrolujte stav back-endového serveru a jestli jsou služby spuštěné. |
+| Neshoda stavového kódu testu: přijata 503 | Nedostupná služba. Zkontrolujte stav back-endového serveru a jestli jsou služby spuštěné. |
 
 Pokud si myslíte, že odpověď je legitimní a chcete, aby Application Gateway přijímala další stavové kódy jako v pořádku, můžete vytvořit vlastní test. Tento přístup je užitečný v situacích, kdy back-end web potřebuje ověřování. Vzhledem k tomu, že požadavky sondy neobsahují žádné přihlašovací údaje uživatele, selžou, že back-end server vrátí stavový kód HTTP 401.
 

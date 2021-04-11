@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84790242"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077835"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Výpis přiřazení odmítnutí Azure pomocí Azure Portal
 
@@ -54,7 +54,7 @@ Pomocí těchto kroků můžete vypsat přiřazení zamítnutí v oboru předpla
 
     ![Odepřít přiřazení – sloupce](./media/deny-assignments-portal/deny-assignments-columns.png)
 
-    |  |  |
+    | Sloupec | Popis  |
     | --- | --- |
     | **Název** | Název přiřazení zamítnutí. |
     | **Typ objektu zabezpečení** | Uživatel, skupina, systémově definované skupiny nebo instanční objekt. |
@@ -79,7 +79,7 @@ Pomocí následujícího postupu můžete zobrazit další podrobnosti o přiřa
 
     Okno **Uživatelé** obsahuje následující dvě části.
 
-    |  |  |
+    | Nastavení odepření  | Description |
     | --- | --- |
     | **Přiřazení zamítnutí platí pro**  | Objekty zabezpečení, na které se vztahuje přiřazení zamítnutí. |
     | **Zakázané přiřazení – vyloučení** | Objekty zabezpečení, které jsou vyloučeny z přiřazení zamítnutí. |
@@ -90,7 +90,7 @@ Pomocí následujícího postupu můžete zobrazit další podrobnosti o přiřa
 
     ![Zamítnutí přiřazení – Odepřená oprávnění](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Typ akce | Popis |
+    | Typ akce | Description |
     | --- | --- |
     | **Akce**  | Operace správy se zamítly. |
     | **NotActions** | Operace správy vyloučené z operace odepřené správy |

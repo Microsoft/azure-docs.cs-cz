@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps s Helm pro konfiguraci clusteru s povoleným obloukem Azure
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, ARC, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121401"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449539"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Nasazení grafů Helm pomocí GitOps u clusteru Kubernetes s povoleným obloukem
 
@@ -21,9 +21,17 @@ Helm je opensourcový nástroj pro správu balíčků, který vám pomůže s in
 
 V tomto článku se dozvíte, jak nakonfigurovat a používat Helm s povoleným Kubernetes ARC Azure.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Požadavky
 
-Ověřte, že máte existující cluster Kubernetes s povoleným připojením k Azure ARC. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start clusteru Kubernetes s povoleným připojením Azure ARC](./quickstart-connect-cluster.md).
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Existující Kubernetes připojený cluster s podporou Azure ARC.
+    - Pokud jste ještě nepřipojili cluster, Projděte si náš průvodce [rychlým startem clusteru Kubernetes s povoleným připojením k Azure ARC](quickstart-connect-cluster.md).
+- Porozumění výhodám a architektuře této funkce. Další informace najdete v [tématu Konfigurace a GitOps v článku Kubernetes s podporou ARC Azure](conceptual-configurations.md).
+- Nainstalujte `k8s-configuration` rozšíření Azure CLI verze >= 1.0.0:
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Přehled použití GitOps a Helm s povoleným Kubernetes ARC Azure
 
@@ -64,7 +72,7 @@ spec:
 
 Konfigurace verze Helm obsahuje následující pole:
 
-| Pole | Description |
+| Pole | Popis |
 | ------------- | ------------- | 
 | `metadata.name` | Povinné pole Musí dodržovat zásady vytváření názvů Kubernetes. |
 | `metadata.namespace` | Volitelné pole. Určuje, kde je vydaná verze vytvořena. |

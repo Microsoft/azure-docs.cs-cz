@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: error-reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 89f063ab50cfd880552e80a77ba798e4d06de5b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 77bd59782d12d7d73e6e882e929ae9a4c95250a7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709576"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449881"
 ---
 # <a name="error-codes"></a>Kódy chyb #
 
@@ -44,7 +44,7 @@ Popište oblast chyby.
 Popište podrobnosti o chybě. bity 27-20 poskytují vysokou úroveň, bity 19-0 poskytují více podrobností, pokud jsou k dispozici.
 
 
-| amp. errorCode. název | Kódy, bity [27-0] (28 bitů) | Description |
+| amp. errorCode. název | Kódy, bity [27-0] (28 bitů) | Popis |
 |---|---:|---|
 | **Rozsah chyb MEDIA_ERR_ABORTED (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Obecná chyba přerušení |

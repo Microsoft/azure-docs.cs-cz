@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576913"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221122"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Kurz: vytvoření Azure Load Balancer mezi oblastmi pomocí Azure Portal
 
@@ -105,34 +105,6 @@ Vytvořte back-end fond adres **myBackendPool-CR** , který bude zahrnovat míst
 8. Vyberte **Přidat**.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Přidání regionálních nástrojů pro vyrovnávání zatížení do problémových" border="true":::
-
-## <a name="create-a-health-probe"></a>Vytvoření sondy stavu
-
-V této části vytvoříte sondu stavu pro vytvoření pravidla vyrovnávání zatížení:
-
-* S názvem **myHealthProbe**.
-* Protokol **TCP**.
-* Interval po dobu **5** sekund.
-* Prahová hodnota špatného stavu **dvou** selhání.
-
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a v seznamu prostředků vyberte **myLoadBalancer-CR** .
-
-2. V oblasti **Nastavení** vyberte **Sondy stavu**.
-
-3. Pomocí těchto hodnot můžete nakonfigurovat sondu stavu:
-
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Zadejte **myHealthProbe**. |
-    | Protokol | Vyberte **TCP**. |
-    | Port | Zadejte **80**. |
-    | Interval | Zadejte **5**. |
-    | Prahová hodnota pro poškozený stav | Zadejte **2**. |
-
-4. Vyberte **OK**.
-
-    > [!NOTE]
-    > Nástroj pro vyrovnávání zatížení pro různé oblasti má vestavěnou sondu stavu. Tento test je zástupný symbol pro fungování vytvoření pravidla vyrovnávání zatížení.  Další informace najdete v tématu **[omezení nástroje pro vyrovnávání zatížení mezi oblastmi](cross-region-overview.md#limitations)**.
 
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 

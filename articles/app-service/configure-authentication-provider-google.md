@@ -3,16 +3,16 @@ title: Konfigurace ověřování Google
 description: Naučte se nakonfigurovat ověřování Google jako zprostředkovatele identity pro App Service nebo Azure Functions aplikaci.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6bec32fa928e840569ed95c35a056db91ea9737
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519945"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077988"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro používání přihlášení Google
 
@@ -34,21 +34,20 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který m
 
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Přidání informací Google do aplikace
 
-1. V [Azure Portal]přejdete do aplikace App Service.
-1. Vyberte **Nastavení**  >  **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. Vyberte **Google** a potom vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
-1. Vyberte **OK**.
+1. Přihlaste se k [Azure Portal] a přejděte do aplikace.
+1. V nabídce na levé straně vyberte **ověřování** . Klikněte na **Přidat zprostředkovatele identity**.
+1. V rozevíracím seznamu Zprostředkovatel identity vyberte **Google** . Vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve.
 
-   App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Další informace najdete v tématu [autorizace a zamítnutí uživatelů](app-service-authentication-how-to.md#authorize-or-deny-users).
+    Tajný kód bude uložen jako [nastavení aplikace](./configure-common.md#configure-app-settings) typu "slot – vždy" s názvem `GOOGLE_PROVIDER_AUTHENTICATION_SECRET` . Toto nastavení můžete později aktualizovat, aby se používaly [Key Vault odkazy](./app-service-key-vault-references.md) , pokud chcete tajný klíč spravovat v Azure Key Vault.
 
-1. Volitelné Pokud chcete omezit přístup k webu jenom na uživatele ověřené Google, nastavte **akci, která se má provést, když se žádost neověřuje** na **Google**. Když nastavíte tuto funkci, aplikace vyžaduje, aby byly všechny požadavky ověřeny. Také přesměruje všechny neověřené žádosti na Google pro ověřování.
+1. Pokud se jedná o prvního zprostředkovatele identity nakonfigurovaného pro aplikaci, zobrazí se také výzva s oddílem **nastavení ověřování App Service** . V opačném případě se můžete přesunout k dalšímu kroku.
+    
+    Tyto možnosti určují, jak vaše aplikace reaguje na neověřené požadavky, a výchozí výběry přesměrují všechny požadavky na přihlášení pomocí tohoto nového poskytovatele. Přizpůsobením tohoto chování teď můžete změnit nebo upravit toto nastavení později z hlavní obrazovky pro **ověřování** výběrem možnosti **Upravit** vedle **nastavení ověřování**. Další informace o těchto možnostech najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
 
-    > [!CAUTION]
-    > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. Pro takové aplikace může být vhodnější použití **anonymních požadavků (žádná akce)** , aby aplikace ručně spouštěla ověřování. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
+1. Volitelné Klikněte na **Další: obory** a přidejte libovolné obory, které aplikace potřebuje. Budou požadovány v době přihlášení pro toky založené na prohlížeči.
+1. Klikněte na **Přidat**.
 
-1. Vyberte **Uložit**.
-
-Teď jste připravení použít Google pro ověřování ve vaší aplikaci.
+Teď jste připravení použít Google pro ověřování ve vaší aplikaci. Poskytovatel bude uveden na obrazovce **ověřování** . Odtud můžete tuto konfiguraci poskytovatele upravit nebo odstranit.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Další kroky
 

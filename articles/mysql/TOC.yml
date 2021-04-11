@@ -7,8 +7,6 @@
       href: overview.md
     - name: Kterou možnost MySQL mám zvolit?
       href: select-right-deployment-type.md
-    - name: Podporované verze
-      href: concepts-supported-versions.md
     - name: Zásady podpory verze
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,6 +19,8 @@
       items:
         - name: Co je Jeden server?
           href: single-server-overview.md
+        - name: Podporované verze
+          href: concepts-supported-versions.md
         - name: Cenové úrovně
           items:
             - name: Cenové úrovně
@@ -395,8 +395,6 @@
       items:
         - name: Co je Flexibilní server?
           href: flexible-server/overview.md
-        - name: Podporované verze
-          href: concepts-supported-versions.md
         - name: Výpočetní výkon a úložiště
           href: flexible-server/concepts-compute-storage.md
     - name: Rychlé starty

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599294"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097216"
 ---
 ### <a name="financial-account-identification"></a>Identifikace finančního účtu
 
@@ -34,7 +34,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Směrovací čísla asociace (ABA) pro americký bankový přenos
+        Směrovací čísla asociace (ABA) pro americký bankový přenos Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `ABARoutingNumber` do `pii-categories` parametru. `ABARoutingNumber` bude také vrácena v odpovědi rozhraní API, pokud je zjištěna.
       
@@ -62,7 +62,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Kódy SWIFT pro informace o platebních pokynech.
+        Kódy SWIFT pro informace o platebních pokynech. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `SWIFTCode` do `pii-categories` parametru. `SWIFTCode` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -89,7 +89,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Čísla platebních karet 
+        Čísla platebních karet Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `CreditCardNumber` do `pii-categories` parametru. `CreditCardNumber` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
 
@@ -116,7 +116,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Kódy IBAN pro informace o platebních pokynech.
+        Kódy IBAN pro informace o platebních pokynech. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `InternationlBankingAccountNumber` do `pii-categories` parametru. `InternationlBankingAccountNumber` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -144,12 +144,12 @@ Následující entity jsou seskupené a uvedené podle země:
     :::column span="":::
         **Entita**
 
-        Číslo argentinské National identity (DNI)
+        Číslo argentinské National identity (DNI) 
 
     :::column-end:::
     :::column span="2":::
-        **Podrobnosti**
-
+        **Podrobnosti o** Také vrácen s `domain=phi` .
+        
         Chcete-li získat tuto kategorii entit, přidejte `ARNationalIdentityNumber` do `pii-categories` parametru. `ARNationalIdentityNumber` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
     :::column-end:::

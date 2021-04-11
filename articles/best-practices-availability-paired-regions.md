@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/30/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511225"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058013"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure
 
@@ -29,7 +29,7 @@ Regionální pár se skládá ze dvou oblastí ve stejné zeměpisné oblasti. A
 
 Některé služby Azure využívají spárované oblasti k zajištění kontinuity obchodních činností a k ochraně před ztrátou dat.  Azure poskytuje několik [řešení úložiště](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) , která využívají spárované oblasti k zajištění dostupnosti dat. Například [geograficky redundantní úložiště Azure](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) replikuje data do sekundární oblasti automaticky a zajišťuje tak, že data jsou odolná i v případě, že primární oblast nebude obnovitelné. 
 
-Všimněte si, že ne všechny služby Azure automaticky replikují data, ani nepřejdou všechny služby Azure zpátky z oblasti, která selhala, do její dvojice.  V takovém případě musí být obnovení a replikace konfigurovány zákazníkem.
+Všimněte si, že ne všechny služby Azure automaticky replikují data, ani všechny služby Azure nemusejí automaticky přejít z oblasti selhání do její dvojice.  V takovém případě musí být obnovení a replikace konfigurovány zákazníkem.
 
 ## <a name="can-i-select-my-regional-pairs"></a>Můžu vybrat své místní páry?
 
@@ -51,14 +51,15 @@ No. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 |:--- |:--- |:--- |
 | Asia-Pacific |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
-| Austrálie |Austrálie – střed |Austrálie – střed 2 |
+| Austrálie |Austrálie – střed |Austrálie – střed 2 * |
 | Brazílie |Brazílie – jih |Středojižní USA |
+| Brazílie |Brazílie – jihovýchod * |Brazílie – jih |
 | Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
-| Francie |Francie – střed|Francie – jih|
-| Německo |Německo – střed |Německo – severovýchod |
+| Francie |Francie – střed|Francie – jih *|
+| Německo |Německo – středozápad |Německo – sever * |
 | Indie |Indie – střed |Indie – jih |
 | Indie |Západní Indie |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
@@ -67,15 +68,17 @@ No. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Severní Amerika |USA – východ 2 |USA – střed |
 | Severní Amerika |USA – středosever |Středojižní USA |
 | Severní Amerika |Západní USA 2 |USA – středozápad |
-| Norsko | Norsko – východ | Norsko – západ |
-| Jižní Afrika | Jižní Afrika – sever |Jižní Afrika – západ |
-| Švýcarsko | Švýcarsko – sever |Švýcarsko – západ |
+| Norsko | Norsko – východ | Norsko – západ * |
+| Jižní Afrika | Jižní Afrika – sever |Jižní Afrika – západ * |
+| Švýcarsko | Švýcarsko – sever |Švýcarsko – západ * |
 | UK |Spojené království – západ |Spojené království – jih |
-| Spojené arabské emiráty | Spojené arabské emiráty sever | Spojené arabské emiráty – střed
-| Ministerstvo obrany USA |US DoD – východ |US DoD – střed |
-| Vláda USA |USA (Gov) – Arizona |USA (Gov) – Texas |
-| Vláda USA |US Gov – Iowa |USA (Gov) – Virginia |
-| Vláda USA |USA (Gov) – Virginia |USA (Gov) – Texas |
+| Spojené arabské emiráty | Spojené arabské emiráty sever | Spojené arabské emiráty střed * |
+| Ministerstvo obrany USA |US DoD – východ * |US DoD – střed * |
+| Vláda USA |US Gov – Arizona * |US Gov – Texas * |
+| Vláda USA |US Gov – Iowa * |US Gov – Virginie * |
+| Vláda USA |US Gov – Virginie * |US Gov – Texas * |
+
+(*) Některé oblasti jsou přístup omezené na podporu konkrétních zákaznických scénářů, například zotavení po havárii v zemi. Tyto oblasti jsou dostupné jenom na vyžádání [vytvořením nové žádosti o podporu v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 > [!Important]
 > - Západní Indie se spáruje pouze v jednom směru. Sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie je Střed Indie.

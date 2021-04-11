@@ -4,12 +4,12 @@ description: K přesunutí prostředků do nové skupiny prostředků nebo před
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f6ecb9ec8269ab8e06a241a395887de77691499
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934219"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078379"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -124,7 +124,7 @@ Pro ilustraci máme jenom jeden závislý prostředek.
 
 ## <a name="validate-move"></a>Ověřit přesun
 
-[Operace ověřit přesunutí](/rest/api/resources/resources/resources/moveresources) vám umožní otestovat scénář přesunutí bez skutečného přesunu prostředků. Pomocí této operace zkontrolujete, zda se přesun nezdaří. Ověřování je automaticky voláno při odeslání žádosti o přesunutí. Tuto operaci použijte pouze v případě, že potřebujete předem určit výsledky. K provedení této operace potřebujete:
+[Operace ověřit přesunutí](/rest/api/resources/resources/moveresources) vám umožní otestovat scénář přesunutí bez skutečného přesunu prostředků. Pomocí této operace zkontrolujete, zda se přesun nezdaří. Ověřování je automaticky voláno při odeslání žádosti o přesunutí. Tuto operaci použijte pouze v případě, že potřebujete předem určit výsledky. K provedení této operace potřebujete:
 
 * název zdrojové skupiny prostředků
 * ID prostředku cílové skupiny prostředků
@@ -241,7 +241,7 @@ Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutí
 
 ## <a name="use-rest-api"></a>Použití rozhraní REST API
 
-Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte operaci [přesunout prostředky](/rest/api/resources/resources/resources/moveresources) .
+Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte operaci [přesunout prostředky](/rest/api/resources/resources/moveresources) .
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}

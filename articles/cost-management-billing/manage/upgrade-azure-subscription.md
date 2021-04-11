@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 432330ae06b2e1c19401456dc05f87d0dd908f2d
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 6066b5efc9bb004aab6b651f15d24b19672c3497
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574120"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220602"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Upgrade bezplatného účtu Azure nebo účtu Azure for Students Starter
 
 V Azure Portal můžete upgradovat [bezplatný účet Azure](https://azure.microsoft.com/free/) na [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/) průběžných plateb.
 
-Pokud máte [účet Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) a máte nárok na [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete ho upgradovat na [bezplatný účet Azure](https://azure.microsoft.com/free/). Při upgradu získáte 200 USD v kreditech Azure a 12 měsíců služeb zdarma. Pokud nebudete mít nárok na bezplatný účet, můžete upgradovat na [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/) průběžných plateb s [žádostí o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte [účet Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) a máte nárok na [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete ho upgradovat na [bezplatný účet Azure](https://azure.microsoft.com/free/). USD200 kredit Azure získáte ve fakturační měně a na 12 měsíců bezplatných služeb při upgradu. Pokud nebudete mít nárok na bezplatný účet, můžete upgradovat na [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/) průběžných plateb s [žádostí o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 Pokud máte účet [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) , můžete upgradovat na [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/) průběžných plateb s [žádostí o podporu](https://go.microsoft.com/fwlink/?linkid=2083458) .
 

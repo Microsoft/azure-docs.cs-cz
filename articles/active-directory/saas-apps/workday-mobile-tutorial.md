@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94ab61a5c6335d43842ada48f17572c186af773c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182015"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077189"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s mobilní aplikací v Workday
 
@@ -132,13 +132,11 @@ Abyste zajistili, že se zařízení s iOS můžou přihlásit jenom prostředni
 
 | Scenario | Páry klíč-hodnota |
 |----------------------------------------------------------------------------------------   |-----------|
-| Automaticky vyplnit pole klient a webová adresa pro:<br>● Workday v Androidu, když povolíte profily Android for Work.<br>● Workday na iPadu a iPhonu.     | Pomocí těchto hodnot můžete nakonfigurovat tenanta: <br>Konfigurační klíč ● = `UserGroupCode`<br>Typ hodnoty ● = řetězec <br>Hodnota konfigurace ● = název tenanta. Příklad: `gms`<br>Pomocí těchto hodnot nakonfigurujte svou webovou adresu:<br>Konfigurační klíč ● = `AppServiceHost`<br>Typ hodnoty ● = řetězec<br>Hodnota konfigurace ● = základní adresa URL vašeho tenanta. Příklad: `https://www.myworkday.com`                                |   |
+| Automaticky vyplnit pole klient a webová adresa pro:<br>● Workday v Androidu, když povolíte profily Android for Work.<br>● Workday na iPadu a iPhonu.     | Pomocí těchto hodnot můžete nakonfigurovat tenanta: <br>Konfigurační klíč ● = `UserGroupCode`<br>Typ hodnoty ● = řetězec <br>Hodnota konfigurace ● = název tenanta. Příklad: `gms`<br>Pomocí těchto hodnot nakonfigurujte svou webovou adresu:<br>Konfigurační klíč ● = `AppServiceHost`<br>Typ hodnoty ● = řetězec<br>Hodnota konfigurace ● = základní adresa URL vašeho tenanta. Příklad: `https://www.myworkday.com`                                | 
 | Zakázat tyto akce pro Workday na iPadu a iPhonu:<br>Vyjmutí, zkopírování a vložení ●<br>● Tisk                       | Nastavením hodnoty (Boolean) na `False` tyto klíče zakažte funkci:<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
 | Zakáže snímky obrazovky pro Workday v Androidu. |Nastavením hodnoty (Boolean) na `False` `AllowScreenshots` klíč zakažte funkce.|
 | Zakažte navrhované aktualizace pro vaše uživatele.|Nastavením hodnoty (Boolean) na `False` `AllowSuggestedUpdates` klíč zakažte funkce.|
 |Přizpůsobte adresu URL obchodu s aplikacemi pro přímé mobilní uživatele do obchodu s aplikacemi podle vašeho výběru.|Pomocí těchto hodnot můžete změnit adresu URL obchodu s aplikacemi:<br>Konfigurační klíč ● = `AppUpdateURL`<br>Typ hodnoty ● = řetězec<br> Hodnota konfigurace ● = adresa URL obchodu App Store|
-|       |
-
 
 ## <a name="ios-configuration-policies"></a>Zásady konfigurace pro iOS
 

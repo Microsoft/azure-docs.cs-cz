@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6db43acda679c6c1c1edd6336f693cc4757b6d45
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98757165"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220913"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Rozšíření pro Cloud Services (Rozšířená podpora)
 
@@ -36,6 +36,14 @@ Díky základnímu monitorování jsou data čítače výkonu z instancí rolí 
 S pokročilým monitorováním jsou vzorky a shromážděny další metriky v intervalech 5 minut, 1 hodina a 12 hodin. Agregovaná data jsou uložená v účtu úložiště v tabulkách a vyprázdní se po 10 dnech. Použitý účet úložiště je nakonfigurovaný rolí. pro různé role můžete použít jiné účty úložiště. 
 
 Další informace najdete v tématu [použití rozšíření Windows Azure Diagnostics v Cloud Services (Rozšířená podpora)](enable-wad.md) .
+
+## <a name="anti-malware-extension"></a>Antimalwarové rozšíření
+Aplikace nebo služba Azure může povolit a nakonfigurovat Microsoft Antimalware pro Azure Cloud Services pomocí rutin PowerShellu. Upozorňujeme, že Microsoft Antimalware je nainstalovaný v zakázaném stavu na Cloud Services platformě se systémem Windows Server 2012 R2 a starším, který vyžaduje, aby aplikace Azure tuto akci povolila. Pro Windows Server 2016 a novější je Windows Defender ve výchozím nastavení povolený, takže tyto rutiny se dají použít ke konfiguraci antimalwarového programu.
+
+Další informace najdete v tématu [Přidání Microsoft antimalwaru do cloudové služby Azure pomocí rozšířené podpory (cs-ES)](https://docs.microsoft.com/azure/security/fundamentals/antimalware-code-samples#add-microsoft-antimalware-to-azure-cloud-service-using-extended-support) .
+
+Pokud chcete získat další informace o antimalwaru Azure, navštivte prosím [Toto](https://docs.microsoft.com/azure/security/fundamentals/antimalware) .
+
 
 
 ## <a name="next-steps"></a>Další kroky 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97696075"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077529"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Kurz: vytvoření a import podmínek glosáře v Azure dosah (Preview)
 
@@ -138,10 +138,10 @@ Na obrazovce **Nová šablona termínu** proveďte následující kroky:
 
    |Nastavení|Navrhovaná hodnota|
    |---------|-----------|
-   |Název atributu|jsou citlivé informace|
-   |Typ pole|rozevírací|Jedna volba|
-   |Označit jako povinné|Zaškrtněte toto políčko.|
-   |+ Přidat volbu| Přidejte dvě možnosti. "Ano" a "ne".|
+   |Název atributu |jsou citlivé informace|
+   |Typ pole | Jedna volba|
+   |Označit jako povinné | Zaškrtněte toto políčko.|
+   |+ Přidat volbu | Přidejte dvě možnosti. "Ano" a "ne".|
 
    :::image type="content" source="./media/tutorial-import-create-glossary-terms/add-new-attribute.png" alt-text="Přidejte nový atribut.":::
 

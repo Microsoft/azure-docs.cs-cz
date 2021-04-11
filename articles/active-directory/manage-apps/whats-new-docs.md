@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory Správa aplikací
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory správu aplikací.
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,45 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775506"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450034"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
 Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě správy aplikací, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Nejčastější dotazy k certifikátům správy aplikací pro Azure Active Directory (Azure AD)](application-management-certs-faq.md)
+- [Příklady Azure Active Directory PowerShellu pro správu aplikací](app-management-powershell-samples.md)
+- [Zakázat automatickou akceleraci pro federované IDP během přihlašování uživatelů pomocí zásad zjišťování domovské sféry](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Plánování konfigurace Azure Active Directory mých aplikací](my-apps-deployment-plan.md)
+- [Průvodce integrací Azure Active Directory s aplikacemi Začínáme](plan-an-application-integration.md)
+- [Integrace se službou SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Migrace ověřování aplikace na Azure Active Directory](migrate-application-authentication-to-azure-active-directory.md)
+- [Použití sestavy aktivity aplikace AD FS k migraci aplikací do Azure AD](migrate-adfs-application-activity.md)
+- [Plánování nasazení jednotného přihlašování](plan-sso-deployment.md)
+- [Příklady Azure Active Directory PowerShellu pro správu aplikací](app-management-powershell-samples.md)
+- [Řešení potíží s konfiguracemi omezeného delegování Kerberos pro proxy aplikací](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [Rychlý Start: nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-setup-sso.md)
+- [Azure Active Directory Správa aplikací: co je nového](whats-new-docs.md)
+- [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.md)
+- [Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace](application-sign-in-other-problem-access-panel.md)
+- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Optimalizujte tok provozu pomocí Proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md)
+- [Azure Proxy aplikací služby AD: Historie verzí](application-proxy-release-version-history.md)
+- [Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry](configure-authentication-for-federated-users-portal.md)
+- [Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>Únor 2021
 

@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384234"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284200"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -52,6 +52,10 @@ Další informace najdete v tématu [Přehled prostorových kotev Azure](overvie
 **Otázka: jak Azure prostorové kotvy ukládají data?**
 
 **A:** Všechna data jsou ukládána šifrovanou pomocí šifrovacího klíče spravovaných Microsoftem a všechna data jsou pro každý z těchto prostředků ukládána do regionu.
+
+**Otázka: kde Azure prostorové kotvy ukládají data?**
+
+**A:** Účty prostorových kotev Azure umožňují zadat oblast, do které se budou ukládat vaše data. Společnost Microsoft může replikovat data do jiných oblastí pro zajištění odolnosti, ale Microsoft nereplikuje ani nepřesouvá data mimo zeměpisnou oblast. Tato data jsou uložená v oblasti, kde je nakonfigurovaný účet prostorových kotev Azure. Pokud je například účet zaregistrován v oblasti Východní USA, tato data jsou uložena v Východní USA oblasti, ale mohou být replikována do jiné oblasti Severní Amerika geografické oblasti, aby se zajistila odolnost proti chybám.
 
 **Otázka: Jaké informace o prostředí se přenáší a ukládají do služby při použití prostorových kotev Azure? Jsou obrázky prostředí přenášeny a uloženy?**
 

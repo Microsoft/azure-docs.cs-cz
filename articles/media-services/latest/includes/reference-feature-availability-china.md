@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: e3b441bd4302506582314e8baaed91a988a04acb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91944868892568299f4bed2479aa2c39fdd3ac0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104612755"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283218"
 ---
 <!--Feature availability in region-->
 ## <a name="china"></a>Čína
@@ -17,9 +17,9 @@ ms.locfileid: "104612755"
 | Funkce | Čína – východ | Čína – východ 2 | Čína – sever |
 | --- | :---: | :---: | :---: |
 | [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |![Azure EventGrid Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  |![Azure EventGrid Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![Azure EventGrid Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![VideoAnalyzerPreset Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![VideoAnalyzerPreset Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![AudioAnalyzerPreset Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![AudioAnalyzerPreset Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [StandardEncoderPreset](../encoding-concept.md) |![StandardEncoderPreset Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![StandardEncoderPreset Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [LiveEvents](../live-streaming-overview.md) |![LiveEvents Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![LiveEvents Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![LiveEvents Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [Starají](../streaming-endpoint-concept.md) |![Starají Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Starají Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  |![Starají Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
-| [LiveTranscription](../live-transcription.md) |![LiveTranscription Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [VideoAnalyzerPreset](../analyze-video-audio-files-concept.md) |![VideoAnalyzerPreset Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![VideoAnalyzerPreset Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [AudioAnalyzerPreset](../analyze-video-audio-files-concept.md) |![AudioAnalyzerPreset Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![AudioAnalyzerPreset Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [StandardEncoderPreset](../encode-concept.md) |![StandardEncoderPreset Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![StandardEncoderPreset Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [LiveEvents](../stream-live-streaming-concept.md) |![LiveEvents Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![LiveEvents Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![LiveEvents Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [Starají](../stream-streaming-endpoint-concept.md) |![Starají Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Starají Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  |![Starají Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [LiveTranscription](../live-event-live-transcription-how-to.md) |![LiveTranscription Čína – východ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Čína – východ 2 – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Čína – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |

@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7ea409163a6ce28f65799163bd3217d47569751
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993398"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220585"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
 
@@ -65,7 +65,7 @@ Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a pod
 | *settingsClassName*<br/>*settingsMethodName* | řetězec<br/>řetězec | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Tyto atributy použijte k poskytnutí připojovacího řetězce. *settingsClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *settingsMethodName*.<br/><br/>Metoda určená parametrem *settingsMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
 | *loggingClassName*<br/>*loggingMethodName* | řetězec<br/>řetězec | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Tyto atributy použijte k ladění aplikace poskytováním protokolů z stavu relace/výstupní mezipaměti spolu s protokoly z StackExchange. Redis. *loggingClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *loggingMethodName*.<br/><br/>Metoda určená parametrem *loggingMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **System. IO. TextWriter**. |
 | *applicationName* | řetězec | Název modulu aktuálního procesu nebo "/" | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Předpona názvu aplikace, která se má použít v Redis Cache Zákazník může používat stejnou mezipaměť Redis pro různé účely. Aby se zajistilo, že klíče relace nekolidují, může být předpona s názvem aplikace. |
-| *Parametr throwOnError* | boolean | true | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Určuje, zda má být při výskytu chyby vyvolána výjimka.<br/><br/>Další informace o *parametr throwOnError* naleznete v tématu [poznámky k *parametr throwOnError*](#notes-on-throwonerror) v oddílu [poznámky k atributu](#attribute-notes) . |>*Microsoft. Web. Redis. RedisSessionStateProvider. LastException*. |
+| *Parametr throwOnError* | boolean | true | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Určuje, zda má být při výskytu chyby vyvolána výjimka.<br/><br/>Další informace o *parametr throwOnError* naleznete v tématu [poznámky k *parametr throwOnError*](#notes-on-throwonerror) v oddílu [poznámky k atributu](#attribute-notes) . |
 | *retryTimeoutInMilliseconds* | kladné celé číslo | 5000 | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Doba, po kterou se bude opakovat pokus o neúspěch operace. Pokud je tato hodnota menší než *operationTimeoutInMilliseconds*, poskytovatel se nezopakuje.<br/><br/>Další informace o *retryTimeoutInMilliseconds* naleznete v tématu [poznámky k *retryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) v oddílu [poznámky k atributu](#attribute-notes) . |
 | *redisSerializerType* | řetězec | *není k dispozici* | Určuje kvalifikovaný název typu sestavení třídy, která implementuje Microsoft. Web. Redis. ISerializer a obsahuje vlastní logiku k serializaci a deserializaci hodnot. Další informace naleznete v části [o *redisSerializerType*](#about-redisserializertype) v oddílu [poznámky k atributu](#attribute-notes) . |
 

@@ -4,12 +4,12 @@ description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azur
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6928f1c45cdac93b70797daf41205b4c5db27e0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019994"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283814"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure PowerShell
 
@@ -55,7 +55,7 @@ V tomto rychlém startu vytvoříte *základní* registr, což je výhodná mož
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k registru. V produkčních scénářích byste měli použít jednotlivou identitu nebo instanční objekt pro přístup k registru kontejnerů, ale pokud chcete, aby byl tento rychlý Start krátký, povolte v registru uživatele správce pomocí příkazu [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] :
+Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k registru. Pokud chcete tento rychlý Start zůstat krátký, povolte v registru uživatele s oprávněními správce pomocí příkazu [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] . V produkčních scénářích byste měli použít alternativní [metodu ověřování](container-registry-authentication.md) pro přístup k registru, například instanční objekt. 
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -68,6 +68,10 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 ```
 
 Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné).
+
+> [!TIP]
+> Rozhraní příkazového řádku Azure nabízí `az acr login` pohodlný způsob, jak se přihlásit k registru kontejnerů pomocí [individuální identity](container-registry-authentication.md#individual-login-with-azure-ad)bez předávání přihlašovacích údajů Docker.
+
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 

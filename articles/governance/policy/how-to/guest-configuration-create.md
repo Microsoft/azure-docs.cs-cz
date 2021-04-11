@@ -1,14 +1,14 @@
 ---
 title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6eaefdbc28b8efc53dc7c4d46eb5d8a56d5be141
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104887695"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096593"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -25,8 +25,7 @@ Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ově�
 > [!IMPORTANT]
 > Vlastní definice zásad s konfigurací hosta v prostředích Azure Government a Azure Čína jsou funkcí ve verzi Preview.
 >
-> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure.
-> Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
 > 
 > Nepoužívejte tajné klíče ani důvěrné informace v balíčcích vlastního obsahu.
 
@@ -138,7 +137,7 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
-Pokud má prostředek požadované vlastnosti, musí být také vráceny `Get-TargetResource` paralelně s `reasons` třídou. Pokud `reasons` není zahrnuta, služba obsahuje chování "catch-All", který porovnává vstupní hodnoty s `Get-TargetResource` hodnotami, které vrátí `Get-TargetResource` , a poskytuje podrobné porovnání jako `reasons` .
+Pokud má prostředek požadované vlastnosti, musí být tyto vlastnosti také vráceny `Get-TargetResource` paralelně s `reasons` třídou. Pokud `reasons` není zahrnuta, služba obsahuje chování "catch-All", který porovnává vstupní hodnoty s `Get-TargetResource` hodnotami, které vrátí `Get-TargetResource` , a poskytuje podrobné porovnání jako `reasons` .
 
 ### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
@@ -181,9 +180,7 @@ Dokončený balíček používá konfigurace hosta k vytvoření Azure Policych 
   - Modul DscNativeResources
   - Systému Moduly prostředků DSC vyžadované MOF
 
-Rutiny prostředí PowerShell pomáhají při vytváření balíčku.
-Není požadována žádná složka kořenové úrovně ani složka verze.
-Formát balíčku musí být soubor. zip a při nekomprimaci nemůže překročit celkovou velikost 100 MB.
+Rutiny prostředí PowerShell pomáhají při vytváření balíčku. Není požadována žádná složka kořenové úrovně ani složka verze. Formát balíčku musí být soubor. zip a při nekomprimaci nesmí být větší než celková velikost 100 MB.
 
 ### <a name="storing-guest-configuration-artifacts"></a>Ukládání artefaktů konfigurace hosta
 
@@ -217,8 +214,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Spusťte tento skript v terminálu PowerShellu nebo uložte tento soubor s názvem `config.ps1` do složky projektu.
-Spusťte ji v PowerShellu tak, že ji spustíte `./config.ps1` v terminálu. Vytvoří se nový soubor MOF.
+Spusťte tento skript v terminálu PowerShellu nebo uložte tento soubor s názvem `config.ps1` do složky projektu. Spusťte ji v PowerShellu tak, že ji spustíte `./config.ps1` v terminálu. Vytvoří se nový soubor MOF.
 
 `Node AuditBitlocker`Příkaz není technicky vyžadován, ale vytváří soubor s názvem `AuditBitlocker.mof` , nikoli jako výchozí `localhost.mof` . Pokud má název souboru. mof postupovat podle konfigurace, usnadňuje uspořádání mnoha souborů při škálování.
 
@@ -274,7 +270,7 @@ Parametry `Publish-GuestConfigurationPackage` rutiny:
 - **Cesta**: umístění balíčku, který se má publikovat
 - **ResourceGroupName**: název skupiny prostředků, ve které se nachází účet úložiště.
 - **StorageAccountName**: název účtu úložiště, do kterého se má balíček publikovat
-- **StorageContainerName**: (výchozí: *guestconfiguration*) název kontejneru úložiště v účtu úložiště
+- **StorageContainerName**: (výchozí: _guestconfiguration_) název kontejneru úložiště v účtu úložiště
 - **Force (vynutit**): přepsat existující balíček v účtu úložiště se stejným názvem
 
 Následující příklad publikuje balíček do kontejneru úložiště s názvem guestconfiguration.
@@ -367,7 +363,7 @@ Příklad fragmentu definice zásady, která filtruje značky, je uveden níže.
 
 ### <a name="using-parameters-in-custom-guest-configuration-policy-definitions"></a>Použití parametrů ve vlastních definicích zásad konfigurace hostů
 
-Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a neovlivňují způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
+Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a nemění způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
 
 Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a vytvoří požadované oddíly každého souboru používaného pro definici Azure Policy.
 
@@ -389,7 +385,7 @@ $PolicyParameterInfo = @(
         DisplayName = 'windows service name.'                           # Policy parameter display name (mandatory)
         Description = "Name of the windows service to be audited."      # Policy parameter description (optional)
         ResourceType = "Service"                                        # DSC configuration resource type (mandatory)
-        ResourceId = 'UserSelectedNameExample'                                   # DSC configuration resource id (mandatory)
+        ResourceId = 'UserSelectedNameExample'                          # DSC configuration resource id (mandatory)
         ResourcePropertyName = "Name"                                   # DSC configuration resource property name (mandatory)
         DefaultValue = 'winrm'                                          # Policy parameter default value (optional)
         AllowedValues = @('BDESVC','TermService','wuauserv','winrm')    # Policy parameter allowed values (optional)
@@ -431,8 +427,7 @@ Pokud chcete vydat aktualizaci zásady, proveďte změnu pro konfigurační bal�
 > [!NOTE]
 > `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
 
-Nejprve `New-GuestConfigurationPackage` Zadejte název balíčku, který bude v předchozích verzích jedinečný. Do názvu můžete zahrnout číslo verze, například `PackageName_1.0.0` .
-Číslo v tomto příkladu se používá jenom k tomu, aby balíček byl jedinečný, a neměl by určovat, že by se měl balíček považovat za novější nebo starší než jiné balíčky.
+Nejprve `New-GuestConfigurationPackage` Zadejte název balíčku, který bude v předchozích verzích jedinečný. Do názvu můžete zahrnout číslo verze, například `PackageName_1.0.0` . Číslo v tomto příkladu se používá jenom k tomu, aby balíček byl jedinečný, a neměl by určovat, že by se měl balíček považovat za novější nebo starší než jiné balíčky.
 
 Potom aktualizujte parametry používané pomocí `New-GuestConfigurationPolicy` rutiny podle každé z následujících vysvětlení.
 

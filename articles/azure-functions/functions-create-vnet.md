@@ -3,12 +3,12 @@ title: Použití privátních koncových bodů pro integraci Azure Functions s v
 description: V tomto kurzu se dozvíte, jak připojit funkci ke službě Azure Virtual Network a jak ji zamknout pomocí privátních koncových bodů.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027410"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078770"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Kurz: Integrace Azure Functions s virtuální sítí Azure pomocí privátních koncových bodů
 
@@ -160,7 +160,7 @@ Vytvoření privátních koncových bodů pro úložiště Azure Files a Azure B
     | Nastavení      | Navrhovaná hodnota  | Popis      |
     | ------------ | ---------------- | ---------------- |
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
-    | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Vyberte skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. | |
+    | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Vyberte skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. |
     | **Název** | koncový bod souboru | Název privátního koncového bodu pro soubory z vašeho účtu úložiště. |
     | **[Oblast](https://azure.microsoft.com/regions/)** | myFunctionRegion | Vyberte oblast, ve které jste vytvořili účet úložiště. |
 

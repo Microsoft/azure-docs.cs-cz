@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc19d5652f416657cbcd339de61379265587b4e7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467013"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505378"
 ---
 # <a name="form-recognizer-layout-service"></a>Služba rozložení pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může extrahovat text, tabulky, značky výběru a informace o struktuře z dokumentů pomocí služby rozvržení. Rozhraní API pro rozložení umožňuje zákazníkům pořizovat dokumenty v nejrůznějších formátech a vracet strukturované datové reprezentace dokumentů. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s modely hloubkového učení k extrakci textu, tabulek, značek výběru a struktury dokumentů. 
+Nástroj pro rozpoznávání formulářů Azure může extrahovat text, tabulky, značky výběru a informace o struktuře z dokumentů pomocí služby rozvržení. Rozhraní API pro rozložení umožňuje zákazníkům pořizovat dokumenty v nejrůznějších formátech a vracet strukturované datové reprezentace dokumentů. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/overview-ocr.md) s modely hloubkového učení k extrakci textu, tabulek, značek výběru a struktury dokumentů. 
 
 ## <a name="what-does-the-layout-service-do"></a>Co služba rozložení dělá?
 
@@ -32,7 +32,7 @@ Rozhraní API pro rozložení extrahuje text, tabulky, značky výběru a inform
 Chcete-li vyzkoušet službu rozložení pro rozpoznávání formulářů, použijte nástroj uživatelského rozhraní online Sample:
 
 > [!div class="nextstepaction"]
-> [Nástroj pro testování rozpoznávání OCR (FOTT)](https://fott-preview.azurewebsites.net)
+> [Vyzkoušet Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net)
 
 K vyzkoušení rozhraní API pro rozložení pro rozpoznávání formulářů budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services)) a koncový bod a klíč [prostředku pro rozpoznávání](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) formuláře. 
 
@@ -48,7 +48,7 @@ Nejdříve zavolejte operaci [Analýza rozložení](https://westcentralus.dev.co
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
 
 ### <a name="natural-reading-order-output-latin-only"></a>Výstup přirozeného pořadí čtení (jenom Latin)
 

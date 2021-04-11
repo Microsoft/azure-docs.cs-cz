@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aafeb7ebd939805ae18e29670f359660db12e2e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8f817ad06742e6f84c3cb87dda0c36866540267
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555828"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450352"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -31,6 +31,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 |Východní Asie     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Německo – středozápad     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Jižní Korea – střed     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
+|USA – středosever    |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Středojižní USA    |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |USA (Gov) – Arizona     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |USA (Gov) – Virginia     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
@@ -44,7 +45,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 |East US     |Tři zóny dostupnosti          |
 |USA – východ 2     |Tři zóny dostupnosti         |
 |Francie – střed    |Dvě zóny dostupnosti        |
-|Japonsko – východ    |Tři zóny dostupnosti        |
+|Japan East    |Tři zóny dostupnosti        |
 |Severní Evropa    |Tři zóny dostupnosti        |
 |Spojené království – jih    |Tři zóny dostupnosti        |
 |West Europe    | Tři zóny dostupnosti|
