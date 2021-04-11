@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 03b29e6ddd16731073b33fef14d5aafb54df2abe
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877889"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227853"
 ---
-# <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Jak provést samočinnou diagnostiku a řešení problémů v Azure jaře cloudu
+# <a name="self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Automatická diagnostika a řešení problémů v Azure jaře cloudu
 
 **Tento článek se týká:** ✔️ Java ✔️ C #
 
 Diagnostika Azure jaře Cloud je interaktivní prostředí pro řešení potíží s aplikací bez konfigurace. Diagnostika Azure jaře cloudu identifikuje problémy a provede vás s informacemi, které pomáhají řešit problémy a řešit problémy.
 
 ## <a name="prerequisites"></a>Požadavky
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto exericise potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle našeho [rychlého startu na webu nasazení aplikace prostřednictvím rozhraní příkazového řádku Azure CLI](spring-cloud-quickstart.md) .

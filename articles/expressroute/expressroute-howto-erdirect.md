@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c49fe65cf97207a495f6c0cc78585489a0db6ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099943"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228244"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
@@ -305,7 +305,12 @@ Vytvořte okruh na prostředku ExpressRoute Direct.
   AllowClassicOperations           : False
   GatewayManagerEtag     
   ```
-
+## <a name="delete-the-resource"></a>Odstranit prostředek
+Před odstraněním prostředku ExpressRoute Direct musíte nejprve odstranit všechny okruhy ExpressRoute vytvořené na páru portů ExpressRoute Direct.
+Přímý prostředek ExpressRoute můžete odstranit spuštěním následujícího příkazu:
+ ```powershell
+   Remove-azexpressrouteport -Name $Name -Resourcegroupname -$ResourceGroupName
+   ```
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o ExpressRoute Direct najdete v [přehledu](expressroute-erdirect-about.md).

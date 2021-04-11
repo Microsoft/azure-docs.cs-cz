@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
-ms.date: 04/20/2020
-ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: a6fd603318a25e15d1d4dcc1e3eaf75f96fc5ade
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956056"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448623"
 ---
 # <a name="azure-media-player-quickstart"></a>Rychlé zprovoznění Azure Media Playeru
 Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Azure Media Services trvá jenom několik minut. Tato část ukazuje základní kroky a nezachází do podrobností. Následující části vám poskytnou konkrétní informace o tom, jak nastavit a nakonfigurovat Azure Media Player.  Stačí přidat následující příkazy include do části `<head>` vašeho dokumentu:
@@ -22,7 +22,7 @@ Nastavení Azure Media Player je snadné. Získání základního přehrávání
 ```
 
 > [!IMPORTANT]
-> Tuto verzi  byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player, například nahraďte parametrem `latest` `1.0.0` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
+> Tuto verzi  byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player, například nahraďte parametrem `latest` `1.0.0` . Z [tohoto místa](https://amp.azure.net/libs/amp/latest/docs/changelog.html)se dá dotazovat na Azure Media Player verze.
 
 ## <a name="use-the-video-element"></a>Použití prvku video
 

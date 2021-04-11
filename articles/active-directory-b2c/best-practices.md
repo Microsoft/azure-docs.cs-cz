@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c8a9121d0e36eb51cd02c2c884ddcaa0dd79a79
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96750216"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226205"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Doporučení a osvědčené postupy pro Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Následující osvědčené postupy a doporučení se týkají některých prim�
 
 | Osvědčený postup | Description |
 |--|--|
-| Volba toků uživatelů pro většinu scénářů | Architektura prostředí identit Azure AD B2C je základní silou služby. Zásady plně popisují prostředí identity, jako je registrace, přihlašování nebo úpravy profilu. Aby vám pomohly nastavit nejběžnější úkoly identity, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané uživatelské toky. Díky tokům uživatelů můžete vytvořit skvělé uživatelské prostředí během několika minut. stačí jenom několik kliknutí. [Naučte se používat toky uživatelů a vlastní zásady](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
+| Volba toků uživatelů pro většinu scénářů | Architektura prostředí identit Azure AD B2C je základní silou služby. Zásady plně popisují prostředí identity, jako je registrace, přihlašování nebo úpravy profilu. Aby vám pomohly nastavit nejběžnější úkoly identity, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané uživatelské toky. Díky tokům uživatelů můžete vytvořit skvělé uživatelské prostředí během několika minut. stačí jenom několik kliknutí. [Naučte se používat toky uživatelů a vlastní zásady](user-flow-overview.md#comparing-user-flows-and-custom-policies).|
 | Registrace aplikací | Všechny aplikace (web, nativní) a rozhraní API, které je třeba zabezpečit, musí být registrovány v Azure AD B2C. Pokud má aplikace jak webovou, tak nativní verzi iOS a Android, můžete je zaregistrovat jako jednu aplikaci v Azure AD B2C se stejným ID klienta. Naučte se [Registrovat OIDC, SAML, web a nativní aplikace](./tutorial-register-applications.md?tabs=applications). Další informace o [typech aplikací, které lze použít v Azure AD B2C](./application-types.md). |
 | Fakturace po měsících aktivních uživatelů | Azure AD B2C přesunula z měsíčních aktivních ověřování na měsíční fakturace aktivních uživatelů (MAU). Většina zákazníků bude tento model nákladově efektivní. [Přečtěte si další informace o fakturaci měsíčně aktivních uživatelů](https://azure.microsoft.com/updates/mau-billing/). |
 
@@ -78,7 +78,7 @@ Spravujte své Azure AD B2C prostředí.
 |--|--|
 | Vytvoření více prostředí | Pro snazší operace a zavedení nasazení vytvořte samostatná prostředí pro vývoj, testování, předprodukční prostředí a produkci. Pro každou Vytvořte Azure AD B2C klienty. |
 | Použití správy verzí pro vlastní zásady | Zvažte použití GitHubu, Azure Repos nebo jiného cloudového systému správy verzí pro vlastní zásady Azure AD B2C. |
-| Použití rozhraní Microsoft Graph API k automatizaci správy klientů B2C | Rozhraní API pro Microsoft Graph:<br/>Správa [architektury identity Experience Framework](/graph/api/resources/trustframeworkpolicy?preserve-view=true&view=graph-rest-beta) (vlastní zásady)<br/>[Klíče](/graph/api/resources/trustframeworkkeyset?preserve-view=true&view=graph-rest-beta)<br/>[Toky uživatelů](/graph/api/resources/identityuserflow?preserve-view=true&view=graph-rest-beta) |
+| Použití rozhraní Microsoft Graph API k automatizaci správy klientů B2C | Rozhraní API pro Microsoft Graph:<br/>Správa [architektury identity Experience Framework](/graph/api/resources/trustframeworkpolicy?preserve-view=true&view=graph-rest-beta) (vlastní zásady)<br/>[Klíče](/graph/api/resources/trustframeworkkeyset?preserve-view=true&view=graph-rest-beta)<br/>[Toky uživatele](/graph/api/resources/identityuserflow?preserve-view=true&view=graph-rest-beta) |
 | Integrace s Azure DevOps | [Kanál CI/CD](deploy-custom-policies-devops.md) usnadňuje přesouvání kódu mezi různými prostředími a zajišťuje připravenost na produkční prostředí.   |
 | Integrace s Azure Monitor | [Události protokolu auditu](view-audit-logs.md) se uchovávají jenom po dobu sedmi dnů. [Integrujte s Azure monitor](azure-monitor.md) , abyste zachovali protokoly pro dlouhodobé použití, nebo integraci s nástroji pro zabezpečení a správu událostí třetích stran (Siem), abyste získali přehled o vašem prostředí. |
 | Nastavení aktivního upozorňování a monitorování | [Sledovat chování uživatele](./analytics-with-application-insights.md) v Azure AD B2C pomocí Application Insights. |

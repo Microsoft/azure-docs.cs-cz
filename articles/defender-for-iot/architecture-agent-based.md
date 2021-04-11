@@ -1,16 +1,16 @@
 ---
-title: Architektura řešení založená na agentech
+title: Co je architektura řešení založená na agentech
 description: Přečtěte si o Azure Defenderu pro architekturu a informační tok založené na agentech IoT.
 ms.topic: overview
 ms.date: 1/25/2021
-ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e08c3f151c3d3bc4fe08e61d960874b07f5b63e8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784879"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383520"
 ---
-# <a name="agent-based-solution-for-device-builders"></a>Řešení založená na agentech pro tvůrce zařízení
+# <a name="what-is-agent-based-solution-for-device-builders"></a>Co je řešení založené na agentech pro sestavovatele zařízení
 
 Tento článek popisuje funkční architekturu řešení Defender pro řešení založená na agentovi IoT. Azure Defender pro IoT nabízí dvě sady možností, které vyhovují potřebám vašeho prostředí, řešení bez agentů pro organizace a řešení založené na agentech pro sestavovatele zařízení.
 
@@ -34,7 +34,7 @@ Doporučení a upozornění pro IoT (výstup kanálu analýz) se zapisuje do Log
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Architektura mikroagentů.":::
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Defender pro IoT – Nejčastější dotazy](resources-frequently-asked-questions.md)
 

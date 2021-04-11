@@ -11,10 +11,10 @@ ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
 ms.openlocfilehash: 03192b8a84b78682b53bf3d47e7de7b65eb8bceb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104726821"
 ---
 # <a name="1---overview-of-adding-search-to-a-website"></a>1 – Přehled přidání vyhledávání na web
@@ -41,7 +41,7 @@ Možnosti vyhledávání zahrnují:
 
 [Ukázka](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/search-website) zahrnuje následující:
 
-|Aplikace|Účel|GitHub<br>Repository<br>Umístění|
+|Aplikace|Účel|GitHubu<br>Repository<br>Umístění|
 |--|--|--|
 |Klient|Aplikace reaguje (prezentační vrstva) k zobrazení knih a hledání. Volá aplikaci funkcí Azure Functions. |[/search-website/src](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/search-website/src)|
 |Server|Azure Function App (obchodní vrstva) – volá rozhraní API Azure Kognitivní hledání pomocí sady JavaScript SDK. |[/search-website/api](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/search-website/src)|

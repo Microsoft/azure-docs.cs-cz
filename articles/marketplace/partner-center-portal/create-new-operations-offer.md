@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3566634948df3ce8ecb747148eb10f48bfc582
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97355137"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106883"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
 Tento článek popisuje, jak vytvořit novou nabídku Dynamics 365 for Operations. [Microsoft Dynamics 365 pro finance a operace](https://dynamics.microsoft.com/finance-and-operations) je služba pro plánování podnikových zdrojů (ERP), která podporuje pokročilé finance, provoz, výrobu a správu dodavatelských řetězců. Všechny nabídky pro Dynamics 365 pro operace musí projít procesem certifikace.
 
-Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
+Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](../create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 >[!NOTE]
 > Po publikování nabídky se úpravy nabídky aktualizují v partnerském centru a v online obchodě po opětovném odeslání nabídky k publikování.

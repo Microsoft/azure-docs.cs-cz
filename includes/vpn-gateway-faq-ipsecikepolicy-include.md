@@ -9,10 +9,10 @@ ms.date: 03/23/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 685160e1075a0d4192157200ee4f5d981ca5f472
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104953445"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
@@ -118,7 +118,7 @@ Výchozí časový limit DPD je 45 sekund. Pro každé připojení protokolem IP
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Fungují zásady IPsec/IKE na připojení ExpressRoute?
 
-Ne. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
+No. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Návody vytvářet připojení s typem protokolu IKEv1 nebo IKEv2?
 
@@ -130,11 +130,11 @@ Ano. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Můžu mít IKEv1 připojení typu Site-to-site na základních SKU typu RouteBased VPN?
 
-Ne. Základní skladová položka nepodporuje toto.
+No. Základní skladová položka nepodporuje toto.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Můžu po vytvoření připojení změnit typ protokolu připojení (IKEv1 to IKEv2 a naopak)?
 
-Ne. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
+No. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Kde najdu Další informace o konfiguraci protokolu IPsec?
 

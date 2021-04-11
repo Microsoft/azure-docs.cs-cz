@@ -1,21 +1,21 @@
 ---
 title: Vytvoření vyhledávací služby na portálu
 titleSuffix: Azure Cognitive Search
-description: V tomto rychlém startu na portálu se dozvíte, jak nastavit prostředek služby Azure Kognitivní hledání v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
+description: Přečtěte si, jak nastavit prostředek služby Azure Kognitivní hledání v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/15/2021
-ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651982"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580743"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
+# <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>Vytvoření služby Azure Cognitive Search na portálu
 
 [Azure kognitivní hledání](search-what-is-azure-search.md) je prostředek Azure, který se používá k přidání funkce fulltextového vyhledávání do vlastních aplikací. Můžete ji snadno integrovat s jinými službami Azure, které poskytují data nebo další zpracování, s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 

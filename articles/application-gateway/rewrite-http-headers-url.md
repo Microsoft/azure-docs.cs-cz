@@ -2,17 +2,17 @@
 title: Přepsání hlaviček a adres URL protokolu HTTP pomocí Azure Application Gateway | Microsoft Docs
 description: Tento článek poskytuje přehled přepisu hlaviček a adres URL protokolu HTTP v Azure Application Gateway
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726508"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384835"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
 
@@ -38,7 +38,7 @@ Informace o tom, jak přepsat hlavičky žádosti a odpovědi pomocí Applicatio
 
 V žádostech a odpovědích můžete přepsat všechna záhlaví s výjimkou připojení a hlaviček upgradu. Aplikační bránu můžete použít také k vytvoření vlastních hlaviček a jejich přidání do požadavků a odpovědí, které jsou prostřednictvím ní směrovány.
 
-### <a name="url-path-and-query-string-preview"></a>Cesta URL a řetězec dotazu (Preview)
+### <a name="url-path-and-query-string"></a>Cesta URL a řetězec dotazu
 
 Pomocí funkce pro přepsání adresy URL v Application Gateway můžete:
 
@@ -51,9 +51,6 @@ Pomocí funkce pro přepsání adresy URL v Application Gateway můžete:
 Informace o tom, jak přepsat adresu URL pomocí Application Gateway pomocí Azure Portal, najdete [tady](rewrite-url-portal.md).
 
 ![Diagram, který popisuje proces přepisu adresy URL pomocí Application Gateway.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> Funkce přepisu adresy URL je ve verzi Preview a je k dispozici pouze pro Standard_v2 a WAF_v2 SKU Application Gateway. Nedoporučuje se používat v produkčním prostředí. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="rewrite-actions"></a>Akce přepisu
 
@@ -104,7 +101,7 @@ Application Gateway používá serverové proměnné k ukládání užitečných
 
 Application Gateway podporuje následující proměnné serveru:
 
-|   Název proměnné    |                   Description                                           |
+|   Název proměnné    |                   Popis                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | Pole hlavičky žádosti klienta s přesměrováním do `client_ip` proměnné (viz vysvětlení později v této tabulce), ke kterému se připojuje ve formátu IP1, IP2, IP3 a tak dále. Pokud pole s přesměrováním X není v hlavičce žádosti klienta, `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné.   Tato proměnná je užitečná hlavně v případě, že chcete přepsat hlavičku, kterou předáváte X-pro nastavenou Application Gateway tak, aby hlavička obsahovala jenom IP adresu bez informací o portu. |
 | ciphers_supported         | Seznam šifr podporovaných klientem.               |
@@ -129,7 +126,20 @@ Application Gateway podporuje následující proměnné serveru:
 | ssl_enabled               | "On", pokud připojení funguje v režimu TLS. V opačném případě prázdný řetězec. |
 | uri_path                  | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path hodnota `/article.aspx` |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>Proměnné serveru pro vzájemné ověřování (Preview)
+
+Application Gateway podporuje následující proměnné serveru pro scénáře vzájemného ověřování. Tyto proměnné serveru můžete použít stejným způsobem jako u ostatních proměnných serveru. 
+
+|   Název proměnné    |                   Popis                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | Certifikát klienta ve formátu PEM pro navázání připojení SSL. |
+| client_certificate_end_date| Koncové datum klientského certifikátu. |
+| client_certificate_fingerprint| Otisk certifikátu SHA1 klientského certifikátu pro navázáné připojení SSL. |
+| client_certificate_issuer | Řetězec "název" vystavitele klientského certifikátu pro navázáné připojení SSL. |
+| client_certificate_serial | Sériové číslo klientského certifikátu pro navázáné připojení SSL.  |
+| client_certificate_start_date| Počáteční datum klientského certifikátu. |
+| client_certificate_subject| Řetězec "subjektu DN" certifikátu klienta pro navázání připojení SSL. |
+| client_certificate_verification| Výsledek ověření certifikátu klienta: *úspěch*, *selhalo: <reason>*, nebo *žádný* , pokud nebyl certifikát přítomen. | 
 
 ## <a name="rewrite-configuration"></a>Přepsat konfiguraci
 
@@ -148,6 +158,17 @@ Sada pravidel přepsání obsahuje:
       * **Cesta URL**: hodnota, na kterou má být cesta přepsána. 
       * **Řetězec dotazu adresy URL**: hodnota, na kterou se má řetězec dotazu přepsat. 
       * **Znovu vyhodnotit mapu cest**: slouží k určení, zda má být mapování cesty URL znovu vyhodnoceno. Pokud je tato akce ponechána nezaškrtnutá, použije se původní cesta URL, která bude odpovídat vzoru cesty v mapě cesty URL. Pokud je nastavená hodnota true, mapování cesty URL se znovu vyhodnotí, aby se zkontrolovala shoda s přepsanou cestou. Povolení tohoto přepínače pomáhá při směrování požadavku do jiného back-endu po opětovném zápisu.
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Použití přepsání adresy URL nebo přepsání hlavičky hostitele pomocí brány firewall webových aplikací (WAF_v2 SKU)
+
+Když konfigurujete přepsání adresy URL nebo přepsání hlavičky hostitele, vyhodnocování WAF se provede po provedení změny v hlavičce požadavku nebo v parametrech adresy URL (po opětovném zápisu). A při odebrání konfigurace přepsání adresy URL nebo opětovného zápisu hlaviček hostitele ve vašem Application Gateway se vyhodnocování WAF provede před přepsáním hlavičky (před přepsáním zápisu). Toto pořadí zajistí, že se pravidla WAF použijí na finální žádost, kterou by váš back-end fond přijal.
+
+Řekněme například, že máte následující pravidlo opětovného zápisu záhlaví pro hlavičku `"Accept" : "text/html"` – Pokud je hodnota záhlaví `"Accept"` shodná s `"text/html"` a přepsat hodnotu `"image/png"` .
+
+V tomto případě se s nakonfigurovaným pouze přepsáním hlavičky provede zkušební WAF `"Accept" : "text/html"` . Pokud ale konfigurujete přepsání adresy URL nebo přepsání hlavičky hostitele, bude vyhodnocování WAF provedeno na `"Accept" : "image/png"` .
+
+>[!NOTE]
+> Očekává se, že operace přepisu adresy URL způsobí menší nárůst využití CPU WAF Application Gateway. Doporučujeme, abyste po krátké době po povolení pravidel pro přepis adres URL na WAF Application Gateway monitorovat [metriku využití CPU](high-traffic-support.md) po krátkou dobu.
 
 ### <a name="common-scenarios-for-header-rewrite"></a>Běžné scénáře přepsání hlaviček
 

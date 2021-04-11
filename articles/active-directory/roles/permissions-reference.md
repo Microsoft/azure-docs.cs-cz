@@ -14,24 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ad8466dca6634b0e72ef4a65acb537006dba3bda
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935409"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108536"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
 Pokud v Azure Active Directory (Azure AD) potřebuje jiný správce nebo správce, než je potřeba spravovat prostředky služby Azure AD, přiřadíte jim roli Azure AD, která poskytuje potřebná oprávnění. Můžete například přiřadit role, abyste mohli přidávat nebo měnit uživatele, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat názvy domén.
 
 V tomto článku jsou uvedené předdefinované role Azure AD, které můžete přiřadit, aby bylo možné spravovat prostředky služby Azure AD. Informace o tom, jak přiřadit role, najdete v tématu [přiřazení rolí Azure AD uživatelům](manage-roles-portal.md).
-
-## <a name="limit-use-of-global-administrator"></a>Omezení použití globálního správce
-
-Uživatelé, kteří mají přiřazenou roli globálního správce, můžou číst a upravovat všechna nastavení správy ve vaší organizaci Azure AD. Když se uživatel přihlásí ke cloudové službě Microsoftu, vytvoří se ve výchozím nastavení tenant Azure AD a uživatel se stane členem role globální správci. Když přidáte předplatné do existujícího tenanta, nebudete přiřazeni k roli globálního správce. Role správce můžou delegovat jenom globální správci a správci privilegovaných rolí. Pokud chcete snížit riziko pro vaši firmu, doporučujeme přiřadit tuto roli co nejmenším možným lidem ve vaší organizaci.
-
-Jako osvědčený postup doporučujeme přiřadit tuto roli méně než pěti lidem ve vaší organizaci. Pokud máte ve vaší organizaci více než pět správců, kteří mají přiřazenou roli globálního správce, je zde několik způsobů, jak omezit jejich používání.
 
 ## <a name="all-roles"></a>Všechny role
 
@@ -771,6 +765,9 @@ Tento správce spravuje federace mezi organizacemi Azure AD a externími zprost�
 ## <a name="global-administrator"></a>Globální správce
 
 Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Globální správci navíc můžou [zvýšit úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) ke správě všech předplatných Azure a skupin pro správu. Díky tomu můžou globální správci získat úplný přístup ke všem prostředkům Azure pomocí příslušného tenanta Azure AD. Osoba, která se zaregistruje do organizace Azure AD, se stal globálním správcem. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo pro každého uživatele a všechny ostatní správce.
+
+> [!NOTE]
+> Osvědčeným postupem je, že společnost Microsoft doporučuje přiřadit roli globálního správce k méně než pěti lidem ve vaší organizaci. Další informace najdete v tématu [osvědčené postupy pro role Azure AD](best-practices.md).
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -1841,6 +1838,23 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Čtení a konfigurace Service Health v centru pro správu Microsoft 365 |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a správa žádostí o Microsoft 365 služby |
 > | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v centru pro správu Microsoft 365. |
+
+## <a name="how-to-understand-role-permissions"></a>Pochopení oprávnění rolí
+
+Schéma pro oprávnění bez omezení Microsoft Graph následující:
+
+`<namespace>/<entity>/<propertySet>/<action>`
+
+Například:
+
+`microsoft.directory/applications/credentials/update`
+
+| Element oprávnění | Description |
+| --- | --- |
+| namespace | Produkt nebo služba, které vystavují úkol a jsou součástí `microsoft` . Například všechny úlohy ve službě Azure AD používají `microsoft.directory` obor názvů. |
+| entita | Logická funkce nebo komponenta vystavené službou v Microsoft Graph. Například Azure AD zveřejňuje uživatele a skupiny, OneNote zpřístupňuje poznámky a Exchange zveřejňuje poštovní schránky a kalendáře. Existuje speciální `allEntities` klíčové slovo pro zadání všech entit v oboru názvů. Tato funkce se často používá v rolích, které udělují přístup k celému produktu. |
+| PropertySet – | Konkrétní vlastnosti nebo aspekty entity, pro které se uděluje přístup Například `microsoft.directory/applications/authentication/read` udělí možnost číst adresu URL odpovědi, adresu URL pro odhlášení a vlastnost implicitního toku u objektu aplikace v Azure AD.<ul><li>`allProperties` Určuje všechny vlastnosti entity, včetně privilegovaných vlastností.</li><li>`standard` určí společné vlastnosti, ale vyloučí privilegované objekty související s `read` akcí. Například `microsoft.directory/user/standard/read` umožňuje číst standardní vlastnosti, jako je veřejné telefonní číslo a e-mailová adresa, ale ne soukromé sekundární telefonní číslo nebo e-mailovou adresu, která se používá pro službu Multi-Factor Authentication.</li><li>`basic` určí společné vlastnosti, ale vyloučí privilegované objekty související s `update` akcí. Sada vlastností, které lze číst, se může lišit od toho, co můžete aktualizovat. To je důvod, proč existují `standard` a `basic` klíčová slova, která se mají odrážet.</li></ul> |
+| akce | Povolená operace, většinou je vytváření, čtení, aktualizace nebo odstranění (CRUD). Existuje speciální `allTasks` klíčové slovo pro určení všech výše uvedených možností (vytvoření, čtení, aktualizace a odstranění). |
 
 ## <a name="deprecated-roles"></a>Zastaralé role
 

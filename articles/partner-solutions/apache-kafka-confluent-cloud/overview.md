@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fefbc21c385e3beacbf570c31ffbf97238c780fc
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98253412"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109080"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Co je Apache Kafka pro cloudovou Cloud?
 
@@ -56,6 +56,12 @@ K dispozici jsou dvě možnosti fakturace: plán měsíčních plateb s průbě�
 - S **plánem závazku** si můžete zaregistrovat minimální částku útraty a získat slevu na vaše potvrzené využití cloudu.
 
 Určíte, která možnost fakturace se má použít při vytváření služby.
+
+## <a name="connector-to-azure-cosmos-db"></a>Spojnice k Azure Cosmos DB
+
+V rámci klienta služby influent hub nainstalujte konektor Cosmos DB podle doporučení v seznamu služby [influent hub](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos). 
+
+Pokud chcete konektor nainstalovat ručně, Stáhněte si nejprve Uber JAR ze [stránky verze Cosmos DB](https://github.com/microsoft/kafka-connect-cosmosdb/releases). Alternativně můžete [sestavit vlastní Uber jar přímo ze zdrojového kódu](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector). Dokončete instalaci podle pokynů popsaných v dokumentaci ke službě influent pro [ruční instalaci konektorů](https://docs.confluent.io/home/connect/install.html#install-connector-manually).  
 
 ## <a name="confluent-links"></a>Odkazy v influent
 

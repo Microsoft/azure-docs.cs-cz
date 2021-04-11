@@ -1,22 +1,25 @@
 ---
-title: Jak kontrolovat Azure synapse Analytics
-description: V této příručce najdete podrobné informace o tom, jak kontrolovat Azure synapse Analytics.
+title: Jak kontrolovat vyhrazené fondy SQL
+description: V této příručce najdete podrobné informace o tom, jak kontrolovat vyhrazené fondy SQL.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: d287f5dc239339f79d2d8237e7739de7793920c4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108604"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106968"
 ---
-# <a name="register-and-scan-azure-synapse-analytics"></a>Registrace a kontrola Azure synapse Analytics
+# <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Registrovat a kontrolovat vyhrazené fondy SQL (dříve SQL DW)
 
-Tento článek popisuje, jak zaregistrovat a zkontrolovat instanci Azure synapse Analytics (dřív SQL DW) v dosah.
+> [!NOTE]
+> Pokud chcete registrovat a kontrolovat vyhrazenou databázi SQL v pracovním prostoru synapse, [musíte postupovat podle pokynů.](register-scan-synapse-workspace.md)
+
+Tento článek popisuje, jak zaregistrovat a zkontrolovat instanci vyhrazeného fondu SQL (dříve SQL DW) v dosah.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -24,7 +27,8 @@ Azure synapse Analytics (dřív SQL DW) podporuje úplné a přírůstkové kont
 
 ### <a name="known-limitations"></a>Známá omezení
 
-Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) v Azure synapse Analytics.
+> * Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) v Azure synapse Analytics.
+> * Azure dosah nepodporuje více než 300 sloupců na kartě schématu a zobrazí "další sloupce – zkrácené". 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -114,14 +118,14 @@ Když je vybraná metoda ověřování **SQL**, budete muset získat heslo a ulo
 1. Pokud váš Trezor klíčů ještě není připojený k dosah, bude potřeba [vytvořit nové připojení trezoru klíčů](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) .
 1. Nakonec vytvořte pomocí klíče [nové přihlašovací údaje](manage-credentials.md#create-a-new-credential) , které nastaví kontrolu.
 
-## <a name="register-an-azure-synapse-analytics-instance-formerly-sql-dw"></a>Registrace instance Azure synapse Analytics (dříve SQL DW)
+## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>Registrace vyhrazeného fondu SQL (dříve SQL DW)
 
 Pokud chcete zaregistrovat nový server Azure synapse Analytics v Data Catalog, udělejte toto:
 
 1. Přejděte k účtu dosah.
 1. Výběr **zdrojů** na levém navigačním panelu
 1. Vybrat **registraci**
-1. V **seznamu registrovat zdroje** vyberte **Azure synapse Analytics (dřív SQL DW)** .
+1. V oblasti **Registrovat zdroje** vyberte **vyhrazený fond SQL (dřív SQL DW)** .
 1. Vyberte **Pokračovat**.
 
 Na obrazovce **Registrovat zdroje (Azure synapse Analytics)** udělejte toto:

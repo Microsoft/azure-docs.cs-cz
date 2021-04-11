@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202956"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106900"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Povolit spravovanou identitu pro směrování událostí digitálních vláken Azure (Preview): Azure CLI
 
@@ -40,7 +40,7 @@ Kterákoli z těchto metod vytváření poskytne stejné možnosti konfigurace a
 
 V této části se dozvíte, jak povolit systémově spravovanou identitu na instanci digitálních vláken Azure, která se právě vytváří. 
 
-To se provádí přidáním `--assign-identity` parametru do `az dt create` příkazu, který se používá k vytvoření instance. (Další informace o tomto příkazu najdete v [referenční dokumentaci](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) nebo v [obecných pokynech k nastavení instance digitálního vlákna Azure](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
+To se provádí přidáním `--assign-identity` parametru do `az dt create` příkazu, který se používá k vytvoření instance. (Další informace o tomto příkazu najdete v [referenční dokumentaci](/cli/azure/dt#az_dt_create) nebo v [obecných pokynech k nastavení instance digitálního vlákna Azure](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
 
 Chcete-li vytvořit instanci s identitou spravované systémem, přidejte  `--assign-identity` parametr takto:
 
@@ -97,7 +97,7 @@ Tady je příklad, který vytvoří instanci se systémem spravovanou identitou 
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-Další příklady přiřazení rolí pomocí tohoto příkazu najdete v [dokumentaci **AZ DT Create** reference](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create).
+Další příklady přiřazení rolí pomocí tohoto příkazu najdete v [dokumentaci **AZ DT Create** reference](/cli/azure/dt#az_dt_create).
 
 Alternativně můžete k vytváření a správě rolí použít také skupinu příkazů [**AZ role Assignment**](/cli/azure/role/assignment) . Tato funkce se dá použít k podpoře dalších scénářů, u kterých nechcete seskupovat přiřazení role pomocí příkazu CREATE.
 
@@ -108,7 +108,7 @@ Po nastavení systému spravované identity pro instanci digitálních vláken A
 >[!NOTE]
 > Nelze upravit koncový bod, který již byl vytvořen s identitou založenou na klíči, aby bylo možné změnit ověřování na základě identity. Typ ověřování je nutné zvolit při prvním vytvoření koncového bodu.
 
-K tomu je potřeba přidat `--auth-type` parametr do `az dt endpoint create` příkazu, který se používá k vytvoření koncového bodu. (Další informace o tomto příkazu najdete v [referenční dokumentaci](/cli/azure/ext/azure-iot/dt/endpoint/create) nebo v [obecných pokynech k nastavení koncového bodu digitálních vláken Azure](how-to-manage-routes-apis-cli.md#create-the-endpoint).)
+K tomu je potřeba přidat `--auth-type` parametr do `az dt endpoint create` příkazu, který se používá k vytvoření koncového bodu. (Další informace o tomto příkazu najdete v [referenční dokumentaci](/cli/azure/dt/endpoint/create) nebo v [obecných pokynech k nastavení koncového bodu digitálních vláken Azure](how-to-manage-routes-apis-cli.md#create-the-endpoint).)
 
 Chcete-li vytvořit koncový bod, který používá ověřování na základě identity, zadejte `IdentityBased` typ ověřování s  `--auth-type` parametrem. Následující příklad znázorňuje tuto chybu pro Event Hubs koncový bod.
 

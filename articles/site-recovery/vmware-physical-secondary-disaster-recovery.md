@@ -1,19 +1,16 @@
 ---
 title: Zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů do sekundární lokality s Azure Site Recovery
 description: Naučte se, jak nastavit zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů se systémem Windows a Linux do sekundární lokality s Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: raynew
-ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2456fcfffd9645f94856998142f262298b5eef9
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84711897"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581457"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii místních virtuálních počítačů VMware nebo fyzických serverů do sekundární lokality
 

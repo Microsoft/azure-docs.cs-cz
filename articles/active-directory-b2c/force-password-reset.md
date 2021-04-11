@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0477153b466702bec0fa2d5221fee1e054d06314
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b6aae76b0b35f8195fb52b7fb11de43d8fa511ba
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033758"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028430"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Nastavení vynucení toku resetování hesla v Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Jako správce můžete nastavit vypršení platnosti hesla uživatele na 90 dní
 
 Po nastavení zásad vypršení platnosti hesla je nutné také nakonfigurovat tok vynuceného resetování hesla, jak je popsáno v tomto článku.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -92,7 +92,7 @@ Povolení nastavení **vynuceného resetování hesla** v toku registrace nebo p
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte `B2C_1A_signup_signin_Custom_ForcePasswordReset` zásadu, kterou chcete otevřít. 
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte tlačítko **Spustit** .
 1. Přihlaste se pomocí uživatelského účtu, pro který resetujete heslo.
 1. Nyní musíte změnit heslo pro uživatele. Změňte heslo a vyberte **pokračovat**. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 04/07/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6984f27ae0ae81c3bf8d98efcce5fb23909c36d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577086"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226086"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Požadavky na systém pro Azure Stack Edge pro s grafickým procesorem 
 
@@ -108,6 +108,18 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 | https:// \* . azurecr.IO                     | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
 | https:// \* . Azure-Devices.NET              | Přístup k IoT Hub (povinné)                             | 
 
+### <a name="url-patterns-for-monitoring"></a>Vzory adres URL pro monitorování
+
+Pokud používáte kontejnerové verze Log Analytics agenta pro Linux, přidejte následující vzory adres URL pro Azure Monitor.
+
+| Vzor adresy URL | Port | Součást nebo funkce |
+|-------------|-------------|----------------------------|
+| http:// \* ODS.opinsights.Azure.com | 443 | Přijímání dat |
+| http:// \* . OMS.opinsights.Azure.com | 443 | Připojování k Operations Management Suite (OMS) |
+| http:// \* . DC.Services.VisualStudio.com | 443 | Telemetrie agenta, který používá Azure Public Cloud Application Insights |
+
+Další informace najdete v tématu [požadavky na síťovou bránu firewall pro monitorování služby Container Insights](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements).
+
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Vzory adres URL pro bránu pro Azure Government
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/azure-stack-edge-gateway-gov-url-patterns-firewall.md)]
@@ -119,6 +131,17 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 | https: \/ /MCR.Microsoft.com<br></br>https:// \* . CDN.mscr.com | Microsoft Container Registry (povinné)               |
 | https:// \* . Azure-Devices.us              | Přístup k IoT Hub (povinné)           |
 | https:// \* . azurecr.us                    | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
+
+### <a name="url-patterns-for-monitoring-for-azure-government"></a>Vzory adres URL pro monitorování Azure Government
+
+Pokud používáte kontejnerové verze Log Analytics agenta pro Linux, přidejte následující vzory adres URL pro Azure Monitor.
+
+| Vzor adresy URL | Port | Součást nebo funkce |
+|-------------|-------------|----------------------------|
+| http:// \* ODS.opinsights.Azure.us | 443 | Přijímání dat |
+| http:// \* . OMS.opinsights.Azure.us | 443 | Připojování k Operations Management Suite (OMS) |
+| http:// \* . DC.Services.VisualStudio.com | 443 | Telemetrie agenta, který používá Azure Public Cloud Application Insights |
+
 
 ## <a name="internet-bandwidth"></a>Šířka pásma internetu
 

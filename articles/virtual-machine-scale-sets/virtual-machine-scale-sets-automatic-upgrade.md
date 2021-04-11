@@ -5,16 +5,16 @@ author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
+ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9194ab70e37c0659e77cbe9c10ffca10e1a76de8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684606"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011864"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady imagí operačních systémů škálovacích sad virtuálních počítačů
 
@@ -79,7 +79,7 @@ V současné době se podporují následující SKU platforem (a pravidelně se 
 ### <a name="service-fabric-requirements"></a>Service Fabric požadavky
 
 Pokud používáte Service Fabric, ujistěte se, že jsou splněné následující podmínky:
--   [Úroveň odolnosti](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Service Fabric je stříbrná nebo zlatá a není bronzová.
+-   [Úroveň odolnosti](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Service Fabric je stříbrná nebo zlatá a není bronzová (s výjimkou pouze bezstavových NodeType pouze těch, která podporují automatické upgrady operačního systému).
 -   Rozšíření Service Fabric v definici modelu sady škálování musí mít TypeHandlerVersion 1,1 nebo vyšší.
 -   Úroveň odolnosti by měla být stejná jako u Service Fabric clusteru a rozšíření Service Fabric v definici modelu sady škálování.
 - Další sonda stavu nebo použití rozšíření pro stav aplikace se nevyžaduje.
@@ -163,7 +163,7 @@ Na modul pro vyrovnávání zatížení se dá odkazovat v *networkProfile* sady
 ```
 
 > [!NOTE]
-> Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, je nová image operačního systému zahrnutá v aktualizační doméně podle aktualizační domény, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší. Další informace o vlastnostech odolnosti Service Fabric clusterech najdete v [této dokumentaci](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
+> Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, je nová image operačního systému zahrnutá v aktualizační doméně podle aktualizační domény, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Aby bylo možné využívat automatické upgrady operačního systému v Service Fabric, musí být typ NodeType clusteru nakonfigurovaný tak, aby používal úroveň odolnosti stříbra nebo vyšší. Pro bronzovou úroveň odolnosti se automatický upgrade operačního systému podporuje jenom u bezstavových NodeType. Další informace o vlastnostech odolnosti Service Fabric clusterech najdete v [této dokumentaci](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Udržování přihlašovacích údajů v aktuálním stavu
 Pokud vaše sada škálování používá pro přístup k externím prostředkům nějaké přihlašovací údaje, jako je třeba rozšíření virtuálního počítače nakonfigurované pro použití tokenu SAS pro účet úložiště, pak ověřte, že se přihlašovací údaje aktualizují. Pokud vypršela platnost jakýchkoli přihlašovacích údajů, včetně certifikátů a tokenů, upgrade selže a první dávka virtuálních počítačů zůstane ve stavu selhání.

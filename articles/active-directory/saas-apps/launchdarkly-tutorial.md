@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
 ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104954798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Kurz: Azure Active Directory integrace s LaunchDarkly
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte, jak integrovat LaunchDarkly s Azure Active Directory 
     > [!NOTE]
     > Integrace LaunchDarkly Azure Active Directory je jednosměrná. Po konfiguraci integrace můžete pomocí Azure AD spravovat uživatele, jednotné přihlašování a účty v LaunchDarkly, ale LaunchDarkly **nemůžete** použít ke správě uživatelů, SSO a účtů v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

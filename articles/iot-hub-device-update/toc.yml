@@ -68,10 +68,24 @@
       items:
         - name: Řešení potíží s aktualizacemi zařízení
           href: troubleshoot-device-update.md
-- name: Reference
-  items:
-    - name: Kódy chyb klienta aktualizace zařízení
+        - name: Kódy chyb klienta aktualizace zařízení
       href: device-update-error-codes.md
+- name: Referenční informace
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/en-us/rest/api/deviceupdate/'
+    - name: Sada SDK řídicí roviny
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/en-us/dotnet/api/overview/azure/iot/management?view=azure-dotnet'
+    - name: Sada SDK datové roviny
+      items:
+        - name: JavaScript
+          href: 'https://docs.microsoft.com/en-us/javascript/api/@azure/iot-device-update/?view=azure-node-preview'
+        - name: Java
+          href: 'https://docs.microsoft.com/en-us/java/api/com.azure.iot.deviceupdate?view=azure-java-preview'
+        - name: Python
+          href: 'https://docs.microsoft.com/en-us/python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview'
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

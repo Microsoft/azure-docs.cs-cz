@@ -5,15 +5,19 @@
   items:
     - name: Co je Metrics Advisor?
       href: overview.md
-    - name: Co je nového?
+    - name: Ceny
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
+    - name: Co je nového
       href: whats-new.md
-- name: Rychlé starty
+- name: Rychlé starty pro metrické metriky
   items:
-    - name: Použití webového portálu
+    - name: Webový portál
       href: quickstarts/web-portal.md
-    - name: Použití rozhraní REST API nebo klientských knihoven
+    - name: Knihovny REST API a klienta
       href: quickstarts/rest-api-and-client-library.md
-- name: Postupy
+- name: ukázky
+  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
+- name: Návody
   items:
     - name: Onboarding dat
       href: how-tos/onboard-your-data.md
@@ -31,13 +35,13 @@
       href: how-tos/anomaly-feedback.md
     - name: Sestavení grafu metrik
       href: how-tos/metrics-graph.md
-- name: Referenční informace
+- name: Koncepty
   items:
-    - name: Glosář
+    - name: Klíčové výrazy Poradce pro metriky
       href: glossary.md
-    - name: Nejčastější dotazy
-      href: faq.md
-    - name: Rozhraní API pro Metrics Advisor
+- name: Reference
+  items:
+    - name: REST API Poradce pro metriky
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Referenční informace k Azure CLI
       href: /cli/azure/cognitiveservices#az_cognitiveservices_list
@@ -45,12 +49,10 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: Zdroje a prostředky
   items:
+    - name: Podpora oblastí
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: Ceny
-      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
-    - name: Dostupnost podle oblastí
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 04/06/2020
+ms.date: 03/06/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "97708462"
+ms.locfileid: "105962947"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Použití parametrů kanálu k reučení modelů v Návrháři
 
@@ -120,3 +120,5 @@ Chcete-li provést volání REST, budete potřebovat hlavičku ověřování typ
 V tomto článku jste zjistili, jak vytvořit parametrizovaný koncový bod školicího kanálu pomocí návrháře.
 
 Úplný návod, jak nasadit model a vytvořit předpovědi, najdete v [kurzu návrháře](tutorial-designer-automobile-price-train-score.md) , který vám umožní naučit a nasazovat regresní model.
+
+Informace o tom, jak publikovat a odeslat koncový bod kanálu pomocí sady SDK, najdete v [tomto článku](how-to-deploy-pipelines.md).

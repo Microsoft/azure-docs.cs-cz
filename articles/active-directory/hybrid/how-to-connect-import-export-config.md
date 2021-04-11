@@ -11,12 +11,12 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e2bdaa2c7a7648124fbe0be60e5a0af2f83238f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681951"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226509"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Import a export nastavení konfigurace Azure AD Connect 
 
@@ -42,7 +42,7 @@ Import dříve exportovaných nastavení:
 1. Vyberte **importovat nastavení synchronizace**. Vyhledejte dříve exportovaný soubor nastavení JSON.
 1. Vyberte **Nainstalovat**.
 
-   ![Snímek obrazovky zobrazující obrazovku instalovat požadované součásti](media/how-to-connect-import-export-config/import1.png)
+   ![Snímek obrazovky zobrazující obrazovku instalovat požadované součásti](media/how-to-connect-import-export-config/import-1.png)
 
 > [!NOTE]
 > Přepsat nastavení na této stránce, jako je například použití SQL Server namísto LocalDB nebo použití existujícího účtu služby namísto výchozího atributu VSA. Tato nastavení nejsou importovaná ze souboru nastavení konfigurace. Jsou zde dostupné informace a účely porovnání.
@@ -57,7 +57,7 @@ Tady jsou jediné změny, které je možné provést během instalace. Všechny 
 - **Přihlašovací údaje pro místní adresář**: pro každý místní adresář zahrnutý do nastavení synchronizace musíte zadat přihlašovací údaje pro vytvoření synchronizačního účtu nebo zadání předem vytvořeného vlastního účtu synchronizace. Tento postup se shoduje s čistým prostředím instalace s výjimkou, že nemůžete přidat nebo odebrat adresáře.
 - **Možnosti konfigurace**: stejně jako u čisté instalace můžete nakonfigurovat počáteční nastavení, jestli chcete spustit automatickou synchronizaci nebo povolit pracovní režim. Hlavním rozdílem je, že pracovní režim je ve výchozím nastavení záměrně povolený, aby bylo možné porovnat výsledky konfigurace a synchronizace před aktivně exportováním výsledků do Azure.
 
-![Snímek obrazovky, na kterém se zobrazuje obrazovka připojit adresáře](media/how-to-connect-import-export-config/import2.png)
+![Snímek obrazovky, na kterém se zobrazuje obrazovka připojit adresáře](media/how-to-connect-import-export-config/import-2.png)
 
 > [!NOTE]
 > V primární roli může být jenom jeden synchronizační Server a aktivně se exportují změny konfigurace do Azure. Všechny ostatní servery musí být umístěny v pracovním režimu.
@@ -71,21 +71,27 @@ Migrace vyžaduje spuštění skriptu PowerShellu, který extrahuje stávající
 ### <a name="migration-process"></a>Proces migrace 
 Postup migrace nastavení:
 
-1. Spusťte **AzureADConnect.msi** na novém přípravném serveru a zastavte **úvodní** stránku Azure AD Connect.
+ 1. Spusťte **AzureADConnect.msi** na novém přípravném serveru a zastavte **úvodní** stránku Azure AD Connect.
 
-1. Zkopírujte **MigrateSettings.ps1** z adresáře Microsoft Azure AD Connect\Tools do umístění na existujícím serveru. Příkladem je C:\setup, kde instalační program je adresář, který byl vytvořen na stávajícím serveru.
+ 2. Zkopírujte **MigrateSettings.ps1** z adresáře Microsoft Azure AD Connect\Tools do umístění na existujícím serveru. Příkladem je C:\setup, kde instalační program je adresář, který byl vytvořen na stávajícím serveru.</br>
+     ![Snímek obrazovky zobrazující adresáře Azure AD Connect](media/how-to-connect-import-export-config/migrate-1.png)
 
-   ![Snímek obrazovky zobrazující adresáře Azure AD Connect](media/how-to-connect-import-export-config/migrate1.png)
+     >[!NOTE]
+     > Pokud se zobrazí zpráva: "poziční parametr nejde najít, který přijímá argument **true**.", jak je uvedeno níže:
+     >
+     >
+     >![Snímek obrazovky s chybou, ](media/how-to-connect-import-export-config/migrate-5.png) pak upravte soubor MigrateSettings.ps1 a odeberte **$true** a spusťte skript: ![ snímek obrazovky pro úpravu konfigurace](media/how-to-connect-import-export-config/migrate-6.png)
+ 
 
-1. Spusťte skript, jak je znázorněno zde, a uložte celý konfigurační adresář serveru nižší úrovně. Zkopírujte tento adresář do nového přípravného serveru. Je nutné zkopírovat celou složku **exportovanou-ServerConfiguration-*** na nový server.
 
-   ![Snímek obrazovky, který zobrazuje skript v prostředí Windows PowerShell. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Snímek obrazovky, který ukazuje kopírování exportované složky-ServerConfiguration-*.](media/how-to-connect-import-export-config/migrate3.png)
 
-1. Spusťte **Azure AD Connect** dvojitým kliknutím na ikonu na ploše. Přijměte licenční podmínky pro software společnosti Microsoft a na další stránce vyberte možnost **přizpůsobit**.
-1. Zaškrtněte políčko **importovat nastavení synchronizace** . Vyberte **Procházet** a přejděte do složky zkopírované do exportovaného-ServerConfiguration-*. Vyberte MigratedPolicy.jspro import migrovaných nastavení.
+ 3. Spusťte skript, jak je znázorněno zde, a uložte celý konfigurační adresář serveru nižší úrovně. Zkopírujte tento adresář do nového přípravného serveru. Je nutné zkopírovat celou složku **exportovanou-ServerConfiguration-*** na nový server.
+     ![Snímek obrazovky, který zobrazuje skript v prostředí Windows PowerShell. ](media/how-to-connect-import-export-config/migrate-2.png)![ Snímek obrazovky, který ukazuje kopírování exportované složky-ServerConfiguration-*.](media/how-to-connect-import-export-config/migrate-3.png)
 
-   ![Snímek obrazovky zobrazující možnost importovat nastavení synchronizace](media/how-to-connect-import-export-config/migrate4.png)
+ 4. Spusťte **Azure AD Connect** dvojitým kliknutím na ikonu na ploše. Přijměte licenční podmínky pro software společnosti Microsoft a na další stránce vyberte možnost **přizpůsobit**.
+ 5. Zaškrtněte políčko **importovat nastavení synchronizace** . Vyberte **Procházet** a přejděte do složky zkopírované do exportovaného-ServerConfiguration-*. Vyberte MigratedPolicy.jspro import migrovaných nastavení.
+
+     ![Snímek obrazovky zobrazující možnost importovat nastavení synchronizace](media/how-to-connect-import-export-config/migrate-4.png)
 
 ## <a name="post-installation-verification"></a>Ověření po instalaci 
 

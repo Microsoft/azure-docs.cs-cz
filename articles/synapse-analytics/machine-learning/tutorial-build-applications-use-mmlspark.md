@@ -9,12 +9,12 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: 928e2ef8b373626a91a291b1798f3ebb7ef290e8
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608829"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227717"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Kurz: sestavování aplikací strojového učení pomocí Microsoft Machine Learning pro Apache Spark (Preview)
 
@@ -23,7 +23,7 @@ Synapse Spark poskytuje integrované MMLSpark knihovny, včetně:
 
 - [Pro dostupné](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – služby knihoven pro strojové učení, které umožňují v tweety povolit analýzu textu jako mínění Analysis.
 - [Cognitive Services ve Sparku](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) – Chcete-li kombinovat funkci Azure Cognitive Services v kanálech SparkML, aby bylo možné odvodit návrh řešení pro rozpoznávání služby Data Modeling, jako je detekce anomálií.
-- [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – LightGBM je rozhraní pro zvýšení barevného přechodu, které využívá algoritmy učení založené na stromové struktuře. Je navržená tak, aby byla distribuovaná a vyšší efektivita.
+- [LightGBM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – LightGBM je rozhraní pro zvýšení barevného přechodu, které využívá algoritmy učení založené na stromové struktuře. Je navržená tak, aby byla distribuovaná a vyšší efektivita.
 - Podmíněné KNN – škálovatelné modely KNN s podmíněnými dotazy.
 - [Http ve Sparku](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – povoluje orchestraci distribuovaných mikroslužeb v integraci Sparku a protokolu HTTP založeného na protokolu HTTP.
 

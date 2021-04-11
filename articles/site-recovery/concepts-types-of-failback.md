@@ -1,18 +1,15 @@
 ---
 title: Navrácení služeb po obnovení během zotavení po havárii pomocí Azure Site Recovery | Microsoft Docs
 description: Tento článek poskytuje přehled různých typů navrácení služeb po obnovení a aspektů, které je potřeba vzít v úvahu při selhání obnovení do místního prostředí během zotavení po havárii pomocí služby Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: raynew
-ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f386b34222825b60748b4ca27dcc5c0c2487316
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84691080"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580851"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Navrácení služeb po obnovení virtuálních počítačů VMware po zotavení po havárii do Azure
 

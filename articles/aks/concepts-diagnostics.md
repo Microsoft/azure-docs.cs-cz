@@ -4,34 +4,46 @@ description: Přečtěte si o vlastních diagnostikách clusterů ve službě Az
 services: container-service
 author: yunjchoi
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/29/2021
 ms.author: yunjchoi
-ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee11221e5484a796b8dbbcb10a323288d3e74756
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183358"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011554"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Přehled služby Azure Kubernetes Service Diagnostics (Preview)
 
-Řešení potíží s clustery Azure Kubernetes Service (AKS) je důležitou součástí údržby clusteru, zejména v případě, že cluster používá klíčové úlohy. Diagnostika AKS je inteligentní a samoobslužné prostředí, které vám pomůže identifikovat a vyřešit problémy v clusteru. Diagnostika AKS je v cloudu nativní a můžete ji použít bez dalších konfigurací nebo fakturačních nákladů.
+Řešení potíží s clustery Azure Kubernetes Service (AKS) hraje důležitou roli při údržbě clusteru, zejména v případě, že cluster používá klíčové úlohy. Diagnostika AKS je inteligentní, samoobslužné prostředí s možností diagnostiky:
+* Pomáhá identifikovat a řešit problémy v clusteru. 
+* Je cloudově nativní.
+* Nevyžaduje žádnou další konfiguraci ani fakturační náklady.
 
-Tato funkce je teď ve verzi Public Preview.
+Tato funkce je teď ve verzi Public Preview. 
 
 ## <a name="open-aks-diagnostics"></a>Otevřít diagnostiku AKS
 
 Přístup k diagnostice AKS:
 
-- V [Azure Portal](https://portal.azure.com)přejděte na svůj cluster Kubernetes.
-- Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku AKS.
-- Vyberte kategorii, která nejlépe popisuje potíže s clusterem pomocí klíčových slov na dlaždici domovské stránky, nebo zadejte klíčové slovo, které nejlépe popisuje váš problém na panelu hledání, například _problémy s uzlem v clusteru_.
+1. V [Azure Portal](https://portal.azure.com)přejděte na svůj cluster Kubernetes.
+1. Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku AKS.
+1. Vyberte kategorii, která nejlépe popisuje problém vašeho clusteru, například _problémy s uzlem clusteru_, podle:
+    * Pomocí klíčových slov na dlaždici domovské stránky.
+    * Zadání klíčového slova, které nejlépe popisuje váš problém na panelu hledání.
 
 ![Domovská stránka](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Zobrazit diagnostickou sestavu
 
-Po kliknutí na kategorii můžete zobrazit diagnostickou zprávu specifickou pro váš cluster. Diagnostická sestava inteligentně vyvolá, pokud se ve vašem clusteru vyskytnou nějaké problémy s ikonami stavu. Můžete přejít k podrobnostem každého tématu kliknutím na **Další informace** zobrazíte podrobný popis problému, doporučené akce, odkazy na užitečné dokumenty, související metriky a data protokolování. Diagnostické sestavy se inteligentně generují na základě aktuálního stavu clusteru po spuštění různých kontrol. Diagnostické sestavy můžou být užitečným nástrojem pro určení problému clusteru a vyhledání dalších kroků k vyřešení problému.
+Po kliknutí na kategorii můžete zobrazit diagnostickou zprávu specifickou pro váš cluster. Diagnostické sestavy inteligentně volají všechny problémy v clusteru s ikonami stavů. Můžete přejít k podrobnostem každého tématu kliknutím na **Další informace** zobrazíte podrobný popis:
+* Problémy
+* Doporučené akce
+* Odkazy na užitečné dokumenty
+* Související metriky
+* Protokolování dat 
+
+Diagnostické sestavy se generují na základě aktuálního stavu clusteru po spuštění různých kontrol. Můžou být užitečné pro určení problému clusteru a porozumění dalším krokům k vyřešení tohoto problému.
 
 ![Diagnostická sestava](./media/concepts-diagnostics/diagnostic-report.png)
 
@@ -43,7 +55,7 @@ V rámci služby **cluster Insights** jsou k dispozici následující diagnostic
 
 ### <a name="cluster-node-issues"></a>Problémy s uzlem v clusteru
 
-Uzel clusteru vyhledává problémy související s uzlem, které by mohly způsobit neočekávané chování clusteru.
+Uzel clusteru vyhledává problémy související s uzlem, které způsobují neočekávané chování clusteru.
 
 - Problémy s připraveností uzlů
 - Selhání uzlu
@@ -55,9 +67,9 @@ Uzel clusteru vyhledává problémy související s uzlem, které by mohly způs
 - Selhání ověřování uzlu
 - Kube uzlu – proxy zastaralé
 
-### <a name="create-read-update--delete-operations"></a>Vytváření, čtení, aktualizace & odstranění operací
+### <a name="create-read-update--delete-crud-operations"></a>Vytváření, čtení, aktualizace & odstranění (CRUD) operací
 
-Operace CRUD vyhledává všechny operace CRUD, které mohou způsobovat problémy v clusteru.
+Operace CRUD vyhledává všechny operace CRUD, které způsobují problémy v clusteru.
 
 - Chyba operace odstranění podsítě při použití
 - Chyba operace odstranění skupiny zabezpečení sítě
@@ -73,7 +85,7 @@ Operace CRUD vyhledává všechny operace CRUD, které mohou způsobovat problé
 
 ### <a name="identity-and-security-management"></a>Správa identit a zabezpečení
 
-Správa identit a zabezpečení detekuje chyby ověřování a autorizace, které mohou bránit komunikaci s clusterem.
+Správa identit a zabezpečení detekuje chyby ověřování a autorizace, které brání komunikaci s clusterem.
 
 - Selhání autorizace uzlů
 - chyby 401
@@ -81,8 +93,8 @@ Správa identit a zabezpečení detekuje chyby ověřování a autorizace, kter�
 
 ## <a name="next-steps"></a>Další kroky
 
-Shromažďovat protokoly, které vám pomůžou při řešení problémů s clustery pomocí [AKS Periscope](https://aka.ms/aksperiscope).
+* Shromažďovat protokoly, které vám pomůžou při řešení problémů s clustery pomocí [AKS Periscope](https://aka.ms/aksperiscope).
 
-Přečtěte si [část postupy třídění](/azure/architecture/operator-guides/aks/aks-triage-practices) v provozní příručce AKS Day-2.
+* Přečtěte si [část postupy třídění](/azure/architecture/operator-guides/aks/aks-triage-practices) v provozní příručce AKS Day-2.
 
-Vystavte své dotazy nebo připomínky na webu [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) přidáním "[diag]" v názvu.
+* Vystavte své dotazy nebo připomínky na webu [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) přidáním "[diag]" v názvu.

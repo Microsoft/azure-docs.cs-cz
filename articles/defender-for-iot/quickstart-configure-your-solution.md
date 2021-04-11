@@ -3,12 +3,12 @@ title: 'Rychlý Start: Přidání prostředků Azure do řešení IoT'
 description: V tomto rychlém startu se dozvíte, jak nakonfigurovat komplexní řešení IoT pomocí Azure Defenderu pro IoT.
 ms.topic: quickstart
 ms.date: 01/25/2021
-ms.openlocfilehash: 1bde15919f9fa69bb9f9de7459895a70e9b74f71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a90e8c3007f7b3448fd3f1b6e4fa46ba861081b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781020"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384576"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Rychlý Start: konfigurace řešení Azure Defender pro IoT
 
@@ -16,7 +16,7 @@ Tento článek poskytuje vysvětlení, jak provést počáteční konfiguraci ř
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+- Žádné
 
 ## <a name="what-is-defender-for-iot"></a>Co je Defender pro IoT?
 

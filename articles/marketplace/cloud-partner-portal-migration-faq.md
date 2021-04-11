@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613608"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106866"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -24,7 +24,7 @@ Můžete pokračovat v podnikání v partnerském centru:
 
 | Plošný | Změny |
 | --- | --- |
-| Účet | Není potřeba vytvořit nový účet partnerského centra. pomocí svých stávajících přihlašovacích údajů portál partnerů cloudu můžete přihlašovat se k partnerskému centru, kde teď budete spravovat svůj účet, uživatele, oprávnění a fakturaci. Informace o smlouvě o publikování a profilu společnosti se migrují na nový účet partnerského centra spolu s případnými informacemi o profilu výběr, uživatelskými účty a oprávněními a aktivními nabídkami. Další informace najdete v [centru pro správu účtu komerčního tržiště v partnerském centru](partner-center-portal/manage-account.md). |
+| Účet | Není potřeba vytvořit nový účet partnerského centra. pomocí svých stávajících přihlašovacích údajů portál partnerů cloudu můžete přihlašovat se k partnerskému centru, kde teď budete spravovat svůj účet, uživatele, oprávnění a fakturaci. Informace o smlouvě o publikování a profilu společnosti se migrují na nový účet partnerského centra spolu s případnými informacemi o profilu výběr, uživatelskými účty a oprávněními a aktivními nabídkami. Další informace najdete v [centru pro správu účtu komerčního tržiště v partnerském centru](manage-account.md). |
 | Nabídka prostředí pro publikování a poskytování nabídek | Přesunuli jsme vaše data nabídky z portál partnerů cloudu do partnerského centra. Teď budete mít přístup k Vašim nabídkám v partnerském centru, které nabízí vylepšené uživatelské prostředí a intuitivní rozhraní. Přečtěte si, jak [aktualizovat existující nabídku na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md). |
 | Dostupnost nabídek na komerčním webu Marketplace | Žádné změny. Pokud je vaše nabídka živá na komerčním webu Marketplace, bude i nadále živá. |
 | Nové nákupy a nasazení | Žádné změny. Vaši zákazníci můžou dál kupovat a nasazovat vaše nabídky bez přerušení. |

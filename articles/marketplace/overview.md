@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780310"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103400"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Co je komerční marketplace Microsoftu?
 
@@ -82,5 +82,5 @@ Další informace o těchto výhodách najdete v tématu [výhody komerčního t
 ## <a name="next-steps"></a>Další kroky
 
 - Získejte [Úvod do komerčního tržiště Microsoftu](/learn/modules/intro-commercial-marketplace/) na Microsoft Learn.
-- Noví partneři Microsoftu, kteří mají zájem o publikování na komerční tržišti, najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](partner-center-portal/create-account.md).
+- Noví partneři Microsoftu, kteří mají zájem o publikování na komerční tržišti, najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](create-account.md).
 - Pokud se chcete dozvědět víc o nejnovějších a budoucích vydáních, připojte se ke konverzaci v [komunitě partnerů Microsoftu](https://www.microsoftpartnercommunity.com/).
