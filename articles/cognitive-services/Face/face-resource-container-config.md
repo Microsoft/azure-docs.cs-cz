@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80878421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934032"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Docker obličeje
 
@@ -67,7 +67,7 @@ Konfigurační nastavení v `CloudAI` oddílu poskytují možnosti specifické p
 
 ### <a name="storage-scenario-settings"></a>Nastavení scénáře úložiště
 
-Kontejner obličeje ukládá data objektů blob, cache, metadata a Queue v závislosti na tom, co se ukládá. Například školicí indexy a výsledky pro velkou skupinu osob jsou uloženy jako data objektů BLOB. Kontejner obličeje nabízí dva různé scénáře úložiště při interakci s těmito typy dat a jejich ukládání:
+Kontejner obličeje ukládá data objektů blob, cache, metadata a Queue v závislosti na tom, co se ukládá. Například školení indexů a výsledků pro **LargePersonGroup** jsou ukládána jako data objektů BLOB. Kontejner obličeje nabízí dva různé scénáře úložiště při interakci s těmito typy dat a jejich ukládání:
 
 * Memory (Paměť)  
   Všechny čtyři typy dat jsou uloženy v paměti. Nejsou distribuované, ani trvalé. Pokud je kontejner obličeje zastavený nebo odebraný, všechna data v úložišti tohoto kontejneru se zničí.  

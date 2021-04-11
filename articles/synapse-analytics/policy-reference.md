@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro Azure synapse Analytics. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d159da4bd624bec656c06708bd0d1394be364662
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 90542301b73395335fdb82382403800aa739f88f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105037019"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094359"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure Policy předdefinované definice pro Azure synapse Analytics 
 

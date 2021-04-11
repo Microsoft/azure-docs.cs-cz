@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871669"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
@@ -19,7 +19,7 @@ Tento článek popisuje prostředky, které jsou k dispozici při nasazení clus
 
 Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzlů. Každý typ uzlu hraje roli v provozu systému. Následující tabulka shrnuje tyto typy uzlů a jejich role v clusteru.
 
-| Typ | Popis |
+| Typ | Description |
 | --- | --- |
 | Hlavní uzel |  Pro všechny typy clusterů kromě Apache Storm hlavní uzly hostují procesy, které spravují provádění distribuované aplikace. Hlavní uzel je také uzel, do kterého můžete přihlédnout a spouštět aplikace, které jsou potom koordinovány pro spouštění v rámci prostředků clusteru. Počet hlavních uzlů je pevně stanoven dvakrát pro všechny typy clusterů. |
 | Uzel ZooKeeper | Zookeeper koordinuje úlohy mezi uzly, které provádí zpracování dat. Má také volbu vedoucího hlavního uzlu a sleduje, který hlavní uzel spouští určitou hlavní službu. Počet uzlů ZooKeeper je pevně stanoven na tři. |

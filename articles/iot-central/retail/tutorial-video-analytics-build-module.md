@@ -9,10 +9,10 @@ ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
 ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101721459"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Kurz: úpravy a sestavení modulů pro bránu pro video Analytics v reálném čase
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak upravit kód modulu IoT Edge pro moduly LVA (Live
 
 V předchozích kurzech se používají předem připravené image modulů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto kurzu budete potřebovat:
 

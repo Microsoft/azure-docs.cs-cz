@@ -12,10 +12,10 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103491549"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>Migrace webového rozhraní API založeného na OWIN do b2clogin.com nebo vlastní domény
@@ -26,7 +26,7 @@ Přidáním podpory do svého rozhraní API pro příjem tokenů vydaných b2clo
 
 V následujících částech najdete příklad povolení více vystavitelů ve webovém rozhraní API, které používá součásti middlewaru [Microsoft Owin][katana] (Katana). I když jsou příklady kódu specifické pro middleware Microsoft OWIN, měla by být obecná technika platná pro jiné knihovny OWIN.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující Azure AD B2C prostředky:
 

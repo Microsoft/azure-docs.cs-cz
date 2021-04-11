@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.openlocfilehash: 6db1b6b17f1ed2c21588cb23880c89a49cf835ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101094802"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Kurz: migrace SQL Server do spravované instance Azure SQL do offline režimu pomocí DMS
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje offline migraci z SQL Server do spravované instance SQL. Online migrace najdete v článku [migrace SQL Server do spravované instance SQL online pomocí DMS](tutorial-sql-server-managed-instance-online.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

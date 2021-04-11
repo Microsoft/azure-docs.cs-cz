@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0dd5cf5209924972080af6d22429252338754de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491244"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167290"
 ---
 # <a name="create-modular-runbooks"></a>Vytváření modulárních runbooků
 
@@ -56,15 +56,15 @@ Když vaše sada Runbook zavolá podřízenou sadu Runbook pracovního postupu P
 Následující příklad spustí test podřízeného Runbooku, který přijímá složitý objekt, celočíselnou hodnotu a logickou hodnotu. Výstup podřízeného Runbooku je přiřazený k proměnné. V tomto případě je podřízená sada Runbook pracovní postup PowerShellu.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = PSWF-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 Toto je stejný příklad jako podřízená rutina PowerShellového Runbooku.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 ## <a name="start-a-child-runbook-using-a-cmdlet"></a>Spuštění podřízeného Runbooku pomocí rutiny
@@ -84,7 +84,7 @@ Parametry pro podřízený Runbook spuštěný pomocí rutiny jsou k dispozici j
 
 Kontext předplatného může být ztracen při spouštění podřízených runbooků jako samostatných úloh. Aby mohla podřízená sada Runbook spustit příkaz AZ Module rutiny proti konkrétnímu předplatnému Azure, musí se podřízená položka ověřit pro toto předplatné nezávisle na nadřazeném Runbooku.
 
-Pokud úlohy v rámci stejného účtu Automation pracují s více než jedním předplatným, může výběr předplatného v jedné úloze změnit aktuálně vybraný kontext předplatného pro jiné úlohy. Chcete-li se této situaci vyhnout, použijte `Disable-AzContextAutosave –Scope Process` na začátku každé sady Runbook. Tato akce uloží pouze kontext do tohoto spuštění sady Runbook.
+Pokud úlohy v rámci stejného účtu Automation pracují s více než jedním předplatným, může výběr předplatného v jedné úloze změnit aktuálně vybraný kontext předplatného pro jiné úlohy. Chcete-li se této situaci vyhnout, použijte `Disable-AzContextAutosave -Scope Process` na začátku každé sady Runbook. Tato akce uloží pouze kontext do tohoto spuštění sady Runbook.
 
 ### <a name="example"></a>Příklad
 
@@ -92,7 +92,7 @@ Následující příklad spustí podřízený Runbook s parametry a poté počk�
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
@@ -108,11 +108,11 @@ $AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.Subscr
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
 Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
+    -AutomationAccountName 'MyAutomationAccount' `
+    -Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
     -AzContext $AzureContext `
-    –Parameters $params –Wait
+    -Parameters $params -Wait
 ```
 
 ## <a name="next-steps"></a>Další kroky

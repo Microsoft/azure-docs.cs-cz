@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
 ms.openlocfilehash: 8b450ddff0952777652a957ba2ed554a4bc6497d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104584818"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>Rychlý Start: vytvoření mezipaměti Redis Enterprise
@@ -20,7 +20,7 @@ Azure cache pro podnikové úrovně Redis poskytuje plně integrovaný a spravov
 * Enterprise, který používá pro ukládání dat nestálou paměť (DRAM) na virtuálním počítači
 * Enterprise Flash, který pro ukládání dat používá nestálou i nestálou paměť (NVMe nebo SSD).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte [účet](https://azure.microsoft.com/). Další informace najdete v tématu [zvláštní požadavky na podnikové úrovně](cache-overview.md#special-considerations-for-enterprise-tiers).
 

@@ -4,10 +4,10 @@ description: Přečtěte si, jak nakonfigurovat Defender pro agenty zabezpečen�
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: 5ac9a5cdb4cc13ed91c0e5e29447b9cdbe71bcce
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784403"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: konfigurace agentů zabezpečení
@@ -107,7 +107,7 @@ Následující tabulka obsahuje ovladatelné vlastnosti programu Defender pro ag
 
 Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://aka.ms/iot-security-module-default).
 
-| Name| Status | Platné hodnoty| Výchozí hodnoty| Popis |
+| Name| Status | Platné hodnoty| Výchozí hodnoty| Description |
 |----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Požadováno: false |Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |lowPriorityMessageFrequency |Požadováno: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před odesláním zpráv s nízkou prioritou.|

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: rogarana
 ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103472140"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
@@ -42,7 +42,7 @@ Abychom vám pomohli nastavit ověřování Azure Files AD pro některé běžn�
 | [![Záznam dění na záznamovém zařízení s výměnou místních souborových serverů – kliknutím si můžete přehrát.](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![Záznam dění na záznamovém okně s použitím souborů Azure jako videa kontejneru profilu – kliknutím si ho můžete přehrát.](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte se, že jste dokončili následující požadavky: 
 

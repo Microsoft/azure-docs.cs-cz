@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: fb57992c8e26560061faf68443c4993801f9713d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871567"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
 V tomto dokumentu se naučíte základy správy a monitorování [Apache Stormch](https://storm.apache.org/) topologií běžících na clusterech HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
@@ -169,7 +169,7 @@ Uživatelské rozhraní funkce pro zaplavení poskytuje webové rozhraní pro pr
 
 Hlavní stránka uživatelského rozhraní pro zaplavení poskytuje následující informace:
 
-| Sekce | Popis |
+| Sekce | Description |
 | --- | --- |
 | Souhrn clusteru| Základní informace o clusteru zaplavení. |
 | Nimbus souhrn | Seznam základních informací Nimbus. |
@@ -185,7 +185,7 @@ Hlavní stránka uživatelského rozhraní se bude podobat této webové stránc
 
 Výběrem odkazu v části **Souhrn topologie** se zobrazí následující informace o topologii:
 
-| Sekce | Popis |
+| Sekce | Description |
 | --- | --- |
 | Souhrn topologie | Základní informace o topologii. |
 | Akce topologie| Akce správy, které lze provést pro topologii. Dostupné akce jsou popsány dále v této části. |
@@ -202,7 +202,7 @@ Stránka Souhrn topologie s více podsítěmi vypadá podobně jako tato webová
 
 V části **Akce topologie** můžete vybrat následující tlačítka k provedení akce:
 
-| Tlačítko | Popis |
+| Tlačítko | Description |
 | --- | --- |
 | Aktivovat | Obnoví zpracování deaktivované topologie. |
 | Deaktivovat | Pozastaví běžící topologii. |
@@ -216,7 +216,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 
 Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující informace o vybrané položce:
 
-| Sekce | Popis |
+| Sekce | Description |
 | --- | --- |
 | Souhrn komponenty | Základní informace o Spout nebo šroubu |
 | Akce komponenty | **Ladění** a **zastavování tlačítek ladění** . |
@@ -246,7 +246,7 @@ Základní identifikátor URI pro REST API v clusterech HDInsight se systémem L
 
 Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru můžete najít několika způsoby:
 
-| Metoda zjišťování plně kvalifikovaného názvu domény | Popis |
+| Metoda zjišťování plně kvalifikovaného názvu domény | Description |
 | --- | --- |
 | Relace SSH | Použijte příkaz `headnode -f` z relace SSH do clusteru. |
 | Ambari Web | Na webové stránce clusteru Ambari ( `https://CLUSTERNAME.azurehdinsight.net` ) vyberte **služby** v horní části stránky a pak vyberte možnost přestránkovat . Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |

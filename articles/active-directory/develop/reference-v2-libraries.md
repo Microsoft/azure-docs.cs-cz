@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 590e57d587c8e6e254811892b5c5e740b511c302
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 321a5c473df30dd6f00bbcd1294d48ce8da34009
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104690649"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060376"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Knihovny ověřování platformy Microsoft identity
 
@@ -29,7 +29,7 @@ Pokud se rozhodnete ručně nastavit vlastní implementaci [OAuth 2,0 nebo OpenI
 
 ## <a name="single-page-application-spa"></a>Jednostránkové aplikace (SPA)
 
-Jednostránkové aplikace běží zcela na ploše prohlížeče a načítá data stránek (HTML, CSS a JavaScript) dynamicky nebo v době načítání aplikace. Může volat webová rozhraní API pro interakci s back-end zdroji dat.
+Jednostránkové aplikace běží zcela v prohlížeči a načítá data stránek (HTML, CSS a JavaScript) dynamicky nebo v době načítání aplikace. Může volat webová rozhraní API pro interakci s back-end zdroji dat.
 
 Vzhledem k tomu, že se kód SPA spouští zcela v prohlížeči, považuje se za *veřejného klienta* , který nedokáže bezpečně ukládat tajné klíče.
 
@@ -45,7 +45,7 @@ Vzhledem k tomu, že kód webové aplikace běží na webovém serveru, je pova�
 
 ## <a name="desktop-application"></a>Desktopová aplikace
 
-Aplikace klasické pracovní plochy je obvykle binární (zkompilovaný) kód, který je v uživatelském rozhraní, a je určen ke spuštění na ploše uživatele.
+Aplikace klasické pracovní plochy je obvykle binární (zkompilovaný) kód, který zobrazuje uživatelské rozhraní a je určen ke spuštění na ploše uživatele.
 
 Vzhledem k tomu, že se desktopová aplikace spouští na ploše uživatele, považuje se za *veřejného klienta* , který nedokáže bezpečně ukládat tajné klíče.
 
@@ -53,7 +53,7 @@ Vzhledem k tomu, že se desktopová aplikace spouští na ploše uživatele, pov
 
 ## <a name="mobile-application"></a>Mobilní aplikace
 
-Mobilní aplikace je obvykle binární (zkompilovaný) kód, který je na uživatelském rozhraní a je určen ke spuštění na mobilním zařízení uživatele.
+Mobilní aplikace je obvykle binární (zkompilovaný) kód, který zobrazuje uživatelské rozhraní a je určen ke spuštění na mobilním zařízení uživatele.
 
 Vzhledem k tomu, že mobilní aplikace běží na mobilním zařízení uživatele, je považována za *veřejného klienta* , který nedokáže bezpečně ukládat tajné klíče.
 

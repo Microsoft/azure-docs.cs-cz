@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 292c82624103fc2eae46d8aecb5e85b2181e7938
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3192c3ee8458623f3724da5f875cc09032a42bf
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463047"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219412"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Pomocí Azure Notebooks můžete vyvinout modul Machine Learning a nasadit ho do zařízení se systémem Linux se spuštěným Azure IoT Edge.
+Pomocí Azure Notebooks můžete vyvinout modul Machine Learning a nasadit ho do zařízení s Azure IoT Edge s kontejnery Linux.
 Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure Machine Learning v IoT Edge najdete v [dokumentaci Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
 
 >[!NOTE]

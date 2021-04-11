@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461735"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219446"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Kurz: vývoj modulu IoT Edge C# pomocí kontejnerů Linux
 
@@ -52,7 +52,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí a vývoj [modulu IoT Edge pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu už byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
+* Zařízení se systémem Azure IoT Edge s kontejnery Linux. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.

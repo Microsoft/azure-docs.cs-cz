@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af149f0c1db7f354be6bd968bbd0cf858493d4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522287"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219293"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Oracle PeopleSoft spouštěných místně-Protected pomocí programu F5 BIG-IP APM
 
@@ -41,18 +41,18 @@ Chcete-li začít, potřebujete následující položky:
     3. F5 licence na™ (APM) pro správce zásad pro Big-IP Access v existující® místní Traffic Manager™ (LTM).
     4. Kromě výše uvedených licencí může být systém F5 také licencován: 
         * Adresa URL pro filtrování předplatného pro použití databáze kategorií URL 
-        * Předplatné funkce F5 IP Intelligence pro detekci a blokování známých útočníci a škodlivých přenosů 
-        * Modul hardwarového zabezpečení (HSM), který chrání a spravuje digitální klíče pro silné ověřování
-1. Systém F5 BIG-IP System je zřízený s moduly APM (LTM je volitelné). 
+        * Předplatné funkce F5 IP Intelligence pro detekci a blokování známých útočníci a škodlivých přenosů. 
+        * Modul hardwarového zabezpečení (HSM), který chrání a spravuje digitální klíče pro silné ověřování.
+1. Systém F5 BIG-IP System je zřízený s moduly APM (LTM je volitelné).
 1. I když je volitelná, důrazně doporučujeme nasadit systémy F5 do [skupiny zařízení Sync/převzetí služeb při selhání](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), která zahrnuje aktivní pohotovostní režim s plovoucí IP adresou pro vysokou dostupnost (ha). Další redundanci rozhraní je možné dosáhnout pomocí LACP (Link Aggregator Control Protocol). LACP spravuje připojená fyzická rozhraní jako jedno virtuální rozhraní (agregovanou skupinu) a detekuje selhání rozhraní v rámci skupiny.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Oracle PeopleSoft spouštěných místně-Protected pomocí serveru F5 BIG-IP APM podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
+* Oracle PeopleSoft spouštěných místně-Protected pomocí protokolu F5 BIG-IP APM podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
-## <a name="adding-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Přidání nástroje Oracle PeopleSoft spouštěných místně-Protected pomocí programu F5 BIG-IP APM z Galerie
+## <a name="add-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Přidat Oracle PeopleSoft spouštěných místně-Protected pomocí programu F5 BIG-IP APM z Galerie
 
 Pokud chcete nakonfigurovat integraci Oracle PeopleSoft spouštěných místně-Protected pomocí programu F5 BIG-IP APM do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat rozhraní Oracle PeopleSoft spouštěných místně, které je chráněno pomocí programu F5 BIG-IP APM z galerie.
 
@@ -83,7 +83,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce pro integraci aplikace PeopleSoft spouštěných místně, která je **chráněná pomocí F5 Big-IP APM** , najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -231,7 +231,7 @@ Přejděte na **místní provoz > profily > SSL > klient > +**, vyplňte násled
 >[!Note]
 > Odkaz https://docs.oracle.com/cd/E12530_01/oam.1014/e10356/people.htm
 
-1. Přihlášení ke konzole PeopleSoft spouštěných místně `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start` pomocí přihlašovacích údajů správce (příklad: PS/PS)
+1. Přihlaste se ke konzole PeopleSoft spouštěných místně `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start` pomocí přihlašovacích údajů správce (příklad: PS/PS).
 
     ![Správce – samostatné služby](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-console.png)
 
@@ -302,7 +302,7 @@ Pokud chcete přidat podporu jednotného odhlašování pro všechny uživatele 
 
     * Přejděte na **místní provoz > virtuální servery > seznam virtuálních serverů > PeopleSoftApp > prostředky**. Klikněte na **Spravovat...** tlačítko   
 
-    * Zadejte `<Name>` jako povolené iRule a klikněte na **Hotovo** .
+    * Zadejte `<Name>` jako povolené iRule a klikněte na **Hotovo**.
 
         ![_iRule_PeopleSoftApp ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/irule-people-soft.png)
 
@@ -329,9 +329,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k Oracle PeopleSoft-Protected pomocí programu F5 Big-IP APM, pro který jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici PeopleSoft-Protected Oracle pomocí programu F5 BIG-IP APM, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud jste nakonfigurovali v režimu IDP, měli byste se automaticky přihlásit k Oracle PeopleSoft-Protected pomocí funkce F5 BIG-IP APM, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
-
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když na stránce Moje aplikace kliknete na dlaždici PeopleSoft-Protected Oracle pomocí programu F5 BIG-IP, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud jste nakonfigurovali v režimu IDP, měli byste se automaticky přihlásit k Oracle PeopleSoft-Protected pomocí programu F5 BIG-IP APM, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete Oracle PeopleSoft spouštěných místně-Protected pomocí funkce APM BIG-IP APM, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete Oracle PeopleSoft-Protected nástrojem F5 BIG-IP APM, můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

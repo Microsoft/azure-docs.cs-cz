@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ef8e3a2e733247f713fe0240cb8ef6069803fcb7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103013937"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions s využitím Media Services
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, kter�
 
 Pokud chcete prozkoumat a nasadit existující Azure Functions, které používají Azure Media Services, podívejte se na [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají Media Services k zobrazení pracovních postupů souvisejících s ingestování obsahu přímo z úložiště objektů blob, kódování a zápisu obsahu zpátky do úložiště objektů BLOB. Obsahuje taky příklady monitorování oznámení úloh prostřednictvím webhooků a front Azure. Můžete také vyvíjet své funkce na základě příkladů v úložišti [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) . Pokud chcete tyto funkce nasadit, klikněte na tlačítko **nasadit do Azure** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Je nutné, abyste před vytvořením první funkce měli aktivní účet Azure. Pokud ještě nemáte účet Azure, [můžete použít bezplatné účty](https://azure.microsoft.com/free/).
 - Pokud budete vytvářet Azure Functions, které provádějí akce v účtu Azure Media Services (AMS) nebo naslouchat událostem odesílaným Media Services, měli byste vytvořit účet AMS, jak je popsáno [zde](media-services-portal-create-account.md).

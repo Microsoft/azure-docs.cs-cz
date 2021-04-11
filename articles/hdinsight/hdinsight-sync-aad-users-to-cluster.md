@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: 2a753a33e9ddf16cc277ab10c1f91049a6382066
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871941"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory do clusteru HDInsight
 
 [Clustery HDInsight s balíček zabezpečení podniku (ESP)](./domain-joined/hdinsight-security-overview.md) můžou používat silné ověřování s uživateli služby Azure Active Directory (Azure AD) a také používat zásady *řízení přístupu na základě rolí Azure (Azure RBAC)* . Při přidávání uživatelů a skupin do služby Azure AD můžete synchronizovat uživatele, kteří potřebují přístup ke clusteru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud jste to ještě neudělali, [vytvořte cluster HDInsight s balíček zabezpečení podniku](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 

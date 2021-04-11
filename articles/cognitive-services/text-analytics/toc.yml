@@ -5,10 +5,38 @@
   items:
     - name: Co je rozhraní API pro analýzu textu?
       href: overview.md
-    - name: Ukázkové uživatelské scénáře
-      href: text-analytics-user-scenarios.md
-    - name: Co je nového
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: Novinky
       href: whats-new.md
+    - name: Nejčastější dotazy k Analýza textu
+      href: text-analytics-resource-faq.md
+- name: Rychlý Start Analýza textu
+  href: quickstarts/client-libraries-rest-api.md
+- name: ukázky
+  items:
+    - name: v3.0
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.0.0/sdk/textanalytics/ai-text-analytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples'
+    - name: v 3.1 – Preview
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples'
 - name: Zodpovědné využití AI
   items:
     - name: Poznámky k transparentnosti
@@ -28,11 +56,50 @@
     - name: Integrace a zodpovědné využití
       href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
       displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
-- name: Rychlé starty
-  expanded: true
+- name: Návody
   items:
-    - name: Použití klientských knihoven a rozhraní REST API
-      href: quickstarts/client-libraries-rest-api.md
+    - name: Volání rozhraní Text Analytics API
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: Rozpoznávání jazyka
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: Analýza zabarvení a dolování názorů
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: Extrakce klíčových frází
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: Rozpoznávání pojmenovaných entit a PII
+      href: How-tos/text-analytics-how-to-entity-linking.md
+      displayName: 'NER, Named entity recognition, PII, redaction'
+    - name: Analýza textu pro zdravotnictví
+      href: How-tos/text-analytics-for-health.md
+    - name: Nasazení Analýza textu
+      items:
+        - name: Kontejnery
+          items:
+            - name: Instalace a spuštění kontejnerů
+              href: how-tos/text-analytics-how-to-install-containers.md
+            - name: Konfigurace kontejnerů
+              href: text-analytics-resource-container-config.md
+            - name: Použití instancí kontejneru
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+            - name: Použití služby Kubernetes (AKS)
+              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+            - name: Dokumentace ke kontejnerům Cognitive Services
+              href: ../containers/index.yml
+    - name: Migrace na verzi 3 rozhraní API
+      href: migration-guide.md
+- name: Koncepty
+  items:
+    - name: Ukázkové uživatelské scénáře
+      href: text-analytics-user-scenarios.md
+    - name: Typy pojmenovaných entit
+      href: named-entity-types.md
+    - name: Kódování Unicode a posuny textu
+      href: concepts/text-offsets.md
+    - name: Omezení dat
+      href: concepts/data-limits.md
+    - name: Správa verzí modelů
+      href: concepts/model-versioning.md
 - name: Kurzy
   items:
     - name: Integrace Power BI pro analýzu zpětné vazby od zákazníků
@@ -47,53 +114,8 @@
       href: ../translator/tutorial-build-flask-app-translation-synthesis.md
     - name: Extrakce informací v Excelu s využitím Power Automate
       href: tutorials/extract-excel-information.md
-- name: Koncepty
+- name: Reference
   items:
-    - name: Typy pojmenovaných entit
-      href: named-entity-types.md
-    - name: Podpora jazyků
-      href: language-support.md
-    - name: Posuny textu
-      href: concepts/text-offsets.md
-    - name: Omezení dat
-      href: concepts/data-limits.md
-    - name: Správa verzí modelů
-      href: concepts/model-versioning.md
-- name: Návody
-  items:
-    - name: Volání rozhraní Text Analytics API
-      href: How-tos/text-analytics-how-to-call-api.md
-    - name: Rozpoznávání jazyka
-      href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Analýza zabarvení a dolování názorů
-      href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Extrakce klíčových frází
-      href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Rozpoznávání pojmenovaných entit
-      href: How-tos/text-analytics-how-to-entity-linking.md
-    - name: Analýza textu pro zdravotnictví
-      href: How-tos/text-analytics-for-health.md
-    - name: Použití kontejnerů
-      items:
-        - name: Instalace a spuštění kontejnerů
-          href: how-tos/text-analytics-how-to-install-containers.md
-        - name: Konfigurace kontejnerů
-          href: text-analytics-resource-container-config.md
-        - name: Použití instancí kontejneru
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Použití služby Kubernetes (AKS)
-          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-        - name: Dokumentace ke kontejnerům Cognitive Services
-          href: ../containers/index.yml
-    - name: Migrace na verzi 3 rozhraní API
-      href: migration-guide.md
-- name: Referenční informace
-  items:
-    - name: Referenční informace k rozhraní příkazového řádku
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: PowerShell – reference
-      href: /powershell/module/azurerm.cognitiveservices/
     - name: Rozhraní Text Analytics API
       items:
         - name: v3.1.preview.3
@@ -104,6 +126,16 @@
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1'
     - name: Sady SDK
       items:
+        - name: v 3.1 – Preview
+          items:
+            - name: .NET
+              href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview
+            - name: Python
+              href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview
+            - name: Java
+              href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview
+            - name: Node.js
+              href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview
         - name: v3.0
           items:
             - name: .NET
@@ -126,16 +158,16 @@
               href: /javascript/api/@azure/cognitiveservices-textanalytics/
             - name: Go
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
+    - name: Referenční informace k rozhraní příkazového řádku
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell – reference
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: Externí obsah a obsah komunity
       href: text-analytics-resource-external-community.md
-    - name: Nejčastější dotazy
-      href: text-analytics-resource-faq.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Dodržování předpisů

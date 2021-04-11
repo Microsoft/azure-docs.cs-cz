@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508738"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219259"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Kurz: předpoklady pro vytváření skupin dostupnosti v SQL Server v Azure Virtual Machines
 
@@ -69,11 +69,11 @@ Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](
 
 Azure vytvoří skupinu prostředků a PIN zástupce pro skupinu prostředků na portálu.
 
-## <a name="create-the-network-and-subnets"></a>Vytvoření sítě a podsítí
+## <a name="create-the-network-and-subnet"></a>Vytvoření sítě a podsítě
 
-V dalším kroku vytvoříte sítě a podsítě ve skupině prostředků Azure.
+Dalším krokem je vytvoření sítě a podsítě ve skupině prostředků Azure.
 
-Řešení používá jednu virtuální síť se dvěma podsítěmi. [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md) poskytuje další informace o sítích v Azure.
+Řešení používá jednu virtuální síť a jednu podsíť. [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md) poskytuje další informace o sítích v Azure.
 
 Vytvoření virtuální sítě v Azure Portal:
 
@@ -100,48 +100,13 @@ Vytvoření virtuální sítě v Azure Portal:
 
    Rozsah adresního prostoru a rozsahu adres podsítě se může lišit od tabulky. V závislosti na vašem předplatném navrhne portál dostupný adresní prostor a odpovídající rozsah adres podsítě. Pokud není k dispozici žádný dostatek adresního prostoru, použijte jiné předplatné.
 
-   V příkladu se používá název podsítě **správce**. Tato podsíť je určena pro řadiče domény.
+   V příkladu se používá název podsítě **správce**. Tato podsíť je určena pro řadiče domény a SQL Server virtuální počítače.
 
 5. Vyberte **Vytvořit**.
 
    ![Konfigurace virtuální sítě](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
 Azure vás vrátí na řídicí panel portálu a upozorní vás, když se vytvoří nová síť.
-
-### <a name="create-a-second-subnet"></a>Vytvoření druhé podsítě
-
-Nová virtuální síť má jednu podsíť s názvem **admin**. Řadiče domény používají tuto podsíť. Virtuální počítače s SQL Server používají druhou podsíť s názvem **SQL**. Konfigurace této podsítě:
-
-1. Na řídicím panelu vyberte skupinu prostředků, kterou jste vytvořili, **SQL-ha-RG**. Vyhledejte síť ve skupině prostředků v části **prostředky**.
-
-    Pokud není **SQL-ha-RG** vidět, Najděte si ho tak, že vyberete **skupiny prostředků** a filtrování podle názvu skupiny prostředků.
-
-2. V seznamu prostředků vyberte **autoHAVNET** . 
-3. Ve virtuální síti **autoHAVNET** v části **Nastavení** vyberte **podsítě**.
-
-    Poznamenejte si podsíť, kterou jste už vytvořili.
-
-   ![Poznamenejte si podsíť, kterou jste už vytvořili.](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
-
-5. Druhou podsíť vytvoříte tak, že vyberete **+ podsíť**.
-6. V části **Přidat podsíť** nakonfigurujte podsíť zadáním **sqlsubnet** pod **názvem**. Azure automaticky určí platný **Rozsah adres**. Ověřte, zda je v tomto rozsahu adres alespoň 10 adres. V produkčním prostředí můžete potřebovat víc adres.
-7. Vyberte **OK**.
-
-    ![Konfigurace podsítě](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
-
-Následující tabulka shrnuje nastavení konfigurace sítě:
-
-| **Pole** | Hodnota |
-| --- | --- |
-| **Název** |**autoHAVNET** |
-| **Adresní prostor** |Tato hodnota závisí na dostupných adresních prostorech v rámci vašeho předplatného. Typická hodnota je 10.0.0.0/16. |
-| **Název podsítě** |**správce** |
-| **Rozsah adres podsítě** |Tato hodnota závisí na dostupných rozsahech adres v rámci vašeho předplatného. Typická hodnota je 10.0.0.0/24. |
-| **Název podsítě** |**sqlsubnet** |
-| **Rozsah adres podsítě** |Tato hodnota závisí na dostupných rozsahech adres v rámci vašeho předplatného. Typickou hodnotou je 10.0.1.0/24. |
-| **Předplatné** |Zadejte předplatné, které chcete použít. |
-| **Skupina prostředků** |**SQL-HA – RG** |
-| **Umístění** |Zadejte stejné umístění, které jste zvolili pro skupinu prostředků. |
 
 ## <a name="create-availability-sets"></a>Vytvoření skupin dostupnosti
 
@@ -164,7 +129,7 @@ Po vytvoření skupin dostupnosti se vraťte do skupiny prostředků v Azure Por
 
 ## <a name="create-domain-controllers"></a>Vytvoření řadičů domény
 
-Po vytvoření sítě, podsítí a skupin dostupnosti jste připraveni vytvořit virtuální počítače pro řadiče domény.
+Po vytvoření sítě, podsítě a skupin dostupnosti jste připraveni vytvořit virtuální počítače pro řadiče domény.
 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Vytváření virtuálních počítačů pro řadiče domény
 

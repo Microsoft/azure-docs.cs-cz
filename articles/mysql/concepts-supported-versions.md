@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 314462517ba4e63694266b5e49231cb8536f3635
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: d84f56e5ae0f3c364a0fd3a08ccb173d7c65a5e2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105604718"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121757"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované verze serveru Azure Database for MySQL
 
@@ -33,7 +33,7 @@ V Azure Database for MySQL služba naslouchá uzly brány na portu 3308 pro klie
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL aktuálně podporuje následující hlavní a dílčí verze MySQL:
 
 
-| Verze | Jeden server <br/> Aktuální dílčí verze |Flexibilní server (Preview) <br/> Aktuální dílčí verze  |
+| Verze | [Jeden server](overview.md) <br/> Aktuální dílčí verze |[Flexibilní server (Preview)](/../flexible-server/overview.md) <br/> Aktuální dílčí verze  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL verze 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (vyřazeno) | Nepodporováno|
 |MySQL verze 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

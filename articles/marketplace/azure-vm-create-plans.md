@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956250"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219361"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Vytvoření plánů pro nabídku virtuálního počítače
 
@@ -154,7 +154,9 @@ Pro předplatná Azure vytvořená prostřednictvím prodejce programu Cloud Sol
 
 Pokud má být váš virtuální počítač používán pouze nepřímo, pokud je odkazován prostřednictvím jiné šablony řešení nebo spravované aplikace, zaškrtněte toto políčko pro publikování virtuálního počítače, ale jeho skrytí od zákazníků, kteří si ho můžou vyhledat nebo procházet přímo.
 
-Skryté plány nepodporují odkazy ve verzi Preview.
+Každý zákazník Azure může tuto nabídku nasadit pomocí PowerShellu nebo rozhraní příkazového řádku.  Pokud chcete, aby byla tato nabídka k dispozici omezené sadě zákazníků, nastavte plán na **Private**. 
+
+Skryté plány negenerují odkazy ve verzi Preview. Můžete je však otestovat pomocí [následujících kroků](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image). 
 
 Před pokračováním na další kartu v nabídce plán v levém navigačním podokně vyberte **Uložit koncept** . 
 

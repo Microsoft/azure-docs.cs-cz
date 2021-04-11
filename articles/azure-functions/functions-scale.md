@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728619"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions možností hostování
 
@@ -28,7 +28,7 @@ Tento článek poskytuje podrobné porovnání různých plánů hostování spo
 
 Následuje souhrn výhod tří hlavních plánů hostování pro funkce:
 
-| | |
+| Plánování | Výhody |
 | --- | --- |  
 |**[Plán Consumption](consumption-plan.md)**| Automatické škálování a Plaťte jenom za výpočetní prostředky, když jsou vaše funkce spuštěné.<br/><br/>V plánu spotřeby se instance hostitele Functions dynamicky přidávají a odstraňují na základě počtu příchozích událostí.<br/><br/> ✔ Výchozí plán hostování.<br/>Plaťte ✔ jenom v případě, že jsou vaše funkce spuštěné.<br/>✔ Škáluje automaticky, a to i během období vysokého zatížení.|  
 |**[Plán Premium](functions-premium-plan.md)**|Automatické škálování na základě poptávky pomocí předem zadržených pracovních procesů, které spouštějí aplikace bez prodlevy po nečinnosti, běží na výkonnějších instancích a připojuje se k virtuálním sítím. <br/><br/>Vezměte v úvahu plán Azure Functions Premium v následujících situacích: <br/><br/>✔ Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.<br/>✔ Máte vysoký počet malých spuštění a vysoké vykonání vyúčtování, ale v plánu spotřeby je málo sekund.<br/>✔ Budete potřebovat více možností procesoru nebo paměti, než jaké poskytuje plán spotřeby.<br/>✔ Váš kód musí běžet delší dobu, než je maximální doba běhu povolená v plánu spotřeby.<br/>✔ Vyžadujete funkce, které nejsou dostupné v plánu spotřeby, jako je třeba připojení k virtuální síti.|  
@@ -36,7 +36,7 @@ Následuje souhrn výhod tří hlavních plánů hostování pro funkce:
 
 Srovnávací tabulky v tomto článku také obsahují následující možnosti hostování, které poskytují nejvyšší množství řízení a izolace, ve kterém se spouštějí aplikace Function App.  
 
-| | |
+| Možnost hostování | Podrobnosti |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | App Service Environment (pomocného mechanismu) je funkce App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění App Service aplikací ve velkém měřítku.<br/><br/>Služby ASE jsou vhodné pro úlohy aplikací, které vyžadují: <br/><br/>✔ Velmi vysokého měřítka.<br/>✔ Úplnou izolaci výpočtů a zabezpečení přístupu k síti.<br/>✔ Vysoké využití paměti.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes poskytuje plně izolované a vyhrazené prostředí běžící nad platformou Kubernetes.<br/><br/> Kubernetes je vhodný pro úlohy aplikací, které vyžadují: <br/>✔ Požadavky na vlastní hardware.<br/>✔ Izolaci a zabezpečení přístupu k síti.<br/>✔ Schopnost spouštět v hybridním nebo multi-cloudovém prostředí.<br/>✔ Běžet společně se stávajícími aplikacemi a službami Kubernetes.|  
@@ -65,7 +65,7 @@ Následující tabulka uvádí podporované operační systémy a podporu jazyko
 
 Následující tabulka porovnává chování různých plánů hostování.
 
-| | Horizontální navýšení kapacity | Maximální počet instancí |
+| Plánování | Horizontální navýšení kapacity | Maximální počet instancí |
 | --- | --- | --- |
 | **[Plán Consumption](consumption-plan.md)** | [Řízený událost](event-driven-scaling.md). Horizontální navýšení kapacity, a to i během období vysokého zatížení. Azure Functions infrastruktura škáluje prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí příchozích triggerů. | 200 |
 | **[Plán Premium](functions-premium-plan.md)** | [Řízený událost](event-driven-scaling.md). Horizontální navýšení kapacity, a to i během období vysokého zatížení. Azure Functions infrastruktura škáluje prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se spouští jeho funkce. |100|
@@ -77,7 +77,7 @@ Následující tabulka porovnává chování různých plánů hostování.
 
 ## <a name="cold-start-behavior"></a>Chování studeného startu
 
-|    |    | 
+| Plánování | Podrobnosti | 
 | -- | -- |
 | **[&nbsp;Plán spotřeby](consumption-plan.md)** | Aplikace se můžou při nečinnosti škálovat na nulu, což znamená, že některé požadavky můžou při spuštění mít další latenci.  Plán spotřeby má několik optimalizací, které vám pomůžou snižovat čas na studený start, včetně přijímání předem zatepléch zástupných funkcí, které už mají spuštěné hostitele funkcí a jazyka. |
 | **[Plán Premium](functions-premium-plan.md)** | Trvalé zahřívání instancí, aby nedocházelo k žádnému studenému startu. |
@@ -95,7 +95,7 @@ Následující tabulka porovnává chování různých plánů hostování.
 
 ## <a name="billing"></a>Fakturace
 
-| | | 
+| Plánování | Podrobnosti |
 | --- | --- |
 | **[Plán Consumption](consumption-plan.md)** | Platíte jenom za čas, kdy se vaše funkce spouštějí. Fakturace vychází z počtu spuštění, doby spuštění a použité paměti. |
 | **[Plán Premium](functions-premium-plan.md)** | Plán Premium je založený na počtu základních sekund a paměti využitých v případě potřeby a předem zahřívání instancí. Alespoň jedna instance v každém plánu musí být zachována v zahřívání. Tento plán poskytuje nejpředvídatelné ceny. |

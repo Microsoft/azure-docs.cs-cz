@@ -2,13 +2,13 @@
 title: Protokoly prostředků Azure Monitor podporují služby a kategorie.
 description: Referenční informace o Azure Monitorch pochopit podporované služby a schéma událostí pro protokoly prostředků Azure.
 ms.topic: reference
-ms.date: 01/29/2021
-ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033142"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166934"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -33,7 +33,8 @@ Následuje seznam typů protokolů, které jsou k dispozici pro každý typ pros
 Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Pokud se domníváte, že se vám nedaří prostředek, Prohlédněte si dokumentaci ke konkrétním prostředkům. Například kategorie Microsoft. SQL/servery/databáze nejsou k dispozici pro všechny typy databází. Další informace najdete v tématu [informace o protokolování diagnostiky SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu v dolní části tohoto článku.
-## <a name="microsoftaaddomainservices"></a>Microsoft. AAD/domainServices
+
+## <a name="microsoftaaddomainservices"></a>Microsoft. AAD/DomainServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
@@ -46,6 +47,13 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |PolicyChange|PolicyChange|No|
 |PrivilegeUse|PrivilegeUse|No|
 |SystemSecurity|SystemSecurity|No|
+
+
+## <a name="microsoftaadiamtenants"></a>Microsoft. aadiam/tenantů
+
+|Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
+|---|---|---|
+|Přihlášení|Přihlášení|Yes|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
@@ -97,6 +105,14 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |JobStreams|Datové proudy úloh|No|
 
 
+## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft. AutonomousDevelopmentPlatform/účty
+
+|Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
+|---|---|---|
+|Auditování|Auditování|Yes|
+|Provoz|Provoz|Yes|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
@@ -135,7 +151,6 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
 |BotRequest|Požadavky z kanálů na robota|No|
-|DependencyRequest|Požadavky na závislosti|No|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
@@ -182,6 +197,7 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
+|AuthOperational|Protokoly provozního ověřování|Yes|
 |ChatOperational|Protokoly provozního chatu|No|
 |SMSOperational|Provozní protokoly SMS|No|
 |Využití|Záznamy o využití|No|
@@ -256,6 +272,8 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |---|---|---|
 |ActivityRuns|Spuštění protokolu aktivity kanálu|No|
 |PipelineRuns|Protokol spuštění kanálu|No|
+|SandboxActivityRuns|Aktivita izolovaného prostoru (sandbox) spustí protokol|Yes|
+|SandboxPipelineRuns|Spuštění protokolu kanálu izolovaného prostoru|Yes|
 |SSISIntegrationRuntimeLogs|Protokoly SSIS Integration runtime|No|
 |SSISPackageEventMessageContext|Kontext zprávy události balíčku SSIS|No|
 |SSISPackageEventMessages|Zprávy o událostech balíčku SSIS|No|
@@ -320,6 +338,13 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
 |PostgreSQLLogs|Protokoly serveru PostgreSQL|No|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
+|---|---|---|
+|PostgreSQLLogs|Protokoly serveru PostgreSQL|Yes|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
@@ -531,18 +556,6 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |AppTraces|Trasování|No|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
-|---|---|---|
-|Auditování|Auditování|No|
-|Výchozí přenos dat|Výchozí přenos dat|No|
-|Příchozí přenos dat|Příchozí přenos dat|No|
-|Provoz|Provoz|No|
-|Trasování|Trasování|No|
-|UserDefinedFunction|UserDefinedFunction|No|
-
-
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. managedhsms – trezor/
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
@@ -747,13 +760,6 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |Modul|Modul|No|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/účty
-
-|Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
-|---|---|---|
-|ScanStatusLogEvent|ScanStatus|No|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. dosah/účty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
@@ -810,6 +816,13 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |AllLogs|Protokoly služby signalizace Azure|No|
 
 
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
+|---|---|---|
+|AllLogs|Protokoly služby Azure web PubSub|Yes|
+
+
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
@@ -826,7 +839,7 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |Chyby|Chyby|No|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|No|
 |QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|No|
-|SQLInsights|Přehledy SQL|No|
+|SQLInsights|SQL Insights|No|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
@@ -844,7 +857,7 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|No|
 |QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|No|
 |RequestSteps|Kroky žádosti|No|
-|SQLInsights|Přehledy SQL|No|
+|SQLInsights|SQL Insights|No|
 |SqlRequests|Požadavky SQL|No|
 |SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|No|
 |Časové limity|Časové limity|No|
@@ -901,6 +914,9 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |---|---|---|
 |BuiltinSqlReqsEnded|Byly ukončeny předdefinované požadavky na fond SQL.|No|
 |GatewayApiRequests|Žádosti rozhraní API brány synapse|No|
+|IntegrationActivityRuns|Spuštění integračních aktivit|Yes|
+|IntegrationPipelineRuns|Spuštění kanálu integrace|Yes|
+|IntegrationTriggerRuns|Spuštění triggeru integrace|Yes|
 |SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|No|
 |SynapseRbacOperations|Synapse operace RBAC|No|
 
@@ -975,7 +991,6 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 |AppServiceIPSecAuditLogs|Protokoly auditu IPSecurity|No|
 |AppServicePlatformLogs|App Service protokoly platformy|No|
 |FunctionAppLogs|Protokoly aplikací funkcí|No|
-
 
 
 ## <a name="next-steps"></a>Další kroky

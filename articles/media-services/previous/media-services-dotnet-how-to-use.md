@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a2a9ecbcafa89b4981fe403d116ac0288e60b6b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103013886"
 ---
 # <a name="media-services-development-with-net"></a>Media Services vývoj pomocí .NET
@@ -33,7 +33,7 @@ Tento článek popisuje, jak začít s vývojem Media Services aplikací pomocí
 
 Knihovna **Azure Media Services .NET SDK** umožňuje programovat v rámci Media Services pomocí .NET. Aby bylo možné ještě snazší vývoj pomocí rozhraní .NET, je k dispozici knihovna **rozšíření Azure Media Services .NET SDK** . Tato knihovna obsahuje sadu rozšiřujících metod a pomocných funkcí, které zjednodušují kód .NET. Obě knihovny jsou k dispozici prostřednictvím **NuGet** a **GitHubu**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Účet Media Services v novém nebo existujícím předplatném Azure. Přečtěte si článek [jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Operační systémy: Windows 10, Windows 7, Windows 2008 R2 nebo Windows 8.
 * .NET Framework 4,5 nebo novější.

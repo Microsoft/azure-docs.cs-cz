@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 02/14/2017
 ms.openlocfilehash: d336a39714712e5436086e22ad24fc942a7d850a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102563536"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Windows
@@ -24,7 +24,7 @@ ms.locfileid: "102563536"
 
 Tento dokument podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher agenta pro systém Windows. Instalace agenta neruší nebo vyžaduje restartování virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud je virtuální počítač nasazený službou Azure, Projděte si dokumentaci ke službě, kde zjistíte, jestli umožňuje nainstalovat rozšíření na virtuálním počítači.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -87,7 +87,7 @@ Set-AzVMExtension `
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření můžete načíst z Azure Portal a PowerShellu. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell:
 
