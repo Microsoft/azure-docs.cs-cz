@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cce37a7c719c6a0c183e166fa28967ea926a221
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100098091"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581653"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
@@ -31,7 +31,7 @@ Indexer můžete použít jako jediný způsob příjmu dat nebo jako součást 
 |----------|---------|
 | Jeden zdroj dat | Tento model je nejjednodušší: jeden zdroj dat je jediným poskytovatelem obsahu pro index vyhledávání. Ze zdroje určíte jedno pole obsahující jedinečné hodnoty, které bude sloužit jako klíč dokumentu v indexu vyhledávání. Jedinečná hodnota bude použita jako identifikátor. Všechna ostatní zdrojová pole jsou namapována implicitně nebo explicitně na odpovídající pole v indexu. </br></br>Důležitou poznatkem je, že hodnota klíče dokumentu pochází ze zdrojových dat. Vyhledávací služba negeneruje klíčové hodnoty. Při dalších spuštěních se přidají příchozí dokumenty s novými klíči, zatímco příchozí dokumenty s existujícími klíči se buď sloučí, nebo přepíší, v závislosti na tom, jestli jsou indexová pole null nebo naplněná. |
 | Více zdrojů dat | Index může přijímat obsah z více zdrojů, kde každé spuštění přináší nový obsah z jiného zdroje. </br></br>Jedním z výsledků může být index, který po spuštění každého indexeru získává dokumenty, přičemž všechny dokumenty jsou zcela vytvořené z každého zdroje. Například dokumenty 1-100 se nacházejí v úložišti objektů blob, dokumenty 101-200 jsou z Azure SQL a tak dále. Výzvou k tomuto scénáři spočívá v navrhování schématu indexu, který funguje pro všechna příchozí data, a strukturu klíčů dokumentu, která je v indexu vyhledávání jednotná. Nativně jsou hodnoty, které jedinečně identifikují dokument, metadata_storage_path v kontejneru objektů BLOB a v primárním klíči v tabulce SQL. Můžete si představit, že jeden nebo oba zdroje musí být upraveny tak, aby poskytovaly klíčové hodnoty ve společném formátu bez ohledu na původ obsahu. V tomto scénáři byste měli očekávat, že provedete určitou úroveň předběžného zpracování, aby se data homogenizuje, aby bylo možné je načíst do jediného indexu. </br></br>Alternativním výsledkem může být hledání dokumentů, které se částečně vyplňují při prvním spuštění, a potom se dále vyplní následnými běhy, aby se hodnoty z jiných zdrojů vyplnily. Například pole 1-10 se nacházejí v úložišti objektů blob, 11-20 z Azure SQL a tak dále. Výzvou k tomuto vzoru se zajistí, že každý běh indexování bude cílen na stejný dokument. Sloučení polí do existujícího dokumentu vyžaduje shodu s klíčem dokumentu. Ukázku tohoto scénáře najdete v tématu [kurz: index z více zdrojů dat](tutorial-multiple-data-sources.md). |
-| Více indexerů | Pokud používáte více zdrojů dat, můžete také potřebovat více indexerů, pokud potřebujete měnit parametry doby běhu, plán nebo mapování polí. I když může stejný index cílit více sad zdrojů dat indexeru, buďte opatrní při spuštění indexeru, které může přepsat existující hodnoty v indexu. Pokud druhý indexer – zdroj dat cílí na stejné dokumenty a pole, budou přepsány všechny hodnoty z prvního spuštění. Hodnoty polí jsou v plném rozsahu nahrazeny. Indexer nemůže sloučit hodnoty z více běhů do stejného pole.</br></br>Dalším případem použití více indexerů je [horizontální horizontální navýšení kapacity kognitivní hledání](search-performance-optimization.md#use-indexers-for-updating-content-on-multiple-services). Můžete mít kopie stejného indexu hledání v různých oblastech. Chcete-li synchronizovat obsah indexu hledání, můžete mít více indexerů ze stejného zdroje dat, kde každý indexer cílí na jiný index vyhledávání.</br></br>[Paralelní indexování](search-howto-large-index.md#parallel-indexing) velmi velkých datových sad vyžaduje také strategii s více indexery. Každý indexer cílí na podmnožinu dat. |
+| Více indexerů | Pokud používáte více zdrojů dat, můžete také potřebovat více indexerů, pokud potřebujete měnit parametry doby běhu, plán nebo mapování polí. I když může stejný index cílit více sad zdrojů dat indexeru, buďte opatrní při spuštění indexeru, které může přepsat existující hodnoty v indexu. Pokud druhý indexer – zdroj dat cílí na stejné dokumenty a pole, budou přepsány všechny hodnoty z prvního spuštění. Hodnoty polí jsou v plném rozsahu nahrazeny. Indexer nemůže sloučit hodnoty z více běhů do stejného pole.</br></br>Dalším případem použití více indexerů je [horizontální horizontální navýšení kapacity kognitivní hledání](search-performance-optimization.md#data-sync). Můžete mít kopie stejného indexu hledání v různých oblastech. Chcete-li synchronizovat obsah indexu hledání, můžete mít více indexerů ze stejného zdroje dat, kde každý indexer cílí na jiný index vyhledávání.</br></br>[Paralelní indexování](search-howto-large-index.md#parallel-indexing) velmi velkých datových sad vyžaduje také strategii s více indexery. Každý indexer cílí na podmnožinu dat. |
 | Transformace obsahu | Kognitivní hledání podporuje volitelná chování [rozšíření AI](cognitive-search-concept-intro.md) , která přidávají analýzu obrázků a zpracování přirozeného jazyka pro vytváření nových prohledávatelných obsahu a struktury. Rozšíření AI je založené na indexerech prostřednictvím připojeného [dovednosti](cognitive-search-working-with-skillsets.md). Aby bylo možné provést rozšíření AI, indexer stále potřebuje index a zdroj dat Azure, ale v tomto scénáři přidá zpracování dovednosti do indexeru. |
 
 <a name="supported-data-sources"></a>
@@ -42,7 +42,7 @@ Indexer můžete použít jako jediný způsob příjmu dat nebo jako součást 
 
 + [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (ve verzi Preview)
-+ [Table Storage Azure](search-howto-indexing-azure-tables.md)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [Spravovaná instance SQL](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)

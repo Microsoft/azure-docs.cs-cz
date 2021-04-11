@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9699c564476e116654f700c32dd47b7f6d5b81
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359258"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504562"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést na GitHubu a Azure AD, a automaticky zřídit a zrušit zřízení uživatelských účtů ze služby Azure AD do GitHubu.
+
+> [!NOTE]
+> Integrace zřizování Azure AD spoléhá na [rozhraní API GITHUB SCIM](https://developer.github.com/v3/scim/), které je dostupné pro zákazníky [GitHubu Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise) v [plánu fakturace na webu GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +36,7 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 * Zřizování SCIM pro jedinou organizaci se podporuje jenom v případě, že je jednotné přihlašování povolené na úrovni organizace.
 
 > [!NOTE]
-> Integrace zřizování Azure AD spoléhá na [rozhraní API GITHUB SCIM](https://developer.github.com/v3/scim/), které je dostupné pro zákazníky [GitHubu Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise) v [plánu fakturace na webu GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations).
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="assigning-users-to-github"></a>Přiřazení uživatelů k GitHubu
 

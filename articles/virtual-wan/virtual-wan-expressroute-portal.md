@@ -7,13 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b9c4bcf760387f6bbe380c9aa079df2f86a1847
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426603"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060648"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -30,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Změna velikosti brány
 > * Inzerování výchozí trasy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 

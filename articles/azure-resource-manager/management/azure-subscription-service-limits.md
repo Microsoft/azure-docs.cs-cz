@@ -2,13 +2,13 @@
 title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471004"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030813"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -34,9 +34,9 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 
 Některá omezení se spravují na regionální úrovni.
 
-Použijte jako příklad kvóty vCPU. Pokud chcete požádat o zvýšení kvóty s podporou pro vCPU, musíte se rozhodnout, kolik vCPU chcete použít pro tyto oblasti. Pak vytvoříte konkrétní požadavek na vCPU kvóty skupiny prostředků Azure pro příslušné množství a oblasti. Pokud potřebujete použít 30 vCPU v Západní Evropa ke spuštění vaší aplikace, konkrétně si vyžádáte 30 vCPU v Západní Evropa. Vaše kvóta vCPU se nezvyšuje v žádné jiné oblasti – pouze Západní Evropa má kvótu 30 vCPU.
+Použijte jako příklad kvóty vCPU. Pokud chcete požádat o zvýšení kvóty s podporou pro vCPU, musíte se rozhodnout, kolik vCPU chcete použít pro tyto oblasti. Pak si vyžádáte zvýšení kvót vCPU pro požadované hodnoty a oblasti. Pokud potřebujete použít 30 vCPU v Západní Evropa ke spuštění vaší aplikace, konkrétně si vyžádáte 30 vCPU v Západní Evropa. Vaše kvóta vCPU se nezvyšuje v žádné jiné oblasti – pouze Západní Evropa má kvótu 30 vCPU.
 
-V důsledku toho se rozhodněte, jaké kvóty skupin prostředků Azure musí být pro vaše úlohy v libovolné oblasti. Pak vyžádejte tuto částku v každé oblasti, do které chcete nasadit. Nápovědu k určení vašich současných kvót pro konkrétní oblasti najdete v tématu [řešení chyb pro kvóty prostředků](../templates/error-resource-quota.md).
+V důsledku toho se rozhodněte, jaká kvóta musí být pro vaše zatížení v libovolné oblasti. Pak vyžádejte tuto částku v každé oblasti, do které chcete nasadit. Nápovědu k určení vašich současných kvót pro konkrétní oblasti najdete v tématu [řešení chyb pro kvóty prostředků](../templates/error-resource-quota.md).
 
 ## <a name="general-limits"></a>Obecná omezení
 

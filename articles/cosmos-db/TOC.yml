@@ -126,6 +126,8 @@
       items:
         - name: Dodržování předpisů
           href: compliance.md
+        - name: Rezidence dat
+          href: data-residency.md
     - name: Automatická doporučení
       href: automated-recommendations.md
 - name: Rozhraní SQL/Core API
@@ -755,6 +757,8 @@
                   href: troubleshoot-unauthorized.md
                 - name: Odstraňování potíží zakázáno
                   href: troubleshoot-forbidden.md
+                - name: Řešení potíží se špatným požadavkem
+                  href: troubleshoot-bad-request.md
                 - name: Potíže s dostupností v prostředích s více oblastmi
                   href: troubleshoot-sdk-availability.md
             - name: .NET
@@ -915,6 +919,8 @@
               href: sql-api-sdk-java-spark.md
             - name: Knihovna Bulk Executoru v Javě v2
               href: sql-api-sdk-bulk-executor-java.md
+        - name: Azure CLI
+          href: /cli/azure/cosmosdb
         - name: Node.js
           href: sql-api-sdk-node.md
         - name: Python
@@ -1411,6 +1417,8 @@
           href: how-to-restrict-user-data.md
         - name: Konfigurace klíčů spravovaných zákazníkem
           href: how-to-setup-cmk.md
+        - name: Použití spravované identity
+          href: how-to-setup-managed-identity.md
     - name: Připravenost pro podnikové zpracování
       items:
         - name: Žádost o navýšení kvóty

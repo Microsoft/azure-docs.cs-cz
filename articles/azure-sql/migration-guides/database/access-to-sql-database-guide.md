@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0380cf432a1e0de2a8ac274fef7802bee13c58f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643593"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030351"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Průvodce migrací: přístup k Azure SQL Database
 
-V této příručce se dozvíte, jak migrovat databázi Microsoft Access do databáze SQL Azure pomocí Pomocník s migrací SQL Serveru pro přístup (SSMA for Access).
+V této příručce se dozvíte, [jak migrovat](https://azure.microsoft.com/migration/migration-journey) databázi Microsoft Access do Azure SQL database pomocí SQL Server Pomocník pro [migraci](https://azure.microsoft.com/migration/migration-journey) pro přístup (SSMA for Access).
 
 Další příručky k migraci najdete v tématu [Průvodce migrací databáze Azure](https://docs.microsoft.com/data-migration). 
 
@@ -32,7 +32,7 @@ Než začnete migrovat databázi Access do databáze SQL, udělejte toto:
 
 ## <a name="pre-migration"></a>Před migrací
 
-Až splníte požadavky, budete připraveni zjistit topologii vašeho prostředí a posoudit proveditelnost migrace.
+Až splníte požadavky, budete připraveni zjistit topologii vašeho prostředí a posoudit proveditelnost [migrace do cloudu Azure](https://azure.microsoft.com/migration).
 
 
 ### <a name="assess"></a>Posouzení 
@@ -185,6 +185,8 @@ Data tým SQL Engineering vyvinuli tyto prostředky. Základní Chart týmu je o
 - Další informace o cyklu rozhraní a přijetí pro migrace do cloudu najdete tady:
    -  [Cloud Adoption Framework pro Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Osvědčené postupy pro výpočet nákladů a velikosti úloh pro migraci do Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Prostředky Migrace do cloudu](https://azure.microsoft.com/migration/resources)
+
 
 - Chcete-li vyhodnotit vrstvu přístupu aplikace, přečtěte si část [Data Access Migration Toolkit (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Informace o tom, jak provádět testování vrstvy přístupu k datům a/B, najdete v tématu [přehled Pomocník pro experimentování s databázemi](/sql/dea/database-experimentation-assistant-overview).

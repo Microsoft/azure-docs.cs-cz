@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026518"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504171"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Povolení protokolování v sadě Speech SDK
 
-Protokolování do souboru je volitelnou funkcí sady Speech SDK. Během protokolování vývoje jsou k dispozici další informace a diagnostika z klíčových součástí sady Speech SDK. Dá se povolit nastavením vlastnosti `Speech_LogFilename` u objektu konfigurace rozpoznávání řeči na umístění a název souboru protokolu. Po vytvoření nástroje pro rozpoznávání z této konfigurace bude protokolování aktivováno globálně a následně nebude možné ho zakázat. Během spuštěné relace protokolování nemůžete změnit název souboru protokolu.
+Protokolování do souboru je volitelnou funkcí sady Speech SDK. Během protokolování vývoje jsou k dispozici další informace a diagnostika z klíčových součástí sady Speech SDK. Dá se povolit nastavením vlastnosti `Speech_LogFilename` u objektu konfigurace rozpoznávání řeči na umístění a název souboru protokolu. Protokolování je zpracováváno statickou třídou v nativní knihovně sady Speech SDK. Protokolování můžete zapnout pro libovolnou funkci rozpoznávání sady Speech SDK nebo instance syntetizátoru. Všechny instance ve stejném procesu zapisují položky protokolu do stejného souboru protokolu.
 
 > [!NOTE]
 > K dispozici je protokolování, protože sada Speech SDK verze 1.4.0 ve všech podporovaných programovacích jazycích sady Speech SDK s výjimkou JavaScriptu.

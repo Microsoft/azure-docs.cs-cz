@@ -10,12 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d75ba091ff634bf613722e3a194407beeeda68fb
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786001"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967230"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které mají dvě sady ověřovacích přihlašovacích údajů
 
@@ -53,11 +54,17 @@ Tento odkaz na nasazení můžete použít, pokud nemáte existující Trezor kl
 
     ![Snímek obrazovky, který ukazuje, jak vytvořit skupinu prostředků.](../media/secrets/rotation-dual/dual-rotation-1.png)
 
-Teď budete mít Trezor klíčů a dva účty úložiště. Tuto instalaci můžete ověřit v Azure CLI spuštěním tohoto příkazu:
-
+Teď budete mít Trezor klíčů a dva účty úložiště. Tuto instalaci můžete ověřit v Azure CLI nebo Azure PowerShell spuštěním tohoto příkazu:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az resource list -o table -g vaultrotation
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzResource -Name 'vaultrotation*' | Format-Table
+```
+---
 
 Výsledek bude vypadat přibližně podobně jako tento výstup:
 
@@ -111,49 +118,97 @@ Po dokončení předchozích kroků budete mít účet úložiště, serverovou 
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Přidání přístupových klíčů k účtu úložiště pro Key Vault
 
 Nejdřív nastavte zásady přístupu tak, aby udělily oprávnění ke **správě tajných** kódů vašemu uživatelskému objektu zabezpečení:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -UserPrincipalName <email-address-of-user> --name vaultrotation-kv -PermissionsToSecrets set,delete,get,list
+```
+---
 
 Nyní můžete vytvořit nový tajný klíč pomocí přístupového klíče účtu úložiště jako jeho hodnota. Pro přidání do tajného kódu budete také potřebovat ID prostředku účtu úložiště, dobu platnosti tajného klíče a ID klíče, aby funkce otáčení mohla znovu vygenerovat klíč v účtu úložiště.
 
 Určete ID prostředku účtu úložiště. Tuto hodnotu můžete najít ve `id` Vlastnosti.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 Vypíše přístupové klíče účtu úložiště, abyste mohli získat klíčové hodnoty:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage 
+az storage account keys list -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 Přidejte tajný klíč do trezoru klíčů s datem vypršení platnosti nastaveným na zítra, období platnosti pro 60 dní a ID prostředku účtu úložiště. Spusťte tento příkaz a použijte načtené hodnoty pro `key1Value` a `storageAccountResourceId` :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
 az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key1'
+    ProviderAddress='<storageAccountResourceId>'
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 Nad rámec tajného klíče se událost aktivuje `SecretNearExpiry` během několika minut. Tato událost zase aktivuje funkci pro otočení tajného kódu s vypršenou platností nastavenou na 60 dní. V této konfiguraci se událost SecretNearExpiry aktivuje každých 30 dní (30 dní před vypršením platnosti) a funkce rotace bude střídavě prostřídána mezi klíč1 a key2.
 
 Opětovné vygenerování přístupových klíčů můžete ověřit načtením klíče účtu úložiště a Key Vault tajného kódu a jejich porovnání.
 
 Informace o tajných klíčích získáte pomocí tohoto příkazu:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
+```
+---
 
 Všimněte si, že `CredentialId` je aktualizována na alternativní `keyName` a která `value` je znovu vygenerována:
 
 ![Snímek obrazovky zobrazující výstup příkazu z tajného klíče trezoru klíčů pro první účet úložiště](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Načtěte přístupové klávesy pro porovnání hodnot:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
+
 Všimněte si, že `value` klíč je stejný jako tajný klíč v trezoru klíčů:
 
 ![Snímek obrazovky, který zobrazuje výstup příkazu seznamu klíčů účtu úložiště a z prvního účtu úložiště.](../media/secrets/rotation-dual/dual-rotation-5.png)
@@ -185,36 +240,77 @@ K přidání klíčů účtu úložiště do existující funkce pro rotaci pot�
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Přidat další přístupový klíč k účtu úložiště pro Key Vault
 
 Určete ID prostředku účtu úložiště. Tuto hodnotu můžete najít ve `id` Vlastnosti.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 Vypíše přístupové klíče účtu úložiště, abyste mohli získat hodnotu key2:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage2 
+az storage account keys list -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrotation
+```
+---
 
 Přidejte tajný klíč do trezoru klíčů s datem vypršení platnosti nastaveným na zítra, období platnosti pro 60 dní a ID prostředku účtu úložiště. Spusťte tento příkaz a použijte načtené hodnoty pro `key2Value` a `storageAccountResourceId` :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key2';
+    ProviderAddress='<storageAccountResourceId>';
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey2 -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 Informace o tajných klíčích získáte pomocí tohoto příkazu:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
+```
+---
 
 Všimněte si, že `CredentialId` je aktualizována na alternativní `keyName` a která `value` je znovu vygenerována:
 
 ![Snímek obrazovky zobrazující výstup příkazu z tajného klíče trezoru klíčů pro druhý účet úložiště](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Načtěte přístupové klávesy pro porovnání hodnot:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 Všimněte si, že `value` klíč je stejný jako tajný klíč v trezoru klíčů:
 

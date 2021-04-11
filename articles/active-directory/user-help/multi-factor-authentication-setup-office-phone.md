@@ -10,19 +10,21 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c77672ce895cc63a04973c4cb3e752ca319e269d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83739205"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553409"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Nastavit telefon do kanceláře jako metodu ověřování dvou faktorů
 
 Telefon do kanceláře můžete nastavit tak, aby fungoval jako metoda ověřování dvou faktorů.
 
->[!Note]
-> Pokud je možnost telefon do kanceláře šedá, je možné, že vaše organizace neumožňuje pro ověření použít telefonní číslo pro Office. V takovém případě budete muset vybrat jinou metodu nebo požádat správce o další nápovědu.
+> [!Note]
+> Pokud možnost vybrat **telefon pro Office Phone** není dostupná, je možné, že vaše organizace neumožňuje použít pro ověření telefonní číslo do kanceláře. V takovém případě budete muset vybrat jinou metodu nebo požádat správce o další nápovědu. 
+> 
+> Uživatelé s kombinovaným registrací neuvidí možnost použít rozšíření s možností **telefon do kanceláře** .
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Nastavte své telefonní číslo do kanceláře jako metodu ověřování.
 

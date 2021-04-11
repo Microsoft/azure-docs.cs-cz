@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618470"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169279"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>O službě Azure Cloud Services (Rozšířená podpora)
 
@@ -48,12 +48,9 @@ Hlavní rozdíly mezi Cloud Services (Classic) a Cloud Services (Rozšířená p
 - Všechny prostředky nasazené prostřednictvím [Azure Resource Manager](../azure-resource-manager/templates/overview.md) musí být ve virtuální síti. Virtuální sítě a podsítě se vytvářejí v Azure Resource Manager pomocí existujících rozhraní API Azure Resource Manager a při nasazení Cloud Services (Rozšířená podpora) se bude muset v oddílu NetworkConfiguration v. cscfg vykázat.   
 
 - Každá cloudová služba (Rozšířená podpora) je jediné nezávislé nasazení. Služba Cloud Services (Rozšířená podpora) nepodporuje více slotů v rámci jedné cloudové služby.  
-    - Schopnost prohození virtuálních IP adres se dá <sup>*</sup> použít k prohození mezi dvěma Cloud Services (Rozšířená podpora). Chcete-li otestovat a připravit novou verzi cloudové služby, nasaďte cloudovou službu (rozšířenou podporu) a označte ji jako vyměnitelné VIP s jinou cloudovou službou (Rozšířená podpora).  
+    - Schopnost prohození virtuálních IP adres se dá použít k prohození mezi dvěma Cloud Services (Rozšířená podpora). Chcete-li otestovat a připravit novou verzi cloudové služby, nasaďte cloudovou službu (rozšířenou podporu) a označte ji jako vyměnitelné VIP s jinou cloudovou službou (Rozšířená podpora).  
 
 - Popisek služby DNS (Domain Name Service) je pro cloudovou službu volitelný (Rozšířená podpora). V Azure Resource Manager je popisek DNS vlastnost prostředku veřejné IP adresy přidruženého ke cloudové službě. 
-
-
-<sup>*</sup> Prohození VIP pro Cloud Services (Rozšířená podpora) není během Public Preview k dispozici.  
 
 ## <a name="migration-to-azure-resource-manager"></a>Migrace na Azure Resource Manager
 

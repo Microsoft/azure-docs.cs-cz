@@ -5,25 +5,28 @@ description: K ochraně dat ve vašem účtu úložiště můžete použít vlas
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 72f7130aad12ee2b5d463195b0b5c7847022bdfd
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645174"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059441"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Klíče spravované zákazníkem pro šifrování Azure Storage
 
 K ochraně dat ve vašem účtu úložiště můžete použít vlastní šifrovací klíč. Když zadáte klíč spravovaný zákazníkem, použije se tento klíč k ochraně a řízení přístupu ke klíči, který šifruje vaše data. Klíče spravované zákazníkem nabízejí větší flexibilitu při správě řízení přístupu.
 
-K ukládání klíčů spravovaných zákazníkem je nutné použít buď Azure Key Vault, nebo Azure Key Vault spravovaný modul hardwarového zabezpečení (HSM) (Preview). Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů nebo spravovaného modulu HSM, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Účet úložiště a trezor klíčů nebo spravovaný modul HSM musí být ve stejné oblasti a v rámci stejného Azure Active Directory klienta (Azure AD), ale můžou být v různých předplatných.
+K ukládání klíčů spravovaných zákazníkem je nutné použít jedno z následujících úložišť klíčů Azure:
 
-Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/general/overview.md).
+- [Azure Key Vault](../../key-vault/general/overview.md)
+- [Azure Key Vault modul hardwarového zabezpečení (HSM) pro správu (Preview)](../../key-vault/managed-hsm/overview.md)
+
+Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů nebo spravovaného modulu HSM, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Účet úložiště a trezor klíčů nebo spravovaný modul HSM musí být ve stejné oblasti a v rámci stejného Azure Active Directory klienta (Azure AD), ale můžou být v různých předplatných.
 
 > [!IMPORTANT]
 >

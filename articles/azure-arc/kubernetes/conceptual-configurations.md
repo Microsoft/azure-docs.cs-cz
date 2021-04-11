@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Tento článek obsahuje koncepční přehled funkcí GitOps a konfigurací pro Kubernetes s podporou ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery, konfigurace, GitOps
-ms.openlocfilehash: a4193783a976f205b46cb8c5df29d4cef9da1d2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 198bd45374d998ef0d9d0e612e974484d52e2f20
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022870"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443302"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Konfigurace a GitOps s povoleným Kubernetes ARC Azure
 
@@ -50,6 +50,6 @@ Toto v rámci vynuceného navýšení zajišťuje společnou základní konfigur
 
 ## <a name="next-steps"></a>Další kroky
 
-* Projděte si náš rychlý Start, který [připojí cluster Kubernetes ke službě Azure ARC](./quickstart-connect-cluster.md).
-* Už máte připojený cluster Kubernetes ke clusteru Azure ARC? [Vytvořte konfigurace na clusteru Kubernetes s povoleným obloukem](./tutorial-use-gitops-connected-cluster.md).
-* Naučte se [používat Azure Policy k aplikování konfigurací se škálováním](./use-azure-policy.md).
+* Pomocí našeho rychlého startu můžete [připojit cluster Kubernetes ke službě Azure ARC](./quickstart-connect-cluster.md).
+* [Vytvořte konfigurace](./tutorial-use-gitops-connected-cluster.md) v clusteru Kubernetes s povoleným ARC Azure.
+* [Použijte Azure Policy pro aplikování konfigurace se škálováním](./use-azure-policy.md).

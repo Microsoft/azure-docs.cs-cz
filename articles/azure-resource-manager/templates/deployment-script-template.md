@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889378"
+ms.locfileid: "105967332"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -139,8 +139,8 @@ Podrobnosti hodnoty vlastnosti:
 - `identity`: Rozhraní API pro nasazení skriptů verze 2020-10-01 nebo novější je uživatelem přiřazená identita volitelná, pokud nepotřebujete ve skriptu provádět žádné akce specifické pro Azure.  Pro rozhraní API verze 2019-10-01-Preview je požadovaná spravovaná identita, protože služba skriptu nasazení ji používá ke spouštění skriptů. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
 - `kind`: Zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
 - `forceUpdateTag`: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijete-li `newGuid()` funkce nebo `utcNow()` , lze obě funkce použít pouze ve výchozí hodnotě parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
-- `containerSettings`: Zadejte nastavení pro přizpůsobení instance kontejneru Azure.  `containerGroupName` slouží k zadání názvu skupiny kontejnerů. Pokud není zadaný, název skupiny se automaticky vygeneruje.
-- `storageAccountSettings`: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
+- `containerSettings`: Zadejte nastavení pro přizpůsobení instance kontejneru Azure. Skript nasazení vyžaduje novou instanci kontejneru Azure. Nemůžete zadat existující instanci kontejneru Azure. Název skupiny kontejnerů ale můžete přizpůsobit pomocí `containerGroupName` . Pokud není zadaný, název skupiny se automaticky vygeneruje.
+- `storageAccountSettings`: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud `containerGroupName` parametr není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Zadejte verzi modulu, která se má použít. Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]

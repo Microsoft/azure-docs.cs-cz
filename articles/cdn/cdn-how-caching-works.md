@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010159"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505004"
 ---
 # <a name="how-caching-works"></a>Jak funguje ukládání do mezipaměti
 
@@ -75,6 +75,7 @@ Azure CDN podporuje následující hlavičky HTTP cache-direktivy, které definu
 - Při použití v požadavku protokolu HTTP z klienta do služby CDN POP `Cache-Control` se ve výchozím nastavení ignorují všechny profily Azure CDN.
 - Při použití v odpovědi HTTP z klienta na POP CDN:
      - **Azure CDN Standard/Premium z Verizon** a **Azure CDN Standard od společnosti Microsoft** podporují všechny `Cache-Control` direktivy.
+     - **Azure CDN Standard/Premium z Verizon** a **Azure CDN Standard od Microsoftu** dodržuje chování ukládání do mezipaměti pro Cache-Control direktiv v [dokumentu RFC 7234-Hypertext Transfer Protocol (http/1.1): ukládání do mezipaměti (IETF.org)](https://tools.ietf.org/html/rfc7234#section-5.2.2.8).
      - **Azure CDN Standard z Akamai** podporuje pouze následující `Cache-Control` direktivy. všechny ostatní jsou ignorovány:
          - `max-age`: Mezipaměť může ukládat obsah za zadaný počet sekund. Například, `Cache-Control: max-age=5`. Tato direktiva určuje maximální dobu, po kterou je obsah považován za čerstvý.
          - `no-cache`: Obsah ukládat do mezipaměti, ale před jeho odesláním z mezipaměti ověřte jeho obsah. Ekvivalent `Cache-Control: max-age=0` .

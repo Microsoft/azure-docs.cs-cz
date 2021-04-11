@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688463"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552746"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-mailové ověřování heslem jednorázového hesla
 
@@ -64,7 +64,7 @@ Můžete se podívat, jestli se uživatel typu Host ověřuje pomocí jednorázo
 ![Snímek obrazovky, který zobrazuje jednorázového uživatele se zdrojovou hodnotou JEDNORÁZOVého hesla](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou se i nadále ověřovat pomocí jednorázového hesla. Pokud chcete aktualizovat metodu ověřování, můžete odstranit svůj uživatelský účet hosta a znovu ho pozvat.
+> Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou se i nadále ověřovat pomocí jednorázového hesla. Pokud chcete aktualizovat metodu ověřování uživatele, můžete [stav jejich uplatnění obnovit](reset-redemption-status.md).
 
 ### <a name="example&quot;></a>Příklad
 
@@ -76,7 +76,7 @@ Od října 2021 se funkce jednorázového hesla pro e-mail zapne pro všechny ex
 
 > [!NOTE]
 >
-> Pokud je ve vašem tenantovi povolená funkce jednorázového hesla e-mailu a Vy ji vypnete, všichni uživatelé typu Host, kteří se znovu považovali za jednorázové heslo, se nebudou moct přihlásit. Uživatele typu Host můžete odstranit a znovu pozvat, aby se mohli znovu přihlásit pomocí jiné metody ověřování.
+> Pokud je ve vašem tenantovi povolená funkce jednorázového hesla e-mailu a Vy ji vypnete, všichni uživatelé typu Host, kteří se znovu považovali za jednorázové heslo, se nebudou moct přihlásit. [Stav jejich uplatnění můžete resetovat](reset-redemption-status.md) , aby se mohli znovu přihlásit pomocí jiné metody ověřování.
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>Zakázání funkce e-mailového hesla na jednom čase
 

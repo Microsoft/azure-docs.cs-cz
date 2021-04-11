@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c4e70c7f74c202b7de44a259b8a680f57aeaa041
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645027"
+ms.locfileid: "105966941"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -213,14 +213,9 @@ V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu spe
 * `zh-CN-XiaoxuanNeural` Tisk
 * `zh-CN-XiaoruiNeural` Tisk
 
-Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči.
+Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči. V současné době jsou pro čínské hlasy (Mandarin, zjednodušené) neuronové podporovány úpravy stylu speaking.
 
-V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
-* `zh-CN-XiaoxiaoNeural`
-
-Kromě úprav stylů a stylu mluveného projevu můžete také upravit `role` parametr tak, aby hlas byl jiný a pohlaví. Například samcský hlas může zvýšit rozteč a změnit rozmocninu k napodobenině ženského hlasu.
-
-V současné době jsou úpravy role-přehrávání podporovány pro tyto hlasy neuronové:
+Kromě úprav stylů a stylu mluveného projevu můžete také upravit `role` parametr tak, aby hlas byl jiný a pohlaví. Například samcský hlas může vyvolávat rozteč a změnit rozmocninu k napodobenině ženského hlasu, ale název hlasu se nezmění. V současné době jsou úpravy rolí a her podporované pro tyto čínské (Mandarin, zjednodušené) neuronové hlasy:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
@@ -238,15 +233,15 @@ Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se 
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> V tuto chvíli `styledegree` podporuje jenom zh-CN-XiaoxiaoNeural. `role` podporuje pouze zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.
+> V tuto chvíli `styledegree` podporuje jenom čínské hlasy (Mandarin, zjednodušené) neuronové. `role` podporuje pouze zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.
 
 **Atributy**
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `style` | Určuje styl speaking. V současné době jsou styly mluvené řeči specifické pro hlas. | Vyžaduje se, když se upraví styl speakování pro neuronové hlas. Pokud používáte `mstts:express-as` , musí být zadán styl. Pokud je zadána neplatná hodnota, bude tento prvek ignorován. |
-| `styledegree` | Určuje intenzitu stylu speaking. **Přijaté hodnoty**: 0,01 až 2 včetně. Výchozí hodnota je 1, což znamená, že předdefinovaná intenzita stylu. Minimální jednotka je 0,01, což má za následek trochu tendenci pro cílový styl. Hodnota 2 má za následek zdvojnásobení výchozí intenzity stylu.  | Volitelné (v současné době `styledegree` podporuje jenom zh-CN-XiaoxiaoNeural.)|
-| `role` | Určuje speaking Role-Play. Hlas bude fungovat jako jiný věk a pohlaví.  | Volitelné (v současné době `role` podporuje jenom zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.)|
+| `styledegree` | Určuje intenzitu stylu speaking. **Přijaté hodnoty**: 0,01 až 2 včetně. Výchozí hodnota je 1, což znamená, že předdefinovaná intenzita stylu. Minimální jednotka je 0,01, což má za následek trochu tendenci pro cílový styl. Hodnota 2 má za následek zdvojnásobení výchozí intenzity stylu.  | Volitelné (v současnosti `styledegree` podporuje jenom čínské (Mandarin, zjednodušené) neuronové hlasy.)|
+| `role` | Určuje speaking Role-Play. Hlas bude fungovat jako jiný věk a pohlaví, ale název hlasu se nezmění.  | Volitelné (v současné době `role` podporuje jenom zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.)|
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
@@ -322,17 +317,19 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
 |                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
 
-Pomocí této tabulky můžete určit, které role se u každého hlasu neuronové podporují.
+Pomocí této tabulky můžete kontrolovat podporované role a jejich definice.
 
-| Hlas                   | Role                       | Popis                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Hlasový hovor je napodoben od mladých dospělých samic.                 |
-|                         | `role="OlderAdultMale"`    | Tento hlas je napodoben na starší dospělé samci.                   |
-|                         | `role="Girl"`              | Hlasový vstup je napodoben na Girl.                               |
-|                         | `role="Boy"`               | Hlasový vstup je napodoben na Boy.                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Hlasový hovor je napodoben od mladých dospělých samic.                 |
-|                         | `role="OlderAdultFemale"`  | Tento hlas je napodoben na starší dospělého ženského pohlaví.                 |
-|                         | `role="OlderAdultMale"`    | Tento hlas je napodoben na starší dospělé samci.                   |
+|Role                     | Popis                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | Hlasový vstup je napodoben na Girl. |
+|`role="Boy"`             | Hlasový vstup je napodoben na Boy. |
+|`role="YoungAdultFemale"`| Hlasový hovor je napodoben od mladých dospělých samic.|
+|`role="YoungAdultMale"`  | Hlasový vstup je napodoben od mladých dospělých samců.|
+|`role="OlderAdultFemale"`| Tento hlas je napodoben na starší dospělého ženského pohlaví.|
+|`role="OlderAdultMale"`  | Tento hlas je napodoben na starší dospělé samci.|
+|`role="SeniorFemale"`    | Hlasový hovor je napodoben od nadmnožiny.|
+|`role="SeniorMale"`      | Tento hlas je napodoben na vyšší samci.|
+
 
 **Příklad**
 

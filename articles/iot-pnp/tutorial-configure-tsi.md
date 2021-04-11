@@ -1,18 +1,19 @@
 ---
 title: Kurz – použití Azure Time Series Insights k ukládání a analýze telemetrie vašich zařízení technologie Plug and Play Azure IoT
 description: Kurz – nastavení Time Series Insights prostředí a připojení centra IoT pro zobrazení a analýzu telemetrie ze zařízení technologie Plug and Play IoT.
-author: lyrana
-ms.author: lyhughes
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 588d680acc8c21c7f4dcf6569e23110f3c33c482
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057367"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504273"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Kurz: vytvoření a konfigurace prostředí Time Series Insights Gen2
 
@@ -26,7 +27,7 @@ V tomto kurzu jste:
 > * Použijte ukázkové soubory modelu [DTDL (Digital Neal Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl) , které jste použili pro kontrolku teploty a termostatem zařízení.
 
 > [!NOTE]
-> Tato integrace mezi Time Series Insights a IoT technologie Plug and Play je ve verzi Preview. Způsob, jakým se DTDL modely zařízení mapují na model časové řady Time Series Insights se může změnit. 
+> Tato integrace mezi Time Series Insights a IoT technologie Plug and Play je ve verzi Preview. Způsob, jakým se DTDL modely zařízení mapují na model časové řady Time Series Insights se může změnit.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -123,7 +124,7 @@ Dále přeložíte model zařízení DTDL na model Asset Service v Azure Time Se
 
 ### <a name="define-your-types"></a>Definování typů
 
-Můžete začít ingestovat data do Azure Time Series Insights Gen2 bez předdefinovaného modelu. Když telemetrie dorazí, Time Series Insights se pokusí automaticky vyřešit instance časových řad na základě hodnot vlastností ID časových řad. Všem instancím je přiřazen *výchozí typ*. Je nutné ručně vytvořit nový typ pro správné kategorizaci instancí. 
+Můžete začít ingestovat data do Azure Time Series Insights Gen2 bez předdefinovaného modelu. Když telemetrie dorazí, Time Series Insights se pokusí automaticky vyřešit instance časových řad na základě hodnot vlastností ID časových řad. Všem instancím je přiřazen *výchozí typ*. Je nutné ručně vytvořit nový typ pro správné kategorizaci instancí.
 
 Následující podrobnosti popisují nejjednodušší způsob synchronizace DTDL modelů zařízení s typy modelu časové řady:
 
@@ -139,7 +140,7 @@ Následující podrobnosti popisují nejjednodušší způsob synchronizace DTDL
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
-| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
+| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |
 |`contents` skupin| `variables` předmětů  | Prohlédněte si následující příklad.
 
 ![Snímek obrazovky znázorňující typ modelu časové řady D T D L.](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
@@ -161,7 +162,7 @@ Otevřete textový editor a uložte následující JSON na místní disk.
           "kind": "numeric",
           "value": {
             "tsx": "coalesce($event.workingSet.Long, toLong($event.workingSet.Double))"
-          }, 
+          },
           "aggregation": {
             "tsx": "avg($value)"
           }

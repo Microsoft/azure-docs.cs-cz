@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory zřizování aplikací
 description: Nová a aktualizovaná dokumentace k zřizování Azure Active Directory aplikací.
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bb8dfbaf7ee1758811016dd3ddf08367a44bfae
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453677"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443504"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory zřizování aplikací: co je nového
 
 Vítá vás novinky v Azure Active Directory dokumentaci zřizování aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Informace o tom, co je nového ve službě zřizování, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Synchronizují se atributy rozšíření pro zřizování aplikací.](user-provisioning-sync-attributes-for-mapping.md)
+- [Stav zřizování aplikace v karanténě](application-provisioning-quarantine-status.md)
+- [Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal](configure-automatic-user-provisioning-portal.md)
+- [Referenční informace pro zápis výrazů pro mapování atributů v Azure AD](functions-for-customizing-application-data.md)
+- [Kurz: vývoj ukázkového koncového bodu SCIM](use-scim-to-build-users-and-groups-endpoints.md)
+
 
 ## <a name="february-2021"></a>Únor 2021
 

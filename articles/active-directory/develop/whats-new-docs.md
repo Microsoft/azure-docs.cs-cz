@@ -11,16 +11,45 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68136cc259e0be4a2f9449aa9ec15f4a14a63890
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687324"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074977"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform Docs: co je nového
 
 Vítejte v dokumentaci k platformě Microsoft Identity Platform. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Obnovení nebo odebrání nedávno odstraněné aplikace s platformou Microsoft identity](quickstart-restore-app.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Souhlas správce na platformě Microsoft identity](v2-admin-consent.md)
+- [Požadavky na konfiguraci a tipy pro řešení potíží pro Xamarin Android s MSAL.NET](msal-net-xamarin-android-considerations.md)
+- [Aplikace démona, která volá webová rozhraní API – získá token.](scenario-daemon-acquire-token.md)
+- [Aplikace démona, která volá webovou rozhraní API – konfigurace kódu](scenario-daemon-app-configuration.md)
+- [Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace](scenario-daemon-call-api.md)
+- [Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí](scenario-daemon-production.md)
+- [Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu](scenario-desktop-acquire-token.md)
+- [Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu](scenario-desktop-app-configuration.md)
+- [Aplikace klasické pracovní plochy, která volá webová rozhraní API: volání webového rozhraní API](scenario-desktop-call-api.md)
+- [Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)](active-directory-claims-mapping.md)
+- [Protokolování v MSAL pro Python](msal-logging-python.md)
+- [Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)](apple-sso-plugin.md)
+- [Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET](quickstart-v2-aspnet-webapp.md)
+- [Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core](quickstart-v2-aspnet-core-webapp.md)
+- [Rychlý Start: získání tokenu a volání rozhraní Microsoft Graph API pomocí identity konzolové aplikace](quickstart-v2-netcore-daemon.md)
+- [Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity](quickstart-v2-aspnet-core-web-api.md)
+- [Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou](quickstart-v2-angular.md)
+- [Možnosti pomoci a podpory pro vývojáře](developer-support-help-options.md)
+- [Webová aplikace, která podepisuje uživatele: Konfigurace kódu](scenario-web-app-sign-user-app-configuration.md)
+- [Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení](scenario-web-app-sign-user-sign-in.md)
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -65,25 +94,3 @@ Vítejte v dokumentaci k platformě Microsoft Identity Platform. V tomto článk
 - [Konfigurace zásad životnosti tokenů (Preview)](configure-token-lifetimes.md)
 - [Knihovny ověřování platformy Microsoft identity](reference-v2-libraries.md)
 - [Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md)
-
-## <a name="december-2020"></a>Prosinec 2020
-
-### <a name="new-articles"></a>Nové články
-
-- [Rychlý Start: ASP.NET Core webovou aplikaci, která podepisuje uživatele a volá Microsoft Graph jejich jménem](quickstart-v2-aspnet-core-webapp-calls-graph.md)
-- [Zpracování chyb a výjimek v MSAL.NET](msal-error-handling-dotnet.md)
-- [Zpracování chyb a výjimek v MSAL pro iOS/macOS](msal-error-handling-ios.md)
-- [Zpracování chyb a výjimek v MSAL pro Javu](msal-error-handling-java.md)
-- [Zpracování chyb a výjimek v MSAL.js](msal-error-handling-js.md)
-- [Zpracování chyb a výjimek v MSAL pro Python](msal-error-handling-python.md)
-- [Scénáře výměny tokenů platformy Microsoft Identity Platform s SAML a OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
-- [Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity](tutorial-v2-aspnet-daemon-web-app.md)
-- [Webová aplikace, která přihlašuje uživatele: registrace aplikace](scenario-web-app-sign-user-app-registration.md)
-- [Microsoft Identity Platform a implicitní tok udělení](v2-oauth2-implicit-grant-flow.md)
-- [Tokeny přístupu Microsoft Identity Platform](access-tokens.md)
-- [Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.](scenario-web-api-call-api-acquire-token.md)
-

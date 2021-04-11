@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6213e17f1232bd505ba1edf185a851bf669b9809
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92204635"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553426"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
@@ -88,7 +88,7 @@ Ve ExpressRoute Essentials indikuje *stav okruhu* stav okruhu na straně Microso
 Aby okruh ExpressRoute fungoval, musí být *povolen* *stav okruhu* a musí být *zřízen* *stav poskytovatele* .
 
 > [!NOTE]
-> Pokud je *stav okruhu* po konfiguraci okruhu ExpressRoute v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud je *stav poskytovatele* v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
+> Pokud se po nakonfigurování okruhu ExpressRoute zablokuje *stav okruhu* v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud se *stav poskytovatele* zablokuje v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
 >
 >
 
@@ -145,7 +145,7 @@ ServiceProviderProvisioningState : Provisioned
 ```
 
 > [!NOTE]
-> Pokud je *stav okruhu* po konfiguraci okruhu ExpressRoute v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud je *stav poskytovatele* v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
+> Pokud se po nakonfigurování okruhu ExpressRoute zablokuje *stav okruhu* v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud se *stav poskytovatele* zablokuje v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
 >
 >
 

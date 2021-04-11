@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 03/30/2021
 ms.author: victorh
-ms.openlocfilehash: e955c6b760c06ce802dfae0193d34954eab99892
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731084"
+ms.locfileid: "105966907"
 ---
 # <a name="what-are-security-partner-providers"></a>Kdo jsou poskytovatelé partnerů pro zabezpečení?
 
@@ -44,7 +44,8 @@ Podporovány jsou následující scénáře:
    Síť VNet/připojení k Internetu prostřednictvím poskytovatele zabezpečení a dalších přenosů (paprsků, paprsků a větví) prostřednictvím Azure Firewall.
 - Jeden zprostředkovatel v centru
 
-   - Veškerý provoz (paprsky až paprsky, směrování mezi větvemi, síť VNet/síť-Internet) zabezpečený Azure Firewall
+   - Veškerý provoz (paprsky až paprsky, směrování mezi větvemi, síť VNet/síť-Internet) zabezpečený Azure Firewall<br>
+      nebo
    - Síť VNet/síť k Internetu prostřednictvím poskytovatele zabezpečení partnera
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Osvědčené postupy pro filtrování internetového provozu na zabezpečených virtuálních rozbočovačích

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 76469f8b74b119c07374232899302fe1d18fe463
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731458"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074618"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Operace what-if (citlivostní analýza) při nasazení šablony ARM
 
@@ -32,7 +32,7 @@ Další informace o instalaci modulů najdete v tématu [Install Azure PowerShel
 
 ## <a name="install-azure-cli-module"></a>Instalace modulu CLI Azure
 
-Pokud chcete v Azure CLI použít operaci what-if, musíte mít Azure CLI 2.5.0 nebo novější. V případě potřeby si [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli).
+Pokud chcete v Azure CLI použít co dělat, musíte mít Azure CLI 2.14.0 nebo novější. V případě potřeby si [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="see-results"></a>Zobrazit výsledky
 
@@ -117,10 +117,10 @@ Pokud chcete vrátit výsledky bez barev, otevřete [konfigurační soubor Azure
 
 Pro REST API použijte:
 
-* [Nasazení – what if](/rest/api/resources/resources/deployments/whatif) pro nasazení skupin prostředků
-* [Nasazení – what if v oboru předplatného](/rest/api/resources/resources/deployments/whatifatsubscriptionscope) pro nasazení předplatných
-* [Nasazení – what if v oboru skupiny pro správu](/rest/api/resources/resources/deployments/whatifatmanagementgroupscope) pro nasazení skupin pro správu
-* [Nasazení – what if v oboru tenanta](/rest/api/resources/resources/deployments/whatifattenantscope) pro nasazení klientů.
+* [Nasazení – what if](/rest/api/resources/deployments/whatif) pro nasazení skupin prostředků
+* [Nasazení – what if v oboru předplatného](/rest/api/resources/deployments/whatifatsubscriptionscope) pro nasazení předplatných
+* [Nasazení – what if v oboru skupiny pro správu](/rest/api/resources/deployments/whatifatmanagementgroupscope) pro nasazení skupin pro správu
+* [Nasazení – what if v oboru tenanta](/rest/api/resources/deployments/whatifattenantscope) pro nasazení klientů.
 
 ## <a name="change-types"></a>Typy změn
 

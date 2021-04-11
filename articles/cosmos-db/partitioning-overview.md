@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2021
-ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772463"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030980"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,9 +26,9 @@ Tento článek vysvětluje vztah mezi logickými a fyzickými oddíly. Popisuje 
 
 ## <a name="logical-partitions"></a>Logické oddíly
 
-Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Například v kontejneru, který obsahuje data o výživě potravin, všechny položky obsahují `foodGroup` vlastnost. Můžete použít `foodGroup` jako klíč oddílu pro kontejner. Skupiny položek, které mají specifické hodnoty pro `foodGroup` , například, `Beef Products` `Baked Products` a `Sausages and Luncheon Meats` , tvoří rozdílné logické oddíly. Nemusíte si dělat starosti s odstraněním logického oddílu, pokud jsou podkladová data odstraněna.
+Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Například v kontejneru, který obsahuje data o výživě potravin, všechny položky obsahují `foodGroup` vlastnost. Můžete použít `foodGroup` jako klíč oddílu pro kontejner. Skupiny položek, které mají specifické hodnoty pro `foodGroup` , například, `Beef Products` `Baked Products` a `Sausages and Luncheon Meats` , tvoří rozdílné logické oddíly.
 
-Logický oddíl také definuje rozsah databázových transakcí. Položky v rámci logického oddílu lze aktualizovat pomocí [transakce s izolací snímku](database-transactions-optimistic-concurrency.md). Při přidání nových položek do kontejneru jsou nové logické oddíly transparentně vytvořeny systémem.
+Logický oddíl také definuje rozsah databázových transakcí. Položky v rámci logického oddílu lze aktualizovat pomocí [transakce s izolací snímku](database-transactions-optimistic-concurrency.md). Při přidání nových položek do kontejneru jsou nové logické oddíly transparentně vytvořeny systémem. Nemusíte si dělat starosti s odstraněním logického oddílu, pokud jsou podkladová data odstraněna.
 
 Počet logických oddílů ve vašem kontejneru není nijak omezený. Každý logický oddíl může ukládat až 20 GB dat. Dobrá volba klíče oddílu má široké spektrum možných hodnot. Například v kontejneru, kde všechny položky obsahují `foodGroup` vlastnost, může data v rámci `Beef Products` logického oddílu růst až 20 GB. [Výběr klíče oddílu](#choose-partitionkey) s široké škálou možných hodnot zajistí, že kontejner bude schopný škálovat.
 
@@ -38,7 +38,8 @@ Kontejner se škáluje distribucí dat a propustnosti mezi fyzickými oddíly. I
 
 Počet fyzických oddílů ve vašem kontejneru závisí na následujících:
 
-* Stanovený počet propustnosti (každý jednotlivý fyzický oddíl může poskytovat propustnost až 10 000 jednotek žádostí za sekundu).
+* Stanovený počet propustnosti (každý jednotlivý fyzický oddíl může poskytovat propustnost až 10 000 jednotek žádostí za sekundu). Omezení 10 000 RU/s pro fyzické oddíly znamená, že logické oddíly mají taky limit 10 000 RU/s, protože každý logický oddíl je namapovaný jenom na jeden fyzický oddíl.
+
 * Celkové úložiště dat (každý jednotlivý fyzický oddíl může ukládat až 50 GB data).
 
 > [!NOTE]

@@ -44,16 +44,24 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: Vytvoření kontroleru dat
       items:
-        - name: Azure Data Studio
-          href: create-data-controller-azure-data-studio.md
-        - name: portál Azure
-          href: create-data-controller-resource-in-azure-portal.md
-        - name: Azure Data CLI (azdata)
-          href: create-data-controller-using-azdata.md
-        - name: Nástroje pro Kubernetes
-          href: create-data-controller-using-kubernetes-native-tools.md
-        - name: Použít SCC (OpenShift)
-          href: how-to-apply-security-context-constraint.md
+        - name: Režim nepřímých připojení
+          items:
+            - name: Azure Data Studio
+              href: create-data-controller-azure-data-studio.md
+            - name: portál Azure
+              href: create-data-controller-resource-in-azure-portal.md
+            - name: Azure Data CLI (azdata)
+              href: create-data-controller-using-azdata.md
+            - name: Nástroje pro Kubernetes
+              href: create-data-controller-using-kubernetes-native-tools.md
+            - name: Použít SCC (OpenShift)
+              href: how-to-apply-security-context-constraint.md
+        - name: Režim přímého připojení
+          items:
+            - name: Požadavky
+              href: deploy-data-controller-direct-mode-prerequisites.md
+            - name: Nasadit
+              href: deploy-data-controller-direct-mode.md
     - name: Běžná prostředí pro datové služby s podporou služby Azure Arc
       items:
         - name: Monitorování pomocí řídicích panelů (Azure Data Studio)

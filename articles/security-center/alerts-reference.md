@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0c14b9a0c927ef9ed96853ddeed64b161df0d277
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0ae5ae4a66ce55da40eae3959945c96013af3ea
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176701"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075640"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Upozornění zabezpečení – Referenční příručka
 
@@ -510,7 +510,7 @@ Podporované záměry dezaktivačního řetězu Security Center jsou založené 
 | **Exfiltrace**        | Exfiltrace odkazuje na techniky a atributy, které výsledek nebo podpora v nežádoucí osoba odebírání souborů a informací z cílové sítě. Tato kategorie také pokrývá umístění v systému nebo síti, kde nežádoucí osoba může hledat informace pro exfiltrovat.                                                                                                                                                                                                                                                                                                                                  |
 | **CommandAndControl**   | Příkaz a ovládací prvek cílem představují způsob, jakým nežádoucí osoby komunikuje se systémy pod svým ovládacím prvkem v cílové síti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Dopad**              | Události dopadu se primárně snaží přímo snížit dostupnost nebo integritu systému, služby nebo sítě. včetně manipulace s daty, které mají vliv na obchodní nebo provozní proces. V takovém případě by se často odkazovalo na techniky, jako je ransomwarem, vytváření, manipulace s daty a další.                                                                                                                                                                                                                                                                                                     |
-|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
+|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 
 
 > [!NOTE]
 > Pro výstrahy, které jsou ve verzi Preview: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]

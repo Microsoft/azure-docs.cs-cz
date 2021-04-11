@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d0428f73c4df3d97002def03823ff8cced1d647
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88005798"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552627"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Licenční požadavky pro použití Privileged Identity Management
 
@@ -30,7 +30,7 @@ Aby bylo možné používat Azure Active Directory (Azure AD) Privileged Identit
 
 ## <a name="valid-licenses"></a>Platné licence
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+Budete muset [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] použít PIM a všechna jeho nastavení. V současné době můžete určit rozsah kontroly přístupu u instančních objektů s přístupem k Azure AD a k rolím prostředků Azure (Preview) s aktivní verzí služby Azure Active Directory Premium P2 ve vašem tenantovi. Pro účely obecné dostupnosti této funkce bude finalizace licenční model pro instanční objekty a může vyžadovat další licence.
 
 ## <a name="licenses-you-must-have"></a>Licence, které musíte mít
 
@@ -73,3 +73,5 @@ Pokud vyprší platnost Azure AD Premium P2, EMS E5 nebo zkušební licence, neb
 - [Nasazení technologie Privileged Identity Management](pim-deployment-plan.md)
 - [Zahájení využití technologie Privileged Identity Management](pim-getting-started.md)
 - [Role, které nemůžete spravovat v Privileged Identity Management](pim-roles.md)
+- [Vytvoření kontroly přístupu pro role prostředků Azure v PIM](pim-resource-roles-start-access-review.md)
+- [Vytvoření kontroly přístupu rolí Azure AD v PIM](pim-how-to-start-security-review.md)

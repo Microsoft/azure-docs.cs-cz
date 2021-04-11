@@ -126,6 +126,8 @@
       items:
         - name: Ochrana privátních záznamů a zón DNS
           href: dns-protect-private-zones-recordsets.md
+        - name: Import a export souboru zóny DNS
+          href: private-dns-import-export.md
     - name: Řešení potíží
       items:
         - name: Průvodce odstraňováním potíží

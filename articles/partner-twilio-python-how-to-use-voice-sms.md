@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9d6ec6aa5f30af04bf64e238f4a25ec6aef4f5d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580943"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504749"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Pythonu
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -81,15 +81,15 @@ Když se přihlásíte k účtu Twilio, obdržíte identifikátor SID účtu a o
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Vytvoření aplikace v Pythonu
 Aplikace v Pythonu, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace v Pythonu, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z Pythonu několika způsoby, Tento článek se zaměřuje na použití služeb Twilio s [Twilio knihovnou pro Python z GitHubu][twilio_python]. Další informace o použití knihovny Twilio pro Python najdete v tématu [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] .
 
-Nejprve [nastavte nový virtuální počítač Azure Linux] [azure_vm_setup], který bude sloužit jako hostitel pro novou webovou aplikaci v Pythonu. Jakmile je virtuální počítač spuštěný, budete muset svou aplikaci zveřejnit na veřejném portu, jak je popsáno níže.
+Nejdřív [nastavte nový virtuální počítač se systémem Azure Linux][azure_vm_setup] , který bude sloužit jako hostitel vaší nové webové aplikace v Pythonu. Jakmile je virtuální počítač spuštěný, budete muset svou aplikaci zveřejnit na veřejném portu, jak je popsáno níže.
 
 ### <a name="add-an-incoming-rule"></a>Přidat příchozí pravidlo
-  1. Přejít na stránku [skupina zabezpečení sítě] [azure_nsg].
+  1. Přejít na stránku [Skupina zabezpečení sítě][azure_nsg] .
   2. Vyberte skupinu zabezpečení sítě, která odpovídá vašemu virtuálnímu počítači.
   3. Přidejte **odchozí pravidlo** pro **port 80**. Ujistěte se, že povolíte příchozí přenos z libovolné adresy.
 
 ### <a name="set-the-dns-name-label"></a>Nastavit popisek názvu DNS
-  1. Přejít na stránku [Veřejné IP adresy] [azure_ips].
+  1. Přejít na stránku [veřejné IP adresy][azure_ips] .
   2. Vyberte veřejnou IP adresu, která odpovídá vašemu virtuálnímu počítači.
   3. V **konfiguračním** oddílu nastavte **popisek název DNS** . V případě tohoto příkladu bude vypadat nějak takto: *-Domain-Label*. centralus.cloudapp.Azure.com
 
@@ -272,3 +272,6 @@ Teď, když jste se seznámili se základy služby Twilio, můžete získat dal�
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
+[azure_ips]: https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address
+[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
+[azure_nsg]: https://docs.microsoft.com/azure/virtual-network/manage-network-security-group

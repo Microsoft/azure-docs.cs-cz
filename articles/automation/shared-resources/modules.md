@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 57dfc388dcba926706a695c93d2afa1956432be8
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: c86eab249167fab2d1ad72bba22e1d507122138c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953931"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169398"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
 
@@ -89,7 +89,7 @@ Azure Automation podporuje interní `Orchestrator.AssetManagement.Cmdlets` modul
 >[!NOTE]
 >Interní rutiny jsou dostupné, jenom když spouštíte Runbooky v prostředí Azure izolovaného prostoru (sandbox) nebo ve Windows Hybrid Runbook Worker. 
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -224,7 +224,7 @@ Pro každou rutinu v modulu uveďte stručný popis, popis a identifikátor URI 
 
   switch ($PSCmdlet.ParameterSetName) {
      "UserAccount" {
-        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $UserName, $Password
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $UserName, $Password
         Connect-Contoso -Credential $cred
      }
      "ConnectionObject" {
@@ -249,7 +249,7 @@ Následující příklad Runbooku používá prostředek připojení contoso, `C
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
 
-  $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $contosoConnection.UserName, $contosoConnection.Password
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $contosoConnection.UserName, $contosoConnection.Password
   Connect-Contoso -Credential $cred
   }
   ```

@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: Začínáme'
-description: V tomto rychlém startu se naučíte, jak začít s porozuměním základnímu pracovnímu postupu pro nasazení v programu Defender pro IoT.
+description: V tomto rychlém startu se dozvíte, jak začít s porozuměním základnímu pracovnímu postupu pro nasazení v programu Defender pro IoT.
 ms.topic: quickstart
 ms.date: 2/18/2021
-ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784488"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384949"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Rychlý Start: Začínáme s Defenderem pro IoT
 
@@ -20,7 +20,7 @@ Tento článek poskytuje přehled kroků, které budete provádět při nastavov
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+- Žádné
 
 ## <a name="permission-requirements"></a>Požadavky na oprávnění
 
@@ -60,11 +60,14 @@ Registrace zahrnuje:
 Postup registrace:
 
 1. Přejít na portál Azure Defender pro IoT Portal.
+
 1. Vyberte **zaregistrování předplatného**.
+
 1. Na stránce s **cenami** vyberte předplatné nebo vytvořte nové a přidejte počet potvrzených zařízení.
+
 1. Vyberte kartu **Stáhnout místní konzolu pro správu** a uložte stažený aktivační soubor. Tento soubor obsahuje agregovaná potvrzená zařízení, která jste definovali. Po počátečním přihlášení se soubor nahraje do konzoly pro správu.
 
-Informace o tom, jak odpojení předplatné, najdete v tématu [odpojení a Subscription](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription).
+Informace o tom, jak odpojení předplatné, najdete v tématu [odpojení a Subscription](how-to-manage-subscriptions.md#offboard-a-subscription).
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>Instalace a nastavení místní konzoly pro správu
 
@@ -87,6 +90,7 @@ Instalace a nastavení:
 Zaveďte senzor tak, že ho zaregistrujete do Azure Defenderu pro IoT a stáhnete soubor aktivace senzoru:
 
 1. Definujte název snímače a přidružte ho k předplatnému.
+
 1. Vyberte režim správy senzorů:
 
    - **Senzory připojené ke cloudu**: informace, které detekuje senzory, se zobrazují v konzole senzorů. Kromě toho jsou informace o výstrahách doručovány prostřednictvím služby IoT Hub a mohou být sdíleny s ostatními službami Azure, jako je například Azure Sentinel.
@@ -102,9 +106,13 @@ Další informace najdete v tématu [zprovoznění a správa senzorů v programu
 Stáhněte si balíček ISO z Azure Defenderu pro IoT Portal, nainstalujte software a nastavte snímač.
 
 1. V programu Defender pro IoT Portal vyberte **Začínáme** .
+
 1. Vyberte **nastavit senzor**.
+
 1. Zvolte verzi a vyberte **Stáhnout**.
+
 1. Nainstalujte software snímače. Další informace najdete v tématu [Defender pro instalaci IoT](how-to-install-software.md).
+
 1. Aktivujte a nastavte svůj senzor. Další informace najdete v tématu [přihlášení a aktivace snímače](how-to-activate-and-set-up-your-sensor.md).
 
 ## <a name="connect-sensors-to-an-on-premises-management-console"></a>Připojení senzorů k místní konzole pro správu
