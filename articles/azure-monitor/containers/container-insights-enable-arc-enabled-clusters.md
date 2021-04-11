@@ -3,12 +3,12 @@ title: Konfigurace clusteru Kubernetes s povoleným kontejnerem Azure pomocí sl
 description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí služby Container Insights v clusterech Kubernetes s povoleným ARC Azure.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6a725f6af613a541077cecfed3ba2289909130d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711293"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219226"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolení monitorování clusteru Kubernetes s podporou Azure Arc (Preview)
 
@@ -30,7 +30,7 @@ Pro službu Container Insights se oficiálně podporují tyto informace:
 
 - Podporovaná verze operačního systému Linux pro hlavní a pracovní uzly jsou: Ubuntu (18,04 LTS a 16,04 LTS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -113,7 +113,7 @@ Pokud chcete monitorovat svůj cluster pomocí skriptu prostředí PowerShell ne
     $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. `$kubeContext`Pomocí příkazu nakonfigurujte proměnnou pomocí **Kube kontextu** clusteru `kubectl config get-contexts` . Pokud chcete použít aktuální kontext, nastavte hodnotu na `""` .
+3. `$kubeContext`Pomocí příkazu nakonfigurujte proměnnou pomocí **Kube kontextu** clusteru `kubectl config get-contexts` . 
 
     ```powershell
     $kubeContext = "<kubeContext name of your k8s cluster>"
@@ -178,7 +178,7 @@ Provedením následujících kroků povolíte monitorování pomocí zadaného s
     export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. `kubeContext`Pomocí příkazu nakonfigurujte proměnnou pomocí **Kube kontextu** clusteru `kubectl config get-contexts` . Pokud chcete použít aktuální kontext, nastavte hodnotu na `""` .
+3. `kubeContext`Pomocí příkazu nakonfigurujte proměnnou pomocí **Kube kontextu** clusteru `kubectl config get-contexts` . 
 
     ```bash
     export kubeContext="<kubeContext name of your k8s cluster>"

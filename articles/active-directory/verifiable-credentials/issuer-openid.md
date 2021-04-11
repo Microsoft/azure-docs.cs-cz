@@ -1,5 +1,5 @@
 ---
-title: Příklady komunikace služby vystavitele (Preview)
+title: Příklady komunikace služby vystavitele (Preview) – Azure Active Directory ověřitelných přihlašovacích údajů
 description: Podrobnosti o komunikaci mezi zprostředkovatelem identity a službou vystavitele
 author: barclayn
 manager: davba
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: bd1b7560967ff0c458639a5737a02fca27ffc9f5
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169902"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220194"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Příklady komunikace služby vystavitele (Preview)
 
@@ -141,3 +141,7 @@ Token ID musí používat formát serializace pro komprimaci JWT a nesmí být z
 | `iat` | Musí obsahovat čas vydání tokenu ID. |
 | `nonce` | Hodnota zahrnutá v žádosti o autorizaci. |
 | Další deklarace identity | Token ID by měl obsahovat jakékoli další deklarace, jejichž hodnoty budou zahrnuty do ověřitelných přihlašovacích údajů, které budou vydány. V této části je místo, kde byste měli zahrnout libovolné atributy uživatele, například jejich jméno. |
+
+## <a name="next-steps"></a>Další kroky
+
+- [Postup přizpůsobení Azure Active Directory ověřitelných přihlašovacích údajů](credential-design.md)

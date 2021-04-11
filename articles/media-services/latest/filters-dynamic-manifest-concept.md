@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ad3b6fa581bfc36579ef4b6937b50f8c1789a7f5
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 1fb8724edc32477bb1c399db0493833e9df984bb
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111587"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277568"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku
 
@@ -26,7 +26,7 @@ ms.locfileid: "106111587"
 
 Při doručování obsahu streamování s adaptivní přenosovou rychlostí do zařízení někdy potřebujete publikovat více verzí manifestu, aby se mohly zaměřit konkrétní možnosti zařízení nebo dostupná šířka pásma sítě. [Dynamický balíček](encode-dynamic-packaging-concept.md) vám umožní určit filtry, které mohou vyfiltrovat konkrétní kodeky, rozlišení, přenosové rychlosti a kombinace zvukového stopu průběžně. Toto filtrování odstraní nutnost vytvářet více kopií. Jednoduše potřebujete publikovat novou adresu URL s konkrétní sadou filtrů nakonfigurovaných na vaše cílová zařízení (iOS, Android, byznysu nebo prohlížeče) a možnosti sítě (scénáře s vysokou šířkou pásma, mobilním nebo malou šířkou pásma). V takovém případě můžou klienti manipulovat s datovým proudem vašeho obsahu prostřednictvím řetězce dotazu (zadáním dostupných [filtrů assetů nebo filtrů účtu](filters-concept.md)) a pomocí filtrů streamovat konkrétní oddíly streamu.
 
-Některé scénáře doručování vyžadují, abyste se ujistili, že zákazník nemá přístup ke konkrétním stopám. Například je možné, že nechcete publikovat manifest, který obsahuje HD stopy, do konkrétní vrstvy odběratele. Nebo možná budete chtít odebrat konkrétní stopy s adaptivní přenosovou rychlostí (ABR), abyste snížili náklady na doručování na konkrétní zařízení, které by nebylo přínosem dalších stop. V takovém případě můžete přidružit seznam předem vytvořených filtrů ke [lokátoru streamování](streaming-locators-concept.md) při vytváření. Klienti pak nemohou manipulovat s tím, jak je obsah streamovaná, protože je definovaný **lokátorem streamování**.
+Některé scénáře doručování vyžadují, abyste se ujistili, že zákazník nemá přístup ke konkrétním stopám. Například je možné, že nechcete publikovat manifest, který obsahuje HD stopy, do konkrétní vrstvy odběratele. Nebo možná budete chtít odebrat konkrétní stopy s adaptivní přenosovou rychlostí (ABR), abyste snížili náklady na doručování na konkrétní zařízení, které by nebylo přínosem dalších stop. V takovém případě můžete přidružit seznam předem vytvořených filtrů ke [lokátoru streamování](stream-streaming-locators-concept.md) při vytváření. Klienti pak nemohou manipulovat s tím, jak je obsah streamovaná, protože je definovaný **lokátorem streamování**.
 
 Filtrování můžete kombinovat zadáním [filtrů na lokátoru streamování](filters-concept.md#associating-filters-with-streaming-locator) a dalších filtrů specifických pro zařízení, které klient ZADÁ v adrese URL. Tato kombinace je užitečná k omezení dalších stop, jako jsou metadata nebo datové proudy událostí, zvukové jazyky nebo popisné zvukové stopy.
 

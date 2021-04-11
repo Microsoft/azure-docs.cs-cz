@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 814a2f7e32f173111e45fff02f00c3e4d2a9a670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601079"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075558"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Synchronizace souborů Azure
 
@@ -65,11 +65,11 @@ Při prvním nastavení zařízení StorSimple vygenerovala "šifrovací klíč 
 
 Pro úspěšnou migraci je nutný šifrovací klíč dat služby. Teď je vhodný čas načíst tento klíč ze svých záznamů, jednu pro každé zařízení v inventáři.
 
-Pokud klíče ve svých záznamech nemůžete najít, můžete ho načíst ze zařízení. Každé zařízení má jedinečný šifrovací klíč. Načtení klíče:
+Pokud nemůžete najít klíče ve svých záznamech, můžete ze zařízení vygenerovat nový klíč. Každé zařízení má jedinečný šifrovací klíč.
 
-* Soubor a žádost o podporu se Microsoft Azure prostřednictvím Azure Portal. Požadavek by měl obsahovat sériové číslo (y) zařízení StorSimple a požadavek na načtení šifrovacího klíče dat služby.
-* Pracovník podpory StorSimple vás bude kontaktovat s požadavkem na virtuální schůzku.
-* Ujistěte se, že před zahájením schůzky se k zařízení StorSimple připojujete [přes sériovou konzolu](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) nebo prostřednictvím [vzdálené relace PowerShellu](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple).
+#### <a name="change-the-service-data-encryption-key"></a>Změna šifrovacího klíče dat služby
+
+[!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
 > Při rozhodování o tom, jak se připojit k zařízení StorSimple, zvažte následující:

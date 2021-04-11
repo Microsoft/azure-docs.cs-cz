@@ -10,14 +10,15 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.custom: references_regions
+ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203721"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075708"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -32,9 +33,31 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 
 ## <a name="march-2021"></a>Březen 2021
 
+### <a name="audio-analysis"></a>Analýza zvuku 
+
 Analýza zvuku je teď k dispozici v dalším novém balíčku zvukových funkcí v jiném cenovém bodě. Nová předvolba **základní analýzy zvuku** nabízí možnost nedostatku pouze k extrakci popisků a titulků výstupů řeči, překladu a formátování. V předplatném se **základní zvuk** vytvoří ve vyúčtování dva samostatné měřiče, včetně řádku pro přepis a samostatného řádku pro formátování titulků a titulků. Další informace o cenách najdete na stránce s [cenami Media Services](https://azure.microsoft.com/pricing/details/media-services/) .
 
 Nově přidaný svazek je k dispozici při indexování nebo opětovném indexování souboru tak, že vyberete **možnost Rozšířená volba**  ->  **základní zvukové** Předvolby (v rozevíracím seznamu **video a zvuk** ).
+
+### <a name="new-developer-portal"></a>Nový portál pro vývojáře 
+
+Video Indexer má nový [portál pro vývojáře](https://api-portal.videoindexer.ai/), vyzkoušení nových rozhraní API video indexer a vyhledání všech relevantních prostředků na jednom místě: [úložiště GitHub](https://github.com/Azure-Samples/media-services-video-indexer), [přetečení zásobníku](https://stackoverflow.com/questions/tagged/video-indexer), [video indexer technická komunita](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) s relevantními blogových příspěvků, [video indexer nejčastějších dotazů](faq.md), [uživatelských hlasech](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016) a poskytování vašich názorů a návrhových funkcí a  [odkaz "CodePen"](https://codepen.io/videoindexer) s ukázkami kódu widgetů. 
+ 
+### <a name="advanced-customization-capabilities-for-insight-widget"></a>Rozšířené možnosti přizpůsobení pro pomůcku Insight 
+
+Sada SDK je teď dostupná pro vložení widgetu Video Indexer Insights ve vaší vlastní službě a přizpůsobení jeho stylu a dat. Sada SDK podporuje standardní pomůcku Video Indexer Insights a plně přizpůsobitelnou pomůcku přehledů. Ukázka kódu je k dispozici v [video indexer úložišti GitHubu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets/widget-customization). Pomocí těchto pokročilých možností přizpůsobení může vývojář řešení použít vlastní stylování a přizpůsobovat si vlastní styl dat AI a prezentovat ho v widgetu Insight (s Video Indexer přehledy). 
+
+### <a name="video-indexer-deployed-in-the-us-north-central--us-west-and-canada-central"></a>Video Indexer nasazena v USA (střed) – sever, USA – západ a Kanada – střed 
+
+Nyní můžete vytvořit Video Indexer placeného účtu v centrálních oblastech USA (střed) – sever, USA – západ a Kanada.
+ 
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>Podpora pro nové zdrojové jazyky pro převod řeči na text (STT), překlad a hledání 
+
+Video Indexer teď podporuje STT, překlady a hledání v dánštině ("da-DK"), norština (' NB-NO '), švédština (' sv-SE '), finština (' Fi-FI '), kanadská francouzština (' fr-CA '), thajština (' th-TH '), Arabština (ar-BH ', ' ar-EG ', ' ar-SWEETIQ ', ' ar-JO ', ' ar-KW ', ' ar-9,1 ', ' ar-OM ', ' ar-QA ', ' ar-S ' a ' ar-SY ') a turečtina (' tr-TR '). Tyto jazyky jsou k dispozici na webové stránce rozhraní API i Video Indexer. 
+ 
+### <a name="search-by-topic-in-video-indexer-website"></a>Hledat podle tématu Video Indexer webu 
+
+Pomocí funkce hledání teď můžete v horní části stránky [video indexer webu](https://www.videoindexer.ai/account/login) vyhledat videa s konkrétními tématy. 
 
 ## <a name="february-2021"></a>Únor 2021
 

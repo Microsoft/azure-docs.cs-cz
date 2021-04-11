@@ -3,12 +3,12 @@ title: Šifrování obsahu pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak nakonfigurovat šifrování obsahu pomocí Azure Media Services v Azure Portal.
 ms.topic: quickstart
 ms.date: 08/31/2020
-ms.openlocfilehash: a97e1a3c51d44b7c530de0c6eeca569f898d07c1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5ce942447f6d143116350940bda0e01a8b532d24
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106069311"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277670"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Rychlý Start: použití portálu k šifrování obsahu
 
@@ -28,8 +28,8 @@ V tomto rychlém startu se dozvíte, jak vytvořit zásadu klíče obsahu, kde m
 ### <a name="suggested-pre-reading"></a>Navrhované před čtením
 
 * [Dynamické šifrování a doručování klíčů](drm-content-protection-concept.md)
-* [Lokátory streamování](streaming-locators-concept.md)
-* [Zásady streamování](streaming-policy-concept.md)
+* [Lokátory streamování](stream-streaming-locators-concept.md)
+* [Zásady streamování](stream-streaming-policy-concept.md)
 * [Zásady symetrických klíčů](drm-content-key-policy-concept.md)
 
 ## <a name="prerequisites"></a>Požadavky
@@ -80,7 +80,7 @@ K vašemu obsahu můžete také přidat šifrované šifrování klíče AES-128
 1. V části **Lokátor streamování** pro vybraný prostředek stiskněte **+ Přidat Lokátor streamování**. 
 1. Vyberte **zásadu streamování** , která je vhodná pro **zásady klíče obsahu** , které jste nakonfigurovali.
 
-    Téma [zásady streamování](streaming-policy-concept.md) poskytuje podrobné informace o tom, jaké zásady streamování odpovídají zásadám pro klíč obsahu.
+    Téma [zásady streamování](stream-streaming-policy-concept.md) poskytuje podrobné informace o tom, jaké zásady streamování odpovídají zásadám pro klíč obsahu.
 1. Jakmile vyberete vhodné zásady streamování, můžete v rozevíracím seznamu vybrat zásadu klíče obsahu.
 1. Stisknutím tlačítka **Přidat** přidejte Lokátor streamování do assetu.
 

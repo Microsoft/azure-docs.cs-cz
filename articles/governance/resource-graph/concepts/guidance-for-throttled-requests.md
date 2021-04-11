@@ -1,15 +1,15 @@
 ---
 title: Pokyny pro omezované požadavky
 description: Naučte se paralelně seskupovat, rozložit, stránkování a dotazovat, abyste se vyhnuli požadavkům, které Azure Resource Graph omezuje.
-ms.date: 01/27/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 891d5951670dd6022b66ae2936ee855f73f8b33a
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917703"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283537"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -231,7 +231,7 @@ Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v je
 
 ## <a name="still-get-throttled"></a>Pořád se omezuje?
 
-Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na adrese [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
+Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na [tým Azure Resource Graph](mailto:resourcegraphsupport@microsoft.com).
 
 Uveďte následující podrobnosti:
 

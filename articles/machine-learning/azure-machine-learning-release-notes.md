@@ -9,18 +9,92 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166679"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210890"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro) .
 
 __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-05"></a>2021-04-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1260"></a>Sada SDK Azure Machine Learning pro Python v 1.26.0
++ **Opravy chyb a vylepšení**
+  + **azureml-automl-core**
+    + Opravili jsme problém, kdy se Naive modely v AutoMLStep spustí a selžou s funkcemi prodlevy nebo posuvných oken. Tyto modely se nedoporučují, pokud je nastavena cílová velikost prodlevy nebo cílového okna.
+    +  Byl změněn výstup konzoly při odeslání AutoML spuštění za účelem zobrazení odkazu na portál ke spuštění.
+  + **azureml-core**
+    + Do dokumentace byl přidán režim HDFS.
+    + Přidání podpory pro porozumění oddílům datových sad souborů na základě struktury glob
+    + Byla přidána podpora pro aktualizaci registru kontejneru kontejnerů přidružených k pracovnímu prostoru AzureML.
+    + Zastaralé atributy prostředí v rámci DockerSection-"Enabled", "shared_volume" a "arguments" jsou součástí DockerConfiguration v RunConfiguration Now.
+    + Aktualizovaná dokumentace ke klonu rozhraní příkazového řádku kanálu
+    + Aktualizované identifikátory URI portálu, aby zahrnovaly tenanta pro ověřování
+    + Odebral se název experimentu z identifikátorů URI spuštění, aby se zabránilo přesměrování. 
+    + Aktualizace experimentu URO pro použití ID experimentu.
+    + Opravy chyb pro připojení vzdálených výpočtů pomocí služby AzureML CLI.
+    + Aktualizované identifikátory URI portálu, aby zahrnovaly tenanta pro ověřování.
+    + Byl aktualizován identifikátor URI experimentu, aby bylo možné použít ID experimentu.
+  + **azureml-interpret**
+    + AzureML-interpretoval aktualizaci pro použití interpretu 0.17.0 komunity
+  + **azureml-opendatasets**
+    + Vstupní počáteční datum a typ koncového data ověřování a indikace chyby, pokud se nejedná o typ DateTime.
+  + **AzureML-paralelní – spuštění**
+    + [Experimentální funkce] Přidat `partition_keys` parametr do ParallelRunConfig, je-li tento parametr zadán, vstupní datové sady by byly rozděleny do minimálních dávků podle klíčů určených IT. Vyžaduje, aby všechny vstupní datové sady byly rozdělené na oddíly.
+  + **azureml-pipeline-steps**
+    + Opravu chyb – podporuje se path_on_compute při předávání konfigurace datové sady jako stažení.
+    + Vyřadí se RScriptStep za použití CommandStep pro spouštění skriptů R v kanálech. 
+    + Vyřadí se EstimatorStep za použití CommandStep pro průběžné školení ML (včetně distribuovaného školení) v kanálech.
+  + **AzureML-SDK**
+    + Aktualizace python_requires na < 3,9 pro AzureML-SDK
+  + **azureml-train-automl-client**
+    +  Byl změněn výstup konzoly při odeslání AutoML spuštění za účelem zobrazení odkazu na portál ke spuštění.
+  + **azureml-train-core**
+    + Nepoužívané atributy DockerSection ' Enabled ', ' shared_volume ' a ' arguments ' mají přednost při použití DockerConfiguration s ScriptRunConfig.
+    +  Použití otevřených datových sad Azure pro MNIST ručně zapsaných datovou sadu
+    + Chybové zprávy Hyperdrive byly aktualizovány.
+
+
+## <a name="2021-03-22"></a>2021-03-22
+
+### <a name="azure-machine-learning-sdk-for-python-v1250"></a>Sada SDK Azure Machine Learning pro Python v 1.25.0
++ **Opravy chyb a vylepšení**
+  + **azureml-automl-core**
+    +  Byl změněn výstup konzoly při odeslání AutoML spuštění za účelem zobrazení odkazu na portál ke spuštění.
+  + **azureml-core**
+    + Začne podporovat aktualizaci registru kontejneru pro pracovní prostor v sadě SDK a rozhraní příkazového řádku.
+    + Nepoužívané atributy DockerSection ' Enabled ', ' shared_volume ' a ' arguments ' mají přednost při použití DockerConfiguration s ScriptRunConfig.
+    + Aktualizovaná dokumentace ke klonu rozhraní příkazového řádku kanálu
+    + Aktualizované identifikátory URI portálu, aby zahrnovaly tenanta pro ověřování
+    + Odebral se název experimentu z identifikátorů URI spuštění, aby se zabránilo přesměrování.
+    + Aktualizace experimentu URO pro použití ID experimentu.
+    + Opravy chyb pro připojení vzdálených výpočtů pomocí AZ CLI
+    + Aktualizované identifikátory URI portálu, aby zahrnovaly tenanta pro ověřování.
+    + Přidání podpory pro porozumění oddílům datových sad souborů na základě struktury glob
+  + **azureml-interpret**
+    + AzureML-interpretoval aktualizaci pro použití interpretu 0.17.0 komunity
+  + **azureml-opendatasets**
+    + Vstupní počáteční datum a typ koncového data ověřování a indikace chyby, pokud se nejedná o typ DateTime.
+  + **azureml-pipeline-core**
+    + Opravu chyb – podporuje se path_on_compute při předávání konfigurace datové sady jako stažení.
+  + **azureml-pipeline-steps**
+    + Opravu chyb – podporuje se path_on_compute při předávání konfigurace datové sady jako stažení.
+    + Vyřadí se RScriptStep za použití CommandStep pro spouštění skriptů R v kanálech. 
+    + Vyřadí se EstimatorStep za použití CommandStep pro průběžné školení ML (včetně distribuovaného školení) v kanálech.
+  + **azureml-train-automl-runtime**
+    +  Byl změněn výstup konzoly při odeslání AutoML spuštění za účelem zobrazení odkazu na portál ke spuštění.
+  + **azureml-train-core**
+    + Nepoužívané atributy DockerSection ' Enabled ', ' shared_volume ' a ' arguments ' mají přednost při použití DockerConfiguration s ScriptRunConfig.
+    + Použití otevřených datových sad Azure pro MNIST ručně zapsaných datovou sadu
+    + Chybové zprávy Hyperdrive byly aktualizovány.
+
 
 ## <a name="2021-03-31"></a>2021-03-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (březen Update)
@@ -38,6 +112,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
   + Odkazy teď v terminálu klikněte na.
   + Vylepšený výkon technologie IntelliSense
 
+
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Sada SDK Azure Machine Learning pro Python v 1.24.0
@@ -50,8 +125,6 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
     + Přidání funkce pro filtrování tabulkových datových sad podle hodnot sloupců a datových sad souborů podle metadat.
   + **azureml-contrib-fairness**
     + Zahrnout schéma JSON do kolečka pro `azureml-contrib-fairness`
-  + **AzureML-contrib-k8s**
-    + Nyní musí místo skupiny prostředků a názvu clusteru poskytovat resource_id pro připojení.
   + **AzureML-contrib-Mir**
     + Při nastavení show_output na hodnotu true při nasazení modelů bude před odesláním požadavku na server přehrána konfigurace nasazení a nasazení.
   + **azureml-core**

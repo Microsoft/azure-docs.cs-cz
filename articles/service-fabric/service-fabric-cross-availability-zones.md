@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a49fd6f97a9130fa0369d2a36cdc38e59613afc1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf96a222dd40909401b70d8f1812b7d29b6088b
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544379"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012458"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -33,7 +33,7 @@ Doporučená topologie pro typ primárního uzlu vyžaduje prostředky uvedené 
 * NSG, na který odkazuje podsíť, ve které nasadíte služby Virtual Machine Scale Sets.
 
 >[!NOTE]
-> Vlastnost skupiny s jedním umístěním sady škálování virtuálního počítače musí být nastavená na hodnotu true, protože Service Fabric nepodporuje jednu sadu škálování virtuálního počítače, která zahrnuje zóny.
+> Vlastnost skupiny pro jednotné umístění sady škálování virtuálního počítače musí být nastavená na hodnotu true.
 
 Diagram znázorňující diagram architektury dostupnosti služby Azure Service Fabric ![ , který zobrazuje architekturu zóny dostupnosti azure Service Fabric.][sf-architecture]
 

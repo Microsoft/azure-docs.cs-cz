@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74d30b7c42002c8f134520e0198774eba1519bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047296"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553834"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Jak vytvořit nabídku SaaS na komerčním webu Marketplace
 
@@ -56,7 +56,7 @@ Na kartě **nastavení nabídky** v části **Podrobnosti o nastavení** zvolít
    + Pokud chcete poskytnout 30denní bezplatnou zkušební verzi, vyberte možnost **bezplatná** zkušební verze a potom v zobrazeném poli **Adresa URL zkušební verze** zadejte adresu URL (počínaje *http* nebo *https*), kde můžou zákazníci získat přístup k bezplatné zkušební verzi prostřednictvím [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](azure-ad-saas.md). Například, `https://contoso.com/trial/saas-app`.
    + Pokud chcete, aby se potenciální zákazníci mohli koupit nabídku, vyberte **kontaktovat mě**.
 
-### <a name="enable-a-test-drive-optional"></a>Povolit testovací jednotku (volitelné)
+## <a name="enable-a-test-drive-optional"></a>Povolit testovací jednotku (volitelné)
 
 Testovací jednotka představuje skvělý způsob, jak předprezentovat vaši nabídku potenciálním zákazníkům tím, že jim poskytne přístup k předkonfigurovanému prostředí po dobu určitého počtu hodin. Nabídka testovacích jednotek má za následek vyšší míru převodu a generuje vysoce kvalifikované potenciální zákazníky. Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](./what-is-test-drive.md).
 
@@ -67,14 +67,14 @@ Testovací jednotka představuje skvělý způsob, jak předprezentovat vaši na
 1.  V části **testovací jednotka** zaškrtněte políčko **Povolit testovací jednotku** .
 1.  V seznamu, který se zobrazí, vyberte typ testovacího disku.
 
-### <a name="configure-lead-management"></a>Konfigurace správy potenciálních zákazníků
+## <a name="configure-lead-management"></a>Konfigurace správy potenciálních zákazníků
 
 Připojte svůj systém pro řízení vztahů se zákazníky (CRM) pomocí komerční nabídky na webu Marketplace, abyste mohli dostávat kontaktní údaje zákazníka, když zákazník vyjádří zájem nebo nasadí váš produkt. Toto připojení můžete kdykoli změnit během nebo po vytvoření nabídky.
 
 > [!NOTE]
 > Pokud chcete nabídku prodávat přes společnost Microsoft nebo jste vybrali možnost **kontakt mi** , musíte nakonfigurovat správu potenciálních zákazníků. Podrobné pokyny najdete v [zákaznických zákaznících z nabídky komerčních webů na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
-#### <a name="to-configure-the-connection-details-in-partner-center"></a>Konfigurace podrobností o připojení v partnerském centru
+### <a name="configure-the-connection-details-in-partner-center"></a>Konfigurace podrobností o připojení v partnerském centru
 
 1.  V části **zájemci na zákazníky** vyberte odkaz **připojit** .
 1. V dialogovém okně **Podrobnosti připojení** vyberte v seznamu cíl zájemce.
@@ -88,6 +88,36 @@ Připojte svůj systém pro řízení vztahů se zákazníky (CRM) pomocí komer
 
 1. Pokud chcete ověřit zadanou konfiguraci, vyberte odkaz **ověřit** .
 1. Pokud chcete dialogové okno zavřít, vyberte **OK**.
+
+## <a name="configure-microsoft-365-app-integration"></a>Konfigurace Microsoft 365 integrace aplikací
+
+Můžete vysvětlovat [jednotné zjišťování a doručování](./plan-SaaS-offer.md) SaaS nabídky a všech souvisejících Microsoft 365ch aplikací tím, že je propojíte.
+
+### <a name="integrate-with-microsoft-api"></a>Integrace s rozhraním API společnosti Microsoft
+
+1. Pokud se vaše nabídka SaaS Neintegruje s rozhraním API Microsoft Graph, vyberte **ne**. Pokračovat v propojení s publikovanými klienty pro Microsoft 365 aplikací  
+
+1. Pokud se vaše nabídka SaaS integruje s rozhraním API Microsoft Graph, vyberte **Ano** a potom zadejte ID Azure Active Directory aplikace, které jste vytvořili a zaregistrovali pro integraci s rozhraním API Microsoft Graph. 
+
+### <a name="link-published-microsoft-365-app-consumption-clients"></a>Propojit publikované Microsoft 365 klienty spotřeby aplikací
+
+1. Pokud nemáte publikovaná řešení Office, aplikace Teams nebo SharePoint Framework, která budou fungovat s vaší nabídkou SaaS, vyberte **ne**.
+
+1. Pokud jste publikovali doplněk Office, aplikace týmů nebo řešení pro SharePoint Framework, které funguje s vaší nabídkou SaaS, vyberte **Ano** a potom vyberte **+ Přidat další AppSource odkaz** pro přidání nových odkazů.  
+
+1. Zadejte platný odkaz na AppSource.
+
+1. Pokračujte v přidávání všech odkazů výběrem **+ Přidat další odkaz AppSource** a zadáním platných odkazů AppSource.  
+
+1. Pořadí propojených produktů se zobrazí na stránce výpis nabídky SaaS, která je označena hodnotou pořadí, kterou můžete změnit pomocí příkazu vybrat, podržet a přesunout ikonu = nahoru a dolů v seznamu. 
+
+1. Propojený produkt můžete odstranit tak, že v řádku produktu vyberete **Odstranit** .  
+
+
+> [!IMPORTANT]
+> Pokud zastavíte prodej propojeného produktu, nebudete ho automaticky odpojovat na nabídku SaaS, musíte ho odstranit ze seznamu propojených produktů a znovu odeslat nabídku SaaS.  
+
+ 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: parametry v definici zásady'
-description: Tento model Azure Policy poskytuje příklad použití parametrů řetězce a pole v definici zásady a také jak parametrizovat efekt.
-ms.date: 08/17/2020
+description: Tento model Azure Policy poskytuje příklad použití parametrů řetězce a pole v definici zásady a jak parametrizovat efekt.
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b742aaaf950e2b5670edbaa1f0134da144e675b6
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89649946"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092768"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy – vzor: parametry
 
@@ -16,7 +16,7 @@ Definici zásady je možné nastavit jako dynamickou a snížit tak počet defin
 
 ## <a name="sample-1-string-parameters"></a>Ukázka 1: parametry řetězce
 
-Tato definice zásady používá dva parametry, **TagName** a **tagValue** k nastavení toho, co přiřazení zásad hledá u prostředků. Tento formát umožňuje použití definice zásad pro libovolný počet kombinací názvů značek a hodnot značek, ale udržuje jenom jednu definici zásady.
+Tato definice zásady používá dva parametry, **TagName** a **tagValue** k nastavení, které přiřazení zásad hledá u prostředků. Tento formát umožňuje použití definice zásad pro libovolný počet kombinací názvů značek a hodnot značek, ale udržuje jenom jednu definici zásady.
 
 > [!NOTE]
 > Pro ukázku značek, která používá **režim** _All_ a pracuje se skupinou prostředků, viz [vzor: značky-Sample #1](./pattern-tags.md#sample-1-parameterize-tags).

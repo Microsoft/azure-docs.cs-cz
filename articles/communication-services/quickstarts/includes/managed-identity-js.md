@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce250b19478c70109fe28d199ac771a77c42c7dc
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a3771a21914831f249696fc3d733c5ea935c2c7e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113465"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251526"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Přidání spravované identity do řešení komunikačních služeb (JS)
 
@@ -29,7 +29,9 @@ import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 
 Níže uvedené příklady používají rozhraní [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
 
-Pokud chcete zaregistrovat aplikaci ve vývojovém prostředí a nastavit proměnné prostředí, přečtěte si téma [autorizace přístupu pomocí spravované identity](../managed-identity-from-cli.md) .
+Snadný způsob, jak přejít na použití spravovaného ověřování identity, najdete v tématu [autorizace přístupu pomocí spravované identity](../managed-identity-from-cli.md) .
+
+Podrobnější informace o tom, jak objekt DefaultAzureCredential funguje a jak ho můžete používat způsobem, který není uvedený v tomto rychlém startu, najdete v tématu [Klientská knihovna Azure identity pro JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) .
 
 ### <a name="create-an-identity-and-issue-a-token-with-managed-identity"></a>Vytvoření identity a vydání tokenu se spravovanou identitou
 

@@ -4,16 +4,16 @@ description: V tomto článku se naučíte používat standardní diagnostické 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82ad29b02e501d41653fd466e58218e35c3b93c
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489453"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012165"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -30,6 +30,8 @@ Prvním krokem při řešení potíží IoT Edge by měl být použití `check` 
 
 Tento příkaz můžete spustit `check` následujícím způsobem, nebo pokud `--help` chcete zobrazit úplný seznam možností, přidejte příznak.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 V systému Linux:
 
 ```bash
@@ -41,6 +43,19 @@ Ve Windows:
 ```powershell
 iotedge check
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.1 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge check
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Nástroj pro řešení potíží spustí mnoho kontrol, které jsou seřazené do těchto tří kategorií:
 
@@ -58,6 +73,9 @@ Když potřebujete shromažďovat protokoly ze zařízení IoT Edge, nejpohodln�
 
 Spusťte `support-bundle` příkaz s `--since` příznakem a určete tak, jak dlouho od minulosti chcete získat protokoly. Například načte `6h` protokoly za posledních šest hodin, za posledních šest `6d` dní, za `6m` posledních šest minut a tak dále. Pokud `--help` chcete zobrazit úplný seznam možností, přidejte příznak.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 V systému Linux:
 
 ```bash
@@ -69,6 +87,19 @@ Ve Windows:
 ```powershell
 iotedge support-bundle --since 6h
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge support-bundle --since 6h
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Můžete také použít přímé volání [metody](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) do vašeho zařízení a nahrát výstup příkazu support-rekomplet do Azure Blob Storage.
 
@@ -102,10 +133,9 @@ Tento příkaz zobrazí výstup všech [hlášených vlastností](./module-edgea
 
 [IoT Edge Security Manager](iot-edge-security-manager.md) zodpovídá za operace, jako je inicializace IoT Edge systému při spuštění a zřizování zařízení. Pokud IoT Edge nezačnete, můžou vám poskytnout užitečné informace protokoly správce zabezpečení.
 
-V systému Linux:
-
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+V systému Linux:
 
 * Zobrazit stav správce zabezpečení IoT Edge:
 
@@ -131,7 +161,7 @@ V systému Linux:
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. Restartujte proces démona zabezpečení IoT Edge:
@@ -141,42 +171,6 @@ V systému Linux:
      sudo systemctl daemon-reload
      sudo systemctl restart iotedge
      ```
-<!--end 1.1 -->
-:::moniker-end
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-* Zobrazit stav IoT Edge systémových služeb:
-
-   ```bash
-   sudo iotedge system status
-   ```
-
-* Zobrazení protokolů IoT Edge systémových služeb:
-
-   ```bash
-   sudo iotedge system logs -- -f
-   ```
-
-* Povolit protokoly na úrovni ladění pro zobrazení podrobnějších protokolů IoT Edge systémových služeb:
-
-  1. Povolte protokoly na úrovni ladění.
-
-     ```bash
-     sudo iotedge system set-log-level debug
-     sudo iotedge system restart
-     ```
-
-  1. Po ladění přepněte zpět na výchozí protokoly na úrovni informací.
-
-     ```bash
-     sudo iotedge system set-log-level info
-     sudo iotedge system restart
-     ```
-
-<!-- end 1.2 -->
-:::moniker-end
 
 Ve Windows:
 
@@ -211,6 +205,43 @@ Ve Windows:
      ```powershell
      Restart-Service iotedge
      ```
+
+:::moniker-end
+<!--end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* Zobrazit stav IoT Edge systémových služeb:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Zobrazení protokolů IoT Edge systémových služeb:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* Povolit protokoly na úrovni ladění pro zobrazení podrobnějších protokolů IoT Edge systémových služeb:
+
+  1. Povolte protokoly na úrovni ladění.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. Po ladění přepněte zpět na výchozí protokoly na úrovni informací.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="check-container-logs-for-issues"></a>Kontrolovat problémy v protokolech kontejnerů
 

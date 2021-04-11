@@ -8,22 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/20/2020
+ms.date: 03/31/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e724b3517d9e5a63d8699e9f66c51cf41f02012
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92309685"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092513"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostupnost oblasti & data zasídlí
 
 Dostupnost oblasti a data zajistěte ze dvou velmi odlišných konceptů, které se liší Azure AD B2C ze zbytku Azure. Tento článek vysvětluje rozdíly mezi těmito dvěma koncepty a porovnává, jak se vztahují k Azure oproti Azure AD B2C.
 
-Azure AD B2C je **všeobecně dostupná po celém světě** s možností pro **data** zaregistrovaná v **USA, Evropě nebo Asie a Tichomoří**.
+Azure AD B2C je **všeobecně dostupná po celém světě** s možností pro **data** zaregistrovaná v **USA, Evropě nebo Asie a Tichomoří**. Azure AD B2C je ve **verzi Public Preview** v Austrálii.
 
 [Dostupnost oblasti](#region-availability) odkazuje na to, kde je služba k dispozici pro použití.
 
@@ -53,11 +53,15 @@ Data se nachází v **Evropě** v následujících zemích nebo oblastech:
 
 Data se nachází v **Asie a Tichomoří** v následujících zemích nebo oblastech:
 
-> Afghánistán (AF), Hongkong – zvláštní správní oblast (HK), Indie (IN), Indonésie (ID), Japonsko (JP), Korea (KR), Malajsie (MY), Filipíny (PH), Singapur (SG), Srí Lanka (LK), Tchaj-wan (TW) a Thajsko (TH).
+> Afghánistán (AF), Hongkong – zvláštní správní oblast (HK), Indie (IN), Indonésie (ID), Japonsko (JP), Korea (KR), Malajsie (MY), Filipíny (PH), Singapur (SG), Srí Lanka (LK), Tchaj-wan (TW) a Thajsko (TH)
+
+Data se nachází v **Austrálii** (Preview) pro následující země nebo oblasti:
+
+> Austrálie a Nový Zéland
 
 Do seznamu se přidávají následující země nebo oblasti. Prozatím můžete dál používat Azure AD B2C, a to tak, že vybíráte některou z výše uvedených zemí nebo oblastí.
 
-> Argentina, Austrálie, Brazílie, Chile, Kolumbie, Ekvádor, Irák, Nový Zéland, Paraguay, Peru, Uruguay a Venezuela.
+> Argentina, Brazílie, Chile, Kolumbie, Ekvádor, Irák, Paraguay, Peru, Uruguay a Venezuela
 
 ## <a name="remote-profile-solution"></a>Řešení vzdáleného profilu
 
@@ -66,18 +70,6 @@ Díky Azure AD B2C [vlastní zásady](custom-policy-overview.md)můžete integro
 - Po přihlášení po ověření přihlašovacích údajů s místním nebo sociálním účtem Azure AD B2C vyvolá REST API, které pošle jedinečný identifikátor uživatele jako primární klíč uživatele (e-mailová adresa nebo identifikátor objectId uživatele). REST API čte data ze vzdálené databáze a vrací profil uživatele.  
 
 Po registraci, úpravách profilu nebo přihlášení se Azure AD B2C zahrne profil uživatele do přístupového tokenu, který se vrátí do aplikace. Další informace najdete v [ukázkovém řešení vzdáleného profilu Azure AD B2C](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) v GitHubu.
-
-## <a name="preview-tenant"></a>Klient verze Preview
-
-Pokud jste vytvořili tenanta B2C během období Preview Azure AD B2C's, je pravděpodobný, že váš **typ tenanta** uvádí **tenanta verze Preview**.
-
-V takovém případě je nutné použít svého tenanta pouze pro účely vývoje a testování. Nepoužívejte klienta Preview pro produkční aplikace.
-
-Neexistuje **žádná cesta migrace** z klienta ve verzi Preview B2C do tenanta B2C v produkčním měřítku. Pro produkční aplikace musíte vytvořit nového tenanta B2C.
-
-Při odstraňování tenanta B2C ve verzi Preview a vytvoření tenanta B2C ve výrobním měřítku se stejným názvem domény se vyskytly známé problémy. Je *nutné vytvořit klienta B2C ve výrobním měřítku s jiným názvem domény*.
-
-![Snímek obrazovky typu tenanta jako tenant verze Preview](./media/data-residency/preview-b2c-tenant.png)
 
 ## <a name="next-steps"></a>Další kroky
 

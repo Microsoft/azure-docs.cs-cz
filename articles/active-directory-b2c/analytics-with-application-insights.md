@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645921"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226366"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Sledovat chování uživatele v Azure AD B2C pomocí Application Insights
 
@@ -252,7 +252,7 @@ Aby vyhovovaly vašim obchodním potřebám, možná budete chtít zaznamenat v�
 
 ### <a name="manipulate-claims"></a>Manipulace s deklaracemi
 
-Pomocí [transformací vstupních deklarací identity](custom-policy-trust-frameworks.md#manipulating-your-claims) můžete upravit vstupní deklarace identity nebo je před odesláním do Application Insights vytvořit nové. V následujícím příkladu obsahuje technický profil `CheckIsAdmin` transformaci vstupních deklarací identity.
+Pomocí [transformací vstupních deklarací identity](custom-policy-overview.md#manipulating-your-claims) můžete upravit vstupní deklarace identity nebo je před odesláním do Application Insights vytvořit nové. V následujícím příkladu obsahuje technický profil `CheckIsAdmin` transformaci vstupních deklarací identity.
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -269,7 +269,7 @@ Pomocí [transformací vstupních deklarací identity](custom-policy-trust-frame
 
 ### <a name="add-events"></a>Přidat události
 
-Pokud chcete přidat událost, vytvořte nový technický profil, který bude obsahovat `AppInsights-Common` technický profil. Pak přidejte nový technický profil jako krok orchestrace na [cestu uživatele](custom-policy-trust-frameworks.md#orchestration-steps). Jakmile budete připraveni, můžete událost aktivovat pomocí elementu [předběžné podmínky](userjourneys.md#preconditions) . Můžete například ohlásit událost pouze v případě, že uživatelé běží prostřednictvím vícefaktorového ověřování.
+Pokud chcete přidat událost, vytvořte nový technický profil, který bude obsahovat `AppInsights-Common` technický profil. Pak přidejte nový technický profil jako krok orchestrace na [cestu uživatele](custom-policy-overview.md#orchestration-steps). Jakmile budete připraveni, můžete událost aktivovat pomocí elementu [předběžné podmínky](userjourneys.md#preconditions) . Můžete například ohlásit událost pouze v případě, že uživatelé běží prostřednictvím vícefaktorového ověřování.
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e160b21581bc7b5fa38b12309bd9deb90bfbbe51
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651935"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251613"
 ---
 Následující tabulka uvádí informace o kvótě, které jsou specifické pro Azure Service Bus zasílání zpráv. Informace o cenách a dalších kvótách pro Service Bus najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Název kvóty | Obor | Poznámky | Hodnota |
 | --- | --- | --- | --- |
-| Maximální počet základních nebo standardních oborů názvů na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů Basic nebo Standard jsou Azure Portal odmítnuty. |100|
-| Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. |100 |
+| Maximální počet základních nebo standardních oborů názvů na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů Basic nebo Standard jsou Azure Portal odmítnuty. | Výchozí hodnota je 100. <br/> Maximální hodnota je 1 000. <br/><br/> Pokud chcete tento limit zvýšit, obraťte se na podporu Azure. |
+| Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. | Výchozí hodnota je 100. <br/> Maximální hodnota je 1 000. <br/><br/> Pokud chcete tento limit zvýšit, obraťte se na podporu Azure. |
 | Velikost fronty nebo tématu |Entita |Definováno při vytváření fronty nebo tématu. <br/><br/> Následné příchozí zprávy jsou odmítnuty a volající kód obdrží výjimku. |1, 2, 3, 4 GB nebo 5 GB.<br /><br />V SKU úrovně Premium a standardní SKU s povoleným [rozdělením na oddíly](../articles/service-bus-messaging/service-bus-partitioning.md) je maximální velikost fronty nebo tématu 80 GB. |
 | Počet souběžných připojení na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. Operace REST se nepočítají směrem k souběžným připojením TCP. |Síťové zasílání zpráv: 1 000.<br /><br />AMQP: 5 000. |
 | Počet souběžných žádostí o přijetí změn ve frontě, tématu nebo entitě předplatného |Entita |Následné žádosti o přijetí byly zamítnuty a volající kód obdrží výjimku. Tato kvóta se vztahuje na kombinovaný počet souběžných operací příjmu napříč všemi předplatnými v tématu. |5 000 |
@@ -38,6 +38,6 @@ Následující tabulka uvádí informace o kvótě, které jsou specifické pro 
 | Velikost filtrů nebo akcí SQL |Obor názvů |Následné žádosti o vytvoření dalších filtrů jsou odmítnuty a volající kód obdrží výjimku. |Maximální délka řetězce podmínky filtru: 1 024 (1 KB).<br /><br />Maximální délka řetězce akce pravidla: 1 024 (1 KB).<br /><br />Maximální počet výrazů na akci pravidla: 32. |
 | Počet autorizačních pravidel sdíleného přístupu na obor názvů, frontu nebo téma |Entita, obor názvů |Následné žádosti o vytvoření dalších pravidel jsou odmítnuty a volající kód obdrží výjimku. |Maximální počet pravidel na typ entity: 12. <br /><br /> Pravidla konfigurovaná na Service Bus oboru názvů se vztahují na všechny typy: fronty, témata. |
 | Počet zpráv na transakci | Transakce | Další příchozí zprávy jsou odmítnuty a výjimka "nelze odeslat více než 100 zpráv v rámci jedné transakce" je přijímána volajícím kódem. | 100 <br /><br /> Pro operace **Send ()** i **SendAsync ()** . |
-| Počet pravidel virtuální sítě a filtru IP | Obor názvů | &nbsp; | 128 | 
+| Počet pravidel virtuální sítě a filtru IP | Obor názvů | &nbsp; | 128 |
 
 [Azure portal]: https://portal.azure.com

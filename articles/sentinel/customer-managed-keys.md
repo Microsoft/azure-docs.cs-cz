@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: a1c2754fcae5768c6b87d6280fc882acd46d9a0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7c4905f3122bf5abd2dc955170113cac3039a5d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585328"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219038"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
 
@@ -81,7 +81,7 @@ Pokud chcete zaregistrovat poskytovatele prostředků [Azure Cosmos DB](../cosmo
 
 ### <a name="step-4-add-an-access-policy-to-your-azure-key-vault-instance"></a>Krok 4: Přidání zásady přístupu do instance Azure Key Vault
 
-Nezapomeňte přidat přístup z Cosmos DB do instance Azure Key Vault. Postupujte podle pokynů Cosmos DB a [přidejte do své instance Azure Key Vault zásadu přístupu](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance) s Azure Cosmos DBm objektem zabezpečení.
+Nezapomeňte přidat přístup z Cosmos DB do instance Azure Key Vault. Postupujte podle pokynů Cosmos DB a [přidejte do své instance Azure Key Vault zásadu přístupu](../cosmos-db/how-to-setup-cmk.md#add-access-policy) s Azure Cosmos DBm objektem zabezpečení.
 
 ### <a name="step-5-enable-cmk-in-azure-sentinel"></a>Krok 5: povolení CMK ve službě Azure Sentinel
 

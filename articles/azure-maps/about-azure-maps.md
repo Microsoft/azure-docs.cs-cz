@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680825"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011772"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -173,7 +173,7 @@ Další informace najdete v [dokumentaci služby Traffic Service](/rest/api/maps
 
 Služba počasí nabízí rozhraní API, pomocí kterých můžou vývojáři načíst informace o počasí pro konkrétní umístění. Informace obsahují podrobnosti, jako je například datum a čas pozorování, stručný popis povětrnostních podmínek, ikona počasí, příznaky indikátoru měření, teplota a informace o rychlosti větru. Vrátí se také další podrobnosti, jako je RealFeel™ teploty a UV index.
 
-Vývojáři můžou k načtení informací o počasí v rámci konkrétní trasy využít [rozhraní Get počasí společně s rozhraním API pro směrování](/rest/api/maps/weather/getweatheralongroutepreview) . Služba také podporuje generování oznámení o počasí pro waypoints, která jsou ovlivněná riziky počasí, jako je například zahlcení nebo těžkých deště.
+Vývojáři můžou k načtení informací o počasí v rámci konkrétní trasy využít [rozhraní Get počasí společně s rozhraním API pro směrování](/rest/api/maps/weather/getweatheralongroute) . Služba také podporuje generování oznámení o počasí pro waypoints, která jsou ovlivněná riziky počasí, jako je například zahlcení nebo těžkých deště.
 
 [Rozhraní API pro získání dlaždice získat mapu](/rest/api/maps/renderv2/getmaptilepreview) umožňuje vyžádat si předchozí, aktuální a budoucí paprskové a satelitní dlaždice.
 

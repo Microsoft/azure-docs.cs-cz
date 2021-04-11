@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491752"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012433"
 ---
 # <a name="api-management-transformation-policies"></a>Zásady transformace ve službě API Management
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
@@ -366,7 +366,7 @@ V tomto příkladu zásady směrují požadavek do back-endu Service Fabric pomo
 > [!IMPORTANT]
 > Implementace tekutiny použité v `set-body` zásadách je nakonfigurovaná v režimu C#. To je důležité hlavně při provádění akcí, jako je například filtrování. Například použití filtru data vyžaduje použití velkých a malých písmen a formátování data jazyka C#, např.:
 >
-> {{tělo. foo. startDateTime | Datum: "yyyyMMddTHH: mm: ddZ"}}
+> {{tělo. foo. startDateTime | Datum: "yyyyMMddTHH: mm: ssZ"}}
 
 > [!IMPORTANT]
 > Aby bylo možné správně vytvořit vazby na tělo XML pomocí šablony kapalin, použijte `set-header` zásadu pro nastavení typu Content-Type buď na Application/XML, text/XML (nebo na jakýkoli typ končící na + XML); pro tělo JSON musí být Application/JSON, text/JSON (nebo jakýkoli typ končící na + JSON).

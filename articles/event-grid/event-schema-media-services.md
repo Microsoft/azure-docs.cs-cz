@@ -3,12 +3,12 @@ title: Azure Media Services jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro Media Services události s Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591924"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120108"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services jako zdroj Event Grid
 
@@ -514,7 +514,7 @@ Datový objekt má následující vlastnosti:
 | `encoderPort` | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
 | `resultCode` | řetězec | Důvod zamítnutí připojení. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../media-services/latest/live-event-error-codes.md).
+Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../media-services/latest/live-event-error-codes-reference.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -639,7 +639,7 @@ Datový objekt má následující vlastnosti:
 | `encoderPort` | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
 | `resultCode` | řetězec | Důvod odpojení kodéru Může být bezproblémové odpojení nebo chyba. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../media-services/latest/live-event-error-codes.md).
+Kódy výsledku chyby můžete najít v části [kódy chyb živé události](../media-services/latest/live-event-error-codes-reference.md).
 
 Kódy výsledků řádného odpojení:
 
@@ -1118,4 +1118,4 @@ Událost má následující data nejvyšší úrovně:
 
 - [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Živé kódy chyb událostí](../media-services/latest/live-event-error-codes.md)
+- [Živé kódy chyb událostí](../media-services/latest/live-event-error-codes-reference.md)

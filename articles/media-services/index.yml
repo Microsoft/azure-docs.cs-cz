@@ -1,138 +1,132 @@
 ### YamlMime:Hub
 title: Dokumentace ke službě Azure Media Services
-summary: Azure Media Services je kolekce pracovních postupů pro média pro cloud a hraniční zařízení, která umožňuje vytvářet řešení vyžadující živé a dávkové analýzy videa, překódování, služby doručování pro více zařízení, ochranu obsahu a vysílání živých událostí ve velkém.
+summary: 'Azure Media Services je kolekce pracovních postupů pro média pro cloud a hraniční zařízení, která umožňuje vytvářet řešení vyžadující živé a dávkové analýzy videa, překódování, služby doručování pro více zařízení, ochranu obsahu a vysílání živých událostí ve velkém.'
 brand: azure
 metadata:
   title: Dokumentace k platformě Azure Media Services
-  description: Azure Media Services je kolekce pracovních postupů pro média pro cloud a hraniční zařízení, která umožňuje vytvářet řešení vyžadující živé a dávkové analýzy videa, překódování, služby doručování pro více zařízení, ochranu obsahu a vysílání živých událostí ve velkém.
+  description: 'Azure Media Services je kolekce pracovních postupů pro média pro cloud a hraniční zařízení, která umožňuje vytvářet řešení vyžadující živé a dávkové analýzy videa, překódování, služby doručování pro více zařízení, ochranu obsahu a vysílání živých událostí ve velkém.'
   services: media-services
   ms.service: media-services
-  ms.subservice: 
+  ms.subservice: null
   ms.topic: hub-page
   ms.collection: collection
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: a1847273df196eea7aeebd846f83a35cd9e43f31
-  ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/27/2021
-  ms.locfileid: "105628488"
 highlightedContent:
   items:
-  - title: Informace o platformě Azure Media Services v3
-    itemType: overview
-    url: ./latest/media-services-overview.md
-  - title: Koncepty platformy Azure Media Services v3
-    itemType: concept
-    url: ./latest/concepts-overview.md
-  - title: Informace o Video Indexeru služby Azure Media Services
-    itemType: overview
-    url: ./video-indexer/video-indexer-overview.md
-  - title: Porovnání předvoleb Media Services v3 a Video Indexeru
-    itemType: concept
-    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
-  - title: Analýza živého videa ve službě IoT Edge (Preview)
-    itemType: overview
-    url: ./live-video-analytics-edge/overview.md
-  - title: Přehrávač médií Azure
-    itemType: overview
-    url: ./azure-media-player/azure-media-player-overview.md
-  - title: O platformě Azure Media Services v2 (starší verze)
-    itemType: overview
-    url: ./previous/media-services-overview.md
-  - title: Migrace platformy Media Services v2 na v3
-    itemType: concept
-    url: ./latest/migrate-v-2-v-3-migration-introduction.md
+    - title: Informace o platformě Azure Media Services v3
+      itemType: overview
+      url: ./latest/media-services-overview.md
+    - title: Koncepty platformy Azure Media Services v3
+      itemType: concept
+      url: ./latest/concepts-overview.md
+    - title: Informace o Video Indexeru služby Azure Media Services
+      itemType: overview
+      url: ./video-indexer/video-indexer-overview.md
+    - title: Porovnání předvoleb Media Services v3 a Video Indexeru
+      itemType: concept
+      url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+    - title: Analýza živého videa ve službě IoT Edge (Preview)
+      itemType: overview
+      url: ./live-video-analytics-edge/overview.md
+    - title: Přehrávač médií Azure
+      itemType: overview
+      url: ./azure-media-player/azure-media-player-overview.md
+    - title: O platformě Azure Media Services v2 (starší verze)
+      itemType: overview
+      url: ./previous/media-services-overview.md
+    - title: Migrace platformy Media Services v2 na v3
+      itemType: concept
+      url: ./latest/migrate-v-2-v-3-migration-introduction.md
 conceptualContent:
   items:
-  - title: Vývoj pomocí rozhraní API Media Services v3
-    links:
-    - url: ./latest/media-services-apis-overview.md
-      itemType: concept
-      text: Vývoj pomocí platformy Media Services v3
-    - url: /samples/browse/?products=azure-media-services
-      itemType: sample
-      text: Ukázky kódů
-    - url: ./latest/release-notes.md
-      itemType: concept
-      text: Podívejte se, co je nového v Media Services v3
-  - title: Živé streamování
-    links:
-    - url: ./latest/live-streaming-overview.md
-      itemType: concept
-      text: Živé streamování
-    - url: ./latest/recommended-on-premises-live-encoders.md
-      itemType: concept
-      text: Doporučené kodéry živého streamování
-    - url: ./latest/stream-live-tutorial-with-api.md
-      itemType: tutorial
-      text: Živé streamování
-  - title: Stream na vyžádání
-    links:
-    - url: ./latest/assets-concept.md
-      itemType: concept
-      text: Nahrávání
-    - url: ./latest/encoding-concept.md
-      itemType: concept
-      text: Kódování
-    - url: ./latest/stream-files-tutorial-with-rest.md
-      itemType: tutorial
-      text: Kódování vzdáleného souboru a streamu
-    - url: ./latest/stream-files-tutorial-with-api.md
-      itemType: tutorial
-      text: Kódování načteného souboru a streamu
-  - title: Šifrování obsahu
-    links:
-    - url: ./latest/content-protection-overview.md
-      itemType: concept
-      text: Ochrana
-    - url: ./latest/protect-with-aes128.md
-      itemType: tutorial
-      text: Dynamické šifrování s využitím AES-128
-    - url: ./latest/protect-with-drm.md
-      itemType: tutorial
-      text: Dynamické šifrování s využitím DRM
-  - title: Analýza obsahu
-    links:
-    - url: ./latest/analyzing-video-audio-files-concept.md
-      itemType: concept
-      text: Analýzy mediálních služeb
-    - url: ./latest/analyze-videos-tutorial-with-api.md
-      itemType: tutorial
-      text: Analýza videí
-    - url: ./latest/analyze-face-redaction-concept.md
-      itemType: concept
-      text: Rozpoznávání a redigování obličeje
-  - title: Další informace o specifikaci platformy Media Services
-    links:
-    - url: media-services-specifications-live-timed-metadata.md
-      itemType: concept
-      text: Časovaná metadata v živém streamování (RTMP a Smooth Streaming)
-    - url: media-services-specifications-ms-sstr-amendment-hevc.md
-      itemType: concept
-      text: Úpravy protokolu Smooth Streaming (MS-SSTR) pro HEVC
-    - url: media-services-fmp4-live-ingest-overview.md
-      itemType: concept
-      text: Protokol ingestování technologie Smooth Streaming
-  - title: Analýza živého videa ve službě IoT Edge (Preview)
-    links:
-    - url: ./live-video-analytics-edge/overview.md
-      itemType: overview
-      text: Přehled
-    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
-      itemType: quickstart
-      text: Spuštění analýzy živého videa s využitím vlastního modelu
+    - title: Vývoj pomocí rozhraní API Media Services v3
+      links:
+        - url: ./latest/media-services-apis-overview.md
+          itemType: concept
+          text: Vývoj pomocí platformy Media Services v3
+        - url: /samples/browse/?products=azure-media-services
+          itemType: sample
+          text: Ukázky kódů
+        - url: ./latest/release-notes.md
+          itemType: concept
+          text: 'Podívejte se, co je nového v Media Services v3'
+    - title: Živé streamování
+      links:
+        - url: ./latest/stream-live-streaming-concept.md
+          itemType: concept
+          text: Živé streamování
+        - url: ./latest/recommended-on-premises-live-encoders.md
+          itemType: concept
+          text: Doporučené kodéry živého streamování
+        - url: ./latest/stream-live-tutorial-with-api.md
+          itemType: tutorial
+          text: Živé streamování
+    - title: Stream na vyžádání
+      links:
+        - url: ./latest/assets-concept.md
+          itemType: concept
+          text: Nahrávání
+        - url: ./latest/encode-concept.md
+          itemType: concept
+          text: Kódování
+        - url: ./latest/stream-files-tutorial-with-rest.md
+          itemType: tutorial
+          text: Kódování vzdáleného souboru a streamu
+        - url: ./latest/stream-files-tutorial-with-api.md
+          itemType: tutorial
+          text: Kódování načteného souboru a streamu
+    - title: Šifrování obsahu
+      links:
+        - url: ./latest/drm-content-protection-concept.md
+          itemType: concept
+          text: Ochrana
+        - url: ./latest/drm-playready-license-template-concept.md
+          itemType: tutorial
+          text: Dynamické šifrování s využitím AES-128
+        - url: ./latest/drm-protect-with-drm-tutorial.md
+          itemType: tutorial
+          text: Dynamické šifrování s využitím DRM
+    - title: Analýza obsahu
+      links:
+        - url: ./latest/analyze-video-audio-files-concept.md
+          itemType: concept
+          text: Analýzy mediálních služeb
+        - url: ./latest/analyze-videos-tutorial.md
+          itemType: tutorial
+          text: Analýza videí
+        - url: ./latest/analyze-face-redaction-concept.md
+          itemType: concept
+          text: Rozpoznávání a redigování obličeje
+    - title: Další informace o specifikaci platformy Media Services
+      links:
+        - url: media-services-specifications-live-timed-metadata.md
+          itemType: concept
+          text: Časovaná metadata v živém streamování (RTMP a Smooth Streaming)
+        - url: media-services-specifications-ms-sstr-amendment-hevc.md
+          itemType: concept
+          text: Úpravy protokolu Smooth Streaming (MS-SSTR) pro HEVC
+        - url: media-services-fmp4-live-ingest-overview.md
+          itemType: concept
+          text: Protokol ingestování technologie Smooth Streaming
+    - title: Analýza živého videa ve službě IoT Edge (Preview)
+      links:
+        - url: ./live-video-analytics-edge/overview.md
+          itemType: overview
+          text: Přehled
+        - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+          itemType: quickstart
+          text: Spuštění analýzy živého videa s využitím vlastního modelu
 additionalContent:
   sections:
-  - items:
-    - title: Azure Storage
-      summary: Další informace o objektech blob bloku a kontejnerech
-      url: ../storage/index.yml
-    - title: CDN
-      summary: Využijte výkon Azure CDN ke streamování obsahu ve velkém měřítku s využitím služeb od Akamai a Verizonu nebo k vyrovnávání zatížení napříč několika sítěmi pro doručování obsahu.
-      url: ../cdn/index.yml
-    - title: Event Grid
-      summary: Naučte se používat Azure Event Grid k reakci na relevantní události.
-      url: ../event-grid/index.yml
+    - items:
+        - title: Azure Storage
+          summary: Další informace o objektech blob bloku a kontejnerech
+          url: ../storage/index.yml
+        - title: CDN
+          summary: Využijte výkon Azure CDN ke streamování obsahu ve velkém měřítku s využitím služeb od Akamai a Verizonu nebo k vyrovnávání zatížení napříč několika sítěmi pro doručování obsahu.
+          url: ../cdn/index.yml
+        - title: Event Grid
+          summary: Naučte se používat Azure Event Grid k reakci na relevantní události.
+          url: ../event-grid/index.yml

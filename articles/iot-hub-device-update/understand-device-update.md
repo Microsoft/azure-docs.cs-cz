@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 092078a79124682f7ee5c7824d4f7906c6e35475
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 95cecd66f4d0164594eb4e8da9efe765b5833e5e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558495"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120771"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Přehled aktualizace zařízení pro IoT Hub (Preview)
 
@@ -80,7 +80,7 @@ Při přijetí příkazu k aktualizaci na zařízení se spustí požadovaná f�
 
 ### <a name="importing"></a>Import
 
-Import je způsob, jakým se aktualizace ingestují do aktualizace zařízení, aby je bylo možné nasadit do zařízení. Aktualizace zařízení podporuje zavedení jedné aktualizace na jedno zařízení. To je ideální pro aktualizace kompletních imagí, které aktualizují celý oddíl operačního systému najednou, nebo apt manifest, který popisuje všechny balíčky, které chcete na svém zařízení aktualizovat. Pokud chcete importovat aktualizace do aktualizace zařízení, nejdřív vytvořte manifest importu popisující aktualizaci a pak nahrajte soubory aktualizací a importujte manifest do umístění přístupného pro Internet. Potom můžete pomocí Azure Portal nebo [aktualizace zařízení importovat REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) zahájit asynchronní proces importu aktualizace. Aktualizace zařízení nahraje soubory, zpracuje je a zpřístupňuje k distribuci do zařízení IoT.
+Import je způsob, jakým se aktualizace ingestují do aktualizace zařízení, aby je bylo možné nasadit do zařízení. Aktualizace zařízení podporuje zavedení jedné aktualizace na jedno zařízení. To je ideální pro aktualizace kompletních imagí, které aktualizují celý oddíl operačního systému najednou, nebo apt manifest, který popisuje všechny balíčky, které chcete na svém zařízení aktualizovat. Pokud chcete importovat aktualizace do aktualizace zařízení, nejdřív vytvořte manifest importu popisující aktualizaci a pak nahrajte soubory aktualizací a importujte manifest do umístění přístupného pro Internet. Potom můžete pomocí Azure Portal nebo [REST API aktualizace zařízení](https://docs.microsoft.com/rest/api/deviceupdate/) zahájit asynchronní proces importu aktualizace. Aktualizace zařízení nahraje soubory, zpracuje je a zpřístupňuje k distribuci do zařízení IoT.
 
 V případě citlivého obsahu Chraňte stahování pomocí sdíleného přístupového podpisu (SAS), jako je například ad-hoc SAS pro Azure Blob Storage. [Další informace o SAS](../storage/common/storage-sas-overview.md)
 

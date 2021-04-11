@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2021
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489544"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220211"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -50,14 +50,6 @@ Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, ud
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
-
-## <a name="install-the-machine-learning-extension"></a>Instalace rozšíření Machine Learning
-
-Pokud chcete nainstalovat rozšíření Machine Learning, použijte následující příkaz:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 

@@ -4,35 +4,38 @@ description: Další informace o posílení zabezpečení v operačním systému
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/29/2021
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86244034"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012072"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Posílení zabezpečení pro hostitelský operační systém uzlu agenta AKS
 
-Služba Azure Kubernetes Service (AKS) je zabezpečená služba, která vyhovuje standardům SOC, ISO, PCI DSS a HIPAA. Tento článek popisuje posílení zabezpečení použité pro hostitele virtuálních počítačů s AKS. Další informace o zabezpečení AKS najdete v tématu [koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)](./concepts-security.md).
+Služba Azure Kubernetes Service (AKS) je jako Zabezpečená služba v souladu se standardy SOC, ISO, PCI DSS a HIPAA. Tento článek popisuje posílení zabezpečení použité pro hostitele virtuálních počítačů s AKS. Další informace o zabezpečení AKS najdete v tématu [koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)](./concepts-security.md).
 
 > [!Note]
 > Tento dokument je omezený na agenty Linux pouze v AKS.
 
-Clustery AKS se nasazují v hostitelských virtuálních počítačích, které spouštějí zabezpečený operační systém, který se využívá pro kontejnery běžící na AKS. Tento hostitelský operační systém je založený na imagi **Ubuntu 16.04. LTS** s dalšími možnostmi posílení zabezpečení a použitými optimalizacemi (viz podrobnosti o posílení zabezpečení).
+Clustery AKS se nasazují v hostitelských počítačích, které spouštějí operační systém optimalizovaný pro zabezpečení, který se používá pro kontejnery běžící na AKS. Tento hostitelský operační systém je založený na imagi **Ubuntu 16.04. LTS** s dalšími možnostmi [posílení zabezpečení](#security-hardening-features) a optimalizacemi.
 
 Cílem hostitelského operačního systému s posíleným zabezpečením je snížit úroveň oblasti útoku a optimalizovat pro nasazení kontejnerů zabezpečeným způsobem.
 
 > [!Important]
-> Nezabezpečený operační systém pro zabezpečení nezahrnuje CI srovnávací testy. I když dojde k překrytí pomocí srovnávacích testů CIS, cíl nedodržuje CIS. Cílem posílení zabezpečení operačního systému hostitele je sblížení s úrovní zabezpečení v souladu s vlastními standardy zabezpečení interního hostitele Microsoftu.
+> Nezabezpečený operační systém pro zabezpečení **nezahrnuje** CI srovnávací testy. I když se překrývá s srovnávacími testy modelu CI, cílem není nekompatibilní s SNS. Cílem posílení zabezpečení operačního systému hostitele je sblížení s úrovní zabezpečení v souladu s vlastními standardy zabezpečení interního hostitele Microsoftu.
 
 ## <a name="security-hardening-features"></a>Funkce posílení zabezpečení
 
-* AKS poskytuje standardně optimalizovaný hostitelský operační systém. Neexistuje možnost vybrat jiný operační systém.
+* AKS poskytuje ve výchozím nastavení hostitelský operační systém optimalizovaný pro zabezpečení, ale nemá možnost vybrat jiný operační systém.
 
-* Azure na AKS hostitelích virtuálních počítačů aplikuje každodenní opravy (včetně oprav zabezpečení). Některé z těchto oprav budou vyžadovat restart, i když jiné nebudou. Zodpovídáte za plánování restartování hostitele virtuálních počítačů AKS podle potřeby. Pokyny k automatizaci oprav AKS najdete v tématu věnovaném [opravám AKS uzlů](./node-updates-kured.md).
+* Azure na AKS hostitelích virtuálních počítačů aplikuje každodenní opravy (včetně oprav zabezpečení). 
+    * Některé z těchto oprav vyžadují restartování, jiné nikoli. 
+    * Zodpovídáte za plánování restartování hostitele virtuálních počítačů AKS podle potřeby. 
+    * Pokyny k automatizaci oprav AKS najdete v tématu věnovaném [opravám AKS uzlů](./node-updates-kured.md).
 
 ## <a name="what-is-configured"></a>Co je nakonfigurované
 
@@ -79,14 +82,12 @@ Cílem hostitelského operačního systému s posíleným zabezpečením je sní
  
 * Aby bylo možné dále omezit prostor pro útoky, byly některé zbytečné ovladače modulu jádra v operačním systému zakázané.
 
-* SYSTÉM s posíleným zabezpečením se sestavuje a udržuje konkrétně pro AKS a není podporovaný mimo platformu AKS.
+* SYSTÉM s posíleným zabezpečením se sestavuje a udržuje konkrétně pro AKS a **není podporovaný mimo** platformu AKS.
 
 ## <a name="next-steps"></a>Další kroky  
 
 Další informace o zabezpečení AKS najdete v následujících článcích: 
 
-[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
-
-[Požadavky na zabezpečení AKS ](./concepts-security.md)
-
-[Osvědčené postupy pro AKS ](./best-practices.md)
+* [Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
+* [Požadavky na zabezpečení AKS](./concepts-security.md)
+* [Osvědčené postupy pro AKS](./best-practices.md)

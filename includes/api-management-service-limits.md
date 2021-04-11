@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0614e6fb1df13332cb05dcb7bb9b0f07a1764d23
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103622279"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251557"
 ---
 | Prostředek | Omezení |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "103622279"
 | Maximální počet předplatných na instanci služby<sup>8</sup> | 500 |
 | Maximální počet klientských certifikátů na instanci služby<sup>8</sup> | 50 |
 | Maximální počet rozhraní API na instanci služby<sup>8</sup> | 50 |
-| Maximální počet operací rozhraní API na instanci služby<sup>8</sup> | 1 000 |
+| Maximální počet operací služby API Management na instanci služby<sup>8</sup> | 1 000 |
 | Maximální celková doba trvání žádosti<sup>8</sup> | 30 sekund |
 | Maximální velikost datové části vyrovnávací paměti<sup>8</sup> | 2 MiB |
 | Maximální velikost adresy URL požadavku<sup>9</sup> | 4096 bajtů |

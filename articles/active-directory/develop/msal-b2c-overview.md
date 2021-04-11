@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5168dfb531c40a3efeef978abf65473ee59d2921
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98063718"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255592"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro JavaScript pro práci s Azure AD B2C
 
@@ -215,6 +215,6 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
 Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
-- [Toky uživatele](../../active-directory-b2c/tutorial-create-user-flows.md)
-- [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
+- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-user-flow)
+- [Vlastní zásady](../../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/configure-user-input.md)

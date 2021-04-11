@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 480b8ef401387863693bc88c3d508ce296636c93
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8a192c3c3accf115b1a1db8e32a56d6d936078be
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107580"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277646"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Vytvoření lokátoru streamování a adres URL
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Pokud chcete v Azure Media Services vytvořit adresu URL streamování, musíte nejdřív vytvořit [Lokátor streamování](streaming-locators-concept.md). Potom zřetězete název hostitele [koncového bodu streamování](/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Když poprvé vytvoříte účet služby Media Service, bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže musíte zavolat **Spustit** , aby se spustilo streamování.
+Pokud chcete v Azure Media Services vytvořit adresu URL streamování, musíte nejdřív vytvořit [Lokátor streamování](stream-streaming-locators-concept.md). Potom zřetězete název hostitele [koncového bodu streamování](/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Když poprvé vytvoříte účet služby Media Service, bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže musíte zavolat **Spustit** , aby se spustilo streamování.
 
 Tento článek ukazuje, jak vytvořit Lokátor streamování a vytvořit adresu URL streamování pomocí sad Java a .NET SDK.
 

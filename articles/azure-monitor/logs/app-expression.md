@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 235a6bf4a0dd9afcac8751067b2eac3ddb37c0cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031238"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283554"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>výraz App () v Azure Monitor dotazu
 
 `app`Výraz se používá v Azure monitor dotazech k načtení dat z konkrétní Application Insights aplikace ve stejné skupině prostředků, v jiné skupině prostředků nebo jiném předplatném. To je užitečné, pokud chcete zahrnout data aplikace do dotazu protokolu Azure Monitor a dotazovat data napříč více aplikacemi v dotazu Application Insights.
 
 > [!IMPORTANT]
-> Výraz App () se nepoužívá, pokud používáte [prostředek Application Insights založený na pracovních prostorech](../app/create-workspace-resource.md) , protože data protokolu se ukládají v pracovním prostoru Log Analytics. Použijte výraz log () k zápisu dotazu, který obsahuje aplikaci ve více pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
+> Výraz App () se nepoužívá, pokud používáte [prostředek Application Insights založený na pracovních prostorech](../app/create-workspace-resource.md) , protože data protokolu se ukládají v pracovním prostoru Log Analytics. Použijte výraz pracovní prostor () k zápisu dotazu, který obsahuje aplikaci v několika pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
 
 ## <a name="syntax"></a>Syntax
 

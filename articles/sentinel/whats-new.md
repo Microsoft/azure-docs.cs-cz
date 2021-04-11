@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: e882ae89da2fd081d6b41d3d42e998d3600f0e18
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604249"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120740"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -32,13 +32,36 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 ## <a name="march-2021"></a>Březen 2021
 
+- [Nové detekce pro Azure Firewall](#new-detections-for-azure-firewall)
 - [Pravidla automatizace a playbooky aktivované incidentem](#automation-rules-and-incident-triggered-playbooks) (včetně všech nových dokumentace PlayBook)
 - [Nové obohacení výstrah: vylepšené mapování entit a vlastní podrobnosti](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
 - [Tisk sešitů Sentinel Azure nebo uložení ve formátu PDF](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
 - [Filtry incidentů a předvolby řazení jsou nyní uloženy ve vaší relaci (Public Preview).](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Integrace incidentů v programu Microsoft 365 Defender (Public Preview)](#microsoft-365-defender-incident-integration-public-preview)
 - [Nové konektory Microsoft Service Connector pomocí Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
- 
+
+### <a name="new-detections-for-azure-firewall"></a>Nové detekce pro Azure Firewall
+
+Do oblasti [Analytics](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats) v Azure Sentinel se přidalo několik předem připravených detekcí pro Azure firewall. Tato nová zjišťování umožňují týmům zabezpečení získat výstrahy v případě, že se počítače v interní síti pokoušejí dotazovat nebo se připojit k názvům domén nebo IP adresám, které jsou přidruženy ke známým IOCs, jak jsou definovány v dotazu pravidla zjišťování.
+
+Nové detekce zahrnují:
+
+- [Solorigate síťovou signalizaci](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
+- [Známé domény GALLIUM a hodnoty hash](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
+- [Známá IRIDIUM IP adresa](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
+- [Známé domény skupin fosforu/IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
+- [THALLIUM domény zahrnuté do DCU Takedown](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
+- [Známá hodnota hash maldoc související s ZINKem](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+- [Známé domény skupiny STRONCI](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+- [NOBELIUM-Domain a IP IOCs – březen 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
+
+
+Detekce pro brány firewall Azure se průběžně přidávají do předdefinované galerie šablon. Chcete-li získat nejnovější zjišťování pro Azure Firewall, v části **šablony pravidel** filtrujte **zdroje dat** podle **Azure firewall**:
+
+:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="Nové detekce v sešitu analýzy efektivity":::
+
+Další informace najdete v tématu [nové detekce pro Azure firewall ve službě Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958).
+
 ### <a name="automation-rules-and-incident-triggered-playbooks"></a>Pravidla automatizace a playbooky aktivované incidenty
 
 Pravidla automatizace představují nový koncept ve službě Azure Sentinel, který umožňuje centrálně spravovat automatizaci zpracování incidentů. Kromě toho, že vám umožní přiřazovat playbooky incidentům (ne jen k výstrahám jako dřív), pravidla automatizace také umožňují automatizovat odpovědi na více pravidel analýzy najednou, automaticky označovat, přiřazovat nebo uzavřít incidenty bez nutnosti playbooky a řídit pořadí akcí, které se spustí. Pravidla automatizace zjednodušují použití automatizace v Azure Sentinel a umožní vám zjednodušit složité pracovní postupy pro procesy orchestrace incidentů.
@@ -47,7 +70,7 @@ Seznamte se s [úplnými vysvětlení pravidel automatizace](automate-incident-h
 
 Jak je uvedeno výše, playbooky se teď dá aktivovat pomocí triggeru incidentu vedle triggeru výstrahy. Trigger incidentu poskytuje playbooky větší sadu vstupů, se kterými se pracuje (protože incident zahrnuje všechna upozornění a data entit) a poskytuje ještě větší výkon a flexibilitu v pracovních postupech reakcí. Playbooky aktivované incidentem se aktivují z pravidel automatizace.
 
-Přečtěte si další informace o [playbooky "Enhanced možnosti](automate-responses-with-playbooks.md)a o tom, jak [vytvořit pracovní postup odpovědi](tutorial-respond-threats-playbook.md) pomocí playbooky spolu s pravidly pro automatizaci.
+Přečtěte si další informace o [rozšířených možnostech playbooky](automate-responses-with-playbooks.md)a o tom, jak [vytvořit pracovní postup odpovědi](tutorial-respond-threats-playbook.md) pomocí playbooky společně s pravidly automatizace.
 
 ### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Nové obohacení výstrah: vylepšené mapování entit a vlastní podrobnosti
 

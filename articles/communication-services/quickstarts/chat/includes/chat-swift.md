@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5bf4bbe2c8dc863f67dffb50609f7775a4499e3a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 24a5c92164e0eace41224edfd2153c6142f7ea49
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073313"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251570"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -46,8 +46,8 @@ Z příkazového řádku, pokračujte v kořenovém adresáři `ChatQuickstart` 
 Otevřete souboru podfile a přidejte následující závislosti do `ChatQuickstart` cíle:
 
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.9'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
+pod 'AzureCommunication', '~> 1.0.0-beta.11'
+pod 'AzureCommunicationChat', '~> 1.0.0-beta.11'
 ```
 
 Nainstalujte závislosti pomocí následujícího příkazu: `pod install` . Všimněte si, že se tím také vytvoří pracovní prostor Xcode.
@@ -80,16 +80,20 @@ override func viewDidLoad() {
                 // <CREATE A CHAT CLIENT>
                 
                 // <CREATE A CHAT THREAD>
-                
-                // <CREATE A CHAT THREAD CLIENT>
-                
+
+                // <LIST ALL CHAT THREADS>
+
+                // <GET A CHAT THREAD CLIENT>
+
                 // <SEND A MESSAGE>
-                
+
+                // <SEND A READ RECEIPT >
+
+                // <RECEIVE MESSAGES>
+
                 // <ADD A USER>
                 
                 // <LIST USERS>
-                
-                // <REMOVE A USER>
             } catch {
                 print("Quickstart failed: \(error.localizedDescription)")
             }
@@ -106,17 +110,17 @@ Nahraďte komentář `<CREATE A CHAT CLIENT>` následujícím kódem:
 
 ```
 let endpoint = "<ACS_RESOURCE_ENDPOINT>"
-    let credential =
-    try CommunicationTokenCredential(
-        token: "<ACCESS_TOKEN>"
-    )
-    let options = AzureCommunicationChatClientOptions()
+let credential =
+try CommunicationTokenCredential(
+    token: "<ACCESS_TOKEN>"
+)
+let options = AzureCommunicationChatClientOptions()
 
-    let chatClient = try ChatClient(
-        endpoint: endpoint,
-        credential: credential,
-        withOptions: options
-    )
+let chatClient = try ChatClient(
+    endpoint: endpoint,
+    credential: credential,
+    withOptions: options
+)
 ```
 
 Nahraďte `<ACS_RESOURCE_ENDPOINT>` koncovým bodem prostředku služby Azure Communication Services. Nahraďte `<ACCESS_TOKEN>` platným přístupovým tokenem komunikační služby.
@@ -141,10 +145,10 @@ Nyní můžete použít `ChatClient` k vytvoření nového vlákna s počátečn
 Nahraďte komentář `<CREATE A CHAT THREAD>` následujícím kódem:
 
 ```
-let request = CreateThreadRequest(
+let request = CreateChatThreadRequest(
     topic: "Quickstart",
     participants: [
-        Participant(
+        ChatParticipant(
             id: CommunicationUserIdentifier("<USER_ID>"),
             displayName: "Jack"
         )
@@ -155,7 +159,7 @@ var threadId: String?
 chatClient.create(thread: request) { result, _ in
     switch result {
     case let .success(result):
-        threadId = result.thread?.id
+        threadId = result.chatThread?.id
 
     case .failure:
         fatalError("Failed to create thread.")
@@ -169,11 +173,31 @@ Nahraďte `<USER_ID>` platným ID uživatele komunikační služby.
 
 Semafor se tady používá pro čekání na obslužnou rutinu dokončení, než budete pokračovat. V pozdějších krocích použijete `threadId` odpověď z odpovědi vrácené do obslužné rutiny dokončení.
 
+## <a name="list-all-chat-threads"></a>Zobrazit seznam všech vláken chatu
+
+Po vytvoření konverzačního vlákna můžeme vypsat všechny podprocesy chatu voláním `listChatThreads` metody on `ChatClient` . Nahraďte komentář `<LIST ALL CHAT THREADS>` následujícím kódem:
+
+```
+chatClient.listThreads { result, _ in
+    switch result {
+    case let .success(chatThreadItems):
+        var iterator = chatThreadItems.syncIterator
+            while let chatThreadItem = iterator.next() {
+                print("Thread id: \(chatThreadItem.id)")
+            }
+    case .failure:
+        print("Failed to list threads")
+    }
+    semaphore.signal()
+}
+semaphore.wait()
+```
+
 ## <a name="get-a-chat-thread-client"></a>Získat klienta vlákna chatu
 
 Nyní, když jste vytvořili chatovací vlákno, můžete získat a `ChatThreadClient` provést operace v rámci tohoto vlákna.
 
-Nahraďte komentář `<CREATE A CHAT THREAD CLIENT>` následujícím kódem:
+Nahraďte komentář `<GET A CHAT THREAD CLIENT>` následujícím kódem:
 
 ```
 let chatThreadClient = try chatClient.createClient(forThread: threadId!)
@@ -189,10 +213,13 @@ let message = SendChatMessageRequest(
     senderDisplayName: "Jack"
 )
 
+var messageId: String?
+
 chatThreadClient.send(message: message) { result, _ in
     switch result {
     case let .success(result):
         print("Message sent, message id: \(result.id)")
+        messageId = result.id
     case .failure:
         print("Failed to send message")
     }
@@ -203,12 +230,57 @@ semaphore.wait()
 
 Nejprve sestavíte `SendChatMessageRequest` , který obsahuje zobrazovaný název a zobrazované jméno odesílatele. Tento požadavek může také obsahovat čas historie sdílení, pokud ho chcete zahrnout. Odpověď vrácená obslužné rutině dokončení obsahuje ID zprávy, která byla odeslána.
 
+
+## <a name="send-a-read-receipt"></a>Odeslat účtenku pro čtení
+
+Můžete odeslat oznámení o čtení pro konkrétní zprávu voláním `ChatThreadClients` `sendReadReceipt` metody. Nahraďte komentář `<SEND A READ RECEIPT>` následujícím kódem:
+
+```
+if let id = messageId {
+    chatThreadClient.sendReadReceipt(forMessage: id) { result, _ in
+        switch result {
+        case .success:
+            print("Read receipt sent")
+        case .failure:
+            print("Failed to send read receipt")
+        }
+        semaphore.signal()
+    }
+    semaphore.wait()
+} else {
+    print("Cannot send read receipt without a message id")
+}
+```
+
+## <a name="receive-chat-messages-from-a-chat-thread"></a>Příjem zpráv chatu z konverzačního vlákna
+
+Můžete přijímat zprávy z konverzačního vlákna voláním `listMessages()` metody z `ChatThreadClient` . Seznam zpráv obsahuje systémové zprávy i zprávy odesílané uživateli. Další informace o typech zpráv, které můžete přijímat, najdete v tématu [typy zpráv](https://docs.microsoft.com/azure/communication-services/concepts/chat/concepts#message-types) .
+
+Nahraďte komentář `<RECEIVE MESSAGES>` následujícím kódem:
+
+```
+chatThreadClient.listMessages { result, _ in
+    switch result {
+    case let .success(messages):
+        var iterator = messages.syncIterator
+        while let message = iterator.next() {
+            print("Received message of type \(message.type)")
+        }
+
+    case .failure:
+        print("Failed to receive messages")
+    }
+    semaphore.signal()
+}
+semaphore.wait()
+```
+
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 
 Nahraďte komentář `<ADD A USER>` následujícím kódem:
 
 ```
-let user = Participant(
+let user = ChatParticipant(
     id: CommunicationUserIdentifier("<USER_ID>"),
     displayName: "Jane"
 )
@@ -216,9 +288,9 @@ let user = Participant(
 chatThreadClient.add(participants: [user]) { result, _ in
     switch result {
     case let .success(result):
-        (result.errors != nil) ? print("Added participant") : print("Error adding participant")
+        (result.invalidParticipants != nil) ? print("Added participant") : print("Error adding participant")
     case .failure:
-        print("Failed to list participants")
+        print("Failed to add the participant")
     }
     semaphore.signal()
 }
@@ -240,7 +312,7 @@ chatThreadClient.listParticipants { result, _ in
         var iterator = participants.syncIterator
         while let participant = iterator.next() {
             let user = participant.id as! CommunicationUserIdentifier
-            print(user.identifier)
+            print("User with id: \(user.identifier)")
         }
     case .failure:
         print("Failed to list participants")
@@ -250,28 +322,7 @@ chatThreadClient.listParticipants { result, _ in
 semaphore.wait()
 ```
 
-
-## <a name="remove-user-from-a-chat-thread"></a>Odebrání uživatele z konverzačního vlákna
-
-Nahraďte komentář `<REMOVE A USER>` následujícím kódem:
-
-```
-chatThreadClient
-    .remove(
-        participant: CommunicationUserIdentifier("<USER_ID>")
-    ) { result, _ in
-        switch result {
-        case .success:
-            print("Removed user from the thread.")
-        case .failure:
-            print("Failed to remove user from the thread.")
-        }
-    }
-```
-
-Nahraďte `<USER ID>` ID uživatele komunikačních služeb odebraného účastníka.
-
 ## <a name="run-the-code"></a>Spuštění kódu
 
-V Xcode vyberte **Spustit** a sestavte a spusťte projekt. V konzole nástroje můžete zobrazit výstup z kódu a výstup protokolovacího nástroje z klienta chat.
+V Xcode stiskněte tlačítko Spustit a sestavte a spusťte projekt. V konzole můžete zobrazit výstup z kódu a výstup protokolovacího nástroje z ChatClient.
 
