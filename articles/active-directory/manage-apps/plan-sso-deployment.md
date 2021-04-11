@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103601708"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
@@ -271,7 +271,7 @@ Při správě přístupu k prostředkům doporučujeme zvolit přístup s větš
 
 Doporučujeme nastavit regulární tempo, ve kterém si prohlédnete různé aspekty zabezpečení aplikací SaaS a provádíte jakékoli případné nápravné akce.
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Následující odkazy představují scénáře řešení potíží. Možná budete chtít vytvořit konkrétní vodítko pro pracovníky podpory, kteří budou tyto scénáře v podniku, a postup, jak je opravit.
 

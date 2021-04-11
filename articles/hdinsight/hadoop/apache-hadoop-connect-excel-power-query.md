@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866807"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k Apache Hadoop pomocí Power Query
 
 Jedním z klíčových funkcí řešení pro velké objemy dat společnosti Microsoft je integrace součástí Microsoft business intelligence (BI) s Apache Hadoop clustery ve službě Azure HDInsight. Primárním příkladem je možnost připojení Excelu k účtu Azure Storage, který obsahuje data přidružená k vašemu clusteru Hadoop pomocí doplňku Microsoft Power Query pro Excel. Tento článek vás seznámí s postupem nastavení a použití Power Query k dotazování na data přidružená k clusteru Hadoop spravovanému pomocí HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Pracovní stanice se systémem Windows 10, 7, Windows Server 2008 R2 nebo novějším operačním systémem.

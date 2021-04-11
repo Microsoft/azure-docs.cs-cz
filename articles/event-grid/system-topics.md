@@ -3,12 +3,12 @@ title: Systémová témata v Azure Event Grid
 description: Popisuje systémová témata v Azure Event Grid.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca59dd6bb99b9b7d06f0622e8c0cb4e4234e21ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052961"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733039"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systémová témata v Azure Event Grid
 Systémové téma v Event Grid představuje jednu nebo více událostí publikovaných službami Azure, jako jsou Azure Storage a Azure Event Hubs. Například systémové téma může představovat **všechny události objektů BLOB** nebo pouze objekty **BLOB vytvořené** a **odstraněné objekty blob** publikované pro **konkrétní účet úložiště**. Když se v tomto příkladu nahraje objekt blob do účtu úložiště, služba Azure Storage publikuje událost **vytvořeného objektu BLOB** do systémového tématu v Event Grid, která pak přepošle událost [účastníkům](event-handlers.md) tématu, které obdrží a zpracuje událost. 
@@ -30,6 +30,7 @@ Tady je aktuální seznam služeb Azure, které podporují vytváření systémo
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Skupiny prostředků Azure](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

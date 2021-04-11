@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952979"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
@@ -68,10 +68,10 @@ Ověřte, že je brána firewall nebo proxy server nakonfigurovaná tak, aby pov
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
-|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Ano |  
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Yes |  
+|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Yes |  
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016096"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104877"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované prostředky pro výstrahy metriky v Azure Monitor
 
@@ -29,7 +29,7 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 
 |Typ prostředku  |Podporované dimenze |Výstrahy s více prostředky| Dostupné metriky|
 |---------|---------|-----|----------|
-|Microsoft. Aadiam/azureADMetrics | Yes | No | |
+|Microsoft. Aadiam/azureADMetrics | Yes | No | [Azure AD](../essentials/metrics-supported.md#microsoftaadiamazureadmetrics) |
 |Microsoft.ApiManagement/service | Yes | No | [API Management](../essentials/metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft. AppConfiguration/configurationStores |Yes | No | [App Configuration](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft. AppPlatform/pružina | Yes | No | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
@@ -38,6 +38,7 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft.Batch/batchAccounts | Yes | No | [Účty Batch](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft. BotService/botServices | Yes | No | [Služby robota](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft. cache/Redis | Yes | Yes | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft. CDN/profily | Yes | No | [Profily CDN](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft. ClassicCompute/domainNames/sloty/role | No | No | [Klasický Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | No | No | [Klasický Virtual Machines](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft. ClassicStorage/storageAccounts | Yes | No | [Účty úložiště (klasické)](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |
@@ -86,7 +87,7 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft. Media/MediaServices/starají | Yes | No | [Koncové body streamování Media Services](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
 |Microsoft. NetApp/netAppAccounts/capacityPools | Yes | Yes | [Fondy kapacit Azure NetApp](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft. NetApp/netAppAccounts/capacityPools/svazky | Yes | Yes | [Svazky NetApp Azure](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways | Yes | No | [Aplikační brány](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft. Network/applicationGateways | Yes | No | [Brány Application Gateway](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Yes | No | [brány firewall,](../essentials/metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | No | No | [Zóny DNS](../essentials/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft. Network/expressRouteCircuits | Yes | No |[Okruhy ExpressRoute](../essentials/metrics-supported.md#microsoftnetworkexpressroutecircuits) |

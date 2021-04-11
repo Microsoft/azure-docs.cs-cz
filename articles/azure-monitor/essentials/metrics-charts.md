@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: a8a4f84db140ca442371cb71886bebf9214d3e43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 444185dc41532bfa55c271e2f0027eb8b71de42f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026534"
+ms.locfileid: "105959893"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Rozšířené funkce Průzkumníka metrik Azure
 
@@ -78,6 +78,23 @@ Chcete-li zobrazit více metrik ve stejném grafu, [vytvořte nejprve nový graf
 Pokud chcete vytvořit jiný graf, který používá jinou metriku, vyberte **přidat graf**.
 
 Chcete-li změnit pořadí nebo odstranění více grafů, klikněte na tlačítko se třemi tečkami (**...**) a otevřete nabídku grafu. Pak zvolte **Přesunout nahoru**, **Přesunout dolů** nebo **Odstranit**.
+
+## <a name="time-range-controls"></a>Ovládací prvky časového rozsahu
+
+Kromě změny časového rozsahu pomocí [panelu pro výběr času](metrics-getting-started.md#select-a-time-range)můžete také posouvání a přiblížení pomocí ovládacích prvků v oblasti grafu.
+### <a name="pan"></a>Posouvání
+
+Chcete-li se posunout, klikněte na šipky vlevo a vpravo na okraji grafu.  Tím se vybraný časový rozsah posune zpátky a vpřed po jedné polovině časového rozsahu grafu.  Pokud například prohlížíte za posledních 24 hodin, kliknutí na šipku vlevo způsobí, že se časový rozsah posune do rozsahu určitého dne a před polovinu až 12 hodin.
+
+Většina metrik podporuje 93 dnů uchovávání, ale umožňuje vám jenom zobrazit 30 dnů najednou.  Pomocí ovládacích prvků posunu se můžete podívat v posledních 30 dnech a potom snadno přejít na více než 15 dnů a zobrazit zbývající dobu uchování.
+
+![Animovaný obrázek GIF znázorňující ovládací prvky posouvání vlevo a vpravo](./media/metrics-charts/metrics-pan-controls.gif)
+
+### <a name="zoom"></a>Zoom
+
+Kliknutím a přetažením grafu můžete zvětšit část grafu.  Přiblížením dojde k aktualizaci časového rozsahu grafu pro výběr a výběr menšího časového intervalu, pokud je časový interval nastaven na hodnotu automaticky.  Nový časový rozsah bude platit pro všechny grafy v metrikách.
+
+![Animovaný obrázek GIF znázorňující funkci přiblížení metrik](./media/metrics-charts/metrics-zoom-control.gif)
 
 ## <a name="aggregation"></a>Agregace
 

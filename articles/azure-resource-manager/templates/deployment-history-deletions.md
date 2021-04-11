@@ -3,12 +3,12 @@ title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951959"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732461"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
@@ -104,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Pro REST API použijte [funkce – registrovat](/rest/api/resources/features/register).
+Pro REST API použijte [funkce – registrovat](/rest/api/resources/features/features/register).
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -116,7 +116,7 @@ Pokud chcete zobrazit aktuální stav předplatného, použijte:
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Chcete-li znovu povolit automatické odstranění, použijte [funkce – zrušit registraci](/rest/api/resources/features/unregister)
+Chcete-li znovu povolit automatické odstranění, použijte [funkce – zrušit registraci](/rest/api/resources/features/features/unregister)
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01

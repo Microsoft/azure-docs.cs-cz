@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40094c00a4b896756c5c0e51116e0ae33ae2a096
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742632"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580725"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
@@ -29,13 +29,14 @@ Tato část se zabývá různými způsoby, jak lze nakonfigurovat bránu Azure 
 
 ### <a name="key-vault-firewall-disabled-default"></a>Zakázaná brána firewall Key Vault (výchozí)
 
-Ve výchozím nastavení je při vytváření nového trezoru klíčů zakázaná brána firewall Azure Key Vault. Všechny aplikace a služby Azure mají přístup k trezoru klíčů a odesílají požadavky do trezoru klíčů. Upozorňujeme, že tato konfigurace neznamená, že každý uživatel bude moct provádět operace s vaším trezorem klíčů. Trezor klíčů stále omezuje tajné klíče, klíče a certifikáty uložené v trezoru klíčů tím, že vyžaduje oprávnění Azure Active Directory ověřování a zásady přístupu. Další informace o ověřování trezoru klíčů najdete v dokumentu [tady](./authentication-fundamentals.md)popisuje ověřování trezoru klíčů.
+Ve výchozím nastavení je při vytváření nového trezoru klíčů zakázaná brána firewall Azure Key Vault. Všechny aplikace a služby Azure mají přístup k trezoru klíčů a odesílají požadavky do trezoru klíčů. Upozorňujeme, že tato konfigurace neznamená, že každý uživatel bude moct provádět operace s vaším trezorem klíčů. Trezor klíčů stále omezuje tajné klíče, klíče a certifikáty uložené v trezoru klíčů tím, že vyžaduje oprávnění Azure Active Directory ověřování a zásady přístupu. Další informace o ověřování trezoru klíčů najdete v dokumentu [tady](./authentication-fundamentals.md)popisuje ověřování trezoru klíčů. Další informace najdete v tématu [přístup Azure Key Vault za bránou firewall](./access-behind-firewall.md).
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Brána firewall Key Vault povolena (pouze důvěryhodné služby)
 
-Pokud povolíte bránu Key Vault firewall, budete mít možnost Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall. Seznam důvěryhodných služeb nepokrývá každou jednu službu Azure. Například Azure DevOps není v seznamu důvěryhodných služeb. **To neznamená, že služby, které se nezobrazí v seznamu důvěryhodných služeb, nejsou důvěryhodné nebo nezabezpečené.** Seznam důvěryhodných služeb zahrnuje služby, kde Microsoft kontroluje veškerý kód, který běží ve službě. Vzhledem k tomu, že uživatelé můžou psát vlastní kód v rámci služeb Azure, jako je například Azure DevOps, společnost Microsoft neposkytuje možnost pro vytvoření hromadného schválení služby. Kromě toho, že se služba zobrazuje v seznamu důvěryhodných služeb, neznamená to, že je povolená pro všechny scénáře.
+Pokud povolíte bránu Key Vault firewall, budete mít možnost Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall. Seznam důvěryhodných služeb nepokrývá každou jednu službu Azure. Například Azure DevOps není v seznamu důvěryhodných služeb. **To neznamená, že služby, které se nezobrazí v seznamu důvěryhodných služeb, nejsou důvěryhodné nebo nezabezpečené.** Seznam důvěryhodných služeb zahrnuje služby, kde Microsoft kontroluje veškerý kód, který běží ve službě. Vzhledem k tomu, že uživatelé můžou psát vlastní kód v rámci služeb Azure, jako je například Azure DevOps, společnost Microsoft neposkytuje možnost pro vytvoření hromadného schválení služby. Kromě toho, že se služba zobrazuje v seznamu důvěryhodných služeb, neznamená to, že je povolená pro všechny scénáře. 
 
 Pokud chcete zjistit, jestli je služba, kterou se pokoušíte použít, v seznamu důvěryhodných služeb, přečtěte si [následující dokument.](./overview-vnet-service-endpoints.md#trusted-services)
+Návod, jak postupovat, najdete tady: [portál, Azure CLI a PowerShell](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) .
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Brána firewall Key Vault povolena (IPv4 adresy a rozsahy – statické IP adresy)
 

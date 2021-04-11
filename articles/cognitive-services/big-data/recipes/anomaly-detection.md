@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: 5a583d74ae0bf421a7a863a65442d250489a2f8f
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104775387"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
@@ -28,7 +28,7 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Pracovní prostor Azure synapse](../../../synapse-analytics/quickstart-create-workspace.md) nakonfigurovaný s [fondem Apache Spark bez serveru](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)

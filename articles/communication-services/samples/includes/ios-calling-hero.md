@@ -2,28 +2,28 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: f1d49aa0583f34327afff229b46d7a366202aded
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.author: dademath
+ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105152737"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498775"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
 
 Skupina komunikačních služeb Azure, která **volá Hero Sample pro iOS** , ukazuje, jak se komunikační služby, které volají sadu iOS SDK, dají použít k vytvoření skupinového volajícího prostředí, které zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
 
 ## <a name="download-code"></a>Stažení kódu
 
-Vyhledá finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-ios-calling-hero).
+Vyhledejte projekt pro tuto ukázku na [GitHubu](https://github.com/Azure-Samples/communication-services-ios-calling-hero). Verzi ukázky s [týmovou spolupráci](../../concepts/teams-interop.md) můžete najít v samostatné [větvi](https://github.com/Azure-Samples/communication-services-ios-calling-hero/tree/feature/teams_interop).
 
 ## <a name="overview"></a>Přehled
 
@@ -33,7 +33,7 @@ Ukázka vypadá takto:
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="Snímek obrazovky znázorňující cílovou stránku ukázkové aplikace":::
 
-Když stisknete tlačítko spustit nové volání, aplikace pro iOS vytvoří nové volání a spojí ho. Aplikace umožňuje připojit stávající volání služby Azure Communication Services zadáním ID existujícího volání. K týmu se můžete připojit také tak, že zadáte odkaz na spojení, který najdete na schůzi schůzky.  (Odkaz na připojení má následující formát: `https://teams.microsoft.com/l/meetup-join/` ). Další informace o spolupráci týmů najdete v [Koncepční dokumentaci pro týmy spolupráce](../../concepts/teams-interop.md).
+Když stisknete tlačítko spustit nové volání, aplikace pro iOS vytvoří nové volání a spojí ho. Aplikace umožňuje připojit stávající volání služby Azure Communication Services zadáním ID existujícího volání.
 
 Po připojení k volání se zobrazí výzva, abyste aplikaci udělili oprávnění k přístupu k fotoaparátu a mikrofonu. Zobrazí se také výzva k zadání zobrazovaného názvu.
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf2f0cdf8b7c540e569067d68374eef55d3479fe
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488716"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028192"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí poskytovatele služby Salesforce SAML pomocí protokolu SAML v Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ ms.locfileid: "103488716"
 
 V tomto článku se dozvíte, jak povolit přihlášení uživatelů z organizace Salesforce pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C). Přihlášení povolíte přidáním [poskytovatele identity SAML](identity-provider-generic-saml.md) do vlastní zásady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 - Pokud jste to ještě neudělali, zaregistrujte si [bezplatný účet Developer Edition](https://developer.salesforce.com/signup). Tento článek používá [prostředí Salesforce blesk](https://developer.salesforce.com/page/Lightning_Experience_FAQ).
@@ -202,7 +202,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Salesforce, musíte
 ## <a name="test-your-custom-policy"></a>Testování vlastních zásad
 
 1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte tlačítko **Spustit** .
 1. Na stránce registrace nebo přihlášení vyberte **Salesforce** , abyste se přihlásili pomocí účtu Salesforce.
 

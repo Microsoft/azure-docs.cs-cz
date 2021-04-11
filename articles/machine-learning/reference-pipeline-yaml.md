@@ -12,10 +12,10 @@ author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 2a92fa8fd242482585ab3785e99f8239548ce369
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868337"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
@@ -26,23 +26,23 @@ Následující tabulka uvádí, co je a není aktuálně podporováno při defin
 
 | Typ kroku | Podporované? |
 | ----- | :-----: |
-| PythonScriptStep | Ano |
-| ParallelRunStep | Ano |
-| AdlaStep | Ano |
-| AzureBatchStep | Ano |
-| DatabricksStep | Ano |
-| DataTransferStep | Ano |
-| AutoMLStep | Ne |
-| HyperDriveStep | Ne |
-| ModuleStep | Ano |
-| MPIStep | Ne |
-| EstimatorStep | Ne |
+| PythonScriptStep | Yes |
+| ParallelRunStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
+| AutoMLStep | No |
+| HyperDriveStep | No |
+| ModuleStep | Yes |
+| MPIStep | No |
+| EstimatorStep | No |
 
 ## <a name="pipeline-definition"></a>Definice kanálu
 
 Definice kanálu používá následující klíče, které odpovídají třídě [kanálů](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline) :
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `name` | Popis kanálu |
 | `parameters` | Parametry kanálu. |
@@ -54,7 +54,7 @@ Definice kanálu používá následující klíče, které odpovídají třídě
 
 `parameters`Oddíl používá následující klíče, které odpovídají třídě [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter) :
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ---- | ---- |
 | `type` | Typ hodnoty parametru. Platné typy jsou `string` , `int` , `float` , `bool` nebo `datapath` . |
 | `default` | Výchozí hodnota. |
@@ -82,7 +82,7 @@ pipeline:
 
 `data_references`Oddíl používá následující klíče, které odpovídají [DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference):
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `datastore` | Úložiště dat, na které se má odkazovat |
 | `path_on_datastore` | Relativní cesta v úložišti zálohování pro datový odkaz. |
@@ -106,7 +106,7 @@ pipeline:
 
 Kroky definují výpočetní prostředí spolu se soubory, které se mají spustit v prostředí. Chcete-li definovat typ kroku, použijte `type` klíč:
 
-| Typ kroku | Popis |
+| Typ kroku | Description |
 | ----- | ----- |
 | `AdlaStep` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá třídě [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep) . |
 | `AzureBatchStep` | Spouští úlohy pomocí Azure Batch. Odpovídá třídě [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) . |
@@ -117,7 +117,7 @@ Kroky definují výpočetní prostředí spolu se soubory, které se mají spust
 
 ### <a name="adla-step"></a>Krok ADLA
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `script_name` | Název skriptu U-SQL (relativně k `source_directory` příponě). |
 | `compute` | Výpočetní cíl Azure Data Lake, který se má použít pro tento krok. |
@@ -168,7 +168,7 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch krok
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `compute` | Výpočetní cíl Azure Batch, který se má použít pro tento krok. |
 | `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
@@ -222,7 +222,7 @@ pipeline:
 
 ### <a name="databricks-step"></a>Krok datacihly
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `compute` | Výpočetní cíl Azure Databricks, který se má použít pro tento krok. |
 | `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
@@ -276,7 +276,7 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>Krok přenosu dat
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `compute` | Výpočetní cíl Azure Data Factory, který se má použít pro tento krok. |
 | `source_data_reference` | Vstupní připojení, které slouží jako zdroj operací přenosu dat. Podporované hodnoty jsou [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
@@ -320,7 +320,7 @@ pipeline:
 
 ### <a name="python-script-step"></a>Krok skriptu Pythonu
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
@@ -367,7 +367,7 @@ pipeline:
 
 ### <a name="parallel-run-step"></a>Krok paralelního spuštění
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `inputs` | Vstupy můžou být [datová sada](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
 | `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
@@ -419,7 +419,7 @@ pipeline:
 
 ### <a name="pipeline-with-multiple-steps"></a>Kanál s více kroky 
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `steps` | Sekvence jedné nebo více definicí PipelineStep. Všimněte si, že `destination` klíče jednoho kroku `outputs` se stanou `source` klíči pro `inputs` Další krok.| 
 
@@ -480,7 +480,7 @@ pipeline:
 
 Při definování plánu pro kanál může to být buď úložiště dat, aktivované nebo opakované v závislosti na časovém intervalu. Níže jsou uvedené klíče, které slouží k definování plánu:
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `description` | Popis plánu |
 | `recurrence` | Obsahuje nastavení opakování, pokud se plán opakuje. |
@@ -511,7 +511,7 @@ Schedule:
 
 Při definování **opakovaného plánu** použijte následující klíče `recurrence` :
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `frequency` | Jak často se plán opakuje. Platné hodnoty jsou `"Minute"` , `"Hour"` , `"Day"` , `"Week"` nebo `"Month"` . |
 | `interval` | Jak často je plán aktivován. Celočíselná hodnota představuje počet časových jednotek, které se mají počkat, dokud se plán znovu neaktivuje. |

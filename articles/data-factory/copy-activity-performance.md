@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f9080b43333168802a72e60751eec2a765c6d4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616073"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580821"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce výkonem a škálovatelností aktivity kopírování
 
@@ -62,7 +62,10 @@ Toto úplné využití znamená, že můžete odhadnout celkovou propustnost pom
 * Cílové úložiště dat
 * Šířka pásma sítě mezi zdrojovým a cílovým úložištěm dat
 
-Doba kopírování je vypočítána v následující tabulce. Doba trvání vychází z velikosti dat a omezení šířky pásma sítě/úložiště dat pro vaše prostředí.
+V následující tabulce je uveden výpočet doby trvání pohybu dat. Doba trvání v každé buňce se vypočítá na základě dané sítě a šířky pásma úložiště dat a dané velikosti datové části.
+
+> [!NOTE]
+> Doba trvání uvedená níže je určena k tomu, aby představovala dosažitelný výkon v uceleném řešení pro integraci dat implementovaných pomocí ADF pomocí jednoho nebo více technik optimalizace výkonu popsaných v tématu [funkce optimalizace výkonu pro kopírování](#copy-performance-optimization-features), včetně použití příkazu foreach k dělení a sečtení několika souběžných aktivit kopírování. Doporučujeme postupovat podle kroků uvedených v [krocích optimalizace výkonu](#performance-tuning-steps) , které optimalizují výkon kopírování pro konkrétní datovou sadu a konfiguraci systému. Měli byste použít čísla získaná ve vašich testech ladění výkonu pro plánování produkčního nasazení, plánování kapacity a fakturační projekce.
 
 &nbsp;
 

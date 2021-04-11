@@ -4,15 +4,15 @@ description: Seznamte se s osvědčenými postupy pro provozovatele clusteru, ab
 services: container-service
 author: lastcoolnameleft
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 03/11/2021
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bcd30c22132bc53ff28fdefcb73f686e08e34ea
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976397"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105081"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -29,71 +29,99 @@ Tento článek se zaměřuje na plánování kontinuity podnikových aplikací a
 
 ## <a name="plan-for-multiregion-deployment"></a>Plánování nasazení ve více oblastech
 
-**Osvědčený postup**: když nasadíte několik clusterů AKS, vyberte oblasti, kde je AKS k dispozici, a používejte spárované oblasti.
+> **Osvědčený postup**
+>
+> Když nasadíte několik clusterů AKS, vyberte oblasti, kde je AKS k dispozici. Použijte spárované oblasti.
 
 Cluster AKS se nasadí do jedné oblasti. Pokud chcete ochránit svůj systém před selháním, nasaďte svoji aplikaci do několika AKS clusterů napříč různými oblastmi. Při plánování nasazení clusteru AKS zvažte následující:
 
-* [**Dostupnost oblasti AKS**](./quotas-skus-regions.md#region-availability): vyberte oblasti blízko vašim uživatelům. AKS se průběžně rozbalí do nových oblastí.
-* [**Spárované oblasti Azure**](../best-practices-availability-paired-regions.md): pro vaši geografickou oblast vyberte dvě oblasti, které jsou vzájemně spárovány. Spárované oblasti koordinují aktualizace platforem a v případě potřeby stanovují prioritu úsilí při obnovení.
-* **Dostupnost služby**: Rozhodněte, jestli mají spárované oblasti horkou, horkou, horkou, teplou nebo horkou a studenou. Chcete spustit obě oblasti současně s jednou oblastí *připravenou* k zahájení obsluhy provozu? Nebo chcete, aby jedna oblast měla čas na to, aby sloužila provozu?
+* [**Dostupnost oblasti AKS**](./quotas-skus-regions.md#region-availability)
+    * Vyberte oblasti blízko vašim uživatelům. 
+    * AKS se průběžně rozbalí do nových oblastí.
+* [**Spárované oblasti Azure**](../best-practices-availability-paired-regions.md)
+    * Pro vaši geografickou oblast vyberte dvě oblasti spárované dohromady.
+    * Spárované oblasti koordinují aktualizace platforem a v případě potřeby stanovují prioritu úsilí při obnovení.
+* **Dostupnost služby**
+    * Rozhodněte se, jestli mají spárované oblasti horkou, horkou, horkou, teplou nebo horkou a studenou.
+    * Chcete spustit obě oblasti současně s jednou oblastí *připravenou* k zahájení obsluhy provozu? Nebo:
+    * Chcete pořídit provoz pro poskytování provozu jednomu regionu?
 
-Dostupnost oblasti AKS a spárované oblasti jsou společné. Nasaďte clustery AKS do spárovaných oblastí, které jsou navržené tak, aby bylo možné spravovat zotavení po havárii oblasti společně. Například AKS je k dispozici v Východní USA a Západní USA. Tyto oblasti jsou spárovány. Při vytváření strategie AKS BC/DR vyberte tyto dvě oblasti.
+Dostupnost oblasti AKS a spárované oblasti jsou společné. Nasaďte clustery AKS do spárovaných oblastí určených ke správě oblasti zotavení po havárii společně. Například AKS je k dispozici v Východní USA a Západní USA. Tyto oblasti jsou spárovány. Při vytváření strategie AKS BC/DR vyberte tyto dvě oblasti.
 
-Když nasadíte aplikaci, přidejte další krok do kanálu CI/CD pro nasazení do těchto více clusterů AKS. Pokud vaše kanály nasazení neaktualizujete, můžou se aplikace nasadit jenom do jedné z vašich oblastí a clusterů AKS. Provoz zákazníků, který je směrován do sekundární oblasti, neobdrží nejnovější aktualizace kódu.
+Když nasadíte aplikaci, přidejte další krok do kanálu CI/CD pro nasazení do těchto více clusterů AKS. Aktualizace kanálů nasazení zabraňuje aplikacím v nasazení pouze do jedné z vašich oblastí a AKS clusterů. V takovém scénáři nebudou přenosy zákazníků směrované do sekundární oblasti dostávat nejnovější aktualizace kódu.
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>Použití Azure Traffic Manager ke směrování provozu
 
-**Osvědčený postup**: Azure Traffic Manager může směrovat zákazníky do nejbližšího clusteru AKS a instance aplikace. Abyste dosáhli nejlepšího výkonu a redundance, přesměrujte veškerý provoz aplikací prostřednictvím Traffic Manager před tím, než přejdete do clusteru AKS.
+> **Osvědčený postup**
+>
+> Azure Traffic Manager vás může směrovat k nejbližšímu clusteru AKS a instanci aplikace. Abyste dosáhli nejlepšího výkonu a redundance, přesměrujte veškerý provoz aplikací prostřednictvím Traffic Manager před tím, než přejdete do clusteru AKS.
 
-Pokud máte více clusterů AKS v různých oblastech, použijte Traffic Manager k řízení způsobu, jakým přenos toků do aplikací spuštěných v jednotlivých clusterech. [Azure Traffic Manager](../traffic-manager/index.yml) je nástroj pro vyrovnávání zatížení pro provoz založený na DNS, který může distribuovat síťový provoz napříč oblastmi. Použijte Traffic Manager ke směrování uživatelů na základě doby odezvy clusteru nebo na základě geografického umístění.
+Pokud máte více clusterů AKS v různých oblastech, použijte Traffic Manager k řízení toku provozu do aplikací spuštěných v každém clusteru. [Azure Traffic Manager](../traffic-manager/index.yml) je nástroj pro vyrovnávání zatížení pro provoz založený na DNS, který může distribuovat síťový provoz napříč oblastmi. Použijte Traffic Manager ke směrování uživatelů na základě doby odezvy clusteru nebo na základě geografického umístění.
 
 ![AKS s Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-Zákazníci, kteří mají jeden cluster AKS, se obvykle připojují k IP adrese služby nebo názvu DNS dané aplikace. V nasazení s více clustery by se zákazníci měli připojit k Traffic Manager názvu DNS, který odkazuje na služby na jednotlivých clusterech AKS. Tyto služby definujte pomocí koncových bodů Traffic Manager. Každý koncový bod je *IP adresa nástroje pro vyrovnávání zatížení služby*. Pomocí této konfigurace můžete směrovat síťový provoz z Traffic Manager koncového bodu v jedné oblasti do koncového bodu v jiné oblasti.
+Pokud máte jeden cluster AKS, obvykle se k IP adrese služby nebo názvu DNS dané aplikace připojíte. V nasazení s více clustery byste se měli připojit k Traffic Manager názvu DNS, který odkazuje na služby na jednotlivých clusterech AKS. Tyto služby definujte pomocí koncových bodů Traffic Manager. Každý koncový bod je *IP adresa nástroje pro vyrovnávání zatížení služby*. Pomocí této konfigurace můžete směrovat síťový provoz z Traffic Manager koncového bodu v jedné oblasti do koncového bodu v jiné oblasti.
 
 ![Geografické směrování prostřednictvím Traffic Manager](media/operator-best-practices-bc-dr/traffic-manager-geographic-routing.png)
 
-Traffic Manager provede hledání DNS a vrátí nejvhodnější koncový bod uživatele. Vnořené profily mohou určovat prioritu primárního umístění. Například uživatelé by se měli obecně připojit k nejbližší geografické oblasti. Pokud má tato oblast problém, Traffic Manager místo toho uživatele přesměrují do sekundární oblasti. Tento přístup zajišťuje, že se zákazníci mohou připojit k instanci aplikace i v případě, že jejich nejbližší geografická oblast není k dispozici.
+Traffic Manager provede hledání DNS a vrátí nejvhodnější koncový bod. Vnořené profily mohou určovat prioritu primárního umístění. Například byste se měli připojit k nejbližší geografické oblasti. Pokud má tato oblast problém, Traffic Manager vás směrovat do sekundární oblasti. Tento přístup zajišťuje, že se můžete připojit k instanci aplikace i v případě, že vaše nejbližší geografická oblast není k dispozici.
 
 Informace o nastavení koncových bodů a směrování najdete v tématu [Konfigurace metody směrování geografického provozu pomocí Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
 ### <a name="application-routing-with-azure-front-door-service"></a>Směrování aplikací pomocí služby Azure front-dveří
 
-Pomocí rozděleného protokolu libovolného vysílání založeného na protokolu TCP zajišťuje [Služba front](../frontdoor/front-door-overview.md) -Endu Azure, aby se koncoví uživatelé mohli rychle připojit k nejbližšímu bodu POP na dvířka (bod přítomnosti). Mezi další funkce služby front-dveří Azure patří ukončení protokolu TLS, vlastní doména, Firewall webových aplikací, přepsání adresy URL a spřažení relací. Zkontrolujte potřeby provozu aplikace a zjistěte, které řešení je nejvhodnější.
+Při použití rozděleného protokolu libovolného vysílání založeného na protokolu TCP se koncovým uživatelům zobrazí výzva k okamžitému připojení koncových uživatelů k nejbližšímu bodu POP na [přední dveře (](../frontdoor/front-door-overview.md) bod přítomnosti). Další funkce služby Azure front-dveří:
+* Ukončení protokolu TLS
+* Vlastní doména
+* Firewall webových aplikací
+* Přepsání adresy URL
+* Spřažení relací 
+
+Zkontrolujte potřeby provozu aplikace a zjistěte, které řešení je nejvhodnější.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Oblasti propojení s globálním partnerským vztahem virtuální sítě
 
-Pokud je potřeba, aby clustery vzájemně komunikovaly, mohli byste mezi sebou vzájemně propojovat virtuální sítě, a [to prostřednictvím partnerského vztahu virtuálních sítí](../virtual-network/virtual-network-peering-overview.md). Tato technologie vzájemně propojuje virtuální sítě s vysokou šířkou pásma v páteřní síti Microsoftu, a to i v různých geografických oblastech.
+Propojit obě virtuální sítě mezi sebou prostřednictvím [partnerského vztahu virtuálních sítí](../virtual-network/virtual-network-peering-overview.md) , aby bylo možné povolit komunikaci mezi clustery. Partnerský vztah virtuálních sítí vzájemně propojuje virtuální sítě a poskytuje velkou šířku pásma napříč páteřní sítí Microsoftu, a to i v různých geografických oblastech.
 
-Předpokladem pro partnerský vztah k virtuálním sítím, kde jsou spuštěné clustery AKS, je použití standardního Load Balancer v clusteru AKS, aby byly dostupné služby Kubernetes v rámci partnerského vztahu virtuálních sítí.
+Před vytvořením partnerského vztahu virtuálních sítí se spuštěnými clustery AKS použijte standardní Load Balancer v clusteru AKS. Tento požadavek zpřístupňuje služby Kubernetes v rámci partnerského vztahu virtuálních sítí.
 
 ## <a name="enable-geo-replication-for-container-images"></a>Povolit geografickou replikaci pro Image kontejneru
 
-**Osvědčený postup**: uložte image kontejneru do Azure Container registry a geograficky replikujte registr do každé oblasti AKS.
+> **Osvědčený postup**
+> 
+> Uložte image kontejneru do Azure Container Registry a geograficky replikujte registr do každé oblasti AKS.
 
 K nasazení a spuštění aplikací v AKS potřebujete způsob, jak ukládat a načítat image kontejnerů. Container Registry se integruje s AKS, takže může bezpečně ukládat image kontejneru nebo grafy Helm. Container Registry podporuje základní geografickou replikaci k automatické replikaci vašich imagí do oblastí Azure po celém světě. 
 
-Pro zlepšení výkonu a dostupnosti použijte Container Registry geografickou replikaci k vytvoření registru v každé oblasti, kde máte cluster AKS. Každý cluster AKS pak vyžádá image kontejneru z místního registru kontejneru ve stejné oblasti:
+Zlepšení výkonu a dostupnosti:
+1. K vytvoření registru v každé oblasti, kde máte cluster AKS, použijte Container Registry geografickou replikaci. 
+1. Každý cluster AKS pak vyžádá image kontejneru z místního registru kontejneru ve stejné oblasti:
 
 ![Container Registry geografickou replikaci pro Image kontejneru](media/operator-best-practices-bc-dr/acr-geo-replication.png)
 
 Když použijete Container Registry geografickou replikaci k vyžádání imagí ze stejné oblasti, výsledky jsou:
 
-* **Rychlejší**: vyžádáte si obrázky z vysokorychlostních síťových připojení s nízkou latencí v rámci stejné oblasti Azure.
+* **Rychlejší**: vyžádání imagí z vysokorychlostních síťových připojení s nízkou latencí v rámci stejné oblasti Azure.
 * **Spolehlivější**: Pokud je oblast nedostupná, cluster AKS si vyžádá image z dostupného registru kontejnerů.
 * **Levnější**: mezi datacentry se neúčtují žádné poplatky za výstup do sítě.
 
-Geografická replikace je funkce pro Registry kontejneru SKU úrovně *Premium* . Informace o tom, jak nakonfigurovat geografickou replikaci, najdete v tématu [Container Registry geografickou replikaci](../container-registry/container-registry-geo-replication.md).
+Geografická replikace je funkce registru kontejneru SKU úrovně *Premium* . Informace o tom, jak nakonfigurovat geografickou replikaci, najdete v tématu [Container Registry geografickou replikaci](../container-registry/container-registry-geo-replication.md).
 
 ## <a name="remove-service-state-from-inside-containers"></a>Odebrat stav služby z vnitřních kontejnerů
 
-**Osvědčený postup**: Pokud je to možné, neukládají se do kontejneru stav služby. Místo toho použijte platformu Azure jako službu (PaaS), která podporuje replikaci ve více oblastech.
+> **Osvědčený postup**
+> 
+> Vyhněte se ukládání stavu služby uvnitř kontejneru. Místo toho použijte platformu Azure jako službu (PaaS), která podporuje replikaci ve více oblastech.
 
-*Stav služby* odkazuje na data v paměti nebo na disku, která služba vyžaduje, aby fungovala. Stav zahrnuje datové struktury a proměnné členů, které služba načítá a zapisuje. V závislosti na tom, jak je služba navržená, může stav obsahovat také soubory nebo jiné prostředky, které jsou uložené na disku. Stav může například zahrnovat soubory, které databáze používá k ukládání dat a protokolů transakcí.
+*Stav služby* odkazuje na data v paměti nebo na disku, která služba potřebuje k fungování. Stav zahrnuje datové struktury a proměnné členů, které služba načítá a zapisuje. V závislosti na tom, jak je služba navržená, může stav obsahovat také soubory nebo jiné prostředky uložené na disku. Stav může například zahrnovat soubory, které databáze používá k ukládání dat a protokolů transakcí.
 
-Stav může být buď externě, nebo společně umístěný s kódem, který zpracovává stav. Obvykle se Externalize stav pomocí databáze nebo jiného úložiště dat, které běží na různých počítačích v síti nebo které se zpracovávají na stejném počítači.
+Stav může být buď externě, nebo společně umístěný s kódem, který pracuje s tímto stavem. Obvykle se Externalize stav pomocí databáze nebo jiného úložiště dat, které běží na různých počítačích v síti nebo které se zpracovávají na stejném počítači.
 
-Kontejnery a mikroslužby jsou nejvíc odolné, když procesy, které jsou v nich spuštěné, neuchovávají stav. Vzhledem k tomu, že aplikace téměř vždy obsahují nějaký stav, použijte řešení PaaS, jako je Azure Cosmos DB, Azure Database for PostgreSQL, Azure Database for MySQL nebo Azure SQL Database.
+Kontejnery a mikroslužby jsou nejvíc odolné, když procesy, které jsou v nich spuštěné, neuchovávají stav. Vzhledem k tomu, že aplikace téměř vždy obsahují nějaký stav, použijte řešení PaaS, například:
+* Azure Cosmos DB
+* Azure Database for PostgreSQL
+* Azure Database for MySQL
+* Azure SQL Database
 
 Pokud chcete vytvářet přenosné aplikace, přečtěte si následující pokyny:
 
@@ -102,9 +130,11 @@ Pokud chcete vytvářet přenosné aplikace, přečtěte si následující pokyn
 
 ## <a name="create-a-storage-migration-plan"></a>Vytvoření plánu migrace úložiště
 
-**Osvědčený postup**: pokud používáte Azure Storage, připravte a otestujte, jak se úložiště migruje z primární oblasti do oblasti zálohování.
+> **Osvědčený postup**
+>
+> Pokud používáte Azure Storage, připravte a otestujte, jak se vaše úložiště migruje z primární oblasti do oblasti zálohování.
 
-Vaše aplikace mohou používat Azure Storage pro svá data. Vzhledem k tomu, že jsou vaše aplikace rozdělené mezi několik clusterů AKS v různých oblastech, je potřeba uchovat úložiště. Tady jsou dva běžné způsoby replikace úložiště:
+Vaše aplikace mohou používat Azure Storage pro svá data. Pokud ano, jsou vaše aplikace rozdělené mezi několik clusterů AKS v různých oblastech. Je nutné uchovat úložiště jako synchronizované. Tady jsou dva běžné způsoby replikace úložiště:
 
 * Asynchronní replikace na základě infrastruktury
 * Asynchronní replikace založená na aplikaci
@@ -113,13 +143,17 @@ Vaše aplikace mohou používat Azure Storage pro svá data. Vzhledem k tomu, ž
 
 Vaše aplikace můžou vyžadovat trvalé úložiště i po odstranění pod. V Kubernetes můžete použít trvalé svazky k trvalému ukládání dat. Trvalé svazky jsou připojené k virtuálnímu počítači uzlu a pak jsou vystavené pro lusky. Trvalé svazky následují po částech, a to i v případě, že se lusky přesunou do jiného uzlu ve stejném clusteru.
 
-Použitá strategie replikace závisí na řešení úložiště. Běžná řešení úložiště, jako jsou [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [věž](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)a [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) , poskytují vlastní pokyny pro zotavení po havárii a replikaci.
+Použitá strategie replikace závisí na řešení úložiště. Následující běžná řešení úložiště poskytují vlastní pokyny k zotavení po havárii a replikaci:
+* [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/)
+* [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)
+* [Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)
+* [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) 
 
-Typickou strategií je poskytnout společný bod úložiště, ve kterém můžou aplikace zapisovat svá data. Tato data se pak replikují do různých oblastí a pak se k nim přistupovala místně.
+Obvykle zadáváte společný bod úložiště, ve kterém aplikace zapisují svá data. Tato data se pak replikují napříč různými oblastmi a přistupovaly v místním prostředí.
 
 ![Asynchronní replikace na základě infrastruktury](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Pokud používáte Azure Managed Disks, máte k dispozici několik možností pro zpracování replikace a zotavení po havárii. [Velero v Azure][velero] a [Kasten][kasten] zálohují řešení nativní na Kubernetes, ale nejsou podporovaná.
+Pokud používáte Azure Managed Disks, můžete použít [Velero v Azure][velero] a [Kasten][kasten] pro zpracování replikace a zotavení po havárii. Tyto možnosti jsou zálohování řešení nativní, ale nepodporované nástrojem Kubernetes.
 
 ### <a name="application-based-asynchronous-replication"></a>Asynchronní replikace založená na aplikaci
 

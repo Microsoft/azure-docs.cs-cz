@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 648003c042d4c8118af566a6c985d2fd6e26b04e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563034"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959666"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Krok 3 – nastavení pro migraci na verzi V3 REST API nebo klientskou sadu SDK
 
@@ -45,7 +45,7 @@ Zákazníci, kteří dříve používali verzi 2015-10-01 rozhraní API pro spr�
 
 Postupujte podle pokynů k rychlému zprovoznění a [nastavte své prostředí](how-to-set-azure-subscription.md?tabs=portal) pomocí Azure Portal. Vyberte přístup přes rozhraní API a ověřování instančního objektu a vygenerujte nové ID aplikace Azure AD a tajné klíče pro použití s tímto testovacím účtem.
 
-[Vytvořte účet Media Services](create-account-howto.md?tabs=portal).
+[Vytvořte účet Media Services](account-create-how-to.md?tabs=portal).
 [Získat přihlašovací údaje pro přístup k Media Services rozhraní API](access-api-howto.md?tabs=portal)
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Stažení klientské sady SDK podle vašeho výběru a nastavení prostředí

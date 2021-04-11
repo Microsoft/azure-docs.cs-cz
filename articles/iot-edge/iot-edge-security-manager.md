@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492553"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028668"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Správce zabezpečení Azure IoT Edge
 
@@ -119,12 +119,17 @@ Zabezpečený Silicon je nutný k ukotvení vztahu důvěryhodnosti uvnitř IoT 
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge integrace a údržby správce zabezpečení
 
-IoT Edge Security Manager se zaměřuje na identifikaci a izolaci komponent, které chrání zabezpečení a integritu Azure IoT Edge platformy pro vlastní posílení zabezpečení. Třetí strany, jako jsou tvůrci zařízení, by měli používat vlastní funkce zabezpečení, které jsou k dispozici u svého hardwaru zařízení.  V části Další kroky najdete odkazy, které ukazují, jak posílit správce zabezpečení Azure IoT pomocí čipu TPM (Trusted Platform Module) na platformách Linux a Windows. Tyto příklady používají software nebo Virtual čipy TPM, ale přímo se používají pro používání diskrétních zařízení TPM.  
+IoT Edge Security Manager se zaměřuje na identifikaci a izolaci komponent, které chrání zabezpečení a integritu Azure IoT Edge platformy pro vlastní posílení zabezpečení. Třetí strany, jako jsou tvůrci zařízení, by měli používat vlastní funkce zabezpečení, které jsou k dispozici u svého hardwaru zařízení.  
+
+Naučte se posílit správce zabezpečení Azure IoT pomocí softwaru nebo Virtual čipy TPM pomocí čipu TPM (Trusted Platform Module):  
+
+Vytvoření a zřízení [zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači se systémem Linux](how-to-auto-provision-simulated-device-linux.md).
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Vytvoření a zřízení [IoT Edge zařízení s simulovaným čipem TPM ve Windows](how-to-auto-provision-simulated-device-windows.md).
+:::moniker-end
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si blog o [zabezpečení inteligentního Edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
-
-Vytvoření a zřízení [zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači se systémem Linux](how-to-auto-provision-simulated-device-linux.md).
-
-Vytvoření a zřízení [IoT Edge zařízení s simulovaným čipem TPM ve Windows](how-to-auto-provision-simulated-device-windows.md).

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 590ad577f3648ea9214ec4dcb6b6cab59dd5a3f1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104848"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958244"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Rychlý Start: Klientská knihovna pro tvář pro JavaScript
 
@@ -24,7 +24,7 @@ Pomocí klientské knihovny obličeje pro JavaScript:
 
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvořit skupinu osob](#create-a-person-group)
+* [Vytvoření osoby](#create-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 
 [Referenční dokumentace](/javascript/api/@azure/cognitiveservices-face/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Ukázky](/samples/browse/?products=azure&term=face&languages=javascript)
@@ -106,7 +106,7 @@ Níže uvedené fragmenty kódu ukazují, jak provádět následující úlohy p
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvořit skupinu osob](#create-a-person-group)
+* [Vytvoření osoby](#create-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 
 > [!TIP]
@@ -163,27 +163,27 @@ Následující metoda detekuje plošky v sadě cílových imagí a v jediné zdr
 
 Operace [Identifikace](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) přebírá obrázek osoby (nebo více lidí) a hledá identitu každé plošky v imagi (vyhledávání rozpoznávání obličeje). Porovnává každou zjištěnou plochu s [osobou](/javascript/api/@azure/cognitiveservices-face/persongroup), databázi různých objektů [osob](/javascript/api/@azure/cognitiveservices-face/person) , jejichž funkce obličeje jsou známy. Aby bylo možné operaci identifikace provést, musíte nejprve vytvořit a naučit objekt [Person](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
-### <a name="add-faces-to-person-group"></a>Přidat plošky do skupiny osob
+### <a name="add-faces-to-persongroup"></a>Přidání plošek do osoby
 
 Vytvořte následující funkci, která přidá obličeje do pole [Person](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
-### <a name="wait-for-training-of-person-group"></a>Počkat na školení skupiny osob
+### <a name="wait-for-training-of-persongroup"></a>Počkat na školení osoby
 
-Vytvořte následující pomocnou funkci, která čeká na dokončení školení pro skupinu osob.
+Vytvořte následující pomocnou funkci, která čeká na dokončení školení pro uživatele ve službě **Person** .
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="wait_for_training":::
 
-### <a name="create-a-person-group"></a>Vytvořit skupinu osob
+### <a name="create-a-persongroup"></a>Vytvoření osoby
 
 Následující kód:
-- Vytvoří objekt [Person](/javascript/api/@azure/cognitiveservices-face/persongroup) .
-- Přidá obličeje do skupiny person voláním `AddFacesToPersonGroup` , které jste definovali dříve.
-- Navlakuje skupinu osob.
-- Identifikuje plošky ve skupině Person.
+- Vytvoří objekt [Person](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup) .
+- Přidá obličeje do pole **Person** voláním `AddFacesToPersonGroup` , které jste definovali dříve.
+- Navlakuje **osobu**.
+- Identifikuje plošky ve vaší **osobě**.
 
-Tato skupina **uživatelů** a její přidružené objekty **osoby** jsou teď připravené k použití v operacích ověřování, identifikace nebo seskupení.
+Tato skupina **uživatelů** a její přidružená **osoba** jsou teď připravené k použití při operacích ověřování, identifikace nebo seskupení.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 

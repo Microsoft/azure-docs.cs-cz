@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8db1a671904233098610a9ba55ce260e6214c38c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108485"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028498"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -26,9 +26,8 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 | [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které výrazně zlepšují relevanci výsledků hledání s minimálními úpravami žádosti o dotaz. </br></br>[Sémantické hodnocení](semantic-ranking.md) vypočítá relevanci skóre pomocí sémantického významu slov a obsahu. </br></br>[Sémantické titulky](semantic-how-to-query-request.md) vracejí relevantní pasáže z dokumentu, který nejlépe sumarizuje dokument, a zvýrazní nejdůležitější výrazy nebo fráze. </br></br>[Sémantické odpovědi](semantic-answers.md) vracejí klíčové pasáže, které se extrahují z hledaného dokumentu, které se formulují jako přímá odpověď na dotaz, který vypadá jako otázka. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>Použijte [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview nebo [explorer Search](search-explorer.md) in Azure Portal. </br></br>Platí omezení oblasti a úrovně. |
 | [Výrazy pro dotaz na kontrolu pravopisu](speller-how-to-add.md) | Předtím, než se na vyhledávacím panelu dostanou výrazy pro dotaz, můžete nechat zkontrolovat chyby pravopisu. `speller`Možnost funguje s libovolným typem dotazu (jednoduchý, úplný nebo sémantický). |  Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview|
 | [Indexer SharePointu Online](search-howto-index-sharepoint-online.md) | Tento indexer vás připojí k webu SharePointu Online, abyste mohli indexovat obsah z knihovny dokumentů. | Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
-| [Normalizy](search-normalizers.md) | Normalizace poskytují jednoduchý text předběžného zpracování jako velikost písmen, odebrání zvýraznění, asciifolding a tak dále, aniž by bylo nutné procházet celým řetězcem analýzy.| Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
-[**Vlastní dovednosti při vyhledávání entit**](cognitive-search-skill-custom-entity-lookup.md ) |  Vnímání dovedností, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. | Všeobecně k dispozici. |
-|
+| [Normalizy](search-normalizers.md) | Normalizace poskytují jednoduché předběžné zpracování textu: konzistentní velká a malá písmena, odebrání zvýraznění a skládání ASCII bez vyvolání fulltextového řetězce pro analýzu textu.| Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
+| [Vlastní dovednosti při vyhledávání entit](cognitive-search-skill-custom-entity-lookup.md ) |  Vnímání dovedností, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. | Všeobecně k dispozici. |
 
 ## <a name="february-2021"></a>Únor 2021
 

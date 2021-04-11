@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: prishet
 ms.subservice: common
 ms.openlocfilehash: afd98e629500bc90cc9ddd1ed4ab2472f733e845
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104803659"
 ---
 # <a name="data-protection-overview"></a>Přehled ochrany dat
@@ -43,12 +43,12 @@ Následující tabulka shrnuje možnosti, které jsou k dispozici v Azure Storag
 
 | Scenario | Možnost ochrany dat | Doporučení | Výhody ochrany | K dispozici pro Data Lake Storage |
 |--|--|--|--|--|
-| Zabrání odstranění nebo úpravě účtu úložiště. | Azure Resource Manager zámek<br />[Víc se uč...](../common/lock-account-resource.md) | Pokud chcete zabránit odstranění účtu úložiště, zamkněte všechny účty úložiště pomocí Azure Resource Manager zámku. | Chrání účet úložiště proti změnám v souvislosti s odstraněním nebo konfigurací.<br /><br />Nechrání kontejnery ani objekty BLOB v účtu proti odstranění nebo přepsání. | Ano |
+| Zabrání odstranění nebo úpravě účtu úložiště. | Azure Resource Manager zámek<br />[Víc se uč...](../common/lock-account-resource.md) | Pokud chcete zabránit odstranění účtu úložiště, zamkněte všechny účty úložiště pomocí Azure Resource Manager zámku. | Chrání účet úložiště proti změnám v souvislosti s odstraněním nebo konfigurací.<br /><br />Nechrání kontejnery ani objekty BLOB v účtu proti odstranění nebo přepsání. | Yes |
 | Znemožní odstranění nebo úpravu kontejneru a jeho objektů BLOB v intervalu, který ovládáte. | Zásady neměnnosti na kontejneru<br />[Víc se uč...](storage-blob-immutable-storage.md) | Nastavte zásady neměnnosti pro kontejner, aby chránily důležité firemní dokumenty, například, aby splňovaly zákonné nebo zákonné požadavky na dodržování předpisů. | Chrání kontejner a jeho objekty blob ze všech odstranění a přepsání.<br /><br />Když vstoupí v platnost právní nebo uzamčené zásady uchovávání informací na základě času, účet úložiště se taky chrání před odstraněním. Kontejnery, pro které nebyla nastavena žádná zásada neměnnosti, nejsou chráněny před odstraněním. | Ano, ve verzi Preview |
 | Obnoví odstraněný kontejner v zadaném intervalu. | Obnovitelné odstranění kontejneru (Preview)<br />[Víc se uč...](soft-delete-container-overview.md) | Povolte obnovitelné odstranění kontejneru pro všechny účty úložiště s minimálním intervalem uchovávání 7 dní.<br /><br />Pokud chcete chránit jednotlivé objekty BLOB v kontejneru, povolte správu verzí objektů BLOB a obnovitelné odstranění objektů BLOB společně s podprogramovým odstraněním kontejneru.<br /><br />Kontejnery, které v samostatných účtech úložiště vyžadují různá období uchovávání dat. | Odstraněný kontejner a jeho obsah se může obnovit v rámci doby uchování.<br /><br />Obnovit se dají jenom operace na úrovni kontejneru (např. [odstranění kontejneru](/rest/api/storageservices/delete-container)). Obnovitelné odstranění kontejneru vám neumožňuje obnovit jednotlivý objekt BLOB v kontejneru, pokud je tento objekt BLOB odstraněný. | Ano, ve verzi Preview |
-| Automaticky uloží stav objektu BLOB v předchozí verzi, pokud je přepsán nebo odstraněn. | Správa verzí objektů BLOB<br />[Víc se uč...](versioning-overview.md) | Povolte správu verzí objektů BLOB společně s možnostmi obnovitelné odstranění kontejnerů a obnovitelného odstranění objektů BLOB pro účty úložiště, ve kterých potřebujete optimální ochranu dat objektů BLOB.<br /><br />Ukládat data objektů blob, která nevyžadují správu verzí v samostatném účtu, abyste omezili náklady. | Každá operace přepsání nebo odstranění objektu BLOB vytvoří novou verzi. Pokud je objekt BLOB odstraněný nebo přepsaný, může být obnovený z předchozí verze. | Ne |
-| Obnovení odstraněné verze objektu BLOB nebo objektu BLOB v zadaném intervalu. | Obnovitelné odstranění objektu BLOB<br />[Víc se uč...](soft-delete-blob-overview.md) | Povolte obnovitelné odstranění objektů BLOB pro všechny účty úložiště s minimálním intervalem uchovávání 7 dní.<br /><br />Pro zajištění optimální ochrany dat objektů BLOB povolte možnost Správa verzí objektů BLOB a obnovitelné odstranění kontejneru společně s objektem BLOB Soft redelete.<br /><br />Ukládat bloby, které vyžadují různá období uchování v samostatných účtech úložiště. | Odstraněné verze objektu BLOB nebo objektu BLOB se můžou obnovit v rámci doby uchování. | Ne |
-| Obnoví sadu objektů blob bloku k předchozímu bodu v čase. | Obnovení k určitému bodu v čase<br />[Víc se uč...](point-in-time-restore-overview.md) | Chcete-li použít obnovení k určitému bodu v čase, chcete-li se vrátit k dřívějšímu stavu, navrhněte aplikaci, aby se místo odstranění kontejnerů odstranily jednotlivé objekty blob bloku. | Sada objektů blob bloku může být v určitém okamžiku v minulosti vrácena do jejich stavu.<br /><br />Vráceny se pouze operace provedené u objektů blob bloku. Nevrátí se žádné operace prováděné na kontejnerech, objektech blob stránky nebo doplňovací objekty blob. | Ne |
+| Automaticky uloží stav objektu BLOB v předchozí verzi, pokud je přepsán nebo odstraněn. | Správa verzí objektů BLOB<br />[Víc se uč...](versioning-overview.md) | Povolte správu verzí objektů BLOB společně s možnostmi obnovitelné odstranění kontejnerů a obnovitelného odstranění objektů BLOB pro účty úložiště, ve kterých potřebujete optimální ochranu dat objektů BLOB.<br /><br />Ukládat data objektů blob, která nevyžadují správu verzí v samostatném účtu, abyste omezili náklady. | Každá operace přepsání nebo odstranění objektu BLOB vytvoří novou verzi. Pokud je objekt BLOB odstraněný nebo přepsaný, může být obnovený z předchozí verze. | No |
+| Obnovení odstraněné verze objektu BLOB nebo objektu BLOB v zadaném intervalu. | Obnovitelné odstranění objektu BLOB<br />[Víc se uč...](soft-delete-blob-overview.md) | Povolte obnovitelné odstranění objektů BLOB pro všechny účty úložiště s minimálním intervalem uchovávání 7 dní.<br /><br />Pro zajištění optimální ochrany dat objektů BLOB povolte možnost Správa verzí objektů BLOB a obnovitelné odstranění kontejneru společně s objektem BLOB Soft redelete.<br /><br />Ukládat bloby, které vyžadují různá období uchování v samostatných účtech úložiště. | Odstraněné verze objektu BLOB nebo objektu BLOB se můžou obnovit v rámci doby uchování. | No |
+| Obnoví sadu objektů blob bloku k předchozímu bodu v čase. | Obnovení k určitému bodu v čase<br />[Víc se uč...](point-in-time-restore-overview.md) | Chcete-li použít obnovení k určitému bodu v čase, chcete-li se vrátit k dřívějšímu stavu, navrhněte aplikaci, aby se místo odstranění kontejnerů odstranily jednotlivé objekty blob bloku. | Sada objektů blob bloku může být v určitém okamžiku v minulosti vrácena do jejich stavu.<br /><br />Vráceny se pouze operace provedené u objektů blob bloku. Nevrátí se žádné operace prováděné na kontejnerech, objektech blob stránky nebo doplňovací objekty blob. | No |
 | Ručně uložte stav objektu BLOB v daném časovém okamžiku. | Snímek objektu BLOB<br />[Víc se uč...](snapshots-overview.md) | Doporučuje se jako alternativa pro správu verzí objektů blob, pokud není pro váš scénář vhodný, protože se jedná o náklady nebo jiné okolnosti, nebo pokud má účet úložiště povolený hierarchický obor názvů. | Objekt BLOB může být obnoven ze snímku, pokud je objekt BLOB přepsán. Pokud je objekt BLOB odstraněný, odstraní se i snímky. | Ano, ve verzi Preview |
 | Objekt BLOB se dá odstranit nebo přepsat, ale data se pravidelně zkopírují do druhého účtu úložiště. | Vyveďte vlastní řešení pro kopírování dat do druhého účtu pomocí Azure Storage replikace objektů nebo pomocí nástroje, jako je AzCopy nebo Azure Data Factory. | Doporučuje se pro ochranu s ohledem na neočekávané úmyslné akce nebo nepředvídatelné scénáře.<br /><br />Vytvořte druhý účet úložiště ve stejné oblasti jako primární účet, abyste se vyhnuli poplatkům za výstup. | Data je možné obnovit z druhého účtu úložiště, pokud je primární účet ohrožen jakýmkoli způsobem. | AzCopy a Azure Data Factory jsou podporovány.<br /><br />Replikace objektů není podporována. |
 
@@ -58,14 +58,14 @@ Následující tabulka shrnuje Azure Storage možnosti ochrany dat v závislosti
 
 | Možnost ochrany dat | Chrání účet před odstraněním. | Chrání kontejner před odstraněním. | Chrání objekt BLOB před odstraněním. | Chrání objekt BLOB proti přepsání. |
 |--|--|--|--|--|
-| Azure Resource Manager zámek | Ano | Ne<sup>1</sup> | Ne | Ne |
-| Zásady neměnnosti na kontejneru | Ano<sup>2</sup> | Ano | Ano | Ano |
-| Obnovitelné odstranění kontejneru | Ne | Ano | Ne | Ne |
-| Verze objektu blobing<sup>3</sup> | Ne | Ne | Ano | Ano |
-| Částečný Delete objektu BLOB<sup>3</sup> | Ne | Ne | Ano | Ano |
-| Obnovení bodu v čase<sup>3</sup> | Ne | Ne | Ano | Ano |
-| Snímek objektu BLOB | Ne | Ne | Ne | Ano |
-| Shrnutí řešení pro kopírování dat na druhý účet<sup>4</sup> | Ne | Ano | Ano | Ano |
+| Azure Resource Manager zámek | Yes | Ne<sup>1</sup> | No | No |
+| Zásady neměnnosti na kontejneru | Ano<sup>2</sup> | Yes | Yes | Yes |
+| Obnovitelné odstranění kontejneru | No | Yes | No | No |
+| Verze objektu blobing<sup>3</sup> | No | No | Yes | Yes |
+| Částečný Delete objektu BLOB<sup>3</sup> | No | No | Yes | Yes |
+| Obnovení bodu v čase<sup>3</sup> | No | No | Yes | Yes |
+| Snímek objektu BLOB | No | No | No | Yes |
+| Shrnutí řešení pro kopírování dat na druhý účet<sup>4</sup> | No | Yes | Yes | Yes |
 
 <sup>1</sup> Azure Resource Manager zámek nechrání kontejner před odstraněním.<br />
 <sup>2</sup> Pokud je v případě kontejneru platný pracovní prostor nebo zamčené zásady uchovávání informací, účet úložiště je taky chráněný před odstraněním.<br />

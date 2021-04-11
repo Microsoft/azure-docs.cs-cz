@@ -4,30 +4,31 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: d36bf92a1b1bdef4e45b22b934728b3e8c46c3da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 479aa522462d14f295177e6b2d2fcc4707657760
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107712"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498785"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
-- A `User Access Token` povolí klienta volání. Další informace o [tom, jak získat `User Access Token` ](../../access-tokens.md)
-- Volitelné: dokončete rychlé [zprovoznění, abyste mohli začít s přidáváním volání do aplikace](../getting-started-with-calling.md) .
+- Nasazený prostředek služby Azure Communication Services. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
+- Přístupový token uživatele pro povolení klienta volání. [Získání přístupového tokenu uživatele](../../access-tokens.md)
+- Volitelné: dokončete [Přidání hlasového volání do rychlého startu vaší aplikace](../getting-started-with-calling.md) .
 
-## <a name="setting-up"></a>Nastavení
+## <a name="set-up-your-system"></a>Nastavení systému
 
-### <a name="creating-the-xcode-project"></a>Vytvoření projektu Xcode
+### <a name="create-the-xcode-project"></a>Vytvoření projektu Xcode
 
-> [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 8 volání sady SDK.
+V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobrazením** . V tomto rychlém startu se používá [SwiftUI Framework](https://developer.apple.com/xcode/swiftui/), takže byste měli nastavit **jazyk** na **SWIFT** a **uživatelské rozhraní** na **SwiftUI**. 
 
-V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobrazením** . V tomto rychlém startu se používá [SwiftUI Framework](https://developer.apple.com/xcode/swiftui/), takže byste měli nastavit **jazyk** na **SWIFT** a **uživatelské rozhraní** na **SwiftUI**. V rámci tohoto rychlého startu nebudete vytvářet testy jednotek nebo testy uživatelského rozhraní. Nezapomeňte zrušit kontrolu **včetně testů jednotek** a také zrušit kontrolu **včetně testů uživatelského rozhraní**.
+V rámci tohoto rychlého startu nebudete vytvářet testy jednotek nebo testy uživatelského rozhraní. Nebojte se, že nebudete mít zaškrtnutá textová pole **Zahrnout testy jednotek** a **Zahrnout testy uživatelského rozhraní** .
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Snímek obrazovky, který zobrazuje okno pro vytvoření projektu v rámci Xcode.":::
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Instalace balíčku a závislostí pomocí CocoaPods
 
@@ -44,13 +45,13 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
    ```
 
 2. Spusťte `pod install`.
-3. Otevřete `.xcworkspace` s Xcode.
+3. Otevřete `.xcworkspace` pomocí Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
 
-Aby bylo možné získat přístup k mikrofonu zařízení, je třeba aktualizovat seznam vlastností informací o aplikaci pomocí `NSMicrophoneUsageDescription` . Nastavte přidruženou hodnotu na `string` , která bude součástí dialogu, který systém používá k vyžádání žádosti o přístup od uživatele.
+Chcete-li získat přístup k mikrofonu zařízení, je třeba aktualizovat seznam vlastností informací o aplikaci pomocí `NSMicrophoneUsageDescription` . Nastavte přidruženou hodnotu na `string` , která bude obsažena v dialogovém okně, které systém používá k vyžádání přístupu od uživatele.
 
-Klikněte pravým tlačítkem myši na `Info.plist` položku stromové struktury projektu a vyberte **Otevřít jako**  >  **zdrojový kód**. Přidejte následující řádky do části nejvyšší úrovně `<dict>` a pak soubor uložte.
+Klikněte pravým tlačítkem myši na `Info.plist` položku stromové struktury projektu a vyberte **Otevřít jako**  >  **zdrojový kód**. Přidejte následující řádky v části nejvyšší úrovně `<dict>` a pak soubor uložte.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -59,33 +60,36 @@ Klikněte pravým tlačítkem myši na `Info.plist` položku stromové struktury
 
 ### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
 
-Otevřete soubor **contentView. SWIFT** projektu a přidejte `import` do horní části souboru deklaraci, která se má importovat `AzureCommunicationCalling library` . Kromě toho ho budeme `AVFoundation` potřebovat pro žádost o oprávnění zvuk v kódu.
+Otevřete soubor *contentView. SWIFT* projektu a přidejte `import` do horní části souboru deklaraci pro import `AzureCommunicationCalling` knihovny. Kromě toho importujte `AVFoundation` . Budete ho potřebovat pro požadavky na zvukové oprávnění v kódu.
 
 ```swift
 import AzureCommunicationCalling
 import AVFoundation
 ```
 
-## <a name="object-model"></a>Objektový model
+## <a name="learn-the-object-model"></a>Informace o objektovém modelu
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají sadu SDK pro iOS.
+
+> [!NOTE]
+> V tomto rychlém startu se používá verze 1.0.0-beta. 8 volání sady SDK.
 
 
 | Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient je hlavní vstupní bod pro volání sady SDK.|
-| CallAgent | CallAgent se používá ke spouštění a správě volání. |
-| CommunicationTokenCredential | CommunicationTokenCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.| 
-| CommunicationIdentifier | CommunicationIdentifier se používá k reprezentaci identity uživatele, která může být jedna z následujících: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
+| `CallClient` | `CallClient` je hlavní vstupní bod pro volání sady SDK.|
+| `CallAgent` | `CallAgent` slouží ke spuštění a správě volání. |
+| `CommunicationTokenCredential` | `CommunicationTokenCredential` se používá jako přihlašovací údaje tokenu pro vytvoření instance `CallAgent` .| 
+| `CommunicationIdentifier` | `CommunicationIdentifier` slouží k reprezentaci identity uživatele. Identita může být `CommunicationUserIdentifier` , `PhoneNumberIdentifier` , nebo `CallingApplication` . |
 
 > [!NOTE]
-> Při implementaci delegátů událostí musí aplikace uchovávat silný odkaz na objekty, které vyžadují odběry událostí. Například když `RemoteParticipant` je objekt vrácen při vyvolání `call.addParticipant` metody a aplikace nastaví delegáta na naslouchání `RemoteParticipantDelegate` , aplikace musí obsahovat silný odkaz na `RemoteParticipant` objekt. V opačném případě, pokud se tento objekt získá, delegát vyvolá závažnou výjimku, když se volající sada SDK pokusí objekt vyvolat.
+> Když aplikace implementuje delegáty událostí, musí uchovávat silný odkaz na objekty, které vyžadují odběry událostí. Například když `RemoteParticipant` je objekt vrácen při vyvolání `call.addParticipant` metody a aplikace nastaví delegáta na naslouchání `RemoteParticipantDelegate` , aplikace musí obsahovat silný odkaz na `RemoteParticipant` objekt. V opačném případě, pokud se tento objekt získá, delegát vyvolá závažnou výjimku, když se volající sada SDK pokusí objekt vyvolat.
 
-## <a name="initialize-the-callagent"></a>Inicializovat CallAgent
+## <a name="initialize-callagent"></a>Inicializovat CallAgent
 
-Chcete-li vytvořit `CallAgent` instanci z `CallClient` , je nutné použít `callClient.createCallAgent` metodu, která asynchronně vrátí `CallAgent` objekt po jeho inicializaci.
+Chcete-li vytvořit `CallAgent` instanci z nástroje `CallClient` , je nutné použít `callClient.createCallAgent` metodu, která asynchronně vrátí `CallAgent` objekt po jeho inicializaci.
 
-Chcete-li vytvořit klienta volání, musíte předat `CommunicationTokenCredential` objekt.
+Chcete-li vytvořit klienta volání, je nutné předat `CommunicationTokenCredential` objekt.
 
 ```swift
 
@@ -102,14 +106,14 @@ var userCredential: CommunicationTokenCredential?
        return
 }
 
-// tokenProvider needs to be implemented by contoso which fetches new token
+// tokenProvider needs to be implemented by Contoso, which fetches a new token
 public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
     let newToken = self.tokenProvider!.fetchNewToken()
     onCompletion(newToken, nil)
 }
 ```
 
-Předejte `CommunicationTokenCredential` objekt vytvořený výše na `CallClient` a nastavte zobrazovaný název.
+Předejte `CommunicationTokenCredential` objekt, který jste vytvořili `CallClient` , do a nastavte zobrazovaný název.
 
 ```swift
 
@@ -131,9 +135,9 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Umístit odchozí volání
 
-Chcete-li vytvořit a spustit volání, je třeba zavolat jedno z rozhraní API v `CallAgent` a zadat identitu komunikačních služeb uživatele, kterého jste zřídili pomocí sady SDK pro správu komunikačních služeb.
+Chcete-li vytvořit a spustit volání, je nutné volat jedno z rozhraní API v `CallAgent` a zadat identitu komunikačních služeb uživatele, kterého jste zřídili pomocí sady SDK pro správu komunikačních služeb.
 
-Vytvoření a spuštění volání je synchronní. Zobrazí se instance volání, která vám umožní přihlásit se k odběru všech událostí volání.
+Vytvoření a spuštění volání jsou synchronní. Zobrazí se instance volání, která vám umožní přihlásit se k odběru všech událostí volání.
 
 ### <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>Nakoná volání 1:1 uživateli nebo volání 1: n s uživateli a veřejnou telefonní síť.
 
@@ -145,7 +149,8 @@ let oneToOneCall = self.callAgent.call(participants: callees, options: StartCall
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Nakonání volání 1: n s uživateli a PSTN
-Chcete-li umístit volání do veřejné telefonní sítě, musíte zadat telefonní číslo získané pomocí komunikačních služeb.
+Chcete-li umístit volání do veřejné telefonní služby, musíte zadat telefonní číslo získané pomocí komunikačních služeb.
+
 ```swift
 
 let pstnCallee = PhoneNumberIdentifier(phoneNumber: '+1999999999')
@@ -154,8 +159,8 @@ let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options:
 
 ```
 
-### <a name="place-a-11-call-with-with-video"></a>Vložení volání 1:1 s videem
-Pokud chcete získat instanci správce zařízení, přečtěte si [tady](#device-management) .
+### <a name="place-a-11-call-with-video"></a>Vložení volání 1:1 s videem
+Informace o tom, jak získat instanci správce zařízení, najdete v části o [správě zařízení](#manage-devices).
 
 ```swift
 
@@ -172,7 +177,7 @@ let call = self.callAgent?.call(participants: [callee], options: startCallOption
 ```
 
 ### <a name="join-a-group-call"></a>Připojit se k volání skupiny
-Pokud se chcete připojit k volání, musíte zavolat jedno z rozhraní API na *CallAgent* .
+Chcete-li se připojit ke volání, je nutné volat jedno z rozhraní API na `CallAgent` .
 
 ```swift
 
@@ -181,8 +186,8 @@ let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCal
 
 ```
 
-### <a name="subscribe-for-incoming-call"></a>Přihlášení k odběru příchozího volání
-Přihlášení k odběru události příchozího hovoru
+### <a name="subscribe-to-an-incoming-call"></a>Přihlášení k odběru příchozího volání
+Přihlaste se k odběru události příchozího volání.
 
 ```
 final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelegate
@@ -202,8 +207,8 @@ final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelega
 ```
 
 ### <a name="accept-an-incoming-call"></a>Přijmout příchozí volání
-Chcete-li přijmout volání, zavolejte metodu Accept objektu volání.
-Nastavit delegáta na CallAgent 
+Chcete-li přijmout volání, zavolejte `accept` metodu na objekt volání. Nastavte delegáta na `CallAgent` .
+
 ```swift
 final class CallHandler: NSObject, CallAgentDelegate
 {
@@ -233,23 +238,23 @@ if let incomingCall = CallHandler().incomingCall {
 }
 ```
 
-## <a name="push-notification"></a>Nabízené oznámení
+## <a name="set-up-push-notifications"></a>Nastavení nabízených oznámení
 
-Mobilní nabízené oznámení je místní oznámení, které se zobrazí v mobilním zařízení. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Nabídneme vám možnosti registrace nabízeného oznámení, zpracování nabízeného oznámení a zrušení registrace nabízeného oznámení.
+Mobilní nabízené oznámení je místní oznámení, které získáte v mobilním zařízení. Pro volání se zaměříme na nabízená oznámení VoIP (Voice over Internet Protocol). 
 
-### <a name="prerequisite"></a>Požadavek
+Následující části popisují, jak registrovat nabízená oznámení, zpracovávat je a rušit jejich registraci. Než tyto úlohy spustíte, dokončete tyto požadavky:
 
-- Krok 1: Xcode-> podepisování & schopností – > přidání možnosti – > nabízená oznámení
-- Krok 2: Xcode-> podepisování možností & – > přidání možnosti – > režimy na pozadí
-- Krok 3: "režimy na pozadí" – > vybrat "Voice over IP" a "Vzdálená oznámení"
+1. V Xcode přejdete na **možnosti podepisování &**. Přidejte schopnost výběrem možnosti **+** a pak vyberte **nabízená oznámení**.
+2. Přidejte další možnosti výběrem **+ Možnosti** a pak vyberte **režimy pozadí**.
+3. V části **režimy pozadí** zaškrtněte políčko **hlas přes IP adresu** a pro **Vzdálená oznámení** .
 
 :::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Snímek obrazovky, který ukazuje, jak přidat funkce v Xcode." lightbox="../media/ios/xcode-push-notification.png":::
 
-#### <a name="register-for-push-notifications"></a>Registrace nabízených oznámení
+### <a name="register-for-push-notifications"></a>Registrace nabízených oznámení
 
-Chcete-li provést registraci nabízeného oznámení, zavolejte registerPushNotification () na instanci *CallAgent* s registračním tokenem zařízení.
+Pokud se chcete zaregistrovat k nabízeným oznámením, zavolejte `registerPushNotification()` na `CallAgent` instanci s registračním tokenem zařízení.
 
-Zaregistrujte se na nabízená oznámení, která se musí volat po úspěšné inicializaci. Při `callAgent` zničení objektu `logout` bude volána metoda, která automaticky zruší registraci nabízených oznámení.
+Registrace nabízených oznámení musí nastat po úspěšné inicializaci. Po `callAgent` zničení objektu `logout` bude volána metoda, která automaticky zruší registraci nabízených oznámení.
 
 
 ```swift
@@ -265,8 +270,8 @@ callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
 
 ```
 
-#### <a name="push-notification-handling"></a>Manipulace s nabízenými oznámeními
-Aby bylo možné přijímat příchozí volání nabízených oznámení, zavolejte *handlePushNotification ()* na instanci *CallAgent* s datovou částí slovníku.
+### <a name="handle-push-notifications"></a>Zpracování nabízených oznámení
+Chcete-li dostávat nabízená oznámení pro příchozí volání, zavolejte `handlePushNotification()` na `CallAgent` instanci s datovou částí slovníku.
 
 ```swift
 
@@ -281,11 +286,12 @@ callAgent.handlePush(notification: callNotification) { (error) in
 }
 
 ```
-#### <a name="unregister-push-notification"></a>Zrušit registraci nabízeného oznámení
+### <a name="unregister-push-notifications"></a>Zrušení registrace nabízených oznámení
 
-Aplikace můžou kdykoli zrušit registraci nabízených oznámení. Jednoduše zavolejte `unregisterPushNotification` metodu na *CallAgent*.
+Aplikace můžou kdykoli zrušit registraci nabízených oznámení. Jednoduše zavolejte `unregisterPushNotification` metodu na `CallAgent` .
+
 > [!NOTE]
-> Při odhlášení se aplikace neregistrují automaticky z nabízených oznámení.
+> Aplikace nejsou automaticky odregistrovány od nabízených oznámení při odhlášení.
 
 ```swift
 
@@ -299,13 +305,13 @@ callAgent.unregisterPushNotifications { (error) in
 
 ```
 
-## <a name="mid-call-operations"></a>Operace se středním voláním
+## <a name="perform-mid-call-operations"></a>Provádění operací se středním voláním
 
 Během volání můžete provádět různé operace ke správě nastavení souvisejících s videem a zvukem.
 
 ### <a name="mute-and-unmute"></a>Ztlumení a ztlumení
 
-Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete použít `mute` `unmute` asynchronní rozhraní API a:
+Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete použít `mute` `unmute` rozhraní API a asynchronní.
 
 ```swift
 call!.mute { (error) in
@@ -318,7 +324,7 @@ call!.mute { (error) in
 
 ```
 
-Asynchronně Místní ztlumení
+Použijte následující kód k asynchronnímu ztlumení místního koncového bodu.
 
 ```swift
 call!.unmute { (error) in
@@ -332,7 +338,7 @@ call!.unmute { (error) in
 
 ### <a name="start-and-stop-sending-local-video"></a>Spuštění a zastavení odesílání místního videa
 
-Pokud chcete začít odesílat místní video jiným účastníkům ve volání, použijte `startVideo` rozhraní API a předejte ho. `localVideoStream``camera`
+Pokud chcete začít odesílat místní video jiným účastníkům ve volání, použijte `startVideo` rozhraní API a předejte ho `localVideoStream` `camera` .
 
 ```swift
 
@@ -349,7 +355,7 @@ call!.startVideo(stream: localVideoStream) { (error) in
 
 ```
 
-Po zahájení odesílání videa `LocalVideoStream` je instance přidána do `localVideoStreams` kolekce v instanci volání:
+Po zahájení odesílání videa `LocalVideoStream` je instance přidána do `localVideoStreams` kolekce v instanci volání.
 
 ```swift
 
@@ -357,7 +363,7 @@ call.localVideoStreams[0]
 
 ```
 
-Asynchronně Pokud chcete zastavit místní video, předejte `localVideoStream` vrácené volání z `call.startVideo` :
+Chcete-li zastavit místní video, předejte `localVideoStream` instanci vrácenou z vyvolání `call.startVideo` . Toto je asynchronní akce.
 
 ```swift
 
@@ -371,9 +377,9 @@ call!.stopVideo(stream: localVideoStream) { (error) in
 
 ```
 
-## <a name="remote-participants-management"></a>Vzdálená správa účastníků
+## <a name="manage-remote-participants"></a>Správa vzdálených účastníků
 
-Všichni vzdálení účastníci jsou zastoupeni `RemoteParticipant` typem a jsou k dispozici prostřednictvím `remoteParticipants` kolekce na instanci volání:
+Všichni vzdálení účastníci jsou zastoupeni `RemoteParticipant` typem a jsou k dispozici prostřednictvím `remoteParticipants` kolekce v instanci volání.
 
 ### <a name="list-participants-in-a-call"></a>Výpis účastníků ve volání
 
@@ -383,14 +389,14 @@ call.remoteParticipants
 
 ```
 
-### <a name="remote-participant-properties"></a>Vlastnosti vzdáleného účastníka
+### <a name="get-remote-participant-properties"></a>Získat vlastnosti vzdáleného účastníka
 
 ```swift
 
 // [RemoteParticipantDelegate] delegate - an object you provide to receive events from this RemoteParticipant instance
 var remoteParticipantDelegate = remoteParticipant.delegate
 
-// [CommunicationIdentifier] identity - same as the one used to provision token for another user
+// [CommunicationIdentifier] identity - same as the one used to provision a token for another user
 var identity = remoteParticipant.identity
 
 // ParticipantStateIdle = 0, ParticipantStateEarlyMedia = 1, ParticipantStateConnecting = 2, ParticipantStateConnected = 3, ParticipantStateOnHold = 4, ParticipantStateInLobby = 5, ParticipantStateDisconnected = 6
@@ -412,7 +418,7 @@ var videoStreams = remoteParticipant.videoStreams // [RemoteVideoStream, RemoteV
 
 ### <a name="add-a-participant-to-a-call"></a>Přidání účastníka do volání
 
-Chcete-li přidat účastníka do volání (buď uživatele, nebo telefonní číslo), můžete vyvolat `addParticipant` . Tím se synchronně vrátí instance vzdáleného účastníka.
+Chcete-li přidat účastníka do volání (buď uživatele, nebo telefonní číslo), můžete vyvolat `addParticipant` . Tento příkaz bude synchronně vracet instanci vzdáleného účastníka.
 
 ```swift
 
@@ -421,7 +427,7 @@ let remoteParticipantAdded: RemoteParticipant = call.add(participant: Communicat
 ```
 
 ### <a name="remove-a-participant-from-a-call"></a>Odebrání účastníka z volání
-Chcete-li odebrat účastníka z volání (buď uživatele, nebo telefonní číslo), můžete  `removeParticipant` rozhraní API vyvolat. Tato akce bude vyřešena asynchronně.
+Chcete-li odebrat účastníka z volání (buď uživatele, nebo telefonní číslo), můžete `removeParticipant` rozhraní API vyvolat. Tato akce bude vyřešena asynchronně.
 
 ```swift
 
@@ -439,9 +445,9 @@ call!.remove(participant: remoteParticipantAdded) { (error) in
 
 Vzdálení účastníci můžou během volání zahájit sdílení videa nebo obrazovky.
 
-### <a name="handle-remote-participant-videoscreen-sharing-streams"></a>Zpracování streamů pro sdílení videí a obrazovek vzdáleného účastníka
+### <a name="handle-video-sharing-or-screen-sharing-streams-of-remote-participants"></a>Zpracování datových proudů ve sdílení videa nebo sdílení obrazovky vzdálených účastníků
 
-Pokud chcete zobrazit seznam datových proudů vzdálených účastníků, Prozkoumejte tyto `videoStreams` kolekce:
+Chcete-li zobrazit seznam datových proudů vzdálených účastníků, zkontrolujte `videoStreams` kolekce.
 
 ```swift
 
@@ -449,7 +455,7 @@ var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
 
 ```
 
-### <a name="remote-video-stream-properties"></a>Vlastnosti vzdáleného streamu videa
+### <a name="get-remote-video-stream-properties"></a>Získat vlastnosti vzdáleného streamu videa
 
 ```swift
 
@@ -461,9 +467,9 @@ var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
 
 ```
 
-### <a name="render-remote-participant-stream"></a>Vykreslit vzdálený datový proud účastníka
+### <a name="render-remote-participant-streams"></a>Vykreslovat proudy vzdálených účastníků
 
-Zahájení vykreslování vzdálených proudů účastníků:
+Pro zahájení vykreslování vzdálených proudů účastníků použijte následující kód.
 
 ```swift
 
@@ -474,16 +480,16 @@ targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
 ```
 
-### <a name="remote-video-renderer-methods-and-properties"></a>Metody a vlastnosti vzdáleného vykreslovacího modulu videa
+### <a name="get-remote-video-renderer-methods-and-properties"></a>Získat metody a vlastnosti nástroje pro vykreslování vzdálených videí
 
 ```swift
 // [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
 remoteVideoRenderer.dispose()
 ```
 
-## <a name="device-management"></a>Správa zařízení
+## <a name="manage-devices"></a>Správa zařízení
 
-`DeviceManager` umožňuje vytvořit výčet místních zařízení, která se dají použít při volání přenosů zvukových a obrazových streamů. Umožňuje taky požádat uživatele o oprávnění k přístupu k mikrofonu a kameře. K objektu můžete přistupovat `deviceManager` `callClient` :
+`DeviceManager` umožňuje vytvořit výčet místních zařízení, která se dají použít při volání přenosu zvukových nebo video datových proudů. Umožňuje taky požádat uživatele o oprávnění k přístupu k mikrofonu nebo kameře. K objektu můžete přistupovat `deviceManager` `callClient` .
 
 ```swift
 
@@ -499,7 +505,7 @@ self.callClient!.getDeviceManager { (deviceManager, error) in
 
 ### <a name="enumerate-local-devices"></a>Zobrazení výčtu místních zařízení
 
-Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Správce zařízení. Výčet je synchronní akce.
+Pro přístup k místním zařízením můžete použít metody výčtu ve Správci zařízení. Výčet je synchronní akce.
 
 ```swift
 // enumerate local cameras
@@ -510,9 +516,9 @@ var localMicrophones = deviceManager.microphones! // [AudioDeviceInfo, AudioDevi
 var localSpeakers = deviceManager.speakers! // [AudioDeviceInfo, AudioDeviceInfo...]
 ``` 
 
-### <a name="set-default-microphonespeaker"></a>Nastavit výchozí mikrofon/mluvčí
+### <a name="set-the-default-microphone-or-speaker"></a>Nastavení výchozího mikrofonu nebo mluvčího
 
-Správce zařízení umožňuje nastavit výchozí zařízení, které se použije při spuštění volání. Pokud nejsou nastavené výchozí hodnoty zásobníku, komunikační služby se vrátí do výchozího nastavení operačního systému.
+Správce zařízení můžete použít k nastavení výchozího zařízení, které se použije při spuštění volání. Pokud nejsou nastavené výchozí hodnoty zásobníku, komunikační služby se vrátí do výchozího nastavení operačního systému.
 
 ```swift
 // get first microphone
@@ -525,7 +531,7 @@ var firstSpeaker = self.deviceManager!.speakers!
 deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 ```
 
-### <a name="local-camera-preview"></a>Místní kamera verze Preview
+### <a name="get-a-local-camera-preview"></a>Získat náhled místní kamery
 
 Můžete použít `Renderer` k zahájení vykreslování datového proudu z místní kamery. Tento datový proud se nebude posílat jiným účastníkům; je to místní kanál verze Preview. Toto je asynchronní akce.
 
@@ -538,9 +544,9 @@ self.view = try renderer!.createView()
 
 ```
 
-### <a name="local-camera-preview-properties"></a>Vlastnosti místní kamery ve verzi Preview
+### <a name="get-local-camera-preview-properties"></a>Získat vlastnosti místní kamery ve verzi Preview
 
-Zobrazovací jednotka má sadu vlastností a metod, které umožňují řídit vykreslování:
+Zobrazovací jednotka má sadu vlastností a metod, které umožňují řídit vykreslování.
 
 ```swift
 
@@ -565,16 +571,16 @@ localRenderer.dispose()
 
 ```
 
-## <a name="eventing-model"></a>Model událostí
+## <a name="subscribe-to-notifications"></a>Přihlásit se k odběru oznámení
 
 Můžete se přihlásit k odběru většiny vlastností a kolekcí, které budou oznamovány při změně hodnot.
 
 ### <a name="properties"></a>Vlastnosti
-Přihlášení k odběru `property changed` událostí:
+Chcete-li se přihlásit k odběru `property changed` událostí, použijte následující kód.
 
 ```swift
 call.delegate = self
-// Get the property of the call state by doing get on the call's state member
+// Get the property of the call state by getting on the call's state member
 public func onCallStateChanged(_ call: Call!,
                                args: PropertyChangedEventArgs!)
 {
@@ -587,7 +593,7 @@ public func onCallStateChanged(_ call: Call!,
 ```
 
 ### <a name="collections"></a>Kolekce
-Přihlášení k odběru `collection updated` událostí:
+Chcete-li se přihlásit k odběru `collection updated` událostí, použijte následující kód.
 
 ```swift
 call.delegate = self

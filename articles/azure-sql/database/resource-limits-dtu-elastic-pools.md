@@ -10,13 +10,13 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: aa520b7d77a283e7dda883e99475947a8ccfa862
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.date: 03/30/2021
+ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625616"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058914"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální počet jednotek DTU na jednu databázi | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximální počet DTU na výběr databáze | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
-| Maximální velikost úložiště na databázi (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
+| Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
 <sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
@@ -97,7 +97,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální počet jednotek DTU na jednu databázi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
 | Maximální počet DTU na výběr databáze | 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
-| Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximální velikost úložiště na databázi (GB) | 1024 | 1536 | 1 792 | 2304 | 2816 |
 |||||||
 
 <sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
@@ -118,7 +118,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální počet eDTU na databázi | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1 000 | 0, 25, 50, 75, 125, 250, 500, 1 000|
 | Maximální počet eDTU na databázi | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1 000 | 25, 50, 75, 125, 250, 500, 1 000|
-| Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
 |||||||
 
 <sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
@@ -139,7 +139,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální počet jednotek DTU na jednu databázi | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
 | Maximální počet DTU na výběr databáze | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
-| Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximální velikost úložiště na databázi (GB) | 2 048 | 2560 | 3072 | 3584 | 4 096 |
 |||||||
 
 <sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .

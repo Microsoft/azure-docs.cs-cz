@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8eafd36c82b09575514afade6b848a7f9186895f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433655"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960040"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Pokud testujete na úrovních vysoké propustnosti nebo v tarifech, které jsou 
 
 **Zásady připojení: použít přímý režim připojení**
 
-Výchozí režim připojení sady .NET V3 SDK je přímý. Režim připojení nakonfigurujete při vytváření `CosmosClient` instance v nástroji `CosmosClientOptions` .  Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
+Výchozí režim připojení sady .NET V3 SDK je přímý s protokolem TCP. Režim připojení nakonfigurujete při vytváření `CosmosClient` instance v nástroji `CosmosClientOptions` .  Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
 
 ```csharp
 string connectionString = "<your-account-connection-string>";

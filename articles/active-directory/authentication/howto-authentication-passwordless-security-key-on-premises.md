@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647468"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959853"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Povolení nezabezpečeného přihlášení k místním prostředkům pomocí klíče zabezpečení bez hesla Azure Active Directory 
 
@@ -193,6 +193,8 @@ Pokud chcete vyčistit počítač připojený k hybridní službě Azure AD po p
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Po přihlášení pomocí FIDO se nepovedlo získat jednotné přihlašování k síťovému prostředku NTLM, aby se zobrazila výzva k zadání přihlašovacích údajů
 
 Zajistěte, aby v čase byly k dispozici dostatek řadičů domény pro doručení vaší žádosti o prostředky. Pokud chcete zjistit, jestli se zobrazuje řadič domény, na kterém je spuštěná funkce, přečtěte si výstup `nltest /dsgetdc:contoso /keylist /kdc` .
+
+Poznámka: Tento přepínač/keylist v příkazu Nltest najdete z klienta Windows 10 v2004 a vyššího.
 
 ## <a name="next-steps"></a>Další kroky
 

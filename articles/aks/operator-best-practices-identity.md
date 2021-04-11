@@ -4,55 +4,61 @@ titleSuffix: Azure Kubernetes Service
 description: Seznamte se s osvědčenými postupy pro postupy, jak spravovat ověřování a autorizaci pro clustery ve službě Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 03/09/2021
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8e0c7324f5b73b3a2ac5e5fd6fa256202035077a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de84e3e2a8da3e1b5195978a8a2204fdfa2108d7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790965"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105098"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizaci ve službě Azure Kubernetes (AKS)
 
-Při nasazení a údržbě clusterů ve službě Azure Kubernetes Service (AKS) je nutné implementovat způsoby, jak spravovat přístup k prostředkům a službám. Bez těchto ovládacích prvků mohou mít účty přístup k prostředkům a službám, které nepotřebují. Může také být obtížné sledovat, kterou sadu přihlašovacích údajů byly použity k provedení změn.
+Při nasazení a údržbě clusterů ve službě Azure Kubernetes Service (AKS) implementujete způsoby správy přístupu k prostředkům a službám. Bez těchto ovládacích prvků:
+* Účty můžou mít přístup k zbytečným prostředkům a službám. 
+* Sledování, kterou sadu přihlašovacích údajů bylo použito k provedení změn, může být obtížné.
 
 Tento článek o osvědčených postupech se zaměřuje na to, jak operátor clusteru může spravovat přístup a identitu pro clustery AKS. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Ověřování uživatelů clusteru AKS pomocí Azure Active Directory
-> * Řízení přístupu k prostředkům pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC)
-> * Využijte Azure RBAC k podrobnému řízení přístupu k AKS prostředku a škálování Kubernetes API a také ke kubeconfig.
-> * Použití spravované identity k ověřování lusků s ostatními službami
+> * Ověřte uživatele clusteru AKS pomocí Azure Active Directory.
+> * Řízení přístupu k prostředkům pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC).
+> * Využijte Azure RBAC k podrobnému řízení přístupu k AKS prostředku, Kubernetes rozhraní API ve velkém měřítku a `kubeconfig` .
+> * Pomocí spravované identity můžete sami ověřit své lusky s ostatními službami.
 
-## <a name="use-azure-active-directory"></a>Použití Azure Active Directory
+## <a name="use-azure-active-directory-azure-ad"></a>Použití Azure Active Directory (Azure AD)
 
-**Doprovodné materiály k osvědčeným postupům** – nasazení clusterů AKS s integrací služby Azure AD. Pomocí Azure AD se soustřeďuje na součást správy identit. Všechny změny v uživatelském účtu nebo skupině se automaticky aktualizují v rámci přístupu ke clusteru AKS. Použijte role nebo ClusterRoles a vazby, jak je popsáno v další části, k určení oboru uživatelů nebo skupin na nejnižší množství potřebných oprávnění.
+> **Osvědčené postupy** 
+> 
+> Nasaďte clustery AKS s integrací služby Azure AD. Pomocí Azure AD se soustřeďuje na součást správy identit. Všechny změny v uživatelském účtu nebo skupině se automaticky aktualizují v rámci přístupu ke clusteru AKS. Rozsah uživatelů nebo skupin na minimální počet oprávnění pomocí [rolí, ClusterRoles nebo vazeb](#use-kubernetes-role-based-access-control-kubernetes-rbac)
 
-Vývojáři a vlastníci aplikací Kubernetes clusteru potřebují přístup k různým prostředkům. Kubernetes neposkytuje řešení pro správu identit, které řídí, kteří uživatelé můžou pracovat s prostředky. Místo toho se cluster obvykle integruje s existujícím řešením identity. Azure Active Directory (AD) poskytuje řešení pro správu identit připravené na podnik a může se integrovat s clustery AKS.
+Vývojáři clusteru Kubernetes a vlastníci aplikací potřebují přístup k různým prostředkům. Kubernetes nemá řešení pro správu identit, které vám umožní řídit prostředky, se kterými můžou uživatelé pracovat. Místo toho se cluster obvykle integruje s existujícím řešením identity. Zadejte Azure AD: řešení pro správu identit připravené na podnik, které se integruje s AKS clustery.
 
-Clustery s integrovanými službami Azure AD v AKS vám umožní vytvořit *role* nebo *ClusterRoles* , které definují přístupová oprávnění k prostředkům. Pak budete role *navazovat* na uživatele nebo skupiny z Azure AD. Tyto Kubernetes řízení přístupu na základě role (Kubernetes RBAC) jsou popsány v následující části. Integrace služby Azure AD a způsobu řízení přístupu k prostředkům lze zobrazit v následujícím diagramu:
+Clustery s integrovanými službami Azure AD v AKS umožňují vytvářet *role* nebo *ClusterRoles* definující přístupová oprávnění k prostředkům. Pak budete role *navazovat* na uživatele nebo skupiny z Azure AD. Další informace o těchto Kubernetes RBAC najdete v [Další části](#use-kubernetes-role-based-access-control-kubernetes-rbac). Integrace Azure AD a jak řídit přístup k prostředkům, najdete v následujícím diagramu:
 
 ![Ověřování na úrovni clusteru pro integraci Azure Active Directory s AKS](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
 1. Vývojář se ověřuje pomocí Azure AD.
 1. Koncový bod pro vystavení tokenu Azure AD vydá přístupový token.
-1. Vývojář provede akci, která používá token Azure AD, například `kubectl create pod`
-1. Kubernetes ověří token pomocí Azure Active Directory a načte členství ve skupině vývojářů.
-1. Kubernetes řízení přístupu na základě role (Kubernetes RBAC) a zásady clusteru se aplikují.
-1. Žádost vývojáře je úspěšná nebo není založená na předchozím ověření členství ve skupině Azure AD a Kubernetes RBAC a zásady.
+1. Vývojář provede akci pomocí tokenu Azure AD, jako je například `kubectl create pod` .
+1. Kubernetes ověří token ve službě Azure AD a načte členství ve skupině vývojářů.
+1. Kubernetes RBAC a zásady clusteru se aplikují.
+1. Žádost vývojáře je úspěšná na základě předchozího ověření členství ve skupině Azure AD a Kubernetes RBAC a zásady.
 
 Pokud chcete vytvořit cluster AKS, který používá Azure AD, přečtěte si téma věnované [integraci Azure Active Directory s AKS][aks-aad].
 
 ## <a name="use-kubernetes-role-based-access-control-kubernetes-rbac"></a>Použití řízení přístupu založeného na rolích Kubernetes (Kubernetes RBAC)
 
-**Doprovodné materiály k osvědčeným postupům** – pomocí Kubernetes RBAC Definujte oprávnění, která uživatelé nebo skupiny mají k prostředkům v clusteru. Vytvořte role a vazby, které přiřadí minimální počet požadovaných oprávnění. Integrace se službou Azure AD, takže jakákoli změna stavu uživatele nebo členství ve skupině se automaticky aktualizuje a přístup k prostředkům clusteru je aktuální.
+> **Osvědčené postupy**
+> 
+> Definujte oprávnění uživatele nebo skupiny pro prostředky clusteru s Kubernetes RBAC. Vytvořte role a vazby, které přiřadí minimální počet požadovaných oprávnění. Integrací se službou Azure AD můžete automaticky aktualizovat všechny stavy uživatelů nebo změny členství ve skupinách a zachovat přístup k prostředkům clusteru v aktuálním stavu.
 
-V Kubernetes můžete poskytovat podrobnou kontrolu nad přístupem k prostředkům v clusteru. Oprávnění jsou definována na úrovni clusteru nebo konkrétní obory názvů. Můžete definovat, které prostředky se dají spravovat, a s jakými oprávněními. Tyto role se pak aplikují na uživatele nebo skupiny s vazbou. Další informace o *rolích*, *ClusterRoles* a *vazbách* najdete v tématu [Možnosti přístupu a identit pro Azure Kubernetes Service (AKS)][aks-concepts-identity].
+V Kubernetes poskytujete podrobné řízení přístupu k prostředkům clusteru. Můžete definovat oprávnění na úrovni clusteru nebo konkrétní obory názvů. Určíte, které prostředky se dají spravovat a s jakými oprávněními. Tyto role pak můžete použít pro uživatele nebo skupiny s vazbou. Další informace o *rolích*, *ClusterRoles* a *vazbách* najdete v tématu [Možnosti přístupu a identit pro Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
-Jako příklad můžete vytvořit roli, která udělí úplný přístup k prostředkům v oboru názvů s názvem *finance-App*, jak je znázorněno v následujícím příkladu manifestu YAML:
+Jako příklad můžete vytvořit roli s úplným přístupem k prostředkům v oboru názvů s názvem *finance-App*, jak je znázorněno v následujícím příkladu manifestu YAML:
 
 ```yaml
 kind: Role
@@ -66,7 +72,7 @@ rules:
   verbs: ["*"]
 ```
 
-Pak se vytvoří RoleBinding, který váže uživatele Azure AD *developer1 \@ contoso.com* na RoleBinding, jak je znázorněno v následujícím manifestu YAML:
+Pak vytvoříte RoleBinding a svážete uživatele Azure AD *developer1 \@ contoso.com* s RoleBinding, jak je znázorněno v následujícím manifestu YAML:
 
 ```yaml
 kind: RoleBinding
@@ -84,41 +90,64 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Pokud se *developer1 \@ contoso.com* ověřuje v rámci clusteru AKS, mají úplná oprávnění k prostředkům v oboru názvů *finance-aplikace* . Tímto způsobem můžete logicky oddělit a řídit přístup k prostředkům. Kubernetes RBAC by se měla používat ve spojení s integrací Azure AD, jak je popsáno v předchozí části.
+Pokud se *developer1 \@ contoso.com* ověřuje v rámci clusteru AKS, mají úplná oprávnění k prostředkům v oboru názvů *finance-aplikace* . Tímto způsobem můžete logicky oddělit a řídit přístup k prostředkům. Kubernetes RBAC používejte ve spojení s Azure AD – integrací.
 
 Pokud chcete zjistit, jak používat skupiny Azure AD k řízení přístupu k prostředkům Kubernetes pomocí Kubernetes RBAC, přečtěte si téma [řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě rolí a Azure Active Directory identit v AKS][azure-ad-rbac].
 
 ## <a name="use-azure-rbac"></a>Použití Azure RBAC 
-**Doprovodné materiály k osvědčeným postupům** – pomocí Azure RBAC definujte minimální požadovaná oprávnění, která uživatelé nebo skupiny musí AKS k prostředkům v jednom nebo několika předplatných.
+> **Osvědčené postupy** 
+> 
+> Pomocí Azure RBAC definujte minimální požadovaná oprávnění uživatelů a skupin pro AKS prostředků v jednom nebo několika předplatných.
 
 Existují dvě úrovně přístupu, které jsou potřeba k plnému provozu clusteru AKS: 
-1. Přístup k prostředku AKS ve vašem předplatném Azure. Tato úroveň přístupu vám umožní řídit, jak škálovat nebo upgradovat cluster pomocí rozhraní AKS API, a také načíst vaše kubeconfig.
-Pokud chcete zjistit, jak řídit přístup k AKS prostředku a kubeconfig, přečtěte si téma [omezení přístupu ke konfiguračnímu souboru clusteru](control-kubeconfig-access.md).
+1. Přístup k prostředku AKS ve vašem předplatném Azure. 
 
-2. Přístup k rozhraní Kubernetes API. Tato úroveň přístupu se řídí buď [KUBERNETES RBAC](#use-kubernetes-role-based-access-control-kubernetes-rbac) (tradičně), nebo integrací Azure RBAC s AKS pro autorizaci Kubernetes.
-Postup při podrobném udělení oprávnění k rozhraní Kubernetes API pomocí Azure RBAC najdete v tématu [použití Azure RBAC pro autorizaci Kubernetes](manage-azure-rbac.md).
+    Tato úroveň přístupu vám umožní:
+      * Řízení škálování nebo upgrade clusteru pomocí rozhraní API AKS
+      * Vyžádání `kubeconfig` .
+
+    Chcete-li zjistit, jak řídit přístup k AKS prostředku a `kubeconfig` , najdete informace v části [omezení přístupu ke konfiguračnímu souboru clusteru](control-kubeconfig-access.md).
+
+2. Přístup k rozhraní Kubernetes API. 
+    
+    Tato úroveň přístupu se řídí těmito možnostmi:
+    * [KUBERNETES RBAC](#use-kubernetes-role-based-access-control-kubernetes-rbac) (tradičně) nebo 
+    * Integrací Azure RBAC s AKS pro autorizaci Kubernetes.
+
+    Pokud chcete zjistit, jak členit oprávnění k rozhraní Kubernetes API pomocí Azure RBAC, přečtěte si téma [použití Azure RBAC pro autorizaci Kubernetes](manage-azure-rbac.md).
 
 ## <a name="use-pod-managed-identities"></a>Použití identit pod správou
 
-**Doprovodné materiály k osvědčeným postupům** – nepoužívejte pevná pověření v rámci lusků ani imagí kontejnerů, protože jsou ohroženy ozářením nebo zneužitím. Místo toho použijte identity pod, pokud chcete automaticky požádat o přístup pomocí centrálního řešení identit Azure AD. Identity pod jsou určené pro použití jenom pro systémy Linux a image kontejnerů.
+> **Osvědčené postupy** 
+> 
+> Nepoužívejte pevná pověření v rámci lusků nebo imagí kontejnerů, protože jsou ohrožena ozářením nebo zneužitím. Místo toho použijte *identity pod* , pokud chcete automaticky požádat o přístup pomocí centrálního řešení identit Azure AD. 
 
 > [!NOTE]
-> Už brzy bude dostupná podpora identit pod správou pro kontejnery Windows.
+> Identity pod jsou určené pro použití jenom pro systémy Linux a image kontejnerů. Už brzy bude dostupná podpora identit pod správou pro kontejnery Windows.
 
-Když lusky potřebují přístup k jiným službám Azure, jako jsou Cosmos DB, Key Vault nebo Blob Storage, potřebuje přístup k přihlašovacím údajům. Tyto přístupové přihlašovací údaje by se daly definovat s imagí kontejneru nebo vložené jako Kubernetes tajný klíč, ale je potřeba je ručně vytvořit a přiřadit. Přihlašovací údaje se často použijí v různých luskech a nejsou pravidelně otočené.
+Pro přístup k jiným službám Azure, jako je Cosmos DB, Key Vault nebo Blob Storage, musí mít přístup k přihlašovacím údajům. Můžete definovat přístupová pověření pomocí Image kontejneru nebo je vložit jako tajný kód Kubernetes. V obou případech byste je museli vytvořit a přiřadit ručně. Obvykle se tyto přihlašovací údaje použijí v různých luskech a nejsou pravidelně otočeny.
 
-Pod-spravované identity pro prostředky Azure vám umožní automaticky požádat o přístup ke službám přes Azure AD. Identity pod správou jsou teď teď ve verzi Preview pro službu Azure Kubernetes. Informace o tom, jak začít, najdete v dokumentaci k [používání Azure Active Directory pod pod správou v dokumentaci ke službě Azure Kubernetes (Preview)]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) . S využitím identit pod správou nedefinujete ručně přihlašovací údaje pro lusky, ale vyžádají přístup k přístupovému tokenu v reálném čase a může je používat pro přístup pouze k jim přiřazeným službám. V AKS jsou k dispozici dvě komponenty, které zpracovávají operace a umožňují použití spravovaných identit v luskech:
+S využitím identit pod správou pro prostředky Azure automaticky vyžádáte přístup ke službám přes Azure AD. Identity pod správou teď jsou nyní ve verzi Preview pro AKS. Další informace najdete v tématu [použití Azure Active Directory pod správou identit ve službě Azure Kubernetes (Preview) [( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) dokumentace pro začátek. 
+
+Místo ručního definování přihlašovacích údajů pro lusky se v reálném čase požádají o přístupový token, a to pomocí něj získat přístup jenom k jim přiřazeným službám. V AKS jsou k dispozici dvě komponenty, které zpracovávají operace a umožňují použití spravovaných identit v luskech:
 
 * **Server NMI (Node Management identity)** je pod tím, který se spouští jako DaemonSet na každém uzlu v clusteru AKS. Server NMI čeká na služby Azure na požadavky pod.
 * **Poskytovatel prostředků Azure** se dotáže serveru rozhraní Kubernetes API a ověří mapování identit Azure, které odpovídá poli pod.
 
-Když lusky požadují přístup ke službě Azure, Síťová pravidla přesměrují provoz na server NMI (Node Management identity). Server NMI identifikuje lusky, které vyžadují přístup ke službám Azure na základě jejich vzdálené adresy, a odešle dotaz poskytovateli prostředků Azure. Poskytovatel Azure prostředků zkontroluje mapování identit Azure v clusteru AKS a server NMI pak požádá o přístupový token z Azure Active Directory (AD) na základě mapování identity pod. Azure AD poskytuje přístup k serveru NMI, který je vrácen do pod. Přístup k tomuto přístupovému tokenu může použít ta pod tím, že bude vyžadovat přístup ke službám v Azure.
+Když lusky požadují přístup ke službě Azure, Síťová pravidla přesměrují provoz na server NMI. 
+1. Server NMI:
+    * Identifikuje lusky požadující přístup ke službám Azure na základě jejich vzdálené adresy.
+    * Zadá dotaz na poskytovatele prostředků Azure. 
+1. Poskytovatel prostředků Azure kontroluje mapování identit Azure v clusteru AKS.
+1. Server NMI požádá o přístupový token ze služby Azure AD na základě mapování totožnosti pod. 
+1. Azure AD poskytuje přístup k serveru NMI, který je vrácen do pod. 
+    * Přístup k tomuto přístupovému tokenu může použít ta pod tím, že bude vyžadovat přístup ke službám v Azure.
 
 V následujícím příkladu Vývojář vytvoří pod, který používá spravovanou identitu k vyžádání přístupu k Azure SQL Database:
 
 ![Identity pod umožňují automatické vyžádání přístupu k jiným službám.](media/operator-best-practices-identity/pod-identities.png)
 
-1. Operátor clusteru nejdřív vytvoří účet služby, který se dá použít k mapování identit, když lusky požadují přístup ke službám.
+1. Operátor clusteru vytvoří účet služby pro mapování identit, když lusky požadují přístup ke službám.
 1. Server NMI je nasazený pro předávání všech požadavků pod a poskytovatele prostředků Azure pro přístupové tokeny do Azure AD.
 1. Vývojář nasadí pod spravovanou identitou, která žádá o přístupový token prostřednictvím serveru NMI.
 1. Token se vrátí do pole pod a používá se pro přístup k Azure SQL Database

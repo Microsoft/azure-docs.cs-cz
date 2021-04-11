@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100611692"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109743"
 ---
 # <a name="programmatically-manage-workbooks"></a>Správa sešitů prostřednictvím kódu programu
 
@@ -99,19 +99,19 @@ Existují dva typy prostředků sešitu, které lze spravovat prostřednictvím 
 
 ### <a name="galleries"></a>Galerie
 
-| Galerie                                        | Typ prostředku                                      | Typ sešitu |
-| :--------------------------------------------- |:---------------------------------------------------|:--------------|
-| Sešity v Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
-| Přehledy virtuálních počítačů v Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
-| Sešity v pracovním prostoru Log Analytics           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
-| Sešity v Application Insights              | `microsoft.insights/component`                     | `workbook`    |
-| Průvodci odstraňováním potíží v Application Insights | `microsoft.insights/component`                     | `tsg`         |
-| Využití v Application Insights                  | `microsoft.insights/component`                     | `usage`       |
-| Sešity ve službě Kubernetes                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
-| Sešity ve skupinách prostředků                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
-| Sešity v Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
-| Přehledy virtuálních počítačů ve virtuálních počítačích                | `microsoft.compute/virtualmachines`                | `insights`    |
-| Přehledy virtuálních počítačů v sadě Virtual Machine Scale Sets      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| Galerie                                        | Typ prostředku                                       | Typ sešitu |
+|:-----------------------------------------------|:----------------------------------------------------|:--------------|
+| Sešity v Azure Monitor                     | `Azure Monitor`                                     | `workbook`    |
+| Přehledy virtuálních počítačů v Azure Monitor                   | `Azure Monitor`                                     | `vm-insights` |
+| Sešity v pracovním prostoru Log Analytics           | `microsoft.operationalinsights/workspaces`          | `workbook`    |
+| Sešity v Application Insights              | `microsoft.insights/components`                     | `workbook`    |
+| Průvodci odstraňováním potíží v Application Insights | `microsoft.insights/components`                     | `tsg`         |
+| Využití v Application Insights                  | `microsoft.insights/components`                     | `usage`       |
+| Sešity ve službě Kubernetes                | `Microsoft.ContainerService/managedClusters`        | `workbook`    |
+| Sešity ve skupinách prostředků                   | `microsoft.resources/subscriptions/resourcegroups`  | `workbook`    |
+| Sešity v Azure Active Directory            | `microsoft.aadiam/tenant`                           | `workbook`    |
+| Přehledy virtuálních počítačů ve virtuálních počítačích                | `microsoft.compute/virtualmachines`                 | `insights`    |
+| Přehledy virtuálních počítačů v sadě Virtual Machine Scale Sets      | `microsoft.compute/virtualmachinescalesets`         | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Šablona Azure Resource Manager pro nasazení instance sešitu
 

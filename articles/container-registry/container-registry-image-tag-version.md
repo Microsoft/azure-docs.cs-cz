@@ -5,16 +5,16 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dfd29f2265e599f3cc7c412b81c3b7b93af40db
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75445740"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109709"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
 
-Při doručování nasazování imagí kontejneru do registru kontejneru a jejich nasazení budete potřebovat strategii pro označování imagí a správu verzí. Tento článek popisuje dva přístupy a jejich umístění do životního cyklu kontejneru:
+Když zadáváte image kontejneru do registru kontejneru a pak je nasadíte, budete potřebovat strategii pro označování imagí a správu verzí. Tento článek popisuje dva přístupy a jejich umístění do životního cyklu kontejneru:
 
 * **Stabilní značky značek** , které můžete opakovaně používat, například k označení hlavní nebo dílčí verze, jako je například *mycontainerimage: 1.0*.
 * **Jedinečné značky** – pro každý obrázek, který zadáváte do registru, jako je například *mycontainerimage: abc123*, se jedná o jinou značku.

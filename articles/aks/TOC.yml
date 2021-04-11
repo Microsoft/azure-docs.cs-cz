@@ -295,6 +295,8 @@
           href: enable-host-encryption.md
     - name: Monitorování a protokolování
       items:
+        - name: Zobrazení metrik clusteru
+          href: view-metrics.md
         - name: Azure Monitor pro kontejnery
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
@@ -349,6 +351,8 @@
       items:
         - name: Informace o sítích služeb
           href: servicemesh-about.md
+        - name: Otevřít doplněk AKS pro síť služby (Preview)
+          href: servicemesh-osm-about.md
         - name: Použití Istio
           items:
             - name: Informace o Istiu

@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Klientská knihovna Azure Queue Storage V12-Python'
 description: Naučte se, jak pomocí klientské knihovny Azure Queue Storage V12 pro Python vytvořit frontu a do ní přidat zprávy. Pak se dozvíte, jak číst a odstraňovat zprávy z fronty. Naučíte se také, jak odstranit frontu.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
-ms.openlocfilehash: b4c25ceb2e7b3f224dccdd7d24d86389100c8a2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1881af372c1f4e1c5cbb4ea7be0ede4c96bbf4ee
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801906"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276140"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Rychlý Start: V12 klientské knihovny Azure Queue Storage pro Python
 

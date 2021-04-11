@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7bf4ea4beabf9abcc007c101ca5acf79ec919c4e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180635"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732393"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Kurz: migrace SQL Server pro Azure SQL Database pomocí DMS
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > - Monitorujte migraci.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -245,6 +245,9 @@ Vyberte buď všechny databáze, nebo konkrétní databáze, které chcete migro
 1. Na obrazovce **vybrat cíl** zadejte nastavení ověřování pro váš Azure SQL Database. 
 
    ![Výběr cíle](media/tutorial-sql-server-to-azure-sql/select-target.png)
+   
+   > [!NOTE]
+   > V současné době je ověřování SQL jediným podporovaným typem ověřování.
 
 1. Vyberte možnost **Další: namapovat na cílovou** databázi, namapujte zdrojovou a cílovou databázi pro migraci.
 
