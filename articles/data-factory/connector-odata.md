@@ -4,14 +4,14 @@ description: Naučte se, jak kopírovat data ze zdrojů OData do podporovaných 
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/30/2021
 ms.author: jingwang
-ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dd86b4982edf5d206e64431a5e1458c4b848e9e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968483"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -326,6 +326,48 @@ Při kopírování dat z OData se používají následující mapování mezi da
 
 > [!NOTE]
 > Komplexní datové typy OData (například **Object**) se nepodporují.
+
+## <a name="copy-data-from-project-online"></a>Kopírování dat z Projectu Online
+
+Pokud chcete kopírovat data z Projectu Online, můžete použít konektor OData a přístupový token získaný z nástrojů, jako je post.
+
+> [!CAUTION]
+> Platnost přístupového tokenu ve výchozím nastavení vyprší za 1 hodinu. po vypršení platnosti musíte získat nový přístupový token.
+
+1. Použijte **metodu post** pro získání přístupového tokenu:
+
+   1. Na webu publikovat přejděte na kartu **autorizace** .
+   1. V poli **typ** vyberte **OAuth 2,0** a v poli **Přidat autorizační data do** vyberte **hlavičky požadavků**.
+   1. Pokud chcete získat nový přístupový token, vyplňte na stránce **Konfigurace nového tokenu** tyto informace: 
+      - **Typ udělení**: vyberte **autorizační kód**.
+      - **Adresa URL zpětného volání**: zadejte `https://www.localhost.com/` . 
+      - **Adresa URL ověření**: zadejte `https://login.microsoftonline.com/common/oauth2/authorize?resource=https://<your tenant name>.sharepoint.com` . Nahraďte `<your tenant name>` názvem vašeho vlastního tenanta. 
+      - **Adresa URL přístupového tokenu**: zadejte `https://login.microsoftonline.com/common/oauth2/token` .
+      - **ID klienta**: Zadejte ID instančního objektu služby AAD.
+      - **Tajný kód klienta**: Zadejte svůj tajný klíč instančního objektu.
+      - **Ověřování klientů**: vyberte **Odeslat jako základní hlavičku ověřování**.
+     
+   1. Zobrazí se výzva k přihlášení pomocí uživatelského jména a hesla.
+   1. Po získání přístupového tokenu ho prosím zkopírujte a uložte pro další krok.
+   
+    [![Získání přístupového tokenu pomocí metody post](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+
+1. Vytvořte propojenou službu OData:
+    - **Adresa URL služby**: zadejte `https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata` . Nahraďte `<your tenant name>` názvem vašeho vlastního tenanta. 
+    - **Typ ověřování**: vyberte **Anonymous (anonymní**).
+    - **Hlavičky ověřování**:
+        - **Název vlastnosti**: vyberte možnost **autorizace**.
+        - **Hodnota**: zadejte **přístupový token** , který jste zkopírovali z kroku 1.
+    - Otestujte propojenou službu.
+
+    ![Vytvořit propojenou službu OData](./media/connector-odata/odata-project-online-linked-service.png)
+
+1. Vytvořte datovou sadu OData:
+    1. Vytvořte datovou sadu s propojenou službou OData vytvořenou v kroku 2.
+    1. Náhled dat.
+ 
+    ![Náhled dat](./media/connector-odata/odata-project-online-preview-data.png)
+ 
 
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

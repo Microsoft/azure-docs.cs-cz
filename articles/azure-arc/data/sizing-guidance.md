@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542673"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077464"
 ---
 # <a name="sizing-guidance"></a>Pokyny pro změnu velikosti
 
@@ -92,9 +92,9 @@ Každá vytvořená instance SQL pod vytvořením má tři kontejnery:
 
 |Název kontejneru|Požadavek procesoru|Požadavek na paměť|Limit procesoru|Omezení paměti|Poznámky|
 |---|---|---|---|---|---|
-|fluentbit|100 milionů|100Mi|Neurčeno|Neurčeno|Požadavky na prostředky kontejneru fluentbit jsou _kromě_ požadavků určených pro SPRAVOVANOU instanci SQL.||
-|oblouk – sqlmi|Zadáno uživatelem nebo není zadán.|Zadáno uživatelem nebo není zadán.|Zadáno uživatelem nebo není zadán.|Zadáno uživatelem nebo není zadán.||
-|shromážděná výkonnostní|Neurčeno|Neurčeno|Neurčeno|Neurčeno||
+|fluentbit|100 milionů|100Mi|Neurčeno|Neurčeno|Požadavky na prostředky kontejneru fluentbit jsou _kromě_ požadavků určených pro SPRAVOVANOU instanci SQL.|
+|oblouk – sqlmi|Zadáno uživatelem nebo není zadán.|Zadáno uživatelem nebo není zadán.|Zadáno uživatelem nebo není zadán.|Zadáno uživatelem nebo není zadán.|
+|shromážděná výkonnostní|Neurčeno|Neurčeno|Neurčeno|Neurčeno|
 
 Výchozí velikost svazku pro všechny trvalé svazky je 5Gi.
 

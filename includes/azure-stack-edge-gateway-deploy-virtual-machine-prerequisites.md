@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: e459ea1e9d8d7d51a62ba3ed1d2de8815a1b4222
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105767"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554517"
 ---
 Než budete moct nasadit virtuální počítače na Azure Stack hraniční zařízení, musíte klienta nakonfigurovat tak, aby se připojil k zařízení přes Azure Resource Manager přes Azure PowerShell. Podrobné pokyny najdete v tématu [připojení k Azure Resource Manager na zařízení Azure Stack Edge](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).
 
@@ -23,9 +23,9 @@ Ujistěte se, že k přístupu k zařízení z klienta můžete použít násled
 
 1. Pokud chcete volat rozhraní API místních zařízení k ověření, zadejte: 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name>`
+    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
 
-    Pokud se chcete připojit prostřednictvím Azure Resource Manager, zadejte uživatelské jméno *EdgeARMuser* a heslo.
+    Pokud se chcete připojit prostřednictvím Azure Resource Manager, zadejte uživatelské jméno *EdgeArmUser* a heslo.
 
 1. Pokud jste nakonfigurovali COMPUTE pro Kubernetes, můžete tento krok přeskočit. V opačném případě se ujistěte, že jste povolili síťové rozhraní pro výpočetní prostředky, a to následujícím způsobem: 
 

@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 0ef52da8400cfadfaaa26664d984d8b898a3b9a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 261ba24a360dd49a9759bc70f561810a9e1fd2c8
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729296"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277075"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Java v Azure z příkazového řádku
 
@@ -152,11 +152,7 @@ Archetype také generuje test jednotek pro vaši funkci. Když změníte funkci 
     > [!NOTE]  
     > Pokud se HttpExample nezobrazí, jak je uvedeno výše, pravděpodobně jste spustili hostitele mimo kořenovou složku projektu. V takovém případě pomocí **kombinace kláves CTRL +** + **C** zastavte hostitele, přejděte do kořenové složky projektu a spusťte předchozí příkaz znovu.
 
-1. Zkopírujte adresu URL vaší `HttpExample` funkce z tohoto výstupu do prohlížeče a přidejte řetězec dotazu `?name=<YOUR_NAME>` , jako je třeba celá adresa URL `http://localhost:7071/api/HttpExample?name=Functions` . V prohlížeči by se měla zobrazit zpráva jako `Hello Functions` :
-
-    ![Výsledek funkce místně spuštěný v prohlížeči](./media/functions-create-first-azure-function-azure-cli/function-test-local-browser.png)
-    
-    Terminál, ve kterém jste spustili projekt, také zobrazuje výstup protokolu při provádění požadavků.
+1. Zkopírujte adresu URL vaší `HttpExample` funkce z tohoto výstupu do prohlížeče a přidejte řetězec dotazu `?name=<YOUR_NAME>` , jako je třeba celá adresa URL `http://localhost:7071/api/HttpExample?name=Functions` . V prohlížeči by se měla zobrazit zpráva, která vrací zpět hodnotu řetězce dotazu. Terminál, ve kterém jste spustili projekt, také zobrazuje výstup protokolu při provádění požadavků.
 
 1. Až budete hotovi, použijte **CTRL** + **C** a vyberte možnost `y` zastavit hostitele funkcí.
 

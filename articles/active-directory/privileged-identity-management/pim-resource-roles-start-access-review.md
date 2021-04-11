@@ -11,20 +11,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 03/16/2021
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 110a94c78427087f4ca5555f59055ab8e3bebcee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592591"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552783"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management
 
 Potřeba přístup k privilegovaným rolím prostředků Azure, které zaměstnanci mění v čase. Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytvoření kontrol přístupu pro privilegovaný přístup k rolím prostředků Azure můžete použít Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky. Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu.
+
+## <a name="prerequisite-license"></a>Požadovaná licence
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. Další informace o licencích pro PIM najdete v tématu [licenční požadavky pro použití Privileged Identity Management](subscription-requirements.md).
+
+> [!Note]
+>  V současné době můžete určit rozsah kontroly přístupu u instančních objektů s přístupem k Azure AD a k rolím prostředků Azure (Preview) s aktivní verzí služby Azure Active Directory Premium P2 ve vašem tenantovi. Pro účely obecné dostupnosti této funkce bude finalizace licenční model pro instanční objekty a může vyžadovat další licence.
 
 ## <a name="prerequisite-role"></a>Požadovaná role
 
@@ -34,9 +41,9 @@ Potřeba přístup k privilegovaným rolím prostředků Azure, které zaměstna
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je přiřazený k jedné z požadovaných rolí.
 
-1. Otevřete **Azure AD Privileged Identity Management**.
-
-1. V nabídce vlevo vyberte **prostředky Azure**.
+1. Vybrat zásady **správného řízení identity**
+ 
+1. V nabídce vlevo vyberte **prostředky Azure** v části **Azure AD Privileged Identity Management**.
 
 1. Vyberte prostředek, který chcete spravovat, například předplatné.
 
@@ -58,9 +65,12 @@ Potřeba přístup k privilegovaným rolím prostředků Azure, které zaměstna
 
 1. Pomocí nastavení **konec** určete, jak se má ukončit řada kontroly opakovaného přístupu. Série může končit třemi způsoby: průběžně spouští recenze na neomezenou dobu, až do konkrétního data nebo po dokončení definovaného počtu výskytů. Vy, jiný správce nebo jiný globální správce může série po vytvoření zastavit změnou data v **Nastavení**, takže skončí k tomuto datu.
 
-1. V části **Uživatelé** vyberte jednu nebo více rolí, u kterých chcete zkontrolovat členství.
+1. V části **Uživatelé** vyberte rozsah revize. Chcete-li zkontrolovat uživatele, vyberte možnost **Uživatelé nebo vyberte (Preview) instanční objekty** pro kontrolu účtů počítačů s přístupem k roli Azure.   
 
     ![Obor uživatelů pro kontrolu členství v rolích](./media/pim-resource-roles-start-access-review/users.png)
+
+
+1. V části **Revize členství v roli** vyberte privilegované role Azure, které chcete zkontrolovat. 
 
     > [!NOTE]
     > - Role, které tady vyberete, zahrnují [trvalé i oprávněné role](../privileged-identity-management/pim-how-to-add-role-to-user.md).
@@ -77,9 +87,9 @@ Potřeba přístup k privilegovaným rolím prostředků Azure, které zaměstna
 
     ![Seznam revidujících vybraných uživatelů nebo členů (osoba)](./media/pim-resource-roles-start-access-review/reviewers.png)
 
-    - **Vybraní uživatelé** – tuto možnost použijte, Pokud nevíte, kdo potřebuje přístup. Pomocí této možnosti můžete k dokončení této revize přiřadit vlastníka prostředku nebo správce skupin.
-    - **Členové (vlastní)** – tuto možnost použijte, pokud chcete, aby uživatelé zkontrolovali vlastní přiřazení rolí. 
-    - **Správce** – tuto možnost použijte, pokud chcete, aby nadřízený uživatel zkontroloval přiřazení role. Po výběru manažera budete mít také možnost zadat záložního kontrolora. Záložní revidující budou požádáni, aby zkontrolovali uživatele, když v adresáři není zadaný žádný správce. 
+    - **Vybraní uživatelé** – tuto možnost použijte k určení konkrétního uživatele k dokončení kontroly. Tato možnost je k dispozici bez ohledu na rozsah kontroly a vybrané revidující mohou kontrolovat uživatele a instanční objekty. 
+    - **Členové (vlastní)** – tuto možnost použijte, pokud chcete, aby uživatelé zkontrolovali vlastní přiřazení rolí. Tato možnost je dostupná jenom v případě, že je revize vymezená na **uživatele**.
+    - **Správce** – tuto možnost použijte, pokud chcete, aby nadřízený uživatel zkontroloval přiřazení role. Tato možnost je dostupná jenom v případě, že je revize vymezená na **uživatele**. Po výběru manažera budete mít také možnost zadat záložního kontrolora. Záložní revidující budou požádáni, aby zkontrolovali uživatele, když v adresáři není zadaný žádný správce. 
 
 ### <a name="upon-completion-settings"></a>Nastavení po dokončení
 

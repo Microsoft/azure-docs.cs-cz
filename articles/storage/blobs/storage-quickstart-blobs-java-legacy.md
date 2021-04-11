@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V8 pro jazyk Java'
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijte Azure Storage klientské knihovny V8 pro jazyk Java k nahrání objektu blob do Azure Storage, stažení objektu BLOB a výpisu objektů BLOB v kontejneru.
-author: mhopkins-msft
+author: twooley
 ms.custom: devx-track-java
-ms.author: mhopkins
+ms.author: twooley
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49c55a2b565100e370ce561537c96a96b896f355
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98599819"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280594"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Java. Objekt
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK](storage-quickstart-blobs-java.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).

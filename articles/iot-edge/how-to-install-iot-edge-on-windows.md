@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612109"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059696"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -44,8 +44,8 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
   * Edice Professional, Enterprise nebo Server
   * Minimální volná paměť: 2 GB
   * Minimální volné místo na disku: 10 GB
-  * Pokud vytváříte nové nasazení pomocí Windows 10, ujistěte se, že jste povolili technologii Hyper-V. Další informace najdete v tématu [instalace technologie Hyper-V ve Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md).
-  * Pokud vytváříte nové nasazení pomocí Windows serveru, nezapomeňte nainstalovat roli Hyper-V. Další informace najdete v tématu Postup [instalace role technologie Hyper-V v systému Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
+  * Pokud vytváříte nové nasazení pomocí Windows 10, ujistěte se, že jste povolili technologii Hyper-V. Další informace najdete v tématu [instalace technologie Hyper-V ve Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+  * Pokud vytváříte nové nasazení pomocí Windows serveru, nezapomeňte nainstalovat roli Hyper-V. Další informace najdete v tématu Postup [instalace role technologie Hyper-V v systému Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
   * Pokud vytváříte nové nasazení pomocí virtuálního počítače, ujistěte se, že jste správně nakonfigurovali vnořenou virtualizaci. Další informace najdete v průvodci [vnořenou virtualizací](nested-virtualization.md) .
 
 * Přístup k centru pro správu systému Windows s nainstalovaným rozšířením Azure IoT Edge pro centrum pro správu systému Windows:

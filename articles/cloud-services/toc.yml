@@ -105,6 +105,32 @@
               href: cloud-services-role-config-xpath.md
         - name: Správa certifikátů
           items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: Visual Studio
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: Ukládání a zobrazení diagnostických dat v Azure Storage
+          href: diagnostics-extension-to-storage.md
+        - name: Trasování cloudové služby pomocí diagnostiky
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: Migrate
+      items:
+        - name: Přehled migrace
+          href: ../cloud-services-extended-support/in-place-migration-overview.md?toc=/azure/cloud-services/toc.json
+        - name: Technické podrobnosti o migraci
+          href: ../cloud-services-extended-support/in-place-migration-technical-details.md?toc=/azure/cloud-services/toc.json
+        - name: Migrace pomocí Azure Portal
+          href: ../cloud-services-extended-support/in-place-migration-portal.md?toc=/azure/cloud-services/toc.json
+        - name: Migrace pomocí prostředí PowerShell
+          href: ../cloud-services-extended-support/in-place-migration-powershell.md?toc=/azure/cloud-services/toc.json
+        - name: Běžné chyby a známé problémy
+          href: ../cloud-services-extended-support/in-place-migration-common-errors.md?toc=/azure/cloud-services/toc.json
+    - name: Řešení potíží
+      items:
+        - name: Ladění
+          items:
             - name: Cloud Services a správa certifikátů
               href: cloud-services-certs-create.md
             - name: Konfigurace SSL
@@ -172,6 +198,8 @@
                   href: cloud-services-deployment-faq.md
     - name: Referenční informace
       items:
+        - name: Azure CLI
+          href: /cli/azure/cloud
         - name: Ukázky kódů
           href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
         - name: Schéma .csdef XML
@@ -196,17 +224,25 @@
           href: /rest/api/compute/cloudservices/
     - name: Zdroje a prostředky
       items:
-        - name: Plány Azure do budoucna
-          href: 'https://azure.microsoft.com/roadmap/?category=compute'
-        - name: Postup výuky
-          href: /learn/paths/azure-fundamentals/
-        - name: Stránka s dotazy na Microsoft Q&A
-          href: /answers/topics/azure-cloud-services.html
-        - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-        - name: Cenová kalkulačka
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: Aktualizace služeb
-          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-        - name: Videa
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Schéma rolí
+          href: schema-cscfg-role.md
+        - name: Schéma NetworkConfiguration
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Postup výuky
+      href: /learn/paths/azure-fundamentals/
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: /answers/topics/azure-cloud-services.html
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

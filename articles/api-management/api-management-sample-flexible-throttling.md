@@ -1,5 +1,5 @@
 ---
-title: Pokročilé omezování požadavků pomocí služby Azure API Management
+title: Pokročilé omezování požadavků pomocí Azure API Management
 description: Naučte se vytvářet a používat flexibilní zásady kvót a četnosti s využitím Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 36b21196207f65975dae950f43ec0c7094991dad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f91ed2238a7a23b967cd3e3556c8ade88af0044
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100362025"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449728"
 ---
-# <a name="advanced-request-throttling-with-azure-api-management"></a>Pokročilé omezování požadavků pomocí služby Azure API Management
+# <a name="advanced-request-throttling-with-azure-api-management"></a>Pokročilé omezování požadavků pomocí Azure API Management
 Schopnost omezit příchozí požadavky je klíčovou rolí Azure API Management. Díky tomu, že se řídí rychlost požadavků nebo celkový počet přenesených požadavků nebo dat, API Management umožňuje poskytovatelům rozhraní API chránit svá rozhraní API před zneužitím a vytvářet hodnoty pro různé úrovně produktu API.
 
 ## <a name="rate-limits-and-quotas"></a>Omezení přenosové rychlosti a kvóty
@@ -91,7 +91,7 @@ Pokud je klíč omezení definovaný pomocí [výrazu zásady](./api-management-
 Tím umožníte klientským aplikacím vývojáře zvolit, jak chce vytvořit klíč omezující rychlost. Vývojáři klientů mohou vytvořit své vlastní úrovně sazeb přidělením sad klíčů uživatelům a otočením použití klíče.
 
 ## <a name="summary"></a>Souhrn
-Azure API Management poskytuje rychlost a cenovou omezení pro ochranu a přidání hodnoty do služby API. Nové zásady omezování s vlastními pravidly oboru vám umožní přesnější kontrolu nad těmito zásadami, aby vaši zákazníci mohli vytvářet ještě lepší aplikace. Příklady v tomto článku ukazují použití těchto nových zásad podle sazeb za zpracovatelských procesů s IP adresami klienta, identitou uživatelů a hodnotami generovanými klientem. Existuje však mnoho dalších částí zprávy, které by mohly být použity jako uživatelský agent, fragmenty cesty URL a velikost zprávy.
+Azure API Management poskytuje omezení rychlosti a kvóty pro ochranu a přidání hodnoty do služby API. Nové zásady omezování s vlastními pravidly oboru vám umožní přesnější kontrolu nad těmito zásadami, aby vaši zákazníci mohli vytvářet ještě lepší aplikace. Příklady v tomto článku ukazují použití těchto nových zásad podle sazeb za zpracovatelských procesů s IP adresami klienta, identitou uživatelů a hodnotami generovanými klientem. Existuje však mnoho dalších částí zprávy, které by mohly být použity jako uživatelský agent, fragmenty cesty URL a velikost zprávy.
 
 ## <a name="next-steps"></a>Další kroky
 Sdělte nám svůj názor jako problém GitHubu pro toto téma. Měli byste se seznámit s dalšími potenciálními klíčovými hodnotami, které jsou ve vašich scénářích logickou volbou.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 2c66a7e3bf9e417b47d08e50e21c08625e9d0549
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966941"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210206"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -27,11 +27,9 @@ Implementace služby SSML pro rozpoznávání řeči je založená konsorcium Wo
 > [!IMPORTANT]
 > Čínské, japonské a korejské znaky se počítají jako dva znaky pro účely fakturace. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-## <a name="standard-neural-and-custom-voices"></a>Standardní, neuronové a vlastní hlasy
+## <a name="neural-and-custom-voices"></a>Neuronové a vlastní hlasy
 
-Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy je k dispozici ve čtyřech jazycích a národních prostředích. Úplný seznam podporovaných jazyků, národních prostředí a hlasů (neuronové a Standard) najdete v tématu [Podpora jazyků](language-support.md).
-
-Další informace o standardních, neuronové a vlastních hlasů najdete v tématu [Přehled převodu textu na řeč](text-to-speech.md).
+Použijte neuronové hlas podobný člověku nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. Úplný seznam podporovaných jazyků, národních prostředí a hlasů najdete v tématu [Podpora jazyků](language-support.md). Další informace o neuronové a vlastních hlasů najdete v tématu [Přehled převodu textu na řeč](text-to-speech.md).
 
 
 > [!NOTE]
@@ -194,12 +192,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-styles"></a>Upravit styly speaking
 
-> [!IMPORTANT]
-> Úpravy mluveného stylu budou fungovat jenom s neuronové hlasy.
+Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pomocí neutrálního mluveného stylu pro neuronové hlasy. Styl speaking můžete upravit tak, aby bylo možné vyjádřit různé emoce, jako je cheerfulness, soucit a Calm, nebo optimalizovat hlas pro různé scénáře, jako jsou služby Customer Service, newscasting a hlasového asistenta, a to pomocí `mstts:express-as` elementu. Toto je volitelný element jedinečný pro službu Speech Service.
 
-Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pomocí neutrálního mluveného stylu pro hlasy Standard i neuronové. S neuronové hlasymi můžete upravit styl speaking tak, aby bylo možné vyjádřit různé emoce, jako je cheerfulness, soucit nebo Calm, nebo optimalizovat hlas pro různé scénáře, jako jsou služby zákazníkům, newscasting a hlasový asistent, a to pomocí `mstts:express-as` elementu. Toto je volitelný element jedinečný pro službu Speech Service.
-
-V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
+V současné době jsou úpravy stylu speaking podporovány pro následující hlasy neuronové:
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -215,11 +210,11 @@ V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu spe
 
 Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči. V současné době jsou pro čínské hlasy (Mandarin, zjednodušené) neuronové podporovány úpravy stylu speaking.
 
-Kromě úprav stylů a stylu mluveného projevu můžete také upravit `role` parametr tak, aby hlas byl jiný a pohlaví. Například samcský hlas může vyvolávat rozteč a změnit rozmocninu k napodobenině ženského hlasu, ale název hlasu se nezmění. V současné době jsou úpravy rolí a her podporované pro tyto čínské (Mandarin, zjednodušené) neuronové hlasy:
+Kromě úprav stylů a stylu mluveného projevu můžete také upravit `role` parametr tak, aby hlas byl jiný a pohlaví. Například samcský hlas může vyvolávat rozteč a změnit rozmocninu k napodobenině ženského hlasu, ale název hlasu se nezmění. V současné době jsou úpravy rolí podporované pro tyto čínské (Mandarin, zjednodušené) neuronové hlasy:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se liší podle hlasu. Pokud styl nebo role-Play není podporován, služba vrátí rozpoznávání řeči ve výchozím nastavení neutrální speaking. Můžete si prohlédnout, jaké styly a role-Play jsou podporovány pro každý hlas prostřednictvím [rozhraní API pro seznam hlasu](rest-text-to-speech.md#get-a-list-of-voices) nebo prostřednictvím platformy pro [vytváření obsahu pro zvuk](https://aka.ms/audiocontentcreation) bez kódu.
+Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se liší podle hlasu. Pokud styl nebo role-Play není podporován, služba vrátí rozpoznávání řeči ve výchozím nastavení neutrální speaking. Můžete zjistit, jaké styly a role jsou podporovány pro každý hlas prostřednictvím [rozhraní API seznamu hlasu](rest-text-to-speech.md#get-a-list-of-voices) nebo prostřednictvím platformy pro [vytváření obsahu pro zvuk](https://aka.ms/audiocontentcreation) bez kódu.
 
 **Syntax**
 
@@ -717,7 +712,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>

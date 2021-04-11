@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1d412774dc68cba0c24709c7fc8a7999e0aeab8
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418058"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094757"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -165,7 +165,7 @@ Další informace o skladových položkách nástroje pro vyrovnávání zatíž
 K VPN Gateway je přiřazena veřejná IP adresa, která umožňuje komunikaci se vzdálenou sítí. 
 
 * Přiřaďte **dynamickou** veřejnou IP adresu v rámci konfigurace front-endu VPNGW 1-5 SKU.
-* Přiřaďte **statickou** standardní veřejnou IP adresu ke konfiguraci front-endu VPNGWAZ 1-5 SKU.
+* Pro front-endové konfiguraci VPNGwAZ 1-5 SKU přiřaďte **statickou** standardní veřejnou IP adresu.
 
 ## <a name="application-gateways"></a>brány Application Gateway.
 

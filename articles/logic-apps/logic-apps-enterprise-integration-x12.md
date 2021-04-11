@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015192"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077465"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -79,7 +79,6 @@ Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato s
 |----------|-------------|
 | **Očekáván TA1** | Vrátí technické potvrzení (TA1) odesílateli výměny. |
 | **Očekává se FA.** | Vrátí funkční potvrzení (IM) odesílateli výměny. <p>Pro vlastnost **verze im** na základě verze schématu vyberte potvrzení 997 nebo 999. <p>Pokud chcete povolit generování smyček AK2 ve funkčních potvrzování pro přijaté sady transakcí, vyberte **Zahrnout AK2/IK2 Loop**. |
-||||
 
 <a name="inbound-schemas"></a>
 

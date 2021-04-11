@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: c1ad467dcd27bb48d7b1472d8cfb829dcd005f4f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729862"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554160"
 ---
 Skupina komunikačních služeb Azure, která **volá Hero Sample** , ukazuje, jak lze použít komunikační služby volání webové sady SDK k vytvoření skupinového volání.
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním uká
 
 ## <a name="download-code"></a>Stažení kódu
 
-Vyhledá finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-web-calling-hero).
+Vyhledejte projekt pro tuto ukázku na [GitHubu](https://github.com/Azure-Samples/communication-services-web-calling-hero). Verzi ukázky s [týmovou spolupráci](../../concepts/teams-interop.md) můžete najít v samostatné [větvi](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop).
 
 ## <a name="overview"></a>Přehled
 
@@ -46,6 +46,9 @@ Součásti hlavní volající obrazovky:
 - **Galerie médií**: hlavní fáze, kde se zobrazují účastníci. Pokud má účastník zapnutou kameru, zobrazí se zde jeho video kanál. Každý účastník má jednotlivou dlaždici, která zobrazuje zobrazované jméno a datový proud videa (když je nějaký).
 - **Záhlaví**: Zde jsou umístěny primární ovládací prvky volání pro přepínání nastavení a bočního panelu účastníka, zapnutí a vypnutí videa, sdílení obrazovky a opuštění volání.
 - **Boční panel**: tady jsou informace o účastnících se účastníků a nastavení při přepínání pomocí ovládacích prvků v záhlaví. Komponenta se může v pravém horním rohu vynechává pomocí ' X '. Na bočním panelu účastníci se zobrazí seznam účastníků a odkaz pro pozvání více uživatelů k chatu. Postranní panel nastavení umožňuje konfigurovat nastavení mikrofonu a kamery.
+
+> [!NOTE]
+> Na základě omezení webového volání sady SDK se vykreslí pouze jeden vzdálený datový proud videa. Další informace najdete v tématu [volání podpory služby SDK Stream](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support).
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 

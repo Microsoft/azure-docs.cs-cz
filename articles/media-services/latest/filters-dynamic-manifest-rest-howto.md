@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2d081ded07b1d32ee7525855c1756e13dfd57aa
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527322"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277500"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Vytváření filtrů pomocí Media Services REST API
 
@@ -26,7 +26,7 @@ ms.locfileid: "90527322"
 
 Při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services vám umožní definovat filtry účtu a filtry assetů pro váš obsah. 
 
-Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
+Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-concept.md) a [filtry](filters-concept.md).
 
 V tomto tématu se dozvíte, jak definovat filtr pro prostředek video na vyžádání a pomocí rozhraní REST API vytvářet [filtry účtů](/rest/api/media/accountfilters) a [filtry assetů](/rest/api/media/assetfilters). 
 
@@ -37,10 +37,10 @@ V tomto tématu se dozvíte, jak definovat filtr pro prostředek video na vyžá
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
-- Zkontrolujte [filtry a dynamické manifesty](filters-dynamic-manifest-overview.md).
-- [Nakonfigurujte metodu post pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).
+- Zkontrolujte [filtry a dynamické manifesty](filters-dynamic-manifest-concept.md).
+- [Nakonfigurujte metodu post pro Azure Media Services REST API volání](setup-postman-rest-how-to.md).
 
-    Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](setup-postman-rest-how-to.md#get-azure-ad-token). 
 
 ## <a name="define-a-filter"></a>Definovat filtr  
 
@@ -121,7 +121,7 @@ Podrobnosti o tom, jak vytvořit nebo aktualizovat filtry assetu, najdete v tém
 
 ## <a name="associate-filters-with-streaming-locator"></a>Přidružit filtry k lokátoru streamování
 
-Můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. [Dynamický balíček (koncový bod streamování)](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. Tuto funkci doporučujeme používat, pokud chcete použít filtry, ale nechcete vystavit názvy filtrů v adrese URL.
+Můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. [Dynamický balíček (koncový bod streamování)](encode-dynamic-packaging-concept.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-concept.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. Tuto funkci doporučujeme používat, pokud chcete použít filtry, ale nechcete vystavit názvy filtrů v adrese URL.
 
 Pokud chcete vytvořit a přidružit filtry k lokátoru streamování pomocí REST, použijte [Lokátory streamování – vytvořit](/rest/api/media/streaminglocators/create) rozhraní API a `properties.filters` v [textu žádosti](/rest/api/media/streaminglocators/create#request-body)zadejte.
                                 

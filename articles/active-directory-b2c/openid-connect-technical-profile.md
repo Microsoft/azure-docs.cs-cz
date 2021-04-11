@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 670fbeeb006d21e29675f88895018d1a453a1c54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fea42cb89dce717431c188deeb2ce83f9413f560
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120296"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283877"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OpenID Connect v Azure Active Directory B2C vlastní zásady
 
@@ -92,8 +92,8 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | MarkAsFailureOnStatusCode5xx | No | Určuje, zda má být požadavek na externí službu označený jako selhání, pokud je stavový kód HTTP v rozsahu 5xx. Výchozí formát je `false`. |
 | DiscoverMetadataByTokenIssuer | No | Určuje, zda mají být metadata OIDC zjištěna pomocí vystavitele v tokenu JWT. |
 | IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
-| token_endpoint_auth_method | No | Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-| token_signing_algorithm | No | Podpisový algoritmus používaný pro kontrolní výrazy klienta v případě, že jsou metadata **token_endpoint_auth_method** nastavena na `private_key_jwt` . Možné hodnoty: `RS256` (výchozí). |
+|token_endpoint_auth_method| No | Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview), `private_key_jwt` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+|token_signing_algorithm| No | Určuje podpisový algoritmus, který má být použit, pokud `token_endpoint_auth_method` je nastaven na hodnotu `private_key_jwt` . Možné hodnoty: `RS256` (výchozí) nebo `RS512` .|
 | SingleLogoutEnabled | No | Určuje, jestli se během přihlašování technického profilu pokusí odhlásit od zprostředkovatelů federovaných identit. Další informace najdete v tématu věnovaném [odhlášení Azure AD B2C relace](./session-behavior.md#sign-out).  Možné hodnoty: `true` (výchozí), nebo `false` . |
 |ReadBodyClaimsOnIdpRedirect| No| Nastavte na hodnotu `true` číst deklarace identity z těla odpovědi na přesměrování zprostředkovatele identity. Tato metadata se používají s [Apple ID](identity-provider-apple-id.md), kde deklarace identity vrací v datové části odpovědi.|
 

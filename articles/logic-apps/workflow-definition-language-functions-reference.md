@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 03/12/2021
-ms.openlocfilehash: 1414a7b0f17918caa16ccf854d70ea199fb42a47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: 53e96f4057b35fa6c849ec643ac1c9e0c7d5b402
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870190"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076543"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -145,7 +145,7 @@ Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyh
 Chcete-li změnit typ nebo formát hodnoty, můžete použít tyto funkce pro převod. Můžete například změnit hodnotu z typu Boolean na celé číslo. Další informace o tom, jak Logic Apps zpracovává typy obsahu během převodu, najdete v tématu [zpracování typů obsahu](../logic-apps/logic-apps-content-type.md). Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 > [!NOTE]
-> Azure Logic Apps automaticky převádí hodnoty mezi některými datovými typy, což znamená, že tyto převody není nutné provádět ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže není nutné ručně provádět tyto převody pomocí funkcí kódování a dekódování. Nicméně pokud použijete tyto funkce v Návrháři i přesto, může docházet k neočekávanému chování vykreslování v návrháři. Toto chování má vliv pouze na viditelnost funkcí a nikoli na jejich efekt, pokud neupravíte hodnoty parametrů Functions, které odstraní funkce a jejich účinky z vašeho kódu. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
 
 | Převodní funkce | Úkol |
 | ------------------- | ---- |
@@ -177,7 +177,7 @@ Chcete-li změnit typ nebo formát hodnoty, můžete použít tyto funkce pro p�
 
 ## <a name="implicit-data-type-conversions"></a>Implicitní převody datových typů
 
-Azure Logic Apps automatické nebo implicitně převáděné mezi některými datovými typy, takže tyto typy nemusíte ručně převádět. Například pokud použijete neřetězcové hodnoty, kde jsou jako vstupy očekávány řetězce, Logic Apps automaticky převede hodnoty neobsahující řetězec na řetězce.
+Azure Logic Apps automatické nebo implicitně převáděné mezi některými datovými typy, takže tyto převody není nutné provádět ručně. Například pokud použijete neřetězcové hodnoty, kde jsou jako vstupy očekávány řetězce, Logic Apps automaticky převede hodnoty neobsahující řetězec na řetězce.
 
 Předpokládejme například, že Trigger vrátí číselnou hodnotu jako výstup:
 
@@ -187,9 +187,11 @@ Použijete-li tento číselný výstup, kde je očekáván vstup řetězce, nap�
 
 `@{triggerBody()?['123']}`
 
+<a name="base64-encoding-decoding"></a>
+
 ### <a name="base64-encoding-and-decoding"></a>Kódování a dekódování base64
 
-Logic Apps automaticky nebo implicitně provádí kódování nebo dekódování Base64, takže nemusíte tyto operace provádět ručně pomocí odpovídajících výrazů:
+Logic Apps automaticky nebo implicitně provádí kódování nebo dekódování Base64, takže není nutné ručně provádět tyto převody pomocí odpovídajících funkcí:
 
 * `base64(<value>)`
 * `base64ToBinary(<value>)`
@@ -200,7 +202,7 @@ Logic Apps automaticky nebo implicitně provádí kódování nebo dekódování
 * `decodeDataUri(<value>)`
 
 > [!NOTE]
-> Pokud přidáte tyto výrazy do aplikace logiky například ručně pomocí editoru výrazů, opustíte návrháře aplikace logiky a vrátíte se do návrháře, Návrhář zobrazí pouze hodnoty parametrů. Výrazy jsou zachovány v zobrazení kódu pouze v případě, že hodnoty parametrů neupravíte. V opačném případě Logic Apps odstraní výrazy ze zobrazení kódu a zachová pouze hodnoty parametru. Toto chování nemá vliv na kódování nebo dekódování, a to pouze na to, zda jsou výrazy zobrazeny.
+> Pokud přidáte jakoukoli z těchto funkcí do pracovního postupu prostřednictvím návrháře aplikace logiky, například pomocí editoru výrazů, opustíte z návrháře a vrátíte se do návrháře, funkce zmizí z návrháře a zachová se za jenom hodnoty parametru. K tomuto chování dochází také v případě, že vyberete Trigger nebo akci, která tuto funkci používá bez úprav hodnot parametrů funkce. Tento výsledek má vliv pouze na viditelnost funkce a nikoli na efekt. V zobrazení kódu není funkce nijak ovlivněna. Pokud však upravíte hodnoty parametrů funkce, funkce a její efekt jsou odstraněny ze zobrazení kódu a zůstanou za ní pouze hodnoty parametrů funkce.
 
 <a name="math-functions"></a>
 
@@ -944,7 +946,7 @@ A vrátí tento výsledek: `["hello"]`
 Vrátí verzi kódovanou pro řetězec ve formátu base64.
 
 > [!NOTE]
-> Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže není nutné ručně provádět tyto převody pomocí funkcí kódování a dekódování. Nicméně pokud tyto funkce použijete i přesto, může dojít k neočekávanému chování vykreslování v návrháři. Toto chování má vliv pouze na viditelnost funkcí a nikoli na jejich efekt, pokud neupravíte hodnoty parametrů Functions, které odstraní funkce a jejich účinky z vašeho kódu. Další informace najdete v tématu [kódování a dekódování Base64](#base64-encoding-decoding).
 
 ```
 base64('<value>')
@@ -977,7 +979,7 @@ A vrátí tento výsledek: `"aGVsbG8="`
 Vrátí binární verzi řetězce zakódovaného ve formátu base64.
 
 > [!NOTE]
-> Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže není nutné ručně provádět tyto převody pomocí funkcí kódování a dekódování. Nicméně pokud použijete tyto funkce v Návrháři i přesto, může docházet k neočekávanému chování vykreslování v návrháři. Toto chování má vliv pouze na viditelnost funkcí a nikoli na jejich efekt, pokud neupravíte hodnoty parametrů Functions, které odstraní funkce a jejich účinky z vašeho kódu. Další informace najdete v tématu [kódování a dekódování Base64](#base64-encoding-decoding).
 
 ```
 base64ToBinary('<value>')
@@ -1012,7 +1014,7 @@ A vrátí tento výsledek:
 Vrátí verzi řetězce pro řetězec kódovaný v kódování Base64 a efektivně dekódování řetězce base64. Použijte tuto funkci místo [decodeBase64 ()](#decodeBase64), která je zastaralá.
 
 > [!NOTE]
-> Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže není nutné ručně provádět tyto převody pomocí funkcí kódování a dekódování. Nicméně pokud použijete tyto funkce v Návrháři i přesto, může docházet k neočekávanému chování vykreslování v návrháři. Toto chování má vliv pouze na viditelnost funkcí a nikoli na jejich efekt, pokud neupravíte hodnoty parametrů Functions, které odstraní funkce a jejich účinky z vašeho kódu. Další informace najdete v tématu [kódování a dekódování Base64](#base64-encoding-decoding).
 
 ```
 base64ToString('<value>')
@@ -1074,9 +1076,7 @@ A vrátí tento výsledek:
 
 ### <a name="body"></a>text
 
-Vrátí `body` výstup akce za běhu.
-Zkrácený pro `actions('<actionName>').outputs.body` .
-Viz [actionBody ()](#actionBody) a [Actions ()](#actions).
+Vrátí `body` výstup akce za běhu. Zkrácený pro `actions('<actionName>').outputs.body` . Viz [actionBody ()](#actionBody) a [Actions ()](#actions).
 
 ```
 body('<actionName>')
@@ -1194,6 +1194,15 @@ A vrátí tyto výsledky:
 
 Kombinací dvou nebo více řetězců a vrácení kombinovaného řetězce.
 
+> [!NOTE]
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže nemusíte tyto převody provádět ručně, pokud použijete `concat()` funkci s daty, která potřebují kódování nebo dekódování:
+> 
+> * `concat('data:;base64,',<value>)`
+> * `concat('data:,',encodeUriComponent(<value>))`
+> 
+> Nicméně pokud tuto funkci v Návrháři přesto použijete, může se stát, že v Návrháři dojde k neočekávanému chování vykreslování. Toto chování má vliv pouze na viditelnost funkce a nikoli na efekt, pokud neupravíte hodnoty parametrů funkce, která odebere funkci a efekt z vašeho kódu. 
+> Další informace najdete v tématu [kódování a dekódování Base64](#base64-encoding-decoding).
+
 ```
 concat('<text1>', '<text2>', ...)
 ```
@@ -1222,9 +1231,7 @@ A vrátí tento výsledek: `"HelloWorld"`
 
 ### <a name="contains"></a>obsahuje
 
-Kontroluje, zda kolekce obsahuje konkrétní položku.
-Vrátí hodnotu true, pokud se položka najde, nebo vrátí hodnotu false, pokud nebyla nalezena.
-Tato funkce rozlišuje velká a malá písmena.
+Kontroluje, zda kolekce obsahuje konkrétní položku. Vrátí hodnotu true, pokud se položka najde, nebo vrátí hodnotu false, pokud nebyla nalezena. Tato funkce rozlišuje velká a malá písmena.
 
 ```
 contains('<collection>', '<value>')
@@ -1622,7 +1629,7 @@ Tato funkce je zastaralá, proto použijte místo toho [base64ToString ()](#base
 Vrátí binární verzi pro datový identifikátor URI (Uniform Resource Identifier). Zvažte použití [dataUriToBinary ()](#dataUriToBinary)místo `decodeDataUri()` . I když obě funkce fungují stejným způsobem, `dataUriToBinary()` jsou upřednostňovány.
 
 > [!NOTE]
-> Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže není nutné ručně provádět tyto převody pomocí funkcí kódování a dekódování. Nicméně pokud použijete tyto funkce v Návrháři i přesto, může docházet k neočekávanému chování vykreslování v návrháři. Toto chování má vliv pouze na viditelnost funkcí a nikoli na jejich efekt, pokud neupravíte hodnoty parametrů Functions, které odstraní funkce a jejich účinky z vašeho kódu. Další informace najdete v tématu [kódování a dekódování Base64](#base64-encoding-decoding).
 
 ```
 decodeDataUri('<value>')
@@ -1729,7 +1736,7 @@ div(11.0,5)
 Nahrazením znaků, které nejsou v adrese URL, pomocí řídicích znaků vrátíte verzi kódovanou podle identifikátoru URI (Uniform Resource Identifier) pro řetězec. Zvažte použití [uriComponent ()](#uriComponent)místo `encodeUriComponent()` . I když obě funkce fungují stejným způsobem, `uriComponent()` jsou upřednostňovány.
 
 > [!NOTE]
-> Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
+> Azure Logic Apps automaticky nebo implicitně provádí kódování a dekódování Base64, takže není nutné ručně provádět tyto převody pomocí funkcí kódování a dekódování. Nicméně pokud použijete tyto funkce v Návrháři i přesto, může docházet k neočekávanému chování vykreslování v návrháři. Toto chování má vliv pouze na viditelnost funkcí a nikoli na jejich efekt, pokud neupravíte hodnoty parametrů Functions, které odstraní funkce a jejich účinky z vašeho kódu. Další informace najdete v tématu [kódování a dekódování Base64](#base64-encoding-decoding).
 
 ```
 encodeUriComponent('<value>')

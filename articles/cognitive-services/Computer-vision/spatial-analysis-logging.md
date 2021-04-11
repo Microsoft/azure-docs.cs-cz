@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722697"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077614"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -103,21 +103,21 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ### <a name="system-health-events"></a>Události stavu systému
 
-| Název události | Description|
-|------|---------|
-|archon_exit     |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
-|archon_error     |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
-|InputRate     |Rychlost, s jakou graf zpracovává vstup videa Nahlášeno každých 5 minut. | 
-|OutputRate     |Rychlost, s jakou má graf výstup AI Insights Nahlášeno každých 5 minut. |
-|archon_allGraphsStarted | Odesílá se, když se spustí všechny grafy. |
-|archon_configchange     | Odesílá se, když se změní konfigurace grafu. |
-|archon_graphCreationFailed     |Odesílá se, když se nepovede spustit graf s nahlášeným řetězcem `graphId` . |
-|archon_graphCreationSuccess     |Odesílá se, když se graf s nahlášeným `graphId` spuštěním úspěšně spustí. |
-|archon_graphCleanup     | Odesílá se, když se graf s nahlášeným `graphId` čištěním vyčistí a ukončí. |
-|archon_graphHeartbeat     |Prezenční signál se odesílá každou minutu každého grafu dovednosti. |
-|archon_apiKeyAuthFail |Odesílá se, když klíč prostředku Počítačové zpracování obrazu nedokáže ověřit kontejner po dobu delší než 24 hodin z následujících důvodů: mimo kvótu, neplatné, offline. |
-|VideoIngesterHeartbeat     |Odesílá se každou hodinu, která indikuje, že video se streamuje ze zdroje videa, a to s počtem chyb v této hodině. Oznamuje se pro každý graf. |
-|VideoIngesterState | Sestavy se *zastavily* nebo se *spustily* pro streamování videa. Oznamuje se pro každý graf. |
+| Název události                  | Description    |
+|-----------------------------|-------------------------------------------------------------------------------------------|
+| archon_exit                 | Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
+| archon_error                | Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.      |
+| InputRate                   | Rychlost, s jakou graf zpracovává vstup videa Nahlášeno každých 5 minut.              |
+| OutputRate                  | Rychlost, s jakou má graf výstup AI Insights Nahlášeno každých 5 minut.                |
+| archon_allGraphsStarted     | Odesílá se, když se spustí všechny grafy.                                           |
+| archon_configchange         | Odesílá se, když se změní konfigurace grafu.                                              |
+| archon_graphCreationFailed  | Odesílá se, když se nepovede spustit graf s nahlášeným řetězcem `graphId` .                           |
+| archon_graphCreationSuccess | Odesílá se, když se graf s nahlášeným `graphId` spuštěním úspěšně spustí.                      |
+| archon_graphCleanup         | Odesílá se, když se graf s nahlášeným `graphId` čištěním vyčistí a ukončí.                      |
+| archon_graphHeartbeat       | Prezenční signál se odesílá každou minutu každého grafu dovednosti.                                   |
+| archon_apiKeyAuthFail       | Odesílá se, když klíč prostředku Počítačové zpracování obrazu nedokáže ověřit kontejner po dobu delší než 24 hodin z následujících důvodů: mimo kvótu, neplatné, offline. |
+| VideoIngesterHeartbeat      | Odesílá se každou hodinu, která indikuje, že video se streamuje ze zdroje videa, a to s počtem chyb v této hodině. Oznamuje se pro každý graf. |
+| VideoIngesterState          | Sestavy se *zastavily* nebo se *spustily* pro streamování videa. Oznamuje se pro každý graf.              |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Řešení potíží s IoT Edge zařízením
 

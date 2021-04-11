@@ -6,14 +6,14 @@ ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 03/03/2021
-ms.custom: template-quickstart
+ms.custom: template-quickstart, references_regions
 keywords: Kubernetes, oblouk, Azure, cluster
-ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b4cbd45f8478674c7c6bacc50f068bc0ec691a14
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121639"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449915"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Rychlý Start: připojení existujícího clusteru Kubernetes ke službě Azure ARC 
 
@@ -23,36 +23,35 @@ V tomto rychlém startu budeme těžit výhody Kubernetes s podporou ARC Azure a
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-* Ověřte, že máte následující:
-    * Spuštěný cluster Kubernetes.
-    * `kubeconfig`Soubor ukazující na cluster, který chcete připojit ke službě Azure ARC.
-    * Oprávnění číst a zapsat pro uživatele nebo instanční objekt, který se připojuje k vytvoření typu prostředku Kubernetes s povoleným ARC Azure `Microsoft.Kubernetes/connectedClusters` .
+* Spuštěný cluster Kubernetes. Pokud ho ještě nemáte, můžete cluster vytvořit pomocí jedné z těchto možností:
+    * [Kubernetes v Docker (druh)](https://kind.sigs.k8s.io/)
+    * Vytvoření clusteru Kubernetes pomocí Docker pro [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) nebo [Windows](https://docs.docker.com/docker-for-windows/#kubernetes)
+    * Samostatný cluster Kubernetes s využitím [rozhraní API clusteru](https://cluster-api.sigs.k8s.io/user/quick-start.html)
+
+    >[!NOTE]
+    > Cluster musí mít alespoň jeden uzel s operačním systémem a typem architektury `linux/amd64` . Clustery se všemi `linux/arm64` uzly se zatím nepodporují.
+    
+* `kubeconfig`Soubor a kontext ukazující na váš cluster.
+* Oprávnění číst a zapisovat pro typ prostředku Kubernetes s povoleným ARC Azure ( `Microsoft.Kubernetes/connectedClusters` ).
+
 * Nainstalujte [nejnovější verzi Helm 3](https://helm.sh/docs/intro/install).
-* Nainstalujte následující Kubernetes rozšíření CLI s povoleným rozšířením Azure ARC verze >= 1.0.0:
+
+- [Instalace nebo upgrade rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) na verzi >= 2.16.0
+* Nainstalujte `connectedk8s` rozšíření Azure CLI verze >= 1.0.0:
   
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
-  ```
-  * Chcete-li aktualizovat Tato rozšíření na nejnovější verzi, spusťte následující příkazy:
-  
-  ```azurecli
-  az extension update --name connectedk8s
-  az extension update --name k8s-configuration
   ```
 
+>[!TIP]
+> Pokud `connectedk8s` je rozšíření už nainstalované, aktualizujte ho na nejnovější verzi pomocí následujícího příkazu. `az extension update --name connectedk8s`
+
+
 >[!NOTE]
->**Podporované oblasti:**
->* East US
->* West Europe
->* USA – středozápad
->* Středojižní USA
->* Southeast Asia
->* Spojené království – jih
->* Západní USA 2
->* Austrálie – východ
->* USA – východ 2
->* Severní Evropa
+>Seznam oblastí, které podporuje Azure ARC Enabled Kubernetes, najdete [tady](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
+
+>[!NOTE]
+> Pokud chcete v clusteru používat vlastní umístění, použijte Východní USA nebo Západní Evropa oblasti pro připojení clusteru, protože vlastní umístění jsou k dispozici pouze v těchto oblastech. Všechny ostatní funkce Kubernetes s podporou ARC Azure jsou dostupné ve všech oblastech uvedených výše.
 
 ## <a name="meet-network-requirements"></a>Splnění požadavků na síť
 
@@ -61,10 +60,10 @@ V tomto rychlém startu budeme těžit výhody Kubernetes s podporou ARC Azure a
 >* TCP na portu 443: `https://:443`
 >* TCP na portu 9418: `git://:9418`
   
-| Koncový bod (DNS) | Description |  
+| Koncový bod (DNS) | Popis |  
 | ----------------- | ------------- |  
 | `https://management.azure.com`                                                                                 | Vyžaduje se, aby se agent připojil k Azure a zaregistroval cluster.                                                        |  
-| `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com`, `https://westcentralus.dp.kubernetesconfiguration.azure.com`, `https://southcentralus.dp.kubernetesconfiguration.azure.com`, `https://southeastasia.dp.kubernetesconfiguration.azure.com`, `https://uksouth.dp.kubernetesconfiguration.azure.com`, `https://westus2.dp.kubernetesconfiguration.azure.com`, `https://australiaeast.dp.kubernetesconfiguration.azure.com`, `https://eastus2.dp.kubernetesconfiguration.azure.com`, `https://northeurope.dp.kubernetesconfiguration.azure.com` | Koncový bod roviny dat pro agenta, aby načetl stav a načetl informace o konfiguraci.                                      |  
+| `https://<region>.dp.kubernetesconfiguration.azure.com` | Koncový bod roviny dat pro agenta, aby načetl stav a načetl informace o konfiguraci.                                      |  
 | `https://login.microsoftonline.com`                                                                            | Vyžaduje se pro načtení a aktualizaci tokenů Azure Resource Manager.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Vyžaduje se pro získání imagí kontejneru pro agenty Azure ARC.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Požadováno pro vyžádání certifikátů s přiřazenými systémy Identita spravované služby (MSI).                                                                  |
@@ -75,11 +74,13 @@ V tomto rychlém startu budeme těžit výhody Kubernetes s podporou ARC Azure a
     ```azurecli
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. Monitorujte proces registrace. Registrace může trvat až 10 minut.
     ```azurecli
     az provider show -n Microsoft.Kubernetes -o table
-    az provider show -n Microsoft.KubernetesConfiguration -o table    
+    az provider show -n Microsoft.KubernetesConfiguration -o table
+    az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků

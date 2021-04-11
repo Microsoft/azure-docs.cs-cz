@@ -2,7 +2,7 @@
 title: Time Series Insights monitorování | Microsoft Docs
 description: Monitorování Time Series Insights dostupnosti, výkonu a provozu.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737558"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504919"
 ---
 # <a name="monitoring-time-series-insights"></a>Time Series Insights monitorování
 
@@ -44,7 +44,7 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Monitorování dat z Azure Time Series Insights
 
-Azure Time Series Insights shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data). 
+Azure Time Series Insights shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data).
 
 Podrobné informace o protokolech a metrikách, které můžete shromažďovat, najdete v tématu [referenční informace o monitorování dat Azure Time Series Insights](how-to-monitor-tsi-reference.md) .
 

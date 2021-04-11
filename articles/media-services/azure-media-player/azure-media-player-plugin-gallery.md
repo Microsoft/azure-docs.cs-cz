@@ -5,19 +5,19 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: d958d93731f38b4b553bca94f48c740c1b75cfd5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99089338"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449835"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Galerie modulů plug-in Azure Media Player #
 
 ## <a name="plugins"></a>Moduly plug-in ##
 
-| Název modulu plug-in                         | Ukázková adresa URL                    | Zdrojový kód                | Description    |
+| Název modulu plug-in                         | Ukázková adresa URL                    | Zdrojový kód                | Popis    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | Další funkce                 | | | |
 | **New!** AMP360Video                | [Demo](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Modul plug-in umožňuje vizualizovat 360 video v amp buď na vašem počítači, nebo na zařízeních kompatibilních s VR. Úplná dokumentace je k dispozici [zde](https://doc.babylonjs.com/extensions/amp360video): |

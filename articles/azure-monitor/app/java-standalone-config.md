@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: f349d260fff32427712442615cabf6d3958468ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640040"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449966"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -39,14 +39,14 @@ Další podrobnosti a další možnosti konfigurace najdete níže.
 
 ## <a name="configuration-file-path"></a>Cesta ke konfiguračnímu souboru
 
-Ve výchozím nastavení Application Insights Java 3,0 očekává, že se konfigurační soubor pojmenuje a že se `applicationinsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.2.jar` .
+Ve výchozím nastavení Application Insights Java 3,0 očekává, že se konfigurační soubor pojmenuje a že se `applicationinsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.3.jar` .
 
 Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` Proměnná prostředí nebo
 * `applicationinsights.configuration.file` Systémová vlastnost Java
 
-Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.2.jar` se nachází.
+Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.3.jar` se nachází.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
@@ -61,7 +61,7 @@ Připojovací řetězec je povinný. Připojovací řetězec najdete v prostřed
 }
 ```
 
-Připojovací řetězec můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` (ta pak bude mít přednost, pokud je připojovací řetězec zadán také v konfiguraci JSON).
+Připojovací řetězec můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` (která pak bude mít přednost před připojovacím řetězcem zadaným v konfiguraci JSON).
 
 Při nastavení připojovacího řetězce se agent Java zakáže.
 
@@ -81,7 +81,7 @@ Pokud chcete nastavit název cloudové role:
 
 Pokud není název cloudové role nastaven, použije se k označení součásti na mapě aplikace název Application Insights prostředku.
 
-Název cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_NAME` (ta pak bude mít přednost, pokud je název cloudové role taky zadaný v konfiguraci JSON).
+Název cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_NAME` (která pak bude mít přednost před názvem cloudové role zadané v konfiguraci JSON).
 
 ## <a name="cloud-role-instance"></a>Instance cloudové role
 
@@ -98,7 +98,7 @@ Pokud chcete nastavit instanci cloudové role na jinou hodnotu než název poč�
 }
 ```
 
-Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_INSTANCE` (ta pak bude mít přednost, pokud je instance cloudové role zadaná taky v konfiguraci JSON).
+Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_INSTANCE` (která pak bude mít přednost před instancí cloudové role zadanou v konfiguraci JSON).
 
 ## <a name="sampling"></a>Vzorkování
 
@@ -117,14 +117,14 @@ Tady je příklad, jak nastavit vzorkování pro zachycení přibližně **1/3 v
 }
 ```
 
-Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (ta pak bude mít přednost, pokud je procento vzorkování zadáno také v konfiguraci JSON).
+Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (která bude mít přednost před procenty vzorkování specifikovanou v konfiguraci JSON).
 
 > [!NOTE]
 > Pro procento vzorkování vyberte procento, které je blízko 100/N, kde N je celé číslo. V současné době vzorkování nepodporují jiné hodnoty.
 
 ## <a name="sampling-overrides-preview"></a>Přepsání vzorkování (Preview)
 
-Tato funkce je ve verzi Preview, počínaje 3.0.3-BETA. 2.
+Tato funkce je ve verzi Preview, počínaje od 3.0.3.
 
 Přepsání vzorkování umožňují přepsat [výchozí procento vzorkování](#sampling), například:
 * Nastavte procento vzorkování na 0 (nebo malou hodnotu) pro kontroly stavu s vysokou úrovní šumu.
@@ -215,7 +215,7 @@ Výchozí úroveň konfigurovaná pro Application Insights je `INFO` . Pokud chc
 }
 ```
 
-Úroveň můžete nastavit také pomocí proměnné prostředí `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (která pak bude mít přednost, pokud je úroveň zadána také v konfiguraci JSON).
+Úroveň můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (která pak bude mít přednost před úrovní určenou v konfiguraci JSON).
 
 Jedná se o platné `level` hodnoty, které můžete zadat v `applicationinsights.json` souboru, a způsob, jakým odpovídají úrovně protokolování v různých protokolovacích rozhraních:
 
@@ -256,9 +256,32 @@ Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pohán
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>Automaticky shromážděná telemetrie sady Azure SDK
+
+Tato funkce je ve verzi Preview.
+
+Mnohé z nejnovějších knihoven Azure SDK pro vygenerování telemetrie.
+
+Od verze 3.0.3 můžete povolit shromažďování této telemetrie:
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+Tuto funkci můžete povolit taky pomocí proměnné prostředí. `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED`
+(Tato akce bude mít přednost před povoleným zadáním v konfiguraci JSON.)
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Potlačení konkrétní automaticky shromážděné telemetrie
 
-Počínaje verzí 3.0.2 se konkrétní automaticky shromážděná telemetrie dá potlačit pomocí těchto možností konfigurace:
+Počínaje verzí 3.0.3 se konkrétní automaticky shromážděná telemetrie dá potlačit pomocí těchto možností konfigurace:
 
 ```json
 {
@@ -267,6 +290,9 @@ Počínaje verzí 3.0.2 se konkrétní automaticky shromážděná telemetrie d�
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -280,13 +306,28 @@ Počínaje verzí 3.0.2 se konkrétní automaticky shromážděná telemetrie d�
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
 
-> Poznámka: Pokud hledáte přesnější ovládací prvek, například pro potlačení některých volání Redis, ale ne všechna volání Redis, přečtěte si téma [přepsání vzorkování](./java-standalone-sampling-overrides.md).
+Tyto instrumentace můžete také potlačit pomocí těchto proměnných prostředí:
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+(Tato akce bude mít přednost před povoleným zadáním v konfiguraci JSON.)
+
+> Poznámka: Pokud hledáte přesnější ovládací prvek, například pro potlačení některých volání Redis, ale ne všechna volání Redis, přečtěte si téma [přepsání vzorkování](./java-standalone-sampling-overrides.md).
 
 ## <a name="heartbeat"></a>Tep
 
@@ -324,7 +365,7 @@ Tato funkce je ve verzi Preview.
 
 Ve výchozím nastavení jsou metriky zachyceny každých 60 sekund.
 
-Od verze 3.0.3-BETA můžete změnit tento interval:
+Od verze 3.0.3 můžete změnit tento interval:
 
 ```json
 {
@@ -384,13 +425,13 @@ Ve výchozím nastavení Application Insights Java 3,0 protokoluje na úrovni `I
 
 `level` může to být jedna z `OFF` ,,,, `ERROR` `WARN` `INFO` `DEBUG` nebo `TRACE` .
 
-`path` může být absolutní nebo relativní cesta. Relativní cesty jsou vyřešeny v adresáři, kde `applicationinsights-agent-3.0.2.jar` je umístěn.
+`path` může být absolutní nebo relativní cesta. Relativní cesty jsou vyřešeny v adresáři, kde `applicationinsights-agent-3.0.3.jar` je umístěn.
 
 `maxSizeMb` je maximální velikost souboru protokolu před tím, než se vrátí.
 
 `maxHistory` je počet převedených souborů protokolu, které jsou zachovány (kromě aktuálního souboru protokolu).
 
-Počínaje verzí 3.0.2 můžete také nastavit samoobslužnou diagnostiku `level` pomocí proměnné prostředí `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (která pak bude mít přednost, pokud `level` je v konfiguraci JSON také zadaná možnost samoobslužná Diagnostika).
+Počínaje verzí 3.0.2 můžete také nastavit samoobslužnou diagnostiku `level` pomocí proměnné prostředí `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (která pak bude mít přednost před úrovní samoobslužné diagnostiky zadanou v konfiguraci JSON).
 
 ## <a name="an-example"></a>Příklad
 

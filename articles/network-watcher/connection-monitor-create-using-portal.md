@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Tento článek popisuje, jak vytvořit monitorování v monitorování připojení pomocí Azure Portal.
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9942b608601b495dd041a8b59aaecb3f5dd81fa7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702160"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505225"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení pomocí Azure Portal
 
@@ -121,7 +121,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
 
    * Pokud chcete vybrat místní agenty, vyberte kartu **koncové body mimo Azure** . Ve výchozím nastavení se agenti seskupují do pracovních prostorů podle oblasti. U všech těchto pracovních prostorů je Network Performance Monitor nakonfigurovaný. 
    
-       Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview). Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](../azure-monitor/insights/solutions.md). 
+       Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview). Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](../azure-monitor/insights/solutions.md). Informace o tom, jak nakonfigurovat agenty pro místní počítače, najdete v tématu [agenti pro místní počítače](connection-monitor-overview.md#agents-for-on-premises-machines).
    
        V části **vytvořit monitorování připojení** je na kartě **základy** vybraná možnost výchozí oblast. Změníte-li oblast, můžete vybrat možnost agenti z pracovních prostorů v nové oblasti. Můžete vybrat jednoho nebo více agentů nebo podsítí. V zobrazení **podsítě** můžete pro monitorování vybrat konkrétní IP adresy. Pokud přidáte více podsítí, vytvoří se vlastní místní síť s názvem **OnPremises_Network_1** . V selektoru **skupiny** můžete také změnit seskupení podle agentů.
 
@@ -144,7 +144,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
     
     * Pokud chcete jako cíle vybrat jiné agenty než Azure, vyberte kartu **koncových bodů mimo Azure** . Ve výchozím nastavení se agenti seskupují do pracovních prostorů podle oblasti. Všechny tyto pracovní prostory jsou Network Performance Monitor nakonfigurované. 
     
-      Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od Azure Marketplace. Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](../azure-monitor/insights/solutions.md). 
+      Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od Azure Marketplace. Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](../azure-monitor/insights/solutions.md). Informace o tom, jak nakonfigurovat agenty pro místní počítače, najdete v tématu [agenti pro místní počítače](connection-monitor-overview.md#agents-for-on-premises-machines).
 
       V části **vytvořit monitorování připojení** je na kartě **základy**   Vybraná možnost výchozí oblast. Změníte-li oblast, můžete vybrat možnost agenti z pracovních prostorů v nové oblasti. Můžete vybrat jednoho nebo více agentů nebo podsítí. V zobrazení **podsítě** můžete pro monitorování vybrat konkrétní IP adresy. Pokud přidáte více podsítí, vytvoří se vlastní místní síť s názvem **OnPremises_Network_1** .  
 

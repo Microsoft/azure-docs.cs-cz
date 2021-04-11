@@ -1,17 +1,19 @@
 - name: Dokumentace ke službě Translator
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
-    - name: Co je Translator?
-      href: translator-info-overview.md
     - name: Podpora jazyků
       href: language-support.md
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
+- name: Překlad textu
+  expanded: true
+  items:
+    - name: Co je Translator?
+      href: translator-info-overview.md
     - name: Aplikace Translator – nejčastější dotazy
       href: 'https://www.microsoft.com/translator/faq.aspx'
-- name: Překlad textu
-  items:
     - name: Rychlé zprovoznění
       href: quickstart-translator.md
     - name: ukázky
@@ -84,10 +86,10 @@
   items:
     - name: Co je Custom Translator?
       href: custom-translator/overview.md
+    - name: Časté otázky
+      href: custom-translator/faq.md
     - name: Rychlé zprovoznění
       href: custom-translator/quickstart-build-deploy-custom-model.md
-    - name: Nejčastější dotazy
-      href: custom-translator/faq.md
     - name: Návody
       items:
         - name: Vytvoření projektu
@@ -160,7 +162,7 @@
           href: document-translation/reference/get-operations.md
         - name: Zrušit operaci
           href: document-translation/reference/cancel-operation.md
-- name: Prostředky překladatele
+- name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
