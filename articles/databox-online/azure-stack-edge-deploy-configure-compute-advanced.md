@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81953f573c47d229fcaccd7c11f62155acd2f119
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97968111"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063640"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Kurz: transformace dat pomocí Azure Stack Edge pro pro pokročilý tok nasazení
 
@@ -140,7 +139,7 @@ V rámci pokročilého nasazení v tomto kurzu budete potřebovat dvě sdílené
 
 4. Zkopírujte a uložte ukázkovou trasu. Tuto ukázkovou trasu upravíte a použijete ji později v IoT Hub.
 
-    `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
+    `"sampleroute&quot;: &quot;FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
     ![Přidat aktivační událost 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
@@ -218,7 +217,7 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
     *Trasu* můžete nahradit následujícím řetězcem trasy, který jste zkopírovali dříve. V tomto příkladu zadejte název místní sdílené složky, která bude zaručovat data do sdílené složky cloudu. Nahraďte `modulename` názvem modulu. Vyberte **Další**.
         
     ```
-    "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
+    "route&quot;: &quot;FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
     ```
 
     ![Oddíl zadat trasy](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)

@@ -12,12 +12,12 @@ ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 21da8f79772d9648836bedec89cb5d7014486dc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cd63144074577d4ff3564da41e672dd1ca226dcb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798355"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257156"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
+* Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 * Pokud jste to ještě neudělali, [Zaregistrujte webovou aplikaci v Azure Active Directory B2C](tutorial-register-applications.md).
 
 ## <a name="add-the-elements"></a>Přidat elementy

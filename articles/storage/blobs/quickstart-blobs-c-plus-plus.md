@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: knihovna Azure Blob Storage V12-C++'
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro C++ vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/21/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 246d2677c784daee4cc6b083cff04b6993ab3818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a0d2bdb1879e4f68b582ee56367f0238285a401
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006485"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278078"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>Rychlý Start: V12 klientské knihovny Azure Blob Storage pro C++
 

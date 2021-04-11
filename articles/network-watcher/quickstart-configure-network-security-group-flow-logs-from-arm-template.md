@@ -3,18 +3,17 @@ title: 'Rychlý Start: Konfigurace protokolu toku skupiny zabezpečení sítě p
 description: Naučte se, jak pomocí šablony Azure Resource Manager (šablona ARM) a Azure PowerShell povolit protokol toků skupin zabezpečení sítě (NSG).
 services: network-watcher
 author: damendo
-Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df7f33d9aed307bdf85a571c8169d1b0dbe863e5
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521862"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063793"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Rychlý Start: Konfigurace protokolů toku skupiny zabezpečení sítě pomocí šablony ARM
 

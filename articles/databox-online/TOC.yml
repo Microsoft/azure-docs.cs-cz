@@ -436,6 +436,10 @@
   items:
     - name: Standardní hodnoty zabezpečení
       href: security-baseline.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/databoxedge
 - name: Zdroje a prostředky
   items:
     - name: Ukázky modulů Azure Stack Edge Pro v C# (.NET)

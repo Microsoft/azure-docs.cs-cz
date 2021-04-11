@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368655"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096032"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Seznámení s nástroji Microsoft Spark
 
@@ -25,9 +25,9 @@ Sady nástrojů Microsoft Spark (MSSparkUtils) jsou předplatným balíčkem, kt
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurace přístupu k Azure Data Lake Storage Gen2 
 
-Synapse poznámkové bloky používají předávací službu Azure Active Directory (Azure AD) pro přístup k účtům ADLS Gen2. Pro přístup k účtu ADLS Gen2 (nebo složce) musíte být **přispěvatelem dat BLOB Storage** . 
+Synapse poznámkové bloky používají předávací službu Azure Active Directory (Azure AD) pro přístup k účtům ADLS Gen2. Pro přístup k účtu ADLS Gen2 (nebo složce) musíte být **přispěvatelem dat objektu BLOB úložiště** . 
 
-Kanály synapse používají k přístupu k účtům úložiště identitu pracovního prostoru (MSI). Pokud chcete ve svých aktivitách kanálu používat MSSparkUtils, musí být identita pracovního prostoru **BLOB Storage Přispěvatel dat** pro přístup k účtu adls Gen2 (nebo složce).
+Kanály synapse používají k přístupu k účtům úložiště identitu pracovního prostoru (MSI). Pokud chcete ve svých aktivitách kanálu používat MSSparkUtils, musí být identita pracovního prostoru **přispěvatelem dat objektů BLOB úložiště** pro přístup k účtu adls Gen2 (nebo složce).
 
 Pomocí těchto kroků se ujistěte, že váš soubor MSI služby Azure AD a pracovní prostor má přístup k účtu ADLS Gen2:
 1. Otevřete [Azure Portal](https://portal.azure.com/) a účet úložiště, ke kterému chcete získat přístup. Můžete přejít ke konkrétnímu kontejneru, ke kterému chcete získat přístup.

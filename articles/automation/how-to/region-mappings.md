@@ -1,16 +1,16 @@
 ---
 title: Podporované oblasti pro propojený pracovní prostor Log Analytics
 description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics v souvislosti s některými funkcemi Azure Automation.
-ms.date: 02/17/2021
+ms.date: 04/01/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ac2a575c9fe551d5b1b396ab06b2735a749f9da
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720167"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221870"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -38,30 +38,44 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |EastUS2<sup>2</sup>|EastUS|
 |WestUS|WestUS|
 |WestUS2|WestUS2|
+|NorthCentralUS|NorthCentralUS|
 |CentralUS|CentralUS|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
+|**Brazílie**||
+|BrazilSouth|BrazilSouth|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
+|**Čína**||
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |**Asie a Tichomoří**||
-|AustraliaEast|AustraliaEast|
-|AustraliaSoutheast|AustraliaSoutheast|
 |EastAsia|EastAsia|
 |SoutheastAsia|SoutheastAsia|
+|**Indie**||
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|**Japonsko**||
 |JapanEast|JapanEast|
+|**Austrálie**||
+|AustraliaEast|AustraliaEast|
+|AustraliaSoutheast|AustraliaSoutheast|
+|**Jižní Korea**||
+|KoreaCentral|KoreaCentral|
+|**Norsko**||
+|NorwayEast|NorwayEast|
 |**Evropa**||
 |NorthEurope|NorthEurope|
-|FranceCentral|FranceCentral|
-|UKSouth|UKSouth|
 |WestEurope|WestEurope|
+|**Francie**||
+|FranceCentral|FranceCentral|
+|**Spojené království**
+|UKSouth|UKSouth|
+|**Švýcarsko**||
 |SwitzerlandNorth|SwitzerlandNorth|
+|**Spojené arabské emiráty**||
+|UAENorth|UAENorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
-
-
 
 <sup>1</sup> mapování EastUS pro Log Analytics pracovní prostory na účty Automation není přesné mapování oblastí na oblast, ale je to správné mapování.
 

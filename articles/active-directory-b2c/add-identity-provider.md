@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb2aeefc22fae4a3c83956dd7681b49fc435500
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033992"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257173"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Přidání poskytovatele identity do tenanta Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Na přihlašovací stránce nebo na přihlašovací stránce Azure AD B2C prezen
 
 ![Příklad mobilního přihlášení pomocí účtu sociální sítě (Facebook)](media/add-identity-provider/external-idp.png)
 
-Můžete přidat zprostředkovatele identity, které jsou podporovány aplikací Azure Active Directory B2C (Azure AD B2C), do [toků uživatelů](user-flow-overview.md) pomocí Azure Portal. Do [vlastních zásad](custom-policy-get-started.md)můžete také přidat poskytovatele identity.
+Můžete přidat zprostředkovatele identity, které jsou podporovány aplikací Azure Active Directory B2C (Azure AD B2C), do [toků uživatelů](user-flow-overview.md) pomocí Azure Portal. Do [vlastních zásad](user-flow-overview.md)můžete také přidat poskytovatele identity.
 
 ## <a name="select-an-identity-provider"></a>Vybrat zprostředkovatele identity
 

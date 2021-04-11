@@ -32,6 +32,8 @@
     - name: Zásady správy verzí
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: Doporučení k výkonu
+      href: concepts-azure-advisor-recommendations.md
     - name: Známé problémy & omezení
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -93,6 +95,9 @@
             - name: Přejít
               href: connect-go.md
               displayName: connect with go
+            - name: Rust
+              href: connect-rust.md
+              displayName: connect with rust
     - name: Kurzy
       items:
         - name: Návrh databáze
@@ -558,11 +563,15 @@
       items:
         - name: Co je to Hyperscale (Citus)?
           href: hyperscale-overview.md
+        - name: Funkce ve verzi Preview
+          href: hyperscale-preview-features.md
     - name: Rychlé zprovoznění
       items:
         - name: Vytvoření skupiny serverů
           items:
-            - name: portál Azure
+            - name: Úroveň Basic (Preview)
+              href: quickstart-create-hyperscale-basic-tier.md
+            - name: Úroveň Standard
               href: quickstart-create-hyperscale-portal.md
               displayName: 'portal, create hyperscale'
     - name: Kurzy
@@ -581,6 +590,8 @@
           displayName: 'hyperscale, tutorial, real-time'
     - name: Koncepty
       items:
+        - name: Základní úroveň
+          href: concepts-hyperscale-tiers.md
         - name: Distribuovaná data
           items:
             - name: Uzly a tabulky
@@ -611,26 +622,26 @@
               displayName: 'backup, restore, outage, hyperscale'
             - name: Vysoká dostupnost
               href: concepts-hyperscale-high-availability.md
+        - name: Replikace
+          href: concepts-hyperscale-read-replicas.md
         - name: Monitorování a ladění
           items:
             - name: Monitorování a ladění
               href: concepts-hyperscale-monitoring.md
             - name: Protokoly auditu
               href: concepts-hyperscale-audit.md
+        - name: Sloupcové úložiště
+          href: concepts-hyperscale-columnar.md
         - name: Možnosti konfigurace
           href: concepts-hyperscale-configuration-options.md
+        - name: Omezení
+          href: concepts-hyperscale-limits.md
         - name: Předplacení záložní kapacity
           href: concepts-hyperscale-reserved-pricing.md
+        - name: Verze PostgreSQL
+          href: concepts-hyperscale-versions.md
         - name: Rozšíření PostgreSQL
           href: concepts-hyperscale-extensions.md
-    - name: Referenční dokumentace ke knihovně API
-      items:
-        - name: Funkce SQL API
-          href: reference-hyperscale-functions.md
-        - name: Parametry serveru
-          href: reference-hyperscale-parameters.md
-        - name: Systémové tabulky
-          href: reference-hyperscale-metadata.md
     - name: Návody
       items:
         - name: Velikost skupiny serverů
@@ -656,6 +667,15 @@
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Vysoká dostupnost
           href: howto-hyperscale-high-availability.md
+        - name: Replikace
+          items:
+            - name: portál Azure
+              href: howto-hyperscale-read-replicas-portal.md
+              displayName: 'replication, read replica'
+        - name: Plánovaná údržba
+          items:
+            - name: portál Azure
+              href: howto-hyperscale-maintenance.md
         - name: Monitorování
           items:
             - name: Vytváření upozornění na metriky
@@ -664,6 +684,8 @@
             - name: Přístup k protokolům databáze
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: Upgrady hlavní verze
+          href: howto-hyperscale-upgrade.md
         - name: Řešení potíží
           items:
             - name: Řešení chyb připojení
@@ -671,6 +693,14 @@
               displayName: 'connection errors, hyperscale'
             - name: Užitečné diagnostické dotazy
               href: howto-hyperscale-useful-diagnostic-queries.md
+    - name: Referenční dokumentace ke knihovně API
+      items:
+        - name: Funkce SQL API
+          href: reference-hyperscale-functions.md
+        - name: Parametry serveru
+          href: reference-hyperscale-parameters.md
+        - name: Systémové tabulky
+          href: reference-hyperscale-metadata.md
 - name: Referenční informace
   items:
     - name: Azure CLI

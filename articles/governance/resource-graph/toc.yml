@@ -23,6 +23,9 @@
     - name: Spuštění prvního dotazu – Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: Spuštění prvního dotazu – Java
+      displayName: 'maven, zulu, mvn'
+      href: ./first-query-java.md
     - name: Spuštění prvního dotazu – JavaScript
       displayName: 'library, node, arm-resourcegraph'
       href: ./first-query-javascript.md

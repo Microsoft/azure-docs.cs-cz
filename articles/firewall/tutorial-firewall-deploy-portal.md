@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 02/19/2021
+ms.date: 04/08/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ac9eaea70de67e67ef690c280b30bae22517ac21
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741952"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227989"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -111,7 +111,7 @@ Nyní vytvořte virtuální počítač úlohy a umístěte ho do podsítě **zá
    |Skupina prostředků     |**Test-FW-RG**|
    |Název virtuálního počítače     |**SRV – práce**|
    |Oblast     |Stejné jako předchozí|
-   |Image|Windows Server 2019 Datacenter|
+   |Image|Windows Server 2016 Datacenter|
    |Uživatelské jméno správce     |Zadejte uživatelské jméno.|
    |Heslo     |Zadejte heslo.|
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594168"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257411"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,6 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují, ja
 |[PHP](connect-query-php.md)|Tento rychlý Start ukazuje použití PHP k vytvoření programu pro připojení k databázi a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |[Python](connect-query-python.md)|Tento rychlý Start ukazuje použití Pythonu pro připojení k databázi a použití příkazů jazyka Transact-SQL k dotazování dat. |
 |[Ruby](connect-query-ruby.md)|Tento rychlý Start ukazuje použití Ruby k vytvoření programu pro připojení k databázi a použití příkazů jazyka Transact-SQL k dotazování dat.|
-|[R](connect-query-r.md)|Tento rychlý Start ukazuje použití jazyka R s Azure SQL Database Machine Learning Services k vytvoření programu pro připojení k databázi v Azure SQL Database a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |||
 
 ## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru

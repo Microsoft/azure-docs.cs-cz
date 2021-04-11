@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010163"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256204"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů do Azure AD B2C
 
@@ -43,7 +43,7 @@ Postup bezproblémové migrace použijte v případě, že nešifrovaná hesla v
 - Heslo je uloženo v jednosměrovém šifrovaném formátu, například pomocí funkce hash.
 - Heslo ukládá starší zprostředkovatel identity způsobem, ke kterému nemůžete získat přístup. Například když zprostředkovatel identity ověřuje přihlašovací údaje voláním webové služby.
 
-Plynulý tok migrace ještě vyžaduje předem migraci uživatelských účtů, ale pak používá [vlastní zásadu](custom-policy-get-started.md) pro dotazování [REST API](custom-policy-rest-api-intro.md) (kterou vytvoříte) k nastavení hesla jednotlivých uživatelů při prvním přihlášení.
+Plynulý tok migrace ještě vyžaduje předem migraci uživatelských účtů, ale pak používá [vlastní zásadu](user-flow-overview.md) pro dotazování [REST API](custom-policy-rest-api-intro.md) (kterou vytvoříte) k nastavení hesla jednotlivých uživatelů při prvním přihlášení.
 
 Plynulý tok migrace má tedy dvě fáze: *Předběžná migrace* a *Nastavení přihlašovacích údajů*.
 

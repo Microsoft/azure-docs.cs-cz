@@ -1,18 +1,18 @@
 ---
 title: Automatické zvětšování úložiště – Azure CLI – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje, jak můžete nakonfigurovat automatické zvětšování úložiště pomocí rozhraní příkazového řádku Azure CLI na Azure Database for PostgreSQL jednom serveru.
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e323dfd0449b0fb4ad5119955227a2aa9bea1031
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 38a15136bb7bee1d37486ee02d5342506ed3f7d8
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551131"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228108"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Automatické zvětšování Azure Database for PostgreSQL Storage – jeden server pomocí Azure CLI
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for PostgreSQL pro růst, aniž by to ovlivnilo zatížení.

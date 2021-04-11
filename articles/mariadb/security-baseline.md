@@ -2,17 +2,17 @@
 title: Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
 description: Základní Azure Database for MariaDB zabezpečení poskytuje postupy a prostředky pro implementaci doporučení zabezpečení uvedených v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/29/2021
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/29/2021
-ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 189fb95f9c4be4ddf9d75a8dc26a7bf403caaadd
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fd169738c138d56932dbab87047b89e373b9c6ec
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967650"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227666"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
 

@@ -80,7 +80,7 @@ Návody obsahují ukázky kódu, které demonstrují, jak dokončit úlohu. V t�
 * [Kódování pomocí protokolu HTTPS jako vstup úlohy – .NET](job-input-from-http-how-to.md)  
 * [Monitorování událostí – portál](monitoring/monitor-events-portal-how-to.md)
 * [Dynamické šifrování pomocí více DRM – technologie .NET](drm-protect-with-drm-tutorial.md) 
-* [Postup kódování pomocí vlastního transformačního rozhraní příkazového řádku](encode-custom-preset-cli-how-to.md)
+* [Postup kódování pomocí vlastního transformačního rozhraní příkazového řádku](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

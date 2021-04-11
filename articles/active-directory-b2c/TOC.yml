@@ -121,6 +121,9 @@
           href: signin-appauth-ios.md
         - name: Android s využitím ověřování aplikace
           href: signin-appauth-android.md
+        - name: Zabezpečené rozhraní API služby API Management
+          href: secure-api-management.md
+          displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Vytvořit tok
       items:
         - name: Zásady registrace nebo přihlašování
@@ -222,6 +225,15 @@
           href: password-complexity.md
         - name: Zakázání ověření e-mailu
           href: disable-email-verification.md
+        - name: Vlastní ověření e-mailu
+          items:
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: Povolení MFA
           items:
             - name: Ověřování pomocí služby Multi-Factor Authentication
@@ -269,17 +281,6 @@
           href: add-api-connector.md
     - name: Vlastní zásady
       items:
-        - name: Začínáme s vlastními zásadami
-          href: custom-policy-get-started.md
-        - name: Vlastní ověření e-mailu
-          items:
-            - name: Mailjet
-              href: custom-email-mailjet.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-            - name: SendGrid
-              href: custom-email-sendgrid.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-          displayName: verification
         - name: Přidání vlastní obchodní logiky
           items:
             - name: Integrace REST API
@@ -299,101 +300,6 @@
               displayName: 'troubleshooting, app insights'
             - name: Řešení potíží s vlastními zásadami
               href: troubleshoot-custom-policies.md
-        - name: Referenční informace
-          items:
-            - name: TrustFrameworkPolicy
-              href: trustframeworkpolicy.md
-            - name: BuildingBlocks
-              href: buildingblocks.md
-              items:
-                - name: ClaimsSchema
-                  href: claimsschema.md
-                - name: ClaimsTransformations
-                  href: claimstransformations.md
-                  items:
-                    - name: Logická hodnota
-                      href: boolean-transformations.md
-                    - name: Datum
-                      href: date-transformations.md
-                    - name: Obecné
-                      href: general-transformations.md
-                    - name: Integer
-                      href: integer-transformations.md
-                    - name: JSON
-                      href: json-transformations.md
-                    - name: Telefonní číslo
-                      href: phone-number-claims-transformations.md
-                    - name: Externí účty
-                      href: social-transformations.md
-                    - name: StringCollection
-                      href: stringcollection-transformations.md
-                    - name: Řetězec
-                      href: string-transformations.md
-                - name: Predikáty
-                  href: predicates.md
-                - name: ContentDefinitions
-                  href: contentdefinitions.md
-                - name: Lokalizace
-                  href: localization.md
-                  items:
-                    - name: ID řetězců lokalizací
-                      href: localization-string-ids.md
-                - name: DisplayControls
-                  href: display-controls.md
-                  items:
-                    - name: Ověření
-                      href: display-control-verification.md
-            - name: ClaimsProviders
-              href: claimsproviders.md
-              items:
-                - name: Technické profily
-                  href: technicalprofiles.md
-                  items:
-                    - name: Informace o ověřování technických profilů
-                      href: validation-technical-profile.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
-                    - name: Vícefaktorové ověřování Azure AD
-                      href: multi-factor-auth-technical-profile.md
-                      displayName: mfa
-                    - name: Samoobslužné resetování hesla Azure AD
-                      href: aad-sspr-technical-profile.md
-                    - name: Transformace deklarací identity
-                      href: claims-transformation-technical-profile.md
-                    - name: Tip tokenu ID
-                      href: id-token-hint.md
-                    - name: Vydavatel tokenu JWT
-                      href: jwt-issuer-technical-profile.md
-                    - name: OAuth1
-                      href: oauth1-technical-profile.md
-                    - name: OAuth2
-                      href: oauth2-technical-profile.md
-                    - name: Jednorázové heslo
-                      href: one-time-password-technical-profile.md
-                      displayName: otp
-                    - name: OpenID Connect
-                      href: openid-connect-technical-profile.md
-                    - name: Phone Factor
-                      href: phone-factor-technical-profile.md
-                    - name: REST
-                      href: restful-technical-profile.md
-                    - name: Zprostředkovatel identity SAML
-                      href: saml-identity-provider-technical-profile.md
-                    - name: Vydavatel tokenu SAML
-                      href: saml-issuer-technical-profile.md
-                    - name: Samopopisné
-                      href: self-asserted-technical-profile.md
-                    - name: Relace SSO
-                      href: custom-policy-reference-sso.md
-                      displayName: single sign-on
-            - name: UserJourneys
-              href: userjourneys.md
-            - name: SubJourneys
-              href: subjourneys.md
-            - name: RelyingParty
-              href: relyingparty.md
-            - name: Překladače deklarace identity
-              href: claim-resolver-overview.md
     - name: Koncový bod UserInfo
       href: userinfo-endpoint.md
     - name: Integrace partnerských řešení
@@ -458,15 +364,15 @@
         - name: portál Azure
           href: manage-users-portal.md
           displayName: 'create users, add users, delete users'
+        - name: Migrace uživatelů
+          href: user-migration.md
+          displayName: bulk import
         - name: Integrace partnerských řešení
           items:
             - name: N8identity
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: Zabezpečené rozhraní API služby API Management
-      href: secure-api-management.md
-      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Protokoly a monitorování
       items:
         - name: Protokoly auditu
@@ -489,12 +395,105 @@
         - name: Uživatelská data
           href: manage-user-data.md
           displayName: GDPR
-    - name: Migrace
-      items:
-        - name: Migrace uživatelů
-          href: user-migration.md
-- name: Referenční informace
+- name: Reference
   items:
+    - name: Vlastní schéma zásad
+      items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+            - name: ClaimsSchema
+              href: claimsschema.md
+            - name: ClaimsTransformations
+              href: claimstransformations.md
+              items:
+                - name: Logická hodnota
+                  href: boolean-transformations.md
+                - name: Datum
+                  href: date-transformations.md
+                - name: Obecné
+                  href: general-transformations.md
+                - name: Integer
+                  href: integer-transformations.md
+                - name: JSON
+                  href: json-transformations.md
+                - name: Telefonní číslo
+                  href: phone-number-claims-transformations.md
+                - name: Externí účty
+                  href: social-transformations.md
+                - name: StringCollection
+                  href: stringcollection-transformations.md
+                - name: Řetězec
+                  href: string-transformations.md
+            - name: Predikáty
+              href: predicates.md
+            - name: ContentDefinitions
+              href: contentdefinitions.md
+            - name: Lokalizace
+              href: localization.md
+              items:
+                - name: ID řetězců lokalizací
+                  href: localization-string-ids.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: Ověření
+                  href: display-control-verification.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+            - name: Technické profily
+              href: technicalprofiles.md
+              items:
+                - name: Informace o ověřování technických profilů
+                  href: validation-technical-profile.md
+                - name: Azure Active Directory
+                  href: active-directory-technical-profile.md
+                - name: Vícefaktorové ověřování Azure AD
+                  href: multi-factor-auth-technical-profile.md
+                  displayName: mfa
+                - name: Samoobslužné resetování hesla Azure AD
+                  href: aad-sspr-technical-profile.md
+                - name: Transformace deklarací identity
+                  href: claims-transformation-technical-profile.md
+                - name: Tip tokenu ID
+                  href: id-token-hint.md
+                - name: Vydavatel tokenu JWT
+                  href: jwt-issuer-technical-profile.md
+                - name: OAuth1
+                  href: oauth1-technical-profile.md
+                - name: OAuth2
+                  href: oauth2-technical-profile.md
+                - name: Jednorázové heslo
+                  href: one-time-password-technical-profile.md
+                  displayName: otp
+                - name: OpenID Connect
+                  href: openid-connect-technical-profile.md
+                - name: Phone Factor
+                  href: phone-factor-technical-profile.md
+                - name: REST
+                  href: restful-technical-profile.md
+                - name: Zprostředkovatel identity SAML
+                  href: saml-identity-provider-technical-profile.md
+                - name: Vydavatel tokenu SAML
+                  href: saml-issuer-technical-profile.md
+                - name: Samopopisné
+                  href: self-asserted-technical-profile.md
+                - name: Relace SSO
+                  href: custom-policy-reference-sso.md
+                  displayName: single sign-on
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: SubJourneys
+          href: subjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
+        - name: Překladače deklarace identity
+          href: claim-resolver-overview.md
+    - name: Poznámky k verzi vlastních zásad
+      href: custom-policy-developer-notes.md
     - name: Limity a omezení služeb
       href: service-limits.md
     - name: Registrace aplikací
@@ -510,8 +509,6 @@
       href: error-codes.md
     - name: Aplikace rozšíření
       href: extensions-app.md
-    - name: Poznámky k verzi pro vlastní zásady (IEF)
-      href: custom-policy-developer-notes.md
     - name: Verze rozložení stránky
       href: page-layout.md
       displayName: Page version

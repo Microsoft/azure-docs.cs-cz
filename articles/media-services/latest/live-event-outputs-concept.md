@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a8532f87c9360c0812fb1cfe24be6ca07615ea97
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: dec4eec16ba24baf31d911db882625479c33fb3b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123348"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278622"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -107,14 +107,14 @@ Pokud chcete povolit určité IP adresy pro vlastní brány firewall nebo chcete
 * Maximální název živé události je 32 znaků.
 * Název by měl splňovat tento vzor [regulárního výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
-Viz také [zásady vytváření názvů koncových bodů streamování](streaming-endpoint-concept.md#naming-convention).
+Viz také [zásady vytváření názvů koncových bodů streamování](stream-streaming-endpoint-concept.md#naming-convention).
 
 > [!TIP]
 > Chcete-li zaručit jedinečnost názvu živé události, můžete vygenerovat identifikátor GUID a pak odebrat všechny spojovníky a složené závorky (pokud existují). Řetězec bude jedinečný napříč všemi živými událostmi a jeho délka bude zaručena 32.
 
 ## <a name="live-event-ingest-urls"></a>Adresy URL pro příjem živých událostí
 
-Jakmile se vytvoří živá událost, můžete získat adresy URL pro ingestování, které poskytnete pro živý místní kodér. Kodér pro kódování v reálném čase tyto adresy URL používá ke vkládání živého proudu. Další informace najdete v tématu [Doporučené místní kodéry v reálném čase](recommended-on-premises-live-encoders.md).
+Jakmile se vytvoří živá událost, můžete získat adresy URL pro ingestování, které poskytnete pro živý místní kodér. Kodér pro kódování v reálném čase tyto adresy URL používá ke vkládání živého proudu. Další informace najdete v tématu [Doporučené místní kodéry v reálném čase](encode-recommended-on-premises-live-encoders.md).
 
 >[!NOTE]
 > Od verze rozhraní 2020-05-01 API jsou adresy URL "individuální" známé jako názvy statických hostitelů (useStaticHostname: true).

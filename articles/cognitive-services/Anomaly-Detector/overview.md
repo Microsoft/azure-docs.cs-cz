@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572086"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278860"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -28,6 +28,12 @@ Rozhraní API pro detekci anomálií umožňuje monitorovat a detekovat anomáli
 ![Zjistit změny vzoru v žádostech o služby](./media/anomaly_detection2.png)
 
 Používání detektoru anomálií nevyžaduje žádné předchozí prostředí ve službě Machine Learning a rozhraní RESTful API umožňuje snadnou integraci služby do aplikací a procesů.
+
+Tato dokumentace obsahuje následující typy článků:
+* [Rychlé starty](./Quickstarts/client-libraries.md) jsou podrobné pokyny, které vám umožní volat službu a získat výsledky v krátké době. 
+* [Příručky](./how-to/identify-anomalies.md) návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném způsobu.
+* [Koncepční články](./concepts/anomaly-detection-best-practices.md) poskytují podrobné vysvětlení funkcí a funkcí služby.
+* [Kurzy](./tutorials/batch-anomaly-detection-powerbi.md) jsou delší než příručky, které ukazují, jak tuto službu používat jako součást v širších obchodních řešeních.
 
 ## <a name="features"></a>Funkce
 

@@ -3,14 +3,14 @@ title: Azure Event Grid – nastavení vlastních hlaviček na doručených udá
 description: Popisuje, jak můžete pro doručené události nastavit vlastní záhlaví (nebo vlastnosti doručení).
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 6cc6874b7aba6e0696dec21de5b431ca18df3013
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967587"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278282"
 ---
-# <a name="delivery-with-custom-headers"></a>Doručování s vlastními hlavičkami
+# <a name="custom-delivery-properties"></a>Vlastní vlastnosti doručování
 Odběry událostí umožňují nastavit hlavičky protokolu HTTP, které jsou zahrnuté v doručených událostech. Tato funkce umožňuje nastavit vlastní hlavičky, které jsou vyžadovány cílem. Při vytváření odběru událostí můžete nastavit až 10 hlaviček. Každá hodnota hlavičky by neměla být větší než 4 096 (4K) bajtů.
 
 Můžete nastavit vlastní hlavičky pro události, které jsou dodány do následujících umístění:
