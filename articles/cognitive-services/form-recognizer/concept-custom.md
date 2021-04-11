@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8a29bc0d98c1286dcf09da59dc21ac2b2e09f478
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d339d02310fddc3e5fd463f7d37e253614dba17
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935613"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067584"
 ---
 # <a name="form-recognizer-custom-models"></a>Vlastní modely pro rozpoznávání formulářů
 
@@ -34,30 +34,27 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit model, kte
 Na nejvyšší úrovni je postup pro sestavování, školení a používání vlastního modelu následující:
 
 > [!div class="nextstepaction"]
->Sestavit datovou sadu školení] (Build-Train-data-set. MD # Custom-model-Input-požadavky)
+>[&#120783;. Sestavit datovou sadu školení](build-training-data-set.md#custom-model-input-requirements)
 
 Sestavování vlastního modelu začíná vytvořením datové sady školení. Budete potřebovat minimálně pět dokončených forem stejného typu pro ukázkovou datovou sadu. Mohou mít různé typy souborů a obsahovat text i rukopis. Formuláře musí být stejného typu dokumentu a splňovat [požadavky na vstup](build-training-data-set.md#custom-model-input-requirements) pro nástroj pro rozpoznávání formulářů.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [Nahrát datovou sadu školení](build-training-data-set.md#upload-your-training-data)
+> [&#120784;. Nahrát datovou sadu školení](build-training-data-set.md#upload-your-training-data)
 
 Budete potřebovat nahrát školicí data do kontejneru úložiště objektů BLOB v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure Storage pomocí kontejneru, *Přečtěte si téma* [Azure Storage rychlý Start pro Azure Portal](../../storage/blobs/storage-quickstart-blobs-portal.md). Pomocí bezplatné cenové úrovně (F0) můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
+
 > [!div class="nextstepaction"]
->[Výuka vlastního modelu](quickstarts/client-library.md#train-a-custom-model)
+>[&#120785;. Výuka vlastního modelu](quickstarts/client-library.md#train-a-custom-model)
 
 Model můžete optimalizovat [bez použití](quickstarts/client-library.md#train-a-model-without-labels) [popisků](quickstarts/client-library.md#train-a-model-with-labels) a datových sad. Neoznačené datové sady spoléhají výhradně na rozhraní API pro rozložení ke zjišťování a identifikaci klíčových informací bez přidání lidského vstupu. Označené datové sady se také spoléhají na rozhraní API pro rozložení, ale kromě vašich specifických popisků a umístění polí jsou zahrnuté i doplňkové lidské vstupy. Chcete-li použít data s popisky i bez popisku, začněte s alespoň pěti dokončenými formuláři stejného typu pro povinná školicí data a poté přidejte do požadované datové sady data bez popisků.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;  
 
 >[!div class="nextstepaction"]
->[Analýza dokumentů pomocí vlastního modelu](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
+>[&#120786;. Analýza dokumentů pomocí vlastního modelu](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
 
 Otestujte nově vyškolený model pomocí formuláře, který není součástí školicí sady dat. Můžete pokračovat v provádění dalších školení pro zlepšení výkonu vlastního modelu.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
->[Správa vlastních modelů](quickstarts/client-library.md#manage-custom-models)
+>[&#120787;. Správa vlastních modelů](quickstarts/client-library.md#manage-custom-models)
 
 Kdykoli můžete zobrazit seznam všech vlastních modelů v rámci vašeho předplatného, načítat informace o konkrétním vlastním modelu nebo odstranit vlastní model z vašeho účtu.
 

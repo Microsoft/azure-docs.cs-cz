@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 318b7e8b35fa7cc56a86033a08e316257a488b6f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935239"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442690"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -82,7 +82,25 @@ Ne, v současné době nemůžete použít skupiny zabezpečení sítě na deleg
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Můžu použít Azure RBAC s Azure NetApp Files?
 
-Ano, Azure NetApp Files podporuje funkce Azure RBAC.
+Ano, Azure NetApp Files podporuje funkce Azure RBAC. Společně s integrovanými rolemi Azure můžete [vytvořit vlastní role](../role-based-access-control/custom-roles.md) pro Azure NetApp Files. 
+
+Úplný seznam oprávnění Azure NetApp Files najdete v tématu operace poskytovatele prostředků Azure pro [`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp) .
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Podporují se v Azure NetApp Files protokoly aktivit Azure?
+
+Azure NetApp Files je nativní služba Azure. DO protokolu Azure NetApp Files se zaznamenávají všechna rozhraní API PUT, POST a DELETE. Například protokoly zobrazují aktivity, například kdo vytvořil snímek, který upravil svazek atd.
+
+Úplný seznam operací rozhraní API najdete v tématu [Azure NetApp Files REST API](/rest/api/netapp/).
+
+### <a name="how-do-i-audit-file-access-on-azure-netapp-files-nfs-v3-and-v41-volumes"></a>Návody Auditovat přístup k souborům ve svazcích NFS (v3 a v 4.1) Azure NetApp Files?
+
+Protokoly auditování můžete nakonfigurovat na straně klienta. Budou protokolovány všechny změny čtení, zápisu a atributů. 
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Můžu použít zásady Azure s Azure NetApp Files?
+
+Ano, můžete vytvořit [vlastní zásady Azure](../governance/policy/tutorials/create-custom-policy-definition.md). 
+
+V rozhraní Azure NetApp Files ale nemůžete vytvářet zásady Azure (vlastní zásady pojmenování). Přečtěte si [pokyny pro Azure NetApp Files plánování sítě](azure-netapp-files-network-topologies.md#considerations).
 
 ## <a name="performance-faqs"></a>Nejčastější dotazy k výkonu
 

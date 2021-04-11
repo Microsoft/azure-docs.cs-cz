@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555904"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580111"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
@@ -74,15 +74,15 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 | Spravované identity přiřazené systémem | Yes | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
 | Spravované identity přiřazené uživatelem | Yes | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
 | Azure Key Vault | Yes | Yes | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
-| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Yes | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Yes | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) | Službu Azure SQL Database s povoleným ověřováním Azure AD nejde přenést do jiného adresáře. Další informace najdete v tématu [použití Azure Active Directory ověřování](../azure-sql/database/authentication-aad-overview.md). | 
 | Azure Storage a Azure Data Lake Storage Gen2 | Yes | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Azure Data Lake Storage Gen1 | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Azure Files | Yes | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Synchronizace souborů Azure | Yes | Yes |  |  |
+| Synchronizace souborů Azure | Yes | Yes |  | Službu synchronizace úložiště nebo účet úložiště můžete přesunout do jiného adresáře. Další informace najdete v tématu [Nejčastější dotazy k souborům Azure](../storage/files/storage-files-faq.md#azure-file-sync) . |
 | Spravované disky Azure | Yes | Yes |  |  Pokud používáte šifrovací sady disku k šifrování Managed Disks pomocí klíčů spravovaných zákazníkem, je nutné zakázat a znovu povolit identity přiřazené systémem, které jsou přidruženy k sadám šifrování disku. A musíte znovu vytvořit přiřazení rolí, tj. znovu udělit požadovaná oprávnění sadám Disk Encryption v trezorech klíčů. |
-| Azure Kubernetes Service | Yes | Yes |  |  |
+| Azure Kubernetes Service | Yes | No |  | Svůj cluster AKS a přidružené prostředky nemůžete přenést do jiného adresáře. Další informace najdete v tématu [Nejčastější dotazy ke službě Azure Kubernetes (AKS)](../aks/faq.md) . |
 | Azure Policy | Yes | No | Všechny Azure Policy objekty, včetně vlastních definicí, přiřazení, výjimek a dat o dodržování předpisů. | Je nutné [exportovat](../governance/policy/how-to/export-resources.md), importovat a znovu přiřazovat definice. Pak vytvořte nová přiřazení zásad a všechny potřebné [výjimky zásad](../governance/policy/concepts/exemption-structure.md). |
-| Azure Active Directory Domain Services | Yes | No |  |  |
+| Azure Active Directory Domain Services | Yes | No |  | Nemůžete přenést Azure AD Domain Services spravovanou doménu do jiného adresáře. Další informace najdete v tématu [Nejčastější dotazy týkající se služby Azure Active Directory (Active Directory Domain Services](../active-directory-domain-services/faqs.md) ). |
 | Registrace aplikací | Yes | Yes |  |  |
 
 > [!WARNING]

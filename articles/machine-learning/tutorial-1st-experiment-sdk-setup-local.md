@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Začínáme se službou Machine Learning – Python'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte používat sadu SDK Azure Machine Learning pro Python spuštěnou ve vašem osobním vývojovém prostředí.
+description: Začněte s Azure Machine Learning SDK pro Python spuštěnou ve vašem osobním vývojovém prostředí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: 81b9b5d53e1b61322d25d5dead85429474c1272c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 69340245cdebda570b526afd4f11ac8314384b43
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935545"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210614"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -30,16 +30,18 @@ V části 1 této série kurzů budete:
 > * Nastavte adresářovou strukturu pro kód.
 > * Vytvořte pracovní prostor Azure Machine Learning.
 > * Nakonfigurujte místní vývojové prostředí.
-> * Nastavte výpočetní cluster.
+> * Nastavte výpočetní cluster, což je cloudový prostředek pro školení vašich modelů.
 
-> [!NOTE]
-> Tento kurz se zaměřuje na Azure Machine Learning koncepty vyžadované k odeslání **dávkových úloh** – jedná se o případ, kdy se kód odešle do cloudu, aby běžel na pozadí bez zásahu uživatele. To je užitečné pro hotové skripty nebo kód, který chcete spustit opakovaně, nebo pro úlohy strojového učení náročné na výpočetní výkon. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
+Tento kurz se zaměřuje na Azure Machine Learning koncepty vyžadované k odeslání **dávkových úloh** – jedná se o případ, kdy se kód odešle do cloudu, aby běžel na pozadí bez zásahu uživatele. To je užitečné pro hotové skripty nebo kód, který chcete spustit opakovaně, nebo pro úlohy strojového učení náročné na výpočetní výkon.
+
+Dalším skvělým způsobem, jak začít používat Azure Machine Learning, je Jupyter Poznámkový blok.  Viz [kurz: Začínáme s Azure Machine Learning v poznámkových blocích Jupyter](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
 - [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.  
 - Pokud nejste obeznámeni s používáním Conda, přečtěte si téma [Začínáme s conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+- Libovolný rozhraní IDE nebo textový editor, který umožňuje vytvářet skripty v jazyce Python.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Instalace sady Azure Machine Learning SDK
 

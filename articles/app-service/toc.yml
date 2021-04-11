@@ -11,10 +11,8 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Jádro ASP.NET
-      href: quickstart-dotnetcore.md
     - name: ASP.NET
-      href: quickstart-dotnet-framework.md
+      href: quickstart-dotnetcore.md
     - name: Node.js
       href: quickstart-nodejs.md
     - name: PHP
@@ -187,6 +185,10 @@
               href: deploy-ci-cd-custom-container.md
             - name: Nasazení z místního Gitu
               href: deploy-local-git.md
+            - name: GitHub Actions
+              href: deploy-github-actions.md
+            - name: Akce GitHubu pro kontejnery
+              href: deploy-container-github-action.md
             - name: Nasazení pomocí šablony
               href: deploy-complex-application-predictably.md
         - name: Nastavení přihlašovacích údajů nasazení
@@ -215,8 +217,6 @@
               href: configure-authentication-provider-facebook.md
             - name: Ověřování pomocí Googlu
               href: configure-authentication-provider-google.md
-            - name: Ověřování pomocí účtu Microsoft
-              href: configure-authentication-provider-microsoft.md
             - name: Ověřování pomocí Twitteru
               href: configure-authentication-provider-twitter.md
             - name: Ověřování pomocí poskytovatele OpenID Connect (Preview)

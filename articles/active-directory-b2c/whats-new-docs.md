@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61c24a7c14eb2fafff8a052f24a50a85f03de404
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443708"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225950"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: co je nového
 
@@ -87,7 +87,7 @@ Vítá vás novinky v Azure Active Directory B2C dokumentaci. V tomto článku j
 - [Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C](identity-provider-twitter.md)
 - [Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C](identity-provider-wechat.md)
 - [Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C](identity-provider-weibo.md)
-- [Přehled Azure AD B2C vlastní zásady](custom-policy-trust-frameworks.md)
+- [Přehled Azure AD B2C vlastní zásady](custom-policy-overview.md)
 
 
 ## <a name="december-2020"></a>Prosinec 2020

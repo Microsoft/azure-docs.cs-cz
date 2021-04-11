@@ -2,17 +2,19 @@
 title: Resetovat přihlašovací údaje vSphere pro řešení Azure VMware
 description: Naučte se resetovat přihlašovací údaje vSphere pro privátní cloud řešení Azure VMware a zajistěte, aby měl konektor HCX nejnovější přihlašovací údaje vSphere.
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 1376b6322250da506d32b8ced0a62ddbf60ba9f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587623"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109097"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>Resetovat přihlašovací údaje vSphere pro řešení Azure VMware
 
 V tomto článku Vás provedeme kroky pro resetování přihlašovacích údajů správce Azure VMware pro váš privátní cloud v vCenter Server a NSX. To vám umožní zajistit, aby konektor HCX měl nejnovější přihlašovací údaje vCenter Server.
+
+Kromě tohoto postupu můžete také zobrazit video pro [resetování hesla správce vCenter CloudAdmin & NSX-T](https://youtu.be/cK1qY3knj88).
 
 ## <a name="reset-your-azure-vmware-solution-credentials"></a>Resetování přihlašovacích údajů řešení Azure VMware
 

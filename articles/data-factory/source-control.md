@@ -7,12 +7,12 @@ ms.author: weetok
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2021
-ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5cb9090025fe541ad3f70cdac876aca0552f154
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719372"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553154"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -26,7 +26,7 @@ Ve výchozím nastavení Azure Data Factory autoři uživatelského rozhraní (U
 Aby se zajistilo lepší prostředí pro vytváření, Azure Data Factory vám umožní nakonfigurovat úložiště Git buď pomocí Azure Repos, nebo GitHubu. Git je systém správy verzí, který zjednodušuje sledování změn a spolupráci. V tomto článku se dozvíte, jak nakonfigurovat a pracovat v úložišti Git společně s důrazem na osvědčené postupy a Průvodce odstraňováním potíží.
 
 > [!NOTE]
-> V případě Azure Governmentho cloudu je k dispozici pouze GitHub Enterprise.
+> U Azure Governmentho cloudu je k dispozici pouze *Server GitHub Enterprise Server* .
 
 Další informace o tom, jak se Azure Data Factory integruje s Git, najdete v níže uvedeném videu kurzu na 15 minutách:
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385543"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552950"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -104,6 +104,15 @@ Při přístupu k úložišti chráněnému bránou firewall můžete použít *
 #### <a name="user-identity"></a>Identita uživatele
 
 Chcete-li získat přístup k úložišti chráněnému bránou firewall prostřednictvím identity uživatele, můžete použít modul prostředí PowerShell AZ. Storage.
+#### <a name="configuration-via-azure-portal"></a>Konfigurace prostřednictvím Azure Portal
+
+1. V Azure Portal vyhledejte svůj účet úložiště.
+1. V části nastavení oddílu přejít na síť.
+1. V části "instance prostředků" přidejte výjimku pro váš pracovní prostor synapse.
+1. Jako typ prostředku vyberte Microsoft. synapse/pracovní prostory.
+1. Jako název instance vyberte název vašeho pracovního prostoru.
+1. Klikněte na Uložit.
+
 #### <a name="configuration-via-powershell"></a>Konfigurace prostřednictvím PowerShellu
 
 Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložiště a přidat výjimku pro pracovní prostor synapse.

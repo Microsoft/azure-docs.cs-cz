@@ -1,7 +1,7 @@
 ---
-title: 'Kurz regrese: automatizované ML'
+title: 'Kurz: regrese pomocí automatizovaného strojového učení'
 titleSuffix: Azure Machine Learning
-description: Vytvořte automatizovaný experiment strojového učení, který pro vás vygeneruje regresní model na základě školicích dat a nastavení konfigurace, která zadáte.
+description: Pomocí sady Python SDK můžete napsat kód pro vytvoření automatizovaného experimentu strojového učení, který pro vás vygeneruje regresní model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,34 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7f3052905d7594d64be9455c16239ebabd219849
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565074"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210631"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Využití automatizovaného strojového učení k predikci ceny jízdy taxíkem
 
-
-V tomto kurzu pomocí automatizovaného strojového učení v Azure Machine Learning vytvoříte regresní model, který předpovídá ceny NYC taxislužby jízdné. Tento proces přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu.
+V tomto kurzu pomocí automatizovaného strojového učení v sadě Azure Machine Learning SDK vytvoříte [regresní model](concept-automated-ml.md#regression) , který předpovídá ceny NYC taxislužby jízdné. Tento proces přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu.
 
 ![Diagram toku](./media/tutorial-auto-train-models/flow2.png)
 
-V tomto kurzu se seznámíte s následujícími úlohami:
+V tomto kurzu budete psát kód pomocí sady Python SDK.  Naučíte se následující úlohy:
 
 > [!div class="checklist"]
 > * Stažení, transformace a vyčištění dat pomocí otevřených datových sad Azure
 > * Výuka automatizovaného modelu Machine Learning
 > * Vypočítat přesnost modelu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
+Vyzkoušejte taky automatizované Machine Learning pro tyto typy modelů: 
+
+* [Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ml v Azure Machine Learning](tutorial-first-experiment-automated-ml.md) – příklad žádného kódu.
+* [Kurz: Předpověď poptávky pomocí automatizovaného strojového učení](tutorial-automated-ml-forecast.md) – příklad žádného kódu.
 
 ## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok *kurzy/Regression-automl-NYC-taxi-data/Regression-Automated-ml. ipynb* pomocí stejného serveru poznámkového bloku.

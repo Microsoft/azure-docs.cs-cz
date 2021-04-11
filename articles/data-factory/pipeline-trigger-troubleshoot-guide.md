@@ -3,16 +3,16 @@ title: Řešení potíží s orchestrací kanálu a triggery v Azure Data Factor
 description: K řešení potíží s aktivací kanálu v Azure Data Factory použijte různé metody.
 author: ssabat
 ms.service: data-factory
-ms.date: 03/13/2021
+ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563408"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385407"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Řešení potíží s orchestrací kanálu a triggery v Azure Data Factory
 
@@ -83,7 +83,26 @@ Dosáhli jste limitu kapacity prostředí Integration runtime. Je možné, že b
 - Spusťte své kanály v různých časech triggerů.
 - Vytvořte nový prostředí Integration runtime a rozdělte kanály do několika prostředí Integration runtime.
 
-### <a name="how-to-perform-activity-level-errors-and-failures-in-pipelines"></a>Postup provádění chyb na úrovni aktivity a selhání v kanálech
+### <a name="a-pipeline-run-error-while-invoking-rest-api-in-a-web-activity"></a>Chyba spuštění kanálu při vyvolání rozhraní REST API v aktivitě webu
+
+**Problém**
+
+Chybová zpráva:
+
+`
+Operation on target Cancel failed: {“error”:{“code”:”AuthorizationFailed”,”message”:”The client ‘<client>’ with object id ‘<object>’ does not have authorization to perform action ‘Microsoft.DataFactory/factories/pipelineruns/cancel/action’ over scope ‘/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.DataFactory/factories/<data factory name>/pipelineruns/<pipeline run id>’ or the scope is invalid. If access was recently granted, please refresh your credentials.”}}
+`
+
+**Příčina**
+
+Kanály můžou aktivitu webu použít k volání metod REST API ADF pouze v případě, že je k přiřazení role přispěvatele přiřazena pouze Azure Data Factory člen. Nejdřív je nutné nakonfigurovat Azure Data Factory spravovanou identitu do role zabezpečení Přispěvatel. 
+
+**Řešení**
+
+Předtím, než použijete REST API Azure Data Factory na kartě nastavení webové aktivity, musí být nakonfigurováno zabezpečení. Azure Data Factory kanály můžou aktivitu webu použít k volání metod REST API ADF, jenom pokud je v případě, že je role *přispěvatele*  přiřazená Azure Data Factory spravované identitě. Začněte tím, že otevřete Azure Portal a kliknete na odkaz **všechny prostředky** v levé nabídce. Vyberte **Azure Data Factory**  pro přidání identity spravované přes ADF s rolí přispěvatele kliknutím na tlačítko **Přidat** v poli *Přidat přiřazení role* .
+
+
+### <a name="how-to-check-and-branch-on-activity-level-success-and-failure-in-pipelines"></a>Postup kontroly a větvení na úrovni aktivity a neúspěchu v kanálech
 
 **Příčina**
 
@@ -115,7 +134,7 @@ Stupeň paralelismu v *foreach* má ve skutečnosti maximální stupeň paraleli
 
 Známá fakta o příkazu *foreach*
  * Foreach má vlastnost s názvem počet dávek (n), kde výchozí hodnota je 20 a maximální hodnota je 50.
- * Počet dávek, n, se používá ke konstrukci n front. Později se podíváme na podrobné informace o tom, jak jsou tyto fronty vytvořené.
+ * Počet dávek, n, se používá ke konstrukci n front. 
  * Každá fronta běží sekvenčně, ale můžete mít paralelně spuštěné několik front.
  * Fronty jsou předem vytvořeny. To znamená, že během běhu nedojde k žádnému novému vyrovnávání front.
  * V každém okamžiku máte na jednu frontu více zpracovávaných položek. To znamená, že se v daném okamžiku zpracovává maximálně n položek.
@@ -124,7 +143,8 @@ Známá fakta o příkazu *foreach*
 **Řešení**
 
  * Nepoužívejte aktivitu *SetVariable* uvnitř *každého* spouštěného paralelního prostředí.
- * Vezměte v úvahu způsob, jakým jsou fronty vytvářeny. Zákazník může vylepšit výkon foreach nastavením více *foreachs* , kde každý foreach bude mít položky s podobným časem zpracování. Tím zajistíte, že dlouhotrvající běhy se zpracovávají paralelně, a ne postupně.
+ * Vezměte v úvahu způsob, jakým jsou fronty vytvářeny. Zákazník může vylepšit výkon foreach nastavením násobek *foreach* , kde každý *foreach* bude mít položky s podobným časem zpracování. 
+ * Tím zajistíte, že dlouhotrvající běhy se zpracovávají paralelně, a ne postupně.
 
  ### <a name="pipeline-status-is-queued-or-stuck-for-a-long-time"></a>Stav kanálu je ve frontě nebo zablokovaný po dlouhou dobu.
  

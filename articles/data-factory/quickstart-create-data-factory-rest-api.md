@@ -7,12 +7,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: adcefc21ac4fc8a00d97d5ac4352bad1287b60de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1950fa5269460bd3daeb671a37a072dc4f5f050
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517629"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385254"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlé zprovoznění: Vytvoření datové továrny Azure a kanálu pomocí rozhraní REST API
 
@@ -37,7 +37,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , se můžete připojit k úložišti objektů BLOB v Azure, vytvořit kontejner objektů blob, nahrát vstupní soubor a ověřit výstupní soubor.
 * Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps). Tento rychlý start využívá PowerShell k vyvolání volání rozhraní REST API.
 * **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets** a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
-
+>[!NOTE]
+>   V případě cloudů v rámci svrchovaného cloudu je nutné použít příslušné koncové body specifické pro Cloud pro ActiveDirectoryAuthority a ResourceManagerUrl (BaseUri). Pomocí PowerShellu můžete snadno získat adresy URL koncových bodů pro různé cloudy spuštěním příkazu Get-AzEnvironment |. Format-list, který vrátí seznam koncových bodů pro každé cloudové prostředí.  
+>    
 ## <a name="set-global-variables"></a>Nastavení globálních proměnných
 
 1. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.

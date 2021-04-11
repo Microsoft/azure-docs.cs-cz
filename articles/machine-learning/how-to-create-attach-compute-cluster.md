@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: c11176f0c7760e76b755406bda96b72b302f8857
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506935"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169568"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Vytvoření clusteru Azure Machine Learning COMPUTE
 
@@ -44,11 +44,9 @@ Výpočetní clustery můžou úlohy bezpečně spouštět ve [virtuálním sí�
 
 ## <a name="limitations"></a>Omezení
 
-* **Nevytvářejte více souběžných příloh se stejným výpočetním** prostředím z pracovního prostoru. Například připojení jednoho výpočetního clusteru k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha zruší předchozí existující přílohy.
-
-    Pokud chcete změnit připojení cíle výpočtů, například chcete-li změnit nastavení konfigurace clusteru, musíte nejprve odebrat existující přílohu.
-
 * Některé scénáře uvedené v tomto dokumentu jsou označeny jako __Náhled__. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+* V současné době podporujeme vytváření (a nikoli aktualizaci) clusterů prostřednictvím šablon ARM [ https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ]. Pro aktualizaci COMPUTE doporučujeme nyní použít sadu SDK, rozhraní příkazového řádku nebo prostředí.
 
 * Azure Machine Learning COMPUTE má výchozí omezení, například počet jader, které se dají přidělit. Další informace najdete v tématu [Správa a vyžádání kvót pro prostředky Azure](how-to-manage-quotas.md).
 

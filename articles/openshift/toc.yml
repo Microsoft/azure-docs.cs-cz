@@ -107,6 +107,8 @@
       href: /cli/azure/aro
     - name: Rozhraní REST API platformy Azure Red Hat OpenShift
       href: /rest/api/openshift
+    - name: Azure CLI
+      href: /cli/azure/openshift
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

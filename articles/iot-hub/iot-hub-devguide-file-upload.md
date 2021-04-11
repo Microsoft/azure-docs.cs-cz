@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d106021d90304a06ea7c08494d626511bb903df0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90019525"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553035"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů s využitím služby IoT Hub
 
@@ -44,7 +44,13 @@ Chcete-li použít funkci nahrávání souborů, musíte nejprve propojit účet
 [Nahrajte soubory ze zařízení do cloudu s IoT Hub](iot-hub-csharp-csharp-file-upload.md) průvodci postupy, které poskytují kompletní návod k procesu nahrání souboru. Tyto návody vám ukážou, jak pomocí Azure Portal přidružit účet úložiště ke službě IoT Hub.
 
 > [!NOTE]
-> Sady [SDK Azure IoT](iot-hub-devguide-sdks.md) automaticky zpracovávají načítání identifikátorů URI SAS, nahrávají soubor a oznamují IoT Hub dokončeného nahrávání.
+> Sady [SDK Azure IoT](iot-hub-devguide-sdks.md) automaticky ZPRACOVÁVAJÍ načítání identifikátorů URI sdíleného přístupového podpisu, odesílání souboru a oznamování IoT Hub dokončeného nahrávání. Pokud brána firewall blokuje přístup ke koncovému bodu Blob Storage, ale umožňuje přístup ke koncovému bodu IoT Hub, proces nahrávání souboru se nepovede a zobrazí následující chybu pro sadu SDK pro zařízení se systémem IoT C#:
+>
+> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
+>
+> Aby funkce nahrávání souborů fungovala, musí být pro zařízení k dispozici přístup ke koncovému bodu IoT Hub i ke koncovému bodu Blob Storage.
+> 
+
 
 ## <a name="initialize-a-file-upload"></a>Inicializace nahrávání souboru
 IoT Hub má koncový bod specificky pro zařízení, aby si vyžádal identifikátor URI SAS pro úložiště pro nahrání souboru. Chcete-li spustit proces nahrání souboru, zařízení odešle požadavek POST `{iot hub}.azure-devices.net/devices/{deviceId}/files` s následujícím textem JSON:

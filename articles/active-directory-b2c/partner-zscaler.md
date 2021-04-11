@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096849"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256289"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Kurz: konfigurace privátního přístupu Zscaler pomocí Azure Active Directory B2C
 
 V tomto kurzu se dozvíte, jak integrovat ověřování Azure Active Directory B2C (Azure AD B2C) s [privátním přístupem Zscaler (ZPA)](https://www.zscaler.com/products/zscaler-private-access). ZPA zajišťuje zabezpečený přístup k soukromým aplikacím a prostředkům na základě zásad, aniž by došlo k nákladům, nepříjemnostem nebo bezpečnostním rizikům virtuální privátní sítě (VPN). Nabídka Zscaler Secure Hybrid Access nabízí prostor pro vypínání s nulovým přístupem pro aplikace, které jsou v kombinaci s Azure AD B2C.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 
@@ -96,7 +96,7 @@ Po dokončení konfigurace Azure AD B2C se zbytek konfigurace IdP obnoví.
 >[!Note]
 >Tento krok je nutný jenom v případě, že jste ještě nenakonfigurovali vlastní zásady. Pokud již máte jednu nebo více vlastních zásad, můžete tento krok přeskočit.
 
-Informace o konfiguraci vlastních zásad v tenantovi Azure AD B2C najdete v tématu Začínáme [s vlastními zásadami v Azure Active Directory B2C](./custom-policy-get-started.md).
+Informace o konfiguraci vlastních zásad v tenantovi Azure AD B2C najdete v tématu Začínáme [s vlastními zásadami v Azure Active Directory B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Krok 3: registrace ZPA jako aplikace SAML v Azure AD B2C
 
@@ -149,7 +149,7 @@ Přejděte na ZPA User Portal nebo aplikace pro přístup přes prohlížeč a o
 
 Další informace najdete v následujících článcích:
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [Registrace aplikace SAML v Azure AD B2C](./saml-service-provider.md)
 - [Podrobný průvodce konfigurací pro ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Konfigurace IdP pro jednotné přihlašování](https://help.zscaler.com/zpa/configuring-idp-single-sign)

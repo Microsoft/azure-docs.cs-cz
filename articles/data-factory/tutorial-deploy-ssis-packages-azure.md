@@ -4,15 +4,15 @@ description: Zjistěte, jak zřídit prostředí Azure-SSIS Integration Runtime 
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/22/2021
+ms.date: 04/02/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740405"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256368"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Zřízení prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -33,7 +33,7 @@ V tomto kurzu dokončíte následující kroky:
 > * Vytvoření datové továrny
 > * Zřízení prostředí Azure-SSIS Integration Runtime
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -70,7 +70,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
 ### <a name="from-the-data-factory-overview"></a>Z přehledu Data Factory
 
-1. Na stránce **Začínáme** vyberte dlaždici **Konfigurace prostředí SSIS Integration Runtime**. 
+1. Na stránce **Začínáme** vyberte dlaždici **Konfigurovat integraci SSIS** . 
 
    ![Dlaždice Konfigurace prostředí SSIS Integration Runtime](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -78,7 +78,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
 ### <a name="from-the-authoring-ui"></a>Z uživatelského rozhraní pro vytváření obsahu
 
-1. V uživatelském rozhraní Azure Data Factory přepněte na kartu **Upravit** a vyberte **připojení**. Pak přejděte na kartu **prostředí Integration runtime** , kde se zobrazí existující prostředí Integration runtime ve vaší datové továrně. 
+1. V uživatelském rozhraní Azure Data Factory přepněte na kartu **Spravovat** a pak přepněte na kartu **prostředí Integration runtime** , kde se zobrazí existující prostředí Integration runtime ve vaší datové továrně. 
 
    ![Výběr možností za účelem zobrazení stávajících prostředí IR](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -86,7 +86,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
    ![Prostředí Integration Runtime prostřednictvím nabídky](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. V podokně **instalace prostředí Integration runtime** vyberte dlaždici **převedené a posunutí existující SSIS balíčky, které se mají spustit v Azure** , a pak vyberte **Další**.
+1. V podokně **instalace prostředí Integration runtime** vyberte dlaždici **přezvednutí a posunutí existujících balíčků SSIS do Azure** a pak vyberte **pokračovat**.
 
    ![Zadání typu prostředí Integration Runtime](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
@@ -116,7 +116,7 @@ Na stránce **Obecné nastavení** v podokně **instalace prostředí Integratio
 
    1. Pro **Uložit peníze** vyberte možnost zvýhodněné hybridní využití Azure pro prostředí Integration Runtime: **Ano** nebo **ne**. Vyberte **Ano** , pokud chcete využít vlastní licenci SQL Server se Software Assurance, abyste využili úspory nákladů s využitím hybridního použití. 
 
-   1. Vyberte **Další**. 
+   1. Vyberte **Pokračovat**. 
 
 ### <a name="deployment-settings-page"></a>Stránka nastavení nasazení
 
@@ -158,7 +158,7 @@ Pokud zaškrtnete toto políčko, proveďte následující kroky, abyste mohli p
 
    1. Pro **úroveň služby databáze katalogu** vyberte úroveň služby pro váš databázový server pro hostování SSISDB. Vyberte úroveň Basic, Standard nebo Premium nebo vyberte název elastického fondu.
 
-Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **Další**.
+Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **pokračovat**.
 
 #### <a name="creating-azure-ssis-ir-package-stores"></a>Vytváření Azure-SSIS IRch úložišť balíčků
 
@@ -177,7 +177,7 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
    1. Pro **propojenou službu úložiště balíčků** vyberte existující propojenou službu, která uchovává informace o přístupu pro systém souborů/soubory Azure/spravovanou instanci Azure SQL, kde jsou balíčky nasazené, nebo vytvořte novou výběrem možnosti **Nový**. V podokně **Nová propojená služba** proveďte následující kroky. 
 
       > [!NOTE]
-      > Pro přístup k souborům Azure můžete použít buď službu **azure File Storage** , nebo propojené služby **systému souborů** . Pokud používáte propojenou službu **Azure File Storage** , Azure-SSIS IR úložiště balíčků pro teď podporuje jenom **základní** metodu ověřování (ne **klíč účtu** ani **SAS URI**). Pokud chcete pro propojenou službu **Azure File Storage** použít **základní** ověřování, můžete `?feature.upgradeAzureFileStorage=false` se připojit k adrese URL portálu ADF v prohlížeči. Alternativně můžete místo toho použít propojenou službu **systému souborů** k přístupu k souborům Azure. 
+      > Pro přístup k souborům Azure můžete použít buď službu **azure File Storage** , nebo propojené služby **systému souborů** . Pokud používáte propojenou službu **Azure File Storage** , Azure-SSIS IR úložiště balíčků pro teď podporuje jenom **základní** metodu ověřování (ne **klíč účtu** ani **SAS URI**). 
 
       ![Nastavení nasazení pro propojené služby](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -188,8 +188,8 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
       1. Jako **typ** vyberte **Azure File Storage**, **spravovaná instance Azure SQL** nebo **systém souborů**.
 
       1. Připojení můžete ignorovat **prostřednictvím prostředí Integration runtime**, protože k získání informací o přístupu k úložištím balíčků vždycky používáme váš Azure-SSIS IR.
-
-      1. Pokud vyberete **File Storage Azure**, proveďte následující kroky. 
+      
+      1. Pokud pro **metodu ověřování** vyberete **Azure File Storage**, vyberte **základní** a pak proveďte následující kroky. 
 
          1. Pro **metodu výběru účtu** vyberte možnost **z předplatného Azure** nebo **Zadejte ručně**.
          
@@ -199,21 +199,21 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
 
       1. Pokud vyberete **spravovanou instanci Azure SQL**, proveďte následující kroky. 
 
-         1. Vyberte **připojovací řetězec** , který chcete zadat ručně, nebo **Azure Key Vault** , kde je uložený jako tajný kód.
+         1. Vyberte **připojovací řetězec** nebo **Azure Key Vault** , kde je uložený jako tajný kód.
          
          1. Pokud vyberete **připojovací řetězec**, proveďte následující kroky. 
+             1. Pokud zvolíte možnost **z předplatného Azure**, vyberte pro **metodu výběru účtu** příslušné **předplatné Azure**, **název serveru**, **Typ koncového bodu** a **název databáze**. Pokud zvolíte možnost **zadat ručně**, proveďte následující kroky. 
+                1.  Pro **plně kvalifikovaný název domény** zadejte `<server name>.<dns prefix>.database.windows.net` nebo `<server name>.public.<dns prefix>.database.windows.net,3342` jako privátní nebo veřejný koncový bod spravované instance SQL Azure v uvedeném pořadí. Pokud zadáte privátní koncový bod, **testovací připojení** se nedá použít, protože uživatelské rozhraní ADF k němu nemůže získat přístup.
 
-            1. Pro **plně kvalifikovaný název domény** zadejte `<server name>.<dns prefix>.database.windows.net` nebo `<server name>.public.<dns prefix>.database.windows.net,3342` jako privátní nebo veřejný koncový bod spravované instance SQL Azure v uvedeném pořadí. Pokud zadáte privátní koncový bod, **testovací připojení** se nedá použít, protože uživatelské rozhraní ADF k němu nemůže získat přístup.
-
-            1. Jako **název databáze** zadejte `msdb` .
+                1. Jako **název databáze** zadejte `msdb` .
                
             1. Jako **typ ověřování** vyberte **ověřování SQL**, **spravovaná identita** nebo **instanční objekt**.
 
-            1. Pokud vyberete **ověřování SQL**, zadejte příslušné **uživatelské jméno** a **heslo** nebo vyberte **Azure Key Vault** , kde se uloží jako tajný kód.
+                - Pokud vyberete **ověřování SQL**, zadejte příslušné **uživatelské jméno** a **heslo** nebo vyberte **Azure Key Vault** , kde se uloží jako tajný kód.
 
-            1. Pokud vyberete **spravovaná identita**, udělte vašemu spravovanému přístupu přes správu ADF přístup k vaší spravované instanci SQL Azure.
+                -  Pokud vyberete **spravovaná identita**, udělte vašemu spravovanému přístupu přes správu ADF přístup k vaší spravované instanci SQL Azure.
 
-            1. Pokud vyberete **instanční objekt**, zadejte příslušné **ID instančního objektu** a **klíč instančního objektu** nebo vyberte **Azure Key Vault** , kde je uložený jako tajný kód.
+                - Pokud vyberete **instanční objekt**, zadejte příslušné **ID instančního objektu** a **klíč instančního objektu** nebo vyberte **Azure Key Vault** , kde je uložený jako tajný kód.
 
       1. Pokud vyberete **systém souborů**, zadejte cestu UNC ke složce, ve které jsou balíčky nasazeny pro **hostitele**, a také příslušné **uživatelské jméno** a **heslo** nebo vyberte **Azure Key Vault** , kde jsou uloženy jako tajné.
 
@@ -221,7 +221,7 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
 
    1. Vaše přidaná úložiště balíčků se zobrazí na stránce **nastavení nasazení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
 
-Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **Další**.
+Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **pokračovat**.
 
 ### <a name="advanced-settings-page"></a>Stránka Upřesnit nastavení
 
@@ -241,7 +241,7 @@ Na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integrat
 
    1. Vyberte **Pokračovat**. 
 
-Na stránce **Souhrn** v podokně **instalace prostředí Integration runtime** Zkontrolujte všechna nastavení zřizování, zajistěte záložku doporučené odkazy na dokumentaci a výběrem možnosti **Dokončit** spusťte vytváření prostředí Integration runtime. 
+Na stránce **Souhrn** v podokně **instalace prostředí Integration runtime** Zkontrolujte všechna nastavení zřizování, zajistěte záložku doporučené odkazy na dokumentaci a vyberte **vytvořit** a spusťte tak vytváření prostředí Integration runtime. 
 
    > [!NOTE]
    > S výjimkou času vlastní instalace by tento proces měl skončit do 5 minut.

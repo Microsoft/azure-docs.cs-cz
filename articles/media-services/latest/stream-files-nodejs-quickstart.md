@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105038154"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109182"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Postup při kódování a streamování videosouborů pomocí Node.JS
 
@@ -58,7 +58,7 @@ Ve staženém projektu otevřete [index. TS](https://github.com/Azure-Samples/me
 
 Tato ukázka provede následující akce:
 
-1. Vytvoří **transformaci** s [přednastaveným kódováním s podporou obsahu](./content-aware-encoding.md). Nejprve zkontroluje, zda zadaná transformace existuje.
+1. Vytvoří **transformaci** s [přednastaveným kódováním s podporou obsahu](./encode-content-aware-concept.md). Nejprve zkontroluje, zda zadaná transformace existuje.
 1. Vytvoří výstupní **prostředek** , který je používán **úlohou** kódování, aby obsahoval výstup.
 1. Volitelně nahraje místní soubor pomocí sady SDK pro úložiště objektů BLOB.
 1. Vytvoří vstup **úlohy** , který je založen na adrese URL HTTPS nebo nahraném souboru.

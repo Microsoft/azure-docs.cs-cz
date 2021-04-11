@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d877f666e03bbbe2b9d4f01bc9059b95f9a1f6b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095357"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385271"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -78,7 +78,8 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
       USA – východ 2  
       Východní USA 2 EUAP  
       Francie – střed  
-      Německo – středozápad Japonsko – východ  
+      Německo – středozápad  
+      Japonsko – východ  
       Japonsko – západ  
       Jižní Korea – střed  
       Jižní Korea – jih  
@@ -130,9 +131,7 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
    :::column span="":::
       USA – východ 2  
       Východní USA 2 EUAP  
-      Francie – střed  
-      Německo – středozápad  
-      Japonsko – východ  
+      Francie – střední Japonsko – východ  
       Jižní Korea – střed  
       USA – středosever  
       Severní Evropa  

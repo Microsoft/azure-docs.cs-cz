@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 8eafd36c82b09575514afade6b848a7f9186895f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 1a6439cfa64257e80d113f01f4ed31d56d850ea3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960040"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226052"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -215,7 +215,7 @@ Propustnost se zřizuje na základě počtu [jednotek žádostí](request-units.
 
 Složitost dotazů ovlivňuje, kolik jednotek žádostí se pro operace spotřebuje. Počet predikátů, povaha predikátů, počet souborů UDF a velikost zdrojové datové sady ovlivňují náklady na operace dotazů.
 
-Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte záhlaví [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní `RequestCharge` vlastnost v `ResourceResponse\<T>` `FeedResponse\<T>` sadě SDK sady .NET) a změřte tak počet jednotek žádostí spotřebovaných operacemi:
+Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte záhlaví [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní `RequestCharge` vlastnost v `ResourceResponse<T>` `FeedResponse<T>` sadě SDK sady .NET) a změřte tak počet jednotek žádostí spotřebovaných operacemi:
 
 ```csharp
 // Measure the performance (Request Units) of writes
