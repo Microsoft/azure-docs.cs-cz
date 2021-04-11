@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 93b8ab0ce53202402e86b059abe3c600590d549e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101662326"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-serial"></a>Připojení ke službě Azure Percept DK prostřednictvím sériového portu
@@ -21,7 +21,7 @@ Pomocí následujících kroků nastavte sériové připojení ke službě Azure
 > [!WARNING]
 > Nepokoušejte se připojit DevKit přes sérii s výjimkou případů extrémního selhání (například jste si zařízení **zavedli** ). Oddělte skříňku na nosných desku pro připojení sériového kabelu je velmi obtížné a přeruší vaše Wi-Fi kabely antén.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 - Hostitelský počítač

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: a1f66feedf33faf107bb4fca1879077379dfa815
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601503"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066343"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -91,7 +91,7 @@ Další informace o různých možnostech najdete v tématu o [možnostech náku
 #### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 měsíců oblíbených služeb zdarma
-- Kredit 200 USD k průzkumu služeb na 30 dní
+- kredit 200 USD ve fakturační měně pro zkoumání služeb po dobu 30 dnů
 - 25 a více služeb je vždy zdarma
 
 #### <a name="pay-as-you-go"></a>[Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)

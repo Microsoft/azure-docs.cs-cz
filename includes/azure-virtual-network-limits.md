@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101734025"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271595"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -73,12 +73,12 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
 | Velikost fondu back-endu                       | 1 000 konfigurace IP adres, jedna virtuální síť |
-| Back-endové prostředky na Load Balancer <sup> 1<sup> | 250                   |
+| Back-endové prostředky na Load Balancer <sup> 1<sup> | 1 200                   |
 | Porty s vysokou dostupností                 | 1 za interní front-end       |
 | Odchozí pravidla na Load Balancer        | 600                           |
 | Nástroje pro vyrovnávání zatížení na virtuální počítač                   | 2 (1 veřejná a 1 interní)   |
 
-<sup>1</sup> limit je až 150 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků sady dostupnosti a skupin umístění virtuálních počítačů.
+<sup>1</sup> limit je až 1 200 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků sady dostupnosti a skupin umístění virtuálních počítačů.
 
 **Základní Load Balancer**
 

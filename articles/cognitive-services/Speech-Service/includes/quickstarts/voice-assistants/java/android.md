@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: bc27c73fbf9e827ce9a95c8aaaddc82ffb0aec53
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fdc38e2572f7e5dcf1f116af1f67407ef1c80376
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187506"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271580"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
@@ -116,7 +116,7 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
     import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
     import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+    import com.microsoft.cognitiveservices.speech.dialog.BotFrameworkConfig;
     import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
 
     import org.json.JSONException;
@@ -257,7 +257,7 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
 1. Připojte k vývojovému počítači zařízení s Androidem. Nezapomeňte na tomto zařízení povolit [režim vývoje a ladění USB](https://developer.android.com/studio/debug/dev-options).
 
-1. Chcete-li sestavit aplikaci, stiskněte klávesy CTRL + F9 nebo **Build**  >  z panelu nabídek zvolte sestavit **vytvořit projekt** .
+1. Chcete-li sestavit aplikaci, stiskněte klávesy CTRL + F9 nebo   >  z panelu nabídek zvolte sestavit **vytvořit projekt** .
 
 1. Chcete-li spustit aplikaci, stiskněte klávesy SHIFT + F10 nebo zvolte možnost **Spustit**  >  **běh aplikace**.
 

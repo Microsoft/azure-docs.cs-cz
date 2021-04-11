@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101666518"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Přehledy klasifikace vašich dat z Azure dosah
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak:
 > - Zobrazit přehledy o klasifikacích pro vaše data
 > - Přejít k podrobnostem o dalších podrobnostech klasifikace vašich dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 

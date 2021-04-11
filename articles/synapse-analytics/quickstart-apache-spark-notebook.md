@@ -10,10 +10,10 @@ ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
 ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669493"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark bez serveru ve službě Azure synapse Analytics pomocí nástrojů pro web
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
@@ -82,9 +82,9 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 
     Pokud používáte Průzkumníka služby Storage, je možné zobrazit dopad dvou různých způsobů psaní souboru použitého výše. Pokud není zadaný žádný systém souborů, použije se v tomto případě výchozí hodnota `default>user>trusted-service-user>demo_df` . Data jsou uložena do umístění zadaného systému souborů.
 
-    Všimněte si, že ve formátech "CSV" i "Parquet" se operace zápisu vytvoří adresář s mnoha soubory dělenými oddíly.
+    Všimněte si, že ve formátech "CSV&quot; i &quot;Parquet&quot; se operace zápisu vytvoří adresář s mnoha soubory dělenými oddíly.
 
-    ![Zobrazení výstupu v Průzkumníkovi služby Storage](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "Zobrazení výstupu v Průzkumníkovi služby Storage")
+    ![Zobrazení výstupu v Průzkumníkovi služby Storage](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png &quot;Zobrazení výstupu v Průzkumníkovi služby Storage")
 
     ![Snímek obrazovky, který zvýrazní výchozí > demodata > demo_df cestu.](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Zobrazení výstupu v Průzkumníkovi služby Storage")
 

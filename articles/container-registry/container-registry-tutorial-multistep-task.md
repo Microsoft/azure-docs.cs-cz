@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Regi
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: be5c8c4012267dc7ce6362502c806a9f238732b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71440a8bd18029c913a61633fc3e1941338040b0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920270"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066428"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Kurz: spuštění víceúrovňového pracovního postupu kontejneru v cloudu při potvrzení zdrojového kódu
 
@@ -120,7 +120,7 @@ Výstup úspěšného příkazu [az acr task create][az-acr-task-create] je podo
     "baseImageTrigger": {
       "baseImageTriggerType": "Runtime",
       "name": "defaultBaseimageTriggerName",
-      "status": "Enabled"
+      "status&quot;: &quot;Enabled"
     },
     "sourceTriggers": [
       {
@@ -129,16 +129,16 @@ Výstup úspěšného příkazu [az acr task create][az-acr-task-create] je podo
           "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git#main",
           "sourceControlAuthProperties": null,
-          "sourceControlType": "Github"
+          "sourceControlType&quot;: &quot;Github"
         },
         "sourceTriggerEvents": [
           "commit"
         ],
-        "status": "Enabled"
+        "status&quot;: &quot;Enabled"
       }
     ]
   },
-  "type": "Microsoft.ContainerRegistry/registries/tasks"
+  "type&quot;: &quot;Microsoft.ContainerRegistry/registries/tasks"
 }
 ```
 
