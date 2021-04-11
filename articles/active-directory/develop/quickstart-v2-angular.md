@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bab92a6d7e30f5aefdd28d06b34a006d065cee3c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225043"
+ms.locfileid: "105966839"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
@@ -105,12 +105,28 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 >
 > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
-Další informace o dostupných konfigurovatelných možnostech najdete v tématu [inicializace klientských aplikací](msal-js-initializing-client-applications.md).
+> Další informace o dostupných konfigurovatelných možnostech najdete v tématu [inicializace klientských aplikací](msal-js-initializing-client-applications.md).
 
-Zdrojový kód knihovny MSAL.js můžete najít v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
+> Zdrojový kód knihovny MSAL.js můžete najít v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
 
->[!div class="sxs-lookup" renderon="portal"]
->#### <a name="step-3-run-the-project"></a>Krok 3: spuštění projektu
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace.
+
+> [!div renderon="docs"]
+>
+> Přejděte dolů ve stejném souboru a aktualizujte `graphMeEndpoint` . 
+> - Nahraďte řetězec `Enter_the_Graph_Endpoint_Herev1.0/me` řetězcem `https://graph.microsoft.com/v1.0/me`
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` je koncový bod, na který se bude volat volání rozhraní API. U hlavní (globální) Microsoft Graph služby API zadejte `https://graph.microsoft.com/` (včetně koncového lomítka). Další informace najdete v [dokumentaci](https://docs.microsoft.com/graph/deployments).
+>
+>
+> ```javascript
+>      protectedResourceMap: [
+>        ['Enter_the_Graph_Endpoint_Herev1.0/me', ['user.read']]
+>      ],
+> ```
+>
+>
 
 >[!div renderon="docs"]
 >#### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu

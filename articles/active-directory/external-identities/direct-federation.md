@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687239"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552287"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -33,7 +33,7 @@ Po nastavení přímé federace s organizací budou všichni noví uživatelé t
  - Pokud nastavíte přímou federaci s partnerskými organizacemi a budete pozvat uživatele typu Host a partnerská organizace se později přesune do služby Azure AD, budou se uživatelé typu Host, kteří už provedli uplatnění pozvánky, dál používat přímé federace, pokud existují přímé federační zásady ve vašem tenantovi.
  - Pokud odstraníte přímou federaci s partnerskými organizacemi, všichni uživatelé typu Host, kteří aktuálně používají přímou federaci, se nebudou moci přihlásit.
 
-V některém z těchto scénářů můžete aktualizovat metodu ověřování uživatele typu Host tím, že z adresáře odstraníte uživatelský účet hosta a znovu je zvete.
+V některém z těchto scénářů můžete aktualizovat metodu ověřování uživatele typu host [obnovením stavu jejich uplatnění](reset-redemption-status.md).
 
 Přímá federace je vázaná na obory názvů domény, jako jsou contoso.com a fabrikam.com. Při vytváření přímé konfigurace federace s AD FS nebo IdP třetí strany organizace přiřadí k těmto zprostředkovatelů identity jeden nebo víc oborů názvů domény. 
 
@@ -89,7 +89,7 @@ Pokud je v partnerské organizaci vytvořená přímá federace, má přednost p
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Jsou problémy s přihlašováním přímo v rámci federačních adres způsobeny částečně synchronizovanými tenantů?
 Ne, v tomto scénáři by měla být použita funkce pro [jednorázové heslo e-mailu](one-time-passcode.md) . "Částečně synchronizovaná tenant" odkazuje na partnera Azure AD, u kterého nejsou místní identity uživatelů plně synchronizovány do cloudu. Host, jehož identita ještě v cloudu neexistuje, ale pokud se pokusí uplatnit uplatnění pozvánky B2B, nebude se moct přihlásit. Funkce jednorázového hesla umožní tomuto hostovi přihlašovat se. Funkce přímé federace adresuje scénáře, kde má host svůj vlastní účet organizace spravovaný IdP, ale organizace nemá žádnou přítomnost Azure AD vůbec.
 ### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Po nakonfigurování přímé federace s organizací musí každý host Odeslat a uplatnit individuální pozvánku?
-Nastavením přímé federace se nemění metoda ověřování pro uživatele typu Host, kteří už od vás pozvánku vypovažovali. Metodu ověřování uživatele typu Host můžete aktualizovat tak, že z adresáře odstraníte uživatelský účet hosta a znovu je zadáte.
+Nastavením přímé federace se nemění metoda ověřování pro uživatele typu Host, kteří už od vás pozvánku vypovažovali. Metodu ověřování uživatele typu Host můžete aktualizovat obnovením [stavu jejich uplatnění](reset-redemption-status.md).
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Krok 1: Konfigurace zprostředkovatele identity partnerské organizace
 Nejdřív vaše partnerská organizace potřebuje nakonfigurovat poskytovatele identity o požadované deklarace identity a vztahy důvěryhodnosti předávající strany. 
 
@@ -212,7 +212,7 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>Návody odebrat přímo federaci?
-Můžete odebrat nastavení přímé federace. Pokud tak učiníte, přesměrujete uživatele typu Host, kteří už provedli své pozvánky, se nebudou moct přihlásit. Můžete jim ale udělit přístup k prostředkům tím, že je odstraníte z adresáře a znovu je dodáte. Postup odebrání přímé federace se zprostředkovatelem identity na portálu Azure AD:
+Můžete odebrat nastavení přímé federace. Pokud tak učiníte, přesměrujete uživatele typu Host, kteří už provedli své pozvánky, se nebudou moct přihlásit. Můžete jim ale udělit přístup k prostředkům tím, že resetujete [jejich stav jejich uplatnění](reset-redemption-status.md). Postup odebrání přímé federace se zprostředkovatelem identity na portálu Azure AD:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**.

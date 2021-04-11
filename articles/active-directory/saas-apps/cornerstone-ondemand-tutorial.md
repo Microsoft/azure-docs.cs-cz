@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950331"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednoduchým základem Sign-On
 
@@ -123,49 +123,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>Konfigurace jednotného Sign-On jednotného přihlašování
 
-1. Přihlaste se k jednomu základnímu Sign-On jako správce.
-
-1. Přejít k **nástrojům > pro správu**.
-
-    ![screeenshot pro stránku správy](./media/cornerstone-ondemand-tutorial/admin.png)
-
-1. V **konfigurační nástroje** vyberte panel **Edge** .
-
-    ![screeenshot pro panel EDGE.](./media/cornerstone-ondemand-tutorial/edge-panel.png)
-
-1. V části **Integration** vyberte jeden Sign-On.
-
-    ![screeenshot možnost pro jednu Sign-On.](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
-
-1. Klikněte na tlačítko **Přidat jednotné přihlašování** . V zobrazeném okně vyberte **příchozí SAML** a pak klikněte na **Přidat**.
-
-    ![screeenshot pro příchozí SAML.](./media/cornerstone-ondemand-tutorial/inbound.png)
-
-1. Na následující stránce proveďte níže uvedené kroky:
-
-    ![screeenshot pro oddíl konfigurace pro základní kámen](./media/cornerstone-ondemand-tutorial/configuration.png)
-
-    a. V části **Obecné vlastnosti** klikněte na **nahrát soubor** a nahrajte soubor **certifikátu (Base64)** , který jste stáhli z Azure Portal.
-
-    b. Zaškrtněte políčko **Povolit** a v textovém poli **IDP adresa URL** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
-
-    c. Klikněte na **Uložit**.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal k [jednomu Sign-On týmu podpory](mailto:moreinfo@csod.com) nebo se obraťte na svého partnera. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>Vytvořit jednoho Sign-On testovacího uživatele v základním základu
 
 Cílem této části je vytvořit uživatele s názvem B. Simon v rámci jednotného přihlašování od základu. Základní základní Sign-On podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](./cornerstone-ondemand-provisioning-tutorial.md) konfigurace automatického zřizování uživatelů.
-
-**Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:**
-
-1. Přihlaste se k jednomu základnímu Sign-On jako správce.
-
-1. Přejděte na **správce – > uživatelů** a v dolní části stránky klikněte na **Přidat uživatele** .
-
-    ![screeenshot pro testovacího uživatele pro vytváření kamenů.](./media/cornerstone-ondemand-tutorial/user-1.png)
-
-1. Vyplňte požadovaná pole na stránce **Přidat nového uživatele** a klikněte na **Uložit**.
-
-    ![screeenshot pro vytvoření testovacího uživatele s požadovanými poli](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>Test SSO 
 

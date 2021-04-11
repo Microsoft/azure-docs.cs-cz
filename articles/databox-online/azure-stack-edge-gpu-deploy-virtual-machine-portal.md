@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c11a89d91693075ca54c0689223dcf2af06df521
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 139b543160b679ba063a0633f9091e7bc0ef1fc1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568507"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074792"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure Portal
 
@@ -127,9 +126,10 @@ Pomocí těchto kroků vytvoříte virtuální počítač po vytvoření image v
     |Parametr |Popis  |
     |---------|---------|
     |Název virtuálního počítače     |         |
+    |Skupina prostředků Edge     | Vytvořte novou skupinu prostředků pro všechny prostředky přidružené k virtuálnímu počítači.        |
     |Image     | Vyberte z imagí virtuálních počítačů, které jsou k dispozici na zařízení.        |
     |Velikost     | Vyberte si z [podporovaných velikostí virtuálních počítačů](azure-stack-edge-gpu-virtual-machine-sizes.md).        |
-    |Uživatelské jméno     | Použijte výchozí uživatelské jméno *azureuser*.        |
+    |Uživatelské jméno     | Pro správce se přihlaste k virtuálnímu počítači pomocí výchozího uživatelského jména *azureuser* .        |
     |Typ ověřování    | Vyberte si z veřejného klíče SSH nebo pomocí uživatelsky definovaného hesla.       |
     |Heslo     | Zadejte heslo pro přihlášení k virtuálnímu počítači. Heslo musí mít délku aspoň 12 znaků a musí splňovat definované požadavky na [složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).        |
     |Potvrzení hesla    | Znovu zadejte heslo.        |
@@ -149,11 +149,7 @@ Pomocí těchto kroků vytvoříte virtuální počítač po vytvoření image v
 
         ![Přidat virtuální počítač 4](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
 
-    1.  Opakujte výše uvedené pro zpracování a přidejte další disky. Disky se po vytvoření zobrazí na kartě **disky** .
-
-        ![Přidat virtuální počítač 5](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-3.png)
-
-        Až skončíte, vyberte **Další: Sítě**.
+    1.  Opakujte výše uvedené pro zpracování a přidejte další disky. Disky se po vytvoření zobrazí na kartě **disky** . Vyberte **Další: sítě**.
 
 1. Na kartě **síť** nakonfigurujete připojení k síti pro svůj virtuální počítač.
 
@@ -168,26 +164,32 @@ Pomocí těchto kroků vytvoříte virtuální počítač po vytvoření image v
 
     Vyberte **Další: zkontrolovat + vytvořit**.
 
+1. Na kartě **Upřesnit** můžete zadat vlastní data nebo Cloud-init k přizpůsobení virtuálního počítače. 
+
+    K přizpůsobení virtuálního počítače při prvním spuštění můžete použít Cloud-init. Pomocí Cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. V průběhu procesu prvotního spuštění se spustí Cloud-init, ale pro použití konfigurace nejsou potřeba žádné další kroky. Podrobné informace o cloud-init najdete v tématu [Přehled Cloud-init](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview).
+
+    ![Přidat virtuální počítač 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)    
+
 1. Na kartě **Revize + vytvořit** zkontrolujte specifikace pro virtuální počítač a vyberte **vytvořit**.
 
-    ![Přidat virtuální počítač 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
+    ![Přidat virtuální počítač 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
 
 1. Spustí se vytváření virtuálního počítače a může trvat až 20 minut. Můžete přejít na **nasazení** a monitorovat vytváření virtuálních počítačů.
 
-    ![Přidat virtuální počítač 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
+    ![Přidat virtuální počítač 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
 
     
 1. Po úspěšném vytvoření virtuálního počítače se stránka **Přehled** aktualizuje a zobrazí nový virtuální počítač.
 
-    ![Přidat virtuální počítač 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
+    ![Přidat virtuální počítač 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
 
 1. Vyberte nově vytvořený virtuální počítač, který chcete přejít na **virtuální počítače**.
 
-    ![Přidat virtuální počítač 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
+    ![Přidat virtuální počítač 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
     Pokud si chcete zobrazit podrobnosti, vyberte virtuální počítač. 
 
-    ![Přidat virtuální počítač 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+    ![Přidat virtuální počítač 12](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
 ## <a name="connect-to-a-vm"></a>Připojení k virtuálnímu počítači
 

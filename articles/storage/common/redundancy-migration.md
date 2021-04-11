@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce3bda82e634cd80560d7915a08fa33218173779
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714778"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967185"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -122,25 +122,30 @@ Ruční migraci je nutné provést v těchto případech:
 - Chcete migrovat data z ZRS na LRS, GRS nebo RA-GRS.
 - Váš účet úložiště zahrnuje data z archivní úrovně.
 
-Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Na portálu vyberte účet úložiště, který chcete převést na ZRS.
+Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). 
 
-1. Vyberte **novou žádost o podporu**.
-2. Dokončete **základy** na základě informací o účtu: 
+> [!IMPORTANT]
+> Pokud potřebujete migrovat více než jeden účet úložiště, vytvořte jeden lístek podpory a zadejte názvy účtů, které se mají převést na kartě **Podrobnosti** .
+
+Pro vyžádání migrace za provozu postupujte podle těchto kroků:
+
+1. V Azure Portal přejděte na účet úložiště, který chcete migrovat.
+1. V části **Podpora a řešení potíží** vyberte **Nová žádost o podporu**.
+1. Dokončete kartu **základy** na základě informací o vašem účtu:
     - **Typ problému**: vyberte **technický**.
-    - **Služba**: vyberte **moje služby** a **správu účtu úložiště**.
-    - **Prostředek**: Vyberte prostředek, který chcete převést na ZRS.
-3. Vyberte **Další**.
-4. V části **problém** zadejte následující hodnoty:
-    - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
+    - **Služba**: vyberte **moje služby** a potom na **Správa účtu úložiště**.
+    - **Prostředek**: vyberte účet úložiště, který chcete migrovat. Pokud potřebujete zadat více účtů úložiště, můžete tak učinit v části **Podrobnosti** .
     - **Typ problému**: vyberte **migrace dat**.
-    - **Kategorie**: vyberte **migrovat do ZRS**.
-    - **Title**: zadejte popisný název, například **migrace účtu ZRS**.
-    - **Podrobnosti**: v poli **podrobností** zadejte další podrobnosti, například přejete si migrovat na ZRS z [LRS, GRS] v \_ \_ oblasti.
-5. Vyberte **Další**.
-6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
-7. Vyberte **Vytvořit**.
+    - **Podtyp problému**: vyberte **migrovat do ZRS, GZRS nebo RA-GZRS**.
 
-Pracovník podpory vás bude kontaktovat a poskytne vám pomoc, kterou potřebujete.
+    :::image type="content" source="media/redundancy-migration/request-live-migration-basics-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak si vyžádat kartu základy migrace za provozu":::
+
+1. Vyberte **Další**. Na kartě **řešení** můžete kontrolovat způsobilost účtů úložiště pro migraci.
+1. Vyberte **Další**. Pokud máte k migraci více než jeden účet úložiště, pak na kartě **Podrobnosti** zadejte název každého účtu oddělený středníkem.
+
+    :::image type="content" source="media/redundancy-migration/request-live-migration-details-portal.png" alt-text="Snímek obrazovky ukazující, jak požádat o migraci za provozu – karta Podrobnosti":::
+
+1. Vyplňte další požadované informace na kartě **Podrobnosti** a pak vyberte **zkontrolovat + vytvořit** , abyste zkontrolovali a odeslali lístek podpory. Pracovník podpory vás bude kontaktovat a poskytne vám pomoc, kterou byste mohli potřebovat.
 
 > [!NOTE]
 > Soubory úrovně Premium (účty úložiště) jsou dostupné jenom pro LRS a ZRS.

@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0b86a7014af42f2ffb067c2de797f270a5b1855
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94409565"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967468"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurace klienta NFS pro Azure NetApp Files
 
 Konfigurace klienta NFS, která je popsaná v tomto článku, je součástí instalace, když [nakonfigurujete šifrování protokolu Kerberos nfsv 4.1](configure-kerberos-encryption.md) nebo [vytvoříte svazek se dvěma protokoly](create-volumes-dual-protocol.md). K použití s Azure NetApp Files je k dispozici celá řada distribucí systému Linux. Tento článek popisuje konfigurace pro dvě z běžně používaných prostředí: RHEL 8 a Ubuntu 18,04. 
 
+## <a name="requirements-and-considerations"></a>Požadavky a předpoklady  
+
 Bez ohledu na to, jaký systém Linux používáte, jsou potřeba následující konfigurace:
+
 * Nakonfigurujte klienta NTP, aby nedocházelo k problémům s časovým zkosením.
 * Nakonfigurujte záznamy DNS klienta Linux pro překlad IP adres.  
     Tato konfigurace musí zahrnovat záznam "A" (dopředného) a záznam PTR (obrácený). 

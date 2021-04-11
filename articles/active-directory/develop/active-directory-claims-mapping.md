@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647592"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075062"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -304,7 +304,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | User | streetaddress | Adresa |
 | User | ovládacím | PSČ |
 | User | preferredlanguage | Preferovaný jazyk |
-| User | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |*
+| User | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |
 | User | mailNickname | Přezdívka pošty |
 | User | extensionattribute1 | Atribut rozšíření 1 |
 | User | extensionattribute2 | Atribut rozšíření 2 |
@@ -419,16 +419,6 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 | ExtractMailPrefix | Žádné |
 | Připojení | Připojená přípona musí být ověřená doména tenanta prostředků. |
 
-### <a name="custom-signing-key"></a>Vlastní podpisový klíč
-
-Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Chcete-li přidat vlastní podpisový klíč, můžete použít rutinu Azure PowerShell [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) k vytvoření přihlašovacích údajů klíče certifikátu pro objekt aplikace.
-
-Aplikace, které mají povolené mapování deklarací, musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` ke svým [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít:
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
-
 ### <a name="cross-tenant-scenarios"></a>Scénáře pro více tenantů
 
 Zásady mapování deklarací se nevztahují na uživatele typu Host. Pokud se uživatel typu Host pokusí o přístup k aplikaci se zásadami mapování deklarací přiřazenými k jejímu instančnímu objektu, je vydaný výchozí token (zásada nemá žádný vliv).
@@ -531,6 +521,33 @@ V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identi
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
+
+Aplikace, které přijímají tokeny, spoléhají na skutečnost, že hodnoty deklarací jsou směrodatně vydány službou Azure AD a nelze je úmyslně poškodit. Pokud však upravíte obsah tokenu prostřednictvím zásad mapování deklarací, tyto předpoklady již nemusí být správné. Aplikace musí explicitně potvrdit, že se tokeny změnily autorem zásady mapování deklarací, aby se chránily před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. To lze provést následujícími způsoby:
+
+- Konfigurace vlastního podpisového klíče
+- Aktualizujte manifest aplikace, aby přijímal mapované deklarace identity.
+ 
+Bez této akce vrátí Azure AD [ `AADSTS50146` kód chyby](reference-aadsts-error-codes.md#aadsts-error-codes).
+
+### <a name="custom-signing-key"></a>Vlastní podpisový klíč
+
+Chcete-li přidat vlastní podpisový klíč do objektu instančního objektu, můžete použít rutinu Azure PowerShell [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) k vytvoření přihlašovacích údajů klíče certifikátu pro objekt aplikace.
+
+Aplikace, které mají povolené mapování deklarací, musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` ke svým [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít:
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>Aktualizovat manifest aplikace
+
+Alternativně můžete nastavit `acceptMappedClaims` vlastnost na hodnotu `true` v [manifestu aplikace](reference-app-manifest.md). Jak je uvedeno v [apiApplication typu prostředku](/graph/api/resources/apiapplication#properties), umožňuje aplikaci použít mapování deklarací bez zadání vlastního podpisového klíče.
+
+To vyžaduje, aby posluchač požadované domény používal ověřený název domény vašeho tenanta Azure AD, což znamená, že byste měli nastavit `Application ID URI` (reprezentované `identifierUris` v manifestu aplikace) například na `https://contoso.com/my-api` nebo (jednoduše pomocí výchozího názvu tenanta) `https://contoso.onmicrosoft.com/my-api` .
+
+Pokud nepoužíváte ověřenou doménu, Azure AD vrátí `AADSTS501461` kód chyby se zprávou *"AcceptMappedClaims je podporován pouze pro cílovou skupinu tokenů, která odpovídá identifikátoru GUID aplikace nebo cílové skupině v rámci ověřených domén klienta. Buď změňte identifikátor prostředku, nebo použijte podpisový klíč specifický pro aplikaci. "*
 
 ## <a name="see-also"></a>Viz také
 

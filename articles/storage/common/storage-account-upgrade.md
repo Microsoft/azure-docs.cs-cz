@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c73849d07c1495251c17510ea71f29c674c618
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555002"
+ms.locfileid: "105967485"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely verze 2
 
@@ -28,7 +28,7 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 > [!NOTE]
 > I když společnost Microsoft doporučuje pro většinu scénářů použití účtů pro obecné účely verze 2, bude společnost Microsoft nadále podporovat účty pro obecné účely V1 pro nové i stávající zákazníky. Můžete vytvořit účty úložiště pro obecné účely v1 v nových oblastech, kdykoli je Azure Storage k dispozici v těchto oblastech. Společnost Microsoft v současné době nemá k dispozici plán pro vyřazení podpory pro účty pro obecné účely V1 a před vyřazením jakékoli Azure Storageé funkce poskytne předběžné oznámení alespoň na jeden rok. Microsoft bude dál poskytovat aktualizace zabezpečení pro účty pro obecné účely V1, ale pro tento typ účtu se neočekává žádný nový vývoj funkcí.
 >
-> Od 1. října 2020 se ceny pro účty pro obecné účely v1 v nových Azure Storagech oblastech rovnají s cenami pro účty pro obecné účely V2 v těchto oblastech. Ceny v existujících oblastech Azure Storage se nezměnily. Podrobnosti o cenách pro účty pro obecné účely v1 v konkrétní oblasti najdete na stránce s cenami Azure Storage. Zvolte oblast a potom klikněte na **nabídku ceny** a pak vyberte **Další**.
+> Pro nové oblasti Azure, které jsou online od 1. října 2020, se ceny pro účty pro obecné účely v1 změnily a jsou ekvivalentní ceny za účty pro obecné účely V2 v těchto oblastech. Ceny za účty pro obecné účely v1 v oblastech Azure, které existovaly před 1. října 2020, se nezměnily. Podrobnosti o cenách pro účty pro obecné účely v1 v konkrétní oblasti najdete na stránce s cenami Azure Storage. Zvolte oblast a potom klikněte na **nabídku ceny** a pak vyberte **Další**.
 
 ## <a name="upgrade-an-account"></a>Upgrade účtu
 

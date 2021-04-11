@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91329651"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073142"
 ---
 >[!NOTE]
 >U prostředků, které nejsou opraveny, otevřete lístek podpory, který se zeptá na zvýšení kvót. Při pokusu o získání vyšších limitů nevytvářejte další účty Azure Media Services.
@@ -41,7 +41,7 @@ Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem ú
 
 <sup>3</sup> . Když vytvoříte požadavek na výpis entit úloh, vrátí se maximálně 1 000 úloh na jednu žádost. Pokud chcete sledovat všechny odeslané úlohy, použijte dotazy TOP nebo Skip, jak je popsáno v tématu [Možnosti dotazování systému OData](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
-<sup>4</sup> . Lokátory nejsou navržené pro správu řízení přístupu pro jednotlivé uživatele. K udělení různých přístupových práv jednotlivým uživatelům použijte řešení DRM (Správa digitálních práv). Další informace najdete v tématu [Ochrana obsahu pomocí Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> . Lokátory nejsou navržené pro správu řízení přístupu pro jednotlivé uživatele. K udělení různých přístupových práv jednotlivým uživatelům použijte řešení DRM (Správa digitálních práv). Další informace najdete v tématu [Ochrana obsahu pomocí Azure Media Services](../articles/media-services/latest/drm-content-protection-concept.md).
 
 <sup>5</sup> . Účty úložiště musí být ze stejného předplatného Azure.
 

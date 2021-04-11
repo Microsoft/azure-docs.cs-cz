@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645408"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073105"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,10 +21,9 @@ ms.locfileid: "105645408"
 ## <a name="install-the-sdk"></a>Instalace sady SDK
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 10 pro volání sady SDK.
+> Tento dokument používá volání webové sady ACS služby ACS.
 
 Pomocí `npm install` příkazu můžete nainstalovat volání a běžné sady SDK komunikačních služeb Azure pro JavaScript.
-Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 10 volající knihovny.
 
 ```console
 npm install @azure/communication-common --save
@@ -144,6 +143,8 @@ const call = callAgent.join(context);
 ```
 
 ### <a name="join-a-teams-meeting"></a>Připojit se k týmům na schůzce
+> [!NOTE]
+> Toto rozhraní API se poskytuje jako verze Preview pro vývojáře a může se změnit na základě zpětné vazby, kterou dostaneme. Nepoužívejte toto rozhraní API v produkčním prostředí. Pokud chcete používat toto rozhraní API, použijte prosím verzi beta volání služby ACS, která volá web SDK.
 
 Chcete-li se připojit k týmu, použijte `join` metodu a předejte odkaz na schůzku nebo souřadnice.
 
@@ -593,8 +594,8 @@ console.log(result.video);
 ```
 
 ## <a name="record-calls"></a>Volání záznamů
-
-[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
+> [!NOTE]
+> Toto rozhraní API se poskytuje jako verze Preview pro vývojáře a může se změnit na základě zpětné vazby, kterou dostaneme. Nepoužívejte toto rozhraní API v produkčním prostředí. Pokud chcete používat toto rozhraní API, použijte prosím verzi beta volání služby ACS, která volá web SDK.
 
 Záznam volání je rozšířenou funkcí základního `Call` rozhraní API. Nejdřív musíte získat objekt rozhraní API pro nahrávání funkcí:
 
@@ -620,6 +621,8 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 ```
 
 ## <a name="transfer-calls"></a>Přenos volání
+> [!NOTE]
+> Toto rozhraní API se poskytuje jako verze Preview pro vývojáře a může se změnit na základě zpětné vazby, kterou dostaneme. Nepoužívejte toto rozhraní API v produkčním prostředí. Pokud chcete používat toto rozhraní API, použijte prosím verzi beta volání služby ACS, která volá web SDK.
 
 Přenos volání je rozšířená funkce základního `Call` rozhraní API. Nejdřív musíte získat objekt rozhraní API pro přenos funkcí:
 

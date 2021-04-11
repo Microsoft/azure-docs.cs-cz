@@ -15,12 +15,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb23d79caa6964c3f61fbb84c8b8f229f475b8ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722153"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074603"
 ---
 # <a name="adsync-service-account"></a>Účet služby ADSync
 Azure AD Connect nainstaluje místní službu, která orchestruje synchronizaci mezi službou Active Directory a Azure Active Directory.  Služba synchronizace Microsoft Azure AD Sync (ADSync) běží na serveru ve vašem místním prostředí.  Přihlašovací údaje služby se ve výchozím nastavení standardně nastavují v expresních instalacích, ale dají se přizpůsobit tak, aby splňovaly požadavky na zabezpečení vaší organizace.  Tyto přihlašovací údaje se nepoužívají pro připojení k místním doménovým strukturám nebo Azure Active Directory.
@@ -56,7 +56,7 @@ Legenda:
 - sMSA – [samostatný účet spravované služby](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 - gMSA – [skupinový účet spravované služby](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
- ||**LocalDB </br> Express**|**Vlastní LocalDB/LocalSQL </br>**|**Vzdálená </br> vlastní SQL**|
+|Typ počítače |**LocalDB </br> Express**|**Vlastní LocalDB/LocalSQL </br>**|**Vzdálená </br> vlastní SQL**|
 |-----|-----|-----|-----|
 |**počítač připojený k doméně**|**ATRIBUT**|**ATRIBUT**</br> *sMSA*</br> *gMSA*</br> Místní účet</br> Účet domény| *gMSA* </br>Účet domény|
 |Řadič domény| **sMSA**|**sMSA** </br>*gMSA*</br> Účet domény|*gMSA*</br>Účet domény| 

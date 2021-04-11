@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095761"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075130"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlaš
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  Žádné       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C interního správce relací.      |       
-|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mezi poskytovatelem identity Azure AD B2C a OAuth1, OAuth2 nebo OpenId Connect.        |         |
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mezi poskytovatelem identity Azure AD B2C a OAuth1, OAuth2 nebo OpenId Connect.        | 
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Mezi aplikací předávající strany OAuth2 nebo OpenId Connect a Azure AD B2C.        |        
 |[SamlSSOSessionProvider](#samlssosessionprovider)     | Mezi Azure AD B2C a zprostředkovatelem identity SAML. A mezi poskytovatelem služby SAML (aplikace předávající strany) a Azure AD B2C.  |        
 

@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/30/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590445"
+ms.locfileid: "105967026"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Funkce verze Preview Azure Firewall Premium
 
@@ -105,39 +105,37 @@ Vítá vás žádost o odeslání žádosti [https://aka.ms/azfw-webcategories-r
 
 Verze Preview Azure Firewall Premium je podporována v následujících oblastech:
 
-- Západní Evropa (Public/Evropa)
-- Východní USA (Public/USA)
-- Austrálie – východ (veřejná/Austrálie)
-- Jihovýchodní Asie (veřejné/Asie a Tichomoří)
-- Velká Británie – jih (veřejné/Spojené království)
-- Severní Evropa (Public/Evropa)
-- Východní USA 2 (Public/USA)
-- Střed USA – jih (Public/USA)
-- Západní USA 2 (Public/USA)
-- Západní USA (Public/USA)
-- Střed USA (Public/USA)
-- Střed USA – sever (Public/USA)
-- Japonsko – východ (veřejný/Japonsko)
-- Východní Asie (Public/Asie a Tichomoří)
-- Kanada – střed (veřejná/Kanada)
-- Francie – střed (veřejná/Francie)
-- Jihoafrická republika sever (veřejná nebo Jižní Afrika)
-- Spojené arabské emiráty sever (Public/Spojené arabské emiráty)
-- Švýcarsko – sever (veřejný/Švýcarsko)
-- Brazílie – jih (veřejná/Brazílie)
-- Norsko – východ (veřejná/Norsko)
 - Austrálie – střed (veřejná/Austrálie)
 - Austrálie – střed 2 (veřejná/Austrálie)
+- Austrálie – východ (veřejná/Austrálie)
 - Austrálie – jihovýchod (veřejná/Austrálie)
+- Brazílie – jih (veřejná/Brazílie)
+- Kanada – střed (veřejná/Kanada)
 - Kanada – východ (veřejná/Kanada)
+- Střed USA (Public/USA)
 - Střed USA EUAP (veřejná/Kanárské (US))
+- Východní Asie (Public/Asie a Tichomoří)
+- Východní USA (Public/USA)
+- Východní USA 2 (Public/USA)
+- Francie – střed (veřejná/Francie)
 - Francie – jih (veřejná/Francie)
+- Japonsko – východ (veřejný/Japonsko)
 - Japonsko – západ (veřejný/Japonsko)
+- Korea – střed (veřejný/Korea)
 - Korea – jih (veřejná/Korea)
+- Střed USA – sever (Public/USA)
+- Severní Evropa (Public/Evropa)
+- Jihoafrická republika sever (veřejná nebo Jižní Afrika)
+- Střed USA – jih (Public/USA)
+- Jihovýchodní Asie (veřejné/Asie a Tichomoří)
 - Spojené arabské emiráty – střed (Public/Spojené arabské emiráty)
+- Velká Británie – jih (veřejné/Spojené království)
 - Velká Británie – západ (veřejné/Spojené království)
 - Středozápadní USA (Public/USA)
+- Západní Evropa (Public/Evropa)
 - Západní Indie (Public/Indie)
+- Západní USA (Public/USA)
+- Západní USA 2 (Public/USA)
 
 
 ## <a name="known-issues"></a>Známé problémy

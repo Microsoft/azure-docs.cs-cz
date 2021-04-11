@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 139970bb043c745d63f2ef795ae1c8aef4bda0fa
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 92f89bafe1b96b575d12e8a09289a05c2379d837
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108094"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280016"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST
 
@@ -127,7 +127,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 ### <a name="start-a-streaming-endpoint"></a>Spuštění koncového bodu streamování
 
-Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod streamování](./streaming-endpoint-concept.md) , ze kterého chcete streamovat video.
+Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod streamování](./stream-streaming-endpoint-concept.md) , ze kterého chcete streamovat video.
 
 > [!NOTE]
 > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
@@ -184,7 +184,7 @@ Výstupní [Asset](/rest/api/media/assets) ukládá výsledek vaší úlohy kód
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transforms-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transform-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
 Když vytváříte novou instanci [Transformace](/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](encode-autogen-bitrate-ladder.md).
 

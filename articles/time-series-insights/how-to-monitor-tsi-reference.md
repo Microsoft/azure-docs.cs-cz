@@ -2,7 +2,7 @@
 title: Monitorování referenčních dat Azure Time Series Insights | Microsoft Docs
 description: Referenční dokumentace k monitorování Azure Time Series Insights.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591377"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504579"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Referenční informace o Azure Time Series Insights dat monitorování
 
@@ -23,11 +23,12 @@ Seznamte se s daty a prostředky shromažďovanými nástrojem Azure Monitor ze 
 
 ## <a name="metrics"></a>Metriky
 
-V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Time Series Insights. Seznam všech metrik podpory Azure Monitor (včetně Azure Time Series Insights) najdete v tématu [Azure monitor podporované metriky](../azure-monitor/essentials/metrics-supported.md). Poskytovatel prostředků pro tyto metriky je [Microsoft. TimeSeriesInsights/Environment/EventSources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Time Series Insights. Seznam všech metrik podpory Azure Monitor (včetně Azure Time Series Insights) najdete v tématu [Azure monitor podporované metriky](../azure-monitor/essentials/metrics-supported.md).
+Poskytovatel prostředků pro tyto metriky je [Microsoft. TimeSeriesInsights/Environment/EventSources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Příchozí přenos dat
- 
+
 |Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|
 |---|---|---|---|---|
 |IngressReceivedBytes|Přijaté bajty příchozího přenosu dat|Bajty|Celkem|Počet přečtených bajtů ze zdroje události|

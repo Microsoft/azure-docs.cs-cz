@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 84ab3451ef71b95db3a0f00f88a58482516b48f4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729636"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581851"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Synchronizace souborů Azure propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -96,6 +96,10 @@ Pokud chcete nakonfigurovat nastavení proxy serveru pro celý počítač, postu
 
 2. Nastavení proxy serveru WinHTTP 
 
+   > [!Note]  
+   > K nakonfigurování Windows serveru na používání proxy server existuje několik metod (WPAD, PAC File, Netsh atd.). Následující postup popisuje, jak nakonfigurovat nastavení proxy serveru pomocí příkazu netsh, ale v dokumentaci k systému Windows je podporována jakákoli metoda uvedená v [nastavení konfigurace proxy server](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-proxy-server-settings) .
+
+
    - Spuštěním následujícího příkazu z příkazového řádku se zvýšenými oprávněními nebo PowerShellu zobrazte existující nastavení proxy serveru:   
 
      netsh WinHTTP zobrazit proxy
@@ -148,8 +152,8 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 | Veřejná | USA – východ 2 | https: \/ /eastus201.AFS.Azure.NET<br>https: \/ /kailani-ESS.One.Microsoft.com | USA – střed | https: \/ /TM-eastus201.AFS.Azure.NET<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
 | Veřejná | Německo – sever | https: \/ /germanynorth01.AFS.Azure.NET | Německo – středozápad | https: \/ /TM-germanywestcentral01.AFS.Azure.NET |
 | Veřejná | Německo – středozápad | https: \/ /germanywestcentral01.AFS.Azure.NET | Německo – sever | https: \/ /TM-germanynorth01.AFS.Azure.NET |
-| Veřejná | Japonsko – východ | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
-| Veřejná | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japonsko – východ | https: \/ /TM-japanwest01.AFS.Azure.NET |
+| Veřejná | Japan East | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
+| Veřejná | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japan East | https: \/ /TM-japanwest01.AFS.Azure.NET |
 | Veřejná | Jižní Korea – střed | https: \/ /koreacentral01.AFS.Azure.NET/ | Jižní Korea – jih | https: \/ /TM-koreacentral01.AFS.Azure.NET/ |
 | Veřejná | Jižní Korea – jih | https: \/ /koreasouth01.AFS.Azure.NET/ | Jižní Korea – střed | https: \/ /TM-koreasouth01.AFS.Azure.NET/ |
 | Veřejná | USA – středosever | https: \/ /northcentralus01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-northcentralus01.AFS.Azure.NET |

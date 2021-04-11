@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a084b8d14acc02c67b0678cd7fa9e5993b629a51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578515"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075011"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
@@ -99,13 +99,15 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > Kde:
 > - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+>    
+>    Pokud chcete zjistit hodnotu **ID aplikace (klienta)**, na stránce s **přehledem** aplikace se v Azure Portal.
 > - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
 >   - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
 >   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
+>   - Pokud vaše aplikace podporuje **účty v libovolném organizačním adresáři a osobních účtech Microsoft**, nahraďte tuto hodnotu hodnotou `common` .
 >
-> > [!TIP]
-> > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
+>     Pokud chcete zjistit hodnoty **ID adresáře (tenanta)** a **podporovaných typů účtů**, na stránce **přehledu** aplikace v Azure Portal.
+>
 
 ## <a name="more-information"></a>Další informace
 
@@ -137,9 +139,9 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Kde: | Description |
-> |---------|---------|
-> | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
+|Kde: | Description |
+|---------|---------|
+| `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
@@ -159,9 +161,9 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Kde:| Description |
-> |---------|---------|
-> | `_scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
+|Kde:| Description |
+|---------|---------|
+| `_scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
@@ -174,10 +176,10 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Kde: | Description |
-> |---------|---------|
-> | `scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
-> | `firstAccount` | Určuje prvního uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci). |
+|Kde: | Description |
+|---------|---------|
+| `scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
+| `firstAccount` | Určuje prvního uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

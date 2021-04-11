@@ -5,12 +5,12 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967570"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
@@ -44,7 +44,7 @@ Pomocí [privátních koncových bodů](../private-link/private-endpoint-overvie
 
 Použití privátních koncových bodů pro váš prostředek Event Grid vám umožní:
 
-- Zabezpečený přístup k vašemu tématu nebo doméně ze sítě VNet přes páteřní síť Microsoftu na rozdíl od veřejného Internetu.
+- Zabezpečený přístup k vašemu tématu nebo doméně z virtuální sítě přes páteřní síť Microsoftu na rozdíl od veřejného Internetu.
 - Připojte se bezpečně z místních sítí, které se připojují k virtuální síti pomocí sítě VPN nebo Express Routes s privátním partnerským vztahem.
 
 Když vytvoříte privátní koncový bod pro téma nebo doménu ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem prostředku. Pokud uživatel žádající o vytvoření privátního koncového bodu je zároveň vlastníkem prostředku, je tato žádost o souhlas automaticky schválena. V opačném případě je připojení v **nedokončeném** stavu, dokud není schváleno. Aplikace ve virtuální síti se můžou bez problémů připojit k Event Grid službě přes soukromý koncový bod pomocí stejných připojovacích řetězců a autorizačních mechanismů, které by jinak používaly. Vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty **privátní koncové body** pro prostředek v Azure Portal.
