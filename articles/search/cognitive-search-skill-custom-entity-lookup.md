@@ -8,17 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f233bdff54822037d15fde9ac62e34193794ad3
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97844931"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110304"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit (Preview)
-
-> [!IMPORTANT] 
-> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+#     <a name="custom-entity-lookup-cognitive-skill"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit
 
 Dovednost **vyhledávání vlastních entit** hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné.  
 

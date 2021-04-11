@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: převod textu na řeč
-ms.openlocfilehash: 45977faec9ab54fed0c1e7054c567b4d18b11f50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645021"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449354"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na řeč, která umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči typu člověk. Vyberte si ze standardních nebo neuronové hlasů nebo vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici v rámci výběru počtu jazyků a národních prostředí. Úplný seznam podporovaných hlasů, jazyků a národních prostředí najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+
+Tato dokumentace obsahuje následující typy článků:
+
+* **Rychlé starty** jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném **způsobu.**
+* **Koncepty** poskytují podrobné vysvětlení funkcí a funkcí služby.
+* **Kurzy** jsou delší než příručky, které ukazují, jak používat službu jako součást v širších obchodních řešeních.
 
 > [!NOTE]
 > Zpracování řeči Bingu byl vyvyřazen z 15. října 2019. Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči Bingu rozhraní API nebo Custom Speech, vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.

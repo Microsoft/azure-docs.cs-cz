@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ec72431d927fd59677075e7adfdf7df171574882
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772939"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109998"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -67,7 +67,7 @@ Pro šablonu aplikace logiky, primárně pracujete s těmito objekty šablony:
 |-----------|-------------|
 | `parameters` | Deklaruje [parametry šablony](../azure-resource-manager/templates/template-syntax.md#parameters) pro přijetí hodnot, které se mají použít při vytváření a přizpůsobení prostředků pro nasazení v Azure. Tyto parametry například přijímají hodnoty pro název a umístění vaší aplikace logiky, připojení a další prostředky, které jsou nezbytné pro nasazení. Tyto hodnoty parametrů můžete uložit do [souboru parametrů](#template-parameter-files), který je popsán dále v tomto tématu. Obecné podrobnosti naleznete v tématu [Parameters-správce prostředků Structure a syntax šablony](../azure-resource-manager/templates/template-syntax.md#parameters). |
 | `resources` | Definuje [prostředky](../azure-resource-manager/templates/template-syntax.md#resources) pro vytvoření nebo aktualizaci a nasazení skupiny prostředků Azure, například vaší aplikace logiky, připojení, účtů Azure Storage atd. Obecné podrobnosti naleznete v tématu [Resources-správce prostředků Structure a syntax šablony](../azure-resource-manager/templates/template-syntax.md#resources). |
-||||
+|||
 
 Šablona vaší aplikace logiky používá tento formát názvu souboru:
 

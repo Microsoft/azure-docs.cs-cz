@@ -11,19 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c8024a2083d09fcbd53a37f0d391c4589748eea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605072"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551930"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
 Cloudové aplikace nebo akce jsou klíčovým signálem v zásadách podmíněného přístupu. Zásady podmíněného přístupu umožňují správcům přiřazovat ovládací prvky konkrétním aplikacím nebo akcím.
 
 - Správci si můžou vybrat ze seznamu aplikací, které obsahují integrované aplikace Microsoftu a všechny [integrované aplikace Azure AD](../manage-apps/what-is-application-management.md) , včetně galerie, mimo galerie a aplikace publikované prostřednictvím [proxy aplikací](../manage-apps/what-is-application-proxy.md).
-- Správci se můžou rozhodnout definovat zásady, které nejsou založené na cloudové aplikaci, ale na akci uživatele. Jediná podporovaná akce je registrace informací o zabezpečení (Preview), která umožňuje podmíněný přístup vymáhat ovládací prvky v rámci [kombinovaného prostředí pro registraci informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md).
+- Správci se můžou rozhodnout definovat zásady, které nejsou založené na cloudové aplikaci, ale na akci uživatele. Podporujeme dvě akce uživatele.
+   - Zaregistrujte informace o zabezpečení (Preview), abyste vynutili kontroly nad [kombinovaným prostředím registrace informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md) 
+   - Zaregistrujte nebo připojte zařízení (Preview), abyste mohli vynutilit ovládací prvky při [registraci](../devices/concept-azure-ad-register.md) nebo [připojení](../devices/concept-azure-ad-join.md) zařízení k Azure AD. 
 
 ![Definování zásad podmíněného přístupu a určení cloudových aplikací](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -131,9 +133,10 @@ Akce uživatele jsou úkoly, které může provést uživatel. V současné dob�
 
 - **Registrovat informace o zabezpečení**: Tato akce uživatele umožňuje vyhovět zásadám podmíněného přístupu, pokud se uživatelům, kteří mají povolený pokus o registraci v kombinaci, pokusí zaregistrovat své bezpečnostní údaje. Další informace najdete v článku [o registraci kombinovaných bezpečnostních údajů](../authentication/concept-registration-mfa-sspr-combined.md).
 
-- **Registrace nebo připojení zařízení (Preview)**: Tato akce uživatele umožňuje správcům vyhovět zásadám podmíněného přístupu, když uživatelé [registrují](../devices/concept-azure-ad-register.md) nebo [připojí](../devices/concept-azure-ad-join.md) zařízení k Azure AD. Existují dvě klíčová doporučení pro tuto akci uživatele: 
+- **Registrace nebo připojení zařízení (Preview)**: Tato akce uživatele umožňuje správcům vyhovět zásadám podmíněného přístupu, když uživatelé [registrují](../devices/concept-azure-ad-register.md) nebo [připojí](../devices/concept-azure-ad-join.md) zařízení k Azure AD. Poskytuje členitost v konfiguraci služby Multi-Factor Authentication pro registraci nebo spojování zařízení místo zásad pro všechny klienty, které v tuto chvíli existují. Existují tři klíčová doporučení s touto akcí uživatele: 
    - `Require multi-factor authentication` je jediným řízením přístupu dostupným pro tuto akci uživatele a všechny ostatní jsou zakázané. Toto omezení zabrání konfliktům s ovládacími prvky přístupu, které jsou buď závislé na registraci zařízení Azure AD, nebo neplatí pro registraci zařízení Azure AD. 
-   - Pokud je u této akce uživatele povolená zásada podmíněného přístupu, musíte nastavit **Azure Active Directory**  >    >  **nastavení zařízení**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` na **ne**. V opačném případě není zásada podmíněného přístupu s touto akcí uživatele správně vynutila. Další informace týkající se tohoto nastavení zařízení najdete v v [konfiguraci nastavení zařízení](../devices/device-management-azure-portal.md#configure-device-settings). Tato akce uživatele poskytuje flexibilitu, která vyžaduje vícefaktorové ověřování pro registraci nebo připojení zařízení pro konkrétní uživatele a skupiny nebo podmínky, a ne zásady pro tenanta v nastavení zařízení. 
+   - `Client apps` podmínky a nejsou `Device state` v této akci uživatele k dispozici, protože jsou závislé na registraci zařízení Azure AD, aby se vynutily zásady podmíněného přístupu.
+   - Pokud je u této akce uživatele povolená zásada podmíněného přístupu, musíte nastavit **Azure Active Directory**  >    >  **nastavení zařízení**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` na **ne**. V opačném případě není zásada podmíněného přístupu s touto akcí uživatele správně vynutila. Další informace týkající se tohoto nastavení zařízení najdete v v [konfiguraci nastavení zařízení](../devices/device-management-azure-portal.md#configure-device-settings). 
    
 ## <a name="next-steps"></a>Další kroky
 

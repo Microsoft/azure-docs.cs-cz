@@ -1,25 +1,25 @@
 ---
-title: Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
-description: Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
-manager: eladz
+title: Vizualizace protokolů a metrik pomocí Power BI
+description: Pomocí Power BI Vizualizujte protokoly a metriky Azure Kognitivní hledání.
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325379"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581625"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
-[Azure kognitivní hledání](./search-what-is-azure-search.md) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
+
+[Azure kognitivní hledání](./search-what-is-azure-search.md) může odesílat protokoly operací a metriky služeb na účet Azure Storage, který pak můžete vizualizovat v Power BI. Tento článek vysvětluje postup a použití aplikace Power BI Template k vizualizaci dat. Šablona vám může pomáhat získat podrobné přehledy o vaší vyhledávací službě, včetně informací o dotazech, indexováních, operacích a metrikách služeb.
 
 Můžete najít Power BI App template **kognitivní hledání Azure: Analýza protokolů a metrik** na [tržišti aplikací pro Power BI](https://appsource.microsoft.com/marketplace/apps).
 
-## <a name="how-to-get-started-with-the-app"></a>Jak začít s aplikací
+## <a name="set-up-the-app"></a>Nastavení aplikace
 
 1. Povolit protokolování metrik a prostředků pro vyhledávací službu:
 
@@ -67,7 +67,8 @@ Můžete najít Power BI App template **kognitivní hledání Azure: Analýza pr
 
     :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Snímek obrazovky Power BI sestavy služby Azure Kognitivní hledání.":::
 
-## <a name="how-to-change-the-app-parameters"></a>Jak změnit parametry aplikace
+## <a name="modify-app-parameters"></a>Upravit parametry aplikace
+
 Pokud chcete vizualizovat data z jiného účtu úložiště nebo změnit počet dnů, na které se má dotaz zadat dotaz, změňte parametry **dnů** a **StorageAccount** podle následujících kroků.
 
 1. Přejděte do aplikací Power BI, Najděte aplikaci Azure Kognitivní hledání a kliknutím na tlačítko **Upravit aplikaci** zobrazíte pracovní prostor.
@@ -86,7 +87,8 @@ Pokud chcete vizualizovat data z jiného účtu úložiště nebo změnit počet
 
 1. Otevřete sestavu pro zobrazení aktualizovaných dat. Je také možné, že budete muset aktualizovat sestavu, aby se zobrazila nejnovější data.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting-report-issues"></a>Řešení potíží s hlášením
+
 Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro řešení potíží:
 
 1. Otevřete sestavu a aktualizujte stránku, abyste měli jistotu, že si prohlížíte nejnovější data. V sestavě je možnost aktualizovat data. Tuto možnost vyberte, pokud chcete získat nejnovější data.
@@ -98,8 +100,7 @@ Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro ře
 1. Zkontrolujte, jestli se datová sada ještě neaktualizovala. Indikátor stavu aktualizace se zobrazí v kroku 8 výše. Pokud se stále aktualizuje, počkejte, až se aktualizace dokončí, aby se tato sestava otevřela a aktualizovala.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o Azure Kognitivní hledání](./index.yml)
 
-[Co je Power BI?](/power-bi/fundamentals/power-bi-overview)
-
-[Základní pojmy pro návrháře ve službě Power BI](/power-bi/service-basic-concepts)
++ [Monitorovat operace a aktivity hledání](search-monitor-usage.md)
++ [Co je Power BI?](/power-bi/fundamentals/power-bi-overview)
++ [Základní pojmy pro návrháře ve službě Power BI](/power-bi/service-basic-concepts)

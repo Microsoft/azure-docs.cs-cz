@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95a468d130d1ab1eee349f15592175301c9ddf37
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721119"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110015"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Jak vytvořit překryv pomocí Media Encoder Standard
 
@@ -41,8 +41,8 @@ Media Encoder Standard umožňuje překrytí obrázku, zvukového souboru nebo j
 
 Pokud jste s transformací ještě neseznámili, doporučujeme, abyste dokončili následující činnosti:
 
-* Číst [video a zvuk v kódování pomocí Media Services](encoding-concept.md)
-* Přečtěte si, [jak se zakódovat pomocí vlastní transformace – .NET](customize-encoder-presets-how-to.md). Postupujte podle kroků v tomto článku a nastavte rozhraní .NET potřebné pro práci s transformacemi a pak se vraťte sem, abyste si vyzkoušeli ukázku přednastavených překryvů.
+* Číst [video a zvuk v kódování pomocí Media Services](encode-concept.md)
+* Přečtěte si, [jak se zakódovat pomocí vlastní transformace – .NET](encode-custom-presets-how-to.md). Postupujte podle kroků v tomto článku a nastavte rozhraní .NET potřebné pro práci s transformacemi a pak se vraťte sem, abyste si vyzkoušeli ukázku přednastavených překryvů.
 * Viz [referenční dokument transformací](/rest/api/media/transforms).
 
 Jakmile se seznámíte s transformacemi, Stáhněte si ukázku překryvů.

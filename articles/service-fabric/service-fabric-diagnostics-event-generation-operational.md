@@ -3,12 +3,12 @@ title: Seznam událostí pro Azure Service Fabric
 description: Úplný seznam událostí poskytovaných službou Azure Service Fabric, které vám pomůžou monitorovat clustery.
 ms.topic: reference
 ms.date: 2/25/2019
-ms.openlocfilehash: 3f65d7c3ddec8263ff6f115df9616b48814afc93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a1ba21aaac831abb07544944420f2b77e1753955
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628879"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279778"
 ---
 # <a name="list-of-service-fabric-events"></a>Seznam událostí Service Fabric 
 
@@ -36,6 +36,12 @@ Další podrobnosti o upgradech clusteru najdete [tady](service-fabric-cluster-u
 | 29629 | ClusterUpgradeRollbackStarted | Upgrade | Upgrade clusteru se začal vrátit zpátky.  | CM | Upozornění | 
 | 29630 | ClusterUpgradeRollbackCompleted | Upgrade | Upgrade clusteru se dokončil zpátky. | CM | Upozornění | 
 | 29631 | ClusterUpgradeDomainCompleted | Upgrade | Upgrade domény byl dokončen během upgradu clusteru. | CM | Informační | 
+
+**Události umístění**
+| ID události | Name | Kategorie | Popis |Zdroj (úloha) | Level |
+| --- | --- | ---| --- | --- | --- |
+| 17616 | Rozhodnutí |StateTransition | U operace umístění bylo naplánováno určení umístění nových replik. | APLIKACE | Informační |
+
 
 ## <a name="node-events"></a>Události uzlu
 

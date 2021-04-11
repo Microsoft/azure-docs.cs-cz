@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad s Terraformu'
 description: V tomto rychlém startu použijete syntaxi Terraformu a HCL k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy.
-ms.date: 10/27/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c1a43010c48f71872d935a8fb52f608b479da8a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93106391"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092332"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Terraformu
 

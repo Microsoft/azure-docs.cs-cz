@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eda575e0f29abbe18750a24fbfc212a9d84819cf
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91855986"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110355"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>Kurz: připojení virtuální sítě k okruhu ExpressRoute
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) se
 
 * Na standardní okruh ExpressRoute můžete propojit až 10 virtuálních sítí. Pokud používáte standardní okruh ExpressRoute, musí být všechny virtuální sítě ve stejné geopolitické oblasti. 
 
-* Jedna virtuální síť může být propojená s až čtyřmi okruhy ExpressRoute. Pomocí kroků v tomto článku vytvoříte nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute můžou být ve stejném předplatném, různých předplatných nebo kombinaci obou.
+* Jedna virtuální síť může být propojená s až 16 okruhy ExpressRoute. Pomocí kroků v tomto článku vytvoříte nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute můžou být ve stejném předplatném, různých předplatných nebo kombinaci obou.
 
 * Pokud povolíte doplněk ExpressRoute Premium, můžete propojit virtuální sítě mimo geopolitickou oblast okruhu ExpressRoute. Doplněk Premium vám také umožní připojit více než 10 virtuálních sítí k okruhu ExpressRoute v závislosti na zvolené šířce pásma. Další podrobnosti o doplňku Premium najdete v [nejčastějších dotazech](expressroute-faqs.md) .
 

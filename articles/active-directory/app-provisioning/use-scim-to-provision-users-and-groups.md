@@ -12,12 +12,12 @@ ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022938"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449445"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
@@ -168,10 +168,10 @@ V dokumentu RFC SCIM je definováno několik koncových bodů. Můžete začít 
 |--|--|
 |/User|Provádění operací CRUD u objektu uživatele.|
 |/Group|Proveďte operace CRUD u objektu skupiny.|
-|/ServiceProviderConfig|Obsahuje podrobné informace o funkcích podporovaného standardu SCIM, například o podporovaných zdrojích a metodě ověřování.|
-|/ResourceTypes|Určuje metadata o jednotlivých prostředcích.|
 |/Schemas|Sada atributů podporovaná jednotlivými klienty a poskytovatelem služeb se může lišit. Jeden poskytovatel služeb může zahrnovat `name` , `title` a `emails` , i když jiný poskytovatel služeb používá `name` , `title` a `phoneNumbers` . Koncový bod schémat umožňuje zjišťování podporovaných atributů.|
 |/Bulk|Hromadné operace umožňují provádět operace s velkou kolekcí objektů prostředků v rámci jedné operace (například členství v aktualizacích pro velkou skupinu).|
+|/ServiceProviderConfig|Obsahuje podrobné informace o funkcích podporovaného standardu SCIM, například o podporovaných zdrojích a metodě ověřování.|
+|/ResourceTypes|Určuje metadata o jednotlivých prostředcích.|
 
 **Příklad seznamu koncových bodů**
 
@@ -1329,9 +1329,9 @@ Pomocí kontrolního seznamu můžete rychle připojit vaši aplikaci a zákazn�
 > * 3 přihlašovací údaje pro vaši aplikaci bez vypršení platnosti (povinné)
 > * Podpora udělení autorizačního kódu OAuth nebo dlouhého nedlouhodobého tokenu, jak je popsáno níže (povinné)
 > * Zřízení technického a podpůrného kontaktního bodu pro podporu zákazníků po registraci galerie (povinné)
+> * [Podpora zjišťování schématu (povinné)](https://tools.ietf.org/html/rfc7643#section-6)
 > * Podpora aktualizace více členství ve skupině s jednou OPRAVou
 > * Veřejně zdokumentujte svůj koncový bod SCIM.
-> * [Podpora zjišťování schématu](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Autorizace při zřizování konektorů v galerii aplikací
 Specifikace SCIM nedefinuje schéma specifické pro SCIM pro ověřování a autorizaci a spoléhá na použití stávajících oborových standardů.

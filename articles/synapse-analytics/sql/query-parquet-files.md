@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97694688"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209583"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí fondu SQL bez serveru v Azure synapse Analytics
 
@@ -119,7 +119,7 @@ ORDER BY
 
 Při čtení souborů Parquet není nutné používat klauzuli OPENROWSET WITH. Názvy sloupců a datové typy se automaticky čtou ze souborů Parquet.
 
-Následující ukázka ukazuje možnosti automatického odvození schématu pro soubory Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
+Následující ukázka ukazuje možnosti automatického odvození schématu pro soubory Parquet. Vrátí počet řádků v září 2018 bez zadání schématu.
 
 > [!NOTE]
 > Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. V takovém případě služba dotazů na SQL fond bez serveru použije metadata v souboru Parquet a sváže sloupce podle názvu.
@@ -128,7 +128,7 @@ Následující ukázka ukazuje možnosti automatického odvození schématu pro 
 SELECT TOP 10 *
 FROM  
     OPENROWSET(
-        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        BULK 'puYear=2018/puMonth=9/*.snappy.parquet',
         DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) AS nyc

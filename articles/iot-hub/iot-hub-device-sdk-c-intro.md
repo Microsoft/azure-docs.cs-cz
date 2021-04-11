@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffb7d708921c96f57a617f82fc54d7f462fb4282
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588824"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168752"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Sada SDK pro zařízení Azure IoT pro jazyk C
 
@@ -31,7 +31,7 @@ Sada **SDK pro zařízení Azure IoT** je sada knihoven navržená tak, aby zjed
 
 Sada SDK pro zařízení Azure IoT pro jazyk C je napsaná ve standardu ANSI C (C99), aby se maximalizovala přenositelnost. Díky této funkci se knihovny dobře hodí pro provoz na různých platformách a zařízeních, zejména v případě, že je minimalizace nároky na disk a paměť.
 
-Existuje široká škála platforem, na kterých byla sada SDK testována (podrobnosti naleznete v [katalogu zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/) ). I když tento článek obsahuje návody ukázkového kódu běžícího na platformě Windows, kód popsaný v tomto článku je identický v rámci řady podporovaných platforem.
+Existuje široká škála platforem, na kterých byla sada SDK testována (podrobnosti naleznete v [katalogu zařízení Azure Certified for IoT](https://devicecatalog.azure.com/) ). I když tento článek obsahuje návody ukázkového kódu běžícího na platformě Windows, kód popsaný v tomto článku je identický v rámci řady podporovaných platforem.
 
 Následující video představuje přehled sady Azure IoT SDK pro jazyk C:
 

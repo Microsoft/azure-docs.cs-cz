@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 13f5db52917cd9659438c551ac2f01c477cc1c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef4e1f11018c82d96907518b79cc5737c49b946
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102201290"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104044"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -123,7 +123,7 @@ Pokud ověření nebylo úspěšné, můžete také znovu použít vlastní při
 ## <a name="next-steps"></a>Další kroky
 
 Otestujte jednotlivá REST API volání na vaši instanci pomocí příkazů rozhraní příkazového řádku Azure Digital revlákens CLI: 
-* [AZ DT reference](/cli/azure/ext/azure-iot/dt)
+* [AZ DT reference](/cli/azure/dt)
 * [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
 
 Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci s ověřovacím kódem:

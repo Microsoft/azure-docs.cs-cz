@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf4f427c76709022feed37c7a21f1ab4d594acd0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728160"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091867"
 ---
 # <a name="pricing-scenarios"></a>Cenové scénáře
 
@@ -44,6 +44,41 @@ Alice provedla volání skupiny s kolegy, Bobem a Charlie. Alice a Bob používa
 - 1 účastník x 43 minut × $0,004 za účastníka za minutu = $0,172 [video i zvuk se účtují stejnou sazbou.]
 
 **Celkové náklady na volání skupiny**: $0,48 + $0,172 = $0,652
+
+
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-to-a-pstn-number"></a>Příklad ceny: odchozí volání z aplikace pomocí SDK JS na číslo veřejné telefonní číslo
+
+Alice vytvoří z aplikace hovor ze sítě PSTN Bobovi na svém telefonním číslu od společnosti `+1-425` .
+
+- Alice použila k sestavení aplikace sadu JS SDK.
+- Volání trvá celkem 5 minut.
+
+**Výpočty nákladů**
+
+- 1 účastník na nožkě VoIP (Alice) z aplikace na servery služby Communications x 10 minut × $0,004 na jednu stranu účastníka za minutu = $0,04
+- 1 účastník na odchozí nožkě PSTN (Charlie) ze serverů komunikačních služeb na telefonní číslo USA × 10 minut × $0,013 na jednu stranu účastníka za minutu = $0,13.
+
+Poznámka: smíšená sazba USA na `+1-425` hodnotu je $0,013. Podrobnosti najdete na následujícím odkazu: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**Celkové náklady na volání skupiny**: $0,04 + $0,13 = $0,17
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>Příklad ceny: seskupení zvukového hovoru pomocí sady JS SDK a 1 nožky PSTN
+
+Alice a Bob jsou ve volání VOIP. Bob převolalo volání Charlie na číslo PSTN Charlie, telefonní číslo USA, které začíná na `+1-425` .
+
+- Alice použila k sestavení aplikace sadu JS SDK. Vychází po dobu 10 minut před voláním Charlie na čísle veřejné telefonní číslo.
+- Jakmile Bob přeložilo volání Charlie na svém čísle veřejné telefonní číslo, tři z nich prochází po dobu dalších 10 minut.
+
+**Výpočty nákladů**
+
+- 2 účastníci na nožkě VoIP (Alice a Bob) z aplikace na servery komunikačních služeb x 20 minut × $0,004 na jednu stranu účastníka za minutu = $0,16
+- 1 účastník na odchozích nožkách na veřejné síti (Charlie) ze serverů komunikačních služeb na telefonní číslo v USA × 10 minut × $0,013 na nohy účastníka za minutu = $0,13
+
+Poznámka: smíšená sazba USA na `+1-425` hodnotu je $0,013. Podrobnosti najdete na následujícím odkazu: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**Celkové náklady na hovor VoIP + eskalace**: $0,16 + $0,13 = $. 29
+
 
 ### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Příklad ceny: uživatel služby Communications JavaScript SDK se připojí k plánované schůzce Microsoft Teams.
 

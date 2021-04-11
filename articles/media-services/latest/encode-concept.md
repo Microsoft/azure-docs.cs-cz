@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 22f4c5bba3ea6836a8c9b016315f3cfae36cb52d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111702"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279489"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
 
@@ -31,7 +31,7 @@ Videa se většinou doručují do zařízení a aplikací pomocí [postupného s
 > Media Services nevyúčtuje zrušené nebo chybové úlohy. Například úloha, která dosáhla pokroku 50% a je zrušená, se neúčtuje za 50% minut úlohy. Účtují se vám pouze dokončené úlohy.
 
 * Aby bylo možné doručit progresivním stažením, můžete použít Azure Media Services k převodu digitálního mediálního souboru (Mezzanine) na soubor [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , který obsahuje video kódované pomocí kodeku [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) , a zvuk kódovaný pomocí kodeku [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) . Tento soubor MP4 se zapisuje do Assetu v účtu úložiště. Můžete použít rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) a stáhnout soubor přímo. Pokud jste vytvořili výstupní Asset s konkrétním názvem kontejneru v úložišti, použijte toto umístění. V opačném případě můžete použít Media Services k [vypsání adres URL kontejneru assetů](/rest/api/media/assets/listcontainersas). 
-* Aby bylo možné připravit obsah pro doručování streamování s adaptivní přenosovou rychlostí, musí být soubor Mezzanine kódovaný s více přenosovými rychlostmi (vysoká až nízká). Aby se zajistil řádný přechod kvality, rozlišení videa se sníží, protože se sníží rychlost. Výsledkem je, že se jako kódovací žebřík používá tabulka rozlišení a přenosové rychlosti (viz [automaticky generovaná žebřík s adaptivní přenosovou rychlostí](encode-autogen-bitrate-ladder.md)). Můžete použít Media Services ke kódování souborů Mezzanine s více přenosovými rychlostmi. V takovém případě získáte sadu souborů MP4 a přidružených konfiguračních souborů streamování zapsaných do Assetu v účtu úložiště. Pak můžete použít funkci [dynamického balení](encode-dynamic-packaging-concept.md) v Media Services k doručování videa prostřednictvím protokolů streamování, jako jsou [MPEG-spojovníky](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To vyžaduje, abyste vytvořili [Lokátor streamování](streaming-locators-concept.md) a vytvořili adresy URL streamování odpovídající podporovaným protokolům, které se pak dají přesměrovat na zařízení nebo aplikace na základě jejich schopností.
+* Aby bylo možné připravit obsah pro doručování streamování s adaptivní přenosovou rychlostí, musí být soubor Mezzanine kódovaný s více přenosovými rychlostmi (vysoká až nízká). Aby se zajistil řádný přechod kvality, rozlišení videa se sníží, protože se sníží rychlost. Výsledkem je, že se jako kódovací žebřík používá tabulka rozlišení a přenosové rychlosti (viz [automaticky generovaná žebřík s adaptivní přenosovou rychlostí](encode-autogen-bitrate-ladder.md)). Můžete použít Media Services ke kódování souborů Mezzanine s více přenosovými rychlostmi. V takovém případě získáte sadu souborů MP4 a přidružených konfiguračních souborů streamování zapsaných do Assetu v účtu úložiště. Pak můžete použít funkci [dynamického balení](encode-dynamic-packaging-concept.md) v Media Services k doručování videa prostřednictvím protokolů streamování, jako jsou [MPEG-spojovníky](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To vyžaduje, abyste vytvořili [Lokátor streamování](stream-streaming-locators-concept.md) a vytvořili adresy URL streamování odpovídající podporovaným protokolům, které se pak dají přesměrovat na zařízení nebo aplikace na základě jejich schopností.
 
 Následující diagram znázorňuje pracovní postup pro kódování na vyžádání s dynamickým balením.
 
@@ -41,7 +41,7 @@ V tomto tématu najdete pokyny k zakódování obsahu pomocí Media Services V3.
 
 ## <a name="transforms-and-jobs"></a>Transformace a úlohy
 
-Pro kódování pomocí Media Services V3 potřebujete vytvořit [transformaci](/rest/api/media/transforms) a [úlohu](/rest/api/media/jobs). Transformace definuje recept pro vaše nastavení a výstupy kódování; úloha je instancí receptury. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
+Pro kódování pomocí Media Services V3 potřebujete vytvořit [transformaci](/rest/api/media/transforms) a [úlohu](/rest/api/media/jobs). Transformace definuje recept pro vaše nastavení a výstupy kódování; úloha je instancí receptury. Další informace najdete v tématu [Transformace a úlohy](transform-jobs-concept.md).
 
 Při kódování pomocí Media Services použijte předvolby k informování kodéru, jak mají být zpracovány vstupní mediální soubory. V Media Services V3 použijete ke kódování souborů Standard Encoder. Můžete například určit rozlišení videa nebo počet zvukových kanálů, které chcete v zakódovaném obsahu.
 
@@ -84,8 +84,8 @@ Můžete zadat, chcete-li vytvořit [úlohu](/rest/api/media/jobs/create) s jedn
 
 Viz příklady:
 
-* [Vytvoření dílčího klipu videa s využitím .NET](subclip-video-dotnet-howto.md)
-* [Vytvoření dílčího klipu videa s REST](subclip-video-rest-howto.md)
+* [Vytvoření dílčího klipu videa s využitím .NET](transform-subclip-video-dotnet-how-to.md)
+* [Vytvoření dílčího klipu videa s REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="built-in-presets"></a>Vestavěná přednastavení
 

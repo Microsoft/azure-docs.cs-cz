@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6499e4b3404a255025f88488e73da1efb6449296
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075947"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581189"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Nasazení virtuálního počítače s povoleným důvěryhodným spouštěním (Preview)
 
@@ -41,10 +41,13 @@ Vytvořte virtuální počítač s povoleným důvěryhodným spuštěním.
 5. V části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
 6. V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků nebo vyberte existující skupinu prostředků z rozevíracího seznamu.
 7. V části **Podrobnosti instance** zadejte název pro název virtuálního počítače a vyberte oblast, která podporuje [důvěryhodné spuštění](trusted-launch.md#public-preview-limitations).
-8. V části **Obrázek** vyberte [obrázek, který podporuje důvěryhodné spuštění](trusted-launch.md#public-preview-limitations). Může se zobrazit jenom verze 1. generace obrázku, která je v pořádku, přejděte k dalšímu kroku.
-9. Přepněte na kartu **Upřesnit** tím, že ji vyberete v horní části stránky.
-10. Přejděte dolů k části **generování virtuálního počítače** a pak vyberte **Obecné 2**.
-11. Pořád na kartě **Upřesnit** se posuňte dolů na **důvěryhodné spuštění** a pak zaškrtněte políčko pro **důvěryhodné spuštění** . Tím se zobrazí dvě další možnosti – zabezpečené spouštění a vTPM. Vyberte vhodné možnosti pro vaše nasazení.
+8. V části **Obrázek** vyberte obrázek Gen 2 [, který podporuje důvěryhodné spuštění](trusted-launch.md#public-preview-limitations). 
+   > [!TIP]
+   > Pokud se v rozevíracím seznamu nezobrazí požadovaná verze Gen 2, vyberte **Zobrazit všechny image** a pak změňte filtr **generování virtuálního počítače** tak, aby zobrazoval pouze image 2. generace. Vyhledejte obrázek v seznamu a pak použijte rozevírací seznam **Vybrat** a vyberte verzi 2. generace.
+ 
+1. Přepněte na kartu **Upřesnit** tím, že ji vyberete v horní části stránky.
+1. Posuňte se dolů k části **generování virtuálního počítače** . Ujistěte se, že je vybraná možnost **Obecné 2** .
+1. Pořád na kartě **Upřesnit** se posuňte dolů na **důvěryhodné spuštění** a pak zaškrtněte políčko pro **důvěryhodné spuštění** . Tím se zobrazí dvě další možnosti – zabezpečené spouštění a vTPM. Vyberte vhodné možnosti pro vaše nasazení.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Snímek obrazovky znázorňující možnosti pro důvěryhodné spuštění":::
 
@@ -66,11 +69,11 @@ Nasazení virtuálního počítače bude několik minut trvat.
 
 Pro nasazení důvěryhodných spouštěcích virtuálních počítačů můžete použít šablonu pro rychlý Start:
 
-**Linux**:    
-[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+**Linux:**    
+[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
 **Windows**:    
-[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>Zobrazit a aktualizovat
 

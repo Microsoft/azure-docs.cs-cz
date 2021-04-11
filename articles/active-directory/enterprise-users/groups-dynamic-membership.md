@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 41bdf5251881fa9307a3cd4d214081845e967900
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174525"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209515"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -52,19 +52,19 @@ Další podrobné pokyny najdete v tématu [Vytvoření nebo aktualizace dynamic
 
 ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression"></a>Syntaxe pravidla pro jeden výraz
+### <a name="rule-syntax-for-a-single-expression&quot;></a>Syntaxe pravidla pro jeden výraz
 
 Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako v tomto příkladu: `Property Operator Value` , kde syntaxe pro vlastnost je název Object. Property.
 
 Následuje příklad správného vytvořeného pravidla členství s jedním výrazem:
 
 ```
-user.department -eq "Sales"
+user.department -eq &quot;Sales&quot;
 ```
 
-Kulaté závorky jsou volitelné pro jeden výraz. Celková délka těla pravidla členství nesmí překročit 2048 znaků.
+Kulaté závorky jsou volitelné pro jeden výraz. Celková délka těla pravidla členství nesmí překročit 3072 znaků.
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Sestavování těla pravidla členství
+## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>Sestavování těla pravidla členství
 
 Pravidlo členství, které automaticky naplní skupinu uživateli nebo zařízeními, je binární výraz, jehož výsledkem je výsledek true nebo false. Mezi tři části jednoduchého pravidla patří:
 
@@ -74,7 +74,7 @@ Pravidlo členství, které automaticky naplní skupinu uživateli nebo zaříze
 
 Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám syntaxe.
 
-## <a name="supported-properties"></a>Podporované vlastnosti
+## <a name=&quot;supported-properties&quot;></a>Podporované vlastnosti
 
 Existují tři typy vlastností, které lze použít k vytvoření pravidla členství.
 
@@ -84,18 +84,18 @@ Existují tři typy vlastností, které lze použít k vytvoření pravidla čle
 
 Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvoření jednoho výrazu.
 
-### <a name="properties-of-type-boolean"></a>Vlastnosti typu Boolean
+### <a name=&quot;properties-of-type-boolean&quot;></a>Vlastnosti typu Boolean
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | accountEnabled |true false |User. accountEnabled-EQ true |
 | Nastavení dirsyncenabled |true false |User. nastavení dirsyncenabled-EQ true |
 
-### <a name="properties-of-type-string"></a>Vlastnosti typu String
+### <a name=&quot;properties-of-type-string&quot;></a>Vlastnosti typu String
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
+| city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ &quot;hodnota") |
 | country |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
 | Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
 | Oddělení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |

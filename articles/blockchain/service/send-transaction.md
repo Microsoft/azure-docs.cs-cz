@@ -5,10 +5,10 @@ ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105628641"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
@@ -81,13 +81,13 @@ Azure blockchain Development Kit používá Truffle ke spouštění migračního
 
 ![Kontrakt se úspěšně nasadil.](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>Volání funkce kontraktu
+## <a name="call-a-contract-function&quot;></a>Volání funkce kontraktu
 Funkce **SendRequest** kontraktu **HelloBlockchain** změní proměnnou stavu **RequestMessage** . Změna stavu blockchain sítě se provádí prostřednictvím transakce. Můžete vytvořit skript pro spuštění funkce **SendRequest** prostřednictvím transakce.
 
 1. V kořenovém adresáři projektu Truffle vytvořte nový soubor a pojmenujte ho `sendrequest.js` . Do souboru přidejte následující kód JavaScriptu Web3.
 
     ```javascript
-    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
         
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")

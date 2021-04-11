@@ -4,12 +4,12 @@ description: Naučte se používat optimalizační platformu SparkCruise ke zvý
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b68af13aef694e1ae457fd1d0f07b8e9bffb61b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98928270"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068162"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>SparkCruise ve službě Azure HDInsight
 

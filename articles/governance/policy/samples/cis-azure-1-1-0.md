@@ -1,15 +1,15 @@
 ---
 title: Podrobnosti o dodržování předpisů pro CIS Microsoft Azure Foundation – srovnávací 1.1.0
 description: Podrobnosti o 1.1.0 základech standardů dodržování předpisů v modelu Microsoft Azure CI Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7d26825e3e401984b52216c6827b8a3baf44ad62
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d21d04fe4347a2ff7735045e786520c106309c7
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032510"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091748"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>Podrobnosti o integrované iniciativě 1.1.0 Foundation podle standardů dodržování předpisů v modelu Microsoft Azure CI
 
@@ -17,7 +17,7 @@ Následující článek podrobně popisuje, jak Azure Policy definice předdefin
 Další informace o tomto standardu dodržování předpisů najdete v článku [Microsoft Azure CIS 1.1.0 Foundation test](https://www.cisecurity.org/benchmark/azure/). Pokud chcete pochopit _vlastnictví_, přečtěte si téma [definice zásad Azure Policy](../concepts/definition-structure.md#type) a [sdílená odpovědnost v cloudu](../../../security/fundamentals/shared-responsibility.md).
 
 Následující mapování jsou pro 1.1.0 ovládací prvky služby CI v rámci služby **ci Microsoft Azure Foundation** . Pomocí navigace na pravé straně můžete přejít přímo ke konkrétní **doméně dodržování předpisů**. Mnohé z ovládacích prvků jsou implementovány s definicí [Azure Policy](../overview.md) iniciativou. Chcete-li zkontrolovat definici kompletní iniciativy, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** .
-Pak vyhledejte a vyberte definici služby **Microsoft Azure CIS 1.1.0 Foundation** pro dodržování předpisů, která je integrovaná v rámci předdefinovaných iniciativ.
+Pak vyhledejte a vyberte definici služby **Microsoft Azure CIS v 1.1.0 základu** pro dodržování předpisů v rámci předdefinovaných iniciativ.
 
 Tato integrovaná iniciativa se nasadí jako součást ukázky služby [Microsoft Azure CIS 1.1.0 Foundation test](../../blueprints/samples/cis-azure-1-1-0.md).
 
@@ -70,7 +70,14 @@ Tato integrovaná iniciativa se nasadí jako součást ukázky služby [Microsof
 
 |Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
-|[Měla by se vybrat cenová úroveň Security Center Standard.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1181c5f-672a-477a-979a-7d58aa086233) |Cenová úroveň Standard umožňuje detekci hrozeb pro sítě a virtuální počítače, poskytuje analýzy hrozeb, detekci anomálií a analýzu chování v Azure Security Center |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Standard_pricing_tier.json) |
+|[Je potřeba povolit Azure Defender pro App Service.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2913021d-f2fd-4f3d-b958-22354e2bdbcb) |Azure Defender pro App Service využívá škálování cloudu a viditelnost, kterou má Azure jako poskytovatel cloudu, ke sledování běžných útoků na webové aplikace. |AuditIfNotExists, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnAppServices_Audit.json) |
+|[Je potřeba povolit Azure Defender pro Azure SQL Database servery.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender pro SQL poskytuje funkce pro zpřístupnění a zmírnění potenciálních chyb zabezpečení databáze a zjišťuje neobvyklé aktivity, které by mohly označovat hrozby pro databáze SQL, a zjišťování a klasifikaci citlivých dat. |AuditIfNotExists, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
+|[V Azure Defenderu by se měly povolit Registry kontejnerů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |Azure Defender pro Registry kontejnerů poskytuje kontrolu ohrožení zabezpečení všech imagí vydaných během posledních 30 dnů, vložení do registru nebo naimportování a zpřístupňuje podrobné nálezy na bitovou kopii. |AuditIfNotExists, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
+|[Je potřeba povolit Azure Defender pro Key Vault.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e6763cc-5078-4e64-889d-ff4d9a839047) |Azure Defender pro Key Vault poskytuje další úroveň ochrany a přehledy zabezpečení díky detekci neobvyklých a potenciálně škodlivých pokusů o přístup k účtům trezoru klíčů nebo jejich zneužití. |AuditIfNotExists, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnKeyVaults_Audit.json) |
+|[Je potřeba povolit Azure Defender pro Kubernetes.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F523b5cd1-3e23-492f-a539-13118b6d1e3a) |Azure Defender pro Kubernetes poskytuje ochranu před hrozbami v reálném čase pro kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. |AuditIfNotExists, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnKubernetesService_Audit.json) |
+|[V Azure Defenderu by se měly povolit servery.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da35fc9-c9e7-4960-aec9-797fe7d9051d) |Azure Defender pro servery poskytuje ochranu před hrozbami v reálném čase pro úlohy serveru a generuje doporučení pro posílení zabezpečení a také výstrahy týkající se podezřelých aktivit. |AuditIfNotExists, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnVM_Audit.json) |
+|[Je potřeba povolit Azure Defender pro SQL servery na počítačích.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6581d072-105e-4418-827f-bd446d56421b) |Azure Defender pro SQL poskytuje funkce pro zpřístupnění a zmírnění potenciálních chyb zabezpečení databáze a zjišťuje neobvyklé aktivity, které by mohly označovat hrozby pro databáze SQL, a zjišťování a klasifikaci citlivých dat. |AuditIfNotExists, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServerVirtualMachines_Audit.json) |
+|[Je potřeba povolit Azure Defender pro úložiště.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F308fbb08-4ab8-4e67-9b29-592e93fb94fa) |Azure Defender pro úložiště poskytuje detekci neobvyklých a potenciálně škodlivých pokusů o přístup k účtům úložiště nebo jejich zneužití. |AuditIfNotExists, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnStorageAccounts_Audit.json) |
 
 ### <a name="ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>Ujistěte se, že je Automatické zřizování agenta monitorování nastavené na zapnuto.
 

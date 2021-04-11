@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Převod řeči na text, převod řeči na textový software
-ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3450d39729096bfc3077f51e2069f8f102e571a5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434304"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449388"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -26,7 +26,12 @@ Převod řeči na text, označovaný také jako rozpoznávání řeči, umožňu
 
 Služba převod řeči na text standardně používá univerzální jazykový model. Tento model byl vyškolený pomocí dat vlastněných společností Microsoft a nasazený v cloudu. Je ideální pro scénáře konverzace a diktování. Při použití převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvořit a naučit vlastní modely akustického, jazyka a výslovnosti. Přizpůsobení je užitečné pro řešení hlučného hluku nebo slovníku specifického pro konkrétní odvětví.
 
-Pomocí dalšího referenčního textu jako vstupu služba Speech-to-text Service také umožňuje [posouzení výslovnosti](rest-speech-to-text.md#pronunciation-assessment-parameters) , aby vyhodnotila výslovnost řeči a dává mluvčí názory na přesnost a Fluency mluveného zvuku. S hodnocením výslovnosti mohou jazyky naučit postupovat, získávat okamžitou zpětnou vazbu a zlepšovat jejich výslovnost, aby mohli mluvit a prezentovat s jistotou. Pedagogé můžou využít schopnost vyhodnotit výslovnost více mluvčích v reálném čase. Tato funkce aktuálně podporuje AMERICKou angličtinu a koreluje s hodnocením řeči, která provádějí odborníci.
+Tato dokumentace obsahuje následující typy článků:
+
+* **Rychlé starty** jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném **způsobu.**
+* **Koncepty** poskytují podrobné vysvětlení funkcí a funkcí služby.
+* **Kurzy** jsou delší než příručky, které ukazují, jak používat službu jako součást v širších obchodních řešeních.
 
 > [!NOTE]
 > Zpracování řeči Bingu byl vyvyřazen z 15. října 2019. Pokud vaše aplikace, nástroje nebo produkty používají rozhraní API Zpracování řeči Bingu, vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.

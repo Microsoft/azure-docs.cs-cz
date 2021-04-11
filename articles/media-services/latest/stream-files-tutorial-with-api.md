@@ -12,7 +12,7 @@ MS. Service: Media-Services MS. rebavování: MS. téma: kurz MS. Custom: MVC MS
 > [!NOTE]
 > I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
-Azure Media Services umožňuje kódování mediálních souborů ve formátech, které se přehrávají na nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Nápovědu k kódování naleznete v tématu [Encoding koncept](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS, můžete také kódovat. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
+Azure Media Services umožňuje kódování mediálních souborů ve formátech, které se přehrávají na nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Nápovědu k kódování naleznete v tématu [Encoding koncept](encode-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS, můžete také kódovat. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
 ![Přehrání videa s Azure Media Player](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -30,7 +30,7 @@ V tomto kurzu získáte informace o následujících postupech:
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou aplikaci Visual Studio, můžete získat [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- [Vytvořte účet Media Services](./create-account-howto.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
+- [Vytvořte účet Media Services](./account-create-how-to.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](./access-api-howto.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
 
 ## <a name="download-and-set-up-the-sample"></a>Stažení a nastavení ukázky
@@ -89,13 +89,13 @@ Výstupní [Asset](/rest/api/media/assets) ukládá výsledek vaší úlohy kód
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvoření transformace a úlohy, která nahraný soubor zakóduje
 
-Při kódování nebo zpracování obsahu v Media Services se jedná o společný vzor pro nastavení kódování jako recept. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Když odešlete nové úlohy pro každé nové video, použijete tento recept na všechna videa v knihovně. Recept v Media Services se nazývá **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transforms-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem.
+Při kódování nebo zpracování obsahu v Media Services se jedná o společný vzor pro nastavení kódování jako recept. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Když odešlete nové úlohy pro každé nové video, použijete tento recept na všechna videa v knihovně. Recept v Media Services se nazývá **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transform-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem.
 
 #### <a name="transform"></a>Transformace
 
-Když vytváříte novou instanci [Transformace](/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](autogen-bitrate-ladder.md).
+Když vytváříte novou instanci [Transformace](/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](encode-autogen-bitrate-ladder.md).
 
-Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvořit vlastní. Další informace najdete v tématu o [postupu přizpůsobení předvoleb kodéru](customize-encoder-presets-how-to.md).
+Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvořit vlastní. Další informace najdete v tématu o [postupu přizpůsobení předvoleb kodéru](encode-custom-presets-how-to.md).
 
 Než začnete vytvářet [transformaci](/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže). Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
@@ -200,4 +200,4 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 Teď, když už víte, jak nahrávat, kódovat a streamovat videa, podívejte se na následující článek: 
 
 > [!div class="nextstepaction"]
-> [Analýza videí](analyze-videos-tutorial-with-api.md)
+> [Analýza videí](analyze-videos-tutorial.md)

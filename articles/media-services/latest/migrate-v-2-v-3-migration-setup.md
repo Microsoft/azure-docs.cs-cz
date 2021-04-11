@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959666"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279676"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Krok 3 – nastavení pro migraci na verzi V3 REST API nebo klientskou sadu SDK
 
@@ -43,7 +43,7 @@ Zákazníci, kteří dříve používali verzi 2015-10-01 rozhraní API pro spr�
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>Vytvoření nového účtu Media Services pro testování
 
-Postupujte podle pokynů k rychlému zprovoznění a [nastavte své prostředí](how-to-set-azure-subscription.md?tabs=portal) pomocí Azure Portal. Vyberte přístup přes rozhraní API a ověřování instančního objektu a vygenerujte nové ID aplikace Azure AD a tajné klíče pro použití s tímto testovacím účtem.
+Postupujte podle pokynů k rychlému zprovoznění a [nastavte své prostředí](setup-azure-subscription-how-to.md?tabs=portal) pomocí Azure Portal. Vyberte přístup přes rozhraní API a ověřování instančního objektu a vygenerujte nové ID aplikace Azure AD a tajné klíče pro použití s tímto testovacím účtem.
 
 [Vytvořte účet Media Services](account-create-how-to.md?tabs=portal).
 [Získat přihlašovací údaje pro přístup k Media Services rozhraní API](access-api-howto.md?tabs=portal)
@@ -66,7 +66,7 @@ Postupujte podle pokynů k rychlému zprovoznění a [nastavte své prostředí]
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-Pro volání Media Services V3 REST API použijte [metodu post](./media-rest-apis-with-postman.md) .
+Pro volání Media Services V3 REST API použijte [metodu post](./setup-postman-rest-how-to.md) .
 Přečtěte si [referenční stránky REST API](/rest/api/media/).
 
 V kolekci po použití byste měli použít řetězec verze 2020-05-01.

@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d24e67eac54b3ce4eadfc6a4bde47410d59fae8b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587383"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581110"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
@@ -26,6 +26,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 ## <a name="download-and-install-via-powershell-gallery"></a>Stažení a instalace prostřednictvím Galerie prostředí PowerShell
 
 ### <a name="install-prerequisites"></a>Požadavky na instalaci
+
+- Pokud chcete monitorování povolit, budete potřebovat připojovací řetězec. Připojovací řetězec se zobrazí v okně Přehled prostředku Application Insights. Další informace najdete v tématu [připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#finding-my-connection-string)stránky.
 
 > [!NOTE]
 > Od dubna 2020 Galerie prostředí PowerShell zastaralou TLS 1,1 a 1,0.
@@ -50,9 +52,10 @@ Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ``` 
 
 ### <a name="enable-monitoring"></a>Povolení monitorování
+
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
     
         
@@ -69,9 +72,11 @@ $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\Az.Applicati
 Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
 ### <a name="enable-monitoring"></a>Povolení monitorování
+
 ```powershell
-Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
+
 
 
 
