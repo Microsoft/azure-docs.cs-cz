@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015451"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490008"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -240,7 +240,7 @@ Následující tabulka shrnuje, jak se funkce IoT Central zařízení Azure nama
 | Telemetrie | Zasílání zpráv ze zařízení do cloudu |
 | Offline příkazy | Zasílání zpráv z cloudu na zařízení |
 | Vlastnost | Nedokončené hlášené vlastnosti zařízení |
-| Vlastnost (zapisovatelná) | Požadované a hlášené vlastnosti vlákna zařízení |
+| Vlastnost (zapisovatelné) | Požadované a hlášené vlastnosti vlákna zařízení |
 | Příkaz | Přímé metody |
 
 ### <a name="protocols"></a>Protokoly

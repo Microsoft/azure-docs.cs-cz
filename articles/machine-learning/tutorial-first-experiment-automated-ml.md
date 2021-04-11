@@ -1,7 +1,7 @@
 ---
 title: Vytváření automatizovaných klasifikačních modelů ML
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak naučit & nasazovat modely klasifikace pomocí rozhraní automatizovaného strojového učení pro Azure Machine Learning (Automated ML).
+description: Výukové & nasazení modelů klasifikace bez psaní kódu pomocí automatizovaného rozhraní machine learningu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,31 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691939"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210842"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 
-
-V tomto kurzu se naučíte, jak vytvořit jednoduchý model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
+Naučte se vytvářet [jednoduchý model klasifikace](concept-automated-ml.md#classification) bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
 Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
 
-Příklad předpovědi časových řad najdete v tématu [kurz: prognózování poptávky & AutoML](tutorial-automated-ml-forecast.md).
-
-V tomto kurzu se naučíte, jak provádět následující úlohy:
+V tomto kurzu nebudete psát žádný kód, k provedení školení použijete rozhraní studia.  Naučíte se, jak provádět následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvořte pracovní prostor Azure Machine Learning.
 > * Jak spouštět experimenty automatizovaného strojového učení.
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu
+
+Vyzkoušejte taky automatizované Machine Learning pro tyto typy modelů:
+
+* Příklad předběžného kódu pro prognózování najdete v tématu [kurz: prognózování poptávky & AutoML](tutorial-automated-ml-forecast.md).
+* Příklad kódu regresního modelu naleznete v [kurzu: Použití automatizovaného strojového učení k předvídání taxislužby tarifů](tutorial-auto-train-models.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,7 +54,7 @@ Existuje mnoho způsobů, jak [vytvořit pracovní prostor](how-to-manage-worksp
 >[!IMPORTANT] 
 > Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme v Azure Machine Learning Studiu
+## <a name="sign-in-to-the-studio"></a>Přihlásit se k studiu
 
 Provedete následující kroky experimentu a spustíte je pomocí nástroje Azure Machine Learning Studio v rámci https://ml.azure.com , konsolidovaného webového rozhraní, které zahrnuje nástroje strojového učení, k provádění scénářů pro datové vědy u všech úrovní dovedností. Aplikace Studio není podporována v prohlížečích aplikace Internet Explorer.
 
@@ -94,7 +96,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -128,7 +130,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
     1. Vyberte **+ vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
         1. Naplňte formulář **virtuálního počítače** a nastavte výpočetní výkon.
 
-            Pole | Popis | Hodnota pro kurz
+            Pole | Description | Hodnota pro kurz
             ----|---|---
             &nbsp;Priorita virtuálního počítače &nbsp; |Vyberte prioritu, kterou by měl váš experiment mít.| Vyhrazená
             &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
@@ -136,7 +138,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         
         1. Výběrem možnosti **Další** naplňte **formulář Konfigurovat nastavení**.
         
-            Pole | Popis | Hodnota pro kurz
+            Pole | Description | Hodnota pro kurz
             ----|---|---
             Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | automl – COMPUTE
             Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
@@ -159,7 +161,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
 
     1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit

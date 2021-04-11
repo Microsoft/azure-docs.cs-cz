@@ -1,19 +1,19 @@
 ---
 title: Správa výchozí úrovně přístupu účtu Azure Storage
 description: Naučte se, jak změnit výchozí úroveň přístupu účtu GPv2 nebo Blob Storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/11/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 026ab6be1fd4ef79f818f796c4725f6613a9bc6d
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653828"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277381"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Správa výchozí úrovně přístupu účtu Azure Storage
 

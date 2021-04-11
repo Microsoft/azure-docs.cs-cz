@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055106"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210806"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Rychlý Start: Začínáme s Azure Stack Edge pro s grafickým procesorem 
 
@@ -36,7 +36,7 @@ Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 
 ## <a name="deployment-steps"></a>Kroky nasazení
 
-1. **Instalace**: Připojte port 1 ke klientskému počítači přes křížený kabel nebo adaptér USB Ethernet. Připojte alespoň jeden další port zařízení pro data, nejlépe 25 přenosů (z portu 3 na PORT 6) do Internetu prostřednictvím přepínače s rychlostí 1 GbE a SFP + měděné kabely. Připojte zadané napájecí šňůry k jednotkám napájení a oddělte možnosti oddělení elektrického napájení. Kliknutím na tlačítko napájení na předním panelu zařízení zapněte.  
+1. **Instalace**: Připojte port 1 ke klientskému počítači přes křížený kabel nebo adaptér USB Ethernet. Připojte alespoň jeden další port zařízení pro data, nejlépe 25 přenosů (z portu 3 na PORT 6) k Internetu prostřednictvím kabelů s IP a měděnými kabely nebo použijte PORT 2 s kabelem opravy RJ45. Připojte zadané napájecí šňůry k jednotkám napájení a oddělte možnosti oddělení elektrického napájení. Kliknutím na tlačítko napájení na předním panelu zařízení zapněte.  
 
     Seznamte se s kompatibilními síťovými kabely a přepínači v části [Cavium FastlinQ 41000 Series](https://www.marvell.com/documents/xalflardzafh32cfvi0z/) a [Mellanox Dual Port 25G ConnectX-4 Channel kompatibilních síťových adaptérů](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products) .
 

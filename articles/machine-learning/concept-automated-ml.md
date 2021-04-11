@@ -10,18 +10,29 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643654"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210788"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
 Automatizované Machine Learning, označovaný také jako automatizovaná ML nebo AutoML, je proces automatizace časově náročného zpracování iterativních úloh vývoje modelů strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým škálováním, efektivitou a produktivitou, a přitom udržuje kvalitu modelu. Automatizované ML v Azure Machine Learning jsou založené na převratcích z našeho [oddělení Microsoft Research](https://www.microsoft.com/research/project/automl/).
 
 Tradiční vývoj modelů ve strojovém učení je náročný na prostředky, což vyžaduje významné znalosti v doméně a dobu potřebnou k vytváření a porovnávání desítk modelů. Díky automatizovanému strojového učení urychlíte dobu potřebnou k získání modelů ML připravené k produkčnímu prostředí s využitím Skvělé a efektivity.
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML v Azure Machine Learning
+
+Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML:
+
+* Pro zkušené zákazníky v kódu [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro).  Začínáme s [kurzem: pomocí automatizovaného strojového učení předpovídat taxislužby tarify](tutorial-auto-train-models.md).
+
+* Pro uživatele s omezením nebo bez zkušeností kódů se Azure Machine Learning studia na adrese [https://ml.azure.com](https://ml.azure.com/) .  Začněte s těmito kurzy:
+    * [Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ml v Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
+    *  [Kurz: Předpověď poptávky pomocí automatizovaného strojového učení](tutorial-automated-ml-forecast.md)
+
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>Kdy použít AutoML: klasifikovat, regrese, & prognóza
 
@@ -199,14 +210,6 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 * Předpověď prodeje pro každé individuální úložiště
 * Prediktivní údržba stovek ropných zásobníků
 * Přizpůsobení prostředí pro jednotlivé uživatele.
-
-## <a name="automl-in-azure-machine-learning"></a>AutoML v Azure Machine Learning
-
-Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML:
-
-* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) 
-
-* Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 

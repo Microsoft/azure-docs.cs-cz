@@ -3,38 +3,28 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je služba Rozpoznávání tváře?
+    - name: Přehled služby obličeje
       href: Overview.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Co je nového
       href: releasenotes.md
-- name: Rychlé starty
-  items:
-    - name: S využitím klientské knihovny nebo REST API
-      href: Quickstarts/client-libraries.md
-- name: Kurzy
-  items:
-    - name: S využitím klientské sady SDK
-      items:
-        - name: C#
-          href: Tutorials/FaceAPIinCSharpTutorial.md
-- name: Koncepty
-  items:
-    - name: Rozpoznávání tváře
-      href: concepts/face-detection.md
-    - name: Rozpoznávání tváře
-      href: concepts/face-recognition.md
+- name: Rychlý Start obličeje
+  href: Quickstarts/client-libraries.md
+- name: ukázky
+  href: /samples/browse/?products=azure&term=face
 - name: Návody
   items:
-    - name: Rozpoznávání tváří
+    - name: Detekovat a analyzovat plošky
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: Zadejte verzi modelu rozpoznávání obličeje.
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Zadejte verzi modelu detekce obličeje.
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Přidání tváří do skupiny
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: Použití atributu HeadPose
       href: Face-API-How-to-Topics/how-to-use-headpose.md
-    - name: Určení modelu rozpoznávání obličeje
-      href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: Určení modelu detekce obličeje
-      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Omezení latence při použití služby Rozpoznávání tváře
       href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: Použití funkce ve velkém měřítku
@@ -43,8 +33,12 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: Migrace údajů o tvářích
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: Použití kontejnerů
+    - name: Použití kontejneru Face
       items:
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+        - name: Přehled kontejnerů
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
         - name: Instalace a spuštění kontejnerů
           href: face-how-to-install-containers.md
         - name: Konfigurace kontejnerů
@@ -52,49 +46,47 @@
         - name: Použití instancí kontejneru
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Dokumentace ke kontejnerům Cognitive Services
-          href: ../containers/index.yml
-- name: Scénář do hloubky
+- name: Koncepty
   items:
-    - name: Registrace tváře
+    - name: Rozpoznávání tváře
+      href: concepts/face-detection.md
+    - name: Rozpoznávání tváře
+      href: concepts/face-recognition.md
+- name: Kurzy
+  items:
+    - name: Vytvoření aplikace pro rozpoznávání tváře
+      href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Přidání uživatelů do služby obličeje
       items:
-        - name: Přehled
+        - name: Osvědčené postupy pro přidávání uživatelů
           href: enrollment-overview.md
-        - name: Návody
-          items:
-            - name: Sestavení registrační aplikace s využitím Reactu
-              href: build-enrollment-app.md
-- name: Referenční informace
+        - name: Sestavení aplikace s přístavou reakce pro přidání uživatelů
+          href: build-enrollment-app.md
+- name: Reference
   items:
-    - name: Rozhraní API pro rozpoznávání tváře
+    - name: REST API obličeje
       href: APIReference.md
-    - name: Sady SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Python
-          href: /python/api/azure-cognitiveservices-vision-face/
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-face
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
-- name: Zdroje a prostředky
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-face
+    - name: Python
+      href: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+    - name: Přejít
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+- name: Zdroje informací
   items:
+    - name: Podpora oblastí
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Naučit se moduly
+      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: ukázky
-      items:
-        - name: Ukázky služby Rozpoznávání tváře
-          href: /samples/browse/?products=azure&term=face
-    - name: Ceny a omezení
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování
       href: encrypt-data-at-rest.md
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

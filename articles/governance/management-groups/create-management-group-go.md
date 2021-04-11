@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí nástroje přejít'
 description: V tomto rychlém startu použijete příkaz Přejít k vytvoření skupiny pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b6ca4d10f2a86ecb55fec2afe72b4aabfbb94f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf2d2c556cfd6ada6d31fc6ee797888ed0899573
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100101762"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091442"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí nástroje přejít
 
@@ -57,7 +57,7 @@ Pokud chcete povolit možnost přejít ke správě skupin pro správu, musí se 
 
 ## <a name="application-setup"></a>Nastavení aplikace
 
-S přidanými balíčky přejít do vašeho prostředí je čas nastavit aplikaci, která může vytvořit skupinu pro správu.
+Díky balíčkům pro cestách přidaným do vašeho prostředí je čas nastavit aplikaci pro přechod, která může vytvořit skupinu pro správu.
 
 1. Vytvořte aplikaci přejít a uložte následující zdroj `mgCreate.go` :
 

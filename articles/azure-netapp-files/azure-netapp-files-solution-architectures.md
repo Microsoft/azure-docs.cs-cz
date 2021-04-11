@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 47c641eedbbe096a75223286563acb0a2405b1a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d5ff0f2444aac153116e8e33a6ed2af74c93f057
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935205"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553511"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -54,10 +54,11 @@ Tato část poskytuje odkazy na aplikace systému Windows a SQL Server řešení
 
 ### <a name="sql-server"></a>SQL Server
 
+* [Průvodce nasazením SQL Server v Azure pomocí Azure NetApp Files](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
+* [Výhody použití Azure NetApp Files pro nasazení SQL Server](solutions-benefits-azure-netapp-files-sql-server.md)
 * [Nasazení SQL Server přes protokol SMB pomocí Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
 * [Nasazení SQL Server Always-On clusteru s podporou převzetí služeb při selhání přes SMB s Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
 * [Nasazení skupin dostupnosti Always-On s využitím Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
-* [Výhody použití Azure NetApp Files pro nasazení SQL Server](solutions-benefits-azure-netapp-files-sql-server.md)
 
 ## <a name="sap-on-azure-solutions"></a>Řešení SAP v Azure
 
