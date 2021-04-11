@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f81d8a75cab38bccbfe0ca0f6405baafeb83459
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198859"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068179"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Kurz: Konfigurace modulu pravidel
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > - Nakonfigurujte modul pravidel pomocí portálu.
 > - Konfigurace modulu pravidel pomocí Azure CLI
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
 

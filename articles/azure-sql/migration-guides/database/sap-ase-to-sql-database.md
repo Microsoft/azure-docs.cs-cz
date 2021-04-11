@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 138a23b610ab96194424bb0f88cf94f516c2d223
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: f4648c216a0b6d06309c0166aba501d4f3f02a10
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626448"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027512"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Příručka k migraci: pomocnému programu SAP pro Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-V této příručce se dozvíte, jak migrovat databáze SAP Adapter Server Enterprise (pomocného programu) do databáze SQL Azure pomocí Pomocník s migrací SQL Serveru pro SAP Adapter Server Enterprise.
+V této příručce se dozvíte, [jak migrovat](https://azure.microsoft.com/migration/migration-journey) databáze SAP Adapter Server Enterprise (pomocného programu) do databáze SQL Azure pomocí [SQL Server](https://azure.microsoft.com/migration/migration-journey) Pomocník pro migraci pro SAP Adapter Server Enterprise.
 
 Další příručky k migraci najdete v tématu [Průvodce migrací databáze Azure](https://docs.microsoft.com/data-migration). 
 
@@ -34,7 +34,7 @@ Než začnete migrovat databázi SAP SE do vaší databáze SQL, udělejte toto:
 
 ## <a name="pre-migration"></a>Před migrací
 
-Až splníte požadavky, budete připraveni zjistit topologii vašeho prostředí a posoudit proveditelnost migrace.
+Až splníte požadavky, budete připraveni zjistit topologii vašeho prostředí a posoudit proveditelnost [migrace do cloudu Azure](https://azure.microsoft.com/migration).
 
 ### <a name="assess"></a>Posouzení
 
@@ -123,6 +123,7 @@ Další informace o těchto problémech a krocích pro jejich zmírnění najdet
 - Další informace o cyklu rozhraní a přijetí pro migrace do cloudu najdete tady:
    -  [Cloud Adoption Framework pro Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Osvědčené postupy pro výpočet nákladů a velikosti úloh pro migraci do Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Prostředky Migrace do cloudu](https://azure.microsoft.com/migration/resources)
 
 - Chcete-li vyhodnotit vrstvu přístupu aplikace, přečtěte si část [Data Access Migration Toolkit (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Podrobnosti o tom, jak provádět testování vrstvy přístupu k datům A/B, najdete [Pomocník pro experimentování s databázemi](/sql/dea/database-experimentation-assistant-overview).

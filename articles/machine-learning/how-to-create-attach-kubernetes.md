@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149320"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276650"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -48,12 +48,8 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
 
 - Pokud chcete použít privátní cluster AKS (pomocí privátního odkazu Azure), musíte nejdřív vytvořit cluster a pak ho **připojit** k pracovnímu prostoru. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](../aks/private-clusters.md).
 
-- Název COMPUTE pro cluster AKS musí být jedinečný v rámci pracovního prostoru Azure ML.
-    - Název je povinný a musí mít délku 3 až 24 znaků.
-    - Platné znaky jsou velká a malá písmena, číslice a znak-znaku.
-    - Název musí začínat písmenem.
-    - Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.
-   
+- Název COMPUTE pro cluster AKS musí být jedinečný v rámci pracovního prostoru Azure ML. Může obsahovat písmena, číslice a pomlčky. Musí začínat písmenem, končit písmenem nebo číslicí a mít délku 3 až 24 znaků.
+ 
  - Pokud chcete nasadit modely do uzlů **GPU** nebo **FPGAch** uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
  
 - Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__ prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__, __ověřování__ a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__. Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 

@@ -1,20 +1,20 @@
 ---
 title: Použití značek indexu objektů BLOB ke správě a hledání dat v Azure Blob Storage
 description: Podívejte se na příklady použití značek indexu objektů BLOB ke kategorizaci, správě a dotazování objektů BLOB.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a820f7efc39af8c6ab66c883d285b507c7bc7368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6f7ae7af0f2764bd3f157ad5ca3166c9989cd9bf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102563264"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276786"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v Azure Blob Storage
 
@@ -25,7 +25,7 @@ Rejstříky objektů BLOB kategorizují data v účtu úložiště pomocí atrib
 
 Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

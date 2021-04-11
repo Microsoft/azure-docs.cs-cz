@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462673"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226324"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -94,19 +94,14 @@ Tady je příklad dotazu, který určuje hodnotu pro všechny tři parametry:
 
 Při dotazování na základě **vztahů** digitálních vláken má dotazovací jazyk pro digitální vlákna Azure speciální syntaxi.
 
-Relace jsou načteny do oboru dotazu v klauzuli `FROM`. Důležité rozlišení od "klasických" jazyků typu SQL je to, že každý výraz v této `FROM` klauzuli není tabulka. místo toho `FROM` klauzule vyjadřuje křížové vztahy mezi entitami a je zapsána ve verzi služby Azure Digital revlákens `JOIN` .
+Relace jsou načteny do oboru dotazu v klauzuli `FROM`. Na rozdíl od "klasických" jazyků typu SQL nejsou jednotlivé výrazy v této `FROM` klauzuli tabulky. místo toho `FROM` klauzule vyjadřuje procházení relace mezi entitami. K procházení mezi relacemi používá digitální vlákna Azure vlastní verzi `JOIN` .
 
-Zavoláte se s možnostmi modelu digitálních vláken Azure, relace neexistují nezávisle na zdvojených [objektech](concepts-models.md) . To znamená, že `JOIN` dotazovacího jazyka Azure Digital Twins se trochu liší od `JOIN` obecného SQL, protože na relace se zde nelze dotazovat nezávisle a musí být vázány na dvojče.
-Za účelem začlenění tohoto rozdílu se v klauzuli `JOIN` používá klíčové slovo `RELATED` pro odkazování na sadu relací dvojčete.
+Zavoláte se s možnostmi modelu digitálních vláken Azure, relace neexistují nezávisle na zdvojených [objektech](concepts-models.md) . To znamená, že relace, na které se tady nedají dotazovat nezávisle, a musí být vázané na vlákna.
+Za tímto účelem se klíčové slovo `RELATED` používá v `JOIN` klauzuli pro vyžádání do sady určitého typu relace přicházející z vlákna s dvojitou kolekcí. Dotaz musí následně vyfiltrovat `WHERE` klauzuli, která konkrétní vlákna mají být použity v dotazu relace (s použitím `$dtId` hodnot vláken).
 
-Následující část obsahuje několik příkladů toho, co vypadá.
+Následující části obsahují příklady toho, co vypadá.
 
-> [!TIP]
-> V koncepčním důsledku Tato funkce napodobuje funkci CosmosDB orientované na dokumenty, kde `JOIN` lze provádět na podřízených objektech v dokumentu. CosmosDB používá `IN` klíčové slovo k označení toho, že má `JOIN` iterovat přes prvky pole v rámci aktuálního kontextu dokumentu.
-
-### <a name="relationship-based-query-examples"></a>Příklady dotazů založených na relacích
-
-Chcete-li získat datovou sadu, která obsahuje relace, použijte jeden `FROM` příkaz následovaný N `JOIN` příkazy N, kde `JOIN` příkazy Express na výsledek předchozího `FROM` nebo `JOIN` příkazu.
+### <a name="basic-relationship-query"></a>Dotaz na základní relaci
 
 Tady je ukázkový dotaz založený na relacích. Tento fragment kódu vybere všechny digitální vlákna s vlastností *ID* ABC a všechny digitální vlákna, které souvisejí s těmito digitálními podmnožinami prostřednictvím relace *obsahující* .
 
@@ -114,6 +109,18 @@ Tady je ukázkový dotaz založený na relacích. Tento fragment kódu vybere v�
 
 > [!NOTE]
 > Vývojář není muset korelovat `JOIN` s hodnotou klíče v `WHERE` klauzuli (nebo zadat hodnotu klíče vloženou s `JOIN` definicí). Tato korelace se počítá automaticky systémem, protože samotné vlastnosti relace identifikují cílovou entitu.
+
+### <a name="query-by-the-source-or-target-of-a-relationship"></a>Dotazování podle zdroje nebo cíle relace
+
+Strukturu dotazu Relationship můžete použít k identifikaci digitálního vlákna, které je zdrojem nebo cílem vztahu.
+
+Můžete například začít se zdrojem vlákna a sledovat jeho relace a vyhledat cílové vazby vztahů. Zde je příklad dotazu, který vyhledá *cílové vazby vztahů, které* přicházejí z vlákna s dvojitou *zdrojem*.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+
+Můžete také začít s cílem relace a sledovat relaci zpátky a najít zdrojovou nezávislost. Tady je příklad dotazu, který vyhledá zdrojovou hodnotu vlákna vztahu k typu vlákna s dvojitou *cílovou* *aktivitou* .
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>Dotazování vlastností relace
 
@@ -128,7 +135,9 @@ V předchozím příkladu si všimněte, že *reportedCondition* je vlastnost sa
 
 ### <a name="query-with-multiple-joins"></a>Dotaz s více spojeními
 
-`JOIN`V jednom dotazu je podporováno až pět s. To umožňuje procházet více úrovní vztahů najednou.
+`JOIN`V jednom dotazu je podporováno až pět s. To umožňuje procházet více úrovní vztahů najednou. 
+
+Chcete-li se dotazovat na více úrovní vztahů, použijte jeden `FROM` příkaz následovaný N `JOIN` příkazy N, kde `JOIN` příkazy Express vyplývají z výsledku předchozího `FROM` nebo `JOIN` příkazu.
 
 Zde je příklad dotazu s vícenásobnými spojeními, který získá všechny žárovky obsažené na světelných panelech v místnostech 1 a 2.
 

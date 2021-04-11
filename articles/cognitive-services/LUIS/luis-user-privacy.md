@@ -8,13 +8,13 @@ ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/10/2020
-ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2020
+ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98680165"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228278"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportujte a odstraňte zákaznická data v Language Understanding (LUIS) v Cognitive Services
 
@@ -37,8 +37,8 @@ LUIS uživatelé mají plnou kontrolu nad tím, že budou odstraňovat obsahy u�
 
 | | **Uživatelský účet** | **Aplikace** | **Příklad utterance** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
-| **Azure Portal** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
-| **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
+| **Azure Portal** | [Propojit](luis-concept-data-storage.md#delete-an-account) | [Propojit](luis-how-to-start-new-app.md#delete-app) | [Propojit](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
+| **Rozhraní API** | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
@@ -46,7 +46,7 @@ LUIS uživatelé mají úplné řízení pro zobrazení dat na portálu, ale mus
 
 | | **Uživatelský účet** | **Aplikace** | **Utterance (celkem)** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
-| **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
+| **Rozhraní API** | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
 ## <a name="location-of-active-learning"></a>Umístění aktivního učení
 
@@ -85,7 +85,15 @@ Prostředky pro vytváření USA (označované také jako programové rozhraní 
 
 * Geografické oblasti Azure, které nepodporují oblasti tvorby Evropy nebo Austrálie
 
-Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v oblasti Azure USA geografie pro aktivní učení. 
+Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v oblasti Azure USA geografie pro aktivní učení.
+
+### <a name="switzerland-north"></a>Švýcarsko – sever
+
+Prostředky pro vytváření Švýcarsko – sever (označované také jako programové rozhraní API) se hostují ve službě Azure Švýcarsko a podporují nasazení koncových bodů do následujících geografických oblastí Azure:
+
+* Švýcarsko 
+
+Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v oblasti Azure Švýcarsko pro účely aktivního učení.
 
 ## <a name="disable-active-learning"></a>Zakázat aktivní učení
 

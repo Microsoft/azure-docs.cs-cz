@@ -1,60 +1,64 @@
 ---
 title: Správa verzí objektů BLOB
 titleSuffix: Azure Storage
-description: Správa verzí úložiště objektů BLOB automaticky udržuje předchozí verze objektu a identifikuje je pomocí časových razítek. Předchozí verze objektu blob můžete obnovit, aby se data obnovila, pokud se omylem změnila nebo odstranila.
+description: Správa verzí úložiště objektů BLOB automaticky udržuje předchozí verze objektu a identifikuje je pomocí časových razítek. Můžete obnovit předchozí verzi objektu BLOB a obnovit data, pokud jsou nesprávně upravená nebo Odstraněná.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 04/07/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82216abd13b6128be68e22a4ce2a0f6de9a6ce2f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380810"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227534"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
 Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage.  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
 
-Správa verzí objektů BLOB je povolená v účtu úložiště a platí pro všechny objekty BLOB v účtu úložiště. Po povolení správy verzí objektů BLOB pro účet úložiště Azure Storage automaticky zachovává verze všech objektů BLOB v účtu úložiště.
-
-Microsoft doporučuje používat správu verzí objektů BLOB k údržbě předchozích verzí objektu BLOB pro zajištění ochrany dat ve vynikajícím formátu. Pokud je to možné, použijte místo snímků objektů BLOB vytváření verzí objektů blob, abyste zachovali předchozí verze. Snímky objektů BLOB poskytují podobné funkce v tom, že udržují dřívější verze objektu blob, ale snímky musí být v aplikaci zachované ručně.
-
-Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
-
-> [!IMPORTANT]
-> Správa verzí objektů BLOB vám neumožňuje obnovit z náhodného odstranění účtu úložiště nebo kontejneru. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte zámek u prostředku účtu úložiště. Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md). Pokud chcete chránit kontejnery před náhodným odstraněním, nakonfigurujte pro účet úložiště obnovitelné odstranění kontejneru. Další informace najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md).
-
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
+## <a name="recommended-data-protection-configuration"></a>Doporučená konfigurace ochrany dat
+
+Správa verzí objektů BLOB je součástí komplexní strategie ochrany dat pro data objektů BLOB. Pro zajištění optimální ochrany dat objektů BLOB doporučuje Microsoft povolit všechny následující funkce ochrany dat:
+
+- Správa verzí objektů BLOB pro automatické udržování předchozích verzí objektu BLOB. Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila. Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
+- Dočasná odstranění kontejneru pro obnovení kontejneru, který byl odstraněn. Pokud chcete zjistit, jak povolit obnovitelné odstranění kontejneru, přečtěte si téma [povolení a Správa obnovitelného odstranění kontejnerů](soft-delete-container-enable.md).
+- Obnovitelné odstranění objektu BLOB pro obnovení objektu blob, snímku nebo verze, který byl odstraněn. Informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [povolení a Správa obnovitelného odstranění pro objekty blob](soft-delete-blob-enable.md).
+
+Další informace o doporučeních Microsoftu pro ochranu dat najdete v tématu [Přehled ochrany dat](data-protection-overview.md).
 
 ## <a name="how-blob-versioning-works"></a>Jak funguje Správa verzí objektů BLOB
 
-Verze zachytí stav objektu BLOB v daném časovém okamžiku. Když je pro účet úložiště povolená Správa verzí objektů blob, Azure Storage automaticky vytvoří novou verzi objektu BLOB pokaždé, když se objekt BLOB upraví nebo odstraní.
+Verze zachytí stav objektu BLOB v daném časovém okamžiku. Když je pro účet úložiště povolená Správa verzí objektů blob, Azure Storage automaticky vytvoří novou verzi objektu BLOB pokaždé, když se objekt BLOB upraví.
 
 Při vytváření objektu BLOB s povoleným správou verzí je nový objekt blob aktuální verzí objektu BLOB (nebo základního objektu BLOB). Pokud následně tento objekt BLOB upravíte, Azure Storage vytvoří verzi, která před úpravou zachytí stav objektu BLOB. Upravený objekt BLOB se změní na novou aktuální verzi. Při každé změně objektu BLOB se vytvoří nová verze.
 
-Následující diagram znázorňuje, jak se vytvářejí verze při operacích zápisu a odstranění a jak může být předchozí verze povýšená na aktuální verzi:
+Následující diagram znázorňuje, jak se vytvářejí verze při operacích zápisu a jak může být předchozí verze povýšená na aktuální verzi:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Diagram znázorňující, jak funguje Správa verzí objektů BLOB":::
 
-Velký počet verzí na jeden objekt BLOB může zvýšit latenci pro operace výpisu objektů BLOB. Společnost Microsoft doporučuje udržovat méně než 1000 verzí na jeden objekt BLOB. Pokud chcete automaticky odstranit staré verze, můžete použít správu životního cyklu. Další informace o správě životního cyklu najdete v tématu [optimalizace nákladů díky automatizaci úrovní přístupu v Azure Blob Storage](storage-lifecycle-management-concepts.md).
-
-Když odstraníte objekt BLOB s povoleným správou verzí, Azure Storage vytvoří verzi, která před odstraněním zachytí stav objektu BLOB. Aktuální verze objektu BLOB se pak odstraní, ale verze objektu BLOB jsou trvalé, takže je v případě potřeby možné znovu vytvořit. 
+Když odstraníte objekt BLOB s povoleným správou verzí, aktuální verze objektu BLOB se odstraní. Všechny předchozí verze objektu BLOB jsou trvalé.
 
 Verze objektů BLOB jsou neměnné. Nemůžete změnit obsah nebo metadata existující verze objektu BLOB.
+
+Velký počet verzí na jeden objekt BLOB může zvýšit latenci pro operace výpisu objektů BLOB. Společnost Microsoft doporučuje udržovat méně než 1000 verzí na jeden objekt BLOB. Pokud chcete automaticky odstranit staré verze, můžete použít správu životního cyklu. Další informace o správě životního cyklu najdete v tématu [optimalizace nákladů díky automatizaci úrovní přístupu v Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
 Správa verzí objektů BLOB je k dispozici pro obecné účely v2, objekty blob bloku a účty BLOB Storage. Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány.
 
 Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí objektů BLOB.
 
+> [!IMPORTANT]
+> Správa verzí objektů BLOB vám neumožňuje obnovit z náhodného odstranění účtu úložiště nebo kontejneru. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte zámek u prostředku účtu úložiště. Další informace o uzamykání účtu úložiště najdete v tématu [použití zámku Azure Resource Manager k účtu úložiště](../common/lock-account-resource.md).
+
 ### <a name="version-id"></a>ID verze
 
-Každá verze objektu BLOB je identifikována ID verze. Hodnota ID verze je časové razítko, při kterém byl objekt BLOB zapsán nebo aktualizován. ID verze je přiřazeno v době, kdy je vytvořena verze.
+Každá verze objektu BLOB je identifikována ID verze. Hodnota ID verze je časové razítko, se kterým se aktualizoval objekt BLOB. ID verze je přiřazeno v době, kdy je vytvořena verze.
 
 Můžete provádět operace čtení nebo odstranění u konkrétní verze objektu BLOB zadáním jeho ID verze. Pokud ID verze vynecháte, operace bude fungovat s aktuální verzí (základní objekt BLOB).
 
@@ -77,29 +81,12 @@ Následující diagram ukazuje, jak operace zápisu ovlivňují verze objektů B
 > [!NOTE]
 > Objekt blob, který byl vytvořen před správou verzí povolený pro účet úložiště, nemá ID verze. Když se tento objekt BLOB upraví, změní se stávající objekt blob na aktuální verzi a vytvoří se verze, aby se před aktualizací uložil stav objektu BLOB. Verzi je přiřazeno ID verze, které je jeho časem vytvoření.
 
-### <a name="versioning-on-delete-operations"></a>Správa verzí při operacích odstranění
+Pokud je pro účet úložiště povolená Správa verzí objektů blob, všechny operace zápisu u objektů blob bloku aktivují vytvoření nové verze s výjimkou operace [blok Put](/rest/api/storageservices/put-block) .
 
-Když odstraníte objekt blob, bude aktuální verze objektu BLOB předchozí verzí a základní objekt BLOB se odstraní. Při odstranění objektu BLOB jsou zachovány všechny existující předchozí verze objektu BLOB.
-
-Volání operace [odstranění objektu BLOB](/rest/api/storageservices/delete-blob) bez ID verze odstraní základní objekt BLOB. Pokud chcete odstranit konkrétní verzi, zadejte pro tuto verzi na operaci odstranit ID.
-
-Následující diagram znázorňuje efekt operace odstranění u objektu BLOB s verzí:
-
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram znázorňující odstranění objektu BLOB se správou verzí":::
-
-Zápis nových dat do objektu BLOB vytvoří novou verzi objektu BLOB. Jakékoli existující verze nejsou ovlivněny, jak je znázorněno v následujícím diagramu.
-
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram znázorňující opětovné vytvoření objektu BLOB s verzí po odstranění":::
-
-### <a name="blob-types"></a>Typy objektů blob
-
-Pokud je pro účet úložiště povolená Správa verzí objektů blob, všechny operace zápisu a odstranění v objektech blob bloku aktivují vytvoření nové verze s výjimkou operace [Block Put](/rest/api/storageservices/put-block) .
-
-Pro objekty blob stránky a doplňovací objekty BLOB se při vytváření verze aktivuje jenom podmnožina operací zápisu a odstranění. Mezi tyto operace patří:
+Pro objekty blob stránky a doplňovací objekty BLOB se při vytváření verze aktivuje jenom podmnožina operací zápisu. Mezi tyto operace patří:
 
 - [Vložení objektu blob](/rest/api/storageservices/put-blob)
 - [Seznam blokovaných umístění](/rest/api/storageservices/put-block-list)
-- [Odstranění objektu blob](/rest/api/storageservices/delete-blob)
 - [Nastavení metadat objektu BLOB](/rest/api/storageservices/set-blob-metadata)
 - [Zkopírování objektu blob](/rest/api/storageservices/copy-blob)
 
@@ -108,7 +95,21 @@ Následující operace neaktivují vytvoření nové verze. Chcete-li zachytit z
 - [Vložit stránku](/rest/api/storageservices/put-page) (objekt blob stránky)
 - [Připojit blok](/rest/api/storageservices/append-block) (doplňovací objekt BLOB)
 
-Všechny verze objektu BLOB musí být stejného typu BLOB. Pokud má objekt BLOB předchozí verze, nemůžete přepsat objekt BLOB jednoho typu jiným typem, pokud nejprve neodstraníte objekt BLOB a všechny jeho verze.
+Všechny verze objektu BLOB musí být stejného typu BLOB. Pokud má objekt BLOB předchozí verze, nelze přepsat objekt BLOB jednoho typu jiným typem, pokud nejprve neodstraníte objekt BLOB a všechny jeho verze.
+
+### <a name="versioning-on-delete-operations"></a>Správa verzí při operacích odstranění
+
+Když zavoláte operaci [odstranění objektu BLOB](/rest/api/storageservices/delete-blob) bez zadání ID verze, stane se aktuální verze předchozí verze a už neexistuje aktuální verze. Všechny existující předchozí verze objektu BLOB jsou zachovány.
+
+Následující diagram znázorňuje efekt operace odstranění u objektu BLOB s verzí:
+
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram znázorňující odstranění objektu BLOB se správou verzí":::
+
+Pokud chcete odstranit konkrétní verzi objektu blob, zadejte pro tuto verzi na operaci odstranit ID. Pokud je pro účet úložiště zapnuté i obnovitelné odstranění objektů blob, verze se udržuje v systému, dokud neuplyne doba uchování obnovitelného odstranění.
+
+Zápis nových dat do objektu BLOB vytvoří novou aktuální verzi objektu BLOB. Jakékoli existující verze nejsou ovlivněny, jak je znázorněno v následujícím diagramu.
+
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram znázorňující opětovné vytvoření objektu BLOB s verzí po odstranění":::
 
 ### <a name="access-tiers"></a>Úrovně přístupu
 
@@ -132,27 +133,29 @@ Následující diagram ukazuje, jak se mění objekt BLOB po zakázání správy
 
 ## <a name="blob-versioning-and-soft-delete"></a>Správa verzí a obnovitelné odstranění objektů BLOB
 
-Správa verzí objektů BLOB a měkké odstranění objektů BLOB společně poskytují optimální ochranu dat. Pokud povolíte obnovitelné odstranění, určíte, jak dlouho Azure Storage by měl zachovat objekt BLOB s odstraněnou příznakem. Jakákoli dočasná Odstraněná verze objektu BLOB zůstane v systému a může být v rámci doby uchování obnovitelného odstranění neodstraní. Další informace o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md).
+Microsoft doporučuje, aby se pro vaše účty úložiště povolila jak Správa verzí, tak i předběžné odstranění objektů BLOB pro optimální ochranu dat. Obnovitelné odstranění chrání objekty blob, verze a snímky před náhodným odstraněním. Další informace o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md).
+
+### <a name="overwriting-a-blob"></a>Přepsání objektu BLOB
+
+Pokud pro účet úložiště povolíte správu verzí objektů BLOB a obnovitelné odstranění objektů blob, přepsání objektu BLOB automaticky vytvoří novou verzi. Nová verze není Odstraněná a při vypršení doby uchování dočasného odstranění se neodebere. Nevytvořily se žádné snímky odstraněné.
 
 ### <a name="deleting-a-blob-or-version"></a>Odstranění objektu BLOB nebo verze
 
-Obnovitelné odstranění nabízí další ochranu pro odstraňování verzí objektů BLOB. Pokud je v účtu úložiště zapnutá jak Správa verzí, tak i obnovitelné odstranění, Azure Storage vytvoří novou verzi, která uloží stav objektu BLOB hned před odstraněním a odstraní aktuální verzi. Nová verze není Odstraněná a při vypršení doby uchování dočasného odstranění se neodebere.
+Pokud je v účtu úložiště zapnutá jak Správa verzí, tak i obnovitelné odstranění, v případě odstranění objektu BLOB se v aktuální verzi objektu BLOB vytvoří předchozí verze a aktuální verze se odstraní. Nevytvoří se žádná nová verze a nevytvoří se žádné snímky odstraněné. Doba uchování obnovitelného odstranění není platná pro odstraněný objekt BLOB.
 
-Při odstranění předchozí verze objektu BLOB se odstraní i verze. Odstraněná verze se uchovává po celou dobu uchování, která je určená v nastaveních obnovitelného odstranění pro účet úložiště a je trvale Odstraněná po vypršení doby uchování obnovitelného odstranění.
+Obnovitelné odstranění nabízí další ochranu pro odstraňování verzí objektů BLOB. Odstraníte-li předchozí verzi objektu blob, bude tato verze odstraněna. Odstraněná verze je zachovaná, dokud doba uchování obnovitelného odstranění neuplyne a v tomto okamžiku je trvale odstraní.
 
-Pokud chcete odebrat předchozí verzi objektu blob, explicitně ji odstraňte zadáním ID verze.
+Pokud chcete odstranit předchozí verzi objektu blob, zavolejte operaci **Odstranit objekt BLOB** a zadejte ID verze.
 
 Následující diagram ukazuje, co se stane, když odstraníte objekt BLOB nebo verzi objektu BLOB.
 
 :::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram znázorňující odstranění verze s povoleným obnovitelném odstraněním":::
 
-Pokud je v účtu úložiště zapnutá jak Správa verzí, tak i obnovitelné odstranění, při úpravě nebo odstranění verze objektu BLOB nebo objektu BLOB se nevytvoří žádný snímek s odstraněným odstraněnou.
-
 ### <a name="restoring-a-soft-deleted-version"></a>Obnovení softwarové odstraněné verze
 
-Odstraněnou verzi objektu blob můžete obnovit tak, že zavoláte operaci zrušit [odstranění objektu BLOB](/rest/api/storageservices/undelete-blob) ve verzi, zatímco doba uchování obnovitelného odstranění je platná. Operace obnovení **objektu BLOB** obnoví všechny dočasně odstraněné verze objektu BLOB.
+Pomocí operace obnovení [objektu BLOB](/rest/api/storageservices/undelete-blob) můžete obnovit dočasně odstraněné verze během doby uchovávání obnovitelného odstranění. Operace obnovení **objektu BLOB** vždy obnoví všechny místně odstraněné verze objektu BLOB. Není možné obnovit pouze jednu odstraněnou verzi.
 
-Obnovení softwarově odstraněných verzí pomocí operace **obnovení objektu BLOB** nezvýší žádnou verzi na aktuální verzi. Chcete-li obnovit aktuální verzi, nejprve obnovte všechny dočasně odstraněné verze a pak pomocí operace [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) zkopírujte předchozí verzi pro obnovení objektu BLOB.
+Obnovení softwarově odstraněných verzí pomocí operace **obnovení objektu BLOB** nezvýší žádnou verzi na aktuální verzi. Chcete-li obnovit aktuální verzi, nejprve obnovte všechny dočasně odstraněné verze a pak pomocí operace [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) zkopírujte předchozí verzi do nové aktuální verze.
 
 Následující diagram ukazuje, jak obnovit obnovitelné odstraněné verze objektů BLOB pomocí operace obnovení **objektu BLOB** a jak obnovit aktuální verzi objektu BLOB pomocí operace **kopírování objektu** BLOB.
 
@@ -193,8 +196,8 @@ Následující tabulka uvádí, které akce Azure RBAC podporují odstranění o
 
 | Description | Operace Blob service | Vyžaduje se akce s daty služby Azure RBAC. | Podpora integrované role Azure |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
-| Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat v objektech blob služby Storage |
+| Odstraňuje se aktuální verze. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
+| Odstranění předchozí verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat v objektech blob služby Storage |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Parametry sdíleného přístupového podpisu (SAS)
 

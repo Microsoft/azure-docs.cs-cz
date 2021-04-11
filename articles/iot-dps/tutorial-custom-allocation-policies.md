@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258537"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227377"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Kurz: použití vlastních zásad přidělování se službou Device Provisioning Service (DPS)
 
@@ -483,6 +483,17 @@ Odstranění skupiny prostředků podle názvu:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnější příklad vlastní zásady přidělování najdete v tématu [Jak používat vlastní zásady přidělování](how-to-use-custom-allocation-policies.md).
-* Další informace o opětovném zřízení najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](concepts-device-reprovision.md).
-* Další informace o zrušení zřízení najdete v tématu [Jak zrušit zřízení zařízení, která byla dřív zřízena](how-to-unprovision-devices.md).
+Podrobnější příklad vlastní zásady přidělování najdete v tématu. 
+
+> [!div class="nextstepaction"]
+> [Postupy používání vlastních zásad přidělování](how-to-use-custom-allocation-policies.md)
+
+* Další informace o opětovném zřízení najdete v tématu.
+
+> [!div class="nextstepaction"]
+> [Koncepce opětovného zřizování zařízení IoT Hub](concepts-device-reprovision.md)
+
+* Další informace o zrušení zřízení najdete v tématu.
+
+> [!div class="nextstepaction"]
+> [Postup zrušení zřízení zařízení, která byla dřív zřízena](how-to-unprovision-devices.md)

@@ -7,27 +7,28 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 02/19/2021
-ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 80d1e4f39d69f761b801ccec834c0228057e4847
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461670"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448521"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Customer Lockbox pro Microsoft Azure
 
 > [!NOTE]
 > Aby mohla vaše organizace používat tuto funkci, musí mít [plán podpory Azure](https://azure.microsoft.com/support/plans/) s minimální úrovní **vývojářů**.
 
-Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, ve kterém můžou kontrolovat a schvalovat nebo zamítat žádosti zákazníků o přístup k datům. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
+Většina operací, podpora a řešení potíží prováděných pracovníky Microsoftu a podprocesory nevyžadují přístup k zákaznickým datům. V případech, kdy je takový přístup nutný, Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy pracovník Microsoftu potřebuje získat přístup k zákaznickým datům, ať už v reakci na lístek podpory iniciované zákazníkem, nebo na problém identifikovaný společností Microsoft.
 
 Tento článek popisuje, jak povolit Customer Lockbox a jak se spouští, sledují a ukládají požadavky na bezpečnostní moduly pro pozdější revize a audity.
 
 <a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
-## <a name="supported-services-and-scenarios-general-availability"></a>Podporované služby a scénáře (všeobecně dostupné)
+## <a name="supported-services-and-scenarios"></a>Podporované služby a scénáře
 
-Pro Customer Lockbox jsou teď všeobecně dostupné tyto služby:
+### <a name="general-availability"></a>Obecná dostupnost
+Pro Customer Lockbox jsou všeobecně dostupné tyto služby:
 
 - Azure API Management
 - Azure App Service
@@ -49,6 +50,12 @@ Pro Customer Lockbox jsou teď všeobecně dostupné tyto služby:
 - Azure Synapse Analytics
 - Virtuální počítače v Azure (zahrnující přístup ke vzdálené ploše, přístup k výpisům paměti a spravované disky)
 
+### <a name="public-preview"></a>Public Preview
+Následující služby jsou momentálně ve verzi Preview pro Customer Lockbox:
+
+- Azure Machine Learning
+- Azure Batch
+
 ## <a name="enable-customer-lockbox"></a>Povolit Customer Lockbox
 
 Nyní můžete povolit Customer Lockbox z [modulu pro správu](https://aka.ms/customerlockbox/administration) v okně Customer Lockbox.  
@@ -66,7 +73,7 @@ Následující kroky popisují typický pracovní postup pro Customer Lockbox po
 
 3. Pracovník podpory Azure zkontroluje požadavek služby a určí další kroky k vyřešení tohoto problému.
 
-4. Pokud pracovník podpory nemůže vyřešit problém pomocí standardních nástrojů a telemetrie, je dalším krokem vyžádání zvýšených oprávnění pomocí služby pro přístup JIT (just-in-time). Tato žádost může být od původního inženýra podpory nebo z jiného inženýra, protože problém se překládá týmu Azure DevOps.
+4. Pokud pracovník podpory nemůže vyřešit problém pomocí standardních nástrojů a generovaných dat služby, je dalším krokem vyžádání zvýšených oprávnění pomocí služby pro přístup JIT (just-in-time). Tato žádost může být od původního inženýra podpory nebo z jiného inženýra, protože problém se překládá týmu Azure DevOps.
 
 5. Po odeslání žádosti o přístup prostřednictvím inženýra Azure vyhodnotí služba za běhu požadavek, který vezme v úvahu následující faktory:
     - Rozsah prostředku
@@ -129,8 +136,10 @@ Představili jsme nový základní ovládací prvek ([3,13](../benchmarks/securi
 
 Žádosti Customer Lockbox se nespouštějí v následujících scénářích technické podpory:
 
-- Technik Microsoftu potřebuje provést aktivitu, která nepatří mezi standardní provozní postupy. Příkladem je obnovení nebo zotavení služeb v neočekávaných nebo nepředvídatelných scénářích.
-- Technik Microsoftu přistupuje k platformě Azure v rámci řešení potíží a neúmyslně získá přístup k datům zákazníků. Například v důsledku řešení potíží síťovým týmem Azure může dojít k zachytávání paketů na síťovém zařízení. V tomto scénáři, pokud zákazník šifruje data během přenosu, nemůže inženýr data přečíst.
+- Nouzové scénáře, které spadají mimo standardní pracovní postupy. Například hlavní výpadek služeb vyžaduje okamžitou pozornost obnovení nebo obnovení služeb v neočekávaném nebo nepředvídatelném scénáři. Tyto události "break sklo" jsou vzácné a ve většině případů nevyžadují žádný přístup k zákaznickým datům, aby je bylo možné vyřešit.
+- Microsoft inženýr přistupuje k platformě Azure jako součást řešení potíží a je neúmyslně vystaven zákaznickým datům. Například v důsledku řešení potíží síťovým týmem Azure může dojít k zachytávání paketů na síťovém zařízení. Je zřídka pravděpodobné, že takové scénáře budou mít přístup k smysluplným objemům zákaznických dat. Zákazníci mohou dále chránit svá data prostřednictvím použití při přenosu a šifrování REST.
+
+Žádosti o Customer Lockbox se také nespouštějí externími právními požadavky na data. Podrobnosti najdete v diskuzi o [žádostech vlády o data](https://www.microsoft.com/trust-center/) na webu Microsoft Trust Center.
 
 ## <a name="next-steps"></a>Další kroky
 

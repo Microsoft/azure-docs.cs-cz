@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: cb7500489cc4516b8cf44dd029c0831103dc53a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add2a4aba1f7664b919e88992b2a1d71e8291b53
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103007928"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226765"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure Media Services běžných scénářů
 
@@ -49,7 +49,7 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 
 [![Diagram znázorňující některé z nejčastěji používaných objektů při vývoji s datovým modelem Azure Media Services objektů.](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
-Celý model můžete zobrazit [zde](https://media.windows.net/API/$metadata?api-version=2.15).  
+Celý model můžete zobrazit [zde](https://m.eet.com/media/1170326/ms-part1.pdf).  
 
 ## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Ochrana obsahu v úložišti a doručování streamovaných médií v nešifrované podobě
 

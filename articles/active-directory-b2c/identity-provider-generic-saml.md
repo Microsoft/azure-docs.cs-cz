@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a66486d791968f5752b96ed00374f8662b9c30fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580041"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028294"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí zprostředkovatele identity SAML pomocí Azure Active Directory B2C
 
@@ -227,7 +227,7 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **zásady** vyberte **Architektura prostředí identity**
 1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte tlačítko **Spustit** .
 1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Contoso** , abyste se přihlásili pomocí účtu contoso.
 

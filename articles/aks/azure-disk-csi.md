@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178877"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963322"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní Azure disk Container Storage (CSI) ve službě Azure Kubernetes Service (AKS) (Preview)
 Ovladač rozhraní Azure disk Container Storage (CSI) je ovladač kompatibilní se [specifikací CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md), který používá služba Azure Kubernetes Service (AKS) ke správě životního cyklu disků Azure.
@@ -71,9 +71,9 @@ test.txt
 
 Výchozí třídy úložiště vyhovují nejběžnějším scénářům, ale ne všem. V některých případech můžete chtít vlastní třídu úložiště přizpůsobit vlastním parametrům. Například máme situaci, kdy byste mohli chtít změnit `volumeBindingMode` třídu.
 
-Výchozí třídy úložiště používají `volumeBindingMode: Immediate` třídu, která zaručuje, že dojde ihned po vytvoření trvalého virtuálního okruhu. V případech, kdy jsou vaše fondy uzlů omezené, například používání zón dostupnosti, by PVs bylo vázané nebo zřízené bez znalosti požadavků na plánování (v tomto případě v konkrétní zóně).
+Můžete použít `volumeBindingMode: Immediate` třídu, která zaručuje, že dojde ihned po vytvoření trvalého virtuálního okruhu. V případech, kdy jsou vaše fondy uzlů omezené, například používání zón dostupnosti, by PVs bylo vázané nebo zřízené bez znalosti požadavků na plánování (v tomto případě v konkrétní zóně).
 
-Pro vyřešení tohoto scénáře můžete použít `volumeBindingMode: WaitForFirstConsumer` , čímž se odloží vazba a zřízení PV, dokud se nevytvoří pod, který používá trvalý virtuální okruh. V takovém případě bude PV odpovídat a bude zajištěna v zóně dostupnosti (nebo jiné topologii), která je zadána pomocí omezení plánování na základě.
+Pro vyřešení tohoto scénáře můžete použít `volumeBindingMode: WaitForFirstConsumer` , čímž se odloží vazba a zřízení PV, dokud se nevytvoří pod, který používá trvalý virtuální okruh. V takovém případě bude PV odpovídat a bude zajištěna v zóně dostupnosti (nebo jiné topologii), která je zadána pomocí omezení plánování na základě. Výchozí třídy úložiště používají `volumeBindingMode: WaitForFirstConsumer` třídu.
 
 Vytvořte soubor s názvem `sc-azuredisk-csi-waitforfirstconsumer.yaml` a vložte následující manifest.
 Třída úložiště je stejná jako naše `managed-csi` třída úložiště, ale s jinou `volumeBindingMode` třídou.

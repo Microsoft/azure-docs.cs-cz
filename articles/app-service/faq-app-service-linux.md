@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100093994"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012603"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v Linuxu
 
@@ -144,6 +144,20 @@ Automatické zjišťování portů jsme nastavili. Můžete také zadat nastaven
 
 Ne, platforma zpracovává ukončení HTTPS na sdílených front-endy.
 
+**Potřebuji v kódu pro předdefinované kontejnery použít proměnnou portu?**
+
+Ne, proměnná portu není nutná z důvodu automatické detekce portů. Pokud se nezjistí žádný port, použije se výchozí hodnota 80.
+Pokud chcete ručně nakonfigurovat vlastní port, použijte instrukci vystavení v souboru Dockerfile a nastavení aplikace WEBSITES_PORT s hodnotou portu, která se má navazovat na kontejner.
+
+**Potřebuji pro vlastní kontejnery použít WEBSITES_PORT?**
+
+Ano, to je vyžadováno pro vlastní kontejnery. Pokud chcete ručně nakonfigurovat vlastní port, použijte instrukci vystavení v souboru Dockerfile a nastavení aplikace WEBSITES_PORT s hodnotou portu, která se má navazovat na kontejner.
+
+**Můžu použít ASPNETCORE_URLS v imagi Docker?**
+
+Ano, přepsat proměnnou prostředí před spuštěním aplikace .NET Core.
+Například Ve skriptu init.sh: Exportujte ASPNETCORE_URLS = {vaše hodnota}
+
 ## <a name="multi-container-with-docker-compose"></a>Více kontejnerů s Docker Compose
 
 **Návody nakonfigurovat Azure Container Registry (ACR) pro použití s více kontejnery?**
@@ -206,3 +220,4 @@ Svůj nápad můžete odeslat na [fóru Web Apps Feedback](https://aka.ms/webapp
 - [Co je Azure App Service v systému Linux?](overview.md#app-service-on-linux)
 - [Nastavení přípravných prostředí ve službě Azure App Service](deploy-staging-slots.md)
 - [Průběžné nasazování pomocí Web App for Containers](./deploy-ci-cd-custom-container.md)
+- [Co byste měli znát: Web Apps a Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)

@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955e6b22c22d9cbe5891bcd0109806cb9270a456
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896321"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168650"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Nastavení průběžného nasazování s využitím Chocolatey
 
@@ -47,7 +47,7 @@ Jednou z klíčových funkcí šablony Správce prostředků je její schopnost 
 
 ## <a name="quick-trip-around-the-diagram"></a>Rychlá cesta kolem diagramu
 
-Od začátku můžete napsat kód, sestavit ho, otestovat ho a pak vytvořit instalační balíček. Čokoláda může zpracovávat různé typy instalačních balíčků, jako jsou MSI, MSU, ZIP. A máte celou sílu prostředí PowerShell, abyste mohli provádět vlastní instalaci, pokud nejsou k dispozici nativní funkce čokolády. Vložte balíček na místo, které je dostupné – úložiště balíčků. Tento příklad použití používá veřejnou složku v účtu služby Azure Blob Storage, ale může to být kdekoli. Čokoláda funguje nativně se servery NuGet a několik dalších pro správu metadat balíčku. [Tento článek](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) popisuje možnosti. Příklad použití používá NuGet. Nuspec je metadata o vašich balíčcích. Informace nuspec jsou kompilovány do NuPkg a uloženy na serveru NuGet. Když vaše konfigurace požaduje balíček podle názvu a odkazuje na server NuGet, prostředek DSC ve VIRTUÁLNÍm počítači prochází balíček a nainstaluje ho. Můžete si také vyžádat konkrétní verzi balíčku.
+Od začátku můžete napsat kód, sestavit ho, otestovat ho a pak vytvořit instalační balíček. Čokoláda může zpracovávat různé typy instalačních balíčků, jako jsou MSI, MSU, ZIP. A máte celou sílu prostředí PowerShell, abyste mohli provádět vlastní instalaci, pokud nejsou k dispozici nativní funkce čokolády. Vložte balíček do umístění, které je dostupné – úložiště balíčků. Tento příklad použití používá veřejnou složku v účtu služby Azure Blob Storage, ale může to být kdekoli. Čokoláda funguje nativně se servery NuGet a několik dalších pro správu metadat balíčku. [Tento článek](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) popisuje možnosti. Příklad použití používá NuGet. Nuspec je metadata o vašich balíčcích. Informace nuspec jsou kompilovány do NuPkg a uloženy na serveru NuGet. Když vaše konfigurace požaduje balíček podle názvu a odkazuje na server NuGet, prostředek DSC ve VIRTUÁLNÍm počítači prochází balíček a nainstaluje ho. Můžete si také vyžádat konkrétní verzi balíčku.
 
 V levém dolním rohu obrázku je Azure Resource Manager šablona. V tomto příkladu je rozšířením virtuálního počítače zaregistrované virtuální počítač pomocí serveru Pull konfigurace stavu Azure Automation jako uzel. Konfigurace je uložena na serveru vyžádané replikace dvakrát: jednou jako prostý text a po zkompilování jako soubor MOF. V Azure Portal MOF představuje konfiguraci uzlu, a to na rozdíl od jednoduché konfigurace. Je to artefakt, který je přidružen k uzlu, takže uzel bude znát jeho konfiguraci. Níže uvedené podrobnosti ukazují, jak přiřadit konfiguraci uzlu k uzlu.
 
@@ -73,8 +73,8 @@ Když aktualizujete balíček na virtuálním počítači, který je v produkčn
 Na příkazovém řádku ověřeného ( `Connect-AzAccount` ) PowerShellu: (může trvat několik minut, než se nastavil Server pro vyžádání obsahu)
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+New-AzResourceGroup -Name MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES
+New-AzAutomationAccount -ResourceGroupName MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES -Name MY-AUTOMATION-ACCOUNT
 ```
 
 Svůj účet Automation můžete vložit do kterékoli z následujících oblastí (označované taky jako umístění): Východní USA 2, Střed USA – jih, US Gov – Virginie, Západní Evropa, jihovýchodní Asie, Japonsko – východ, Střed Indie a Austrálie – jihovýchod, Kanada – střed, Severní Evropa.
@@ -103,7 +103,7 @@ K dispozici je také ruční přístup, který se používá jenom jednou pro ka
 2. Nainstalujte modul Integration Module.
 
     ```azurepowershell-interactive
-    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    Install-Module -Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
 3. Zkopírujte složku Module z adresáře **C:\Program Files\WindowsPowerShell\Modules\MODULE-Name** do dočasné složky.
@@ -119,7 +119,7 @@ K dispozici je také ruční přístup, který se používá jenom jednou pro ka
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME -ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 Zahrnutý příklad implementuje tyto kroky pro cChoco a xNetworking. 
@@ -175,18 +175,18 @@ Tady je **New-ConfigurationScript.ps1** skript (upravený tak, aby používal mo
 
 ```powershell
 Import-AzAutomationDscConfiguration `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -SourcePath C:\temp\AzureAutomationDsc\ISVBoxConfig.ps1 `
-    -Published –Force
+    -Published -Force
 
 $jobData = Start-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -ConfigurationName ISVBoxConfig
 
 $compilationJobId = $jobData.Id
 
 Get-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -Id $compilationJobId
 ```
 

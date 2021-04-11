@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 3a86f0eb88ba0a56f0887d71f649cf9b9d5ec7a3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882462"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227258"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
 
@@ -65,7 +65,7 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
 
 1. Vyplňte formulář s těmito nastaveními:
 
-    Pole|Popis 
+    Pole|Description 
     ---|---
     Název úložiště dat | Poskytněte úložiště dat název.  Zde používáme **labeling_tutorial**.
     Typ úložiště dat | Vyberte typ úložiště.  Tady používáme **Azure Blob Storage**, což je preferované úložiště pro obrázky.
@@ -90,7 +90,7 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
 1. Pro formulář **Project Details** použijte následující vstup:
 
-    Pole|Popis 
+    Pole|Description 
     ---|---
     Název projektu | Zadejte název svého projektu.  Tady budeme používat **kurz-kočky-n-psi**.
     Popis typu úlohy | Vyberte možnost **klasifikace imagí s více třídami**.  
@@ -209,7 +209,5 @@ Popisky obrázků lze exportovat ve [formátu díky Coco](http://cocodataset.org
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste popisky obrázků.  Teď použijte data s popisky:
-
 > [!div class="nextstepaction"]
-> [Naučte se model rozpoznávání imagí ve strojovém učení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb).
+> [Vytvořte popisky dat pro projekt a Export popisků](how-to-create-labeling-projects.md).

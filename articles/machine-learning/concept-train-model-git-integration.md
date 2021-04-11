@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 04/08/2021
+ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547845"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027801"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -25,6 +25,11 @@ Azure Machine Learning plně podporuje úložiště Git pro sledování práce �
 Při odesílání úlohy do Azure Machine Learning, pokud jsou zdrojové soubory uložené v místním úložišti Git, informace o úložišti se sledují jako součást procesu školení.
 
 Vzhledem k tomu, že Azure Machine Learning sleduje informace z místního úložiště Git, není svázán s žádným konkrétním centrálním úložištěm. Vaše úložiště je možné klonovat z GitHubu, GitLab, BitBucket, Azure DevOps nebo jakékoli jiné služby kompatibilní s Git.
+
+> [!TIP]
+> Pomocí Visual Studio Code můžete pracovat s Git prostřednictvím grafického uživatelského rozhraní. Pokud se chcete připojit k Azure Machine Learning vzdálené výpočetní instanci pomocí Visual Studio Code, přečtěte si téma [připojení k Azure Machine Learning výpočetní instanci v Visual Studio Code (Preview)](how-to-set-up-vs-code-remote.md) .
+>
+> Další informace o funkcích správy verzí Visual Studio Code najdete v tématu [použití správy verzí v vs Code](https://code.visualstudio.com/docs/editor/versioncontrol) a [práce s githubem v vs Code](https://code.visualstudio.com/docs/editor/github).
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonování úložišť Git do systému souborů vlastního pracovního prostoru
 Azure Machine Learning poskytuje sdílený systém souborů pro všechny uživatele v pracovním prostoru.

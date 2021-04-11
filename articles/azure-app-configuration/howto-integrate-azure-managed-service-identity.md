@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: b4b67a6bf4eea72b3a81bd01398cc60cc33c0d0a
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955053"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227037"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
 
@@ -145,7 +145,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Jak je vysvětleno v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), existuje výchozí způsob, jak vyřešit, která spravovaná identita se používá. V takovém případě vám knihovna identit Azure vynutila určení požadované identity, aby nedocházelo k problémům s překročila povolený runtime v budoucnosti (například pokud je přidána nová spravovaná identita přiřazená uživatelem nebo pokud je povolená spravovaná identita přiřazená systémem). Proto budete muset zadat clientId i v případě, že je definovaná jenom jedna spravovaná identita přiřazená uživatelem a neexistuje žádná spravovaná identita přiřazená systémem.
+    >Jak je vysvětleno v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), existuje výchozí způsob, jak vyřešit, která spravovaná identita se používá. V takovém případě vám knihovna identit Azure vynutila určení požadované identity, aby nedocházelo k problémům s překročila povolený runtime v budoucnosti (například pokud je přidána nová spravovaná identita přiřazená uživatelem nebo pokud je povolená spravovaná identita přiřazená systémem). Proto budete muset zadat clientId i v případě, že je definovaná jenom jedna spravovaná identita přiřazená uživatelem a neexistuje žádná spravovaná identita přiřazená systémem.
 
 
 1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program. cs* , jak vidíte níže. Tento kód volá `SetCredential` jako součást `ConfigureKeyVault` k tomu, aby poskytovatel konfigurace informoval, jaké přihlašovací údaje se mají použít při ověřování Key Vault.

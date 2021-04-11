@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555631"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068060"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníci na komerčním webu Marketplace Analytics
 
@@ -163,6 +163,7 @@ _**Tabulka 1: slovník datových podmínek**_
 | CommerceRootCustomer | Kořenový zákazník pro Commerce | Jedno ID fakturačního účtu může být přidruženo k několika zákaznickým ID.<br>Jedna kombinace ID fakturačního účtu a ID zákazníka může být přidružená k několika předplatným komerčního tržiště.<br>Kořenový zákazník pro obchodní oddělení označuje název zákazníka předplatného. | CommerceRootCustomer |
 | ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. | CustomerId |
 | ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. | BillingAccountId |
+| Typ zákazníka | Typ zákazníka | Hodnota tohoto pole znamená typ zákazníka. Možné hodnoty jsou:<ul><li>jednoho</li> <li>vaší</li></ul> | CustomerType |
 |||||
 
 ### <a name="customers-page-filters"></a>Filtry stránky pro zákazníky

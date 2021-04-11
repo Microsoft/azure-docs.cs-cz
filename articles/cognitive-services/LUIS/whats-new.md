@@ -4,19 +4,23 @@ description: Tento článek se pravidelně aktualizuje o novinky o Language Unde
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 02/16/2021
-ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/07/2021
+ms.openlocfilehash: f6c6f2ba20a67cd39d4142ffadddc803927c936c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706737"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227054"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
 Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="april-2021"></a>Duben 2021
+
+* [Oblast vytváření](luis-reference-regions.md#publishing-to-europe)Švýcarsko – sever.
 
 ### <a name="january-2021"></a>Leden 2021
 

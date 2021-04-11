@@ -9,16 +9,18 @@ ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 29d9dd7757319e59fc12b42d89c2ce16dec71b8b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551063"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227020"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
 Částečný odstranění objektu BLOB chrání jednotlivé objekty blob, snímky nebo verze před náhodným odstraněním nebo přepsáním tím, že v systému v určeném časovém období udržuje Odstraněná data. Během doby uchování můžete objekt s příslušným odstraněním obnovit do jeho stavu v době, kdy byl odstraněn. Po vypršení doby uchování se objekt trvale odstraní.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>Doporučená konfigurace ochrany dat
 
@@ -29,8 +31,6 @@ Obnovitelné odstranění objektu BLOB je součástí komplexní strategie ochra
 - Obnovitelné odstranění objektu BLOB pro obnovení objektu blob, snímku nebo verze, který byl odstraněn. Informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [povolení a Správa obnovitelného odstranění pro objekty blob](soft-delete-blob-enable.md).
 
 Další informace o doporučeních Microsoftu pro ochranu dat najdete v tématu [Přehled ochrany dat](data-protection-overview.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-soft-delete-works"></a>Jak funguje obnovitelné odstranění objektů BLOB
 

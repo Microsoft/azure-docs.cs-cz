@@ -15,6 +15,8 @@
       href: quickstart-create-data-factory-portal.md
     - name: Vytvoření datové továrny – Nástroj pro kopírování dat
       href: quickstart-create-data-factory-copy-data-tool.md
+    - name: Vytvoření datové továrny – Azure CLI
+      href: quickstart-create-data-factory-azure-cli.md
     - name: Vytvoření datové továrny – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
     - name: Vytvoření datové továrny – NET
@@ -105,6 +107,8 @@
       items:
         - name: Transformace dat s využitím toků dat mapování
           items:
+            - name: Osvědčené postupy pro vykládku dat v Lake pomocí ADLS Gen2
+              href: tutorial-data-flow-write-to-lake.md
             - name: Transformace dat v Lake pomocí rozdílových Lake
               href: tutorial-data-flow-delta-lake.md
             - name: Transformace dat s využitím toků dat mapování
@@ -789,9 +793,7 @@
         - name: Aktivační události kanálu
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Toky dat
-          items:
-            - name: Přehled toků dat
-              href: data-flow-troubleshoot-guide.md
+          href: data-flow-troubleshoot-guide.md
         - name: "Průběžná integrace a\_nasazování"
           href: ci-cd-github-troubleshoot-guide.md
         - name: Řízení přístupu a zabezpečení
@@ -820,6 +822,8 @@
       href: /python/api/overview/azure/datafactory
     - name: Integrované služby Azure Policy
       href: policy-reference.md
+    - name: Azure CLI
+      href: /cli/azure/ext/datafactory/datafactory
 - name: Zdroje a prostředky
   items:
     - name: Dokumenty white paper

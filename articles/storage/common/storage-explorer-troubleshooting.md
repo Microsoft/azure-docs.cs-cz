@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439455"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228227"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -289,20 +289,20 @@ Pokud chcete zachovat nepoškozená připojení, můžete pomocí následující
 
 Po prozatím všech připojeních, u všech názvů připojení, která nejsou přidaná zpět, je nutné vymazat poškozená data (pokud existují) a přidat je zpět pomocí standardních kroků v Průzkumník služby Storage:
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. V nabídce **Start** vyhledejte **Správce přihlašovacích údajů** a otevřete ho.
 2. Přejít na **přihlašovací údaje systému Windows**.
 3. V části **Obecné přihlašovací údaje** vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Odstraňte tyto položky a přidejte připojení znovu.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Otevřete Spotlight (Command + mezerník) a vyhledejte **přístup k řetězci klíčů**.
 2. Vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Odstraňte tyto položky a přidejte připojení znovu.
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 Správa místních přihlašovacích údajů se liší v závislosti na distribuci systému Linux. Pokud vaše distribuce systému Linux neposkytuje integrovaný nástroj grafického uživatelského rozhraní pro správu místních přihlašovacích údajů, můžete nainstalovat nástroj třetí strany pro správu místních přihlašovacích údajů. Můžete například použít Open source nástroj [Seahorse](https://wiki.gnome.org/Apps/Seahorse/)pro správu místních přihlašovacích údajů pro Linux.
 
@@ -356,7 +356,7 @@ Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhr
 > [!NOTE]
 > Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [opravit Průzkumník služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, potřebujete alespoň .NET Core 2,1.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
 2. Instalace [modulu runtime .NET Core](/dotnet/core/install/linux):
@@ -369,7 +369,7 @@ Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhr
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
 2. Instalace [modulu runtime .NET Core](/dotnet/core/install/linux):
@@ -382,7 +382,7 @@ Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhr
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
 2. Instalace [modulu runtime .NET Core](/dotnet/core/install/linux):
@@ -431,6 +431,98 @@ Pokud tlačítko **otevřít v Průzkumníkovi** na Azure Portal nefunguje, ujis
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>Shromažďování protokolů
+
+Když nahlásíte problém do GitHubu, možná budete požádáni o shromáždění určitých protokolů, které vám pomůžou problém diagnostikovat.
+
+### <a name="storage-explorer-logs"></a>Protokoly Průzkumník služby Storage
+
+Počínaje verzí 1.16.0 Průzkumník služby Storage zaznamenává různé věci do vlastních aplikačních protokolů. K těmto protokolům se můžete snadno dostat kliknutím na Nápověda > otevřete adresář protokoly. Ve výchozím nastavení Průzkumník služby Storage protokoly na nízké úrovni podrobností. Chcete-li změnit úroveň podrobností, přidejte proměnnou prostředí s názvem `STG_EX_LOG_LEVEL` a některou z následujících hodnot:
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (výchozí úroveň)
+- `verbose`
+- `debug`
+
+Protokoly jsou rozdělené do složek pro každou relaci Průzkumník služby Storage, kterou spustíte. U jakýchkoli souborů protokolu, které potřebujete sdílet, je doporučujeme umístit je do archivu zip a soubory z různých relací v různých složkách.
+
+### <a name="authentication-logs"></a>Protokoly ověřování
+
+Pro problémy související s přihlašováním nebo knihovnou ověřování Průzkumník služby Storage pravděpodobně budete potřebovat shromažďovat protokoly ověřování. Protokoly ověřování jsou uloženy v:
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS a Linux `~/.ServiceHub/logs`
+
+Obecně platí, že ke shromáždění protokolů můžete použít následující postup:
+
+1. Přejít na nastavení > přihlášení > zkontroluje protokolování podrobného ověřování. Pokud se Průzkumník služby Storage nedaří spustit z důvodu problému s knihovnou ověřování, bude to provedeno za vás.
+2. Zavřete Průzkumník služby Storage.
+1. Volitelné/doporučené: Vymažte existující protokoly ze `logs` složky. Tím se sníží množství informací, které budete muset poslat nám.
+4. Otevřete Průzkumník služby Storage a reprodukování problému.
+5. Zavřít Průzkumník služby Storage
+6. Obsah `log` složky zip
+
+### <a name="azcopy-logs"></a>Protokoly AzCopy
+
+Pokud máte potíže s přenosem dat, možná budete muset získat protokoly AzCopy. Protokoly AzCopy lze snadno najít pomocí dvou různých metod:
+- U neúspěšných přenosů stále v protokolu aktivit klikněte na přejít do souboru protokolu AzCopy.
+- V případě přenosů, které se v minulosti nezdařily, přejdete do složky AzCopy Logs. Tuto složku najdete na adrese:
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS a Linux ' ~/.AzCopy
+
+### <a name="network-logs"></a>Síťové protokoly
+
+V případě některých problémů budete potřebovat poskytnout protokoly síťových volání prováděných Průzkumník služby Storage. V systému Windows to můžete provést pomocí Fiddler.
+
+> [!NOTE]
+> Trasování Fiddler můžou obsahovat hesla, která jste zadali nebo odeslali v prohlížeči během shromažďování trasování. Ujistěte se, že jste si přečetli pokyny k upravení Fiddler trasování. Nenahrávat trasování Fiddler do GitHubu. Budete se dozvěděli, kde můžete bezpečně odeslat Fiddler trasování.
+
+Část 1: instalace a konfigurace Fiddler
+
+1. Nainstalovat Fiddler
+2. Spustit Fiddler
+3. Přejít na nástroje > možnosti
+4. Klikněte na kartu HTTPS.
+5. Ujistěte se, že je zaškrtnuté políčko zachytit připojení a dešifrovat přenosy HTTPS.
+6. Klikněte na tlačítko akce.
+7. Zvolte "důvěryhodný kořenový certifikát" a pak "Ano" v dalším dialogovém okně
+8. Znovu klikněte na tlačítko akce.
+9. Výběr možnosti Exportovat kořenový certifikát do plochy
+10. Přejít na plochu
+11. Najít soubor FiddlerRoot. cer
+12. Dvakrát klikněte pro otevření.
+13. Přejít na kartu Podrobnosti
+14. Klikněte na tlačítko Kopírovat do souboru...
+15. V Průvodci exportem vyberte následující možnosti.
+    - X. 509, kódovaný na bázi Base-64
+    - Pro název souboru, Procházet... až C:\Users \<your user dir> \AppData\Roaming\StorageExplorer\certs, můžete ho uložit jako libovolný název souboru.
+16. Zavřít okno certifikátu
+17. Spustit Průzkumník služby Storage
+18. Přejít na Upravit > konfigurace proxy serveru
+19. V dialogovém okně vyberte použít nastavení proxy aplikací a nastavte adresu URL na http://localhost a port na 8888.
+20. Klikněte na OK.
+21. Restartovat Průzkumník služby Storage
+22. Měli byste začít se zobrazením síťových volání z `storageexplorer:` procesu v Fiddler.
+
+Část 2: reprodukce problému
+1. Zavřít všechny aplikace kromě Fiddler
+2. Vymažte ikonu protokolu Fiddler (X v levém horním rohu vedle nabídky zobrazení).
+3. Volitelné/doporučené: Pokud se zobrazí síťová volání, nechte Fiddler sadu několik minut, klikněte na ně pravým tlačítkem myši a vyberte ' filtrovat nyní > ' skrýt <process name> '.
+4. Spustit Průzkumník služby Storage
+5. Reprodukujte problém.
+6. Klikněte na soubor > Uložit > všechny relace..., uložte si ho někam, Nezapomněli jste se
+7. Zavřít Fiddler a Průzkumník služby Storage
+
+Část 3: Úprava trasování Fiddler
+1. Dvakrát klikněte na trasování Fiddler (soubor. saz).
+2. Stisk `ctrl`+`f`
+3. V zobrazeném dialogovém okně se ujistěte, že jsou nastavené následující možnosti: Hledat = žádosti a odpovědi, zkontrolovat = hlavičky a texty.
+4. Vyhledejte všechna hesla, která jste použili při shromažďování trasování Fiddler, všechny zvýrazněné položky, klikněte pravým tlačítkem myši a vyberte možnost odebrat > vybrané relace.
+5. Pokud jste při shromažďování trasování v prohlížeči jednoznačně zadali hesla, ale při používání kombinace kláves Ctrl + f nenajdete žádné položky, nechcete měnit hesla nebo hesla, která jste použili, se používají pro jiné účty, takže stačí přeskočit odeslání souboru. saz. Lepší je bezpečné, než je líto. :)
+6. Uložte trasování znovu s novým názvem.
+7. Volitelné: odstraňte původní trasování.
 
 ## <a name="next-steps"></a>Další kroky
 

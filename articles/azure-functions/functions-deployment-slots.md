@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172405"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551352"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -20,9 +20,6 @@ Následující informace odrážejí, jak jsou funkce ovlivněné odkládacími 
 
 - Přesměrování provozu je bezproblémové; z důvodu zahození nejsou vyřazeny žádné žádosti.
 - Pokud během prohození funguje funkce, pokračuje se v provádění a další triggery se přesměrují do vyměněné instance aplikace.
-
-> [!NOTE]
-> Pro plán spotřeby pro Linux nejsou aktuálně dostupné sloty.
 
 ## <a name="why-use-slots"></a>Proč používat sloty?
 
@@ -229,7 +226,7 @@ Existují dvě úrovně podpory pro sloty nasazení:
 | Spotřeba Windows       | Všeobecná dostupnost |
 | Windows Premium           | Všeobecná dostupnost  |
 | Vyhrazená pro Windows         | Všeobecná dostupnost |
-| Spotřeba Linux         | Nepodporované          |
+| Spotřeba Linux         | Preview          |
 | Linux Premium             | Všeobecná dostupnost  |
 | Vyhrazený pro Linux           | Všeobecná dostupnost |
 
