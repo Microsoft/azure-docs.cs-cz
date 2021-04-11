@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bd46f013680d5cbc9e75a312206fdb2fdcac7ec
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730877"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109352"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
 Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému konektoru http + Swagger můžete automatizovat pracovní postupy, které pravidelně volají libovolný koncový bod REST prostřednictvím [souboru Swagger](https://swagger.io) vytvořením Logic Apps. Aktivační událost HTTP + Swagger a akce fungují stejně jako [Trigger http a akci](connectors-native-http.md) , ale poskytují lepší zkušenosti v návrháři aplikace logiky tím, že zpřístupňují strukturu rozhraní API a výstupy popsané v souboru Swagger. K implementaci triggeru cyklického dotazování použijte vzor cyklického dotazování, který je popsaný v tématu [Vytvoření vlastních rozhraní API a volání dalších rozhraní API, služeb a systémů z Logic Apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -150,9 +150,9 @@ Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Vol
 | Název vlastnosti | Typ | Description |
 |---------------|------|-------------|
 | záhlaví | object | Hlavičky z požadavku |
-| text | object | Objekt JSON | Objekt s obsahem textu z požadavku |
+| text | object | Objekt s obsahem textu z požadavku |
 | stavový kód | int | Stavový kód z požadavku |
-|||
+||||
 
 | Stavový kód | Description |
 |-------------|-------------|

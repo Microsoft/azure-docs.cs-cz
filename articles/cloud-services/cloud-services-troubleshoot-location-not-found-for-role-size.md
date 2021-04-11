@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558954"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109658"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Řešení potíží s LocationNotFoundForRoleSize při nasazení cloudové služby (Classic) do Azure
 
@@ -47,7 +47,8 @@ V tomto scénáři byste měli vybrat jinou oblast nebo SKU, do které chcete na
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Výpis SKU v oblasti pomocí Azure CLI
 
-Můžete použít příkaz [AZ VM list-SKU](/cli/azure/vm.html#az_vm_list_skus) .
+Můžete použít [az VM list-SKU] (/CLI/Azure/VM? View = Azure-CLI-nejnovější
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) příkaz.
 
 - Pomocí `--location` parametru můžete filtrovat výstup do umístění, které používáte.
 - Použijte `--size` parametr pro hledání podle názvu částečné velikosti.

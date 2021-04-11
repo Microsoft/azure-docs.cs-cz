@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2021
 ms.author: victorh
-ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96485718"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109505"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Nasazení poskytovatele partnera pro zabezpečení
 
@@ -90,28 +90,25 @@ Pokud chcete nastavit tunely na VPN Gateway svého virtuálního rozbočovače, 
    
 2. Na portálu Azure Virtual WAN v Azure se můžete podívat na stav vytvoření tunelu. Jakmile se tunely **připojí** na Azure i na portálu pro partnery, pokračujte dalšími kroky nastavení tras pro výběr směrování a virtuální sítě by měly odesílat internetové přenosy partnerovi.
 
-## <a name="configure-route-settings"></a>Konfigurovat nastavení tras
+## <a name="configure-security-with-firewall-manager"></a>Konfigurace zabezpečení pomocí Správce brány firewall
 
 1. Přejděte do okna správce Azure Firewall – > zabezpečená centra. 
 2. Vyberte centrum. Stav centra by teď měl místo **nedokončeného připojení zabezpečení** zobrazovat **zřízené** .
 
    Ujistěte se, že se poskytovatel třetí strany může připojit k centru. Tunely v bráně VPN by měly být v **připojeném** stavu. Tento stav je více reflektující se na stav připojení mezi centrem a partnerem třetí strany, a to v porovnání s předchozím stavem.
-3. Vyberte centrum a přejděte na **nastavení směrování**.
+3. Vyberte centrum a přejděte do části **Konfigurace zabezpečení**.
 
    Když nasadíte poskytovatele třetí strany do centra, převede centrum na *zabezpečené virtuální rozbočovač*. Tím se zajistí, že poskytovatel třetí strany inzeruje trasu s hodnotou 0.0.0.0/0 (výchozí) trasy k centru. Připojení virtuální sítě a lokality připojené k centru ale tuto trasu nezískají, pokud se nerozhodnete, která připojení by měla získat tuto výchozí trasu.
-4. V části **internetový provoz** vyberte možnost **VNet-to-Internet** nebo připojení z **pobočky k Internetu** , aby byly trasy nakonfigurované prostřednictvím třetí strany.
+4. Nakonfigurujte virtuální síť WAN nastavením **internetového provozu** prostřednictvím Azure firewall a **privátních přenosů** prostřednictvím důvěryhodného bezpečnostního partnera. Tím se automaticky zabezpečuje jednotlivá připojení ve virtuální síti WAN.
 
-   Tato akce určuje, který typ provozu má být směrován do centra, ale nemá vliv na trasy v virtuální sítě nebo větvích. Tyto trasy nejsou šířené do všech virtuální sítě/větví připojených k centru ve výchozím nastavení.
-5. Musíte vybrat **zabezpečená připojení** a vybrat připojení, na kterých mají být tyto trasy nastaveny. Označuje, které virtuální sítě/větve můžou zahájit odesílání internetového provozu poskytovateli třetí strany.
-6. V **nastavení směrování** vyberte **zabezpečená připojení** v části internetový provoz a pak vyberte virtuální síť nebo větve (*lokality* ve virtuální síti WAN), které chcete zabezpečit. Vyberte **zabezpečený internetový provoz**.
-   ![Zabezpečení internetového provozu](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Přejděte zpět na stránku centra. Stav **poskytovatele partnera zabezpečení** centra by měl být teď  **zabezpečený**.
+   :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Konfigurace zabezpečení":::
+5. Pokud navíc vaše organizace používá rozsahy veřejných IP adres ve virtuálních sítích a pobočkách, musíte tyto předpony IP adresy zadat explicitně pomocí **předpon privátních přenosů**. Předpony veřejných IP adres lze zadat jednotlivě nebo jako agregace.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Síťový provoz ve větvi nebo virtuální síti prostřednictvím služby třetí strany
 
 V dalším kroku můžete zkontrolovat, jestli virtuální počítače virtuální sítě nebo pobočky mají přístup k Internetu, a ověřit, že provoz probíhá do služby třetí strany.
 
-Po dokončení postupu nastavení směrování budou virtuální počítače virtuální sítě a větvení lokality 0/0 odesílány do trasy služby třetí strany. Do těchto virtuálních počítačů nemůžete protokol RDP nebo SSH. Pokud se chcete přihlásit, můžete nasadit službu [Azure bastionu](../bastion/bastion-overview.md) ve virtuální síti s partnerským vztahem.
+Po dokončení postupu nastavení směrování budou virtuální počítače virtuální sítě a větvení lokality odesílány do trasy služby třetí strany 0/0. Do těchto virtuálních počítačů nemůžete protokol RDP nebo SSH. Pokud se chcete přihlásit, můžete nasadit službu [Azure bastionu](../bastion/bastion-overview.md) ve virtuální síti s partnerským vztahem.
 
 ## <a name="next-steps"></a>Další kroky
 

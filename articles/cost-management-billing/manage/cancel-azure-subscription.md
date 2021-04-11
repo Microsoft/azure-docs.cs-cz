@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735771"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109386"
 ---
 # <a name="cancel-your-azure-subscription"></a>Zrušení předplatného Azure
 
@@ -77,6 +77,10 @@ Pokud máte bezplatné zkušební předplatné, nemusíte čekat 30 dnů, než s
 1. Vyberte předplatné, které chcete odstranit.
 1. Vyberte **Přehled** a pak vyberte **Odstranit předplatné**.
 
+## <a name="delete-other-subscriptions"></a>Odstranění dalších předplatných
+
+Jediný typ předplatného, který můžete ručně odstranit, je bezplatné zkušební předplatné. Všechny ostatní typy předplatného, včetně předplatných s průběžnými platbami, se odstraní jenom prostřednictvím procesu [zrušení předplatného](#cancel-subscription-in-the-azure-portal) . Jinými slovy, předplatné nemůžete odstranit přímo, pokud se nejedná o bezplatné zkušební předplatné. Po zrušení předplatného ale můžete vytvořit [žádost o podporu Azure](https://go.microsoft.com/fwlink/?linkid=2083458) , která vyzve k okamžitému odstranění odběru.
+
 ## <a name="reactivate-a-subscription"></a>Opětovná aktivace předplatného
 
 Pokud zrušíte předplatné se svými tarify průběžných plateb omylem, můžete [ho znovu aktivovat v Azure Portal](subscription-disabled.md).
@@ -89,7 +93,7 @@ Možná nemáte oprávnění potřebná k zrušení předplatného. Přečtěte 
 
 ## <a name="how-do-i-delete-my-azure-account"></a>Jak můžu odstranit svůj účet Azure?
 
-*Potřebuji odebrat svůj účet včetně všech mých osobních údajů. Už mám zrušená aktivní (bezplatná zkušební) předplatná. Nemám žádná aktivní předplatná a chci úplně odstranit svůj účet*.
+Potřebuji *odebrat svůj účet včetně všech mých osobních údajů. Již jsem zrušil aktivní (bezplatné zkušební) odběry. Nemám žádná aktivní předplatná a chcete úplně odstranit svůj účet*.
 
 * Pokud máte účet Azure Active Directory prostřednictvím vaší organizace, může správce Azure AD tento účet odstranit. Potom budou vaše služby zakázané. To znamená, že se zruší přidělení vašich virtuálních počítačů, uvolní se dočasná IP adresa a úložiště přejde do režimu jen pro čtení. Stručně řečeno, po zrušení se okamžitě zastaví účtování.
 

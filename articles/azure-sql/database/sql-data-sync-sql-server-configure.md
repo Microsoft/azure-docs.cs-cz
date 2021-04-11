@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882225"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968607"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Kurz: nastavení Synchronizace dat SQL mezi databázemi v Azure SQL Database a SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
    | **Použít privátní odkaz** | Vyberte privátní koncový bod spravovaný službou pro vytvoření zabezpečeného připojení mezi službou synchronizace a databází centra. |
 
    > [!NOTE]
-   > Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako **databázi metadat synchronizace**. Synchronizace dat vytvoří tabulky v této databázi a spustí časté úlohy. Tato databáze je sdílená jako **databáze metadat synchronizace** pro všechny skupiny synchronizace ve vybrané oblasti a předplatném. Nemůžete změnit databázi ani její název, aniž byste odebrali všechny skupiny synchronizace a agenty synchronizace v oblasti.
+   > Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako **databázi metadat synchronizace**. Synchronizace dat vytvoří tabulky v této databázi a spustí časté úlohy. Tato databáze je sdílená jako **databáze metadat synchronizace** pro všechny skupiny synchronizace ve vybrané oblasti a předplatném. Nemůžete změnit databázi ani její název, aniž byste odebrali všechny skupiny synchronizace a agenty synchronizace v oblasti. Databázi elastických úloh navíc nelze použít jako databázi metadat Synchronizace dat SQL a naopak.  
 
    Vyberte **OK** a počkejte, než se skupina synchronizace vytvoří a nasadí.
    

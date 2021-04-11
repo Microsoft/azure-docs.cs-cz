@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ba9a4d5ac427533c2ce005a74fe43b0ce80de79
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89291544"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109437"
 ---
 # <a name="filters"></a>Filtry
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Při doručování obsahu zákazníkům (živé události streamování nebo video na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services nabízí [dynamické manifesty](filters-dynamic-manifest-overview.md) založené na předem definovaných filtrech. 
+Při doručování obsahu zákazníkům (živé události streamování nebo video na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services nabízí [dynamické manifesty](filters-dynamic-manifest-concept.md) založené na předem definovaných filtrech. 
 
 Filtry jsou pravidla na straně serveru, která zákazníkům umožňují provádět například tyto akce: 
 
@@ -141,12 +141,12 @@ Následující příklad definuje filtr živého streamování:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Přidružení filtrů k lokátoru streamování
 
-Můžete určit seznam [filtrů Asset nebo Account](filters-concept.md) na [lokátoru streamování](/rest/api/media/streaminglocators/create#request-body). [Dynamický balíček](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. 
+Můžete určit seznam [filtrů Asset nebo Account](filters-concept.md) na [lokátoru streamování](/rest/api/media/streaminglocators/create#request-body). [Dynamický balíček](encode-dynamic-packaging-concept.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-concept.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. 
 
 Podívejte se na následující příklady:
 
-* [Přidružit filtry k lokátoru streamování – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Přidružení filtrů k lokátoru streamování – CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Přidružit filtry k lokátoru streamování – .NET](filters-dynamic-manifest-dotnet-how-to.md#associate-filters-with-streaming-locator)
+* [Přidružení filtrů k lokátoru streamování – CLI](filters-dynamic-manifest-cli-how-to.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Aktualizují se filtry
  
@@ -161,5 +161,5 @@ Pokud je potřeba změnit definici filtru, zvažte vytvoření nového filtru a 
 Následující články ukazují, jak vytvořit filtry prostřednictvím kódu programu.  
 
 - [Vytváření filtrů pomocí rozhraní REST API](filters-dynamic-manifest-rest-howto.md)
-- [Vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Vytváření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md)
+- [Vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-how-to.md)
+- [Vytváření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-how-to.md)

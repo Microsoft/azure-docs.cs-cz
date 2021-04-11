@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97935814"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553273"
 ---
 # <a name="develop-custom-commands-applications"></a>Vývoj aplikací pro vlastní příkazy
 
@@ -212,7 +212,7 @@ Začněte úpravou stávajícího `TurnOn` příkazu pro zapnutí a vypnutí ví
     | **Je globální**          | Nevybrané             |
     | **Povinné**           | Vybráno               |
     | **Odpověď na povinný parametr**     | **Jednoduchý editor** > `Which device do you want to control?`    | 
-    | **Typ**               | **Řetězec**                |          |
+    | **Typ**               | **Řetězec**                |     
     | **Konfigurace**      | **Přijměte předdefinované vstupní hodnoty z interního katalogu.** | 
     | **Předdefinované vstupní hodnoty** | `tv`, `fan`               |
     | **Aliasy** ( `tv` )      | `television`, `telly`     |
@@ -633,7 +633,7 @@ Dalším způsobem přizpůsobení odpovědí vlastních příkazů je výběr v
 > ![Snímek obrazovky s ukázkovými větami a parametry](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Pro veřejné hlasy jsou typy neuronové k dispozici pouze pro konkrétní oblasti. Další informace najdete v tématu [podporované oblasti služby Speech](./regions.md#standard-and-neural-voices).
+> Pro veřejné hlasy jsou typy neuronové k dispozici pouze pro konkrétní oblasti. Další informace najdete v tématu [podporované oblasti služby Speech](./regions.md#neural-and-standard-voices).
 >
 > Vlastní hlasy můžete vytvořit na stránce **vlastní hlasový** projekt. Další informace najdete v tématu [Začínáme s vlastním hlasem](./how-to-custom-voice.md).
 

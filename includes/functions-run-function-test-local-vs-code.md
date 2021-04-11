@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 5bc1d2ddb5b9ddb185a8349fb42d5f5db79c1498
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eae828d03431dd339c5399d8db8c6e46141ab11b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201387"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075320"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -27,7 +27,7 @@ Visual Studio Code se integruje s [nástroji Azure Functions Core](../articles/a
     
 1. V části **Zadejte text žádosti** se zobrazí hodnota tělo zprávy žádosti `{ "name": "Azure" }` . Stisknutím klávesy ENTER odešlete tuto zprávu požadavku vaší funkci. 
 
-   Místo toho byste mohli odeslat požadavek HTTP GET na <http://localhost:7071/api/HttpExample> adresu ve webovém prohlížeči.
+   Místo toho byste mohli odeslat požadavek HTTP GET na `http://localhost:7071/api/HttpExample` adresu ve webovém prohlížeči.
 
 1. Když se funkce spustí místně a vrátí odpověď, vygeneruje se oznámení v Visual Studio Code. Informace o spuštění funkce se zobrazí na panelu **terminálu** .
 

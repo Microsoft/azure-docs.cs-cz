@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535310"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106489974"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
@@ -51,6 +51,10 @@ IoT Central umožňuje zobrazit nezpracovaná data, která zařízení odesílá
     V tomto zobrazení můžete vybrat sloupce, které chcete zobrazit, a nastavit časový rozsah, který chcete zobrazit. Sloupec **nemodelovaná data** zobrazuje data ze zařízení, která neodpovídají žádné definici vlastnosti nebo telemetrie v šabloně zařízení.
 
 ## <a name="telemetry"></a>Telemetrie
+
+### <a name="telemetry-in-components"></a>Telemetrie v součástech
+
+Pokud je telemetrie definována v komponentě, přidejte vlastní vlastnost zprávy nazvanou `$.sub` s názvem komponenty, která je definována v modelu zařízení. Další informace najdete v tématu [kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](tutorial-connect-device.md).
 
 ### <a name="primitive-types"></a>Primitivní typy
 
@@ -437,6 +441,21 @@ Klient zařízení by měl odeslat stav jako JSON, který vypadá jako v násled
 > [!NOTE]
 > Formáty datové části pro vlastnosti se vztahují na aplikace vytvořené v nebo po 07/14/2020.
 
+### <a name="properties-in-components"></a>Vlastnosti v součástech
+
+Pokud je vlastnost definována v komponentě, zabalte vlastnost v názvu komponenty. Následující příklad nastaví `maxTempSinceLastReboot` v `thermostat2` součásti. Tato značka `__t` označuje, že tato součást:
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+Další informace najdete v tématu [kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](tutorial-connect-device.md).
+
 ### <a name="primitive-types"></a>Primitivní typy
 
 V této části jsou uvedeny příklady primitivních typů vlastností, které zařízení odesílá do aplikace IoT Central.
@@ -715,11 +734,27 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 }
 ```
 
-### <a name="writeable-property-types"></a>Zapisovatelné typy vlastností
+### <a name="writable-property-types"></a>Typy vlastností s možností zápisu
 
 V této části jsou uvedeny příklady typů vlastností s možností zápisu, které zařízení obdrží z aplikace IoT Central.
 
-IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací vlastností. Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné. Příklady najdete v následujících fragmentech kódu.
+Pokud je vlastnost s možností zápisu definována v komponentě, zahrnuje požadovaná vlastnost název součásti. Následující příklad ukazuje zprávu požadující, aby zařízení aktualizovalo `targetTemperature` v `thermostat2` součásti. Tato značka `__t` označuje, že tato součást:
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+Další informace najdete v tématu [kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](tutorial-connect-device.md).
+
+IoT Central očekává odpověď ze zařízení na aktualizace vlastností s možností zápisu. Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné. Příklady najdete v následujících fragmentech kódu.
 
 `ac` je číselné pole, které používá hodnoty v následující tabulce:
 
@@ -734,7 +769,7 @@ IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací
 
 `ad` je popis řetězce možností.
 
-Následující fragment kódu z modelu zařízení zobrazuje definici `string` typu zapisovatelné vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici typu vlastnosti s možností zápisu `string` :
 
 ```json
 {
@@ -769,7 +804,7 @@ Zařízení by mělo po zpracování aktualizace odeslat následující datovou 
 }
 ```
 
-Následující fragment kódu z modelu zařízení zobrazuje definici `Enum` typu zapisovatelné vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici typu vlastnosti s možností zápisu `Enum` :
 
 ```json
 {
@@ -834,6 +869,8 @@ Zařízení by mělo po zpracování aktualizace odeslat následující datovou 
 ```
 
 ## <a name="commands"></a>Příkazy
+
+Pokud je příkaz definovaný v komponentě, název příkazu, který zařízení obdrží, zahrnuje název součásti. Například pokud je příkaz volán `getMaxMinReport` a je zavolána komponenta `thermostat2` , zařízení obdrží požadavek na provedení příkazu s názvem `thermostat2*getMaxMinReport` .
 
 Následující fragment kódu z modelu zařízení zobrazuje definici příkazu, který nemá žádné parametry a neočekává, že zařízení vrátí cokoli.
 

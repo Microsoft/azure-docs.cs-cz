@@ -1,6 +1,6 @@
 ---
 title: Přiřazení zásad Azure Key Vaultho přístupu (CLI)
-description: Jak pomocí rozhraní příkazového řádku Azure můžete přiřadit zásady přístupu Key Vault k instančnímu objektu nebo identitě aplikace.
+description: Jak pomocí rozhraní příkazového řádku Azure můžete přiřadit zásady přístupu Key Vault k objektu zabezpečení nebo identitě aplikace.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0c7910ac149c8de43eeac92913a0d314fcc1854e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934573"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968845"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Přiřazení zásady přístupu Key Vault
 
-Zásada přístupu Key Vault určuje, jestli daný instanční objekt, konkrétně aplikace nebo skupina uživatelů, může provádět různé operace s Key Vault [tajné klíče](../secrets/index.yml), [klíče](../keys/index.yml)a [certifikáty](../certificates/index.yml). Zásady přístupu můžete přiřadit pomocí [Azure Portal](assign-access-policy-portal.md), Azure CLI (Tento článek) nebo [Azure PowerShell](assign-access-policy-powershell.md).
+Zásada přístupu Key Vault určuje, jestli daný objekt zabezpečení, konkrétně uživatel, aplikace nebo skupina uživatelů, může provádět různé operace s Key Vault [tajné klíče](../secrets/index.yml), [klíče](../keys/index.yml)a [certifikáty](../certificates/index.yml). Zásady přístupu můžete přiřadit pomocí [Azure Portal](assign-access-policy-portal.md), Azure CLI (Tento článek) nebo [Azure PowerShell](assign-access-policy-powershell.md).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -69,7 +69,7 @@ Pomocí příkazu [AZ klíčů trezor set-Policy](/cli/azure/keyvault#az-keyvaul
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-Nahraďte `<object-id>` ID objektu vašeho objektu služby.
+Nahraďte `<object-id>` ID objektu vašeho objektu zabezpečení.
 
 Potřebujete pouze zahrnout `--secret-permissions` , `--key-permissions` a `--certificate-permissions` při přiřazování oprávnění těmto konkrétním typům. Přípustné hodnoty pro, a `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` jsou uvedeny v dokumentaci [AZ pro trezor set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) .
 

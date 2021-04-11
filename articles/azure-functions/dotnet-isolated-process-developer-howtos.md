@@ -4,12 +4,12 @@ description: Naučte se vytvářet a ladit funkce C# pomocí .NET 5,0 a pak nasa
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6403e5d898b76d459a9712f7847e81e5442deeda
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201371"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075321"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Vývoj a publikování funkcí rozhraní .NET 5 pomocí Azure Functions 
 
@@ -160,7 +160,7 @@ V tomto okamžiku můžete spustit `func start` příkaz z kořenové složky pr
 
 1. Do adresního řádku prohlížeče zadejte adresu URL místní funkce, která vypadá následovně, a spusťte požadavek. 
 
-    <http://localhost:7071/api/HttpExample>
+    `http://localhost:7071/api/HttpExample`
 
     Měl by se zobrazit výstup trasování z požadavku zapsaného do běžícího terminálu. Spuštění kódu se zastaví na všech bodech přerušení, které jste nastavili v kódu funkce.
 

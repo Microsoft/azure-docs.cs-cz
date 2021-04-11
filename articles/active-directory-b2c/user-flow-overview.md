@@ -1,94 +1,110 @@
 ---
-title: Toky uživatelů v Azure Active Directory B2C | Microsoft Docs
+title: Toky uživatelů a vlastní zásady v Azure Active Directory B2C | Microsoft Docs
 titleSuffix: Azure AD B2C
-description: Přečtěte si další informace o rozšiřitelném rozhraní zásad Azure Active Directory B2C a o tom, jak vytvářet různé toky uživatelů.
+description: Přečtěte si další informace o předdefinovaných uživatelských tocích a o rozhraních .NET Framework pro rozšiřitelné zásady Azure Active Directory B2C pro vlastní zásady.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94840185"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225993"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů ve službě Azure Active Directory B2C
+# <a name="user-flows-and-custom-policies-overview"></a>Přehled uživatelských toků a vlastních zásad
 
-Portál Azure AD B2C obsahuje předdefinované konfigurovatelné zásady označované jako **toky uživatelů**, které vám pomůžou nastavit nejběžnější úlohy identit pro vaše aplikace. Tok uživatele umožňuje určit, jak uživatelé budou pracovat s vaší aplikací, když provádějí věci, jako je přihlášení, registrace, úprava profilu nebo resetování hesla. Pomocí uživatelských toků můžete řídit následující možnosti:
+V Azure AD B2C můžete definovat obchodní logiku, kterou uživatelé sledují, aby získali přístup k vaší aplikaci. Můžete například určit posloupnost kroků, které uživatelé postupují při přihlašování, registraci, úpravě profilu nebo resetování hesla. Po dokončení sekvence uživatel získá token a získá přístup k vaší aplikaci. 
 
-- Typy účtů používané pro přihlašování, jako jsou účty sociálních sítí, jako je například Facebook nebo místní účet
-- Atributy, které se mají shromáždit od příjemce, jako je křestní jméno, PSČ a velikost bot
-- Vícefaktorové ověřování Azure AD
-- Přizpůsobení uživatelského rozhraní
-- Informace, které aplikace obdrží jako deklarace identity v tokenu
+V Azure AD B2C existují dva způsoby, jak zajistit uživatelské prostředí identity:
 
-V tenantovi můžete vytvořit mnoho uživatelských toků různých typů a podle potřeby je používat ve svých aplikacích. Toky uživatelů se dají znovu použít napříč aplikacemi. Tato flexibilita umožňuje definovat a upravovat prostředí identity s minimálními nebo žádnými změnami kódu. Vaše aplikace spustí tok uživatele pomocí standardní žádosti o ověření protokolu HTTP, která obsahuje parametr toku uživatele. Přizpůsobený [token](tokens-overview.md) se přijímá jako odpověď.
+* **Toky uživatelů** jsou předdefinované, předdefinované, konfigurovatelné zásady, které poskytujeme, abychom mohli vytvořit prostředí pro registraci, přihlašování a úpravu zásad během několika minut.
 
-Následující příklady znázorňují parametr řetězce dotazu "p", který určuje tok uživatele, který se má použít:
+* **Vlastní zásady** umožňují vytvářet vlastní cesty uživatelů pro scénáře komplexního prostředí identity.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siup                                       // Your sign-up user flow
-```
+Na následujícím snímku obrazovky vidíte uživatelské rozhraní nastavení toku uživatele, srovnání s vlastními konfiguračními soubory zásad.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siin                                       // Your sign-in user flow
-```
+![Snímek obrazovky zobrazuje uživatelské rozhraní pro nastavení toku uživatele, a to oproti konfiguračním souborům vlastních zásad.](media/user-flow-overview/user-flow-vs-custom-policy.png)
 
-## <a name="user-flow-versions"></a>Verze toku uživatele
+Tento článek poskytuje stručný přehled uživatelských toků a vlastních zásad a pomůže vám určit, která metoda bude pro vaše obchodní potřeby fungovat nejlépe.
 
-Azure AD B2C obsahuje několik typů uživatelských toků:
+## <a name="user-flows"></a>Toky uživatele
 
-- **Zaregistrujte se a přihlaste se a přihlaste** se pomocí jediné konfigurace. Uživatelé mají v závislosti na kontextu správnou cestu. K dispozici jsou také samostatné toky **registrace** nebo **přihlašování** uživatelů. Obecně doporučujeme, abyste použili kombinaci registrace a přihlášení uživatele.
-- **Úpravy profilu** – umožňuje uživatelům upravovat informace o profilu.
-- **Resetování hesla** – umožňuje nakonfigurovat, jestli a jak můžou uživatelé resetovat heslo.
+K nastavení nejběžnějších úloh identity Azure Portal obsahuje několik předdefinovaných a konfigurovatelných zásad nazývaných *uživatelské toky*.
 
-Většina typů uživatelských toků má jak **doporučenou** verzi, tak i **standardní** verzi. Podrobnosti najdete v tématu [verze toku uživatele](user-flow-versions.md).
+Můžete nakonfigurovat nastavení toku uživatele tak, aby bylo možné řídit chování identity v aplikacích:
 
-> [!IMPORTANT]
-> Pokud jste s toky uživatelů v Azure AD B2C pracovali předem, všimnete si, že jsme změnili způsob, jakým odkazujeme na verze uživatelského toku. Dříve jsme nabízeli verze v1 (připravené pro produkční prostředí) a verze v1.1 a v2 (Preview). Nyní jsme konsoliduje toky uživatelů do dvou verzí:
->
->- **Doporučené** toky pro uživatele jsou nové verze Preview toků uživatelů. Jsou důkladně testovány a kombinovány se všemi funkcemi starších verzí **v2** a **v 1.1** . Až dál, budou se udržovat a aktualizovat nové doporučené toky uživatelů. Po přechodu na tyto nové doporučené toky uživatelů budete mít přístup k novým funkcím, jakmile jsou vydány.
->- **Standardní** uživatelské toky, dříve označované jako **v1**, jsou všeobecně dostupné, uživatelské toky připravené pro produkční prostředí. Pokud jsou toky uživatelů klíčové a závisí na vysoce stabilních verzích, můžete pokračovat v používání standardních uživatelských toků a realizovat, že tyto verze nebudou zachované a aktualizované.
->
->Všechny toky pro uživatele starší verze Preview (V 1.1 a v2) jsou na cestě k vyřazení od **1. srpna 2021**. Pokud je to možné, důrazně doporučujeme [přepínat na nové **Doporučené** uživatelské toky](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) , abyste mohli vždycky využít nejnovější funkce a aktualizace.
+* Typy účtů používané pro přihlášení, jako jsou například účty na Facebooku nebo místní účty, které používají e-mailovou adresu a heslo pro přihlášení
+* Atributy, které mají být shromažďovány od příjemce, jako je například křestní jméno, PSČ nebo země/oblast, kde sídlí
+* Multi-Factor Authentication Azure AD (MFA)
+* Přizpůsobení uživatelského rozhraní
+* Sada deklarací identity v tokenu, který vaše aplikace obdrží poté, co uživatel dokončí tok uživatele
+* Správa relací
+* ... a další
 
-## <a name="linking-user-flows"></a>Propojení toků uživatelů
+Většinu běžných scénářů identit pro aplikace je možné definovat a implementovat efektivně pomocí uživatelských toků. Doporučujeme, abyste používali předdefinované toky uživatelů, pokud nemáte složité scénáře pro práci s uživateli, které vyžadují plnou flexibilitu vlastních zásad.
 
-Tok uživatelů **registrace nebo přihlašování** pomocí místních účtů zahrnuje **zapomenuté heslo** a odkaz na první stránce prostředí. Kliknutím na tento odkaz se automaticky neaktivuje tok uživatele resetování hesla.
+## <a name="custom-policies"></a>Vlastní zásady
 
-Místo toho se kód chyby `AADB2C90118` vrátí do vaší aplikace. Vaše aplikace potřebuje zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo. Příklad zobrazíte tak, že se podíváte na [jednoduchý vzorek ASP.NET](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , který ukazuje propojení uživatelských toků.
+Vlastní zásady jsou konfigurační soubory, které definují chování Azure AD B2C uživatelského prostředí klienta. I když jsou toky uživatelů předdefinované na portálu Azure AD B2C pro nejběžnější úlohy identity, můžou vlastní zásady plně upravit vývojář identity, aby dokončili mnoho různých úloh.
 
-## <a name="email-address-storage"></a>Úložiště e-mailových adres
+Vlastní zásady jsou plně konfigurovatelné a řízené zásadami. Orchestruje vztah důvěryhodnosti mezi entitami ve standardních protokolech. Například OpenID Connect, OAuth, SAML a několik nestandardních, například REST API se výměnou deklarací ze systému na systém. Rozhraní vytváří uživatelsky přívětivé prostředí s bílým označením.
 
-E-mailová adresa může být vyžadována jako součást toku uživatele. Pokud se uživatel ověří pomocí zprostředkovatele sociální identity, e-mailová adresa se uloží do vlastnosti **otherMails** . Pokud je místní účet založen na uživatelském jménu, bude e-mailová adresa uložena ve vlastnosti detail silného ověřování. Pokud je místní účet založen na e-mailové adrese, uloží se tato e-mailová adresa do vlastnosti **signInNames** .
+Vlastní zásady vám umožňují vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
 
-Tato e-mailová adresa není v žádném z těchto případů ověřena. Správce klienta může zakázat ověřování e-mailů v základních zásadách pro místní účty. I když je povolené ověřování e-mailových adres, adresy se neověřují, pokud pocházejí od poskytovatele sociální identity a nezměnily se.
+* Federovat s jinými zprostředkovateli identity
+* První a další výzvy k Multi-Factor Authentication (MFA) třetích stran
+* Shromažďování libovolných vstupů uživatele
+* Integrace s externími systémy pomocí REST API komunikace
 
-Prostřednictvím rozhraní Microsoft Graph API se zveřejňují jenom vlastnosti **otherMails** a **signInNames** . E-mailová adresa v vlastnosti detail silného ověřování není k dispozici.
+Každou cestu uživatele definuje zásada. Můžete vytvořit tolik zásad, kolik jich potřebujete pro zajištění nejlepšího uživatelského prostředí pro vaši organizaci.
+
+![Diagram znázorňující příklad složitá cesta uživatele povolená IEF](media/user-flow-overview/custom-policy-diagram.png)
+
+Vlastní zásady jsou definovány několika soubory XML, které na sebe navzájem odkazují v hierarchickém řetězu. Prvky XML definují schéma deklarací identity, transformace deklarací identity, definice obsahu, zprostředkovatele deklarací identity, technické profily, kroky orchestrace cest uživatelů a další aspekty prostředí identity.
+
+Výkonná flexibilita vlastních zásad je nejvhodnější pro případy, kdy potřebujete vytvořit komplexní scénáře identity. Vývojáři, kteří konfigurují vlastní zásady, musí podrobná nastavení důvěryhodných vztahů za účelem zahrnutí koncových bodů metadat, přesných definic deklarací identity a konfigurací tajných kódů, klíčů a certifikátů podle potřeby u každého poskytovatele identity.
+
+Přečtěte si další informace o vlastních zásadách ve [vlastních zásadách v Azure Active Directory B2C](custom-policy-overview.md).
+
+## <a name="comparing-user-flows-and-custom-policies"></a>Porovnání toků uživatelů a vlastních zásad
+
+Následující tabulka obsahuje podrobné porovnání scénářů, které můžete s Azure AD B2Cmi uživatelskými toky a vlastními zásadami.
+
+| Kontext | Toky uživatele | Vlastní zásady |
+|-|-------------------|-----------------|
+| Cíloví uživatelé | Všichni vývojáři aplikací s odbornými znalostmi identity nebo bez nich. | Specialisté na identity, systémy integrátorů, konzultantů a interních identit. Jsou pohodlné díky tokům OpenID Connect a pochopení zprostředkovatelů identit a ověřování založeného na deklaracích identity. |
+| Metoda konfigurace | Azure Portal s uživatelsky přívětivým uživatelským rozhraním (UI). | Přímo upravování souborů XML a následné nahrávání do Azure Portal. |
+| Přizpůsobení uživatelského rozhraní | [Úplné přizpůsobení uživatelského rozhraní](customize-ui-with-html.md) , včetně HTML, CSS a [JavaScript](javascript-and-page-layout.md).<br><br>[Vícejazyčná podpora](language-customization.md) s vlastními řetězci. | Stejné |
+| Přizpůsobení atributu | Standardní a vlastní atributy. | Stejné |
+| Správa tokenů a relací | [Přizpůsobení tokenů](configure-tokens.md) a [chování relací](session-behavior.md). | Stejné |
+| Zprostředkovatelé identit | [Předdefinovaný místní](identity-provider-local.md) nebo [sociální poskytovatel](add-identity-provider.md), jako je například federace s Azure Active Directory klienty. | OIDC založené na standardech, OAUTH a SAML.  Ověřování je také možné pomocí integrace s rozhraními REST API. |
+| Úkoly identity | [Zaregistrujte se nebo přihlaste](add-sign-up-and-sign-in-policy.md) pomocí místních nebo mnoha sociálních účtů.<br><br>[Samoobslužné resetování hesla](add-password-reset-policy.md).<br><br>[Úprava profilu](add-profile-editing-policy.md)<br><br>Multi-Factor Authentication.<br><br>Toky přístupového tokenu. | Dokončete stejné úlohy jako toky uživatelů pomocí vlastních zprostředkovatelů identity nebo použijte vlastní obory.<br><br>Zřídit uživatelský účet v jiném systému v době registrace.<br><br>Poslat uvítací e-mail pomocí vlastního poskytovatele e-mailové služby.<br><br>Použijte úložiště uživatele mimo Azure AD B2C.<br><br>Pomocí rozhraní API ověřte informace poskytnuté uživatelem s důvěryhodným systémem. |
+
+## <a name="application-integration"></a>Integrace aplikací
+
+Můžete vytvořit mnoho uživatelských toků nebo vlastní zásady různých typů ve vašem tenantovi a podle potřeby je používat ve svých aplikacích. V rámci aplikací lze znovu použít toky uživatelů a vlastní zásady. Tato flexibilita umožňuje definovat a upravovat prostředí identity s minimálními nebo žádnými změnami kódu. 
+
+Když se uživatel chce přihlašovat k aplikaci, aplikace zahájí žádost o autorizaci koncovému bodu uživatele nebo vlastního koncového bodu zadaného zásadami. Tok uživatele nebo vlastní zásady definují a řídí uživatelské prostředí. Po dokončení toku uživatele Azure AD B2C vygeneruje token a pak přesměruje uživatele zpět do vaší aplikace.
+
+![Mobilní aplikace se šipkami ukazující tok mezi Azure AD B2C přihlašovací stránkou](media/user-flow-overview/app-integration.png)
+
+Stejný tok uživatele nebo vlastní zásady můžou používat víc aplikací. Jedna aplikace může používat více uživatelských toků nebo vlastních zásad.
+
+Například pro přihlášení k aplikaci používá aplikace tok uživatele *registrace nebo přihlášení* . Až se uživatel přihlásí, může chtít upravit jeho profil. Chcete-li upravit profil, aplikace zahájí jinou žádost o autorizaci, tentokrát pomocí *profilu upravit* tok uživatele.
+
+Vaše aplikace aktivuje tok uživatele pomocí standardní žádosti o ověření protokolu HTTP, která obsahuje název toku uživatele nebo vlastní zásady. Přizpůsobený [token](tokens-overview.md) se přijímá jako odpověď.
+
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete vytvořit toky doporučeného uživatele, postupujte podle pokynů v tématu [kurz: vytvoření toku uživatele](tutorial-create-user-flows.md).
+- Pokud chcete vytvořit toky doporučeného uživatele, postupujte podle pokynů v tématu [kurz: vytvoření toku uživatele](tutorial-create-user-flows.md).
+- Přečtěte si o [verzích toku uživatele v Azure AD B2C](user-flow-versions.md).
+- Přečtěte si další informace o [Azure AD B2C vlastních zásadách](custom-policy-overview.md).

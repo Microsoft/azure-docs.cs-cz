@@ -128,7 +128,7 @@ AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou b
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 
-Viz téma [filtrování, řazení, stránkování Azure Media Services entit](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Azure Media Services entit](filter-order-page-entitites-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

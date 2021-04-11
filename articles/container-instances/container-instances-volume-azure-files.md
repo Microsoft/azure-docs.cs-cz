@@ -2,23 +2,27 @@
 title: Připojení svazku souborů Azure ke skupině kontejnerů
 description: Naučte se, jak připojit svazek souborů Azure k trvalému stavu pomocí Azure Container Instances
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 03/24/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09a4d9922a4f9ba4296fc194d72c621fecb8342d
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954970"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968896"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky ve službě Azure Container Instances
 
 Ve výchozím nastavení je služba Azure Container Instances bezstavová. Pokud je kontejner restartován, dojde k chybě nebo se zastaví, veškerý jeho stav bude ztracen. Pokud chcete zachovat stav i po skončení životnosti kontejneru, je nutné připojit svazek z externího úložiště. Jak je znázorněno v tomto článku, Azure Container Instances můžou připojit sdílenou složku Azure vytvořenou se [soubory Azure](../storage/files/storage-files-introduction.md). Soubory Azure nabízí plně spravované sdílené složky hostované v Azure Storage, které jsou přístupné prostřednictvím standardního protokolu SMB (Server Message Block). Použití sdílené složky Azure s Azure Container Instances poskytuje funkce pro sdílení souborů podobně jako použití sdílené složky Azure s virtuálními počítači Azure.
 
+## <a name="limitations"></a>Omezení
+
+* Sdílené složky Azure můžete připojovat jenom do kontejnerů Linux. Přečtěte si další informace o rozdílech v podpoře funkcí pro skupiny kontejnerů pro Linux a Windows v [přehledu](container-instances-overview.md#linux-and-windows-containers).
+* Připojení svazku sdílené složky Azure vyžaduje, aby byl *kořenový adresář* spuštění kontejneru Linux.
+* Připojení svazků sdílené složky Azure jsou omezená na podporu CIFS.
+
 > [!NOTE]
-> Připojení sdílené složky služby soubory Azure je aktuálně omezené na kontejnery Linux. V [přehledu](container-instances-overview.md#linux-and-windows-containers)najdete aktuální rozdíly v platformách.
->
-> Připojení sdílené složky služby soubory Azure do instance kontejneru je podobné jako připojení k Docker [BIND](https://docs.docker.com/storage/bind-mounts/). Uvědomte si, že pokud připojíte sdílenou složku k adresáři kontejneru, ve kterém existují soubory nebo adresáře, tyto soubory nebo adresáře jsou po připojení skryté a nejsou přístupné při spuštění kontejneru.
+> Připojení sdílené složky služby soubory Azure do instance kontejneru je podobné jako připojení k Docker [BIND](https://docs.docker.com/storage/bind-mounts/). Pokud sdílenou složku připojíte do adresáře kontejnerů, ve kterém existují soubory nebo adresáře, připojení zakrývá soubory nebo adresáře, takže je nepřístupné při spuštění kontejneru.
 >
 
 > [!IMPORTANT]
