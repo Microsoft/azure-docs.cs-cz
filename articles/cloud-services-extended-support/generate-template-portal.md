@@ -8,27 +8,30 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 03/07/2021
 ms.custom: ''
-ms.openlocfilehash: 9d40bbd7e08d8d3869166827a22f3f08536532bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a4f206d68df3cd8dd4dd5b1b411d316e7aacde92
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590700"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077093"
 ---
 # <a name="generate-arm-template-for-cloud-services-extended-support-using-the-azure-portal"></a>Vygenerovat šablonu ARM pro Cloud Services (Rozšířená podpora) pomocí Azure Portal
 
-Tento článek vysvětluje, jak stáhnout šablonu a soubor parametrů ARM z [Azure Portal](https://portal.azure.com) po nasazení cloudové služby (Rozšířená podpora). Šablona a soubor parametrů ARM se dají použít v budoucích nasazeních k upgradu nebo aktualizaci cloudové služby (Rozšířená podpora).
+Tento článek vysvětluje, jak stáhnout šablonu a soubor parametrů ARM z [Azure Portal](https://portal.azure.com) pro cloudovou službu. Šablonu a soubor parametrů ARM se dají použít v nasazeních přes PowerShell k vytvoření nebo aktualizaci cloudové služby.
 
 ## <a name="get-arm-template-via-portal"></a>Získat šablonu ARM prostřednictvím portálu
 
-  1. Přejít do skupiny prostředků a vybrat nasazení.
-  :::image type="content" source="media/generate-template-portal-1.png" alt-text="Image zobrazuje výběr nasazení v rámci skupiny prostředků v Azure Portal.":::
+  1. Přejít na Azure Portal a [vytvořit novou cloudovou službu](deploy-portal.md). Přidejte konfiguraci cloudové služby, soubory balíčku a definice. 
+    :::image type="content" source="media/deploy-portal-4.png" alt-text="Při vytváření obrázku se na kartě základy zobrazuje část nahrávání.":::
   
-  2. Vyberte cloudovou službu (rozšířenou podporu) a klikněte na šablonu.
-  :::image type="content" source="media/generate-template-portal-2.png" alt-text="Obrázek ukazuje, že na Azure Portal vyberete šablonu v části cloudová služba (Rozšířená podpora).":::
+  2. Až budou všechna pole Dokončená, přejděte na kartu Kontrola a vytvoření a ověřte konfiguraci nasazení a klikněte na **Stáhnout šablonu pro automatizaci** cloudové služby (Rozšířená podpora).
+    :::image type="content" source="media/download-template-portal-1.png" alt-text="Obrázek ukazuje stažení šablony v rámci cloudové služby (Rozšířená podpora) na Azure Portal.":::
   
-  3. Stáhněte si šablonu a soubory parametrů. Ty je možné použít k budoucímu nasazení prostřednictvím PowerShellu.
-  :::image type="content" source="media/generate-template-portal-3.png" alt-text="Obrázek ukazuje stažení souboru šablony na Azure Portal.":::
+  3. Stáhněte si šablonu a soubory parametrů. 
+    :::image type="content" source="media/generate-template-portal-3.png" alt-text="Obrázek ukazuje stažení souboru šablony na Azure Portal.":::
+  
+  4. Zkopírujte identifikátor URI SAS balíčku a identifikátor URI konfigurace SAS z karty revize a vytvořit a přidejte je do parameter.jsv souboru. Tyto soubory se teď dají použít k vytvoření nové cloudové služby prostřednictvím PowerShellu.
+    :::image type="content" source="media/download-template-portal-2.png" alt-text="Image zobrazuje parametry identifikátoru URI SAS balíčku a konfigurace identifikátoru URI SAS na Azure Portal.":::
   
 ## <a name="next-steps"></a>Další kroky 
 - Přečtěte si [Nejčastější dotazy](faq.md) k Cloud Services (Rozšířená podpora).

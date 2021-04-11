@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3589349feed2e20711aa756d8be8ebc433ac0b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363062"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077597"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Pokyny pro zabezpečení Azure Stack Edge pro R
 
@@ -37,7 +37,8 @@ Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edg
 | Ikona | Description |
 |:--- |:--- |
 | ![Nejprve si přečtěte všechny pokyny.](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Nejprve si přečtěte všechny pokyny. |
-| ![Oznámení ikony oznámení ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **:** | Indikuje informace považované za důležité, ale nesouvisí s rizikem. || ![Symbol nebezpečí](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Symbol nebezpečí |
+| ![Oznámení ikony oznámení ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **:** | Indikuje informace považované za důležité, ale nesouvisí s rizikem. |
+| ![Symbol nebezpečí](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Symbol nebezpečí |
 | ![Ikona nebezpečí tipu](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Nebezpečí špičky|
 | ![Ikona velké váhy](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Těžká riziková rizika|
 | ![Ikona elektrického úrazu](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Nebezpečí elektrického úrazu |
@@ -45,7 +46,7 @@ Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edg
 | ![Ikona více zdrojů napájení](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | Více zdrojů napájení. Odpojte všechny napájecí šňůry, aby se z něj odstranila veškerá energie. |
 | ![Ikona bodů Pinching](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | Pinching body jsou k dispozici. |
 | ![Ikona aktivních komponent nebo ploch](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | Označuje aktivní součásti nebo plochy. |
-|
+
 
 ## <a name="handling-precautions-and-site-selection"></a>Zpracování opatření a výběr webu
 

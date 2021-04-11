@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Tento článek poskytuje přehled služby Azure ARC s povoleným Kubernetes.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69e9886f214d0076c8e66231fd6ad15bb060828f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121588"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449643"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Co je Kubernetes s podporou Azure Arc?
 
@@ -43,9 +43,11 @@ Kubernetes s podporou Azure ARC podporuje následující scénáře:
 
 * Nasaďte aplikace a použijte konfiguraci pomocí správy konfigurace založené na GitOps. 
 
-* Zobrazení a monitorování clusterů pomocí Azure Monitor pro kontejnery. 
+* Zobrazení a monitorování clusterů pomocí Azure Monitor pro kontejnery.
 
-* Použijte zásady pomocí Azure Policy pro Kubernetes. 
+* Vynutili ochranu před hrozbami pomocí Azure Defenderu pro Kubernetes.
+
+* Použijte zásady pomocí Azure Policy pro Kubernetes.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168208"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505021"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Řešení běžných problémů s agentem virtuálních počítačů s Windows
 
@@ -216,7 +216,7 @@ Na příkazovém řádku spusťte **qwinsta** a poznamenejte si číslo verze, k
 
 ## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Chyba: potíže s prezenčním signálem, kdy uživatelé udržují odpojení od hostitelů relací
 
-Pokud váš server neumožňuje vyzvednutí prezenčního signálu ze služby Virtual Desktop systému Windows, bude nutné změnit prahovou hodnotu prezenčního signálu. Postupujte podle pokynů v této části, pokud se vám na vás vztahují některé z následujících scénářů:
+Pokud váš server neumožňuje vyzvednutí prezenčního signálu ze služby Virtual Desktop systému Windows, bude nutné změnit prahovou hodnotu prezenčního signálu. Tím se dočasně sníží riziko problému, ale neopraví se základní problém sítě. Postupujte podle pokynů v této části, pokud se vám na vás vztahují některé z následujících scénářů:
 
 - Zobrazuje se chyba **CheckSessionHostDomainIsReachableAsync**
 - Zobrazuje se chyba **ConnectionBrokenMissedHeartbeatThresholdExceeded**
@@ -316,7 +316,7 @@ Název vašeho virtuálního počítače je už zaregistrovaný a pravděpodobn�
 
 Pokud v tomto článku nemůžete najít problém nebo vám pokyny neudělaly, doporučujeme odinstalovat, znovu nainstalovat a znovu zaregistrovat agenta virtuálních klientů Windows. V pokynech v této části se dozvíte, jak znovu zaregistrovat virtuální počítač do služby Windows Virtual Desktop odinstalací všech agentů, spouštěcího zavaděče a komponent zásobníku, odebráním hostitele relace z fondu hostitelů, vygenerováním nového registračního klíče pro virtuální počítač a opětovnou instalací agenta a spouštěcího zavaděče. Pokud se vám na vás vztahují některé z následujících scénářů, postupujte podle těchto pokynů:
 - Váš virtuální počítač se zablokuje při **upgradu** nebo **není k dispozici** .
-- Váš naslouchací proces zásobníku nefunguje a pracujete ve Windows 10 1809, 1903 nebo 1904.
+- Váš naslouchací proces zásobníku nefunguje a pracujete ve Windows 10 1809, 1903 nebo 1909.
 - Zobrazuje se chyba **EXPIRED_REGISTRATION_TOKEN**
 - Nezobrazují se vaše virtuální počítače v seznamu hostitelé relací
 - V okně služby se nezobrazuje **zavaděč agenta vzdálené plochy** .

@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578494"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283809"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -123,7 +123,7 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS50055 | InvalidPasswordExpiredPassword – platnost hesla vypršela. |
 | AADSTS50056 | Heslo pro tohoto uživatele v úložišti neexistuje nebo je neplatné nebo má hodnotu null. |
 | AADSTS50057 | UserDisabled – uživatelský účet je zakázán. Tento účet byl zakázán správcem. |
-| AADSTS50058 | UserInformationNotProvided – znamená, že uživatel není přihlášený. Jedná se o běžnou chybu, která se očekává, že uživatel není ověřený a ještě není přihlášený.</br>Pokud se tato chyba doporučuje v kontextu jednotného přihlašování (SSO), kde se uživatel dřív přihlásil, znamená to, že relace jednotného přihlašování buď nebyla nalezena, nebo je neplatná.</br>Tato chyba se může vrátit do aplikace, pokud je nastavená možnost Prompt = None. |
+| AADSTS50058 | UserInformationNotProvided – znamená, že uživatel není přihlášený. Jedná se o běžnou chybu, která se očekává, že uživatel není ověřený a ještě není přihlášený.</br>Pokud k této chybě dojde v kontextu jednotného přihlašování (SSO), kde se uživatel dřív přihlásil, znamená to, že relace jednotného přihlašování nebyla nalezena nebo je neplatná.</br>Tato chyba se může vrátit do aplikace, pokud je nastavená možnost Prompt = None. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided – informace identifikující tenant se v požadavku nenašly ani nevedly v zadaných přihlašovacích údajích. Uživatel může požádat správce tenanta, aby vám tento problém mohl vyřešit. |
 | AADSTS50061 | SignoutInvalidRequest – žádost o odhlášení není platná. |
 | AADSTS50064 | CredentialAuthenticationError – ověření přihlašovacích údajů u uživatelského jména nebo hesla se nezdařilo. |

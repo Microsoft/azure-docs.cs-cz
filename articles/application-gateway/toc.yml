@@ -90,6 +90,8 @@
           href: ssl-overview.md
         - name: Přehled zásad SSL
           href: application-gateway-ssl-policy-overview.md
+        - name: Vzájemné ověřování
+          href: mutual-authentication-overview.md
         - name: Použití Key Vaultu
           href: key-vault-certs.md
     - name: Příchozí přenos dat pro AKS
@@ -140,18 +142,28 @@
               href: end-to-end-ssl-portal.md
             - name: Kompletní SSL – PowerShell
               href: application-gateway-end-to-end-ssl-powershell.md
+        - name: Vzájemné ověřování
+          items:
+            - name: Vzájemné ověřování – portál
+              href: mutual-authentication-portal.md
+            - name: Vzájemné ověřování – PowerShell
+              href: mutual-authentication-powershell.md
         - name: Správa certifikátů
           items:
             - name: Certifikáty pro back-end
               href: certificates-for-backend-authentication.md
             - name: Obnovení certifikátů
               href: renew-certificates.md
-            - name: Generování certifikátů podepsaných svým držitelem
+            - name: Generování certifikátů podepsaných svým držitelem pro back-end
               href: self-signed-certificates.md
+            - name: Důvěryhodné klientské certifikáty
+              href: mutual-authentication-certificate-management.md
         - name: Zásady SSL
           items:
             - name: Konfigurace zásad SSL
               href: application-gateway-configure-ssl-policy-powershell.md
+            - name: Zásada protokolu SSL konkrétního naslouchacího procesu
+              href: application-gateway-configure-listener-specific-ssl-policy.md
     - name: Příchozí přenos dat pro AKS
       items:
         - name: Příchozí přenos dat pro AKS přes Helm (brownfield)
@@ -254,6 +266,8 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Chyby Chybná brána (502)
           href: application-gateway-troubleshooting-502.md
+        - name: Vzájemné ověřování
+          href: mutual-authentication-troubleshooting.md
         - name: Příchozí přenos dat pro AKS
           href: ingress-controller-troubleshoot.md
         - name: Resource Health

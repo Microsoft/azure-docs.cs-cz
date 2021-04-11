@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563267"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490093"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře kódování
 
@@ -91,7 +91,7 @@ Ve verzích v2 se vstupní a výstupní soubory metadat XML generují jako výsl
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>Kodér úrovně Premium na standardní kodér nebo řešení založená na partnerech
 
-Rozhraní API v2 už nepodporuje kodér Premium. Pokud jste dříve používali kódování na základě pracovního postupu Premium pro kódování HEVC, měli byste migrovat na nový [kodér Standard](media-encoder-standard-formats.md) v3 s podporou kódování HEVC.
+Rozhraní API v2 už nepodporuje kodér Premium. Pokud jste dříve používali kódování na základě pracovního postupu Premium pro kódování HEVC, měli byste migrovat na nový [kodér Standard](encode-media-encoder-standard-formats-reference.md) v3 s podporou kódování HEVC.
 
 Pokud budete potřebovat pokročilé funkce pracovního postupu kodéru Premium, doporučujeme začít používat řešení Azure Advanced Encoding partnering, od [představované komunikace, telekomunikačních](https://imaginecommunications.com)nebo [Bitmovin](https://bitmovin.com). [](https://www.telestream.net)
 
@@ -103,20 +103,20 @@ Pokud jste dříve použili pracovní postupy ke kopírování souborů ze soubo
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>Indexer v1 audio přepisu pro nový AudioAnalyzer "základní režim"
 
-Pro zákazníky, kteří používají procesor indexeru v1 v rozhraní v2 API, je potřeba vytvořit transformaci, která vyvolá nové `AudioAnalyzer` v [základním režimu](how-to-create-basic-audio-transform.md) před odesláním úlohy.
+Pro zákazníky, kteří používají procesor indexeru v1 v rozhraní v2 API, je potřeba vytvořit transformaci, která vyvolá nové `AudioAnalyzer` v [základním režimu](transform-create-basic-audio-how-to.md) před odesláním úlohy.
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>Informace o kódování, transformacích a úlohách, kurzech a návody
 
 ### <a name="concepts"></a>Koncepty
 
-- [Kódování videa a zvuku pomocí Media Services](encoding-concept.md)
-- [Formáty a kodeky Standard Encoder](media-encoder-standard-formats.md)
-- [Zakódovat pomocí automaticky vygenerovaného žebříka přenosové rychlosti](autogen-bitrate-ladder.md)
-- [K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.](content-aware-encoding.md)
+- [Kódování videa a zvuku pomocí Media Services](encode-concept.md)
+- [Formáty a kodeky Standard Encoder](encode-media-encoder-standard-formats-reference.md)
+- [Zakódovat pomocí automaticky vygenerovaného žebříka přenosové rychlosti](encode-autogen-bitrate-ladder.md)
+- [K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.](encode-content-aware-concept.md)
 - [Rezervované jednotky médií](concept-media-reserved-units.md)
 - [Vstupní metadata](input-metadata-schema.md)
 - [Výstupní metadata](output-metadata-schema.md)
-- [Dynamické balení v Media Services V3: zvukové kodeky](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [Dynamické balení v Media Services V3: zvukové kodeky](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>Kurzy
 
@@ -127,18 +127,18 @@ Pro zákazníky, kteří používají procesor indexeru v1 v rozhraní v2 API, j
 
 - [Vytvoření vstupu úlohy z adresy URL HTTPS](job-input-from-http-how-to.md)
 - [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md)
-- [Vytvoří základní transformaci zvuku.](how-to-create-basic-audio-transform.md)
+- [Vytvoří základní transformaci zvuku.](transform-create-basic-audio-how-to.md)
 - S využitím .NET
-  - [Jak kódovat pomocí vlastní transformace – .NET](customize-encoder-presets-how-to.md)
-  - [Jak vytvořit překryv pomocí Media Encoder Standard](how-to-create-overlay.md)
-  - [Jak generovat miniatury pomocí kodéru Standard s .NET](media-services-generate-thumbnails-dotnet.md)
+  - [Jak kódovat pomocí vlastní transformace – .NET](transform-custom-presets-how-to.md)
+  - [Jak vytvořit překryv pomocí Media Encoder Standard](transform-create-overlay-how-to.md)
+  - [Jak generovat miniatury pomocí kodéru Standard s .NET](transform-generate-thumbnails-dotnet-how-to.md)
 - S využitím rozhraní příkazového řádku Azure
-  - [Jak kódovat pomocí vlastní transformace – Azure CLI](custom-preset-cli-howto.md)
+  - [Jak kódovat pomocí vlastní transformace – Azure CLI](transform-custom-preset-cli-how-to.md)
 - S využitím REST
-  - [Jak kódovat pomocí vlastní transformace – REST](custom-preset-rest-howto.md)
-  - [Postup generování miniatur pomocí kodéru Standard s REST](media-services-generate-thumbnails-rest.md)
-- [Rozříznout video při kódování pomocí Media Services-.NET](subclip-video-dotnet-howto.md)
-- [Rozstřihnout video při kódování pomocí Media Services-REST](subclip-video-rest-howto.md)
+  - [Jak kódovat pomocí vlastní transformace – REST](transform-custom-preset-rest-how-to.md)
+  - [Postup generování miniatur pomocí kodéru Standard s REST](transform-generate-thumbnails-rest-how-to.md)
+- [Rozříznout video při kódování pomocí Media Services-.NET](transform-subclip-video-dotnet-how-to.md)
+- [Rozstřihnout video při kódování pomocí Media Services-REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>ukázky
 

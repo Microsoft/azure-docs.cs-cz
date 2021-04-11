@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdf24fdc56d39d93fed0009e2fadbafd7f97db6c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97654774"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280492"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: jak extrahovat klíčové fráze pomocí Analýza textu
 
@@ -121,7 +121,7 @@ Informace o definici požadavku naleznete v tématu [způsob volání rozhraní 
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
-Analýza se provede po přijetí žádosti. Informace o velikosti a počtu požadavků, které můžete odeslat za minutu nebo za sekundu, najdete v části [omezení dat](../overview.md#data-limits) v přehledu.
+Analýza se provede po přijetí žádosti. Informace o velikosti a počtu požadavků, které můžete poslat za minutu nebo za sekundu, najdete v článku o [omezeních dat](../concepts/data-limits.md) .
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 

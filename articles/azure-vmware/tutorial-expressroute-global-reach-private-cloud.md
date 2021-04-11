@@ -3,12 +3,12 @@ title: Kurz – partnerské místní prostředí do privátního cloudu
 description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 798b822989127ccbb00e971de2cc4147ac234259
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564496"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449558"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
@@ -55,7 +55,7 @@ Teď, když jste vytvořili autorizační klíč pro okruh privátního cloudu E
 1. Vytvořte místní cloudové připojení. Proveďte jednu z následujících akcí a pak vyberte **vytvořit**:
 
    - V seznamu vyberte **okruh ExpressRoute** nebo
-   - Pokud máte ID okruhu, vložte ho do pole a zadejte autorizační klíč.
+   - Pokud máte ID okruhu, vložte ho do pole a zadejte autorizační klíč, který jste právě vytvořili.
 
    :::image type="content" source="./media/expressroute-global-reach/on-premises-cloud-connections.png" alt-text="Zadejte ID ExpressRoute a autorizační klíč a pak vyberte vytvořit.":::   
    

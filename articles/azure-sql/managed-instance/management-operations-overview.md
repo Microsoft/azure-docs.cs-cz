@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323188"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285271"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Přehled operací správy služby Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,12 +70,14 @@ V následujících tabulkách najdete souhrn operací a typických celkových do
 |Operace  |Dlouho běžící segment  |Odhadovaná doba trvání  |
 |---------|---------|---------|
 |Změna vlastnosti instance (heslo správce, přihlášení Azure AD, příznak Zvýhodněné hybridní využití Azure)|–|Až 1 minuta.|
-|Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|Připojení souborů databáze|90% dokončených operací za 5 minut.|
+|Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|Žádný dlouhodobě běžící segment<sup>1</sup>|99% dokončených operací za 5 minut.|
 |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
 |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin.|
 |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
 |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
 | | | 
+
+<sup>1</sup> škálování pro obecné účely spravované instance úložiště na konci operace nezpůsobí převzetí služeb při selhání. V tomto případě se operace skládá z aktualizace metadat a šíření odpovědi na odeslaný požadavek.
 
 **Kategorie: odstranit**
 
@@ -90,6 +92,9 @@ V následujících tabulkách najdete souhrn operací a typických celkových do
 ## <a name="instance-availability"></a>Dostupnost instance
 
 Spravovaná instance SQL **je k dispozici během operací aktualizace**, s výjimkou krátkého výpadku způsobeného převzetím služeb při selhání, ke kterému dochází na konci aktualizace. Obvykle trvá až 10 sekund i v případě přerušených dlouhotrvajících transakcí díky [urychlenému obnovení databáze](../accelerated-database-recovery.md).
+
+> [!NOTE]
+> Škálování úložiště spravované instance Pro obecné účely nezpůsobí převzetí služeb při selhání na konci aktualizace.
 
 Spravovaná instance SQL není během operací nasazení a odstraňování dostupná pro klientské aplikace.
 

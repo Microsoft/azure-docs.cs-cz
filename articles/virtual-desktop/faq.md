@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582132"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505293"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
@@ -139,7 +139,7 @@ Nakonec, pokud jste povolili poskytovatele prostředků z účtu vlastníka CSP,
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Jak často mám svoje virtuální počítače zapnout, aby se zabránilo problémům s registrací?
 
-Po registraci virtuálního počítače do fondu hostitelů v rámci služby Virtual Desktop systému Windows Agent pravidelně aktualizuje token virtuálního počítače vždy, když je virtuální počítač aktivní. Certifikát pro registrační token je platný po dobu 90 dnů. Z důvodu tohoto limitu 90 doporučujeme spustit virtuální počítače každých 90 dnů. Zapnutím virtuálního počítače v rámci tohoto časového limitu zabráníte jeho registračnímu tokenu v vypršení platnosti nebo se stane neplatným. Pokud jste virtuální počítač spustili po 90 dnech a dochází k problémům s registrací, postupujte podle pokynů v [Průvodci odstraňováním potíží s agentem virtuálního počítače s Windows](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) a odeberte virtuální počítač z fondu hostitelů, přeinstalujte agenta a znovu ho zaregistrujte do fondu.
+Po registraci virtuálního počítače do fondu hostitelů v rámci služby Virtual Desktop systému Windows Agent pravidelně aktualizuje token virtuálního počítače vždy, když je virtuální počítač aktivní. Certifikát pro registrační token je platný po dobu 90 dnů. Z důvodu tohoto limitu 90 doporučujeme, aby byly virtuální počítače online po dobu 20 minut každých 90 dnů, aby počítač mohl aktualizovat své tokeny a aktualizovat komponenty agenta a souběžného skládání. Zapnutím virtuálního počítače v rámci tohoto časového limitu zabráníte jeho registračnímu tokenu v vypršení platnosti nebo se stane neplatným. Pokud jste virtuální počítač spustili po 90 dnech a dochází k problémům s registrací, postupujte podle pokynů v [Průvodci odstraňováním potíží s agentem virtuálního počítače s Windows](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) a odeberte virtuální počítač z fondu hostitelů, přeinstalujte agenta a znovu ho zaregistrujte do fondu.
 
 ## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Můžu nastavit možnosti dostupnosti při vytváření fondů hostitelů?
 

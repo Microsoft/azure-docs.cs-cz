@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2020
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 20d9810ef5ff7380eb0df5df8a6720dcef71a6ad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0621788f50a07466861fbd87ede191f5ab688cd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105105275"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554176"
 ---
 Při vytváření vlastního certifikátu jsou povolené tyto certifikační autority:
 
@@ -62,7 +62,9 @@ Při vytváření vlastního certifikátu jsou povolené tyto certifikační aut
 - RootCA1 komunikace zabezpečení
 - RootCA2 komunikace zabezpečení
 - RootCA3 komunikace zabezpečení
+- Kořenová certifikační autorita SSL.com ECC
 - SSL.com kořenová certifikační autorita RSA
+- SSL.com EV root certifikační autorita ECC
 - Kořenová certifikační autorita SSL.com EV RSA R2
 - Staat der Nederlanden EV Root CA
 - CA Symantec Class 3 EV SSL – G3

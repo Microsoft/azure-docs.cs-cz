@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 318b7e8b35fa7cc56a86033a08e316257a488b6f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2021
-ms.locfileid: "106442690"
+ms.locfileid: "106504987"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -91,10 +91,6 @@ Ano, Azure NetApp Files podporuje funkce Azure RBAC. Společně s integrovanými
 Azure NetApp Files je nativní služba Azure. DO protokolu Azure NetApp Files se zaznamenávají všechna rozhraní API PUT, POST a DELETE. Například protokoly zobrazují aktivity, například kdo vytvořil snímek, který upravil svazek atd.
 
 Úplný seznam operací rozhraní API najdete v tématu [Azure NetApp Files REST API](/rest/api/netapp/).
-
-### <a name="how-do-i-audit-file-access-on-azure-netapp-files-nfs-v3-and-v41-volumes"></a>Návody Auditovat přístup k souborům ve svazcích NFS (v3 a v 4.1) Azure NetApp Files?
-
-Protokoly auditování můžete nakonfigurovat na straně klienta. Budou protokolovány všechny změny čtení, zápisu a atributů. 
 
 ### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Můžu použít zásady Azure s Azure NetApp Files?
 

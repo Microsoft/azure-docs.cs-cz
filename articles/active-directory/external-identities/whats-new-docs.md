@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory externích identit
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory externích identit.
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0654992831dcda65c3d5f53cc22aef0afd4d277
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453661"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449745"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externích identit: co je nového
 
 Vítá vás, co je nového v dokumentaci Azure Active Directory externích identit. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového u služby External identity, najdete v tématu [co je nového v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Poskytovatel identity účtu Microsoft (MSA) pro externí identity (Preview)](microsoft-account.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Přidání konektoru API do toku uživatele](self-service-sign-up-add-api-connector.md)
+- [Co je uživatel typu host v Azure Active Directory B2B?](what-is-b2b.md)
+- [Vlastnosti Azure Active Directoryho uživatele spolupráce B2B](user-properties.md)
+- [Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD](tutorial-bulk-invite.md)
+- [Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení](self-service-sign-up-add-approvals.md)
+- [Resetovat stav uplatnění pro uživatele typu Host](reset-redemption-status.md)
+- [Použití konektorů rozhraní API k přizpůsobení a rozšiřování samoobslužné registrace](api-connectors-overview.md)
+- [Nejčastější dotazy k Azure Active Directory spolupráci B2B](faq.md)
+- [Uplatnění pozvánky ke spolupráci B2B v Azure Active Directory](redemption-experience.md)
+- [Zprostředkovatelé identity pro externí identity](identity-providers.md)
+- [Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)](self-service-sign-up-user-flow.md)
+- [E-mailové ověřování heslem jednorázového hesla](one-time-passcode.md)
+- [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](add-users-administrator.md)
+
 
 ## <a name="february-2021"></a>Únor 2021
 

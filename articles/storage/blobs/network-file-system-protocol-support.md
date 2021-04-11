@@ -9,19 +9,19 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57dec4187ea42476ff1c0a993b751a7389da5639
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224590"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490348"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
 BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora zajišťuje kompatibilitu systému souborů Linux v rozsahu úložiště a cenách objektů a umožňuje klientům Linux připojit kontejner v úložišti objektů BLOB z virtuálního počítače Azure nebo místního počítače. 
 
 > [!NOTE]
-> Podpora protokolu NFS 3,0 ve službě Azure Blob Storage je ve verzi Public Preview. Podporuje GPV2 účty úložiště s výkonem úrovně Standard v následujících oblastech: Austrálie – východ, Korea – střed a Střed USA – jih. Verze Preview také podporuje objekty blob bloku s úrovní výkonu Premium ve všech veřejných oblastech.
+> Podpora protokolu NFS 3,0 ve službě Azure Blob Storage je ve verzi Public Preview. Podporuje GPV2 účty úložiště s výkonem úrovně Standard v následujících oblastech: Austrálie – východ, Korea – střed, Východní USA a Střed USA – jih. Verze Preview také podporuje objekty blob bloku s úrovní výkonu Premium ve všech veřejných oblastech.
 
 Vždycky se jedná o výzvu ke spouštění rozsáhlých zastaralých úloh, jako je například prostředí HPC (High Performance Computing) v cloudu. Jedním z důvodů je, že aplikace často pro přístup k datům používají tradiční protokoly souborů, jako je třeba NFS nebo SMB (Server Message Block). Nativní služby cloudového úložiště zaměřené na úložiště objektů, které mají plochý obor názvů a rozsáhlá metadata, místo systémů souborů, které poskytují hierarchický obor názvů a efektivní operace s metadaty. 
 

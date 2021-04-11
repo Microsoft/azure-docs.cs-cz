@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Překlad řeči
-ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954955"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449932"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 V tomto přehledu se dozvíte o výhodách a funkcích služby překladu řeči, která umožňuje překlad zvukových datových proudů v reálném čase na [řeč](language-support.md#speech-translation) a převod řeči na text. Pomocí sady Speech SDK mají vaše aplikace, nástroje a zařízení přístup ke zdroji přepisů a výstupům překladu pro daný zvuk. Průběžné výsledky přepisu a překladu se vrátí, protože se detekuje řeč a konečné výsledky je možné převést na syntetizované řeč.
+
+Tato dokumentace obsahuje následující typy článků:
+
+* **Rychlé starty** jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném **způsobu.**
+* **Koncepty** poskytují podrobné vysvětlení funkcí a funkcí služby.
+* **Kurzy** jsou delší než příručky, které ukazují, jak používat službu jako součást v širších obchodních řešeních.
 
 ## <a name="core-features"></a>Základní funkce
 

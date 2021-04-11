@@ -25,6 +25,8 @@
   items:
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Ochrana Microsoftu 365 před místními útoky
           href: protect-m365-from-on-premises-attacks.md
         - name: Zabezpečená externí spolupráce

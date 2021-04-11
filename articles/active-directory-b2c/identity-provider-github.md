@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0c0507f9206ebe69662090d7a00da6d5c9d0b90a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 442894da23111877f4dd4f67363add0c8e52a4c9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580007"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028974"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu GitHubu pomocí Azure Active Directory B2C
 
@@ -208,7 +208,7 @@ Technický profil GitHub vyžaduje, aby byly transformace deklarací **CreateIss
 ## <a name="test-your-custom-policy"></a>Testování vlastních zásad
 
 1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte tlačítko **Spustit** .
 1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **GitHub** pro přihlášení pomocí účtu GitHub.
 

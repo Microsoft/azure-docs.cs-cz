@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 629459d22b18b326307b45bb512d16622808b533
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10963d28e0d2ecee73150e8b5af89cee96d28b2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562626"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077002"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -85,6 +85,10 @@ Míra spolehlivosti posouzení na základě výkonu se počítá na základě pr
 - Pro vyhodnocení virtuálních počítačů a funkce AVS bylo po spuštění zjišťování vytvořeno několik serverů. Pokud například vytváříte vyhodnocení pro historii výkonu za poslední měsíc, ale několik serverů bylo vytvořeno v prostředí pouze před týdnem. V takovém případě nebudou údaje o výkonu pro nové servery k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké. [Další informace](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
 - Pro hodnocení Azure SQL se od spuštění zjišťování vytvořilo málo instancí nebo databází SQL. Pokud například vytváříte posouzení historie výkonu za poslední měsíc, ale v prostředí bylo vytvořeno několik instancí SQL nebo databází pouze před týdnem. V takovém případě nebudou údaje o výkonu pro nové servery k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké. [Další informace](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="-the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>> se počet vyhodnocování virtuálních počítačů Azure nebo funkce AVS na nástroji pro zjišťování a vyhodnocení nesprávných hodnot.
+ Pokud to chcete napravit, klikněte na celkový počet posouzení, abyste přešli na všechna posouzení, a přepočítejte virtuální počítač Azure nebo posouzení služby AVS. Nástroj pro zjišťování a hodnocení pak zobrazí správný počet pro tento typ posouzení.
+
 
 ## <a name="i-want-to-try-out-the-new-azure-sql-assessment"></a>Chci vyzkoušet nové posouzení Azure SQL
 Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Začněte s [tímto kurzem](tutorial-discover-vmware.md). Pokud chcete tuto funkci vyzkoušet v existujícím projektu, ujistěte se prosím, že jste dokončili [požadavky](how-to-discover-sql-existing-project.md) v tomto článku.

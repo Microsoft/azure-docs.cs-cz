@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 1c40102f8815cf7299a99d290b7f57b386ede401
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055123"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220879"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Opětovná aktivace zakázaného předplatného Azure
 
@@ -23,7 +23,7 @@ Vaše předplatné Azure se může zakázat z důvodu vypršení platnosti kredi
 
 ## <a name="your-credit-is-expired"></a>Vypršela platnost vašeho kreditu
 
-Když se přihlásíte k bezplatnému účtu Azure, získáte bezplatné zkušební předplatné, které 200 vám poskytne kredit Azure ve vaší fakturační měně na 30 dní a 12 měsíců bezplatných služeb. Po uplynutí 30 dnů Azure vaše předplatné zakáže. Vaše předplatné se zakáže, aby se vám neúčtovaly poplatky za využití nad rámec kreditů a bezplatných služeb zahrnutých ve vašem předplatném. Pokud chcete dále využívat služby Azure, musíte [předplatné upgradovat](upgrade-azure-subscription.md). I po upgradu bude vaše předplatné mít přístup k bezplatným službám na 12 měsíců. Účtují se jenom za využití nad rámec bezplatného množstevního limitu služby.
+Když se přihlásíte k bezplatnému účtu Azure, získáte bezplatné zkušební předplatné, které vám umožní USD200 kredit Azure ve fakturační měně po dobu 30 dnů a 12 měsíců bezplatných služeb. Po uplynutí 30 dnů Azure vaše předplatné zakáže. Vaše předplatné se zakáže, aby se vám neúčtovaly poplatky za využití nad rámec kreditů a bezplatných služeb zahrnutých ve vašem předplatném. Pokud chcete dále využívat služby Azure, musíte [předplatné upgradovat](upgrade-azure-subscription.md). I po upgradu bude vaše předplatné mít přístup k bezplatným službám na 12 měsíců. Účtují se jenom za využití nad rámec bezplatného množstevního limitu služby.
 
 ## <a name="you-reached-your-spending-limit"></a>Dosažení limitu útraty
 
