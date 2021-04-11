@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aeed031025b9c494b35886861c273e2a7f9d2ac4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: caa8f4efa60f8a42856f7cd8e78edf32fce956c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937137"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`  | vyžadováno    | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md) , ke kterým má uživatel udělit souhlas.  Pro `/authorize` nohy žádosti to může pokrývat více prostředků, což vaší aplikaci umožní získat souhlas s více webovými rozhraními API, která chcete volat. |
 | `response_mode`   | doporučil | Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může to být jedna z následujících:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít, `query` jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query` , `fragment` nebo `form_post` . `form_post` provede příspěvek obsahující kód pro identifikátor URI přesměrování. |
 | `state`                 | doporučil | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Hodnota může také kódovat informace o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-| `prompt`  | optional    | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou v tomto okamžiku `login` , `none` a `consent` .<br/><br/>- `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování.<br/>- `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, bude platforma Microsoft Identity platformou vracet `interaction_required` chybu.<br/>- `prompt=consent` aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění.<br/>- `prompt=select_account` dojde k přerušení jednotného přihlašování, které poskytuje možnosti výběru účtu, které uvádějí všechny účty buď v relaci, nebo v jakémkoli zašifrovaném účtu, nebo možnost zvolit, že se má úplně použít jiný účet.<br/> |
+| `prompt`  | optional    | Určuje typ interakce uživatele, která je povinná. Jedinými platnými hodnotami v tomto okamžiku jsou `login` , `none` , `consent` a `select_account` .<br/><br/>- `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování.<br/>- `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, bude platforma Microsoft Identity platformou vracet `interaction_required` chybu.<br/>- `prompt=consent` aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění.<br/>- `prompt=select_account` dojde k přerušení jednotného přihlašování, které poskytuje možnosti výběru účtu, které uvádějí všechny účty buď v relaci, nebo v jakémkoli zašifrovaném účtu, nebo možnost zvolit, že se má úplně použít jiný účet.<br/> |
 | `login_hint`  | optional    | Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte své uživatelské jméno předem. Aplikace budou často používat tento parametr během opakovaného ověřování, kteří už z předchozího přihlášení extrahovali uživatelské jméno, a to pomocí `preferred_username` deklarace identity.   |
 | `domain_hint`  | optional    | Pokud se tato možnost zahrne, přeskočí proces zjišťování e-mailu, který uživatel prochází na přihlašovací stránce, což vede k poněkud efektivnějšímu uživatelskému rozhraní, které je třeba odeslat do svého federovaného poskytovatele identity. Aplikace budou často používat tento parametr během opakovaného ověřování, a to extrakcí `tid` z předchozího přihlášení. Pokud `tid` je hodnota deklarace identity `9188040d-6c67-4c5b-b112-36a304b66dad` , měli byste použít `domain_hint=consumers` . V opačném případě použijte `domain_hint=organizations` .  |
 | `code_challenge`  | Doporučené/povinné | Slouží k zabezpečení autorizačního kódu prostřednictvím ověřovacího klíče pro výměnu kódu (PKCE). Požadováno `code_challenge_method` , pokud je zahrnuto. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). To se teď doporučuje u všech typů aplikací – veřejných i důvěrných klientů, které vyžaduje platforma Microsoft identity pro jednostránkové aplikace, a to [pomocí toku autorizačního kódu](reference-third-party-cookies-spas.md). |

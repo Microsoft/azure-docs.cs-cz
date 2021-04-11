@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 03/29/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711d4bdf2be2ad3158c12e4690a70fb83fe7a846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 38ddd825321a3cb7947eb76c4f5f6cdbc6cb3414
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559498"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055701"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Podmíněný přístup: Zabezpečení registrace bezpečnostních údajů
 
@@ -52,7 +52,7 @@ Následující zásady platí pro vybrané uživatele, kteří se pokoušejí za
 1. Nastavte **Povolit zásadu** na **Zapnuté**.
 1. Potom vyberte **Vytvořit**.
 
-Správci teď budou muset vystavit přihlašovací údaje pro dočasný přístup pro nové uživatele, aby mohli splnit požadavky na službu Multi-Factor Authentication k registraci. Postup, jak tento úkol provést, najdete v části [vytvoření dočasného přístupového průchodu na portálu Azure AD](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass-in-the-azure-ad-portal).
+Správci teď budou muset vystavit přihlašovací údaje pro dočasný přístup pro nové uživatele, aby mohli splnit požadavky na službu Multi-Factor Authentication k registraci. Postup, jak tento úkol provést, najdete v části [vytvoření dočasného přístupového průchodu na portálu Azure AD](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass).
 
 Organizace se mohou rozhodnout, že kromě toho vyžadují službu **Multi-Factor Authentication** v kroku 6B nebo místo toho vyžadovat jiné grantové ovládací prvky. Když vyberete více ovládacích prvků, je nutné vybrat přepínač odpovídající přepínači pro vyžadování **všech** nebo **jednoho** z vybraných ovládacích prvků, když tuto změnu provedete.
 

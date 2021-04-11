@@ -6,13 +6,11 @@
       href: concepts-baremetal-infrastructure-overview.md
     - name: Seznámení s podmínkami
       href: know-baremetal-terms.md
-    - name: Připojit jednotky instance BareMetal v Azure
+    - name: Připojení instancí BareMetal v Azure
       displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: connect-baremetal-infrastructure.md
 - name: Úlohy
   items:
-    - name: Typy úloh služby BareMetal
-      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
     - name: SAP HANA v Azure (velké instance)
       items:
         - name: Certifikace

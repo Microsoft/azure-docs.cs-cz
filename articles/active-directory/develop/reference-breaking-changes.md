@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 2/22/2021
+ms.date: 3/30/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647417"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167579"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
 
@@ -35,9 +35,21 @@ Systém ověřování mění a přidává funkce průběžně pro zlepšení dod
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Oprava chyby: Azure AD už nebude zakódovat parametr State dvakrát.
+
+**Datum účinnosti**: květen 2021
+
+**Ovlivněné koncové body**: v 1.0 a v 2.0 
+
+**Ovlivněný protokol**: všechny toky, které navštíví `/authorize` koncový bod (implicitní tok a tok autorizačního kódu)
+
+V odpovědi na autorizaci Azure AD se našla a opravila chyba. Během `/authorize` ověřování `state` je parametr z požadavku součástí odpovědi, aby bylo možné zachovat stav aplikace a pomáhat zabránit útokům CSRF. Nesprávně zadaná adresa URL služby Azure AD zakóduje `state` parametr před vložením do odpovědi, kde byla zakódována pouze jednou.  Výsledkem je, že aplikace nesprávně odmítnou odpověď z Azure AD. 
+
+Azure AD už tento parametr nekóduje, aby aplikace správně analyzovaly výsledek. Tato změna se provede pro všechny aplikace. 
+
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Podmíněný přístup se spustí jenom pro explicitně požadované obory.
 
-**Datum účinnosti**: březen 2021
+**Datum účinnosti**: květen 2021, s postupným zaváděním v dubnu. 
 
 **Ovlivněné koncové body**: v 2.0
 
@@ -48,6 +60,8 @@ Aplikacím, které používají k dynamickému souhlasu dnes, jsou uvedena všec
 Azure AD mění způsob, jakým jsou nevyžádaný obory k dispozici, aby bylo možné omezit počet nevyžádaných výzev pro podmíněný přístup, aby mohli pouze explicitně vyžádané obory aktivovat podmíněný přístup. Tato změna může způsobit, že se aplikace chovají na předchozí chování služby Azure AD (konkrétně poskytnutí všech oprávnění i v případě, že se nepožadovaly), protože u tokenů, které vyžádají, chybí oprávnění.
 
 Aplikace teď budou dostávat přístupové tokeny se kombinací oprávnění v těchto případech a také s uživateli, kteří mají souhlas, že nevyžadují výzvy podmíněného přístupu.  Obory přístupového tokenu se projeví v parametru odpovědi tokenu `scope` . 
+
+Tato změna bude provedená pro všechny aplikace s výjimkou těch, u kterých došlo k pozorované závislosti v tomto chování.  Pokud se vývojářům z této změny nezbavují, můžou se jim vycházet mimo jiné, protože mohou mít závislost na dalších dotazech podmíněného přístupu. 
 
 **Příklady**
 

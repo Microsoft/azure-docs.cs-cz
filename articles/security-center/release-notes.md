@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786077"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027614"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -24,6 +24,93 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 
 > [!TIP]
 > Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
+
+## <a name="april-2021"></a>Duben 2021
+
+Aktualizace v dubnu zahrnují:
+- [Čtyři nová doporučení týkající se konfigurace hosta (Preview)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Použití Azure Defenderu pro Kubernetes k ochraně hybridních a multi-cloudových nasazení Kubernetes (Preview)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [11 upozornění služby Azure Defender jako zastaralé](#11-azure-defender-alerts-deprecated)
+- [Dvě doporučení pro řízení zabezpečení použít aktualizace systému se už nepoužívá.](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Čtyři nová doporučení týkající se konfigurace hosta (Preview)
+
+Sestavy [rozšíření konfigurace hosta](../governance/policy/concepts/guest-configuration.md) Azure se Security Center, které vám pomůžou zajistit posílení zabezpečení vašich virtuálních počítačů v nastavení hostů. Rozšíření není vyžadováno pro servery s podporou ARC, protože je zahrnuto v agentovi počítače připojeného k ARC. Rozšíření vyžaduje na počítači identitu spravovanou systémem.
+
+Přidali jsme čtyři nová doporučení, která Security Center k tomu, aby tato rozšíření byla na maximum.
+
+- Na základě dvou doporučení se zobrazí výzva k instalaci rozšíření a požadované systémové identity spravované systémem:
+    - **V počítačích by se mělo nainstalovat rozšíření konfigurace hosta.**
+    - **Rozšíření konfigurace hosta virtuálních počítačů by se mělo nasadit pomocí spravované identity přiřazené systémem.**
+
+- Když je rozšíření nainstalované a spuštěné, zahájí auditování vašich počítačů a zobrazí se vám výzva k posílení nastavení, jako je konfigurace operačního systému a nastavení prostředí. Tato dvě doporučení vás vyzve k posílení zabezpečení počítačů se systémem Windows a Linux, jak je popsáno níže:
+    - **Na vašich počítačích by mělo být povolené ochrany před zneužitím v programu Windows Defender.**
+    - **Ověřování pro počítače se systémem Linux by mělo vyžadovat klíče SSH**
+
+Další informace najdete v [porozumět konfiguraci hosta Azure Policy](../governance/policy/concepts/guest-configuration.md).
+
+
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Použití Azure Defenderu pro Kubernetes k ochraně hybridních a multi-cloudových nasazení Kubernetes (Preview)
+
+Azure Defender pro Kubernetes rozšiřuje možnosti ochrany před hrozbami a chrání clustery bez ohledu na jejich nasazení. Tato funkce byla povolená integrací s [povoleným Kubernetesem Azure ARC](../azure-arc/kubernetes/overview.md) a jeho novými [možnostmi rozšíření](../azure-arc/kubernetes/extensions.md). 
+
+Pokud jste povolili Azure ARC v clusterech Kubernetes mimo Azure, nabízí nové doporučení od Azure Security Center nabídky k nasazení rozšíření v programu Azure Defender jenom na několik kliknutí.
+
+Použijte doporučení (**clustery Kubernetes s podporou ARC Azure musí mít nainstalované rozšíření v programu Azure Defender**) a rozšíření pro ochranu clusterů Kubernetes nasazených v jiných poskytovatelích cloudu, i když nejsou na svých spravovaných službách Kubernetes.
+
+Tato integrace mezi Azure Security Center, Azure Defenderem a Kubernetesem s povoleným ARC Azure přináší:
+
+- Snadné zřizování rozšíření v programu Azure Defender pro nechráněné clustery Kubernetes s povoleným ARC Azure (ručně a ve velkém měřítku)
+- Monitorování rozšíření Azure Defenderu a jeho stav zřizování z portálu Azure ARC
+- Doporučení k zabezpečení z Security Center jsou uvedená na nové stránce zabezpečení na portálu Azure ARC.
+- Identifikované bezpečnostní hrozby z Azure Defenderu se nahlásí na stránce Nová zabezpečení na portálu Azure ARC.
+- Clustery Kubernetes s podporou Azure ARC jsou integrované do platformy Azure Security Center a prostředí.
+
+Další informace najdete v podrobnějších informacích o [používání Azure Defenderu pro Kubernetes s vašimi místními a Kubernetes clustery s více cloudy](defender-for-kubernetes-azure-arc.md).
+
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center doporučení pro nasazení rozšíření Azure Defenderu pro clustery s podporou Azure ARC s povoleným Kubernetes." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="11-azure-defender-alerts-deprecated"></a>11 upozornění služby Azure Defender jako zastaralé
+
+Jedenáct níže uvedených výstrah Azure Defenderu se už nepoužívá.
+
+- Nové výstrahy nahradí tyto dvě upozornění a budou poskytovat lepší pokrytí:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW – zjistilo se spuštění funkce pro mikroshluking Toolkit Get-AzureDomainInfo. |
+    | ARM_MicroBurstRunbook    | PREVIEW – zjistilo se spuštění funkce pro mikroshluking Toolkit Get-AzurePasswords.  |
+    |                          |                                                                          |
+
+- Tyto devět výstrah se týkají konektoru Azure Active Directory Identity Protection (IPC), který už je zastaralý:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Neznámé vlastnosti přihlášení |
+    | AnonymousLogin      | Anonymní IP adresa          |
+    | InfectedDeviceLogin | Propojená IP adresa pro malware     |
+    | ImpossibleTravel    | Neobvyklá cesta               |
+    | MaliciousIP         | Škodlivá IP adresa          |
+    | LeakedCredentials   | Uniklé přihlašovací údaje            |
+    | PasswordSpray       | Sprej hesla                |
+    | LeakedCredentials   | Analýza hrozeb v Azure AD  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
+    > [!TIP]
+    > Tato devět výstrah IPC nikdy neSecurity Center výstrahy. Jsou součástí konektoru Azure Active Directory (AAD) Identity Protection Connector (IPC), který je odeslal do Security Center. V posledních dvou letech se jediným zákazníkům, kteří si tyto výstrahy zobrazovali, stali organizacemi, které nakonfigurovali export (z konektoru na ASC) ve verzi 2019 nebo starší. AAD IPC pokračuje v jejich zobrazení ve vlastních systémech výstrah a v systému Azure Sentinel je dál k dispozici. Jedinou změnou je, že se už neobjevují v Security Center.
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>Dvě doporučení pro řízení zabezpečení použít aktualizace systému se už nepoužívá. 
+
+Následující dvě doporučení jsou zastaralá a změny můžou vést k mírnému dopadu na vaše zabezpečené skóre:
+
+- **Počítače by měly být restartovány, aby bylo možné použít aktualizace systému**
+- **Agent monitorování by měl být nainstalovaný na vašich počítačích**. Toto doporučení se týká pouze místních počítačů a některé z jeho logiky se přenesou na jiné doporučení **Log Analytics by se měly vyřešit problémy se stavem agenta na vašich počítačích** .
+
+Doporučujeme, abyste provedli kontrolu průběžného exportu a konfigurací automatizace pracovních postupů, abyste zjistili, jestli jsou tato doporučení zahrnutá v nich. Také by se měly aktualizovat všechny řídicí panely nebo jiné nástroje pro monitorování, které by je mohly používat.
+
+Další informace o těchto doporučeních najdete na [referenční stránce doporučení zabezpečení](recommendations-reference.md).
 
 
 ## <a name="march-2021"></a>Březen 2021
@@ -753,154 +840,3 @@ Přečtěte si další informace o [průběžném exportu Security Center dat](c
 Teď můžete vidět, jestli mají vaše předplatné nastavené výchozí zásady Security Center přiřazené, na stránce **zásady zabezpečení** Security Center Azure Portal.
 
 :::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Stránka Správa zásad Azure Security Center zobrazuje přiřazení výchozích zásad.":::
-
-## <a name="october-2020"></a>Říjen 2020
-
-Aktualizace v říjnu zahrnují:
-- [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
-- [Přidala se Azure Firewall doporučení (Preview).](#azure-firewall-recommendation-added-preview)
-- [Pro doporučení služby Kubernetes Services, které se aktualizovaly pomocí rychlé opravy, by se měly definovat povolené rozsahy IP](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
-- [Řídicí panel dodržování předpisů teď obsahuje možnost odebrání standardů.](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
-- [Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)
-
-Skener pro posouzení ohrožení zabezpečení v [Azure Defenderu pro servery](defender-for-servers-introduction.md)(s technologií Qualys) teď prohledává servery s podporou ARC Azure.
-
-Pokud jste povolili Azure ARC na počítačích mimo Azure, Security Center se bude nabízet k nasazení integrovaného skeneru ohrožení zabezpečení ručně a v rámci škálování.
-
-V této aktualizaci si můžete vysílat výkon **Azure Defenderu pro servery** a konsolidovat svůj program pro správu ohrožení zabezpečení ve všech vašich prostředcích Azure i mimo Azure.
-
-Hlavní možnosti:
-
-- Monitorování stavu zřizování skeneru VA (zranitelnost) na počítačích ARC Azure
-- Zřizování integrovaného agenta s rozhraním VA pro nechráněné počítače s Windows a Linuxem na platformě Azure ARC (ručně a v rozsahu)
-- Přijímání a analýza zjištěných slabých míst z nasazených agentů (ručně a v rozsahu)
-- Jednotné prostředí pro virtuální počítače Azure a počítače s obloukem Azure ARC
-
-[Přečtěte si další informace o nasazení integrovaného skeneru ohrožení zabezpečení do hybridních počítačů](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
-
-[Přečtěte si další informace o serverech s podporou ARC Azure](../azure-arc/servers/index.yml).
-
-
-### <a name="azure-firewall-recommendation-added-preview"></a>Přidala se Azure Firewall doporučení (Preview).
-
-Bylo přidáno nové doporučení pro ochranu všech virtuálních sítí pomocí Azure Firewall.
-
-Doporučujeme, aby se **virtuální sítě chránily pomocí Azure firewall** radit s cílem omezit přístup k virtuálním sítím a zabránit potenciálním hrozbám pomocí Azure firewall.
-
-Přečtěte si další informace o [Azure firewall](https://azure.microsoft.com/services/azure-firewall/).
-
-
-### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>Pro doporučení služby Kubernetes Services, které se aktualizovaly pomocí rychlé opravy, by se měly definovat povolené rozsahy IP
-
-**Povolené rozsahy IP adres pro doporučení by měly být definované v Kubernetes Services** nyní mají možnost Rychlá oprava.
-
-Další informace o tomto doporučení a všech dalších Security Center doporučeních najdete v tématu [doporučení zabezpečení – referenční příručka](recommendations-reference.md).
-
-:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
-
-
-### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>Řídicí panel dodržování předpisů teď obsahuje možnost odebrání standardů.
-
-Řídicí panel dodržování legislativních předpisů Security Center poskytuje přehledy o dodržování předpisů v závislosti na tom, jak splňujete konkrétní kontrolu a požadavky na dodržování předpisů.
-
-Řídicí panel obsahuje výchozí sadu regulativních standardů. Pokud některé z uvedených standardů nejsou pro vaši organizaci důležité, je teď jednoduchý proces, který je odebere z uživatelského rozhraní pro předplatné. Standardy je možné odebrat jenom na úrovni *předplatného* . Nejedná se o obor skupiny pro správu.
-
-Další informace najdete v [Odebrání standardu z řídicího panelu](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
-
-
-### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).
-
-Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
-
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
-
-- Využití inventáře prostředků (ARG)
-- Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
-
-V ARG existují tabulky dat, které můžete použít ve svých dotazech.
-
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky":::
-
-> [!TIP]
-> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
-
-Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
-
-Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
-
-Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
-
-```
-{
-id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
-name: "mico-rg-vnet",
-type: "Microsoft.Security/securityStatuses",
-properties:  {
-    policyAssessments: [
-        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
-        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
-    ],
-    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
-    name: "GenericResourceHealthProperties",
-    type: "VirtualNetwork",
-    securitystate: "High"
-}
-```
-To znamená, že Microsoft. Security/Assessments bude obsahovat záznam pro každé vyhodnocení zásad, a to následujícím způsobem:
-
-```
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
-name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
-properties:  {
-    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
-    displayName: "Azure DDOS Protection Standard should be enabled",
-    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
-}
-
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
-name: "8efac66a-1ec5-be63-a824-eb28671dc527",
-properties: {
-    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
-    displayName: "Audit diagnostic setting",
-    status:  {code: "Unhealthy"}
-}
-```
-
-**Příklad převodu existujícího dotazu ARG pomocí securityStatuses pro teď použití tabulky Assessments:**
-
-Dotaz, který odkazuje na SecurityStatuses:
-
-```kusto
-SecurityResources 
-| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
-| where name in ({vmnames}) 
-| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
-```
-
-Náhradní dotaz pro tabulku posouzení:
-
-```kusto
-securityresources
-| where type == "microsoft.security/assessments" and id contains "virtualMachine"
-| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
-| extend source = tostring(properties.resourceDetails.Source)
-| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
-source =~ "aws", properties.additionalData.AzureResourceId,
-source =~ "gcp", properties.additionalData.AzureResourceId,
-extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
-| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
-| where resourceName in ({vmnames}) 
-| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
-```
-
-Další informace najdete na následujících odkazech:
-- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../governance/resource-graph/first-query-portal.md)
-- [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)

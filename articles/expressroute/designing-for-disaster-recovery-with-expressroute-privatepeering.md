@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: d0aa9e8bfd565eeb7599d52adc0ac5b854e750bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562303"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937222"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
@@ -47,7 +47,7 @@ Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paraleln
 
 ### <a name="different-metros"></a>Různé METROS
 
-Při použití různých METROS pro redundanci by mělo být sekundární umístění ve stejné [geografické oblasti](expressroute-locations-providers.md#locations). Pokud chcete vybrat umístění mimo geografickou politickou oblast, budete muset pro oba okruhy v paralelních cestách použít SKU úrovně Premium. Výhodou této konfigurace je pravděpodobnost, že výpadek na obě odkazy je mnohem nižší, ale za cenu zvýšení latence na konci.
+Pokud pro redundanci používáte jiný METROS, měli byste vybrat sekundární umístění ve stejné [geografické oblasti](expressroute-locations-providers.md#locations). Pokud chcete vybrat umístění mimo geografickou politickou oblast, budete muset pro oba okruhy v paralelních cestách použít SKU úrovně Premium. Výhodou této konfigurace je pravděpodobnost, že výpadek na obě odkazy je mnohem nižší, ale za cenu zvýšené latence od začátku do konce.
 
 V tomto článku se podíváme na to, jak řešit problémy, které se můžou při konfiguraci geograficky redundantních cest stát.
 

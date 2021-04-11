@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: 47f0ea34fa650371d39252ce6b0ee6a15f3124d6
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871176"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
@@ -261,7 +261,7 @@ Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vaši
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Je možné zvýšit HDFS úložiště v clusteru bez zvýšení velikosti disku pracovních uzlů?
 
-Ne. Nemůžete zvětšit velikost disku žádného pracovního uzlu. Jediným způsobem, jak velikost disku zvýšit, je odpojit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
+No. Nemůžete zvětšit velikost disku žádného pracovního uzlu. Jediným způsobem, jak velikost disku zvýšit, je odpojit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
 
 ## <a name="edge-nodes"></a>Hraniční uzly
 

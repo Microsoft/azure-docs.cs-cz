@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 5473daedc8a7ad5a3b6ddffc65234160d4b3019d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104878150"
 ---
 # <a name="app-and-deployment-in-azure-spring-cloud"></a>Aplikace a nasazení v Azure jaře cloudu
@@ -29,7 +29,7 @@ Standardní úroveň cloudu Azure umožňuje, aby jedna aplikace měla jedno vý
 ## <a name="app"></a>Aplikace
 Na úrovni aplikace jsou definované následující funkce nebo vlastnosti.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:--|:----------------|
 | Veřejná</br>Koncový bod | Adresa URL pro přístup k aplikaci |
 | Vlastní</br>Doména | Záznam CNAME, který zabezpečuje vlastní doménu |

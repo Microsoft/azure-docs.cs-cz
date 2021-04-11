@@ -9,10 +9,10 @@ ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104879264"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
@@ -20,7 +20,7 @@ ms.locfileid: "104879264"
 ::: zone pivot="programming-language-csharp"
 V tomto rychlém startu sestavíte a nasadíte aplikace mikroslužeb do jarního cloudu Azure pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete předchozí rychlé starty v této sérii:
 
@@ -185,7 +185,7 @@ Tento dokument vysvětluje, jak vytvářet a nasazovat aplikace mikroslužeb do 
 
 Před nasazením pomocí Azure CLI nebo Maven dokončete příklady, které [zřídí instanci Azure jaře cloudu](spring-cloud-quickstart-provision-service-instance.md) , a [nastavte konfigurační server](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalovat JDK 8](/java/azure/jdk/)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)

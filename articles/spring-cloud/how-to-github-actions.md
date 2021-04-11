@@ -9,17 +9,17 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 8400fcacbfa4c76aceb079b788255e3d3b83ce33
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877848"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure jarní Cloud CI/CD s akcemi GitHubu
 
 Akce GitHubu podporují automatizovaný pracovní postup pro životní cyklus vývoje softwaru. S akcemi GitHubu pro jarní cloud Azure můžete vytvářet pracovní postupy v úložišti pro vytváření, testování, balení, vydávání a nasazování do Azure. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento příklad vyžaduje rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ::: zone pivot="programming-language-csharp"

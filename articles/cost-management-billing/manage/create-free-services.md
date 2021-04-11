@@ -5,18 +5,18 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 3bd571195a3f0df290387812e68f2b0377fe3c3c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: b475990a6b079de5e9ff01e52c2135f3c99a4f2f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584043"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055633"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Vytvoření služeb zahrnutých v bezplatném účtu Azure
 
-Během prvních 30 dnů od vytvoření bezplatného účtu Azure máte k dispozici kredit 200 USD, který je možné použít pro libovolnou službu, s výjimkou nákupů od třetích stran na webu Marketplace. Prostřednictvím bezplatného kreditu můžete experimentovat s různými úrovněmi a typy služeb Azure a vyzkoušet si práci s platformou Azure. Pokud používáte služby nebo prostředky Azure, které nejsou během této doby bezplatné, poplatky se odečítají od vašeho kreditu.
+Během prvních 30 dnů od vytvoření bezplatného účtu Azure máte na fakturační měnu 200 USD, která se bude používat na jakékoli službě, s výjimkou nákupů na webu Marketplace třetích stran. Prostřednictvím bezplatného kreditu můžete experimentovat s různými úrovněmi a typy služeb Azure a vyzkoušet si práci s platformou Azure. Pokud používáte služby nebo prostředky Azure, které nejsou během této doby bezplatné, poplatky se odečítají od vašeho kreditu.
 
 Pokud svůj kredit nepoužijete do konce prvních 30 dnů, zmizí. Po uplynutí prvních 30 dnů až do 12 měsíců po registraci můžete používat omezené množství *některých služeb* – ne všechny služby Azure jsou bezplatné. Pokud před uplynutím prvních 30 dnů provedete upgrade a máte zbývající kredit, můžete jeho zbývající část využít po zbývající dny v rámci předplatného s průběžnými platbami. Pokud si například 1. listopadu zaregistrujete bezplatný účet a 5. listopadu ho upgradujete, můžete váš kredit v novém předplatném s průběžnými platbami využívat až do 30. listopadu. 
 

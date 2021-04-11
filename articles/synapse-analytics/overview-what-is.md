@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78b31cb32e3df9b0d8e198d8c2122e492e609283
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625805"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383401"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Co je Azure Synapse Analytics?
 
@@ -43,9 +43,9 @@ ms.locfileid: "105625805"
 
 Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL a Spark společně. V závislosti na vašich potřebách a odborných znalostech můžete bezproblémově kombinovat a rozlišovat.
 
-* Sdílený systém metadat, který je kompatibilní s podregistrem, umožňuje, aby se tabulky definované na souborech v Data Lake plynule využily pomocí Sparku nebo podregistru.
+* Tabulky definované na souborech v Data Lake jsou bez problémů spotřebovány pomocí Sparku nebo podregistru.
 * SQL a Spark můžou přímo prozkoumat a analyzovat soubory Parquet, CSV, TSV a JSON, které jsou uložené v Data Lake.
-* Rychlé škálovatelné načítání a uvolňování dat mezi databázemi SQL a Spark
+* Rychlé a škálovatelné načítání dat mezi databázemi SQL a Spark
 
 ## <a name="built-in-data-integration"></a>Integrovaná integrace dat
 
@@ -71,10 +71,10 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 * Špičková produktivita pro psaní kódu SQL nebo Spark: vytváření, ladění a optimalizace výkonu
 * Integrace s procesem Enterprise CI/CD
 
-## <a name="engage-with-the-synapse-engineering-team"></a>Zapojení týmu synapse Engineering
+## <a name="engage-with-the-synapse-community"></a>Zapojení do komunity synapse
 
+- [Microsoft Q&A](/answers/topics/azure-synapse-analytics.html): Položte technické dotazy.
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse): Položte otázky pro vývoj.
-- [Microsoft Q&Stránka s otázkou](/answers/topics/azure-synapse-analytics.html): Položte technické dotazy.
 
 ## <a name="next-steps"></a>Další kroky
 

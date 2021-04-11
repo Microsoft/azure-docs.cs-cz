@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12a6761ac2cd305e6ff949ffa59ee3bbdff1934d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563483"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732886"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -37,7 +37,7 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 
 Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete, 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
@@ -217,7 +217,7 @@ Přečtěte si o konkrétních definicích těchto metrik v seznámení s [autom
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>Primární metriky pro scénáře klasifikace 
 
-Vystavení prahových hodnot, jako jsou `accuracy` ,, `average_precision_score_weighted` `norm_macro_recall` a `precision_score_weighted` nemusí být optimalizováno, a také u datových sad, které jsou velmi malé, mají hodně vysokého zkosení tříd (nevyrovnanost třídy) nebo když je očekávaná hodnota metriky velmi blízko až 0,0 nebo 1,0. V těchto případech `AUC_weighted` může být lepší volbou pro primární metriku. Po dokončení automatizovaného strojového učení můžete zvolit vítězný model založený na metrikě, která nejlépe vyhovuje vašim obchodním potřebám.
+Vystavení prahových hodnot, jako jsou `accuracy` ,, `average_precision_score_weighted` `norm_macro_recall` a `precision_score_weighted` nemusí být optimalizováno, a také u datových sad, které jsou malé, mají velmi velkou zešikmení třídy (nevyrovnanost třídy) nebo když je očekávaná hodnota metriky velmi blízko až 0,0 nebo 1,0. V těchto případech `AUC_weighted` může být lepší volbou pro primární metriku. Po dokončení automatizovaného strojového učení můžete zvolit vítězný model založený na metrikě, která nejlépe vyhovuje vašim obchodním potřebám.
 
 | Metric | Příklady případů použití |
 | ------ | ------- |
@@ -386,16 +386,113 @@ Nakonfigurujte  `max_concurrent_iterations` v `AutoMLConfig` objektu. Pokud nen�
 
 ## <a name="explore-models-and-metrics"></a>Prozkoumejte modely a metriky
 
-Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [sledování a vyhodnocení modelů](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
+Automatizované ML nabízí možnosti pro monitorování a vyhodnocení výsledků školení. 
 
-Přečtěte si téma [vyhodnocení výsledků automatických experimentů strojového učení](how-to-understand-automated-ml.md) pro definice a příklady grafů výkonu a metriky, které jsou k dispozici pro jednotlivé spuštění. 
+* Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [monitorování automatizovaného běhu ml](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
-Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány do konkrétního modelu, přečtěte si téma [transparentnost featurization](how-to-configure-auto-features.md#featurization-transparency). 
+* Definice a příklady grafů výkonu a metriky, které jsou k dispozici pro každé spuštění, najdete v tématu [vyhodnocení výsledků experimentu automatizovaného strojového učení](how-to-understand-automated-ml.md) . 
 
+* Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány do konkrétního modelu, přečtěte si téma [transparentnost featurization](how-to-configure-auto-features.md#featurization-transparency). 
+
+Můžete zobrazit parametry, metody škálování a normalizace a algoritmus použitý na konkrétní automatizované spuštění ML s následujícím řešením pro vlastní kód. 
+
+Následující definice definuje vlastní metodu, `print_model()` která vytiskne parametry jednotlivých kroků v kanálu automatizovaného školení ml.
+ 
+```python
+from pprint import pprint
+
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()   
+```
+
+Pro místní nebo vzdálené spuštění, které bylo právě odesláno a vyškolené v rámci stejného poznámkového bloku experimentu, můžete předat nejlepší model pomocí `get_output()` metody. 
+
+```python
+best_run, fitted_model = run.get_output()
+print(best_run)
+         
+print_model(fitted_model)
+```
+
+Následující výstup ukazuje, že:
+ 
+* Technika StandardScalerWrapper se použila ke škálování a normalizování dat před školením.
+
+* XGBoostClassifier algoritmus byl identifikován jako nejlepší běh a také zobrazuje hodnoty parametrů. 
+
+```python
+StandardScalerWrapper
+{'class_name': 'StandardScaler',
+ 'copy': True,
+ 'module_name': 'sklearn.preprocessing.data',
+ 'with_mean': False,
+ 'with_std': False}
+
+XGBoostClassifier
+{'base_score': 0.5,
+ 'booster': 'gbtree',
+ 'colsample_bylevel': 1,
+ 'colsample_bynode': 1,
+ 'colsample_bytree': 0.6,
+ 'eta': 0.4,
+ 'gamma': 0,
+ 'learning_rate': 0.1,
+ 'max_delta_step': 0,
+ 'max_depth': 8,
+ 'max_leaves': 0,
+ 'min_child_weight': 1,
+ 'missing': nan,
+ 'n_estimators': 400,
+ 'n_jobs': 1,
+ 'nthread': None,
+ 'objective': 'multi:softprob',
+ 'random_state': 0,
+ 'reg_alpha': 0,
+ 'reg_lambda': 1.6666666666666667,
+ 'scale_pos_weight': 1,
+ 'seed': None,
+ 'silent': None,
+ 'subsample': 0.8,
+ 'tree_method': 'auto',
+ 'verbose': -10,
+ 'verbosity': 1}
+```
+
+Pro existující spuštění z jiného experimentu v pracovním prostoru získáte konkrétní ID spuštění, které chcete prozkoumat, a předat ho do `print_model()` metody. 
+
+```python
+from azureml.train.automl.run import AutoMLRun
+
+ws = Workspace.from_config()
+experiment = ws.experiments['automl-classification']
+automl_run = AutoMLRun(experiment, run_id = 'AutoML_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx')
+
+automl_run
+best_run, model_from_aml = automl_run.get_output()
+
+print_model(model_from_aml)
+
+```
 > [!NOTE]
 > Algoritmy automatizované ML mají podstatu, která může způsobit mírnou variaci v konečném skóre Doporučené metriky modelu, jako je přesnost. Automatizované ML také provádí operace s daty, jako je rozdělení výukového testu, rozdělení vlaku-ověření nebo křížové ověřování v případě potřeby. Takže pokud spustíte experiment se stejným nastavením konfigurace a primární metrikou víckrát, pravděpodobně se vám v každém experimentu v důsledku těchto faktorů zobrazí variace konečný výsledek metriky. 
 
 ## <a name="register-and-deploy-models"></a>Registrace a nasazení modelů
+
 Model můžete zaregistrovat, takže se k němu můžete vrátit pro pozdější použití. 
 
 K registraci modelu z automatizovaného běhu ML použijte [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) metodu. 

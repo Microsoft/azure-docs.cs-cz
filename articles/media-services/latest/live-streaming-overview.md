@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: c82c646e4befef9d409bb8e59a442642913ada22
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f207cefaf333fc21eb56dc15b1e4d191bf8e5fae
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641518"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108298"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -36,18 +36,18 @@ Tento článek poskytuje přehled a pokyny pro živé streamování pomocí Medi
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dynamické balení a doručování
 
-Pomocí Media Services můžete využít výhod [dynamického balení](dynamic-packaging-overview.md), které umožňuje zobrazit náhled a vysílání vašich živých streamů v [formátech MPEG pomlčky, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z informačního kanálu příspěvku, který se posílá do služby. Vaši uživatelé můžou přehrát živý datový proud pomocí libovolných kompatibilních přehrávačů HLS, POMLČEK nebo Smooth Streaming. Ve webových nebo mobilních aplikacích můžete použít [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) k doručování datového proudu v libovolném z těchto protokolů.
+Pomocí Media Services můžete využít výhod [dynamického balení](encode-dynamic-packaging-concept.md), které umožňuje zobrazit náhled a vysílání vašich živých streamů v [formátech MPEG pomlčky, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z informačního kanálu příspěvku, který se posílá do služby. Vaši uživatelé můžou přehrát živý datový proud pomocí libovolných kompatibilních přehrávačů HLS, POMLČEK nebo Smooth Streaming. Ve webových nebo mobilních aplikacích můžete použít [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) k doručování datového proudu v libovolném z těchto protokolů.
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
-Dynamické šifrování vám umožní dynamicky šifrovat živý a na vyžádání obsahu pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
+Dynamické šifrování vám umožní dynamicky šifrovat živý a na vyžádání obsahu pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](drm-content-protection-concept.md).
 
 > [!NOTE]
 > Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="dynamic-filtering"></a>Dynamické filtrování
 
-Dynamické filtrování se používá k řízení počtu běhů, formátů, přenosových rychlostí a oken doby prezentace, které se odesílají přehrávačům. Další informace najdete v tématu [filtry a dynamické manifesty](filters-dynamic-manifest-overview.md).
+Dynamické filtrování se používá k řízení počtu běhů, formátů, přenosových rychlostí a oken doby prezentace, které se odesílají přehrávačům. Další informace najdete v tématu [filtry a dynamické manifesty](filters-dynamic-manifest-concept.md).
 
 ## <a name="live-event-types"></a>Typy živých událostí
 

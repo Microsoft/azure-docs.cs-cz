@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1053062302c9a00cf49cee1cd8de5ca6652b745
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96453024"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167698"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet věcí (IoT)?
 
@@ -30,7 +30,7 @@ Zařízení IoT obvykle tvoří desku okruhu s připojenými senzory, které pou
 * Akcelerometr v výtahu.
 * Senzory přítomnosti v místnosti.
 
-Existuje široká škála zařízení, která jsou k dispozici od různých výrobců pro sestavení řešení. Seznam zařízení s certifikací pro práci s Azure IoT Hub najdete v [katalogu zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/alldevices). Pro vytváření prototypů můžete používat zařízení, jako je [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) nebo [Malina Pi](https://www.raspberrypi.org/). DevKit má integrované senzory pro teplotu, tlak, vlhkost a vybavený gyroskopem, akcelerometr a magnetometer. Malina Pi umožňuje připojit mnoho různých typů senzorů. 
+Existuje široká škála zařízení, která jsou k dispozici od různých výrobců pro sestavení řešení. Seznam zařízení s certifikací pro práci s Azure IoT Hub najdete v [katalogu zařízení Azure Certified for IoT](https://devicecatalog.azure.com). Pro vytváření prototypů můžete používat zařízení, jako je [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) nebo [Malina Pi](https://www.raspberrypi.org/). DevKit má integrované senzory pro teplotu, tlak, vlhkost a vybavený gyroskopem, akcelerometr a magnetometer. Malina Pi umožňuje připojit mnoho různých typů senzorů. 
 
 Microsoft poskytuje sady [SDK](../iot-hub/iot-hub-devguide-sdks.md) open source, které můžete použít k sestavení aplikací, které běží na vašich zařízeních. Tyto sady [SDK zjednodušují a urychlují](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) vývoj vašich řešení IoT.
 

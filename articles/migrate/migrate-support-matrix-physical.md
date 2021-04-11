@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 09110bb15f853f20b0be9d8c4c6f5088e7a55d8b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869442"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382976"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Matice podpory pro zjišťování a hodnocení fyzických serverů 
 
@@ -39,6 +39,8 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt a přidejte do projektu
 **Nastaven**
 
 - Pro Windows servery použijte doménový účet pro servery připojené k doméně a místní účet pro servery, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Remote Management Users, Performance Monitor Users a Performance Log Users.
+    > [!Note]
+    > U systémů Windows Server 2008 a 2008 R2 zajistěte, aby byla na serverech nainstalována WMF 3,0 a účet domény nebo místní účet, který se používá pro přístup k serverům, je přidán do těchto skupin: Performance Monitor Users, Performance Log Users and WinRMRemoteWMIUsers.
 - V případě serverů s Linuxem musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele. Alternativně můžete nastavit nekořenový účet s požadovanými funkcemi pomocí následujících příkazů:
 
 **Příkaz** | **Účel**

@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
-ms.date: 08/10/2020
-ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026229"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011143"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funkce v rozhraní Citus API pro škálování na více systému ()
 
-Tato část obsahuje referenční informace o uživatelsky definovaných funkcích poskytovaných v rámci škálování (Citus). Tyto funkce vám pomůžou poskytnout další distribuované funkce škálování (Citus) jiné než standardní příkazy SQL.
+Tato část obsahuje referenční informace o uživatelsky definovaných funkcích poskytovaných v rámci škálování (Citus). Tyto funkce vám pomůžou zajistit distribuci distribuovaných funkcí do škálování (Citus).
 
 > [!NOTE]
 >
@@ -178,6 +178,48 @@ SELECT create_distributed_function(
 );
 ```
 
+### <a name="alter_columnar_table_set"></a>alter_columnar_table_set
+
+Funkce alter_columnar_table_set () mění nastavení ve [sloupcové tabulce](concepts-hyperscale-columnar.md). Volání této funkce na nesloupcových tabulkách obsahuje chybu. Všechny argumenty s výjimkou názvu tabulky jsou nepovinné.
+
+Pokud chcete zobrazit aktuální možnosti pro všechny sloupcové tabulky, podívejte se do této tabulky:
+
+```postgresql
+SELECT * FROM columnar.options;
+```
+
+Výchozí hodnoty pro sloupcová nastavení nově vytvořených tabulek lze přepsat pomocí těchto GUCs:
+
+* sloupcová. komprese
+* columnar.compression_level
+* columnar.stripe_row_count
+* columnar.chunk_row_count
+
+#### <a name="arguments"></a>Argumenty
+
+**TABLE_NAME:** Název sloupcové tabulky
+
+**chunk_row_count:** (volitelné) maximální počet řádků na blok pro nově vložená data. Existující datové bloky se nezmění a můžou mít více řádků, než je tato maximální hodnota. Výchozí hodnota je 10000.
+
+**stripe_row_count:** (volitelné) maximální počet řádků na proužek pro nově vložená data. Existující pruhy dat nebudou změněny a mohou mít více řádků, než je tato maximální hodnota. Výchozí hodnota je 150000.
+
+**Komprese:** (volitelné) `[none|pglz|zstd|lz4|lz4hc]` typ komprese nově vkládaných dat. Existující data se nebudou znovu komprimovat ani dekomprimovat. Výchozí a navrhovaná hodnota je zstd (Pokud byla podpora zkompilována v).
+
+**compression_level:** (volitelné) platná nastavení jsou od 1 do 19. Pokud metoda komprese nepodporuje zvolenou úroveň, místo toho bude vybrána nejbližší úroveň.
+
+#### <a name="return-value"></a>Vrácená hodnota
+
+–
+
+#### <a name="example"></a>Příklad
+
+```postgresql
+SELECT alter_columnar_table_set(
+  'my_columnar_table',
+  compression => 'none',
+  stripe_row_count => 10000);
+```
+
 ## <a name="metadata--configuration-information"></a>Metadata/konfigurační informace
 
 ### <a name="master_get_table_metadata"></a>Hlavní \_ načtení \_ \_ metadat tabulky
@@ -220,7 +262,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 ### <a name="get_shard_id_for_distribution_column"></a>získat \_ \_ ID horizontálních oddílů \_ pro \_ distribuční \_ sloupec
 
-Citus () přiřadí každý řádek distribuované tabulky k horizontálních oddílů na základě hodnoty sloupce distribuce řádku a metody distribuce tabulky. Ve většině případů je přesné mapování podrobnosti nízké úrovně, které správce databáze může ignorovat. Může to ale být užitečné pro určení horizontálních oddílů řádku, a to buď pro ruční úlohy údržby databáze, nebo jenom pro uspokojení objevili. `get_shard_id_for_distribution_column`Funkce poskytuje tyto informace pro tabulky s hodnotami hash a rozsah a také referenční tabulky. Nefunguje pro připojení distribuce.
+Citus () přiřadí každý řádek distribuované tabulky k horizontálních oddílů na základě hodnoty sloupce distribuce řádku a metody distribuce tabulky. Ve většině případů je přesné mapování podrobnosti nízké úrovně, které správce databáze může ignorovat. Může to ale být užitečné pro určení horizontálních oddílů řádku, a to buď pro ruční úlohy údržby databáze, nebo jenom pro uspokojení objevili. `get_shard_id_for_distribution_column`Tato funkce poskytuje tyto informace pro tabulky distribuované s rozsahem hodnoty hash, Range-Distributed a reference. Nefunguje pro připojení distribuce.
 
 #### <a name="arguments"></a>Argumenty
 

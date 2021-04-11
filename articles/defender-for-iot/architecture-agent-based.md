@@ -4,10 +4,10 @@ description: Přečtěte si o Azure Defenderu pro architekturu a informační to
 ms.topic: overview
 ms.date: 1/25/2021
 ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784879"
 ---
 # <a name="agent-based-solution-for-device-builders"></a>Řešení založená na agentech pro tvůrce zařízení

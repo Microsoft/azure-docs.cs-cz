@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: baf41b9e66b14e4b255b6e13b22691357f9e7309
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870802"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Co je Apache Kafka ve službě Azure HDInsight
@@ -58,7 +58,7 @@ K duplikaci oddílů mezi uzly se využívá replikace, která zajišťuje ochra
 
 Tady jsou běžné úlohy a postupy, které je možné provádět s využitím systému Kafka ve službě HDInsight:
 
-|Použití |Popis |
+|Použití |Description |
 |---|---|
 |Replikace dat Apache Kafka|Kafka poskytuje nástroj nástroje MirrorMaker, který replikuje data mezi clustery Kafka. Informace o použití nástroje MirrorMaker najdete v tématu věnovaném [replikaci Apache Kafka témata Apache Kafka v HDInsight](apache-kafka-mirroring.md).|
 |Vzor zasílání zpráv pro publikování a odběr|Kafka poskytuje výrobci rozhraní API pro publikování záznamů do tématu Kafka. Rozhraní API pro příjemce se používá při přihlášení k odběru tématu. Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).|

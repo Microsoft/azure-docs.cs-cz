@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869085"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010996"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -20,7 +20,7 @@ VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Pod
 >I když nástroj maximální konfigurace VMware popisuje páry webů, které jsou maximálně 25 mezi on-premises Connectorem a správcem cloudu, tato licence omezuje tyto možnosti na tři pro HCX Advanced a 10 pro HCX Enterprise Edition.
 
 >[!NOTE]
->VMware HCX Enterprise je k dispozici s řešením Azure VMware jako službou ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je podniková služba VMware HCX Enterprise všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Neexistuje žádná jednoduchá cesta k downgradu z VMware HCX Enterprise na VMware HCX Advanced. Pokud se rozhodnete downgradovat, budete muset znovu nasadit a nasazovat výpadky.
+>VMware HCX Enterprise je k dispozici s řešením Azure VMware jako službou ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je podniková služba VMware HCX Enterprise všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Přechod na starší verzi HCx Enterprise na HCX Advanced je možný bez opětovného nasazení, ale budete muset protokolovat lístek podpory, aby tato akce probíhat. Při plánování downgradu zajistěte, aby se žádné migrace neplánovaly, ani funkce, jako je RAV, se nepoužívají.
 
 Nejdřív si přečtěte, [než začnete](#before-you-begin), [požadavky na verzi softwaru](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)a [požadavky](#prerequisites). 
 

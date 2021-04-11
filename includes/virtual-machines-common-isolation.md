@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510878"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073726"
 ---
 Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Izolované velikosti fungují v reálném čase a pracují na konkrétní generaci hardwaru a při vyřazení hardwaru budou zastaralé.
 
@@ -31,6 +31,7 @@ Mezi aktuální nabídky izolovaných virtuálních počítačů patří:
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
+* Standard_DC8_v2
 
 
 > [!NOTE]
@@ -48,6 +49,7 @@ Velikost izolovaného virtuálního počítače má omezený životnost hardwaru
 | Standard_GS5  | 15. února 2022 |
 | Standard_E64i_v3  | 15. února 2022 |
 | Standard_E64is_v3  | 15. února 2022 |
+| Standard_DC8_v2 | 15. února 2022 |
 
 
 ## <a name="faq"></a>Časté otázky
@@ -82,7 +84,7 @@ Odpověď **: ne**. Záruky poskytované [úrovněmi odolnosti](../articles/serv
 | Date (Datum) | Akce |
 |---|---|
 | 15. února 2021<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 oznámení o vyřazení izolace |
-| 15. února 2022 | Odebrání záruky izolace/GS5/E64i_v3/E64is_v3 |
+| 28. února 2022 | Odebrání záruky izolace/GS5/E64i_v3/E64is_v3 |
 
 <sup>1</sup> stávající zákazník používající tyto velikosti dostane e-mail s oznámením s podrobnými pokyny k dalšímu postupu.  
 

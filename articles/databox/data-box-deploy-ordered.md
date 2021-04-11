@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522389"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067137"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -790,7 +790,7 @@ Chcete-li zrušit Azure Data Box pořadí, spusťte příkaz [`az databox job ca
    |prostředek-skupina [povinné]| Název skupiny prostředků přidružené k objednávce, která se má odstranit Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
    |název [povinné]| Název objednávky, která se má odstranit | "mydataboxorder"|
    |důvod [povinné]| Důvod zrušení objednávky. | "Zadali jste chybné informace a museli jste objednávku zrušit." |
-   |ano| Nedotazovat se na potvrzení | --Yes (-y)| --Ano-y |
+   |ano| Nedotazovat se na potvrzení | --Yes (-y)| 
    |ladit| Zahrnout informace o ladění do podrobného protokolování | --ladění |
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |
@@ -827,7 +827,7 @@ Pokud jste zrušili Azure Data Boxou objednávku, můžete ji spustit, [`az data
    |prostředek-skupina [povinné]| Název skupiny prostředků přidružené k objednávce, která se má odstranit Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
    |název [povinné]| Název objednávky, která se má odstranit | "mydataboxorder"|
    |předplatné| Název nebo identifikátor (GUID) vašeho předplatného Azure. | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-   |ano| Nedotazovat se na potvrzení | --Yes (-y)| --Ano-y |
+   |ano| Nedotazovat se na potvrzení | --Yes (-y)|
    |ladit| Zahrnout informace o ladění do podrobného protokolování | --ladění |
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |

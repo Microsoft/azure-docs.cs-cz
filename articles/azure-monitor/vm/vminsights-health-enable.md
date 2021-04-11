@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732750"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Povolit stav hosta virtuálního počítače Insights (Preview)
 Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
@@ -20,6 +20,7 @@ Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuál
 Stav hosta virtuálních počítačů Insights má ve verzi Public Preview tato omezení:
 
 - V tuto chvíli se podporují jenom virtuální počítače Azure. Azure Arc pro servery se v současné době nepodporuje.
+- Síťové proxy servery nejsou aktuálně podporovány.
 
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
@@ -84,7 +85,7 @@ Log Analytics pracovní prostor se musí nacházet v jedné z následujících o
 - USA – západ
 - Západní USA 2
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Virtuální počítač musí být připojen k virtuálnímu počítači Insights.
 - Uživatel, který spouští kroky připojování, musí mít minimální přístup na úrovni přispěvatele k předplatnému, kde se nachází pravidlo pro virtuální počítače a shromažďování dat.

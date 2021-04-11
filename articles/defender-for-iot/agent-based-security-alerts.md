@@ -4,10 +4,10 @@ description: Přečtěte si o výstrahách zabezpečení a doporučené náprav�
 ms.topic: conceptual
 ms.date: 2/16/2021
 ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784930"
 ---
 # <a name="defender-for-iot-devices-security-alerts"></a>Defender pro výstrahy zabezpečení zařízení IoT
@@ -22,7 +22,7 @@ Další informace najdete v tématu [přizpůsobitelná upozornění](concept-cu
 
 ## <a name="agent-based-security-alerts"></a>Výstrahy zabezpečení založené na agentech
 
-| Name | Závažnost | Zdroj dat | Popis | Navrhované kroky k nápravě |
+| Name | Závažnost | Zdroj dat | Description | Navrhované kroky k nápravě |
 |--|--|--|--|--|
 | **Vysoká** závažnost |  |  |  |
 | Binární příkazový řádek | Vysoká | Klasický Defender – IoT-Micro Agent | Byl zjištěn binární soubor LA Linux, který byl spuštěn z příkazového řádku. Tento proces může být legitimní aktivity nebo indikace, že dojde k ohrožení zabezpečení vašeho zařízení. | Projděte si příkaz s uživatelem, který ho spustil, a zkontrolujte, jestli se jedná o něco oprávněného spuštění na zařízení. Pokud ne, požádejte o upozornění svůj tým zabezpečení informací. |

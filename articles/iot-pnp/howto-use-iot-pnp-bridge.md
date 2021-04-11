@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9bcf256b6144702254bbff4a57e5ff402abaa962
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 28feaf266e2d5bed14077a686e6eb936e430a695
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99834098"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066751"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Jak připojit ukázku služby IoT technologie Plug and Play Bridge běžící v systému Linux nebo Windows do IoT Hub
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkový adaptér pro prostředí 
 
 :::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-explorer-telemetry.png" alt-text="Snímek obrazovky zobrazující Azure IoT Explorer s tabulkou nahlášené telemetrie (vlhkost, teplota) ze služby IoT technologie Plug and Play most.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ukázku můžete spustit v článku v systému Windows nebo Linux. Příkazy prostředí v tomto průvodci postupy postupují podle konvence pro oddělovače cest v systému Windows `\` , pokud sledujete na Linux, nezapomeňte tyto oddělovače pro použít `/` .
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.date: 03/29/2021
+ms.openlocfilehash: 186f1e085cecdc92e345231d50d06195bba55504
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564513"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732954"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby log Replay (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,7 +70,7 @@ Až se LRS zastaví, ať už automaticky prostřednictvím automatického dokon�
 | **2. Spusťte LRS v cloudu**. | Službu můžete restartovat s volbou rutin: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) nebo Azure CLI ([az_sql_midb_log_replay_start rutiny](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Spusťte LRS samostatně pro každou databázi, která odkazuje na složku zálohy na Blob Storage. <br /><br /> Po spuštění služby bude trvat zálohování z kontejneru Blob Storage a začít je obnovovat na spravované instanci SQL.<br /><br /> Pokud jste LRS spustili v nepřetržitém režimu, po obnovení všech původně nahraných záloh bude služba sledovat všechny nové soubory nahrané do této složky. Služba bude průběžně používat protokoly založené na řetězci pořadového čísla (LSN) protokolu, dokud se nezastaví. |
 | **2,1. Sledujte průběh operace**. | Průběh operace obnovení můžete sledovat volbou rutin: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) nebo Azure CLI ([az_sql_midb_log_replay_show rutiny](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. Pokud je to potřeba, zastavte operaci**. | Pokud potřebujete zastavit proces migrace, máte možnost vybrat si rutiny: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) nebo Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Zastavením operace dojde k odstranění databáze, kterou obnovujete na spravované instanci SQL. Po zastavení operace nebude možné obnovit LRS pro databázi. Musíte restartovat proces migrace od začátku. |
-| **3. až budete připraveni, vyjmutí do cloudu**. | Zastavte aplikaci a úlohu. Využijte poslední zálohu protokolu a nahrajte ji do Azure Blob Storage.<br /><br /> Dokončete přímou migraci inicializací operace LRS `complete` s volbou rutiny: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) nebo Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Tato operace zastaví LRS a způsobí, že se databáze pro čtení a zápis do spravované instance SQL převede do online režimu.<br /><br /> Přesměrujte připojovací řetězec aplikace z SQL Server na spravovanou instanci SQL. |
+| **3. až budete připraveni, vyjmutí do cloudu**. | Zastavte aplikaci a úlohu. Využijte poslední zálohu protokolu a nahrajte ji do Azure Blob Storage.<br /><br /> Dokončete přímou migraci inicializací operace LRS `complete` s volbou rutiny: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) nebo Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Tato operace zastaví LRS a způsobí, že se databáze pro čtení a zápis do spravované instance SQL převede do online režimu.<br /><br /> Přesměrujte připojovací řetězec aplikace z SQL Server na spravovanou instanci SQL. Tento krok bude nutné orchestrovat sami, buď prostřednictvím změny ručního připojovacího řetězce v aplikaci, nebo automaticky (například pokud vaše aplikace může například číst připojovací řetězec z vlastnosti nebo databáze). |
 
 ## <a name="requirements-for-getting-started"></a>Požadavky na Začínáme
 

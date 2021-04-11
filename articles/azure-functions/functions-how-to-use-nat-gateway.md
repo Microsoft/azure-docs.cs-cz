@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.author: kyburns
 ms.date: 2/26/2021
 ms.openlocfilehash: 5bb491e367ed813f09197a193745c231261c88c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104658113"
 ---
 # <a name="tutorial-control-azure-functions-outbound-ip-with-an-azure-virtual-network-nat-gateway"></a>Kurz: řízení Azure Functions odchozí IP adresy pomocí brány NAT služby Azure Virtual Network
@@ -32,7 +32,7 @@ Následující diagram znázorňuje architekturu řešení, kterou vytvoříte:
 
 Funkce spuštěné v plánu Premium mají stejné možnosti hostování jako webové aplikace v Azure App Service, což zahrnuje funkci Integrace virtuální sítě. Další informace o integraci virtuální sítě, včetně řešení potíží a pokročilých konfigurací, najdete v tématu [integrace aplikace do služby Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete začít s [tímto článkem, který se zabývá základy adresování a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho dalších článků a videí je k dispozici online.
 

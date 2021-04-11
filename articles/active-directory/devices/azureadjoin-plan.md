@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435446"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550774"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -168,13 +168,11 @@ Uživatelé získávají přihlašování ze zařízení připojených k Azure A
 
 ### <a name="on-premises-network-shares"></a>Místní síťové sdílené složky
 
-Uživatelé mají k dispozici jednotné přihlašování ze zařízení připojených k Azure AD, když má zařízení přístup k místnímu řadiči domény.
+Uživatelé mají k dispozici jednotné přihlašování ze zařízení připojených k Azure AD, když má zařízení přístup k místnímu řadiči domény. [Podívejte se, jak to funguje](azuread-join-sso.md)
 
 ### <a name="printers"></a>Tiskárny
 
-Pro tiskárny potřebujete nasadit [hybridní cloudový tisk](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) pro zjišťování tiskáren na zařízeních připojených k Azure AD. 
-
-I když se tiskárny nedají automaticky zjistit v prostředí jenom pro Cloud, můžou uživatelé použít cestu UNC tiskárny, aby je mohli přímo přidat. 
+Pro cloudové řešení správy tisku doporučujeme nasadit [univerzální tisk](/universal-print/fundamentals/universal-print-whatis) bez místních závislostí. 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>Místní aplikace, které se spoléhají na ověřování počítače
 
@@ -221,7 +219,7 @@ Vyberte si v tabulce výše svůj přístup k nasazení nebo přístupy a Projd�
 
 ## <a name="configure-your-device-settings"></a>Konfigurace nastavení zařízení
 
-Azure Portal vám umožní řídit nasazení zařízení připojených k Azure AD ve vaší organizaci. Pokud chcete nakonfigurovat související nastavení, na **stránce Azure Active Directory** vyberte `Devices > Device settings` .
+Azure Portal vám umožní řídit nasazení zařízení připojených k Azure AD ve vaší organizaci. Pokud chcete nakonfigurovat související nastavení, na **stránce Azure Active Directory** vyberte `Devices > Device settings` . [Další informace](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Uživatelé můžou připojovat zařízení do Azure AD
 
@@ -235,11 +233,13 @@ Vyberte **Vybrat a vyberte uživatele** , které chcete přidat do skupiny míst
 
 ![Další místní správci na zařízeních připojených do Azure AD](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>Vyžadovat službu Multi-Factor auth k připojení zařízení
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>Vyžadovat službu Multi-Factor Authentication (MFA) k připojení zařízení
 
 Pokud požadujete, aby uživatelé prováděli MFA během připojování zařízení do Azure AD, vyberte **Ano** . Pro uživatele, kteří se připojují k Azure AD pomocí MFA, se samotné zařízení stala za druhý faktor.
 
 ![Vyžadovat službu Multi-Factor auth k připojení zařízení](./media/azureadjoin-plan/03.png)
+
+**Doporučení:** Použijte akci uživatele [Registrovat nebo připojit zařízení](/conditional-access/concept-conditional-access-cloud-apps#user-actions) v podmíněném přístupu pro vynucování MFA pro připojení zařízení.
 
 ## <a name="configure-your-mobility-settings"></a>Konfigurace nastavení mobility
 

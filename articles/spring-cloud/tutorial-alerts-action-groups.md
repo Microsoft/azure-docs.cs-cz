@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: d12a48729616a5181f019f84f19779390e736cb4
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104879148"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: monitorování jarních cloudových prostředků pomocí výstrah a skupin akcí
@@ -24,7 +24,7 @@ Pro nastavení kanálu výstrah existují dva kroky:
 1. Nastavte skupinu akcí s akcemi, které se mají provést, když se aktivuje výstraha, například e-mail, SMS, Runbook nebo Webhook. Skupiny akcí lze znovu použít mezi různými výstrahami.
 2. Nastavte pravidla upozornění. Pravidla vážou modely metrik se skupinami akcí na základě cílového prostředku, metriky, podmínky, agregace času atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart.md) startu.
 

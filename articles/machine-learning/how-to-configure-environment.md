@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 686274bc90f516f597a397a6b0270fb638e30c95
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501613"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027706"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí v Pythonu pro Azure Machine Learning
 
@@ -134,7 +134,12 @@ Použití Visual Studio Code pro vývoj:
 1. Nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Nainstalujte [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md) (Preview).
 
-Po instalaci rozšíření Visual Studio Code můžete spravovat [prostředky Azure Machine Learning](how-to-manage-resources-vscode.md), [spouštět a ladit experimenty](how-to-debug-visual-studio-code.md)a [nasazovat školené modely](tutorial-train-deploy-image-classification-model-vscode.md).
+Jakmile je rozšíření Visual Studio Code nainstalované, použijte ho k těmto akcím:
+
+* [Správa prostředků Azure Machine Learning](how-to-manage-resources-vscode.md)
+* [Připojení k Azure Machine Learning výpočetní instance](how-to-set-up-vs-code-remote.md)
+* [Spustit a ladit experimenty](how-to-debug-visual-studio-code.md)
+* [Nasaďte školené modely](tutorial-train-deploy-image-classification-model-vscode.md).
 
 ## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Výpočetní instance Azure Machine Learningu
 
@@ -151,7 +156,7 @@ Další informace o výpočetních instancích, včetně postupu instalace balí
 
 Kromě Jupyter Notebook serveru a JupyterLab můžete použít výpočetní instance v [integrované funkci poznámkového bloku v rámci nástroje Azure Machine Learning Studio](how-to-run-jupyter-notebooks.md).
 
-Pomocí rozšíření Azure Machine Learning Visual Studio Code můžete také [nakonfigurovat instanci služby Azure Machine Learning COMPUTE jako server vzdáleného Jupyter notebook](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server).
+K [připojení ke vzdálené výpočetní instanci pomocí vs Code](how-to-set-up-vs-code-remote.md)můžete použít také rozšíření Azure Machine Learning Visual Studio Code.
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Virtuální počítač pro datové vědy
 

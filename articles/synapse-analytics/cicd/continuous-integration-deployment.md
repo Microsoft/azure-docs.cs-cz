@@ -9,10 +9,10 @@ ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
 ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103561953"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
@@ -25,7 +25,7 @@ Pro pracovní prostor Azure synapse můžete průběžnou integraci a doručová
 
 V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automatizovat nasazení pracovního prostoru synapse do více prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Pracovní prostor použitý pro vývoj byl nakonfigurován s úložištěm Git v nástroji Studio, viz [Správa zdrojového kódu v synapse studiu](source-control.md).
 -   Projekt Azure DevOps se připravil pro běh kanálu vydávání verzí.

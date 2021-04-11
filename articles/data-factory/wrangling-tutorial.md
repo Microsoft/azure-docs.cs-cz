@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684018"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732500"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>Příprava dat pomocí tahání dat
 
@@ -20,7 +20,7 @@ ms.locfileid: "98684018"
 Data tahání ve vaší datové továrně umožňují vytvářet interaktivní Power Query zpracování nativně v ADF a pak je provádět ve velkém měřítku v kanálu ADF.
 
 > [!NOTE]
-> Power Query aktivitu v ADF je aktuálně dostupných ve verzi Public Preview.
+> Power Query aktivita v ADF je aktuálně dostupná ve verzi Public Preview.
 
 ## <a name="create-a-power-query-activity"></a>Vytvoření aktivity Power Query
 
