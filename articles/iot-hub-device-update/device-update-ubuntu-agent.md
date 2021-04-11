@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936848"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta balíčku na serveru Ubuntu 18,04 x64
 
@@ -19,7 +19,7 @@ Aktualizace zařízení pro IoT Hub podporuje dvě formy aktualizací – založ
 
 Aktualizace založené na balíčku jsou cílené aktualizace, které mění pouze konkrétní součást nebo aplikaci na zařízení. To vede ke snížení spotřeby šířky pásma a pomáhá zkrátit dobu potřebné ke stažení a instalaci aktualizace. Aktualizace balíčků obvykle umožňují méně výpadkům zařízení při použití aktualizace a vyhněte se režii při vytváření imagí.
 
-Tento kurz vás provede kroky k dokončení kompletní aktualizace založené na balíčku prostřednictvím aktualizace zařízení pro IoT Hub. V tomto kurzu použijeme Ubuntu Server 18,04 x64 se spuštěným Azure IoT Edge a agentem balíčku aktualizace zařízení. V tomto kurzu se dozvíte, jak aktualizovat ukázkový balíček, ale s podobnými kroky jste mohli aktualizovat další balíčky, jako je Azure IoT Edge nebo kontejnerový modul, který používá.
+Tento kompletní kurz vás provede aktualizací Azure IoT Edge na serveru 18,04 x64 pomocí agenta aktualizace zařízení. I když tento kurz ukazuje, jak aktualizovat IoT Edge pomocí podobných kroků byste mohli aktualizovat další balíčky, jako je například kontejnerový modul, který používá.
 
 Nástroje a koncepty v tomto kurzu se pořád použijí i v případě, že plánujete použít jinou konfiguraci platformy operačního systému. Dokončete tento Úvod do kompletního procesu aktualizace a pak zvolte preferovaný způsob aktualizace a platformy operačního systému tak, aby se podrobně na podrobnosti.
 

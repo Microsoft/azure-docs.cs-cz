@@ -366,9 +366,12 @@
   items:
     - name: Vytváření šablon
       items:
-        - name: Struktura souborů šablon
+        - name: Struktura JSON
           displayName: 'parameters,variables,resources,outputs,condition'
           href: template-syntax.md
+        - name: Struktura bicep
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: bicep-file.md
         - name: Zápis výrazů šablon
           href: template-expressions.md
         - name: Parametry

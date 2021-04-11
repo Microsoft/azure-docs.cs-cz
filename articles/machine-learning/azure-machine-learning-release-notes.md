@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562218"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166679"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -22,6 +22,21 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 
 __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>2021-03-31
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (březen Update)
++ **Nové funkce**
+  + Vykreslit sdílený svazek clusteru/TSV. Uživatelé budou moci vykreslovat a soubor TSV/CSV ve formátu mřížky pro snazší analýzu dat. 
+  + Ověřování jednotného přihlašování pro instanci služby COMPUTE Uživatelé teď můžou snadno ověřit všechny nové výpočetní instance přímo v uživatelském rozhraní poznámkového bloku, což usnadňuje ověřování a používání sad Azure SDK přímo v AzureML. 
+  + Metriky instance Compute. Uživatelé budou moci zobrazit výpočetní metriky, jako je využití procesoru a paměť, prostřednictvím terminálu.
+  + Podrobnosti o souboru. Uživatelé teď můžou zobrazit podrobnosti o souborech včetně času poslední změny a velikosti souboru kliknutím na 3 tečky vedle souboru.
+
++ **Opravy chyb a vylepšení**
+  + Vylepšené doby načítání stránek.
+  + Vyšší výkon
+  + Vylepšená rychlost a spolehlivost jádra.
+  + Jak trvale přesouvat podokno souboru poznámkového bloku, získat vertikální realitu
+  + Odkazy teď v terminálu klikněte na.
+  + Vylepšený výkon technologie IntelliSense
 
 ## <a name="2021-03-08"></a>2021-03-08
 

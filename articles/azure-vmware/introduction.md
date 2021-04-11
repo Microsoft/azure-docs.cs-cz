@@ -3,12 +3,12 @@ title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
 ms.date: 03/24/2021
-ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048812"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107978"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
@@ -19,11 +19,6 @@ ms.locfileid: "105048812"
 Diagram znázorňuje vztah mezi privátními cloudy a virtuální sítě v Azure, službami Azure a místním prostředí. Přístup k síti z privátních cloudů do služeb Azure nebo virtuální sítě zajišťuje integraci koncových bodů služeb Azure řízených smlouvou SLA. ExpressRoute Global Reach připojuje vaše místní prostředí k vašemu privátnímu cloudu řešení Azure VMware. 
 
 ![Obrázek sousedního cloudu řešení Azure VMware s Azure a místním prostředím](./media/adjacency-overview-drawing-final.png)
-
-## <a name="customer-communication"></a>Komunikace se zákazníky
-Problémy se službami, plánovaná údržba a Poradce pro stav, oznámení o výstrahách zabezpečení se zveřejňují prostřednictvím **Service Health** v Azure Portal. Když nastavíte výstrahy protokolu aktivit pro tato oznámení, můžete provést včasné akce. Další informace najdete v tématu [vytvoření výstrah služby Service Health pomocí Azure Portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
-
-:::image type="content" source="media/service-health.png" alt-text="Snímek obrazovky s oznámením o Service Health":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hostitelé, clustery a privátní cloudy
 
@@ -60,6 +55,9 @@ V privátním cloudu můžete:
 
 Vzorce monitorování v řešení Azure VMware jsou podobné virtuálním počítačům Azure v rámci platformy IaaS. Další informace a postupy najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/vm/monitor-vm-azure.md).
 
+## <a name="customer-communication"></a>Komunikace se zákazníky
+[!INCLUDE [customer-communications](includes/customer-communications.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
 Dalším krokem je seznámit se s klíčovým [koncepcím privátního cloudu a clusteru](concepts-private-clouds-clusters.md).
@@ -68,3 +66,5 @@ Dalším krokem je seznámit se s klíčovým [koncepcím privátního cloudu a 
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
+
+

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9408adfe33fc71707532f3bf5646f3727fd7dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b70d08363db212e5039690ceaaef5dbb55bcd65f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955050"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107269"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Rozříznout video při kódování pomocí Media Services-.NET
 
@@ -31,9 +31,9 @@ Následující příklad jazyka C# vytvoří úlohu, která ořízne video v Ass
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
-- [Vytvoření účtu Azure Media Services](./create-account-howto.md)
+- [Vytvoření účtu Azure Media Services](./account-create-how-to.md)
 - Vytvořte transformaci a vstupní a výstupní prostředky. Informace o tom, jak vytvořit transformace a vstupní a výstupní prostředky, najdete v kurzech k [nahrávání, kódování a streamování pomocí .NET](stream-files-tutorial-with-api.md) .
-- Přečtěte si téma o [pojmu kódování](encoding-concept.md) .
+- Přečtěte si téma o [pojmu kódování](encode-concept.md) .
 
 ## <a name="example"></a>Příklad
 
@@ -92,4 +92,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>Další kroky
 
-[Kódování s vlastní transformací](customize-encoder-presets-how-to.md) 
+[Kódování s vlastní transformací](encode-custom-presets-how-to.md) 

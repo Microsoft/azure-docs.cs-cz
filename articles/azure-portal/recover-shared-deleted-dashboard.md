@@ -4,10 +4,10 @@ description: Pokud odstraníte publikovaný řídicí panel v Azure Portal, mů�
 ms.date: 03/25/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 96d330872327f8719e7cc4287415d86fd0ae5fd4
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105559705"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Obnovení odstraněného řídicího panelu na webu Azure Portal

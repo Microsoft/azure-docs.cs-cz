@@ -10,10 +10,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555274"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption s Azure AD pro virtuální počítače s Windows (předchozí verze)
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | subnetName | Název podsítě ve virtuální síti, do které by měl patřit síťová karta virtuálního počítače. |
 | AADClientID | ID klienta aplikace Azure AD, která má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
-| keyVaultURL | Adresa URL trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` nebo rozhraní příkazového řádku Azure CLI. `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyVaultURL | Adresa URL trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -VaultName "MyKeyVault&quot; -ResourceGroupName &quot;MyKeyVaultResourceGroupName").VaultURI` nebo rozhraní příkazového řádku Azure CLI. `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
 | keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče nástroje BitLocker (volitelné). </br> </br>KeyEncryptionKeyURL je nepovinný parametr. Vlastní KEK můžete použít k dalšímu zabezpečení šifrovacího klíče pro přístup k datům (tajné heslo) ve vašem trezoru klíčů. |
 | keyVaultResourceGroup | Skupina prostředků trezoru klíčů. |
 | vmName | Název virtuálního počítače, na kterém se má operace šifrování provést. |

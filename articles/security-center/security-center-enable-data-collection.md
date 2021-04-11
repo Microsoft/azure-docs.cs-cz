@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
 ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102561258"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurace automatického zřizování pro agenty a rozšíření z Azure Security Center
 
 Azure Security Center shromažďuje data z vašich prostředků pomocí příslušného agenta nebo rozšíření pro daný prostředek a typu kolekce dat, kterou jste povolili. Pomocí níže uvedených postupů zajistěte, aby vaše prostředky měly potřebné agenty a rozšíření, které používá Security Center.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="availability"></a>Dostupnost
@@ -275,7 +275,7 @@ Vypnutí automatického zřizování agenta:
 >
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 -   Informace o tom, jak identifikovat problémy s instalací automatického zřizování, najdete v tématu [monitorování stavů agenta](security-center-troubleshooting-guide.md#mon-agent).
 -  Informace o tom, jak identifikovat požadavky na síť agenta monitorování, najdete v tématu [řešení potíží s požadavky na síť agenta](security-center-troubleshooting-guide.md#mon-network-req)

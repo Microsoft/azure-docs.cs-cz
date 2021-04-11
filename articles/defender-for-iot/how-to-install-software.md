@@ -4,10 +4,10 @@ description: Přečtěte si, jak nainstalovat senzor a místní konzolu pro spr�
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104782244"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
@@ -582,7 +582,7 @@ Můžete nasadit virtuální počítač pro nástroj Defender pro IoT snímač v
 | **Malý podnik** | PROCESOR: 4 <br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 500 GB | Testovací nebo malé produkční prostředí | -  |
 | **Office** | PROCESOR: 4<br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 100 GB | Malá testovací prostředí | -  |
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ujistěte se, že máte následující položky:
 
@@ -713,7 +713,7 @@ Místní virtuální počítač konzoly pro správu podporuje následující arc
 | Enterprise | PROCESOR: 4 <br/> Paměť: 8G RAM<br/> PEVNÝ DISK: 500 GB | Velká produkční prostředí |
 | Enterprise | PROCESOR: 4 <br/>Paměť: 8G RAM <br/> PEVNÝ DISK: 100 GB | Malá testovací prostředí | 
    
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ověřte následující:
 
@@ -847,7 +847,7 @@ Postup instalace softwaru:
 
 1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Tyto přihlašovací údaje Uchovávejte na bezpečném místě, protože jsou nutné pro přihlášení a správu.
 
-    | Uživatelské jméno | Popis |
+    | Uživatelské jméno | Description |
     |--|--|
     | Podpora | Administrativní uživatel pro správu uživatelů. |
     | CyberX | Ekvivalent kořene pro přístup k zařízení. |

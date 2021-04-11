@@ -9,10 +9,10 @@ ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
 ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555648"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: připojení aplikace v Rust k rozhraní API služby Azure Cosmos DB pro MongoDB
@@ -32,7 +32,7 @@ Azure Cosmos DB je databázová služba pro více modelů, která umožňuje ryc
 
 Naučíte se, jak pomocí ovladače MongoDB Rust komunikovat s rozhraním API Azure Cosmos DB pro MongoDB zkoumáním operací CRUD (vytváření, čtení, aktualizace a odstraňování) implementovaných v ukázkovém kódu. Nakonec můžete aplikaci spustit místně, abyste ji viděli v akci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - [Rust](https://www.rust-lang.org/tools/install) (verze 1,39 nebo vyšší)

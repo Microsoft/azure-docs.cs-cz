@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502442"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166730"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -96,7 +96,7 @@ Pokud chcete použít popisky citlivosti MIP na prostředky Azure v Azure dosah,
 Rozšířením popisků citlivosti MIP do Azure dosah můžou organizace zjišťovat, klasifikovat a získávat přehled o citlivosti napříč nejrůznějšími zdroji dat, což minimalizuje riziko dodržování předpisů.
 
 > [!NOTE]
-> Vzhledem k tomu, že Microsoft 365 a Azure dosah jsou samostatné služby, existuje možnost, že budou nasazeny v různých oblastech. Názvy popisků a vlastní citlivé informace jsou považovány za zákaznická data a jsou ve výchozím nastavení uchovávány v rámci stejného GEOGRAFICKého umístění, aby chránily citlivost vašich dat a vyloučily GDPR zákony.
+> Vzhledem k tomu, že Microsoft 365 a Azure dosah jsou samostatné služby, existuje možnost, že budou nasazeny v různých oblastech. Názvy popisků a vlastní citlivé informace jsou považovány za zákaznická data a jsou ve výchozím nastavení uchovávány v rámci stejného GEOGRAFICKého umístění, aby chránily citlivost vašich dat a dodržovaly předpisy o ochraně osobních údajů.
 >
 > Z tohoto důvodu nejsou štítky a vlastní typy citlivých informací sdíleny do Azure dosah ve výchozím nastavení a vyžadují souhlas s jejich používáním v Azure dosah.
 

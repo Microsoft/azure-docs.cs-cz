@@ -3,12 +3,12 @@ title: Automatizace přidávání uživatele testovacího prostředí v Azure De
 description: V tomto článku se dozvíte, jak automatizovat přidávání uživatelů do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového řádku.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519397"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727701"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
 Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro vývoj a testování pomocí Azure Portal. Pokud ale máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožňují vytvářet laboratoře, testovací virtuální počítače, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se zaměřuje především na přidávání uživatelů do instance DevTest Labs.
@@ -115,13 +115,13 @@ ID role je definováno v oddílu proměnné a pojmenované `devTestLabUserRoleId
 ### <a name="principal-id"></a>ID objektu zabezpečení
 ID objektu zabezpečení je ID objektu uživatele, skupiny nebo instančního objektu služby Active Directory, které chcete přidat jako uživatele testovacího prostředí do testovacího prostředí. Šablona používá `ObjectId` jako parametr.
 
-Identifikátor ObjectId můžete získat pomocí rutin [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup nebo [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell. Tyto rutiny vrátí jeden nebo seznam objektů služby Active Directory, které mají vlastnost ID, což je ID objektu, které potřebujete. Následující příklad ukazuje, jak získat ID objektu jednoho uživatele ve společnosti.
+Identifikátor ObjectId můžete získat pomocí rutin [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0&preserve-view=true), [Get-AzureRMADGroup nebo [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0&preserve-view=true) PowerShell. Tyto rutiny vrátí jeden nebo seznam objektů služby Active Directory, které mají vlastnost ID, což je ID objektu, které potřebujete. Následující příklad ukazuje, jak získat ID objektu jednoho uživatele ve společnosti.
 
 ```powershell
-$userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
+$userObjectId = (Get-AzureRmADUser -UserPrincipalName 'email@company.com').Id
 ```
 
-Můžete také použít rutiny prostředí PowerShell pro Azure Active Directory, které zahrnují rutiny [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)a [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
+Můžete také použít rutiny prostředí PowerShell pro Azure Active Directory, které zahrnují rutiny [Get-MsolUser](/powershell/module/msonline/get-msoluser?preserve-view=true&view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?preserve-view=true&view=azureadps-1.0)a [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?preserve-view=true&view=azureadps-1.0).
 
 ### <a name="scope"></a>Obor
 Obor Určuje prostředek nebo skupinu prostředků, pro které by se mělo přiřazení role použít. V případě prostředků je rozsah ve formátu: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}` . Šablona používá `subscription().subscriptionId` funkci k vyplnění `subscription-id` části a `resourceGroup().name` funkci šablony, která se má vyplnit `resource-group-name` . Pomocí těchto funkcí se znamená, že testovací prostředí, ke kterému přiřadíte roli, musí existovat v aktuálním předplatném a stejnou skupinu prostředků, ve které se nasazování šablony provádí. Poslední část `resource-name` je název testovacího prostředí. Tato hodnota je přijímána prostřednictvím parametru šablony v tomto příkladu. 
@@ -153,7 +153,7 @@ Nejprve vytvořte soubor parametrů (například azuredeploy.parameters.json), k
 }
 ```
 
-Pak použijte rutinu [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) prostředí PowerShell k nasazení šablony Správce prostředků. Následující vzorový příkaz přiřadí uživateli, skupině nebo instančnímu objektu roli uživatele DevTest Labs pro testovací prostředí.
+Pak použijte rutinu [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) prostředí PowerShell k nasazení šablony Správce prostředků. Následující vzorový příkaz přiřadí uživateli, skupině nebo instančnímu objektu roli uživatele DevTest Labs pro testovací prostředí.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
@@ -168,7 +168,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 ```
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-Jak je popsáno v úvodu, vytvoříte nové přiřazení role Azure, ve kterém přidáte uživatele do role **uživatele DevTest Labs** pro testovací prostředí. V PowerShellu to uděláte pomocí rutiny [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) . Tato rutina má mnoho volitelných parametrů, které umožňují flexibilitu. `ObjectId`Jako objekt, který má `SigninName` `ServicePrincipalName` udělena oprávnění, lze zadat, nebo.  
+Jak je popsáno v úvodu, vytvoříte nové přiřazení role Azure, ve kterém přidáte uživatele do role **uživatele DevTest Labs** pro testovací prostředí. V PowerShellu to uděláte pomocí rutiny [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) . Tato rutina má mnoho volitelných parametrů, které umožňují flexibilitu. `ObjectId`Jako objekt, který má `SigninName` `ServicePrincipalName` udělena oprávnění, lze zadat, nebo.  
 
 Tady je ukázkový příkaz Azure PowerShell, který přidá uživatele do role uživatele DevTest Labs v zadaném testovacím prostředí.
 
@@ -186,7 +186,7 @@ Objekt, kterému je udělen přístup, lze určit pomocí `objectId` `signInName
 Následující příklad rozhraní příkazového řádku Azure vám ukáže, jak přidat osobu do role uživatele DevTest Labs pro zadané testovací prostředí.  
 
 ```azurecli
-az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
+az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type "Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
 ## <a name="next-steps"></a>Další kroky

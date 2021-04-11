@@ -4,10 +4,10 @@ description: Seznamte se s hardwarem a virtuálním zařízením pro certifikova
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104782754"
 ---
 # <a name="identify-required-appliances"></a>Identifikace požadovaných zařízení
@@ -105,7 +105,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
 
-| PN | Popis | Množství |
+| PN | Description | Množství |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC technický ředitel Server | 1 |
 | P19766-B21 | Evropa – lokalizace více jazyků | 1 |
@@ -176,7 +176,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
 
-| PN | Popis | Množství |
+| PN | Description | Množství |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF technický ředitel Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF technický ředitel Server | 1 |
@@ -212,7 +212,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Náraz | 10ms 10G, poloviční sinus, tři pro každou osu. (Kladné & záporné Pulse) – DIN kolejnice |
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
-| Produkt | Popis |
+| Produkt | Description |
 |--|--|
 | P25828-B21 | HPE Edgeline EL300 v2 – sblížený hraniční systém |
 | P25828-B21 B19 | HPE EL300 v2 – sblížený hraniční systém |
@@ -244,7 +244,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 | Typ | Enterprise |
 |--|--|
-| Popis | Virtuální zařízení pro podnikové typy nasazení |
+| Description | Virtuální zařízení pro podnikové typy nasazení |
 | Virtuální procesory | 8 |
 | Memory (Paměť) | 32 GB |
 | Storage | 1,8 TB |

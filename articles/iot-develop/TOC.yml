@@ -94,7 +94,7 @@
         - name: Platforma iOS
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Katalog zařízení Azure Certified for IoT
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Centrum pro vývojáře Azure IoT
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Plány Azure do budoucna

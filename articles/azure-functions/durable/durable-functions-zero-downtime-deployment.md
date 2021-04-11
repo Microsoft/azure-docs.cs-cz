@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558759"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
@@ -60,42 +60,42 @@ Následující diagram znázorňuje popsanou konfiguraci slotů pro nasazení a 
 
 ![Sloty nasazení a účty úložiště](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.jsv příkladech
+### <a name="hostjson-examples&quot;></a>host.jsv příkladech
 
 Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v *host.jsv* souboru.
 
-#### <a name="functions-20"></a>Funkce 2,0
+#### <a name=&quot;functions-20&quot;></a>Funkce 2,0
 
 ```json
 {
-  "version": 2.0,
-  "extensions": {
-    "durableTask": {
-      "hubName": "MyTaskHub",
-      "storageProvider": {
-        "connectionStringName": "DurableManagementStorage"
+  &quot;version&quot;: 2.0,
+  &quot;extensions&quot;: {
+    &quot;durableTask&quot;: {
+      &quot;hubName&quot;: &quot;MyTaskHub&quot;,
+      &quot;storageProvider&quot;: {
+        &quot;connectionStringName&quot;: &quot;DurableManagementStorage&quot;
       }
     }
   }
 }
 ```
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name=&quot;functions-1x&quot;></a>Functions 1.x
 
 ```json
 {
-  "durableTask": {
-    "azureStorageConnectionStringName": "DurableManagementStorage"
+  &quot;durableTask&quot;: {
+    &quot;azureStorageConnectionStringName&quot;: &quot;DurableManagementStorage&quot;
   }
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>Konfigurace kanálu CI/CD
+### <a name=&quot;cicd-pipeline-configuration&quot;></a>Konfigurace kanálu CI/CD
 
 Nakonfigurujte svůj kanál CI/CD tak, aby se nasadil jenom v případě, že vaše aplikace Function App nemá žádné nedokončené nebo spuštěné instance orchestrace. Pokud používáte Azure Pipelines, můžete vytvořit funkci, která kontroluje tyto podmínky, jako v následujícím příkladu:
 
 ```csharp
-[FunctionName("StatusCheck")]
+[FunctionName(&quot;StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,

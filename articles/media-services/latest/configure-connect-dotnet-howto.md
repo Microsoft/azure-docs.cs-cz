@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455378"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107553"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
+- [Vytvořte účet Media Services](./account-create-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, viz [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
 
 > [!IMPORTANT]
@@ -237,14 +237,14 @@ namespace ConsoleApp1
 
 - [Kurz: nahrávání, kódování a streamování videí – .NET](stream-files-tutorial-with-api.md) 
 - [Kurz: živé streamování s Media Services V3 – .NET](stream-live-tutorial-with-api.md)
-- [Kurz: analýza videí pomocí Media Services V3-.NET](analyze-videos-tutorial-with-api.md)
+- [Kurz: analýza videí pomocí Media Services V3-.NET](analyze-videos-tutorial.md)
 - [Vytvoření vstupu úlohy z místního souboru – .NET](job-input-from-local-file-how-to.md)
 - [Vytvoření vstupu úlohy z adresy URL protokolu HTTPS – .NET](job-input-from-http-how-to.md)
-- [Kódování pomocí vlastní transformace – .NET](customize-encoder-presets-how-to.md)
-- [Použití dynamického šifrování AES-128 a služby pro doručování klíčů – .NET](protect-with-aes128.md)
-- [Použití dynamického šifrování DRM a služby doručování licencí – .NET](protect-with-drm.md)
-- [Získat podpisový klíč ze stávající zásady – .NET](get-content-key-policy-dotnet-howto.md)
-- [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [Kódování pomocí vlastní transformace – .NET](encode-custom-presets-how-to.md)
+- [Použití dynamického šifrování AES-128 a služby pro doručování klíčů – .NET](drm-playready-license-template-concept.md)
+- [Použití dynamického šifrování DRM a služby doručování licencí – .NET](drm-protect-with-drm-tutorial.md)
+- [Získat podpisový klíč ze stávající zásady – .NET](drm-get-content-key-policy-dotnet-how-to.md)
+- [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-how-to.md)
 - [Příklady pokročilých videí na vyžádání Azure Functions v2 s Media Services V3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Viz také

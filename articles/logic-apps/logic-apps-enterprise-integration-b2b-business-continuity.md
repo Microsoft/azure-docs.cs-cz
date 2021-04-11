@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09fb738a499d6016c3aead0d33436f034bc5d339
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91565407"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728398"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 
@@ -60,7 +60,7 @@ Provozní kontinuita v účtu Logic Apps Integration účet poskytuje podporu za
 
 Když v případě havárie není dostupná primární oblast pro provozní kontinuitu, přímý provoz do sekundární oblasti. Sekundární oblast pomáhá podnikům rychle obnovit funkce, aby splnily požadavky na RPO a RTO, na základě kterých jejich partneři souhlasí. Také minimalizuje úsilí při převzetí služeb při selhání z jedné oblasti do jiné oblasti. 
 
-Při kopírování řídicích čísel z primární oblasti do sekundární oblasti je očekávaná latence. Abyste se vyhnuli odesílání duplicitních řídicích čísel partnerům během události havárie, doporučujeme zvýšit počet kontrolních čísel v rámci smluv o sekundárních oblastech pomocí [rutin PowerShellu](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
+Při kopírování řídicích čísel z primární oblasti do sekundární oblasti je očekávaná latence. Abyste se vyhnuli odesílání duplicitních řídicích čísel partnerům během události havárie, doporučujeme zvýšit počet kontrolních čísel v rámci smluv o sekundárních oblastech pomocí [rutin PowerShellu](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn).
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Přejít zpět na událost po havárii primární oblasti
 
@@ -68,7 +68,7 @@ Pokud se chcete vrátit k primární oblasti, když je k dispozici, postupujte p
 
 1. Přestanou přijímat zprávy od partnerů v sekundární oblasti.  
 
-2. Zvyšte čísla vygenerovaných ovládacích prvků pro všechny smlouvy primární oblasti pomocí [rutin PowerShellu](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
+2. Zvyšte čísla vygenerovaných ovládacích prvků pro všechny smlouvy primární oblasti pomocí [rutin PowerShellu](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn).  
 
 3. Přímý provoz ze sekundární oblasti do primární oblasti.
 

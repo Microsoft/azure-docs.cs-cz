@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 40fe1e59b7c600e273b677d60bc162c767569c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0efdf48e78d0cc48e288bea354f5de5f9635c760
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728568"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106836"
 ---
 # <a name="what-is-azure-communication-services"></a>Co je služba Azure Communication Services?
 
@@ -21,7 +21,7 @@ ms.locfileid: "105728568"
 > Aplikace, které sestavíte pomocí komunikačních služeb Azure, můžou komunikovat s Microsoft Teams. Další informace najdete v dokumentaci pro [spolupráci týmů](./quickstarts/voice-video-calling/get-started-teams-interop.md) .
 
 
-Komunikační služby Azure umožňují snadno přidávat do vašich aplikací funkce pro komunikaci multimédií, videa a telefonování přes protokol IP v reálném čase. Sady SDK komunikačních služeb také umožňují přidat do komunikačních řešení funkce Chat a SMS.
+Komunikační služby Azure umožňují snadno přidávat do vašich aplikací funkce pro komunikaci multimédií, videa a telefonování přes protokol IP v reálném čase. Knihovny sady SDK komunikačních služeb také umožňují přidat do komunikačních řešení funkce Chat a SMS.
 
 <br>
 
@@ -40,14 +40,13 @@ Podporují se smíšené scénáře. Například aplikace komunikačních služe
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
-Následující zdroje jsou skvělým místem, kde můžete začít s komunikačními službami Azure. 
+Následující zdroje jsou skvělým místem, kde můžete začít s komunikačními službami Azure.
 <br>
 
 | Prostředek                               |Popis                           |
 |---                                    |---                                   |
 |**[Vytvoření prostředku Communication Services](./quickstarts/create-communication-resource.md)**|Můžete začít používat komunikační služby Azure pomocí Azure Portal nebo sady Communications Services SDK ke zřízení prvního prostředku komunikačních služeb. Jakmile budete mít připojovací řetězec prostředků služby Communication Services, můžete zřídit své první tokeny přístupu uživatele.|
 |**[Získat telefonní číslo](./quickstarts/telephony-sms/get-phone-number.md)**|K zřizování a vydávání telefonních čísel můžete použít komunikační služby Azure. Tato telefonní čísla lze použít k zahájení odchozích volání a k sestavování řešení komunikace SMS.|
-|**[Poslat SMS z vaší aplikace](./quickstarts/telephony-sms/send.md)**|Služba Azure Communications Services SMS SDK umožňuje odesílat a přijímat zprávy SMS z aplikací .NET a JavaScript.|
 
 Po vytvoření prostředku komunikačních služeb můžete začít vytvářet scénáře klienta, například volání hlasu a videa nebo textové konverzace.
 
@@ -57,30 +56,31 @@ Po vytvoření prostředku komunikačních služeb můžete začít vytvářet s
 |**[Začínáme s voláním hlasu a videu](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Komunikační služby Azure umožňují přidat Hlasová a vizuální volání do vašich aplikací pomocí volání sady SDK. Tato knihovna je založená na WebRTC a umožňuje vytvořit v aplikacích komunikaci peer-to-peer a komunikovat v reálném čase.|
 |**[Připojení volající aplikace ke schůzce v Teams](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Komunikační služby Azure je možné využít k vytváření vlastních prostředí pro schůzky, která spolupracují s Microsoft Teams. Uživatelé vašich řešení komunikačních služeb můžou s týmy komunikovat prostřednictvím hlasu, videa, chatu a sdílení obrazovky.|
 |**[Začínáme s chatem](./quickstarts/chat/get-started.md)**|Pomocí chatovací SDK služby Azure Communications Services je možné do svých aplikací integrovat chat v reálném čase.|
+|**[Poslat SMS z vaší aplikace](./quickstarts/telephony-sms/send.md)**|Služba Azure Communications Services SMS SDK umožňuje odesílat a přijímat zprávy SMS z aplikací .NET a JavaScript.|
 
 ## <a name="samples"></a>ukázky
 
-Následující ukázky demonstrují ucelené využití sad Azure Communications Services. Využijte tyto ukázky k zavedení vlastních řešení komunikačních služeb.
+Následující ukázky demonstrují ucelené využití knihoven sady SDK služby Azure Communications Services. Využijte tyto ukázky k zavedení vlastních řešení komunikačních služeb.
 <br>
 
 | Název vzorku                               | Description                           |
 |---                                    |---                                   |
-|**[Ukázka volání Hero skupiny](./samples/calling-hero-sample.md)**|Podívejte se, jak lze sady SDK komunikačních služeb použít k vytvoření skupinového volání.|
-|**[Ukázka Hero ve skupině chat](./samples/chat-hero-sample.md)**|Podívejte se, jak se dají sady SDK komunikačních služeb použít k sestavení prostředí skupinového chatu.|
+|**[Ukázka volání Hero skupiny](./samples/calling-hero-sample.md)**|Podívejte se, jak lze použít knihovny komunikačních služeb sady SDK k vytvoření prostředí pro volání skupiny.|
+|**[Ukázka Hero ve skupině chat](./samples/chat-hero-sample.md)**|Podívejte se, jak lze pomocí knihoven sady SDK komunikačních služeb vytvořit prostředí pro konverzaci ve skupině.|
 
 
-## <a name="platforms-and-sdks"></a>Platformy a sady SDK
+## <a name="platforms-and-sdk-libraries"></a>Platformy a knihovny SDK
 
-Následující materiály vám pomůžou získat informace o sadách Azure Communication Services SDK:
+Následující zdroje vám pomůžou získat informace o knihovnách sady SDK Communications Services Azure:
 
 | Prostředek                               | Popis                           |
 |---                                    |---                                   |
-|**[Sady SDK a rozhraní REST API](./concepts/sdk-options.md)**|Funkce komunikačních služeb Azure jsou koncepčně rozdělené do šesti oblastí, z nichž každý představuje sada SDK. Můžete se rozhodnout, které sady SDK použít na základě vašich požadavků na komunikaci v reálném čase.|
+|**[Knihovny SDK a rozhraní REST API](./concepts/sdk-options.md)**|Funkce komunikačních služeb Azure jsou koncepčně rozdělené do šesti oblastí, z nichž každý představuje sada SDK. Můžete se rozhodnout, které knihovny SDK se mají použít na základě vašich potřeb komunikace v reálném čase.|
 |**[Přehled volání sady SDK](./concepts/voice-video-calling/calling-sdk-features.md)**|Projděte si přehled služby Communications Call SDK.|
 |**[Přehled sady Chat SDK](./concepts/chat/sdk-features.md)**|Projděte si přehled služby Communications Chat SDK.|
 |**[Přehled sady SMS SDK](./concepts/telephony-sms/sdk-features.md)**|Seznamte se s přehledem služby Communications Services SMS SDK.|
 
-## <a name="compare-azure-communication-services"></a>Porovnání komunikačních služeb Azure
+## <a name="other-microsoft-communication-services"></a>Další služby Microsoft Communication Services
 
 Existují dva další komunikační produkty Microsoftu, které byste měli zvážit, že nebudete moci přímo spolupracovat s komunikačními službami v tuto chvíli:
 
