@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c927682231bab1fc92f198c56a2f6aeff2f4c516
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799923"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553528"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Zabezpečte svůj původ pomocí privátního odkazu v Azure front-Premium Standard/Premium (Preview).
 
@@ -43,7 +43,7 @@ Pokud povolíte privátní propojení s vaším zdrojem v konfiguraci služby Az
 
 ## <a name="limitations"></a>Omezení
 
-V rámci veřejné verze Preview jsou v těchto oblastech k dispozici privátní koncové body služby Azure pro front-end: Východní USA, západ 2 USA a Střed USA – jih.
+V rámci veřejné verze Preview jsou v těchto oblastech k dispozici privátní koncové body služby Azure pro front-end: Východní USA, západ 2 USA, Střed USA – jih a Velká Británie – jih.
 
 Pro zajištění nejlepší latence byste měli vždycky vybrat oblast Azure, která je nejblíže zdroji, když se rozhodnete povolit koncový bod privátního odkazu na přední dveře.
 

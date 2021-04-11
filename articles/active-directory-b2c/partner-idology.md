@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df0fcaf7987e30f9c2599346aaef5fcabb4f04e9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928677"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256646"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci IDology s využitím Azure Active Directory B2C 
 
@@ -93,7 +93,7 @@ Vzorová zásada používá tyto názvy klíčů:
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>Část 4 – Konfigurace zásad Azure AD B2C
 
-1. Pomocí tohoto [dokumentu](custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) a nakonfigurujte zásady pro klienta Azure AD B2C. Postupujte podle pokynů, dokud nedokončíte oddíl **test pro vlastní zásady** .
+1. Pomocí tohoto [dokumentu](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) a nakonfigurujte zásady pro klienta Azure AD B2C. Postupujte podle pokynů, dokud nedokončíte oddíl **test pro vlastní zásady** .
 
 2. [Zde](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/policy)si stáhněte dvě vzorové zásady.
 
@@ -145,4 +145,4 @@ Další informace najdete v následujících článcích:
 
 - [Vlastní zásady v Azure AD B2C](custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

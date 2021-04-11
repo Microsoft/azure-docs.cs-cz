@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf16bfbd8f90c8d6f06c9dec42aa69b7cffae4f8
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 2a8aabac6960909f2a3d90fcee01cebb0ad7a832
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226118"
+ms.locfileid: "107256935"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Přehled Azure AD B2C vlastní zásady
 
@@ -27,7 +27,7 @@ Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu
 
 ## <a name="custom-policy-starter-pack"></a>Startovní sada vlastních zásad
 
-[Počáteční sada](custom-policy-get-started.md#get-the-starter-pack) vlastních zásad Azure AD B2C obsahuje několik předem připravených zásad, které vám umožní rychle se vrátit. Každá z těchto startovních sad obsahuje nejmenší počet technických profilů a cest uživatelů potřebných k dosažení popsaných scénářů:
+[Počáteční sada](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-the-starter-pack) vlastních zásad Azure AD B2C obsahuje několik předem připravených zásad, které vám umožní rychle se vrátit. Každá z těchto startovních sad obsahuje nejmenší počet technických profilů a cest uživatelů potřebných k dosažení popsaných scénářů:
 
 - **LocalAccounts** – povoluje pouze použití místních účtů.
 - **SocialAccounts** – povoluje pouze použití sociálních (nebo federovaných) účtů.
@@ -156,9 +156,9 @@ Začnete s vlastními zásadami Azure AD B2C:
 
 1. [Vytvoření tenanta Azure AD B2C](tutorial-create-tenant.md)
 1. [Zaregistrujte webovou aplikaci](tutorial-register-applications.md) pomocí Azure Portal, abyste mohli svoje zásady testovat.
-1. Přidejte potřebné [klíče zásad](custom-policy-get-started.md#add-signing-and-encryption-keys) a [Zaregistrujte aplikace architektury identity Experience Framework](custom-policy-get-started.md#register-identity-experience-framework-applications).
-1. [Získejte úvodní sadu zásad Azure AD B2C](custom-policy-get-started.md#get-the-starter-pack) a nahrajte ji do svého tenanta. 
-1. Po nahrání počátečního balíčku [otestujte zásady registrace nebo přihlašování](custom-policy-get-started.md#test-the-custom-policy).
+1. Přidejte potřebné [klíče zásad](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys) a [Zaregistrujte aplikace architektury identity Experience Framework](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications).
+1. [Získejte úvodní sadu zásad Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-the-starter-pack) a nahrajte ji do svého tenanta. 
+1. Po nahrání počátečního balíčku [otestujte zásady registrace nebo přihlašování](tutorial-create-user-flows.md?pivots=b2c-custom-policy#test-the-custom-policy).
 1. Doporučujeme, abyste si stáhli a nainstalovali [Visual Studio Code](https://code.visualstudio.com/) (vs Code). Visual Studio Code je jednoduchý, ale výkonný editor zdrojového kódu, který běží na vaší ploše a je dostupný pro Windows, macOS a Linux. Pomocí VS Code můžete rychle procházet a upravovat soubory XML vlastních zásad Azure AD B2C tím, že nainstalujete [rozšíření Azure AD B2C pro vs Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)
  
 ## <a name="next-steps"></a>Další kroky

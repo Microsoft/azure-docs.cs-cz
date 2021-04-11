@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f8a82eddfdc7a2a4899c4ee836687df26101bdc
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526598"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221887"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows
 
@@ -44,6 +44,26 @@ V následujících tabulkách jsou porovnávána řešení úložiště Azure St
 |Integrace Azure Active Directory|[Nativní služba Active Directory a Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services a nativní služba Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nativní služba Active Directory nebo Azure Active Directory Domain Services pouze podpora|
 
 Po výběru metody úložiště si Projděte [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/) , kde najdete informace o našich cenových plánech.
+
+## <a name="azure-files-tiers"></a>Vrstvy souborů Azure
+
+Soubory Azure nabízí dvě různé úrovně úložiště: Premium a Standard. Tyto úrovně vám umožní přizpůsobit výkon a náklady na sdílené složky, aby splňovaly požadavky vašeho scénáře.
+
+- Soubory úrovně Premium jsou založené na jednotkách SSD (Solid-State Drive) a jsou nasazené v typu účtu úložiště souborů. Soubory úrovně Premium poskytují konzistentní vysoký výkon a nízkou latenci pro úlohy náročné na vstupní a výstupní (v/v). 
+
+- Standardní sdílené složky se zálohují na jednotky pevného disku (HDD) a jsou nasazené v typu účtu úložiště pro obecné účely verze 2 (GPv2). Standardní sdílené složky poskytují spolehlivý výkon pro vstupně-výstupní úlohy, které jsou méně citlivé na variabilitu výkonu, jako jsou například sdílené složky pro obecné účely a prostředí pro vývoj a testování. Standardní sdílené složky jsou dostupné jenom v modelu fakturace s průběžnými platbami.
+
+V následující tabulce jsou uvedená doporučení, která úroveň výkonu použít na základě vašich úloh. Tato doporučení vám pomůžou vybrat úroveň výkonu, která vyhovuje vašim cílům, rozpočtovým a regionálním hlediskům výkonu. Tato doporučení jsme na ukázkových scénářích z [typů úloh vzdálené plochy](/windows-server/remote/remote-desktop-services/remote-desktop-workloads)zavedli. 
+
+| Typ úlohy | Doporučená vrstva souborů |
+|--------|-----------|
+| Světlá (méně než 200 uživatelů) | Standardní sdílené složky |
+| Světlá (více než 200 uživatelů) | Soubory úrovně Premium nebo Standard s více sdílenými složkami |
+|Střední|Soubory ke sdílení souborů úrovně Premium|
+|Těžký|Soubory ke sdílení souborů úrovně Premium|
+|Napájení|Soubory ke sdílení souborů úrovně Premium|
+
+Další informace o výkonu služby soubory Azure najdete v tématu [sdílené složky a cíle pro škálování souborů](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets). Další informace o cenách najdete v tématu [ceny za Azure Files](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="next-steps"></a>Další kroky
 

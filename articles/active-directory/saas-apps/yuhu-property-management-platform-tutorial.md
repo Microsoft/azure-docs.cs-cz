@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b5e852e3a32c4fb40dbe7ebc50a00302b4b82b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51e84e7e3a1e8a800769985e37374abf6d601f5c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519088"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s platformou správy vlastností yuhu
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | firstName | User. křestní jméno |
-    | lastName | User. příjmení ||
+    | lastName | User. příjmení |
     | e-mail | uživatel. pošta |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.

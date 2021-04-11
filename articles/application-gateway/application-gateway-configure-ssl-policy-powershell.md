@@ -8,18 +8,21 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed81ca2c8f409b7f6c4a6f30f9bf75e594c6c208
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397888"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221700"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace verzí zásad TLS a šifrovacích sad ve službě Application Gateway
 
 Naučte se konfigurovat verze zásad TLS/SSL a šifrovací sady na Application Gateway. Můžete vybrat ze seznamu předdefinovaných zásad, které obsahují různé konfigurace verzí zásad TLS a povolených šifrovacích sad. Máte také možnost definovat [vlastní zásady TLS](#configure-a-custom-tls-policy) na základě vašich požadavků.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Pro lepší zabezpečení Application Gateway doporučujeme použít TLS 1,2 jako minimální verzi protokolu TLS. 
 
 ## <a name="get-available-tls-options"></a>Získat dostupné možnosti TLS
 
@@ -217,4 +220,6 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zjistit, jak přesměrovat přenosy HTTP na koncový bod HTTPS, přejděte na [téma Přehled přesměrování Application Gateway](./redirect-overview.md) .
+Pokud chcete zjistit, jak přesměrovat přenosy HTTP na koncový bod HTTPS, přejděte na [téma Přehled přesměrování Application Gateway](./redirect-overview.md) . 
+
+Podívejte se na nastavení zásad protokolu SSL specifických pro naslouchací službu při [nastavování zásad konkrétního naslouchacího procesu SSL prostřednictvím portálu](./application-gateway-configure-listener-specific-ssl-policy.md) .

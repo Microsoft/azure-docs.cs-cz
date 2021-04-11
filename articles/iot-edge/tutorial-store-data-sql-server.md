@@ -9,18 +9,18 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 361a151d1f1835f82e440704105cf8b3844a4c54
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461109"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221621"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Nasaďte modul SQL Server pro ukládání dat do zařízení se systémem Linux se systémem Azure IoT Edge.
+Nasaďte modul SQL Server pro ukládání dat do zařízení, na kterém běží Azure IoT Edge kontejnery Linux.
 
 Pomocí Azure IoT Edge a SQL Serveru můžete ukládat a dotazovat data na hraničních zařízeních. Azure IoT Edge má základní možnosti úložiště pro ukládání zpráv do mezipaměti, pokud zařízení přejde do režimu offline a pak je přepošle po opětovném vytvoření připojení. Můžete však chtít pokročilejší možnosti úložiště, jako je možnost dotazovat data místně. Vaše zařízení IoT Edge můžou pomocí místních databází provádět složitější výpočetní prostředí, aniž by bylo nutné navázání připojení k IoT Hub.
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* Zařízení AMD64 se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
+* Zařízení AMD64 běžící Azure IoT Edge s kontejnery Linux. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
   * Zařízení ARM, jako je například Malina Pis, nelze spustit SQL Server. Pokud chcete použít SQL na zařízení ARM, můžete se zaregistrovat a vyzkoušet [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) ve verzi Preview.
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).

@@ -1,20 +1,20 @@
 ---
 title: Jak používat Azure Queue Storage z Pythonu
 description: Naučte se používat Azure Queue Storage z Pythonu k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 8c30d05cf49162155f84961e1fd8a32361444ba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32dc54673674ac10f8dc1e3351133ca33ef7665c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653257"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277415"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Jak používat Azure Queue Storage z Pythonu
 

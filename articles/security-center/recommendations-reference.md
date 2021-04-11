@@ -4,15 +4,15 @@ description: V tomto článku jsou uvedená doporučení zabezpečení Azure Sec
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801454"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504804"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení k zabezpečení – Referenční příručka
 
@@ -58,12 +58,15 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 
 ## <a name="deprecated-recommendations"></a>Zastaralá doporučení
 
-|Doporučení|Popis & souvisejících zásad|Závažnost|Je Rychlá oprava povolená? ([Další informace](security-center-remediate-recommendations.md#quick-fix-remediation))|Typ prostředku|
-|----|----|----|----|----|
-|**Přístup k App Services by měl být omezený.**|Omezte přístup k vašemu App Services změnou konfigurace sítě tak, aby odepřela příchozí provoz z rozsahů, které jsou příliš široké.<br>(Související zásady: [Preview]: přístup k App Services by měl být omezený)|Vysoká|N|App Service|
-|**Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.**|Posílit zabezpečení skupiny zabezpečení sítě (NSG) virtuálních počítačů, na kterých běží webové aplikace, s pravidly NSG, která jsou přesná, s ohledem na porty webových aplikací.<br>(Související zásady: pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by měla být Posílená.)|Vysoká|N|Virtuální počítač|
-|**Zásady zabezpečení pod by měly být definované tak, aby se snížily vektor útoku odebráním zbytečných aplikačních oprávnění (Preview).**|Definováním zásad zabezpečení pod můžete omezit vektor útoku odebráním zbytečných oprávnění aplikace. Doporučuje se nakonfigurovat zásady zabezpečení pod tím, že lusky mají přístup jenom k prostředkům, ke kterým mají přístup.<br>(Související zásady: [Preview]: v Kubernetes službách by se měly definovat zásady zabezpečení.)|Střední|N|Výpočetní prostředky (kontejnery)|
-|**Nainstalovat Azure Security Center pro modul zabezpečení IoT a získat tak lepší přehled o zařízeních IoT**|Nainstalujte Azure Security Center pro modul zabezpečení IoT, abyste získali lepší přehled o zařízeních IoT.|Nízká|N|Zařízení IoT|
+|Doporučení|Popis & souvisejících zásad|Závažnost|
+|----|----|----|
+|Přístup k App Services by měl být omezený.|Omezte přístup k vašemu App Services změnou konfigurace sítě tak, aby odepřela příchozí provoz z rozsahů, které jsou příliš široké.<br>(Související zásady: [Preview]: přístup k App Services by měl být omezený)|Vysoká|
+|Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.|Posílit zabezpečení skupiny zabezpečení sítě (NSG) virtuálních počítačů, na kterých běží webové aplikace, s pravidly NSG, která jsou přesná, s ohledem na porty webových aplikací.<br>(Související zásady: pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by měla být Posílená.)|Vysoká|
+|Zásady zabezpečení pod by měly být definované tak, aby se snížily vektor útoku odebráním zbytečných aplikačních oprávnění (Preview).|Definováním zásad zabezpečení pod můžete omezit vektor útoku odebráním zbytečných oprávnění aplikace. Doporučuje se nakonfigurovat zásady zabezpečení pod tím, že lusky mají přístup jenom k prostředkům, ke kterým mají přístup.<br>(Související zásady: [Preview]: v Kubernetes službách by se měly definovat zásady zabezpečení.)|Střední|
+|Nainstalovat Azure Security Center pro modul zabezpečení IoT a získat tak lepší přehled o zařízeních IoT|Nainstalujte Azure Security Center pro modul zabezpečení IoT, abyste získali lepší přehled o zařízeních IoT.|Nízká|
+|Počítače by měly být restartovány, aby bylo možné použít aktualizace systému|Restartujte počítače, aby se projevily aktualizace systému, a zabezpečte počítač před ohrožením zabezpečení. (Související zásady: aktualizace systému by se měly nainstalovat na vaše počítače)|Střední|
+|Agent monitorování by měl být nainstalovaný na vašich počítačích.|Tato akce nainstaluje agenta monitorování na vybrané virtuální počítače. Vyberte pracovní prostor, do kterého má agent nahlásit. (Žádné související zásady)|Vysoká|
+||||
 
 ## <a name="next-steps"></a>Další kroky
 

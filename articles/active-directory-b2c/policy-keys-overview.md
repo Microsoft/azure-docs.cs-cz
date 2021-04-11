@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37ff3300935e90304754b5f2b375df0adecdaefa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953351"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256238"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Přehled klíčů zásad v Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) ukládá tajné klíče a certifikáty
  Tento článek popisuje, co potřebujete znát o klíčích zásad, které používá Azure AD B2C.
 
 > [!NOTE]
-> V současné době se konfigurace klíčů zásad omezí jenom na [vlastní zásady](./custom-policy-get-started.md) .
+> V současné době se konfigurace klíčů zásad omezí jenom na [vlastní zásady](./user-flow-overview.md) .
 
 Tajné klíče a certifikáty pro vytvoření vztahu důvěryhodnosti mezi službami v Azure Portal můžete nakonfigurovat v nabídce **klíče zásad** . Klíč může být symetrický nebo asymetrický. *Symetrická* kryptografie nebo kryptografie s privátním klíčem, je místo, kde se používá sdílený tajný klíč pro šifrování a dešifrování dat. *Asymetrická* kryptografie nebo kryptografie s veřejným klíčem jsou šifrovací systém, který používá páry klíčů, které se skládají z veřejných klíčů, které jsou sdílené s aplikací předávající strany, a soukromými klíči, které jsou známé pouze pro Azure AD B2C.
 

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 04/01/2021
 ms.author: robb
-ms.openlocfilehash: 0854d56930dbc8decfcf8f96a814f082e361de62
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 6f664450d5450782d9a01d75abfb5a96b3e0bba6
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167239"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221190"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -1734,9 +1734,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |IoTConnectorMeasurementIngestionLatencyMs|Yes|Průměrná latence fáze skupiny|Milisekund|Průměr|Časové období mezi tím, kdy konektor IoT přijal data zařízení a kdy jsou data zpracována fází převodu FHIR.|Operace, konektor|
 |IoTConnectorNormalizedEvent|Yes|Počet normalizovaných zpráv|Počet|Sum|Celkový počet mapovaných normalizovaných hodnot vydaných ze fáze normalizace konektoru Azure IoT Connector pro FHIR.|Operace, konektor|
 |IoTConnectorTotalErrors|Yes|Celkový počet chyb|Počet|Sum|Celkový počet chyb protokolovaných službou Azure IoT Connector pro FHIR|Název, operace, ErrorType, ErrorSeverity, název konektoru|
-|ServiceApiErrors|Yes|Chyby služby|Počet|Sum|Celkový počet interních chyb serveru generovaných službou.|Protokol, ověřování, operace, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiLatency|Yes|Latence služby|Milisekund|Průměr|Latence odpovědi služby.|Protokol, ověřování, operace, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiRequests|Yes|Service Requests|Počet|Sum|Celkový počet požadavků přijatých službou.|Protokol, ověřování, operace, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalErrors|Yes|Celkový počet chyb|Počet|Sum|Celkový počet interních chyb serveru zjištěných službou.|Protokol, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalLatency|Yes|Celková latence|Milisekund|Průměr|Latence odpovědi služby.|Protokol|
 |TotalRequests|Yes|Požadavky celkem|Počet|Sum|Celkový počet požadavků přijatých službou.|Protokol|

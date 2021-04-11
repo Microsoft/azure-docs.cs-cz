@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0e7f9fa33af43fb846255815d862d4cd3a07e99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7edee25c5b52ea1ba1092daa354a4523861bcbb5
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103013971"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227105"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET
 
@@ -62,7 +62,7 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 
 [![Diagram znázorňující některé z nejčastěji používaných objektů v datovém modelu Azure Media Services objektů pro vývoj aplikací pro video na vyžádání.](./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png)](./media/media-services-dotnet-get-started/media-services-overview-object-model.png#lightbox)
 
-Celý model můžete zobrazit [zde](https://media.windows.net/API/$metadata?api-version=2.15).  
+Celý model můžete zobrazit [zde](https://m.eet.com/media/1170326/ms-part1.pdf).  
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Spuštění koncového bodu streamování pomocí webu Azure Portal
 

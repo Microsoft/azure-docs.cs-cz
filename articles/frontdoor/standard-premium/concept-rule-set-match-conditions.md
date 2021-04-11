@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 039effb885463c1c53085535a6980601be890340
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9e8defa9e929d21f210c48ffbd3b22e44195c17d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561442"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061617"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-match-conditions"></a>Podmínky shody sady pravidel služby Azure front-Premium Standard/Premium (Preview)
 
@@ -685,7 +685,7 @@ V tomto příkladu odpovídáme všem žádostem, kde požadavek používá `HTT
 
 ## <a name="request-url"></a><a name="RequestUrl"></a> Adresa URL požadavku
 
-Identifikuje požadavky, které odpovídají zadané adrese URL. Vyhodnotí se celá adresa URL. Můžete zadat více hodnot, které mají být shodné, které budou kombinovány pomocí operátoru OR nebo Logic.
+Identifikuje požadavky, které odpovídají zadané adrese URL. Vyhodnotí se celá adresa URL, včetně protokolu a řetězce dotazu, ale ne fragmentu. Můžete zadat více hodnot, které mají být shodné, které budou kombinovány pomocí operátoru OR nebo Logic.
 
 > [!TIP]
 > Když použijete tuto podmínku pravidla, nezapomeňte protokol zahrnout. Například použijte `https://www.contoso.com` místo pouh `www.contoso.com` .
@@ -790,10 +790,6 @@ Regulární výrazy nepodporují následující operace:
 * `\K`Začátek direktivy resetování shody
 * Popisky a vložený kód.
 * Seskupení atomie a kvantifikátory possessive.
-
-## <a name="arm-template-support"></a>Podpora šablon ARM
-
-Sady pravidel lze konfigurovat pomocí Azure Resource Manager šablon. [Podívejte se na příklad šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). Podmínky shody můžete přidat pomocí fragmentů JSON nebo bicep obsažených v předchozích příkladech.
 
 ## <a name="next-steps"></a>Další kroky
 

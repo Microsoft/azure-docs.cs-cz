@@ -5,54 +5,51 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0f028f264d02d7300bb888e2053708ef6b06ea51
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721558"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078311"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-V tomto článku se dozvíte, jak nakonfigurovat ověřování pro Azure App Service nebo Azure Functions, aby se vaše aplikace přihlášena uživatelům pomocí Azure Active Directory (Azure AD) jako poskytovatele ověřování.
+V tomto článku se dozvíte, jak nakonfigurovat ověřování pro Azure App Service nebo Azure Functions, aby se vaše aplikace přihlášena uživatelům pomocí [platformy Microsoft Identity](../active-directory/develop/v2-overview.md) (Azure AD) jako poskytovatele ověřování.
 
-## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurace pomocí expresního nastavení
+Funkce ověřování App Service může automaticky vytvořit registraci aplikace s platformou Microsoft identity. Můžete také použít registraci, kterou vy nebo Správce adresáře vytváříte samostatně.
 
-Možnost **expresní** je navržená tak, aby bylo snadné povolit ověřování a vyžaduje jenom několik kliknutí.
-
-Pomocí expresního nastavení se automaticky vytvoří registrace aplikace, která používá koncový bod Azure Active Directory v1. Pokud chcete použít [Azure Active Directory v 2.0](../active-directory/develop/v2-overview.md) (včetně [MSAL](../active-directory/develop/msal-overview.md)), postupujte podle [pokynů pro pokročilou konfiguraci](#advanced).
+- [Automaticky vytvořit novou registraci aplikace](#express)
+- [Použít existující registraci vytvořenou samostatně](#advanced)
 
 > [!NOTE]
-> Možnost **Express** není pro cloudy státní správy k dispozici.
+> Možnost vytvoření nové registrace není pro cloudy státní správy k dispozici. Místo toho [Definujte registraci samostatně](#advanced).
 
-Pokud chcete povolit ověřování pomocí možnosti **Express** , postupujte takto:
+## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>Automaticky vytvořit novou registraci aplikace
 
-1. V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci.
-2. V levém navigačním panelu vyberte **ověřování/autorizace**  >  **na**.
-3. Vyberte **Azure Active Directory**  >  **Express**.
+Tato možnost je navržena tak, aby povolila jednoduché ověřování a vyžadovala jen několik kliknutí.
 
-   Pokud chcete místo toho zvolit existující registraci aplikace:
+1. Přihlaste se k [Azure Portal] a přejděte do aplikace.
+1. V nabídce na levé straně vyberte **ověřování** . Klikněte na **Přidat zprostředkovatele identity**.
+1. V rozevíracím seznamu Zprostředkovatel identity vyberte **Microsoft** . Ve výchozím nastavení je vybraná možnost pro vytvoření nové registrace. Můžete změnit název registrace nebo podporované typy účtů.
 
-   1. Zvolte **Vybrat existující aplikaci AD** a pak klikněte na **aplikace Azure AD**.
-   2. Vyberte existující registraci aplikace a klikněte na **OK**.
+    Vytvoří se tajný klíč klienta, který se uloží jako [nastavení aplikace](./configure-common.md#configure-app-settings) typu rychlé pozice s názvem `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` . Toto nastavení můžete později aktualizovat, aby se používaly [Key Vault odkazy](./app-service-key-vault-references.md) , pokud chcete tajný klíč spravovat v Azure Key Vault.
 
-4. Výběrem **OK** zaregistrujete aplikaci App Service do Azure Active Directory. Vytvoří se nová registrace aplikace.
+1. Pokud se jedná o prvního zprostředkovatele identity nakonfigurovaného pro aplikaci, zobrazí se také výzva s oddílem **nastavení ověřování App Service** . V opačném případě se můžete přesunout k dalšímu kroku.
+    
+    Tyto možnosti určují, jak vaše aplikace reaguje na neověřené požadavky, a výchozí výběry přesměrují všechny požadavky na přihlášení pomocí tohoto nového poskytovatele. Přizpůsobením tohoto chování teď můžete změnit nebo upravit toto nastavení později z hlavní obrazovky pro **ověřování** výběrem možnosti **Upravit** vedle **nastavení ověřování**. Další informace o těchto možnostech najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
 
-    ![Expresní nastavení v Azure Active Directory](./media/configure-authentication-provider-aad/express-settings.png)
+1. Volitelné Klikněte na **Další: oprávnění** a přidejte libovolné obory, které aplikace potřebuje. Ty se přidají k registraci aplikace, ale můžete je také později změnit.
+1. Klikněte na **Přidat**.
 
-5. Volitelné Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace. Pokud chcete omezit přístup k aplikacím jenom na uživatele ověřené nástrojem Azure Active Directory, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechna neověřená na Azure Active Directory pro ověřování.
-
-    > [!CAUTION]
-    > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (žádná akce)** , přičemž aplikace se ručně spouští samotné přihlášení. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
-6. Vyberte **Uložit**.
+Nyní jste připraveni použít platformu Microsoft identity pro ověřování ve vaší aplikaci. Poskytovatel bude uveden na obrazovce **ověřování** . Odtud můžete tuto konfiguraci poskytovatele upravit nebo odstranit.
 
 Příklad konfigurace přihlášení Azure AD pro webovou aplikaci, která přistupuje k Azure Storage a Microsoft Graph, najdete v [tomto kurzu](scenario-secure-app-authentication-app-service.md).
 
-## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurace s pokročilým nastavením
+## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>Použít existující registraci vytvořenou samostatně
 
-Aby mohla služba Azure AD fungovat jako poskytovatel ověřování pro vaši aplikaci, musíte aplikaci zaregistrovat. Možnost Express to provede automaticky. Možnost Upřesnit umožňuje manuálně zaregistrovat aplikaci, přizpůsobit registraci a ruční vkládání podrobností o registraci zpět do App Service. To je užitečné například v případě, že chcete použít registraci aplikace z jiného tenanta Azure AD, než v jaké je vaše App Service.
+Můžete také manuálně zaregistrovat aplikaci pro platformu Microsoft identity, přizpůsobit registraci a nakonfigurovat App Service ověřování s použitím registračních údajů. To je užitečné, například pokud chcete použít registraci aplikace z jiného tenanta Azure AD, než jakou vaše aplikace používá.
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Vytvoření registrace aplikace v Azure AD pro vaši aplikaci App Service
 
@@ -87,22 +84,27 @@ K registraci aplikace proveďte následující kroky:
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Povolení Azure Active Directory v aplikaci App Service
 
-1. V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci.
-1. V levém podokně v části **Nastavení** vyberte **ověřování/autorizace**  >  **pro**.
-1. Volitelné Ve výchozím nastavení App Service ověřování umožňuje neověřený přístup k vaší aplikaci. Pokud chcete vyhovět ověřování uživatele, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**.
-1. V části **Zprostředkovatelé ověřování** vyberte **Azure Active Directory**.
-1. V **režimu správy** vyberte **upřesnit** a nakonfigurujte App Service ověřování podle následující tabulky:
+1. Přihlaste se k [Azure Portal] a přejděte do aplikace.
+1. V nabídce na levé straně vyberte **ověřování** . Klikněte na **Přidat zprostředkovatele identity**.
+1. V rozevíracím seznamu Zprostředkovatel identity vyberte **Microsoft** .
+1. Pro **typ registrace aplikace** se můžete rozhodnout vybrat **existující registraci aplikace v tomto adresáři** , která bude automaticky shromažďovat potřebné informace o aplikaci. Pokud vaše registrace pochází z jiného tenanta nebo nemáte oprávnění k zobrazení objektu pro registraci, vyberte **zadat podrobnosti existující registrace aplikace**. Pro tuto možnost budete muset vyplnit následující konfigurační údaje:
 
     |Pole|Description|
     |-|-|
-    |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
-    |Adresa URL vydavatele| Pomocí `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte *\<authentication-endpoint>* [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoftonline.com " pro globální Azure ") nahraďte *\<tenant-id>* **ID adresáře (tenanta)** , ve kterém se vytvořila registrace aplikace. Tato hodnota se používá k přesměrování uživatelů do správného tenanta Azure AD a také ke stažení odpovídajících metadat k určení vhodného podpisového klíče tokenu a hodnoty deklarace vystavitele tokenu. U aplikací, které používají Azure AD V1 a pro aplikace Azure Functions, `/v2.0` v adrese URL vynechejte.|
+    |ID aplikace (klienta)| Použijte **ID aplikace (klienta)** registrace aplikace. |
     |Tajný kód klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali v registraci aplikace. V případě tajného klíče klienta se používá hybridní tok a App Service vrátí tokeny pro přístup a aktualizaci. Pokud není nastaven tajný klíč klienta, je použit implicitní tok a je vrácen pouze token ID. Tyto tokeny posílá poskytovatel a ukládají se do úložiště tokenů EasyAuth.|
+    |Adresa URL vydavatele| Pomocí `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte *\<authentication-endpoint>* [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoftonline.com " pro globální Azure ") nahraďte *\<tenant-id>* **ID adresáře (tenanta)** , ve kterém se vytvořila registrace aplikace. Tato hodnota se používá k přesměrování uživatelů do správného tenanta Azure AD a také ke stažení odpovídajících metadat k určení vhodného podpisového klíče tokenu a hodnoty deklarace vystavitele tokenu. U aplikací, které používají Azure AD V1 a pro aplikace Azure Functions, `/v2.0` v adrese URL vynechejte.|
     |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete z webové aplikace dovolit ověřovací tokeny, přidejte sem **identifikátor URI ID aplikace** webové aplikace. Nakonfigurované **ID klienta** se *vždycky* implicitně považuje za povolenou cílovou skupinu.|
 
-2. Vyberte **OK** a pak vyberte **Uložit**.
+    Tajný kód klienta bude uložen jako [nastavení aplikace](./configure-common.md#configure-app-settings) typu rychlé rozhraní s názvem `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` . Toto nastavení můžete později aktualizovat, aby se používaly [Key Vault odkazy](./app-service-key-vault-references.md) , pokud chcete tajný klíč spravovat v Azure Key Vault.
 
-Nyní jste připraveni použít Azure Active Directory pro ověřování ve vaší aplikaci App Service.
+1. Pokud se jedná o prvního zprostředkovatele identity nakonfigurovaného pro aplikaci, zobrazí se také výzva s oddílem **nastavení ověřování App Service** . V opačném případě se můžete přesunout k dalšímu kroku.
+    
+    Tyto možnosti určují, jak vaše aplikace reaguje na neověřené požadavky, a výchozí výběry přesměrují všechny požadavky na přihlášení pomocí tohoto nového poskytovatele. Přizpůsobením tohoto chování teď můžete změnit nebo upravit toto nastavení později z hlavní obrazovky pro **ověřování** výběrem možnosti **Upravit** vedle **nastavení ověřování**. Další informace o těchto možnostech najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
+
+1. Klikněte na **Přidat**.
+
+Nyní jste připraveni použít platformu Microsoft identity pro ověřování ve vaší aplikaci. Poskytovatel bude uveden na obrazovce **ověřování** . Odtud můžete tuto konfiguraci poskytovatele upravit nebo odstranit.
 
 ## <a name="configure-client-apps-to-access-your-app-service"></a>Konfigurace klientských aplikací pro přístup k App Service
 

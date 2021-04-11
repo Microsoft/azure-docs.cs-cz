@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: d9012c2bb56b7936b627063be2e9c5b7aa33541e
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 3021d049a38f1d883518fc7c45aa8ca0a906c2f7
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962726"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221581"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Vytvoření triggeru, který spouští kanál v reakci na událost úložiště
 
@@ -76,7 +76,7 @@ V této části se dozvíte, jak vytvořit Trigger události úložiště v uži
    V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se aktivovala v případě, že se ve složce _– testování událostí_ v kontejnerech ve _vzorových_ událostech vytvoří cesta objektu BLOB končící na. csv. Vlastnosti **FolderPath** a **filename** zachytí umístění nového objektu BLOB. Například při přidání MoviesDB.csv do cesty Sample-data/testování událostí `@triggerBody().folderPath` má hodnotu `sample-data/event-testing` a `@triggerBody().fileName` má hodnotu `moviesDB.csv` . Tyto hodnoty jsou mapovány v příkladu na parametry kanálu `sourceFolder` a `sourceFile` , které lze použít v celém kanálu jako `@pipeline().parameters.sourceFolder` a v `@pipeline().parameters.sourceFile` uvedeném pořadí.
 
    > [!NOTE]
-   > Pokud vytváříte kanál a Trigger ve [službě Azure synapse Analytics](/synapse-analytics), musíte použít `@trigger().outputs.body.fileName` a `@trigger().outputs.body.folderPath` jako parametry. Tyto dvě vlastnosti zaznamenávají informace o objektu BLOB. Místo použití a použijte tyto vlastnosti `@triggerBody().fileName` `@triggerBody().folderPath` .
+   > Pokud vytváříte kanál a Trigger ve [službě Azure synapse Analytics](../synapse-analytics/overview-what-is.md), musíte použít `@trigger().outputs.body.fileName` a `@trigger().outputs.body.folderPath` jako parametry. Tyto dvě vlastnosti zaznamenávají informace o objektu BLOB. Místo použití a použijte tyto vlastnosti `@triggerBody().fileName` `@triggerBody().folderPath` .
 
 1. Až budete hotovi, klikněte na **Dokončit** .
 
