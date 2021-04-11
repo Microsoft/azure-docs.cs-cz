@@ -3,14 +3,14 @@ title: Přidat spravovanou identitu do role v Azure Event Grid cíli
 description: Tento článek popisuje, jak přidat spravovanou identitu do rolí Azure v umístěních, jako jsou Azure Service Bus a Azure Event Hubs.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 1bcef878c982122d80980dd7194fae2de6fc8762
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1578e4c24201614ce89351b3c3cee52a09cadc30
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630349"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280475"
 ---
-# <a name="add-an-identity-to-azure-roles-on-azure-event-grid-destinations"></a>Přidání identity do rolí Azure v umístěních Azure Event Grid
+# <a name="grant-managed-identity-the-access-to-event-grid-destination"></a>Udělit spravované identitě přístup k Event Grid cíli
 Tato část popisuje, jak přidat identitu pro vaše systémové téma, vlastní téma nebo doménu do role Azure. 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -89,6 +89,6 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste přiřadili systémovou identitu k vašemu systémovému tématu, vlastnímu tématu nebo doméně a Přidali jste identitu do odpovídajících rolí v umístěních, přečtěte si téma [události Devlier pomocí identity](managed-service-identity.md) pro doručování událostí do cílových umístění pomocí identity.
+Teď, když jste přiřadili systémovou identitu k vašemu systémovému tématu, vlastnímu tématu nebo doméně a Přidali jste identitu do odpovídajících rolí v umístěních, přečtěte si téma [doručování událostí pomocí spravované identity](managed-service-identity.md) při doručování událostí do cílových umístění pomocí identity.
 
 

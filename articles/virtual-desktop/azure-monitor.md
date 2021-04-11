@@ -3,15 +3,15 @@ title: Použití monitorování virtuálních klientských počítačů s Window
 description: Jak používat Azure Monitor pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 03/31/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 7da35f77dd232e5f523e2bdc3f125c68015ab871
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709544"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448181"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Monitorování nasazení pomocí Azure Monitor pro virtuální počítač s Windows
 
@@ -43,7 +43,7 @@ Azure Monitor monitorování všech uživatelů pro vaše prostředí bude potř
 
 Azure Monitor pro virtuální plochu Windows můžete otevřít jedním z následujících způsobů:
 
-- Přejít na [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks).
+- Přejít na [aka.MS/azmonwvdi](https://aka.ms/azmonwvdi).
 - Vyhledejte a vyberte **virtuální počítač s Windows** z Azure Portal a pak vyberte **přehledy**.
 - Vyhledejte a vyberte **Azure monitor** z Azure Portal. V části **přehledy** vyberte **centrum Insights** a pak vyberte **virtuální klient Windows**.
 Po otevření stránky zadejte **předplatné**, **skupinu prostředků**, **fond hostitelů** a **časový rozsah** prostředí, které chcete monitorovat.
@@ -62,7 +62,7 @@ Pokud chcete začít používat Azure Monitor pro virtuální počítače s Wind
 
 Pokud otevíráte Azure Monitor pro virtuální počítač s Windows poprvé, budete muset nastavit Azure Monitor pro prostředí virtuálních počítačů s Windows. Konfigurace prostředků:
 
-1. Otevřete Azure Monitor pro virtuální počítač s Windows v Azure Portal na [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)a pak vyberte **sešit konfigurace**.
+1. Otevřete Azure Monitor pro virtuální počítač s Windows v Azure Portal na [aka.MS/azmonwvdi](https://aka.ms/azmonwvdi)a pak vyberte **sešit konfigurace**.
 2. Vyberte prostředí, které chcete nakonfigurovat v části **předplatné**, **Skupina prostředků** a **fond hostitelů**.
 
 Sešit konfigurace nastaví prostředí pro monitorování a umožní vám kontrolu konfigurace po dokončení procesu instalace. V případě, že se položky na řídicím panelu nezobrazuje správně nebo když skupina produktů zveřejňuje aktualizace, které vyžadují nové nastavení, je důležité ověřit konfiguraci.
@@ -193,4 +193,5 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 Teď, když jste nakonfigurovali Azure Monitor pro prostředí virtuálních počítačů s Windows, najdete tady některé materiály, které vám pomůžou začít monitorovat vaše prostředí:
 
 - Podívejte se na náš [Glosář](azure-monitor-glossary.md) , kde najdete další informace o pojmech a konceptech souvisejících s Azure monitor pro virtuální počítače s Windows.
+- Pokud chcete odhadnout, měřit a spravovat náklady na úložiště dat, přečtěte si téma [odhad nákladů na Azure monitor](azure-monitor-costs.md).
 - Pokud narazíte na problém, podívejte se do [Průvodce odstraňováním potíží](troubleshoot-azure-monitor.md) , kde najdete nápovědu a známé problémy.

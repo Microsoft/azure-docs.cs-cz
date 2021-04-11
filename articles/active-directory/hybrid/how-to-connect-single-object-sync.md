@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 373cebee4e7f95062791d8bc68bfee7d845e1465
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104726047"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Synchronizace jednoho objektu Azure AD Connect 
@@ -54,7 +54,7 @@ Sestava HTML má následující:
 |Upravené vlastnosti|Zobrazuje starou hodnotu a novou hodnotu. Pokud není k dispozici žádná stará hodnota nebo pokud je nová hodnota odstraněna, je tato buňka prázdná. U vícehodnotových atributů zobrazuje počet. Název atributu je odkaz na kartu kroky: exportovat objekt z Azure Active Directory prostoru konektoru do Azure Active Directory: informace o atributu, jako je třeba název, jsou vícehodnotové, typ, hodnota, hodnota přidat, hodnota odstranit, operace, pravidlo synchronizace, typ mapování a zdroj dat.| 
 |Souhrn|Poskytuje přehled o tom, co se stalo, a identifikátory pro objekt ve zdrojovém a cílovém systému.| 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Chcete-li použít nástroj pro synchronizaci jediného objektu, bude nutné použít 2021. března Azure AD Connect nebo novější verzi. 
 

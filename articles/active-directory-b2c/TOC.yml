@@ -79,13 +79,12 @@
           href: tokens-overview.md
         - name: Vyžádání přístupového tokenu
           href: access-tokens.md
-    - name: Klíče zásad
-      href: policy-keys-overview.md
-    - name: Zásady a toky uživatele
+    - name: Uživatelské prostředí
+      expanded: true
       items:
-        - name: Toky uživatele
+        - name: Uživatelské toky a vlastní zásady
           href: user-flow-overview.md
-        - name: Vlastní zásady
+        - name: Přehled vlastních zásad
           href: custom-policy-overview.md
     - name: Uživatelské účty
       href: user-overview.md
@@ -93,6 +92,8 @@
       href: user-profile-attributes.md
     - name: Ochrana identity a podmíněný přístup
       href: conditional-access-identity-protection-overview.md
+    - name: Klíče zásad
+      href: policy-keys-overview.md
 - name: Návody
   items:
     - name: Integrace aplikací
@@ -268,8 +269,6 @@
           href: add-api-connector.md
     - name: Vlastní zásady
       items:
-        - name: Přehled vlastních zásad
-          href: custom-policy-trust-frameworks.md
         - name: Začínáme s vlastními zásadami
           href: custom-policy-get-started.md
         - name: Vlastní ověření e-mailu
@@ -298,9 +297,8 @@
             - name: Shromažďování protokolů pomocí Application Insights
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: Ověřování zásad
+            - name: Řešení potíží s vlastními zásadami
               href: troubleshoot-custom-policies.md
-              displayName: troubleshooting
         - name: Referenční informace
           items:
             - name: TrustFrameworkPolicy

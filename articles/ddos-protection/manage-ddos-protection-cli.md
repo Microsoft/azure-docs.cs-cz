@@ -3,7 +3,7 @@ title: Vytvoření a konfigurace plánu Azure DDoS Protection pomocí Azure CLI
 description: Naučte se vytvořit plán DDoS Protection pomocí Azure CLI.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203772"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103007"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard pomocí Azure CLI
 
@@ -26,7 +26,7 @@ Plán DDoS Protection definuje sadu virtuálních sítí, které mají povolený
 
 V tomto rychlém startu vytvoříte plán DDoS Protection a propojíte ho s virtuální sítí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Rozhraní příkazového řádku Azure je nainstalované místně nebo Azure Cloud Shell

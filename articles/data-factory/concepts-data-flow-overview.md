@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
 ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103564316"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
@@ -33,11 +33,11 @@ Toky dat se vytvářejí v podokně prostředky továrny, jako jsou kanály a da
 
 Tato akce přejde k plátnu toku dat, kde můžete vytvořit logiku transformace. Pokud chcete začít konfigurovat transformaci zdrojového kódu, vyberte **Přidat zdroj** . Další informace najdete v tématu [transformace zdroje](data-flow-source.md).
 
-## <a name="authoring-data-flows"></a>Vytváření toků dat
+## <a name="authoring-data-flows&quot;></a>Vytváření toků dat
 
 Mapování toku dat má jedinečné plátno pro vytváření, které usnadňuje sestavování logiky transformace. Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
-![Snímek obrazovky znázorňující plátno toku dat s popisem horního panelu, grafu a panelu konfigurace.](media/data-flow/canvas-1.png "Plátno")
+![Snímek obrazovky znázorňující plátno toku dat s popisem horního panelu, grafu a panelu konfigurace.](media/data-flow/canvas-1.png &quot;Plátno")
 
 ### <a name="graph"></a>Graph
 
@@ -63,11 +63,11 @@ Karta **optimalizace** obsahuje nastavení pro konfiguraci schémat dělení. Da
 
 ![Snímek obrazovky zobrazuje kartu optimalizace, která zahrnuje možnost oddílu, typ oddílu a počet oddílů.](media/data-flow/optimize.png)
 
-#### <a name="inspect"></a>Prohlížen
+#### <a name="inspect&quot;></a>Prohlížen
 
 Karta **Kontrola** poskytuje zobrazení metadat datového proudu, který transformuje. Můžete zobrazit počty sloupců, sloupce se změnily, přidané sloupce, datové typy, pořadí sloupců a odkazy na sloupce. **Kontrola** je zobrazení vašich metadat jen pro čtení. Není nutné mít povolen režim ladění, aby bylo možné zobrazit metadata v podokně **Kontrola** .
 
-![Prohlížen](media/data-flow/inspect1.png "Prohlížen")
+![Prohlížen](media/data-flow/inspect1.png &quot;Prohlížen")
 
 Když změníte tvar dat prostřednictvím transformací, v podokně **Kontrola** se zobrazí tok změn metadat. Pokud ve zdrojové transformaci není definované schéma, metadata se v podokně **Kontrola** nezobrazí. Nedostatek metadat je běžné ve scénářích pro posun schématu.
 

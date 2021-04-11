@@ -4,10 +4,10 @@ description: Popisuje, jak můžete pro doručené události nastavit vlastní z
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.openlocfilehash: e2eff6b0d1dc78f0d558bb8e4e1ad79c62c52657
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105630421"
 ---
 # <a name="delivery-with-custom-headers"></a>Doručování s vlastními hlavičkami

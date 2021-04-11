@@ -8,10 +8,10 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104954645"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
@@ -23,7 +23,7 @@ Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracova
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 

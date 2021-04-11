@@ -234,6 +234,8 @@
               href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
             - name: NP-Series
               href: np-series.md
+            - name: Služba ověření identity FPGA
+              href: field-programmable-gate-arrays-attestation.md
         - name: Vysokovýkonné výpočetní prostředí
           items:
             - name: Přehled
@@ -1303,6 +1305,8 @@
           href: ./windows/nsg-quickstart-portal.md
     - name: Přiřazení veřejných IP adres
       href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Použít vlastní název domény
+      href: custom-domain.md
     - name: Použití několika síťových adaptérů
       items:
         - name: Linux s použitím rozhraní příkazového řádku

@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: prognózování poptávky & AutoML'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí automatizovaného strojového učení v Azure Machine Learning Studiu naučit a nasazovat model prognózy poptávky.
+description: Pomocí automatizovaného rozhraní Machine Learning (Automated ML) Azure Machine Learning proveďte výuku a nasazení modelu prognózy poptávky bez psaní kódu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,18 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879356"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210546"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 
+Naučte se vytvářet [model prognózy časových řad](concept-automated-ml.md#time-series-forecasting) , aniž byste museli psát jediný řádek kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model předpovídá poptávku za pronájem pro službu sdílení kol.  
 
-V tomto kurzu pomocí automatizovaného strojového učení nebo automatizovaného ML v Azure Machine Learning Studiu vytvoříte model prognózy časových řad, který předpovídá poptávku pro službu pro sdílení kol.
-
-Příklad klasifikačního modelu najdete v tématu [kurz: vytvoření klasifikačního modelu pomocí automatizovaného ml v Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
-
-V tomto kurzu se naučíte, jak provádět následující úlohy:
+V tomto kurzu nebudete psát žádný kód, k provedení školení použijete rozhraní studia.  Naučíte se, jak provádět následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvořte a načtěte datovou sadu.
@@ -34,13 +31,18 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Prozkoumejte výsledky experimentů.
 > * Nasaďte nejlepší model.
 
+Vyzkoušejte taky automatizované Machine Learning pro tyto typy modelů:
+
+* Příklad žádného kódu klasifikačního modelu najdete v tématu [kurz: vytvoření klasifikačního modelu pomocí automatizovaného ml v Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
+* Příklad kódu regresního modelu naleznete v [kurzu: Použití automatizovaného strojového učení k předvídání taxislužby tarifů](tutorial-auto-train-models.md).
+
 ## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
 
 * Stažení [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) datového souboru
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme v Azure Machine Learning Studiu
+## <a name="sign-in-to-the-studio"></a>Přihlásit se k studiu
 
 Pro účely tohoto kurzu vytvoříte v aplikaci Azure Machine Learning Studio konsolidované webové rozhraní, které zahrnuje nástroje machine learningu k provádění scénářů pro datové vědy u všech úrovní dovedností. Aplikace Studio není podporována v prohlížečích aplikace Internet Explorer.
 
@@ -76,7 +78,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -113,7 +115,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
 
         1. Naplňte formulář **virtuálního počítače** a nastavte výpočetní výkon.
 
-            Pole | Popis | Hodnota pro kurz
+            Pole | Description | Hodnota pro kurz
             ----|---|---
             &nbsp;Priorita virtuálního počítače &nbsp; |Vyberte prioritu, kterou by měl váš experiment mít.| Vyhrazená
             &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
@@ -121,7 +123,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
         
         1. Výběrem možnosti **Další** naplňte **formulář Konfigurovat nastavení**.
         
-             Pole | Popis | Hodnota pro kurz
+             Pole | Description | Hodnota pro kurz
             ----|---|---
             Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | kolo – COMPUTE
             Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
@@ -148,7 +150,7 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
 
 1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení a určují nastavení prognózy. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-    Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+    Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
     ------|---------|---
     Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
     Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit

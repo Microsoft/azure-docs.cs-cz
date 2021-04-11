@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 306381465919d3fde7135315b69d450a496c2898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cedadf6b6026c74e25e9c81feb7f8291058b6f69
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104609316"
+ms.locfileid: "105961655"
 ---
 # <a name="monitor-media-services-metrics"></a>Monitorování metrik služby Media Services
 
@@ -31,7 +31,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvoření účtu Media Services](../create-account-howto.md)
+- [Vytvoření účtu Media Services](../account-create-how-to.md)
 - Kontrola  [monitorování Media Services metriky a diagnostické protokoly](monitor-media-services-data-reference.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>Zobrazit metriky v Azure Portal

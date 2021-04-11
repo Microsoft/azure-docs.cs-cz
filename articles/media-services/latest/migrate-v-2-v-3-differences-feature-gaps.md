@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 564f3127fc6901695890daa520152a7aa1a2337f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567946"
+ms.locfileid: "105962964"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Mezery mezi funkcemi Azure Media Services V2 a V3
 
@@ -42,7 +42,7 @@ Rozhraní V3 API má na rozdíl od rozhraní v2 API následující funkce. Někt
     - Přidali jsme podporu pro mapování zvukových kanálů na standardní kodér.  Podívejte [se na zvuk v dokumentaci k rozhraní Swagger pro kódování Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).
     - Pokud jste používali pokročilé funkce nebo formáty výstupu licencovaného produktu třetí strany, jako je například MXF nebo ProRes, použijte Partnerská řešení Azure ze služby streamování, které bude transakčním časem po vyřazení v2. Alternativně můžete použít předpracované sdělení nebo [Bitmovin](http://bitmovin.com).
 
-- Vlastnost "Skupina dostupnosti" na koncovém bodu streamování ve verzi v2 již není podporována. Podívejte se na vzorový projekt a pokyny pro VOD doručování s [vysokou dostupností](./media-services-high-availability-encoding.md) v rozhraní V3 API.
+- Vlastnost "Skupina dostupnosti" na koncovém bodu streamování ve verzi v2 již není podporována. Podívejte se na vzorový projekt a pokyny pro VOD doručování s [vysokou dostupností](./architecture-high-availability-encoding-concept.md) v rozhraní V3 API.
 
 - V Media Services V3 nelze zadat FairPlay IV. I když nemá vliv na zákazníky, kteří používají Media Services pro balíčky i doručování licencí, může to být problém při použití systému DRM jiného výrobce k doručování licencí FairPlay (hybridní režim).
 

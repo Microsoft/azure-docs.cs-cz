@@ -7,12 +7,12 @@ ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 17729b2b6a2c4faba0554339a382cad559e9894a
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045786"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210495"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -61,7 +61,7 @@ U balíčků aplikací nemusí spouštěcí úkol fondu určovat dlouhý seznam 
 Pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní API pro správu služby Batch můžete spravovat balíčky aplikací v účtu Batch. V následujících částech se dozvíte, jak propojit účet úložiště a jak přidávat a spravovat aplikace a balíčky aplikací v Azure Portal.
 
 > [!NOTE]
-> I když můžete definovat hodnoty aplikace v prostředku [Microsoft.Batch/batchAccounts](/templates/microsoft.batch/batchaccounts) [šablony ARM](quick-create-template.md), není teď možné použít šablonu ARM k nahrání balíčků aplikací, které se mají použít v účtu Batch. Je nutné je odeslat do propojeného účtu úložiště, jak je popsáno [níže](#add-a-new-application).
+> I když můžete definovat hodnoty aplikace v prostředku [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts) [šablony ARM](quick-create-template.md), není teď možné použít šablonu ARM k nahrání balíčků aplikací, které se mají použít v účtu Batch. Je nutné je odeslat do propojeného účtu úložiště, jak je popsáno [níže](#add-a-new-application).
 
 ### <a name="link-a-storage-account"></a>Propojení účtu úložiště
 

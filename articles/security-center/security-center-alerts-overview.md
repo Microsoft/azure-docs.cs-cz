@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cdf46a5f0185e33e1e877e3682ab418a00725de2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727038"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012542"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Výstrahy a incidenty zabezpečení v Azure Security Center
 
@@ -78,7 +78,7 @@ Security Center přiřadí závažnosti výstrahám, které vám pomůžou urči
 | **Vysoká**          | Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů.                                                                                                               |
 | **Medium**        | Je pravděpodobné, že podezřelá aktivita může znamenat, že dojde k ohrožení bezpečnosti prostředku. Při analýze nebo hledání je jistota Security Center střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekci na základě anomálií. Například pokus o přihlášení z umístění neobvyklé.                                                                                                                |
 | **Nízká**           | Může se jednat o neškodný pozitivní nebo blokovaný útok. Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, která může nastat, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutina prováděná správci. Security Center vám většinou neřekne při zablokování útoků, pokud se nejedná o zajímavý případ, který doporučujeme najít. |
-| **Informační** | Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z řady výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu.                                                                                                                         |
+| **Informační** | Incident se většinou skládá z řady výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu.                                                                                                                         |
 
 ## <a name="export-alerts"></a>Export výstrah
 

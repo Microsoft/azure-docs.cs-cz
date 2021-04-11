@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34aaafcd03e737b1e59529f8001e0c008bd39b70
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104888868"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>Integrace se službou SharePoint (SAML)
@@ -38,7 +38,7 @@ Toto nastavení má tři hlavní výhody:
 
 Tento proces vyžaduje dvě podnikové aplikace. Jedna je místní instance SharePointu, kterou publikujete z Galerie do svého seznamu spravovaných aplikací SaaS. Druhým je místní aplikace (aplikace mimo galerii), kterou použijete k publikování první aplikace podnikové galerie.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této konfigurace potřebujete tyto prostředky:
  - Farma SharePoint 2013 nebo novější. Sharepointová farma musí být [integrovaná se službou Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md).

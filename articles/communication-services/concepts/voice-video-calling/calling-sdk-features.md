@@ -9,20 +9,29 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b9de4ffe3011bbb8345a6a8c4a92ef5bd1d4559
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ac9cef77569dffe461f7711195c5638e831aa218
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728415"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110100"
 ---
 # <a name="calling-sdk-overview"></a>Přehled volání sady SDK
 
-Existují dvě samostatné rodiny volání sad SDK pro *klienty* a *služby.* Aktuálně dostupné sady SDK jsou určené pro prostředí koncových uživatelů: websites a nativní aplikace.
+Volající sada SDK umožňuje zařízením koncových uživatelů, aby mohli využívat hlasové a obrazové komunikační prostředí. Tato stránka obsahuje podrobné popisy volání funkcí, včetně informací o podpoře platforem a prohlížečů. Chcete-li začít hned, podívejte se prosím na [volání rychlý Start](../../quickstarts/voice-video-calling/getting-started-with-calling.md) nebo [volání Hero Sample](../../samples/calling-hero-sample.md). 
 
-Sady SDK služby ještě nejsou k dispozici a poskytují přístup k nezpracovaným datovým a obrazovým rovinám, které jsou vhodné pro integraci s roboty a dalšími službami.
+Až začnete s vývojem, podívejte se na [stránku známé problémy](../known-issues.md) , kde najdete chyby, na kterých pracujeme.
 
-## <a name="calling-sdk-capabilities"></a>Volání funkcí sady SDK
+Klíčové funkce pro volání sady SDK:
+
+- **Adresování** – komunikační služby Azure poskytují obecné [identity](../identity-model.md) , které se používají k adresování koncových bodů komunikace. Klienti používají tyto identity k ověřování ve službě a vzájemně komunikují. Tyto identity se používají při volání rozhraní API, která klientům poskytují přehled o tom, kdo je připojen ke volání (soupisku).
+- **Šifrování** – volající sada SDK šifruje provoz a zabraňuje manipulaci na síti. 
+- **Správa zařízení a média** – volání sady SDK poskytuje vybavení pro vytváření vazeb na zvukové a video zařízení, zakóduje obsah pro efektivní přenos prostřednictvím komunikačního plánu komunikací a vykresluje obsah do výstupních zařízení a zobrazení, která určíte. K dispozici jsou také rozhraní API pro sdílení obrazovky a aplikací.
+- **PSTN (PSTN** ) – volání sady SDK může přijímat a iniciovat hlasové hovory s tradičním integrovaným systémem telefonního subsystému, [který používá telefonní čísla, která získáte v Azure Portal](../../quickstarts/telephony-sms/get-phone-number.md) nebo programově.
+- **Týmy na schůzkách** – volání sady SDK se může [připojit k týmům týmů](../../quickstarts/voice-video-calling/get-started-teams-interop.md) a interagovat s týmem a audiovizuálním plánem videa. 
+- **Oznámení** – volání sady SDK poskytuje rozhraní API, která klientům umožňují upozorňování na příchozí volání. V situacích, kdy vaše aplikace není spuštěná v popředí, jsou k dispozici vzory pro příjem [místních oznámení](../notifications.md) ("informační zprávy"), aby bylo možné koncovým uživatelům informovat o příchozím volání. 
+
+## <a name="detailed-capabilities"></a>Podrobné možnosti 
 
 Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici ve komunikačních službách Azure, které volají sady SDK.
 
@@ -33,30 +42,30 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Zvýšení úrovně volání 1:1 se dvěma uživateli na skupinové volání s více než dvěma uživateli                                 | ✔️   | ✔️            | ✔️
 |                   | Připojit se k volání skupiny po jeho spuštění                                                                              | ✔️   | ✔️            | ✔️
 |                   | Pozvat dalšího účastníka VoIP, aby se připojil k probíhajícímu volání skupiny                                                       | ✔️   | ✔️            | ✔️
-|  Střední řízení volání | Zapnout/vypnout video                                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Ztlumení a ztlumení mikrofonu                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Přepínání mezi fotoaparáty                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Místní blokování/zrušení blokování                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Aktivní mluvčí                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Zvolit mluvčí pro volání                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Volba mikrofonu pro volání                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit stav účastníka<br/>*Nečinné, předčasné médium, připojení, připojení, blokováno, v předsálí, odpojeno*         | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit stav volání<br/>*Předčasné médium, příchozí, připojení, vyzvánění, připojení, blokování, odpojování, odpojení* | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit, zda je účastník ztlumený                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit důvod, proč účastník opustí volání                                                                       | ✔️   | ✔️            | ✔️     
-| Sdílení obrazovky    | Sdílet celou obrazovku v rámci aplikace                                                                 | ✔️   | ❌            | ❌           
-|                   | Sdílet konkrétní aplikaci (ze seznamu spuštěných aplikací)                                                | ✔️   | ❌            | ❌           
-|                   | Sdílení karty webového prohlížeče ze seznamu otevřených karet                                                                  | ✔️   | ❌            | ❌           
-|                   | Účastník může zobrazit sdílenou složku na vzdálené obrazovce.                                                                            | ✔️   | ✔️            | ✔️         
-| Soupis            | Seznam účastníků                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Odebrat účastníka                                                                                                | ✔️   | ✔️            | ✔️         
-| Veřejná              | Vložení volání 1:1 s účastníkem veřejné sítě                                                                     | ✔️   | ✔️            | ✔️   
+|  Střední řízení volání | Zapnout/vypnout video                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Ztlumení a ztlumení mikrofonu                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Přepínání mezi fotoaparáty                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Místní blokování/zrušení blokování                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Aktivní mluvčí                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Zvolit mluvčí pro volání                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Volba mikrofonu pro volání                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Zobrazit stav účastníka<br/>*Nečinné, předčasné médium, připojení, připojení, blokováno, v předsálí, odpojeno*         | ✔️   | ✔️            | ✔️
+|                   | Zobrazit stav volání<br/>*Předčasné médium, příchozí, připojení, vyzvánění, připojení, blokování, odpojování, odpojení* | ✔️   | ✔️            | ✔️
+|                   | Zobrazit, zda je účastník ztlumený                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Zobrazit důvod, proč účastník opustí volání                                                                       | ✔️   | ✔️            | ✔️
+| Sdílení obrazovky    | Sdílet celou obrazovku v rámci aplikace                                                                 | ✔️   | ❌            | ❌
+|                   | Sdílet konkrétní aplikaci (ze seznamu spuštěných aplikací)                                                | ✔️   | ❌            | ❌
+|                   | Sdílení karty webového prohlížeče ze seznamu otevřených karet                                                                  | ✔️   | ❌            | ❌
+|                   | Účastník může zobrazit sdílenou složku na vzdálené obrazovce.                                                                            | ✔️   | ✔️            | ✔️
+| Soupis            | Seznam účastníků                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Odebrat účastníka                                                                                                | ✔️   | ✔️            | ✔️
+| Veřejná              | Vložení volání 1:1 s účastníkem veřejné sítě                                                                     | ✔️   | ✔️            | ✔️
 |                   | Umístěte volání skupiny do účastníků veřejné telefonní sítě.                                                                           | ✔️   | ✔️            | ✔️
 |                   | Zvýšení úrovně volání 1:1 s účastníkem veřejné sítě na volání skupiny                                                 | ✔️   | ✔️            | ✔️
-|                   | Telefonické připojení z volání skupiny jako účastník veřejné sítě                                                                    | ✔️   | ✔️            | ✔️   
-| Obecné           | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   | ✔️   | ✔️            | ✔️ 
+|                   | Telefonické připojení z volání skupiny jako účastník veřejné sítě                                                                    | ✔️   | ✔️            | ✔️
+| Obecné           | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   | ✔️   | ✔️            | ✔️
 | Správa zařízení | Požádat o oprávnění používat zvuk a video                                                                       | ✔️   | ✔️            | ✔️
-|                   | Získat seznam fotoaparátů                                                                                                     | ✔️   | ✔️            | ✔️ 
+|                   | Získat seznam fotoaparátů                                                                                                     | ✔️   | ✔️            | ✔️
 |                   | Nastavit kameru                                                                                                          | ✔️   | ✔️            | ✔️
 |                   | Získat vybranou kameru                                                                                                 | ✔️   | ✔️            | ✔️
 |                   | Získat seznam mikrofonů                                                                                                 | ✔️   | ✔️            | ✔️
@@ -66,7 +75,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Nastavit mluvčí                                                                                                         | ✔️   | ✔️            | ✔️
 |                   | Získat vybraného mluvčího                                                                                                | ✔️   | ✔️            | ✔️
 | Vykreslování videa   | Vykreslování jednoho videa na mnoha místech (místní fotoaparát nebo vzdálený datový proud)                                                  | ✔️   | ✔️            | ✔️
-|                   | Nastavit nebo aktualizovat režim škálování                                                                                           | ✔️   | ✔️            | ✔️ 
+|                   | Nastavit nebo aktualizovat režim škálování                                                                                           | ✔️   | ✔️            | ✔️
 |                   | Vykreslit vzdálený video stream                                                                                          | ✔️   | ✔️            | ✔️
 
 ## <a name="calling-sdk-streaming-support"></a>Volání podpory streamování SDK
@@ -95,7 +104,7 @@ Následující časové limity se vztahují na sady SDK pro volání komunikačn
 
 Následující tabulka představuje sadu podporovaných prohlížečů, které jsou aktuálně k dispozici. Pokud není uvedeno jinak, podporujeme nejnovější tři verze prohlížeče.
 
-| Platforma                         | Chrome | Prohlížeče  | Hrana (chrom) | 
+| Platforma                         | Chrome | Prohlížeče  | Hrana (chrom) |
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -103,9 +112,9 @@ Následující tabulka představuje sadu podporovaných prohlížečů, které j
 | Windows * * *                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-* Podporované verze prohlížeče Safari 13.1 +, volání 1:1 nejsou v Safari podporována. 
+* Podporované verze prohlížeče Safari 13.1 +, volání 1:1 nejsou v Safari podporována.
 
-* * Prohlížeč Safari 14 +/macOS 11 + potřebný pro podporu odchozích videí. 
+* * Prohlížeč Safari 14 +/macOS 11 + potřebný pro podporu odchozích videí.
 
 Sdílení odchozí obrazovky se podporuje jenom na platformách desktopu (Windows, macOS a Linux) bez ohledu na verzi prohlížeče a nepodporuje se na žádné mobilní platformě (Android, iOS, iPad a tablety).
 

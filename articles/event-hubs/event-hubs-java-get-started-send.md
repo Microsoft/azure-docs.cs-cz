@@ -2,14 +2,14 @@
 title: Posílání a přijímání událostí z Azure Event Hubs pomocí Java (nejnovější)
 description: Tento článek popisuje postup vytvoření aplikace Java, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure-Messaging-eventhubs.
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 640f6c4dcb223e55e10f7cb5d7daaa44dbd41578
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bae0d4147fddf57398d494ca7f13c347f892e45e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172019"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448436"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-zasílání zpráv – eventhubs)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku Java **-Messaging-eventhubs** Java.
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > V tomto rychlém startu se používá nový balíček **Azure-Messaging-eventhubs** . Pro rychlý Start, který používá staré balíčky **Azure-eventhubs** a **Azure-eventhubs-EPH** , najdete informace v tématu [posílání a přijímání událostí pomocí Azure-eventhubs a Azure-eventhubs-EPH](event-hubs-java-get-started-send-legacy.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -38,97 +38,74 @@ Klientská knihovna Java pro Event Hubs je k dispozici v [centrálním úložiš
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-messaging-eventhubs</artifactId>
-    <version>5.0.1</version>
+    <version>5.6.0</version>
 </dependency>
 ```
+
+> [!NOTE]
+> Aktualizujte verzi na nejnovější verzi publikovanou do úložiště Maven. 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
 Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `Sender` a do třídy přidejte následující kód:
 
+> [!IMPORTANT]
+> Aktualizujte `<Event Hubs namespace connection string>` pomocí připojovacího řetězce k vašemu oboru názvů Event Hubs. Aktualizujte `<Event hub name>` název vašeho centra událostí v oboru názvů. 
+
 ```java
 import com.azure.messaging.eventhubs.*;
-import static java.nio.charset.StandardCharsets.UTF_8;
+import java.util.Arrays;
+import java.util.List;
 
 public class Sender {
-       public static void main(String[] args) {
+    private static final String connectionString = "<Event Hubs namespace connection string>";
+    private static final String eventHubName = "<Event hub name>";
+
+    public static void main(String[] args) {
+        publishEvents();
     }
 }
 ```
-
-### <a name="connection-string-and-event-hub"></a>Připojovací řetězec a centrum událostí
-Tento kód používá připojovací řetězec k oboru názvů Event Hubs a název centra událostí pro sestavení klienta Event Hubs. 
-
-```java
-String connectionString = "<CONNECTION STRING to EVENT HUBS NAMESPACE>";
-String eventHubName = "<EVENT HUB NAME>";
-```
-
-### <a name="create-an-event-hubs-producer-client"></a>Vytvoření klienta Event Hubsho producenta 
-Tento kód vytvoří objekt klienta producenta, který se používá k vytvoření nebo odeslání událostí do centra událostí. 
+### <a name="add-code-to-publish-events-to-the-event-hub"></a>Přidání kódu pro publikování událostí do centra událostí
+Přidejte metodu s názvem `publishEvents` do `Sender` třídy, jak je znázorněno níže. 
 
 ```java
-EventHubProducerClient producer = new EventHubClientBuilder()
-    .connectionString(connectionString, eventHubName)
-    .buildProducerClient();
-```
-
-### <a name="prepare-a-batch-of-events"></a>Příprava dávky událostí
-Tento kód připraví dávku událostí. 
-
-```java
-EventDataBatch batch = producer.createBatch();
-batch.tryAdd(new EventData("First event"));
-batch.tryAdd(new EventData("Second event"));
-batch.tryAdd(new EventData("Third event"));
-batch.tryAdd(new EventData("Fourth event"));
-batch.tryAdd(new EventData("Fifth event"));
-```
-
-### <a name="send-the-batch-of-events-to-the-event-hub"></a>Odeslání dávky událostí do centra událostí
-Tento kód pošle dávku událostí, které jste připravili v předchozím kroku, do centra událostí. Následující bloky kódu na operaci odeslání. 
-
-```java
-producer.send(batch);
-```
-
-### <a name="close-and-cleanup"></a>Zavřít a vyčistit
-Tento kód zavírá producenta. 
-
-```java
-producer.close();
-```
-### <a name="complete-code-to-send-events"></a>Dokončení kódu pro odesílání událostí
-Tady je kompletní kód pro odesílání událostí do centra událostí. 
-
-```java
-import com.azure.messaging.eventhubs.*;
-
-public class Sender {
-    public static void main(String[] args) {
-        final String connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
-        final String eventHubName = "EVENT HUB NAME";
-
-        // create a producer using the namespace connection string and event hub name
+    /**
+     * Code sample for publishing events.
+     * @throws IllegalArgumentException if the event data is bigger than max batch size.
+     */
+    public static void publishEvents() {
+        // create a producer client
         EventHubProducerClient producer = new EventHubClientBuilder()
             .connectionString(connectionString, eventHubName)
             .buildProducerClient();
 
-        // prepare a batch of events to send to the event hub    
-        EventDataBatch batch = producer.createBatch();
-        batch.tryAdd(new EventData("First event"));
-        batch.tryAdd(new EventData("Second event"));
-        batch.tryAdd(new EventData("Third event"));
-        batch.tryAdd(new EventData("Fourth event"));
-        batch.tryAdd(new EventData("Fifth event"));
+        // sample events in an array
+        List<EventData> allEvents = Arrays.asList(new EventData("Foo"), new EventData("Bar"));
+        
+        // create a batch
+        EventDataBatch eventDataBatch = producer.createBatch();
 
-        // send the batch of events to the event hub
-        producer.send(batch);
+        for (EventData eventData : allEvents) {
+            // try to add the event from the array to the batch
+            if (!eventDataBatch.tryAdd(eventData)) {
+                // if the batch is full, send it and then create a new batch
+                producer.send(eventDataBatch);
+                eventDataBatch = producer.createBatch();
 
-        // close the producer
+                // Try to add that event that couldn't fit before.
+                if (!eventDataBatch.tryAdd(eventData)) {
+                    throw new IllegalArgumentException("Event is too large for an empty batch. Max size: "
+                        + eventDataBatch.getMaxSizeInBytes());
+                }
+            }
+        }
+        // send the last batch of remaining events
+        if (eventDataBatch.getCount() > 0) {
+            producer.send(eventDataBatch);
+        }
         producer.close();
     }
-}
 ```
 
 Sestavte program a zajistěte, aby nedocházelo k chybám. Po spuštění programu přijímače budete tento program spouštět. 
@@ -164,12 +141,12 @@ Do souboru pom.xml přidejte následující závislosti.
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs</artifactId>
-        <version>5.1.1</version>
+        <version>5.6.0</version>
     </dependency>
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs-checkpointstore-blob</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1</version>
     </dependency>
 </dependencies>
 ```
@@ -186,28 +163,35 @@ Do souboru pom.xml přidejte následující závislosti.
     import com.azure.storage.blob.BlobContainerAsyncClient;
     import com.azure.storage.blob.BlobContainerClientBuilder;
     import java.util.function.Consumer;
-    import java.util.concurrent.TimeUnit;
     ```
 2. Vytvořte třídu s názvem `Receiver` a přidejte do třídy následující řetězcové proměnné. Nahraďte zástupné symboly správnými hodnotami. 
+
+    > [!IMPORTANT]
+    > Nahraďte zástupné symboly správnými hodnotami.
+    > - `<Event Hubs namespace connection string>` pomocí připojovacího řetězce k vašemu oboru názvů Event Hubs. Aktualizace 
+    > - `<Event hub name>` názvem vašeho centra událostí v oboru názvů. 
+    > - `<Storage connection string>` pomocí připojovacího řetězce k vašemu účtu úložiště Azure. 
+    > - `<Storage container name>` názvem svého kontejneru v úložišti objektů BLOB v Azure. 
+
     ```java
-    private static final String EH_NAMESPACE_CONNECTION_STRING = "<EVENT HUBS NAMESPACE CONNECTION STRING>";
-    private static final String eventHubName = "<EVENT HUB NAME>";
-    private static final String STORAGE_CONNECTION_STRING = "<AZURE STORAGE CONNECTION STRING>";
-    private static final String STORAGE_CONTAINER_NAME = "<AZURE STORAGE CONTAINER NAME>";
+    private static final String connectionString = "<Event Hubs namespace connection string>";
+    private static final String eventHubName = "<Event hub name>";
+    private static final String storageConnectionString = "<Storage connection string>";
+    private static final String storageContainerName = "<Storage container name>";
     ```
-3. `main`Do třídy přidejte následující metodu. 
+1. `main`Do třídy přidejte následující metodu. 
 
     ```java
     public static void main(String[] args) throws Exception {
         // Create a blob container client that you use later to build an event processor client to receive and process events
         BlobContainerAsyncClient blobContainerAsyncClient = new BlobContainerClientBuilder()
-            .connectionString(STORAGE_CONNECTION_STRING) 
-            .containerName(STORAGE_CONTAINER_NAME) 
+            .connectionString(storageConnectionString) 
+            .containerName(storageContainerName) 
             .buildAsyncClient();
     
         // Create a builder object that you will use later to build an event processor client to receive and process events and errors.
         EventProcessorClientBuilder eventProcessorClientBuilder = new EventProcessorClientBuilder()
-            .connectionString(EH_NAMESPACE_CONNECTION_STRING, eventHubName) 
+            .connectionString(connectionString, eventHubName) 
             .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
             .processEvent(PARTITION_PROCESSOR) 
             .processError(ERROR_HANDLER) 
@@ -247,80 +231,31 @@ Do souboru pom.xml přidejte následující závislosti.
             errorContext.getThrowable());
     };    
     ```
-3. Úplný kód by měl vypadat takto: 
-
-    ```java
-
-    import com.azure.messaging.eventhubs.EventHubClientBuilder;
-    import com.azure.messaging.eventhubs.EventProcessorClient;
-    import com.azure.messaging.eventhubs.EventProcessorClientBuilder;
-    import com.azure.messaging.eventhubs.checkpointstore.blob.BlobCheckpointStore;
-    import com.azure.messaging.eventhubs.models.ErrorContext;
-    import com.azure.messaging.eventhubs.models.EventContext;
-    import com.azure.storage.blob.BlobContainerAsyncClient;
-    import com.azure.storage.blob.BlobContainerClientBuilder;
-    import java.util.function.Consumer;
-    import java.util.concurrent.TimeUnit;
-    
-    public class Receiver {
-        
-        private static final String EH_NAMESPACE_CONNECTION_STRING = "<EVENT HUBS NAMESPACE CONNECTION STRING>";
-        private static final String eventHubName = "<EVENT HUB NAME>";
-        private static final String STORAGE_CONNECTION_STRING = "<AZURE STORAGE CONNECTION STRING>";
-        private static final String STORAGE_CONTAINER_NAME = "<AZURE STORAGE CONTAINER NAME>";
-    
-        public static final Consumer<EventContext> PARTITION_PROCESSOR = eventContext -> {
-        System.out.printf("Processing event from partition %s with sequence number %d with body: %s %n", 
-                eventContext.getPartitionContext().getPartitionId(), eventContext.getEventData().getSequenceNumber(), eventContext.getEventData().getBodyAsString());
-
-            if (eventContext.getEventData().getSequenceNumber() % 10 == 0) {
-                eventContext.updateCheckpoint();
-            }
-        };
-        
-        public static final Consumer<ErrorContext> ERROR_HANDLER = errorContext -> {
-            System.out.printf("Error occurred in partition processor for partition %s, %s.%n",
-                errorContext.getPartitionContext().getPartitionId(),
-                errorContext.getThrowable());
-        };
-        
-        public static void main(String[] args) throws Exception {
-            BlobContainerAsyncClient blobContainerAsyncClient = new BlobContainerClientBuilder()
-                .connectionString(STORAGE_CONNECTION_STRING)
-                .containerName(STORAGE_CONTAINER_NAME)
-                .buildAsyncClient();
-    
-            EventProcessorClientBuilder eventProcessorClientBuilder = new EventProcessorClientBuilder()
-                .connectionString(EH_NAMESPACE_CONNECTION_STRING, eventHubName)
-                .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
-                .processEvent(PARTITION_PROCESSOR)
-                .processError(ERROR_HANDLER)
-                .checkpointStore(new BlobCheckpointStore(blobContainerAsyncClient));
-    
-            EventProcessorClient eventProcessorClient = eventProcessorClientBuilder.buildEventProcessorClient();
-
-            System.out.println("Starting event processor");
-            eventProcessorClient.start();
-        
-            System.out.println("Press enter to stop.");
-            System.in.read();
-        
-            System.out.println("Stopping event processor");
-            eventProcessorClient.stop();
-            System.out.println("Event processor stopped.");
-        
-            System.out.println("Exiting process");
-        }
-        
-    }
-    ```
 3. Sestavte program a zajistěte, aby nedocházelo k chybám. 
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 1. Nejdřív spusťte aplikaci **příjemce** .
 1. Pak spusťte aplikaci **sender** . 
 1. V okně **přijímač** aplikace potvrďte, že vidíte události, které byly publikovány aplikací odesílatele.
+
+    ```cmd
+    Starting event processor
+    Press enter to stop.
+    Processing event from partition 0 with sequence number 331 with body: Foo 
+    Processing event from partition 0 with sequence number 332 with body: Bar 
+    ```
 1. Stisknutím klávesy **ENTER** v okně přijímače aplikace zastavte aplikaci. 
+
+    ```cmd
+    Starting event processor
+    Press enter to stop.
+    Processing event from partition 0 with sequence number 331 with body: Foo 
+    Processing event from partition 0 with sequence number 332 with body: Bar 
+    
+    Stopping event processor
+    Event processor stopped.
+    Exiting process
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující ukázky na GitHubu:

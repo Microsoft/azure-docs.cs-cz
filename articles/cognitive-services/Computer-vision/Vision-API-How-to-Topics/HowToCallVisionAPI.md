@@ -1,9 +1,9 @@
 ---
-title: Volání rozhraní API pro počítačové zpracování obrazu
+title: Volání rozhraní API pro analýzu obrázků
 titleSuffix: Azure Cognitive Services
-description: Naučte se volat rozhraní API pro počítačové zpracování obrazu pomocí REST API ve službě Azure Cognitive Services.
+description: Naučte se volat rozhraní API pro analýzu obrázků a nakonfigurovat jeho chování.
 services: cognitive-services
-author: KellyDF
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
@@ -11,144 +11,71 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: abb367b64da0811a1ff46efe60b60485375f809f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 3f9a6afe3202df40e26332c3a8c91b8c3eca8a32
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486059"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012264"
 ---
-# <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
+# <a name="call-the-image-analysis-api"></a>Volání rozhraní API pro analýzu obrázků
 
-Tento článek ukazuje, jak volat rozhraní API pro počítačové zpracování obrazu pomocí REST API. Ukázky jsou napsány v jazyce C# pomocí klientské knihovny rozhraní API pro počítačové zpracování obrazu a jako volání HTTP POST nebo GET. Článek se zaměřuje na:
+Tento článek ukazuje, jak volat rozhraní API pro analýzu obrázků a vracet informace o vizuálních funkcích obrázku.
 
-- Získání značek, popisu a kategorií
-- Získání informací specifických pro doménu nebo "celebrit"
-
-Příklady v tomto článku ukazují následující funkce:
-
-* Analýza obrázku pro vrácení pole značek a popisu
-* Analýza obrázku pomocí modelu specifického pro doménu (konkrétně modelu "celebrit"), který vrátí odpovídající výsledek ve formátu JSON
-
-Tyto funkce nabízí následující možnosti:
-
-- **Možnost 1**: analýza vymezená v oboru – analýza pouze zadaného modelu
-- **Možnost 2**: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí [taxonomie 86-Categories](../Category-Taxonomy.md) .
-
-## <a name="prerequisites"></a>Požadavky
-
-* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
-    * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
-    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* Adresa URL obrázku nebo cesta k místně uložené imagi
-* Podporované metody zadávání: nezpracovaný binární obrázek ve formě aplikace, oktetového datového proudu nebo adresy URL obrázku
-* Podporované formáty souborů obrázků: JPEG, PNG, GIF a BMP
-* Velikost souboru obrázku: 4 MB nebo méně
-* Rozměry obrázku: 50 &times; 50 pixelů nebo větší
+Tato příručka předpokládá, že jste už <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořili prostředek počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek počítačové zpracování obrazu </a> a získali klíč předplatného a adresu URL koncového bodu. Pokud jste to ještě neudělali, začněte pomocí [rychlého](../quickstarts-sdk/image-analysis-client-library.md) startu.
   
-## <a name="authorize-the-api-call"></a>Autorizace volání rozhraní API
+## <a name="submit-data-to-the-service"></a>Odeslat data do služby
 
-Ke každému volání rozhraní API pro počítačové zpracování obrazu potřebujete klíč předplatného. Tento klíč musí být buď předán parametrem řetězce dotazu, nebo zadán v hlavičce požadavku.
+Do rozhraní API pro analýzu můžete odeslat buď místní bitovou kopii, nebo vzdálenou bitovou kopii. V části místní umístěte binární data obrázku do textu požadavku HTTP. Pro vzdálené úložiště zadáte adresu URL obrázku tak, že naformátujete text žádosti, třeba takto: `{"url":"http://example.com/images/test.jpg"}` .
 
-Klíč předplatného můžete předat některým z následujících způsobů:
+## <a name="determine-how-to-process-the-data"></a>Určení způsobu zpracování dat
 
-* Předejte ho pomocí řetězce dotazu, jako v tomto příkladu rozhraní API pro počítačové zpracování obrazu:
+###  <a name="select-visual-features"></a>Vybrat funkce vizuálu
 
-  ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
-  ```
+[Rozhraní API pro analýzu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) umožňuje přístup ke všem funkcím pro analýzu imagí služby. Musíte určit, které funkce chcete použít, nastavením parametrů dotazu URL. Parametr může mít více hodnot oddělených čárkami. Každá zadaná funkce bude vyžadovat další dobu výpočtu, takže určete pouze to, co potřebujete.
 
-* Zadejte v hlavičce požadavku HTTP:
+|Parametr adresy URL | Hodnota | Popis|
+|---|---|--|
+|`visualFeatures`|`Adult` | zjišťuje, jestli je obrázek pornografickýý v podstatě (znázorňuje nahotu nebo sex), nebo je gorie (znázorňuje extrémní násilí nebo krev). Zjistil se také zřejmý sugestivní obsah (neboli obsah pikantní).|
+||`Brands` | detekuje různé značky v rámci obrázku, včetně přibližného umístění. Argument značky je k dispozici pouze v angličtině.|
+||`Categories` | kategorizuje obsah obrázků podle taxonomie definované v dokumentaci. Toto je výchozí hodnota `visualFeatures` .|
+||`Color` | Určuje barvu zvýraznění, dominantní barvu a, zda je obrázek černý&bílá.|
+||`Description` | popisuje obsah obrázku s úplnou větou v podporovaných jazycích.|
+||`Faces` | zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygenerujte souřadnice, pohlaví a stáří.|
+||`ImageType` | detekuje, zda je obrázek klipartem nebo kreslením čáry.|
+||`Objects` | detekuje různé objekty v rámci obrázku, včetně přibližného umístění. Argument Objects je k dispozici pouze v angličtině.|
+||`Tags` | Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.|
+|`details`| `Celebrities` | Identifikuje celebrit, pokud je v imagi zjištěný.|
+||`Landmarks` |Identifikuje orientačních bodů, pokud jsou v imagi zjištěny.|
 
-  ```
-  ocp-apim-subscription-key: <Your subscription key>
-  ```
+Vyplněná adresa URL může vypadat takto:
 
-* Při použití klientské knihovny předejte klíč prostřednictvím konstruktoru třídy ComputerVisionClient a určete oblast ve vlastnosti klienta:
+`https://{endpoint}/vision/v2.1/analyze?visualFeatures=Description,Tags&details=Celebrities`
 
-    ```
-    var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
-    {
-        Endpoint = "https://westus.api.cognitive.microsoft.com"
-    }
-    ```
+### <a name="specify-languages"></a>Zadat jazyky
 
-## <a name="upload-an-image-to-the-computer-vision-api-service"></a>Nahrajte obrázek do služby rozhraní API pro počítačové zpracování obrazu.
+Můžete také zadat jazyk vrácených dat. Následující parametr dotazu adresy URL určuje jazyk. Výchozí hodnota je `en`.
 
-Základní způsob, jak provést rozhraní API pro počítačové zpracování obrazu volání, je nahrání obrázku přímo do návratových značek, popisu a celebrit. Provedete to tak, že v těle HTTP odešlete žádost "POST" s binárním obrázkem spolu s daty čtenými z image. Metoda upload je stejná pro všechna rozhraní API pro počítačové zpracování obrazu volání. Jediným rozdílem jsou parametry dotazu, které zadáte. 
+|Parametr adresy URL | Hodnota | Popis|
+|---|---|--|
+|`language`|`en` | Angličtina|
+||`es` | Španělština|
+||`ja` | Japonština|
+||`pt` | Portugalština|
+||`zh` | Zjednodušená čínština|
 
-Pro zadanou bitovou kopii získáte pomocí kterékoli z následujících možností značky a popis:
+Vyplněná adresa URL může vypadat takto:
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Možnost 1: získání seznamu značek a popisu
+`https://{endpoint}/vision/v2.1/analyze?visualFeatures=Description,Tags&details=Celebrities&language=en`
 
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
-```
+> [!NOTE]
+> **Vymezená volání rozhraní API**
+>
+> Některé funkce v analýze obrázků lze vyvolat přímo a také prostřednictvím volání funkce analyzovat rozhraní API. Můžete například provést vymezenou analýzu pouze značek obrázku vytvořením žádosti na `https://{endpoint}/vision/v3.2-preview.3/tag` . Další funkce, které je možné volat samostatně, najdete v [referenční dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) .
 
-```csharp
-using System.IO;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+## <a name="get-results-from-the-service"></a>Získat výsledky ze služby
 
-ImageAnalysis imageAnalysis;
-var features = new VisualFeatureTypes[] { VisualFeatureTypes.Tags, VisualFeatureTypes.Description };
-
-using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
-{
-  imageAnalysis = await visionClient.AnalyzeImageInStreamAsync(fs, features);
-}
-```
-
-### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Možnost 2: získání seznamu pouze značek nebo pouze popisu
-
-Pouze pro značky spusťte:
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
-var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
-```
-
-Pouze v případě popisu spusťte:
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
-using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
-{
-  imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
-}
-```
-
-## <a name="get-domain-specific-analysis-celebrities"></a>Získat analýzu specifickou pro doménu (celebrit)
-
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Možnost 1: analýza vymezená v oboru – analýza pouze zadaného modelu
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
-var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
-```
-
-U této možnosti jsou všechny ostatní parametry dotazu (visualFeatures, details) neplatné. K zobrazení všech podporovaných modelů použijte:
-
-```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
-var models = await visionClient.ListModelsAsync();
-```
-
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Možnost 2: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí taxonomie 86-Categories.
-
-U aplikací, u kterých chcete získat obecnou analýzu obrázků kromě podrobností z jednoho nebo více modelů specifických pro doménu, můžete rozhraní v1 API rozšířit pomocí parametru dotazu modely.
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
-```
-
-Při vyvolání této metody nejprve zavolejte klasifikátor [kategorie 86](../Category-Taxonomy.md) . Pokud některá z kategorií odpovídá známému nebo odpovídajícímu modelu, dojde k druhému volání třídění. Pokud například "Details = All" nebo "Details" obsahuje "celebrit", zavoláte model celebrit po volání klasifikátoru kategorie 86. Výsledek zahrnuje kategorii osoba. Na rozdíl od možnosti 1 Tato metoda zvyšuje latenci pro uživatele, kteří mají zájem o celebrit.
-
-V tomto případě se všechny parametry dotazu v1 chovají stejným způsobem. Pokud nezadáte visualFeatures = categories, je implicitně povolená.
-
-## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Načíst a pochopit výstup JSON pro analýzu
-
-Tady je příklad:
+Služba vrátí `200` odpověď HTTP a tělo obsahuje vrácená data ve formě řetězce JSON. Následuje příklad odpovědi JSON.
 
 ```json
 {  
@@ -177,81 +104,39 @@ Tady je příklad:
 }
 ```
 
+V následující tabulce najdete vysvětlení polí v tomto příkladu:
+
 Pole | Typ | Content
 ------|------|------|
 Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
 tags[].Name | `string`    | Klíčové slovo z třídění značek.
 tags[].Score    | `number`    | Hodnocení spolehlivosti mezi 0 a 1.
-description     | `object`    | Objekt nejvyšší úrovně pro popis.
-description.tags[] |    `string`    | Seznam značek.  Pokud není dostatečná důvěra v možnosti vytvoření titulku, mohou být značky jedinou informací, které jsou k dispozici volajícímu.
+description     | `object`    | Objekt nejvyšší úrovně pro popis obrázku
+description.tags[] |    `string`    | Seznam značek. Pokud není dostatečná důvěra v možnosti vytvoření titulku, mohou být značky jedinou informací, které jsou k dispozici volajícímu.
 description.captions[].text    | `string`    | Výraz, který popisuje obrázek.
 description.captions[].confidence    | `number`    | Skóre spolehlivosti fráze.
 
-## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Načtení a pochopení výstupu JSON pro modely specifické pro doménu
+### <a name="error-codes"></a>Kódy chyb
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Možnost 1: analýza vymezená v oboru – analýza pouze zadaného modelu
+Podívejte se na následující seznam možných chyb a jejich příčiny:
 
-Výstupem je pole značek, jak je znázorněno v následujícím příkladu:
-
-```json
-{  
-  "result":[  
-    {  
-      "name":"golden retriever",
-      "score":0.98
-    },
-    {  
-      "name":"Labrador retriever",
-      "score":0.78
-    }
-  ]
-}
-```
-
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Možnost 2: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí taxonomie "86-Categories".
-
-U modelů specifických pro doménu pomocí možnosti 2 (vylepšená analýza) je typ vrácené kategorie rozšířený, jak je znázorněno v následujícím příkladu:
-
-```json
-{  
-  "requestId":"87e44580-925a-49c8-b661-d1c54d1b83b5",
-  "metadata":{  
-    "width":640,
-    "height":430,
-    "format":"Jpeg"
-  },
-  "result":{  
-    "celebrities":[  
-      {  
-        "name":"Richard Nixon",
-        "faceRectangle":{  
-          "left":107,
-          "top":98,
-          "width":165,
-          "height":165
-        },
-        "confidence":0.9999827
-      }
-    ]
-  }
-}
-```
-
-Pole kategorie je seznam jednoho nebo více [kategorií 86](../Category-Taxonomy.md) v původní taxonomii. Kategorie, které končí podtržítkem, odpovídají této kategorii a jejím dětem (například "people_" nebo "people_group" pro model celebrit).
-
-Pole    | Typ    | Content
-------|------|------|
-categories | `object`    | Objekt nejvyšší úrovně.
-categories[].name     | `string`    | Název ze seznamu taxonomie 86-Category.
-categories[].score    | `number`    | Hodnocení spolehlivosti mezi 0 a 1.
-categories[].detail     | `object?`      | Volitelné Objekt podrobností.
-
-Pokud se shoduje více kategorií (například klasifikátor 86 kategorie vrací skóre pro jak "people_", tak "people_young", "při modelu = celebrit) jsou podrobnosti v tomto příkladu připojeny k nejobecnější shodě úrovně (" people_, ").
-
-## <a name="error-responses"></a>Chybové odpovědi
-
-Tyto chyby jsou stejné jako v Vision. Analyzujte s další chybou NotSupportedModel (HTTP 400), která se může vrátit ve scénářích možnosti 1 a možnost 2. V případě možnosti 2 (rozšířená analýza), pokud některý z modelů, které jsou zadány v podrobnostech, rozhraní API vrátí NotSupportedModel, i když je jeden nebo více z nich platný. Chcete-li zjistit, jaké modely jsou podporovány, můžete volat listModels.
+* 400
+    * InvalidImageUrl-adresa URL obrázku je chybně naformátovaná nebo není přístupná.
+    * InvalidImageFormat – vstupní data nejsou platným obrázkem.
+    * InvalidImageSize-vstupní obrázek je příliš velký.
+    * Typ funkce zadaný v NotSupportedVisualFeature není platný.
+    * NotSupportedImage – Nepodporovaná image, například podřízená pornografie.
+    * InvalidDetails – Nepodporovaná `detail` hodnota parametru
+    * NotSupportedLanguage – požadovaná operace není v zadaném jazyce podporována.
+    * BadArgument – chybová zpráva uvádí další podrobnosti.
+* 415 – chyba typu média není podporována. Typ Content-Type není v povolených typech:
+    * Pro adresu URL obrázku: typ obsahu by měl být Application/JSON.
+    * Pro binární data obrázku: typ obsahu by měl být Application/oktet-Stream nebo multipart/form-data.
+* 500
+    * FailedToProcess
+    * Časový limit – vypršel časový limit zpracování bitové kopie.
+    * InternalServerError
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete použít REST API, přejděte k [referenčním informacím k rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b).
+Pokud si chcete vyzkoušet REST API, přečtěte si [referenční informace k rozhraní API pro analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b).

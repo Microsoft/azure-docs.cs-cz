@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071677"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109845"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -94,7 +94,11 @@ Následující diagram znázorňuje, kde se digitální vlákna Azure nachází 
 
 ## <a name="service-limits"></a>Omezení služby
 
-Seznam omezení digitálních vláken Azure najdete v tématu [*omezení služby digitálních vláken Azure*](reference-service-limits.md).
+Další informace o **omezeních služeb** pro digitální vlákna Azure najdete tady: [omezení služby digitálních vláken Azure](reference-service-limits.md). To může být užitečné při práci se službou pro pochopení funkčnosti služby a omezení rychlosti a omezení, která je v případě potřeby možné upravit.
+
+## <a name="terminology"></a>Terminologie
+
+Seznam **běžných termínů IoT** a jejich použití můžete zobrazit v rámci služeb Azure IoT, včetně digitálních vláken Azure, tady: [Glosář Azure IoT](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json). To může být užitečný odkaz, který vám umožní začít s digitálními událostmi Azure a sestavovat řešení IoT.
 
 ## <a name="next-steps"></a>Další kroky
 

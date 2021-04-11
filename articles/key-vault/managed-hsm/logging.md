@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211766"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109233"
 ---
 # <a name="managed-hsm-logging"></a>Spravované protokolování HSM 
 
@@ -30,7 +30,7 @@ Tento kurz vám umožní začít se spravovaným protokolováním HSM. Vytvoří
 > [!NOTE]
 > Tento kurz neobsahuje pokyny, jak vytvořit spravované HSM nebo klíče. Tento článek poskytuje pokyny pro rozhraní příkazového řádku Azure CLI pro aktualizaci protokolování diagnostiky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 
@@ -74,9 +74,10 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 Co je protokolováno:
 
 * Všechny požadavky ověřených REST API, včetně neúspěšných žádostí v důsledku oprávnění přístupu, systémových chyb nebo chybných požadavků.
-* Operace samotného spravovaného HSM, včetně vytváření, odstraňování a aktualizace atributů, jako jsou například značky.
+* Spravované operace roviny samotného spravovaného prostředku HSM, včetně vytváření, odstraňování a aktualizace atributů, jako jsou například značky.
 * Operace související s doménou zabezpečení, jako je například inicializace & stažení, inicializace obnovení, nahrání
 * Úplné operace zálohování HSM, obnovení a selektivního obnovení
+* Operace správy rolí, jako je vytvoření, zobrazení/odstranění přiřazení rolí a vytvoření/zobrazení/odstranění definic vlastních rolí
 * Operace s klíči, včetně:
   * Vytváření, úpravy nebo odstraňování klíčů.
   * Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů a výpis klíčů.
@@ -121,30 +122,13 @@ Jednotlivé objekty blob jsou uložené jako text formátované jako JSON. Pojď
 ]
 ```
 
-V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Description |
-| --- | --- |
-| **TenantId** | ID tenanta Azure Active Directory předplatného, ve kterém se vytvořil spravovaný modul HSM |
-| **interval** |Datum a čas ve standardu UTC. |
-| **Prostředku** |ID prostředku Azure Resource Manager. U spravovaných protokolů HSM se jedná vždy o spravované ID prostředku HSM. |
-| **operationName** |Název operace, jak popisuje následující tabulka. |
-| **operationVersion** |Verze REST API požadovaná klientem |
-| **kategorií** |Typ výsledku. U spravovaných protokolů HSM je **AuditEvent** jedinou dostupnou hodnotou. |
-| **Hodnotu** |Výsledek žádosti o REST API |
-| **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**)|
-| **resultSignature** |Stav HTTP. |
-| **resultDescription** |Další popis výsledku, je-li k dispozici. |
-| **Trvání v MS** |Doba trvání obsloužení požadavku REST API v milisekundách. Nezahrnuje latenci sítě, takže čas naměřený na straně klienta se může lišit. |
-| **callerIpAddress** |IP adresa klienta, který odeslal požadavek. |
-| **ID** |Nepovinný identifikátor GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby. |
-| **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Většinou se jedná o "uživatele" a "instanční objekt". |
-| **requestUri** | Identifikátor URI žádosti o REST API |
-| **Informace CLIENTINFO.** | 
 
 ## <a name="use-azure-monitor-logs"></a>Použití protokolů Azure Monitoru
 
-K revizi spravovaných protokolů HSM **AuditEvent** můžete použít řešení Key Vault v protokolech Azure monitor. V protokolech Azure Monitor použijete dotazy protokolu k analýze dat a získání informací, které potřebujete. 
+K revizi spravovaných protokolů HSM **AuditEvent** můžete použít řešení Key Vault v protokolech Azure monitor. V protokolech Azure Monitor použijete dotazy protokolu k analýze dat a získání informací, které potřebujete.
+
+Další informace, včetně postupu nastavení, najdete [v tématu Azure Key Vault v Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
