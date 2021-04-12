@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: d5af0cc4eb72a2db850e19e47ed11cd9f6f4536e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061855"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226307"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuální síťové zařízení ve službě Azure Virtual WAN hub (Preview)
 
 Azure Virtual WAN spolupracuje se síťovými partnery a vytváří automatizaci, která usnadňuje připojení místního zařízení (CPE) zákazníka ke službě Azure VPN Gateway ve virtuálním centru. Azure pracuje s vybranými síťovými partnery, aby zákazníkům umožnila nasadit síťové virtuální zařízení (síťové virtuální zařízení) třetí strany přímo do virtuálního centra. To umožňuje zákazníkům, kteří se chtějí připojit ke své pobočce, na stejném síťové virtuální ZAŘÍZENÍi ve virtuálním centru, aby mohli využívat výhod všech komplexních funkcí SD-WAN.
 
-Sítě Barracuda a Cisco Systems jsou prvními partnery, kteří poskytují síťová virtuální zařízení, které se dají nasadit přímo do virtuálního centra sítě WAN.  Přečtěte si článek [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) and [Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) pro příslušnou dokumentaci k produktu. Azure pracuje s většími partnery, takže očekává, že budou sledovat další nabídky.
+Sítě Barracuda a Cisco Systems jsou prvními partnery, kteří poskytují síťová virtuální zařízení, které se dají nasadit přímo do virtuálního centra sítě WAN.  Přečtěte si článek [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan), [Cisco Cloud OnRamp pro multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) a [VMware SD-WAN](https://kb.vmware.com/s/article/82746) pro příslušnou dokumentaci k produktu. Azure pracuje s většími partnery, takže očekává, že budou sledovat další nabídky.
 
 > [!NOTE]
 > Do virtuálního centra WAN se můžou nasadit jenom síťové virtuální zařízení nabídky, které se dají nasadit do virtuálního centra WAN. Nejde je nasadit do libovolné virtuální sítě v Azure.
@@ -81,7 +81,7 @@ SÍŤOVÉ virtuální zařízení ve virtuálním rozbočovači je k dispozici p
 | Jižní Amerika | Brazílie – jih |
 | Evropa | Západní Evropa Velká Británie – jih|
 |  Střední východ | Spojené arabské emiráty sever |
-| Asie | Japonsko – východ |
+| Asie | Japan East |
 | Austrálie | Austrálie – východ |
 
 ## <a name="faq"></a>Časté otázky

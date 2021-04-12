@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed8007c81479c73e4503d74af4c4043e503baf2b
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584226"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120142"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 
@@ -72,10 +72,10 @@ Konkrétně všechny obory Microsoft Graph reprezentují určitou datovou sadu, 
 Například pokud aplikace požaduje následující obory Microsoft Graph,
 
 ```
-scopes="Bookings.Read.All Mail.Read"
+scopes="ChannelMessages.Read.All Mail.Read"
 ```
 
-Aplikace může očekávat, že jejich uživatelé splní všechny zásady nastavené na rezervace a Exchange. Některé obory mohou být namapovány na více datových sad, pokud udělí přístup.
+Aplikace může očekávat, že jejich uživatelé budou plnit všechny zásady nastavené na týmech a na Exchangi. Některé obory mohou být namapovány na více datových sad, pokud udělí přístup.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Dodržování zásad podmíněného přístupu
 
@@ -91,7 +91,7 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](../fundamentals/active-directory-whatis.md). Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu.
 

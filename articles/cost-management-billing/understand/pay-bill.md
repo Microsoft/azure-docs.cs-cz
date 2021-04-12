@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: ecc5c8ebef0d2add365d128e11caedaa173d9d63
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: f93933e4a6109eef4f9a06b61c7ea06d9fbd7d60
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232139"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121842"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Postup placení vyúčtování služeb Microsoft Azure
 
@@ -59,18 +59,6 @@ Abyste mohli platit faktury na webu Azure Portal, musíte mít správná [opráv
 1. Po výběru způsobu platby vyberte **Zaplatit**.
 
 Stav faktury se během 24 hodin změní na *uhrazeno*.
-
-## <a name="pay-now-for-customers-in-india"></a>Plaťte teď pro zákazníky v Indii.
-
-Rezervovaná banka pro Indii vydala [Nová nařízení](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12002&Mode=0) , která vstoupí v platnost 1. dubna 2021. Po tomto datu mohou banky v Indii zahájit odmítnutí automatických opakovaných plateb a platby budou muset být provedeny ručně v Azure Portal.
-
-Pokud vaše banka odmítne automatickou opakovanou platbu, pošleme vám e-mail s pokyny, jak pokračovat.
-
-Od 1. dubna 2021 můžete uhradit zbývající zůstatek kdykoli pomocí následujících kroků: 
-
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce účtu.
-1. Vyhledejte položku **Správa nákladů a fakturace**.
-1. Na stránce Přehled vyberte tlačítko **platit nyní** . (Pokud nevidíte tlačítko **platit nyní** , nemáte zůstatek k dispozici.)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

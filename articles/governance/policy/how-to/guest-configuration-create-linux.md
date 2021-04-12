@@ -1,15 +1,15 @@
 ---
 title: Postup vytváření zásad konfigurace hosta pro Linux
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Linux.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d356960987ecfe9a1e1858a28b93060dbf4aa634
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99525343"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096559"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -90,9 +90,7 @@ DSC slouží jako obálka pro nespecifikované informace pro standardizaci způs
 
 Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Azure Resource Manager (šablona ARM) musí být stejné.
 
-Rutiny prostředí PowerShell pomáhají při vytváření balíčku.
-Není požadována žádná složka kořenové úrovně ani složka verze.
-Formát balíčku musí být soubor. zip. a při nekomprimaci nemůže překročit celkovou velikost 100 MB.
+Rutiny prostředí PowerShell pomáhají při vytváření balíčku. Není požadována žádná složka kořenové úrovně ani složka verze. Formát balíčku musí být soubor. zip. a při nekomprimaci nemůže překročit celkovou velikost 100 MB.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
 
@@ -211,7 +209,7 @@ Parametry `Publish-GuestConfigurationPackage` rutiny:
 - **Cesta**: umístění balíčku, který se má publikovat
 - **ResourceGroupName**: název skupiny prostředků, ve které se nachází účet úložiště.
 - **StorageAccountName**: název účtu úložiště, do kterého se má balíček publikovat
-- **StorageContainerName**: (výchozí: *guestconfiguration*) název kontejneru úložiště v účtu úložiště
+- **StorageContainerName**: (výchozí: _guestconfiguration_) název kontejneru úložiště v účtu úložiště
 - **Force (vynutit**): přepsat existující balíček v účtu úložiště se stejným názvem
 
 Následující příklad publikuje balíček do kontejneru úložiště s názvem guestconfiguration.
@@ -277,7 +275,7 @@ V rámci zásad vytvořených v Azure je posledním krokem přiřazení definice
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Použití parametrů ve vlastních zásadách konfigurace hostů
 
-Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a neovlivňují způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
+Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a nemění způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
 
 S neurčenými specifikacemi jsou parametry obvykle zpracovávány jako vstup buď za běhu, nebo jako kód pomocí atributů. Konfigurace hosta zaznamená tento proces, takže zadání lze zadat při přiřazení zásady. Soubor atributů se automaticky vytvoří v rámci počítače. Nemusíte vytvářet a přidávat soubory do projektu. Existují dva kroky pro přidání parametrů do projektu auditu systému Linux.
 
@@ -350,8 +348,7 @@ Pokud chcete vydat aktualizaci zásady, proveďte změnu pro konfigurační bal�
 > [!NOTE]
 > `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
 
-Nejprve `New-GuestConfigurationPackage` Zadejte název balíčku, který bude v předchozích verzích jedinečný. Do názvu můžete zahrnout číslo verze, například `PackageName_1.0.0` .
-Číslo v tomto příkladu se používá jenom k tomu, aby balíček byl jedinečný, a neměl by určovat, že by se měl balíček považovat za novější nebo starší než jiné balíčky.
+Nejprve `New-GuestConfigurationPackage` Zadejte název balíčku, který bude v předchozích verzích jedinečný. Do názvu můžete zahrnout číslo verze, například `PackageName_1.0.0` . Číslo v tomto příkladu se používá jenom k tomu, aby balíček byl jedinečný, a neměl by určovat, že by se měl balíček považovat za novější nebo starší než jiné balíčky.
 
 Potom aktualizujte parametry používané pomocí `New-GuestConfigurationPolicy` rutiny podle každé z následujících vysvětlení.
 

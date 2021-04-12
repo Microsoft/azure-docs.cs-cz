@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: ''
 ms.date: 03/29/2021
-ms.openlocfilehash: aac50f085d3ad63fb0183c19cf7d9aaa679e3d04
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 44bfbaa8b18ebeab3b74bc696a16fc4cfb6c08ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111706"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220930"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>Přehled spuštění/zastavení virtuálních počítačů v2 (Preview)
 
@@ -28,7 +28,7 @@ Funkce koncového bodu HTTP triggeru je vytvořena tak, aby podporovala scéná�
 
 |Name |Trigger |Description |
 |-----|--------|------------|
-|AlertAvailabilityTest |Časovač |Tato funkce provádí test dostupnosti, aby bylo zajištěno, že je primární funkce **AutoStopVM** vždy k dispozici.|
+|AlertAvailabilityTest |Časovač |Tato funkce provede test dostupnosti, aby bylo zajištěno, že je primární funkce **AutoStopVM** vždy k dispozici.|
 |Autostop |HTTP |Tato funkce podporuje scénář **autostop** , což je funkce vstupního bodu, která je volána z aplikace logiky.|
 |AutoStopAvailabilityTest |Časovač |Tato funkce provede test dostupnosti, aby bylo zajištěno, že je primární funkce automaticky **zastavena** vždy k dispozici.|
 |AutoStopVM |HTTP |Tato funkce se automaticky aktivuje výstrahou virtuálního počítače, když je podmínka výstrahy pravdivá.|
@@ -95,7 +95,7 @@ Zadání seznamu virtuálních počítačů lze použít v případě, že potř
 
 - Vašemu účtu bylo udělené oprávnění [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) v předplatném.
 
-- Spuštění/zastavení virtuálních počítačů v2 (Preview) je k dispozici ve všech globálních oblastech Azure, které jsou uvedeny v seznamu [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) pro Azure Functions. V případě Azure Governmentho cloudu je k dispozici pouze v oblasti) – Virginia pro státní správu USA.
+- Spuštění/zastavení virtuálních počítačů v2 (Preview) je k dispozici ve všech oblastech cloudu Azure Global a USA, které jsou uvedeny v seznamu [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) pro Azure Functions.
 
 ## <a name="next-steps"></a>Další kroky
 

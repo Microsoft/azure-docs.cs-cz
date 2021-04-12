@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: dfeb99fdbd5cf2b0784982b385d46c3a16901ec8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Kurz: Azure Active Directory integrace s Mozy Enterprise
@@ -120,13 +120,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Mozy Ent
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-mozy-enterprise-single-sign-on"></a>Konfigurace Mozy Enterprise Single Sign-On
+### <a name="configure-mozy-enterprise-single-sign-on&quot;></a>Konfigurace Mozy Enterprise Single Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Mozy Enterprise společnosti jako správce.
 
 2. V části **Konfigurace** klikněte na **zásady ověřování**.
    
-    ![Snímek obrazovky zobrazuje zásady ověřování vybrané z konfigurace.](./media/mozy-enterprise-tutorial/ic777314.png "Zásady ověřování")
+    ![Snímek obrazovky zobrazuje zásady ověřování vybrané z konfigurace.](./media/mozy-enterprise-tutorial/ic777314.png &quot;Zásady ověřování")
 
 3. V části **zásady ověřování** proveďte následující kroky:
    
@@ -199,7 +199,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-mozy-enterprise-test-user"></a>Vytvořit Mozy Enterprise Test User
+### <a name="create-mozy-enterprise-test-user&quot;></a>Vytvořit Mozy Enterprise Test User
 
 Aby se uživatelé Azure AD mohli přihlašovat do Mozy Enterprise, musí se zřídit v Mozy Enterprise. V případě Mozy Enterprise je zřizování ručním úkolem.
 
@@ -212,7 +212,7 @@ Aby se uživatelé Azure AD mohli přihlašovat do Mozy Enterprise, musí se zř
 
 2. Klikněte na **Uživatelé** a potom klikněte na **Přidat nového uživatele**.
    
-    ![Uživatelé](./media/mozy-enterprise-tutorial/ic777317.png "Uživatelé")
+    ![Uživatelé](./media/mozy-enterprise-tutorial/ic777317.png &quot;Uživatelé")
    
     >[!NOTE]
     >Možnost **Přidat nového uživatele** se zobrazí jenom v případě, že je v části **zásady ověřování** vybraný **Mozy** jako zprostředkovatel. Pokud je nakonfigurováno ověřování SAML, přidají se uživatelé automaticky při prvním přihlášení prostřednictvím jednotného přihlašování.

@@ -3,12 +3,12 @@ title: Přesun síťových prostředků Azure do nového předplatného nebo sku
 description: Pomocí Azure Resource Manager můžete přesunout virtuální sítě a další síťové prostředky do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75485231"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120125"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Pokyny pro přesun síťových prostředků
 
@@ -16,7 +16,10 @@ Tento článek popisuje, jak přesunout virtuální sítě a další síťové p
 
 ## <a name="dependent-resources"></a>Závislé prostředky
 
-Při přesunu virtuální sítě je nutné také přesunout závislé prostředky. U bran VPN musíte přesunout IP adresy, brány virtuální sítě a všechny přidružené prostředky připojení. Brány místní sítě můžou být v jiné skupině prostředků.
+> [!NOTE]
+> Upozorňujeme, že brány VPN přidružené k veřejným IP adresám nejsou v současné době schopné přesouvat mezi skupinami prostředků nebo předplatnými.
+
+Při přesunu prostředku je nutné také přesunout závislé prostředky (například veřejné IP adresy, brány virtuální sítě, všechny přidružené prostředky připojení). Brány místní sítě můžou být v jiné skupině prostředků.
 
 Pokud chcete přesunout virtuální počítač s kartou síťového rozhraní do nového předplatného, musíte přesunout všechny závislé prostředky. Přesuňte virtuální síť pro síťovou kartu, všechny ostatní síťové karty virtuální sítě a brány VPN.
 

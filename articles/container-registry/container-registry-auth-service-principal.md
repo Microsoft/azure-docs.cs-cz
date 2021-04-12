@@ -2,17 +2,17 @@
 title: Ověřování pomocí instančního objektu
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí Azure Active Directory instančního objektu.
 ms.topic: article
-ms.date: 10/04/2019
-ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/15/2021
+ms.openlocfilehash: a32538e5fc5354427bafc5098634becdcedd1239
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86259144"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285531"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry ověřování pomocí instančních objektů
 
-Pomocí instančního objektu služby Azure Active Directory (Azure AD) můžete poskytnout image kontejneru `docker push` a `pull` přístup k registru kontejneru. Pomocí instančního objektu můžete poskytnout přístup k nebezobslužným službám a aplikacím.
+K poskytnutí nabízených nebo přístupových práv k registru kontejneru můžete použít instanční objekt Azure Active Directory (Azure AD). Pomocí instančního objektu můžete poskytnout přístup k nebezobslužným službám a aplikacím.
 
 ## <a name="what-is-a-service-principal"></a>Co je instanční objekt?
 
@@ -52,7 +52,7 @@ Jakmile budete mít instanční objekt, kterému jste udělili přístup k regis
 * **Uživatelské jméno** – ID aplikace instančního objektu (označuje se také jako *ID klienta*)
 * **Heslo – Hlavní** heslo služby (označuje se taky jako *tajný klíč klienta*)
 
-Každá hodnota je identifikátor GUID formuláře `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
+Každá hodnota má formát `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 
 > [!TIP]
 > Heslo instančního objektu můžete znovu vygenerovat spuštěním příkazu [AZ AD SP Reset-Credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) .
@@ -66,7 +66,7 @@ Použijte například přihlašovací údaje k načtení obrázku z služby Azur
 
 ### <a name="use-with-docker-login"></a>Použít s přihlášením Docker
 
-Můžete spustit `docker login` pomocí instančního objektu. V následujícím příkladu je ID aplikace instančního objektu předáno do proměnné prostředí `$SP_APP_ID` a heslo v proměnné `$SP_PASSWD` . Osvědčené postupy pro správu přihlašovacích údajů Docker najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
+Můžete spustit `docker login` pomocí instančního objektu. V následujícím příkladu je ID aplikace instančního objektu předáno do proměnné prostředí `$SP_APP_ID` a heslo v proměnné `$SP_PASSWD` . Doporučené postupy pro správu přihlašovacích údajů Docker najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 ```bash
 # Log in to Docker with service principal credentials

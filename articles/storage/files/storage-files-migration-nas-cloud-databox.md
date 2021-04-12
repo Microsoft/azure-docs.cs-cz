@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 666e9f01d090acf29b8013470ed0264cd83f6d47
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293630"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491664"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>Použití DataBox k migraci ze síťového připojeného úložiště (NAS) do sdílených složek Azure
 
@@ -137,7 +137,12 @@ Postupujte podle kroků v dokumentaci ke službě Azure DataBox:
 
 Související dokumentace DataBox Určuje příkaz Robocopy. Tento příkaz však není vhodný pro zachování celé přesnosti souborů a složek. Místo toho použijte tento příkaz:
 
-[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
+```console
+Robocopy /MT:32 /NP /NFL /NDL /B /MIR /IT /COPY:DATSO /DCOPY:DAT /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+```
+* Další informace o jednotlivých příznacích nástroje Robocopy najdete v tabulce v [části nadcházející Robocopy](#robocopy).
+* Další informace o tom, jak vhodně nastavit velikost vláken `/MT:n` , optimalizovat rychlost nástroje Robocopy a vytvořit v datovém centru dobrý sousední soused, najdete v [oddílu věnovaném řešení Robocopy](#troubleshoot).
+
 
 ## <a name="phase-7-catch-up-robocopy-from-your-nas"></a>Fáze 7: zachytávání nástroje Robocopy z vašeho serveru NAS
 
@@ -197,59 +202,7 @@ Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, aby
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Rychlost a rychlost úspěšnosti daného spuštění nástroje Robocopy budou záviset na několika faktorech:
-
-* IOPS na zdrojovém a cílovém úložišti
-* dostupná šířka pásma sítě mezi nimi
-* možnost rychlého zpracování souborů a složek v oboru názvů
-* počet změn mezi spuštěním nástroje Robocopy
-
-
-### <a name="iops-and-bandwidth-considerations"></a>Požadavky na IOPS a šířku pásma
-
-V této kategorii je potřeba zvážit možnosti **zdroje** (vašeho serveru NAS), **cíle** (Azure Databox a novější sdílená složka Azure) a **sítě** , která je propojuje. Maximální možná propustnost závisí na nejpomalejších těchto třech součástech. Standardní DataBox se dodává se dvěma síťovými rozhraními 10 GB/s. V závislosti na vašem serveru NAS je možné, že se to bude shodovat. Ujistěte se, že je vaše síťová infrastruktura nakonfigurovaná tak, aby podporovala optimální přenosové rychlosti a jejich nejlepší možnosti.
-
-> [!CAUTION]
-> Kopírování co nejrychlejší je často nejužitečnější, zvažte použití vaší místní sítě a zařízení NAS pro jiné, často důležité úkoly.
-
-Pokud existuje riziko, že migrace může monopolizovat dostupné prostředky, nemusí se co nejrychleji kopírovat co nejrychlejší.
-
-* Vezměte v úvahu, kdy je nejlepší ve vašem prostředí spouštět migrace: během dne, mimo špičku nebo během víkendu.
-* Zvažte také síťové technologie QoS na serveru Windows, abyste omezili rychlost nástroje Robocopy, a tedy dopad na NAS a síť.
-* Vyhněte se zbytečné práci na nástrojích pro migraci.
-
-RobCopy má taky možnost vkládat prodlevy mezi pakety zadáním `/IPG:n` přepínače, který `n` se měří v milisekundách mezi pakety Robocopy. Použití tohoto přepínače vám může pomoci zabránit monopolizationí prostředků v vstupně-výstupních zařízeních s omezeným počtem zařízení NAS a vysoce využitých síťových propojení. 
-
-`/IPG:n` nedá se použít pro přesné síťové omezení pro určité MB/s. Místo toho použijte Windows Server Network QoS. Robocopy zcela spoléhá na protokol SMB pro všechny sítě, a proto nemá schopnost ovlivnit propustnost sítě, ale může zpomalit její využití. 
-
-Podobná řádková podobnost se vztahuje na IOPS zjištěné na serveru NAS. Velikost clusteru na svazku serveru NAS, velikost paketů a pole dalších faktorů ovlivňují pozorovaný IOPS. Zavedení mezipaketového zpoždění je často nejjednodušší způsob, jak řídit zatížení na serveru NAS. Otestujte více hodnot, například z přibližně 20 milisekund (n = 20) až násobků, které vám umožní zjistit, kolik prodlevy umožňuje obsluhovat vaše jiné požadavky a přitom udržuje rychlost nástroje Robocopy na maximum pro vaše omezení.
-
-### <a name="processing-speed"></a>Rychlost zpracování
-
-Robocopy projde obor názvů, na který se odkazuje, a vyhodnotí každý soubor a složku pro kopírování. Každý soubor se vyhodnotí během počátečního kopírování, jako je třeba kopírování z místní sítě do DataBox, a dokonce i během zachytávání kopií přes připojení WAN ke sdílené složce Azure.
-
-Často jsme standardně posuzujete šířku pásma jako nejúčinnější faktor migrace – a to může být pravdivé. Možnost vytvoření výčtu oboru názvů může mít vliv na celkovou dobu kopírování ještě více pro větší obory názvů s menšími soubory. Vezměte v úvahu, že kopírování 1 TiB malých souborů bude trvat mnohem déle než kopírování 1 TiB méně, ale větší soubory bylo uděleno, že jsou všechny ostatní proměnné stejné.
-
-Příčinou tohoto rozdílu je výpočetní výkon potřebný k procházení oboru názvů. Robocopy podporuje kopie s více vlákny prostřednictvím `/MT:n` parametru, který n představuje počet vláken procesoru. Takže při zřizování počítače speciálně pro Robocopy zvažte počet jader procesoru a jejich vztah k počtu vláken, která poskytují. Nejběžnější jsou dvě vlákna na jádro. Počet jader a vláken počítače je důležitým datovým bodem pro rozhodování o tom, jaké hodnoty násobného vlákna `/MT:n` byste měli zadat. Zvažte také, kolik úloh nástroje Robocopy máte v plánu paralelně na daném počítači.
-
-Další vlákna budou kopírovat náš 1Tib příklad malých souborů podstatně rychleji než méně vláken. Ve stejnou chvíli existuje snížení návratnosti investic do našich 1Tib větších souborů. Budou pořád kopírovat rychleji více vláken, která přiřadíte, ale získáte větší pravděpodobně šířku pásma sítě nebo vstupně-výstupní operace.
-
-### <a name="avoid-unnecessary-work"></a>Vyhnout se zbytečné práci
-
-Vyhněte se velkým změnám v oboru názvů. To zahrnuje přesun souborů mezi adresáři, změny vlastností ve velkém měřítku nebo změnu oprávnění (seznamy ACL pro systém souborů NTFS), protože mají často vliv na změnu v případě, že se změní seznamy ACL pro složku, které se blíží kořenu sdílené složky. Důsledky můžou být:
-
-* Rozšířená doba běhu úlohy nástroje Robocopy v důsledku změny, kterou je třeba aktualizovat u každého souboru a složky ovlivněného seznamem ACL
-* efektivita použití DataBox v prvním místě se může snížit, když se struktury složek změní po zkopírování souborů do DataBox. Úloha Robocopy nebude moct přejít zpátky do oboru názvů a místo toho bude muset soubory přenášet do sdílené složky Azure a znovu nahrávat soubory do nové struktury složek do Azure.
-
-Dalším důležitým aspektem je použití nástroje Robocopy efektivně. Když použijete doporučený skript Robocopy, vytvoříte a uložíte soubor protokolu pro chyby. Může dojít k chybám kopírování – to je normální. Tyto chyby často potřebují spustit více zaokrouhlení kopírovacího nástroje, jako je například Robocopy. Počáteční spuštění, řekněme od serveru NAS až po DataBox, a jeden nebo více doplňků s přepínačem/MIR pro zachycení a opakování souborů, které nebyly zkopírovány.
-
-Měli byste být připravení spustit více hodnot Robocopy proti danému oboru názvů. Po sobě jdoucí běhy dokončí rychleji, protože jejich kopírování je méně, ale omezuje se tím rychlost zpracování tohoto oboru názvů. Když spustíte více zaoblení, můžete každou kulatou hodnotu zrychlit tak, že se příkaz Robocopy nedoporučuje při prvním pokusu zkopírovat vše. Tyto přepínače Robocopy můžou mít výrazný rozdíl:
-
-* `/R:n` n = jak často se pokusíte zkopírovat soubor, který selhal a 
-* `/W:n` n = kolik sekund se má čekat mezi opakovanými pokusy
-
-`/R:5 /W:5` je rozumné nastavení, které můžete upravit na své míru. V tomto příkladu se neúspěšný soubor znovu pokusí o pět sekund, přičemž doba čekání mezi opakovanými pokusy proběhne znovu. Pokud se soubor stále nedaří zkopírovat, pokusí se znovu provést další úlohy Robocopy a často soubory, které selhaly, protože se používají, nebo kvůli problémům s časovým limitem může být někdy zkopírován tímto způsobem.
-
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

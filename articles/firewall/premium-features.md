@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967026"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226697"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Funkce verze Preview Azure Firewall Premium
 
@@ -148,7 +148,6 @@ Azure Firewall Premium Preview má následující známé problémy:
 |Podpora ESNI pro rozlišení plně kvalifikovaného názvu domény v HTTPS|Šifrované SNI se v handshake HTTPS nepodporují.|Dnes pouze Firefox podporuje ESNI prostřednictvím vlastní konfigurace. Doporučeným řešením je tuto funkci vypnout.|
 |Klientské certifikáty (TLS)|Klientské certifikáty slouží k vytvoření vzájemné důvěry identity mezi klientem a serverem. Klientské certifikáty se používají během vyjednávání TLS. Azure firewall znovu vyjedná připojení k serveru a nemá přístup k privátnímu klíči klientských certifikátů.|Žádné|
 |QUIC/HTTP3|QUIC je nová hlavní verze HTTP. Jedná se o protokol založený na UDP přes 80 (plán) a 443 (SSL). Plně kvalifikovaný název domény/adresa URL/Kontrola TLS se nepodporuje.|Nakonfigurujte předávání protokolu UDP 80/443 jako síťových pravidel.|
-|Zabezpečené centrum a vynucené tunelování není v Premium podporované.|V současné době se SKU brány firewall Premium v nasazeních zabezpečeného centra a konfiguracích vynuceného tunelového propojení nepodporují.|Oprava je naplánovaná na GA.|
 Nedůvěryhodní certifikáty podepsané zákazníky|Certifikáty podepsané zákazníky nejsou po přijetí z intranetového webového serveru důvěryhodné bránou firewall.|Oprava je naplánovaná na GA.
 |Chybné zdrojové a cílové IP adresy v upozorněních pro zprostředkovatelů identity s kontrolou TLS.|Pokud povolíte kontrolu TLS a zprostředkovatelů identity vydáte novou výstrahu, zobrazí se chyba zobrazovaná zdrojová nebo cílová IP adresa (místo původní IP adresy se zobrazí interní IP adresa).|Oprava je naplánovaná na GA.|
 |Chybná zdrojová IP adresa v upozorněních s zprostředkovatelů identity pro HTTP (bez kontroly TLS).|Když se provoz HTTP s prostým textem používá a zprostředkovatelů identity vydá novou výstrahu a cíl je veřejný IP adresou, zobrazovaná zdrojová IP adresa je chybná (místo původní IP adresy se zobrazí interní IP adresa).|Oprava je naplánovaná na GA.|

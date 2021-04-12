@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4ae7ad186e2ed8868be6205d48e9cfbef525d810
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 04b36b9b32e78016f693e61d40246776492be0e3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172790"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222856"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Úvod do Azure Active Directory ověřitelných přihlašovacích údajů (Preview)
 
@@ -28,7 +28,7 @@ Naše digitální a fyzické života jsou stále stále propojeny s aplikacemi, 
 
 Data identity se ale často vystavila v rozporu se zabezpečením. Tato porušení jsou ovlivněná na osoby, které mají vliv na sociální, profesionální a finanční život. Společnost Microsoft se domnívá, že existuje lepší způsob. Každá osoba má právo na identitu, kterou vlastní a řídí, a ta tak bezpečně ukládá prvky své digitální identity a zachovává ochranu osobních údajů. V tomto úvodu se dozvíte, jak se připojovat k různým komunitám a vytvářet otevřená, důvěryhodná, interoperabilní a standardizovaná řešení založená na standardech pro jednotlivce a organizace.
 
-## <a name="why-we-need-decentralized-identity"></a>Proč musíme decentralizované identity 
+## <a name="why-we-need-decentralized-identity"></a>Proč musíme decentralizované identity
 
 Dnes používáme naši digitální identitu v práci, doma i v každé aplikaci, službě a zařízení, které používáme. Sestavili jsme všechno, co říkáme, a máte zkušenosti, a to v rámci našich životních lístků pro událost, kontrolu hotelu nebo dokonce objednávání oběda. V současné době je naše identita a všechny naše digitální interakce vlastněné a ovládané dalšími stranami, přičemž některé z nich ještě neznáte.
 
@@ -36,7 +36,7 @@ Obecně platí, že uživatelé si můžou udělit souhlas s několika aplikacem
 
 Věříme, že systém s decentralizovanými identitami založený na standardech může odemknout novou sadu prostředí, která uživatelům a organizacím umožní lepší kontrolu nad svými daty a dodávat vyšší úroveň důvěryhodnosti a zabezpečení pro aplikace, zařízení a poskytovatele služeb.
 
-## <a name="lead-with-open-standards"></a>Vedoucí s otevřenými standardy 
+## <a name="lead-with-open-standards"></a>Vedoucí s otevřenými standardy
 
 Zavázali jsme se spolupracovat se zákazníky, partnery a komunitou, abychom mohli odemknout novou generaci prostředí založeného na identitách, a s radostí se budeme zapojovat s osobami a organizacemi, které v tomto prostoru poskytují nedostupné příspěvky. Pokud by byl ekosystém růst, standardů, technických komponent a dodávek kódu, musí být otevřený zdroj a přístupný všem.
 
@@ -50,21 +50,21 @@ Společnost Microsoft aktivně spolupracuje se členy decentralizované Identity
 * [Výměna prezentace DIF](https://identity.foundation/presentation-exchange/)
 
 
-## <a name="what-are-dids"></a>Co jsou DIDs 
+## <a name="what-are-dids"></a>Co jsou DIDs?
 
 Než budeme rozumět DIDs, pomůže vám to porovnat s aktuálními systémy identit. E-mailové adresy a ID sociálních sítí jsou uživatelsky přívětivé aliasy pro spolupráci, ale teď jsou přetížené, aby sloužily jako řídicí body pro přístup k datům napříč mnoha scénáři po spolupráci. Tím se vytvoří potenciální problém, protože přístup k těmto identifikátorům můžete kdykoli odebrat externími stranami.
 
 Decentralizované identifikátory (DIDs) se liší. DIDs jsou uživatelsky vygenerované, globálně jedinečné identifikátory, které jsou rootem v decentralizovaných systémech, jako je například ION. Mají jedinečné charakteristiky, jako je větší záruka na neměnnosti, odolnost proti Censorship a manipulaci evasiveness. Tyto atributy jsou klíčové pro jakýkoli systém ID, který je určen k poskytnutí vlastní vlastnictví a uživatelského ovládacího prvku. 
 
 Řešení ověřitelných přihlašovacích údajů od Microsoftu používá decentralizované přihlašovací údaje (DIDs) k kryptografické podepisování jako důkaz, že předávající strana (Ověřovač) ověřuje informace, že se jedná o vlastníky ověřitelných přihlašovacích údajů. Proto se základní porozumění decentralizovaným identifikátorům doporučuje pro kohokoli, kdo vytvoří ověřitelné řešení pověření na základě nabídky Microsoftu.
-## <a name="what-are-verifiable-credentials"></a>Co jsou ověřitelné přihlašovací údaje 
+## <a name="what-are-verifiable-credentials"></a>Co jsou ověřitelné přihlašovací údaje?
 
  Identifikátory používáme v každodenním životě. Máme licence na ovladače, které používáme jako důkaz naší schopnosti provozovat automobil. Diplomy s vysokými školami potvrzují, že jsme dosáhli úrovně vzdělávání. Passports používáme k důkazu toho, kdo je k dismailu, jak dorazíme do jiných zemí. Datový model popisuje, jak můžeme zvládnout tyto typy scénářů při práci přes Internet, ale zabezpečeným způsobem, který respektuje ochranu osobních údajů uživatele. Další informace můžete získat v [datovém modelu ověřitelných přihlašovacích údajů 1,0](https://www.w3.org/TR/vc-data-model/) .
 
 V krátkých, ověřitelných přihlašovacích údajích jsou datové objekty, které se skládají z deklarací identity vystavitelů potvrzujících informace o předmětu. Tyto deklarace jsou označeny schématem a zahrnují vystavitele a předmět. Vystavitel vytvoří digitální podpis jako důkaz, že k těmto informacím potvrzují.
 
 
-## <a name="how-does-decentralized-identity-work"></a>Jak decentralizovaná identita funguje? 
+## <a name="how-does-decentralized-identity-work"></a>Jak decentralizovaná identita funguje?
 
 Potřebujeme novou formu identity. Potřebujeme identitu, která dohromady přináší technologie a standardy, aby poskytovala klíčové atributy identity, jako je vlastní vlastnictví a odolnost proti Censorship. Tyto možnosti je obtížné dosáhnout pomocí stávajících systémů.
 

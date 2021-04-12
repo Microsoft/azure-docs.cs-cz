@@ -2,14 +2,14 @@
 title: Simulace chyb v mikroslužbách Azure
 description: Tento článek pojednává o akcích testování zjištěných v Microsoft Azure Service Fabric.
 ms.topic: conceptual
-ms.date: 06/07/2017
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f8221d92ded33350b182cce5d28dd889beae4a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732869"
 ---
 # <a name="testability-actions"></a>Testovací akce
 Pro simulaci nespolehlivé infrastruktury vám Azure Service Fabric poskytne vývojářům možnosti simulovat různé chyby reálného světa a přechody do stavu. Jsou přístupné jako akce testování. Akce jsou rozhraní API na nízké úrovni, která způsobují konkrétní vkládání chyb, přechod stavu nebo ověřování. Kombinací těchto akcí můžete napsat komplexní testovací scénáře pro vaše služby.
@@ -34,6 +34,7 @@ Pro lepší ověřování kvality spouštějte úlohy služby a podniku při vyp
 | InvokeQuorumLoss |Vloží daný stavovou službu do ztráty kvora. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Snížen |
 | Operace moveprimary |Přesune zadanou primární repliku stavové služby do zadaného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Snížen |
 | Movesecondary jde provést |Přesune aktuální sekundární repliku stavové služby na jiný uzel clusteru. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Snížen |
+| MoveInstance | Přesune aktuální instanci bezstavové služby na jiný uzel clusteru. | MoveInstanceAsync | Move-ServiceFabricInstance | Snížen |
 | RemoveReplica |Simuluje selhání repliky odstraněním repliky z clusteru. Tím se replika ukončí a převede ji na role ' None '. tím se odebere celý stav z clusteru. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Snížen |
 | RestartDeployedCodePackage |Simuluje selhání procesu balíčku kódu restartováním balíčku kódu nasazeného na uzlu v clusteru. Tím dojde k přerušení procesu balíčku kódu, který restartuje všechny repliky služby uživatele hostované v tomto procesu. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Nestandardním |
 | RestartNode |Simuluje selhání uzlu clusteru Service Fabric restartováním uzlu. |RestartNodeAsync |Restart-ServiceFabricNode |Nestandardním |

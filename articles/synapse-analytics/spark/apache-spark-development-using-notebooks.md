@@ -11,10 +11,10 @@ ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
 ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105612303"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
@@ -112,7 +112,7 @@ Následující obrázek je příkladem, jak můžete napsat dotaz PySpark pomoc�
 
    ![Příkazy synapse Spark Magic](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>Použití dočasných tabulek k odkazování na data napříč jazyky
+### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Použití dočasných tabulek k odkazování na data napříč jazyky
 
 V poznámkovém bloku synapse Studio nejde odkazovat na data ani proměnné přímo v různých jazycích. Ve Sparku může být na dočasné tabulce odkazováno napříč jazyky. Tady je příklad, jak číst datový `Scala` rámec v `PySpark` a `SparkSQL` použít dočasnou tabulku Spark jako alternativní řešení.
 
@@ -120,7 +120,7 @@ V poznámkovém bloku synapse Studio nejde odkazovat na data ani proměnné př�
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 

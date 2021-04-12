@@ -1,5 +1,5 @@
 ---
-title: Odhlásit z ověřitelných přihlašovacích údajů (Preview)
+title: Odhlásit z Azure Active Directory ověřitelných přihlašovacích údajů (Preview)
 description: Zjistěte, jak se odhlásit z verze Preview ověřitelných přihlašovacích údajů.
 documentationCenter: ''
 author: barclayn
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 93c493a9b9941913da270fe763175240c8abf9f3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d6e72b6d6f566fcf3f52e1c48ab6824c0e9a968e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169912"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222788"
 ---
 # <a name="opt-out-of-the-verifiable-credentials-preview"></a>Odhlásit z ověřitelných přihlašovacích údajů (Preview)
 
@@ -62,7 +62,7 @@ Až se rozhodnete, že zaškrtnete službu Azure Active Directory ověřitelné 
 
 Jakmile dojde k výslovným odhlášení, nebudete moct obnovit provedené nebo provádět žádné operace. Tento krok je jednosměrnou operací a musíte se znovu přihlásit, což vede k vytvoření nového.  
 
-## <a name="effect-on-existing-verifiable-credentials"></a>Vliv na existující ověřitelná pověření.
+## <a name="effect-on-existing-verifiable-credentials"></a>Vliv na existující ověřitelná pověření
 
 Všechny ověřené přihlašovací údaje už jsou vydané, i nadále existují. Nebudou kryptograficky vyhodnoceny jako v případě, že by vaše aplikace zůstaly přeložitelnými.
 Pokud však předávající strany volají stavové rozhraní API, vždy se jim vrátí zpráva o selhání.

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35ed677c3176fb990f752f3204a1ae11bf39896c
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465653"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121689"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Zásady podpory pro Azure Database for MySQL verze
 
@@ -22,16 +22,19 @@ Tato stránka popisuje zásady správy verzí Azure Database for MySQL a platí 
 
 Azure Database for MySQL bylo vyvinuto z [verze MySQL Community Edition](https://www.mysql.com/products/community/)pomocí modulu úložiště InnoDB. Služba podporuje všechny aktuální hlavní verze, které podporuje komunita konkrétně MySQL 5,6, 5,7 a 8,0. MySQL používá schéma pojmenování X. Y. Z, kde X je hlavní verze, Y je podverze a verze Z je oprava chyby. Další informace o schématu najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-> [!NOTE]
-> V případě možnosti nasazení s jedním serverem slouží brána k přesměrování připojení k instancím serveru. Po navázání připojení se v klientovi MySQL zobrazí verze MySQL nastavená v bráně, a ne verze skutečně spuštěná na instanci serveru MySQL. Pokud chcete zjistit verzi instance serveru MySQL, na příkazovém řádku MySQL spusťte příkaz `SELECT VERSION();`.
-
 Azure Database for MySQL aktuálně podporuje následující hlavní a dílčí verze MySQL:
 
-| Verze | Jeden server <br/> Aktuální dílčí verze |Flexibilní server (Preview) <br/> Aktuální dílčí verze  |
+| Verze | [Jeden server](overview.md) <br/> Aktuální dílčí verze |[Flexibilní server (Preview)](/../flexible-server/overview.md) <br/> Aktuální dílčí verze  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL verze 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(vyřazeno) | Nepodporováno|
 |MySQL verze 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL verze 8,0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
+
+> [!NOTE]
+> V případě možnosti nasazení s jedním serverem slouží brána k přesměrování připojení k instancím serveru. Po navázání připojení se v klientovi MySQL zobrazí verze MySQL nastavená v bráně, a ne verze skutečně spuštěná na instanci serveru MySQL. Pokud chcete zjistit verzi instance serveru MySQL, na příkazovém řádku MySQL spusťte příkaz `SELECT VERSION();`. Pokud má vaše aplikace požadavek na připojení ke konkrétní hlavní verzi říká v 5.7 nebo v 8.0, můžete to udělat tak, že změníte port připojovacího řetězce serveru, jak je vysvětleno v naší dokumentaci [.](concepts-supported-versions.md#connect-to-a-gateway-node-that-is-running-a-specific-mysql-version)
+
+> [!IMPORTANT]
+> MySQL v 5.6 je vyřazen na jednom serveru, který je febuary 2021. Od 1. září 2021 nebudete moci vytvořit nové servery v 5.6 na Azure Database for MySQL možnost nasazení na jeden server. Budete ale moci provádět obnovování v čase a vytvářet repliky pro čtení pro vaše stávající servery.
 
 Přečtěte si zásady podpory verzí pro vyřazené verze v [dokumentaci k zásadám podpory verzí.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
@@ -56,7 +59,7 @@ Následující tabulka uvádí podrobnosti o vyřazení hlavních verzí MySQL. 
 Po datu vyřazení každé verze databáze MySQL, pokud budete pokračovat v vyřazení verze, pamatujte na následující omezení:
 - Vzhledem k tomu, že komunita neuvolňuje žádné další opravy chyb ani opravy zabezpečení, Azure Database for MySQL nebude opravovat vyřazený databázový stroj pro všechny chyby nebo problémy se zabezpečením nebo jinak přijímat bezpečnostní opatření s ohledem na vyřazený databázový stroj. Azure ale bude i nadále provádět pravidelná údržba a opravy pro hostitele, operační systém, kontejnery a jakékoli další součásti související se službou.
 - Pokud máte problémy s podporou, ke kterým může dojít v souvislosti s databází MySQL, nemůžeme vám poskytnout podporu. V takových případech budete muset upgradovat databázi, abychom vám mohli poskytnout veškerou podporu.
-<!-- - You will not be able to create new database servers for the retired version. However, you will be able to perform point-in-time recoveries and create read replicas for your existing servers. -->
+- Pro vyřazenou verzi nebudete moct vytvářet nové databázové servery. Budete ale moci provádět obnovování v čase a vytvářet repliky pro čtení pro vaše stávající servery.
 - Nové funkce služby vyvinuté v Azure Database for MySQL můžou být dostupné jenom pro podporované verze databázového serveru.
 - Doba provozu SLA bude platit výhradně pro Azure Database for MySQL problémy související se službou a nikoli na výpadky způsobené chybami souvisejícími s databázovým strojem.  
 - V extrémních událostech vážné hrozby pro službu způsobenou ohrožením zabezpečení databázového stroje MySQL zjištěným v vyřazené verzi databáze se může Azure rozhodnout zastavit výpočetní uzel vašeho databázového serveru a nejdřív zabezpečit službu. Před přepnutím serveru do režimu online se zobrazí výzva k upgradu serveru. Během procesu upgradu budou vaše data vždycky chráněná pomocí automatických záloh prováděných ve službě, kterou můžete v případě potřeby použít k obnovení zpět na starší verzi. 

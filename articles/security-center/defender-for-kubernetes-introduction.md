@@ -3,26 +3,32 @@ title: Azure Defender pro Kubernetes – výhody a funkce
 description: Přečtěte si o výhodách a funkcích Azure Defenderu pro Kubernetes.
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c500c7b7afb36ffbe04fb63551c3a7d17c1347d9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100623"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029076"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
-Služba Azure Kubernetes Service (AKS) je spravovaná služba Microsoftu pro vývoj, nasazování a správu kontejnerových aplikací.
+Azure Defender pro Kubernetes je plán Azure Defenderu, který poskytuje ochranu pro clustery Kubernetes bez ohledu na to, kde běží. 
+
+Clustery můžeme chránit v těchto prostředích:
+
+- **Azure Kubernetes Service (AKS)** – spravovaná služba Microsoftu pro vývoj, nasazování a správu kontejnerových aplikací
+
+- **Místní a prostředí s více cloudy** – s použitím [rozšíření pro Kubernetes s povoleným obloukem](defender-for-kubernetes-azure-arc.md)
 
 Azure Security Center a AKS tvoří Kubernetes cloudovou nabídku zabezpečení s posílením zabezpečení prostředí, ochranou zatížení a ochranou za běhu, jak je popsáno v [zabezpečení kontejneru v Security Center](container-security.md).
 
-Pro detekci hrozeb pro clustery Kubernetes povolte **Azure Defender pro Kubernetes**.
+Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozici, pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) a jeho agenta Log Analytics. Pokud je ale cluster nasazený v sadě škálování virtuálního počítače, agent Log Analytics se v tuto chvíli nepodporuje.
 
-Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozici, pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) a jeho agenta Log Analytics. Pokud je ale cluster AKS nasazený v sadě škálování virtuálního počítače, agent Log Analytics se momentálně nepodporuje.
+
 
 ## <a name="availability"></a>Dostupnost
 
@@ -36,9 +42,9 @@ Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozi
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Jaké jsou výhody Azure Defenderu pro Kubernetes?
 
-Azure Defender pro Kubernetes poskytuje **ochranu před hrozbami na úrovni clusteru** monitorováním služeb spravovaných AKS prostřednictvím protokolů načtených službou Azure Kubernetes Service (AKS).
+Azure Defender pro Kubernetes poskytuje **ochranu před hrozbami na úrovni clusteru** prostřednictvím monitorování protokolů clusterů.
 
-Příklady událostí zabezpečení, které Azure Defender pro Kubernetes monitoruje, jsou vystavené řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení. Úplný seznam výstrah na úrovni clusteru AKS najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
+Příklady událostí zabezpečení, které Azure Defender pro Kubernetes monitoruje, jsou vystavené řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení. Úplný seznam výstrah na úrovni clusteru najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
 
 > [!TIP]
 > Pomocí pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)můžete simulovat výstrahy kontejneru.
@@ -46,14 +52,14 @@ Příklady událostí zabezpečení, které Azure Defender pro Kubernetes monito
 Náš globální tým výzkumných pracovníků pro zabezpečení nepřetržitě monitoruje i na šířku hrozby. Přidávají výstrahy a chyby specifické pro kontejner při jejich zjištění.
 
 >[!NOTE]
-> Security Center vygeneruje výstrahy zabezpečení pro akce a nasazení služby Azure Kubernetes, ke kterým dochází **po** povolení Azure Defenderu pro Kubernetes.
+> Azure Defender vygeneruje výstrahy zabezpečení pro akce a nasazení, ke kterým dochází po povolení plánu Defender for Kubernetes v předplatném.
 
 
 
 
 ## <a name="azure-defender-for-kubernetes---faq"></a>Azure Defender pro Kubernetes – Nejčastější dotazy
 
-### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Můžu I nadále získávat AKS ochranu bez agenta Log Analytics?
+### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>Můžu stále chránit clustery bez agenta Log Analytics?
 
 Plán **Azure Defender pro Kubernetes** poskytuje ochranu na úrovni clusteru. Pokud nasadíte i agenta Log Analytics **služby Azure Defender pro servery**, získáte ochranu před hrozbami pro vaše uzly, které jsou k dispozici s tímto plánem. Další informace najdete v [úvodu k Azure Defenderu pro servery](defender-for-servers-introduction.md).
 
@@ -67,7 +73,7 @@ Aby mohl Azure Defender monitorovat uzly AKS, musí používat agenta Log Analyt
 AKS je spravovaná služba a vzhledem k tomu, že agent Log Analytics je rozšíření spravované Microsoftem, je podporované i v clusterech AKS.
 
 ### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>Pokud můj cluster už používá Azure Monitor pro agenta kontejnerů, potřebuji agenta Log Analytics?
-Aby mohl Azure Defender monitorovat uzly AKS, musí používat agenta Log Analytics.
+Aby mohl Azure Defender monitorovat vaše uzly, musí používat agenta Log Analytics.
 
 Pokud již máte v clusterech spuštěný agent Azure Monitor for Containers, můžete také agenta Log Analytics nainstalovat a dva agenti mohou společně navzájem pracovat bez jakýchkoli problémů.
 

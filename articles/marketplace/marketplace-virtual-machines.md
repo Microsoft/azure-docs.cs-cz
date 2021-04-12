@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 0b5d0a8b12ad07c5be3a4cfc0840acc81aa0c395
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 6e391ca79c9dcf9ab533a7e67961c654b5f8630b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060728"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103364"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>Plánování nabídky virtuálních počítačů
 
 Tento článek popisuje různé možnosti a požadavky pro publikování nabídky virtuálního počítače na komerčním webu Marketplace. Nabídky virtuálních počítačů jsou nasazené a účtované prostřednictvím Azure Marketplace.
 
-Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](./partner-center-portal/create-account.md) a ujistěte se, že je váš účet zaregistrovaný v programu pro komerční Marketplace.
+Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) a ujistěte se, že je váš účet zaregistrovaný v programu pro komerční Marketplace.
 
 ### <a name="technical-fundamentals"></a>Technické základy
 

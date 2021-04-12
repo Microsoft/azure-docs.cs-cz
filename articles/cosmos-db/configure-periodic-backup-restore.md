@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak nakonfigurovat účty Azure Cosmos DB 
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565823"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284024"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Konfigurace účtu Azure Cosmos DB s pravidelným zálohováním
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,11 +31,32 @@ Azure Cosmos DB automaticky v pravidelných intervalech zálohuje vaše data. Au
 
 * Zálohy budou provedeny, aniž by to ovlivnilo výkon nebo dostupnost vaší aplikace. Azure Cosmos DB provádí zálohování dat na pozadí, aniž by byla využívala žádná dodatečná zřízená propustnost (ru) nebo ovlivnila výkon a dostupnost vaší databáze.
 
+## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>Redundance úložiště zálohování
+
+Ve výchozím nastavení Azure Cosmos DB ukládá data zálohy periodického režimu v geograficky redundantním [úložišti objektů BLOB](../storage/common/storage-redundancy.md) , které se replikují do [spárované oblasti](../best-practices-availability-paired-regions.md).  
+
+Aby se zajistilo, že vaše Zálohovaná data zůstanou ve stejné oblasti, ve které je váš Azure Cosmos DB účet zřízený, můžete změnit výchozí geograficky redundantní úložiště záloh a nakonfigurovat místně redundantní nebo redundantní úložiště v zóně. Mechanismy redundance úložiště ukládají několik kopií záloh, aby byly chráněné před plánovanými a neplánovanými událostmi, včetně přechodného selhání hardwaru, sítě nebo výpadků napájení nebo obrovského přirozeného katastrofy.
+
+Data zálohy v Azure Cosmos DB replikují třikrát v primární oblasti. Můžete nakonfigurovat redundanci úložiště pro režim periodického zálohování v době vytvoření účtu nebo ho aktualizovat pro existující účet. V režimu periodického zálohování můžete použít následující tři možnosti redundance dat:
+
+* **Geograficky redundantní úložiště zálohování:** Tato možnost kopíruje data asynchronně v spárované oblasti.
+
+* **Redundantní úložiště záloh zóny:** Tato možnost kopíruje data asynchronně v rámci tří zón dostupnosti Azure v primární oblasti.
+
+* **Místně redundantní úložiště záloh:** Tato možnost zkopíruje data asynchronně třikrát do jednoho fyzického umístění v primární oblasti.
+
+> [!NOTE]
+> Redundantní úložiště v zóně je aktuálně k dispozici pouze v [konkrétních oblastech](high-availability.md#availability-zone-support). Na základě oblasti, kterou vyberete; Tato možnost nebude k dispozici pro nové nebo existující účty.
+>
+> Aktualizace redundance úložiště zálohování nebude mít žádný vliv na ceny za úložiště zálohování.
+
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>Úprava intervalu zálohování a doby uchování
 
 Azure Cosmos DB automaticky provede úplnou zálohu dat pro každé 4 hodiny a v jakémkoli časovém okamžiku jsou uloženy nejnovější dvě zálohy. Tato konfigurace je výchozí možností a je nabízena bez jakýchkoli dalších nákladů. Výchozí interval zálohování a dobu uchovávání můžete změnit při vytváření účtu Azure Cosmos nebo po jeho vytvoření. Konfigurace zálohování se nastavuje na úrovni účtu Azure Cosmos a pro každý účet je potřeba ji nakonfigurovat zvlášť. Když nakonfigurujete možnosti zálohování pro účet, použije se u všech kontejnerů v rámci tohoto účtu. V současné době je možné změnit možnosti zálohování pouze na webu Azure Portal.
 
 Pokud jste data omylem odstranili nebo jste poškodili, **před vytvořením žádosti o podporu pro obnovení dat nezapomeňte zvýšit dobu uchovávání záloh vašeho účtu aspoň na sedm dní. Je nejlepší zvýšit své uchovávání do 8 hodin od této události.** Díky tomu bude mít tým Azure Cosmos DB dostatek času na obnovení vašeho účtu.
+
+### <a name="modify-backup-options-for-an-existing-account"></a>Změna možností zálohování pro existující účet
 
 Pro změnu výchozích možností zálohování pro existující účet Azure Cosmos použijte následující postup:
 
@@ -48,11 +69,18 @@ Pro změnu výchozích možností zálohování pro existující účet Azure Co
 
    * **Kopie uchovávaných dat** – ve výchozím nastavení se pro dvě záložní kopie vašich dat nabízí zdarma. Pokud potřebujete víc než dvě kopie, účtuje se navíc. V části spotřebované úložiště na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) se dozvíte přesnou cenu za nadbytečné kopie.
 
-   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-interval-retention.png" alt-text="Nakonfigurujte interval zálohování a uchování pro existující účet Azure Cosmos." border="true":::
+   * **Redundance úložiště zálohování** – vyberte možnost požadovaná redundance úložiště. dostupné možnosti najdete v části [redundance úložiště zálohy](#backup-storage-redundancy) . Ve výchozím nastavení mají stávající účty periodického zálohování geograficky redundantní úložiště. Můžete zvolit jiné úložiště, jako je například místně redundantní, abyste zajistili, že záloha nebude replikována do jiné oblasti. Změny provedené v existujícím účtu se uplatní jenom na budoucí zálohy. Po aktualizaci redundance záložního úložiště stávajícího účtu může trvat až dvojnásobek času, než se změny projeví, a **ztratíte přístup k okamžitému obnovení starších záloh.**
 
-Pokud při vytváření účtu konfigurujete možnosti zálohování, můžete nakonfigurovat **zásady zálohování**, které jsou buď **periodické** , nebo **průběžné**. Pravidelné zásady vám umožní nakonfigurovat interval zálohování a uchovávání záloh. Průběžné zásady jsou aktuálně k dispozici pouze pomocí registrace. Tým Azure Cosmos DB vyhodnotí vaše zatížení a schválí vaši žádost.
+   > [!NOTE]
+   > Abyste mohli konfigurovat redundanci úložiště zálohování, musíte mít roli [role čtenář účtu Azure Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role) přiřazenou na úrovni předplatného.
 
-:::image type="content" source="./media/configure-periodic-backup-restore/configure-periodic-continuous-backup-policy.png" alt-text="Nakonfigurujte pravidelné nebo nepřetržité zásady zálohování pro nové účty Azure Cosmos." border="true":::
+   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-existing-accounts.png" alt-text="Nakonfigurujte interval zálohování, uchování a redundanci úložiště pro existující účet Azure Cosmos." border="true":::
+
+### <a name="modify-backup-options-for-a-new-account"></a>Změna možností zálohování nového účtu
+
+Při zřizování nového účtu na kartě **zásady zálohování** vyberte možnost **periodické** _ zásada zálohování. Periodické zásady vám umožní nakonfigurovat interval zálohování, uchovávání záloh a redundanci úložiště zálohy. Můžete například vybrat _ možnost *místně redundantní úložiště zálohování** nebo redundantní úložiště zálohování **zóny** , aby se zabránilo replikaci zálohovaných dat mimo vaši oblast.
+
+:::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-new-accounts.png" alt-text="Nakonfigurujte pravidelné nebo nepřetržité zásady zálohování pro nové účty Azure Cosmos." border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a><a id="request-restore"></a>Požadavek na obnovení dat ze zálohy
 
@@ -115,8 +143,7 @@ Pokud zřizujete propustnost na úrovni databáze, proces zálohování a obnove
 Objekty zabezpečení, které jsou součástí role [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), Owner nebo přispěvatel, můžou požadovat obnovení nebo změnit dobu uchování.
 
 ## <a name="understanding-costs-of-extra-backups"></a>Porozumění nákladům na nadbytečné zálohy
-K dispozici jsou dvě zálohy zdarma a další zálohy se účtují podle cen na základě oblastí pro úložiště zálohování popsané v tématu [ceny za úložiště zálohování](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/). Pokud je například uchovávání záloh nastaveno na 240 hodiny, což je 10 dní a interval zálohování na 24 hodin. To zahrnuje 10 kopií zálohovaných dat. Za předpokladu 1 TB dat v Západní USA 2 budou náklady 0,12 × 1000 * 8 pro úložiště zálohování v daném měsíci. 
-
+K dispozici jsou dvě zálohy zdarma a další zálohy se účtují podle cen na základě oblastí pro úložiště zálohování popsané v tématu [ceny za úložiště zálohování](https://azure.microsoft.com/pricing/details/cosmos-db/). Pokud je například uchovávání záloh nastaveno na 240 hodiny, což je 10 dní a interval zálohování na 24 hodin. To zahrnuje 10 kopií zálohovaných dat. Za předpokladu 1 TB dat v Západní USA 2 budou náklady 0,12 × 1000 * 8 pro úložiště zálohování v daném měsíci.
 
 ## <a name="options-to-manage-your-own-backups"></a>Možnosti správy vlastních záloh
 

@@ -3,12 +3,12 @@ title: Exportovat šablonu v Azure Portal
 description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3cc790b67b6076236a550c1fa202e0d173fb360e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96185687"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731934"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -16,7 +16,7 @@ Pro pomoc s vytvářením šablon Azure Resource Manager můžete exportovat ša
 
 Správce prostředků umožňuje vybrat jeden nebo více prostředků pro export do šablony. Můžete se soustředit přesně na prostředky, které v šabloně potřebujete.
 
-Tento článek popisuje, jak exportovat šablony prostřednictvím portálu. Můžete použít také rozhraní příkazového [řádku Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resourcegroups/exporttemplate).
+Tento článek popisuje, jak exportovat šablony prostřednictvím portálu. Můžete použít také rozhraní příkazového [řádku Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resources/resourcegroups/exporttemplate).
 
 ## <a name="choose-the-right-export-option"></a>Výběr pravé možnosti exportu
 
@@ -123,7 +123,7 @@ Můžete exportovat šablonu, která byla použita k nasazení existujících pr
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se exportovat šablony pomocí [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resourcegroups/exporttemplate).
+- Naučte se exportovat šablony pomocí [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resources/resourcegroups/exporttemplate).
 - Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
 - Další informace o vývoji šablon najdete v [podrobných kurzech](../index.yml).
 - Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: a60ee8faf8d19afba59e46c52aaba9395c3a5292
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604443"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
@@ -118,7 +118,7 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a místní
 
 Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).
 
-## <a name="navigating-the-map"></a>Navigace v mapě
+## <a name="navigating-the-map&quot;></a>Navigace v mapě
 
 Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit a rozteč. Následující podrobnosti jsou všechny různými způsoby navigace v mapě.
 
@@ -141,16 +141,16 @@ Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit
 
 * Dotkněte se mapy dvěma prsty a přetáhněte je dohromady nahoru nebo dolů.
 
-## <a name="azure-government-cloud-support"></a>Podpora cloudu Azure Government
+## <a name=&quot;azure-government-cloud-support&quot;></a>Podpora cloudu Azure Government
 
 Azure Maps Android SDK podporuje cloud Azure Government. K Android SDK Azure Maps se dostanete ze stejného úložiště Maven. Aby bylo možné se připojit ke cloudové verzi Azure Government Azure Maps platformy, bude nutné provést následující úlohy.
 
 Na stejném místě, kde jsou zadány podrobnosti ověření Azure Maps, přidejte následující řádek kódu, který oznámí mapě použití cloudové domény Azure Maps státní správy.
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
-AzureMaps.setDomain("atlas.azure.us");
+AzureMaps.setDomain(&quot;atlas.azure.us");
 ```
 
 ::: zone-end

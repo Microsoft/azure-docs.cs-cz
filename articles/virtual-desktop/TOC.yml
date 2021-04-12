@@ -214,6 +214,8 @@
       href: security-guide.md
     - name: Podpora Linuxu
       href: linux-overview.md
+    - name: Azure CLI
+      href: /cli/azure/ext/desktopvirtualization/desktopvirtualization
     - name: Odhad nákladů na Azure Monitor
       href: azure-monitor-costs.md
     - name: Podporovaná nastavení souboru RDP

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 7f99c37cd9f029c7478d4102bd17c952ffd52f8c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044273"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731220"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -57,7 +57,7 @@ S radostí oznamujeme, že vydání služby Service Fabric runtime od verze 7,2 
 
 Z důvodu aktuální COVID krize a zvážení výzev, které čelí naši zákazníci, provedeme 7,1 k dispozici, ale nebude automaticky upgradovat clustery nastavené tak, aby přijímaly automatické upgrady. Automatické upgrady se pozastavuje až do dalšího upozornění, aby zákazníci mohli použít upgrady, které jsou pro ně nejvhodnější, aby se předešlo neočekávaným výpadkům.
 
-Pomocí [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) nebo prostřednictvím [Azure Resource Manager nasazení](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template)budete moct aktualizovat na 7,1.
+Pomocí [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) nebo prostřednictvím [Azure Resource Manager nasazení](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)budete moct aktualizovat na 7,1.
 
 Service Fabric clusterů s povolenými automatickými upgrady začnou aktualizace 7,1 automaticky dostávat po obnovení standardního postupu zavedení. Před zahájením standardního zavedení na [webu Service Fabric odborné komunity](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)budeme poskytovat další oznámení.
 Také jsme publikovali aktualizace na konci data podpory pro hlavní verze od 6,5 [do 7,1.](./service-fabric-versions.md#supported-versions) 

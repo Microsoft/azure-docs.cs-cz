@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: c8d188c7bb7034cda450049c3d4912cc1517dae5
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645276"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732597"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -114,7 +114,7 @@ V případě, že mezi trasou s explicitní předponou protokolu IP a trasou s o
 Pokud chcete tuto funkci použít, zadejte název značky služby pro parametr předpony adresy v příkazech směrovací tabulky. Například v PowerShellu můžete vytvořit novou trasu pro přímý provoz odeslaný na virtuální zařízení Azure Storage předponou IP adresy pomocí: </br>
 
 ```azurepowershell-interactive
-New-AzRouteConfig -Name "StorageRoute" -AddressPrefix “Storage” -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
 ```
 
 Stejný příkaz pro rozhraní příkazového řádku bude: </br>

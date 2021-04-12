@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1cef56d15838d80079decc6e1da7ad830bd1cd9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206947"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029756"
 ---
 # <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes privátní připojení za pomoci poskytovatele připojení. Pomocí ExpressRoute můžete vytvořit připojení ke cloudovým službám Microsoftu, například Microsoft Azure a Microsoft 365.
@@ -20,6 +20,10 @@ ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu p
 Připojení může být ze sítě mezi libovolnými body (IP VPN), Ethernetové sítě mezi dvěma body nebo virtuálního křížového připojení přes poskytovatele připojení v kolokačním zařízení. Připojení ExpressRoute neprocházejí přes veřejný internet. Díky tomu mohou připojení ExpressRoute nabídnout větší spolehlivost, vyšší rychlost, konzistentní latenci a silnější zabezpečení než typická připojení přes internet. Informace o tom, jak připojit síť k Microsoftu pomocí ExpressRoute, najdete v tématu [modely připojení ExpressRoute](expressroute-connectivity-models.md).
 
 ![Přehled připojení ExpressRoute](./media/expressroute-introduction/expressroute-connection-overview.png)
+
+> [!NOTE]
+> V kontextu ExpressRoute Microsoft Edge popisuje hraniční směrovače na straně Microsoft okruhu ExpressRoute. Toto je bod ExpressRoute okruhu vstupu do sítě Microsoftu.
+> 
 
 ## <a name="key-benefits"></a>Klíčové výhody
 

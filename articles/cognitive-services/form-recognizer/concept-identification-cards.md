@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467792"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285349"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Model předem sestaveného identifikační karty (ID) pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z identifikačních karet pro státní správu (IDs) pomocí předpřipraveného modelu ID. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s možnostmi rozpoznávání ID k extrakci klíčových informací z celosvětových cestovních pasů a licencí na ovladače USA (všechny 50 státy a D.C.). Rozhraní API ID extrahují klíčové informace z těchto dokumentů identity, jako je například křestní jméno, příjmení, datum narození, číslo dokumentu a další. Toto rozhraní API je k dispozici v nástroji pro rozpoznávání formulářů v 2.1 Preview jako na cloudovou službu a jako místní kontejner.
+Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z identifikačních karet pro státní správu (IDs) pomocí předpřipraveného modelu ID. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/overview-ocr.md) s možnostmi rozpoznávání ID k extrakci klíčových informací z celosvětových cestovních pasů a licencí na ovladače USA (všechny 50 státy a D.C.). Rozhraní API ID extrahují klíčové informace z těchto dokumentů identity, jako je například křestní jméno, příjmení, datum narození, číslo dokumentu a další. Toto rozhraní API je k dispozici v nástroji pro rozpoznávání formulářů v 2.1 Preview jako na cloudovou službu a jako místní kontejner.
 
 ## <a name="what-does-the-id-service-do"></a>Co dělá služba ID? 
 

@@ -7,20 +7,22 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e61c8819e7ccd868ec92458cff69c37f9277d80
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573876"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029620"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Vytvořit řadič dat v Azure Data Studio
 
 Můžete vytvořit řadič dat pomocí Azure Data Studio prostřednictvím Průvodce nasazením a poznámkových bloků.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+V současné době můžete vytvořit řadič dat pomocí metody popsané v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,13 +35,13 @@ Můžete vytvořit řadič dat pomocí Azure Data Studio prostřednictvím Prův
 Pomocí těchto kroků vytvoříte řadič dat ARC Azure pomocí Průvodce nasazením.
 
 1. V Azure Data Studio klikněte na kartu připojení na levém navigačním panelu.
-2. Klikněte na tlačítko **...** v horní části panelu připojení a vyberte **nové nasazení...**
-3. V Průvodci vytvořením nového nasazení zvolte možnost **řadič dat ARC Azure** a pak klikněte na tlačítko **Vybrat** v dolní části.
-4. Ujistěte se, že požadované nástroje jsou k dispozici a splňují požadované verze. **Klikněte na tlačítko Další**.
-5. Použijte výchozí soubor kubeconfig nebo vyberte jiný.  Klikněte na **Next** (Další).
-6. Vyberte kontext clusteru Kubernetes. Klikněte na **Next** (Další).
-7. Vyberte konfigurační profil nasazení v závislosti na vašem cílovém clusteru Kubernetes. **Klikněte na tlačítko Další**.
-8. Pokud používáte službu Azure Red Hat OpenShift nebo službu Red Hat OpenShift Container Platform, použijte omezení kontextu zabezpečení. Postupujte podle pokynů v tématu [použití omezení kontextu zabezpečení pro datové služby s podporou ARC Azure na OpenShift](how-to-apply-security-context-constraint.md).
+1. Klikněte na tlačítko **...** v horní části panelu připojení a vyberte **nové nasazení...**
+1. V Průvodci vytvořením nového nasazení zvolte možnost **řadič dat ARC Azure** a pak klikněte na tlačítko **Vybrat** v dolní části.
+1. Ujistěte se, že požadované nástroje jsou k dispozici a splňují požadované verze. **Klikněte na tlačítko Další**.
+1. Použijte výchozí soubor kubeconfig nebo vyberte jiný.  Klikněte na **Next** (Další).
+1. Vyberte kontext clusteru Kubernetes. Klikněte na **Next** (Další).
+1. Vyberte konfigurační profil nasazení v závislosti na vašem cílovém clusteru Kubernetes. **Klikněte na tlačítko Další**.
+1. Pokud používáte službu Azure Red Hat OpenShift nebo službu Red Hat OpenShift Container Platform, použijte omezení kontextu zabezpečení. Postupujte podle pokynů v tématu [použití omezení kontextu zabezpečení pro datové služby s podporou ARC Azure na OpenShift](how-to-apply-security-context-constraint.md).
 
    >[!IMPORTANT]
    >Na platformě Azure Red Hat OpenShift nebo Red Hat OpenShift Container Platform musíte před vytvořením kontroleru dat použít omezení kontextu zabezpečení.
@@ -48,23 +50,21 @@ Pomocí těchto kroků vytvoříte řadič dat ARC Azure pomocí Průvodce nasaz
 1. Vyberte umístění Azure.
    
    Tady je umístění Azure, ve kterém je toto umístění v Azure, kde se uloží *metadata* o řadiči dat a instancích databáze, které spravuje. Řadič dat a instance databáze se ve vašem clusteru Kubernetes ve skutečnosti vytvoří všude, kde to může být.
+   
+   Po dokončení klikněte na **Další**.
 
-10. Vyberte příslušný režim připojení. Přečtěte si další informace o [režimech připojení](./connectivity.md). **Klikněte na tlačítko Další**.
-
-    Pokud vyberete možnost režim přímého připojení, budou se vyžadovat přihlašovací údaje instančního objektu, jak je popsáno v tématu [Vytvoření instančního objektu](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal).
-
-11. Zadejte název pro řadič dat a pro obor názvů, ve kterém bude vytvořen řadič dat.
+1. Zadejte název pro řadič dat a pro obor názvů, ve kterém bude vytvořen řadič dat.
 
     Řadič dat a název oboru názvů se použijí k vytvoření vlastního prostředku v clusteru Kubernetes, aby musely odpovídat [konvencím pojmenování Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
     
     Pokud obor názvů již existuje, bude použit, pokud obor názvů již neobsahuje jiné objekty Kubernetes – lusky atd.  Pokud obor názvů neexistuje, bude proveden pokus o vytvoření oboru názvů.  Vytvoření oboru názvů v clusteru Kubernetes vyžaduje oprávnění správce clusteru Kubernetes.  Pokud nemáte oprávnění správce clusteru Kubernetes, požádejte správce clusteru Kubernetes o provedení prvních několika kroků v článku [Vytvoření kontroleru dat pomocí Kubernetes-Native nástrojů](./create-data-controller-using-kubernetes-native-tools.md) , které musí před dokončením tohoto průvodce provést správce Kubernetes.
 
 
-12. Vyberte třídu úložiště, do které se bude řadič dat nasazovat. 
-13.  Zadejte uživatelské jméno a heslo a potvrďte heslo pro uživatelský účet správce kontroleru dat. Klikněte na **Next** (Další).
+1. Vyberte třídu úložiště, do které se bude řadič dat nasazovat. 
+1.  Zadejte uživatelské jméno a heslo a potvrďte heslo pro uživatelský účet správce kontroleru dat. Klikněte na **Next** (Další).
 
-14. Zkontrolujte konfiguraci nasazení.
-15. Kliknutím na **nasadit** nasadíte požadovanou konfiguraci nebo **skript do poznámkového bloku** , abyste si mohli prohlédnout pokyny pro nasazení nebo udělat změny, jako jsou názvy tříd úložiště nebo typy služeb. V horní části poznámkového bloku klikněte na **Spustit vše** .
+1. Zkontrolujte konfiguraci nasazení.
+1. Kliknutím na **nasadit** nasadíte požadovanou konfiguraci nebo **skript do poznámkového bloku** , abyste si mohli prohlédnout pokyny pro nasazení nebo udělat změny, jako jsou názvy tříd úložiště nebo typy služeb. V horní části poznámkového bloku klikněte na **Spustit vše** .
 
 ## <a name="monitoring-the-creation-status"></a>Monitorování stavu vytváření
 
