@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2021
 ms.author: yelevin
 ms.openlocfilehash: 4ada570502d913283ba9ee4cc4c65b7bdd853935
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101744686"
 ---
 # <a name="connect-your-google-workspace-to-azure-sentinel"></a>Připojit pracovní prostor Google k Azure Sentinel
@@ -31,7 +31,7 @@ Datový konektor pro [pracovní prostor Google (dříve G Suite)](https://worksp
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete shromažďovat data pracovního prostoru Google, musíte mít následující oprávnění a přihlašovací údaje:
 

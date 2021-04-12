@@ -6,17 +6,17 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
 ms.openlocfilehash: a5e623b0429194db6d03beb674679bd10e337844
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869465"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
 V tomto článku se dozvíte, jak spravovat existující cluster služeb ML v Azure HDInsight, aby se prováděly úlohy, jako je přidání více souběžných uživatelů, vzdálené připojení ke clusteru služeb ML, změna výpočetního kontextu atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 

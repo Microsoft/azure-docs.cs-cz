@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: 775785e1b5130499d69b269e72f5c774e9e5f3f9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 5f0552e09464a6b571a665cfe3895f48c3aa8c41
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107024058"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258448"
 ---
 # <a name="preview-features-for-postgresql---hyperscale-citus"></a>Funkce ve verzi Preview pro PostgreSQL – škálovatelné (Citus)
 
@@ -23,16 +23,18 @@ Azure Database for PostgreSQL – Citus () nabízí verze Preview pro nevydané 
 
 Tady jsou funkce, které jsou aktuálně dostupné pro verzi Preview:
 
-* **[Sloupcové úložiště](concepts-hyperscale-columnar.md)**.
-  Ukládat sloupce vybraných tabulek (nikoli řádky) na disk souvisle. Podporuje kompresi na disku. Vhodné pro úlohy pro analytické a datové sklady.
+* **[Úroveň Basic](concepts-hyperscale-tiers.md)** Spusťte skupinu serverů pouze pomocí uzlu koordinátora a žádného pracovního uzlu. Ekonomický způsob, jak provádět počáteční testování a vývoj a zpracovávat malé produkční úlohy.
 * **[PostgreSQL 12 a 13](concepts-hyperscale-versions.md)**.
   Ve skupině serverů použijte nejnovější verzi databáze.
-* **[Úroveň Basic](concepts-hyperscale-tiers.md)** Spusťte skupinu serverů pouze pomocí uzlu koordinátora a žádného pracovního uzlu. Ekonomický způsob, jak provádět počáteční testování a vývoj a zpracovávat malé produkční úlohy.
+* **[Citus 10](concepts-hyperscale-versions.md#citus-and-other-extension-versions)**.
+  Automaticky nainstalovány na skupiny serverů se systémem PostgreSQL 13.
+* **[Sloupcové úložiště](concepts-hyperscale-columnar.md)**.
+  Ukládat sloupce vybraných tabulek (nikoli řádky) na disk souvisle. Podporuje kompresi na disku. Vhodné pro úlohy pro analytické a datové sklady.
 * **[Čtení replik](howto-hyperscale-read-replicas-portal.md)** (pouze v současnosti stejné oblasti). Jakékoli změny, ke kterým dojde ve skupině primárního serveru, se projeví ve své replice a dotazy na repliku nezpůsobí žádné další zatížení originálu.
   Repliky jsou užitečným nástrojem pro zlepšení výkonu úloh jen pro čtení.
 * **[Spravované PgBouncer](concepts-hyperscale-limits.md#managed-pgbouncer-preview)**.
   Připojení Pooler, které umožňuje mnoha klientům připojit se ke skupině serverů najednou a zároveň omezit počet aktivních připojení. Splňuje požadavky na připojení a udržuje plynulý chod uzlu koordinátora.
-* **[PgAudit](concepts-hyperscale-audit.md)**. Poskytuje podrobné protokolování relací a objektů auditu prostřednictvím standardního protokolovacího zařízení PostgreSQL. Vytváří protokoly auditu, které jsou nutné pro splnění určitých státních nebo finančních auditů certifikace nebo ISO.
+* **[pgAudit](concepts-hyperscale-audit.md)**. Poskytuje podrobné protokolování relací a objektů auditu prostřednictvím standardního protokolovacího zařízení PostgreSQL. Vytváří protokoly auditu, které jsou nutné pro splnění určitých státních nebo finančních auditů certifikace nebo ISO.
 
 ### <a name="available-regions-for-preview-features"></a>Dostupné oblasti pro funkce ve verzi Preview
 

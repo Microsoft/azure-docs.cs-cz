@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: f6705b5f72aaa8f990aaf3b1daa33697b690d1f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8768acc8d4720a750c4c7f7e0f40340aeeff279d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608880"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449048"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -309,7 +309,7 @@ Vyhrazená ustanovení HSM Thales Luna 7 HSM. Zde je souhrn maximálního výkon
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Otázka: kolik klíčů je možné podporovat v vyhrazeném modulu HSM?
 
-Maximální počet klíčů je funkce dostupné paměti. SafeNet Luna 7 modelu A790 používá má 32MB paměti. Následující čísla se vztahují také na páry klíčů, pokud používáte asymetrické klíče.
+Maximální počet klíčů je funkce dostupné paměti. Thales Luna 7 modelu A790 používá má 32MB paměti. Následující čísla se vztahují také na páry klíčů, pokud používáte asymetrické klíče.
 
 * RSA-2048 – 19 000
 * ECC-P256-91 000

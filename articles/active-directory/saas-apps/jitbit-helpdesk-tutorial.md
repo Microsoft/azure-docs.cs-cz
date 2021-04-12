@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: jeedes
 ms.openlocfilehash: b3fbf73ab51092f614a416355477fc552a404fd3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104581796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Azure Active Directory integrace s helpdeskem Jitbit
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Jitbit helpdesk s Azure Active Directo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Jitbit helpdesku pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -110,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Jitbit helpdesku.
 
@@ -122,13 +122,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-jitbit-helpdesk-sso"></a>Konfigurace jednotného přihlašování Jitbit helpdesku
+## <a name=&quot;configure-jitbit-helpdesk-sso&quot;></a>Konfigurace jednotného přihlašování Jitbit helpdesku
 
 1. V jiném okně webového prohlížeče se přihlaste k webu společnosti Jitbit helpdesku jako správce.
 
 1. Na panelu nástrojů v horní části klikněte na možnost **Správa**.
 
-    ![Správa](./media/jitbit-helpdesk-tutorial/settings.png "Správa")
+    ![Správa](./media/jitbit-helpdesk-tutorial/settings.png &quot;Správa")
 
 1. Klikněte na **Obecné nastavení**.
 

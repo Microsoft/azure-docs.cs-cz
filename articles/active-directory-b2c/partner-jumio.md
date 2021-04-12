@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e344c849a8e9021daea9caebacec3289b99d03e6
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928660"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256663"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Jumio s využitím Azure Active Directory B2C
 
@@ -139,7 +139,7 @@ K vytvoření řetězce použijte následující skript prostředí PowerShell:
 
 1. Ve složce policies (zásady) vyberte [zásady Azure AD B2C](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies) .
 
-2. Pomocí [tohoto článku](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) si stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
+2. Pomocí [tohoto článku](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) si stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
 
 3. Nakonfigurujte zásady pro klienta Azure AD B2C.
 
@@ -170,4 +170,4 @@ Další informace najdete v následujících článcích:
 
 - [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

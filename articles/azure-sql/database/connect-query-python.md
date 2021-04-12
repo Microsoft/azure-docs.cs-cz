@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/19/2020
 ms.openlocfilehash: f21e11e33d3ddf1489dba3419766a8adaa878d5f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103491958"
 ---
 # <a name="quickstart-use-python-to-query-a-database"></a>Rychlý Start: použití Pythonu k dotazování databáze
@@ -25,7 +25,7 @@ ms.locfileid: "103491958"
 
 V tomto rychlém startu pomocí Pythonu se můžete připojit k Azure SQL Database, spravované instanci SQL Azure nebo synapse SQL Database a použít příkazy T-SQL k dotazování dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 

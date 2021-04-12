@@ -3,17 +3,17 @@ title: Nastavte zásady uchovávání informací v Azure DevTest Labs | Microsof
 description: Naučte se konfigurovat zásady uchovávání informací, vyčistit továrnu a vyřadit staré image z DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550021"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727531"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Nastavení zásad uchovávání informací v Azure DevTest Labs
 Tento článek popisuje, jak nastavit zásady uchovávání informací, vyčistit továrnu a vyřazení starých imagí ze všech ostatních DevTest Labs v organizaci. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než budete pokračovat, ujistěte se, že jste postupovali podle těchto článků:
 
 - [Vytvoření objektu pro vytváření imagí](image-factory-create.md)
@@ -66,5 +66,5 @@ Přidání nového obrázku do továrny je také jednoduché. Pokud chcete do to
 ## <a name="next-steps"></a>Další kroky
 1. [Naplánujte sestavení nebo vydání](/azure/devops/pipelines/build/triggers?tabs=designer) , aby se továrna imagí pravidelně spouštěla. Pravidelně obnovuje image generované v továrně.
 2. Vytvořte pro svou továrnu více zlatých imagí. Můžete také zvážit [Vytvoření artefaktů](devtest-lab-artifact-author.md) pro skriptování dalších částí úloh nastavení virtuálních počítačů a zahrnutí artefaktů do imagí pro vytváření.
-4. Vytvořte [samostatné sestavení/vydání](/azure/devops/pipelines/overview?view=azure-devops-2019) , ke kterému se má skript **DistributeImages** spustit samostatně. Tento skript můžete spustit, když provedete změny Labs.jsa dostanete image zkopírované do cílové laboratoře, aniž byste museli znovu vytvářet všechny image znovu.
+4. Vytvořte [samostatné sestavení/vydání](/azure/devops/pipelines/overview) , ke kterému se má skript **DistributeImages** spustit samostatně. Tento skript můžete spustit, když provedete změny Labs.jsa dostanete image zkopírované do cílové laboratoře, aniž byste museli znovu vytvářet všechny image znovu.
 

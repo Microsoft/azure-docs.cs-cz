@@ -10,18 +10,18 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 322f54e4fa2e8096f68d5bbc216032a5b4e53c22
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645381"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726646"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Nainstalovat [Node.js](https://nodejs.org/en/download/) aktivní LTS a verze LTS údržby (doporučeno 8.11.1 a 10.14.1).
+- Nainstalovat [Node.js](https://nodejs.org/en/download/) aktivní LTS a verze LTS údržby.
 - Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset **zaznamenat koncový bod prostředku** .
 - Vytvořte *tři* uživatele služby ACS a vydejte jim [token přístupu uživatele](../../access-tokens.md)k přístupovému tokenu. Nezapomeňte nastavit rozsah pro **chat** a **Poznamenejte si řetězec tokenu a také řetězec userId**. Úplná ukázka vytvoří vlákno se dvěma počátečními účastníky a pak přidá třetího účastníka do vlákna.
 
@@ -165,35 +165,37 @@ Po vyřešení `createChatThread` Metoda vrátí hodnotu `CreateChatThreadResult
 
 ```JavaScript
 async function createChatThread() {
-    let createThreadRequest = {
-        topic: 'Preparation for London conference',
-        participants: [{
-                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                    displayName: 'Jack'
-                }, {
-                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                    displayName: 'Geeta'
-                }]
-    };
-    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createChatThreadResult.chatThread.id;
-    return threadId;
-    }
+  const createChatThreadRequest = {
+    topic: "Hello, World!"
+  };
+  const createChatThreadOptions = {
+    participants: [
+      {
+        id: '<USER_ID>',
+        displayName: '<USER_DISPLAY_NAME>'
+      }
+    ]
+  };
+  const createChatTtreadResult = await chatClient.createChatThread(
+    createChatThreadRequest,
+    createChatThreadOptions
+  );
+  const threadId = createChatThreadResult.chatThread.id;
+  return threadId;
+}
 
 createChatThread().then(async threadId => {
-    console.log(`Thread created:${threadId}`);
-    // PLACEHOLDERS
-    // <CREATE CHAT THREAD CLIENT>
-    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-    // <SEND MESSAGE TO A CHAT THREAD>
-    // <LIST MESSAGES IN A CHAT THREAD>
-    // <ADD NEW PARTICIPANT TO THREAD>
-    // <LIST PARTICIPANTS IN A THREAD>
-    // <REMOVE PARTICIPANT FROM THREAD>
-    });
+  console.log(`Thread created:${threadId}`);
+  // PLACEHOLDERS
+  // <CREATE CHAT THREAD CLIENT>
+  // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+  // <SEND MESSAGE TO A CHAT THREAD>
+  // <LIST MESSAGES IN A CHAT THREAD>
+  // <ADD NEW PARTICIPANT TO THREAD>
+  // <LIST PARTICIPANTS IN A THREAD>
+  // <REMOVE PARTICIPANT FROM THREAD>
+  });
 ```
-
-Nahraďte **USER_ID_FOR_JACK** a **USER_ID_FOR_GEETA** identifikátory uživatelů získaných při vytváření uživatelů a tokenů ([tokeny přístupu uživatele](../../access-tokens.md)).
 
 Po aktualizaci karty prohlížeče by se v konzole měla zobrazit následující:
 ```console
@@ -214,6 +216,18 @@ Přidejte tento kód místo `<CREATE CHAT THREAD CLIENT>` komentáře v **client
 Chat Thread client for threadId: <threadId>
 ```
 
+## <a name="list-all-chat-threads"></a>Zobrazit seznam všech vláken chatu
+
+`listChatThreads`Metoda vrátí `PagedAsyncIterableIterator` typ `ChatThreadItem` . Dá se použít k výpisu všech vláken chatu.
+Iterátorem `[ChatThreadItem]` je odpověď vrácená ze seznamu vláken.
+
+```JavaScript
+const threads = chatClient.listChatThreads();
+for await (const thread of threads) {
+   // your code here
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Odeslání zprávy do konverzačního vlákna
 
 Použijte `sendMessage` metodu k odeslání zprávy do vlákna identifikovaného pomocí IDvlákna.
@@ -230,17 +244,17 @@ Použijte `sendMessage` metodu k odeslání zprávy do vlákna identifikovaného
 `SendChatMessageResult` je odpověď vrácená z odeslání zprávy, obsahuje ID, což je jedinečné ID zprávy.
 
 ```JavaScript
-let sendMessageRequest =
+const sendMessageRequest =
 {
-    content: 'Hello Geeta! Can you share the deck for the conference?'
+  content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    senderDisplayName : 'Jack',
-    type: 'text'
+  senderDisplayName : 'Jack',
+  type: 'text'
 };
-let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
-let messageId = sendChatMessageResult.id;
+const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
+const messageId = sendChatMessageResult.id;
 ```
 
 Přidejte tento kód místo `<SEND MESSAGE TO A CHAT THREAD>` komentáře v **client.js**, aktualizujte kartu prohlížeče a zaškrtněte konzolu.
@@ -257,8 +271,8 @@ Díky signalizaci v reálném čase se můžete přihlásit k odběru nových p�
 await chatClient.startRealtimeNotifications();
 // subscribe to new notification
 chatClient.on("chatMessageReceived", (e) => {
-    console.log("Notification chatMessageReceived!");
-    // your code here
+  console.log("Notification chatMessageReceived!");
+  // your code here
 });
 
 ```
@@ -269,23 +283,18 @@ Alternativně můžete načíst zprávy konverzace pomocí cyklického dotazová
 
 ```JavaScript
 
-let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
-let nextMessage = await pagedAsyncIterableIterator.next();
-    while (!nextMessage.done) {
-        let chatMessage = nextMessage.value;
-        console.log(`Message :${chatMessage.content}`);
-        // your code here
-        nextMessage = await pagedAsyncIterableIterator.next();
-    }
+const messages = chatThreadClient.listMessages();
+for await (const message of messages) {
+   // your code here
+}
 
 ```
 Přidejte tento kód místo `<LIST MESSAGES IN A CHAT THREAD>` komentáře v **client.js**.
 Aktualizujte kartu v konzole nástroje byste měli najít seznam zpráv odeslaných v tomto vlákně chatu.
 
+`listMessages` vrátí různé typy zpráv, které mohou být identifikovány pomocí `chatMessage.type` . 
 
-`listMessages` Vrátí nejnovější verzi zprávy, včetně všech úprav nebo odstranění, ke kterým došlo u zprávy pomocí `updateMessage` a `deleteMessage` .
-Pro odstraněné zprávy `chatMessage.deletedOn` vrátí hodnotu DateTime, která indikuje, kdy se tato zpráva odstranila. U upravených zpráv `chatMessage.editedOn` vrátí hodnotu DateTime, která indikuje, kdy byla zpráva upravena. Původní čas vytvoření zprávy lze použít pomocí `chatMessage.createdOn` , který lze použít k řazení zpráv.
-
+Další podrobnosti najdete v tématu [typy zpráv](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 
@@ -300,14 +309,14 @@ Před voláním `addParticipants` metody se ujistěte, že jste pro tohoto uživ
 
 ```JavaScript
 
-let addParticipantsRequest =
+const addParticipantsRequest =
 {
-    participants: [
-        {
-            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
-            displayName: 'Jane'
-        }
-    ]
+  participants: [
+    {
+      id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+      displayName: 'Jane'
+    }
+  ]
 };
 
 await chatThreadClient.addParticipants(addParticipantsRequest);
@@ -317,16 +326,10 @@ Nahradit **NEW_PARTICIPANT_USER_ID** [novým ID uživatele](../../access-tokens.
 
 ## <a name="list-users-in-a-chat-thread"></a>Vypsat uživatele ve vlákně chatu
 ```JavaScript
-async function listParticipants() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
-   let next = await pagedAsyncIterableIterator.next();
-   while (!next.done) {
-      let user = next.value;
-      console.log(`User :${user.displayName}`);
-      next = await pagedAsyncIterableIterator.next();
-   }
+const participants = chatThreadClient.listParticipants();
+for await (const participant of participants) {
+   // your code here
 }
-await listParticipants();
 ```
 Přidejte tento kód místo `<LIST PARTICIPANTS IN A THREAD>` komentáře v **client.js**, aktualizujte kartu prohlížeče a zkontrolujte konzolu, měli byste vidět informace o uživatelích ve vlákně.
 

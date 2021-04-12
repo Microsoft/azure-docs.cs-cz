@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
 ms.openlocfilehash: a903eb6000cdd5212ad358cae4952e27a4719070
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98725257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SuccessFactors
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak integrovat SuccessFactors s Azure Active Director
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709935"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581614"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Shromažďování a analýza dat protokolu pro Azure Kognitivní hledání
 
-Diagnostické nebo provozní protokoly poskytují přehled o podrobných operacích služby Azure Kognitivní hledání a jsou užitečné pro monitorování procesů služeb a úloh. Interně společnost Microsoft zachovává systémové informace v back-endu po krátkou dobu (asi 30 dní), stačí pro šetření a analýzu, pokud zadáte lístek podpory. Pokud ale chcete vlastnictví pro provozní data, měli byste nakonfigurovat nastavení diagnostiky, které určuje, kde se mají shromažďovat informace o protokolování.
+Diagnostické nebo provozní protokoly poskytují přehled o podrobných operacích Azure Kognitivní hledání a jsou užitečné pro monitorování stavu a procesů služby. Interně společnost Microsoft zachovává systémové informace v back-endu po krátkou dobu (asi 30 dní), stačí pro šetření a analýzu, pokud zadáte lístek podpory. Pokud ale chcete vlastnictví pro provozní data, měli byste nakonfigurovat nastavení diagnostiky, které určuje, kde se mají shromažďovat informace o protokolování.
 
 Protokolování diagnostiky je povoleno prostřednictvím integrace s [Azure monitor](../azure-monitor/index.yml). 
 

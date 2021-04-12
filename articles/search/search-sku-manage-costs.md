@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539554"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580616"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Jak odhadnout a spravovat náklady na službu Azure Kognitivní hledání
 
@@ -64,7 +64,7 @@ Minimální poplatek je první jednotka vyhledávání (jedna replika x jeden od
 
 Kromě minima můžete přidat repliky a oddíly nezávisle na sobě. Přírůstkové zvýšení kapacity prostřednictvím replik a oddílů zvýší vaše vyúčtování na základě následujícího vzorce: **(repliky × oddíly × fakturace)**, kde sazba, která se vám bude účtovat, bude záviset na cenové úrovni, kterou vyberete.
 
-Při odhadování nákladů na řešení vyhledávání Pamatujte na to, že ceny a kapacita nejsou lineární (dvojnásobná kapacita je větší než dvojnásobek nákladů). Příklad toho, jak vzorec funguje, najdete v tématu [jak přidělit repliky a oddíly](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+Při odhadování nákladů na řešení vyhledávání Pamatujte na to, že ceny a kapacita nejsou lineární (dvojnásobnou kapacitu je víc než dvojnásobek nákladů na stejnou úroveň). V určitém okamžiku může přepínání až do vyšší úrovně poskytovat lepší a rychlejší výkon přibližně ve stejném cenovém bodě. Další informace a příklad najdete v tématu [upgrade na úroveň Standard S2](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier).
 
 ### <a name="bandwidth-charges"></a>Poplatky za šířku pásma
 

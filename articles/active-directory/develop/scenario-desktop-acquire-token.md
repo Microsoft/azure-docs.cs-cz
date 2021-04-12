@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c63ee686ae218a696069465bb8d2d1d7413a998e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 62296acaba77017cd71227582447b9fa7c4f1934
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799084"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090235"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -257,7 +257,7 @@ WithParentActivityOrWindow(IWin32Window window)
 // Mac
 WithParentActivityOrWindow(NSWindow window)
 
-// .Net Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
+// .NET Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
 WithParentActivityOrWindow(object parent).
 ```
 
@@ -277,15 +277,26 @@ Mark
 
 `WithPrompt()` slouží k řízení interaktivity s uživatelem zadáním výzvy.
 
-![Obrázek znázorňující pole ve struktuře výzvy Tyto konstantní hodnoty řídí interakce s uživatelem tím, že definují typ výzvy zobrazený metodou WithPrompt ().](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![Obrázek znázorňující pole ve struktuře výzvy Tyto konstantní hodnoty řídí interakce s uživatelem tím, že definují typ výzvy zobrazený metodou WithPrompt ().](https://user-images.githubusercontent.com/34331512/112267137-3f1c3a00-8c32-11eb-97fb-33604311329a.png)
 
 Třída definuje následující konstanty:
 
 - ``SelectAccount`` vynutí, aby služba STS obsahovala dialogové okno Výběr účtu, které obsahuje účty, pro které má uživatel relaci. Tato možnost je užitečná, když vývojáři aplikací chtějí umožnit uživatelům výběr mezi různými identitami. Tato možnost Drives MSAL se pošle ``prompt=select_account`` poskytovateli identity. Tato možnost je výchozí. Na základě dostupných informací, jako je například účet a přítomnost relace pro uživatele, je vhodné zajistit nejlepší možné prostředí. Neměňte ho, pokud nemáte dobrý důvod to udělat.
 - ``Consent`` umožňuje vývojáři aplikace vynutit, aby se uživateli zobrazila výzva k vyjádření souhlasu, a to i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity. Tato možnost se dá použít v některých aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživateli zobrazovalo dialogové okno souhlasu při každém použití aplikace.
 - ``ForceLogin`` umožňuje, aby vývojář aplikace uživateli zobrazil výzvu k zadání přihlašovacích údajů, a to i v případě, že se tato výzva uživateli nemusí potřebovat. Tato možnost může být užitečná, pokud chcete, aby se uživatel znovu přihlásil, pokud se nepovede k získání tokenu. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Někdy se používá v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel znovu přihlásí při každém přístupu k určitým částem aplikace.
+- ``Create`` aktivuje prostředí pro registraci, které se používá pro externí identity, a to odesláním `prompt=create` zprostředkovateli identity. Tato výzva by se neměla posílat pro aplikace Azure AD B2C. Další informace najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace](https://aka.ms/msal-net-prompt-create).
 - ``Never`` (jenom pro .NET 4,5 a WinRT) se uživatel nevyzve, ale pokusí se použít soubor cookie uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu věnovaném webovým zobrazením v MSAL.NET. Použití této možnosti může selhat. V takovém případě `AcquireTokenInteractive` vyvolá výjimku, která oznamuje, že je potřeba interakce uživatelského rozhraní. Budete muset použít jiný `Prompt` parametr.
 - ``NoPrompt`` nepošle žádné výzvy poskytovateli identity. Tato možnost je užitečná jenom pro Azure Active Directory (Azure AD) B2C upravit zásady profilu. Další informace najdete v tématu [Azure AD B2C specifických](https://aka.ms/msal-net-b2c-specificities)pro.
+
+#### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
+
+Tato metoda umožňuje zadat, jestli chcete vynutit použití vloženého webviewu nebo systémového webviewu (Pokud je k dispozici). Další informace najdete v tématu [použití webových prohlížečů](msal-net-web-browsers.md).
+
+ ```csharp
+ var result = await app.AcquireTokenInteractive(scopes)
+                   .WithUseEmbeddedWebView(true)
+                   .ExecuteAsync();
+  ```
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 

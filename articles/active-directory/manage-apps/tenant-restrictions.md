@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/23/2021
+ms.date: 4/6/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4e876b3fc679dd275f38168b99b9a3a718be58
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589323"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552664"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -97,6 +97,8 @@ Tato část popisuje prostředí pro koncové uživatele i správce.
 
 Ukázkový uživatel se nachází v síti Contoso, ale pokouší se získat přístup k instanci Fabrikam sdílené aplikace SaaS, jako je Outlook online. Pokud je Fabrikam neautorizovaným klientem pro instanci contoso, uživateli se zobrazí zpráva o odepření přístupu, která říká, že se snažíte získat přístup k prostředku, který patří do organizace, kterou vaše IT oddělení neschválilo.
 
+![Chybová zpráva omezení tenanta od dubna 2021](./media/tenant-restrictions/error-message.png)
+
 ### <a name="admin-experience"></a>Prostředí pro správu
 
 I když se konfigurace omezení tenanta provádí v podnikové infrastruktuře proxy serveru, můžou správci získat přístup k sestavám omezení klientů přímo v Azure Portal. Zobrazení sestav:
@@ -113,14 +115,14 @@ Sestava může obsahovat omezené informace, jako je ID cílového adresáře, k
 
 Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určení rozsahu sestavy. Můžete filtrovat podle určitého časového intervalu, uživatele, aplikace, klienta nebo stavu. Pokud vyberete tlačítko **sloupce** , můžete se rozhodnout zobrazit data s libovolnou kombinací následujících polí:
 
-- **Uživatel** – toto pole může mít odebrané identifikovatelné osobní údaje, kde bude nastaveno na `00000000-0000-0000-0000-000000000000` . 
+- **Uživatel** – toto pole může mít odebrané osobní údaje, kde bude nastaveno na `00000000-0000-0000-0000-000000000000` . 
 - **Aplikace**
 - **Stav**
 - **Date** (Datum)
 - **Datum (UTC)** – kde UTC je koordinovaný světový čas
 - **IP adresa**
 - **Klient**
-- **Uživatelské jméno** – toto pole může mít odebrané identifikovatelné osobní údaje, kde bude nastaveno na `{PII Removed}@domain.com`
+- **Uživatelské jméno** – toto pole může mít odebrané osobní údaje, kde se nastaví na `{PII Removed}@domain.com`
 - **Umístění**
 - **ID cílového tenanta**
 
@@ -207,7 +209,7 @@ Některé organizace se pokoušejí tuto chybu opravit tak, že blokují `login.
 
 ### <a name="configuration-for-consumer-apps"></a>Konfigurace pro spotřebitelské aplikace
 
-Zatímco `Restrict-Access-To-Tenants` záhlaví funguje jako seznam povolených, účet Microsoft (MSA) blok funguje jako signál odepřít, oznamuje účet Microsoft platformě, aby nepovolovala uživatelům přihlašovat se k aplikacím spotřebitele. K odeslání tohoto signálu se `sec-Restrict-Tenant-Access-Policy` Hlavička vloží do provozu v provozu `login.live.com` pomocí stejného firemního proxy serveru nebo brány firewall. [](#proxy-configuration-and-requirements) Hodnota hlavičky musí být `restrict-msa` . Když je hlavička přítomná a aplikace příjemce se pokouší přihlašovat přímo k uživateli, toto přihlášení se zablokuje.
+Zatímco `Restrict-Access-To-Tenants` záhlaví funguje jako povolených, blok účet Microsoft (MSA) funguje jako signál odepřít, oznamuje účet Microsoft platformě, aby nepovolovala uživatelům přihlašovat se k aplikacím příjemce. K odeslání tohoto signálu se `sec-Restrict-Tenant-Access-Policy` Hlavička vloží do provozu v provozu `login.live.com` pomocí stejného firemního proxy serveru nebo brány firewall. [](#proxy-configuration-and-requirements) Hodnota hlavičky musí být `restrict-msa` . Když je hlavička přítomná a aplikace příjemce se pokouší přihlašovat přímo k uživateli, toto přihlášení se zablokuje.
 
 V tuto chvíli se ověřování u uživatelských aplikací nezobrazuje v [protokolech správce](#admin-experience), protože Login.Live.com se hostuje nezávisle na službě Azure AD.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426259"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552304"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -83,7 +83,7 @@ Klientská aplikace, kterou vytvoříte v tomto kurzu, používá několik služ
 Pokud chcete pro tento kurz použít jinou oblast, můžou tyto faktory omezit vaše možnosti:
 
 * Ujistěte se, že používáte [podporovanou oblast Azure](regions.md#voice-assistants).
-* Kanál Direct line Speech používá službu pro převod textu na mluvené slovo, která má standardní a neuronové hlasy. Hlasy neuronové jsou [omezené na konkrétní oblasti Azure](regions.md#standard-and-neural-voices).
+* Kanál Direct line Speech používá službu pro převod textu na mluvené slovo, která má neuronové a standardní hlasy. Neuronové a standardní hlasy jsou k dispozici v těchto [oblastech Azure](regions.md#neural-and-standard-voices).
 
 Další informace o oblastech najdete v tématu věnovaném [umístěním Azure](https://azure.microsoft.com/global-infrastructure/locations/).
 
@@ -328,7 +328,7 @@ Pokud se zobrazí chybová zpráva v hlavním okně aplikace, použijte tuto tab
 |Chyba (AuthenticationFailure): upgrade protokolu WebSocket se nezdařil s chybou ověřování (401). Vyhledat správný klíč předplatného (nebo autorizační token) a název oblasti| Na stránce nastavení aplikace se ujistěte, že jste zadali správný klíč předplatného pro rozpoznávání řeči a jeho oblast.<br>Ujistěte se, že klíč řeči a klíčová oblast byly zadány správně. |
 |Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: před odesláním zprávy se nepovedlo připojit k robotovi. | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky**](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
 |Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1002. Podrobnosti o chybě: Server vrátil stavový kód "503", pokud byl očekáván stavový kód "101" | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky**](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
-|Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: kód stavu odpovědi neindikuje úspěch: 500 (Nenalezeno)| Vaše robot zadal neuronové hlas do výstupního pole [speaking](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) Activity, ale oblast Azure přidružená k vašemu klíči předplatného pro rozpoznávání řeči nepodporuje hlasy neuronové. Viz [hlasy Standard a neuronové](./regions.md#standard-and-neural-voices).|
+|Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: kód stavu odpovědi neindikuje úspěch: 500 (Nenalezeno)| Vaše robot zadal neuronové hlas do výstupního pole [speaking](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) Activity, ale oblast Azure přidružená k vašemu klíči předplatného pro rozpoznávání řeči nepodporuje hlasy neuronové. Viz [neuronové a standardní hlasy](./regions.md#neural-and-standard-voices).|
 
 Pokud se problém nevyřeší v tabulce, přečtěte si téma [asistenti hlasu: nejčastější dotazy](faq-voice-assistants.md). Pokud vaše potíže ještě nepůjde vyřešit po splnění všech kroků v tomto kurzu, zadejte prosím nový problém na  [stránce GitHubu hlasového pomocníka](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
@@ -475,7 +475,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 ## <a name="see-also"></a>Viz také
 
 * Nasazení do [oblasti Azure v blízkosti,](https://azure.microsoft.com/global-infrastructure/locations/) abyste viděli vylepšení doby odezvy robota
-* Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](./regions.md#standard-and-neural-voices)
+* Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](./regions.md#neural-and-standard-voices)
 * Ceny spojené s kanálem Direct line Speech:
   * [Ceny služby bot Service](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Služba řeči](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)

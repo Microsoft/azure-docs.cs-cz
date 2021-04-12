@@ -5,10 +5,10 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: 7aee201b0419b65c7ea8ddcb6f2d42ffaff4711e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101751058"
 ---
 |  | **Soukromý partnerský vztah** | **Partnerský vztah Microsoftu** |  **Veřejný partnerský vztah** (zastaralý pro nové okruhy) |

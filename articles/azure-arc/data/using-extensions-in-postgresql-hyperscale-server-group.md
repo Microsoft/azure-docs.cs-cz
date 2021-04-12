@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104949783"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Použijte rozšíření PostgreSQL ve skupině serverů PostgreSQL s podporou škálování na úrovni Azure ARC
@@ -46,11 +46,11 @@ Tato příručka povede ve scénáři použití dvou z těchto rozšíření:
 
 |Rozšíření   |Vyžaduje přidání do shared_preload_libraries  |Vyžaduje vytvoření |
 |-------------|--------------------------------------------------|---------------------- |
-|`pg_cron`      |Ne       |Ano        |
-|`pg_audit`     |Ano       |Ano        |
-|`plpgsql`      |Ano       |Ano        |
-|`postgis`      |Ne       |Ano        |
-|`plv8`      |Ne       |Ano        |
+|`pg_cron`      |No       |Yes        |
+|`pg_audit`     |Yes       |Yes        |
+|`plpgsql`      |Yes       |Yes        |
+|`postgis`      |No       |Yes        |
+|`plv8`      |No       |Yes        |
 
 ## <a name="add-extensions-to-the-shared_preload_libraries"></a>Přidat rozšíření do shared_preload_libraries
 Podrobnosti o tom, co se shared_preload_libraries, najdete v dokumentaci k PostgreSQL v [tomto](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)článku:

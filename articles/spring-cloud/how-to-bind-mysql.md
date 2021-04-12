@@ -8,10 +8,10 @@ ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: cc1c186f9acb6d49314f5d581a4b51ffe49d6627
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877863"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Navázání instance Azure Database for MySQL k aplikaci Azure jaře Cloud 
@@ -20,7 +20,7 @@ ms.locfileid: "104877863"
 
 Pomocí Azure jarního cloudu můžete automaticky navazovat vybrané služby Azure na své aplikace, místo abyste museli konfigurovat aplikaci pružinového spouštění ručně. V tomto článku se dozvíte, jak vytvořit propojení aplikace s instancí Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nasazená instance cloudu Azure pro jaře
 * Účet Azure Database for MySQL

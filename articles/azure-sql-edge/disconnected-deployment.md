@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93392074"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Nasazení Azure SQL Edge s Docker
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete Docker k vyžádání a spuštění image kon
 
 Tato image se skládá z Azure SQL Edge na základě Ubuntu 18,04. Dá se použít s modulem Docker 1.8 + v systému Linux nebo v Docker pro Mac/Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Docker Engine 1.8 + u jakékoli podporované distribuce systému Linux nebo Docker pro Mac/Windows. Další informace najdete v tématu [instalace Docker](https://docs.docker.com/engine/installation/). Vzhledem k tomu, že jsou image Azure SQL Edge založené na Ubuntu 18,04, doporučuje se použít hostitele Docker Ubuntu 18,04.
 - Ovladač úložiště Docker **overlay2** . Toto je výchozí nastavení pro většinu uživatelů. Pokud zjistíte, že nepoužíváte tohoto poskytovatele úložiště a potřebujete ho změnit, přečtěte si pokyny a upozornění v [dokumentaci k Docker pro konfiguraci overlay2](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver).

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 84ac8e8309d9f1d0536d0f7a16ab9cd9f3c10a2c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c1322eac7fd5ec1ead09a7b0197db931f96f8d48
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284751"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073675"
 ---
 <a name="HOLTop"></a>
 
@@ -209,11 +209,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak provádět základní úlohy pomocí knihovny OCR jazyka Java. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
+V tomto rychlém startu jste zjistili, jak nainstalovat knihovnu klienta pro rozpoznávání OCR a použít rozhraní API pro čtení. V dalším kroku se dozvíte víc o funkcích rozhraní API pro čtení.
 
 > [!div class="nextstepaction"]
->[Referenční informace k sadě OCR SDK (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
-
+>[Volání rozhraní API pro čtení](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [Přehled rozpoznávání OCR](../../overview-ocr.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).

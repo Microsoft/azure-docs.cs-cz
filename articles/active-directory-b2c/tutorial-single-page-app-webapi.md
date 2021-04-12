@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93421086"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: ochrana a udělení přístupu k Node.js webovému rozhraní API z jednostránkové aplikace s Azure AD B2C
@@ -34,7 +34,7 @@ V [prvním kurzu](tutorial-single-page-app.md) této série jste stáhli ukázku
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Proveďte kroky a požadavky v [kurzu: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C](tutorial-single-page-app.md)
 * [Visual Studio Code](https://code.visualstudio.com/) nebo jiný Editor kódu
