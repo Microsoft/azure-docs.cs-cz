@@ -4,10 +4,10 @@ description: Naučte se navrhovat aplikace Batch pro regionální výpadky.
 ms.topic: how-to
 ms.date: 12/30/2020
 ms.openlocfilehash: 51bcb0cfa35aacd24c0f79082491ef1fc7040889
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97831002"
 ---
 # <a name="design-your-batch-application-for-high-availability"></a>Návrh aplikace Batch pro vysokou dostupnost

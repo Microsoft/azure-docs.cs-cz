@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 7fc1822c219c6c881e3d788f6b0e56675cecc466
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445092"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105957964"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -22,13 +22,13 @@ Pomocí klientské knihovny obličeje pro Python:
 
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
+* [Vytvoření a výuka person](#create-and-train-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 * [Ověřit plošky](#verify-faces)
 
 [Referenční dokumentace](/python/api/azure-cognitiveservices-vision-face/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Ukázky](/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Python 3.x](https://www.python.org/)
@@ -86,7 +86,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úkoly s klientskou
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
-* [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
+* [Vytvoření a výuka person](#create-and-train-a-persongroup)
 * [Identifikace obličeje](#identify-a-face)
 * [Ověřit plošky](#verify-faces)
 
@@ -133,7 +133,7 @@ Použijte následující kód k vytištění podrobností o shodě do konzoly.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Vytvoření a výuka skupiny osob
+## <a name="create-and-train-a-persongroup"></a>Vytvoření a výuka person
 
 Následující kód vytvoří samostatnou **osobu** se třemi různými objekty **Person** . Přidružuje každou **osobu** k sadě ukázkových imagí a pak IT vlaky, aby dokázali rozpoznat každou osobu. 
 
@@ -174,7 +174,7 @@ Jakmile budete mít k plošky, je nutné, abyste vytvořili svoji **osobu** , ab
 Operace identifikace přebírá obrázek osoby (nebo více lidí) a hledá identitu každé plošky v imagi (vyhledávání rozpoznávání obličeje). Porovnává každou zjištěnou plochu s **osobou**, databázi různých objektů **osob** , jejichž funkce obličeje jsou známy.
 
 > [!IMPORTANT]
-> Aby bylo možné spustit tento příklad, musíte nejprve spustit kód v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group).
+> Aby bylo možné spustit tento příklad, musíte nejprve spustit kód v části [Vytvoření a výuka osoby](#create-and-train-a-persongroup).
 
 ### <a name="get-a-test-image"></a>Získat image testu
 

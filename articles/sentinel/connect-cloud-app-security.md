@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97835104"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
 
 Konektor [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) umožňuje streamovat výstrahy a [protokoly Cloud Discovery](/cloud-app-security/tutorial-shadow-it) z MCAS do služby Azure Sentinel. To vám umožní získat přehled o vašich cloudových aplikacích, získávat sofistikované analýzy, které vám pomůžou identifikovat a bojovat proti týká kybernetických hrozeb a řídit, jak se data cestují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Váš uživatel musí mít v pracovním prostoru oprávnění ke čtení a zápisu.
 - Váš uživatel musí mít oprávnění globálního správce nebo správce zabezpečení v tenantovi pracovního prostoru.
