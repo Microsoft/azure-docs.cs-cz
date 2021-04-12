@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Database for MySQL
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Database for MySQL. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d899d2759e13c7849a3cc3ef5629b9573a704615
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 879b6bced240c2b37d02c177f905a21a90670ca3
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032072"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091497"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>Azure Policy předdefinované definice pro Azure Database for MySQL
 

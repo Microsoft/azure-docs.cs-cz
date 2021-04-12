@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6b9c4bcf760387f6bbe380c9aa079df2f86a1847
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 67df1c822f34f45bb0931848f8015374a346673a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060648"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278435"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -104,7 +104,7 @@ V této části vytvoříte připojení partnerských vztahů mezi centrem a vir
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Připojení okruhu k bráně centra
 
-Po vytvoření brány můžete k ní připojit [okruh ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . ExpressRoute úrovně Standard nebo Premium, které jsou v ExpressRoute Global Reach – podporovaná umístění se můžou připojit k virtuální síti WAN ExpressRoute Gateway a využívat všechny možnosti služby Virtual WAN pro přenos dat (VPN-to-VPN, VPN a ExpressRoute Transit). ExpressRoute úrovně Standard a Premium, které se nacházejí v neGlobal Reachch umístěních, se můžou připojit k prostředkům Azure, ale nebudou moct využívat možnosti služby Virtual WAN pro přenos. ExpressRoute Local se podporuje u rozbočovačů Azure Virtual WAN, pokud je paprskový virtuální sítě připojený k virtuálnímu rozbočovači WAN ve stejné oblasti jako virtuální centrum sítě WAN.
+Po vytvoření brány můžete k ní připojit [okruh ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . ExpressRoute úrovně Standard nebo Premium, které jsou v ExpressRoute Global Reach – podporovaná umístění se můžou připojit k virtuální síti WAN ExpressRoute Gateway a využívat všechny možnosti služby Virtual WAN pro přenos dat (VPN-to-VPN, VPN a ExpressRoute Transit). ExpressRoute úrovně Standard a Premium, které se nacházejí v neGlobal Reachch umístěních, se můžou připojit k prostředkům Azure, ale nebudou moct využívat možnosti služby Virtual WAN pro přenos. ExpressRoute Local se podporuje i pro rozbočovače Azure Virtual WAN.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Připojení okruhu k bráně centra
 

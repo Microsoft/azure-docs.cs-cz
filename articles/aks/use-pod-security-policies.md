@@ -4,17 +4,17 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e72bd28910f471656feb27d10c123930305494e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611765"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031218"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
 > [!WARNING]
-> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), zahájí zastaralost s Kubernetes verze 1,21 s jejím odebráním ve verzi 1,25.** Vzhledem k Kubernetesm přístupů k tomuto milníku bude komunita Kubernetes fungovat tak, aby dokumentoval životaschopné alternativy. Předchozí oznámení o vyřazení bylo provedeno v době, protože pro zákazníky neexistovala možnost životaschopnosti. Teď, když komunita Kubernetes pracuje na alternativním řešení, už nebudete muset vyřadit před Kubernetes.
+> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), zahájí [zastaralost](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/) s Kubernetes verze 1,21 s jejím odebráním ve verzi 1,25.** Vzhledem k Kubernetesm přístupů k tomuto milníku bude komunita Kubernetes fungovat tak, aby dokumentoval životaschopné alternativy. Předchozí oznámení o vyřazení bylo provedeno v době, protože pro zákazníky neexistovala možnost životaschopnosti. Teď, když komunita Kubernetes pracuje na alternativním řešení, už nebudete muset vyřadit před Kubernetes. 
 >
 > Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
 

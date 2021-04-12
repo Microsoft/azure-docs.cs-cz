@@ -9,12 +9,12 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2f5e51af5e41bad4e88509d4440a8de2bc5525c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c2ffda7400109e16cf1110a4e14ecbc3604a7ecf
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280424"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492303"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -96,7 +96,7 @@ V následujících článcích se [dozvíte, jak zakódovat video pomocí Media 
 
 * [Kódování z adresy URL HTTPS pomocí integrovaných přednastavení](job-input-from-http-how-to.md).
 * [Kódování místního souboru pomocí integrovaných přednastavení](job-input-from-local-file-how-to.md).
-* [Vytvořte vlastní předvolbu, která bude cílit na konkrétní scénář nebo požadavky na zařízení](encode-custom-presets-how-to.md).
+* [Vytvořte vlastní předvolbu, která bude cílit na konkrétní scénář nebo požadavky na zařízení](transform-custom-presets-how-to.md).
 
 Podívejte se na seznam [formátů a kodeků](encode-media-encoder-standard-formats-reference.md)Standard Encoder.
 

@@ -3,18 +3,18 @@ title: Optimalizace investic do cloudu se službou Azure Cost Management
 description: Tento článek vám pomůže maximalizovat hodnotu svých investic do cloudu, snížit náklady a vyhodnotit způsob utrácení peněz.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: a1f66feedf33faf107bb4fca1879077379dfa815
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e333b4aadce33e5303820951051ce83c7e65eaf9
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066343"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222380"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -91,7 +91,7 @@ Další informace o různých možnostech najdete v tématu o [možnostech náku
 #### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 měsíců oblíbených služeb zdarma
-- kredit 200 USD ve fakturační měně pro zkoumání služeb po dobu 30 dnů
+- USD200 kredit v zúčtovací měně pro zkoumání služeb po dobu 30 dnů
 - 25 a více služeb je vždy zdarma
 
 #### <a name="pay-as-you-go"></a>[Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)

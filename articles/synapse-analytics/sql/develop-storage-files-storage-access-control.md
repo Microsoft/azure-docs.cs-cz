@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552950"
+ms.locfileid: "107029739"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -23,6 +23,13 @@ Dotaz na fond SQL bez serveru čte soubory přímo z Azure Storage. Oprávnění
 - **Úroveň služby SQL** – uživatel by měl mít udělené oprávnění ke čtení dat pomocí [externí tabulky](develop-tables-external-tables.md) nebo ke spuštění `OPENROWSET` funkce. Přečtěte si další informace o [požadovaných oprávněních v této části](develop-storage-files-overview.md#permissions).
 
 Tento článek popisuje typy přihlašovacích údajů, které můžete použít, a informace o tom, jak jsou pro uživatele SQL a Azure AD vyhledány přihlašovací údaje.
+
+## <a name="storage-permissions"></a>Oprávnění úložiště
+
+Fond SQL bez serveru v pracovním prostoru synapse Analytics může číst obsah souborů uložených ve službě Azure Data Lake Storage. Je potřeba nakonfigurovat oprávnění pro úložiště, aby uživatel, který spustí dotaz SQL, mohl soubory číst. Existují tři způsoby, jak povolit přístup k souborům>
+- **[Řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md)** umožňuje přiřadit roli některému uživateli Azure AD v tenantovi, kde je vaše úložiště umístěné. Role RBAC je možné přiřazovat uživatelům Azure AD. Čtecí modul musí mít `Storage Blob Data Reader` `Storage Blob Data Contributor` roli, nebo `Storage Blob Data Owner` . Uživatel, který zapisuje data v úložišti Azure, musí `Storage Blob Data Writer` mít `Storage Blob Data Owner` roli nebo. Všimněte si, že `Storage Owner` role neznamená, že uživatel je také `Storage Data Owner` .
+- **Seznam Access Control (ACL)** umožňují definovat jemně odstupňovaný model oprávnění pro soubory a adresáře ve službě Azure Storage. Seznam ACL je možné přiřazovat uživatelům Azure AD. Pokud čtenáři chtějí číst soubor na cestě v Azure Storage, musí mít v každé složce v cestě k souboru seznam řízení přístupu (X) a číst (R) seznam ACL (R) v souboru. [Další informace o nastavení oprávnění ACL ve vrstvě úložiště](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- **Sdílený přístupový podpis (SAS)** umožňuje čtenářům přístup k souborům v Azure Data Lake úložišti s použitím časově omezeného tokenu. Čtecí zařízení ještě nemusí být ověřené jako uživatel Azure AD. Token SAS obsahuje oprávnění udělená čtenářům i období, kdy je token platný. Token SAS je dobrý volbou pro časově omezený přístup k libovolnému uživateli, který není ještě potřeba ve stejném tenantovi Azure AD. Token SAS lze definovat v účtu úložiště nebo v určitých adresářích. Přečtěte si další informace o [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů](../../storage/common/storage-sas-overview.md).
 
 ## <a name="supported-storage-authorization-types"></a>Podporované typy autorizace úložiště
 
@@ -103,7 +110,7 @@ Při přístupu k úložišti chráněnému bránou firewall můžete použít *
 
 #### <a name="user-identity"></a>Identita uživatele
 
-Chcete-li získat přístup k úložišti chráněnému bránou firewall prostřednictvím identity uživatele, můžete použít modul prostředí PowerShell AZ. Storage.
+Pokud chcete získat přístup k úložišti chráněnému bránou firewall prostřednictvím identity uživatele, můžete použít Azure Portal uživatelské rozhraní nebo modul PowerShellu AZ. Storage.
 #### <a name="configuration-via-azure-portal"></a>Konfigurace prostřednictvím Azure Portal
 
 1. V Azure Portal vyhledejte svůj účet úložiště.

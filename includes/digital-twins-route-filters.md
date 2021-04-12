@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 811e59e8fd2fea1d8ee90014d4a5ea11229eec63
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98859944"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257296"
 ---
 | Název filtru | Description | Filtrovat schéma textu | Podporované hodnoty | 
 | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "98859944"
 | Schéma dat | ID modelu DTDL | `dataschema = '<model-dtmi-ID>'` | **Pro telemetrii**: schéma dat je ID modelu vlákna nebo komponenty, která tuto telemetrii emituje. Například `dtmi:example:com:floor4;2`. <br>**Pro oznámení (vytvořit/odstranit)**: ke schématu dat je možné přistupovat v těle oznámení na adrese `$body.$metadata.$model` . <br>**Pro oznámení (aktualizace)**: k datovému schématu se dá v těle oznámení na adrese `$body.modelId`|
 | Typ obsahu | Typ obsahu hodnoty dat | `datacontenttype = '<contentType>'` | Typ obsahu je `application/json` |
 | Specifikace verze | Verze schématu události, kterou používáte | `specversion = '<version>'` | Verze musí být `1.0` . To označuje schéma CloudEvents verze 1,0. |
-| Tělo oznámení | Odkaz na libovolnou vlastnost v `data` poli oznámení | `$body.<property>` | Příklady oznámení naleznete v tématu [*How to: rerozuměl data události*](../articles/digital-twins/how-to-interpret-event-data.md) . Na libovolnou vlastnost v `data` poli se dá odkazovat pomocí `$body`
+| Tělo oznámení | Odkaz na libovolnou vlastnost v `data` poli oznámení | `$body.<property>` | Příklady oznámení naleznete v tématu [*Koncepty: oznámení událostí*](../articles/digital-twins/concepts-event-notifications.md) . Na libovolnou vlastnost v `data` poli se dá odkazovat pomocí `$body`
 
 Následující datové typy jsou podporovány jako hodnoty vrácené odkazy na výše uvedená data:
 

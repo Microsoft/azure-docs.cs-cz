@@ -3,15 +3,15 @@ title: Ověřování a autorizace
 description: Přečtěte si informace o integrovaném ověřování a podpoře autorizace v Azure App Service a Azure Functions a o tom, jak vám může pomoci se zabezpečením aplikace před neoprávněným přístupem.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 35513abdfb61d889abdbd4af7125b1fbb556d7b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b6e600fcaf32a115af14be2444144fee099d635
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612751"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075334"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -33,8 +33,7 @@ App Service používá [federované identity](https://en.wikipedia.org/wiki/Fede
 
 | Poskytovatel | Koncový bod přihlášení | Pokyny pro How-To |
 | - | - | - |
-| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [App Service přihlášení k Azure AD](configure-authentication-provider-aad.md) |
-| [Účet Microsoft](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` | [App Service přihlášení k účtu Microsoft](configure-authentication-provider-microsoft.md) |
+| [Platforma Microsoft identity](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [App Service přihlášení k platformě Microsoft Identity Platform](configure-authentication-provider-aad.md) |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` | [Přihlášení k Facebooku App Service](configure-authentication-provider-facebook.md) |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` | [App Service přihlašovacích údajů Google](configure-authentication-provider-google.md) |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` | [App Service přihlášení k Twitteru](configure-authentication-provider-twitter.md) |
@@ -110,21 +109,17 @@ Pro klientské prohlížeče App Service může automaticky směrovat všechny n
 
 #### <a name="authorization-behavior"></a>Chování autorizace
 
-V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat App Service autorizaci s řadou chování, když příchozí žádost není ověřena.
+V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat App Service s řadou chování, když příchozí žádost není ověřena. Tyto možnosti jsou popsány v následujících nadpisech.
 
-![Snímek obrazovky s rozevíracím seznamem "akce, která se má provést, když se žádost neověřuje"](media/app-service-authentication-overview/authorization-flow.png)
-
-Tyto možnosti jsou popsány v následujících nadpisech.
-
-**Povolení anonymních požadavků (žádná akce)**
+**Povolení neověřených požadavků**
 
 Tato možnost odloží autorizaci neověřeného provozu do kódu aplikace. U ověřených požadavků App Service také společně s ověřovacími informacemi v hlavičkách protokolu HTTP.
 
 Tato možnost nabízí větší flexibilitu při zpracování anonymních požadavků. Například umožňuje uživatelům [prezentovat více poskytovatelů přihlášení](app-service-authentication-how-to.md#use-multiple-sign-in-providers) . Je však nutné napsat kód.
 
-**Povolení pouze ověřených požadavků**
+**Vyžadovat ověření**
 
-Možnost se **přihlásí pomocí \<provider>**. App Service přesměruje všechny anonymní požadavky na `/.auth/login/<provider>` poskytovatele, kterého zvolíte. Pokud anonymní požadavek pochází z nativní mobilní aplikace, vrácená odpověď je `HTTP 401 Unauthorized` .
+Tato možnost způsobí zamítnutí všech neověřených přenosů do vaší aplikace. Toto odmítnutí může představovat akci přesměrování u jednoho z konfigurovaných zprostředkovatelů identity. V těchto případech je klient prohlížeče přesměrován na `/.auth/login/<provider>` pro poskytovatele, kterého zvolíte. Pokud anonymní požadavek pochází z nativní mobilní aplikace, vrácená odpověď je `HTTP 401 Unauthorized` . Můžete také nakonfigurovat odmítnutí pro `HTTP 401 Unauthorized` `HTTP 403 Forbidden` všechny požadavky.
 
 Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. Přesnější autorizaci, například autorizaci specifickou pro role, je možné zpracovat kontrolou deklarací identity uživatele (viz [přístup k deklaracím uživatelů](app-service-authentication-how-to.md#access-user-claims)).
 

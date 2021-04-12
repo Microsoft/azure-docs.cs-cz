@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778334"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075691"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -500,16 +500,15 @@ Podrobnosti o disku | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWrites
 
 Tady je údaje o výkonu serveru pro Linux, které zařízení shromažďuje a odesílá do Azure.
 
-**Data** | **Příkazy**
---- | ---
-Využití procesoru | /Proc/stat/Cat| grep ' CPU '/proc/stat
-Využití paměti | bezplatný \| grep mem \| awk mají ' {Print $3/$ 2 * 100,0} '
-Počet síťových adaptérů | lshw – třída \| grep ETH [0-60] \| WC-l
-Přijatá data na síťový adaptér | Cat/sys/Class/NET/ETH $ nic/Statistika/rx_bytes
-Data přenášená na síťový adaptér | Cat/sys/Class/NET/ETH $ nic/Statistika/tx_bytes
-Počet disků | fdisk-l \| egrep ' disk. * bytes ' \| awk mají ' {Print $2} ' \| Vyjmout-F1-d ': '
-Podrobnosti o disku | /Proc/diskstats Cat
-
+| **Data** | **Příkazy** |
+| --- | --- |
+| Využití procesoru | Cat/proc/stat/ \| grep "CPU"/proc/stat |
+| Využití paměti | bezplatný \| grep mem \| awk mají ' {Print $3/$ 2 * 100,0} ' |
+| Počet síťových adaptérů | lshw – třída \| grep ETH [0-60] \| WC-l |
+| Přijatá data na síťový adaptér | Cat/sys/Class/NET/ETH $ nic/Statistika/rx_bytes |
+| Data přenášená na síťový adaptér | Cat/sys/Class/NET/ETH $ nic/Statistika/tx_bytes |
+| Počet disků | fdisk-l \| egrep ' disk. \* bajty ' \| awk mají ' {print $2} ' \| Vyjmout-F1-d ': ' |
+| Podrobnosti o disku | /Proc/diskstats Cat |
 
 ## <a name="appliance-upgrades"></a>Upgrady zařízení
 

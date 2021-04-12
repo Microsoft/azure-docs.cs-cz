@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: cd37175bd85e31ddc18c8267cdf01f7dc6249a0b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279489"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491912"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
 
@@ -45,7 +45,7 @@ Pro kódování pomocí Media Services V3 potřebujete vytvořit [transformaci](
 
 Při kódování pomocí Media Services použijte předvolby k informování kodéru, jak mají být zpracovány vstupní mediální soubory. V Media Services V3 použijete ke kódování souborů Standard Encoder. Můžete například určit rozlišení videa nebo počet zvukových kanálů, které chcete v zakódovaném obsahu.
 
-Můžete rychle začít s jedním z doporučených předplatných, které jsou založené na osvědčených postupech, nebo si můžete zvolit vytvoření vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení. Další informace naleznete v tématu [kódování s vlastní transformací](encode-custom-presets-how-to.md).
+Můžete rychle začít s jedním z doporučených předplatných, které jsou založené na osvědčených postupech, nebo si můžete zvolit vytvoření vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení. Další informace naleznete v tématu [kódování s vlastní transformací](transform-custom-presets-how-to.md).
 
 Od ledna 2019 se při kódování se standardem Encoder vytvoří soubory MP4 a vytvoří se nový soubor. MPI, který se přidá do výstupního prostředku. Tento soubor MPI má za cíl zlepšit výkon pro [dynamické balení](encode-dynamic-packaging-concept.md) a streamování.
 
@@ -136,9 +136,9 @@ Media Services plně podporuje přizpůsobení všech hodnot v předvolbách, ab
 
 #### <a name="examples"></a>Příklady
 
-- [Přizpůsobení přednastavení pomocí .NET](encode-custom-presets-how-to.md)
-- [Přizpůsobení přednastavení pomocí rozhraní příkazového řádku](encode-custom-preset-cli-how-to.md)
-- [Přizpůsobení předvoleb pomocí REST](encode-custom-preset-rest-how-to.md)
+- [Přizpůsobení přednastavení pomocí .NET](transform-custom-presets-how-to.md)
+- [Přizpůsobení přednastavení pomocí rozhraní příkazového řádku](transform-custom-preset-cli-how-to.md)
+- [Přizpůsobení předvoleb pomocí REST](transform-custom-preset-rest-how-to.md)
 
 
 ## <a name="preset-schema"></a>Předdefinované schéma
@@ -165,4 +165,4 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 * [Nahrávání, kódování a streamování pomocí Media Services](stream-files-tutorial-with-api.md).
 * [Kódování z adresy URL protokolu HTTPS pomocí integrovaných přednastavení](job-input-from-http-how-to.md).
 * [Kódování místního souboru pomocí vestavěných přednastavení](job-input-from-local-file-how-to.md).
-* [Vytvořte vlastní předvolbu, která bude cílit na konkrétní scénář nebo požadavky na zařízení](encode-custom-presets-how-to.md).
+* [Vytvořte vlastní předvolbu, která bude cílit na konkrétní scénář nebo požadavky na zařízení](transform-custom-presets-how-to.md).

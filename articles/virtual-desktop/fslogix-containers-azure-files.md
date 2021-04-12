@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0b977944f3a531365487b9655820e5d8f85e13d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 945bf806a813943d02fb4db1245dfb74eb7fb1f9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225911"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446889"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
@@ -47,11 +47,11 @@ V následující tabulce jsou uvedeny výhody a omezení pro předchozí technol
 
 | Technologie | Moderní nastavení | Nastavení Win32 | Nastavení operačního systému | Uživatelská data | Podporováno na SKU serveru | Back-endové úložiště v Azure | Back-endové úložiště v místním prostředí | Podpora verzí | Další čas přihlášení |Poznámky|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Disky uživatelských profilů (UPD)** | Yes | Yes | Yes | Yes | Yes | No | Yes | Win 7 + | Yes | |
-| **Cestovní profil uživatele (RUP), režim údržby** | No | Yes | Yes | Yes | Yes| No | Yes | Win 7 + | No | |
-| **Enterprise State Roaming (ESR)** | Yes | No | Yes | No | Zobrazit poznámky | Yes | No | Win 10 | No | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
-| **Virtualizace uživatelského prostředí (UE-V)** | Yes | Yes | Yes | No | Yes | No | Yes | Win 7 + | No |  |
-| **Cloudové soubory OneDrive** | No | No | No | Yes | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | No | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
+| **Disky uživatelských profilů (UPD)** | Ano | Ano | Ano | Ano | Ano | Ne | Ano | Win 7 + | Ano | |
+| **Cestovní profil uživatele (RUP), režim údržby** | Ne | Ano | Ano | Ano | Ano| Ne | Ano | Win 7 + | Ne | |
+| **Enterprise State Roaming (ESR)** | Ano | Ne | Ano | Ne | Zobrazit poznámky | Ano | Ne | Win 10 | Ne | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
+| **Virtualizace uživatelského prostředí (UE-V)** | Ano | Ano | Ano | Ne | Ano | Ne | Ano | Win 7 + | Ne |  |
+| **Cloudové soubory OneDrive** | Ne | Ne | Ne | Ano | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | Ne | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
 
 #### <a name="performance"></a>Výkon
 

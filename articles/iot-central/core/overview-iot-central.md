@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833809"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505123"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -23,16 +23,16 @@ Webové uživatelské rozhraní umožňuje monitorovat podmínky zařízení, vy
 
 Tento článek popisuje, jak IoT Central:
 
-- Typické osoby přidružené k projektu
+- Typické role uživatelů přidružené k projektu.
 - Postup vytvoření aplikace
 - Postup připojení zařízení do aplikace
 - Postup správy aplikace
 - Možnosti Azure IoT Edge v IoT Central.
 - Jak připojit zařízení s Azure IoT Edge modulem runtime do vaší aplikace
 
-## <a name="personas"></a>Osoby
+## <a name="user-roles"></a>Role uživatelů
 
-Dokumentace IoT Central odkazuje na čtyři osobyy, které komunikují s aplikací IoT Central:
+Dokumentace IoT Central odkazuje na čtyři role uživatelů, které komunikují s aplikací IoT Central:
 
 - _Tvůrce řešení_ zodpovídá za [Vytvoření aplikace](quick-deploy-iot-central.md), [konfiguraci pravidel a akcí](quick-configure-rules.md), [Definování integrace s jinými službami](howto-export-data.md)a další přizpůsobení aplikace pro operátory a vývojáře zařízení.
 - _Operátor_ [spravuje zařízení](howto-manage-devices.md) připojená k aplikaci.

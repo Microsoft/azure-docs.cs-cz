@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c830f9c7edb252508824b3a92bd31b6fad31395d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a43e734c0a5bfa7c3698dcde5cb5b17f15575d90
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169876"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222924"
 ---
 # <a name="how-to-customize-your-verifiable-credentials-preview"></a>Jak přizpůsobit ověřitelné přihlašovací údaje (Preview)
 
@@ -165,7 +165,7 @@ Aby se zajistila interoperabilita vašich přihlašovacích údajů, doporučuje
 | `vc.type` | Pole řetězců, které označují schématu, která ověří vaše ověřitelná pověření. |
 
 
-## <a name="input-type-self-attested-claims"></a>Typ vstupu: Self-Attested deklarace identity
+## <a name="input-type-self-attested-claims"></a>Typ vstupu: deklarace identity samy na sebe
 
 Během toku vystavování se uživateli zobrazí výzva, aby zadali některé informace, které jsou v sobě ověřené. Od tohoto okamžiku je jediným vstupním typem řetězec. 
 ```json
@@ -263,7 +263,7 @@ Zobrazovací soubor má následující strukturu.
 | `claims.{attribute}.type` | Určuje typ atributu. Momentálně podporujeme jenom řetězec. |
 | `claims.{attribute}.label` | Hodnota, která má být použita jako popisek pro atribut, který se zobrazí v ověřovateli. To může být jiné než popisek, který byl použit v souboru pravidel. Doporučená maximální délka 40 znaků. |
 
->[!note]
+>[!NOTE]
   >Pokud je deklarace identity zahrnutá v souboru pravidel a pak se v zobrazeném souboru vynechá, existují dva různé typy prostředí. V systému iOS se deklarace identity nezobrazí v části Podrobnosti zobrazené na obrázku výše, zatímco na Androidu se zobrazí deklarace identity.  
 
 ## <a name="next-steps"></a>Další kroky

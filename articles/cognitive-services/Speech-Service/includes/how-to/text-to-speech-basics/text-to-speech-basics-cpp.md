@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 0ee868704dbc82dabbd85135acecd16ff232fb16
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 7b1bc00e54abed70d4cbb769e15ff0f304c62b85
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104108"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107108885"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -166,9 +166,6 @@ Chcete-li změnit formát zvuku, použijte `SetSpeechSynthesisOutputFormat()` fu
 
 V závislosti na vašich požadavcích máte k dispozici různé možnosti pro různé typy souborů. Všimněte si, že podle definice nezpracované formáty jako neobsahují `Raw24Khz16BitMonoPcm` zvukové hlavičky. Nezpracované formáty použijte jenom v případě, že vaše implementace pro příjem dat může dekódovat nezpracovaný Bitstream, nebo pokud plánujete ruční vytváření hlaviček na základě bitové hloubky, vzorkovací frekvence, počtu kanálů atd.
 
-> [!NOTE]
-> Hlasy **en-US-AriaRUS** a **en-US-GuyRUS** se vytvářejí z ukázek kódovaných v `Riff24Khz16BitMonoPcm` vzorkovací frekvenci.
-
 V tomto příkladu zadáte RIFF formát s vysokou přesností nastavením `Riff24Khz16BitMonoPcm` `SpeechSynthesisOutputFormat` `SpeechConfig` objektu na. Podobně jako v předchozím oddílu můžete použít [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) k získání streamu v paměti výsledku a pak ho zapsat do souboru.
 
 ```cpp
@@ -189,15 +186,15 @@ Po opětovném spuštění programu se zapíše `.wav` soubor do zadané cesty.
 
 ## <a name="use-ssml-to-customize-speech-characteristics"></a>Přizpůsobení vlastností řeči pomocí SSML
 
-SSML (Speech syntézy Language) umožňuje vyladit rozteč, výslovnost, míru řeči, objem a další výstup textu do mluvené řeči odesláním požadavků ze schématu XML. Tato část obsahuje několik praktických příkladů použití, ale pro podrobnějšího průvodce si přečtěte [článek SSML postupy](../../../speech-synthesis-markup.md).
+SSML (Speech syntézy Language) umožňuje vyladit rozteč, výslovnost, míru řeči, objem a další výstup textu do mluvené řeči odesláním požadavků ze schématu XML. Tato část ukazuje příklad změny hlasu, ale podrobnější příručku najdete v [článku SSML](../../../speech-synthesis-markup.md).
 
 Chcete-li začít používat SSML k přizpůsobení, provedete jednoduchou změnu, která přepne hlas.
-Nejprve vytvořte nový soubor XML pro SSML config v kořenovém adresáři projektu, v tomto příkladu `ssml.xml` . Kořenový element je vždy `<speak>` a zalamování textu v `<voice>` prvku umožňuje změnit hlas pomocí `name` param. Tento příklad změní hlas na hlas v češtině (UK). Všimněte si, že tento hlas je **standardní** hlas, který má různé ceny a dostupnost než **neuronové** hlasy. Podívejte se na [úplný seznam](../../../language-support.md#standard-voices) podporovaných **standardních** hlasů.
+Nejprve vytvořte nový soubor XML pro SSML config v kořenovém adresáři projektu, v tomto příkladu `ssml.xml` . Kořenový element je vždy `<speak>` a zalamování textu v `<voice>` prvku umožňuje změnit hlas pomocí `name` param. Podívejte se na [úplný seznam](../../../language-support.md#neural-voices) podporovaných **neuronové** hlasů.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-GB-George-Apollo">
-    When you're on the motorway, it's a good idea to use a sat-nav.
+  <voice name="en-US-AriaNeural">
+    When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
 ```
@@ -224,36 +221,8 @@ void synthesizeSpeech()
 }
 ```
 
-Výstup funguje, ale existuje několik jednoduchých změn, které vám pomůžou s tím, aby se lépe staly přirozenější. Celková rychlost speakace je trochu příliš rychlá, takže přidáme `<prosody>` značku a omezíme rychlost na **90%** výchozí sazby. Kromě toho je pozastavení po čárkě ve větě trochu krátké a nepřirozený zvuk. Chcete-li tento problém vyřešit, přidejte `<break>` značku pro zpoždění řeči a nastavte parametr Time na **200ms**. Znovu spusťte syntézu, abyste viděli, jak tato přizpůsobení ovlivnila výstup.
-
-```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-GB-George-Apollo">
-    <prosody rate="0.9">
-      When you're on the motorway,<break time="200ms"/> it's a good idea to use a sat-nav.
-    </prosody>
-  </voice>
-</speak>
-```
-
-## <a name="neural-voices"></a>Hlasy neuronové
-
-Hlasy neuronové jsou algoritmy pro syntézu řeči založené na hluboce neuronové sítích. Při použití hlasu neuronové je syntetizované rozpoznávání řeči skoro neodlišitelné od lidských nahrávek. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci uživatelů se systémy AI.
-
-Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možností hlasu neuronové](../../../language-support.md#neural-voices). Pak přidejte obor názvů XML pro `mstts` a zabalte text do `<mstts:express-as>` značky. Použijte `style` parametr pro přizpůsobení stylu speaking. Tento příklad používá `cheerful` , ale zkuste ho nastavit na `customerservice` nebo `chat` pro zobrazení rozdílu ve stylu speaking.
-
-> [!IMPORTANT]
-> Hlasy neuronové se podporují **jenom** u zdrojů řeči vytvořených v oblastech *Východní USA*, *Jižní východní Asie* a *západní Evropa* .
-
-```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
-    <mstts:express-as style="cheerful">
-      This is awesome!
-    </mstts:express-as>
-  </voice>
-</speak>
-```
+> [!NOTE]
+> Chcete-li změnit hlas bez použití SSML, můžete nastavit vlastnost `SpeechConfig` na pomocí `SpeechConfig.SetSpeechSynthesisVoiceName("en-US-AriaNeural")`
 
 ## <a name="get-facial-pose-events"></a>Získat události pozice obličeje
 

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 316f97480dfe7ee6481ef88faf265051a92024da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937256"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075402"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -306,7 +306,7 @@ Do sady škálování v flexibilním režimu orchestrace můžete přidat až 10
 
 **Jak se dostupnost s flexibilní orchestrací porovnává se skupinami dostupnosti nebo jednotnou orchestraci?**
 
-|   | Flexibilní orchestrace  | Jednotná orchestrace  | Skupiny dostupnosti  |
+| Atribut dostupnosti  | Flexibilní orchestrace  | Jednotná orchestrace  | Skupiny dostupnosti  |
 |-|-|-|-|
 | Nasazení napříč zónami dostupnosti  | No  | Yes  | No  |
 | Záruky dostupnosti domén selhání v rámci oblasti  | Ano, maximálně 1000 instancí se dá rozdělit do až tří domén selhání v oblasti. Maximální počet domén selhání se liší podle oblasti.  | Ano, až 100 instancí  | Ano, až 200 instancí  |

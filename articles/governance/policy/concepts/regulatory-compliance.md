@@ -1,14 +1,14 @@
 ---
 title: Dodržování legislativních předpisů v definicích iniciativ
 description: Popisuje způsob použití definice iniciativ k seskupení zásad podle regulativní domény, jako je Access Control, Správa konfigurace a další.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08173cd94e0841fa7a18fd55d53aa97281724ede
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89645519"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094060"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Dodržování předpisů v Azure Policy
 

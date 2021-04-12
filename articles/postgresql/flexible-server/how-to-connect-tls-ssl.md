@@ -1,17 +1,17 @@
 ---
 title: Šifrované připojení pomocí TLS/SSL v Azure Database for PostgreSQL-flexibilním serveru
 description: Pokyny a informace o tom, jak se připojit pomocí protokolu TLS/SSL v Azure Database for PostgreSQL flexibilním serveru.
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d47c7c6b980df46ee44a44758313571506e79e44
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: cd9a74e9a05dad68a5d05fd8b9c92ed566c21766
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551199"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227428"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-in-azure-database-for-postgresql---flexible-server"></a>Šifrované připojení pomocí Transport Layer Security v Azure Database for PostgreSQL flexibilním serveru
 

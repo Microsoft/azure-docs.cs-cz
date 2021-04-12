@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8248b3ed21561340e963c848dee4430c48829ab1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467353"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285293"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Model předdefinovaného příjmového formuláře pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních příjmů pomocí předdefinovaného modelu příjmu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s modely obsáhlého učení pro extrakci klíčových informací z příjmů napsaných v angličtině.
+Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních příjmů pomocí předdefinovaného modelu příjmu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/overview-ocr.md) s modely obsáhlého učení pro extrakci klíčových informací z příjmů napsaných v angličtině.
 
 ## <a name="understanding-receipts"></a>Porozumění příjemkám
 

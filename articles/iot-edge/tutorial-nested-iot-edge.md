@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 098c6ace2b673654d07bfa29147fda3cbbc59b76
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462027"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107546"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -446,7 +446,7 @@ Jakmile budete spokojeni s konfigurací, které jsou na každém zařízení spr
 
 ## <a name="deploy-modules-to-the-top-layer-device"></a>Nasazení modulů do zařízení nejvyšší vrstvy
 
-Moduly slouží k dokončení nasazení a IoT Edge běhového prostředí pro vaše zařízení a dále k definování struktury vaší hierarchie. Modul proxy rozhraní IoT Edge API bezpečně routs přenos HTTP přes jeden port ze zařízení s nižší vrstvou. Modul Docker Registry umožňuje úložiště Docker imagí, ke kterým mají vaše zařízení nižší vrstvy přístup, pomocí směrování image načte do nejvyšší vrstvy zařízení.
+Moduly slouží k dokončení nasazení a IoT Edge běhového prostředí pro vaše zařízení a dále k definování struktury vaší hierarchie. Modul proxy IoT Edge API bezpečně směruje provoz HTTP přes jeden port ze zařízení s nižší vrstvou. Modul Docker Registry umožňuje úložiště Docker imagí, ke kterým mají vaše zařízení nižší vrstvy přístup, pomocí směrování image načte do nejvyšší vrstvy zařízení.
 
 Pokud chcete nasadit moduly do zařízení nejvyšší vrstvy, můžete použít Azure Portal nebo Azure CLI.
 
@@ -623,7 +623,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 ---
 
-Pokud jste výše uvedené kroky dokončili správně, vaše **zařízení nejvyšší vrstvy** by mělo hlásit čtyři moduly: IoT Edge modul proxy rozhraní API, modul docker Container registry a systémové moduly, jak je **uvedeno v nasazení**. Může trvat několik minut, než zařízení dostanou nové nasazení a spustí moduly. Aktualizujte stránku, dokud neuvidíte modul snímače teploty uvedený jako **hlášený zařízením**. Jakmile zařízení ohlásí moduly, budete připraveni pokračovat.
+Pokud jste výše uvedené kroky dokončili správně, vaše **zařízení nejvyšší vrstvy** by mělo hlásit čtyři moduly: IoT Edge modul proxy rozhraní API, modul docker Container registry a systémové moduly, jak je **uvedeno v nasazení**. Může trvat několik minut, než zařízení dostanou nové nasazení a spustí moduly. Aktualizujte stránku, dokud neuvidíte moduly IoTEdgeAPIProxy a registru uvedené jako **hlášené zařízením**. Jakmile zařízení ohlásí moduly, budete připraveni pokračovat.
 
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>Nasaďte moduly do zařízení nižší vrstvy.
 

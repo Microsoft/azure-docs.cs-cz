@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 653eacd11c4a3c7ab500abff809a6b9bf8229c1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 7331f9a894d36ee15702a8fe53804efd53049762
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492065"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284115"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Správa rolí pro smlouvu Enterprise v Azure
 
-Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různých rolí správce, které jim usnadní správu využití a výdajů v rámci organizace:
+Zákazníci Azure s smlouva Enterprise můžou přiřadit šest jedinečných administrativních rolí, které vám pomůžou se správou využití a výdajů vaší organizace.
 
 - Podnikový správce
 - Podnikový správce (jen pro čtení)<sup>1</sup>

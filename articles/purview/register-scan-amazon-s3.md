@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773449"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107648"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Konektor Azure dosah pro Amazon S3
 
@@ -38,6 +38,7 @@ Další informace najdete v zdokumentovaných dosah limitech v těchto tématech
 
 - [Správa a zvýšení kvót pro prostředky pomocí Azure dosah](how-to-manage-quotas.md)
 - [Podporované zdroje dat a typy souborů v Azure dosah](sources-and-scans.md)
+- [Použití privátních koncových bodů pro účet dosah](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>Oblasti úložiště a skenování
 
 V následující tabulce jsou namapovány oblasti, ve kterých se data ukládají do oblasti, kde by byla prověřena službou Azure dosah.
@@ -77,9 +78,13 @@ V následující tabulce jsou namapovány oblasti, ve kterých se data ukládaj�
 
 Před přidáním vašich bloků Amazon S3 jako zdrojů dat dosah a kontrolou dat S3 ověřte, že jste provedli následující požadavky.
 
-- Musíte být správcem zdroje dat služby Azure dosah.
-
-- Při přidávání vašich kontejnerů jako prostředků dosah budete potřebovat hodnoty [AWS ARN](#retrieve-your-new-role-arn), [název kontejneru](#retrieve-your-amazon-s3-bucket-name)a někdy vaše [ID účtu AWS](#locate-your-aws-account-id).
+> [!div class="checklist"]
+> * Musíte být správcem zdroje dat služby Azure dosah.
+> * [Vytvořte si účet dosah](#create-a-purview-account) , pokud ho ještě nemáte.
+> * [Vytvoření dosah přihlašovacích údajů pro kontrolu intervalu AWS](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [Vytvoření nové role AWS pro použití s dosah](#create-a-new-aws-role-for-purview)
+> * V případě potřeby [nakonfigurujte skenování šifrovaných sad Amazon S3](#configure-scanning-for-encrypted-amazon-s3-buckets).
+> * Při přidávání vašich kontejnerů jako prostředků dosah budete potřebovat hodnoty [AWS ARN](#retrieve-your-new-role-arn), [název kontejneru](#retrieve-your-amazon-s3-bucket-name)a někdy vaše [ID účtu AWS](#locate-your-aws-account-id).
 
 ### <a name="create-a-purview-account"></a>Vytvoření účtu dosah
 
@@ -92,7 +97,7 @@ Před přidáním vašich bloků Amazon S3 jako zdrojů dat dosah a kontrolou da
 Tento postup popisuje, jak vytvořit nové dosah přihlašovací údaje, které se použijí při kontrole AWS sad.
 
 > [!TIP]
-> Při [konfiguraci kontroly](#create-a-scan-for-your-amazon-s3-bucket)můžete také vytvořit nové přihlašovací údaje v průběhu procesu. V takovém případě v poli **pověření** vyberte možnost **Nový**.
+> Při [konfiguraci kontroly](#create-a-scan-for-one-or-more-amazon-s3-buckets)můžete také vytvořit nové přihlašovací údaje v průběhu procesu. V takovém případě v poli **pověření** vyberte možnost **Nový**.
 >
 
 1. V dosah přejděte do **centra pro správu** a v části **zabezpečení a přístup** vyberte **přihlašovací údaje**.
@@ -138,6 +143,13 @@ Další informace o přihlašovacích údajích dosah najdete v [dokumentaci ke 
 1. V oblasti **vytvořit roli > připojit zásady oprávnění** filtrujte oprávnění zobrazená na **S3**. Vyberte **AmazonS3ReadOnlyAccess** a potom vyberte **Další: značky**.
 
     ![Vyberte zásady ReadOnlyAccess pro novou skenovací roli Amazon S3.](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > Zásady **AmazonS3ReadOnlyAccess** poskytují minimální oprávnění potřebná pro kontrolu vašich intervalů S3 a můžou zahrnovat i další oprávnění.
+    >
+    >Pokud chcete použít jenom minimální oprávnění požadovaná pro kontrolu vašich kontejnerů, vytvořte novou zásadu s oprávněními uvedenými v části [minimální oprávnění pro zásady AWS](#minimum-permissions-for-your-aws-policy), podle toho, jestli chcete skenovat jeden nebo všechny intervaly ve vašem účtu. 
+    >
+    >Místo AmazonS3ReadOnlyAccess použijte nové zásady na roli **.**
 
 1. V oblasti **Přidat značky (volitelné)** můžete volitelně zvolit vytvoření smysluplné značky pro tuto novou roli. Užitečné značky umožňují organizovat, sledovat a řídit přístup pro každou roli, kterou vytvoříte.
 
@@ -219,7 +231,7 @@ AWS intervaly podporují více typů šifrování. U kontejnerů, které použí
 
 ### <a name="retrieve-your-new-role-arn"></a>Načtení nové role ARN
 
-Když [vytváříte kontrolu pro váš kontejner Amazon S3](#create-a-scan-for-your-amazon-s3-bucket), budete muset zaznamenat svou roli AWS ARN a zkopírovat ji do dosah.
+Když [vytváříte kontrolu pro váš kontejner Amazon S3](#create-a-scan-for-one-or-more-amazon-s3-buckets), budete muset zaznamenat svou roli AWS ARN a zkopírovat ji do dosah.
 
 **Postup načtení ARN role:**
 
@@ -229,11 +241,11 @@ Když [vytváříte kontrolu pro váš kontejner Amazon S3](#create-a-scan-for-y
 
     ![Zkopírujte hodnotu role ARN do schránky.](./media/register-scan-amazon-s3/aws-copy-role-purview.png)
 
-1. Vložte tuto hodnotu do zabezpečeného umístění, které je připravené k použití při [vytváření kontroly pro váš kontejner Amazon S3](#create-a-scan-for-your-amazon-s3-bucket).
+1. Vložte tuto hodnotu do zabezpečeného umístění, které je připravené k použití při [vytváření kontroly pro váš kontejner Amazon S3](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 ### <a name="retrieve-your-amazon-s3-bucket-name"></a>Načíst název intervalu Amazon S3
 
-Když [vytváříte kontrolu pro váš kontejner Amazon S3](#create-a-scan-for-your-amazon-s3-bucket) , budete potřebovat název svého kontejneru Amazon S3.
+Když [vytváříte kontrolu pro váš kontejner Amazon S3](#create-a-scan-for-one-or-more-amazon-s3-buckets) , budete potřebovat název svého kontejneru Amazon S3.
 
 **Chcete-li načíst název svého kontejneru:**
 
@@ -270,6 +282,8 @@ Například:
 
 Tento postup použijte, pokud máte pouze jeden interval S3, který chcete zaregistrovat do dosah jako zdroj dat, nebo pokud máte ve svém účtu AWS více kontejnerů, ale nechcete je zaregistrovat do dosah.
 
+**Přidání vašeho intervalu**: 
+
 1. Spusťte portál dosah pomocí vyhrazeného konektoru dosah pro adresu URL pro Amazon S3. Tuto adresu URL vám poskytl tým správy produktů dosah konektoru Amazon S3.
 
     ![Spusťte portál dosah.](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -293,12 +307,15 @@ Tento postup použijte, pokud máte pouze jeden interval S3, který chcete zareg
 
     Až budete hotovi, vyberte **Dokončit** a dokončete registraci.
 
-Pokračujte tím, [že vytvoříte kontrolu pro váš kontejner Amazon S3.](#create-a-scan-for-your-amazon-s3-bucket)
+Pokračujte v [vytváření kontroly pro jeden nebo několik sad Amazon S3.](#create-a-scan-for-one-or-more-amazon-s3-buckets)
 
-## <a name="add-all-of-your-amazon-s3-buckets-as-purview-resources"></a>Přidání všech vašich sad Amazon S3 jako prostředků dosah
+## <a name="add-an-amazon-account-as-a-purview-resource"></a>Přidání účtu Amazon jako prostředku dosah
 
-Tento postup použijte v případě, že máte ve svém účtu Amazon více bloků S3 a chcete zaregistrovat všechny jako dosah zdroje dat.
+Tento postup použijte, pokud máte ve svém účtu Amazon více bloků S3 a chcete je zaregistrovat jako dosah zdroje dat.
 
+Když [nakonfigurujete kontrolu](#create-a-scan-for-one-or-more-amazon-s3-buckets), budete moct vybrat konkrétní intervaly, které chcete kontrolovat, pokud je nechcete kontrolovat dohromady.
+
+**Chcete-li přidat svůj účet Amazon**:
 1. Spusťte portál dosah pomocí vyhrazeného konektoru dosah pro adresu URL pro Amazon S3. Tuto adresu URL vám poskytl tým správy produktů dosah konektoru Amazon S3.
 
     ![Spustit konektor pro vyhrazený dosah portál Amazon S3](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -322,9 +339,9 @@ Tento postup použijte v případě, že máte ve svém účtu Amazon více blok
 
     Až budete hotovi, vyberte **Dokončit** a dokončete registraci.
 
-Pokračujte tím, [že vytvoříte kontrolu pro váš kontejner Amazon S3](#create-a-scan-for-your-amazon-s3-bucket).
+Pokračujte v [vytváření vyhledávání pro jeden nebo několik bloků Amazon S3](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="create-a-scan-for-your-amazon-s3-bucket"></a>Vytvoření kontroly pro váš kontejner Amazon S3
+## <a name="create-a-scan-for-one-or-more-amazon-s3-buckets"></a>Vytvoření kontroly pro jeden nebo více sad Amazon S3
 
 Po přidání sad jako zdrojů dat dosah můžete nakonfigurovat kontrolu tak, aby se spouštěla v naplánovaných intervalech, nebo hned.
 
@@ -340,9 +357,10 @@ Po přidání sad jako zdrojů dat dosah můžete nakonfigurovat kontrolu tak, a
     |**Název**     |  Zadejte smysluplný název pro kontrolu nebo použijte výchozí nastavení.       |
     |**Typ** |Zobrazí se pouze v případě, že jste přidali svůj účet AWS se všemi zahrnutými intervaly. <br><br>Aktuální možnosti zahrnují jenom **všechny**  >  **Amazon S3**. Můžete zůstat vyladěné pro další možnosti, které můžete vybrat, když se dosah paleta podpory pro rozšíření. |
     |**Přihlašovací údaj**     |  Vyberte dosah přihlašovací údaje s vaší rolí ARN. <br><br>**Tip**: Pokud chcete v tuto chvíli vytvořit nové přihlašovací údaje, vyberte **Nový**. Další informace najdete v tématu [Vytvoření dosah přihlašovacích údajů pro kontrolu intervalu AWS](#create-a-purview-credential-for-your-aws-bucket-scan).     |
-    |     |         |
+    | **Amazon S3**    |   Zobrazí se pouze v případě, že jste přidali svůj účet AWS se všemi zahrnutými intervaly. <br><br>Vyberte jeden nebo více kontejnerů, které chcete kontrolovat, nebo **Vyberte možnost vše** , pokud chcete zkontrolovat všechny intervaly ve vašem účtu.      |
+    | | |
 
-    Dosah automaticky zkontroluje, jestli je role ARN platná a že je kontejner a objekt v rámci tohoto kontejneru dostupný, a pak pokračuje v případě, že je připojení úspěšné.
+    Dosah automaticky zkontroluje, jestli je role ARN platná a že jsou dostupné kontejnery a objekty v kontejnerech, a pak pokračuje v případě, že je připojení úspěšné.
 
     > [!TIP]
     > Chcete-li před pokračováním zadat jiné hodnoty a otestovat připojení sami, vyberte možnost **Test připojení** v pravém dolním rohu před výběrem možnosti **pokračovat**.
@@ -396,6 +414,90 @@ Pomocí dalších oblastí dosah můžete zjistit podrobnosti o obsahu v nemovit
     Všechny sestavy dosah Insight zahrnují výsledky kontroly Amazon S3, včetně zbývajících výsledků z vašich zdrojů dat Azure. V případě potřeby byl do možností filtrování sestav přidán další typ assetu **Amazon S3** .
 
     Další informace najdete v tématu [Principy přehledů v Azure dosah](concept-insights.md).
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>Minimální oprávnění pro zásady AWS
+
+Výchozí postup [vytvoření role AWS pro dosah](#create-a-new-aws-role-for-purview) , která se má použít při kontrole intervalů S3, používá zásady **AmazonS3ReadOnlyAccess** .
+
+Zásady **AmazonS3ReadOnlyAccess** poskytují minimální oprávnění potřebná pro kontrolu vašich intervalů S3 a můžou zahrnovat i další oprávnění.
+
+Pokud chcete použít jenom minimální oprávnění požadovaná pro kontrolu vašich kontejnerů, vytvořte novou zásadu s oprávněními uvedenými v následujících oddílech v závislosti na tom, jestli chcete skenovat jeden nebo všechny intervaly ve vašem účtu.
+
+Místo AmazonS3ReadOnlyAccess použijte nové zásady na roli **.**
+
+### <a name="individual-buckets"></a>Jednotlivé intervaly
+
+Při kontrole jednotlivých bloků S3 zahrnuje minimální AWS oprávnění:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+Ujistěte se, že jste svůj prostředek definovali pomocí konkrétního názvu kontejneru. Například:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>Všechny intervaly ve vašem účtu
+
+Při kontrole všech kontejnerů ve vašem účtu AWS, minimální oprávnění AWS zahrnují:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+Ujistěte se, že jste prostředek definovali se zástupným znakem. Například:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,14 +4,14 @@ description: Vysvětluje, jak nakonfigurovat další nastavení pro mezipaměť,
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773228"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259757"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurovat další nastavení mezipaměti HPC Azure
 
@@ -47,24 +47,26 @@ Další informace o nastaveních jednotky MTU ve službě Azure Virtual Network 
 
 ## <a name="customize-ntp"></a>Přizpůsobení NTP
 
-Vaše mezipaměť ve výchozím nastavení používá time.microsoft.com časový server založený na Azure. Pokud chcete, aby mezipaměť používala jiný server NTP, zadejte ji do konfiguračního oddílu **NTP** . Použijte plně kvalifikovaný název domény nebo IP adresu.
+Vaše mezipaměť ve výchozím nastavení používá time.windows.com časový server založený na Azure. Pokud chcete, aby mezipaměť používala jiný server NTP, zadejte ji do konfiguračního oddílu **NTP** . Použijte plně kvalifikovaný název domény nebo IP adresu.
 
 ## <a name="set-a-custom-dns-configuration"></a>Nastavení vlastní konfigurace DNS
 
 > [!CAUTION]
 > Pokud nepotřebujete, neměňte konfiguraci DNS pro mezipaměť. Chyby konfigurace můžou mít nepříjemné následky. Pokud vaše konfigurace nedokáže přeložit názvy služeb Azure, stane se trvale nedosažitelná instance mezipaměti HPC.
+>
+> Než se pokusíte nastavit vlastní konfiguraci DNS, poraďte se se zástupci Azure.
 
 Mezipaměť HPC Azure je automaticky nakonfigurovaná tak, aby používala zabezpečený a pohodlný Azure DNS systém. Několik neobvyklých konfigurací ale vyžaduje, aby mezipaměť používala samostatný místní systém DNS místo systému Azure. Oddíl **Konfigurace DNS** stránky **síť** slouží k určení tohoto typu systému.
 
 Obraťte se na zástupce Azure nebo se obraťte na službu a podporu společnosti Microsoft, abyste zjistili, jestli potřebujete použít vlastní konfiguraci DNS pro mezipaměť.
 
-Pokud nakonfigurujete svůj vlastní místní systém DNS pro použití mezipaměti HPC Azure, musíte zajistit, aby konfigurace mohla přeložit názvy koncových bodů Azure pro služby Azure. V případě potřeby musíte nakonfigurovat vlastní prostředí DNS tak, aby přeneslo určité požadavky na překlad IP adres na Azure DNS nebo na jiný server.
+Pokud nakonfigurujete vlastní systém DNS pro použití mezipaměti HPC Azure, musíte zajistit, aby místní server DNS mohl přímo přeložit názvy koncových bodů služby Azure. Mezipaměť HPC nebude fungovat, pokud je váš server DNS omezený od překladu veřejného názvu.
 
 Ověřte, že konfigurace služby DNS může tyto položky úspěšně vyřešit, než ji použijete pro mezipaměť prostředí Azure HPC:
 
 * ``*.core.windows.net``
 * Seznam odvolaných certifikátů (CRL) a ověřovací služby protokolu OCSP (Online Certificate Status Protocol). Částečný seznam najdete v [položce pravidla brány firewall](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) na konci tohoto [článku o Azure TLS](../security/fundamentals/tls-certificate-changes.md), ale měli byste se obrátit na technický zástupce Microsoftu, abyste pochopili všechny požadavky.
-* Plně kvalifikovaný název domény vašeho serveru NTP (time.microsoft.com nebo vlastní server)
+* Plně kvalifikovaný název domény vašeho serveru NTP (time.windows.com nebo vlastní server)
 
 Pokud potřebujete pro svou mezipaměť nastavit vlastní server DNS, použijte zadaná pole:
 

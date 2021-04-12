@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 34fd6720b93a1462836b51856d73573a86809367
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 282eaa6e966ff458dfb1dfdd32ef6ec1f2cdc151
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022819"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443742"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Vyhledání a použití imagí Azure Marketplace VM pomocí Azure PowerShell
 
@@ -66,7 +66,7 @@ K zúžení seznamu imagí můžete použít PowerShell. Hodnoty proměnných na
     Můžete použít také `latest` v případě, že chcete použít nejnovější bitovou kopii a ne na konkrétní starší verzi.
 
 
-Nyní můžete zkombinovat vybraného vydavatele, nabídky, SKU a verzi do názvu URN (hodnoty oddělené:). `--image`Pokud vytvoříte virtuální počítač pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) , předejte tento název URN k parametru. Můžete také nahradit číslo verze v názvu URN `latest` a získat tak nejnovější verzi image.
+Nyní můžete zkombinovat vybraného vydavatele, nabídky, SKU a verzi do názvu URN (hodnoty oddělené:). `-Image`Pokud vytvoříte virtuální počítač pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) , předejte tento název URN k parametru. Můžete také nahradit číslo verze v názvu URN `latest` a získat tak nejnovější verzi image.
 
 Pokud nasadíte virtuální počítač s Správce prostředků šablonou, nastavte parametry obrázku jednotlivě ve `imageReference` vlastnostech. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
 

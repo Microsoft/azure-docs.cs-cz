@@ -3,16 +3,16 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2ab27e8548882b5bd296dc45e4bb74d3d6ba357b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041463"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285480"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
-Použijte [spravovanou identitu pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) pro ověření ve službě Azure Container Registry z jiného prostředku Azure, aniž byste museli poskytovat nebo spravovat přihlašovací údaje registru. Například na virtuálním počítači Linux nastavte uživatelsky přiřazenou nebo systémově přiřazenou spravovanou identitu pro přístup k imagím kontejneru z registru kontejnerů, a to jednoduše při použití veřejného registru.
+Použijte [spravovanou identitu pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) pro ověření ve službě Azure Container Registry z jiného prostředku Azure, aniž byste museli poskytovat nebo spravovat přihlašovací údaje registru. Například na virtuálním počítači Linux nastavte uživatelsky přiřazenou nebo systémově přiřazenou spravovanou identitu pro přístup k imagím kontejneru z registru kontejnerů, a to jednoduše při použití veřejného registru. Nebo nastavte cluster služby Azure Kubernetes, aby používal [spravovanou identitu](../aks/use-managed-identity.md) k vyžádání imagí kontejneru z Azure Container registry pro nasazení pod.
 
 V tomto článku se dozvíte víc o spravovaných identitách a o tom, jak:
 
@@ -27,23 +27,14 @@ K nastavení registru kontejneru a vložení image kontejneru do něj je také n
 
 ## <a name="why-use-a-managed-identity"></a>Proč používat spravovanou identitu?
 
-Spravovaná identita pro prostředky Azure poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí spravované identity můžete nakonfigurovat [určité prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), včetně virtuálních počítačů. Pak použijte identitu pro přístup k dalším prostředkům Azure bez předání přihlašovacích údajů v kódu nebo skriptech.
+Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../active-directory/managed-identities-azure-resources/overview.md).
 
-Spravované identity mají dva typy:
+Po nastavení vybraných prostředků Azure pomocí spravované identity Udělte identitě požadovaný přístup k jinému prostředku, stejně jako jakýkoli objekt zabezpečení. Přiřaďte například roli spravovaná identita s oprávněním Pull, push a pull nebo jinými oprávněními k privátnímu registru v Azure. (Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).) Jednomu nebo více prostředkům můžete přidělit přístup k identitě.
 
-* *Uživatelsky přiřazené identity*, které můžete přiřadit k více prostředkům a uchovávat tak dlouho, dokud budete chtít. Uživatelsky přiřazené identity jsou momentálně ve verzi Preview.
+Pak použijte identitu k ověření pro libovolnou [službu, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), a to bez jakýchkoli přihlašovacích údajů ve vašem kódu. V závislosti na vašem scénáři vyberte způsob ověřování pomocí spravované identity. Pokud chcete používat identitu pro přístup ke službě Azure Container Registry z virtuálního počítače, ověříte pomocí Azure Resource Manager. 
 
-* *Identita spravovaná systémem*, která je jedinečná pro konkrétní prostředek, jako je jeden virtuální počítač a který trvá po dobu životnosti daného prostředku.
-
-Po nastavení prostředku Azure pomocí spravované identity Udělte identitě požadovaný přístup k jinému prostředku, stejně jako jakýkoli objekt zabezpečení. Přiřaďte například roli spravovaná identita s oprávněním Pull, push a pull nebo jinými oprávněními k privátnímu registru v Azure. (Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).) Jednomu nebo více prostředkům můžete přidělit přístup k identitě.
-
-Pak použijte identitu k ověření pro libovolnou [službu, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), a to bez jakýchkoli přihlašovacích údajů ve vašem kódu. Pokud chcete používat identitu pro přístup ke službě Azure Container Registry z virtuálního počítače, ověříte pomocí Azure Resource Manager. V závislosti na vašem scénáři vyberte způsob ověřování pomocí spravované identity.
-
-* Programové [získání přístupového tokenu Azure AD](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) pomocí volání http nebo REST
-
-* Použití [sad Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)
-
-* [Přihlaste se k Azure CLI nebo PowerShellu](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) s identitou. 
+> [!NOTE]
+> V současné době služby, jako je Azure Web App for Containers nebo Azure Container Instances, nemůžou používat spravovanou identitu k ověřování pomocí Azure Container Registry při načítání image kontejneru pro nasazení samotného prostředku kontejneru. Identita je k dispozici až po spuštění kontejneru. Pokud chcete tyto prostředky nasadit pomocí imagí z Azure Container Registry, doporučuje se jiná metoda ověřování, jako je [instanční objekt](container-registry-auth-service-principal.md) .
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
@@ -230,8 +221,6 @@ Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` p�
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
-> [!NOTE]
-> Identity spravované služby přiřazené systémem se dají použít k interakci s záznamů ACR a App Service můžou používat identity spravované služby přiřazené systémem. Nemůžete je ale kombinovat, protože App Service nemůže použít MSI ke komunikaci s ACR. Jediným způsobem je povolit správcům ACR a používat uživatelské jméno a heslo správce.
 
 ## <a name="next-steps"></a>Další kroky
 

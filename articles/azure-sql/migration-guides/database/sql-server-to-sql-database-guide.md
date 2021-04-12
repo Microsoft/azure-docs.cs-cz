@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9f7df4889d1d54605ab2b5cd79f3039f06fab197
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 6ce7de649876ed8ccff1254f25a7213b407dacae
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027869"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284081"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Průvodce migrací: SQL Server Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-s
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Pro [migraci SQL Server](https://azure.microsoft.com/migration/migration-journey) do Azure SQL Database se ujistěte, že máte následující požadavky: 
+Pro [migraci SQL Server](https://azure.microsoft.com/en-us/migration/sql-server/) do Azure SQL Database se ujistěte, že máte následující požadavky: 
 
 - Zvolená [Metoda migrace](sql-server-to-sql-database-overview.md#compare-migration-options) a odpovídající nástroje.
 - [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) nainstalovaný na počítači, který se může připojit ke zdrojovému SQL Server.

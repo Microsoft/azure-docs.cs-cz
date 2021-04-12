@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 438ef806f6c59c6f23877a3d3110f22f08ca8713
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e239b6b00c5a5e993834a10fca30de02b9f715ff
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863560"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065510"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Private Link pro službu Azure Database for MySQL
 
@@ -118,7 +118,7 @@ Pokud se chcete spoléhat jenom na soukromé koncové body pro přístup ke svý
 Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MySQL pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MySQL v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
 
 > [!Note]
-> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.
+> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MySQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.
 >
 > Toto nastavení nemá žádný vliv na konfigurace protokolu SSL a TLS pro vaše Azure Database for MySQL.
 

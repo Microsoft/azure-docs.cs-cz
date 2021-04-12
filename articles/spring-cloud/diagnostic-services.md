@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218787"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259417"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
 
@@ -110,7 +110,7 @@ Existují různé způsoby, jak zobrazit protokoly a metriky, jak je popsáno v 
 > [!NOTE]
 > `==` rozlišuje velká a malá písmena, ale není `=~` .
 
-Další informace o dotazovacím jazyku, který se používá v Log Analytics, najdete v tématu [Azure monitor protokolování dotazů](/azure/data-explorer/kusto/query/).
+Další informace o dotazovacím jazyku, který se používá v Log Analytics, najdete v tématu [Azure monitor protokolování dotazů](/azure/data-explorer/kusto/query/). Pokud chcete zadat dotaz na všechny protokoly Log Analytics z centralizovaného klienta, Projděte si [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
 ### <a name="use-your-storage-account"></a>Použití účtu úložiště
 

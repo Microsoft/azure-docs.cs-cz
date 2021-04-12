@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5c21c384af90341161bab9407b3f6bcd3a4efac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955830"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107566"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Postup generování miniatur pomocí kodéru Standard s REST
 
@@ -28,7 +28,7 @@ Pomocí Media Encoder Standard můžete vygenerovat jednu nebo více miniatur ze
 
 ## <a name="recommended-reading-and-practice"></a>Doporučené čtení a postupy
 
-Doporučujeme, abyste se seznámili s vlastními transformacemi. Přečtěte si, [jak se zakódovat s vlastními nastaveními pro transformaci](custom-preset-rest-howto.md).
+Doporučujeme, abyste se seznámili s vlastními transformacemi. Přečtěte si, [jak se zakódovat s vlastními nastaveními pro transformaci](encode-custom-preset-rest-how-to.md).
 
 ## <a name="thumbnail-parameters"></a>Parametry miniatury
 
