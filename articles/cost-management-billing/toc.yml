@@ -388,6 +388,8 @@
           href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Referenční informace
   items:
+    - name: Azure CLI
+      href: /cli/azure/billing
     - name: Rozhraní REST API služby Azure Cost Management
       href: /rest/api/cost-management
     - name: Rozhraní REST API služby Azure Consumption

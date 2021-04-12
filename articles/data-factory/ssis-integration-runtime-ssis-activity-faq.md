@@ -4,16 +4,16 @@ description: Tento článek popisuje pokyny k odstraňování problémů s SSIS 
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: wenjiefu
-author: wenjiefu
+author: RodgeFu
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 2bc56d39de392c9e4c20c25b554e3bdeea048bfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361872"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933998"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
 
@@ -121,7 +121,10 @@ K této chybě dojde, když prostředí Integration runtime SSIS nemá přístup
 Jednou z možných příčin je, že uživatelské jméno nebo heslo s povoleným Azure AD Multi-Factor Authentication je nakonfigurované pro ověřování Azure Analysis Services. Toto ověřování není podporováno v prostředí SSIS Integration runtime. Zkuste použít instanční objekt pro Azure Analysis Services ověřování:
 
 1. Připravte instanční objekt, jak je popsáno v tématu [automatizace s instančními objekty](../analysis-services/analysis-services-service-principal.md).
-2. V programu Správce připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla**: jako uživatelské jméno nastavte **AppID** a jako heslo **clientSecret** .
+2. Ve Správci připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla:** nastavte **aplikaci:*&lt; AppID &gt;* @* &lt; TenantID &gt;*** jako uživatelské jméno a clientSecret jako heslo. Tady je příklad správného formátovaného uživatelského jména:
+ 
+   `app:12345678-9012-3456-789a-bcdef012345678@9abcdef0-1234-5678-9abc-def0123456789abc`
+1. V programu Správce připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla**: jako uživatelské jméno nastavte **AppID** a jako heslo **clientSecret** .
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Chybová zpráva: "zdroji ADONET se nepodařilo získat připojení {GUID} pomocí následující chybové zprávy: přihlášení uživatele ' NT AUTHORITY\ANONYMOUS LOGON ' při použití spravované identity se nezdařilo.
 

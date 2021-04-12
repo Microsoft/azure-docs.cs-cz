@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: Přehled agentů zabezpečení'
-description: V tomto rychlém startu se naučíte pochopit architekturu agenta zabezpečení pro agenty používané ve službě Azure Defender pro službu IoT.
+description: V tomto rychlém startu se dozvíte, jak pochopit architekturu agenta zabezpečení pro agenty používané ve službě Azure Defender pro IoT Service.
 ms.topic: quickstart
-ms.date: 01/24/2021
-ms.openlocfilehash: 2e7d7d1e6770667b1ce966724611cc003116409d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/4/2021
+ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778504"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384970"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Rychlý Start: Referenční architektura agenta zabezpečení
 
@@ -33,7 +33,7 @@ Agenti zabezpečení služby IoT pro IoT se vyvíjeli jako open source projekty 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+- Žádné
 
 ## <a name="agent-supported-platforms"></a>Podporované platformy agenta
 
@@ -48,8 +48,7 @@ Defender for IoT nabízí různé agenty instalačního programu pro 32 bitovýc
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku máte přehled o programu Defender pro IoT Defender – IoT-Micro-agent a k dostupným instalačním programům.
-
-Pokud chcete pokračovat v seznámení s Defenderem pro nasazení IoT, postupujte podle následujících článků:
+Pokud chcete pokračovat v seznámení s Defenderem pro nasazení IoT, 
 
 > [!div class="nextstepaction"]
 > [metody ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)

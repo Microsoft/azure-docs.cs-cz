@@ -8,15 +8,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504708"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258788"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -588,7 +588,11 @@ K virtuálním počítačům v rámci Azure Virtual Network je možné přiřadi
 > [!NOTE]
 > Statické IP adresy byste měli přiřadit prostřednictvím Azure do jednotlivých virtuální síťové adaptéry. V rámci hostovaného operačního systému do vNIC byste neměli přiřazování statických IP adres. Některé služby Azure, jako je například služba Azure Backup, spoléhají na skutečnost, že minimálně primární vNIC je nastavená na DHCP, a ne na statické IP adresy. Viz také dokument [řešení potíží se zálohováním virtuálních počítačů Azure](../../../backup/backup-azure-vms-troubleshoot.md#networking).
 >
->
+
+
+##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>Sekundární IP adresy pro virtualizaci názvů hostitelů SAP
+K virtuálním síťovým kartám na každém virtuálním počítači Azure se dá přiřadit víc IP adres, Tato sekundární IP adresa se dá použít pro virtuální název hostitele SAP, který je v případě potřeby namapovaný na záznam DNS A/PTR. Sekundární IP adresy je třeba přiřadit ke konfiguraci protokolu IP virtuální síťové adaptéry Azure podle [tohoto článku](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md) a také nakonfigurovat v operačním systému, protože sekundární IP adresy se nepřiřazují prostřednictvím protokolu DHCP. Každá sekundární IP adresa musí být ze stejné podsítě, ke které je vNIC vázán. Použití plovoucí IP adresy Azure Load Balancer není pro [sekundární konfigurace]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations) IP adresy, jako jsou clustery Pacemaker, sekundární. v takovém případě IP adresa Load Balancer povoluje virtuální názvy hostitelů SAP. Obecné pokyny k používání názvů virtuálních hostitelů najdete v tématu také poznámky ke [#962955](https://launchpad.support.sap.com/#/notes/962955) SAP.
+
 
 ##### <a name="multiple-nics-per-vm"></a>Více síťových karet na virtuální počítač
 
@@ -616,12 +620,12 @@ Aby bylo možné vytvořit připojení typu Site-to-Site (místní datové centr
 
 Výše uvedený obrázek ukazuje dvě předplatná Azure mají rezervované podrozsahy IP adres, které jsou rezervované pro použití ve virtuálních sítích v Azure. Připojení z místní sítě k Azure se vytváří prostřednictvím sítě VPN.
 
-#### <a name="point-to-site-vpn"></a>SÍŤ VPN typu Point-to-site
+#### <a name="point-to-site-vpn"></a>Point-to-site VPN
 
 SÍŤ VPN typu Point-to-site vyžaduje, aby se každý klientský počítač připojil k vlastní síti VPN do Azure. V případě scénářů SAP se díváte na připojení Point-to-site, které není praktické. Proto se pro připojení VPN typu Point-to-site neudělí žádné další odkazy.
 
 Další informace najdete tady.
-* [Konfigurace připojení typu Point-to-site k virtuální síti pomocí Azure Portal](../../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí webu Azure Portal](../../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [Konfigurace připojení Point-to-Site k virtuální síti pomocí prostředí PowerShell](../../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 #### <a name="multi-site-vpn"></a>SÍŤ VPN s více lokalitami
@@ -1163,7 +1167,7 @@ Zkušenosti s nasazením SAP za poslední dva roky nám pomohou s některými le
 > ![Logo Linux.][Logo_Linux] Linux
 >
 > * [Konfigurace softwarového pole RAID v systému Linux][virtual-machines-linux-configure-raid]
-> * [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure][virtual-machines-linux-configure-lvm]
+> * [Konfigurace LVM na virtuálním počítači s Linuxem v Azure][virtual-machines-linux-configure-lvm]
 >
 >
 
@@ -1236,7 +1240,7 @@ Geografická replikace Azure funguje lokálně na každém virtuálním pevném 
 ---
 ### <a name="final-deployment"></a>Konečné nasazení
 
-Poslední nasazení a přesný postup, zejména v souvislosti s nasazením rozšíření Azure pro SAP, najdete v [Průvodci nasazením][deployment-guide].
+Poslední nasazení a přesný postup, zejména nasazení rozšíření Azure pro SAP, najdete v [Průvodci nasazením][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Přístup k systémům SAP běžícím v rámci virtuálních počítačů Azure
 
@@ -1657,7 +1661,7 @@ Systém SAP Change and Transporting (TMS) musí být nakonfigurovaný tak, aby v
 
 ##### <a name="configuring-the-transport-domain"></a>Konfigurace domény přenosu
 
-Nakonfigurujte svou doménu přenosu v systému, který jste označili jako transportní řadič domény, jak je popsáno v tématu [Konfigurace přenosového řadiče domény](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Vytvoří se systémový uživatel TMSADM a bude vygenerován požadovaný cíl RFC. Tato připojení RFC můžete kontrolovat pomocí SM59 transakce. V rámci vaší domény přenosu musí být povoleno rozlišení názvu hostitele.
+Nakonfigurujte svou doménu přenosu v systému, který jste označili jako transportní řadič domény, jak je popsáno v tématu [Konfigurace přenosového řadiče domény](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Configuring%20the%20Transport%20Domain%20Controller). Vytvoří se systémový uživatel TMSADM a bude vygenerován požadovaný cíl RFC. Tato připojení RFC můžete kontrolovat pomocí SM59 transakce. V rámci vaší domény přenosu musí být povoleno rozlišení názvu hostitele.
 
 Postup:
 
@@ -1670,12 +1674,12 @@ Postup:
 
 Sekvence zahrnutí systému SAP v doméně přenosu vypadá takto:
 
-* V systému pro vývoj v Azure se přečtěte do přenosového systému (klient 000) a zavolejte STMS transakce. V dialogovém okně vyberte jinou konfiguraci a pokračujte zahrnutým systémem v doméně. Zadejte řadič domény jako cílového hostitele ([včetně systémů SAP v doméně přenosu](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). Systém nyní čeká na zahrnutí v doméně přenosu.
+* V systému pro vývoj v Azure se přečtěte do přenosového systému (klient 000) a zavolejte STMS transakce. V dialogovém okně vyberte jinou konfiguraci a pokračujte zahrnutým systémem v doméně. Zadejte řadič domény jako cílového hostitele ([včetně systémů SAP v doméně přenosu](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0c17acc11d1899e0000e829fbbd.html?q=Including%20SAP%20Systems%20in%20the%20Transport%20Domain)). Systém nyní čeká na zahrnutí v doméně přenosu.
 * Z bezpečnostních důvodů pak musíte přejít zpět na řadič domény a žádost potvrdit. Vyberte Přehled systému a schvalte čekající systém. Pak potvrďte výzvu a konfigurace bude distribuována.
 
 Tento systém SAP teď obsahuje informace potřebné pro všechny ostatní systémy SAP v doméně přenosu. Data o novém systému SAP se ve stejnou dobu odesílají do všech ostatních systémů SAP a systém SAP se zadává do přenosového profilu programu řízení přenosů. Ověřte, jestli jsou dokumenty RFC a přístup k adresáři přenosu práce v doméně.
 
-Pokračujte v konfiguraci přenosového systému obvyklým způsobem, jak je popsáno v dokumentaci pro [změnu a přenos systému](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
+Pokračujte v konfiguraci přenosového systému obvyklým způsobem, jak je popsáno v dokumentaci pro [změnu a přenos systému](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/3bdfba3692dc635ce10000009b38f839.html).
 
 Postup:
 
@@ -1687,13 +1691,13 @@ Postup:
 
 V případě propojení mezi místními prostředími mezi lokalitami může být latence mezi místními a Azure pořád značná. Pokud budeme postupovat podle sekvence přenosů objektů pomocí vývojových a testovacích systémů do produkčního prostředí, nebo si myslíte, že se bude používat přenosové a podpůrné balíčky v různých systémech, zjistíte, že závisí na umístění centrálního transportního adresáře, ale u některých systémů dojde ke vysoké latenci při čtení nebo zápisu dat do centrálního adresáře přenosu. Tato situace je podobná konfiguracím SAP na šířku, kde jsou různé systémy rozloženy prostřednictvím různých datových center s významnou vzdáleností mezi datovými centry.
 
-Aby bylo možné tuto latenci obejít a tyto systémy budou rychle fungovat při čtení nebo zápisu do nebo z adresáře přenosu, můžete nastavit dvě STMS dopravních domén (jeden pro místní a druhý se systémy v Azure a propojit domény přenosu. Podívejte se na tuto dokumentaci, která vysvětluje principy tohoto konceptu v tématu SAP TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm> .
+Aby bylo možné tuto latenci obejít a tyto systémy budou rychle fungovat při čtení nebo zápisu do nebo z adresáře přenosu, můžete nastavit dvě STMS dopravních domén (jeden pro místní a druhý se systémy v Azure a propojit domény přenosu. Podívejte se na [dokumentace] (<https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm) , která vysvětluje principy tohoto konceptu v tématu SAP TMS.
+
 
 Postup:
 
-* Nastavení domény přenosu v každém umístění (místně a Azure) pomocí transakčního STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* Propojte domény s propojením domény a potvrďte propojení mezi těmito dvěma doménami.
-  <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
+* [Nastavení domény pro přenos] (<https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain) v každém umístění (místně a Azure) pomocí transakčního STMS
+* [Propojte domény s propojením domény](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/14c795388d62e450e10000009b38f889.html?q=Link%20the%20domains%20with%20a%20domain%20link) a potvrďte propojení mezi těmito dvěma doménami.
 * Distribuujte konfiguraci do odkazovaného systému.
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>Přenos RFC mezi instancemi SAP umístěnými v Azure a místním prostředím (mezi místními počítači)

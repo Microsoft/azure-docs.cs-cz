@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 62a0bd19f6b10bbe6561f5587ed85d4d1e5880b3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878163"
+ms.locfileid: "105966822"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Ovládací prvky zabezpečení pro službu Azure Spring Cloud
 
@@ -34,7 +34,7 @@ Ovládací prvky zabezpečení jsou integrované do služby Azure jaře Cloud Se
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Značka služby | Yes | Pomocí značky služby **AzureSpringCloud** můžete definovat odchozí řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md), aby se povolil provoz do cloudových aplikací Azure.<br><br>*Poznámka:* V současné době je v současnosti jenom nová **instance služby jarní** cloudová služba Azure vytvořená po 2020/07/14. | [Značky služeb](../virtual-network/service-tags-overview.md) |
+| Značka služby | Yes | Pomocí značky služby **AzureSpringCloud** můžete definovat odchozí řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md), aby se povolil provoz do cloudových aplikací Azure. | [Značky služeb](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Další kroky
 
