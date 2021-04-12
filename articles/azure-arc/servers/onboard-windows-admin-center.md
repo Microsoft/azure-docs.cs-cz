@@ -4,17 +4,17 @@ description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit p
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5fa7a61b1e3b22503377cbcbe308a82be89dac72
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584767"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Připojení hybridních počítačů k Azure z centra pro správu Windows
 
 Servery s podporou ARC Azure můžete povolit pro jeden nebo více počítačů s Windows ve vašem prostředí provedením sady kroků ručně. Nebo můžete použít [Centrum pro správu systému Windows](/windows-server/manage/windows-admin-center/understand/what-is) k nasazení agenta připojeného počítače a registraci místních serverů bez nutnosti provádět žádné kroky mimo tento nástroj.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Servery s podporou ARC – zkontrolujte [požadavky](agent-overview.md#prerequisites) a ověřte, že vaše předplatné, účet Azure a prostředky splňují požadavky.
 

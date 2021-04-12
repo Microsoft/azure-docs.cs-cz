@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593103"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytváření pracovních postupů aplikací logiky z předem připravených šablon
@@ -97,9 +97,9 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    > [!NOTE] 
    > Mnoho šablon obsahuje konektory, které již mohou mít předem vyplněné požadované vlastnosti. Některé šablony však stále vyžadují, abyste zadali hodnoty před tím, než bude možné správně nasadit aplikaci logiky. Pokud se pokusíte nasadit bez vyplnění polí chybějících vlastností, zobrazí se chybová zpráva. 
 
-## <a name="update-logic-apps-with-templates"></a>Aktualizace Logic Apps pomocí šablon
+## <a name="update-logic-apps-with-templates&quot;></a>Aktualizace Logic Apps pomocí šablon
 
-1. V [Azure Portal](https://portal.azure.com "portál Azure")vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com &quot;portál Azure")vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
 2. Na panelu nástrojů návrháře vyberte **šablony**. Tato akce zahodí všechny neuložené změny, takže se zobrazí varovná zpráva, abyste mohli potvrdit, že chcete pokračovat. Pro potvrzení klikněte na **tlačítko OK**. Například:
 

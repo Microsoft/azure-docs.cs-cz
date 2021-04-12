@@ -57,4 +57,4 @@ Důsledkem následujících primárních scénářů je to, že účet služby M
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak připojit účet úložiště k vašemu Media Services účtu, najdete v tématu [Vytvoření účtu](./create-account-howto.md).
+Informace o tom, jak připojit účet úložiště k vašemu Media Services účtu, najdete v tématu [Vytvoření účtu](./account-create-how-to.md).

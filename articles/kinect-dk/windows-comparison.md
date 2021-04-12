@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, porovnání, SDK, rozdíly, hardware, software
-ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1791767e842043bbb0eda058cc3ea92be90a00fb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87031571"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078294"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Porovnání Azure Kinect a Kinect Windows v2
 
@@ -46,7 +46,7 @@ Následující tabulka poskytuje porovnání funkcí přístupu snímače zaří
 
 | **Funkce**| **Azure Kinect** | **Kinect pro Windows** | **Poznámky** |
 |---------|---------|------------|---------|
-| **Úrovní** | ✔️ | ✔️ |    |   |
+| **Úrovní** | ✔️ | ✔️ |    | 
 | **IR** | ✔️ | ✔️ |  |
 | **Barva** | ✔️ | ✔️ | Formát barev podporuje rozdíly, Azure Kinect DK podporuje tyto ovládací prvky kamery: expozici, vyvážení bílé, jas, kontrast, sytost, ostrost a řízení získání. |
 | **Zvuk** | ✔️ | ✔️ | K Azure Kinect DK MICS se dostanete prostřednictvím sady Speech SDK nebo rozhraní API systému Windows Native. |

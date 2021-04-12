@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/02/2021
 ms.author: jeedes
 ms.openlocfilehash: a2c149bfdf79102779abf7544fed9fb78796a50e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101649946"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s novým Relic podle účtu
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat nové Relic pomocí účtu s Azure Act
 * Umožněte uživatelům, aby se automaticky přihlásili k novým Relic pomocí účtu s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -101,7 +101,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k novému Relic podle účtu.
 
@@ -113,13 +113,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-new-relic-by-account-sso"></a>Konfigurace nového Relic pomocí jednotného přihlašování k účtu
+## <a name=&quot;configure-new-relic-by-account-sso&quot;></a>Konfigurace nového Relic pomocí jednotného přihlašování k účtu
 
 1. V jiném okně webového prohlížeče se přihlaste k **novému Relic podle účtu** společnosti jako správce.
 
 2. V nabídce v horní části klikněte na **Nastavení účtu**.
    
-    ![Snímek obrazovky s vybraným nastavením účtu zobrazuje úvodní stránku.](./media/new-relic-tutorial/settings.png "Nastavení účtu")
+    ![Snímek obrazovky s vybraným nastavením účtu zobrazuje úvodní stránku.](./media/new-relic-tutorial/settings.png &quot;Nastavení účtu")
 
 3. Klikněte na kartu **zabezpečení a ověřování** a pak klikněte na kartu **jednotné přihlašování** .
    

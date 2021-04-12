@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/14/2021
 ms.author: jeedes
 ms.openlocfilehash: 5e2cf4ac43fa2a828ebe9e9a5cb5d2e1d630a59a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101649369"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Kurz: Azure Active Directory integrace s Cherwell
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Cherwell s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Cherwell svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Cherwell potřebujete následující položky:
 

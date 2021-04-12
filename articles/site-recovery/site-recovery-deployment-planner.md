@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: 4291e8438f70e2e7190cd4dc6c890b5b325f2324
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100360903"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Plánovači nasazení služby Azure Site Recovery pro nasazení VMware do Azure
@@ -71,7 +71,7 @@ Počet serverů, které je možné profilovat, na spuštěnou instanci Plánova�
 
 *Nástroj je primárně určen pro scénář zotavení po havárii z Hyper-V do Azure. Pro zotavení po havárii z Hyper-V do sekundární lokality je možné ho použít pouze k pochopení doporučení na straně zdroje, jako je požadovaná šířka pásma sítě, požadovaný prázdný prostor úložiště na každém ze zdrojových serverů Hyper-V a počet dávek počáteční replikace a definice dávek. Ignorujte doporučení Azure a náklady ze sestavy. Kromě toho není možné použít operaci Zjištění propustnosti pro scénář zotavení po havárii z Hyper-V do sekundární lokality.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Nástroj má dvě hlavní fáze: profilace a generování sestav. Existuje také třetí možnost – výpočet pouze propustnosti. Požadavky na server, ze kterého se spouští profilace a měření propustnosti, jsou uvedené v následující tabulce.
 
 | Požadavek na server | Description|

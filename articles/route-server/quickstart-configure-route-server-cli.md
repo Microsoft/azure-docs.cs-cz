@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
 ms.openlocfilehash: e9c583db7493afc04b2c66553801f62d364b0a80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103419604"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure CLI 
@@ -23,7 +23,7 @@ Tento článek vám pomůže s použitím rozhraní příkazového řádku Azure
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-##  <a name="prerequisites"></a>Předpoklady 
+##  <a name="prerequisites"></a>Požadavky 
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Ujistěte se, že máte nejnovější rozhraní příkazového řádku Azure CLI nebo na portálu můžete použít Azure Cloud Shell. 
@@ -153,7 +153,7 @@ az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-
 az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic false 
 ``` 
 
-## <a name="troubleshooting"></a>Poradce při potížích 
+## <a name="troubleshooting"></a>Řešení potíží 
 
 Pomocí tohoto příkazu můžete zobrazit trasy inzerované a přijímané serverem Azure Route:
 

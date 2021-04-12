@@ -43,7 +43,7 @@ K dokončení kurzu potřebujete následující:
 
 * Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
 * Nainstalujte Visual Studio Code nebo Visual Studio.
-* [Vytvořte účet Media Services](./create-account-howto.md).
+* [Vytvořte účet Media Services](./account-create-how-to.md).
 * Získání přihlašovacích údajů potřebných k použití Media Services rozhraní API pomocí [přístupových rozhraní API](./access-api-howto.md).
 
 ## <a name="download-code"></a>Stažení kódu

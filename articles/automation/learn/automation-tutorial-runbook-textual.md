@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: e822e17f154b72854c5150e071301d7bbd53072e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e0247d1d113f7fb0bf23116b3473f73b78a58c80
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98890811"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167596"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Kurz: vytvoření Runbooku pracovního postupu PowerShellu
 
@@ -22,7 +22,7 @@ V tomto kurzu se seznámíte s vytvořením [runbooku pracovního postupu PowerS
 > * Spuštění a sledování stavu úlohy Runbooku
 > * Aktualizace Runbooku pro spuštění virtuálního počítače Azure s parametry Runbooku
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -146,7 +146,7 @@ Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Ch
 
    ```powershell-interactive
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
@@ -171,7 +171,7 @@ Teď, když se Runbook ověřuje pro předplatné Azure, můžete spravovat pros
    workflow MyFirstRunbook-Workflow
    {
    # Ensures that you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -200,7 +200,7 @@ Runbook aktuálně spouští virtuální počítač, který jste pevně zakódov
      [string]$ResourceGroupName
     )
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint

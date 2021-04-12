@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
 ms.openlocfilehash: d9bb00077b1d96d13e15861cac477f913a002030
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101679309"
 ---
 # <a name="configure-both-routing-preference-options-for-a-virtual-machine"></a>Nakonfigurovat obě možnosti předvolby směrování pro virtuální počítač
 
 V tomto článku se dozvíte, jak nakonfigurovat možnosti [Předvolby směrování](./routing-preference-overview.md) (Internet a globální síť Microsoft) pro virtuální počítač. To se dosahuje pomocí dvou rozhraní virtuální sítě, jednoho síťového rozhraní s veřejnou IP adresou, která je směrována přes globální síť Microsoft a druhá s veřejnou IP adresou směrování prostřednictvím sítě poskytovatele internetových služeb.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvořte virtuální počítač s veřejnou IP adresou podle pokynů popsaných v tématu [Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure Portal](./virtual-network-deploy-static-pip-arm-portal.md) pomocí Azure Portal. Výchozí volba předvolby směrování pro veřejnou IP adresu je prostřednictvím **globální sítě Microsoft**. Jakmile budete mít vytvořený virtuální počítač s veřejnou IP adresou, přidejte do virtuálního počítače druhou veřejnou IP adresu, která bude směrovat provoz prostřednictvím tranzitní sítě poskytovatele internetových služeb pomocí upřednostňované předvolby směrování nakonfigurované jako **Internet**.
 

@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 64bd9e4a4cf78d2628e946af30c2d290ff002cf7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93081140"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
@@ -20,7 +20,7 @@ Místní brána dat se vyžaduje v případě, že se nejmíň jeden Azure Analy
 
 Další informace o tom, jak Azure Analysis Services funguje s bránou, najdete v tématu [připojení k místním zdrojům dat](analysis-services-gateway.md). Další informace o rozšířených scénářích instalace a bráně obecně najdete v [dokumentaci k místní bráně dat](/data-integration/gateway/service-gateway-onprem).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 **Minimální požadavky:**
 
