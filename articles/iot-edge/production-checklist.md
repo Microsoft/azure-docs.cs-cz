@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722765"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031122"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -174,7 +174,7 @@ K ověřování pomocí instančního objektu zadejte ID a heslo instančního o
 
 ### <a name="use-tags-to-manage-versions"></a>Použití značek ke správě verzí
 
-Značka je koncept Docker, který můžete použít k rozlišení mezi verzemi kontejnerů Docker. Značky jsou přípony jako **1,0** , které směřují na konec úložiště kontejnerů. Například **MCR.Microsoft.com/azureiotedge-agent:1.0**. Značky jsou proměnlivé a dají se kdykoli změnit tak, aby odkazovala na jiný kontejner, takže váš tým by měl souhlasit s konvencí, která se má při aktualizaci imagí modulu pokračovat.
+Značka je koncept Docker, který můžete použít k rozlišení mezi verzemi kontejnerů Docker. Značky jsou přípony jako **1,1** , které směřují na konec úložiště kontejnerů. Například **MCR.Microsoft.com/azureiotedge-agent:1.1**. Značky jsou proměnlivé a dají se kdykoli změnit tak, aby odkazovala na jiný kontejner, takže váš tým by měl souhlasit s konvencí, která se má při aktualizaci imagí modulu pokračovat.
 
 Značky vám také pomůžou vymáhat aktualizace vašich IoT Edgech zařízení. Když nahrajete aktualizovanou verzi modulu do registru kontejneru, zvyšte značku. Pak na zařízení Nahrajte nové nasazení se zvýšenými značkami. Kontejnerový modul rozpozná zvětšenou značku jako novou verzi a stáhne nejnovější verzi modulu dolů na vaše zařízení.
 
@@ -263,6 +263,17 @@ Pokud budou vaše zařízení nasazená v síti, která používá proxy server,
 
 V systému Linux používá démon IoT Edge jako výchozí ovladač protokolování deníky. `journalctl`K dotazování protokolů démona můžete použít nástroj příkazového řádku.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+V systému Windows démon IoT Edge používá diagnostiku prostředí PowerShell. Slouží `Get-IoTEdgeLog` k dotazování protokolů z procesu démon. IoT Edge moduly používají ovladač JSON pro protokolování, což je výchozí nastavení.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+:::moniker-end
+<!-- end 1.1 -->
+
 <!--1.2-->
 :::moniker range=">=iotedge-2020-11"
 
@@ -281,12 +292,6 @@ Počínaje verzí 1,2 IoT Edge spoléhá na více procesů démonů. I když se 
   ```
 
 :::moniker-end
-
-V systému Windows démon IoT Edge používá diagnostiku prostředí PowerShell. Slouží `Get-IoTEdgeLog` k dotazování protokolů z procesu démon. IoT Edge moduly používají ovladač JSON pro protokolování, což je výchozí nastavení.  
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
-```
 
 Při testování nasazení IoT Edge můžete obvykle získat přístup k zařízením, abyste mohli načítat protokoly a řešit potíže. V případě nasazení nemusí být tato možnost k dispozici. Vezměte v úvahu, jak budete shromažďovat informace o vašich zařízeních v produkčním prostředí. Jednou z možností je použití protokolovacího modulu, který shromažďuje informace z jiných modulů a odesílá je do cloudu. Jedním z příkladů protokolovacího modulu je [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), nebo můžete navrhnout vlastní.
 
@@ -308,12 +313,24 @@ Velikost všech protokolů kontejnerů můžete omezit v možnostech protokolu m
 }
 ```
 
-Přidejte (nebo přidejte) tyto informace do souboru s názvem `daemon.json` a umístěte je do správného umístění pro platformu zařízení.
+Přidejte (nebo přidejte) tyto informace do souboru s názvem `daemon.json` a umístěte je do následujícího umístění:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 | Platforma | Umístění |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* `/etc/docker/`
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Aby se změny projevily, musí být modul kontejneru restartován.
 

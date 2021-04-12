@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95f2e47d3cf0b967f42b988b565da3643796534d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98784304"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490756"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
 
@@ -853,7 +853,7 @@ Tyto akce vám pomůžou řídit spouštění pracovních postupů a zahrnovat d
 | Typ akce | Description | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Spustí stejné akce ve smyčce pro každou položku v poli. | 
-| [**Přestože**](#if-action) | Spustí akce na základě toho, jestli je zadaná podmínka pravdivá, nebo false. | 
+| [**Pokud uživatel**](#if-action) | Spustí akce na základě toho, jestli je zadaná podmínka pravdivá, nebo false. | 
 | [**Scope**](#scope-action) | Spustí akce založené na stavu skupiny ze sady akcí. | 
 | [**Přepínač**](#switch-action) | Spustí akce uspořádané do případů, kdy hodnoty z výrazů, objektů nebo tokenů odpovídají hodnotám určeným každým případem. | 
 | [**Vrátí**](#until-action) | Spustí akce ve smyčce, dokud není zadaná podmínka pravdivá. | 
@@ -2413,11 +2413,11 @@ Ve výchozím nastavení se instance pracovního postupu aplikace logiky spoušt
 
 Když zapnete řízení souběžnosti triggeru, triggery se spustí paralelně až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li změnit tento výchozí limit souběžnosti, můžete použít buď editor zobrazení kódu, nebo návrháře Logic Apps, protože Změna nastavení souběžnosti prostřednictvím návrháře přidá nebo aktualizuje `runtimeConfiguration.concurrency.runs` vlastnost v základní definici triggeru a naopak. Tato vlastnost určuje maximální počet nových instancí pracovního postupu, které mohou být spuštěny paralelně.
 
-Tady je několik důležitých informací, pokud chcete povolit souběžnost u triggeru:
-
-* Pokud je povolená souběžnost povolená, [limit SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) se výrazně zkracuje pro [pole pro dedávkování](#split-on-debatch). Pokud počet položek překročí tento limit, funkce SplitOn je zakázaná.
+Tady je několik důležitých informací, které je potřeba zkontrolovat, než povolíte souběžnost u triggeru:
 
 * Souběžnost po povolení řízení souběžnosti nemůžete zakázat souběžnost.
+
+* Pokud je povolená souběžnost povolená, [limit SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) se výrazně zkracuje pro [pole pro dedávkování](#split-on-debatch). Pokud počet položek překročí tento limit, funkce SplitOn je zakázaná.
 
 * Pokud je povoleno souběžnost, může dlouhotrvající instance aplikace logiky způsobit, že nové instance aplikace logiky vstoupí do stavu čekání. Tento stav zabraňuje Azure Logic Apps vytváření nových instancí a probíhá i v případě, že počet souběžných spuštění je menší, než je stanovený maximální počet souběžných spuštění.
 
@@ -2450,9 +2450,9 @@ Tady je několik důležitých informací, pokud chcete povolit souběžnost u t
 
 #### <a name="edit-in-code-view"></a>Upravit v zobrazení kódu 
 
-V definici základní aktivační události přidejte `runtimeConfiguration.concurrency.runs` vlastnost, která může mít hodnotu, která je v rozsahu od `1` do `50` .
+V definici základní aktivační události přidejte `runtimeConfiguration.concurrency.runs` vlastnost a nastavte hodnotu na základě [limitů souběžnosti triggeru](logic-apps-limits-and-config.md#concurrency-debatching). Pokud chcete pracovní postup spustit sekvenčně, nastavte hodnotu vlastnosti na `1` .
 
-Tady je příklad, který omezí souběžné běhy na 10 instancí:
+Tento příklad omezuje souběžné běhy na 10 instancí:
 
 ```json
 "<trigger-name>": {

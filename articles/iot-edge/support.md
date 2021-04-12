@@ -8,16 +8,16 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772412"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031156"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Tento článek poskytuje podrobné informace o tom, které systémy a součásti podporuje IoT Edge, ať už jsou oficiálně nebo ve verzi Preview.
 
@@ -52,18 +52,39 @@ Azure IoT Edge běží na většině operačních systémů, které můžou spou
   * Microsoft provedl neformální testování platforem nebo ví, že partner úspěšně běžel Azure IoT Edge na platformě.
   * Instalační balíčky pro jiné platformy můžou na těchto platformách fungovat.
 
-Rodina hostitelského operačního systému musí vždy odpovídat rodině hostovaného operačního systému používaného uvnitř kontejneru modulu. Jinými slovy můžete používat pouze kontejnery Linux v kontejnerech Linux a Windows ve Windows. Při použití systému Windows jsou podporovány pouze izolované kontejnery, nikoli izolované kontejnery technologie Hyper-V.  
+Rodina hostitelského operačního systému musí vždy odpovídat rodině hostovaného operačního systému používaného uvnitř kontejneru modulu.
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Jinými slovy můžete používat pouze kontejnery Linux v kontejnerech Linux a Windows ve Windows. Při použití kontejnerů Windows jsou podporovány pouze izolované kontejnery, nikoli izolované kontejnery technologie Hyper-V.  
 
 IoT Edge pro Linux ve Windows používá IoT Edge na virtuálním počítači se systémem Linux běžícím na hostiteli se systémem Windows. Tímto způsobem můžete spustit moduly Linux na zařízení s Windows.
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>Vrstva 1
 
 Systémy uvedené v následujících tabulkách jsou podporovány společností Microsoft, všeobecně dostupné nebo ve verzi Public Preview a testovány s každou novou verzí.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge podporuje moduly sestavené jako kontejnery pro Linux nebo Windows. Kontejnery Linux se dají nasadit na zařízení se systémem Linux nebo nasadit na zařízení s Windows pomocí IoT Edge pro Linux ve Windows. Kontejnery Windows se dají nasadit jenom na zařízení s Windows.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Edge verze 1,2 podporuje pouze moduly sestavené jako kontejnery Linux.
+
+V současné době neexistuje žádný podporovaný způsob, jak na zařízeních s Windows spouštět IoT Edge verze 1,2. [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) je doporučený způsob, jak spustit IoT Edge na zařízeních s Windows, ale v současné době se spouští jenom IoT Edge 1,1. Další informace najdete v tomto článku ve verzi [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) .
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linuxové kontejnery
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Moduly sestavené jako kontejnery Linux lze nasadit do zařízení se systémem Linux nebo Windows. V případě zařízení se systémem Linux se modul runtime IoT Edge nainstaluje přímo na hostitelském zařízení. U zařízení s Windows je virtuální počítač se systémem Linux předem sestavený s IoT Edge modulem runtime spuštěn na hostitelském zařízení.
 
 [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) je momentálně ve verzi Public Preview, ale je doporučený způsob, jak spustit IoT Edge na zařízeních s Windows.
@@ -78,12 +99,27 @@ Moduly sestavené jako kontejnery Linux lze nasadit do zařízení se systémem 
 | Windows Server 2019 | Verze Public Preview |  |  |
 
 Všechny operační systémy Windows musí být verze 1809 (Build 17763) nebo novější.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| Operační systém | AMD | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Malina Pi OS Stretch |  | ![Malina Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Verze Public Preview |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Podpora Ubuntu serveru 16,04 skončila s vydáním IoT Edge verze 1,1.
 
 #### <a name="windows-containers"></a>Kontejnery Windows
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1,1 LTS je poslední kanál verze, který bude podporovat kontejnery Windows. Od verze 1,2 se kontejnery Windows nebudou podporovat. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
 
@@ -99,6 +135,17 @@ Všechny operační systémy Windows musí být verze 1809 (Build 17763). Pro Io
 
 >[!NOTE]
 >Podpora Windows 10 IoT Core skončila s vydáním IoT Edge verze 1,1.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1,1 LTS je poslední kanál verze, který podporuje kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované.
+
+Informace o podporovaných operačních systémech pro kontejnery Windows najdete v článku o verzi [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) tohoto článku.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>Vrstva 2
 
@@ -158,10 +205,28 @@ IoT Edge používá sadu Microsoft. Azure. Devices. Client SDK. Další informac
 Azure IoT Edge lze spustit na virtuálních počítačích. Použití virtuálního počítače jako zařízení IoT Edge je běžné, když zákazníci chtějí rozšiřovat stávající infrastrukturu pomocí Edge Intelligence. Rodina hostitelského operačního systému virtuálního počítače musí odpovídat rodině hostovaného operačního systému používaného uvnitř kontejneru modulu. Tento požadavek je stejný, jako když se Azure IoT Edge spustí přímo na zařízení. Azure IoT Edge nezávislá na základní virtualizační technologii a funguje na virtuálních počítačích využívajících platformy, jako je Hyper-V a vSphere.
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![Azure IoT Edge ve virtuálním počítači](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![Azure IoT Edge ve virtuálním počítači](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>Minimální požadavky na systém
 

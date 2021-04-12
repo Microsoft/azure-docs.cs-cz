@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: eb1b39f268934a71acb05d99bbeecb1b27b27a77
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 2fe8f5d0acb2ab7e2f1c64dde1bedb19b96111e9
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111671"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492286"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Formáty a kodeky Standard Encoder
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **StandardEncoderPreset**, najdete v tématu [Vytvoření transformace s vlastní předvolbumi](encode-custom-presets-how-to.md).
+Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **StandardEncoderPreset**, najdete v tématu [Vytvoření transformace s vlastní předvolbumi](transform-custom-presets-how-to.md).
 
 ## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
 
@@ -103,4 +103,4 @@ V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou po
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření transformace pomocí vlastní předvolby](encode-custom-presets-how-to.md)
+[Vytvoření transformace pomocí vlastní předvolby](transform-custom-presets-how-to.md)

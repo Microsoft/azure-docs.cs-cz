@@ -3,18 +3,18 @@ title: Správa portálu Azure EA
 description: V tomto článku jsou vysvětlené nejčastější úkoly, které provádí správce portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8f643336d50f5ade145454d408599215ed6fd31e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050562"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259434"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -36,7 +36,9 @@ Další podnikové správce mohou vytvářet jen stávající podnikoví správc
 
 ### <a name="create-another-enterprise-administrator"></a>Vytvoření dalšího podnikového správce
 
-Přidání dalšího podnikového správce:
+V závislosti na vaší situaci použijte jednu z následujících možností.
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Pokud jste již podnikovým správcem
 
 1. Přihlaste se k [portálu Azure Enterprise](https://ea.azure.com).
 1. Přejděte na **Manage** (Spravovat)  > **Enrollment Detail** (Podrobnosti registrace).
@@ -44,7 +46,11 @@ Přidání dalšího podnikového správce:
 
 Ujistěte se, že máte e-mailovou adresu daného uživatele a jeho preferovanou metodu ověřování (například přes pracovní či školní účet nebo účet Microsoft).
 
-Pokud nejste podnikovým správcem, požádejte některého z nich, aby vás do registrace přidal. Po přidání do registrace obdržíte aktivační e-mail.
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Pokud nejste podnikovým správcem
+
+Pokud nejste podnikovým správcem, obraťte se na správce podnikové sítě a požádejte ho, aby vás přidal k registraci. Podnikový správce použije předchozí postup k přidání jako správce podnikové sítě. Po přidání do registrace obdržíte aktivační e-mail.
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Pokud vám váš podnikový správce nemůže
 
 Pokud vám daný podnikový správce nemůže pomoct, vytvořte [žádost o podporu na portálu Azure Enterprise](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Zadejte tyto informace:
 

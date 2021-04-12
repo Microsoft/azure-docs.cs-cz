@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fc8e08757ee067e0616cc701a3037a9dbf4c6fd
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109977"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491742"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>Řešení potíží s připojením pro Azure Database for MySQL-flexibilní Server
 
@@ -32,7 +32,7 @@ V tomto článku se podíváme, jak můžete řešit některé běžné chyby a 
 
 Pokud se aplikace trvale nepřipojí k Azure Database for MySQL flexibilnímu serveru, obvykle se jedná o problém s jedním z následujících způsobů:
 
-* Šifrované připojení pomocí protokolu TLS/SSL: flexibilní Server podporuje pouze šifrovaná připojení pomocí protokolu TLS 1,2 (Transport Layer Security) a všechna **příchozí připojení s TLS 1,0 a tls 1,1 budou odepřena**. Verzi TLS nelze zakázat ani změnit. Přečtěte si další informace o [šifrovaném připojení pomocí protokolu TLS 1,2 (Transport Layer Security) v Azure Database for MySQL-flexibilním serveru](./how-to-connect-tls-ssl.md).
+* Šifrované připojení pomocí protokolu TLS/SSL: flexibilní Server podporuje šifrovaná připojení pomocí TLS 1,2) a všechna **příchozí připojení s TLS 1,0 a tls 1,1 budou ve výchozím nastavení zakázaná**. Můžete zakázat vynucení šifrovaných připojení nebo změnit verzi TLS. Přečtěte si další informace o [šifrovaném připojení pomocí protokolu TLS 1,2 (Transport Layer Security) v Azure Database for MySQL-flexibilním serveru](./how-to-connect-tls-ssl.md).
 - Flexibilní Server v *privátním přístupu (integrace virtuální sítě)*: Ujistěte se, že se připojujete ze stejné virtuální sítě jako flexibilní Server. Podívejte se na [virtuální síť v Azure Database for MySQL flexibilním serveru]<!--(./concepts-networking-virtual-network.md)-->
 - Flexibilní Server s *veřejným přístupem (povolenými IP adresami)* Ujistěte se, že je brána firewall nakonfigurovaná tak, aby povolovala připojení z vašeho klienta. Další informace najdete [v tématu vytváření a Správa flexibilních pravidel brány firewall serveru pomocí Azure Portal](./how-to-manage-firewall-portal.md).
 * Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. IP adresy a porty serveru, které se nedají povolit, a také názvy aplikací, jako je MySQL v některých branách firewall.

@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2021
 ms.author: v-erkel
-ms.openlocfilehash: 10d68ce679fe42f5deeaae364bc46adb23436a27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45a7169330b11e98a8618b08205217212414ca5d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587147"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258924"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>Jak obejít nastavení brány firewall účtu úložiště objektů blob
 
 Konkrétní nastavení, které se používá v bránách firewall účtu úložiště, může způsobit, že se vytváření cílů služby Blob Storage nezdaří. Tým Azure HPC cache pracuje na opravě softwaru tohoto problému, ale můžete ho obejít podle pokynů v tomto článku.
 
-Nastavení brány firewall, které umožňuje přístup pouze z vybraných sítí, může zabránit vytvoření nebo úpravě cíle úložiště objektů BLOB. Tato konfigurace se nachází na stránce nastavení **brány firewall a virtuální sítě** pro účet úložiště.
+Nastavení brány firewall, které umožňuje přístup pouze z vybraných sítí, může zabránit vytvoření nebo úpravě cíle úložiště objektů BLOB. Tato konfigurace se nachází na stránce nastavení **brány firewall a virtuální sítě** pro účet úložiště. (Tento problém se nevztahuje na cíle úložiště ADLS-NFS.)
 
 Problémem je to, že služba Cache používá skrytou virtuální síť služby, která je oddělená od zákaznických prostředí. Tato síť není možné explicitně autorizovat pro přístup k vašemu účtu úložiště.
 

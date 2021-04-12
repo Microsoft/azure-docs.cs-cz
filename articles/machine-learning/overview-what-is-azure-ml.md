@@ -7,15 +7,15 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2020
+ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521386"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031082"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -40,7 +40,7 @@ Díky předpovědím neboli predikcím ze strojového učení můžou být aplik
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Nástroje pro strojové učení, které se vejdou na jednotlivé úlohy 
 
 Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteří potřebují pro své pracovní postupy pro strojové učení, včetně těchto nástrojů:
-+ [Návrhář Azure Machine Learning](tutorial-designer-automobile-price-train-score.md): přetažení modulů pro sestavování experimentů a následné nasazení kanálů.
++ [Návrhář Azure Machine Learning](tutorial-designer-automobile-price-train-score.md): přetažení modulů pro sestavování experimentů a následné nasazení kanálů v prostředí s nízkým kódem.
 
 + Jupyter poznámkové bloky: pomocí našich [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks) nebo vytvořte vlastní poznámkové bloky a využijte naši <a href="/python/api/overview/azure/ml/intro" target="_blank">sadu SDK pro ukázky Pythonu</a> pro váš strojové učení. 
 
@@ -48,11 +48,11 @@ Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteř�
 
 + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
 
-+ [Rozšíření Machine Learning pro uživatele Visual Studio Code](tutorial-setup-vscode-extension.md)
++ [Rozšíření Machine Learning pro Visual Studio Code (Preview)](how-to-set-up-vs-code-remote.md) poskytuje plnohodnotné vývojové prostředí pro vytváření a správu projektů machine learningu.
 
-+ [Machine Learning CLI](reference-azure-machine-learning-cli.md)
++ [Machine Learning CLI](reference-azure-machine-learning-cli.md) je rozšíření Azure CLI, které poskytuje příkazy pro správu s Azure Machine Learning prostředky z příkazového řádku.
 
-+ Open Source architektury, jako jsou PyTorch, TensorFlow a scikit – Naučte se a mnoho dalšího
++ [Integrace s open source platformami](concept-open-source.md) , jako jsou PyTorch, TensorFlow a scikit – Naučte se a mnoho dalšího pro školení, nasazování a správu komplexního procesu strojového učení.
 
 + [Posílení učení](how-to-use-reinforcement-learning.md) s využitím Ray RLlib
 
@@ -130,6 +130,8 @@ Váš Azure Storage účet, výpočetní cíle a další prostředky se dají v 
 - + [Začněte ve vlastním vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
   + [Použití poznámkových bloků Jupyter na výpočetní instanci ke školení & nasazení modelů ML](tutorial-1st-experiment-sdk-setup.md)
   + [Použití automatizovaného strojového učení ke studiu & nasazení modelů ML](tutorial-first-experiment-automated-ml.md) 
+  + [Správa prostředků v Visual Studio Code](how-to-manage-resources-vscode.md)
+  + [Použití Visual Studio Code ke školení a nasazení modelu klasifikace imagí](tutorial-train-deploy-image-classification-model-vscode.md)
   + [Použití možností přetažení & designeru pro výuku & nasazení](tutorial-designer-automobile-price-train-score.md) 
   + [Použití rozhraní příkazového učení pro strojové učení ke školení a nasazení modelu](tutorial-train-deploy-model-cli.md)
 

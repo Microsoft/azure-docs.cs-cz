@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080176"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107328"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>Použití parametrů kanálu v Návrháři k sestavování univerzálních kanálů
 
@@ -95,9 +95,11 @@ Pokud chcete odeslat svůj kanál s proměnnými datovými sadami, je nutné zv�
 
 Při příštím spuštění kanálu teď můžete zadat jinou datovou sadu pomocí parametru kanálu.
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>Připojit parametr modulu k parametru kanálu 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Připojit a odpojit parametr modulu k parametru kanálu 
 
-V této části se dozvíte, jak připojit parametr modulu k parametru kanálu.
+V této části se dozvíte, jak připojit a odpojit parametr modulu k parametru kanálu.
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>Připojit parametr modulu k parametru kanálu
 
 Stejné parametry modulu duplicitních modulů můžete připojit ke stejnému parametru kanálu, pokud chcete hodnotu změnit najednou při aktivaci spuštění kanálu.
 
@@ -115,10 +117,16 @@ Následující příklad obsahuje duplicitní modul **Vyčištění chybějící
 
    ![Snímek obrazovky, který ukazuje, jak připojit parametr kanálu](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-Úspěšně jste připojili pole **nahrazující hodnota** k parametru kanálu. **Nahrazující hodnota** v modulech není napadnutelná.
+Úspěšně jste připojili pole **nahrazující hodnota** k parametru kanálu. 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>Odpojit parametr modulu k parametru kanálu
+
+Po připojení **náhradní hodnoty** k parametru kanálu není možné provést akci.
+
+Parametr modulu můžete odpojit od parametru kanálu kliknutím na tlačítko se třemi tečkami (**...**) vedle parametru modulu a výběrem příkazu **Odpojit od parametru kanálu**.
 
  ![Snímek obrazovky, který po připojení k parametru kanálu zobrazuje nenapadnutelný](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>Aktualizace a odstranění parametrů kanálu
 
@@ -133,7 +141,7 @@ Pomocí následujících kroků aktualizujte parametr kanálu modulu:
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>Odstraní parametr kanálu datové sady.
 
-Chcete-li odpojit parametr kanálu datové sady, použijte následující postup:
+Pomocí následujících kroků odstraňte parametr kanálu datové sady:
 
 1. Vyberte modul DataSet.
 1. Zrušte **označení sady možností jako parametr kanálu**.
@@ -147,22 +155,14 @@ Pomocí následujícího postupu odstraňte parametr kanálu modulu:
 
 1. Vyberte tři tečky (**...**) vedle parametru kanálu.
 
-    V tomto zobrazení se dozvíte, ke kterým modulům je připojen parametr kanálu. Pokud chcete odstranit parametr kanálu, musíte ho nejdřív odpojit od všech parametrů modulu.
+    V tomto zobrazení se dozvíte, ke kterým modulům je připojen parametr kanálu.
 
-    ![Snímek obrazovky zobrazující aktuální parametr kanálu aplikovaný na modul](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![Snímek obrazovky zobrazující aktuální parametr kanálu aplikovaný na modul](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. Na plátně vyberte modul, ke kterému je parametr kanálu stále připojen.
-1. V podokně vlastností modulu vpravo vyhledejte pole, ke kterému je připojen parametr kanálu.
-1. MouseOver připojené pole. Pak vyberte tři tečky (**...**), které se zobrazí.
-1. Vyberte možnost **Odpojit z parametru kanálu** .
-
-    ![Snímek obrazovky, který ukazuje odpojení parametrů kanálu](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. Předchozí kroky opakujte, dokud neodeberete parametr kanálu ze všech polí.
-1. Vyberte tři tečky (**...**) vedle parametru kanálu.
 1. Vyberte **Odstranit parametr** a odstraňte parametr kanálu.
 
-    ![Snímek obrazovky, který ukazuje odstranění parametrů kanálu](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > Odstraněním parametru kanálu dojde k odpojení všech parametrů připojeného modulu a hodnota odpojených parametrů modulu bude uchovávat aktuální hodnotu parametru kanálu.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>Aktivace spuštění kanálu s parametry kanálu 
 

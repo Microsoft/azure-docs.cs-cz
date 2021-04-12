@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599296"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097224"
 ---
 > [!NOTE]
 > K detekci chráněných informací o stavu (FÍ) použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
@@ -53,7 +53,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Jména lidí. 
+        Jména lidí. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `Person` do `pii-categories` parametru. `Person` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -140,7 +140,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace. Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity.
+        Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace. Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `Organization` do `pii-categories` parametru. `Organization` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -241,7 +241,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Úplná poštovní adresa.
+        Úplná poštovní adresa. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `Address` do `pii-categories` parametru. `Address` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -270,7 +270,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        E-mailové adresy.
+        E-mailové adresy. Také vrácen s `domain=phi` .
       
         Chcete-li získat tuto kategorii entit, přidejte `Email` do `pii-categories` parametru. `Email` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
 
@@ -298,7 +298,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        Adresy URL webů. 
+        Adresy URL webů. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `URL` do `pii-categories` parametru. `URL` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -327,7 +327,7 @@ Tato kategorie obsahuje následující entitu:
     :::column span="2":::
         **Podrobnosti**
 
-        síťové IP adresy. 
+        Síťové IP adresy. Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `IP` do `pii-categories` parametru. `IP` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -382,7 +382,7 @@ Entita v této kategorii může mít následující podkategorie.
     :::column span="2":::
         **Podrobnosti**
 
-        Kalendářní data kalendáře
+        Kalendářní data kalendáře Také vrácen s `domain=phi` .
 
         Chcete-li získat tuto kategorii entit, přidejte `Date` do `pii-categories` parametru. `Date` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       
@@ -436,7 +436,7 @@ Entita v této kategorii může mít následující podkategorie.
     :::column span="2":::
         **Podrobnosti**
 
-        Ve věku.
+        Ve věku. 
 
         Chcete-li získat tuto kategorii entit, přidejte `Age` do `pii-categories` parametru. `Age` Vrátí se v odpovědi rozhraní API, pokud se zjistí.
       

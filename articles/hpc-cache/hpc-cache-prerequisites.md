@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775761"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258873"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -197,6 +197,8 @@ Toto je obecný přehled kroků. Tyto kroky se můžou změnit, takže vždycky 
    * Poskytněte aplikaci cache přístup k vašemu účtu služby Azure Storage, jak je uvedeno v [oprávněních](#permissions)výše. Můžete to udělat při prvním vytvoření cíle úložiště. Postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) a poskytněte mezipaměti požadované role přístupu.
 
      Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
+
+Přečtěte si další informace o použití cílů úložiště ADLS-NFS s mezipamětí Azure HPC v [použití úložiště objektů BLOB připojené k systému souborů NFS s mezipamětí Azure HPC](nfs-blob-considerations.md).
 
 ## <a name="set-up-azure-cli-access-optional"></a>Nastavení přístupu přes rozhraní příkazového řádku Azure (volitelné)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496605"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107132"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Kurz: vytvoření grafu digitálních vláken Azure pomocí rozhraní příkazového řádku Azure
 
@@ -20,7 +20,7 @@ ms.locfileid: "103496605"
 
 V tomto kurzu sestavíte graf v oblasti digitálních vláken Azure pomocí modelů, vláken a vztahů. Nástroj pro tento kurz je [Sada příkazů pro digitální vlákna Azure, která je nastavená pro rozhraní příkazového **řádku Azure CLI**](how-to-use-cli.md). 
 
-Příkazy rozhraní příkazového řádku můžete použít k provádění základních akcí Azure, jako je nahrávání modelů, vytváření a úpravy vláken a vytváření relací. Můžete se také podívat na [referenční dokumentaci pro *AZ DT* Command Set](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest) a zobrazit úplnou sadu příkazů rozhraní příkazového řádku.
+Příkazy rozhraní příkazového řádku můžete použít k provádění základních akcí Azure, jako je nahrávání modelů, vytváření a úpravy vláken a vytváření relací. Můžete se také podívat na [referenční dokumentaci pro *AZ DT* Command Set](/cli/azure/dt) a zobrazit úplnou sadu příkazů rozhraní příkazového řádku.
 
 V tomto kurzu budete...
 > [!div class="checklist"]
@@ -91,7 +91,7 @@ Po navržení modelů je budete muset nahrát do instance digitálního vlákna 
     
     Přejděte na *Room.jsna* svém počítači a vyberte otevřít. Pak tento krok opakujte pro *Floor.jsna*.
 
-1. Dále pomocí příkazu [**AZ DT model Create**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create) , jak vidíte níže, nahrajte aktualizovaný model *místnosti* do instance digitálního vlákna Azure. Druhý příkaz nahraje jiný model, *Floor*, který použijete v další části k vytvoření různých typů vláken.
+1. Dále pomocí příkazu [**AZ DT model Create**](/cli/azure/dt/model#az_dt_model_create) , jak vidíte níže, nahrajte aktualizovaný model *místnosti* do instance digitálního vlákna Azure. Druhý příkaz nahraje jiný model, *Floor*, který použijete v další části k vytvoření různých typů vláken.
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ Po navržení modelů je budete muset nahrát do instance digitálního vlákna 
     Výstup z každého příkazu zobrazí informace o úspěšně nahraném modelu.
 
     >[!TIP]
-    >Můžete také nahrát všechny modely v rámci adresáře ve stejnou dobu pomocí `--from-directory` Možnosti pro příkaz model Create. Další informace najdete v tématu [volitelné parametry pro *AZ DT model Create*](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create-optional-parameters).
+    >Můžete také nahrát všechny modely v rámci adresáře ve stejnou dobu pomocí `--from-directory` Možnosti pro příkaz model Create. Další informace najdete v tématu [volitelné parametry pro *AZ DT model Create*](/cli/azure/dt/model#az_dt_model_create-optional-parameters).
 
-1. Ověřte, že se modely vytvořily pomocí příkazu [**AZ DT model list**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_list) , jak je znázorněno níže. Tato akce vytiskne seznam všech modelů, které byly odeslány do instance digitálního vlákna Azure s úplnými informacemi. 
+1. Ověřte, že se modely vytvořily pomocí příkazu [**AZ DT model list**](/cli/azure/dt/model#az_dt_model_list) , jak je znázorněno níže. Tato akce vytiskne seznam všech modelů, které byly odeslány do instance digitálního vlákna Azure s úplnými informacemi. 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -129,7 +129,7 @@ Jelikož modely nelze přepsat, nyní se vrátí kód chyby `ModelIdAlreadyExist
 
 Teď, když se některé modely nahrály do instance digitálního vlákna v Azure, můžete vytvořit [**digitální vlákna**](concepts-twins-graph.md) na základě definic modelů. Digitální vlákna reprezentují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. 
 
-K vytvoření digitálního vlákna použijte příkaz [**AZ DT zdvojené vytvoření**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_create) . Musíte odkazovat na model, na kterém je založena, a může volitelně definovat počáteční hodnoty pro všechny vlastnosti v modelu. V této fázi není nutné předávat žádné informace o relaci.
+K vytvoření digitálního vlákna použijte příkaz [**AZ DT zdvojené vytvoření**](/cli/azure/dt/twin#az_dt_twin_create) . Musíte odkazovat na model, na kterém je založena, a může volitelně definovat počáteční hodnoty pro všechny vlastnosti v modelu. V této fázi není nutné předávat žádné informace o relaci.
 
 1. Spusťte tento kód v Cloud Shell, abyste vytvořili několik vláken na základě modelu *místnosti* , který jste aktualizovali dříve, a dalšího modelu, *podlaží*. V této *místnosti* se nacházejí tři vlastnosti, takže můžete zadat argumenty s počátečními hodnotami. (Inicializace hodnot vlastností je obecně volitelná, ale jsou pro tento kurz potřeba.)
 
@@ -151,7 +151,7 @@ K vytvoření digitálního vlákna použijte příkaz [**AZ DT zdvojené vytvo�
     
     Výstup z každého příkazu zobrazí informace o úspěšném vytvoření vlákna (včetně vlastností pro vlákna místnosti, které s nimi byly inicializovány).
 
-1. Pomocí příkazu [**AZ DT s dvojitým dotazem**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) , který vidíte níže, můžete ověřit, jestli se vlákna vytvořila. Zobrazený dotaz vyhledá všechny digitální vlákna v instanci digitálních vláken Azure.
+1. Pomocí příkazu [**AZ DT s dvojitým dotazem**](/cli/azure/dt/twin#az_dt_twin_query) , který vidíte níže, můžete ověřit, jestli se vlákna vytvořila. Zobrazený dotaz vyhledá všechny digitální vlákna v instanci digitálních vláken Azure.
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ K vytvoření digitálního vlákna použijte příkaz [**AZ DT zdvojené vytvo�
 
 Můžete také upravit vlastnosti vlákna, které jste vytvořili. 
 
-1. Spuštěním příkazu [**AZ DT**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_update) *room0* Update změňte pracovní místnost z *room0* na *PresidentialSuite*:
+1. Spuštěním příkazu [**AZ DT**](/cli/azure/dt/twin#az_dt_twin_update) *room0* Update změňte pracovní místnost z *room0* na *PresidentialSuite*:
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ Můžete také upravit vlastnosti vlákna, které jste vytvořili.
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Snímek obrazovky Cloud Shell zobrazující výsledek příkazu Update, který obsahuje místnost z PresidentialSuite." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. Aktualizaci můžete ověřit tak, že spuštěním příkazu [**AZ DT**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) dodaný příkaz zobrazíte informace o *room0*:
+1. Aktualizaci můžete ověřit tak, že spuštěním příkazu [**AZ DT**](/cli/azure/dt/twin#az_dt_twin_show) dodaný příkaz zobrazíte informace o *room0*:
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -197,7 +197,7 @@ V dalším kroku můžete vytvořit některé **relace** mezi těmito podmnožin
 
 Typy vztahů, které lze vytvořit z jednoho vlákna na jiný, jsou definovány v rámci [modelů](#model-a-physical-environment-with-dtdl) , které jste nahráli dříve. [Definice modelu pro *Floor*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) určuje, že podlaha může mít typ vztahu s názvem, který *obsahuje*. Díky tomu je možné vytvořit relaci typu *Contains* z každé *podlahové* vlákna do odpovídající místnosti, kterou obsahuje.
 
-Chcete-li přidat relaci, použijte příkaz [**AZ DT s dvojitou relací Create**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_create) . Určete, zda vztah pochází od, typu relace a vlákna, ke kterému se vztah připojuje. Nakonec Udělte tomuto vztahu jedinečné ID. Pokud byla relace definována tak, aby měla vlastnosti, můžete v tomto příkazu inicializovat také vlastnosti relace.
+Chcete-li přidat relaci, použijte příkaz [**AZ DT s dvojitou relací Create**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) . Určete, zda vztah pochází od, typu relace a vlákna, ke kterému se vztah připojuje. Nakonec Udělte tomuto vztahu jedinečné ID. Pokud byla relace definována tak, aby měla vlastnosti, můžete v tomto příkazu inicializovat také vlastnosti relace.
 
 1. Spusťte následující kód pro přidání vztahu *obsahujícího* typ ze všech vláken *podlah* , které jste vytvořili dříve, do odpovídající vlákna v *místnosti* . Relace mají název *relationship0* a *relationship1*.
 
@@ -240,7 +240,7 @@ Vlákna a vztahy, které jste nastavili v tomto kurzu, tvoří následující ko
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Dotaz na dvojitou grafickou odpověď na otázky prostředí
 
-Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [dotazovat](concepts-query-language.md) se na váš graf, aby odpovídal na dotazy týkající se vašeho prostředí. V Azure CLI se to provádí pomocí příkazu [**AZ DT s dvojitým dotazem**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) .
+Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [dotazovat](concepts-query-language.md) se na váš graf, aby odpovídal na dotazy týkající se vašeho prostředí. V Azure CLI se to provádí pomocí příkazu [**AZ DT s dvojitým dotazem**](/cli/azure/dt/twin#az_dt_twin_query) .
 
 Spusťte následující dotazy v Cloud Shell, abyste odpověděli na některé otázky týkající se ukázkového prostředí.
 
@@ -308,7 +308,7 @@ Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, 
 
 * **Pokud máte v plánu pokračovat k dalšímu kurzu**, můžete zde nastavit prostředky, které jste si nastavili, a znovu použít instanci digitálního vlákna Azure, aniž byste museli něco dělat.
 
-* **Pokud chcete dál používat instanci digitálních vláken Azure, ale vymažte všechny jeho modely, vlákna a relace**, můžete použít příkaz [**AZ DT s dvojitou relací Delete**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_delete), [**AZ DT reaz Delete**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_delete)a [**AZ DT model Delete**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_delete) pro vymazání vztahů, vláken a modelů ve vaší instanci, v uvedeném pořadí.
+* **Pokud chcete dál používat instanci digitálních vláken Azure, ale vymažte všechny jeho modely, vlákna a relace**, můžete použít příkaz [**AZ DT s dvojitou relací Delete**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete), [**AZ DT reaz Delete**](/cli/azure/dt/twin#az_dt_twin_delete)a [**AZ DT model Delete**](/cli/azure/dt/model#az_dt_model_delete) pro vymazání vztahů, vláken a modelů ve vaší instanci, v uvedeném pořadí.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

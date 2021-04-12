@@ -1,33 +1,36 @@
 ---
 title: Syntaxe dotazů prohledávání grafů
 titleSuffix: Azure Machine Learning
-description: Naučte se používat syntaxi vyhledávacích dotazů v Návrháři Azure Machine Learning k hledání uzlů v v grafu kanálu.
+description: Naučte se používat syntaxi vyhledávacích dotazů v Návrháři Azure Machine Learning k hledání uzlů v grafu kanálu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 8/24/2020
-ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: likebupt
+ms.author: keli19
+ms.date: 03/24/2021
+ms.openlocfilehash: 74cf0b897529e8bb198b6f82a57e187662a4a285
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420763"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259216"
 ---
 # <a name="graph-search-query-syntax"></a>Syntaxe dotazů prohledávání grafů
 
-V tomto článku se dozvíte o syntaxi dotazu vyhledávacího grafu v Azure Machine Learning. Funkce hledání v grafu umožňuje vyhledat uzel podle jeho názvu a vlastností. 
+V tomto článku se dozvíte o funkcích hledání grafů v Azure Machine Learning. 
 
- ![Animovaný snímek obrazovky znázorňující ukázkové možnosti vyhledávání grafů](media/search/graph-search.gif)
+Vyhledávání v grafu umožňuje rychle procházet uzel při ladění nebo vytváření kanálu. Můžete buď zadat klíčové slovo nebo dotaz na vstupní pole na panelu nástrojů nebo v části Karta Hledat na levém panelu a aktivovat vyhledávání. Všechny odpovídající výsledky budou zvýrazněny žlutě na plátně. Pokud vyberete výsledek na levém panelu, uzel na plátně se zvýrazní červeně.
 
-Hledání v grafu podporuje fulltextové vyhledávání klíčových slov v názvu uzlu a komentářích. Můžete také filtrovat vlastnost uzlu, jako je runStatus, Duration, computeTarget. Hledání klíčových slov je založené na dotazu Lucene. Úplný vyhledávací dotaz vypadá takto:  
+![Snímek obrazovky s ukázkovým prostředím pro hledání grafů](media/search/graph-search-0322.png)
 
-**[dotaz na Lucene | [dotaz filtru]** 
+Hledání v grafu podporuje fulltextové vyhledávání klíčových slov v názvu uzlu a komentářích. Můžete také filtrovat podle vlastností uzlu, jako je runStatus, Duration, computeTarget. Hledání klíčových slov je založené na dotazu Lucene. Úplný vyhledávací dotaz vypadá takto:  
+
+**[[dotaz na Lucene] | [dotaz filtru]]** 
 
 Můžete použít buď dotaz na Lucene, nebo dotaz na filtr. Chcete-li použít obojí, použijte **|** oddělovač. Syntaxe dotazu filtru je více striktní než dotaz Lucene. Takže pokud lze vstup zákazníka analyzovat jak obojí, použije se dotaz filtru.
 
+Například `data OR model | compute in {cpucluster}` je třeba hledat uzly, které obsahují název nebo komentář obsahující `data` nebo `model` a COMPUTE jsou cpucluster.
  
 
 ## <a name="lucene-query"></a>Dotaz Lucene
@@ -68,6 +71,8 @@ Následující vlastnosti uzlu můžete použít jako klíče:
 - compute
 - doba trvání
 - opakovan
+- publish
+- tags
 
 A použijte následující operátory:
 

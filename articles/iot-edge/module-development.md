@@ -8,12 +8,12 @@ ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a30b4b056d56e096f80b9494ab80a585fff76e66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489915"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031117"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vývoj vlastních modulů IoT Edge
 
@@ -134,7 +134,7 @@ IoT Edge podporuje různé operační systémy, architektury zařízení a vývo
 
 ### <a name="linux"></a>Linux
 
-Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zařízení AMD64 a ARM32 Linux.
+Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro kontejnery AMD64 a ARM32 Linux.
 
 | Vývojový jazyk | Vývojářské nástroje |
 | -------------------- | ----------------- |
@@ -145,16 +145,30 @@ Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zař�
 | Python | Visual Studio Code |
 
 >[!NOTE]
->Podpora pro vývoj a ladění pro zařízení s ARM64 Linux je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [vývoj a ladění ARM64 IoT Edgech modulů v Visual Studio Code (Preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Podpora pro vývoj a ladění pro kontejnery ARM64 Linux je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [vývoj a ladění ARM64 IoT Edgech modulů v Visual Studio Code (Preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ### <a name="windows"></a>Windows
 
-Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zařízení AMD64 s Windows.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro kontejnery Windows AMD64.
 
 | Vývojový jazyk | Vývojářské nástroje |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (žádné možnosti ladění)<br>Visual Studio 2017/2019 |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge 1,1 LTS je poslední kanál verze, který podporuje kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované.
+
+Informace o vývoji v kontejnerech Windows najdete v článku verze [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) tohoto článku.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Další kroky
 

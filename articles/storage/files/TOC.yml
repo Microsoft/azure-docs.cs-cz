@@ -227,6 +227,10 @@
       items:
         - name: Migrace do sdílených složek Azure
           href: storage-files-migration-overview.md
+        - name: Cíl jenom pro cloudové nasazení
+          items:
+            - name: Migrace z místního serveru NAS do sdílených složek Azure pomocí DataBox
+              href: storage-files-migration-nas-cloud-databox.md
         - name: Cílení na hybridní nasazení
           items:
             - name: Migrace hromadných dat do Synchronizace souborů Azure s využitím Azure Data Boxu
@@ -237,8 +241,6 @@
               href: storage-files-migration-nas-hybrid.md
             - name: Migrace z místního serveru NAS do hybridního souborového serveru pomocí DataBox
               href: storage-files-migration-nas-hybrid-databox.md
-            - name: Migrace z místního serveru NAS do sdílených složek Azure pomocí DataBox
-              href: storage-files-migration-nas-cloud-databox.md
         - name: Ze StorSimple
           items:
             - name: Průvodce migrací StorSimple 8100 a 8600

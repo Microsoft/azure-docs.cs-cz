@@ -7,18 +7,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: 827e4d883fd9e80ae84845d620cc4ca00816f56e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 1ea8583b33fbe711fcffbf9626236923ecd0df8b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551305"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107223"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Postup vytvoření nabídky virtuálního počítače na Azure Marketplace
 
 Tento článek popisuje, jak vytvořit nabídku virtuálních počítačů Azure pro [Azure Marketplace](https://azuremarketplace.microsoft.com/). Řeší virtuální počítače založené na Windows i Linux, které obsahují operační systém, virtuální pevný disk (VHD) a až 16 datových disků.
 
-Než začnete, [Vytvořte si účet pro komerční tržiště v partnerském centru](partner-center-portal/create-account.md). Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
+Než začnete, [Vytvořte si účet pro komerční tržiště v partnerském centru](create-account.md). Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 ## <a name="before-you-begin"></a>Než začnete
 

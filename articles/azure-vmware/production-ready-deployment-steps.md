@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e0a4083c0253d322b2e10472d0df7496722c10
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584631"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107240"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -16,8 +16,12 @@ Tento článek popisuje proces plánování, který identifikuje a shromažďuje
 
 Kroky popsané v tomto rychlém startu poskytují prostředí připravené pro vytváření virtuálních počítačů (VM) a migrace v produkčním prostředí. 
 
->[!IMPORTANT]
->Před vytvořením prostředku řešení Azure VMware použijte článek [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md) k odeslání lístku podpory, který má přidělené hostitele. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělila své hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup. 
+Pokud chcete sledovat shromažďovaná data, Získejte [Kontrolní seznam pro plánování HCX](https://www.virtualworkloads.com/2021/04/hcx-planning-checklist/).
+
+> [!IMPORTANT]
+> Po přípravě na vytvoření prostředku řešení Azure VMware je důležité požádat o kvótu hostitele hned. Nyní můžete požádat o kvótu hostitele, takže až se proces plánování dokončí, budete připraveni nasadit privátní cloud řešení Azure VMware. Poté, co tým podpory obdrží vaši žádost o kvótu hostitele, trvá až pět pracovních dnů, aby vaši žádost zkontroloval a rozdělil vaše hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, proveďte stejný postup. Další informace najdete na následujících odkazech v závislosti na typu předplatného, které máte:
+> - [Zákazníci se smlouvou EA](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
+> - [Zákazníci CSP](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
 
 ## <a name="subscription"></a>Předplatné
 
@@ -82,18 +86,6 @@ Tento segment sítě se používá primárně pro účely testování během po�
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifikace – segment IP adres pro úlohy virtuálních počítačů" border="false":::     
 
-## <a name="optional-extend-your-networks"></a>Volitelné Rozšiřování sítí
-
-Segmenty sítě můžete roztáhnout z místního prostředí do řešení Azure VMware a pokud to uděláte, identifikujte tyto sítě hned teď.  
-
-Pamatujte na to, že:
-
-- Pokud hodláte rozšiřovat sítě z místního prostředí, musí se tyto sítě připojit k [vSphere distribuovanému přepínači (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) v místním prostředí VMware.  
-- Pokud sítě, které chcete rozšířit na [vSphere standardním přepínači](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html), se nedají rozšířit.
-
->[!NOTE]
->Tyto sítě se rozšiřují jako poslední krok konfigurace, nikoli během nasazení.
-
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Připojení Azure Virtual Network k řešení VMware Azure
 
 K zajištění připojení k řešení Azure VMware je ExpressRoute sestaven z privátního cloudu řešení Azure VMware do brány virtuální sítě ExpressRoute.
@@ -106,7 +98,7 @@ Můžete použít *existující* nebo *novou* bránu virtuální sítě ExpressR
 
 Pokud máte v úmyslu použít *stávající* bránu virtuální sítě ExpressRoute, je okruh Azure VMware Solution ExpressRoute vytvořen jako krok po nasazení. V takovém případě ponechte pole **Virtual Network** prázdné.
 
-Jako obecné doporučení je přijatelné použít stávající bránu virtuální sítě ExpressRoute. V případě plánování si poznamenejte, kterou bránu virtuální sítě ExpressRoute použijete, a potom pokračujte dalším krokem.
+Jako obecné doporučení je přijatelné použít stávající bránu virtuální sítě ExpressRoute. V případě plánování si poznamenejte, kterou bránu virtuální sítě ExpressRoute použijete, a potom pokračujte [dalším krokem](#vmware-hcx-network-segments).
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Vytvořit novou bránu virtuální sítě ExpressRoute
 
@@ -116,23 +108,36 @@ Když vytváříte *novou* bránu virtuální sítě ExpressRoute, můžete pou�
    1. Identifikujte virtuální síť Azure, ve které neexistují žádné již existující brány virtuální sítě ExpressRoute.
    2. Před nasazením vytvořte [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet) v Azure Virtual Network.
 
-- Novou Virtual Network Azure můžete vytvořit předem nebo během nasazování. V seznamu **Virtual Network** vyberte odkaz **vytvořit nový** .
+- Novou službu Azure Virtual Network a bránu virtuální sítě vytvoříte tak, že v rámci nasazení vyberete odkaz **vytvořit nový** v seznamu **Virtual Network** .  Je důležité, abyste před nasazením definovali adresní prostor a podsítě, takže budete připraveni tyto informace zadat po dokončení kroků nasazení.
 
-Následující obrázek ukazuje obrazovku **vytvořit nasazení privátního cloudu** se zvýrazněným polem **Virtual Network** .
+Na následujícím obrázku vidíte obrazovku **vytvořit nasazení privátního cloudu** se zvýrazněným polem **Virtual Network** .
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Snímek obrazovky s možností nasazení řešení Azure VMware se zvýrazněným polem Virtual Network":::
 
->[!NOTE]
->Jakékoli virtuální sítě, která se bude používat nebo vytvořit, může vidět vaše místní prostředí a řešení Azure VMware. proto se ujistěte, že se nepřekrývají žádné segmenty IP používané v této virtuální síti a podsítích.
+> [!NOTE]
+> Jakékoli virtuální sítě, která se bude používat nebo vytvořit, může vidět vaše místní prostředí a řešení Azure VMware. proto se ujistěte, že se nepřekrývají žádné segmenty IP používané v této virtuální síti a podsítích.
 
 ## <a name="vmware-hcx-network-segments"></a>Segmenty sítě VMware HCX
 
-VMware HCX je technologie, která je součástí řešení Azure VMware. Primárními případy použití pro VMware HCX jsou migrace úloh a zotavení po havárii. Pokud plánujete jednu z těchto prací, je nejlepší naplánovat sítě nyní.   V opačném případě můžete přeskočit a pokračovat k dalšímu kroku.
+VMware HCX je technologie, která je součástí sady řešení Azure VMware. Primárními případy použití pro VMware HCX jsou migrace úloh a zotavení po havárii. Pokud plánujete jednu z těchto prací, je nejlepší naplánovat sítě nyní. V opačném případě můžete přeskočit a pokračovat k dalšímu kroku.
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
+## <a name="optional-extend-your-networks"></a>Volitelné Rozšiřování sítí
+
+Síťové segmenty můžete roztáhnout z místního prostředí do řešení Azure VMware. Pokud rozšíříte segmenty sítě, identifikujte tyto sítě nyní.  
+
+Tady je několik faktorů, které je potřeba vzít v úvahu:
+
+- Pokud hodláte rozšiřovat sítě z místního prostředí, musí se tyto sítě připojit k [vSphere distribuovanému přepínači (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) v místním prostředí VMware.  
+- Sítě, které jsou ve [standardním přepínači vSphere](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) , se nedají rozšířit.
+
+>[!NOTE]
+>Tyto sítě se rozšiřují jako poslední krok konfigurace, nikoli během nasazení.
+>
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste shromáždili a popsali potřebné informace, pokračujte k další části a vytvořte si privátní cloud řešení Azure VMware.
 
 > [!div class="nextstepaction"]
 > [Nasazení služby Azure VMware Solution](deploy-azure-vmware-solution.md)
+> 

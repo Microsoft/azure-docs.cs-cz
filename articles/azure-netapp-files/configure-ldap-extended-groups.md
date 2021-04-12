@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 2031cbf07d700307ae1e11c516f9fc736bce5080
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498963"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259706"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurace Přidání LDAP pomocí rozšířených skupin pro přístup ke svazkům NFS
 
@@ -69,9 +69,18 @@ V tomto článku se dozvíte, jak postupovat při vytváření svazku NFS pomoc�
 
 2. Svazky LDAP vyžadují konfiguraci služby Active Directory pro nastavení serveru LDAP. Postupujte podle pokynů v části [požadavky na připojení ke službě Active Directory](create-active-directory-connections.md#requirements-for-active-directory-connections) a [vytvořte připojení](create-active-directory-connections.md#create-an-active-directory-connection) ke službě Active Directory, abyste mohli konfigurovat připojení služby Active Directory na Azure Portal.  
 
-3. Zajistěte, aby byl server služby Active Directory LDAP v provozu a běžel ve službě Active Directory. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
+3. Zajistěte, aby byl server služby Active Directory LDAP v provozu a běžel ve službě Active Directory. 
 
-4. Uživatelé systému souborů NFS NFS musí mít na serveru LDAP určité atributy POSIX. Pro nastavení požadovaných atributů použijte postup pro [správu atributů LDAP POSIX](create-volumes-dual-protocol.md#manage-ldap-posix-attributes) .  
+4. Uživatelé systému souborů NFS NFS musí mít na serveru LDAP určité atributy POSIX. Atributy pro uživatele LDAP a skupiny LDAP nastavte takto: 
+
+    * Požadované atributy pro uživatele LDAP:   
+        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+    * Požadované atributy pro skupiny LDAP:   
+        `objectClass: group`, `gidNumber: 555`
+
+    Atributy POSIX můžete spravovat pomocí modulu snap-in konzoly MMC Uživatelé a počítače služby Active Directory. Následující příklad ukazuje Editor atributů služby Active Directory:  
+
+    ![Editor atributů služby Active Directory](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
 5. Pokud chcete nakonfigurovat klienta Linux s integrovaným protokolem LDAP, přečtěte si téma [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md).
 

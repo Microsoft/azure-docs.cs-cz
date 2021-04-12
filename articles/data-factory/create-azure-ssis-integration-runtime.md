@@ -3,15 +3,15 @@ title: Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Facto
 description: Naučte se vytvořit prostředí Azure-SSIS Integration runtime v Azure Data Factory, abyste mohli nasadit a spustit balíčky SSIS v Azure.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/09/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4f60539e2eb524e95c76814f7527377630349e2
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739401"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285237"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -34,7 +34,7 @@ V kurzu [zřizování Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md) s
 
 V tomto článku se dozvíte, jak zřídit Azure-SSIS IR pomocí šablony Azure Portal, Azure PowerShell a Azure Resource Manager.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -95,7 +95,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
 ### <a name="provision-an-azure-ssis-integration-runtime"></a>Zřízení prostředí Azure-SSIS Integration Runtime
 
-Na stránce **Začínáme** vyberte dlaždici **konfigurovat Integration runtime SSIS** a otevřete tak podokno **instalace prostředí Integration runtime** .
+Na stránce **Začínáme** vyberte dlaždici **Konfigurovat integraci SSIS** a otevřete podokno **instalace prostředí Integration runtime** .
 
    ![Dlaždice Konfigurace prostředí SSIS Integration Runtime](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -123,7 +123,7 @@ Na stránce **Obecné nastavení** v podokně **instalace prostředí Integratio
 
    7. Pro **Uložit peníze** vyberte možnost zvýhodněné hybridní využití Azure pro prostředí Integration Runtime: **Ano** nebo **ne**. Vyberte **Ano** , pokud chcete využít vlastní licenci SQL Server se Software Assurance, abyste využili úspory nákladů s využitím hybridního použití.
 
-   8. Vyberte **Další**.
+   8. Vyberte **Pokračovat**.
 
 #### <a name="deployment-settings-page"></a>Stránka nastavení nasazení
 
@@ -165,7 +165,7 @@ Pokud zaškrtnete toto políčko, proveďte následující kroky, abyste mohli p
 
    1. Pro **úroveň služby databáze katalogu** vyberte úroveň služby pro váš databázový server pro hostování SSISDB. Vyberte úroveň Basic, Standard nebo Premium nebo vyberte název elastického fondu.
 
-Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **Další**.
+Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **pokračovat**.
 
 > [!NOTE]
    > Pokud používáte Azure SQL Database Server k hostování SSISDB, budou se data ve výchozím nastavení ukládat v geograficky redundantním úložišti pro zálohy. Pokud nechcete, aby byla vaše data replikována v jiných oblastech, postupujte podle pokynů ke [konfiguraci redundance úložiště zálohování pomocí PowerShellu](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
@@ -187,7 +187,7 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
    1. Pro **propojenou službu úložiště balíčků** vyberte existující propojenou službu, která uchovává informace o přístupu pro systém souborů/soubory Azure/spravovanou instanci Azure SQL, kde jsou balíčky nasazené, nebo vytvořte novou výběrem možnosti **Nový**. V podokně **Nová propojená služba** proveďte následující kroky.
    
       > [!NOTE]
-      > Pro přístup k souborům Azure můžete použít buď službu **azure File Storage** , nebo propojené služby **systému souborů** . Pokud používáte propojenou službu **Azure File Storage** , Azure-SSIS IR úložiště balíčků pro teď podporuje jenom **základní** metodu ověřování (ne **klíč účtu** ani **SAS URI**). Pokud chcete pro propojenou službu **Azure File Storage** použít **základní** ověřování, můžete `?feature.upgradeAzureFileStorage=false` se připojit k adrese URL portálu ADF v prohlížeči. Alternativně můžete místo toho použít propojenou službu **systému souborů** k přístupu k souborům Azure. 
+      > Pro přístup k souborům Azure můžete použít buď službu **azure File Storage** , nebo propojené služby **systému souborů** . Pokud používáte propojenou službu **Azure File Storage** , Azure-SSIS IR úložiště balíčků pro teď podporuje jenom **základní** metodu ověřování (ne **klíč účtu** ani **SAS URI**).  
 
       ![Nastavení nasazení pro propojené služby](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -199,7 +199,7 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
 
       1. Připojení můžete ignorovat **prostřednictvím prostředí Integration runtime**, protože k získání informací o přístupu k úložištím balíčků vždycky používáme váš Azure-SSIS IR.
 
-      1. Pokud vyberete **File Storage Azure**, proveďte následující kroky. 
+      1. Pokud pro **metodu ověřování** vyberete **Azure File Storage**, vyberte **základní** a pak proveďte následující kroky. 
 
          1. Pro **metodu výběru účtu** vyberte možnost **z předplatného Azure** nebo **Zadejte ručně**.
          
@@ -209,21 +209,21 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
 
       1. Pokud vyberete **spravovanou instanci Azure SQL**, proveďte následující kroky. 
 
-         1. Vyberte **připojovací řetězec** , který chcete zadat ručně, nebo **Azure Key Vault** , kde je uložený jako tajný kód.
-         
+         1. Vyberte **připojovací řetězec** nebo **Azure Key Vault** , kde je uložený jako tajný kód.
+
          1. Pokud vyberete **připojovací řetězec**, proveďte následující kroky. 
+             1. Pokud zvolíte možnost **z předplatného Azure**, vyberte pro **metodu výběru účtu** příslušné **předplatné Azure**, **název serveru**, **Typ koncového bodu** a **název databáze**. Pokud zvolíte možnost **zadat ručně**, proveďte následující kroky. 
+                1.  Pro **plně kvalifikovaný název domény** zadejte `<server name>.<dns prefix>.database.windows.net` nebo `<server name>.public.<dns prefix>.database.windows.net,3342` jako privátní nebo veřejný koncový bod spravované instance SQL Azure v uvedeném pořadí. Pokud zadáte privátní koncový bod, **testovací připojení** se nedá použít, protože uživatelské rozhraní ADF k němu nemůže získat přístup.
 
-            1. Pro **plně kvalifikovaný název domény** zadejte `<server name>.<dns prefix>.database.windows.net` nebo `<server name>.public.<dns prefix>.database.windows.net,3342` jako privátní nebo veřejný koncový bod spravované instance SQL Azure v uvedeném pořadí. Pokud zadáte privátní koncový bod, **testovací připojení** se nedá použít, protože uživatelské rozhraní ADF k němu nemůže získat přístup.
+                1. Jako **název databáze** zadejte `msdb` .
 
-            1. Jako **název databáze** zadejte `msdb` .
-               
             1. Jako **typ ověřování** vyberte **ověřování SQL**, **spravovaná identita** nebo **instanční objekt**.
 
-            1. Pokud vyberete **ověřování SQL**, zadejte příslušné **uživatelské jméno** a **heslo** nebo vyberte **Azure Key Vault** , kde se uloží jako tajný kód.
+                - Pokud vyberete **ověřování SQL**, zadejte příslušné **uživatelské jméno** a **heslo** nebo vyberte **Azure Key Vault** , kde se uloží jako tajný kód.
 
-            1. Pokud vyberete **spravovaná identita**, udělte vašemu spravovanému přístupu přes správu ADF přístup k vaší spravované instanci SQL Azure.
+                -  Pokud vyberete **spravovaná identita**, udělte vašemu spravovanému přístupu přes správu ADF přístup k vaší spravované instanci SQL Azure.
 
-            1. Pokud vyberete **instanční objekt**, zadejte příslušné **ID instančního objektu** a **klíč instančního objektu** nebo vyberte **Azure Key Vault** , kde je uložený jako tajný kód.
+                - Pokud vyberete **instanční objekt**, zadejte příslušné **ID instančního objektu** a **klíč instančního objektu** nebo vyberte **Azure Key Vault** , kde je uložený jako tajný kód.
 
       1. Pokud vyberete **systém souborů**, zadejte cestu UNC ke složce, ve které jsou balíčky nasazeny pro **hostitele**, a také příslušné **uživatelské jméno** a **heslo** nebo vyberte **Azure Key Vault** , kde jsou uloženy jako tajné.
 
@@ -231,7 +231,7 @@ V podokně **Přidat úložiště balíčků** proveďte následující kroky.
 
    1. Vaše přidaná úložiště balíčků se zobrazí na stránce **nastavení nasazení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
 
-Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **Další**.
+Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **pokračovat**.
 
 #### <a name="advanced-settings-page"></a>Stránka Upřesnit nastavení
 
@@ -314,7 +314,7 @@ V podokně **připojení** v části **Spravovat** centrum přepněte na stránk
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Prostředí Azure SSIS Integration Runtime na portálu
 
-1. V uživatelském rozhraní Azure Data Factory přepněte na kartu **Upravit** a vyberte **připojení**. Pak přejděte na kartu **prostředí Integration runtime** , kde se zobrazí existující prostředí Integration runtime ve vaší datové továrně.
+1. V uživatelském rozhraní Azure Data Factory přepněte na kartu **Spravovat** a potom v podokně **připojení** přepněte na kartu **prostředí Integration runtime** , kde se zobrazí existující prostředí Integration runtime ve vaší datové továrně.
 
    ![Zobrazení existujících IR](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -322,7 +322,7 @@ V podokně **připojení** v části **Spravovat** centrum přepněte na stránk
 
    ![Prostředí Integration Runtime prostřednictvím nabídky](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. V podokně **instalace prostředí Integration runtime** vyberte dlaždici **převedené a posunutí existující SSIS balíčky, které se mají spustit v Azure** , a pak vyberte **Další**.
+1. V podokně **instalace prostředí Integration runtime** vyberte dlaždici **přezvednutí a posunutí existujících balíčků SSIS do Azure** a pak vyberte **pokračovat**.
 
    ![Zadání typu prostředí Integration Runtime](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 

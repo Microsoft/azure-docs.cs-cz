@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdace22072e4122150c878d43b99765cd6fd59e1
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832381"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490773"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Kurz – definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
@@ -29,13 +29,13 @@ V tomto kurzu vytvoříte šablonu zařízení s bránou **Smart budova** . Zař
 I když chcete, aby zařízení komunikovala s aplikací IoT Central, může také zařízení brány:
 
 * Odeslat svou vlastní telemetrii, například teplotu.
-* Reaguje na aktualizace zapisovatelných vlastností provedené operátorem. Například operátor může změnit interval odesílání telemetrie.
+* Reagují na aktualizace vlastností s možností zápisu provedené operátorem. Například operátor může změnit interval odesílání telemetrie.
 * Odpovězte na příkazy, jako je třeba restartování zařízení.
 
 > [!div class="checklist"]
 > Vytvoření šablon zařízení pro příjem dat vytvoření šablony zařízení brány publikování šablony zařízení vytvoření simulovaných zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
 

@@ -5,13 +5,13 @@ author: heidilohr
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: fb0935ca2ffcad93ba47ccd207603dd870dc26b0
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014889"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445699"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -29,16 +29,16 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 
 | Nutnost zabezpečení | Je zákazník zodpovědný za to? |
 |---------------|:-------------------------:|
-|Identita|Yes|
-|Zařízení uživatelů (mobilní zařízení a počítač)|Yes|
-|Zabezpečení aplikací|Yes|
-|Operační systém hostitele relace|Yes|
-|Konfigurace nasazení|Yes|
-|Správa sítě|Yes|
-|Rovina řízení virtualizace|No|
-|Fyzičtí hostitelé|No|
-|Fyzická síť|No|
-|Fyzické datacentrum|No|
+|Identita|Ano|
+|Zařízení uživatelů (mobilní zařízení a počítač)|Ano|
+|Zabezpečení aplikací|Ano|
+|Operační systém hostitele relace|Ano|
+|Konfigurace nasazení|Ano|
+|Správa sítě|Ano|
+|Rovina řízení virtualizace|Ne|
+|Fyzičtí hostitelé|Ne|
+|Fyzická síť|Ne|
+|Fyzické datacentrum|Ne|
 
 Zabezpečení vyžaduje, aby zákazník nezodpovědný za zpracování Microsoftem.
 

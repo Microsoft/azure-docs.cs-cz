@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92803c1e3062fb9f093012db3e3637746dedf87f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664244"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107036"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
@@ -46,9 +46,13 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 | Atributy úložiště   | Basic | Pro obecné účely | Optimalizováno pro paměť |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
-| Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
+| Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
 | Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS |
+
+>[!IMPORTANT]
+> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Brazílie – jih, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2, Středozápadní USA , Kanada – východ a Kanada – střed.
+> Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 vstupně-výstupních operací.
 
 Můžete přidat další úložnou kapacitu během a po vytvoření serveru a nechat systém, aby automaticky rozšiřoval úložiště na základě spotřeby úložiště vašich úloh.
 
@@ -58,23 +62,6 @@ Můžete přidat další úložnou kapacitu během a po vytvoření serveru a ne
 Úroveň Basic neposkytuje záruku IOPS. V Pro obecné účely a paměťově optimalizované cenové úrovně se za vstupně-výstupní operace v poměru 3:1 omezuje velikost IOPS s zřízenou velikostí úložiště.
 
 Spotřebu vstupu a výstupu můžete monitorovat v Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure CLI. Příslušné metriky, které je potřeba monitorovat [, jsou omezení úložiště, procento úložiště, využité úložiště a procento vstupně-výstupních operací](concepts-monitoring.md).
-
-### <a name="large-storage-preview"></a>Velké úložiště (Preview)
-
-Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově optimalizovaných úrovních. Nově vytvořené servery, které se přihlašují k verzi Preview, můžou zřídit až 16 TB úložiště. Škálování IOPS v 3:1 poměr až 20 000 IOPS. Stejně jako u aktuálního všeobecně dostupného úložiště můžete po vytvoření serveru přidat další úložnou kapacitu a nechat systém automaticky rozšiřovat úložiště na základě využití úložiště vašich úloh.
-
-| Atributy úložiště | Pro obecné účely | Optimalizováno pro paměť |
-|:-------------|:--------------------|:---------------------|
-| Typ úložiště | Premium Storage Azure | Premium Storage Azure |
-| Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS| 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
-
-> [!IMPORTANT]
-> Služba large Storage je v současnosti ve verzi Public Preview v těchto oblastech: Východní USA, Východní USA 2, Brazílie – jih, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jih, Západní USA 2, Středozápadní USA, Kanada – východ. a Kanada – střed.
->
-> Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 vstupně-výstupních operací.
->
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 

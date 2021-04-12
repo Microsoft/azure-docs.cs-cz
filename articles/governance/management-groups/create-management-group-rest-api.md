@@ -3,12 +3,12 @@ title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí REST API'
 description: V tomto rychlém startu použijete REST API k vytvoření skupiny pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26a1c0a8025a00155bcf0498e6dfa89a8a73d983
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592496"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259128"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí REST API
 
@@ -16,7 +16,7 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -28,7 +28,7 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
 
 ### <a name="create-in-rest-api"></a>Vytvořit v REST API
 
-Pro REST API vytvořte novou skupinu pro správu pomocí [skupiny pro správu – vytvořit nebo aktualizovat](/rest/api/resources/managementgroups/createorupdate) koncový bod. V tomto příkladu je **identifikátor** skupiny pro správu _Contoso_.
+Pro REST API vytvořte novou skupinu pro správu pomocí [skupiny pro správu – vytvořit nebo aktualizovat](/rest/api/managementgroups/managementgroups/createorupdate) koncový bod. V tomto příkladu je **identifikátor** skupiny pro správu _Contoso_.
 
 - Identifikátor URI v REST API
 
@@ -81,7 +81,7 @@ V předchozích příkladech se nová skupina pro správu vytvoří pod kořenov
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odebrat skupinu pro správu vytvořenou výše, použijte koncový bod [skupiny pro správu-Delete](/rest/api/resources/managementgroups/delete) :
+Pokud chcete odebrat skupinu pro správu vytvořenou výše, použijte koncový bod [skupiny pro správu-Delete](/rest/api/managementgroups/managementgroups/delete) :
 
 - Identifikátor URI v REST API
 

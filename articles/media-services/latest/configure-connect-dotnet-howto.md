@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107553"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492524"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [Kurz: analýza videí pomocí Media Services V3-.NET](analyze-videos-tutorial.md)
 - [Vytvoření vstupu úlohy z místního souboru – .NET](job-input-from-local-file-how-to.md)
 - [Vytvoření vstupu úlohy z adresy URL protokolu HTTPS – .NET](job-input-from-http-how-to.md)
-- [Kódování pomocí vlastní transformace – .NET](encode-custom-presets-how-to.md)
+- [Kódování pomocí vlastní transformace – .NET](transform-custom-presets-how-to.md)
 - [Použití dynamického šifrování AES-128 a služby pro doručování klíčů – .NET](drm-playready-license-template-concept.md)
 - [Použití dynamického šifrování DRM a služby doručování licencí – .NET](drm-protect-with-drm-tutorial.md)
 - [Získat podpisový klíč ze stávající zásady – .NET](drm-get-content-key-policy-dotnet-how-to.md)

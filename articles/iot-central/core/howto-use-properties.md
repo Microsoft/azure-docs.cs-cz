@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98119080"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492252"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Použití vlastností v řešení Azure IoT Central
 
@@ -183,7 +183,7 @@ Následující fragment kódu z modelu zařízení zobrazuje definici typu vlast
 }
 ```
 
-K definování a zpracování zapisovatelných vlastností, na které zařízení reaguje, můžete použít následující kód:
+K definování a zpracování vlastností s možností zápisu, na které zařízení reaguje, můžete použít následující kód:
 
 ``` javascript
 hubClient.getTwin((err, twin) => {
@@ -219,7 +219,7 @@ Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné.
 
 Další informace o nevlákenách zařízení najdete v tématu [Konfigurace zařízení z back-endové služby](../../iot-hub/tutorial-device-twins.md).
 
-Když operátor nastaví vlastnost s možností zápisu v aplikaci Azure IoT Central, aplikace použije pro odeslání hodnoty do zařízení hodnotu, která je typu vlákna. Zařízení pak odpoví pomocí vlastnosti nedokončené hlášené v zařízení. Když Azure IoT Central obdrží hodnotu hlášené vlastnosti, aktualizuje zobrazení vlastností se stavem **přijato**.
+Když operátor nastaví vlastnost s možností zápisu v aplikaci Azure IoT Central, aplikace použije pro odeslání hodnoty do zařízení hodnotu, která je v zařízení dožádaný. Zařízení pak odpoví pomocí vlastnosti nedokončené hlášené v zařízení. Když Azure IoT Central obdrží hodnotu hlášené vlastnosti, aktualizuje zobrazení vlastností se stavem **přijato**.
 
 Následující zobrazení obsahuje vlastnosti, které lze zapisovat. Když zadáte hodnotu a vyberete **Uložit**, počáteční stav **čeká na vyřízení**. Když zařízení změnu přijme, stav se změní na **přijato**.
 

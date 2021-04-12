@@ -5,14 +5,14 @@ keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NL
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/22/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790863"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278945"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -23,6 +23,13 @@ Language Understanding (LUIS) je cloudová konverzační služba pro konverzaci,
 Klientskou aplikací je pro LUIS jakákoli konverzační aplikace, která s uživatelem při dokončování úloh komunikuje v přirozeném jazyce. Mezi příklady klientských aplikací patří aplikace pro sociální média, chatovacích robotů o AI a desktopové aplikace s podporou řeči.
 
 ![Koncepční obrázek 3 klientských aplikací pracujících s Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Koncepční obrázek 3 klientských aplikací pracujících s Cognitive Services Language Understanding (LUIS)")
+
+Tato dokumentace obsahuje následující typy článků:  
+
+* [**Rychlé starty**](luis-get-started-create-app.md) jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.  
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném [**způsobu.**](luis-how-to-start-new-app.md)  
+* [**Koncepty**](artificial-intelligence.md) poskytují podrobné vysvětlení funkcí a funkcí služby.  
+* [**Kurzy**](tutorial-intents-only.md) jsou delší než příručky, které ukazují, jak používat službu jako součást v širších obchodních řešeních.  
 
 ## <a name="use-luis-in-a-chat-bot"></a>Použití služby LUIS v chatbotu
 
@@ -137,10 +144,8 @@ Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-starte
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je nového](whats-new.md "Co je nového") u služby a dokumentace
+* [Co je nového](whats-new.md "Novinky") u služby a dokumentace
 * [Plánování aplikace](luis-how-plan-your-app.md "Plánování aplikace") s využitím [záměrů](luis-concept-intent.md "záměry") a [entit](luis-concept-entity-types.md "podnikům")
-* [Dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md "Dotazování koncového bodu předpovědi").
-* [Materiály pro vývojáře](developer-reference-resource.md "Materiály pro vývojáře") pro Luis.
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

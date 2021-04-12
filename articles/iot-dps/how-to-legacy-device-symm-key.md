@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d193d30428d24ccf65c3f70885192acad2fdc9f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051105"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228322"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Jak zřídit zařízení pomocí skupin pro zápis symetrických klíčů
 
@@ -30,6 +30,16 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 > [!NOTE]
 > Vzorek použitý v tomto článku je napsán v jazyce C. K dispozici je také [ukázkový vzorový klíč zřízení zařízení v C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) . Pokud chcete použít tuto ukázku, Stáhněte nebo naklonujte úložiště [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) a postupujte podle pokynů v tomto ukázkovém kódu. Podle pokynů v tomto článku můžete vytvořit skupinu pro zápis symetrického klíče pomocí portálu a najít rozsah ID a primární a sekundární klíče pro spuštění ukázky. Pomocí ukázky můžete také vytvořit jednotlivé registrace.
 
+## <a name="prerequisites"></a>Požadavky
+
+* Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
+
+Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+
+* Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
+
 ## <a name="overview"></a>Přehled
 
 Na základě informací, které toto zařízení identifikuje, bude pro každé zařízení definováno jedinečné ID registrace. Například adresa MAC nebo sériové číslo.
@@ -40,16 +50,6 @@ Kód zařízení, který je znázorněn v tomto článku, bude postupovat stejn�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
-## <a name="prerequisites"></a>Požadavky
-
-* Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
-
-Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
-
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
-
-* Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Příprava vývojového prostředí Azure IoT C SDK
 
@@ -283,6 +283,15 @@ Mějte na paměti, že při tom zůstane odvozený klíč zařízení zahrnutý 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
-* [Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči](quick-create-simulated-device-symm-key.md)
-* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) .
+* Další informace o opětovném zřizování najdete v tématu.
+
+> [!div class="nextstepaction"]
+> [Koncepce opětovného zřizování zařízení IoT Hub](concepts-device-reprovision.md)
+
+> [!div class="nextstepaction"]
+> [Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči](quick-create-simulated-device-symm-key.md)
+
+* Další informace o zrušení zřízení najdete v tématu.
+
+> [!div class="nextstepaction"]
+> [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md)

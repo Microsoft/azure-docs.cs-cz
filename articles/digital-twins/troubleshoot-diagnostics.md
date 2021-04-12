@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Podívejte se, jak povolit protokolování s nastavením diagnostiky a zadat dotaz na protokoly pro okamžité prohlížení.
 author: baanders
 ms.author: baanders
-ms.date: 2/24/2021
+ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 08db4d92da5213b1ce1b79867650da9df8c38ee4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 797de242b4b4464c0bfb5ae18af05710ab36bce6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385075"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285475"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
@@ -63,12 +63,12 @@ Podrobnější informace o nastavení diagnostiky a jejich možnostech instalace
 
 Tady jsou další podrobnosti o kategoriích protokolů, které shromažďuje digitální vlákna Azure.
 
-| Kategorie protokolu | Popis |
+| Kategorie protokolu | Description |
 | --- | --- |
 | ADTModelsOperation | Protokolovat všechna volání rozhraní API týkající se modelů |
 | ADTQueryOperation | Protokolování všech volání rozhraní API vztahujících se k dotazům |
 | ADTEventRoutesOperation | Protokolujte všechna volání rozhraní API, která souvisí s trasami událostí, a také výstup událostí z digitálních vláken Azure do služby koncového bodu, jako je Event Grid, Event Hubs a Service Bus |
-| ADTDigitalTwinsOperation | Protokolovat všechna volání rozhraní API týkající se jednotlivých vláken |
+| ADTDigitalTwinsOperation | Protokolovat všechna volání rozhraní API týkající se digitálních vláken Azure |
 
 Každá kategorie protokolu se skládá z operací zápisu, čtení, odstranění a akce.  Tato mapa pro REST API volání následujícím způsobem:
 
@@ -104,13 +104,11 @@ Tady je vyčerpávající seznam operací a odpovídajících [digitálních vl�
 
 Každá kategorie protokolu má schéma, které definuje způsob hlášení událostí v této kategorii. Jednotlivé položky protokolu se ukládají jako text a naformátují se jako objekt BLOB JSON. Pole v části log a příklady JSON jsou k dispozici pro každý níže uvedený typ protokolu. 
 
-`ADTDigitalTwinsOperation`, `ADTModelsOperation` a `ADTQueryOperation` používejte konzistentní schéma protokolu rozhraní API. `ADTEventRoutesOperation` rozšiřuje schéma tak, aby obsahovalo `endpointName` pole ve vlastnostech.
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` a `ADTQueryOperation` používejte konzistentní schéma protokolu rozhraní API; `ADTEventRoutesOperation` má vlastní samostatné schéma.
 
 ### <a name="api-log-schemas"></a>Schémata protokolů rozhraní API
 
-Toto schéma protokolu je konzistentní pro `ADTDigitalTwinsOperation` , `ADTModelsOperation` , `ADTQueryOperation` . Stejné schéma se používá také pro `ADTEventRoutesOperation` , s **výjimkou** `Microsoft.DigitalTwins/eventroutes/action` názvu operace (Další informace o tomto schématu najdete v další části [*schémata protokolů odchozího protokolu*](#egress-log-schemas)).
-
-Schéma obsahuje informace týkající se volání rozhraní API k instanci digitálních vláken Azure.
+Toto schéma protokolu je konzistentní pro `ADTDigitalTwinsOperation` , `ADTModelsOperation` a `ADTQueryOperation` . Obsahuje informace týkající se volání rozhraní API k instanci digitálních vláken Azure.
 
 Tady jsou popisy polí a vlastností pro protokoly rozhraní API.
 
@@ -127,15 +125,9 @@ Tady jsou popisy polí a vlastností pro protokoly rozhraní API.
 | `DurationMs` | Řetězec | Jak dlouho trvalo provádění události v milisekundách |
 | `CallerIpAddress` | Řetězec | Maskovaná zdrojová IP adresa pro událost |
 | `CorrelationId` | Identifikátor GUID | Pro událost se zadal jedinečný identifikátor zákazníka. |
-| `ApplicationId` | Identifikátor GUID | ID aplikace používané v autorizačním držiteli |
-| `Level` | Int | Závažnost protokolování události |
+| `Level` | Řetězec | Závažnost protokolování události |
 | `Location` | Řetězec | Oblast, ve které byla událost provedena |
 | `RequestUri` | Identifikátor URI | Koncový bod využíval během události |
-| `TraceId` | Řetězec | `TraceId`, jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). ID celého trasování, které slouží k jednoznačné identifikaci distribuované trasování napříč systémy. |
-| `SpanId` | Řetězec | `SpanId` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). ID této žádosti v trasování |
-| `ParentId` | Řetězec | `ParentId` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). Požadavek bez nadřazeného ID je kořenem trasování. |
-| `TraceFlags` | Řetězec | `TraceFlags` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). Ovládá příznaky trasování, jako je vzorkování, úroveň trasování atd. |
-| `TraceState` | Řetězec | `TraceState` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). Další informace o identifikaci trasování specifické pro dodavatele v různých systémech distribuovaného trasování. |
 
 Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
 
@@ -151,25 +143,12 @@ Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": 8,
+  "durationMs": "314",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31",
-  "properties": {},
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
-  }
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
 }
 ```
 
@@ -185,25 +164,12 @@ Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
   "resultType": "Success",
   "resultSignature": "201",
   "resultDescription": "",
-  "durationMs": "80",
+  "durationMs": "935",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
-  "properties": {},
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
-  }
 }
 ```
 
@@ -219,67 +185,18 @@ Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "314",
+  "durationMs": "255",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
-  "properties": {},
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
-  }
 }
-```
-
-#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
-
-Tady je příklad těla zprávy JSON pro `ADTEventRoutesOperation` typ, který **není** `Microsoft.DigitalTwins/eventroutes/action` typu (Další informace o tomto schématu najdete v další části [*schémata protokolů odchozího protokolu*](#egress-log-schemas)).
-
-```json
-  {
-    "time": "2020-10-30T22:18:38.0708705Z",
-    "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
-    "operationName": "Microsoft.DigitalTwins/eventroutes/write",
-    "operationVersion": "2020-10-31",
-    "category": "EventRoutesOperation",
-    "resultType": "Success",
-    "resultSignature": "204",
-    "resultDescription": "",
-    "durationMs": 42,
-    "callerIpAddress": "212.100.32.*",
-    "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-    "identity": {
-      "claims": {
-        "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-      }
-    },
-    "level": "4",
-    "location": "southcentralus",
-    "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/EventRoutes/egressRouteForEventHub?api-version=2020-10-31",
-    "properties": {},
-    "traceContext": {
-      "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-      "spanId": "b630da57026dd046",
-      "parentId": "9f0de6dadae85945",
-      "traceFlags": "01",
-      "tracestate": "k1=v1,k2=v2"
-    }
-  },
 ```
 
 ### <a name="egress-log-schemas"></a>Schémata protokolu odchozího přenosu dat
 
-Toto je schéma pro `ADTEventRoutesOperation` protokoly specifické pro `Microsoft.DigitalTwins/eventroutes/action` název operace. Obsahují podrobnosti týkající se výjimek a operace rozhraní API kolem koncových bodů, které se připojují k instanci digitálních vláken Azure.
+Toto je schéma pro `ADTEventRoutesOperation` protokoly. Obsahují podrobnosti týkající se výjimek a operace rozhraní API kolem koncových bodů, které se připojují k instanci digitálních vláken Azure.
 
 |Název pole | Datový typ | Popis |
 |-----|------|-------------|
@@ -288,55 +205,28 @@ Toto je schéma pro `ADTEventRoutesOperation` protokoly specifické pro `Microso
 | `OperationName` | Řetězec  | Typ akce prováděné během události |
 | `Category` | Řetězec | Typ prostředku, který se emituje. |
 | `ResultDescription` | Řetězec | Další podrobnosti o události |
-| `CorrelationId` | Identifikátor GUID | Pro událost se zadal jedinečný identifikátor zákazníka. |
-| `ApplicationId` | Identifikátor GUID | ID aplikace používané v autorizačním držiteli |
-| `Level` | Int | Závažnost protokolování události |
+| `Level` | Řetězec | Závažnost protokolování události |
 | `Location` | Řetězec | Oblast, ve které byla událost provedena |
-| `TraceId` | Řetězec | `TraceId`, jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). ID celého trasování, které slouží k jednoznačné identifikaci distribuované trasování napříč systémy. |
-| `SpanId` | Řetězec | `SpanId` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). ID této žádosti v trasování |
-| `ParentId` | Řetězec | `ParentId` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). Požadavek bez nadřazeného ID je kořenem trasování. |
-| `TraceFlags` | Řetězec | `TraceFlags` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). Ovládá příznaky trasování, jako je vzorkování, úroveň trasování atd. |
-| `TraceState` | Řetězec | `TraceState` jako součást [kontextu trasování W3C's](https://www.w3.org/TR/trace-context/). Další informace o identifikaci trasování specifické pro dodavatele v různých systémech distribuovaného trasování. |
 | `EndpointName` | Řetězec | Název výstupního koncového bodu vytvořeného v rámci digitálních vláken Azure |
 
 Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
 
-#### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>ADTEventRoutesOperation pro Microsoft. DigitalTwins/eventroutes/Action
-
-Tady je příklad těla JSON pro `ADTEventRoutesOperation` typ, který je `Microsoft.DigitalTwins/eventroutes/action` typu.
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
 
 ```json
 {
   "time": "2020-11-05T22:18:38.0708705Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/eventroutes/action",
-  "operationVersion": "",
   "category": "EventRoutesOperation",
-  "resultType": "",
-  "resultSignature": "",
-  "resultDescription": "Unable to send EventHub message to [myPath] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
-  "durationMs": -1,
-  "callerIpAddress": "",
+  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
   "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
-  "level": "4",
+  "level": "3",
   "location": "southcentralus",
-  "uri": "",
   "properties": {
-    "endpointName": "myEventHub"
-  },
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
+    "endpointName": "endpointEventGridInvalidKey"
   }
-},
+}
 ```
 
 ## <a name="view-and-query-logs"></a>Zobrazení a dotazování protokolů

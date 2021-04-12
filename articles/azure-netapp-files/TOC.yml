@@ -91,6 +91,8 @@
           href: azure-netapp-files-configure-nfsv41-domain.md
         - name: Konfigurace šifrování Kerberos NFSv4.1
           href: configure-kerberos-encryption.md
+        - name: Konfigurace Přidání LDAP s rozšířenými skupinami pro systém souborů NFS
+          href: configure-ldap-extended-groups.md
         - name: Konfigurace klienta NFS pro Azure NetApp Files
           href: configure-nfs-clients.md
         - name: Konfigurace zásad exportu pro svazek NFS
@@ -137,6 +139,8 @@
           href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Řešení potíží se zásadami snímků
           href: troubleshoot-snapshot-policies.md
+        - name: Řešení potíží s svazky LDAP
+          href: troubleshoot-ldap-volumes.md
         - name: Řešení potíží s chybami poskytovatele prostředků
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Referenční informace

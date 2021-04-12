@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417939"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259111"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Jak nakonfigurovat monitorování a metriky pro Azure bastionu pomocí Azure Monitor
 
@@ -58,7 +58,7 @@ Celkovou paměť Azure bastionu můžete zobrazit v rámci každé instance bast
 
 #### <a name="used-cpu"></a><a name="used-cpu"></a>Použitý procesor
 
-Využití CPU v Azure bastionu můžete zobrazit rozdělené mezi jednotlivé instance bastionu. Monitorování těchto metrik vám pomůže posoudit dostupnost a kapacitu instancí, které tvoří Azure bastionu.
+Využití CPU v Azure bastionu můžete zobrazit rozdělené mezi jednotlivé instance bastionu. Monitorování této metriky pomůže posoudit dostupnost a kapacitu instancí, které tvoří službu Azure bastionu.
 
 :::image type="content" source="./media/metrics-monitor-alert/used-cpu.png" alt-text="Snímek obrazovky znázorňující využitý procesor":::
 
@@ -73,6 +73,12 @@ Využití paměti můžete zobrazit napříč každou instancí bastionu a rozd�
 #### <a name="session-count"></a>Počet relací
 
 Můžete zobrazit počet aktivních relací na instanci bastionu agregované napříč jednotlivými typy relací (RDP a SSH). Každý bastionu Azure může podporovat rozsah aktivních relací RDP a SSH. Monitorování této metriky vám pomůže pochopit, jestli potřebujete upravit počet instancí, na kterých běží služba bastionu. Další informace o počtu relací, které Azure bastionu může podporovat, najdete v tématu [Nejčastější dotazy k Azure bastionu](bastion-faq.md).
+
+Doporučené hodnoty pro tuto konfiguraci metriky jsou:
+
+* **Agregace:** Volání
+* **Členitost:** 5 nebo 15 minut
+* Rozdělení podle instancí se doporučuje, aby se získal přesnější počet.
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="Snímek obrazovky znázorňující počet relací":::
 
