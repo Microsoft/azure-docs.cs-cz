@@ -10,21 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: afb8a6f7d18a36503253da3666a1325eef228651
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7fe50a6236cf67f1048dddecbf46fea836ec05c5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958222"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106125787"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší.
+- [Java Development Kit (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) verze 8 nebo vyšší.
 - [Apache Maven](https://maven.apache.org/download.cgi)
 - Nasazený prostředek komunikačních služeb a připojovací řetězec. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - [Přístupový token uživatele](../../access-tokens.md). Ujistěte se, že jste nastavili obor na "chat" a poznamenali jste řetězec tokenu a také řetězec userId.
-
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -94,8 +93,6 @@ package com.communication.quickstart;
 import com.azure.communication.chat.*;
 import com.azure.communication.chat.models.*;
 import com.azure.communication.common.*;
-import com.azure.core.http.HttpClient;
-import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
 import com.azure.core.http.rest.PagedIterable;
 
 import java.io.*;
@@ -110,11 +107,6 @@ public class App
         // Your unique Azure Communication service endpoint
         String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 
-        // Create an HttpClient builder of your choice and customize it
-        // Use com.azure.core.http.netty.NettyAsyncHttpClientBuilder if that suits your needs
-        NettyAsyncHttpClientBuilder yourHttpClientBuilder = new NettyAsyncHttpClientBuilder();
-        HttpClient httpClient = yourHttpClientBuilder.build();
-
         // User access token fetched from your trusted service
         String userAccessToken = "<USER_ACCESS_TOKEN>";
 
@@ -124,8 +116,7 @@ public class App
         // Initialize the chat client
         final ChatClientBuilder builder = new ChatClientBuilder();
         builder.endpoint(endpoint)
-            .credential(userCredential)
-            .httpClient(httpClient);
+            .credential(userCredential);
         ChatClient chatClient = builder.buildClient();
     }
 }

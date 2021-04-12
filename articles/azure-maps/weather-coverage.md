@@ -1,6 +1,6 @@
 ---
-title: Pokrytí pokrytí služby Microsoft Azure Maps (Preview)
-description: Další informace o pokrytí služby Microsoft Azure Maps počasí Services (Preview)
+title: Microsoft Azure Maps pokrytí služeb počasí
+description: Informace o pokrytí služby Microsoft Azure Maps počasí
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,19 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905481"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257666"
 ---
-# <a name="azure-maps-weather-services-preview-coverage"></a>Pokrytí pokrytí Azure Maps počasí Services (Preview)
-
-> [!IMPORTANT]
-> Služba Azure Maps počasí jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+# <a name="azure-maps-weather-services-coverage"></a>Pokrytí služby Azure Maps počasí
 
 Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](/rest/api/maps/weather). Azure Maps datové služby počasí vrací podrobné informace, jako jsou například paprskové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
 

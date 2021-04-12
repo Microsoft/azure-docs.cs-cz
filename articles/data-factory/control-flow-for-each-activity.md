@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786205"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120907"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Aktivity | Aktivity, které mají být provedeny. | Seznam aktivit | Yes
 Pokud je vlastnost- **sekvenční** nastavená na hodnotu false, aktivita se prochází paralelně s maximálně 20 souběžnými iteracemi. Toto nastavení by se mělo používat opatrně. Pokud souběžné iterace zapisují do stejné složky, ale do různých souborů, je tento přístup v pořádku. Pokud souběžné iterace zapisuje současně do stejného souboru, tento přístup pravděpodobně způsobí chybu. 
 
 ## <a name="iteration-expression-language"></a>Jazyk výrazu iterace
-V aktivitě ForEach zadejte pole, které se má iterovat pro **položky** vlastností. Použijte `@item()` k iterování v rámci jednoho výčtu v aktivitě foreach. Například pokud je **položka** pole: [1, 2, 3], `@item()` vrátí 1 v první iteraci, 2 v druhé iteraci a 3 ve třetí iteraci.
+V aktivitě ForEach zadejte pole, které se má iterovat pro **položky** vlastností. Použijte `@item()` k iterování v rámci jednoho výčtu v aktivitě foreach. Například pokud je **položka** pole: [1, 2, 3], `@item()` vrátí 1 v první iteraci, 2 v druhé iteraci a 3 ve třetí iteraci. Výraz like můžete použít také `@range(0,10)` k iteraci deseti časů počínaje 0 končící hodnotou 9.
 
 ## <a name="iterating-over-a-single-activity"></a>Iterace v rámci jedné aktivity
 **Scénář:** Kopírování ze stejného zdrojového souboru v objektu blob Azure do více cílových souborů v objektu blob Azure.

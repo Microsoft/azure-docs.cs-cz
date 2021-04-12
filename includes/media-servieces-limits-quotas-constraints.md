@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 419d8d0cd20c13bffdd192060d81975ee94b47fe
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95562367"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106125844"
 ---
 > [!NOTE]
 > U prostředků, které nejsou opraveny, otevřete lístek podpory, který se zeptá na zvýšení kvót. Při pokusu o získání vyšších limitů nevytvářejte další účty Azure Media Services.
@@ -66,9 +66,9 @@ Všechny záznamy úloh ve vašem účtu starším než 90 dnů budou automatick
 | --- | --- |
 | Živé události <sup>(4)</sup> na účet Media Services |5|
 | Živé výstupy na živou událost |3 <sup>(5)</sup> |
-| Maximální doba trvání živého výstupu | [Velikost okna DVR](../articles/media-services/latest/live-event-cloud-dvr.md) |
+| Maximální doba trvání živého výstupu | [Velikost okna DVR](../articles/media-services/latest/live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> podrobné informace o omezeních pro živá událost najdete v tématu [porovnání a omezení typů událostí typu Live](../articles/media-services/latest/live-event-types-comparison.md).
+<sup>4</sup> podrobné informace o omezeních pro živá událost najdete v tématu [porovnání a omezení typů událostí typu Live](../articles/media-services/latest/live-event-types-comparison-reference.md).
 
 <sup>5</sup> živých výstupů začíná při vytváření a při odstraňování je zastavování.
 

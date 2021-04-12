@@ -3,7 +3,7 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je počítačové zpracování obrazu?
+    - name: Přehled Počítačové zpracování obrazu
       href: overview.md
     - name: Podpora jazyků
       href: language-support.md
@@ -13,17 +13,142 @@
       href: whats-new.md
     - name: Nejčastější dotazy k Počítačové zpracování obrazu
       href: FAQ.md
-- name: Rychlý Start Počítačové zpracování obrazu
-  href: quickstarts-sdk/client-library.md
-- name: ukázky
+- name: Optické rozpoznávání znaků (OCR)
   items:
-    - name: Aplikace pro zpracování obrázků
-      href: Tutorials/CSharpTutorial.md
-    - name: Další ukázky Počítačového zpracování obrazu
+    - name: Přehled rozpoznávání OCR
+      href: overview-ocr.md
+    - name: Rychlý Start OCR
+      href: quickstarts-sdk/client-library.md
+    - name: ukázky
       href: /samples/browse/?products=azure&terms=computer-vision
-- name: Zodpovědné využití AI
+    - name: Návody
+      items:
+        - name: Volání rozhraní API pro čtení
+          href: Vision-API-How-to-Topics/call-read-api.md
+        - name: Upgrade z Read 2.x na Read 3.x
+          href: upgrade-api-versions.md
+        - name: Použití kontejneru Read
+          items:
+            - name: Instalace a spuštění kontejnerů
+              href: computer-vision-how-to-install-containers.md
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+            - name: Konfigurace kontejnerů
+              href: computer-vision-resource-container-config.md
+            - name: Migrovat do V3 kontejneru OCR pro čtení
+              href: read-container-migration-guide.md
+              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+            - name: Použití s Kubernetes a Helmem
+              href: deploy-computer-vision-on-premises.md
+              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+            - name: Použití instancí kontejneru
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+              displayName: 'container instances, container, containers, images'
+            - name: Všechny kontejnery Cognitive Services
+              href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Reference
+      items:
+        - name: Rozpoznávání OCR REST API v 3.2 Preview
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - name: Rozpoznávání OCR REST API v 3.1
+          href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+        - name: REST API OCR v 2.1
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+        - name: REST API OCR v 1.0
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+        - name: .NET
+          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+        - name: Node.js
+          href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+        - name: Python
+          href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+        - name: Java
+          href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+        - name: Azure CLI
+          href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+        - name: Azure PowerShell
+          href: /powershell/module/azurerm.cognitiveservices/
+- name: Analýza obrázků
   items:
-    - name: Prostorová analýza
+    - name: Přehled analýzy obrázků
+      href: overview-image-analysis.md
+    - name: Rychlý Start analýzy obrázků
+      href: quickstarts-sdk/client-library.md
+    - name: ukázky
+      items:
+        - name: Aplikace pro zpracování obrázků
+          href: Tutorials/CSharpTutorial.md
+        - name: Další ukázky
+          href: /samples/browse/?products=azure&terms=computer-vision
+    - name: Návody
+      items:
+        - name: Volání rozhraní API pro analýzu obrázků
+          href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+        - name: Analýza videa v reálném čase
+          href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+    - name: Koncepty
+      items:
+        - name: Detekce objektů
+          href: concept-object-detection.md
+        - name: Rozpoznávání značek
+          href: concept-brand-detection.md
+        - name: Značky obsahu
+          href: concept-tagging-images.md
+        - name: Kategorizace obrázků
+          href: concept-categorizing-images.md
+        - name: Taxonomie kategorií
+          href: Category-Taxonomy.md
+        - name: Popisy obrázků
+          href: concept-describing-images.md
+        - name: Rozpoznávání tváře
+          href: concept-detecting-faces.md
+        - name: Zjišťování typu obrázku
+          href: concept-detecting-image-types.md
+        - name: Obsah specifický pro doménu
+          href: concept-detecting-domain-content.md
+        - name: Detekce barevného schématu
+          href: concept-detecting-color-schemes.md
+        - name: Miniatury s inteligentním oříznutím
+          href: concept-generating-thumbnails.md
+        - name: Detekce obsahu pro dospělé
+          href: concept-detecting-adult-content.md
+    - name: Kurzy
+      items:
+        - name: Generování metadat pro obrázky
+          href: Tutorials/storage-lab-tutorial.md
+    - name: Reference
+      items:
+        - name: Analýza obrázku REST API v 3.2 Preview
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - name: Analýza obrázku REST API v 3.1
+          href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+        - name: Analýza obrázku REST API v 2.1
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+        - name: Analýza obrázku REST API v 1.0
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+        - name: .NET
+          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+        - name: Node.js
+          href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+        - name: Python
+          href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+        - name: Java
+          href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+        - name: Azure CLI
+          href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+        - name: Azure PowerShell
+          href: /powershell/module/azurerm.cognitiveservices/
+- name: Prostorová analýza
+  items:
+    - name: Přehled prostorové analýzy
+      href: intro-to-spatial-analysis-public-preview.md
+    - name: Nastavení hostitelského počítače a spuštění kontejneru
+      href: spatial-analysis-container.md
+    - name: Zodpovědné využití AI
       items:
         - name: Poznámky k transparentnosti
           items:
@@ -41,122 +166,37 @@
               href: /legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/computer-vision/context/context
         - name: 'Data, ochrana osobních údajů a zabezpečení'
           href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Návody
+      items:
+        - name: Použití kontejneru prostorových analýz
+          items:
+            - name: Konfigurace operací
+              href: spatial-analysis-operations.md
+            - name: Nasazení webové aplikace pro počítání lidí
+              href: Spatial-analysis-web-app.md
+            - name: Protokolování a řešení potíží
+              href: spatial-analysis-logging.md
+            - name: Umístění zóny a řádku
+              href: spatial-analysis-zone-line-placement.md
+            - name: Umístění kamery
+              href: spatial-analysis-camera-placement.md
+            - name: Všechny kontejnery Cognitive Services
+              href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: Návody
   items:
-    - name: Volání rozhraní API pro počítačové zpracování obrazu
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: Analýza videa v reálném čase
-      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
     - name: Konfigurace virtuálních sítí
-      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
-    - name: Upgrade z Read 2.x na Read 3.x
-      href: upgrade-api-versions.md
+      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
     - name: Jak nakonfigurovat ověřování AAD
-      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: Jak používat spravované klíče zákazníka
-      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
-    - name: Nasazení Počítačové zpracování obrazu
-      items:
-        - name: Kontejnery
-          items:
-            - name: Dokumentace ke kontejnerům Cognitive Services
-              href: ../containers/index.yml
-            - name: Kontejner s rozhraním API pro čtení
-              items:
-                - name: Instalace a spuštění kontejnerů
-                  href: computer-vision-how-to-install-containers.md
-                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-                - name: Konfigurace kontejnerů
-                  href: computer-vision-resource-container-config.md
-                - name: Migrace na v3 kontejneru Read
-                  href: read-container-migration-guide.md
-                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-                - name: Použití s Kubernetes a Helmem
-                  href: deploy-computer-vision-on-premises.md
-                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-                - name: Použití instancí kontejneru
-                  maintainContext: true
-                  href: ../containers/azure-container-instance-recipe.md
-                  displayName: 'container instances, container, containers, images'
-            - name: Kontejner prostorové analýzy
-              items:
-                - name: Přehled prostorové analýzy
-                  href: intro-to-spatial-analysis-public-preview.md
-                - name: Nastavení hostitelského počítače a spuštění kontejneru
-                  href: spatial-analysis-container.md
-                - name: Konfigurace operací
-                  href: spatial-analysis-operations.md
-                - name: Nasazení webové aplikace pro počítání lidí
-                  href: Spatial-analysis-web-app.md
-                - name: Protokolování a řešení potíží
-                  href: spatial-analysis-logging.md
-                - name: Umístění zóny a řádku
-                  href: spatial-analysis-zone-line-placement.md
-                - name: Umístění kamery
-                  href: spatial-analysis-camera-placement.md
-- name: Koncepty
-  items:
-    - name: 'optické rozpoznávání znaků (OCR),'
-      href: concept-recognizing-text.md
-    - name: Detekce objektů
-      href: concept-object-detection.md
-    - name: Rozpoznávání značek
-      href: concept-brand-detection.md
-    - name: Značky obsahu
-      href: concept-tagging-images.md
-    - name: Kategorizace obrázků
-      href: concept-categorizing-images.md
-    - name: Taxonomie kategorií
-      href: Category-Taxonomy.md
-    - name: Popisy obrázků
-      href: concept-describing-images.md
-    - name: Rozpoznávání tváře
-      href: concept-detecting-faces.md
-    - name: Zjišťování typu obrázku
-      href: concept-detecting-image-types.md
-    - name: Obsah specifický pro doménu
-      href: concept-detecting-domain-content.md
-    - name: Detekce barevného schématu
-      href: concept-detecting-color-schemes.md
-    - name: Miniatury s inteligentním oříznutím
-      href: concept-generating-thumbnails.md
-    - name: Detekce obsahu pro dospělé
-      href: concept-detecting-adult-content.md
-- name: Kurzy
-  items:
-    - name: Generování metadat pro obrázky
-      href: Tutorials/storage-lab-tutorial.md
-- name: Reference
-  items:
-    - name: Počítačové zpracování obrazu REST API v 3.2 Preview
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-    - name: Počítačové zpracování obrazu REST API v 3.1
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-    - name: Počítačové zpracování obrazu REST API v 2.1
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-    - name: Počítačové zpracování obrazu REST API v 1.0
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
-    - name: .NET
-      href: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-    - name: Node.js
-      href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
-    - name: Python
-      href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
-    - name: Přejít
-      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
-    - name: Java
-      href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
-    - name: Azure CLI
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.cognitiveservices/
-- name: Zdroje a prostředky
+      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+- name: Zdroje informací
   items:
     - name: Podpora oblastí
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: NAUČIT se moduly
       href: /learn/paths/explore-computer-vision-microsoft-azure/
-    - name: Podpora & pomoci
+    - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

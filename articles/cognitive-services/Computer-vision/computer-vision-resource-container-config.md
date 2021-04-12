@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611891"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285667"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurace čtení kontejnerů Docker pro rozpoznávání OCR
 
@@ -34,8 +34,8 @@ Kontejner také obsahuje následující nastavení konfigurace specifické pro k
 |Vyžadováno|Nastavení|Účel|
 |--|--|--|
 |No|ReadEngineConfig:ResultExpirationPeriod| pouze kontejnery v 2.0. Doba vypršení platnosti výsledku v hodinách Výchozí hodnota je 48 hodin. Nastavení určuje, kdy má systém vymazat výsledky rozpoznávání. Například pokud `resultExpirationPeriod=1` systém vymaže výsledek rozpoznávání 1 hodina po procesu. Pokud `resultExpirationPeriod=0` systém vymaže výsledek rozpoznávání po načtení výsledku.|
-|No|Mezipaměť: Redis| pouze kontejnery v 2.0. Povoluje úložiště Redis pro ukládání výsledků. Mezipaměť je *vyžadována* , pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
-|No|Fronta: RabbitMQ|pouze kontejnery v 2.0. Povoluje RabbitMQ pro odesílání úloh. Toto nastavení je užitečné, když je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
+|No|Mezipaměť: Redis| pouze kontejnery v 2.0. Povoluje úložiště Redis pro ukládání výsledků. Mezipaměť je *vyžadována* , pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů OCR s více čtecími moduly.|
+|No|Fronta: RabbitMQ|pouze kontejnery v 2.0. Povoluje RabbitMQ pro odesílání úloh. Toto nastavení je užitečné, pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů OCR pro čtení.|
 |No|Fronta: Azure: QueueVisibilityTimeoutInMilliseconds | pouze kontejnery v3. x. Čas, kdy bude zpráva viditelná, když ji jiný pracovník zpracovává. |
 |No|Storage::D ocumentStore:: MongoDB|pouze kontejnery v 2.0. Povoluje MongoDB pro trvalé úložiště výsledků. |
 |No|Storage: ObjectStore: Azureblobu: ConnectionString| pouze kontejnery v3. x. Připojovací řetězec služby Azure Blob Storage. |
@@ -119,7 +119,7 @@ Nahradit {_argument_name_} vlastními hodnotami:
 
 ## <a name="container-docker-examples"></a>Příklady Docker kontejneru
 
-Následující příklady Docker jsou určené pro kontejner pro čtení.
+Následující příklady Docker jsou určené pro čtení kontejneru OCR.
 
 
 # <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)

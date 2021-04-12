@@ -1,16 +1,16 @@
 ---
-title: Postup aktivace složitých akcí s výstrahami Azure Monitor
+title: Aktivace složitých akcí s výstrahami Azure Monitor
 description: Naučte se vytvořit akci aplikace logiky, která bude zpracovávat výstrahy Azure Monitor.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1e81dca6926ae9f57e428eb1cef761c588a78b6
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045713"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029841"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -34,66 +34,66 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Vytvoření upozornění protokolu aktivit: Správa
 
-1. [Vytvoření aplikace logiky](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
+1. [Vytvořte aplikaci logiky](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
+1.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
 
 1. V dialogu pro, **kdy se přijme požadavek HTTP**, vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-    ![Snímek obrazovky, který zobrazuje dialogové okno žádosti o vytvoření schématu opion, když se vygenerovala možnost použít ukázkovou datovou část se schématem H T T ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Snímek obrazovky, který zobrazuje dialog v případě, že je vybraná možnost použít ukázkovou datovou část v případě, že se vygeneruje možnost použít ukázku schématu ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-3.  Zkopírujte a vložte následující datovou část ukázkového souboru do dialogového okna:
+1.  Zkopírujte a vložte následující datovou část ukázkového souboru do dialogového okna:
 
     ```json
         {
-            "schemaId": "Microsoft.Insights/activityLogs",
-            "data": {
-                "status": "Activated",
-                "context": {
-                "activityLog": {
-                    "authorization": {
-                    "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/…"
+            "schemaId&quot;: &quot;Microsoft.Insights/activityLogs&quot;,
+            &quot;data&quot;: {
+                &quot;status&quot;: &quot;Activated&quot;,
+                &quot;context&quot;: {
+                &quot;activityLog&quot;: {
+                    &quot;authorization&quot;: {
+                    &quot;action&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;scope&quot;: &quot;/subscriptions/…&quot;
                     },
-                    "channels": "Operation",
-                    "claims": "…",
-                    "caller": "logicappdemo@contoso.com",
-                    "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
-                    "description": "",
-                    "eventSource": "Administrative",
-                    "eventTimestamp": "2018-04-03T22:33:11.762469+00:00",
-                    "eventDataId": "ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0",
-                    "level": "Informational",
-                    "operationName": "microsoft.insights/activityLogAlerts/write",
-                    "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/…",
-                    "resourceGroupName": "LOGICAPP-DEMO",
-                    "resourceProviderName": "microsoft.insights",
-                    "status": "Succeeded",
-                    "subStatus": "",
-                    "subscriptionId": "…",
-                    "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
-                    "resourceType": "microsoft.insights/activityLogAlerts"
+                    &quot;channels&quot;: &quot;Operation&quot;,
+                    &quot;claims&quot;: &quot;…&quot;,
+                    &quot;caller&quot;: &quot;logicappdemo@contoso.com&quot;,
+                    &quot;correlationId&quot;: &quot;91ad2bac-1afa-4932-a2ce-2f8efd6765a3&quot;,
+                    &quot;description&quot;: &quot;&quot;,
+                    &quot;eventSource&quot;: &quot;Administrative&quot;,
+                    &quot;eventTimestamp&quot;: &quot;2018-04-03T22:33:11.762469+00:00&quot;,
+                    &quot;eventDataId&quot;: &quot;ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0&quot;,
+                    &quot;level&quot;: &quot;Informational&quot;,
+                    &quot;operationName&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;operationId&quot;: &quot;61f59fc8-1442-4c74-9f5f-937392a9723c&quot;,
+                    &quot;resourceId&quot;: &quot;/subscriptions/…&quot;,
+                    &quot;resourceGroupName&quot;: &quot;LOGICAPP-DEMO&quot;,
+                    &quot;resourceProviderName&quot;: &quot;microsoft.insights&quot;,
+                    &quot;status&quot;: &quot;Succeeded&quot;,
+                    &quot;subStatus&quot;: &quot;&quot;,
+                    &quot;subscriptionId&quot;: &quot;…&quot;,
+                    &quot;submissionTimestamp&quot;: &quot;2018-04-03T22:33:36.1068742+00:00&quot;,
+                    &quot;resourceType&quot;: &quot;microsoft.insights/activityLogAlerts&quot;
                 }
                 },
-                "properties": {}
+                &quot;properties&quot;: {}
             }
         }
     ```
 
-9. **Návrhář aplikace logiky** zobrazí automaticky otevírané okno s upozorněním, že požadavek odeslaný do aplikace logiky musí nastavit hlavičku **Content-Type** pro **Application/JSON**. Zavřete automaticky otevírané okno. Výstraha Azure Monitor nastaví hlavičku.
+1. **Návrhář Logic Apps** zobrazí automaticky otevírané okno s upozorněním, že požadavek odeslaný do aplikace logiky musí nastavit hlavičku **Content-Type** na **Application/JSON**. Zavřete automaticky otevírané okno. Výstraha Azure Monitor nastaví hlavičku.
 
-    ![Nastavení záhlaví Content-Type](media/action-groups-logic-app/content-type-header.png "Nastavení záhlaví Content-Type")
+    ![Nastavení záhlaví Content-Type](media/action-groups-logic-app/content-type-header.png &quot;Nastavení záhlaví Content-Type")
 
-10. Vyberte **+** **Nový krok** a pak zvolte **přidat akci**.
+1. Vyberte **+** **Nový krok** a pak zvolte **přidat akci**.
 
     ![Přidání akce](media/action-groups-logic-app/add-action.png "Přidání akce")
 
-11. Vyhledejte a vyberte konektor Microsoft Teams. Vyberte akci **Microsoft Teams – poslat zprávu** .
+1. Vyhledejte a vyberte konektor Microsoft Teams. Vyberte akci **Microsoft Teams – poslat zprávu** .
 
     ![Akce týmů Microsoftu](media/action-groups-logic-app/microsoft-teams-actions.png "Akce týmů Microsoftu")
 
-12. Nakonfigurujte akci Microsoft Teams. **Návrhář Logic Apps** vás vyzve, abyste ověřili svůj pracovní nebo školní účet. Vyberte **ID týmu** a **ID kanálu** , do kterého se má zpráva poslat.
+1. Nakonfigurujte akci Microsoft Teams. **Návrhář Logic Apps** vás vyzve, abyste ověřili svůj pracovní nebo školní účet. Vyberte **ID týmu** a **ID kanálu** , do kterého se má zpráva poslat.
 
 13. Nakonfigurujte zprávu pomocí kombinace statického textu a odkazů na \<fields\> dynamický obsah. Zkopírujte následující text a vložte ho do pole **zpráva** :
 
@@ -111,9 +111,9 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
     ![Akce Microsoft Teams: odeslání zprávy](media/action-groups-logic-app/teams-action-post-message.png "Akce Microsoft Teams: odeslání zprávy")
 
-14. V horní části **návrháře Logic Apps** vyberte **Uložit** a uložte svoji aplikaci logiky.
+1. V horní části **návrháře Logic Apps** vyberte **Uložit** a uložte svoji aplikaci logiky.
 
-15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](./action-groups.md) k jeho vytvoření. Nezapomeňte uložit změny.
+1. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](./action-groups.md) k jeho vytvoření. Nezapomeňte uložit změny.
 
     ![Aktualizace skupiny akcí](media/action-groups-logic-app/update-action-group.png "Aktualizace skupiny akcí")
 

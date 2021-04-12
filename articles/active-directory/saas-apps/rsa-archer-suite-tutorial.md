@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181573"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284922"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím RSA Archer Suite
 
@@ -37,13 +37,13 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Archer Suite podporuje jednotné přihlašování (SSO) iniciované v **SP**
-* Archer Suite RSA podporuje zřizování uživatelů **jenom v čase**
+* RSA Archer Suite podporuje jednotné přihlašování iniciované v **SP** .
+* Archer Suite RSA podporuje zřizování uživatelů **jenom v čase** .
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
-## <a name="adding-rsa-archer-suite-from-the-gallery"></a>Přidání Archer sady RSA z Galerie
+## <a name="add-rsa-archer-suite-from-the-gallery"></a>Přidání Archer sady RSA z Galerie
 
 Pokud chcete nakonfigurovat integraci RSA Archer Suite do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat z Galerie Archer sadu RSA.
 
@@ -53,7 +53,6 @@ Pokud chcete nakonfigurovat integraci RSA Archer Suite do služby Azure AD, mus�
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **RSA Archer Suite** .
 1. Z panelu výsledků vyberte **RSA Archer Suite** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-rsa-archer-suite"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Archer Suite RSA
 
@@ -74,7 +73,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce integrace aplikací **RSA Archer Suite** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -141,7 +140,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Na následující stránce proveďte následující kroky.
 
-    ![Konfigurace jednotného přihlašování RSA Archer Suite](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
+    ![Konfigurace jednotného přihlašování RSA Archer Suite](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. Přejít na kartu **jednotného přihlašování** a v rozevíracím seznamu vyberte možnost **SAML** jako **jeden Sign-On režim** .
 

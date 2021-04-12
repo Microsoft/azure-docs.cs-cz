@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0cb9e0da3ba5dd899cac56f393d7332bac6c597
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570810"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258482"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -45,7 +45,7 @@ Pro úložiště na místním serveru můžete zobrazit a stáhnout protokoly po
 Protokoly diagnostiky Azure Monitor umožňují kanálu pomalých dotazů na protokoly Azure Monitor (Log Analytics), Azure Storage nebo Event Hubs. Další informace najdete [níže](concepts-server-logs.md#diagnostic-logs) .
 
 ## <a name="local-server-storage-log-retention"></a>Uchování protokolu úložiště místního serveru
-Při protokolování do místního úložiště serveru jsou protokoly k dispozici po dobu až sedmi dnů od jejich vytvoření. Pokud celková velikost dostupných protokolů přesáhne 7 GB, pak se nejstarší soubory odstraní, dokud nebude k dispozici dostatek místa.
+Při protokolování do místního úložiště serveru jsou protokoly k dispozici po dobu až sedmi dnů od jejich vytvoření. Pokud celková velikost dostupných protokolů přesáhne 7 GB, pak se nejstarší soubory odstraní, dokud nebude k dispozici dostatek místa. Omezení úložiště na 7 GB pro protokoly serveru je dostupné zdarma a nelze je rozšířit. 
 
 Protokoly se otočí každých 24 hodin nebo 7 GB, podle toho, co nastane dřív.
 

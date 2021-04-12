@@ -1,22 +1,22 @@
 ---
-title: Shromažďovat metriky pro vypínacího okruhu Resilience4Jů v cloudu
-description: Jak shromažďovat metriky pro vypínacího okruhu Resilience4Jů na jaře cloudu
+title: Shromáždění metriky pro vypínacích okruhů Resilience4Jů v cloudu s mikroměřiči
+description: Jak shromažďovat metriky vypínacích okruhů Resilience4J v cloudu s mikroměřiči v Azure jarním cloudu.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9fc8ccc5ba21f02885b2002d5040051baac92068
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877862"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258176"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Shromažďovat metriky pro vypínacího okruhu (Preview) jarního cloudu Resilience4J
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Shromáždění metriky pro vypínacího okruhu Resilience4J v cloudu s mikroměřiči (Preview)
 
-Tento dokument vysvětluje, jak shromažďovat Resilience4j metriky pro přerušení cloudového okruhu pomocí Application Insightsho agenta Java v procesu.  Pomocí této funkce můžete monitorovat metriky Application Insightsového okruhu z resilience4j.
+Tento dokument vysvětluje, jak shromažďovat Resilience4j metriky pro přerušení cloudového okruhu pomocí Application Insightsho agenta Java v procesu. Pomocí této funkce můžete monitorovat metriky resilience4j okruhu z Application Insights s mikroměřičem.
 
 K zobrazení toho, jak funguje, používáme [ukázku jaře-Cloud-okruh-break](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) .
 

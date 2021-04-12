@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936848"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121298"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta balíčku na serveru Ubuntu 18,04 x64
 
 Aktualizace zařízení pro IoT Hub podporuje dvě formy aktualizací – založené na bitových kopiích a na balíčcích.
 
-Aktualizace založené na balíčku jsou cílené aktualizace, které mění pouze konkrétní součást nebo aplikaci na zařízení. To vede ke snížení spotřeby šířky pásma a pomáhá zkrátit dobu potřebné ke stažení a instalaci aktualizace. Aktualizace balíčků obvykle umožňují méně výpadkům zařízení při použití aktualizace a vyhněte se režii při vytváření imagí.
+Aktualizace založené na balíčku jsou cílené aktualizace, které mění pouze konkrétní součást nebo aplikaci na zařízení. Aktualizace založené na balíčku vedou ke snížení spotřeby šířky pásma a pomáhají zkrátit dobu stahování a instalace aktualizace. Aktualizace balíčků obvykle umožňují méně výpadkům zařízení při použití aktualizace a vyhněte se režii při vytváření imagí.
 
 Tento kompletní kurz vás provede aktualizací Azure IoT Edge na serveru 18,04 x64 pomocí agenta aktualizace zařízení. I když tento kurz ukazuje, jak aktualizovat IoT Edge pomocí podobných kroků byste mohli aktualizovat další balíčky, jako je například kontejnerový modul, který používá.
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte, jak:
 ## <a name="prepare-a-device"></a>Příprava zařízení
 ### <a name="using-the-automated-deploy-to-azure-button"></a>Použití tlačítka pro automatizované nasazení do Azure
 
-Pro usnadnění práce v tomto kurzu se používá [šablona Azure Resource Manager](../azure-resource-manager/templates/overview.md) založená na [cloudu](../virtual-machines/linux/using-cloud-init.md), která vám pomůže rychle nastavit virtuální počítač s Ubuntu 18,04 LTS. Nainstaluje Azure IoT Edge runtime i agenta balíčku aktualizace zařízení a pak automaticky nakonfiguruje zařízení pomocí informací o zřizování pomocí připojovacího řetězce zařízení pro IoT Edge zařízení (předpoklad), které zadáte. Tím předejdete nutnosti spustit relaci SSH, aby bylo možné instalaci dokončit.
+Pro usnadnění práce v tomto kurzu se používá [šablona Azure Resource Manager](../azure-resource-manager/templates/overview.md) založená na [cloudu](../virtual-machines/linux/using-cloud-init.md), která vám pomůže rychle nastavit virtuální počítač s Ubuntu 18,04 LTS. Nainstaluje Azure IoT Edge runtime i agenta balíčku aktualizace zařízení a pak automaticky nakonfiguruje zařízení pomocí informací o zřizování pomocí připojovacího řetězce zařízení pro IoT Edge zařízení (předpoklad), které zadáte. Šablona Azure Resource Manager také brání nutnosti spustit relaci SSH, aby bylo možné instalaci dokončit.
 
 1. Začněte tím, že kliknete na tlačítko níže:
 
@@ -86,7 +86,7 @@ Pro usnadnění práce v tomto kurzu se používá [šablona Azure Resource Mana
    > Pokud chcete k tomuto virtuálnímu počítači po instalaci použít SSH, použijte k tomu přidružený **název DNS** pomocí příkazu: `ssh <adminUsername>@<DNS_Name>`
 
 ### <a name="optional-manually-prepare-a-device"></a>Volitelné Ruční příprava zařízení
-Následující ruční kroky pro instalaci a konfiguraci zařízení jsou stejné jako ty, které byly automatizovány tímto [skriptem Cloud-init](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt). Dají se použít k přípravě fyzického zařízení.
+Podobně jako u kroků automatizovaných [skriptem pro inicializaci Cloud-init](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)se v následujících krocích provádí ruční instalace a konfigurace zařízení. Pomocí těchto kroků můžete připravit fyzické zařízení.
 
 1. Podle pokynů [nainstalujte modul runtime Azure IoT Edge](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true).
    > [!NOTE]
@@ -110,9 +110,9 @@ Přečtěte si licenčních podmínek před použitím balíčku. Vaše instalac
 
 1. Přihlaste se [Azure Portal](https://portal.azure.com) a přejděte do IoT Hub.
 
-2. Z ' IoT Edge ' v levém navigačním podokně Najděte své zařízení IoT Edge a přejděte do vlákna zařízení.
+2. Z ' IoT Edge ' v levém navigačním podokně Najděte své zařízení IoT Edge a přejděte do vlákna v zařízení nebo v modulu.
 
-3. V případě, že je zařízení s dvojitou hodnotou, odstraňte všechny existující hodnoty značky aktualizace zařízení nastavením na hodnotu null.
+3. V modulu, který je v modulu agenta aktualizace zařízení, odstraňte všechny existující hodnoty značky aktualizace zařízení nastavením na hodnotu null. Pokud používáte identitu zařízení s agentem aktualizace zařízení, udělejte tyto změny na vlákna zařízení.
 
 4. Přidejte novou hodnotu značky aktualizace zařízení, jak je uvedeno níže.
 
@@ -149,7 +149,7 @@ Tato aktualizace aktualizuje `aziot-identity-service` a `aziot-edge` balíčky n
 
 8. Kliknutím na Odeslat spusťte proces importu.
 
-9. Spustí se proces importu a obrazovka se změní v části Historie importu. Pokud chcete zobrazit průběh až do dokončení procesu importu, vyberte aktualizovat. V závislosti na velikosti aktualizace to může trvat několik minut, ale může trvat delší dobu.
+9. Spustí se proces importu a obrazovka se změní v části Historie importu. Pokud chcete zobrazit průběh až do dokončení procesu importu, vyberte aktualizovat. V závislosti na velikosti aktualizace může proces importu trvat několik minut, ale může trvat delší dobu.
 
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Snímek obrazovky znázorňující sekvenci importu aktualizace" lightbox="media/import-update/update-publishing-sequence-2.png":::
 
@@ -212,7 +212,7 @@ Nyní jste dokončili úspěšnou kompletní aktualizaci balíčku pomocí aktua
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, vyčistěte účet aktualizace zařízení, instanci IoT Hub a zařízení IoT Edge (Pokud jste virtuální počítač vytvořili přes tlačítko nasadit do Azure). Můžete to udělat tak, že na každý jednotlivý prostředek kliknete a vyberete odstranit. Nezapomeňte, že před vymazáním účtu aktualizace zařízení je třeba vyčistit instanci aktualizace zařízení.
+Pokud už je nepotřebujete, vyčistěte účet aktualizace zařízení, instanci IoT Hub a zařízení IoT Edge (Pokud jste virtuální počítač vytvořili přes tlačítko nasadit do Azure). Můžete to udělat tak, že na každý jednotlivý prostředek kliknete a vyberete odstranit. Před vymazáním účtu aktualizace zařízení je třeba vyčistit instanci aktualizace zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Python'
-description: Začněte s tímto rychlým startem pomocí klientské knihovny Počítačové zpracování obrazu pro Python.
+title: 'Rychlý Start: Klientská knihovna pro rozpoznávání optického znaku pro Python'
+description: Začněte s tímto rychlým startem pomocí klientské knihovny pro rozpoznávání optického znaku pro Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,19 +9,16 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b17173c95f26c622a0021d30eb678fc27b60c2f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: d0b2a854391097cc7d95c4286ba581f3660d397e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622014"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284753"
 ---
 <a name="HOLTop"></a>
 
-Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
-
-* Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
-* Přečtěte si vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
+Pomocí klientské knihovny pro rozpoznávání optických znaků si můžete přečíst vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
 
 [Referenční dokumentace](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -74,7 +71,7 @@ Vytvořte proměnné pro klíč předplatného Počítačové zpracování obraz
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy a rozhraní se řídí některými hlavními funkcemi sady Počítačové zpracování obrazu Python SDK.
+Následující třídy a rozhraní zpracovávají některé z hlavních funkcí sady OCR Python SDK.
 
 |Název|Description|
 |---|---|
@@ -84,10 +81,9 @@ Následující třídy a rozhraní se řídí některými hlavními funkcemi sad
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Počítačové zpracování obrazu klientské knihovny pro Python:
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny OCR pro Python:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza obrázku](#analyze-an-image)
 * [Číst vytištěné a ručně psaný text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -97,89 +93,11 @@ Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objek
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#analyze-an-image) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client)
-
-## <a name="analyze-an-image"></a>Analýza obrázku
-
-K analýze vizuálních funkcí vzdálené image použijte objekt klienta. Nejdřív uložte odkaz na adresu URL obrázku, který chcete analyzovat.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
-
-> [!TIP]
-> Můžete také analyzovat místní bitovou kopii. Podívejte se na metody [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin) , jako je například **analyze_image_in_stream**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) , kde najdete scénáře týkající se místních imagí.
-
-### <a name="get-image-description"></a>Získat popis obrázku
-
-Následující kód získá seznam generovaných titulků pro obrázek. Další podrobnosti najdete v tématu [popisujícím obrázky](../../concept-describing-images.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_describe)]
-
-### <a name="get-image-category"></a>Získat kategorii obrázku
-
-Následující kód získá zjištěnou kategorii obrázku. Další podrobnosti najdete v tématu [kategorizace imagí](../../concept-categorizing-images.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_categorize)]
-
-### <a name="get-image-tags"></a>Získat značky obrázku
-
-Následující kód získá sadu zjištěných značek v obrázku. Další podrobnosti najdete v tématu [značky obsahu](../../concept-tagging-images.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_tags)]
-
-### <a name="detect-objects"></a>Detekovat objekty
-
-Následující kód detekuje běžné objekty v imagi a vytiskne je do konzoly. Další podrobnosti najdete v tématu věnovaném [detekci objektů](../../concept-object-detection.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]        
-
-### <a name="detect-brands"></a>Detekovat značky
-
-Následující kód detekuje firemní značky a loga v imagi a vytiskne je do konzoly. Další podrobnosti najdete v tématu [rozpoznávání značek](../../concept-brand-detection.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
-
-### <a name="detect-faces"></a>Rozpoznávání tváří
-
-Následující kód vrátí zjištěné plošky v obrázku s jejich souřadnicemi obdélníku a vyberte možnost atributy obličeje. Další podrobnosti najdete v tématu [rozpoznávání tváře](../../concept-detecting-faces.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
-
-### <a name="detect-adult-racy-or-gory-content"></a>Zjištění obsahu pro dospělé, pikantní nebo gorie
-
-Následující kód vytiskne zjištěnou přítomnost obsahu pro dospělé v imagi. Další podrobnosti najdete v článku [obsah pro dospělé, pikantní a gorie](../../concept-detecting-adult-content.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
-
-### <a name="get-image-color-scheme"></a>Získat barevné schéma obrázku
-
-Následující kód vytiskne zjištěné atributy barev v obrázku, jako jsou dominantní barvy a Barva zvýraznění. Další podrobnosti najdete v tématu [Barevná schémata](../../concept-detecting-color-schemes.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_color)]
-
-### <a name="get-domain-specific-content"></a>Získání obsahu specifického pro doménu
-
-Počítačové zpracování obrazu může použít specializovaný model k další analýze imagí. Další podrobnosti najdete v tématu [obsah specifický pro doménu](../../concept-detecting-domain-content.md) . 
-
-Následující kód analyzuje data o zjištěných celebrit v imagi.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_celebs)]
-
-Následující kód analyzuje data o zjištěných orientačních seznamech v obrázku.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_landmarks)]
-
-### <a name="get-the-image-type"></a>Získat typ obrázku
-
-Následující kód Vytiskne informace o typu obrázku &mdash; , ať už se jedná o Klipart nebo kreslení čáry.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
-
-> [!div class="nextstepaction"]
-> [Analyzoval jsem obrázek](?success=analyze-image#read-printed-and-handwritten-text) , který [jsem narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=analyze-image)
+> Jsem ověřil (a) jsem [, že klient](?success=authenticate-client#read-printed-and-handwritten-text) [narazil na problém](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client)
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Provedete to ve dvou částech.
+Služba OCR může číst viditelný text v obrázku a převést jej na datový proud znaků. Provedete to ve dvou částech.
 
 ### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
 
@@ -222,10 +140,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak používat knihovnu Počítačové zpracování obrazu pro Python k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
+V tomto rychlém startu jste zjistili, jak používat knihovnu optického rozpoznávání znaků pro Python k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
 > [!div class="nextstepaction"]
->[Odkaz na rozhraní API pro počítačové zpracování obrazu (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
+>[Referenční informace k rozhraní API pro optické rozpoznávání znaků (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-* [Co je počítačové zpracování obrazu?](../../overview.md)
+* [Přehled rozpoznávání OCR](../../overview-ocr.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

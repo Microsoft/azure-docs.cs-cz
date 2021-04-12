@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/02/2020
-ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/02/2021
+ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952401"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284075"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Jak vytvářet, importovat a exportovat terminologie glosáře
 
@@ -34,7 +34,7 @@ Chcete-li vytvořit nový pojem Glosář, proveďte následující kroky:
 
 5. Nastavte **stav** období. Nové výrazy ve výchozím nastavení mají stav **konceptu** .
 
-   :::image type="content" source="media/how-to-create-import-export-glossary/new-term-options.png" alt-text="Snímek obrazovky s možnostmi stavu" border="true":::
+   :::image type="content" source="media/how-to-create-import-export-glossary/overview-tab.png" alt-text="Snímek obrazovky s možnostmi stavu":::
 
    Tyto stavové značky jsou Metadata přidružená k termínu. V současné době můžete pro každý termín nastavit následující stav:
 
@@ -92,9 +92,10 @@ Z glosáře byste měli být schopni exportovat podmínky, pokud vybrané podmí
 
 2. Vyberte **exportovat** a Stáhněte si vybrané výrazy.
 
- > [!Important]
-   > Pokud podmínky v hierarchii patří do různých šablon termínů, je třeba je rozdělit na jiné. Soubory CSV pro import. Aktualizace nadřazeného termínu Term se také v současné době nepodporuje pomocí procesu importu.
+   :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-export.png" lightbox="media/how-to-create-import-export-glossary/select-term-template-for-export.png" alt-text="Snímek obrazovky s výrazy glosáře, vyberte soubor pro export.":::
 
+   > [!Important]
+   > Pokud podmínky v hierarchii patří do různých šablon termínů, je třeba je rozdělit na jiné. Soubory CSV pro import. Aktualizace nadřazeného termínu Term se také v současné době nepodporuje pomocí procesu importu.
 
 ## <a name="next-steps"></a>Další kroky
 

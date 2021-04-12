@@ -2,13 +2,13 @@
 title: Zálohování několika virtuálních počítačů s SQL Serverem z trezoru
 description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze na virtuálních počítačích Azure pomocí Azure Backup z trezoru Recovery Services.
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 798dc81012ad968c3ecc287717240513a08a1349
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2021
+ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "105567202"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258465"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Zálohování několika SQL Server virtuálních počítačů z trezoru Recovery Services
 
@@ -23,10 +23,6 @@ V tomto článku se naučíte:
 > * Vytvoření a konfigurace trezoru
 > * Objevte databáze a nastavte zálohy.
 > * Nastavení automatické ochrany databází
-
->[!NOTE]
->**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
->Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Požadavky
 

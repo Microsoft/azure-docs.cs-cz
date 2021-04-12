@@ -3,12 +3,12 @@ title: Přehrávání videa – Azure
 description: Zástupný symbol
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063368"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278588"
 ---
 # <a name="video-playback"></a>Přehrávání videa 
 
@@ -24,7 +24,7 @@ Pomocí [multimediálních grafů](media-graph-concept.md) můžete nahrávat vi
 
 ## <a name="streaming-endpoint"></a>Koncový bod streamování 
 
-Můžete použít Azure Media Services ke [streamování](terminology.md#streaming) prostředků do přehrávačů videa pomocí standardních protokolů pro streamování založeného na protokolu HTTP, jako je například HTTP Live Streaming (HLS) a MPEG-pomlčka. Tento převod médií z zaznamenaného obsahu na formáty streamování se zpracovává [koncovým bodem streamování](../latest/streaming-endpoint-concept.md), který je prostředkem, který musíte zřídit ve vašem účtu Azure Media Service.
+Můžete použít Azure Media Services ke [streamování](terminology.md#streaming) prostředků do přehrávačů videa pomocí standardních protokolů pro streamování založeného na protokolu HTTP, jako je například HTTP Live Streaming (HLS) a MPEG-pomlčka. Tento převod médií z zaznamenaného obsahu na formáty streamování se zpracovává [koncovým bodem streamování](../latest/stream-streaming-endpoint-concept.md), který je prostředkem, který musíte zřídit ve vašem účtu Azure Media Service.
 
 ## <a name="streaming-policy"></a>Zásada streamování 
 
@@ -34,11 +34,11 @@ Azure Media Services nabízí různé metody zabezpečení datových proudů, ja
 * **Použijte standard AES (Advanced Encryption Standard) (AES-128)** – a Implementujte metodu pro doručení klíčů pro dešifrování videa pouze pro ověřené diváky.
 * **Používejte systémy digitálních Rights Management (DRM)** – k řízení použití, úpravy a doručování videí na zařízení, která tyto zásady vynutila.
 
-Pro zajištění ochrany obsahu můžete v účtu služby Media Service definovat a vytvořit [zásady streamování](../latest/streaming-policy-concept.md) a použít je ke streamování všech assetů (za předpokladu, že všechny datové proudy mají stejné požadavky na zabezpečení). Můžete také použít kteroukoli z předdefinovaných zásad (například Predefined_ClearStreamingOnly).
+Pro zajištění ochrany obsahu můžete v účtu služby Media Service definovat a vytvořit [zásady streamování](../latest/stream-streaming-policy-concept.md) a použít je ke streamování všech assetů (za předpokladu, že všechny datové proudy mají stejné požadavky na zabezpečení). Můžete také použít kteroukoli z předdefinovaných zásad (například Predefined_ClearStreamingOnly).
 
 ## <a name="streaming-locator"></a>Lokátor streamování  
 
-Po spuštění koncového bodu streamování v účtu mediální služby a definování zásad streamování můžete pokračovat v streamování zaznamenaného média z assetu prostřednictvím HLS nebo SPOJOVNÍKových protokolů. Webové přehrávače a mobilní aplikace potřebují adresu URL ukazující na tento HLS nebo PŘERUŠOVANý Stream. Tuto adresu URL můžete vytvořit pomocí [lokátoru streamování](../latest/streaming-locators-concept.md). Jak je popsáno v tomto článku a zobrazuje se ukázka [Vytvoření lokátoru streamování a adres URL sestavení](../latest/create-streaming-locator-build-url.md) , se adresa URL streamování skládá z koncového bodu streamování, zásad streamování a lokátoru streamování.
+Po spuštění koncového bodu streamování v účtu mediální služby a definování zásad streamování můžete pokračovat v streamování zaznamenaného média z assetu prostřednictvím HLS nebo SPOJOVNÍKových protokolů. Webové přehrávače a mobilní aplikace potřebují adresu URL ukazující na tento HLS nebo PŘERUŠOVANý Stream. Tuto adresu URL můžete vytvořit pomocí [lokátoru streamování](../latest/stream-streaming-locators-concept.md). Jak je popsáno v tomto článku a zobrazuje se ukázka [Vytvoření lokátoru streamování a adres URL sestavení](../latest/create-streaming-locator-build-url.md) , se adresa URL streamování skládá z koncového bodu streamování, zásad streamování a lokátoru streamování.
 
 ## <a name="content-recorded-using-file-sink"></a>Obsah zaznamenaný pomocí jímky souborů  
 

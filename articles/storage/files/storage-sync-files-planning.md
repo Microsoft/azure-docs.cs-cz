@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121349"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285854"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -358,6 +358,15 @@ Pokud dáváte přednost použití místního řešení zálohování, měli bys
 
 > [!Note]  
 > Ve verzi 9 agenta Synchronizace souborů Azure se teď na svazcích, na kterých je povolená vrstva cloudu, podporují snímky služby Stínová kopie svazku (včetně karty předchozí verze). Je však nutné povolit kompatibilitu předchozí verze prostřednictvím prostředí PowerShell. [Přečtěte si, jak](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service).
+
+## <a name="data-classification"></a>Klasifikace dat
+Pokud máte nainstalovaný software pro klasifikaci dat, může povolení vrstvení cloudu způsobit zvýšení nákladů ze dvou důvodů:
+
+1. Když je zapnutá vrstva cloudu, soubory nejžhavějších se ukládají do mezipaměti místně a studené soubory jsou vrstveny do sdílené složky Azure v cloudu. Pokud vaše klasifikace dat pravidelně kontroluje všechny soubory ve sdílené složce, musí být soubory vrstveny do cloudu při každém skenování znovu vyvolány. 
+
+2. Pokud software pro klasifikaci dat používá metadata v datovém proudu souboru, musí být tento soubor zcela znovu vrácen, aby mohl software zobrazit klasifikaci. 
+
+Tyto hodnoty se zvyšují jak v počtu volání, tak i množství dat, která jsou volána, mohou zvýšit náklady.
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

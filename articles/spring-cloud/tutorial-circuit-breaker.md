@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9fbd137f8fa36a7b0526b25d664fceac795ecd81
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 09acdc0c4ea2dbe90c0b7b037b6aec501cc1dd55
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104879152"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223026"
 ---
 # <a name="tutorial-use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Kurz: Použití řídicího panelu pro dělení na okruhy pomocí Azure jaře cloudu
 
@@ -20,7 +20,7 @@ ms.locfileid: "104879152"
 
 Jarní [cloudová Netflix turbína](https://github.com/Netflix/Turbine) se běžně používá k agregaci více datových proudů [hystrix](https://github.com/Netflix/Hystrix) metrik, aby bylo možné datové proudy sledovat v jednom zobrazení pomocí řídicího panelu hystrix. V tomto kurzu se dozvíte, jak je používat v Azure jarním cloudu.
 > [!NOTE]
-> Netflix hystrix se běžně používá v mnoha stávajících jarních cloudových aplikacích, ale už není v aktivním vývoji. Pokud vyvíjíte nový projekt, použijte místo toho implementace přerušení cloudového okruhu, jako je [resilience4j](https://github.com/resilience4j/resilience4j). V rámci tohoto kurzu se liší od turbíny, ale nová architektura pro vypínacích okruhů v cloudovém prostředí sjednocuje všechny implementace kanálu dat metrik do mikroměřiče. Pořád pracujeme na podpoře mikroměřiče v Azure jaře cloudu, takže se tento kurz nezabývá.
+> Netflix hystrix se běžně používá v mnoha stávajících jarních cloudových aplikacích, ale už není v aktivním vývoji. Pokud vyvíjíte nový projekt, použijte místo toho implementace přerušení cloudového okruhu, jako je [resilience4j](https://github.com/resilience4j/resilience4j). Jiné než turbíny, které jsou uvedené v tomto kurzu, je nová architektura jarního cloudového okruhu sjednocuje všechny implementace kanálu dat metrik na mikroměřiče, což je podporované i pro Azure jaře Cloud. [Další informace](https://docs.microsoft.com/azure/spring-cloud/how-to-circuit-breaker-metrics)
 
 ## <a name="prepare-your-sample-applications"></a>Příprava ukázkových aplikací
 Ukázka je rozvětvená z tohoto [úložiště](https://github.com/StackAbuse/spring-cloud/tree/master/spring-turbine).

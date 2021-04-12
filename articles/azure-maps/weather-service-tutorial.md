@@ -9,20 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678159"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257632"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
-> [!IMPORTANT]
-> Služba Azure Maps počasí jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že vítr není konzistentní vzhledem k povaze, je potřeba, aby operátoři napájení větru sestavili modely strojového učení (ML) pro předpověď kapacity výkonu větru. Tato předpověď je nutná k tomu, aby splňovala požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovými daty pro čtení počasí. Data předpovědi počasí se vyžadují voláním Azure Maps služby počasí (Preview).
+Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že vítr není konzistentní vzhledem k povaze, je potřeba, aby operátoři napájení větru sestavili modely strojového učení (ML) pro předpověď kapacity výkonu větru. Tato předpověď je nutná k tomu, aby splňovala požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovými daty pro čtení počasí. Data předpovědi počasí jsou požadována voláním Azure Maps služeb počasí.
 
 V tomto kurzu:
 
@@ -31,7 +27,7 @@ V tomto kurzu:
 > * Načíst ukázková data ze souboru
 > * V Pythonu volejte Azure Maps rozhraní REST API.
 > * Vykreslení dat umístění na mapě.
-> * Obohacení ukázkových dat o data počasí v Azure Maps [denní předpovědi](/rest/api/maps/weather/getdailyforecastpreview) .
+> * Obohacení ukázkových dat o data počasí v Azure Maps [denní předpovědi](/rest/api/maps/weather/getdailyforecast) .
 > * Vykreslí data prognózy v grafech.
 
 
@@ -72,8 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Požadovat data denní předpovědi
 
-V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](/rest/api/maps/weather/getdailyforecastpreview) Azure Mapsch povětrnostních služeb (Preview). Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
-
+V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](/rest/api/maps/weather/getdailyforecast) Azure Mapsch povětrnostních služeb. Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
 
 ```python
 subscription_key = "Your Azure Maps key"
@@ -86,7 +81,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
+# Call azure maps Weather services to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -192,7 +187,7 @@ Další informace o tom, jak volat Azure Maps rozhraní REST API v Azure Noteboo
 
 Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, přečtěte si téma:
 
-* [Denní prognóza](/rest/api/maps/weather/getdailyforecastpreview)
+* [Denní prognóza](/rest/api/maps/weather/getdailyforecast)
 * [Vykreslení – získat obrázek mapy](/rest/api/maps/render/getmapimage)
 
 Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](./consumption-model.md).

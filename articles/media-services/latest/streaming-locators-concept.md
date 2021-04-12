@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f7357644639e1bdba07b9ad44533582fc66b600
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f186ea4afd6a8bbf52f91e94f2976f244fc8dda
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456067"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120856"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -29,7 +29,7 @@ Při vytváření **lokátoru streamování** musíte zadat název **assetu** a 
 
 * [Aktiva](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
-* [Zásady pro klíč obsahu](content-key-policy-concept.md)
+* [Zásady pro klíč obsahu](drm-content-key-policy-concept.md)
 
 Můžete také zadat čas zahájení a ukončení na lokátoru streamování, který umožní uživateli přehrávat obsah mezi těmito časy (například mezi 5/1/2019 a 5/5/2019).  
 
@@ -37,7 +37,7 @@ Můžete také zadat čas zahájení a ukončení na lokátoru streamování, kt
 
 * **Lokátory streamování** nejde aktualizovat. 
 * Vlastnosti **lokátorů streamování** , které jsou typu DateTime, jsou vždycky ve formátu UTC.
-* Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+* Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints-reference.md).
 
 ## <a name="create-streaming-locators"></a>Vytvoření lokátorů streamování  
 
@@ -85,7 +85,7 @@ Viz [filtry: přidružení ke lokátorům streamování](filters-concept.md#asso
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filter, Order, entity lokátoru pro streamování stránek
 
-Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Media Services entit](filter-order-page-entitites-how-to.md).
 
 ## <a name="list-streaming-locators-by-asset-name"></a>Vypsat Lokátory streamování podle názvu Assetu
 
@@ -103,7 +103,7 @@ Chcete-li získat Lokátory streamování na základě přidruženého názvu As
 
 * [Aktiva](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
-* [Zásady pro klíč obsahu](content-key-policy-concept.md)
+* [Zásady pro klíč obsahu](drm-content-key-policy-concept.md)
 * [Kurz: nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Další kroky

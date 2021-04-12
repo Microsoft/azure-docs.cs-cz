@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609084"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121162"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referenční informace o Media Services dat monitorování
 
@@ -44,7 +44,7 @@ Můžete monitorovat následující metriky účtu.
 |StreamingPolicyQuota|Kvóta zásad streamování|Kvóta zásad streamování ve vašem účtu.|
 |StreamingPolicyQuotaUsedPercentage|Procento využité kvóty zásad streamování|Procento použité kvóty zásad streamování se už používá.|
 
-Měli byste taky zkontrolovat [kvóty a omezení účtu](../limits-quotas-constraints.md).
+Měli byste taky zkontrolovat [kvóty a omezení účtu](../limits-quotas-constraints-reference.md).
 
 ### <a name="streaming-endpoint"></a>Koncový bod streamování
 

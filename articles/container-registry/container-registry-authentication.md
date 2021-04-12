@@ -2,13 +2,13 @@
 title: Možnosti ověřování v registru
 description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/15/2021
+ms.openlocfilehash: d12895502ecd30991fbef836903a8ceea445b770
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148564"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285497"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -25,7 +25,7 @@ Následující tabulka obsahuje seznam dostupných metod ověřování a typick�
 | [Individuální identita AD](#individual-login-with-azure-ad)                | `az acr login` v Azure CLI                             | Interaktivní nabízení a vyžádané sdílení pro vývojáře, testery                                    | Yes                              | Token AD se musí obnovit každé 3 hodiny.     |
 | [Instanční objekt služby AD](#service-principal)                  | `docker login`<br/><br/>`az acr login` v Azure CLI<br/><br/> Nastavení přihlášení do registru v rozhraních API nebo nástrojích<br/><br/> [Tajný kód pro vyžádání obsahu Kubernetes](container-registry-auth-kubernetes.md)                                           | Bezobslužné vkládání z kanálu CI/CD<br/><br/> Bezobslužné stažení do Azure nebo externích služeb  | Yes                              | Výchozí platnost hesla SP je 1 rok.       |                                                           
 | [Integrace s AKS](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | Připojit registr při vytvoření nebo aktualizaci clusteru AKS  | Bezobslužné stažení do clusteru AKS                                                  | Ne, jenom přístup pro vyžádání             | K dispozici pouze v clusteru AKS            |
-| [Spravovaná identita pro prostředky Azure](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` v Azure CLI                                       | Bezobslužné vkládání z kanálu CI/CD z Azure<br/><br/> Bezobslužné získání dat do služeb Azure<br/><br/>   | Yes                              | Používejte jenom ze služeb Azure, které [podporují spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) .              |
+| [Spravovaná identita pro prostředky Azure](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` v Azure CLI                                       | Bezobslužné vkládání z kanálu CI/CD z Azure<br/><br/> Bezobslužné získání dat do služeb Azure<br/><br/>   | Yes                              | Používejte jenom z vybraných služeb Azure, které [podporují spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) .              |
 | [Uživatel s rolí správce](#admin-account)                            | `docker login`                                          | Interaktivní nabízená oznámení nebo vyžádaná osoba pro jednotlivé vývojáře nebo testery<br/><br/>Nasazení bitové kopie z registru portálu do Azure App Service nebo Azure Container Instances                      | Ne, vždycky získávat a nabízet přístup  | Jeden účet na registr, nedoporučuje se pro více uživatelů         |
 | [Přístupový token s oborem úložiště](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login` v Azure CLI   | Interaktivní nabízená oznámení nebo vyžádání do úložiště podle individuálního vývojáře nebo testerů<br/><br/> Bezobslužné odeslání/vyžádání do úložiště podle individuálního systému nebo externího zařízení                  | Yes                              | Aktuálně není integrováno se službou AD identity  |
 
@@ -65,11 +65,16 @@ Výstup zobrazuje přístupový token, který se tady zkracuje:
   "loginServer": "myregistry.azurecr.io"
 }
 ``` 
+Pro ověřování v registru doporučujeme ukládat přihlašovací údaje tokenu v bezpečném umístění a postupovat podle doporučených postupů pro správu přihlašovacích údajů uživatele [Docker](https://docs.docker.com/engine/reference/commandline/login/). Například uložte hodnotu tokenu do proměnné prostředí:
+
+```bash
+TOKEN=$(az acr login --name <acrName> --expose-token --output tsv --query accessToken)
+```
 
 Pak spusťte `docker login` , předejte `00000000-0000-0000-0000-000000000000` jako uživatelské jméno a pomocí přístupového tokenu jako hesla:
 
 ```console
-docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
+docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
 ```
 
 ## <a name="service-principal"></a>Instanční objekt
@@ -92,7 +97,7 @@ Pro skripty rozhraní příkazového řádku pro vytvoření instančního objek
 
 Každý registr kontejnerů obsahuje účet uživatele správce, který je ve výchozím nastavení zakázaný. Můžete povolit uživatele správce a spravovat jeho přihlašovací údaje v Azure Portal nebo pomocí Azure CLI nebo jiných nástrojů Azure. Účet správce má úplná oprávnění k registru.
 
-Účet správce se v současnosti vyžaduje, aby některé scénáře nasadily image z registru kontejneru do určitých služeb Azure. Například účet správce je potřeba při nasazení image kontejneru na portálu z registru přímo do [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) nebo [Azure Web Apps for Containers](container-registry-tutorial-deploy-app.md).
+Účet správce se v současnosti vyžaduje, aby některé scénáře nasadily image z registru kontejneru do určitých služeb Azure. Například účet správce je potřeba při použití Azure Portal k nasazení image kontejneru z registru přímo do [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) nebo [Azure Web Apps for Containers](container-registry-tutorial-deploy-app.md).
 
 > [!IMPORTANT]
 > Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce mezi více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
@@ -104,7 +109,7 @@ Každý registr kontejnerů obsahuje účet uživatele správce, který je ve v�
 docker login myregistry.azurecr.io 
 ```
 
-Osvědčené postupy pro správu přihlašovacích údajů najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
+Doporučené postupy pro správu přihlašovacích údajů najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 Pokud chcete povolit uživatele s oprávněními správce pro existující registr, můžete použít `--admin-enabled` parametr příkazu [AZ ACR Update](/cli/azure/acr#az-acr-update) v rozhraní příkazového řádku Azure CLI:
 

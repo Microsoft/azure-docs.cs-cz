@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 23e9fd586882d25aed646b984e17c5885145ccff
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368198"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284630"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvoření aplikace pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT)
 
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-[Rozhraní API pro čtení Počítačové zpracování obrazu Cognitive Services](../computer-vision/concept-recognizing-text.md) detekuje textový obsah v imagi pomocí nejnovějších modelů rozpoznávání od Microsoftu a převede identifikovaný text na datový proud znaků, který je strojově čitelný.
+[Rozhraní API pro čtení Počítačové zpracování obrazu Cognitive Services](../computer-vision/overview-ocr.md) detekuje textový obsah v imagi pomocí nejnovějších modelů rozpoznávání od Microsoftu a převede identifikovaný text na datový proud znaků, který je strojově čitelný.
 
 V tomto kurzu vytvoříte aplikaci pro iOS od začátku a integrujete rozhraní API pro čtení a moderní čtečku s využitím sady moderní čtečky. Kompletní pracovní ukázka tohoto kurzu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 

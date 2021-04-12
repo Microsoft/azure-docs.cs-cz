@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e6f76bcae55ed905e11c46df66478908529970
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928694"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258023"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Experian s využitím Azure Active Directory B2C
 
@@ -133,7 +133,7 @@ V poskytnutých [vlastních zásadách](https://github.com/azure-ad-b2c/partner-
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Část 6 – konfigurace zásad Azure AD B2C
 
-Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v tomto [dokumentu](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) .
+Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v tomto [dokumentu](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) .
 
 >[!NOTE]
 >Tato ukázková zásada vychází z [Úvodní sady místních účtů](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
@@ -169,4 +169,4 @@ Další informace najdete v následujících článcích:
 
 - [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

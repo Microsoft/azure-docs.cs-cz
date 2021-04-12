@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5ee7e8de85a1a53359f651a74e2f9f5e51edb70
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110674"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030776"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Autorizaci přístupu ke spravované identitě ke zdroji komunikace ve vývojovém prostředí
 
@@ -78,6 +78,8 @@ Sada Azure identity SDK načítá hodnoty ze tří proměnných prostředí za b
 
 > [!IMPORTANT]
 > Po nastavení proměnných prostředí zavřete a znovu otevřete okno konzoly. Pokud používáte aplikaci Visual Studio nebo jiné vývojové prostředí, může být nutné ji restartovat, aby mohla zaregistrovat nové proměnné prostředí.
+
+Po nastavení těchto proměnných byste měli být schopni použít objekt DefaultAzureCredential v kódu k ověření pro klienta služby dle vašeho výběru.
 
 
 ## <a name="next-steps"></a>Další kroky

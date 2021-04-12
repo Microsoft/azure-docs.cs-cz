@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c10a39b050fa66192f762ba642b4c8ac2e080250
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579786"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258136"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Kurz: Konfigurace Arkose Labs pomocí Azure Active Directory B2C
 
@@ -234,4 +234,4 @@ Pokud chcete povolit konektor API, v nastavení **konektoru rozhraní API** pro 
 
 - [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

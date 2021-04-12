@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bc2508220a8c0193efb55eb6cd11f7e151c80be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729607"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s StatusPage
 
-V tomto kurzu se dozvíte, jak integrovat StatusPage s Azure Active Directory (Azure AD).
-Integrace StatusPage s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat StatusPage s Azure Active Directory (Azure AD). Když integrujete StatusPage s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k StatusPage.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k StatusPage (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup k StatusPage.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k StatusPage svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s StatusPage potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Předplatné s povoleným StatusPagem jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* StatusPage odběr povoleného jednotného přihlašování.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* StatusPage podporuje jednotné přihlašování **IDP** .
+* StatusPage podporuje jednotné přihlašování (SSO) iniciované **IDP** .
 
-## <a name="adding-statuspage-from-the-gallery"></a>Přidání StatusPage z Galerie
+## <a name="add-statuspage-from-the-gallery"></a>Přidání StatusPage z Galerie
 
 Pokud chcete nakonfigurovat integraci StatusPage do služby Azure AD, musíte přidat StatusPage z Galerie do svého seznamu spravovaných aplikací SaaS.
 
@@ -65,13 +64,13 @@ K nakonfigurování a testování jednotného přihlašování Azure AD pomocí 
     1. **[Vytvoření StatusPage Test User](#create-statuspage-test-user)** – pro Britta Simon v StatusPage, který je propojený s reprezentací uživatele Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
 1. V Azure Portal na stránce integrace aplikací **AskYourTeam** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -85,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | `https://<subdomain>.statuspage.io/` |
     |
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
      | Adresa URL odpovědi |
     |--------------|
@@ -152,17 +151,17 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. Na hlavním panelu nástrojů klikněte na **Spravovat účet**.
 
-    ![Snímek obrazovky zobrazuje účet pro správu vybraný na webu StatusPage společnosti.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Snímek obrazovky zobrazuje účet pro správu vybraný na webu StatusPage společnosti.](./media/statuspage-tutorial/account.png)
 
 1. Klikněte na kartu **jednotného přihlašování** .
 
-    ![Snímek obrazovky se zobrazí na kartě jednotného přihlašování.](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![Snímek obrazovky se zobrazí na kartě jednotného přihlašování.](./media/statuspage-tutorial/tab.png)
 
 1. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
 
-    ![Snímek obrazovky se zobrazí na stránce S nastavením S S O, kde můžete zadat hodnoty, které jsou popsány.](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![Snímek obrazovky se zobrazí na stránce S nastavením S S O, kde můžete zadat hodnoty, které jsou popsány.](./media/statuspage-tutorial/setup.png)
 
-    ![Snímek obrazovky se zobrazí tlačítko Uložit konfiguraci.](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![Snímek obrazovky se zobrazí tlačítko Uložit konfiguraci.](./media/statuspage-tutorial/configuration.png)
 
     a. Do textového pole **Adresa URL cíle jednotného přihlašování** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
@@ -182,25 +181,25 @@ StatusPage podporuje zřizování za běhu. V [konfiguraci jednotného přihlaš
 
 1. V nabídce v horní části klikněte na **Spravovat účet**.
 
-    ![Snímek obrazovky zobrazuje účet pro správu vybraný na webu StatusPage společnosti.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Snímek obrazovky zobrazuje účet pro správu vybraný na webu StatusPage společnosti.](./media/statuspage-tutorial/account.png)
 
 1. Klikněte na kartu **Členové týmu** .
   
-    ![Snímek obrazovky se zobrazí na kartě členové týmu.](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![Snímek obrazovky se zobrazí na kartě členové týmu.](./media/statuspage-tutorial/sandbox.png) 
 
 1. Klikněte na **Přidat člena týmu**.
   
-    ![Snímek obrazovky se zobrazí tlačítko Přidat člena týmu.](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![Snímek obrazovky se zobrazí tlačítko Přidat člena týmu.](./media/statuspage-tutorial/team.png) 
 
 1. Zadejte **e-mailovou adresu**, **jméno** a **příjmení** platného uživatele, kterého chcete zřídit, do příslušných textových polí. 
 
-    ![Snímek obrazovky se zobrazí dialogové okno Přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/statuspage-tutorial/user.png) 
 
 1. Jako **role** vyberte **Správce klienta**.
 
 1. Klikněte na **vytvořit účet**.
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 

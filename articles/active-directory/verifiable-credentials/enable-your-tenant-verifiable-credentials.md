@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: konfigurace Azure Active Directory pro vydávání ověřitelných přihlašovacích údajů (Preview)'
+title: Kurz – konfigurace Azure Active Directory pro vydávání ověřitelných přihlašovacích údajů (Preview)
 description: V tomto kurzu sestavíte prostředí potřebné k nasazení ověřitelných přihlašovacích údajů ve vašem tenantovi.
 documentationCenter: ''
 author: barclayn
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: identity
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
-ms.date: 03/31/2021
+ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 08aaa49f73ed437e041ffb93dc9ef5be41e316ec
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106171887"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222941"
 ---
-# <a name="tutorial-configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Kurz: konfigurace Azure Active Directory pro vydávání ověřitelných přihlašovacích údajů (Preview)
+# <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Kurz – konfigurace Azure Active Directory pro vydávání ověřitelných přihlašovacích údajů (Preview)
 
 V tomto kurzu sestavíme na práci provedené jako součást článku [Začínáme](get-started-verifiable-credentials.md) a nastavíme Azure Active Directory (Azure AD) s vlastním [decentralizovaným identifikátorem](https://www.microsoft.com/security/business/identity-access-management/decentralized-identity-blockchain?rtc=1#:~:text=Decentralized%20identity%20is%20a%20trust,protect%20privacy%20and%20secure%20transactions.) (). Decentralizovaný identifikátor používáme k vystavení ověřitelných přihlašovacích údajů pomocí ukázkové aplikace a svého vystavitele. v tomto kurzu ale pořád používáme ukázkového tenanta Azure B2C k ověřování.  V našem dalším kurzu budeme podniknout další kroky, abyste aplikaci nakonfigurovali pro práci s Azure AD.
 

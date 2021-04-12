@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470890"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064303"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Synchronizace souborů Azure pro rychlý přístup blízko místa, kde se data používají.
@@ -183,6 +183,10 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     Pokud jste ve sdílených složkách se správou souborů povolili Azure Backup, můžou se seznamy ACL souborů i nadále obnovovat v rámci pracovního postupu obnovení zálohování. To funguje buď pro celou sdílenou složku, nebo pro jednotlivé soubory nebo adresáře.
 
     Pokud používáte snímky v rámci samoobslužného řešení zálohování pro sdílené složky spravované synchronizací souborů, nemusí být seznamy ACL správně obnoveny do seznamů ACL systému souborů NTFS, pokud byly snímky odebrány před únorem 24 července 2020. Pokud k tomu dojde, zvažte, zda se obrátíte na podporu Azure.
+
+* <a id="afs-lastwritetime"></a>
+  **Synchronizuje Synchronizace souborů Azure LastWriteTime pro adresáře?**  
+    Ne, Synchronizace souborů Azure nesynchronizuje LastWriteTime pro adresáře. Toto chování je úmyslné.
     
 ## <a name="security-authentication-and-access-control"></a>Zabezpečení, ověřování a řízení přístupu
 * <a id="ad-support"></a>

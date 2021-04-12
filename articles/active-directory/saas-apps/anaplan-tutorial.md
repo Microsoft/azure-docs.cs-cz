@@ -9,97 +9,71 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 9b6fcec6f564e944f0e73d151b61d46af4b4cc03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7548230f624fe6c574f1cd03ece877f3565e7e73
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673133"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>Kurz: Azure Active Directory integrace s Anaplan
 
-V tomto kurzu se dozvíte, jak integrovat Anaplan s Azure Active Directory (Azure AD).
-Integrace Anaplan s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Anaplan s Azure Active Directory (Azure AD). Když integrujete Anaplan s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Anaplan.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Anaplan (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k Anaplan.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Anaplan svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s Anaplan potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným Anaplanm jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Anaplan odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Anaplan podporuje jednotné přihlašování iniciované v **SP**
+* Anaplan podporuje jednotné přihlašování iniciované v **SP** .
 
-## <a name="adding-anaplan-from-the-gallery"></a>Přidání Anaplan z Galerie
+## <a name="add-anaplan-from-the-gallery"></a>Přidání Anaplan z Galerie
 
 Pokud chcete nakonfigurovat integraci Anaplan do služby Azure AD, musíte přidat Anaplan z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Anaplan z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Anaplan** .
+1. Na panelu výsledků vyberte **Anaplan** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-anaplan"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Anaplan
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Anaplan pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Anaplan.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Anaplan postupujte takto:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte ANAPLAN SSO](#configure-anaplan-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte Anaplan Test User](#create-anaplan-test-user)** -to, abyste měli protějšek B. Simon v Anaplan, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Anaplan**, vyberte **Anaplan** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V Azure Portal na stránce integrace aplikací **Anaplan** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Anaplan v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Anaplan na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Anaplan.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Anaplan, musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Anaplan](#configure-anaplan-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření Anaplan Test User](#create-anaplan-test-user)** – pro Britta Simon v Anaplan, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Anaplan, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Anaplan** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
-
-    ![Informace o jednotném přihlašování v doméně Anaplan a adresách URL](common/sp-identifier.png)
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://sdp.anaplan.com/frontdoor/saml/<tenant name>`
 
@@ -116,81 +90,48 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Anaplan,
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
-### <a name="configure-anaplan-single-sign-on"></a>Nakonfigurovat Anaplan jednu Sign-On
-
-Ke konfiguraci jednotného přihlašování na straně **Anaplan** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Anaplan](mailto:support@anaplan.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Anaplan.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Anaplan.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Anaplan**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Anaplan**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
+## <a name="configure-anaplan-sso"></a>Konfigurace jednotného přihlašování Anaplan
 
-2. V seznamu aplikace vyberte **Anaplan**.
-
-    ![Odkaz Anaplan v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Ke konfiguraci jednotného přihlašování na straně **Anaplan** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Anaplan](mailto:support@anaplan.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-anaplan-test-user"></a>Vytvořit testovacího uživatele Anaplan
 
 V této části vytvoříte uživatele s názvem Britta Simon v Anaplan. Pokud chcete přidat uživatele na platformě Anaplan, pracujte s [týmem podpory Anaplan](mailto:support@anaplan.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici Anaplan, měli byste se automaticky přihlásit k Anaplan, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Anaplan, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další materiály
+* Přejít na adresu URL pro přihlášení k Anaplan přímo a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Anaplan v části Moje aplikace, přesměruje se na přihlašovací adresu Anaplan. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+Po nakonfigurování Anaplan můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -3,12 +3,12 @@ title: Jak pracovat se skupinami pro správu – zásady správného řízení A
 description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hierarchii skupin pro správu.
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09d11450ff63046ab458f930f64534d10863f451
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596477"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258346"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -388,5 +388,5 @@ Další informace o řešeních pro správu najdete v následujících tématech
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](./create-management-group-portal.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](./manage.md)
 - [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
-- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/managementgroups/managementgroups)
 - [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)

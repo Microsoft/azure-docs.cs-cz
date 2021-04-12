@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: Začínáme s ověřitelnými přihlašovacími údaji pomocí ukázkové aplikace (Preview)'
+title: Kurz – Začínáme s Azure Active Directory ověřitelnými přihlašovacími údaji pomocí ukázkové aplikace (Preview)
 description: V tomto kurzu se naučíte, jak vystavovat ověřitelné přihlašovací údaje pomocí naší ukázkové aplikace a testovacího tenanta.
 ms.service: identity
 ms.subservice: verifiable-credentials
 author: barclayn
 ms.author: barclayn
 ms.topic: tutorial
-ms.date: 03/31/2021
-ms.openlocfilehash: 4914df0df30ed990dd2c692f0f5b57586d2a75c6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/01/2021
+ms.openlocfilehash: deebaf31197d8b7335f887ae447f05add45278b2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106171879"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222881"
 ---
-# <a name="tutorial-get-started-with-verifiable-credentials-using-a-sample-app-preview"></a>Kurz: Začínáme s ověřitelnými přihlašovacími údaji pomocí ukázkové aplikace (Preview)
+#  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Kurz – Začínáme s Azure Active Directory ověřitelnými přihlašovacími údaji pomocí ukázkové aplikace (Preview)
 
 V tomto kurzu provedeme kroky potřebné k vydání prvního ověřitelných přihlašovacích údajů: na kartě odborníka na ověřené přihlašovací údaje. Tuto kartu pak můžete použít k důkazu ověřovatele, že jste odborníka na ověření přihlašovacích údajů, který je v rámci digitálního přihlašovacích údajů vydaný. Začínáme s Azure Active Directory ověřitelnými přihlašovacími údaji pomocí ukázkové aplikace ověřitelných přihlašovacích údajů k vydání vašich prvních ověřitelných přihlašovacích údajů.
 

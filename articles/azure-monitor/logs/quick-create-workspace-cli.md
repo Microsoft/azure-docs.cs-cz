@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 8e1fc816e32e563161e1604bdcd7a7006353e4ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 175473f5abd74fa208962fd94852e9ddedfaf7e3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047379"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105797"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI 2,0
 
@@ -107,7 +107,7 @@ Výchozí hodnotu nastavíte pomocí následujících parametrů:
 
 2. Upravte šablonu tak, aby splňovala vaše požadavky. Informace o podporovaných vlastnostech a hodnotách najdete v referenčních informacích k [šabloně Microsoft. OperationalInsights/Workspaces](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) .
 3. Uložte tento soubor jako **deploylaworkspacetemplate.js** do místní složky.   
-4. Jste připraveni k nasazení této šablony. Použijte následující příkazy ze složky obsahující šablonu. Po zobrazení výzvy k zadání názvu pracovního prostoru zadejte název, který je globálně jedinečný v rámci všech předplatných Azure.
+4. Jste připraveni k nasazení této šablony. Použijte následující příkazy ze složky obsahující šablonu. Po zobrazení výzvy k zadání názvu pracovního prostoru zadejte název, který je ve vaší skupině prostředků jedinečný.
 
     ```azurecli
     az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
@@ -117,10 +117,10 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 
 ![Příklad výsledku po dokončení nasazení](media/quick-create-workspace-cli/template-output-01.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Když vytvoříte pracovní prostor, který byl odstraněn za posledních 14 dní a ve [stavu "obnovitelného odstranění](../logs/delete-workspace.md#soft-delete-behavior)", může mít operace v závislosti na konfiguraci pracovního prostoru jiný výsledek:
 1. Pokud zadáte stejný název pracovního prostoru, skupinu prostředků, předplatné a oblast jako v odstraněném pracovním prostoru, váš pracovní prostor se obnoví včetně dat, konfigurace a připojených agentů.
-2. Pokud použijete stejný název pracovního prostoru, ale v jiné skupině prostředků, předplatném nebo oblasti dojde k chybě, zobrazí se chyba název pracovního prostoru *"pracovní prostor" Name "není jedinečný nebo je v* *konfliktu*. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:
+2. Název pracovního prostoru musí být pro každou skupinu prostředků jedinečný. Pokud použijete název pracovního prostoru, který už existuje, ale v tom, že jste ve své skupině prostředků, nemusíte mít možnost obnovitelného odstranění, zobrazí se chyba název pracovního prostoru *"pracovní prostor" Name "není jedinečný nebo je v* *konfliktu*. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:
    * [Obnovení](../logs/delete-workspace.md#recover-workspace) pracovního prostoru
    * [Trvalé odstranění](../logs/delete-workspace.md#permanent-workspace-delete) pracovního prostoru
    * Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.

@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384268"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257717"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -47,7 +47,7 @@ Organizace, které používají Azure AD B2C jako řešení pro správu identit 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
+* Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu SAML a znalost implementace SAML aplikace
 * Webová aplikace konfigurovaná jako aplikace SAML. Pro tento kurz můžete použít [testovací aplikaci SAML][samltest] , kterou poskytujeme.
 
@@ -71,15 +71,15 @@ Aby bylo možné vytvořit vztah důvěryhodnosti mezi vaší aplikací a Azure 
 
 | Využití | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Podepisování požadavku SAML  | Ne | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci, který aplikace používá k podepisování požadavků SAML odeslaných do Azure AD B2C. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C ověří podpis požadavku SAML pomocí veřejného klíče z metadat aplikace.|
-| Šifrování kontrolního výrazu SAML  | Ne | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C může šifrovat kontrolní výrazy ve vaší aplikaci pomocí veřejného klíče. Aplikace používá privátní klíč k dešifrování kontrolního výrazu.|
+| Podepisování požadavku SAML  | No | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci, který aplikace používá k podepisování požadavků SAML odeslaných do Azure AD B2C. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C ověří podpis požadavku SAML pomocí veřejného klíče z metadat aplikace.|
+| Šifrování kontrolního výrazu SAML  | No | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C může šifrovat kontrolní výrazy ve vaší aplikaci pomocí veřejného klíče. Aplikace používá privátní klíč k dešifrování kontrolního výrazu.|
 
 **Azure AD B2C certifikátů**
 
 | Využití | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Podepisování odpovědí SAML | Ano  | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. |
-| Podepisování kontrolního výrazu SAML | Ano | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání kontrolního výrazu odpovědi SAML. `<saml:Assertion>`Část odpovědi SAML.  |
+| Podepisování odpovědí SAML | Yes  | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. |
+| Podepisování kontrolního výrazu SAML | Yes | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání kontrolního výrazu odpovědi SAML. `<saml:Assertion>`Část odpovědi SAML.  |
 
 V produkčním prostředí doporučujeme používat certifikáty vydané veřejnou certifikační autoritou. Tento postup však můžete provést i u certifikátů podepsaných svým držitelem.
 

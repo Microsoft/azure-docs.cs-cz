@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cea15114e125951a8fbec73f965b272a4f8053d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181427"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284154"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrace SQL Server virtuálního počítače s rozšířením agenta SQL IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,12 +36,12 @@ Když se zaregistrujete pomocí [rozšíření agenta SQL Server IaaS](sql-serve
 
 Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí Azure Portal automaticky registruje SQL Server virtuální počítač s příponou. Pokud se ale rozhodnete sami nainstalovat SQL Server na virtuálním počítači Azure nebo zřídit virtuální počítač Azure z vlastního virtuálního pevného disku, musíte zaregistrovat svůj SQL Server virtuální počítač s rozšířením agenta SQL IaaS k odemčení úplných výhod funkcí a možností spravovatelnosti. 
 
-Abyste mohli využít rozšíření agenta SQL IaaS, musíte nejdřív [zaregistrovat předplatné u poskytovatele **Microsoft. SqlVirtualMachine**](#register-subscription-with-rp), který poskytuje rozšíření SQL IaaS, aby bylo možné vytvářet prostředky v rámci tohoto konkrétního předplatného.
+Abyste mohli využít rozšíření agenta SQL IaaS, musíte nejdřív [zaregistrovat předplatné u poskytovatele **Microsoft. SqlVirtualMachine**](#register-subscription-with-resource-provider), který poskytuje rozšíření SQL IaaS, aby bylo možné vytvářet prostředky v rámci tohoto konkrétního předplatného.
 
 > [!IMPORTANT]
 > Rozšíření agenta SQL IaaS shromažďuje data pro účely výslovného účelu poskytování dobrovolných výhod při používání SQL Server v rámci Azure Virtual Machines. Microsoft nebude tato data používat pro audity licencování bez předchozího souhlasu zákazníka. Další informace najdete v tématu [SQL Server ochrany osobních údajů](/sql/sql-server/sql-server-privacy#non-personal-data) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, budete potřebovat: 
 
@@ -50,9 +50,9 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, b
 - Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell (minimálně 5,0)](/powershell/azure/install-az-ps). 
 
 
-## <a name="register-subscription-with-rp"></a>Zaregistrovat předplatné s RP
+## <a name="register-subscription-with-resource-provider"></a>Registrovat předplatné u poskytovatele prostředků
 
-Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením agenta SQL IaaS, musíte nejdřív zaregistrovat předplatné u poskytovatele **Microsoft. SqlVirtualMachine** . Díky tomu má rozšíření agenta SQL IaaS možnost vytvářet prostředky v rámci vašeho předplatného.  Můžete to udělat pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
+Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením agenta SQL IaaS, musíte nejdřív zaregistrovat předplatné u poskytovatele prostředků **Microsoft. SqlVirtualMachine** . Díky tomu má rozšíření agenta SQL IaaS možnost vytvářet prostředky v rámci vašeho předplatného.  Můžete to udělat pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
 ### <a name="azure-portal"></a>portál Azure
 

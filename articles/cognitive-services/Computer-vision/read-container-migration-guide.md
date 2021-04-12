@@ -1,5 +1,5 @@
 ---
-title: Migrace do kontejnerů OCR v3. x
+title: Migrace do kontejneru Read v3. x
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si, jak migrovat do kontejnerů OCR pro čtení v3.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221149"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284681"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrace na přečtené kontejnery OCR v3. x
 
@@ -24,7 +24,7 @@ Pokud používáte verzi 2 Počítačové zpracování obrazu čtení kontejneru
 
 ## <a name="configuration-changes"></a>Změny konfigurace
 
-* `ReadEngineConfig:ResultExpirationPeriod` již není podporován. Kontejner pro čtení má sestavenou úlohu cron, která odebere výsledky a Metadata přidružená k žádosti po 48 hodinách.
+* `ReadEngineConfig:ResultExpirationPeriod` již není podporován. Kontejner pro čtení OCR má sestavenou úlohu cron, která odebere výsledky a Metadata přidružená k žádosti po 48 hodinách.
 * `Cache:Redis:Configuration` již není podporován. Mezipaměť se nepoužívá v kontejnerech v3. x, takže ji nemusíte nastavovat.
 
 ## <a name="api-changes"></a>Změny rozhraní API
@@ -39,7 +39,7 @@ Podrobné informace o aktualizaci aplikací pro použití verze 3 cloudového ro
 
 ## <a name="memory-requirements"></a>Požadavky na paměť
 
-Požadavky a doporučení jsou založené na srovnávacích testech s jednou žádostí za sekundu pomocí 8 MB naskenovaného obchodního dopisu obsahujícího 29 řádků a celkem 803 znaků. Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner pro čtení.
+Požadavky a doporučení jsou založené na srovnávacích testech s jednou žádostí za sekundu pomocí 8 MB naskenovaného obchodního dopisu obsahujícího 29 řádků a celkem 803 znaků. Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner OCR pro čtení.
 
 |Kontejner  |Minimum | Doporučeno  |
 |---------|---------|------|
@@ -81,7 +81,7 @@ Nastavte časovač s `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` , který
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [konfigurace kontejnerů](computer-vision-resource-container-config.md) pro nastavení konfigurace
-* Přečtěte si [počítačové zpracování obrazu přehled](overview.md) , kde najdete další informace o rozpoznávání vytištěného a rukopisného textu.
-* Podrobnosti o metodách podporovaných kontejnerem najdete v [rozhraní API pro počítačové zpracování obrazu](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
+* Další informace o rozpoznávání tiskového a rukopisného textu najdete v [přehledu optického rozpoznávání znaků](overview-ocr.md) .
+* Podrobnosti o metodách podporovaných kontejnerem najdete v tématu [rozhraní API pro čtení](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 * Přečtěte si [Nejčastější dotazy](FAQ.md) k řešení problémů souvisejících se počítačové zpracování obrazu funkcemi.
 * Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

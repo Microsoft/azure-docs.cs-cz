@@ -5,21 +5,21 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: c9995df0f292c5e528156a3280df5484db017fca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4698a1c1576d15042dd050e0123b83dba39a3e3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101099196"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064746"
 ---
-# <a name="azure-front-door-standardpremium-rule-set-actions"></a>Akce sady pravidel služby Azure front-Premium Standard/Premium
+# <a name="azure-front-door-standardpremium-preview-rule-set-actions"></a>Akce sady pravidel pro službu Azure front bran Standard/Premium (Preview)
 
 > [!Note]
 > Tato dokumentace je určena pro Azure front-end Standard/Premium (Preview). Hledáte informace o frontách Azure na začátku? Podívejte se [sem](../front-door-overview.md).
 
-[Sada pravidel](concept-rule-set.md) pro přední dveře Azure se skládá z pravidel s kombinací podmínek a akcí shody. Tento článek poskytuje podrobný popis akcí, které můžete v sadě pravidel použít. Akce definuje chování, které se použije na typ požadavku, který určuje podmínky shody. V sadě pravidel front-end pro Azure může pravidlo obsahovat až pět akcí. Proměnná serveru je podporovaná u všech akcí.
+[Sada pravidel](concept-rule-set.md) služby Azure front-Premium Standard/Premium se skládá z pravidel s kombinací podmínek a akcí shody. Tento článek poskytuje podrobný popis akcí, které můžete použít v sadě Azure front-Only Rule Standard/Premium. Akce definuje chování, které se použije na typ požadavku, který určuje podmínky shody. V sadě pravidel front-end (Standard/Premium) Azure může pravidlo obsahovat až pět akcí.
 
 > [!IMPORTANT]
 > Služba Azure front-in standard/Premium (Preview) je aktuálně ve verzi Public Preview.
@@ -28,129 +28,351 @@ ms.locfileid: "101099196"
 
 K dispozici jsou následující akce, které je možné použít v sadě pravidel služby Azure front-dveří.  
 
-## <a name="cache-expiration"></a>Vypršení platnosti mezipaměti
+## <a name="cache-expiration"></a><a name="CacheExpiration"></a> Vypršení platnosti mezipaměti
 
-Pomocí této akce můžete přepsat hodnotu TTL (Time to Live) koncového bodu pro požadavky, které určují podmínky shody pravidel.
+Použijte akci **vypršení platnosti mezipaměti** k přepsání hodnoty TTL (Time to Live) koncového bodu pro požadavky, které určují podmínky shody pravidel.
 
-### <a name="required-fields"></a>Povinná pole
+> [!NOTE]
+> Zdroje mohou určovat, že Neukládat konkrétní odpovědi do mezipaměti pomocí `Cache-Control` hlavičky s hodnotou `no-cache` , `private` nebo `no-store` . V těchto případech nebudou přední dveře obsah ukládat do mezipaměti a tato akce nebude mít žádný vliv.
 
-Následující popis platí při výběru těchto chování mezipaměti a odpovídajících pravidel:
+### <a name="properties"></a>Vlastnosti
 
-Chování mezipaměti |  Description              
----------------|----------------
-Vynechat mezipaměť | Obsah není uložen v mezipaměti.
-Přepis | Hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. Pro hlavičkovou odpověď Cache-Control s hodnotami "žádná mezipaměť", "Private", "No-Store" se akce nepoužije.
-Nastavit, pokud chybí | Pokud se z vašeho zdroje nevrátí žádná hodnota TTL, nastaví pravidlo hodnotu TTL na hodnotu zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. Pro hlavičkovou odpověď Cache-Control s hodnotami "žádná mezipaměť", "Private", "No-Store" se akce nepoužije.
+| Vlastnost | Podporované hodnoty |
+|-------|------------------|
+| Chování mezipaměti | <ul><li>**Vynechat mezipaměť:** Obsah by neměl být uložen do mezipaměti. V části šablony ARM nastavte `cacheBehavior` vlastnost na `BypassCache` .</li><li>**Přepsat:** Hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. V části šablony ARM nastavte `cacheBehavior` vlastnost na `Override` .</li><li>**Nastavit, pokud chybí:** Pokud se z vašeho zdroje nevrátí žádná hodnota TTL, nastaví pravidlo hodnotu TTL na hodnotu zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. V části šablony ARM nastavte `cacheBehavior` vlastnost na `SetIfMissing` .</li></ul> |
+| Doba uložení mezipaměti | Když je _chování mezipaměti_ nastavené na `Override` nebo `Set if missing` , musí tato pole určovat dobu trvání mezipaměti, která se má použít. Maximální doba trvání je 366 dní.<ul><li>V Azure Portal: zadejte dny, hodiny, minuty a sekundy.</li><li>V šablonách ARM: zadejte dobu trvání ve formátu `d.hh:mm:ss` . |
 
-### <a name="additional-fields"></a>Další pole
+### <a name="example"></a>Příklad
 
-Dny | Hodiny | V řádu minut | Sekundy
------|-------|---------|--------
-Int | Int | Int | Int 
+V tomto příkladu přepíšeme vypršení platnosti mezipaměti na 6 hodin pro odpovídající žádosti, které ještě neurčují dobu trvání mezipaměti.
 
-## <a name="cache-key-query-string"></a>Řetězec dotazu na klíč mezipaměti
+# <a name="portal"></a>[Azure Portal](#tab/portal)
 
-Tuto akci použijte k úpravě klíče mezipaměti založeného na řetězcích dotazů.
+:::image type="content" source="../media/concept-rule-set-actions/cache-expiration.png" alt-text="Snímek obrazovky portálu znázorňující akci vypršení platnosti mezipaměti":::
 
-### <a name="required-fields"></a>Povinná pole
+# <a name="json"></a>[JSON](#tab/json)
 
-Následující popis platí při výběru těchto chování a shody pravidel:
+```json
+{
+  "name": "CacheExpiration",
+  "parameters": {
+    "cacheBehavior": "SetIfMissing",
+    "cacheType": "All",
+    "cacheDuration": "0.06:00:00",
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheExpirationActionParameters"
+  }
+}
+```
 
-Chování | Description
----------|------------
-Zařadit členy | Řetězce dotazů zadané v parametrech jsou zahrnuté při vygenerování klíče mezipaměti. 
-Ukládat do mezipaměti každou jedinečnou adresu URL | Každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. 
-Exclude | Řetězce dotazů zadané v parametrech jsou vyloučené při vygenerování klíče mezipaměti.
-Ignorovat řetězce dotazů | Při generování klíče mezipaměti se neberou v úvahu řetězce dotazů. 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-## <a name="modify-request-header"></a>Upravit hlavičku požadavku
+```bicep
+{
+  name: 'CacheExpiration'
+  parameters: {
+    cacheBehavior: 'SetIfMissing'
+    cacheType: All
+    cacheDuration: '0.06:00:00'
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheExpirationActionParameters'
+  }
+}
+```
 
-Tuto akci použijte, pokud chcete upravit hlavičky, které se nacházejí v žádostech odeslaných na váš původ.
+---
 
-### <a name="required-fields"></a>Povinná pole
+## <a name="cache-key-query-string"></a><a name="CacheKeyQueryString"></a> Řetězec dotazu na klíč mezipaměti
 
-Následující popis platí při výběru těchto akcí a odpovídajících pravidel:
+Použijte akci **řetězce dotazu na klíč mezipaměti** pro úpravu klíče mezipaměti založeného na řetězcích dotazů. Klíč mezipaměti je způsob, jakým přední dvířka identifikují jedinečné požadavky na ukládání do mezipaměti.
 
-Akce | Název hlavičky protokolu HTTP | Hodnota
--------|------------------|------
-Připojit | Hlavička zadaná v **názvu záhlaví** se přidá do žádosti se zadanou hodnotou. Pokud hlavička již existuje, hodnota se připojí k existující hodnotě. | Řetězec
-Přepsat | Hlavička zadaná v **názvu záhlaví** se přidá do žádosti se zadanou hodnotou. Pokud hlavička již existuje, zadaná hodnota přepíše existující hodnotu. | Řetězec
-Odstranit | Pokud je k dispozici hlavička uvedená v pravidle, hlavička se odstraní z požadavku. | Řetězec
+### <a name="properties"></a>Vlastnosti
 
-## <a name="modify-response-header"></a>Upravit hlavičku odpovědi
+| Vlastnost | Podporované hodnoty |
+|-------|------------------|
+| Chování | <ul><li>**Zahrnout:** Řetězce dotazů zadané v parametrech jsou zahrnuté při vygenerování klíče mezipaměti. V části šablony ARM nastavte `queryStringBehavior` vlastnost na `Include` .</li><li>**Ukládat do mezipaměti každou jedinečnou adresu URL:** Každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. V šablonách ARM použijte `queryStringBehavior` `IncludeAll` .</li><li>**Vyloučit:** Řetězce dotazů zadané v parametrech jsou vyloučené při vygenerování klíče mezipaměti. V části šablony ARM nastavte `queryStringBehavior` vlastnost na `Exclude` .</li><li>**Ignorovat řetězce dotazů:** Při generování klíče mezipaměti se neberou v úvahu řetězce dotazů. V části šablony ARM nastavte `queryStringBehavior` vlastnost na `ExcludeAll` .</li></ul>  |
+| Parametry | Seznam názvů parametrů řetězce dotazu oddělený čárkami |
 
-Tuto akci použijte k úpravě hlaviček, které jsou k dispozici v odpovědích vrácených klientům.
+### <a name="example"></a>Příklad
 
-### <a name="required-fields"></a>Povinná pole
+V tomto příkladu upravujeme klíč mezipaměti, aby zahrnoval parametr řetězce dotazu s názvem `customerId` .
 
-Následující popis platí při výběru těchto akcí a odpovídajících pravidel:
+# <a name="portal"></a>[Azure Portal](#tab/portal)
 
-Akce | Název hlavičky protokolu HTTP | Hodnota
--------|------------------|------
-Připojit | Hlavička zadaná v **názvu záhlaví** se přidá k odpovědi pomocí zadané **hodnoty**. Pokud hlavička již existuje, **hodnota** se připojí k existující hodnotě. | Řetězec
-Přepsat | Hlavička zadaná v **názvu záhlaví** se přidá k odpovědi pomocí zadané **hodnoty**. Pokud je již hlavička přítomna, **hodnota** přepíše existující hodnotu. | Řetězec
-Odstranit | Pokud je k dispozici hlavička uvedená v pravidle, hlavička se odstraní z odpovědi. | Řetězec
+:::image type="content" source="../media/concept-rule-set-actions/cache-key-query-string.png" alt-text="Snímek obrazovky portálu zobrazující akci řetězce dotazu na klíč mezipaměti":::
 
-## <a name="url-redirect"></a>Přesměrování adresy URL
+# <a name="json"></a>[JSON](#tab/json)
 
-Tuto akci použijte k přesměrování klientů na novou adresu URL. 
+```json
+{
+  "name": "CacheKeyQueryString",
+  "parameters": {
+    "queryStringBehavior": "Include",
+    "queryParameters": "customerId",
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheKeyQueryStringBehaviorActionParameters"
+  }
+}
+```
 
-### <a name="required-fields"></a>Povinná pole
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Pole | Description 
-------|------------
-Typ přesměrování | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
-Protokol přesměrování | Požadavek shody, HTTP, HTTPS.
-Cílový hostitel | Vyberte název hostitele, na který chcete požadavek přesměrovat. Ponechte prázdné, pokud chcete zachovat příchozího hostitele.
-Cílová cesta | Zadejte cestu, která se má použít v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí cestu.  
-Řetězec dotazu | Zadejte řetězec dotazu použitý v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí řetězec dotazu. 
-Fragment cíle | Definujte fragment, který se použije v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí fragment. 
+```bicep
+{
+  name: 'CacheKeyQueryString'
+  parameters: {
+    queryStringBehavior: 'Include'
+    queryParameters: 'customerId'
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'
+  }
+}
+```
 
-## <a name="url-rewrite"></a>Přepsání adresy URL
+---
 
-Pomocí této akce přepište cestu k žádosti, která je v cestě k původnímu zdroji.
+## <a name="modify-request-header"></a><a name="ModifyRequestHeader"></a> Upravit hlavičku požadavku
 
-### <a name="required-fields"></a>Povinná pole
+Pomocí akce **upravit hlavičku žádosti** můžete v žádosti upravit záhlaví, když se pošle k vašemu původu.
 
-Pole | Description 
-------|------------
-Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( **/** ) jako hodnotu zdrojového vzoru.
-Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor.
-Zachovat neshodnou cestu | Pokud je nastaveno na **Ano**, zbývající cesta po zdrojovém vzoru se připojí k nové cílové cestě. 
+### <a name="properties"></a>Vlastnosti
 
-## <a name="server-variable"></a>Proměnná serveru
+| Vlastnost | Podporované hodnoty |
+|-------|------------------|
+| Operátor | <ul><li>**Připojit:** Zadaná hlavička se přidá do žádosti se zadanou hodnotou. Pokud hlavička již existuje, hodnota se připojí k existující hodnotě záhlaví pomocí zřetězení řetězců. Nepřidaly se žádné oddělovače. V šablonách ARM použijte `headerAction` `Append` .</li><li>**Přepsat:** Zadaná hlavička se přidá do žádosti se zadanou hodnotou. Pokud hlavička již existuje, zadaná hodnota přepíše existující hodnotu. V šablonách ARM použijte `headerAction` `Overwrite` .</li><li>**Odstranit:** Pokud je k dispozici hlavička uvedená v pravidle, hlavička se odstraní z požadavku. V šablonách ARM použijte `headerAction` `Delete` .</li></ul> |
+| Název hlavičky | Název záhlaví, které chcete upravit. |
+| Hodnota hlavičky | Hodnota, která má být připojena nebo přepsána. |
+
+### <a name="example"></a>Příklad
+
+V tomto příkladu přidáme hodnotu `AdditionalValue` k `MyRequestHeader` hlavičce požadavku. Pokud počátek nastavil hlavičku odpovědi na hodnotu `ValueSetByClient` , potom po použití této akce bude mít hlavička žádosti hodnotu `ValueSetByClientAdditionalValue` .
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-actions/modify-request-header.png" alt-text="Snímek obrazovky portálu znázorňující akci pro úpravu žádosti v hlavičce":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "ModifyRequestHeader",
+  "parameters": {
+    "headerAction": "Append",
+    "headerName": "MyRequestHeader",
+    "value": "AdditionalValue",
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleHeaderActionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'ModifyRequestHeader'
+  parameters: {
+    headerAction: 'Append'
+    headerName: 'MyRequestHeader'
+    value: 'AdditionalValue'
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleHeaderActionParameters'
+  }
+}
+```
+
+---
+
+## <a name="modify-response-header"></a><a name="ModifyResponseHeader"></a> Upravit hlavičku odpovědi
+
+Použijte akci **upravit hlavičku odpovědi** pro úpravu hlaviček, které se nacházejí v odpovědích předtím, než se vrátí vašim klientům.
+
+### <a name="properties"></a>Vlastnosti
+
+| Vlastnost | Podporované hodnoty |
+|-------|------------------|
+| Operátor | <ul><li>**Připojit:** Zadaná hlavička se přidá do odpovědi se zadanou hodnotou. Pokud hlavička již existuje, hodnota se připojí k existující hodnotě záhlaví pomocí zřetězení řetězců. Nepřidaly se žádné oddělovače. V šablonách ARM použijte `headerAction` `Append` .</li><li>**Přepsat:** Zadaná hlavička se přidá do odpovědi se zadanou hodnotou. Pokud hlavička již existuje, zadaná hodnota přepíše existující hodnotu. V šablonách ARM použijte `headerAction` `Overwrite` .</li><li>**Odstranit:** Pokud je k dispozici hlavička uvedená v pravidle, hlavička se odstraní z odpovědi.  V šablonách ARM použijte `headerAction` `Delete` .</li></ul> |
+| Název hlavičky | Název záhlaví, které chcete upravit. |
+| Hodnota hlavičky | Hodnota, která má být připojena nebo přepsána. |
+
+### <a name="example"></a>Příklad
+
+V tomto příkladu odstraníme hlavičku s názvem `X-Powered-By` z odpovědí předtím, než se vrátí klientovi.
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-actions/modify-response-header.png" alt-text="Snímek obrazovky portálu znázorňující akci pro úpravu hlavičky odpovědi":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "ModifyResponseHeader",
+  "parameters": {
+    "headerAction": "Delete",
+    "headerName": "X-Powered-By",
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleHeaderActionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'ModifyResponseHeader'
+  parameters: {
+    headerAction: 'Delete'
+    headerName: 'X-Powered-By'
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleHeaderActionParameters'
+  }
+}
+```
+
+---
+
+## <a name="url-redirect"></a><a name="UrlRedirect"></a> Přesměrování adresy URL
+
+Použijte akci **přesměrování adresy URL** pro přesměrování klientů na novou adresu URL. Klientům se pošle odezva na přesměrování z předních dveří.
+
+### <a name="properties"></a>Vlastnosti
+
+| Vlastnost | Podporované hodnoty |
+|----------|------------------|
+| Typ přesměrování | Typ odpovědi, který se má vrátit žadateli. <ul><li>V Azure Portal: Nalezeno (302), přesunuto (301), dočasné přesměrování (307), trvalé přesměrování (308).</li><li>V šablonách ARM: `Found` , `Moved` , `TemporaryRedirect` , `PermanentRedirect`</li></ul> |
+| Protokol přesměrování | <ul><li>V Azure Portal: `Match Request` , `HTTP` , `HTTPS`</li><li>V šablonách ARM: `MatchRequest` , `Http` , `Https`</li></ul> |
+| Cílový hostitel | Název hostitele, na který chcete požadavek přesměrovat. Ponechte prázdné, pokud chcete zachovat příchozího hostitele. |
+| Cílová cesta | Cesta, která se má použít v přesměrování Zahrňte úvodní `/` . Ponechte prázdné, pokud chcete zachovat příchozí cestu. |
+| Řetězec dotazu | Řetězec dotazu použitý v přesměrování Nezahrnujte úvodní `?` . Ponechte prázdné, pokud chcete zachovat příchozí řetězec dotazu. |
+| Fragment cíle | Fragment, který se má použít při přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí fragment. |
+
+### <a name="example"></a>Příklad
+
+V tomto příkladu přesměrujeme požadavek na `https://contoso.com/exampleredirection?clientIp={client_ip}` a zároveň zachováte fragment. Je použito dočasné přesměrování HTTP (307). IP adresa klienta se používá místo `{client_ip}` tokenu v rámci adresy URL pomocí `client_ip` [proměnné serveru](#server-variables).
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-actions/url-redirect.png" alt-text="Snímek obrazovky portálu znázorňující akci přesměrování adresy URL":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlRedirect",
+  "parameters": {
+    "redirectType": "TemporaryRedirect",
+    "destinationProtocol": "Https",
+    "customHostname": "contoso.com",
+    "customPath": "/exampleredirection",
+    "customQueryString": "clientIp={client_ip}",
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRedirectActionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlRedirect'
+  parameters: {
+    redirectType: 'TemporaryRedirect'
+    destinationProtocol: 'Https'
+    customHostname: 'contoso.com'
+    customPath: '/exampleredirection'
+    customQueryString: 'clientIp={client_ip}'
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRedirectActionParameters'
+  }
+}
+```
+
+---
+
+## <a name="url-rewrite"></a><a name="UrlRewrite"></a> Přepsání adresy URL
+
+Pomocí akce **přepisu adresy URL** přepište cestu k žádosti, která je v cestě k původnímu zdroji.
+
+### <a name="properties"></a>Vlastnosti
+
+| Vlastnost | Podporované hodnoty |
+|----------|------------------|
+| Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( `/` ) jako hodnotu zdrojového vzoru. |
+| Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor. |
+| Zachovat neshodnou cestu | Pokud je nastaveno na _Ano_, zbývající cesta po zdrojovém vzoru se připojí k nové cílové cestě. |
+
+### <a name="example"></a>Příklad
+
+V tomto příkladu přepíšeme všechny požadavky na cestu `/redirection` a nezachováme zbytek cesty.
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-actions/url-rewrite.png" alt-text="Snímek obrazovky portálu znázorňující akci přepsání adresy URL":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlRewrite",
+  "parameters": {
+    "sourcePattern": "/",
+    "destination": "/redirection",
+    "preserveUnmatchedPath": false,
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRewriteActionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlRewrite'
+  parameters: {
+    sourcePattern: '/'
+    destination: '/redirection'
+    preserveUnmatchedPath: false
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRewriteActionParameters'
+  }
+}
+```
+
+---
+
+## <a name="server-variables"></a>Serverové proměnné
+
+Proměnné serveru sady pravidel poskytují přístup k strukturovaným informacím o žádosti. Proměnné serveru můžete použít k dynamické změně hlaviček žádosti nebo odpovědi nebo cest pro přepis adres URL nebo řetězců dotazů, například při načtení nové stránky nebo při publikování formuláře.
 
 ### <a name="supported-variables"></a>Podporované proměnné
 
-| Název proměnné | Description                                                  |
-| -------------------------- | :----------------------------------------------------------- |
-| socket_ip                  | IP adresa přímého připojení k hraničnímu zařízení Azure pro frontu. Pokud klient pro odeslání žádosti použil proxy server HTTP nebo nástroj pro vyrovnávání zatížení, hodnota SocketIp je IP adresa proxy serveru nebo nástroje pro vyrovnávání zatížení. |
-| client_ip                  | IP adresa klienta, který vytvořil původní požadavek. Pokud v žádosti existovala hlavička X předaná-pro, pak je IP adresa klienta převzata ze stejné. |
-| client_port                | Port IP klienta, který odeslal požadavek. |
-| název hostitele                      | Název hostitele v požadavku od klienta. |
-| geo_country                     | Určuje zemi nebo oblast původu žadatele prostřednictvím kódu země nebo oblasti. |
-| http_method                | Metoda použitá pro vytvoření žádosti adresy URL Například GET nebo POST. |
-| http_version               | Protokol žádosti. Obvykle HTTP/1.0, HTTP/1.1 nebo HTTP/2.0. |
-| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
-| request_scheme             | Schéma žádosti: http nebo HTTPS. |
-| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam* |
-| server_port                | Port serveru, který přijal požadavek. |
-| ssl_protocol    | Protokol vytvořeného připojení TLS. |
-| url_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota uri_path */article.aspx* |
+| Název proměnné    | Description                                                                                                                                                                                                                                                                               |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `socket_ip`      | IP adresa přímého připojení k hraničnímu zařízení Azure pro frontu. Pokud klient pro odeslání žádosti použil proxy server HTTP nebo nástroj pro vyrovnávání zatížení, hodnota `socket_ip` je IP adresa proxy serveru nebo nástroje pro vyrovnávání zatížení.                                                                      |
+| `client_ip`      | IP adresa klienta, který vytvořil původní požadavek. Pokud `X-Forwarded-For` v žádosti existovala hlavička, IP adresa klienta se vybrala z hlavičky.                                                                                                               |
+| `client_port`    | Port IP klienta, který odeslal požadavek.                                                                                                                                                                                                                                          |
+| `hostname`       | Název hostitele v požadavku od klienta.                                                                                                                                                                                                                                             |
+| `geo_country`    | Určuje zemi nebo oblast původu žadatele prostřednictvím kódu země nebo oblasti.                                                                                                                                                                                                       |
+| `http_method`    | Metoda použitá k vytvoření žádosti adresy URL, například `GET` nebo `POST` .                                                                                                                                                                                                                         |
+| `http_version`   | Protokol žádosti. Obvykle `HTTP/1.0` , `HTTP/1.1` nebo `HTTP/2.0` .                                                                                                                                                                                                                      |
+| `query_string`   | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL.<br />Například v požadavku `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` `query_string` bude hodnota `id=123&title=fabrikam` .                                                      |
+| `request_scheme` | Schéma žádosti: `http` nebo `https` .                                                                                                                                                                                                                                                    |
+| `request_uri`    | Úplný identifikátor URI původní žádosti (s argumenty).<br />Například v požadavku `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` `request_uri` bude hodnota `/article.aspx?id=123&title=fabrikam` .                                                                     |
+| `ssl_protocol`   | Protokol vytvořeného připojení TLS.                                                                                                                                                                                                                                            |
+| `server_port`    | Port serveru, který přijal požadavek.                                                                                                                                                                                                                                           |
+| `url_path`       | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů.<br />Například v požadavku `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` `uri_path` bude hodnota `/article.aspx` . |
 
 ### <a name="server-variable-format"></a>Formát proměnné serveru    
 
-**Formát:** {Variable: offset}, {proměnná: offset: Length}, {Variable}
+Proměnné serveru lze zadat v následujících formátech:
 
-### <a name="supported-server-variable-actions"></a>Podporované akce proměnné serveru
+* `{variable}`: Zahrňte celou proměnnou serveru. Například pokud je IP adresa klienta, token se `111.222.333.444` `{client_ip}` vyhodnotí na `111.222.333.444` .
+* `{variable:offset}`: Zahrňte proměnnou serveru po určitém posunu, až do konce proměnné. Posun je založen na nule. Například pokud je IP adresa klienta, token se `111.222.333.444` `{client_ip:3}` vyhodnotí na `.222.333.444` .
+* `{variable:offset:length}`: Zahrňte proměnnou serveru po určitém posunu až po určenou délku. Posun je založen na nule. Například pokud je IP adresa klienta, token se `111.222.333.444` `{client_ip:4:3}` vyhodnotí na `222` .
 
-* Hlavička požadavku
-* Hlavička odpovědi
+### <a name="supported-actions"></a>Podporované akce
+
+Proměnné serveru jsou podporované na následujících akcích:
+
 * Řetězec dotazu na klíč mezipaměti
-* Přepsání adresy URL
+* Upravit hlavičku požadavku
+* Upravit hlavičku odpovědi
 * Přesměrování adresy URL
+* Přepsání adresy URL
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [sadě pravidel Stanard/Premium pro Azure](concept-rule-set.md).
+* Přečtěte si další informace o [sadě pravidel Premium pro Azure front-end Standard/Premium](concept-rule-set.md).
 * Přečtěte si další informace o [podmínkách shody sady pravidel](concept-rule-set-match-conditions.md).

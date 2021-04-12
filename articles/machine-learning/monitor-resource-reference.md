@@ -9,13 +9,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
-ms.date: 10/02/2020
-ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521335"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031065"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
@@ -28,49 +28,62 @@ V této části jsou uvedené všechny automaticky shromážděné metriky platf
 **Modelování**
 
 | Metric | Jednotka | Description |
-| ----- | ----- | ----- |
-| Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
-| Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |
-| Nasazení modelu bylo úspěšné. | Počet | Počet nasazení modelů, které byly úspěšně dokončeny. |
-| Nepovedlo se zaregistrovat model | Počet | Počet registrací modelu, které selhaly. |
-| Registr modelu byl úspěšný. | Počet | Počet registrací modelů, které byly úspěšně dokončeny. |
+|--|--|--|
+| Registr modelu byl úspěšný. | Počet | Počet registrací modelů, které byly v tomto pracovním prostoru úspěšně dokončeny |
+| Nepovedlo se zaregistrovat model | Počet | Počet registrací modelů, které se v tomto pracovním prostoru nezdařily |
+| Nasazení modelu spuštěn | Počet | Počet nasazení modelů spuštěných v tomto pracovním prostoru |
+| Nasazení modelu bylo úspěšné. | Počet | Počet nasazení modelů, která byla v tomto pracovním prostoru úspěšná |
+| Nasazení modelu se nezdařilo | Počet | Počet nasazení modelů, která v tomto pracovním prostoru selhala |
 
 **Kvóta**
 
 Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
 | Metric | Jednotka | Description |
-| ----- | ----- | ----- |
-| Aktivní jádra | Počet | Počet aktivních výpočetních jader. |
-| Aktivní uzly | Počet | Počet aktivních uzlů. |
-| Jádra nečinných | Počet | Počet nečinných výpočetních jader. |
-| Nečinné uzly | Počet | Počet nečinných výpočetních uzlů. |
-| Vynechávání jader | Počet | Počet opouštících jader. |
-| Ukončení uzlů | Počet | Počet opouštících uzlů. |
-| Zrušené jádra | Počet | Počet zrušených jader. |
-| Přepnuté uzly | Počet | Počet přerušených uzlů. |
-| Procento využití kvóty | Procento | Procento využité kvóty |
-| Celkem jader | Počet | Celkový počet jader. |
-| Celkem uzlů | Počet | Celkový počet uzlů. |
-| Nepoužitelné jádra | Počet | Počet nepoužitelných jader. |
-| Nepoužité uzly | Počet | Počet nepoužitelných uzlů. |
+|--|--|--|
+| Celkem uzlů | Počet | Počet uzlů celkem Tento součet zahrnuje některé z aktivních uzlů, nečinných uzlů, nepoužitelných uzlů, přerušených uzlů a opouští uzly. |
+| Aktivní uzly | Počet | Počet aktivních uzlů. Uzly, které aktivně spouštějí úlohu. |
+| Nečinné uzly | Počet | Počet nečinných uzlů. Nečinné uzly jsou uzly, které nespouštějí žádné úlohy, ale mohou přijmout novou úlohu, je-li k dispozici. |
+| Nepoužité uzly | Počet | Počet nepoužitelných uzlů. Nepoužité uzly nejsou funkční kvůli nějakému problému s nepřeložitelné. Azure bude tyto uzly recyklovat. |
+| Přepnuté uzly | Počet | Počet zrušených uzlů. Tyto uzly jsou uzly s nízkou prioritou, které jsou mimo dostupný fond uzlů. |
+| Ukončení uzlů | Počet | Počet opouštících uzlů. Ukončení uzlů jsou uzly, které právě dokončily zpracování úlohy a přestanou do stavu nečinnosti. |
+| Celkový počet jader | Počet | Počet jader celkem |
+| Aktivní jádra | Počet | Počet aktivních jader |
+| Jádra nečinných | Počet | Počet nečinných jader |
+| Nepoužitelné jádra | Počet | Počet nepoužitelných jader |
+| Zrušené jádra | Počet | Počet zrušených jader |
+| Vynechávání jader | Počet | Počet opouštících jader |
+| Procento využití kvóty | Počet | Procento využité kvóty |
 
 **Prostředek**
 
-| Metric | Jednotka | Description |
-| ----- | ----- | ----- |
-| CpuUtilization | Procento | Kolik procent procesoru bylo využito pro daný uzel během běhu nebo úlohy. Tato metrika je publikována pouze v případě, že úloha běží na uzlu. Jedna úloha může používat jeden nebo více uzlů. Tato metrika je publikována na jeden uzel. |
-| GpuUtilization | Procento | Kolik procent GPU bylo využito pro daný uzel během běhu nebo úlohy. Jeden uzel může mít jeden nebo více GPU. Tato metrika je publikována na základě GPU na jeden uzel. |
+| Metric| Jednotka | Description |
+|--|--|--|
+| CpuUtilization | Počet | Procento využití na uzlu procesoru Využití je nahlášeno v intervalu 1 minuty. |
+| GpuUtilization | Počet | Procento využití v uzlu GPU Využití je nahlášeno v intervalu 1 minuty. |
+| GpuMemoryUtilization | Počet | Procento využití paměti v uzlu GPU Využití je nahlášeno v intervalu 1 minuty. |
+| GpuEnergyJoules | Počet | Rozsah energie v Joules v uzlu GPU Energie se oznamuje v intervalu jedné minuty. |
 
 **Spustit**
 
-Informace o spuštěných školicích kurzech.
+Informace o spuštění školení pro pracovní prostor.
 
 | Metric | Jednotka | Description |
-| ----- | ----- | ----- |
-| Dokončená spuštění | Počet | Počet dokončených spuštění. |
-| Neúspěšná spuštění | Počet | Počet neúspěšných spuštění. |
-| Spuštěná spuštění | Počet | Počet spuštěných spuštění. |
+|--|--|--|
+| Zrušená spuštění | Počet | Počet zrušených spuštění pro tento pracovní prostor Počet se aktualizuje po úspěšném zrušení běhu. |
+| Zrušit požadovaná spuštění | Počet | Počet spuštění, kde se pro tento pracovní prostor požádalo o zrušení Počet se aktualizuje po přijetí žádosti o zrušení pro spuštění. |
+| Dokončená spuštění | Počet | Počet spuštěných běhů pro tento pracovní prostor byl úspěšně dokončen. Počet se aktualizuje po dokončení běhu a shromažďování výstupu. |
+| Neúspěšná spuštění | Počet | Počet spuštění pro tento pracovní prostor se nezdařil. Počet se aktualizuje, když se spuštění nezdařilo. |
+| Dokončují se běhy. | Počet | Počet spuštění, které vstoupily do stavu dokončení pro tento pracovní prostor. Počet se aktualizuje po dokončení běhu, ale shromažďování výstupu ještě probíhá. | 
+| Neodpovídá spuštění | Počet | Počet běhů nereagujících na tento pracovní prostor. Počet se aktualizuje, když běh vstoupí do stavu neodpovídá. |
+| Nespuštěná spuštění | Počet | Počet spuštění v neaktivním stavu pro tento pracovní prostor Počet se aktualizuje, když se přijme požadavek na vytvoření běhu, ale informace o spuštění ještě nejsou naplněné. |
+| Připravují se běhy. | Počet | Počet běhů, které se připravují pro tento pracovní prostor. Počet se aktualizuje, když spuštění vstoupí do stavu Příprava během přípravy prostředí pro spuštění. |
+| Spuštění zřizování | Počet | Počet spuštění, která jsou zajišťována pro tento pracovní prostor. Počet se aktualizuje, když běh čeká na vytvoření nebo zřizování cíle výpočetní funkce. |
+| Spuštění ve frontě | Počet | Počet spuštění, které jsou zařazeny do fronty pro tento pracovní prostor. Počet se aktualizuje při zařazení běhu do fronty v cíli výpočtu. Může nastat při čekání na přípravu požadovaných výpočetních uzlů. |
+| Spuštěná spuštění | Počet | Počet spuštěných běhů pro tento pracovní prostor. Počet se aktualizuje, když se spuštění spustí na požadovaných prostředcích. |
+| Spouštění spuštění | Počet | Počet spuštění spuštěných pro tento pracovní prostor. Počet se aktualizuje po žádosti o vytvoření informací o spuštění a spuštění, jako je například ID běhu. |
+| Chyby | Počet | Počet chyb spuštění v tomto pracovním prostoru. Počet se aktualizuje pokaždé, když při spuštění dojde k chybě. |
+| Upozornění | Počet | Počet upozornění spuštění v tomto pracovním prostoru. Počet se aktualizuje pokaždé, když při spuštění dojde k upozornění. |
 
 ## <a name="metric-dimensions"></a>Dimenze metriky
 

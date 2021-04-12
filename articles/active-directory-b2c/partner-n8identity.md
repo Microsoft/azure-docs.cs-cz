@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fee7965e7834f0e05dba91f8652a0e155087b14
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96170918"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257870"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci nástroje pro správu TheAccessHub pomocí Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Volitelné Informace o připojení a přihlašovacích údajích pro všechny databáze nebo protokoly LDAP (Lightweight Directory Access Protocol), ze kterých chcete migrovat zákaznická data.
 
-- Volitelné Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](./custom-policy-get-started.md), pokud chcete integrovat nástroj TheAccessHub admin do svého toku zásad registrace.
+- Volitelné Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](./tutorial-create-user-flows.md?pivots=b2c-custom-policy), pokud chcete integrovat nástroj TheAccessHub admin do svého toku zásad registrace.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -358,7 +358,7 @@ Synchronizace dat z Azure AD B2C do nástroje pro správu TheAccessHub:
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Konfigurace zásad Azure AD B2C
 
-Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho schopnost udržovat svůj stav aktuální Azure AD B2C. K informování TheAccessHub nástrojů pro správu TheAccessHub můžete využít zásady rozhraní API a Azure AD B2C nástroje pro správu. Toto řešení vyžaduje technické znalosti [Azure AD B2C vlastní zásady](./custom-policy-get-started.md). V další části vám poskytneme ukázkový postup a zabezpečený certifikát pro oznamování TheAccessHub nástroje pro správu nových účtů v Sign-Up vlastních zásadách.
+Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho schopnost udržovat svůj stav aktuální Azure AD B2C. K informování TheAccessHub nástrojů pro správu TheAccessHub můžete využít zásady rozhraní API a Azure AD B2C nástroje pro správu. Toto řešení vyžaduje technické znalosti [Azure AD B2C vlastní zásady](./user-flow-overview.md). V další části vám poskytneme ukázkový postup a zabezpečený certifikát pro oznamování TheAccessHub nástroje pro správu nových účtů v Sign-Up vlastních zásadách.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>Vytvoření zabezpečeného pověření pro vyvolání rozhraní API nástroje pro správu TheAccessHub
 
@@ -386,7 +386,7 @@ Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho sch
 
 5. Vyberte **Stáhnout** a získejte soubor zip se základními zásadami, které přidávají zákazníky do nástroje pro správu TheAccessHub jako registrace zákazníků.
 
-6. V tomto [kurzu](./custom-policy-get-started.md) začnete s návrhem vlastních zásad v Azure AD B2C.
+6. V tomto [kurzu](./tutorial-create-user-flows.md?pivots=b2c-custom-policy) začnete s návrhem vlastních zásad v Azure AD B2C.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -394,4 +394,4 @@ Další informace najdete v následujících článcích:
 
 - [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

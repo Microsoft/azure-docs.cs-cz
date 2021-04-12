@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f01b4216af8d924354ae9e9a204a8eaefb8213
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898168"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120839"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
@@ -34,7 +34,7 @@ Následující "rozhodovací strom" vám pomůže vybrat předdefinované zásad
 
 > [!IMPORTANT]
 > * Vlastnosti **zásad streamování** , které jsou typu DateTime, jsou vždycky ve formátu UTC.
-> * Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+> * Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints-reference.md).
 
 ## <a name="decision-tree"></a>Rozhodovací strom
 
@@ -42,7 +42,7 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 
 [![Diagram znázorňující rozhodovací strom, který je navržený tak, aby vám pomohly zvolit předdefinované zásady streamování pro váš scénář.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
-Při šifrování obsahu je potřeba vytvořit [zásadu klíče obsahu](content-key-policy-concept.md), **zásady klíčů obsahu** není potřeba pro vymazání streamování nebo stahování. 
+Při šifrování obsahu je potřeba vytvořit [zásadu klíče obsahu](drm-content-key-policy-concept.md), **zásady klíčů obsahu** není potřeba pro vymazání streamování nebo stahování. 
 
 Pokud máte zvláštní požadavky (například pokud chcete zadat různé protokoly, potřebujete použít službu pro doručování klíčů, nebo potřebujete použít jasné zvukové stopy), můžete [vytvořit](/rest/api/media/streamingpolicies/create) vlastní zásadu streamování. 
 
@@ -81,10 +81,10 @@ Odpověď:
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Media Services entit](filter-order-page-entitites-how-to.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
-* [Použití dynamického šifrování AES-128 a služby doručování klíčů](protect-with-aes128.md)
-* [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
+* [Použití dynamického šifrování AES-128 a služby doručování klíčů](drm-playready-license-template-concept.md)
+* [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](drm-protect-with-drm-tutorial.md)

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a02b97957cc0599e2960cba551b536e83d1a902
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234014"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222551"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Podpora protokolu TLS (Transport Layer Security) v IoT Hub
 
@@ -23,6 +23,10 @@ TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. D
 ## <a name="iot-hubs-server-tls-certificate"></a>Certifikát TLS serveru IoT Hub
 
 Během protokolu TLS handshake IoT Hub prezentuje certifikát serveru RSA pro připojení klientů. Kořenovou certifikační autoritou Baltimore CyberTrust. Nedávno jsme zavedli změnu certifikátu serveru TLS tak, aby byl nyní vydán novými zprostředkujícími certifikačními autoritami (ICA). Další informace najdete v tématu [IoT Hub aktualizace certifikátu TLS](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/).
+
+### <a name="4kb-size-limit-on-renewal"></a>4KB omezení velikosti pro obnovení
+
+Během obnovování certifikátů na straně serveru IoT Hub Server se na IoT Hub straně služby provede kontroler, aby nedocházelo k `Server Hello` překročení velikosti 4KB. Klient by měl mít minimálně 4KB paměti RAM nastavené pro vyrovnávací paměť s maximální délkou obsahu protokolu TLS, takže stávající zařízení, která jsou nastavená pro 4KB limit, budou i nadále fungovat jako před obnovením certifikátu. U omezených zařízení IoT Hub podporuje [vyjednávání maximální délky fragmentu protokolu TLS ve verzi Preview](#tls-maximum-fragment-length-negotiation-preview). 
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>Certifikát TLS serveru s protokolem ECC (ve verzi Preview)
 

@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727426"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228312"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Postupy zřizování pro architekturu s více tenanty 
 
@@ -26,11 +26,12 @@ Tyto dva scénáře je běžné kombinovat. Například řešení IoT pro vícek
 
 Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a předvádí, jak zřídit zařízení ve víceklientské situaci napříč oblastmi. V tomto článku provedete následující kroky:
 
-* Použití rozhraní příkazového řádku Azure k vytvoření dvou oblastí centra IoT (**západní USA** a **východní USA**)
-* Vytvoření víceklientské registrace
-* Použití rozhraní příkazového řádku Azure k vytvoření dvou virtuálních počítačů se systémem Linux, které budou fungovat jako zařízení ve stejných oblastech (**západní USA** a **východní USA**)
-* Nastavení vývojového prostředí pro sadu Azure IoT C SDK na virtuálních počítačích se systémem Linux
-* Simulujte zařízení, abyste viděli, že jsou zřízené pro stejného tenanta v nejbližší oblasti.
+> [!div class="checklist"]
+> * Použití rozhraní příkazového řádku Azure k vytvoření dvou oblastí centra IoT (**západní USA** a **východní USA**)
+> * Vytvoření víceklientské registrace
+> * Použití rozhraní příkazového řádku Azure k vytvoření dvou virtuálních počítačů se systémem Linux, které budou fungovat jako zařízení ve stejných oblastech (**západní USA** a **východní USA**)
+> * Nastavení vývojového prostředí pro sadu Azure IoT C SDK na virtuálních počítačích se systémem Linux
+> * Simulujte zařízení, abyste viděli, že jsou zřízené pro stejného tenanta v nejbližší oblasti.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -417,8 +418,11 @@ Odstranění skupiny prostředků podle názvu:
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> Další informace o opětovném zřizování najdete v tématu [Koncepty opětovného zřizování zařízení IoT Hub](concepts-device-reprovision.md)
+* Další informace o opětovném zřizování najdete v tématu.
 
 > [!div class="nextstepaction"]
-> Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) .
+> [Koncepce opětovného zřizování zařízení IoT Hub](concepts-device-reprovision.md)
+
+* Další informace o zrušení zřízení najdete v tématu.
+> [!div class="nextstepaction"]
+> [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md)

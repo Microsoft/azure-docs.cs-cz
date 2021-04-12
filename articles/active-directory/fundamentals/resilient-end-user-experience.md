@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf49b1a2b7178800966342a3d52ed49450f3d97c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 53cdbfb3ba531330c37f86233cbed990da4efaf4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226680"
+ms.locfileid: "107258380"
 ---
 # <a name="resilient-end-user-experience"></a>Odolné prostředí koncového uživatele
 
@@ -40,7 +40,7 @@ Při nastavování nejběžnějších úloh identity vám Azure AD B2C poskytuje
 
 Vyberte předdefinované toky uživatelů, pokud je vaše obchodní požadavky může splnit. Vzhledem k tomu, že je společnost Microsoft rozsáhle testována, můžete minimalizovat testování potřebné k ověření funkčnosti, výkonu nebo škálování těchto uživatelských toků identity na úrovni zásad. Stále potřebujete testovat aplikace pro funkce, výkon a škálování.
 
-Měli byste [zvolit vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md) z důvodu požadavků vaší firmy. Ujistěte se, že provádíte testování na úrovni zásad pro funkční, výkon nebo škálování kromě testování na úrovni aplikace.
+Měli byste [zvolit vlastní zásady](../../active-directory-b2c/user-flow-overview.md) z důvodu požadavků vaší firmy. Ujistěte se, že provádíte testování na úrovni zásad pro funkční, výkon nebo škálování kromě testování na úrovni aplikace.
 
 Přečtěte si článek, který [porovnává uživatelské toky a vlastní zásady](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies) , které vám pomůžou při rozhodování.
 

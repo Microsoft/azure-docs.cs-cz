@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 7c9edce71e0d0565de80153bfd5b3d5f1edb2e8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c086fe6a47227901cd44c4684452c842df5286ae
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955152"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064422"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Řízení přístupu na základě role Azure (Azure RBAC) pro účty Media Services
 
@@ -50,4 +50,4 @@ Další informace najdete v následujících článcích:
 ## <a name="next-steps"></a>Další kroky
 
 - [Vývoj s využitím rozhraní API Media Services V3](media-services-apis-overview.md)
-- [Získání zásad pro klíč obsahu pomocí Media Services .NET](get-content-key-policy-dotnet-howto.md)
+- [Získání zásad pro klíč obsahu pomocí Media Services .NET](drm-get-content-key-policy-dotnet-how-to.md)

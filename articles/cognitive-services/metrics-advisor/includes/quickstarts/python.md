@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2ea2e24049a2ff57e284894bc13c44d617f3c661
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b6bea3fdc47bfbb74c18161a400d59453540b14d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445116"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081092"
 ---
 [Referenční dokumentace](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md)  |  [Balíček (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
@@ -67,10 +67,10 @@ service_endpoint = "<paste-your-metrics-advisor-endpoint-here>"
 
 Následující třídy zpracovávají některé z hlavních funkcí sady metrik Python SDK pro metriky.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 | [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorClient) | **Používá se pro**: <br> -Výpis incidentů <br> -Výpis hlavní příčiny incidentů <br> – Načítání původních dat časových řad a dat časových řad obohacených službou. <br> -Výpis výstrah <br> – Přidání zpětné vazby k ladění modelu |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | **Umožňuje:** <br> – Správa datových kanálů <br> – Vytváření, konfigurace, načítání, vypsání a odstraňování konfigurací detekce anomálií <br> – Vytváření, konfigurace, načítání, zobrazování a odstraňování konfigurací upozorňujících na anomálii <br> -Spravovat zavěšení  | |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | **Umožňuje:** <br> – Správa datových kanálů <br> – Vytváření, konfigurace, načítání, vypsání a odstraňování konfigurací detekce anomálií <br> – Vytváření, konfigurace, načítání, zobrazování a odstraňování konfigurací upozorňujících na anomálii <br> -Spravovat zavěšení  |
 | [Datové kanály](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeed#azure.ai.metricsadvisor.models.DataFeed)| **Jaké metriky Advisoru ingestují ze zdroje dat. `DataFeed` Obsahuje řádky:** <br> – Časová razítka <br> – Nula nebo více dimenzí <br> – Jedna nebo více měr  |
 | [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeedmetric#azure.ai.metricsadvisor.models.DataFeedMetric) | A `DataFeedMetric` je kvantifikovaná míra, která se používá k monitorování a vyhodnocení stavu konkrétního obchodního procesu. Může se jednat o kombinaci více hodnot časových řad rozdělených do dimenzí. Například metrika stavu webu může obsahovat rozměry počtu uživatelů a trhu en-US. |
 
