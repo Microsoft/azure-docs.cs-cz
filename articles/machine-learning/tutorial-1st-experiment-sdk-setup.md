@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935528"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210665"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Kurz: Začínáme s Azure Machine Learning v poznámkových blocích Jupyter
 
@@ -27,7 +27,13 @@ V tomto kurzu jste:
 > [!div class="checklist"]
 > * Vytvořte [Azure Machine Learning pracovní prostor](concept-workspace.md) pro použití v dalších Jupyter Notebookch kurzech.
 > * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
-> * Vytvořte cloudovou instanci COMPUTE s nainstalovanou a předem nakonfigurovanou sadou Azure Machine Learning Python SDK.
+> * Vytvořte cloudovou instanci COMPUTE, která vám poskytne prostředí s Azure Machine Learning Python SDK už je nainstalovaná a nakonfigurovaná za vás.
+
+V tomto kurzu se připravuje spuštění poznámkových bloků Jupyter ve výpočetním prostředku ve vašem pracovním prostoru.  
+
+Dalším skvělým způsobem, jak začít s Azure Machine Learningem, je odeslání dávkových úloh.  Viz [kurz: Začínáme s Azure Machine Learning ve vašem vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md).
+
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 

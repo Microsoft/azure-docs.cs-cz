@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 002a7c61d6760decf65016870739ab62b15d5c72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55bf597d8df18085fc9a500a9213a6abe59fd5e3
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103013682"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108248"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtry a dynamické manifesty
 
@@ -27,7 +27,7 @@ ms.locfileid: "103013682"
 
 > [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 2](media-services-dynamic-manifest-overview.md)
-> * [Verze 3](../latest/filters-dynamic-manifest-overview.md)
+> * [Verze 3](../latest/filters-dynamic-manifest-concept.md)
 
 Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožní vybrat, jestli se mají přehrát jenom část videa (místo přehrávání celého videa), nebo zadat jenom podmnožinu zvukových a video verzí, které zařízení zákazníka může zpracovat (místo všech verzí, které jsou k assetu přidružené). Toto filtrování prostředků se dosahuje prostřednictvím **dynamických manifestů**, které jsou vytvořené na základě žádosti zákazníka o streamování videa na základě zadaných filtrů.
 

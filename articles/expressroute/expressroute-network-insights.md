@@ -5,32 +5,40 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 7033ea6a1ba6d85f9aa15e14bb9577b2439c59a8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5e01a4fc84f852b43e5a76114bebe145da10793
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105050453"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443567"
 ---
 # <a name="azure-expressroute-insights-using-network-insights"></a>Azure ExpressRoute Insights s využitím služby Network Insights
 
 V tomto článku se dozvíte, jak vám síťové přehledy můžou pomáhat s zobrazením metrik a konfigurací ExpressRoute na jednom místě. Prostřednictvím Network Insights můžete zobrazit topologické mapy a řídicí panely stavu obsahující důležité informace ExpressRoute, aniž byste museli dokončit žádné další nastavení.
 
-:::image type="content" source="./media/expressroute-network-insights/monitor-landing-page.png" alt-text="Snímek obrazovky s cílovou stránkou ExpressRoute monitoru" lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png":::
+:::image type="content" source="./media/expressroute-network-insights/network-monitor-page.png" alt-text="Snímek obrazovky s cílovou stránkou monitorování sítí" lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png":::
 
 ## <a name="visualize-functional-dependencies"></a>Vizualizace funkčních závislostí
 
-Chcete-li zobrazit toto řešení, přejděte na stránku *Azure monitor* , vyberte položku *sítě* a potom vyberte kartu *okruhy ExpressRoute* . Potom pro okruh, který chcete zobrazit, vyberte tlačítko topologie.
+1. Přejděte na stránku *Azure monitor* a pak vyberte *sítě*.
 
-Zobrazení funkční závislosti poskytuje jasný přehled o nastavení ExpressRoute a nabízí přehled o relacích mezi různými součástmi ExpressRoute (partnerskými vztahy, připojeními, branami).
+    :::image type="content" source="./media/expressroute-network-insights/monitor-page.png" alt-text="Snímek obrazovky cílové stránky monitorování":::
 
-:::image type="content" source="./media/expressroute-network-insights/topology-view.png" alt-text="Snímek obrazovky s zobrazením topologie pro Network Insights" lightbox="./media/expressroute-network-insights/topology-view-expanded.png":::
+1. Vyberte kartu *okruhy ExpressRoute* . 
 
-Pokud chcete zobrazit informace o konfiguraci, najeďte myší na libovolnou komponentu na mapě topologie. Například najeďte myší na komponentu partnerských vztahů ExpressRoute a zobrazte podrobnosti, jako je například šířka pásma okruhu a povolení Global Reach.
+1. Potom pro okruh, který chcete zobrazit, vyberte tlačítko topologie.
 
-:::image type="content" source="./media/expressroute-network-insights/topology-hovered.png" alt-text="Snímek obrazovky s ukazateli myši nad prostředky zobrazení topologie" lightbox="./media/expressroute-network-insights/topology-hovered-expanded.png":::
+   :::image type="content" source="./media/expressroute-network-insights/monitor-landing-page.png" alt-text="Snímek obrazovky s cílovou stránkou ExpressRoute monitoru" lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png"::: 
+
+1. Zobrazení funkční závislosti poskytuje jasný přehled o nastavení ExpressRoute a nabízí přehled o relacích mezi různými součástmi ExpressRoute (partnerskými vztahy, připojeními, branami).
+
+    :::image type="content" source="./media/expressroute-network-insights/topology-view.png" alt-text="Snímek obrazovky s zobrazením topologie pro Network Insights" lightbox="./media/expressroute-network-insights/topology-view-expanded.png":::
+
+1. Pokud chcete zobrazit informace o konfiguraci, najeďte myší na libovolnou komponentu na mapě topologie. Například najeďte myší na komponentu partnerských vztahů ExpressRoute a zobrazte podrobnosti, jako je například šířka pásma okruhu a povolení Global Reach.
+
+    :::image type="content" source="./media/expressroute-network-insights/topology-hovered.png" alt-text="Snímek obrazovky s ukazateli myši nad prostředky zobrazení topologie" lightbox="./media/expressroute-network-insights/topology-hovered-expanded.png":::
 
 ## <a name="view-a-detailed-and-pre-loaded-metrics-dashboard"></a>Zobrazení podrobného a předem načteného řídicího panelu metrik
 

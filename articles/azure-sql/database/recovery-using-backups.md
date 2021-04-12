@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
 ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98795323"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Obnovení pomocí automatických záloh databáze – Azure SQL Database & spravované instance SQL
@@ -47,14 +47,14 @@ Pokud používáte úroveň služeb Standard nebo Premium, vaše obnovení datab
 - Šířka pásma sítě, pokud je obnovení do jiné oblasti.
 - Počet souběžných požadavků na obnovení zpracovávaných v cílové oblasti.
 
-Pro velkou nebo velmi aktivní databázi může obnovení trvat několik hodin. Pokud v oblasti dojde k dlouhodobému výpadku, je možné, že se iniciuje velký počet požadavků na geografickou obnovu pro zotavení po havárii. Pokud existuje mnoho požadavků, může se zvýšit doba obnovení pro jednotlivé databáze. Většina obnovení databáze se dokončí za méně než 12 hodin.
+Pro velkou nebo velmi aktivní databázi může obnovení trvat několik hodin. Pokud v nějaké oblasti dojde k dlouhodobému výpadku, je možné, že se iniciuje velký počet žádostí o geografické obnovení za účelem zotavení po havárii. V případě velkého počtu žádostí se může prodloužit doba potřebná k obnovení jednotlivých databází. Většina obnovení databáze se dokončí za méně než 12 hodin.
 
-U jednoho předplatného platí omezení počtu souběžných požadavků na obnovení. Tato omezení se vztahují na jakoukoli kombinaci obnovení, geografického obnovení a obnovení k bodu v čase v dlouhodobém zálohování.
+Pro jednotlivá předplatná platí omezení počtu souběžných žádostí o obnovení. Tato omezení platí pro jakoukoli kombinaci obnovení k určitému bodu v čase, geografického obnovení a obnovení z dlouhodobě uchovávané zálohy.
 
-| **Možnost nasazení** | **Maximální počet souběžných požadavků zpracovávaných** | **Maximální počet souběžných požadavků, které jsou odesílány** |
+| **Možnost nasazení** | **Maximální počet souběžně zpracovávaných žádostí** | **Maximální počet souběžně odeslaných žádostí** |
 | :--- | --: | --: |
-|**Samostatná databáze (na předplatné)**|30|100|
-|**Elastický fond (pro každý fond)**|4|2000|
+|**Jednoúčelová databáze (na předplatné)**|30|100|
+|**Elastický fond (na fond)**|4|2000|
 
 
 Neexistuje integrovaná metoda pro obnovení celého serveru. Příklad toho, jak tento úkol provést, najdete v tématu [Azure SQL Database: úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).

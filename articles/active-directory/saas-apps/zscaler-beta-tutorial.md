@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Azure Active Directory integrace s Zscaler Beta
@@ -27,7 +27,7 @@ Když integrujete Zscaler Beta s Azure AD, můžete:
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscaler Beta pomocí svých účtů Azure AD. Toto řízení přístupu se nazývá jednotné přihlašování (SSO).
 * Spravujte své účty v jednom centrálním umístění pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Zscaler Beta budete potřebovat následující položky:
 
@@ -190,14 +190,14 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. Vyberte **aktivovat**.
 
-## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
+## <a name="configure-proxy-settings&quot;></a>Konfigurace nastavení proxy serveru
 Pokud chcete nakonfigurovat nastavení proxy serveru v Internet Exploreru, postupujte podle těchto kroků.
 
 1. Spusťte **aplikaci Internet Explorer**.
 
 2. V nabídce **nástroje** vyberte **Možnosti Internetu** a otevřete tak dialogové okno **Možnosti Internetu** . 
     
-     ![Dialogové okno Možnosti Internetu](./media/zscaler-beta-tutorial/ic769492.png "Možnosti Internetu")
+     ![Dialogové okno Možnosti Internetu](./media/zscaler-beta-tutorial/ic769492.png &quot;Možnosti Internetu")
 
 3. Vyberte kartu **připojení** . 
   

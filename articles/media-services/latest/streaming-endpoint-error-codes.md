@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05ef67e3caafe2c10d02ee4ca2e3248b7ab6c188
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98894979"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120892"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Chyby koncového bodu streamování (zdroj)
 
@@ -143,24 +143,24 @@ Formát datové části odesílaný klientem má nepodporovaný formát.
 
 Články a příklady šifrování najdete v těchto tématech:
 
-- [Koncept: Ochrana obsahu](content-protection-overview.md)
-- [Koncept: zásady klíčů obsahu](content-key-policy-concept.md)
+- [Koncept: Ochrana obsahu](drm-content-protection-concept.md)
+- [Koncept: zásady klíčů obsahu](drm-content-key-policy-concept.md)
 - [Koncept: streamování zásad](streaming-policy-concept.md)
-- [Ukázka: Ochrana pomocí šifrování AES](protect-with-aes128.md)
-- [Ukázka: Ochrana pomocí DRM](protect-with-drm.md)
+- [Ukázka: Ochrana pomocí šifrování AES](drm-playready-license-template-concept.md)
+- [Ukázka: Ochrana pomocí DRM](drm-protect-with-drm-tutorial.md)
 
 Pokyny k filtru najdete v těchto tématech:
 
-- [Koncept: dynamické manifesty](filters-dynamic-manifest-overview.md)
+- [Koncept: dynamické manifesty](filters-dynamic-manifest-concept.md)
 - [Koncept: filtry](filters-concept.md)
 - [Ukázka: vytváření filtrů pomocí rozhraní REST API](filters-dynamic-manifest-rest-howto.md)
-- [Ukázka: vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Ukázka: vytvoření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md)
+- [Ukázka: vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-how-to.md)
+- [Ukázka: vytvoření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-how-to.md)
 
 Informace o živých článcích a ukázkách najdete tady:
 
-- [Koncept: Přehled živého streamování](live-streaming-overview.md)
-- [Koncept: živé události a živé výstupy](live-events-outputs-concept.md)
+- [Koncept: Přehled živého streamování](stream-live-streaming-concept.md)
+- [Koncept: živé události a živé výstupy](live-event-outputs-concept.md)
 - [Ukázka: kurz živého streamování](stream-live-tutorial-with-api.md)
 
 ## <a name="416-range-not-satisfiable"></a>416 Neuspokojivý rozsah
@@ -202,7 +202,7 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 - [Kódy chyb kódování](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services koncepty](concepts-overview.md)
-- [Kvóty a omezení](limits-quotas-constraints.md)
+- [Kvóty a omezení](limits-quotas-constraints-reference.md)
 
 ## <a name="next-steps"></a>Další kroky
 

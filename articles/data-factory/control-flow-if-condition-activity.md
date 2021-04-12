@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: cd745f90598666e1fc5c849de335c81a2380d99f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786222"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
@@ -63,11 +63,11 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity if-Condition | Řetězec | Ano
-typ | Musí být nastavené na **IfCondition** | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
-ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true` . | Pole | Ano
-ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false` . | Pole | Ano
+name | Název aktivity if-Condition | Řetězec | Yes
+typ | Musí být nastavené na **IfCondition** | Řetězec | Yes
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Yes
+ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true` . | Pole | Yes
+ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false` . | Pole | Yes
 
 ## <a name="example"></a>Příklad
 Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud je hodnota routeSelection false, data se zkopírují do outputPath2. 

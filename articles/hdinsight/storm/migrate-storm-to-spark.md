@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868762"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrace Azure HDInsight 3,6 Apache Storm do HDInsight 4,0 Apache Spark
@@ -35,7 +35,7 @@ Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zpr�
 |---|---|---|---|
 |**Záruka zpracování událostí**|Aspoň jednou <br> Právě jednou (Trident) |[Právě jednou](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Právě jednou](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Model zpracování**|Reálný čas <br> Micro Batch (Trident) |Mikrodávka |Mikrodávka |
-|**Podpora času události**|[Ano](https://storm.apache.org/releases/2.0.0/Windowing.html)|Ne|[Ano](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Podpora času události**|[Ano](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Ano](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Jazyky**|Java atd.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Streamování Sparku vs strukturované streamování Sparku
@@ -61,7 +61,7 @@ Topologie Storm se skládají z několika součástí, které jsou uspořádány
 
 Přetvoření se skládá z následujících tří démonů, které udržují cluster pro zaplavení fungovat.
 
-|Proces |Popis |
+|Proces |Description |
 |---|---|
 |Nimbus|Podobně jako Hadoop JobTracker je zodpovědný za distribuci kódu v rámci clusteru a přiřazování úloh do počítačů a sledování selhání.|
 |Zookeeper|Používá se pro koordinaci clusteru.|

@@ -5,6 +5,10 @@
   items:
     - name: Co je služba Rozpoznávání formulářů?
       href: overview.md
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Ceny a omezení
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Co je nového
       href: whats-new.md
 - name: Rychlé starty
@@ -91,15 +95,13 @@
   items:
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
-    - name: Ceny a omezení
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionální dostupnost
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Podpora jazyků
-      href: language-support.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování
       href: encrypt-data-at-rest.md
+    - name: Ochrana osobních údajů a soubory cookie
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'
