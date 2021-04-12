@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6d1f504458aed440464015a34479d75992fe5c45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 796ac876537aa06253ad6eeec99adaf48de61c79
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149371"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167256"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků ve funkci Hybrid Runbook Worker
 
@@ -268,7 +268,7 @@ Pokud chcete vytvořit GPG a souboru KeyPair, použijte [účet Hybrid Runbook W
 1. Pomocí aplikace sudo se přihlaste jako účet **nxautomation** .
 
     ```bash
-    sudo su – nxautomation
+    sudo su - nxautomation
     ```
 
 1. Po použití **nxautomation** vygenerujte GPG souboru KeyPair. GPG vás provede jednotlivými kroky. Musíte zadat jméno, e-mailovou adresu, čas vypršení platnosti a heslo. Potom počkejte, než bude na počítači dostatek entropie, aby se klíč vygeneroval.
@@ -304,7 +304,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 Jakmile nakonfigurujete ověřování podpisů, použijte následující příkaz GPG k podepsání sady Runbook.
 
 ```bash
-gpg –-clear-sign <runbook name>
+gpg --clear-sign <runbook name>
 ```
 
 Podepsaná sada Runbook se nazývá **<runbook name> . asc**.
@@ -320,7 +320,7 @@ Když spustíte Runbook v Azure Portal, zobrazí se vám možnost **Spustit na**
 Při spouštění sady Runbook pomocí prostředí PowerShell použijte `RunOn` parametr s rutinou [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Následující příklad používá prostředí Windows PowerShell ke spuštění sady Runbook s názvem **test-Runbook** ve skupině Hybrid Runbook Worker s názvem MyHybridGroup.
 
 ```azurepowershell-interactive
-Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 ## <a name="logging"></a>protokolování

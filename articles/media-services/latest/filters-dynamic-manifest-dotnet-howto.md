@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cc877a693ce00ca3c8040a656e743216c092636
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455208"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960516"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK
 
@@ -37,7 +37,7 @@ V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr
 ## <a name="prerequisites"></a>Požadavky 
 
 - Zkontrolujte [filtry a dynamické manifesty](filters-dynamic-manifest-overview.md).
-- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- [Vytvořte účet Media Services](./account-create-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 - Získání informací potřebných pro [přístup k rozhraním API](./access-api-howto.md)
 - Podívejte se na [nahrávání, kódování a streamování pomocí Azure Media Services,](stream-files-tutorial-with-api.md) abyste viděli, jak [začít používat sadu .NET SDK](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk) .
 

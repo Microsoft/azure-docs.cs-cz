@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: dd522355d30564d84fec15bdc57c7397c1e6cfe4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104702537"
 ---
 # <a name="use-powershell-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě seznamů ACL v Azure Data Lake Storage Gen2
@@ -25,7 +25,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Referenční informace](/powershell/module/Az.Storage/)  |  [Rekurzivní ukázky](https://recursiveaclpr.blob.core.windows.net/privatedrop/samplePS.ps1?sv=2019-02-02&st=2020-08-24T17%3A04%3A44Z&se=2021-08-25T17%3A04%3A00Z&sr=b&sp=r&sig=dNNKS%2BZcp%2F1gl6yOx6QLZ6OpmXkN88ZjBeBtym1Mejo%3D)  |  seznamů ACL [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 

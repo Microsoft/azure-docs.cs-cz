@@ -10,28 +10,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2c8d4179dbaa44929031ce7e14b597b145ed72a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740779"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067601"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
-V tomto kurzu se dozvíte, jak povolit protokol HTTPS pro vlastní doménu přidruženou ke Front Dooru v části hostitelů front-endu. Použitím protokolu HTTPS pro vlastní doménu (například https:\//www.contoso.com) zajistíte zabezpečené doručování citlivých dat prostřednictvím šifrování TLS/SSL při posílání přes internet. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Tento proces zajišťuje zabezpečení a chrání vaše webové aplikace před útoky.
+V tomto kurzu se dozvíte, jak povolit protokol HTTPS pro vlastní doménu přidruženou ke Front Dooru v části hostitelů front-endu. Pomocí protokolu HTTPS ve vaší vlastní doméně (například https: \/ /www.contoso.com) zajistíte zabezpečené doručování citlivých dat prostřednictvím šifrování TLS/SSL při posílání přes Internet. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Tento proces zajišťuje zabezpečení a chrání vaše webové aplikace před útoky.
 
-Přední dveře Azure ve výchozím nastavení podporují protokol HTTPS pro výchozí název hostitele front-dveří. Například pokud vytvoříte přední dvířka (například `https://contoso.azurefd.net` ), protokol HTTPS je automaticky povolen pro požadavky vytvořené na `https://contoso.azurefd.net` . Jakmile ale začleníte vlastní doménu „www.contoso.com“, bude potřeba pro tohoto hostitele front-endu povolit HTTPS dodatečně.   
+Přední dveře Azure ve výchozím nastavení podporují protokol HTTPS pro výchozí název hostitele front-dveří. Například pokud vytvoříte přední dvířka (například `https://contoso.azurefd.net` ), protokol HTTPS je automaticky povolen pro požadavky vytvořené na `https://contoso.azurefd.net` . Po zprovoznění vlastní domény ' www.contoso.com ' ale budete muset protokol HTTPS pro tohoto hostitele front-endu taky povolit.   
 
 Mezi klíčové atributy vlastní funkce HTTPS patří mimo jiné:
 
-- Žádné další náklady: Získání a obnovení certifikátů je bezplatné a za provoz protokolu HTTPS se neplatí žádné další poplatky. 
+- Žádné další poplatky: pro získání a obnovení certifikátů se neúčtují žádné další poplatky ani náklady na přenosy HTTPS. 
 
 - Jednoduché povolení: Na webu [Azure Portal](https://portal.azure.com) je k dispozici zřízení jedním kliknutím. K povolení této funkce můžete použít také rozhraní REST API nebo jiné vývojářské nástroje.
 
-- Kompletní správa certifikátů je dostupná: Veškeré nákupy a správu certifikátů zajišťujete sami. Certifikáty se zřizují automaticky a před vypršením platnosti se automaticky obnovují. Tím odpadá riziko přerušení služby kvůli vypršení platnosti certifikátu.
+- Kompletní správa certifikátů je dostupná: Veškeré nákupy a správu certifikátů zajišťujete sami. Certifikáty se automaticky zřídí a obnoví před vypršením platnosti, což odstraní rizika přerušení služby z důvodu vypršení platnosti certifikátu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit Front Door s minimálně jednou začleněnou vlastní doménou. Další informace najdete v [kurzu přidání vlastní domény do Front Dooru](front-door-custom-domain.md).
 
@@ -63,15 +63,16 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 
 2. V seznamu hostitelů front-endu vyberte vlastní doménu, u které chcete povolit HTTPS.
 
-3. V části **HTTPS pro vlastní doménu** klikněte na **Povoleno** a jako zdroj certifikátu vyberte **Front Door managed** (Spravováno službou Front Door).
+3. V části **vlastní doména https** vyberte možnost **povoleno** a jako zdroj certifikátu vyberte možnost **přední dvířka spravovaná** .
 
-4. Klikněte na Uložit.
+4. Vyberte Uložit.
 
-5. Pokračujte k části [Ověření domény](#validate-the-domain).
+5. Pokračujte [v ověřování domény](#validate-the-domain).
 
 > [!NOTE]
 > U spravovaných certifikátů AFD se vynutilo omezení počtu znaků DigiCert 64. Pokud dojde k překročení tohoto limitu, ověření se nezdaří.
 
+! ZNAČTE Povolení protokolu HTTPS prostřednictvím spravovaného certifikátu přes dvířka se nepodporuje pro domény vrcholů a kořenových domén (například: contoso.com). Pro tento scénář můžete použít vlastní certifikát.  Pokud chcete zobrazit další podrobnosti, pokračujte prosím na možnost 2.
 
 ### <a name="option-2-use-your-own-certificate"></a>Možnost 2: Použití vlastního certifikátu
 
@@ -128,30 +129,27 @@ Udělte pro přístup k certifikátům ve vašem účtu Azure Key Vault oprávn�
 
 3. V části Typ správy certifikátu vyberte **Použít vlastní certifikát**. 
 
-4. Přední dveře Azure vyžadují, aby bylo předplatné Key Vault stejné jako pro vaše přední dveře. Vyberte trezor klíčů, certifikát (tajný kód) a verzi certifikátu.
+4. Přední dveře Azure vyžadují, aby bylo předplatné Key Vault stejné jako pro vaše přední dveře. Vyberte Trezor klíčů, tajnou a tajnou verzi.
 
     Přední dvířka Azure obsahují následující informace: 
     - Účty trezoru klíčů pro ID vašeho předplatného 
-    - Certifikáty (tajné kódy) v rámci vybraného trezoru klíčů 
-    - Dostupné verze certifikátu 
+    - Tajné kódy v rámci vybraného trezoru klíčů. 
+    - Dostupné tajné verze.
 
-> [!NOTE]
-> Verze certifikátu zůstane prázdná, takže by to vedlo k následujícím akcím:
-> - Vybrala se nejnovější verze certifikátu.
-> - Automatické otočení certifikátů na nejnovější verzi, pokud je v Key Vault k dispozici novější verze certifikátu.
+    > [!NOTE]
+    >  Aby se certifikát automaticky přetočil na nejnovější verzi, pokud je ve vašem Key Vault k dispozici novější verze certifikátu, nastavte prosím tajnou verzi na nejnovější. Pokud je vybraná konkrétní verze, musíte ručně vybrat novou verzi pro otočení certifikátu. Pro nasazení nové verze certifikátu nebo tajného klíče trvá až 24 hodin. 
  
-5. Při použití vlastního certifikátu se ověření domény nevyžaduje. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation).
+5. Když použijete vlastní certifikát, ověřování domény se nevyžaduje. Nadále [čekat na šíření](#wait-for-propagation).
 
 ## <a name="validate-the-domain"></a>Ověření domény
 
-Pokud už používáte vlastní doménu, která se mapuje na váš vlastní koncový bod pomocí záznamu CNAME, nebo používáte vlastní certifikát, pokračujte k tématu  
-[Vlastní doména se mapuje na Front Door](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record). Jinak, pokud už položka záznamu CNAME pro vaši doménu neexistuje nebo obsahuje subdoménu afdverify, pokračujte k části [Vlastní doména se nemapuje na Front Door](#custom-domain-is-not-mapped-to-your-front-door).
+Pokud již používáte vlastní doménu, která je namapována na váš vlastní koncový bod pomocí záznamu CNAME nebo používáte vlastní certifikát, pokračujte na [vlastní doménu namapovanou na vaše přední dveře](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record). V opačném případě, pokud položka záznamu CNAME pro vaši doménu neexistuje nebo obsahuje subdoménu afdverify, zůstane v [vlastní doméně namapována na vaše přední dveře](#custom-domain-is-not-mapped-to-your-front-door).
 
 ### <a name="custom-domain-is-mapped-to-your-front-door-by-a-cname-record"></a>Vlastní doména se mapuje na Front Door pomocí záznamu CNAME
 
-Při přidávání vlastní domény do hostitelů Front Dooru jste v tabulce DNS vašeho doménového registrátora vytvořili záznam CNAME, kterým jste vlastní doménu namapovali na výchozí název hostitele .azurefd.net pro tento Front Door. Pokud tento záznam stále existuje a neobsahuje subdoménu afdverify, certifikační autorita DigiCert ho použije k automatickému ověření vlastnictví vaší vlastní domény. 
+Při přidávání vlastní domény do hostitelů Front Dooru jste v tabulce DNS vašeho doménového registrátora vytvořili záznam CNAME, kterým jste vlastní doménu namapovali na výchozí název hostitele .azurefd.net pro tento Front Door. Pokud tento záznam CNAME stále existuje a neobsahuje subdoménu afdverify, certifikační autorita DigiCert ho použije k automatickému ověření vlastnictví vlastní domény. 
 
-Při použití vlastního certifikátu se ověření domény nevyžaduje.
+Pokud používáte vlastní certifikát, ověření domény se nevyžaduje.
 
 Záznam CNAME by měl mít následující formát, kde *Název* je název vaší vlastní domény a *Hodnota* je výchozí název hostitele .azurefd.net vašeho Front Dooru:
 
@@ -161,7 +159,7 @@ Záznam CNAME by měl mít následující formát, kde *Název* je název vaší
 
 Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](../cdn/cdn-map-content-to-custom-domain.md).
 
-Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením jeho platnosti se obnoví jeho platnost. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
+Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením jeho platnosti se obnoví jeho platnost. Nadále [čekat na šíření](#wait-for-propagation). 
 
 Automatické ověření trvá obvykle několik minut. Pokud se vaše doména neověří do hodiny, otevřete lístek podpory.
 
@@ -172,11 +170,11 @@ Automatické ověření trvá obvykle několik minut. Pokud se vaše doména neo
 
 Pokud položka záznamu CNAME pro váš koncový bod už neexistuje nebo obsahuje subdoménu afdverify, postupujte podle zbývajících pokynů v tomto kroku.
 
-Po povolení HTTPS pro vlastní doménu certifikační autorita DigiCert ověří vlastnictví vaší domény tak, že kontaktuje žadatele o registraci na základě informací o žadateli o registraci v registru [WHOIS](http://whois.domaintools.com/) domény. Kontakt proběhne přes e-mailovou adresu (ve výchozím nastavení) nebo telefonní číslo uvedené v registraci WHOIS. Nejprve je potřeba provést ověření domény, a teprve pak se protokol HTTPS pro vaši vlastní doménu aktivuje. Na schválení domény máte šest pracovních dnů. Žádosti, které se nepotvrdí do šesti pracovních dnů, se automaticky zruší. 
+Po povolení HTTPS pro vlastní doménu certifikační autorita DigiCert ověří vlastnictví vaší domény tak, že kontaktuje žadatele o registraci na základě informací o žadateli o registraci v registru [WHOIS](http://whois.domaintools.com/) domény. Kontakt proběhne přes e-mailovou adresu (ve výchozím nastavení) nebo telefonní číslo uvedené v registraci WHOIS. Nejprve je potřeba provést ověření domény, a teprve pak se protokol HTTPS pro vaši vlastní doménu aktivuje. Na schválení domény máte šest pracovních dnů. Žádosti, které nejsou schválené do šesti pracovních dnů, se automaticky zruší. 
 
 ![Záznam WHOIS](./media/front-door-custom-domain-https/whois-record.png)
 
-DigiCert odešle ověřovací e-mail také na další e-mailové adresy. Pokud jsou informace o žadateli o registraci v registru WHOIS privátní, ujistěte se, že můžete provést schválení přímo z některé z následujících adres:
+DigiCert také pošle ověřovací e-mail na jiné e-mailové adresy. Pokud jsou informace o žadateli o registraci v registru WHOIS privátní, ujistěte se, že můžete provést schválení přímo z některé z následujících adres:
 
 admin@&lt;název_vaší_domény.com&gt;  
 administrator@&lt;název_vaší_domény.com&gt;  
@@ -184,13 +182,13 @@ webmaster@&lt;název_vaší_domény.com&gt;
 hostmaster@&lt;název_vaší_domény.com&gt;  
 postmaster@&lt;název_vaší_domény.com&gt;  
 
-Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr spamu, přidejte admin@digicert.com ho do seznamu povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
+Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr spamu, přidejte admin@digicert.com ho do svého povolenýchu. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
 
-Po kliknutí na odkaz na schválení budete přesměrováni na online formulář pro schválení. Postupujte podle pokynů ve formuláři. Máte na výběr dvě možnosti ověření:
+Když vyberete odkaz pro schválení, budete přesměrováni na formulář pro schvalování online. Postupujte podle pokynů ve formuláři. Máte na výběr dvě možnosti ověření:
 
-- Můžete schválit všechny budoucí objednávky zadané přes stejný účet a pro stejnou kořenovou doménu, například contoso.com. Tento přístup se doporučuje v případě, že pro stejnou kořenovou doménu plánujete přidat další vlastní domény.
+- Můžete schválit všechny budoucí objednávky zadané přes stejný účet a pro stejnou kořenovou doménu, například contoso.com. Tento přístup se doporučuje, pokud plánujete přidat další vlastní domény pro stejnou kořenovou doménu.
 
-- Můžete schválit pouze konkrétní název hostitele použitý v této žádosti. Další požadavky budou vyžadovat dodatečné schválení.
+- Můžete schválit pouze konkrétní název hostitele použitý v této žádosti. Pro následné požadavky je vyžadováno dodatečné schválení.
 
 Po schválení DigiCert dokončí vytvoření certifikátu pro váš název vlastní domény. Certifikát je platný jeden rok a před vypršením jeho platnosti se obnoví jeho platnost.
 
@@ -200,17 +198,17 @@ Po ověření názvu domény může aktivace funkce HTTPS pro vlastní doménu t
 
 ### <a name="operation-progress"></a>Průběh operace
 
-Následující tabulka ukazuje průběh operace, která proběhne při povolení HTTPS. Po povolení HTTPS se v dialogovém okně vlastní domény zobrazí čtyři kroky operace. Když se jednotlivé kroky aktivují, zobrazí se pod nimi další podrobnosti o dílčích krocích. Ne všechny tyto dílčí kroky se provedou. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
+Následující tabulka ukazuje průběh operace, která proběhne při povolení HTTPS. Po povolení HTTPS se v dialogovém okně vlastní domény zobrazí čtyři kroky operace. Jak je každý krok aktivní, v průběhu tohoto kroku se zobrazí další podrobnosti o dalších krocích. Ne všechny tyto dílčí kroky se provedou. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
 
 | Krok operace | Podrobnosti o dílčím kroku operace | 
 | --- | --- |
 | 1. Odesílání žádosti | Odesílání žádosti |
 | | Vaše žádost o HTTPS se právě odesílá. |
 | | Vaše žádost o HTTPS se úspěšně odeslala. |
-| 2. Ověření domény | Pokud je doména pomocí záznamu CNAME namapovaná na výchozí název hostitele .azurefd.net vašeho Front Dooru, ověří se automaticky. Jinak se na e-mail uvedený v záznamu o registraci vaší domény (žadatel o registraci v registru WHOIS) odešle žádost o ověření. Ověřte doménu co nejdříve. |
+| 2. Ověření domény | Doména je automaticky ověřena, pokud je CNAME namapováno na výchozího hostitele front-endu. azurefd.net front-endu. Jinak se na e-mail uvedený v záznamu o registraci vaší domény (žadatel o registraci v registru WHOIS) odešle žádost o ověření. Ověřte doménu co nejdříve. |
 | | Vaše vlastnictví domény se úspěšně ověřilo. |
-| | Platnost požadavku na ověření vlastnictví domény vypršela (zákazník pravděpodobně neodpověděl ve lhůtě 6 dní). HTTPS se pro vaši doménu nepovolí. * |
-| | Požadavek na ověření vlastnictví domény byl zamítnut zákazníkem. HTTPS se pro vaši doménu nepovolí. * |
+| | Platnost požadavku na ověření vlastnictví domény vypršela (zákazník pravděpodobně neodpověděl ve lhůtě 6 dní). Protokol HTTPS nebude ve vaší doméně povolený. * |
+| | Požadavek na ověření vlastnictví domény byl zamítnut zákazníkem. Protokol HTTPS nebude ve vaší doméně povolený. * |
 | 3. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS pro vaši doménu. |
 | | Certifikát byl vystaven a momentálně se nasazuje pro Front Door. Tento proces může trvat až jednu hodinu. |
 | | Certifikát se pro Front Door nasadil úspěšně. |
@@ -236,7 +234,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. *Co když neobdržím e-mail pro ověření domény od DigiCert?*
 
-    Pokud pro svou vlastní doménu máte záznam CNAME, který odkazuje přímo na název hostitele vašeho koncového bodu (a nepoužíváte název subdomény afdverify), žádný e-mail pro ověření domény neobdržíte. Ověření proběhne automaticky. Jinak, pokud záznam CNAME nemáte a neobdrželi jste e-mail během 24 hodin, kontaktujte podporu Microsoftu.
+    Pokud máte záznam CNAME pro vaši vlastní doménu, která odkazuje přímo na název hostitele koncového bodu (a nepoužíváte název subdomény afdverify), neobdržíte e-mail pro ověření domény. Ověření proběhne automaticky. Jinak, pokud záznam CNAME nemáte a neobdrželi jste e-mail během 24 hodin, kontaktujte podporu Microsoftu.
 
 4. *Je používání certifikátu SAN méně bezpečné než vyhrazený certifikát?*
     
@@ -244,27 +242,27 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
 
-    Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
+    Ne, autorizační záznam certifikační autority není aktuálně požadován. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste pro vlastní doménu povolili protokol HTTPS. Pokud už na vlastní doméně nechcete používat HTTPS, můžete HTTPS zakázat provedením následujících kroků:
+V předchozích krocích jste pro vlastní doménu povolili protokol HTTPS. Pokud už nechcete používat vlastní doménu s protokolem HTTPS, můžete protokol HTTPS zakázat provedením kroků následujících:
 
 ### <a name="disable-the-https-feature"></a>Zákaz funkce HTTPS 
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do konfigurace front- **dveří Azure** .
 
-2. V seznamu hostitelů front-endu klikněte na vlastní doménu, pro kterou chcete zakázat HTTPS.
+2. V seznamu hostitelů front-end vyberte vlastní doménu, pro kterou chcete zakázat protokol HTTPS.
 
 3. Kliknutím na možnost **Zakázáno** zakažte HTTPS a potom klikněte na **Uložit**.
 
 ### <a name="wait-for-propagation"></a>Čekání na rozšíření
 
-Po zákazu funkce HTTPS vlastní domény může trvat 6 až 8 hodin, než se změna projeví. Po dokončení tohoto procesu se stav HTTPS na webu Azure Portal nastaví na **Zakázáno** a tři kroky operace v dialogovém okně vlastní domény se označí jako dokončené. Vaše vlastní doména už nemůže používat HTTPS.
+Po zákazu funkce HTTPS vlastní domény může trvat 6 až 8 hodin, než se změna projeví. Po dokončení procesu se vlastní stav HTTPS v Azure Portal dostane na **zakázaný** a tři kroky operace v dialogovém okně vlastní domény se označí jako dokončené. Vaše vlastní doména už nemůže používat HTTPS.
 
 #### <a name="operation-progress"></a>Průběh operace
 
-Následující tabulka ukazuje průběh operace, která proběhne při zákazu HTTPS. Po zákazu HTTPS se v dialogovém okně vlastní domény zobrazí tři kroky operace. Když se jednotlivé kroky aktivují, zobrazí se pod nimi další podrobnosti. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
+Následující tabulka ukazuje průběh operace, která proběhne při zákazu HTTPS. Po zákazu HTTPS se v dialogovém okně vlastní domény zobrazí tři kroky operace. Po aktivaci každého kroku se zobrazí další podrobnosti v kroku. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
 
 | Průběh operace | Podrobnosti o operaci | 
 | --- | --- |
@@ -278,7 +276,7 @@ V tomto kurzu jste se naučili:
 
 * Nahrajte certifikát do Key Vault.
 * Ověří doménu.
-* Pro vlastní doménu povolte HTTPS.
+* Povolte HTTPS pro vaši vlastní doménu.
 
 Pokud se chcete dozvědět, jak nastavit zásady geografického filtrování pro vaše přední dveře, přejděte k dalšímu kurzu.
 

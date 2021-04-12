@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579548"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933334"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -298,6 +298,21 @@ Pokud jste přidali položku DNS do souboru místní hostitelé vašeho počíta
 1. Na místním počítači otevřete *Poznámkový blok* jako správce.
 1. Vyhledejte a otevřete soubor *C:\Windows\System32\drivers\etc\hosts*
 1. Odstraňte řádek pro záznam, který jste přidali, například `168.62.205.103    ldaps.aaddscontoso.com`
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud se zobrazí chyba s oznámením, že LDAP.exe se nemůže připojit, zkuste pracovat prostřednictvím různých aspektů získání připojení: 
+
+1. Konfigurace řadiče domény
+1. Konfigurace klienta
+1. Sítě
+1. Vytvoření relace TLS
+
+Název subjektu certifikátu se shoduje s tím, že řadič domény použije Azure název domény (nikoli název domény Azure AD), aby vyhledal úložiště certifikátů pro daný certifikát. Pravopisné chyby například brání řadiči domény v výběru správného certifikátu. 
+
+Klient se pokusí vytvořit připojení TLS pomocí zadaného názvu. Provoz musí získat všechny způsoby. Řadič domény pošle veřejný klíč certifikátu ověření serveru. Certifikát musí mít v certifikátu správné použití. název podepsaný v názvu subjektu musí být kompatibilní, aby mohl klient důvěřovat tomu, že server je název DNS, ke kterému se připojujete (to znamená, že se jedná o zástupný znak, bez pravopisných chyb) a klient musí důvěřovat vystaviteli. V tomto řetězci můžete vyhledat případné problémy v systémovém protokolu Prohlížeč událostí a filtrovat události, které se zdrojem rovná Schannel. Po uvedení těchto částí tvoří klíč relace.  
+
+Další informace najdete v tématu [TLS handshake](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol).
 
 ## <a name="next-steps"></a>Další kroky
 

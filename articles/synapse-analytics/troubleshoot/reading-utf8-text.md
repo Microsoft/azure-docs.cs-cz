@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.date: 12/03/2020
 ms.openlocfilehash: 70ce3c82790db0296d5359b5db2e6a323306c309
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576413"
 ---
 # <a name="troubleshoot-reading-utf-8-text-from-csv-or-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Řešení potíží s čtením textu ve formátu UTF-8 ze souborů CSV nebo Parquet pomocí neserverového fondu SQL ve službě Azure synapse Analytics

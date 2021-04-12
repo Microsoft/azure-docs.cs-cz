@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: e99ce5595bae8ed64285317d9249da60e0fc1b83
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932519"
 ---
 # <a name="locks"></a>Zámky
@@ -22,7 +22,7 @@ Toto rozhraní API (verze 1,0) poskytuje sémantiku pro zámek a odemknutí pro 
 
 Je-li k dispozici, `label` musí se jednat o explicitní hodnotu popisku (nikoli zástupný znak). U všech operací je to volitelný parametr. Je-li tento parametr vynechán, nepředpokládá žádný popisek.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 

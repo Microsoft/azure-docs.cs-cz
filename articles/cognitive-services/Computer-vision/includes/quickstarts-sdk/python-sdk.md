@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: d0b2a854391097cc7d95c4286ba581f3660d397e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 230934ea3d4a8a970ca1fca46160b96e3f2234e8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284753"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073412"
 ---
 <a name="HOLTop"></a>
 
@@ -140,10 +140,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak používat knihovnu optického rozpoznávání znaků pro Python k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
+V tomto rychlém startu jste zjistili, jak nainstalovat knihovnu klienta pro rozpoznávání OCR a použít rozhraní API pro čtení. V dalším kroku se dozvíte víc o funkcích rozhraní API pro čtení.
 
 > [!div class="nextstepaction"]
->[Referenční informace k rozhraní API pro optické rozpoznávání znaků (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
+>[Volání rozhraní API pro čtení](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [Přehled rozpoznávání OCR](../../overview-ocr.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

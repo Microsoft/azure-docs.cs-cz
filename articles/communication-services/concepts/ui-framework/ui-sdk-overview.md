@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 47a32815ded5809edfde856a38c69ec7c6fd6fdf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ab1a157cdf3ef5017b227cd090379dcab91997e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493352"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105931552"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Architektura uživatelského rozhraní služby Azure Communication Services
 
@@ -25,11 +25,11 @@ Architektura uživatelského rozhraní služby Azure Communication Services usna
 - **Složené komponenty** – tyto komponenty jsou řešení pro klíč, která implementují běžné komunikační scénáře. Můžete rychle přidat volání videa nebo chatovací prostředí do svých aplikací. Složené jsou otevřené zdrojové komponenty sestavené pomocí základních komponent.
 - **Základní komponenty** – tyto komponenty jsou Open Source stavební bloky, které umožňují vytvářet vlastní komunikační prostředí. Komponenty jsou nabízeny pro možnosti volání i chat, které lze kombinovat s prostředím pro sestavování. 
 
-Tyto klientské knihovny uživatelského rozhraní využívají [jazyk a prostředky společnosti Microsoft pro návrh Fluent](https://developer.microsoft.com/fluentui/) . ROZHRANÍ Fluent poskytuje základní vrstvu pro rozhraní uživatelského rozhraní, které bylo v rámci produktů Microsoftu testováno na více systémů.
+Tyto sady SDK uživatelského rozhraní využívají jazyk a prostředky [společnosti Microsoft pro návrh Fluent](https://developer.microsoft.com/fluentui/) . ROZHRANÍ Fluent poskytuje základní vrstvu pro rozhraní uživatelského rozhraní, které bylo v rámci produktů Microsoftu testováno na více systémů.
 
 ## <a name="differentiating-components-and-composites"></a>**Odlišení komponent a složených prvků**
 
-**Základní komponenty** jsou postavené na základních knihovnách klienta služby Azure Communication Services a implementují základní akce, jako je například inicializace základních klientských knihoven, vykreslování videa a poskytnutí uživatelských ovládacích prvků pro ztlumení a vypnutí videa atd. Tyto **základní komponenty** můžete použít k sestavení vlastních rozložení pomocí předem sestavených komponent pro komunikaci připravené pro produkční prostředí.
+**Základní komponenty** jsou postavené na základních sadách Azure Communication Services SDK a implementují základní akce, jako je například inicializace základních sad SDK, vykreslování videa a poskytnutí uživatelských ovládacích prvků pro ztlumení a vypnutí videa atd. Tyto **základní komponenty** můžete použít k sestavení vlastních rozložení pomocí předem sestavených komponent pro komunikaci připravené pro produkční prostředí.
 
 :::image type="content" source="../media/ui-framework/component-overview.png" alt-text="Přehled součásti pro rozhraní uživatelského rozhraní":::
 
@@ -39,19 +39,19 @@ Tyto klientské knihovny uživatelského rozhraní využívají [jazyk a prostř
 
 ## <a name="what-ui-framework-is-best-for-my-project"></a>Jaké jsou architektury uživatelského rozhraní nejvhodnější pro můj projekt?
 
-Porozumění těmto požadavkům vám pomůže vybrat správnou klientskou knihovnu:
+Porozumění těmto požadavkům vám pomůže vybrat správnou sadu SDK:
 
-- **Kolik přizpůsobení si přejete?** Klientské knihovny pro komunikaci Azure nemají uživatelské rozhraní a jsou navržené tak, abyste mohli vytvořit libovolné požadované uživatelské prostředí. Komponenty architektury uživatelského rozhraní poskytují prostředky uživatelského rozhraní na náklady na omezené přizpůsobení.
-- **Požadujete funkce schůzky?** Systém schůzek obsahuje několik jedinečných možností, které nejsou aktuálně k dispozici v základních knihovnách klienta služby Azure Communication Services, například rozmazaných a vystouplých pozadí.
+- **Kolik přizpůsobení si přejete?** Sady SDK pro komunikaci Azure nemají uživatelské rozhraní a jsou navržené tak, abyste mohli vytvořit libovolné požadované uživatelské prostředí. Komponenty architektury uživatelského rozhraní poskytují prostředky uživatelského rozhraní na náklady na omezené přizpůsobení.
+- **Požadujete funkce schůzky?** Systém schůzek má v základních sadách Azure Communication Services, jako je rozmazaný a vystouplý, několik jedinečných možností, které nejsou aktuálně k dispozici.
 - **Jaké platformy cílíte?** Různé platformy mají různé možnosti.
 
 Podrobnosti o dostupnosti funkcí v různých sadách [SDK uživatelského rozhraní jsou k dispozici zde](ui-sdk-features.md), ale klíčové obchody jsou shrnuty níže.
 
-|Klientská knihovna/sada SDK|Složitost implementace|    Možnost přizpůsobení|  Videohovory| Chat| [Týmy Interop](./../teams-interop.md)
+|SADA SDK/SADA SDK|Složitost implementace|   Možnost přizpůsobení|  Videohovory| Chat| [Týmy Interop](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Složené součásti|Nízká|Nízká|✔|✔|✕
 |Základní komponenty|Střední|Střední|✔|✔|✕
-|Základní klientské knihovny|Vysoká|Vysoká|✔|✔ |✔
+|Základní sady SDK|Vysoká|Vysoká|✔|✔ |✔
 
 ## <a name="cost"></a>Náklady
 
@@ -78,7 +78,7 @@ Pro inicializaci architektury uživatelského rozhraní a ověření pro službu
 
 Složené a základní komponenty se inicializují pomocí přístupového tokenu služby Azure Communication Services. Přístupové tokeny by se měly získávat z komunikačních služeb Azure prostřednictvím důvěryhodné služby, kterou spravujete. Další informace najdete v tématu [rychlý Start: vytvoření přístupových tokenů](../../quickstarts/access-tokens.md) a [služby Trusted Service v kurzu](../../tutorials/trusted-service-tutorial.md) .
 
-Tyto klientské knihovny také vyžadují kontext pro volání nebo chat, ke kterým se připojí. Podobně jako přístupové tokeny uživatelů by tento kontext měl být šířen klientům prostřednictvím vlastní důvěryhodné služby. Následující seznam shrnuje funkce správy inicializace a prostředků, které je třeba zprovoznění.
+Tyto sady SDK také vyžadují kontext pro volání nebo chat, ke kterým se připojí. Podobně jako přístupové tokeny uživatelů by tento kontext měl být šířen klientům prostřednictvím vlastní důvěryhodné služby. Následující seznam shrnuje funkce správy inicializace a prostředků, které je třeba zprovoznění.
 
 | Povinnosti contoso                                 | Odpovědnosti architektury uživatelského rozhraní                         |
 |----------------------------------------------------------|-----------------------------------------------------------------|

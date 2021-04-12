@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 6e4cb3c372b696b203d2441c74a6cafff175af47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736128"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cloudovou službou Alibaba (jednotné přihlašování založené na rolích)
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat cloudovou službu Alibaba (SSO založe
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Alibaba cloudové službě (SSO založené na rolích) s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

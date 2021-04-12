@@ -4,16 +4,16 @@ description: V tomto článku se dozvíte, jak zaregistrovat Azure Backup v SQL 
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-author: dcurwin
-ms.author: dacurwin
+author: v-amallick
+ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 46cc4b23ca7dd70da3f917a3399406480dc9fdbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557093"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293749"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
 

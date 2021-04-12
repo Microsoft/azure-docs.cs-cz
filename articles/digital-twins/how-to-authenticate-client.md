@@ -8,10 +8,10 @@ ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 1b7a846ee92da001ea2ac3ddd02efa9a870f72c6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102501902"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
@@ -22,7 +22,7 @@ Digitální vlákna Azure provádí ověřování pomocí [tokenů zabezpečení
 
 Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klientské knihovny. Tento článek ukazuje příklady kódu v jazyce C#, například to, co byste napsali pro [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client), můžete použít verzi bez ohledu na to, `Azure.Identity` jakou sadu SDK používáte (Další informace o sadách SDK dostupných pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Tím zajistíte, že budete mít instanci digitálního vlákna Azure a že má váš uživatel oprávnění k přístupu. Po dokončení instalace jste připraveni k psaní kódu klientské aplikace.
 

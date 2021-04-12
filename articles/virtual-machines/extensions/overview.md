@@ -8,10 +8,10 @@ author: amjads1
 ms.author: amjads
 ms.date: 08/03/2020
 ms.openlocfilehash: e1b96293db0389201fdab3340d8f0e74fefc4c52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102559711"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
@@ -35,7 +35,7 @@ Některé aplikace rozšíření virtuálních počítačů můžou mít své vl
 
 Informace o řešení potíží pro jednotlivá rozšíření najdete v části **řešení potíží a podpora** v tématu Přehled tohoto rozšíření. Tady je seznam informací o řešení problémů, které jsou k dispozici:
 
-| Obor názvů | Poradce při potížích |
+| Obor názvů | Řešení potíží |
 |-----------|-----------------|
 | Microsoft. Azure. Monitoring. dependencyagent. dependencyagentlinux | [Závislost Azure Monitor pro Linux](agent-dependency-linux.md#troubleshoot-and-support) |
 | Microsoft. Azure. Monitoring. dependencyagent. dependencyagentwindows | [Azure Monitor závislost pro Windows](agent-dependency-windows.md#troubleshoot-and-support) |

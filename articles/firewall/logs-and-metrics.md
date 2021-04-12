@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596964"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280322"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
@@ -181,6 +181,8 @@ Pro Azure Firewall jsou k dispozici následující metriky:
     Jednotka: procenta
 
    Když do brány firewall přidáte další veřejné IP adresy, zvýší se počet dostupných portů SNAT a sníží se jejich využití. Další porty SNAT budou k dispozici také po škálování brány firewall na více instancí z jiných důvodů (například kvůli procesoru nebo propustnosti). Vzhledem k tomu, že procento využití portů SNAT může být efektivní, aniž byste museli přidávat žádné veřejné IP adresy, a to jenom proto, že se služba škáluje. Můžete přímo řídit počet dostupných veřejných IP adres a zvýšit tak porty, které jsou k dispozici v bráně firewall. Škálování brány firewall ale nemůžete přímo ovládat.
+
+   Pokud brána firewall běží do vyčerpání portů SNAT, měli byste přidat aspoň pět veřejných IP adres. Tím se zvýší počet dostupných portů SNAT. Další informace najdete v tématu [Azure firewall funkce](features.md#multiple-public-ip-addresses).
 
 
 ## <a name="next-steps"></a>Další kroky

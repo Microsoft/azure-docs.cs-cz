@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak můžete nakonfigurovat službu Contai
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711242"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Konfigurace hybridních clusterů Kubernetes s využitím kontejnerů Insights
@@ -32,7 +32,7 @@ Následující konfigurace jsou oficiálně podporovány pomocí kontejneru Insi
 
 - Podpora řízení přístupu: Kubernetes RBAC a non-RBAC
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -351,7 +351,7 @@ Příklad: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
 Pokud zadáte protokol jako **http**, požadavky HTTP se vytvoří pomocí zabezpečeného připojení SSL/TLS. Vaše proxy server musí podporovat protokoly SSL/TLS.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k chybě při pokusu o povolení monitorování pro cluster hybridního Kubernetes, zkopírujte skript PowerShellu [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s) a uložte ho do složky ve vašem počítači. Tento skript je k dispozici, aby bylo možné zjistit a opravit zjištěné problémy. Problémy, které je navrženo pro detekci a pokus o opravu, jsou následující:
 

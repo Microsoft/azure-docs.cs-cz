@@ -1,18 +1,15 @@
 ---
 title: Škálování VMware/fyzického zotavení po havárii pomocí Azure Site Recovery
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro velké počty místních virtuálních počítačů VMware nebo fyzických serverů s Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 869702c9eaac4a38f6b0e64311c772892ddd6d90
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454343"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580438"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
 

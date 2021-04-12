@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.openlocfilehash: 299a17e23ca3eb2d954bae7335571ae1f645152e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867147"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
@@ -37,7 +37,7 @@ Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik
 
 Protokoluje seznam několika ukázkových dotazů, například:
 
-| Název dotazu                      | Popis                                                               |
+| Název dotazu                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Dostupnost počítačů v dnešní době    | Graf počtu počítačů odesílajících protokoly, každou hodinu                     |
 | Zobrazit prezenční signály                 | Zobrazit seznam všech prezenčních signálů počítače za poslední hodinu                           |

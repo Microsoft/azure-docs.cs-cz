@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93087073"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru se systémem Linux Service Fabric ve vašem počítači s Windows Developer
 
 Tento dokument popisuje, jak nastavit místní Cluster Service Fabric pro Linux na vývojovém počítači s Windows. Nastavení místního clusteru se systémem Linux je užitečné pro rychlé testování aplikací určených pro clustery se systémem Linux, které jsou vyvíjeny na počítači s Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Clustery Service Fabric se systémem Linux neběží ve Windows, ale pokud chcete povolit vytváření prototypů pro různé platformy, poskytujeme pro Linux Service Fabric jeden Box kontejner Docker, který se dá nasadit prostřednictvím Docker for Windows.
 
 Než začnete, budete potřebovat:
