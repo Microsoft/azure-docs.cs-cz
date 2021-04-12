@@ -11,12 +11,12 @@ ms.date: 03/11/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b67f505a71d2af7950422a86ab45ef8aebb3bf4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81729146"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056432"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informace o cenách Azure IoT Hub
 
@@ -33,9 +33,9 @@ ms.locfileid: "81729146"
 | Zprávy z cloudu na zařízení | Úspěšné odeslání zpráv se účtuje v blocích po 4 KB, například zpráva o 6-KB se účtuje 2 zprávy. |
 | Nahrání souborů | Přenos souborů do Azure Storage není IoT Hub. Zprávy o zahájení a dokončení přenosu souborů se účtují jako měřené v přírůstcích po 4 KB. Například přenos souboru o velikosti 10 MB se účtuje jako dvě zprávy kromě Azure Storagech nákladů. |
 | Přímé metody | Úspěšné požadavky na metodu se účtují v blocích po 4 KB a odpovědi se účtují jako další zprávy v blocích po 4 KB. Požadavky na odpojená zařízení se účtují jako zprávy v blocích po 4 KB. Například metoda se základním textem 4 KB, který má za následek odpověď bez těla ze zařízení, se účtuje jako dvě zprávy. Metoda s textem 6 – KB, který má za následek odpověď 1 KB ze zařízení, bude účtována jako dvě zprávy pro požadavek a další zpráva pro odpověď. |
-| Dvojitá čtení zařízení a modulu | Dvojitá čtení ze zařízení nebo modulu a z back-endu řešení se účtují jako zprávy v blocích po 512 bajtech. Například čtení typu vlákna 6-KB se účtuje jako 12 zpráv. |
-| Nes dvojitými aktualizacemi zařízení a modulů (značky a vlastnosti) | S dvojitou aktualizací ze zařízení nebo modulu a z back-endu řešení se účtují jako zprávy v blocích po 512 bajtech. Například čtení typu vlákna 6-KB se účtuje jako 12 zpráv. |
-| Nedotazované dotazy na zařízení a moduly | Dotazy se účtují jako zprávy v závislosti na velikosti výsledného bloku v 512 bajtech. |
+| Dvojitá čtení zařízení a modulu | Dvojitá čtení ze zařízení nebo modulu a z back-endu řešení se účtují jako zprávy v blocích po 4 KB. Například načtením vlákna 8-KB se účtuje jako 2 zprávy. |
+| Nes dvojitými aktualizacemi zařízení a modulů (značky a vlastnosti) | S dvojitou aktualizací ze zařízení nebo modulu a z back-endu řešení se účtují jako zprávy v blocích po 4 KB. Například čtení typu vlákna 12 KB se účtuje jako 3 zprávy. |
+| Nedotazované dotazy na zařízení a moduly | Dotazy se účtují jako zprávy v závislosti na velikosti výsledku v blocích po 4 KB. |
 | Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | Neúčtují se. |
 | Operace s úlohami na zařízení | Operace s úlohami (jako jsou například zdvojené aktualizace a metody) se účtují jako normální. Například úloha s výsledkem volání metody 1000 s požadavky 1 – KB a odpověďmi v prázdném těle se účtuje 1000 zpráv. |
 | Zprávy Keep-Alive | Při použití protokolů AMQP nebo MQTT se neúčtují zprávy vyměňované k navázání připojení a zprávy vyměňované v vyjednávání. |

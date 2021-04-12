@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13dadd9665f2d66861e00d769086fb23a4dea115
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 290b68b90deb669f70fa708e6c3bda83cb7187c0
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961689"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227785"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste chtěli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](monitor-media-services.md).
+[Azure monitor](/azure/azure-monitor/overview) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste chtěli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](monitor-media-services.md).
 
 V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je zobrazit.
 
@@ -183,9 +183,9 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 
 ## <a name="see-also"></a>Viz také
 
-* [Metriky Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/data-platform.md)
-* [Protokoly diagnostiky Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)
-* [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)
+* [Metriky Azure Monitoru](/azure/azure-monitor/data-platform)
+* [Protokoly diagnostiky Azure Monitor](/azure/azure-monitor/essentials/platform-logs-overview)
+* [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](/azure/azure-monitor/essentials/platform-logs-overview)
 
 ## <a name="next-steps"></a>Další kroky
 

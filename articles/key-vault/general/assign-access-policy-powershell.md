@@ -1,6 +1,6 @@
 ---
 title: Přiřazení zásady přístupu Azure Key Vault
-description: Jak pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell přiřadit zásady Key Vault přístupu k instančnímu objektu nebo identitě aplikace.
+description: Jak pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell přiřadit zásady Key Vault přístupu k objektu zabezpečení nebo identitě aplikace.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934525"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968726"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Přiřazení zásady přístupu Key Vault pomocí Azure PowerShell
 
-Zásada přístupu Key Vault určuje, jestli daný instanční objekt, konkrétně aplikace nebo skupina uživatelů, může provádět různé operace s Key Vault [tajné klíče](../secrets/index.yml), [klíče](../keys/index.yml)a [certifikáty](../certificates/index.yml). Zásady přístupu můžete přiřadit pomocí [Azure Portal](assign-access-policy-portal.md), rozhraní příkazového [řádku Azure](assign-access-policy-cli.md)nebo Azure PowerShell (Tento článek).
+Zásada přístupu Key Vault určuje, jestli daný objekt zabezpečení, konkrétně uživatel, aplikace nebo skupina uživatelů, může provádět různé operace s Key Vault [tajné klíče](../secrets/index.yml), [klíče](../keys/index.yml)a [certifikáty](../certificates/index.yml). Zásady přístupu můžete přiřadit pomocí [Azure Portal](assign-access-policy-portal.md), rozhraní příkazového [řádku Azure](assign-access-policy-cli.md)nebo Azure PowerShell (Tento článek).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 

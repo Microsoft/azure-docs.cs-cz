@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: b6779de0203246a60bdfa60ea110a0f0d5f26ff3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106445"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218970"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurace statického Web Apps Azure
 
@@ -39,6 +39,7 @@ Podrobnosti najdete v [ukázkovém konfiguračním](#example-configuration-file)
 
 Pravidla směrování umožňují definovat vzor adres URL, které umožňují přístup k vaší aplikaci na web. Trasy jsou definovány jako pole pravidel směrování. Příklady použití najdete v [příkladech konfiguračního souboru](#example-configuration-file) .
 
+- Pravidla jsou definována v poli `routes` , a to i v případě, že máte pouze jednu trasu.
 - Pravidla se spouštějí v pořadí, ve kterém se zobrazují v poli `routes` .
 - Vyhodnocení pravidla se zastaví při první shodě – pravidla směrování se nezřetězená dohromady.
 - Máte plnou kontrolu nad názvy vlastních rolí.
@@ -50,7 +51,7 @@ Výchozím souborem pro statický obsah je soubor *index.html* .
 
 ## <a name="defining-routes"></a>Definování tras
 
-Každé pravidlo se skládá ze vzoru směrování spolu s jednou nebo více volitelnými vlastnostmi pravidla. Příklady použití najdete v [příkladech konfiguračního souboru](#example-configuration-file) .
+Každé pravidlo se skládá ze vzoru směrování spolu s jednou nebo více volitelnými vlastnostmi pravidla. Pravidla směrování jsou definována v poli `routes` . Příklady použití najdete v [příkladech konfiguračního souboru](#example-configuration-file) .
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |

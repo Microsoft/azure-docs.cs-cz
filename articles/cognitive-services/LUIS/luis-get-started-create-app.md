@@ -4,13 +4,13 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, k
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/13/2020
-ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: e0972998fad647c1c70be814cb7c13f14a6e1141
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019156"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277024"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -29,11 +29,11 @@ Pokud chcete vytvořit aplikaci, klikněte na  **+ Nová aplikace**.
 
 V okně, které se zobrazí, zadejte následující informace:
 
-|Název  |Popis  |
+|Název  |Description  |
 |---------|---------|
 |AName     | Název vaší aplikace. Například "domácí automatizace".        |
 |Kultura     | Jazyk, který vaše aplikace chápe a mluví.   |
-|Popis | Popis vaší aplikace
+|Description | Popis vaší aplikace
 |Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. |
 
 Vyberte **Hotovo**.
@@ -220,7 +220,5 @@ Aby bylo možné získat LUIS předpověď v robotu chatu nebo v jiné klientsk�
 
 ## <a name="next-steps"></a>Další kroky
 
-Koncový bod můžete volat prostřednictvím kódu:
-
 > [!div class="nextstepaction"]
-> [Volání koncového bodu služby LUIS pomocí kódu](./luis-get-started-get-intent-from-rest.md)
+> [Vývoj iterativních aplikací pro LUIS](./luis-concept-app-iteration.md)

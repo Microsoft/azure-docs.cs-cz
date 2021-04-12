@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121094"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279030"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -150,7 +150,7 @@ Přednastavení zvukové analýzy teď obsahuje cenovou úroveň základního re
 
 Zákazníci, kteří používají indexer V1 a indexer v2, by měli migrovat na základní předvolby analýzy zvuku.
 
-Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyze-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](how-to-create-basic-audio-transform.md).
+Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyze-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](transform-create-basic-audio-how-to.md).
 
 ### <a name="live-events"></a>Živé události
 
@@ -324,8 +324,8 @@ Tato funkce funguje s libovolnou [transformací](/rest/api/media/transforms) , k
 
 Viz příklady:
 
-* [Vytvoření dílčího klipu videa s využitím .NET](subclip-video-dotnet-howto.md)
-* [Vytvoření dílčího klipu videa s REST](subclip-video-rest-howto.md)
+* [Vytvoření dílčího klipu videa s využitím .NET](transform-subclip-video-dotnet-how-to.md)
+* [Vytvoření dílčího klipu videa s REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="may-2019"></a>Květen 2019
 
@@ -334,7 +334,7 @@ Viz příklady:
 Nyní můžete použít Azure Monitor k zobrazení dat telemetrie emitovaných Media Services.
 
 * Pomocí diagnostických protokolů Azure Monitor můžete monitorovat požadavky odeslané koncovým bodem pro doručení Media Services Key. 
-* Monitoruje metriky vydávané Media Services [koncovými body streamování](streaming-endpoint-concept.md).   
+* Monitoruje metriky vydávané Media Services [koncovými body streamování](stream-streaming-endpoint-concept.md).   
 
 Podrobnosti najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](monitoring/monitor-media-services-data-reference.md).
 

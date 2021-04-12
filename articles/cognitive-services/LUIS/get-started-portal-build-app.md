@@ -4,13 +4,13 @@ description: V tomto rychlém startu vytvoříte základní části aplikace, z�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 03/26/2021
+ms.openlocfilehash: c2f2bafe68dd3f3dad704ba12cdd4d01bf4f6588
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436670"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278758"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
@@ -28,7 +28,7 @@ V okně, které se zobrazí, zadejte následující informace:
 |---------|---------|
 |Název     | Název vaší aplikace. Například "domácí automatizace". Povinná hodnota.        |
 |Kultura     | Jazyk, který vaše aplikace chápe a mluví. Povinná hodnota.   |
-|Popis | Popis vaší aplikace Nepovinný parametr.
+|Description | Popis vaší aplikace Nepovinný parametr.
 |Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. Nepovinný parametr. |
 
 Vyberte **Hotovo**.
@@ -164,4 +164,4 @@ Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rych
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [2. nasazení aplikace](get-started-portal-deploy-app.md)
+> [Nasazení aplikace](get-started-portal-deploy-app.md)

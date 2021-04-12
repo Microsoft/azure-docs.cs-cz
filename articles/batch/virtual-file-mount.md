@@ -4,12 +4,12 @@ description: Přečtěte si, jak připojit virtuální systém souborů ve fondu
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626023"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105744"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
@@ -53,7 +53,7 @@ Následující příklady kódu ukazují připojení nejrůznějších sdílený
 
 ### <a name="azure-files-share"></a>Sdílená složka Azure Files
 
-Azure Files je standardní nabídka Azure cloudového systému souborů. Další informace o tom, jak získat libovolný parametr v ukázce konfiguračního kódu připojení, najdete v tématu [použití sdílené složky Azure Files](../storage/files/storage-how-to-use-files-windows.md).
+Azure Files je standardní nabídka Azure cloudového systému souborů. Další informace o tom, jak získat libovolný parametr v ukázce konfiguračního kódu připojení, najdete v tématu [použití sdílené složky Azure Files – SMB](../storage/files/storage-how-to-use-files-windows.md) nebo [použití sdílené složky Azure Files s-NFS](../storage/files/storage-files-how-to-create-nfs-shares.md).
 
 ```csharp
 new PoolAddParameter

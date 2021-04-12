@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505473"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056007"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -175,7 +175,7 @@ Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Mac
 V některých situacích možná budete chtít, aby se někdo mohl připojit k zabezpečenému pracovnímu prostoru přes Veřejný koncový bod, a ne přes virtuální síť. Po nakonfigurování pracovního prostoru s privátním koncovým bodem můžete volitelně povolit veřejný přístup k pracovnímu prostoru. Tím nedojde k odebrání privátního koncového bodu. Veškerá komunikace mezi součástmi za virtuální sítí je stále zabezpečená. Umožňuje také veřejný přístup k pracovnímu prostoru, a to i k privátnímu přístupu prostřednictvím virtuální sítě.
 
 > [!WARNING]
-> Při připojování přes Veřejný koncový bod některé funkce studia nebudou mít přístup k vašim datům. K tomuto problému dochází, když jsou data uložená ve službě, která je zabezpečená za virtuální sítí. Například účet Azure Storage.
+> Při připojování přes Veřejný koncový bod některé funkce studia nebudou mít přístup k vašim datům. K tomuto problému dochází, když jsou data uložená ve službě, která je zabezpečená za virtuální sítí. Například účet Azure Storage. Všimněte si také, že funkce COMPUTE instance Jupyter/JupyterLab/RStudio a spuštěné poznámkové bloky nebudou fungovat.
 
 Chcete-li povolit veřejný přístup k pracovnímu prostoru podporujícímu soukromým linkám, postupujte následovně:
 

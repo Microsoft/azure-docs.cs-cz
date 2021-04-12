@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 214deb290fc0c0992458c2806644e06ffa00b271
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596701"
+ms.locfileid: "105963440"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Kurz: ukládání Azure Media Servicesch událostí v Azure Log Analytics
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 > * [Předplatné Azure](how-to-set-azure-subscription.md)
-> * Účet [Media Services](create-account-howto.md) a skupina prostředků.
+> * Účet [Media Services](account-create-how-to.md) a skupina prostředků.
 > * Instalace [ffmpeg](https://ffmpeg.org/download.html) pro váš operační systém.
 > * Pracovní prostor [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md)
 

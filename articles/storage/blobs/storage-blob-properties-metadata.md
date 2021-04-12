@@ -2,19 +2,19 @@
 title: Správa vlastností a metadat pro objekt BLOB pomocí .NET-Azure Storage
 description: Naučte se, jak nastavit a načíst systémové vlastnosti a ukládat do objektů BLOB ve vašem účtu Azure Storage vlastní metadata pomocí klientské knihovny .NET.
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24ec646c2928570c67a7f71481f2ca0191f1c8b9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95521525"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280203"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností a metadat objektů BLOB pomocí .NET
 

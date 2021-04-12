@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 152b96bee63b6d2280a807ca53842ed3a67ab67d
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219178"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279761"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurace nastavení aplikace pro Azure static Web Apps Preview
 
@@ -31,7 +31,7 @@ Nastavení aplikace se někdy označují také jako proměnné prostředí.
 >
 > Informace o použití proměnných prostředí u vaší webové aplikace front-end najdete v dokumentaci k vašemu [rozhraní JavaScript](#javascript-frameworks-and-libraries) nebo ke [generátoru statických webů](#static-site-generators).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aplikace statického Web Apps Azure
 - [Azure CLI](/cli/azure/install-azure-cli)
@@ -168,4 +168,4 @@ Nastavení aplikace jsou k dispozici pro zobrazení prostřednictvím rozhraní 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nastavení místního vývoje](local-development.md)
+> [Konfigurace front-endové rozhraní](front-end-frameworks.md)

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 59e6e73c99569b0a35c56d65c1a7ccdfcb394c0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026416"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012525"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Škálování skupiny serverů Citus (Scale-Scale)
 
@@ -21,6 +21,11 @@ Azure Database for PostgreSQL – Citus () zajišťuje škálování samoobsluž
 ## <a name="add-worker-nodes"></a>Přidat pracovní uzly
 
 Pokud chcete přidat uzly, klikněte na kartu **COMPUTE + Storage** ve skupině serverů Citus (škálování).  Přetažením posuvníku **počtu pracovních uzlů** se změní hodnota.
+
+> [!NOTE]
+>
+> Skupina serverů Citus () vytvořená s [úrovní Basic (Preview)](concepts-hyperscale-tiers.md) nemá žádné pracovní procesy. Zvýšení počtu pracovních procesů automaticky prodlužuje skupinu serverů na úroveň Standard.
+> Až provedete prostupnou skupinu serverů na úroveň Standard, nebudete ji moct převést zpět na úroveň Basic.
 
 :::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="Posuvníky prostředků":::
 
@@ -34,7 +39,7 @@ Klikněte na tlačítko **Uložit** , aby se změna hodnoty projevila.
 
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>Zvýšení nebo snížení počtu virtuálních jader v uzlech
 
-Kromě přidání nových uzlů můžete zvýšit možnosti stávajících uzlů. Navýšení a snížení kapacity výpočetní kapacity může být užitečné při experimentech s výkonem a na krátkodobé nebo dlouhodobé změny v požadavcích na provoz.
+Kromě přidání nových uzlů můžete zvýšit možnosti stávajících uzlů. Navýšení a snížení kapacity výpočetní kapacity může být užitečné pro experimenty s výkonem a krátkodobé nebo dlouhodobé změny v požadavcích na provoz.
 
 Chcete-li změnit virtuální jádra pro všechny pracovní uzly, upravte posuvník **virtuální jádra** v části **konfigurace (na jeden pracovní uzel)**. Virtuální jádra uzlu koordinátora se dá upravovat nezávisle. V části **konfigurace (uzel koordinátora)** upravte posuvník **virtuální jádra** .
 

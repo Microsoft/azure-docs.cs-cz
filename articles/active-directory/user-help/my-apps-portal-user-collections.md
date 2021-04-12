@@ -1,5 +1,5 @@
 ---
-title: Kolekce (Preview) na portálu moje aplikace – Azure AD
+title: Uspořádání aplikací do kolekcí na portálu moje aplikace – Azure AD
 description: Naučte se vytvářet, upravovat, odstraňovat, skrývat a zobrazovat kolekce aplikací v mých aplikacích.
 services: active-directory
 author: curtand
@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/07/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ac5dede27262d3ce8bc44b4b278ed623063f8e1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095116"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209659"
 ---
-# <a name="user-collections-preview-in-my-apps"></a>Kolekce uživatelů (Preview) ve složkách moje aplikace
+# <a name="organize-apps-using-collections-from-my-apps"></a>Uspořádání aplikací pomocí kolekcí z mých aplikací
 
 Moje aplikace slouží jako vaše řešení pro spouštění a správu všech vašich pracovních nebo školních aplikací. Vytvářejte kolekce, které vám umožní organizovat vaše aplikace, a usnadněte si hledání aplikací, které potřebujete.
-
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 V tomto článku se dozvíte, jak:
 
@@ -55,7 +53,7 @@ V tomto článku se dozvíte, jak:
 
     :::image type="content" source="media/my-apps-portal-user-collections/3-add-apps.png" alt-text="Přidávání aplikací ze seznamu do kolekce":::
 
-1. V následujícím seznamu můžete změnit pořadí nebo odstranění aplikací nebo vybrat možnost **Přidat aplikace** a vybrat další aplikace pro kolekci. Až budete s vašimi možnostmi spokojeni, vyberte **vytvořit novou**.  
+1. V podokně **vytvořit nový** můžete změnit pořadí nebo odstranění aplikací nebo vybrat možnost **Přidat aplikace** a vybrat další aplikace pro kolekci. Až budete s vašimi možnostmi spokojeni, vyberte **vytvořit novou**.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/4-create-button.png" alt-text="Kliknutím na tlačítko vytvořit nové uložte kolekci do mých aplikací.":::
 
@@ -87,7 +85,7 @@ Upravovat můžete jenom kolekce, které jste vytvořili. Úprava kolekce, ktero
 
     :::image type="content" source="media/my-apps-portal-user-collections/9-manage-apps-again.png" alt-text="Správa aplikací pomocí příkazu spravovat":::
 
-1. Tady můžete nastavit pořadí, ve kterém se mají kolekce zobrazovat v okně moje aplikace. Kolekce v tou horní části seznamu bude výchozí kolekce, která se zobrazí při každém přechodu na myapps.microsoft.com.  
+1. Tady můžete nastavit pořadí, ve kterém se mají kolekce zobrazovat v okně moje aplikace. Kolekce v horní části seznamu bude výchozí kolekcí, která se zobrazí při každém přechodu na myapps.microsoft.com.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/10-default-collection.png" alt-text="Moje aplikace teď obsahuje novou kolekci":::
 

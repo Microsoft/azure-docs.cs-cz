@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607947"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443436"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Přidání atributů uživatele a přizpůsobení uživatelského vstupu v Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Deklarace identity aplikace jsou hodnoty, které se vrátí do aplikace. Aktuali
 1. Vyberte **rozložení stránky**.
 1. Vyberte **stránku pro registraci místního účtu**.
 1. V části **atributy uživatele** vyberte **město**.
-    1. V rozevíracím seznamu **Typ vstupu uživatele** vyberte možnost **DropdownSingleSelect**.
+    1. V rozevíracím seznamu **Typ vstupu uživatele** vyberte možnost **DropdownSingleSelect**. Volitelné: pomocí tlačítek Přesunout nahoru/dolů uspořádejte pořadí textu na stránce pro registraci.
     1. V **volitelném** rozevíracím seznamu vyberte možnost **ne**.
 1. Vyberte **Uložit**. 
 

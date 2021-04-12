@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: d021267c38f0043d2361b1a6392fbacd0634a164
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122046"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279693"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Průvodce migrací na základě scénáře živého streamování
 
@@ -37,7 +37,7 @@ Před přesunutím obsahu z verze V2 na V3 otestujte nový způsob doručování
 
 - Vytvoří novou [živou událost](live-event-outputs-concept.md#live-events) v3 pro kódování. Můžete povolit [Předvolby kódování 1080p a 720p](live-event-types-comparison-reference.md#system-presets).
 - Místo programů použít entitu [Live Output](live-event-outputs-concept.md#live-outputs)
-- Vytvořte [Lokátory streamování](streaming-locators-concept.md).
+- Vytvořte [Lokátory streamování](stream-streaming-locators-concept.md).
 - Berte v úvahu, že budete potřebovat [HLS a přerušované](encode-dynamic-packaging-concept.md) živé streamování.
 - Pokud budete vyžadovat rychlé spuštění živých událostí, prozkoumejte nové funkce v [pohotovostním režimu](live-event-outputs-concept.md#standby-mode) .
 - Pokud chcete svou živou událost přepisovat, když se děje, prozkoumejte novou funkci pro [živý přepis](live-event-live-transcription-how-to.md) .
@@ -52,7 +52,7 @@ Konkrétní kroky najdete v tématu Koncepty, kurzy a návody k dynamickým udá
 
 - [Živé streamování s Azure Media Services V3](stream-live-streaming-concept.md)
 - [Živé události a živé výstupy v Media Services](live-event-outputs-concept.md)
-- [Ověřená místní kodéry živého streamování](recommended-on-premises-live-encoders.md)
+- [Ověřená místní kodéry živého streamování](encode-recommended-on-premises-live-encoders.md)
 - [Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání](live-event-cloud-dvr-time-how-to.md)
 - [Live-Event-Live-přepis-How-to (Preview)](live-event-live-transcription-how-to.md)
 - [Porovnání typů živých událostí](live-event-types-comparison-reference.md)

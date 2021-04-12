@@ -21,7 +21,7 @@ Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API sl
 * **Ověřování instančních objektů:** Slouží k ověřování služeb (například webových aplikací, aplikací funkcí, aplikací logiky, rozhraní API nebo mikroslužeb). Mezi aplikace, které běžně využívají tuto metodu ověřování, patří aplikace spouštějící služby démonů, služby střední úrovně nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
 * **Ověřování uživatelů:** Slouží k ověřování lidí, kteří pomocí aplikace pracují s prostředky služby Media Services. Interaktivní aplikace by nejprve měla uživatele vyzvat k zadání přihlašovacích údajů. Příkladem je aplikace konzoly pro správu, kterou autorizovaní uživatelé používají k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní API služby Media Services vyžaduje, aby uživatel nebo aplikace provádějící požadavky rozhraní REST API měli přístup k prostředku účtu služby Media Services a používali roli **Přispěvatel** nebo **Vlastník**. K rozhraní API je možné získat přístup také s rolí **Čtenář**, ale v takovém případě budou k dispozici pouze operace **Get** a **List**.Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](rbac-overview.md).
+Rozhraní API služby Media Services vyžaduje, aby uživatel nebo aplikace provádějící požadavky rozhraní REST API měli přístup k prostředku účtu služby Media Services a používali roli **Přispěvatel** nebo **Vlastník**. K rozhraní API je možné získat přístup také s rolí **Čtenář**, ale v takovém případě budou k dispozici pouze operace **Get** a **List**.Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](security-rbac-concept.md).
 
 Místo vytváření instančního objektu zvažte přístup k rozhraní API služby Media Services prostřednictvím Azure Resource Manageru s využitím spravovaných identit pro prostředky Azure. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [Co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -52,7 +52,7 @@ Na následujícím obrázku čísla reprezentují tok požadavků v chronologick
 
 Podívejte se na následující ukázky, které ukazují, jak se připojit pomocí instančního objektu služby Azure AD:
 
-* [Připojit se pomocí REST](media-rest-apis-with-postman.md)  
+* [Připojit se pomocí REST](setup-postman-rest-how-to.md)  
 * [Připojení s využitím Javy](configure-connect-java-howto.md)
 * [Připojení s využitím .NET](configure-connect-dotnet-howto.md)
 * [Připojení s využitím Node.js](configure-connect-nodejs-howto.md)

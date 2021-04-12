@@ -2,28 +2,28 @@
 title: Pravidla brány firewall pro Azure Event Hubs | Microsoft Docs
 description: Pomocí pravidel brány firewall povolte připojení z konkrétních IP adres do Azure Event Hubs.
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/29/2021
+ms.openlocfilehash: 12240135401b267fd7c60e579fdf5a12e10ffce9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100560843"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962998"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních IP adres nebo rozsahů
 Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Tato funkce je užitečná ve scénářích, ve kterých by měl být Azure Event Hubs dostupný jenom z určitých dobře známých lokalit. Pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Pokud například používáte Event Hubs s využitím [Azure Express Route][express-route], můžete vytvořit **pravidlo brány firewall** , které umožní provoz jenom z vašich místních IP adres infrastruktury. 
 
->[!WARNING]
-> Pokud požadavky pocházejí ze služby, která není povolená pro veřejné IP adresy, zapnete pravidla brány firewall pro obor názvů Event Hubs zablokuje příchozí požadavky ve výchozím nastavení. Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých důvěryhodných služeb i v případě, že je povolené filtrování IP adres. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby společnosti Microsoft](#trusted-microsoft-services).
-
-> [!IMPORTANT]
-> Zadejte alespoň jedno pravidlo IP nebo pravidlo virtuální sítě pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče).  
-
-
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů Event Hubs. Pravidla se proto vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Event Hubs, jsou odmítnuty jako neautorizované. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
+
+
+## <a name="important-points"></a>Důležité body
+- Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. Na úrovni **Basic** se nepodporuje.
+- Pokud požadavky pocházejí ze služby, která není povolená pro veřejné IP adresy, zapnete pravidla brány firewall pro obor názvů Event Hubs zablokuje příchozí požadavky ve výchozím nastavení. Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých **důvěryhodných služeb** i v případě, že je povolené filtrování IP adres. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby společnosti Microsoft](#trusted-microsoft-services).
+- Zadejte **alespoň jedno pravidlo brány firewall protokolu IP nebo pravidlo virtuální sítě** pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítí virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče).  
+
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány firewall protokolu IP pro Event Hubs obor názvů. 

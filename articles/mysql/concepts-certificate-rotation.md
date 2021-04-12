@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 23fa3e93565066ce4b897bffe63164486efc179e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a80910340333c2e6c52bb32644c48fa3a28ab437
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449879"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210750"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>Porozumění změnám v kořenové CA změna pro Azure Database for MySQL jeden server
 
@@ -169,7 +169,7 @@ Pokud pro připojení k Azure Database for MySQL používáte [replikaci dat](co
 
     Pokud zjistíte, že certifikát je k dispozici pro CA_file, SSL_Cert a SSL_Key, bude nutné aktualizovat soubor přidáním [nového certifikátu](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) a vytvořením kombinovaného souboru certifikátu.
 
-* Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak je potřeba resetovat repliku tak, že spustíte **MySQL.az_replication_change_master volání** a jako poslední parametr zadáte nový duální kořenový certifikát [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
+* Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak je potřeba resetovat repliku tak, že spustíte **MySQL.az_replication_change_master volání** a jako poslední parametr zadáte nový duální kořenový certifikát [master_ssl_ca](howto-data-in-replication.md#4-link-source-and-replica-servers-to-start-data-in-replication)
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. máme dotaz na straně serveru, abyste ověřili, jestli se používá SSL?
 

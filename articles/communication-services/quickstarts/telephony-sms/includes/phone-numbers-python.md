@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b9ac58a7cf09463020e0bcd424f5fc5974133657
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e62aed02a0ad5f26ec8fd0a79de5e91269386095
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113279"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450579"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ except Exception as ex:
 Stále v adresáři aplikace nainstalujte klientskou knihovnu pro správu služby Azure Communication Services pro balíček python pomocí `pip install` příkazu.
 
 ```console
-pip install azure-communication-phone-numbers
+pip install azure-communication-phonenumbers
 ```
 
 ## <a name="authenticate-the-phone-numbers-client"></a>Ověření klienta telefonních čísel

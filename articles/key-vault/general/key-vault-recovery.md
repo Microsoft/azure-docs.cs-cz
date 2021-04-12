@@ -9,10 +9,10 @@ author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
 ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98790380"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault správu obnovení s ochranou pomocí obnovitelného odstranění a mazání
@@ -23,7 +23,7 @@ Další informace o Key Vault najdete v tématu.
 - [Přehled služby Key Vault](overview.md)
 - [Přehled Azure Key Vault klíčů, tajných kódů a certifikátů](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Modul PowerShellu](/powershell/azure/install-az-ps).
