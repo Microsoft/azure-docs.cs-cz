@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 04/05/2021
 ms.author: banders
-ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: d348eeb5cc789665d7e7004523b9feba0ea6e413
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508516"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490552"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Přiřazení rolí k hlavním názvům služeb Azure smlouva Enterprise
 
@@ -62,12 +62,14 @@ V dalších krocích udělíte aplikaci Azure AD oprávnění k provádění akc
 | Role | Povolené akce | ID definice role |
 | --- | --- | --- |
 | EnrollmentReader | Může zobrazit využití a poplatky napříč všemi účty a předplatnými. Může zobrazit zůstatek předplacené Azure (dříve označovaný jako peněžní závazek), který je přidružený k registraci. | 24f8edb6-1668-4659-b5e2-40bb5f3a7d7e |
+| Nákupčí EA | Zakupte objednávky rezervace a zobrazte transakce rezervace. Může zobrazit využití a poplatky napříč všemi účty a předplatnými. Může zobrazit zůstatek předplacené Azure (dříve označovaný jako peněžní závazek), který je přidružený k registraci. | da6647fb-7651-49ee-be91-c43c4877f0c4  |
 | DepartmentReader | Stáhněte si podrobnosti o využití pro oddělení, které spravuje. Může zobrazit využití a poplatky spojené s jejich oddělením. | db609904-a47f-4794-9be8-9bd86fbffd8a |
 | SubscriptionCreator | Vytvoří nová předplatná v daném oboru účtu. | a0bcee42-bf30-4d1b-926a-48d21664ef71 |
 
 - Čtečku zápisu je možné přiřadit k hlavnímu názvu služby (SPN) pouze uživateli s rolí zapisovače zápisu.
 - Čtečku oddělení je možné přiřadit k hlavnímu názvu služby jenom uživateli, který má roli zapisovače zápisu nebo roli zapisovače oddělení.
-- Role tvůrce předplatného může být přiřazena k hlavnímu názvu služby (SPN) pouze uživateli, který je vlastníkem účtu registrace.
+- Role tvůrce předplatného může být přiřazena k hlavnímu názvu služby (SPN) pouze uživateli, který je vlastníkem účtu registrace. Role není zobrazená na portálu EA. Je vytvořená pouze programovým prostředkem a je určena pouze pro programové použití.
+- Role nákupčího programu EA není zobrazená na portálu EA. Je vytvořená pouze programovým prostředkem a je určena pouze pro programové použití.
 
 ## <a name="assign-enrollment-account-role-permission-to-the-spn"></a>Přiřazení oprávnění role účtu pro zápis k hlavnímu názvu služby (SPN)
 
@@ -120,6 +122,14 @@ Vyberte **Spustit** a spusťte příkaz.
 `200 OK`Odpověď ukazuje, že hlavní název služby (SPN) byl úspěšně přidán.
 
 Nyní můžete použít hlavní název služby (Aplikace Azure AD s ID objektu) k automatickému přístupu k rozhraním API EA. Hlavní název služby (SPN) má roli EnrollmentReader.
+
+## <a name="assign-ea-purchaser-role-permission-to-the-spn"></a>Přiřazení oprávnění role nákupčího pro EA k hlavnímu názvu služby 
+
+Pro roli nákupčího EA použijte stejný postup jako u čtecího modulu pro čtení. `roleDefinitionId`Použijte následující příklad.
+
+`"/providers/Microsoft.Billing/billingAccounts/1111111/billingRoleDefinitions/ da6647fb-7651-49ee-be91-c43c4877f0c4"`
+
+ 
 
 ## <a name="assign-the-department-reader-role-to-the-spn"></a>Přiřazení role čtenáře oddělení k hlavnímu názvu služby
 

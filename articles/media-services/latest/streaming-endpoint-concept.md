@@ -9,14 +9,14 @@ MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date
 
 V Microsoft Azure Media Services [koncový bod streamování](/rest/api/media/streamingendpoints) představuje dynamický (just-in-time) a službu Origin Service, která může doručovat obsah živě a na vyžádání přímo do aplikace Client Playeru pomocí některého z běžných protokolů mediálního vysílání (HLS nebo pomlčky). **Koncový bod streamování** navíc poskytuje dynamické šifrování (za běhu) pro špičkové několikanásobnou. 
 
-Když vytvoříte účet Media Services, vytvoří se **výchozí** koncový bod streamování pro vás v zastaveném stavu. V rámci účtu se dá vytvořit víc koncových bodů streamování (viz [kvóty a omezení](limits-quotas-constraints.md)).
+Když vytvoříte účet Media Services, vytvoří se **výchozí** koncový bod streamování pro vás v zastaveném stavu. V rámci účtu se dá vytvořit víc koncových bodů streamování (viz [kvóty a omezení](limits-quotas-constraints-reference.md)).
 
 > [!NOTE]
 > Pokud chcete začít streamovat videa, musíte spustit **koncový bod streamování** , ze kterého chcete streamovat video.
 >
 > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
 
-Nezapomeňte si také projít téma [dynamického balení](dynamic-packaging-overview.md) . 
+Nezapomeňte si také projít téma [dynamického balení](encode-dynamic-packaging-concept.md) . 
 
 ## <a name="naming-convention"></a>Konvence pojmenování
 
@@ -201,7 +201,7 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="see-also"></a>Viz také
 
-[Dynamické balení](dynamic-packaging-overview.md)
+[Dynamické balení](encode-dynamic-packaging-concept.md)
 
 ## <a name="next-steps"></a>Další kroky
 

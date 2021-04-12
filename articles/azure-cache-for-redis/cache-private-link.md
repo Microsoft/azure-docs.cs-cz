@@ -1,19 +1,19 @@
 ---
-title: Azure cache pro Redis s privátním propojením Azure (Preview)
+title: Azure cache pro Redis s privátním propojením Azure
 description: Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. V tomto článku se naučíte, jak vytvořit Azure cache, Azure Virtual Network a privátní koncový bod pomocí Azure Portal.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/31/2021
+ms.openlocfilehash: 952f708d8f368b63f772e3af35f6fd441d65622d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007581"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121655"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache pro Redis s privátním propojením Azure (Public Preview)
+# <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure cache pro Redis s privátním propojením Azure
 V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azure pro instanci Redis s privátním koncovým bodem pomocí Azure Portal. Naučíte se také, jak přidat privátní koncový bod do existující služby Azure cache pro instanci Redis.
 
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
@@ -22,8 +22,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!IMPORTANT]
-> Chcete-li použít soukromé koncové body, je nutné, aby byla instance Azure cache for Redis vytvořena po 28. července 2020.
-> V současné době se geografická replikace, pravidla brány firewall, podpora konzoly portálu, více koncových bodů na mezipamětní mezipaměť, trvalost do firewallu a virtuální sítě vložené do mezipaměti nepodporují. 
+> V současné době se nepodporuje redundance zóny, podpora konzoly portálu a trvalost na účty úložiště brány firewall. 
 >
 >
 
@@ -112,19 +111,8 @@ Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na strá
 > [!IMPORTANT]
 > 
 > K dispozici je `publicNetworkAccess` příznak, který je `Disabled` ve výchozím nastavení nastaven. 
-> Tento příznak slouží k tomu, aby bylo možné volitelně dovolit přístup k mezipaměti veřejného i privátního koncového bodu, pokud je nastaven na hodnotu `Enabled` . Pokud je tato možnost nastavená na `Disabled` , umožní přístup jenom k privátnímu koncovému bodu. Tuto hodnotu můžete nastavit na `Disabled` nebo `Enabled` s následující žádostí o opravu. Upravte hodnotu tak, aby odrážela příznak, který chcete mít v mezipaměti.
-> ```http
-> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
-> {    "properties": {
->        "publicNetworkAccess":"Disabled"
->    }
-> }
-> ```
+> Tento příznak slouží k tomu, aby bylo možné volitelně dovolit přístup k mezipaměti veřejného i privátního koncového bodu, pokud je nastaven na hodnotu `Enabled` . Pokud je tato možnost nastavená na `Disabled` , umožní přístup jenom k privátnímu koncovému bodu. Můžete nastavit hodnotu na `Disabled` nebo `Enabled` . Další podrobnosti o tom, jak změnit hodnotu, najdete v tématu [Nejčastější dotazy](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access) .
 >
-
-> [!IMPORTANT]
-> 
-> Aby bylo možné se připojit ke clusterované mezipaměti, je `publicNetworkAccess` nutné nastavit na `Disabled` a může to být pouze jedno připojení privátního koncového bodu. 
 >
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Vytvoření privátního koncového bodu s existující službou Azure cache pro instanci Redis 
@@ -173,7 +161,7 @@ Pokud chcete vytvořit privátní koncový bod, postupujte podle těchto kroků.
 
 2. Vyberte instanci mezipaměti, do které chcete přidat privátní koncový bod.
 
-3. Na levé straně obrazovky vyberte **(Preview) soukromý koncový bod**.
+3. Na levé straně obrazovky vyberte **privátní koncový bod**.
 
 4. Kliknutím na tlačítko **privátního koncového bodu** vytvořte soukromý koncový bod.
 
@@ -204,16 +192,36 @@ Pokud chcete vytvořit privátní koncový bod, postupujte podle těchto kroků.
 
 13. Po zobrazení zprávy se zobrazeným zeleným **ověřením** vyberte **vytvořit**.
 
+> [!IMPORTANT]
+> 
+> K dispozici je `publicNetworkAccess` příznak, který je `Disabled` ve výchozím nastavení nastaven. 
+> Tento příznak slouží k tomu, aby bylo možné volitelně dovolit přístup k mezipaměti veřejného i privátního koncového bodu, pokud je nastaven na hodnotu `Enabled` . Pokud je tato možnost nastavená na `Disabled` , umožní přístup jenom k privátnímu koncovému bodu. Můžete nastavit hodnotu na `Disabled` nebo `Enabled` . Další podrobnosti o tom, jak změnit hodnotu, najdete v tématu [Nejčastější dotazy](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access) .
+>
+>
+
+
 ## <a name="faq"></a>Časté otázky
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Proč se nemůžu připojit k privátnímu koncovému bodu?
-Pokud vaše mezipaměť již není vloženou mezipamětí virtuální sítě, nelze použít privátní koncové body s instancí mezipaměti. Pokud vaše instance mezipaměti používá nepodporovanou funkci (uvedená níže), nebudete se moct připojit k vaší privátní instanci koncového bodu. Kromě toho je potřeba instance mezipaměti vytvořit po 27 od července po použití privátních koncových bodů.
+Pokud vaše mezipaměť již není vloženou mezipamětí virtuální sítě, nelze použít privátní koncové body s instancí mezipaměti. Pokud vaše instance mezipaměti používá nepodporovanou funkci (uvedená níže), nebudete se moct připojit k vaší privátní instanci koncového bodu.
 
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>Jaké funkce nejsou podporovány soukromými koncovými body?
-Geografická replikace, pravidla brány firewall, podpora konzoly portálu, více koncových bodů na Clusterovou mezipaměť, trvalost pro pravidla firewallu a redundanci zóny. 
+V současné době se nepodporuje redundance zóny, podpora konzoly portálu a trvalost na účty úložiště brány firewall. 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Jak můžu změnit svůj soukromý koncový bod tak, aby byl zakázán nebo povolen z veřejného přístupu k síti?
-K dispozici je `publicNetworkAccess` příznak, který je `Disabled` ve výchozím nastavení nastaven. Tento příznak slouží k tomu, aby bylo možné volitelně dovolit přístup k mezipaměti veřejného i privátního koncového bodu, pokud je nastaven na hodnotu `Enabled` . Pokud je tato možnost nastavená na `Disabled` , umožní přístup jenom k privátnímu koncovému bodu. Tuto hodnotu můžete nastavit na `Disabled` nebo `Enabled` s následující žádostí o opravu. Upravte hodnotu tak, aby odrážela příznak, který chcete mít v mezipaměti.
+K dispozici je `publicNetworkAccess` příznak, který je `Disabled` ve výchozím nastavení nastaven. Tento příznak slouží k tomu, aby bylo možné volitelně dovolit přístup k mezipaměti veřejného i privátního koncového bodu, pokud je nastaven na hodnotu `Enabled` . Pokud je tato možnost nastavená na `Disabled` , umožní přístup jenom k privátnímu koncovému bodu. Hodnotu můžete nastavit na `Disabled` nebo `Enabled` v Azure Portal nebo pomocí žádosti o opravu rozhraní RESTful API. 
+
+Chcete-li změnit hodnotu v Azure Portal, postupujte podle následujících kroků.
+
+1. V Azure Portal vyhledejte **mezipaměť Azure pro Redis** a stiskněte klávesu ENTER nebo ji vyberte v návrzích hledání.
+
+2. Vyberte instanci mezipaměti, pro kterou chcete změnit hodnotu přístupu k veřejné síti.
+
+3. Na levé straně obrazovky vyberte **privátní koncový bod**.
+
+4. Klikněte na tlačítko **Povolit přístup k veřejné síti** .
+
+Pokud chcete změnit hodnotu prostřednictvím žádosti o opravu rozhraní RESTful API, přečtěte si níže a upravte hodnotu tak, aby odrážela příznak, který chcete mít v mezipaměti.
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -223,24 +231,23 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>Jak můžu mít více koncových bodů v různých virtuálních sítích?
+Aby bylo možné mít více privátních koncových bodů v různých virtuálních sítích, je nutné _před_ vytvořením privátního koncového bodu ručně nakonfigurovat privátní zónu DNS na více virtuálních sítí. Další informace najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](../private-link/private-endpoint-dns.md). 
+
+### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>Co se stane, když odstraním všechny privátní koncové body v mém cache?
+Po odstranění privátních koncových bodů v mezipaměti může být instance mezipaměti nedosažitelná, dokud explicitně nepovolíte přístup k veřejné síti nebo přidáte další privátní koncový bod. Příznak můžete změnit `publicNetworkAccess` buď na Azure Portal, nebo prostřednictvím žádosti o opravu rozhraní RESTful API. Další podrobnosti o tom, jak změnit hodnotu, najdete v tématu [Nejčastější dotazy](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access) .
+
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Jsou povoleny skupiny zabezpečení sítě (NSG) pro privátní koncové body?
 Ne, jsou zakázané u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](../private-link/disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v jakékoli klientské podsíti bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR. 
 
 Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32, abyste mohli přepsat trasy privátních koncových bodů. Protokoly toku NSG a informace o monitorování pro odchozí připojení se pořád podporují a dají se použít.
 
-### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Můžu použít pravidla brány firewall se soukromými koncovými body?
-Ne, jedná se o aktuální omezení privátních koncových bodů. Pokud jsou pravidla brány firewall nakonfigurovaná v mezipaměti, privátní koncový bod nebude fungovat správně.
-
-### <a name="how-can-i-connect-to-a-clustered-cache"></a>Jak se můžu připojit ke clusterované mezipaměti?
-`publicNetworkAccess` musí být nastavená na `Disabled` a může to být jenom jedno připojení privátního koncového bodu.
-
 ### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Vzhledem k tomu, že instance privátního koncového bodu není ve virtuální síti, jak je přidružená k virtuální síti?
 Je propojena pouze s vaší virtuální sítí. Vzhledem k tomu, že není ve vaší virtuální síti, nemusíte u závislých koncových bodů měnit pravidla NSG.
 
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Jak můžu migrovat vloženou mezipaměť virtuální sítě do mezipaměti privátního koncového bodu?
-Bude nutné odstranit vloženou mezipaměť virtuální sítě a vytvořit novou instanci mezipaměti s privátním koncovým bodem.
+Bude nutné odstranit vloženou mezipaměť virtuální sítě a vytvořit novou instanci mezipaměti s privátním koncovým bodem. Další informace najdete v tématu [migrace do Azure cache pro Redis](cache-migration-guide.md) .
 
 ## <a name="next-steps"></a>Další kroky
-
 * Další informace o privátním propojení Azure najdete v [dokumentaci k privátním odkazům Azure](../private-link/private-link-overview.md).
 * Informace o porovnání různých možností izolace sítě pro instanci mezipaměti najdete v [dokumentaci k možnostem izolace sítě Azure cache pro Redis](cache-network-isolation.md).

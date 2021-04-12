@@ -32,6 +32,8 @@
     - name: Přiřazení zásad – šablona Resource Manageru
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: Přiřazení zásad – bicep
+      href: ./assign-policy-bicep.md
     - name: Přiřazení zásad – Terraform
       displayName: 'assign, compliance, hcl, provider'
       href: ./assign-policy-terraform.md

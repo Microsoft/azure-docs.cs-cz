@@ -12,16 +12,16 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e01a3b1538c6bf3030e5c8f129606adaecffda60
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643758"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105319"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce (Preview)
+# <a name="configure-the-admin-consent-workflow"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce
 
-Tento článek popisuje, jak povolit funkci pracovní postup pro vyjádření souhlasu správce (Preview), která koncovým uživatelům dává možnost požádat o přístup k aplikacím, které vyžadují souhlas správce.
+Tento článek popisuje, jak povolit funkci pracovního postupu pro vyjádření souhlasu správce, která koncovým uživatelům dává možnost požádat o přístup k aplikacím, které vyžadují souhlas správce.
 
 Bez pracovního postupu souhlasu správce se při pokusu o přístup k aplikaci, která vyžaduje oprávnění k přístupu k datům organizace, zablokuje uživatel v tenantovi, kde je zakázaný souhlas uživatele. Uživateli se zobrazí obecná chybová zpráva s upozorněním, že nemají oprávnění k přístupu k aplikaci a že by si měli požádat o pomoc správce. Uživatel ale často neví, kdo má kontaktovat, takže buď v aplikaci vytvoří nový místní účet, nebo ho v něm vytvoří. I když je správce upozorněn, není vždy jednodušší proces, který správcům umožňuje udělit přístup a upozorňovat jejich uživatele.
  
@@ -38,7 +38,7 @@ Pokud chcete povolit pracovní postup souhlasu správce a zvolit kontrolory:
 3. Do vyhledávacího pole filtru zadejte "**Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 4. V navigační nabídce klikněte na **podnikové aplikace**. 
 5. V části **Spravovat** vyberte **uživatelská nastavení**.
-6. V části **žádosti o souhlas správce (Preview)** **můžou uživatelé požádat o souhlas správce na aplikace** , které nemůžou udělit souhlas s **Ano**.
+6. V části **žádosti o souhlas správce** **můžou uživatelé požádat o souhlas správce na aplikace** , které nemůžou udělit souhlas s **Ano**.
 
    ![Konfigurovat nastavení pracovního postupu pro vyjádření souhlasu správce](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ Chcete-li zkontrolovat žádosti o souhlas správce a provést akci:
 2. V horní části levé navigační nabídky vyberte **všechny služby** . Otevře se **rozšíření Azure Active Directory** .
 3. Do vyhledávacího pole filtru zadejte "**Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 4. V navigační nabídce klikněte na **podnikové aplikace**.
-5. V části **aktivita** vyberte **správce žádosti o souhlas (Preview)**.
+5. V části **aktivita** vyberte **správce žádosti o souhlas**.
 
    > [!NOTE]
    > Revidující uvidí pouze požadavky správce, které byly vytvořeny poté, co byli určeni jako kontrolor.
@@ -112,11 +112,7 @@ V případě nakonfigurovaného budou všichni kontroloři dostávat e-mailová 
  
 ## <a name="audit-logs"></a>Protokoly auditu 
  
-Následující tabulka popisuje scénáře a hodnoty auditu, které jsou k dispozici pro pracovní postup pro vyjádření souhlasu správce. 
-
-> [!NOTE]
-> Uživatelský kontext objektu actor v současnosti chybí ve všech scénářích. Toto je známé omezení verze Preview.
-
+Následující tabulka popisuje scénáře a hodnoty auditu, které jsou k dispozici pro pracovní postup pro vyjádření souhlasu správce.
 
 |Scenario  |Služba Audit  |Kategorie auditu  |Aktivita auditu  |Objekt actor auditu  |Omezení protokolu auditu  |
 |---------|---------|---------|---------|---------|---------|

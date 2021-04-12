@@ -1,24 +1,24 @@
 ---
 title: Povolit ochranu úloh v integrovaném Azure Security Center
-description: Naučte se, jak povolit Azure Defenderu pro rozšiřování ochrany Azure Security Center do hybridních i cloudových prostředků.
+description: Naučte se, jak povolit Azure Defenderu pro rozšiřování ochrany Azure Security Center k prostředkům hybridního a více cloudu.
 author: memildin
 ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 02/24/2021
-ms.openlocfilehash: 6496b18c8c22cbbd4fd3344736a4b38b7a998890
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7124014821c79fa37aa04da8909e3b4ac3bcb4fb
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102108844"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492490"
 ---
 # <a name="quickstart-enable-azure-defender"></a>Rychlý Start: povolení Azure Defenderu
 
 Další informace o výhodách Azure Defenderu najdete v tématu [Security Center bezplatné vs Azure Defender](security-center-pricing.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro účely Security Center rychlých startů a kurzů musíte povolit Azure Defender. 
 

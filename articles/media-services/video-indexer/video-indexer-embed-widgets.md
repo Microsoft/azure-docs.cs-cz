@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98797774"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029722"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -66,16 +66,15 @@ Pomůcku editoru můžete použít k vytvoření nových projektů a správě p�
 
 <sup>*</sup>Vlastník by měl poskytovat `accessToken` upozornění.
 
-## <a name="embedding-videos"></a>Vkládání videí
+## <a name="embed-videos"></a>Vložení videí
 
-Tato část popisuje vložení veřejného a soukromého obsahu do aplikací.
+Tato část pojednává o vkládání videí [pomocí portálu](#the-portal-experience) nebo [k RUČNÍMU sestavení adresy URL](#assemble-the-url-manually) do aplikací. 
 
 `location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr. Příklad: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
-> [!IMPORTANT]
-> Sdílení odkazu pro widget **Playeru** nebo **Insights** bude mít přístupový token a udělí vám oprávnění jen pro čtení k vašemu účtu.
+### <a name="the-portal-experience"></a>Prostředí portálu
 
-### <a name="public-content"></a>Veřejný obsah
+Chcete-li vložit video, použijte portál, jak je popsáno níže:
 
 1. Přihlaste se k webu [video indexer](https://www.videoindexer.ai/) .
 1. Vyberte video, se kterým chcete pracovat, a stiskněte tlačítko **Přehrát**.
@@ -84,18 +83,27 @@ Tato část popisuje vložení veřejného a soukromého obsahu do aplikací.
 5. Zkopírujte kód pro vložení (zobrazí se ve **zkopírování vloženého kódu** do dialogového okna **& pro vložení sdílené složky** ).
 6. Přidejte kód do aplikace.
 
-### <a name="private-content"></a>Soukromý obsah
+> [!NOTE]
+> Sdílení odkazu pro widget **Playeru** nebo **Insights** bude mít přístupový token a udělí vám oprávnění jen pro čtení k vašemu účtu.
 
-Chcete-li vložit soukromé video, je nutné předat token přístupu v `src` atributu prvku IFRAME:
+### <a name="assemble-the-url-manually"></a>Sestavení adresy URL ručně
+
+#### <a name="public-videos"></a>Veřejná videa
+
+Můžete vložit Veřejná videa sestavení adresy URL následujícím způsobem:
+
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>`
+  
+  
+#### <a name="private-videos"></a>Soukromá videa
+
+Pokud chcete vložit soukromé video, musíte předat přístupový token (použijte k [získání přístupového tokenu videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) v `src` atributu prvku IFRAME:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
-    
-Pokud chcete získat obsah widgetu pro rozpoznávání přehledů, použijte jednu z následujících metod:
+  
+### <a name="provide-editing-insights-capabilities"></a>Poskytněte možnosti pro úpravu přehledů
 
-- Rozhraní API [pomůcky Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)<br/>
-- [Přístupový token získat přístup k videu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Přidejte ho jako parametr dotazu na adresu URL. Zadejte tuto adresu URL jako `src` hodnotu prvku IFRAME, jak je uvedeno výše.
-
-Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte předat přístupový token, který zahrnuje oprávnění k úpravám. Použijte k [widgetu Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) nebo [k získání přístupového tokenu videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true` .
+Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte předat přístupový token, který zahrnuje oprávnění k úpravám. Použijte k [získání přístupového tokenu videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true` .
 
 ## <a name="widgets-interaction"></a>Interakce widgetů
 

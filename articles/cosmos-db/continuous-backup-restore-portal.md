@@ -4,15 +4,15 @@ description: Naučte se identifikovat bod obnovení a nakonfigurovat průběžn�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 707ef9f60891c1da7c13638e233ee74e78fc20dd
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381864"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283933"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase (Preview) – použití Azure Portal
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -32,6 +32,10 @@ Při vytváření nového účtu Azure Cosmos DB pro možnost **zásady zálohov
 
 :::image type="content" source="./media/continuous-backup-restore-portal/configure-continuous-backup-portal.png" alt-text="Zřídí účet Azure Cosmos DB s konfigurací průběžného zálohování." border="true":::
 
+## <a name="backup-storage-redundancy"></a>Redundance úložiště zálohování
+
+Ve výchozím nastavení Azure Cosmos DB ukládá data o zálohování pro průběžný režim do místně redundantních objektů BLOB úložiště. Pro oblasti, které mají nakonfigurovanou redundanci zóny, je záloha uložená v objektech blob redundantních objektů úložiště. V tomto režimu nelze aktualizovat redundanci záložního úložiště.
+
 ## <a name="restore-a-live-account-from-accidental-modification"></a><a id="restore-live-account"></a>Obnovení živého účtu z náhodné úpravy
 
 Pomocí Azure Portal můžete obnovit živý účet nebo vybrané databáze a kontejnery. Data obnovíte pomocí následujících kroků:
@@ -46,7 +50,7 @@ Pomocí Azure Portal můžete obnovit živý účet nebo vybrané databáze a ko
 
    * **Bod obnovení (UTC)** – časové razítko během posledních 30 dnů. Tento účet by měl existovat v tomto časovém razítku. Můžete zadat bod obnovení ve standardu UTC. V případě, že ho chcete obnovit, může to být blízko druhé. Kliknutím na odkaz **kliknutím sem** získáte nápovědu k [identifikaci bodu obnovení](#event-feed).
 
-   * **Location (umístění** ) – cílová oblast, ve které se účet obnoví. Účet by měl existovat v této oblasti v daném časovém razítku (např. Západní USA nebo Východní USA). Účet může být obnoven pouze v oblastech, ve kterých existoval zdrojový účet.
+   * **Location (umístění** ) – cílová oblast, ve které se účet obnoví. Tento účet by měl existovat v této oblasti v daném časovém razítku (například Západní USA nebo Východní USA). Účet může být obnoven pouze v oblastech, ve kterých existoval zdrojový účet.
 
    * **Obnovit prostředek** – můžete buď zvolit **celý účet** , nebo **vybranou databázi nebo kontejner** pro obnovení. Databáze a kontejnery by měly existovat v daném časovém razítku. Na základě vybraného bodu obnovení a umístění se naplní prostředky obnovení, což umožňuje uživateli vybrat konkrétní databáze nebo kontejnery, které je potřeba obnovit.
 

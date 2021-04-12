@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+manager: femila
+ms.openlocfilehash: fa271ba87f68d46452633d2b426c7fd805f8566b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121876"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445155"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Kurz: Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic)
 

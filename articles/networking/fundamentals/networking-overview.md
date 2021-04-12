@@ -8,20 +8,20 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/28/2020
+ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 3145a52a6050272c01cd7ccb64afef0b89812753
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169884"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107699"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled síťových služeb Azure
 
 Síťové služby v Azure poskytují nejrůznější možnosti sítě, které se dají použít společně nebo samostatně. Pokud se chcete dozvědět víc o těchto klíčových funkcích, klikněte na některou z těchto klíčových funkcí:
 - [**Služby připojení**](#connect): Propojte prostředky Azure a místní prostředky pomocí kterékoli nebo kombinace těchto síťových služeb v Azure-Virtual Network (VNET), Virtual WAN, ExpressRoute, VPN Gateway, brány NAT pro virtuální sítě, Azure DNS, služby partnerského vztahu a Azure bastionu.
-- [**Služby ochrany aplikací**](#protect): Chraňte své aplikace pomocí kterékoli nebo kombinace těchto síťových služeb v Azure – Private Link, DDoS Protection, brány firewall, skupin zabezpečení sítě, firewallu webových aplikací a koncových bodů Virtual Network.
+- [**Služby ochrany aplikací**](#protect): Chraňte své aplikace pomocí kterékoli nebo kombinace těchto síťových služeb v Azure – Load Balancer, privátního odkazu, ochrany DDoS, brány firewall, skupin zabezpečení sítě, firewallu webových aplikací a Virtual Network koncových bodů.
 - [**Služby doručování aplikací**](#deliver): doručovat aplikace do sítě Azure pomocí kterékoli nebo kombinace těchto síťových služeb v azure-Content DELIVERY Network (CDN), služby Azure front-dveří, Traffic Manager, Application Gateway, Internet Analyzer a Load Balancer.
 - [**Monitorování sítě**](#monitor): Sledujte své síťové prostředky pomocí kterékoli nebo kombinace síťových služeb v Azure-Network Watcher, ExpressRoute Monitor, Azure monitor nebo terminálu pro terminálový přístup k virtuální síti (klepněte na).
 
@@ -158,13 +158,13 @@ Následující diagram znázorňuje směrování na základě cesty URL s Applic
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Příklad Application Gateway":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Služby monitorování sítě
-Tato část popisuje síťové služby v Azure, které vám pomůžou monitorovat síťové prostředky – Network Watcher Azure Monitor pro sítě, monitorování ExpressRoute, Azure Monitor a Virtual Network klepněte na.
+Tato část popisuje síťové služby v Azure, které vám pomůžou monitorovat síťové prostředky – Network Watcher, Azure Monitor Network Insights, Azure Monitor, monitorování ExpressRoute a Virtual Network klepněte.
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve virtuální síti Azure. Další informace najdete v tématu [co je Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
-### <a name="azure-monitor-for-networks-preview"></a>Verze Preview pro Azure Monitor pro sítě
-Azure Monitor pro sítě poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje také přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-overview.md), [protokolování toku pro skupiny zabezpečení sítě](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)a [Analýza provozu](../../network-watcher/traffic-analytics.md). Další informace najdete v tématu [Azure monitor pro sítě ve verzi Preview](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azure-monitor-network-insights"></a>Azure Monitor Network Insights
+Azure Monitor pro sítě poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje také přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-overview.md), [protokolování toku pro skupiny zabezpečení sítě](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)a [Analýza provozu](../../network-watcher/traffic-analytics.md). Další informace najdete v tématu [Azure monitor Network Insights](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>Monitorování ExpressRoute
 Další informace o tom, jak zobrazit metriky okruhů ExpressRoute, protokoly prostředků a výstrahy, najdete v tématu [monitorování ExpressRoute, metriky a výstrahy](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).

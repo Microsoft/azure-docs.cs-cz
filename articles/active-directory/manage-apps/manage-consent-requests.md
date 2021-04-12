@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c41543cdfff4e5ffaad614f6cb7a539d78a0bdae
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253098"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105557"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas
 
@@ -26,7 +26,7 @@ Po zákazu nebo omezení souhlasu koncového uživatele je k dispozici několik 
 
 ## <a name="process-changes-and-education"></a>Zpracování změn a vzdělávání
 
- 1. Zvažte povolení [pracovního postupu pro vyjádření souhlasu správce (Preview)](configure-admin-consent-workflow.md) , který uživatelům umožní požádat o schválení správce přímo z obrazovky pro vyjádření souhlasu.
+ 1. Zvažte možnost povolit [pracovní postup souhlasu](configure-admin-consent-workflow.md) správce, aby uživatelé mohli požádat o schválení správce přímo z obrazovky pro vyjádření souhlasu.
 
  2. Zajistěte, aby všichni správci pochopili [rámec oprávnění a souhlasu](../develop/consent-framework.md), jak se [výzva k vyjádření souhlasu](../develop/application-consent-experience.md) funguje, a jak [vyhodnotit žádost o souhlas správce na úrovni tenanta](#evaluating-a-request-for-tenant-wide-admin-consent).
  3. Zkontrolujte stávající procesy vaší organizace, aby si uživatelé mohli požádat o schválení pro aplikaci správcem, a pokud to bude nutné, proveďte v případě potřeby aktualizace. V případě změny procesů:

@@ -23,19 +23,19 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující položky:
 
 - Nainstalujte Visual Studio Code nebo Visual Studio.
-- [Vytvořte účet Media Services](./create-account-howto.md).<br/>Nezapomeňte zkopírovat podrobnosti přístupu k rozhraní API ve formátu JSON nebo uložit hodnoty potřebné pro připojení k účtu Media Services ve formátu souboru. env použitém v této ukázce.
+- [Vytvořte účet Media Services](./account-create-how-to.md).<br/>Nezapomeňte zkopírovat podrobnosti přístupu k rozhraní API ve formátu JSON nebo uložit hodnoty potřebné pro připojení k účtu Media Services ve formátu souboru. env použitém v této ukázce.
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](./access-api-howto.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API v této ukázce nebo zadat do formátu souboru. env. 
 - Fotoaparát nebo zařízení (jako laptop), které se používá k vysílání události.
-- Místní softwarový kodér, který kóduje datový proud kamery a odesílá ho do Media Services služby živého streamování pomocí protokolu RTMP, najdete v tématu [Doporučené místní živé kodéry](recommended-on-premises-live-encoders.md). Datový proud musí být ve formátu **RTMP** nebo **Smooth Streaming**.  
+- Místní softwarový kodér, který kóduje datový proud kamery a odesílá ho do Media Services služby živého streamování pomocí protokolu RTMP, najdete v tématu [Doporučené místní živé kodéry](encode-recommended-on-premises-live-encoders.md). Datový proud musí být ve formátu **RTMP** nebo **Smooth Streaming**.  
 - V této ukázce se doporučuje začít se softwarovým kodérem, jako je bezplatný [software pro vysílání Open OBS Studio](https://obsproject.com/download) , aby bylo snadné začít. 
 
 > [!TIP]
-> Než budete pokračovat, přečtěte si téma [Živé streamování s Media Services v3](live-streaming-overview.md). 
+> Než budete pokračovat, přečtěte si téma [Živé streamování s Media Services v3](stream-live-streaming-concept.md). 
 
 ## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky
 
@@ -70,15 +70,15 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-a-live-event"></a>Vytvoření živé události
 
-V této části se dozvíte, jak vytvořit **průchozí** typ živé události (LiveEventEncodingType set to None). Další informace o dalších dostupných typech živých událostí najdete v tématu [typy událostí typu Live](live-events-outputs-concept.md#live-event-types). Kromě předávacího typu můžete pro cloudové kódování 720P nebo 1080P s adaptivní přenosovou rychlostí použít živý překódování živé události. 
+V této části se dozvíte, jak vytvořit **průchozí** typ živé události (LiveEventEncodingType set to None). Další informace o dalších dostupných typech živých událostí najdete v tématu [typy událostí typu Live](live-event-outputs-concept.md#live-event-types). Kromě předávacího typu můžete pro cloudové kódování 720P nebo 1080P s adaptivní přenosovou rychlostí použít živý překódování živé události. 
  
 Některé věci, které byste mohli chtít zadat při vytváření živé události:
 
 * Protokol ingestování pro živou událost (aktuálně jsou podporovány protokoly RTMP a Smooth Streaming).<br/>Možnost protokolu se nedá změnit, když je spuštěná živá událost nebo její přidružený živý výstup. Pokud požadujete různé protokoly, vytvořte samostatnou živou událost pro každý protokol streamování.  
 * Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které můžou ingestovat video do této živé události. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nejsou zadané žádné IP adresy a není k dispozici žádná definice pravidla, nebude povolena žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: IpV4 adresa se čtyřmi čísly nebo rozsahem adres CIDR.
-* Při vytváření události můžete zadat automatické spuštění. <br/>Pokud je vlastnost autostart nastavena na hodnotu true, spustí se po vytvoření živá událost. To znamená, že se fakturace začne ihned po spuštění živé události. Chcete-li zastavit další fakturaci, je nutné explicitně volat stop u prostředku živé události. Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
+* Při vytváření události můžete zadat automatické spuštění. <br/>Pokud je vlastnost autostart nastavena na hodnotu true, spustí se po vytvoření živá událost. To znamená, že se fakturace začne ihned po spuštění živé události. Chcete-li zastavit další fakturaci, je nutné explicitně volat stop u prostředku živé události. Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing-concept.md).
 K dispozici jsou také pohotovostní režimy, ve kterých je možné spustit živou událost ve stavu přiděleno nižší náklady, což urychluje přesun do spuštěného stavu. To je užitečné v situacích, jako je hotpools, které potřebují rychle vysílat kanály do datových proudů.
-* Aby adresa URL pro ingestování mohla být prediktivní a snazší pro údržbu v rámci živého kodéru založeného na hardwaru, nastavte vlastnost "useStaticHostname" na hodnotu true. Podrobné informace najdete v tématu [adresy URL pro příjem živých událostí](live-events-outputs-concept.md#live-event-ingest-urls).
+* Aby adresa URL pro ingestování mohla být prediktivní a snazší pro údržbu v rámci živého kodéru založeného na hardwaru, nastavte vlastnost "useStaticHostname" na hodnotu true. Podrobné informace najdete v tématu [adresy URL pro příjem živých událostí](live-event-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -128,7 +128,7 @@ Vytvořte Asset pro živý výstup, který se má použít. Ve výše uvedeném 
 #### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 
 > [!NOTE]
-> Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno** . Pokud chcete spustit streamování vašeho obsahu a využít výhod [dynamického balení](dynamic-packaging-overview.md) a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **spuštěno** .
+> Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno** . Pokud chcete spustit streamování vašeho obsahu a využít výhod [dynamického balení](encode-dynamic-packaging-concept.md) a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **spuštěno** .
 
 Když publikujete prostředek pomocí lokátoru streamování, bude se dál zobrazovat živá událost (až do délky okna DVR), dokud nevyprší platnost nebo odstranění lokátoru streamování, podle toho, co nastane dřív. Tímto způsobem zpřístupníte virtuální "pásku", která je k dispozici pro vaši cílovou skupinu pro zobrazení v reálném čase a na vyžádání. Stejná adresa URL se dá použít ke sledování živé události, okna DVR nebo assetu na vyžádání po dokončení nahrávání (když se odstraní živý výstup).
 

@@ -10,6 +10,8 @@
       href: hpc-cache-namespace.md
     - name: Vysvětlení modelů využití mezipaměti
       href: cache-usage-models.md
+    - name: 'Rozhodněte, jestli je mezipaměť HPC správné řešení.'
+      href: usage-scenarios.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -68,6 +70,8 @@
       href: hpc-cache-blob-firewall-fix.md
     - name: Řešení potíží s vytvářením cílů úložiště NFS
       href: troubleshoot-nas.md
+    - name: Použití úložiště objektů BLOB připojené k systému souborů NFS s mezipamětí Azure HPC
+      href: nfs-blob-considerations.md
     - name: Zotavení z oblastního výpadku
       href: hpc-region-recovery.md
     - name: Použití šifrovacích klíčů spravovaných zákazníkem

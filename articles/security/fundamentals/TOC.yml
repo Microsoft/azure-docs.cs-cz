@@ -65,6 +65,8 @@
       href: steps-secure-identity.md
     - name: Volba bez hesla
       href: ../../active-directory/authentication/concept-authentication-passwordless.md
+    - name: Authentication
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=azure/security/fundamentals/toc.json&bc=azure/security/breadcrumb/toc.json
 - name: Zabezpečení sítě
   items:
     - name: Přehled zabezpečení
@@ -89,7 +91,7 @@
       href: virtual-machines-overview.md
     - name: Osvědčené postupy – úlohy IaaS
       href: iaas.md
-    - name: Image na webu Azure Marketplace
+    - name: Image z Azure Marketplace
       href: azure-marketplace-images.md
 - name: 'Zabezpečení, šifrování a úložiště dat'
   items:

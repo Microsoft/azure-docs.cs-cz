@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781275"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443402"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
@@ -33,6 +33,13 @@ Azure AD B2C rozložení stránky používá následující verzi [knihovny jQue
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>Stránka s vlastním kontrolním výrazem (selfasserted)
+
+**2.1.4**
+- Byla aktualizována verze jQuery na 3.5.1.
+- Verze HandlebarJS se aktualizovala na 4.7.6.
+
+**2.1.3**
+- Opravy zabezpečení.
 
 **2.1.2**
 - Opravili jsme problém s kódováním lokalizace pro jazyky, jako je španělština a francouzština.
@@ -87,6 +94,14 @@ Azure AD B2C rozložení stránky používá následující verzi [knihovny jQue
 > [!TIP]
 > Pokud vaše stránka bude lokalizována pro podporu více národních prostředí nebo jazyků v toku uživatele. Článek s [ID lokalizace](localization-string-ids.md) poskytuje seznam identifikátorů lokalizace, které můžete použít pro vybranou verzi stránky.
 
+**2.1.4**
+- Byla aktualizována verze jQuery na 3.5.1.
+- Verze HandlebarJS se aktualizovala na 4.7.6.
+
+**2.1.3**
+- Opravy zabezpečení.
+- Drobné opravy chyb.
+
 **2.1.2**
 - Opravili jsme problém s kódováním lokalizace pro jazyky, jako je španělština a francouzština.
 - Povoluje se odkaz "Zapomenuté heslo", který se použije jako výměna deklarací identity. Další informace najdete v tématu [Samoobslužné resetování hesla](add-password-reset-policy.md#self-service-password-reset-recommended).
@@ -126,6 +141,15 @@ Azure AD B2C rozložení stránky používá následující verzi [knihovny jQue
 
 ## <a name="mfa-page-multifactor"></a>Stránka MFA (více faktů)
 
+**1.2.4**
+- Byla aktualizována verze jQuery na 3.5.1.
+- Verze HandlebarJS se aktualizovala na 4.7.6.
+
+**1.2.3**
+- Povoluje se přepsání řetězce popisu pomocí jazykové lokalizace.
+- Opravy zabezpečení.
+- Drobné opravy chyb.
+
 **1.2.2**
 - Opravili jsme problém s automatickým vyplněním ověřovacího kódu při použití iOS.
 - Opravili jsme problém s přesměrováním tokenu na předávající stranu z WebView pro Android. 
@@ -162,6 +186,10 @@ Azure AD B2C rozložení stránky používá následující verzi [knihovny jQue
 
 ## <a name="exception-page-globalexception"></a>Stránka výjimky (globalexception)
 
+**1.2.1**
+- Byla aktualizována verze jQuery na 3.5.1.
+- Verze HandlebarJS se aktualizovala na 4.7.6.
+
 **1.2.0**
 
 - Opravy usnadnění
@@ -182,6 +210,10 @@ Azure AD B2C rozložení stránky používá následující verzi [knihovny jQue
 - Původní vydaná verze
 
 ## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>Další stránky (ProviderSelection, ClaimsConsent, UnifiedSSD)
+
+**1.2.1**
+- Byla aktualizována verze jQuery na 3.5.1.
+- Verze HandlebarJS se aktualizovala na 4.7.6.
 
 **1.2.0**
 

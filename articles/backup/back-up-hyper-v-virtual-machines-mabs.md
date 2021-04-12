@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509502"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107206"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -63,7 +63,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 |Požadavek|Podrobnosti|
 |------------|-------|
 |Požadavky na MABS|– Pokud chcete provést obnovení na úrovni položky pro virtuální počítače (obnovení souborů, složek, svazků), budete muset na server MABS nainstalovat roli Hyper-V.  Pokud chcete pouze obnovit virtuální počítač, nikoli úroveň položky, není tato role nutná.<br />– Můžete chránit až 800 virtuálních počítačů 100 GB na jednom serveru MABS a povolíte více serverů MABS podporujících větší clustery.<br />– MABS vyloučí stránkovací soubor z přírůstkového zálohování pro zlepšení výkonu zálohování virtuálních počítačů.<br />-MABS může zálohovat server nebo cluster Hyper-V ve stejné doméně jako server MABS nebo v podřízené nebo důvěryhodné doméně. Pokud chcete vytvořit zálohu technologie Hyper-V v pracovní skupině nebo v nedůvěryhodné doméně, bude nutné nastavit ověřování. Pro jeden server Hyper-V můžete použít ověřování protokolem NTLM nebo ověření certifikátu. V případě clusteru můžete použít pouze ověřování certifikátů.<br />– Na úrovni hostitele se nedají zálohovat data virtuálního počítače z průchozích disků. V tomto scénáři doporučujeme použít zálohování na úrovni hostitele k zálohování souborů VHD a zálohování na úrovni hosta k zálohování dalších dat, která nejsou na hostiteli viditelná.<br />   – Můžete zálohovat virtuální počítače uložené na svazcích s odstraněnými duplicitními daty.|
-|Požadavky virtuálních počítačů Hyper-V|-Verze integračních komponent, které běží na virtuálním počítači, by měla být stejná jako verze hostitele Hyper-V. <br />– Pro každou zálohu virtuálního počítače budete potřebovat volné místo na svazku, který je hostitelem souborů virtuálního pevného disku, abyste zajistili technologii Hyper-V dost místa pro rozdílové porovnávání disků (AVHD) během zálohování. Prostor musí být minimálně roven času vypočítanému jako **Počáteční velikost disku\*Klidové vytížení\*Zálohování**. Pokud spouštíte více záloh v clusteru, budete potřebovat dostatečnou kapacitu úložiště (použijte tento výpočet) pro AVHD na všech virtuálních počítačích.<br />– Chcete-li zálohovat virtuální počítače nacházející se na hostitelských serverech technologie Hyper-V se systémem Windows Server 2012 R2, musí mít virtuální počítač zadaný řadič SCSI, a to i v případě, že není připojen k žádnému. (V online zálohování Windows Serveru 2012 R2 Hostitel Hyper-V připojí nový virtuální pevný disk ve virtuálním počítači a později ho odpojí. To může podporovat jenom řadič SCSI, a proto se vyžaduje pro online zálohování virtuálního počítače.  Bez tohoto nastavení se při pokusu o zálohování virtuálního počítače vydá událost s ID 10103.)|
+|Požadavky virtuálních počítačů Hyper-V|-Verze integračních komponent, které běží na virtuálním počítači, by měla být stejná jako verze hostitele Hyper-V. <br />– Pro každou zálohu virtuálního počítače budete potřebovat volné místo na svazku, který je hostitelem souborů virtuálního pevného disku, abyste zajistili technologii Hyper-V dost místa pro rozdílové porovnávání disků (AVHD) během zálohování. Prostor musí být minimálně roven času vypočítanému jako **Počáteční velikost disku\*Klidové vytížení\*Zálohování**. Pokud spouštíte více záloh v clusteru, budete potřebovat dostatečnou kapacitu úložiště (použijte tento výpočet) pro AVHD na všech virtuálních počítačích.<br />– Chcete-li zálohovat virtuální počítače nacházející se na hostitelských serverech technologie Hyper-V se systémem Windows Server 2012 R2, musí mít virtuální počítač zadaný řadič SCSI, a to i v případě, že není připojen k žádnému. (V systému Windows Server 2012 R2 Backup Hostitel Hyper-V připojí nový virtuální pevný disk ve virtuálním počítači a později ho odpojí. To může podporovat jenom řadič SCSI, a proto se vyžaduje pro online zálohování virtuálního počítače.  Bez tohoto nastavení se při pokusu o zálohování virtuálního počítače vydá událost s ID 10103.)|
 |Požadované součásti systému Linux|– Virtuální počítače se systémem Linux můžete zálohovat pomocí MABS. Podporovány jsou pouze snímky konzistentních souborů.|
 |Zálohování virtuálních počítačů s úložištěm CSV|– K úložišti CSV nainstalujte na server Hyper-V zprostředkovatele hardwaru služby Stínová kopie svazku (VSS). Kontaktujte dodavatele sítě SAN pro poskytovatele hardwaru VSS.<br />– Pokud se jeden uzel v clusteru CSV neočekávaně ukončí, MABS provede kontrolu konzistence u virtuálních počítačů, které v tomto uzlu běžely.<br />– Pokud potřebujete restartovat server Hyper-V, který má na clusteru CSV povolený nástroj BitLocker Drive Encryption, je potřeba, abyste spustili kontrolu konzistence virtuálních počítačů Hyper-V.|
 |Zálohování virtuálních počítačů s úložištěm SMB|– Zapnutím automatického připojení na serveru, na kterém běží technologie Hyper-V, povolíte ochranu virtuálního počítače.<br />   – Zakažte funkci TCP Chimney Offload.<br />– Zajistěte, aby všechny účty machine$ s technologií Hyper-V měly úplná oprávnění v konkrétních vzdálených sdílených složkách souborů SMB.<br />– Ujistěte se, že cesta k souboru pro všechny součásti virtuálního počítače během obnovení do alternativního umístění je kratší než 260 znaků. Pokud ne, obnovení může být úspěšné, ale technologie Hyper-V nebude moci připojit virtuální počítač.<br />– Následující scénáře nejsou podporovány:<br />     Nasazení, ve kterých jsou některé součásti virtuálního počítače na místních svazcích a některé součásti na vzdálených svazcích; adresa IPv4 nebo IPv6 pro souborový server umístění úložiště a obnovení virtuálního počítače do počítače, který používá vzdálené sdílené složky protokolu SMB.<br />– Službu agenta VSS souborového serveru budete muset povolit na každém serveru SMB – přidat ho v části **Přidat role a funkce**  >  **Vybrat role serveru** souborové služby a služba úložiště Souborová služba souborového  >    >    >    >  **serveru služba agenta VSS**.|
@@ -76,7 +76,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
    - Celková velikost 800 virtuálních počítačů: 80 TB
    - Požadované místo pro úložiště pro zálohování: 80 TB
 
-2. Nastavte agenta ochrany MABS Protection na serverech Hyper-V nebo na uzlech clusteru Hyper-V. Pokud provádíte zálohování na úrovni hosta, nainstalujete agenta na virtuální počítače, které chcete zálohovat na úrovni hosta.
+2. Nastavte agenta ochrany MABS Protection na serverech Hyper-V nebo na uzlech clusteru Hyper-V.
 
 3. V konzole pro správu MABS vyberte **ochrana**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** .
 
@@ -88,7 +88,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 
     > [!NOTE]
     >
-    >Pokud chráníte úlohy aplikace a ta podporuje přírůstkové zálohování, vytváří se body obnovení na základě nastavení četnosti synchronizací. Pokud ne, MABS spustí expresní úplné zálohování místo přírůstkového zálohování a vytvoří body obnovení v souladu s plánem expresního zálohování.
+    >Pokud chráníte úlohy aplikace a ta podporuje přírůstkové zálohování, vytváří se body obnovení na základě nastavení četnosti synchronizací. Pokud ne, MABS spustí expresní úplné zálohování místo přírůstkového zálohování a vytvoří body obnovení v souladu s plánem expresního zálohování.<br></br>Proces zálohování nezálohuje kontrolní body přidružené k virtuálním počítačům.
 
 7. Na stránce **zkontrolovat přidělení disku** zkontrolujte přidělené místo na disku fondu úložiště pro skupinu ochrany.
 

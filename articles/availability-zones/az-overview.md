@@ -4,16 +4,16 @@ description: Přečtěte si o oblastech a Zóny dostupnosti v Azure, které odpo
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 04/09/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 44ff938d0990a1a7794140a82c0e9222bb69a5d7
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a15a94694f3c0623830650a8b5bbb00dc4c4cb6b
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384251"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285509"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
@@ -23,7 +23,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Popis |
+| Termín nebo koncept | Description |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -100,45 +100,35 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Azure Data Lake Storage Gen2           | Azure Active Directory Domain Services            | 
 > | Azure ExpressRoute                     | Azure Bastion                                     | 
 > | Veřejná IP adresa Azure                        | Azure Cache for Redis                             | 
-> | Azure SQL Database                     | Azure Cognitive Search                            | 
-> | Spravovaná instance Azure SQL             | Azure Cognitive Services                          | 
-> | Disk Storage                           | Azure Cognitive Services: Počítačové zpracování obrazu         | 
-> | Event Hubs                             | Cognitive Services Azure: Content Moderator       | 
-> | Key Vault                              | Azure Cognitive Services: Face                    | 
-> | Nástroj pro vyrovnávání zatížení                          | Azure Cognitive Services: moderní čtečka        | 
-> | Service Bus                            | Cognitive Services Azure: Language Understanding  | 
-> | Service Fabric                         | Azure Cognitive Services: hlasové služby         | 
-> | Storage: horká a studená Blob Storage vrstva   | Azure Cognitive Services: Analýza textu          | 
-> | Úložiště: Managed Disks                 | Azure Cognitive Services: Translator              | 
-> | Virtual Machine Scale Sets             | Průzkumník dat Azure                               | 
-> | Virtual Machines                       | Azure Data Share                                  | 
-> | Virtual Machines: vyhrazený hostitel Azure | Azure Database for MySQL                          | 
-> | Virtual Machines: Av2-Series           | Azure Database for PostgreSQL                     | 
-> | Virtual Machines: Bs-Series            | Azure DDoS Protection                             | 
-> | Virtual Machines: DSv2-Series          | Azure Firewall                                    | 
-> | Virtual Machines: DSv3-Series          | Azure Firewall Manager                            | 
-> | Virtual Machines: Dv2-Series           | Azure Functions                                   | 
-> | Virtual Machines: Dv3-Series           | Azure IoT Hub                                     |     
-> | Virtual Machines: ESv3-Series          | Azure Kubernetes Service (AKS)                    | 
-> | Virtual Machines: Ev3-Series           | Azure Machine Learning                            | 
-> | Virtual Network                        | Azure Monitor: Application Insights               | 
-> | VPN Gateway                            | Azure Monitor: Log Analytics                      | 
-> |                                        | Azure Private Link                                | 
-> |                                        | Azure Red Hat OpenShift                           | 
-> |                                        | Azure Site Recovery                               | 
-> |                                        | Azure Stream Analytics                            | 
-> |                                        | Azure Synapse Analytics                           | 
-> |                                        | Batch                                             | 
-> |                                        | Cloud Services: řada M-Series                          | 
-> |                                        | Container Instances                               | 
-> |                                        | Container Registry                                | 
+> | Azure SQL Database                     | Azure Cognitive Services                          | 
+> | Spravovaná instance Azure SQL             | Azure Cognitive Services: Počítačové zpracování obrazu         | 
+> | Disk Storage                           | Cognitive Services Azure: Content Moderator       | 
+> | Event Hubs                             | Azure Cognitive Services: Face                    | 
+> | Key Vault                              | Azure Cognitive Services: Analýza textu          | 
+> | Nástroj pro vyrovnávání zatížení                          | Průzkumník dat Azure                               | 
+> | Service Bus                            | Azure Database for MySQL                          | 
+> | Service Fabric                         | Azure Database for PostgreSQL                     | 
+> | Storage: horká a studená Blob Storage vrstva   | Azure DDoS Protection                             | 
+> | Úložiště: Managed Disks                 | Azure Firewall                                    | 
+> | Virtual Machine Scale Sets             | Azure Firewall Manager                            | 
+> | Virtual Machines                       | Azure Functions                                   | 
+> | Virtual Machines: vyhrazený hostitel Azure | Azure IoT Hub                                     | 
+> | Virtual Machines: Av2-Series           | Azure Kubernetes Service (AKS)                    | 
+> | Virtual Machines: Bs-Series            | Azure Monitor: Application Insights               | 
+> | Virtual Machines: DSv2-Series          | Azure Monitor: Log Analytics                      | 
+> | Virtual Machines: DSv3-Series          | Azure Private Link                                | 
+> | Virtual Machines: Dv2-Series           | Azure Site Recovery                               | 
+> | Virtual Machines: Dv3-Series           | Azure Synapse Analytics                           |     
+> | Virtual Machines: ESv3-Series          | Batch                                             | 
+> | Virtual Machines: Ev3-Series           | Cloud Services: řada M-Series                          | 
+> | Virtual Network                        | Container Instances                               | 
+> | VPN Gateway                            | Container Registry                                | 
 > |                                        | Data Factory                                      | 
 > |                                        | Event Grid                                        | 
 > |                                        | HDInsight                                         |  
 > |                                        | Logic Apps                                        | 
 > |                                        | Media Services                                    | 
 > |                                        | Network Watcher                                   | 
-> |                                        | Notification Hubs                                 | 
 > |                                        | Blob Storage úrovně Premium                              | 
 > |                                        | Úložiště Premium Files                             | 
 > |                                        | Virtual Machines: Ddsv4-Series                    | 
@@ -163,11 +153,17 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > |------------------------------------------------------|
 > | Azure API for FHIR                                   |
 > | Azure Analysis Services                              |
+> | Služba Azure Blockchain                             |
 > | Azure Cognitive Services: detektor anomálií           |
 > | Cognitive Services Azure: Custom Vision              |
 > | Azure Cognitive Services: Nástroj pro rozpoznávání formulářů            |
+> | Azure Cognitive Services: moderní čtečka           |
+> | Cognitive Services Azure: Language Understanding     |
 > | Azure Cognitive Services: přizpůsobování               |
 > | Cognitive Services Azure: QnA Maker                  |
+> | Azure Cognitive Services: hlasové služby            |
+> | Azure Data Share                                     |
+> | Azure Databricks                                     |
 > | Azure Database for MariaDB                           |
 > | Azure Database Migration Service                     |
 > | Rezervované HSM Azure                                  |
@@ -176,13 +172,13 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Azure HPC Cache                                      |
 > | Azure Lab Services                                   |
 > | Azure NetApp Files                                   |
+> | Azure Red Hat OpenShift                              |
 > | Azure SignalR Service                                |
-> | Jarní cloudová služba Azure                           |
+> | Azure Spring Cloud                                   |
+> | Azure Stream Analytics                               |
 > | Azure Time Series Insights                           |
 > | Azure VMware Solution                                |
 > | Azure VMware Solution by CloudSimple                 |
-> | Data Lake Analytics                                  |
-> | Azure Machine Learning Studio (klasický)              |
 > | Spatial Anchors                                      |
 > | Úložiště: Archiv služby Storage                             |
 > | Ultra Disk Storage                                   |

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cee71557e60be9fdd94099453d9b8617c4b3b5ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f28ddfc272e6f95106595958cacfe732b2bfc3cc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877933"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258686"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -37,7 +37,7 @@ Zabezpečení a ochrana osobních údajů jsou v rámci nejdůležitějších pr
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Ve kterých oblastech je k dispozici Azure pružinový Cloud?
 
-Východní USA, Východní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Západní USA, Západní USA 2, Západní Evropa, Severní Evropa, Velká Británie – jih, jihovýchodní Asie, Austrálie – východ, Kanada – střed, USA – sever, Střed Indie, Korea – střed, Východní Asie a Čína – východ 2 (Mooncake). [Další informace](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+Východní USA, Východní USA 2, Střed USA Střed USA – jih, Střed USA – sever, Západní USA, Západní USA 2, Západní Evropa, Severní Evropa, Velká Británie – jih, jihovýchodní Asie, Austrálie – východ, Kanada – střed, USA – sever, Střed Indie, Korea – střed, Východní Asie, Japonsko – východ, Jižní Afrika – sever a Čína – východ 2 (Mooncake). [Další informace](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Jsou všechna zákaznická data uložená mimo určenou oblast?
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950965"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107291"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
 
@@ -302,7 +302,7 @@ Jakmile projdete tento tok, vše je nastaveno na kompletní vyřazení zařízen
 
 Chcete-li aktivovat proces vyřazení, je nutné ručně odstranit zařízení z IoT Hub.
 
-Můžete to provést pomocí příkazu rozhraní [příkazového řádku Azure](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) nebo v Azure Portal. Pomocí následujících kroků odstraňte zařízení v Azure Portal:
+Můžete to provést pomocí příkazu rozhraní [příkazového řádku Azure](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete) nebo v Azure Portal. Pomocí následujících kroků odstraňte zařízení v Azure Portal:
 
 1. Přejděte do služby IoT Hub a v nabídce vlevo vyberte možnost **zařízení IoT** . 
 2. Zobrazí se zařízení s ID registrace zařízení, které jste zvolili v [první polovině tohoto článku](#auto-provision-device-using-device-provisioning-service). Alternativně můžete zvolit jakékoli jiné zařízení, které se má odstranit, pokud má v digitálních proobjektech Azure dvojitou hodnotu, abyste mohli ověřit, že se po odstranění zařízení vytvoří dvojitá vlákna automaticky.

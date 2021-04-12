@@ -5,49 +5,64 @@ description: Seznamte se s osvědčenými postupy pro vývojáře aplikací pro 
 services: container-service
 author: zr-msft
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 693cabac616dca8e108a2029c173a5e1b71c2695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cd2bab05346f66b933512e677f1d38f4514796c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516737"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105268"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací pro správu prostředků ve službě Azure Kubernetes Service (AKS)
 
-Při vývoji a spouštění aplikací ve službě Azure Kubernetes Service (AKS) je potřeba zvážit několik klíčových oblastí. Způsob správy nasazení aplikací může mít negativní dopad na činnost služeb, které poskytujete, pro koncové uživatele. Abychom vám pomohli uspět, mějte na paměti některé osvědčené postupy, které můžete při vývoji a spouštění aplikací v AKS sledovat.
+Při vývoji a spouštění aplikací ve službě Azure Kubernetes Service (AKS) je potřeba zvážit několik klíčových oblastí. Způsob správy nasazení aplikací může mít negativní dopad na činnost služeb, které poskytujete, pro koncové uživatele. Aby bylo možné postupovat úspěšně, mějte na paměti některé osvědčené postupy, které můžete při vývoji a spouštění aplikací v AKS sledovat.
 
-Tento článek o osvědčených postupech se zaměřuje na spuštění clusteru a úloh z perspektivy pro vývojáře aplikací. Informace o osvědčených postupech pro správu najdete [v tématu osvědčené postupy pro izolaci a správu prostředků ve službě Azure Kubernetes (AKS)][operator-best-practices-isolation]. V tomto článku se naučíte:
+Tento článek se zaměřuje na spuštění clusteru a úloh z perspektivy pro vývojáře aplikací. Informace o osvědčených postupech pro správu najdete [v tématu osvědčené postupy pro izolaci a správu prostředků ve službě Azure Kubernetes (AKS)][operator-best-practices-isolation]. V tomto článku se naučíte:
 
 > [!div class="checklist"]
-> * Co jsou požadavky a omezení prostředků
-> * Způsoby vývoje a nasazení aplikací s využitím mostu do Kubernetes a Visual Studio Code
-> * Jak používat `kube-advisor` Nástroj ke kontrole problémů s nasazeními
+> * Požadavky a omezení prostředků pod.
+> * Způsoby vývoje a nasazení aplikací s využitím mostu do Kubernetes a Visual Studio Code.
+> * Jak používat `kube-advisor` Nástroj ke kontrole problémů s nasazeními.
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definování požadavků a omezení prostředků pod
 
-**Doprovodné materiály k osvědčeným postupům** – nastavte v YAML manifestech pod požadavky a omezení na všechny lusky. Pokud cluster AKS používá *kvóty prostředků*, může být nasazení odmítnuto, pokud tyto hodnoty nedefinujete.
+> **Osvědčené postupy**
+> 
+> Nastavte v YAML manifestech pod požadavky a omezení na všechny lusky. Pokud cluster AKS používá *kvóty prostředků* a tyto hodnoty nedefinujete, může být nasazení odmítnuté.
 
-Hlavním způsobem správy výpočetních prostředků v rámci clusteru AKS je použití požadavků a omezení pod. Tyto požadavky a omezení umožňují plánovači Kubernetes zjistit, jaké výpočetní prostředky by měl být pod ním přiřazen.
+Pro správu výpočetních prostředků v rámci clusteru AKS použijte požadavky a omezení pod. Požadavky a omezení na hodnotu a informují Plánovač Kubernetes, který výpočetní prostředky přiřadí k poli pod.
 
-* V případě **požadavků na procesor a paměť** definujte v pravidelných intervalech velikost procesoru a paměti, které musí.
-    * Když se Plánovač Kubernetes pokusí umístit uzel pod na uzel, používají se k určení, který uzel má dostatek dostupných zdrojů pro plánování, použít žádosti pod.
-    * Požadavek na hodnotu pod se nastaví jako výchozí pro definovaný limit.
-    * Pro úpravu těchto požadavků je velmi důležité monitorovat výkon vaší aplikace. Pokud jsou požadavky na prostředky nedostatečné, může vaše aplikace obdržet snížený výkon, protože by bylo možné naplánovat uzel. Pokud jsou požadavky přehodnoceny, může být vaše aplikace zvýšena o naplánovaných potížích.
-* **Omezení počtu procesorů a paměti** jsou maximální množství procesorů a paměti, které může použít pod. Omezení paměti usnadňují definování, které lusky by měly být ukončeny v případě nestability uzlu kvůli nedostatečným prostředkům. Bez správných limitů se bude ukončit až do chvíle, kdy je zatížení prostředku zrušeno. Část pod může nebo nemusí být schopná překročit limit procesoru po určitou dobu, ale v seznamu nebude ukončený za překročení limitu procesoru. 
-    * Omezení pod vám pomůžou definovat, kdy došlo ke ztrátě řízení spotřeby prostředků pod. Při překročení limitu je pole pod prioritou pro usmrcování, aby udržoval stav uzlu a minimalizoval dopad na lusky sdílející uzel.
-    * Při nastavení limitu na hodnotu pod se výchozí hodnota nastaví na nejvyšší dostupnou hodnotu na daném uzlu.
-    * Nenastavujte limit na hodnotu pod vyšší než vaše uzly můžou podporovat. Každý uzel AKS rezervuje pro základní komponenty Kubernetes nastavenou velikost procesoru a paměti. Vaše aplikace se může pokusit spotřebovat příliš mnoho prostředků v uzlu, aby bylo možné ostatní lusky úspěšně spustit.
-    * Je velmi důležité monitorovat výkon aplikace v různou dobu během dne nebo týdne. Určete, kdy je poptávka ve špičce, a zarovnejte omezení na základě prostředků vyžadovaných pro splnění maximálního počtu požadavků aplikace.
+### <a name="pod-cpumemory-requests"></a>Požadavky na procesor/paměť na pod
+*Žádosti pod* definují sadu množství CPU a paměti, které je potřeba v pravidelných intervalech.
 
 Ve specifikacích pod je **osvědčeným postupem a velmi důležité** definovat tyto požadavky a omezení na základě výše uvedených informací. Pokud tyto hodnoty nezahrnete, Plánovač Kubernetes se nemůže přihlédnout k prostředkům, které vaše aplikace potřebuje k podpoře při plánování rozhodnutí.
 
-Pokud Plánovač umístí uzel pod na uzlu s nedostatečnými prostředky, bude výkon aplikace snížený. Pro správce clusteru se důrazně doporučuje nastavit *kvóty prostředků* v oboru názvů, který vyžaduje, abyste nastavili požadavky a omezení prostředků. Další informace najdete v tématu [kvóty prostředků v clusterech AKS][resource-quotas].
+Monitorujte výkon aplikace a upravte žádosti pod. 
+* Pokud podceňují skutečnou žádosti pod, může vaše aplikace obdržet snížený výkon z důvodu naplánování uzlu. 
+* Pokud jsou požadavky přehodnoceny, může být vaše aplikace zvýšena o naplánovaných potížích.
+
+### <a name="pod-cpumemory-limits"></a>Omezení počtu PROCESORů a paměti * * 
+*Omezení* v poli nastaví maximální množství procesoru a paměti, které může použít. 
+
+* *Omezení paměti* definují, které lusky by měly být ukončeny, když jsou uzly nestabilní kvůli nedostatečným prostředkům. Bez správných limitů bude ukončeno lusky až do chvíle, kdy je zatížení prostředku zrušeno. 
+* I když v poli pod může být překročen *limit procesoru* pravidelně, nebude ukončeno, aby se překročil limit procesoru. 
+
+Omezení pod definují, kdy došlo ke ztrátě řízení spotřeby prostředků pod. Pokud překročí limit, je pole pod označeno k usmrcování. Toto chování udržuje stav uzlu a minimalizuje dopad na lusky, které sdílí uzel. Při nastavení limitu na hodnotu pod se výchozí hodnota nastaví na nejvyšší dostupnou hodnotu na daném uzlu.
+
+Vyhněte se nastavení limitu pod vyšším, než můžou vaše uzly podporovat. Každý uzel AKS rezervuje pro základní komponenty Kubernetes nastavenou velikost procesoru a paměti. Vaše aplikace se může pokusit spotřebovat příliš mnoho prostředků v uzlu, aby bylo možné ostatní lusky úspěšně spustit.
+
+Monitorujte výkon aplikace v různou dobu během dne nebo týdne. Určete dobu potřeb špičky a zarovnejte limity na prostředky, které jsou potřeba pro splnění maximálního počtu požadavků.
+
+> [!IMPORTANT]
+>
+> Ve specifikacích pod definujte tyto požadavky a omezení na základě výše uvedených informací. Selhání při zahrnutí těchto hodnot brání plánovači Kubernetes z monitorování účtů pro prostředky, které vaše aplikace vyžadují při plánování rozhodnutí.
+
+Pokud Plánovač umístí uzel pod na uzlu s nedostatečnými prostředky, bude výkon aplikace snížený. Správci clusteru **musí** nastavit *kvóty prostředků* v oboru názvů, který vyžaduje, abyste nastavili požadavky a omezení prostředků. Další informace najdete v tématu [kvóty prostředků v clusterech AKS][resource-quotas].
 
 Pokud definujete požadavek na procesor nebo limit, hodnota se měří v jednotkách procesoru. 
 * *1,0* procesor se rovná jednomu základnímu virtuálnímu jádru na uzlu. 
-* Pro GPU se používá stejná míra.
+    * Pro GPU se používá stejná míra.
 * Můžete definovat zlomky měřené v millicores. Například *100 milionů* je *0,1* základního vCPU jádra.
 
 V následujícím základním příkladu pro jedno NGINX pod vyžádá pod *100 milionů* čas procesoru a *128Mi* paměti. Omezení prostředků v poli pod jsou nastavená na *250m* CPU a *256Mi* paměť:
@@ -74,35 +89,45 @@ Další informace o měřeních a přiřazeních prostředků najdete v tématu 
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Vývoj a ladění aplikací v clusteru AKS
 
-**Doprovodné materiály k osvědčeným postupům** – vývojové týmy by měly nasadit a LADIT cluster AKS pomocí mostu na Kubernetes.
+> **Osvědčené postupy** 
+>
+> Vývojové týmy by měly nasadit a ladit cluster AKS pomocí mostu na Kubernetes.
 
-S mostem na Kubernetes můžete vyvíjet, ladit a testovat aplikace přímo s clusterem AKS. Vývojáři v týmu spolupracují na sestavování a testování v celém životním cyklu aplikace. Můžete dál používat existující nástroje, jako je například Visual Studio nebo Visual Studio Code. Pro most do Kubernetes je nainstalováno rozšíření, které umožňuje vývoj přímo v clusteru AKS.
+S mostem na Kubernetes můžete vyvíjet, ladit a testovat aplikace přímo s clusterem AKS. Vývojáři v týmu spolupracují na sestavování a testování v průběhu životního cyklu aplikace. Můžete nadále používat stávající nástroje, jako je například Visual Studio, nebo Visual Studio Code s přemostěním na rozšíření Kubernetes. 
 
-Tento integrovaný proces vývoje a testování s mostem na Kubernetes snižuje potřebu místních testovacích prostředí, jako je [minikube][minikube]. Místo toho vyvíjíte a otestujete cluster AKS. Tento cluster může být zabezpečený a izolovaný, jak je uvedeno v předchozí části týkající se použití oborů názvů k logické izolaci clusteru.
+Použití integrovaného vývojového a testovacího procesu s mostem na Kubernetes snižuje potřebu místních testovacích prostředí, jako je [minikube][minikube]. Místo toho vyvíjíte a otestujete cluster AKS, a to i zabezpečené a izolované clustery. 
 
-Most do Kubernetes je určený pro použití s aplikacemi, které běží na systémech Linux a uzlech.
+> [!NOTE]
+> Most do Kubernetes je určený pro použití s aplikacemi, které běží na systémech Linux a uzlech.
 
-## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Použít rozšíření Visual Studio Code pro Kubernetes
+## <a name="use-the-visual-studio-code-vs-code-extension-for-kubernetes"></a>Použití rozšíření Visual Studio Code (VS Code) pro Kubernetes
 
-**Pokyny k osvědčeným postupům** – při psaní manifestů YAML nainstalujte a použijte rozšíření vs Code pro Kubernetes. Můžete také použít rozšíření pro integrované řešení nasazení, které může pomáhat vlastníkům aplikací, kteří zřídka pracují s clusterem AKS.
+> **Osvědčené postupy** 
+>
+> Při psaní manifestů YAML nainstalujte a použijte rozšíření VS Code pro Kubernetes. Můžete také použít rozšíření pro integrované řešení nasazení, které může pomáhat vlastníkům aplikací, kteří zřídka pracují s clusterem AKS.
 
-[Rozšíření Visual Studio Code pro Kubernetes][vscode-kubernetes] pomáhá vyvíjet a nasazovat aplikace do AKS. Rozšíření poskytuje IntelliSense pro prostředky Kubernetes a grafy a šablony Helm. Prostředky Kubernetes můžete procházet, nasazovat a upravovat i v rámci VS Code. Rozšíření také poskytuje kontrolu nad požadavky nebo omezení prostředků v technologii IntelliSense v rámci specifikací pod:
+[Rozšíření Visual Studio Code pro Kubernetes][vscode-kubernetes] pomáhá vyvíjet a nasazovat aplikace do AKS. Rozšíření poskytuje:
+* IntelliSense pro prostředky Kubernetes, Helm grafy a šablony. 
+* Umožňuje procházet, nasazovat a upravovat možnosti prostředků Kubernetes v rámci VS Code. 
+* Technologie IntelliSense kontroluje požadavky prostředků nebo omezení nastavená ve specifikacích pod:
 
-![VS Code rozšíření pro upozornění na chybějící limity paměti pro Kubernetes](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
+    ![VS Code rozšíření pro upozornění na chybějící limity paměti pro Kubernetes](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Pravidelně kontrolovat problémy s aplikací pomocí Kube-Advisoru
 
-**Doprovodné materiály k osvědčeným postupům** – pravidelně spouštějte nejnovější verzi `kube-advisor` nástroje open source a zjistěte problémy v clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve rutiny, které nemají požadavky na prostředky a definované limity.
+> **Osvědčené postupy** 
+> 
+> Pravidelně spouštějte nejnovější verzi `kube-advisor` Open Source nástroje pro detekci problémů v clusteru. Spusťte `kube-advisor` před použitím kvót prostředků v existujícím clusteru AKS a najděte lusky, které nemají požadavky na prostředky a definované limity.
 
-Nástroj [Kube-Advisor][kube-advisor] je přidružený AKS open source projekt, který vyhledává cluster Kubernetes a oznamuje nalezené problémy. Jednou z užitečných kontrol je identifikovat lusky, které nemají požadavky na prostředky a omezení.
+Nástroj [Kube-Advisor][kube-advisor] je přidružený AKS open source projekt, který prohledává cluster Kubernetes a oznamuje zjištěné problémy. Jednou z užitečných kontrol je identifikovat lusky bez požadavků na prostředky a omezení.
 
-Nástroj Kube-Advisor může vykazovat požadavky na prostředky a omezení chybějící v PodSpecs pro aplikace Windows i pro aplikace pro Linux, ale samotný nástroj Kube-Advisor musí být naplánován na Linux pod. Můžete naplánovat spuštění pod v rámci fondu uzlů s konkrétním operačním systémem pomocí [voliče uzlů][k8s-node-selector] v konfiguraci pod.
+I když `kube-advisor` nástroj může ohlásit požadavky na prostředky a omezení chybějící v PodSpecs pro aplikace pro Windows a Linux, `kube-advisor` musí být sám naplánovaná na Linux pod. Použijte [selektor uzlů][k8s-node-selector] v konfiguraci pod a naplánujte tak, aby se spouštěla ve fondu uzlů s určitým operačním systémem.
 
-V clusteru AKS, který je hostitelem mnoha vývojových týmů a aplikací, může být obtížné sledovat lusky, aniž by bylo nutné tyto požadavky na prostředky a omezení nastavit. Osvědčeným postupem je pravidelně spouštět `kube-advisor` v clusterech AKS.
+V clusteru AKS, který je hostitelem mnoha vývojových týmů a aplikací, zjistíte, že je snazší sledovat lusky pomocí požadavků a omezení prostředků. Osvědčeným postupem je pravidelně spouštět `kube-advisor` v clusterech AKS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek s osvědčenými postupy se zaměřuje na spuštění clusteru a úloh z perspektivy operátora clusteru. Informace o osvědčených postupech pro správu najdete [v tématu osvědčené postupy pro izolaci a správu prostředků ve službě Azure Kubernetes (AKS)][operator-best-practices-isolation].
+Tento článek se zaměřuje na spuštění clusteru a úloh z perspektivy operátora clusteru. Informace o osvědčených postupech pro správu najdete [v tématu osvědčené postupy pro izolaci a správu prostředků ve službě Azure Kubernetes (AKS)][operator-best-practices-isolation].
 
 Chcete-li implementovat některé z těchto doporučených postupů, přečtěte si následující články:
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384835"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490960"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
 
@@ -101,7 +101,7 @@ Application Gateway používá serverové proměnné k ukládání užitečných
 
 Application Gateway podporuje následující proměnné serveru:
 
-|   Název proměnné    |                   Popis                                           |
+|   Název proměnné    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | Pole hlavičky žádosti klienta s přesměrováním do `client_ip` proměnné (viz vysvětlení později v této tabulce), ke kterému se připojuje ve formátu IP1, IP2, IP3 a tak dále. Pokud pole s přesměrováním X není v hlavičce žádosti klienta, `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné.   Tato proměnná je užitečná hlavně v případě, že chcete přepsat hlavičku, kterou předáváte X-pro nastavenou Application Gateway tak, aby hlavička obsahovala jenom IP adresu bez informací o portu. |
 | ciphers_supported         | Seznam šifr podporovaných klientem.               |
@@ -130,7 +130,7 @@ Application Gateway podporuje následující proměnné serveru:
 
 Application Gateway podporuje následující proměnné serveru pro scénáře vzájemného ověřování. Tyto proměnné serveru můžete použít stejným způsobem jako u ostatních proměnných serveru. 
 
-|   Název proměnné    |                   Popis                                           |
+|   Název proměnné    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | client_certificate        | Certifikát klienta ve formátu PEM pro navázání připojení SSL. |
 | client_certificate_end_date| Koncové datum klientského certifikátu. |
@@ -158,6 +158,14 @@ Sada pravidel přepsání obsahuje:
       * **Cesta URL**: hodnota, na kterou má být cesta přepsána. 
       * **Řetězec dotazu adresy URL**: hodnota, na kterou se má řetězec dotazu přepsat. 
       * **Znovu vyhodnotit mapu cest**: slouží k určení, zda má být mapování cesty URL znovu vyhodnoceno. Pokud je tato akce ponechána nezaškrtnutá, použije se původní cesta URL, která bude odpovídat vzoru cesty v mapě cesty URL. Pokud je nastavená hodnota true, mapování cesty URL se znovu vyhodnotí, aby se zkontrolovala shoda s přepsanou cestou. Povolení tohoto přepínače pomáhá při směrování požadavku do jiného back-endu po opětovném zápisu.
+
+## <a name="rewrite-configuration-common-pitfall"></a>Přepsat Common Pitfall konfigurace
+
+* Povolení možnosti znovu vyhodnotit mapu cest není pro základní pravidla směrování žádostí povolené. K tomu je potřeba zabránit nekonečnému vyhodnocení cyklu pro základní pravidlo směrování.
+
+* Pro pravidla směrování na základě cest musí být k dispozici alespoň 1 pravidlo podmíněného přepsání nebo pravidlo pro přepsání, které nemá povolenou možnost znovu vyhodnotit mapu cest, aby nedocházelo ke smyčce nekonečného vyhodnocení pro pravidlo směrování na základě cesty.
+
+* Příchozí požadavky by se ukončily pomocí kódu chyby 500 pro případ, že se smyčka vytvoří dynamicky v závislosti na vstupech klienta. Application Gateway bude i nadále obsluhovat další požadavky bez snížení úrovně v takovém scénáři.
 
 ### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Použití přepsání adresy URL nebo přepsání hlavičky hostitele pomocí brány firewall webových aplikací (WAF_v2 SKU)
 

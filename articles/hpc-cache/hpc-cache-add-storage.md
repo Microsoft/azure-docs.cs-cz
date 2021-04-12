@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772718"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259026"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -314,6 +314,8 @@ Cíle úložiště ADLS-NFS mají určité podobnosti s cíli úložiště objek
 
 Než budete moct vytvořit cíl úložiště ADLS-NFS, musíte vytvořit účet úložiště s povoleným systémem souborů NFS. Postupujte podle tipů v tématu [požadavky pro mezipaměť Azure HPC](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) a pokyny v části [připojení úložiště objektů BLOB pomocí systému souborů NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). Po nastavení účtu úložiště můžete při vytváření cíle úložiště vytvořit nový kontejner.
 
+Další informace o této konfiguraci najdete [v tématu použití úložiště objektů BLOB připojené k systému souborů NFS spolu s mezipamětí Azure HPC cache](nfs-blob-considerations.md) .
+
 Pokud chcete vytvořit cíl úložiště ADLS-NFS, otevřete stránku **Přidat cíl úložiště** v Azure Portal. (Další metody jsou ve vývoji.)
 
 ![Snímek obrazovky se stránkou cíle pro přidání úložiště s definovaným cílem ADLS-NFS](media/add-adls-target.png)
@@ -331,8 +333,6 @@ Zadejte tyto informace.
 * **Model využití** – vyberte jeden z profilů ukládání dat do mezipaměti na základě pracovního postupu, který je popsaný v části [Výběr modelu použití](#choose-a-usage-model) výše.
 
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
-
-<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Zobrazit cíle úložiště
 

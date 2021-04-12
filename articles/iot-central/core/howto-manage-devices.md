@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032520"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492320"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -156,17 +156,17 @@ Odstranění reálného nebo simulovaného zařízení z aplikace IoT Central v 
 
 ## <a name="change-a-property"></a>Změna vlastnosti
 
-Vlastnosti cloudu jsou metadata zařízení přidružená k zařízení, jako je město a sériové číslo. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nejsou synchronizované s vašimi zařízeními. Zapisovatelné vlastnosti řídí chování zařízení a umožňují vzdáleně nastavit stav zařízení, například nastavením cílové teploty termostatu zařízení.  Vlastnosti zařízení jsou nastavené zařízením a jsou určené jen pro čtení v rámci IoT Central. V zobrazeních **podrobností** o zařízení můžete zobrazit a aktualizovat vlastnosti.
+Vlastnosti cloudu jsou metadata zařízení přidružená k zařízení, jako je město a sériové číslo. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nejsou synchronizované s vašimi zařízeními. Vlastnosti s možností zápisu řídí chování zařízení a umožňují vzdáleně nastavit stav zařízení, například nastavením cílové teploty termostatu zařízení.  Vlastnosti zařízení jsou nastavené zařízením a jsou určené jen pro čtení v rámci IoT Central. V zobrazeních **podrobností** o zařízení můžete zobrazit a aktualizovat vlastnosti.
 
 1. V levém podokně vyberte **zařízení** .
 
 1. Zvolte šablonu zařízení zařízení, u kterého chcete změnit vlastnosti a vyberte cílové zařízení.
 
-1. Zvolte zobrazení, které obsahuje vlastnosti vašeho zařízení. Toto zobrazení vám umožní zadat hodnoty a v horní části stránky vybrat **Uložit** . Tady vidíte vlastnosti vašeho zařízení a jejich aktuální hodnoty. Vlastnosti cloudu a zapisovatelné vlastnosti mají upravitelná pole, zatímco vlastnosti zařízení jsou jen pro čtení. V případě zapisovatelných vlastností můžete zobrazit stav synchronizace v dolní části pole. 
+1. Zvolte zobrazení, které obsahuje vlastnosti vašeho zařízení. Toto zobrazení vám umožní zadat hodnoty a v horní části stránky vybrat **Uložit** . Tady vidíte vlastnosti vašeho zařízení a jejich aktuální hodnoty. Vlastnosti cloudu a zapisovatelné vlastnosti mají upravitelná pole, zatímco vlastnosti zařízení jsou jen pro čtení. V případě vlastností s možností zápisu můžete zobrazit jejich stav synchronizace v dolní části pole. 
 
 1. Upravte vlastnosti na hodnoty, které potřebujete. Současně můžete upravovat více vlastností a současně je aktualizovat.
 
-1. Klikněte na tlačítko **Uložit**. Pokud jste uložili vlastnosti zapisovatelné pro zápis, hodnoty se odešlou do vašeho zařízení. Když zařízení potvrdí změnu vlastnosti pro zápis, vrátí se zpátky do **synchronizovaného** stavu. Pokud jste uložili vlastnost cloudu, hodnota se aktualizuje.
+1. Klikněte na tlačítko **Uložit**. Pokud jste uložili vlastnosti s možností zápisu, hodnoty se odešlou do vašeho zařízení. Když zařízení potvrdí změnu vlastnosti s možností zápisu, vrátí se zpátky do **synchronizovaného** stavu. Pokud jste uložili vlastnost cloudu, hodnota se aktualizuje.
 
 ## <a name="next-steps"></a>Další kroky
 

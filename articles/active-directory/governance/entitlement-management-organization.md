@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059377"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222517"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -42,7 +42,7 @@ Předpokládejme například, že pracujete s Woodgrove bankou a chcete spolupra
 - Graphics design Institute používá Azure AD a jejich uživatelé mají hlavní název uživatele, který končí na *graphicdesigninstitute.com*.
 - Společnost Contoso zatím nepoužívá službu Azure AD. Uživatelé společnosti Contoso mají hlavní název uživatele, který končí na *contoso.com*.
 
-V takovém případě můžete nakonfigurovat dvě připojené organizace. Vytvoříte jednu propojenou organizaci pro Graphics design Institute a jednu pro contoso. Pokud pak přidáte dvě připojené organizace do zásady, můžou uživatelé z každé organizace s hlavním názvem uživatele, který odpovídá zásadám, vyžadovat přístup k balíčkům. Uživatelé s hlavním názvem uživatele, který má doménu *graphicdesigninstitute.com* , by odpovídaly organizaci s grafikou spojené s nástrojem Graphics design a můžou odesílat žádosti. Uživatelé s hlavním názvem uživatele, který má doménu *contoso.com* , by se shodovali s organizací připojenou k společnosti Contoso a měli by taky žádat o balíčky. A protože nástroj Graphics design Institute používá službu Azure AD, všichni uživatelé s hlavním názvem, který se shoduje s [ověřenou doménou](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) , která je přidána do svého tenanta, jako je například *graphicdesigninstitute. example*, by také mohly žádat o přístup k balíčkům pomocí stejné zásady.
+V takovém případě můžete nakonfigurovat dvě připojené organizace. Vytvoříte jednu propojenou organizaci pro Graphics design Institute a jednu pro contoso. Pokud pak přidáte dvě připojené organizace do zásady, můžou uživatelé z každé organizace s hlavním názvem uživatele, který odpovídá zásadám, vyžadovat přístup k balíčkům. Uživatelé s hlavním názvem uživatele, který má doménu contoso.com, by se shodovali s organizací připojenou k společnosti Contoso a měli by taky žádat o balíčky. Uživatelé s hlavním názvem uživatele, který má doménu *graphicdesigninstitute.com* , by odpovídaly organizaci s grafikou spojené s nástrojem Graphics design a můžou odesílat žádosti. A protože nástroj Graphics design Institute používá službu Azure AD, všichni uživatelé s hlavním názvem, který se shoduje s [ověřenou doménou](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) , která je přidána do svého tenanta, jako je například *graphicdesigninstitute. example*, by také mohly žádat o přístup k balíčkům pomocí stejné zásady. Pokud máte zapnuté [ověřování pomocí e-mailu s jednorázovým heslem](../external-identities/one-time-passcode.md) , které obsahuje uživatele z těchto domén, které ještě nemají účty Azure AD, které se při přístupu k prostředkům ověřují pomocí e-mailového hesla. 
 
 ![Příklad propojené organizace](./media/entitlement-management-organization/connected-organization-example.png)
 

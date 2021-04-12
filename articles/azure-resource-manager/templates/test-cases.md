@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674038"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064137"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Výchozí testovací případy pro sadu nástrojů pro test šablon ARM
 
-Tento článek popisuje výchozí testy, které jsou spouštěny pomocí [šablony test Toolkit](test-toolkit.md). Poskytuje příklady, které jsou testem úspěšné nebo neúspěšné. Obsahuje název každého testu.
+Tento článek popisuje výchozí testy, které jsou spouštěny pomocí [šablony test Toolkit](test-toolkit.md) pro šablony Azure Resource Manager (šablony ARM). Poskytuje příklady, které jsou testem úspěšné nebo neúspěšné. Obsahuje název každého testu. Chcete-li spustit konkrétní test, viz [parametry testu](test-toolkit.md#test-parameters).
 
 ## <a name="use-correct-schema"></a>Použít správné schéma
 
@@ -137,7 +137,7 @@ Následující příklad **projde** tímto testem.
 
 Název testu: **umístění by nemělo být pevně zakódované**
 
-Vaše šablony by měly mít parametr pojmenovaný Location. Tento parametr slouží k nastavení umístění prostředků ve vaší šabloně. V hlavní šabloně (s názvem azuredeploy.json nebo mainTemplate.json) se tento parametr může ve výchozím nastavení namístit pro skupinu prostředků. V propojených nebo vnořených šablonách by parametr umístění neměl mít výchozí umístění.
+Vaše šablony by měly mít parametr pojmenovaný Location. Tento parametr slouží k nastavení umístění prostředků ve vaší šabloně. V hlavní šabloně (s názvem _azuredeploy.json_ nebo _mainTemplate.json_) se tento parametr může ve výchozím nastavení namístit pro skupinu prostředků. V propojených nebo vnořených šablonách by parametr umístění neměl mít výchozí umístění.
 
 Uživatelé šablony mohou mít k dispozici omezené oblasti. Když zadáte pevný kód pro umístění prostředku, můžou být uživatelé zablokovaný v vytváření prostředků v této oblasti. Uživatele můžete zablokovat i v případě, že nastavíte umístění prostředku na `"[resourceGroup().location]"` . Skupina prostředků mohla být vytvořena v oblasti, ke které nemají přístup jiní uživatelé. Uživatelům se zablokuje použití šablony.
 
@@ -393,11 +393,11 @@ Při zahrnutí parametrů pro `_artifactsLocation` a `_artifactsLocationSasToken
 * Pokud zadáte jeden parametr, je nutné zadat druhý.
 * `_artifactsLocation` musí být **řetězec**
 * `_artifactsLocation` musí mít výchozí hodnotu v hlavní šabloně.
-* `_artifactsLocation` ve vnořené šabloně nemůže být výchozí hodnota. 
+* `_artifactsLocation` ve vnořené šabloně nemůže být výchozí hodnota.
 * `_artifactsLocation` musí mít buď `"[deployment().properties.templateLink.uri]"` nebo nezpracovaná adresa URL úložiště pro výchozí hodnotu.
 * `_artifactsLocationSasToken` musí se jednat o **secureString**
 * `_artifactsLocationSasToken` pro výchozí hodnotu může být jenom prázdný řetězec.
-* `_artifactsLocationSasToken` ve vnořené šabloně nemůže být výchozí hodnota. 
+* `_artifactsLocationSasToken` ve vnořené šabloně nemůže být výchozí hodnota.
 
 ## <a name="declared-variables-must-be-used"></a>Musí se použít deklarované proměnné.
 
@@ -520,7 +520,7 @@ Následující příklad **projde** tento test.
 
 Název testu: **identifikátory ResourceID nesmí obsahovat**
 
-Při generování ID prostředků nepoužívejte nepotřebné funkce pro volitelné parametry. Ve výchozím nastavení funkce [ResourceID](template-functions-resource.md#resourceid) používá aktuální předplatné a skupinu prostředků. Tyto hodnoty nemusíte zadávat.  
+Při generování ID prostředků nepoužívejte nepotřebné funkce pro volitelné parametry. Ve výchozím nastavení funkce [ResourceID](template-functions-resource.md#resourceid) používá aktuální předplatné a skupinu prostředků. Tyto hodnoty nemusíte zadávat.
 
 Následující příklad tento test **neprojde** , protože nemusíte ZADÁVAT aktuální ID předplatného a název skupiny prostředků.
 
@@ -691,7 +691,40 @@ Následující příklad se **nezdařil** , protože používá funkci [list *](
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Použití protectedSettings pro tajné kódy commandToExecute
+
+Název testu: **CommandToExecute musí používat ProtectedSettings pro tajné klíče** .
+
+Ve vlastním rozšíření skriptu použijte zašifrovanou vlastnost, která `protectedSettings` `commandToExecute` zahrnuje tajná data, jako je třeba heslo. Příklady tajných datových typů jsou `secureString` , `secureObject` , `list()` Functions nebo Scripts.
+
+Další informace o rozšíření vlastních skriptů pro virtuální počítače najdete v tématech [Windows](
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)a Schema [Microsoft. COMPUTE virtualMachines/Extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+
+V tomto příkladu šablona s parametrem s názvem `adminPassword` a typem `secureString` **předá** test, protože zašifrovaná vlastnost `protectedSettings` obsahuje `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+Pokud nešifrovaná vlastnost obsahuje, test se **nezdařil** `settings` `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o spuštění sady nástrojů test Toolkit najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
-- Microsoft Learn modul, který se zabývá používáním sady nástrojů test Toolkit, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).
+* Další informace o spuštění sady nástrojů test Toolkit najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
+* Microsoft Learn modul, který se zabývá používáním sady nástrojů test Toolkit, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).

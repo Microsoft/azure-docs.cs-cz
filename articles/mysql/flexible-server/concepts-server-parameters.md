@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: f83f743b692ae5a625a4c881b12cbad999f1f606
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106764"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492235"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Parametry serveru v Azure Database for MySQL – flexibilní Server
 
@@ -39,9 +39,11 @@ Další informace o omezeních několika běžně aktualizovaných parametrů se
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-V Azure Database for MySQL flexibilním serveru jsou binární protokoly vždycky povolené (to znamená, že `log_bin` je nastavené na zapnuto). V případě, že budete chtít použít triggery, zobrazí se chybová zpráva podobná se tomu, že nemáte *oprávnění super a binární protokolování je povolené (je možné použít méně bezpečné `log_bin_trust_function_creators` proměnné)*. 
+V Azure Database for MySQL flexibilním serveru jsou binární protokoly vždycky povolené (to znamená, že `log_bin` je nastavené na zapnuto). ve výchozím nastavení je v flexibilních serverech standardně nastavená hodnota log_bin_trust_function_creators. 
 
-Formát binárního protokolování je vždy **řádek** a všechna připojení k serveru **vždy** používají binární protokolování založené na řádcích. V případě binárního protokolování založeného na řádcích neexistují problémy se zabezpečením a binární protokolování nemůže přerušit, takže můžete bezpečně nastavit [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) na **hodnotu true**.
+Formát binárního protokolování je vždy **řádek** a všechna připojení k serveru **vždy** používají binární protokolování založené na řádcích. V případě binárního protokolování založeného na řádcích neexistují problémy se zabezpečením a binární protokolování nemůže přerušit, takže můžete bezpečně povolit, aby [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) zůstaly **zapnuté**.
+
+Pokud `log_bin_trust_function_creators` je možnost [] vypnutá, pokud se pokusíte vytvořit triggery, může dojít k chybám, které jsou podobné jako v případě, že nemáte *oprávnění super, a binární protokolování je povolené (možná budete chtít použít méně bezpečné `log_bin_trust_function_creators` proměnné)*. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

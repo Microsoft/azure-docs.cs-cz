@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/04/2021
-ms.openlocfilehash: 7ffb5a3dfd23a1515c6d21784b82ccdbf0674f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb954a32a4e598c45578d4b06606bc133babb50d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593403"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107148"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrace řešení společného prodeje z OCP GTM na komerční tržiště
 
@@ -32,7 +32,7 @@ Jako partner Microsoftu, který je zaregistrovaný na komerčním webu Marketpla
 Ujistěte se, že máte aktivní Microsoft Partner Network členství a že jsou zaregistrovaná na komerčním tržišti v partnerském centru.
 
 - Zapojte se do Microsoft Partner Network [bez nákladů](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership). Jako partner budete mít přístup k exkluzivním prostředkům, programům, nástrojům a připojením, abyste mohli rozšířit svou firmu.
-- Pokud nemáte účet na komerčním webu Marketplace, [Zaregistrujte](partner-center-portal/create-account.md) se a pokračujte v souběžném prodeji s Microsoftem a získejte přístup k úplnému publikačnímu prostředí.
+- Pokud nemáte účet na komerčním webu Marketplace, [Zaregistrujte](create-account.md) se a pokračujte v souběžném prodeji s Microsoftem a získejte přístup k úplnému publikačnímu prostředí.
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Publikování aktualizací pro dosažení stavu pro spoluprodejní přípravu
 
@@ -45,7 +45,7 @@ Až se zaregistrujete na komerční tržišti, připravte se na migraci řešen�
 
 Před importem řešení z OCP GTM postupujte takto:
 
-1. Navštivte [seznam vydavatelů](https://partner.microsoft.com/dashboard/account/v3/publishers/list)vaší společnosti. Zahrnuje vlastníka účtu, manažery a vývojáře, kteří mají přístup pro publikování. Přečtěte si další informace o [rolích uživatelů partnerského centra](./partner-center-portal/manage-account.md#define-user-roles-and-permissions).
+1. Navštivte [seznam vydavatelů](https://partner.microsoft.com/dashboard/account/v3/publishers/list)vaší společnosti. Zahrnuje vlastníka účtu, manažery a vývojáře, kteří mají přístup pro publikování. Přečtěte si další informace o [rolích uživatelů partnerského centra](user-roles.md).
 2. Zeptejte se některého z uvedených kontaktů, abyste mohli [Přidat uživatele](https://partner.microsoft.com/dashboard/account/usermanagement) do komerčního tržiště jako *manažeři* nebo *vývojáře*, protože řešení můžou upravovat a publikovat jenom tyto role.
 3. Ve spolupráci s vývojáři můžete svoje řešení přesunout z účtu OCP GTM do komerčního tržiště.
 4. Rozhodněte se, které z následujících možností chcete provést:
@@ -97,7 +97,7 @@ Tuto možnost vyberte, když máte řešení OCP GTM, které ještě nemá odpov
 
     [![Karta akce v procesu migrace.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
-1. Na kartě **Akce 2** vyberte z poskytnutého seznamu [profil vydavatele](partner-center-portal/create-account.md) . Pokud nemáte účet vydavatele, vytvořte ho v [partnerském centru](https://partner.microsoft.com/solutions/migration), vyberte ho tady.
+1. Na kartě **Akce 2** vyberte z poskytnutého seznamu [profil vydavatele](create-account.md) . Pokud nemáte účet vydavatele, vytvořte ho v [partnerském centru](https://partner.microsoft.com/solutions/migration), vyberte ho tady.
 
     [![Karta akce 2 procesu migrace.](media/co-sell-migrate/action-2-migrate.png)](media/co-sell-migrate/action-2-migrate.png#lightbox)
 

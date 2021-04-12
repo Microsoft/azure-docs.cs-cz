@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593199"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121349"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -351,7 +351,7 @@ Pokud je zapnutá vrstva cloudu, neměla by se používat řešení, která př�
 Pokud dáváte přednost použití místního řešení zálohování, měli byste zálohy provádět na serveru ve skupině synchronizace, která má zakázanou vrstvu v cloudu. Při provádění obnovení použijte možnosti obnovení na úrovni svazku nebo souboru. Soubory obnovené pomocí možnosti obnovení na úrovni souborů budou synchronizovány do všech koncových bodů ve skupině synchronizace a stávající soubory budou nahrazeny verzí obnovenou ze zálohy.  Obnovení na úrovni svazku nebude nahrazovat novější verze souborů ve sdílené složce Azure nebo v jiných koncových bodech serveru.
 
 > [!WARNING]
-> Příkaz Robocopy/B není u Synchronizace souborů Azure podporován. Použití přepínače Robocopy/B s koncovým bodem serveru Synchronizace souborů Azure jako zdroj může vést k poškození souboru.
+> Pokud potřebujete použít Robocopy/B s agentem Synchronizace souborů Azure spuštěným na zdrojovém nebo cílovém serveru, upgradujte prosím na Synchronizace souborů Azure agenta verze v 12,0 nebo vyšších verzích. Použití nástroje Robocopy/B s verzemi agentů nižšími než v 12.0 má za následek poškození vrstvených souborů během kopírování.
 
 > [!Note]  
 > Úplné obnovení systému (BMR) může způsobit neočekávané výsledky a aktuálně se nepodporuje.

@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563772"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030003"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Nasazení clusteru Azure Service Fabric s nestavovým uzlem bez stavu (Preview)
+# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Nasazení clusteru Azure Service Fabric s bezstavovým typem uzlu
 Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v některých časových okamžikech mohou být stavové služby umístěny na uzlech. Bezstavové typy uzlů rozšiřují tento předpoklad pro typ uzlu, což umožňuje, aby typ uzlu používal jiné funkce, jako je rychlejší operace škálování, podpora automatických upgradů operačního systému při bronzové odolnosti a škálování na více než 100 uzlů v jedné sadě škálování virtuálního počítače.
 
 * Typy primárních uzlů nejde nakonfigurovat tak, aby byly bezstavové.
@@ -23,7 +23,7 @@ Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v někter
 K dispozici jsou ukázkové šablony: [Service Fabric šablona typů uzlů bez stavů](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Povolení typů bezstavových uzlů v Service Fabric clusteru
-Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředku clusteru, nastavte vlastnost **nestavové** vlastnosti na hodnotu "true". Při nasazování Service Fabric clusteru s bezstavovým uzlem nemusíte mít v prostředku clusteru minimálně jeden typ primárního uzlu.
+Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředku clusteru, nastavte vlastnost **nestavové** vlastnosti na **hodnotu true**. Při nasazování Service Fabric clusteru s bezstavovým uzlem nemusíte mít v prostředku clusteru minimálně jeden typ primárního uzlu.
 
 * ApiVersion prostředku clusteru Service Fabric by měl být "2020-12-01-Preview" nebo vyšší.
 
@@ -44,7 +44,7 @@ Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředk
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateless": false,
+        "isStateless": false, // Primary Node Types cannot be stateless
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -72,16 +72,15 @@ Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředk
 Pokud chcete povolit bezstavové typy uzlů, měli byste nakonfigurovat základní prostředek sady škálování virtuálního počítače následujícím způsobem:
 
 * Vlastnost Value  **singlePlacementGroup** , která by měla být nastavena na **hodnotu false** , pokud požadujete škálování na více než 100 virtuálních počítačů.
-* **Režim** **upgradePolicy** sady škálování by měl být nastaven na **vracení**.
+* **UpgradeMode** sady škálování by měla být nastavená na **vracení**.
 * Režim postupného upgradu vyžaduje konfiguraci rozšíření stavu aplikace nebo sondy stavu. Nakonfigurujte sondu stavu s výchozí konfigurací pro bezstavové uzly, jak je navrženo níže. Jakmile se aplikace nasadí do typu uzlu, můžete změnit porty sondy stavu nebo rozšíření stavu tak, aby se sledovaly stav aplikace.
 
 >[!NOTE]
-> Je nutné, aby počet domén selhání platformy byl aktualizován na hodnotu 5, pokud typ bezstavového uzlu je zálohovaný sadou škálování virtuálního počítače, který pokrývá více zón. Další podrobnosti najdete v této [šabloně](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
-> 
-> **platformFaultDomainCount: 5**
+> Při použití automatického škálování u bezstavových uzlů NodeType po operaci horizontálního navýšení kapacity se stav uzlu automaticky nevyčistí. Aby bylo možné vyčistit NodeState uzlů během automatického škálování, je doporučeno použití [Service Fabric pomocníka automatického škálování](https://github.com/Azure/service-fabric-autoscale-helper) .
+
 ```json
 {
-    "apiVersion": "2018-10-01",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.Compute/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType1Name')]",
     "location": "[parameters('computeLocation')]",
@@ -92,8 +91,9 @@ Pokud chcete povolit bezstavové typy uzlů, měli byste nakonfigurovat základn
           "automaticOSUpgradePolicy": {
             "enableAutomaticOSUpgrade": true
           }
-        }
-    }
+        },
+        "platformFaultDomainCount": 5
+    },
     "virtualMachineProfile": {
     "extensionProfile": {
     "extensions": [
@@ -136,6 +136,18 @@ Pokud chcete povolit bezstavové typy uzlů, měli byste nakonfigurovat základn
     ]
 }
 ```
+
+## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>Konfigurace bezstavových uzlů typu s více Zóny dostupnosti
+Pokud chcete konfigurovat bezstavové NodeType pro různé zóny [dostupnosti, postupujte](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)podle pokynů v dokumentaci, a to spolu s několika změnami, jak je znázorněno níže:
+
+* Nastavte **singlePlacementGroup** :  **false**  , pokud je nutné povolit více skupin umístění.
+* Nastavte  **upgradeMode** : **navracení**   a přidání rozšíření stavu aplikace/sondy stavu, jak je uvedeno výše.
+* Nastavte **platformFaultDomainCount** : **5** pro sadu škálování virtuálního počítače.
+
+>[!NOTE]
+> Bez ohledu na VMSSZonalUpgradeMode nakonfigurovanou v clusteru vždy probíhá postupně jedna zóna dostupnosti pro bezstavový typ NodeType, který zahrnuje více zón, protože používá režim postupného upgradu.
+
+Pro referenci se podívejte na [šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) pro konfiguraci bezstavových uzlů s více zóny dostupnosti
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 ### <a name="public-ip-and-load-balancer-resource"></a>Prostředek veřejné IP adresy a Load Balancer
@@ -184,7 +196,7 @@ Pokud chcete povolit škálování na více než 100 virtuálních počítačů 
 ```
 
 >[!NOTE]
-> U prostředků veřejné IP adresy a nástroje pro vyrovnávání zatížení není možné provést místní změnu skladové položky. Pokud migrujete ze stávajících prostředků, které mají základní SKU, přečtěte si část migrace v tomto článku.
+> U prostředků veřejné IP adresy a nástroje pro vyrovnávání zatížení není možné provést místní změnu skladové položky. 
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>Pravidla překladu adres NAT služby Virtual Machine Scale set
 Příchozí pravidla NAT nástroje pro vyrovnávání zatížení by se měla shodovat s fondy NAT ze sady škálování virtuálních počítačů. Každá sada škálování virtuálního počítače musí mít jedinečný fond příchozího překladu adres (NAT).
@@ -243,7 +255,7 @@ Standard Load Balancer a standardní veřejná IP adresa přináší do odchozí
 
 
 
-### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrujte na použití bezstavových uzlů z clusteru pomocí základní SKU Load Balancer a IP adresy základní SKU.
+## <a name="migrate-to-using-stateless-node-types-in-a-cluster"></a>Migrace na použití bezstavových uzlů typu v clusteru
 Pro všechny scénáře migrace je nutné přidat nový typ uzlu pouze bez stavu. Existující typ uzlu nejde migrovat jenom na stavový.
 
 K migraci clusteru, který používal Load Balancer a IP adresu se základní SKU, je nutné nejprve vytvořit zcela nový Load Balancer a prostředek IP pomocí standardní SKU. Tyto prostředky není možné aktualizovat místně.
@@ -256,9 +268,6 @@ Chcete-li začít, budete muset přidat nové prostředky do existující šablo
 * NSG, na který odkazuje podsíť, ve které nasadíte služby Virtual Machine Scale Sets.
 
 Po dokončení nasazení prostředků můžete začít s zakázáním uzlů v typu uzlu, který chcete odebrat z původního clusteru.
-
->[!NOTE]
-> Při použití automatického škálování s bezstavovým uzlem NodeType s bronzovou odolností po operaci horizontálního navýšení kapacity se stav uzlu automaticky nevyčistí. Aby bylo možné vyčistit NodeState uzlů během automatického škálování, je doporučeno použití [Service Fabric pomocníka automatického škálování](https://github.com/Azure/service-fabric-autoscale-helper) .
 
 ## <a name="next-steps"></a>Další kroky 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

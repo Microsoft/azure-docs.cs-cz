@@ -6,16 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 59f70659f25f925f8f802b0fcaa1f61d4e7f7dc0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609304"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106934"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
-Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQL.
+
+Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQLm jediným serverem.
+
+>[!NOTE]
+>Tento článek se týká jenom Azure Database for MySQLho jednoho serveru, aby byly ovladače kompatibilní s [architekturou připojení](concepts-connectivity-architecture.md) jedné serverové služby. [Azure Database for MySQL flexibilní Server](/../flexible-server/overview.md) je kompatibilní se všemi podporovanými ovladači a nástroji a kompatibilními s MySQL Community Edition. 
 
 ## <a name="mysql-drivers"></a>Ovladače MySQL
 Azure Database for MySQL používá nejoblíbenější komunitní edici Community databáze MySQL. Proto je kompatibilní s širokou škálou programovacích jazyků a ovladačů. Cílem je podpořit tři nejnovější verze ovladačů MySQL a snahy s autory z komunity Open sources, aby neustále vylepšily funkčnost a použitelnost ovladačů MySQL. V následující tabulce je uveden seznam ovladačů, které byly testovány a zjištěny jako kompatibilní s Azure Database for MySQL 5,6 a 5,7:

@@ -1,5 +1,5 @@
 ---
-title: Propojte doménu s decentralizovaným identifikátorem () (Preview).
+title: Propojte doménu s decentralizovaným identifikátorem () (Preview) – Azure Active Directory ověřitelných přihlašovacích údajů.
 description: Přečtěte si, jak vytvořit službu DNS BIND?
 documentationCenter: ''
 author: barclayn
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: be7db16a8e3a827d08c0db637961bf004af1d621
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169919"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222811"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>Propojte doménu s decentralizovaným identifikátorem ().
 
@@ -81,7 +81,7 @@ Po použití známého konfiguračního souboru je potřeba soubor zpřístupnit
 >[!IMPORTANT]
 >Microsoft Authenticator nedodržuje přesměrování, zadaná adresa URL musí být konečnou cílovou adresou URL.
 
-## <a name="user-experience"></a>Zkušenosti uživatele 
+## <a name="user-experience"></a>Uživatelské prostředí 
 
 Když uživatel prochází tok vystavování nebo prezentuje ověřitelné přihlašovací údaje, měl by znát něco o organizaci a jeho činnosti. Pokud se doména s naším ověřitelným přihlašovacím jménem Microsoft Authenticator, ověří relaci s doménou v dokumentu, která obsahuje, a nabídne uživatelům dvě různá prostředí v závislosti na výsledku.
 

@@ -93,15 +93,15 @@
           href: how-to-setup-autoscale.md
     - name: Integrace
       items:
-        - name: Navázání aplikace na Azure CosmosDB
+        - name: Azure CosmosDB
           href: how-to-bind-cosmos.md
-        - name: Navázání aplikace na Azure Cache for Redis
+        - name: Azure Cache for Redis
           href: how-to-bind-redis.md
-        - name: Navázání aplikace na Azure MySQL
+        - name: Azure Database for MySQL
           href: how-to-bind-mysql.md
-        - name: Spravovaná identita pro připojení Azure SQL Database
+        - name: Azure SQL Database se spravovanou identitou
           href: connect-managed-identity-to-azure-sql.md
-        - name: Integrace s řešeními pro vyrovnávání zatížení v Azure
+        - name: Řešení pro vyrovnávání zatížení Azure
           href: how-to-integrate-azure-load-balancers.md
     - name: Monitorování
       items:
@@ -194,7 +194,7 @@
 - name: Referenční informace
   items:
     - name: Modul plug-in Azure CLI
-      href: /cli/azure/ext/spring-cloud/spring-cloud
+      href: /cli/azure/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
     - name: Zdroje a prostředky

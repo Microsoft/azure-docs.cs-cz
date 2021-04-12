@@ -1,6 +1,6 @@
 ---
-title: Redigování obličeje v Azure Media Services V3 API | Microsoft Docs
-description: Azure Media Services V3 poskytuje možnost detekce a redigování pro rozpoznávání tváře, která umožňuje odeslat videosoubor, detekovat plošky a aplikovat rozostření na ně v jednom kombinovaném průchodu nebo pomocí dvou fází zpracování, které umožňují úpravy. Tento článek ukazuje, jak pomocí přednastavení rozpoznávání tváře v rozhraní V3 API naredigování obličeje.
+title: Hledání a redigování plošek v Azure Media Services V3 API | Microsoft Docs
+description: Azure Media Services V3 poskytuje předvolbu detekce a redigování (rozostření), která umožňuje odeslat videosoubor, detekovat plošky a volitelně aplikovat (rozostření) na ně v jednom kombinovaném průchodu nebo prostřednictvím dvoufázové operace, která umožňuje úpravy. V tomto článku se dozvíte, jak najít a redigování obličeje pomocí přednastavení rozpoznávání tváře v rozhraní V3 API.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6db93aa369366936c90446c41406eafe9ee6e414
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 4907a81fc8cb55499fa97f2b02a3e19e7117bbbc
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630362"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286364"
 ---
-# <a name="redact-faces-with-the-face-detector-preset"></a>Redigování obličeje s přednastaveným obličejovým detektorem
+# <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>Hledání a redigování (rozostření) pomocí přednastavení Face detektor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,10 +29,11 @@ Rozhraní Azure Media Services V3 API obsahuje přednastavený detektor pro rozp
 
 Tento článek obsahuje podrobné informace o **přednastaveném rozpoznávání obličeje** a ukazuje, jak ho použít s Azure Media Services SDK pro .NET.
 
+[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
+
 ## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
  
 Jako důležité připomenutí musíte dodržovat všechny použitelné zákony při používání analýz v Azure Media Services. Nemusíte používat Azure Media Services ani žádnou jinou službu Azure způsobem, který porušuje práva ostatních. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Azure Media Services pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně všech příslušných souhlasů, od jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Azure Media Services, [podmínky Azure Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Zásady ochrany osobních údajů od Microsoftu a jejich zpracování najdete v [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, na základě [podmínek pro online služby](https://www.microsoft.com/licensing/product-licensing/products) (OST) a v [dodatku pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](../video-indexer/faq.md). Pomocí Azure Media Services souhlasíte s tím, že jste vázáni Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
-
 
 ## <a name="face-redaction-modes"></a>Režimy redigování obličeje
 
@@ -147,9 +148,6 @@ Příklad foo_IDList.txt
 V **kombinovaném** režimu nebo v režimu **redigování** existuje pět různých režimů rozostření, ze kterých můžete vybírat prostřednictvím vstupní konfigurace JSON: **Nízká**, **med**, **High**, **box** a **Black**. Ve výchozím nastavení se používá **med** .
 
 Můžete najít ukázky níže uvedených typů rozostření.
-
-### <a name="example-settings-for-face-detector-preset"></a>Příklad nastavení pro přednastavený detektor Face
-[!code-csharp[Main](../../../media-services-v3-dotnet/VideoAnalytics/FaceRedactor/Program.cs#FaceDetectorPreset)]
 
 
 #### <a name="low"></a>Nízká
