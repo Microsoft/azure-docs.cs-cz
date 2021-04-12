@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a7868d702ff3f1190d7f51e4ad7316508d453015
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454520"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Druva
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Druva s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -136,13 +136,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-druva-sso"></a>Konfigurace jednotného přihlašování Druva
+## <a name="configure-druva-sso&quot;></a>Konfigurace jednotného přihlašování Druva
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Druva společnosti jako správce.
 
 1. V levém horním rohu klikněte na logo Druva a pak klikněte na **Nastavení cloudu Druva**.
 
-    ![Nastavení](./media/druva-tutorial/ic795091.png "Nastavení")
+    ![Nastavení](./media/druva-tutorial/ic795091.png &quot;Nastavení")
 
 1. Na kartě **jednotné přihlašování** klikněte na **Upravit**.
 

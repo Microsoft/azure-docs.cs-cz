@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c1d19b5b37a60914c1d7f2a2e42cd387bd030583
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 1c4aab27eb72afa473f95f1c0956b5e3d66c3940
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125814"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073350"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,7 +54,9 @@ import java.util.*;
 
 Níže uvedené příklady používají rozhraní [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
 
-`AZURE_CLIENT_SECRET``AZURE_CLIENT_ID`a `AZURE_TENANT_ID` proměnné prostředí jsou potřeba k vytvoření `DefaultAzureCredential` objektu. Pokud chcete vytvořit registrovanou aplikaci ve vývojovém prostředí a nastavit proměnné prostředí, přečtěte si téma [autorizace přístupu pomocí spravované identity](../managed-identity-from-cli.md).
+Snadný způsob, jak přejít na použití spravovaného ověřování identity, najdete v tématu [autorizace přístupu pomocí spravované identity](../managed-identity-from-cli.md) .
+
+Podrobnější informace o tom, jak objekt DefaultAzureCredential funguje a jak ho můžete používat způsobem, který není uvedený v tomto rychlém startu, najdete v tématu [Klientská knihovna Azure identity pro Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme) .
 
 ### <a name="create-an-identity-and-issue-a-token-with-managed-identity"></a>Vytvoření identity a vydání tokenu se spravovanou identitou
 

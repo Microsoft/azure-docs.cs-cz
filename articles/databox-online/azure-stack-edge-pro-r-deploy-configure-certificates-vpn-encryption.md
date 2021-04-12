@@ -10,10 +10,10 @@ ms.date: 10/19/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: abea192f209b968c6842e985620c067c93990687
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100548144"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-r"></a>Kurz: Konfigurace certifikátů pro Azure Stack Edge pro R
@@ -26,12 +26,12 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace certifikátů pro fyzické zařízení
 > * Konfigurace sítě VPN
 > * Konfigurace šifrování v klidovém případě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se ujistěte, že:
 
@@ -170,7 +170,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace certifikátů pro fyzické zařízení
 > * Konfigurace sítě VPN
 > * Konfigurace šifrování v klidovém případě

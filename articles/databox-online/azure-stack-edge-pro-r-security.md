@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 04/09/2021
 ms.author: alkohli
-ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632029"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285190"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Zabezpečení a ochrana dat pro Azure Stack Edge pro R a Azure Stack Edge Mini R
 
@@ -100,17 +100,23 @@ Data na discích jsou chráněná dvěma vrstvami šifrování:
 > [!NOTE]
 > Disk s operačním systémem má šifrování softwaru s jednou vrstvou XTS-AES-256.
 
-Až se zařízení aktivuje, zobrazí se výzva k uložení souboru klíče, který obsahuje klíče pro obnovení, které vám pomůžou obnovit data v zařízení, pokud se zařízení nespustí. V souboru jsou dva klíče:
+Než zařízení aktivujete, budete muset na svém zařízení nakonfigurovat šifrování v klidovém prostředí. Toto je požadované nastavení a dokud se tato možnost úspěšně nenakonfigurovala, nebudete moct zařízení aktivovat. 
 
-- Jeden klíč obnoví konfiguraci zařízení na svazcích s operačním systémem.
-<!-- - Second key is to unlock the BitLocker on the data disks. -->
-- Druhý klíč odemkne hardwarové šifrování v datových discích.
+Po zobrazení bitové kopie zařízení v továrně je povolené šifrování BitLockeru na úrovni svazku. Po přijetí zařízení je potřeba nakonfigurovat šifrování v klidovém případě. Fond úložiště a svazky se znovu vytvoří a můžete zadat klíče BitLockeru pro povolení šifrování v klidovém prostředí, a vytvořit tak další vrstvu šifrování pro vaše data v klidovém umístění. 
+
+Klíč šifrování on-REST je 64 znak 32, který zadáte, a tento klíč se používá k ochraně skutečného šifrovacího klíče. Společnost Microsoft nemá přístup k tomuto klíči šifrování, který chrání vaše data. Klíč se uloží do souboru klíče na stránce s **informacemi o cloudu** po aktivaci zařízení.
+
+Až se zařízení aktivuje, zobrazí se výzva k uložení souboru klíče, který obsahuje klíče pro obnovení, které vám pomůžou obnovit data v zařízení, pokud se zařízení nespustí. Některé scénáře obnovení vás vyzve k zadání souboru s klíčem, který jste uložili. Soubor klíče má následující klíče pro obnovení:
+
+- Klíč, který odemkne první vrstvu šifrování.
+- Klíč, který odemkne hardwarové šifrování v datových discích.
+- Klíč, který pomáhá obnovit konfiguraci zařízení na svazcích s operačním systémem.
+- Klíč, který chrání tok dat prostřednictvím služby Azure.
 
 > [!IMPORTANT]
 > Uložte soubor klíče na bezpečné místo mimo samotné zařízení. Pokud se zařízení nespustí a nemáte klíč, může to způsobit ztrátu dat.
 
-- Některé scénáře obnovení vás vyzve k zadání souboru s klíčem, který jste uložili. 
-<!--- If a node isn't booting up, you will need to perform a node replacement. You will have the option to swap the data disks from the failed node to the new node. For a 4-node device, you won't need a key file. For a 1-node device, you will be prompted to provide a key file.-->
+
 
 #### <a name="restricted-access-to-data"></a>Omezený přístup k datům
 
@@ -132,7 +138,6 @@ Když se zařízení obnoví na pevný stav, na zařízení se provede zabezpeč
 ### <a name="protect-data-in-storage-accounts"></a>Ochrana dat v účtech úložiště
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
-
 - Pravidelně otáčejte a [synchronizujte klíče účtu úložiště](azure-stack-edge-gpu-manage-storage-accounts.md) , abyste chránili svůj účet úložiště před neoprávněnými uživateli.
 
 ## <a name="manage-personal-information"></a>Správa osobních údajů

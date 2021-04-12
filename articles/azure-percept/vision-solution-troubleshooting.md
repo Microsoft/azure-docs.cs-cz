@@ -5,14 +5,14 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e7351079e7325aa7750dc0d10f0923bc847ccc3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78de5ef0ef77a181d4a2da91e4b468db1b47f208
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101662602"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074688"
 ---
 # <a name="vision-solution-troubleshooting"></a>Řešení potíží s řešením Vision
 
@@ -44,7 +44,7 @@ V následujících pokynech najdete informace o řešení potíží s řešením
 
 1. Moduly zařízení budou uvedené na kartě **moduly** .
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-device-modules-inline.png" alt-text="Stránka IoT Edge pro vybrané zařízení se zobrazeným obsahem karty moduly" lightbox= "./media/vision-solution-troubleshooting/vision-device-modules.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-device-modules-inline.png" alt-text="IoT Edge stránka pro vybrané zařízení se zobrazeným obsahem karty moduly" lightbox= "./media/vision-solution-troubleshooting/vision-device-modules.png":::
 
 ## <a name="delete-a-device"></a>Odstranit zařízení
 
@@ -56,17 +56,49 @@ V následujících pokynech najdete informace o řešení potíží s řešením
 
 1. Vyberte **IoT Edge** a zaškrtněte políčko vedle ID cílového zařízení. Kliknutím na ikonu koše můžete zařízení odstranit.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-device.png" alt-text="Ikona Odstranit zvýrazněná na domovské stránce IoT Edge":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-device.png" alt-text="Ikona odstranění zvýrazněná na domovské stránce IoT Edge":::
 
 ## <a name="eye-module-troubleshooting-tips"></a>Tipy pro řešení potíží s modulem pro oči
 
-Pokud dojde k potížím s **WebStreamModule**, ujistěte se, že je spuštěný **azureeyemodule** model Vision Inferencing. Chcete-li zjistit stav modulu runtime, přejděte na [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) a přejděte do části **všechny prostředky**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Kliknutím na kartu **moduly** zobrazíte stav modulu runtime všech instalovaných modulů.
+### <a name="check-the-runtime-status-of-azureeyemodule"></a>Zkontroluje stav modulu runtime pro azureeyemodule.
+
+Pokud dojde k potížím s **WebStreamModule**, ujistěte se, že je spuštěný **azureeyemodule**, který zpracovává model Vision Inferencing. Chcete-li zjistit stav modulu runtime, přejděte na [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) a přejděte do části **všechny prostředky**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Kliknutím na kartu **moduly** zobrazíte stav modulu runtime všech instalovaných modulů.
 
 :::image type="content" source="./media/vision-solution-troubleshooting/over-the-air-iot-edge-device-page-inline.png" alt-text="Obrazovka stavu modulu runtime modulu zařízení." lightbox= "./media/vision-solution-troubleshooting/over-the-air-iot-edge-device-page.png":::
 
 Pokud běhový stav **azureeyemodule** není uveden jako **spuštěný**, klikněte na **nastavit moduly**  ->  **azureeyemodule**. Na stránce **nastavení modulu** nastavte **požadovaný stav** na **spuštěno** a klikněte na **aktualizovat**.
 
  :::image type="content" source="./media/vision-solution-troubleshooting/firmware-desired-status-stopped.png" alt-text="Obrazovka konfigurace nastavení modulu":::
+
+### <a name="update-telemetryintervalneuralnetworkms"></a>Aktualizovat TelemetryIntervalNeuralNetworkMs
+
+Pokud narazíte na následující chybu omezení počtu, bude nutné aktualizovat hodnotu TelemetryIntervalNeuralNetworkMs v modulu azureeyemodule s dvojitým nastavením.
+
+|Chybová zpráva|
+|------|
+|Celkový počet zpráv v IotHub ' XXXXXXXXX ' překročil přidělenou kvótu. Maximální povolený počet zpráv: ' 8000 ', aktuální počet zpráv: ' xxxx '. Operace odeslání a přijetí jsou pro toto centrum blokované až do dalšího dne UTC. Pokud chcete kvótu zvýšit, zvažte zvýšení počtu jednotek tohoto centra.|
+
+TelemetryIntervalNeuralNetworkMs určuje, jak často se mají posílat zprávy (v milisekundách) ze sítě neuronové. Předplatné Azure mají v závislosti na vaší úrovni předplatného omezený počet zpráv za den. Pokud zjistíte, že jste byli uzamčeni z důvodu odeslání příliš velkého počtu zpráv, zvyšte hodnotu na vyšší číslo. 12000 (což znamená každých 12 sekund) vám poskytne skvělé kulaté zprávy 7200 za den, což je limit zpráv 8000 pro bezplatné předplatné.
+
+K aktualizaci hodnoty TelemetryIntervalNeuralNetworkMs použijte následující postup:
+
+1. Přihlaste se k [Azure Portal](https://ms.portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod#home) a otevřete **všechny prostředky**.
+
+1. Na stránce **všechny prostředky** klikněte na název IoT Hub, který jste zřídili pro vaši DevKit během prostředí nastavení.
+
+1. Na levé straně stránky IoT Hub klikněte na **IoT Edge** v části **Automatická správa zařízení**. Na stránce IoT Edge zařízení vyhledejte ID zařízení DevKit. Kliknutím na ID zařízení DevKit otevřete jeho stránku IoT Edge zařízení.
+
+1. Na kartě **moduly** vyberte **azureeyemodule** .
+
+1. Na stránce azureeyemodule otevřete **Nevlákennou identitu modulu**.
+
+    :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="Snímek stránky modulu." lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
+
+1. Přejděte dolů na **vlastnosti**. Všimněte si, že vlastnosti running a Logging nejsou v tuto chvíli aktivní.
+
+    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline.png" alt-text="Snímek obrazovky modulu s dvojitými vlastnostmi" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
+
+1. Aktualizujte hodnotu **TelemetryIntervalNeuralNetworkMs** podle potřeby a klikněte na ikonu **Uložit** .
 
 ## <a name="view-device-rtsp-video-stream"></a>Zobrazit datový proud videa RTSP zařízení
 

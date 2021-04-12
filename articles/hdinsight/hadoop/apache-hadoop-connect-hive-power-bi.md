@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: bb448a4befb15618485b2b5951222761180a1f22
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866739"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive s využitím Microsoft Power BI a ODBC ve službě Azure HDInsight
@@ -25,7 +25,7 @@ V tomto článku načtete data z `hivesampletable` tabulky podregistru do Power 
 
 Tyto informace platí také pro nový typ clusteru [interaktivních dotazů](../interactive-query/apache-interactive-query-get-started.md) . Informace o tom, jak se připojit k interaktivnímu dotazu HDInsight pomocí přímých dotazů, najdete v tématu [vizualizace interaktivního dotazování dat v rámci služby Microsoft Power BI pomocí přímého dotazování ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před provedením tohoto článku musíte mít následující položky:
 

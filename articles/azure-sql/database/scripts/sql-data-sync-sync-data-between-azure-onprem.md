@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 443232bb41ba73b5bd02d45c542e555904f539db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792867"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>Použití PowerShellu k synchronizaci dat mezi SQL Database a SQL Server
@@ -35,7 +35,7 @@ Přehled Synchronizace dat SQL najdete v tématu [synchronizace dat napříč n�
 > [!IMPORTANT]
 > Synchronizace dat SQL v tuto chvíli nepodporuje spravovanou instanci SQL Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvoří databázi v Azure SQL Database z ukázkové databáze AdventureWorksLT jako databáze centra.
 - Vytvořte databázi v Azure SQL Database ve stejné oblasti jako databáze synchronizace.
