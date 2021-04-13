@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 629b48a378dd029d9952270e3c71762a5bb7aa82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507513"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306717"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
 
@@ -71,6 +71,9 @@ Chcete-li začít s převodem modelu, je nutné jej nahrát pomocí jedné z ná
 - [Použití rozhraní REST API pro Azure Storage](/rest/api/storageservices/blob-service-rest-api)
 
 Příklad, jak nahrát data pro převod, najdete v tématu Conversion.ps1 [ukázkových skriptů PowerShellu](../../samples/powershell-example-scripts.md#script-conversionps1).
+
+> [!Note]
+> Při nahrávání vstupního modelu se doporučuje dbát na to, aby se zabránilo dlouhým názvům souborů a/nebo strukturám složek, aby nedocházelo k problémům s [omezením počtu cest systému Windows](https://docs.mxicrosoft.com/windows/win32/fileio/maximum-file-path-limitation) ve službě. 
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>Získat identifikátor URI SAS pro převedený model
 

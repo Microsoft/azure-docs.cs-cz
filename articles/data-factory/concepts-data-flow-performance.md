@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/15/2021
-ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/10/2021
+ms.openlocfilehash: cee7993116e746c7b827faaf94724033501f1318
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561681"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309046"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -132,14 +132,17 @@ Ceny datových toků se účtují za Vcore, což znamená, že do této funkce p
 
 ### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
 
-Ve výchozím nastavení každá aktivita toku dat natočí nový cluster na základě konfigurace IR. Doba spuštění clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude se výrazně snižovat i po opětovném spuštění stávajícího clusteru. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
+Ve výchozím nastavení každá aktivita toku dat vytočí nový cluster Spark založený na konfiguraci Azure IR. Doba spuštění studeného clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude se výrazně snižovat i po opětovném spuštění stávajícího clusteru. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
 
-V jednom clusteru může běžet jenom jedna úloha. Pokud je k dispozici cluster, ale dva toky dat se spustí, použije se živý cluster jenom s jedním. Druhá úloha si vytočí svůj vlastní izolovaný cluster.
+Čas spuštění teplého clusteru můžete taky minimalizovat tak, že v části vlastnosti toku dat nastavíte možnost rychlé opakované použití v prostředí Azure Integration runtime. Když se tato možnost nastaví na true, služba ADF nebude rozboru existující cluster po každé úloze a místo toho bude moct znovu použít stávající cluster. v podstatě udržuje výpočetní prostředí, které jste nastavili v Azure IR Alive až po dobu zadanou v hodnotě TTL. Tato možnost slouží pro nejkratší čas spuštění aktivit toku dat při spuštění z kanálu.
 
-Pokud se většina toků dat spouští paralelně, nedoporučuje se povolit hodnotu TTL. 
+Pokud se ale většina datových toků spouští paralelně, nedoporučuje se povolit TTL pro infračervený přenos, který pro tyto aktivity používáte. V jednom clusteru může běžet jenom jedna úloha. Pokud je k dispozici cluster, ale dva toky dat se spustí, použije se živý cluster jenom s jedním. Druhá úloha si vytočí svůj vlastní izolovaný cluster.
 
 > [!NOTE]
 > Doba do Live není při použití prostředí Integration runtime pro automatické řešení dostupná.
+ 
+> [!NOTE]
+> Rychlé opakované použití existujících clusterů je funkce Azure Integration Runtime, která je aktuálně ve verzi Public Preview.
 
 ## <a name="optimizing-sources"></a>Optimalizace zdrojů
 
@@ -304,9 +307,10 @@ Pokud se vaše toky dat spouštějí paralelně, doporučuje se Nepovolit vlastn
 
 ### <a name="execute-data-flows-sequentially"></a>Postupné provádění toků dat
 
-Pokud spustíte aktivity toku dat v sekvenci, doporučuje se nastavit hodnotu TTL v konfiguraci Azure IR. ADF znovu použije výpočetní prostředky, což vede k rychlejšímu spuštění clusteru. Každá aktivita bude i nadále izolovaná a získá nový kontext Sparku pro každé spuštění.
+Pokud spustíte aktivity toku dat v sekvenci, doporučuje se nastavit hodnotu TTL v konfiguraci Azure IR. ADF znovu použije výpočetní prostředky, což vede k rychlejšímu spuštění clusteru. Každá aktivita bude i nadále izolovaná a získá nový kontext Sparku pro každé spuštění. Pokud chcete zkrátit dobu mezi sekvenčními aktivitami, nastavte v Azure IR zaškrtávací políčko pro rychlé opakované použití, aby bylo možné znovu použít stávající cluster.
 
-Spuštění úloh postupně bude trvat delší dobu, než se provede celý konec až do konce, ale poskytuje čisté oddělení logických operací.
+> [!NOTE]
+> Rychlé opakované použití existujících clusterů je funkce Azure Integration Runtime, která je aktuálně ve verzi Public Preview.
 
 ### <a name="overloading-a-single-data-flow"></a>Přetížení jednoho toku dat
 

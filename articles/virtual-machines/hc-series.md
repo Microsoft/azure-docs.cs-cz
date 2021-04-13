@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: e23a6351b26cc35679bc879e2b62dd76c74f9962
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 52a915a8d64be1c78fcafe2b910f162f725a1e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798336"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309658"
 ---
 # <a name="hc-series"></a>Řada HC
 
@@ -24,6 +24,7 @@ Virtuální počítače s funkcí HC-Series 100 GB/s Mellanox EDR InfiniBand. Ty
 [ACU](acu.md): 297-315<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Disky Ultra](disks-types.md#ultra-disk): podporované (další[informace](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) o dostupnosti, využití a výkonu) <br>
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969150"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310508"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>Požadavky na certifikaci technologie Plug and Play IoT
 
@@ -51,7 +51,7 @@ Potvrzení o certifikaci technologie Plug and Play IoT:
 | **OS**                  | Nelze určit                                                     |
 | **Typ ověření**     | Automatizovaná                                                    |
 | **Ověřování**          | Zařízení musí implementovat snadný přenos vlastnictví oboru ID DPS, aniž by bylo nutné znovu kompilovat vložený kód. Microsoft poskytuje [pracovní postup na portálu](https://certify.azure.com) , který provede testy, aby ověřil, jestli zařízení podporuje DPS **1.** Uživatel musí vybrat jednu z metod ověřování (X. 509, TPM a klíč SAS) **2.** V závislosti na metodě ověřování uživatel potřebuje provést odpovídající akci, jako **je například,** odeslat certifikát X. 509 do AICS spravovaného **oddílu DPS b)** implementovat klíč SAS nebo ověřovací klíč do zařízení. |
-| **Prostředky**           | **a)** Ukázkový konfigurační soubor s [přehledem služby Device Provisioning](../iot-dps/about-iot-dps.md), **b)** [pro přenos rozsahu ID DPS](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **Prostředky**           | **a)** Ukázkový konfigurační soubor s [přehledem služby Device Provisioning](../iot-dps/about-iot-dps.md), **b)** [pro přenos rozsahu ID DPS](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **Požadovanou DTDL v2: účel testu, který zajistí, aby definované modely zařízení a rozhraní splňovaly požadavky na jazyk verze v2 pro digitální vlákna.**                                                              
 
@@ -95,7 +95,7 @@ Potvrzení o certifikaci technologie Plug and Play IoT:
 | **Platí pro**          | Jakékoli zařízení                                                   |
 | **OS**                  | Nelze určit                                                     |
 | **Typ ověření**     | Automatizovaná                                                    |
-| **Ověřování**          | [Pracovní postup portálu](https://certify.azure.com) ověřuje, že kód zařízení implementuje [rozhraní informace o zařízení](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) **1.** Zkontroluje, jestli se hodnoty vysílají kódem zařízení IoT Hub **2.** Kontroluje rozhraní, které je implementováno v DCM (Tato implementace se změní v DTDL v2) **3.** Kontroly vlastností nejsou možné zapisovat (jen pro čtení) **4.** Kontroluje, zda je typ schématu řetězec nebo hodnota Long, nikoli hodnota null. |
+| **Ověřování**          | [Pracovní postup portálu](https://certify.azure.com) ověřuje, že kód zařízení implementuje rozhraní informace o zařízení **1.** Zkontroluje, jestli se hodnoty vysílají kódem zařízení IoT Hub **2.** Kontroluje rozhraní, které je implementováno v DCM (Tato implementace se změní v DTDL v2) **3.** Kontroly vlastností nejsou možné zapisovat (jen pro čtení) **4.** Kontroluje, zda je typ schématu řetězec nebo hodnota Long, nikoli hodnota null. |
 | **Prostředky**           | [Rozhraní definované společností Microsoft](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
 | **Doporučené Azure**  | –                                                          |
 

@@ -4,15 +4,15 @@ description: Přečtěte si o Azure Cosmos DB transakční (založený na řádk
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eaabc663ba243423bddf7ef6abfe41182e06b4f9
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046208"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364600"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Co je Azure Cosmos DB analytické úložiště?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -134,6 +134,7 @@ V analytickém úložišti existují dva režimy reprezentace schématu. Tyto re
 Dobře definovaná reprezentace schématu vytvoří jednoduché tabulkové vyjádření nezávislá dat schématu v transakčním úložišti. Dobře definovaná reprezentace schématu má následující požadavky:
 
 * Vlastnost vždy má stejný typ v několika položkách.
+* Povolujeme jenom 1 změnu typu z hodnoty null na jakýkoliv jiný datový typ. První výskyt bez hodnoty null definuje datový typ sloupce.
 
   * Například `{"a":123} {"a": "str"}` nemá správně definované schéma, protože `"a"` je někdy řetězec a někdy číslo. V tomto případě analytické úložiště zaregistruje datový typ `"a"` jako datový typ `“a”` v první vyskytující položce po dobu života kontejneru. Dokument bude i nadále součástí analytického úložiště, ale položky, u kterých se datový typ `"a"` liší, nebudou.
   

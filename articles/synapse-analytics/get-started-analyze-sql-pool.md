@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 4588eee721a58a7e4f3366d0d325b48de0f56ae5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 267dc7c7d89bbecfbed127f4a46adb7cd9044bc4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259808"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309369"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
@@ -99,7 +99,7 @@ Vyhrazený fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivn
 
 1. V synapse studiu přejdete do centra **dat** .
 1. Přejít na   >  **tabulky** SQLPOOL1. 
-3. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL**  >  **Vyberte horní 100 řádků**.
+3. Klikněte pravým tlačítkem na **dbo. NYCTaxiTripSmall** tabulku a vyberte **Nový skript SQL**  >  **Vybrat horní 100 řádků**.
 4. Počkejte, než se vytvoří a spustí nový skript SQL.
 5. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLPOOL1**.
 6. Nahraďte text skriptu SQL tímto kódem a spusťte ho.
@@ -108,7 +108,7 @@ Vyhrazený fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivn
     SELECT PassengerCount,
           SUM(TripDistanceMiles) as SumTripDistance,
           AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.NYCTaxiTripSmall
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;

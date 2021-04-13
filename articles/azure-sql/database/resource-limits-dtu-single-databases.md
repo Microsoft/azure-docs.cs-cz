@@ -10,24 +10,36 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/20/2019
-ms.openlocfilehash: c530d584282cebba78c095798944e48d7efe2c66
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 3afc2a1e3b279e7c4fd350e96787454e01e01f79
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625621"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303215"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu DTU – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database izolované databáze pomocí modelu nákupu DTU.
 
-Omezení prostředků modelu nákupu pro elastické fondy najdete v tématu [omezení prostředků DTU – elastické fondy](resource-limits-dtu-elastic-pools.md). Omezení prostředků vCore najdete v tématu omezení [prostředků Vcore – jednotlivé databáze](resource-limits-vcore-single-databases.md) a [omezení prostředků Vcore – elastické fondy](resource-limits-vcore-elastic-pools.md). Další informace o různých nákupních modelech najdete v tématu [nakupování modelů a úrovní služeb](purchasing-models.md).
+* Omezení nákupních modelů pro DTU pro jednotlivé databáze na serveru najdete v tématu [Přehled omezení prostředků na serveru](resource-limits-logical-server.md).
+* Omezení prostředků modelu nákupu DTU pro Azure SQL Database najdete v tématu omezení [prostředků DTU jednotlivé databáze](resource-limits-dtu-single-databases.md) a [prostředky DTU omezí elastické fondy](resource-limits-dtu-elastic-pools.md).
+* Omezení prostředků vCore najdete v tématu omezení [prostředků Vcore –](resource-limits-vcore-single-databases.md) [omezení prostředků Azure SQL Database a Vcore – elastické fondy](resource-limits-vcore-elastic-pools.md).
+* Další informace o různých nákupních modelech najdete v tématu [nakupování modelů a úrovní služeb](purchasing-models.md).
+
+Každá replika jen pro čtení má vlastní prostředky, například DTU, pracovní procesy a relace. Na každou repliku jen pro čtení se vztahují limity prostředků popsané dále v tomto článku. 
+
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Samostatná databáze: velikosti úložiště a velikosti výpočtů
 
-V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici pro izolovanou databázi v každé úrovni služby a výpočetní velikost. Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShellu](single-database-manage.md#powershell), rozhraní příkazového [řádku Azure](single-database-manage.md#the-azure-cli)nebo [REST API](single-database-manage.md#rest-api).
+V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici pro izolovanou databázi v každé úrovni služby a výpočetní velikost. Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí:
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) přes [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování izolované databáze](single-database-scale.md) .

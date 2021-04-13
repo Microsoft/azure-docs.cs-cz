@@ -3,19 +3,19 @@ title: Rychlý Start Azure – vytvoření centra událostí pomocí Azure Porta
 description: V tomto rychlém startu se dozvíte, jak vytvořit centrum událostí Azure pomocí Azure Portal.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bf83c53792c4934f43e0039d092bb3e36954bf7b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742037"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303113"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rychlý start: Vytvoření centra událostí pomocí webu Azure Portal
 Azure Event Hubs je platforma pro zpracování velkých objemů dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
 V tomto rychlém startu vytvoříte centrum událostí pomocí webu [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -54,7 +54,7 @@ Obor názvů Event Hubs poskytuje jedinečný obor kontejneru, ve kterém vytvo�
    1. Vyberte **skupinu prostředků** , kterou jste vytvořili v předchozím kroku.   
    1. Zadejte **název** oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.  
    1. Vyberte **umístění** pro obor názvů.
-   1. Vyberte **cenovou úroveň** (Basic nebo Standard). Další informace o některých rozdílech mezi úrovněmi Basic a Standard najdete v tématu [Event Hubs cen](https://azure.microsoft.com/pricing/details/event-hubs/), [rozdílech mezi úrovněmi](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers)a [kvótami a omezeními](event-hubs-quotas.md). 
+   1. Vyberte **cenovou úroveň** (Basic nebo Standard). Další informace o některých rozdílech mezi úrovněmi Basic a Standard najdete v tématu [Event Hubs cen](https://azure.microsoft.com/pricing/details/event-hubs/), [rozdílech mezi úrovněmi](event-hubs-faq.yml#what-is-the-difference-between-event-hubs-basic-and-standard-tiers-)a [kvótami a omezeními](event-hubs-quotas.md). 
    1. Nastavení **jednotek propustnosti** nechte v takovém případě. Jednotky propustnosti jsou předem zakoupené jednotky kapacity. Další informace o jednotkách propustnosti najdete v tématu [Event Hubs škálovatelnost](event-hubs-scalability.md#throughput-units).  
    1. V dolní části stránky vyberte **zkontrolovat + vytvořit** .
       

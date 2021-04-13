@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/09/2020
+ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f02a0673a3fae33f935ae9a9cbf94f101b25c39f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2a940f4bb519332e147577e4a9172406c401d152
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449779"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365735"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace TODO pomocí Azure Cosmos DB účtu rozhraní SQL API pomocí Xamarin
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,6 +24,7 @@ ms.locfileid: "106449779"
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Sada Java SDK v4](create-sql-api-java.md)
 > * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Konektor Spark V3](create-sql-api-spark.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -96,18 +97,18 @@ Vraťte se na Azure Portal, kde najdete informace o klíčích rozhraní API, a 
 
 2. V aplikaci Visual Studio otevřete **ToDoItems. Core/helps/APIKeys. cs**.
 
-3. Na webu Azure Portal pomocí tlačítka pro kopírování Zkopírujte hodnotu **identifikátoru URI** a nastavte ji jako hodnotu `CosmosEndpointUrl` proměnné v APIKeys. cs.
+3. V Azure Portal pomocí tlačítka Kopírovat zkopírujte hodnotu **identifikátoru URI** a nastavte ji jako hodnotu `CosmosEndpointUrl` proměnné v APIKeys. cs.
 
     ```csharp
     //#error Enter the URL of your Azure Cosmos DB endpoint here
-    public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    public static readonly string CosmosEndpointUrl = "[URI Copied from Azure portal]";
     ```
 
-4. Na webu Azure Portal pomocí tlačítka pro kopírování Zkopírujte hodnotu **primárního klíče** a nastavte ji jako hodnotu `Cosmos Auth Key` v APIKeys. cs.
+4. V Azure Portal pomocí tlačítka Kopírovat zkopírujte hodnotu **primárního klíče** a nastavte ji jako hodnotu `Cosmos Auth Key` v APIKeys. cs.
 
     ```csharp
     //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
-    public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure portal";
     ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
@@ -144,9 +145,9 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
 
     `CreateDocumentQuery<T>`Převezme identifikátor URI, který odkazuje na kontejner vytvořený v předchozí části. Můžete také zadat operátory LINQ, jako je například klauzule `Where`. V tomto případě se vrátí pouze nesplněné položky seznamu úkolů.
 
-    Funkce `CreateDocumentQuery<T>` se provádí asynchronně a vrací `IQueryable<T>`. Metoda `AsDocumentQuery` však převede `IQueryable<T>` na objekt `IDocumentQuery<T>`, který je možné spustit asynchronně. Díky tomu se v mobilních aplikacích neblokuje vlákno uživatelského rozhraní.
+    Funkce `CreateDocumentQuery<T>` se provádí asynchronně a vrací `IQueryable<T>`. `AsDocumentQuery`Metoda však převede na `IQueryable<T>` `IDocumentQuery<T>` objekt, který lze spustit asynchronně. Díky tomu se v mobilních aplikacích neblokuje vlákno uživatelského rozhraní.
 
-    Funkce `IDocumentQuery<T>.ExecuteNextAsync<T>` načte stránku výsledků ze služby Azure Cosmos DB a pomocí `HasMoreResults` zkontroluje, jestli zbývá vrátit ještě nějaké výsledky.
+    `IDocumentQuery<T>.ExecuteNextAsync<T>`Funkce načte stránku výsledků z Azure Cosmos DB, která `HasMoreResults` bude přezkoumána, aby bylo možné zjistit, zda jsou vráceny další výsledky.
 
 > [!TIP]
 > Několik funkcí, které fungují v kontejnerech a dokumentech Azure Cosmos, přebírají identifikátor URI jako parametr, který určuje adresu kontejneru nebo dokumentu. Tento identifikátor URI se vytváří pomocí třídy `URIFactory`. Pomocí této třídy lze vytvořit všechny identifikátory URI pro databáze, kontejnery a dokumenty.
@@ -188,7 +189,7 @@ V následujících krocích se dozvíte, jak aplikaci spustit s použitím ladic
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Zahájení ladění v sadě Visual Studio pro Mac":::
 
-3. Po spuštění simulátoru iOS nebo emulátoru Android se v dolní (iOS) nebo horní (Android) části obrazovky aplikace zobrazí 2 karty. Na první kartě se zobrazí ještě nesplněné položky seznamu úkolů a na druhé se zobrazí splněné položky seznamu úkolů.
+3. Až se spustí simulátor iOS nebo emulátor Androidu, aplikace zobrazí v dolní části obrazovky pro iOS a v horní části obrazovky pro Android dvě karty. První zobrazuje položky ToDo, které nejsou dokončeny, druhá zobrazuje položky ToDo, které jsou dokončeny.
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Spouštěcí obrazovka aplikace seznamu úkolů":::
 

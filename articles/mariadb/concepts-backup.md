@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: b46efa53bba3b845fa5837b91a3707f4a85d298e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 08e75f9eb5ea111cc977d02f66b945de4eae5126
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258771"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306165"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení v Azure Database for MariaDB
 
@@ -88,7 +88,7 @@ K dispozici jsou dva typy obnovení:
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
 > [!IMPORTANT]
-> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
+> Odstraněné servery je možné obnovit pouze do **pěti dnů** od odstranění, po jejichž uplynutí budou zálohy odstraněny. Záloha databáze je k dispozici a obnovena pouze z předplatného Azure, které je hostitelem serveru. Postup obnovení vyřazeného serveru najdete v části [popsané kroky](howto-restore-dropped-server.md). Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 

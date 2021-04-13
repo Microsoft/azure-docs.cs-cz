@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589546"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305238"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -184,7 +184,7 @@ Výše uvedený kód zakáže adaptivní vzorkování. Pomocí následujících 
 `TelemetryProcessorChainBuilder`K přizpůsobení chování vzorkování použijte metody rozšíření, jak je znázorněno níže.
 
 > [!IMPORTANT]
-> Použijete-li tuto metodu ke konfiguraci vzorkování, nezapomeňte nastavit `aiOptions.EnableAdaptiveSampling` vlastnost na hodnotu `false` při volání `AddApplicationInsightsTelemetry()` .
+> Použijete-li tuto metodu ke konfiguraci vzorkování, nezapomeňte nastavit `aiOptions.EnableAdaptiveSampling` vlastnost na hodnotu `false` při volání `AddApplicationInsightsTelemetry()` . Po provedení této změny je nutné postupovat podle pokynů v bloku **kódu níže, aby bylo** možné adaptivní vzorkování znovu povolit s vlastními nastaveními. V takovém případě může dojít k nadbytečnému příjmu dat. Vždy testovat po změně nastavení vzorkování a nastavte vhodný [denní limit dat](pricing.md#set-the-daily-cap) , který vám umožní řídit náklady.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility

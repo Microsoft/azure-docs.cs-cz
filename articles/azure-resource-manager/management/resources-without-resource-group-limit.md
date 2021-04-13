@@ -2,13 +2,13 @@
 title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 05f96597fb572005f7f32599b19d62ff2cb311cc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/12/2021
+ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210172"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366534"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -16,10 +16,12 @@ Ve výchozím nastavení můžete do každé skupiny prostředků nasadit až 80
 
 U některých typů prostředků musíte kontaktovat podporu, aby byl limit instance 800 odebraný. Tyto typy prostředků jsou uvedeny v tomto článku.
 
+
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
+* resourceHealthAlertRules
 * smartDetectorAlertRules
- 
+
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
@@ -79,6 +81,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * flexibleServers
 * serverGroups
+* serverGroupsv2
 * servery
 * serversv2
 
@@ -111,7 +114,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 * počítače – podporuje až 5 000 instancí.
-* rozšíření – podporuje neomezený počet instancí rozšíření virtuálních počítačů.
+* počítače/rozšíření – podporuje neomezený počet instancí rozšíření virtuálních počítačů.
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 
@@ -133,6 +136,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * netAppAccounts/capacityPools/svazky
 * netAppAccounts/capacityPools/svazky/mountTargets
 * netAppAccounts/capacityPools/svazky/snímky
+* netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -183,6 +187,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
+* autoScaleVCores – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 * kapacity – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay

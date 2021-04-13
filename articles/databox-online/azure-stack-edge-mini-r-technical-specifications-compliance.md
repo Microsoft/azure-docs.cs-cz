@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0f3b81ac12d0ae96dde0397bc01a4570d992ea9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727477"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310168"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack – Mini – technické specifikace R
 
@@ -24,31 +24,35 @@ Hardwarové součásti Microsoft Azure Stack hraničního zařízení v rámci p
 
 Azure Stack hraničních zařízení v jazyce R obsahuje následující specifikace pro výpočetní výkon a paměť:
 
-| Specifikace           | Hodnota                  |
-|-------------------------|------------------------|
-| Procesor    | PROCESOR s 16 jádry, Intel Xeon-D 1577 |
-| Memory (Paměť)              | 48 GB RAM (2400 MT/s)                  |
+| Specifikace           | Hodnota                           |
+|-------------------------|---------------------------------|
+| Typ procesoru                | Intel Xeon – D 1577               |
+| Procesor: RAW                | 16 jader celkem, 32 celkem vCPU  |
+| Procesor: použitelné             | 24 vCPU                        |
+| Typ paměti             | 16 GB až 2400 MT/s SODIMM          |
+| Paměť: RAW             | 48 GB RAM (3 × 16 GB)           |
+| Paměť: použitelné          | 32 GB paměti RAM                       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
 
 VPU (Vision Processing Unit) je součástí každé Azure Stack hraničního zařízení R, které umožňuje Kubernetes, rozsáhlou neuronové síť a aplikace založené na počítačové vidění.
 
-| Specifikace           | Hodnota                  |
-|-------------------------|------------------------|
-| Karta výpočetní akcelerace         | Intel Movidius nesčetných X VPU <br> Další informace najdete v tématu [Intel Movidius nesčetných X VPU](https://www.movidius.com/MyriadX) |
+| Specifikace             | Hodnota                  |
+|---------------------------|------------------------|
+| Karta výpočetní akcelerace | Intel Movidius nesčetných X VPU <br> Další informace najdete v tématu [Intel Movidius nesčetných X VPU](https://www.movidius.com/MyriadX) |
 
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
 Azure Stack hraničních zařízení R má 1 datový disk a 1 spouštěcí disk (který slouží jako úložiště operačního systému). V následující tabulce jsou uvedeny podrobnosti o kapacitě úložiště zařízení.
 
-|     Specifikace                          |     Hodnota             |
-|--------------------------------------------|-----------------------|
-|    Počet jednotek SSD (Solid-State Drive) (SSD)     |    2 × 1 TB disků <br> Jeden datový disk a jeden spouštěcí disk                  |
-|    Jedna kapacita SSD                     |    1 TB               |
-|    Celková kapacita (jenom data)              |    1 TB              |
-|    Celková použitelná kapacita *                  |    ~ 750 GB        |
+|     Specifikace                          |     Hodnota                                              |
+|--------------------------------------------|--------------------------------------------------------|
+|    Počet jednotek SSD (Solid-State Drive) (SSD)     |    2 × 1 TB disků <br> Jeden datový disk a jeden spouštěcí disk |
+|    Jedna kapacita SSD                     |    1 TB                                                |
+|    Celková kapacita (jenom data)              |    1 TB                                                |
+|    Celková použitelná kapacita *                  |    ~ 750 GB                                            |
 
 **Místo pro interní použití je rezervované.*
 
@@ -85,9 +89,9 @@ Azure Stack hraničních zařízení R navíc zahrnuje baterii, která se účtu
 Další [Typ baterie 2590](https://www.bren-tronics.com/bt-70791ck.html) se dá použít ve spojení s baterií připojení a prodloužit tak používání zařízení mezi poplatky. Tato baterie by měla být v souladu se všemi předpisy pro bezpečnost, přepravu a prostředí, které jsou použitelné v zemi použití.
 
 
-| Specifikace           | Hodnota                      |
-|-------------------------|----------------------------|
-| Kapacita baterie | 73 Wh                    |
+| Specifikace            | Hodnota                      |
+|--------------------------|----------------------------|
+| Kapacita baterie | 73 Wh                     |
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Rozměry skříně a specifikace váhy
 
@@ -99,18 +103,18 @@ V následující tabulce jsou uvedeny rozměry zařízení a USP s robustním p�
 
 |     Skříně     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Height (Výška)         |    68            |    2,68          |
-|    Width (Šířka)          |    208          |      8,19          |
-|    Délka          |   259           |    10,20          |
+|    Height (Výška)         |    68               |    2,68        |
+|    Width (Šířka)          |    208              |      8,19      |
+|    Délka          |   259              |    10,20       |
 
 
 ### <a name="enclosure-weight"></a>Váha skříně
 
 V následující tabulce je uvedena váha zařízení, včetně baterie.
 
-|     Skříně                                 |     Hmotnost          |
-|-----------------------------------------------|---------------------|
-|    Celková váha zařízení     |    7 kg          |
+|     Skříně                     |     Hmotnost          |
+|-----------------------------------|---------------------|
+|    Celková váha zařízení     |     7 kg           |
 
 ## <a name="enclosure-environment-specifications"></a>Specifikace prostředí skříně
 

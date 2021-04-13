@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/06/2021
+ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 879ca169604dcd61a79db4ec3ca937289dacdd9b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449269"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309845"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -40,7 +40,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
 
 * [Průzkumník služby Azure Storage](https://storageexplorer.com/) (volitelné).
 
-* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** .
+* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** . Poznamenejte si následující hodnoty, jak je uvedeno v článku, který se má použít v pozdějších krocích: **ID aplikace (ID instančního objektu níže), ověřovací klíč (tajný klíč klienta níže) a ID tenanta.**
 
 ## <a name="create-and-upload-an-input-file"></a>Vytvoření a nahrání vstupního souboru
 
@@ -225,6 +225,9 @@ Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azu
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
+ > [!NOTE] 
+ > Aby bylo možné předat parametry kanálu, přidejte je do řetězce JSON params_for_pipeline níže ve formátu **{"ParameterName1": "ParameterValue1"}** pro každý z parametrů potřebných v kanálu. Chcete-li předat parametry do toku dat, vytvořte parametr kanálu, který bude obsahovat název nebo hodnotu parametru, a potom Využijte parametr kanálu v parametru Dataflow ve formátu **@pipeline (). Parameters. ParameterName.**
+
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 

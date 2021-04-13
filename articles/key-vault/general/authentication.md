@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ed83d52d19df126ef9b0e68f984f88f5dfd40c42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492935"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365514"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Ověřování ve službě Azure Key Vault
 
@@ -59,8 +59,6 @@ Key Vault pracuje se dvěma různými úrovněmi autorizace:
     - [Azure Portal](../../role-based-access-control/role-assignments-portal.md)
     - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
     - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    Key Vault aktuálně podporuje roli [Přispěvatel](../../role-based-access-control/built-in-roles.md#key-vault-contributor) , která umožňuje operace správy u prostředků Key Vault. Řada dalších rolí je aktuálně ve verzi Preview. Můžete také vytvořit vlastní role, jak je popsáno v tématu [vlastní role Azure](../../role-based-access-control/custom-roles.md).
 
     Obecné informace o rolích najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 

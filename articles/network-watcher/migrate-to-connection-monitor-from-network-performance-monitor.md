@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 18d0a24de6f0775fdb35799512f9796a323d353a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be12a9054fd67b243530ff671c10fa53acafc308
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045480"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366347"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
 
@@ -43,7 +43,7 @@ Migrace pomáhá získat následující výsledky:
     
 ## <a name="prerequisites"></a>Požadavky
 
-* Ujistěte se, že ve vašem předplatném a oblasti pracovního prostoru Log Analytics je povolená možnost Network Watcher. 
+* Ujistěte se, že ve vašem předplatném a oblasti pracovního prostoru Log Analytics je povolená možnost Network Watcher. V takovém případě se vám při pokusu o migraci zobrazí zpráva s informacemi o tom, že je třeba povolit rozšíření sledovacího procesu sítě v předplatném výběru a na vybraném umístění v pracovním prostoru LA.
 * V případě, že se virtuální počítač Azure patřící do jiné oblasti nebo předplatného, než je Log Analytics pracovního prostoru, používá jako koncový bod, ujistěte se, že pro toto předplatné a oblast jsou povolené Network Watcher.   
 * Virtuální počítače Azure s nainstalovanými agenty Log Analytics musí být povolené s rozšířením Network Watcher.
 
@@ -57,6 +57,10 @@ Chcete-li migrovat testy z Network Performance Monitor na monitorování připoj
     
 1. V rozevíracích seznamech vyberte své předplatné a pracovní prostor a pak vyberte funkci NPM, kterou chcete migrovat. 
 1. Vyberte **importovat** a migrujte testy.
+* Pokud NPM není v pracovním prostoru povolený, zobrazí se chyba s oznámením, že se nenašla žádná platná NPM konfigurace. 
+* Pokud v rámci funkce, kterou jste zvolili v STEP2, neexistují žádné testy, zobrazí se chyba oznamující, že vybraný pracovní prostor nemá <feature> konfiguraci.
+* Pokud neexistují žádné platné testy, zobrazí se chyba oznamující, že vybraný pracovní prostor nemá platné testy.
+* Vaše testy mohou obsahovat agenty, které již nejsou aktivní, ale mohou být v minulosti aktivní. Zobrazí se chyba s informacemi o tom, že několik testů obsahuje agenty, které už nejsou aktivní. Seznam neaktivních agentů – {0} . Tito agenti můžou běžet v minulosti, ale jsou vypnuté/Nespuštěné. Povolte agenty a migrujte na monitorování připojení. Kliknutím na pokračovat migrujete testy, které neobsahují agenty, které nejsou aktivní. "
 
 Po zahájení migrace proběhne následující změny: 
 * Vytvoří se nový prostředek monitorování připojení.

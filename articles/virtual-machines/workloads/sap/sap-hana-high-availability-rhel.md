@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: daa0a6b15d4c187efdea96fd8067b08c89fa0e82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d1b05560c02f3bf4de199a3d5cad48907ee16fb
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599863"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365803"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -559,6 +559,71 @@ Kroky v této části používají následující předpony:
 
 Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure](high-availability-guide-rhel-pacemaker.md) a vytvořte pro tento server Hana základní cluster Pacemaker.
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>Implementace SAPHanaSRho zavěšení replikace systému Python
+
+To je důležitý krok pro optimalizaci integrace s clusterem a zlepšení detekce v případě potřeby převzetí služeb při selhání clusteru. Důrazně doporučujeme nakonfigurovat SAPHanaSR Python.    
+
+1. **[A]** nainstalujte "replikační zavěšení systému" Hana. Na obou uzlech databáze HANA je potřeba nainstalovat zavěšení.           
+
+   > [!TIP]
+   > Vidlice Pythonu se dá implementovat jedině pro HANA 2,0.        
+
+   1. Připravte zavěšení jako `root` .  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/srHook/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. Zastavte HANA na obou uzlech. Spustit jako <\> ADM SID:  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. Upravte `global.ini` na všech uzlech clusteru.  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** cluster vyžaduje konfiguraci sudoers na každém uzlu clusteru pro <ADM SID \> . V tomto příkladu je dosaženo vytvořením nového souboru. Spusťte příkazy jako `root` .    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+
+3. **[A]** spusťte SAP HANA na obou uzlech. Spustit jako <\> ADM SID  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** Ověřte instalaci zavěšení. Vykoná se <\> ADM SID na aktivní lokalitě replikace systému Hana.   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-12 21:36:16.911343 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:36:29.147808 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:37:04.898680 ha_dr_SAPHanaSR SOK
+
+    ```
+
+Další podrobnosti o implementaci SAP HANAho zavěšení replikace systému najdete v tématu [Povolení zavěšení zprostředkovatele SAP ha/Dr](https://access.redhat.com/articles/3004101#enable-srhook).  
+ 
 ## <a name="create-sap-hana-cluster-resources"></a>Vytvoření prostředků clusteru SAP HANA
 
 Nainstalujte agenty SAP HANA prostředků na **všech uzlech**. Ujistěte se, že jste povolili úložiště, které obsahuje balíček. Pokud používáte bitovou kopii s povoleným RHEL 8. x HA, nemusíte povolit další úložiště.  
@@ -686,7 +751,6 @@ Pokud chcete pokračovat dalšími kroky při zřizování druhé virtuální IP
    - Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-secondarylb**).
    - Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-secondaryIP**, **Hana-back-end** a **Hana-secondaryhp**).
    - Vyberte **porty ha**.
-   - Zvyšte **časový limit nečinnosti** na 30 minut.
    - Ujistěte se, že jste **povolili plovoucí IP adresu**.
    - Vyberte **OK**.
 

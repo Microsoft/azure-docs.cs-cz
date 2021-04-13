@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e00ef81afc709a9072eedbb07983057f57eb08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950585"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304290"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -45,7 +45,7 @@ Pokaždé, když je událost telemetrie teploty odeslána zařízením termostat
 
 V této části nastavíte [digitální dvojitou](concepts-twins-graph.md) hodnotu v digitálních proobjektech Azure, které budou představovat termostatické zařízení a budou se aktualizovat informacemi z IoT Hub.
 
-Pro vytvoření vlákna typu termostatu budete muset nejprve nahrát termostatový [model](concepts-models.md) do instance, která popisuje vlastnosti termostatu a později se použije k vytvoření vlákna. 
+Pro vytvoření vlákna typu termostatu budete muset nejprve nahrát termostatový [model](concepts-models.md) do instance, která popisuje vlastnosti termostatu a později se použije k vytvoření vlákna.
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 

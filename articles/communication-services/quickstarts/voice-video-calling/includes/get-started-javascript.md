@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: be6ff629a651af5cc06d7928c7972f07aa0fd6e2
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a93fe6c6203140bfed3771da8353ea7843b7694f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107291427"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327311"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají sadu SDK pro JavaScript.
 
@@ -90,7 +90,7 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
-| Název                             | Description                                                                                                                                 |
+| Název                             | Popis                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient je hlavní vstupní bod pro volání sady SDK.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |
@@ -165,3 +165,7 @@ Otevřete prohlížeč a přejděte na http://localhost:8080/ . Měli byste vid�
 :::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Snímek obrazovky dokončené aplikace JavaScriptu":::
 
 Odchozí volání VOIP můžete vytvořit zadáním ID uživatele v textovém poli a kliknutím na tlačítko **Spustit volání** . Volání se `8:echo123` připojí ke robotu s odezvou. to je skvělé pro začátek a ověření, jestli vaše zvuková zařízení fungují.
+
+## <a name="sample-code"></a>Ukázka kódu
+
+Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling).

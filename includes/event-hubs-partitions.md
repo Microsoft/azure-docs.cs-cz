@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2cb203a00bb00767126f95e1fdc2f5aff8990f01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1dd78ba3799573e05e4ebbf55887bae3d9674b7c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601269"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310069"
 ---
 Event Hubs uspořádá sekvence událostí odeslané do centra událostí do jednoho nebo více oddílů. Jakmile přijdete o novější události, přidají se na konec této sekvence. 
 
@@ -32,7 +32,7 @@ Event Hubs je navržená tak, aby pomáhala při zpracování velkých objemů u
 ### <a name="number-of-partitions"></a>Počet oddílů
 Počet oddílů se zadává při vytváření a musí být mezi 1 a 32 ve Event Hubs Standard. Počet oddílů může být až 2000 oddílů na kapacitní jednotku v Event Hubs úrovně Dedicated. 
 
-Pro konkrétní centrum událostí doporučujeme, abyste si zvolili aspoň tolik oddílů, kolik jich očekáváte v trvalých [jednotkách propustnosti (tu)](../articles/event-hubs/event-hubs-faq.md#what-are-event-hubs-throughput-units) . Měli byste počítat s jedním oddílem s kapacitou propustnosti 1. (1 megabajt v, 2 MB odchozí). Počet propustnosti můžete škálovat na svůj obor názvů nebo jednotky kapacity clusteru nezávisle na počtu oddílů. Centrum událostí s 32 oddíly nebo centrum událostí s 1 oddílem má za následek stejné náklady, pokud je obor názvů nastavený na 1 část kapacity. 
+Pro konkrétní centrum událostí doporučujeme, abyste si zvolili aspoň tolik oddílů, kolik jich očekáváte v trvalých [jednotkách propustnosti (tu)](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-) . Měli byste počítat s jedním oddílem s kapacitou propustnosti 1. (1 megabajt v, 2 MB odchozí). Počet propustnosti můžete škálovat na svůj obor názvů nebo jednotky kapacity clusteru nezávisle na počtu oddílů. Centrum událostí s 32 oddíly nebo centrum událostí s 1 oddílem má za následek stejné náklady, pokud je obor názvů nastavený na 1 část kapacity. 
 
 Počet oddílů centra událostí ve [vyhrazeném Event Hubs clusteru](../articles/event-hubs/event-hubs-dedicated-overview.md) se dá po vytvoření centra událostí [zvýšit](../articles/event-hubs/dynamically-add-partitions.md) , ale distribuce datových proudů napříč oddíly se v době, kdy se provedla, změní na změny oddílů oddílů na oddíly. proto byste se měli pokusit, abyste se těmto změnám vyhnuli, pokud se jedná o relativní pořadí událostí ve vaší aplikaci.
 

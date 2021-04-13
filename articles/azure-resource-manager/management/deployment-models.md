@@ -2,13 +2,13 @@
 title: Resource Manager a klasické nasazení
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185840"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306925"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Nasazení Azure Resource Manager vs. Classic: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -17,7 +17,7 @@ ms.locfileid: "96185840"
 
 Tento článek vysvětluje model nasazení Azure Resource Manager a model nasazení Classic. Modely Resource Manager a Classic představují dva různé způsoby nasazení a správy vašich řešení Azure. Práce s nimi probíhá prostřednictvím dvou různých sad rozhraní API a nasazené prostředky můžou obsahovat důležité rozdíly. Tyto dva modely nejsou vzájemně kompatibilní. Tento článek popisuje rozdíly mezi nimi.
 
-V zájmu zjednodušení nasazení a správy prostředků Microsoft doporučuje používat pro všechny nové prostředky model Resource Manager. Pokud je to možné, Microsoft doporučuje znovu nasadit existující prostředky prostřednictvím Resource Manageru.
+V zájmu zjednodušení nasazení a správy prostředků Microsoft doporučuje používat pro všechny nové prostředky model Resource Manager. Pokud je to možné, Microsoft doporučuje znovu nasadit existující prostředky prostřednictvím Resource Manageru. Pokud jste použili Cloud Services, můžete své řešení migrovat do [Cloud Services (Rozšířená podpora)](../../cloud-services-extended-support/overview.md).
 
 Pokud s Správce prostředků začínáte, možná budete chtít nejprve zkontrolovat terminologii definovanou v [přehledu Azure Resource Manager](overview.md).
 
@@ -40,7 +40,7 @@ Při přidání Resource Manageru došlo ke zpětnému přidání všech prostř
 
 Je potřeba vzít v úvahu tři scénáře:
 
-1. Cloud Services nepodporuje model nasazení Správce prostředků.
+1. [Cloud Services (Classic)](../../cloud-services/cloud-services-choose-me.md) nepodporuje model nasazení Správce prostředků. [Cloud Services (Rozšířená podpora)](../../cloud-services-extended-support/overview.md) podporuje model nasazení Správce prostředků.
 2. Virtuální počítače, účty úložiště a virtuální sítě podporují jak model nasazení Classic, tak model Resource Manager.
 3. Všechny ostatní služby Azure podporují model Resource Manager.
 
@@ -95,7 +95,7 @@ Toto jsou jednotlivé komponenty a jejich vztahy v případě modelu nasazení C
 
 Řešení Classic pro hostování virtuálního počítače zahrnuje tyto součásti:
 
-* Povinná cloudová služba, která funguje jako kontejner pro hostování virtuálních počítačů (výpočetní prostředky). Virtuální počítače se automaticky poskytují pomocí síťové karty a IP adresy přiřazené službou Azure. Kromě toho cloudová služba obsahuje instanci externího nástroje pro vyrovnávání zatížení, veřejnou IP adresu a výchozí koncové body, což umožňuje datový provoz ze vzdálené plochy a vzdáleného prostředí PowerShell u virtuálních počítačů s Windows a datový provoz SSH (Secure Shell) u virtuálních počítačů s Linuxem.
+* Cloud Services (Classic) slouží jako kontejner pro hostování virtuálních počítačů (COMPUTE). Virtuální počítače se automaticky poskytují pomocí síťové karty a IP adresy přiřazené službou Azure. Kromě toho cloudová služba obsahuje instanci externího nástroje pro vyrovnávání zatížení, veřejnou IP adresu a výchozí koncové body, což umožňuje datový provoz ze vzdálené plochy a vzdáleného prostředí PowerShell u virtuálních počítačů s Windows a datový provoz SSH (Secure Shell) u virtuálních počítačů s Linuxem.
 * Požadovaný účet úložiště, který ukládá virtuální pevné disky pro virtuální počítač, včetně operačního systému, dočasných a dalších datových disků (úložiště).
 * Volitelná virtuální síť, která funguje jako další kontejner, ve kterém můžete vytvořit strukturu podsítě a vybrat podsíť, ve které se virtuální počítač nachází (síť).
 

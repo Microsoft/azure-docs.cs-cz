@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0492575bef93a1b08d48475c3ab32ecbc7becd6e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726358"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364290"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Obnovení certifikátů Azure Key Vault
 
@@ -82,7 +82,7 @@ Azure Key Vault také zpracovává automatické obnovení certifikátů podepsan
 
 **Jak můžu otestovat funkci autorotace certifikátu?**
 
-Vytvořte certifikát s platností **1 měsíc** a pak nastavte akci životnosti pro otočení o **1%**. Toto nastavení otočí certifikát každých 7,2 hodin.
+Vytvořte certifikát podepsaný svým držitelem s platností **1 měsíc** a pak nastavte akci životnosti pro otočení o **1%**. V průběhu několika dalších dnů byste si měli být schopni zobrazit historii verzí certifikátu.
   
 **Budou tyto značky replikovány po automatickém obnovení certifikátu?**
 

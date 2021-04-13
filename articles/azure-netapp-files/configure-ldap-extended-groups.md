@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259706"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311528"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurace Přidání LDAP pomocí rozšířených skupin pro přístup ke svazkům NFS
 
-Když [vytváříte svazek NFS](azure-netapp-files-create-volumes.md), máte možnost povolit funkci LDAP s rozšířenými skupinami (možnost **LDAP** ) pro daný svazek. Tato funkce povoluje přístup ke svazku uživatelům služby Active Directory LDAP a rozšířeným skupinám (až 1024 skupin).  
+Když [vytváříte svazek NFS](azure-netapp-files-create-volumes.md), máte možnost povolit funkci LDAP s rozšířenými skupinami (možnost **LDAP** ) pro daný svazek. Tato funkce povoluje přístup ke svazku uživatelům služby Active Directory LDAP a rozšířeným skupinám (až 1024 skupin). Pomocí funkce LDAP s rozšířenými skupinami můžete použít svazky NFSv 4.1 a NFSv3. 
 
 V tomto článku se dozvíte, jak postupovat při vytváření svazku NFS pomocí rozšířených skupin při povolování LDAP s rozšířenými skupinami.  
 
 ## <a name="considerations"></a>Požadavky
+
+* Protokol LDAP s rozšířenými skupinami je podporován pouze pomocí Active Directory Domain Services (Přidat) nebo služby Azure Active Directory Domain Services (AADDS). OpenLDAP nebo jiné adresářové služby LDAP třetích stran nejsou podporovány. 
 
 * Pokud používáte Azure Active Directory Domain Services (AADDS), *nesmí být protokol* LDAP over TLS povolený.  
 
@@ -69,6 +71,9 @@ V tomto článku se dozvíte, jak postupovat při vytváření svazku NFS pomoc�
 
 2. Svazky LDAP vyžadují konfiguraci služby Active Directory pro nastavení serveru LDAP. Postupujte podle pokynů v části [požadavky na připojení ke službě Active Directory](create-active-directory-connections.md#requirements-for-active-directory-connections) a [vytvořte připojení](create-active-directory-connections.md#create-an-active-directory-connection) ke službě Active Directory, abyste mohli konfigurovat připojení služby Active Directory na Azure Portal.  
 
+    > [!NOTE]
+    > Ujistěte se, že jste nakonfigurovali nastavení připojení služby Active Directory. Účet počítače bude vytvořen v organizační jednotce (OU), která je zadána v nastavení připojení služby Active Directory. Nastavení používá klient LDAP k ověřování ve službě Active Directory.
+
 3. Zajistěte, aby byl server služby Active Directory LDAP v provozu a běžel ve službě Active Directory. 
 
 4. Uživatelé systému souborů NFS NFS musí mít na serveru LDAP určité atributy POSIX. Atributy pro uživatele LDAP a skupiny LDAP nastavte takto: 
@@ -82,7 +87,7 @@ V tomto článku se dozvíte, jak postupovat při vytváření svazku NFS pomoc�
 
     ![Editor atributů služby Active Directory](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
-5. Pokud chcete nakonfigurovat klienta Linux s integrovaným protokolem LDAP, přečtěte si téma [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md).
+5. Pokud chcete nakonfigurovat klienta se systémem NFSv 4.1, který je integrovaný s protokolem LDAP, přejděte na téma [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md).
 
 6.  Pokud chcete vytvořit svazek NFS, postupujte podle kroků v částech [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md) . Během procesu vytváření svazku povolte na kartě **protokol** možnost **LDAP** .   
 

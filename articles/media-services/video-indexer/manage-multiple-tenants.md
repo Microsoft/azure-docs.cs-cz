@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7596aa4cef6c4bc601c15018e8ede4265f395eb7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76990500"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312854"
 ---
 # <a name="manage-multiple-tenants"></a>Správa několika klientů
 
@@ -45,7 +45,7 @@ Při použití této architektury se pro každého tenanta vytvoří účet Vide
 * Těžší spravovat z důvodu několika účtů Video Indexer (a přidružených Media Services) na jednoho klienta.
 
 > [!TIP]
-> Vytvořte uživatele s právy pro správu pro váš systém na [portálu video indexer Portal](https://api-portal.videoindexer.ai/) a pomocí AUTORIZAČNÍHO rozhraní API Poskytněte svým klientům příslušný [přístupový token účtu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
+> Vytvořte uživatele s právy pro správu pro váš systém na [portálu video indexer Portal](https://api-portal.videoindexer.ai/) a pomocí AUTORIZAČNÍHO rozhraní API Poskytněte svým klientům příslušný [přístupový token účtu](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token).
 
 ## <a name="single-video-indexer-account-for-all-users"></a>Jeden Video Indexer účet pro všechny uživatele
 
@@ -55,7 +55,7 @@ Při používání této architektury je zákazník zodpovědný za izolaci klie
 
 Díky této možnosti mohou být modely přizpůsobení (osoba, jazyk a značky) sdíleny nebo izolovány od klientů pomocí filtrování modelů.
 
-Při [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)můžete pro každého tenanta zadat jiný atribut oddílu. To umožní izolaci v [rozhraní API pro hledání](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Zadáním atributu partition v rozhraní API pro hledání získáte jenom výsledky zadaného oddílu. 
+Při [nahrávání videí](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)můžete pro každého tenanta zadat jiný atribut oddílu. To umožní izolaci v [rozhraní API pro hledání](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos). Zadáním atributu partition v rozhraní API pro hledání získáte jenom výsledky zadaného oddílu. 
 
 ### <a name="considerations"></a>Požadavky
 

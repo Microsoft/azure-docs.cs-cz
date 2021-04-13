@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107648"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310188"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Konektor Azure dosah pro Amazon S3
 
@@ -116,9 +116,30 @@ Tento postup popisuje, jak vytvořit nové dosah přihlašovací údaje, které 
 
     Až skončíte s vytvářením přihlašovacích údajů, vyberte **vytvořit** .
 
-Další informace o přihlašovacích údajích dosah najdete v [dokumentaci ke službě Azure dosah Public Preview](manage-credentials.md).
+1. Pokud jste to ještě neudělali, zkopírujte a vložte hodnoty **id účet Microsoft** a **externích ID** pro použití při [vytváření nové role AWS pro dosah](#create-a-new-aws-role-for-purview), což je váš další krok.
+
+Další informace o přihlašovacích údajích dosah najdete [v tématu přihlašovací údaje pro ověřování zdroje v Azure dosah](manage-credentials.md).
 
 ### <a name="create-a-new-aws-role-for-purview"></a>Vytvoření nové role AWS pro dosah
+
+Tento postup vyžaduje, abyste při vytváření role AWS zadali hodnoty pro ID účtu Azure a externí ID.
+
+Pokud tyto hodnoty nemáte, nejdříve je vyhledejte v [přihlašovacích údajích dosah](#create-a-purview-credential-for-your-aws-bucket-scan).
+
+**Vyhledání ID a externího ID účtu Microsoft**:
+
+1. V dosah přejděte do části   >  **zabezpečení a přístup k bezpečnostním**  >  **údajům** centra pro správu.
+
+1. Vyberte přihlašovací údaje, které jste [vytvořili pro kontrolu intervalu AWS](#create-a-purview-credential-for-your-aws-bucket-scan), a pak na panelu nástrojů vyberte **Upravit**.
+
+1. V podokně **Upravit přihlašovací údaje** , které se zobrazí na pravé straně, ZKOPÍRUJTE hodnoty **ID účet Microsoft** a **externích ID** do samostatného souboru, nebo je Zajistěte pro vložení do příslušného pole v AWS.
+
+    Například:
+
+    [![Vyhledejte id účet Microsoft a hodnoty externího ID. ](./media/register-scan-amazon-s3/locate-account-id-external-id.png)](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+**Vytvoření role AWS pro dosah**:
 
 1.  Otevřete konzolu **Amazon Web Services** a v části **zabezpečení, identita a kompatibilita** vyberte **IAM**.
 
@@ -129,12 +150,8 @@ Další informace o přihlašovacích údajích dosah najdete v [dokumentaci ke 
     |Pole  |Description  |
     |---------|---------|
     |**Account ID**     |    Zadejte ID účtu Microsoft. Příklad: `615019938638`     |
-    |**Externí ID**     |   V části Možnosti vyberte **vyžadovat externí ID...** a potom do určeného pole zadejte své externí ID. <br>Příklad: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Externí ID můžete najít při.  |
+    |**Externí ID**     |   V části Možnosti vyberte **vyžadovat externí ID...** a potom do určeného pole zadejte své externí ID. <br>Příklad: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > Hodnoty pro **ID účtu Microsoft** i **externí ID** můžete najít v oblasti pověření **centra pro správu** dosah  >   , kde jste [vytvořili přihlašovací údaje pro dosah](#create-a-purview-credential-for-your-aws-bucket-scan).
-    >
 
     Například:
 

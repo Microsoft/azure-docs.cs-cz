@@ -4,12 +4,12 @@ description: Tento článek popisuje postup vytvoření aplikace Java, která od
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9bbd5d4290261ec96755f02a6179a7cde267d82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97607979"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309403"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
 
@@ -421,4 +421,4 @@ Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
-- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+- [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)

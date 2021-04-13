@@ -4,27 +4,22 @@ description: Použití simulovaného čipu TPM na virtuálním počítači se sy
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166594"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312395"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Vytvoření a zřízení zařízení IoT Edge s čipem TPM v systému Linux
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení se systémem Linux IoT Edge pomocí čipu TPM (Trusted Platform Module). Zařízení Azure IoT Edge se [službou Device Provisioning](../iot-dps/index.yml)můžete automaticky zřizovat. Pokud neznáte proces automatického zřizování, přečtěte si přehled [zřizování](../iot-dps/about-iot-dps.md#provisioning-process) a teprve potom pokračujte.
-
-:::moniker range=">=iotedge-2020-11"
-> [!NOTE]
-> V současné době se Automatické zřizování pomocí ověřování TPM nepodporuje v IoT Edge verze 1,2.
-:::moniker-end
 
 Úkoly jsou následující:
 
@@ -34,7 +29,7 @@ Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení s
 1. Nainstalujte modul runtime IoT Edge a připojte zařízení k IoT Hub.
 
 > [!TIP]
-> Tento článek popisuje, jak otestovat zřizování DPS pomocí simulátoru TPM, ale většina z nich se vztahuje na fyzický hardware TPM, jako je například [ &trade; čip TPM Infineon OPTIGA](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e), zařízení Azure Certified for IoT.
+> Tento článek popisuje, jak otestovat zřizování DPS pomocí simulátoru TPM, ale většina z nich se vztahuje na fyzický hardware TPM, jako je například [ &trade; čip TPM Infineon OPTIGA](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), zařízení Azure Certified for IoT.
 >
 > Pokud používáte fyzické zařízení, můžete přeskočit k [informacím o načtení zřizování z fyzického zařízení](#retrieve-provisioning-information-from-a-physical-device) v tomto článku.
 
@@ -191,6 +186,9 @@ Postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge](how-
 
 Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s informacemi, které používá pro připojení ke službě Device Provisioning a IoT Hub.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Zjistěte svůj **Rozsah ID** DPS a **ID registrace** zařízení, které byly shromážděny v předchozích částech.
 
 1. Otevřete konfigurační soubor na zařízení IoT Edge.
@@ -216,11 +214,52 @@ Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s in
    # dynamic_reprovisioning: false
    ```
 
-   Volitelně můžete pomocí `always_reprovision_on_startup` řádků nebo `dynamic_reprovisioning` nakonfigurovat chování při opětovném zřizování zařízení. Pokud je zařízení nastavené tak, aby se při spuštění znovu zřídilo, vždy se nejprve pokusí zřídit pomocí DPS a pak se vrátit k záložnímu zálohování, pokud se nezdaří. Pokud je zařízení nastavené tak, aby se dynamicky znovu zřídilo, IoT Edge se restartuje a znovu zřídí, pokud se zjistí událost opětovného zřízení. Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
-
 1. Aktualizujte hodnoty `scope_id` a `registration_id` pomocí informací DPS a Device.
 
+1. Volitelně můžete pomocí `always_reprovision_on_startup` řádků nebo `dynamic_reprovisioning` nakonfigurovat chování při opětovném zřizování zařízení. Pokud je zařízení nastavené tak, aby se při spuštění znovu zřídilo, vždy se nejprve pokusí zřídit pomocí DPS a pak se vrátit k záložnímu zálohování, pokud se nezdaří. Pokud je zařízení nastavené tak, aby se dynamicky znovu zřídilo, IoT Edge se restartuje a znovu zřídí, pokud se zjistí událost opětovného zřízení. Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
+
+1. Uložte soubor a zavřete ho.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Zjistěte svůj **Rozsah ID** DPS a **ID registrace** zařízení, které byly shromážděny v předchozích částech.
+
+1. Otevřete konfigurační soubor na zařízení IoT Edge.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. V souboru vyhledejte část konfigurace zřizování. Odkomentujte řádky pro zřizování čipu TPM a zajistěte, aby byly všechny další řádky pro zřizování zakomentovány.
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. Aktualizujte hodnoty `id_scope` a `registration_id` pomocí informací DPS a Device.
+
+1. Volitelně můžete v souboru najít oddíl pro automatické opětovné zřízení. Pomocí `auto_reprovisioning_mode` parametru nakonfigurujte chování při opětovném zřizování zařízení na hodnotu `Dynamic` , `AlwaysOnStartup` nebo `OnErrorOnly` . Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
+
+1. Uložte soubor a zavřete ho.
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>Udělení IoT Edge k čipu TPM
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Modul runtime IoT Edge potřebuje k automatickému zřízení zařízení přístup k čipu TPM.
 
@@ -272,9 +311,68 @@ Přístup čipu TPM k modulu runtime IoT Edge můžete poskytnout přepsáním n
    ```
 
    Pokud se vám nezobrazují správná oprávnění, zkuste restartovat počítač a obnovte udev.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>Restartování prostředí IoT Edge runtime
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Modul runtime IoT Edge spoléhá na službu TPM, která zprostředkovatele přistupuje k TPM zařízení. Tato služba potřebuje přístup k čipu TPM, aby mohla automaticky zřizovat vaše zařízení.
 
+Přístup k čipu TPM můžete poskytnout přepsáním nastavení systému tak, aby `aziottpm` služba měla oprávnění ke kořenu. Pokud nechcete oprávnění ke službě zvýšit, můžete k ručnímu poskytnutí přístupu k TPM použít taky následující postup.
+
+1. Vyhledejte v zařízení cestu k hardwarovému modulu TPM a uložte ji jako místní proměnnou.
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. Vytvořte nové pravidlo, které udělí IoT Edge modulu runtime přístup k tpm0.
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. Otevřete soubor pravidel.
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. Zkopírujte následující informace o přístupu do souboru pravidel.
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. Soubor uložte a zavřete.
+
+6. Aktivujte systém udev pro vyhodnocení nového pravidla.
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. Ověřte, že pravidlo bylo úspěšně použito.
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   Úspěšný výstup se zobrazí takto:
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   Pokud se vám nezobrazují správná oprávnění, zkuste restartovat počítač a obnovte udev.
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>Restartování IoT Edge a ověření úspěšné instalace
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Restartujte modul runtime IoT Edge, aby provedl všechny změny konfigurace, které jste v zařízení provedli.
 
    ```bash
@@ -287,6 +385,12 @@ Zkontrolujte, zda je spuštěn modul runtime IoT Edge.
    sudo systemctl status iotedge
    ```
 
+Prověřte protokoly démona.
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 Pokud se zobrazí chyby zřizování, může to být tím, že se ještě neprojevily změny konfigurace. Zkuste znovu spustit démona IoT Edge.
 
    ```bash
@@ -294,22 +398,40 @@ Pokud se zobrazí chyby zřizování, může to být tím, že se ještě neproj
    ```
 
 Případně můžete restartovat virtuální počítač a zjistit, jestli se změny projeví při zahájení obnovení.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Použijte změny konfigurace, které jste provedli v zařízení.
 
-Pokud se modul runtime úspěšně spustil, můžete přejít do IoT Hub a podívat se, že se vaše nové zařízení automaticky zřídilo. Vaše zařízení je teď připravené spouštět IoT Edge moduly.
+   ```bash
+   sudo iotedge config apply
+   ```
 
-Ověřte stav procesu démona IoT Edge.
+Zkontrolujte, zda je spuštěn modul runtime IoT Edge.
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 Prověřte protokoly démona.
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+Pokud se zobrazí chyby zřizování, může to být tím, že se ještě neprojevily změny konfigurace. Zkuste restartovat proces démona IoT Edge.
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+Případně můžete restartovat virtuální počítač a zjistit, jestli se změny projeví při zahájení obnovení.
+:::moniker-end
+<!-- end 1.2 -->
+
+Pokud se modul runtime úspěšně spustil, můžete přejít do IoT Hub a podívat se, že se vaše nové zařízení automaticky zřídilo. Vaše zařízení je teď připravené spouštět IoT Edge moduly.
 
 Vypíše spuštěné moduly.
 

@@ -1,25 +1,21 @@
 ---
-title: Virtuální počítač pro přípravu aplikace MSIX pro připojení k aplikaci Windows Virtual Desktop – verze Preview – Azure
+title: Virtuální počítač pro přípravu aplikace MSIX s připojením k Windows – Azure
 description: Vytvoření bitové kopie aplikace MSIX pro fond hostitelů virtuálních ploch Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a2d909d04c38a7d6bad42020175cbbbfcfd7bf9f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448351"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363661"
 ---
 # <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>Příprava image MSIX pro virtuální počítače s Windows
 
-> [!IMPORTANT]
-> Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-MSIX App Attach (Preview) je řešení pro vrstvení aplikací, které umožňuje dynamicky připojovat aplikace z balíčku MSIX k uživatelské relaci. Systém balíčků MSIX odděluje aplikace od operačního systému a usnadňuje tak vytváření imagí pro virtuální počítače. Balíčky MSIX vám také poskytují větší kontrolu nad tím, které aplikace můžou uživatelé přistupovat k jejich virtuálním počítačům. Můžete dokonce oddělit aplikace od hlavní image a dát je uživatelům později.
+Připojení aplikace MSIX je řešení pro vrstvení aplikací, které umožňuje dynamicky připojovat aplikace z balíčku MSIX k uživatelské relaci. Systém balíčků MSIX odděluje aplikace od operačního systému a usnadňuje tak vytváření imagí pro virtuální počítače. Balíčky MSIX vám také poskytují větší kontrolu nad tím, které aplikace můžou uživatelé přistupovat k jejich virtuálním počítačům. Můžete dokonce oddělit aplikace od hlavní image a dát je uživatelům později.
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>Vytvoření balíčku VHD nebo VHDX pro MSIX
 

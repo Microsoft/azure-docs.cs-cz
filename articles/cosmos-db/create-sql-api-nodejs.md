@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ead4004813cf6415dfa1c7da3d308d93ea49a773
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93090201"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365905"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rychlý Start: použití Node.js k připojení a dotazování dat z Azure Cosmos DB účtu SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,6 +24,7 @@ ms.locfileid: "93090201"
 > - [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > - [Sada Java SDK v4](create-sql-api-java.md)
 > * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Konektor Spark V3](create-sql-api-spark.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)

@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: 150c174842d50663779012e57f8402ec8b3d3b02
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e11e03ec7379dede6bf998f639a237201c297e72
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580925"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303623"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -264,6 +264,7 @@ Služba Azure: [Azure Service Health](../service-health/index.yml)
 > | Microsoft. ResourceHealth/metadata/číst | Načte metadata |
 > | Microsoft. ResourceHealth/Notifications/Read | Přijímá oznámení Azure Resource Manager |
 > | Microsoft. ResourceHealth/Operations/Read | Získejte dostupné operace pro Microsoft ResourceHealth. |
+> | Microsoft. ResourceHealth/potentialoutages/Read |  |
 
 ### <a name="microsoftsupport"></a>Microsoft. support
 
@@ -281,8 +282,6 @@ Služba Azure: jádro
 > | Microsoft. Support/Services/problemClassifications/Read | Vypíše jednu nebo všechny klasifikace problémů pro službu Azure. |
 > | Microsoft.Support/supportTickets/read | Vypíše jednu nebo všechny lístky podpory. |
 > | Microsoft.Support/supportTickets/write | Umožňuje vytvořit a aktualizovat lístek podpory. |
-> | Microsoft. support/supportTickets/Communications/Read | Uvádí jednu nebo všechny komunikace lístků podpory. |
-> | Microsoft. support/supportTickets/Communications/Write | Přidá novou komunikaci k lístku podpory. |
 
 ## <a name="compute"></a>Compute
 
@@ -673,6 +672,7 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. CDN/registrovat/akce | Zaregistruje předplatné pro poskytovatele prostředků CDN a povolí vytváření profilů CDN. |
+> | Microsoft. CDN/zrušit registraci/akce | Zruší registraci předplatného pro poskytovatele prostředků CDN. |
 > | Microsoft. CDN/CheckNameAvailability/Action |  |
 > | Microsoft. CDN/ValidateProbe/Action |  |
 > | Microsoft. CDN/CheckResourceUsage/Action |  |
@@ -697,6 +697,8 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/operationresults/profileresults/CheckResourceUsage/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/GenerateSsoUri/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/GetSupportedOptimizationTypes/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/CheckHostNameAvailability/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/použití/akce |  |
 > | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Read |  |
 > | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/afdendpointresults/DELETE |  |
@@ -748,9 +750,9 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/operationresults/profileresults/secretresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/secretresults/DELETE |  |
 > | Microsoft. CDN/operationresults/profileresults/secretresults/ValidateSecret/Action |  |
-> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Read |  |
-> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Write |  |
-> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypolicyresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypolicyresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypolicyresults/DELETE |  |
 > | Microsoft. CDN/Operations/Read |  |
 > | Microsoft. CDN/profily/číst |  |
 > | Microsoft. CDN/Profiles/Write |  |
@@ -758,6 +760,8 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/Profiles/CheckResourceUsage/Action |  |
 > | Microsoft. CDN/Profiles/GenerateSsoUri/Action |  |
 > | Microsoft. CDN/Profiles/GetSupportedOptimizationTypes/Action |  |
+> | Microsoft. CDN/Profiles/CheckHostNameAvailability/Action |  |
+> | Microsoft. CDN/profily/použití/akce |  |
 > | Microsoft. CDN/Profiles/afdendpoints/Read |  |
 > | Microsoft. CDN/Profiles/afdendpoints/Write |  |
 > | Microsoft. CDN/Profiles/afdendpoints/DELETE |  |
@@ -791,6 +795,12 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/Profiles/koncových bodů/původu/čtení |  |
 > | Microsoft. CDN/Profiles/koncových bodů/origines/Write |  |
 > | Microsoft. CDN/Profiles/Endpoints/origines/DELETE |  |
+> | Microsoft. CDN/Profiles/getloganalyticslocations/Read |  |
+> | Microsoft. CDN/Profiles/getloganalyticsmetrics/Read |  |
+> | Microsoft. CDN/Profiles/getloganalyticsrankings/Read |  |
+> | Microsoft. CDN/Profiles/getloganalyticsresources/Read |  |
+> | Microsoft. CDN/Profiles/getwafloganalyticsmetrics/Read |  |
+> | Microsoft. CDN/Profiles/getwafloganalyticsrankings/Read |  |
 > | Microsoft. CDN/Profiles/origingroups/Read |  |
 > | Microsoft. CDN/Profiles/origingroups/Write |  |
 > | Microsoft. CDN/Profiles/origingroups/DELETE |  |
@@ -1557,6 +1567,7 @@ Služba Azure: [Azure Data box](../databox/index.yml)
 > | Microsoft. DataBox/zrušit registraci/akce | Poskytovatel Un-Register Microsoft. Databox |
 > | Microsoft. DataBox/Jobs/Cancel/Action | Zruší probíhající objednávku. |
 > | Microsoft. DataBox/Jobs/bookShipmentPickUp/Action | Umožňuje rezervovat vyzvednutí pro návratové dodávky. |
+> | Microsoft. DataBox/úlohy/zmírňování/akce | Tato metoda pomáhá při provádění akcí zmírňování u úlohy s kódem řešení. |
 > | Microsoft. DataBox/Jobs/listCredentials/Action | Zobrazí nešifrované přihlašovací údaje související s objednávkou. |
 > | Microsoft. DataBox/Locations/validateInputs/Action | Tato metoda provádí všechny typy ověření. |
 > | Microsoft. DataBox/Locations/validateAddress/Action | Ověří dodací adresu a v případě potřeby poskytne alternativní adresy. |
@@ -1675,6 +1686,7 @@ Služba Azure: [Azure NetApp Files](../azure-netapp-files/index.yml)
 > | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/BackupStatus/číst |  |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/MountTargets/číst | Přečte cílový prostředek připojení. |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/ReplicationStatus/číst | Přečte stavy replikace svazků. |
+> | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/RestoreStatus/číst |  |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/snímky/číst | Přečte prostředek snímku. |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/snímky/zapisovat | Zapíše prostředek snímku. |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/svazky/snímky/odstranit | Odstraní prostředek snímku. |
@@ -1756,6 +1768,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/služby/služby/čtení | Získat vlastnosti souborové služby |
 > | Microsoft. Storage/storageAccounts/služby/služby/sdílené složky/odstranění | Odstranit sdílenou složku |
 > | Microsoft. Storage/storageAccounts/služby/služby/sdílené/číst | Získání sdílení souborů |
+> | Microsoft. Storage/storageAccounts/služby/služby/sdílené položky/zapůjčení/akce |  |
 > | Microsoft. Storage/storageAccounts/služby/služby/sdílené/číst | Vypsat sdílené složky |
 > | Microsoft. Storage/storageAccounts/služby/služby/sdílení/zápis | Vytvořit nebo aktualizovat sdílenou složku |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/DELETE |  |
@@ -2227,6 +2240,7 @@ Služba Azure: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/MediaServices/klíče listkey/Action | Výpis klíčů služby ACS pro účet Media Services |
 > | Microsoft. Media/MediaServices/syncStorageKeys/Action | Synchronizace klíčů úložiště pro připojený účet Azure Storage |
 > | Microsoft. Media/MediaServices/listEdgePolicies/Action | Vypíše zásady pro hraniční zařízení. |
+> | Microsoft. Media/MediaServices/PrivateEndpointConnectionsApproval/Action | Schválit připojení privátního koncového bodu |
 > | Microsoft. Media/MediaServices/accountfilters/Read | Číst libovolný filtr účtu |
 > | Microsoft. Media/MediaServices/accountfilters/Write | Vytvoří nebo aktualizuje libovolný filtr účtu. |
 > | Microsoft. Media/MediaServices/accountfilters/DELETE | Odstranit libovolný filtr účtu |
@@ -2256,14 +2270,6 @@ Služba Azure: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/MediaServices/liveEvents/liveOutputs/Read | Číst libovolný živý výstup |
 > | Microsoft. Media/MediaServices/liveEvents/liveOutputs/Write | Vytvořit nebo aktualizovat veškerý živý výstup |
 > | Microsoft. Media/MediaServices/liveEvents/liveOutputs/DELETE | Odstranit veškerý živý výstup |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnectionProxies/Read | Čtení libovolného proxy připojení k privátnímu koncovému bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnectionProxies/ověřit/akce | Ověřit proxy připojení privátního koncového bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnections/Read | Číst jakékoli připojení privátního koncového bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnections/Write | Vytvoření připojení privátního koncového bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu živé události |
-> | Microsoft. Media/MediaServices/liveEvents/privateLinkResources/Read | Číst libovolný prostředek privátního propojení události Live |
 > | Microsoft. Media/MediaServices/liveOutputOperations/Read | Čtení jakékoli živé operace výstupu |
 > | Microsoft. Media/MediaServices/mediaGraphs/Read | Čtení libovolného mediálního grafu |
 > | Microsoft. Media/MediaServices/mediaGraphs/Write | Vytvořit nebo aktualizovat libovolný mediální graf |
@@ -2286,14 +2292,6 @@ Služba Azure: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/MediaServices/starají/Start/Action | Spustit všechny operace koncového bodu streamování |
 > | Microsoft. Media/MediaServices/starají/stop/Action | Zastavit všechny operace koncového bodu streamování |
 > | Microsoft. Media/MediaServices/starají/Scale/Action | Škálování operace koncového bodu streamování |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnectionProxies/Read | Načíst proxy server privátního koncového bodu streamování připojení |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnectionProxies/Write | Vytvořit proxy server připojení privátního koncového bodu streamování |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu streamování |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnectionProxies/ověřit/akce | Ověřit proxy server připojení privátního koncového bodu streamování |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnections/Read | Čtení libovolného streamování privátního koncového bodu streamování |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnections/Write | Vytvoření připojení k privátnímu koncovému bodu streamování |
-> | Microsoft. Media/MediaServices/starají/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu ke streamování |
-> | Microsoft. Media/MediaServices/starají/privateLinkResources/Read | Přečíst prostředek privátního propojení koncového bodu streamování |
 > | Microsoft. Media/MediaServices/streamingLocators/Read | Čtení libovolného lokátoru streamování |
 > | Microsoft. Media/MediaServices/streamingLocators/Write | Vytvořit nebo aktualizovat libovolný Lokátor streamování |
 > | Microsoft. Media/MediaServices/streamingLocators/DELETE | Odstranit všechny Lokátory streamování |
@@ -2302,8 +2300,6 @@ Služba Azure: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/MediaServices/streamingPolicies/Read | Číst všechny zásady streamování |
 > | Microsoft. Media/MediaServices/streamingPolicies/Write | Vytvořit nebo aktualizovat jakékoli zásady streamování |
 > | Microsoft. Media/MediaServices/streamingPolicies/DELETE | Odstranit všechny zásady streamování |
-> | Microsoft. Media/MediaServices/streamingPrivateEndpointConnectionOperations/Read | Načte operaci připojení privátního koncového bodu streamování. |
-> | Microsoft. Media/MediaServices/streamingPrivateEndpointConnectionProxyOperations/Read | Čtení jakékoli operace proxy připojení privátního koncového bodu streamování |
 > | Microsoft. Media/MediaServices/transformes/Read | Číst libovolnou transformaci |
 > | Microsoft. Media/MediaServices/transformes/Write | Vytvořit nebo aktualizovat libovolnou transformaci |
 > | Microsoft. Media/MediaServices/transformes/DELETE | Odstranit libovolnou transformaci |
@@ -2358,29 +2354,44 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | --- | --- |
 > | Microsoft. SignalRService/Register/Action | Zaregistruje poskytovatele prostředků Microsoft. SignalRService s předplatným. |
 > | Microsoft. SignalRService/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Microsoft. SignalRService u předplatného. |
-> | Microsoft. SignalRService/Locations/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novou službou Signal. |
+> | Microsoft. SignalRService/Locations/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novým prostředkem Microsoft. SignalRService. |
 > | Microsoft. SignalRService/Locations/operationresults/signaler/Read | Dotaz na výsledek asynchronní operace na základě umístění |
+> | Microsoft. SignalRService/Locations/operationresults/webpubsub/Read | Dotaz na výsledek asynchronní operace na základě umístění |
 > | Microsoft. SignalRService/Locations/operationStatuses/signaler/Read | Dotaz na stav asynchronní operace na základě umístění |
-> | Microsoft. SignalRService/umístění/použití/číst | Získání využití kvót pro službu Azure Signal |
+> | Microsoft. SignalRService/Locations/operationStatuses/webpubsub/Read | Dotaz na stav asynchronní operace na základě umístění |
+> | Microsoft. SignalRService/umístění/použití/číst | Získejte využití kvót pro poskytovatele prostředků Microsoft. SignalRService. |
 > | Microsoft. SignalRService/operationresults/Read | Dotaz na výsledek asynchronní operace na úrovni zprostředkovatele |
-> | Microsoft. SignalRService/Operations/Read | Vypíše operace pro službu Azure Signal. |
+> | Microsoft. SignalRService/Operations/Read | Vypíše operace pro poskytovatele prostředků Microsoft. SignalRService. |
 > | Microsoft. SignalRService/stav operationstatus/Read | Dotaz na stav asynchronní operace na úrovni zprostředkovatele |
 > | Microsoft. SignalRService/Signaler/Read | Zobrazení nastavení a konfigurací signalizace na portálu pro správu nebo prostřednictvím rozhraní API |
 > | Microsoft. SignalRService/Signaler/Write | Úprava nastavení a konfigurací signalizace na portálu pro správu nebo prostřednictvím rozhraní API |
-> | Microsoft. SignalRService/Signaler/DELETE | Odstraní celou službu Signal. |
+> | Microsoft. SignalRService/Signaler/DELETE | Odstraňte prostředek signalizace. |
 > | Microsoft. SignalRService/Signaler/klíče listkey/Action | Zobrazení hodnoty přístupových klíčů signalizace na portálu pro správu nebo prostřednictvím rozhraní API |
 > | Microsoft. SignalRService/Signaler/RegenerateKey/Action | Změna hodnoty přístupových klíčů signalizace na portálu pro správu nebo prostřednictvím rozhraní API |
-> | Microsoft. SignalRService/Signaler/restart/Action | Restartování služby signalizace Azure na portálu pro správu nebo prostřednictvím rozhraní API. Dojde k určitému výpadku. |
-> | Microsoft. SignalRService/Signaler/eventGridFilters/Read | Získá vlastnosti zadaného filtru Event gridu nebo zobrazí seznam všech filtrů Event gridu určených pro daný signál. |
-> | Microsoft. SignalRService/Signaler/eventGridFilters/Write | Vytvoří nebo aktualizuje filtr Event gridu pro signál se zadanými parametry. |
-> | Microsoft. SignalRService/Signaler/eventGridFilters/DELETE | Odstraní filtr Event gridu z signálu. |
+> | Microsoft. SignalRService/Signaler/restart/Action | Restart prostředku signalizace na portálu pro správu nebo prostřednictvím rozhraní API. Dojde k určitému výpadku. |
+> | Microsoft. SignalRService/Signaler/eventGridFilters/Read | Získá vlastnosti zadaného filtru Event gridu nebo vypíše všechny filtry Event gridu pro zadaný prostředek signalizace. |
+> | Microsoft. SignalRService/Signaler/eventGridFilters/Write | Vytvoří nebo aktualizuje filtr Event gridu pro prostředek signalizace se zadanými parametry. |
+> | Microsoft. SignalRService/Signaler/eventGridFilters/DELETE | Odstraní filtr Event gridu z prostředku signalizace. |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnectionProxies/ověřit/akci | Ověření proxy připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnectionProxies/Write | Vytvoření proxy serveru připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnectionProxies/Read | Číst proxy privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnectionProxies/DELETE | Odstranění proxy serveru připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Write | Schválení nebo zamítnutí připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Read | Čtení připojení privátního koncového bodu |
-> | Microsoft. SignalRService/Signaler/privateLinkResources/Read | Zobrazit seznam všech prostředků privátního propojení signálem |
+> | Microsoft. SignalRService/Signaler/privateLinkResources/Read | Zobrazí seznam všech prostředků privátního propojení prostředku signalizace. |
+> | Microsoft. SignalRService/WebPubSub/Read | Zobrazení nastavení a konfigurací WebPubSub na portálu pro správu nebo prostřednictvím rozhraní API |
+> | Microsoft. SignalRService/WebPubSub/Write | Úprava nastavení a konfigurací WebPubSub na portálu pro správu nebo prostřednictvím rozhraní API |
+> | Microsoft. SignalRService/WebPubSub/DELETE | Odstraňte prostředek WebPubSub. |
+> | Microsoft. SignalRService/WebPubSub/klíče listkey/Action | Zobrazení hodnoty přístupových klíčů WebPubSub na portálu pro správu nebo prostřednictvím rozhraní API |
+> | Microsoft. SignalRService/WebPubSub/RegenerateKey/Action | Změna hodnoty přístupových klíčů WebPubSub na portálu pro správu nebo prostřednictvím rozhraní API |
+> | Microsoft. SignalRService/WebPubSub/restart/Action | Restart prostředku WebPubSub na portálu pro správu nebo prostřednictvím rozhraní API. Dojde k určitému výpadku. |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/ověřit/akce | Ověření proxy připojení privátního koncového bodu |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/Write | Vytvoření proxy serveru připojení privátního koncového bodu |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/Read | Číst proxy privátního koncového bodu |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/DELETE | Odstranění proxy serveru připojení privátního koncového bodu |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnections/Write | Schválení nebo zamítnutí připojení privátního koncového bodu |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnections/Read | Čtení připojení privátního koncového bodu |
+> | Microsoft. SignalRService/WebPubSub/privateLinkResources/Read | Vypíše všechny prostředky privátního propojení prostředku WebPubSub. |
 > | **Akce dataaction** | **Popis** |
 > | Microsoft. SignalRService/Signaler/auth/accessKey/Action | Vygenerujte dočasnou AccessKey pro podepisování ClientTokens. |
 > | Microsoft. SignalRService/Signaler/auth/clientToken/Action | Vygenerujte ClientToken pro spuštění připojení klienta. |
@@ -2394,7 +2405,16 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/Signaler/serverConnection/Write | Spusťte připojení k serveru. |
 > | Microsoft. SignalRService/Signaler/uživatel/odeslat/akce | Odeslat zprávy uživateli, který se může skládat z několika připojení klientů. |
 > | Microsoft. SignalRService/Signaler/uživatel/číst | Ověřte existenci uživatele. |
-> | Microsoft. SignalRService/Signaler/uživatel/zápis |  |
+> | Microsoft. SignalRService/Signaler/uživatel/zápis | Upravte uživatele. |
+> | Microsoft. SignalRService/WebPubSub/clientConnection/Send/Action | Odesílá zprávy přímo do připojení klienta. |
+> | Microsoft. SignalRService/WebPubSub/clientConnection/Read | Ověřte existenci připojení klienta. |
+> | Microsoft. SignalRService/WebPubSub/clientConnection/Write | Ukončete připojení klienta. |
+> | Microsoft. SignalRService/WebPubSub/Group/Send/Action | Zpráva všesměrového vysílání do skupiny |
+> | Microsoft. SignalRService/WebPubSub/Group/Read | Kontrolovat existenci skupiny nebo uživatelskou existenci ve skupině. |
+> | Microsoft. SignalRService/WebPubSub/Group/Write | Připojit nebo opustit skupinu. |
+> | Microsoft. SignalRService/WebPubSub/hub/Send/Action | Vysílá zprávy do všech připojení klientů v centru. |
+> | Microsoft. SignalRService/WebPubSub/uživatel/odeslat/akce | Odeslat zprávy uživateli, který se může skládat z několika připojení klientů. |
+> | Microsoft. SignalRService/WebPubSub/uživatel/číst | Ověřte existenci uživatele. |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -2470,6 +2490,8 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/hostingenvironments/Resume/Action | Obnoví hostující prostředí. |
 > | Microsoft. Web/hostingenvironments/Suspend/Action | Pozastavit hostující prostředí. |
 > | Microsoft. Web/hostingenvironments/kapacit/čtení | Získejte kapacity hostujících prostředí. |
+> | Microsoft. Web/hostingEnvironments/Configurations/Networking/Read | Získání konfigurace sítě App Service Environment |
+> | Microsoft. Web/hostingEnvironments/Configurations/Networking/Write | Aktualizuje konfiguraci sítě App Service Environment. |
 > | Microsoft. Web/hostingenvironments/detektory/číst | Získejte detektory hostujících prostředí. |
 > | Microsoft. Web/hostingenvironments/Diagnostics/Read | Získejte diagnostiku prostředí hostování. |
 > | Microsoft. Web/hostingEnvironments/eventGridFilters/DELETE | Odstraní filtr Event Grid v hostitelském prostředí. |
@@ -2887,6 +2909,9 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/Build/listappsettings/Action | Vypíše nastavení aplikace pro sestavení statické lokality. |
 > | Microsoft. Web/staticSites/Build/zipdeploy/Action | Nasazení statického sestavení lokality z obsahu pro zip |
 > | Microsoft. Web/staticSites/Build/config/Write | Vytvoří nebo aktualizuje nastavení aplikace pro sestavení statické lokality. |
+> | Microsoft. Web/staticSites/Build/userProvidedFunctionApps/DELETE | Odpojení uživatele zadaného Function App ze statického sestavení webu |
+> | Microsoft. Web/staticSites/Build/userProvidedFunctionApps/Read | Získat uživatele funkcí funkcí pro statické vytváření webů |
+> | Microsoft. Web/staticSites/Build/userProvidedFunctionApps/Write | Registrace Function App zadaného uživatelem se statickým sestavením webu |
 > | Microsoft. Web/staticSites/config/Write | Vytvoření nebo aktualizace nastavení aplikace pro statickou lokalitu |
 > | Microsoft. Web/staticSites/customdomains/Write | Vytvoření vlastní domény pro statickou lokalitu |
 > | Microsoft. Web/staticSites/customdomains/DELETE | Odstranění vlastní domény pro statickou lokalitu |
@@ -2897,6 +2922,9 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/privateEndpointConnections/Read | Získat připojení privátního koncového bodu nebo seznam připojení privátního koncového bodu pro statickou lokalitu |
 > | Microsoft. Web/staticSites/privateEndpointConnections/DELETE | Odstranění připojení privátního koncového bodu pro statickou lokalitu |
 > | Microsoft. Web/staticSites/privateLinkResources/Read | Získat prostředky privátního propojení |
+> | Microsoft. Web/staticSites/userProvidedFunctionApps/DELETE | Odpojení uživatele zadaného Function App ze statické lokality |
+> | Microsoft. Web/staticSites/userProvidedFunctionApps/Read | Získat uživatele se všemi funkcemi funkcí, které poskytuje statický Web |
+> | Microsoft. Web/staticSites/userProvidedFunctionApps/Write | Registrace Function App zadaného uživatelem se statickou lokalitou |
 
 ## <a name="containers"></a>Kontejnery
 
@@ -3035,6 +3063,7 @@ Služba Azure: [Služba Azure Kubernetes (AKS)](../aks/index.yml)
 > | Microsoft. ContainerService/Locations/operationresults/Read | Získá stav výsledku asynchronní operace. |
 > | Microsoft. ContainerService/Locations/Operations/Read | Získá stav asynchronní operace. |
 > | Microsoft. ContainerService/umístění/Orchestration/číst | Vypisuje podporované orchestrace. |
+> | Microsoft. ContainerService/umístění/OS – možnosti/čtení | Získá možnosti operačního systému |
 > | Microsoft. ContainerService/managedClusters/Read | Získání spravovaného clusteru |
 > | Microsoft. ContainerService/managedClusters/Write | Vytvoří nový spravovaný cluster nebo aktualizuje stávající. |
 > | Microsoft. ContainerService/managedClusters/DELETE | Odstraní spravovaný cluster. |
@@ -3580,6 +3609,10 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/Validate/Action | Ověřte proxy server připojení privátního koncového bodu. |
 > | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/operationresults/Read | Přečtěte si výsledky vytvoření proxy připojení privátního koncového bodu. |
 > | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/operationstatuses/Read | Přečtěte si stav vytvoření proxy připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnections/Read | Číst připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnections/Write | Vytvořte nebo aktualizujte připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateLinkResources/Read | Číst prostředek privátního propojení |
 > | Microsoft. DataFactory/Factory/queryFeaturesValue/Read | Přečte hodnoty funkcí řízení expozice pro seznam funkcí. |
 > | Microsoft. DataFactory/Factory/querypipelineruns/Read | Přečte výsledek spuštění kanálu dotazů. |
 > | Microsoft. DataFactory/Factory/querytriggerruns/Read | Přečte výsledek spuštění triggeru. |
@@ -4162,6 +4195,7 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/databaseAccounts/Tables/throughputSettings/operationResults/Read | Stav čtení asynchronní operace. |
 > | Microsoft.DocumentDB/databaseAccounts/použití/čtení | Přečte využití databázového účtu. |
 > | Microsoft.DocumentDB/umístění/deleteVirtualNetworkOrSubnets/Action | Oznamuje Microsoft.DocumentDB, že se odstraňuje VirtualNetwork nebo podsíť. |
+> | Microsoft.DocumentDB/umístění/čtení | Přečtěte si metadata umístění nebo seznamu všechna metadata umístění. |
 > | Microsoft.DocumentDB/Locations/deleteVirtualNetworkOrSubnets/operationResults/Read | Stav čtení asynchronní operace deleteVirtualNetworkOrSubnets |
 > | Microsoft.DocumentDB/umístění/operationsStatus/číst | Přečte stav asynchronních operací. |
 > | Microsoft.DocumentDB/umístění/restorableDatabaseAccounts/číst | Přečtěte si účet databáze obnovitelné nebo seznam všech účtů databáze obnovitelné. |
@@ -4571,6 +4605,9 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/servery/klíče/odstranit | Odstraní existující klíč serveru. |
 > | Microsoft. SQL/servery/operationResults/Read | Načte probíhající operace serveru. |
 > | Microsoft. SQL/servery/operace/číst | Vrátí seznam operací provedených na serveru. |
+> | Microsoft. SQL/servery/outboundFirewallRules/Read | Číst odchozí pravidlo brány firewall |
+> | Microsoft. SQL/servery/outboundFirewallRules/DELETE | Odstranit odchozí pravidlo brány firewall |
+> | Microsoft. SQL/servery/outboundFirewallRules/Write | Vytvořit odchozí pravidlo brány firewall |
 > | Microsoft. SQL/servery/privateEndpointConnectionProxies/updatePrivateEndpointProperties/Action | Používá se v NRP k naplnění vlastností na připojení privátního koncového bodu. |
 > | Microsoft. SQL/servery/privateEndpointConnectionProxies/ověřit/akce | Ověří volání vytvoření připojení privátního koncového bodu z NRP strany. |
 > | Microsoft. SQL/servery/privateEndpointConnectionProxies/Read | Vrátí seznam proxy serverů připojení privátního koncového bodu nebo získá vlastnosti zadaného proxy serveru připojení privátního koncového bodu. |
@@ -4947,6 +4984,10 @@ Služba Azure: [azure Průzkumník dat](/azure/data-explorer/)
 > | Microsoft. Kusto/Clusters/PrincipalAssignments/Read | Přečte prostředek přiřazení objektů v clusteru. |
 > | Microsoft. Kusto/Clusters/PrincipalAssignments/Write | Zapíše prostředek přiřazení objektu zabezpečení clusteru. |
 > | Microsoft. Kusto/Clusters/PrincipalAssignments/DELETE | Odstraní prostředek přiřazení objektu zabezpečení clusteru. |
+> | Microsoft. Kusto/Clusters/PrivateEndpointConnectionProxies/Read | Přečte proxy připojení privátního koncového bodu. |
+> | Microsoft. Kusto/Clusters/PrivateEndpointConnectionProxies/Write | Zapisuje proxy připojení privátního koncového bodu. |
+> | Microsoft. Kusto/Clusters/PrivateEndpointConnectionProxies/DELETE | Odstraní proxy server připojení privátního koncového bodu. |
+> | Microsoft. Kusto/Clusters/PrivateEndpointConnectionProxies/Validate/Action | Ověří proxy připojení privátního koncového bodu. |
 > | Microsoft. Kusto/Clusters/SKU/číst | Přečte prostředek SKU clusteru. |
 > | Microsoft. Kusto/Locations/CheckNameAvailability/Action | Zkontroluje dostupnost názvu prostředku. |
 > | Microsoft. Kusto/Locations/GetNetworkPolicies/Action | Získá zásady záměru sítě. |
@@ -5285,6 +5326,11 @@ Služba Azure: [Azure bot Service](/azure/bot-service/)
 > | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
 > | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/HostSettings/Read | Získání nastavení potřebných pro hostování služby bot Service |
+> | Microsoft. BotService/HostSettings/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/HostSettings/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/HostSettings/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
+> | Microsoft. BotService/HostSettings/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
 > | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
@@ -5611,14 +5657,19 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/ImageSearch/LINTREND/Action | Získat aktuálně trendy obrázků. |
 > | Microsoft. Cognitiveservices Account/Accounts/ImmersiveReader/getcontentmodelforreader/Action | Vytvoří relaci moderního čtenáře. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/předpověď/Action | Načte předpověď publikovaných koncových bodů pro daný dotaz. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Unlabeled/Action | Připojí k odpovídajícím aplikacím neoznačená data. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Write | Vytvoří novou aplikaci LUIS. Aktualizuje název nebo popis aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/azureaccounts/Action | Přiřadí aplikaci účet Azure. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/DELETE | Odstraní aplikaci. |
-> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Read | Získá informace o aplikaci. Zobrazí seznam všech uživatelských aplikací. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Read | Získá informace o aplikaci. Zobrazí seznam všech uživatelských aplikací. Vrátí seznam aplikací * |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/import/Action | Importuje aplikaci do LUIS, v těle žádosti by měla být obsažena JSON aplikace. Vrátí nové ID aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Publish/Action | Publikuje konkrétní verzi aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/querylogsasync/Action | Spusťte požadavek na stažení pro protokoly dotazů v minulém měsíci pro danou aplikaci. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Move/Action | Přesune aplikaci na jiný LUIS vytváření prostředků Azure. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Subscriptions/Action | Přiřadí k zadané aplikaci informace o předplatném. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Unlabeled/Action | Nahraje neoznačená data ze souboru CSV do aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/testdatasets/Action | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/activeversion/Write | Aktualizuje aktuálně aktivní verzi zadané aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/asistenti/číst | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/azureaccounts/Read | Načte LUIS účty Azure přiřazené k aplikaci pro uživatele pomocí jeho Azure Resource Managerho tokenu. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/azureaccounts/DELETE | Načte LUIS účty Azure pro uživatele pomocí tokenu Azure Resource Manager. |
@@ -5628,6 +5679,8 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/customprebuiltdomains/Read | Získá všechny dostupné vlastní předem sestavené domény pro konkrétní jazykovou verzi a získá všechny dostupné vlastní předdefinované domény pro všechny jazykové verze. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/doméns/Read | Získá dostupné domény aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Endpoints/Read | Vrátí dostupné oblasti a adresy URL pro nasazení koncového bodu. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/metadata/číst | Získání metadat aplikace |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/metadata/Write | Aktualizuje metadata aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/oprávnění/Write | Přidá uživatele do seznamu povolených uživatelů pro přístup k této aplikaci LUIS. Nahradí seznam současný přístup uživatelů pomocí některého z odesílaných v těle. * |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/oprávnění/číst | Získá seznam e-mailů uživatelů, které mají oprávnění pro přístup k vaší aplikaci.  |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Permissions/DELETE | Uživatel odebral uživatele do seznamu povolených uživatelů pro přístup k této aplikaci LUIS. |
@@ -5635,8 +5688,24 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/publishsettings/Write | Aktualizuje nastavení publikování aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/querylogs/Read | Načte protokoly dotazů za minulý měsíc pro aplikaci. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/querylogsasync/Read | Získejte stav žádosti o stažení protokolů dotazů. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/runtimepermissions/robot/Action | Přidá do aplikace oprávnění runtime bot. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/runtimepermissions/robot/DELETE | Odstranila se oprávnění aplikace runtime bot. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/runtimepermissions/robot/Read | Získá oprávnění modulu runtime bot pro aplikaci. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Settings/Read | Získat nastavení aplikace |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Settings/Write | Aktualizuje nastavení aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/sloty/předpověď/Action | Načte publikovaný předpovědi pro zadaný slot pomocí daného dotazu. Aktuální maximální velikost dotazu je 500 znaků. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/sloty/vyhodnocení/akce | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/sloty/vyhodnocení/výsledek/čtení | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/sloty/vyhodnocení/stav/čtení | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/sloty/předpověď/Read | Načte publikovaný předpovědi pro zadaný slot pomocí daného dotazu. Aktuální maximální velikost dotazu je 500 znaků. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/stats/detailedendpointhitshistory/Read | Získá historii přístupů koncového bodu pro každý den pro daný časový rámec s podrobnostmi slotu a oblasti. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Subscriptions/Read | Vrátí informace o přiřazených předplatných pro aplikaci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Subscriptions/DELETE | Odebere předplatné se zadaným ID z přiřazených předplatných pro danou aplikaci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/testdatasets/DELETE | Odstraní danou datovou sadu z dané aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/testdatasets/Read | Načte zadaná metadata testu dávky. Vrátí seznam všech datových sad dávkových testů dané aplikace. * |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/testdatasets/Write | Aktualizuje poslední výsledky testů existující sady dat testu dávky pro danou aplikaci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/testdatasets/Download/Read | Stáhne datovou sadu s daným ID. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/testdatasets/Name/Write | Aktualizuje název existující sady dat testu dávky pro danou aplikaci. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/usagescenarios/Read | Získá dostupné scénáře použití aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/vlak/Action | Odešle žádost o školení pro verzi zadané aplikace LUIS. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/klon/Action | Vytvoří novou verzi aplikace, která odpovídá aktuálnímu snímku vybrané verze aplikace. |
@@ -5644,11 +5713,17 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/číst | Získá informace o verzi aplikace. Získá informace o seznamu verzí aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/import/Action | Importuje novou verzi do aplikace LUIS. v textu žádosti by se měla zahrnout JSON verze. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/zápis | Aktualizuje název nebo Popis verze aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/předpověď/Action | Načte publikovaný předpovědi pro zadanou verzi aplikace pomocí daného dotazu. Aktuální maximální velikost dotazu je 500 znaků. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/vyhodnocení/akce | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/statistiky/akce | Vypočítat statistiku školení pro verze aplikace |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/releasedispatch/Action | Uvolní nový snímek vybrané verze aplikace, který budou používat odesílající aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/assignedkey/Write | **TATO JE ZASTARALÁ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/assignedkey/Read | **TATO JE ZASTARALÁ.** |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/closedlists/Write | Přidá entitu seznamu do aplikace LUIS. Přidá dávku podseznamů do existujícího closedlist. * aktualizuje uzavřený model seznamu. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/closedlists/DELETE | Odstraní uzavřenou entitu seznamu z aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/closedlists/Read | Získá informace o zavřeném modelu seznamu. Načte informace o modelech closedlist. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/closedlists/navrhnout/Action | navrhnout nové položky pro existující nebo nově vytvořené uzavřené seznamy |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/closedlists/přednavrhovat/číst | Načte předchozí výsledek návrhu pro entitu uzavřeného seznamu. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/closedlists/Roles/Write | Přidá roli pro model entit uzavřených seznamů aktualizuje roli pro model entity s uzavřeným seznamem. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/closedlists/Roles/DELETE | Odstraní roli pro model entity pro uzavřený seznam. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/closedlists/role/čtení | Získá roli pro model entity pro uzavřený seznam. Získá role pro model entity pro uzavřený seznam. |
@@ -5674,7 +5749,9 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltentities/role/čtení | Získá roli pro vlastní model entity předem sestavené domény. Získá role pro vlastní model entity předem sestavené domény. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltintents/Write | Přidá do aplikace vlastní předem sestavený model záměru domény. Pro odebrání tohoto záměru použijte [odstranění záměru](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1c) s ID záměru. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/customprebuiltintents/Read | Načte vlastní předem připravené informace o této verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltintentsbatch/Write | Přidá do aplikace ve Batch vlastní předem sestavené záměry domény. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/customprebuiltmodels/Read | Načte všechny vlastní předem připravené informace o doménových modelech pro tuto verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/detailedmodels/Read | *NotDefined* |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/Write | Přidá do verze aplikace jednoduchý extraktor entit. Aktualizuje název extraktoru entity. Aktualizuje extraktor entit. * |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/odstranit | Odstraní jednoduchý extraktor entit z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/číst | Získá informace o modelu jednoduché entity. Získá informace o modelech jednoduchých entit ve verzi aplikace. |
@@ -5686,7 +5763,10 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/role/odstranění | Odstraní roli pro model jednoduché entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/role/číst | Získá roli pro model jednoduché entity. Získá role pro model jednoduché entity. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/entity/Roles/navrhnout/číst | Navrhuje příklady, které by vylepšily přesnost modelu entity. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/entity/stats/endpointscores/Read | Získá počet, kolikrát se model entity vynásobí jako první záměr. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/navrhnout/číst | Navrhuje příklady, které by vylepšily přesnost modelu entity. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/vyhodnocení/výsledek/čtení | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/vyhodnocení/stav/čtení | *NotDefined* |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklad/zápis | Přidá příklad označený jako verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklady/zápis | Přidá do zadané aplikace dávku příkladů neduplicitních popisků. Batch nemůže zahrnovat hierarchické podřízené entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklady/odstranit | Odstraní popisek se zadaným ID. |
@@ -5696,6 +5776,8 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/externalkeys/Read | **TATO JE ZASTARALÁ.** |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/externalkeys/Write | **TATO JE ZASTARALÁ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/funkce/číst | Získá všechny funkce verze aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/featuresuggestion/status/čtení | Získat stav návrhu funkce získání verze aplikace |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/featuresuggestion/návrhy/číst | Získat návrhy funkcí verze aplikace |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/hierarchicalentities/Write | Přidá k verzi aplikace hierarchické extrakci entit. Aktualizuje název a podřízené objekty modelu extrakce hierarchické entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/hierarchicalentities/DELETE | Odstraní objekt pro extrakci hierarchické entity z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/hierarchicalentities/Read | Získá informace o hierarchickém modelu entity. Načte informace o modelech hierarchických entit ve verzi aplikace. |
@@ -5708,14 +5790,22 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/Write | Přidá klasifikátor záměru do verze aplikace. Aktualizuje název klasifikátoru záměru. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/odstranit | Odstraní klasifikátor záměru z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/číst | Získá informace o modelu záměru. Získá informace o modelech záměrů ve verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/entitiescount/Read | Získá počet entit s názvem projevy pro daný záměr v daném úkolu v dané aplikaci. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/funkce/zápis | Přidá relaci funkce pro model záměru aktualizace seznamu vztahů funkcí pro záměr * |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/funkce/Odstranit | Odstraní relaci funkce pro model záměru. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/funkce/číst | Získá relace funkcí pro model záměrů. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/patternrules/Read | Získá vzory pro určitý záměr. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/informace/čtení | Získat statistiku školení pro verze aplikace na záměr |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/statistiky/endpointscores/Read | Získá počet, kolikrát se skóre modelu záměru vyhodnotí jako první záměr. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/navrhnout/číst | Navrhuje příklady, které by vylepšily přesnost modelu záměru. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/labeleddata/Read | Získá označená data pro zadanou aplikaci. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/listprebuilts/Read | Získá všechny dostupné předem připravené entity pro aplikaci na základě jazykové verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/modely/čtení | Získá informace o modelech verze aplikace. Načte informace o modelu. * |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Versions/Models/endpointscoreshistory/Read | Získá počet, kolikrát se skóre modelu záměru vyhodnotí jako historie nejvyšší úrovně daného časového období. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/modely/příklady/čtení | Získá seznam příkladů modelu. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/modely/revize/čtení | Získá označený projevy pro daný model v dané úloze v dané aplikaci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Versions/Models/reviewlabels/Read | Získá označený projevy pro daný model v dané úloze v dané aplikaci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Versions/Models/reviewpredictions/Read | Získá označený projevy pro daný model v dané úloze v dané aplikaci. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/patternanyentities/Write | Přidá vzorek. libovolný objekt pro extrakci entit do verze aplikace. Aktualizuje vzor. jakýkoli extraktor entit. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/patternanyentities/DELETE | Odstraní vzorek. libovolný objekt pro extrakci entit z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/patternanyentities/Read | Získá informace o vzoru. libovolný model entity. Získá informace o vzorci. všechny modely entit ve verzi aplikace. |
@@ -5735,12 +5825,15 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/phraselists/Write | Vytvoří novou funkci PhraseList. Aktualizuje fráze, stav a název funkce PhraseList. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/phraselists/DELETE | Odstraní funkci PhraseList z aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/phraselists/Read | Získá informace o funkci PhraseList. Načte všechny funkce PhraseList pro verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/phraselists/navrhnout/Action | navrhnout nové položky pro existující nebo nově vytvořené seznamy frází |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/phraselists/přednavrhovat/číst | Načte předchozí výsledek návrhu pro funkci PhraseList. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předem sestavené/zapisovat | Přidá do verze aplikace seznam předdefinovaných extrakcí entit. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předem sestavené/odstranit | Odstraní předem sestaveného extraktoru entit z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předem sestavené/přečtené | Získá informace o předem vytvořeném modelu entity. Získá informace o předem sestavených modelech entit ve verzi aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předem sestavené/role/zapisovat | Přidá roli pro předem sestavený model entit a aktualizuje roli pro předem sestavený model entit. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předem sestavené/role/odstranit | Odstraní roli pro předem sestavený model entit. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předem sestavené/role/číst | Získá roli pro předem sestavený model entity. Získá role pro předem sestavený model entit. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/předpověď/číst | Načte publikovaný předpovědi pro zadanou verzi aplikace pomocí daného dotazu. Aktuální maximální velikost dotazu je 500 znaků. Získá předpověď (záměry/entity) pro daný utterance. * |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/regexentities/Write | Přidá do verze aplikace extrakci entit regulárního výrazu. Aktualizuje model entity regulárního výrazu. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/regexentities/DELETE | Odstraní model entity regulárního výrazu z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/regexentities/Read | Získá informace o modelu entity regulárního výrazu. Získá informace o modelech entit regulárních výrazů ve verzi aplikace. |
@@ -5749,18 +5842,82 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/regexentities/role/čtení | Získá role pro model entity regulárního výrazu. Získá roli pro model entity regulárního výrazu. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/nastavení/číst | Získá nastavení verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/nastavení/zápis | Aktualizuje nastavení verze aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/stav/čtení | Získá příznak označující, jestli je verze aplikace už dřív poučená. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/informace/čtení | Získat statistiku školení pro verze aplikace |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/statistiky/endpointhitshistory/Read | Získá historii přístupů koncového bodu pro každý den daného časového období. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/statistiky/examplesperentity/Read | Získá počet příkladů na entitu dané aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/statistiky/labelsperentity/Read | Získá počet popisků na entitu dané aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/statistiky/labelsperintent/Read | Získá počet popisků na záměr pro danou aplikaci. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/statistiky/operace/čtení | Získat informace o neplatných statistikách školení pro verze aplikací získat informace o operacích – neprošlé operacemi Statistika školení verze aplikace |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/statsmetadata/Read | Získat metadata statistiky školení pro verze aplikace |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/navrhnout/odstranit | Odstranil se koncový bod utterance. Tento utterance je v seznamu "View Endpoint projevy". |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/testdatasets/spustit/číst | Spustí test dávky z daného ID aplikace a ID datové sady na daném |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/výuka/čtení | Získá stav školení všech modelů (záměrů a entit) pro zadanou verzi aplikace. Před voláním tohoto rozhraní API k získání stavu školení musíte volat rozhraní API pro vlaky, abyste mohli výuku aplikace LUIS vyvolat. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/trainingstatus/Read | Získá příznak označující, jestli je verze aplikace už dřív poučená. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/azureaccounts/Read | Načte LUIS účty Azure pro uživatele pomocí tokenu Azure Resource Manager. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/compositesmigration/aplikace/verze/migrace/akce | Migrace složených aplikací pro verzi aplikace |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/compositesmigration/aplikace/verze/operace/migrace/čtení | Získat výsledek kompozitní migrace |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/compositesmigration/aplikace/verze/operace/migrace/stav/čtení | Získat stav operace kompozitní migrace |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/compositesmigration/needmigrationapps/Read | Získat aplikace, které potřebují kombinované migrace |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/konverzace/previewfeatures/Read | Získá stav způsobilosti funkcí verze Preview pro aktuálního vlastníka. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/classifierslabelscount/Read | Získá počet popisků pro každé třídění. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Documents/Models/šikmá Jemná mřížka/Action | Operace extrakce po šikmá Jemná mřížka |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Documents/Models/Operations/šikmá Jemná mřížka/Read | Získat odpověď na operaci pro extrakci šikmá Jemná mřížka |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Documents/Models/Operations/šikmá Jemná mřížka/status/Read | Získat stav operace extrakce šikmá Jemná mřížka |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/extractorslabelscount/Read | Získá počet popisků pro každé extrakci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/modeltracker/Action | Požadavek initiaion operace sledování modelu post |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/předpověď/Action | Spustit operaci předpovědi dokumentu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/predicttext/Action | Operace předpovědi textu dokumentu triggeru |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Clone/Action | Naklonuje model ve stejné verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/modeltracker/Read | Získat odpověď na operaci sledovacího modelu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/modeltracker/metadata/Read | Získat odpověď na metadata operace sledování modelu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/modeltracker/status/Read | Získat stav operace sledovacího modelu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/repředpověď/Read | Získat odpověď operace předpovědi dokumentu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/odhad/stav/čtení | Získat stav operace předpovědi dokumentu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/predicttext/Read | Získat odpověď na operaci předpovědi textu dokumentu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Models/Operations/predicttext/status/Read | Získat stav operace předpovědi textu dokumentu |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/Apps/Operations/Read | Získat operace pro aplikaci |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/entity/exploratorysuggestions/návrhy/akce | Získejte návrhy průzkumnéch entit pro konkrétní model. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/entity/exploratorysuggestions/Results/Read | Získejte hlavní návrhy průzkumnéch entit pro konkrétní model. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/entity/exploratorysuggestions/status/Read | Získá pro určitý model stav zpracování návrhů na průzkumné entitu. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/entitysuggestions/návrhy/akce | Získejte návrhy na konkrétní model. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/entitysuggestions/Results/Read | Získejte návrhy na konkrétní model. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/entitysuggestions/status/Read | Získejte návrhy na stav zpracování pro konkrétní model. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/featurerepositorysearch/Read | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/featurerepositorystore/Features/data/Read | Přístup ke konkrétnímu datovému proudu. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/featurerepositorystore/manifest/Read | Získejte objekt manifestu pro globální úložiště. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Read | Načte informace o kontejneru účtu úložiště. Načte dřív registrované kontejnery, které patří do účtu úložiště. * |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/status/Action | Získá průběh zadaných kontejnerů účtu úložiště. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Prepare/Action | Zařadí požadavek na přípravu kontejneru účtu úložiště, který se má použít v aplikacích dokumentu. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Sync/Action | Zařadí požadavek na aktualizaci kontejneru účtu úložiště, který už je připravený. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Write | Aktualizujte informace o účtu úložiště. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/dokumenty/storageaccounts/kontejnery/operace/Příprava/stav/čtení | Získá stav operace přípravy kontejneru účtu úložiště. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Operations/Sync/status/Read | Získá stav operace aktualizace kontejneru účtu úložiště. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Prepare/Result/Read | Získá výsledky poslední operace přípravy. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Documents/storageaccounts/Containers/Sync/Result/Read | Získá výsledky poslední operace synchornization. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/externalkeys/Write | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/externalkeys/DELETE | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/externalkeys/Read | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Package/slot/gzip/Read | Balíčky publikované aplikací LUIS jako GZip |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Package/verze/gzip/Read | Balíčky vyškolené aplikace LUIS jako GZip |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/test/Read | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/previewfeatures/Read | Získá stav způsobilosti funkcí verze Preview pro aktuálního vlastníka. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/programmatickey/Write | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/prostředky/aplikace/počet/čtení | Získá počet aplikací vlastněných uživatelem. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/prostředky/aplikace/verze/počet/čtení | Získá počet verzí dané aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Subscriptions/Write | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Subscriptions/DELETE | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Subscriptions/Read | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/termsofuse/Action | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/uživatel/číst | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/DELETE | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/Write | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/authoringazureaccount/Write | Migruje klíč pro vytváření APIM uživatele tak, aby byl prostředkem Azure. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/spolupracovníci/si přečtěte | Získá uživatele na aplikaci pro všechny aplikace, na kterých má uživatel spolupracovníky. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/detailedinfo/Read | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/programmatickey/Read | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/programmatickeywithendpointurl/Read | *NotDefined* |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/User/unownedappsowners/Read | Načte vlastníky aplikací, na kterých spolupracuje uživatel. |
 > | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/Write | Vytvořit nebo aktualizovat konfiguraci upozornění na anomálii |
 > | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/DELETE | Odstranit konfiguraci upozornění na anomálii |
 > | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/Read | Dotazování na jednu konfiguraci upozorňující na anomálii |
@@ -5847,6 +6004,43 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/Qnamakerem/knowledgebases/Create/Write | Asynchronní operace pro vytvoření nové znalostní báze |
 > | Microsoft. Cognitiveservices Account/Accounts/Qnamakerem/knowledgebases/Download/Read | Stáhněte si znalostní báze. |
 > | Microsoft. Cognitiveservices Account/Accounts/Qnamakerem/Operations/Read | Získá podrobnosti o konkrétní dlouhodobé operaci s dlouhou dobou provozu. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Models/Action | Tuto metodu lze použít ke kopírování modelu z jednoho umístění do jiného. Pokud cílové předplatné |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/webhooks/Action | Operace s webovými háky |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/DataSets/Write | Vytvořit nebo aktualizovat datovou sadu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/DataSets/DELETE | Odstranění datové sady |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/DataSets/číst | Získat jednu nebo více datových sad |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/datové sady/soubory/číst | Získání jednoho nebo více souborů DataSet |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Endpoints/Write | Vytvořit nebo aktualizovat koncový bod |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Endpoints/DELETE | Odstranění koncového bodu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Endpoints/Read | Získá jeden nebo více koncových bodů. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Endpoints/Files/logs/Write | Vytvoření exportu dat koncového bodu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Endpoints/Files/logs/DELETE | Odstranit některé nebo všechny protokoly koncových bodů vlastního modelu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Endpoints/Files/logs/Read | Získání jednoho nebo více protokolů koncových bodů vlastního modelu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/vyhodnocení/zápis | Vytvořit nebo aktualizovat zkušební verzi |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/vyhodnocení/odstranění | Odstranění vyhodnocení |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Provyhodnocení/čtení | Získání jedné nebo více hodnocení |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/vyhodnocení/soubory/číst | Získání jednoho nebo více zkušebních souborů |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/funkčnosti/Read | Získat stav |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Models/Write | Vytvoří nebo aktualizuje model. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Models/DELETE | Odstranění modelu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Models/Read | Získání jednoho nebo více modelů |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Models/Base/manifest/Read | Vrátí manifest pro tento základní model, který lze použít v místním kontejneru. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Models/manifest/Read | Vrátí manifest pro tento model, který lze použít v místním kontejneru. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Projects/Write | Vytvořit nebo aktualizovat projekt |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Projects/DELETE | Odstranit projekt |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/Projects/Read | Získání jednoho nebo více projektů |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/přepisy/Write | Vytvoření nebo aktualizace přepisu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/přepisy/DELETE | Odstranění přepisu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/přepisy/Přečtěte si | Získání jednoho nebo více přepisů |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/přepisy/soubory/číst | Získání jednoho nebo více souborů přepisu |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/webhooks/Write | Vytvoření nebo aktualizace webového zavěšení |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/webhooks/DELETE | Odstranění webového zavěšení |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/speechrest/webhooks/Read | Získání jednoho nebo více webových háčků |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/Unified-Speech/Endu/Action | Tento koncový bod spravuje řeč ve front-endu. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/Unified-Speech/Management/Action | Tento koncový bod spravuje řeč ve front-endu. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/Unified-Speech/probs/Action | Tento koncový bod monitoruje stav řeči. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/Unified-Speech/languages/Action | Tento koncový bod poskytuje rozhraní REST API. |
+> | Microsoft. Cognitiveservices Account/Accounts/SpeechServices/Unified-Speech/Legacy/Query/Action | Starší verze rozhraní REST API služby Speech. |
 > | Microsoft. Cognitiveservices Account/Accounts/kontrolu pravopisu/kontrola pravopisu/akce | Vrátí výsledek dotazu kontroly pravopisu prostřednictvím GET nebo POST. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/jazyky/akce | Rozhraní API vrátí zjištěný jazyk a číselné skóre mezi 0 a 1. Skóre blížící se 1 značí 100% jistotu, že identifikovaný jazyk je pravdivý. Podporuje se celkem 120 jazyků. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/entity/Action | Rozhraní API vrátí seznam známých entit a obecně pojmenovaných entit ( \" osoba \" , \" umístění \" , \" organizace \" atd.) v daném dokumentu. |
@@ -5957,7 +6151,9 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/výpočty/spustit/akce | Spustit COMPUTE prostředků v pracovním prostoru Machine Learning Services |
 > | Microsoft. MachineLearningServices/pracovní prostory/výpočty/zastavit/akce | Zastavit výpočetní prostředky v pracovním prostoru Machine Learning Services |
 > | Microsoft. MachineLearningServices/pracovní prostory/výpočty/restartovat/akce | Restartování COMPUTE prostředku v pracovním prostoru Machine Learning Services |
+> | Microsoft. MachineLearningServices/pracovní prostory/výpočty/updateDataMounts/Action | Aktualizace připojení výpočetních dat v pracovním prostoru Machine Learning Services |
 > | Microsoft. MachineLearningServices/pracovní prostory/výpočty/applicationaccess/Action | Přístup k výpočetním prostředkům v pracovním prostoru Machine Learning Services |
+> | Microsoft. MachineLearningServices/pracovní prostory/výpočty/updateSchedules/Action | Upravit plány spuštění/zastavení výpočtů |
 > | Microsoft. MachineLearningServices/pracovní prostory/připojení/číst | Získá připojení k pracovnímu prostoru Machine Learning Services. |
 > | Microsoft. MachineLearningServices/pracovní prostory/připojení/zápis | Vytvoří nebo aktualizuje Machine Learning Services připojení. |
 > | Microsoft. MachineLearningServices/pracovní prostory/připojení/odstranit | Odstraní připojení Machine Learning Services. |
@@ -5994,6 +6190,7 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/experimenty/spuštění/odeslání/akce | Vytvoří nebo aktualizuje spuštění skriptu v Machine Learning Services pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/experimenty/běhy/čtení | Získá spuštění v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/experimenty/běhy/Write | Vytvoří nebo aktualizuje spuštění v Machine Learning Servicesch pracovních prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/experimenty/spuštění/odstranění | Odstraní spuštění v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/funkce/číst | Získá všechny povolené funkce pro Machine Learning Services pracovní prostor. |
 > | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/číst | Získá odvození koncových bodů odvození v Machine Learning Servicesch prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/Write | Vytvoří nebo aktualizuje koncový bod odvození odvození v Machine Learning Servicesch pracovních prostorech. |
@@ -6042,6 +6239,8 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/Write | Vytvoří nebo aktualizuje koncový bod odvození online v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/DELETE | Odstraní koncový bod odvození online v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/skore/Action | Načtení ověřovacího tokenu nebo klíčů pro skóre online koncových bodů v Machine Learning Servicesch prostorech |
+> | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/token/Action | Načíst ověřovací token pro skóre online koncových bodů v Machine Learning Servicesch prostorech |
+> | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/klíče listkey/Action | Načtení ověřovacích klíčů pro skóre online koncových bodů v Machine Learning Servicesch prostorech |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/checkNameAvailability/číst | Kontroluje název koncového bodu pro online odvozování v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/nasazení/číst | Získá nasazení v koncovém bodu odvození online v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/nasazení/zápis | Vytvoří nebo aktualizuje nasazení v koncovém bodu online odvození v Machine Learning Servicesch pracovních prostorech. |
@@ -6209,6 +6408,26 @@ Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Ser
 > | Microsoft. Devices/provisioningServices/SKU/Read | Získat platné SKU IotDps |
 > | Microsoft. zařízení/používání/čtení | Získat podrobnosti o použití předplatného pro tohoto poskytovatele. |
 > | Microsoft. zařízení/používání/čtení | Získat podrobnosti o použití předplatného pro tohoto poskytovatele. |
+> | **Akce dataaction** | **Popis** |
+> | Microsoft. Devices/IotHubs/cloudToDeviceMessages/Send/Action | Posílání zpráv z cloudu na zařízení do libovolného zařízení  |
+> | Microsoft. Devices/IotHubs/cloudToDeviceMessages/Feedback/Action | Oznámení o zpětné vazbě zpráv z cloudu na zařízení pro příjem, dokončení nebo opuštění |
+> | Microsoft. Devices/IotHubs/cloudToDeviceMessages/Queue/vyprázdnit/Action | Odstraní všechny příkazy, které čekají na zařízení. |
+> | Microsoft. Devices/IotHubs/Configurations/Read | Čtení konfigurací správy zařízení |
+> | Microsoft. Devices/IotHubs/Configurations/Write | Vytvořit nebo aktualizovat konfigurace správy zařízení |
+> | Microsoft. Devices/IotHubs/Configurations/DELETE | Odstranit všechny konfigurace správy zařízení |
+> | Microsoft. Devices/IotHubs/Configurations/applyToEdgeDevice/Action | Použije obsah konfigurace na hraniční zařízení. |
+> | Microsoft. Devices/IotHubs/Configurations/testQueries/Action | Ověří cílovou podmínku a vlastní dotazy metriky pro konfiguraci. |
+> | Microsoft. Devices/IotHubs/Devices/Read | Číst všechna zařízení nebo identitu modulu |
+> | Microsoft. Devices/IotHubs/Devices/Write | Vytvořit nebo aktualizovat všechna zařízení nebo identitu modulu |
+> | Microsoft. Devices/IotHubs/Devices/DELETE | Odstranit všechna zařízení nebo identitu modulu |
+> | Microsoft. Devices/IotHubs/directMethods/Invoke/Action | Vyvolá přímou metodu na zařízení. |
+> | Microsoft. Devices/IotHubs/upload/Notification/Action/Action | Přijímání, dokončování a opouštění oznámení o nahrávání souborů |
+> | Microsoft. Devices/IotHubs/Jobs/Read | Vrácení seznamu úloh |
+> | Microsoft. Devices/IotHubs/Jobs/Write | Vytvořit nebo aktualizovat libovolnou úlohu |
+> | Microsoft. Devices/IotHubs/Jobs/DELETE | Odstranění libovolné úlohy |
+> | Microsoft. Devices/IotHubs/STATISTICS/Read | Přečíst si statistiku zařízení a služeb |
+> | Microsoft. Devices/IotHubs/provláken/čtení | Čtení libovolného vlákna zařízení nebo modulu |
+> | Microsoft. Devices/IotHubs/vlákna/Write | Zápis libovolného vlákna zařízení nebo modulu |
 
 ### <a name="microsoftdeviceupdate"></a>Microsoft. DeviceUpdate
 
@@ -7359,12 +7578,15 @@ Služba Azure: [Key Vault](../key-vault/index.yml)
 > | Microsoft... trezor/registrace/akce | Zaregistruje předplatné. |
 > | Microsoft... trezor/zrušení registrace/akce | Zruší registraci předplatného. |
 > | Microsoft. checkNameAvailability trezor//Read | Kontroluje, jestli je název trezoru klíčů platný a nepoužívá se. |
+> | Microsoft. deletedManagedHsms trezor//Read | Zobrazení vlastností odstraněného spravovaného modulu HSM |
 > | Microsoft. deletedVaults trezor//Read | Zobrazit vlastnosti provizorních odstraněných trezorů klíčů |
 > | Microsoft. hsmPools trezor//Read | Zobrazení vlastností fondu HSM |
 > | Microsoft. hsmPools – trezor//Write | Vytvoří nový fond HSM, ve kterém se aktualizuje vlastnosti existujícího fondu HSM. |
 > | Microsoft. a trezor/hsmPools/DELETE | Odstranění fondu HSM |
 > | Microsoft. joinVault trezor/hsmPools//Action | Připojte Trezor klíčů k fondu HSM. |
 > | Microsoft. webdeleteVirtualNetworkOrSubnets trezor/Locations//Action | Upozorní Microsoft. webtrezor, že se odstraňuje virtuální síť nebo podsíť. |
+> | Microsoft. webdeletedManagedHsms trezor/Locations//Read | Zobrazení vlastností odstraněného spravovaného modulu HSM |
+> | Microsoft. webdeletedManagedHsms trezor/Locations//vyprázdnění/Action | Vyprázdnit částečný odstraněný spravovaný modul HSM |
 > | Microsoft. webdeletedVaults trezor/Locations//Read | Zobrazit vlastnosti neodstraněného trezoru klíčů |
 > | Microsoft. webdeletedVaults trezor/Locations//vyprázdnění/Action | Vymazání tichého odstraněného trezoru klíčů |
 > | Microsoft. weboperationResults trezor/Locations//Read | Zkontroluje výsledek dlouhotrvající operace spuštění. |
@@ -7598,6 +7820,8 @@ Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/dataconnects/Read | Získá datové konektory. |
 > | Microsoft. SecurityInsights/dataconnects/Write | Aktualizuje datový konektor. |
 > | Microsoft. SecurityInsights/dataconnects/DELETE | Odstraní datový konektor. |
+> | Microsoft. SecurityInsights/obohacení/doména/WHOIS/Read | Získat obohacení služby WHOIS pro doménu |
+> | Microsoft. SecurityInsights/obohacení/IP/data/čtení | Získat obohacení dat pro IP adresu |
 > | Microsoft. SecurityInsights/Entities/číst | Načte graf entit Sentinel. |
 > | Microsoft. SecurityInsights/entity/gettimeline/Action | Získá časovou osu entity pro určitý rozsah. |
 > | Microsoft. SecurityInsights/entity/getinsights/Action | Získá informace o entitách pro určitý rozsah. |
@@ -7608,6 +7832,7 @@ Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/incidenty/číst | Získá incident. |
 > | Microsoft. SecurityInsights/incidenty/Write | Aktualizuje incident. |
 > | Microsoft. SecurityInsights/incidenty/DELETE | Odstraní incident. |
+> | Microsoft. SecurityInsights/incidenty/createTeam/Action | Vytvoří tým Microsoftu k prozkoumání incidentu tím, že sdílí informace a přehledy mezi účastníky. |
 > | Microsoft. SecurityInsights/incidenty/komentáře/číst | Získá komentáře incidentu. |
 > | Microsoft. SecurityInsights/incidenty/poznámky/zápis | Vytvoří komentář k incidentu. |
 > | Microsoft. SecurityInsights/incidenty/komentáře/odstranit | Odstraní komentář k incidentu. |
@@ -9044,6 +9269,10 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DnsInventory/číst | Čtení dat z tabulky DnsInventory |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DynamicEventCollection/číst | Čtení dat z tabulky DynamicEventCollection |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/Dynamics365Activity/číst | Čtení dat z tabulky Dynamics365Activity |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/EmailAttachmentInfo/číst | Čtení dat z tabulky EmailAttachmentInfo |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/EmailEvents/číst | Čtení dat z tabulky EmailEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/EmailPostDeliveryEvents/číst | Čtení dat z tabulky EmailPostDeliveryEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/EmailUrlInfo/číst | Čtení dat z tabulky EmailUrlInfo |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ETWEvent/číst | Čtení dat z tabulky ETWEvent |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/událost/čtení | Čtení dat z tabulky událostí |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ExchangeAssessmentRecommendation/číst | Čtení dat z tabulky ExchangeAssessmentRecommendation |
@@ -9059,6 +9288,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHBaseMetrics/číst | Čtení dat z tabulky HDInsightHBaseMetrics |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHiveAndLLAPLogs/číst | Čtení dat z tabulky HDInsightHiveAndLLAPLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHiveAndLLAPMetrics/číst | Čtení dat z tabulky HDInsightHiveAndLLAPMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHiveQueryAppStats/číst | Čtení dat z tabulky HDInsightHiveQueryAppStats |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHiveTezAppStats/číst | Čtení dat z tabulky HDInsightHiveTezAppStats |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightJupyterNotebookEvents/číst | Čtení dat z tabulky HDInsightJupyterNotebookEvents |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightKafkaLogs/číst | Čtení dat z tabulky HDInsightKafkaLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightKafkaMetrics/číst | Čtení dat z tabulky HDInsightKafkaMetrics |
@@ -9176,6 +9407,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/PowerBIDatasetsWorkspace/číst | Čtení dat z tabulky PowerBIDatasetsWorkspace |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/PowerBIDatasetsWorkspacePreview/číst | Čtení dat z tabulky PowerBIDatasetsWorkspacePreview |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ProtectionStatus/číst | Čtení dat z tabulky ProtectionStatus |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/PurviewScanStatusLogs/číst | Čtení dat z tabulky PurviewScanStatusLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/požadavky/číst | Čtení dat z tabulky requests |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SCCMAssessmentRecommendation/číst | Čtení dat z tabulky SCCMAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SCOMAssessmentRecommendation/číst | Čtení dat z tabulky SCOMAssessmentRecommendation |
@@ -9617,6 +9849,7 @@ Služba Azure: [cost management + fakturace](../cost-management-billing/index.ym
 > | Microsoft. fakturace/billingAccounts/Read |  |
 > | Microsoft. fakturace/billingAccounts/listInvoiceSectionsWithCreateSubscriptionPermission/Action |  |
 > | Microsoft. fakturace/billingAccounts/Write |  |
+> | Microsoft. fakturace/billingAccounts/confirmTransition/Action |  |
 > | Microsoft. fakturace/billingAccounts/billingProfiles/Write |  |
 > | Microsoft. fakturace/billingAccounts/billingProfiles/Read |  |
 > | Microsoft. fakturace/billingAccounts/billingProfiles/Write |  |
@@ -9849,6 +10082,12 @@ Služba Azure: [Azure ARC](../azure-arc/index.yml)
 > | Microsoft. HybridCompute/počítače/patchInstallationResults/Read | Přečte libovolný patchInstallationResults ARC Azure. |
 > | Microsoft. HybridCompute/počítače/patchInstallationResults/softwarePatches/Read | Přečte všechny patchInstallationResultsy Azure ARC/softwarePatches. |
 > | Microsoft. HybridCompute/Operations/Read | Načte všechny operace pro Azure ARC pro servery. |
+> | Microsoft. HybridCompute/privateLinkScopes/Read | Číst libovolný privateLinkScopes ARC Azure |
+> | Microsoft. HybridCompute/privateLinkScopes/Write | Zapisuje privateLinkScopes ARC Azure. |
+> | Microsoft. HybridCompute/privateLinkScopes/DELETE | Odstraní privateLinkScopes ARC Azure. |
+> | Microsoft. HybridCompute/privateLinkScopes/privateEndpointConnections/Read | Číst libovolný privateEndpointConnections ARC Azure |
+> | Microsoft. HybridCompute/privateLinkScopes/privateEndpointConnections/Write | Zapisuje privateEndpointConnections ARC Azure. |
+> | Microsoft. HybridCompute/privateLinkScopes/privateEndpointConnections/DELETE | Odstraní privateEndpointConnections ARC Azure. |
 
 ### <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
@@ -10332,8 +10571,8 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
 > | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/DELETE | Operace odstranění proxy serveru VaultGuard Odstraní zadaný prostředek Azure typu VaultGuard proxy. |
-> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Read | Operace Get proxy serveru VaultGuard Získá objekt, který představuje prostředek Azure typu VaultGuard proxy. |
 > | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Read | Získat seznam proxy serverů VaultGuard pro určitý prostředek |
+> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Read | Operace Get proxy serveru VaultGuard Získá objekt, který představuje prostředek Azure typu VaultGuard proxy. |
 > | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/unlockDelete/Action | Odemčení operace odstranění proxy serveru VaultGuard odemkne další kritickou operaci odstranění. |
 > | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Write | Operace vytvoření proxy serveru VaultGuard vytvoří prostředek Azure typu VaultGuard proxy. |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |

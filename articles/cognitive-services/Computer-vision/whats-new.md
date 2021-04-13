@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 826bd22375fb6649bf4edbbeca88aed64cfe7245
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e42096fc32a504ae329d3b179004b6a123de4469
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312123"
+ms.locfileid: "107365633"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
@@ -26,8 +26,8 @@ Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k ver
 ### <a name="computer-vision-v32-ga"></a>Počítačové zpracování obrazu v 3.2 GA
 
 Rozhraní API pro počítačové zpracování obrazu v 3.2 je teď všeobecně dostupná s následujícími aktualizacemi:
-* Vylepšený model označování obrázků: analyzuje vizuální obsah a generuje relevantní značky na základě objektů, akcí a obsahu zobrazeného v obrázku. To je dostupné prostřednictvím [rozhraní API pro Image značek](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f200). Další informace najdete v tématu [Průvodce](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) analýzou imagí a [přehledem](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
-* Aktualizovaný model Moderování obsahu: detekuje přítomnost obsahu pro dospělé a poskytuje příznaky pro filtrování imagí, které obsahují pikantní a gorie vizuální obsah pro dospělé. To je dostupné prostřednictvím [rozhraní API pro analýzu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b). Další informace najdete v tématu [Průvodce](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) analýzou imagí a [přehledem](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
+* Vylepšený model označování obrázků: analyzuje vizuální obsah a generuje relevantní značky na základě objektů, akcí a obsahu zobrazeného v obrázku. To je dostupné prostřednictvím [rozhraní API pro Image značek](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200). Další informace najdete v tématu [Průvodce](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) analýzou imagí a [přehledem](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
+* Aktualizovaný model Moderování obsahu: detekuje přítomnost obsahu pro dospělé a poskytuje příznaky pro filtrování imagí, které obsahují pikantní a gorie vizuální obsah pro dospělé. To je dostupné prostřednictvím [rozhraní API pro analýzu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b). Další informace najdete v tématu [Průvodce](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) analýzou imagí a [přehledem](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
 * [Rozpoznávání OCR (čtení) k dispozici pro jazyky 73](./language-support.md#optical-character-recognition-ocr) , včetně zjednodušeného a tradičního čínského, japonského, korejského a latinského jazyka.
 * [Optické rozpoznávání znaků (čtení)](./overview-ocr.md) je také k dispozici jako [Distroless kontejner](./computer-vision-how-to-install-containers.md?tabs=version-3-2) pro místní nasazení.
 

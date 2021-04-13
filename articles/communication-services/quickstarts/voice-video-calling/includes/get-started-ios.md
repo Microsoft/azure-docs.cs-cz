@@ -6,19 +6,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 22c9d8f8bdf3e6195bf152fa0431ad5ce9bcdfeb
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: e1eed3f9449843e6c2dd8c77719402e709fdeb23
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106072875"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327554"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají sadu SDK pro iOS.
 
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
-> Tento dokument používá verzi 1.0.0-beta. 8 volání sady SDK.
+> Tento dokument používá verzi 1.0.0-beta. 9 volání sady SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,9 +47,9 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
    use_frameworks!
 
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.8'
-     pod 'AzureCommunication', '~> 1.0.0-beta.8'
-     pod 'AzureCore', '~> 1.0.0-beta.8'
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.9'
+     pod 'AzureCommunication', '~> 1.0.0-beta.9'
+     pod 'AzureCore', '~> 1.0.0-beta.9'
    end
    ```
 
@@ -123,7 +123,7 @@ struct ContentView: View {
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce volání sady SDK služby Azure Communications:
 
-| Název                                  | Description                                                  |
+| Název                                  | Popis                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient | CallClient je hlavní vstupní bod pro volání sady SDK.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
@@ -173,7 +173,7 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUserIdentifier(identifier: self.callee)]
-            self.call = self.callAgent?.call(participants: callees, options: StartCallOptions())
+            self.call = self.callAgent?.startCall(participants: callees, options: StartCallOptions())
         }
     }
 }
@@ -188,7 +188,7 @@ Implementujte `endCall` metodu pro ukončení aktuálního volání při klepnut
 ```swift
 func endCall()
 {    
-    self.call!.hangup(HangupOptions()) { (error) in
+    self.call!.hangUp(HangUpOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }

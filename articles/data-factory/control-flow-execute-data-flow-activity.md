@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/03/2021
-ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383377"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306309"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -76,9 +76,9 @@ Vlastnosti základního počtu a výpočetního typu se dají nastavit dynamicky
 
 ### <a name="data-flow-integration-runtime"></a>Prostředí Integration runtime toku dat
 
-Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení používá Data Factory k automatickému vyřešení prostředí Azure Integration runtime se čtyřmi jádry pracovního procesu a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
+Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení Data Factory použije automatické řešení Azure Integration runtime se čtyřmi jádry pracovních procesů. Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. U provozních kanálů důrazně doporučujeme vytvořit vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
 
-V případě spuštění kanálu je cluster clusterem úloh, který trvá několik minut, než se spustí spuštění. Pokud není zadána hodnota TTL, je při každém spuštění kanálu vyžadován tento čas spuštění. Zadáte-li hodnotu TTL, zůstane aktivní fond clusterů aktivní po dobu zadanou po posledním spuštění, což bude mít za následek kratší dobu spouštění. Například pokud máte hodnotu TTL 60 minut a za každou hodinu spustíte tok dat, fond clusterů zůstane aktivní. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
+Minimální výpočetní typ Pro obecné účely (optimalizované pro výpočty se nedoporučuje u velkých úloh) s konfigurací 8 + 8 (16 celkových jader v jádrech) a 10 minutami je minimální doporučení pro většinu produkčních úloh. Nastavením malé hodnoty TTL může Azure IR udržovat teplé clustery, u kterých se nebudete zabývat několika minutami počátečního času pro studený cluster. Spouštění toků dat můžete zrychlit ještě více výběrem možnosti rychlé opakované použití při Azure IR konfiguracích toku dat. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 

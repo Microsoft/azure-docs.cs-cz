@@ -1,25 +1,21 @@
 ---
-title: Aplikace MSIX pro připojení k virtuálním plochám Windows s připojením Preview PowerShellu – Azure
+title: MSIX připojení PowerShellu k aplikaci virtuálních počítačů s Windows – Azure
 description: Postup nastavení připojení aplikace MSIX pro virtuální plochu Windows pomocí PowerShellu
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8b6bad32ec653fb2ba63c6940cf6a89a13a8afd0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f44cbf3764063c511c896f11bb7ebfaae2973f0c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448317"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365395"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>Nastavení připojení aplikace MSIX (Preview) pomocí PowerShellu
+# <a name="set-up-msix-app-attach-using-powershell"></a>Nastavení připojení aplikace MSIX pomocí PowerShellu
 
-> [!IMPORTANT]
-> Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Kromě Azure Portal můžete také nastavit aplikaci MSIX připojit (Preview) ručně pomocí PowerShellu. Tento článek vás seznámí s postupem použití prostředí PowerShell k nastavení připojení aplikace v MSIX.
+Kromě Azure Portal můžete také nastavit ruční připojení aplikace MSIX pomocí PowerShellu. Tento článek vás seznámí s postupem použití prostředí PowerShell k nastavení připojení aplikace v MSIX.
 
 ## <a name="requirements"></a>Požadavky
 

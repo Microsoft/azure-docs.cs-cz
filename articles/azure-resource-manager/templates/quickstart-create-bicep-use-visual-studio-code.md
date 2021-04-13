@@ -2,15 +2,15 @@
 title: Vytvoření souborů bicep – Visual Studio Code
 description: Použití Visual Studio Code a rozšíření bicep k bicep souborů pro nasazení prostředků Azure
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612877"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306462"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Rychlý Start: vytvoření souborů bicep pomocí Visual Studio Code
 
@@ -51,6 +51,10 @@ Deklarace prostředků má čtyři komponenty:
 - **symbolický název** (STG): symbolický název je identifikátor pro odkazování na prostředek v celém souboru bicep. Nejedná se o to, který název prostředku bude při nasazení. Název prostředku je definován vlastností **Name** .  Podívejte se na čtvrtou komponentu v tomto seznamu.
 - **typ prostředku** ( Microsoft.Storage/storageAccounts@2019-06-01 ): skládá se z poskytovatele prostředků (Microsoft. Storage), typu prostředku (StorageAccounts) a apiVersion (2019-06-01). Každý poskytovatel prostředků publikuje své vlastní verze rozhraní API, takže tato hodnota je specifická pro daný typ. Další typy a apiVersions pro různé prostředky Azure můžete najít na základě [odkazu na šablonu ARM](/azure/templates/).
 - **vlastnosti** (vše uvnitř = {...}): Zadejte vlastnosti pro typ prostředku. Každý prostředek má `name` vlastnost. Většina prostředků má také `location` vlastnost, která nastaví oblast, kde je prostředek nasazen. Ostatní vlastnosti se liší podle typu prostředku a verze rozhraní API.
+
+Další informace najdete v tématu [Struktura bicep](./bicep-file.md).
+
+Existuje komentář pro vlastnost Name.  Použití `//` pro komentáře na jednom řádku nebo `/* ... */` pro víceřádkové komentáře
 
 ## <a name="completion-and-validation"></a>Dokončení a ověření
 

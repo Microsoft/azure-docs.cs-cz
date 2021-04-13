@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ea860f58caba25ef3027fbf7bc4728355a7ca1bc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5fad2a9e1789b98ac541e8a0d95c77131905544d
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315400"
+ms.locfileid: "107364719"
 ---
 # <a name="back-up-vm-disks-on-azure-stack-edge-pro-gpu-via-azure-powershell"></a>Zálohování disků virtuálních počítačů v grafickém procesoru Azure Stack Edge pro pomocí Azure PowerShell
 
@@ -305,6 +305,10 @@ Před zálohováním virtuálních počítačů se ujistěte, že:
     PS C:\Users\user>
     ```
 
+    Pomocí Průzkumník služby Storage můžete také ověřit, že se snímek správně zkopíroval do účtu úložiště.
+
+    ![Průzkumník služby Storage zobrazení zálohy v kontejneru v účtu místního úložiště](media/azure-stack-edge-gpu-back-up-virtual-machine-disks/back-up-virtual-machine-disk-1.png)
+
 ## <a name="download-vhd-to-external-target"></a>Stáhnout virtuální pevný disk do externího cíle
 
 Chcete-li přesunout zálohy do externího umístění, můžete použít Průzkumník služby Azure Storage nebo AzCopy.
@@ -315,7 +319,7 @@ Chcete-li přesunout zálohy do externího umístění, můžete použít Průzk
     azcopy copy "https://<local storage account name>.blob.<device name>.<DNS domain>/<container name>/<filename><SAS query string>" <destination target>
     ```
 
-- Pokud chcete nastavit a použít Průzkumník služby Azure Storage s Azure Stack Edge, přečtěte si pokyny uvedené v části [použití Průzkumník služby Storage k nahrání](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload).
+- Pokud chcete nastavit a použít Průzkumník služby Azure Storage s Azure Stack Edge, přečtěte si pokyny v tématu [použití Průzkumník služby Storage k nahrání](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload).
 
 ## <a name="next-steps"></a>Další kroky
 

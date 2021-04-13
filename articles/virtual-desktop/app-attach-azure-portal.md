@@ -1,26 +1,21 @@
 ---
-title: MSIX připojení portálu pro aplikace virtuálních počítačů s Windows – Preview – Azure
+title: Připojení portálu Windows Virtual Desktop MSIX k aplikaci – Azure
 description: Postup nastavení připojení aplikace MSIX k virtuálnímu počítači s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a849b65fd25e6943925ffa245430cd8a27529fdb
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448419"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366551"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Nastavení připojení aplikace MSIX s využitím webu Azure Portal
 
-> [!IMPORTANT]
-> Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Tento článek vás provede postupem nastavení připojení aplikace MSIX (ve verzi Preview) v prostředí virtuálních počítačů s Windows.
+Tento článek vás provede postupem nastavení připojení aplikace MSIX v prostředí virtuálního počítače s Windows.
 
 ## <a name="requirements"></a>Požadavky
 

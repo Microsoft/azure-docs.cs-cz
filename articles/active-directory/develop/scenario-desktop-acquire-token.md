@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 62296acaba77017cd71227582447b9fa7c4f1934
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d45c40bb6878da80f68fff9642b55da68706743a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090235"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305833"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -1012,7 +1012,7 @@ Tento tok není podporován v MSAL pro macOS.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Tento extrakce pochází z [ukázek pro vývoj uzlů MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/username-password). V následujícím fragmentu kódu se uživatelské jméno a heslo pevně zakódované jenom pro ilustraci. To by mělo být zabráněno v produkčním prostředí. Místo toho se doporučuje základní uživatelské rozhraní, které vyzve uživatele k zadání uživatelského jména nebo hesla. 
+Tento extrakce pochází z [ukázek pro vývoj uzlů MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/username-password). V následujícím fragmentu kódu se uživatelské jméno a heslo pevně zakódované jenom pro ilustraci. To by mělo být zabráněno v produkčním prostředí. Místo toho se doporučuje základní uživatelské rozhraní, které vyzve uživatele k zadání uživatelského jména nebo hesla. 
 
 ```JavaScript
 const msal = require("@azure/msal-node");
@@ -1255,7 +1255,7 @@ Tento tok se nevztahuje na macOS.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Tento extrakce pochází z [ukázek pro vývoj uzlů MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/device-code).
+Tento extrakce pochází z [ukázek pro vývoj uzlů MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/device-code).
 
 ```JavaScript
 const msal = require('@azure/msal-node');

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731220"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313330"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -22,11 +22,40 @@ ms.locfileid: "105731220"
 
 V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
 
-## <a name="service-fabric-72"></a>Service Fabric 7,2
+## <a name="service-fabric-80"></a>Service Fabric 8,0
 
-S radostí oznamujeme, že vydání služby Service Fabric runtime od verze 7,2 bylo zahájeno v různých oblastech Azure spolu s aktualizacemi nástrojů a sad SDK. Aktualizace pro .NET SDK, Java SDK a Service Fabric runtime jsou k dispozici prostřednictvím instalačního programu webové platformy, balíčků NuGet a úložišť Maven.
+S radostí oznamujeme, že vydání služby Service Fabric runtime od verze 8,0 bylo zahájeno v různých oblastech Azure spolu s aktualizacemi nástrojů a sad SDK. Aktualizace pro .NET SDK, Java SDK a Service Fabric runtime jsou k dispozici prostřednictvím instalačního programu webové platformy, balíčků NuGet a úložišť Maven.
 
 ### <a name="key-announcements"></a>Oznámení klíčů
+
+- **Obecná dostupnost** podpory pro .NET 5 pro Windows
+- **Obecná dostupnost** [bezstavových NodeType](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) .
+- Možnost přesunout instance bezstavových služeb
+- Možnost Přidat parametrizované DefaultLoad v manifestu aplikace
+- Pro upgrady repliky singleton – možnost mít některá nastavení na úrovni clusteru definovaná na úrovni aplikace
+- Schopnost inteligentního umístění na základě značek uzlů
+- Možnost definovat procentuální prahovou hodnotu uzlů, které nemají stav v pořádku, což má vliv na stav clusteru
+- Možnost dotazování horních načtených služeb
+- Možnost Přidat nový interval pro nové kódy chyb
+- Možnost označit instanci služby jako dokončenou
+- Podpora modelu nasazení založeného na formátu Wave pro automatické upgrady
+- Přidání testu připravenosti pro kontejnerové aplikace
+- Povolit UseSeparateSecondaryMoveCost ve výchozím nastavení na hodnotu true
+- Opravený úložišti StateManager k vydání odkazu hned jako bezpečný pro vydání
+- Při ukládání uživatelských tajných klíčů blokovat odebrání služby centrálního tajného klíče
+
+
+### <a name="service-fabric-80-releases"></a>Verze Service Fabric 8,0
+| Datum vydání | Vydat | Další informace |
+|---|---|---|
+| 08 8. dubna 2021 | [Azure Service Fabric 8,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+
+
+## <a name="previous-versions"></a>Předchozí verze
+
+### <a name="service-fabric-72"></a>Service Fabric 7,2
+
+#### <a name="key-announcements"></a>Oznámení klíčů
 
 - **Verze Preview**: [**Service Fabric spravované clustery**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) jsou teď ve verzi Public Preview. Service Fabric spravovaných clusterů se snaží zjednodušit nasazování a správu clusteru zapouzdřením základních prostředků, které tvoří Service Fabric cluster do jednoho prostředku ARM. Další podrobnosti najdete v tématu [přehled Service Fabric spravovaného clusteru](./overview-managed-cluster.md).
 - **Preview**: [**Podpora bezstavových služeb s větším počtem instancí, než je počet uzlů**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) , je teď ve verzi Public Preview. Zásady umístění umožňují vytvoření více bezstavových instancí oddílu na uzlu.
@@ -40,7 +69,7 @@ S radostí oznamujeme, že vydání služby Service Fabric runtime od verze 7,2 
 - **RunToCompletion**: Service Fabric podporuje koncept běhu do dokončování pro spustitelné soubory typu Host. V případě této aktualizace, jakmile se replika spustí, se uvolní prostředky clusteru přidělené této replice.
 - [**Podpora zásad správného řízení prostředků je vylepšená**](./service-fabric-resource-governance.md): povolení požadavků a omezení pro prostředky procesoru a paměti.
 
-### <a name="service-fabric-72-releases"></a>Verze Service Fabric 7,2
+#### <a name="service-fabric-72-releases"></a>Verze Service Fabric 7,2
 | Datum vydání | Vydat | Další informace |
 |---|---|---|
 | 21. října 2020 | [Azure Service Fabric 7,2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
@@ -51,7 +80,6 @@ S radostí oznamujeme, že vydání služby Service Fabric runtime od verze 7,2 
 | 17. února 2021 | [Verze Azure Service Fabric 7,2 šesté aktualizace](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 | 10. března 2021 | [Verze Azure Service Fabric 7,2 sedmé aktualizace](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-seventh-refresh-release/ba-p/2201100) | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU7-releasenotes.md)
 
-## <a name="previous-versions"></a>Předchozí verze
 
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
 

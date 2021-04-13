@@ -3,12 +3,12 @@ title: Co je Azure Relay? | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled služby Azure Relay, která umožňuje vyvíjet cloudové aplikace využívající místní služby spuštěné v podnikové síti, a to bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny síťové infrastruktury.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b222942394b8a83e6f5d4447aa9ccfb33cdec21
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955378"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314197"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Můžete to udělat bez otevření portu v bráně firewall nebo provedení rušivých změn v infrastruktuře podnikové sítě. 
@@ -80,5 +80,5 @@ Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí
 * [Začínáme s požadavky HTTP v .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Začínáme s objekty WebSockets uzlu](relay-hybrid-connections-node-get-started.md)
 * [Začínáme s požadavky HTTP v Node](relay-hybrid-connections-http-requests-node-get-started.md)
-* [Přenos – nejčastější dotazy](relay-faq.md)
+* [Přenos – nejčastější dotazy](relay-faq.yml)
 

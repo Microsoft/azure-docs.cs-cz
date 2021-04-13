@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0605c8d6cb3f650a1955688d95ece62fb56d06bc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256034"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302943"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -236,7 +236,7 @@ Matrice schopností pro úlohu SAP vypadá takto:
     - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)
     - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md)
 - SAP HANA nasazení pomocí systému souborů NFS verze 4.1 sdílené složky pro svazky/Hana/Shared a/Hana/log a svazky se systémem souborů NFS v 4.1 nebo NFS v3 pro svazky popsané v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md)
-- Nasazení Oracle v Oracle Linux hostovaného operačního systému pomocí [dNFS] (( https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) dOracle data a svazky protokolu znovu. Další podrobnosti najdete v článku [nasazení Virtual Machines Oracle DBMS pro úlohy SAP](./dbms_guide_oracle.md) v článku Azure.
+- Nasazení Oracle v Oracle Linux hostovaného operačního systému pomocí [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) pro data Oracle a svazky protokolů znovu. Další podrobnosti najdete v článku [nasazení Virtual Machines Oracle DBMS pro úlohy SAP](./dbms_guide_oracle.md) v článku Azure.
 
 > [!NOTE]
 > Pro soubory NFS ani sdílené složky SMB založené na Azure NetApp Files nepodporují žádné další úlohy DBMS. Pokud se změní, budou poskytnuty aktualizace a změny.

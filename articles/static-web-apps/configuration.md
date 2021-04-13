@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3ecd38b725307c7a3d75787795130c5106de85a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218970"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312242"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurace statického Web Apps Azure
 
@@ -33,7 +33,7 @@ Doporučené umístění pro _staticwebapp.config.jsv_ je složka nastavená jak
 Podrobnosti najdete v [ukázkovém konfiguračním](#example-configuration-file) souboru.
 
 > [!IMPORTANT]
-> [ _routes.jspro_ soubor](./routes.md) se ignoruje, pokud existuje _staticwebapp.config.js_ .
+> [ _staticwebapp.config.jspro_ soubor](./routes.md) se ignoruje, pokud existuje _staticwebapp.config.js_ .
 
 ## <a name="routes"></a>Trasy
 
@@ -47,28 +47,28 @@ Pravidla směrování umožňují definovat vzor adres URL, které umožňují p
 
 Související směrování se významně překrývá s ověřováním (identifikace uživatele) a autorizací (přiřazování schopností uživateli). Nezapomeňte si přečíst průvodce [ověřováním a autorizací](authentication-authorization.md) spolu s tímto článkem.
 
-Výchozím souborem pro statický obsah je soubor *index.html* .
+Výchozím souborem pro statický obsah je soubor _index.html_ .
 
 ## <a name="defining-routes"></a>Definování tras
 
 Každé pravidlo se skládá ze vzoru směrování spolu s jednou nebo více volitelnými vlastnostmi pravidla. Pravidla směrování jsou definována v poli `routes` . Příklady použití najdete v [příkladech konfiguračního souboru](#example-configuration-file) .
 
-| Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
-| -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování.<ul><li>Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .</ul></ul>|
-| `rewrite`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku.<ul><li>Se vzájemně vylučují pro `redirect` pravidlo<li>Pravidla přepsání nemění umístění prohlížeče.<li>Hodnoty musí být relativní vzhledem ke kořenu aplikace.</ul>  |
-| `redirect`        | No       | Není k dispozici          | Definuje cíl přesměrování souboru nebo cesty pro požadavek.<ul><li>Se vzájemně vylučují pro `rewrite` pravidlo.<li>Pravidla přesměrování mění umístění prohlížeče.<li>Výchozí kód odpovědi je [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (dočasné přesměrování), ale můžete přepsat pomocí [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (trvalé přesměrování).</ul> |
-| `allowedRoles` | No       | Anonymous     | Definuje seznam názvů rolí vyžadovaných pro přístup k trase. <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Integrovaná role [`anonymous`](./authentication-authorization.md) platí pro všechny neověřené uživatele.<li>Integrovaná role se [`authenticated`](./authentication-authorization.md) vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi.<ul><li>Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.</ul><li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
-| `headers`<a id="route-headers"></a> | No | Není k dispozici | Sada [hlaviček http](https://developer.mozilla.org/docs/Web/HTTP/Headers) přidaných k odpovědi <ul><li>Hlavičky specifické pro trasu, [`globalHeaders`](#global-headers) Pokud je hlavička specifická pro trasu shodná s globální hlavičkou, která je v odpovědi.<li>Chcete-li odebrat záhlaví, nastavte hodnotu na prázdný řetězec.</ul> |
-| `statusCode`   | No       | `200`, `301` nebo `302` pro přesměrování | [Stavový kód protokolu HTTP](https://developer.mozilla.org/docs/Web/HTTP/Status) odpovědi. |
-| `methods` | No | Všechny metody | Seznam metod požadavků, které odpovídají trase. K dispozici jsou tyto metody: `GET` , `HEAD` , `POST` , `PUT` , `DELETE` , `CONNECT` , `OPTIONS` , `TRACE` a `PATCH` . |
+| Vlastnost pravidla                       | Vyžadováno | Výchozí hodnota                        | Komentář                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `route`                             | Yes      | Není k dispozici                                  | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování.<ul><li>Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .</ul></ul>                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `rewrite`                           | No       | Není k dispozici                                  | Definuje soubor nebo cestu vrácenou z požadavku.<ul><li>Se vzájemně vylučují pro `redirect` pravidlo<li>Pravidla přepsání nemění umístění prohlížeče.<li>Hodnoty musí být relativní vzhledem ke kořenu aplikace.</ul>                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `redirect`                          | No       | Není k dispozici                                  | Definuje cíl přesměrování souboru nebo cesty pro požadavek.<ul><li>Se vzájemně vylučují pro `rewrite` pravidlo.<li>Pravidla přesměrování mění umístění prohlížeče.<li>Výchozí kód odpovědi je [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (dočasné přesměrování), ale můžete přepsat pomocí [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (trvalé přesměrování).</ul>                                                                                                                                                                                                              |
+| `allowedRoles`                      | No       | Anonymous                            | Definuje seznam názvů rolí vyžadovaných pro přístup k trase. <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Integrovaná role [`anonymous`](./authentication-authorization.md) platí pro všechny neověřené uživatele.<li>Integrovaná role se [`authenticated`](./authentication-authorization.md) vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi.<ul><li>Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.</ul><li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
+| `headers`<a id="route-headers"></a> | No       | Není k dispozici                                  | Sada [hlaviček http](https://developer.mozilla.org/docs/Web/HTTP/Headers) přidaných k odpovědi <ul><li>Hlavičky specifické pro trasu, [`globalHeaders`](#global-headers) Pokud je hlavička specifická pro trasu shodná s globální hlavičkou, která je v odpovědi.<li>Chcete-li odebrat záhlaví, nastavte hodnotu na prázdný řetězec.</ul>                                                                                                                                                                                                                                                                                          |
+| `statusCode`                        | No       | `200`, `301` nebo `302` pro přesměrování | [Stavový kód protokolu HTTP](https://developer.mozilla.org/docs/Web/HTTP/Status) odpovědi.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `methods`                           | No       | Všechny metody                          | Seznam metod požadavků, které odpovídají trase. K dispozici jsou tyto metody: `GET` , `HEAD` , `POST` , `PUT` , `DELETE` , `CONNECT` , `OPTIONS` , `TRACE` a `PATCH` .                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 Každá vlastnost má v kanálu požadavků a odpovědí určitý účel.
 
-| Účel | Vlastnosti |
-|---|---|
-| Rozlišovat trasy | `route`, `methods` |
-| Autorizovat po porovnání trasy | `allowedRoles` |
+| Účel                                        | Vlastnosti                                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Rozlišovat trasy                                   | `route`, `methods`                                                                           |
+| Autorizovat po porovnání trasy             | `allowedRoles`                                                                               |
 | Proces po porovnání a autorizaci pravidla | `rewrite` (upravuje žádost) <br><br>`redirect`, `headers` , `statusCode` (upraví odpověď) |
 
 ## <a name="securing-routes-with-roles"></a>Zabezpečení tras s rolemi
@@ -118,7 +118,7 @@ Můžete filtrovat shody se zástupnými znaky podle přípony souboru. Pokud js
 ```json
 {
   "route": "/articles/*.html",
-  "headers" : {
+  "headers": {
     "Cache-Control": "public, max-age=604800, immutable"
   }
 }
@@ -171,15 +171,15 @@ V níže uvedené struktuře souborů jsou k dispozici následující výsledky 
 └── index.html
 ```
 
-| Požadavky na... | vrátí... | se stavem... |
-| --- | --- | --- |
-| *upozorňován* | Soubor */index.html* | `200` |
-| */images/logo.png* | Soubor obrázku  | `200` |
-| */images/icon.svg* | Soubor */index.html* – protože ve filtru není uvedená Přípona souboru *SVG* `/images/*.{png,jpg,gif}`   | `200` |
-| */images/unknown.png* | Chyba nenalezeného souboru  | `404` |
-| */css/unknown.css* | Chyba nenalezeného souboru  | `404` |
-| */css/global.css* | Soubor šablony stylů | `200` |
-| Jakýkoli jiný soubor mimo složku */images* nebo */CSS* | Soubor */index.html* | `200` |
+| Požadavky na...                                         | vrátí...                                                                                                    | se stavem... |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------ |
+| _upozorňován_                                              | Soubor _/index.html_                                                                                        | `200`              |
+| _/images/logo.png_                                     | Soubor obrázku                                                                                                | `200`              |
+| _/images/icon.svg_                                     | Soubor _/index.html_ – protože ve filtru není uvedená Přípona souboru _SVG_ `/images/*.{png,jpg,gif}` | `200`              |
+| _/images/unknown.png_                                  | Chyba nenalezeného souboru                                                                                          | `404`              |
+| _/css/unknown.css_                                     | Chyba nenalezeného souboru                                                                                          | `404`              |
+| _/css/global.css_                                      | Soubor šablony stylů                                                                                           | `200`              |
+| Jakýkoli jiný soubor mimo složku _/images_ nebo _/CSS_ | Soubor _/index.html_                                                                                        | `200`              |
 
 ## <a name="global-headers"></a>Globální hlavičky
 
@@ -201,35 +201,35 @@ V `responseOverrides` části najdete možnost definovat vlastní odpověď, pok
 
 Pro přepsání jsou k dispozici následující kódy HTTP:
 
-| Stavový kód | Význam | Možná příčina |
-| --- | --- | --- |
-| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Chybný požadavek | Neplatné propojení pozvánky |
-| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Neautorizováno | Požadavek na stránky s omezeným přístupem během neověřené |
-| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Forbidden |<ul><li>Uživatel je přihlášen, ale nemá role potřebné k zobrazení stránky.<li>Uživatel je přihlášen, ale modul runtime nemůže získat podrobnosti o uživateli z deklarací identity identity.<li>K webu se přihlásilo příliš mnoho uživatelů s vlastními rolemi, modul runtime proto nemůže uživatele přihlašovat.</ul> |
-| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nenalezeno | Soubor se nenašel. |
+| Stavový kód                                                   | Význam      | Možná příčina                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Chybný požadavek  | Neplatné propojení pozvánky                                                                                                                                                                                                                                                                            |
+| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Neautorizováno | Požadavek na stránky s omezeným přístupem během neověřené                                                                                                                                                                                                                                                  |
+| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Forbidden    | <ul><li>Uživatel je přihlášen, ale nemá role potřebné k zobrazení stránky.<li>Uživatel je přihlášen, ale modul runtime nemůže získat podrobnosti o uživateli z deklarací identity identity.<li>K webu se přihlásilo příliš mnoho uživatelů s vlastními rolemi, modul runtime proto nemůže uživatele přihlašovat.</ul> |
+| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nenalezeno    | Soubor se nenašel.                                                                                                                                                                                                                                                                                     |
 
 Následující příklad konfigurace ukazuje, jak přepsat kód chyby.
 
 ```json
 {
-    "responseOverrides": {
-        "400" : {
-            "rewrite": "/invalid-invitation-error.html",
-            "statusCode": 200
-        },
-        "401": {
-            "statusCode": 302,
-            "redirect": "/login"
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html",
-            "statusCode": 200
-        },
-        "404": {
-            "rewrite": "/custom-404.html",
-            "statusCode": 200
-        }
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html",
+      "statusCode": 200
+    },
+    "401": {
+      "statusCode": 302,
+      "redirect": "/login"
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html",
+      "statusCode": 200
+    },
+    "404": {
+      "rewrite": "/custom-404.html",
+      "statusCode": 200
     }
+  }
 }
 ```
 
@@ -237,106 +237,106 @@ Následující příklad konfigurace ukazuje, jak přepsat kód chyby.
 
 ```json
 {
-    "routes": [
-        {
-            "route": "/profile",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/admin/*",
-            "allowedRoles": ["administrator"]
-        },
-        {
-            "route": "/images/*",
-            "headers": {
-                "cache-control": "must-revalidate, max-age=15770000"
-            }
-        },
-        {
-            "route": "/api/*",
-            "methods": [ "GET" ],
-            "allowedRoles": ["registeredusers"]
-        },
-        {
-            "route": "/api/*",
-            "methods": [ "PUT", "POST", "PATCH", "DELETE" ],
-            "allowedRoles": ["administrator"]
-        },
-        {
-            "route": "/api/*",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/customers/contoso",
-            "allowedRoles": ["administrator", "customers_contoso"]
-        },
-        {
-            "route": "/login",
-            "rewrite": "/.auth/login/github"
-        },
-        {
-            "route": "/.auth/login/twitter",
-            "statusCode": 404
-        },
-        {
-            "route": "/logout",
-            "redirect": "/.auth/logout"
-        },
-        {
-            "route": "/calendar/*",
-            "rewrite": "/calendar.html"
-        },
-        {
-            "route": "/specials",
-            "redirect": "/deals",
-            "statusCode": 301
-        }
-    ],
-    "navigationFallback": {
-      "rewrite": "index.html",
-      "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  "routes": [
+    {
+      "route": "/profile",
+      "allowedRoles": ["authenticated"]
     },
-    "responseOverrides": {
-        "400" : {
-            "rewrite": "/invalid-invitation-error.html"
-        },
-        "401": {
-            "redirect": "/login",
-            "statusCode": 302
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html"
-        },
-        "404": {
-            "rewrite": "/404.html"
-        }
+    {
+      "route": "/admin/*",
+      "allowedRoles": ["administrator"]
     },
-    "globalHeaders": {
-        "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+    {
+      "route": "/images/*",
+      "headers": {
+        "cache-control": "must-revalidate, max-age=15770000"
+      }
     },
-    "mimeTypes": {
-        ".json": "text/json"
+    {
+      "route": "/api/*",
+      "methods": ["GET"],
+      "allowedRoles": ["registeredusers"]
+    },
+    {
+      "route": "/api/*",
+      "methods": ["PUT", "POST", "PATCH", "DELETE"],
+      "allowedRoles": ["administrator"]
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/customers/contoso",
+      "allowedRoles": ["administrator", "customers_contoso"]
+    },
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login/github"
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/calendar/*",
+      "rewrite": "/calendar.html"
+    },
+    {
+      "route": "/specials",
+      "redirect": "/deals",
+      "statusCode": 301
     }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html"
+    },
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html"
+    },
+    "404": {
+      "rewrite": "/404.html"
+    }
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  }
 }
 ```
 
 Na základě výše uvedené konfigurace si přečtěte následující scénáře.
 
-| Požadavky na... | výsledky... |
-| --- | --- |
-| _/Profile_ | Ověřeným uživatelům se obsluhuje soubor _/profile/index.html_ . Neověření uživatelé budou přesměrováni na _/Login_. |
-| _/admin_ | Ověřeným uživatelům v roli _správce_ se obsluhuje soubor _/admin/index.html_ . Ověřeným uživatelům, kteří nejsou v roli _správce_ , se doplní `403` Chyba <sup>1</sup>. Neověření uživatelé budou přesměrováni na _/Login_. |
-| _/logo.png_ | Slouží jako obrázek s vlastním pravidlem mezipaměti, kde maximální stáří je trochu více než 182 dní (15 770 000 sekund). |
-| _/api/admin_ | `GET` žádosti od ověřených uživatelů v roli _registeredusers_ se odesílají do rozhraní API. Ověření uživatelé, kteří nejsou v roli _registeredusers_ , a neověření uživatelé se doplní `401` chybou.<br/><br/>`POST``PUT` `PATCH` `DELETE` do rozhraní API se odesílají žádosti,, a od ověřených uživatelů v roli _správce_ . U ověřených uživatelů, kteří nejsou v roli _správce_ , se zobrazí chyba neověření uživatelé `401` . |
-| _/customers/contoso_ | Ověřeným uživatelům, kteří patří k rolím _správce_ nebo _zákazníkům \_ společnosti Contoso_ , je _/Customers/contoso/soubor index.html_ . U ověřených uživatelů, kteří nejsou v roli _správce_ nebo _Uživatelé \_ společnosti Contoso_ , se zobrazí `403` Chyba <sup>1</sup>. Neověření uživatelé budou přesměrováni na _/Login_. |
-| _/Login_ | Neověření uživatelé mají k ověření pomocí GitHubu výzvy. |
-| _/.auth/login/twitter_ | V případě, že pravidlo směrování zakáže autorizaci na Twitteru, `404` vrátí se chyba, která se vrátí k obsluze _/index.html_ se `200` stavovým kódem. |
-| _/logout_ | Uživatelé se odhlásí od jakéhokoli poskytovatele ověřování. |
-| _/calendar/2021/01_ | V prohlížeči se dosloužil soubor _/calendar.html_ . |
-| _/specials_ | Prohlížeč se trvale přesměruje na _/Deals_. |
-| _/data.jsna_ | Soubor poskytovaný pomocí `text/json` typu MIME. |
-| _/About_ nebo libovolná složka, která odpovídá vzorům směrování na straně klienta | Soubor _/index.html_ se zpracovává se `200` stavovým kódem. |
-| Neexistující soubor ve složce _/images/_ | `404`Chyba. |
+| Požadavky na...                                                    | výsledky...                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _/Profile_                                                        | Ověřeným uživatelům se obsluhuje soubor _/profile/index.html_ . Neověření uživatelé budou přesměrováni na _/Login_.                                                                                                                                                                                                                                                                                                                              |
+| _/admin_                                                         | Ověřeným uživatelům v roli _správce_ se obsluhuje soubor _/admin/index.html_ . Ověřeným uživatelům, kteří nejsou v roli _správce_ , se doplní `403` Chyba <sup>1</sup>. Neověření uživatelé budou přesměrováni na _/Login_.                                                                                                                                                                                                          |
+| _/logo.png_                                                       | Slouží jako obrázek s vlastním pravidlem mezipaměti, kde maximální stáří je trochu více než 182 dní (15 770 000 sekund).                                                                                                                                                                                                                                                                                                                                   |
+| _/api/admin_                                                      | `GET` žádosti od ověřených uživatelů v roli _registeredusers_ se odesílají do rozhraní API. Ověření uživatelé, kteří nejsou v roli _registeredusers_ , a neověření uživatelé se doplní `401` chybou.<br/><br/>`POST``PUT` `PATCH` `DELETE` do rozhraní API se odesílají žádosti,, a od ověřených uživatelů v roli _správce_ . U ověřených uživatelů, kteří nejsou v roli _správce_ , se zobrazí chyba neověření uživatelé `401` . |
+| _/customers/contoso_                                              | Ověřeným uživatelům, kteří patří buď k rolím _správce_ nebo _customers_contoso_ , je _/Customers/contoso/soubor index.html_ . Ověřeným uživatelům, kteří nejsou v rolích _správce_ nebo _customers_contoso_ , se doplní `403` Chyba <sup>1</sup>. Neověření uživatelé budou přesměrováni na _/Login_.                                                                                                                            |
+| _/Login_                                                          | Neověření uživatelé mají k ověření pomocí GitHubu výzvy.                                                                                                                                                                                                                                                                                                                                                                             |
+| _/.auth/login/twitter_                                            | V případě, že pravidlo směrování zakáže autorizaci na Twitteru, `404` vrátí se chyba, která se vrátí k obsluze _/index.html_ se `200` stavovým kódem.                                                                                                                                                                                                                                                                                     |
+| _/logout_                                                         | Uživatelé se odhlásí od jakéhokoli poskytovatele ověřování.                                                                                                                                                                                                                                                                                                                                                                                          |
+| _/calendar/2021/01_                                               | V prohlížeči se dosloužil soubor _/calendar.html_ .                                                                                                                                                                                                                                                                                                                                                                                              |
+| _/specials_                                                       | Prohlížeč se trvale přesměruje na _/Deals_.                                                                                                                                                                                                                                                                                                                                                                                            |
+| _/data.jsna_                                                      | Soubor poskytovaný pomocí `text/json` typu MIME.                                                                                                                                                                                                                                                                                                                                                                                               |
+| _/About_ nebo libovolná složka, která odpovídá vzorům směrování na straně klienta | Soubor _/index.html_ se zpracovává se `200` stavovým kódem.                                                                                                                                                                                                                                                                                                                                                                                    |
+| Neexistující soubor ve složce _/images/_                     | `404`Chyba.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 <sup>1</sup> můžete zadat vlastní chybovou stránku pomocí [pravidla přepsání odpovědi](#response-overrides).
 

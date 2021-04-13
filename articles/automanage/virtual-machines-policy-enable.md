@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8846efa3619cec383809cdbd6efe70e3622fa007
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91714893"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365191"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Povolit pro virtuální počítače možnost automanage prostřednictvím Azure Policy
 
@@ -30,6 +30,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 > [!IMPORTANT]
 > K povolení funkce automanage můžete použít následující oprávnění Azure RBAC: roli **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
 
+## <a name="direct-link-to-policy"></a>Přímé propojení na zásadu
+Definici zásad pro autosprávu najdete v Azure Portal podle názvu [Konfigurace virtuálních počítačů, které se mají připojit k Azure automanage](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3). Pokud kliknete na tento odkaz, přejděte přímo ke kroku 8 v části [vyhledání a přiřazení](#locate-and-assign-the-policy) níže uvedených zásad.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -53,9 +55,9 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Na kartě **základy** vyplňte **Rozsah** nastavením *předplatného* a *skupiny prostředků* .
 
     > [!NOTE]
-    > Obor vám umožní definovat, na které virtuální počítače se tato zásada vztahuje. Aplikaci můžete nastavit na úrovni předplatného nebo na úrovni skupiny prostředků. Pokud nastavíte skupinu prostředků, automaticky se povolí automatické řízení všech virtuálních počítačů, které jsou aktuálně v této skupině prostředků nebo jakýchkoli budoucích virtuálních počítačích, které do ní přidáte. 
+    > Obor vám umožní definovat, na které virtuální počítače se tato zásada vztahuje. Aplikaci můžete nastavit na úrovni předplatného nebo na úrovni skupiny prostředků. Pokud nastavíte skupinu prostředků, automaticky se povolí automatické řízení všech virtuálních počítačů, které jsou aktuálně v této skupině prostředků nebo jakýchkoli budoucích virtuálních počítačích, které do ní přidáte.
 
-1. Klikněte na kartu **parametry** a nastavte účet pro **správu** a **profil požadované konfigurace** . 
+1. Klikněte na kartu **parametry** a nastavte účet pro **správu** a **profil požadované konfigurace** .
 1. Na kartě **Revize + vytvořit** zkontrolujte nastavení.
 1. Použít přiřazení kliknutím na **vytvořit**
 1. Zobrazit vaše přiřazení na kartě **přiřazení** vedle **definice**
@@ -64,9 +66,9 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
 > Tato zásada bude nějakou dobu trvat, než začnou platit na virtuálních počítačích, které jsou aktuálně ve skupině prostředků nebo v předplatném.
 
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 
-Naučte se další způsob, jak povolit Azure automanage pro virtuální počítače prostřednictvím Azure Portal. 
+Naučte se další způsob, jak povolit Azure automanage pro virtuální počítače prostřednictvím Azure Portal.
 
 > [!div class="nextstepaction"]
 > [Povolit automanage pro virtuální počítače v Azure Portal](quick-create-virtual-machines-portal.md)

@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9f20659e772f6321f4d3953f0e55192c833e78b9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565712"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310578"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programové vytváření předplatných Azure pomocí rozhraní API ve verzi Preview
 
@@ -365,7 +365,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `skuId` | Ano      | Řetězec | Identifikátor SKU, který určuje typ plánu Azure. |
 | `owners`      | No       | Řetězec | ID objektu libovolného instančního objektu služby nebo uživatele, který chcete přidat jako vlastníka Azure RBAC při vytváření předplatného.  |
 | `costCenter` | No      | Řetězec | Nákladové centrum přidružené k předplatnému. Zobrazuje se v souboru CSV s daty využití. |
-| `managementGroupId` | No      | Řetězec | ID skupiny pro správu, do které bude toto předplatné přidáno. Pokud chcete získat seznam skupin pro správu, projděte si téma zaměřené na [skupiny pro správu – rozhraní API pro zobrazení seznamu](/rest/api/resources/managementgroups/list). Použijte ID skupiny pro správu z tohoto rozhraní API. |
+| `managementGroupId` | No      | Řetězec | ID skupiny pro správu, do které bude toto předplatné přidáno. Pokud chcete získat seznam skupin pro správu, projděte si téma zaměřené na [skupiny pro správu – rozhraní API pro zobrazení seznamu](/rest/api/managementgroups/entities/list). Použijte ID skupiny pro správu z tohoto rozhraní API. |
 
 V odpovědi se vrátí objekt `subscriptionCreationResult` pro monitorování. Jakmile se vytváření předplatného dokončí, objekt `subscriptionCreationResult` vrátí objekt `subscriptionLink`, který obsahuje ID předplatného.
 

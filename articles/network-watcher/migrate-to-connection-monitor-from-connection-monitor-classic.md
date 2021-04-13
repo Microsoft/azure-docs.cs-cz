@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730027"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366381"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrace na monitorování připojení z monitoru připojení (klasický)
 
@@ -37,9 +37,12 @@ Migrace pomáhá získat následující výsledky:
    * **Výstrahy**: automaticky se migrují na nové metriky.
    * **Řídicí panely a integrace**: vyžaduje ruční úpravu sady metrik. 
     
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud používáte vlastní pracovní prostor, ujistěte se, že je ve vašem předplatném a v oblasti pracovního prostoru Log Analytics povolená možnost Network Watcher. 
+1. Pokud používáte vlastní pracovní prostor, ujistěte se, že je ve vašem předplatném a v oblasti pracovního prostoru Log Analytics povolená možnost Network Watcher. Pokud se vám nezobrazí chyba "před pokusem o migraci", povolte prosím rozšíření sledovacího procesu sítě v předplatném výběru a vyberte umístění v pracovním prostoru LA.
+1. V případě, že virtuální počítače použité jako zdroje v monitorování připojení (Classic) už nemají povolené rozšíření Network Watcher, zobrazí se chybová zpráva s oznámením, že monitorování připojení s následujícími testy nejde naimportovat, protože jeden nebo víc virtuálních počítačů Azure nemá nainstalovanou příponu sledovacího procesu sítě. Nainstalujte rozšíření sledovacího procesu sítě a kliknutím na aktualizovat je importujte. "
+
+
 
 ## <a name="migrate-the-connection-monitors"></a>Migrace monitorování připojení
 

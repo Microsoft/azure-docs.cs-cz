@@ -1,27 +1,23 @@
 ---
-title: Virtuální plocha pro Windows – nastavení sdílení souborů aplikace MSIX připojit k aplikaci – Azure
+title: Virtuální plocha Windows – nastavit sdílenou složku MSIX připojit k aplikaci – Azure
 description: Jak nastavit sdílenou složku pro připojení aplikace MSIX k virtuálnímu klientovi Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448385"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366398"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Nastavení sdílené složky pro připojení aplikace MSIX (Preview)
-
-> [!IMPORTANT]
-> Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>Nastavení sdílení souborů pro připojení aplikace MSIX
 
 Všechny Image MSIX musí být uložené ve sdílené síťové složce, ke kterým můžou získat přístup uživatelé ve fondu hostitelů s oprávněním jen pro čtení.
 
-Připojení aplikace MSIX (Preview) nemá žádné závislosti na typu prostředků infrastruktury úložiště, které sdílená složka používá. Požadavky na připojení ke sdílené složce aplikace MSIX jsou stejné jako u sdílené složky FSLogix. Další informace o požadavcích na úložiště najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).
+Připojení aplikace MSIX nemá žádné závislosti na typu prostředků infrastruktury úložiště, které sdílená složka používá. Požadavky na připojení ke sdílené složce aplikace MSIX jsou stejné jako u sdílené složky FSLogix. Další informace o požadavcích na úložiště najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).
 
 ## <a name="performance-requirements"></a>Požadavky na výkon
 

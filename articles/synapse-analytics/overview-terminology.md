@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b4b4e227a0bdfc449c73541dec5d13c1c6697bc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132762"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313058"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -34,7 +34,7 @@ Pracovní prostor může obsahovat libovolný počet **propojených služeb**, v
 
 **Synapse SQL** je schopnost provádět analýzy založené na T-SQL v pracovním prostoru synapse. Synapse SQL má dva modely spotřeby: vyhrazené a bez serveru.  Pro vyhrazený model použijte **vyhrazené fondy SQL**. Pracovní prostor může obsahovat libovolný počet těchto fondů. Pokud chcete používat model bez serveru, používejte **fondy SQL bez serveru**. Každý pracovní prostor má jeden z těchto fondů.
 
-V synapse studiu můžete pracovat s fondy SQL vytvořením a spuštěním **skriptů SQL** .
+V synapse studiu můžete pracovat s fondy SQL spuštěním **skriptů SQL**.
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5a9ff7661fda372631d1bb912b1c137b37c7e07
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688004"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363355"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
@@ -104,7 +104,10 @@ Ne, automanage ji nebude znovu konfigurovat. Začneme monitorovat prostředky p�
 
 **Proč je můj virtuální počítač v portálu pro správu, který je na webu pro správu, stav neúspěchu?**
 
-Pokud se stav zobrazuje jako *neúspěšný*, můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
+Pokud se stav zobrazí jako *neúspěšné*, můžete řešit potíže s nasazením několika různými způsoby:
+* Přejděte na **skupiny prostředků**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
+* Přejděte na **odběry**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
+* Můžete také navštívit protokol aktivit virtuálního počítače, který bude obsahovat položku pro přiřazení konfiguračních profilů pro vytvoření nebo aktualizaci. To může také obsahovat další podrobnosti o vašem nasazení.
 
 **Jak můžu získat podporu při řešení potíží pro autosprávu?**
 

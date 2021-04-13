@@ -3,17 +3,17 @@ title: 'ML Studio (Classic): migrace na sadu Azure Machine Learning-opětovné s
 description: Opětovné sestavení datových sad Studio (Classic) v Návrháři Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 02/04/2021
-ms.openlocfilehash: 4c04dd5a2b41b3db54b20c9e514767453951cc35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9604fc9d862d94ba5e566753d2186d7d28aa37ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564903"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308842"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>Migrace datové sady studia (Classic) do Azure Machine Learning
 

@@ -10,30 +10,36 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 03/30/2021
-ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/09/2021
+ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058914"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306632"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Tento článek poskytuje podrobné omezení prostředků pro databáze v Azure SQL Database, které jsou v elastickém fondu, pomocí modelu nákupu DTU.
 
-* Omezení prostředků modelu nákupu DTU pro Azure SQL Database najdete v tématu [omezení prostředků DTU – Azure SQL Database](resource-limits-dtu-single-databases.md).
+* Omezení nákupních modelů pro DTU pro jednotlivé databáze na serveru najdete v tématu [Přehled omezení prostředků na serveru](resource-limits-logical-server.md).
+* Omezení prostředků modelu nákupu DTU pro Azure SQL Database najdete v tématu omezení [prostředků DTU jednotlivé databáze](resource-limits-dtu-single-databases.md) a [prostředky DTU omezí elastické fondy](resource-limits-dtu-elastic-pools.md).
 * Omezení prostředků vCore najdete v tématu omezení [prostředků Vcore –](resource-limits-vcore-single-databases.md) [omezení prostředků Azure SQL Database a Vcore – elastické fondy](resource-limits-vcore-elastic-pools.md).
+* Další informace o různých nákupních modelech najdete v tématu [nakupování modelů a úrovní služeb](purchasing-models.md).
+
+Každá replika jen pro čtení má vlastní prostředky, například DTU, pracovní procesy a relace. Na každou repliku jen pro čtení se vztahují limity prostředků popsané dále v tomto článku.
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: velikosti úložiště a velikosti výpočtů
 
 V případě Azure SQL Database elastických fondů se v následujících tabulkách zobrazují prostředky dostupné v každé úrovni služby a výpočetní velikost. Úroveň služby, výpočetní velikost a množství úložiště můžete nastavit pomocí:
 
+* [Transact-SQL](elastic-pool-scale.md) přes [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
 * [Azure Portal](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
-* [REST API](elastic-pool-manage.md#rest-api).
+* [REST API](elastic-pool-manage.md#rest-api)
+
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování elastického fondu](elastic-pool-scale.md) .

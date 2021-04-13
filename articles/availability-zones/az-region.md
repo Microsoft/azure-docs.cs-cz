@@ -4,16 +4,16 @@ description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/13/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 782e632f8707b4cafb6d33438f6c8da7e8b08c30
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: fd4443e4ef6bcecacc03ce190bbf438288c9ec60
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491386"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364052"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -52,7 +52,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 |                    |                      |                     |                |
 | Brazílie – jih       | Francie – střed       | Jihoafrická Jižní Afrika – sever * | Austrálie – východ |
 | Střední Kanada     | Německo – středozápad |                     | Střed Indie * |
-| USA – střed         | Severní Evropa         |                     | Japan East     |
+| USA – střed         | Severní Evropa         |                     | Japonsko – východ     |
 | East US            | Spojené království – jih             |                     | Korea – střed * |
 | USA – východ 2          | West Europe          |                     | Southeast Asia |
 | Střed USA – jih |                      |                     |                |
@@ -80,37 +80,38 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 
 |     Produkty                                                    | Odolnost             |
 |-----------------------------------------------------------------|:----------------------------:|
-|     Účet úložiště                                           | : large_blue_diamond:  |
-|     Application Gateway (v2)                                  | : large_blue_diamond:  |
-|     Azure Backup                                                | : large_blue_diamond:  |
-|     Azure Cosmos DB                                           | : large_blue_diamond:  |
-|     Azure Data Lake Storage Gen 2                             | : large_blue_diamond:  |
-|     Trasa Azure Express                                       | : large_blue_diamond:  |
-|     Veřejná IP adresa Azure                                           | : large_blue_diamond:  |
-|     Azure SQL Database (Pro obecné účely vrstva)                 | : large_blue_diamond:  |
-|     Azure SQL Database (úroveň Premium & Pro důležité obchodní informace)     | : large_blue_diamond:  |
-|     Disk Storage                                                | : large_blue_diamond:  |
-|     Event Hubs                                                  | : large_blue_diamond:  |
-|     Key Vault                                                   | : large_blue_diamond:  |
-|     Load Balancer                                               | : large_blue_diamond:  |
-|     Service Bus                                                 | : large_blue_diamond:  |
-|     Service Fabric                                            | : large_blue_diamond:  |
-|     Storage: horká a studená Blob Storage vrstva                      | : large_blue_diamond:  |
-|     Úložiště: Managed Disks                                    | : large_blue_diamond:  |
-|     Virtual Machines škálování sad                               | : large_blue_diamond:  |
-|     Virtual Machines                                          | : large_blue_diamond:  |
-|     Virtual Machines: Av2-Series                              | : large_blue_diamond:  |
-|     Virtual Machines: Bs-Series                               | : large_blue_diamond:  |
-|     Virtual Machines: DSv2-Series                             | : large_blue_diamond:  |
-|     Virtual Machines: DSv3-Series                             | : large_blue_diamond:  |
-|     Virtual Machines: Dv2-Series                              | : large_blue_diamond:  |
-|     Virtual Machines: Dv3-Series                              | : large_blue_diamond:  |
-|     Virtual Machines: ESv3-Series                             | : large_blue_diamond:  |
-|     Virtual Machines: Ev3-Series                              | : large_blue_diamond:  |
-|     Virtual Machines: řada F-Series                                | : large_blue_diamond:  |
-|     Virtual Machines: FS-Series                               | : large_blue_diamond:  |
-|     Virtual Network                                           | : large_blue_diamond:  |
-|     VPN Gateway                                                 | : large_blue_diamond:  |
+|     [Application Gateway (v2)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)                                  | : large_blue_diamond:  |
+|     [Azure Backup](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)                                                | : large_blue_diamond:  |
+|     [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/high-availability#availability-zone-support)                                           | : large_blue_diamond:  |
+|     [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)                             | : large_blue_diamond:  |
+|     [Trasa Azure Express](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)                                       | : large_blue_diamond:  |
+|     [Veřejná IP adresa Azure](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)                                           | : large_blue_diamond:  |
+|     Azure SQL Database ([pro obecné účely vrstva](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla))                 | : large_blue_diamond:  |
+|     Azure SQL Database ([úroveň Premium & pro důležité obchodní informace](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla))     | : large_blue_diamond:  |
+|     [Disk Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                                                | : large_blue_diamond:  |
+|     [Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)                                                  | : large_blue_diamond:  |
+|     [Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)                                                   | : large_blue_diamond:  |
+|     [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)                                               | : large_blue_diamond:  |
+|     [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-geo-dr#availability-zones)                                                 | : large_blue_diamond:  |
+|     [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#:~:text=An%20Availability%20Zone%20is%20a%20unique%20physical%20location,zones.%20This%20will%20ensure%20high-availability%20of%20your%20applications)                                            | : large_blue_diamond:  |
+|     [Účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                                           | : large_blue_diamond:  |
+|     Storage:   [horká a studená BLOB Storage vrstva](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                      | : large_blue_diamond:  |
+|     Úložiště:   [Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)                                    | : large_blue_diamond:  |
+|     [Virtual Machines škálování sad](https://docs.microsoft.com/azure/virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set)                               | : large_blue_diamond:  |
+|     [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                          | : large_blue_diamond:  |
+|     Virtual Machines: [Av2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | : large_blue_diamond:  |
+|     Virtual Machines: [BS-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [DSv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | : large_blue_diamond:  |
+|     Virtual Machines: [DSv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                            | : large_blue_diamond:  |
+|     Virtual Machines: [Dv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | : large_blue_diamond:  |
+|     Virtual Machines: [Dv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | : large_blue_diamond:  |
+|     Virtual Machines: [ESv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | : large_blue_diamond:  |
+|     Virtual Machines: [Ev3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | : large_blue_diamond:  |
+|     Virtual Machines: [Řada F-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | : large_blue_diamond:  |
+|     Virtual Machines: [řada FS](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#make-your-images-highly-available) | : large_blue_diamond:  |
+|     [Virtual Network](https://docs.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway)                                         | : large_blue_diamond:  |
+|     [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                                             | : large_blue_diamond:  |
 
 
 **Běžné služby**
@@ -118,46 +119,46 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 
 |     Produkty                                                    | Odolnost             |
 |-----------------------------------------------------------------|:----------------------------:|
-|     Prostředí App Service                                    | : large_blue_diamond:  |
-|     Azure Active Directory Domain Services                      | : large_blue_diamond:  |
-|     Azure Bastion                                               | : large_blue_diamond:  |
-|     Azure Cache for Redis                                       | : large_blue_diamond:  |
-|     Azure Cognitive Search                                      | : large_blue_diamond:  |
-|     Azure Cognitive Services: Analýza textu                    | : large_blue_diamond:  |
-|     Průzkumník dat Azure                                         | : large_blue_diamond:  |
-|     Azure Database for MySQL – flexibilní Server                  | : large_blue_diamond:  |
-|     Azure Database for PostgreSQL – flexibilní Server             | : large_blue_diamond:  |
-|     Azure DDoS Protection                                       | : large_blue_diamond:  |
-|     Azure Disk Encryption                                       | : large_blue_diamond:  |
-|     Azure Firewall                                              | : large_blue_diamond:  |
-|     Azure Firewall Manager                                      | : large_blue_diamond:  |
-|     Azure Kubernetes Service (AKS)                              | : large_blue_diamond:  |
-|     Azure Private Link                                          | : large_blue_diamond:  |
-|     Azure Site Recovery                                         | : large_blue_diamond:  |
-|     Azure SQL: virtuální počítač                                  | : large_blue_diamond:  |
-|     Azure Web Application Firewall                              | : large_blue_diamond:  |
-|     Container Registry                                          | : large_blue_diamond:  |
-|     Event Grid                                                  | : large_blue_diamond:  |
-|     Network Watcher                                             | : large_blue_diamond:  |
-|     Network Watcher: Analýza provozu                          | : large_blue_diamond:  |
-|     Power BI Embedded                                           | : large_blue_diamond:  |
-|     Blob Storage úrovně Premium                                        | : large_blue_diamond:  |
-|     Storage: soubory Azure Premium                                | : large_blue_diamond:  |
-|     Virtual Machines: vyhrazený hostitel Azure                      | : large_blue_diamond:  |
-|     Virtual Machines: Ddsv4-Series                              | : large_blue_diamond:  |
-|     Virtual Machines: Ddv4-Series                               | : large_blue_diamond:  |
-|     Virtual Machines: Dsv4-Series                               | : large_blue_diamond:  |
-|     Virtual Machines: Dv4-Series                                | : large_blue_diamond:  |
-|     Virtual Machines: Edsv4-Series                              | : large_blue_diamond:  |
-|     Virtual Machines: Edv4-Series                               | : large_blue_diamond:  |
-|     Virtual Machines: Esv4-Series                               | : large_blue_diamond:  |
-|     Virtual Machines: Ev4-Series                                | : large_blue_diamond:  |
-|     Virtual Machines: Fsv2-Series                               | : large_blue_diamond:  |
-|     Virtual Machines: řada M-Series                                  | : large_blue_diamond:  |
-|     Virtuální síť WAN                                                 | : large_blue_diamond:  |
-|     Virtuální síť WAN: ExpressRoute                                   | : large_blue_diamond:  |
-|     Virtuální síť WAN: připojení typu Point-to-Site VPN Gateway                      | : large_blue_diamond:  |
-|     Virtuální síť WAN: VPN Gateway typu Site-to-site                       | : large_blue_diamond:  |
+|     [Prostředí App Service](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy)                                    | : large_blue_diamond:  |
+|     [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview)                      | : large_blue_diamond:  |
+|     [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview)                                               | : large_blue_diamond:  |
+|     [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)                              | : large_blue_diamond:  |
+|     [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-performance-optimization#availability-zones)               | : large_blue_diamond:  |
+|     Cognitive Services Azure: [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)                    | : large_blue_diamond:  |
+|     [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)                               | : large_blue_diamond:  |
+|     Azure Database for MySQL – [flexibilní Server](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability)                  | : large_blue_diamond:  |
+|     Azure Database for PostgreSQL – [flexibilní Server](https://docs.microsoft.com/azure/postgresql/flexible-server/overview)             | : large_blue_diamond:  |
+|     [Azure DDoS Protection](https://docs.microsoft.com/azure/ddos-protection/ddos-faq)                                       | : large_blue_diamond:  |
+|     [Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/disks-redundancy)                                       | : large_blue_diamond:  |
+|     [Azure Firewall](https://docs.microsoft.com/azure/firewall/deploy-availability-zone-powershell#:~:text=For%20more%20information%20about%20Azure%20Firewall%20Availability%20Zones%2C,This%20creates%20a%20zone-redundant%20IP%20address%20by%20default)                                              | : large_blue_diamond:  |
+|     [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/quick-firewall-policy)                                      | : large_blue_diamond:  |
+|     [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/availability-zones)                              | : large_blue_diamond:  |
+|     [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)                                          | : large_blue_diamond:  |
+|     [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)                                         | : large_blue_diamond:  |
+|     Azure SQL: [virtuální počítač](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla)                                  | : large_blue_diamond:  |
+|     [Azure Web Application Firewall](https://docs.microsoft.com/azure/firewall/deploy-availability-zone-powershell#:~:text=For%20more%20information%20about%20Azure%20Firewall%20Availability%20Zones%2C,This%20creates%20a%20zone-redundant%20IP%20address%20by%20default)                              | : large_blue_diamond:  |
+|     [Container Registry](https://docs.microsoft.com/azure/container-registry/zone-redundancy)                                          | : large_blue_diamond:  |
+|     [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)                                                  | : large_blue_diamond:  |
+|     [Network Watcher](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | : large_blue_diamond:  |
+|     Network Watcher: [Analýza provozu](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | : large_blue_diamond:  |
+|     [Power BI Embedded](https://docs.microsoft.com/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | : large_blue_diamond:  |
+|     [Blob Storage úrovně Premium](https://docs.microsoft.com/azure/storage/blobs/storage-blob-performance-tiers#:~:text=Table%201%20%20%20%20Area%20%20,%20%20Currently%20supports%20only%20locally-redundan%20...%20)                                        | : large_blue_diamond:  |
+|     Storage: [soubory Azure Premium](https://docs.microsoft.com/azure/storage/files/storage-files-planning)                                | : large_blue_diamond:  |
+|     Virtual Machines: [vyhrazený hostitel Azure](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                     | : large_blue_diamond:  |
+|     Virtual Machines: [Ddsv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | : large_blue_diamond:  |
+|     Virtual Machines: [Ddv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [Dsv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [dv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | : large_blue_diamond:  |
+|     Virtual Machines: [Edsv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | : large_blue_diamond:  |
+|     Virtual Machines: [Edv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [Esv4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [Ev4-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | : large_blue_diamond:  |
+|     Virtual Machines: [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | : large_blue_diamond:  |
+|     Virtual Machines: [řada M-Series](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                  | : large_blue_diamond:  |
+|     [Virtuální síť WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | : large_blue_diamond:  |
+|     Virtuální síť WAN: [ExpressRoute](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | : large_blue_diamond:  |
+|     Virtuální síť WAN: připojení [typu Point-to-Site VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                      | : large_blue_diamond:  |
+|     Virtuální síť WAN: [VPN Gateway typu Site-to-site](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                       | : large_blue_diamond:  |
 
 
 **Specializované služby**

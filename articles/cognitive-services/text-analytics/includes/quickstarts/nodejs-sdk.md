@@ -10,12 +10,12 @@ ms.date: 02/09/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: a71559c5f75694d314547220f04fc2d7d7e1dbc6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3640a03f8ac814fec2823a761e651ab386438c5c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599043"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327571"
 ---
 <a name="HOLTop"></a>
 
@@ -31,7 +31,7 @@ ms.locfileid: "104599043"
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org/).
@@ -768,7 +768,7 @@ The analyze batch actions operation results will expire on Sat Mar 13 2021 09:53
         - Entity Paul Allen of type Person
 ```
 
-Můžete také použít operaci analyzovat ke zjištění PII, rozpoznávání propojených entit a extrakci klíčových frází. Podívejte se na téma Analýza ukázek pro [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript) a [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/typescript/src) na GitHubu.
+Můžete také použít operaci analyzovat ke zjištění PII, rozpoznávání propojených entit a extrakci klíčových frází. Podívejte se na téma Analýza ukázek pro [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript) a [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) na GitHubu.
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 

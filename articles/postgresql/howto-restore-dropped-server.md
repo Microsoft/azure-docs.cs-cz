@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b5bb9fd6e3d34fc4a6b0ae90a2cd76fc84e9ce1
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652921"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366517"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Obnovení vynechaného serveru Azure Database for PostgreSQL
 
@@ -43,7 +43,7 @@ Chcete-li obnovit vyřazený Azure Database for PostgreSQL Server, budete potře
 
     ![Vytvoření serveru pomocí REST API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
- 6. V části tělo žádosti se posuňte dolů a vložte následující text nahrazující "umístění vyřazeného serveru", "submissionTimestamp" a "resourceId". Pro "restorePointInTime" zadejte hodnotu "submissionTimestamp" mínus **15 minut** , abyste se ujistili, že příkaz nechybí.
+ 6. V části tělo žádosti níže klikněte na tlačítko a vložte následující text nahraďte "umístění vyřazeného serveru" (např. CentralUS, EastUS atd.), "submissionTimestamp" a "resourceId". Pro "restorePointInTime" zadejte hodnotu "submissionTimestamp" mínus **15 minut** , abyste se ujistili, že příkaz nechybí.
     
     ```json
     {

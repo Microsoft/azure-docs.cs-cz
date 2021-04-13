@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/06/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2f41034331ed21e194fc2b86c2902c5957333313
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010594"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304915"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -24,7 +24,7 @@ V tomto článku se zvýrazňují možnosti, funkce a vylepšení, které byly n
 
 ## <a name="march-2021"></a>Březen 2021
 
-Verze z března 2021 se zavedla 6. dubna 2021.
+Vydaná verze z března 2021 byla zpočátku 5. dubna 2021 a poslední fáze vydání byly dokončeny 9. dubna 2021.
 
 Zkontrolujte omezení této verze ve [známých problémech – datové služby s podporou ARC Azure (Preview)](known-issues.md).
 
@@ -45,7 +45,9 @@ Vlastní definice prostředků (CRD) pro PostgreSQL byly konsolidovány do jedin
 
 Předchozí CRDs odstraníte při čištění minulých instalací. Viz [Vyčištění z minulých instalací](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
 
-### <a name="azure-arc-enabled-managed-instance"></a>Spravovaná instance s povoleným ARC Azure
+### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance s podporou služby Azure Arc
+
+- Nyní můžete vytvořit spravovanou instanci SQL z Azure Portal v režimu přímého připojení.
 
 - Teď můžete obnovit databázi do spravované instance SQL se 3 replikami a automaticky se přidá do skupiny dostupnosti. 
 

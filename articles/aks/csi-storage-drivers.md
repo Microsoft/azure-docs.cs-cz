@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: fa40ab22f0c1ebf47bb490a50f782a848d1441e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec8aeb07e54c6ec49647e7bb65284b6cb7343555
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182107"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305663"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>Povolení ovladačů rozhraní úložiště kontejnerů (CSI) pro disky Azure a soubory Azure ve službě Azure Kubernetes Service (AKS) (Preview)
 
@@ -86,7 +86,7 @@ Vytvoření clusteru AKS s podporou pro ovladače úložiště pro rozhraní CSI
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure -k 1.17.9 --aks-custom-headers EnableAzureDiskFileCSIDriver=true
+az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure  --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
 Pokud chcete vytvořit clustery v ovladačích úložiště stromu místo ovladačů úložiště CSI, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` parametr.

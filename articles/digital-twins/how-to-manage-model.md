@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Podívejte se, jak vytvořit, upravit a odstranit model v rámci digitálních vláken Azure.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c896e2aad7dae8d03b26e2a16ecb96224ab547b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953693"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303750"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
-Můžete spravovat [modely](concepts-models.md) , které vaše instance digitálního vlákna Azure ví o používání [**rozhraní DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models), [sady SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client)nebo [digitálních vláken Azure](how-to-use-cli.md). 
+[Modely](concepts-models.md) instance digitálních vláken Azure můžete spravovat pomocí [**rozhraní API DigitalTwinModels**](/rest/api/digital-twins/dataplane/models), [sady .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)nebo pomocí rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). 
 
 Mezi operace správy patří nahrávání, ověřování, načítání a odstraňování modelů. 
 

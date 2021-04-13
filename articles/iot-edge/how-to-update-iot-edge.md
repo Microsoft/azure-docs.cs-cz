@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1ed9aef66e9e1a672274b814abbc4e83600761f5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028702"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310848"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -202,9 +202,10 @@ Mezi hlavní rozdíly mezi 1,2 a staršími verzemi patří:
 
 * Název balíčku se změnil z **iotedge** na **aziot-Edge**.
 * Balíček **libiothsm-STD** se už nepoužívá. Pokud jste použili standardní balíček, který je součástí verze IoT Edge, pak můžete vaše konfigurace přenést do nové verze. Pokud jste používali jinou implementaci libiothsm-STD, bude nutné překonfigurovat všechny uživatelské certifikáty, jako je certifikát identity zařízení, certifikační autorita zařízení a sada Trust.
-* V rámci verze 1,2 byla představena nová služba identity **aziot-identity-Service** . Tato služba zpracovává zřizování a správu identit pro IoT Edge a další součásti zařízení, které potřebují komunikovat s IoT Hub, jako je třeba aktualizace zařízení Azure IoT Hub. <!--TODO: add link to ADU when available -->
-* Výchozí konfigurační soubor má nový název a umístění. Ve `/etc/iotedge/config.yaml` výchozím nastavení se teď ve výchozím nastavení očekávají informace o konfiguraci zařízení `/etc/aziot/config.toml` . `iotedge config import`Příkaz lze použít k usnadnění migrace informací o konfiguraci o staré umístění a syntaxi na nové.
-* Všechny moduly, které používají rozhraní API úlohy IoT Edge k šifrování nebo dešifrování trvalých dat, nelze po aktualizaci dešifrovat. IoT Edge dynamicky vygeneruje hlavní klíč identity a šifrovací klíč pro interní použití. Tento klíč se přenese do nové služby. IoT Edge v 1.2 vygeneruje nový.
+* V rámci verze 1,2 byla představena nová služba identity **aziot-identity-Service** . Tato služba zpracovává zřizování a správu identit pro IoT Edge a další součásti zařízení, které potřebují komunikovat s IoT Hub, jako je [aktualizace zařízení pro IoT Hub](../iot-hub-device-update/understand-device-update.md).
+* Výchozí konfigurační soubor má nový název a umístění. Ve `/etc/iotedge/config.yaml` výchozím nastavení se teď ve výchozím nastavení očekávají informace o konfiguraci zařízení `/etc/aziot/config.toml` . `iotedge config import`Příkaz lze použít k migraci informací o konfiguraci ze starého umístění a syntaxe do nového.
+  * Příkaz import nemůže detekovat ani upravovat pravidla přístupu k čipu TPM (Trusted Platform Module) zařízení. Pokud vaše zařízení používá ověření identity pomocí čipu TPM, je nutné ručně aktualizovat soubor/etc/udev/rules.d/tpmaccess.Rules, aby poskytoval přístup ke službě aziottpm. Další informace najdete v tématu [poskytnutí přístupu k čipu TPM IoT Edge](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm).
+* Rozhraní API úlohy ve verzi 1,2 ukládá šifrované tajné klíče v novém formátu. Pokud upgradujete ze starší verze na verzi 1,2, bude importován existující hlavní šifrovací klíč. Rozhraní API úlohy může číst tajné kódy uložené v předchozím formátu pomocí importovaného šifrovacího klíče. Rozhraní API pro úlohy ale nemůže zapisovat šifrované tajné klíče ve starém formátu. Jakmile je tajný kód znovu zašifrovaný modulem, uloží se do nového formátu. Tajné klíče šifrované ve verzi 1,2 jsou pro stejný modul ve verzi 1,1 nepřečtené. Pokud zachováte šifrovaná data do složky nebo svazku připojené k hostiteli, vždy *před* upgradem vytvořte záložní kopii dat, aby se zachovala možnost downgrade v případě potřeby.
 
 Před automatizací všech procesů aktualizace ověřte, že funguje na testovacích počítačích.
 

@@ -3,19 +3,19 @@ title: 'Kurz: Přidání vlastní domény do koncového bodu'
 titleSuffix: Azure Content Delivery Network
 description: Pomocí tohoto kurzu můžete přidat vlastní doménu do koncového bodu Azure Content Delivery Network, aby se název vaší domény zobrazoval v adrese URL.
 services: cdn
-author: asudbring
+author: jessie-jyy
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 02/04/2020
-ms.author: allensu
+ms.date: 04/12/2021
+ms.author: yuajia
 ms.custom: mvc
-ms.openlocfilehash: 9bca81e7d0eb68d43c21065f5104fc423115be25
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 63ca8cc981f7a192c35f7d1889187ae84773ba08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065187"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307992"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu
 
@@ -245,9 +245,14 @@ Po dokončení registrace vlastní domény ověřte, že vlastní doména odkazu
 
 Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte vlastní doménu pomocí následujících kroků:
  
-1. Ve svém profilu CDN vyberte koncový bod s vlastní doménou, kterou chcete odstranit.
+1. Přečtěte si poskytovatele DNS, odstraňte záznam CNAME pro vlastní doménu nebo aktualizujte záznam CNAME pro vlastní doménu na koncový bod, který není Azure CDN.
 
-2. Na stránce **Koncový bod** v části Vlastní domény klikněte pravým tlačítkem na vlastní doménu, kterou chcete odebrat, a v místní nabídce vyberte **Odstranit**. Vyberte **Ano**.
+    > [!Important]
+    > Aby se zabránilo záznamům DNS v dangling a bezpečnostním rizikům vytvořeným od 9. dubna 2021, Azure CDN vyžaduje odebrání záznamů CNAME Azure CDN koncovým bodům předtím, než je možné prostředky odstranit. Mezi prostředky patří Azure CDN vlastní domény, profily Azure CDN a koncové body nebo skupiny prostředků Azure, které mají povolené Azure CDN vlastních domén.
+
+2. Ve svém profilu CDN vyberte koncový bod s vlastní doménou, kterou chcete odstranit.
+
+3. Na stránce **Koncový bod** v části Vlastní domény klikněte pravým tlačítkem na vlastní doménu, kterou chcete odebrat, a v místní nabídce vyberte **Odstranit**. Vyberte **Ano**.
 
    Zruší se přidružení vlastní domény ke koncovému bodu.
 
@@ -255,25 +260,29 @@ Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte 
 
 Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte vlastní doménu pomocí následujících kroků:
 
-1. K odebrání vlastní domény z koncového bodu použijte [příkaz Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) :
+1. Přečtěte si poskytovatele DNS, odstraňte záznam CNAME pro vlastní doménu nebo aktualizujte záznam CNAME pro vlastní doménu na koncový bod, který není Azure CDN.
+
+    > [!Important]
+    > Aby se zabránilo záznamům DNS v dangling a bezpečnostním rizikům vytvořeným od 9. dubna 2021, Azure CDN vyžaduje odebrání záznamů CNAME Azure CDN koncovým bodům předtím, než je možné prostředky odstranit. Mezi prostředky patří Azure CDN vlastní domény, profily Azure CDN a koncové body nebo skupiny prostředků Azure, které mají povolené Azure CDN vlastních domén.
+
+2. K odebrání vlastní domény z koncového bodu použijte [příkaz Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) :
 
     * Nahraďte **myendpoint8675** názvem koncového bodu CDN.
     * Nahraďte **www.contoso.com** vlastním názvem domény.
     * Nahraďte **myCDN** názvem vašeho profilu CDN.
     * Nahraďte **myResourceGroupCDN** názvem vaší skupiny prostředků.
 
-
-```azurepowershell-interactive
-    $parameters = @{
-        CustomDomainName = 'www.contoso.com'
-        EndPointName = 'myendpoint8675'
-        ProfileName = 'myCDN'
-        ResourceGroupName = 'myResourceGroupCDN'
-    }
-    Remove-AzCdnCustomDomain @parameters
-```
-
+    ```azurepowershell-interactive
+        $parameters = @{
+            CustomDomainName = 'www.contoso.com'
+            EndPointName = 'myendpoint8675'
+            ProfileName = 'myCDN'
+            ResourceGroupName = 'myResourceGroupCDN'
+        }
+        Remove-AzCdnCustomDomain @parameters
+    ```
 ---
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:

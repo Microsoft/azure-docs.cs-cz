@@ -4,13 +4,13 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466493"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305221"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -91,9 +91,10 @@ Pokud chcete nastavit upozorňování na konkrétní metriku, ale při vytváře
 Pokud chcete upozornit na [konkrétní hodnoty dimenze metriky](./alerts-metric-overview.md#using-dimensions), ale tyto hodnoty nejdou najít, pamatujte na toto:
 
 1. Zobrazení hodnot dimenzí v seznamu **Hodnoty dimenzí** může několik minut trvat.
-1. Zobrazené hodnoty dimenzí vycházejí z dat metriky shromážděných za poslední den.
-1. Pokud se hodnota dimenze ještě nevygenerovala nebo se nezobrazuje, můžete přidat vlastní hodnotu dimenze pomocí možnosti Přidat vlastní hodnotu.
-1. Pokud byste chtěli upozornit na všechny možné hodnoty dimenze (včetně budoucích hodnot), zvolte možnost vybrat všechny aktuální a budoucí hodnoty.
+2. Zobrazené hodnoty dimenzí vycházejí z dat metriky shromážděných za poslední den.
+3. Pokud se hodnota dimenze ještě nevygenerovala nebo se nezobrazuje, můžete přidat vlastní hodnotu dimenze pomocí možnosti Přidat vlastní hodnotu.
+4. Pokud byste chtěli upozornit na všechny možné hodnoty dimenze (včetně budoucích hodnot), zvolte možnost vybrat všechny aktuální a budoucí hodnoty.
+5. Vlastní dimenze metriky prostředků Application Insights jsou ve výchozím nastavení vypnuté. Pokud chcete zapnout shromažďování dimenzí pro tyto vlastní metriky, přečtěte si [tady](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Pravidla upozornění na metriku jsou pořád definovaná u odstraněného prostředku. 
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a195567117378a118b9bea8d15a7cb0a661d284a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101738136"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303521"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -52,8 +52,8 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 | Čínština (tradiční) | `zh-Hant` |
 | Chorvatština | `hr` |
 | Čeština | `cs` |
-| Dáríština | `prs` |
 | Dánština | `da` |
+| Dáríština | `prs` |
 | Nizozemština | `nl` |
 | Angličtina | `en` |
 | Estonština | `et` |
@@ -340,6 +340,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Maďarština      | `hu`          |
 | Islandština | `is` |
 | Indonéština|   `id`    |
+| Inuktitutština|    `iu`    |
 | Irština | `ga`  |
 | Italština      | `it`          |
 | Japonština      | `ja`          |

@@ -3,12 +3,12 @@ title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: da59d62cb7060389ea94b3af5e6f66a4b6347d7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ec4b7cdd13c3407747261ef54cb6b1fc58fdb69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602617"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310070"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -177,5 +177,5 @@ Další informace o službě Event Hubs naleznete pod těmito odkazy:
     - [JavaScript](event-hubs-node-get-started-send.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+* [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)
 * [Ukázky Event Hubs](event-hubs-samples.md)

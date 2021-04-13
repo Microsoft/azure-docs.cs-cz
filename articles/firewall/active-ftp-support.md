@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08be08f2d898b017bb34ed38c9c3a69ee0582fa
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499131"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312973"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Podpora aktivní služby FTP Azure Firewall
 
@@ -20,6 +20,12 @@ S aktivním PROTOKOLem FTP iniciuje server FTP datové připojení k určenému 
 
 Ve výchozím nastavení je aktivní podpora FTP na Azure Firewall zakázaná a chrání proti útokům na vrácení FTP pomocí `PORT` příkazu FTP. Můžete ale povolit aktivní FTP při nasazení pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo šablony Azure ARM.
 
+Aby bylo možné podporovat protokol FTP pro aktivní režim, je nutné otevřít následující porty TCP:
+
+- Port 21 serveru FTP z libovolného místa (iniciuje klient připojení)
+- Port 21 serveru FTP na porty > 1023 (Server reaguje na port ovládacího prvku klienta)
+- Port 20 serveru FTP na porty > 1023 na klientech (server iniciuje datové připojení k portu dat klienta)
+- Port 20 serveru FTP z portů > 1023 na klientech (klient odesílá potvrzení do datového portu serveru)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

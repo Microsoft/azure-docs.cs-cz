@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1a0fb15be92e25b576cd29e671eed3c6a5b948f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95999922"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313262"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Použití funkcí k posílení signálu v seznamu slov
 
@@ -37,7 +37,7 @@ Seznamte se s [Koncepty](luis-concept-feature.md) a zjistěte, kdy a proč použ
 
     Až zadáte dostatek hodnot pro LUIS, zobrazí se návrhy. Můžete **+ Přidat všechny** navrhované hodnoty nebo vybrat jednotlivé výrazy.
 
-1. Zachovat **tyto hodnoty jsou** zkontrolovány, pokud je možné fráze použít zaměnitelné.
+1. Zachovat **tyto hodnoty jsou** zkontrolovány, pokud je možné fráze použít zaměnitelné. Zaměnitelné funkce seznamu frází slouží jako seznam synonym pro účely školení. Seznam frází bez možnosti změny slouží jako samostatné funkce pro školení (což znamená, že funkce jsou podobné, ale při prohození frází se mění záměr).
 
 1. Seznam frází se může vztahovat na celou aplikaci s **globálním** nastavením nebo na konkrétní model (záměr nebo entitu). Pokud vytvoříte seznam frází jako _funkci_ z záměru nebo entity, přepínač není nastaven pro globální. V tomto případě je významem přepínače, že funkce je v místním prostředí pouze pro tento model, tedy nikoli z _globálních_ do aplikace.
 

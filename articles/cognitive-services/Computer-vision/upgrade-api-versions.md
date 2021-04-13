@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7a05b04872b4f957e879d93972edc45e2932d059
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331834"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364086"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Upgradujte ze přečtené verze v2. x, abyste si přečetli v3. x
 
-V této příručce se dozvíte, jak upgradovat existující kontejner nebo cloudový kód rozhraní API z verze Read v2. x na verzi Read v 3.0 a v 3.1.
+V této příručce se dozvíte, jak upgradovat existující kontejner nebo cloudový kód rozhraní API z přečtené verze v2. x a přečíst v3. x.
 
 ## <a name="determine-your-api-path"></a>Určení cesty k rozhraní API
 Následující tabulku použijte k určení **řetězce verze** v cestě rozhraní API na základě verze Read 3. x, na kterou migrujete.

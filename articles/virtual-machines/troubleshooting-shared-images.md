@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607588"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309981"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -303,6 +303,14 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: definice bitové kopie, kterou jste použili k nasazení virtuálního počítače, neobsahuje žádné verze bitové kopie, které jsou zahrnuty v nejnovější verzi.  
 **Alternativní řešení**: Zajistěte, aby existovala alespoň jedna verze image, která má možnost vyloučit z nejnovější hodnoty nastavenou na hodnotu false. 
 
+**Zpráva**: *image galerie/Subscriptions/<subscriptionID \> /resourceGroups/<\> /providers/Microsoft.COMPUTE/Galleries/<gallery \> /images/<ImageName \> /Versions/<číslo_verze \> není v oblasti <oblasti k dispozici \> . Pokud chcete replikovat do této oblasti, obraťte se prosím na vlastníka image, nebo změňte požadovanou oblast.*  
+**Příčina**: verze vybraná pro nasazení neexistuje nebo nemá repliku v uvedené oblasti.  
+**Alternativní řešení**: Ujistěte se, že je název prostředku image správný a že v uvedené oblasti existuje aspoň jedna replika. 
+
+**Zpráva**: *image galerie/Subscriptions/<subscriptionID \> /resourceGroups/<\> /providers/Microsoft.COMPUTE/Galleries/<Gallery \> /images/<ImageName \> není v oblasti <oblasti k dispozici \> . Pokud chcete replikovat do této oblasti, obraťte se prosím na vlastníka image, nebo změňte požadovanou oblast.*  
+**Příčina**: definice image vybraná pro nasazení nemá žádné verze imagí, které jsou zahrnuté do nejnovějších a také v uvedené oblasti.  
+**Alternativní řešení**: Zajistěte, aby existovala alespoň jedna verze image v oblasti s hodnotou ' vyloučit z nejnovější ' nastavenou na hodnotu false. 
+
 **Zpráva**: *klient má oprávnění k provedení akce "Microsoft. COMPUTE/Galerie/images/verze/čtení" v oboru <ResourceID \> , ale aktuální tenant <tenantID \> nemá autorizaci pro přístup k propojenému předplatnému <subscriptionID \> .*  
 **Příčina**: virtuální počítač nebo sada škálování se vytvořily prostřednictvím image SIG v jiném tenantovi. Pokusili jste se provést změnu virtuálního počítače nebo sady škálování, ale nemáte přístup k předplatnému, které vlastní image.  
 **Alternativní řešení**: Pokud chcete verzi image udělit přístup pro čtení, obraťte se na vlastníka předplatného verze image.
@@ -318,10 +326,6 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Zpráva**: *povinný parametr osProfile chybí (null).*  
 **Příčina**: virtuální počítač se vytvoří z generalizované image a chybí uživatelské jméno správce, heslo nebo klíče SSH. Vzhledem k tomu, že generalizované image neuchovávají uživatelské jméno správce, heslo nebo klíče SSH, musí být tato pole zadaná při vytváření virtuálního počítače nebo sady škálování.  
 **Alternativní řešení**: zadejte uživatelské jméno správce, heslo nebo klíče SSH nebo použijte specializovanou verzi image.
-
-**Zpráva**: *nejde vytvořit verzi image galerie z: <ResourceID \> , protože stav operačního systému v nadřazené imagi galerie ("specializované") není zobecněný.*  
-**Příčina**: verze obrázku je vytvořena z zobecněného zdroje, ale jeho Nadřazená definice je specializovaná.  
-**Alternativní řešení**: buď vytvořte verzi Image pomocí specializovaného zdroje, nebo použijte nadřazenou definici, která je zobecněná.
 
 **Zpráva**: *nejde aktualizovat sadu škálování virtuálního počítače <vmssName \> , protože aktuální stav operačního systému sady škálování virtuálního počítače je zobecněný, který se liší od aktualizovaného stavu operačního systému image galerie, který je specializovaný.*  
 **Příčina**: aktuální zdrojová image pro sadu škálování je zobecněná zdrojová image, ale aktualizuje se zdrojovou imagí, která je specializovaná. Aktuální zdrojová image a nová zdrojová image pro sadu škálování musí být ve stejném stavu.  

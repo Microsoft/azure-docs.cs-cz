@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afc3d1d84d7b50cdaa7031230d7085e9f611c6c6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98065112"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304966"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -49,7 +49,7 @@ Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uži
 * Přináší nejnovější schopnosti pro vaše scénáře. Azure AD Connect nahrazuje starší verze nástrojů pro integraci identity, jako je DirSync a Azure AD Sync. Další informace najdete v tématu [porovnání nástrojů pro integraci adresářů hybridní identity](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
 ## <a name="why-use-azure-ad-connect-health"></a>Proč používat službu Azure AD Connect Health?
-Při práci s Azure AD jsou vaši uživatelé produktivnější, protože máme společnou identitu pro přístup k cloudovým i místním prostředkům. Zajištění spolehlivého prostředí, aby uživatelé měli přístup k těmto prostředkům, se stává výzvou.  Azure AD Connect Health pomáhá monitorovat a získávat přehledy o místní infrastruktuře identity, takže zajišťuje spolehlivost tohoto prostředí. Stačí jednoduše nainstalovat agenta na každý z vašich místních serverů identity.
+Při ověřování ve službě Azure AD jsou vaši uživatelé produktivnější, protože máme společnou identitu pro přístup k cloudovým i místním prostředkům. Zajištění spolehlivého prostředí, aby uživatelé měli přístup k těmto prostředkům, se stává výzvou.  Azure AD Connect Health pomáhá monitorovat a získávat přehledy o místní infrastruktuře identity, takže zajišťuje spolehlivost tohoto prostředí. Stačí jednoduše nainstalovat agenta na každý z vašich místních serverů identity.
 
 Azure AD Connect Health pro službu AD FS podporuje službu AD FS 2.0 v systémech Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Podporuje také monitorování proxy serveru služby AD FS a proxy serverů webových aplikací, které poskytují ověřování pro přístup z extranetu. Díky snadné a rychlé instalaci agenta služby Health poskytuje Azure AD Connect Health pro službu AD FS sadu klíčových funkcí.
 

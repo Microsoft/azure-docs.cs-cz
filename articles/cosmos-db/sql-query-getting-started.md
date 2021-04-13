@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 04/09/2021
 ms.author: tisande
-ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad43d83782a2c7e9eb5cc20128be89a45f0213d1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499556"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312174"
 ---
 # <a name="getting-started-with-sql-queries"></a>Začínáme s příkazy jazyka SQL
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Zbývající část tohoto dokumentu ukazuje, jak začít psát dotazy SQL v Azu
 
 ## <a name="upload-sample-data"></a>Nahrání ukázkových dat
 
-Ve vašem účtu Cosmos DB API SQL otevřete [Průzkumník dat](./data-explorer.md) a vytvořte kontejner s názvem `Families` . Po vytvoření je můžete pomocí prohlížeče datových struktur vyhledat a otevřít. Ve vašem `Families` kontejneru se zobrazí `Items` možnost vpravo pod názvem kontejneru. Tuto možnost otevřete a v řádku nabídek uprostřed obrazovky se zobrazí tlačítko pro vytvoření nové položky. Tato funkce slouží k vytvoření položek JSON níže.
+Ve vašem účtu Cosmos DB API SQL otevřete [Průzkumník dat](./data-explorer.md) a vytvořte kontejner s názvem `Families` . Po vytvoření kontejneru použijte prohlížeč datových struktur a vyhledejte ho a otevřete ho. Ve vašem `Families` kontejneru se zobrazí `Items` možnost vpravo pod názvem kontejneru. Tuto možnost otevřete a v řádku nabídek uprostřed obrazovky se zobrazí tlačítko pro vytvoření nové položky. Tato funkce slouží k vytvoření položek JSON níže.
 
 ### <a name="create-json-items"></a>Vytvoření položek JSON
 

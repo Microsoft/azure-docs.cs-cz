@@ -1,22 +1,22 @@
 ---
-title: Cosmos DB Apache Spark konektor pro poznámky k verzi a prostředky SQL API
-description: Přečtěte si o konektoru Azure Cosmos DB Apache Spark pro rozhraní SQL API, včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi sady Azure Cosmos DB SQL Async Java SDK.
+title: Azure Cosmos DB konektoru Apache Spark 2 OLTP pro poznámky k verzi a prostředky SQL API
+description: Přečtěte si o Azure Cosmos DB konektoru Apache Spark 2 OLTP pro rozhraní SQL API, včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Async Java SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd948814b4b647bcc3fbfe58b090b1e794504232
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93097154"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363627"
 ---
-# <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark konektor pro jádro (SQL) API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-apache-spark-2-oltp-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB konektoru Apache Spark 2 OLTP pro jádro (SQL) API: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -30,7 +30,8 @@ ms.locfileid: "93097154"
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Konektor Spark](sql-api-sdk-java-spark.md)
+> * [Konektor Spark 3 OLTP](sql-api-sdk-java-spark-v3.md)
+> * [Konektor Spark 2 OLTP](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
@@ -38,7 +39,7 @@ ms.locfileid: "93097154"
 > * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
-Analýzu velkých objemů dat můžete urychlit pomocí konektoru Azure Cosmos DB Apache Spark pro jádro (SQL). Konektor Spark umožňuje spouštět úlohy [Sparku](https://spark.apache.org/) na datech uložených v Azure Cosmos DB. Zpracování dávek a datových proudů je podporováno.
+Analýzu velkých objemů dat můžete urychlit pomocí Azure Cosmos DB konektoru Apache Spark 2 OLTP pro jádro (SQL). Konektor Spark umožňuje spouštět úlohy [Sparku](https://spark.apache.org/) na datech uložených v Azure Cosmos DB. Zpracování dávek a datových proudů je podporováno.
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. Podporované verze jsou uvedené v následující tabulce:
 

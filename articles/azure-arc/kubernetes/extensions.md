@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Nasazení a správa životního cyklu rozšíření v Kubernetes s povoleným ARC Azure
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450981"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312616"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Rozšíření clusteru Kubernetes
 
@@ -48,10 +48,10 @@ Koncepční přehled této funkce je k dispozici v tématu [rozšíření cluste
 
 ## <a name="currently-available-extensions"></a>Aktuálně dostupná rozšíření
 
-| Linka | Popis |
+| Linka | Description |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Poskytuje přehled o výkonu úloh nasazených v clusteru Kubernetes. Shromažďuje metriky využití paměti a procesoru z řadičů, uzlů a kontejnerů. |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Shromažďuje data protokolu auditu z řídicích uzlů v clusteru Kubernetes. Poskytuje doporučení a upozornění na hrozby na základě shromážděných dat. |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Shromažďuje informace související s zabezpečením, jako jsou data protokolu auditu z clusteru Kubernetes. Poskytuje doporučení a upozornění na hrozby na základě shromážděných dat. |
 
 ## <a name="usage-of-cluster-extensions"></a>Využití rozšíření clusteru
 
@@ -235,31 +235,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
   }
 ]
 ```
-
-### <a name="update-an-existing-extension-instance"></a>Aktualizuje existující instanci rozšíření.
-
-Aktualizujte instanci rozšíření na clusteru s `k8s-extension update` předáváním hodnot, které se mají aktualizovat.  Tento příkaz aktualizuje jenom `auto-upgrade-minor-version` vlastnosti, `release-train` a `version` . Například:
-
-- **Výuka vydání aktualizací:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **Vypnout automatické upgrady a připnout instanci rozšíření na konkrétní verzi:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **Zapnout automatický upgrade pro instanci rozšíření:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> `version`Parametr lze nastavit pouze v případě `--auto-upgrade-minor-version` , že je nastavena na hodnotu `false` .
 
 ### <a name="delete-extension-instance"></a>Odstranit instanci rozšíření
 

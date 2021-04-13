@@ -3,12 +3,12 @@ title: 'Rychlý Start: odesílání a příjem událostí pomocí jazyka přejí
 description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření aplikace v cestách, která odesílá události z Azure Event Hubs.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ededd042dadd6059bd7b2d689cff78fe1bd6af0b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87002450"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311086"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Event Hubs pomocí jazyka přejít
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -279,7 +279,7 @@ Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
-- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+- [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)
 
 
 <!-- Links -->

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932909"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305459"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurace nastavení Multi-Factor Authentication služby Azure AD
 
@@ -236,7 +236,7 @@ Funkce _důvěryhodných IP adres_ ve službě Azure AD Multi-Factor Authenticat
 > [!NOTE]
 > Důvěryhodné IP adresy můžou zahrnovat rozsahy privátních IP adres jenom v případě, že použijete MFA Server. Pro cloudové Multi-Factor Authentication Azure AD můžete použít jenom rozsahy veřejných IP adres.
 >
-> Rozsahy IPv6 se podporují jenom v rozhraní [pojmenované umístění (Preview)](../conditional-access/location-condition.md#preview-features) .
+> Rozsahy IPv6 se podporují jenom v rozhraní [pojmenované umístění (Preview)](../conditional-access/location-condition.md) .
 
 Pokud vaše organizace nasadí rozšíření serveru NPS za účelem poskytování MFA pro místní aplikace, Všimněte si, že zdrojová IP adresa se vždy jeví jako server NPS, se kterým se snaží ověřování natékat.
 

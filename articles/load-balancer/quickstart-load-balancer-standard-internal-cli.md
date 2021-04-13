@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f728e1f1e2186188135666ed54e02c9ed3507509
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056534"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364307"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure
 
@@ -30,9 +30,6 @@ Začínáme s Azure Load Balancer pomocí rozhraní příkazového řádku Azure
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
 V tomto rychlém startu se vyžaduje verze Azure CLI 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
-
->[!NOTE]
->Azure Load Balancer Standard je doporučená volba pro produkční úlohy. Tento článek obsahuje informace o Azure Load Balancer Standard a také Azure Load Balancer Basic. Další informace o SKU najdete v tématu [Azure Load Balancer SKU](skus.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -47,7 +44,11 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure Load Balancer Standard
+---
+# <a name="standard-sku"></a>[**Standardní SKU**](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. Při vytváření interního nástroje pro vyrovnávání zatížení je virtuální síť nakonfigurovaná jako síť pro nástroj pro vyrovnávání zatížení. Následující diagram znázorňuje prostředky vytvořené v rámci tohoto rychlého startu:
 
@@ -335,7 +336,10 @@ Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-c
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure Load Balancer Basic
+# <a name="basic-sku"></a>[**Základní SKU**](#tab/option-1-create-load-balancer-basic)
+
+>[!NOTE]
+>Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. Při vytváření interního nástroje pro vyrovnávání zatížení je virtuální síť nakonfigurovaná jako síť pro nástroj pro vyrovnávání zatížení. Následující diagram znázorňuje prostředky vytvořené v rámci tohoto rychlého startu:
 
@@ -636,7 +640,7 @@ Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-c
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 
 Vytvořte síťové rozhraní pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create). Určete následující nastavení:

@@ -5,20 +5,23 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91318071"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308435"
 ---
 # <a name="laying-out-files-for-conversion"></a>Příprava souborů pro převod
 
 Aby bylo možné správně zpracovat Asset, služba převodu musí být schopna najít všechny vstupní soubory.
 Ty se skládají z převáděného hlavního souboru assetu a obvykle některých dalších souborů, na které odkazuje cesta v souboru prostředků.
-Požadavek na převod assetu má dva parametry, které určují, jak služba převodu nalezne tyto soubory: `input.folderPath` (to je volitelné) a `input.inputAssetPath` .
+Požadavek na převod assetu má dva parametry, které určují, jak služba převodu nalezne tyto soubory: `settings.inputLocation.blobPrefix` (to je volitelné) a `settings.inputLocation.relativeInputAssetPath` .
 Jsou plně dokumentovány na stránce [převod REST API](conversion-rest-api.md) .
-Pro účely rozložení souborů je důležité si uvědomit, že `folderPath` Určuje kompletní sadu souborů, které jsou k dispozici pro službu Převod při zpracování assetu.
+Pro účely rozložení souborů je důležité si uvědomit, že `BlobPrefix` Určuje kompletní sadu souborů, které jsou k dispozici pro službu Převod při zpracování assetu.
+
+> [!Note]
+> Služba stáhne všechny soubory v rámci vstupu. Předponou objektu BLOB. Zajistěte, aby názvy souborů a cesty nepřesáhly [omezení délky cest systému Windows](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation) , aby nedocházelo k problémům se službou. 
 
 ## <a name="placing-files-so-they-can-be-found"></a>Umístění souborů, aby bylo možné je vyhledat
 

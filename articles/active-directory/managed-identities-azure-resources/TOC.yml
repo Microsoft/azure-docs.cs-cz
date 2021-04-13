@@ -94,8 +94,6 @@
           href: how-to-use-vm-sign-in.md
         - name: Použití se sadami Azure SDK
           href: how-to-use-vm-sdk.md
-        - name: Ukončení používání rozšíření virtuálních počítačů a zahájení používání Azure IMDS
-          href: howto-migrate-vm-extension.md
     - name: Přiřazení přístupu spravované identity k jinému prostředku Azure
       items:
         - name: Portál

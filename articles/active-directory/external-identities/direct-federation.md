@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 830119a5b3a7781e8b12e3d4df870f539a2cd63a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552287"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364902"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -38,7 +38,7 @@ V některém z těchto scénářů můžete aktualizovat metodu ověřování u�
 Přímá federace je vázaná na obory názvů domény, jako jsou contoso.com a fabrikam.com. Při vytváření přímé konfigurace federace s AD FS nebo IdP třetí strany organizace přiřadí k těmto zprostředkovatelů identity jeden nebo víc oborů názvů domény. 
 
 ## <a name="end-user-experience"></a>Prostředí koncového uživatele 
-Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenantovi Azure AD pomocí vlastního účtu organizace. Když přistupují ke sdíleným prostředkům a zobrazí se výzva k přihlášení, uživatelé s přímými federace se přesměrují na své IdP. Po úspěšném přihlášení se vrátí službě Azure AD, která bude mít přístup k prostředkům. Obnovovací tokeny pro uživatele s přímým přístupem jsou platné po dobu 12 hodin, což je [výchozí délka tokenu předávací aktualizace](../develop/active-directory-configurable-token-lifetimes.md#exceptions) ve službě Azure AD. Pokud má federované IdP jednotné přihlašování (SSO), uživatel bude mít přístup k JEDNOTNÉmu přihlašování a po počátečním ověření se nezobrazí žádné výzvy k přihlášení.
+Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenantovi Azure AD pomocí vlastního účtu organizace. Když přistupují ke sdíleným prostředkům a zobrazí se výzva k přihlášení, uživatelé s přímými federace se přesměrují na své IdP. Po úspěšném přihlášení se vrátí službě Azure AD, která bude mít přístup k prostředkům. Obnovovací tokeny pro uživatele s přímým přístupem jsou platné po dobu 12 hodin, což je [výchozí délka tokenu předávací aktualizace](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties) ve službě Azure AD. Pokud má federované IdP jednotné přihlašování (SSO), uživatel bude mít přístup k JEDNOTNÉmu přihlašování a po počátečním ověření se nezobrazí žádné výzvy k přihlášení.
 
 ## <a name="sign-in-endpoints"></a>Koncové body přihlášení
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 7c22381d547029aedc5965d07033e8800fcbddc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210890"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313143"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -145,7 +145,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (Únorová aktualizace)
 + **Nové funkce**
   + [Nativní terminál (GA)](./how-to-access-terminal.md). Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím integrovaného terminálu.
-  + [Fragmenty poznámkových bloků (Preview)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Běžné výpisy kódu v Azure ML jsou teď dostupné na dosah ruky. Přejděte na panel fragmenty kódu, který je přístupný prostřednictvím panelu nástrojů, nebo aktivujte nabídku fragmenty kódu pomocí kombinace kláves CTRL + MEZERNÍK.  
+  + Fragmenty poznámkových bloků (Preview). Běžné výpisy kódu v Azure ML jsou teď dostupné na dosah ruky. Přejděte na panel fragmenty kódu, který je přístupný prostřednictvím panelu nástrojů, nebo aktivujte nabídku fragmenty kódu pomocí kombinace kláves CTRL + MEZERNÍK.  
   + [Klávesové zkratky](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Plná parita s klávesovými zkratkami, které jsou k dispozici v Jupyter. 
   + Označuje parametry buňky. Zobrazuje uživatele, které buňky v poznámkovém bloku představují buňky parametrů a můžou spouštět parametrizované poznámkové bloky přes [Papermill](https://github.com/nteract/papermill) ve výpočetní instanci.
   + Terminál a správce relace jádra: uživatelé budou moct spravovat všechny jádra a relace Terminálové služby běžící na jejich výpočetním prostředí.

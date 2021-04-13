@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2f062aa43132543a2c149039eb50c0a0ab22d83d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e335f015d784b3f3849c3646d16da9ad8999030c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618555"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309828"
 ---
 # <a name="updated-ndv2-series"></a>Aktualizace řady NDv2-Series
 
@@ -35,6 +35,7 @@ Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což z
 
 [Premium Storage](premium-storage-performance.md): podporováno<br>
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Disky Ultra](disks-types.md#ultra-disk): podporované (další[informace](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) o dostupnosti, využití a výkonu) <br>
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 2<br>

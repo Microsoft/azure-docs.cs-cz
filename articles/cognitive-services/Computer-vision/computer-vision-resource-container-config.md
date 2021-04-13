@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285667"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308638"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurace čtení kontejnerů Docker pro rozpoznávání OCR
 
@@ -62,11 +62,11 @@ Toto nastavení najdete na následujícím místě:
 
 * Azure Portal: Přehled **Cognitive Services** , označený `Endpoint`
 
-Nezapomeňte přidat `vision/v1.0` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následující tabulce. 
+Nezapomeňte přidat `vision/<version>` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následující tabulce. 
 
 |Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
@@ -122,13 +122,13 @@ Nahradit {_argument_name_} vlastními hodnotami:
 Následující příklady Docker jsou určené pro čtení kontejneru OCR.
 
 
-# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
+# <a name="version-32"></a>[Verze 3,2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>Základní příklad
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

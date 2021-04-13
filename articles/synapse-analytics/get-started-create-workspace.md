@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: f186acbe030dcbb0c2bad22586a8b2a5d1aa520d
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259791"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366058"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -47,8 +47,8 @@ Vyplňte následující pole:
 
 V části **vybrat data Lake Storage Gen 2**:
 
-1. Podle **názvu účtu** klikněte na **vytvořit nový** a pojmenujte nový účet úložiště **contosolake** nebo podobný, protože tento název musí být jedinečný.
-1. Podle **názvu systému souborů** klikněte na **vytvořit nový** a pojmenujte **uživatele** IT. Tím se vytvoří kontejner úložiště s názvem **Uživatelé**. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
+1. Podle **názvu účtu** vyberte **vytvořit nové** a pojmenujte nový účet úložiště **contosolake** nebo podobný název musí být jedinečný.
+1. Podle **názvu systému souborů** vyberte **vytvořit novou** a pojmenujte ho **Uživatelé**. Tím se vytvoří kontejner úložiště s názvem **Uživatelé**. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
 1. Zaškrtněte políčko přiřadit roli Přispěvatel dat objektů BLOB úložiště v poli Data Lake Storage Gen2 účet. 
 
 ## <a name="completing-the-process"></a>Dokončuje se proces.
@@ -66,14 +66,14 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>Vložení ukázkových dat do primárního účtu úložiště
-Pro mnoho příkladů v této příručce Začínáme budeme používat malou datovou sadu ukázek 100 tisíc řádků NYX taxislužby. Začneme tak, že ho umístíte do primárního účtu úložiště, který jste vytvořili pro daný pracovní prostor.
+Pro mnoho příkladů v této příručce Začínáme budeme 100 používat datovou sadu ukázkových datových sad NYX taxislužby pro řádek. Začneme tak, že ho umístíte do primárního účtu úložiště, který jste vytvořili pro daný pracovní prostor.
 
 * Stáhněte si tento soubor do počítače: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
-* V synapse Studiio přejděte do centra dat. 
-* Klikněte na možnost **propojeno**.
-* V kategorii **Azure Data Lake Storae Gen2** uvidíte položku s názvem jako **MyWorkspace (primární-contosolake)** .
-* Klikněte na kontejner s názvem **Uživatelé (primární)** .
-* Klikněte na **nahrát** a vyberte `NYCTripSmall.parquet` soubor, který jste stáhli.
+* V synapse studiu přejděte do centra dat. 
+* Vyberte **propojeno**.
+* V kategorii **Azure Data Lake Storae Gen2** uvidíte položku s názvem jako **MyWorkspace (primární-contosolake)**.
+* Vyberte kontejner s názvem **Uživatelé (primární)**.
+* Vyberte **nahrát** a vyberte `NYCTripSmall.parquet` soubor, který jste stáhli.
 
 ## <a name="next-steps"></a>Další kroky
 

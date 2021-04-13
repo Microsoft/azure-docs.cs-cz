@@ -420,7 +420,7 @@
               href: search-security-get-encryption-keys.md
         - name: Příchozí zabezpečení
           items:
-            - name: Přístupové klíče rozhraní API
+            - name: Ověřování klíčů rozhraní API
               href: search-security-api-keys.md
             - name: Konfigurace brány firewall protokolu P
               href: service-configure-firewall.md

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670252"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304694"
 ---
 # <a name="glossary-of-iot-terms"></a>Glosář pojmů IoT
 
@@ -435,6 +435,12 @@ V [IoT Edge](#iot-edge)modul je kontejner Docker, který můžete nasadit do IoT
 [MQTT](https://mqtt.org/) je jedním z protokolů zasílání zpráv, které [IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o protokolech zasílání zpráv, které IoT Hub podporuje, najdete v tématu [posílání a přijímání zpráv pomocí IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
 
 ## <a name="o"></a>O
+
+### <a name="ontology"></a>Ontology
+
+Sada modelů pro určitou doménu, jako jsou například reality, inteligentní města, systémy IoT, energetické mřížky a další. Ontologie se často používají jako schémata pro znalostní grafy, jako jsou ta v [Azure Digital provlákna](#azure-digital-twins), protože poskytují výchozí bod na základě oborových standardů a osvědčených postupů.
+
+Další informace o ontologie najdete v tématu [co je to Ontology?](../digital-twins/concepts-ontologies.md)
 
 ### <a name="operations-monitoring"></a>Monitorování operací
 

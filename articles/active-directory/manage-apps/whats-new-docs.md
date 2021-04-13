@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f83aa7368ec5ac06f2c5a5ebe121c7ce87f93bd1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450034"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304728"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
@@ -40,7 +40,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Řešení potíží s konfiguracemi omezeného delegování Kerberos pro proxy aplikací](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [Rychlý Start: nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-setup-sso.md)
 - [Azure Active Directory Správa aplikací: co je nového](whats-new-docs.md)
-- [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.md)
+- [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.yml)
 - [Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace](application-sign-in-other-problem-access-panel.md)
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Optimalizujte tok provozu pomocí Proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md)
@@ -75,7 +75,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Osvědčené postupy pro správu aplikací](application-management-fundamentals.md)
 - [Průvodce integrací Azure Active Directory s aplikacemi Začínáme](plan-an-application-integration.md)
 - [Co je správa aplikací?](what-is-application-management.md)
-- [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.md)
+- [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.yml)
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Vývoj obchodních aplikací pro Azure Active Directory](../develop/v2-overview.md)
