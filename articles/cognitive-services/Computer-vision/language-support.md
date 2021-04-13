@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285106"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306292"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
@@ -25,7 +25,7 @@ Některé funkce Počítačové zpracování obrazu podporují více jazyků. v�
 
 Rozhraní API pro optické Počítačové zpracování obrazu podporují několik jazyků. Nevyžadují, abyste zadali kód jazyka. Další informace najdete v tématu [Přehled optického rozpoznávání znaků (OCR)](overview-ocr.md) .
 
-|Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Čtení 3.0/3.1 | Přečteno v 3.2 verze Preview |
+|Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Čtení 3.0/3.1 | Přečteno v 3.2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Afrikánština|`af`| | |✔ |
 |Albánština |`sq`| | |✔ |
@@ -46,7 +46,7 @@ Rozhraní API pro optické Počítačové zpracování obrazu podporují několi
 |Dánština | `da` |✔ | |✔ |
 |Nizozemština | `nl` |✔ |✔ |✔ |
 |Angličtina | `en` |✔ |✔ |✔ |
-|Estonština  |`crh`| | |✔ |
+|Estonština  |`et`| | |✔ |
 |Fijian |`fj`| | |✔ |
 |Filipino  |`fil`| | |✔ |
 |Finština | `fi` |✔ | |✔ |

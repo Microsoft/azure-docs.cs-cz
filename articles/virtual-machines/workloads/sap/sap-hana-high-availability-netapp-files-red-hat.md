@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 774344c4215088482b110de91f8951bae4a41d25
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599914"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365820"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux
 
@@ -259,7 +259,6 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Pak proveďte následují
         1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
         1.  Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
         1.  Vyberte **porty ha**.
-        1.  Zvyšte **časový limit nečinnosti** na 30 minut.
         1.  Ujistěte se, že jste **povolili plovoucí IP adresu**.
         1.  Vyberte **OK**.
 
@@ -472,6 +471,71 @@ Tato část popisuje nezbytné kroky, které je potřeba ke bezproblémovému fu
 ### <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
 Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Linux](./high-availability-guide-rhel-pacemaker.md) v Azure a vytvořte pro tento server Hana základní cluster Pacemaker.
+
+### <a name="implement-the-python-system-replication-hook-saphanasr"></a>Implementace SAPHanaSRho zavěšení replikace systému Python
+
+To je důležitý krok pro optimalizaci integrace s clusterem a zlepšení detekce v případě potřeby převzetí služeb při selhání clusteru. Důrazně doporučujeme nakonfigurovat SAPHanaSR Python.    
+
+1. **[A]** nainstalujte "replikační zavěšení systému" Hana. Na obou uzlech databáze HANA je potřeba nainstalovat zavěšení.           
+
+   > [!TIP]
+   > Vidlice Pythonu se dá implementovat jedině pro HANA 2,0.        
+
+   1. Připravte zavěšení jako `root` .  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/srHook/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. Zastavte HANA na obou uzlech. Spustit jako <\> ADM SID:  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. Upravte `global.ini` na všech uzlech clusteru.  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** cluster vyžaduje konfiguraci sudoers na každém uzlu clusteru pro <ADM SID \> . V tomto příkladu je dosaženo vytvořením nového souboru. Spusťte příkazy jako `root` .    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+
+3. **[A]** spusťte SAP HANA na obou uzlech. Spustit jako <\> ADM SID  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** Ověřte instalaci zavěšení. Vykoná se <\> ADM SID na aktivní lokalitě replikace systému Hana.   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-12 21:36:16.911343 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:36:29.147808 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:37:04.898680 ha_dr_SAPHanaSR SOK
+
+    ```
+
+Další podrobnosti o implementaci SAP HANAho zavěšení replikace systému najdete v tématu [Povolení zavěšení zprostředkovatele SAP ha/Dr](https://access.redhat.com/articles/3004101#enable-srhook).  
 
 ### <a name="configure-filesystem-resources"></a>Konfigurace prostředků systému souborů
 

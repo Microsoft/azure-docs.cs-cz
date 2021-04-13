@@ -430,6 +430,10 @@
               href: ./extensions/features-windows.md
             - name: Agent virtuálního počítače s Windows
               href: ./extensions/agent-windows.md
+        - name: Azure Backup pro SQL Server
+          items:
+            - name: Azure Backup pro SQL Server
+              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
         - name: Azure Disk Encryption
           items:
             - name: Linux
@@ -446,10 +450,8 @@
             - name: Windows
               displayName: 'Azure Key Vault, key vault, encryption'
               href: ./extensions/key-vault-windows.md
-        - name: Azure Backup pro SQL Server
-          items:
-            - name: Azure Backup pro SQL Server
-              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Konfigurace hosta Azure Policy
+          href: ./extensions/guest-configuration.md
         - name: Vlastní skript
           items:
             - name: Linux – verze 2

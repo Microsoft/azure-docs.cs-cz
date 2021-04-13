@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b260793cc3c0b5ac3ffce8fac909e2db8991c713
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626703"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307805"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Přidání automatického dokončování a návrhů do klientských aplikací s využitím Azure Kognitivní hledání
 
@@ -67,7 +67,7 @@ Odpovědi jsou ve tvaru podle parametrů na žádosti:
 
 + Pro automatické dokončování nastavte [autocompleteMode](/rest/api/searchservice/autocomplete#query-parameters) , abyste zjistili, jestli se při dokončování textu vyskytuje jedna nebo dvě slova. 
 
-+ V případě návrhů nastavte [$Select](/rest/api/searchservice/suggestionse#query-parameters) , aby vracela pole obsahující jedinečné nebo rozdílné hodnoty, jako jsou názvy a popis. Vyhněte se polím, která obsahují duplicitní hodnoty (například kategorie nebo City).
++ V případě návrhů nastavte [$Select](/rest/api/searchservice/suggestions#query-parameters) , aby vracela pole obsahující jedinečné nebo rozdílné hodnoty, jako jsou názvy a popis. Vyhněte se polím, která obsahují duplicitní hodnoty (například kategorie nebo City).
 
 Následující další parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
 

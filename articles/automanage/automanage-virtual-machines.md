@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491269"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363372"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -59,6 +59,7 @@ Automanage podporuje pouze virtuální počítače, které jsou umístěny v ná
 * Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
+* Southeast Asia
 
 ### <a name="required-rbac-permissions"></a>Požadovaná oprávnění RBAC
 V závislosti na tom, jestli povolujete správu pomocí nového účtu pro správu, bude váš účet trochu různě odlišných rolí RBAC.
@@ -105,7 +106,7 @@ Přímý odkaz na tuto zásadu [najdete tady](https://portal.azure.com/#blade/Mi
 1. Po zobrazení definice zásady klikněte na tlačítko **přiřadit** .
 1. Vyberte obor, ve kterém chcete zásadu použít (může se jednat o skupinu pro správu, předplatné nebo skupinu prostředků).
 1. V části **parametry** zadejte parametry pro účet automanage, konfigurační profil a efekt (efekt by se obvykle DeployIfNotExists).
-    1. Pokud nemáte účet pro správu, budete [ho muset vytvořit](#create-an-automanage-account).
+    1. Pokud nemáte účet pro správu, budete [ho muset vytvořit](./automanage-account.md).
 1. V části **náprava** zaškrtněte políčko klikněte na úlohu nápravy. Tím se provede připojování k autosprávě.
 1. Klikněte na tlačítko **zkontrolovat + vytvořit** a ujistěte se, že všechna nastavení vypadají dobře.
 1. Klikněte na **Vytvořit**.
@@ -142,58 +143,9 @@ Nastavení výchozího prostředí můžete upravit pomocí předvoleb. [Tady](v
 
 ## <a name="automanage-account"></a>Účet pro autosprávu
 
-Účet pro automatické spravování je kontext zabezpečení nebo identita, pod kterou dojde k automatickým operacím. Obvykle možnost automatického spravování účtu není pro výběr k dispozici, ale pokud existoval scénář delegování, kdy jste chtěli rozdělit automatizovanou správu prostředků (třeba mezi dvěma správci systému), tato možnost umožňuje definovat identitu Azure pro každého z těchto správců.
+Účet pro automatické spravování je kontext zabezpečení nebo identita, pod kterou dojde k automatickým operacím. Obvykle možnost automaticky spravovat účet není pro výběr k dispozici, ale pokud existoval scénář delegování, kdy jste chtěli rozdělit automatizovanou správu prostředků (třeba mezi dvěma správci systému), možnost účet automatické správy v toku povolení vám umožní definovat identitu Azure pro každého z těchto správců.
 
-V prostředí Azure Portal máte při povolování funkce automanage na vašich virtuálních počítačích pokročilý rozevírací seznam v okně **Povolit osvědčené postupy pro virtuální počítače Azure** , které vám umožní přiřadit nebo ručně vytvořit účet pro správu.
-
-Účtu automanage budou udělena **role přispěvatelů** a **zásad prostředků přispěvatelům** k předplatným, která obsahují počítače, které chcete spravovat. Stejný účet pro správu můžete použít na počítačích v rámci více předplatných, což udělí oprávnění k autosprávě účtu **přispěvatele** a **zásad prostředků** u všech předplatných.
-
-Pokud je váš virtuální počítač připojený k pracovnímu prostoru Log Analytics v jiném předplatném, bude mít účet pro  správu v tomto jiném předplatném taky **Přispěvatel a přispěvatel zásad prostředků** .
-
-Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
-
-Pokud povolujete možnost automanage s existujícím účtem pro správu, musíte mít roli **přispěvatele** ve skupině prostředků, která obsahuje vaše virtuální počítače.
-
-> [!NOTE]
-> Když zakážete možnosti pro automanage, budete mít i oprávnění účtu automanage u všech přidružených předplatných. Ručně odeberte oprávnění tak, že na stránce IAM předplatného odeberete nebo odstraníte účet pro správu. Účet automanage nelze odstranit, pokud stále spravuje všechny počítače.
-
-### <a name="create-an-automanage-account"></a>Vytvoření účtu pro autosprávu
-Účet pro správu můžete vytvořit pomocí portálu nebo pomocí šablony ARM.
-
-#### <a name="portal"></a>Portál
-1. Přechod na okno pro **správu** v portálu
-1. **V existujícím počítači** klikněte na Povolit.
-1. V části **Upřesnit** klikněte na vytvořit nový účet.
-1. Vyplňte požadovaná pole a klikněte na **vytvořit** .
-
-#### <a name="arm-template"></a>Šablona ARM
-Následující šablonu ARM uložte jako `azuredeploy.json` a spusťte následující příkaz: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "location": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2020-06-30-preview",
-            "type": "Microsoft.Automanage/accounts",
-            "name": "[parameters('automanageAccountName')]",
-            "location": "[parameters('location')]",
-            "identity": {
-                "type": "SystemAssigned"
-            }
-        }
-    ]
-}
-```
+Další informace o účtu automanage a o tom, jak ho vytvořit, najdete v [dokumentu s účtem pro správu účtu](./automanage-account.md).
 
 ## <a name="status-of-vms"></a>Stav virtuálních počítačů
 
@@ -227,7 +179,7 @@ Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve vý
 >
 > - Konfigurace virtuálního počítače a služeb, které jsou zaregistrované, aby se nezměnily.
 > - Veškeré poplatky, které tyto služby vznikly, zůstávají fakturovatelné a i nadále budou platit.
-> - Jakékoli chování při autosprávě se okamžitě zastaví.
+> - Automaticky spravovat nepřetržité sledování odstavování se okamžitě zastaví.
 
 
 První a první, nebudeme virtuální počítač od žádné ze služeb, které jsme připojili a nakonfigurovali, mimo kartu. Všechny poplatky, které tyto služby vznikly, budou i nadále Fakturovatelné. V případě potřeby budete potřebovat mimo panel. Jakékoli chování funkce automanage se okamžitě zastaví. Například už nebudeme monitorovat virtuální počítač pro posun.

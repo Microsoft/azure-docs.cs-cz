@@ -3,22 +3,17 @@ title: Konfigurace aplikace MSIX pro Windows Virtual Desktop připojit skripty p
 description: Postup vytvoření skriptů PowerShellu pro připojení aplikace MSIX k virtuálnímu klientovi Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 143f0a9d23cdc70425147faa95258ec753b92691
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448266"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365376"
 ---
-# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Vytváření skriptů PowerShellu pro připojení aplikace MSIX (Preview)
-
-> [!IMPORTANT]
-> Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-powershell-scripts-for-msix-app-attach"></a>Vytváření skriptů PowerShellu pro připojení aplikace MSIX
 
 Toto téma vás seznámí s postupem nastavení skriptů PowerShellu pro připojení aplikace MSIX.
 

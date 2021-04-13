@@ -3,16 +3,16 @@ title: Konfigurace výstrah a práce s metrikami v řešení Azure VMware
 description: Naučte se používat výstrahy pro příjem oznámení. Naučíte se také, jak pracovat s metrikami a získat hlubší přehled o privátním cloudu řešení Azure VMware.
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096772"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309624"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Konfigurace výstrah Azure v řešení Azure VMware 
 
-V tomto článku se dozvíte, jak nakonfigurovat [skupiny akcí Azure](/azure/azure-monitor/alerts/action-groups) v [Microsoft Azure výstrahy](/azure/azure-monitor/alerts/alerts-overvie) na přijímání oznámení o aktivovaných událostech, které definujete. Naučíte se také, jak pomocí [Azure monitor metrik](/azure/azure-monitor/essentials/data-platform-metrics) získat hlubší přehled o privátním cloudu řešení Azure VMware.
+V tomto článku se dozvíte, jak nakonfigurovat [skupiny akcí Azure](/azure/azure-monitor/alerts/action-groups) v [Microsoft Azure výstrahy](/azure/azure-monitor/alerts/alerts-overview) na přijímání oznámení o aktivovaných událostech, které definujete. Naučíte se také, jak pomocí [Azure monitor metrik](/azure/azure-monitor/essentials/data-platform-metrics) získat hlubší přehled o privátním cloudu řešení Azure VMware.
 
 
 ## <a name="supported-metrics-and-activities"></a>Podporované metriky a aktivity

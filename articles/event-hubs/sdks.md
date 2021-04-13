@@ -3,12 +3,12 @@ title: Azure Event Hubs – klientské sady SDK | Microsoft Docs
 description: Tento článek poskytuje informace o klientských sadách SDK pro Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9f4eec603245f1e4ea6fa4d97b843ca6a770f2ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4af837c4d62098f3efe4098c6734ecd8972e972
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88930872"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309998"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs – klientské sady SDK
 Tento článek poskytuje následující informace pro sady SDK podporované službou Azure Event Hubs: 
@@ -50,4 +50,4 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 
 * [Přehled Event Hubs](./event-hubs-about.md)
 * [Vytvoření centra událostí](event-hubs-create.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+* [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)

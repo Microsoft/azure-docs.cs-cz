@@ -2,13 +2,13 @@
 title: Vytvoření projektů skupiny prostředků sady Visual Studio pro & nasazení
 description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků Azure a nasaďte prostředky do Azure.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704410"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306972"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
@@ -45,9 +45,9 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
    | WebSite.jsna |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
-   | WebSite.parameters.jsna |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
+   | WebSite.parameters.jsna |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. Všimněte si, že **Akce sestavení** je nastavena na **obsah**. Pokud přidáte více souborů parametrů, ujistěte se, že je akce sestavení nastavena na **obsah**. |
 
-    Tyto základní soubory mají všechny projekty nasazení skupiny prostředků. Ostatní projekty můžou mít i další soubory, které podporují jiné funkce.
+    Tyto základní soubory mají všechny projekty nasazení skupiny prostředků. Ostatní projekty mohou mít další soubory pro podporu jiných funkcí.
 
 ## <a name="customize-resource-manager-template"></a>Přizpůsobení šablony Správce prostředků
 
@@ -245,7 +245,7 @@ Měl by vypadat takto:
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Všimněte si, že v předchozím příkladu nejsou `'/',` žádné **parametry (' _artifactsLocation ')** a **Parameters (' ExampleAppPackageFolder ')**.
+V předchozím příkladu si všimněte, že není `'/',` mezi **parametry (' _artifactsLocation ')** a **parametry (' ExampleAppPackageFolder ')**.
 
 Znovu sestavte projekt. Při sestavování projektu se zajišťují, že soubory, které potřebujete nasadit, se přidají do pracovní složky.
 

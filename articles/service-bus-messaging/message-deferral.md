@@ -4,12 +4,12 @@ description: Tento článek vysvětluje, jak odložit doručování Azure Servic
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622041"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306105"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
@@ -22,7 +22,7 @@ Jednoduchým ilustrativním příkladem je pořadí zpracování objednávky, ve
 Časově rozlišené prostředky v konečném uspořádání zpráv z pořadí doručení do pořadí, ve kterém je lze zpracovat, ale tyto zprávy bez obav ponechají v úložišti zpráv, pro které je nutné zpracování odložit.
 
 > [!NOTE]
-> Odložené zprávy se [po vypršení platnosti](./service-bus-dead-letter-queues.md#exceeding-timetolive)automaticky nepřesunou do fronty nedoručených zpráv. Toto chování je záměrné.
+> Odložené zprávy se [po vypršení platnosti](./service-bus-dead-letter-queues.md#time-to-live)automaticky nepřesunou do fronty nedoručených zpráv. Toto chování je záměrné.
 
 ## <a name="message-deferral-apis"></a>Rozhraní API pro odložení zpráv
 

@@ -10,25 +10,36 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 03/23/2021
-ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 1d58f79d0fe8accc728c4484dd5d92159836aa88
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107852"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305136"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database elastické fondy a databáze ve fondu pomocí modelu nákupu vCore.
 
-Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení prostředků DTU – elastické fondy](resource-limits-dtu-elastic-pools.md).
+* Omezení nákupních modelů pro DTU pro jednotlivé databáze na serveru najdete v tématu [Přehled omezení prostředků na serveru](resource-limits-logical-server.md).
+* Omezení prostředků modelu nákupu DTU pro Azure SQL Database najdete v tématu omezení [prostředků DTU jednotlivé databáze](resource-limits-dtu-single-databases.md) a [prostředky DTU omezí elastické fondy](resource-limits-dtu-elastic-pools.md).
+* Omezení prostředků vCore najdete v tématu omezení [prostředků Vcore –](resource-limits-vcore-single-databases.md) [omezení prostředků Azure SQL Database a Vcore – elastické fondy](resource-limits-vcore-elastic-pools.md).
+* Další informace o různých nákupních modelech najdete v tématu [nakupování modelů a úrovní služeb](purchasing-models.md).
 
 > [!IMPORTANT]
 > Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](file-space-manage.md).
 
-Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množství úložiště pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](elastic-pool-manage.md#powershell), rozhraní příkazového [řádku Azure](elastic-pool-manage.md#azure-cli)nebo [REST API](elastic-pool-manage.md#rest-api).
+Každá replika jen pro čtení má vlastní prostředky, jako je virtuální jádra, paměť, datový IOPS, databáze TempDB, pracovní procesy a relace. Na každou repliku jen pro čtení se vztahují limity prostředků popsané dále v tomto článku.
+
+Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a částku úložiště pomocí:
+
+* [Transact-SQL](elastic-pool-scale.md) přes [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure Portal](elastic-pool-manage.md#azure-portal)
+* [PowerShell](elastic-pool-manage.md#powershell)
+* [Azure CLI](elastic-pool-manage.md#azure-cli)
+* [REST API](elastic-pool-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování elastického fondu](elastic-pool-scale.md).

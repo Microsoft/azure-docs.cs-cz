@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 652d362a11e80a488c9278dfeff38e715acee784
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 381fe00e835f0e359a2347372cbc2544a2b211ca
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641933"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364222"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Porovnání souborů a Azure NetApp Files Azure
 
@@ -25,7 +25,7 @@ Většina úloh, které vyžadují cloudové úložiště souborů, se dobře ho
 
 | Kategorie | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
-| Description | Služba [soubory Azure](https://azure.microsoft.com/services/storage/files/) je plně spravovaná, vysoce dostupná služba a je optimalizovaná pro úlohy s náhodným přístupem s aktualizacemi místních dat.<br><br> Služba soubory Azure je postavená na stejné platformě Azure Storage jako jiné služby, jako jsou objekty blob Azure. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) je plně spravovaná, vysoce dostupná služba na podnikové úrovni, která dokáže zvládnout nejnáročnější a vysoce výkonné úlohy s nízkou latencí, které vyžadují pokročilé možnosti správy dat. Umožňuje migraci úloh, které se považují za "un-migrovat" bez.<br><br>  ANF je postavená na holých počítačích NetApp s operačním systémem ONTAP, který běží v datovém centru Azure pro konzistentní prostředí Azure a místní jako výkon. |
+| Popis | Služba [soubory Azure](https://azure.microsoft.com/services/storage/files/) je plně spravovaná vysoce dostupná služba na podnikové úrovni, která je optimalizovaná pro úlohy s náhodným přístupem s aktualizacemi místních dat.<br><br> Služba soubory Azure je postavená na stejné platformě Azure Storage jako jiné služby, jako jsou objekty blob Azure. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) je plně spravovaná, vysoce dostupná služba na podnikové úrovni, která dokáže zvládnout nejnáročnější a vysoce výkonné úlohy s nízkou latencí, které vyžadují pokročilé možnosti správy dat. Umožňuje migraci úloh, které se považují za "un-migrovat" bez.<br><br>  ANF je postavená na holých počítačích NetApp s operačním systémem ONTAP, který běží v datovém centru Azure pro konzistentní prostředí Azure a místní jako výkon. |
 | Protokoly | Premium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (Preview)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> Další informace najdete v tématu [dostupné protokoly sdílení souborů](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Všechny úrovně<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Přístup přes duální protokol (NFSv3/SMB)</li></ul><br> Další informace najdete v tématu Postup vytvoření svazků [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes), [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)nebo [duálního protokolu](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) . |
 | Dostupnost oblasti | Premium<br><ul><li>30 a oblastí</li></ul><br>Standard<br><ul><li>Všechny oblasti</li></ul><br> Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage). | Všechny úrovně<br><ul><li>25 a oblasti</li></ul><br> Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage). |
 | Redundance | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> Další informace najdete v tématu [redundance](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy). | Všechny úrovně<br><ul><li>Integrované místní HA</li><li>[Replikace mezi oblastmi](https://docs.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction)</li></ul> |

@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: 80d295d017b11d86df7a3fe4c14afc7a5665cd96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dad7799cb5a7579b28847e3968b6b38f1f98298a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104612131"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327444"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (v1-V3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "104612131"
 | [Plán App Service](../articles/app-service/overview-hosting-plans.md) |10 na oblast |10 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků|
 | Typ instance COMPUTE |Shared |Shared |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup></p> |Vyhrazené<sup>3</sup>|
 | [Horizontální](../articles/app-service/manage-scale-up.md) navýšení kapacity (maximální počet instancí) |1 sdílená |1 sdílená |<sup>3 vyhrazené 3</sup> |10 vyhrazených<sup>3</sup> | 20 vyhrazeno pro V1 a v2; 30 vyhrazeno pro v3. <sup>3</sup> .|100 vyhrazené<sup>4</sup>|
-| Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> V případě více než 250 GB odešlete žádost o podporu. |1 TB<sup>5</sup> <br/><br/> Dostupná kvóta úložiště je 999 GB. |
+| Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> |1 TB<sup>5</sup> <br/><br/> Dostupná kvóta úložiště je 999 GB. |
 | Čas procesoru (5 minut)<sup>6</sup> |3 minuty |3 minuty |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | Čas procesoru (den)<sup>6</sup> |60 minut |240 minut |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Paměť (1 hodina) |1 024 MB na plán App Service |1 024 MB na aplikaci |N/A |N/A |N/A |N/A |
@@ -38,7 +38,7 @@ ms.locfileid: "104612131"
 | [Naplánovaná zálohování](../articles/app-service/manage-backup.md) | | | | Naplánované zálohy každé 2 hodiny, maximálně 12 záloh za den (ruční + naplánované) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) |
 | [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |× |× |× |
 | Webové [úlohy](../articles/app-service/webjobs-create.md)<sup>11</sup> |× |× |× |× |× |× |
-| [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |× |× |× |× |
+| [Monitorování koncového bodu](../articles/app-service/web-sites-monitor.md) | | |× |× |× |× |
 | [Pracovní sloty](../articles/app-service/deploy-staging-slots.md) na aplikaci| | | |5 |20 |20 |
 | [Testování v produkčním prostředí](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |× |× |× |
 | [Diagnostické protokoly](../articles/app-service/troubleshoot-diagnostic-logs.md) | × | × | × | × | × | × |

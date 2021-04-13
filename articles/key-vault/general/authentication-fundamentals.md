@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103572804"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363423"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
@@ -104,7 +104,7 @@ Zásady klasického přístupu ale neumožňují oprávnění na úrovni jednotl
 > [!IMPORTANT]
 > Zásady přístupu k trezoru klíčů v klasických klíčích a Azure Active Directory přiřazení rolí jsou vzájemně nezávislá. Přiřazení objektu zabezpečení role přispěvatel na úrovni předplatného neumožní objektu zabezpečení automaticky provádět operace s datovou rovinou u každého trezoru klíčů v rámci rozsahu předplatného. Aby bylo možné provádět operace roviny dat, musí být zaregistrovaný objekt zabezpečení i nadále udělen nebo udělena oprávnění zásad přístupu.
 
-### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Možnost přístupu k rovině dat 2: Azure RBAC pro Key Vault (Preview)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault"></a>Možnost přístupu k rovině dat 2: Azure RBAC pro Key Vault
 
 Nový způsob, jak udělit přístup k rovině dat trezoru klíčů, je prostřednictvím řízení přístupu na základě role Azure (Azure RBAC) pro Trezor klíčů.
 

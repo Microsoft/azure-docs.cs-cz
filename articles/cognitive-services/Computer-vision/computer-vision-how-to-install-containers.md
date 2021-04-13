@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285718"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308764"
 ---
-# <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
+# <a name="install-read-ocr-docker-containers"></a>Nainstalovat čtení kontejnerů Docker pro rozpoznávání OCR
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -27,12 +27,9 @@ Kontejnery umožňují spouštět rozhraní API Počítačového zpracování ob
 
 Kontejner OCR *pro čtení* umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v tématu [Průvodce čtením rozhraní API](Vision-API-How-to-Topics/call-read-api.md).
 
-## <a name="read-32-preview-container"></a>Přečíst kontejner 3,2 – Preview
+## <a name="read-32-container"></a>Přečíst kontejner 3,2
 
-> [!NOTE]
-> Kontejner Read 3,0-Preview se už nepoužívá. 
-
-Kontejner OCR Read 3,2-Preview poskytuje:
+Kontejner pro čtení 3,2 optického rozpoznávání znaků poskytuje:
 * Nové modely pro vyšší přesnost.
 * Podpora více jazyků v rámci jednoho dokumentu.
 * Podpora celkem 73 jazyků. Podívejte se na úplný seznam [jazyků podporovaných rozpoznáváním OCR](./language-support.md#optical-character-recognition-ocr).
@@ -62,7 +59,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Vyplňte a odešlete [formulář žádosti](https://aka.ms/csgate) , který vyžádá schválení pro spuštění kontejneru. 
 
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to run the container](../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -92,16 +89,16 @@ K dispozici jsou image kontejneru pro čtení.
 | Kontejner | Název Container Registry/úložiště/image |
 |-----------|------------|
 | Přečíst 2,0 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Přečíst 3,2 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
+| Přečíst 3,2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
 Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu Stáhněte image kontejneru.
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>Čtecí modul Docker pro kontejner OCR pro čtení
 
-# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
+# <a name="version-32"></a>[Verze 3,2](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
 ```
 
 # <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
@@ -127,11 +124,11 @@ Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.co
 
 [](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
-# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
+# <a name="version-32"></a>[Verze 3,2](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -189,9 +186,9 @@ Postup vyhledání připojovacího řetězce:
 
 Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST. 
 
-# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
+# <a name="version-32"></a>[Verze 3,2](#tab/version-3-2)
 
-Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` .
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` .
 
 # <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
 
@@ -202,7 +199,7 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu 
 ### <a name="asynchronous-read"></a>Asynchronní čtení
 
 
-# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
+# <a name="version-32"></a>[Verze 3,2](#tab/version-3-2)
 
 Můžete použít `POST /vision/v3.2/read/analyze` `GET /vision/v3.2/read/operations/{operationId}` operace a společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí `operationId` hodnotu, která se používá jako identifikátorem požadavku HTTP GET.
 
@@ -398,7 +395,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 
 K synchronnímu čtení obrázku můžete použít následující operaci. 
 
-# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
+# <a name="version-32"></a>[Verze 3,2](#tab/version-3-2)
 
 `POST /vision/v3.2/read/syncAnalyze` 
 
@@ -443,7 +440,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 
 * Počítačové zpracování obrazu poskytuje kontejner pro Linux pro Docker, zapouzdření čtení.
-* Image kontejnerů se stáhnou z registru kontejnerů "kontejner ve verzi Preview" v Azure.
+* Image pro čtení kontejneru vyžaduje aplikaci pro její spuštění. 
 * Image kontejneru se spouštějí v Docker.
 * Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech pro rozpoznávání OCR zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.

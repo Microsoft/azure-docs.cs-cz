@@ -714,12 +714,6 @@ productDirectory:
       azureCategories:
         - developer-tools
       url: 'https://code.visualstudio.com/docs'
-    - title: Visual Studio Codespaces (Preview)
-      summary: Vývojová prostředí s podporou cloudu a přístupná odkudkoli
-      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-      azureCategories:
-        - developer-tools
-      url: /visualstudio/online/overview/what-is-vsonline
     - title: Application Insights
       summary: 'Komplexní pozorování aplikací, infrastruktury a sítě'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/application-insights.svg'

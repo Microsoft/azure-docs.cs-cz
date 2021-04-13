@@ -1,18 +1,18 @@
 ---
 title: Program pro zařízení Certified v Azure – kurz – přidávání podrobností o zařízení
 description: Podrobný průvodce přidáním podrobností o zařízení do projektu na portálu zařízení s certifikací Azure
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: c2a67e794932504150a1eacedd5418642623a20c
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: f4f3d045a2530fa54d22bec789918454cba80097
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969652"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310423"
 ---
 # <a name="tutorial-add-device-details"></a>Kurz: Přidání podrobností o zařízení
 

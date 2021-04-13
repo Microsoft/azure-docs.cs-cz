@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91bb558d47e56ebbcbdf25b0276c2a247ec81b47
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460292"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312633"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technické specifikace Azure Stack Edge pro
 
@@ -23,16 +23,21 @@ Hardwarové součásti zařízení Microsoft Azure Stack Edge pro vyhovují tech
 
 Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní výkon a paměť:
 
-| Specifikace           | Hodnota                  |
-|-------------------------|----------------------------|
-| Procesor    | 2 X 10 jader procesor Intel Xeon stříbrné 4114 2.2 G                    |
-| Memory (Paměť)              | 128 GB RAM (8rychlostní 16GB RDIMM)                 |
+| Specifikace           | Hodnota                             |
+|-------------------------|-----------------------------------|
+| Typ procesoru                | Dual Intel Xeon stříbrné 4114 2,2 G |
+| Procesor: RAW                | 20 celkem jader, 40 Total vCPU    |
+| Procesor: použitelné             | 32 vCPU                          |
+| Typ paměti             | 8 × 16 GB RDIMM                   |
+| Paměť: RAW             | 128 GB RAM (8 × 16 GB)           |
+| Paměť: použitelné          | 102 GB RAM                        |
+
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
 Pole programovatelné brány (FPGA) je součástí každého zařízení Azure Stack Edge pro, které umožňuje použití scénářů Machine Learning (ML).
 
-| Specifikace           | Hodnota                  |
+| Specifikace           | Hodnota                      |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
@@ -42,7 +47,7 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximální výstupní výkon    | 750 W                     |
+| Maximální výstupní výkon    | 750 W                      |
 | Frekvence               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
 | Horká, připojitelná           | Yes                        |
@@ -64,7 +69,7 @@ Vaše zařízení Azure Stack Edge pro má 6 síťových rozhraní PORT1-PORT6.
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
 
-Používají se síťové adaptéry: 
+Používají se síťové adaptéry:
 
 | Specifikace           | Description                 |
 |-------------------------|----------------------------|
@@ -82,7 +87,7 @@ Zařízení Azure Stack Edge pro mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,
 |    Počet jednotek SSD (Solid-State Drive) (SSD)     |    8                  |
 |    Jedna kapacita SSD                     |    1,6 TB             |
 |    Celková kapacita                          |    12,8 TB            |
-|    Celková použitelná kapacita *                  |    ~ 12,5 TB            |
+|    Celková použitelná kapacita *                  |    ~ 12,5 TB          |
 
 **Místo pro interní použití je rezervované.*
 
@@ -94,19 +99,19 @@ V následujících tabulkách jsou uvedeny různé specifikace velikosti skřín
 
 V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcích.
 
-|     Skříně     |     Milimetrech     |     Cm     |
-|-------------------|---------------------|----------------|
-|    Height (Výška)         |    44,45            |    1,75 "          |
-|    Width (Šířka)          |    434,1           |    17,09 "          |
-|    Délka          |    740,4           |    29,15 "          |
+|     Skříně     |     Milimetrech    |     Cm     |
+|-------------------|--------------------|----------------|
+|    Height (Výška)         |    44,45           |    1,75 "       |
+|    Width (Šířka)          |    434,1           |    17,09 "      |
+|    Délka         |    740,4           |    29,15 "      |
 
 V následující tabulce jsou uvedeny rozměry balíčku pro expedici v milimetrech a palcích.
 
-|     Balíček     |     Milimetrech     |     Cm     |
+|     Balíček       |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Height (Výška)         |    311,2            |    12,25 "          |
-|    Width (Šířka)          |    642,8          |    25,31 "          |
-|    Délka          |   1 051,1          |    41,38 "          |
+|    Height (Výška)         |    311,2            |    12,25 "      |
+|    Width (Šířka)          |    642,8            |    25,31 "      |
+|    Délka         |   1 051,1           |    41,38 "      |
 
 ### <a name="enclosure-weight"></a>Váha skříně
 
